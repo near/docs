@@ -113,54 +113,54 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Smart Contracts </small></b></span>"
     },
-    "build/smart-contracts/what-is",
+    "smart-contracts/what-is",
     {
       "Building Smart Contracts": [
-        "build/smart-contracts/quickstart",
+        "smart-contracts/quickstart",
         {
           "Anatomy of a Contract": [
-            "build/smart-contracts/anatomy/anatomy",
-            "build/smart-contracts/anatomy/functions",
-            "build/smart-contracts/anatomy/storage",
-            "build/smart-contracts/anatomy/types",
-            "build/smart-contracts/anatomy/collections",
-            "build/smart-contracts/anatomy/environment",
-            "build/smart-contracts/anatomy/actions",
-            "build/smart-contracts/anatomy/crosscontract",
-            "build/smart-contracts/anatomy/yield-resume",
-            "build/smart-contracts/security/checklist",
+            "smart-contracts/anatomy/anatomy",
+            "smart-contracts/anatomy/functions",
+            "smart-contracts/anatomy/storage",
+            "smart-contracts/anatomy/types",
+            "smart-contracts/anatomy/collections",
+            "smart-contracts/anatomy/environment",
+            "smart-contracts/anatomy/actions",
+            "smart-contracts/anatomy/crosscontract",
+            "smart-contracts/anatomy/yield-resume",
+            "smart-contracts/security/checklist",
             {
               "type": "html",
               "value": "<hr/>"
             },
             {
               "Advanced": [
-                "build/smart-contracts/anatomy/best-practices",
-                "build/smart-contracts/anatomy/serialization",
-                "build/smart-contracts/anatomy/serialization-protocols",
-                "build/smart-contracts/anatomy/reduce-size",
-                "build/smart-contracts/anatomy/reproducible-builds",
+                "smart-contracts/anatomy/best-practices",
+                "smart-contracts/anatomy/serialization",
+                "smart-contracts/anatomy/serialization-protocols",
+                "smart-contracts/anatomy/reduce-size",
+                "smart-contracts/anatomy/reproducible-builds",
               ]
             }
           ]
         },
         {
           "Test the Contract": [
-            "build/smart-contracts/testing/introduction",
-            "build/smart-contracts/testing/unit-test",
-            "build/smart-contracts/testing/integration-test",
+            "smart-contracts/testing/introduction",
+            "smart-contracts/testing/unit-test",
+            "smart-contracts/testing/integration-test",
             {
               "type": "html",
               "value": "<hr/>"
             },
-            "build/smart-contracts/testing/kurtosis-localnet",
+            "smart-contracts/testing/kurtosis-localnet",
           ]
         },
         {
           "Deploy, Update & Lock": [
-            "build/smart-contracts/release/deploy",
-            "build/smart-contracts/release/upgrade",
-            "build/smart-contracts/release/lock"
+            "smart-contracts/release/deploy",
+            "smart-contracts/release/upgrade",
+            "smart-contracts/release/lock"
           ]
         },
         {
@@ -168,17 +168,17 @@ const sidebar = {
           "label": "Security",
           "link": {
             "type": "doc",
-            "id": "build/smart-contracts/security/welcome"
+            "id": "smart-contracts/security/welcome"
           },
           "items": [
-            "build/smart-contracts/security/checklist",
-            "build/smart-contracts/security/storage",
-            "build/smart-contracts/security/callbacks",
-            "build/smart-contracts/security/one-yocto",
-            "build/smart-contracts/security/sybil",
-            "build/smart-contracts/security/frontrunning",
-            "build/smart-contracts/security/reentrancy",
-            "build/smart-contracts/security/random",
+            "smart-contracts/security/checklist",
+            "smart-contracts/security/storage",
+            "smart-contracts/security/callbacks",
+            "smart-contracts/security/one-yocto",
+            "smart-contracts/security/sybil",
+            "smart-contracts/security/frontrunning",
+            "smart-contracts/security/reentrancy",
+            "smart-contracts/security/random",
             {
               "type": "html",
               "value": "<hr/>"

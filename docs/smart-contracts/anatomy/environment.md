@@ -83,7 +83,7 @@ During a simple transaction (no [cross-contract calls](../anatomy/crosscontract.
 *You can access information about the users interacting with your smart contract*
 
 :::tip
-In most scenarios you will **only need to know the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../5.primitives/nft.md) into [this marketplace](https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/market-contract/src/nft_callbacks.rs#L42), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
+In most scenarios you will **only need to know the predecessor**. However, there are situations in which the signer is very useful. For example, when adding [NFTs](../../2.build/5.primitives/nft.md) into [this marketplace](https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/market-contract/src/nft_callbacks.rs#L42), the contract checks that the `signer`, i.e. the person who generated the transaction chain, is the NFT owner.
 :::
 
 ---
@@ -130,7 +130,7 @@ The `timestamp` attribute represents the approximated **UNIX timestamp** in **na
 
 ### Current Epoch
 
-The NEAR blockchain groups blocks in [Epochs](../../../protocol/network/epoch.md). The `current_epoch` attribute measures how many epochs have passed so far. It is very useful to coordinate with other contracts that measure time in epochs, such as the [validators](../../../protocol/network/validators.md).
+The NEAR blockchain groups blocks in [Epochs](../../protocol/network/epoch.md). The `current_epoch` attribute measures how many epochs have passed so far. It is very useful to coordinate with other contracts that measure time in epochs, such as the [validators](../../protocol/network/validators.md).
 
 ### Block Index
 
@@ -160,7 +160,7 @@ During [cross-contract calls](./crosscontract.md) always make sure the callback 
 
 :::tip
 
-If you already [estimated the Gas](../../../protocol/gas.md#estimating-costs-for-a-call) a method needs, you can ensure it never runs out of Gas by using `assert`
+If you already [estimated the Gas](../../protocol/gas.md#estimating-costs-for-a-call) a method needs, you can ensure it never runs out of Gas by using `assert`
 
 <Tabs className="language-tabs" groupId="code-tabs">
 <TabItem value="rust" label="🦀 Rust">

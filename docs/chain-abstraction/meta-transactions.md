@@ -195,7 +195,7 @@ Check the [Use cases section](#use-cases) for example configuration files corres
 
 You can follow these steps to set up your local Relayer server development environment:
 
-1. [Install Rust for NEAR Development](../2.build/2.smart-contracts/quickstart.md#prerequisites)
+1. [Install Rust for NEAR Development](../smart-contracts/quickstart.md#prerequisites)
 2. If you don't have a NEAR account, [create one](../protocol/account-model.md)
 3. With the account from step 2, create a JSON file in this directory in the format
    ```js

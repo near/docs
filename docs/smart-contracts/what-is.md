@@ -24,7 +24,7 @@ Do not worry if you don't know how smart-contract blockchains work. As a develop
 ---
 
 ## Where do contracts live?
-Smart Contracts are deployed into [**NEAR accounts**](../../protocol/account-model.md). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**.
+Smart Contracts are deployed into [**NEAR accounts**](../protocol/account-model.md). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**.
 
 Once in an account, anyone can interact with the contract. Thanks to the underlying network structure, executing code from a contract is both **fast** (avg. 1.4s finality) and **cheap**. Moreover, **read-only** operations are **free for everyone**.
 
@@ -74,7 +74,7 @@ The development flow can be summarized as follows:
 - [**Test**](./testing/introduction.md): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
 - [**Deploy**](./release/deploy.md): After making sure the contract is secure, developers can deploy the contract into their accounts.
 - [**Use**](https://mynearwallet.com): Any user can interact with the contract through their NEAR Wallet.
-- [**Monitor**](../../data-infrastructure/what-is.md): The contract's activity can be monitored through simple APIs.
+- [**Monitor**](../data-infrastructure/what-is.md): The contract's activity can be monitored through simple APIs.
 
 #### Supported Languages
 During the whole cycle, developers can choose between [JavaScript](https://www.learn-js.org/) and [Rust](https://www.rust-lang.org/), allowing them to use their favorite language at each step of their journey.
@@ -96,6 +96,6 @@ Contract primitives such as FT, NFT, and DAOs are fundamental building blocks th
 
 :::tip
 
-Check our section on [primitives](../5.primitives/what-is.md) to learn more about them
+Check our section on [primitives](../2.build/5.primitives/what-is.md) to learn more about them
 
 :::

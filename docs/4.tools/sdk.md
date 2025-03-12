@@ -13,7 +13,7 @@ The NEAR SDK is a library that allow to develop smart contracts. Currently, ther
 
 :::tip Want to build a smart contract?
 
-The best place to start learning is our [QuickStart Guide](../2.build/2.smart-contracts/quickstart.md)
+The best place to start learning is our [QuickStart Guide](../smart-contracts/quickstart.md)
 
 :::
 
@@ -89,7 +89,7 @@ This is how a smart contract written in Rust and JavaScript using the NEAR SDK l
 
 :::tip
 
-Want to build a smart contract? Check our [QuickStart Guide](../2.build/2.smart-contracts/quickstart.md)
+Want to build a smart contract? Check our [QuickStart Guide](../smart-contracts/quickstart.md)
 
 :::
 
@@ -97,7 +97,7 @@ Want to build a smart contract? Check our [QuickStart Guide](../2.build/2.smart-
 
 ## 🎉 Ready to start developing?
 
-Start from our [Smart Contract QuickStart Guide](../2.build/2.smart-contracts/quickstart.md), and let it guide you through all our documentation on building smart contracts
+Start from our [Smart Contract QuickStart Guide](../smart-contracts/quickstart.md), and let it guide you through all our documentation on building smart contracts
 
 ---
 
@@ -107,7 +107,7 @@ We have a section dedicated to [tutorials and examples](../3.tutorials/examples/
 
 :::tip
 
-If you are new to smart contracts, we recommend you start with our [Smart Contract QuickStart Guide](../2.build/2.smart-contracts/quickstart.md) before moving to the examples
+If you are new to smart contracts, we recommend you start with our [Smart Contract QuickStart Guide](../smart-contracts/quickstart.md) before moving to the examples
 
 :::
 
@@ -122,6 +122,6 @@ If you need to find a specific function signature, or understand the SDK struct/
 
 :::tip
 
-If you are new to smart contracts, we recommend you start with our [Smart Contract QuickStart Guide](../2.build/2.smart-contracts/quickstart.md) before moving to the reference documentation
+If you are new to smart contracts, we recommend you start with our [Smart Contract QuickStart Guide](../smart-contracts/quickstart.md) before moving to the reference documentation
 
 :::

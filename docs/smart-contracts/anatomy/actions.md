@@ -232,7 +232,7 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 
 :::caution
 
-When you create an account from within a contract, it has no keys by default. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../../protocol/access-keys.md#locked-accounts).
+When you create an account from within a contract, it has no keys by default. If you don't explicitly [add keys](#add-keys) to it or [deploy a contract](#deploy-a-contract) on creation then it will be [locked](../../protocol/access-keys.md#locked-accounts).
 
 :::
 
@@ -346,7 +346,7 @@ If an account with a contract deployed does **not** have any access keys, this i
 
 ## Add Keys
 
-When you use actions to create a new account, the created account does not have any [access keys](../../../protocol/access-keys.md), meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
+When you use actions to create a new account, the created account does not have any [access keys](../../protocol/access-keys.md), meaning that it **cannot sign transactions** (e.g. to update its contract, delete itself, transfer money).
 
 There are two options for adding keys to the account:
 1. `add_access_key`: adds a key that can only call specific methods on a specified contract.
@@ -486,7 +486,7 @@ There are two scenarios in which you can use the `delete_account` action:
 </Tabs>
 
 :::warning Token Loss
-If the beneficiary account does not exist the funds will be [**dispersed among validators**](../../../protocol/network/token-loss.md).
+If the beneficiary account does not exist the funds will be [**dispersed among validators**](../../protocol/network/token-loss.md).
 :::
 
 :::warning Token Loss

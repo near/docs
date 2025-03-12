@@ -45,10 +45,10 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
           title="Smart Contracts"
           text="NEAR accounts can host small programs"
           links={{
-            "What is a Contract?": "/build/smart-contracts/what-is",
-            "Quickstart ✨": "/build/smart-contracts/quickstart",
-            "Contract's Anatomy": "/build/smart-contracts/anatomy/",
-            "Sandbox Testing": "/build/smart-contracts/testing/integration-test"
+            "What is a Contract?": "/smart-contracts/what-is",
+            "Quickstart ✨": "/smart-contracts/quickstart",
+            "Contract's Anatomy": "/smart-contracts/anatomy/",
+            "Sandbox Testing": "/smart-contracts/testing/integration-test"
           }}
     />
     <Card img={require("@site/static/docs/assets/welcome-pages/primitives-landing.png").default}

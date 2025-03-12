@@ -227,7 +227,7 @@ To interact with the contract through the console, you can use the following com
 ## Moving Forward
 
 A nice way to learn is by trying to expand a contract. Modify the cross contract example to use the [guest-book](guest-book.md)
-contract!. In this way, you can try to make a cross-contract call that attaches money. Remember to correctly [handle the callback](/build/smart-contracts/anatomy/crosscontract#callback-function),
+contract!. In this way, you can try to make a cross-contract call that attaches money. Remember to correctly [handle the callback](/smart-contracts/anatomy/crosscontract#callback-function),
 and to return the money to the user in case of error.
 
 ### Advanced Cross Contract Calls

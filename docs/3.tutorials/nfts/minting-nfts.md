@@ -18,7 +18,7 @@ Once the contract is deployed, you'll learn [how to mint](#minting-your-nfts) no
 
 To complete this tutorial successfully, you'll need:
 
-- [Rust toolchain](/build/smart-contracts/quickstart#prerequisites)
+- [Rust toolchain](/smart-contracts/quickstart#prerequisites)
 - [A NEAR account](#wallet)
 - [NEAR command-line interface](/tools/near-cli#installation) (`near-cli`)
 
@@ -144,7 +144,7 @@ cargo near build
 This will generate WASM binaries into your `res/` directory. This WASM file is the smart contract we'll be deploying onto the NEAR blockchain.
 
 :::tip
-If you run into errors make sure you have [Rust installed](/build/smart-contracts/quickstart#prerequisites) and are in the root directory of the NFT example.
+If you run into errors make sure you have [Rust installed](/smart-contracts/quickstart#prerequisites) and are in the root directory of the NFT example.
 :::
 
 ### Testing the contract {#testing-the-contract}
@@ -397,7 +397,7 @@ This basic example illustrates all the required steps to deploy an NFT smart con
 and start minting your own non-fungible tokens.
 
 Now that you're familiar with the process, you can check out our [NFT Example](0-intro.md) and learn more about the smart contract code and how you can transfer minted tokens to other accounts.
-Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
+Finally, if you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../smart-contracts/quickstart.md) is a great place to start.
 
 **_Happy minting!_** 🪙
 

@@ -12,13 +12,13 @@ In this _Zero to Hero_ series, you'll find a set of tutorials covering every asp
 
 To complete these tutorials successfully, you'll need:
 
-- [Rust](/build/smart-contracts/quickstart#prerequisites)
+- [Rust](/smart-contracts/quickstart#prerequisites)
 - [A NEAR wallet](https://testnet.mynearwallet.com)
 - [NEAR-CLI](/tools/near-cli#installation)
 - [cargo-near](https://github.com/near/cargo-near)
 
 :::info New to Rust?
-If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
+If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../smart-contracts/quickstart.md) is a great place to start.
 :::
 
 ---

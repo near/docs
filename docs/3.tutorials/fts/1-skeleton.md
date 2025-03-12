@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/codetabs"
 In this article, you'll learn about the basic architecture behind the FT contract that you'll develop while following this _"Zero to Hero"_ series. You'll discover the contract's layout and you'll see how the Rust files are structured in order to build a feature-complete smart contract.
 
 :::info New to Rust?
-If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
+If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../smart-contracts/quickstart.md) is a great place to start.
 :::
 
 ---

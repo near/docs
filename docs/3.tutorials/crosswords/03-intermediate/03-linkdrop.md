@@ -31,7 +31,7 @@ Notice the new account will end in `.testnet`. This is because the account `test
 There are two ways to create this subaccount:
 
 1. Use a full-access key for the account `testnet` to sign a transaction with the `CreateAccount` Action.
-2. In a smart contract deployed to the `testnet` account, call the `CreateAccount` Action, which is an async method that returns a Promise. (More info about writing a [`CreateAccount` Promise](../../../2.build/2.smart-contracts/anatomy/actions.md#create-a-sub-account))
+2. In a smart contract deployed to the `testnet` account, call the `CreateAccount` Action, which is an async method that returns a Promise. (More info about writing a [`CreateAccount` Promise](../../../smart-contracts/anatomy/actions.md#create-a-sub-account))
 
 (In the example below that uses NEAR CLI to create a new account, it's calling `CreateAccount` on the linkdrop contract that is deployed to the top level "near" account on mainnet.)
 

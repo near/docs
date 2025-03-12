@@ -422,7 +422,7 @@ This approach is more complex to do and also cannot be performed without restart
 
 ## Using Testnet
 
-NEAR Workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](../../../protocol/network/networks.md). Some reasons this might be helpful:
+NEAR Workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](../../protocol/network/networks.md). Some reasons this might be helpful:
 
 * Gives higher confidence that your contracts work as expected
 * You can test against deployed testnet contracts

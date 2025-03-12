@@ -14,7 +14,7 @@ You can find the skeleton contract in our [GitHub repository](https://github.com
 :::
 
 :::info New to Rust?
-If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../2.build/2.smart-contracts/quickstart.md) is a great place to start.
+If you are new to Rust and want to dive into smart contract development, our [Quick-start guide](../../smart-contracts/quickstart.md) is a great place to start.
 :::
 
 ---
