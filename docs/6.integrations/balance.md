@@ -128,7 +128,7 @@ Alternatively, you can view account balances by [querying `view_account`](/api/r
 }
 ```
 
-**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost the cost in NEAR could also be different. You can query the gas price for recent blocks using the [`gas_price` RPC endpoint](https://docs.near.org/api/rpc/setup#gas-price).
+**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost the cost in NEAR could also be different. You can query the gas price for recent blocks using the [`gas_price` RPC endpoint](/api/rpc/gas#gas-price).
 
 ---
 

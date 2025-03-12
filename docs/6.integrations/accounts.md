@@ -13,7 +13,7 @@ Please see the [documentation for accounts](/protocol/account-model) for basic i
 
 - For exchanges, NEAR supports [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) creation which allows the creation of accounts without paying for transactions.
 - You can create an implicit account by following the steps in [this guide](/integrations/implicit-accounts).
-- Accounts must have enough tokens to cover its storage which currently costs `0.0001 NEAR` per byte. This equates to a minimum balance of `0.00182 NEAR` for an account with one access key. You can query the live storage price using the [`protocol-config`](https://docs.near.org/api/rpc/setup#protocol-config) RPC endpoint. For more details on storage fees see [this section of the economics paper](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
+- Accounts must have enough tokens to cover its storage which currently costs `0.0001 NEAR` per byte. This equates to a minimum balance of `0.00182 NEAR` for an account with one access key. You can query the live storage price using the [`protocol-config`](/api/rpc/protocol#protocol-config) RPC endpoint. For more details on storage fees see [this section of the economics paper](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
 
 ## Transfer from Function Call {#transfer-from-function-call}
 

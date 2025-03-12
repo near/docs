@@ -13,9 +13,9 @@ In this article we're going to have a look at the same data flow, but in detail 
 
 You may be asking what was missing in the previous explanation. The short answer is: **Gas Refunds** or simply **Refunds**.
 
-If you don't know what **Gas** is, please [first read the article about Gas](https://docs.near.org/protocol/gas) from our docs.
+If you don't know what **Gas** is, please [first read the article about Gas](/protocol/gas) from our docs.
 
-As for *Refunds*, here's a quote from the [Gas](https://docs.near.org/protocol/gas) article:
+As for *Refunds*, here's a quote from the [Gas](/protocol/gas) article:
 
 > Attach extra gas; get refunded!
 >
@@ -25,7 +25,7 @@ As for *Refunds*, here's a quote from the [Gas](https://docs.near.org/protocol/g
 >
 > ...
 >
-> *From NEAR Protocol docs [Gas. Attach extra gas; get refunded!](https://docs.near.org/protocol/gas#attach-extra-gas-get-refunded)*
+> *From NEAR Protocol docs [Gas. Attach extra gas; get refunded!](/protocol/gas)*
 
 
 :::note What refunds mean in terms of data flow
@@ -75,7 +75,7 @@ A [Transaction](/data-infrastructure/lake-data-structures/transaction) signed by
 
 ![Transaction execution](/docs/flow/03-tx-outcome-receipt.png)
 
-The Receipt is already on the receiver's Shard, so it is put in the execution queue of the next [Block](/data-infrastructure/lake-data-structures/block). It is executed in the next Block, and the [ExecutionOutcome](/data-infrastructure/lake-data-structures/execution-outcome) result is a new Receipt with the refund to the initial sender, **alice.near**. 
+The Receipt is already on the receiver's Shard, so it is put in the execution queue of the next [Block](/data-infrastructure/lake-data-structures/block). It is executed in the next Block, and the [ExecutionOutcome](/data-infrastructure/lake-data-structures/execution-outcome) result is a new Receipt with the refund to the initial sender, **alice.near**.
 The Same rules apply to this Receipt, it is put into the execution queue and executed in the next Block.
 
 ![Complete scheme of Token transfer between the account from the same Shards](/docs/flow-token-transfer/02-same-shard-complete.png)

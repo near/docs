@@ -28,7 +28,7 @@ overflow-checks = true
 
 ## Use `require!` early
 
-Try to validate the input, context, state and access using `require!` before taking any actions. The earlier you panic, the more [gas](https://docs.near.org/protocol/gas) you will save for the caller.
+Try to validate the input, context, state and access using `require!` before taking any actions. The earlier you panic, the more [gas](/protocol/gas) you will save for the caller.
 
 ```rust
 #[near]

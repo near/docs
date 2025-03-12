@@ -51,7 +51,7 @@ As a user, if a dApp or wallet doesn't support RPC failover and the primary prov
 
 ## On NEAR.org RPC Deprecation
 
-Please read the following announcement: [Future of Pagoda Services](https://docs.near.org/blog/2024-08-13-pagoda-services).
+Please read the following announcement: [Future of Pagoda Services](/blog/2024-08-13-pagoda-services).
 
 > The Infrastructure Committee feels that Pagoda's fully-subsidized near.org RPC service is getting in the way of decentralization efforts and is preventing high-quality commercial RPC offerings from gaining traction. If a NEAR core team continues to support a free-to-use near.org RPC service, it will be required to gradually lower its rate limits over the coming months to prevent abuse. In light of this proposed change, high-traffic near.org RPC users should start making plans to switch to other RPC providers.
 

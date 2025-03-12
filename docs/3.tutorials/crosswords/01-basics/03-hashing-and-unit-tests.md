@@ -192,7 +192,7 @@ Here's a truncated snippet from a useful (though somewhat advanced) repository w
 We'll get into Actions later in this tutorial, but in the meantime here's a handy [reference from the spec](https://nomicon.io/RuntimeSpec/Actions.html).
 :::
 
-As you can from the info bubble above, we can batch [Deploy](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.deploy_contract) and [FunctionCall](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.function_call) Actions. This is exactly what we want to do for our crossword puzzle, and luckily, NEAR CLI has a [flag especially for this](https://docs.near.org/tools/near-cli#near-deploy).
+As you can from the info bubble above, we can batch [Deploy](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.deploy_contract) and [FunctionCall](https://docs.rs/near-sdk/3.1.0/near_sdk/struct.Promise.html#method.function_call) Actions. This is exactly what we want to do for our crossword puzzle, and luckily, NEAR CLI has a [flag especially for this](/tools/near-cli#deploy).
 
 Let's run this again with the handy `--initFunction` and `--initArgs` flags:
 

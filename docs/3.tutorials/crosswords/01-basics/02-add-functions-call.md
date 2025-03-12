@@ -33,7 +33,7 @@ Before moving on, let's talk about these changes and how to think about them, be
 const PUZZLE_NUMBER: u8 = 1;
 ```
 
-This is an in-memory value, meaning that when the smart contract is spun up and executed in the virtual machine, the value `1` is contained in the contract code. This differs from the next change, where a field is added to the struct containing the `#[near]` macro. The field `crossword_solution` has the type of `String` and, like any other fields added to this struct, the value will live in **persistent storage**. With NEAR, storage is "paid for" via the native NEAR token (Ⓝ). It is not "state rent" but storage staking, paid once, and returned when storage is deleted. This helps incentivize users to keep their state clean, allowing for a more healthy chain. Read more about [storage staking here](https://docs.near.org/protocol/storage/storage-staking).
+This is an in-memory value, meaning that when the smart contract is spun up and executed in the virtual machine, the value `1` is contained in the contract code. This differs from the next change, where a field is added to the struct containing the `#[near]` macro. The field `crossword_solution` has the type of `String` and, like any other fields added to this struct, the value will live in **persistent storage**. With NEAR, storage is "paid for" via the native NEAR token (Ⓝ). It is not "state rent" but storage staking, paid once, and returned when storage is deleted. This helps incentivize users to keep their state clean, allowing for a more healthy chain. Read more about [storage staking here](/protocol/storage/storage-staking).
 
 Let's now look at the three new functions:
 
@@ -43,7 +43,7 @@ pub fn get_puzzle_number(&self) -> u8 {
 }
 ```
 
-As is covered in the [function section of these docs](../../../smart-contracts/anatomy/functions.md), a "view-only" function will have open parenthesis around `&self` while "change methods" or mutable functions will have `&mut self`. In the function above, the `PUZZLE_NUMBER` is returned. A user may call this method using the proper RPC endpoint without signing any transaction, since it's read-only. Think of it like a GET request, but using RPC endpoints that are [documented here](https://docs.near.org/api/rpc/contracts#call-a-contract-function).
+As is covered in the [function section of these docs](../../../smart-contracts/anatomy/functions.md), a "view-only" function will have open parenthesis around `&self` while "change methods" or mutable functions will have `&mut self`. In the function above, the `PUZZLE_NUMBER` is returned. A user may call this method using the proper RPC endpoint without signing any transaction, since it's read-only. Think of it like a GET request, but using RPC endpoints that are [documented here](/api/rpc/contracts#call-a-contract-function).
 
 Mutable functions, on the other hand, require a signed transaction. The first example is a typical approach where the user supplies a parameter that's assigned to a field:
 
@@ -135,7 +135,7 @@ See this visualization where two keys belonging to `mike.near` are able to creat
 
 :::
 
-We won't get into top-level accounts or implicit accounts, but you may read more [about that here](https://docs.near.org/docs/concepts/account).
+We won't get into top-level accounts or implicit accounts, but you may read more [about that here](/protocol/account-model).
 
 Now that we have a key pair for our subaccount, we can deploy the contract to `testnet` and interact with it!
 
@@ -256,7 +256,7 @@ Next, we'll add a crossword solution as a string (later we'll do this in a bette
   </TabItem>
 </Tabs>
 
-Note that we used NEAR CLI's [`view` command](https://docs.near.org/docs/tools/near-cli#call), and didn't include an `--accountId` flag. As mentioned earlier, this is because we are not signing a transaction. This second method uses the NEAR CLI [`call` command](https://docs.near.org/docs/tools/near-cli#call) which does sign a transaction and requires the user to specify a NEAR account that will sign it, using the credentials files we looked at.
+Note that we used NEAR CLI's [`view` command](/tools/near-cli#call), and didn't include an `--accountId` flag. As mentioned earlier, this is because we are not signing a transaction. This second method uses the NEAR CLI [`call` command](/tools/near-cli#call) which does sign a transaction and requires the user to specify a NEAR account that will sign it, using the credentials files we looked at.
 
 The last method we have will check the argument against what is stored in state and write a log about whether the crossword solution is correct or incorrect.
 
@@ -358,9 +358,9 @@ You may hit an RPC endpoint corresponding to `view_state` and see for yourself. 
 
 ![Screenshot of a terminal screen showing a curl request to an RPC endpoint that returns state of a smart contract](/docs/assets/crosswords/rpc-api-view-state.png)
 
-More on this RPC endpoint in the [NEAR docs](https://docs.near.org/docs/api/rpc/contracts#view-contract-state).
+More on this RPC endpoint in the [NEAR docs](/api/rpc/contracts#view-contract-state).
 :::
 
-In this section, we saved the crossword solution as plain text, which is likely not a great idea if we want to hide the solution to players of this crossword puzzle. Even though we don't have a function called `show_solution` that returns the struct's `crossword_solution` field, the value is stored transparently in state. We won't get into viewing contract state at this moment, but know it's rather easy [and documented here](https://docs.near.org/docs/api/rpc/contracts#view-contract-state).
+In this section, we saved the crossword solution as plain text, which is likely not a great idea if we want to hide the solution to players of this crossword puzzle. Even though we don't have a function called `show_solution` that returns the struct's `crossword_solution` field, the value is stored transparently in state. We won't get into viewing contract state at this moment, but know it's rather easy [and documented here](/api/rpc/contracts#view-contract-state).
 
 The next section will explore hiding the answer from end users playing the crossword puzzle.

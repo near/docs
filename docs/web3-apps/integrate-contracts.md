@@ -271,7 +271,7 @@ The wallet-selector hook also exposes a method that can be used to send multiple
   </Language>
 </CodeTabs>
 
-Transactions can either be sent as multiple separate transactions simultaneously or as a batch transaction made up of actions where if one of the actions fails, they are all reverted. An example of both can be seen [here](https://docs.near.org/tutorials/examples/frontend-multiple-contracts#dispatching-multiple-transactions)
+Transactions can either be sent as multiple separate transactions simultaneously or as a batch transaction made up of actions where if one of the actions fails, they are all reverted. An example of both can be seen [here](/tutorials/examples/frontend-multiple-contracts#dispatching-multiple-transactions)
 
 ---
 ## Signing Messages

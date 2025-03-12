@@ -20,7 +20,7 @@ For storing data on-chain it's important to keep in mind the following:
 - There is a 4 MB limit on how much you can upload at once
 
 
-For example, if you want to store an NFT purely on-chain (rather than using IPFS or some other decentralized storage solution as mentioned below) you'll have almost an unlimited amount of storage but will have to pay 1 $NEAR per 100 KB of storage used (see [Storage Staking](https://docs.near.org/protocol/storage/storage-staking))
+For example, if you want to store an NFT purely on-chain (rather than using IPFS or some other decentralized storage solution as mentioned below) you'll have almost an unlimited amount of storage but will have to pay 1 $NEAR per 100 KB of storage used (see [Storage Staking](/protocol/storage/storage-staking))
 
 Users will be limited to 4MB per contract call upload due to `MAX_GAS` constraints. The maximum amount of gas one can attach to a given `functionCall` is 300TGas.
 
