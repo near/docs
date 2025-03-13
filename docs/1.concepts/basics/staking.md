@@ -280,6 +280,16 @@ To un-delegate the tokens:
 near staking delegation <user-account.near> unstake '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
 ```
 
+:::info
+
+If you want to unstake all tokens, you can use the `unstake-all` command:
+
+```sh
+near staking delegation <user-account.near> unstake-all <my_validator> network-config mainnet sign-with-keychain
+```
+
+:::
+
   </TabItem>
   <TabItem value="Short">
 
@@ -338,6 +348,16 @@ If the Validator's response is `true`, then your tokens are ready for the last s
 ```sh
 near staking delegation <user-account.near> withdraw '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
 ```
+
+:::info
+
+If you want to withdraw all available tokens, you can use the `withdraw-all` command:
+
+```sh
+near staking delegation <user-account.near> withdraw-all <my_validator> network-config mainnet sign-with-keychain
+```
+
+:::
 
   </TabItem>
   <TabItem value="Short">
