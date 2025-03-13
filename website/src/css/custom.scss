@@ -475,43 +475,52 @@ div[class^="announcementBar_"] {
     margin-top: 10px !important;
 }
 
-.floating-chat-container {
+
+.chat-toggle-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     position: fixed;
     bottom: 20px;
-    right: 80px;
+    right: 20px;
+    display: flex;
+    font-size: 36px;
+    justify-content: center;
+    align-items: center;
+    background-color: #343a40;
+    color: white;
+    cursor: pointer;
+    border: none;
+    i {
+        font-size: 1.5rem;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+        transition: transform 0.2s ease;
+    }
+}
+
+.floating-chat-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #00000066;
+    align-content: center;
+
     z-index: 1000;
 
     .card:hover{
         transform: translateY(0);
     }
 
-    .chat-toggle-button {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #343a40;
-        color: white;
-        cursor: pointer;
-        border: none;
-        i {
-            font-size: 1.5rem;
-        }
-
-        &:hover {
-            transform: scale(1.05);
-            transition: transform 0.2s ease;
-        }
-    }
-
     .chat-card {
-        margin: 0;
-        padding: 0;
-        width: 450px;
-        height: 500px;
+        margin: auto;
+        width: 70vw;
+        height: 60vh;
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -614,7 +623,7 @@ div[class^="announcementBar_"] {
 
                     &:focus {
                         box-shadow: none;
-                        border-color: #007bff; 
+                        border-color: none; 
                     }
                 }
 

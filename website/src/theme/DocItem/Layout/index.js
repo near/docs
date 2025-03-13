@@ -15,8 +15,7 @@ import styles from './styles.module.css';
 
 import { HelpComponent } from '../../../components/helpcomponent';
 import { FeedbackComponent } from '../../../components/FeedbackComponent';
-import ChatIA from '../../../components/ChatIA';
-import FloatingChat from '../../../components/FloatingChat';
+import AIChat from '../../../components/AIChat';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -54,8 +53,7 @@ export default function DocItemLayout({ children }) {
           </article>
           <DocItemPaginator />
           <FeedbackComponent />
-          <ChatIA/>
-          <FloatingChat/>
+          <AIChat/>
           <HelpComponent />
           <DocItemFooter />
         </div>
