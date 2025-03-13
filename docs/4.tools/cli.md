@@ -541,3 +541,136 @@ This will allow you to change or modify the network connections for your CLI.
 :::important
 We provide examples only of the most used commands. If you want to explore all options provided by `near-cli` use [the interactive mode](#interactive-mode).
 :::
+
+---
+
+## Validators
+
+You can use the following commands to interact with the blockchain and view validator stats. There are three reports used to monitor validator status:
+
+- [Proposals](#proposals)
+- [Current validators](#current-validators)
+- [Next validators](#next-validators)
+
+:::tip
+To use these commands, you **must** install the CLI [validator extension](#validator-extension).
+:::
+
+### Validator Extension
+
+If you want to interact with [NEAR Validators](https://pages.near.org/papers/economics-in-sharded-blockchain/#validators) from command line, you can install the [NEAR Validator CLI Extension](https://github.com/near-cli-rs/near-validator-cli-rs):
+
+<Tabs>
+  <TabItem value="npm">
+
+  ```bash
+  npm install -g near-validator
+  ```
+  </TabItem>
+  <TabItem value="Cargo">
+
+  ```bash
+  $ cargo install near-validator
+  ```
+  </TabItem>
+  <TabItem value="Mac and Linux (binaries)">
+
+  ```bash
+  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near-cli-rs/near-validator-cli-rs/releases/latest/download/near-validator-installer.sh | sh
+  ```
+  </TabItem>
+  <TabItem value="Windows (binaries)">
+
+  ```bash
+  irm https://github.com/near-cli-rs/near-validator-cli-rs/releases/latest/download/near-validator-installer.ps1 | iex
+  ```
+  </TabItem>
+</Tabs>
+
+### Proposals
+
+A proposal by a validator indicates they would like to enter the validator set, in order for a proposal to be accepted it must meet the minimum seat price.
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator proposals network-config mainnet
+```
+
+  </TabItem>
+</Tabs>
+
+### Current Validators
+
+This shows a list of active validators in the current epoch, the number of blocks produced, number of blocks expected, and online rate. Used to monitor if a validator is having issues.
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator validators network-config mainnet now
+```
+
+  </TabItem>
+</Tabs>
+
+### Next Validators
+
+This shows validators whose proposal was accepted one epoch ago, and that will enter the validator set in the next epoch.
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator validators network-config mainnet next
+```
+
+  </TabItem>
+</Tabs>
+
+### Staking
+
+For validators, there's also an option to stake NEAR tokens without deploying a staking pool smart contract.
+
+#### View validator stake
+
+To view the validator's stake on the last block, you need to enter in the terminal command line:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator staking view-stake examples.testnet network-config testnet now
+```
+
+  </TabItem>
+</Tabs>
+
+#### Stake directly without a staking pool
+
+To stake the amount you must enter in the terminal command line:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator staking stake-proposal examples.testnet ed25519:AiEo5xepXjY7ChihZJ6AsfoDAaUowhPgvQp997qnFuRP '1500 NEAR' network-config testnet sign-with-keychain send
+```
+
+  </TabItem>
+</Tabs>
+
+#### Unstake directly without a staking pool
+
+To unstake you must enter in the terminal command line:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near-validator staking unstake-proposal examples.testnet ed25519:AiEo5xepXjY7ChihZJ6AsfoDAaUowhPgvQp997qnFuRP network-config testnet sign-with-keychain send
+```
+
+  </TabItem>
+</Tabs>
