@@ -45,37 +45,6 @@ The NEAR [Command Line Interface](https://github.com/near/near-cli-rs) (CLI) is 
   </TabItem>
 </Tabs>
 
-### Validator Extension
-
-If you want to interact with [NEAR Validators](https://pages.near.org/papers/economics-in-sharded-blockchain/#validators) from command line, you can also install the optional [NEAR Validator CLI Extension](https://github.com/near-cli-rs/near-validator-cli-rs):
-
-<Tabs>
-  <TabItem value="npm">
-
-  ```bash
-  npm install -g near-validator
-  ```
-  </TabItem>
-  <TabItem value="Cargo">
-
-  ```bash
-  $ cargo install near-validator
-  ```
-  </TabItem>
-  <TabItem value="Mac and Linux (binaries)">
-
-  ```bash
-  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near-cli-rs/near-validator-cli-rs/releases/latest/download/near-validator-installer.sh | sh
-  ```
-  </TabItem>
-  <TabItem value="Windows (binaries)">
-
-  ```bash
-  irm https://github.com/near-cli-rs/near-validator-cli-rs/releases/latest/download/near-validator-installer.ps1 | iex
-  ```
-  </TabItem>
-</Tabs>
-
 ---
 
 ## Configuration file
@@ -577,15 +546,46 @@ We provide examples only of the most used commands. If you want to explore all o
 
 ## Validators
 
-:::tip
-To use these commands, you **must** install the CLI [validator extension](#validator-extension).
-:::
-
 You can use the following commands to interact with the blockchain and view validator stats. There are three reports used to monitor validator status:
 
 - [Proposals](#proposals)
 - [Current validators](#current-validators)
 - [Next validators](#next-validators)
+
+:::tip
+To use these commands, you **must** install the CLI [validator extension](#validator-extension).
+:::
+
+### Validator Extension
+
+If you want to interact with [NEAR Validators](https://pages.near.org/papers/economics-in-sharded-blockchain/#validators) from command line, you can install the [NEAR Validator CLI Extension](https://github.com/near-cli-rs/near-validator-cli-rs):
+
+<Tabs>
+  <TabItem value="npm">
+
+  ```bash
+  npm install -g near-validator
+  ```
+  </TabItem>
+  <TabItem value="Cargo">
+
+  ```bash
+  $ cargo install near-validator
+  ```
+  </TabItem>
+  <TabItem value="Mac and Linux (binaries)">
+
+  ```bash
+  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near-cli-rs/near-validator-cli-rs/releases/latest/download/near-validator-installer.sh | sh
+  ```
+  </TabItem>
+  <TabItem value="Windows (binaries)">
+
+  ```bash
+  irm https://github.com/near-cli-rs/near-validator-cli-rs/releases/latest/download/near-validator-installer.ps1 | iex
+  ```
+  </TabItem>
+</Tabs>
 
 ### Proposals
 
