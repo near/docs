@@ -1,6 +1,6 @@
 const sidebar = {
   "build": [
-    "build/welcome",
+    "index",
     {
       "type": "html",
       "value": "<hr/>"
