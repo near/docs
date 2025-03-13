@@ -33,11 +33,11 @@ export default function NotFoundContent({ className }) {
                     <h3>Understanding NEAR</h3>
                     Learn about NEAR and how it works
                     <ul className='margin-vert--sm'>
-                      <a href="/concepts/basics/protocol"><li>What is NEAR?</li></a>
-                      <a href="/concepts/protocol/account-id"><li>Named Accounts</li></a>
-                      <a href="/concepts/protocol/access-keys"><li>Access Keys</li></a>
-                      <a href="/concepts/protocol/transactions"><li>Transactions</li></a>
-                      <a href="/concepts/protocol/gas"><li>Understanding Gas</li></a>
+                      <a href="/protocol/basics"><li>What is NEAR?</li></a>
+                      <a href="/protocol/account-id"><li>Named Accounts</li></a>
+                      <a href="/protocol/access-keys"><li>Access Keys</li></a>
+                      <a href="/protocol/transactions"><li>Transactions</li></a>
+                      <a href="/protocol/gas"><li>Understanding Gas</li></a>
                     </ul>
                   </div>
                 </div>
@@ -51,13 +51,13 @@ export default function NotFoundContent({ className }) {
                     <h3>Build</h3>
                     Build awesome applications on NEAR
                     <ul className='margin-vert--sm'>
-                      <a href="/build/smart-contracts/what-is"><li>Smart Contracts</li></a>
-                      <a href="/build/web3-apps/what-is"><li>Web3 Applications</li></a>
-                      <a href="/build/chain-abstraction/meta-transactions"><li>Relayers</li></a>
-                      <a href="/build/chain-abstraction/chain-signatures"><li>Multi-Chain Signatures</li></a>
-                      <a href="/build/primitives/what-is"><li>Primitives (FT, NFT, ...)</li></a>
-                      <a href="/build/data-infrastructure/what-is"><li>Indexers & Data Solutions</li></a>
-                      <a href="/build/chain-abstraction/data-availability"><li>Data Availability</li></a>
+                      <a href="/smart-contracts/what-is"><li>Smart Contracts</li></a>
+                      <a href="/web3-apps/what-is"><li>Web3 Applications</li></a>
+                      <a href="/chain-abstraction/meta-transactions"><li>Relayers</li></a>
+                      <a href="/chain-abstraction/chain-signatures"><li>Multi-Chain Signatures</li></a>
+                      <a href="/primitives/what-is"><li>Primitives (FT, NFT, ...)</li></a>
+                      <a href="/data-infrastructure/what-is"><li>Indexers & Data Solutions</li></a>
+                      <a href="/chain-abstraction/data-availability"><li>Data Availability</li></a>
                     </ul>
                   </div>
                 </div>
