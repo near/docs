@@ -54,6 +54,7 @@
     "react-bootstrap-typeahead": "^6.3.2",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
+    "react-markdown": "^10.1.0",
     "react-monaco-editor": "^0.54.0",
     "sass": "^1.69.5",
     "url": "^0.11.3"
