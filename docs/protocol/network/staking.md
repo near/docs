@@ -53,6 +53,13 @@ Before delegating, you need to choose a validator (a node that participates in s
 Once you select a validator and the stake transaction is confirmed, your tokens are delegated to the staking pool.
 You will start earning staking rewards after the next epoch (approximately 12 hours).
 
+:::info Delegation without a staking pool
+
+For validators, there's also an option to stake NEAR tokens without deploying a staking pool smart contract.
+Check [this section](../../4.tools/cli.md#staking) to learn how to stake using the [`near-validator`](../../4.tools/cli.md#validator-extension) CLI.
+
+:::
+
 ### Selecting a Staking Pool
 
 Use [NearBlocks](https://nearblocks.io/node-explorer), [Pikespeak](https://pikespeak.ai/validators/overview) or [Near Staking](https://near-staking.com/) to find a validator and their staking pool.
@@ -66,27 +73,62 @@ Look for validators with a good track record, uptime, and reasonable commission 
 
 :::
 
+If you prefer, you can get the list of current validators by using the [`near-validator`](../../4.tools/cli.md#validator-extension) CLI:
+
+```sh
+near-validator validators network-config mainnet now
+```
+
 ### Staking using CLI
 
 Once you have chosen a validator you want to delegate your tokens to, follow these steps to stake them using the NEAR CLI:
 
 1. Connect your wallet to the CLI and ensure you have NEAR tokens to delegate.
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near account import-account using-web-wallet network-config mainnet
+```
+
+  </TabItem>
+  <TabItem value="Short">
+
 ```sh
 near login
 ```
 
-2. Deposit tokens to the `<my_validator>` staking pool:
+  </TabItem>
+</Tabs>
+
+
+2. Deposit and stake tokens to the `<my_validator>` staking pool:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
 
 ```sh
-near call <my_validator> deposit '{}' --accountId <user-account.near> --amount 100
+near staking delegation <user-account.near> deposit-and-stake '100 NEAR' <my_validator> network-config mainnet sign-with-keychain
 ```
 
-3. Stake the deposited tokens by calling the `stake` method:
+  </TabItem>
+  <TabItem value="Short">
+  
+Deposit the tokens to the staking pool:
+
+```sh
+near call <my_validator> deposit '{}' --accountId <user-account.near> --deposit 100
+```
+
+Stake the deposited tokens by calling the `stake` method:
 
 ```sh
 near call <my_validator> stake '{"amount": "100000000000000000000000000"}' --accountId <user-account.near>
 ```
+
+  </TabItem>
+</Tabs>
 
 :::tip Interactive CLI
 
@@ -98,13 +140,26 @@ near staking delegation
 
 :::
 
-4. Confirm Delegation:
+3. Confirm Delegation:
 
 Once the transaction is confirmed, your tokens are delegated to the staking pool.
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+```
+
+  </TabItem>
+  <TabItem value="Short">
 
 ```sh
 near view <my_validator> get_account_staked_balance '{"account_id": "<user-account.near>"}'
 ```
+
+  </TabItem>
+</Tabs>
 
 :::info Using a wallet to check your staked tokens
 
@@ -121,17 +176,43 @@ The rewards are typically distributed periodically, and you will be able to see 
 
 To check your total balance on the `<my_validator>` pool:
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+```
+
+  </TabItem>
+  <TabItem value="Short">
+
 ```sh
 near view <my_validator> get_account_total_balance '{"account_id": "<user-account.near>"}'
 ```
+
+  </TabItem>
+</Tabs>
 
 #### User staked balance
 
 To check your staked balance on the `<my_validator>` pool:
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+```
+
+  </TabItem>
+  <TabItem value="Short">
+
 ```sh
 near view <my_validator> get_account_staked_balance '{"account_id": "<user-account.near>"}'
 ```
+
+  </TabItem>
+</Tabs>
 
 <details>
 <summary>Staking pool balances</summary>
@@ -181,29 +262,101 @@ To un-delegate the tokens:
 
 1. First execute the `unstake` method on the `<my_validator>` contract:
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation <user-account.near> unstake '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
+```
+
+:::info
+
+If you want to unstake all tokens, you can use the `unstake-all` command:
+
+```sh
+near staking delegation <user-account.near> unstake-all <my_validator> network-config mainnet sign-with-keychain
+```
+
+:::
+
+  </TabItem>
+  <TabItem value="Short">
+
 ```sh
 near call <my_validator> unstake '{"amount": "100000000000000000000000000"}' --accountId <user-account.near>
 ```
 
+  </TabItem>
+</Tabs>
+
 2. Check the unstaked balance for your `<user-account.near>` account:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+```
+
+  </TabItem>
+  <TabItem value="Short">
 
 ```sh
 near view <my_validator> get_account_unstaked_balance '{"account_id": "<user-account.near>"}'
 ```
 
+  </TabItem>
+</Tabs>
+
 3. After 4 epochs, check if you can withdraw:
+
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near contract call-function as-read-only <my_validator> is_account_unstaked_balance_available json-args '{"account_id": "<user-account.near>"}' network-config mainnet now
+```
+
+  </TabItem>
+  <TabItem value="Short">
 
 ```sh
 near view <my_validator> is_account_unstaked_balance_available '{"account_id": "<user-account.near>"}'
 ```
 
+  </TabItem>
+</Tabs>
+
 If the Validator's response is `true`, then your tokens are ready for the last step.
 
 4. Finally, withdraw the unstaked tokens:
 
+<Tabs groupId="cli-commands">
+  <TabItem value="Full">
+
+```sh
+near staking delegation <user-account.near> withdraw '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
+```
+
+:::info
+
+If you want to withdraw all available tokens, you can use the `withdraw-all` command:
+
+```sh
+near staking delegation <user-account.near> withdraw-all <my_validator> network-config mainnet sign-with-keychain
+```
+
+:::
+
+  </TabItem>
+  <TabItem value="Short">
+
 ```sh
 near call <my_validator> withdraw '{"amount": "100000000000000000000000000"}' --accountId <user-account.near>
 ```
+
+  </TabItem>
+</Tabs>
 
 ---
 
