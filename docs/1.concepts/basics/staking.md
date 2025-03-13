@@ -103,36 +103,25 @@ near login
 </Tabs>
 
 
-2. Deposit tokens to the `<my_validator>` staking pool:
+2. Deposit and stake tokens to the `<my_validator>` staking pool:
 
 <Tabs groupId="cli-commands">
   <TabItem value="Full">
 
 ```sh
-near contract call-function as-transaction <my_validator> deposit json-args {} prepaid-gas '30.0 Tgas' attached-deposit '100 NEAR' sign-as <user-account.near> network-config testnet sign-with-keychain send
+near staking delegation <user-account.near> deposit-and-stake '100 NEAR' <my_validator> network-config mainnet sign-with-keychain
 ```
 
   </TabItem>
   <TabItem value="Short">
+  
+Deposit the tokens to the staking pool:
 
 ```sh
 near call <my_validator> deposit '{}' --accountId <user-account.near> --deposit 100
 ```
 
-  </TabItem>
-</Tabs>
-
-3. Stake the deposited tokens by calling the `stake` method:
-
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
-```sh
-near staking delegation <user-account.near> stake '100 NEAR' <my_validator> network-config mainnet sign-with-keychain
-```
-
-  </TabItem>
-  <TabItem value="Short">
+Stake the deposited tokens by calling the `stake` method:
 
 ```sh
 near call <my_validator> stake '{"amount": "100000000000000000000000000"}' --accountId <user-account.near>
@@ -151,7 +140,7 @@ near staking delegation
 
 :::
 
-4. Confirm Delegation:
+3. Confirm Delegation:
 
 Once the transaction is confirmed, your tokens are delegated to the staking pool.
 
