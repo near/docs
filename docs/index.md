@@ -15,7 +15,7 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
           title="NEAR Protocol"
           text="Learn what NEAR is and how it works"
           links={{
-            "What is NEAR?": "/protocol/network/protocol",
+            "What is NEAR?": "/protocol/basics",
             "Named Accounts": "/protocol/account-id",
             "Access Keys": "/protocol/access-keys",
             "Transactions": "/protocol/transactions"
