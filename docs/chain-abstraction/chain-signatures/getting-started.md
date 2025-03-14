@@ -85,12 +85,12 @@ Chain Signatures can be used to build a wide range of applications that leverage
 ## How to Get Started?
 
 1. **Familiarize Yourself with Chain Signatures:**
-   * Understand the [basics of Chain Signatures](https://docs.near.org/concepts/abstraction/chain-signatures) and how they simplify blockchain interactions.
+   * Understand the [basics of Chain Signatures](/chain-abstraction/chain-signatures) and how they simplify blockchain interactions.
    * Review the technical [explainer](https://near.org/blog/unlocking-web3-usability-with-account-aggregation).
 2. **Explore the Use Cases:**
    * Review [examples of use cases for Chain Signatures](https://pages.near.org/blog/unlocking-multichain-web3-with-near-chain-signatures/), such as Multichain DAO, Multichain NFT Minter, and Bitcoin Runes Airdrop.
 3. **Access Resources and Documentation:**
-   * Visit the [Chain Signatures documentation](https://docs.near.org/build/chain-abstraction/chain-signatures) for detailed technical information and code snippets.
+   * Visit the [Chain Signatures documentation](/chain-abstraction/chain-signatures) for detailed technical information and code snippets.
    * Check out the [Linktree for Chain Signatures](https://linktr.ee/chainsignatures) for various resources, including demos and tutorials.
 4. **Try the Demos:**
    * Use the [command-line-based demo](https://github.com/near-examples/chainsig-script) to derive accounts and send transactions on Bitcoin, Ethereum, Doge, and Ripple.

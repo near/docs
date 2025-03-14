@@ -133,7 +133,7 @@ function Footer() {
             <div className="row">
             <div className="col sm:w-1/3 mt-50">
                 <h2 className="text-24 font-black text-blue-light">
-                  <a href="/concepts/basics/protocol">
+                  <a href="/protocol/basics">
                     Concepts
                   </a>
                 </h2>
@@ -142,37 +142,37 @@ function Footer() {
                   className="footer-menu list-reset mt-5 text-16 md:text-16"
                 >
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/basics/protocol">
+                    <a href="/protocol/basics">
                       What is Near?
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/protocol/account-model">
+                    <a href="/protocol/account-model">
                       Accounts
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/protocol/transactions">
+                    <a href="/protocol/transactions">
                       Transactions
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/data-flow/near-data-flow">
+                    <a href="/protocol/data-flow/near-data-flow">
                       Data Flow
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/basics/tokens">
+                    <a href="/protocol/network/tokens">
                       Token
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/storage/storage-staking">
+                    <a href="/protocol/storage/storage-staking">
                       Storage
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/basics/validators">
+                    <a href="/protocol/network/validators">
                       Validators
                     </a>
                   </li>
@@ -182,12 +182,12 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/data-flow/near-data-flow">
+                    <a href="/protocol/data-flow/near-data-flow">
                       Data on Blockchain
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/concepts/basics/runtime">
+                    <a href="/protocol/network/runtime">
                       Runtime
                     </a>
                   </li>
@@ -195,7 +195,7 @@ function Footer() {
               </div>
               <div className="col sm:w-1/3 mt-50">
                 <h2 className="text-24 font-black text-blue-light">
-                  <a href="/build/smart-contracts/quickstart">
+                  <a href="/smart-contracts/quickstart">
                     Build
                   </a>
                 </h2>
@@ -209,17 +209,17 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/smart-contracts/what-is">
+                    <a href="/smart-contracts/what-is">
                       Smart Contracts
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/web3-apps/what-is">
+                    <a href="/web3-apps/what-is">
                       Web3 Apps
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/primitives/what-is">
+                    <a href="/primitives/what-is">
                       Primitives
                     </a>
                   </li>
@@ -229,7 +229,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/data-infrastructure/what-is">
+                    <a href="/data-infrastructure/what-is">
                       Data Infrastructure
                     </a>
                   </li>
@@ -261,7 +261,7 @@ function Footer() {
                     </a>
                   </li>
                   <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-2045">
-                    <a href="/build/data-infrastructure/lake-framework/near-lake-state-changes-indexer">
+                    <a href="/data-infrastructure/lake-framework/near-lake-state-changes-indexer">
                       Indexers
                     </a>
                   </li>
