@@ -3,6 +3,7 @@ id: types
 title: SDK Types
 hide_table_of_contents: true
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
@@ -41,7 +42,7 @@ Lets discuss which types smart contracts use to input and output data, as well a
 
 </Block>
 
-<Block highlights='{"python":"6,9,12,15"}' fname="hello-near">
+<Block highlights='{"python":"11,16"}' fname="hello-near">
 
     ### Native Types
     Smart contracts can receive, store and return data using the following Python types:
@@ -79,7 +80,7 @@ Python's `int` type has unlimited precision, so it can handle large integers (li
 
 </Block>
 
-<Block highlights='{"js":"3-6", "rust": "6-9", "python": "5-7"}' fname="auction">
+<Block highlights='{"js":"3-6", "rust": "6-9", "python": "10-13"}' fname="auction">
 
     ### Complex Objects
     Smart contracts can store and return complex objects
@@ -97,11 +98,11 @@ Python's `int` type has unlimited precision, so it can handle large integers (li
 
 </Block>
 
-<Block highlights='{"python": "18,19"}' fname="auction">
+<Block highlights='{"python": "7,14,17,20"}' fname="auction">
 
     #### Serialization
     Python objects are automatically serialized and deserialized using JSON for input/output and Pickle for internal storage.
-    
+
     Complex nested objects like lists and dictionaries can be used directly without additional configuration.
 
 </Block>
@@ -124,27 +125,27 @@ Python's `int` type has unlimited precision, so it can handle large integers (li
 
 </Block>
 
-<Block highlights='{"python": "10,27"}' fname="auction">
+<Block highlights='{"python": ""}' fname="auction">
 
     ### Handling Tokens
-    `$NEAR` tokens are represented as integers in Python, with values in `yoctoNEAR`. 
+    `$NEAR` tokens are represented as integers in Python, with values in `yoctoNEAR`.
     The `near_sdk_py.constants` module provides `ONE_NEAR` and `ONE_TGAS` constants.
 
     **Note:** 1 NEAR = 10^24 yoctoNEAR
 
 </Block>
 
-<Block highlights='{"js": "4,29", "rust": "7,46", "python": "22,25"}' fname="auction">
+<Block highlights='{"js": "4,29", "rust": "7,46", "python": ""}' fname="auction">
 
     ### Account
     The SDK exposes a special type to handle NEAR Accounts, which automatically checks if the account address is valid
 
 </Block>
 
-<Block highlights='{"python": "22,25"}' fname="auction">
+<Block highlights='{"python": ""}' fname="auction">
 
     ### Account IDs
-    In Python, NEAR account IDs are represented as `str` types. The SDK performs validation 
+    In Python, NEAR account IDs are represented as `str` types. The SDK performs validation
     when account IDs are used in contract calls or cross-contract interactions.
 
 </Block>
@@ -157,26 +158,7 @@ Python's `int` type has unlimited precision, so it can handle large integers (li
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
     start="2" end="32" />
 
-<File language="python" fname="hello-near">
-# Import the necessary components from the NEAR SDK
-from near_sdk_py import view, call, init
-
-class HelloNear:
-    def __init__(self):
-        # Initialize state with default greeting
-        self.greeting = "Hello"
-    
-    @view
-    def get_greeting(self):
-        """Returns the current greeting"""
-        return self.greeting
-    
-    @call
-    def set_greeting(self, message):
-        """Sets a new greeting"""
-        self.greeting = message
-        return self.greeting
-</File>
+<File language="python" fname="hello-near" url="https://github.com/r-near/near-py-examples/blob/main/hello-near.py" start="2" end="18"></File>
 
 <File language="js" fname="auction"
     url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
@@ -185,52 +167,6 @@ class HelloNear:
 <File language="rust" fname="auction"
     url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
     start="2" end="84" />
-
-<File language="python" fname="auction">
-from near_sdk_py import view, call, init, Context
-from near_sdk_py.constants import ONE_NEAR
-
-class Auction:
-    def __init__(self):
-        # Initialize state variables
-        self.auction_end = 0  # Timestamp when auction ends
-        self.highest_bid = {
-            "account_id": "",
-            "amount": 0
-        }
-    
-    @init
-    def initialize(self, duration_minutes):
-        """Initialize the auction with a duration in minutes"""
-        current_time_ms = Context.block_timestamp()
-        self.auction_end = current_time_ms + (duration_minutes * 60 * 1000)
-        return {"auction_end": self.auction_end}
-    
-    @call
-    def place_bid(self):
-        """Places a bid using the attached deposit"""
-        # Get the caller's account ID
-        account_id = Context.predecessor_account_id()
-        
-        # Get the attached deposit in yoctoNEAR
-        deposit = Context.attached_deposit()
-        
-        # Check if auction has ended
-        current_time = Context.block_timestamp()
-        if current_time > self.auction_end:
-            raise Exception("Auction has ended")
-        
-        # Check if bid is higher than current highest bid
-        if deposit <= self.highest_bid["amount"]:
-            raise Exception("Bid is not higher than current highest bid")
-        
-        # Set the new highest bid
-        self.highest_bid = {
-            "account_id": account_id,
-            "amount": deposit
-        }
-        
-        return self.highest_bid
-</File>
+<File language="python" fname="auction" url="https://github.com/r-near/near-py-examples/blob/main/auction.py" start="2" end="122"></File>
 
 </ExplainCode>
