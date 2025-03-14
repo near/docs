@@ -3,6 +3,7 @@ id: anatomy
 title: Basic Anatomy
 hide_table_of_contents: true
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
@@ -12,7 +13,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 <ExplainCode languages="js,rust,python" >
 
-<Block highlights='{"js": "1", "rust": "1", "python": "1-2"}' fname="hello-near">
+<Block highlights='{"js": "1", "rust": "1", "python": "1"}' fname="hello-near">
 
     ### Importing the SDK
     All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment.md), [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more.
@@ -21,7 +22,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "5-22", "rust":"5-7,20-31", "python": "5-17"}' fname="hello-near">
+<Block highlights='{"js": "5-22", "rust":"5-7,20-31", "python": "5-19"}' fname="hello-near">
 
     ### Contract's Main Structure
     The contract is described through a structure:
@@ -33,7 +34,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 <Block highlights='{"js": "3"}' fname="hello-near">
 
     ### Contract Class Decorator
-    
+
     Note that the contract's class is decorated with `@NearBindgen`. This decorator tells the SDK which class defines the contract, so it knows:
     1. What to fetch from storage when the contract is loaded
     2. What to store when the contract is done executing
@@ -44,12 +45,12 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"python": "5"}' fname="hello-near">
+<Block highlights='{"python": "4"}' fname="hello-near">
 
     ### Python Class Structure
-    
+
     In Python, we use a class to define our contract. Unlike JavaScript or Rust, there isn't a specific decorator for the class itself. Instead, each method that should be exposed to the blockchain is decorated with the appropriate decorator (`@view`, `@call`, or `@init`).
-    
+
     The contract's state is managed through instance variables and can be persisted using the Storage API or collections.
 
 </Block>
@@ -57,9 +58,9 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 <Block highlights='{"rust": "4,19"}' fname="hello-near">
 
     ### Contract Struct Macro
-    
+
     Note that the contract's struct definition and the implementation are decorated with macros
-    
+
     The `#[near(contract_state)]` macro tell the SDK that this structure defines the contract's state, so it knows:
     1. What to fetch from storage when the contract is loaded
     2. What to store when the contract is done executing
@@ -86,11 +87,11 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "5", "rust": "6,10-16", "python": "6-7"}' fname="hello-near">
+<Block highlights='{"js": "5", "rust": "6,10-16", "python": "7-8"}' fname="hello-near">
 
     ### Storage (State)
     We call the data stored in the contract [the contract's state](./storage.md).
-    
+
     In our Hello World example, the contract stores a single string (`greeting`), and the state starts initialized with the default value `"Hello"`.
 
     **Note:** We will cover more about the contract's state in the [state section](./storage.md).
@@ -103,16 +104,16 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"python": "15-17"}' fname="hello-near">
+<Block highlights='{"python": "5-5,10-10,15-15"}' fname="hello-near">
 
     ### Method Decorators
-    
+
     In Python, contract methods are decorated with `@view`, `@call`, or `@init` to define how they can be accessed.
     These decorators handle input parsing and serializing return values automatically.
 
 </Block>
 
-<Block highlights='{"js": "12-14", "rust": "22-24", "python": "10-11"}' fname="hello-near">
+<Block highlights='{"js": "12-14", "rust": "22-24", "python": "10-13"}' fname="hello-near">
 
     ### Read Only Functions
     Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account.
@@ -121,7 +122,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "17-20", "rust": "27-30", "python": "13-14"}' fname="hello-near">
+<Block highlights='{"js": "17-20", "rust": "27-30", "python": "15-19"}' fname="hello-near">
 
     ### State Mutating Functions
     Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network.
