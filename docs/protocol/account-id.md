@@ -36,7 +36,7 @@ In NEAR, you can delete the private key of an implicit account, which effectivel
 
 <summary> 🧑‍💻 Technical: How to obtain a key-pair  </summary>
 
-The simplest way to obtain a public / private key that represents an account is using the [NEAR CLI](../4.tools/cli.md)
+The simplest way to obtain a public / private key that represents an account is using the [NEAR CLI](../tools/cli.md)
 
 ```bash
 near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
@@ -88,7 +88,7 @@ Named accounts are created by calling the `create_account` method of the network
   </TabItem>
 </Tabs>
 
-We abstract this process in the [NEAR CLI](../4.tools/cli.md) with the following command:
+We abstract this process in the [NEAR CLI](../tools/cli.md) with the following command:
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">

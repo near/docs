@@ -8,12 +8,12 @@ import TabItem from '@theme/TabItem';
 
 After your contract is ready you can deploy it in the NEAR network for everyone to use it.
 
-Let us guide you on how to use the [NEAR CLI](../../4.tools/cli.md) to deploy your contract
+Let us guide you on how to use the [NEAR CLI](../../tools/cli.md) to deploy your contract
 and call its methods.
 
 :::info
 On this page, we will only cover the basics of NEAR CLI. For more information visit the
-[NEAR CLI documentation page](../../4.tools/cli.md).
+[NEAR CLI documentation page](../../tools/cli.md).
 :::
 
 ---
@@ -23,7 +23,7 @@ On this page, we will only cover the basics of NEAR CLI. For more information vi
 Thanks to the `NEAR CLI` deploying a contract is as simple as:
 
 1. Compiling the contract to wasm.
-2. [Create an account](../../4.tools/cli.md#create) and [deploy the contract](../../4.tools/cli.md#deploy) into it using `NEAR CLI`.
+2. [Create an account](../../tools/cli.md#create) and [deploy the contract](../../tools/cli.md#deploy) into it using `NEAR CLI`.
 
 ### Compile the Contract
 
@@ -147,7 +147,7 @@ You can initialize your contract [during deployment](#deploying-the-contract) us
 
 ## Calling the Contract
 
-Once your contract is deployed you can interact with it right away using [NEAR CLI](../../4.tools/cli.md).
+Once your contract is deployed you can interact with it right away using [NEAR CLI](../../tools/cli.md).
 
 <hr className="subsection" />
 

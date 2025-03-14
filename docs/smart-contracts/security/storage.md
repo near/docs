@@ -7,7 +7,7 @@ On NEAR, your contract pays for the storage it uses. This means that the more da
 
 Let's walk through an example:
 
-1. You launch [a guest book app](../../3.tutorials/examples/guest-book.md), deploying your app's smart contract to the account `example.near`
+1. You launch [a guest book app](../../tutorials/examples/guest-book.md), deploying your app's smart contract to the account `example.near`
 2. Visitors to your app can add messages to the guest book. This means your users will pay a small gas fee to **store** their message to your contract.
 3. When a new message comes in, NEAR will check if `example.near` has enough balance to cover the new storage needs. If it does not, the transaction will fail.
 

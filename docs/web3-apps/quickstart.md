@@ -84,7 +84,7 @@ Go ahead and sign in with your NEAR account. If you don't have one, you can crea
 
 Our app's template is defined at `./src/pages/_app.js`. It does two things:
 
-1. Initializes a [wallet selector](../4.tools/wallet-selector.md), and stores it in context so other components can access it later.
+1. Initializes a [wallet selector](../tools/wallet-selector.md), and stores it in context so other components can access it later.
 2. Renders the navigation menu and the page's content.
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js" language="jsx" start="22" end="48" />

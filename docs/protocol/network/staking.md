@@ -9,7 +9,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 The NEAR blockchain uses a Proof-of-Stake (PoS) consensus mechanism, where participants (validators) secure the network by staking NEAR tokens. Users who don't want to run a validator node can still participate by delegating their tokens to a staking pool.
 
-In this article you'll find a detailed explanation of the staking process, including delegating, viewing balances, and withdrawing using the [NEAR CLI](../../4.tools/cli.md).
+In this article you'll find a detailed explanation of the staking process, including delegating, viewing balances, and withdrawing using the [NEAR CLI](../../tools/cli.md).
 
 :::note Contract source code
 You can review the Staking pool smart contract source code in [this GitHub repository](https://github.com/near/core-contracts/tree/master/staking-pool).
@@ -56,7 +56,7 @@ You will start earning staking rewards after the next epoch (approximately 12 ho
 :::info Delegation without a staking pool
 
 For validators, there's also an option to stake NEAR tokens without deploying a staking pool smart contract.
-Check [this section](../../4.tools/cli.md#staking) to learn how to stake using the [`near-validator`](../../4.tools/cli.md#validator-extension) CLI.
+Check [this section](../../tools/cli.md#staking) to learn how to stake using the [`near-validator`](../../tools/cli.md#validator-extension) CLI.
 
 :::
 
@@ -73,7 +73,7 @@ Look for validators with a good track record, uptime, and reasonable commission 
 
 :::
 
-If you prefer, you can get the list of current validators by using the [`near-validator`](../../4.tools/cli.md#validator-extension) CLI:
+If you prefer, you can get the list of current validators by using the [`near-validator`](../../tools/cli.md#validator-extension) CLI:
 
 ```sh
 near-validator validators network-config mainnet now

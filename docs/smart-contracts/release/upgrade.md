@@ -11,8 +11,8 @@ allowing the code to be changed.
 
 Contract's can be updated in two ways:
 
-1. **Through tools** such as [NEAR CLI](../../4.tools/cli.md) or the
-   [NEAR API](../../4.tools/near-api.md) (if you hold
+1. **Through tools** such as [NEAR CLI](../../tools/cli.md) or the
+   [NEAR API](../../tools/near-api.md) (if you hold
    the account's
    [full access key](../../protocol/access-keys.md)).
 2. **Programmatically**, by implementing a method that
@@ -23,7 +23,7 @@ Contract's can be updated in two ways:
 ## Updating Through Tools
 
 Simply re-deploy another contract using your preferred tool, for example, using
-[NEAR CLI](../../4.tools/cli.md):
+[NEAR CLI](../../tools/cli.md):
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">

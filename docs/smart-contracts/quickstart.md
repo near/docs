@@ -64,7 +64,7 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/release
 </Tabs>
 
 :::note
-Some `near-cli` commands have two versions - a **full** one and a **short** one. If you want to explore all options provided by `near-cli` use [the interactive mode](../4.tools/cli.md#interactive-mode).
+Some `near-cli` commands have two versions - a **full** one and a **short** one. If you want to explore all options provided by `near-cli` use [the interactive mode](../tools/cli.md#interactive-mode).
 :::
 
 :::tip Testnet Account
@@ -222,7 +222,7 @@ Testing the contracts within a Sandbox allows you to understand how the contract
 
 ## Create a Testnet Account
 
-Now that you know the contract is passing the tests, let's create a `testnet` account in which to deploy the contract. [`near-cli`](../4.tools/cli.md) supports two versions of some commands - full and short one. It's up to you which format you prefer, but full version provides more features.
+Now that you know the contract is passing the tests, let's create a `testnet` account in which to deploy the contract. [`near-cli`](../tools/cli.md) supports two versions of some commands - full and short one. It's up to you which format you prefer, but full version provides more features.
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
