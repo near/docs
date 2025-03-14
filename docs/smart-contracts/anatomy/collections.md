@@ -251,11 +251,12 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
   </TabItem>
   <TabItem value="python" label="🐍 Python">
 ```python
-from near_sdk_py import view, call
+from near_sdk_py import view, call, init
 from near_sdk_py.collections import Vector
 
 class VectorExample:
-    def __init__(self):
+    @init
+    def new(self):
         # Create a Vector with prefix "v"
         self.my_vector = Vector("v")
         
@@ -299,11 +300,12 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   </TabItem>
   <TabItem value="python" label="🐍 Python">
 ```python
-from near_sdk_py import view, call
+from near_sdk_py import view, call, init
 from near_sdk_py.collections import LookupMap
 
 class LookupMapExample:
-    def __init__(self):
+    @init
+    def new(self):
         # Create a LookupMap with prefix "m"
         self.balances = LookupMap("m")
         
@@ -347,11 +349,12 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   </TabItem>
   <TabItem value="python" label="🐍 Python">
 ```python
-from near_sdk_py import view, call
+from near_sdk_py import view, call, init
 from near_sdk_py.collections import UnorderedMap
 
 class UnorderedMapExample:
-    def __init__(self):
+    @init
+    def new(self):
         # Create an UnorderedMap with prefix "um"
         self.user_data = UnorderedMap("um")
         
@@ -401,11 +404,12 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
   
   <TabItem value="python" label="🐍 Python">
 ```python
-from near_sdk_py import view, call
+from near_sdk_py import view, call, init
 from near_sdk_py.collections import LookupSet
 
 class LookupSetExample:
-    def __init__(self):
+    @init
+    def new(self):
         # Create a LookupSet with prefix "s"
         self.whitelist = LookupSet("s")
         
@@ -451,11 +455,12 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
   </TabItem>
   <TabItem value="python" label="🐍 Python">
 ```python
-from near_sdk_py import view, call
+from near_sdk_py import view, call, init
 from near_sdk_py.collections import UnorderedSet
 
 class UnorderedSetExample:
-    def __init__(self):
+    @init
+    def new(self):
         # Create an UnorderedSet with prefix "us"
         self.owners = UnorderedSet("us")
         
@@ -497,11 +502,12 @@ An ordered equivalent of Map. The underlying implementation is based on an [AVL]
   </TabItem>
   <TabItem value="python" label="🐍 Python">
 ```python
-from near_sdk_py import view, call
+from near_sdk_py import view, call, init
 from near_sdk_py.collections import TreeMap
 
 class TreeMapExample:
-    def __init__(self):
+    @init
+    def new(self):
         # Create a TreeMap with prefix "tm"
         self.scores = TreeMap("tm")
         
@@ -573,12 +579,13 @@ When nesting SDK collections, be careful to **use different prefixes** for all c
   
   <TabItem value="python" label="🐍 Python">
 ```python
-from near_sdk_py import view, call
+from near_sdk_py import view, call, init
 from near_sdk_py.collections import UnorderedMap, Vector
 from near_sdk_py.collections import create_prefix_guard
 
 class NestedCollectionsExample:
-    def __init__(self):
+    @init
+    def new(self):
         # Main map of users to their assets
         self.user_assets = UnorderedMap("users")
         
