@@ -60,10 +60,10 @@ You can send $NEAR from your contract to any other account on the network. The G
 <TabItem value="python" label="🐍 Python">
 
 ```python
-from near_sdk_py import call
+from near_sdk_py import call, Contract
 from near_sdk_py.promises import Promise
 
-class Contract:
+class ExampleContract(Contract):
     @call
     def transfer(self, to, amount):
         """Transfers NEAR to another account"""
@@ -180,8 +180,8 @@ right in the callback.
 <TabItem value="python" label="🐍 Python">
 
 ```python
-from near_sdk_py import call, callback, Context, Log
-from near_sdk_py.promises import Contract, Promise
+from near_sdk_py import call, callback, Contract
+from near_sdk_py.promises import CrossContract, Promise, PromiseResult
 from near_sdk_py.constants import ONE_TGAS
 
 # Constants
@@ -189,32 +189,27 @@ HELLO_NEAR = "hello-nearverse.testnet"
 NO_DEPOSIT = 0
 CALL_GAS = 10 * ONE_TGAS
 
-class Contract:
+class ExampleContract(Contract):
     @call
     def call_method(self):
         """Call a method on an external contract with a callback"""
         # Create a contract reference
-        hello = Contract(HELLO_NEAR)
+        hello = CrossContract(HELLO_NEAR)
         
         # Call the external contract and use our callback to process the result
-        return hello.call(
-            "set_greeting",
-            message="howdy"
-        ).then(
-            "callback"
-        )
+        return hello.call("set_greeting", {"message": "howdy"}).then("callback")
     
     @callback
-    def callback(self, result):
+    def callback(self, result: PromiseResult):
         """Handle the result of the external contract call"""
         # The @callback decorator automatically handles success/failure checking
-        if result is None:
+        if not result.success:
             # The remote call failed
-            Log.error("Promise failed...")
+            self.log_error("Promise failed...")
             return False
         
         # The remote call succeeded
-        Log.info("Success!")
+        self.log_info("Success!")
         return True
 ```
 
@@ -286,19 +281,19 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 <TabItem value="python" label="🐍 Python">
 
 ```python
-from near_sdk_py import call, Context
+from near_sdk_py import call, Contract
 from near_sdk_py.promises import Promise
 from near_sdk_py.constants import ONE_NEAR
 
 # Minimum amount needed for storage
 MIN_STORAGE = ONE_NEAR // 1000  # 0.001Ⓝ
 
-class Contract:
+class ExampleContract(Contract):
     @call
     def create(self, prefix):
         """Create a subaccount"""
         # Generate the new account ID
-        account_id = f"{prefix}.{Context.current_account_id()}"
+        account_id = f"{prefix}.{self.current_account_id}"
         
         # Create the new account and transfer some NEAR for storage
         return Promise.create_batch(account_id)\
@@ -388,7 +383,7 @@ the `create_account` method of `near` or `testnet` root contracts.
 <TabItem value="python" label="🐍 Python">
 
 ```python
-from near_sdk_py import call
+from near_sdk_py import call, Contract
 from near_sdk_py.promises import Promise
 from near_sdk_py.constants import ONE_NEAR, ONE_TGAS
 
@@ -396,7 +391,7 @@ from near_sdk_py.constants import ONE_NEAR, ONE_TGAS
 MIN_STORAGE = int(1.82 * ONE_NEAR / 1000)  # 0.00182Ⓝ
 CALL_GAS = 28 * ONE_TGAS
 
-class Contract:
+class ExampleContract(Contract):
     @call
     def create_account(self, account_id, public_key):
         """Create a testnet account by calling the testnet contract"""
@@ -456,11 +451,11 @@ When creating an account you can also batch the action of deploying a contract t
 <TabItem value="python" label="🐍 Python">
 
 ```python
-from near_sdk_py import call, Context
+from near_sdk_py import call, Context, Contract
 from near_sdk_py.promises import Promise 
 from near_sdk_py.constants import ONE_NEAR
 
-class Contract:
+class ExampleContract(Contract):
     @call
     def deploy_contract(self, prefix):
         """Create an account and deploy a contract to it"""
@@ -472,7 +467,7 @@ class Contract:
         MIN_STORAGE = 1.1 * ONE_NEAR  # 1.1Ⓝ
         
         # Generate the new account ID
-        account_id = f"{prefix}.{Context.current_account_id()}"
+        account_id = f"{prefix}.{self.current_account_id}"
         
         # Create batch of actions
         return Promise.create_batch(account_id)\
@@ -556,19 +551,19 @@ There are two options for adding keys to the account:
 <TabItem value="python" label="🐍 Python">
 
 ```python
-from near_sdk_py import call, Context
+from near_sdk_py import call, Contract
 from near_sdk_py.promises import Promise
 from near_sdk_py.constants import ONE_NEAR
 
 # Minimum amount needed for storage
 MIN_STORAGE = ONE_NEAR // 1000  # 0.001Ⓝ
 
-class Contract:
+class ExampleContract(Contract):
     @call
     def create_with_key(self, prefix, public_key):
         """Create a subaccount with a full access key"""
         # Generate the new account ID
-        account_id = f"{prefix}.{Context.current_account_id()}"
+        account_id = f"{prefix}.{self.current_account_id}"
         
         # Create the new account, transfer some NEAR, and add a key
         return Promise.create_batch(account_id)\
@@ -659,19 +654,19 @@ There are two scenarios in which you can use the `delete_account` action:
 <TabItem value="python" label="🐍 Python">
 
 ```python
-from near_sdk_py import call, Context
+from near_sdk_py import call, Contract
 from near_sdk_py.promises import Promise
 from near_sdk_py.constants import ONE_NEAR
 
 # Minimum amount needed for storage
 MIN_STORAGE = ONE_NEAR // 1000  # 0.001Ⓝ
 
-class Contract:
+class ExampleContract(Contract):
     @call
     def create_delete(self, prefix, beneficiary):
         """Create an account and immediately delete it, sending funds to a beneficiary"""
         # Generate the new account ID
-        account_id = f"{prefix}.{Context.current_account_id()}"
+        account_id = f"{prefix}.{self.current_account_id}"
         
         # Create the account, transfer funds, then delete it
         return Promise.create_batch(account_id)\
@@ -683,7 +678,7 @@ class Contract:
     def self_delete(self, beneficiary):
         """Delete this contract's account"""
         # Delete the account and send remaining funds to beneficiary
-        return Promise.create_batch(Context.current_account_id())\
+        return Promise.create_batch(self.current_account_id)\
             .delete_account(beneficiary)
 ```
 
