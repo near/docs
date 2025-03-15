@@ -136,6 +136,21 @@ The `near_sdk::collections` is now deprecated in favor of `near_sdk::store`. To 
 | `collections::LazyOption<T>`                       | `Option<T>`                        | Optional value in storage. This value will only be read from storage when interacted with. This value will be `Some<T>` when the value is saved in storage, and `None` if the value at the prefix does not exist.                                  |
 </TabItem>
 
+<TabItem value="python" label="🐍 Python">
+
+| SDK Collection | Native Equivalent | Description                                                                                                                                                                         |
+| -------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Vector`       | `list`            | A growable array type. The values are sharded in memory and can be used for iterable and indexable values that are dynamically sized.                                               |
+| `LookupMap`    | `dict`            | A non-iterable key-value store. This structure does not track keys for iteration, so it is optimized for lookups but cannot provide collection operations like keys or values.      |
+| `UnorderedMap` | `dict`            | Similar to `LookupMap`, except that it stores additional data to be able to iterate through elements and supports dictionary-like operations such as keys(), values(), and items(). |
+| `IterableMap`  | `dict`            | An alias for `UnorderedMap` provided for compatibility with Rust SDK naming conventions.                                                                                            |
+| `LookupSet`    | `set`             | A non-iterable set of unique values. This structure cannot be iterated over and can only be used for membership testing.                                                            |
+| `UnorderedSet` | `set`             | An iterable equivalent of `LookupSet` which stores additional metadata to allow iteration over the values in the set.                                                               |
+| `IterableSet`  | `set`             | An alias for `UnorderedSet` provided for compatibility with Rust SDK naming conventions.                                                                                            |
+| `TreeMap`      | `SortedDict`      | An ordered key-value store where keys are maintained in sorted order. Provides operations for range queries, finding nearest keys, and efficient min/max operations.                |
+
+</TabItem>
+
 </Tabs>
 
 <hr class="subsection" />
@@ -219,6 +234,43 @@ Do not forget to use the `schema` to define how your contract's state is structu
 
   :::
 
+  </TabItem>
+
+  <TabItem value="python" label="🐍 Python">
+```python
+from near_sdk_py import view, call, init
+from near_sdk_py.collections import Vector, LookupMap, UnorderedMap, LookupSet, UnorderedSet
+
+class MyContract:
+@init
+def new(self): # Create a Vector with prefix "v"
+self.my_vector = Vector("v")
+
+        # Create a LookupMap with prefix "m"
+        self.my_lookup_map = LookupMap("m")
+
+        # Create an UnorderedMap with prefix "um"
+        self.my_unordered_map = UnorderedMap("um")
+
+        # Create a LookupSet with prefix "s"
+        self.my_lookup_set = LookupSet("s")
+
+        # Create an UnorderedSet with prefix "us"
+        self.my_unordered_set = UnorderedSet("us")
+
+        # For nested collections, use different prefixes
+        self.nested_maps = UnorderedMap("nested")
+
+        return True
+
+    @call
+    def create_nested_map(self, key: str):
+        # Create a new map that will be stored inside another map
+        inner_map = UnorderedMap(f"inner_{key}")
+        self.nested_maps[key] = inner_map
+        return {"success": True}
+
+````
   </TabItem>
 
 </Tabs>
@@ -588,7 +640,7 @@ class NestedCollectionsExample:
     def new(self):
         # Main map of users to their assets
         self.user_assets = UnorderedMap("users")
-        
+
     @call
     def add_asset(self, user_id, asset_id, metadata):
         # Get or create the user's assets vector with a unique prefix
@@ -597,36 +649,36 @@ class NestedCollectionsExample:
             prefix = f"assets:{user_id}"
             # Create a new vector for this user's assets
             self.user_assets[user_id] = Vector(prefix)
-            
+
         # Add the asset to the user's assets vector
         user_assets = self.user_assets[user_id]
         user_assets.append({
             "asset_id": asset_id,
             "metadata": metadata
         })
-        
+
         # Update the vector in the map
         self.user_assets[user_id] = user_assets
         return True
-        
+
     @view
     def get_user_assets(self, user_id):
         if user_id not in self.user_assets:
             return []
-            
+
         # Get all assets for the user
         user_assets = self.user_assets[user_id]
         return [asset for asset in user_assets]
-```
-  :::tip
+````
 
-  In Python, we create unique prefixes for nested collections by including the parent's identifier in the prefix string. The SDK also provides a `create_prefix_guard` utility to help manage prefixes.
+:::tip
 
-  :::
+In Python, we create unique prefixes for nested collections by including the parent's identifier in the prefix string. The SDK also provides a `create_prefix_guard` utility to help manage prefixes.
+
+:::
 
   </TabItem>
 </Tabs>
-
 
 ---
 
@@ -777,8 +829,6 @@ Persistent collections such as `IterableMap/UnorderedMap`, `IterableSet/Unordere
 contain more elements than the amount of gas available to read them all.
 In order to expose them all through view calls, we can use pagination.
 
-
-
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
     With JavaScript this can be done using iterators with [`toArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/toArray) and [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice).
@@ -818,15 +868,44 @@ In order to expose them all through view calls, we can use pagination.
           }
       }
     ```
+
+  </TabItem>
+
+  <TabItem value="python" label="🐍 Python">
+    ```python
+    # With Python this can be done using standard list slicing.
+
+    @view
+    def get_updates(self, from_index: int = 0, limit: int = 50) -> list:
+        """Returns multiple elements from the collection with pagination.
+        
+        Args:
+            from_index: The index to start from
+            limit: The maximum number of elements to return
+            
+        Returns:
+            A list of elements from the collection
+        """
+        # Get all values from the collection
+        all_items = self.status_updates.values()
+        
+        # Apply pagination with list slicing
+        start = min(from_index, len(all_items))
+        end = min(start + limit, len(all_items))
+        
+        return all_items[start:end]
+    ```
   </TabItem>
 </Tabs>
 
 ---
 
 ## Storage Cost
+
 Your contract needs to lock a portion of their balance proportional to the amount of data they stored in the blockchain. This means that:
+
 - If more data is added and the **storage increases ↑**, then your contract's **balance decreases ↓**.
-- If data is deleted and the **storage decreases ↓**, then your contract's **balance increases ↑**. 
+- If data is deleted and the **storage decreases ↓**, then your contract's **balance increases ↑**.
 
 Currently, it costs approximately **1 Ⓝ** to store **100kb** of data.
 
