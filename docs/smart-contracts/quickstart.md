@@ -61,6 +61,20 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/release
 
 </TabItem>
 
+<TabItem value="py" label="🐍 Python">
+
+```bash
+# Install Python (if not already installed)
+# Use your system's package manager or download from https://www.python.org/downloads/
+
+# Install uv for Python package management
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install NEAR CLI-RS to deploy and interact with the contract
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+```
+
+</TabItem>
 </Tabs>
 
 :::note
@@ -143,6 +157,40 @@ hello-near
 
 </TabItem>
 
+<TabItem value="py" label="🐍 Python">
+
+Create a new project using `uv init`:
+
+```bash
+uv init hello-near
+cd hello-near
+```
+
+This creates a Python project with the following structure:
+
+```bash
+hello-near
+├── .git                 # Git repository
+├── .gitignore           # Git ignore file
+├── .python-version      # Python version file
+├── README.md            # README
+├── main.py              # Main Python file
+└── pyproject.toml       # Project configuration
+```
+
+Now, add the NEAR SDK to your project:
+
+```bash
+uv add near-sdk-py
+```
+
+:::tip
+
+`hello-near` is the name we chose for this project so the tutorial is simpler to follow, but for future projects feel free to use any name you prefer
+
+:::
+
+</TabItem>
 </Tabs>
 
 
@@ -171,6 +219,42 @@ The `Hello World` smart contract stores a greeting in its state, and exposes two
 
   </TabItem>
 
+  <TabItem value="py" label="🐍 Python">
+
+```python
+from near_sdk_py import Contract, view, call, init
+
+class GreetingContract(Contract):
+    """
+    A simple greeting contract that stores and returns a message.
+    """
+    
+    @init
+    def initialize(self, default_message="Hello, NEAR world!"):
+        """
+        Initialize the contract with a default greeting message.
+        """
+        self.storage["greeting"] = default_message
+        return {"success": True}
+    
+    @call
+    def set_greeting(self, message: str):
+        """
+        Change the greeting message.
+        """
+        self.storage["greeting"] = message
+        self.log_info(f"Saving greeting: {message}")
+        return {"success": True}
+    
+    @view
+    def get_greeting(self):
+        """
+        Retrieve the current greeting message.
+        """
+        return self.storage.get("greeting", "Hello, NEAR world!")
+```
+
+  </TabItem>
 </Tabs>
 
 :::tip
@@ -207,7 +291,85 @@ Building and testing the contract is as simple as running the `test` command. Th
   ```
 
   </TabItem>
+  
+  <TabItem value="py" label="🐍 Python">
 
+  Create a test file for your contract:
+
+  ```bash
+  # Create a tests directory
+  mkdir tests
+  touch tests/test_greeting.py
+  ```
+
+  Add the following content to `tests/test_greeting.py`:
+
+  ```python
+  from near_pytest.testing import NearTestCase
+  import json
+
+  class TestGreetingContract(NearTestCase):
+      @classmethod
+      def setup_class(cls):
+          """Compile and deploy the greeting contract."""
+          super().setup_class()
+          
+          # Compile the contract
+          wasm_path = cls.compile_contract(
+              "greeting_contract.py", 
+              single_file=True
+          )
+          
+          # Deploy the contract
+          cls.contract_account = cls.create_account("contract")
+          cls.instance = cls.deploy_contract(cls.contract_account, wasm_path)
+          
+          # Initialize the contract
+          cls.instance.call_as(
+              account=cls.contract_account,
+              method_name="initialize",
+              args={"default_message": "Initial greeting"},
+          )
+          
+          # Create test user
+          cls.user = cls.create_account("user")
+          
+          # Save state for future resets
+          cls.save_state()
+      
+      def setup_method(self):
+          """Reset state before each test method."""
+          self.reset_state()
+          
+      def test_greeting(self):
+          # Set greeting as user
+          result = self.instance.call_as(
+              account=self.user,
+              method_name="set_greeting",
+              args={"message": "Hello from test!"}
+          )
+          result = json.loads(result)
+          assert result["success"] == True
+          
+          # Get greeting
+          greeting = self.instance.call_as(
+              account=self.user,
+              method_name="get_greeting"
+          )
+          assert greeting == "Hello from test!"
+  ```
+
+  Run the test:
+
+  ```bash
+  # Add near-pytest to your project
+  uv add near-pytest
+  
+  # Run the test
+  uv run pytest tests/test_greeting.py -v
+  ```
+
+  </TabItem>
 </Tabs>
 
 In the background, these commands are calling the build tools for each language and using a [Sandbox](./testing/integration-test.md) to test the contract.
@@ -308,7 +470,23 @@ When you are ready to create a build of the contract run a one-line command depe
   :::
 
   </TabItem>
+  
+  <TabItem value="py" label="🐍 Python">
 
+  ```bash
+  # Build with nearc through the uv executor (no installation needed)
+  uvx nearc build greeting_contract.py -o greeting_contract.wasm
+  ```
+  
+  The above command will compile your Python contract into WebAssembly (WASM) that can be deployed to the NEAR blockchain.
+  
+  :::info
+  
+  The default nearc build configuration is appropriate for most contracts. You don't need to install nearc separately as we're using `uvx` to run it directly.
+  
+  :::
+
+  </TabItem>
 </Tabs>
 
 ---
@@ -356,11 +534,96 @@ Having our account created, we can now deploy the contract:
       </TabItem>
     </Tabs>
   </TabItem>
+  
+  <TabItem value="py" label="🐍 Python">
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+        ```bash
+        near deploy <created-account> ./greeting_contract.wasm
+        ```
+
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract deploy <created-account> use-file ./greeting_contract.wasm without-init-call network-config testnet sign-with-keychain send
+        ```
+
+      </TabItem>
+    </Tabs>
+  </TabItem>
 </Tabs>
 
 **Congrats**! Your contract now lives in the NEAR testnet network.
 
 ---
+
+## Initializing the Contract
+
+After deploying, you'll need to initialize the contract:
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+        ```bash
+        near call <created-account> new '{}' --accountId <created-account>
+        ```
+
+      </TabItem>
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction <created-account> new json-args '{}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
+        ```
+
+      </TabItem>
+    </Tabs>
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+        ```bash
+        near call <created-account> new '{}' --accountId <created-account>
+        ```
+
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction <created-account> new json-args '{}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
+        ```
+
+      </TabItem>
+    </Tabs>
+  </TabItem>
+  
+  <TabItem value="py" label="🐍 Python">
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+        ```bash
+        near call <created-account> initialize '{"default_message":"Hello, NEAR world!"}' --accountId <created-account>
+        ```
+
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction <created-account> initialize json-args '{"default_message":"Hello, NEAR world!"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
+        ```
+
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>
 
 ## Interacting with the Contract
 
@@ -376,7 +639,7 @@ Let's start by fetching the greeting stored in the contract. The `get_greeting` 
 
     ```bash
     > near view <created-account> get_greeting
-    # "Hello"
+    # "Hello, NEAR world!"
     ```
   </TabItem>
 
@@ -384,7 +647,7 @@ Let's start by fetching the greeting stored in the contract. The `get_greeting` 
 
     ```bash
     > near contract call-function as-read-only <created-account> get_greeting json-args {} network-config testnet now
-    # "Hello"
+    # "Hello, NEAR world!"
     ```
   </TabItem>
 </Tabs>
@@ -399,16 +662,16 @@ We can now change the greeting stored in the contract. The `set_greeting` method
   <TabItem value="short" label="Short">
 
   ```bash
-  > near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
-  # Log: Saving greeting "Hola"
+  > near call <created-account> set_greeting '{"message": "Hola"}' --accountId <created-account>
+  # {"success": true}
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
 
     ```bash
-    > near contract call-function as-transaction <created-account> set_greeting json-args '{"greeting": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
-    #Log: Saving greeting "Hola"
+    > near contract call-function as-transaction <created-account> set_greeting json-args '{"message": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
+    # {"success": true}
     ```
   </TabItem>
 </Tabs>
@@ -440,5 +703,8 @@ At the time of this writing, this example works with the following versions:
 - rustc: `1.81.0`
 - near-cli-rs: `0.17.0`
 - cargo-near: `0.13.2`
+- Python: `3.11`
+- near-sdk-py: `0.4.1`
+- uvx nearc: `0.1.0`
 
 :::
