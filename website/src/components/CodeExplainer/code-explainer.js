@@ -10,6 +10,7 @@ export const lang2label = {
   "rust": "🦀 RS",
   "js": "🌐 JS",
   "ts": "🌐 TS",
+  "python": "🐍 PY"
 }
 
 export function ExplainCode({ children, languages }) {

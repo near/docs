@@ -61,6 +61,22 @@ Every method execution has an environment associated with information such as:
 
 </TabItem>
 
+<TabItem value="python" label="🐍 Python">
+
+| Variable Name          | SDK Variable                       | Description                                                                          |
+|------------------------|------------------------------------|--------------------------------------------------------------------------------------|
+| Predecessor            | `Context.predecessor_account_id()` | Account ID that called this method                                                   |
+| Current Account        | `Context.current_account_id()`     | Account ID of this smart contract                                                    |
+| Signer                 | `Context.signer_account_id()`      | Account ID that signed the transaction leading to this execution                     |
+| Attached Deposit       | `Context.attached_deposit()`       | Amount in yoctoNEAR attached to the call by the predecessor                          |
+| Prepaid Gas            | `Context.prepaid_gas()`            | Amount of gas available for execution                                                |
+| Used Gas               | `Context.used_gas()`               | Amount of gas used for execution                                                     |
+| Block Height           | `Context.block_height()`           | Current block height                                                                 |
+| Timestamp              | `Context.block_timestamp()`        | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
+| Current Epoch          | `Context.epoch_height()`           | Current epoch in the blockchain                                                      |
+
+</TabItem>
+
 </Tabs>
 
 ---
@@ -172,6 +188,20 @@ assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
 
 </TabItem>
 
+<TabItem value="python" label="🐍 Python">
+
+```python
+from near_sdk_py import call, Context
+
+@call
+def check_gas(required_gas=20_000_000_000_000):  # 20 TGas
+    if Context.prepaid_gas() < required_gas:
+        raise Exception(f"Please attach at least {required_gas} gas")
+    return "Sufficient gas attached"
+```
+
+</TabItem>
+
 </Tabs>
 
 :::
@@ -214,6 +244,21 @@ Besides environmental variables, the SDK also exposes some functions to perform 
 | Log String            | `env::log_str(message)`                                 | Logs the string message. This message is stored on chain.                                                                                                                                                                                                                                                                        |
 | Validator Stake       | `env::validator_stake(account_id)`                      | For a given account return its current stake. If the account is not a validator, returns 0.                                                                                                                                                                                                                                      |
 | Validator Total Stake | `env::validator_total_stake()`                          | Returns the total stake of validators in the current epoch.                                                                                                                                                                                                                                                                      |
+
+</TabItem>
+
+<TabItem value="python" label="🐍 Python">
+
+| Function Name         | SDK method                               | Description                                                                                                                                                                                                                                                                                                                      |
+|-----------------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SHA 256               | `near.sha256(value)`                     | Hashes a sequence of bytes using sha256.                                                                                                                                                                                                                                                                                         |
+| Keccak 256            | `near.keccak256(value)`                  | Hashes a sequence of bytes using keccak256.                                                                                                                                                                                                                                                                                      |
+| Keccak 512            | `near.keccak512(value)`                  | Hashes a sequence of bytes using keccak512.                                                                                                                                                                                                                                                                                      |
+| Log Info              | `Log.info(message)`                      | Logs an informational message. This message is stored on chain.                                                                                                                                                                                                                                                                 |
+| Log Warning           | `Log.warning(message)`                   | Logs a warning message. This message is stored on chain.                                                                                                                                                                                                                                                                      |
+| Log Error             | `Log.error(message)`                     | Logs an error message. This message is stored on chain.                                                                                                                                                                                                                                                                       |
+| Log Event             | `Log.event(event_type, data)`            | Logs a structured event following the NEP standard for events. This is useful for indexers and frontend applications.                                                                                                                                                                                                          |
+| Raise Exception       | `raise Exception(message)`               | Terminates the execution of the function with an error message. Similar to panic in other languages.                                                                                                                                                                                                                          |
 
 </TabItem>
 

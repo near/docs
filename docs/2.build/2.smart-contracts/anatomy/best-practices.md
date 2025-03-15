@@ -2,8 +2,13 @@
 id: best-practices
 title: "Best Practices"
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Best practices
+
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
 
 Here we lay out some best practices for writing smart contracts on NEAR, such as:
 
@@ -149,3 +154,164 @@ impl Contract {
 
 Workspaces allow you to automate workflows and run tests for multiple contracts and cross-contract calls in a sandbox or testnet environment.
 Read more, [workspaces-rs](https://github.com/near/workspaces-rs) or [workspaces-js](https://github.com/near/workspaces-js).
+
+  </TabItem>
+  <TabItem value="python" label="🐍 Python">
+
+Here we lay out some best practices for writing smart contracts in Python on NEAR:
+
+- [Validate early](#validate-early)
+- [Use proper logging](#use-proper-logging)
+- [Return Promises](#return-promises)
+- [Handle storage efficiently](#handle-storage-efficiently)
+- [Use type hints](#use-type-hints)
+- [Follow security patterns](#follow-security-patterns)
+
+---
+
+## Validate early
+
+Validate inputs, context, and state as early as possible in your functions. This saves gas by failing fast before executing expensive operations.
+
+```python
+from near_sdk_py import call, Context
+
+class Contract:
+    def __init__(self):
+        self.owner_id = Context.current_account_id()
+        
+    @call
+    def set_config(self, config_data):
+        # Validate permissions early
+        if Context.predecessor_account_id() != self.owner_id:
+            raise Exception("Only owner can modify config")
+            
+        # Validate inputs early
+        if "parameter" not in config_data or not isinstance(config_data["parameter"], int):
+            raise Exception("Invalid config: missing or invalid parameter")
+            
+        # Only proceed after validation
+        self._update_config(config_data)
+```
+
+## Use proper logging
+
+Use the `Log` utility for structured logging. This allows external services to parse events from your contract easily.
+
+```python
+from near_sdk_py import call, Log
+
+@call
+def transfer(self, receiver_id, amount):
+    # Business logic here...
+    
+    # Use informational logs for regular updates
+    Log.info(f"Transferred {amount} tokens to {receiver_id}")
+    
+    # Use structured event logging for indexable events
+    Log.event("transfer", {
+        "sender": Context.predecessor_account_id(),
+        "receiver": receiver_id,
+        "amount": amount
+    })
+```
+
+## Return Promises
+
+When making cross-contract calls, return the Promise object to let the caller track the result. This is especially important for transactions that need to be monitored.
+
+```python
+from near_sdk_py import call
+from near_sdk_py.promises import Contract
+
+@call
+def withdraw(self, amount, receiver_id):
+    # Perform validations and business logic...
+    
+    # Return the promise for better caller experience
+    return Contract(receiver_id).call(
+        "deposit",
+        amount=amount,
+        sender=Context.predecessor_account_id()
+    )
+```
+
+## Handle storage efficiently
+
+Use the SDK collections for efficient storage handling, especially for growing data sets.
+
+```python
+from near_sdk_py.collections import UnorderedMap, Vector
+
+class TokenContract:
+    def __init__(self):
+        # Use SDK collections for efficient storage
+        self.tokens = Vector("t")  # Efficiently stores ordered items
+        self.balances = UnorderedMap("b")  # Efficiently stores key-value pairs
+        
+    @call
+    def mint(self, token_id):
+        # Add to vector without loading all tokens
+        self.tokens.append(token_id)
+        
+        # Update balance without loading all balances
+        current = self.balances.get(Context.predecessor_account_id(), 0)
+        self.balances[Context.predecessor_account_id()] = current + 1
+```
+
+## Use type hints
+
+Python's type hints improve code readability and can help catch errors during development.
+
+```python
+from typing import Dict, List, Optional
+from near_sdk_py import view, call
+
+class Contract:
+    def __init__(self):
+        self.data: Dict[str, int] = {}
+        
+    @view
+    def get_value(self, key: str) -> Optional[int]:
+        return self.data.get(key)
+        
+    @call
+    def set_values(self, updates: Dict[str, int]) -> List[str]:
+        updated_keys = []
+        for key, value in updates.items():
+            self.data[key] = value
+            updated_keys.append(key)
+        return updated_keys
+```
+
+## Follow security patterns
+
+Apply security best practices to protect your contract from common vulnerabilities.
+
+```python
+from near_sdk_py import call, Context
+from near_sdk_py.constants import ONE_NEAR
+
+class Contract:
+    def __init__(self):
+        self.owner = Context.current_account_id()
+        self.minimum_deposit = ONE_NEAR // 100  # 0.01 NEAR
+        
+    @call
+    def deposit(self):
+        # Check sufficient deposit to prevent spam
+        deposit = Context.attached_deposit()
+        if deposit < self.minimum_deposit:
+            raise Exception(f"Minimum deposit is {self.minimum_deposit}")
+            
+        # Re-entrancy protection pattern
+        current_balance = self.balances.get(Context.predecessor_account_id(), 0)
+        # Update state before external calls
+        self.balances[Context.predecessor_account_id()] = current_balance + deposit
+        
+        # Only after state update, perform any external calls
+        # ...
+```
+
+  </TabItem>
+</Tabs>
