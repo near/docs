@@ -55,45 +55,50 @@ While making your contract, it is likely that you will want to query information
 
 <Language value="python" language="python">
 ```python
-from near_sdk_py import call, view, Context
-from near_sdk_py.promises import Contract, Promise, callback
+from near_sdk_py import call, view, Contract, callback, PromiseResult, CrossContract, init
 
-class CrossContractExample:
-    def __init__(self):
-        # Contract we want to interact with
-        self.hello_contract = "hello-near.testnet"
+class CrossContractExample(Contract):
+    # Contract we want to interact with
+    hello_contract = "hello-near.testnet"
+        
+    @init
+    def new(self):
+        """Initialize the contract"""
+        # Any initialization logic goes here
+        pass
         
     @view
     def query_greeting_info(self):
         """View function showing how to make a cross-contract call"""
         # Create a reference to the Hello NEAR contract
         # This is a simple call that will execute in the current transaction
-        return Contract(self.hello_contract).call("get_greeting")
+        hello = CrossContract(self.hello_contract)
+        return hello.call("get_greeting").value()
     
     @call
     def query_greeting(self):
         """Calls Hello NEAR contract to get the greeting with a callback"""
-        # Create a reference to the token contract
-        hello = Contract(self.hello_contract)
+        # Create a reference to the Hello NEAR contract
+        hello = CrossContract(self.hello_contract)
         
         # Call get_greeting and chain a callback
         # The Promise API handles serialization and callback chaining
-        return hello.call("get_greeting").then(
-            "query_greeting_callback"
-        )
+        promise = hello.call("get_greeting").then("query_greeting_callback")
+        
+        return promise.value()
     
     @callback
-    def query_greeting_callback(self, greeting):
+    def query_greeting_callback(self, result: PromiseResult):
         """Processes the greeting result from Hello NEAR contract"""
         # The @callback decorator automatically parses the promise result
-        # greeting will already be the parsed value, not raw bytes
-        if greeting is None:
+        # result will have a data property and a success boolean
+        if not result.success:
             return {"success": False, "message": "Failed to get greeting"}
             
         return {
             "success": True,
-            "greeting": greeting,
-            "message": f"Successfully got greeting: {greeting}"
+            "greeting": result.data,
+            "message": f"Successfully got greeting: {result.data}"
         }
 ```
 </Language>
@@ -131,35 +136,35 @@ Calling another contract passing information is also a common scenario. Below yo
 
 <Language value="python" language="python">
 ```python
-from near_sdk_py import call, Context
-from near_sdk_py.promises import Contract, Promise, callback
+from near_sdk_py import call, Contract, callback, PromiseResult, CrossContract
 
-class CrossContractExample:
-    def __init__(self):
-        # Contract we want to interact with
-        self.hello_contract = "hello-near.testnet"
+class CrossContractExample(Contract):
+    # Contract we want to interact with
+    hello_contract = "hello-near.testnet"
         
     @call
     def change_greeting(self, new_greeting):
         """Changes the greeting on the Hello NEAR contract"""
         # Create a reference to the Hello NEAR contract
-        hello = Contract(self.hello_contract)
+        hello = CrossContract(self.hello_contract)
         
         # Create a promise to call set_greeting with the new greeting
         # Pass context data to the callback directly as kwargs
-        return hello.call(
+        promise = hello.call(
             "set_greeting", 
             message=new_greeting
         ).then(
             "change_greeting_callback",
             original_greeting=new_greeting  # Additional context passed to callback
         )
+        
+        return promise.value()
     
     @callback
-    def change_greeting_callback(self, result, original_greeting):
+    def change_greeting_callback(self, result: PromiseResult, original_greeting):
         """Processes the result of set_greeting"""
         # The original_greeting parameter is passed from the change_greeting method
-        if result is None:
+        if not result.success:
             return {
                 "success": False, 
                 "message": f"Failed to set greeting to '{original_greeting}'"
@@ -168,7 +173,7 @@ class CrossContractExample:
         return {
             "success": True,
             "message": f"Successfully set greeting to '{original_greeting}'",
-            "result": result
+            "result": result.data
         }
 ```
 </Language>
@@ -277,31 +282,32 @@ You can attach an unused GAS weight by specifying the `.with_unused_gas_weight()
   <TabItem value="python" label="🐍 Python">
 
     ```python
-    from near_sdk_py.promises import Contract, Promise
-    from near_sdk_py import Context
+    from near_sdk_py import Contract, Context, ONE_TGAS
     
     # High-level Contract API (recommended)
-    Contract("external_address").call(
+    CrossContract("external_address").call(
         "function_name",  # Method to call
         arg1="value1",    # Keyword arguments for the method
         arg2="value2"
     ).then(
         "callback_name",  # Method name in this contract to use as callback
         context_data="saved_for_callback"  # Additional context data for the callback
-    )
+    ).value()
     
     # Lower-level Promise API
+    from near_sdk_py import Promise
+    
     Promise.create_batch("external_address").function_call(
         "function_name", 
         {"arg1": "value1", "arg2": "value2"},  # Arguments as a dictionary
         amount=0,   # Deposit in yoctoNEAR
         gas=5 * ONE_TGAS  # Gas allowance
     ).then(
-        # Method name for callback
-        "callback_name",
-        # Additional context data
-        context_data="saved_for_callback"
-    )
+        Context.current_account_id()  # The contract to call for the callback
+    ).function_call(
+        "callback_name",  # Method name for callback
+        {"context_data": "saved_for_callback"}  # Arguments for the callback
+    ).value()
     ```
 
   </TabItem>
@@ -345,11 +351,11 @@ In the callback function you will have access to the result, which will contain 
 
 <Language value="python" language="python">
 ```python
-from near_sdk_py import callback
+from near_sdk_py import callback, PromiseResult, Contract
 
-class CrossContractExample:
+class CrossContractExample(Contract):
     @callback
-    def query_greeting_callback(self, greeting_result, additional_context=None):
+    def query_greeting_callback(self, result: PromiseResult, additional_context=None):
         """
         Process the result of a cross-contract call.
         The @callback decorator automatically:
@@ -358,10 +364,10 @@ class CrossContractExample:
         3. Provides proper error handling
         
         Parameters:
-        - greeting_result: The automatically parsed result 
+        - result: The PromiseResult object with status and data
         - additional_context: Optional context passed from the calling function
         """
-        if greeting_result is None:
+        if not result.success:
             # This means the external call failed or returned nothing
             return {
                 "success": False, 
@@ -372,8 +378,8 @@ class CrossContractExample:
         # Process successful result
         return {
             "success": True,
-            "greeting": greeting_result,
-            "message": f"Successfully got greeting: {greeting_result}",
+            "greeting": result.data,
+            "message": f"Successfully got greeting: {result.data}",
             "context": additional_context
         }
 ```
@@ -418,15 +424,15 @@ operation if necessary.
 
 ## Concatenating Functions and Promises
 
-✅ Promises can be concatenate using the `.and` operator: `P1.and(P2).and(P3).then(P4)`: `P1`, `P2`, and `P3` execute in parallel, after they finish, `P4` will execute and have access to all their results
+✅ Promises can be concatenate using the `.join` operator: `P1.join([P2, P3], "callback")`: `P1`, `P2`, and `P3` execute in parallel, after they finish, the callback will execute and have access to all their results
 
-⛔ You cannot **return** a joint promise without a callback: `return P1.and(P2)` is invalid since it misses the `then`
+⛔ You cannot **return** a joint promise without a callback: `return P1.join([P2])` is invalid since it misses the callback parameter
 
-✅ You can concatenate `then` promises: `P1.then(P2).then(P3)`: `P1` executes, then `P2` executes with the result of `P1`, then `P3` executes with the result of `P2`
+✅ You can concatenate `then` promises: `P1.then("callback1").then("callback2")`: `P1` executes, then callback1 executes with the result of `P1`, then callback2 executes with the result of callback1
 
-⛔ You cannot use an `and` within a `then`: `P1.then(P2.and(P3))` is invalid
+⛔ You cannot use a `join` within a `then`: `P1.then(P2.join([P3]))` is invalid
 
-⛔ You cannot use a `then` within a `then`: `P1.then(P2.then(P3))` is invalid
+⛔ You cannot use a `then` within a `then`: `P1.then(P2.then("callback"))` is invalid
 
 <hr class="subsection" />
 
@@ -455,30 +461,45 @@ An important property of batch calls is that they **act as a unit**: they execut
   <TabItem value="python" label="🐍 Python">
 
 ```python
-from near_sdk_py import call, Context
-from near_sdk_py.promises import Contract, callback
-from near_sdk_py.constants import ONE_TGAS
+from near_sdk_py import call, Context, Contract, callback, PromiseResult, ONE_TGAS, CrossContract, init
 
-class BatchCallsExample:
-    def __init__(self):
-        self.hello_contract = "hello-near.testnet"
+class BatchCallsExample(Contract):
+    # Contract we want to interact with
+    hello_contract = "hello-near.testnet"
+    
+    @init
+    def new(self):
+        """Initialize the contract"""
+        pass
         
     @call
     def call_multiple_methods(self, greeting1, greeting2):
         """Call multiple methods on the same contract in a batch"""
+        # Create a contract instance
+        hello = CrossContract(self.hello_contract)
+        
         # Create a batch for the hello contract
-        # Using the fluent batch API
-        return Contract(self.hello_contract).batch()\
-            .function_call("set_greeting", message=greeting1)\
-            .function_call("another_method", arg1=greeting2)\
-            .then("batch_callback", original_data=[greeting1, greeting2])
+        batch = hello.batch()
+        
+        # Add function calls to the batch
+        batch.function_call("set_greeting", {"message": greeting1})
+        batch.function_call("another_method", {"arg1": greeting2})
+        
+        # Add a callback to process the result
+        promise = batch.then(Context.current_account_id()).function_call(
+            "batch_callback", 
+            {"original_data": [greeting1, greeting2]},
+            gas=10 * ONE_TGAS
+        )
+        
+        return promise.value()
         
     @callback
-    def batch_callback(self, result, original_data=None):
+    def batch_callback(self, result: PromiseResult, original_data=None):
         """Process batch result - only gets the result of the last operation"""
         return {
-            "success": result is not None,
-            "result": result,
+            "success": result.success,
+            "result": result.data,
             "original_data": original_data
         }
 ```
@@ -517,43 +538,54 @@ You can also call multiple functions in **different contracts**. These functions
   <TabItem value="python" label="🐍 Python">
 
 ```python
-from near_sdk_py import call
-from near_sdk_py.promises import Contract, Promise, callback
+from near_sdk_py import call, Contract, multi_callback, PromiseResult, CrossContract, init
 
-class MultiContractExample:
-    def __init__(self):
-        self.contract_a = "contract-a.testnet"
-        self.contract_b = "contract-b.testnet"
+class MultiContractExample(Contract):
+    # Contract addresses we want to interact with
+    contract_a = "contract-a.testnet"
+    contract_b = "contract-b.testnet"
+    
+    @init
+    def new(self):
+        """Initialize the contract"""
+        pass
         
     @call
     def call_multiple_contracts(self):
         """Calls multiple different contracts in parallel"""
         # Create promises for each contract
-        promise_a = Contract(self.contract_a).call("method_a")
-        promise_b = Contract(self.contract_b).call("method_b")
+        contract_a = CrossContract(self.contract_a)
+        promise_a = contract_a.call("method_a")
+        
+        contract_b = CrossContract(self.contract_b)  
+        promise_b = contract_b.call("method_b")
         
         # Join the promises and add a callback
         # The first promise's join method can combine multiple promises
-        return promise_a.join(
+        combined_promise = promise_a.join(
             [promise_b],
             "multi_contract_callback",
             contract_ids=[self.contract_a, self.contract_b]  # Context data
         )
         
-    @callback
+        return combined_promise.value()
+        
+    @multi_callback
     def multi_contract_callback(self, results, contract_ids=None):
         """Process results from multiple contracts"""
         # results is an array containing all promise results in order
         return {
             "contract_a": {
                 "id": contract_ids[0],
-                "result": results[0]
+                "result": results[0].data,
+                "success": results[0].success
             },
             "contract_b": {
                 "id": contract_ids[1],
-                "result": results[1]
+                "result": results[1].data,
+                "success": results[1].success
             },
-            "success": all(result is not None for result in results)
+            "success": all(result.success for result in results)
         }
 ```
 
