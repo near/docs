@@ -8,37 +8,19 @@ import { Send, X } from 'lucide-react';
 
 
 function splitTextIntoParts(text) {
+  console.log(text);
+  if(!text) return [];
   const regex = /(```[\s\S]*?```)/g;
   return text.split(regex).filter(part => part !== '');
 }
 
 export const Chat = ({ toggleChat }) => {
   const { colorMode } = useColorMode();
-  const [messages, setMessages] = useState([
-    {
-      "id": 1741973644462,
-      "text": "give me the code of a hello word smart contract in rust",
-      "sender": "user"
-    },
-    {
-      "id": 1741973659720,
-      "text": "The given Rust code defines a smart contract named `hello_world` using the `ink_lang` library. The contract has a constructor `new` that initializes a message, and two functions: `get_message` to retrieve the message and `set_message` to update the message. The `ink` macro is used to mark the contract and its functions for compilation. This contract can be used as a basic example for creating and interacting with smart contracts on a blockchain platform.\n\nFind more information here:\n\n- [https://docs.near.org/docs/build/smart-contracts/anatomy/best-practices](https://docs.near.org/docs/build/smart-contracts/anatomy/best-practices)\n- [https://docs.near.org/docs/build/smart-contracts/anatomy/serialization-protocols](https://docs.near.org/docs/build/smart-contracts/anatomy/serialization-protocols)\n- [https://docs.near.org/docs/build/smart-contracts/anatomy/functions](https://docs.near.org/docs/build/smart-contracts/anatomy/functions)\n",
-      "sender": "ai"
-    },
-    {
-      "id": 1741973699798,
-      "text": "can you show the code?",
-      "sender": "user"
-    },
-    {
-      "id": 1741973708945,
-      "text": "Here is a simple \"Hello World\" smart contract written in Rust:  ```rust    \n// Define the contract structure\n#[near(contract_state)]\npub struct Contract {\n    greeting: String,\n}\n\n// Define the default, which automatically initializes the contract\nimpl Default for Contract {\n    fn default() -> Self {\n        Self {\n            greeting: \"Hello\".to_string(),\n        }\n    }\n}\n\n// Implement the contract structure\n#[near]\nimpl Contract {\n    // Public method - returns the greeting saved, defaulting to DEFAULT_GREETING\n    pub fn get_greeting(&self) -> String {\n        self.greeting.clone()\n    }\n\n    // Public method - accepts a greeting, such as \"howdy\", and records it\n    pub fn set_greeting(&mut self, greeting: String) {\n        log!(\"Saving greeting: {}\", greeting);\n        self.greeting = greeting;\n    }\n}\n```\n\nFind more information here:\n\n- [https://docs.near.org/docs/build/smart-contracts/quickstart](https://docs.near.org/docs/build/smart-contracts/quickstart)\n",
-      "sender": "ai"
-    }
-  ]);
+  const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [threadId, setThreadId] = useState(null);
+  const [seconds, setSeconds] = useState(1);
   const messagesEndRef = useRef(null);
   const chatRef = useRef(null);
   const inputRef = useRef(null); 
@@ -48,6 +30,19 @@ export const Chat = ({ toggleChat }) => {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', colorMode);
   }, [colorMode]);
+
+  useEffect(() => {
+    let interval;
+    if (isLoading) {
+      interval = setInterval(() => {
+        setSeconds((seconds) => seconds + 1);
+      }, 1000);
+    } else {
+      setSeconds(1);
+    }
+
+    return () => clearInterval(interval);
+  }, [isLoading])
 
   useEffect(() => {
     if (inputRef.current) {
@@ -149,12 +144,8 @@ export const Chat = ({ toggleChat }) => {
             ))
           )}
           {isLoading && (
-            <div className="ai-message loading">
-              <div className="dot-typing">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
+            <div className="message ai-message loading">
+              Thinking... ({seconds}s)
             </div>
           )}
           <div ref={messagesEndRef} />
