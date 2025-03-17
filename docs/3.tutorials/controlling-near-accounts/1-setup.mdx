@@ -24,7 +24,7 @@ near account create-account fund-myself
 
 ## Deriving a Public Key from MPC
 
-As you already know from the Chain Signatures documentation, `derivation_path` is the key component that allows generating multiple distinct key pairs. When combined with `predecessor_id`, it forms a unique and secure pair.
+As you already know from the [Chain Signatures documentation](/chain-abstraction/chain-signatures#how-it-works), `derivation_path` is the key component that allows generating multiple distinct key pairs. When combined with `predecessor_id`, it forms a unique and secure pair.
 
 In our example, the smart contract acts as a proxy between a user and the MPC, which means the contract itself becomes the `predecessor` in the derivation process.
 
