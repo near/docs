@@ -1,10 +1,10 @@
 ---
 id: transfer
-title: Transfer Near tokens on behalf controlled account
+title: Transfer Near tokens on behalf of a controlled account
 sidebar_label: Act on behalf of controllable account
 ---
 
-At this part of the tutorial, we'll dig into how transaction arguments are built, how to request a signature according to the arguments from the smart contract, and how to broadcast the signed transaction into the network.
+In this part of the tutorial, we'll dig into how transaction arguments are built, how to request a signature according to the arguments from the smart contract, and how to broadcast the signed transaction into the network.
 
 ## Building transaction arguments
 
@@ -86,4 +86,4 @@ console.log(
 
 ## Final Thoughts
 
-With that, we've successfully completed the full journey of acting on behalf of another Near account securely and transferred to yourself 0.1 NEAR from controllable account. By following this process, you now have a solid understanding of how to manage external accounts on Near using Multi-Party Computation (MPC).
+With that, we've successfully completed the full journey of acting on behalf of another Near account securely and transferred to yourself 0.1 NEAR from a controllable account. By following this process, you now have a solid understanding of how to manage external accounts on Near using Multi-Party Computation (MPC).

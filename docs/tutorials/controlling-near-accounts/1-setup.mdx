@@ -1,13 +1,13 @@
 ---
 id: setup
-title: Setting up the Near account to be controlled by MPC
+title: Setting up a Near account to be controlled by MPC
 sidebar_label: Setup controllable Near account
 ---
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-One of the powerful features of the NEAR Protocol is its flexible access keys architecture. An account can hold multiple access keys, each with different levels of permission. This enables us to grant transaction-signing capabilities to an external key without compromising security.
+One of the powerful features of the NEAR Protocol is its flexible [access keys architecture](/protocol/access-keys). An account can hold multiple access keys, each with different levels of permission. This enables us to grant transaction-signing capabilities to an external key without compromising security.
 
 To achieve secure external control via MPC, we must derive a valid `secp256k1` public key from the MPC smart contract. This key belongs to a key pair that will be used later in the tutorial for signing transactions securely.
 
@@ -101,6 +101,6 @@ await account.addKey(derivedPublicKey);
   </TabItem>
 </Tabs>
 
-In our example, we’ve added this public key as a **FullAccess key**, meaning it has full control over the account, this allows us to execute all transactions without limitations. However, it is also possible to add the key as a **FunctionCall access key** with limited permissions.
+In our example, we’ve added this public key as a [**FullAccess key**](/protocol/access-keys#full-access-keys), meaning it has full control over the account, this allows us to execute all transactions without limitations. However, it is also possible to add the key as a **FunctionCall access key** with limited permissions.
 
 The next step is to create, sign and eventually send a transfer transaction on behalf of `controllable.testnet`. Continue to [the next chapter](2-transfer.md) to learn how.
