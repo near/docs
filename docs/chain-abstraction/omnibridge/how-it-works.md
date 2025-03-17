@@ -24,7 +24,7 @@ Before exploring how Chain Signatures solves these issues, it's important to und
 
 When a token transfer happens on NEAR using `ft_transfer_call`, the token contract first transfers the tokens and then automatically calls the specified `ft_on_transfer` method on the receiver contract. While these operations happen in sequence within the same transaction, the receiver contract has the ability to reject the transfer, causing the tokens to be refunded. This atomic behavior ensures the integrity and safety of bridge operations by preventing partial execution states.
 
-For more information see [Fungible Tokens](../../2.build/5.primitives/ft.md).
+For more information see [Fungible Tokens](../../primitives/ft.md).
 
 ## Enter Chain Signatures
 
