@@ -475,7 +475,7 @@ When you are ready to create a build of the contract run a one-line command depe
 
   ```bash
   # Build with nearc through the uv executor (no installation needed)
-  uvx nearc build greeting_contract.py -o greeting_contract.wasm
+  uvx nearc
   ```
   
   The above command will compile your Python contract into WebAssembly (WASM) that can be deployed to the NEAR blockchain.
