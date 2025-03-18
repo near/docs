@@ -67,6 +67,28 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/release
 # Install Python (if not already installed)
 # Use your system's package manager or download from https://www.python.org/downloads/
 
+# Install Emscripten (required for compiling Python contracts to WebAssembly)
+# For Linux/macOS:
+git clone https://github.com/emscripten-core/emsdk.git
+cd emsdk
+./emsdk install latest
+./emsdk activate latest
+source ./emsdk_env.sh
+# Add to your .bashrc or .zshrc for permanent installation:
+# echo 'source "/path/to/emsdk/emsdk_env.sh"' >> ~/.bashrc
+cd ..
+
+# For Windows:
+# Download and extract: https://github.com/emscripten-core/emsdk
+# Then in Command Prompt:
+# cd emsdk
+# emsdk install latest
+# emsdk activate latest
+# emsdk_env.bat
+
+# Verify installation with:
+emcc --version
+
 # Install uv for Python package management
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
@@ -187,6 +209,12 @@ uv add near-sdk-py
 :::tip
 
 `hello-near` is the name we chose for this project so the tutorial is simpler to follow, but for future projects feel free to use any name you prefer
+
+:::
+
+:::important
+
+Ensure you have Emscripten properly installed and available in your PATH. The compilation process requires it to convert Python code to WebAssembly.
 
 :::
 
@@ -486,6 +514,17 @@ When you are ready to create a build of the contract run a one-line command depe
   
   :::
 
+  :::important
+  
+  This step requires Emscripten to be installed and accessible in your PATH. If you encounter errors during compilation, verify that Emscripten is properly installed with `emcc --version`.
+  
+  Common compilation errors and solutions:
+  - `emcc: command not found` - Emscripten is not in your PATH. Run `source /path/to/emsdk/emsdk_env.sh` to add it temporarily.
+  - `error: invalid version of emscripten` - Your Emscripten version might be too old. Try updating with `./emsdk install latest && ./emsdk activate latest`.
+  - `Could not find platform micropython-dev-wasm32` - This typically means the Emscripten installation is incomplete or not properly activated.
+  
+  :::
+
   </TabItem>
 </Tabs>
 
@@ -706,5 +745,6 @@ At the time of this writing, this example works with the following versions:
 - Python: `3.11`
 - near-sdk-py: `0.4.1`
 - uvx nearc: `0.1.0`
+- emscripten: `4.0.3` (required for Python contracts)
 
 :::
