@@ -670,7 +670,7 @@ We can now change the greeting stored in the contract. The `set_greeting` method
   <TabItem value="full" label="Full">
 
     ```bash
-    > near contract call-function as-transaction <created-account> set_greeting json-args '{"message": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
+    > near contract call-function as-transaction <created-account> set_greeting json-args '{"greeting": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
     # {"success": true}
     ```
   </TabItem>
