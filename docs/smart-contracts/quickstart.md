@@ -662,7 +662,7 @@ We can now change the greeting stored in the contract. The `set_greeting` method
   <TabItem value="short" label="Short">
 
   ```bash
-  > near call <created-account> set_greeting '{"message": "Hola"}' --accountId <created-account>
+  > near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
   # {"success": true}
   ```
   </TabItem>
