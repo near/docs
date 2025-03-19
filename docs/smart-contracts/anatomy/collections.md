@@ -686,8 +686,6 @@ In Python, we create unique prefixes for nested collections by including the par
 
 Because the values are not kept in memory and are lazily loaded from storage, it's important to make sure if a collection is replaced or removed, that the storage is cleared. In addition, it is important that if the collection is modified, the collection itself is updated in state because most collections will store some metadata.
 
-Because the values are not kept in memory and are lazily loaded from storage, it's important to make sure if a collection is replaced or removed, that the storage is cleared. In addition, it is important that if the collection is modified, the collection itself is updated in state because most collections will store some metadata.
-
 Some error-prone patterns to avoid that cannot be restricted at the type level are:
 
 <Tabs>
