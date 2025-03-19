@@ -76,8 +76,6 @@ export const Chat = ({ toggleChat }) => {
   }, [toggleChat]);
 
   const getAIResponse = async (userMessage) => {
-    setIsLoading(true);
-
     const response = await axios.post('https://tmp-docs-ai-service.onrender.com/api/chat', {
       messages: userMessage,
       threadId: threadId
@@ -86,9 +84,7 @@ export const Chat = ({ toggleChat }) => {
         'Content-Type': 'application/json'
       }
     });
-
-    setIsLoading(false);
-    return response.data || "I was not able to process your request. Please try again.";
+    return response.data;
   };
 
   const handleSendMessage = async (e) => {
@@ -99,11 +95,19 @@ export const Chat = ({ toggleChat }) => {
     setMessages([...messages, userMessage]);
     setInputMessage('');
 
-    const aiResponseText = await getAIResponse(inputMessage);
-    setThreadId(aiResponseText.threadId);
+    setIsLoading(true);
 
-    const aiMessage = { id: Date.now() + 1, text: aiResponseText.message, sender: 'ai' };
-    setMessages(prevMessages => [...prevMessages, aiMessage]);
+    try {
+      const aiResponseText = await getAIResponse(inputMessage);
+      setThreadId(aiResponseText.threadId);
+  
+      const aiMessage = { id: Date.now() + 1, text: aiResponseText.message, sender: 'ai' };
+      setMessages(prevMessages => [...prevMessages, aiMessage]);
+    } catch (error) {
+      const aiMessage = { id: Date.now() + 1, text: "I was not able to process your request, please try again", sender: 'ai' };
+      setMessages(prevMessages => [...prevMessages, aiMessage]);
+    }
+    setIsLoading(false);
   };
 
   useEffect(() => {
