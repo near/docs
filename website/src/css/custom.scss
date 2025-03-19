@@ -19,7 +19,7 @@
     --chat-ai-text-color: #212529;
     --chat-welcome-text: #6c757d;
     --chat-input-text: #212529;
-    --chat-input-bg-focus:#fff;
+    --chat-input-bg-focus: #fff;
     --chat-toggle-button-bg: #dee2e6;
 }
 
@@ -30,7 +30,7 @@
     hr {
         background-color: #2d2d2d;
     }
-    
+
     --chat-bg: #212529;
     --chat-header-bg: #343a40;
     --chat-input-bg: #495057;
@@ -275,7 +275,7 @@ li hr {
     border-width: 0;
 }
 
-li > ul {
+li>ul {
     margin-top: 0.4rem;
 }
 
@@ -486,7 +486,7 @@ div[class^="announcementBar_"] {
     h2 {
         margin-top: 4rem;
     }
-} 
+}
 
 #__blog-post-container {
     padding-top: 1rem;
@@ -505,19 +505,17 @@ div[class^="announcementBar_"] {
 .chat-toggle-button {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     position: fixed;
-    bottom: 20px;
-    right: 80px;
+    bottom: 2rem;
+    right: 2.5rem;
     display: flex;
-    font-size: 36px;
     justify-content: center;
     align-items: center;
     background-color: var(--chat-ai-message-bg);
     color: var(--chat-text-color);
     cursor: pointer;
     border: none;
+
     i {
         font-size: 1.5rem;
     }
@@ -526,6 +524,71 @@ div[class^="announcementBar_"] {
         transform: scale(1.05);
         transition: transform 0.2s ease;
     }
+}
+
+.animated-border-box {
+    max-height: 60px;
+    max-width: 60px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.animated-border-box:before {
+    content: '';
+    z-index: -2;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    /*border color, change middle color*/
+    background-image: conic-gradient(rgba(0, 0, 0, 0), #1976ed, rgba(0, 0, 0, 0) 25%);
+    /* change speed here */
+    animation: rotate 4s linear infinite;
+}
+
+.animated-border-box:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    /* border width */
+    left: 5px;
+    top: 5px;
+    /* double the px from the border width left */
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    /*bg color*/
+    background: var(--chat-ai-message-bg);
+    /*box border radius*/
+    border-radius: 7px;
+}
+
+@keyframes rotate {
+    100% {
+        transform: translate(-50%, -50%) rotate(1turn);
+    }
+}
+
+/*// Border Animation END//*/
+
+
+
+/*// Ignore This //*/
+body {
+    margin: 0px;
+}
+
+.center-box {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1D1E22;
 }
 
 .floating-chat-container {
@@ -538,7 +601,7 @@ div[class^="announcementBar_"] {
     align-content: center;
     z-index: 1000;
 
-    .card:hover{
+    .card:hover {
         transform: translateY(0);
     }
 
@@ -577,7 +640,7 @@ div[class^="announcementBar_"] {
                 }
             }
 
-            &:hover{
+            &:hover {
                 transform: translateY(0);
             }
         }
@@ -635,7 +698,7 @@ div[class^="announcementBar_"] {
             padding: 1rem;
             border-top: 1px solid var(--chat-ai-message-border);
             border: none;
-            
+
             .input-group {
                 display: flex;
                 border-radius: 8px;
@@ -686,37 +749,41 @@ div[class^="announcementBar_"] {
 }
 
 .dot-typing {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
 
-  span {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    margin: 0 2px;
-    background-color: #fff;
-    border-radius: 50%;
-    animation: dotTyping 1.4s infinite ease-in-out both;
-  }
+    span {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        margin: 0 2px;
+        background-color: #fff;
+        border-radius: 50%;
+        animation: dotTyping 1.4s infinite ease-in-out both;
+    }
 
-  span:nth-child(1) {
-    animation-delay: -0.32s;
-  }
+    span:nth-child(1) {
+        animation-delay: -0.32s;
+    }
 
-  span:nth-child(2) {
-    animation-delay: -0.16s;
-  }
+    span:nth-child(2) {
+        animation-delay: -0.16s;
+    }
 }
 
 @keyframes dotTyping {
-  0%, 80%, 100% {
-    transform: scale(0);
-  }
-  40% {
-    transform: scale(1);
-  }
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+    }
 }
 
 .code-block-container {
@@ -754,9 +821,11 @@ div[class^="announcementBar_"] {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.2);
     }
+
     100% {
         transform: scale(1);
     }

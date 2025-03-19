@@ -8,7 +8,6 @@ import { Send, X } from 'lucide-react';
 
 
 function splitTextIntoParts(text) {
-  console.log(text);
   if(!text) return [];
   const regex = /(```[\s\S]*?```)/g;
   return text.split(regex).filter(part => part !== '');
@@ -89,7 +88,7 @@ export const Chat = ({ toggleChat }) => {
     });
 
     setIsLoading(false);
-    return response.data;
+    return response.data || "I was not able to process your request. Please try again.";
   };
 
   const handleSendMessage = async (e) => {
@@ -118,7 +117,7 @@ export const Chat = ({ toggleChat }) => {
       <Card.Header className="chat-header">
         <div className="chat-title">
           <i className="bi bi-robot me-2"></i>
-          Near IA
+          Docs AI (Beta)
         </div>
         <X
           className="close-button"
