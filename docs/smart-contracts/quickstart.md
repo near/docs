@@ -214,7 +214,7 @@ uv add near-sdk-py
 
 :::important
 
-Ensure you have Emscripten properly installed and available in your PATH. The compilation process requires it to convert Python code to WebAssembly.
+Ensure you have [Emscripten](https://emscripten.org/) properly installed and available in your `PATH`. The compilation process requires it to convert Python code to WebAssembly.
 
 :::
 
@@ -249,38 +249,9 @@ The `Hello World` smart contract stores a greeting in its state, and exposes two
 
   <TabItem value="py" label="🐍 Python">
 
-```python
-from near_sdk_py import Contract, view, call, init
-
-class GreetingContract(Contract):
-    """
-    A simple greeting contract that stores and returns a message.
-    """
-    
-    @init
-    def initialize(self, default_message="Hello, NEAR world!"):
-        """
-        Initialize the contract with a default greeting message.
-        """
-        self.storage["greeting"] = default_message
-        return {"success": True}
-    
-    @call
-    def set_greeting(self, message: str):
-        """
-        Change the greeting message.
-        """
-        self.storage["greeting"] = message
-        self.log_info(f"Saving greeting: {message}")
-        return {"success": True}
-    
-    @view
-    def get_greeting(self):
-        """
-        Retrieve the current greeting message.
-        """
-        return self.storage.get("greeting", "Hello, NEAR world!")
-```
+    <Github fname="contract.py" language="python"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/greeting_contract.py"
+            start="3" end="30" />
 
   </TabItem>
 </Tabs>
@@ -332,60 +303,9 @@ Building and testing the contract is as simple as running the `test` command. Th
 
   Add the following content to `tests/test_greeting.py`:
 
-  ```python
-  from near_pytest.testing import NearTestCase
-  import json
-
-  class TestGreetingContract(NearTestCase):
-      @classmethod
-      def setup_class(cls):
-          """Compile and deploy the greeting contract."""
-          super().setup_class()
-          
-          # Compile the contract
-          wasm_path = cls.compile_contract(
-              "greeting_contract.py", 
-              single_file=True
-          )
-          
-          # Deploy the contract
-          cls.contract_account = cls.create_account("contract")
-          cls.instance = cls.deploy_contract(cls.contract_account, wasm_path)
-          
-          # Initialize the contract
-          cls.instance.call_as(
-              account=cls.contract_account,
-              method_name="initialize",
-              args={"default_message": "Initial greeting"},
-          )
-          
-          # Create test user
-          cls.user = cls.create_account("user")
-          
-          # Save state for future resets
-          cls.save_state()
-      
-      def setup_method(self):
-          """Reset state before each test method."""
-          self.reset_state()
-          
-      def test_greeting(self):
-          # Set greeting as user
-          result = self.instance.call_as(
-              account=self.user,
-              method_name="set_greeting",
-              args={"message": "Hello from test!"}
-          )
-          result = json.loads(result)
-          assert result["success"] == True
-          
-          # Get greeting
-          greeting = self.instance.call_as(
-              account=self.user,
-              method_name="get_greeting"
-          )
-          assert greeting == "Hello from test!"
-  ```
+  <Github fname="contract.py" language="python"
+        url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/tests/test_greeting.py"
+        start="1" end="52" />
 
   Run the test:
 
@@ -510,13 +430,13 @@ When you are ready to create a build of the contract run a one-line command depe
   
   :::info
   
-  The default nearc build configuration is appropriate for most contracts. You don't need to install nearc separately as we're using `uvx` to run it directly.
+  The default `nearc` build configuration is appropriate for most contracts. You don't need to install nearc separately as we're using `uvx` to run it directly.
   
   :::
 
   :::important
   
-  This step requires Emscripten to be installed and accessible in your PATH. If you encounter errors during compilation, verify that Emscripten is properly installed with `emcc --version`.
+  This step requires [Emscripten](https://emscripten.org/) to be installed and accessible in your `PATH`. If you encounter errors during compilation, verify that Emscripten is properly installed with `emcc --version`.
   
   Common compilation errors and solutions:
   - `emcc: command not found` - Emscripten is not in your PATH. Run `source /path/to/emsdk/emsdk_env.sh` to add it temporarily.
