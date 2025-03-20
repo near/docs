@@ -61,6 +61,42 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/release
 
 </TabItem>
 
+<TabItem value="py" label="🐍 Python">
+
+```bash
+# Install Python (if not already installed)
+# Use your system's package manager or download from https://www.python.org/downloads/
+
+# Install Emscripten (required for compiling Python contracts to WebAssembly)
+# For Linux/macOS:
+git clone https://github.com/emscripten-core/emsdk.git
+cd emsdk
+./emsdk install latest
+./emsdk activate latest
+source ./emsdk_env.sh
+# Add to your .bashrc or .zshrc for permanent installation:
+# echo 'source "/path/to/emsdk/emsdk_env.sh"' >> ~/.bashrc
+cd ..
+
+# For Windows:
+# Download and extract: https://github.com/emscripten-core/emsdk
+# Then in Command Prompt:
+# cd emsdk
+# emsdk install latest
+# emsdk activate latest
+# emsdk_env.bat
+
+# Verify installation with:
+emcc --version
+
+# Install uv for Python package management
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install NEAR CLI-RS to deploy and interact with the contract
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+```
+
+</TabItem>
 </Tabs>
 
 :::note
@@ -143,6 +179,46 @@ hello-near
 
 </TabItem>
 
+<TabItem value="py" label="🐍 Python">
+
+Create a new project using `uv init`:
+
+```bash
+uv init hello-near
+cd hello-near
+```
+
+This creates a Python project with the following structure:
+
+```bash
+hello-near
+├── .git                 # Git repository
+├── .gitignore           # Git ignore file
+├── .python-version      # Python version file
+├── README.md            # README
+├── main.py              # Main Python file
+└── pyproject.toml       # Project configuration
+```
+
+Now, add the NEAR SDK to your project:
+
+```bash
+uv add near-sdk-py
+```
+
+:::tip
+
+`hello-near` is the name we chose for this project so the tutorial is simpler to follow, but for future projects feel free to use any name you prefer
+
+:::
+
+:::important
+
+Ensure you have [Emscripten](https://emscripten.org/) properly installed and available in your `PATH`. The compilation process requires it to convert Python code to WebAssembly.
+
+:::
+
+</TabItem>
 </Tabs>
 
 
@@ -171,6 +247,15 @@ The `Hello World` smart contract stores a greeting in its state, and exposes two
 
   </TabItem>
 
+  <TabItem value="py" label="🐍 Python">
+
+  Create a `greeting_contract.py` file for your contract:
+
+    <Github fname="contract.py" language="python"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/greeting_contract.py"
+            start="3" end="30" />
+
+  </TabItem>
 </Tabs>
 
 :::tip
@@ -207,7 +292,34 @@ Building and testing the contract is as simple as running the `test` command. Th
   ```
 
   </TabItem>
+  
+  <TabItem value="py" label="🐍 Python">
 
+  Create a test file for your contract:
+
+  ```bash
+  # Create a tests directory
+  mkdir tests
+  touch tests/test_greeting.py
+  ```
+
+  Add the following content to `tests/test_greeting.py`:
+
+  <Github fname="contract.py" language="python"
+        url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/tests/test_greeting.py"
+        start="1" end="52" />
+
+  Run the test:
+
+  ```bash
+  # Add near-pytest to your project
+  uv add near-pytest
+  
+  # Run the test
+  uv run pytest tests/test_greeting.py -v
+  ```
+
+  </TabItem>
 </Tabs>
 
 In the background, these commands are calling the build tools for each language and using a [Sandbox](./testing/integration-test.md) to test the contract.
@@ -308,7 +420,34 @@ When you are ready to create a build of the contract run a one-line command depe
   :::
 
   </TabItem>
+  
+  <TabItem value="py" label="🐍 Python">
 
+  ```bash
+  # Build with nearc through the uv executor (no installation needed)
+  uvx nearc
+  ```
+  
+  The above command will compile your Python contract into WebAssembly (WASM) that can be deployed to the NEAR blockchain.
+  
+  :::info
+  
+  The default `nearc` build configuration is appropriate for most contracts. You don't need to install nearc separately as we're using `uvx` to run it directly.
+  
+  :::
+
+  :::important
+  
+  This step requires [Emscripten](https://emscripten.org/) to be installed and accessible in your `PATH`. If you encounter errors during compilation, verify that Emscripten is properly installed with `emcc --version`.
+  
+  Common compilation errors and solutions:
+  - `emcc: command not found` - Emscripten is not in your PATH. Run `source /path/to/emsdk/emsdk_env.sh` to add it temporarily.
+  - `error: invalid version of emscripten` - Your Emscripten version might be too old. Try updating with `./emsdk install latest && ./emsdk activate latest`.
+  - `Could not find platform micropython-dev-wasm32` - This typically means the Emscripten installation is incomplete or not properly activated.
+  
+  :::
+
+  </TabItem>
 </Tabs>
 
 ---
@@ -356,11 +495,96 @@ Having our account created, we can now deploy the contract:
       </TabItem>
     </Tabs>
   </TabItem>
+  
+  <TabItem value="py" label="🐍 Python">
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+        ```bash
+        near deploy <created-account> ./greeting_contract.wasm
+        ```
+
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract deploy <created-account> use-file ./greeting_contract.wasm without-init-call network-config testnet sign-with-keychain send
+        ```
+
+      </TabItem>
+    </Tabs>
+  </TabItem>
 </Tabs>
 
 **Congrats**! Your contract now lives in the NEAR testnet network.
 
 ---
+
+## Initializing the Contract
+
+After deploying, you'll need to initialize the contract:
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+        ```bash
+        near call <created-account> new '{}' --accountId <created-account>
+        ```
+
+      </TabItem>
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction <created-account> new json-args '{}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
+        ```
+
+      </TabItem>
+    </Tabs>
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+        ```bash
+        near call <created-account> new '{}' --accountId <created-account>
+        ```
+
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction <created-account> new json-args '{}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
+        ```
+
+      </TabItem>
+    </Tabs>
+  </TabItem>
+  
+  <TabItem value="py" label="🐍 Python">
+    <Tabs groupId="cli-tabs">
+      <TabItem value="short" label="Short">
+
+        ```bash
+        near call <created-account> initialize '{"default_message":"Hello, NEAR world!"}' --accountId <created-account>
+        ```
+
+      </TabItem>
+
+      <TabItem value="full" label="Full">
+
+        ```bash
+        near contract call-function as-transaction <created-account> initialize json-args '{"default_message":"Hello, NEAR world!"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
+        ```
+
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>
 
 ## Interacting with the Contract
 
@@ -376,7 +600,7 @@ Let's start by fetching the greeting stored in the contract. The `get_greeting` 
 
     ```bash
     > near view <created-account> get_greeting
-    # "Hello"
+    # "Hello, NEAR world!"
     ```
   </TabItem>
 
@@ -384,7 +608,7 @@ Let's start by fetching the greeting stored in the contract. The `get_greeting` 
 
     ```bash
     > near contract call-function as-read-only <created-account> get_greeting json-args {} network-config testnet now
-    # "Hello"
+    # "Hello, NEAR world!"
     ```
   </TabItem>
 </Tabs>
@@ -400,7 +624,7 @@ We can now change the greeting stored in the contract. The `set_greeting` method
 
   ```bash
   > near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
-  # Log: Saving greeting "Hola"
+  # {"success": true}
   ```
   </TabItem>
 
@@ -408,7 +632,7 @@ We can now change the greeting stored in the contract. The `set_greeting` method
 
     ```bash
     > near contract call-function as-transaction <created-account> set_greeting json-args '{"greeting": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
-    #Log: Saving greeting "Hola"
+    # {"success": true}
     ```
   </TabItem>
 </Tabs>
@@ -440,5 +664,9 @@ At the time of this writing, this example works with the following versions:
 - rustc: `1.81.0`
 - near-cli-rs: `0.17.0`
 - cargo-near: `0.13.2`
+- Python: `3.11`
+- near-sdk-py: `0.4.1`
+- uvx nearc: `0.1.0`
+- emscripten: `4.0.3` (required for Python contracts)
 
 :::
