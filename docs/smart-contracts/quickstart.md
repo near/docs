@@ -249,6 +249,8 @@ The `Hello World` smart contract stores a greeting in its state, and exposes two
 
   <TabItem value="py" label="🐍 Python">
 
+  Create a `greeting_contract.py` file for your contract:
+
     <Github fname="contract.py" language="python"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/greeting_contract.py"
             start="3" end="30" />
