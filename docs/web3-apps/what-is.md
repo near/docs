@@ -14,7 +14,7 @@ NEAR simplifies building Web3 apps for the general public, making it easy to **i
 
 ---
 
-### Why Integrating NEAR to your App?
+### Why Integrate NEAR Protocol with your App?
 Any application can benefit from integrating NEAR, including games, financial services, social platforms, and more.
 
 - **Easy Onboarding**: Users can create accounts using familiar methods such as email login. Furthermore, applications can cover all transactional costs for their users, so they never have to worry about handling crypto.
