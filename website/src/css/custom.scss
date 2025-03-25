@@ -673,6 +673,10 @@ body {
                         background-color: var(--chat-user-message-bg);
                         color: white;
                         border-bottom-right-radius: 3px;
+
+                        p {
+                            margin-bottom: 0;
+                        }
                     }
 
                     &.ai-message {
