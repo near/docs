@@ -427,11 +427,7 @@ iframe+em {
     font-weight: 400 !important;
 }
 
-/*
-Feedback widget CSS customization
-https://www.feelback.dev/docs/guides/stripe-like-documentation-feedback-for-docusaurus/
-*/
-@import "@feelback/react/styles/feelback.css";
+/* Feedback */
 
 .feedback-button {
     padding: 2px;
