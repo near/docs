@@ -34,7 +34,6 @@
     "@docusaurus/plugin-sitemap": "^3.5.2",
     "@docusaurus/preset-classic": "^3.5.2",
     "@docusaurus/theme-mermaid": "^3.5.2",
-    "@feelback/react": "^0.3.4",
     "@saucelabs/theme-github-codeblock": "^0.2.3",
     "axios": "^1.8.2",
     "bootstrap": "^5.3.2",

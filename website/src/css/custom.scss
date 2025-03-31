@@ -433,16 +433,22 @@ https://www.feelback.dev/docs/guides/stripe-like-documentation-feedback-for-docu
 */
 @import "@feelback/react/styles/feelback.css";
 
-.feelback-container .feelback-btn {
-    background-color: #1a8870;
-    color: white;
+.feedback-button {
+    padding: 2px;
+    margin-right: 8px;
+    background-color: #fff0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.feelback-container textarea {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 0.5rem;
+.thumbs-up {
+    border: 1px solid #91e492;
 }
+
+.thumbs-down {
+    border: 1px solid #e4ac91;
+ }
 
 /* Announcement bar */
 div[class^="announcementBar_"] {

@@ -6,8 +6,7 @@ import { useColorMode } from '@docusaurus/theme-common';
 import MarkdownRenderer from './MarkdownRenderer';
 import { Send, X } from 'lucide-react';
 import posthog from 'posthog-js';
-import { Question, PRESET_YESNO_LIKE_DISLIKE } from '@feelback/react';
-import '@feelback/react/styles/feelback.css';
+import Feedback from './feedback';
 
 function splitTextIntoParts(text) {
   if (!text) return [];
@@ -17,7 +16,18 @@ function splitTextIntoParts(text) {
 
 export const Chat = ({ toggleChat }) => {
   const { colorMode } = useColorMode();
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      id: Date.now(),
+      text: 'I need help',
+      sender: 'user',
+    },
+    {
+      id: Date.now(),
+      text: 'Here is the answer',
+      sender: 'ai',
+    },
+  ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [threadId, setThreadId] = useState(null);
@@ -159,12 +169,7 @@ export const Chat = ({ toggleChat }) => {
                     return <MarkdownRenderer part={part} isDarkTheme={isDarkTheme} key={index} />;
                   })}
                   {msg.sender === 'ai' && (
-                    <Question
-                      text="Was this answer helpful?"
-                      items={PRESET_YESNO_LIKE_DISLIKE}
-                      showLabels
-                      onClick={handleFeedback}
-                    />
+                    <Feedback id={msg.id} handler={handleFeedback} />
                   )}
                 </div>
               ))
