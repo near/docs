@@ -242,9 +242,9 @@ from near_sdk_py import view, call, init
 from near_sdk_py.collections import Vector, LookupMap, UnorderedMap, LookupSet, UnorderedSet
 
 class MyContract:
-@init
-def new(self): # Create a Vector with prefix "v"
-self.my_vector = Vector("v")
+    @init
+    def new(self): # Create a Vector with prefix "v"
+        self.my_vector = Vector("v")
 
         # Create a LookupMap with prefix "m"
         self.my_lookup_map = LookupMap("m")
