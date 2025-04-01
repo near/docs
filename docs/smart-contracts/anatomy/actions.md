@@ -57,6 +57,22 @@ You can send $NEAR from your contract to any other account on the network. The G
 
 </TabItem>
 
+<TabItem value="python" label="🐍 Python">
+
+```python
+from near_sdk_py import call, Contract
+from near_sdk_py.promises import Promise
+
+class ExampleContract(Contract):
+    @call
+    def transfer(self, to, amount):
+        """Transfers NEAR to another account"""
+        # Create a promise to transfer NEAR
+        return Promise.create_batch(to).transfer(amount)
+```
+
+</TabItem>
+
 </Tabs>
 
 :::tip Why is there no callback?
@@ -161,6 +177,44 @@ right in the callback.
 
 </TabItem>
 
+<TabItem value="python" label="🐍 Python">
+
+```python
+from near_sdk_py import call, callback, Contract
+from near_sdk_py.promises import CrossContract, Promise, PromiseResult
+from near_sdk_py.constants import ONE_TGAS
+
+# Constants
+HELLO_NEAR = "hello-nearverse.testnet"
+NO_DEPOSIT = 0
+CALL_GAS = 10 * ONE_TGAS
+
+class ExampleContract(Contract):
+    @call
+    def call_method(self):
+        """Call a method on an external contract with a callback"""
+        # Create a contract reference
+        hello = CrossContract(HELLO_NEAR)
+        
+        # Call the external contract and use our callback to process the result
+        return hello.call("set_greeting", {"message": "howdy"}).then("callback")
+    
+    @callback
+    def callback(self, result: PromiseResult):
+        """Handle the result of the external contract call"""
+        # The @callback decorator automatically handles success/failure checking
+        if not result.success:
+            # The remote call failed
+            self.log_error("Promise failed...")
+            return False
+        
+        # The remote call succeeded
+        self.log_info("Success!")
+        return True
+```
+
+</TabItem>
+
 </Tabs>
 
 :::warning
@@ -220,6 +274,31 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
       .transfer(MIN_STORAGE);
     }
   }
+```
+
+</TabItem>
+
+<TabItem value="python" label="🐍 Python">
+
+```python
+from near_sdk_py import call, Contract
+from near_sdk_py.promises import Promise
+from near_sdk_py.constants import ONE_NEAR
+
+# Minimum amount needed for storage
+MIN_STORAGE = ONE_NEAR // 1000  # 0.001Ⓝ
+
+class ExampleContract(Contract):
+    @call
+    def create(self, prefix):
+        """Create a subaccount"""
+        # Generate the new account ID
+        account_id = f"{prefix}.{self.current_account_id}"
+        
+        # Create the new account and transfer some NEAR for storage
+        return Promise.create_batch(account_id)\
+            .create_account()\
+            .transfer(MIN_STORAGE)
 ```
 
 </TabItem>
@@ -301,6 +380,39 @@ the `create_account` method of `near` or `testnet` root contracts.
 
 </TabItem>
 
+<TabItem value="python" label="🐍 Python">
+
+```python
+from near_sdk_py import call, Contract
+from near_sdk_py.promises import Promise
+from near_sdk_py.constants import ONE_NEAR, ONE_TGAS
+
+# Constants
+MIN_STORAGE = int(1.82 * ONE_NEAR / 1000)  # 0.00182Ⓝ
+CALL_GAS = 28 * ONE_TGAS
+
+class ExampleContract(Contract):
+    @call
+    def create_account(self, account_id, public_key):
+        """Create a testnet account by calling the testnet contract"""
+        # Create the arguments for the create_account method
+        args = {
+            "new_account_id": account_id,
+            "new_public_key": public_key
+        }
+        
+        # Call the testnet contract to create the account
+        return Promise.create_batch("testnet")\
+            .function_call(
+                "create_account",
+                args,
+                MIN_STORAGE,
+                CALL_GAS
+            )
+```
+
+</TabItem>
+
 </Tabs>
 
 ---
@@ -332,6 +444,36 @@ When creating an account you can also batch the action of deploying a contract t
       .deploy_contract(HELLO_CODE.to_vec());
     }
   }
+```
+
+</TabItem>
+
+<TabItem value="python" label="🐍 Python">
+
+```python
+from near_sdk_py import call, Context, Contract
+from near_sdk_py.promises import Promise 
+from near_sdk_py.constants import ONE_NEAR
+
+class ExampleContract(Contract):
+    @call
+    def deploy_contract(self, prefix):
+        """Create an account and deploy a contract to it"""
+        # This would require loading the contract bytes in Python
+        # Load contract bytes - for example purposes only
+        # In a real implementation, you'd need to read this from storage or include it
+        contract_bytes = b'...'  # This should be actual WASM bytes
+        
+        MIN_STORAGE = 1.1 * ONE_NEAR  # 1.1Ⓝ
+        
+        # Generate the new account ID
+        account_id = f"{prefix}.{self.current_account_id}"
+        
+        # Create batch of actions
+        return Promise.create_batch(account_id)\
+            .create_account()\
+            .transfer(MIN_STORAGE)\
+            .deploy_contract(contract_bytes)
 ```
 
 </TabItem>
@@ -402,6 +544,32 @@ There are two options for adding keys to the account:
       .add_full_access_key(public_key);
     }
   }
+```
+
+</TabItem>
+
+<TabItem value="python" label="🐍 Python">
+
+```python
+from near_sdk_py import call, Contract
+from near_sdk_py.promises import Promise
+from near_sdk_py.constants import ONE_NEAR
+
+# Minimum amount needed for storage
+MIN_STORAGE = ONE_NEAR // 1000  # 0.001Ⓝ
+
+class ExampleContract(Contract):
+    @call
+    def create_with_key(self, prefix, public_key):
+        """Create a subaccount with a full access key"""
+        # Generate the new account ID
+        account_id = f"{prefix}.{self.current_account_id}"
+        
+        # Create the new account, transfer some NEAR, and add a key
+        return Promise.create_batch(account_id)\
+            .create_account()\
+            .transfer(MIN_STORAGE)\
+            .add_full_access_key(public_key)
 ```
 
 </TabItem>
@@ -479,6 +647,39 @@ There are two scenarios in which you can use the `delete_account` action:
       .delete_account(beneficiary);
     }
   }
+```
+
+</TabItem>
+
+<TabItem value="python" label="🐍 Python">
+
+```python
+from near_sdk_py import call, Contract
+from near_sdk_py.promises import Promise
+from near_sdk_py.constants import ONE_NEAR
+
+# Minimum amount needed for storage
+MIN_STORAGE = ONE_NEAR // 1000  # 0.001Ⓝ
+
+class ExampleContract(Contract):
+    @call
+    def create_delete(self, prefix, beneficiary):
+        """Create an account and immediately delete it, sending funds to a beneficiary"""
+        # Generate the new account ID
+        account_id = f"{prefix}.{self.current_account_id}"
+        
+        # Create the account, transfer funds, then delete it
+        return Promise.create_batch(account_id)\
+            .create_account()\
+            .transfer(MIN_STORAGE)\
+            .delete_account(beneficiary)
+    
+    @call
+    def self_delete(self, beneficiary):
+        """Delete this contract's account"""
+        # Delete the account and send remaining funds to beneficiary
+        return Promise.create_batch(self.current_account_id)\
+            .delete_account(beneficiary)
 ```
 
 </TabItem>

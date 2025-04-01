@@ -3,8 +3,13 @@ id: reduce-size
 title: "Reducing Contract Size"
 ---
 import {Github} from "@site/src/components/codetabs"
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Reducing a contract's size
+
+<Tabs className="language-tabs" groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
 
 ## Advice & examples
 
@@ -171,3 +176,127 @@ For a `no_std` approach to minimal contracts, observe the following examples:
 </details>
 
 :::
+  </TabItem>
+  
+  <TabItem value="python" label="🐍 Python">
+
+## Optimizing Python Contracts
+
+Since Python smart contracts on NEAR are interpreted rather than compiled to WebAssembly directly, the optimization strategies differ from Rust contracts. The Python interpreter itself is already optimized, but you can still make your contract more efficient.
+
+### Reducing Contract Size
+
+#### 1. Minimize Dependencies
+
+Only import the modules and functions you need:
+
+```python
+# Less efficient - imports everything
+from near_sdk_py import *
+
+# More efficient - imports only what's needed
+from near_sdk_py import view, call, Context
+```
+
+#### 2. Use Efficient Data Structures
+
+Choose the right data structure for your needs:
+
+```python
+# Less efficient for lookups
+user_list = []  # O(n) lookup time
+for user in user_list:
+    if user["id"] == user_id:
+        return user
+
+# More efficient for lookups
+user_dict = {}  # O(1) lookup time
+if user_id in user_dict:
+    return user_dict[user_id]
+```
+
+#### 3. Optimize Storage Usage
+
+The NEAR SDK collections are optimized for on-chain storage. For large data sets, use these instead of native Python collections:
+
+```python
+# Native collection - loaded entirely into memory
+self.users = {}  # Loaded entirely on each method call
+
+# SDK collection - lazily loaded
+from near_sdk_py.collections import UnorderedMap
+self.users = UnorderedMap("u")  # Only loads what's needed
+```
+
+#### 4. Reduce String Operations
+
+String operations can be expensive. Minimize them when possible:
+
+```python
+# Less efficient
+result = ""
+for i in range(100):
+    result += str(i)  # Creates many intermediate strings
+
+# More efficient
+parts = []
+for i in range(100):
+    parts.append(str(i))
+result = "".join(parts)  # Creates strings once
+```
+
+#### 5. Avoid Recursion
+
+Deep recursion can lead to stack overflow issues. Consider iterative approaches instead:
+
+```python
+# Recursive - could cause issues with deep structures
+def process_tree(node):
+    result = process_node(node)
+    for child in node.children:
+        result += process_tree(child)
+    return result
+
+# Iterative - more efficient
+def process_tree(root):
+    result = 0
+    queue = [root]
+    while queue:
+        node = queue.pop(0)
+        result += process_node(node)
+        queue.extend(node.children)
+    return result
+```
+
+#### 6. Use Python's Built-in Functions
+
+Python's built-in functions are often optimized and more efficient:
+
+```python
+# Less efficient
+sum_value = 0
+for num in numbers:
+    sum_value += num
+
+# More efficient
+sum_value = sum(numbers)
+```
+
+#### 7. Split Complex Logic
+
+If you have a very large contract, consider splitting it into multiple contracts with focused responsibilities. This can improve maintainability and reduce the cost of individual calls.
+
+#### 8. Profile and Optimize Hot Paths
+
+Focus optimization efforts on the most frequently called functions or those that handle large amounts of data:
+
+```python
+@call
+def frequently_called_method(self, data):
+    # Optimize this code carefully
+    # Consider using more efficient algorithms and data structures
+    pass
+```
+
+  </TabItem>
+</Tabs>

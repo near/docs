@@ -160,7 +160,7 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
   </TabItem>
 
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/primitives/linkdrop/create-near-drop.json" />
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-near-drop.json" />
   </TabItem>
 </Tabs>
 
@@ -223,7 +223,7 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
   </TabItem>
 
     <TabItem value="Lantstool" label={<LantstoolLabel />}>
-        <TryOutOnLantstool path="docs/primitives/linkdrop/create-nft-drop.json" />
+        <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-nft-drop.json" />
     </TabItem>
 </Tabs>
 
@@ -269,7 +269,7 @@ near call nft.primitives.near nft_transfer_call '{"receiver_id": "v2.keypom.near
   </TabItem>
 
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/primitives/linkdrop/transfer-nft-to-v2keypomnear.json" />
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/transfer-nft-to-v2keypomnear.json" />
   </TabItem>
 </Tabs>
 
@@ -333,7 +333,7 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
   </TabItem>
 
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/primitives/linkdrop/create-ft-drop.json" />
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-ft-drop.json" />
   </TabItem>
 </Tabs>
 
@@ -380,7 +380,7 @@ near call ft.primitives.near ft_transfer '{"receiver_id": "v2.keypom.near", "amo
   </TabItem>
 
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/primitives/linkdrop/transfer-ft-to-v2keypomnear.json" />
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/transfer-ft-to-v2keypomnear.json" />
   </TabItem>
 </Tabs>
 
@@ -453,7 +453,7 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
   </TabItem>
 
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/primitives/linkdrop/create-function-call-drop.json" />
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-function-call-drop.json" />
   </TabItem>
 </Tabs>
 
