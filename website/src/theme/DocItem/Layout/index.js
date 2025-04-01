@@ -15,6 +15,7 @@ import styles from './styles.module.css';
 
 import { HelpComponent } from '../../../components/helpcomponent';
 import { FeedbackComponent } from '../../../components/FeedbackComponent';
+import AIChat from '../../../components/AIChat';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -52,6 +53,7 @@ export default function DocItemLayout({ children }) {
           </article>
           <DocItemPaginator />
           <FeedbackComponent />
+          <AIChat/>
           <HelpComponent />
           <DocItemFooter />
         </div>
