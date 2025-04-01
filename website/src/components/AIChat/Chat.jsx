@@ -16,18 +16,7 @@ function splitTextIntoParts(text) {
 
 export const Chat = ({ toggleChat }) => {
   const { colorMode } = useColorMode();
-  const [messages, setMessages] = useState([
-    {
-      id: Date.now(),
-      text: 'I need help',
-      sender: 'user',
-    },
-    {
-      id: Date.now(),
-      text: 'Here is the answer',
-      sender: 'ai',
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [threadId, setThreadId] = useState(null);
