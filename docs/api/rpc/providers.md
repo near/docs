@@ -34,6 +34,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [OMNIA](https://omniatech.io)                                              | `https://endpoints.omniatech.io/v1/near/mainnet/public`      |
 | [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            |
 | [Seracle](https://docs.seracle.com/)                                       | `https://api.seracle.com/saas/baas/rpc/near/mainnet/public/` |
+| [Tatum](https://tatum.io/chain/near/)                                      | `https://near-mainnet.gateway.tatum.io/`                     |
 | [Zeeve](https://www.zeeve.io/)                                             | -                                                            |
 
 ## Testnet
