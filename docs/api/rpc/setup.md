@@ -90,6 +90,6 @@ The `finality` param has three options: `optimistic`, `near-final` and `final`:
 
 :::info
 
-The `near-final` finallity has enough guarantees for any normal operations, and thus should be preferred for most applications
+The `near-final` finallity has enough guarantees for any normal operations, and thus should be preferred for most applications, you can learn more about it [in this official blog post](https://near.org/blog/doomslug-comparison)
 
 :::
