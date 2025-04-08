@@ -84,7 +84,7 @@ The block IDs of transactions shown in [NearBlocks Explorer](https://testnet.nea
 
 The `finality` param has three options: `optimistic`, `near-final` and `final`:
 
-1. `optimistic` the transaction is in a block that might be skiped _(< 1 second delay after the transaction is submitted)_
+1. `optimistic` the transaction is in a block that might be skipped _(< 1 second delay after the transaction is submitted)_
 2. `near-final` the transaction is in a block that is irreversible, unless at least one block producer is slashed _(1 block / approx. 1 second delay)_ 
 3. `final` the block is final and irreversible _(usually takes 2 blocks / approx. 2 second delay)_
 
