@@ -84,12 +84,20 @@ The block IDs of transactions shown in [NearBlocks Explorer](https://testnet.nea
 
 The `finality` param has three options: `optimistic`, `near-final` and `final`:
 
-1. `optimistic` the transaction is in a block that might be skipped _(< 1 second delay after the transaction is submitted)_
-2. `near-final` the transaction is in a block that is irreversible, unless at least one block producer is slashed _(1 block / approx. 1 second delay)_ 
-3. `final` the block is final and irreversible _(usually takes 2 blocks / approx. 2 second delay)_
+1. `optimistic` the transaction is in a block that - though unlikely - might be skipped (~1s after submission)
+2. `near-final` the transaction is in a block that is irreversible, unless at least one block producer is slashed ()
+3. `final` the block is final and irreversible
 
-:::info
+The `near-final` finallity has **enough guarantees** for any normal operations, and thus should be preferred for most applications, you can learn more about it [in this official blog post](https://near.org/blog/doomslug-comparison)
 
-The `near-final` finallity has enough guarantees for any normal operations, and thus should be preferred for most applications, you can learn more about it [in this official blog post](https://near.org/blog/doomslug-comparison)
+<details>
 
-:::
+<summary> How Is the Finality Calculated?</summary>
+
+After a simple transaction (no cross-contract calls) is submitted it is included in a block B and converted into a receipt. At this point, the transaction will be in an "optimistic" state. This means that the transaction could still be skipped, but only if another block is .
+
+The receipt for the transaction will execute in the following block (B+1), at which point the transaction is now "near-final". This means that the transaction is now irreversible, unless at least one block producer is slashed (because they produced a malign block).
+
+The transaction will be in a "final" state after a new block (B+2) is produced, meaning that it is now irreversible.
+
+</details>
