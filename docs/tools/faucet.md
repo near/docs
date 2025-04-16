@@ -10,8 +10,7 @@ The [Testnet Token Faucet](https://near-faucet.io/) provides fake tokens for dev
 
 :::info What's a faucet?
 
-A **blockchain token faucet** is a service that distributes small amounts of cryptocurrency or tokens for free. A faucet allow users and developers to experiment on `testnet` by providing them with a small amount of tokens to experiment with, such as paying for transaction fees (gas) or interacting with decentralized applications (dApps).
-
+A **blockchain token faucet** is a service that distributes small amounts of cryptocurrency or tokens for free. A faucet allows users and developers to experiment on `testnet` by providing them with a small amount of tokens to experiment with, such as paying for transaction fees (gas) or interacting with decentralized applications (dApps).
 :::
 
 ## Supported tokens
