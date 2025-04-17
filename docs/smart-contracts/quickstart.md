@@ -111,6 +111,12 @@ However, if you want to create one, you can do so through [a wallet](https://tes
 
 :::
 
+:::info Testnet tokens
+
+Need some `testnet` tokens? Use the [faucet](../tools/faucet.md) to top-up your account.
+
+:::
+
 ---
 
 ## Creating the Contract

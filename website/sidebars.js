@@ -565,11 +565,7 @@ const sidebar = {
       "type": "html",
       "value": "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>"
     },
-    {
-      "type": "link",
-      "label": "Testnet Faucet",
-      "href": "https://near-faucet.io/"
-    },
+    "tools/faucet",
     {
       "type": "link",
       "label": "Developer Portal",

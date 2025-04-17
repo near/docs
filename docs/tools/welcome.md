@@ -22,7 +22,7 @@ The NEAR ecosystem has a complete set of tools for you to make the most out of o
     <Feature url="/tools/indexing" title="Indexers" subtitle="Services to create your own data APIs" image="blocks.png" />
   </Column>
   <Column title="Ecosystem Tools">
-    <Feature url="https://near-faucet.io/" title="Testnet Faucet" subtitle="Get tokens for your testing accounts" image="transaction.png" />
+    <Feature url="/tools/faucet" title="Testnet Faucet" subtitle="Get tokens for your testing accounts" image="transaction.png" />
     <Feature url="https://dev.near.org/" title="Developer Portal" subtitle="Discover news, communities and more tools" image="tutorials.png" />
     <Feature url="https://app.nearcatalog.xyz/" title="NEAR Catalog" subtitle="A catalog full of awesome NEAR apps" image="guest-book.png" />
   </Column>
