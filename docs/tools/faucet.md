@@ -6,11 +6,11 @@ sidebar_label: Testnet Faucet
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The [Testnet Token Faucet](https://near-faucet.io/) provides fake tokens for developers to test smart contracts without spending real money.
+The [Testnet Token Faucet](https://near-faucet.io/) provides `testnet` tokens so you can develop and test applications on the `testnet` network
 
 :::info What's a faucet?
 
-A **blockchain token faucet** is a service that distributes small amounts of cryptocurrency or tokens for free. A faucet allows users and developers to experiment on `testnet` by providing them with a small amount of tokens to experiment with, such as paying for transaction fees (gas) or interacting with decentralized applications (dApps).
+A **faucet** is a service that distributes small amounts of `testnet` tokens so developers and users can experiment on `testnet`
 :::
 
 ## Supported tokens

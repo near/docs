@@ -113,7 +113,7 @@ However, if you want to create one, you can do so through [a wallet](https://tes
 
 :::info Testnet tokens
 
-If you need NEAR tokens or want to add funds to your `testnet` account, use the [Testnet Token Faucet](../tools/faucet.md) to get free tokens to experiment and test while building on NEAR.
+Need some `testnet` tokens? use the [faucet](../tools/faucet.md) to top-up your account
 
 :::
 
