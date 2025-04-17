@@ -10,30 +10,12 @@ The [Testnet Token Faucet](https://near-faucet.io/) provides `testnet` tokens so
 
 :::info What's a faucet?
 
-A **faucet** is a service that distributes small amounts of `testnet` tokens so developers and users can experiment on `testnet`
+A **faucet** is a service that distributes small amounts of `testnet` tokens so developers and users can experiment on `testnet`.
 :::
 
-## Supported tokens
+#### Supported tokens
 
-The [Testnet Faucet](https://near-faucet.io/) supports a wide range of `testnet` tokens, to help developers building cross-chain solutions and chain-abstracted projects:
-
-- NEAR
-- Tether USD
-- USD Coin
-- Celo Dollar
-- Debio
-- DAI stablecoin
-- HAPI
-- Ether
-- Octopus Network Token
-- Aurora
-- Skyward Finance Token
-- PARAS
-- Pulse
-- Wrapped Ether
-- Ref Finance Token
-- Wrapped BTC
-- USDC for VEX testnet
+The [Testnet Faucet](https://near-faucet.io/) supports a wide range of `testnet` tokens, to help developers building cross-chain solutions and chain-abstracted projects. Tokens include NEAR, Tether USD, USD Coin, Ether, and many others.
 
 ## Getting Testnet tokens
 
