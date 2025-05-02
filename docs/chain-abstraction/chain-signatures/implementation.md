@@ -29,13 +29,13 @@ _Diagram of a chain signature in NEAR_
 The [chainsig.js](https://github.com/NearDeFi/chainsig.js) library provides a convenient interface for completing each of these steps.
 
 :::tip
-For building transactions inside of NEAR smart contracts written in rust, you can use the [Omni Transaction](https://github.com/near/omni-transaction-rs) library to easily build transactions for different blockchains (like Bitcoin and Ethereum).
+For building transactions inside of NEAR smart contracts written in Rust, you can use the [Omni Transaction](https://github.com/near/omni-transaction-rs) library to easily build transactions for different blockchains (like Bitcoin and Ethereum).
 :::
 
 
 :::info MPC Contracts
 
-There is a [MPC contract](https://github.com/Near-One/mpc/tree/main/libs/chain-signatures/contract) available on both `mainnet` and `testnet`:
+There is an [MPC contract](https://github.com/Near-One/mpc/tree/main/libs/chain-signatures/contract) available on both `mainnet` and `testnet`:
 - Mainnet: `v1.signer`
 - Testnet: `v1.signer-prod.testnet`
 
@@ -47,7 +47,7 @@ The MPC network is made up of 8 nodes.
 
 ## Chain Adapters
 
-Before being able to use the methods the chainsig.js library provides we need to instantiate the relevant chain object. 
+Before being able to use the methods the chainsig.js library provides, we need to instantiate the relevant chain adapter object. 
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">
@@ -75,7 +75,7 @@ Before being able to use the methods the chainsig.js library provides we need to
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L18-L22" start="18" end="22" />
 
-  The Solana chain adapter takes the `MPC contract address` as an argument as well as a `conncection`which is constructed from a Solana RPC URL. If you want to use Mainnet then you need to choose a Mainnet RPC.
+  The Solana chain adapter takes the `MPC contract address` as an argument as well as a `connection` which is constructed from a Solana RPC URL. If you want to use Mainnet, then you need to choose a Mainnet RPC.
 
 </TabItem>
 
@@ -85,11 +85,11 @@ Before being able to use the methods the chainsig.js library provides we need to
 
 ## 1. Deriving the Foreign Address
 
-Chain Signatures use [`derivation paths`](../chain-signatures.md#derivation-paths-one-account-multiple-chains) to represent accounts on the target blockchain. The external address to be controlled can be deterministically derived from:
+Chain Signatures use [`derivation paths`](../chain-signatures.md#derivation-paths-one-account-multiple-chains) to represent accounts on the target blockchain. The foreign address to be controlled can be deterministically derived from:
 
 - The NEAR account calling the MPC contract (e.g., `example.near`, `example.testnet`, etc.)
 - A derivation path (a string such as `ethereum-1`, `ethereum-2`, etc.)
-- The MPC service's public key (we don't need to worry about this as it is defined in the library we're using).
+- The MPC service's master public key (we don't need to worry about this as it is defined in the library we're using).
 
 To derive the address call the `deriveAddressAndPublicKey` method passing the near account Id from which the address is being derived and the derivation path. 
 
@@ -110,7 +110,7 @@ To derive the address call the `deriveAddressAndPublicKey` method passing the ne
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L48" start="48" end="48" />
 
-  On Solana your address is the same as your public key.
+  On Solana, your address is the same as your public key.
 
 </TabItem>
 
@@ -129,7 +129,7 @@ The same NEAR account and path will always produce the same address on the targe
 
 ## 2. Creating the Transaction
 
-To construct the transaction to be signed call the method `prepareTransactionForSigning`. 
+To construct the transaction to be signed use the method `prepareTransactionForSigning`. 
 
 
 <CodeTabs>
@@ -143,15 +143,15 @@ To construct the transaction to be signed call the method `prepareTransactionFor
         start="17" end="21"/>
     </TabItem>
     <TabItem value="Function Call">
-      To call a smart contract function we need the ABI of the smart contract, in our repo this is defined in the [config.js](https://github.com/near-examples/near-multichain/blob/main/src/config.js#L23-L63) file (this can be gathered from Remix or using Etherscan).
+      To call a function on a smart contract we need the ABI of the contract, in our repo this is defined in the [config.js](https://github.com/near-examples/near-multichain/blob/main/src/config.js#L23-L63) file (this can be gathered from Remix or using Etherscan).
 
-      Then define a `Contract` object using `ethers`
+      Then define a `Contract` object using the `ethers` library
 
       <Github language="js"
         url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L18-L18"
         start="18" end="18"/>
 
-      To construct the transaction:
+      Then to construct the transaction
 
       <Github language="js"
         url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L31-L37"
@@ -178,7 +178,7 @@ To construct the transaction to be signed call the method `prepareTransactionFor
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L63-L67" start="63" end="67" />
 
-        This method returns the `unsigned transaction`.
+    This method returns the `unsigned transaction`.
 </TabItem>
 </CodeTabs>
 
@@ -187,13 +187,13 @@ To construct the transaction to be signed call the method `prepareTransactionFor
 
 ## 3. Requesting the Signature
 
-Once the transaction is created and ready to be signed, a signature request is made by calling `sign` on the [MPC smart contract](https://github.com/near/mpc-recovery/blob/f31e39f710f2fb76706e7bb638a13cf1fa1dbf26/contract/src/lib.rs#L298).
+Once the transaction is created and ready to be signed, a signature request is made by calling `sign` on the MPC smart contract.
 
 The method requires three parameters:
 
   1. The `payload` (or hash) to be signed for the target blockchain
   2. The derivation `path` for the account we want to use to sign the transaction
-  3. The `key_version`, `0` for `Secp256k1` signatures and `1` for `Ed25519` signatures.`
+  3. The `key_version`, `0` for `Secp256k1` signatures and `1` for `Ed25519` signatures.
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">
@@ -208,12 +208,12 @@ The method requires three parameters:
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L78-L90"
       start="78" end="90" />
 
-For bitcoin, all UTXOs need to be signed independently and then combined into a single transaction. In this example we are only signing one payload but you can map all payloads and sign them individually.
+For Bitcoin, all UTXOs need to be signed individually. In this example, we are only signing one payload, but you can map all payloads and sign them individually.
 
   </TabItem>
 
 <TabItem value="◎ Solana">
-  To get the payload serialize the trnasaction to a uint8Arrary and then conver it to Hex
+  To get the payload, serialize the transaction to a uint8Array and then convert it to hex.
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L74-L86" start="74" end="86" />
 
@@ -261,7 +261,7 @@ Once the signature is returned from the MPC it needs to be formatted and added t
 
 ## 5. Relaying the Signature
 
-Now we have a signed transaction, we can relay it to the corresponding network using `broadcastTx`.
+Now that we have a signed transaction, we can relay it to the target network using `broadcastTx`.
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">
@@ -289,8 +289,8 @@ Now we have a signed transaction, we can relay it to the corresponding network u
 The method returns a transaction hash which can be used to locate the transaction on an explorer.
 
 :::info
-⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](../chain-signatures.md)
+⭐️ For a deep dive into the concepts of Chain Signatures, see [What are Chain Signatures?](../chain-signatures.md)
 
-⭐️ For a complete example of a NEAR account using chain signatures in a frontend see our [web app example](https://github.com/near-examples/near-multichain).
+⭐️ For a complete example of a NEAR account using chain signatures in a frontend, see our [web app example](https://github.com/near-examples/near-multichain).
 
 :::
