@@ -259,7 +259,7 @@ Once the signature is returned from the MPC it needs to be formatted and added t
 
 ---
 
-## 5. Relaying the signed transaction
+## 5. Relaying the Signed Transaction
 
 Now that we have a signed transaction, we can relay it to the target network using `broadcastTx`.
 
