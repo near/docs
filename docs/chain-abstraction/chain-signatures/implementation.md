@@ -213,7 +213,7 @@ For Bitcoin, it is common to have multiple UTXOs to sign when sending a single t
   </TabItem>
 
 <TabItem value="◎ Solana">
-  To get the payload, serialize the transaction to a uint8Array and then convert it to hex.
+  To get the payload, serialize the transaction to a `uint8Array` and then convert it to hex.
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L74-L86" start="74" end="86" />
 
