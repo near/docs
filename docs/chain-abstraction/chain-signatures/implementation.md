@@ -205,10 +205,10 @@ The method requires three parameters:
 
   <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L78-L90"
-      start="78" end="90" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L78-L101"
+      start="77" end="101" />
 
-For Bitcoin, all UTXOs need to be signed individually. In this example, we are only signing one payload, but you can map all payloads and sign them individually.
+For Bitcoin, it is common to have multiple UTXOs to sign when sending a single transaction. We create a NEAR transaction (to call `sign` on the MPC contract) for each UTXO and send them to be signed by the MPC individually. Each signature is then parsed from each transaction outcome to produce an array of signatures.
 
   </TabItem>
 
@@ -244,8 +244,10 @@ Once the signature is returned from the MPC it needs to be formatted and added t
 
 <TabItem value="₿ Bitcoin">
         <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L97-L100"
-      start="97" end="100" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L107-L110"
+      start="107" end="110" />
+ 
+For Bitcoin, the array of signatures is added to the transaction to produce a complete signed transaction.
 
 </TabItem>
 
@@ -273,8 +275,8 @@ Now that we have a signed transaction, we can relay it to the target network usi
 
 <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L121"
-      start="121" end="121" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L131"
+      start="131" end="131" />
 
 </TabItem>
 
