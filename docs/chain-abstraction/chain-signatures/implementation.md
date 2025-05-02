@@ -21,7 +21,7 @@ There are five steps to create a Chain Signature:
 2. [Creating a Transaction](#2-creating-the-transaction) - Create the transaction or message to be signed.
 3. [Requesting a Signature](#3-requesting-the-signature) - Call the NEAR MPC contract requesting it to sign the transaction.
 4. [Formatting the Signature](#4-formatting-the-signature) - Format the signature from the MPC contract and add it to the transaction.
-5. [Relaying the Signed Transaction](#5-relaying-the-signed-signature) - Send the signed transaction to the destination chain for execution.
+5. [Relaying the Signed Transaction](#5-relaying-the-signed-transaction) - Send the signed transaction to the destination chain for execution.
 
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
@@ -259,7 +259,7 @@ Once the signature is returned from the MPC it needs to be formatted and added t
 
 ---
 
-## 5. Relaying the Signature
+## 5. Relaying the signed transaction
 
 Now that we have a signed transaction, we can relay it to the target network using `broadcastTx`.
 
