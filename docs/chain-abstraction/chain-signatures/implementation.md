@@ -173,10 +173,11 @@ To construct the transaction to be signed call the method `prepareTransactionFor
 
 Once the transaction is created and ready to be signed, a signature request is made by calling `sign` on the [MPC smart contract](https://github.com/near/mpc-recovery/blob/f31e39f710f2fb76706e7bb638a13cf1fa1dbf26/contract/src/lib.rs#L298).
 
-The method requires two parameters:
+The method requires three parameters:
 
-  1. The `transaction` to be signed for the target blockchain
+  1. The `payload` (or hash) to be signed for the target blockchain
   2. The derivation `path` for the account we want to use to sign the transaction
+  3. The `key_version`, `0` for `Secp256k1` signatures and `1` for `Ed25519` signatures.`
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">
@@ -191,22 +192,11 @@ The method requires two parameters:
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L78-L90"
       start="78" end="90" />
 
-For bitcoin, all UTXOs are signed independently and then combined into a single transaction.
+For bitcoin, all UTXOs need to be signed independently and then combined into a single transaction. In this example we are only signing one payload but you can map all payloads and sign them individually.
 
 </TabItem>
 
 </Tabs>
-
-<details>
-
-  <summary> Deposit amount </summary>
-
-  In this example, we attach a deposit of 0.05 $NEAR for the signature request. The transaction may fail if the network is congested since the deposit required by the MPC service scales linearly with the number of pending requests, from 1 yoctoNEAR to a maximum of 0.65 $NEAR. Any unused deposit will be refunded and if the signature fails, the user will be refunded the full deposit.
-
-  As an alternative, the MPC contract provides an [`experimental_signature_deposit()`](https://github.com/near/mpc/blob/develop/API.md#experimantal_signature_deposit) method to check the current deposit required.
-  Keep in mind that this could provide an unreliable value, since the amount will likely change between the time of the check and the time of the request.
-
-</details>
 
 :::info
 
@@ -236,6 +226,7 @@ In Ethereum, the signature is formatted by concatenating the `r`, `s`, and `v` v
         <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L97-L100"
       start="97" end="100" />
+    
 
 In Bitcoin, the signature is formatted by concatenating the `r` and `s` values returned by the contract.
 
@@ -247,7 +238,7 @@ In Bitcoin, the signature is formatted by concatenating the `r` and `s` values r
 
 ## 5. Relaying the Signature
 
-Once we have reconstructed the signature, we can relay it to the corresponding network. This will once again vary depending on the target blockchain.
+Now we have a signed transaction, we can relay it to the corresponding network using `broadcastTx`.
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">
@@ -266,12 +257,11 @@ Once we have reconstructed the signature, we can relay it to the corresponding n
 
 </Tabs>
 
+The method returns a transaction hash which can be used to locate the transaction on an explorer.
+
 :::info
 ⭐️ For a deep dive into the concepts of Chain Signatures see [What are Chain Signatures?](../chain-signatures.md)
 
-⭐️ For complete examples of a NEAR account performing Eth transactions:
-
-- [web-app example](https://github.com/near-examples/near-multichain)
-- [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx)
+⭐️ For a complete example of a NEAR account using chain signatures in a frontend see our [web app example](https://github.com/near-examples/near-multichain).
 
 :::
