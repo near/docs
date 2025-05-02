@@ -11,18 +11,6 @@ Chain signatures enable NEAR accounts, including smart contracts, to sign and ex
 
 This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
-:::info
-
-This guide will take you through a step by step process for creating a Chain Signature.
-
-⭐️ For complete examples of a NEAR account performing transactions in other chains:
-
-- [CLI script](https://github.com/mattlockyer/mpc-script)
-- [web-app example](https://github.com/near-examples/near-multichain)
-- [component example](https://test.near.social/bot.testnet/widget/chainsig-sign-eth-tx)
-
-:::
-
 ---
 
 ## Create a Chain Signature
@@ -35,14 +23,15 @@ There are five steps to create a Chain Signature:
 4. [Formatting the Signature](#4-formatting-the-signature) - Format the signature from the MPC contract and add it to the transaction.
 5. [Relaying the Signed Transaction](#5-relaying-the-signed-signature) - Send the signed transaction to the destination chain for execution.
 
+![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
+_Diagram of a chain signature in NEAR_
+
 The [chainsig.js](https://github.com/NearDeFi/chainsig.js) library provides a convenient interface for completing each of these steps.
 
 :::tip
 For building transactions inside of NEAR smart contracts written in rust, you can use the [Omni Transaction](https://github.com/near/omni-transaction-rs) library to easily build transactions for different blockchains (like Bitcoin and Ethereum).
 :::
 
-![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
-_Diagram of a chain signature in NEAR_
 
 :::info MPC Contracts
 
@@ -65,7 +54,7 @@ Before being able to use the methods the chainsig.js library provides we need to
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L35-L44" start="35" end="44" />
 
-  The EVM chain adapter takes the `MPC contract address` as an argument as well as  `publicClient` which is constructed from an RPC URL. 
+  The EVM chain adapter takes the `MPC contract address` as an argument as well as  `publicClient` which is constructed from an EVM RPC URL. 
 
   :::tip
   To use different EVM networks just specify an RPC URL for the EVM network you require.
@@ -79,6 +68,14 @@ Before being able to use the methods the chainsig.js library provides we need to
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L10-L18" start="10" end="18" />
 
   The Bitcoin chain adapter takes the `MPC contract address` as an argument as well as the `network` ("mainnet", "testnet" or "regtest") and a `btcRpcAdapter` which handles communication with the Bitcoin network.
+
+</TabItem>
+
+<TabItem value="◎ Solana">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L18-L22" start="18" end="22" />
+
+  The Solana chain adapter takes the `MPC contract address` as an argument as well as a `conncection`which is constructed from a Solana RPC URL. If you want to use Mainnet then you need to choose a Mainnet RPC.
 
 </TabItem>
 
@@ -109,6 +106,14 @@ To derive the address call the `deriveAddressAndPublicKey` method passing the ne
 
 </TabItem>
 
+<TabItem value="◎ Solana">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L48" start="48" end="48" />
+
+  On Solana your address is the same as your public key.
+
+</TabItem>
+
 </Tabs>
 
 :::info
@@ -132,7 +137,7 @@ To construct the transaction to be signed call the method `prepareTransactionFor
   <TabItem value="Ξ EVM" language="js">
   <Tabs groupId="evm-tx-tabs">
     <TabItem value="Transfer">
-      Constructing a transaction to transfer Eth is very simple
+      Constructing a transaction to transfer ETH is very simple. The `value` is the amount of ETH in Wei as type BigInt (1 ETH = 10<sup>18</sup> Wei).
       <Github language="js"
         url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/Transfer.jsx#L17-L21"
         start="17" end="21"/>
@@ -153,19 +158,30 @@ To construct the transaction to be signed call the method `prepareTransactionFor
         start="31" end="37"/>
 
     </TabItem>
+    
   </Tabs>
+    This method returns the `unsigned transaction` and the transaction `hash(es)` (also known as the `payload`).
   </TabItem>
  
       
   <TabItem value="₿ Bitcoin" language="js">
-    Constructing a transaction to transfer Bitcoin is very simple
+    Constructing a transaction to transfer BTC is very simple. The `value` is the amount of BTC in satoshis as a string (1 BTC = 100,000,000 sats).
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L66-L71"
       start="66" end="71"/>
+
+        This method returns the `unsigned transaction` and the transaction `hash(es)` (also known as the `payload`).
   </TabItem>
+
+  <TabItem value="◎ Solana" language="js">
+    Constructing a transaction to transfer SOL is very simple. The `value` is the amount of SOL in lamports as type BigInt (1 SOL = 1,000,000,000 lamports).
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L63-L67" start="63" end="67" />
+
+        This method returns the `unsigned transaction`.
+</TabItem>
 </CodeTabs>
 
-  This method returns the `unsigned transaction` and the transaction `hash(es)` (also known as the `payload`).
 
 ---
 
@@ -194,6 +210,13 @@ The method requires three parameters:
 
 For bitcoin, all UTXOs need to be signed independently and then combined into a single transaction. In this example we are only signing one payload but you can map all payloads and sign them individually.
 
+  </TabItem>
+
+<TabItem value="◎ Solana">
+  To get the payload serialize the trnasaction to a uint8Arrary and then conver it to Hex
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L74-L86" start="74" end="86" />
+
 </TabItem>
 
 </Tabs>
@@ -208,9 +231,7 @@ The contract will take some time to respond, as the `sign` method [yields execut
 
 ## 4. Formatting the Signature
 
-The MPC contract will not return the signature of the transaction itself, but the elements needed to rebuild the signature matching the target blockchain's format.
-
-This allows the contract to generalize the signing process for multiple blockchains.
+Once the signature is returned from the MPC it needs to be formatted and added to the transaction to produce a signed transaction.
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">
@@ -218,7 +239,6 @@ This allows the contract to generalize the signing process for multiple blockcha
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L131-L134"
       start="131" end="134" />
 
-In Ethereum, the signature is formatted by concatenating the `r`, `s`, and `v` values returned by the contract.
 
 </TabItem>
 
@@ -226,9 +246,12 @@ In Ethereum, the signature is formatted by concatenating the `r`, `s`, and `v` v
         <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L97-L100"
       start="97" end="100" />
-    
 
-In Bitcoin, the signature is formatted by concatenating the `r` and `s` values returned by the contract.
+</TabItem>
+
+<TabItem value="◎ Solana">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L92-L96" start="92" end="96" />
 
 </TabItem>
 
@@ -252,6 +275,12 @@ Now we have a signed transaction, we can relay it to the corresponding network u
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L121"
       start="121" end="121" />
+
+</TabItem>
+
+<TabItem value="◎ Solana">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L117" start="117" end="117" />
 
 </TabItem>
 
