@@ -221,6 +221,10 @@ const config = {
               to: '/integrations/exchange-integration',
               label: 'Exchange Integrations',
             },
+            {
+              to: '/resources/contracts-list',
+              label: 'Contracts List',
+            },
           ],
         },
         {
