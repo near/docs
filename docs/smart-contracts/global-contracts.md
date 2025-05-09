@@ -41,7 +41,7 @@ Note that deploying a global contract incurs high storage costs. Tokens are burn
 
 ## Using a Global Contract
 
-Previously deployed global contract can be attached to any NEAR account using `NEAR CLI` `deploy` command. Such contract behaves exactly like a regular contract.
+A previously deployed global contract can be attached to any NEAR account using `NEAR CLI` `deploy` command. Such a contract behaves exactly like a regular contract.
 
 <Tabs groupId="cli-tabs">
   <TabItem value="by-hash" label="By Hash">
