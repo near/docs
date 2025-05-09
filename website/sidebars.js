@@ -185,7 +185,11 @@ const sidebar = {
             },
           ]
         },
-        "smart-contracts/global-contracts"
+        {
+          "Advanced": [
+            "smart-contracts/global-contracts"
+          ]
+        }
       ]
     },
     {
