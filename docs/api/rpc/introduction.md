@@ -18,6 +18,8 @@ There are multiple [RPC providers which you can choose from](./providers.md). Th
 
 ## Node Snapshots
 
+⚠️ **FREE SNAPSHOT SERVICE BY FASTNEAR WILL BE DEPRECATGED STARTING JUNE 1ST, 2025. We strongly recommend all node operators to use [Epoch Sync](../intro/epoch_sync.md) when possible.**
+
 If you're looking for node snapshots  in order to set up a validator node or RPC, you can download the latest NEAR blockchain state from:
 
 - [Allnodes](https://www.publicnode.com/snapshots#near)
