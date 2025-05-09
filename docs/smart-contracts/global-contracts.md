@@ -39,7 +39,7 @@ The process is similar to [deploying a regular contract](./release/deploy.md#dep
 Note that deploying a global contract incurs high storage costs. Tokens are burned to compensate for storing the contract on-chain, unlike regular contracts where tokens are locked based on contract size.
 :::
 
-## Using Global Contract
+## Using a Global Contract
 
 Previously deployed global contract can be attached to any NEAR account using `NEAR CLI` `deploy` command. Such contract behaves exactly like a regular contract.
 
