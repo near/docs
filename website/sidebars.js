@@ -184,7 +184,8 @@ const sidebar = {
               "value": "<hr/>"
             },
           ]
-        }
+        },
+        "smart-contracts/global-contracts"
       ]
     },
     {
