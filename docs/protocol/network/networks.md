@@ -17,7 +17,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 - Status: `https://rpc.mainnet.near.org/status`
 - [ [NearBlocks Explorer](https://nearblocks.io) ]
 - [ [Wallet](https://wallet.near.org) ]
-- [ [Data Snapshots](https://near-nodes.io/intro/node-data-snapshots) ]
+- [ [Epoch Sync](https://near-nodes.io/intro/node-epoch-sync) ]
 
 ## Testnet {#testnet}
 
@@ -26,7 +26,7 @@ NEAR Protocol operates on several networks each operating with their own indepen
 - Status: `https://rpc.testnet.near.org/status`
 - [ [Explorer](https://testnet.nearblocks.io) ]
 - [ [Wallet](https://testnet.mynearwallet.com/) ]
-- [ [Data Snapshots](https://near-nodes.io/intro/node-data-snapshots) ]
+- [ [Epoch Sync](https://near-nodes.io/intro/node-epoch-sync) ]
 
 ## Localnet {#localnet}
 
