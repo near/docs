@@ -10,7 +10,7 @@ Global contracts allow smart contracts to be deployed once and reused by any acc
 
 ---
 
-## Deploying Global Contract
+## Deploying a Global Contract
 
 Global contract can be deployed in 2 ways: either by its hash or by owner account id.
 Contracts deployed by hash are effectively immutable and cannot be updated.
