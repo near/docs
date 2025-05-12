@@ -206,6 +206,10 @@ const config = {
               value: '<hr /><div class="subtitle"> Other Docs </div>',
             },
             {
+              to: '/resources/contracts-list',
+              label: 'Contracts List',
+            },
+            {
               href: 'https://github.com/near/NEPs',
               label: 'NEPs',
             },
@@ -220,10 +224,6 @@ const config = {
             {
               to: '/integrations/exchange-integration',
               label: 'Exchange Integrations',
-            },
-            {
-              to: '/resources/contracts-list',
-              label: 'Contracts List',
             },
           ],
         },
