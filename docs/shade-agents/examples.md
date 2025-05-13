@@ -20,7 +20,7 @@ Shade agents enable a new paradigm where most of the logic for a web3 system is 
 
 ### Smart Contracts using LLMs
 
-Shade Agents allow you to access LLMs from a smart contract that lives on any chain. The LLM and agent are both running in a TEE, so we know that the response from the agent is actually from an LLM and its response is a function of the provided inputs. 
+Shade Agents allow you to access LLMs from a smart contract that lives on any chain. The LLM and agent are both running in a TEE, so we know that the response from the agent is actually from an LLM and its response is a function of the provided inputs.
 
 There are two main flows:
 
