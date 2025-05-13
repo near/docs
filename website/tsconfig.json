@@ -13,5 +13,14 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNEXT"
-  }
+  },
+  "include": [
+    "./src/**/*",
+    "./types/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
+  ]
 }
