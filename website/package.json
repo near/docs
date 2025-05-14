@@ -1,6 +1,6 @@
 {
   "name": "near-docs",
-  "version": "0.0.1",
+  "version": "2.2.0",
   "private": true,
   "license": "UNLICENSED",
   "description": "Docusaurus website for NEAR Protocol documentation",
