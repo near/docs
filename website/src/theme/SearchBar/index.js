@@ -4,10 +4,7 @@ import { DocSearchButton, useDocSearchKeyboardEvents } from '@docsearch/react';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import { useHistory } from '@docusaurus/router';
-import {
-  isRegexpStringMatch,
-  useSearchLinkCreator,
-} from '@docusaurus/theme-common';
+import { isRegexpStringMatch, useSearchLinkCreator } from '@docusaurus/theme-common';
 import {
   useAlgoliaContextualFacetFilters,
   useSearchResultUrlProcessor,
@@ -22,18 +19,21 @@ let DocSearchModal = null;
 /* We only modified this */
 function Hit(props) {
   const { hit, children } = props;
-  return <>
-    <Link to={hit.url}> {children} <div className='DocSearch-Description'>{hit.description}</div></Link>
-  </>;
+  return (
+    <>
+      <Link to={hit.url}>
+        {' '}
+        {children} <div className="DocSearch-Description">{hit.description}</div>
+      </Link>
+    </>
+  );
 }
 
 function ResultsFooter({ state, onClose }) {
   const createSearchLink = useSearchLinkCreator();
   return (
     <Link to={createSearchLink(state.query)} onClick={onClose}>
-      <Translate
-        id="theme.SearchBar.seeAll"
-        values={{ count: state.context.nbHits }}>
+      <Translate id="theme.SearchBar.seeAll" values={{ count: state.context.nbHits }}>
         {'See all {count} results'}
       </Translate>
     </Link>
@@ -50,9 +50,9 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
   const configFacetFilters = props.searchParameters?.facetFilters ?? [];
   const facetFilters = contextualSearch
     ? // Merge contextual search filters with config filters
-    mergeFacetFilters(contextualSearchFacetFilters, configFacetFilters)
+      mergeFacetFilters(contextualSearchFacetFilters, configFacetFilters)
     : // ... or use config facetFilters
-    configFacetFilters;
+      configFacetFilters;
   // We let user override default searchParameters if she wants to
   const searchParameters = {
     ...props.searchParameters,
@@ -78,10 +78,7 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
   const onOpen = useCallback(() => {
     importDocSearchModalIfNeeded().then(() => {
       searchContainer.current = document.createElement('div');
-      document.body.insertBefore(
-        searchContainer.current,
-        document.body.firstChild,
-      );
+      document.body.insertBefore(searchContainer.current, document.body.firstChild);
       setIsOpen(true);
     });
   }, [importDocSearchModalIfNeeded, setIsOpen]);
@@ -113,29 +110,24 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }) {
   const transformItems = useRef((items) =>
     props.transformItems
       ? // Custom transformItems
-      props.transformItems(items)
+        props.transformItems(items)
       : // Default transformItems
-      items.map((item) => ({
-        ...item,
-        url: processSearchResultUrl(item.url),
-        description: item.description && item.description.split(/\.(?=\s)/)[0]
-      })),
+        items.map((item) => ({
+          ...item,
+          url: processSearchResultUrl(item.url),
+          description: item.description && item.description.split(/\.(?=\s)/)[0],
+        })),
   ).current;
   const resultsFooterComponent = useMemo(
     () =>
       // eslint-disable-next-line react/no-unstable-nested-components
-      (footerProps) =>
-        <ResultsFooter {...footerProps} onClose={onClose} />,
+      (footerProps) => <ResultsFooter {...footerProps} onClose={onClose} />,
     [onClose],
   );
   const transformSearchClient = useCallback(
     (searchClient) => {
-      searchClient.addAlgoliaAgent(
-        'docusaurus',
-        siteMetadata.docusaurusVersion,
-      );
+      searchClient.addAlgoliaAgent('docusaurus', siteMetadata.docusaurusVersion);
       const debouncedSearch = debounce(async (requests, resolve) => {
-
         // const requestForApi = requests.map((request) => request.query);
 
         // Change url to your api
