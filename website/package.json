@@ -8,7 +8,7 @@
     "pretty:fix": "prettier . --write",
     "full-test": "./test-links.sh test",
     "start": "docusaurus start",
-    "start:dev": "docusaurus serve --port 3000 --build ./build --host localhost",
+    "start:dev": "docusaurus serve --port 3000 --host localhost",
     "build": "docusaurus build",
     "build:dev": "docusaurus build --dev",
     "build:preview": "docusaurus build --locale en",
