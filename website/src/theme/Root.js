@@ -88,8 +88,6 @@ function Root({ children, location }) {
     </PostHogProvider>
   );
 }
-// Note: withRouter is not needed here as we are using useHistory from Docusaurus.
-// const router = withRouter(Root);
-// export default router;
 
-export default Root;
+const router = withRouter(Root);
+export default router;
