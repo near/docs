@@ -1,4 +1,10 @@
 {
+  "name": "near-docs",
+  "version": "0.0.1",
+  "private": true,
+  "license": "UNLICENSED",
+  "description": "Docusaurus website for NEAR Protocol documentation",
+  "homepage": "https://docs.near.org",
   "engines": {
     "node": ">=18.0"
   },
