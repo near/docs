@@ -63,9 +63,9 @@ To interact with a specific chain, you need to instantiate the relevant `chainAd
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L33-L42" start="33" end="42" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L35-L42" start="35" end="42" />
 
-  The EVM chain adapter takes the `ChainSignaturesContract` as an argument as well as  `publicClient` which is constructed from an EVM RPC URL. 
+  The EVM chain adapter takes the `ChainSignaturesContract` as an argument as well as `publicClient` which is constructed from an EVM RPC URL. 
 
   :::tip
   To use different EVM networks just specify an RPC URL for the EVM network you require.
