@@ -7,6 +7,47 @@ import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
+function initializeGleap(url, newTab) {
+    if (typeof window !== 'undefined') {
+        const gleapSdkToken = 'K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv';
+        if (!newTab) {
+            newTab = false;
+        }
+        if (gleapSdkToken && url && newTab) {
+            Gleap.initialize(gleapSdkToken);
+            // NEAR-247: Sanitize open-url messages from Gleap
+            Gleap.setUrlHandler((url, newTab) => {
+                try {
+                    const parsed = new URL(url, window.location.href);
+                    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+                        console.warn('Blocked invalid Gleap navigation to unsafe protocol:', parsed.protocol);
+                        return;
+                    }
+                    if (newTab) {
+                        window.open(parsed.href, '_blank')?.focus();
+                    } else {
+                        window.location.href = parsed.href;
+                    }
+                } catch (e) {
+                    console.warn('Blocked invalid Gleap URL:', url, e);
+                }
+            });
+        }
+    }
+}
+
+function isNewTab() {
+    // Check if this is a new tab in the session
+    let newTab = false;
+    if (typeof window !== 'undefined') {
+      if (!sessionStorage.getItem('docs_tab_opened')) {
+        sessionStorage.setItem('docs_tab_opened', 'true');
+        return newTab = true;
+      }
+    }
+    return newTab;
+};
+
 function Root({ children, location }) {
   const isBrowser = useIsBrowser();
   const history = useHistory();
@@ -22,23 +63,23 @@ function Root({ children, location }) {
   }, [history]);
 
   useEffect(() => {
-    if (isBrowser) {
+    const newTab = isNewTab();
 
-      Gleap.initialize('K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv');
+    // Initialize Gleap
+    initializeGleap(location.pathname, newTab);
 
-      // Initialize PostHog
-      posthog.init(customFields.REACT_APP_PUBLIC_POSTHOG_KEY, {
-        api_host: customFields.REACT_APP_PUBLIC_POSTHOG_HOST,
-      });
+    // Initialize PostHog
+    posthog.init(customFields.REACT_APP_PUBLIC_POSTHOG_KEY, {
+      api_host: customFields.REACT_APP_PUBLIC_POSTHOG_HOST,
+    });
 
-      // Track initial page view
-      posthog.capture('$pageview');
+    // Track initial page view
+    posthog.capture('$pageview');
 
-      // Track page views on route changes
-      history.listen((location) => {
-        posthog.capture('$pageview', { path: location.pathname });
-      });
-    }
+    // Track page views on route changes
+    history.listen((location) => {
+      posthog.capture('$pageview', { path: location.pathname });
+    });
   }, [isBrowser, history]);
 
   return (
@@ -47,7 +88,8 @@ function Root({ children, location }) {
     </PostHogProvider>
   );
 }
+// Note: withRouter is not needed here as we are using useHistory from Docusaurus.
+// const router = withRouter(Root);
+// export default router;
 
-const router = withRouter(Root);
-
-export default router;
+export default Root;
