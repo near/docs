@@ -7,46 +7,33 @@ import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-function initializeGleap(url, newTab) {
-    if (typeof window !== 'undefined') {
-        const gleapSdkToken = 'K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv';
-        if (!newTab) {
-            newTab = false;
+function initializeGleap() {
+  if (typeof window !== "undefined") {
+    const gleapSdkToken = "K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv";
+    // do not check newTab here. Submit code prior to calling this to determine if this is a new tab in the session.
+    Gleap.initialize(gleapSdkToken);
+    // NEAR-247: Sanitize open-url messages from Gleap
+    Gleap.setUrlHandler((url, newTab) => {
+      try {
+        const parsed = new URL(url, window.location.href);
+        if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+          console.warn(
+            "Blocked invalid Gleap navigation to unsafe protocol:",
+            parsed.protocol
+          );
+          return;
         }
-        if (gleapSdkToken && url && newTab) {
-            Gleap.initialize(gleapSdkToken);
-            // NEAR-247: Sanitize open-url messages from Gleap
-            Gleap.setUrlHandler((url, newTab) => {
-                try {
-                    const parsed = new URL(url, window.location.href);
-                    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
-                        console.warn('Blocked invalid Gleap navigation to unsafe protocol:', parsed.protocol);
-                        return;
-                    }
-                    if (newTab) {
-                        window.open(parsed.href, '_blank')?.focus();
-                    } else {
-                        window.location.href = parsed.href;
-                    }
-                } catch (e) {
-                    console.warn('Blocked invalid Gleap URL:', url, e);
-                }
-            });
+        if (newTab) {
+          window.open(parsed.href, "_blank")?.focus();
+        } else {
+          window.location.href = parsed.href;
         }
-    }
-}
-
-function isNewTab() {
-    // Check if this is a new tab in the session
-    let newTab = false;
-    if (typeof window !== 'undefined') {
-      if (!sessionStorage.getItem('docs_tab_opened')) {
-        sessionStorage.setItem('docs_tab_opened', 'true');
-        return newTab = true;
+      } catch (e) {
+        console.warn("Blocked invalid Gleap URL:", url, e);
       }
-    }
-    return newTab;
-};
+    });
+  }
+}
 
 function Root({ children, location }) {
   const isBrowser = useIsBrowser();
@@ -63,10 +50,8 @@ function Root({ children, location }) {
   }, [history]);
 
   useEffect(() => {
-    const newTab = isNewTab();
-
     // Initialize Gleap
-    initializeGleap(location.pathname, newTab);
+    initializeGleap(location.pathname);
 
     // Initialize PostHog
     posthog.init(customFields.REACT_APP_PUBLIC_POSTHOG_KEY, {
