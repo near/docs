@@ -7,7 +7,7 @@ const config = {
   title: 'NEAR Documentation',
   tagline: 'NEAR Protocol Developer Documentation',
   url: 'https://docs.near.org',
-  baseUrl: '/build/',
+  baseUrl: '/',
   organizationName: 'near',
   projectName: 'docs',
   markdown: {
