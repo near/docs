@@ -207,16 +207,6 @@ The method requires four parameters:
   3. The `keyType`, `Ecdsa` for `Secp256k1` signatures and `Eddsa` for `Ed25519` signatures.
   4. The `signerAccount` which contains the `accountId` that is signing and the `signAndSendTransactions` function from the [wallet selector](../../tools/wallet-selector.md).
 
-  <details>
-  <summary> Signing with a private key </summary>
-  
-  To sign with a private key you can use near-api-js and create a `signAndSendTransactions` function that takes an array of transactions and returns an array of signed transactions by using `account.signAndSendTransaction`.
-
-  You can find more using near-api-js [here](../../tools/near-api.md)
-
-  </details>
-
-
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">
     <Github language="js"
