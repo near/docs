@@ -1,5 +1,5 @@
 ```js
-const result = Near.view("sputnik-dao.near", "get_dao_list");
+const result = Near.view('sputnik-dao.near', 'get_dao_list');
 ```
 
 <details>

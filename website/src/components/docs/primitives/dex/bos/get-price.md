@@ -1,7 +1,7 @@
 ```js
-const tokenContract = "token.v2.ref-finance.near";
+const tokenContract = 'token.v2.ref-finance.near';
 const tokenPriceResult = fetch(
-  `https://indexer.ref.finance/get-token-price?token_id=${tokenContract}`
+  `https://indexer.ref.finance/get-token-price?token_id=${tokenContract}`,
 ).body;
 const tokenPriceValue = JSON.parse(tokenPriceResult);
 ```

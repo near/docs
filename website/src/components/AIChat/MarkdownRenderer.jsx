@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { ClipboardCopy, Check } from 'lucide-react'; 
+import { ClipboardCopy, Check } from 'lucide-react';
 
 const CodeBlock = ({ node, inline, className, children, isDarkTheme, ...props }) => {
   const match = /language-(\w+)/.exec(className || '');
@@ -19,10 +19,7 @@ const CodeBlock = ({ node, inline, className, children, isDarkTheme, ...props })
 
   return !inline && match ? (
     <div className="code-block-container">
-      <button
-        onClick={copyToClipboard}
-        className={`code-copy-button ${isCopied ? 'copied' : ''}`}
-      >
+      <button onClick={copyToClipboard} className={`code-copy-button ${isCopied ? 'copied' : ''}`}>
         {isCopied ? <Check size={16} /> : <ClipboardCopy size={16} />}
       </button>
       <SyntaxHighlighter
@@ -48,12 +45,11 @@ const MarkdownRenderer = ({ part, isDarkTheme }) => {
       components={{
         code: (props) => <CodeBlock {...props} isDarkTheme={isDarkTheme} />,
         a: ({ node, ...props }) => (
-            <a {...props} target="_blank" rel="noopener noreferrer">
-              {props.children}
-            </a>
-          )
-    }}
-      
+          <a {...props} target="_blank" rel="noopener noreferrer">
+            {props.children}
+          </a>
+        ),
+      }}
     >
       {part}
     </ReactMarkdown>

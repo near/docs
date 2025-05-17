@@ -7,22 +7,22 @@ import TabItem from '@theme/TabItem';
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "nft.primitives.near";
+const CONTRACT_ADDRESS = 'nft.primitives.near';
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
+
 await wallet.callMethod({
   method: 'nft_mint',
   args: {
-    token_id: "1",
-    receiver_id: "bob.near", 
+    token_id: '1',
+    receiver_id: 'bob.near',
     token_metadata: {
-      title: "NFT Primitive Token",
-      description: "Awesome NFT Primitive Token",
-      media: "string", // URL to associated media, preferably to decentralized, content-addressed storage
-    }
+      title: 'NFT Primitive Token',
+      description: 'Awesome NFT Primitive Token',
+      media: 'string', // URL to associated media, preferably to decentralized, content-addressed storage
+    },
   },
   contractId: CONTRACT_ADDRESS,
-  deposit: 10000000000000000000000
+  deposit: 10000000000000000000000,
 });
 ```
 
@@ -33,17 +33,17 @@ await wallet.callMethod({
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "x.paras.near";
+const CONTRACT_ADDRESS = 'x.paras.near';
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
+
 await wallet.callMethod({
   method: 'nft_mint',
   args: {
-    token_series_id: "490641",
-    receiver_id: "bob.near",
+    token_series_id: '490641',
+    receiver_id: 'bob.near',
   },
   contractId: CONTRACT_ADDRESS,
-  deposit: 10000000000000000000000 // Depends on your NFT metadata
+  deposit: 10000000000000000000000, // Depends on your NFT metadata
 });
 ```
 
@@ -58,18 +58,18 @@ In order to use `nft_mint` method of the `x.paras.near` contract you have to be 
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "thomasettorreiv.mintbase1.near";
+const CONTRACT_ADDRESS = 'thomasettorreiv.mintbase1.near';
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
+
 await wallet.callMethod({
   method: 'nft_batch_mint',
   args: {
     num_to_mint: 1,
-    owner_id: "bob.near",
+    owner_id: 'bob.near',
     metadata: {},
   },
   contractId: CONTRACT_ADDRESS,
-  deposit: 10000000000000000000000 // Depends on your NFT metadata
+  deposit: 10000000000000000000000, // Depends on your NFT metadata
 });
 ```
 
@@ -85,4 +85,4 @@ Check how to do this using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbas
 
 </Tabs>
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_ 
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_

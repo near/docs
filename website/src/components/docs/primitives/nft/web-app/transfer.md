@@ -7,21 +7,21 @@ import TabItem from '@theme/TabItem';
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "nft.primitives.near";
+const CONTRACT_ADDRESS = 'nft.primitives.near';
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
+
 await wallet.callMethod({
   method: 'nft_transfer',
   args: {
-    token_id: "1",
-    receiver_id: "bob.near"
+    token_id: '1',
+    receiver_id: 'bob.near',
   },
   contractId: CONTRACT_ADDRESS,
-  deposit: 1
+  deposit: 1,
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_ 
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
 
 </TabItem>
 
@@ -30,21 +30,21 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "x.paras.near";
+const CONTRACT_ADDRESS = 'x.paras.near';
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
+
 await wallet.callMethod({
   method: 'nft_transfer',
   args: {
-    token_id: "490641",
-    receiver_id: "bob.near"
+    token_id: '490641',
+    receiver_id: 'bob.near',
   },
   contractId: CONTRACT_ADDRESS,
-  deposit: 1
+  deposit: 1,
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_ 
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
 
 </TabItem>
 
@@ -53,17 +53,17 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "thomasettorreiv.mintbase1.near";
+const CONTRACT_ADDRESS = 'thomasettorreiv.mintbase1.near';
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
+
 await wallet.callMethod({
   method: 'nft_transfer',
   args: {
-    token_id: "490641",
-    receiver_id: "bob.near"
+    token_id: '490641',
+    receiver_id: 'bob.near',
   },
   contractId: CONTRACT_ADDRESS,
-  deposit: 1
+  deposit: 1,
 });
 ```
 

@@ -4,7 +4,7 @@ const axios = require('axios');
 async function main() {
   try {
     const response = await axios.get(
-      'https://api.github.com/repos/near/near-releases/contents/reports'
+      'https://api.github.com/repos/near/near-releases/contents/reports',
     );
     const files = response.data.map((file) => file.name);
 

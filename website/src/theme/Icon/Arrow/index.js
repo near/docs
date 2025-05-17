@@ -1,7 +1,6 @@
 import React from 'react';
 export default function IconArrow(props) {
-
-  if (props.className.startsWith("collapse")) return "Hide";
+  if (props.className.startsWith('collapse')) return 'Hide';
 
   return (
     <svg width="20" height="20" aria-hidden="true" {...props}>

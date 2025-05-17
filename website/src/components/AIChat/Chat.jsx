@@ -157,9 +157,7 @@ export const Chat = ({ toggleChat }) => {
                   {splitTextIntoParts(msg.text).map((part, index) => {
                     return <MarkdownRenderer part={part} isDarkTheme={isDarkTheme} key={index} />;
                   })}
-                  {msg.sender === 'ai' && (
-                    <Feedback id={msg.id} handler={handleFeedback} />
-                  )}
+                  {msg.sender === 'ai' && <Feedback id={msg.id} handler={handleFeedback} />}
                 </div>
               ))
             )}

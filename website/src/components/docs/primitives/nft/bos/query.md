@@ -5,8 +5,8 @@ import TabItem from '@theme/TabItem';
 <TabItem value="NFT Primitive" label="Reference" default>
 
 ```js
-const tokenData = Near.view("nft.primitives.near", "nft_token", {
-  token_id: "1",
+const tokenData = Near.view('nft.primitives.near', 'nft_token', {
+  token_id: '1',
 });
 ```
 
@@ -42,7 +42,7 @@ const tokenData = Near.view("nft.primitives.near", "nft_token", {
 <TabItem value="Paras" label="Paras">
 
 ```js
-const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:1154");
+const tokenData = fetch('https://api-v2-mainnet.paras.id/token?token_id=84686:1154');
 ```
 
 <details>
@@ -121,12 +121,12 @@ Paras API methods returns data from all NFT contracts in NEAR. You might want to
 <TabItem value="Mintbase" label="Mintbase">
 
 ```js
-const tokenData = fetch("https://graph.mintbase.xyz", {
-  method: "POST",
+const tokenData = fetch('https://graph.mintbase.xyz', {
+  method: 'POST',
   headers: {
-    "mb-api-key": "anon",
-    "Content-Type": "application/json",
-    "x-hasura-role": "anonymous",
+    'mb-api-key': 'anon',
+    'Content-Type': 'application/json',
+    'x-hasura-role': 'anonymous',
   },
   body: JSON.stringify({
     query: `

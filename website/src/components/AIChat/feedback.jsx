@@ -1,7 +1,7 @@
 // A simple feedback handler with a thumbs up and down
 // when one is selected, we mark it somehow so the user knows
 
-import { useState } from "react";
+import { useState } from 'react';
 
 const Feedback = ({ handler }) => {
   const [selected, setSelected] = useState(null);
@@ -27,7 +27,7 @@ const Feedback = ({ handler }) => {
         👎
       </button>
     </div>
-  )
+  );
 };
 
 export default Feedback;

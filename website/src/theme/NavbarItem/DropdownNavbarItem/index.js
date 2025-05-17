@@ -1,11 +1,7 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import clsx from 'clsx';
-import {
-  isRegexpStringMatch,
-  useCollapsible,
-  Collapsible,
-} from '@docusaurus/theme-common';
-import {isSamePath, useLocalPathname} from '@docusaurus/theme-common/internal';
+import { isRegexpStringMatch, useCollapsible, Collapsible } from '@docusaurus/theme-common';
+import { isSamePath, useLocalPathname } from '@docusaurus/theme-common/internal';
 import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
 import NavbarItem from '@theme/NavbarItem';
 import styles from './styles.module.css';
@@ -24,13 +20,7 @@ function isItemActive(item, localPathname) {
 function containsActiveItems(items, localPathname) {
   return items.some((item) => isItemActive(item, localPathname));
 }
-function DropdownNavbarItemDesktop({
-  items,
-  position,
-  className,
-  onClick,
-  ...props
-}) {
+function DropdownNavbarItemDesktop({ items, position, className, onClick, ...props }) {
   const dropdownRef = useRef(null);
   const [showDropdown, setShowDropdown] = useState(false);
   useEffect(() => {
@@ -58,7 +48,8 @@ function DropdownNavbarItemDesktop({
       className={clsx('navbar__item', 'dropdown', 'dropdown--hoverable', {
         'dropdown--right': position === 'right',
         'dropdown--show': showDropdown,
-      })}>
+      })}
+    >
       <NavbarNavLink
         aria-haspopup="true"
         aria-expanded={showDropdown}
@@ -75,7 +66,8 @@ function DropdownNavbarItemDesktop({
             e.preventDefault();
             setShowDropdown(!showDropdown);
           }
-        }}>
+        }}
+      >
         {props.children ?? props.label}
       </NavbarNavLink>
       <ul className="dropdown__menu">
@@ -100,7 +92,7 @@ function DropdownNavbarItemMobile({
 }) {
   const localPathname = useLocalPathname();
   const containsActive = containsActiveItems(items, localPathname);
-  const {collapsed, toggleCollapsed, setCollapsed} = useCollapsible({
+  const { collapsed, toggleCollapsed, setCollapsed } = useCollapsible({
     initialState: () => !containsActive,
   });
   // Expand/collapse if any item active after a navigation
@@ -113,7 +105,8 @@ function DropdownNavbarItemMobile({
     <li
       className={clsx('menu__list-item', {
         'menu__list-item--collapsed': collapsed,
-      })}>
+      })}
+    >
       <NavbarNavLink
         role="button"
         className={clsx(
@@ -125,7 +118,8 @@ function DropdownNavbarItemMobile({
         onClick={(e) => {
           e.preventDefault();
           toggleCollapsed();
-        }}>
+        }}
+      >
         {props.children ?? props.label}
       </NavbarNavLink>
       <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
@@ -143,7 +137,7 @@ function DropdownNavbarItemMobile({
     </li>
   );
 }
-export default function DropdownNavbarItem({mobile = false, ...props}) {
+export default function DropdownNavbarItem({ mobile = false, ...props }) {
   const Comp = mobile ? DropdownNavbarItemMobile : DropdownNavbarItemDesktop;
   return <Comp {...props} />;
 }

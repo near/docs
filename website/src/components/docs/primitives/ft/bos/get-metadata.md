@@ -1,6 +1,6 @@
 ```js
-const tokenContract = "token.v2.ref-finance.near";
-const tokenMetadata = Near.view(tokenContract, "ft_metadata", {});
+const tokenContract = 'token.v2.ref-finance.near';
+const tokenMetadata = Near.view(tokenContract, 'ft_metadata', {});
 ```
 
 <details>

@@ -1,17 +1,17 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
-import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
-import SimpleCallRequestJson from "./simple-call/request-json.mdx";
-import SimpleCallRequestJs from "./simple-call/request-js.mdx";
-import SimpleCallRequestBash from "./simple-call/request-bash.mdx";
-import SimpleCallResponseJson from "./simple-call/response-json.mdx";
-import ComplexCallRequestJson from "./complex-call/request-json.mdx";
-import ComplexCallRequestJs from "./complex-call/request-js.mdx";
-import ComplexCallRequestBash from "./complex-call/request-bash.mdx";
-import ComplexCallResponseJson from "./complex-call/response-json.mdx";
-import ErrorSchemaTable from "./error-schema-table.mdx";
-import ErrorSchemaDescription from "../../_general/error-schema-description.mdx";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { LantstoolLabel } from '@site/src/components/lantstool/LantstoolLabel/LantstoolLabel';
+import { TryOutOnLantstool } from '@site/src/components/lantstool/TryOutOnLantstool';
+import SimpleCallRequestJson from './simple-call/request-json.mdx';
+import SimpleCallRequestJs from './simple-call/request-js.mdx';
+import SimpleCallRequestBash from './simple-call/request-bash.mdx';
+import SimpleCallResponseJson from './simple-call/response-json.mdx';
+import ComplexCallRequestJson from './complex-call/request-json.mdx';
+import ComplexCallRequestJs from './complex-call/request-js.mdx';
+import ComplexCallRequestBash from './complex-call/request-bash.mdx';
+import ComplexCallResponseJson from './complex-call/response-json.mdx';
+import ErrorSchemaTable from './error-schema-table.mdx';
+import ErrorSchemaDescription from '../../_general/error-schema-description.mdx';
 
 ## Call a contract function {#call-a-contract-function}
 
@@ -46,10 +46,9 @@ import ErrorSchemaDescription from "../../_general/error-schema-description.mdx"
   <summary>Example response:</summary>
   <p>
     <SimpleCallResponseJson />
-    **Note**: `[34, 71, ..., 33, 34]`
-    is an array of bytes, to be specific it is an ASCII code of
-    `"Greetings from NEAR Protocol!"`. `near-sdk-rs` and `near-sdk-js`
-    return JSON-serialized results.
+    **Note**: `[34, 71, ..., 33, 34]` is an array of bytes, to be specific it is an ASCII code of
+    `"Greetings from NEAR Protocol!"`. `near-sdk-rs` and `near-sdk-js` return JSON-serialized
+    results.
   </p>
 </details>
 
@@ -58,7 +57,8 @@ import ErrorSchemaDescription from "../../_general/error-schema-description.mdx"
 `get_record` example :
 
 The `args_base64` in this example can be decoded as
-``` json
+
+```json
 {
   "record_id": 1
 }
@@ -83,8 +83,8 @@ The `args_base64` in this example can be decoded as
   <summary>Example response:</summary>
   <p>
     <ComplexCallResponseJson />
-    **Note**: `[34, 72, ..., 108, 33, 34]` is an array of bytes, to be specific it is an ASCII code of
-    `"Hello, Near Protocol!"`. `near-sdk-rs` and `near-sdk-js` return JSON-serialized results.
+    **Note**: `[34, 72, ..., 108, 33, 34]` is an array of bytes, to be specific it is an ASCII code
+    of `"Hello, Near Protocol!"`. `near-sdk-rs` and `near-sdk-js` return JSON-serialized results.
   </p>
 </details>
 

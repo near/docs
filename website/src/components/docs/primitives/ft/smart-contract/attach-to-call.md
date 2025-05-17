@@ -1,5 +1,3 @@
-
-
 ```rust
 #[payable]
 pub fn call_with_attached_tokens(&mut self, receiver_id: AccountId, amount: U128) -> Promise {

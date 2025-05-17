@@ -7,18 +7,18 @@ import TabItem from '@theme/TabItem';
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "nft.primitives.near";
+const CONTRACT_ADDRESS = 'nft.primitives.near';
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
+
 const response = await wallet.viewMethod({
   method: 'nft_token',
   args: {
-    token_id: "1"
-  }
+    token_id: '1',
+  },
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_ 
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
 
 <details>
 
@@ -44,6 +44,7 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
   }
 }
 ```
+
 </details>
 
 </TabItem>
@@ -51,10 +52,10 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 <TabItem value="Paras" label="Paras">
 
 ```js
-const tokenData = fetch("https://api-v2-mainnet.paras.id/token?token_id=84686:1154");
+const tokenData = fetch('https://api-v2-mainnet.paras.id/token?token_id=84686:1154');
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_ 
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
 
 <details>
 
@@ -132,12 +133,12 @@ Paras API methods returns data from all NFT contracts in NEAR. You might want to
 <TabItem value="Mintbase" label="Mintbase">
 
 ```js
-const tokenData = fetch("https://graph.mintbase.xyz", {
-  method: "POST",
+const tokenData = fetch('https://graph.mintbase.xyz', {
+  method: 'POST',
   headers: {
-    "mb-api-key": "anon",
-    "Content-Type": "application/json",
-    "x-hasura-role": "anonymous",
+    'mb-api-key': 'anon',
+    'Content-Type': 'application/json',
+    'x-hasura-role': 'anonymous',
   },
   body: JSON.stringify({
     query: `

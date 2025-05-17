@@ -6,28 +6,24 @@ import TabItem from '@theme/TabItem';
 
 ```js
 Near.call(
-  "marketplace.paras.near",
-  "storage_deposit",
+  'marketplace.paras.near',
+  'storage_deposit',
   {
-    receiver_id: "bob.near"
+    receiver_id: 'bob.near',
   },
   undefined,
-  9390000000000000000
+  9390000000000000000,
 );
 
-Near.call(
-  "nft.primitives.near",
-  "nft_approve",
-  {
-    token_id: "1e95238d266e5497d735eb30",
-    account_id: "marketplace.paras.near",
-    msg: {
-      price: "200000000000000000000000",
-      market_type: "sale",
-      ft_token_id: "near"
-    }
-  }
-);
+Near.call('nft.primitives.near', 'nft_approve', {
+  token_id: '1e95238d266e5497d735eb30',
+  account_id: 'marketplace.paras.near',
+  msg: {
+    price: '200000000000000000000000',
+    market_type: 'sale',
+    ft_token_id: 'near',
+  },
+});
 ```
 
 The method `nft_approve` will call `nft_on_approve` in `marketplace.paras.near`.
@@ -38,26 +34,22 @@ The method `nft_approve` will call `nft_on_approve` in `marketplace.paras.near`.
 
 ```js
 Near.call(
-  "simple.market.mintbase1.near",
-  "deposit_storage",
+  'simple.market.mintbase1.near',
+  'deposit_storage',
   {
-    autotransfer: true
+    autotransfer: true,
   },
   undefined,
-  9390000000000000000
+  9390000000000000000,
 );
 
-Near.call(
-  "nft.primitives.near",
-  "nft_approve",
-  {
-    token_id: "3c46b76cbd48e65f2fc88473",
-    account_id: "simple.market.mintbase1.near",
-    msg: {
-      price: "200000000000000000000000"
-    }
-  }
-);
+Near.call('nft.primitives.near', 'nft_approve', {
+  token_id: '3c46b76cbd48e65f2fc88473',
+  account_id: 'simple.market.mintbase1.near',
+  msg: {
+    price: '200000000000000000000000',
+  },
+});
 ```
 
 The method `nft_approve` will call `nft_on_approve` in `simple.market.mintbase1.near`.

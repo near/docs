@@ -6,11 +6,11 @@ import TabItem from '@theme/TabItem';
 
 ```js
 const tokenData = Near.call(
-  "nft.primitives.near",
-  "nft_transfer",
+  'nft.primitives.near',
+  'nft_transfer',
   {
-    token_id: "1",
-    receiver_id: "bob.near"
+    token_id: '1',
+    receiver_id: 'bob.near',
   },
   undefined,
   1,
@@ -23,14 +23,14 @@ const tokenData = Near.call(
 
 ```js
 const tokenData = Near.call(
-  "x.paras.near",
-  "nft_transfer",
+  'x.paras.near',
+  'nft_transfer',
   {
-    token_id: "490641",
-    receiver_id: "bob.near"
+    token_id: '490641',
+    receiver_id: 'bob.near',
   },
   undefined,
-  1
+  1,
 );
 ```
 
@@ -40,14 +40,14 @@ const tokenData = Near.call(
 
 ```js
 const tokenData = Near.call(
-  "thomasettorreiv.mintbase1.near",
-  "nft_transfer",
+  'thomasettorreiv.mintbase1.near',
+  'nft_transfer',
   {
-    token_id: "490641",
-    receiver_id: "bob.near"
+    token_id: '490641',
+    receiver_id: 'bob.near',
   },
   undefined,
-  1
+  1,
 );
 ```
 

@@ -1,10 +1,11 @@
 ```js
-const tokenContract = "token.v2.ref-finance.near";
+const tokenContract = 'token.v2.ref-finance.near';
 const tokenPriceResult = await fetch(
-  `https://indexer.ref.finance/get-token-price?token_id=${tokenContract}`
+  `https://indexer.ref.finance/get-token-price?token_id=${tokenContract}`,
 );
 const tokenPriceValue = await tokenPriceResult.json();
 ```
+
 _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
 
 <details>

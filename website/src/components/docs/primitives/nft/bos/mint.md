@@ -6,16 +6,16 @@ import TabItem from '@theme/TabItem';
 
 ```js
 const tokenData = Near.call(
-  "nft.primitives.near",
-  "nft_mint",
+  'nft.primitives.near',
+  'nft_mint',
   {
-    token_id: "1",
-    receiver_id: "bob.near", 
+    token_id: '1',
+    receiver_id: 'bob.near',
     token_metadata: {
-      title: "NFT Primitive Token",
-      description: "Awesome NFT Primitive Token",
-      media: "string", // URL to associated media, preferably to decentralized, content-addressed storage
-    }
+      title: 'NFT Primitive Token',
+      description: 'Awesome NFT Primitive Token',
+      media: 'string', // URL to associated media, preferably to decentralized, content-addressed storage
+    },
   },
   undefined,
   10000000000000000000000, // Depends on your NFT metadata
@@ -28,14 +28,14 @@ const tokenData = Near.call(
 
 ```js
 const tokenData = Near.call(
-  "x.paras.near",
-  "nft_mint",
+  'x.paras.near',
+  'nft_mint',
   {
-    token_series_id: "490641",
-    receiver_id: "bob.near",
+    token_series_id: '490641',
+    receiver_id: 'bob.near',
   },
   undefined,
-  10000000000000000000000 // Depends on your NFT metadata
+  10000000000000000000000, // Depends on your NFT metadata
 );
 ```
 
@@ -49,15 +49,15 @@ In order to use `nft_mint` method of the `x.paras.near` contract you have to be 
 
 ```js
 const tokenData = Near.call(
-  "thomasettorreiv.mintbase1.near",
-  "nft_batch_mint",
+  'thomasettorreiv.mintbase1.near',
+  'nft_batch_mint',
   {
     num_to_mint: 1,
-    owner_id: "bob.near",
+    owner_id: 'bob.near',
     metadata: {},
   },
   undefined,
-  10000000000000000000000
+  10000000000000000000000,
 );
 ```
 

@@ -1,8 +1,16 @@
 <table className="custom-stripe">
   <thead>
     <tr>
-      <th>ERROR_TYPE<br /><code>error.name</code></th>
-      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>
+        ERROR_TYPE
+        <br />
+        <code>error.name</code>
+      </th>
+      <th>
+        ERROR_CAUSE
+        <br />
+        <code>error.cause.name</code>
+      </th>
       <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
@@ -14,15 +22,14 @@
       <td>UNKNOWN_BLOCK</td>
       <td>200</td>
       <td>
-        The requested block has not been produced yet or it has been
-        garbage-collected (cleaned up to save space on the RPC node)
+        The requested block has not been produced yet or it has been garbage-collected (cleaned up
+        to save space on the RPC node)
       </td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
           <li>
-            If the block had been produced more than 5 epochs ago, try to send
-            your request to{" "}
+            If the block had been produced more than 5 epochs ago, try to send your request to{' '}
             <a
               href="https://near-nodes.io/intro/node-types#archival-node"
               target="_blank"
@@ -52,17 +59,15 @@
       <td>UNKNOWN_ACCOUNT</td>
       <td>200</td>
       <td>
-        The requested <code>account_id</code> has not been found while viewing
-        since the account has not been created or has been already deleted
+        The requested <code>account_id</code> has not been found while viewing since the account has
+        not been created or has been already deleted
       </td>
       <td>
         <ul>
           <li>
             Check the <code>account_id</code>
           </li>
-          <li>
-            Specify a different block or retry if you request the latest state
-          </li>
+          <li>Specify a different block or retry if you request the latest state</li>
         </ul>
       </td>
     </tr>
@@ -75,9 +80,7 @@
       <td>
         <ul>
           <li>Query and account with contract deployed</li>
-          <li>
-            Specify a different block or retry if you request the latest state
-          </li>
+          <li>Specify a different block or retry if you request the latest state</li>
         </ul>
       </td>
     </tr>
@@ -85,19 +88,15 @@
       <td>TOO_LARGE_CONTRACT_STATE</td>
       <td>200</td>
       <td>
-        The requested contract state is too large to be returned from this node
-        (the default limit is 50kb of state size)
+        The requested contract state is too large to be returned from this node (the default limit
+        is 50kb of state size)
       </td>
       <td>
         <ul>
           <li>
-            Send the request to a node with larger limits in order to view the
-            requested state
+            Send the request to a node with larger limits in order to view the requested state
           </li>
-          <li>
-            Spin up your own node where you can increase the limits to view
-            state
-          </li>
+          <li>Spin up your own node where you can increase the limits to view state</li>
         </ul>
       </td>
     </tr>
@@ -105,24 +104,19 @@
       <td>UNAVAILABLE_SHARD</td>
       <td>200</td>
       <td>
-        The node was unable to find the requested data because it does not track
-        the shard where data is present
+        The node was unable to find the requested data because it does not track the shard where
+        data is present
       </td>
       <td>
         <ul>
-          <li>
-            Send a request to a different node which might track the shard
-          </li>
+          <li>Send a request to a different node which might track the shard</li>
         </ul>
       </td>
     </tr>
     <tr>
       <td>NO_SYNCED_BLOCKS</td>
       <td>200</td>
-      <td>
-        The node is still syncing and the requested block is not in the database
-        yet
-      </td>
+      <td>The node is still syncing and the requested block is not in the database yet</td>
       <td>
         <ul>
           <li>Wait until the node finish syncing</li>
@@ -135,8 +129,7 @@
       <td>PARSE_ERROR</td>
       <td>400</td>
       <td>
-        Passed arguments can't be parsed by JSON RPC server (missing arguments,
-        wrong format, etc.)
+        Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)
       </td>
       <td>
         <ul>

@@ -1,8 +1,16 @@
 <table>
   <thead>
     <tr>
-      <th>ERROR_TYPE<br /><code>error.name</code></th>
-      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
+      <th>
+        ERROR_TYPE
+        <br />
+        <code>error.name</code>
+      </th>
+      <th>
+        ERROR_CAUSE
+        <br />
+        <code>error.cause.name</code>
+      </th>
       <th>Status Code</th>
       <th>Reason</th>
       <th>Solution</th>
@@ -14,15 +22,14 @@
       <td>UNKNOWN_BLOCK</td>
       <td>200</td>
       <td>
-        The requested block has not been produced yet or it has been
-        garbage-collected (cleaned up to save space on the RPC node)
+        The requested block has not been produced yet or it has been garbage-collected (cleaned up
+        to save space on the RPC node)
       </td>
       <td>
         <ul>
           <li>Check that the requested block is legit</li>
           <li>
-            If the block had been produced more than 5 epochs ago, try to send
-            your request to{" "}
+            If the block had been produced more than 5 epochs ago, try to send your request to{' '}
             <a
               href="https://near-nodes.io/intro/node-types#archival-node"
               target="_blank"
