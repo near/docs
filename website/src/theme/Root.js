@@ -51,9 +51,8 @@ function Root({ children, location }) {
 
   useEffect(() => {
     // Initialize Gleap
-
     if (isBrowser) {
-      initializeGleap(location.pathname);
+      initializeGleap();
     }
 
     // Initialize PostHog
