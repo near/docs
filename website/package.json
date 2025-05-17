@@ -9,7 +9,7 @@
     "node": ">=18.0"
   },
   "scripts": {
-    "clean": "rm -rf yarn.lock && rm -rf node_modules && rm -rf package-lock.json && rm -rf build",
+    "clean": "rm -rf node_modules && rm -rf package-lock.json && rm -rf build",
     "pretty": "prettier . --check",
     "pretty:fix": "prettier . --write",
     "full-test": "./test-links.sh test",
