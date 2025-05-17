@@ -7,6 +7,34 @@ import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
+function initializeGleap() {
+  if (typeof window !== "undefined") {
+    const gleapSdkToken = "K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv";
+    // do not check newTab here. Submit code prior to calling this to determine if this is a new tab in the session.
+    Gleap.initialize(gleapSdkToken);
+    // NEAR-247: Sanitize open-url messages from Gleap
+    Gleap.setUrlHandler((url, newTab) => {
+      try {
+        const parsed = new URL(url, window.location.href);
+        if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+          console.warn(
+            "Blocked invalid Gleap navigation to unsafe protocol:",
+            parsed.protocol
+          );
+          return;
+        }
+        if (newTab) {
+          window.open(parsed.href, "_blank")?.focus();
+        } else {
+          window.location.href = parsed.href;
+        }
+      } catch (e) {
+        console.warn("Blocked invalid Gleap URL:", url, e);
+      }
+    });
+  }
+}
+
 function Root({ children, location }) {
   const isBrowser = useIsBrowser();
   const history = useHistory();
@@ -22,23 +50,23 @@ function Root({ children, location }) {
   }, [history]);
 
   useEffect(() => {
+    // Initialize Gleap
     if (isBrowser) {
-
-      Gleap.initialize('K2v3kvAJ5XtPzNYSgk4Ulpe5ptgBkIMv');
-
-      // Initialize PostHog
-      posthog.init(customFields.REACT_APP_PUBLIC_POSTHOG_KEY, {
-        api_host: customFields.REACT_APP_PUBLIC_POSTHOG_HOST,
-      });
-
-      // Track initial page view
-      posthog.capture('$pageview');
-
-      // Track page views on route changes
-      history.listen((location) => {
-        posthog.capture('$pageview', { path: location.pathname });
-      });
+      initializeGleap();
     }
+
+    // Initialize PostHog
+    posthog.init(customFields.REACT_APP_PUBLIC_POSTHOG_KEY, {
+      api_host: customFields.REACT_APP_PUBLIC_POSTHOG_HOST,
+    });
+
+    // Track initial page view
+    posthog.capture('$pageview');
+
+    // Track page views on route changes
+    history.listen((location) => {
+      posthog.capture('$pageview', { path: location.pathname });
+    });
   }, [isBrowser, history]);
 
   return (
@@ -49,5 +77,4 @@ function Root({ children, location }) {
 }
 
 const router = withRouter(Root);
-
 export default router;
