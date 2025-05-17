@@ -51,7 +51,10 @@ function Root({ children, location }) {
 
   useEffect(() => {
     // Initialize Gleap
-    initializeGleap(location.pathname);
+
+    if (isBrowser) {
+      initializeGleap(location.pathname);
+    }
 
     // Initialize PostHog
     posthog.init(customFields.REACT_APP_PUBLIC_POSTHOG_KEY, {
