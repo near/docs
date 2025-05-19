@@ -27,10 +27,19 @@ import CLIQueryNFT from "@site/src/components/docs/primitives/nft/near-cli/query
 import CLITransferNFT from "@site/src/components/docs/primitives/nft/near-cli/transfer.md"
 import CLIListNFTForSale from "@site/src/components/docs/primitives/nft/near-cli/list-for-sale.md"
 
+import LantstoolMintNFT from "@site/src/components/docs/primitives/nft/lantstool/mint.md"
+import LantstoolBuyNFT from "@site/src/components/docs/primitives/nft/lantstool/buy.md"
+import LantstoolQuryNFT from "@site/src/components/docs/primitives/nft/lantstool/query.md"
+import LantstoolTransferNFT from "@site/src/components/docs/primitives/nft/lantstool/transfer.md"
+import LantstoolListNFTForSale from "@site/src/components/docs/primitives/nft/lantstool/list-for-sale.md"
+
 import SmartContractMintNFT from "@site/src/components/docs/primitives/nft/smart-contract/mint.md"
 import SmartContractBuyNFT from "@site/src/components/docs/primitives/nft/smart-contract/buy.md"
 import SmartContractQueryNFT from "@site/src/components/docs/primitives/nft/smart-contract/query.md"
 import SmartContractTransferNFT from "@site/src/components/docs/primitives/nft/smart-contract/transfer.md"
+
+import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
+import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
 In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.
 
@@ -60,12 +69,21 @@ If you want to deploy your own NFT contract, you can create one using our [refer
 
 Simply personalize it and deploy it to your account.
 
+<Tabs groupId="code-tabs">
+ <TabItem value="🖥️ CLI" label="🖥️ CLI">
+
 ```bash
 near deploy <account-id> --wasmFile contract.wasm --initFunction new
 ```
 
-:::tip
+ </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/deploy-nft-contract.json" branch="nft"/>
+  </TabItem>
+</Tabs>
 
+
+:::tip
 Check the [Contract Wizard](https://dev.near.org/contractwizard.near/widget/ContractWizardUI) to create a personalized NFT contract!.
 
 :::
@@ -81,6 +99,9 @@ To create a new NFT (a.k.a. minting it) you will call the `nft_mint` method pass
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIMintNFT />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolMintNFT/>
   </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract" default>
     <SmartContractMintNFT />
@@ -129,6 +150,9 @@ You can query the NFT's information and metadata by calling the `nft_token`.
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIQueryNFT />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolQuryNFT/>
+  </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
     <SmartContractQueryNFT />
   </TabItem>
@@ -149,6 +173,9 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLITransferNFT />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolTransferNFT/>
+  </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
     <SmartContractTransferNFT />
   </TabItem>
@@ -167,7 +194,9 @@ near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>
 ```
 
 </TabItem>
-
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/attach-nft-to-call.json" branch="nft"/>
+  </TabItem>
 </Tabs>
 
 :::info
@@ -214,7 +243,9 @@ near call <nft-contract> nft_approve '{
 ```
 
 </TabItem>
-
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/approve-user.json" branch="nft"/>
+  </TabItem>
 </Tabs>
 
 :::info
@@ -245,6 +276,9 @@ In order to put a NFT for a sale on a marketplace you need to do two actions:
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIListNFTForSale />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolListNFTForSale/>
+  </TabItem>
 </Tabs>
 
 ---
@@ -261,6 +295,9 @@ For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIBuyNFT />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolBuyNFT/>
   </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract" default>
     <SmartContractBuyNFT />
