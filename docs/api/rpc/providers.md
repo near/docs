@@ -17,7 +17,6 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 | Provider                                                                   | Endpoint Root                                                |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| [NEAR.org (deprecated)](setup.md)                                          | `https://rpc.mainnet.near.org`                               |
 | [1RPC](https://docs.1rpc.io/overview/about-1rpc)                           | `https://1rpc.io/near`                                       |
 | [All That Node](https://www.allthatnode.com/)                              | `https://allthatnode.com/protocol/near.dsrv`                 |
 | [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  |
@@ -41,7 +40,6 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 | Provider                                                                   | Endpoint Root                                                |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| [NEAR.org (deprecated)](setup.md)                                          | `https://rpc.testnet.near.org`                               |
 | [FASTNEAR](https://fastnear.com)                                           | `https://test.rpc.fastnear.com`                              |
 | [All That Node](https://www.allthatnode.com/)                              | `https://allthatnode.com/protocol/near.dsrv`                 |
 
@@ -53,34 +51,44 @@ As a user, if a dApp or wallet doesn't support RPC failover and the primary prov
 
 ## On NEAR.org RPC Deprecation
 
-Please read the following announcement: [Future of Pagoda Services](/blog/2024-08-13-pagoda-services).
+Please read the following announcement: [Deprecation of NEAR.org and Pagoda.co RPC Endpoints](https://pages.near.org/blog/deprecation-of-near-org-and-pagoda-co-rpc-endpoints/).
 
-> The Infrastructure Committee feels that Pagoda's fully-subsidized near.org RPC service is getting in the way of decentralization efforts and is preventing high-quality commercial RPC offerings from gaining traction. If a NEAR core team continues to support a free-to-use near.org RPC service, it will be required to gradually lower its rate limits over the coming months to prevent abuse. In light of this proposed change, high-traffic near.org RPC users should start making plans to switch to other RPC providers.
+> After careful consideration and approval by the Infrastructure Committee, NEAR will implement a phased deprecation of the free public RPC endpoints under near.org and pagoda.co, beginning June 1, 2025. This deprecation aims to create a more sustainable and decentralized ecosystem, and follows [Pagoda winding down operations](https://near.org/blog/ecosystem-update-announcing-near-one-chain-abstraction-spinouts) and decentralizing its functions into NEAR ecosystem teams and committees.
 
-### The current rate-limits of NEAR.org RPC endpoints
+All public RPC endpoints under the near.org and pagoda.co domains, including both regular and archival endpoints, will undergo a gradual deprecation through increasingly restricted rate limits. These changes will affect all of the following endpoints:
 
-Starting December 1st, 2024:
+- rpc.*.near.org
+- archival-rpc.*.near.org
+- rpc.*.pagoda.co
+- archival-rpc.*.pagoda.co
+- Additional related endpoints (v2, internal, beta)
 
-* **RPC Mainnet**: 2000 requests/30s per IP
-* **RPC Testnet**: 900 requests/30s per IP
-* **Archival-RPC Mainnet**: 200 requests/30s IP
-* **Archival-RPC Testnet**: 400 requests/30s per IP
+### Rate-limits of NEAR.org RPC endpoints
 
-Starting January 1st, 2025:
+New 10 minutes rate-limits will be implemented to prevent production usage of the RPC endpoints.
 
-* **RPC Mainnet**: 500 requests/30s per IP or referrer
-* **RPC Testnet**: 600 requests/30s per IP or referrer
-* **Archival-RPC Mainnet**: 100 requests/30s per IP or referrer
-* **Archival-RPC Testnet**: 200 requests/30s per IP or referrer
+The deprecation will occur in three phases:
 
-Starting February 1st, 2025
+### Phase 1: Beginning June 1st, 2025
+- RPC Mainnet: 120 RPM, 600 requests per 10 minutes
+- RPC Testnet: 120 RPM, 600 requests per 10 minutes
+- Archival-RPC Mainnet: 16 RPM, 80 requests per 10 minutes
+- Archival-RPC Testnet: 80 RPM, 400 requests per 10 minutes
 
-* **RPC Mainnet**: 150 req/30s per IP or referrer
-* **RPC Testnet**: 300 requests/30s per IP or referrer
-* **Archival-RPC Mainnet**: 20 requests/30s per IP or referrer
-* **Archival-RPC Testnet**: 100 requests/30s per IP or referrer
+### Phase 2: Beginning July 1st, 2025
+- RPC Mainnet: 60 RPM, 150 requests per 10 minutes
+- RPC Testnet: 60 RPM, 150 requests per 10 minutes
+- Archival-RPC Mainnet: 8 RPM, 20 requests per 10 minutes
+- Archival-RPC Testnet: 40 RPM, 100 requests per 10 minutes
 
-:::note
-Rate limits will be applied by IP or by the HTTP `Referer` header, whichever hits first. Frontend applications will likely be rate-limited by the referrer, while backend applications will likely be rate-limited by the IP address.
-:::
+### Phase 3: Beginning August 1st, 2025
+- RPC Mainnet: 30 RPM, 75 requests per 10 minutes
+- RPC Testnet: 30 RPM, 75 requests per 10 minutes
+- Archival-RPC Mainnet: 4 RPM, 10 requests per 10 minutes
+- Archival-RPC Testnet: 20 RPM, 50 requests per 10 minutes
 
+After August 1st, FastNear will continue to maintain these endpoints with the final reduced rate limits to prevent complete breakage of legacy tools, but they will be considered fully deprecated.
+
+**We strongly recommend that all developers migrate away from these endpoints entirely by June 1st, 2025.**
+
+After this date, any large-scale backend usage may be blocked by IP address. The short-term burst limits combined with tight per-minute restrictions will make these endpoints unsuitable for continuous usage.
