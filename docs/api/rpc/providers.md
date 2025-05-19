@@ -53,14 +53,14 @@ As a user, if a dApp or wallet doesn't support RPC failover and the primary prov
 
 Please read the following announcement: [Deprecation of NEAR.org and Pagoda.co RPC Endpoints](https://pages.near.org/blog/deprecation-of-near-org-and-pagoda-co-rpc-endpoints/).
 
-> After careful consideration and approval by the Infrastructure Committee, NEAR will implement a phased deprecation of the free public RPC endpoints under near.org and pagoda.co, beginning June 1, 2025. This deprecation aims to create a more sustainable and decentralized ecosystem, and follows [Pagoda winding down operations](https://near.org/blog/ecosystem-update-announcing-near-one-chain-abstraction-spinouts) and decentralizing its functions into NEAR ecosystem teams and committees.
+> After careful consideration and approval by the Infrastructure Committee, NEAR will implement a phased deprecation of the free public RPC endpoints under `near.org` and `pagoda.co`, beginning June 1, 2025. This deprecation aims to create a more sustainable and decentralized ecosystem, and follows [Pagoda winding down operations](https://near.org/blog/ecosystem-update-announcing-near-one-chain-abstraction-spinouts) and decentralizing its functions into NEAR ecosystem teams and committees.
 
-All public RPC endpoints under the near.org and pagoda.co domains, including both regular and archival endpoints, will undergo a gradual deprecation through increasingly restricted rate limits. These changes will affect all of the following endpoints:
+All public RPC endpoints under the `near.org` and `pagoda.co` domains, including both regular and archival endpoints, will undergo a gradual deprecation through increasingly restricted rate limits. These changes will affect all of the following endpoints:
 
-- rpc.*.near.org
-- archival-rpc.*.near.org
-- rpc.*.pagoda.co
-- archival-rpc.*.pagoda.co
+- `rpc.*.near.org`
+- `archival-rpc.*.near.org`
+- `rpc.*.pagoda.co`
+- `archival-rpc.*.pagoda.co`
 - Additional related endpoints (v2, internal, beta)
 
 ### Rate-limits of NEAR.org RPC endpoints
