@@ -39,7 +39,7 @@ Take a look at what [Shade Agents enable you to build](./examples.md).
 
 Shade Agents have three main components: a `worker agent`, a `smart contract`, and `decentralized key management`. 
 
-Picture 
+**TODO Insert Picture**
 
 
 Worker agents are verifiable off-chain components that run inside of a `TEE` (Trusted Execution Environment). These agents can interact with any data source, use AI models, and propose multichain transactions to be signed.
