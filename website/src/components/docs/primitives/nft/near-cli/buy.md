@@ -14,7 +14,6 @@ near call x.paras.near buy '{"token_series_id": "299102", "receiver_id": "bob.ne
 "299102:1"
 ```
 
-
 </TabItem>
 
 <TabItem value="Mintbase" label="Mintbase">
@@ -33,7 +32,6 @@ near call simple.market.mintbase1.near buy '{"nft_contract_id": "rubennnnnnnn.mi
   }
 }
 ```
-
 
 </TabItem>
 
