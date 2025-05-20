@@ -4,9 +4,13 @@ title: Shade Agents
 sidebar_label: What are Shade Agents?
 ---
 
+import { SigsSupport } from '@site/src/components/sigsSupport';
+
 # What are Shade Agents?
 
-Shade Agents are the first `verifiable`, `non-custodial`, `multichain AI agents` with no single point of failure. They offer the flexibility of Web2 and the security and verifiability of Web3. They can provide proper agentic interactions, take actions on your behalf without the requirement for user intervention, and a single Shade Agent can `trustlessly serve millions` of users rather than just an individual.
+Shade Agents are the first truly `verifiable`, `non-custodial`, `multichain AI agents` with no single point of failure, enabling trust-minimized execution across multiple blockchains without the need for human intermediaries. These agents can autonomously sign transactions, interact with AI models and external data sources, manage assets, and perform privacy-preserving, verifiable computations to offer the flexibility and performance of Web2 with the verifiability of Web3. 
+
+Shade Agents aren't just for personal agents - they power `Agentic Protocols`, an advanced evolution of decentralized applications designed to be autonomous, proactive, and intelligent.
 
 Shade Agents are:
 - **AI Powered**\
@@ -31,27 +35,22 @@ Interact with off-chain data and APIs beyond blockchain VM limits.
 Run intensive computation cheaply without gas limits (~20% TEE overhead compared to standard servers).
 
 :::tip
-Take a look at what [Shade Agents enable you to build](./examples.md).
+Take a look at what [you can build](./examples.md) with Shade Agents.
 :::
 
 
 # How do Shade Agents work? 
+<br/>
+Shade Agents have three main components: a `worker agent`, an `agent smart contract`, and `decentralized key management`. 
 
-Shade Agents have three main components: a `worker agent`, a `smart contract`, and `decentralized key management`. 
+![Shade Agent Architecture](/docs/assets/shade-agents/shade-agent-stack-diagram.png)
 
-**TODO Insert Picture**
+Worker agents are verifiable off-chain components that run inside of a `TEE` (Trusted Execution Environment). These agents implement the logic of the agent and can interact with any data source, use AI models, and propose multichain transactions to be signed.
 
-
-Worker agents are verifiable off-chain components that run inside of a `TEE` (Trusted Execution Environment). These agents can interact with any data source, use AI models, and propose multichain transactions to be signed.
-
-The smart contract `verifies` that the worker agent is running inside a TEE and is running the correct code. If verified, the worker agent can now use the smart contract to sign transactions for nearly any blockchain via NEAR's MPC network (a.k.a [Chain Signatures](../chain-abstraction/chain-signatures.md)). 
-
-:::tip
-`Anyone` can run a worker agent and register it in the contract as long as it is running inside a TEE and running the correct code, which ensures the agent is `always live`. With decentralized key management, any correct instance of the worker agent has access to the same multichain accounts. The worker agents are designed to be `stateless` to allow for this.
-:::
+The agent contract `verifies` that the worker agent is running inside a TEE and is running the correct code. If verified, the worker agent can now use the agent contract to sign transactions for nearly any blockchain via NEAR's MPC network (a.k.a [Chain Signatures](../chain-abstraction/chain-signatures.md)). 
 
 ## Worker Agent 
-To run a worker agent, the developer writes a program in any language they prefer, builds a Docker image for it, and deploys the image to a TEE. Anyone can run an instance of the worker agent for a Shade Agent to remove a single point of failure. 
+To run a worker agent, the developer writes a program in any language they prefer, builds a `Docker image` for it, and deploys the image to a TEE. 
 
 <details>
 
@@ -61,24 +60,31 @@ A trusted execution environment is a secure area of a CPU that runs code in an i
 
 </details>
 
-On startup, the worker agent uses hardware-based entropy and the TEE’s Key Management Service to create a unique, in-memory NEAR private key. The key is only stored within the TEE and cannot be accessed outside of the TEE; it is used to derive a NEAR account which is used for authentication within the smart contract.
+On startup, the worker agent uses hardware-based entropy and the TEE's Key Management Service to create a unique, in-memory NEAR private key. The key is only stored within the TEE and cannot be accessed outside of the TEE; it is used to derive a NEAR account, which is used for authentication within the agent contract.
 
 The worker agent generates:
 - A `remote attestation quote` (which proves it is running inside a genuine TEE).
 - The Docker image's SHA256 `code hash` (to prove that the expected code is running).
 
-This information is submitted to the NEAR smart contract via a function call.
+This information is submitted to the agent contract via a function call.
 
-## Smart Contract
-
-The smart contract verifies worker agents, checks transaction validity, and grants access to MPC signing. When deploying the smart contract, the developer initializes it with the `expected code hash` of valid worker agents.
-
-The smart contract exposes a method (e.g. `register_worker`) that receives the `attestation data and code hash`. It then confirms these are valid; if so, then it will register the NEAR account ID of the worker agent in the contracts storage as a valid worker agent.
-
-The contract can now `gate methods` to only be called by valid worker agents. These methods are used to sign `multichain transactions` via the MPC network. 
+Once the worker agent is registered, it can now make calls to the agent contract to `request signatures`.
 
 :::tip
-The gated methods can act as an additional layer of security to tightly restrict the Shade Agent to certain actions. For example, it could restrict the agent to only create transactions on Solana, only be able to perform swaps but no transfers, only be able to transfer a maximum of 1 ETH per day, etc.
+`Anyone` can run a worker agent and register it in the agent contract as long as it is running inside a TEE and running the correct code, which ensures the agent is `always live`. With decentralized key management, any correct instance of the worker agent has access to the same multichain accounts. Worker agents are designed to be `stateless` to allow for this.
+:::
+
+
+## Agent Smart Contract
+
+The agent contract verifies worker agents, checks transaction validity, and grants access to MPC signing. When deploying the agent contract, the developer initializes it with the `expected code hash` of valid worker agents.
+
+The agent contract exposes a `register worker` function that receives the `attestation data and code hash`. It then confirms these are valid; if so, it will register the NEAR account ID of the worker agent in the agent contract's storage as a valid worker agent.
+
+The agent contract has `gated functions` that can only be called by valid worker agents. These functions are used to sign `multichain transactions` via the MPC network. 
+
+:::tip
+Inside the gated functions, we can add an additional layer of security to tightly restrict the Shade Agent to certain actions. For example, it could restrict the agent to only create transactions on Solana, only be able to perform swaps but no transfers, only be able to transfer a maximum of 1 ETH per day, etc.
 :::
 
 
@@ -86,12 +92,14 @@ The gated methods can act as an additional layer of security to tightly restrict
 
 `Chain Signatures` allow a NEAR smart contract to sign transactions for any blockchains using the `secp256k1` and `ed25519` signature schemes (EVM, Bitcoin, Solana, Sui, XRP, etc.). Shade Agents use Chain Signatures to have an account on almost any blockchain.
 
-By using decentralized key management it removes the risk of key loss or compromise from utilizing a single TEE. Any valid worker agent instance has access to the same keys.
+By using decentralized key management, we remove the risk of `key loss or compromise` from utilizing a single TEE. Any valid worker agent instance has access to the same keys.
 
 ## Upgradeability 
 
-A developer or protocol may want to upgrade the code that is running inside of the Shade Agent. To do this the smart contract can implement an `upgrade code hash` function to change the stored `worker agent code hash`. Only worker agents running the new code can access the restricted methods.
+A developer or protocol may want to change the code that is running inside of the Shade Agent. To do this, the agent contract implements an `upgrade code hash` function to change the stored `worker agent code hash`. Only worker agents running the new code can access the gated functions.
 
 :::tip
-Upgradeability can be designed to fit the needs of the agent. A common upgrade method would be approving a new code hash via DAO vote or implementing a grace period.
+Upgradeability can be designed to fit the needs of the agent. A common upgrade method would be approving a new code hash via DAO voting or implementing a grace period.
 :::
+
+<SigsSupport />

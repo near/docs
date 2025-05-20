@@ -11,11 +11,11 @@ With their extensive list of features, Shade Agents enable a wide range of new u
 
 ### Agentic Protocols 
 
-Shade agents enable a new paradigm where most of the logic for a web3 system is run in a verifiable off-chain environment. This allows for more flexibility in terms of computation, cost, privacy, and the data you have access to.
+Shade Agents enable a new paradigm of decentralized applications where most of the logic for a protocol is run in a verifiable off-chain environment. This allows for more flexibility in terms of computation, cost, privacy, and the data you have access to. These protocols are designed to be autonomous, proactive, and intelligent
 
-- A Yield Optimizer that earns optimal yield on assets across various DeFi protocols on different chains and that autonomously rebalances according to a verifiable algorithm.
+- A Yield Optimizer that earns optimal yield on assets across various DeFi protocols on different chains and autonomously rebalances according to a verifiable algorithm.
 - A private DAO agent on Ethereum Mainnet that takes votes confidentially and publishes the end result in a single transaction.
-- A staking protocol that implements complex reward mechanics cheaply.
+- A staking protocol that can implement complex reward mechanics.
 
 
 ### Smart Contracts using LLMs
@@ -44,7 +44,7 @@ Shade agents allow users to control accounts through ways other than a private k
 
 ### Flexible Oracles 
 
-Since Shade Agents can access off-chain data and APIs, they make great flexible, quick-to-spin-up oracles.
+Since Shade Agents can access off-chain data and APIs, they make great cheap, flexible, quick-to-spin-up oracles.
 
 - A custom data oracle where app developers list a number of different sources, a consensus mechanism (4 of 5 sources state the same data), and the frequency with which data is pushed (or on demand), which allows smart contracts to access any data verifiably.
 - A prediction market resolver agent that uses an LLM to interpret multiple webpages and APIs to resolve markets quickly and accurately.
