@@ -7,7 +7,7 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 <Tabs groupId="nft-contract-tabs" className="file-tabs">
 
 <TabItem value="Paras" label="Paras">
-<TryOutOnLantstool path="docs/2.build/5.primitives/nft/buy-nft-paras.json" branch="nft"/>
+<TryOutOnLantstool path="docs/2.build/5.primitives/nft/buy-nft-paras.json" />
 
 <details>
 
@@ -21,7 +21,7 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 </TabItem>
 
 <TabItem value="Mintbase" label="Mintbase">
-<TryOutOnLantstool path="docs/2.build/5.primitives/nft/buy-nft-mintbase.json" branch="nft"/>
+<TryOutOnLantstool path="docs/2.build/5.primitives/nft/buy-nft-mintbase.json" />
 
 <details>
 

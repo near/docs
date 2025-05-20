@@ -7,7 +7,7 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 <Tabs groupId="nft-contract-tabs" className="file-tabs">
 
 <TabItem value="NFT Primitive" label="Reference" default>
-<TryOutOnLantstool path="docs/2.build/5.primitives/nft/query-nft-data-reference.json" branch="nft"/>
+<TryOutOnLantstool path="docs/2.build/5.primitives/nft/query-nft-data-reference.json" />
 
 <details>
 
@@ -37,7 +37,7 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 </TabItem>
 
 <TabItem value="Paras" label="Paras">
-<TryOutOnLantstool path="docs/2.build/5.primitives/nft/query-nft-data-paras.json" branch="nft"/>
+<TryOutOnLantstool path="docs/2.build/5.primitives/nft/query-nft-data-paras.json" />
 
 <details>
 
@@ -70,7 +70,7 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 </TabItem>
 
 <TabItem value="Mintbase" label="Mintbase">
-<TryOutOnLantstool path="docs/2.build/5.primitives/nft/query-nft-data-mintbase.json" branch="nft"/>
+<TryOutOnLantstool path="docs/2.build/5.primitives/nft/query-nft-data-mintbase.json" />
 
 <details>
 

@@ -78,7 +78,7 @@ near deploy <account-id> --wasmFile contract.wasm --initFunction new
 
  </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/deploy-nft-contract.json" branch="nft"/>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/deploy-nft-contract.json" />
   </TabItem>
 </Tabs>
 
@@ -195,7 +195,7 @@ near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>
 
 </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/attach-nft-to-call.json" branch="nft"/>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/attach-nft-to-call.json" />
   </TabItem>
 </Tabs>
 
@@ -244,7 +244,7 @@ near call <nft-contract> nft_approve '{
 
 </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/approve-user.json" branch="nft"/>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/approve-user.json" />
   </TabItem>
 </Tabs>
 
