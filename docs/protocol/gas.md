@@ -134,13 +134,26 @@ You can query this value by using the [`protocol_config`](/api/rpc/protocol#prot
 
 The appropriate amount for creating this receipt is also immediately deducted from your account.
 
-The "transfer" action won't be finalized until the next block. At this point, the `execution` amount for each of these actions will be deducted from your account (something subtle: the gas units on this next block could be multiplied by a gas price that's up to 1% different, since gas price is recalculated on each block). Adding it all up to find the total transaction fee:
+The "transfer" action won't be finalized until the next block. At this point, the `execution` amount for each of these actions will be deducted from your account.
+
+Although gas prices can change between the time of purchase and time of execution, the gas price per transaction is fixed since protocol version 78. 
 
 ```
-    (transfer_cost.send_not_sir  + action_receipt_creation_config.send_not_sir ) * gas_price_at_block_1 +
-    (transfer_cost.execution + action_receipt_creation_config.execution) * gas_price_at_block_2
+    (
+      transfer_cost.send_not_sir + action_receipt_creation_config.send_not_sir + transfer_cost.execution + action_receipt_creation_config.execution
+    ) * gas_price
 ```
 
+Prior to protocol version 78, the gas prices of each block was used for the work done at that height. 
+
+```
+    (
+      transfer_cost.send_not_sir + action_receipt_creation_config.send_not_sir 
+    ) * gas_price_at_block_1 +
+    (
+      transfer_cost.execution + action_receipt_creation_config.execution
+    ) * gas_price_at_block_2
+```
 </details>
 
 ---
@@ -151,13 +164,31 @@ You don't buy gas, instead, the gas fee is automatically removed from your accou
 
 The only exception to this rule is when you make a function call to a contract. In this case, you need to define how many gas units to use, up to a maximum value of `300Tgas`. This amount will be converted to $NEAR using the network's gas price and deducted from your account's balance.
 
-Since many transactions will take more [than 1 block to execute](./transaction-execution.md), and the gas price is recalculated on each block and could go up, you will be charged a pessimistic estimate of $NEAR (see details below).
-
-If the transaction ends up using less gas than the amount deducted, the difference will simply be **refunded to your account**.
+If the transaction ends up using less gas than the amount deducted, the difference will simply be **refunded to your account**. However, the network subtracts a **gas refund fee** of at leat 1 Tgas or up to 5% of the unspent gas.
 
 <details>
 
-<summary> Pessimistic Estimate </summary>
+<summary> Gas Refund Fee </summary>
+
+Since protocol version 78, the unspent gas at the end of receipt execution is subject to a gas refund fee. The fee is calculated as `max(1 Tgas, 0.05 * unspent_gas) * gas_price`. The gas price is from the time of purchase.
+
+But why introduce such a fee, when refunding 100% of unspent gas allows developers to just attach the maximum amount of gas and not worry about gas estimations too much?
+
+The resason is that attaching too much gas to function calls makes the network less efficient.
+
+Especially congestion control between shards is tricky when transactions have much more gas attached than they actually use. The network limits how many cross contract calls can target a single shard per chunk, to avoid huge queues of incoming receipts on a shard. The limit looks at attached gas as an upper boundary for how much work the receipt causes on the receiving shard. Attaching too much gas can cause this limit to be too restrictive, which stalls shards unnecessarily.
+
+The other inefficiency comes from the refund receipts that prior to version 78 have been created for essentially every function call. While each of them is relatively cheap to execute, in the sum they were a significant part of the global traffic on NEAR Protocol.
+
+To read more about the deicsion to introduce this fee, pleaes take a look at the [NEP-536](https://github.com/near/NEPs/pull/536)
+
+</details>
+
+<details>
+
+<summary> Pessimistic Estimate (before protocol version 78) </summary>
+
+*This section is no longer relevant with protocol version 78 or later.*
 
 While actions have a fixed cost in gas units, the gas price might change block to block. Since transactions can take more than 1 block to execute, the gas price might go up during the transaction's execution.
 
