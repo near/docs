@@ -7,15 +7,15 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 <Tabs groupId="nft-contract-tabs" className="file-tabs">
 
 <TabItem value="NFT Primitive" label="Reference" default>
-<TryOutOnLantstool path="docs/2.build/5.primitives/nft/transfer-nft-reference.json" branch="nft"/>
+<TryOutOnLantstool path="docs/2.build/5.primitives/nft/transfer-nft-reference.json" />
 </TabItem>
 
 <TabItem value="Paras" label="Paras">
-<TryOutOnLantstool path="docs/2.build/5.primitives/nft/transfer-nft-paras.json" branch="nft"/>
+<TryOutOnLantstool path="docs/2.build/5.primitives/nft/transfer-nft-paras.json" />
 </TabItem>
 
 <TabItem value="Mintbase" label="Mintbase">
-<TryOutOnLantstool path="docs/2.build/5.primitives/nft/transfer-nft-mintbase.json" branch="nft"/>
+<TryOutOnLantstool path="docs/2.build/5.primitives/nft/transfer-nft-mintbase.json" />
 </TabItem>
 
 </Tabs>
