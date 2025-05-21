@@ -145,4 +145,12 @@ We suggest you build your agent in such a way that if the transaction fails, the
 
 It may also be relevant in some use cases to emit the signed transaction from your agent contract so that anyone/an indexer can relay them in case your worker agent fails to retrieve the result. Signed transactions can be built using [omni-transactions-rs](https://github.com/near/omni-transaction-rs). Be careful about having unsent signatures floating about.
 
+### Parallel Transactions
+
+Building on the above example, the MPC signing a transaction payload doesn't change any nonce or state on the destination chain. So if you'd like to create an agent that can issue several parallel transactions, you will have to have an intimate knowledge of the destination chain and increment nonces for the derived accounts that you're generation signatures for.
+
+This can cause a lot of issues in the EVM world, for example: Transactions can get stuck in the mempool if the nonce used is not in sequential order. A transaction with a higher nonce will remain pending if a previous transaction (with a lower nonce) hasn't been processed.
+
+If your agent frequently tries to sign multiple transactions in parallel with the MPC, then you must keep track of which transactions are successful and handle failures appropriately so that all transactions eventually are included in blocks of the destination chain.
+
 <SigsSupport />
