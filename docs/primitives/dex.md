@@ -23,9 +23,15 @@ import CLISwap from "@site/src/components/docs/primitives/dex/near-cli/swap.md"
 import CLIGetPools from "@site/src/components/docs/primitives/dex/near-cli/get-pools.md"
 import CLIGetDepositBalances from "@site/src/components/docs/primitives/dex/near-cli/get-deposit-balances.md"
 
+import LantstoolGetWithelistedTokens from "@site/src/components/docs/primitives/dex/lantstool/get-whitelisted-tokens.md"
+
+
 import SmartContractSwap from "@site/src/components/docs/primitives/dex/smart-contract/swap.md"
 import SmartContractGetPools from "@site/src/components/docs/primitives/dex/smart-contract/get-pools.md"
 import SmartContractGetDepositBalances from "@site/src/components/docs/primitives/dex/smart-contract/get-deposit-balances.md"
+
+import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
+import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
 A Decentralized Exchange (DEX) is an application that allows users to trade tokens (native & fungible tokens) through smart contracts.
 
@@ -65,13 +71,7 @@ Anyone list tokens for sale in the DEX. This is why, in order to protect users, 
 ```bash
 near view v2.ref-finance.near get_whitelisted_tokens
 ```
-
-</TabItem>
-
-</Tabs>
-
 <details>
-
 <summary> Examples Response </summary>
 
 ```bash
@@ -88,6 +88,14 @@ near view v2.ref-finance.near get_whitelisted_tokens
 
 </details>
 
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolGetWithelistedTokens/>
+  </TabItem>
+</Tabs>
+
+
+
 ---
 
 ## Register in the DEX
@@ -101,6 +109,10 @@ near call v2.ref-finance.near storage_deposit '' --accountId <account> --amount 
 ```
 
 </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/dex/register-dex.json" branch="dex"/>
+  </TabItem>
+
 
 </Tabs>
 
