@@ -77,7 +77,7 @@ These set of instructions will guide you to deploy your Shade Agent within a TEE
 
 - To build and deploy the agent contract, run `yarn contract:deploy` or `yarn contract:deploy:mac` depending on which system you're using. For deployment on Mac, the script builds a Docker container and installs tools to build the agent contract, since the contract has dependencies that cannot be built on Mac.
 
-- Make sure to keep your account topped up with testnet NEAR. You can get additional NEAR from the [faucet](https://near-faucet.io/) or by asking in our [Dev Group](https:t.me/shadeagents).
+- Make sure to keep your account topped up with testnet NEAR. You can get additional NEAR from the [faucet](https://near-faucet.io/) or by asking in our [Dev Group](https://t.me/shadeagents).
 
 ### Deploying to Phala
 
@@ -135,10 +135,10 @@ If you have made changes to the agent contract, you will need to redeploy the co
 
 Developing locally is much easier for quickly iterating on and testing your agent. You can test all the flows except for the agent registration and valid agent gating.
 
-- To develop locally, comment out the valid worker agent gating from the `send_transaction` method in the [lib.rs](https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L70C1-L71C71) file of the agent contract.
+- To develop locally, comment out the valid worker agent gating from the `agent_sign` method in the [lib.rs](https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L70C1-L71C71) file of the agent contract.
 
 ```rust
-    pub fn send_price(&mut self, payload: Vec<u8>) -> Promise {
+    pub fn agent_sign(&mut self, payload: Vec<u8>) -> Promise {
         // Commented these two lines for local development
         //let worker = self.get_worker(env::predecessor_account_id());
         //require!(self.approved_codehashes.contains(&worker.codehash));
