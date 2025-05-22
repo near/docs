@@ -1,5 +1,3 @@
-
-
 ```rust
 // Account ID that represents a token in near-sdk v3
 // Need to keep it around for backward compatibility

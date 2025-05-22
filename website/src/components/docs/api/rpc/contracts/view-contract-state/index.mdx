@@ -1,13 +1,13 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
-import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
-import RequestJson from "./request-json.mdx";
-import RequestJs from "./request-js.mdx";
-import RequestBash from "./request-bash.mdx";
-import ResponseJson from "./response-json.mdx";
-import ErrorSchemaTable from "./error-schema-table.mdx";
-import ErrorSchemaDescription from "../../_general/error-schema-description.mdx";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { LantstoolLabel } from '@site/src/components/lantstool/LantstoolLabel/LantstoolLabel';
+import { TryOutOnLantstool } from '@site/src/components/lantstool/TryOutOnLantstool';
+import RequestJson from './request-json.mdx';
+import RequestJs from './request-js.mdx';
+import RequestBash from './request-bash.mdx';
+import ResponseJson from './response-json.mdx';
+import ErrorSchemaTable from './error-schema-table.mdx';
+import ErrorSchemaDescription from '../../_general/error-schema-description.mdx';
 
 ## View contract state {#view-contract-state}
 
@@ -44,11 +44,12 @@ Example:
   <summary>Example response:</summary>
   <ResponseJson />
 
-  **Note**: Currently, the response includes a `proof` field directly in the
-  `result`, and a `proof` fields on each element of the `values` list. In
-  the future, the `result.proof` will be included only if the result is **not empty**,
-  and the `proof` field will be removed from all `values`. When parsing the result, you
-  should accept objects with or without these fields set.
+**Note**: Currently, the response includes a `proof` field directly in the
+`result`, and a `proof` fields on each element of the `values` list. In
+the future, the `result.proof` will be included only if the result is **not empty**,
+and the `proof` field will be removed from all `values`. When parsing the result, you
+should accept objects with or without these fields set.
+
 </details>
 
 > **Heads up**

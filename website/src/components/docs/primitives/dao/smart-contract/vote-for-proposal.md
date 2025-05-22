@@ -1,5 +1,3 @@
-
-
 ```rust
 // Set of possible action to take
 #[near(serializers = [json, borsh])]
