@@ -7,7 +7,7 @@ sidebar_label: Key Components
 import {Github} from "@site/src/components/codetabs"
 import { SigsSupport } from '@site/src/components/sigsSupport';
 
-In this section, we will walk through the main components of a Shade Agent and how you can modify this template to build your own agent.
+In this section, we will walk through the main components of a Shade Agent and how you can modify this [template](https://github.com/PiVortex/shade-agent-template) to build your own agent.
 
 ---
 
@@ -15,19 +15,19 @@ In this section, we will walk through the main components of a Shade Agent and h
 
 When an agent contract is deployed, it's initialized with an `owner` account Id. This owner can set and update the `worker agent code hash`.
 
-The code hash dictates that only workers running the correct code can use the `gated functions` of the agent contract and request signatures.
+The code hash dictates that only workers running the correct code can use the `gated methods` of the agent contract and request signatures.
 
-After deploying the agent contract, the owner should submit the code hash. This is done by calling the `approve_codehash` function. This function first checks if it's the owner account Id calling the function then inserts the new code hash into the map of code hashes.
+After deploying the agent contract, the owner should submit the code hash. This is done by calling the `approve_codehash` method. This method first checks if it's the owner account Id calling the method then inserts the new code hash into the map of code hashes.
 
 <Github fname="lib.rs" language="rust"
     url="https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L62-L65"
     start="62" end="65" />
 
-In the template, this function is called in the `contract deployment script`, so you don't need to manually call it.
+In the template, this method is called in the `contract deployment script`, so you don't need to manually call it.
 
-This same function is used to add new code hashes. Since a NEAR account can be a smart contract, you can implement upgradability restrictions on the owner account. A common upgrade method would be approving a new code hash via DAO voting or implementing a grace period.
+This same method is used to add new code hashes. Since a NEAR account can be a smart contract, you can implement upgradability restrictions on the owner account. A common upgrade method would be approving a new code hash via DAO voting or implementing a grace period or cool down, where users can withdraw funds if they are not comfortable with the incoming code hash for the new worker agent..
 
-You could also add a function to delete previous code hashes to ensure that out-of-date workers no longer have access to the agent contract.
+You could also add a method to delete previous code hashes to ensure that out-of-date workers no longer have access to the agent contract.
 
 ---
 
@@ -49,7 +49,7 @@ When running the worker agent locally, the worker agent account is replaced by t
 
 ## Registering a Worker 
 
-To register a worker, the worker agent calls the [register_worker function](https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L79-L101).
+To register a worker, the worker agent calls the [register_worker method](https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L79-L101).
 
 <Github fname="register.js" language="javascript"
     url="https://github.com/PiVortex/shade-agent-template/blob/main/pages/api/register.js#L12"
@@ -61,13 +61,13 @@ You don't really need to worry about how this process works, as it is all abstra
     url="https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L94-L98"
     start="94" end="98" />
 
-The worker agent now has access to call any worker agent gated functions (is able to sign transactions).
+The worker agent now has access to call any worker agent gated methods (is able to sign transactions).
 
 ---
 
 ## Signing Transactions
 
-The Shade Agent signs transactions via the `MPC contract`. The agent contract exposes a function that takes a `transaction payload`, checks the caller is a registered worker agent, and, if so, makes a call to the MPC contract to sign the payload. 
+The Shade Agent signs transactions via the `MPC contract`. The agent contract exposes a method that takes a `transaction payload`, checks the caller is a registered worker agent, and, if so, makes a call to the MPC contract to sign the payload. 
 
 <Github fname="lib.rs" language="rust"
     url="https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L68-L75"
@@ -90,7 +90,7 @@ Next, we build the transaction and transaction payload. To do this, we:
     url="https://github.com/PiVortex/shade-agent-template/blob/main/pages/api/sendTransaction.js#L58-L66"
     start="58" end="66" />
 
-Once we have the payload, we can call the `agent_sign` function on the agent contract with the payload as an argument. The Shade Agent library exposes a `contract call function` that signs the call to the agent contract with the worker's private key.
+Once we have the payload, we can call the `agent_sign` method on the agent contract with the payload as an argument. The Shade Agent library exposes a `contract call function` that signs the call to the agent contract with the worker's private key.
 
 <Github fname="sendTransaction.js" language="javascript"
     url="https://github.com/PiVortex/shade-agent-template/blob/main/pages/api/sendTransaction.js#L24-L29"
@@ -108,7 +108,7 @@ We then take the signature, attach it to the Ethereum transaction, and broadcast
 
 ## Modifying this Example 
 
-The easiest way to create your own agent is to modify the example template and change the transaction payload being sent to the agent contract in the [sendTransaction.js](https://github.com/PiVortex/shade-agent-template/blob/main/pages/api/sendTransaction.js) API route. You can create a payload for any chain that supports `secp256k1` and `ed25519` signatures. The `agent_sign` function can be used whenever you have a payload to sign, so you can send as many different transaction payloads through this function as you like.
+The easiest way to create your own agent is to modify the example template and change the transaction payload being sent to the agent contract in the [sendTransaction.js](https://github.com/PiVortex/shade-agent-template/blob/main/pages/api/sendTransaction.js) API route. You can create a payload for any chain that supports `secp256k1` and `ed25519` signatures. The `agent_sign` method can be used whenever you have a payload to sign, so you can send as many different transaction payloads through this method as you like.
 
 If you are looking for ideas of what to build, consider reviewing our [ideas page](./examples.md).
 

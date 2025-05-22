@@ -34,9 +34,21 @@ cargo near create-dev-account use-random-account-id autogenerate-new-keypair pri
 
 - Install Docker for [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) or [Linux](https://docs.docker.com/desktop/setup/install/linux/).
 
-- Set up a free Phala Cloud account at https://cloud.phala.network/register.
+- Set up a free Phala Cloud account at https://cloud.phala.network/register. 
+
+<details>
+
+<summary> What is a Phala Cloud </summary>
+
+Phala Cloud is service that offers secure and private hosting in a TEE using [Dstack](https://docs.phala.network/overview/phala-network/dstack). Phala cloud makes it easy to run a TEE, that's why we'll use it in our template!
+
+</details>
 
 ---
+
+:::warning
+This technology has not yet undergone a formal audit. Use at your own risk. Please conduct your own due diligence and exercise caution before integrating or relying on it in production environments.
+:::
 
 ## TEE Deployment
 
@@ -123,7 +135,7 @@ If you have made changes to the agent contract, you will need to redeploy the co
 
 Developing locally is much easier for quickly iterating on and testing your agent. You can test all the flows except for the agent registration and valid agent gating.
 
-- To develop locally, comment out the valid worker agent gating from the `send_transaction` function in the [lib.rs](https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L70C1-L71C71) file of the agent contract.
+- To develop locally, comment out the valid worker agent gating from the `send_transaction` method in the [lib.rs](https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L70C1-L71C71) file of the agent contract.
 
 ```rust
     pub fn send_price(&mut self, payload: Vec<u8>) -> Promise {
@@ -136,7 +148,7 @@ Developing locally is much easier for quickly iterating on and testing your agen
     }
 ```
 
-This means now any account, not just valid worker agents, can call this function and get signatures.
+This means now any account, not just valid worker agents, can call this method and get signatures.
 
 - Next, redeploy your agent contract with `yarn contract:deploy` or `yarn contract:deploy:mac`.
 

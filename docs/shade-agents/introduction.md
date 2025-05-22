@@ -17,7 +17,7 @@ Shade Agents are:
 Verifiably access LLMs. 
 
 - **Multichain**\
-Can custody any crypto asset and sign transactions on any chain.
+Can hold any crypto asset and sign transactions on any chain.
 
 - **Non-custodial**\
 No one entity controls the private keys of the agent (MPC signing). 
@@ -79,12 +79,12 @@ Once the worker agent is registered, it can now make calls to the agent contract
 
 The agent contract verifies worker agents, checks transaction validity, and grants access to MPC signing. When deploying the agent contract, the developer initializes it with the `expected code hash` of valid worker agents.
 
-The agent contract exposes a `register worker` function that receives the `attestation data and code hash`. It then confirms these are valid; if so, it will register the NEAR account ID of the worker agent in the agent contract's storage as a valid worker agent.
+The agent contract exposes a `register worker` method that receives the `attestation data and code hash`. It then confirms these are valid; if so, it will register the NEAR account ID of the worker agent in the agent contract's storage as a valid worker agent.
 
-The agent contract has `gated functions` that can only be called by valid worker agents. These functions are used to sign `multichain transactions` via the MPC network. 
+The agent contract has `gated methods` that can only be called by valid worker agents. These methods are used to sign `multichain transactions` via the MPC network. 
 
 :::tip
-Inside the gated functions, we can add an additional layer of security to tightly restrict the Shade Agent to certain actions. For example, it could restrict the agent to only create transactions on Solana, only be able to perform swaps but no transfers, only be able to transfer a maximum of 1 ETH per day, etc.
+Inside the gated methods, we can add an additional layer of security to tightly restrict the Shade Agent to certain actions. For example, it could restrict the agent to only create transactions on Solana, only be able to perform swaps but no transfers, only be able to transfer a maximum of 1 ETH per day, etc.
 :::
 
 
@@ -96,10 +96,10 @@ By using decentralized key management, we remove the risk of `key loss or compro
 
 ## Upgradeability 
 
-A developer or protocol may want to change the code that is running inside of the Shade Agent. To do this, the agent contract implements an `upgrade code hash` function to change the stored `worker agent code hash`. Only worker agents running the new code can access the gated functions.
+A developer or protocol may want to change the code that is running inside of the Shade Agent. To do this, the agent contract implements an `upgrade code hash` method to change the stored `worker agent code hash`. Only worker agents running the new code can access the `gated methods`.
 
 :::tip
-Upgradeability can be designed to fit the needs of the agent. A common upgrade method would be approving a new code hash via DAO voting or implementing a grace period.
+Upgradeability can be designed to fit the needs of the agent. A common upgrade method would be approving a new code hash via DAO voting or implementing a grace period or cool down, where users can withdraw funds if they are not comfortable with the incoming code hash for the new worker agent.
 :::
 
 <SigsSupport />
