@@ -137,7 +137,7 @@ Create a proposal so other users can vote in favor or against it.
     <CLICreateProposal />
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/dao/create-proposal.json" branch="dao"/>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/dao/create-proposal.json" />
   </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
     <SmartContractCreateProposal />
