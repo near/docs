@@ -60,14 +60,14 @@ These set of instructions will guide you to deploy your Shade Agent within a TEE
 
 - Update the `docker:image` and `docker:push` scripts within your `package.json` file to match your repo path.
 
-- Open Docker Desktop.
-
 - Configure your `.env.local.development` file with the following:
   - Your NEAR account ID.
   - The corresponding private key.
   - Set the contract ID to your account ID prefixed with `contract.` (the contract account will be created during deployment, you should not create this before).
 
 - Set the same contract ID in your `.env` file.
+
+- Open Docker Desktop (you don't need to do anything here, it's just to start up Docker).
 
 - Run `yarn docker:image` followed by `yarn docker:push` to build your Docker image.
 
