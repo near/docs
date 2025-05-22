@@ -7,17 +7,17 @@ import TabItem from '@theme/TabItem';
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "x.paras.near";
+const CONTRACT_ADDRESS = 'x.paras.near';
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
+
 await wallet.callMethod({
   method: 'nft_buy',
   args: {
-    token_series_id: "299102",
-    receiver_id: "bob.near",
+    token_series_id: '299102',
+    receiver_id: 'bob.near',
   },
   contractId: CONTRACT_ADDRESS,
-  deposit: 205740000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost
+  deposit: 205740000000000000000000, // attached deposit in yoctoNEAR, covers NFT price + storage cost
 });
 ```
 
@@ -40,17 +40,17 @@ _The `Wallet` object comes from our [quickstart template](https://github.com/nea
 ```js
 import { Wallet } from './near-wallet';
 
-const CONTRACT_ADDRESS = "simple.market.mintbase1.near";
+const CONTRACT_ADDRESS = 'simple.market.mintbase1.near';
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
- 
+
 await wallet.callMethod({
   method: 'buy',
   args: {
-    nft_contract_id: "rubennnnnnnn.mintbase1.near",
-    token_id: "38"
+    nft_contract_id: 'rubennnnnnnn.mintbase1.near',
+    token_id: '38',
   },
   contractId: CONTRACT_ADDRESS,
-  deposit: 1000000000000000000000 // attached deposit in yoctoNEAR, covers NFT price + storage cost (optional)
+  deposit: 1000000000000000000000, // attached deposit in yoctoNEAR, covers NFT price + storage cost (optional)
 });
 ```
 

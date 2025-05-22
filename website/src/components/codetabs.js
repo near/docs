@@ -1,13 +1,13 @@
-import React from "react";
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-import GitHubInternal from "./github";
+import React from 'react';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import GitHubInternal from './github';
 
 const lang2label = {
-  "rust": "🦀 Rust",
-  "js": "🌐 Javascript",
-  "ts": "🌐 Typescript",
-}
+  rust: '🦀 Rust',
+  js: '🌐 Javascript',
+  ts: '🌐 Typescript',
+};
 
 export function CodeTabs({ children }) {
   if (!Array.isArray(children)) {
@@ -32,7 +32,7 @@ export function Language({ children, language, showSingleFName }) {
     children = [children];
   }
 
-  children = children.map( component => change_language_to(component, language));
+  children = children.map((component) => change_language_to(component, language));
 
   if (children.length == 1 && !showSingleFName) {
     return (
@@ -56,7 +56,7 @@ export function Language({ children, language, showSingleFName }) {
 }
 
 export function Github({ url, start, end, language, fname, metastring, withSourceLink }) {
-  return GitHubInternal({ url, start, end, language, fname, metastring, withSourceLink  });
+  return GitHubInternal({ url, start, end, language, fname, metastring, withSourceLink });
 }
 
 /* AUX function */

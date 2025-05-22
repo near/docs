@@ -100,33 +100,9 @@ After the network is synced, you should see logs of every block height currently
 Whenever you run NEAR Lake for any network except localnet you'll need to sync with the network.
 This is required because it's a natural behavior of `nearcore` node and NEAR Lake is a wrapper
 for the regular `nearcore` node. In order to work and index the data your node must be synced
-with the network. This process can take a while, so we suggest to download a fresh backup of
-the `data` folder and put it in you `--home-dir` of your choice (by default it is `~/.near`)
+with the network. 
 
-:::tip
-Running your NEAR Lake node on top of a backup data will reduce the time of syncing process
-because your node will download only the data after the backup was cut and it takes reasonable amount time.
-:::
-
-All the backups can be downloaded from the public S3 bucket which contains latest daily snapshots:
-
-You will need [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html) to be installed in order to download the backups.
-
-### Mainnet
-
-```
-$ aws s3 --no-sign-request cp s3://near-protocol-public/backups/mainnet/rpc/latest .
-$ LATEST=$(cat latest)
-$ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/mainnet/rpc/$LATEST ~/.near/data
-```
-
-### Testnet
-
-```
-$ aws s3 --no-sign-request cp s3://near-protocol-public/backups/testnet/rpc/latest .
-$ LATEST=$(cat latest)
-$ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/testnet/rpc/$LATEST ~/.near/data
-```
+While snapshot-based syncing was previously the recommended default, we now recommend [Epoch Sync](https://near-nodes.io/intro/node-epoch-sync) —a faster, more lightweight method that allows a node to catch up from genesis without downloading a large state snapshot.
 
 ## Running NEAR Lake as an archival node
 
@@ -152,7 +128,7 @@ The syncing process in archival mode can take a lot of time, so it's better to d
 and put it in your `data` folder. After that your node will download only the data after the backup was cut and it
 takes reasonable amount time.
 
-All the backups can be downloaded from the public [S3 bucket](https://near-nodes.io/intro/node-data-snapshots) which contains the latest daily snapshots.
+All the backups can be downloaded from the public [S3 bucket](https://docs.fastnear.com/docs/snapshots/mainnet#archival-mainnet-snapshot) provided by FastNEAR.
 
 See [this link](https://near-nodes.io/archival/run-archival-node-with-nearup) for reference
 
