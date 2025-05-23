@@ -23,8 +23,10 @@ import CLISwap from "@site/src/components/docs/primitives/dex/near-cli/swap.md"
 import CLIGetPools from "@site/src/components/docs/primitives/dex/near-cli/get-pools.md"
 import CLIGetDepositBalances from "@site/src/components/docs/primitives/dex/near-cli/get-deposit-balances.md"
 
+import LantstoolSwap from "@site/src/components/docs/primitives/dex/lantstool/swap.md"
 import LantstoolGetWithelistedTokens from "@site/src/components/docs/primitives/dex/lantstool/get-whitelisted-tokens.md"
-
+import LantstoolGetDepositBalances from "@site/src/components/docs/primitives/dex/lantstool/get-deposit-balances.md"
+import LantstoolGetPools from "@site/src/components/docs/primitives/dex/lantstool/get-pools.md"
 
 import SmartContractSwap from "@site/src/components/docs/primitives/dex/smart-contract/swap.md"
 import SmartContractGetPools from "@site/src/components/docs/primitives/dex/smart-contract/get-pools.md"
@@ -110,7 +112,7 @@ near call v2.ref-finance.near storage_deposit '' --accountId <account> --amount 
 
 </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <TryOutOnLantstool path="docs/2.build/5.primitives/dex/register-dex.json" branch="dex"/>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/dex/register-dex.json" />
   </TabItem>
 
 
@@ -130,7 +132,9 @@ near call token.v2.ref-finance.near ft_transfer_call {"receiver_id": "v2.ref-fin
 ```
 
 </TabItem>
-
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/dex/deposit-funds.json" />
+  </TabItem>
 </Tabs>
 
 :::danger
@@ -154,6 +158,9 @@ Query your deposit balances by calling the `get_deposits` method:
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIGetDepositBalances />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolGetDepositBalances/>
+  </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
     <SmartContractGetDepositBalances />
   </TabItem>
@@ -172,6 +179,9 @@ DEXs work by having multiple pools of token pairs (e.g. NEAR-USDC) that users ca
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIGetPools />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolGetPools/>
+  </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
     <SmartContractGetPools />
   </TabItem>
@@ -188,6 +198,9 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLISwap />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolSwap/>
   </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
     <SmartContractSwap />

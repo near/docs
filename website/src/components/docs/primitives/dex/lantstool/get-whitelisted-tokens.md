@@ -1,7 +1,7 @@
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
 
-<TryOutOnLantstool path="docs/2.build/5.primitives/dex/whitelist-tokens.json" branch="dex"/>
+<TryOutOnLantstool path="docs/2.build/5.primitives/dex/whitelist-tokens.json" />
 
 <details>
 <summary> Examples Response </summary>
