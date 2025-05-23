@@ -14,18 +14,17 @@ module.exports = function (context, options) {
           }),
         ],
         resolve: {
-          alias: {
-          },
+          alias: {},
           fallback: {
             crypto: require.resolve('crypto-browserify'),
             http: require.resolve('stream-http'),
-            https: require.resolve("https-browserify"),
+            https: require.resolve('https-browserify'),
             buffer: require.resolve('buffer'),
-            stream: require.resolve("stream-browserify"),
-            url: require.resolve("url")
+            stream: require.resolve('stream-browserify'),
+            url: require.resolve('url'),
           },
         },
-      }
+      };
     },
-  }
+  };
 };

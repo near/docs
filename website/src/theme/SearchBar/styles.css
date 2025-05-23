@@ -5,8 +5,7 @@
 
 .DocSearch-Button {
   margin: 0;
-  transition: all var(--ifm-transition-fast)
-    var(--ifm-transition-timing-default);
+  transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
 
 .DocSearch-Container {
@@ -16,5 +15,5 @@
 .DocSearch-Description {
   color: var(--ifm-font-color-base);
   font-size: small;
-  margin: 0 .8rem .8rem 0;
+  margin: 0 0.8rem 0.8rem 0;
 }

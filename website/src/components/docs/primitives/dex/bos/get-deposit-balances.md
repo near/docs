@@ -1,12 +1,8 @@
 ```js
-const ammContract = "v2.ref-finance.near";
-const depositBalances = Near.view(
-  ammContract,
-  "get_deposits",
-  {
-    account_id: "bob.near"
-  }
-);
+const ammContract = 'v2.ref-finance.near';
+const depositBalances = Near.view(ammContract, 'get_deposits', {
+  account_id: 'bob.near',
+});
 ```
 
 <details>
