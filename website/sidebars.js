@@ -206,8 +206,25 @@ const sidebar = {
       value: '<hr/>',
     },
     {
-      type: 'html',
-      value: "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>",
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Shade Agents </small></b></span>"
+    },
+    "shade-agents/introduction",
+    "shade-agents/examples",
+    {
+      "Building Shade Agents": [
+        "shade-agents/deploying",
+        "shade-agents/key-components",
+        "shade-agents/plugins",
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr/>"
+    },
+    {
+      "type": "html",
+      "value": "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>"
     },
     'primitives/what-is',
     {
