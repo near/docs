@@ -53,7 +53,7 @@ export default function DocItemLayout({ children }) {
           </article>
           <DocItemPaginator />
           <FeedbackComponent />
-          <AIChat/>
+          <AIChat />
           <HelpComponent />
           <DocItemFooter />
         </div>

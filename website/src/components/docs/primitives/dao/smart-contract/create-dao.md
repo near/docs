@@ -1,5 +1,3 @@
-
-
 ```rust
 // Validator interface, for cross-contract calls
 #[ext_contract(ext_dao_factory_contract)]
