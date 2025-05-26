@@ -10,7 +10,7 @@ import { SigsSupport } from '@site/src/components/sigsSupport';
 
 In this section we'll walk through deploying your first Shade Agent. The template we're using is a simple Shade Agent built with NextJS that acts as a verifiable ETH price oracle. It takes prices from two different APIs, takes the average and then pushes the price to an Ethereum contract.  
 
-You can try out the agent from this pre-deployed frontend [here](https://6167fc3313d457d7b7d618605724595d30cd96ef-3000.dstack-prod5.phala.network/).
+You can try out the agent from this pre-deployed frontend [here](https://28e128535b53e961246b20a84967af4236732ec0-3000.dstack-prod7.phala.network).
 
 In the following pages, you'll see how to edit this agent to work for your use case.
 
@@ -20,17 +20,31 @@ We'll cover two deployment scenarios:
 
 ---
 
-## Setup
+## Prerequisites
 
 - First, `fork` the [template repository](https://github.com/PiVortex/shade-agent-template) to your GitHub account and `clone` the repo from your fork (you'll need to fork it as any changes you make to your agent code need to be reflected on GitHub so the code is verifiable).
 
-- Later on, you'll need a NEAR account. You can get a pre-funded testnet account with [cargo-near](https://github.com/near/cargo-near/releases/latest). Make sure to note down the private key and account Id.
+- Install Rust and NEAR tooling.
+
+```bash
+# Install Rust: https://www.rust-lang.org/tools/install
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Contracts will be compiled to wasm, so we need to add the wasm target
+rustup target add wasm32-unknown-unknown
+
+# Install the NEAR CLI to deploy and interact with the contract
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+
+# Install cargo near to help building the contract
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
+```
+
+- Later on, you'll need a NEAR account. You can get a pre-funded testnet account with cargo-near. Make sure to note down the private key and account Id.
 
 ```bash
 cargo near create-dev-account use-random-account-id autogenerate-new-keypair print-to-terminal network-config testnet create
 ```
-
-- It will also be useful to install the [NEAR CLI](https://github.com/near/near-cli-rs/releases/latest).
 
 - Install Docker for [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) or [Linux](https://docs.docker.com/desktop/setup/install/linux/).
 
@@ -135,20 +149,20 @@ If you have made changes to the agent contract, you will need to redeploy the co
 
 Developing locally is much easier for quickly iterating on and testing your agent. You can test all the flows except for the agent registration and valid agent gating.
 
-- To develop locally, comment out the valid worker agent gating from the `agent_sign` method in the [lib.rs](https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L70C1-L71C71) file of the agent contract.
+- To develop locally, comment out the valid worker agent gating from the `sign_tx` function in the [lib.rs](https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L70C1-L71C71) file of the agent contract.
 
 ```rust
-    pub fn agent_sign(&mut self, payload: Vec<u8>) -> Promise {
+    pub fn sign_tx(&mut self, payload: Vec<u8>, derivation_path: String, key_version: u32) -> Promise {
         // Commented these two lines for local development
         //let worker = self.get_worker(env::predecessor_account_id());
         //require!(self.approved_codehashes.contains(&worker.codehash));
 
         // Call the MPC contract to get a signature for the payload
-        ecdsa::get_sig(payload, "ethereum-1".to_string(), 0)
+        ecdsa::get_sig(payload, derivation_path, key_version)
     }
 ```
 
-This means now any account, not just valid worker agents, can call this method and get signatures.
+This means now any account, not just valid worker agents, can call this function and get signatures.
 
 - Next, redeploy your agent contract with `yarn contract:deploy` or `yarn contract:deploy:mac`.
 

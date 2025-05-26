@@ -6,19 +6,36 @@ sidebar_label: What can you Build?
 
 # What can you build with Shade Agents?
 
-With their extensive list of features, Shade Agents enable a wide range of new use cases, enable many previously custodial apps to become non-custodial, and change how blockchain applications are designed. Some ideas have been laid out below:
+With their extensive list of features, Shade Agents unlock a wide range of new use cases, enable many previously centralized apps to become decentralized, and change how blockchain applications are designed. 
+
+## Shade Agent Features
+
+Shade Agents are:
+- **AI Powered** - Verifiably access LLMs. 
+
+- **Multichain** - Can hold any crypto asset and sign transactions on any chain.
+
+- **Non-custodial** - No one entity controls the private keys of the agent (MPC signing). 
+
+- **Verifiable** - Agent code is known and executes as expected; no one can tamper with the agent.
+
+- **Confidential** - Inputs and state of the agent can be private. 
+
+- **Flexible** - Interact with off-chain data and APIs beyond blockchain VM limits.
+
+- **Low cost** - Run intensive computation cheaply without gas limits (~20% TEE overhead compared to standard servers).
 
 
-### Agentic Protocols 
+## Agentic Protocols 
 
-Shade Agents enable a new paradigm of decentralized applications where most of the logic for a protocol is run in a verifiable off-chain environment. This allows for more flexibility in terms of computation, cost, privacy, and the data you have access to. These protocols are designed to be autonomous, proactive, and intelligent
+Shade Agents enable a new paradigm of decentralized applications where a major component of the logic for a protocol is run in a verifiable off-chain environment. This allows for more flexibility in terms of computation, cost, privacy, and the data you have access to. These protocols are designed to be autonomous, proactive, and intelligent
 
 - A Yield Optimizer that earns optimal yield on assets across various DeFi protocols on different chains and autonomously rebalances according to a verifiable algorithm.
 - A private DAO agent on Ethereum Mainnet that takes votes confidentially and publishes the end result in a single transaction.
 - A staking protocol that can implement complex reward mechanics.
 
 
-### Smart Contracts using LLMs
+## Smart Contracts using LLMs
 
 Shade Agents allow you to access LLMs from a smart contract that lives on any chain. The LLM and agent are both running in a TEE, so we know that the response from the agent is actually from an LLM and its response is a function of the provided inputs.
 
@@ -33,7 +50,7 @@ With this, you could create:
 - A treasury that trades assets according to news, sentiment, and historical price.
 
 
-### Custom Authentication 
+## Custom Authentication 
 
 Shade agents allow users to control accounts through ways other than a private key and have it be non-custodial. 
 
@@ -42,7 +59,7 @@ Shade agents allow users to control accounts through ways other than a private k
 - A Telegram bot for trading within a group chat.
 
 
-### Flexible Oracles 
+## Flexible Oracles 
 
 Since Shade Agents can access off-chain data and APIs, they make great cheap, flexible, quick-to-spin-up oracles.
 
