@@ -28,9 +28,18 @@ import CLICreateDAO from "@site/src/components/docs/primitives/dao/near-cli/crea
 import CLICreateProposal from "@site/src/components/docs/primitives/dao/near-cli/create-proposal.md"
 import CLIVoteForProposal from "@site/src/components/docs/primitives/dao/near-cli/vote-for-proposal.md"
 
+import LantstoolGetDAOList from "@site/src/components/docs/primitives/dao/lantstool/get-dao-list.md"
+import LantstoolGetProposalList from "@site/src/components/docs/primitives/dao/lantstool/get-proposal-list.md"
+import LantstoolCreateDAO from "@site/src/components/docs/primitives/dao/lantstool/create-dao.md"
+import LantstoolVoteForProposal from "@site/src/components/docs/primitives/dao/lantstool/vote-for-proposal.md"
+
+
 import SmartContractCreateDAO from "@site/src/components/docs/primitives/dao/smart-contract/create-dao.md"
 import SmartContractCreateProposal from "@site/src/components/docs/primitives/dao/smart-contract/create-proposal.md"
 import SmartContractVoteForProposal from "@site/src/components/docs/primitives/dao/smart-contract/vote-for-proposal.md"
+
+import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
+import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
 Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision-making, and funding are coordinated by publicly voting on proposals through a smart contract.
 
@@ -53,6 +62,9 @@ You can also create a DAO by interacting with the `sputnik-dao` contract.
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLICreateDAO />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolCreateDAO/>
   </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
     <SmartContractCreateDAO />
@@ -88,6 +100,9 @@ Query the list of DAOs existing in Sputnik Dao.
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIGetDAOList />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolGetDAOList/>
+  </TabItem>
 </Tabs>
 
 ---
@@ -103,6 +118,9 @@ These snippets will enable you to query the proposals existing in a particular D
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIGetProposalList />
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolGetProposalList/>
+  </TabItem>
 </Tabs>
 
 ---
@@ -117,6 +135,9 @@ Create a proposal so other users can vote in favor or against it.
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLICreateProposal />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/dao/create-proposal.json" />
   </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
     <SmartContractCreateProposal />
@@ -139,6 +160,9 @@ These snippet will enable your users to cast a vote for proposal of a particular
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     <CLIVoteForProposal />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <LantstoolVoteForProposal/>
   </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
     <SmartContractVoteForProposal />

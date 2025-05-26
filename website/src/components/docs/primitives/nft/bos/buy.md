@@ -6,14 +6,14 @@ import TabItem from '@theme/TabItem';
 
 ```js
 const tokenData = Near.call(
-  "x.paras.near",
-  "nft_buy",
+  'x.paras.near',
+  'nft_buy',
   {
-    token_series_id: "299102",
-    receiver_id: "bob.near",
+    token_series_id: '299102',
+    receiver_id: 'bob.near',
   },
   undefined,
-  205740000000000000000000 // NFT price + storage cost
+  205740000000000000000000, // NFT price + storage cost
 );
 ```
 
@@ -23,22 +23,21 @@ const tokenData = Near.call(
 "299102:1"
 ```
 
-
 </TabItem>
 
 <TabItem value="Mintbase" label="Mintbase">
 
 ```js
 const tokenData = Near.call(
-  "simple.market.mintbase1.near",
-  "buy",
+  'simple.market.mintbase1.near',
+  'buy',
   {
-    nft_contract_id: "rubennnnnnnn.mintbase1.near",
-    token_id: "38",
+    nft_contract_id: 'rubennnnnnnn.mintbase1.near',
+    token_id: '38',
     referrer_id: null,
   },
   undefined,
-  1000000000000000000000 // NFT price + storage cost (optional, depends on a contract)
+  1000000000000000000000, // NFT price + storage cost (optional, depends on a contract)
 );
 ```
 
@@ -52,7 +51,6 @@ const tokenData = Near.call(
   }
 }
 ```
-
 
 </TabItem>
 

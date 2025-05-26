@@ -32,6 +32,7 @@ near view nft.primitives.near nft_token '{"token_id": "1"}'
   }
 }
 ```
+
 </details>
 
 </TabItem>
