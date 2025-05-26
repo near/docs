@@ -49,7 +49,7 @@ If the previous block is **more than half full** the price goes up by 1%, otherw
 
 <summary> What is the gas price now? </summary>
 
-You can query how much a gas unit costs in `yoctoNEAR` (1Ⓝ = `1e24` yocto) through the [`RPC`](/api/rpc/gas#gas-price). To convert in `Tgas` per `NEAR` simply divide by `1e12`.
+You can query how much a gas unit costs in `yoctoNEAR` (1Ⓝ = `1e24` yocto) through the [`RPC`](/api/rpc/gas#gas-price). To convert in `Tgas` per `NEAR`, you can use the following formula: `gas_price * 1e12 / 1e24`.
 
 
 <NearWidget height="40px">
@@ -69,7 +69,7 @@ const query = fetch('https://rpc.near.org', {
 })
 
 const yocto = query.body.result.gas_price
-return `Right now, 1 Tgas costs ${Number(yocto) / 1e12}Ⓝ`
+return `Right now, 1 Tgas costs ${Number(yocto) * 1e12 / 1e24}Ⓝ`
 ```
 
 </NearWidget>
