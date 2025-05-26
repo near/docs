@@ -1,7 +1,7 @@
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
 
-<TryOutOnLantstool path="docs/2.build/5.primitives/dao/query-exist-proposals.json" branch="dao"/>
+<TryOutOnLantstool path="docs/2.build/5.primitives/dao/query-exist-proposals.json" />
 
 <details>
 <summary>Example response</summary>
