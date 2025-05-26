@@ -7,6 +7,10 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
+import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
+
+
 [Blockchain Oracles](https://en.wikipedia.org/wiki/Blockchain_oracle) serve as intermediaries that connect smart contracts with external (off-chain) data.
 
 `Example:`
@@ -44,7 +48,7 @@ Here is a directory of third-party oracle services deployed on the NEAR blockcha
 
 ### Query Assets
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
@@ -52,11 +56,10 @@ near view priceoracle.near get_assets
 near contract call-function as-read-only priceoracle.near get_assets json-args {} network-config mainnet now
 ```
 
-  <details>
-  
-  <summary>Example Response</summary>
+<details>
+<summary>Example Response</summary>
 
-```json
+```bash
 [
   [
     'wrap.near',
@@ -74,28 +77,49 @@ near contract call-function as-read-only priceoracle.near get_assets json-args {
 ]
 ```
 
-  </details>
+</details>
+
 </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/oracles/query-assets.json" />
+
+<details>
+<summary>Example Response</summary>
+
+```bash
+[
+  [
+    'wrap.near',
+    {
+      reports: [
+        {
+          oracle_id: 'thorinoracle.near',
+          timestamp: '1669795900809627816',
+          price: { multiplier: '17030', decimals: 28 }
+        },
+        ...
+      ]
+    }
+  ]
+]
+```
+
+</details>
+  </TabItem>
 </Tabs>
 
 ### Get Assets Price
 
-<Tabs>
+<Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
 near view priceoracle.near get_price_data
 ```
-
-</TabItem>
-
-</Tabs>
-
 <details>
-
 <summary>Example response</summary>
 
-```json
+```bash
 {
   timestamp: '1706631861981947371',
   recency_duration_sec: 90,
@@ -119,6 +143,40 @@ near view priceoracle.near get_price_data
 ```
 
 </details>
+
+</TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/oracles/assets-price.json" />
+
+<details>
+<summary>Example response</summary>
+
+```bash
+{
+  timestamp: '1706631861981947371',
+  recency_duration_sec: 90,
+  prices: [
+    {
+      asset_id: 'wrap.near',
+      price: { multiplier: '30702', decimals: 28 }
+    },
+    {
+      asset_id: 'aurora',
+      price: { multiplier: '235662', decimals: 20 }
+    },
+    {
+      asset_id: 'meta-pool.near',
+      price: { multiplier: '38770', decimals: 28 }
+    },
+    {
+      asset_id: 'linear-protocol.near',
+      price: { multiplier: '36432', decimals: 28 }
+    },
+```
+
+</details>
+  </TabItem>
+</Tabs>
 
 :::tip
 For USD values, divide the `multiplier` by `10^4`.
