@@ -77,7 +77,7 @@ near view <CONTRACT_ACCOUNT> contract_source_metadata
 ```
 
 ## Verify and Publish
-In order to verify and publish your contract's code, we can use [NearBlocks](https://nearblocks.io) to trigger the verification process. Navigate to the contract's account page and under the **Contract** tab, you will see the **Verify and Publish** button. After the verification process is completed, the contract's source code along with the metadata will be publicly accessible on NearBlocks on the `Contract -> Contract Code` tab. 
+In order to verify and publish your contract's code, you can use [NearBlocks](https://nearblocks.io) to trigger the verification process. Navigate to the contract's account page and under the **Contract** tab, you will see the **Verify and Publish** button. After the verification process is completed, the contract's source code, along with the metadata, will be publicly accessible on NearBlocks on the `Contract -> Contract Code` tab. 
 
 ![reproducible-build](/docs/assets/reproducible-build.png)
    
