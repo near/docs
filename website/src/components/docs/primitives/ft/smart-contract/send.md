@@ -25,4 +25,5 @@ impl Contract {
   }
 }
 ```
+
 _This snippet assumes that the contract is already holding some FTs and that you want to send them to another account._
