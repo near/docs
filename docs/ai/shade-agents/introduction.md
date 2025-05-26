@@ -24,6 +24,8 @@ These agents can autonomously sign transactions across any chain, interact with 
 
 Shade Agents consist of two main components: a `worker agent` and an `agent smart contract`.
 
+![Shade Agent Architecture](/docs/assets/shade-agents/shade-agent-stack-diagram.png)
+
 When a worker agent is booted up in a TEE, the `TEE's hardware-based entropy` generates a random private key and account. This private key is exclusively used to call the agent contract, not for storing funds.
 
 The worker agent calls the `register_worker` function on the agent contract, providing two pieces of information generated inside the TEE:
@@ -32,9 +34,7 @@ The worker agent calls the `register_worker` function on the agent contract, pro
 
 If the attestation quote is valid and the code hash matches the expected code hash of the worker agent (defined during agent contract deployment), the worker agent's accounts are added to a list of valid worker agents.
 
-Once registered, the worker agent can call the `sign_tx` function on the agent contract, enabling it to sign transactions on behalf of the Shade Agent. The Shade Agent utilizes [chain signatures](../chain-abstraction/chain-signatures.md) for decentralized key management, allowing it to hold assets and sign transactions on nearly any chain.
-
-![Shade Agent Architecture](/docs/assets/shade-agents/shade-agent-stack-diagram.png)
+Once registered, the worker agent can call the `sign_tx` function on the agent contract, enabling it to sign transactions on behalf of the Shade Agent. The Shade Agent utilizes [chain signatures](../../chain-abstraction/chain-signatures.md) for decentralized key management, allowing it to hold assets and sign transactions on nearly any chain.
 
 `Anyone` who deploys a worker agent running the correct code inside a TEE can register as a valid worker agent and access the sign_tx function to use the same accounts. This means the accounts are never lost and the service is `always live`. Worker agents are designed to be stateless to facilitate this functionality.
 
@@ -78,6 +78,8 @@ The sign tx function accepts three arguments:
 :::tip
 Within worker agent gated functions, we can implement an additional layer of security to strictly limit the Shade Agent's actions. For example, it could be restricted to only create transactions on Solana, perform swaps but not transfers, or transfer a maximum of 1 ETH per day.
 :::
+
+---
 
 ## Languages and Frameworks
 

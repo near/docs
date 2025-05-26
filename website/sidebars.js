@@ -206,17 +206,35 @@ const sidebar = {
       value: '<hr/>',
     },
     {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Shade Agents </small></b></span>"
+      type: 'html',
+      value: "<span class='menu__link'><b><small> AI and Agents </small></b></span>",
     },
-    "shade-agents/introduction",
-    "shade-agents/examples",
-    {
-      "Building Shade Agents": [
-        "shade-agents/deploying",
-        "shade-agents/key-components",
-        "shade-agents/plugins",
-      ]
+    'ai/introduction',
+    {"AI and Agents": [
+      {
+        "Shade Agents": [
+              "ai/shade-agents/introduction",
+              "ai/shade-agents/examples",
+              {
+                "Building Shade Agents": [
+                  "ai/shade-agents/deploying",
+                  "ai/shade-agents/key-components",
+                  "ai/shade-agents/plugins",
+              ]
+          },
+        ],
+      },
+        {
+          type: 'link',
+          label: 'NEAR AI',
+          href: 'https://docs.near.ai/',
+        },
+        {
+          type: 'link',
+          label: 'Bitte Protocol',
+          href: 'https://docs.bitte.ai/',
+        },
+      ],
     },
     {
       "type": "html",
