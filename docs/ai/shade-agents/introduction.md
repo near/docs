@@ -12,11 +12,15 @@ Shade Agents are an AI agent framework to create verifiable agents that can cont
 
 Current Web3 agents fall into one of two camps:
 1) They are trustless and verifiable by creating and using a private key within a TEE, but if the TEE goes down, the accounts and funds are lost.
-2) The accounts cannot be lost, but the agents are centralized.
+2) The accounts are persistent, but the agents are centralized.
 
 Shade Agents provide verifiability, non-custody, and persistent accounts by operating in TEEs and implementing decentralized key management. Any agent running with the same code inside a TEE can access the same accounts.
 
 These agents can autonomously sign transactions across any chain, interact with AI models and external data sources, manage assets, and perform privacy-preserving, verifiable computations, offering the flexibility and performance of Web2 with the verifiability of Web3.
+
+:::info
+Shade Agents power [Agentic Protocols](./shade-agents/examples.md#agentic-protocols): a new type of decentralized application designed to be autonomous, proactive, and intelligent.
+:::
 
 ---
 
