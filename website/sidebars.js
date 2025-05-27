@@ -52,6 +52,41 @@ const sidebar = {
     },
     {
       type: 'html',
+      value: "<span class='menu__link'><b><small> AI and Agents </small></b></span>",
+    },
+    'ai/introduction',
+    {"AI and Agents": [
+      {
+        "Shade Agents": [
+              "ai/shade-agents/introduction",
+              "ai/shade-agents/examples",
+              {
+                "Building Shade Agents": [
+                  "ai/shade-agents/deploying",
+                  "ai/shade-agents/key-components",
+                  "ai/shade-agents/plugins",
+              ]
+          },
+        ],
+      },
+        {
+          type: 'link',
+          label: 'NEAR AI',
+          href: 'https://docs.near.ai/',
+        },
+        {
+          type: 'link',
+          label: 'Bitte Protocol',
+          href: 'https://docs.bitte.ai/',
+        },
+      ],
+    },
+    {
+      type: 'html',
+      value: '<hr/>',
+    },
+    {
+      type: 'html',
       value: "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>",
     },
     'chain-abstraction/what-is',
@@ -207,42 +242,7 @@ const sidebar = {
     },
     {
       type: 'html',
-      value: "<span class='menu__link'><b><small> AI and Agents </small></b></span>",
-    },
-    'ai/introduction',
-    {"AI and Agents": [
-      {
-        "Shade Agents": [
-              "ai/shade-agents/introduction",
-              "ai/shade-agents/examples",
-              {
-                "Building Shade Agents": [
-                  "ai/shade-agents/deploying",
-                  "ai/shade-agents/key-components",
-                  "ai/shade-agents/plugins",
-              ]
-          },
-        ],
-      },
-        {
-          type: 'link',
-          label: 'NEAR AI',
-          href: 'https://docs.near.ai/',
-        },
-        {
-          type: 'link',
-          label: 'Bitte Protocol',
-          href: 'https://docs.bitte.ai/',
-        },
-      ],
-    },
-    {
-      "type": "html",
-      "value": "<hr/>"
-    },
-    {
-      "type": "html",
-      "value": "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>"
+      value: "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>"
     },
     'primitives/what-is',
     {
