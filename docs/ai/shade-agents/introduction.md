@@ -8,7 +8,7 @@ import { SigsSupport } from '@site/src/components/sigsSupport';
 
 # What are Shade Agents?
 
-Shade Agents are an AI agent framework to create verifiable agents that can control accounts across multiple blockchains with the assurance that the agent cannot lose access to its accounts and that its private keys will never be revealed. They are the first truly `verifiable`, `non-custodial`, `multichain AI agents` with no single point of failure.
+Shade Agents are an AI agent framework to create verifiable agents that can control accounts across multiple blockchains with the assurance that the agent cannot lose access to its accounts and that its private keys will never be revealed. They are the first truly **verifiable**, **non-custodial**, **multichain AI agents** with no single point of failure.
 
 Current Web3 agents fall into one of two camps:
 1) They are trustless and verifiable by creating and using a private key within a TEE, but if the TEE goes down, the accounts and funds are lost.

@@ -4,13 +4,13 @@ title: AI and NEAR
 sidebar_label: AI and NEAR
 ---
 
-NEAR's vision is to create a future of User-Owned AI, where AI and agents serve their users, not corporations. For this vision to become a reality, AI must protect user data, prioritize the user's interests, and operate on a sustainable, user-aligned economic model. The NEAR ecosystem has multiple technologies to enable User-Owned AI.
+NEAR's vision is to create a future of **User-Owned AI**, where AI and agents serve their users, not corporations. For this vision to become a reality, AI must protect user data, prioritize the user's interests, and operate on a sustainable, user-aligned economic model. The NEAR ecosystem has multiple technologies to enable User-Owned AI.
 
 ---
 
 ## Shade Agents
 
-[Shade Agents](./shade-agents/introduction.md) are an AI agent framework to create verifiable agents that can control accounts across multiple blockchains with the assurance that the agent cannot lose access to its accounts and that its private keys will never be revealed. They are the first truly `verifiable`, `non-custodial`, `multichain AI agents` with no single point of failure.
+[Shade Agents](./shade-agents/introduction.md) are an AI agent framework to create verifiable agents that can control accounts across multiple blockchains with the assurance that the agent cannot lose access to its accounts and that its private keys will never be revealed. They are the first truly **verifiable**, **non-custodial**, **multichain AI agents** with no single point of failure.
 
 Current Web3 agents fall into one of two camps:
 1) They are trustless and verifiable by creating and using a private key within a TEE, but if the TEE goes down, the accounts and funds are lost.
@@ -29,7 +29,7 @@ Shade Agents power [Agentic Protocols](./shade-agents/examples.md#agentic-protoc
 
 ## NEAR AI
 
-[NEAR AI](https://docs.near.ai/) is building `agent network infrastructure` to support User-Owned Agents. Their work includes:
+[NEAR AI](https://docs.near.ai/) is building **agent network infrastructure** to support User-Owned Agents. Their work includes:
 - Monetizable open-source AI agents
 - Agent-to-agent communication
 - End-to-end confidential iterations with agents
