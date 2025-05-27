@@ -13,8 +13,8 @@ NEAR's vision is to create a future of **User-Owned AI**, where AI and agents se
 [Shade Agents](./shade-agents/introduction.md) are an AI agent framework to create verifiable agents that can control accounts across multiple blockchains with the assurance that the agent cannot lose access to its accounts and that its private keys will never be revealed. They are the first truly **verifiable**, **non-custodial**, **multichain AI agents** with no single point of failure.
 
 Current Web3 agents fall into one of two camps:
-1) They are trustless and verifiable by creating and using a private key within a TEE, but if the TEE goes down, the accounts and funds are lost.
-2) The accounts are persistent, but the agents are centralized.
+1. They are trustless and verifiable by creating and using a private key within a trusted execution environment (TEE), but if the TEE goes down, the accounts and funds are lost.
+2. The accounts are persistent, but the agents are centralized.
 
 Shade Agents provide verifiability, non-custody, and persistent accounts by operating in TEEs and implementing decentralized key management. Any agent running with the same code inside a TEE can access the same accounts.
 
