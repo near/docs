@@ -22,7 +22,7 @@ We'll cover two deployment scenarios:
 
 ## Prerequisites
 
-- First, `fork` the [template repository](https://github.com/PiVortex/shade-agent-template) to your GitHub account and `clone` the repo from your fork (you'll need to fork it as any changes you make to your agent code need to be reflected on GitHub so the code is verifiable).
+- First, `fork` the [template repository](https://github.com/NearDeFi/shade-agent-template) to your GitHub account and `clone` the repo from your fork (you'll need to fork it as any changes you make to your agent code need to be reflected on GitHub so the code is verifiable).
 
 - Install Rust and NEAR tooling.
 
@@ -85,7 +85,7 @@ These set of instructions will guide you to deploy your Shade Agent within a TEE
 
 - Run `yarn docker:image` followed by `yarn docker:push` to build your Docker image.
 
-- The CLI will print out your `code hash`, which will look something like `sha256:c085606f55354054408f45a9adee8ba4c0a4421d8e3909615b72995b83ad0b84`. You can also check this code hash on Docker Desktop, under the image Id. Take this code hash and update the hash in your [docker-compose.yaml](https://github.com/PiVortex/shade-agent-template/blob/main/docker-compose.yaml#L4) and [utils/deploy-contract.js](https://github.com/PiVortex/shade-agent-template/blob/main/utils/deploy-contract.js#L9).
+- The CLI will print out your `code hash`, which will look something like `sha256:c085606f55354054408f45a9adee8ba4c0a4421d8e3909615b72995b83ad0b84`. You can also check this code hash on Docker Desktop, under the image Id. Take this code hash and update the hash in your [docker-compose.yaml](https://github.com/NearDeFi/shade-agent-template/blob/main/docker-compose.yaml#L4) and [utils/deploy-contract.js](https://github.com/NearDeFi/shade-agent-template/blob/main/utils/deploy-contract.js#L9).
 
 ### Deploying the Agent Contract 
 
@@ -106,7 +106,7 @@ These set of instructions will guide you to deploy your Shade Agent within a TEE
 Now you can interact with the Shade Agent. 
 
 :::tip
-If you are having problems deploying your Docker image to Phala, make sure that your node version in your [Dockerfile](https://github.com/PiVortex/shade-agent-template/blob/main/Dockerfile#L3) matches the one on your machine.
+If you are having problems deploying your Docker image to Phala, make sure that your node version in your [Dockerfile](https://github.com/NearDeFi/shade-agent-template/blob/main/Dockerfile#L3) matches the one on your machine.
 :::
 
 ### Using the Shade Agent
@@ -131,7 +131,7 @@ Each time you update the worker code, you need to deploy a new image to Phala Cl
 
 - Build the new image `yarn docker:image` followed by `yarn docker:push`.
 
-- Update the stored codehash in your [docker-compose.yaml](https://github.com/PiVortex/shade-agent-template/blob/main/docker-compose.yaml#L4) file and then the code hash (no sha256: prefix) in the agent contract using the NEAR CLI: 
+- Update the stored codehash in your [docker-compose.yaml](https://github.com/NearDeFi/shade-agent-template/blob/main/docker-compose.yaml#L4) file and then the code hash (no sha256: prefix) in the agent contract using the NEAR CLI: 
 
 ```bash
 near contract call-function as-transaction <contractId> approve_codehash json-args '{"codehash": "<yourNewCodeHash>"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet 
@@ -140,7 +140,7 @@ near contract call-function as-transaction <contractId> approve_codehash json-ar
 - Update your Phala deployment by clicking on the three little dots, clicking update, and pasting your new `docker-compose.yaml` file.
 
 :::tip
-If you have made changes to the agent contract, you will need to redeploy the contract with the new hash. Update [utils/deploy-contract.js](https://github.com/PiVortex/shade-agent-template/blob/main/utils/deploy-contract.js#L9) and run `yarn contract:deploy` or `yarn contract:deploy:mac`.
+If you have made changes to the agent contract, you will need to redeploy the contract with the new hash. Update [utils/deploy-contract.js](https://github.com/NearDeFi/shade-agent-template/blob/main/utils/deploy-contract.js#L9) and run `yarn contract:deploy` or `yarn contract:deploy:mac`.
 :::
 
 ---
@@ -149,17 +149,17 @@ If you have made changes to the agent contract, you will need to redeploy the co
 
 Developing locally is much easier for quickly iterating on and testing your agent. You can test all the flows except for the agent registration and valid agent gating.
 
-- To develop locally, comment out the valid worker agent gating from the `sign_tx` function in the [lib.rs](https://github.com/PiVortex/shade-agent-template/blob/main/contract/src/lib.rs#L70C1-L71C71) file of the agent contract.
+- To develop locally, comment out the valid worker agent gating from the `sign_tx` function in the [lib.rs](https://github.com/NearDeFi/shade-agent-template/blob/main/contract/src/lib.rs#L70C1-L71C71) file of the agent contract.
 
 ```rust
-    pub fn sign_tx(&mut self, payload: Vec<u8>, derivation_path: String, key_version: u32) -> Promise {
-        // Commented these two lines for local development
-        //let worker = self.get_worker(env::predecessor_account_id());
-        //require!(self.approved_codehashes.contains(&worker.codehash));
+pub fn sign_tx(&mut self, payload: Vec<u8>, derivation_path: String, key_version: u32) -> Promise {
+    // Commented these two lines for local development
+    //let worker = self.get_worker(env::predecessor_account_id());
+    //require!(self.approved_codehashes.contains(&worker.codehash));
 
-        // Call the MPC contract to get a signature for the payload
-        ecdsa::get_sig(payload, derivation_path, key_version)
-    }
+    // Call the MPC contract to get a signature for the payload
+    ecdsa::get_sig(payload, derivation_path, key_version)
+}
 ```
 
 This means now any account, not just valid worker agents, can call this function and get signatures.
