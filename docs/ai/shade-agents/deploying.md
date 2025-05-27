@@ -54,7 +54,7 @@ cargo near create-dev-account use-random-account-id autogenerate-new-keypair pri
 
 <summary> What is a Phala Cloud </summary>
 
-Phala Cloud is service that offers secure and private hosting in a TEE using [Dstack](https://docs.phala.network/overview/phala-network/dstack). Phala cloud makes it easy to run a TEE, that's why we'll use it in our template!
+Phala Cloud is a service that offers secure and private hosting in a TEE using [Dstack](https://docs.phala.network/overview/phala-network/dstack). Phala Cloud makes it easy to run a TEE, that's why we'll use it in our template!
 
 </details>
 
