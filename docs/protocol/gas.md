@@ -186,31 +186,8 @@ To read more about the deicsion to introduce this fee, pleaes take a look at the
 
 <details>
 
-<summary> Pessimistic Estimate (before protocol version 78) </summary>
-
-*This section is no longer relevant with protocol version 78 or later.*
-
-While actions have a fixed cost in gas units, the gas price might change block to block. Since transactions can take more than 1 block to execute, the gas price might go up during the transaction's execution.
-
-To avoid the need to recalculate the gas price for each block, the network will charge you upfront a pessimistic estimate of the gas fee.
-
-Let's take as an example [this transaction calling a contract method](https://testnet.nearblocks.io/txns/JD8Bg4u8kaYeaSsGBqkvhSDCEPgXhtwJRBBPKicCEPMs). The transaction was submitted with 10Tgas attached.
-
-- 10Tgas would cost 0.001Ⓝ at the price when the transaction was submitted
-- The transaction used:
-  - 2.4Tgas to convert the [transaction into a receipt](./transaction-execution.md#block-1-the-transaction-arrives): 0.00024Ⓝ
-  - 3.2Tgas to execute the function in the contract: 0.00032Ⓝ
-  - Total: 5.6Tgas or 0.00056Ⓝ
-- In the end, the user was returned  0.00104Ⓝ
-
-Since the system returned `0.00104Ⓝ`, and the transaction expended `0.00056Ⓝ`, the user was charged upfront `0.0016Ⓝ`, this is 60% more than what the user expected to pay (0.001Ⓝ).
-
-This 60% up comes from assuming that the price of gas will go up by 1% on each block, and the transaction will take 50 blocks to execute (`1.01**50 ~ 1.64`).
-
-</details>
-
 :::tip
-In other chains, paying a higher gas price gets your transaction processed faster. In NEAR, **gas costs are deterministic**, and you **can't pay extra**. Any extra gas attached to a transaction is simply sent back to the user.
+In other chains, paying a higher gas price gets your transaction processed faster. In NEAR, **gas costs are deterministic**, and you **can't pay to get priority**. Any extra gas attached to a transaction is refunded, minus some fee for attaching unnecesary gas.
 :::
 
 ---
