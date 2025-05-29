@@ -8,13 +8,13 @@ import { SigsSupport } from '@site/src/components/sigsSupport';
 
 # What are Shade Agents?
 
-Shade Agents are an AI agent framework to create verifiable agents that can control accounts across multiple blockchains with the assurance that the agent cannot lose access to its accounts and that its private keys will never be revealed. They are the first truly **verifiable**, **non-custodial**, **multichain AI agents** with no single point of failure.
+The shade agent framework allows developers to build decentralized and trustless AI agents that control accounts and assets across multiple blockchains.
 
-Current Web3 agents fall into one of two camps:
-1. They are trustless and verifiable by creating and using a private key within a trusted execution environment (TEE), but if the TEE goes down, the accounts and funds are lost.
-2. The accounts are persistent, but the agents are centralized.
+Previous Web3 agents fall into one of two categories:
+1. They are trustless and verifiable by using a trusted execution environment (TEE), but if the TEE goes down, the private keys and funds of the agent are lost.
+2. The agent’s accounts are persistent, but the agents are centralized.
 
-Shade Agents provide verifiability, non-custody, and persistent accounts by operating in TEEs and implementing decentralized key management. Any agent running with the same code inside a TEE can access the same accounts.
+Shade Agents provide verifiability and non-custody by operating in TEEs, but also persistent accounts by using decentralized key management. Any agent running the same code inside a TEE can access the same accounts.
 
 These agents can autonomously sign transactions across any chain, interact with AI models and external data sources, manage assets, and perform privacy-preserving, verifiable computations, offering the flexibility and performance of Web2 with the verifiability of Web3.
 
@@ -36,11 +36,11 @@ The worker agent calls the `register_worker` function on the agent contract, pro
 - A `remote attestation quote` (which proves it is running inside a genuine TEE).
 - The Docker image's SHA256 `code hash` (to prove that the expected code is running).
 
-If the attestation quote is valid and the code hash matches the expected code hash of the worker agent (defined during agent contract deployment), the worker agent's accounts are added to a list of valid worker agents.
+If the attestation quote is valid and the code hash matches the expected code hash of the worker agent (defined during agent contract deployment), the worker agent's account is approved as a valid worker agent.
 
 Once registered, the worker agent can call the `sign_tx` function on the agent contract, enabling it to sign transactions on behalf of the Shade Agent. The Shade Agent utilizes [chain signatures](../../chain-abstraction/chain-signatures.md) for decentralized key management, allowing it to hold assets and sign transactions on nearly any chain.
 
-`Anyone` can deploy the same Docker image of the worker agent to a TEE and have it register as a valid worker agent and access the sign_tx function to use the same accounts. This means the accounts are never lost and the service is `always live`. Worker agents are designed to be stateless to facilitate this functionality.
+Using the correct Docker image, `anyone` can deploy a worker agent to a TEE, register as a valid worker, and access the sign_tx function to control the same Shade Agent accounts. This means the accounts are never lost, and the service is `always live`. Worker agents are designed to be `stateless` to facilitate this functionality.
 
 <details>
 
