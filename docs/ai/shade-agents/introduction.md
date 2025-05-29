@@ -40,7 +40,7 @@ If the attestation quote is valid and the code hash matches the expected code ha
 
 Once registered, the worker agent can call the `sign_tx` function on the agent contract, enabling it to sign transactions on behalf of the Shade Agent. The Shade Agent utilizes [chain signatures](../../chain-abstraction/chain-signatures.md) for decentralized key management, allowing it to hold assets and sign transactions on nearly any chain.
 
-`Anyone` who deploys a worker agent running the correct code inside a TEE can register as a valid worker agent and access the sign_tx function to use the same accounts. This means the accounts are never lost and the service is `always live`. Worker agents are designed to be stateless to facilitate this functionality.
+`Anyone` can deploy the same Docker image of the worker agent to a TEE and have it register as a valid worker agent and access the sign_tx function to use the same accounts. This means the accounts are never lost and the service is `always live`. Worker agents are designed to be stateless to facilitate this functionality.
 
 <details>
 

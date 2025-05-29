@@ -77,40 +77,45 @@ The sign tx function accepts three arguments:
 In this example, we're signing a transaction to call an Ethereum contract to update the stored price of ETH. First, we retrieve the price of ETH (in this example, the function queries two different APIs and calculates the average).
 
 <Github fname="sendTransaction.js" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js#L15"
-    start="15" end="15" />
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js#L13"
+    start="13" end="13" />
 
-Next, we build the transaction and transaction payload. To do this, we:
-1. `Derive the Ethereum addresses` that will be sending the transaction. This function takes the agent contract Id since this is the predecessor account that is calling the Chain Signatures [MPC contract](https://github.com/Near-One/mpc/tree/main/libs/chain-signatures/contract), and a path. The path can be whatever you like, but different paths will derive different addresses.
-2. `Build the transaction` by inputting the derived address, the target Ethereum smart contract, the amount of ETH we are attaching to the call, and the data (what action is happening, in our case, a function call).
-3. Get the `payload` from the transaction.
-
-<Github fname="sendTransaction.js" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js#L60-L68"
-    start="60" end="68" />
-
-Once we have the payload, we can call the `sign_tx` function on the agent contract. The Shade Agent library exposes a `contract call` function that signs the call to the agent contract with the worker's private key. 
+Next, we build the transaction and transaction payload to be sent to the agent to sign. To do this, we're using the `chainsig.js library`. 
+Using this library, we:
+1. `Derive the Ethereum addresses` that will be sending the transaction. This function takes the agent contract Id since this is the predecessor account that is calling the Chain Signatures [MPC contract](https://github.com/Near-One/mpc/tree/main/libs/chain-signatures/contract), and a path. The path can be whatever string you like, but different paths will derive different addresses.
+2. Create the `data`. This is what action we're performing, in this case, a function call to update the price in the contract.
+3. `Build the transaction` by inputting the derived address, the target Ethereum smart contract, and the data.
+4. Get the `payload` from the transaction.
 
 <Github fname="sendTransaction.js" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js#L24-L31"
-    start="24" end="31" />
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js#L57-L68"
+    start="57" end="68" />
+
+Once we have the payload (also known as the hash), we can call the `sign_tx` function on the agent contract. The Shade Agent library exposes a `contract call` function that signs the call to the agent contract with the worker's private key. 
+
+<Github fname="sendTransaction.js" language="javascript"
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js#L22-L29"
+    start="22" end="29" />
 
 The result is the parts of the `signature`.
 
 We then attach the signature to the Ethereum transaction and broadcast it to the target network.
 
 <Github fname="sendTransaction.js" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js#L44-L54"
-    start="44" end="54" />
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js#L40-L27"
+    start="40" end="47" />
 
 ---
 
 ## Modifying this Example
 
-The simplest way to create your own agent is to modify the example template and alter the transaction payload being sent to the agent contract in the [sendTransaction.js](https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js) API route. You can create a payload for any chain that supports `secp256k1` and `ed25519` signatures. The `agent_tx` function works for any payload, allowing you to send multiple different transaction payloads through this function.
+The simplest way to create your own agent is to modify the example template and alter the transaction payload being sent to the agent contract in the [sendTransaction.js](https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js) API route. You can create a payload for any chain that supports `secp256k1` and `ed25519` signatures. The `agent_tx` function supports any arbitrary payload, allowing you to send multiple different transaction payloads through this function.
 
+In this example, we're using the [chainsig.js library](https://github.com/NearDeFi/chainsig.js), which supports transaction building for several different chains. By defining a different [chain adapter](https://github.com/NearDeFi/shade-agent-template/blob/main/utils/ethereum.js#L42-L49), you can easily start building transactions for other chains the library supports. Review our [chain signature docs](../../chain-abstraction/chain-signatures/implementation.md) for building transactions to learn how to integrate different chains. Note that step 3 of requesting a signature differs since we're calling the agent contract here instead of the MPC directly, and we're signing with a private key instead of a wallet.
+
+:::tip
 If you're seeking inspiration for what to build, consider reviewing our [ideas page](./examples.md).
-
+:::
 ---
 
 ## Security Considerations

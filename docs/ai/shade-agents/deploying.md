@@ -46,7 +46,7 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/release
 cargo near create-dev-account use-random-account-id autogenerate-new-keypair print-to-terminal network-config testnet create
 ```
 
-- Install Docker for [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) or [Linux](https://docs.docker.com/desktop/setup/install/linux/).
+- Install Docker for [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) or [Linux](https://docs.docker.com/desktop/setup/install/linux/) and set up an account.
 
 - Set up a free Phala Cloud account at https://cloud.phala.network/register. 
 
@@ -72,7 +72,7 @@ These set of instructions will guide you to deploy your Shade Agent within a TEE
 
 - Enter the repository and run `yarn` to install the dependencies.
 
-- Update the `docker:image` and `docker:push` scripts within your `package.json` file to match your repo path.
+- Update the `docker:image` and `docker:push` scripts within your `package.json` file to match your docker hub account.
 
 - Configure your `.env.local.development` file with the following:
   - Your NEAR account ID.
@@ -83,23 +83,21 @@ These set of instructions will guide you to deploy your Shade Agent within a TEE
 
 - Open Docker Desktop (you don't need to do anything here, it's just to start up Docker).
 
-- Run `yarn docker:image` followed by `yarn docker:push` to build your Docker image.
+- Run `yarn docker:image` followed by `yarn docker:push` to build and publish your Docker image.
 
 - The CLI will print out your `code hash`, which will look something like `sha256:c085606f55354054408f45a9adee8ba4c0a4421d8e3909615b72995b83ad0b84`. You can also check this code hash on Docker Desktop, under the image Id. Take this code hash and update the hash in your [docker-compose.yaml](https://github.com/NearDeFi/shade-agent-template/blob/main/docker-compose.yaml#L4) and [utils/deploy-contract.js](https://github.com/NearDeFi/shade-agent-template/blob/main/utils/deploy-contract.js#L9).
 
 ### Deploying the Agent Contract 
 
-- To build and deploy the agent contract, run `yarn contract:deploy` or `yarn contract:deploy:mac` depending on which system you're using. For deployment on Mac, the script builds a Docker container and installs tools to build the agent contract, since the contract has dependencies that cannot be built on Mac.
+- Make sure to keep your account topped up with testnet NEAR to deploy the contract. You can get additional NEAR from the [faucet](https://near-faucet.io/) or by asking in our [Dev Group](https://t.me/shadeagents).
 
-- Make sure to keep your account topped up with testnet NEAR. You can get additional NEAR from the [faucet](https://near-faucet.io/) or by asking in our [Dev Group](https://t.me/shadeagents).
+- To build and deploy the agent contract, run `yarn contract:deploy` or `yarn contract:deploy:mac` depending on which system you're using. For deployment on Mac, the script builds a Docker container and installs tools to build the agent contract, since the contract has dependencies that cannot be built on Mac.
 
 ### Deploying to Phala
 
-- Make sure you `commit` and `push` your recent changes to GitHub.
-
 - Go to the Phala Cloud dashboard https://cloud.phala.network/dashboard.
 
-- Click deploy > docker-compose.yml > paste in your docker-compose.yaml, select `tdx.small`, `prod5`, and `dstack-dev-0.3.5` and click deploy. You do not need to enter any environment variables here.
+- Click deploy > docker-compose.yml > and paste in your docker-compose.yaml and select `tdx.small`.
 
 - Once the deployment is finished, click on your deployment, then head to the `network tab` and open the endpoint.
 
@@ -129,7 +127,7 @@ The RPCs being used are rate-limited, so the agent may throw errors if the updat
 
 Each time you update the worker code, you need to deploy a new image to Phala Cloud as the code hash will have changed. To do this, follow these steps:
 
-- Build the new image `yarn docker:image` followed by `yarn docker:push`.
+- Build and publish the new image `yarn docker:image` followed by `yarn docker:push`.
 
 - Update the stored codehash in your [docker-compose.yaml](https://github.com/NearDeFi/shade-agent-template/blob/main/docker-compose.yaml#L4) file and then the code hash (no sha256: prefix) in the agent contract using the NEAR CLI: 
 
@@ -153,7 +151,7 @@ Developing locally is much easier for quickly iterating on and testing your agen
 
 ```rust
 pub fn sign_tx(&mut self, payload: Vec<u8>, derivation_path: String, key_version: u32) -> Promise {
-    // Commented these two lines for local development
+    // Comment these two lines for local development
     //let worker = self.get_worker(env::predecessor_account_id());
     //require!(self.approved_codehashes.contains(&worker.codehash));
 
