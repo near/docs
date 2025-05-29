@@ -6,22 +6,30 @@ sidebar_label: Testnet Faucet
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The [Testnet Token Faucet](https://near-faucet.io/) provides `testnet` tokens so you can develop and test applications on the `testnet` network
+A **faucet** is a service that distributes small amounts of `testnet` tokens so developers and users can experiment on `testnet`. There are currently two testnet faucets:
 
-:::info What's a faucet?
+- [Developer Portal Faucet](https://dev.near.org/faucet)
+- [Testnet NEAR Faucet](https://near-faucet.io/)
 
-A **faucet** is a service that distributes small amounts of `testnet` tokens so developers and users can experiment on `testnet`.
+:::info Supported tokens
+
+The [Developer Portal Faucet](https://dev.near.org/faucet) provides only `testnet` native tokens, while the [Testnet Faucet](https://near-faucet.io/) supports a wide range of fungible tokens, including NEAR, Tether USD, USD Coin, Ether, and many others.
+
 :::
 
-#### Supported tokens
+:::warning The faucets are not working?
 
-The [Testnet Faucet](https://near-faucet.io/) supports a wide range of `testnet` tokens, to help developers building cross-chain solutions and chain-abstracted projects. Tokens include NEAR, Tether USD, USD Coin, Ether, and many others.
+If any of the faucets is not working, please report it on our [NEAR Telegram Channel](https://t.me/neardev) or open an issue in our [NEAR GitHub repository](https://github.com/near/docs/issues).
+
+:::
+
+---
 
 ## Getting Testnet tokens
 
 If you have a NEAR `testnet` account and need tokens to experiment, test, and build on the NEAR blockchain, follow these simple steps to get free tokens:
 
-1. Open the NEAR [Testnet Faucet website](https://near-faucet.io/)
+1. Open the [Developer Portal Faucet](https://dev.near.org/faucet) or [Testnet Faucet website](https://near-faucet.io/)
 
 ![Faucet](/docs/assets/faucet.png)
 *Main page of [Testnet Faucet](https://near-faucet.io/)*
@@ -30,9 +38,19 @@ If you have a NEAR `testnet` account and need tokens to experiment, test, and bu
    - Desired token (`NEAR` by default)
    - Wallet address (e.g., `myaccount.testnet`)
    - Amount
-3. Confirm you're not a robot, by solving a CAPTCHA
-4. Click `Request` and receive your Tokens
+3. Click `Request` and receive your Tokens
    - The faucet will provide a link with the token transaction.
 
-![Faucet](/docs/assets/faucet-done.png)
-*Token transfer confirmation*
+---
+
+## Getting Fungible Tokens
+
+Another way to get fungible tokens on `testnet` is through the [`testnet` version of ref finance](https://testnet.ref.finance/#near|ref.fakes.testnet)
+
+There, you can swap `testnet` NEAR for other fungible tokens, such as `testnet USDC`, `testnet USDT`, `testnet DAI`, and others
+
+:::info Fungible Tokens on Ref Finance
+
+Please notice that tokens on `testnet` might not hold the same rate as on `mainnet` (e.g. `1 USDC` might not exchange to the same amount of `NEAR` as on `mainnet`), furthermore, liquidity on `testnet` might be very low
+
+:::
