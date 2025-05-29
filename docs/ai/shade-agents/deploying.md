@@ -22,7 +22,12 @@ We'll cover two deployment scenarios:
 
 ## Prerequisites
 
-- First, `fork` the [template repository](https://github.com/NearDeFi/shade-agent-template) to your GitHub account and `clone` the repo from your fork (you'll need to fork it as any changes you make to your agent code need to be reflected on GitHub so the code is verifiable).
+- First, `clone` the [template repository](https://github.com/NearDeFi/shade-agent-template).
+
+```bash
+git clone https://github.com/NearDeFi/shade-agent-template.git
+cd shade-agent-template
+```
 
 - Install Rust and NEAR tooling.
 
