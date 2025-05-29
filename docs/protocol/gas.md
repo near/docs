@@ -172,11 +172,11 @@ If the transaction ends up using less gas than the amount deducted, the differen
 
 Since protocol version 78, the unspent gas at the end of receipt execution is subject to a gas refund fee. The fee is calculated as `max(1 Tgas, 0.05 * unspent_gas) * gas_price`. The gas price is from the time of purchase.
 
-But why introduce such a fee, when refunding 100% of unspent gas allows developers to just attach the maximum amount of gas and not worry about gas estimations too much?
+_But why introducing such a fee instead of refunding all gas?_
 
-The resason is that attaching too much gas to function calls makes the network less efficient.
+The reason is that attaching too much gas to function calls makes the network less efficient.
 
-Especially congestion control between shards is tricky when transactions have much more gas attached than they actually use. The network limits how many cross contract calls can target a single shard per chunk, to avoid huge queues of incoming receipts on a shard. The limit looks at attached gas as an upper boundary for how much work the receipt causes on the receiving shard. Attaching too much gas can cause this limit to be too restrictive, which stalls shards unnecessarily.
+Congestion control between shards gets tricky when transactions have much more gas attached than they actually use. The network limits how many cross contract calls can target a single shard per chunk, to avoid huge queues of incoming receipts on a shard. This limit sees the attached gas as an upper boundary for how much work the receipt causes on the receiving shard. Attaching too much gas can cause this limit to become too restrictive, which stalls shards unnecessarily.
 
 The other inefficiency comes from the refund receipts that prior to version 78 have been created for essentially every function call. While each of them is relatively cheap to execute, in the sum they were a significant part of the global traffic on NEAR Protocol.
 
