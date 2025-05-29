@@ -187,7 +187,7 @@ To read more about the deicsion to introduce this fee, pleaes take a look at the
 <details>
 
 :::tip
-In other chains, paying a higher gas price gets your transaction processed faster. In NEAR, **gas costs are deterministic**, and you **can't pay to get priority**. Any extra gas attached to a transaction is refunded, minus some fee for attaching unnecesary gas.
+In other chains, paying a higher gas price gets your transaction processed faster. In NEAR, **gas costs are deterministic**, and you **can't pay to get priority**. Any extra gas attached to a transaction is refunded, minus some fee for attaching unnecessary gas.
 :::
 
 ---
