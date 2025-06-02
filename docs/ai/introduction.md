@@ -41,9 +41,3 @@ Agents are accessible through the [NEAR AI Assistant](https://chat.near.ai/chat)
 ## Bitte Protocol
 
 [Bitte Protocol](https://docs.bitte.ai/prompts/quickstart) is a framework for creating AI agents that interact with smart contracts on NEAR and other chains via natural language. Bitte agents are quick and easy to get started with, you can build an agent for a smart contract in a couple of hours with little prior knowledge of agents. 
-
----
-
-## Yield and Resume
-
-NEAR smart contracts can pause (yield) their execution and wait for an external service to resume them. One powerful use case for this feature is to accept input from a function call to a smart contract, yield execution to make a call to a verifiable LLM, and resume the execution with the LLM's response. Learn how to implement this pattern in your smart contract [here](../smart-contracts/anatomy/yield-resume.md).
