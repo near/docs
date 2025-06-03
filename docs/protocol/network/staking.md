@@ -7,6 +7,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
+import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
+import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
+
 The NEAR blockchain uses a Proof-of-Stake (PoS) consensus mechanism, where participants (validators) secure the network by staking NEAR tokens. Users who don't want to run a validator node can still participate by delegating their tokens to a staking pool.
 
 In this article you'll find a detailed explanation of the staking process, including delegating, viewing balances, and withdrawing using the [NEAR CLI](../../tools/cli.md).
@@ -75,9 +78,20 @@ Look for validators with a good track record, uptime, and reasonable commission 
 
 If you prefer, you can get the list of current validators by using the [`near-validator`](../../tools/cli.md#validator-extension) CLI:
 
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
+
 ```sh
 near-validator validators network-config mainnet now
 ```
+
+</TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/validators-list.json" />
+  </TabItem>
+</Tabs>
+
 
 ### Staking using CLI
 
@@ -128,6 +142,9 @@ near call <my_validator> stake '{"amount": "100000000000000000000000000"}' --acc
 ```
 
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/deposit-and-stake.json" />
+  </TabItem>
 </Tabs>
 
 :::tip Interactive CLI
@@ -158,6 +175,9 @@ near staking delegation <user-account.near> view-balance <my_validator> network-
 near view <my_validator> get_account_staked_balance '{"account_id": "<user-account.near>"}'
 ```
 
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/account-staked-balance.json" />
   </TabItem>
 </Tabs>
 
@@ -191,6 +211,9 @@ near view <my_validator> get_account_total_balance '{"account_id": "<user-accoun
 ```
 
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/account-total-balance.json" />
+  </TabItem>
 </Tabs>
 
 #### User staked balance
@@ -212,6 +235,9 @@ near view <my_validator> get_account_staked_balance '{"account_id": "<user-accou
 ```
 
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/account-staked-balance.json" />
+  </TabItem>
 </Tabs>
 
 <details>
@@ -220,34 +246,79 @@ near view <my_validator> get_account_staked_balance '{"account_id": "<user-accou
 You can view additional information and balances from the staking pool using the following CLI commands:
 
 #### Total staked balance of the entire pool
+<Tabs groupId="cli-commands">
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```sh
 near view <my_validator> get_total_staked_balance '{}'
 ```
 
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/pool-total-staked-balance.json" />
+  </TabItem>
+</Tabs>
+
+
 #### Owner of the staking pool
+<Tabs groupId="cli-commands">
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```sh
 near view <my_validator> get_owner_id '{}'
 ```
 
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/pool-owner.json" />
+  </TabItem>
+</Tabs>
+
+
 #### Current reward fee
+<Tabs groupId="cli-commands">
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```sh
 near view <my_validator> get_reward_fee_fraction '{}'
 ```
 
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/reward-fee.json" />
+  </TabItem>
+</Tabs>
+
+
 #### Owner's balance
+<Tabs groupId="cli-commands">
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```sh
 near view <my_validator> get_account_total_balance '{"account_id": "owner"}'
 ```
 
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/owner-balance.json" />
+  </TabItem>
+</Tabs>
+
+
 #### Staking key
+<Tabs groupId="cli-commands">
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```sh
 near view <my_validator> get_staking_key '{}'
 ```
+
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/staking-key.json" />
+  </TabItem>
+</Tabs>
+
 
 </details>
 
@@ -287,6 +358,9 @@ near call <my_validator> unstake '{"amount": "100000000000000000000000000"}' --a
 ```
 
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/unstake.json" />
+  </TabItem>
 </Tabs>
 
 2. Check the unstaked balance for your `<user-account.near>` account:
@@ -306,6 +380,9 @@ near view <my_validator> get_account_unstaked_balance '{"account_id": "<user-acc
 ```
 
   </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/account-unstaked-balance.json" />
+  </TabItem>
 </Tabs>
 
 3. After 4 epochs, check if you can withdraw:
@@ -324,6 +401,9 @@ near contract call-function as-read-only <my_validator> is_account_unstaked_bala
 near view <my_validator> is_account_unstaked_balance_available '{"account_id": "<user-account.near>"}'
 ```
 
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/account-unstaked-balance-avaible.json" />
   </TabItem>
 </Tabs>
 
@@ -355,6 +435,9 @@ near staking delegation <user-account.near> withdraw-all <my_validator> network-
 near call <my_validator> withdraw '{"amount": "100000000000000000000000000"}' --accountId <user-account.near>
 ```
 
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/withdraw-unstaked-tokens.json" />
   </TabItem>
 </Tabs>
 
