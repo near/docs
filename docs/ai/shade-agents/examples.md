@@ -28,7 +28,7 @@ Shade Agents are:
 
 ## Agentic Protocols 
 
-Shade Agents enable a new paradigm of decentralized applications where a major component of the logic for a protocol is run in a verifiable off-chain environment. This allows for more flexibility in terms of computation, cost, privacy, and the data you have access to. Agentic Protocols protocols are designed to be autonomous, proactive, and intelligent.
+Shade Agents enable a new paradigm of decentralized applications where a major component of the logic for a protocol is run in a verifiable off-chain environment. This allows for more flexibility in terms of computation, cost, privacy, and the data you have access to. Agentic Protocols are designed to be autonomous, proactive, and intelligent.
 
 - A Yield Optimizer that earns optimal yield on assets across various DeFi protocols on different chains and autonomously rebalances according to a verifiable algorithm.
 - A private DAO agent on Ethereum Mainnet that takes votes confidentially and publishes the end result in a single transaction.
