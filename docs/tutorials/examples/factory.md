@@ -9,7 +9,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 A factory is a smart contract that stores a compiled contract, and automatizes deploying the stored contract onto new sub-accounts.
 
-We have a [**A Generic Factory**](https://github.com/near-examples/factory-rust) that deploys the [donation contracts](./donation.md) contract. This donation contract can be changed for whichever compiled contract you like (e.g. a fungible token or DAO). 
+We have a [**A Generic Factory**](https://github.com/near-examples/factory-rust) that deploys the [donation contract](./donation.md). This donation contract can be changed for whichever compiled contract you like (e.g. a fungible token or DAO). 
 
 ---
 
