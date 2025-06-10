@@ -67,6 +67,9 @@ export default function NotFoundContent({ className }) {
                       <a href="/smart-contracts/what-is">
                         <li>Smart Contracts</li>
                       </a>
+                      <a href="/ai/introduction">
+                        <li>AI Agents</li>
+                      </a>
                       <a href="/web3-apps/what-is">
                         <li>Web3 Applications</li>
                       </a>
