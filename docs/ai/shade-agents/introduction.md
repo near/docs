@@ -95,4 +95,46 @@ Worker agents can be written in virtually any programming language and use any f
 
 Agent contracts are written in Rust.
 
+---
+
+## Sandbox vs Production Environments
+
+When building Shade Agents, you have two development paths available: [Sandbox](./sandbox/deploying.md) and [Production](./production/deploying.md). Each environment serves different purposes and comes with its own set of trade-offs.
+
+### Sandbox Environment
+
+The Sandbox environment is designed for `rapid prototyping` and `experimentation`, offering:
+
+- Quick setup with minimal prerequisites
+- Streamlined development workflow
+
+**Best For:**
+- Hackathon projects
+- Learning and experimentation
+- Proof of concept development
+- Quick MVP deployment
+
+**Limitations:**
+- Not recommended for handling significant funds or having admin permissions on significant contracts
+- Limited security features
+- Restricted customization options
+
+### Production Environment
+
+The Production environment is built for `real-world deployments` with:
+
+- Full contract customization
+- Flexible architecture
+
+**Best For:**
+- Mainnet deployments
+- Custom security implementations
+- Production applications
+
+**Limitations:**
+- Longer development cycle
+- More extensive testing needed
+
+Before deploying any agent to Mainnet, please review our list of [security considerations](./production/components.md#security-considerations).
+
 <SigsSupport />
