@@ -61,12 +61,18 @@ const sidebar = {
               "ai/shade-agents/introduction",
               "ai/shade-agents/examples",
               {
-                "Building Shade Agents": [
-                  "ai/shade-agents/deploying",
-                  "ai/shade-agents/key-components",
-                  "ai/shade-agents/plugins",
-              ]
-          },
+                "Sandbox Agents": [
+                  "ai/shade-agents/sandbox/sandbox-deploying",
+                  "ai/shade-agents/sandbox/sandbox-components",
+                ]
+              },
+              {
+                "Production Agents": [
+                  "ai/shade-agents/production/production-deploying",
+                  "ai/shade-agents/production/production-components",
+                ]
+              },
+              "ai/shade-agents/plugins",
         ],
       },
         {

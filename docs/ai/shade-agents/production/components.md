@@ -1,5 +1,5 @@
 ---
-id: key-components
+id: production-components
 title: Key Components
 sidebar_label: Key Components
 ---
@@ -109,12 +109,12 @@ We then attach the signature to the Ethereum transaction and broadcast it to the
 
 ## Modifying this Example
 
-The simplest way to create your own agent is to modify the example template and alter the transaction payload being sent to the agent contract in the [sendTransaction.js](https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js) API route. You can create a payload for any chain that supports `secp256k1` and `ed25519` signatures. The `agent_tx` function supports any arbitrary payload, allowing you to send multiple different transaction payloads through this function.
+The simplest way to create your own agent is to modify the example template and alter the transaction payload being sent to the agent contract in the [sendTransaction.js](https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/sendTransaction.js) API route. You can create a payload for any chain that supports `secp256k1` and `ed25519` signatures. The `sign_tx` function supports any arbitrary payload, allowing you to send multiple different transaction payloads through this function.
 
-In this example, we're using the [chainsig.js library](https://github.com/NearDeFi/chainsig.js), which supports transaction building for several different chains. By defining a different [chain adapter](https://github.com/NearDeFi/shade-agent-template/blob/main/utils/ethereum.js#L42-L49), you can easily start building transactions for other chains the library supports. Review our [chain signature docs](../../chain-abstraction/chain-signatures/implementation.md) for building transactions to learn how to integrate different chains. Note that step 3 of requesting a signature differs since we're calling the agent contract here instead of the MPC directly, and we're signing with a private key instead of a wallet.
+In this example, we're using the [chainsig.js library](https://github.com/NearDeFi/chainsig.js), which supports transaction building for several different chains. By defining a different [chain adapter](https://github.com/NearDeFi/shade-agent-template/blob/main/utils/ethereum.js#L42-L49), you can easily start building transactions for other chains the library supports. Review our [chain signature docs](../../../chain-abstraction/chain-signatures/implementation.md) for building transactions to learn how to integrate different chains. Note that step 3 of requesting a signature differs since we're calling the agent contract here instead of the MPC directly, and we're signing with a private key instead of a wallet.
 
 :::tip
-If you're seeking inspiration for what to build, consider reviewing our [ideas page](./examples.md).
+If you're seeking inspiration for what to build, consider reviewing our [ideas page](../examples.md).
 :::
 ---
 
