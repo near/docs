@@ -158,7 +158,7 @@ We recommend you to name your project `hello-near` for this tutorial, but feel f
 <TabItem value="rust" label="🦀 Rust">
 
 ```bash
-  cargo near new hello-near
+  cargo near
 ```
 
 ![img](@site/static/docs/hello-near-rs.gif)
@@ -179,6 +179,16 @@ hello-near
 
 :::tip
 
+You can skip the interactive menu and create a new project with specific name running the following command:
+
+```bash
+  cargo near new hello-near
+```
+
+:::
+
+:::tip
+
 `hello-near` is the name we chose for this project so the tutorial is simpler to follow, but for future projects feel free to use any name you prefer
 
 :::
@@ -190,6 +200,9 @@ hello-near
 ```bash
   npx create-near-app@latest
 ```
+
+![img](@site/static/docs/hello-near-py.gif)
+_Creating a project using `create-near-app`_
 
 This will generate a project with the following structure:
 
