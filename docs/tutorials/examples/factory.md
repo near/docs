@@ -7,23 +7,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-A factory is a smart contract that stores a compiled contract on itself, and automatizes deploying it into
-sub-accounts.
+A factory is a smart contract that stores a compiled contract, and automatizes deploying the stored contract onto new sub-accounts.
 
-We have two factory examples:
-
-1. [**Token Factory**](https://github.com/near-examples/token-factory): A factory that creates [fungible tokens](../fts/0-intro.md) contracts.
-2. [**A Generic Factory**](https://github.com/near-examples/factory-rust): A factory that creates [donation contracts](./donation.md), but allows to change the contract it deploys.
-
-:::info
-In this page we will focus on the Donation factory, to learn more about the token factory visit its repository.
-:::
+We have a [**A Generic Factory**](https://github.com/near-examples/factory-rust) that deploys the [donation contract](./donation.md). This donation contract can be changed for whichever compiled contract you like (e.g. a fungible token or DAO). 
 
 ---
 
-## Generic Factory
+## Overview {#generic-factory}
 
-The [Generic Factory](https://github.com/near-examples/factory-rust/) presents a contract factory that:
+The factory is a smart contract that:
 
 1. Creates sub-accounts of itself and deploys its contract on them (`create_factory_subaccount_and_deploy`).
 2. Can change the stored contract using the `update_stored_contract` method.
