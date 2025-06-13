@@ -13,7 +13,7 @@ We have a [**A Generic Factory**](https://github.com/near-examples/factory-rust)
 
 ---
 
-## Overview
+## Overview {#generic-factory}
 
 The factory is a smart contract that:
 
