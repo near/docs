@@ -1,5 +1,5 @@
 ---
-id: deploying
+id: production-deploying
 title: Deploying an Agent
 sidebar_label: Deploying an Agent
 ---
@@ -9,8 +9,6 @@ import { SigsSupport } from '@site/src/components/sigsSupport';
 # Deploying an Agent
 
 In this section we'll walk through deploying your first Shade Agent. The template we're using is a simple Shade Agent built with NextJS that acts as a verifiable ETH price oracle. It takes prices from two different APIs, takes the average and then pushes the price to an Ethereum contract.  
-
-You can try out the agent from this pre-deployed frontend [here](https://28e128535b53e961246b20a84967af4236732ec0-3000.dstack-prod7.phala.network).
 
 In the following pages, you'll see how to edit this agent to work for your use case.
 
