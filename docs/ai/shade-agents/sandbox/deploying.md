@@ -16,7 +16,7 @@ We'll cover two deployment scenarios:
 1. **Local Development**: Running the agent locally for rapid testing and development.
 2. **TEE Deployment**: Running the worker agent in a real Trusted Execution Environment (TEE).
 
-In the [next section](./components.md), you'll see how to edit this agent for your specific use case.
+On the [next page](./components.md), you'll see how to edit this agent for your specific use case.
 
 ---
 
