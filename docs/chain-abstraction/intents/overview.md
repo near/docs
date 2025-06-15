@@ -131,7 +131,7 @@ See [Create a Solver](solvers.md) for more details on how these solvers work.
 
 When a user accepts a quote from the Solver Network, the intent begins execution. This is done by the solver performing a contract call (`execute_intents`) to the Intents smart contract on NEAR ([`intents.near`](https://nearblocks.io/address/intents.near)) and passing the intent details. 
 
-The NEAR Intents contract fullfills the request and (if needed) uses multi-chain bridge to settle an intent cross-chain. The Intent smart contract also verifies state changes and ensures the intent is settled correctly, reporting the outcome to the originating user/agent.
+The NEAR Intents contract fulfills the request and (if needed) uses multi-chain bridge to settle an intent cross-chain. The Intent smart contract also verifies state changes and ensures the intent is settled correctly, reporting the outcome to the originating user/agent.
 
 <!-- TODO: add link to smart contract docs -->
 
