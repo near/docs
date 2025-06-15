@@ -87,7 +87,7 @@ Here is an example of a native NEAR swap intent structure ready to be broadcaste
   intent_initiator: "alice.near", // The NEAR account ID of the user initiating the swap
   defuse_asset_identifier_in: "near:wrap.near",  // inpute token (what you are swapping)
   defuse_asset_identifier_out: "near:usdc.near", // output token (what you want to receive)
-  amount_in: "1000000000000000000000000",  // Numbber of $NEAR in yoctoNEAR (1 NEAR = 10^24 yoctoNEAR)
+  amount_in: "1000000000000000000000000",  // Number of $NEAR in yoctoNEAR (1 NEAR = 10^24 yoctoNEAR)
   amount_out_desired: "1000000"            // Number of desired USDC (6 decimals)
 }
 ```
