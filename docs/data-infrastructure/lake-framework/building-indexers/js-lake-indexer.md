@@ -176,7 +176,7 @@ async function handleStreamerMessage(streamerMessage: types.StreamerMessage): Pr
 }
 ```
 
-For this tutorial our requirement is to log the block height and the numer of shards. That's simple:
+For this tutorial our requirement is to log the block height and the number of shards. That's simple:
 
 ```ts
 async function handleStreamerMessage(streamerMessage: types.StreamerMessage): Promise<void> {
