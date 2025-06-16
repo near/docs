@@ -76,6 +76,25 @@ Every method execution has an environment associated with information such as:
 | Current Epoch          | `Context.epoch_height()`           | Current epoch in the blockchain                                                      |
 
 </TabItem>
+<TabItem value="go" label="🐹 GO">
+
+| Variable Name          | SDK Variable                    | Description                                                                          |
+|------------------------|---------------------------------|--------------------------------------------------------------------------------------|
+| Predecessor            | `env.GetPredecessorAccountID()` | Account ID that called this method                                                   |
+| Current Account        | `env.GetCurrentAccountId()`     | Account ID of this smart contract                                                    |
+| Signer                 | `env.GetSignerAccountID()`      | Account ID that signed the transaction leading to this execution                     |
+| Attached Deposit       | `env.GetAttachedDepoist()`       | Amount in yoctoNEAR attached to the call by the predecessor                          |
+| Account Balance        | `env.GetAccountBalance()`        | Balance of this smart contract (including Attached Deposit)                          |
+| Prepaid Gas            | `env.GetPrepaidGas()`            | Amount of gas available for execution                                                |
+| Timestamp              | `env.GetBlockTimeMs()`        | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
+| Current Epoch          | `env.GetEpochHeight()`           | Current epoch in the blockchain                                                      |
+| Block Index            | `env.GetCurrentBlockHeight()`            | Current block index (a.k.a. block height)                                            |
+| Storage Used           | `env.GetStorageUsage()`          | Current storage used by this smart contract in bytes                                 |
+| Used Gas               | `env.GetUsedGas()`               | Amount of gas used for execution                                                     |
+| Signer Public Key      | `env.GetSignerAccountPK()`      | Sender Public Key                                                                    |
+| Account Locked Balance | `env.GetAccountLockedBalance()` | Balance of this smart contract that is locked                                        |
+
+</TabItem>
 
 </Tabs>
 
@@ -259,6 +278,23 @@ Besides environmental variables, the SDK also exposes some functions to perform 
 | Log Error             | `Log.error(message)`                     | Logs an error message. This message is stored on chain.                                                                                                                                                                                                                                                                       |
 | Log Event             | `Log.event(event_type, data)`            | Logs a structured event following the NEP standard for events. This is useful for indexers and frontend applications.                                                                                                                                                                                                          |
 | Raise Exception       | `raise Exception(message)`               | Terminates the execution of the function with an error message. Similar to panic in other languages.                                                                                                                                                                                                                          |
+
+</TabItem>
+<TabItem value="go" label="🐹 GO">
+
+| Function Name         | SDK method                                              | Description                                                                                                                                                                                                                                                                                                                      |
+|-----------------------|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SHA 256               | `env.Sha256Hash(value)`                                    | Hashes a sequence of bytes using sha256.                                                                                                                                                                                                                                                                                         |
+| Keccak 256            | `env.Keccak256Hash(value)`                                 | Hashes a sequence of bytes using keccak256.                                                                                                                                                                                                                                                                                      |
+| Keccak 512            | `env.Keccak512Hash(value)`                                 | Hashes a sequence of bytes using keccak512.                                                                                                                                                                                                                                                                                      |
+| SHA 256        | `env::Sha256Hash(value)`                              | Hashes the bytes using the SHA-256 hash function. This returns a 32 byte hash.                                                                                                                                 
+                                                                                           |
+| RIPEMD 160     | `env::Ripemd160Hash(value)`                           | Hashes the bytes using the RIPEMD-160 hash function. This returns a 20 byte hash.                                                                                                                                                                                                                                                |
+| EC Recover            | `env.EcrecoverPubKey(hash, signature, v, malleability_flag)` | Recovers an ECDSA signer address from a 32-byte message `hash` and a corresponding `signature` along with `v` recovery byte. Takes in an additional flag to check for malleability of the signature which is generally only ideal for transactions. Returns 64 bytes representing the public key if the recovery was successful. |
+| Panic String          | `env.PanicStr(message)`                               | Terminates the execution of the program with the UTF-8 encoded message.                                                                                                                                                                                                                                                          |
+| Log String            | `env.LogString(message)`                                 | Logs the string message. This message is stored on chain.                                                                                                                                                                                                                                                                        |
+| Validator Stake       | `env.ValidatorStakeAmount(account_id)`                      | For a given account return its current stake. If the account is not a validator, returns 0.                                                                                                                                                                                                                                      |
+| Validator Total Stake | `env.ValidatorTotalStakeAmount()`                          | Returns the total stake of validators in the current epoch.                                                                                                                                                                                                                                                                      |
 
 </TabItem>
 

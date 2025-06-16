@@ -103,6 +103,44 @@ class CrossContractExample(Contract):
 ```
 </Language>
 
+<Language value="go" language="go">
+```go
+package main
+
+import (
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	"github.com/vlmoon99/near-sdk-go/env"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+//go:export Example8QueryingInformation
+func Example8QueryingInformation() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		env.LogString("client input  ===  " + string(input.Data))
+
+		helloAccount := "hello-nearverse.testnet"
+		gas := uint64(10 * types.ONE_TERA_GAS)
+
+		promiseBuilder.NewCrossContract(helloAccount).
+			Gas(gas).
+			Call("get_greeting", map[string]string{}).
+			Then("Example8QueryingInformationResponse", map[string]string{})
+		return nil
+	})
+}
+
+//go:export Example8QueryingInformationResponse
+func Example8QueryingInformationResponse() {
+	if !promiseBuilder.IsCallbackFromSelf() {
+		env.LogString("Error: Callback not from self")
+		return
+	}
+	env.LogString("Callback was executed successfully")
+}
+```
+</Language>
+
 </CodeTabs>
 
 ---
@@ -175,6 +213,66 @@ class CrossContractExample(Contract):
             "message": f"Successfully set greeting to '{original_greeting}'",
             "result": result.data
         }
+```
+</Language>
+
+<Language value="go" language="go">
+```go
+package main
+
+import (
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	"github.com/vlmoon99/near-sdk-go/env"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+//go:export Example9SendingInformation
+func Example9SendingInformation() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		env.LogString("Client input: " + string(input.Data))
+
+		helloAccount := "hello-nearverse.testnet"
+		gas := uint64(30 * types.ONE_TERA_GAS)
+
+		args := map[string]string{
+			"message": "New Greeting",
+		}
+
+		promiseBuilder.NewCrossContract(helloAccount).
+			Gas(gas).
+			Call("set_greeting", args).
+			Then("Example9ChangeGreetingCallback", map[string]string{})
+		return nil
+	})
+}
+
+//go:export Example9ChangeGreetingCallback
+func Example9ChangeGreetingCallback() {
+	if !promiseBuilder.IsCallbackFromSelf() {
+		env.LogString("Error: Callback not from self")
+		return
+	}
+
+	result, err := promiseBuilder.GetPromiseResultSafe(0)
+	if err != nil {
+		env.LogString("Error getting promise result: " + err.Error())
+		return
+	}
+
+	if result.Success {
+		env.LogString("State change completed successfully")
+	} else {
+		env.LogString("State change failed")
+	}
+
+	env.LogString("Promise result status: " + types.IntToString(int(result.StatusCode)))
+	if len(result.Data) > 0 {
+		env.LogString("Returned data: " + string(result.Data))
+	} else {
+		env.LogString("No return data from state change")
+	}
+}
 ```
 </Language>
 
@@ -311,6 +409,73 @@ You can attach an unused GAS weight by specifying the `.with_unused_gas_weight()
     ```
 
   </TabItem>
+<TabItem value="go" label="🐹 GO">
+
+```go
+package main
+
+import (
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	"github.com/vlmoon99/near-sdk-go/env"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+//go:export Example10CrossContractCall
+func Example10CrossContractCall() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		env.LogString("Client input: " + string(input.Data))
+
+		externalAccount := "hello-nearverse.testnet"
+		gas := uint64(5 * types.ONE_TERA_GAS)
+
+		args := map[string]string{
+			"message": "New Greeting",
+		}
+
+		promiseBuilder.NewCrossContract(externalAccount).
+			Gas(gas).
+			Call("set_greeting", args).
+			Then("Example10CrossContractCallback", map[string]string{
+				"context_data": "saved_for_callback",
+			})
+		return nil
+	})
+}
+
+//go:export Example10CrossContractCallback
+func Example10CrossContractCallback() {
+	env.LogString("Executing callback")
+
+	if !promiseBuilder.IsCallbackFromSelf() {
+		env.LogString("Error: Callback not from self")
+		return
+	}
+
+	count := env.PromiseResultsCount()
+	env.LogString("Promise results count: " + types.IntToString(int(count)))
+
+	if count == 0 {
+		env.LogString("No promise results available")
+		return
+	}
+
+	result, err := promiseBuilder.GetPromiseResultSafe(0)
+	if err != nil {
+		env.LogString("Error retrieving promise result: " + err.Error())
+		return
+	}
+
+	if result.Success {
+		env.LogString("Cross-contract call executed successfully")
+	} else {
+		env.LogString("Cross-contract call failed")
+	}
+}
+
+```
+</TabItem>
+
 </Tabs>
 
 :::info
@@ -382,6 +547,37 @@ class CrossContractExample(Contract):
             "message": f"Successfully got greeting: {result.data}",
             "context": additional_context
         }
+```
+</Language>
+
+<Language value="go" language="go">
+```go
+//go:export Example9ChangeGreetingCallback
+func Example9ChangeGreetingCallback() {
+	if !promiseBuilder.IsCallbackFromSelf() {
+		env.LogString("Error: Callback not from self")
+		return
+	}
+
+	result, err := promiseBuilder.GetPromiseResultSafe(0)
+	if err != nil {
+		env.LogString("Error getting promise result: " + err.Error())
+		return
+	}
+
+	if result.Success {
+		env.LogString("State change completed successfully")
+	} else {
+		env.LogString("State change failed")
+	}
+
+	env.LogString("Promise result status: " + types.IntToString(int(result.StatusCode)))
+	if len(result.Data) > 0 {
+		env.LogString("Returned data: " + string(result.Data))
+	} else {
+		env.LogString("No return data from state change")
+	}
+}
 ```
 </Language>
 
@@ -505,6 +701,77 @@ class BatchCallsExample(Contract):
 ```
 
   </TabItem>
+  <TabItem value="go" label="🐹 GO">
+
+```go
+package main
+
+import (
+	"strconv"
+
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	"github.com/vlmoon99/near-sdk-go/env"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// Example 11: Batch Calls - Multiple Functions, Same Contract
+//
+//go:export Example11BatchCallsSameContract
+func Example11BatchCallsSameContract() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		env.LogString("Client input: " + string(input.Data))
+
+		helloAccount := "hello-nearverse.testnet"
+		gas := uint64(10 * types.ONE_TERA_GAS)
+
+		promiseBuilder.NewCrossContract(helloAccount).
+			Gas(gas).
+			Call("set_greeting", map[string]string{
+				"message": "Greeting One",
+			}).
+			ThenCall(helloAccount, "get_greeting", map[string]string{}).
+			Then("Example11BatchCallsCallback", map[string]string{
+				"original_data": "[Greeting One, Greeting Two]",
+			})
+
+		env.LogString("Batch call created successfully")
+		return nil
+	})
+}
+
+// Example 11: Batch Callback Handling
+//
+//go:export Example11BatchCallsCallback
+func Example11BatchCallsCallback() {
+	env.LogString("Processing batch call results")
+
+	if !promiseBuilder.IsCallbackFromSelf() {
+		env.LogString("Error: Callback not from self")
+		return
+	}
+
+	count := env.PromiseResultsCount()
+	env.LogString("Promise results count: " + types.IntToString(int(count)))
+
+	if count == 0 {
+		env.LogString("No promise results available")
+		return
+	}
+
+	result, err := promiseBuilder.GetPromiseResultSafe(0)
+	if err != nil {
+		env.LogString("Error retrieving batch result: " + err.Error())
+		return
+	}
+
+	env.LogString("Batch call success: " + strconv.FormatBool(result.Success))
+	env.LogString("Batch call data: " + string(result.Data))
+}
+
+```
+</TabItem>
+
 </Tabs>
 
 :::tip
@@ -590,6 +857,72 @@ class MultiContractExample(Contract):
 ```
 
   </TabItem>
+  <TabItem value="go" label="🐹 GO">
+
+```go
+package main
+
+import (
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	"github.com/vlmoon99/near-sdk-go/env"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// Example 12: Parallel Calls - Multiple Functions, Different Contracts
+//
+//go:export Example12ParallelCallsDifferentContracts
+func Example12ParallelCallsDifferentContracts() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		env.LogString("Client input: " + string(input.Data))
+
+		contractA := "hello-nearverse.testnet"
+		contractB := "statusmessage.neargocli.testnet"
+
+		promiseA := promiseBuilder.NewCrossContract(contractA).
+			Call("get_greeting", map[string]string{})
+
+		promiseB := promiseBuilder.NewCrossContract(contractB).
+			Call("SetStatus", map[string]string{"message": "Hello, World!"})
+
+		// Join the promises and assign a callback
+		promiseA.Join([]*promiseBuilder.Promise{promiseB}, "Example12ParallelContractsCallback", map[string]string{
+			"contract_ids": contractA + "," + contractB,
+		})
+
+		env.LogString("Parallel contract calls initialized")
+		return nil
+	})
+}
+
+// Example 12: Handling Results from Parallel Calls
+//
+//go:export Example12ParallelContractsCallback
+func Example12ParallelContractsCallback() {
+	env.LogString("Processing results from multiple contracts")
+
+	if !promiseBuilder.IsCallbackFromSelf() {
+		env.LogString("Error: Callback not from self")
+		return
+	}
+
+	results := []promiseBuilder.PromiseResult{}
+	count := env.PromiseResultsCount()
+	for i := 0; i < int(count); i++ {
+		result, err := promiseBuilder.GetPromiseResultSafe(uint64(i))
+		if err != nil {
+			env.LogString("Error processing result " + types.IntToString(i) + ": " + err.Error())
+			continue
+		}
+		results = append(results, result)
+	}
+
+	env.LogString("Processed " + types.IntToString(len(results)) + " contract responses")
+}
+
+```
+</TabItem>
+
 </Tabs>
 
 :::tip

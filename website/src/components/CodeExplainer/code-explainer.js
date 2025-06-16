@@ -11,6 +11,7 @@ export const lang2label = {
   js: '🌐 JS',
   ts: '🌐 TS',
   python: '🐍 PY',
+  go: '🐹 GO',
 };
 
 export function ExplainCode({ children, languages }) {

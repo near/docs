@@ -11,9 +11,9 @@ import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-
 
 Let's illustrate the basic anatomy of a simple "Hello World" contract. The code on this page comes from our [Hello NEAR repository](https://github.com/near-examples/hello-near-examples) on GitHub.
 
-<ExplainCode languages="js,rust,python" >
+<ExplainCode languages="js,rust,python,go" >
 
-<Block highlights='{"js": "1", "rust": "1", "python": "1"}' fname="hello-near">
+<Block highlights='{"js": "1", "rust": "1", "python": "1","go":"1"}' fname="hello-near">
 
     ### Importing the SDK
     All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment.md), [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more.
@@ -28,6 +28,15 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
     The contract is described through a structure:
     - The attributes define which data the contract stores
     - The functions define its public (and private) interface
+
+</Block>
+
+<Block highlights='{"go":"54-64,130-414"}' fname="hello-near">
+
+    ### Contract's Main Structure
+    The contract is described through a structure:
+    - The attributes define which data the contract stores
+    - The functions which will be exposed to the client (//go:export Your Function Name)
 
 </Block>
 
@@ -140,4 +149,5 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
     start="2" end="32" />
 
 <File language="python" fname="hello-near" url="https://github.com/r-near/near-py-examples/blob/main/hello-near.py" start="2" end="32" />
+<File language="go" fname="hello-near" url="https://github.com/vlmoon99/near-sdk-go/blob/main/examples/near_docs_contract_structure/main.go" start="1" end="414" />
 </ExplainCode>
