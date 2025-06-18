@@ -84,20 +84,26 @@ import (
 	"github.com/vlmoon99/near-sdk-go/types"
 )
 
-//go:export Example1TransferToken
-func Example1TransferToken() {
+//go:export ExampleTransferToken
+func ExampleTransferToken() {
 	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
-		accountId, err := input.JSON.GetString("account_id")
+		to, err := input.JSON.GetString("to")
+		if err != nil {
+			return err
+		}
+		rawAmount, err := input.JSON.GetString("amount")
 		if err != nil {
 			return err
 		}
 
-		amount, _ := types.U128FromString("1000000000000000000000") //0.001Ⓝ
-		promiseBuilder.CreateBatch(accountId).
+		amount, _ := types.U128FromString(rawAmount)
+
+		promiseBuilder.CreateBatch(to).
 			Transfer(amount)
 		return nil
 	})
 }
+
 ```
 
 </TabItem>
@@ -256,10 +262,9 @@ import (
 	"github.com/vlmoon99/near-sdk-go/types"
 )
 
-//go:export Example2FunctionCall
-func Example2FunctionCall() {
+//go:export ExampleFunctionCall
+func ExampleFunctionCall() {
 	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
-		env.LogString("client input  ===  " + string(input.Data))
 		gas := uint64(types.ONE_TERA_GAS * 10)
 		accountId := "hello-nearverse.testnet"
 
@@ -268,36 +273,29 @@ func Example2FunctionCall() {
 			Call("set_greeting", map[string]string{
 				"message": "howdy",
 			}).
-			Then("Example2FunctionCallCallback", map[string]string{})
+			Then("ExampleFunctionCallCallback", map[string]string{})
 		return nil
 	})
 }
 
-//go:export Example2FunctionCallCallback
-func Example2FunctionCallCallback() {
-	if err := promiseBuilder.CallbackGuard(); err != nil {
-		env.LogString("Callback rejected: not from self")
-		return
-	}
-
-	result, err := promiseBuilder.GetPromiseResultSafe(0)
-	if err != nil {
-		env.LogString("Promise failed: " + err.Error())
-		return
-	}
-
-	if result.Success {
-		env.LogString("Callback success")
-		if len(result.Data) > 0 {
-			env.LogString("Result: " + string(result.Data))
+//go:export ExampleFunctionCallCallback
+func ExampleFunctionCallCallback() {
+	contractBuilder.HandlePromiseResult(func(result *promiseBuilder.PromiseResult) error {
+		if result.Success {
+			env.LogString("Callback success")
+			if len(result.Data) > 0 {
+				env.LogString("Result: " + string(result.Data))
+			}
+		} else {
+			env.LogString("Callback failed")
+			if len(result.Data) > 0 {
+				env.LogString("Error: " + string(result.Data))
+			}
 		}
-	} else {
-		env.LogString("Callback failed")
-		if len(result.Data) > 0 {
-			env.LogString("Error: " + string(result.Data))
-		}
-	}
+		return nil
+	})
 }
+
 ```
 </TabItem>
 
@@ -400,8 +398,8 @@ import (
 	"github.com/vlmoon99/near-sdk-go/types"
 )
 
-//go:export Example3CreateSubaccount
-func Example3CreateSubaccount() {
+//go:export ExampleCreateSubaccount
+func ExampleCreateSubaccount() {
 	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
 		prefix, err := input.JSON.GetString("prefix")
 		if err != nil {
@@ -542,10 +540,8 @@ import (
 	"github.com/vlmoon99/near-sdk-go/types"
 )
 
-// Example 4: Creating .testnet / .near Accounts
-//
-//go:export Example4CreateAccount
-func Example4CreateAccount() {
+//go:export ExampleCreateAccount
+func ExampleCreateAccount() {
 	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
 		accountId, err := input.JSON.GetString("account_id")
 		if err != nil {
@@ -656,8 +652,8 @@ import (
 //go:embed status_message_go.wasm
 var contractWasm []byte
 
-//go:export Example5DeployContract
-func Example5DeployContract() {
+//go:export ExampleDeployContract
+func ExampleDeployContract() {
 	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
 		prefix, err := input.JSON.GetString("prefix")
 		if err != nil {
@@ -785,15 +781,17 @@ import (
 	"github.com/vlmoon99/near-sdk-go/types"
 )
 
-//go:export Example6AddKeys
-func Example6AddKeys() {
+//go:export ExampleAddKeys
+func ExampleAddKeys() {
 	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
 		prefix, err := input.JSON.GetString("prefix")
 		if err != nil {
 			return err
 		}
-
-		publicKey, _ := env.GetSignerAccountPK()
+		publicKey, err := input.JSON.GetString("public_key")
+		if err != nil {
+			return err
+		}
 		currentAccountId, _ := env.GetCurrentAccountId()
 		subaccountId := prefix + "." + currentAccountId
 		amount, _ := types.U128FromString("1000000000000000000000") //0.001Ⓝ
@@ -801,7 +799,7 @@ func Example6AddKeys() {
 		promiseBuilder.CreateBatch(subaccountId).
 			CreateAccount().
 			Transfer(amount).
-			AddFullAccessKey(publicKey, 0)
+			AddFullAccessKey([]byte(publicKey), 0)
 		return nil
 	})
 }
@@ -929,14 +927,18 @@ import (
 	"github.com/vlmoon99/near-sdk-go/types"
 )
 
-//go:export Example7DeleteAccount
-func Example7DeleteAccount() {
+//go:export ExampleCreateDeleteAccount
+func ExampleCreateDeleteAccount() {
 	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
 		prefix, err := input.JSON.GetString("prefix")
 		if err != nil {
 			return err
 		}
 
+		beneficiary, err := input.JSON.GetString("beneficiary")
+		if err != nil {
+			return err
+		}
 		currentAccountId, _ := env.GetCurrentAccountId()
 		subaccountId := prefix + "." + currentAccountId
 		amount, _ := types.U128FromString("1000000000000000000000") //0.001Ⓝ
@@ -944,7 +946,23 @@ func Example7DeleteAccount() {
 		promiseBuilder.CreateBatch(subaccountId).
 			CreateAccount().
 			Transfer(amount).
-			DeleteAccount(currentAccountId)
+			DeleteAccount(beneficiary)
+		return nil
+	})
+}
+
+//go:export ExampleSelfDeleteAccount
+func ExampleSelfDeleteAccount() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+
+		beneficiary, err := input.JSON.GetString("beneficiary")
+		if err != nil {
+			return err
+		}
+		currentAccountId, _ := env.GetCurrentAccountId()
+
+		promiseBuilder.CreateBatch(currentAccountId).
+			DeleteAccount(beneficiary)
 		return nil
 	})
 }

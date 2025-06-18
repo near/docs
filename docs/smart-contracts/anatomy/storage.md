@@ -16,7 +16,7 @@ It is important to know that the account's **code** and account's **storage** ar
 
 <hr class="subsection" />
 
-<ExplainCode languages="js,rust,python,go" >
+<ExplainCode languages="js,rust,python" >
 
 <Block highlights='{"js": "3-6,10-13", "python": "7,10-14,17,20"}' fname="auction">
 
@@ -28,18 +28,6 @@ It is important to know that the account's **code** and account's **storage** ar
     For example, our Auction contract stores when the auction ends, and an object representing the highest bid.
 
     **Note:** The SDK also provides [collections](./collections.md) to efficiently store collections of data.
-
-</Block>
-
-<Block highlights='{"go": "54-90"}' fname="hello">
-
-    ### Defining the State
-    To store and manage state in the NEAR blockchain, you have two main options:
-
-    1. Use the built-in collections from the NEAR SDK for Go, available in the [collections package](https://github.com/vlmoon99/near-sdk-go/blob/main/collections/collections.go)
-    2. Use the low-level storage functions `env.StorageRead` and `env.StorageWrite` from the [env package](https://github.com/vlmoon99/near-sdk-go/blob/main/env/env.go)
-
-    The collections package provides higher-level abstractions for common data structures, while the env package offers direct storage access when needed.
 
 </Block>
 
@@ -184,7 +172,5 @@ Make sure to read the [updating a contract](../release/upgrade.md) if you run in
 <File language="python" fname="auction" url="https://github.com/r-near/near-py-examples/blob/main/auction.py" start="2" end="122"></File>
 
 <File language="python" fname="hello" url="https://github.com/r-near/near-py-examples/blob/main/hello-near.py" start="5" end="20"></File>
-
-<File language="go" fname="hello" url="https://github.com/vlmoon99/near-sdk-go/blob/main/examples/near_docs_contract_structure/main.go" start="1" end="414" />
 
 </ExplainCode>
