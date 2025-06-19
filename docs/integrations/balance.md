@@ -56,7 +56,7 @@ https://testnet.nearblocks.io/txns/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
-    method=EXPERIMENTAL_changes \
+    method=changes \
     'params:={
         "block_id": "CJ24svU3C9FaULVjcNVnWuVZjK6mNaQ8p6AMyUDMqB37",
         "changes_type": "account_changes",
