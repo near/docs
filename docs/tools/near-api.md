@@ -8,17 +8,29 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github, Language} from "@site/src/components/codetabs"
 
-The NEAR API is a set of libraries that allow you to interact with the NEAR blockchain. You can use it to in frontend and backend applications to:
+The NEAR API is a collection of language-specific SDKs that allow developers to interact with the NEAR blockchain from both frontend and backend applications. These libraries enable you to:
 
-- Call functions on a deployed contract
-- Query information about an account
-- Create NEAR accounts
-- Send Tokens such as NEAR, FTs, and NFTs
-- Create, Add and Delete Account Keys
-- Deploy a contract
+- Invoke `view` and `call` functions on deployed smart contracts
+- Query on-chain data such as account state, keys, balance
+- Create and manage NEAR accounts
+- Transfer tokens, including native NEAR, Fungible Tokens, Non-Fungible Tokens
+- Sign transactions/meta-transactions/messages and broadcasting them to the network
+- Deploy smart contracts
 
 Our API is available in multiple languages, including:
-- JavaScript: [`near-api-js`](https://github.com/near/near-api-js)
+- JavaScript/TypeScript:
+  - [`@near-js/accounts`](https://github.com/near/near-api-js/tree/master/packages/accounts) - A collection of classes, functions, and types for interacting with accounts and contracts.
+  - [`@near-js/signers`](https://github.com/near/near-api-js/tree/master/packages/signers) - A collection of classes and types to facilitate cryptographic signing.
+  - [`@near-js/transactions`](https://github.com/near/near-api-js/tree/master/packages/transactions) - A collection of classes, functions, and types for composing, serializing, and signing NEAR transactions.
+  - [`@near-js/tokens`](https://github.com/near/near-api-js/tree/master/packages/tokens) - A collection of standard tokens.
+  - [`@near-js/providers`](https://github.com/near/near-api-js/tree/master/packages/providers) - A collection of classes, functions, and types for communicating with the NEAR RPC.
+  - [`@near-js/utils`](https://github.com/near/near-api-js/tree/master/packages/utils) - A collection of commonly-used functions and constants.
+  - [`@near-js/crypto`](https://github.com/near/near-api-js/tree/master/packages/crypto) - A collection of classes and types for working with cryptographic key pairs.
+  - [`@near-js/types`](https://github.com/near/near-api-js/tree/master/packages/types) - A collection of commonly-used classes and types..
+  - [`@near-js/keystores`](https://github.com/near/near-api-js/tree/master/packages/keystores), [`@near-js/keystores-node`](https://github.com/near/near-api-js/tree/master/packages/keystores-node) and [`@near-js/keystores-browser`](https://github.com/near/near-api-js/tree/master/packages/keystores-browser) - A collection of classes for storing and managing NEAR-compatible cryptographic keys.
+  :::info
+  The legacy [`near-api-js`](https://github.com/near/near-api-js/tree/master/packages/near-api-js) package has been replaced with a set of modular packages under the `@near-js/*` namespace. These new libraries offer improved developer experience, better performance, and more flexibility by allowing you to import only the functionality you need.
+  :::
 - Rust: [`near-api-rs`](https://github.com/near/near-api-rs)
 - Python: [`py-near`](https://github.com/pvolnov/py-near)
 
@@ -32,17 +44,19 @@ To allow users to login into your web application using a wallet you will need t
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
-  Include `near-api-js` as a dependency in your package.
+  Include the following core libraries as most applications will need them:
 
   ```bash
-  npm i near-api-js
+  npm i @near-js/accounts@2 @near-js/providers@2 @near-js/signers@2
   ```
 
   :::tip Static HTML
-  If you are building a site without using `npm`, you can include the library directly in your HTML file through a CDN.
+  If you are building a site without using `npm`, you can include libraries directly in your HTML file through a CDN.
 
   ```html
-  <script src="https://cdn.jsdelivr.net/npm/near-api-js/dist/near-api-js.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@near-js/accounts/lib/esm/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@near-js/providers/lib/esm/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@near-js/signers/lib/esm/index.min.js"></script>
   ```
   :::
 
@@ -69,9 +83,11 @@ To allow users to login into your web application using a wallet you will need t
   <TabItem value="js" label="🌐 JavaScript">
   You can use the API library in the browser, or in Node.js runtime. 
 
-  <Github fname="send-tokens.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/send-tokens.js#L1"
-    start="1" end="1" />
+  ```js
+  import { Account } from "@near-js/accounts";
+  import { JsonRpcProvider } from "@near-js/providers";
+  import { KeyPairSigner } from "@near-js/signers";
+  ```
 
   <details>
     <summary>Using the API in Node.js</summary>
@@ -114,35 +130,6 @@ To allow users to login into your web application using a wallet you will need t
 ### Connecting to NEAR {#connect}
 
 <Tabs groupId="api">
-  <TabItem value="js" label="🌐 JavaScript">
-
-  The object returned from `connect` is your entry-point for all commands in the API.
-  To transactions you'll need a [`KeyStore`](#key-handlers-stores--signers).
-
-  <Github fname="send-tokens.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/send-tokens.js#L17-L22"
-    start="17" end="22" />
-
-  <details>
-    <summary>Mainnet/Localnet connection</summary>
-
-    ```js
-    // Mainnet config example
-    const connectionConfig = {
-      networkId: "mainnet",
-      keyStore: myKeyStore,
-      nodeUrl: "https://rpc.mainnet.near.org",
-    };
-
-    // Localnet config example
-    const connectionConfig = {
-      networkId: "local",
-      nodeUrl: "http://localhost:3030",
-    };
-    ```
-  </details>
-
-  </TabItem>
   <TabItem value="rust" label="🦀 Rust">
 
   To interact with the blockchain you'll need to create a `NetworkConfig` object.
@@ -169,63 +156,119 @@ To allow users to login into your web application using a wallet you will need t
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  To sign transactions you'll need to a `KeyStore` with valid keypairs.
+  In previous versions of the NEAR SDK, signing transactions required setting up a `KeyStore` to manage and retrieve keys. With the new `@near-js/signers` package, this process has been simplified.
+
+  You can now use the `Signer` abstraction, which provides a clean and extensible interface for signing. For most use cases, the `KeyPairSigner` implementation is the simplest option — it allows you to sign transactions directly using a single in-memory key pair, without needing a persistent keystore.
 
   <Tabs>
   <TabItem value="browser" label="Browser" default>
 
-  `BrowserLocalStorageKeyStore` can only be used in the browser, it uses the browser's local storage to store the keys.
+  In browser, you typically don’t need to manage private keys manually. Instead, use [Wallet Selector](https://github.com/near/wallet-selector), the official wallet connection framework for NEAR dApps. It handles account access, key management, and user authentication across multiple wallet providers with a unified interface.
 
-  ```js
-  // Creates keyStore using private key in local storage
+  You can find a full example of browser-based signing with `Wallet Selector` in the [official example here](https://github.com/near/wallet-selector/tree/main/examples).
 
-  const { keyStores } = nearAPI;
-  const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
-  ```
+  <details>
+    <summary>Manually managing keys in the browser (not recommended)</summary>
+
+    If your use case requires direct control over keys in the browser (e.g. building a custom signing flow), you can use the `KeyPairSigner` together with in-browser storage.
+
+    ```js
+    // Creates Signer using private key from local storage
+    import { KeyPairSigner } from "@near-js/signers";
+    import { BrowserLocalStorageKeyStore } from "@near-js/keystores-browser";
+
+    const keyStore = new BrowserLocalStorageKeyStore();
+    const key = await keyStore.getKey('testnet', 'user.testnet');
+    const signer = new KeyPairSigner(key);
+    ```
+
+  </details>
 
   </TabItem>
   <TabItem value="dir" label="Credentials Path">
 
-  `UnencryptedFileSystemKeyStore` can be used is used to load keys from the legacy credentials directory used by the NEAR CLI.
+  For Node.js environments (CLI tools, backend services, etc) you can load signing keys from files using the `UnencryptedFileSystemKeyStore` that reads unencrypted `.json` key files stored in a directory on your local machine.
 
-  <Github fname="credentials-directory.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/keystore-options/credentials-directory.js#L11-L13"
-    start="11" end="13" />
+  ```js
+  import { UnencryptedFileSystemKeyStore } from "@near-js/keystores-node";
+  import { homedir } from "os";
+  import path from "path";
+  
+  // Create Signer using private key from a folder on the local machine
+  const credentialsDirectory = ".near-credentials";
+  const credentialsPath = path.join(homedir(), credentialsDirectory);
+  const keyStore = new UnencryptedFileSystemKeyStore(credentialsPath);
+  const key = await keyStore.getKey('testnet', 'user.testnet');
+  const signer = new KeyPairSigner(key);
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/keystore-options/credentials-directory.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="file" label="File">
 
-  Keystores can be created by loading a private key from a json file.
+  If you have a raw JSON file that includes a NEAR account’s private key — it can directly parsed to then construct a KeyPairSigner.
 
-  <Github fname="credentials-file.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/keystore-options/credentials-file.js#L10-L16"
-    start="10" end="16" />
+  ```js
+  import { KeyPairSigner } from "@near-js/signers";
+  import fs from "fs";
+  
+  // Create Signer using private key from a JSON file on the local machine
+  const credentialsPath = "../credentials-file.json"; // Path relative to the working directory
+  const credentials = JSON.parse(fs.readFileSync(credentialsPath));
+  const signer = KeyPairSigner.fromSecretKey(credentials.private_key);
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/keystore-options/credentials-file.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="key" label="Private Key">
 
-  Keystores can be created by using a private key string.
+  It's common to load the NEAR private key from an environment variable or secret manager. With the new version of `KeyPairSigner`, you can create ir directly from a raw private key string.
 
-  Private keys have the format "ed25519:5Fg2...".
+  The private key must be in the format `"ed25519:xxxxx..."`
 
-  <Github fname="private-key-string.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/keystore-options/private-key-string.js#L10-L12"
-    start="10" end="12" />
+  ```js
+  import { KeyPairSigner } from "@near-js/signers";
+  
+  // Create Signer using private key from a raw private key string
+  const privateKey = "ed25519:1111222222....."; // put real key here
+  const signer = KeyPairSigner.fromSecretKey(privateKey);
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/keystore-options/private-key-string.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="seed" label="Seed Phrase">
 
-  Keystores can be created by using a seed phrase. To parse the seed phrase into a private key, the `near-seed-phrase` library is needed.
+  If you're working wallet recovery flows, developer tooling, or onboarding flows where users input their phrasesm you can derive the corresponding secret key and use it for signing.
 
+  To parse and derive a NEAR-compatible key pair from a seed phrase, you’ll need to install the near-seed-phrase package:
   ```bash
   npm i near-seed-phrase
   ```
 
-  Seed phrases have the format "shoe three gate ..." and are usually 12 words long.
+  Seed phrases are typically 12 words long, and are in the format "show three gate bird ..."
 
-  <Github fname="seed-phrase.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/keystore-options/seed-phrase.js#L11-L14"
-    start="11" end="14" />
+  ```js
+  import { KeyPairSigner } from "@near-js/signers";
+  import { parseSeedPhrase } from "near-seed-phrase";
+  
+  // Create Signer using seed phrase
+  const seedPhrase = "show three gate bird ..."; // 12 words long
+  const { secretKey } = parseSeedPhrase(seedPhrase);
+  const signer = KeyPairSigner.fromSecretKey(secretKey);
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/keystore-options/seed-phrase.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   </Tabs>
@@ -298,14 +341,36 @@ To allow users to login into your web application using a wallet you will need t
 
   ### RPC Failover
 
-  RPC providers can experience intermittent downtime, connectivity issues, or rate limits that cause client transactions to fail. This can be prevented by using the `FailoverRpcProvider` that supports multiple RPC providers.
+  RPC endpoints can occasionally become unreliable due to network issues, server downtime, or rate limiting - leading to failed requests or dropped transactions. To make your application more resilient, you can define multiple RPC endpoints and automatically fall back to the next available one when an issue occurs.
 
   <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="rpc-failover.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/rpc-failover.js#L12-L34"
-    start="12" end="34" />
+  You can pass multiple individual `Provider` instances into the `FailoverRpcProvider` to improve the reliability of your application's connection.
+
+  It’s also important to note that each `Provider` can internally use different transport protocols (such as HTTPS or WebSocket), making the failover strategy flexible across various infrastructure setups.
+
+  ```js
+  import { JsonRpcProvider, FailoverPrcProvider } from "@near-js/providers";
+  
+  const jsonProviders = [
+    new JsonRpcProvider({ url: "https://incorrect-rpc-url.com" }), // Incorrect RPC URL
+    new JsonRpcProvider(
+      { url: "https://test.rpc.fastnear.com" }, // Valid RPC URL
+      {
+        retries: 3, // Number of retries before giving up on a request
+        backoff: 2, // Backoff factor for the retry delay
+        wait: 500, // Wait time between retries in milliseconds
+      } // Retry options
+    ),
+  ];
+
+  const provider = new FailoverRpcProvider(jsonProviders);
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/rpc-failover.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -330,9 +395,15 @@ This will return an Account object for you to interact with.
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="account-details.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/account-details.js#L9"
-    start="9" end="9" />
+  You can create an `Account` instance using the code below. At a minimum, it requires a `Provider` to fetch data from the blockchain. If you also want to perform actions on behalf of the account (such as sending tokens, signing transactions, or managing keys) - you’ll need to pass a `Signer` as well. See the [section above](#key-handlers-stores--signers) on how to create one using a private key, seed phrase, or JSON file.
+
+  ```js
+  import { JsonRpcProvider } from "@near-js/providers";
+  import { Account } from "@near-js/accounts";
+
+  const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+  const account = new Account("user.testnet", provider, undefined // here could've been a Signer);
+  ```
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -369,9 +440,58 @@ Gets the available and staked balance of an account in yoctoNEAR.
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="account-details.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/account-details.js#L12"
-    start="12" end="12" />
+  Once you've [created an `Account` instance](#instantiate-account), you can use it to query the balance of a token in its smallest unit — whether it's the native NEAR token or any other fungible token (FT). Let's start by checking the balance of NEAR.
+
+  :::info Pro Tip
+  If you need to display the balance in a human-readable format, each `Token` instance provides a `toDecimal` method that you can use to convert raw values to their standard decimal representation.
+  :::
+
+  ```js
+  import { NEAR } from "@near-js/tokens";
+
+  const account = new Account("user.testnet", provider);
+
+  // returns yoctoNear amount as bigint
+  const amount = await account.getBalance(NEAR);
+  // converts to human-readable string like "1.234"
+  NEAR.toDecimal(amount);
+  ```
+
+  For commonly used tokens like USDT or USDC, you can access pre-configured token definitions from the either `@near-js/tokens/testnet`, or `@near-js/tokens/mainnet` package, depending on the network. These built-in tokens make it easy to fetch balances without additional setup.
+
+  ```js
+  import { USDT } from "@near-js/tokens/testnet";
+  // import { USDT } from "@near-js/tokens/mainnet";
+
+  const account = new Account("user.testnet", provider);
+
+  // returns units as bigint
+  const amount = await account.getBalance(USDT);
+  // converts to human-readable string like "1.234"
+  USDT.toDecimal(amount);
+  ```
+
+  If your token isn’t included in the provided collections, no problem—you can manually create a `Token` instance for any fungible token contract by following the example below.
+
+  ```js
+  import { FungibleToken } from "@near-js/tokens";
+
+  const account = new Account("user.testnet", provider);
+
+  const REF = new FungibleToken("ref.fakes.testnet", {
+    decimals: 18,
+    symbol: "REF",
+  });
+
+  // returns units as bigint
+  const amount = await account.getBalance(REF);
+  // converts to human-readable string like "1.234"
+  REF.toDecimal(amount);
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/tokens-balance.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -403,9 +523,23 @@ Get basic account information, such as its code hash and storage usage.
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="account-details.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/account-details.js#L16"
-    start="16" end="16" />
+  Once you've [created an `Account` instance](#instantiate-account), you can use it to query basic on-chain information about the account, such as its code hash and current storage usage.
+
+  ```js
+  const account = new Account("user.testnet", provider);
+
+  await account.getState();
+  ```
+
+  While the `Account` class represents a wallet on-chain, some use cases, like simply reading account state or contract data — do not require full account access. In those cases, you can skip creating an `Account` and use the `Provider` directly, as shown below.
+
+  ```js
+  await provider.viewAccount("user.testnet");
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/account-details.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -430,45 +564,61 @@ Get basic account information, such as its code hash and storage usage.
 
 <hr class="subsection" />
 
-### Get Details {#get-details}
+### Create Named Account {#create-named-account}
 
-Returns the authorized apps of an account. This is a list of contracts that the account has function call access keys for.
+To create a named account like `user.testnet`, you need to call the `create_account` function on a [top-level account’s contract](https://github.com/near/near-linkdrop) — that’s `testnet` on testnet or `near` on mainnet. Yes, on NEAR, every account can have a contract deployed to it, even top-level ones.
 
-<Tabs groupId="api">
-  <TabItem value="js" label="🌐 JavaScript">
+Keep in mind that creating a named account requires a small amount of NEAR to cover Gas fees.
 
-  <Github fname="account-details.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/account-details.js#L20"
-    start="20" end="20" />
-
-  </TabItem>
-</Tabs>
-
-<hr class="subsection" />
-
-### Create an Account {#create-account}
-
-In order to create .near or .testnet accounts, you need to make a function call to the top-level-domain account (i.e. `near` or `testnet`), calling `create_account`. In this example we generate a new public key for the account by generating a random private key.
-
-The deposit determines the initial balance of the account.
+When creating a new account, you’ll need to provide:
+- A public key, which will be added to the account as [FullAccess key](/protocol/access-keys#full-access-keys)
+- An optional initial balance in NEAR (this can be zero if you don’t want to fund it right away)
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="create-account.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/create-account.js#L24-L39"
-    start="24" end="39" />
+  Once you've [created an `Account` instance](#instantiate-account), you can create any available named account (as long as it's not already taken). To do this, the creator account must include a `Signer`, since signing a transaction is required. If you're not sure how to set that up, check [the section above](#key-handlers-stores--signers) on how to connect a signer.
 
-  <details>
-    <summary>Creating an account from a seed phrase</summary>
+  ```js
+  const account = new Account("user.testnet", provider, signer);
 
-    You can also create an account with a public key that is derived from a randomly generated seed phrase.
+  // generate a keypair randomly
+  const keyPair = KeyPair.fromRandom("ed25519");
+  await account.createAccount(
+    "another_user.testnet",
+    keyPair.getPublicKey(),
+    // attaches 1.234 NEAR tokens that will become 
+    // an initial balance of "another_user.testnet"
+    NEAR.toUnits("1.234")
+  );
+  ```
 
-    <Github fname="create-account-from-seed.js" language="javascript"
-      url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/create-account-from-seed.js#L26-L39"
-      start="26" end="39" />
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/create-tla.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
-  </details>
+  In some cases, you might need to create an account using a seed phrase. Here’s how you can do that:
+
+  ```js
+  import { generateSeedPhrase } from "near-seed-phrase";
+
+  const account = new Account("user.testnet", provider, signer);
+
+  // get public key from a randomly generated seed phrase
+  const { seedPhrase, publicKey, secretKey } = generateSeedPhrase();
+
+  await account.createAccount(
+    "another_user.testnet",
+    publicKey,
+    // attaches 1.234 NEAR tokens that will become 
+    // an initial balance of "another_user.testnet"
+    NEAR.toUnits("1.234")
+  );
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/create-account-from-seed.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -501,18 +651,40 @@ The deposit determines the initial balance of the account.
 
 <hr class="subsection" />
 
-### Create a Sub-Account {#create-sub-account}
+### Create Sub-Account {#create-sub-account}
 
-Accounts can create sub-accounts of themselves, which are useful for creating separate accounts for different purposes. It is important to remark that the parent account has no control over any of its sub-accounts.
+Accounts on NEAR can create sub-accounts under their own namespace, which is useful for organizing accounts by purpose — for example, `project.user.testnet`.
 
-The deposit determines the initial balance of the account.
+:::warning
+The parent account **DOES NOT** have any control over its sub-accounts once they are created.
+:::
+
+Keep in mind that creating a sub-account requires a small amount of NEAR to cover Gas fees.
+
+To create a sub-account, the parent must send a transaction to itself with the [`CreateAccount` action](/protocol/transaction-anatomy#actions). Just like when creating named accounts, you'll need to provide a public key that will be assigned to the new sub-account, along with an optional initial deposit to fund it (can be zero).
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="create-account.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/create-account.js#L45-L56"
-    start="45" end="56" />
+  Once you've [created an `Account` instance](#instantiate-account), you can create any sub-account (as long as it hasn't been created previously). To do this, the creator account must include a `Signer`, since signing a transaction is required. If you're not sure how to set that up, check [the section above](#key-handlers-stores--signers) on how to connect a signer.
+
+  ```js
+  const account = new Account("user.testnet", provider, signer);
+
+  // generate a keypair randomly
+  const keyPair = KeyPair.fromRandom("ed25519");
+  await account.createAccount(
+    "project.user.testnet",
+    keyPair.getPublicKey(),
+    // attaches 1.234 NEAR tokens that will become 
+    // an initial balance of "project.user.testnet"
+    NEAR.toUnits("1.234")
+  );
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/create-subaccount.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -542,14 +714,28 @@ The deposit determines the initial balance of the account.
 
 ### Delete Account {#delete-account}
 
-When deleting an account, you need to specify a beneficiary account id. This is the account that will receive the remaining NEAR balance of the account being deleted. 
+An account on NEAR can only delete itself — it **CANNOT** delete other accounts or its sub-accounts.
+
+To delete an account, it must send a transaction to itself with the [`DeleteAccount` action](/protocol/transaction-anatomy#actions), including a required parameter called `beneficiary_id`. This is the account that will receive any remaining NEAR tokens.
+
+:::info
+Deleting an account **DOES NOT** affect its sub-accounts - they will remain active.
+:::
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="delete-account.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/delete-account.js#L45-L46"
-    start="45" end="46" />
+  ```js
+  const account = new Account("user.testnet", provider, signer);
+
+  // account "user.testnet" gets deleted 
+  // and remaining funds will go to account "beneficiary.testnet" (if it exists)
+  await account.deleteAccount("beneficiary.testnet");
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/delete-account.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -561,16 +747,10 @@ When deleting an account, you need to specify a beneficiary account id. This is 
   </TabItem>
 </Tabs>
 
-:::warning
-
-Only NEAR tokens will be transferred to the beneficiary, so you should transfer all your FTs, NFTs, etc. to another account before deleting.
-
-:::
-
-:::danger
-
-If the beneficiary account does not exist, the NEAR tokens will be burned
-
+:::danger Keep in mind
+- Only NEAR tokens are transferred to the beneficiary.
+- Fungible (FTs) or Non-Fungible tokens (NFTs) held by the account **ARE NOT** automatically transferred. These tokens are still associated with the account, even after the account is deleted. Make sure to transfer those assets manually before deletion, or you're risking losing them permanently! Once the account is gone, those assets are effectively stuck unless the same account is recreated by anyone (not necessarily you).
+- If the beneficiary account doesn't exist, all NEAR tokens sent to it will be burned. Double-check the account ID before proceeding.
 :::
 
 ---
@@ -579,14 +759,89 @@ If the beneficiary account does not exist, the NEAR tokens will be burned
 
 ### Send Tokens {#send-tokens}
 
-Transfer NEAR tokens between accounts. 
+Accounts can transfer different types of tokens to other accounts, including the native NEAR token and [NEP-141](https://nomicon.io/Standards/Tokens/FungibleToken/Core) fungible tokens.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="send-tokens.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/send-tokens.js#L27-L30"
-    start="27" end="30" />
+  To begin with, you’ll need the `@near-js/tokens` package, which provides the necessary utilities. 
+  
+  Once you've [created an `Account` instance](#instantiate-account), you can transfer tokens to others. Let’s start by looking at how to transfer native `NEAR` tokens.
+
+  ```js
+  import { NEAR } from "@near-js/tokens";
+
+  const account = new Account("user.testnet", provider, signer);
+
+  // transfer 0.1 NEAR tokens to receiver.testnet
+  await account.transfer({
+    token: NEAR,
+    amount: NEAR.toUnits("0.1"),
+    receiverId: "receiver.testnet"
+  });
+  ```
+
+  You can also use the same package to send fungible tokens (NEP-141) like USDT — many of the most common tokens are included out of the box and can be imported from `@near-js/tokens/testnet` or `@near-js/tokens/mainnet`, depending on the network you're using.
+
+  :::warning
+  Before receiving fungible tokens (NEP-141), the recipient must be registered on the token’s contract. If they aren’t, the transfer will fail.
+
+  If your use case involves sending tokens to users, you have two options:
+
+  - Cover the storage cost and register them yourself
+  - Ask the user to register in advance
+
+  Good news - *if the account is already registered, any repeated registration attempt will automatically refund the storage deposit — so you’ll never pay it twice*.
+  :::
+
+  ```js
+  import { USDT } from "@near-js/tokens/testnet";
+
+  const account = new Account("user.testnet", provider, signer);
+
+  // double-check that a recipient is registered
+  await USDT.registerAccount({
+    accountIdToRegister: "receiver.testnet",
+    fundingAccount: account,
+  })
+
+  // transfer 1.23 USDT to receiver.testnet
+  await account.transfer({
+    token: USDT,
+    amount: USDT.toUnits("1.23"),
+    receiverId: "receiver.testnet"
+  });
+  ```
+
+  For more advanced use cases, such as working with custom or less common tokens, you can create your own instance of the `FungibleToken` class by passing the appropriate parameters. The example below demonstrates this using the `REF` token.
+
+  ```js
+  import { FungibleToken } from "@near-js/tokens/testnet";
+
+  const account = new Account("user.testnet", provider, signer);
+
+  const REF = new FungibleToken("ref.fakes.testnet", {
+    decimals: 18,
+    symbol: "REF",
+  });
+
+  // double-check that a recipient is registered
+  await REF.registerAccount({
+    accountIdToRegister: "receiver.testnet",
+    fundingAccount: account,
+  })
+
+  // transfer 2.34 REF to receiver.testnet
+  await account.transfer({
+    token: REF,
+    amount: REF.toUnits("2.34"),
+    receiverId: "receiver.testnet"
+  });
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/send-tokens.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -614,15 +869,36 @@ Transfer NEAR tokens between accounts.
 
 ### Call Function
 
-A call function changes the contract's state and requires a signer/keypair.
-
+A smart contract exposes its methods, and making a function call that modifies state requires a `Signer`/`KeyPair`. You can optionally attach a `NEAR` deposit to the call.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="contract-interaction.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/contract-interaction.js#L65-L73"
-    start="65" end="73" />
+  Once you've [created an `Account` instance](#instantiate-account), you can start interacting with smart contracts. 
+  
+  For example, let’s say there’s a [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract deployed at `guestbook.near-examples.testnet`, and you want to add a message to it. To do that, you’d call its `add_message` method.
+
+  ```js
+  import { NEAR } from "@near-js/tokens";
+
+  const account = new Account("user.testnet", provider, signer);
+
+  await account.callFunction({
+    contractId: "guestbook.near-examples.testnet",
+    methodName: "add_message",
+    args: { text: "Hello, world!" },
+    deposit: NEAR.toUnits('0.001'), // 0.001 NEAR
+    gas: "30000000000000" // 30 TGas
+  });
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/contract-interaction.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
+
+  In this function call, we’ve attached a small deposit of 0.001 NEAR to [cover the storage cost](/protocol/storage/storage-staking) of adding the message.
+
+  We’ve also [attached 30 TGas](/protocol/gas) to limit the amount of computational resources the method can consume.
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -648,14 +924,46 @@ A call function changes the contract's state and requires a signer/keypair.
 
 ### Batch Actions
 
-You can send multiple [actions](../protocol/transaction-anatomy.md#actions) in a batch to a single receiver. If one action fails then the entire batch of actions will be reverted.
+You can send multiple [actions](../protocol/transaction-anatomy.md#actions) in a batch to a **single** receiver. If one action fails then the entire batch of actions will be reverted.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
+
+  Once you've [created an `Account` instance](#instantiate-account), you can start sending transactions.
+
+  Let’s take a look at an example of a batched transaction that performs multiple actions in a single call - it increments a counter on a smart contract `counter.near-examples.testnet` twice, then transfers 0.1 NEAR tokens to this address.
+
+  Each function call to increment the counter has [10 TGas attached](/protocol/gas), which is enough for a lightweight state update.
+  No deposit is included with these calls, since they don’t store new data — just update existing values.
   
-  <Github fname="batch-actions.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/batch-actions.js#L22-L35"
-    start="22" end="35" />
+  ```js
+  import { NEAR } from "@near-js/tokens";
+
+  const account = new Account("user.testnet", provider, signer);
+
+  await account.signAndSendTransaction({
+    receiverId: "counter.near-examples.testnet",
+    actions: [
+      actionCreators.functionCall(
+        "increment",
+        {},
+        "10000000000000", // 10 TGas
+        0 // 0 NEAR
+      ),
+      actionCreators.functionCall(
+        "increment",
+        {},
+        "10000000000000", // 10 TGas
+        0 // 0 NEAR
+      ),
+      actionCreators.transfer(NEAR.toUnits("0.1"))
+    ],
+  });
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/batch-actions.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -671,14 +979,102 @@ You can send multiple [actions](../protocol/transaction-anatomy.md#actions) in a
 
 ### Simultaneous Transactions
 
-Transactions can be sent in parallel to the network, so you don't have to wait for one transaction to complete before sending the next one. Note that these one transaction could be successful and the other one could fail. 
+While many other blockchains don’t support truly parallel transactions due to nonce collisions, NEAR takes a different approach. It supports [access keys](/protocol/access-keys), and each key maintains its own independent nonce.
+
+This means you can add multiple keys to an account and use them to sign and send transactions concurrently, without running into nonce conflicts. It’s a powerful feature for parallel execution and high-throughput use cases.
+
+:::warning Keep in mind
+Simultaneous execution means there’s no guarantee of order or success. Any transaction may fail independently.
+
+If your use case requires strict ordering or depends on all actions succeeding together, consider using [cross-contract calls](/tutorials/examples/xcc) instead. They allow you to chain calls with guarantees around execution flow and error handling.
+:::
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="simultaneous-transactions.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/simultaneous-transactions.js#L22-L49"
-    start="22" end="49" />
+  Once you've [created an `Account` instance](#instantiate-account), you can start by generating [two new key pairs](/protocol/access-keys) and adding them to the account. In our example, we’re using Full Access keys, but that’s not a requirement — Function Call access keys can work just as well, depending on your use case.
+
+  If you already have the keys prepared, feel free to skip this step. We're including it here to show the full setup for learning purposes.
+
+  :::note
+  Notice that we’re adding both keys in a batched transaction. Learn more about it [here](#batch-actions).
+  :::
+
+  ```js
+  const account = new Account("user.testnet", provider, signer);
+
+  const keyPairOne = KeyPair.fromRandom("ed25519");
+  const keyPairTwo = KeyPair.fromRandom("ed25519");
+
+  // add two keys in a single transaction
+  await account.signAndSendTransaction({
+    receiverId: account.accountId,
+    actions: [
+      actionCreators.addKey(
+        keyPairOne.getPublicKey(),
+        actionCreators.fullAccessKey()
+      ),
+      actionCreators.addKey(
+        keyPairTwo.getPublicKey(),
+        actionCreators.fullAccessKey()
+      ),
+    ],
+    waitUntil: "FINAL",
+  });
+  ```
+
+  Now that we’ve created two separate keys, we need to create corresponding `Account` instances for each one. These will be used to build and send different transactions independently.
+
+  One of the transactions adds a message to the [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract, while the other increments a counter on a different contract.
+
+  ```js
+  const accountOne = new Account(
+    accountId,
+    provider,
+    new KeyPairSigner(keyPairOne)
+  );
+  const accountTwo = new Account(
+    accountId,
+    provider,
+    new KeyPairSigner(keyPairTwo)
+  );
+
+  const signedTxOne = await accountOne.createSignedTransaction(
+    "guestbook.near-examples.testnet",
+    [
+      actionCreators.functionCall(
+        "add_message",
+        { text: "Hello, world!" },
+        "30000000000000", // 30 TGas
+        NEAR.toUnits("0.001") // 0.001 NEAR
+      ),
+    ]
+  );
+  const signedTxTwo = await accountTwo.createSignedTransaction(
+    "counter.near-examples.testnet",
+    [
+      actionCreators.functionCall(
+        "increment",
+        {},
+        "10000000000000", // 10 TGas
+        0 // 0 NEAR
+      ),
+    ]
+  );
+  ```
+
+  The last step is to broadcast both transactions concurrently to the network using the `Provider`.
+
+  ```js
+  const sendTxOne = provider.sendTransaction(signedTxOne);
+  const sendTxTwo = provider.sendTransaction(signedTxTwo);
+
+  const transactionsResults = await Promise.all([sendTxOne, sendTxTwo]);
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/simultaneous-transactions.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -712,14 +1108,31 @@ Transactions can be sent in parallel to the network, so you don't have to wait f
 
 ### Deploy a Contract {#deploy-a-contract}
 
-You can deploy a contract from a compiled WASM file. 
+On NEAR, a smart contract is deployed as a WASM file. Every account has the potential to become a contract — you simply need to deploy code to it.
+
+:::note
+Unlike many other blockchains, contracts on NEAR are mutable, meaning you have the ability to redeploy updated versions to the same account. However, if you remove all access keys from the account, it becomes impossible to sign new deploy transactions, effectively locking the contract code permanently.
+:::
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="contract-interaction.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/contract-interaction.js#L77-L80"
-    start="77" end="80" />
+  Once you've [created an `Account` instance](#instantiate-account), you can deploy a smart contract to it.
+
+  Let's read a `.wasm` file from your local machine and deploy its content directly to the account.
+
+  ```js
+  import { readFileSync } from "fs";
+
+  const account = new Account("user.testnet", provider, signer);
+
+  const wasm = readFileSync("../contracts/contract.wasm");
+  await account.deployContract(wasm);
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-contract.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -751,14 +1164,28 @@ You can deploy a contract from a compiled WASM file.
 
 ## View Function
 
-View functions are read-only functions that don't change the state of the contract. We can call these functions without a signer / keypair or any gas.
+View functions are read-only methods on a smart contract that do not modify state. You can call them without needing a `Signer` or `KeyPair`, and there’s no need to attach gas or a deposit.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="contract-interaction.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/contract-interaction.js#L23-L62"
-    start="23" end="62" />
+  Let’s look at an example using the [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract to read how many messages are currently stored.
+
+  ```js
+  import { JsonRpcProvider } from "@near-js/providers";
+
+  const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+  await provider.callFunction(
+    "guestbook.near-examples.testnet",
+    "total_messages",
+    {}
+  );
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/contract-interaction.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -793,9 +1220,19 @@ List all the access keys for an account.
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="keys.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/keys.js#L22-L22"
-    start="22" end="22" />
+  Let’s walk through an example of how to query the list of access keys associated with an account.
+
+  ```js
+  import { JsonRpcProvider } from "@near-js/providers";
+
+  const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+  await provider.viewAccessKeyList("user.testnet");
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/keys.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -817,14 +1254,32 @@ List all the access keys for an account.
 
 ### Add Full Access Key {#add-full-access-key}
 
-Add a new [full access key](../protocol/access-keys.md#full-access-keys) to an account. Here we generate a random keypair, alternatively you can use a keypair from a seed phrase.
+Each account on NEAR can have multiple access keys, each with different permissions.
+
+A [Full Access key](/protocol/access-keys.md#full-access-keys), as the name suggests, grants complete control over the account. Anyone with this key can transfer funds, sign transactions, interact with contracts, or even delete the account entirely.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="keys.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/keys.js#L26-L33"
-    start="26" end="33" />
+  Once you've [created an `Account` instance](#instantiate-account), you can add another Full Access key to it.
+
+  Simply generate a new key pair, then use the method below to add it to the account.
+
+  ```js
+  import { KeyPair } from "@near-js/crypto";
+
+  const account = new Account("user.testnet", provider, signer);
+
+  const keyPair = KeyPair.fromRandom("ed25519");
+
+  await account.addFullAccessKey(
+    keyPair.getPublicKey()
+  );
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/keys.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -846,14 +1301,49 @@ Add a new [full access key](../protocol/access-keys.md#full-access-keys) to an a
 
 ### Add Function Call Key {#add-function-call-key}
 
-Add a new [function call key](../protocol/access-keys.md#function-call-keys) to an account. When adding the key you should specify the contract id the key can call, an array of methods the key is allowed to call, and the allowance in gas for the key.
+Each account on NEAR can have multiple access keys, each with different permissions.
+
+A [Function Call access key](/protocol/access-keys.md#function-call-keys) is designed specifically to sign transactions that include only [`functionCall` actions](/protocol/transaction-anatomy#actions) to a specific contract.
+
+You can further restrict this key by:
+- Limiting which method names can be called
+- Capping the amount of `NEAR` the key can spend on transaction fees
+
+:::warning
+For security reasons, Function Call access keys **can only be used with function calls that attach zero `NEAR` tokens. Any attempt to include a deposit will result in a failed transaction.
+:::
+
+:::tip
+One of the most powerful use cases for this type of key is enabling seamless user experiences — such as allowing a user to sign actions in a browser game without being redirected to a wallet for every interaction.
+:::
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="keys.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/keys.js#L37-L47"
-    start="36" end="43" />
+  Once you've [created an `Account` instance](#instantiate-account), you can add a Functional Access key to it.
+
+  Simply generate a new key pair, then use the method below to add it to the account.
+
+  ```js
+  import { KeyPair } from "@near-js/crypto";
+  import { NEAR } from "@near-js/tokens";
+
+  const account = new Account("user.testnet", provider, signer);
+
+  const keyPair = KeyPair.fromRandom("ed25519");
+
+  await account.addFunctionCallAccessKey({
+      publicKey: keyPair.getPublicKey(),
+      contractId: "example-contract.testnet", // Contract this key is allowed to call
+      methodNames: ["example_method"], // Methods this key is allowed to call (optional)
+      allowance: NEAR.toUnits("0.25") // Gas allowance key can use to call methods (optional)
+    }
+  );
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/keys.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -881,14 +1371,27 @@ Add a new [function call key](../protocol/access-keys.md#function-call-keys) to 
 
 ### Delete Access Key {#delete-access-key}
 
-When deleting an access key, you need to specify the public key of the key you want to delete.
+Each account on Near can have multiple access keys, or even none at all. An account has the ability to remove its own keys, but not the keys of any other account, including its sub-accounts.
+
+:::danger
+Be very careful when deleting keys. If you remove the same key used to sign the deletion, and it’s your only key, you will lose access to the account permanently. There’s no recovery unless another key was previously added. Always double-check before removing your access key.
+:::
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="keys.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/keys.js#L52-L52"
-    start="52" end="52" />
+  Once you've [created an `Account` instance](#instantiate-account), you can delete a key from it by simply providing the public key of the key pair you want to remove.
+
+  ```js
+  const account = new Account("user.testnet", provider, signer);
+  
+  const publicKey = "ed25519:xxxxxxxx";
+  await account.deleteKey(publicKey);
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/keys.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -933,9 +1436,20 @@ Convert an amount in NEAR to an amount in yoctoNEAR.
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  <Github fname="utils.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/utils.js#L4-L4"
-    start="4" end="4" />
+  The `@near-js/tokens` package provides ready-to-use instances of common tokens, making it easy to format and convert token amounts.
+
+  Let’s import the `NEAR` token and see how effortlessly you can convert a human-readable amount into `yoctoNEAR` units.
+
+  ```js
+  import { NEAR } from "@near-js/tokens";
+
+  // outputs as BigInt(100000000000000000000000)
+  NEAR.toUnits("0.1");
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/utils.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -963,11 +1477,20 @@ Convert an amount in NEAR to an amount in yoctoNEAR.
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  Format an amount in yoctoNEAR to an amount in NEAR.
+  The `@near-js/tokens` package provides ready-to-use instances of common tokens, making it easy to format and convert token amounts.
 
-  <Github fname="utils.js" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/examples/utils.js#L8"
-    start="8" end="8" />
+  Let’s import the `NEAR` token and see how easily you can convert values from `yoctoNEAR` back to a human-readable decimal amount.
+
+  ```js
+  import { NEAR } from "@near-js/tokens";
+
+  // outputs as "1.23"
+  NEAR.toDecimal("1230000000000000000000000");
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/utils.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
@@ -990,7 +1513,7 @@ Convert an amount in NEAR to an amount in yoctoNEAR.
 
   - [Documentation](https://near.github.io/near-api-js)
   - [Github](https://github.com/near/near-api-js)
-  - [Full Examples](https://github.com/PiVortex/near-api-examples/tree/main/javascript)
+  - [Full Examples](https://github.com/near-examples/near-api-examples/tree/main)
   - [Cookbook](https://github.com/near/near-api-js/tree/master/packages/cookbook) which contains examples using the near-js/client package, a wrapper tree shakable package for near-api-js.
 
   </TabItem>
