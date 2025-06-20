@@ -31,7 +31,7 @@ If you have a NEAR `testnet` account and need tokens to experiment, test, and bu
 
 1. Open the [Developer Portal Faucet](https://dev.near.org/faucet) or [Testnet Faucet website](https://near-faucet.io/)
 
-![Faucet](/docs/assets/faucet.png)
+![Faucet](/docs/assets/tools/faucet.png)
 *Main page of [Testnet Faucet](https://near-faucet.io/)*
 
 2. Fill out the information:

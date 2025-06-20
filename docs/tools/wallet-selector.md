@@ -6,7 +6,7 @@ sidebar_label: NEAR Wallet Selector
 
 The [Wallet Selector](https://github.com/near/wallet-selector) is a `JS`/`TS` library that lets users connect to your application using their preferred wallet. 
 
-![Preview](/docs/assets/wallet-selector-preview.png)
+![Preview](/docs/assets/tools/wallet-selector-preview.png)
 *Initial screen of [Wallet Selector](https://near.github.io/wallet-selector/)*
 
 <details>

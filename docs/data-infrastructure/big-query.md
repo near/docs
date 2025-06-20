@@ -59,7 +59,7 @@ ORDER BY 1 DESC;
 You can check how much data it will query before running it in the BigQuery console UI. Again, since BigQuery uses a columnar data structure and partitions, it's recommended to select only the columns and partitions (`block_date`) needed to avoid unnecessary query costs.
 :::
 
-![Query Costs](/docs/BQ_Query_Cost.png "BQ Query Costs")
+![Query Costs](/docs/assets/data-infra/BQ_Query_Cost.png "BQ Query Costs")
 
 ## Architecture
 
@@ -67,7 +67,7 @@ The data is loaded in a streaming fashion using [Databricks Autoloader](https://
 
 The silver tables are also copied into the [GCP BigQuery Public Dataset](https://cloud.google.com/bigquery/public-data).
 
-![Architecture](/docs/Architecture.png "Architecture")
+![Architecture](/docs/assets/data-infra/Architecture.png "Architecture")
 
 :::info
 
