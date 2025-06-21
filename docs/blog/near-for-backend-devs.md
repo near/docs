@@ -54,174 +54,180 @@ We'll build a simplified Twitter-like application. Users will be able to post tw
 Here's the Rust code for our contract:
 
 ```rust
-use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::collections::Vector;
-use near_sdk::serde::{Deserialize, Serialize};
-use near_sdk::{env, near, AccountId, BorshStorageKey, PanicOnDefault, Timestamp};
+// ================================================================================================
+// NEAR SMART CONTRACT: Twitter-like Social Media Platform
+// ================================================================================================
+//
+// This smart contract implements a Twitter-like platform on the NEAR blockchain.
+// For backend engineers new to blockchain, think of this as a REST API service that:
+// - Stores data permanently on a distributed database (the blockchain)
+// - Has no central server - it runs on thousands of nodes worldwide
+// - Charges small fees (gas) for write operations to prevent spam
+// - Is immutable once deployed (like deploying code that can't be changed)
+//
+// Key NEAR/Blockchain Concepts for Backend Engineers:
+// - Smart Contract = Your backend service logic that runs on blockchain
+// - Account ID = User identifier (like username, but globally unique)
+// - Gas = Computational cost (like AWS Lambda pricing, but for blockchain operations)
+// - Storage = Persistent data (like a database, but decentralized and permanent)
+// - View Methods = Read operations (free, like GET requests)
+// - Call Methods = Write operations (cost gas, like POST/PUT/DELETE requests)
 
-// Define a unique prefix for each persistent collection to avoid storage collisions.
-// See: https://docs.rs/near-sdk/latest/near_sdk/derive.BorshStorageKey.html
-#[derive(BorshSerialize, BorshStorageKey)]
-#[borsh(crate = "near_sdk::borsh")]
-enum StorageKey {
-    Tweets,
-}
+// Import NEAR SDK components - think of this as importing your web framework
+use near_sdk::store::IterableMap; // Like HashMap but optimized for blockchain storage
+use near_sdk::{env, near, AccountId, PanicOnDefault, Timestamp};
 
-#[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(crate = "near_sdk::serde")]
+// ================================================================================================
+// DATA STRUCTURES
+// ================================================================================================
+
+// Tweet represents a single tweet in our social media platform
+// The #[near] attribute automatically handles serialization/deserialization
+// Think of this as your API response/request DTOs, but for blockchain
+#[near(serializers = [borsh, json])]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Tweet {
+    // Unique identifier for this tweet (like auto-increment ID in SQL)
     pub id: u64,
-    pub author: AccountId, // near_sdk::AccountId
+
+    // NEAR account that created this tweet (like user_id in traditional apps)
+    // AccountId is NEAR's version of a username/user identifier
+    pub author: AccountId,
+
+    // The actual tweet content (like message body)
     pub text: String,
-    pub timestamp: Timestamp, // u64 representing nanoseconds, from near_sdk::Timestamp
+
+    // When this tweet was created (NEAR provides nanoseconds since Unix epoch)
+    // Think of this as created_at timestamp in your database
+    pub timestamp: Timestamp,
+
+    // Number of likes this tweet has received (like a counter field)
     pub likes: u64,
 }
 
-// The main contract struct.
-// `PanicOnDefault` ensures that the contract must be initialized via `new()`.
-// See: https://docs.rs/near-sdk/latest/near_sdk/attr.near.html for #[near(contract_state)]
-// See: https://docs.rs/near-sdk/latest/near_sdk/derive.PanicOnDefault.html for PanicOnDefault
+// ================================================================================================
+// SMART CONTRACT STATE
+// ================================================================================================
+
+// TwitterContract is the main contract state - think of this as your application's
+// in-memory state that persists between requests (like instance variables in a service class)
+//
+// In traditional backend:
+// - You'd have a database to store tweets
+// - You'd have application state in memory/cache
+//
+// In NEAR:
+// - Contract state IS your database (stored on blockchain)
+// - State persists between function calls
+// - State is automatically loaded/saved by NEAR runtime
 #[near(contract_state)]
-#[derive(PanicOnDefault)]
+#[derive(PanicOnDefault)] // Prevents accidental initialization without proper setup
 pub struct TwitterContract {
-    // A persistent vector to store all tweets.
-    // `Vector` is a NEAR SDK collection type that handles on-chain storage.
-    // See: https://docs.rs/near-sdk/latest/near_sdk/store/struct.Vector.html
-    tweets: Vector<Tweet>,
+    // Storage for all tweets - like your main tweets table
+    // IterableMap is NEAR's version of HashMap optimized for blockchain storage
+    // Key: tweet_id, Value: Tweet object
+    tweets: IterableMap<u64, Tweet>,
+
+    // Counter for generating unique tweet IDs (like auto-increment in SQL)
+    // This ensures each tweet gets a unique identifier
     next_tweet_id: u64,
 }
 
-// Contract methods are defined in an impl block decorated with `#[near]`.
-// See: https://docs.rs/near-sdk/latest/near_sdk/attr.near.html
+// ================================================================================================
+// CONTRACT IMPLEMENTATION
+// ================================================================================================
+
+// The #[near] attribute marks this implementation block as containing contract methods
+// Think of these as your REST API endpoints, but they run on the blockchain
 #[near]
 impl TwitterContract {
-    // Initialization function. This is called once when the contract is deployed.
-    // See: https://docs.rs/near-sdk/latest/near_sdk/attr.near.html#initialization-methods
+    // ============================================================================================
+    // INITIALIZATION METHOD
+    // ============================================================================================
+
+    // Contract constructor - called once when the contract is first deployed
+    // Similar to database migrations or initial setup in traditional backends
+    // The #[init] attribute marks this as the initialization method
     #[init]
     pub fn new() -> Self {
         Self {
-            tweets: Vector::new(StorageKey::Tweets), // Uses StorageKey for prefix
+            // Initialize tweet storage with a unique storage prefix
+            // "b't'" is a byte string prefix to avoid storage conflicts
+            // Think of this as creating a table in your database
+            tweets: IterableMap::new(b"t"),
+
+            // Start tweet IDs from 0
             next_tweet_id: 0,
         }
     }
 
-    // Public method to post a new tweet.
+    // ============================================================================================
+    // WRITE METHODS (Cost gas, modify state)
+    // ============================================================================================
+
+    // Post a new tweet - equivalent to POST /tweets endpoint
+    // This is a "call" method that modifies state and costs gas
     pub fn post_tweet(&mut self, text: String) -> Tweet {
-        // `env::predecessor_account_id()` gets the AccountId of the user who signed this transaction.
-        // See: https://docs.rs/near-sdk/latest/near_sdk/env/fn.predecessor_account_id.html
+        // Get the account that called this method (like extracting user from JWT token)
+        // env::predecessor_account_id() returns who made the transaction
         let author = env::predecessor_account_id();
-        // `env::block_timestamp()` gets the current block's timestamp in nanoseconds.
-        // See: https://docs.rs/near-sdk/latest/near_sdk/env/fn.block_timestamp.html
+
+        // Get current blockchain timestamp (like System.currentTimeMillis() in Java)
+        // NEAR provides nanoseconds since Unix epoch
         let timestamp = env::block_timestamp();
 
+        // Generate unique ID for this tweet (like auto-increment primary key)
         let tweet_id = self.next_tweet_id;
+
+        // Create the tweet object (like building your entity/model)
         let new_tweet = Tweet {
             id: tweet_id,
             author: author.clone(),
             text,
             timestamp,
-            likes: 0,
+            likes: 0, // New tweets start with 0 likes
         };
 
-        self.tweets.push(new_tweet.clone());
+        // Store the tweet in our "database" (contract storage)
+        // This is like INSERT INTO tweets (...) VALUES (...)
+        self.tweets.insert(tweet_id, new_tweet.clone());
+
+        // Increment ID counter for next tweet (like auto-increment)
         self.next_tweet_id += 1;
 
-        // Log an event, useful for off-chain indexers or debugging.
-        // See: https://docs.rs/near-sdk/latest/near_sdk/env/fn.log_str.html
+        // Log the action - similar to application logging
+        // These logs are stored on blockchain and can be queried
         env::log_str(&format!(
             "Tweet #{} posted by @{} at {}",
             tweet_id, author, timestamp
         ));
-        new_tweet // Return the created tweet
+
+        // Return the created tweet (like returning the entity in REST API)
+        new_tweet
     }
 
-    // View method to get a paginated list of all tweets.
-    // `&self` indicates it's a read-only method.
-    pub fn get_all_tweets(&self, from_index: Option<u64>, limit: Option<u64>) -> Vec<Tweet> {
-        let start = from_index.unwrap_or(0);
-        let limit_val = limit.unwrap_or(10); // Default to 10 if no limit specified
-
-        (start..std::cmp::min(start + limit_val, self.tweets.len()))
-            .map(|index| self.tweets.get(index).unwrap())
-            .collect()
-    }
-
-    // View method to get a specific tweet by its ID.
-    pub fn get_tweet_by_id(&self, tweet_id: u64) -> Option<Tweet> {
-        // This is inefficient for large numbers of tweets as it iterates.
-        // A LookupMap<u64, Tweet> (https://docs.rs/near-sdk/latest/near_sdk/store/struct.LookupMap.html)
-        // would be better for direct ID lookups at scale.
-        // For this example, iteration demonstrates the concept.
-        for i in 0..self.tweets.len() {
-            if let Some(tweet) = self.tweets.get(i) {
-                if tweet.id == tweet_id {
-                    return Some(tweet);
-                }
-            }
-        }
-        None
-    }
-
-    // View method to get paginated tweets by a specific author.
-    pub fn get_tweets_by_author(
-        &self,
-        author_id: AccountId,
-        from_index: Option<u64>,
-        limit: Option<u64>,
-    ) -> Vec<Tweet> {
-        let start = from_index.unwrap_or(0);
-        // If limit is not provided, we might scan a lot. Consider a default max limit.
-        let limit_val = limit.unwrap_or(10);
-
-        let mut author_tweets = Vec::new();
-        let mut count = 0;
-        let mut current_index = 0;
-
-        // Iterate through all tweets to find those by the specified author.
-        // This is not the most storage-efficient way for large scale,
-        // where a LookupMap<AccountId, Vector<u64_tweet_id>> would be preferred.
-        for i in 0..self.tweets.len() {
-            if let Some(tweet) = self.tweets.get(i) {
-                if tweet.author == author_id {
-                    if current_index >= start && count < limit_val {
-                        author_tweets.push(tweet.clone());
-                        count += 1;
-                    }
-                    current_index += 1;
-                }
-            }
-            if count >= limit_val && current_index > start { // Optimization: stop if limit reached past start
-                break;
-            }
-        }
-        author_tweets
-    }
-
-    // Public method to like a tweet.
+    // Like a tweet - equivalent to POST /tweets/{id}/like endpoint
+    // This modifies state (increments like counter) so it costs gas
     pub fn like_tweet(&mut self, tweet_id: u64) -> Option<Tweet> {
-        // Find the tweet by iterating (inefficient for large scale, see get_tweet_by_id comments)
-        let mut target_tweet_index: Option<u64> = None;
-        for i in 0..self.tweets.len() {
-            if let Some(tweet) = self.tweets.get(i) {
-                if tweet.id == tweet_id {
-                    target_tweet_index = Some(i);
-                    break;
-                }
-            }
-        }
-
-        if let Some(index) = target_tweet_index {
-            let mut tweet = self.tweets.get(index).unwrap(); // We know it exists
+        // Try to get a mutable reference to the tweet
+        // This is like: SELECT * FROM tweets WHERE id = ? FOR UPDATE
+        if let Some(tweet) = self.tweets.get_mut(&tweet_id) {
+            // Increment the like counter (like UPDATE tweets SET likes = likes + 1)
             tweet.likes += 1;
-            self.tweets.replace(index, tweet.clone()); // Replace the old tweet with the updated one
+
+            // Log the like action for transparency/debugging
             env::log_str(&format!(
                 "Tweet #{} liked by @{}. Total likes: {}",
                 tweet_id,
-                env::predecessor_account_id(),
+                env::predecessor_account_id(), // Who liked the tweet
                 tweet.likes
             ));
-            Some(tweet)
+
+            // Return the updated tweet (clone because we need to return owned data)
+            Some(tweet.clone())
         } else {
+            // Tweet doesn't exist - log the attempt
+            // In REST API, this would be a 404 Not Found
             env::log_str(&format!(
                 "Attempt to like non-existent tweet #{} by @{}",
                 tweet_id,
@@ -231,31 +237,144 @@ impl TwitterContract {
         }
     }
 
-    // Optional: A method to demonstrate ownership for deletion
-    // This would require careful handling of tweet IDs and Vector indices if implemented.
-    // pub fn delete_tweet(&mut self, tweet_id: u64) {
-    //     let caller = env::predecessor_account_id();
-    //     // Logic to find tweet by id, check if caller is author, then remove.
-    //     // Vector::swap_remove(index) could be used if order doesn't matter for the gap.
-    // }
+    // Delete a tweet - equivalent to DELETE /tweets/{id} endpoint
+    // Only the tweet author can delete their own tweets (authorization check)
+    pub fn delete_tweet(&mut self, tweet_id: u64) {
+        // Get who's trying to delete the tweet (like checking JWT/session)
+        let caller = env::predecessor_account_id();
+
+        // Check if tweet exists and verify ownership
+        // This is like: SELECT author FROM tweets WHERE id = ?
+        if let Some(tweet) = self.tweets.get(&tweet_id) {
+            // Authorization check - only author can delete their tweet
+            // Similar to checking if user owns the resource in REST API
+            if tweet.author == caller {
+                // Delete the tweet from storage
+                // Like: DELETE FROM tweets WHERE id = ?
+                self.tweets.remove(&tweet_id);
+                env::log_str(&format!("Tweet #{} deleted by @{}", tweet_id, caller));
+            } else {
+                // Unauthorized deletion attempt - log security event
+                // In REST API, this would be 403 Forbidden
+                env::log_str(&format!(
+                    "User @{} attempted to delete tweet #{} but is not the author.",
+                    caller, tweet_id
+                ));
+            }
+        } else {
+            // Tweet doesn't exist - log the attempt
+            // In REST API, this would be 404 Not Found
+            env::log_str(&format!(
+                "Attempt to delete non-existent tweet #{} by @{}",
+                tweet_id, caller
+            ));
+        }
+    }
+
+    // ============================================================================================
+    // READ METHODS (Free, don't modify state)
+    // ============================================================================================
+    // These are "view" methods - they don't cost gas and don't modify contract state
+    // Think of these as GET endpoints in your REST API
+
+    // Get all tweets with pagination - like GET /tweets?offset=0&limit=10
+    // from_index: starting position (like OFFSET in SQL)
+    // limit: maximum number of tweets to return (like LIMIT in SQL)
+    pub fn get_all_tweets(&self, from_index: Option<u64>, limit: Option<u64>) -> Vec<Tweet> {
+        // Set default values if not provided (common REST API pattern)
+        let start = from_index.unwrap_or(0);
+        let limit_val = limit.unwrap_or(10);
+
+        // Query tweets with pagination (like SELECT * FROM tweets LIMIT x OFFSET y)
+        self.tweets
+            .iter() // Iterate over all tweets
+            .skip(start as usize) // Skip 'start' number of tweets (OFFSET)
+            .take(limit_val as usize) // Take only 'limit_val' tweets (LIMIT)
+            .map(|(_key, tweet)| tweet.clone()) // Extract tweet objects (ignore keys)
+            .collect() // Collect into Vector to return
+    }
+
+    // Get specific tweet by ID - like GET /tweets/{id}
+    pub fn get_tweet_by_id(&self, tweet_id: u64) -> Option<Tweet> {
+        // Simple lookup by primary key
+        // Like: SELECT * FROM tweets WHERE id = ?
+        self.tweets.get(&tweet_id).cloned()
+    }
+
+    // Get tweets by specific author with pagination - like GET /users/{id}/tweets
+    // This demonstrates filtering in blockchain storage (no SQL WHERE clause available)
+    pub fn get_tweets_by_author(
+        &self,
+        author_id: AccountId,
+        from_index: Option<u64>,
+        limit: Option<u64>,
+    ) -> Vec<Tweet> {
+        let start = from_index.unwrap_or(0);
+        let limit_val = limit.unwrap_or(10);
+
+        // We need to manually filter since blockchain storage doesn't have SQL-like queries
+        // This is like doing: SELECT * FROM tweets WHERE author = ? LIMIT x OFFSET y
+        // But we have to iterate through all tweets and filter manually
+        let mut author_tweets = Vec::new();
+        let mut count = 0;
+        let mut current_index = 0;
+
+        // Iterate through all tweets to find matches
+        for (_id, tweet) in self.tweets.iter() {
+            // Check if this tweet belongs to the requested author
+            if tweet.author == author_id {
+                // Apply pagination logic
+                if current_index >= start && count < limit_val {
+                    author_tweets.push(tweet.clone());
+                    count += 1;
+                }
+                current_index += 1;
+            }
+
+            // Optimization: stop early if we've found enough tweets
+            if count >= limit_val && current_index > start {
+                break;
+            }
+        }
+
+        author_tweets
+    }
 }
+
+// ================================================================================================
+// KEY DIFFERENCES FROM TRADITIONAL BACKEND:
+// ================================================================================================
+//
+// 1. STATE PERSISTENCE:
+//    - Traditional: Use database, cache, session storage
+//    - NEAR: Contract state IS your database, automatically persisted
+//
+// 2. USER AUTHENTICATION:
+//    - Traditional: JWT tokens, sessions, OAuth
+//    - NEAR: Cryptographic signatures, account-based auth built-in
+//
+// 3. SCALABILITY:
+//    - Traditional: Horizontal scaling, load balancers, microservices
+//    - NEAR: Automatic scaling across blockchain network
+//
+// 4. COSTS:
+//    - Traditional: Server costs, database costs, bandwidth
+//    - NEAR: Gas fees for computations, storage costs per byte
+//
+// 5. DEPLOYMENT:
+//    - Traditional: CI/CD pipelines, blue-green deployments
+//    - NEAR: Deploy once, immutable (or upgradeable with special patterns)
+//
+// 6. DATA CONSISTENCY:
+//    - Traditional: ACID transactions, eventual consistency
+//    - NEAR: Atomic transactions guaranteed by blockchain consensus
+//
+// 7. QUERYING DATA:
+//    - Traditional: SQL, NoSQL query languages
+//    - NEAR: Manual iteration, no complex queries (design for simple access patterns)
 ```
 
-**Key Highlights from the Code:**
-
-*   **`#[near(contract_state)]` and `#[near]`:** These [macros](https://docs.rs/near-sdk/latest/near_sdk/attr.near.html) handle much of the boilerplate for making your Rust struct and its methods usable as a NEAR smart contract.
-*   **`PanicOnDefault` and `#[init]`:** Ensure the contract is properly initialized once upon deployment using the `new` function. See [PanicOnDefault docs](https://docs.rs/near-sdk/latest/near_sdk/derive.PanicOnDefault.html) and [init docs](https://docs.rs/near-sdk/latest/near_sdk/attr.near.html#initialization-methods).
-*   **`StorageKey`:** This enum, deriving [`BorshStorageKey`](https://docs.rs/near-sdk/latest/near_sdk/derive.BorshStorageKey.html), is crucial for persistent collections. Each instance of a collection like `Vector` or `UnorderedMap` needs a unique byte prefix in [storage](/protocol/storage/storage-staking).
-*   **`Vector<Tweet>`:** Our primary data store for tweets. It's a growable array that serializes its contents to contract storage using [Borsh](https://borsh.io/). See [`Vector` docs](https://docs.rs/near-sdk/latest/near_sdk/store/struct.Vector.html).
-*   **`env::predecessor_account_id()`:** This is how the contract identifies the user initiating the transaction (e.g., the author of a tweet). This is fundamental for permissioning and ownership logic. See [`predecessor_account_id` docs](https://docs.rs/near-sdk/latest/near_sdk/env/fn.predecessor_account_id.html).
-*   **`env::block_timestamp()`:** Provides a reliable source for timestamps ([`Timestamp`](https://docs.rs/near-sdk/latest/near_sdk/type.Timestamp.html) type). See [`block_timestamp` docs](https://docs.rs/near-sdk/latest/near_sdk/env/fn.block_timestamp.html).
-*   **`env::log_str(...)`:** Useful for emitting logs, which can be observed using a NEAR explorer for debugging or tracking events. See [`log_str` docs](https://docs.rs/near-sdk/latest/near_sdk/env/fn.log_str.html).
-*   **Serialization (`Borsh...`, `Serialize`, `Deserialize`):**
-    *   `Tweet` struct derives `BorshDeserialize` and `BorshSerialize` (from `near_sdk::borsh`) to be stored in `Vector`.
-    *   It also derives `Serialize` and `Deserialize` (from `near_sdk::serde`, which re-exports [Serde](https://serde.rs/)) so it can be passed as JSON in function arguments and return values when interacting with the contract from outside (e.g., from a web app or CLI).
-*   **Efficiency Notes:** The example uses a single `Vector` for all tweets. For `get_tweets_by_author` and `like_tweet` (by ID), this requires iterating the vector. The comments in the code mention that for larger-scale applications, more optimized data structures like [`LookupMap<AccountId, Vector<u64>>`](https://docs.rs/near-sdk/latest/near_sdk/store/struct.LookupMap.html) (user to their tweet IDs) and `LookupMap<u64, Tweet>` (tweet ID to tweet object) would be more performant for these specific queries. However, the current approach clearly demonstrates the core concepts of state management and interaction.
-
-This Rust smart contract acts as the backend for our Twitter application. It defines the data structures, the initial state, and the functions that users can call to interact with the application. The use of `predecessor_account_id` is central to associating tweets with their authors.
+This Rust smart contract ([here is the full version](https://github.com/frol/near-twitter-example-rs)) acts as the backend for our Twitter application. It defines the data structures, the initial state, and the functions that users can call to interact with the application. The use of `predecessor_account_id` is central to associating tweets with their authors.
 
 ## Interacting with Your NEAR Backend (Smart Contract)
 
