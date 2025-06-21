@@ -115,10 +115,7 @@ const sidebar = {
         },
         {
           Intents: [
-            'chain-abstraction/intents/overview',
-            'chain-abstraction/intents/solvers',
-            'chain-abstraction/intents/intents-bridge',
-            'chain-abstraction/intents/faq',
+            'chain-abstraction/intents/overview'
           ],
         },
         {
