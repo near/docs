@@ -528,14 +528,6 @@ const sidebar = {
       ],
     },
     {
-      'Integrate with NEAR Intents': [
-        'tutorials/intents/introduction',
-        'tutorials/intents/deposit',
-        'tutorials/intents/swap',
-        'tutorials/intents/withdraw',
-      ],
-    },
-    {
       'Controlling Near accounts': [
         'tutorials/controlling-near-accounts/introduction',
         'tutorials/controlling-near-accounts/setup',
