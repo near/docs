@@ -1169,8 +1169,8 @@ If you've ever deployed the same contract code to multiple accounts, you’ve li
 Global Contracts solve this inefficiency by allowing the same contract code to be shared across multiple accounts, so storage cost is paid only once.
 
 There are two ways to reference a global contract:
-- By account — The contract code is tied to another account. If that account later deploys a new version of the contract, your account will automatically start using the updated code — with no need for redeployment.
-- By hash — You reference the contract by its immutable code hash. This ensures you're always using the exact same version, and it will never change unless you explicitly redeploy with a different hash.
+- **By account:** The contract code is tied to another account. If that account later deploys a new version of the contract, your account will automatically start using the updated code, with no need for redeployment.
+- **By hash:** You reference the contract by its immutable code hash. This ensures you're always using the exact same version, and it will never change unless you explicitly redeploy with a different hash.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
