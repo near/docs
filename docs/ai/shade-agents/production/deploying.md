@@ -43,7 +43,7 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releas
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
 ```
 
-- Later on, you'll need a NEAR account. You can get a pre-funded testnet account with cargo-near. Make sure to note down the private key and account Id.
+- Later on, you'll need a NEAR account. You can get a pre-funded testnet account with cargo-near. Make sure to note down the seed phrase and account Id.
 
 ```bash
 cargo near create-dev-account use-random-account-id autogenerate-new-keypair print-to-terminal network-config testnet create
