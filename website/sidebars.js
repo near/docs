@@ -115,10 +115,7 @@ const sidebar = {
         },
         {
           Intents: [
-            'chain-abstraction/intents/overview',
-            'chain-abstraction/intents/solvers',
-            'chain-abstraction/intents/intents-bridge',
-            'chain-abstraction/intents/faq',
+            'chain-abstraction/intents/overview'
           ],
         },
         {
@@ -528,14 +525,6 @@ const sidebar = {
         'tutorials/multichain-dao/request',
         'tutorials/multichain-dao/signing',
         'tutorials/multichain-dao/voting',
-      ],
-    },
-    {
-      'Integrate with NEAR Intents': [
-        'tutorials/intents/introduction',
-        'tutorials/intents/deposit',
-        'tutorials/intents/swap',
-        'tutorials/intents/withdraw',
       ],
     },
     {
