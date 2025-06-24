@@ -1160,6 +1160,88 @@ Unlike many other blockchains, contracts on NEAR are mutable, meaning you have t
   </TabItem>
 </Tabs>
 
+<hr class="subsection" />
+
+### Deploy a Global Contract {#deploy-a-global-contract}
+
+If you've ever deployed the same contract code to multiple accounts, you’ve likely noticed that each deployment requires you to pay the full storage cost again — since the size of the WASM file determines how much `NEAR` is locked on the account.
+
+Global Contracts solve this inefficiency by allowing the same contract code to be shared across multiple accounts, so storage cost is paid only once.
+
+There are two ways to reference a global contract:
+- **By account:** The contract code is tied to another account. If that account later deploys a new version of the contract, your account will automatically start using the updated code, with no need for redeployment.
+- **By hash:** You reference the contract by its immutable code hash. This ensures you're always using the exact same version, and it will never change unless you explicitly redeploy with a different hash.
+
+<Tabs groupId="api">
+  <TabItem value="js" label="🌐 JavaScript">
+
+  Once you've created an Account instance, you can deploy your regular contract as a global contract.
+
+  <Tabs>
+  <TabItem value="account" label="By Account" default>
+
+  Let’s look at an example of deploying a global contract by account.
+  
+  To do this, use the `deployGlobalContract` function and set the mode to `accountId`, along with the contract’s code bytes.
+  
+  ```js
+  import { readFileSync } from "fs";
+
+  const account = new Account("user.testnet", provider, signer);
+
+  const wasm = readFileSync("../contracts/contract.wasm");
+  await account.deployGlobalContract(wasm, "accountId");
+  ```
+
+  Once the global contract is deployed, let’s see how an end user can reference and use it in their own account. To do this, they need to call the `useGlobalContract` function and pass the source `accountId` where the contract was originally deployed.
+
+  ```js
+  const account = new Account("another_user.testnet", provider, signer);
+
+  await account.useGlobalContract({ accountId: "user.testnet" });
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+
+  <TabItem value="hash" label="By Hash" default>
+
+  Let’s look at an example of deploying a global contract by hash.
+  
+  To do this, use the `deployGlobalContract` function and set the mode to `codeHash`, along with the contract’s code bytes.
+  
+  ```js
+  import { readFileSync } from "fs";
+
+  const account = new Account("user.testnet", provider, signer);
+
+  const wasm = readFileSync("../contracts/contract.wasm");
+  await account.deployGlobalContract(wasm, "codeHash");
+  ```
+
+  Once the global contract is deployed, let’s see how an end user can reference and use it in their own account. To do this, they need to call the `useGlobalContract` function and pass the source `codeHash` of the original contract.
+
+  ```js
+  const account = new Account("another_user.testnet", provider, signer);
+
+  await account.useGlobalContract({
+    codeHash: "36b15ea09f737220583f63ad120d91b7e233d2039bebea43be527f8fd85450c9",
+  });
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+  </Tabs>
+
+
+
+  </TabItem>
+</Tabs>
+
 ---
 
 ## View Function
