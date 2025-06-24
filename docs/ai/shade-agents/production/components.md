@@ -20,8 +20,8 @@ The code hash ensures that only workers running the correct code can access the 
 After deploying the agent contract, the owner should submit the code hash. This is done by calling the `approve_codehash` function. This function first checks if it's the owner account Id calling the function then inserts the new code hash into the map of code hashes.
 
 <Github fname="lib.rs" language="rust"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/main/contract/src/lib.rs#L62-L65"
-    start="62" end="65" />
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/contract/src/lib.rs#L44-L47"
+    start="44" end="47" />
 
 In the template, this function is called in the `contract deployment script`, eliminating the need for to manually call it.
 
@@ -36,8 +36,8 @@ When the TEE boots up, a `private key` and `worker agent account Id` is derived.
 The function to derive a worker agent is provided by the `shade-agent-js` library.
 
 <Github fname="register.js" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/derive.js#L19"
-    start="19" end="19" />
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/pages/api/getWorkerAccount.js#L11"
+    start="11" end="11" />
 
 The worker agent's private key is generated from the combined `entropy` of the crypto module and the TEE instance.
 
@@ -56,8 +56,8 @@ To register a worker, the worker agent calls the [register_worker function](http
 The `shade-agent-js` library abstracts away the complexity of this process, but essentially, the worker agent generates a `remote attestation quote` and the Docker image's SHA256 `code hash`. The agent contract then uses the attestation quote to verify that the worker agent is running inside a genuine TEE and confirms that the code hash matches one of the approved worker code hashes. Upon successful verification, the worker agent's account Id is registered in the agent contract.
 
 <Github fname="lib.rs" language="rust"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/main/contract/src/lib.rs#L94-L98"
-    start="94" end="98" />
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/contract/src/lib.rs#L89-L98"
+    start="89" end="98" />
 
 Once registered, the worker agent gains access to all worker agent gated functions (i.e. it can sign transactions for the Shade Agent).
 
@@ -71,8 +71,8 @@ The sign tx function accepts three arguments:
 - The `key_version` - sets the signature scheme required for the transaction. `0` for `secp256k1` and `1` for `ed25519`.
 
 <Github fname="lib.rs" language="rust"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/main/contract/src/lib.rs#L68-L75"
-    start="68" end="75" />
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/contract/src/lib.rs#L50-L61"
+    start="50" end="61" />
 
 In this example, we're signing a transaction to call an Ethereum contract to update the stored price of ETH. First, we retrieve the price of ETH (in this example, the function queries two different APIs and calculates the average).
 

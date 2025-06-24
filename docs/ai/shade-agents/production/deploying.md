@@ -77,12 +77,12 @@ These set of instructions will guide you to deploy your Shade Agent within a TEE
 
 - Update the `docker:image` and `docker:push` scripts within your `package.json` file to match your docker hub account.
 
-- Configure your `.env.local.development` file with the following:
+- Configure your `.env.development.local` file with the following:
   - Your NEAR account ID.
-  - The corresponding private key.
+  - The seed phrase for this account.
   - Set the contract ID to your account ID prefixed with `contract.` (the contract account will be created during deployment, you should not create this before).
 
-- Set the same contract ID in your `.env` file.
+- Set the exact same variables in your `.env` file.
 
 - Open Docker Desktop (you don't need to do anything here, it's just to start up Docker).
 
@@ -100,7 +100,7 @@ These set of instructions will guide you to deploy your Shade Agent within a TEE
 
 - Go to the Phala Cloud dashboard https://cloud.phala.network/dashboard.
 
-- Click deploy > docker-compose.yml > and paste in your docker-compose.yaml and select `tdx.small`.
+- Click deploy > docker-compose.yml > paste in your docker-compose.yaml, and click deploy. You do not need to enter any environment variables here.
 
 - Once the deployment is finished, click on your deployment, then head to the `network tab` and open the endpoint.
 
@@ -153,14 +153,18 @@ Developing locally is much easier for quickly iterating on and testing your agen
 - To develop locally, comment out the valid worker agent gating from the `sign_tx` function in the [lib.rs](https://github.com/NearDeFi/shade-agent-template/blob/main/contract/src/lib.rs#L70C1-L71C71) file of the agent contract.
 
 ```rust
-pub fn sign_tx(&mut self, payload: Vec<u8>, derivation_path: String, key_version: u32) -> Promise {
-    // Comment these two lines for local development
-    //let worker = self.get_worker(env::predecessor_account_id());
-    //require!(self.approved_codehashes.contains(&worker.codehash));
+    pub fn sign_tx(
+        &mut self,
+        payload: Vec<u8>,Add commentMore actions
+        derivation_path: String,
+        key_version: u32,
+    ) -> Promise {
+        // Comment out this line for local development
+        // self.require_registered_worker();
 
-    // Call the MPC contract to get a signature for the payload
-    ecdsa::get_sig(payload, derivation_path, key_version)
-}
+        // Call the MPC contract to get a signature for the payload
+        ecdsa::get_sig(payload, derivation_path, key_version)
+    }
 ```
 
 This means now any account, not just valid worker agents, can call this function and get signatures.
