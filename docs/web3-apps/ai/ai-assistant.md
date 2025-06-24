@@ -93,7 +93,7 @@ llama-server -m ./model/Hermes-2-Pro-Llama-3-8B-Q4_K_M.gguf
 ```
 
 Open your browser at `http://localhost:8080`, if you see an interface similar to this one you are ready to go 🚀
-![llama.cpp UI](@site/static/docs/assets/llama-cpp.png)
+![llama.cpp UI](@site/static/docs/assets/ai-assistant/llama-cpp.png)
 
 :::tip
 
@@ -167,7 +167,7 @@ yarn dev
 ## Usage
 
 You can now head to `http://localhost:5173`, where you'll find an interface like this one to interact with the AI:
-![img](@site/static/docs/assets/ai-assistant.png)
+![img](@site/static/docs/assets/ai-assistant/ai-assistant.png)
 
 Here are a few example questions you can ask it:
 - What is NEAR?

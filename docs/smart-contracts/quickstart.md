@@ -131,7 +131,7 @@ Create a smart contract by using one of the scaffolding tools and following thei
   npx create-near-app@latest
 ```
 
-![img](@site/static/docs/hello-near-ts.gif)
+![img](@site/static/docs/assets/smart-contract/hello-near-ts.gif)
 _Creating a project using `create-near-app`_
 
 This will generate a project with the following structure:
@@ -161,7 +161,7 @@ We recommend you to name your project `hello-near` for this tutorial, but feel f
   cargo near
 ```
 
-![img](@site/static/docs/hello-near-rs.gif)
+![img](@site/static/docs/assets/smart-contract/hello-near-rs.gif)
 _Creating a project using `cargo near new`_
 
 This will generate a project with the following structure:
@@ -201,7 +201,7 @@ You can skip the interactive menu and create a new project with specific name ru
   npx create-near-app@latest
 ```
 
-![img](@site/static/docs/hello-near-py.gif)
+![img](@site/static/docs/assets/smart-contract/hello-near-py.gif)
 _Creating a project using `create-near-app`_
 
 This will generate a project with the following structure:
