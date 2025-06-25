@@ -52,10 +52,8 @@ const sidebar = {
       link: { type: 'doc', id: 'chain-abstraction/what-is' },
       items: [
         {
-          'Meta Transactions': [
-            'chain-abstraction/meta-transactions',
-            'chain-abstraction/relayers',
-            'chain-abstraction/meta-transactions-relayer',
+          'NEAR Intents': [
+            'chain-abstraction/intents/overview'
           ],
         },
         {
@@ -66,11 +64,6 @@ const sidebar = {
           ],
         },
         {
-          Intents: [
-            'chain-abstraction/intents/overview'
-          ],
-        },
-        {
           'Omni Bridge': [
             'chain-abstraction/omnibridge/overview',
             'chain-abstraction/omnibridge/how-it-works',
@@ -78,8 +71,14 @@ const sidebar = {
             'chain-abstraction/omnibridge/roadmap',
           ],
         },
-        'chain-abstraction/fastauth-sdk',
         'chain-abstraction/data-availability',
+        {
+          'Meta Transactions': [
+            'chain-abstraction/meta-transactions',
+            'chain-abstraction/relayers',
+            'chain-abstraction/meta-transactions-relayer',
+          ],
+        },
       ],
     },
     {
