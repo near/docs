@@ -4,7 +4,7 @@ As an experienced backend developer, you're adept at building robust services, m
 
 This article will guide you through understanding NEAR from a backend perspective. We'll explore how it can be seen as a decentralized, highly available backend platform where:
 
-*   **Your Application's Backend Logic** lives in "[smart contracts](/smart-contracts/what-is)," which you can write in familiar languages like [Rust](/tools/sdk) (and others that compile to [WebAssembly](/smart-contracts/anatomy/wasm)).
+*   **Your Application's Backend Logic** lives in "[smart contracts](/smart-contracts/what-is)," which you can write in familiar languages like [Rust](/tools/sdk) (and others that compile to [WebAssembly](/smart-contracts/anatomy/)).
 *   **Application State** is managed per application, similar to having a dedicated database for your service, but with global availability and data integrity secured by the network.
 *   **User Identity and Permissions** are cryptographically secured and can be reliably checked within your application logic using an [AccountId](/protocol/account-model).
 *   **Data Replication** is handled by the network, providing something akin to a master-master replication setup with eventual consistency, typically reaching [finality](/protocol/transactions/overview#transaction-lifecycle--finality) (undisputed agreement) in about 1-2 seconds.
