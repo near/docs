@@ -227,6 +227,12 @@ const config = {
         },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {
+          to: '/feedback',
+          label: 'Feedback',
+          position: 'right',
+          className: 'navbar__link--feedback',
+        },
+        {
           type: 'html',
           position: 'right',
           value:
