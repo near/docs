@@ -201,12 +201,31 @@ table + p em,
   padding: 0.8rem;
 }
 
-.navbar__item:first-of-type {
-  padding-left: 0.4rem;
-}
-
 .navbar__logo {
   height: 28px;
+}
+
+.navbar__brand {
+  margin: auto 0.8rem;
+}
+
+a.navbar__link.false::after {
+  border-width: 0.3em 0.3em 0;
+  top: 0;
+}
+
+.dropdown__menu {
+  display: flex;
+}
+
+.dropdown__menu__left {
+  display:flex;
+  flex-direction: column;
+}
+
+.dropdown__menu__right {
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar .separator {
@@ -404,10 +423,6 @@ iframe + em {
     margin: 1.5rem 1.5rem 1.5rem 2rem;
   }
 }
-
-/* BOOTSTRAP */
-/* TODO: Include this from file */
-@import './bootstrap.scss';
 
 #near-wallet-selector-modal {
   .nws-modal-wrapper .nws-modal .modal-left .modal-left-title h2 {

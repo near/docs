@@ -23,6 +23,8 @@ function containsActiveItems(items, localPathname) {
 function DropdownNavbarItemDesktop({ items, position, className, onClick, ...props }) {
   const dropdownRef = useRef(null);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [subitems, setSubItems] = useState([])
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (!dropdownRef.current || dropdownRef.current.contains(event.target)) {
@@ -41,7 +43,7 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
   }, [dropdownRef]);
 
   const active = containsActiveItems(items, useLocalPathname()) && 'navbar__link--active';
-
+  console.log(items);
   return (
     <div
       ref={dropdownRef}
@@ -70,16 +72,28 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
       >
         {props.children ?? props.label}
       </NavbarNavLink>
-      <ul className="dropdown__menu">
-        {items.map((childItemProps, i) => (
-          <NavbarItem
-            isDropdownItem
-            activeClassName="dropdown__link--active"
-            {...childItemProps}
-            key={i}
-          />
-        ))}
-      </ul>
+      <div className="dropdown__menu">
+        <ul className="dropdown__menu__left">
+          {items.map((childItemProps, i) => (
+            <NavbarItem
+              isDropdownItem
+              activeClassName="dropdown__link--active"
+              {...childItemProps}
+              key={i}
+              onMouseOver={() => { setSubItems(childItemProps.subitems || []) }}
+            />
+          ))}
+        </ul>
+        <ul className="dropdown__menu__right">
+          {subitems.map((sub, i) => (
+            <li>
+              <a href={sub.to}>{sub.label}</a>
+              <p>{sub.description}</p>
+            </li>
+          ))
+          }
+        </ul>
+      </div>
     </div>
   );
 }

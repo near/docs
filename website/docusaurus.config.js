@@ -113,25 +113,59 @@ const config = {
     navbar: {
       logo: {
         alt: 'NEAR Logo',
-        src: 'img/near_logo.svg',
-        srcDark: 'img/near_logo_white.svg',
+        src: 'img/near_icon.svg',
+        srcDark: 'img/near_icon.svg',
       },
       items: [
         {
-          to: '/',
-          label: 'Docs',
+          type: 'dropdown',
+          label: 'Learn',
           position: 'left',
-          activeBaseRegex: '(^/$)|(/build|concepts)',
-        },
-        {
-          to: '/tutorials/welcome',
-          label: 'Tutorials',
-          position: 'left',
-          activeBaseRegex: '/tutorials/',
+          items: [
+            { label: 'Why NEAR?', to: '/protocol/basics' },
+            {
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> Essentials </small>',
+            },
+            { label: 'Account Model', to: '/protocol/account-model' },
+            { label: 'Access Keys', to: '/protocol/access-keys' },
+            { label: 'Transactions', to: '/protocol/transactions' },
+            { label: 'Handling Storage', to: '/protocol/storage/storage-staking' },
+            { label: 'The Network', to: '/protocol/network/validators' },
+          ],
         },
         {
           type: 'dropdown',
-          label: 'Tools',
+          label: 'Build',
+          position: 'left',
+          items: [
+            { label: 'Smart Contracts', to: '/smart-contracts/what-is', description: "Building Smart Contracts Has Never Been Easier"
+              subitems: [
+                { label: 'What is a Contract?', to: '/smart-contracts/what-is', description: "Discover what is a smart contract" },
+                { label: 'Quickstart', to: '/smart-contracts/quickstart', description: "Create your first smart contract" } 
+              ]
+            },
+            { label: 'AI & Agents', to: '/ai/introduction' },
+            {
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> Essentials </small>',
+            },
+            { label: 'NEAR API', to: '/tools/near-api' },
+            { label: 'NEAR SDK', to: '/tools/sdk' },
+            { label: 'NEAR CLI', to: '/tools/near-cli' },
+            { label: 'Wallet Selector', to: '/tools/wallet-selector' },
+            {
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> Data Services </small>',
+            },
+            { label: 'Explorers', to: '/tools/explorer' },
+            { label: 'Data APIs', to: '/tools/ecosystem-apis/fastnear' },
+            { label: 'Indexers', to: '/tools/indexing' },
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'Tutorials',
           position: 'left',
           items: [
             { label: '🧰 All Tools', to: '/tools/welcome' },
@@ -153,79 +187,51 @@ const config = {
           ],
         },
         {
-          type: 'html',
-          value: '<span class="separator"></span>',
-        },
-        {
           type: 'dropdown',
-          label: 'Resources',
+          label: 'Reference',
           position: 'left',
           items: [
-            {
-              label: 'Github',
-              href: 'https://github.com/near',
-              className: 'header-github-link',
-            },
+            { label: '🧰 All Tools', to: '/tools/welcome' },
             {
               type: 'html',
-              value: '<hr/><div class="subtitle"> Support </div>',
+              value: '<hr/> <small class="subtitle"> Essentials </small>',
             },
-            {
-              href: 'https://discord.gg/GZ7735Xjce',
-              label: 'Discord',
-            },
-            {
-              href: 'https://t.me/neardev',
-              label: 'Telegram',
-            },
+            { label: 'NEAR API', to: '/tools/near-api' },
+            { label: 'NEAR SDK', to: '/tools/sdk' },
+            { label: 'NEAR CLI', to: '/tools/near-cli' },
+            { label: 'Wallet Selector', to: '/tools/wallet-selector' },
             {
               type: 'html',
-              value: '<hr /><div class="subtitle"> Education </div>',
+              value: '<hr/> <small class="subtitle"> Data Services </small>',
             },
-            {
-              href: 'https://agorapp.dev/catalog/course?difficulty=&chains=near',
-              label: 'Agor',
-            },
-            {
-              href: 'https://learnnear.club/',
-              label: 'Learn NEAR Club',
-            },
-            {
-              type: 'html',
-              value: '<hr /><div class="subtitle"> Other Docs </div>',
-            },
-            {
-              to: '/resources/contracts-list',
-              label: 'Contracts List',
-            },
-            {
-              href: 'https://github.com/near/NEPs',
-              label: 'NEPs',
-            },
-            {
-              href: 'https://near.github.io/nearcore/',
-              label: 'Protocol Docs',
-            },
-            {
-              href: 'https://near-nodes.io',
-              label: 'Validator Docs',
-            },
-            {
-              to: '/integrations/exchange-integration',
-              label: 'Exchange Integrations',
-            },
+            { label: 'Explorers', to: '/tools/explorer' },
+            { label: 'Data APIs', to: '/tools/ecosystem-apis/fastnear' },
+            { label: 'Indexers', to: '/tools/indexing' },
           ],
         },
         {
-          to: '/api/rpc/introduction',
-          label: 'RPC',
-          activeBaseRegex: '/api/rpc',
+          type: 'dropdown',
+          label: 'Community',
+          position: 'left',
+          items: [
+            { label: '🧰 All Tools', to: '/tools/welcome' },
+            {
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> Essentials </small>',
+            },
+            { label: 'NEAR API', to: '/tools/near-api' },
+            { label: 'NEAR SDK', to: '/tools/sdk' },
+            { label: 'NEAR CLI', to: '/tools/near-cli' },
+            { label: 'Wallet Selector', to: '/tools/wallet-selector' },
+            {
+              type: 'html',
+              value: '<hr/> <small class="subtitle"> Data Services </small>',
+            },
+            { label: 'Explorers', to: '/tools/explorer' },
+            { label: 'Data APIs', to: '/tools/ecosystem-apis/fastnear' },
+            { label: 'Indexers', to: '/tools/indexing' },
+          ],
         },
-        {
-          href: 'https://docs.near.ai',
-          label: 'NEAR AI',
-        },
-        { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {
           type: 'html',
           position: 'right',

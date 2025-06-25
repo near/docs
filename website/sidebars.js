@@ -1,10 +1,5 @@
 const sidebar = {
   build: [
-    'index',
-    {
-      type: 'html',
-      value: '<hr/>',
-    },
     {
       type: 'html',
       value: "<span class='menu__link'><b><small> NEAR Protocol </small></b></span>",
