@@ -3,15 +3,14 @@ const sidebar = {
     'index',
     {
       type: 'html',
-      value: '<hr/>',
+      value: '<hr class="navbar-separator">',
     },
     {
-      type: 'html',
-      value: "<span class='menu__link'><b><small> NEAR Protocol </small></b></span>",
-    },
-    'protocol/basics',
-    {
-      'Understand the Protocol': [
+      type: 'category',
+      label: 'What is NEAR?',
+      collapsed: true,
+      link: { type: 'doc', id: 'protocol/basics' },
+      items: [
         {
           type: 'category',
           label: 'Accounts / Contracts',
@@ -47,57 +46,11 @@ const sidebar = {
       ],
     },
     {
-      type: 'html',
-      value: '<hr/>',
-    },
-    {
-      type: 'html',
-      value: "<span class='menu__link'><b><small> AI and Agents </small></b></span>",
-    },
-    'ai/introduction',
-    {"AI and Agents": [
-      {
-        "Shade Agents": [
-              "ai/shade-agents/introduction",
-              "ai/shade-agents/examples",
-              {
-                "Sandbox Agents": [
-                  "ai/shade-agents/sandbox/sandbox-deploying",
-                  "ai/shade-agents/sandbox/sandbox-components",
-                ]
-              },
-              {
-                "Production Agents": [
-                  "ai/shade-agents/production/production-deploying",
-                  "ai/shade-agents/production/production-components",
-                ]
-              },
-              "ai/shade-agents/plugins",
-        ],
-      },
-        {
-          type: 'link',
-          label: 'NEAR AI',
-          href: 'https://docs.near.ai/',
-        },
-        {
-          type: 'link',
-          label: 'Bitte Protocol',
-          href: 'https://docs.bitte.ai/',
-        },
-      ],
-    },
-    {
-      type: 'html',
-      value: '<hr/>',
-    },
-    {
-      type: 'html',
-      value: "<span class='menu__link'><b><small> Chain Abstraction ✨ </small></b></span>",
-    },
-    'chain-abstraction/what-is',
-    {
-      'Chain Abstraction Services': [
+      type: 'category',
+      label: '⛓️‍💥 - Chain Abstraction',
+      collapsed: true,
+      link: { type: 'doc', id: 'chain-abstraction/what-is' },
+      items: [
         {
           'Meta Transactions': [
             'chain-abstraction/meta-transactions',
@@ -110,7 +63,6 @@ const sidebar = {
             'chain-abstraction/chain-signatures',
             'chain-abstraction/chain-signatures/getting-started',
             'chain-abstraction/chain-signatures/implementation',
-            // 'build/chain-abstraction/nft-chain-keys',
           ],
         },
         {
@@ -131,16 +83,48 @@ const sidebar = {
       ],
     },
     {
-      type: 'html',
-      value: '<hr/>',
+      type: 'category',
+      label: '🦾 - AI and Agents',
+      collapsed: true,
+      link: { type: 'doc', id: 'ai/introduction' },
+      items: [
+        {
+          "Shade Agents": [
+            "ai/shade-agents/introduction",
+            "ai/shade-agents/examples",
+            {
+              "Sandbox Agents": [
+                "ai/shade-agents/sandbox/sandbox-deploying",
+                "ai/shade-agents/sandbox/sandbox-components",
+              ]
+            },
+            {
+              "Production Agents": [
+                "ai/shade-agents/production/production-deploying",
+                "ai/shade-agents/production/production-components",
+              ]
+            },
+            "ai/shade-agents/plugins",
+          ],
+        },
+        {
+          type: 'link',
+          label: 'NEAR AI',
+          href: 'https://docs.near.ai/',
+        },
+        {
+          type: 'link',
+          label: 'Bitte Protocol',
+          href: 'https://docs.bitte.ai/',
+        },
+      ],
     },
     {
-      type: 'html',
-      value: "<span class='menu__link'><b><small> Smart Contracts </small></b></span>",
-    },
-    'smart-contracts/what-is',
-    {
-      'Building Smart Contracts': [
+      type: 'category',
+      label: '🔐 - Smart Contracts',
+      collapsed: true,
+      link: { type: 'doc', id: 'smart-contracts/what-is' },
+      items: [
         'smart-contracts/quickstart',
         {
           'Anatomy of a Contract': [
@@ -154,10 +138,6 @@ const sidebar = {
             'smart-contracts/anatomy/crosscontract',
             'smart-contracts/anatomy/yield-resume',
             'smart-contracts/security/checklist',
-            {
-              type: 'html',
-              value: '<hr/>',
-            },
             {
               Advanced: [
                 'smart-contracts/anatomy/best-practices',
@@ -174,10 +154,6 @@ const sidebar = {
             'smart-contracts/testing/introduction',
             'smart-contracts/testing/unit-test',
             'smart-contracts/testing/integration-test',
-            {
-              type: 'html',
-              value: '<hr/>',
-            },
             'smart-contracts/testing/kurtosis-localnet',
           ],
         },
@@ -204,10 +180,6 @@ const sidebar = {
             'smart-contracts/security/frontrunning',
             'smart-contracts/security/reentrancy',
             'smart-contracts/security/random',
-            {
-              type: 'html',
-              value: '<hr/>',
-            },
           ],
         },
         {
@@ -216,17 +188,11 @@ const sidebar = {
       ],
     },
     {
-      type: 'html',
-      value: '<hr/>',
-    },
-    {
-      type: 'html',
-      value:
-        "<span class='menu__link'><b><small> Web3 Apps (Frontend, AI, ...) </small></b></span>",
-    },
-    'web3-apps/what-is',
-    {
-      'Building Web3 Applications': [
+      type: 'category',
+      label: '🚀 - Web3 Applications',
+      collapsed: true,
+      link: { type: 'doc', id: 'web3-apps/what-is' },
+      items: [
         'web3-apps/quickstart',
         {
           Frontends: ['web3-apps/integrate-contracts', 'web3-apps/ethereum-wallets'],
@@ -240,16 +206,11 @@ const sidebar = {
       ],
     },
     {
-      type: 'html',
-      value: '<hr/>',
-    },
-    {
-      type: 'html',
-      value: "<span class='menu__link'><b><small> Primitives (FT, NFT, ...) </small></b></span>"
-    },
-    'primitives/what-is',
-    {
-      'Primitives & Standards': [
+      type: 'category',
+      label: '🧩 - Primitives & Standards',
+      collapsed: true,
+      link: { type: 'doc', id: 'primitives/what-is' },
+      items: [
         {
           type: 'category',
           label: 'Fungible Tokens (FT)',
@@ -292,17 +253,12 @@ const sidebar = {
       ],
     },
     {
-      type: 'html',
-      value: '<hr/>',
-    },
-    {
-      type: 'html',
-      value: "<span class='menu__link'><b><small> Data Infrastructure </small></b></span>",
-    },
-    'data-infrastructure/what-is',
-    'data-infrastructure/indexers',
-    {
-      'NEAR Data Infrastructure': [
+      type: 'category',
+      label: '📊 - Data Infrastructure',
+      collapsed: true,
+      link: { type: 'doc', id: 'data-infrastructure/what-is' },
+      items: [
+        'data-infrastructure/indexers',
         'data-infrastructure/data-apis',
         'data-infrastructure/big-query',
         {
