@@ -1,14 +1,13 @@
 const sidebar = {
   build: [
     'index',
-    {
-      type: 'html',
-      value: '<hr class="navbar-separator">',
-    },
+    'protocol/basics',
+
     {
       type: 'category',
-      label: 'What is NEAR?',
+      label: 'NEAR Protocol',
       collapsed: true,
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'protocol/basics' },
       items: [
         {
@@ -47,15 +46,12 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: '⛓️‍💥 - Chain Abstraction',
+      label: 'Chain Abstraction',
       collapsed: true,
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'chain-abstraction/what-is' },
       items: [
-        {
-          'NEAR Intents': [
-            'chain-abstraction/intents/overview'
-          ],
-        },
+            'chain-abstraction/intents/overview',
         {
           'Chain Signatures': [
             'chain-abstraction/chain-signatures',
@@ -83,8 +79,9 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: '🦾 - AI and Agents',
+      label: 'AI and Agents',
       collapsed: true,
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'ai/introduction' },
       items: [
         {
@@ -120,8 +117,9 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: '🔐 - Smart Contracts',
+      label: 'Smart Contracts',
       collapsed: true,
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'smart-contracts/what-is' },
       items: [
         'smart-contracts/quickstart',
@@ -188,8 +186,9 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: '🚀 - Web3 Applications',
+      label: 'Web3 Applications',
       collapsed: true,
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'web3-apps/what-is' },
       items: [
         'web3-apps/quickstart',
@@ -206,8 +205,9 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: '🧩 - Primitives & Standards',
+      label: 'Primitives & Standards',
       collapsed: true,
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'primitives/what-is' },
       items: [
         {
@@ -253,8 +253,9 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: '📊 - Data Infrastructure',
+      label: 'Data Infrastructure',
       collapsed: true,
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'data-infrastructure/what-is' },
       items: [
         'data-infrastructure/indexers',
