@@ -11,7 +11,7 @@ import {Container, Card} from "@site/src/components/cards";
 Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagine a place where you can empower communities, supercharge AI, and easily integrate your app with other chains. Welcome to NEAR; you're going to like it here.
 
 <Container>
-    <Card img={require("@site/static/docs/assets/welcome-pages/protocol.png").default}
+    <Card img={require("@site/static/docs/assets/welcome-pages/1.near-protocol.png").default}
           title="NEAR Protocol"
           text="Learn what NEAR is and how it works"
           links={{
@@ -21,7 +21,7 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
             "Transactions": "/protocol/transactions"
           }}
     />
-    <Card img={require("@site/static/docs/assets/welcome-pages/chain-abstraction-landing.png").default}
+    <Card img={require("@site/static/docs/assets/welcome-pages/2.chain-abstraction.png").default}
           title="Chain Abstraction"
           text="Forget about the chain, focus on usability"
           links={{
@@ -31,7 +31,7 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
             "NEAR Intents": "/chain-abstraction/intents/overview",
           }}
     />
-    <Card img={require("@site/static/docs/assets/welcome-pages/examples-landing.png").default}
+    <Card img={require("@site/static/docs/assets/welcome-pages/3.web3-apps.png").default}
           title="Web3 Applications"
           text="Supercharge your App using NEAR"
           links={{
@@ -41,7 +41,7 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
             "Use a Contract in Your Frontend": "/web3-apps/integrate-contracts",
           }}
     />
-    <Card img={require("@site/static/docs/assets/welcome-pages/contracts.png").default}
+    <Card img={require("@site/static/docs/assets/welcome-pages/4.smart-contracts.png").default}
           title="Smart Contracts"
           text="NEAR accounts can host small programs"
           links={{
@@ -51,7 +51,7 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
             "Sandbox Testing": "/smart-contracts/testing/integration-test"
           }}
     />
-    <Card img={require("@site/static/docs/assets/welcome-pages/primitives-landing.png").default}
+    <Card img={require("@site/static/docs/assets/welcome-pages/5.primitives.png").default}
           title="Primitives"
           text="FTs, NFTs, and everything your app needs"
           links={{
@@ -63,7 +63,7 @@ Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagi
             "Linkdrops": "/primitives/linkdrop",
           }}
     />
-    <Card img={require("@site/static/docs/assets/welcome-pages/data-lake-landing.png").default}
+    <Card img={require("@site/static/docs/assets/welcome-pages/6.data-infrastructure.png").default}
           title="Data Infrastructure"
           text="Easily extract and analyze on-chain data"
           links={{
@@ -86,7 +86,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
     <a href="https://dev.near.org/applications" target="_blank" rel="noopener noreferrer">
       <div className="card">
         <div className="card__image">
-          <img src={require("@site/static/docs/assets/welcome-pages/awesomenear.jpg").default} alt="Discover" />
+          <img src={require("@site/static/docs/assets/welcome-pages/7.discover.png").default} alt="Discover" />
         </div>
         <div className="card__body">
           <h3>
@@ -101,7 +101,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
     <a href="https://near.github.io/nearcore/" target="_blank" rel="noopener noreferrer">
       <div className="card">
         <div className="card__image">
-          <img src={require("@site/static/docs/assets/welcome-pages/nomicon.png").default} alt="NEAR Core" />
+          <img src={require("@site/static/docs/assets/welcome-pages/8.near-core.png").default} alt="NEAR Core" />
         </div>
         <div className="card__body">
           <h3>
@@ -116,7 +116,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
     <a href="https://near-nodes.io" target="_blank" rel="noopener noreferrer">
       <div className="card">
         <div className="card__image">
-          <img src={require("@site/static/docs/assets/welcome-pages/validate.png").default} alt="Validate" />
+          <img src={require("@site/static/docs/assets/welcome-pages/9.near-nodes.png").default} alt="Validate" />
         </div>
         <div className="card__body">
           <h3>
@@ -131,7 +131,7 @@ Here are more sources from our ecosystem that can help you to learn more about N
     <a href="https://templates.mintbase.xyz/" target="_blank" rel="noopener noreferrer">
       <div className="card">
         <div className="card__image">
-          <img src={require("@site/static/docs/assets/welcome-pages/mintbase-templates.png").default} alt="Templates" />
+          <img src={require("@site/static/docs/assets/welcome-pages/10.templates.png").default} alt="Templates" />
         </div>
         <div className="card__body">
           <h3>
