@@ -46,12 +46,13 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Chain Abstraction',
+      label: 'Multi-Chain',
       collapsed: true,
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'chain-abstraction/what-is' },
       items: [
-            'chain-abstraction/intents/overview',
+        'chain-abstraction/what-is',
+        'chain-abstraction/intents/overview',
         {
           'Chain Signatures': [
             'chain-abstraction/chain-signatures',
@@ -205,7 +206,7 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Primitives & Standards',
+      label: 'Tokens',
       collapsed: true,
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'primitives/what-is' },
