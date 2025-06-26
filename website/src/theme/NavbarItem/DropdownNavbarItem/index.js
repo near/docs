@@ -6,12 +6,26 @@ import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
 import NavbarItem from '@theme/NavbarItem';
 import styles from './styles.module.css';
 
-function DropdownItem({to, label, description, onMouseOver, onMouseOut, ...props}){
+function DropdownItem({to, label, description, onMouseOver, onMouseOut, isCategory = false, isSelected = false, isDimmed = false, ...props}){
   return (
-    <li onMouseOver={onMouseOver} onMouseOut={onMouseOut} className={clsx(styles.dropDownItem)}>
-      <a to={to} className={clsx(styles.dropdownItemLink)}>
-        <div className={clsx(styles.dropdownItemContainer)} >
-          <img className={clsx(styles.dropdownItemImg)} src={`https://unpkg.com/simple-icons@v15/icons/${props.icon || 'near'}.svg`} alt={label} />
+    <li 
+      onMouseOver={onMouseOver} 
+      onMouseOut={onMouseOut} 
+      className={clsx(
+        styles.dropDownItem,
+        isCategory && styles.categoryItem,
+        !isCategory && styles.subItem,
+        isSelected && styles.selectedCategory,
+        isDimmed && styles.dimmed
+      )}
+    >
+      <a href={to} className={clsx(styles.dropdownItemLink)}>
+        <div className={clsx(styles.dropdownItemContainer)}>
+            <img 
+              className={clsx(styles.dropdownItemImg)} 
+              src={`https://unpkg.com/simple-icons@v15/icons/near.svg`} 
+              alt={label} 
+            />
           <div className={clsx(styles.dropdownItemText)}>
             <span className={clsx(styles.dropdownItemLabel)}>{label}</span>
             <span className={clsx(styles.dropdownItemDescription)}>{description}</span>
@@ -40,7 +54,8 @@ function containsActiveItems(items, localPathname) {
 function DropdownNavbarItemDesktop({ items, position, className, onClick, ...props }) {
   const dropdownRef = useRef(null);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [subitems, setSubItems] = useState([])
+  const [subitems, setSubItems] = useState([]);
+  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(-1);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -48,6 +63,8 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
         return;
       }
       setShowDropdown(false);
+      setSubItems([]);
+      setSelectedCategoryIndex(-1);
     };
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('touchstart', handleClickOutside);
@@ -61,6 +78,21 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
 
   const active = containsActiveItems(items, useLocalPathname()) && 'navbar__link--active';
 
+  const handleCategoryHover = (childItemProps, index) => {
+    setSubItems(childItemProps.subitems || []);
+    setSelectedCategoryIndex(index);
+  };
+
+  const handleMenuLeave = () => {
+    setSubItems([]);
+    setSelectedCategoryIndex(-1);
+    setShowDropdown(false);
+  };
+
+  const handleNavbarItemEnter = () => {
+    setShowDropdown(true);
+  };
+
   return (
     <div
       ref={dropdownRef}
@@ -68,6 +100,8 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
         'dropdown--right': position === 'right',
         'dropdown--show': showDropdown,
       })}
+      onMouseEnter={handleNavbarItemEnter}
+      onMouseLeave={handleMenuLeave}
     >
       <NavbarNavLink
         aria-haspopup="true"
@@ -89,37 +123,52 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
       >
         {props.children ?? props.label}
       </NavbarNavLink>
-      <div className={clsx(
-          styles.dropdownMenu,
-          'dropdown__menu',
-        )}>
-        <ul className={clsx(
-          styles.dropdownMenuLeft,
-        )}>
-          {items.map((childItemProps, i) => (
-            <DropdownItem {...childItemProps}
-              onMouseOver={() => { setSubItems(childItemProps.subitems || []) }}
-              onMouseOut={() => { setSubItems([]) }}
-            />
-          ))}
-        </ul>
-        <ul className={clsx(
-          styles.dropdownMenuRight,
-        )
-        }>
-          {subitems.map((sub, i) => (
-            <DropdownItem {...sub} />
-          ))
-          }
-        </ul>
-      </div>
+      
+      {showDropdown && (
+        <div 
+          className={clsx(styles.dropdownMenu, 'dropdown__menu')}
+        >
+          <div className={clsx(styles.dropdownMenuLeft)}>
+            <ul>
+              {items.map((childItemProps, i) => (
+                <DropdownItem 
+                  key={i}
+                  {...childItemProps}
+                  isCategory={true}
+                  isSelected={selectedCategoryIndex === i}
+                  isDimmed={selectedCategoryIndex !== -1 && selectedCategoryIndex !== i}
+                  onMouseOver={() => handleCategoryHover(childItemProps, i)}
+                />
+              ))}
+            </ul>
+          </div>
+          
+          {subitems.length > 0 && (
+            <>
+              <div className={clsx(styles.menuDivider)}></div>
+              <div className={clsx(styles.dropdownMenuRight)}>
+                <ul>
+                  {subitems.map((sub, i) => (
+                    <DropdownItem 
+                      key={i}
+                      {...sub} 
+                      isCategory={false}
+                    />
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }
+
 function DropdownNavbarItemMobile({
   items,
   className,
-  position, // Need to destructure position from props so that it doesn't get passed on.
+  position,
   onClick,
   ...props
 }) {
@@ -128,12 +177,13 @@ function DropdownNavbarItemMobile({
   const { collapsed, toggleCollapsed, setCollapsed } = useCollapsible({
     initialState: () => !containsActive,
   });
-  // Expand/collapse if any item active after a navigation
+
   useEffect(() => {
     if (containsActive) {
       setCollapsed(!containsActive);
     }
   }, [localPathname, containsActive, setCollapsed]);
+
   return (
     <li
       className={clsx('menu__list-item', {
@@ -170,7 +220,7 @@ function DropdownNavbarItemMobile({
     </li>
   );
 }
-export default function DropdownNavbarItem({ mobile = false, ...props }) {
+export default function DropdownNavbarItem({ mobile = false, ...props }) { 
   const Comp = mobile ? DropdownNavbarItemMobile : DropdownNavbarItemDesktop;
   return <Comp {...props} />;
 }
