@@ -68,8 +68,9 @@ To interact with a specific chain, you need to instantiate the relevant `chainAd
   The EVM chain adapter takes the `ChainSignaturesContract` as an argument as well as `publicClient` which is constructed from an EVM RPC URL. 
 
   :::tip
-  To use different EVM networks just specify an RPC URL for the EVM network you require.
-  A list of different EVM RPC URLs can be found [here](https://chainlist.org/?testnets=true).
+  To use different EVM networks, simply specify the RPC URL for your desired network.
+  The example demonstrates compatibility with multiple EVM-compatible networks including Ethereum, Base, BNB Chain, Avalanche, Polygon, Arbitrum, zkSync, and many others.
+  You can find RPC URLs for various networks at [ChainList](https://chainlist.org/?testnets=true).
   :::
 
 </TabItem>
@@ -144,36 +145,14 @@ To construct the transaction to be signed use the method `prepareTransactionForS
 
 
 <CodeTabs>
-
   <TabItem value="Ξ EVM" language="js">
-  <Tabs groupId="evm-tx-tabs">
-    <TabItem value="Transfer">
-      Constructing a transaction to transfer ETH is very simple. The `value` is the amount of ETH in Wei as type BigInt (1 ETH = 10<sup>18</sup> Wei).
-      <Github language="js"
-        url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/Transfer.jsx#L17-L21"
-        start="17" end="21"/>
-    </TabItem>
-    <TabItem value="Function Call">
-      To call a function on a smart contract we need the ABI of the contract, in our repo this is defined in the [config.js](https://github.com/near-examples/near-multichain/blob/main/src/config.js#L23-L63) file (this can be gathered from Remix or using Etherscan).
+        Constructing a transaction to transfer ETH is very simple. The `value` is the amount of ETH in Wei as type BigInt (1 ETH = 10<sup>18</sup> Wei).
+        <Github language="js"
+          url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/Transfer.jsx#L17-L21"
+          start="17" end="21"/>
 
-      Then define a `Contract` object using the `ethers` library
-
-      <Github language="js"
-        url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L18-L18"
-        start="18" end="18"/>
-
-      Then to construct the transaction
-
-      <Github language="js"
-        url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L31-L37"
-        start="31" end="37"/>
-
-    </TabItem>
-    
-  </Tabs>
     This method returns the `unsigned transaction` and the transaction `hash(es)` (also known as the `payload`).
   </TabItem>
- 
       
   <TabItem value="₿ Bitcoin" language="js">
     Constructing a transaction to transfer BTC is very simple. The `value` is the amount of BTC in satoshis as a string (1 BTC = 100,000,000 sats).
@@ -181,7 +160,7 @@ To construct the transaction to be signed use the method `prepareTransactionForS
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L67-L72"
       start="67" end="72"/>
 
-        This method returns the `unsigned transaction` and the transaction `hash(es)` (also known as the `payload`).
+    This method returns the `unsigned transaction` and the transaction `hash(es)` (also known as the `payload`).
   </TabItem>
 
   <TabItem value="◎ Solana" language="js">
@@ -190,9 +169,31 @@ To construct the transaction to be signed use the method `prepareTransactionForS
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L57-L61" start="57" end="61" />
 
     This method returns the `unsigned transaction`.
-</TabItem>
+  </TabItem>
 </CodeTabs>
 
+<details>
+
+<summary> EVM Function Calls </summary>
+
+To call a function on a smart contract we need the ABI of the contract, in our repo this is defined in the [config.js](https://github.com/near-examples/near-multichain/blob/main/src/config.js#L23-L63) file (this can be gathered from Remix or using Etherscan).
+
+Then define a `Contract` object using the `ethers` library
+
+<Github language="js"
+  url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L18-L18"
+  start="18" end="18"/>
+
+Then to construct the transaction
+
+<Github language="js"
+  url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L31-L37"
+  start="31" end="37"/>
+
+
+This approach allows you to call smart contract functions by encoding the function data and including it in the transaction.
+
+</details>
 
 ---
 
