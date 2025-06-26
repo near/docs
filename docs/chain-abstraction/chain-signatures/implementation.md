@@ -141,8 +141,6 @@ The same NEAR account and path will always produce the same address on the targe
 
 ## 2. Creating the Transaction
 
-### Basic Transactions
-
 To construct the transaction to be signed use the method `prepareTransactionForSigning`. 
 
 
@@ -174,7 +172,9 @@ To construct the transaction to be signed use the method `prepareTransactionForS
   </TabItem>
 </CodeTabs>
 
-### EVM Function Calls
+<details>
+
+<summary> EVM Function Calls </summary>
 
 To call a function on a smart contract we need the ABI of the contract, in our repo this is defined in the [config.js](https://github.com/near-examples/near-multichain/blob/main/src/config.js#L23-L63) file (this can be gathered from Remix or using Etherscan).
 
@@ -193,10 +193,7 @@ Then to construct the transaction
 
 This approach allows you to call smart contract functions by encoding the function data and including it in the transaction.
 
-:::info
-If you want to deploy a smart contract on an EVM chain, you can follow this example repository:
-https://github.com/near-examples/simple-storage-evm
-:::
+</details>
 
 ---
 
