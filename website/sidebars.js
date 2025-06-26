@@ -183,6 +183,7 @@ const sidebar = {
         {
           Advanced: ['smart-contracts/global-contracts'],
         },
+        'resources/contracts-list'
       ],
     },
     {
@@ -259,6 +260,9 @@ const sidebar = {
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'data-infrastructure/what-is' },
       items: [
+        'tools/explorer',
+        'tools/ecosystem-apis/fastnear',
+        'tools/indexing',
         'data-infrastructure/indexers',
         'data-infrastructure/data-apis',
         'data-infrastructure/big-query',
