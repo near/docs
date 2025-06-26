@@ -117,55 +117,107 @@ const config = {
         srcDark: 'img/near_icon.svg',
       },
       items: [
+        // {
+        //   type: 'dropdown',
+        //   label: 'Learn',
+        //   position: 'left',
+        //   items: [
+        //     { label: 'Why NEAR?', to: '/protocol/basics' },
+        //     {
+        //       type: 'html',
+        //       value: '<hr/> <small class="subtitle"> Essentials </small>',
+        //     },
+        //     { label: 'Account Model', to: '/protocol/account-model' },
+        //     { label: 'Access Keys', to: '/protocol/access-keys' },
+        //     { label: 'Transactions', to: '/protocol/transactions' },
+        //     { label: 'Handling Storage', to: '/protocol/storage/storage-staking' },
+        //     { label: 'The Network', to: '/protocol/network/validators' },
+        //   ],
+        // },
         {
           type: 'dropdown',
-          label: 'Learn',
+          label: 'Docs',
           position: 'left',
           items: [
-            { label: 'Why NEAR?', to: '/protocol/basics' },
             {
-              type: 'html',
-              value: '<hr/> <small class="subtitle"> Essentials </small>',
-            },
-            { label: 'Account Model', to: '/protocol/account-model' },
-            { label: 'Access Keys', to: '/protocol/access-keys' },
-            { label: 'Transactions', to: '/protocol/transactions' },
-            { label: 'Handling Storage', to: '/protocol/storage/storage-staking' },
-            { label: 'The Network', to: '/protocol/network/validators' },
-          ],
-        },
-        {
-          type: 'dropdown',
-          label: 'Build',
-          position: 'left',
-          items: [
-            { label: 'Smart Contracts', to: '/smart-contracts/what-is', description: "Building Smart Contracts Has Never Been Easier"
+              label: 'NEAR Protocol', to: '/protocol/basics', description: "Fundamentals of NEAR Protocol",
               subitems: [
-                { label: 'What is a Contract?', to: '/smart-contracts/what-is', description: "Discover what is a smart contract" },
-                { label: 'Quickstart', to: '/smart-contracts/quickstart', description: "Create your first smart contract" } 
+                { label: 'Account Model', to: '/protocol/account-model', description: "Discover our unique account model with named accounts and multiple keys" },
+                { label: 'Access Keys', to: '/protocol/access-keys', description: "Learn how access keys work in NEAR" },
+                { label: 'Transactions', to: '/protocol/transactions', description: "Understand how transactions are processed in NEAR" },
+                { label: 'Handling Storage', to: '/protocol/storage/storage-staking', description: "Learn about storage management and staking in NEAR" },
+                { label: 'The Network', to: '/protocol/network/validators', description: "Discover how validators keep the network safe" },
               ]
             },
-            { label: 'AI & Agents', to: '/ai/introduction' },
             {
-              type: 'html',
-              value: '<hr/> <small class="subtitle"> Essentials </small>',
+              label: 'AI & Agents', to: '/ai/introduction', description: "NEAR is the blockchain for AI",
+              subitems: [
+                { label: 'Introduction', to: '/ai/introduction', description: "Learn how NEAR is the blockchain for AI" },
+                { label: 'Shade Agents', to: '/ai/shade-agents/introduction', description: "The first truly permissionless and decentralized AI agents" },
+                { label: 'NEAR AI', to: 'https://docs.near.ai/', description: "A simple platform to build and host AI agents" },
+                { label: 'Bitte AI', to: 'https://docs.bitte.ai/', description: "Discover how simple it is to create Open Agents" },
+              ]
             },
-            { label: 'NEAR API', to: '/tools/near-api' },
-            { label: 'NEAR SDK', to: '/tools/sdk' },
-            { label: 'NEAR CLI', to: '/tools/near-cli' },
-            { label: 'Wallet Selector', to: '/tools/wallet-selector' },
             {
-              type: 'html',
-              value: '<hr/> <small class="subtitle"> Data Services </small>',
+              label: 'Multi-Chain Stack', to: '/chain-abstraction/what-is', description: "Access the multi-chain universe",
+              subitems: [
+                { label: 'Abstracting Away the Chain', to: '/chain-abstraction/what-is', description: "Learn what it means to create abstracted applications" },
+                { label: 'Relayers', to: '/chain-abstraction/relayers', description: "Cover transactions for your users so they don't need to handle tokens" },
+                { label: 'Chain Signatures', to: '/chain-abstraction/chain-signatures', description: "Control accounts on any chain through NEAR" },
+                { label: 'Intents', to: '/chain-abstraction/intents/overview', description: "Separate the what from the how" },
+                { label: 'Omni Bridge', to: '/chain-abstraction/omnibridge/overview', description: "A multi-chain asset bridge across multiple blockchains" },
+                { label: 'Rollup Data Availability', to: '/chain-abstraction/data-availability', description: "Use NEAR as a roll-up solution for any other chain" },
+              ]
             },
-            { label: 'Explorers', to: '/tools/explorer' },
-            { label: 'Data APIs', to: '/tools/ecosystem-apis/fastnear' },
-            { label: 'Indexers', to: '/tools/indexing' },
-          ],
+            {
+              label: 'Smart Contracts', to: '/smart-contracts/what-is', description: "Build smart contracts with ease",
+              subitems: [
+                { label: 'Introduction', to: '/smart-contracts/what-is', description: "Learn what is a contract and how it works" },
+                { label: 'Quickstart', to: '/smart-contracts/quickstart', description: "Create your first smart contract" },
+                { label: 'Anatomy of a Contract', to: '/smart-contracts/anatomy/', description: "Learn all the concepts needed to build a smart contract" },
+                { label: 'Testing', to: '/smart-contracts/testing/introduction', description: "Learn how to test your contracts locally" },
+                { label: 'Deploying', to: '/smart-contracts/release/deploy', description: "Learn how to deploy your contracts to the NEAR network" },
+                { label: 'Security', to: '/smart-contracts/security/welcome', description: "Discover best practices for building secure contracts" },
+              ]
+            },
+            {
+              label: 'Web3 Applications', to: '/web3-apps/what-is', description: "Supercharge your apps with NEAR",
+              subitems: [
+                { label: 'Introduction', to: '/web3-apps/what-is', description: "Learn what is a contract and how it works" },
+                { label: 'Quickstart', to: '/web3-apps/quickstart', description: "Build your first Web Application that interacts with a Contract" },
+                { label: 'Frontend Integration', to: '/web3-apps/integrate-contracts', description: "Learn how to integrate NEAR into your Frontend App" },
+                { label: 'Backend Integration', to: '/web3-apps/backend/', description: "Authenticate NEAR users in your backend" },
+                { label: 'Deploying', to: '/smart-contracts/release/deploy', description: "Learn how to deploy your contracts to the NEAR network" },
+                { label: 'Security', to: '/smart-contracts/security/welcome', description: "Discover best practices for building secure contracts" },
+              ]
+            },
+            {
+              label: 'Primitives', to: '/primitives/what-is', description: "FT, NFT, DAOs, Oracles and more",
+              subitems: [
+                { label: 'Introduction', to: '/primitives/what-is', description: "Learn all the primitives NEAR Protocol offers" },
+                { label: 'Fungible Tokens (FT)', to: '/primitives/ft', description: "The best way to represent fungible assets on-chain" },
+                { label: 'Non-Fungible Tokens (NFT)', to: '/primitives/nft', description: "Ideal to represent digital art, tickets, collectibles, and more" },
+                { label: 'Decentralized Autonomous Organizations (DAO)', to: '/primitives/dao', description: "Organize your community with DAOs" },
+                { label: 'Decentralized Exchanges', to: '/primitives/dex', description: "Decentralized applications for trading tokens on NEAR" },
+                { label: 'Linkdrops', to: '/primitives/linkdrop', description: "Distribute assets and rewards to users with a single link" },
+                { label: 'Oracles', to: '/primitives/oracles', description: "Connect your smart contracts to real-world data" },
+                { label: 'Staking', to: '/protocol/network/staking', description: "Leverage the power of NEAR's staking model" },
+              ]
+            },
+            {
+              label: 'Data Infrastructure', to: '/data-infrastructure/what-is', description: "Access and monitor on-chain data",
+              subitems: [
+                { label: 'Introduction', to: '/data-infrastructure/what-is', description: "Discover what data solutions NEAR Protocol offers" },
+                { label: 'Data APIs', to: '/data-infrastructure/data-apis', description: "Consume on-chain data through existing community APIs" },
+                { label: 'BigQuery', to: '/data-infrastructure/big-query', description: "Learn how to query past NEAR Protocol data on Google's BigQuery" },
+                { label: 'NEAR Lake', to: '/data-infrastructure/lake-framework/near-lake-framework', description: "Process the live stream of NEAR data using your favorite language" },
+              ]
+            },
+          ]
         },
         {
           type: 'dropdown',
-          label: 'Tutorials',
+          label: 'Guides',
           position: 'left',
           items: [
             { label: '🧰 All Tools', to: '/tools/welcome' },

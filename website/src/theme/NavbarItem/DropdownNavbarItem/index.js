@@ -5,6 +5,23 @@ import { isSamePath, useLocalPathname } from '@docusaurus/theme-common/internal'
 import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
 import NavbarItem from '@theme/NavbarItem';
 import styles from './styles.module.css';
+
+function DropdownItem({to, label, description, onMouseOver, onMouseOut, ...props}){
+  return (
+    <li onMouseOver={onMouseOver} onMouseOut={onMouseOut} className={clsx(styles.dropDownItem)}>
+      <a to={to} className={clsx(styles.dropdownItemLink)}>
+        <div className={clsx(styles.dropdownItemContainer)} >
+          <img className={clsx(styles.dropdownItemImg)} src={`https://unpkg.com/simple-icons@v15/icons/${props.icon || 'near'}.svg`} alt={label} />
+          <div className={clsx(styles.dropdownItemText)}>
+            <span className={clsx(styles.dropdownItemLabel)}>{label}</span>
+            <span className={clsx(styles.dropdownItemDescription)}>{description}</span>
+          </div>
+        </div>
+      </a>
+    </li>
+  )
+}
+
 function isItemActive(item, localPathname) {
   if (isSamePath(item.to, localPathname)) {
     return true;
@@ -43,7 +60,7 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
   }, [dropdownRef]);
 
   const active = containsActiveItems(items, useLocalPathname()) && 'navbar__link--active';
-  console.log(items);
+
   return (
     <div
       ref={dropdownRef}
@@ -72,24 +89,26 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
       >
         {props.children ?? props.label}
       </NavbarNavLink>
-      <div className="dropdown__menu">
-        <ul className="dropdown__menu__left">
+      <div className={clsx(
+          styles.dropdownMenu,
+          'dropdown__menu',
+        )}>
+        <ul className={clsx(
+          styles.dropdownMenuLeft,
+        )}>
           {items.map((childItemProps, i) => (
-            <NavbarItem
-              isDropdownItem
-              activeClassName="dropdown__link--active"
-              {...childItemProps}
-              key={i}
+            <DropdownItem {...childItemProps}
               onMouseOver={() => { setSubItems(childItemProps.subitems || []) }}
+              onMouseOut={() => { setSubItems([]) }}
             />
           ))}
         </ul>
-        <ul className="dropdown__menu__right">
+        <ul className={clsx(
+          styles.dropdownMenuRight,
+        )
+        }>
           {subitems.map((sub, i) => (
-            <li>
-              <a href={sub.to}>{sub.label}</a>
-              <p>{sub.description}</p>
-            </li>
+            <DropdownItem {...sub} />
           ))
           }
         </ul>
