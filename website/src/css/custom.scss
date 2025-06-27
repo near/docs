@@ -197,7 +197,7 @@ hr {
   color: var(--ifm-color-content-secondary);
   text-align: center;
   max-width: 800px;
-  margin: 0 auto 4rem auto; // Extra margin to account for card icons
+  margin: 0 auto 1.5rem auto; // Reduced margin for tighter spacing
   line-height: 1.6;
   font-weight: 400;
 }
@@ -205,6 +205,11 @@ hr {
 // Container spacing for cards with floating icons
 .container, .row {
   padding-top: 2rem; // Extra padding to accommodate floating icons
+}
+
+// Add extra spacing between card containers
+.row + .row {
+  margin-top: 1.5rem;
 }
 
 // Landing page footer section
@@ -382,7 +387,7 @@ li > ul {
   left: 1.5rem;
   width: 4rem;
   height: 4rem;
-  background: var(--ifm-background-color);
+  background: #ffffff;
   border: 2px solid var(--ifm-color-emphasis-200);
   border-radius: 50%;
   display: flex;
