@@ -32,10 +32,10 @@ The [chainsig.js](https://github.com/NearDeFi/chainsig.js) library provides a co
 For building transactions inside of NEAR smart contracts written in Rust, you can use the [Omni Transaction](https://github.com/near/omni-transaction-rs) library to easily build transactions for different blockchains (like Bitcoin and Ethereum).
 :::
 
-
 :::info MPC Contracts
 
 There is an [MPC contract](https://github.com/Near-One/mpc/tree/main/libs/chain-signatures/contract) available on both `mainnet` and `testnet`:
+
 - Mainnet: `v1.signer`
 - Testnet: `v1.signer-prod.testnet`
 
@@ -43,9 +43,9 @@ The MPC network is made up of 8 nodes.
 
 :::
 
---- 
+---
 
-## Chain Signatures Contract 
+## Chain Signatures Contract
 
 To interact with the chain signatures library you first need to instantiate a `ChainSignaturesContract`.
 
@@ -65,11 +65,12 @@ To interact with a specific chain, you need to instantiate the relevant `chainAd
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L35-L42" start="35" end="42" />
 
-  The EVM chain adapter takes the `ChainSignaturesContract` as an argument as well as `publicClient` which is constructed from an EVM RPC URL. 
+  The EVM chain adapter takes the `ChainSignaturesContract` as an argument as well as `publicClient` which is constructed from an EVM RPC URL.
 
   :::tip
-  To use different EVM networks just specify an RPC URL for the EVM network you require.
-  A list of different EVM RPC URLs can be found [here](https://chainlist.org/?testnets=true).
+  To use different EVM networks, simply specify the RPC URL for your desired network.
+  The example demonstrates compatibility with multiple EVM-compatible networks including Ethereum, Base, BNB Chain, Avalanche, Polygon, Arbitrum, zkSync, and many others.
+  You can find RPC URLs for various networks at [ChainList](https://chainlist.org/?testnets=true).
   :::
 
 </TabItem>
@@ -94,7 +95,7 @@ To interact with a specific chain, you need to instantiate the relevant `chainAd
    <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L11-L14" start="11" end="14" />
 
-  The XRP chain adapter takes the `ChainSignaturesContract` as an argument as well as an `rpcUrl` for the XRP Ledger and the `rpcURl` specification. For testnet, use 'https://s.altnet.rippletest.net:51234'.
+  The XRP chain adapter takes the `ChainSignaturesContract` as an argument as well as an `rpcUrl` for the XRP Ledger and the `rpcURl` specification. For testnet, use '<https://s.altnet.rippletest.net:51234>'.
 
 </TabItem>
 
@@ -126,7 +127,7 @@ Chain Signatures use [`derivation paths`](../chain-signatures.md#derivation-path
 - A derivation path (a string such as `ethereum-1`, `ethereum-2`, etc.)
 - The MPC service's master public key (we don't need to worry about this as it is defined in the library we're using).
 
-To derive the address call the `deriveAddressAndPublicKey` method passing the near account Id from which the address is being derived and the derivation path. 
+To derive the address call the `deriveAddressAndPublicKey` method passing the near account Id from which the address is being derived and the derivation path.
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">
@@ -181,48 +182,25 @@ The same NEAR account and path will always produce the same address on the targe
 
 ## 2. Creating the Transaction
 
-To construct the transaction to be signed use the method `prepareTransactionForSigning`. 
-
+To construct the transaction to be signed use the method `prepareTransactionForSigning`.
 
 <CodeTabs>
-
   <TabItem value="Ξ EVM" language="js">
-  <Tabs groupId="evm-tx-tabs">
-    <TabItem value="Transfer">
-      Constructing a transaction to transfer ETH is very simple. The `value` is the amount of ETH in Wei as type BigInt (1 ETH = 10<sup>18</sup> Wei).
-      <Github language="js"
-        url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/Transfer.jsx#L17-L21"
-        start="17" end="21"/>
-    </TabItem>
-    <TabItem value="Function Call">
-      To call a function on a smart contract we need the ABI of the contract, in our repo this is defined in the [config.js](https://github.com/near-examples/near-multichain/blob/main/src/config.js#L23-L63) file (this can be gathered from Remix or using Etherscan).
+        Constructing a transaction to transfer ETH is very simple. The `value` is the amount of ETH in Wei as type BigInt (1 ETH = 10<sup>18</sup> Wei).
+        <Github language="js"
+          url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/Transfer.jsx#L17-L21"
+          start="17" end="21"/>
 
-      Then define a `Contract` object using the `ethers` library
-
-      <Github language="js"
-        url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L18-L18"
-        start="18" end="18"/>
-
-      Then to construct the transaction
-
-      <Github language="js"
-        url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L31-L37"
-        start="31" end="37"/>
-
-    </TabItem>
-    
-  </Tabs>
     This method returns the `unsigned transaction` and the transaction `hash(es)` (also known as the `payload`).
   </TabItem>
- 
-      
+
   <TabItem value="₿ Bitcoin" language="js">
     Constructing a transaction to transfer BTC is very simple. The `value` is the amount of BTC in satoshis as a string (1 BTC = 100,000,000 sats).
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L67-L72"
       start="67" end="72"/>
 
-        This method returns the `unsigned transaction` and the transaction `hash(es)` (also known as the `payload`).
+    This method returns the `unsigned transaction` and the transaction `hash(es)` (also known as the `payload`).
   </TabItem>
 
   <TabItem value="◎ Solana" language="js">
@@ -231,34 +209,30 @@ To construct the transaction to be signed use the method `prepareTransactionForS
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L57-L61" start="57" end="61" />
 
     This method returns the `unsigned transaction`.
-</TabItem>
-
-  <TabItem value="◉ XRP" language="js">
-    Constructing a transaction to transfer XRP is straightforward. The `value` is the amount of XRP in drops as a string (1 XRP = 1,000,000 drops).
-   <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L56-61" start="56" end="61" />
-
-    This method returns the `unsigned transaction` and the transaction `hash` (also known as the `payload`).
   </TabItem>
-
-  <TabItem value="◈ SUI" language="js">
-    Constructing a transaction to transfer SUI is simple. The `value` is the amount of SUI in MIST as type BigInt (1 SUI = 1,000,000,000 MIST).
-   <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L63-73" start="63" end="73" />
-
-    This method returns the `unsigned transaction` and the transaction `hash` (also known as the `payload`).
-  </TabItem>
-
-  <TabItem value="⬟ Aptos" language="js">
-    Constructing a transaction to transfer APT is straightforward. The `value` is the amount of APT in octas as type BigInt (1 APT = 100,000,000 octas).
-    <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L65-L78" start="65" end="78" />
-
-    This method returns the `unsigned transaction` and the transaction `hash` (also known as the `payload`).
-  </TabItem>
-
 </CodeTabs>
 
+<details>
+
+<summary> EVM Function Calls </summary>
+
+To call a function on a smart contract we need the ABI of the contract, in our repo this is defined in the [config.js](https://github.com/near-examples/near-multichain/blob/main/src/config.js#L23-L63) file (this can be gathered from Remix or using Etherscan).
+
+Then define a `Contract` object using the `ethers` library
+
+<Github language="js"
+  url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L18-L18"
+  start="18" end="18"/>
+
+Then to construct the transaction
+
+<Github language="js"
+  url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L31-L37"
+  start="31" end="37"/>
+
+This approach allows you to call smart contract functions by encoding the function data and including it in the transaction.
+
+</details>
 
 ---
 
@@ -332,14 +306,13 @@ Once the signature is returned from the MPC it needs to be formatted and added t
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L125-L128"
       start="125" end="128" />
 
-
 </TabItem>
 
 <TabItem value="₿ Bitcoin">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L93-L96"
       start="93" end="96" />
- 
+
 For Bitcoin, the array of signatures is added to the transaction to produce a complete signed transaction.
 
 </TabItem>
