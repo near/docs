@@ -32,10 +32,10 @@ The [chainsig.js](https://github.com/NearDeFi/chainsig.js) library provides a co
 For building transactions inside of NEAR smart contracts written in Rust, you can use the [Omni Transaction](https://github.com/near/omni-transaction-rs) library to easily build transactions for different blockchains (like Bitcoin and Ethereum).
 :::
 
-
 :::info MPC Contracts
 
 There is an [MPC contract](https://github.com/Near-One/mpc/tree/main/libs/chain-signatures/contract) available on both `mainnet` and `testnet`:
+
 - Mainnet: `v1.signer`
 - Testnet: `v1.signer-prod.testnet`
 
@@ -43,14 +43,14 @@ The MPC network is made up of 8 nodes.
 
 :::
 
---- 
+---
 
-## Chain Signatures Contract 
+## Chain Signatures Contract
 
 To interact with the chain signatures library you first need to instantiate a `ChainSignaturesContract`.
 
 <Github language="js"
-  url="https://github.com/near-examples/near-multichain/blob/main/src/config.js#L17-L20" start="17" end="20" />
+  url="https://github.com/near-examples/near-multichain/blob/main/src/config.js#L53-L56" start="53" end="56" />
 
 The `networkId` and `contractId` are set to the values specified in the previous section depending which network you are on.
 
@@ -63,9 +63,9 @@ To interact with a specific chain, you need to instantiate the relevant `chainAd
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L35-L42" start="35" end="42" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L40-L47" start="40" end="47" />
 
-  The EVM chain adapter takes the `ChainSignaturesContract` as an argument as well as `publicClient` which is constructed from an EVM RPC URL. 
+  The EVM chain adapter takes the `ChainSignaturesContract` as an argument as well as `publicClient` which is constructed from an EVM RPC URL.
 
   :::tip
   To use different EVM networks, simply specify the RPC URL for your desired network.
@@ -91,6 +91,30 @@ To interact with a specific chain, you need to instantiate the relevant `chainAd
 
 </TabItem>
 
+<TabItem value="◉ XRP">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L11-L14" start="11" end="14" />
+
+  The XRP chain adapter takes the `ChainSignaturesContract` as an argument as well as an `rpcUrl` for the XRP Ledger and the `rpcURl` specification. For testnet, use `https://s.altnet.rippletest.net:51234`.
+
+</TabItem>
+
+<TabItem value="◈ SUI">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L13-L20" start="13" end="20" />
+
+  The SUI chain adapter takes the `ChainSignaturesContract` as an argument as well as a `connection` which is a SuiClient constructed from a SUI RPC URL.
+
+</TabItem>
+
+<TabItem value="⬟ Aptos">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L12-L21" start="12" end="21" />
+
+  The Aptos chain adapter takes the `ChainSignaturesContract` as an argument as well as a `nodeUrl` for the Aptos network and the `network` specification.
+
+</TabItem>
+
 </Tabs>
 
 ---
@@ -103,28 +127,45 @@ Chain Signatures use [`derivation paths`](../chain-signatures.md#derivation-path
 - A derivation path (a string such as `ethereum-1`, `ethereum-2`, etc.)
 - The MPC service's master public key (we don't need to worry about this as it is defined in the library we're using).
 
-To derive the address call the `deriveAddressAndPublicKey` method passing the near account Id from which the address is being derived and the derivation path. 
+To derive the address call the `deriveAddressAndPublicKey` method passing the near account Id from which the address is being derived and the derivation path.
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L93-L96" start="93" end="96" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L98-L101" start="98" end="101" />
 
 </TabItem>
 
 <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L45-L48" start="45" end="48" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L49-L52" start="49" end="52" />
 
 </TabItem>
 
 <TabItem value="◎ Solana">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L42" start="42" end="42" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L47-L50" start="47" end="50" />
 
   On Solana, your address is the same as your public key.
 
 </TabItem>
+
+<TabItem value="◉ XRP">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L45-L48" start="45" end="48" />
+  </TabItem>
+
+  <TabItem value="◈ SUI">
+
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L51-L54" start="51" end="54" />
+
+  </TabItem>
+
+  <TabItem value="⬟ Aptos">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L52-L55" start="52" end="55" />
+  </TabItem>
 
 </Tabs>
 
@@ -141,8 +182,7 @@ The same NEAR account and path will always produce the same address on the targe
 
 ## 2. Creating the Transaction
 
-To construct the transaction to be signed use the method `prepareTransactionForSigning`. 
-
+To construct the transaction to be signed use the method `prepareTransactionForSigning`.
 
 <CodeTabs>
   <TabItem value="Ξ EVM" language="js">
@@ -153,12 +193,12 @@ To construct the transaction to be signed use the method `prepareTransactionForS
 
     This method returns the `unsigned transaction` and the transaction `hash(es)` (also known as the `payload`).
   </TabItem>
-      
+
   <TabItem value="₿ Bitcoin" language="js">
     Constructing a transaction to transfer BTC is very simple. The `value` is the amount of BTC in satoshis as a string (1 BTC = 100,000,000 sats).
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L67-L72"
-      start="67" end="72"/>
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L71-L77"
+      start="71" end="77"/>
 
     This method returns the `unsigned transaction` and the transaction `hash(es)` (also known as the `payload`).
   </TabItem>
@@ -166,9 +206,32 @@ To construct the transaction to be signed use the method `prepareTransactionForS
   <TabItem value="◎ Solana" language="js">
     Constructing a transaction to transfer SOL is very simple. The `value` is the amount of SOL in lamports as type BigInt (1 SOL = 1,000,000,000 lamports).
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L57-L61" start="57" end="61" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L65-L71" start="65" end="71" />
 
     This method returns the `unsigned transaction`.
+  </TabItem>
+    <TabItem value="◉ XRP" language="js">
+    Constructing a transaction to transfer XRP is straightforward. The `value` is the amount of XRP in drops as a string (1 XRP = 1,000,000 drops).
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L63-L69" start="63" end="69" />
+
+    This method returns the `unsigned transaction` and the transaction `hash` (also known as the `payload`).
+  </TabItem>
+
+  <TabItem value="◈ SUI" language="js">
+    Constructing a transaction to transfer SUI is simple. The `value` is the amount of SUI in MIST as type BigInt (1 SUI = 1,000,000,000 MIST).
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L70-L80" start="70" end="80" />
+
+    This method returns the `unsigned transaction` and the transaction `hash` (also known as the `payload`).
+  </TabItem>
+
+  <TabItem value="⬟ Aptos" language="js">
+    Constructing a transaction to transfer APT is straightforward. The `value` is the amount of APT in octas as type BigInt (1 APT = 100,000,000 octas).
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L71-L82" start="71" end="82" />
+
+    This method returns the `unsigned transaction` and the transaction `hash` (also known as the `payload`).
   </TabItem>
 </CodeTabs>
 
@@ -189,7 +252,6 @@ Then to construct the transaction
 <Github language="js"
   url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L31-L37"
   start="31" end="37"/>
-
 
 This approach allows you to call smart contract functions by encoding the function data and including it in the transaction.
 
@@ -212,14 +274,14 @@ The method requires four parameters:
   <TabItem value="Ξ EVM">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L115-L123"
-      start="115" end="123" />
+      start="119" end="127" />
 
 </TabItem>
 
   <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L79-L87"
-      start="79" end="87" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L83-L91"
+      start="83" end="91" />
 
 For Bitcoin, it is common to have multiple UTXOs to sign when sending a single transaction. We create a NEAR transaction (to call `sign` on the MPC contract) for each UTXO and send them to be signed by the MPC individually. Each signature is then parsed from each transaction outcome to produce an array of signatures.
 
@@ -228,8 +290,23 @@ For Bitcoin, it is common to have multiple UTXOs to sign when sending a single t
 <TabItem value="◎ Solana">
   To get the payload, serialize the transaction to a `uint8Array` and then convert it to hex.
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L68-L76" start="68" end="76" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L78-L86" start="78" end="86" />
 
+</TabItem>
+
+<TabItem value="◉ XRP">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L76-L84" start="76" end="84" />
+</TabItem>
+
+<TabItem value="◈ SUI">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L87-L95" start="87" end="95" />
+</TabItem>
+
+<TabItem value="⬟ Aptos">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L88-L96" start="88" end="96" />
 </TabItem>
 
 </Tabs>
@@ -250,24 +327,38 @@ Once the signature is returned from the MPC it needs to be formatted and added t
   <TabItem value="Ξ EVM">
     <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L125-L128"
-      start="125" end="128" />
-
+      start="129" end="132" />
 
 </TabItem>
 
 <TabItem value="₿ Bitcoin">
-        <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L93-L96"
-      start="93" end="96" />
- 
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L97-L100"
+      start="97" end="100" />
+
 For Bitcoin, the array of signatures is added to the transaction to produce a complete signed transaction.
 
 </TabItem>
 
 <TabItem value="◎ Solana">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L82-L86" start="82" end="86" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L92-L96" start="92" end="96" />
 
+</TabItem>
+
+<TabItem value="◉ XRP">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L90-L93" start="90" end="93" />
+</TabItem>
+
+<TabItem value="◈ SUI">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L101-105" start="101" end="105" />
+</TabItem>
+
+<TabItem value="⬟ Aptos">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L102-L106" start="102" end="106" />
 </TabItem>
 
 </Tabs>
@@ -282,23 +373,36 @@ Now that we have a signed transaction, we can relay it to the target network usi
   <TabItem value="Ξ EVM">
       <Github language="js"
       url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L150"
-      start="150" end="150" />
+      start="154" end="154" />
 
 </TabItem>
 
 <TabItem value="₿ Bitcoin">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L117"
-      start="117" end="117" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L119"
+      start="119" end="119" />
 
 </TabItem>
 
 <TabItem value="◎ Solana">
     <Github language="js"
-      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L106" start="106" end="106" />
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L115" start="115" end="115" />
 
 </TabItem>
+<TabItem value="◉ XRP">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L114" start="114" end="114" />
+</TabItem>
 
+<TabItem value="◈ SUI">
+  <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L124" start="124" end="124" />
+</TabItem>
+
+<TabItem value="⬟ Aptos">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L123" start="123" end="123" />
+</TabItem>
 </Tabs>
 
 The method returns a transaction hash which can be used to locate the transaction on an explorer.
