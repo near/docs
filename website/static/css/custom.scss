@@ -572,11 +572,11 @@ $sidebar-icons: (
 }
 
 .menu__link[href="/"]::after {
-  background-image: url('/img/icons/home-light.png');
+  background-image: url('/img/icons/home-light.svg');
 }
 
 [data-theme='dark'] .menu__link[href="/"]::after {
-  background-image: url('/img/icons/home-light.png');
+  background-image: url('/img/icons/home-dark.svg');
 }
 
 // Base sidebar styling
@@ -600,8 +600,8 @@ $sidebar-icons: (
     left: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -663,12 +663,15 @@ $sidebar-icons: (
   }
 }
 
+// sub MAIN menu link styles
 .menu__link {
-  padding: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  font-weight: 200;
+  font-size: 0.9rem;
 }
 
 .menu__link--sublist.menu__link--active {
-  font-size: 0.9rem !important;
+  font-size: 0.8rem !important;
 }
 
 // ============================================================================

@@ -2,6 +2,10 @@ const sidebar = {
   build: [
     'index',
     {
+      type: 'html',
+      value: '<hr/>',
+    },
+    {
       type: 'category',
       label: 'NEAR Protocol',
       collapsed: true,

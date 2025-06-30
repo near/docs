@@ -1,10 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
   <rect width="256" height="256" fill="none"/>
   <desc>
-    Programming Browser 1 Streamline Icon: https://streamlinehq.com
+    App Window Code Streamline Icon: https://streamlinehq.com
   </desc>
-  <path d="M24 232a16 16 0 0 1 -16 -16V41.3A17.3 17.3 0 0 1 25.22 24h207a17.2 17.2 0 0 1 17.13 17.13v173.8a17.3 17.3 0 0 1 -17.22 17.22Z" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-  <path d="m248 72 -240 0" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-  <path d="m136 152 48 0" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-  <path d="m72 120 32 32 -32 32" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-</svg> 
+  <g transform="translate(20, 20) scale(0.85)">
+    <g>
+      <path d="m120 172 45 0" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+      <path d="m75 112 30 30 -30 30" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+    </g>
+    <g>
+      <path d="M22.5 20h195s15 0 15 15v170s0 15 -15 15H22.5s-15 0 -15 -15v-170S7.5 20 22.5 20" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+      <path d="m7.5 65 225 0" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+    </g>
+  </g>
+</svg>

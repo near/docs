@@ -22,8 +22,7 @@ import {Container, Card} from "@site/src/components/cards";
       text="NEAR is a layer-1 blockchain built for scale and multichain compatibility. Battle-tested with 13M+ transaction peaks and 5 years of zero downtime"
       links={{
               "What is NEAR?": "/protocol/basics",
-              "Named Accounts": "/protocol/account-id",
-              "Access Keys": "/protocol/access-keys",
+              "Account Model": "/protocol/account-id",
               "Transactions": "/protocol/transactions"    }}
     />
     <Card
