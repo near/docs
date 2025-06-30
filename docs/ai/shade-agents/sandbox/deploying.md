@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 The Shade Agent Sandbox is a development workflow that allows you to get up and running with Shade Agents as quickly as possible with minimum prerequisites. 
 
-The [sandbox template](https://github.com/NearDeFi/shade-agent-sandbox-template) we're using is a simple Shade Agent built with NextJS that acts as a verifiable ETH price oracle. It takes prices from two different APIs, takes the average, and then pushes the price to an Ethereum contract. A pre-deployed Sandbox Template can be found [here](https://de54fce5cb5d65601d9ea275ce1a5f383c70d96a-3000.dstack-prod5.phala.network/#).
+The [sandbox template](https://github.com/NearDeFi/shade-agent-sandbox-template) we're using is a simple Shade Agent built with NextJS that acts as a verifiable ETH price oracle. It takes prices from two different APIs, takes the average, and then pushes the price to an Ethereum contract. A pre-deployed Sandbox Template can be found [here](https://27a9031b5b3c5e792db95ffe3867be72bf4c1b6c-3000.dstack-prod8.phala.network/#).
 
 We'll cover two deployment scenarios:
 1. **Local Development**: Running the agent locally for rapid testing and development.
