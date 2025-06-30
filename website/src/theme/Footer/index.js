@@ -19,9 +19,9 @@ function Footer() {
     <footer className="footer">
       <div id="google_translate_element"></div>
       <div>
-        <div className="container relative text-white pb-40 md:pb-100 pt-100">
+        <div className="container relative text-white pb-10 md:pb-10 pt-10">
           <div className="row">
-            <div className="col md:w-3/4 mt-50 md:mt-0" style={{ zIndex: '1' }}>
+            <div className="col md:w-3/4 mt-10 md:mt-0" style={{ zIndex: '1' }}>
               <ul className="list-reset flex flex-wrap -mx-20">
                 <li className="mx-20">
                   <a
@@ -98,7 +98,7 @@ function Footer() {
             </div>
           </div>
 
-          <p className="text-14 mt-50 md:mt-100">
+          <p className="text-14 mt-10 md:mt-10">
             Copyright &copy;
             {new Date().getFullYear()}{' '}
             <a

@@ -411,6 +411,7 @@ li > ul {
 // Ensure the column container allows for icon overflow
 .col {
   overflow: visible;
+  margin-bottom: 3rem;
 }
 
 .row {
@@ -694,8 +695,8 @@ $sidebar-icons: (
   }
 }
 
-[data-theme='dark'] .sidebar-main-category {
-  > .menu__list-item-collapsible > .menu__link {
+[data-theme='dark'] .menu__list {
+  .menu__link {
     color: var(--ifm-font-color-base) !important;
 
     &:hover {
@@ -708,6 +709,18 @@ $sidebar-icons: (
       color: var(--ifm-font-color-base) !important;
     }
   }
+
+  .menu__link::after {
+    fill: red;
+  }
+}
+
+.menu__link {
+  padding: 0.8rem;
+}
+
+.menu__link--sublist.menu__link--active {
+  font-size: 0.9rem !important;
 }
 
 // ============================================================================

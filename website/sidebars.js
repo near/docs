@@ -45,7 +45,7 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Multi-Chain',
+      label: 'Chain Abstraction',
       collapsed: true,
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'chain-abstraction/what-is' },
@@ -206,7 +206,7 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Tokens',
+      label: 'Tokens & Primitives',
       collapsed: true,
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'primitives/what-is' },

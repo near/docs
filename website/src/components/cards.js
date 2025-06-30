@@ -4,7 +4,7 @@ const List = styled.div``;
 
 const Element = styled.div`
   margin: 0.5rem 0;
-  border-bottom: 1px solid var(--bs-border-color-translucent);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.175);
 
   &::last-child {
     border-bottom: none;
@@ -17,7 +17,7 @@ const Text = styled.p`
 `;
 
 export function Container({ children }) {
-  return <div className="row">{children}</div>;
+  return <div className="row card-row">{children}</div>;
 }
 
 export function Card({ img, text, title, links }) {
