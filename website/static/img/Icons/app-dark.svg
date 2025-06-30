@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="68" cy="84" r="12" fill="#22c55e"/><circle cx="108" cy="84" r="12" fill="#22c55e"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <rect width="256" height="256" fill="none"/>
+  <desc>
+    Programming Browser 1 Streamline Icon: https://streamlinehq.com
+  </desc>
+  <path d="M24 232a16 16 0 0 1 -16 -16V41.3A17.3 17.3 0 0 1 25.22 24h207a17.2 17.2 0 0 1 17.13 17.13v173.8a17.3 17.3 0 0 1 -17.22 17.22Z" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+  <path d="m248 72 -240 0" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+  <path d="m136 152 48 0" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+  <path d="m72 120 32 32 -32 32" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+</svg> 
