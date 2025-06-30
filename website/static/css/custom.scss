@@ -608,6 +608,31 @@ $sidebar-icons: (
   'data-infrastructure': (light: '/img/icons/database-light.svg',
     dark: '/img/icons/database-dark.svg'
   ),
+  'tutorials/examples/guest-book': (light: '/img/icons/app-light.svg',
+    dark: '/img/icons/app-dark.svg'
+  ),
+  'tutorials/examples/count-near': (light: '/img/icons/contract-light.svg',
+    dark: '/img/icons/contract-dark.svg'
+  ),
+  'tutorials/templates': (light: '/img/icons/app-light.svg',
+    dark: '/img/icons/app-dark.svg'
+  ),
+  'tutorials/auction': (light: '/img/icons/app-light.svg',
+    dark: '/img/icons/app-dark.svg'
+  ),
+  'tutorials/fts': (light: '/img/icons/token-light.svg',
+    dark: '/img/icons/token-dark.svg'
+  ),
+  'tutorials/crosswords': (light: '/img/icons/contract-light.svg',
+    dark: '/img/icons/contract-dark.svg'
+  ),
+
+  'tutorials/controlling-near': (light: '/img/icons/multichain-light.svg',
+    dark: '/img/icons/multichain-dark.svg'
+  ),
+  'lake-framework/building-indexers': (light: '/img/icons/database-light.svg',
+    dark: '/img/icons/database-dark.svg'
+  ),
 );
 
 // Generate sidebar icon styles dynamically

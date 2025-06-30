@@ -54,7 +54,7 @@ import {Container, Card} from "@site/src/components/cards";
       title="Web3 Applications"
       text="Create modern web applications that interact with the NEAR blockchain. Learn frontend integration and user experience best practices"
       links={{
-        "What are Web3 Applications?": "/web3-apps/what-is",
+        "What are Web3 Apps?": "/web3-apps/what-is",
         "Quickstart ✨": "/web3-apps/quickstart",
         "Use a Contract in Your Frontend": "/web3-apps/integrate-contracts",    }}
     />
