@@ -66,17 +66,17 @@
 
 // Force dark theme background with higher specificity
 html[data-theme='dark'] {
-  --ifm-background-color: #000000;
-  --ifm-background-surface-color: #111111;
-  background-color: #000000;
+  --ifm-background-color: #0d1117;
+  --ifm-background-surface-color: #21262d;
+  background-color: #0d1117;
 }
 
 html[data-theme='dark'] body {
-  background-color: #000000;
+  background-color: #0d1117;
 }
 
 html[data-theme='dark'] .main-wrapper {
-  background-color: #000000;
+  background-color: #0d1117;
 }
 
 [data-theme='light'] li hr {
@@ -148,7 +148,7 @@ h4 {
   margin: 2.5em 0 1.5em 0;
 }
 
-.landing-intro > * {
+.landing-intro>* {
   position: relative;
   z-index: 2;
 }
@@ -206,7 +206,7 @@ h4 {
   .landing-intro h1 {
     font-size: 2.5rem;
   }
-  
+
   .landing-intro {
     padding: 3rem 1rem 2rem 1rem;
   }
@@ -322,16 +322,16 @@ article {
   .landing-footer {
     padding: 3rem 1rem;
   }
-  
+
   .landing-footer h2 {
     font-size: 2rem;
   }
-  
+
   .landing-cta {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .landing-cta .button {
     width: 100%;
     max-width: 300px;
@@ -359,7 +359,7 @@ li hr {
   border-width: 0;
 }
 
-li > ul {
+li>ul {
   margin-top: 0.4rem;
 }
 
@@ -531,34 +531,27 @@ li > ul {
 // ============================================================================
 
 $sidebar-icons: (
-  'protocol/basics': (
-    light: '/img/icons/near-light.svg',
+  'protocol/basics': (light: '/img/icons/near-light.svg',
     dark: '/img/icons/near-dark.svg'
   ),
-  'chain-abstraction': (
-    light: '/img/icons/multichain-light.svg',
+  'chain-abstraction': (light: '/img/icons/multichain-light.svg',
     dark: '/img/icons/multichain-dark.svg'
   ),
-  'ai/introduction': (
-    light: '/img/icons/ai-light.svg',
+  'ai/introduction': (light: '/img/icons/ai-light.svg',
     dark: '/img/icons/ai-dark.svg'
   ),
-  'smart-contracts': (
-    light: '/img/icons/contract-light.svg',
+  'smart-contracts': (light: '/img/icons/contract-light.svg',
     dark: '/img/icons/contract-dark.svg'
   ),
-  'web3-apps': (
-    light: '/img/icons/app-light.svg',
+  'web3-apps': (light: '/img/icons/app-light.svg',
     dark: '/img/icons/app-dark.svg'
-    ),
-  'primitives': (
-    light: '/img/icons/token-light.svg',
+  ),
+  'primitives': (light: '/img/icons/token-light.svg',
     dark: '/img/icons/token-dark.svg'
-    ),
-  'data-infrastructure': (
-    light: '/img/icons/database-light.svg',
+  ),
+  'data-infrastructure': (light: '/img/icons/database-light.svg',
     dark: '/img/icons/database-dark.svg'
-    ),
+  ),
 );
 
 // Generate sidebar icon styles dynamically
@@ -567,8 +560,6 @@ $sidebar-icons: (
     &:has(.menu__link[href*="#{$section}"])::after,
     .menu__link[href*="#{$section}"]::after {
       background-image: url(map-get($icons, 'light'));
-      background-size: 20px 20px;
-      background-repeat: no-repeat;
     }
   }
 
@@ -576,16 +567,22 @@ $sidebar-icons: (
     &:has(.menu__link[href*="#{$section}"])::after,
     .menu__link[href*="#{$section}"]::after {
       background-image: url(map-get($icons, 'dark'));
-      background-size: 20px 20px;
-      background-repeat: no-repeat;
     }
   }
 }
 
-// Home page link
-.menu__link[href="/"]{
+.menu__link[href="/"]::after {
+  background-image: url('/img/icons/home-light.png');
+}
 
-  font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+[data-theme='dark'] .menu__link[href="/"]::after {
+  background-image: url('/img/icons/home-light.png');
+}
+
+// Base sidebar styling
+.theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible>.menu__link,
+.theme-doc-sidebar-item-link-level-1>.menu__list-item-collapsible>.menu__link,
+.menu__link[href="/"] {
   font-weight: 600;
   font-size: 0.8rem;
   color: #000000 !important;
@@ -598,9 +595,6 @@ $sidebar-icons: (
   position: relative;
 
   &::after {
-    background-image: url('/img/icons/database-light.svg');
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
     content: '';
     position: absolute;
     left: 1rem;
@@ -624,76 +618,34 @@ $sidebar-icons: (
     background: var(--ifm-font-color-base);
     transition: height 0.2s ease;
     border-radius: 2px;
-    }
+  }
 
-    // Add space between icon and text
-    padding-left: 3rem !important;
-}
-
-// Base sidebar styling
-.theme-doc-sidebar-item-category-level-1, .theme-doc-sidebar-item-link-level-1 {
-  > .menu__list-item-collapsible > .menu__link {
-    font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 600;
-    font-size: 0.8rem;
-    color: #000000 !important;
-    padding: 0.75rem 1rem 0.75rem 2.5rem;
-    border-radius: 8px;
-    margin: 0.25rem 0;
-    transition: all 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
+  &:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #3b82f6 !important;
 
     &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 3px;
-      height: 0;
-      background: var(--ifm-font-color-base);
-      transition: height 0.2s ease;
-      border-radius: 2px;
+      height: 90%;
+      background: #3b82f6;
     }
+  }
 
-    &:hover {
-      background-color: rgba(59, 130, 246, 0.1);
-      color: #3b82f6 !important;
-      
-      &::before {
-        height: 60%;
-        background: #3b82f6;
-      }
-    }
+  // Add space between icon and text
+  padding-left: 3rem !important;
+}
 
-    &--active {
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link,
+.theme-doc-sidebar-item-link-level-1 > .menu__list-item-collapsible > .menu__link {
+  &--active{
       background-color: var(--ifm-hover-overlay);
       color: #5f8afa !important;
 
       &::before {
         height: 100%;
       }
-    }
-
-    // Add space between icon and text
-    padding-left: 3rem !important;
   }
 }
+
 
 [data-theme='dark'] .menu__list {
   .menu__link {
@@ -708,10 +660,6 @@ $sidebar-icons: (
       background-color: var(--ifm-hover-overlay);
       color: var(--ifm-font-color-base) !important;
     }
-  }
-
-  .menu__link::after {
-    fill: red;
   }
 }
 
@@ -790,28 +738,6 @@ footer .menu-item a {
 }
 
 // ============================================================================
-// GITHUB HEADER LINK
-// ============================================================================
-
-.header-github-link:hover {
-  opacity: 0.6;
-}
-
-.header-github-link::before {
-  content: '';
-  width: 23px;
-  height: 23px;
-  margin-right: 5px;
-  margin-top: 6px;
-  display: inline-flex;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat;
-}
-
-[data-theme='dark'] .header-github-link::before {
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat;
-}
-
-// ============================================================================
 // AVATAR & IMAGE STYLES
 // ============================================================================
 
@@ -832,8 +758,8 @@ html:not(.blog-post-page) .avatar__photo {
   border-radius: 0%;
 }
 
-img + em,
-iframe + em {
+img+em,
+iframe+em {
   font-style: normal;
   display: inherit;
   text-align: center;
@@ -841,7 +767,7 @@ iframe + em {
   margin: 0.5em 0 2rem 0;
 }
 
-.monaco + em {
+.monaco+em {
   font-style: normal;
   display: inherit;
   text-align: right;
@@ -908,9 +834,17 @@ iframe + em {
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 // ============================================================================
@@ -974,25 +908,6 @@ table {
 }
 
 // ============================================================================
-// NEAR WALLET SELECTOR MODAL
-// ============================================================================
-
-#near-wallet-selector-modal {
-  .nws-modal-wrapper .nws-modal .modal-left .modal-left-title h2 {
-    font-family: inherit;
-  }
-
-  .nws-modal-wrapper .nws-modal .modal-right .nws-modal-header h3.middleTitle {
-    margin: 4px auto !important;
-    font-family: inherit;
-  }
-
-  .nws-modal-wrapper .nws-modal .modal-right .wallet-what .content-side h3 {
-    margin: 0 auto 8px 0 !important;
-  }
-}
-
-// ============================================================================
 // 404 PAGE
 // ============================================================================
 
@@ -1045,13 +960,11 @@ table {
 div[class^='announcementBar_'] {
   --site-announcement-bar-stripe-color1: #fdfadd;
   --site-announcement-bar-stripe-color2: #ffeac3;
-  background: repeating-linear-gradient(
-    45deg,
-    var(--site-announcement-bar-stripe-color1),
-    var(--site-announcement-bar-stripe-color1) 20px,
-    var(--site-announcement-bar-stripe-color2) 10px,
-    var(--site-announcement-bar-stripe-color2) 40px
-  );
+  background: repeating-linear-gradient(45deg,
+      var(--site-announcement-bar-stripe-color1),
+      var(--site-announcement-bar-stripe-color1) 20px,
+      var(--site-announcement-bar-stripe-color2) 10px,
+      var(--site-announcement-bar-stripe-color2) 40px);
   font-size: 16px;
   font-weight: 600;
 }
@@ -1356,9 +1269,13 @@ div[class^='announcementBar_'] {
 }
 
 @keyframes dotTyping {
-  0%, 80%, 100% {
+
+  0%,
+  80%,
+  100% {
     transform: scale(0);
   }
+
   40% {
     transform: scale(1);
   }
