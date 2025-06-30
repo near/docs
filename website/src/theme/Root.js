@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Gleap from 'gleap'; // See https://gleap.io/docs/javascript/ and https://app.gleap.io/projects/62697858a4f6850036ae2e6a/widget
 import { withRouter } from 'react-router-dom';
-import { useHistory } from '@docusaurus/router';
+import { useHistory, useLocation } from '@docusaurus/router';
 import useIsBrowser from '@docusaurus/useIsBrowser'; // https://docusaurus.io/docs/advanced/ssg#useisbrowser
 import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
@@ -38,6 +38,7 @@ function initializeGleap() {
 function Root({ children, location }) {
   const isBrowser = useIsBrowser();
   const history = useHistory();
+  const currentLocation = useLocation();
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext();
@@ -73,6 +74,50 @@ function Root({ children, location }) {
       posthog.capture('$pageview', { path: location.pathname });
     });
   }, [isBrowser, history]);
+
+  useEffect(() => {
+    if (!isBrowser) return;
+
+    // Add click handlers to sidebar carets to also navigate to the linked page
+    const handleSidebarCaretClick = () => {
+      setTimeout(() => {
+        // Find all collapsible sidebar items with links
+        const collapsibleItems = document.querySelectorAll('.menu__list-item-collapsible');
+        
+        collapsibleItems.forEach(item => {
+          const caret = item.querySelector('.menu__caret');
+          const link = item.querySelector('.menu__link[href]');
+          
+          if (caret && link && !caret.hasAttribute('data-enhanced')) {
+            caret.setAttribute('data-enhanced', 'true');
+            
+            caret.addEventListener('click', (e) => {
+              // Allow default expand/collapse behavior
+              // Also navigate to the linked page after a short delay
+              setTimeout(() => {
+                const href = link.getAttribute('href');
+                                 if (href && href !== currentLocation.pathname) {
+                   history.push(href);
+                 }
+               }, 150); // Small delay to let the expand animation start
+             });
+           }
+         });
+       }, 100);
+     };
+
+     // Initial setup
+     handleSidebarCaretClick();
+
+     // Re-run when navigation changes (in case sidebar re-renders)
+     const unlisten = history.listen(() => {
+       handleSidebarCaretClick();
+     });
+
+     return () => {
+       unlisten();
+     };
+   }, [isBrowser, history, currentLocation]);
 
   return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
 }

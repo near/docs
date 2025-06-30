@@ -31,17 +31,19 @@ import {Container, Card} from "@site/src/components/cards";
       text="NEAR is the execution layer for AI-native apps—enabling agents to own assets, make decisions, and transact freely across networks"
       links={{
         "Getting Started": "/ai/introduction",
+        "Shade Agents": "/ai/shade-agents/introduction",
+        "NEAR AI Docs": "https://docs.near.ai"
       }}
     />
     <Card 
       img="/img/Icons/multichain-light.svg"
-      title="Chain Abstraction"
+      title="Multi-Chain"
       text="Tap into any blockchain with NEAR's chain abstraction layer"
       links={{
         "What is Chain Abstraction?": "/chain-abstraction/what-is",
-        "Chain Signatures ✨": "/chain-abstraction/chain-signatures",
-        "Meta-transactions": "/chain-abstraction/meta-transactions",
-        "NEAR Intents": "/chain-abstraction/intents/overview",    }}
+        "NEAR Intents": "/chain-abstraction/intents/overview",
+        "Chain Signatures": "/chain-abstraction/chain-signatures"
+       }}
     />
 
   </Container>
@@ -63,30 +65,17 @@ import {Container, Card} from "@site/src/components/cards";
       links={{
         "What are Smart Contracts?": "/smart-contracts/what-is",
         "Quickstart ✨": "/smart-contracts/quickstart",
-        "Contract's Anatomy": "/smart-contracts/anatomy/",
-        "Sandbox Testing": "/smart-contracts/testing/integration-test"    }}
+        "Contract's Anatomy": "/smart-contracts/anatomy/",  }}
     />
     <Card 
-      img="/img/Icons/contract-light.svg"
+      img="/img/Icons/token-light.svg"
       title="Tokens and Primitives"
       text="Learn about FTs, NFTs, DAOs and everything you need to build an application on NEAR"
       links={{
-        "What are Primitives?": "/primitives/what-is",
         "Fungible Tokens (FT)": "/primitives/ft",
         "Non-Fungible Tokens (NFT)": "/primitives/nft",
-        "Autonomous Organizations": "/primitives/dao",
-        "Decentralized Exchanges": "/primitives/dex",
-        "Linkdrops": "/primitives/linkdrop",    }}
-    />
-    <Card 
-      img="/img/Icons/database-light.svg"
-      title="Data Infrastructure"
-      text="Build applications that work across multiple blockchains. Chain signatures, intents, and omnibridge solutions"
-      links={{
-        "What is Data Infrastructure?": "/data-infrastructure/what-is",
-        "BigQuery": "/data-infrastructure/big-query",
-        "Data APIs": "/data-infrastructure/data-apis",
-        "Lake Framework": "/data-infrastructure/lake-framework/near-lake-framework",    }}
+        "Autonomous Organizations": "/primitives/dao"
+        }}
     />
   </Container>
 

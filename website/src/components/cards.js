@@ -36,8 +36,8 @@ export function Card({ img, text, title, links }) {
           </div>
           <div className="card__body">
             <h3>{title}</h3>
-            <Text>{text}</Text>
-            <List>
+            <Text className="card__description">{text}</Text>
+            <List className="card__links">
               {Object.keys(links).map((label, index) => (
                 <Element key={index}>
                   <a href={links[label]}>{label}</a>

@@ -526,6 +526,62 @@ li>ul {
   line-height: 1.3;
 }
 
+.card__description {
+  flex-grow: 1;
+  margin-bottom: 1rem !important;
+}
+
+.card__links {
+  margin-top: auto;
+}
+
+.card__links a {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  position: relative;
+  
+  &:hover {
+    background-color: var(--ifm-color-primary);
+    color: white;
+    transform: translateX(4px);
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+  }
+  
+  &::before {
+    content: '→';
+    position: absolute;
+    left: -1rem;
+    opacity: 0;
+    transition: all 0.2s ease;
+    color: var(--ifm-color-primary);
+  }
+  
+  &:hover::before {
+    opacity: 1;
+    left: -0.5rem;
+  }
+}
+
+[data-theme='dark'] .card__links a {
+  &:hover {
+    background-color: var(--ifm-color-primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  &::before {
+    color: var(--ifm-color-primary);
+  }
+}
+
 // ============================================================================
 // SIDEBAR STYLES 
 // ============================================================================
