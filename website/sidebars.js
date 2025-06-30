@@ -1,8 +1,6 @@
 const sidebar = {
   build: [
     'index',
-    'protocol/basics',
-
     {
       type: 'category',
       label: 'NEAR Protocol',
@@ -10,6 +8,7 @@ const sidebar = {
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'protocol/basics' },
       items: [
+        'protocol/basics',
         {
           type: 'category',
           label: 'Accounts / Contracts',
