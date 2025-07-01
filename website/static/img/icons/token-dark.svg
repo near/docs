@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <desc>Token Icon - Dark Mode</desc>
+  <g transform="translate(25, 25) scale(4.4)">
+    <g id="contactless-payment">
+      <path id="Subtract" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" d="M33.616 21.5c0.2514 -1.1265 0.384 -2.2978 0.384 -3.5 0 -8.58262 -7.2598 -16 -16 -16C9.16344 2 2 9.16344 2 18c0 9 7.41738 16 16 16 1.2022 0 2.3735 -0.1326 3.5 -0.384m10.0163 -7.0502c-1.2648 1.9918 -2.9579 3.6849 -4.9495 4.95" stroke-width="3" fill="none"></path>
+      <path id="Intersect" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" d="M38.5669 16.4844c1.9917 1.265 3.6847 2.9581 4.9496 4.9499m2.0997 5.0658c0.2513 1.1265 0.3839 2.2978 0.3839 3.5 0 1.2023 -0.1326 2.3736 -0.3839 3.5m-2.0997 5.0659c-1.2649 1.9917 -2.9579 3.6849 -4.9496 4.9499m-5.0668 2.1003c-1.1264 0.2513 -2.2977 0.3839 -3.5 0.3839 -1.2022 0 -2.3735 -0.1326 -3.5 -0.3839m-5.0658 -2.0997c-1.9918 -1.2649 -3.6849 -2.9579 -4.9499 -4.9496" stroke-width="3" fill="none"></path>
+    </g>
+  </g>
+</svg>

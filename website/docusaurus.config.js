@@ -64,7 +64,7 @@ const config = {
           path: '../blog',
         },
         theme: {
-          customCss: './src/css/custom.scss',
+          customCss: './static/css/custom.scss',
         },
       },
     ],
@@ -101,7 +101,7 @@ const config = {
       additionalLanguages: ['rust', 'java', 'python', 'ruby', 'go', 'typescript', 'jsx', 'bash'],
     },
     colorMode: {
-      defaultMode: 'light',
+      defaultMode: 'dark',
       respectPrefersColorScheme: true,
     },
     docs: {
@@ -131,13 +131,12 @@ const config = {
         },
         {
           type: 'dropdown',
-          label: 'Tools',
+          label: 'Reference',
           position: 'left',
           items: [
-            { label: '🧰 All Tools', to: '/tools/welcome' },
             {
               type: 'html',
-              value: '<hr/> <small class="subtitle"> Essentials </small>',
+              value: '<b><small>Developer Tools</small></b>',
             },
             { label: 'NEAR API', to: '/tools/near-api' },
             { label: 'NEAR SDK', to: '/tools/sdk' },
@@ -145,30 +144,43 @@ const config = {
             { label: 'Wallet Selector', to: '/tools/wallet-selector' },
             {
               type: 'html',
-              value: '<hr/> <small class="subtitle"> Data Services </small>',
-            },
-            { label: 'Explorers', to: '/tools/explorer' },
-            { label: 'Data APIs', to: '/tools/ecosystem-apis/fastnear' },
-            { label: 'Indexers', to: '/tools/indexing' },
-          ],
-        },
-        {
-          type: 'html',
-          value: '<span class="separator"></span>',
-        },
-        {
-          type: 'dropdown',
-          label: 'Resources',
-          position: 'left',
-          items: [
-            {
-              label: 'Github',
-              href: 'https://github.com/near',
-              className: 'header-github-link',
+              value: '<hr />',
             },
             {
               type: 'html',
-              value: '<hr/><div class="subtitle"> Support </div>',
+              value: '<b><small>Additional NEAR Docs</small></b>',
+            },
+            {
+              href: 'https://near.github.io/nearcore/',
+              label: 'Protocol Docs',
+            },
+            {
+              href: 'https://near-nodes.io',
+              label: 'Validator Docs',
+            },
+            {
+              href: 'https://docs.near.ai',
+              label: 'NEAR AI Docs',
+            },
+            {
+              href: 'https://github.com/near/NEPs',
+              label: 'NEPs',
+            },
+    
+            {
+              to: '/integrations/exchange-integration',
+              label: 'Exchange Integrations',
+            },
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'Community',
+          position: 'left',
+          items: [
+            {
+              type: 'html',
+              value: '<b><small>Developer Support</small></b>',
             },
             {
               href: 'https://discord.gg/GZ7735Xjce',
@@ -180,7 +192,11 @@ const config = {
             },
             {
               type: 'html',
-              value: '<hr /><div class="subtitle"> Education </div>',
+              value: '<hr />',
+            },
+            {
+              type: 'html',
+              value: '<b><small>Educational Courses</small></b>',
             },
             {
               href: 'https://agorapp.dev/catalog/course?difficulty=&chains=near',
@@ -189,41 +205,13 @@ const config = {
             {
               href: 'https://learnnear.club/',
               label: 'Learn NEAR Club',
-            },
-            {
-              type: 'html',
-              value: '<hr /><div class="subtitle"> Other Docs </div>',
-            },
-            {
-              to: '/resources/contracts-list',
-              label: 'Contracts List',
-            },
-            {
-              href: 'https://github.com/near/NEPs',
-              label: 'NEPs',
-            },
-            {
-              href: 'https://near.github.io/nearcore/',
-              label: 'Protocol Docs',
-            },
-            {
-              href: 'https://near-nodes.io',
-              label: 'Validator Docs',
-            },
-            {
-              to: '/integrations/exchange-integration',
-              label: 'Exchange Integrations',
-            },
+            }
           ],
         },
         {
           to: '/api/rpc/introduction',
           label: 'RPC',
           activeBaseRegex: '/api/rpc',
-        },
-        {
-          href: 'https://docs.near.ai',
-          label: 'NEAR AI',
         },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {
