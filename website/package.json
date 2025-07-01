@@ -12,8 +12,8 @@
     "fetch-changelog": "node ./src/utils/getChangelogs.js && npm run docusaurus download-remote-near-changelog"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.5.2",
-    "@docusaurus/types": "^3.5.2",
+    "@docusaurus/module-type-aliases": "3.8.1",
+    "@docusaurus/types": "3.8.1",
     "@types/react": "^18.2.42",
     "buffer": "^6.0.3",
     "concurrently": "^5.3.0",
@@ -28,11 +28,11 @@
     "wait-on": "^5.2.0"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.5.2",
-    "@docusaurus/plugin-ideal-image": "^3.5.2",
-    "@docusaurus/plugin-sitemap": "^3.5.2",
-    "@docusaurus/preset-classic": "^3.5.2",
-    "@docusaurus/theme-mermaid": "^3.5.2",
+    "@docusaurus/core": "3.8.1",
+    "@docusaurus/plugin-ideal-image": "3.8.1",
+    "@docusaurus/plugin-sitemap": "3.8.1",
+    "@docusaurus/preset-classic": "3.8.1",
+    "@docusaurus/theme-mermaid": "3.8.1",
     "@feelback/react": "^0.3.4",
     "@saucelabs/theme-github-codeblock": "^0.2.3",
     "axios": "^1.7.4",
