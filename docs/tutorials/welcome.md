@@ -3,36 +3,87 @@ id: welcome
 title: Examples & Tutorials
 sidebar_label: Home
 hide_table_of_contents: true
+hide_title: true
 ---
 
-import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
+import {Container, Card} from "@site/src/components/cards";
 
-Explore our collection of Examples and Tutorials
+<div style={{paddingRight: "1rem"}}>
 
-<FeatureList>
-  <Column title="Popular Examples">
-    <Feature url="/tutorials/examples/guest-book" title="Guest Book" subtitle="Create a simple guest book" image="guest-book.png" />
-    <Feature url="/tutorials/examples/donation" title="Donation" subtitle="Receive and send tokens" image="donation.png" />
-    <Feature url="/tutorials/examples/xcc" title="Basic Cross-Contract Call" subtitle="Learn how to call other contracts" image="cross-call.png" />
-    <Feature url="/tutorials/examples/coin-flip" title="Coin Flip Game" subtitle="Learn to create basic random numbers" image="random.png" />
-    <Feature url="/tutorials/examples/factory" title="Factory Contract" subtitle="Build a contract that deploys contracts" image="factory.png" />
-    <Feature url="/tutorials/examples/update-contract-migrate-state" title="Update & Migrate" subtitle="Programmatically update contracts" image="update.png" />
-    <Feature url="/tutorials/examples/frontend-multiple-contracts" title="Multi-Contract Frontend" subtitle="Interact with multiple contracts" image="multiple.png" />
+  <div className="landing-intro">
+    <h1>Examples & Tutorials</h1>
+    <p className="landing-subtitle">Learn to build on NEAR with hands-on examples, comprehensive tutorials, and step-by-step guides from beginner to advanced</p>
+  </div>
 
-  </Column>
-  <Column title="Popular Tutorials">
-    <Feature url="/tutorials/nfts/minting-nfts" title="NFT Mint" subtitle="Mint an NFT without using code" image="frontend-bos.png" />
-    <Feature url="/data-infrastructure/lake-framework/building-indexers/nft-indexer" title="Events (NEAR Lake)"
-             subtitle="Use our Data Lake to listen for events" image="monitor.png" />
-  </Column>
-  <Column title="From Zero to Hero">
-     <Feature url="/tutorials/auction/introduction" title="Master Applications on NEAR"
-             subtitle="Learn to build a Web3 application from start to finish" image="near-zero-to-hero.png" />
-    <Feature url="/tutorials/nfts/js/introduction" title="Master NFTs on NEAR (JS)" subtitle="Learn everything about NFT in JS" image="nft-marketplace-js.png" />
-    <Feature url="/tutorials/nfts/introduction" title="Master NFTs on NEAR (RS)" subtitle="Learn everything about NFT in Rust" image="nft-marketplace-rs.png" />
-    <Feature url="/tutorials/fts/introduction" title="Fungible Tokens 101"
-             subtitle="Learn everything about fungible tokens" image="ft.png" />
-    <Feature url="/tutorials/crosswords/basics/overview" title="Crossword Game" 
-             subtitle="Build a Crossword Game from zero" image="crossword.png" />
-  </Column>
-</FeatureList>
+  <Container>
+    <Card 
+      img="/img/Icons/home-light.svg"
+      title="Getting Started"
+      text="New to NEAR development? Start with our comprehensive introduction to building Web3 applications"
+      links={{
+              "Master Applications": "/tutorials/auction/introduction",
+              "What are Smart Contracts?": "/smart-contracts/what-is",
+              "What are Web3 Apps?": "/web3-apps/what-is"    }}
+    />
+    <Card
+      img="/img/Icons/app-light.svg"
+      title="Frontend Examples"
+      text="Build modern web interfaces that connect to NEAR contracts with these practical examples"
+      links={{
+        "Guest Book": "/tutorials/examples/guest-book",
+        "Multi-Contract Frontend": "/tutorials/examples/frontend-multiple-contracts",
+        "Marketplace Template": "/tutorials/templates/marketplace"
+      }}
+    />
+    <Card 
+      img="/img/Icons/contract-light.svg"
+      title="Smart Contract Examples"
+      text="Learn smart contract development with real-world examples from simple to advanced patterns"
+      links={{
+        "Count on NEAR": "/tutorials/examples/count-near",
+        "Cross-Contract Calls": "/tutorials/examples/xcc",
+        "Coin Flip Game": "/tutorials/examples/coin-flip"
+       }}
+    />
+
+  </Container>
+    
+  <Container>
+    <Card 
+      img="/img/Icons/token-light.svg"
+      title="Tokens & NFTs"
+      text="Master fungible and non-fungible tokens on NEAR with comprehensive step-by-step tutorials"
+      links={{
+        "Fungible Tokens (FT)": "/tutorials/fts/introduction",
+        "Non-Fungible Tokens (NFT)": "/tutorials/nfts/introduction",
+        "NFT Tutorial (JS)": "/tutorials/nfts/js/introduction",    }}
+    />
+    <Card 
+      img="/img/Icons/multichain-light.svg"
+      title="Multichain Development"
+      text="Explore NEAR's multichain capabilities and learn to control accounts across different networks"
+      links={{
+        "Controlling NEAR Accounts": "/tutorials/controlling-near-accounts/introduction",
+        "Multi-Chain DAO": "/tutorials/multichain-dao/introduction",
+        "Chain Signatures": "/chain-abstraction/chain-signatures"  }}
+    />
+    <Card 
+      img="/img/Icons/database-light.svg"
+      title="Data Infrastructure"
+      text="Build indexers and work with NEAR's data layer to create powerful data-driven applications"
+      links={{
+        "NEAR Lake Framework": "/data-infrastructure/lake-framework/building-indexers/primitives",
+        "NFT Indexer": "/data-infrastructure/lake-framework/building-indexers/nft-indexer",
+        "JavaScript Lake Indexer": "/data-infrastructure/lake-framework/building-indexers/js-lake-indexer"
+        }}
+    />
+  </Container>
+
+  <div className="landing-footer">
+    <h2>Ready to build something amazing?</h2>
+    <p>Start with our hands-on tutorials and learn by doing!</p>
+    <div className="landing-cta">
+      <a href="/tutorials/auction/introduction" className="button button--primary button--lg">Start Building</a>
+    </div>
+  </div>
+</div>
