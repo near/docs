@@ -12,7 +12,7 @@ import {Container, Card} from "@site/src/components/cards";
 
   <div className="landing-intro">
     <h1>NEAR Protocol Documentation</h1>
-    <p className="landing-subtitle">Build blasting fast applications and AI agents with seamless cross-chain capabilities</p>
+    <p className="landing-subtitle">Build decentralized applications and AI agents with seamless cross-chain capabilities</p>
     <div className="landing-underline"></div>
   </div>
 
