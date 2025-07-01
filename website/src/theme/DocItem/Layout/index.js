@@ -51,10 +51,12 @@ export default function DocItemLayout({ children }) {
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>
           </article>
-          <DocItemPaginator />
-          <FeedbackComponent />
+          {(window.location.pathname !== '/') && <>
+            <FeedbackComponent />
+            <DocItemPaginator />
+            <DocItemFooter />
+          </>}
           <AIChat />
-          <DocItemFooter />
         </div>
       </div>
       {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}

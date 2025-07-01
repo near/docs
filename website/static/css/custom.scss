@@ -33,6 +33,7 @@
   --chat-input-text: #212529;
   --chat-input-bg-focus: #fff;
   --chat-toggle-button-bg: #dee2e6;
+  --doc-sidebar-width: 290px !important;
 }
 
 // ============================================================================
@@ -245,7 +246,7 @@ article {
 }
 
 .menu {
-  padding: 0.7rem 0.5rem !important;
+  padding: 0.5rem !important;
 }
 
 // Landing page footer section
@@ -355,7 +356,6 @@ ul li::marker {
 li hr {
   height: 4px;
   margin: 0.4em auto;
-  width: 93%;
   border-width: 0;
 }
 
@@ -368,6 +368,9 @@ li>ul {
   height: 2px;
 }
 
+.menu__caret {
+  padding: var(--ifm-menu-link-padding-vertical) calc(var(--ifm-menu-link-padding-horizontal)/2);
+}
 // ============================================================================
 // CARD COMPONENTS
 // ============================================================================
@@ -545,25 +548,20 @@ li>ul {
   transition: all 0.2s ease;
   border: 1px solid transparent;
   position: relative;
-  
+
   &:hover {
-    background-color: var(--ifm-color-primary);
-    color: white;
     transform: translateX(4px);
-    border-color: var(--ifm-color-primary);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     text-decoration: none;
+    color: var(--near-color-royal);
   }
-  
+
   &::before {
-    content: '→';
     position: absolute;
     left: -2rem;
     opacity: 0;
     transition: all 0.2s ease;
-    color: var(--ifm-color-primary)
   }
-  
+
   &:hover::before {
     opacity: 1;
     left: -1.25rem;
@@ -572,11 +570,9 @@ li>ul {
 
 [data-theme='dark'] .card__links a {
   &:hover {
-    background-color: var(--ifm-color-primary);
     color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
-  
+
   &::before {
     color: var(--ifm-color-primary);
   }
@@ -626,7 +622,6 @@ $sidebar-icons: (
   'tutorials/crosswords': (light: '/img/icons/contract-light.svg',
     dark: '/img/icons/contract-dark.svg'
   ),
-
   'tutorials/controlling-near': (light: '/img/icons/multichain-light.svg',
     dark: '/img/icons/multichain-dark.svg'
   ),
@@ -638,6 +633,7 @@ $sidebar-icons: (
 // Generate sidebar icon styles dynamically
 @each $section, $icons in $sidebar-icons {
   .menu__list {
+
     &:has(.menu__link[href*="#{$section}"])::after,
     .menu__link[href*="#{$section}"]::after {
       background-image: url(map-get($icons, 'light'));
@@ -645,6 +641,7 @@ $sidebar-icons: (
   }
 
   [data-theme='dark'] .menu__list {
+
     &:has(.menu__link[href*="#{$section}"])::after,
     .menu__link[href*="#{$section}"]::after {
       background-image: url(map-get($icons, 'dark'));
@@ -667,8 +664,6 @@ $sidebar-icons: (
 [data-theme='dark'] .menu__link[href="/tutorials/welcome"]::after {
   background-image: url('/img/icons/home-dark.svg');
 }
-
-
 
 // Base sidebar styling
 .theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible>.menu__link,
@@ -726,15 +721,15 @@ $sidebar-icons: (
   padding-left: 3rem !important;
 }
 
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link,
-.theme-doc-sidebar-item-link-level-1 > .menu__list-item-collapsible > .menu__link {
-  &--active{
-      background-color: var(--ifm-hover-overlay);
-      color: #5f8afa !important;
+.theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible>.menu__link,
+.theme-doc-sidebar-item-link-level-1>.menu__list-item-collapsible>.menu__link {
+  &--active {
+    background-color: var(--ifm-hover-overlay);
+    color: #5f8afa !important;
 
-      &::before {
-        height: 100%;
-      }
+    &::before {
+      height: 100%;
+    }
   }
 }
 
@@ -768,11 +763,6 @@ $sidebar-icons: (
 .menu__link {
   padding: 0.6rem 0.8rem;
   font-weight: 200;
-  font-size: 0.9rem;
-}
-
-.menu__link--sublist.menu__link--active {
-  font-size: 0.8rem !important;
 }
 
 // ============================================================================
@@ -1063,20 +1053,15 @@ table {
 // ============================================================================
 
 .feedback-container {
-  margin: 2rem 0 1rem auto;
+  margin: 4rem 0 0 auto;
   padding: 1rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
   background-color: var(--ifm-background-surface-color);
   font-size: 0.9rem;
-  width: 50%;
-  max-width: 500px;
-  float: right;
   clear: both;
-  
+
   @media (max-width: 768px) {
-    width: 100%;
-    float: none;
     margin: 2rem 0 1rem 0;
   }
 }
@@ -1086,7 +1071,7 @@ table {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  
+
   @media (max-width: 600px) {
     flex-direction: column;
     gap: 0.75rem;
@@ -1218,7 +1203,7 @@ table {
   gap: 0.5rem;
   color: #22c55e;
   font-weight: 500;
-  
+
   .feedback-success-icon {
     font-size: 1.1rem;
     font-weight: bold;
@@ -1239,7 +1224,7 @@ table {
 }
 
 // Ensure all content after feedback component appears below it
-.feedback-container ~ * {
+.feedback-container~* {
   clear: both;
 }
 
@@ -1248,6 +1233,10 @@ table {
   content: "";
   display: table;
   clear: both;
+}
+
+.pagination-nav {
+  margin-top: 1rem !important;
 }
 
 // ============================================================================
