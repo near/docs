@@ -1,0 +1,40 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RequestJson from './request-json.mdx';
+import RequestBash from './request-bash.mdx';
+import ResponseJson from './response-json.mdx';
+import ErrorSchemaTable from './error-schema-table.mdx';
+import ErrorSchemaDescription from '../../_general/error-schema-description.mdx';
+
+## [deprecated] Send transaction (await) {#send-transaction-await}
+
+> Consider using [`send_tx`](/api/rpc/transactions#send-tx) instead
+
+> Sends a transaction and waits until transaction is fully complete. _(Has a 10 second timeout)_
+
+- method: `broadcast_tx_commit`
+- params: `[SignedTransaction encoded in base64]`
+
+Example:
+
+<Tabs groupId="code-tabs">
+  <TabItem value="json" label="JSON" default>
+    <RequestJson />
+  </TabItem>
+  <TabItem value="http" label="HTTPie">
+    <RequestBash />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response: </summary>
+  <ResponseJson />
+</details>
+
+#### What could go wrong? {#what-could-go-wrong-1}
+
+<ErrorSchemaDescription />
+
+Here is the exhaustive list of the error variants that can be returned by `broadcast_tx_commit` method:
+
+<ErrorSchemaTable />

@@ -1,0 +1,51 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { LantstoolLabel } from '@site/src/components/lantstool/LantstoolLabel/LantstoolLabel';
+import { TryOutOnLantstool } from '@site/src/components/lantstool/TryOutOnLantstool';
+import ErrorSchemaDescription from '../../_general/error-schema-description.mdx';
+import RequestJson from './request-json.mdx';
+import RequestJs from './request-js.mdx';
+import RequestBash from './request-bash.mdx';
+import ResponseJson from './response-json.mdx';
+import ErrorSchemaTable from './error-schema-table.mdx';
+
+## View access key list {#view-access-key-list}
+
+You can query <strong>all</strong> access keys for a given account.
+
+- method: `query`
+- params:
+  - `request_type`: `view_access_key_list`
+  - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
+  - `account_id`: _`"example.testnet"`_
+
+Example:
+
+<Tabs groupId="code-tabs">
+  <TabItem value="json" label="JSON" default>
+    <RequestJson />
+  </TabItem>
+  <TabItem value="js" label="JavaScript">
+    <RequestJs />
+  </TabItem>
+  <TabItem value="http" label="HTTPie">
+    <RequestBash />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/access-keys/get-account-keys.json" />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response:</summary>
+  <ResponseJson />
+</details>
+
+#### What Could Go Wrong?
+
+<ErrorSchemaDescription />
+
+Here is the exhaustive list of the error variants that can be returned
+by `view_access_key_list` request type:
+
+<ErrorSchemaTable />

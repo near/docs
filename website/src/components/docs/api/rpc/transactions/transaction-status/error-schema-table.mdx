@@ -1,0 +1,101 @@
+<table className="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE
+        <br />
+        <code>error.name</code>
+      </th>
+      <th>
+        ERROR_CAUSE
+        <br />
+        <code>error.cause.name</code>
+      </th>
+      <th>Status Code</th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3">HANDLER_ERROR</td>
+      <td>INVALID_TRANSACTION</td>
+      <td>200</td>
+      <td>An error happened during transaction execution</td>
+      <td>
+        <ul>
+          <li>
+            See <code>error.cause.info</code> for details
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>UNKNOWN_TRANSACTION</td>
+      <td>200</td>
+      <td>
+        The requested transaction is not available on the node since it might have not been recorded
+        on the chain yet or has been garbage-collected
+      </td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>
+            If the transaction had been submitted more than 5 epochs ago, try to send your request
+            to{' '}
+            <a
+              href="https://near-nodes.io/intro/node-types#archival-node"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              an archival node
+            </a>
+          </li>
+          <li>Check the transaction hash</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>TIMEOUT_ERROR</td>
+      <td>408</td>
+      <td>It was unable to wait for the transaction status for reasonable time</td>
+      <td>
+        <ul>
+          <li>Send a request to a different node</li>
+          <li>Try again later</li>
+        </ul>
+      </td>
+    </tr>
+    <tr className="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>400</td>
+      <td>
+        Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)
+      </td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>
+            Check <code>error.cause.info</code> for more details
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>500</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>
+            Check <code>error.cause.info</code> for more details
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

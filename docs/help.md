@@ -61,7 +61,6 @@ Discover 21 NEAR-related in this [Telegram groups folder](https://t.me/addlist/V
 | 18  | Wallets & Standards  | NEAR Wallet Builder Group         | [Join](https://t.me/+8s315V2dlYFkMmUx)             |
 | 19  |                      | NEAR Contract Standards Community | [Join](https://t.me/nearnft)                       |
 | 20  | NFTs & Creative Tech | NEAR NFT Builder Group            | [Join](https://t.me/+_odQLYGusEU0MzAx)             |
-| 21  |                      | Jutsu.ai - Public                 | [Join](https://t.me/tryjutsu)                      |
 
 <hr class="subsection" />
 
@@ -108,39 +107,18 @@ These community groups are part of the 31 chats from [nearbuilders.com](https://
 
 ---
 
-### 🚀 Decentralized Frontend Stack
-
-> Create decentralized frontend components by storing it's source code on the blockchain 🤯.
-
-| Name      | Description | Repo | Latest Release |
-| ----------- | ----------- | --- |--|
-|**👉 GATEWAY**||||
-| near-discovery    | near.org Gateway  |[near/near-discovery](https://github.com/near/near-discovery)| [![Latest Release](https://img.shields.io/github/v/release/near/near-discovery?label=)](https://github.com/near/near-discovery/releases)
-| near.social | near.social Gateway | [NearSocial/viewer](https://github.com/NearSocial/viewer) | ➖
-| near-discovery-components | Core components / primitives for near.org | [near/near-discovery-components](https://github.com/near/near-discovery-components)| ➖
-|**👉 EXECUTION ENVIRONMENT**||||
-| VM   | B.O.S. Virtual Machine  | [nearsocial/VM](https://github.com/NearSocial/VM) |[![Latest Release](https://img.shields.io/github/v/release/nearsocial/vm?label=)](https://github.com/nearsocial/vm/releases)
-| BWE | B.O.S. Web Engine ***(WIP replacement for VM)*** | [near/bos-web-engine](https://github.com/near/bos-web-engine) |➖
-|**👉 DATABASE**||||
-| B.O.S. Database | Smart contract hosting frontend source code & user data | [nearsocial/social-db](https://github.com/NearSocial/social-db)|➖
-
----
-
 ### 🛠️ Dev Tools
 
 | Name      | Description | Repo | Latest Release |
 | ----------- | ----------- | --- |--|
 | create-near-app | Easy fullstack dApp deployment tool | [near/create-near-app](https://github.com/near/create-near-app) | [![Latest Release](https://img.shields.io/github/v/release/near/create-near-app?label=)](https://github.com/near/create-near-app/releases)
 | cargo-near | Cargo extension for building smart contracts and ABI schemas on NEAR | [near/cargo-near](https://github.com/near/cargo-near) | [![Latest Release](https://img.shields.io/github/v/release/near/cargo-near?label=)](https://github.com/near/cargo-near/releases)
-| BOS VSCode Ext. | VSCode extension for building B.O.S. components | [near/near-vscode](https://github.com/near/near-vscode) | [![Latest Release](https://img.shields.io/github/v/release/near/near-vscode?label=)](https://github.com/near/near-vscode/releases)
-| BOS Loader | Simplifying multiple component local development | [near/bos-loader](https://github.com/near/bos-loader) | [![Latest Release](https://img.shields.io/github/v/release/near/bos-loader?label=)](https://github.com/near/bos-loader/releases)
 
 ### 💻 CLI
 
 | Name      | Description | Repo | Latest Release |
 | ----------- | ----------- | --- |--|
 | near-cli-rs| Rust based CLI for interacting w/ NEAR | [near/near-cli-rs](https://github.com/near/near-cli-rs)| [![Latest Release](https://img.shields.io/github/v/release/near/near-cli-rs?label=)](https://github.com/near/near-cli-rs/releases)
-| BOS CLI | CLI for simplifying local development on BOS | [bos-cli-rs/bos-cli-rs](https://github.com/bos-cli-rs/bos-cli-rs) | [![Latest Release](https://img.shields.io/github/v/release/bos-cli-rs/bos-cli-rs?label=)](https://github.com/bos-cli-rs/bos-cli-rs/releases)
 
 ### 🔑 Wallet / Auth
 

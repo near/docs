@@ -1,0 +1,43 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { LantstoolLabel } from '@site/src/components/lantstool/LantstoolLabel/LantstoolLabel';
+import { TryOutOnLantstool } from '@site/src/components/lantstool/TryOutOnLantstool';
+import RequestJson from './request-json.mdx';
+import RequestBash from './request-bash.mdx';
+import ResponseJson from './response-json.mdx';
+import ErrorSchemaTable from './error-schema-table.mdx';
+import ErrorSchemaDescription from '../../_general/error-schema-description.mdx';
+
+## Network Info {#network-info}
+
+> Returns the current state of node network connections (active peers, transmitted data, etc.)
+
+- method: `network_info`
+- params: _none_
+
+Example:
+
+<Tabs groupId="code-tabs">
+  <TabItem value="json" label="JSON" default>
+    <RequestJson />
+  </TabItem>
+  <TabItem value="http" label="HTTPie">
+    <RequestBash />
+  </TabItem>
+  <TabItem value="Lantstool" label={<LantstoolLabel />}>
+    <TryOutOnLantstool path="docs/5.api/rpc/network/get-network-info.json" />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response:</summary>
+  <ResponseJson />
+</details>
+
+#### What could go wrong? {#what-could-go-wrong-1}
+
+<ErrorSchemaDescription />
+
+Here is the exhaustive list of the error variants that can be returned by `network_info` method:
+
+<ErrorSchemaTable />

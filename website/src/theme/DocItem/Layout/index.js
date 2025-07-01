@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { useWindowSize } from '@docusaurus/theme-common';
 import { useDoc } from '@docusaurus/plugin-content-docs/client';
@@ -13,7 +13,6 @@ import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import ContentVisibility from '@theme/ContentVisibility';
 import styles from './styles.module.css';
 
-import { HelpComponent } from '../../../components/helpcomponent';
 import { FeedbackComponent } from '../../../components/FeedbackComponent';
 
 /**
@@ -38,6 +37,12 @@ function useDocTOC() {
 export default function DocItemLayout({ children }) {
   const docTOC = useDocTOC();
   const { metadata } = useDoc();
+  const [isMain, setIsMain] = React.useState(true);
+
+  useEffect(() => {
+    setIsMain(window.location.pathname === '/');
+  }, []);
+
   return (
     <div className="row">
       <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
@@ -50,10 +55,11 @@ export default function DocItemLayout({ children }) {
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>
           </article>
-          <DocItemPaginator />
-          <FeedbackComponent />
-          <HelpComponent />
-          <DocItemFooter />
+          {!isMain && <>
+            <FeedbackComponent />
+            <DocItemPaginator />
+            <DocItemFooter />
+          </>}
         </div>
       </div>
       {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}

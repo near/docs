@@ -1,45 +1,97 @@
-import { useState } from "react";
-import { FeelbackTaggedMessage, FeelbackValueDefinition, Question, PRESET_YESNO_LIKE_DISLIKE } from "@feelback/react";
-import "@feelback/react/styles/feelback.css";
-
-const YES_TAGS = [
-    { value: "accurate", title: "Accurate", description: "Accurately describes the product or feature.", },
-    { value: "problem-solved", title: "Solved my problem", description: "Helped me resolve an issue.", },
-    { value: "clear", title: "Easy to understand", description: "Easy to follow and comprehend.", },
-    { value: "product-chosen", title: "Helped me decide to use the product", description: "Convinced me to adopt the product or feature.", },
-    { value: "other-yes", title: "Another reason" },
-];
-
-const NO_TAGS = [
-    { value: "inaccurate", title: "Inaccurate", description: "Doesn't accurately describe the product or feature.", },
-    { value: "missing-info", title: "Couldn't find what I was looking for", description: "Missing important information.", },
-    { value: "unclear", title: "Hard to understand", description: "Too complicated or unclear.", },
-    { value: "bad-examples", title: "Code samples errors", description: "One or more code samples are incorrect.", },
-    { value: "other-no", title: "Another reason" },
-];
-
-const FEEDBACK_CONTENT_SET_ID = "6d4fac2e-6797-47aa-8d5c-b9318a0655e8";
+import React, { useState } from 'react';
 
 export function FeedbackComponent() {
-    const [choice, setChoice] = useState();
+  const [feedback, setFeedback] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [comment, setComment] = useState('');
+  const [showComment, setShowComment] = useState(false);
 
+  const handleFeedback = (type) => {
+    setFeedback(type);
+    setShowComment(true);
+  };
+
+  const handleSubmit = () => {
+    // Here you could integrate with your analytics/feedback service
+    console.log('Feedback submitted:', { type: feedback, comment });
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFeedback(null);
+      setShowComment(false);
+      setComment('');
+    }, 2000);
+  };
+
+  const handleSkip = () => {
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFeedback(null);
+      setShowComment(false);
+      setComment('');
+    }, 1000);
+  };
+
+  if (isSubmitted) {
     return (
-        <div class="theme-admonition theme-admonition-tip admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
-            <div className="feelback-container">
-                {!choice
-                    ? <Question text="Was this page helpful?"
-                        items={PRESET_YESNO_LIKE_DISLIKE}
-                        showLabels
-                        onClick={setChoice}
-                    />
-                    : <FeelbackTaggedMessage contentSetId={FEEDBACK_CONTENT_SET_ID}
-                        layout="radio-group"
-                        tags={choice === "y" ? YES_TAGS : NO_TAGS}
-                        title={choice === "y" ? "What did you like?" : "What went wrong?"}
-                        placeholder="(optional) Please, further detail the feedback"
-                    />
-                }
-            </div>
+      <div className="feedback-container">
+        <div className="feedback-success">
+          <span className="feedback-success-icon">✓</span>
+          <span>Thanks for your feedback!</span>
         </div>
+      </div>
     );
+  }
+
+  return (
+    <div className="feedback-container">
+      {!showComment ? (
+        <div className="feedback-question">
+          <span className="feedback-text">Was this page helpful?</span>
+          <div className="feedback-buttons">
+            <button 
+              className="feedback-btn feedback-btn-yes"
+              onClick={() => handleFeedback('yes')}
+              title="Yes, this was helpful"
+            >
+              <span className="feedback-emoji">👍</span>
+              <span>Yes</span>
+            </button>
+            <button 
+              className="feedback-btn feedback-btn-no"
+              onClick={() => handleFeedback('no')}
+              title="No, this wasn't helpful"
+            >
+              <span className="feedback-emoji">👎</span>
+              <span>No</span>
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="feedback-comment-section">
+          <div className="feedback-comment-header">
+            <span className="feedback-text">
+              {feedback === 'yes' ? 'Great! What did you like?' : 'Sorry about that. What went wrong?'}
+            </span>
+          </div>
+          <textarea
+            className="feedback-textarea"
+            placeholder="(Optional) Tell us more..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            rows={2}
+          />
+          <div className="feedback-actions">
+            <button className="feedback-action-btn feedback-skip" onClick={handleSkip}>
+              Skip
+            </button>
+            <button className="feedback-action-btn feedback-submit" onClick={handleSubmit}>
+              Submit
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }

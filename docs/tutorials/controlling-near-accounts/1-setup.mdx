@@ -1,0 +1,106 @@
+---
+id: setup
+title: Setting up a Near account to be controlled by MPC
+sidebar_label: Setup controllable Near account
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+One of the powerful features of the NEAR Protocol is its flexible [access keys architecture](/protocol/access-keys). An account can hold multiple access keys, each with different levels of permission. This enables us to grant transaction-signing capabilities to an external key without compromising security.
+
+To achieve secure external control via MPC, we must derive a valid `secp256k1` public key from the MPC smart contract. This key belongs to a key pair that will be used later in the tutorial for signing transactions securely.
+
+Before we proceed, let's create an account on whose behalf we will be acting.
+
+## Creating an account
+
+If you already have a NEAR account that you want to control via MPC, feel free to skip this step.
+Otherwise, use the following command:
+
+```sh
+near account create-account fund-myself
+```
+
+## Deriving a Public Key from MPC
+
+As you already know from the [Chain Signatures documentation](/chain-abstraction/chain-signatures#how-it-works), `derivation_path` is the key component that allows generating multiple distinct key pairs. When combined with `predecessor_id`, it forms a unique and secure pair.
+
+In our example, the smart contract acts as a proxy between a user and the MPC, which means the contract itself becomes the `predecessor` in the derivation process.
+
+To understand how `derivation_path` is built, let's examine the [smart contract implementation](https://github.com/nearuaguild/control-near-account-with-mpc-example/blob/97883851483c05d4c9206afb6efeac02ec9c2541/contract/src/lib.rs#L64-L68):
+
+```rust
+let derivation_path = format!(
+    "{}-{}",
+    env::predecessor_account_id().to_string(),
+    args.signer_id.to_string()
+);
+```
+
+- `args.signer_id` is the account on whose behalf we're acting
+- `env::predecessor_account_id().to_string()` refers to the account that is calling the contract, please do not confuse it with previously mentioned `predecessor_id` as it refers to the smart contract address
+
+Now that we understand how each input is calculated, let's put them together and actually derive a public key.
+
+<Tabs>
+  <TabItem value="typescript" label="TypeScript">
+
+```ts
+const contractId = "broken-rock.testnet"; // smart contract address
+const adminAccountId = "admin.testnet"; // signs transactions to act on behalf of `controllableAccountId`
+const controllableAccountId = "controllable.testnet"; // on whose behalf we'll be acting
+
+// admin.testnet-controllable.testnet
+const derivationPath = `${adminAccountId}-${controllableAccountId}`;
+
+// secp256k1:m2CUiQw9f5nN8sAszkHrbok6apRz7j6LkpFZ6vT6zzxLHh2C54udU9Ue7eRy7FRK42pD796nNSwEdsqXzLb96PR
+const derivedPublicKey = await deriveKey(contractId, derivationPath);
+```
+
+  </TabItem>
+</Tabs>
+
+## Adding key to the account
+
+Once we have the public key, the final step is to add it to the NEAR account.
+
+<Tabs>
+  <TabItem value="cli" label="Near CLI" default>
+
+```sh
+near account add-key controllable.testnet grant-full-access use-manually-provided-public-key secp256k1:m2CUiQw9f5nN8sAszkHrbok6apRz7j6LkpFZ6vT6zzxLHh2C54udU9Ue7eRy7FRK42pD796nNSwEdsqXzLb96PR network-config testnet sign-with-legacy-keychain send
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```ts
+const path = require("node:path");
+const { homedir } = require("node:os");
+const { keyStores, connect } = require("near-api-js");
+
+const CREDENTIALS_DIR = ".near-credentials";
+const credentialsPath = path.join(homedir(), CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
+const config = {
+  keyStore,
+  networkId: "testnet",
+  nodeUrl: "https://rpc.testnet.near.org",
+};
+
+const near = await connect(config);
+
+const account = await near.account("controllable.testnet");
+
+// uses derivedPublicKey from previous step
+await account.addKey(derivedPublicKey);
+```
+
+  </TabItem>
+</Tabs>
+
+In our example, we’ve added this public key as a [**FullAccess key**](/protocol/access-keys#full-access-keys), meaning it has full control over the account, this allows us to execute all transactions without limitations. However, it is also possible to add the key as a **FunctionCall access key** with limited permissions.
+
+The next step is to create, sign and eventually send a transfer transaction on behalf of `controllable.testnet`. Continue to [the next chapter](2-transfer.md) to learn how.
