@@ -558,7 +558,7 @@ li>ul {
   &::before {
     content: '→';
     position: absolute;
-    left: -1rem;
+    left: -1.5rem;
     opacity: 0;
     transition: all 0.2s ease;
     color: var(--ifm-color-primary);
@@ -566,7 +566,7 @@ li>ul {
   
   &:hover::before {
     opacity: 1;
-    left: -0.5rem;
+    left: -1rem;
   }
 }
 
@@ -660,10 +660,21 @@ $sidebar-icons: (
   background-image: url('/img/icons/home-dark.svg');
 }
 
+.menu__link[href="/tutorials/welcome"]::after {
+  background-image: url('/img/icons/home-light.svg');
+}
+
+[data-theme='dark'] .menu__link[href="/tutorials/welcome"]::after {
+  background-image: url('/img/icons/home-dark.svg');
+}
+
+
+
 // Base sidebar styling
 .theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible>.menu__link,
 .theme-doc-sidebar-item-link-level-1>.menu__list-item-collapsible>.menu__link,
-.menu__link[href="/"] {
+.menu__link[href="/"],
+.menu__link[href="/tutorials/welcome"] {
   font-weight: 600;
   font-size: 0.8rem;
   color: #000000 !important;
@@ -724,6 +735,15 @@ $sidebar-icons: (
       &::before {
         height: 100%;
       }
+  }
+}
+
+.menu__link[href="/tutorials/welcome"].menu__link--active {
+  background-color: var(--ifm-hover-overlay);
+  color: #5f8afa !important;
+
+  &::before {
+    height: 100%;
   }
 }
 
