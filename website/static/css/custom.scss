@@ -146,10 +146,21 @@ h4 {
 // ============================================================================
 
 .landing {
-  margin: 2.5em 0 1.5em 0;
+  margin: 0;
+  padding: 0;
+  padding-right: 1rem;
 }
 
-.landing-intro>* {
+.landing-intro {
+  text-align: center;
+  padding: 2rem 2rem 0rem 2rem;
+  border-radius: 0 0 32px 32px;
+  margin-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-intro > * {
   position: relative;
   z-index: 2;
 }
@@ -164,15 +175,15 @@ h4 {
   background-clip: text;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  text-align: center;
-  display: block;
+  max-width: 900px;
 }
 
+// Dark theme landing intro
 .landing-underline {
   width: 120px;
   height: 4px;
   background: linear-gradient(135deg, #5f8afa 0%, #22c55e 100%);
-  margin: 0 auto;
+  margin: 2rem auto 0 auto;
   border-radius: 2px;
 }
 
@@ -204,33 +215,47 @@ h4 {
 }
 
 @media (max-width: 768px) {
-  .landing-intro h1 {
-    font-size: 2.5rem;
-  }
-
   .landing-intro {
     padding: 3rem 1rem 2rem 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .landing-intro h1 {
+    font-size: 2.5rem;
   }
 }
 
 // Landing page subtitle
 .landing-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   color: var(--ifm-color-content-secondary);
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto 1.5rem auto; // Reduced margin for tighter spacing
+  max-width: 700px;
+  margin: 0 auto;
   line-height: 1.6;
   font-weight: 400;
+  opacity: 0.9;
 }
 
 // Container spacing for cards with floating icons
 .container {
-  padding-top: 2rem; // Extra padding to accommodate floating icons
-  margin: 0 auto;
+  padding-top: 2rem;
+  margin: 0 auto 4rem auto;
   max-width: var(--ifm-container-width);
-  padding: 0 var(--ifm-spacing-horizontal);
+  padding-left: var(--ifm-spacing-horizontal);
+  padding-right: var(--ifm-spacing-horizontal);
   width: 100%;
+}
+
+// Add section divider
+.container + .container::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+  margin: 0 auto 4rem auto;
+  border-radius: 2px;
 }
 
 /* global spacing */
@@ -252,28 +277,58 @@ article {
 // Landing page footer section
 .landing-footer {
   text-align: center;
-  padding: 4rem 2rem;
-  margin-top: 4rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, var(--ifm-background-color) 100%);
-  border-radius: 16px;
+  padding: 5rem 2rem;
+  margin: 5rem auto 0 auto;
+  background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, var(--ifm-background-color) 100%);  border-radius: 24px;
   border: 1px solid var(--ifm-color-emphasis-200);
+  position: relative;
+  overflow: hidden;
+  max-width: 1000px;
+}
+
+.landing-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(95, 138, 250, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.landing-footer > * {
+  position: relative;
+  z-index: 2;
+}
+
+// landing footer dark
+[data-theme='dark'] .landing-footer {
+  background: linear-gradient(135deg, var(--ifm-background-surface-color) 0%, var(--ifm-background-color) 100%);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .landing-footer::before {
+  background: radial-gradient(circle at 50% 50%, rgba(130, 170, 255, 0.03) 0%, transparent 70%);
 }
 
 .landing-footer h2 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: 1.2;
 }
 
 .landing-footer p {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--ifm-color-content-secondary);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   line-height: 1.6;
+  opacity: 0.9;
 }
 
 .landing-cta {
@@ -284,48 +339,34 @@ article {
 }
 
 .landing-cta .button {
-  padding: 0.75rem 2rem;
+  padding: 1rem 2.5rem;
   font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   border: 2px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .landing-cta .button--primary {
-  background: var(--ifm-color-primary);
   color: white;
-  border-color: var(--ifm-color-primary);
+  border-color: var(--near-color-royal);
 }
 
 .landing-cta .button--primary:hover {
-  background: var(--ifm-color-primary-dark);
   border-color: var(--ifm-color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.landing-cta .button--secondary {
-  background: transparent;
-  color: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
-}
-
-.landing-cta .button--secondary:hover {
-  background: var(--ifm-color-primary);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
 }
 
 @media (max-width: 768px) {
   .landing-footer {
-    padding: 3rem 1rem;
+    padding: 3rem 1.5rem;
+    margin: 3rem 1rem 0 1rem;
   }
 
   .landing-footer h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .landing-cta {
@@ -335,7 +376,7 @@ article {
 
   .landing-cta .button {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
   }
 }
 
@@ -1057,7 +1098,6 @@ table {
   padding: 1rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
-  background-color: var(--ifm-background-surface-color);
   font-size: 0.9rem;
   clear: both;
 

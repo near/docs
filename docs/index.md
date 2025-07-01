@@ -8,11 +8,12 @@ hide_title: true
 
 import {Container, Card} from "@site/src/components/cards";
 
-<div style={{paddingRight: "1rem"}}>
+<div className="landing">
 
   <div className="landing-intro">
     <h1>NEAR Protocol Documentation</h1>
-    <p className="landing-subtitle">Build the decentralized web with NEAR Protocol - a scalable, developer-friendly blockchain platform with seamless cross-chain capabilities</p>
+    <p className="landing-subtitle">Build blasting fast applications and AI agents with seamless cross-chain capabilities</p>
+    <div className="landing-underline"></div>
   </div>
 
   <Container>
@@ -45,7 +46,6 @@ import {Container, Card} from "@site/src/components/cards";
         "Chain Signatures": "/chain-abstraction/chain-signatures"
        }}
     />
-
   </Container>
     
   <Container>
@@ -80,10 +80,11 @@ import {Container, Card} from "@site/src/components/cards";
   </Container>
 
   <div className="landing-footer">
-    <h2>Don't know where to start?</h2>
-    <p>Start by learning more about NEAR and what makes it unique!</p>
+    <h2>Ready to start building?</h2>
+    <p>Discover what makes NEAR the perfect platform for your next application</p>
     <div className="landing-cta">
-      <a href="/protocol/basics" className="button button--primary button--lg">Learn More</a>
+      <a href="/protocol/basics" className="button button--primary button--lg">Explore NEAR</a>
     </div>
   </div>
+
 </div>
