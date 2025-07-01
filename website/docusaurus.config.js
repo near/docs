@@ -64,7 +64,7 @@ const config = {
           path: '../blog',
         },
         theme: {
-          customCss: './src/css/custom.scss',
+          customCss: './static/css/custom.scss',
         },
       },
     ],
@@ -101,7 +101,7 @@ const config = {
       additionalLanguages: ['rust', 'java', 'python', 'ruby', 'go', 'typescript', 'jsx', 'bash'],
     },
     colorMode: {
-      defaultMode: 'light',
+      defaultMode: 'dark',
       respectPrefersColorScheme: true,
     },
     docs: {
@@ -220,10 +220,9 @@ const config = {
           label: 'Guides',
           position: 'left',
           items: [
-            { label: '🧰 All Tools', to: '/tools/welcome' },
             {
               type: 'html',
-              value: '<hr/> <small class="subtitle"> Essentials </small>',
+              value: '<b><small>Developer Tools</small></b>',
             },
             { label: 'NEAR API', to: '/tools/near-api' },
             { label: 'NEAR SDK', to: '/tools/sdk' },

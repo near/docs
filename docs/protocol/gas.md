@@ -180,7 +180,7 @@ Congestion control between shards gets tricky when transactions have much more g
 
 The other inefficiency comes from the refund receipts that prior to version 78 have been created for essentially every function call. While each of them is relatively cheap to execute, in the sum they were a significant part of the global traffic on NEAR Protocol.
 
-To read more about the deicsion to introduce this fee, pleaes take a look at the [NEP-536](https://github.com/near/NEPs/pull/536)
+To read more about the deicsion to introduce this fee, please take a look at the [NEP-536](https://github.com/near/NEPs/pull/536)
 
 </details>
 

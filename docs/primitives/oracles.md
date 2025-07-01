@@ -205,7 +205,7 @@ For USD values, divide the `multiplier` by `10^4`.
    - type: `object`
    - example: `{ "data": "504e41...' }`
 2. [`get_price`](#get_price) (fetches the most recent price stored in the contract)\_
-   - args: `price_identifer`
+   - args: `price_identifier`
    - type: `object`
    - example: `{ price_identifier: 'f9c0172ba10dfa8...' }`
 

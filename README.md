@@ -2,7 +2,7 @@
 <br />
 
 <p align="center">
-<img src="website/static/docs/assets/near-logo.png" width="240">
+<img src="https://github.com/near/node-docs/raw/refs/heads/main/website/static/img/near_logo.svg" width="240">
 </p>
 
 <br />

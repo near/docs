@@ -131,7 +131,7 @@ Create a smart contract by using one of the scaffolding tools and following thei
   npx create-near-app@latest
 ```
 
-![img](@site/static/docs/hello-near-ts.gif)
+![img](@site/static/docs/assets/smart-contract/hello-near-ts.gif)
 _Creating a project using `create-near-app`_
 
 This will generate a project with the following structure:
@@ -158,10 +158,10 @@ We recommend you to name your project `hello-near` for this tutorial, but feel f
 <TabItem value="rust" label="🦀 Rust">
 
 ```bash
-  cargo near new hello-near
+  cargo near
 ```
 
-![img](@site/static/docs/hello-near-rs.gif)
+![img](@site/static/docs/assets/smart-contract/hello-near-rs.gif)
 _Creating a project using `cargo near new`_
 
 This will generate a project with the following structure:
@@ -179,6 +179,16 @@ hello-near
 
 :::tip
 
+You can skip the interactive menu and create a new project with specific name running the following command:
+
+```bash
+  cargo near new hello-near
+```
+
+:::
+
+:::tip
+
 `hello-near` is the name we chose for this project so the tutorial is simpler to follow, but for future projects feel free to use any name you prefer
 
 :::
@@ -187,29 +197,25 @@ hello-near
 
 <TabItem value="py" label="🐍 Python">
 
-Create a new project using `uv init`:
-
 ```bash
-uv init hello-near
-cd hello-near
+  npx create-near-app@latest
 ```
 
-This creates a Python project with the following structure:
+![img](@site/static/docs/assets/smart-contract/hello-near-py.gif)
+_Creating a project using `create-near-app`_
+
+This will generate a project with the following structure:
 
 ```bash
 hello-near
+├── tests                # sandbox testing
+│   └── test_mod.py
+├── contract.py          # Main Python file
+├── pyproject.toml       # Project configuration
+├── README.md            # README
 ├── .git                 # Git repository
 ├── .gitignore           # Git ignore file
-├── .python-version      # Python version file
-├── README.md            # README
-├── main.py              # Main Python file
-└── pyproject.toml       # Project configuration
-```
-
-Now, add the NEAR SDK to your project:
-
-```bash
-uv add near-sdk-py
+└── .python-version      # Python version file
 ```
 
 :::tip
@@ -255,10 +261,8 @@ The `Hello World` smart contract stores a greeting in its state, and exposes two
 
   <TabItem value="py" label="🐍 Python">
 
-  Create a `greeting_contract.py` file for your contract:
-
     <Github fname="contract.py" language="python"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/greeting_contract.py"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/contract.py"
             start="3" end="30" />
 
   </TabItem>
@@ -301,29 +305,19 @@ Building and testing the contract is as simple as running the `test` command. Th
   
   <TabItem value="py" label="🐍 Python">
 
-  Create a test file for your contract:
-
   ```bash
-  # Create a tests directory
-  mkdir tests
-  touch tests/test_greeting.py
+  uv run pytest
   ```
 
-  Add the following content to `tests/test_greeting.py`:
+  :::tip
 
-  <Github fname="contract.py" language="python"
-        url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/tests/test_greeting.py"
-        start="1" end="52" />
-
-  Run the test:
+  If you have multiple test files and want to run only one of them just pass the path to the file as an command line argument:
 
   ```bash
-  # Add near-pytest to your project
-  uv add near-pytest
-  
-  # Run the test
-  uv run pytest tests/test_greeting.py -v
+  uv run pytest tests/test_mod.py
   ```
+
+  :::
 
   </TabItem>
 </Tabs>
@@ -431,7 +425,7 @@ When you are ready to create a build of the contract run a one-line command depe
 
   ```bash
   # Build with nearc through the uv executor (no installation needed)
-  uvx nearc
+  uvx nearc contract.py
   ```
   
   The above command will compile your Python contract into WebAssembly (WASM) that can be deployed to the NEAR blockchain.
@@ -605,9 +599,9 @@ At the time of this writing, this example works with the following versions:
 - rustc: `1.81.0`
 - near-cli-rs: `0.17.0`
 - cargo-near: `0.13.2`
-- Python: `3.11`
-- near-sdk-py: `0.4.1`
-- uvx nearc: `0.1.0`
-- emscripten: `4.0.3` (required for Python contracts)
+- Python: `3.13`
+- near-sdk-py: `0.7.3`
+- uvx nearc: `0.9.2`
+- emscripten: `4.0.9` (required for Python contracts)
 
 :::

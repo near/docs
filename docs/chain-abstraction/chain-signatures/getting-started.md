@@ -15,9 +15,9 @@ Chain Signatures enhances blockchain interoperability, giving ownership of diver
 
 ## How does it work?
 
-When a NEAR account - could be a user or a **smart contract** - wants to interact with a foreign blockchain, it just need to follow four simple steps.
+When a NEAR account - could be a user or a **smart contract** - wants to interact with a foreign blockchain, it just need to follow four simple steps.qss
 
-![Chain Signatures](/docs/assets/chain-abstract-2.svg)
+![Chain Signatures](/docs/assets/chain-abstraction/chain-abstract-2.svg)
 _Chain signatures flow_
 
 #### 1. Deriving Foreign Addresses
