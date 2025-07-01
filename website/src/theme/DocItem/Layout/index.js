@@ -14,7 +14,6 @@ import ContentVisibility from '@theme/ContentVisibility';
 import styles from './styles.module.css';
 
 import { FeedbackComponent } from '../../../components/FeedbackComponent';
-import AIChat from '../../../components/AIChat';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -61,7 +60,6 @@ export default function DocItemLayout({ children }) {
             <DocItemPaginator />
             <DocItemFooter />
           </>}
-          <AIChat />
         </div>
       </div>
       {docTOC.desktop && <div className="col col--3">{docTOC.desktop}</div>}
