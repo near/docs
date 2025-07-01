@@ -6,7 +6,7 @@ sidebar_label: What is a Contract?
 
 Smart contracts are pieces of **executable code** that live in a NEAR account. They can **store data**, **perform transactions** in the account’s name, and **expose methods** so other accounts can interact with them.
 
-![img](/docs/assets/welcome-pages/contracts-landing.png)
+![img](/docs/assets/welcome-pages/4.smart-contracts.png)
 
 Developers can choose between using Javascript or Rust to write smart contracts in NEAR. Indistinctly from the language chosen, the contract will be compiled into WebAssembly, from which point it can be deployed and executed on the NEAR platform.
 
