@@ -214,14 +214,54 @@ h4 {
   line-height: 1.6;
 }
 
+// Mobile styles
 @media (max-width: 768px) {
   .landing-intro {
-    padding: 3rem 1rem 2rem 1rem;
-    margin-bottom: 3rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    margin-bottom: 1rem;
   }
   
   .landing-intro h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin: 0 auto 1rem auto;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+  
+  .landing-subtitle {
+    font-size: 1rem !important;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+  
+  .card__body p {
+    font-size: .9rem;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .card__body h3 {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+  
+  // Prevent container overflow while keeping words intact
+  .container,
+  .container-fluid {
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+  
+  // Only break very long URLs or technical terms
+  code, pre {
+    word-break: break-all;
+    overflow-wrap: break-word;
   }
 }
 
