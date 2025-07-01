@@ -558,15 +558,15 @@ li>ul {
   &::before {
     content: '→';
     position: absolute;
-    left: -1.5rem;
+    left: -2rem;
     opacity: 0;
     transition: all 0.2s ease;
-    color: var(--ifm-color-primary);
+    color: var(--ifm-color-primary)
   }
   
   &:hover::before {
     opacity: 1;
-    left: -1rem;
+    left: -1.25rem;
   }
 }
 

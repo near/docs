@@ -1,6 +1,6 @@
 <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" width="256" height="256">
   <desc>Smart Contract Icon - Dark Mode</desc>
-  <g transform="translate(16, 16) scale(11.2)">
+  <g transform="translate(32, 32) scale(11.2)">
     <path stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="m12.1878 12.649275 -0.6000000000000001 4.46685c-0.07500000000000001 0.52995 0.5249999999999999 0.908475 0.9750000000000001 0.52995l1.5 -1.5141749999999998 1.5 1.5141749999999998c0.375 0.378525 1.0499999999999998 0.075675 0.9750000000000001 -0.52995l-0.6000000000000001 -4.46685" stroke-width="1.25" fill="none"></path>
     <path stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M14.0625 13.222425c1.863975 0 3.375 -1.511025 3.375 -3.375s-1.511025 -3.3750150000000003 -3.375 -3.3750150000000003 -3.375 1.51104 -3.375 3.3750150000000003 1.511025 3.375 3.375 3.375Z" stroke-width="1.25" fill="none"></path>
     <path stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M14.0625 9.5475c-0.15000000000000002 0 -0.30000000000000004 0.15000000000000002 -0.30000000000000004 0.30000000000000004s0.15000000000000002 0.30000000000000004 0.30000000000000004 0.30000000000000004" stroke-width="1.25" fill="none"></path>

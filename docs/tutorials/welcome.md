@@ -17,8 +17,8 @@ import {Container, Card} from "@site/src/components/cards";
 
   <Container>
     <Card 
-      img="/img/Icons/home-light.svg"
-      title="Getting Started"
+      img="/img/Icons/near-light.svg"
+      title="Mastering NEAR"
       text="New to NEAR development? Start with our comprehensive introduction to building Web3 applications"
       links={{
               "Master Applications": "/tutorials/auction/introduction",

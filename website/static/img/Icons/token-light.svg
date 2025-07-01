@@ -1,10 +1,9 @@
-<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" width="256" height="256">
-  <desc>Token/Coin Icon - Light Mode</desc>
-  <g transform="translate(16, 16) scale(15.5)">
-    <g id="coin--accounting-billing-payment-cash-coin-currency-money-finance">
-      <path id="Ellipse 19" stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" d="M7 0.499996c3.5899 0 6.5 2.910154 6.5 6.500004 0 3.5899 -2.9101 6.5 -6.5 6.5C3.41015 13.5 0.5 10.5898 0.500001 7 0.500001 3.41014 3.41015 0.499995 7 0.499996Z" stroke-width="1" fill="none"></path>
-      <path id="Ellipse 21" stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" d="M7.08268 2.91655c2.2552 0.00001 4.08342 1.82821 4.08342 4.08342 0 2.2552 -1.82822 4.08343 -4.08342 4.08343 -2.25521 0 -4.08341 -1.82823 -4.08341 -4.08344 0 -2.2552 1.8282 -4.08341 4.08341 -4.08341Z" stroke-width="1" fill="none"></path>
-      <path id="Ellipse 22" stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" d="M7.08301 4.97945c1.11591 0 2.02054 0.90463 2.02054 2.02055" stroke-width="1" fill="none"></path>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <desc>Token Icon - Light Mode</desc>
+  <g transform="translate(25, 25) scale(4.4)">
+    <g id="contactless-payment">
+      <path id="Subtract" stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" d="M33.616 21.5c0.2514 -1.1265 0.384 -2.2978 0.384 -3.5 0 -8.58262 -7.2598 -16 -16 -16C9.16344 2 2 9.16344 2 18c0 9 7.41738 16 16 16 1.2022 0 2.3735 -0.1326 3.5 -0.384m10.0163 -7.0502c-1.2648 1.9918 -2.9579 3.6849 -4.9495 4.95" stroke-width="3" fill="none"></path>
+      <path id="Intersect" stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" d="M38.5669 16.4844c1.9917 1.265 3.6847 2.9581 4.9496 4.9499m2.0997 5.0658c0.2513 1.1265 0.3839 2.2978 0.3839 3.5 0 1.2023 -0.1326 2.3736 -0.3839 3.5m-2.0997 5.0659c-1.2649 1.9917 -2.9579 3.6849 -4.9496 4.9499m-5.0668 2.1003c-1.1264 0.2513 -2.2977 0.3839 -3.5 0.3839 -1.2022 0 -2.3735 -0.1326 -3.5 -0.3839m-5.0658 -2.0997c-1.9918 -1.2649 -3.6849 -2.9579 -4.9499 -4.9496" stroke-width="3" fill="none"></path>
     </g>
   </g>
 </svg> 
