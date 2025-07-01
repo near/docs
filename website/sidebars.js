@@ -49,7 +49,7 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Chain Abstraction',
+      label: 'Multi-Chain',
       collapsed: true,
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'chain-abstraction/what-is' },
@@ -495,7 +495,7 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Multichain',
+      label: 'Multi-Chain',
       collapsed: true,
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'tutorials/controlling-near-accounts/introduction' },
