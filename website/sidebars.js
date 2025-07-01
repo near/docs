@@ -352,10 +352,8 @@ const sidebar = {
       link: { type: 'doc', id: 'tutorials/examples/guest-book' },
       items: [
         'tutorials/examples/guest-book',
-        'tutorials/examples/donation',
         'tutorials/templates/marketplace',
         'tutorials/examples/frontend-multiple-contracts',
-        'tutorials/templates/blog',
       ],
     },
     {
@@ -365,10 +363,12 @@ const sidebar = {
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'tutorials/examples/count-near' },
       items: [
+        'tutorials/examples/donation',
         'tutorials/examples/count-near',
         'tutorials/examples/xcc',
         'tutorials/examples/coin-flip',
         'tutorials/templates/minter',
+        'tutorials/templates/blog',
         {
           'Advanced Patterns': [
             'tutorials/examples/factory',

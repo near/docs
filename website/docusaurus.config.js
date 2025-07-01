@@ -134,6 +134,10 @@ const config = {
           label: 'Reference',
           position: 'left',
           items: [
+            {
+              type: 'html',
+              value: '<b><small>Developer Tools</small></b>',
+            },
             { label: 'NEAR API', to: '/tools/near-api' },
             { label: 'NEAR SDK', to: '/tools/sdk' },
             { label: 'NEAR CLI', to: '/tools/near-cli' },
@@ -141,6 +145,10 @@ const config = {
             {
               type: 'html',
               value: '<hr />',
+            },
+            {
+              type: 'html',
+              value: '<b><small>Additional NEAR Docs</small></b>',
             },
             {
               href: 'https://near.github.io/nearcore/',
@@ -171,6 +179,10 @@ const config = {
           position: 'left',
           items: [
             {
+              type: 'html',
+              value: '<b><small>Developer Support</small></b>',
+            },
+            {
               href: 'https://discord.gg/GZ7735Xjce',
               label: 'Discord',
             },
@@ -181,6 +193,10 @@ const config = {
             {
               type: 'html',
               value: '<hr />',
+            },
+            {
+              type: 'html',
+              value: '<b><small>Educational Courses</small></b>',
             },
             {
               href: 'https://agorapp.dev/catalog/course?difficulty=&chains=near',
