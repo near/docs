@@ -18,7 +18,7 @@ import {Container, Card} from "@site/src/components/cards";
 
   <Container>
     <Card 
-      img="/img/Icons/near-light.svg"
+      img="/img/icons/near-light.svg"
       title="New to NEAR?"
       text="NEAR is a layer-1 blockchain built for scale and multichain compatibility. Battle-tested with 13M+ transaction peaks and 5 years of zero downtime"
       links={{
@@ -27,7 +27,7 @@ import {Container, Card} from "@site/src/components/cards";
               "Transactions": "/protocol/transactions"    }}
     />
     <Card
-      img="/img/Icons/ai-light.svg"
+      img="/img/icons/ai-light.svg"
       title="AI Native Infrastructure"
       text="NEAR is the execution layer for AI-native apps—enabling agents to own assets, make decisions, and transact freely across networks"
       links={{
@@ -37,7 +37,7 @@ import {Container, Card} from "@site/src/components/cards";
       }}
     />
     <Card 
-      img="/img/Icons/multichain-light.svg"
+      img="/img/icons/multichain-light.svg"
       title="Multi-Chain"
       text="Tap into any blockchain with NEAR's chain abstraction layer"
       links={{
@@ -50,7 +50,7 @@ import {Container, Card} from "@site/src/components/cards";
     
   <Container>
     <Card 
-      img="/img/Icons/app-light.svg"
+      img="/img/icons/app-light.svg"
       title="Web3 Applications"
       text="Create modern web applications that interact with the NEAR blockchain. Learn frontend integration and user experience best practices"
       links={{
@@ -59,7 +59,7 @@ import {Container, Card} from "@site/src/components/cards";
         "Use a Contract in Your Frontend": "/web3-apps/integrate-contracts",    }}
     />
     <Card 
-      img="/img/Icons/contract-light.svg"
+      img="/img/icons/contract-light.svg"
       title="Smart Contracts"
       text="Deploy and interact with smart contracts on NEAR. From basic concepts to advanced patterns and security best practices"
       links={{
@@ -68,7 +68,7 @@ import {Container, Card} from "@site/src/components/cards";
         "Contract's Anatomy": "/smart-contracts/anatomy/",  }}
     />
     <Card 
-      img="/img/Icons/token-light.svg"
+      img="/img/icons/token-light.svg"
       title="Tokens and Primitives"
       text="Learn about FTs, NFTs, DAOs and everything you need to build an application on NEAR"
       links={{
