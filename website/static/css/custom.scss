@@ -214,14 +214,27 @@ h4 {
   line-height: 1.6;
 }
 
+// Mobile styles
 @media (max-width: 768px) {
   .landing-intro {
-    padding: 3rem 1rem 2rem 1rem;
-    margin-bottom: 3rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    margin-bottom: 1rem;
   }
   
   .landing-intro h1 {
     font-size: 2.5rem;
+    margin: 0 auto 1rem auto;
+  }
+  
+  .landing-subtitle {
+    font-size: 1rem !important;
+  }
+  .card__body p {
+    font-size: .9rem;
+  }
+  .card__body h3 {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
   }
 }
 
