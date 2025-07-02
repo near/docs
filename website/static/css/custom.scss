@@ -875,20 +875,6 @@ a.navbar__link.false::after {
   top: 0;
 }
 
-.dropdown__menu {
-  display: flex;
-}
-
-.dropdown__menu__left {
-  display:flex;
-  flex-direction: column;
-}
-
-.dropdown__menu__right {
-  display: flex;
-  flex-direction: column;
-}
-
 .theme-doc-toc-mobile {
   display: none;
 }

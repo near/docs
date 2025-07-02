@@ -10,7 +10,8 @@ function DropdownItem({to, label, description, onMouseOver, onMouseOut, isCatego
   return (
     <li 
       onMouseOver={onMouseOver} 
-      onMouseOut={onMouseOut} 
+      onMouseOut={onMouseOut}
+      onClick={onMouseOver}
       className={clsx(
         styles.dropDownItem,
         isCategory && styles.categoryItem,
@@ -102,6 +103,7 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
       })}
       onMouseEnter={handleNavbarItemEnter}
       onMouseLeave={handleMenuLeave}
+      onClick={handleNavbarItemEnter}
     >
       <NavbarNavLink
         aria-haspopup="true"
@@ -134,7 +136,7 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
                 <DropdownItem 
                   key={i}
                   {...childItemProps}
-                  isCategory={true}
+                  isCategory={childItemProps.subitems}
                   isSelected={selectedCategoryIndex === i}
                   isDimmed={selectedCategoryIndex !== -1 && selectedCategoryIndex !== i}
                   onMouseOver={() => handleCategoryHover(childItemProps, i)}
@@ -220,6 +222,7 @@ function DropdownNavbarItemMobile({
     </li>
   );
 }
+
 export default function DropdownNavbarItem({ mobile = false, ...props }) { 
   const Comp = mobile ? DropdownNavbarItemMobile : DropdownNavbarItemDesktop;
   return <Comp {...props} />;

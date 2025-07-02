@@ -3,6 +3,7 @@
 }
 
 .dropdownMenu {
+  display: flex;
   max-height: 80vh;
   padding: 0;
   margin: 0;
@@ -21,14 +22,18 @@
 }
 
 .dropdownMenuLeft {
-  min-width: 311px !important;
+  display: flex;
+  flex-direction: column;
+  width: 350px !important;
   background: var(--ifm-color-emphasis-50);
   border-right: 1px solid var(--ifm-color-emphasis-200);
   padding: 0.75rem 0;
 }
 
 .dropdownMenuRight {
-  width: 440px;
+  display: flex;
+  flex-direction: column;
+  width: 400px !important;
   padding: 0.75rem 0;
   background: var(--ifm-background-surface-color, #ffffff);
 }
