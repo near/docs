@@ -6,27 +6,28 @@ import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
 import NavbarItem from '@theme/NavbarItem';
 import styles from './styles.module.css';
 
-function DropdownItem({to, label, description, onMouseOver, onMouseOut, isCategory = false, isSelected = false, isDimmed = false, ...props}){
+function DropdownItem({ to, label, icon, description, onMouseOver, onMouseOut, isCategory = false, isSelected = false, isDimmed = false, ...props }) {
   return (
-    <li 
-      onMouseOver={onMouseOver} 
+    <li
+      onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}
       onClick={onMouseOver}
       className={clsx(
         styles.dropDownItem,
         isCategory && styles.categoryItem,
-        !isCategory && styles.subItem,
-        isSelected && styles.selectedCategory,
+        isCategory && isSelected && styles.selectedCategory,
         isDimmed && styles.dimmed
       )}
     >
       <a href={to} className={clsx(styles.dropdownItemLink)}>
         <div className={clsx(styles.dropdownItemContainer)}>
-            <img 
-              className={clsx(styles.dropdownItemImg)} 
-              src={`https://unpkg.com/simple-icons@v15/icons/near.svg`} 
-              alt={label} 
+          {!isCategory &&
+            <img
+              className={clsx(styles.dropdownItemImg)}
+              src={icon}
+              alt={label}
             />
+          }
           <div className={clsx(styles.dropdownItemText)}>
             <span className={clsx(styles.dropdownItemLabel)}>{label}</span>
             <span className={clsx(styles.dropdownItemDescription)}>{description}</span>
@@ -125,15 +126,15 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
       >
         {props.children ?? props.label}
       </NavbarNavLink>
-      
+
       {showDropdown && (
-        <div 
+        <div
           className={clsx(styles.dropdownMenu, 'dropdown__menu')}
         >
           <div className={clsx(styles.dropdownMenuLeft)}>
             <ul>
               {items.map((childItemProps, i) => (
-                <DropdownItem 
+                <DropdownItem
                   key={i}
                   {...childItemProps}
                   isCategory={childItemProps.subitems}
@@ -144,16 +145,16 @@ function DropdownNavbarItemDesktop({ items, position, className, onClick, ...pro
               ))}
             </ul>
           </div>
-          
+
           {subitems.length > 0 && (
             <>
               <div className={clsx(styles.menuDivider)}></div>
               <div className={clsx(styles.dropdownMenuRight)}>
                 <ul>
                   {subitems.map((sub, i) => (
-                    <DropdownItem 
+                    <DropdownItem
                       key={i}
-                      {...sub} 
+                      {...sub}
                       isCategory={false}
                     />
                   ))}
@@ -223,7 +224,7 @@ function DropdownNavbarItemMobile({
   );
 }
 
-export default function DropdownNavbarItem({ mobile = false, ...props }) { 
+export default function DropdownNavbarItem({ mobile = false, ...props }) {
   const Comp = mobile ? DropdownNavbarItemMobile : DropdownNavbarItemDesktop;
   return <Comp {...props} />;
 }

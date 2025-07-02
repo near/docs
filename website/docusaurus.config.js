@@ -1,3 +1,5 @@
+import { icons } from 'lucide-react';
+
 // @ts-check
 const path = require('path');
 const changelogs = require('./src/utils/changelogs.json');
@@ -215,25 +217,21 @@ const config = {
           label: 'Reference',
           position: 'left',
           items: [
-            {  label: 'RPC', to: '/api/rpc/introduction', description: "The main gateway to interact with NEAR Protocol" },
             {
               label: 'Core Libraries', to: '/tools/welcome', description: "Core libraries to build on NEAR Protocol",
               subitems: [
-                { label: 'NEAR API', to: '/tools/near-api', description: "Integrate NEAR into your application with our API libraries" },
-                { label: 'NEAR SDK', to: '/tools/sdk', description: "Build smart contracts using your favorite programming language" },
-                { label: 'NEAR CLI', to: '/tools/near-cli', description: "Interact with NEAR Protocol using our command line interface" },
-                { label: 'Wallet Selector', to: '/tools/wallet-selector', description: "Integrate multiple wallets into your application" },
-                { label: 'Clear Contract State', to: '/tools/clear-state', description: "Clear the state of a contract with this simple CLI tool" },
+                { label: 'NEAR API', to: '/tools/near-api', description: "Integrate NEAR into your application with our API libraries", icon: '/docs/assets/welcome-pages/quickstart.png' },
+                { label: 'NEAR SDK', to: '/tools/sdk', description: "Build smart contracts using your favorite programming language", icon: '/docs/assets/welcome-pages/smartcontract.png' },
+                { label: 'NEAR CLI', to: '/tools/near-cli', description: "Interact with NEAR Protocol using our command line interface", icon: '/docs/assets/welcome-pages/near-cli.png' },
+                { label: 'Wallet Selector', to: '/tools/wallet-selector', description: "Integrate multiple wallets into your application", icon: '/docs/assets/welcome-pages/multiple.png' },
               ]
             },
             {
               label: 'Data Tools', to: '#', description: "Services to access and monitor on-chain data",
               subitems: [
-                { label: 'Explorers', to: '/tools/explorer', description: "Explore transactions through simple web interfaces" },
-                { label: 'FastNEAR API', to: '/tools/ecosystem-apis/fastnear', description: "Access on-chain data through a simple API" },
-                { label: 'NearBlocks API', to: '/tools/ecosystem-apis/nearblocks', description: "Access on-chain data through a simple API" },
-                { label: 'Pikespeak API', to: '/tools/ecosystem-apis/pikespeak', description: "Access on-chain data through a simple API" },
-                { label: 'Indexers', to: '/tools/indexing', description: "Build custom indexers to query on-chain data" },
+                { label: 'Explorers', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/docs/assets/welcome-pages/update.png' },
+                { label: 'Data API', to: '/tools/ecosystem-apis/', description: "Access on-chain data through simple APIs", icon: '/docs/assets/welcome-pages/experiment.png' },
+                { label: 'Indexers', to: '/tools/indexing', description: "Build custom indexers to query on-chain data", icon: '/docs/assets/welcome-pages/blocks.png' },
               ]
             },
           ],
@@ -243,20 +241,27 @@ const config = {
           label: 'Community',
           position: 'left',
           items: [
-            { label: 'Developer Support', to: '#', description: "Get help from the NEAR community",
+            { 
+              label: 'Developer Support', to: '#', description: "Get help from the NEAR community",
               subitems: [
-                { label: 'Telegram', to: 'https://t.me/neardev', description: "Join our Telegram channel for developers" },
-                { label: 'Discord', to: 'https://discord.gg/nearprotocol', description: "Join our Discord server to get help from the community" },
+                { label: 'Telegram', to: 'https://t.me/neardev', description: "Join our Telegram channel for developers", icon: '/img/icons/telegram.svg' },
+                { label: 'Discord', to: 'https://discord.gg/nearprotocol', description: "Join our Discord server to get help from the community", icon: '/img/icons/discord.svg' },
               ]
              },
             { label: 'Educational Courses', to: '#', description: "Courses created by the NEAR community",
               subitems: [
-                { label: 'AgorApp', to: 'https://agorapp.dev/catalog/course?difficulty=&chains=near', description: "Join our Telegram channel for developers" },
-                { label: 'Learn NEAR Club', to: 'https://learnnear.club/', description: "All inclusive hands-on onboarding platform to NEAR Protocol" },
+                { label: 'AgorApp', to: 'https://agorapp.dev/catalog/course?difficulty=&chains=near', description: "Your one-stop platform for learning All Things Web3", icon: '/img/icons/agorApp.svg' },
+                { label: 'Learn NEAR Club', to: 'https://learnnear.club/', description: "All inclusive hands-on onboarding platform to NEAR Protocol", icon: '/img/icons/lnc.jpg' },
               ]
              },
           ],
         },
+        {
+          to: '/api/rpc/introduction',
+          label: 'RPC',
+          activeBaseRegex: '/api/rpc',
+        },
+        { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {
           type: 'html',
           position: 'right',

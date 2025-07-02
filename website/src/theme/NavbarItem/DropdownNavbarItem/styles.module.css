@@ -48,7 +48,11 @@
 }
 
 .dropDownItem:hover {
-  background: var(--ifm-color-emphasis-100);
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+}
+
+[data-theme='dark'] .dropDownItem:hover {
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%);
 }
 
 .dropdownItemLink {
@@ -59,8 +63,8 @@
 }
 
 .dropdownItemImg {
-  height: 20px;
-  width: 20px;
+  height: 36px;
+  width: 36px;
   margin: 0 0.75rem 0 0;
   opacity: 0.6;
   transition: opacity 0.15s ease;
@@ -103,7 +107,6 @@
 /* Category items (left column) */
 .categoryItem {
   position: relative;
-  padding-right: 1rem; /* Fixed space for arrow */
 }
 
 .categoryItem .dropdownItemText {
@@ -113,11 +116,11 @@
 .categoryItem::after {
   content: '›';
   position: absolute;
-  right: 1.5rem;
+  right: .8rem;
   top: 50%;
   transform: translateY(-50%);
   color: var(--ifm-color-emphasis-600);
-  font-size: 1rem;
+  font-size: 1.3rem;
   width: 1rem;
   text-align: center;
   transition: transform 0.15s ease;
@@ -132,7 +135,8 @@
 }
 
 .selectedCategory {
-  background: var(--ifm-color-emphasis-200) !important;
+  background: var(--ifm-color-emphasis-200);
+  border-left: 3px solid #0003;
 }
 
 .categoryItem.dimmed {
@@ -142,20 +146,6 @@
 
 .categoryItem.dimmed:hover {
   opacity: 1;
-}
-
-/* Subitem styles (right column) */
-.subItem {
-  margin: 0 .5rem;
-  border-radius: 6px;
-  border-left: none;
-  padding: 0.75rem 1.5rem;
-}
-
-.subItem:hover {
-  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-  border-left: none;
-  transform: none;
 }
 
 /* Divider between sections */
@@ -176,8 +166,4 @@
 [data-theme='dark'] .dropdownMenuLeft {
   background: var(--ifm-color-emphasis-100);
   border-right-color: var(--ifm-color-emphasis-300);
-}
-
-[data-theme='dark'] .subItem:hover {
-  background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%);
 }
