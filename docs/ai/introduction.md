@@ -1,7 +1,7 @@
 ---
 id: introduction
 title: AI and NEAR
-sidebar_label: AI and NEAR
+sidebar_label: Introduction
 ---
 
 NEAR's vision is to create a future of **User-Owned AI**, where AI and agents serve their users, not corporations. For this vision to become a reality, AI must protect user data, prioritize the user's interests, and operate on a sustainable, user-aligned economic model. The NEAR ecosystem has multiple technologies to enable User-Owned AI.
