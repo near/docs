@@ -113,8 +113,8 @@ const config = {
     navbar: {
       logo: {
         alt: 'NEAR Logo',
-        src: 'img/near_icon.svg',
-        srcDark: 'img/near_icon.svg',
+        src: 'img/near_logo.svg',
+        srcDark: 'img/near_logo_white.svg',
       },
       items: [
         // {
