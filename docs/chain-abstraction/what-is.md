@@ -6,11 +6,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
 
-![img](/docs/assets/welcome-pages/chain-abstraction-landing.png)
-
 # What is Chain Abstraction?
 
 Blockchain development today faces a critical challenge: users need to understand complex blockchain concepts, manage multiple wallets, and deal with different networks just to use basic applications. Chain abstraction solves this by making blockchain technology invisible to end users while preserving all of the underlying benefits.
+
+![img](/docs/assets/welcome-pages/2.chain-abstraction.png)
 
 ## Why Chain Abstraction Matters
 

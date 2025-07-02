@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <rect width="256" height="256" fill="none"/>
+  <desc>
+    App Window Code Streamline Icon: https://streamlinehq.com
+  </desc>
+  <g transform="translate(20, 20) scale(0.85)">
+    <g>
+      <path d="m120 172 45 0" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+      <path d="m75 112 30 30 -30 30" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+    </g>
+    <g>
+      <path d="M22.5 20h195s15 0 15 15v170s0 15 -15 15H22.5s-15 0 -15 -15v-170S7.5 20 22.5 20" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+      <path d="m7.5 65 225 0" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
+    </g>
+  </g>
+</svg>
