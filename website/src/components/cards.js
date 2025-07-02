@@ -12,7 +12,7 @@ const Element = styled.div`
 `;
 
 const Text = styled.p`
-  font-size: small;
+  font-size: 0.87rem;
   margin-bottom: 0.75rem;
 `;
 
