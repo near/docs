@@ -12,7 +12,11 @@ const sidebar = {
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'protocol/basics' },
       items: [
-        'protocol/basics',
+        {
+          type: 'link',
+         href: '/protocol/basics',
+         label: 'Introduction',
+        },
         {
           type: 'category',
           label: 'Accounts / Contracts',
@@ -54,7 +58,11 @@ const sidebar = {
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'chain-abstraction/what-is' },
       items: [
-        'chain-abstraction/what-is',
+        {
+          type: 'link',
+          label: 'Introduction',
+          href: '/chain-abstraction/what-is',
+        },
         'chain-abstraction/intents/overview',
         {
           'Chain Signatures': [
@@ -88,6 +96,7 @@ const sidebar = {
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'ai/introduction' },
       items: [
+        'ai/introduction',
         {
           "Shade Agents": [
             "ai/shade-agents/introduction",
@@ -126,6 +135,11 @@ const sidebar = {
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'smart-contracts/what-is' },
       items: [
+        {
+          'type': 'link',
+          'label': 'Introduction',
+          'href': '/smart-contracts/what-is',
+        },
         'smart-contracts/quickstart',
         {
           'Anatomy of a Contract': [
@@ -196,6 +210,11 @@ const sidebar = {
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'web3-apps/what-is' },
       items: [
+        {
+          'type': 'link',
+          'label': 'Introduction',
+          'href': '/web3-apps/what-is',
+        },
         'web3-apps/quickstart',
         {
           Frontends: ['web3-apps/integrate-contracts', 'web3-apps/ethereum-wallets'],
@@ -215,6 +234,7 @@ const sidebar = {
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'primitives/what-is' },
       items: [
+        { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
         {
           type: 'category',
           label: 'Fungible Tokens (FT)',
@@ -263,6 +283,11 @@ const sidebar = {
       className: 'sidebar-main-category',
       link: { type: 'doc', id: 'data-infrastructure/what-is' },
       items: [
+        {
+          type: 'link',
+          label: 'Introduction',
+          href: '/data-infrastructure/what-is',
+        },
         'tools/explorer',
         'tools/ecosystem-apis/fastnear',
         'tools/indexing',
