@@ -4,6 +4,8 @@ title: NEAR Accounts
 sidebar_label: Overview
 ---
 
+import NetworkMarquee from '@site/src/components/NetworkMarquee';
+
 Users participate in the NEAR ecosystem through their NEAR accounts. These accounts are identified by a [unique address](./account-id.md), can optionally hold a [smart contract](../smart-contracts/what-is.md), and are controlled through [Access Keys](./access-keys.md).
 
 By signing [transactions](./transactions.md) with their account, users can:
@@ -38,6 +40,9 @@ NEAR accounts can have multiple [keys](access-keys.md), each with their own set 
 
 #### [Simple to Develop Smart Contracts](../smart-contracts/what-is.md)
 NEAR accounts can optionally hold an application - known as a [smart contract](../smart-contracts/what-is.md) - which can be written in Javascript or Rust.
+
+## Multi-Chain Connectivity with NEAR
+<NetworkMarquee />
 
 ---
 
