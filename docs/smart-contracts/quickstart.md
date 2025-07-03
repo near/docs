@@ -97,6 +97,42 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releas
 ```
 
 </TabItem>
+<TabItem value="go" label="🐹 GO">
+
+```bash
+# Install Go (version <= 1.23.9) using GVM: https://github.com/moovweb/gvm 
+# or the official Go installation method: https://go.dev/doc/install
+
+# GVM Go installation method (recommended for managing different versions of Go)
+sudo apt update
+sudo apt install gcc make
+sudo apt install bison
+bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+gvm install go1.23.9 -B
+gvm use go1.23.9 --default
+
+# Install TinyGo: https://tinygo.org/getting-started/install/
+
+# Linux AMD64 (x86_64)
+wget https://github.com/tinygo-org/tinygo/releases/download/v0.37.0/tinygo_0.37.0_amd64.deb
+sudo dpkg -i tinygo_0.37.0_amd64.deb
+
+# Linux ARM64
+wget https://github.com/tinygo-org/tinygo/releases/download/v0.37.0/tinygo_0.37.0_arm64.deb
+sudo dpkg -i tinygo_0.37.0_arm64.deb
+
+# macOS
+brew tap tinygo-org/tools
+brew install tinygo
+
+# Install NEAR Go CLI to manage and interact with smart contracts easily
+# Alternatively, download it from GitHub Releases and move it manually to your bin folder.
+
+curl -LO https://github.com/vlmoon99/near-cli-go/releases/latest/download/install.sh && bash install.sh
+
+```
+</TabItem>
+
 </Tabs>
 
 :::note
@@ -231,6 +267,26 @@ Ensure you have [Emscripten](https://emscripten.org/) properly installed and ava
 :::
 
 </TabItem>
+<TabItem value="go" label="🐹 GO">
+
+Create a new project using `near-go create`:
+
+```bash
+near-go create -p "hello-world" -m "github.com/near/hello-world" -t "smart-contract-empty"
+cd hello-world/contract
+```
+
+This creates a Go project with the following structure:
+
+```bash
+hello-world/contract
+├── go.mod
+├── go.sum
+└── main.go
+```
+
+</TabItem>
+
 </Tabs>
 
 
@@ -264,6 +320,15 @@ The `Hello World` smart contract stores a greeting in its state, and exposes two
     <Github fname="contract.py" language="python"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/contract.py"
             start="3" end="30" />
+
+  </TabItem>
+    <TabItem value="go" label="🐹 GO">
+
+  Edit a `main.go` file for your contract:
+
+    <Github fname="main.go" language="go"
+            url="https://github.com/vlmoon99/near-sdk-go/blob/main/examples/greeting/contract/main.go"
+            start="1" end="77" />
 
   </TabItem>
 </Tabs>
@@ -320,6 +385,34 @@ Building and testing the contract is as simple as running the `test` command. Th
   :::
 
   </TabItem>
+
+  <TabItem value="go" label="🐹 GO">
+
+  Create a test file for your contract (make sure you are inside the hello-world/contract directory) :
+
+  ```bash
+  # Create a tests directory
+  touch main_test.go
+  ```
+
+  Add the following content to `main_test.go`:
+
+  <Github fname="contract.py" language="python"
+        url="https://github.com/vlmoon99/near-sdk-go/blob/main/examples/greeting/contract/main_test.go"
+        start="1" end="51" />
+
+  Run the test (make sure you are inside the hello-world/contract directory):
+
+  ```bash
+  # Test package level
+  near-go test package
+
+  # Test project level
+  near-go test project
+  ```
+
+  </TabItem>
+
 </Tabs>
 
 In the background, these commands are calling the build tools for each language and using a [Sandbox](./testing/integration-test.md) to test the contract.
@@ -448,6 +541,12 @@ When you are ready to create a build of the contract run a one-line command depe
   :::
 
   </TabItem>
+
+  <TabItem value="go" label="🐹 GO">
+  ```bash
+  near-go build
+  ```
+  </TabItem>
 </Tabs>
 
 ---
@@ -515,6 +614,28 @@ Having our account created, we can now deploy the contract:
       </TabItem>
     </Tabs>
   </TabItem>
+    <TabItem value="go" label="🐹 GO">
+    <Tabs groupId="cli-tabs">
+      <TabItem value="near-go-cli" label="Near-Go-Cli">
+        ```bash
+        #Run (make sure you are inside the hello-world/contract directory)
+      
+        near-go build && near-go deploy -id "<created-account>" -n "testnet"
+        ```
+      </TabItem>
+      <TabItem value="short" label="Short">
+        ```bash
+        near deploy <created-account> ./main.wasm
+        ```
+      </TabItem>
+      <TabItem value="full" label="Full">
+        ```bash
+        near contract deploy <created-account> use-file ./main.wasm without-init-call network-config testnet sign-with-keychain send
+        ```
+      </TabItem>
+    </Tabs>
+  </TabItem>
+
 </Tabs>
 
 **Congrats**! Your contract now lives in the NEAR testnet network.

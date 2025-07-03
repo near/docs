@@ -73,6 +73,41 @@ class ExampleContract(Contract):
 
 </TabItem>
 
+<TabItem value="go" label="🐹 GO">
+
+```go
+package main
+
+import (
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+//go:export ExampleTransferToken
+func ExampleTransferToken() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		to, err := input.JSON.GetString("to")
+		if err != nil {
+			return err
+		}
+		rawAmount, err := input.JSON.GetString("amount")
+		if err != nil {
+			return err
+		}
+
+		amount, _ := types.U128FromString(rawAmount)
+
+		promiseBuilder.CreateBatch(to).
+			Transfer(amount)
+		return nil
+	})
+}
+
+```
+
+</TabItem>
+
 </Tabs>
 
 :::tip Why is there no callback?
@@ -215,6 +250,55 @@ class ExampleContract(Contract):
 
 </TabItem>
 
+<TabItem value="go" label="🐹 GO">
+
+```go
+package main
+
+import (
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	"github.com/vlmoon99/near-sdk-go/env"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+//go:export ExampleFunctionCall
+func ExampleFunctionCall() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		gas := uint64(types.ONE_TERA_GAS * 10)
+		accountId := "hello-nearverse.testnet"
+
+		promiseBuilder.NewCrossContract(accountId).
+			Gas(gas).
+			Call("set_greeting", map[string]string{
+				"message": "howdy",
+			}).
+			Then("ExampleFunctionCallCallback", map[string]string{})
+		return nil
+	})
+}
+
+//go:export ExampleFunctionCallCallback
+func ExampleFunctionCallCallback() {
+	contractBuilder.HandlePromiseResult(func(result *promiseBuilder.PromiseResult) error {
+		if result.Success {
+			env.LogString("Callback success")
+			if len(result.Data) > 0 {
+				env.LogString("Result: " + string(result.Data))
+			}
+		} else {
+			env.LogString("Callback failed")
+			if len(result.Data) > 0 {
+				env.LogString("Error: " + string(result.Data))
+			}
+		}
+		return nil
+	})
+}
+
+```
+</TabItem>
+
 </Tabs>
 
 :::warning
@@ -301,6 +385,39 @@ class ExampleContract(Contract):
             .transfer(MIN_STORAGE)
 ```
 
+</TabItem>
+<TabItem value="go" label="🐹 GO">
+
+```go
+package main
+
+import (
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	"github.com/vlmoon99/near-sdk-go/env"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+//go:export ExampleCreateSubaccount
+func ExampleCreateSubaccount() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		prefix, err := input.JSON.GetString("prefix")
+		if err != nil {
+			return err
+		}
+
+		currentAccountId, _ := env.GetCurrentAccountId()
+		subaccountId := prefix + "." + currentAccountId
+		amount, _ := types.U128FromString("1000000000000000000000") //0.001Ⓝ
+
+		promiseBuilder.CreateBatch(subaccountId).
+			CreateAccount().
+			Transfer(amount)
+		return nil
+	})
+}
+
+```
 </TabItem>
 
 </Tabs>
@@ -412,7 +529,50 @@ class ExampleContract(Contract):
 ```
 
 </TabItem>
+<TabItem value="go" label="🐹 GO">
 
+```go
+package main
+
+import (
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+//go:export ExampleCreateAccount
+func ExampleCreateAccount() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		accountId, err := input.JSON.GetString("account_id")
+		if err != nil {
+			return err
+		}
+
+		publicKey, err := input.JSON.GetString("public_key")
+		if err != nil {
+			return err
+		}
+
+		amount, _ := types.U128FromString("2000000000000000000000") //0.002Ⓝ
+		gas := uint64(200 * types.ONE_TERA_GAS)
+
+		//publicKey (base58) - EG7JhmQybCXrbXiitxsCNStPoLwakvFjgHGCNf1Wwfnt (generate your own for testing)
+		//accountId - nearsdkdocs.testnet (write your own for testing)
+
+		createArgs := map[string]string{
+			"new_account_id": accountId,
+			"new_public_key": publicKey,
+		}
+
+		promiseBuilder.CreateBatch("testnet").
+			FunctionCall("create_account", createArgs, amount, gas)
+		return nil
+	})
+}
+
+```
+
+</TabItem>
 </Tabs>
 
 ---
@@ -477,7 +637,43 @@ class ExampleContract(Contract):
 ```
 
 </TabItem>
+<TabItem value="go" label="🐹 GO">
 
+```go
+package main
+
+import (
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	"github.com/vlmoon99/near-sdk-go/env"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+//go:embed status_message_go.wasm
+var contractWasm []byte
+
+//go:export ExampleDeployContract
+func ExampleDeployContract() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		prefix, err := input.JSON.GetString("prefix")
+		if err != nil {
+			return err
+		}
+
+		currentAccountId, _ := env.GetCurrentAccountId()
+		subaccountId := prefix + "." + currentAccountId
+		amount, _ := types.U128FromString("1100000000000000000000000") //1.1Ⓝ
+
+		promiseBuilder.CreateBatch(subaccountId).
+			CreateAccount().
+			Transfer(amount).
+			DeployContract(contractWasm)
+		return nil
+	})
+}
+```
+
+</TabItem>
 </Tabs>
 
 :::tip
@@ -573,7 +769,43 @@ class ExampleContract(Contract):
 ```
 
 </TabItem>
+<TabItem value="go" label="🐹 GO">
 
+```go
+package main
+
+import (
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	"github.com/vlmoon99/near-sdk-go/env"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+//go:export ExampleAddKeys
+func ExampleAddKeys() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		prefix, err := input.JSON.GetString("prefix")
+		if err != nil {
+			return err
+		}
+		publicKey, err := input.JSON.GetString("public_key")
+		if err != nil {
+			return err
+		}
+		currentAccountId, _ := env.GetCurrentAccountId()
+		subaccountId := prefix + "." + currentAccountId
+		amount, _ := types.U128FromString("1000000000000000000000") //0.001Ⓝ
+
+		promiseBuilder.CreateBatch(subaccountId).
+			CreateAccount().
+			Transfer(amount).
+			AddFullAccessKey([]byte(publicKey), 0)
+		return nil
+	})
+}
+
+```
+</TabItem>
 </Tabs>
 
 Notice that what you actually add is a "public key". Whoever holds its private counterpart, i.e. the private-key, will be able to use the newly access key.
@@ -683,7 +915,60 @@ class ExampleContract(Contract):
 ```
 
 </TabItem>
+<TabItem value="go" label="🐹 GO">
 
+```go
+package main
+
+import (
+	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
+	"github.com/vlmoon99/near-sdk-go/env"
+	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+//go:export ExampleCreateDeleteAccount
+func ExampleCreateDeleteAccount() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+		prefix, err := input.JSON.GetString("prefix")
+		if err != nil {
+			return err
+		}
+
+		beneficiary, err := input.JSON.GetString("beneficiary")
+		if err != nil {
+			return err
+		}
+		currentAccountId, _ := env.GetCurrentAccountId()
+		subaccountId := prefix + "." + currentAccountId
+		amount, _ := types.U128FromString("1000000000000000000000") //0.001Ⓝ
+
+		promiseBuilder.CreateBatch(subaccountId).
+			CreateAccount().
+			Transfer(amount).
+			DeleteAccount(beneficiary)
+		return nil
+	})
+}
+
+//go:export ExampleSelfDeleteAccount
+func ExampleSelfDeleteAccount() {
+	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
+
+		beneficiary, err := input.JSON.GetString("beneficiary")
+		if err != nil {
+			return err
+		}
+		currentAccountId, _ := env.GetCurrentAccountId()
+
+		promiseBuilder.CreateBatch(currentAccountId).
+			DeleteAccount(beneficiary)
+		return nil
+	})
+}
+
+```
+</TabItem>
 </Tabs>
 
 :::warning Token Loss
