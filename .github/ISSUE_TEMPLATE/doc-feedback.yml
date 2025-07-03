@@ -1,0 +1,77 @@
+name: 💬 Documentation Feedback
+description: Provide feedback or suggestions for improving docs.near.org
+title: "[FEEDBACK] "
+labels: ["documentation", "feedback"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to help us improve our documentation! 🙏
+        Use this template to share feedback, suggestions, or ideas for making our docs better.
+        
+  - type: input
+    id: page-url
+    attributes:
+      label: Page URL
+      placeholder: https://docs.near.org/<path>
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: feedback_type
+    attributes:
+      label: "Feedback Type"
+      options:
+        - "General Improvement Suggestion"
+        - "User Experience Enhancement"
+        - "Content Organization"
+        - "Writing Style/Clarity"
+        - "Additional Examples Needed"
+        - "Visual/Design Feedback"
+        - "Other"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: current_experience
+    attributes:
+      label: "Current Experience"
+      placeholder: "Describe your current experience with this documentation. What works well? What could be better?"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: "Your Suggestion"
+      placeholder: "What specific improvements would you like to see? How would this make the documentation better?"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: use_case
+    attributes:
+      label: "Use Case"
+      placeholder: "What were you trying to accomplish when you encountered this? Who else might benefit from this improvement?"
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "Impact Level"
+      options:
+        - "🔴 High : Significantly impacts user experience"
+        - "🟡 Medium : Noticeable improvement opportunity"
+        - "🟢 Low : Nice to have enhancement"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "Additional Context"
+      placeholder: "Any other relevant information, examples, or references that might help?"
+    validations:
+      required: false 
