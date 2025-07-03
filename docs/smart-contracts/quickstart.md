@@ -386,9 +386,9 @@ Building and testing the contract is as simple as running the `test` command. Th
 
   </TabItem>
 
-    <TabItem value="go" label="🐹 GO">
+  <TabItem value="go" label="🐹 GO">
 
-  Create a test file for your contract:
+  Create a test file for your contract (make sure you are inside the hello-world/contract directory) :
 
   ```bash
   # Create a tests directory
@@ -401,7 +401,7 @@ Building and testing the contract is as simple as running the `test` command. Th
         url="https://github.com/vlmoon99/near-sdk-go/blob/main/examples/greeting/contract/main_test.go"
         start="1" end="51" />
 
-  Run the test:
+  Run the test (make sure you are inside the hello-world/contract directory):
 
   ```bash
   # Test package level
@@ -618,7 +618,8 @@ Having our account created, we can now deploy the contract:
     <Tabs groupId="cli-tabs">
       <TabItem value="near-go-cli" label="Near-Go-Cli">
         ```bash
-        #Run where your main.go file is located
+        #Run (make sure you are inside the hello-world/contract directory)
+      
         near-go build && near-go deploy -id "<created-account>" -n "testnet"
         ```
       </TabItem>
