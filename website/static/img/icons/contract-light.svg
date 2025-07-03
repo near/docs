@@ -1,0 +1,13 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" width="256" height="256">
+  <desc>Smart Contract Icon - Light Mode</desc>
+  <g transform="translate(32, 32) scale(11.2)">
+    <path stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="m12.1878 12.649275 -0.6000000000000001 4.46685c-0.07500000000000001 0.52995 0.5249999999999999 0.908475 0.9750000000000001 0.52995l1.5 -1.5141749999999998 1.5 1.5141749999999998c0.375 0.378525 1.0499999999999998 0.075675 0.9750000000000001 -0.52995l-0.6000000000000001 -4.46685" stroke-width="1.25" fill="none"></path>
+    <path stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M14.0625 13.222425c1.863975 0 3.375 -1.511025 3.375 -3.375s-1.511025 -3.3750150000000003 -3.375 -3.3750150000000003 -3.375 1.51104 -3.375 3.3750150000000003 1.511025 3.375 3.375 3.375Z" stroke-width="1.25" fill="none"></path>
+    <path stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M14.0625 9.5475c-0.15000000000000002 0 -0.30000000000000004 0.15000000000000002 -0.30000000000000004 0.30000000000000004s0.15000000000000002 0.30000000000000004 0.30000000000000004 0.30000000000000004" stroke-width="1.25" fill="none"></path>
+    <path stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M14.062425000000001 9.5475c0.15000000000000002 0 0.30000000000000004 0.15000000000000002 0.30000000000000004 0.30000000000000004s-0.15000000000000002 0.30000000000000004 -0.30000000000000004 0.30000000000000004" stroke-width="1.25" fill="none"></path>
+    <path stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.8125 17.8125h-7.5c-0.44999999999999996 0 -0.75 -0.30000000000000004 -0.75 -0.75V1.6875c0 -0.44999999999999996 0.30000000000000004 -0.75 0.75 -0.75h7.574999999999999c0.15000000000000002 0 0.375 0.075015 0.5249999999999999 0.22501500000000002l3.6750000000000003 3.2999925" stroke-width="1.25" fill="none"></path>
+    <path stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M3.862425 5.8125h4.949999999999999" stroke-width="1.25" fill="none"></path>
+    <path stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M3.862425 9.5625h4.949999999999999" stroke-width="1.25" fill="none"></path>
+    <path stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M3.862425 13.3125h3.75" stroke-width="1.25" fill="none"></path>
+  </g>
+</svg> 

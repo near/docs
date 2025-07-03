@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <rect width="256" height="256" fill="none"/>
+  <desc>
+    House Heart Streamline Icon: https://streamlinehq.com
+  </desc>
+  <g transform="translate(8, 8) scale(12)">
+    <path d="M2.9296875 10.9375v5.859375a1.171875 1.171875 0 0 0 1.171875 1.171875h10.546875a1.171875 1.171875 0 0 0 1.171875 -1.171875V10.9375" fill="none" stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"></path>
+    <path d="m0.5859375 9.866406249999999 7.96015625 -7.9609375a1.171875 1.171875 0 0 1 1.6578125 0l7.96015625 7.9609375" fill="none" stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"></path>
+    <path d="m12.890625 4.59296875 0 -1.85859375 2.9296875 0 0 4.78828125" fill="none" stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"></path>
+    <path d="M12.4453125 9.25390625a1.484375 1.484375 0 0 0 -2.1492187499999997 0L9.375 10.20625l-0.92109375 -0.95234375a1.484375 1.484375 0 0 0 -2.1492187499999997 0 1.609375 1.609375 0 0 0 0 2.22265625l2.74296875 2.8367187499999997a0.45234375 0.45234375 0 0 0 0.6546875 0l2.74296875 -2.8367187499999997a1.609375 1.609375 0 0 0 0 -2.22265625Z" fill="none" stroke="#3b82f6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"></path>
+  </g>
+</svg> 
