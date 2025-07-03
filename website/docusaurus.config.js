@@ -53,8 +53,8 @@ const config = {
           changefreq: 'weekly',
           priority: 0.5,
         },
-        googleAnalytics: {
-          trackingID: 'UA-100373569-7',
+        gtag: {
+          trackingID: 'G-TMG0M3DPNW',
           anonymizeIP: true,
         },
         blog: {
