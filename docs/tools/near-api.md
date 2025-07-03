@@ -351,7 +351,7 @@ To allow users to login into your web application using a wallet you will need t
   It’s also important to note that each `Provider` can internally use different transport protocols (such as HTTPS or WebSocket), making the failover strategy flexible across various infrastructure setups.
 
   ```js
-  import { JsonRpcProvider, FailoverPrcProvider } from "@near-js/providers";
+  import { JsonRpcProvider, FailoverRpcProvider } from "@near-js/providers";
   
   const jsonProviders = [
     new JsonRpcProvider({ url: "https://incorrect-rpc-url.com" }), // Incorrect RPC URL
