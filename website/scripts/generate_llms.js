@@ -210,32 +210,85 @@ class LLMsTxtGenerator {
                 }
             }
 
-            // Get description from frontmatter, sidebar_label, or first paragraph
-            let description = frontmatter.sidebar_label || '';
+            // Get description - prioritize content over sidebar_label
+            let description = '';
             
-            if (!description) {
-                // For performance, only clean content if we need to extract description
-                // and only if the file contains GitHub components
-                let contentToProcess = body;
-                // if (!description && body.includes('<Github')) {
-                if (!description) {
-                    contentToProcess = await this.cleanContent(content);
-                }
-                
-                // Extract first meaningful paragraph
-                const lines = contentToProcess.split('\n');
-                for (const line of lines) {
-                    const trimmed = line.trim();
-                    if (trimmed && 
-                        !trimmed.startsWith('#') && 
-                        !trimmed.startsWith('import') && 
-                        !trimmed.startsWith(':::') &&
-                        trimmed.length > 20) {
-                        // Clean up any remaining markdown formatting
-                        description = trimmed.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`]/g, '');
-                        break;
+            // First try to extract from content
+            let contentToProcess = body;
+            contentToProcess = await this.cleanContent(content);
+            
+            // Extract first meaningful paragraph - look for complete sentences
+            const lines = contentToProcess.split('\n');
+            let descriptionParts = [];
+            let currentSentence = '';
+            
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (trimmed && 
+                    !trimmed.startsWith('#') && 
+                    !trimmed.startsWith('import') && 
+                    !trimmed.startsWith(':::') &&
+                    !trimmed.startsWith('![') && // Skip image lines
+                    !trimmed.startsWith('---') && // Skip separators
+                    !trimmed.startsWith('_Credits') && // Skip credit lines
+                    trimmed.length > 10) {
+                    
+                    // Clean up any remaining markdown formatting
+                    const cleaned = trimmed.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`]/g, '');
+                    
+                    // Add to current sentence
+                    currentSentence += (currentSentence ? ' ' : '') + cleaned;
+                    
+                    // Check if we have a complete sentence or enough content
+                    if (cleaned.endsWith('.') || cleaned.endsWith('!') || cleaned.endsWith('?')) {
+                        descriptionParts.push(currentSentence);
+                        currentSentence = '';
+                        
+                        // Stop if we have enough content
+                        if (descriptionParts.join(' ').length > 100) {
+                            break;
+                        }
                     }
                 }
+            }
+            
+            // If we have partial sentence, add it
+            if (currentSentence && descriptionParts.length === 0) {
+                descriptionParts.push(currentSentence);
+            }
+            
+            description = descriptionParts.join(' ').trim();
+            
+            // If description is too short or empty, try to get more context
+            if (description.length < 30) {
+                // Try to get a longer chunk from the beginning
+                const cleanLines = contentToProcess.split('\n').filter(line => {
+                    const trimmed = line.trim();
+                    return trimmed && 
+                           !trimmed.startsWith('#') && 
+                           !trimmed.startsWith('import') && 
+                           !trimmed.startsWith(':::') &&
+                           !trimmed.startsWith('![') &&
+                           !trimmed.startsWith('---') &&
+                           !trimmed.startsWith('_Credits') &&
+                           trimmed.length > 10;
+                });
+                
+                if (cleanLines.length > 0) {
+                    // Take first few lines and clean them
+                    const firstFewLines = cleanLines.slice(0, 3).join(' ');
+                    description = firstFewLines.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`]/g, '').trim();
+                }
+            }
+            
+            // If still no good description found from content, fall back to sidebar_label
+            if (!description || description.length < 20) {
+                description = frontmatter.sidebar_label || '';
+            }
+            
+            // Final fallback to title if still no description
+            if (!description) {
+                description = title;
             }
 
             return { title, description };
