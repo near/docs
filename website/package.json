@@ -18,7 +18,7 @@
     "build": "docusaurus build && npm run process-docs",
     "build:dev": "docusaurus build --dev && npm run process-docs",
     "build:preview": "docusaurus build --locale en && npm run process-docs",
-    "process-docs": "node ./scripts/post_build_process.js",
+    "process-docs": "node extract-frontmatter-ids && node ./scripts/post_build_process.js",
     "extract-frontmatter-ids": "node ./scripts/extract_frontmatter_ids.js",
     "swizzle": "docusaurus swizzle",
     "docusaurus": "docusaurus",
