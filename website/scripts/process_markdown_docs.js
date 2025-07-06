@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const crypto = require('crypto');
+const { promisify } = require('util');
 
 // Load configurations
 const frontmatterIds = require('../frontmatter_ids.json');
@@ -9,59 +11,184 @@ const sidebars = require('../sidebars.js');
 // Directories
 const DOCS_DIR = path.join(__dirname, '../../docs');
 const BUILD_DIR = path.join(__dirname, '../build');
+const CACHE_DIR = path.join(__dirname, '../.cache');
 
-// Function to fetch GitHub code
+// Cache for GitHub code and processed content with size limits
+const MAX_CACHE_SIZE = 100; // Reduce cache size to limit memory usage
+const githubCache = new Map();
+const contentCache = new Map();
+const failedGithubUrls = new Set();
+
+// Performance tracking
+let cacheHits = 0;
+let cacheMisses = 0;
+
+// Memory management
+function clearOldCacheEntries(cache, maxSize) {
+  if (cache.size > maxSize) {
+    const entries = Array.from(cache.entries());
+    const entriesToRemove = entries.slice(0, cache.size - maxSize);
+    entriesToRemove.forEach(([key]) => cache.delete(key));
+  }
+}
+
+function forceGarbageCollection() {
+  if (global.gc) {
+    global.gc();
+  }
+}
+
+// Ensure cache directory exists
+if (!fs.existsSync(CACHE_DIR)) {
+  fs.mkdirSync(CACHE_DIR, { recursive: true });
+}
+
+// Function to create cache key
+function createCacheKey(data) {
+  return crypto.createHash('sha256').update(data).digest('hex');
+}
+
+// Function to load cache from disk
+function loadCache() {
+  try {
+    const cacheFile = path.join(CACHE_DIR, 'github_cache.json');
+    if (fs.existsSync(cacheFile)) {
+      const cacheData = JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
+      Object.entries(cacheData).forEach(([key, value]) => {
+        githubCache.set(key, value);
+      });
+      console.log(`Loaded ${githubCache.size} entries from cache`);
+    }
+  } catch (error) {
+    console.warn('Could not load cache:', error.message);
+  }
+}
+
+// Function to save cache to disk
+function saveCache() {
+  try {
+    const cacheFile = path.join(CACHE_DIR, 'github_cache.json');
+    const cacheData = Object.fromEntries(githubCache);
+    fs.writeFileSync(cacheFile, JSON.stringify(cacheData, null, 2));
+    console.log(`Saved ${githubCache.size} entries to cache`);
+  } catch (error) {
+    console.warn('Could not save cache:', error.message);
+  }
+}
+
+// Optimized function to fetch GitHub code with better memory management
 async function fetchGitHubCode(url) {
+  const cacheKey = createCacheKey(url);
+  
+  // Check cache first
+  if (githubCache.has(cacheKey)) {
+    cacheHits++;
+    return githubCache.get(cacheKey);
+  }
+  
+  cacheMisses++;
+  
   return new Promise((resolve, reject) => {
     // Convert GitHub URL to raw URL
     const rawUrl = url.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
     
-    https.get(rawUrl, (res) => {
-      let data = '';
+    const options = {
+      timeout: 5000, // Reduce timeout to 5 seconds
+      headers: {
+        'User-Agent': 'NEAR-Docs-Processor/1.0'
+      }
+    };
+    
+    const req = https.get(rawUrl, options, (res) => {
+      const chunks = [];
+      let totalSize = 0;
+      const maxSize = 1024 * 1024; // 1MB limit per file
+      
       res.on('data', (chunk) => {
-        data += chunk;
+        totalSize += chunk.length;
+        if (totalSize > maxSize) {
+          req.destroy();
+          console.warn(`File too large from ${url}: ${totalSize} bytes`);
+          failedGithubUrls.add(url);
+          const errorResult = `// File too large from ${url}`;
+          githubCache.set(cacheKey, errorResult);
+          clearOldCacheEntries(githubCache, MAX_CACHE_SIZE);
+          resolve(errorResult);
+          return;
+        }
+        chunks.push(chunk);
       });
+      
       res.on('end', () => {
-        resolve(data);
+        if (res.statusCode >= 400) {
+          console.warn(`Error fetching GitHub code from ${url}: HTTP ${res.statusCode}`);
+          failedGithubUrls.add(url);
+          const errorResult = `// Error fetching code from ${url}`;
+          githubCache.set(cacheKey, errorResult);
+          clearOldCacheEntries(githubCache, MAX_CACHE_SIZE);
+          resolve(errorResult);
+        } else {
+          const data = Buffer.concat(chunks).toString('utf8');
+          // Cache the result with size management
+          githubCache.set(cacheKey, data);
+          clearOldCacheEntries(githubCache, MAX_CACHE_SIZE);
+          resolve(data);
+        }
       });
-    }).on('error', (err) => {
+    });
+    
+    req.on('error', (err) => {
       console.warn(`Error fetching GitHub code from ${url}:`, err.message);
-      resolve(`// Error fetching code from ${url}`);
+      failedGithubUrls.add(url);
+      const errorResult = `// Error fetching code from ${url}`;
+      githubCache.set(cacheKey, errorResult);
+      clearOldCacheEntries(githubCache, MAX_CACHE_SIZE);
+      resolve(errorResult);
+    });
+    
+    req.on('timeout', () => {
+      req.destroy();
+      console.warn(`Timeout fetching GitHub code from ${url}`);
+      failedGithubUrls.add(url);
+      const timeoutResult = `// Timeout fetching code from ${url}`;
+      githubCache.set(cacheKey, timeoutResult);
+      clearOldCacheEntries(githubCache, MAX_CACHE_SIZE);
+      resolve(timeoutResult);
     });
   });
 }
 
-// Function to process GitHub tags
+// Function to process GitHub tags with parallelization
 async function replaceGithubWithCode(content) {
   const githubTags = content.match(/<Github\s[^>]*?\/?>/g);
   if (!githubTags) return content;
   
   let formatted = content;
   
-  for (const tag of githubTags) {
+  // Process all GitHub tags in parallel
+  const promises = githubTags.map(async (tag) => {
     try {
       const normalizedTag = tag.replace(/'/g, '"');
       
       const urlMatch = normalizedTag.match(/url="([^"]*?)"/);
-      if (!urlMatch) continue;
+      if (!urlMatch) return { tag, replacement: '' };
       
       let url = urlMatch[1];
       url = url.split('#')[0];
       
       const urlParts = url.replace('https://github.com/', '').split('/');
-      if (urlParts.length < 5) continue;
+      if (urlParts.length < 5) return { tag, replacement: '' };
       
       const [org, repo, , branch, ...pathSegments] = urlParts;
       const filePath = pathSegments.join('/');
       
       const rawUrl = `https://raw.githubusercontent.com/${org}/${repo}/${branch}/${filePath}`;
       
-      const code = await fetchGitHubCode(rawUrl);
+      const code = await fetchGitHubCode(url);
       
-      if (!code || code.includes('Error fetching code')) {
-        console.warn(`Failed to fetch code from ${rawUrl}`);
-        formatted = formatted.replace(tag, '');
-        continue;
+      if (!code || code.includes('Error fetching code') || code.includes('Timeout fetching code')) {
+        console.warn(`Failed to fetch code from ${url}`);
+        return { tag, replacement: '' };
       }
       
       const startMatch = normalizedTag.match(/start="(\d*)"/);
@@ -75,20 +202,26 @@ async function replaceGithubWithCode(content) {
       
       if (!selectedCode.trim()) {
         console.warn(`Empty code selection for ${tag}`);
-        formatted = formatted.replace(tag, '');
-        continue;
+        return { tag, replacement: '' };
       }
       
       const languageMatch = normalizedTag.match(/language="([^"]*?)"/);
       const language = languageMatch ? languageMatch[1] : 'javascript';
       
-      formatted = formatted.replace(tag, `\`\`\`${language}\n${selectedCode}\n\`\`\``);
+      return { tag, replacement: `\`\`\`${language}\n${selectedCode}\n\`\`\`` };
       
     } catch (error) {
       console.warn(`Error processing GitHub tag: ${tag}`, error.message);
-      formatted = formatted.replace(tag, '');
+      return { tag, replacement: '' };
     }
-  }
+  });
+  
+  const results = await Promise.all(promises);
+  
+  // Apply all replacements
+  results.forEach(({ tag, replacement }) => {
+    formatted = formatted.replace(tag, replacement);
+  });
   
   return formatted;
 }
@@ -274,8 +407,15 @@ function processOtherComponents(content) {
   return processed;
 }
 
-// Main function to clean markdown content
+// Optimized main function to clean markdown content with better memory management
 async function cleanContent(content) {
+  const cacheKey = createCacheKey(content);
+  
+  // Check content cache
+  if (contentCache.has(cacheKey)) {
+    return contentCache.get(cacheKey);
+  }
+  
   let cleaned = content;
   
   // Remove imports
@@ -324,6 +464,10 @@ async function cleanContent(content) {
   } catch (error) {
     // Ignore decoding errors
   }
+  
+  // Cache the result with size management
+  contentCache.set(cacheKey, cleaned);
+  clearOldCacheEntries(contentCache, MAX_CACHE_SIZE);
   
   return cleaned;
 }
@@ -378,9 +522,12 @@ function getMarkdownOutputPath(docId, filePath) {
   return cleanDocId;
 }
 
-// Main function to process all markdown files
+// Optimized main function with better memory management
 async function processMarkdownFiles() {
   console.log('Starting markdown files processing...');
+  
+  // Load cache
+  loadCache();
   
   // Create output directory if it doesn't exist
   if (!fs.existsSync(BUILD_DIR)) {
@@ -390,50 +537,108 @@ async function processMarkdownFiles() {
   let processedCount = 0;
   let errorCount = 0;
   
-  // Process each file in frontmatter_ids
-  for (const [docId, filePath] of Object.entries(frontmatterIds)) {
-    try {
-      const fullPath = path.join(DOCS_DIR, filePath);
-      
-      if (!fs.existsSync(fullPath)) {
-        console.warn(`File not found: ${fullPath}`);
-        continue;
+  const entries = Object.entries(frontmatterIds);
+  const batchSize = 3; // Reduce batch size significantly to prevent memory issues
+  
+  console.log(`Processing ${entries.length} files in batches of ${batchSize}...`);
+  
+  // Process files in batches with memory management
+  for (let i = 0; i < entries.length; i += batchSize) {
+    const batch = entries.slice(i, i + batchSize);
+    
+    const batchPromises = batch.map(async ([docId, filePath]) => {
+      try {
+        const fullPath = path.join(DOCS_DIR, filePath);
+        
+        if (!fs.existsSync(fullPath)) {
+          console.warn(`File not found: ${fullPath}`);
+          return { success: false, docId, error: 'File not found' };
+        }
+        
+        console.log(`Processing: ${docId} -> ${filePath}`);
+        
+        // Read file content
+        const content = fs.readFileSync(fullPath, 'utf8');
+        
+        // Clean content
+        const cleanedContent = await cleanContent(content);
+        
+        // Get the correct output path
+        const outputPath = getMarkdownOutputPath(docId, filePath);
+        const outputFile = path.join(BUILD_DIR, outputPath + '.md');
+        
+        // Create output directory if it doesn't exist
+        const outputDir = path.dirname(outputFile);
+        if (!fs.existsSync(outputDir)) {
+          fs.mkdirSync(outputDir, { recursive: true });
+        }
+        
+        // Write processed file
+        fs.writeFileSync(outputFile, cleanedContent, 'utf8');
+        
+        console.log(`  → Created: ${outputPath}.md`);
+        
+        return { success: true, docId, outputPath };
+        
+      } catch (error) {
+        console.error(`Error processing ${docId}:`, error.message);
+        return { success: false, docId, error: error.message };
       }
-      
-      console.log(`Processing: ${docId} -> ${filePath}`);
-      
-      // Read file content
-      const content = fs.readFileSync(fullPath, 'utf8');
-      
-      // Clean content
-      const cleanedContent = await cleanContent(content);
-      
-      // Get the correct output path
-      const outputPath = getMarkdownOutputPath(docId, filePath);
-      const outputFile = path.join(BUILD_DIR, outputPath + '.md');
-      
-      // Create output directory if it doesn't exist
-      const outputDir = path.dirname(outputFile);
-      if (!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir, { recursive: true });
+    });
+    
+    const batchResults = await Promise.all(batchPromises);
+    
+    // Update counters
+    batchResults.forEach(result => {
+      if (result.success) {
+        processedCount++;
+      } else {
+        errorCount++;
       }
-      
-      // Write processed file
-      fs.writeFileSync(outputFile, cleanedContent, 'utf8');
-      
-      console.log(`  → Created: ${outputPath}.md`);
-      processedCount++;
-      
-    } catch (error) {
-      console.error(`Error processing ${docId}:`, error.message);
-      errorCount++;
+    });
+    
+    // Memory management: force garbage collection every 10 batches
+    if (i % (batchSize * 10) === 0) {
+      forceGarbageCollection();
     }
+    
+    // Progress report
+    const batchNumber = Math.floor(i / batchSize) + 1;
+    const totalBatches = Math.ceil(entries.length / batchSize);
+    console.log(`Batch ${batchNumber}/${totalBatches} completed (${processedCount} files processed)`);
+    
+    // Add small delay to help with memory management
+    await new Promise(resolve => setTimeout(resolve, 100));
   }
+  
+  // Final cleanup
+  contentCache.clear();
+  forceGarbageCollection();
+  
+  // Save cache
+  saveCache();
   
   console.log(`\nProcessing completed:`);
   console.log(`- Files processed: ${processedCount}`);
   console.log(`- Errors: ${errorCount}`);
+  console.log(`- Cache hits: ${cacheHits}`);
+  console.log(`- Cache misses: ${cacheMisses}`);
+  console.log(`- Cache efficiency: ${cacheHits > 0 ? ((cacheHits / (cacheHits + cacheMisses)) * 100).toFixed(1) : 0}%`);
   console.log(`- Output files in: ${BUILD_DIR}`);
+  
+  // Display failed GitHub URLs
+  if (failedGithubUrls.size > 0) {
+    console.log(`\n🚫 GitHub URLs that could not be fetched (${failedGithubUrls.size}):`);
+    console.log('=' .repeat(60));
+    const sortedFailedUrls = Array.from(failedGithubUrls).sort();
+    sortedFailedUrls.forEach((url, index) => {
+      console.log(`${index + 1}. ${url}`);
+    });
+    console.log('=' .repeat(60));
+  } else {
+    console.log(`\n✅ All GitHub URLs were successfully fetched!`);
+  }
+  
   console.log(`\nNow both URLs will work:`);
   console.log(`- HTML: https://docs.near.org/protocol/basics`);
   console.log(`- Markdown: https://docs.near.org/protocol/basics.md`);
@@ -452,5 +657,9 @@ module.exports = {
   processTabComponents,
   processAdmonitionComponents,
   processDetailsComponents,
-  processOtherComponents
+  processOtherComponents,
+  // Export cache functions for testing
+  loadCache,
+  saveCache,
+  failedGithubUrls // Export for testing
 };
