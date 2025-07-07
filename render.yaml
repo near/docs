@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: near-docs
+    env: node
+    buildCommand: cd website && yarn install --frozen-lockfile --production=false && NODE_OPTIONS="--max-old-space-size=450" yarn build
+    startCommand: cd website && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: NODE_OPTIONS
+        value: "--max-old-space-size=450"
+    staticPublishPath: ./website/build

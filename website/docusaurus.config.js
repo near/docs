@@ -32,6 +32,10 @@ const config = {
     REACT_APP_PUBLIC_POSTHOG_KEY: process.env.REACT_APP_PUBLIC_POSTHOG_KEY,
     REACT_APP_PUBLIC_POSTHOG_HOST: process.env.REACT_APP_PUBLIC_POSTHOG_HOST,
   },
+  // Optimize build performance
+  future: {
+    experimental_faster: true,
+  },
   themes: ['@saucelabs/theme-github-codeblock', '@docusaurus/theme-mermaid'],
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
@@ -48,6 +52,8 @@ const config = {
           path: '../docs',
           sidebarPath: './sidebars.js',
           routeBasePath: '/',
+          // Optimize build performance
+          exclude: ['**/node_modules/**'],
         },
         sitemap: {
           changefreq: 'weekly',
