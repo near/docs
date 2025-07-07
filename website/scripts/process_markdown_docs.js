@@ -251,13 +251,39 @@ function processTabComponents(content) {
       while ((tabItemMatch = tabItemRegex.exec(tabsBlock)) !== null) {
         const tabItemTag = tabItemMatch[0];
         const tabItemContent = tabItemMatch[1];
-        const labelMatch = tabItemTag.match(/label=['"]([^'"]*)['"]/);
         
+        // Handle both regular and JSX label attributes
+        const labelMatch = tabItemTag.match(/label=['"]([^'"]*)['"]/);
+        const jsxLabelMatch = tabItemTag.match(/label=\{([^}]*)\}/);
+        
+        let label = null;
         if (labelMatch) {
-          tabContent += `### ${labelMatch[1]}\n\n`;
+          label = labelMatch[1];
+        } else if (jsxLabelMatch) {
+          // Try to extract text from JSX expression
+          const jsxContent = jsxLabelMatch[1];
+          if (jsxContent.includes('LantstoolLabel')) {
+            label = 'Lantstool';
+          } else {
+            // Try to extract simple text
+            const textMatch = jsxContent.match(/['"]([^'"]*)['"]/);
+            if (textMatch) {
+              label = textMatch[1];
+            }
+          }
         }
         
-        tabContent += `${tabItemContent.trim()}\n\n`;
+        if (label) {
+          tabContent += `### ${label}\n\n`;
+        }
+        
+        // Process the content inside TabItem
+        let processedContent = tabItemContent.trim();
+        // Remove imported component references
+        processedContent = processedContent.replace(/<[A-Z][a-zA-Z0-9]*\s*\/>/g, '');
+        processedContent = processedContent.replace(/<[A-Z][a-zA-Z0-9]*\s*><\/[A-Z][a-zA-Z0-9]*>/g, '');
+        
+        tabContent += `${processedContent}\n\n`;
       }
       
       processed = processed.replace(tabsBlock, tabContent);
@@ -345,6 +371,26 @@ function processOtherComponents(content) {
     return `[${text.trim()}](${url})`;
   });
   
+  // Process strong tags
+  processed = processed.replace(/<strong>([\s\S]*?)<\/strong>/g, '**$1**');
+  
+  // Process em tags
+  processed = processed.replace(/<em>([\s\S]*?)<\/em>/g, '*$1*');
+  
+  // Process code tags
+  processed = processed.replace(/<code>([\s\S]*?)<\/code>/g, '`$1`');
+  
+  // Process br tags
+  processed = processed.replace(/<br\s*\/?>/g, '\n');
+  
+  // Process hr tags
+  processed = processed.replace(/<hr\s*\/?>/g, '\n---\n');
+  
+  // Process blockquote tags
+  processed = processed.replace(/<blockquote>([\s\S]*?)<\/blockquote>/g, (match, content) => {
+    return content.trim().split('\n').map(line => `> ${line}`).join('\n');
+  });
+  
   return processed;
 }
 
@@ -358,14 +404,20 @@ async function cleanContent(content) {
   
   let cleaned = content;
   
-  // Remove imports and front matter
-  cleaned = cleaned.replace(/^import\s+.*?\n/gm, '');
+  // Remove all imports (including JSX components and MDX imports)
+  cleaned = cleaned.replace(/^import\s+.*?from\s+['"].*?['"];?\s*$/gm, '');
+  cleaned = cleaned.replace(/^import\s+\{[^}]*\}\s+from\s+['"].*?['"];?\s*$/gm, '');
+  cleaned = cleaned.replace(/^import\s+.*?$/gm, '');
   
+  // Remove front matter
   const sections = cleaned.split('---');
   if (sections.length >= 3) {
     sections.splice(1, 1);
     cleaned = sections.join('---').replace(/^---+\n\n/g, '');
   }
+  
+  // Remove export statements
+  cleaned = cleaned.replace(/^export\s+.*?$/gm, '');
   
   // Process all components
   cleaned = await replaceGithubWithCode(cleaned);
@@ -374,6 +426,7 @@ async function cleanContent(content) {
   cleaned = processAdmonitionComponents(cleaned);
   cleaned = processDetailsComponents(cleaned);
   cleaned = processOtherComponents(cleaned);
+  cleaned = processMdxComponents(cleaned);
   
   // Handle code blocks protection
   const codeBlocks = cleaned.match(/```[\s\S]*?```/g) || [];
@@ -383,10 +436,18 @@ async function cleanContent(content) {
     cleaned = cleaned.replace(block, placeholders[i]);
   });
   
-  // Remove HTML tags and clean up
+  // Remove remaining HTML/JSX tags and clean up
   cleaned = cleaned.replace(/<iframe[\s\S]*?<\/iframe>/g, '');
   cleaned = cleaned.replace(/<[^>]*>/g, '');
   cleaned = cleaned.replace(/'(.)/g, '$1');
+  
+  // Clean up JSX expressions and fragments
+  cleaned = cleaned.replace(/\{[^}]*\}/g, '');
+  cleaned = cleaned.replace(/<>\s*<\/>/g, '');
+  cleaned = cleaned.replace(/<React\.Fragment[\s\S]*?<\/React\.Fragment>/g, '');
+  
+  // Clean up multiple empty lines
+  cleaned = cleaned.replace(/\n\s*\n\s*\n/g, '\n\n');
   
   // Restore code blocks
   codeBlocks.forEach((block, i) => {
@@ -409,8 +470,37 @@ async function cleanContent(content) {
   return cleaned;
 }
 
+// New function to process MDX-specific components
+function processMdxComponents(content) {
+  let processed = content;
+  
+  // Process LantstoolLabel components
+  processed = processed.replace(/<LantstoolLabel\s*\/>/g, 'Lantstool');
+  processed = processed.replace(/<LantstoolLabel\s*><\/LantstoolLabel>/g, 'Lantstool');
+  
+  // Process TryOutOnLantstool components
+  processed = processed.replace(/<TryOutOnLantstool\s+[^>]*\/>/g, '');
+  processed = processed.replace(/<TryOutOnLantstool[\s\S]*?<\/TryOutOnLantstool>/g, '');
+  
+  // Process imported component references (like RequestJson, ResponseJson, etc.)
+  processed = processed.replace(/<([A-Z][a-zA-Z0-9]*)\s*\/>/g, '');
+  processed = processed.replace(/<([A-Z][a-zA-Z0-9]*)\s*><\/\1>/g, '');
+  
+  // Process JSX expressions in attributes
+  processed = processed.replace(/\s+\w+\s*=\s*\{[^}]*\}/g, '');
+  
+  // Process self-closing tags with JSX expressions
+  processed = processed.replace(/<\w+\s+[^>]*\{[^}]*\}[^>]*\/>/g, '');
+  
+  // Clean up remaining JSX syntax
+  processed = processed.replace(/\{[\s\S]*?\}/g, '');
+  
+  return processed;
+}
+
+// Generate output path for markdown files
 function getMarkdownOutputPath(docId) {
-  return docId.replace(/\.(md|mdx)$/, '');
+  return docId.replace(/\//g, '-');
 }
 
 // Main processing function
