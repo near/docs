@@ -2,28 +2,33 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const crypto = require('crypto');
-const { promisify } = require('util');
 
 // Load configurations
 const frontmatterIds = require('../frontmatter_ids.json');
-const sidebars = require('../sidebars.js');
 
 // Directories
 const DOCS_DIR = path.join(__dirname, '../../docs');
 const BUILD_DIR = path.join(__dirname, '../build');
 const CACHE_DIR = path.join(__dirname, '../.cache');
 
-// Cache for GitHub code and processed content with size limits
-const MAX_CACHE_SIZE = 100; // Reduce cache size to limit memory usage
+// Cache configuration
+const MAX_CACHE_SIZE = 100;
+const MAX_FILE_SIZE = 1024 * 1024; // 1MB limit per file
+const BATCH_SIZE = 3;
+const REQUEST_TIMEOUT = 5000;
+
+// Cache and tracking
 const githubCache = new Map();
 const contentCache = new Map();
 const failedGithubUrls = new Set();
-
-// Performance tracking
 let cacheHits = 0;
 let cacheMisses = 0;
 
-// Memory management
+// Utility functions
+function createCacheKey(data) {
+  return crypto.createHash('sha256').update(data).digest('hex');
+}
+
 function clearOldCacheEntries(cache, maxSize) {
   if (cache.size > maxSize) {
     const entries = Array.from(cache.entries());
@@ -43,12 +48,7 @@ if (!fs.existsSync(CACHE_DIR)) {
   fs.mkdirSync(CACHE_DIR, { recursive: true });
 }
 
-// Function to create cache key
-function createCacheKey(data) {
-  return crypto.createHash('sha256').update(data).digest('hex');
-}
-
-// Function to load cache from disk
+// Cache management functions
 function loadCache() {
   try {
     const cacheFile = path.join(CACHE_DIR, 'github_cache.json');
@@ -64,7 +64,6 @@ function loadCache() {
   }
 }
 
-// Function to save cache to disk
 function saveCache() {
   try {
     const cacheFile = path.join(CACHE_DIR, 'github_cache.json');
@@ -76,11 +75,10 @@ function saveCache() {
   }
 }
 
-// Optimized function to fetch GitHub code with better memory management
+// GitHub code fetching
 async function fetchGitHubCode(url) {
   const cacheKey = createCacheKey(url);
   
-  // Check cache first
   if (githubCache.has(cacheKey)) {
     cacheHits++;
     return githubCache.get(cacheKey);
@@ -88,29 +86,22 @@ async function fetchGitHubCode(url) {
   
   cacheMisses++;
   
-  return new Promise((resolve, reject) => {
-    // Convert GitHub URL to raw URL
+  return new Promise((resolve) => {
     const rawUrl = url.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
     
-    const options = {
-      timeout: 5000, // Reduce timeout to 5 seconds
-      headers: {
-        'User-Agent': 'NEAR-Docs-Processor/1.0'
-      }
-    };
-    
-    const req = https.get(rawUrl, options, (res) => {
+    const req = https.get(rawUrl, {
+      timeout: REQUEST_TIMEOUT,
+      headers: { 'User-Agent': 'NEAR-Docs-Processor/1.0' }
+    }, (res) => {
       const chunks = [];
       let totalSize = 0;
-      const maxSize = 1024 * 1024; // 1MB limit per file
       
       res.on('data', (chunk) => {
         totalSize += chunk.length;
-        if (totalSize > maxSize) {
+        if (totalSize > MAX_FILE_SIZE) {
           req.destroy();
-          console.warn(`File too large from ${url}: ${totalSize} bytes`);
-          failedGithubUrls.add(url);
           const errorResult = `// File too large from ${url}`;
+          failedGithubUrls.add(url);
           githubCache.set(cacheKey, errorResult);
           clearOldCacheEntries(githubCache, MAX_CACHE_SIZE);
           resolve(errorResult);
@@ -120,16 +111,14 @@ async function fetchGitHubCode(url) {
       });
       
       res.on('end', () => {
+        const errorResult = `// Error fetching code from ${url}`;
         if (res.statusCode >= 400) {
-          console.warn(`Error fetching GitHub code from ${url}: HTTP ${res.statusCode}`);
           failedGithubUrls.add(url);
-          const errorResult = `// Error fetching code from ${url}`;
           githubCache.set(cacheKey, errorResult);
           clearOldCacheEntries(githubCache, MAX_CACHE_SIZE);
           resolve(errorResult);
         } else {
           const data = Buffer.concat(chunks).toString('utf8');
-          // Cache the result with size management
           githubCache.set(cacheKey, data);
           clearOldCacheEntries(githubCache, MAX_CACHE_SIZE);
           resolve(data);
@@ -137,10 +126,9 @@ async function fetchGitHubCode(url) {
       });
     });
     
-    req.on('error', (err) => {
-      console.warn(`Error fetching GitHub code from ${url}:`, err.message);
-      failedGithubUrls.add(url);
+    req.on('error', () => {
       const errorResult = `// Error fetching code from ${url}`;
+      failedGithubUrls.add(url);
       githubCache.set(cacheKey, errorResult);
       clearOldCacheEntries(githubCache, MAX_CACHE_SIZE);
       resolve(errorResult);
@@ -148,9 +136,8 @@ async function fetchGitHubCode(url) {
     
     req.on('timeout', () => {
       req.destroy();
-      console.warn(`Timeout fetching GitHub code from ${url}`);
-      failedGithubUrls.add(url);
       const timeoutResult = `// Timeout fetching code from ${url}`;
+      failedGithubUrls.add(url);
       githubCache.set(cacheKey, timeoutResult);
       clearOldCacheEntries(githubCache, MAX_CACHE_SIZE);
       resolve(timeoutResult);
@@ -158,50 +145,32 @@ async function fetchGitHubCode(url) {
   });
 }
 
-// Function to process GitHub tags with parallelization
+// Component processing functions
 async function replaceGithubWithCode(content) {
   const githubTags = content.match(/<Github\s[^>]*?\/?>/g);
   if (!githubTags) return content;
   
-  let formatted = content;
-  
-  // Process all GitHub tags in parallel
   const promises = githubTags.map(async (tag) => {
     try {
       const normalizedTag = tag.replace(/'/g, '"');
-      
       const urlMatch = normalizedTag.match(/url="([^"]*?)"/);
       if (!urlMatch) return { tag, replacement: '' };
       
-      let url = urlMatch[1];
-      url = url.split('#')[0];
-      
-      const urlParts = url.replace('https://github.com/', '').split('/');
-      if (urlParts.length < 5) return { tag, replacement: '' };
-      
-      const [org, repo, , branch, ...pathSegments] = urlParts;
-      const filePath = pathSegments.join('/');
-      
-      const rawUrl = `https://raw.githubusercontent.com/${org}/${repo}/${branch}/${filePath}`;
-      
+      const url = urlMatch[1].split('#')[0];
       const code = await fetchGitHubCode(url);
       
       if (!code || code.includes('Error fetching code') || code.includes('Timeout fetching code')) {
-        console.warn(`Failed to fetch code from ${url}`);
         return { tag, replacement: '' };
       }
       
       const startMatch = normalizedTag.match(/start="(\d*)"/);
       const endMatch = normalizedTag.match(/end="(\d*)"/);
-      
       const lines = code.split('\n');
       const startLine = startMatch ? Math.max(parseInt(startMatch[1]) - 1, 0) : 0;
       const endLine = endMatch ? parseInt(endMatch[1]) : lines.length;
-      
       const selectedCode = lines.slice(startLine, endLine).join('\n');
       
       if (!selectedCode.trim()) {
-        console.warn(`Empty code selection for ${tag}`);
         return { tag, replacement: '' };
       }
       
@@ -209,16 +178,14 @@ async function replaceGithubWithCode(content) {
       const language = languageMatch ? languageMatch[1] : 'javascript';
       
       return { tag, replacement: `\`\`\`${language}\n${selectedCode}\n\`\`\`` };
-      
     } catch (error) {
-      console.warn(`Error processing GitHub tag: ${tag}`, error.message);
       return { tag, replacement: '' };
     }
   });
   
   const results = await Promise.all(promises);
+  let formatted = content;
   
-  // Apply all replacements
   results.forEach(({ tag, replacement }) => {
     formatted = formatted.replace(tag, replacement);
   });
@@ -226,17 +193,14 @@ async function replaceGithubWithCode(content) {
   return formatted;
 }
 
-// Function to process Card components
 function processCardComponents(content) {
-  const cardRegex = /<Card\s+[^>]*>/g;
-  let processed = content;
+  const cardMatches = content.match(/<Card\s+[^>]*>/g);
+  if (!cardMatches) return content;
   
-  const cardMatches = content.match(cardRegex);
-  if (!cardMatches) return processed;
+  let processed = content;
   
   cardMatches.forEach(cardTag => {
     try {
-      const imgMatch = cardTag.match(/img=['"]([^'"]*)['"]/);
       const titleMatch = cardTag.match(/title=['"]([^'"]*)['"]/);
       const textMatch = cardTag.match(/text=['"]([^'"]*)['"]/);
       const linksMatch = cardTag.match(/links=\{([^}]*)\}/);
@@ -252,9 +216,7 @@ function processCardComponents(content) {
       }
       
       if (linksMatch) {
-        const linksContent = linksMatch[1];
-        const linkPairs = linksContent.match(/"([^"]+)":\s*"([^"]+)"/g);
-        
+        const linkPairs = linksMatch[1].match(/"([^"]+)":\s*"([^"]+)"/g);
         if (linkPairs) {
           cardContent += '**Useful Links:**\n\n';
           linkPairs.forEach(pair => {
@@ -266,9 +228,7 @@ function processCardComponents(content) {
       }
       
       processed = processed.replace(cardTag, cardContent);
-      
     } catch (error) {
-      console.warn(`Error processing Card component: ${cardTag}`, error.message);
       processed = processed.replace(cardTag, '');
     }
   });
@@ -276,29 +236,22 @@ function processCardComponents(content) {
   return processed;
 }
 
-// Function to process Tabs components
 function processTabComponents(content) {
-  const tabsRegex = /<Tabs[\s\S]*?<\/Tabs>/g;
-  let processed = content;
+  const tabsMatches = content.match(/<Tabs[\s\S]*?<\/Tabs>/g);
+  if (!tabsMatches) return content;
   
-  const tabsMatches = content.match(tabsRegex);
-  if (!tabsMatches) return processed;
+  let processed = content;
   
   tabsMatches.forEach(tabsBlock => {
     try {
       let tabContent = '';
-      
-      // Extract TabItems
       const tabItemRegex = /<TabItem\s+[^>]*?>([\s\S]*?)<\/TabItem>/g;
       let tabItemMatch;
       
       while ((tabItemMatch = tabItemRegex.exec(tabsBlock)) !== null) {
         const tabItemTag = tabItemMatch[0];
         const tabItemContent = tabItemMatch[1];
-        
-        // Extract TabItem attributes
         const labelMatch = tabItemTag.match(/label=['"]([^'"]*)['"]/);
-        const valueMatch = tabItemTag.match(/value=['"]([^'"]*)['"]/);
         
         if (labelMatch) {
           tabContent += `### ${labelMatch[1]}\n\n`;
@@ -308,9 +261,7 @@ function processTabComponents(content) {
       }
       
       processed = processed.replace(tabsBlock, tabContent);
-      
     } catch (error) {
-      console.warn(`Error processing Tabs component: ${tabsBlock}`, error.message);
       processed = processed.replace(tabsBlock, '');
     }
   });
@@ -318,46 +269,39 @@ function processTabComponents(content) {
   return processed;
 }
 
-// Function to process Admonition components (:::tip, :::warning, etc.)
 function processAdmonitionComponents(content) {
-  // Process admonitions with ::: syntax (tip, warning, info, caution, danger)
   const admonitionRegex = /:::(tip|warning|info|caution|danger)(\s+[^\n]*?)?\n([\s\S]*?):::/g;
-  let processed = content;
   
-  processed = processed.replace(admonitionRegex, (match, type, title, content) => {
-    const typeEmoji = {
-      tip: '💡',
-      warning: '⚠️',
-      info: 'ℹ️',
-      caution: '⚠️',
-      danger: '🚫'
-    };
-    
-    const typeLabel = {
-      tip: 'Tip',
-      warning: 'Warning',
-      info: 'Information',
-      caution: 'Caution',
-      danger: 'Danger'
-    };
-    
+  const typeEmoji = {
+    tip: '💡',
+    warning: '⚠️',
+    info: 'ℹ️',
+    caution: '⚠️',
+    danger: '🚫'
+  };
+  
+  const typeLabel = {
+    tip: 'Tip',
+    warning: 'Warning',
+    info: 'Information',
+    caution: 'Caution',
+    danger: 'Danger'
+  };
+  
+  return content.replace(admonitionRegex, (match, type, title, content) => {
     const emoji = typeEmoji[type] || '';
     const label = typeLabel[type] || type.charAt(0).toUpperCase() + type.slice(1);
     const finalTitle = title ? title.trim() : label;
     
     return `> ${emoji} **${finalTitle}**\n> \n> ${content.trim().replace(/\n/g, '\n> ')}\n`;
   });
-  
-  return processed;
 }
 
-// Function to process Components
 function processDetailsComponents(content) {
-  const detailsRegex = /<details[\s\S]*?<\/details>/g;
-  let processed = content;
+  const detailsMatches = content.match(/<details[\s\S]*?<\/details>/g);
+  if (!detailsMatches) return content;
   
-  const detailsMatches = content.match(detailsRegex);
-  if (!detailsMatches) return processed;
+  let processed = content;
   
   detailsMatches.forEach(detailsBlock => {
     try {
@@ -375,9 +319,7 @@ function processDetailsComponents(content) {
       }
       
       processed = processed.replace(detailsBlock, detailContent);
-      
     } catch (error) {
-      console.warn(`Error processing Details component: ${detailsBlock}`, error.message);
       processed = processed.replace(detailsBlock, '');
     }
   });
@@ -385,7 +327,6 @@ function processDetailsComponents(content) {
   return processed;
 }
 
-// Function to process other common components
 function processOtherComponents(content) {
   let processed = content;
   
@@ -407,28 +348,26 @@ function processOtherComponents(content) {
   return processed;
 }
 
-// Optimized main function to clean markdown content with better memory management
+// Main content cleaning function
 async function cleanContent(content) {
   const cacheKey = createCacheKey(content);
   
-  // Check content cache
   if (contentCache.has(cacheKey)) {
     return contentCache.get(cacheKey);
   }
   
   let cleaned = content;
   
-  // Remove imports
+  // Remove imports and front matter
   cleaned = cleaned.replace(/^import\s+.*?\n/gm, '');
   
-  // Remove metadata from markdown (front matter)
   const sections = cleaned.split('---');
   if (sections.length >= 3) {
     sections.splice(1, 1);
     cleaned = sections.join('---').replace(/^---+\n\n/g, '');
   }
   
-  // Process Docusaurus components
+  // Process all components
   cleaned = await replaceGithubWithCode(cleaned);
   cleaned = processCardComponents(cleaned);
   cleaned = processTabComponents(cleaned);
@@ -436,7 +375,7 @@ async function cleanContent(content) {
   cleaned = processDetailsComponents(cleaned);
   cleaned = processOtherComponents(cleaned);
   
-  // Temporarily replace code blocks with placeholders
+  // Handle code blocks protection
   const codeBlocks = cleaned.match(/```[\s\S]*?```/g) || [];
   const placeholders = codeBlocks.map((_, i) => `__CODE_BLOCK_${i}__`);
   
@@ -444,11 +383,9 @@ async function cleanContent(content) {
     cleaned = cleaned.replace(block, placeholders[i]);
   });
   
-  // Remove remaining HTML tags
+  // Remove HTML tags and clean up
   cleaned = cleaned.replace(/<iframe[\s\S]*?<\/iframe>/g, '');
   cleaned = cleaned.replace(/<[^>]*>/g, '');
-  
-  // Remove problematic apostrophes
   cleaned = cleaned.replace(/'(.)/g, '$1');
   
   // Restore code blocks
@@ -465,71 +402,23 @@ async function cleanContent(content) {
     // Ignore decoding errors
   }
   
-  // Cache the result with size management
+  // Cache the result
   contentCache.set(cacheKey, cleaned);
   clearOldCacheEntries(contentCache, MAX_CACHE_SIZE);
   
   return cleaned;
 }
 
-// Function to get the route structure from the sidebar
-function extractRoutesFromSidebar(sidebarConfig) {
-  const routes = new Map();
-  
-  function processItems(items, basePath = '') {
-    items.forEach(item => {
-      if (typeof item === 'string') {
-        // Direct route
-        routes.set(item, basePath + item);
-      } else if (item.type === 'category' && item.items) {
-        // Category with items
-        const categoryPath = item.link?.id ? basePath + item.link.id + '/' : basePath;
-        processItems(item.items, categoryPath);
-      } else if (item.type === 'doc') {
-        // Document
-        routes.set(item.id, basePath + item.id);
-      } else if (typeof item === 'object' && !item.type) {
-        // Object with grouped routes
-        Object.entries(item).forEach(([key, value]) => {
-          if (Array.isArray(value)) {
-            processItems(value, basePath);
-          }
-        });
-      }
-    });
-  }
-  
-  // Process all sections of the sidebar
-  Object.values(sidebarConfig.default).forEach(section => {
-    if (Array.isArray(section)) {
-      processItems(section);
-    }
-  });
-  
-  return routes;
+function getMarkdownOutputPath(docId) {
+  return docId.replace(/\.(md|mdx)$/, '');
 }
 
-// Function to determine the correct output path for markdown files
-function getMarkdownOutputPath(docId, filePath) {
-  // For most documents, the docId already contains the correct path structure
-  // e.g., "protocol/basics" should become "protocol/basics.md"
-  
-  // Remove any file extensions from the docId to get the clean path
-  const cleanDocId = docId.replace(/\.(md|mdx)$/, '');
-  
-  // The output path should match the URL structure exactly
-  // This ensures both /protocol/basics and /protocol/basics.md work
-  return cleanDocId;
-}
-
-// Optimized main function with better memory management
+// Main processing function
 async function processMarkdownFiles() {
   console.log('Starting markdown files processing...');
   
-  // Load cache
   loadCache();
   
-  // Create output directory if it doesn't exist
   if (!fs.existsSync(BUILD_DIR)) {
     fs.mkdirSync(BUILD_DIR, { recursive: true });
   }
@@ -538,13 +427,11 @@ async function processMarkdownFiles() {
   let errorCount = 0;
   
   const entries = Object.entries(frontmatterIds);
-  const batchSize = 3; // Reduce batch size significantly to prevent memory issues
+  console.log(`Processing ${entries.length} files in batches of ${BATCH_SIZE}...`);
   
-  console.log(`Processing ${entries.length} files in batches of ${batchSize}...`);
-  
-  // Process files in batches with memory management
-  for (let i = 0; i < entries.length; i += batchSize) {
-    const batch = entries.slice(i, i + batchSize);
+  // Process files in batches
+  for (let i = 0; i < entries.length; i += BATCH_SIZE) {
+    const batch = entries.slice(i, i + BATCH_SIZE);
     
     const batchPromises = batch.map(async ([docId, filePath]) => {
       try {
@@ -555,31 +442,19 @@ async function processMarkdownFiles() {
           return { success: false, docId, error: 'File not found' };
         }
         
-        console.log(`Processing: ${docId} -> ${filePath}`);
-        
-        // Read file content
         const content = fs.readFileSync(fullPath, 'utf8');
-        
-        // Clean content
         const cleanedContent = await cleanContent(content);
-        
-        // Get the correct output path
-        const outputPath = getMarkdownOutputPath(docId, filePath);
+        const outputPath = getMarkdownOutputPath(docId);
         const outputFile = path.join(BUILD_DIR, outputPath + '.md');
         
-        // Create output directory if it doesn't exist
         const outputDir = path.dirname(outputFile);
         if (!fs.existsSync(outputDir)) {
           fs.mkdirSync(outputDir, { recursive: true });
         }
         
-        // Write processed file
         fs.writeFileSync(outputFile, cleanedContent, 'utf8');
         
-        console.log(`  → Created: ${outputPath}.md`);
-        
         return { success: true, docId, outputPath };
-        
       } catch (error) {
         console.error(`Error processing ${docId}:`, error.message);
         return { success: false, docId, error: error.message };
@@ -588,7 +463,6 @@ async function processMarkdownFiles() {
     
     const batchResults = await Promise.all(batchPromises);
     
-    // Update counters
     batchResults.forEach(result => {
       if (result.success) {
         processedCount++;
@@ -597,51 +471,40 @@ async function processMarkdownFiles() {
       }
     });
     
-    // Memory management: force garbage collection every 10 batches
-    if (i % (batchSize * 10) === 0) {
+    // Memory management
+    if (i % (BATCH_SIZE * 10) === 0) {
       forceGarbageCollection();
     }
     
     // Progress report
-    const batchNumber = Math.floor(i / batchSize) + 1;
-    const totalBatches = Math.ceil(entries.length / batchSize);
+    const batchNumber = Math.floor(i / BATCH_SIZE) + 1;
+    const totalBatches = Math.ceil(entries.length / BATCH_SIZE);
     console.log(`Batch ${batchNumber}/${totalBatches} completed (${processedCount} files processed)`);
     
-    // Add small delay to help with memory management
     await new Promise(resolve => setTimeout(resolve, 100));
   }
   
-  // Final cleanup
+  // Cleanup
   contentCache.clear();
   forceGarbageCollection();
-  
-  // Save cache
   saveCache();
   
+  // Report results
   console.log(`\nProcessing completed:`);
   console.log(`- Files processed: ${processedCount}`);
   console.log(`- Errors: ${errorCount}`);
   console.log(`- Cache hits: ${cacheHits}`);
   console.log(`- Cache misses: ${cacheMisses}`);
   console.log(`- Cache efficiency: ${cacheHits > 0 ? ((cacheHits / (cacheHits + cacheMisses)) * 100).toFixed(1) : 0}%`);
-  console.log(`- Output files in: ${BUILD_DIR}`);
   
-  // Display failed GitHub URLs
   if (failedGithubUrls.size > 0) {
     console.log(`\n🚫 GitHub URLs that could not be fetched (${failedGithubUrls.size}):`);
-    console.log('=' .repeat(60));
-    const sortedFailedUrls = Array.from(failedGithubUrls).sort();
-    sortedFailedUrls.forEach((url, index) => {
+    Array.from(failedGithubUrls).sort().forEach((url, index) => {
       console.log(`${index + 1}. ${url}`);
     });
-    console.log('=' .repeat(60));
   } else {
     console.log(`\n✅ All GitHub URLs were successfully fetched!`);
   }
-  
-  console.log(`\nNow both URLs will work:`);
-  console.log(`- HTML: https://docs.near.org/protocol/basics`);
-  console.log(`- Markdown: https://docs.near.org/protocol/basics.md`);
 }
 
 // Execute if called directly
@@ -652,14 +515,7 @@ if (require.main === module) {
 module.exports = {
   processMarkdownFiles,
   cleanContent,
-  processCardComponents,
-  replaceGithubWithCode,
-  processTabComponents,
-  processAdmonitionComponents,
-  processDetailsComponents,
-  processOtherComponents,
-  // Export cache functions for testing
   loadCache,
   saveCache,
-  failedGithubUrls // Export for testing
+  failedGithubUrls
 };

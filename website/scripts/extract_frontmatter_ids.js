@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Script para crear un diccionario de IDs de front matter y rutas reales de archivos.
- * Lee todos los archivos markdown del directorio docs y extrae sus IDs del front matter.
+ * Script to create a dictionary of front matter IDs and actual file paths.
+ * Reads all markdown files from the docs directory and extracts their IDs from front matter.
  */
 
 const fs = require('fs');
@@ -9,10 +9,10 @@ const path = require('path');
 const matter = require('gray-matter');
 
 /**
- * Encuentra todos los archivos markdown recursivamente en un directorio
- * @param {string} dir - Directorio a explorar
- * @param {string[]} fileList - Lista acumulada de archivos
- * @returns {string[]} Lista de rutas de archivos markdown
+ * Finds all markdown files recursively in a directory
+ * @param {string} dir - Directory to explore
+ * @param {string[]} fileList - Accumulated list of files
+ * @returns {string[]} List of markdown file paths
  */
 function findMarkdownFiles(dir, fileList = []) {
   const files = fs.readdirSync(dir);
@@ -32,9 +32,9 @@ function findMarkdownFiles(dir, fileList = []) {
 }
 
 /**
- * Extrae el ID del front matter de un archivo markdown
- * @param {string} filePath - Ruta del archivo
- * @returns {string|null} ID del front matter o null si no existe
+ * Extracts the ID from a markdown file's front matter
+ * @param {string} filePath - File path
+ * @returns {string|null} Front matter ID or null if it doesn't exist
  */
 function extractFrontmatterId(filePath) {
   try {
@@ -43,70 +43,72 @@ function extractFrontmatterId(filePath) {
     
     return data.id || null;
   } catch (error) {
-    console.error(`Error procesando ${filePath}:`, error.message);
+    console.error(`Error processing ${filePath}:`, error.message);
     return null;
   }
 }
 
 /**
- * Elimina prefijos numéricos de rutas de archivos
- * @param {string} pathStr - Ruta del archivo
- * @returns {string} Ruta sin prefijos numéricos
+ * Removes numeric prefixes from file paths
+ * @param {string} pathStr - File path
+ * @returns {string} Path without numeric prefixes
  */
 function removeNumericPrefixes(pathStr) {
   return pathStr
     .split('/')
     .map(part => {
-      // Eliminar prefijos numéricos como "01-", "02-", "00-", etc.
+      // Remove numeric prefixes like "01-", "02-", "00-", etc.
       return part.replace(/^\d+-/, '');
     })
     .join('/');
 }
 
 /**
- * Crea un diccionario de IDs de front matter y rutas de archivos
- * @param {string} docsDir - Directorio raíz de documentos
- * @returns {Object} Diccionario con IDs como llaves y rutas como valores
+ * Creates a dictionary of front matter IDs and file paths
+ * @param {string} docsDir - Root docs directory
+ * @returns {Object} Dictionary with IDs as keys and paths as values
  */
 function createFrontmatterDictionary(docsDir) {
   const markdownFiles = findMarkdownFiles(docsDir);
   const frontmatterDict = {};
+  const filesWithoutIds = [];
   
-  console.log(`📁 Encontrados ${markdownFiles.length} archivos markdown/mdx`);
+  console.log(`📁 Found ${markdownFiles.length} markdown/mdx files`);
   
   let filesWithIds = 0;
-  let filesWithoutIds = 0;
+  let filesWithoutIdsCount = 0;
   
   markdownFiles.forEach(filePath => {
     const frontmatterId = extractFrontmatterId(filePath);
     const relativePath = path.relative(docsDir, filePath);
     
-    // Crear el ID jerárquico basado en la ruta del archivo
+    // Create hierarchical ID based on file path
     const pathWithoutExtension = relativePath.replace(/\.(md|mdx)$/, '');
     
     let hierarchicalId;
     if (frontmatterId) {
-      // Si hay ID en front matter, usar la ruta de directorio + ID
+      // If there's a front matter ID, use directory path + ID
       const dirPath = path.dirname(pathWithoutExtension);
       if (dirPath === '.') {
-        // Archivo en la raíz
+        // File in root
         hierarchicalId = frontmatterId;
       } else {
-        // Archivo en subdirectorio - eliminar prefijos numéricos
+        // File in subdirectory - remove numeric prefixes
         const cleanDirPath = removeNumericPrefixes(dirPath);
         hierarchicalId = `${cleanDirPath}/${frontmatterId}`;
       }
       filesWithIds++;
     } else {
-      // Si no hay ID, usar la ruta completa del archivo sin prefijos numéricos
+      // If no ID, use complete file path without numeric prefixes
       hierarchicalId = removeNumericPrefixes(pathWithoutExtension);
-      filesWithoutIds++;
+      filesWithoutIdsCount++;
+      filesWithoutIds.push(relativePath);
     }
     
-    // Normalizar las barras para usar siempre /
+    // Normalize slashes to always use /
     hierarchicalId = hierarchicalId.replace(/\\/g, '/');
     
-    // Si el ID ya existe, crear un array con múltiples rutas
+    // If ID already exists, create array with multiple paths
     if (frontmatterDict[hierarchicalId]) {
       if (Array.isArray(frontmatterDict[hierarchicalId])) {
         frontmatterDict[hierarchicalId].push(relativePath);
@@ -118,52 +120,60 @@ function createFrontmatterDictionary(docsDir) {
     }
   });
   
-  console.log(`✅ Archivos con ID: ${filesWithIds}`);
-  console.log(`❌ Archivos sin ID: ${filesWithoutIds}`);
+  console.log(`✅ Files with ID: ${filesWithIds}`);
+  console.log(`❌ Files without ID: ${filesWithoutIdsCount}`);
   
-  return frontmatterDict;
+  return { frontmatterDict, filesWithoutIds };
 }
 
 /**
- * Función principal del script
+ * Main script function
  */
 function main() {
-  // Directorio de documentos (relativo al directorio website)
+  // Docs directory (relative to website directory)
   const docsDir = path.join(__dirname, '../../docs');
   
   if (!fs.existsSync(docsDir)) {
-    console.error(`❌ Error: El directorio ${docsDir} no existe`);
+    console.error(`❌ Error: Directory ${docsDir} does not exist`);
     process.exit(1);
   }
   
-  console.log(`🔍 Procesando archivos en: ${docsDir}`);
+  console.log(`🔍 Processing files in: ${docsDir}`);
   
-  // Crear diccionario
-  const frontmatterDict = createFrontmatterDictionary(docsDir);
+  // Create dictionary
+  const { frontmatterDict, filesWithoutIds } = createFrontmatterDictionary(docsDir);
   
-  // Mostrar resultados
-  console.log('\n📊 === RESULTADOS ===');
-  console.log(`📝 Total de IDs únicos encontrados: ${Object.keys(frontmatterDict).length}`);
+  // Show results
+  console.log('\n📊 === RESULTS ===');
+  console.log(`📝 Total unique IDs found: ${Object.keys(frontmatterDict).length}`);
   
-  // Mostrar algunos ejemplos
-  console.log('\n🔍 === EJEMPLOS ===');
+  // Show some examples
+  console.log('\n🔍 === EXAMPLES ===');
   let count = 0;
   for (const [id, paths] of Object.entries(frontmatterDict)) {
     if (count < 10) {
-      console.log(`ID: '${id}' -> Ruta: ${Array.isArray(paths) ? paths.join(', ') : paths}`);
+      console.log(`ID: '${id}' -> Path: ${Array.isArray(paths) ? paths.join(', ') : paths}`);
       count++;
     } else {
       break;
     }
   }
   
-  // Guardar en archivo JSON
+  // Show all files without IDs
+  if (filesWithoutIds.length > 0) {
+    console.log(`\n📋 === ALL FILES WITHOUT IDs (${filesWithoutIds.length}) ===`);
+    filesWithoutIds.forEach(filePath => {
+      console.log(`📄 ${filePath}`);
+    });
+  }
+  
+  // Save to JSON file
   const outputFile = path.join(__dirname, '../frontmatter_ids.json');
   fs.writeFileSync(outputFile, JSON.stringify(frontmatterDict, null, 2), 'utf8');
   
-  console.log(`\n💾 Diccionario guardado en: ${outputFile}`);
+  console.log(`\n💾 Dictionary saved to: ${outputFile}`);
   
-  // Mostrar IDs duplicados si existen
+  // Show duplicate IDs if they exist
   const duplicates = Object.entries(frontmatterDict)
     .filter(([_, paths]) => Array.isArray(paths))
     .reduce((acc, [id, paths]) => {
@@ -172,16 +182,16 @@ function main() {
     }, {});
   
   if (Object.keys(duplicates).length > 0) {
-    console.log(`\n⚠️  === IDs DUPLICADOS (${Object.keys(duplicates).length}) ===`);
+    console.log(`\n⚠️  === DUPLICATE IDs (${Object.keys(duplicates).length}) ===`);
     for (const [id, paths] of Object.entries(duplicates)) {
-      console.log(`ID: '${id}' -> Archivos: ${paths.join(', ')}`);
+      console.log(`ID: '${id}' -> Files: ${paths.join(', ')}`);
     }
   }
   
-  console.log('\n✨ Proceso completado exitosamente!');
+  console.log('\n✨ Process completed successfully!');
 }
 
-// Ejecutar el script si es llamado directamente
+// Execute script if called directly
 if (require.main === module) {
   main();
 }
