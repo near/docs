@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const crypto = require('crypto');
+const glob = require('glob');
 
 // Load configurations
 const frontmatterIds = require('../frontmatter_ids.json');
@@ -457,8 +458,68 @@ function processOtherComponents(content) {
   return processed;
 }
 
+// New function to process imported MDX components
+async function processImportedComponents(content, currentFilePath) {
+  // Extract imports
+  const importMatches = content.match(/^import\s+(\w+)\s+from\s+['"]([^'"]+)['"];?\s*$/gm);
+  if (!importMatches) return content;
+  
+  const componentMap = new Map();
+  
+  // Parse imports and read component files
+  for (const importMatch of importMatches) {
+    const match = importMatch.match(/^import\s+(\w+)\s+from\s+['"]([^'"]+)['"];?\s*$/);
+    if (match) {
+      const [, componentName, importPath] = match;
+      
+      try {
+        // Resolve the import path relative to current file
+        let resolvedPath;
+        if (importPath.startsWith('@site/src/')) {
+          // Handle @site alias
+          resolvedPath = path.join(__dirname, '../src/', importPath.replace('@site/src/', ''));
+        } else if (importPath.startsWith('./') || importPath.startsWith('../')) {
+          // Handle relative imports
+          const currentDir = path.dirname(currentFilePath);
+          resolvedPath = path.resolve(currentDir, importPath);
+        } else {
+          continue; // Skip absolute imports or theme components
+        }
+        
+        // Add .mdx extension if not present
+        if (!path.extname(resolvedPath)) {
+          resolvedPath += '.mdx';
+        }
+        
+        // Check if component file exists
+        if (fs.existsSync(resolvedPath)) {
+          const componentContent = fs.readFileSync(resolvedPath, 'utf8');
+          const cleanedComponentContent = await cleanContent(componentContent);
+          componentMap.set(componentName, cleanedComponentContent);
+        }
+      } catch (error) {
+        console.warn(`Could not process import ${componentName} from ${importPath}:`, error.message);
+      }
+    }
+  }
+  
+  let processed = content;
+  
+  // Replace component usage with actual content
+  componentMap.forEach((componentContent, componentName) => {
+    // Match both self-closing and regular component tags
+    const componentRegex = new RegExp(`<${componentName}\\s*\\/?>`, 'g');
+    const wrappedComponentRegex = new RegExp(`<${componentName}[^>]*>([\\s\\S]*?)<\\/${componentName}>`, 'g');
+    
+    processed = processed.replace(componentRegex, componentContent);
+    processed = processed.replace(wrappedComponentRegex, componentContent);
+  });
+  
+  return processed;
+}
+
 // Main content cleaning function
-async function cleanContent(content) {
+async function cleanContent(content, currentFilePath = '') {
   const cacheKey = createCacheKey(content);
   
   if (contentCache.has(cacheKey)) {
@@ -466,6 +527,11 @@ async function cleanContent(content) {
   }
   
   let cleaned = content;
+  
+  // Process imported components BEFORE removing imports
+  if (currentFilePath) {
+    cleaned = await processImportedComponents(cleaned, currentFilePath);
+  }
   
   // Remove all imports (including JSX components and MDX imports)
   cleaned = cleaned.replace(/^import\s+.*?from\s+['"].*?['"];?\s*$/gm, '');
@@ -617,104 +683,119 @@ function extractDocIdsFromSidebar(sidebarConfig) {
   return docIds;
 }
 
-// Final cleanup function to fix markdown structure issues
-function finalMarkdownCleanup(content) {
-  let cleaned = content;
+// New function to discover markdown files using glob patterns
+function discoverMarkdownFiles(patterns = ['**/*.md', '**/*.mdx']) {
+  const discovered = new Map();
   
-  // Fix inconsistent header levels - ensure proper hierarchy
-  cleaned = cleaned.replace(/^#{5,}/gm, '####'); // Max 4 levels
-  
-  // Fix code blocks without language specification
-  cleaned = cleaned.replace(/```\s*\n([^`]+)\n```/g, (match, code) => {
-    // Try to detect language from code content
-    let language = '';
-    if (code.includes('function') || code.includes('const') || code.includes('let') || code.includes('var')) {
-      language = 'javascript';
-    } else if (code.includes('fn ') || code.includes('struct ') || code.includes('impl ')) {
-      language = 'rust';
-    } else if (code.includes('def ') || code.includes('import ') || code.includes('from ')) {
-      language = 'python';
-    } else if (code.includes('curl') || code.includes('http ') || code.includes('POST')) {
-      language = 'bash';
-    } else if (code.includes('{') && code.includes('}') && code.includes('"')) {
-      language = 'json';
-    }
+  patterns.forEach(pattern => {
+    const fullPattern = path.join(DOCS_DIR, pattern);
+    const files = glob.sync(fullPattern, {
+      ignore: [
+        '**/node_modules/**',
+        '**/build/**',
+        '**/dist/**',
+        '**/.git/**',
+        '**/README.md',
+        '**/CODE_OF_CONDUCT.md',
+        '**/CONTRIBUTING.md',
+        '**/LICENSE*.md'
+      ]
+    });
     
-    return `\`\`\`${language}\n${code}\n\`\`\``;
+    files.forEach(file => {
+      const relativePath = path.relative(DOCS_DIR, file);
+      // Create docId from relative path without extension
+      const docId = relativePath.replace(/\.(md|mdx)$/, '').replace(/\\/g, '/');
+      discovered.set(docId, relativePath);
+    });
   });
   
-  // Fix mixed bold/italic formatting
-  cleaned = cleaned.replace(/\*\*([^*]+)\*\*/g, '**$1**'); // Ensure proper bold
-  cleaned = cleaned.replace(/\*([^*]+)\*/g, '*$1*'); // Ensure proper italic
-  
-  // Fix broken links
-  cleaned = cleaned.replace(/\[([^\]]+)\]\s*\(\s*\)/g, '$1'); // Remove empty links
-  cleaned = cleaned.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '[$1]($2)'); // Clean up spacing
-  
-  // Fix list formatting
-  cleaned = cleaned.replace(/^-\s+/gm, '- '); // Ensure proper list spacing
-  cleaned = cleaned.replace(/^\*\s+/gm, '* '); // Ensure proper list spacing
-  cleaned = cleaned.replace(/^\d+\.\s+/gm, (match) => match.replace(/\s+/g, ' ')); // Clean numbered lists
-  
-  // Clean up excessive whitespace but preserve code blocks
-  const codeBlocks = [];
-  const codeBlockRegex = /```[\s\S]*?```/g;
-  let match;
-  while ((match = codeBlockRegex.exec(cleaned)) !== null) {
-    codeBlocks.push(match[0]);
-  }
-  
-  // Create placeholders for code blocks
-  const placeholders = codeBlocks.map((_, i) => `__PRESERVE_CODE_BLOCK_${i}__`);
-  
-  // Replace code blocks with placeholders
-  codeBlocks.forEach((block, i) => {
-    cleaned = cleaned.replace(block, placeholders[i]);
-  });
-  
-  // Clean up whitespace (now safe from code blocks)
-  cleaned = cleaned.replace(/\n{3,}/g, '\n\n'); // Max 2 consecutive newlines
-  cleaned = cleaned.replace(/[ \t]+$/gm, ''); // Remove trailing whitespace
-  cleaned = cleaned.replace(/^[ \t]+/gm, ''); // Remove leading whitespace on non-code lines
-  
-  // Restore code blocks
-  codeBlocks.forEach((block, i) => {
-    cleaned = cleaned.replace(placeholders[i], block);
-  });
-  
-  // Final cleanup
-  cleaned = cleaned.trim();
-  
-  return cleaned;
+  return discovered;
 }
 
-// Main processing function
-async function processMarkdownFiles() {
-  console.log('Starting markdown files processing...');
+// Enhanced function to get document metadata from frontmatter
+function extractFrontmatter(content) {
+  const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+  if (!frontmatterMatch) return {};
   
-  loadCache();
+  const frontmatter = {};
+  const lines = frontmatterMatch[1].split('\n');
   
-  if (!fs.existsSync(STATIC_DIR)) {
-    fs.mkdirSync(STATIC_DIR, { recursive: true });
-  }
+  lines.forEach(line => {
+    const colonIndex = line.indexOf(':');
+    if (colonIndex > 0) {
+      const key = line.substring(0, colonIndex).trim();
+      const value = line.substring(colonIndex + 1).trim().replace(/^['"]|['"]$/g, '');
+      frontmatter[key] = value;
+    }
+  });
+  
+  return frontmatter;
+}
+
+// Enhanced function to filter discovered files based on criteria
+function filterDiscoveredFiles(discoveredFiles, options = {}) {
+  const {
+    includeFrontmatterIds = true,
+    includeSidebarDocs = true,
+    includeOrphaned = false,
+    patterns = []
+  } = options;
+  
+  const sidebarDocIds = extractDocIdsFromSidebar(sidebar);
+  const frontmatterDocIds = new Set(Object.keys(frontmatterIds));
+  const filtered = new Map();
+  
+  discoveredFiles.forEach((filePath, docId) => {
+    let shouldInclude = false;
+    
+    // Check if it's in frontmatter_ids.json
+    if (includeFrontmatterIds && frontmatterDocIds.has(docId)) {
+      shouldInclude = true;
+    }
+    
+    // Check if it's in sidebar
+    if (includeSidebarDocs && sidebarDocIds.has(docId)) {
+      shouldInclude = true;
+    }
+    
+    // Check if it's an orphaned file (not in frontmatter or sidebar)
+    if (includeOrphaned && !frontmatterDocIds.has(docId) && !sidebarDocIds.has(docId)) {
+      shouldInclude = true;
+    }
+    
+    // Check custom patterns
+    if (patterns.length > 0) {
+      shouldInclude = patterns.some(pattern => {
+        if (typeof pattern === 'string') {
+          return docId.includes(pattern) || filePath.includes(pattern);
+        }
+        if (pattern instanceof RegExp) {
+          return pattern.test(docId) || pattern.test(filePath);
+        }
+        return false;
+      });
+    }
+    
+    if (shouldInclude) {
+      filtered.set(docId, filePath);
+    }
+  });
+  
+  return filtered;
+}
+
+// New function to process files discovered by glob
+async function processDiscoveredFiles(discoveredFiles) {
+  console.log(`Processing ${discoveredFiles.size} discovered files in batches of ${BATCH_SIZE}...`);
   
   let processedCount = 0;
   let errorCount = 0;
-  
-  // Get all document IDs from sidebar
-  const sidebarDocIds = extractDocIdsFromSidebar(sidebar);
-  console.log(`Found ${sidebarDocIds.size} documents in sidebar structure`);
-  
-  // Filter frontmatter IDs to only include those in sidebar
-  const filteredEntries = Object.entries(frontmatterIds).filter(([docId]) => 
-    sidebarDocIds.has(docId)
-  );
-  
-  console.log(`Processing ${filteredEntries.length} files (filtered by sidebar) in batches of ${BATCH_SIZE}...`);
+  const entries = Array.from(discoveredFiles.entries());
   
   // Process files in batches
-  for (let i = 0; i < filteredEntries.length; i += BATCH_SIZE) {
-    const batch = filteredEntries.slice(i, i + BATCH_SIZE);
+  for (let i = 0; i < entries.length; i += BATCH_SIZE) {
+    const batch = entries.slice(i, i + BATCH_SIZE);
     
     const batchPromises = batch.map(async ([docId, filePath]) => {
       try {
@@ -726,7 +807,17 @@ async function processMarkdownFiles() {
         }
         
         const content = fs.readFileSync(fullPath, 'utf8');
-        const cleanedContent = await cleanContent(content);
+        
+        // Extract frontmatter for additional metadata
+        const frontmatter = extractFrontmatter(content);
+        
+        // Skip files marked as drafts or hidden
+        if (frontmatter.draft === 'true' || frontmatter.hidden === 'true') {
+          console.log(`Skipping draft/hidden file: ${docId}`);
+          return { success: true, docId, skipped: true };
+        }
+        
+        const cleanedContent = await cleanContent(content, fullPath);
         const finalContent = finalMarkdownCleanup(cleanedContent);
         const outputPath = getMarkdownOutputPath(docId);
         const outputFile = path.join(STATIC_DIR, outputPath + '.md');
@@ -738,7 +829,7 @@ async function processMarkdownFiles() {
         
         fs.writeFileSync(outputFile, finalContent, 'utf8');
         
-        return { success: true, docId, outputPath };
+        return { success: true, docId, outputPath, frontmatter };
       } catch (error) {
         console.error(`Error processing ${docId}:`, error.message);
         return { success: false, docId, error: error.message };
@@ -748,9 +839,9 @@ async function processMarkdownFiles() {
     const batchResults = await Promise.all(batchPromises);
     
     batchResults.forEach(result => {
-      if (result.success) {
+      if (result.success && !result.skipped) {
         processedCount++;
-      } else {
+      } else if (!result.success) {
         errorCount++;
       }
     });
@@ -762,8 +853,10 @@ async function processMarkdownFiles() {
     
     // Progress report
     const batchNumber = Math.floor(i / BATCH_SIZE) + 1;
-    const totalBatches = Math.ceil(filteredEntries.length / BATCH_SIZE);
-    console.log(`Batch ${batchNumber}/${totalBatches} completed (${processedCount} files processed)`);
+    const totalBatches = Math.ceil(entries.length / BATCH_SIZE);
+    if (!options.verbose) {
+      console.log(`📊 Batch ${batchNumber}/${totalBatches} completed (${processedCount} processed, ${errorCount} errors)`);
+    }
     
     await new Promise(resolve => setTimeout(resolve, 100));
   }
@@ -774,32 +867,340 @@ async function processMarkdownFiles() {
   saveCache();
   
   // Report results
-  console.log(`\nProcessing completed:`);
-  console.log(`- Files processed: ${processedCount}`);
-  console.log(`- Errors: ${errorCount}`);
-  console.log(`- Cache hits: ${cacheHits}`);
-  console.log(`- Cache misses: ${cacheMisses}`);
-  console.log(`- Cache efficiency: ${cacheHits > 0 ? ((cacheHits / (cacheHits + cacheMisses)) * 100).toFixed(1) : 0}%`);
-  console.log(`- Output directory: ${STATIC_DIR}`);
+  console.log(`\n🎉 Processing completed:`);
+  console.log(`   📝 Files processed: ${processedCount}`);
+  console.log(`   ⏭️  Files skipped: ${skippedCount}`);
+  console.log(`   ❌ Errors: ${errorCount}`);
+  console.log(`   🎯 Cache hits: ${cacheHits}`);
+  console.log(`   🔍 Cache misses: ${cacheMisses}`);
+  console.log(`   📈 Cache efficiency: ${cacheHits > 0 ? ((cacheHits / (cacheHits + cacheMisses)) * 100).toFixed(1) : 0}%`);
+  console.log(`   📂 Output directory: ${options.outputDir}`);
   
   if (failedGithubUrls.size > 0) {
     console.log(`\n🚫 GitHub URLs that could not be fetched (${failedGithubUrls.size}):`);
     Array.from(failedGithubUrls).sort().forEach((url, index) => {
-      console.log(`${index + 1}. ${url}`);
+      console.log(`   ${index + 1}. ${url}`);
     });
   } else {
     console.log(`\n✅ All GitHub URLs were successfully fetched!`);
   }
+  
+  return { processedCount, errorCount, skippedCount };
+}
+
+// Final markdown cleanup function
+function finalMarkdownCleanup(content) {
+  let cleaned = content;
+  
+  // Fix broken links
+  cleaned = cleaned.replace(/\[([^\]]*)\]\(\s*\)/g, '$1');
+  cleaned = cleaned.replace(/\[\]\([^)]+\)/g, '');
+  
+  // Fix malformed headers
+  cleaned = cleaned.replace(/^#+\s*$/gm, '');
+  cleaned = cleaned.replace(/^(#+)\s*(.+?)\s*\1*$/gm, '$1 $2');
+  
+  // Clean up excessive whitespace but preserve intentional spacing
+  cleaned = cleaned.replace(/\n{4,}/g, '\n\n\n');
+  cleaned = cleaned.replace(/^\s+$/gm, '');
+  
+  // Fix incomplete code blocks
+  const codeBlockMatches = cleaned.match(/```[^`]*$/gm);
+  if (codeBlockMatches) {
+    codeBlockMatches.forEach(match => {
+      cleaned = cleaned.replace(match, match + '\n```');
+    });
+  }
+  
+  // Remove empty code blocks
+  cleaned = cleaned.replace(/```\s*\n\s*```/g, '');
+  
+  // Fix table formatting if any tables exist
+  cleaned = cleaned.replace(/\|\s*\|\s*\|/g, '| | |');
+  
+  // Ensure file ends with single newline
+  cleaned = cleaned.replace(/\s+$/, '\n');
+  
+  return cleaned;
+}
+
+// CLI option parsing function
+function parseCliOptions() {
+  const args = process.argv.slice(2);
+  const options = {
+    clearCache: false,
+    patterns: [],
+    includeFrontmatterIds: true,
+    includeSidebarDocs: true,
+    includeOrphaned: false,
+    outputDir: STATIC_DIR,
+    dryRun: false,
+    verbose: false
+  };
+  
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    
+    switch (arg) {
+      case '--clear-cache':
+      case '-c':
+        options.clearCache = true;
+        break;
+      case '--pattern':
+      case '-p':
+        if (i + 1 < args.length) {
+          options.patterns.push(args[++i]);
+        }
+        break;
+      case '--include-orphaned':
+        options.includeOrphaned = true;
+        break;
+      case '--exclude-frontmatter':
+        options.includeFrontmatterIds = false;
+        break;
+      case '--exclude-sidebar':
+        options.includeSidebarDocs = false;
+        break;
+      case '--output-dir':
+      case '-o':
+        if (i + 1 < args.length) {
+          options.outputDir = args[++i];
+        }
+        break;
+      case '--dry-run':
+        options.dryRun = true;
+        break;
+      case '--verbose':
+      case '-v':
+        options.verbose = true;
+        break;
+      case '--help':
+      case '-h':
+        printHelp();
+        process.exit(0);
+        break;
+    }
+  }
+  
+  return options;
+}
+
+// Help function
+function printHelp() {
+  console.log(`
+NEAR Docs Markdown Processor with Glob Support
+
+Usage: node process_markdown_docs.js [options]
+
+Options:
+  -c, --clear-cache          Clear the GitHub content cache before processing
+  -p, --pattern <pattern>    Add custom glob pattern for file discovery (can be used multiple times)
+  --include-orphaned         Include files not referenced in frontmatter_ids.json or sidebar
+  --exclude-frontmatter      Exclude files from frontmatter_ids.json
+  --exclude-sidebar          Exclude files from sidebar configuration
+  -o, --output-dir <dir>     Specify output directory (default: ../static)
+  --dry-run                  Show what would be processed without actually processing
+  -v, --verbose              Enable verbose logging
+  -h, --help                 Show this help message
+
+Examples:
+  # Process all files from frontmatter and sidebar
+  node process_markdown_docs.js
+  
+  # Include orphaned files (not in frontmatter or sidebar)
+  node process_markdown_docs.js --include-orphaned
+  
+  # Process only files matching specific patterns
+  node process_markdown_docs.js -p "docs/ai/**/*.md" -p "docs/tools/**/*.md"
+  
+  # Clear cache and process with verbose output
+  node process_markdown_docs.js --clear-cache --verbose
+  
+  # Dry run to see what would be processed
+  node process_markdown_docs.js --dry-run --verbose
+`);
+}
+
+// Enhanced main processing function with CLI options
+async function processMarkdownFiles(cliOptions = null) {
+  const options = cliOptions || parseCliOptions();
+  
+  if (options.verbose) {
+    console.log('🚀 Starting markdown files processing with options:', options);
+  } else {
+    console.log('🚀 Starting markdown files processing...');
+  }
+  
+  loadCache();
+  
+  if (!fs.existsSync(options.outputDir)) {
+    fs.mkdirSync(options.outputDir, { recursive: true });
+  }
+  
+  let processedCount = 0;
+  let errorCount = 0;
+  let skippedCount = 0;
+  
+  // Use custom patterns if provided, otherwise use defaults
+  const globPatterns = options.patterns.length > 0 ? options.patterns : ['**/*.md', '**/*.mdx'];
+  
+  // Discover markdown files using glob
+  const discoveredFiles = discoverMarkdownFiles(globPatterns);
+  console.log(`📁 Discovered ${discoveredFiles.size} markdown files using patterns: ${globPatterns.join(', ')}`);
+  
+  if (options.verbose) {
+    console.log('Discovered files:');
+    Array.from(discoveredFiles.entries()).forEach(([docId, filePath]) => {
+      console.log(`  - ${docId} (${filePath})`);
+    });
+  }
+  
+  // Filter discovered files based on criteria
+  const filteredFiles = filterDiscoveredFiles(discoveredFiles, {
+    includeFrontmatterIds: options.includeFrontmatterIds,
+    includeSidebarDocs: options.includeSidebarDocs,
+    includeOrphaned: options.includeOrphaned,
+    patterns: options.patterns.map(p => new RegExp(p.replace(/\*\*/g, '.*').replace(/\*/g, '[^/]*')))
+  });
+  
+  console.log(`🔍 Filtered down to ${filteredFiles.size} files after applying criteria`);
+  
+  if (options.verbose || options.dryRun) {
+    console.log('Files to be processed:');
+    Array.from(filteredFiles.entries()).forEach(([docId, filePath]) => {
+      const inFrontmatter = Object.keys(frontmatterIds).includes(docId);
+      const inSidebar = extractDocIdsFromSidebar(sidebar).has(docId);
+      const status = [];
+      if (inFrontmatter) status.push('frontmatter');
+      if (inSidebar) status.push('sidebar');
+      if (status.length === 0) status.push('orphaned');
+      
+      console.log(`  - ${docId} (${filePath}) [${status.join(', ')}]`);
+    });
+  }
+  
+  if (options.dryRun) {
+    console.log(`\n🏃‍♂️ Dry run completed. Would process ${filteredFiles.size} files.`);
+    return { processedCount: 0, errorCount: 0, skippedCount: 0, dryRun: true };
+  }
+  
+  // Process files in batches
+  console.log(`⚙️  Processing ${filteredFiles.size} files in batches of ${BATCH_SIZE}...`);
+  
+  const entries = Array.from(filteredFiles.entries());
+  
+  for (let i = 0; i < entries.length; i += BATCH_SIZE) {
+    const batch = entries.slice(i, i + BATCH_SIZE);
+    
+    const batchPromises = batch.map(async ([docId, filePath]) => {
+      try {
+        const fullPath = path.join(DOCS_DIR, filePath);
+        
+        if (!fs.existsSync(fullPath)) {
+          console.warn(`⚠️  File not found: ${fullPath}`);
+          return { success: false, docId, error: 'File not found' };
+        }
+        
+        const content = fs.readFileSync(fullPath, 'utf8');
+        
+        // Extract frontmatter for additional metadata
+        const frontmatter = extractFrontmatter(content);
+        
+        // Skip files marked as drafts or hidden
+        if (frontmatter.draft === 'true' || frontmatter.hidden === 'true') {
+          if (options.verbose) {
+            console.log(`⏭️  Skipping draft/hidden file: ${docId}`);
+          }
+          return { success: true, docId, skipped: true };
+        }
+        
+        const cleanedContent = await cleanContent(content, fullPath);
+        const finalContent = finalMarkdownCleanup(cleanedContent);
+        const outputPath = getMarkdownOutputPath(docId);
+        const outputFile = path.join(options.outputDir, outputPath + '.md');
+        
+        const outputDir = path.dirname(outputFile);
+        if (!fs.existsSync(outputDir)) {
+          fs.mkdirSync(outputDir, { recursive: true });
+        }
+        
+        fs.writeFileSync(outputFile, finalContent, 'utf8');
+        
+        if (options.verbose) {
+          console.log(`✅ Processed: ${docId} -> ${outputPath}.md`);
+        }
+        
+        return { success: true, docId, outputPath, frontmatter };
+      } catch (error) {
+        console.error(`❌ Error processing ${docId}:`, error.message);
+        return { success: false, docId, error: error.message };
+      }
+    });
+    
+    const batchResults = await Promise.all(batchPromises);
+    
+    batchResults.forEach(result => {
+      if (result.success && !result.skipped) {
+        processedCount++;
+      } else if (result.success && result.skipped) {
+        skippedCount++;
+      } else if (!result.success) {
+        errorCount++;
+      }
+    });
+    
+    // Memory management
+    if (i % (BATCH_SIZE * 10) === 0) {
+      forceGarbageCollection();
+    }
+    
+    // Progress report
+    const batchNumber = Math.floor(i / BATCH_SIZE) + 1;
+    const totalBatches = Math.ceil(entries.length / BATCH_SIZE);
+    if (!options.verbose) {
+      console.log(`📊 Batch ${batchNumber}/${totalBatches} completed (${processedCount} processed, ${skippedCount} skipped, ${errorCount} errors)`);
+    }
+    
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+  
+  // Cleanup
+  contentCache.clear();
+  forceGarbageCollection();
+  saveCache();
+  
+  // Report results
+  console.log(`\n🎉 Processing completed:`);
+  console.log(`   📝 Files processed: ${processedCount}`);
+  console.log(`   ⏭️  Files skipped: ${skippedCount}`);
+  console.log(`   ❌ Errors: ${errorCount}`);
+  console.log(`   🎯 Cache hits: ${cacheHits}`);
+  console.log(`   🔍 Cache misses: ${cacheMisses}`);
+  console.log(`   📈 Cache efficiency: ${cacheHits > 0 ? ((cacheHits / (cacheHits + cacheMisses)) * 100).toFixed(1) : 0}%`);
+  console.log(`   📂 Output directory: ${options.outputDir}`);
+  
+  if (failedGithubUrls.size > 0) {
+    console.log(`\n🚫 GitHub URLs that could not be fetched (${failedGithubUrls.size}):`);
+    Array.from(failedGithubUrls).sort().forEach((url, index) => {
+      console.log(`   ${index + 1}. ${url}`);
+    });
+  } else {
+    console.log(`\n✅ All GitHub URLs were successfully fetched!`);
+  }
+  
+  return { processedCount, errorCount, skippedCount };
 }
 
 // Execute if called directly
 if (require.main === module) {
-  if (shouldClearCache) {
+  const options = parseCliOptions();
+  
+  if (options.clearCache) {
     console.log('🧹 Clearing cache...');
     clearCache();
-    console.log('Cache cleared successfully. Run the script again without --clear-cache to process files.');
+    console.log('✅ Cache cleared successfully. Run the script again without --clear-cache to process files.');
   } else {
-    processMarkdownFiles().catch(console.error);
+    processMarkdownFiles(options).catch(console.error);
   }
 }
 
@@ -809,5 +1210,8 @@ module.exports = {
   loadCache,
   saveCache,
   failedGithubUrls,
-  extractDocIdsFromSidebar
+  extractDocIdsFromSidebar,
+  discoverMarkdownFiles,
+  filterDiscoveredFiles,
+  parseCliOptions
 };
