@@ -163,7 +163,7 @@ In addition, you need to add an `authorized_id` and `memo` to the parameters for
 
 :::tip
 
-We will talk more about this [`authorized_id`](./5-approval.md) in the following chapter.
+We will talk more about this [`authorized_id`](./5-approvals.md) in the following chapter.
 
 :::
 

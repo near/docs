@@ -5,10 +5,11 @@ const crypto = require('crypto');
 
 // Load configurations
 const frontmatterIds = require('../frontmatter_ids.json');
+const sidebar = require('../sidebars.js').default;
 
 // Directories
 const DOCS_DIR = path.join(__dirname, '../../docs');
-const BUILD_DIR = path.join(__dirname, '../build');
+const STATIC_DIR = path.join(__dirname, '../static');
 const CACHE_DIR = path.join(__dirname, '../.cache');
 
 // Cache configuration
@@ -16,6 +17,9 @@ const MAX_CACHE_SIZE = 100;
 const MAX_FILE_SIZE = 1024 * 1024; // 1MB limit per file
 const BATCH_SIZE = 3;
 const REQUEST_TIMEOUT = 5000;
+
+// Check for clear cache argument
+const shouldClearCache = process.argv.includes('--clear-cache') || process.argv.includes('-c');
 
 // Cache and tracking
 const githubCache = new Map();
@@ -49,6 +53,27 @@ if (!fs.existsSync(CACHE_DIR)) {
 }
 
 // Cache management functions
+function clearCache() {
+  try {
+    const cacheFile = path.join(CACHE_DIR, 'github_cache.json');
+    if (fs.existsSync(cacheFile)) {
+      fs.unlinkSync(cacheFile);
+      console.log('✅ Cache file deleted successfully');
+    } else {
+      console.log('ℹ️  No cache file found to delete');
+    }
+    
+    // Clear in-memory caches
+    githubCache.clear();
+    contentCache.clear();
+    failedGithubUrls.clear();
+    
+    console.log('✅ Memory caches cleared');
+  } catch (error) {
+    console.warn('⚠️  Could not clear cache:', error.message);
+  }
+}
+
 function loadCache() {
   try {
     const cacheFile = path.join(CACHE_DIR, 'github_cache.json');
@@ -138,7 +163,7 @@ async function fetchGitHubCode(url) {
       req.destroy();
       const timeoutResult = `// Timeout fetching code from ${url}`;
       failedGithubUrls.add(url);
-      githubCache.set(cacheKey, timeoutResult);
+      githubCache.set(timeoutResult, timeoutResult);
       clearOldCacheEntries(githubCache, MAX_CACHE_SIZE);
       resolve(timeoutResult);
     });
@@ -177,7 +202,33 @@ async function replaceGithubWithCode(content) {
       const languageMatch = normalizedTag.match(/language="([^"]*?)"/);
       const language = languageMatch ? languageMatch[1] : 'javascript';
       
-      return { tag, replacement: `\`\`\`${language}\n${selectedCode}\n\`\`\`` };
+      // Clean up the code and handle common syntax issues
+      let cleanedCode = selectedCode
+        // Fix empty function parameters
+        .replace(/\(\s*,\s*\)/g, '()')
+        .replace(/\(\s*,/g, '(')
+        .replace(/,\s*\)/g, ')')
+        // Fix incomplete const declarations
+        .replace(/^const\s*;/gm, '')
+        .replace(/^const\s*,/gm, '')
+        // Fix empty parameters in function calls
+        .replace(/([a-zA-Z_$][a-zA-Z0-9_$]*)\(\s*,\s*([^)]*)\)/g, '$1($2)')
+        .replace(/([a-zA-Z_$][a-zA-Z0-9_$]*)\(\s*,\s*\)/g, '$1()')
+        // Fix trailing commas in parameters
+        .replace(/,\s*\)/g, ')')
+        // Remove empty lines at start/end
+        .replace(/^\s*\n/, '')
+        .replace(/\n\s*$/, '');
+      
+      // Ensure proper code block formatting
+      cleanedCode = cleanedCode.replace(/```/g, '\\`\\`\\`'); // Escape any existing backticks
+      
+      // Only return non-empty code blocks
+      if (cleanedCode.trim()) {
+        return { tag, replacement: `\`\`\`${language}\n${cleanedCode}\n\`\`\`` };
+      } else {
+        return { tag, replacement: '' };
+      }
     } catch (error) {
       return { tag, replacement: '' };
     }
@@ -255,6 +306,7 @@ function processTabComponents(content) {
         // Handle both regular and JSX label attributes
         const labelMatch = tabItemTag.match(/label=['"]([^'"]*)['"]/);
         const jsxLabelMatch = tabItemTag.match(/label=\{([^}]*)\}/);
+        const valueMatch = tabItemTag.match(/value=['"]([^'"]*)['"]/);
         
         let label = null;
         if (labelMatch) {
@@ -271,6 +323,9 @@ function processTabComponents(content) {
               label = textMatch[1];
             }
           }
+        } else if (valueMatch) {
+          // Use value as fallback label
+          label = valueMatch[1];
         }
         
         if (label) {
@@ -279,9 +334,17 @@ function processTabComponents(content) {
         
         // Process the content inside TabItem
         let processedContent = tabItemContent.trim();
-        // Remove imported component references
-        processedContent = processedContent.replace(/<[A-Z][a-zA-Z0-9]*\s*\/>/g, '');
-        processedContent = processedContent.replace(/<[A-Z][a-zA-Z0-9]*\s*><\/[A-Z][a-zA-Z0-9]*>/g, '');
+        
+        // Remove imported component references but preserve their content
+        processedContent = processedContent.replace(/<([A-Z][a-zA-Z0-9]*)\s*\/>/g, '');
+        processedContent = processedContent.replace(/<([A-Z][a-zA-Z0-9]*)\s*><\/\1>/g, '');
+        
+        // Fix code blocks that might have lost their language specification
+        processedContent = processedContent.replace(/```\s*\n/g, '```\n');
+        
+        // Ensure proper spacing around code blocks
+        processedContent = processedContent.replace(/```/g, '\n```');
+        processedContent = processedContent.replace(/\n\n```/g, '\n```');
         
         tabContent += `${processedContent}\n\n`;
       }
@@ -419,7 +482,23 @@ async function cleanContent(content) {
   // Remove export statements
   cleaned = cleaned.replace(/^export\s+.*?$/gm, '');
   
-  // Process all components
+  // First, protect existing code blocks before processing components
+  const codeBlocks = [];
+  const codeBlockRegex = /```[\s\S]*?```/g;
+  let match;
+  while ((match = codeBlockRegex.exec(cleaned)) !== null) {
+    codeBlocks.push(match[0]);
+  }
+  
+  // Create placeholders for code blocks
+  const placeholders = codeBlocks.map((_, i) => `__CODE_BLOCK_${i}__`);
+  
+  // Replace code blocks with placeholders
+  codeBlocks.forEach((block, i) => {
+    cleaned = cleaned.replace(block, placeholders[i]);
+  });
+  
+  // Process all components (now safe from code block interference)
   cleaned = await replaceGithubWithCode(cleaned);
   cleaned = processCardComponents(cleaned);
   cleaned = processTabComponents(cleaned);
@@ -427,14 +506,6 @@ async function cleanContent(content) {
   cleaned = processDetailsComponents(cleaned);
   cleaned = processOtherComponents(cleaned);
   cleaned = processMdxComponents(cleaned);
-  
-  // Handle code blocks protection
-  const codeBlocks = cleaned.match(/```[\s\S]*?```/g) || [];
-  const placeholders = codeBlocks.map((_, i) => `__CODE_BLOCK_${i}__`);
-  
-  codeBlocks.forEach((block, i) => {
-    cleaned = cleaned.replace(block, placeholders[i]);
-  });
   
   // Remove remaining HTML/JSX tags and clean up
   cleaned = cleaned.replace(/<iframe[\s\S]*?<\/iframe>/g, '');
@@ -453,6 +524,10 @@ async function cleanContent(content) {
   codeBlocks.forEach((block, i) => {
     cleaned = cleaned.replace(placeholders[i], block);
   });
+  
+  // Handle any remaining incomplete code blocks or malformed markdown
+  cleaned = cleaned.replace(/```\s*$/gm, '```');
+  cleaned = cleaned.replace(/```([^`\n]*)\n\s*```/g, '```$1\n// Code block content\n```');
   
   // Decode unicode
   try {
@@ -498,9 +573,119 @@ function processMdxComponents(content) {
   return processed;
 }
 
-// Generate output path for markdown files
+// Generate output path maintaining folder structure
 function getMarkdownOutputPath(docId) {
-  return docId.replace(/\//g, '-');
+  // Keep the original folder structure instead of flattening
+  return docId;
+}
+
+// New function to extract all document IDs from sidebar structure
+function extractDocIdsFromSidebar(sidebarConfig) {
+  const docIds = new Set();
+  
+  function traverseItem(item) {
+    if (typeof item === 'string') {
+      docIds.add(item);
+    } else if (Array.isArray(item)) {
+      item.forEach(traverseItem);
+    } else if (typeof item === 'object' && item !== null) {
+      if (item.id) {
+        docIds.add(item.id);
+      }
+      if (item.link && item.link.id) {
+        docIds.add(item.link.id);
+      }
+      if (item.items) {
+        item.items.forEach(traverseItem);
+      }
+      // Handle nested objects with string keys
+      Object.values(item).forEach(value => {
+        if (Array.isArray(value)) {
+          value.forEach(traverseItem);
+        }
+      });
+    }
+  }
+  
+  // Traverse all sidebar sections
+  Object.values(sidebarConfig).forEach(section => {
+    if (Array.isArray(section)) {
+      section.forEach(traverseItem);
+    }
+  });
+  
+  return docIds;
+}
+
+// Final cleanup function to fix markdown structure issues
+function finalMarkdownCleanup(content) {
+  let cleaned = content;
+  
+  // Fix inconsistent header levels - ensure proper hierarchy
+  cleaned = cleaned.replace(/^#{5,}/gm, '####'); // Max 4 levels
+  
+  // Fix code blocks without language specification
+  cleaned = cleaned.replace(/```\s*\n([^`]+)\n```/g, (match, code) => {
+    // Try to detect language from code content
+    let language = '';
+    if (code.includes('function') || code.includes('const') || code.includes('let') || code.includes('var')) {
+      language = 'javascript';
+    } else if (code.includes('fn ') || code.includes('struct ') || code.includes('impl ')) {
+      language = 'rust';
+    } else if (code.includes('def ') || code.includes('import ') || code.includes('from ')) {
+      language = 'python';
+    } else if (code.includes('curl') || code.includes('http ') || code.includes('POST')) {
+      language = 'bash';
+    } else if (code.includes('{') && code.includes('}') && code.includes('"')) {
+      language = 'json';
+    }
+    
+    return `\`\`\`${language}\n${code}\n\`\`\``;
+  });
+  
+  // Fix mixed bold/italic formatting
+  cleaned = cleaned.replace(/\*\*([^*]+)\*\*/g, '**$1**'); // Ensure proper bold
+  cleaned = cleaned.replace(/\*([^*]+)\*/g, '*$1*'); // Ensure proper italic
+  
+  // Fix broken links
+  cleaned = cleaned.replace(/\[([^\]]+)\]\s*\(\s*\)/g, '$1'); // Remove empty links
+  cleaned = cleaned.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '[$1]($2)'); // Clean up spacing
+  
+  // Fix list formatting
+  cleaned = cleaned.replace(/^-\s+/gm, '- '); // Ensure proper list spacing
+  cleaned = cleaned.replace(/^\*\s+/gm, '* '); // Ensure proper list spacing
+  cleaned = cleaned.replace(/^\d+\.\s+/gm, (match) => match.replace(/\s+/g, ' ')); // Clean numbered lists
+  
+  // Clean up excessive whitespace but preserve code blocks
+  const codeBlocks = [];
+  const codeBlockRegex = /```[\s\S]*?```/g;
+  let match;
+  while ((match = codeBlockRegex.exec(cleaned)) !== null) {
+    codeBlocks.push(match[0]);
+  }
+  
+  // Create placeholders for code blocks
+  const placeholders = codeBlocks.map((_, i) => `__PRESERVE_CODE_BLOCK_${i}__`);
+  
+  // Replace code blocks with placeholders
+  codeBlocks.forEach((block, i) => {
+    cleaned = cleaned.replace(block, placeholders[i]);
+  });
+  
+  // Clean up whitespace (now safe from code blocks)
+  cleaned = cleaned.replace(/\n{3,}/g, '\n\n'); // Max 2 consecutive newlines
+  cleaned = cleaned.replace(/[ \t]+$/gm, ''); // Remove trailing whitespace
+  cleaned = cleaned.replace(/^[ \t]+/gm, ''); // Remove leading whitespace on non-code lines
+  
+  // Restore code blocks
+  codeBlocks.forEach((block, i) => {
+    cleaned = cleaned.replace(placeholders[i], block);
+  });
+  
+  // Final cleanup
+  cleaned = cleaned.trim();
+  
+  return cleaned;
 }
 
 // Main processing function
@@ -509,19 +694,27 @@ async function processMarkdownFiles() {
   
   loadCache();
   
-  if (!fs.existsSync(BUILD_DIR)) {
-    fs.mkdirSync(BUILD_DIR, { recursive: true });
+  if (!fs.existsSync(STATIC_DIR)) {
+    fs.mkdirSync(STATIC_DIR, { recursive: true });
   }
   
   let processedCount = 0;
   let errorCount = 0;
   
-  const entries = Object.entries(frontmatterIds);
-  console.log(`Processing ${entries.length} files in batches of ${BATCH_SIZE}...`);
+  // Get all document IDs from sidebar
+  const sidebarDocIds = extractDocIdsFromSidebar(sidebar);
+  console.log(`Found ${sidebarDocIds.size} documents in sidebar structure`);
+  
+  // Filter frontmatter IDs to only include those in sidebar
+  const filteredEntries = Object.entries(frontmatterIds).filter(([docId]) => 
+    sidebarDocIds.has(docId)
+  );
+  
+  console.log(`Processing ${filteredEntries.length} files (filtered by sidebar) in batches of ${BATCH_SIZE}...`);
   
   // Process files in batches
-  for (let i = 0; i < entries.length; i += BATCH_SIZE) {
-    const batch = entries.slice(i, i + BATCH_SIZE);
+  for (let i = 0; i < filteredEntries.length; i += BATCH_SIZE) {
+    const batch = filteredEntries.slice(i, i + BATCH_SIZE);
     
     const batchPromises = batch.map(async ([docId, filePath]) => {
       try {
@@ -534,15 +727,16 @@ async function processMarkdownFiles() {
         
         const content = fs.readFileSync(fullPath, 'utf8');
         const cleanedContent = await cleanContent(content);
+        const finalContent = finalMarkdownCleanup(cleanedContent);
         const outputPath = getMarkdownOutputPath(docId);
-        const outputFile = path.join(BUILD_DIR, outputPath + '.md');
+        const outputFile = path.join(STATIC_DIR, outputPath + '.md');
         
         const outputDir = path.dirname(outputFile);
         if (!fs.existsSync(outputDir)) {
           fs.mkdirSync(outputDir, { recursive: true });
         }
         
-        fs.writeFileSync(outputFile, cleanedContent, 'utf8');
+        fs.writeFileSync(outputFile, finalContent, 'utf8');
         
         return { success: true, docId, outputPath };
       } catch (error) {
@@ -568,7 +762,7 @@ async function processMarkdownFiles() {
     
     // Progress report
     const batchNumber = Math.floor(i / BATCH_SIZE) + 1;
-    const totalBatches = Math.ceil(entries.length / BATCH_SIZE);
+    const totalBatches = Math.ceil(filteredEntries.length / BATCH_SIZE);
     console.log(`Batch ${batchNumber}/${totalBatches} completed (${processedCount} files processed)`);
     
     await new Promise(resolve => setTimeout(resolve, 100));
@@ -586,6 +780,7 @@ async function processMarkdownFiles() {
   console.log(`- Cache hits: ${cacheHits}`);
   console.log(`- Cache misses: ${cacheMisses}`);
   console.log(`- Cache efficiency: ${cacheHits > 0 ? ((cacheHits / (cacheHits + cacheMisses)) * 100).toFixed(1) : 0}%`);
+  console.log(`- Output directory: ${STATIC_DIR}`);
   
   if (failedGithubUrls.size > 0) {
     console.log(`\n🚫 GitHub URLs that could not be fetched (${failedGithubUrls.size}):`);
@@ -599,7 +794,13 @@ async function processMarkdownFiles() {
 
 // Execute if called directly
 if (require.main === module) {
-  processMarkdownFiles().catch(console.error);
+  if (shouldClearCache) {
+    console.log('🧹 Clearing cache...');
+    clearCache();
+    console.log('Cache cleared successfully. Run the script again without --clear-cache to process files.');
+  } else {
+    processMarkdownFiles().catch(console.error);
+  }
 }
 
 module.exports = {
@@ -607,5 +808,6 @@ module.exports = {
   cleanContent,
   loadCache,
   saveCache,
-  failedGithubUrls
+  failedGithubUrls,
+  extractDocIdsFromSidebar
 };
