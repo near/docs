@@ -26,6 +26,64 @@ const shouldClearCache = process.argv.includes('--clear-cache') || process.argv.
 const githubCache = new Map();
 const contentCache = new Map();
 const failedGithubUrls = new Set();
+const unprocessedComponents = new Map(); // Track unprocessed components with details
+
+// Blacklist of components that should not be reported as unprocessed
+const COMPONENT_BLACKLIST = new Set([
+  'WalletSelectorProvider',
+  'Vec',
+  'PostedMessage',
+  'Option',
+  'Result',
+  'HashMap',
+  'BTreeMap',
+  'HashSet',
+  'BTreeSet',
+  'Box',
+  'Rc',
+  'Arc',
+  'RefCell',
+  'Mutex',
+  'RwLock',
+  'String',
+  'Vec<u8>',
+  'Vec<PostedMessage>',
+  'Option<String>',
+  'Result<T, E>',
+  'impl',
+  'struct',
+  'enum',
+  'trait',
+  'fn',
+  'let',
+  'const',
+  'static',
+  'mut',
+  'pub',
+  'use',
+  'mod',
+  'crate',
+  'self',
+  'super',
+  'where',
+  'if',
+  'else',
+  'match',
+  'for',
+  'while',
+  'loop',
+  'break',
+  'continue',
+  'return',
+  'async',
+  'await',
+  'move',
+  'ref',
+  'T',
+  'K',
+  'AccountId'
+]);
+
 let cacheHits = 0;
 let cacheMisses = 0;
 
@@ -459,7 +517,13 @@ function processOtherComponents(content) {
 }
 
 // New function to process imported MDX components
-async function processImportedComponents(content, currentFilePath) {
+async function processImportedComponents(content, currentFilePath, processedFiles = new Set()) {
+  // Prevent infinite recursion by tracking processed files
+  if (processedFiles.has(currentFilePath)) {
+    return content;
+  }
+  processedFiles.add(currentFilePath);
+  
   // Extract imports
   const importMatches = content.match(/^import\s+(\w+)\s+from\s+['"]([^'"]+)['"];?\s*$/gm);
   if (!importMatches) return content;
@@ -494,8 +558,32 @@ async function processImportedComponents(content, currentFilePath) {
         // Check if component file exists
         if (fs.existsSync(resolvedPath)) {
           const componentContent = fs.readFileSync(resolvedPath, 'utf8');
-          const cleanedComponentContent = await cleanContent(componentContent);
-          componentMap.set(componentName, cleanedComponentContent);
+          
+          // Process component content without recursive cleanContent call
+          let processedComponentContent = componentContent;
+          
+          // Remove frontmatter from component
+          const sections = processedComponentContent.split('---');
+          if (sections.length >= 3) {
+            sections.splice(1, 1);
+            processedComponentContent = sections.join('---').replace(/^---+\n\n/g, '');
+          }
+          
+          // Recursively process nested imports within this component
+          processedComponentContent = await processImportedComponents(processedComponentContent, resolvedPath, processedFiles);
+          
+          // Remove imports from component content
+          processedComponentContent = processedComponentContent.replace(/^import\s+.*?from\s+['"].*?['"];?\s*$/gm, '');
+          processedComponentContent = processedComponentContent.replace(/^import\s+\{[^}]*\}\s+from\s+['"].*?['"];?\s*$/gm, '');
+          processedComponentContent = processedComponentContent.replace(/^import\s+.*?$/gm, '');
+          
+          // Remove export statements
+          processedComponentContent = processedComponentContent.replace(/^export\s+.*?$/gm, '');
+          
+          // Clean up extra whitespace
+          processedComponentContent = processedComponentContent.replace(/^\n+/, '').replace(/\n+$/, '');
+          
+          componentMap.set(componentName, processedComponentContent);
         }
       } catch (error) {
         console.warn(`Could not process import ${componentName} from ${importPath}:`, error.message);
@@ -571,7 +659,10 @@ async function cleanContent(content, currentFilePath = '') {
   cleaned = processAdmonitionComponents(cleaned);
   cleaned = processDetailsComponents(cleaned);
   cleaned = processOtherComponents(cleaned);
-  cleaned = processMdxComponents(cleaned);
+  cleaned = processMdxComponents(cleaned, currentFilePath);
+  
+  // Convert HTML tables to markdown tables
+  cleaned = convertHtmlTablesToMarkdown(cleaned);
   
   // Remove remaining HTML/JSX tags and clean up
   cleaned = cleaned.replace(/<iframe[\s\S]*?<\/iframe>/g, '');
@@ -612,8 +703,92 @@ async function cleanContent(content, currentFilePath = '') {
 }
 
 // New function to process MDX-specific components
-function processMdxComponents(content) {
+function processMdxComponents(content, currentFilePath = '') {
   let processed = content;
+  
+  // First, identify and temporarily remove code blocks to avoid processing components inside them
+  const codeBlocks = [];
+  const codeBlockRegex = /```[\s\S]*?```/g;
+  let match;
+  while ((match = codeBlockRegex.exec(content)) !== null) {
+    codeBlocks.push(match[0]);
+  }
+  
+  // Create placeholders for code blocks
+  const codeBlockPlaceholders = codeBlocks.map((_, i) => `__TEMP_CODE_BLOCK_${i}__`);
+  
+  // Replace code blocks with placeholders temporarily
+  let contentWithoutCodeBlocks = content;
+  codeBlocks.forEach((block, i) => {
+    contentWithoutCodeBlocks = contentWithoutCodeBlocks.replace(block, codeBlockPlaceholders[i]);
+  });
+  
+  // Track unprocessed components with detailed information (only from content without code blocks)
+  const componentMatches = contentWithoutCodeBlocks.match(/<([A-Z][a-zA-Z0-9]*)\s*[^>]*\/?>/g);
+  if (componentMatches) {
+    componentMatches.forEach(match => {
+      const componentName = match.match(/<([A-Z][a-zA-Z0-9]*)/)[1];
+      
+      // Check if component is in blacklist
+      if (COMPONENT_BLACKLIST.has(componentName)) {
+        return; // Skip blacklisted components
+      }
+      
+      // Don't track common/processed components
+      if (!['LantstoolLabel', 'TryOutOnLantstool', 'Card', 'Tabs', 'TabItem', 'Github', 'CodeBlock', 'Highlight', 'Link', 'MovingForwardSupportSection', 'Block', 'ExplainCode', 'File', 'Feature', 'FeatureList', 'Column', 'Container', 'Language', 'CodeTabs', 'NearWidget', 'SigsSupport'].includes(componentName)) {
+        const existingComponent = unprocessedComponents.get(componentName);
+        if (existingComponent) {
+          // Add this usage pattern to existing component
+          if (!existingComponent.patterns.includes(match)) {
+            existingComponent.patterns.push(match);
+            existingComponent.count++;
+          }
+          // Add file path if not already included
+          if (!existingComponent.files.includes(currentFilePath)) {
+            existingComponent.files.push(currentFilePath);
+          }
+        } else {
+          // Create new component entry
+          unprocessedComponents.set(componentName, {
+            name: componentName,
+            count: 1,
+            patterns: [match],
+            files: currentFilePath ? [currentFilePath] : [],
+            reason: 'No specific processing implemented',
+            type: match.includes('/>') ? 'self-closing' : 'with-content'
+          });
+        }
+      }
+    });
+  }
+  
+  // Also track complex JSX expressions that might be causing issues (only from content without code blocks)
+  const jsxExpressions = contentWithoutCodeBlocks.match(/\{[^}]*[A-Z][a-zA-Z0-9]*[^}]*\}/g);
+  if (jsxExpressions) {
+    jsxExpressions.forEach(expr => {
+      const componentName = 'JSXExpression';
+      const existingComponent = unprocessedComponents.get(componentName);
+      if (existingComponent) {
+        if (!existingComponent.patterns.includes(expr)) {
+          existingComponent.patterns.push(expr);
+          existingComponent.count++;
+        }
+        // Add file path if not already included
+        if (!existingComponent.files.includes(currentFilePath)) {
+          existingComponent.files.push(currentFilePath);
+        }
+      } else {
+        unprocessedComponents.set(componentName, {
+          name: componentName,
+          count: 1,
+          patterns: [expr],
+          files: currentFilePath ? [currentFilePath] : [],
+          reason: 'Complex JSX expression found',
+          type: 'jsx-expression'
+        });
+      }
+    });
+  }
   
   // Process LantstoolLabel components
   processed = processed.replace(/<LantstoolLabel\s*\/>/g, 'Lantstool');
@@ -622,6 +797,107 @@ function processMdxComponents(content) {
   // Process TryOutOnLantstool components
   processed = processed.replace(/<TryOutOnLantstool\s+[^>]*\/>/g, '');
   processed = processed.replace(/<TryOutOnLantstool[\s\S]*?<\/TryOutOnLantstool>/g, '');
+  
+  // Process MovingForwardSupportSection components
+  processed = processed.replace(/<MovingForwardSupportSection\s*\/>/g, `
+## Looking for Support?
+
+If you have any questions, connect with us on [Dev Telegram](https://t.me/neardev) or [Discord](https://discord.gg/nearprotocol). We also host **Office Hours** on Discord every Thursday at **11 AM UTC** and **6 PM UTC**. Join our voice channel to ask your questions and get live support.
+
+Happy coding! 🚀
+`);
+  processed = processed.replace(/<MovingForwardSupportSection\s*><\/MovingForwardSupportSection>/g, `
+## Looking for Support?
+
+If you have any questions, connect with us on [Dev Telegram](https://t.me/neardev) or [Discord](https://discord.gg/nearprotocol). We also host **Office Hours** on Discord every Thursday at **11 AM UTC** and **6 PM UTC**. Join our voice channel to ask your questions and get live support.
+
+Happy coding! 🚀
+`);
+
+  // Process Block components (used in code explainer)
+  processed = processed.replace(/<Block\s+[^>]*>([\s\S]*?)<\/Block>/g, (match, content) => {
+    return content.trim();
+  });
+
+  // Process ExplainCode components (remove wrapper, keep content)
+  processed = processed.replace(/<ExplainCode\s+[^>]*>([\s\S]*?)<\/ExplainCode>/g, (match, content) => {
+    return content.trim();
+  });
+
+  // Process File components (used in code explainer)
+  processed = processed.replace(/<File\s+[^>]*>([\s\S]*?)<\/File>/g, (match, content) => {
+    return content.trim();
+  });
+
+  // Process Feature components (convert to simple text or link)
+  processed = processed.replace(/<Feature\s+[^>]*\/>/g, (match) => {
+    const titleMatch = match.match(/title=['"]([^'"]*)['"]/);
+    const subtitleMatch = match.match(/subtitle=['"]([^'"]*)['"]/);
+    const urlMatch = match.match(/url=['"]([^'"]*)['"]/);
+    
+    let result = '';
+    if (titleMatch && urlMatch) {
+      result = `### [${titleMatch[1]}](${urlMatch[1]})\n`;
+      if (subtitleMatch) {
+        result += `${subtitleMatch[1]}\n`;
+      }
+    } else if (titleMatch) {
+      result = `### ${titleMatch[1]}\n`;
+      if (subtitleMatch) {
+        result += `${subtitleMatch[1]}\n`;
+      }
+    }
+    return result;
+  });
+
+  // Process FeatureList components (convert to simple container)
+  processed = processed.replace(/<FeatureList[^>]*>([\s\S]*?)<\/FeatureList>/g, (match, content) => {
+    return `\n${content.trim()}\n`;
+  });
+
+  // Process Column components (convert to simple section)
+  processed = processed.replace(/<Column[^>]*>([\s\S]*?)<\/Column>/g, (match, content) => {
+    const titleMatch = match.match(/title=['"]([^'"]*)['"]/);
+    let result = '';
+    if (titleMatch && titleMatch[1].trim()) {
+      result = `\n## ${titleMatch[1]}\n\n`;
+    }
+    result += content.trim();
+    return result;
+  });
+
+  // Process Container components (simple wrapper removal)
+  processed = processed.replace(/<Container[^>]*>([\s\S]*?)<\/Container>/g, (match, content) => {
+    return content.trim();
+  });
+
+  // Process Language components (used in CodeTabs)
+  processed = processed.replace(/<Language\s+[^>]*>([\s\S]*?)<\/Language>/g, (match, content) => {
+    const valueMatch = match.match(/value=['"]([^'"]*)['"]/);
+    let result = '';
+    if (valueMatch) {
+      result = `\n### ${valueMatch[1].toUpperCase()}\n\n`;
+    }
+    result += content.trim();
+    return result;
+  });
+
+  // Process CodeTabs components (convert to sections)
+  processed = processed.replace(/<CodeTabs[^>]*>([\s\S]*?)<\/CodeTabs>/g, (match, content) => {
+    return `\n${content.trim()}\n`;
+  });
+
+  // Process NearWidget components (remove or convert to note)
+  processed = processed.replace(/<NearWidget[^>]*>([\s\S]*?)<\/NearWidget>/g, (match, content) => {
+    return `\n> **Interactive Widget**\n>\n> ${content.trim().replace(/\n/g, '\n> ')}\n`;
+  });
+  
+  // Process SigsSupport components (self-closing)
+  processed = processed.replace(/<SigsSupport\s*\/>/g, `
+> **Chain Signatures Support**
+>
+> This feature supports Chain Signatures for multi-chain functionality.
+`);
   
   // Process imported component references (like RequestJson, ResponseJson, etc.)
   processed = processed.replace(/<([A-Z][a-zA-Z0-9]*)\s*\/>/g, '');
@@ -637,6 +913,100 @@ function processMdxComponents(content) {
   processed = processed.replace(/\{[\s\S]*?\}/g, '');
   
   return processed;
+}
+
+// New function to convert HTML tables to markdown tables
+function convertHtmlTablesToMarkdown(content) {
+  // Match HTML table elements
+  const tableRegex = /<table[^>]*>([\s\S]*?)<\/table>/gi;
+  
+  return content.replace(tableRegex, (match) => {
+    try {
+      // Extract table content
+      let tableContent = match;
+      
+      // Extract thead content
+      const theadMatch = tableContent.match(/<thead[^>]*>([\s\S]*?)<\/thead>/i);
+      let headers = [];
+      if (theadMatch) {
+        const headerRowMatch = theadMatch[1].match(/<tr[^>]*>([\s\S]*?)<\/tr>/i);
+        if (headerRowMatch) {
+          const headerCells = headerRowMatch[1].match(/<th[^>]*>([\s\S]*?)<\/th>/gi);
+          if (headerCells) {
+            headers = headerCells.map(cell => {
+              // Remove HTML tags and clean up
+              return cell
+                .replace(/<\/?th[^>]*>/gi, '')
+                .replace(/<br\s*\/?>/gi, ' ')
+                .replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, '`$1`')
+                .replace(/<[^>]*>/g, '')
+                .trim()
+                .replace(/\s+/g, ' ');
+            });
+          }
+        }
+      }
+      
+      // Extract tbody content
+      const tbodyMatch = tableContent.match(/<tbody[^>]*>([\s\S]*?)<\/tbody>/i);
+      let rows = [];
+      if (tbodyMatch) {
+        const rowMatches = tbodyMatch[1].match(/<tr[^>]*>([\s\S]*?)<\/tr>/gi);
+        if (rowMatches) {
+          rows = rowMatches.map(row => {
+            const cellMatches = row.match(/<td[^>]*>([\s\S]*?)<\/td>/gi);
+            if (cellMatches) {
+              return cellMatches.map(cell => {
+                // Handle rowspan and special formatting
+                let cellContent = cell
+                  .replace(/<\/?td[^>]*>/gi, '')
+                  .replace(/<br\s*\/?>/gi, ' ')
+                  .replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, '`$1`')
+                  .replace(/<a[^>]*>([\s\S]*?)<\/a>/gi, '$1')
+                  .replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, '• $1')
+                  .replace(/<\/?ul[^>]*>/gi, '')
+                  .replace(/<\/?ol[^>]*>/gi, '')
+                  .replace(/<[^>]*>/g, '')
+                  .trim()
+                  .replace(/\s+/g, ' ')
+                  .replace(/\n\s*\n/g, '\n');
+                
+                return cellContent;
+              });
+            }
+            return [];
+          }).filter(row => row.length > 0);
+        }
+      }
+      
+      // Build markdown table
+      if (headers.length === 0 && rows.length === 0) {
+        return '';
+      }
+      
+      let markdownTable = '';
+      
+      // Add headers
+      if (headers.length > 0) {
+        markdownTable += '| ' + headers.join(' | ') + ' |\n';
+        markdownTable += '| ' + headers.map(() => '---').join(' | ') + ' |\n';
+      }
+      
+      // Add rows
+      rows.forEach(row => {
+        // Ensure row has same number of columns as headers
+        while (row.length < headers.length) {
+          row.push('');
+        }
+        markdownTable += '| ' + row.join(' | ') + ' |\n';
+      });
+      
+      return '\n' + markdownTable + '\n';
+    } catch (error) {
+      // If conversion fails, return empty string
+      return '';
+    }
+  });
 }
 
 // Generate output path maintaining folder structure
@@ -791,6 +1161,7 @@ async function processDiscoveredFiles(discoveredFiles) {
   
   let processedCount = 0;
   let errorCount = 0;
+  let skippedCount = 0; // Add missing variable
   const entries = Array.from(discoveredFiles.entries());
   
   // Process files in batches
@@ -841,6 +1212,8 @@ async function processDiscoveredFiles(discoveredFiles) {
     batchResults.forEach(result => {
       if (result.success && !result.skipped) {
         processedCount++;
+      } else if (result.success && result.skipped) {
+        skippedCount++;
       } else if (!result.success) {
         errorCount++;
       }
@@ -854,9 +1227,7 @@ async function processDiscoveredFiles(discoveredFiles) {
     // Progress report
     const batchNumber = Math.floor(i / BATCH_SIZE) + 1;
     const totalBatches = Math.ceil(entries.length / BATCH_SIZE);
-    if (!options.verbose) {
-      console.log(`📊 Batch ${batchNumber}/${totalBatches} completed (${processedCount} processed, ${errorCount} errors)`);
-    }
+    console.log(`📊 Batch ${batchNumber}/${totalBatches} completed (${processedCount} processed, ${skippedCount} skipped, ${errorCount} errors)`);
     
     await new Promise(resolve => setTimeout(resolve, 100));
   }
@@ -884,9 +1255,39 @@ async function processDiscoveredFiles(discoveredFiles) {
   } else {
     console.log(`\n✅ All GitHub URLs were successfully fetched!`);
   }
+
+  if (unprocessedComponents.size > 0) {
+    console.log(`\n🔧 Unprocessed components found (${unprocessedComponents.size}):`);
+    Array.from(unprocessedComponents.values()).sort((a, b) => a.name.localeCompare(b.name)).forEach((component, index) => {
+      console.log(`\n   ${index + 1}. ${component.name} (${component.count} occurrence${component.count > 1 ? 's' : ''})`);
+      console.log(`      Problem: ${component.reason}`);
+      console.log(`      Type: ${component.type}`);
+      console.log(`      Found in files:`);
+      const filesToShow = component.files.slice(0, 5); // Show up to 5 files
+      filesToShow.forEach((filePath, i) => {
+        // Convert absolute path to relative path for better readability
+        const relativePath = filePath.replace(DOCS_DIR, '').replace(/^\//, '');
+        console.log(`        ${i + 1}. ${relativePath || filePath}`);
+      });
+      if (component.files.length > 5) {
+        console.log(`        ... and ${component.files.length - 5} more files`);
+      }
+      // Show one example pattern for reference
+      if (component.patterns.length > 0) {
+        const examplePattern = component.patterns[0].length > 60 ? 
+          component.patterns[0].substring(0, 57) + '...' : 
+          component.patterns[0];
+        console.log(`      Example usage: ${examplePattern}`);
+      }
+    });
+    console.log('\n💡 These components were found but do not have specific processing implemented.');
+    console.log('💡 Consider adding processing logic for these components in the processMdxComponents function.');
+  } else {
+    console.log(`\n✅ All components were processed correctly!`);
+  }
   
   return { processedCount, errorCount, skippedCount };
-}
+};
 
 // Final markdown cleanup function
 function finalMarkdownCleanup(content) {
@@ -1187,9 +1588,39 @@ async function processMarkdownFiles(cliOptions = null) {
   } else {
     console.log(`\n✅ All GitHub URLs were successfully fetched!`);
   }
+
+  if (unprocessedComponents.size > 0) {
+    console.log(`\n🔧 Unprocessed components found (${unprocessedComponents.size}):`);
+    Array.from(unprocessedComponents.values()).sort((a, b) => a.name.localeCompare(b.name)).forEach((component, index) => {
+      console.log(`\n   ${index + 1}. ${component.name} (${component.count} occurrence${component.count > 1 ? 's' : ''})`);
+      console.log(`      Problem: ${component.reason}`);
+      console.log(`      Type: ${component.type}`);
+      console.log(`      Found in files:`);
+      const filesToShow = component.files.slice(0, 5); // Show up to 5 files
+      filesToShow.forEach((filePath, i) => {
+        // Convert absolute path to relative path for better readability
+        const relativePath = filePath.replace(DOCS_DIR, '').replace(/^\//, '');
+        console.log(`        ${i + 1}. ${relativePath || filePath}`);
+      });
+      if (component.files.length > 5) {
+        console.log(`        ... and ${component.files.length - 5} more files`);
+      }
+      // Show one example pattern for reference
+      if (component.patterns.length > 0) {
+        const examplePattern = component.patterns[0].length > 60 ? 
+          component.patterns[0].substring(0, 57) + '...' : 
+          component.patterns[0];
+        console.log(`      Example usage: ${examplePattern}`);
+      }
+    });
+    console.log('\n💡 These components were found but do not have specific processing implemented.');
+    console.log('💡 Consider adding processing logic for these components in the processMdxComponents function.');
+  } else {
+    console.log(`\n✅ All components were processed correctly!`);
+  }
   
   return { processedCount, errorCount, skippedCount };
-}
+};
 
 // Execute if called directly
 if (require.main === module) {
