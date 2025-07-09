@@ -26,7 +26,7 @@ near account create-account fund-myself
 
 As you already know from the [Chain Signatures documentation](/chain-abstraction/chain-signatures#how-it-works), `derivation_path` is the key component that allows generating multiple distinct key pairs. When combined with `predecessor_id`, it forms a unique and secure pair.
 
-In our example, the smart contract acts as a proxy between a user and the MPC, User Account <->  Contract Proxy <-> Contract Requesting a Signature, which means the contract itself becomes the `predecessor` in the derivation process: `predecessor: contract_proxy_address`. 
+In our example, the smart contract acts as a proxy between a user and the MPC, `User Account <->  Contract Proxy <-> Contract Requesting a Signature`, which means the contract itself becomes the `predecessor` in the derivation process: `predecessor: contract_proxy_address`. 
 
 If the Contract Proxy were deployed directly onto the User Account,  User Account <-> Contract Requesting a Signature, the User Account would become the `predecessor` in the derivation process: `predecessor: user_account_address`. 
 
