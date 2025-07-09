@@ -442,7 +442,8 @@ ul li::marker {
 }
 
 li hr {
-  height: 4px;
+  height: 2px;
+  width: 99%;
   margin: 0.4em auto;
   border-width: 0;
 }
@@ -671,144 +672,6 @@ li>ul {
 // SIDEBAR STYLES 
 // ============================================================================
 
-$sidebar-icons: (
-  'protocol/basics': (light: '/img/icons/near-light.svg',
-    dark: '/img/icons/near-dark.svg'
-  ),
-  'chain-abstraction': (light: '/img/icons/multichain-light.svg',
-    dark: '/img/icons/multichain-dark.svg'
-  ),
-  'ai/introduction': (light: '/img/icons/ai-light.svg',
-    dark: '/img/icons/ai-dark.svg'
-  ),
-  'smart-contracts': (light: '/img/icons/contract-light.svg',
-    dark: '/img/icons/contract-dark.svg'
-  ),
-  'web3-apps': (light: '/img/icons/app-light.svg',
-    dark: '/img/icons/app-dark.svg'
-  ),
-  'primitives': (light: '/img/icons/token-light.svg',
-    dark: '/img/icons/token-dark.svg'
-  ),
-  'data-infrastructure': (light: '/img/icons/database-light.svg',
-    dark: '/img/icons/database-dark.svg'
-  ),
-  'tutorials/examples/guest-book': (light: '/img/icons/app-light.svg',
-    dark: '/img/icons/app-dark.svg'
-  ),
-  'tutorials/examples/count-near': (light: '/img/icons/contract-light.svg',
-    dark: '/img/icons/contract-dark.svg'
-  ),
-  'tutorials/templates': (light: '/img/icons/app-light.svg',
-    dark: '/img/icons/app-dark.svg'
-  ),
-  'tutorials/auction': (light: '/img/icons/near-light.svg',
-    dark: '/img/icons/near-dark.svg'
-  ),
-  'tutorials/fts': (light: '/img/icons/token-light.svg',
-    dark: '/img/icons/token-dark.svg'
-  ),
-  'tutorials/crosswords': (light: '/img/icons/contract-light.svg',
-    dark: '/img/icons/contract-dark.svg'
-  ),
-  'tutorials/controlling-near': (light: '/img/icons/multichain-light.svg',
-    dark: '/img/icons/multichain-dark.svg'
-  ),
-  'lake-framework/building-indexers': (light: '/img/icons/database-light.svg',
-    dark: '/img/icons/database-dark.svg'
-  ),
-);
-
-// // Generate sidebar icon styles dynamically
-// @each $section, $icons in $sidebar-icons {
-//   .menu__list {
-
-//     &:has(.menu__link[href*="#{$section}"])::after,
-//     .menu__link[href*="#{$section}"]::after {
-//       background-image: url(map-get($icons, 'light'));
-//     }
-//   }
-
-//   [data-theme='dark'] .menu__list {
-
-//     &:has(.menu__link[href*="#{$section}"])::after,
-//     .menu__link[href*="#{$section}"]::after {
-//       background-image: url(map-get($icons, 'dark'));
-//     }
-//   }
-// }
-
-// .menu__link[href="/"]::after {
-//   background-image: url('/img/icons/home-light.svg');
-// }
-
-// [data-theme='dark'] .menu__link[href="/"]::after {
-//   background-image: url('/img/icons/home-dark.svg');
-// }
-
-// .menu__link[href="/tutorials/welcome"]::after {
-//   background-image: url('/img/icons/home-light.svg');
-// }
-
-// [data-theme='dark'] .menu__link[href="/tutorials/welcome"]::after {
-//   background-image: url('/img/icons/home-dark.svg');
-// }
-
-// // Base sidebar styling
-// .theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible,
-// .theme-doc-sidebar-item-link-level-1>.menu__list-item-collapsible
-// {
-//   font-weight: 600;
-//   font-size: 0.8rem;
-//   color: #000000 !important;
-//   padding: 0.75rem 1rem 0.75rem 2.5rem;
-//   border-radius: 8px;
-//   margin: 0.25rem 0;
-//   transition: all 0.2s ease;
-//   text-transform: uppercase;
-//   letter-spacing: 0.8px;
-//   position: relative;
-
-//   &::after {
-//     content: '';
-//     position: absolute;
-//     left: 1rem;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     width: 22px;
-//     height: 22px;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-position: center;
-//   }
-
-//   &::before {
-//     content: '';
-//     position: absolute;
-//     left: 0;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     width: 3px;
-//     height: 0;
-//     background: var(--ifm-font-color-base);
-//     transition: height 0.2s ease;
-//     border-radius: 2px;
-//   }
-
-//   &:hover {
-//     background-color: rgba(59, 130, 246, 0.1);
-//     color: #3b82f6 !important;
-
-//     &::before {
-//       height: 90%;
-//       background: #3b82f6;
-//     }
-//   }
-
-//   // Add space between icon and text
-//   padding-left: 3rem !important;
-// }
-
 .menu__list-item-collapsible--active {
   &::before {
     height: 90% !important;
@@ -823,33 +686,6 @@ $sidebar-icons: (
 .menu__list-item-collapsible--active .menu__link {
   color: var(--icon-svg-color) !important;
 }
-
-
-// .menu__link[href="/tutorials/welcome"].menu__link--active {
-//   background-color: var(--ifm-hover-overlay);
-//   color: #5f8afa !important;
-
-//   &::before {
-//     height: 100%;
-//   }
-// }
-
-
-// [data-theme='dark'] .menu__list {
-//   .menu__link {
-//     color: var(--ifm-font-color-base) !important;
-
-//     &:hover {
-//       background-color: rgba(59, 130, 246, 0.15);
-//       color: #60a5fa !important;
-//     }
-
-//     &--active {
-//       background-color: var(--ifm-hover-overlay);
-//       color: var(--ifm-font-color-base) !important;
-//     }
-//   }
-// }
 
 // sub MAIN menu link styles
 .menu__link {

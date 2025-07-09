@@ -33,6 +33,7 @@
 }
 
 .customMenuLink {
+  color: var(--ifm-font-color-base);
   text-transform: uppercase;
   letter-spacing: 0.8px;
   font-size: .8rem;

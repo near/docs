@@ -345,7 +345,13 @@ const sidebar = {
     },
   ],
   tutorials: [
-    'tutorials/welcome',
+    {
+      type: 'doc',
+      id: 'tutorials/welcome',
+      customProps: {
+        icon: '/img/icons/home.svg',
+      },
+    },
     {
       type: 'html',
       value: '<hr/>',
@@ -386,6 +392,10 @@ const sidebar = {
         },
         'tutorials/auction/auction-factory',
       ],
+    },
+    {
+      type: 'html',
+      value: '<hr/>',
     },
     {
       type: 'html',
