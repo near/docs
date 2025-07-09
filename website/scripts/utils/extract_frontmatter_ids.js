@@ -131,7 +131,7 @@ function createFrontmatterDictionary(docsDir) {
  */
 function main() {
   // Docs directory (relative to website directory)
-  const docsDir = path.join(__dirname, '../../docs');
+  const docsDir = path.join(__dirname, '../../../docs');
   
   if (!fs.existsSync(docsDir)) {
     console.error(`❌ Error: Directory ${docsDir} does not exist`);
@@ -199,5 +199,6 @@ if (require.main === module) {
 module.exports = {
   createFrontmatterDictionary,
   extractFrontmatterId,
-  findMarkdownFiles
+  findMarkdownFiles,
+  generateFrontmatterDictionary: main
 };
