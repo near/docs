@@ -19,7 +19,7 @@ import useIsBrowser from '@docusaurus/useIsBrowser';
 import DocSidebarItems from '@theme/DocSidebarItems';
 import styles from './styles.module.css';
 
-function CategoryIcon({icon}) {
+export function CategoryIcon({icon}) {
   if (!icon) {
     return null;
   }

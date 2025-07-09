@@ -22,17 +22,14 @@ export function Container({ children }) {
 
 export function Card({ img, text, title, links }) {
   // Extract the base name and create both light and dark versions
-  const baseName = img.replace('-light.svg', '').replace('-dark.svg', '');
-  const lightIcon = `${baseName}-light.svg`;
-  const darkIcon = `${baseName}-dark.svg`;
+  const icon = `${img}`;
 
   return (
     <>
       <div className="col col--4" style={{ display: 'flex' }}>
         <div className="card card--icon">
           <div className="card__icon">
-            <img src={lightIcon} alt={title} className="card__icon-svg" />
-            <img src={darkIcon} alt={title} className="card__icon-svg" />
+            <img src={icon} alt={title} className="card__icon-svg" />
           </div>
           <div className="card__body">
             <h3>{title}</h3>

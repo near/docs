@@ -1,6 +1,16 @@
 const sidebar = {
   build: [
-    'index',
+    {
+      type: 'doc',
+      id: 'index',
+      customProps: {
+        icon: '/img/icons/home.svg',
+      },
+    },
+    {
+      type: 'html',
+      value: '<hr/>',
+    },
     {
       type: 'category',
       label: 'NEAR Protocol',
@@ -348,7 +358,9 @@ const sidebar = {
       type: 'category',
       label: 'NEAR 101',
       collapsed: true,
-      className: 'sidebar-main-category',
+      customProps: {
+        icon: '/img/icons/near.svg',
+      },
       link: { type: 'doc', id: 'tutorials/auction/introduction' },
       items: [
         'tutorials/auction/introduction',
@@ -382,8 +394,10 @@ const sidebar = {
     {
       type: 'category',
       label: 'Front-ends',
+      customProps: {
+        icon: '/img/icons/app.svg',
+      },
       collapsed: true,
-      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'tutorials/examples/guest-book' },
       items: [
         'tutorials/examples/guest-book',
@@ -395,7 +409,9 @@ const sidebar = {
       type: 'category',
       label: 'Smart Contracts',
       collapsed: true,
-      className: 'sidebar-main-category',
+      customProps: {
+        icon: '/img/icons/contract.svg',
+      },
       link: { type: 'doc', id: 'tutorials/examples/count-near' },
       items: [
         'tutorials/examples/donation',
@@ -460,7 +476,9 @@ const sidebar = {
       type: 'category',
       label: 'Tokens',
       collapsed: true,
-      className: 'sidebar-main-category',
+      customProps: {
+        icon: '/img/icons/token.svg',
+      },
       link: { type: 'doc', id: 'tutorials/fts/introduction' },
       items: [
         {
@@ -532,7 +550,9 @@ const sidebar = {
       type: 'category',
       label: 'Multi-Chain',
       collapsed: true,
-      className: 'sidebar-main-category',
+      customProps: {
+        icon: '/img/icons/multichain.svg',
+      },
       link: { type: 'doc', id: 'tutorials/controlling-near-accounts/introduction' },
       items: [
         {
@@ -562,7 +582,10 @@ const sidebar = {
       type: 'category',
       label: 'Data Infrastructure',
       collapsed: true,
-      className: 'sidebar-main-category',
+      customProps: {
+        icon: '/img/icons/database.svg',
+      },
+
       link: { type: 'doc', id: 'data-infrastructure/lake-framework/building-indexers/primitives' },
       items: [
         'data-infrastructure/lake-framework/building-indexers/primitives',

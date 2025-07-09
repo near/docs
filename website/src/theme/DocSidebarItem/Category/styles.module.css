@@ -1,23 +1,6 @@
 .customCollapsible {
-  transition: all 0.2s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  position: relative;
   display: flex;
   align-items: center;
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 22px;
-    height: 22px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
 
   &::before {
     content: '';
@@ -33,8 +16,6 @@
   }
 
   &:hover {
-    background-color: rgba(59, 130, 246, 0.1);
-
     &::before {
       height: 80%;
       background: var(--icon-svg-color);
@@ -46,20 +27,20 @@
     color: #5f8afa !important;
 
     &::before {
-      height: 100%;
+      height: 80%;
     }
   }
-
 }
 
 .customMenuLink {
-  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
   font-size: .8rem;
   font-weight: 800;
-  letter-spacing: .8px;
-  position: relative;
-  text-transform: uppercase;
-  transition: .2s;
   padding: .5rem 1rem;
   margin: 0.25rem 0;
+
+  &:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
 }
