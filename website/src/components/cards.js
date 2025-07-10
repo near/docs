@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import styled from 'styled-components';
 
 const List = styled.div``;
@@ -23,18 +22,17 @@ export function Container({ children }) {
 
 export function Card({ img, text, title, links }) {
   // Extract the base name and create both light and dark versions
-  const svgStyle = {
-    mask: `url(${img}) round`,
-    background: 'var(--icon-svg-color)',
-    maskSize: 'contain',
-  }
+  const baseName = img.replace('-light.svg', '').replace('-dark.svg', '');
+  const lightIcon = `${baseName}-light.svg`;
+  const darkIcon = `${baseName}-dark.svg`;
 
   return (
     <>
       <div className="col col--4" style={{ display: 'flex' }}>
         <div className="card card--icon">
           <div className="card__icon">
-            <span className={"card__icon-svg"} style={svgStyle} />
+            <img src={lightIcon} alt={title} className="card__icon-svg" />
+            <img src={darkIcon} alt={title} className="card__icon-svg" />
           </div>
           <div className="card__body">
             <h3>{title}</h3>

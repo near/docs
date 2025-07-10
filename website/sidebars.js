@@ -1,29 +1,17 @@
 const sidebar = {
   build: [
-    {
-      type: 'doc',
-      id: 'index',
-      customProps: {
-        icon: '/img/icons/home.svg',
-      },
-    },
-    {
-      type: 'html',
-      value: '<hr/>',
-    },
+    'index',
     {
       type: 'category',
       label: 'NEAR Protocol',
       collapsed: true,
-      customProps: {
-        icon: '/img/icons/near.svg',
-      },
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'protocol/basics' },
       items: [
         {
           type: 'link',
-          href: '/protocol/basics',
-          label: 'Introduction',
+         href: '/protocol/basics',
+         label: 'Introduction',
         },
         {
           type: 'category',
@@ -63,9 +51,7 @@ const sidebar = {
       type: 'category',
       label: 'Multi-Chain',
       collapsed: true,
-      customProps: {
-        icon: '/img/icons/multichain.svg',
-      },
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'chain-abstraction/what-is' },
       items: [
         {
@@ -103,10 +89,8 @@ const sidebar = {
       type: 'category',
       label: 'AI and Agents',
       collapsed: true,
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'ai/introduction' },
-      customProps: {
-        icon: '/img/icons/ai.svg',
-      },
       items: [
         'ai/introduction',
         {
@@ -144,10 +128,8 @@ const sidebar = {
       type: 'category',
       label: 'Smart Contracts',
       collapsed: true,
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'smart-contracts/what-is' },
-      customProps: {
-        icon: '/img/icons/contract.svg',
-      },
       items: [
         {
           'type': 'link',
@@ -221,9 +203,7 @@ const sidebar = {
       type: 'category',
       label: 'Web3 Applications',
       collapsed: true,
-      customProps: {
-        icon: '/img/icons/app.svg',
-      },
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'web3-apps/what-is' },
       items: [
         {
@@ -247,10 +227,8 @@ const sidebar = {
       type: 'category',
       label: 'Tokens & Primitives',
       collapsed: true,
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'primitives/what-is' },
-      customProps: {
-        icon: '/img/icons/token.svg',
-      },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
         {
@@ -298,9 +276,7 @@ const sidebar = {
       type: 'category',
       label: 'Data Infrastructure',
       collapsed: true,
-      customProps: {
-        icon: '/img/icons/database.svg',
-      },
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'data-infrastructure/what-is' },
       items: [
         {
@@ -345,13 +321,7 @@ const sidebar = {
     },
   ],
   tutorials: [
-    {
-      type: 'doc',
-      id: 'tutorials/welcome',
-      customProps: {
-        icon: '/img/icons/home.svg',
-      },
-    },
+    'tutorials/welcome',
     {
       type: 'html',
       value: '<hr/>',
@@ -364,9 +334,7 @@ const sidebar = {
       type: 'category',
       label: 'NEAR 101',
       collapsed: true,
-      customProps: {
-        icon: '/img/icons/near.svg',
-      },
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'tutorials/auction/introduction' },
       items: [
         'tutorials/auction/introduction',
@@ -392,22 +360,16 @@ const sidebar = {
         },
         'tutorials/auction/auction-factory',
       ],
-    },
-    {
-      type: 'html',
-      value: '<hr/>',
-    },
-    {
-      type: 'html',
-      value: "<span class='menu__link'><b><small>EXAMPLES & TUTORIALS</small></b></span>",
-    },
-    {
-      type: 'category',
-      label: 'Front-ends',
-      customProps: {
-        icon: '/img/icons/app.svg',
-      },
+         },
+         {
+          type: 'html',
+          value: "<span class='menu__link'><b><small>EXAMPLES & TUTORIALS</small></b></span>",
+        },
+     {
+       type: 'category',
+       label: 'Front-ends',
       collapsed: true,
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'tutorials/examples/guest-book' },
       items: [
         'tutorials/examples/guest-book',
@@ -419,9 +381,7 @@ const sidebar = {
       type: 'category',
       label: 'Smart Contracts',
       collapsed: true,
-      customProps: {
-        icon: '/img/icons/contract.svg',
-      },
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'tutorials/examples/count-near' },
       items: [
         'tutorials/examples/donation',
@@ -486,9 +446,7 @@ const sidebar = {
       type: 'category',
       label: 'Tokens',
       collapsed: true,
-      customProps: {
-        icon: '/img/icons/token.svg',
-      },
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'tutorials/fts/introduction' },
       items: [
         {
@@ -560,9 +518,7 @@ const sidebar = {
       type: 'category',
       label: 'Multi-Chain',
       collapsed: true,
-      customProps: {
-        icon: '/img/icons/multichain.svg',
-      },
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'tutorials/controlling-near-accounts/introduction' },
       items: [
         {
@@ -592,10 +548,7 @@ const sidebar = {
       type: 'category',
       label: 'Data Infrastructure',
       collapsed: true,
-      customProps: {
-        icon: '/img/icons/database.svg',
-      },
-
+      className: 'sidebar-main-category',
       link: { type: 'doc', id: 'data-infrastructure/lake-framework/building-indexers/primitives' },
       items: [
         'data-infrastructure/lake-framework/building-indexers/primitives',
