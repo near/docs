@@ -75,19 +75,6 @@ const config = {
     './src/plugins/monaco-editor',
     './src/plugins/node-polyfills',
     'docusaurus-plugin-sass',
-    [
-      'docusaurus-plugin-remote-content',
-      {
-        name: 'near-changelog',
-        sourceBaseUrl: 'https://raw.githubusercontent.com/near/near-releases/main/reports/',
-        outDir: '../blog',
-        documents: changelogs,
-        noRuntimeDownloads: true,
-        modifyContent(filename, content) {
-          return { filename, content: content.replace('{{', '').replace('<', '\\<') };
-        },
-      },
-    ],
   ],
   themeConfig: {
     image: 'docs/assets/welcome-pages/protocol.png',
