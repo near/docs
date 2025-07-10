@@ -13,6 +13,7 @@ import {Container, Card} from "@site/src/components/cards";
   <div className="landing-intro">
     <h1>Examples & Tutorials</h1>
     <p className="landing-subtitle">Learn to build on NEAR with hands-on examples, comprehensive tutorials, and step-by-step guides from beginner to advanced</p>
+    <div className="landing-underline"></div>
   </div>
 
   <Container>
