@@ -21,50 +21,11 @@ const DOCS_DIR = path.join(__dirname, '../../docs');
 const STATIC_DIR = path.join(__dirname, '../static');
 const CACHE_DIR = path.join(__dirname, '../.cache');
 
-// Global set to track unprocessed tags
-const unprocessedTags = new Set();
 
 console.log('🚀 Starting markdown files post-processing...');
 console.log('This script will copy processed .md files alongside .html files in build/');
 generateFrontmatterDictionary()
 
-
-
-// Function to detect and collect unprocessed HTML tags/components
-function detectUnprocessedTags(content) {
-  // First, remove code blocks to avoid detecting tags inside them
-  let contentWithoutCodeBlocks = content;
-
-  // Remove code blocks (both ``` and indented code blocks)
-  contentWithoutCodeBlocks = contentWithoutCodeBlocks.replace(/```[\s\S]*?```/g, '');
-  contentWithoutCodeBlocks = contentWithoutCodeBlocks.replace(/^    .*$/gm, ''); // Remove indented code blocks
-  contentWithoutCodeBlocks = contentWithoutCodeBlocks.replace(/`[^`]*`/g, ''); // Remove inline code
-
-  // Regex to match HTML/JSX tags
-  const tagRegex = /<([A-Za-z][A-Za-z0-9]*(?:[.-][A-Za-z0-9]*)*)(?:\s[^>]*)?\/?>/g;
-  let match;
-
-  while ((match = tagRegex.exec(contentWithoutCodeBlocks)) !== null) {
-    const tagName = match[1];
-
-    // Skip common HTML tags that are processed
-    const processedTags = new Set([
-      'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-      'p', 'div', 'span', 'ul', 'ol', 'li',
-      'a', 'img', 'pre', 'strong', 'em', 'code',
-      'br', 'hr', 'blockquote', 'table', 'thead',
-      'tbody', 'tr', 'th', 'td', 'section',
-      'article', 'main', 'header', 'footer',
-      'nav', 'aside', 'details', 'summary',
-      'iframe', 'Tabs', 'TabItem', 'Card',
-      'Container', 'SigsSupport'
-    ]);
-
-    if (!processedTags.has(tagName)) {
-      unprocessedTags.add(tagName);
-    }
-  }
-}
 
 // obtener md y mdx de docs
 function discoverMarkdownFiles() {
@@ -224,33 +185,102 @@ function processCardComponents(content) {
 
 function processOtherReactComponents(content) {
   let processed = content;
+  
+  // Container components - remove wrapper, keep content
   processed = processed.replace(/<Container[^>]*>([\s\S]*?)<\/Container>/g, (match, content) => {
     return content.trim();
   });
 
-  processed = processed.replace(/<SigsSupport\s*[^>]*?>/g, `
-    > **Chain Signatures Support**
-    >
-    > This feature supports Chain Signatures for multi-chain functionality.
-    `);
-
-  processed = processed.replace(/<MovingForwardSupportSection\s*[^>]*?>/g, `
-    ## Looking for Support?
-    
-    If you have any questions, connect with us on [Dev Telegram](https://t.me/neardev) or [Discord](https://discord.gg/nearprotocol). We also host **Office Hours** on Discord every Thursday at **11 AM UTC** and **6 PM UTC**. Join our voice channel to ask your questions and get live support.
-    
-    Happy coding! 🚀
-    `);
-
-  processed = processed.replace(/<MovingForwardSupportSection\s*><\/MovingForwardSupportSection>/g, `
-    ## Looking for Support?
-    
-    If you have any questions, connect with us on [Dev Telegram](https://t.me/neardev) or [Discord](https://discord.gg/nearprotocol). We also host **Office Hours** on Discord every Thursday at **11 AM UTC** and **6 PM UTC**. Join our voice channel to ask your questions and get live support.
-    
-    Happy coding! 🚀
-    `);
-
+  // Block components
   processed = processed.replace(/<Block\s*[^>]*?>([\s\S]*?)<\/Block>/g, (match, content) => {
+    return content.trim();
+  });
+
+  processed = processed.replace(/<BlockDetails\s*[^>]*?>([\s\S]*?)<\/BlockDetails>/g, (match, content) => {
+    return `**Block Details:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing BlockDetails tags
+  processed = processed.replace(/<BlockDetails\s*[^>]*?\s*\/>/g, '**Block Details:**\n\n');
+
+  // Changes in Block component
+  processed = processed.replace(/<ChangesInBlock\s*[^>]*?>([\s\S]*?)<\/ChangesInBlock>/g, (match, content) => {
+    return `**Changes in Block:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ChangesInBlock tags
+  processed = processed.replace(/<ChangesInBlock\s*[^>]*?\s*\/>/g, '**Changes in Block:**\n\n');
+
+  // Chunk Details component
+  processed = processed.replace(/<ChunkDetails\s*[^>]*?>([\s\S]*?)<\/ChunkDetails>/g, (match, content) => {
+    return `**Chunk Details:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ChunkDetails tags
+  processed = processed.replace(/<ChunkDetails\s*[^>]*?\s*\/>/g, '**Chunk Details:**\n\n');
+
+  // View Account component
+  processed = processed.replace(/<ViewAccount\s*[^>]*?>([\s\S]*?)<\/ViewAccount>/g, (match, content) => {
+    return `**View Account:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ViewAccount tags
+  processed = processed.replace(/<ViewAccount\s*[^>]*?\s*\/>/g, '**View Account:**\n\n');
+
+  // View Account Changes component
+  processed = processed.replace(/<ViewAccountChanges\s*[^>]*?>([\s\S]*?)<\/ViewAccountChanges>/g, (match, content) => {
+    return `**View Account Changes:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ViewAccountChanges tags
+  processed = processed.replace(/<ViewAccountChanges\s*[^>]*?\s*\/>/g, '**View Account Changes:**\n\n');
+
+  // View Contract Code component
+  processed = processed.replace(/<ViewContractCode\s*[^>]*?>([\s\S]*?)<\/ViewContractCode>/g, (match, content) => {
+    return `**View Contract Code:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ViewContractCode tags
+  processed = processed.replace(/<ViewContractCode\s*[^>]*?\s*\/>/g, '**View Contract Code:**\n\n');
+
+  // View Contract State component
+  processed = processed.replace(/<ViewContractState\s*[^>]*?>([\s\S]*?)<\/ViewContractState>/g, (match, content) => {
+    return `**View Contract State:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ViewContractState tags
+  processed = processed.replace(/<ViewContractState\s*[^>]*?\s*\/>/g, '**View Contract State:**\n\n');
+
+  // View Contract State Changes component
+  processed = processed.replace(/<ViewContractStateChanges\s*[^>]*?>([\s\S]*?)<\/ViewContractStateChanges>/g, (match, content) => {
+    return `**View Contract State Changes:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ViewContractStateChanges tags
+  processed = processed.replace(/<ViewContractStateChanges\s*[^>]*?\s*\/>/g, '**View Contract State Changes:**\n\n');
+
+  // View Contract Code Changes component
+  processed = processed.replace(/<ViewContractCodeChanges\s*[^>]*?>([\s\S]*?)<\/ViewContractCodeChanges>/g, (match, content) => {
+    return `**View Contract Code Changes:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ViewContractCodeChanges tags
+  processed = processed.replace(/<ViewContractCodeChanges\s*[^>]*?\s*\/>/g, '**View Contract Code Changes:**\n\n');
+
+  // Call a Contract Function component
+  processed = processed.replace(/<CallAContractFunction\s*[^>]*?>([\s\S]*?)<\/CallAContractFunction>/g, (match, content) => {
+    return `**Call a Contract Function:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing CallAContractFunction tags
+  processed = processed.replace(/<CallAContractFunction\s*[^>]*?\s*\/>/g, '**Call a Contract Function:**\n\n');
+
+  // Code-related components
+  processed = processed.replace(/<CodeBlock\s*[^>]*?>([\s\S]*?)<\/CodeBlock>/g, (match, content) => {
+    return `\`\`\`\n${content.trim()}\n\`\`\`\n\n`;
+  });
+
+  processed = processed.replace(/<CodeTabs\s*[^>]*?>([\s\S]*?)<\/CodeTabs>/g, (match, content) => {
     return content.trim();
   });
 
@@ -258,11 +288,11 @@ function processOtherReactComponents(content) {
     return content.trim();
   });
 
+  // File components
   processed = processed.replace(/<File\s*[^>]*?>([\s\S]*?)<\/File>/g, (match, content) => {
     return content.trim();
   });
 
-  //TODO:Replace Links
   // Handle self-closing File tags
   processed = processed.replace(/<File\s+([^>]*?)\s*\/>/g, (match, attributes) => {
     // Extract attributes from the File tag
@@ -301,19 +331,383 @@ function processOtherReactComponents(content) {
     return result;
   });
 
+  // Feature components
   processed = processed.replace(/<FeatureList\s*[^>]*?>([\s\S]*?)<\/FeatureList>/g, (match, content) => {
-      return `\n${content.trim()}\n`;
-    });
-  
-    processed = processed.replace(/<Column\s*[^>]*?>([\s\S]*?)<\/Column>/g, (match, content) => {
-      const titleMatch = match.match(/title=['"]([^'"]*)['"]/);
-      let result = '';
-      if (titleMatch && titleMatch[1].trim()) {
-        result = `\n## ${titleMatch[1]}\n\n`;
+    return `\n${content.trim()}\n`;
+  });
+
+  processed = processed.replace(/<Feature\s*[^>]*?>([\s\S]*?)<\/Feature>/g, (match, content) => {
+    const titleMatch = match.match(/title=['"]([^'"]*)['"]/);
+    const iconMatch = match.match(/icon=['"]([^'"]*)['"]/);
+    let result = '';
+    
+    if (titleMatch) {
+      result += `### ${titleMatch[1]}\n\n`;
+    }
+    
+    if (iconMatch) {
+      result += `${iconMatch[1]} `;
+    }
+    
+    result += content.trim();
+    return result;
+  });
+
+  processed = processed.replace(/<Column\s*[^>]*?>([\s\S]*?)<\/Column>/g, (match, content) => {
+    const titleMatch = match.match(/title=['"]([^'"]*)['"]/);
+    let result = '';
+    if (titleMatch && titleMatch[1].trim()) {
+      result = `\n## ${titleMatch[1]}\n\n`;
+    }
+    result += content.trim();
+    return result;
+  });
+
+  // Gas Price component
+  processed = processed.replace(/<GasPrice\s*[^>]*?>([\s\S]*?)<\/GasPrice>/g, (match, content) => {
+    return `**Gas Price:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing GasPrice tags
+  processed = processed.replace(/<GasPrice\s*[^>]*?\s*\/>/g, '**Gas Price:**\n\n');
+
+  // Genesis Config component
+  processed = processed.replace(/<GenesisConfig\s*[^>]*?>([\s\S]*?)<\/GenesisConfig>/g, (match, content) => {
+    return `**Genesis Configuration:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing GenesisConfig tags
+  processed = processed.replace(/<GenesisConfig\s*[^>]*?\s*\/>/g, '**Genesis Configuration:**\n\n');
+
+  // Github component - handle both with and without content
+  processed = processed.replace(/<Github\s*[^>]*?>([\s\S]*?)<\/Github>/g, (match, content) => {
+    const urlMatch = match.match(/url=['"]([^'"]*)['"]/);
+    const fnameMatch = match.match(/fname=['"]([^'"]*)['"]/);
+    const languageMatch = match.match(/language=['"]([^'"]*)['"]/);
+    const startMatch = match.match(/start=['"]([^'"]*)['"]/);
+    const endMatch = match.match(/end=['"]([^'"]*)['"]/);
+    
+    let result = '';
+    
+    if (fnameMatch) {
+      result += `**${fnameMatch[1]}**\n\n`;
+    }
+    
+    if (urlMatch) {
+      const url = urlMatch[1];
+      const linkText = fnameMatch ? fnameMatch[1] : 'View on GitHub';
+      result += `[${linkText}](${url})`;
+      
+      if (startMatch && endMatch) {
+        result += ` (lines ${startMatch[1]}-${endMatch[1]})`;
+      } else if (startMatch) {
+        result += ` (from line ${startMatch[1]})`;
       }
-      result += content.trim();
-      return result;
-    });
+      result += '\n\n';
+    }
+    
+    if (languageMatch) {
+      result += `Language: ${languageMatch[1]}\n\n`;
+    }
+    
+    // Include any content inside the Github tag
+    if (content.trim()) {
+      result += content.trim() + '\n\n';
+    }
+    
+    return result;
+  });
+
+  // Handle self-closing Github tags
+  processed = processed.replace(/<Github\s+([^>]*?)\s*\/>/g, (match, attributes) => {
+    const urlMatch = attributes.match(/url=['"]([^'"]*)['"]/);
+    const fnameMatch = attributes.match(/fname=['"]([^'"]*)['"]/);
+    const languageMatch = attributes.match(/language=['"]([^'"]*)['"]/);
+    const startMatch = attributes.match(/start=['"]([^'"]*)['"]/);
+    const endMatch = attributes.match(/end=['"]([^'"]*)['"]/);
+    
+    let result = '';
+    
+    if (fnameMatch) {
+      result += `**${fnameMatch[1]}**\n\n`;
+    }
+    
+    if (urlMatch) {
+      const url = urlMatch[1];
+      const linkText = fnameMatch ? fnameMatch[1] : 'View on GitHub';
+      result += `[${linkText}](${url})`;
+      
+      if (startMatch && endMatch) {
+        result += ` (lines ${startMatch[1]}-${endMatch[1]})`;
+      } else if (startMatch) {
+        result += ` (from line ${startMatch[1]})`;
+      }
+      result += '\n\n';
+    }
+    
+    if (languageMatch) {
+      result += `Language: ${languageMatch[1]}\n\n`;
+    }
+    
+    return result;
+  });
+
+  // Language component
+  processed = processed.replace(/<Language\s*[^>]*?>([\s\S]*?)<\/Language>/g, (match, content) => {
+    return content.trim();
+  });
+
+  // Maintenance Windows component
+  processed = processed.replace(/<MaintenanceWindows\s*[^>]*?>([\s\S]*?)<\/MaintenanceWindows>/g, (match, content) => {
+    return `**Maintenance Windows:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing MaintenanceWindows tags
+  processed = processed.replace(/<MaintenanceWindows\s*[^>]*?\s*\/>/g, '**Maintenance Windows:**\n\n');
+
+  // NEAR Widget component
+  processed = processed.replace(/<NearWidget\s*[^>]*?>([\s\S]*?)<\/NearWidget>/g, (match, content) => {
+    return `**NEAR Widget:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing NearWidget tags
+  processed = processed.replace(/<NearWidget\s*[^>]*?\s*\/>/g, '**NEAR Widget:**\n\n');
+
+  // Network Info component
+  processed = processed.replace(/<NetworkInfo\s*[^>]*?>([\s\S]*?)<\/NetworkInfo>/g, (match, content) => {
+    return `**Network Information:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing NetworkInfo tags
+  processed = processed.replace(/<NetworkInfo\s*[^>]*?\s*\/>/g, '**Network Information:**\n\n');
+
+  // Node Status component
+  processed = processed.replace(/<NodeStatus\s*[^>]*?>([\s\S]*?)<\/NodeStatus>/g, (match, content) => {
+    return `**Node Status:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing NodeStatus tags
+  processed = processed.replace(/<NodeStatus\s*[^>]*?\s*\/>/g, '**Node Status:**\n\n');
+
+  // Protocol Config component
+  processed = processed.replace(/<ProtocolConfig\s*[^>]*?>([\s\S]*?)<\/ProtocolConfig>/g, (match, content) => {
+    return `**Protocol Configuration:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ProtocolConfig tags
+  processed = processed.replace(/<ProtocolConfig\s*[^>]*?\s*\/>/g, '**Protocol Configuration:**\n\n');
+
+  // Receipt and Transaction components
+  processed = processed.replace(/<ReceiptById\s*[^>]*?>([\s\S]*?)<\/ReceiptById>/g, (match, content) => {
+    return `**Receipt by ID:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ReceiptById tags
+  processed = processed.replace(/<ReceiptById\s*[^>]*?\s*\/>/g, '**Receipt by ID:**\n\n');
+
+  processed = processed.replace(/<SendTransactionAsync\s*[^>]*?>([\s\S]*?)<\/SendTransactionAsync>/g, (match, content) => {
+    return `**Send Transaction (Async):**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing SendTransactionAsync tags
+  processed = processed.replace(/<SendTransactionAsync\s*[^>]*?\s*\/>/g, '**Send Transaction (Async):**\n\n');
+
+  processed = processed.replace(/<SendTransactionAwait\s*[^>]*?>([\s\S]*?)<\/SendTransactionAwait>/g, (match, content) => {
+    return `**Send Transaction (Await):**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing SendTransactionAwait tags
+  processed = processed.replace(/<SendTransactionAwait\s*[^>]*?\s*\/>/g, '**Send Transaction (Await):**\n\n');
+
+  processed = processed.replace(/<SendTx\s*[^>]*?>([\s\S]*?)<\/SendTx>/g, (match, content) => {
+    return `**Send Transaction:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing SendTx tags
+  processed = processed.replace(/<SendTx\s*[^>]*?\s*\/>/g, '**Send Transaction:**\n\n');
+
+  // Tab components - process Tabs and TabItem
+  processed = processed.replace(/<Tabs\s*[^>]*?>([\s\S]*?)<\/Tabs>/g, (match, content) => {
+    // Extract TabItem components and process them
+    let tabContent = '';
+    const tabItemRegex = /<TabItem\s+[^>]*?>([\s\S]*?)<\/TabItem>/g;
+    let tabItemMatch;
+    
+    while ((tabItemMatch = tabItemRegex.exec(content)) !== null) {
+      const tabItemTag = tabItemMatch[0];
+      const tabItemContent = tabItemMatch[1];
+      
+      // Extract label and value from TabItem
+      const labelMatch = tabItemTag.match(/label=['"]([^'"]*)['"]/);
+      const jsxLabelMatch = tabItemTag.match(/label=\{([^}]*)\}/);
+      const valueMatch = tabItemTag.match(/value=['"]([^'"]*)['"]/);
+      
+      let label = null;
+      if (labelMatch) {
+        label = labelMatch[1];
+      } else if (jsxLabelMatch) {
+        const jsxContent = jsxLabelMatch[1];
+        if (jsxContent.includes('LantstoolLabel')) {
+          label = 'Lantstool';
+        } else {
+          const textMatch = jsxContent.match(/['"]([^'"]*)['"]/);
+          if (textMatch) {
+            label = textMatch[1];
+          }
+        }
+      } else if (valueMatch) {
+        label = valueMatch[1];
+      }
+      
+      if (label) {
+        tabContent += `### ${label}\n\n`;
+      }
+      
+      tabContent += `${tabItemContent.trim()}\n\n`;
+    }
+    
+    return tabContent || content.trim();
+  });
+
+  // Handle standalone TabItem components
+  processed = processed.replace(/<TabItem\s*[^>]*?>([\s\S]*?)<\/TabItem>/g, (match, content) => {
+    const labelMatch = match.match(/label=['"]([^'"]*)['"]/);
+    const jsxLabelMatch = match.match(/label=\{([^}]*)\}/);
+    const valueMatch = match.match(/value=['"]([^'"]*)['"]/);
+    
+    let label = null;
+    if (labelMatch) {
+      label = labelMatch[1];
+    } else if (jsxLabelMatch) {
+      const jsxContent = jsxLabelMatch[1];
+      if (jsxContent.includes('LantstoolLabel')) {
+        label = 'Lantstool';
+      } else {
+        const textMatch = jsxContent.match(/['"]([^'"]*)['"]/);
+        if (textMatch) {
+          label = textMatch[1];
+        }
+      }
+    } else if (valueMatch) {
+      label = valueMatch[1];
+    }
+    
+    let result = '';
+    if (label) {
+      result += `### ${label}\n\n`;
+    }
+    result += content.trim();
+    return result;
+  });
+
+  processed = processed.replace(/<TransactionStatus\s*[^>]*?>([\s\S]*?)<\/TransactionStatus>/g, (match, content) => {
+    return `**Transaction Status:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing TransactionStatus tags
+  processed = processed.replace(/<TransactionStatus\s*[^>]*?\s*\/>/g, '**Transaction Status:**\n\n');
+
+  processed = processed.replace(/<TransactionStatusWithReceipts\s*[^>]*?>([\s\S]*?)<\/TransactionStatusWithReceipts>/g, (match, content) => {
+    return `**Transaction Status with Receipts:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing TransactionStatusWithReceipts tags
+  processed = processed.replace(/<TransactionStatusWithReceipts\s*[^>]*?\s*\/>/g, '**Transaction Status with Receipts:**\n\n');
+
+  processed = processed.replace(/<TxStatusResult\s*[^>]*?>([\s\S]*?)<\/TxStatusResult>/g, (match, content) => {
+    return `**Transaction Status Result:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing TxStatusResult tags
+  processed = processed.replace(/<TxStatusResult\s*[^>]*?\s*\/>/g, '**Transaction Status Result:**\n\n');
+
+  // Tool-specific components
+  processed = processed.replace(/<TryOutOnLantstool\s*[^>]*?>([\s\S]*?)<\/TryOutOnLantstool>/g, (match, content) => {
+    const pathMatch = match.match(/path=['"]([^'"]*)['"]/);
+    let result = `**Try it on Lantstool:**\n\n`;
+    
+    if (pathMatch) {
+      result += `Path: ${pathMatch[1]}\n\n`;
+    }
+    
+    if (content.trim()) {
+      result += content.trim() + '\n\n';
+    }
+    
+    return result;
+  });
+
+  // Handle self-closing TryOutOnLantstool tags
+  processed = processed.replace(/<TryOutOnLantstool\s+([^>]*?)\s*\/>/g, (match, attributes) => {
+    const pathMatch = attributes.match(/path=['"]([^'"]*)['"]/);
+    let result = `**Try it on Lantstool:**\n\n`;
+    
+    if (pathMatch) {
+      result += `Path: ${pathMatch[1]}\n\n`;
+    }
+    
+    return result;
+  });
+
+  // Validation components
+  processed = processed.replace(/<ValidationStatus\s*[^>]*?>([\s\S]*?)<\/ValidationStatus>/g, (match, content) => {
+    return `**Validation Status:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ValidationStatus tags
+  processed = processed.replace(/<ValidationStatus\s*[^>]*?\s*\/>/g, '**Validation Status:**\n\n');
+
+  // View components for access keys
+  processed = processed.replace(/<ViewAccessKey\s*[^>]*?>([\s\S]*?)<\/ViewAccessKey>/g, (match, content) => {
+    return `**View Access Key:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ViewAccessKey tags
+  processed = processed.replace(/<ViewAccessKey\s*[^>]*?\s*\/>/g, '**View Access Key:**\n\n');
+
+  processed = processed.replace(/<ViewAccessKeyChangesAll\s*[^>]*?>([\s\S]*?)<\/ViewAccessKeyChangesAll>/g, (match, content) => {
+    return `**View Access Key Changes (All):**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ViewAccessKeyChangesAll tags
+  processed = processed.replace(/<ViewAccessKeyChangesAll\s*[^>]*?\s*\/>/g, '**View Access Key Changes (All):**\n\n');
+
+  processed = processed.replace(/<ViewAccessKeyChangesSingle\s*[^>]*?>([\s\S]*?)<\/ViewAccessKeyChangesSingle>/g, (match, content) => {
+    return `**View Access Key Changes (Single):**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ViewAccessKeyChangesSingle tags
+  processed = processed.replace(/<ViewAccessKeyChangesSingle\s*[^>]*?\s*\/>/g, '**View Access Key Changes (Single):**\n\n');
+
+  processed = processed.replace(/<ViewAccessKeyList\s*[^>]*?>([\s\S]*?)<\/ViewAccessKeyList>/g, (match, content) => {
+    return `**View Access Key List:**\n\n${content.trim()}\n\n`;
+  });
+
+  // Handle self-closing ViewAccessKeyList tags
+  processed = processed.replace(/<ViewAccessKeyList\s*[^>]*?\s*\/>/g, '**View Access Key List:**\n\n');
+
+  // Support section
+  processed = processed.replace(/<SigsSupport\s*[^>]*?>/g, `
+    > **Chain Signatures Support**
+    >
+    > This feature supports Chain Signatures for multi-chain functionality.
+    `);
+
+  processed = processed.replace(/<MovingForwardSupportSection\s*[^>]*?>/g, `
+    ## Looking for Support?
+    
+    If you have any questions, connect with us on [Dev Telegram](https://t.me/neardev) or [Discord](https://discord.gg/nearprotocol). We also host **Office Hours** on Discord every Thursday at **11 AM UTC** and **6 PM UTC**. Join our voice channel to ask your questions and get live support.
+    
+    Happy coding! 🚀
+    `);
+
+  processed = processed.replace(/<MovingForwardSupportSection\s*><\/MovingForwardSupportSection>/g, `
+    ## Looking for Support?
+    
+    If you have any questions, connect with us on [Dev Telegram](https://t.me/neardev) or [Discord](https://discord.gg/nearprotocol). We also host **Office Hours** on Discord every Thursday at **11 AM UTC** and **6 PM UTC**. Join our voice channel to ask your questions and get live support.
+    
+    Happy coding! 🚀
+    `);
 
   return processed;
 }
@@ -484,8 +878,6 @@ function processDetailsComponents(content) {
 async function cleanContent(content) {
   let cleaned = content;
 
-  // Detect unprocessed tags before cleaning
-  detectUnprocessedTags(content);
 
   // Remove all imports (including JSX components and MDX imports)
   cleaned = cleaned.replace(/^import\s+.*?from\s+['"].*?['"];?\s*$/gm, '');
@@ -518,6 +910,9 @@ async function cleanContent(content) {
     cleaned = cleaned.replace(block, placeholders[i]);
   });
 
+  // // Also remove inline code spans
+  cleaned = cleaned.replace(/`[^`]+`/g, '__INLINE_CODE__');
+  
   // // Process all components (now safe from code block interference)
   // cleaned = await replaceGithubWithCode(cleaned);
   cleaned = processCardComponents(cleaned);
@@ -528,8 +923,6 @@ async function cleanContent(content) {
   cleaned = processOtherComponents(cleaned);
   // cleaned = processMdxComponents(cleaned, currentFilePath);
 
-  // Detect unprocessed tags after cleaning to catch any remaining ones
-  detectUnprocessedTags(cleaned);
 
   // // Convert HTML tables to markdown tables
   // cleaned = convertHtmlTablesToMarkdown(cleaned);
@@ -610,6 +1003,89 @@ function extractDocIdsFromSidebar(sidebarConfig) {
   return docIds;
 }
 
+// Function to analyze unprocessed HTML tags and components
+function analyzeUnprocessedTags(content, filePath) {
+  // First, remove all code blocks to avoid analyzing tags inside them
+  const codeBlocks = [];
+  const codeBlockRegex = /```[\s\S]*?```/g;
+  let contentWithoutCode = content;
+  
+  // Extract and replace code blocks with placeholders
+  let match;
+  while ((match = codeBlockRegex.exec(content)) !== null) {
+    codeBlocks.push(match[0]);
+  }
+  
+  codeBlocks.forEach((block, i) => {
+    contentWithoutCode = contentWithoutCode.replace(block, `__CODE_BLOCK_${i}__`);
+  });
+  
+  // Also remove inline code spans
+  contentWithoutCode = contentWithoutCode.replace(/`[^`]+`/g, '__INLINE_CODE__');
+  
+  const unprocessedTags = new Set();
+  const unprocessedComponents = new Set();
+  
+  // Find all HTML tags (both opening and self-closing)
+  const htmlTagRegex = /<\/?([a-zA-Z][a-zA-Z0-9]*)[^>]*>/g;
+  let tagMatch;
+  
+  while ((tagMatch = htmlTagRegex.exec(contentWithoutCode)) !== null) {
+    const tagName = tagMatch[1];
+    
+    // Skip common markdown-converted tags that are expected
+    const expectedTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span', 'a', 'img', 'br', 'hr', 'strong', 'em', 'code', 'pre', 'ul', 'ol', 'li', 'blockquote', 'table', 'thead', 'tbody', 'tr', 'td', 'th', 'section', 'article', 'main', 'header', 'footer', 'nav', 'aside'];
+    
+    if (!expectedTags.includes(tagName.toLowerCase())) {
+      // Check if it's a React component (starts with uppercase)
+      if (tagName[0] === tagName[0].toUpperCase()) {
+        unprocessedComponents.add(tagName);
+      } else {
+        unprocessedTags.add(tagName);
+      }
+    }
+  }
+  
+  // Find React components in JSX syntax - look for actual component usage patterns
+  // Match patterns like <ComponentName> or <ComponentName />
+  const reactComponentRegex = /<([A-Z][a-zA-Z0-9]*)\s*(?:\s+[^>]*)?\s*\/?>/g;
+  let reactMatch;
+  
+  while ((reactMatch = reactComponentRegex.exec(contentWithoutCode)) !== null) {
+    const componentName = reactMatch[1];
+    // Only add if it's not in the expected HTML tags list
+    const expectedTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div', 'span', 'a', 'img', 'br', 'hr', 'strong', 'em', 'code', 'pre', 'ul', 'ol', 'li', 'blockquote', 'table', 'thead', 'tbody', 'tr', 'td', 'th', 'section', 'article', 'main', 'header', 'footer', 'nav', 'aside'];
+    
+    if (!expectedTags.includes(componentName.toLowerCase())) {
+      unprocessedComponents.add(componentName);
+    }
+  }
+  
+  // Report findings
+  if (unprocessedTags.size > 0 || unprocessedComponents.size > 0) {
+    console.log(`\n🔍 Unprocessed elements found in ${filePath}:`);
+    
+    if (unprocessedTags.size > 0) {
+      console.log(`  📋 HTML Tags: ${Array.from(unprocessedTags).sort().join(', ')}`);
+    }
+    
+    if (unprocessedComponents.size > 0) {
+      console.log(`  ⚛️  React Components: ${Array.from(unprocessedComponents).sort().join(', ')}`);
+    }
+    
+    return {
+      htmlTags: Array.from(unprocessedTags),
+      components: Array.from(unprocessedComponents),
+      hasUnprocessed: true
+    };
+  }
+  
+  return {
+    htmlTags: [],
+    components: [],
+    hasUnprocessed: false
+  };
+}
 
 async function main() {
   try {
@@ -631,6 +1107,10 @@ async function main() {
           const content = fs.readFileSync(fullPath, 'utf8');
 
           const cleanedContent = await cleanContent(content, fullPath);
+          
+          // Analyze unprocessed tags in cleaned content
+          const analysis = analyzeUnprocessedTags(cleanedContent, docId);
+          
           const outputFile = path.join(STATIC_DIR, docId + '.md');
 
           const outputDir = path.dirname(outputFile);
@@ -640,7 +1120,12 @@ async function main() {
 
           fs.writeFileSync(outputFile, cleanedContent, 'utf8');
 
-          return { success: true, docId, outputPath: outputFile };
+          return { 
+            success: true, 
+            docId, 
+            outputPath: outputFile,
+            unprocessedAnalysis: analysis
+          };
         } catch (error) {
           console.error(`❌ Error processing ${docId}:`, error.message);
           return { success: false, docId, error: error.message };
@@ -650,26 +1135,41 @@ async function main() {
 
     const successful = results.filter(r => r.success).length;
     const failed = results.filter(r => !r.success).length;
-    console.log(`✅ Successfully processed ${successful} files`);
+    
+    // Collect all unprocessed elements for summary
+    const allUnprocessedTags = new Set();
+    const allUnprocessedComponents = new Set();
+    const filesWithUnprocessed = [];
+    
+    results.forEach(result => {
+      if (result.success && result.unprocessedAnalysis?.hasUnprocessed) {
+        filesWithUnprocessed.push(result.docId);
+        result.unprocessedAnalysis.htmlTags.forEach(tag => allUnprocessedTags.add(tag));
+        result.unprocessedAnalysis.components.forEach(comp => allUnprocessedComponents.add(comp));
+      }
+    });
+    
+    console.log(`\n✅ Successfully processed ${successful} files`);
     if (failed > 0) {
       console.log(`❌ Failed to process ${failed} files`);
     }
-
-    // Show unprocessed tags report
-    console.log('\n📋 UNPROCESSED TAGS REPORT');
-    console.log('='.repeat(50));
-    if (unprocessedTags.size === 0) {
-      console.log('✅ No unprocessed HTML/JSX tags found!');
+    
+    // Summary of unprocessed elements
+    if (allUnprocessedTags.size > 0 || allUnprocessedComponents.size > 0) {
+      console.log(`\n📊 SUMMARY OF UNPROCESSED ELEMENTS:`);
+      console.log(`   Files with unprocessed elements: ${filesWithUnprocessed.length}`);
+      
+      if (allUnprocessedTags.size > 0) {
+        console.log(`   🏷️  Unique HTML tags found: ${Array.from(allUnprocessedTags).sort().join(', ')}`);
+      }
+      
+      if (allUnprocessedComponents.size > 0) {
+        console.log(`   ⚛️  Unique React components found: ${Array.from(allUnprocessedComponents).sort().join(', ')}`);
+      }
     } else {
-      console.log(`⚠️  Found ${unprocessedTags.size} unprocessed HTML/JSX tags:`);
-      const sortedTags = Array.from(unprocessedTags).sort();
-      sortedTags.forEach(tag => {
-        console.log(`   - <${tag}>`);
-      });
-      console.log('\n💡 These components may need custom processing logic.');
+      console.log(`\n🎉 All HTML tags and components were successfully processed!`);
     }
-    console.log('='.repeat(50));
-
+    
   } catch (error) {
     console.error('❌ Error discovering markdown files:', error);
     process.exit(1);

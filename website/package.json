@@ -19,7 +19,7 @@
     "build:dev": "./node_modules/.bin/docusaurus build --dev",
     "build:preview": "./node_modules/.bin/docusaurus build --locale en",
     "process-docs": "./scripts/extract_frontmatter_ids.js && ./scripts/post_build_process.js",
-    "process-markdown": "node ./scripts/process_markdown_docs.js",
+    "process-markdown": "node ./scripts/post_build_process.js",
     "process-markdown:clear": "node ./scripts/process_markdown_docs.js --clear-cache",
     "extract-frontmatter-ids": "./scripts/extract_frontmatter_ids.js",
     "swizzle": "docusaurus swizzle",
