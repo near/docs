@@ -26,7 +26,6 @@ export function Card({ img, text, title, links }) {
   const svgStyle = {
     mask: `url(${img}) round`,
     background: 'var(--icon-svg-color)',
-    maskSize: 'contain',
   }
 
   return (

@@ -28,7 +28,6 @@ export function CategoryIcon({icon}) {
     width: '22px',
     height: '22px',
     background: 'var(--icon-svg-color)',
-    maskSize: 'contain',
     marginRight: '0.75rem',
     mask: `url(${icon}) round`,
   };
