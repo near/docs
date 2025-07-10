@@ -13,11 +13,12 @@ import {Container, Card} from "@site/src/components/cards";
   <div className="landing-intro">
     <h1>Examples & Tutorials</h1>
     <p className="landing-subtitle">Learn to build on NEAR with hands-on examples, comprehensive tutorials, and step-by-step guides from beginner to advanced</p>
+    <div className="landing-underline"></div>
   </div>
 
   <Container>
     <Card 
-      img="/img/icons/near-light.svg"
+      img="/img/icons/near.svg"
       title="Mastering NEAR"
       text="New to NEAR development? Start with our comprehensive introduction to building Web3 applications"
       links={{
@@ -26,7 +27,7 @@ import {Container, Card} from "@site/src/components/cards";
               "What are Web3 Apps?": "/web3-apps/what-is"    }}
     />
     <Card
-      img="/img/icons/app-light.svg"
+      img="/img/icons/app.svg"
       title="Frontend Examples"
       text="Build modern web interfaces that connect to NEAR contracts with these practical examples"
       links={{
@@ -36,7 +37,7 @@ import {Container, Card} from "@site/src/components/cards";
       }}
     />
     <Card 
-      img="/img/icons/contract-light.svg"
+      img="/img/icons/contract.svg"
       title="Smart Contract Examples"
       text="Learn smart contract development with real-world examples from simple to advanced patterns"
       links={{
@@ -50,7 +51,7 @@ import {Container, Card} from "@site/src/components/cards";
     
   <Container>
     <Card 
-      img="/img/icons/token-light.svg"
+      img="/img/icons/token.svg"
       title="Tokens & NFTs"
       text="Master fungible and non-fungible tokens on NEAR with comprehensive step-by-step tutorials"
       links={{
@@ -59,7 +60,7 @@ import {Container, Card} from "@site/src/components/cards";
         "NFT Tutorial (JS)": "/tutorials/nfts/js/introduction",    }}
     />
     <Card 
-      img="/img/icons/multichain-light.svg"
+      img="/img/icons/multichain.svg"
       title="Multichain Development"
       text="Explore NEAR's multichain capabilities and learn to control accounts across different networks"
       links={{
@@ -68,7 +69,7 @@ import {Container, Card} from "@site/src/components/cards";
         "Chain Signatures": "/chain-abstraction/chain-signatures"  }}
     />
     <Card 
-      img="/img/icons/database-light.svg"
+      img="/img/icons/database.svg"
       title="Data Infrastructure"
       text="Build indexers and work with NEAR's data layer to create powerful data-driven applications"
       links={{
