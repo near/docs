@@ -94,15 +94,14 @@ In practice, the external address is deterministically derived using the NEAR ad
 
 ### Multichain Smart Contract
 
-A deployed multichain smart contract is used to request signatures for transactions on other blockchains.
+A deployed multichain smart contract ([v1.signer](https://nearblocks.io/address/v1.signer)) is used to request signatures for transactions on other blockchains.
 
-This contract has a `sign` method that takes two parameters:
+This contract has [a `sign` method](https://github.com/near/mpc/blob/01f33ed0a2a2c4c24ef49a2f36df3b20aa400816/libs/chain-signatures/contract/src/lib.rs#L242) that takes these two parameters:
 
-  1. The `payload` (transaction) to be signed for the target blockchain
+  1. The `payload` (transaction or transaction hash) to be signed for the target blockchain.
   2. The `path` that identifies the account you want to use to sign the transaction.
 
 For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(transaction)** using the `ethereum-1` account **(path)**.
-
 
 After a request is made, the `sign` method will [yield execution](/blog/yield-resume) waiting while the [MPC signing service](#multi-party-computation-service) signs the transaction.
 
