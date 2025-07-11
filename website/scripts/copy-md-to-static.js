@@ -96,7 +96,7 @@ async function replaceFileWithCode(content) {
 
 // Directories
 const DOCS_DIR = path.join(__dirname, '../../docs');
-const BUILD_DIR = path.join(__dirname, '../../build');
+const BUILD_DIR = path.join(__dirname, '../build');
 
 console.log('🚀 Starting markdown files post-processing...');
 console.log('This script will copy processed .md files alongside .html files in build/');
