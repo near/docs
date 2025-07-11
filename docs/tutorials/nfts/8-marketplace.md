@@ -102,7 +102,7 @@ In order to put an NFT on sale, a user should:
 2. Call the `list_nft_for_sale` method on the marketplace contract.
 
 #### nft_approve
-This method has to be called by the user to [approve our marketplace](5-approval.md), so it can transfer the NFT on behalf of the user. In our contract, we only need to implement the `nft_on_approve` method, which is called by the NFT contract when the user approves our contract.
+This method has to be called by the user to [approve our marketplace](5-approvals.md), so it can transfer the NFT on behalf of the user. In our contract, we only need to implement the `nft_on_approve` method, which is called by the NFT contract when the user approves our contract.
 
 In our case, we left it blank, but you could implement it to do some additional logic when the user approves your contract.
 
@@ -110,7 +110,7 @@ In our case, we left it blank, but you could implement it to do some additional 
 
 
 #### list_nft_for_sale
-The `list_nft_for_sale` method lists an nft for sale, for this, it takes the id of the NFT contract (`nft_contract_id`), the `token_id` to know which token is listed, the [`approval_id`](5-approval.md), and the price in yoctoNEAR at which we want to sell the NFT.
+The `list_nft_for_sale` method lists an nft for sale, for this, it takes the id of the NFT contract (`nft_contract_id`), the `token_id` to know which token is listed, the [`approval_id`](5-approvals.md), and the price in yoctoNEAR at which we want to sell the NFT.
 
 <Github language="rust" start="33" end="74" url="https://github.com/near-examples/nft-tutorial/blob/main/market-contract/src/sale.rs" />
 
