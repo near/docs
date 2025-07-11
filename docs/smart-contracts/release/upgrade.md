@@ -236,8 +236,8 @@ state, removes the `payments` vector and adds the information to the
 <Language value="rust" language="rust">
 
 <Github fname="lib.rs"
-    url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
-    start="3" end="46" />
+    url="https://github.com/near-examples/update-migrate-rust/blob/remove-old-keys/basic-updates/update/src/migrate.rs"
+    start="3" end="50" />
 
 </Language>
 
@@ -247,6 +247,80 @@ Notice that `migrate` is actually an
 [initialization method](../anatomy/storage.md)
 that **ignores** the existing state (`[#init(ignore_state)]`), thus being able
 to execute and rewrite the state.
+
+<details>
+
+<summary> Why we should remove old structures from the state? </summary>
+
+To understand why we should remove old structures from the state let's take a look to how the data is stored.
+
+For example, if the old version of the contract stores two messages with payments according methods `get_messages` and `get_payments` will return the following results:
+
+<details>
+    <summary>get_messags result</summary>
+    ```bash
+    INFO --- Result -------------------------
+    |    [
+    |      {
+    |        "premium": false,
+    |        "sender": "test-ac-1719933221123-3.testnet",
+    |        "text": "Hello"
+    |      },
+    |      {
+    |        "premium": false,
+    |        "sender": "test-ac-1719933221123-3.testnet",
+    |        "text": "Hello"
+    |      }
+    |    ]
+    |    ------------------------------------
+    ```
+</details>
+
+<details>
+    <summary>get_payments result</summary>
+    ```bash
+    INFO --- Result -------------------------
+     |    [
+     |      "10000000000000000000000",
+     |      "10000000000000000000000"
+     |    ]
+     |    ------------------------------------
+    ```
+</details>
+
+But if we will take a look at the storage as text using following command, we will see that each payment is stored under its own key started with `p\` prefix.
+
+```bash
+near contract view-storage <CONTRACT_ID> all as-text network-config testnet now
+```
+
+<details>
+    <summary>Storage as text result</summary>
+    ```bash
+    INFO Contract state (values):
+     |      key:   STATE
+     |      value: \x02\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00m\x02\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00p
+     |      --------------------------------
+     |      key:   m\x00\x00\x00\x00\x00\x00\x00\x00
+     |      value: \x00\x1f\x00\x00\x00test-ac-1719933221123-3.testnet\x05\x00\x00\x00Hello
+     |      --------------------------------
+     |      key:   m\x01\x00\x00\x00\x00\x00\x00\x00
+     |      value: \x00\x1f\x00\x00\x00test-ac-1719933221123-3.testnet\x05\x00\x00\x00Hello
+     |      --------------------------------
+     |      key:   p\x00\x00\x00\x00\x00\x00\x00\x00
+     |      value: \x00\x00@\xb2\xba\xc9\xe0\x19\x1e\x02\x00\x00\x00\x00\x00\x00
+     |      --------------------------------
+     |      key:   p\x01\x00\x00\x00\x00\x00\x00\x00
+     |      value: \x00\x00@\xb2\xba\xc9\xe0\x19\x1e\x02\x00\x00\x00\x00\x00\x00
+     |      --------------------------------
+    ```
+</details>
+
+That means that while migrating the state to a new version we need not only change the messages structure, but also remove all payments related keys from the state. Otherwise, the old keys will simply stay behind being orphan, still occupying space.
+
+To remove them in `migrate` method, we reverse the order of messages during enumeration and then just pop last element of payments vector. `pop()` method of vector not just removes the last element, but also returns it.
+
+</details>
 
 :::tip
 
