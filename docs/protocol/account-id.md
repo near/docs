@@ -5,6 +5,7 @@ title: Address (Account ID)
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import NetworkMarquee from '@site/src/components/NetworkMarquee';
 
 NEAR accounts are identified by a unique address, which takes one of two forms:
 1. [**Implicit address**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)
@@ -129,3 +130,6 @@ You can use the same command to create sub-accounts of an existing named account
 :::tip
 Accounts have **no control** over their sub-accounts, they are different entities. This means that `near` cannot control `bob.near`, and `bob.near` cannot control `sub.bob.near`.
 :::
+
+## One Account, Multiple Blockchains
+<NetworkMarquee />
