@@ -96,7 +96,7 @@ async function replaceFileWithCode(content) {
 
 // Directories
 const DOCS_DIR = path.join(__dirname, '../../docs');
-const STATIC_DIR = path.join(__dirname, '../static');
+const BUILD_DIR = path.join(__dirname, '../../build');
 
 console.log('🚀 Starting markdown files post-processing...');
 console.log('This script will copy processed .md files alongside .html files in build/');
@@ -139,7 +139,7 @@ function generatePath(filePath) {
     newFilename = path.basename(filePath);
   }
   
-  return path.join(STATIC_DIR, dirPath, newFilename);
+  return path.join(BUILD_DIR, dirPath, newFilename);
 }
 
 // Get all markdown files from the docs directory
