@@ -288,7 +288,7 @@ For example, if the old version of the contract stores two messages with payment
     ```
 </details>
 
-But if we will take a look at the storage as text using following command, we will see that each payment is stored under its own key started with `p\` prefix.
+But if we take a look at the storage as text using following command, we will see that each payment is stored under its own key started with `p\` prefix.
 
 ```bash
 near contract view-storage <CONTRACT_ID> all as-text network-config testnet now
@@ -318,7 +318,7 @@ near contract view-storage <CONTRACT_ID> all as-text network-config testnet now
 
 That means that while migrating the state to a new version we need not only change the messages structure, but also remove all payments related keys from the state. Otherwise, the old keys will simply stay behind being orphan, still occupying space.
 
-To remove them in `migrate` method, we reverse the order of messages during enumeration and then just pop last element of payments vector. `pop()` method of vector not just removes the last element, but also returns it.
+To remove them in `migrate` method, we call `clear()` method on payments vector in mutable `old_state` struct. This method removes all elements from the collection.
 
 </details>
 
