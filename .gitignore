@@ -15,3 +15,4 @@ neardev
 serve*
 .vscode
 .env.local
+website/.cache/
