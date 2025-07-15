@@ -81,7 +81,7 @@ To allow users to login into your web application using a wallet you will need t
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
-  You can use the API library in the browser, or in Node.js runtime. 
+  You can use the API library in the browser, or in Node.js runtime.
 
   ```js
   import { Account } from "@near-js/accounts";
@@ -151,7 +151,7 @@ To allow users to login into your web application using a wallet you will need t
 
 <hr class="subsection" />
 
-### Key Handlers: Stores & Signers 
+### Key Handlers: Stores & Signers
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
@@ -587,7 +587,7 @@ When creating a new account, you’ll need to provide:
   await account.createAccount(
     "another_user.testnet",
     keyPair.getPublicKey(),
-    // attaches 1.234 NEAR tokens that will become 
+    // attaches 1.234 NEAR tokens that will become
     // an initial balance of "another_user.testnet"
     NEAR.toUnits("1.234")
   );
@@ -610,7 +610,7 @@ When creating a new account, you’ll need to provide:
   await account.createAccount(
     "another_user.testnet",
     publicKey,
-    // attaches 1.234 NEAR tokens that will become 
+    // attaches 1.234 NEAR tokens that will become
     // an initial balance of "another_user.testnet"
     NEAR.toUnits("1.234")
   );
@@ -676,7 +676,7 @@ To create a sub-account, the parent must send a transaction to itself with the [
   await account.createAccount(
     "project.user.testnet",
     keyPair.getPublicKey(),
-    // attaches 1.234 NEAR tokens that will become 
+    // attaches 1.234 NEAR tokens that will become
     // an initial balance of "project.user.testnet"
     NEAR.toUnits("1.234")
   );
@@ -728,7 +728,7 @@ Deleting an account **DOES NOT** affect its sub-accounts - they will remain acti
   ```js
   const account = new Account("user.testnet", provider, signer);
 
-  // account "user.testnet" gets deleted 
+  // account "user.testnet" gets deleted
   // and remaining funds will go to account "beneficiary.testnet" (if it exists)
   await account.deleteAccount("beneficiary.testnet");
   ```
@@ -764,7 +764,7 @@ Accounts can transfer different types of tokens to other accounts, including the
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  To begin with, you’ll need the `@near-js/tokens` package, which provides the necessary utilities. 
+  To begin with, you’ll need the `@near-js/tokens` package, which provides the necessary utilities.
   
   Once you've [created an `Account` instance](#instantiate-account), you can transfer tokens to others. Let’s start by looking at how to transfer native `NEAR` tokens.
 
@@ -874,7 +874,7 @@ A smart contract exposes its methods, and making a function call that modifies s
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  Once you've [created an `Account` instance](#instantiate-account), you can start interacting with smart contracts. 
+  Once you've [created an `Account` instance](#instantiate-account), you can start interacting with smart contracts.
   
   For example, let’s say there’s a [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract deployed at `guestbook.near-examples.testnet`, and you want to add a message to it. To do that, you’d call its `add_message` method.
 
@@ -1164,13 +1164,11 @@ Unlike many other blockchains, contracts on NEAR are mutable, meaning you have t
 
 ### Deploy a Global Contract {#deploy-a-global-contract}
 
-If you've ever deployed the same contract code to multiple accounts, you’ve likely noticed that each deployment requires you to pay the full storage cost again — since the size of the WASM file determines how much `NEAR` is locked on the account.
-
-Global Contracts solve this inefficiency by allowing the same contract code to be shared across multiple accounts, so storage cost is paid only once.
+[Global contracts](../smart-contracts/global-contracts.md) allow smart contracts to be deployed once and reused by any account without incurring high storage costs.
 
 There are two ways to reference a global contract:
-- **By account:** The contract code is tied to another account. If that account later deploys a new version of the contract, your account will automatically start using the updated code, with no need for redeployment.
-- **By hash:** You reference the contract by its immutable code hash. This ensures you're always using the exact same version, and it will never change unless you explicitly redeploy with a different hash.
+- **[By account](../smart-contracts/global-contracts.md#reference-by-account):** The contract code is tied to another account.
+- **[By hash](../smart-contracts/global-contracts.md#reference-by-hash):** You reference the contract by its immutable code hash.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
