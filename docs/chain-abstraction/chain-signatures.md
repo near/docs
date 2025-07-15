@@ -108,6 +108,10 @@ After a request is made, the `sign` method will [yield execution](/blog/yield-re
 
 Once the signature is ready, the contract resumes computation and returns it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
 
+:::tip
+The `sign` method currently supports both Secp256k1 and Ed25519 signature schemes which enables signing transactions for the vast majority of the well-known blockchains including Bitcoin, Ethereum, Solana, BNB chain, Ton, or Stellar. In the future, the MPC participants can add more signature schemes via the `vote_add_domains` method.  
+:::
+
 <hr class="subsection" />
 
 ### Multi-Party Computation Service
