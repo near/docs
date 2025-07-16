@@ -204,16 +204,13 @@ async function processMarkdownFiles() {
       const outputFilePath = generatePath(markdownFilePath);
       const outputDirectory = path.dirname(outputFilePath);
 
-      if (!fs.existsSync(outputDirectory)) {
-        fs.mkdirSync(outputDirectory, { recursive: true });
-      }
+      if (!fs.existsSync(outputDirectory)) fs.mkdirSync(outputDirectory, { recursive: true });
+
       fs.writeFileSync(outputFilePath, fileContent, 'utf8');
 
       const relativeFilename = path.relative(DOCS_DIR, markdownFilePath);
       
-      if (relativeFilename === "index.md" || relativeFilename === "help.md") {
-        return;
-      }
+      if (relativeFilename === "index.md" || relativeFilename === "help.md") return;
 
       const pathSegments = relativeFilename.split('/');
       const sectionName = pathSegments[0];
@@ -312,6 +309,3 @@ This documentation is organized into several main sections: Protocol fundamental
 }
 
 processMarkdownFiles();
-
-
-
