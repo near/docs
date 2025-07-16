@@ -3,11 +3,6 @@ sidebar_label: "Start options"
 id: lake-start-options
 ---
 
-# Extending Lake indexer with start options
-
-
-## The End
-
 This tutorial ends with the example code of the simple indexer built on top of [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) that can start:
 - from specified block height (out of the box)
   ```bash

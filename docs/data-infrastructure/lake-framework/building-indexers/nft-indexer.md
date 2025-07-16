@@ -2,17 +2,6 @@
 sidebar_label: NFT Indexer
 ---
 
-# Building an NFT indexer
-
-
-:::note Source code for the tutorial
-
-[`near-examples/near-lake-nft-indexer`](https://github.com/near-examples/near-lake-nft-indexer): source code for this tutorial
-
-:::
-
-## The End
-
 This tutorial ends with a working NFT indexer built on top [NEAR Lake Framework JS](/data-infrastructure/lake-framework/near-lake-framework). The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
 - `receiptId` of the [Receipt](/data-infrastructure/lake-data-structures/receipt) where the mint has happened
 - Marketplace
@@ -20,6 +9,13 @@ This tutorial ends with a working NFT indexer built on top [NEAR Lake Framework 
 - Links to the NFTs on the marketplaces
 
 The final source code is available on the GitHub [`near-examples/near-lake-nft-indexer`](https://github.com/near-examples/near-lake-nft-indexer)
+
+:::note Source code for the tutorial
+
+[`near-examples/near-lake-nft-indexer`](https://github.com/near-examples/near-lake-nft-indexer): source code for this tutorial
+
+:::
+
 
 ## Motivation
 

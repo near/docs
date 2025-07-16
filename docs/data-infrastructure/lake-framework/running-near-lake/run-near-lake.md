@@ -3,7 +3,11 @@ id: run-lake-indexer
 sidebar_label: Running Lake Indexer
 ---
 
-# Running NEAR Lake Indexer
+The Lake Indexer setup consists of the following components:
+
+- AWS S3 Bucket as a storage
+- NEAR Lake binary that operates as a regular NEAR Protocol peer-to-peer node, so you will operate it as
+  any other [Regular/RPC Node in NEAR](https://near-nodes.io/rpc/hardware-rpc)
 
 :::info
 
@@ -11,14 +15,6 @@ NEAR Lake is a blockchain indexer built on top of [NEAR Indexer microframework](
 to watch the network and store all the events as JSON files on AWS S3.
 
 :::
-
-## How to start
-
-The Lake Indexer setup consists of the following components:
-
-- AWS S3 Bucket as a storage
-- NEAR Lake binary that operates as a regular NEAR Protocol peer-to-peer node, so you will operate it as
-  any other [Regular/RPC Node in NEAR](https://near-nodes.io/rpc/hardware-rpc)
 
 ### Prepare Development Environment
 

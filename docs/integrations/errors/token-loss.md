@@ -4,16 +4,16 @@ title: Avoiding Token Loss
 sidebar_label: Avoiding Token Loss
 ---
 
-:::warning
-Careful! Losing tokens means losing money!
-:::
-
-
 Token loss is possible under multiple scenarios. These scenarios can be grouped into a few related classes:
 
 1. Improper key management
 2. Refunding deleted accounts
 3. Failed function calls in batches
+
+:::warning
+Careful! Losing tokens means losing money!
+:::
+
 
 ---
 

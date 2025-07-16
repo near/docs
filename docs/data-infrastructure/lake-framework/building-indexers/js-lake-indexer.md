@@ -4,18 +4,15 @@ title: JS basic tutorial
 sidebar_label: JS basic tutorial
 ---
 
-# NEAR Lake indexer basic tutorial
+Recently we have [published a JavaScript version of the NEAR Lake Framework](https://www.npmjs.com/package/near-lake-framework) on npmjs.org
 
+We want to empower you with a basic tutorial on how to use the JavaScript Library. Let's get started!
 
 :::info Source code for the tutorial
 
 [`near-examples/near-lake-raw-printer-js`](https://github.com/near-examples/near-lake-raw-printer-js): source code for the tutorial on how to create an indexer that prints block height and number of shards
 
 :::
-
-Recently we have [published a JavaScript version of the NEAR Lake Framework](https://www.npmjs.com/package/near-lake-framework) on npmjs.org
-
-We want to empower you with a basic tutorial on how to use the JavaScript Library. Let's get started!
 
 
 ## Requirements
