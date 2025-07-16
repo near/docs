@@ -30,7 +30,7 @@ When using a reference **by hash**, you reference the global contract by its imm
 
 Global contracts can be deployed in 2 ways: either by their hash or by the owner account ID.
 Contracts deployed by hash are effectively immutable and cannot be updated.
-When deployed by account id the owner can redeploy the contract updating it for all its users.
+When deployed by account ID the owner can redeploy the contract updating it for all its users.
 
 Global contracts can be deployed using `NEAR CLI`.
 The process is similar to [deploying a regular contract](./release/deploy.md#deploying-the-contract) but `deploy-as-global` command should be used instead of `deploy`.
