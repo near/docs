@@ -154,7 +154,6 @@ const sidebar = {
           'label': 'Introduction',
           'href': '/smart-contracts/what-is',
         },
-        'smart-contracts/quickstart',
         {
           'Anatomy of a Contract': [
             'smart-contracts/anatomy/anatomy',
@@ -231,7 +230,6 @@ const sidebar = {
           'label': 'Introduction',
           'href': '/web3-apps/what-is',
         },
-        'web3-apps/quickstart',
         {
           Frontends: ['web3-apps/integrate-contracts', 'web3-apps/ethereum-wallets'],
         },
@@ -357,86 +355,50 @@ const sidebar = {
       value: '<hr/>',
     },
     {
-      type: 'html',
-      value: "<span class='menu__link'><b><small>MASTERING NEAR</small></b></span>",
-    },
-    {
       type: 'category',
-      label: 'NEAR 101',
+      label: 'First Steps',
       collapsed: true,
       customProps: {
         icon: '/img/icons/near.svg',
       },
-      link: { type: 'doc', id: 'tutorials/auction/introduction' },
       items: [
-        'tutorials/auction/introduction',
-        {
-          'Smart Contracts 101': [
-            'tutorials/auction/basic-auction',
-            'tutorials/auction/sandbox-testing',
-            'tutorials/auction/deploy',
-          ],
-        },
-        {
-          'Frontends 101': [
-            'tutorials/auction/creating-a-frontend',
-            'tutorials/auction/indexing-historical-data',
-          ],
-        },
-        {
-          'Using Primitives': [
-            'tutorials/auction/winning-an-nft',
-            'tutorials/auction/bidding-with-fts',
-            'tutorials/auction/updating-the-frontend',
-          ],
-        },
-        'tutorials/auction/auction-factory',
-      ],
-    },
-    {
-      type: 'html',
-      value: '<hr/>',
-    },
-    {
-      type: 'html',
-      value: "<span class='menu__link'><b><small>EXAMPLES & TUTORIALS</small></b></span>",
-    },
-    {
-      type: 'category',
-      label: 'Front-ends',
-      customProps: {
-        icon: '/img/icons/app.svg',
-      },
-      collapsed: true,
-      link: { type: 'doc', id: 'tutorials/examples/guest-book' },
-      items: [
-        'tutorials/examples/guest-book',
-        'tutorials/templates/marketplace',
-        'tutorials/examples/frontend-multiple-contracts',
+        'smart-contracts/quickstart',
+        'web3-apps/quickstart',
       ],
     },
     {
       type: 'category',
-      label: 'Smart Contracts',
+      label: 'Learn by Building',
       collapsed: true,
       customProps: {
-        icon: '/img/icons/contract.svg',
+        icon: '/img/icons/near.svg',
       },
-      link: { type: 'doc', id: 'tutorials/examples/count-near' },
       items: [
-        'tutorials/examples/donation',
-        'tutorials/examples/count-near',
-        'tutorials/examples/xcc',
-        'tutorials/examples/coin-flip',
-        'tutorials/templates/minter',
-        'tutorials/templates/blog',
         {
-          'Advanced Patterns': [
-            'tutorials/examples/factory',
-            'tutorials/examples/near-drop',
-            'tutorials/examples/advanced-xcc',
-            'tutorials/examples/update-contract-migrate-state',
-          ],
+          "Mastering Web3 Apps": [
+            'tutorials/auction/introduction',
+            {
+              'Smart Contracts 101': [
+                'tutorials/auction/basic-auction',
+                'tutorials/auction/sandbox-testing',
+                'tutorials/auction/deploy',
+              ],
+            },
+            {
+              'Frontends 101': [
+                'tutorials/auction/creating-a-frontend',
+                'tutorials/auction/indexing-historical-data',
+              ],
+            },
+            {
+              'Using Primitives': [
+                'tutorials/auction/winning-an-nft',
+                'tutorials/auction/bidding-with-fts',
+                'tutorials/auction/updating-the-frontend',
+              ],
+            },
+            'tutorials/auction/auction-factory',
+          ]
         },
         {
           type: 'category',
@@ -484,18 +446,35 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Tokens',
+      label: 'Frontend Guides',
       collapsed: true,
       customProps: {
-        icon: '/img/icons/token.svg',
+        icon: '/img/icons/app.svg',
       },
-      link: { type: 'doc', id: 'tutorials/fts/introduction' },
       items: [
+        'tutorials/examples/frontend-multiple-contracts',
+        'tutorials/templates/marketplace',
+        'tutorials/templates/minter',
+        'tutorials/templates/blog',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Contract guides',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/contract.svg',
+      },
+      link: { type: 'doc', id: 'tutorials/examples/count-near' },
+      items: [
+        'tutorials/examples/donation',
+        'tutorials/examples/coin-flip',
+        'tutorials/examples/factory',
+        'tutorials/examples/near-drop',
+        'tutorials/examples/advanced-xcc',
+        'tutorials/examples/update-contract-migrate-state',
         {
-          type: 'category',
-          label: 'Fungible Tokens (FT)',
-          link: { type: 'doc', id: 'tutorials/fts/introduction' },
-          items: [
+          "Build an FT Contract from Scratch": [
             'tutorials/fts/introduction',
             'tutorials/fts/predeployed-contract',
             'tutorials/fts/skeleton',
@@ -504,61 +483,34 @@ const sidebar = {
             'tutorials/fts/registering-accounts',
             'tutorials/fts/transfers',
             'tutorials/fts/marketplace',
-          ],
+          ]
         },
         {
-          type: 'category',
-          label: 'Non-Fungible Tokens (NFT)',
-          link: { type: 'doc', id: 'tutorials/nfts/minting-nfts' },
-          items: [
-            'tutorials/nfts/minting-nfts',
+          "Build an NFT Contract from Scratch": [
+            'tutorials/nfts/introduction',
             {
-              type: 'html',
-              value: '<hr/>',
-            },
-            {
-              '🌐 Contract: Zero to Hero (JS)': [
-                'tutorials/nfts/js/introduction',
-                'tutorials/nfts/js/predeployed-contract',
-                'tutorials/nfts/js/skeleton',
-                'tutorials/nfts/js/minting',
-                'tutorials/nfts/js/upgrade-contract',
-                'tutorials/nfts/js/enumeration',
-                'tutorials/nfts/js/core',
-                'tutorials/nfts/js/approvals',
-                'tutorials/nfts/js/royalty',
-                'tutorials/nfts/js/events',
-                'tutorials/nfts/js/marketplace',
+              Basic: [
+                'tutorials/nfts/predeployed-contract',
+                'tutorials/nfts/skeleton',
+                'tutorials/nfts/minting',
+                'tutorials/nfts/upgrade-contract',
+                'tutorials/nfts/enumeration',
+                'tutorials/nfts/core',
               ],
             },
+            'tutorials/nfts/events',
             {
-              '🦀 Contract: Zero to Hero (Rust)': [
-                'tutorials/nfts/introduction',
-                {
-                  Basic: [
-                    'tutorials/nfts/predeployed-contract',
-                    'tutorials/nfts/skeleton',
-                    'tutorials/nfts/minting',
-                    'tutorials/nfts/upgrade-contract',
-                    'tutorials/nfts/enumeration',
-                    'tutorials/nfts/core',
-                  ],
-                },
-                'tutorials/nfts/events',
-                {
-                  Marketplace: ['tutorials/nfts/approvals', 'tutorials/nfts/marketplace'],
-                },
-                'tutorials/nfts/royalty',
-                'tutorials/nfts/series',
-              ],
+              Marketplace: ['tutorials/nfts/approvals', 'tutorials/nfts/marketplace'],
             },
-          ],
-        },
+            'tutorials/nfts/royalty',
+            'tutorials/nfts/series',
+          ]
+        },      
       ],
     },
     {
       type: 'category',
-      label: 'Multi-Chain',
+      label: 'Multi-Chain Projects',
       collapsed: true,
       customProps: {
         icon: '/img/icons/multichain.svg',
