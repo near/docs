@@ -4,6 +4,8 @@ title: Custom Agent Contract
 sidebar_label: Custom Agent Contract
 ---
 
+import { SigsSupport } from '@site/src/components/sigsSupport';
+
 In some cases, you may want to deploy a custom agent contract. This allows for more customizability inside of the agent contract, allows you to restrict your agent to certain actions, and is used for building Shade Agents that interact with just NEAR.
 
 ---
@@ -20,7 +22,7 @@ For developing Shade Agents that just interact with NEAR, you can remove the `re
 
 To compile the contract there are two different ways depending on which operating system you're using.
 
-### Linux
+#### Linux
 
 For Linux, you can compile the contract directly with [cargo near](https://github.com/near/cargo-near/releases/tag/cargo-near-v0.16.1).
 
@@ -28,7 +30,7 @@ For Linux, you can compile the contract directly with [cargo near](https://githu
 cargo near build non-reproducible-wasm
 ```
 
-### Mac
+#### Mac
 
 Because of a required dependency used in the agent registration flow, agent contracts cannot easily be compiled on a Mac. We suggest you use a Docker container to build the contract inside of. Here is an example command:
 
@@ -52,7 +54,6 @@ Make sure you are using the most updated version of the `shade-agent-cli`.
 
 ```bash
 npm i -g @neardefi/shade-agent-cli
-
 ```
 
 :::

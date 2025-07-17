@@ -1,7 +1,7 @@
 ---
 id: components
-title: Quickstart Components
-sidebar_label: Quickstart Components
+title: Key Components
+sidebar_label: Key Components
 ---
 
 import {Github} from "@site/src/components/codetabs"

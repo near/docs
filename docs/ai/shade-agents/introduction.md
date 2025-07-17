@@ -95,6 +95,8 @@ Within agent gated functions, we can implement an additional layer of security t
 
 ## Languages and Frameworks
 
+The agent is just a backend service that runs inside a TEE instead of a centralized server. You can run the agent on an internal cron job to perform an action every set time period, or in response to actions, or it can expose API routes that can be called.
+
 Agents can be written in virtually any programming language and use any framework, as long as you can build a `Docker Image` for your program.
 
 For most use cases you do not need to write your own agent contract. If you require a custom contract then these are written in Rust.
