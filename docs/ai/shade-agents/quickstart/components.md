@@ -1,7 +1,7 @@
 ---
-id: sandbox-components
-title: Sandbox Components
-sidebar_label: Sandbox Components
+id: components
+title: Quickstart Components
+sidebar_label: Quickstart Components
 ---
 
 import {Github} from "@site/src/components/codetabs"

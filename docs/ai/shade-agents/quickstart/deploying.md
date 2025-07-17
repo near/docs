@@ -1,7 +1,7 @@
 ---
-id: sandbox-deploying
-title: Using the Sandbox
-sidebar_label: Using the Sandbox
+id: deploying
+title: Quickstart Deployment
+sidebar_label: Quickstart Deployment
 ---
 
 import { SigsSupport } from '@site/src/components/sigsSupport';
