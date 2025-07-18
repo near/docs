@@ -212,7 +212,9 @@ const sidebar = {
           ],
         },
         {
-          Advanced: ['smart-contracts/global-contracts'],
+          'Advanced': [
+            'smart-contracts/global-contracts'
+          ],
         },
         'resources/contracts-list'
       ],
