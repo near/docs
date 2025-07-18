@@ -8,13 +8,13 @@ import { SigsSupport } from '@site/src/components/sigsSupport';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this section we'll walk you through deploying a Shade Agent.
+In this section, we'll walk you through deploying a Shade Agent.
 
 The [template](https://github.com/NearDeFi/shade-agent-sandbox-template) we're using is a simple Shade Agent built with TypeScript and Hono that acts as a verifiable ETH price oracle. It fetches the price of Eth from two different APIs, takes the average, and then pushes the price to an Ethereum contract. 
 
 We'll cover two deployment scenarios:
 1. **Local Development**: Running the agent locally for rapid testing and development.
-2. **TEE Deployment**: Running the worker agent in a real Trusted Execution Environment (TEE).
+2. **TEE Deployment**: Running the agent in a real Trusted Execution Environment (TEE).
 
 On the [next page](./components.md), you'll see how to edit this agent for your specific use case.
 
@@ -49,9 +49,9 @@ On the [next page](./components.md), you'll see how to edit this agent for your 
 
 - Set up Docker if you have not already:
 
-  Install Docker for [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) or [Linux](https://docs.docker.com/desktop/setup/install/linux/) and create an account.
+  - Install Docker for [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) or [Linux](https://docs.docker.com/desktop/setup/install/linux/) and create an account.
 
-  Log in to docker, using `docker login` for Mac or `sudo docker login` for Linux.
+  - Log in to docker, using `docker login` for Mac or `sudo docker login` for Linux.
 
 - Set up a free Phala Cloud account at https://cloud.phala.network/register then get an API key from https://cloud.phala.network/dashboard/tokens.
 
@@ -102,7 +102,7 @@ Phala Cloud is a service that offers secure and private hosting in a TEE using [
 ---
 
 :::warning
-This technology has not yet undergone a formal audit. Use at your own risk. Please conduct your own due diligence and exercise caution before integrating or relying on it in production environments.
+This technology has not yet undergone a formal audit. Please conduct your own due diligence and exercise caution before integrating or relying on it in production environments.
 :::
 
 ---

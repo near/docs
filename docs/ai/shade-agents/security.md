@@ -63,6 +63,12 @@ In the quickstart, our agent can take an API request from anyone. In a lot of ca
 
 ---
 
+## Removing Agent Contract Keys
+
+Before deploying your agent contract to production, you should ensure that all access keys to the agent contract account have been removed. Otherwise, this would allow the access key owner to withdraw the funds stored on multichain accounts. implement an [upgrade mechanism](../../tutorials/examples/update.md) that is controlled by a DAO.
+
+---
+
 ## Trusting RPCs
 
 Inside an agent, it is common to want to query the state of the blockchain and perform actions based on the state. Since RPCs can lie about the state of the blockchain and do not have crypto-economic security, we suggest you design your agent to defend against this. Below are some solutions, which solution you use will differ depending on your use case and the design of your agent:
