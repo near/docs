@@ -3,8 +3,6 @@ id: wallet
 title: Wallet Chain Key Rules 
 ---
 
-## Overview
-
 In this article you'll find details on how to parse and present multichain transactions to the user so they can take an informed decision about their wallet's assets, while minimizing the number of times the user has to consent.
 You'll also learn how to ensure that a signature on one chain is not used to take a meaningful action on another chain.
 

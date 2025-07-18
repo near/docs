@@ -7,8 +7,6 @@ sidebar_label: Balance Changes
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Prerequisites {#prerequisites}
-
 - [NEAR Account](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli)
 - Credentials for sender account stored locally by running [`near login`](/tools/near-cli#import)

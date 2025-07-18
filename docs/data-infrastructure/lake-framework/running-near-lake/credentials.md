@@ -3,8 +3,6 @@ sidebar_label: "Credentials"
 id: credentials
 ---
 
-# Credentials
-
 To access the data provided by [NEAR Lake](../near-lake.md) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
 
 :::info AWS credentials

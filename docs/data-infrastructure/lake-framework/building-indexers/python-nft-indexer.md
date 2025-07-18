@@ -2,17 +2,6 @@
 sidebar_label: "NFT indexer for Python"
 ---
 
-# Building an NFT indexer for Python
-
-
-:::note Source code for the tutorial
-
-[`frolvanya/near-lake-nft-indexer`](https://github.com/frolvanya/near-lake-nft-indexer): source code for this tutorial
-
-:::
-
-## The Goal
-
 This tutorial ends with a working NFT indexer built on top [NEAR Lake Framework for Python](/data-infrastructure/lake-framework/near-lake-framework/). The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
 - `receipt_id` of the [Receipt](/data-infrastructure/lake-data-structures/receipt) where the mint has happened
 - Marketplace
@@ -20,6 +9,12 @@ This tutorial ends with a working NFT indexer built on top [NEAR Lake Framework 
 - Links to the NFTs on the marketplaces
 
 The final source code is available on the GitHub [`frolvanya/near-lake-nft-indexer`](https://github.com/frolvanya/near-lake-nft-indexer)
+
+:::note Source code for the tutorial
+
+[`frolvanya/near-lake-nft-indexer`](https://github.com/frolvanya/near-lake-nft-indexer): source code for this tutorial
+
+:::
 
 ## Motivation
 

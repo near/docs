@@ -5,8 +5,6 @@ id: ethereum-wallets
 
 import { Github } from "@site/src/components/codetabs"
 
-# How to integrate Ethereum Wallets to Near DApps?
-
 In this article we will describe how to add EVM wallets support to your Near app, which is already uses the [Near Wallet Selector](https://github.com/near/wallet-selector/).
 
 To integrate Metamask and other EVM wallets you will need to:

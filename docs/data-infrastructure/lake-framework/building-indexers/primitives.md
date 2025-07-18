@@ -4,8 +4,6 @@ title: NEAR Lake Primitive Types
 sidebar_label: Lake Primitive Types
 ---
 
-# NEAR Lake Primitive Types
-
 This article contains the primitive types used by the [NEAR Lake Framework package](https://www.npmjs.com/package/@near-lake/framework). These types are used to define the data structures used by the framework as well as provide some popular helper functions.
 
 ## `Block`

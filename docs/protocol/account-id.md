@@ -6,6 +6,12 @@ title: Address (Account ID)
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+NEAR accounts are identified by a unique address, which can be either an implicit address (64 characters long) or a named address (like a domain). Implicit addresses are automatically created and controlled by private keys, while named addresses are user-friendly and can create sub-accounts. Named accounts have no control over their sub-accounts, which are treated as separate entities.
+
+--- 
+
+## Types of Account IDs
+
 NEAR accounts are identified by a unique address, which takes one of two forms:
 1. [**Implicit address**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)
 2. [**Named address**](#named-address), which act as domains (e.g. `alice.near`)

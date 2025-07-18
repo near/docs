@@ -10,10 +10,6 @@ import TabItem from '@theme/TabItem';
 import loggingIn from '/docs/assets/crosswords/logging-in.png';
 import explorerTransfer from '/docs/assets/crosswords/chapter-2-explorer-transfer.jpg';
 
-# Add the login functionality
-
-## Plan
-
 We're going to add a login button that uses `near-api-js` to login with NEAR.
 
 Below is the workflow of logging in:
