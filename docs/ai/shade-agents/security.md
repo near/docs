@@ -31,9 +31,7 @@ Examples of restrictions could be:
 
 We recommend using the [omni-transactions-rs](https://github.com/near/omni-transaction-rs) library to build transactions within your agent contract rather than in the agent.
 
-If the Shade Agent's multichain accounts do not hold funds themselves, but  is approved to 
-
-Another solution is for the Shade Agent's multichain accounts to not hold funds themselves, but the Shade Agent accounts be a restricted admin on a contract on the target chain.
+Another solution is for the Shade Agent's multichain accounts to not hold funds themselves, but the accounts to be a restricted admin on a contract on the target chain.
 
 ---
 
@@ -65,7 +63,7 @@ In the quickstart, our agent can take an API request from anyone. In a lot of ca
 
 ## Removing Agent Contract Keys
 
-Before deploying your agent contract to production, you should ensure that all access keys to the agent contract account have been removed. Otherwise, this would allow the access key owner to withdraw the funds stored on multichain accounts. implement an [upgrade mechanism](../../tutorials/examples/update.md) that is controlled by a DAO.
+Before deploying your agent contract to production, you should ensure that all access keys to the agent contract account have been removed. Otherwise, this would allow the access key owner to withdraw the funds stored on multichain accounts. implement an [upgrade mechanism](../../tutorials/examples/update.md) that is controlled by a multisig or DAO.
 
 ---
 

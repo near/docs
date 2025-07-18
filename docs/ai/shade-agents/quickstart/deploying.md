@@ -8,9 +8,9 @@ import { SigsSupport } from '@site/src/components/sigsSupport';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this section, we'll walk you through deploying a Shade Agent.
+In this section, we'll walk you through deploying a Shade Agent. The Shade Agent Framework abstracts the complexities of creating a agent by removing TEE specific code and handling the deployment of the agent contract under hood.
 
-The [template](https://github.com/NearDeFi/shade-agent-sandbox-template) we're using is a simple Shade Agent built with TypeScript and Hono that acts as a verifiable ETH price oracle. It fetches the price of Eth from two different APIs, takes the average, and then pushes the price to an Ethereum contract. 
+The [template](https://github.com/NearDeFi/shade-agent-sandbox-template) we're using is a simple Shade Agent built with Hono and written in TypeScript that acts as a verifiable ETH price oracle. It fetches the price of Eth from two different APIs, takes the average, and then pushes the price to an Ethereum contract. 
 
 We'll cover two deployment scenarios:
 1. **Local Development**: Running the agent locally for rapid testing and development.
@@ -51,9 +51,9 @@ On the [next page](./components.md), you'll see how to edit this agent for your 
 
   - Install Docker for [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) or [Linux](https://docs.docker.com/desktop/setup/install/linux/) and create an account.
 
-  - Log in to docker, using `docker login` for Mac or `sudo docker login` for Linux.
+  - Log in to Docker, using `docker login` for Mac or `sudo docker login` for Linux.
 
-- Set up a free Phala Cloud account at https://cloud.phala.network/register then get an API key from https://cloud.phala.network/dashboard/tokens.
+- Set up a free Phala Cloud account at https://cloud.phala.network/register, then get an API key from https://cloud.phala.network/dashboard/tokens.
 
 <details>
 
@@ -141,9 +141,7 @@ This technology has not yet undergone a formal audit. Please conduct your own du
 
   The CLI on Linux may prompt you to enter your `sudo password`.
 
-  The last URL the CLI outputs is where your app is hosted.
-
-  If your application is not working head over to your App on the Phala Dashboard and review the logs.
+  The last `URL` the CLI outputs is the URL of your app. If your application is not working, head over to your App on the Phala Dashboard and review the logs.
 
 ---
 
@@ -153,29 +151,29 @@ You can interact with your agent via the APIs directly or via a lightweight fron
 
 ### Direct
 
-For Phala deployments swap localhost:3000 for your deployment URL
+For Phala deployments, swap localhost:3000 for your deployment URL.
 
-Get the Agent account Id and it's balance:
+- Get the Agent account Id and its balance:
 
-```
-https://localhost:3000/api/agent-account
-```
+  ```
+  https://localhost:3000/api/agent-account
+  ```
 
-Get the derived Ethereum Sepolia price pusher account Id and it's balance (you will need to fund this):
+- Get the derived Ethereum Sepolia price pusher account Id and its balance (you will need to fund this account):
 
-```
-https://localhost:3000/api/eth-account
-```
+  ```
+  https://localhost:3000/api/eth-account
+  ```
 
-Send a transaction through the agent to update the price of Eth:
+- Send a transaction through the agent to update the price of Eth:
 
-```
-https://localhost:3000/api/transaction
-```
+  ```
+  https://localhost:3000/api/transaction
+  ```
 
 ### Frontend
 
-To run the frontend run:
+To start the frontend, run:
 
 ```bash
 cd frontend
