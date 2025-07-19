@@ -1,0 +1,540 @@
+:root {
+  --near-primary: #00d4ff;
+  --near-secondary: #7b68ee;
+  --near-accent: #ff6b9d;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.3s ease;
+  --gradient-brand: linear-gradient(135deg, var(--near-primary) 0%, var(--near-secondary) 100%);
+  --gradient-rainbow: linear-gradient(90deg, var(--near-primary) 0%, var(--near-secondary) 50%, var(--near-accent) 100%);
+  --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
+.networkMarquee {
+  position: relative;
+  padding: 0 var(--spacing-xl) var(--spacing-xl);
+  margin: 40px 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-dark);
+  transition: var(--transition-fast);
+  animation: fadeInUp 0.6s ease-out;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-rainbow);
+  }
+}
+.carouselHeaderContainer{
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.lightTheme {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  box-shadow: var(--shadow-light);
+
+  .carouselDescription {
+    color: #2d3748;
+    opacity: 1;
+    font-weight: 500;
+  }
+
+  .featureItem {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: #2d3748;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(0, 212, 255, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .networkCardInner {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(0, 212, 255, 0.4);
+      transform: translateY(-2px) scale(1.01);
+    }
+  }
+
+  .networkName {
+    color: #2d3748;
+  }
+
+  .statItem {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(0, 212, 255, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .statLabel {
+    color: #2d3748;
+  }
+
+  .statDescription {
+    color: rgba(45, 55, 72, 0.7);
+  }
+
+  .featuresSection {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+.darkTheme {
+  background: linear-gradient(135deg, #2a3441 0%, #1c252e 100%);
+  box-shadow: var(--shadow-dark);
+
+  .carouselDescription {
+    color: #ffffff;
+    opacity: 1;
+    font-weight: 500;
+  }
+
+  .featureItem {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(0, 212, 255, 0.4);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .networkCardInner {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(0, 212, 255, 0.6);
+      transform: translateY(-2px) scale(1.01);
+    }
+  }
+
+  .networkName {
+    color: #ffffff;
+  }
+
+  .statItem {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(0, 212, 255, 0.4);
+    }
+  }
+
+  .statLabel {
+    color: #ffffff;
+  }
+
+  .statDescription {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .featuresSection {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+// Header and description
+.carouselHeader {
+  text-align: center;
+  margin: var(--spacing-xl) 0 var(--spacing-lg);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.carouselDescription {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin: var(--spacing-sm) auto 0;
+  max-width: 600px;
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.learnMoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--spacing-md);
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  background: var(--gradient-brand);
+  color: white;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+
+  &:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+    text-decoration: none;
+    color: white;
+  }
+
+  &:focus {
+    outline: 2px solid var(--near-primary);
+    outline-offset: 2px;
+  }
+}
+
+.featuresSection {
+  margin: var(--spacing-xl) 0 0 0;
+  padding: var(--spacing-xl) 0 0 0;
+}
+
+.featuresTitle {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-xl);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.featuresContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
+  transition: var(--transition-smooth);
+  position: relative;
+  gap: var(--spacing-md);
+
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+    
+    .featureIcon {
+      transform: scale(1.2) rotate(10deg);
+      filter: brightness(1.2);
+    }
+
+    .featureHighlight {
+      color: var(--near-primary);
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+    }
+  }
+}
+
+.featureIcon {
+  font-size: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  margin-top: 4px;
+}
+
+.featureContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.featureHighlight {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  transition: var(--transition-fast);
+}
+
+.featureDescription {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.8;
+  transition: var(--transition-fast);
+}
+
+// Network card styles
+.networkCardInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg) 20px;
+  margin: 0 var(--spacing-md);
+  min-width: 120px;
+  height: 140px;
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+
+  &:hover {
+    .networkLogo {
+      transform: scale(1.1) rotate(5deg);
+      filter: brightness(1.1) saturate(1.2);
+    }
+
+    .networkName {
+      color: var(--near-primary);
+      font-weight: 600;
+    }
+  }
+
+  &:focus {
+    outline: 2px solid var(--near-primary);
+    outline-offset: 2px;
+  }
+}
+
+.networkLogo {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-sm);
+  border-radius: 50%;
+  object-fit: contain;
+  transition: var(--transition-smooth);
+}
+
+.networkName {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+  transition: var(--transition-fast);
+}
+
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+  border-radius: var(--radius-md);
+  transition: var(--transition-smooth);
+
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+
+    .statNumber {
+      transform: scale(1.1);
+      text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+
+    .statLabel {
+      color: var(--near-primary);
+    }
+  }
+}
+
+.statNumber {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: var(--spacing-xs);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: var(--transition-smooth);
+}
+
+.statLabel {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition-fast);
+}
+
+.statDescription {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  transition: var(--transition-fast);
+}
+
+.darkTheme {
+  .networkCardInner:hover .networkName {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  }
+
+  .statItem:hover {
+    .statNumber {
+      text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    }
+
+    .statLabel {
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .networkMarquee {
+    padding: var(--spacing-lg);
+  }
+
+  .statsContainer {
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .networkMarquee {
+    padding: 20px;
+    margin: var(--spacing-lg) 0;
+  }
+
+  .featuresSection {
+    margin: var(--spacing-lg) 0 0 0;
+    padding: var(--spacing-lg) 0 0 0;
+  }
+
+  .featuresTitle {
+    font-size: 24px;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .featuresContainer {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin: 0 auto;
+  }
+
+  .featureItem {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .featureIcon {
+    font-size: 28px;
+  }
+
+  .featureHighlight {
+    font-size: 16px;
+  }
+
+  .featureDescription {
+    font-size: 14px;
+  }
+
+  .statsContainer {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    text-align: center;
+  }
+
+  .networkCardInner {
+    min-width: 100px;
+    height: 120px;
+    padding: var(--spacing-md) var(--spacing-sm);
+    margin: 0 var(--spacing-sm);
+  }
+
+  .networkLogo {
+    width: 40px;
+    height: 40px;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .networkName {
+    font-size: 12px;
+  }
+
+  .statNumber {
+    font-size: 36px;
+  }
+
+  .statLabel {
+    font-size: 14px;
+  }
+
+  .statDescription {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .networkMarquee {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+  }
+
+  .networkCardInner {
+    min-width: 80px;
+    height: 100px;
+    padding: var(--spacing-sm) var(--spacing-xs);
+    margin: 0 var(--spacing-xs);
+  }
+
+  .networkLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .statItem {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
