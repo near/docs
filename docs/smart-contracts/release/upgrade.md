@@ -236,7 +236,7 @@ state, removes the `payments` vector and adds the information to the
 <Language value="rust" language="rust">
 
 <Github fname="lib.rs"
-    url="https://github.com/near-examples/update-migrate-rust/blob/remove-old-keys/basic-updates/update/src/migrate.rs"
+    url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
     start="3" end="51" />
 
 </Language>
