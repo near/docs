@@ -1,7 +1,7 @@
 ---
 id: quickstart
-title: Hello WebApp
-sidebar_label: Create your First Web3 App
+title: Hello, Web3 App!
+sidebar_label: Your First Web3 App
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

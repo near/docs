@@ -1,7 +1,7 @@
 ---
 id: quickstart
-title: Hello Contract
-sidebar_label: Create Your First Contract
+title: Hello, Smart Contract!
+sidebar_label: Your First Smart Contract
 ---
 
 import {Github} from '@site/src/components/codetabs';
