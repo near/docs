@@ -52,7 +52,7 @@ easily generalizable to other DAO implementations.
 ---
 
 ## Create a DAO
-The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos).
+The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos).
 
 You can also create a DAO by interacting with the `sputnik-dao` contract.
 

@@ -94,19 +94,23 @@ In practice, the external address is deterministically derived using the NEAR ad
 
 ### Multichain Smart Contract
 
-A deployed multichain smart contract is used to request signatures for transactions on other blockchains.
+A deployed multichain smart contract ([v1.signer](https://nearblocks.io/address/v1.signer)) is used to request signatures for transactions on other blockchains.
 
-This contract has a `sign` method that takes two parameters:
+This contract has [a `sign` method](https://github.com/near/mpc/blob/01f33ed0a2a2c4c24ef49a2f36df3b20aa400816/libs/chain-signatures/contract/src/lib.rs#L242) that takes these three parameters:
 
-  1. The `payload` (transaction) to be signed for the target blockchain
-  2. The `path` that identifies the account you want to use to sign the transaction.
+  1. The `payload` (transaction or transaction hash) to be signed for the target blockchain.
+  2. The `path` that identifies the account to be used to sign the transaction.
+  3. The `domain_id` as an integer that identifies the signature scheme to be used for generating the signature. Currently this can be `0` for Secp256k1 or `1` for Ed25519.
 
-For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(transaction)** using the `ethereum-1` account **(path)**.
-
+For example, a user could request a signature to `send 0.1 ETH to 0x060f1...` **(transaction)** using the `ethereum-1` account **(path)** with `0` (Secp256k1) as **domain ID**.
 
 After a request is made, the `sign` method will [yield execution](/blog/yield-resume) waiting while the [MPC signing service](#multi-party-computation-service) signs the transaction.
 
 Once the signature is ready, the contract resumes computation and returns it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
+
+:::tip
+The `sign` method currently supports both Secp256k1 and Ed25519 signature schemes which enables signing transactions for the vast majority of the well-known blockchains including Bitcoin, Ethereum, Solana, BNB chain, Ton, or Stellar. In the future, the MPC participants can add more signature schemes via the `vote_add_domains` method.  
+:::
 
 <hr class="subsection" />
 
