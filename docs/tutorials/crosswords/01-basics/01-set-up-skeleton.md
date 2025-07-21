@@ -7,9 +7,9 @@ import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Getting started
-
 In this tutorial we'll get a `testnet` account, use [NEAR CLI RS](../../../tools/cli.md) to add a key to our computer's file system, and set up the basic skeleton of a Rust smart contract.
+
+# Getting started
 
 ## Setting up Rust
 

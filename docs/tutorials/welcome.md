@@ -8,6 +8,8 @@ hide_title: true
 
 import {Container, Card} from "@site/src/components/cards";
 
+This page is a landing page for the examples and tutorials section of the NEAR documentation. It provides an overview of the available resources to help developers learn how to build on the NEAR platform, from beginner to advanced levels.
+
 <div style={{paddingRight: "1rem"}}>
 
   <div className="landing-intro">

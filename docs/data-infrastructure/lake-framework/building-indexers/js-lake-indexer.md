@@ -3,6 +3,9 @@ id: js-lake-indexer
 title: JS basic tutorial
 sidebar_label: JS basic tutorial
 ---
+This tutorial will guide you through creating a simple indexer using the JavaScript version of the NEAR Lake Framework. The indexer will print block height and number of shards to the console.
+
+# NEAR Lake Framework JavaScript Indexer Tutorial
 
 Recently we have [published a JavaScript version of the NEAR Lake Framework](https://www.npmjs.com/package/near-lake-framework) on npmjs.org
 

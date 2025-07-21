@@ -7,6 +7,8 @@ sidebar_label: Balance Changes
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+This document provides an overview of how to track balance changes on NEAR accounts, including sending tokens and viewing balance changes using the NEAR CLI and RPC endpoints.
+
 - [NEAR Account](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli)
 - Credentials for sender account stored locally by running [`near login`](/tools/near-cli#import)

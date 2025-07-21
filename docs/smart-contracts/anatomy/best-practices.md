@@ -5,6 +5,8 @@ title: "Best Practices"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+This page provides a collection of best practices for writing smart contracts on NEAR. These practices are designed to help you write secure, efficient, and maintainable code.
+
 # Best practices
 
 <Tabs className="language-tabs" groupId="code-tabs">

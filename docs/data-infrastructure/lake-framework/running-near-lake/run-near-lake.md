@@ -3,6 +3,8 @@ id: run-lake-indexer
 sidebar_label: Running Lake Indexer
 ---
 
+Learn how to set up and run a NEAR Lake Indexer, including prerequisites, network configuration, and commands for syncing from the latest or a specific block.
+
 The Lake Indexer setup consists of the following components:
 
 - AWS S3 Bucket as a storage

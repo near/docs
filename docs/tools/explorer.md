@@ -6,12 +6,7 @@ sidebar_label: Explorers
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Explorers are web applications that allows you to quickly obtain information from the blockchain through a friendly user interface:
-
-1. Check the balance of an account
-2. Search for a transactions and its receipts
-3. Check the history of interactions in an account / contract
-4. View block creations in real time
+Explorers are web applications that allow you to quickly obtain information from the blockchain through a friendly user interface. An explorer can help you to check the balance of an account, search for a transaction and its receipts, check the history of interactions in an account or contract, and view block creations in real time.
 
 ---
 

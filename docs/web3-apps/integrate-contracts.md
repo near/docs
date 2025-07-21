@@ -6,6 +6,8 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+Integrating smart contracts into your web3 application is a crucial step in building decentralized applications (dApps) on the NEAR Protocol. This guide will walk you through the process of integrating NEAR smart contracts into your frontend application, enabling you to interact with the blockchain seamlessly.
+
 To integrate NEAR to your frontend, you will leverage two tools:
 
 1. `Wallet Selector`: Enables the user to select their preferred NEAR wallet in your dApp.

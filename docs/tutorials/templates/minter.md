@@ -3,6 +3,8 @@ id: minter
 title: NFT minter
 ---
 
+In this tutorial, we will walk through how to create a simple NFT minter using Next.js and the Mintbase SDK. This minter will allow users to mint NFTs easily through a web interface.
+
 # NFT Minter
 
 [![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://minter.mintbase.xyz/)

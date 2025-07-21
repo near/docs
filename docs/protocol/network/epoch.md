@@ -7,6 +7,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
+This section explains the concept of an **epoch** in the NEAR Protocol, which is a unit of time when validators of the network remain constant. It describes how epochs are measured, their duration, and their significance in the network's operation.
+
 An **epoch** is a unit of time when validators of the network remain constant. It is measured in blocks:
 
 - Both `testnet` and `mainnet` have an epoch duration of 43,200 blocks. Ideally epochs last about 12 hours, since blocks are created every second (in reality, they take slightly longer to be created).

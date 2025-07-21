@@ -4,6 +4,8 @@ title: Introduction
 sidebar_label: Introduction
 ---
 
+This document provides an overview of NEAR Platform errors, including how they are raised, their types, and how to handle them. It covers the lifecycle of a transaction, the different types of errors that can occur, and where to find more information about each error type.
+
 <blockquote className="info">
 <strong>did you know?</strong><br /><br />
 

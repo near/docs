@@ -2,6 +2,8 @@
 sidebar_label: Token Transfer
 ---
 
+This section explains the flow of token transfers in the NEAR Protocol, detailing how tokens are moved between accounts, the role of receipts, and the importance of gas refunds in the process.
+
 # Token Transfer flow
 
 In the [previous article](near-data-flow.md) we saw an example of token transfer between accounts found in different shards. That example was simplified and missed a few steps in the process. That was intentional, to keep the article and the video short yet explanatory, in order to give you a bigger picture for understanding concepts.

@@ -2,7 +2,9 @@
 sidebar_label: NFT Indexer
 ---
 
-This tutorial ends with a working NFT indexer built on top [NEAR Lake Framework JS](/data-infrastructure/lake-framework/near-lake-framework). The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
+This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the [NEAR Lake Framework JS](/data-infrastructure/lake-framework/near-lake-framework). The indexer will listen for `nft_mint` events and print relevant data about newly minted NFTs.
+
+The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
 - `receiptId` of the [Receipt](/data-infrastructure/lake-data-structures/receipt) where the mint has happened
 - Marketplace
 - NFT owner account name

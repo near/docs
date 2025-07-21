@@ -7,6 +7,8 @@ title: Environment
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+The environment is a set of variables and functions that are available to your smart contract when it is executed. It provides information about the current execution context, such as who called the method, how much money was attached to the call, and how many computational resources are available.
+
 Every method execution has an environment associated with information such as:
 
 1. Who called the method

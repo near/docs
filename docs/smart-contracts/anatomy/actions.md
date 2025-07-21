@@ -5,6 +5,9 @@ title: Transfers & Actions
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+This page describes the different types of actions that a smart contract can perform on NEAR like transferring NEAR, calling other contracts, creating sub-accounts, and deploying contracts. It also explains how to add access keys to accounts.
+
+
 Smart contracts can perform specific `Actions` such as transferring NEAR, or calling other contracts.
 
 An important property of `Actions` is that they can be batched together when acting on the same contract. **Batched actions** act as a unit: they execute in the same [receipt](/protocol/transaction-execution#receipts--finality), and if **any fails**, then they **all get reverted**.

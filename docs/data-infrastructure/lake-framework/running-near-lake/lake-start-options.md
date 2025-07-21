@@ -3,7 +3,10 @@ sidebar_label: "Start options"
 id: lake-start-options
 ---
 
-This tutorial ends with the example code of the simple indexer built on top of [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) that can start:
+This tutorial will guide you through creating a simple indexer using the NEAR Lake Framework that can start from a specified block height, the latest final block, or the last indexed block.
+
+# NEAR Lake Framework Indexer Start Options Tutorial
+
 - from specified block height (out of the box)
   ```bash
   ./target/release/indexer mainnet from-block 65359506

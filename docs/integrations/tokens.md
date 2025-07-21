@@ -7,6 +7,8 @@ sidebar_label: Fungible Tokens
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+This document provides an overview of the NEAR fungible token standard, including how to check balances, get metadata, and perform transfers. It also covers the storage requirements for fungible tokens and how to manage storage deposits.
+
 ## Introduction {#introduction}
 
 Please see the [spec for the fungible token standard](https://nomicon.io/Standards/FungibleToken/) and an [example implementation](https://github.com/near-examples/FT) for reference details.

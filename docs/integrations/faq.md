@@ -4,6 +4,8 @@ title: Integrator FAQ
 sidebar_label: Integrator FAQ
 ---
 
+This document provides answers to frequently asked questions about integrating with the NEAR Protocol. It covers topics such as account management, validator operations, transaction processing, and more.
+
 ## Orientation
 
 ### What is a good project summary for NEAR?

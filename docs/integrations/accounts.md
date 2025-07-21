@@ -7,6 +7,8 @@ sidebar_label: Accounts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+This document provides an overview of the NEAR account model, including how to create accounts, transfer tokens, and manage access keys. It also covers implicit accounts, which are used by exchanges and other services to facilitate transactions without requiring user interaction.
+
 Please see the [documentation for accounts](/protocol/account-model) for basic information.
 
 - For exchanges, NEAR supports [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) creation which allows the creation of accounts without paying for transactions.

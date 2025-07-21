@@ -274,9 +274,13 @@ This documentation is organized into several main sections: Protocol fundamental
     const section = documentationSections[sectionKey];
     const sectionPages = documentationPages[sectionKey] || [];
     
-    let sectionContent = `## ${section.name}\n\n`;
+    let sectionContent = `## ${section.name}\n`;
+
+    const orderedPages = sectionPages.sort((a, b) => {
+      return a.url.localeCompare(b.url);
+    });
     
-    for (const page of sectionPages) {
+    for (const page of orderedPages) {
       const cleanDescription = (page.description || page.title)
         .replace(/\s*\n\s*/g, ' ')
         .trim();

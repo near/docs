@@ -6,6 +6,8 @@ title: "Intermediate concepts (cross-contract calls and more)"
 
 import accessKeys from '/docs/assets/crosswords/keys-cartoon-good--alcantara_gabriel.near--Bagriel_5_10.png';
 
+In this chapter, we will cover some intermediate concepts in smart contract development on NEAR. This includes cross-contract calls and access keys, which are essential for building more complex applications.
+
 # Intermediate concepts
 
 This chapter will go a bit faster than the previous ones.

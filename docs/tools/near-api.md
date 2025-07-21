@@ -8,14 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github, Language} from "@site/src/components/codetabs"
 
-The NEAR API is a collection of language-specific SDKs that allow developers to interact with the NEAR blockchain from both frontend and backend applications. These libraries enable you to:
-
-- Invoke `view` and `call` functions on deployed smart contracts
-- Query on-chain data such as account state, keys, balance
-- Create and manage NEAR accounts
-- Transfer tokens, including native NEAR, Fungible Tokens, Non-Fungible Tokens
-- Sign transactions/meta-transactions/messages and broadcasting them to the network
-- Deploy smart contracts
+The NEAR API is a collection of language-specific SDKs that allow developers to interact with the NEAR blockchain from both frontend and backend applications. It covers how to install the API, connect to the NEAR network, manage keys, and perform various operations such as querying accounts, transferring tokens, and deploying smart contracts.
 
 Our API is available in multiple languages, including:
 - JavaScript/TypeScript:

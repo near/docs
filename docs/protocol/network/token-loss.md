@@ -4,6 +4,8 @@ title: Avoiding Token Loss
 sidebar_label: Avoiding Token Loss
 ---
 
+NEAR Protocol is designed to be secure and user-friendly, but there are still scenarios where users can lose their tokens. This document outlines the common causes of token loss and how to avoid them.
+
 :::warning
 Careful! Losing tokens means losing money!
 :::
