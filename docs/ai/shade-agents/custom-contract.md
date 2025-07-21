@@ -28,7 +28,7 @@ How you compile the contract depends on your operating system.
 
 <TabItem value="linux" label="Linux">
 
-    For Linux, you can compile the contract directly with [cargo near](https://github.com/near/cargo-near/releases/tag/cargo-near-v0.16.1).
+    For Linux, you can compile the contract directly with [cargo near](https://github.com/near/cargo-near/releases/latest).
 
 
     ```bash
@@ -48,9 +48,6 @@ How you compile the contract depends on your operating system.
 </TabItem>
 
 </Tabs>
-
-
-
 
 ---
 

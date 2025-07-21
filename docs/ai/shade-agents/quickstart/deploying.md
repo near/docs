@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 In this section, we'll walk you through deploying a Shade Agent. The Shade Agent Framework abstracts the complexities of creating a agent by removing TEE specific code and handling the deployment of the agent contract under hood.
 
-The [template](https://github.com/NearDeFi/shade-agent-sandbox-template) we're using is a simple Shade Agent built with Hono and written in TypeScript that acts as a verifiable ETH price oracle. It fetches the price of Eth from two different APIs, takes the average, and then pushes the price to an Ethereum contract. 
+The [template](https://github.com/NearDeFi/shade-agent-template) we're using is a simple Shade Agent built with Hono and written in TypeScript that acts as a verifiable ETH price oracle. It fetches the price of Eth from two different APIs, takes the average, and then pushes the price to an Ethereum contract. 
 
 We'll cover two deployment scenarios:
 1. **Local Development**: Running the agent locally for rapid testing and development.
@@ -22,11 +22,11 @@ On the [next page](./components.md), you'll see how to edit this agent for your 
 
 ## Prerequisites
 
-- First, `clone` the [template repository](https://github.com/NearDeFi/shade-agent-sandbox-template).
+- First, `clone` the [template](https://github.com/NearDeFi/shade-agent-template).
 
   ```bash
-  git clone https://github.com/NearDeFi/shade-agent-sandbox-template shade-agent
-  cd shade-agent
+  git clone https://github.com/NearDeFi/shade-agent-template
+  cd shade-agent-template
   ```
 
 - Install NEAR and Shade Agent tooling:
@@ -181,6 +181,6 @@ npm i
 npm run dev
 ```
 
-To use the frontend with your Phala deployment change the `API_URL` to Phala URL in your [config.js](https://github.com/NearDeFi/shade-agent-sandbox-template/blob/migrate/frontend/src/config.js) file.
+To use the frontend with your Phala deployment change the `API_URL` to Phala URL in your [config.js](https://github.com/NearDeFi/shade-agent-template/blob/main/frontend/src/config.js) file.
 
 <SigsSupport />

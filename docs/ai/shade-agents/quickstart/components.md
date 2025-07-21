@@ -7,7 +7,7 @@ sidebar_label: Key Components
 import {Github} from "@site/src/components/codetabs"
 import { SigsSupport } from '@site/src/components/sigsSupport';
 
-In this section, we'll explore the main components of the [quickstart template](https://github.com/NearDeFi/shade-agent-sandbox-template/tree/migrate) and how you can modify it to build your own agent.
+In this section, we'll explore the main components of the [quickstart template](https://github.com/NearDeFi/shade-agent-template) and how you can modify it to build your own agent.
 
 ---
 
@@ -16,20 +16,20 @@ In this section, we'll explore the main components of the [quickstart template](
 The template we're using is a simple Shade Agent built with Hono and written in TypeScript that acts as a verifiable ETH price oracle. It takes prices from two different APIs, takes the average, and then pushes the price to an Ethereum contract. The template also comes with a frontend to make it easier to interact with the Shade Agent.
 
 The project has three different APIs:
-1) [**agentAccount**](https://github.com/NearDeFi/shade-agent-sandbox-template/blob/migrate/src/routes/agentAccount.ts) - This API simply fetches the agent's NEAR account Id and its balance by using the `agentAccountId` and `agent("getBalance")` functions from the `shade-agent-js` library.
-2) [**ethAccount**](https://github.com/NearDeFi/shade-agent-sandbox-template/blob/migrate/src/routes/ethAccount.ts) - This API returns the `Ethereum Sepolia account` that the Shade Agent uses to update the price of Ethereum in the Sepolia contract. This API is used so the user knows which account to fund for gas.
-3) **transaction** - This is where the core logic of the agent is defined. When this API is called, the agent will build and sign a transaction. We'll look deeper into this API route in the next part.
+1) [**agentAccount**](https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/agentAccount.ts) - This API simply fetches the agent's NEAR account Id and its balance by using the `agentAccountId` and `agent("getBalance")` functions from the `shade-agent-js` library.
+2) [**ethAccount**](https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/ethAccount.ts) - This API returns the `Ethereum Sepolia account` that the Shade Agent uses to update the price of Ethereum in the Sepolia contract. This API is used so the user knows which account to fund for gas.
+3) [**transaction**](https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts) - This is where the core logic of the agent is defined. When this API is called, the agent will build and sign a transaction. We'll look deeper into this API route in the next part.
 
 ---
 
 ## Signing Transactions
 
-In the [transaction API Route](https://github.com/NearDeFi/shade-agent-sandbox-template/blob/migrate/src/routes/ethAccount.ts), we can see how we use the `requestSignature` function from the `shade-agent-js` library so the Shade Agent can sign a multichain transaction.
+In the [transaction API Route](https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/ethAccount.ts), we can see how we use the `requestSignature` function from the `shade-agent-js` library so the Shade Agent can sign a multichain transaction.
 
 In this example, we're signing a transaction to call an Ethereum contract to update the stored price of ETH. First, we retrieve the price of ETH (in this example, the function queries two different APIs and calculates the average).
 
 <Github fname="transaction.ts" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-sandbox-template/blob/migrate/src/routes/transaction.ts#L25"
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts#L25"
     start="25" end="25" />
 
 Next, we build the transaction and `transaction payload` to be signed. To do this, we're using the `chainsig.js library`. 
@@ -39,13 +39,13 @@ Using this library, we:
 3. `Build the transaction and the transaction payload` by inputting the derived address, the target Ethereum smart contract, and the data.
 
 <Github fname="transaction.ts" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-sandbox-template/blob/migrate/src/routes/transaction.ts#L64-L80"
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts#L64-L80"
     start="64" end="80" />
 
 Once we have the payload (also known as the hash), we can call the `requestSignature` function to sign the transaction.
 
 <Github fname="transaction.ts" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-sandbox-template/blob/migrate/src/routes/transaction.ts#L37-L40"
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts#L37-L40"
     start="37" end="40" />
 
 The result is the `signature`.
@@ -53,18 +53,18 @@ The result is the `signature`.
 We then attach the signature to the Ethereum transaction and broadcast it to the target network.
 
 <Github fname="transaction.ts" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-sandbox-template/blob/migrate/src/routes/transaction.ts#L44-L50"
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts#L44-L50"
     start="44" end="50" />
 
 ---
 
 ## Modifying this Example
 
-The simplest way to create your own Shade Agent is to modify the example template and alter the transaction payload being signed in the [transaction.ts](https://github.com/NearDeFi/shade-agent-sandbox-template/blob/migrate/src/routes/transaction.ts) API route. 
+The simplest way to create your own Shade Agent is to modify the example template and alter the transaction payload being signed in the [transaction.ts](https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts) API route. 
 
 The `requestSignature` function supports signing for any blockchain that uses the `secp256k1` and `ed25519`signature scheme (Bitcoin, Ethereum, Solana, Sui, Doge, Cosmos, etc.). This function supports any arbitrary payload, allowing you to send multiple different transaction payloads through this function. By default, the `requestSignature` function signs for the `secp256k1` scheme. To switch to `ed25519`, specify the `keyType` in the arguments of the call as `Eddsa`.
 
-In this example, we're using the [chainsig.js library](https://neardefi.github.io/chainsig.js/), which supports transaction building for several different chains. By defining a different [chain adapter](https://github.com/NearDeFi/shade-agent-sandbox-template/blob/migrate/src/utils/ethereum.ts#L42-L51) and setting a different RPC provider, you can easily start building transactions for other chains the library supports.
+In this example, we're using the [chainsig.js library](https://neardefi.github.io/chainsig.js/), which supports transaction building for several different chains. By defining a different [chain adapter](https://github.com/NearDeFi/shade-agent-template/blob/main/src/utils/ethereum.ts#L42-L51) and setting a different RPC provider, you can easily start building transactions for other chains the library supports.
 
 Review our [chain signature docs](../../../chain-abstraction/chain-signatures/implementation.md) for building transactions to learn how to integrate different chains. Note that step 3 of requesting a signature differs here; instead, we use the `requestSignature` function from the `shade-agent-js`.
 

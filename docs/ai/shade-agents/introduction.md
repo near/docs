@@ -97,7 +97,7 @@ Within agent gated functions, we can implement an additional layer of security t
 
 In most cases you will develop your agent using the [quickstart template](./quickstart/deploying.md). This template is designed to enable you to sign transactions from your agent on any blockchain. In some cases, you may want to deploy a [custom agent contract](./custom-contract.md), which allows for more customizability inside of the agent contract, allows you to restrict your agent to certain actions, and is used for building Shade Agents that just interact with NEAR.
 
-In very rare cases, you may want to implement niche features that cannot be done with the `shade-agent-cli` or `shade-agent-api`. In such cases, you can develop a Shade Agent without these tools. Here is an [example repository](https://github.com/NearDeFi/shade-agent-template). 
+In very rare cases, you may want to implement niche features that cannot be done with the `shade-agent-cli` or `shade-agent-api`. In such cases, you can develop a Shade Agent without these tools. Here is an [example repository](https://github.com/NearDeFi/shade-agent-no-api). 
 
 ---
 
