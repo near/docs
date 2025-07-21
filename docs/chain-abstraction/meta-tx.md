@@ -1,7 +1,6 @@
 ---
 id: meta-transactions
 title: Meta Transactions
-sidebar_label: NEP-366
 ---
 
 [NEP-366](https://github.com/near/NEPs/pull/366) introduced the concept of meta transactions to Near Protocol. This feature allows users to execute transactions on NEAR without owning any gas or tokens. In order to enable this, users construct and sign transactions off-chain. A third party (the relayer) is used to cover the fees of submitting and executing the transaction.
@@ -43,7 +42,13 @@ as body is sent to `FT`. There, the `ft_transfer` call finally executes.
 
 ## Relayer
 
-Meta transactions only work with a [relayer](relayers.md), an off-chain service. Think of it as a server that accepts a `SignedDelegateAction`, does some checks on them and eventually forwards it inside a transaction to the network.
+Meta transactions only work with an off-chain service known as `relayer`. Think of it as a server that accepts a `SignedDelegateAction`, does some checks on them and eventually forwards it inside a transaction to the network.
+
+:::tip
+
+Want to build a relayer? Check out the [Relayer Guide](meta-transactions.md)
+
+:::
 
 A relayer may choose to offer their service for free but that's not going to be
 financially viable long-term. But they could easily have the user pay using
@@ -67,6 +72,31 @@ enough once the meta transaction executes. The relayer could waste NEAR gas
 without compensation if Alice somehow reduces her $FT balance in just the right
 moment. Some level of trust between the relayer and its user is therefore
 required.
+
+<details>
+<summary> Technical Details </summary>
+
+Technically, the end user (client) creates a `SignedDelegateAction` that contains the data necessary to construct a `Transaction`, signs the `SignedDelegateAction` using their key, and send it to  the relayer service.
+
+When the request is received, the relayer uses its own key to sign a `Transaction` using the fields in the `SignedDelegateAction` as input to create a `SignedTransaction`.
+
+The `SignedTransaction` is then sent to the network via RPC call, and the result is sent back to the client. The `Transaction` is executed in such a way that the relayer pays the GAS fees, but all actions are executed as if the user had sent the transaction.
+</details>
+
+<details>
+<summary> Why using a relayer? </summary>
+
+## Why use a Relayer?
+
+There are multiple reasons to use a relayer:
+1. Your users are new to NEAR and don't have any gas to cover transactions
+2. Your users have an account on NEAR, but only have a Fungible Token Balance. They can now use the FT to pay for gas
+3. As an enterprise or a large startup you want to seamlessly onboard your existing users onto NEAR without needing them to worry about gas costs and seed phrases
+4. As an enterprise or large startup you have a user base that can generate large spikes of user activity that would congest the network. In this case, the relayer acts as a queue for low urgency transactions
+5. In exchange for covering the gas fee costs, relayer operators can limit where users spend their assets while allowing users to have custody and ownership of their assets
+6. Capital Efficiency: Without relayer if your business has 1M users they would have to be allocated 0.25 NEAR to cover their gas costs totalling 250k NEAR. However, only ~10% of the users would actually use the full allowance and a large amount of the 250k NEAR is just sitting there unused. So using the relayer, you can allocate 50k NEAR as a global pool of capital for your users, which can refilled on an as needed basis. 
+
+</details>
 
 ---
 
