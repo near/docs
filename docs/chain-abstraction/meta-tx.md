@@ -46,10 +46,13 @@ as body is sent to `FT`. There, the `ft_transfer` call finally executes.
 
 ## Relayer
 
-Meta transactions only work with a [relayer](relayers.md), an off-chain service. Think of it as a server that accepts a `SignedDelegateAction`, does some checks on them and eventually forwards it inside a transaction to the network.
+Meta transactions only work with an off-chain service known as `relayer`. Think of it as a server that accepts a `SignedDelegateAction`, does some checks on them and eventually forwards it inside a transaction to the network.
 
 :::tip
-Want to build a relayer? Check out the [Relayer Guide](meta-transactions.md).
+
+Want to build a relayer? Check out the [Relayer Guide](meta-transactions.md)
+
+:::
 
 A relayer may choose to offer their service for free but that's not going to be
 financially viable long-term. But they could easily have the user pay using
