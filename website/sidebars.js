@@ -256,6 +256,7 @@ const sidebar = {
         'primitives/oracles',
         'primitives/dao',
         'primitives/dex',
+        'primitives/did',
       ],
     },
     {
@@ -320,7 +321,7 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'First Steps',
+      label: 'Getting Started',
       collapsed: true,
       customProps: {
         icon: '/img/icons/near.svg',
@@ -332,91 +333,12 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Learn by Building',
-      collapsed: true,
-      customProps: {
-        icon: '/img/icons/build.svg',
-      },
-      items: [
-        {
-          "⭐ Master NEAR: Build a Complete Auction App": [
-            'tutorials/auction/introduction',
-            {
-              'Smart Contracts 101': [
-                'tutorials/auction/basic-auction',
-                'tutorials/auction/sandbox-testing',
-                'tutorials/auction/deploy',
-              ],
-            },
-            {
-              'Frontends 101': [
-                'tutorials/auction/creating-a-frontend',
-                'tutorials/auction/indexing-historical-data',
-              ],
-            },
-            {
-              'Using Primitives': [
-                'tutorials/auction/winning-an-nft',
-                'tutorials/auction/bidding-with-fts',
-                'tutorials/auction/updating-the-frontend',
-              ],
-            },
-            'tutorials/auction/auction-factory',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Build a Crossword Game',
-          items: [
-            {
-              type: 'category',
-              label: 'Basics',
-              items: [
-                'tutorials/crosswords/basics/overview',
-                'tutorials/crosswords/basics/set-up-skeleton',
-                'tutorials/crosswords/basics/add-functions-call',
-                'tutorials/crosswords/basics/hashing-and-unit-tests',
-                'tutorials/crosswords/basics/simple-frontend',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Beginner',
-              items: [
-                'tutorials/crosswords/beginner/overview',
-                'tutorials/crosswords/beginner/collections',
-                'tutorials/crosswords/beginner/structs-enums',
-                'tutorials/crosswords/beginner/actions',
-                'tutorials/crosswords/beginner/adding-a-puzzle',
-                'tutorials/crosswords/beginner/logging-in',
-                'tutorials/crosswords/beginner/logging-in-implementation',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Intermediate',
-              items: [
-                'tutorials/crosswords/intermediate/overview',
-                'tutorials/crosswords/intermediate/access-key-solution',
-                'tutorials/crosswords/intermediate/use-seed-phrase',
-                'tutorials/crosswords/intermediate/linkdrop',
-                'tutorials/crosswords/intermediate/cross-contract-calls',
-                'tutorials/crosswords/intermediate/base64vecu8',
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Chain Abstraction & Multi-Chain',
+      label: 'Multi-Chain',
       collapsed: true,
       customProps: {
         icon: '/img/icons/multichain.svg',
       },
       items: [
-        'chain-abstraction/meta-transactions-relayer',
         {
           type: 'category',
           label: 'Controlling NEAR Accounts',
@@ -439,31 +361,6 @@ const sidebar = {
           ],
         },
       ],
-    },
-    {
-      type: 'category',
-      label: 'Frontend Guides',
-      collapsed: true,
-      customProps: {
-        icon: '/img/icons/app.svg',
-      },
-      items: [
-        'tutorials/examples/frontend-multiple-contracts',
-        'tutorials/templates/marketplace',
-        'tutorials/templates/minter',
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Tokens',
-      collapsed: true,
-      customProps: {
-        icon: '/img/icons/token.svg',
-      },
-      items: [
-        'data-infrastructure/lake-framework/building-indexers/nft-indexer',
-        'data-infrastructure/lake-framework/building-indexers/python-nft-indexer',
-      ]
     },
     {
       type: 'category',
@@ -516,16 +413,79 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Data Infrastructure',
+      label: 'Frontend Guides',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/app.svg',
+      },
+      items: [
+        'tutorials/examples/frontend-multiple-contracts',
+        'tutorials/templates/marketplace',
+        'tutorials/templates/minter',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Backend Guides',
       collapsed: true,
       customProps: {
         icon: '/img/icons/database.svg',
       },
       items: [
+        'chain-abstraction/meta-transactions-relayer',
         'data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
         'data-infrastructure/lake-framework/building-indexers/python-lake-indexer',
       ],
     },
+    {
+      type: 'category',
+      label: 'Tokens',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/token.svg',
+      },
+      items: [
+        'data-infrastructure/lake-framework/building-indexers/nft-indexer',
+        'data-infrastructure/lake-framework/building-indexers/python-nft-indexer',
+      ]
+    },
+    {
+      type: 'html',
+      value: '<hr/>',
+    },
+    {
+      type: 'category',
+      label: 'Mastering NEAR',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/build.svg',
+      },
+      items: [
+        'tutorials/auction/introduction',
+        {
+          'Smart Contracts 101': [
+            'tutorials/auction/basic-auction',
+            'tutorials/auction/sandbox-testing',
+            'tutorials/auction/deploy',
+          ],
+        },
+        {
+          'Frontends 101': [
+            'tutorials/auction/creating-a-frontend',
+            'tutorials/auction/indexing-historical-data',
+          ],
+        },
+        {
+          'Using Primitives': [
+            'tutorials/auction/winning-an-nft',
+            'tutorials/auction/bidding-with-fts',
+            'tutorials/auction/updating-the-frontend',
+          ],
+        },
+        'tutorials/auction/auction-factory',
+      ],
+    },
+
   ],
   tools: [
     'tools/welcome',
