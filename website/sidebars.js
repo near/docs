@@ -35,7 +35,12 @@ const sidebar = {
           type: 'category',
           label: 'Transactions',
           link: { type: 'doc', id: 'protocol/transactions' },
-          items: ['protocol/transaction-anatomy', 'protocol/gas', 'protocol/transaction-execution'],
+          items: [
+            'protocol/transaction-anatomy',
+            'protocol/gas',
+            'protocol/transaction-execution',
+            'chain-abstraction/meta-transactions',
+          ],
         },
         {
           'Data Flow': [
@@ -90,13 +95,6 @@ const sidebar = {
           ],
         },
         'chain-abstraction/data-availability',
-        {
-          'Meta Transactions': [
-            'chain-abstraction/meta-transactions',
-            'chain-abstraction/relayers',
-            'chain-abstraction/meta-transactions-relayer',
-          ],
-        },
       ],
     },
     {
@@ -251,40 +249,8 @@ const sidebar = {
       },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
-        {
-          type: 'category',
-          label: 'Fungible Tokens (FT)',
-          items: [
-            'primitives/ft',
-            {
-              type: 'link',
-              label: 'Tutorial: Zero to Hero (Rust) ↗',
-              href: '/tutorials/fts/introduction',
-            },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Non Fungible Tokens (NFT)',
-          items: [
-            'primitives/nft',
-            {
-              type: 'link',
-              label: 'Tutorial: Minting NFTs ↗',
-              href: '/tutorials/nfts/minting-nfts',
-            },
-            {
-              type: 'link',
-              label: 'Tutorial: Zero to Hero (JS) ↗',
-              href: '/tutorials/nfts/js/introduction',
-            },
-            {
-              type: 'link',
-              label: 'Tutorial: Zero to Hero (Rust) ↗',
-              href: '/tutorials/nfts/introduction',
-            },
-          ],
-        },
+        'primitives/ft',
+        'primitives/nft',
         'protocol/network/staking',
         'primitives/linkdrop',
         'primitives/oracles',
@@ -306,14 +272,11 @@ const sidebar = {
           label: 'Introduction',
           href: '/data-infrastructure/what-is',
         },
-        'tools/explorer',
-        'tools/ecosystem-apis/fastnear',
-        'tools/indexing',
-        'data-infrastructure/indexers',
         'data-infrastructure/data-apis',
         'data-infrastructure/big-query',
         {
           'Lake Framework': [
+            'data-infrastructure/indexers',
             'data-infrastructure/lake-framework/near-lake-framework',
             'data-infrastructure/lake-framework/near-lake',
             'data-infrastructure/lake-framework/near-lake-state-changes-indexer',
@@ -327,6 +290,7 @@ const sidebar = {
             },
             {
               'Lake Data Structures': [
+                'data-infrastructure/lake-framework/building-indexers/primitives',
                 'data-infrastructure/lake-data-structures/toc',
                 'data-infrastructure/lake-data-structures/block',
                 'data-infrastructure/lake-data-structures/chunk',
@@ -371,11 +335,11 @@ const sidebar = {
       label: 'Learn by Building',
       collapsed: true,
       customProps: {
-        icon: '/img/icons/near.svg',
+        icon: '/img/icons/build.svg',
       },
       items: [
         {
-          "Mastering Web3 Apps": [
+          "⭐ Master NEAR: Build a Complete Auction App": [
             'tutorials/auction/introduction',
             {
               'Smart Contracts 101': [
@@ -446,6 +410,38 @@ const sidebar = {
     },
     {
       type: 'category',
+      label: 'Chain Abstraction & Multi-Chain',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/multichain.svg',
+      },
+      items: [
+        'chain-abstraction/meta-transactions-relayer',
+        {
+          type: 'category',
+          label: 'Controlling NEAR Accounts',
+          link: { type: 'doc', id: 'tutorials/controlling-near-accounts/introduction' },
+          items: [
+            'tutorials/controlling-near-accounts/introduction',
+            'tutorials/controlling-near-accounts/setup',
+            'tutorials/controlling-near-accounts/transfer',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Cross-Chain DAO Governance',
+          link: { type: 'doc', id: 'tutorials/multichain-dao/introduction' },
+          items: [
+            'tutorials/multichain-dao/introduction',
+            'tutorials/multichain-dao/request',
+            'tutorials/multichain-dao/signing',
+            'tutorials/multichain-dao/voting',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'Frontend Guides',
       collapsed: true,
       customProps: {
@@ -455,17 +451,27 @@ const sidebar = {
         'tutorials/examples/frontend-multiple-contracts',
         'tutorials/templates/marketplace',
         'tutorials/templates/minter',
-        'tutorials/templates/blog',
       ]
     },
     {
       type: 'category',
-      label: 'Contract guides',
+      label: 'Tokens',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/token.svg',
+      },
+      items: [
+        'data-infrastructure/lake-framework/building-indexers/nft-indexer',
+        'data-infrastructure/lake-framework/building-indexers/python-nft-indexer',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Contract Guides',
       collapsed: true,
       customProps: {
         icon: '/img/icons/contract.svg',
       },
-      link: { type: 'doc', id: 'tutorials/examples/count-near' },
       items: [
         'tutorials/examples/donation',
         'tutorials/examples/coin-flip',
@@ -474,7 +480,7 @@ const sidebar = {
         'tutorials/examples/advanced-xcc',
         'tutorials/examples/update-contract-migrate-state',
         {
-          "Build an FT Contract from Scratch": [
+          "Build a FT Contract from Scratch": [
             'tutorials/fts/introduction',
             'tutorials/fts/predeployed-contract',
             'tutorials/fts/skeleton',
@@ -486,7 +492,7 @@ const sidebar = {
           ]
         },
         {
-          "Build an NFT Contract from Scratch": [
+          "Build a NFT Contract from Scratch": [
             'tutorials/nfts/introduction',
             {
               Basic: [
@@ -505,38 +511,6 @@ const sidebar = {
             'tutorials/nfts/royalty',
             'tutorials/nfts/series',
           ]
-        },      
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Multi-Chain Projects',
-      collapsed: true,
-      customProps: {
-        icon: '/img/icons/multichain.svg',
-      },
-      link: { type: 'doc', id: 'tutorials/controlling-near-accounts/introduction' },
-      items: [
-        {
-          type: 'category',
-          label: 'Controlling NEAR Accounts',
-          link: { type: 'doc', id: 'tutorials/controlling-near-accounts/introduction' },
-          items: [
-            'tutorials/controlling-near-accounts/introduction',
-            'tutorials/controlling-near-accounts/setup',
-            'tutorials/controlling-near-accounts/transfer',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Multi-Chain DAO Governance',
-          link: { type: 'doc', id: 'tutorials/multichain-dao/introduction' },
-          items: [
-            'tutorials/multichain-dao/introduction',
-            'tutorials/multichain-dao/request',
-            'tutorials/multichain-dao/signing',
-            'tutorials/multichain-dao/voting',
-          ],
         },
       ],
     },
@@ -547,19 +521,9 @@ const sidebar = {
       customProps: {
         icon: '/img/icons/database.svg',
       },
-
-      link: { type: 'doc', id: 'data-infrastructure/lake-framework/building-indexers/primitives' },
       items: [
-        'data-infrastructure/lake-framework/building-indexers/primitives',
-        {
-          type: 'link',
-          label: 'NEAR Lake Primitives',
-          href: 'https://near.github.io/near-lake-framework-js/',
-        },
         'data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
         'data-infrastructure/lake-framework/building-indexers/python-lake-indexer',
-        'data-infrastructure/lake-framework/building-indexers/nft-indexer',
-        'data-infrastructure/lake-framework/building-indexers/python-nft-indexer',
       ],
     },
   ],
