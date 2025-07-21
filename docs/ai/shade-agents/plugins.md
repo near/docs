@@ -7,5 +7,5 @@ sidebar_label: Plugins
 Docs for integrating LLMs and Twitter APIs into your Shade Agent will be coming soon.
 
 In the meantime, please feel free to check out these links:
-- An SDK for running [LLMs in TEEs](https://github.com/nearai/private-ml-sdk)
+- An SDK for running [LLMs in TEEs](https://github.com/nearai/private-ml-sdk) and [hosted LLMs running in TEEs](https://openrouter.ai/provider/phala)
 - An example using a [Twitter API](https://github.com/NearDeFi/shade-agent-basednames)

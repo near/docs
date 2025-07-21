@@ -112,17 +112,13 @@ const sidebar = {
             "ai/shade-agents/introduction",
             "ai/shade-agents/examples",
             {
-              "Sandbox Agents": [
-                "ai/shade-agents/sandbox/sandbox-deploying",
-                "ai/shade-agents/sandbox/sandbox-components",
+              "Quickstart": [
+                "ai/shade-agents/quickstart/deploying",
+                "ai/shade-agents/quickstart/components",
               ]
             },
-            {
-              "Production Agents": [
-                "ai/shade-agents/production/production-deploying",
-                "ai/shade-agents/production/production-components",
-              ]
-            },
+            "ai/shade-agents/custom-agent-contract",
+            "ai/shade-agents/security",
             "ai/shade-agents/plugins",
           ],
         },

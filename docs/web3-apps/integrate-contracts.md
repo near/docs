@@ -311,7 +311,7 @@ By calling the `getBalance` method the user can get the balance of a given accou
 
 ## Get Access Keys
 
-The final method the the wallet selector hooks exposes is `getAccessKeys` which is used to return an object of all the access keys on the account that is currently logged in.
+The final method the wallet selector hooks exposes is `getAccessKeys` which is used to return an object of all the access keys on the account that is currently logged in.
 
 <Language value="js" language="js">
 ```js
