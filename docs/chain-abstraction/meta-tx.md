@@ -3,11 +3,7 @@ id: meta-transactions
 title: Meta Transactions
 ---
 
-[NEP-366](https://github.com/near/NEPs/pull/366) introduced the concept of meta
-transactions to Near Protocol. This feature allows users to execute transactions
-on NEAR without owning any gas or tokens. In order to enable this, users
-construct and sign transactions off-chain. A third party (the relayer) is used
-to cover the fees of submitting and executing the transaction.
+[NEP-366](https://github.com/near/NEPs/pull/366) introduced the concept of meta transactions to Near Protocol. This feature allows users to execute transactions on NEAR without owning any gas or tokens. In order to enable this, users construct and sign transactions off-chain. A third party (the relayer) is used to cover the fees of submitting and executing the transaction.
 
 ---
 

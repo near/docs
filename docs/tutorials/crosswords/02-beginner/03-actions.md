@@ -10,9 +10,10 @@ import transferNEAR from '/docs/assets/crosswords/transfer-brand-blue--qiqi04.ne
 import yoctoNEAR from '/docs/assets/crosswords/yoctoNEAR-magnifying--jrbemint.near--JrbeMad.jpg';
 import signerPredecessorCurrent from '/docs/assets/crosswords/predecessor-signer-current--yasuoarts.near--YasuoArt69.png';
 
-# Actions (including sending NEAR)
 
 We're going to introduce a new Action: `Transfer`. In this chapter, we'd like the first person to solve the crossword puzzle to earn some prize money, sent in NEAR.
+
+# Actions (including sending NEAR)
 
 <figure>
     <img src={transferNEAR} alt="Two hands exchanging a coin emblazoned with the NEAR Protocol logo. Art created by qiqi04.near" width="400"/>

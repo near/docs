@@ -6,13 +6,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-Coin Flip is a game where the player tries to guess the outcome of a coin flip. It is one of the simplest contracts implementing random numbers.
+This example demonstrates a simple coin flip game on the NEAR blockchain, where players can guess the outcome of a coin flip and earn points. It includes both the smart contract and the frontend components.
 
 ![img](/docs/assets/examples/coin-flip.png)
 
 ---
 
 ## Starting the Game
+Coin Flip is a game where the player tries to guess the outcome of a coin flip. It is one of the simplest contracts implementing random numbers.
+
 You have two options to start the example:
 1. **Recommended:** use the app through Gitpod (a web-based interactive environment)
 2. Clone the project locally.

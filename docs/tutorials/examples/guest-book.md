@@ -8,6 +8,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
+This example demonstrates how to create a simple guest book application on the NEAR blockchain, allowing users to sign messages and optionally attach a small amount of NEAR as a tip. It includes both the smart contract and the frontend components.
+
 Our Guest Book example is a simple app composed by two main components:
 
 1. A smart contract that stores messages from users, allowing to attach money to them.

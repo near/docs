@@ -3,6 +3,8 @@ id: near-lake-state-changes-indexer
 title: NEAR Lake Indexer Tutorial
 ---
 
+This tutorial will guide you through building a simple indexer using the NEAR Lake Framework. The indexer will listen for `StateChange` events and print relevant data about account changes.
+
 :::note Source code for the tutorial
 
 [`near-examples/near-lake-accounts-watcher`](https://github.com/near-examples/near-lake-accounts-watcher/tree/0.2.0): source code for a video tutorial on how to use the NEAR Lake Framework

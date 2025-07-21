@@ -8,6 +8,8 @@ import {Github} from "@site/src/components/codetabs"
 import bookPagination from '/docs/assets/crosswords/paging-through-hashes-swing--pierced_staggg.near--pierced_stag.jpg';
 import guardsAroundContract from '/docs/assets/crosswords/guards-contract-permissions--connoisseur_dane.near--connoisseurdane.png';
 
+In this chapter, we will add a new crossword puzzle to our smart contract. We will provide the necessary clues and answers, deploy the updated contract, and ensure that the new puzzle is correctly added to the collection.
+
 # Using collections
 
 As mentioned in the previous chapter, the [online Rust Book](https://doc.rust-lang.org/stable/book) is a great reference for folks getting started with Rust, but there are concepts that differ when we're dealing with the blockchain. One of these differences is the use of collections.

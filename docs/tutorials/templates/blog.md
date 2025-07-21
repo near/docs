@@ -3,6 +3,8 @@ id: blog
 title: Onchain Blog
 ---
 
+Blogchain is a template for creating onchain blogs using Mintbase. It allows users to deploy their own blog contracts and mint blog posts as NFTs, ensuring content is decentralized and immutable.
+
 # Blogchain
 
 [![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://blogchain.mintbase.xyz/)

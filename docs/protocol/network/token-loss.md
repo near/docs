@@ -4,6 +4,8 @@ title: Avoiding Token Loss
 sidebar_label: Avoiding Token Loss
 ---
 
+This document outlines the common errors that can lead to token loss and how to avoid them.
+
 :::warning
 Careful! Losing tokens means losing money!
 :::

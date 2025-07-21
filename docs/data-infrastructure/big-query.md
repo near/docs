@@ -4,6 +4,10 @@ title: BigQuery Public Dataset
 sidebar_label: BigQuery
 ---
 
+This document provides an overview of the  BigQuery public dataset that allows users to query historical on-chain data from the NEAR Protocol. It includes setup instructions, example queries, and information about the available data structures.
+
+# NEAR Public Lakehouse
+
 Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data. This includes:
 
 - **Users**: create queries to track NEAR assets, monitor transactions, or analyze on-chain events at a massive scale.

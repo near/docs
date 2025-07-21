@@ -7,6 +7,8 @@ sidebar_label: Implicit Accounts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+This document provides an overview of implicit accounts in the NEAR Protocol, including how to create them, use them for transactions, and manage them effectively. Implicit accounts are particularly useful for exchanges and other services that need to facilitate transactions without requiring user interaction.
+
 ## Background {#background}
 
 Implicit accounts work similarly to Bitcoin/Ethereum accounts.

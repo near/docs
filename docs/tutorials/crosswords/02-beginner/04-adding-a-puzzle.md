@@ -11,6 +11,8 @@ import blankCrossword from '/docs/assets/crosswords/chapter-2-crossword-blank.pn
 import teachingDeployment from '/docs/assets/crosswords/teaching-just-teacher--herogranada.near--GranadaHero.jpeg';
 import recreatingSubaccount from '/docs/assets/crosswords/erase-recreate-subaccount--3one9.near--3one92.gif';
 
+In this chapter, we will add a new crossword puzzle to our smart contract. We will provide the necessary clues and answers, deploy the updated contract, and ensure that the new puzzle is correctly added to the collection.
+
 # Adding a puzzle
 
 We're going to make a new puzzle, which means we need to provide the smart contract with a set of clues and info about the answers.
