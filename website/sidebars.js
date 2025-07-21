@@ -458,7 +458,7 @@ const sidebar = {
       label: 'Mastering NEAR',
       collapsed: true,
       customProps: {
-        icon: '/img/icons/build.svg',
+        icon: '/img/icons/mastering-near.svg',
       },
       items: [
         'tutorials/auction/introduction',
