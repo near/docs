@@ -1,6 +1,7 @@
 ---
 id: what-is
 title: What is Data Infrastructure?
+description: "Overview of NEAR's data infrastructure solutions including Data APIs, BigQuery Public Dataset, and NEAR Lake for accessing and monitoring on-chain data."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

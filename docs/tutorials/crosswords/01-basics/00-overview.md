@@ -1,8 +1,9 @@
 ---
 id: overview
 sidebar_position: 1
-sidebar_label: "Crossword Game Overview"
-title: "Basics overview laying out what will be accomplished in this first section."
+sidebar_label: Crossword Game Overview
+title: Basics overview laying out what will be accomplished in this first section.
+description: "This first chapter of the crossword puzzle tutorial will introduce fundamental concepts to smart contract development in a beginner-friendly way. By the end of this chapter you'll have a proof-of-concept contract that can be interacted with via NEAR CLI and a simple frontend that uses the near-api-js library."
 ---
 
 import basicCrossword from '/docs/assets/crosswords/basics-crossword.jpg';

@@ -1,6 +1,7 @@
 ---
 id: run-lake-indexer
 sidebar_label: Running Lake Indexer
+description: "Learn how to set up and run a NEAR Lake Indexer, including prerequisites, network configuration, and commands for syncing from the latest or a specific block."
 ---
 
 Learn how to set up and run a NEAR Lake Indexer, including prerequisites, network configuration, and commands for syncing from the latest or a specific block.

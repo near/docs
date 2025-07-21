@@ -1,6 +1,7 @@
 ---
 id: runtime
 title: Runtime
+description: "Explore NEAR Protocol's runtime system, including core runtime operations, cross-contract calls, action and data receipts, and state management."
 ---
 
 This section contains videos that explore the core Runtime, its operation, and how it implements cross-contract calls.

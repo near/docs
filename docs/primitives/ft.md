@@ -2,6 +2,7 @@
 id: ft
 title: Fungible Tokens (FT)
 hide_table_of_contents: false
+description: "Learn about NEAR fungible tokens (FT) following NEP-141 and NEP-148 standards - create, transfer, and integrate FT contracts with comprehensive examples and tools."
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"

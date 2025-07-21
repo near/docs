@@ -2,6 +2,7 @@
 id: storage-staking
 title: Storage Staking
 sidebar_label: Storage Staking
+description: "Learn about NEAR Protocol's storage staking mechanism, including costs, storage pricing, attack prevention, and strategies for managing on-chain data storage."
 ---
 
 NEAR's storage staking is a mechanism that ensures the network remains efficient and secure by requiring smart contract owners to stake tokens based on the amount of data their contracts store. This helps maintain the integrity of the network while providing a predictable cost structure for developers.

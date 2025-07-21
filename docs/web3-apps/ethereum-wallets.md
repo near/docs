@@ -1,6 +1,7 @@
 ---
-sidebar_label: "Ethereum Wallets on Near"
+sidebar_label: Ethereum Wallets on Near
 id: ethereum-wallets
+description: "Learn how to integrate Ethereum wallets like MetaMask into your NEAR DApp using the Near Wallet Selector, Web3Modal, and wagmi libraries."
 ---
 
 import { Github } from "@site/src/components/codetabs"

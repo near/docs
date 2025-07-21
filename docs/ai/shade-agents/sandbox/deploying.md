@@ -2,6 +2,7 @@
 id: sandbox-deploying
 title: Using the Sandbox
 sidebar_label: Using the Sandbox
+description: "Learn how to deploy a Shade Agent in the sandbox environment with a pre-configured template for rapid prototyping and experimentation."
 ---
 
 import { SigsSupport } from '@site/src/components/sigsSupport';

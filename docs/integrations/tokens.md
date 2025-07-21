@@ -2,6 +2,7 @@
 id: fungible-tokens
 title: Fungible tokens
 sidebar_label: Fungible Tokens
+description: "Learn how to integrate NEAR tokens (NEAR, FT, and NFT) into your application, including balance queries, transfers, and token metadata."
 ---
 
 import Tabs from '@theme/Tabs';

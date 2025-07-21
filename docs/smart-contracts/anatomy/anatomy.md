@@ -2,6 +2,7 @@
 id: anatomy
 title: Basic Anatomy
 hide_table_of_contents: true
+description: "Let's illustrate the basic anatomy of a simple \"Hello World\" contract. The code on this page comes from our Hello NEAR repository on GitHub."
 ---
 
 import Tabs from '@theme/Tabs';

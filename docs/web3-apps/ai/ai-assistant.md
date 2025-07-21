@@ -1,6 +1,7 @@
 ---
 id: ai-assistant
 title: AI Assistant
+description: "Build an AI chatbot that can interact with the NEAR ecosystem, explore transactions, mint NFTs, request faucet tokens, and answer questions about NEAR architecture."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

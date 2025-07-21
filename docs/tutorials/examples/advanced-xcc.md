@@ -1,6 +1,7 @@
 ---
 id: advanced-xcc
 title: Complex Cross Contract Call
+description: "Master advanced cross-contract call patterns in NEAR Protocol, including callbacks, error handling, and complex multi-contract interactions."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

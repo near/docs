@@ -1,5 +1,6 @@
 ---
 sidebar_label: NFT Indexer
+description: "This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the NEAR Lake Framework JS. The indexer will listen for nft_mint events and print relevant data about newly minted NFTs."
 ---
 
 This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the [NEAR Lake Framework JS](/data-infrastructure/lake-framework/near-lake-framework). The indexer will listen for `nft_mint` events and print relevant data about newly minted NFTs.

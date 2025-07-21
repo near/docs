@@ -2,6 +2,7 @@
 id: transactions
 title: RPC Endpoints
 sidebar_label: Transactions
+description: "Send transactions and query their status using the NEAR RPC API, including transaction status, receipts, and deprecated methods."
 ---
 
 import SendTx from '@site/src/components/docs/api/rpc/transactions/send-tx/index.mdx';

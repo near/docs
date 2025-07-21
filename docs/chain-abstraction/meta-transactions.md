@@ -2,6 +2,7 @@
 id: meta-transactions-relayer
 title: Building a Meta Transaction Relayer
 sidebar_label: Building a Relayer
+description: "Learn how to build a meta transaction relayer that allows users to transact on NEAR without paying gas fees while maintaining transaction security through signed delegates."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

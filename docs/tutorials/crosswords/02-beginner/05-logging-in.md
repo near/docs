@@ -1,7 +1,8 @@
 ---
 sidebar_position: 5
-sidebar_label: "Access keys and login 1/2"
-title: "Covering access keys and login"
+sidebar_label: Access keys and login 1/2
+title: Covering access keys and login
+description: "In this chapter, we will cover access keys and login functionality in NEAR. We will implement a login system for our crossword puzzle dApp, allowing users to log in with their NEAR accounts and interact with the smart contract"
 ---
 
 import chapter1Correct from '/docs/assets/crosswords/chapter-1-crossword-correct.gif';

@@ -2,6 +2,7 @@
 id: faucet
 title: Testnet Token Faucet
 sidebar_label: Testnet Faucet
+description: "In the NEAR ecosystem, a faucet is a service that provides free tokens to developers and users for testing and development purposes. This is particularly useful for those working on the NEAR testnet, where real tokens are not required but access to tokens is necessary for testing smart contracts and applications."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

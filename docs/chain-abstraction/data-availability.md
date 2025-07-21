@@ -1,6 +1,7 @@
 ---
 id: data-availability
 title: Rollup Data Availability
+description: "Learn about NEAR's Data Availability layer for rollups, including blob store contracts, light clients, RPC nodes, and integrations with L2 solutions like Polygon CDK and Optimism."
 ---
 
 Every monolithic blockchain has a data availability layer. NEAR's Data Availability (DA) represents a pioneering initiative to modularize the data availability layer from the NEAR blockchain to make it available as a roll-up solution for builders on other chains. 

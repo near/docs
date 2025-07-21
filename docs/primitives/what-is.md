@@ -1,6 +1,7 @@
 ---
 id: what-is
-title: What are Primitives? 
+title: What are Primitives?
+description: "Learn about blockchain primitives including Fungible Tokens (FT), Non-Fungible Tokens (NFT), Decentralized Autonomous Organizations (DAO), and LinkDrops as building blocks for applications."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

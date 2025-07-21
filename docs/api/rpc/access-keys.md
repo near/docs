@@ -1,6 +1,7 @@
 ---
 id: access-keys
 title: Access Keys
+description: "Retrieve information about an account's access keys using the NEAR RPC API, including viewing keys, listing all keys, and tracking access key changes."
 ---
 
 import ViewAccessKey from '@site/src/components/docs/api/rpc/access-keys/view-access-key/index.mdx';

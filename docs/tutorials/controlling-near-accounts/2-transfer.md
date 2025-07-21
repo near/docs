@@ -2,6 +2,7 @@
 id: transfer
 title: Transfer Near tokens on behalf of a controlled account
 sidebar_label: Act on behalf of controllable account
+description: "In this part of the tutorial, we'll dig into how transaction arguments are built, how to request a signature according to the arguments from the smart contract, and how to broadcast the signed transaction into the network."
 ---
 
 In this part of the tutorial, we'll dig into how transaction arguments are built, how to request a signature according to the arguments from the smart contract, and how to broadcast the signed transaction into the network.

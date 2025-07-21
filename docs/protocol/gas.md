@@ -1,6 +1,7 @@
 ---
 id: gas
 title: Gas (Execution Fees)
+description: "Learn about NEAR's gas system - execution fees that prevent spam, incentivize developers with 30% of burned gas, and use deterministic gas units with dynamic pricing."
 ---
 
 import {NearWidget} from "@site/src/components/near-widget"

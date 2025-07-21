@@ -2,6 +2,7 @@
 id: introduction
 title: Shade Agents
 sidebar_label: What are Shade Agents?
+description: "Learn about Shade Agents - decentralized and trustless AI agents that control accounts and assets across multiple blockchains using TEEs and NEAR's decentralized key management."
 ---
 
 import { SigsSupport } from '@site/src/components/sigsSupport';

@@ -1,6 +1,7 @@
 ---
 id: integrate-contracts
 title: Integrating Contracts
+description: "Learn how to integrate NEAR smart contracts into your frontend using Wallet Selector and NEAR API JS - handle user login, call contract methods, and manage transactions."
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';

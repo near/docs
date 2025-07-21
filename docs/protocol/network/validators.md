@@ -1,6 +1,7 @@
 ---
 id: validators
 title: Validators
+description: "Learn about NEAR Protocol validators, their roles in network security, consensus mechanisms, validator economics, and how to become a validator."
 ---
 
 The NEAR network is decentralized, meaning that multiple people collaborate in order to keep it safe. We call such people **validators**.

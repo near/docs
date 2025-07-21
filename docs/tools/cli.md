@@ -1,6 +1,7 @@
 ---
 id: near-cli
 title: NEAR CLI
+description: "Command line interface for NEAR Protocol - create accounts, manage keys, send tokens, deploy contracts, and interact with the blockchain from your terminal."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

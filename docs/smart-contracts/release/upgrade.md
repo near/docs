@@ -1,6 +1,7 @@
 ---
 id: upgrade
 title: Updating Contracts
+description: "Learn how to upgrade NEAR smart contracts safely, including programmatic updates, migration strategies, and best practices for contract versioning."
 ---
 
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"; 

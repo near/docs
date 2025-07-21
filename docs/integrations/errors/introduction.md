@@ -2,6 +2,7 @@
 id: introduction
 title: Introduction
 sidebar_label: Introduction
+description: "Learn about common error patterns in NEAR protocol integrations and how to handle and troubleshoot issues in your applications."
 ---
 
 This document provides an overview of NEAR Platform errors, including how they are raised, their types, and how to handle them. It covers the lifecycle of a transaction, the different types of errors that can occur, and where to find more information about each error type.

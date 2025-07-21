@@ -2,6 +2,7 @@
 id: plugins
 title: Shade Agent Plugins
 sidebar_label: Plugins
+description: "Learn how to create and use plugins to extend Shade Agents functionality with custom capabilities and integrations."
 ---
 
 Docs for integrating LLMs and Twitter APIs into your Shade Agent will be coming soon.

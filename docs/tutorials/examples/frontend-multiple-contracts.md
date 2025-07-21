@@ -2,6 +2,7 @@
 id: frontend-multiple-contracts
 title: Frontend Interacting with Multiple Contracts
 sidebar_label: FE w/ Multiple Contracts
+description: "Learn how to build a frontend that interacts with multiple NEAR smart contracts simultaneously, including querying data and dispatching multiple transactions."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

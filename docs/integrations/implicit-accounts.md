@@ -2,6 +2,7 @@
 id: implicit-accounts
 title: Implicit Accounts
 sidebar_label: Implicit Accounts
+description: "Learn about implicit accounts in NEAR, how they work with Ethereum-style addresses, and their role in chain abstraction and multi-chain integration."
 ---
 
 import Tabs from '@theme/Tabs';

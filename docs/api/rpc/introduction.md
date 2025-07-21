@@ -2,6 +2,7 @@
 id: introduction
 sidebar_label: Home
 title: NEAR RPC API
+description: "Learn how to interact with the NEAR network using the RPC API, including available providers, node snapshots, and quick links to all RPC endpoints."
 ---
 
 import Tabs from '@theme/Tabs';

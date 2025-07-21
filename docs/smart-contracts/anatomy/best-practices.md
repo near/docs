@@ -1,6 +1,7 @@
 ---
 id: best-practices
-title: "Best Practices"
+title: Best Practices
+description: "This page provides a collection of best practices for writing smart contracts on NEAR. These practices are designed to help you write secure, efficient, and maintainable code."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

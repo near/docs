@@ -1,6 +1,7 @@
 ---
 id: what-is
 title: What is Chain Abstraction?
+description: "Learn about chain abstraction and how NEAR's framework makes blockchain technology invisible to users while preserving benefits through NEAR Intents, Chain Signatures, and OmniBridge."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

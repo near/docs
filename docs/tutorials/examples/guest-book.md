@@ -1,6 +1,7 @@
 ---
 id: guest-book
 title: Guest Book
+description: "Build a guest book smart contract where users can sign messages and attach NEAR tokens, featuring premium messages and frontend integration."
 ---
 
 import {CodeTabs, Language, Github} from '@site/src/components/codetabs';

@@ -2,6 +2,7 @@
 id: approvals
 title: Approvals
 sidebar_label: Approvals
+description: "This tutorial will guide you through the process of managing NFT approvals, allowing others to transfer NFTs on your behalf."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
