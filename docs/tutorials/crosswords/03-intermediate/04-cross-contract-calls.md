@@ -5,6 +5,8 @@ title: "Adding cross-contract calls, access key shuffling, etc."
 ---
 import {Github} from "@site/src/components/codetabs"
 
+In this chapter, we will cover some intermediate concepts in smart contract development on NEAR. This includes cross-contract calls and access keys, which are essential for building more complex applications.
+
 # Updating the contract
 
 import shuffleKeys from '/docs/assets/crosswords/shuffle-keys.gif';

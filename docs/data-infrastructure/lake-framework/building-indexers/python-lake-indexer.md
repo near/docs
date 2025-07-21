@@ -2,6 +2,8 @@
 sidebar_label: "Python tutorial"
 ---
 
+This tutorial will guide you through creating a simple indexer using the Python version of the NEAR Lake Framework. The indexer will print block height and number of shards to the console.
+
 # NEAR Lake indexer basic tutorial
 
 

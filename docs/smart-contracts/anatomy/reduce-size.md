@@ -6,6 +6,8 @@ import {Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+In this page, we will explore strategies for reducing the size of smart contracts on NEAR. This is particularly useful for developers who want to optimize their contracts for deployment, especially in scenarios where contract size limits are a concern.
+
 # Reducing a contract's size
 
 <Tabs className="language-tabs" groupId="code-tabs">

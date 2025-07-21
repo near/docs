@@ -6,16 +6,14 @@ title: "Using base64-encoded arguments when we create a new crossword puzzle"
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import base64Encode from '/docs/assets/crosswords/boop-base64-encode.gif';
+
+Let's modify our `new_puzzle` method a bit, and demonstrate how a smart contract author might use base64-encoded arguments.We're going to send all the arguments as a base64-encoded string, and make this a bit simpler. For this, we're going to use [`Base64VecU8` from the SDK](https://docs.rs/near-sdk/latest/near_sdk/json_types/struct.Base64VecU8.html).
 
 # Final modifications
 
-import base64Encode from '/docs/assets/crosswords/boop-base64-encode.gif';
-
-Let's modify our `new_puzzle` method a bit, and demonstrate how a smart contract author might use base64-encoded arguments.
-
 In the previous chapter we had a fairly long NEAR CLI command that called the `new_puzzle`, providing it the parameters for all the clues. Having these lengthy parameters on the CLI might get cumbersome. There may be issues needing to escape single or double quotes, and each operating system may wish for a different format on the Terminal or Command Prompt.
 
-We're going to send all the arguments as a base64-encoded string, and make this a bit simpler. For this, we're going to use [`Base64VecU8` from the SDK](https://docs.rs/near-sdk/latest/near_sdk/json_types/struct.Base64VecU8.html).
 
 :::note `Base64VecU8` is great for binary payloads
 What we're doing makes sense, but it's worth noting that it's perhaps more common to use `Base64VecU8` when sending binary parameters.

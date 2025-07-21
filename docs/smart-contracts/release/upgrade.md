@@ -3,8 +3,10 @@ id: upgrade
 title: Updating Contracts
 ---
 
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"; import
-Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
+import {CodeTabs, Language, Github} from "@site/src/components/codetabs"; 
+import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
+
+Learn how to update NEAR smart contracts, both through tools like NEAR CLI and programmatically. Understand the implications of state migration when changing contract logic.
 
 NEAR accounts separate their logic (contract's code) from their state (storage),
 allowing the code to be changed.

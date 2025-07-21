@@ -6,8 +6,7 @@ title: Notes on Serialization
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Smart contracts need to be able to **communicate complex data** in a simple way, while
-also **reading and storing** such data into their states efficiently.
+Smart contracts need to be able to **communicate complex data** in a simple way, while also **reading and storing** such data into their states efficiently.
 
 To achieve such simple communication and efficient storage, smart contracts morph the data
 from their complex representation into simpler ones.

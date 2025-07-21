@@ -4,16 +4,18 @@ title: Avoiding Token Loss
 sidebar_label: Avoiding Token Loss
 ---
 
-:::warning
-Careful! Losing tokens means losing money!
-:::
-
+This document provides an overview of potential scenarios that can lead to token loss on the NEAR Protocol and how to mitigate these risks. It covers improper key management, refunding deleted accounts, and failed function calls in batches.
 
 Token loss is possible under multiple scenarios. These scenarios can be grouped into a few related classes:
 
 1. Improper key management
 2. Refunding deleted accounts
 3. Failed function calls in batches
+
+:::warning
+Careful! Losing tokens means losing money!
+:::
+
 
 ---
 

@@ -7,7 +7,7 @@ sidebar_label: Accounts
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Introduction {#introduction}
+This document provides relevant information about NEAR accounts for exchanges looking forward to integrate the NEAR token
 
 Please see the [documentation for accounts](/protocol/account-model) for basic information.
 

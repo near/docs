@@ -1,9 +1,9 @@
 ---
+title: NEAR Data Flow
 sidebar_label: "NEAR Data Flow"
 ---
 
-# NEAR Data Flow
-
+NEAR Protocol blockchain data flow might be a bit tricky at a glance. But it is pretty straightforward and follows well-defined rules. In this article, we are going to have a closer look at how the data flows in NEAR Protocol blockchain.
 
 <iframe
  width="100%"
@@ -21,8 +21,6 @@ sidebar_label: "NEAR Data Flow"
 In this video we give a quick overview on the main concept of how the data flows across the NEAR Protocol blockchain.
 
 :::
-
-NEAR Protocol blockchain data flow might be a bit tricky at a glance. But it is pretty straightforward and follows well-defined rules. In this article, we are going to have a closer look at how the data flows in NEAR Protocol blockchain.
 
 In fact, any blockchain flow can be represented as an infinite timeline that has a start but has no end.
 
