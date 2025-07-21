@@ -4,6 +4,8 @@ title: Exchange Integration
 sidebar_label: Exchange Integration
 ---
 
+This document provides an overview of how to integrate with NEAR Protocol for exchanges, including account management, token transfers, and handling implicit accounts.
+
 ## Integration Reference {#integration-reference}
 
 - [Balance Changes](/integrations/balance-changes)

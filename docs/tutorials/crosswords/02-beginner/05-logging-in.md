@@ -9,6 +9,8 @@ import accessKeys from '/docs/assets/crosswords/keys-cartoon-good--alcantara_gab
 import functionCallAction from '/docs/assets/crosswords/function-call-action.png';
 import tutorialAccessKeys from '/docs/assets/crosswords/access-keys.png';
 
+In this chapter, we will cover access keys and login functionality in NEAR. We will implement a login system for our crossword puzzle dApp, allowing users to log in with their NEAR accounts and interact with the smart contract
+
 # Logging in with NEAR
 
 ## Previously…

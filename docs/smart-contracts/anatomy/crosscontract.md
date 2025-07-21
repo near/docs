@@ -7,6 +7,8 @@ import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+Cross-contract calls are a powerful feature of NEAR smart contracts, allowing one contract to interact with another. This enables complex interactions and functionalities across different contracts, enhancing the ecosystem's capabilities.
+
 Your contract can interact with other deployed contracts, **querying** information and **executing functions** on them.
 
 Since NEAR is a sharded blockchain, its cross-contract calls behave differently than calls do in other chains. In NEAR. cross-contract calls are asynchronous and independent.

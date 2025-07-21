@@ -11,8 +11,6 @@ import teachingDeployment from '/docs/assets/crosswords/teaching--jeheycell.near
 import createAccount from '/docs/assets/crosswords/creating account with text--seanpineda.near--_seanpineda.png';
 import chalkboardErase from '/docs/assets/crosswords/erasing-subaccount-chalkboard--iambon.near--JohnreyBona.mp4';
 
-# Modifying the contract
-
 This section will modify the smart contract skeleton from the previous section. This tutorial will start by writing a contract in a somewhat useless way in order to learn the basics. Once we've got a solid understanding, we'll iterate until we have a crossword puzzle.
 
 ## Add a const, a field, and functions

@@ -7,6 +7,8 @@ title: "Replacing the solution hash with an access key"
 import puzzleFrontrun from '/docs/assets/crosswords/puzzle-frontrun.png';
 import padlockSafe from '/docs/assets/crosswords/safe-with-access-key--soulless.near--ZeroSerotonin__.png';
 
+So far in this tutorial, the user sends the plaintext solution to the crossword puzzle smart contract, where it's hashed and compared with the known answer.
+
 # Replacing our solution hash
 
 So far in this tutorial, the user sends the plaintext solution to the crossword puzzle smart contract, where it's hashed and compared with the known answer.

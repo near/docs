@@ -5,6 +5,8 @@ title: Gas (Execution Fees)
 
 import {NearWidget} from "@site/src/components/near-widget"
 
+This section explains how gas works in the NEAR Protocol, including how it is calculated, charged, and used to incentivize developers.
+
 On every transaction the NEAR network charges a tiny fee known as **gas**. This fee is a simple mechanism that allows us to:
 
 1. **Prevent** bad actors from **spamming** the network with useless transactions

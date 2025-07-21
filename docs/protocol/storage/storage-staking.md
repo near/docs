@@ -4,6 +4,8 @@ title: Storage Staking
 sidebar_label: Storage Staking
 ---
 
+NEAR's storage staking is a mechanism that ensures the network remains efficient and secure by requiring smart contract owners to stake tokens based on the amount of data their contracts store. This helps maintain the integrity of the network while providing a predictable cost structure for developers.
+
 > When you deploy a smart contract to NEAR, you pay for the storage that this contract requires using a mechanism called storage staking.
 >
 > In storage staking (sometimes called _state_ staking), the account that owns a smart contract must stake (or lock) tokens according to the amount of data stored in that smart contract, effectively reducing the balance of the contract's account.

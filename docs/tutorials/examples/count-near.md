@@ -8,8 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
-Our counter example is a friendly decentralized app that stores a number and exposes methods to `increment`,
-`decrement`, and `reset` it.
+Our counter example is a friendly decentralized app that stores a number and exposes methods to `increment`,`decrement`, and `reset` it.
 
 ![img](/docs/assets/examples/count-on-near-banner.png)
 

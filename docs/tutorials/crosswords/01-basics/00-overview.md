@@ -9,9 +9,10 @@ import basicCrossword from '/docs/assets/crosswords/basics-crossword.jpg';
 import rustScary from '/docs/assets/crosswords/rust-scary--ksart.near.png';
 import rustGood from '/docs/assets/crosswords/rust-good--ksart.near.png';
 
-# Basics overview
 
 This first chapter of the crossword puzzle tutorial will introduce fundamental concepts to smart contract development in a beginner-friendly way. By the end of this chapter you'll have a proof-of-concept contract that can be interacted with via [NEAR CLI](/tools/near-cli) and a simple frontend that uses the [`near-api-js` library](https://www.npmjs.com/package/near-api-js).
+
+# Basics overview
 
 ## It's not as bad as you think
 
