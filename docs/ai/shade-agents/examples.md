@@ -2,6 +2,7 @@
 id: examples
 title: What can you Build?
 sidebar_label: What can you Build?
+description: "Explore example Shade Agent implementations and agentic protocol ideas, including trading agents, DeFi protocols, and autonomous applications."
 ---
 
 With their extensive list of features, Shade Agents unlock a wide range of new use cases, enable many previously centralized apps to become decentralized, and change how blockchain applications are designed. 

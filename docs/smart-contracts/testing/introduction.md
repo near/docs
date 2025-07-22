@@ -1,6 +1,7 @@
 ---
 id: introduction
 title: Introduction
+description: "Learn about testing NEAR smart contracts, including unit tests, integration tests, and best practices for ensuring contract reliability and security."
 ---
 
 While developing your smart contract you will want to test that it works as it is supposed to, and moreover, does so securely. In NEAR we have developed tools to help you carry out such tests. 

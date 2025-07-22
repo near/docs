@@ -1,7 +1,8 @@
 ---
 sidebar_position: 6
-sidebar_label: "Access keys and login 2/2"
-title: "Implementing the login button"
+sidebar_label: Access keys and login 2/2
+title: Implementing the login button
+description: "We're going to add a login button that uses near-api-js to login with NEAR."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

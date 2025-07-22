@@ -1,5 +1,6 @@
 ---
-sidebar_label: "Intro to Indexers"
+sidebar_label: Intro to Indexers
+description: "Learn about blockchain indexers, how they work with NEAR Protocol, the difference between pull and push models, and when to use indexers for data querying."
 ---
 
 Here you will find everything you need to know in order to familiarize yourself with the concept of indexers and even build your own one.

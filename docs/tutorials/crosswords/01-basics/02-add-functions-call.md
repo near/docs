@@ -1,7 +1,8 @@
 ---
 sidebar_position: 3
-sidebar_label: "Add basic code, create a subaccount, and call methods"
-title: "Alter the smart contract, learning about basics of development"
+sidebar_label: Add basic code, create a subaccount, and call methods
+title: Alter the smart contract, learning about basics of development
+description: "This section will modify the smart contract skeleton from the previous section. This tutorial will start by writing a contract in a somewhat useless way in order to learn the basics. Once we've got a solid understanding, we'll iterate until we have a crossword puzzle."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

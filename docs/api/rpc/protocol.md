@@ -1,6 +1,7 @@
 ---
 id: protocol
 title: Protocol
+description: "Retrieve current genesis and protocol configuration using the NEAR RPC API, including network parameters and protocol versions."
 ---
 
 import GenesisConfig from '@site/src/components/docs/api/rpc/protocol/genesis-config/index.mdx';

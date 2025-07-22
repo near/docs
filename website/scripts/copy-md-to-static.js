@@ -230,7 +230,9 @@ async function processMarkdownFiles() {
           pageDescription.startsWith('![')) {
         console.warn(`Warning: No valid description found in ${relativeFilename}`);
       }
-      
+      if(!frontmatter.description){
+        console.log(`❌ No description tag found for ${relativeFilename}`);
+      }
       const pageTitle = frontmatter.title || 
                        frontmatter.sidebar_label || 
                        alternativeId.replace(/[-_]/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase());
@@ -241,7 +243,7 @@ async function processMarkdownFiles() {
       documentationPages[sectionName].push({
         title: pageTitle,
         url: pageUrl,
-        description: pageDescription,
+        description: frontmatter.description || pageDescription,
         id: pageId,
       });
     })

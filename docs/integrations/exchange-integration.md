@@ -2,6 +2,7 @@
 id: exchange-integration
 title: Exchange Integration
 sidebar_label: Exchange Integration
+description: "Complete guide for integrating NEAR Protocol into exchanges - covers balance changes, accounts, tokens, blocks, finality, archival nodes, and staking delegation."
 ---
 
 This document provides an overview of how to integrate with NEAR Protocol for exchanges, including account management, token transfers, and handling implicit accounts.

@@ -1,6 +1,7 @@
 ---
 id: transactions
 title: Transactions
+description: "Learn how users interact with NEAR through transactions composed of actions, signed with private keys, and processed by the network with deterministic gas costs."
 ---
 
 Users interact with NEAR by creating transactions. Specifically, users use their account's [private keys](./access-keys.md) to sign transactions, which are then broadcasted and processed by the network.

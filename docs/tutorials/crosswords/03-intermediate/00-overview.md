@@ -1,7 +1,8 @@
 ---
 sidebar_position: 1
-sidebar_label: "Overview"
-title: "Intermediate concepts (cross-contract calls and more)"
+sidebar_label: Overview
+title: Intermediate concepts (cross-contract calls and more)
+description: "In this chapter, we will cover some intermediate concepts in smart contract development on NEAR. This includes cross-contract calls and access keys, which are essential for building more complex applications."
 ---
 
 import accessKeys from '/docs/assets/crosswords/keys-cartoon-good--alcantara_gabriel.near--Bagriel_5_10.png';

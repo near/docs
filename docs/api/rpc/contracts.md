@@ -1,6 +1,7 @@
 ---
 id: contracts
 title: Accounts / Contracts
+description: "View details about accounts and contracts, check contract state and code, and perform contract function calls using NEAR RPC API."
 ---
 
 import ViewAccount from '@site/src/components/docs/api/rpc/contracts/view-account/index.mdx';

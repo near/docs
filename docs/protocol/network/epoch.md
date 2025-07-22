@@ -1,6 +1,7 @@
 ---
 id: epoch
 title: Epoch
+description: "Learn about epochs in NEAR Protocol, including their duration, role in validator selection, and how they affect network operations and data retention."
 ---
 
 import Tabs from '@theme/Tabs';

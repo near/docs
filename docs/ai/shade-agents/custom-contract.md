@@ -2,6 +2,7 @@
 id: custom-agent-contract
 title: Custom Agent Contract
 sidebar_label: Custom Agent Contract
+description: This document explains how to create and deploy a custom Shade Agent contract on NEAR, including compiling, deploying, and interacting with the contract.
 ---
 
 import { SigsSupport } from '@site/src/components/sigsSupport';

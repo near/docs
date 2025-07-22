@@ -2,6 +2,7 @@
 id: accounts
 title: Accounts
 sidebar_label: Accounts
+description: "Learn about NEAR account management for exchanges and integrations, including account creation, key management, and balance tracking."
 ---
 
 import Tabs from '@theme/Tabs';

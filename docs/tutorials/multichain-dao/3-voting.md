@@ -1,6 +1,7 @@
 ---
 id: voting
 title: MultiSig Voting
+description: "Now that we understand how the Abstract DAO works, it is time to use it in within an organization. Lets see how to deploy a MultiSig contract, where users will vote on a multi-chain proposal."
 ---
 
 import Tabs from '@theme/Tabs';

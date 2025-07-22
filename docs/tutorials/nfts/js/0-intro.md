@@ -2,6 +2,7 @@
 id: introduction
 title: NFT Zero to Hero JavaScript Edition
 sidebar_label: Introduction
+description: "> In this _Zero to Hero_ series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract."
 ---
 
 > In this _Zero to Hero_ series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract.

@@ -1,6 +1,7 @@
 ---
 id: storage
 title: Million Small Deposits
+description: "Learn about storage security best practices in NEAR smart contracts, including storage costs, state management, and preventing storage-related vulnerabilities."
 ---
 
 On NEAR, your contract pays for the storage it uses. This means that the more data you store, the more balance you need to cover for storage. If you don't handle these costs correctly (e.g. asking the user to cover their storage usage), then a million little deposits can drain your contract of its funds.

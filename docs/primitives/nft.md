@@ -2,6 +2,7 @@
 id: nft
 title: Non-Fungible Tokens (NFT)
 hide_table_of_contents: false
+description: "Learn about NEAR non-fungible tokens (NFT) following NEP-171 and NEP-177 standards - mint, transfer, query, and trade unique digital assets with comprehensive examples."
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"

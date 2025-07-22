@@ -2,6 +2,7 @@
 id: roadmap
 sidebar_label: Roadmap
 title: Omni Bridge Roadmap
+description: "Explore the Omni Bridge roadmap, including hybrid architecture launch, Chain Signatures migration path, and future development plans for cross-chain infrastructure."
 ---
 
 Omni Bridge launches with a hybrid architecture, utilizing different verification methods based on chain-specific requirements and technical constraints. This approach allows us to support multiple chains from day one while progressively transitioning to full Chain Signatures integration.

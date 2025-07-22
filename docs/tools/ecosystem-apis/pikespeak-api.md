@@ -1,6 +1,7 @@
 ---
 id: pikespeak
 title: Pikespeak
+description: "Pikespeak allows you to fetch blockchain events and aggregated analytics on wallets, validators, delegators, money transfers, dApps activity, and more."
 ---
 
 [Pikespeak](https://pikespeak.ai) allows you to fetch blockchain events and aggregated analytics on wallets, validators, delegators, money transfers, dApps activity, and more.

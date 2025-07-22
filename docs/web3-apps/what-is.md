@@ -1,6 +1,7 @@
 ---
 id: what-is
 title: What are Web3 Apps?
+description: "Learn about Web3 applications (dApps) that leverage smart contracts and blockchain data to offer transparency, security, and user control over assets and data."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

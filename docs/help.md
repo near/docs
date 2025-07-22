@@ -1,6 +1,7 @@
 ---
 id: help
 title: NEAR - Your Gateway to an Open Web
+description: "Comprehensive help and resources for NEAR Protocol developers, including support channels, documentation, tools, and community groups."
 ---
 
 

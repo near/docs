@@ -2,6 +2,7 @@
 id: balance-changes
 title: Balance changes
 sidebar_label: Balance Changes
+description: "Learn how to query and track account balances in NEAR protocol, including native NEAR tokens, fungible tokens, and balance management for integrations."
 ---
 
 import Tabs from '@theme/Tabs';

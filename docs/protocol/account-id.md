@@ -1,6 +1,7 @@
 ---
 id: account-id
 title: Address (Account ID)
+description: "Learn about NEAR account addresses - implicit addresses (64 characters) and named addresses that work as domains, including sub-account creation and management."
 ---
 
 import Tabs from '@theme/Tabs';

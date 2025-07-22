@@ -2,6 +2,7 @@
 id: storage-solutions
 title: Decentralized Storage Solutions
 sidebar_label: Alternative Solutions
+description: "Explore decentralized storage alternatives for NEAR Protocol applications, including Arweave, Crust, and IPFS integration for cost-effective data storage."
 ---
 
 > In this article you'll find a brief overview of different decentralized storage solutions that can be integrated into your decentralized applications (dApps). This will allow you to store large amounts of data using a more economical alternative to native NEAR storage.

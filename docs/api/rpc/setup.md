@@ -1,6 +1,7 @@
 ---
 id: setup
-title: Setup 
+title: Setup
+description: "Learn how to set up RPC endpoints for NEAR networks, configure authentication, and use tools like Postman, JavaScript, and HTTPie to interact with the API."
 ---
 
 In order to use the RPC API you will need to setup the correct RPC endpoints.

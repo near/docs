@@ -1,6 +1,7 @@
 ---
 id: lock
 title: Locking Accounts
+description: "Learn how to lock NEAR smart contracts to prevent unauthorized modifications and ensure contract immutability when needed."
 ---
 
 import Tabs from '@theme/Tabs';
