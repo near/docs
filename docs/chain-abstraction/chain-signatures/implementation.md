@@ -11,6 +11,14 @@ Chain signatures enable NEAR accounts, including smart contracts, to sign and ex
 
 This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
+<details>
+
+<summary> Supported Networks </summary>
+
+You can connect with networks like Bitcoin, Solana, Cosmos, XRP, Aptos, and Sui. You get support for Ethereum and EVM-compatible chains such as Base, BNB Chain, Avalanche, Polygon, Arbitrum, and more.
+
+</details>
+
 ---
 
 ## Create a Chain Signature
