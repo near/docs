@@ -12,6 +12,16 @@ Chain signatures enable NEAR accounts, including smart contracts, to sign and ex
 
 This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
 
+<details>
+
+<summary> Supported Networks </summary>
+
+While you can sign transactions for any network using Eddsa or Ecdsa keys, each chain signs transactions differently.
+
+Our example implementation shows you how to sign transactions for: Bitcoin, Solana, Cosmos, XRP, Aptos, Sui and EVM networks (Ethereum, Base, BNB Chain, Avalanche, Polygon, Arbitrum, and more).
+
+</details>
+
 ---
 
 ## Create a Chain Signature
