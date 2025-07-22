@@ -35,7 +35,12 @@ const sidebar = {
           type: 'category',
           label: 'Transactions',
           link: { type: 'doc', id: 'protocol/transactions' },
-          items: ['protocol/transaction-anatomy', 'protocol/gas', 'protocol/transaction-execution'],
+          items: [
+            'protocol/transaction-anatomy',
+            'protocol/gas',
+            'protocol/transaction-execution',
+            'chain-abstraction/meta-transactions',
+          ],
         },
         {
           'Data Flow': [
@@ -90,13 +95,6 @@ const sidebar = {
           ],
         },
         'chain-abstraction/data-availability',
-        {
-          'Meta Transactions': [
-            'chain-abstraction/meta-transactions',
-            'chain-abstraction/relayers',
-            'chain-abstraction/meta-transactions-relayer',
-          ],
-        },
       ],
     },
     {
@@ -114,17 +112,13 @@ const sidebar = {
             "ai/shade-agents/introduction",
             "ai/shade-agents/examples",
             {
-              "Sandbox Agents": [
-                "ai/shade-agents/sandbox/sandbox-deploying",
-                "ai/shade-agents/sandbox/sandbox-components",
+              "Quickstart": [
+                "ai/shade-agents/quickstart/deploying",
+                "ai/shade-agents/quickstart/components",
               ]
             },
-            {
-              "Production Agents": [
-                "ai/shade-agents/production/production-deploying",
-                "ai/shade-agents/production/production-components",
-              ]
-            },
+            "ai/shade-agents/custom-agent-contract",
+            "ai/shade-agents/security",
             "ai/shade-agents/plugins",
           ],
         },
@@ -154,7 +148,6 @@ const sidebar = {
           'label': 'Introduction',
           'href': '/smart-contracts/what-is',
         },
-        'smart-contracts/quickstart',
         {
           'Anatomy of a Contract': [
             'smart-contracts/anatomy/anatomy',
@@ -231,7 +224,6 @@ const sidebar = {
           'label': 'Introduction',
           'href': '/web3-apps/what-is',
         },
-        'web3-apps/quickstart',
         {
           Frontends: ['web3-apps/integrate-contracts', 'web3-apps/ethereum-wallets'],
         },
@@ -253,45 +245,14 @@ const sidebar = {
       },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
-        {
-          type: 'category',
-          label: 'Fungible Tokens (FT)',
-          items: [
-            'primitives/ft',
-            {
-              type: 'link',
-              label: 'Tutorial: Zero to Hero (Rust) ↗',
-              href: '/tutorials/fts/introduction',
-            },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Non Fungible Tokens (NFT)',
-          items: [
-            'primitives/nft',
-            {
-              type: 'link',
-              label: 'Tutorial: Minting NFTs ↗',
-              href: '/tutorials/nfts/minting-nfts',
-            },
-            {
-              type: 'link',
-              label: 'Tutorial: Zero to Hero (JS) ↗',
-              href: '/tutorials/nfts/js/introduction',
-            },
-            {
-              type: 'link',
-              label: 'Tutorial: Zero to Hero (Rust) ↗',
-              href: '/tutorials/nfts/introduction',
-            },
-          ],
-        },
+        'primitives/ft',
+        'primitives/nft',
         'protocol/network/staking',
         'primitives/linkdrop',
         'primitives/oracles',
         'primitives/dao',
         'primitives/dex',
+        'primitives/did',
       ],
     },
     {
@@ -308,14 +269,11 @@ const sidebar = {
           label: 'Introduction',
           href: '/data-infrastructure/what-is',
         },
-        'tools/explorer',
-        'tools/ecosystem-apis/fastnear',
-        'tools/indexing',
-        'data-infrastructure/indexers',
         'data-infrastructure/data-apis',
         'data-infrastructure/big-query',
         {
           'Lake Framework': [
+            'data-infrastructure/indexers',
             'data-infrastructure/lake-framework/near-lake-framework',
             'data-infrastructure/lake-framework/near-lake',
             'data-infrastructure/lake-framework/near-lake-state-changes-indexer',
@@ -329,6 +287,7 @@ const sidebar = {
             },
             {
               'Lake Data Structures': [
+                'data-infrastructure/lake-framework/building-indexers/primitives',
                 'data-infrastructure/lake-data-structures/toc',
                 'data-infrastructure/lake-data-structures/block',
                 'data-infrastructure/lake-data-structures/chunk',
@@ -357,17 +316,146 @@ const sidebar = {
       value: '<hr/>',
     },
     {
-      type: 'html',
-      value: "<span class='menu__link'><b><small>MASTERING NEAR</small></b></span>",
-    },
-    {
       type: 'category',
-      label: 'NEAR 101',
+      label: 'Getting Started',
       collapsed: true,
       customProps: {
         icon: '/img/icons/near.svg',
       },
-      link: { type: 'doc', id: 'tutorials/auction/introduction' },
+      items: [
+        'smart-contracts/quickstart',
+        'web3-apps/quickstart',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Multi-Chain',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/multichain.svg',
+      },
+      items: [
+        {
+          type: 'category',
+          label: 'Controlling NEAR Accounts',
+          link: { type: 'doc', id: 'tutorials/controlling-near-accounts/introduction' },
+          items: [
+            'tutorials/controlling-near-accounts/introduction',
+            'tutorials/controlling-near-accounts/setup',
+            'tutorials/controlling-near-accounts/transfer',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Cross-Chain DAO Governance',
+          link: { type: 'doc', id: 'tutorials/multichain-dao/introduction' },
+          items: [
+            'tutorials/multichain-dao/introduction',
+            'tutorials/multichain-dao/request',
+            'tutorials/multichain-dao/signing',
+            'tutorials/multichain-dao/voting',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Contract Guides',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/contract.svg',
+      },
+      items: [
+        'tutorials/examples/donation',
+        'tutorials/examples/coin-flip',
+        'tutorials/examples/factory',
+        'tutorials/examples/near-drop',
+        'tutorials/examples/advanced-xcc',
+        'tutorials/examples/update-contract-migrate-state',
+        {
+          "Build a FT Contract from Scratch": [
+            'tutorials/fts/introduction',
+            'tutorials/fts/predeployed-contract',
+            'tutorials/fts/skeleton',
+            'tutorials/fts/defining-a-token',
+            'tutorials/fts/circulating-supply',
+            'tutorials/fts/registering-accounts',
+            'tutorials/fts/transfers',
+            'tutorials/fts/marketplace',
+          ]
+        },
+        {
+          "Build a NFT Contract from Scratch": [
+            'tutorials/nfts/introduction',
+            {
+              Basic: [
+                'tutorials/nfts/predeployed-contract',
+                'tutorials/nfts/skeleton',
+                'tutorials/nfts/minting',
+                'tutorials/nfts/upgrade-contract',
+                'tutorials/nfts/enumeration',
+                'tutorials/nfts/core',
+              ],
+            },
+            'tutorials/nfts/events',
+            {
+              Marketplace: ['tutorials/nfts/approvals', 'tutorials/nfts/marketplace'],
+            },
+            'tutorials/nfts/royalty',
+            'tutorials/nfts/series',
+          ]
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Frontend Guides',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/app.svg',
+      },
+      items: [
+        'tutorials/examples/frontend-multiple-contracts',
+        'tutorials/templates/marketplace',
+        'tutorials/templates/minter',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Backend Guides',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/database.svg',
+      },
+      items: [
+        'chain-abstraction/meta-transactions-relayer',
+        'data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
+        'data-infrastructure/lake-framework/building-indexers/python-lake-indexer',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Tokens',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/token.svg',
+      },
+      items: [
+        'data-infrastructure/lake-framework/building-indexers/nft-indexer',
+        'data-infrastructure/lake-framework/building-indexers/python-nft-indexer',
+      ]
+    },
+    {
+      type: 'html',
+      value: '<hr/>',
+    },
+    {
+      type: 'category',
+      label: 'Mastering NEAR',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/mastering-near.svg',
+      },
       items: [
         'tutorials/auction/introduction',
         {
@@ -393,223 +481,7 @@ const sidebar = {
         'tutorials/auction/auction-factory',
       ],
     },
-    {
-      type: 'html',
-      value: '<hr/>',
-    },
-    {
-      type: 'html',
-      value: "<span class='menu__link'><b><small>EXAMPLES & TUTORIALS</small></b></span>",
-    },
-    {
-      type: 'category',
-      label: 'Front-ends',
-      customProps: {
-        icon: '/img/icons/app.svg',
-      },
-      collapsed: true,
-      link: { type: 'doc', id: 'tutorials/examples/guest-book' },
-      items: [
-        'tutorials/examples/guest-book',
-        'tutorials/templates/marketplace',
-        'tutorials/examples/frontend-multiple-contracts',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Smart Contracts',
-      collapsed: true,
-      customProps: {
-        icon: '/img/icons/contract.svg',
-      },
-      link: { type: 'doc', id: 'tutorials/examples/count-near' },
-      items: [
-        'tutorials/examples/donation',
-        'tutorials/examples/count-near',
-        'tutorials/examples/xcc',
-        'tutorials/examples/coin-flip',
-        'tutorials/templates/minter',
-        'tutorials/templates/blog',
-        {
-          'Advanced Patterns': [
-            'tutorials/examples/factory',
-            'tutorials/examples/near-drop',
-            'tutorials/examples/advanced-xcc',
-            'tutorials/examples/update-contract-migrate-state',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Build a Crossword Game',
-          items: [
-            {
-              type: 'category',
-              label: 'Basics',
-              items: [
-                'tutorials/crosswords/basics/overview',
-                'tutorials/crosswords/basics/set-up-skeleton',
-                'tutorials/crosswords/basics/add-functions-call',
-                'tutorials/crosswords/basics/hashing-and-unit-tests',
-                'tutorials/crosswords/basics/simple-frontend',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Beginner',
-              items: [
-                'tutorials/crosswords/beginner/overview',
-                'tutorials/crosswords/beginner/collections',
-                'tutorials/crosswords/beginner/structs-enums',
-                'tutorials/crosswords/beginner/actions',
-                'tutorials/crosswords/beginner/adding-a-puzzle',
-                'tutorials/crosswords/beginner/logging-in',
-                'tutorials/crosswords/beginner/logging-in-implementation',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Intermediate',
-              items: [
-                'tutorials/crosswords/intermediate/overview',
-                'tutorials/crosswords/intermediate/access-key-solution',
-                'tutorials/crosswords/intermediate/use-seed-phrase',
-                'tutorials/crosswords/intermediate/linkdrop',
-                'tutorials/crosswords/intermediate/cross-contract-calls',
-                'tutorials/crosswords/intermediate/base64vecu8',
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Tokens',
-      collapsed: true,
-      customProps: {
-        icon: '/img/icons/token.svg',
-      },
-      link: { type: 'doc', id: 'tutorials/fts/introduction' },
-      items: [
-        {
-          type: 'category',
-          label: 'Fungible Tokens (FT)',
-          link: { type: 'doc', id: 'tutorials/fts/introduction' },
-          items: [
-            'tutorials/fts/introduction',
-            'tutorials/fts/predeployed-contract',
-            'tutorials/fts/skeleton',
-            'tutorials/fts/defining-a-token',
-            'tutorials/fts/circulating-supply',
-            'tutorials/fts/registering-accounts',
-            'tutorials/fts/transfers',
-            'tutorials/fts/marketplace',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Non-Fungible Tokens (NFT)',
-          link: { type: 'doc', id: 'tutorials/nfts/minting-nfts' },
-          items: [
-            'tutorials/nfts/minting-nfts',
-            {
-              type: 'html',
-              value: '<hr/>',
-            },
-            {
-              '🌐 Contract: Zero to Hero (JS)': [
-                'tutorials/nfts/js/introduction',
-                'tutorials/nfts/js/predeployed-contract',
-                'tutorials/nfts/js/skeleton',
-                'tutorials/nfts/js/minting',
-                'tutorials/nfts/js/upgrade-contract',
-                'tutorials/nfts/js/enumeration',
-                'tutorials/nfts/js/core',
-                'tutorials/nfts/js/approvals',
-                'tutorials/nfts/js/royalty',
-                'tutorials/nfts/js/events',
-                'tutorials/nfts/js/marketplace',
-              ],
-            },
-            {
-              '🦀 Contract: Zero to Hero (Rust)': [
-                'tutorials/nfts/introduction',
-                {
-                  Basic: [
-                    'tutorials/nfts/predeployed-contract',
-                    'tutorials/nfts/skeleton',
-                    'tutorials/nfts/minting',
-                    'tutorials/nfts/upgrade-contract',
-                    'tutorials/nfts/enumeration',
-                    'tutorials/nfts/core',
-                  ],
-                },
-                'tutorials/nfts/events',
-                {
-                  Marketplace: ['tutorials/nfts/approvals', 'tutorials/nfts/marketplace'],
-                },
-                'tutorials/nfts/royalty',
-                'tutorials/nfts/series',
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Multi-Chain',
-      collapsed: true,
-      customProps: {
-        icon: '/img/icons/multichain.svg',
-      },
-      link: { type: 'doc', id: 'tutorials/controlling-near-accounts/introduction' },
-      items: [
-        {
-          type: 'category',
-          label: 'Controlling NEAR Accounts',
-          link: { type: 'doc', id: 'tutorials/controlling-near-accounts/introduction' },
-          items: [
-            'tutorials/controlling-near-accounts/introduction',
-            'tutorials/controlling-near-accounts/setup',
-            'tutorials/controlling-near-accounts/transfer',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Multi-Chain DAO Governance',
-          link: { type: 'doc', id: 'tutorials/multichain-dao/introduction' },
-          items: [
-            'tutorials/multichain-dao/introduction',
-            'tutorials/multichain-dao/request',
-            'tutorials/multichain-dao/signing',
-            'tutorials/multichain-dao/voting',
-          ],
-        },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Data Infrastructure',
-      collapsed: true,
-      customProps: {
-        icon: '/img/icons/database.svg',
-      },
 
-      link: { type: 'doc', id: 'data-infrastructure/lake-framework/building-indexers/primitives' },
-      items: [
-        'data-infrastructure/lake-framework/building-indexers/primitives',
-        {
-          type: 'link',
-          label: 'NEAR Lake Primitives',
-          href: 'https://near.github.io/near-lake-framework-js/',
-        },
-        'data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
-        'data-infrastructure/lake-framework/building-indexers/python-lake-indexer',
-        'data-infrastructure/lake-framework/building-indexers/nft-indexer',
-        'data-infrastructure/lake-framework/building-indexers/python-nft-indexer',
-      ],
-    },
   ],
   tools: [
     'tools/welcome',

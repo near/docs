@@ -1,7 +1,7 @@
 ---
 id: quickstart
-title: Hello WebApp
-sidebar_label: Quickstart ✨
+title: Hello, Web3 App!
+sidebar_label: Your First Web3 App
 description: "Quick guide to create a Web3 frontend application with NEAR integration - build a React/Next.js app where users can login with wallets and interact with smart contracts."
 ---
 import Tabs from '@theme/Tabs';

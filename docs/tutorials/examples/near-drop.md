@@ -65,7 +65,7 @@ Creates the `account_id`, and then drops the tokens into it
 
 ## Contract's State
 
-We can see in the contract's state that the contract keeps track of different `PublicKeys`, and links them to a specific `DropId`, which is simply an identifier for a `Drop` (see bellow). 
+We can see in the contract's state that the contract keeps track of different `PublicKeys`, and links them to a specific `DropId`, which is simply an identifier for a `Drop` (see below). 
 
 - `top_level_account`: The account that will be used to create new accounts, generally it will be `testnet` or `mainnet`
 - `next_drop_id`: A simple counter used to assign unique identifiers to each drop
