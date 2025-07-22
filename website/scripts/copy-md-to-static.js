@@ -230,7 +230,9 @@ async function processMarkdownFiles() {
           pageDescription.startsWith('![')) {
         console.warn(`Warning: No valid description found in ${relativeFilename}`);
       }
-      
+      if(!frontmatter.description){
+        console.log(`❌ No description tag found for ${relativeFilename}`);
+      }
       const pageTitle = frontmatter.title || 
                        frontmatter.sidebar_label || 
                        alternativeId.replace(/[-_]/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase());
@@ -241,7 +243,7 @@ async function processMarkdownFiles() {
       documentationPages[sectionName].push({
         title: pageTitle,
         url: pageUrl,
-        description: pageDescription,
+        description: frontmatter.description || pageDescription,
         id: pageId,
       });
     })
@@ -274,9 +276,13 @@ This documentation is organized into several main sections: Protocol fundamental
     const section = documentationSections[sectionKey];
     const sectionPages = documentationPages[sectionKey] || [];
     
-    let sectionContent = `## ${section.name}\n\n`;
+    let sectionContent = `## ${section.name}\n`;
+
+    const orderedPages = sectionPages.sort((a, b) => {
+      return a.url.localeCompare(b.url);
+    });
     
-    for (const page of sectionPages) {
+    for (const page of orderedPages) {
       const cleanDescription = (page.description || page.title)
         .replace(/\s*\n\s*/g, ' ')
         .trim();

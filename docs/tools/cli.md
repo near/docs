@@ -1,18 +1,12 @@
 ---
 id: near-cli
 title: NEAR CLI
+description: "Command line interface for NEAR Protocol - create accounts, manage keys, send tokens, deploy contracts, and interact with the blockchain from your terminal."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The NEAR [Command Line Interface](https://github.com/near/near-cli-rs) (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things, the NEAR CLI enables you to:
-
-- Create a new NEAR account
-- Query information about an account
-- Send Tokens such as NEAR, FTs, and NFTs
-- Create, Add and Delete Account Keys
-- Deploy a contract
-- Call functions on a deployed contract
+The NEAR [Command Line Interface](https://github.com/near/near-cli-rs) (CLI) is a tool that enables to interact with the NEAR network directly from the shell. Among other things, the NEAR CLI enables you to create and manage accounts, send tokens such as NEAR, FTs and NFTs, deploy smart contracts,call functions on those contracts, and manage access keys.
 
 ---
 

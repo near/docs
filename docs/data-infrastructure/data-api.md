@@ -1,6 +1,7 @@
 ---
 id: data-apis
 title: Data APIs
+description: "Explore community-built APIs for accessing NEAR Protocol on-chain data, including NearBlocks, FastNear, The Graph, PIKESPEAK, and other indexing solutions."
 ---
 
 Members of the NEAR community have built a set of APIs to access and monitor on-chain data. These APIs are designed to be easy to use and can be accessed from any application through a simple API call.

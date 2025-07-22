@@ -1,7 +1,8 @@
 ---
 id: sdk
-title: "NEAR SDK"
+title: NEAR SDK
 hide_table_of_contents: false
+description: "NEAR SDK libraries for developing smart contracts in Rust and JavaScript - comprehensive tools with reference documentation and examples for building on NEAR."
 ---
 
 import Tabs from '@theme/Tabs';

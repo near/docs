@@ -3,6 +3,7 @@ id: dao
 title: Decentralized Autonomous Organizations
 sidebar_label: Autonomous Organizations (DAO)
 hide_table_of_contents: false
+description: "Learn about Decentralized Autonomous Organizations (DAOs) on NEAR - self-organized groups that coordinate membership, decision-making, and funding through smart contract voting."
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"

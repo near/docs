@@ -2,12 +2,13 @@
 id: balance-changes
 title: Balance changes
 sidebar_label: Balance Changes
+description: "Learn how to query and track account balances in NEAR protocol, including native NEAR tokens, fungible tokens, and balance management for integrations."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Prerequisites {#prerequisites}
+This document provides an overview of how to track balance changes on NEAR accounts, including sending tokens and viewing balance changes using the NEAR CLI and RPC endpoints.
 
 - [NEAR Account](https://testnet.mynearwallet.com/create)
 - [NEAR-CLI](/tools/near-cli)

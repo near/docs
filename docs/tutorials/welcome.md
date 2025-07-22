@@ -2,6 +2,7 @@
 id: welcome
 title: Examples & Tutorials
 sidebar_label: Home
+description: This page is a landing page for the examples and tutorials section of the NEAR documentation. It provides an overview of the available resources to help developers learn how to build on the NEAR platform, from beginner to advanced levels.
 hide_table_of_contents: true
 hide_title: true
 ---

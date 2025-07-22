@@ -1,6 +1,7 @@
 ---
 id: reentrancy
 title: Reentrancy Attacks
+description: "Learn about reentrancy attacks in NEAR smart contracts and how to prevent them with proper security measures and coding practices."
 ---
 
 Between a cross-contract call and its callback **any method of your contract can be executed**. Not taking this into account is one of the main sources of exploits. It is so common that it has its own name: **reentrancy attacks**.

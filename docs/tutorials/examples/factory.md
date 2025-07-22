@@ -1,6 +1,7 @@
 ---
 id: factory
 title: Factory
+description: "A factory is a smart contract that stores a compiled contract, and automatizes deploying the stored contract onto new sub-accounts."
 ---
 
 import Tabs from '@theme/Tabs';

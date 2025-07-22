@@ -1,6 +1,7 @@
 ---
 id: transaction-execution
 title: Lifecycle of a Transaction
+description: "Comprehensive guide to transaction execution in NEAR Protocol, including receipts, finality, cross-contract calls, and transaction status determination."
 ---
 
 `Transactions` are constructed by users to express the intent of performing actions in the network. Once in the network, transactions are converted into `Receipts`, which are messages exchanged between network nodes.

@@ -1,7 +1,10 @@
 ---
 id: tokens
 title: Tokens
+description: "NEAR Protocol has a native token, NEAR (Ⓝ), which is used for various purposes within the ecosystem. This document provides an overview of the NEAR token, its use cases, and how it functions within the NEAR Protocol."
 ---
+
+NEAR Protocol has a native token, NEAR (Ⓝ), which is used for various purposes within the ecosystem. This document provides an overview of the NEAR token, its use cases, and how it functions within the NEAR Protocol.
 
 # NEAR Token
 This is the native token used in NEAR Protocol.

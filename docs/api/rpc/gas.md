@@ -1,6 +1,7 @@
 ---
 id: gas
-title: Gas 
+title: Gas
+description: "Query gas prices for specific blocks or hashes using the NEAR RPC API."
 ---
 
 import GasPrice from '@site/src/components/docs/api/rpc/gas/gas-price/index.mdx';

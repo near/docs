@@ -2,6 +2,7 @@
 id: approvals
 title: Approvals
 sidebar_label: Approvals
+description: "In this tutorial you'll learn the basics of an approval management system which will allow you to grant others access to transfer NFTs on your behalf. This is the backbone of all NFT marketplaces and allows for some complex yet beautiful scenarios to happen. If you're joining us for the first time, feel free to clone this repository and checkout the 4.core branch to follow along."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

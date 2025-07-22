@@ -1,6 +1,7 @@
 ---
 id: donation
 title: Donation
+description: "Build a donation smart contract that accepts NEAR tokens, tracks donations, and distributes funds to beneficiaries with transparent accounting."
 ---
 
 import {CodeTabs, Language, Github} from '@site/src/components/codetabs';

@@ -2,6 +2,7 @@
 id: introduction
 title: Near Multi-Chain DAO Governance
 sidebar_label: Introduction
+description: "Many multi-chain organizations deploy copies of the same smart contract across multiple EVM chains, which need to be kept in sync."
 ---
 
 import Tabs from '@theme/Tabs';

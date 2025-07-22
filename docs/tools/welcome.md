@@ -3,11 +3,12 @@ id: welcome
 title: Tools
 sidebar_label: Home
 hide_table_of_contents: true
+description: "Complete set of NEAR ecosystem tools including CLI, API, SDK, wallet selector, explorers, data APIs, indexers, and developer resources."
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 
-The NEAR ecosystem has a complete set of tools for you to make the most out of our network.
+The NEAR ecosystem has a complete set of tools for you to make the most out of our network. Whether you're building smart contracts, integrating wallets, or querying on-chain data, NEAR provides a robust suite of tools to enhance your development experience.
 
 <FeatureList>
   <Column title="Essentials">

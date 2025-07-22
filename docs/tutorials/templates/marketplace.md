@@ -1,3 +1,9 @@
+---
+description: "This tutorial provides a step-by-step guide to creating a marketplace frontend using Mintbase's SDK. It covers connecting a wallet, retrieving NFTs, store data, metadata, and executing contract calls for buying NFTs. The guide is part of the Mintbase Templates collection and includes setup instructions, code snippets, and environment variable configurations."
+---
+This tutorial provides a step-by-step guide to creating a marketplace frontend using Mintbase's SDK. It covers connecting a wallet, retrieving NFTs, store data, metadata, and executing contract calls for buying NFTs. The guide is part of the Mintbase Templates collection and includes setup instructions, code snippets, and environment variable configurations.
+
+
 # Marketplace Frontend
 
 [![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://marketplace-template.mintbase.xyz/)

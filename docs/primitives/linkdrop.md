@@ -2,6 +2,7 @@
 id: linkdrop
 title: Linkdrops
 hide_table_of_contents: false
+description: "Learn about linkdrops following NEP-452 standard - distribute assets and onboard users to Web3 apps through simple web links using access keys and the Keypom platform."
 ---
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';

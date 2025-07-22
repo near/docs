@@ -1,11 +1,13 @@
 ---
 id: environment
 title: Environment
-#sidebar_label: 🏞️ Environment
+description: "The environment is a set of variables and functions that are available to your smart contract when it is executed. It provides information such as who called the method, how much money was attached to the call, and how many computational resources are available."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+The environment is a set of variables and functions that are available to your smart contract when it is executed. It provides information such as who called the method, how much money was attached to the call, and how many computational resources are available.
 
 Every method execution has an environment associated with information such as:
 

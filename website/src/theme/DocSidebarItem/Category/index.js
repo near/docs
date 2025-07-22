@@ -25,11 +25,14 @@ export function CategoryIcon({icon}) {
   }
 
   const svgStyle = {
-    width: '22px',
+    minWidth: '22px',
     height: '22px',
     background: 'var(--icon-svg-color)',
     marginRight: '0.75rem',
-    mask: `url(${icon}) round`,
+    mask: `url(${icon})`,
+    maskRepeat: 'no-repeat',
+    maskSize: 'contain',
+    paddingRight: '0.75rem',
   };
 
   return (

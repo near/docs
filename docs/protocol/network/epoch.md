@@ -1,11 +1,14 @@
 ---
 id: epoch
 title: Epoch
+description: "Learn about epochs in NEAR Protocol, including their duration, role in validator selection, and how they affect network operations and data retention."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+
+This section explains the concept of an **epoch** in the NEAR Protocol, which is a unit of time when validators of the network remain constant. It describes how epochs are measured, their duration, and their significance in the network's operation.
 
 An **epoch** is a unit of time when validators of the network remain constant. It is measured in blocks:
 
