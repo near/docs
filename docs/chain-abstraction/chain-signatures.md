@@ -16,7 +16,9 @@ _Diagram of a chain signature in NEAR_
 
 <summary> Supported Networks </summary>
 
-You can connect with networks like Bitcoin, Solana, Cosmos, XRP, Aptos, and Sui. You get support for Ethereum and EVM-compatible chains such as Base, BNB Chain, Avalanche, Polygon, Arbitrum, and more.
+While you can sign transactions for any network using Eddsa or Ecdsa keys, each chain signs transactions differently.
+
+Our example [implementation](./chain-signatures/implementation) shows you how to sign transactions for: Bitcoin, Solana, Cosmos, XRP, Aptos, Sui and EVM networks (Ethereum, Base, BNB Chain, Avalanche, Polygon, Arbitrum, and more).
 
 </details>
 
