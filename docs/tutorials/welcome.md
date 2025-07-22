@@ -5,7 +5,6 @@ sidebar_label: Home
 description: This page is a landing page for the examples and tutorials section of the NEAR documentation. It provides an overview of the available resources to help developers learn how to build on the NEAR platform, from beginner to advanced levels.
 hide_table_of_contents: true
 hide_title: true
-description: "Learn to build on NEAR with hands-on examples, comprehensive tutorials, and step-by-step guides covering Web3 applications, smart contracts, tokens, NFTs, and multichain development."
 ---
 
 import {Container, Card} from "@site/src/components/cards";
