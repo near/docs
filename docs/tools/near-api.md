@@ -312,7 +312,7 @@ To allow users to login into your web application using a wallet you will need t
 
   Signers can be created by using a private key string.
 
-  Private keys have the format "ed25519:5Fg2...".
+  Private keys have the format `ed25519:5Fg2...`.
 
   <Github fname="private_key_string.rs" language="rust"
     url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/signer_options/private_key_string.rs#L13-L14"
@@ -323,7 +323,7 @@ To allow users to login into your web application using a wallet you will need t
 
   Signers can be created by using a seed phrase.
 
-  Seed phrases have the format "shoe three gate ..." and are usually 12 words long.
+  Seed phrases have the format `shoe three gate ...` and are usually 12 words long.
 
   <Github fname="seed_phrase.rs" language="rust"
     url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/signer_options/seed_phrase.rs#L11-L12"
@@ -626,8 +626,8 @@ When creating a new account, you’ll need to provide:
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="create_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account.rs#L32-L49"
-    start="32" end="49" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account.rs#L32-L47"
+    start="32" end="47" />
 
   <details>
     <summary>Creating an account from a seed phrase</summary>
@@ -692,8 +692,8 @@ To create a sub-account, the parent must send a transaction to itself with the [
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="create_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account.rs#L65-L82"
-    start="65" end="82" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account.rs#L61-L82"
+    start="61" end="82" />
 
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -743,8 +743,8 @@ Deleting an account **DOES NOT** affect its sub-accounts - they will remain acti
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="delete_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/delete_account.rs#L54-L59"
-    start="54" end="59" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/delete_account.rs#L51-L59"
+    start="51" end="59" />
 
   </TabItem>
 </Tabs>
