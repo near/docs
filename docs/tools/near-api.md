@@ -1369,8 +1369,8 @@ A [Full Access key](/protocol/access-keys.md#full-access-keys), as the name sugg
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L22-L39"
-    start="22" end="39" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L25-L37"
+    start="25" end="37" />
 
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -1433,8 +1433,8 @@ One of the most powerful use cases for this type of key is enabling seamless use
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L43-L62"
-    start="43" end="62" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L38-L56"
+    start="38" end="56" />
 
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -1481,8 +1481,8 @@ Be very careful when deleting keys. If you remove the same key used to sign the 
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L67-L72"
-    start="67" end="72" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L57-L72"
+    start="57" end="72" />
 
   </TabItem>
   <TabItem value="python" label="🐍 Python">
