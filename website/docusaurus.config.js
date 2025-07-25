@@ -1,5 +1,3 @@
-import { icons } from 'lucide-react';
-
 // @ts-check
 const path = require('path');
 const changelogs = require('./src/utils/changelogs.json');
@@ -73,7 +71,6 @@ const config = {
   ],
   plugins: [
     './src/plugins/monaco-editor',
-    './src/plugins/node-polyfills',
     'docusaurus-plugin-sass',
   ],
   themeConfig: {
