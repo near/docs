@@ -13,6 +13,16 @@ This unlocks the next level of blockchain interoperability by giving ownership o
 ![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
 
+<details>
+
+<summary> Supported Networks </summary>
+
+While you can sign transactions for any network using Eddsa or Ecdsa keys, each chain signs transactions differently.
+
+Our example [implementation](./chain-signatures/implementation) shows you how to sign transactions for: Bitcoin, Solana, Cosmos, XRP, Aptos, Sui and EVM networks (Ethereum, Base, BNB Chain, Avalanche, Polygon, Arbitrum, and more).
+
+</details>
+
 ## Benefits
 
 Integration with Chain Signatures brings many benefits to Web3 developers:
