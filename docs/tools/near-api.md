@@ -1236,7 +1236,7 @@ There are two ways to reference a global contract:
   ```rust
     let global_account_id: AccountId = "nft-contract.testnet".parse().unwrap();
     let code = std::fs::read("path/to/your/contract.wasm").unwrap();
-    let signer = Signer::new(Signer::from_ledger()).unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
 
     let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(code)
         .as_account_id(global_account_id)
@@ -1245,7 +1245,7 @@ There are two ways to reference a global contract:
         .await.unwrap();
   ```
 
-  <a href="https://github.com/near-examples/near-api-examples/blob/adcbba98c0a957bbd3c8146e108dfefa8ed72465/rust/examples/global_contract_accountid.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs" target="_blank" rel="noreferrer noopener" class="text-center">
     See full example on GitHub
   </a>
   </TabItem>
@@ -1259,7 +1259,7 @@ There are two ways to reference a global contract:
   ```rust
     let account_id: AccountId = "my-account.testnet".parse().unwrap();
     let code = std::fs::read("path/to/your/contract.wasm").unwrap();
-    let signer = Signer::new(Signer::from_ledger()).unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
 
     let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(code)
         .as_hash()
@@ -1268,7 +1268,7 @@ There are two ways to reference a global contract:
         .await.unwrap();
   ```
 
-  <a href="https://github.com/near-examples/near-api-examples/blob/adcbba98c0a957bbd3c8146e108dfefa8ed72465/rust/examples/global_contract_hash.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs" target="_blank" rel="noreferrer noopener" class="text-center">
     See full example on GitHub
   </a>
   </TabItem>
@@ -1331,7 +1331,7 @@ Once a [global contract](../smart-contracts/global-contracts.md) has been [deplo
   ```rust
     let global_account_id: AccountId = "nft-contract.testnet".parse().unwrap();
     let my_account_id: AccountId = "my-contract.testnet".parse().unwrap();
-    let my_signer = Signer::new(Signer::from_ledger()).unwrap();
+    let my_signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
 
     let result: FinalExecutionOutcomeView = Contract::deploy(my_account_id)
         .use_global_account_id(global_account_id)
@@ -1341,7 +1341,7 @@ Once a [global contract](../smart-contracts/global-contracts.md) has been [deplo
         .await.unwrap();
   ```
 
-  <a href="https://github.com/near-examples/near-api-examples/blob/adcbba98c0a957bbd3c8146e108dfefa8ed72465/rust/examples/global_contract_accountid.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs" target="_blank" rel="noreferrer noopener" class="text-center">
     See full example on GitHub
   </a>
   </TabItem>
@@ -1353,7 +1353,7 @@ Once a [global contract](../smart-contracts/global-contracts.md) has been [deplo
   ```rust
     let global_hash: types::CryptoHash = "DxfRbrjT3QPmoANMDYTR6iXPGJr7xRUyDnQhcAWjcoFF".parse().unwrap();
     let account_id: AccountId = "my-contract.testnet".parse().unwrap();
-    let signer = Signer::new(Signer::from_ledger()).unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
 
     let result: FinalExecutionOutcomeView = Contract::deploy(account_id)
         .use_global_hash(global_hash)
@@ -1363,7 +1363,7 @@ Once a [global contract](../smart-contracts/global-contracts.md) has been [deplo
         .await.unwrap();
   ```
 
-  <a href="https://github.com/near-examples/near-api-examples/blob/adcbba98c0a957bbd3c8146e108dfefa8ed72465/rust/examples/global_contract_hash.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs" target="_blank" rel="noreferrer noopener" class="text-center">
     See full example on GitHub
   </a>
   </TabItem>
