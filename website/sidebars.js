@@ -368,10 +368,13 @@ const sidebar = {
         icon: '/img/icons/contract.svg',
       },
       items: [
+        'tutorials/examples/count-near',
+        'tutorials/examples/guest-book',
         'tutorials/examples/donation',
         'tutorials/examples/coin-flip',
         'tutorials/examples/factory',
         'tutorials/examples/near-drop',
+        'tutorials/examples/xcc',
         'tutorials/examples/advanced-xcc',
         'tutorials/examples/update-contract-migrate-state',
         {
@@ -405,6 +408,29 @@ const sidebar = {
             },
             'tutorials/nfts/royalty',
             'tutorials/nfts/series',
+          ]
+        },
+        {
+          "Build a NFT Contract from Scratch (JS)": [
+            'tutorials/nfts/js/introduction',
+            {
+              Basic: [
+                'tutorials/nfts/js/predeployed-contract',
+                'tutorials/nfts/js/skeleton',
+                'tutorials/nfts/js/minting',
+                'tutorials/nfts/js/upgrade-contract',
+                'tutorials/nfts/js/enumeration',
+                'tutorials/nfts/js/core',
+              ],
+            },
+            'tutorials/nfts/js/events',
+            {
+              Marketplace: [
+                'tutorials/nfts/js/approvals',
+                'tutorials/nfts/js/marketplace'
+              ],
+            },
+            'tutorials/nfts/js/royalty',
           ]
         },
       ],
