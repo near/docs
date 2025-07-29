@@ -205,7 +205,7 @@ const sidebar = {
           ],
         },
         {
-          'Advanced': [
+          'Global Contracts': [
             'smart-contracts/global-contracts'
           ],
         },
