@@ -60,7 +60,7 @@ Be mindful of not confusing an NFT with an NFT-marketplace. NFT simply store inf
 The easiest way to create and handle NFTs is by using one of the existing community projects.
 
 1. [Paras](https://paras.id/) - a classic NFT marketplace. Just login with your NEAR account, create a collection and share the link with your community.
-2. [Mintbase](https://www.mintbase.xyz/) - a marketplace that allows to create NFT collections, and buy NFTs using credit cards or stablecoins.
+2. [Bitte Protocol + Mintbase](https://bitte.ai/) - a toolkit for building NFT applications using Mintbase tooling, under the Bitte Protocol on the NEAR blockchain.
 3. [Enleap](https://enleap.app/) - a no-code launchpad for NFTs. Provides NFT minting, staking, whitelist managing, tracking functionality.
 
 ---
@@ -261,7 +261,7 @@ If the `msg` parameter is included, then a cross-contract call will be made to `
 
 Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) do not implement marketplace functionality.
 
-For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Mintbase](https://www.mintbase.xyz/), that use dedicated marketplace contracts.
+For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Bitte Protocol + Mintbase](https://bitte.ai/), that use dedicated marketplace contracts.
 
 In order to put a NFT for a sale on a marketplace you need to do two actions:
 
@@ -288,7 +288,7 @@ In order to put a NFT for a sale on a marketplace you need to do two actions:
 
 Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) do not implement marketplace functionality.
 
-For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Mintbase](https://www.mintbase.xyz/), that use dedicated marketplace contracts.
+For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Bitte Protocol + Mintbase](https://bitte.ai/), that use dedicated marketplace contracts.
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
@@ -315,7 +315,6 @@ For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or
 
 ## Additional Resources
 
-3. [NFT Tutorial by Keypom](https://github.com/keypom/nft-tutorial-series) (a fork of the NEAR example tutorial).
-4. [Paras API documentation](https://parashq.github.io/).
-5. [Mintbase API documentation](https://docs.mintbase.xyz/dev/mintbase-graph).
-6. [Mintbase JS SDK](https://docs.mintbase.xyz/dev/mintbase-sdk-ref) - a set of methods to get data from blockchain, interact with Mintbase contracts, etc.
+1. [NFT Tutorial by Keypom](https://github.com/keypom/nft-tutorial-series) (a fork of the NEAR example tutorial).
+2. [Paras API documentation](https://parashq.github.io/).
+

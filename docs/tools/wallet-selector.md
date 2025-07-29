@@ -19,7 +19,7 @@ Here is a list of user-friendly wallets that support the NEAR blockchain, you ca
 
 - [Meteor Wallet](https://wallet.meteorwallet.app/): Both a browser and extension wallet, with advanced NFT features.
 
-- [Mintbase Wallet](https://wallet.mintbase.xyz/): A passkey meta-transaction, browser wallet, with advanced NFT and AI features. If you're looking to integrate Mintbase Wallet into your applications, [check this tutorial](https://docs.mintbase.xyz/wallet/integrating-mintbase-wallet) to get started.
+- [Bitte Wallet](https://wallet.mintbase.xyz/): A passkey meta-transaction, browser wallet, with advanced NFT and AI features. If you're looking to integrate Mintbase Wallet into your applications, [check this tutorial](https://github.com/Mintbase/mintbase-js/tree/beta/packages/sdk) to get started.
 
 - [MyNearWallet](https://mynearwallet.com/): A browser based wallet that offers the same UI and features of `wallet.near.org`.
 
