@@ -43,4 +43,4 @@ Agents are accessible through the [NEAR AI Assistant](https://chat.near.ai/chat)
 
 ## Bitte Protocol
 
-Bitte Protocol is a framework for creating AI agents that interact with smart contracts on NEAR and other chains via natural language. Bitte agents are quick and easy to get started with, you can build an agent for a smart contract in a couple of hours with little prior knowledge of agents. 
+[Bitte Protocol](https://docs.bitte.ai/agents/build-agent) is a framework for creating AI agents that interact with smart contracts on NEAR and other chains via natural language. Bitte agents are quick and easy to get started with, you can build an agent for a smart contract in a couple of hours with little prior knowledge of agents. 
