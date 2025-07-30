@@ -349,7 +349,7 @@ Let's add the interface for later use somewhere after `interface EventLogData`:
 
 ```ts
 interface ParasEventLogData {
-  owner_id: string,<>
+  owner_id: string,
   token_ids: string[],
 };
 ```
