@@ -8,10 +8,34 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 Global contracts allow smart contracts to be deployed once and reused by any account without incurring high storage costs.
+Rather than deploying duplicate contracts or routing messages inefficiently across shards, NEAR developers can now think modularly and universally: write once, use everywhere.
 
 ## Overview
 
 If you've ever deployed the same contract code to multiple accounts, you’ve likely noticed that each deployment requires you to pay the full storage cost again — since the size of the WASM file determines how much `NEAR` is locked on the account.
+With [NEP-0591](https://github.com/near/NEPs/blob/master/neps/nep-0591.md), which introduces Global Contracts, NEAR provides a highly strategic alternative that [solves this elegantly](#solution).
+
+## Key Features
+
+These are the features that make Global Contracts special:
+
+- **Global Addressing**: These contracts are not tied to a specific account but instead use a unique global identifier. This enables any contract, user, or application on NEAR to call the contract from any shard instantly.
+
+- **Immutable Logic**: The contract code is fixed once deployed, making it a trusted point of reference. This ensures consistency and security—ideal for system-critical protocols.
+
+- **Shared Infrastructure**: Global contracts can act as canonical libraries, utility hubs, or standards for other contracts to rely on, simplifying development and reducing duplication.
+
+- **Cross-Shard Superpowers**: Developers can build truly modular apps where parts of their stack reside on different shards but communicate via shared global logic with minimal latency or duplication.
+
+### Use Cases
+
+- **Standard Libraries**: Reusable components for math, string operations, or token interfaces.
+- **DeFi Protocols**: Global contracts can anchor DEXs, lending markets, oracles—shared across all applications.
+- **DAO Frameworks**: Shared governance modules that any DAO can plug into, ensuring consistency and reliability.
+- **Identity & Credentials**: One global contract can manage decentralized identity verification and access management for the entire chain.
+- **Multi-part dApps**: Complex applications can split responsibilities across shards while accessing a common logic core.
+
+## Solution
 
 Global Contracts solve this inefficiency by allowing the same contract code to be shared across multiple accounts, so storage cost is paid only once.
 
@@ -19,11 +43,11 @@ There are two ways to reference a global contract:
 - [By Account](#reference-by-account)
 - [By Hash](#reference-by-hash)
 
-## Reference by Account
+### Reference by Account
 
 When using a reference **by account**, the contract code is tied to another account. If that account later deploys a new version of the contract, your account will automatically start using the updated code, with no need for redeployment.
 
-## Reference by Hash
+### Reference by Hash
 
 When using a reference **by hash**, you reference the global contract by its immutable code hash. This ensures you're always using the exact same version, and it will never change unless you explicitly redeploy with a different hash.
 
