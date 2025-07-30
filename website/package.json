@@ -39,7 +39,6 @@
     "@docusaurus/plugin-sitemap": "3.8.1",
     "@docusaurus/preset-classic": "3.8.1",
     "@docusaurus/theme-mermaid": "3.8.1",
-<<<<<<< HEAD
     "@feelback/react": "^0.3.4",
     "@near-js/utils": "^2.2.4",
     "@saucelabs/theme-github-codeblock": "^0.2.3",
@@ -50,7 +49,6 @@
     "docusaurus-plugin-remote-content": "^4.0.0",
     "docusaurus-plugin-sass": "^0.2.5",
     "express": "^4.18.2",
-=======
     "@near-wallet-selector/bitte-wallet": "^9.2.0",
     "@near-wallet-selector/core": "^9.2.0",
     "@near-wallet-selector/ethereum-wallets": "^9.2.0",
@@ -62,14 +60,7 @@
     "@near-wallet-selector/nightly": "^9.2.0",
     "@near-wallet-selector/react-hook": "^9.2.0",
     "@near-wallet-selector/sender": "^9.2.0",
-    "@saucelabs/theme-github-codeblock": "^0.3.0",
-    "axios": "^1.11.0",
-    "bootstrap": "^5.3.7",
-    "bootstrap-icons": "^1.13.1",
-    "clsx": "^2.1.1",
     "crypto-browserify": "^3.12.1",
-    "docusaurus-plugin-sass": "^0.2.6",
->>>>>>> origin/testnet-login
     "gleap": "^13.7.3",
     "lodash": "^4.17.21",
     "monaco-editor": "^0.52.2",
@@ -80,11 +71,7 @@
     "react-bootstrap": "^2.9.1",
     "react-bootstrap-typeahead": "^6.3.2",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
     "react-hook-form": "^7.61.1",
-    "react-is": "^18.2.0",
-=======
->>>>>>> origin/testnet-login
     "react-markdown": "^10.1.0",
     "react-monaco-editor": "^0.59.0",
     "react-syntax-highlighter": "^15.6.1",
