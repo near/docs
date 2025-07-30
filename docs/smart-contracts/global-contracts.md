@@ -37,11 +37,19 @@ These are the features that make Global Contracts special:
 
 ## Solution
 
-Global Contracts solve this inefficiency by allowing the same contract code to be shared across multiple accounts, so storage cost is paid only once.
+Global Contracts solve the inefficiency of duplicate deployments by allowing the same contract code to be shared across multiple accounts, so storage cost is paid only once.
 
 There are two ways to reference a global contract:
 - [By Account](#reference-by-account)
 - [By Hash](#reference-by-hash)
+
+
+:::info
+- The contract code is distributed across all shards in the Near Protocol network, not stored inside any specific account’s storage.
+- The account is charged 10x more for deploying a Global Contract, at the rate 10 NEAR per 100KB.
+- This amount is entirely burnt and cannot be recovered later, unlike regular deployments where Near is simply locked.
+- The total fee is typically under 0.001 NEAR for a user to use a Global Contract, since only a few bytes are needed for the reference that is stored in the account's storage.
+:::
 
 ### Reference by Account
 
