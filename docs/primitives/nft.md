@@ -261,7 +261,7 @@ If the `msg` parameter is included, then a cross-contract call will be made to `
 
 Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) do not implement marketplace functionality.
 
-For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Bitte Protocol + Mintbase](https://bitte.ai/), that use dedicated marketplace contracts.
+For this purpose, there are ecosystem apps such as Paras or Bitte Protocol + Mintbase, that use dedicated marketplace contracts. 
 
 In order to put a NFT for a sale on a marketplace you need to do two actions:
 
@@ -288,7 +288,7 @@ In order to put a NFT for a sale on a marketplace you need to do two actions:
 
 Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) do not implement marketplace functionality.
 
-For this purpose, there are ecosystem apps such as [Paras](https://paras.id/) or [Bitte Protocol + Mintbase](https://bitte.ai/), that use dedicated marketplace contracts.
+For this purpose, there are ecosystem apps such as Paras or Bitte Protocol + Mintbase, that use dedicated marketplace contracts. _(Note: Some marketplace services may be temporarily unavailable.)_
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">

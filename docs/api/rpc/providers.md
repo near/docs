@@ -18,7 +18,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 | Provider                                                                   | Endpoint Root                                                | Public Endpoint    | Archival Node      |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------ | ------------------ |
-| [1RPC](https://1rpc.io/)                                                    | `https://1rpc.io/near`                                       | :heavy_check_mark: |                    |
+| [1RPC](https://docs.1rpc.io/)                                                    | `https://1rpc.io/near`                                       | :heavy_check_mark: |                    |
 | [All That Node](https://www.allthatnode.com/)                              | `https://allthatnode.com/protocol/near.dsrv`                 |                    | :heavy_check_mark: |
 | [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  |                    |                    |
 | [BlockPI Network](https://blockpi.io)                                      | `https://near.blockpi.network/v1/rpc/public`                 | :heavy_check_mark: |                    |
