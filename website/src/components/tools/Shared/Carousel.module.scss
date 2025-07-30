@@ -1,0 +1,98 @@
+// Carousel component styles using Bootstrap and Sass
+.carouselContainer {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  padding: 18px 12px 8px 12px;
+  gap: 12px;
+  scrollbar-width: thin;
+  
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+}
+
+.imgCard {
+  flex: 0 0 auto;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  transform: scale(1);
+  transition: transform 0.3s ease, border 0.3s ease;
+  position: relative;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  &.selected {
+    border: solid 2px #604cc8CC;
+    transform: scale(1.1) translateY(-10px);
+  }
+  
+  // Bootstrap tooltip alternative using CSS
+  &[data-title]:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  
+  &[data-title]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    pointer-events: none;
+  }
+}
+
+// Dark theme support
+[data-theme='dark'] {
+  .imgCard[data-title]:hover::after {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+  }
+  
+  .imgCard[data-title]:hover::before {
+    border-bottom-color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .carouselContainer {
+    padding: 12px 8px 6px 8px;
+    gap: 8px;
+  }
+  
+  .imgCard {
+    &.selected {
+      transform: scale(1.05) translateY(-5px);
+    }
+  }
+}

@@ -248,6 +248,11 @@ const config = {
           label: 'RPC',
           activeBaseRegex: '/api/rpc',
         },
+        {
+          to: '/toolbox',
+          label: 'Toolbox',
+          activeBaseRegex: '/toolbox',
+        },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {
           type: 'html',
