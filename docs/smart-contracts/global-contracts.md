@@ -40,8 +40,8 @@ These are the features that make Global Contracts special:
 Global Contracts solve the inefficiency of duplicate deployments by allowing the same contract code to be shared across multiple accounts, so storage cost is paid only once.
 
 There are two ways to reference a global contract:
-- [By Account](#reference-by-account)
-- [By Hash](#reference-by-hash)
+- **[By Account](#reference-by-account)**: an upgradable contract is published globally under a specific account ID.
+- **[By Hash](#reference-by-hash)**: an immutable contract is deployed globally and identified by its code hash.
 
 
 :::info
@@ -58,6 +58,33 @@ When using a reference **by account**, the contract code is tied to another acco
 ### Reference by Hash
 
 When using a reference **by hash**, you reference the global contract by its immutable code hash. This ensures you're always using the exact same version, and it will never change unless you explicitly redeploy with a different hash.
+
+## When to use Global Contracts
+
+Ask yourself the following questions before deciding how to deploy your contracts:
+
+- **_Are you working in a local environment?_**
+  
+  If you're just testing or building a prototype, [regular deployments](release/deploy.md) are simpler and more flexible. There's no need to burn tokens or register global references — just deploy and iterate.
+
+- **_Is the contract supposed to be deployed on many accounts?_**
+
+  If the same contract will be reused across many independent accounts — say, 10 or more — Global Contracts can significantly reduce overall cost and complexity. But if only a few accounts are involved, regular deployment remains the more economical choice.
+
+- **_Are these accounts managed by your team?_**
+
+  If all target accounts are under your infrastructure, you may prefer regular deployments for flexibility and cost recovery.
+- **_Are there more than 10 accounts?_**
+
+  Global Contracts become financially efficient when reused at scale. If you're deploying the same contract to more than 10 accounts, it's likely worth considering.
+
+- **_Do you need to upgrade the contract across many accounts in one step, even if it requires burning tokens?_**
+
+  If you want to be able to push updates to all deployed instances at once, then go with Global Contracts by Account ID, but keep in mind that the deployment cost is non-refundable.
+
+- **_Does your use case require the contract to be permanently immutable?_**
+
+  If the contract must never change, for example, due to security, compliance, or user trust, then using a Global Contract by Code Hash ensures immutability at the protocol level.
 
 ## Deploying a Global Contract
 
