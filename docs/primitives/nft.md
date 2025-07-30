@@ -59,9 +59,9 @@ Be mindful of not confusing an NFT with an NFT-marketplace. NFT simply store inf
 ## Community Projects
 The easiest way to create and handle NFTs is by using one of the existing community projects.
 
-1. [Paras](https://paras.id/) - a classic NFT marketplace. Just login with your NEAR account, create a collection and share the link with your community.
-2. [Bitte Protocol + Mintbase](https://bitte.ai/) - a toolkit for building NFT applications using Mintbase tooling, under the Bitte Protocol on the NEAR blockchain.
-3. [Enleap](https://enleap.app/) - a no-code launchpad for NFTs. Provides NFT minting, staking, whitelist managing, tracking functionality.
+1. Paras - a classic NFT marketplace. Just login with your NEAR account, create a collection and share the link with your community.
+2. Bitte Protocol + Mintbase - a toolkit for building NFT applications using Mintbase tooling, under the Bitte Protocol on the NEAR blockchain.
+3. Enleap - a no-code launchpad for NFTs. Provides NFT minting, staking, whitelist managing, tracking functionality.
 
 ---
 
