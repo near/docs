@@ -92,7 +92,7 @@ Global contracts can be deployed in 2 ways: either by their [hash](#reference-by
 Contracts deployed by hash are effectively immutable and cannot be updated.
 When deployed by account ID the owner can redeploy the contract updating it for all its users.
 
-Global contracts can be deployed using [`NEAR CLI`](#deploy-with-cli) or by code using [NEAR APIs](#deploy-with-api).
+Global contracts can be deployed using [`NEAR CLI`](#) or by code using [NEAR APIs](#).
 
 :::info
 Note that deploying a global contract incurs high storage costs. Tokens are burned to compensate for storing the contract on-chain, unlike regular contracts where tokens are locked based on contract size.
