@@ -1,0 +1,120 @@
+.container {
+  max-width: 600px;
+  margin: 12px auto;
+}
+
+.form {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 2rem;
+  background: var(--ifm-background-surface-color);
+  margin-bottom: 1.5rem;
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.switchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--ifm-font-color-base);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switchInput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--ifm-color-emphasis-300);
+  transition: 0.4s;
+  border-radius: 34px;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+}
+
+.switchInput:checked + .slider {
+  background-color: var(--ifm-color-primary);
+}
+
+.switchInput:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.switchIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--ifm-font-color-base);
+  z-index: 1;
+  
+  &.left {
+    left: 8px;
+  }
+  
+  &.right {
+    right: 8px;
+  }
+}
+
+.poweredBy {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-top: 1rem;
+  
+  a {
+    color: var(--ifm-color-primary);
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Dark theme adjustments
+[data-theme='dark'] {
+  .form {
+    border-color: var(--ifm-color-emphasis-200);
+    background: var(--ifm-background-color);
+  }
+  
+  .slider {
+    background-color: var(--ifm-color-emphasis-200);
+    
+    &:before {
+      background-color: var(--ifm-background-surface-color);
+    }
+  }
+}

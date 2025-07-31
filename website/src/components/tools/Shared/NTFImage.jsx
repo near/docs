@@ -1,4 +1,3 @@
-import { useWalletSelector } from '../../../hooks/useWalletSelectorMock';
 import { useEffect, useState } from 'react';
 
 import RoundedImage from './RoundedImage';
@@ -7,7 +6,7 @@ import RoundedImage from './RoundedImage';
 
 export const NftImage = ({ nft }) => {
 //   const { wallet } = useWalletSelector();
-  const [imageUrl, setImageUrl] = useState<string>('');
+  const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
     const fetchNftData = async () => {
@@ -29,5 +28,6 @@ export const NftImage = ({ nft }) => {
     fetchNftData();
   }, [nft, imageUrl]);
 
+  // return <img src={imageUrl} alt={nft?.metadata?.title || ''} style={{ objectFit: 'cover', borderRadius: '50%' }} />
   return <RoundedImage src={imageUrl} alt={nft?.metadata?.title || ''} />;
 };

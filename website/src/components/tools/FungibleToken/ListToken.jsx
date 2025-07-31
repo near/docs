@@ -26,9 +26,7 @@ const CircleWavyQuestion = ({ style = {} }) => (
 
 const ListToken = ({ tokens, loading }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  
   const display = tokens.slice(1);
-
   const toggleAccordion = () => {
     setIsExpanded(!isExpanded);
   };

@@ -1,6 +1,6 @@
 .container {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 12px auto;
 }
 
 .title {
@@ -13,7 +13,6 @@
 .subtitle {
   font-size: 0.9rem;
   color: var(--ifm-color-content-secondary);
-  margin-bottom: 1.5rem;
 }
 
 .form {
@@ -104,6 +103,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  margin-bottom: 12px;
 
   &:hover:not(:disabled) {
     background: var(--ifm-color-primary-dark);
@@ -137,13 +137,6 @@
 @keyframes spin {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-.costInfo {
-  font-size: 0.9rem;
-  color: var(--ifm-color-content-secondary);
-  margin-top: 0.5rem;
-  text-align: center;
 }
 
 // Dark theme adjustments

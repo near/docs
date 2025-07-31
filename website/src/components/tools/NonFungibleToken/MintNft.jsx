@@ -1,8 +1,8 @@
 import { useState, useCallback, useEffect } from 'react';
-import { useWalletSelector } from '../../../hooks/useWalletSelectorMock';
 import styles from './MintNft.module.scss';
+import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
-const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB
+const MAX_FILE_SIZE = 3 * 1024 * 1024;
 const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'];
 
 const MintNft = ({ reload }) => {
@@ -15,7 +15,7 @@ const MintNft = ({ reload }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [requiredDeposit, setRequiredDeposit] = useState('0');
 
-  const { callFunction, signedAccountId, signIn, signOut } = useWalletSelector();
+  const { callFunction, signedAccountId, signIn } = useWalletSelector();
 
   const validateImage = (file) => {
     if (!file) return 'Image is required';
@@ -46,12 +46,12 @@ const MintNft = ({ reload }) => {
 
   const estimateCost = useCallback(async (title, description, hasImage) => {
     const args = {
-      receiver_id: signedAccountId || 'mockuser.near',
-      token_id: 'mock-token-id',
+      receiver_id: signedAccountId ,
+      token_id: crypto.randomUUID(),
       token_metadata: {
         media: hasImage ? 'https://ipfs.near.social/ipfs/mock-cid' : '',
         title: title || '',
-        description: description || '',
+        description: description ,
       },
     };
 
@@ -85,30 +85,39 @@ const MintNft = ({ reload }) => {
     setIsSubmitting(true);
 
     try {
-      let fileCid = '';
-      if (formData.image) {
-        fileCid = 'mock-ipfs-cid-' + Date.now();
+      let file = '';
+      const image = formData.image || null;
+      const title = formData.title || '';
+      const description = formData.description || '';
+
+      if (image) {
+        const res = await fetch('https://ipfs.near.social/add', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: image,
+        });
+        const fileData = await res.json();
+        file = fileData.cid;
       }
 
       const args = {
         receiver_id: signedAccountId,
         token_id: crypto.randomUUID(),
         token_metadata: {
-          media: fileCid ? `https://ipfs.near.social/ipfs/${fileCid}` : '',
-          title: formData.title,
-          description: formData.description,
+          media: `https://ipfs.near.social/ipfs/${file}`,
+          title,
+          description,
         },
       };
 
       await callFunction({
-        contractId: 'nft.contract.near', 
+        contractId: 'nft.primitives.testnet',
         method: 'nft_mint',
         args,
         gas: '300000000000000',
         deposit: (BigInt(requiredDeposit.replace('.', '')) * BigInt(1e22)).toString(),
       });
-
-  
+      
       alert('NFT minted successfully!');
 
       setFormData({ title: '', description: '', image: null });
@@ -128,87 +137,78 @@ const MintNft = ({ reload }) => {
   }, [formData.title, formData.description, formData.image, estimateCost]);
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Mint a Non-Fungible Token</h2>
-      <p className={styles.subtitle}>
+    <>      
+    <h2>Mint a Non-Fungible Token</h2>
+      <p>
         This tool allows you to deploy your own NEP-171 smart contract (Non-Fungible Tokens)
       </p>
-
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="title">Title</label>
-          <input
-            id="title"
-            type="text"
-            className={styles.input}
-            placeholder="Enter title"
-            value={formData.title}
-            onChange={(e) => handleInputChange('title', e.target.value)}
-            disabled={!signedAccountId}
-          />
-          {errors.title && <div className={styles.error}>{errors.title}</div>}
-        </div>
-
-        <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            className={styles.textarea}
-            placeholder="Enter description"
-            value={formData.description}
-            onChange={(e) => handleInputChange('description', e.target.value)}
-            disabled={!signedAccountId}
-          />
-          {errors.description && <div className={styles.error}>{errors.description}</div>}
-        </div>
-
-        <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="image">Image Upload</label>
-          <input
-            id="image"
-            type="file"
-            className={styles.fileInput}
-            accept={ACCEPTED_IMAGE_TYPES.join(',')}
-            onChange={handleFileChange}
-            disabled={!signedAccountId}
-          />
-          <div className={styles.fileHint}>
-            Accepted Formats: PNG, JPEG, GIF, SVG | Ideal dimension: 1:1 | Max size: 3MB
+      <div className={styles.container}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <label className={styles.label} htmlFor="title">Title</label>
+            <input
+              id="title"
+              type="text"
+              className={styles.input}
+              placeholder="Enter title"
+              value={formData.title}
+              onChange={(e) => handleInputChange('title', e.target.value)}
+              disabled={!signedAccountId}
+            />
+            {errors.title && <div className={styles.error}>{errors.title}</div>}
           </div>
-          {errors.image && <div className={styles.error}>{errors.image}</div>}
-        </div>
 
-        {!signedAccountId ? (
-          <button
-            type="button"
-            onClick={signIn}
-            className={`${styles.button} ${styles.primary}`}
-          >
-            Connect Wallet
-          </button>
-        ) : (
-          <div>
-            <div style={{ marginBottom: '1rem', textAlign: 'center', fontSize: '0.9rem', color: 'var(--ifm-color-emphasis-700)' }}>
-              Connected as: {signedAccountId} | <button type="button" onClick={signOut} style={{ background: 'none', border: 'none', color: 'var(--ifm-color-primary)', cursor: 'pointer', textDecoration: 'underline' }}>Disconnect</button>
+          <div className={styles.formGroup}>
+            <label className={styles.label} htmlFor="description">Description</label>
+            <textarea
+              id="description"
+              className={styles.textarea}
+              placeholder="Enter description"
+              value={formData.description}
+              onChange={(e) => handleInputChange('description', e.target.value)}
+              disabled={!signedAccountId}
+            />
+            {errors.description && <div className={styles.error}>{errors.description}</div>}
+          </div>
+
+          <div className={styles.formGroup}>
+            <label className={styles.label} htmlFor="image">Image Upload</label>
+            <input
+              id="image"
+              type="file"
+              className={styles.fileInput}
+              accept={ACCEPTED_IMAGE_TYPES.join(',')}
+              onChange={handleFileChange}
+              disabled={!signedAccountId}
+            />
+            <div className={styles.fileHint}>
+              Accepted Formats: PNG, JPEG, GIF, SVG | Ideal dimension: 1:1 | Max size: 3MB
             </div>
+            {errors.image && <div className={styles.error}>{errors.image}</div>}
+          </div>
+
+          {!signedAccountId ? (
             <button
-              type="submit"
-              className={`${styles.button} ${isSubmitting ? styles.loading : ''}`}
-              disabled={isSubmitting}
+              type="button"
+              onClick={signIn}
+              className={`${styles.button} ${styles.primary}`}
             >
-              {`Mint - Cost: ${requiredDeposit} NEAR`}
+              Connect Wallet
             </button>
-
-
-            <div className={styles.costInfo}>
-              Estimated transaction cost: {requiredDeposit} NEAR
+          ) : (
+            <div>
+              <button
+                type="submit"
+                className={`${styles.button} ${isSubmitting ? styles.loading : ''}`}
+                disabled={isSubmitting}
+              >
+                {`Mint - Cost: ${requiredDeposit} NEAR`}
+              </button>
             </div>
-
-          </div>
-        )}
-
-      </form>
-    </div>
+          )}
+        </form>
+      </div>
+    </>
   );
 };
 

@@ -4,30 +4,30 @@ import { useCallback, useEffect, useState } from 'react';
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.testnet"
 
 const getKeypomKeys = (dropName) => {
-    const keys = localStorage.getItem(`keysPom:${dropName}`);
-    if (keys) {
-      return JSON.parse(keys);
-    }
-    return [];
-  };
-  
-  const setKeypomKeys = (dropName, keys) => {
-    localStorage.setItem(`keysPom:${dropName}`, JSON.stringify(keys));
-  };
-  
-  const generateAndStore = (dropName, dropsNumber) => {
-    const keys = [];
-    const keysLocalStorage = getKeypomKeys(dropName);
-    for (let index = 0; index < dropsNumber; index++) {
-      const newKeyPair = KeyPair.fromRandom('ed25519');
-      const publicKey = newKeyPair.getPublicKey().toString();
-      keys.push(publicKey);
-      keysLocalStorage.push({ private: newKeyPair.toString(), public: publicKey });
-    }
-    setKeypomKeys(dropName, keysLocalStorage);
-  
-    return keys;
-  };
+  const keys = localStorage.getItem(`keysPom:${dropName}`);
+  if (keys) {
+    return JSON.parse(keys);
+  }
+  return [];
+};
+
+const setKeypomKeys = (dropName, keys) => {
+  localStorage.setItem(`keysPom:${dropName}`, JSON.stringify(keys));
+};
+
+export const generateAndStore = (dropName, dropsNumber) => {
+  const keys = [];
+  const keysLocalStorage = getKeypomKeys(dropName);
+  for (let index = 0; index < dropsNumber; index++) {
+    const newKeyPair = KeyPair.fromRandom('ed25519');
+    const publicKey = newKeyPair.getPublicKey().toString();
+    keys.push(publicKey);
+    keysLocalStorage.push({ private: newKeyPair.toString(), public: publicKey });
+  }
+  setKeypomKeys(dropName, keysLocalStorage);
+
+  return keys;
+};
 
 
 const useLinkdrops = () => {

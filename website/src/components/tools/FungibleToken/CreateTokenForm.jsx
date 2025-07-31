@@ -2,12 +2,12 @@ import { formatNearAmount } from '@near-js/utils';
 import { useCallback, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-import { useWalletSelector } from '../../../hooks/useWalletSelectorMock';
 import styles from './FungibleToken.module.scss';
+import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
 
 const network = {
-  ftContract: 'ft-factory.testnet'
+  ftContract: 'tkn.primitives.testnet'
 };
 
 const FACTORY_CONTRACT = network.ftContract;
@@ -87,7 +87,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
 
       const args = {
         args: {
-          owner_id: signedAccountId || 'mock.testnet',
+          owner_id: signedAccountId,
           total_supply: supply.toString(),
           metadata: {
             spec: 'ft-1.0.0',
@@ -97,20 +97,18 @@ const CreateTokenForm = ({ reload = () => { } }) => {
             decimals: Number(decimals),
           },
         },
-        account_id: signedAccountId || 'mock.testnet',
+        account_id: signedAccountId,
       };
 
-      try {
-        const deposit = await viewFunction({
-          contractId: FACTORY_CONTRACT,
-          method: 'get_required',
-          args
-        });
-        if (deposit) {
-          setRequiredDeposit(formatNearAmount(deposit, 2));
-        }
-      } catch {
-        setRequiredDeposit('1.0');
+
+      const deposit  = await viewFunction({
+        contractId: FACTORY_CONTRACT,
+        method: 'get_required',
+        args
+      });
+      
+      if (deposit) {
+        setRequiredDeposit(formatNearAmount(deposit, 2));
       }
 
       if (!actuallySubmit) return;
@@ -154,14 +152,10 @@ const CreateTokenForm = ({ reload = () => { } }) => {
   }, [onSubmit, formData]);
 
   return (
-
-
     <>
-
-
       <h2>Mint a Fungible Token</h2>
 
-      This tool allows you to deploy your own NEP-141 smart contract (Fungible Tokens)
+      <p>This tool allows you to deploy your own NEP-141 smart contract (Fungible Tokens)</p>
 
       <div className={styles.container}>
 
@@ -273,9 +267,6 @@ const CreateTokenForm = ({ reload = () => { } }) => {
             </button>
           ) : (
             <div>
-              <div style={{ marginBottom: '1rem', textAlign: 'center', fontSize: '0.9rem', color: 'var(--ifm-color-emphasis-700)' }}>
-                Connected as: {signedAccountId} | <button type="button" onClick={signOut} style={{ background: 'none', border: 'none', color: 'var(--ifm-color-primary)', cursor: 'pointer', textDecoration: 'underline' }}>Disconnect</button>
-              </div>
               <button
                 type="submit"
                 className={`${styles.button} ${styles.primary} ${isSubmitting ? styles.loading : ''}`}
@@ -287,10 +278,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
           )}
         </form>
       </div>
-
     </>
-
-
   );
 };
 

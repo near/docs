@@ -2,36 +2,38 @@ import Tabs from '@theme/Tabs';
 import FungibleToken from './FungibleToken';
 import NonFungibleToken from './NonFungibleToken';
 import TabItem from '@theme/TabItem';
-import { useWalletSelector } from '../../hooks/useWalletSelectorMock';
 import NearIconSvg from '@site/static/img/near_icon.svg';
 import { useCallback, useEffect, useState } from 'react';
+import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import Linkdrops from './Linkdrops';
+import useLinkdrops from '../../hooks/useLinkdrops';
 
-// Mock network config since it's not available
 const network = {
-  apiNearBlocks: 'https://api.nearblocks.io'
+  apiNearBlocks: 'https://api-testnet.nearblocks.io'
 };
 
 const NearToken = {
-    contract_id: 'near',
-    balance: '0',
-    verified: true,
-    metadata: {
-        decimals: 24,
-        name: 'NEAR',
-        symbol: 'NEAR',
-        icon: NearIconSvg,
-    },
+  contract_id: 'near',
+  balance: '0',
+  verified: true,
+  metadata: {
+    decimals: 24,
+    name: 'NEAR',
+    symbol: 'NEAR',
+    icon: NearIconSvg,
+  },
 };
 
 const Tools = () => {
-    const { getBalance, viewFunction, signedAccountId } = useWalletSelector();
-    const [allFT, setAllFT] = useState([NearToken]);
-    const [loadingFT, setLoadingFT] = useState(false);
-    const [allNFT, setAllNFT] = useState([]);
-    const [loadingNFT, setLoadingNFT] = useState(false);
+  const { getBalance, viewFunction, signedAccountId } = useWalletSelector();
+  const [allFT, setAllFT] = useState([NearToken]);
+  const [loadingFT, setLoadingFT] = useState(false);
+  const [allNFT, setAllNFT] = useState([]);
+  const [loadingNFT, setLoadingNFT] = useState(false);
+  const { drops, reloadLinkdrops } = useLinkdrops();
 
 
-    const fetchTokens = useCallback(async () => {
+  const fetchTokens = useCallback(async () => {
     if (!signedAccountId) return { fts: [], nfts: [] };
 
     const response = await fetch(`${network.apiNearBlocks}/v1/account/${signedAccountId}/tokens`);
@@ -41,10 +43,11 @@ const Tools = () => {
     return data.tokens;
   }, [signedAccountId]);
 
-    const processFT = useCallback(
+  const processFT = useCallback(
     async (ft_contracts) => {
       if (!signedAccountId) return [];
       if (!ft_contracts.length) return [];
+
       setLoadingFT(true);
 
       const getFTData = async (contract_id) => {
@@ -63,7 +66,6 @@ const Tools = () => {
         }
       };
 
-      // the first FT is always NEAR
       const balance = await getBalance(signedAccountId);
       NearToken.balance = balance.toString();
       let all_fts = [NearToken];
@@ -118,9 +120,8 @@ const Tools = () => {
     [fetchTokens, processFT, processNFT],
   );
 
- useEffect(() => {
+  useEffect(() => {
     const init = async () => {
-      // load Fungible & Non-Fungible tokens
       const tokens = await fetchTokens();
       processFT(tokens.fts);
       processNFT(tokens.nfts);
@@ -128,14 +129,24 @@ const Tools = () => {
     init();
   }, [fetchTokens, processFT, processNFT, signedAccountId]);
 
-    return <Tabs groupId="code-tabs">
-        <TabItem value="FT" label="FT">
-            <FungibleToken user_fts={allFT} loading={loadingFT} reload={(d) => reload(d, 'fts')} />
-        </TabItem>
-        <TabItem value="NFT" label="NFT">
-            <NonFungibleToken user_collections={allNFT} loading={loadingNFT} reload={(d) => reload(d, 'nfts')} />
-        </TabItem>
-    </Tabs>
+  return <Tabs groupId="code-tabs">
+    <TabItem value="FT" label="FT">
+      <FungibleToken user_fts={allFT} loading={loadingFT} reload={(d) => reload(d, 'fts')} />
+    </TabItem>
+    <TabItem value="NFT" label="NFT">
+      <NonFungibleToken user_collections={allNFT} loading={loadingNFT} reload={(d) => reload(d, 'nfts')} />
+    </TabItem>
+    <TabItem value="Linkdrops" label="Linkdrops">
+      <Linkdrops
+        user_fts={allFT}
+        user_collections={allNFT}
+        drops={drops}
+        reloadFT={(d) => reload(d, 'fts')}
+        reloadNFT={(d) => reload(d, 'nfts')}
+        reloadDrops={reloadLinkdrops}
+      />
+    </TabItem>
+  </Tabs>
 }
 
 export default Tools;

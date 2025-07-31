@@ -10,20 +10,10 @@
   background: var(--ifm-background-surface-color);
 }
 
-.formGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-}
-
 .formGroup {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.5rem;
 }
 
 .label {
@@ -59,18 +49,19 @@
   }
 }
 
-.fileInput {
-  padding: 0.5rem;
-  border: 2px dashed var(--ifm-color-emphasis-300);
+.select {
+  padding: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 6px;
   background: var(--ifm-background-color);
   color: var(--ifm-font-color-base);
   font-size: 0.9rem;
-  cursor: pointer;
   transition: border-color 0.2s ease;
 
-  &:hover {
+  &:focus {
+    outline: none;
     border-color: var(--ifm-color-primary);
+    box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
   }
 
   &:disabled {
@@ -80,14 +71,88 @@
   }
 }
 
-.fileInputGroup {
-  margin-bottom: 1.5rem;
+.accordion {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  margin-bottom: 1rem;
 }
 
-.fileHint {
+.accordionItem {
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.accordionTrigger {
+  width: 100%;
+  padding: 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: var(--ifm-color-emphasis-100);
+  }
+
+  &[aria-expanded="true"] {
+    background: var(--ifm-color-emphasis-100);
+  }
+}
+
+.accordionContent {
+  padding: 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.nftGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.nftCard {
+  border: 2px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+
+  &:hover {
+    border-color: var(--ifm-color-primary);
+  }
+
+  &.selected {
+    border-color: var(--ifm-color-primary);
+    background: var(--ifm-color-primary-lightest);
+  }
+}
+
+.nftImage {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.nftTitle {
   font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  word-break: break-word;
+}
+
+.nftTokenId {
+  font-size: 0.7rem;
   color: var(--ifm-color-emphasis-700);
-  margin-top: 0.5rem;
+  word-break: break-all;
 }
 
 .error {
@@ -113,12 +178,6 @@
     &:hover:not(:disabled) {
       background: var(--ifm-color-primary-dark);
     }
-  }
-
-  &.disabled {
-    background: var(--ifm-color-emphasis-300);
-    color: var(--ifm-color-emphasis-600);
-    cursor: not-allowed;
   }
 
   &:disabled {
@@ -152,6 +211,11 @@
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
+.text {
+  color: var(--ifm-font-color-base);
+  margin-bottom: 0.5rem;
+}
+
 // Dark theme adjustments
 [data-theme='dark'] {
   .form {
@@ -159,13 +223,24 @@
     background: var(--ifm-background-color);
   }
 
-  .input {
+  .input, .select {
     border-color: var(--ifm-color-emphasis-200);
     background: var(--ifm-background-surface-color);
   }
 
-  .fileInput {
+  .accordion {
     border-color: var(--ifm-color-emphasis-200);
-    background: var(--ifm-background-surface-color);
+  }
+
+  .accordionItem {
+    border-color: var(--ifm-color-emphasis-200);
+  }
+
+  .accordionContent {
+    border-color: var(--ifm-color-emphasis-200);
+  }
+
+  .nftCard {
+    border-color: var(--ifm-color-emphasis-200);
   }
 }
