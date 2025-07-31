@@ -9,6 +9,6 @@ FastAuth is a key management system that allows users to **recover or sign-up fo
 
 :::warning
 
-FastAuth is being deprecated, stay tuned for updates
+Current version of FastAuth is deprecated, a revamped version of the tooling using MPC and Auth0 is in the works, stay tuned for updates 
 
 :::
