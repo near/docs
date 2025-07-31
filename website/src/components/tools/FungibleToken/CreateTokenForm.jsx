@@ -1,4 +1,4 @@
-import { formatNearAmount } from '@near-js/utils';
+import { NEAR } from '@near-js/tokens';
 import { useCallback, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -97,9 +97,9 @@ const CreateTokenForm = ({ reload = () => { } }) => {
             decimals: Number(decimals),
           },
         },
-        account_id: signedAccountId,
       };
 
+      console.log('Creating token with args:', args);
 
       const deposit  = await viewFunction({
         contractId: FACTORY_CONTRACT,
@@ -108,7 +108,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
       });
       
       if (deposit) {
-        setRequiredDeposit(formatNearAmount(deposit, 2));
+        setRequiredDeposit(NEAR.toUnits(deposit, 2));
       }
 
       if (!actuallySubmit) return;

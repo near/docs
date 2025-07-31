@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import styles from './CreateNFTDrop.module.scss';
-import { parseNearAmount } from '@near-js/utils';
+import { NEAR } from '@near-js/tokens';
 import { generateAndStore } from '../../../hooks/useLinkdrops';
 
 const KEYPOM_CONTRACT_ADDRESS = 'v2.keypom.testnet';
 
-const getDeposit = (numberLinks) => parseNearAmount((0.0426 * numberLinks).toString()) || '0';
+const getDeposit = (numberLinks) => NEAR.toUnits((0.0426 * numberLinks).toString()).toString() || '0';
 
 const CreateNFTDrop = ({ user_collections, reload }) => {
   const [formData, setFormData] = useState({
