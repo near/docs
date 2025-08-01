@@ -1,0 +1,222 @@
+.accordion {
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px #8b5cf6;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.accordionItem {
+  border: none;
+}
+
+.accordionHeader {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background-color: #f8f9fa;
+  border: none;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #e9ecef;
+  }
+
+  &:focus {
+    outline: 2px solid #8b5cf6;
+    outline-offset: -2px;
+  }
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+  font-size: 0.8rem;
+  color: #6c757d;
+
+  &.expanded {
+    transform: rotate(180deg);
+  }
+}
+
+.accordionContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background-color: #fff;
+
+  &.show {
+    max-height: 1000px; // Large enough to accommodate content
+    padding: 1.5rem;
+  }
+}
+
+.loadingText,
+.emptyText {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.tokenTable {
+  margin-bottom: 0;
+
+  th {
+    border-top: none;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.875rem;
+    padding: 0.75rem;
+  }
+
+  td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+  }
+
+  tbody tr {
+    &:hover {
+      background-color: #f8f9fa;
+    }
+  }
+}
+
+.tokenIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.textClamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+  font-size: 0.875rem;
+}
+
+.balance {
+  font-weight: 500;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+}
+
+.tooltipWrapper {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+
+  &:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 1000;
+    margin-bottom: 5px;
+  }
+
+  &:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #333;
+    z-index: 1000;
+  }
+}
+
+// Dark theme support
+[data-theme='dark'] {
+  .accordionHeader {
+    background-color: #343a40;
+    color: #f8f9fa;
+    border-bottom-color: #495057;
+
+    &:hover {
+      background-color: #495057;
+    }
+  }
+
+  .accordionContent {
+    background-color: #212529;
+  }
+
+  .tokenTable {
+    color: #f8f9fa;
+
+    th {
+      background-color: #343a40 !important;
+      color: #f8f9fa;
+      border-color: #495057;
+    }
+
+    td {
+      border-color: #495057;
+    }
+
+    tbody tr:hover {
+      background-color: #343a40;
+    }
+  }
+
+  .loadingText,
+  .emptyText {
+    color: #adb5bd;
+  }
+
+  .tooltipWrapper:hover::after {
+    background-color: #f8f9fa;
+    color: #333;
+  }
+
+  .tooltipWrapper:hover::before {
+    border-top-color: #f8f9fa;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .accordionContent.show {
+    padding: 1rem;
+  }
+
+  .textClamp {
+    max-width: 120px;
+  }
+
+  .tokenTable {
+    font-size: 0.8rem;
+
+    th,
+    td {
+      padding: 0.5rem 0.25rem;
+    }
+  }
+
+  .accordionHeader {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}
