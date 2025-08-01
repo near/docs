@@ -1167,13 +1167,11 @@ Unlike many other blockchains, contracts on NEAR are mutable, meaning you have t
 
 ### Deploy a Global Contract {#deploy-a-global-contract}
 
-If you've ever deployed the same contract code to multiple accounts, you’ve likely noticed that each deployment requires you to pay the full storage cost again — since the size of the WASM file determines how much `NEAR` is locked on the account.
-
-Global Contracts solve this inefficiency by allowing the same contract code to be shared across multiple accounts, so storage cost is paid only once.
+[Global contracts](../smart-contracts/global-contracts.md) allow smart contracts to be deployed once and reused by any account without incurring high storage costs.
 
 There are two ways to reference a global contract:
-- **By account:** The contract code is tied to another account. If that account later deploys a new version of the contract, your account will automatically start using the updated code, with no need for redeployment.
-- **By hash:** You reference the contract by its immutable code hash. This ensures you're always using the exact same version, and it will never change unless you explicitly redeploy with a different hash.
+- **[By account](../smart-contracts/global-contracts.md#reference-by-account):** The contract code is tied to another account.
+- **[By hash](../smart-contracts/global-contracts.md#reference-by-hash):** You reference the contract by its immutable code hash.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
@@ -1196,14 +1194,6 @@ There are two ways to reference a global contract:
   await account.deployGlobalContract(wasm, "accountId");
   ```
 
-  Once the global contract is deployed, let’s see how an end user can reference and use it in their own account. To do this, they need to call the `useGlobalContract` function and pass the source `accountId` where the contract was originally deployed.
-
-  ```js
-  const account = new Account("another_user.testnet", provider, signer);
-
-  await account.useGlobalContract({ accountId: "user.testnet" });
-  ```
-
   <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js" target="_blank" rel="noreferrer noopener" class="text-center">
     See full example on GitHub
   </a>
@@ -1224,7 +1214,96 @@ There are two ways to reference a global contract:
   await account.deployGlobalContract(wasm, "codeHash");
   ```
 
-  Once the global contract is deployed, let’s see how an end user can reference and use it in their own account. To do this, they need to call the `useGlobalContract` function and pass the source `codeHash` of the original contract.
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+  </Tabs>
+
+  </TabItem>
+
+  <TabItem value="rust" label="🦀 Rust">
+
+  Once you've created an Account instance, you can deploy your regular contract as a global contract.
+
+  <Tabs>
+  <TabItem value="account" label="By Account" default>
+
+  Let’s look at an example of deploying a global contract by account.
+  
+  To do this, use the `deploy_global_contract_code` function and use the method `as_account_id`, along with the contract’s code bytes.
+  
+  ```rust
+    let global_account_id: AccountId = "nft-contract.testnet".parse().unwrap();
+    let code = std::fs::read("path/to/your/contract.wasm").unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(code)
+        .as_account_id(global_account_id)
+        .with_signer(signer)
+        .send_to_testnet()
+        .await.unwrap();
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+
+  <TabItem value="hash" label="By Hash" default>
+
+  Let’s look at an example of deploying a global contract by hash.
+  
+  To do this, use the `deploy_global_contract_code` function and use the method `as_hash`, along with the contract’s code bytes.
+  
+  ```rust
+    let account_id: AccountId = "my-account.testnet".parse().unwrap();
+    let code = std::fs::read("path/to/your/contract.wasm").unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(code)
+        .as_hash()
+        .with_signer(account_id, signer)
+        .send_to_testnet()
+        .await.unwrap();
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+  </Tabs>
+
+  </TabItem>
+
+</Tabs>
+
+### Use a Global Contract
+
+Once a [global contract](../smart-contracts/global-contracts.md) has been [deployed](#deploy-a-global-contract), let’s see how you can reference and use it from another account.
+
+<Tabs groupId="api">
+  <TabItem value="js" label="🌐 JavaScript">
+
+  <Tabs>
+  <TabItem value="account" label="By Account" default>
+
+  To reference a global contract by account, you need to call the `useGlobalContract` function and pass the source `accountId` where the contract was originally deployed.
+
+  ```js
+  const account = new Account("another_user.testnet", provider, signer);
+
+  await account.useGlobalContract({ accountId: "user.testnet" });
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+
+  <TabItem value="hash" label="By Hash" default>
+
+  To reference a global contract by hash, you need to call the `useGlobalContract` function and pass the source `codeHash` of the original contract.
 
   ```js
   const account = new Account("another_user.testnet", provider, signer);
@@ -1240,9 +1319,58 @@ There are two ways to reference a global contract:
   </TabItem>
   </Tabs>
 
+  </TabItem>
 
+  <TabItem value="rust" label="🦀 Rust">
+
+  <Tabs>
+  <TabItem value="account" label="By Account" default>
+
+  To reference a global contract by account, you need to call the `use_global_account_id` function and pass the source `accountId` where the contract was originally deployed.
+
+  ```rust
+    let global_account_id: AccountId = "nft-contract.testnet".parse().unwrap();
+    let my_account_id: AccountId = "my-contract.testnet".parse().unwrap();
+    let my_signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy(my_account_id)
+        .use_global_account_id(global_account_id)
+        .without_init_call()
+        .with_signer(my_signer)
+        .send_to_testnet()
+        .await.unwrap();
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+
+  <TabItem value="hash" label="By Hash" default>
+
+  To reference a global contract by hash, you need to call the `use_global_hash` function and pass the source `hash` of the original contract.
+
+  ```rust
+    let global_hash: types::CryptoHash = "DxfRbrjT3QPmoANMDYTR6iXPGJr7xRUyDnQhcAWjcoFF".parse().unwrap();
+    let account_id: AccountId = "my-contract.testnet".parse().unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy(account_id)
+        .use_global_hash(global_hash)
+        .without_init_call()
+        .with_signer(signer)
+        .send_to_testnet()
+        .await.unwrap();
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+  </Tabs>
 
   </TabItem>
+
 </Tabs>
 
 ---
