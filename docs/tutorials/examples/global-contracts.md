@@ -21,25 +21,34 @@ In this tutorial you'll learn how to deploy and use a [global contract by Accoun
 
 ## Examples
 
+Let's define two example smart contracts that we can deploy using Global Contracts, and evaluate which alternative (by Account ID or by Hash) is the best for each case.
+
+- **DAO Factory**: A tool that allows any user to deploy their own DAO governance instance.
+- **NFT Collection Factory**: A service that lets users create their own NFT contracts with fixed metadata and royalty values.
+
 :::tip Do you need a Global Contract?
-Check these questions to decide [when to use a global contract](../../smart-contracts/global-contracts.md#when-to-use-global-contracts).
+Not sure if you need a Global Contract? Check these questions to decide [when to use a global contract](../../smart-contracts/global-contracts.md#when-to-use-global-contracts).
 :::
 
 ### Global Contract by Account ID
 
-For example, consider a **DAO Factory**: A tool that allows any user to deploy their own DAO governance instance.
+For example, let's consider the **DAO Factory** case.
 
-Since the same contract is deployed many times by end users across different accounts, this clearly meets the threshold where [Global Contracts](../../smart-contracts/global-contracts.md) become financially efficient. Also, since upgradeability may be useful down the line (e.g. to patch bugs or extend functionality), it's a great case to use a [Global Contract by Account ID](../../smart-contracts/global-contracts.md#reference-by-account).
+Since the same contract is deployed many times by end users across different accounts, this clearly meets the threshold where [Global Contracts](../../smart-contracts/global-contracts.md) become financially efficient. Also, since upgradeability may be useful down the line (e.g., to patch bugs or extend functionality), it's a great case to use a [Global Contract by Account ID](../../smart-contracts/global-contracts.md#reference-by-account).
 
 ### Global Contract by Hash
 
-Take for example an **NFT Collection Factory**: A service that lets users create their own NFT contracts with fixed metadata and royalty values.
+Now let's take for example the **NFT Collection Factory** case.
 
 Since each user deploys the same contract, but once deployed, it should never change (security and immutability are critical), this makes a perfect case to use a [Global Contract by Hash](../../smart-contracts/global-contracts.md#reference-by-hash).
 
 ## Deploying a Global Contract
 
-Global contracts can be deployed in 2 ways: either by their [hash](../../smart-contracts/global-contracts.md#reference-by-hash) or by the owner [account ID](../../smart-contracts/global-contracts.md#reference-by-account).
+Next, let's see how you can deploy a global contract by Account ID (for the DAO Factory), or by Hash (for the NFT Collection Factory).
+As stated, Global contracts can be deployed in 2 ways:
+- by their [hash](../../smart-contracts/global-contracts.md#reference-by-hash).
+- by the owner [account ID](../../smart-contracts/global-contracts.md#reference-by-account).
+
 Contracts deployed by hash are effectively immutable and cannot be updated.
 When deployed by account ID the owner can redeploy the contract updating it for all its users.
 
@@ -51,7 +60,6 @@ Note that deploying a global contract incurs high storage costs. Tokens are burn
 ### Deployment
 
 Global contracts can be deployed using [`NEAR CLI`](../../tools/cli.md) or by code using [NEAR APIs](../../tools/near-api.md#deploy-a-global-contract) (JavaScript and Rust).
-The process is similar to [deploying a regular contract](../../smart-contracts/release/deploy.md#deploying-the-contract).
 
 Since there are two ways to reference a global contract ([by account](../../smart-contracts/global-contracts.md#reference-by-account) or [by hash](../../smart-contracts/global-contracts.md#reference-by-hash)), the deployment step depends on the type of global contract that you want to store on the blockchain.
 
