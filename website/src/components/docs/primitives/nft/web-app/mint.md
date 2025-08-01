@@ -78,11 +78,11 @@ In order to use `nft_batch_mint` method of Mintbase store contract your account 
 :::
 
 :::tip
-Check how to do this using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/mint)
+Check how to do this using [`Mintbase JS`](https://github.com/Mintbase/mintbase-js/tree/beta/packages/sdk)
 :::
 
 </TabItem>
 
 </Tabs>
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend)_
