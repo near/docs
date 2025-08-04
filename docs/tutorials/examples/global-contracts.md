@@ -206,15 +206,10 @@ Let’s see how you can reference and use your global contract from another acco
 
   To reference a global contract by account, you need to call the `useGlobalContract` function and pass the source `accountId` where the contract was originally deployed.
 
-  ```js
-  const account = new Account("another_user.testnet", provider, signer);
+    <Github fname="deploy-global-contract-by-account.js" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js#L39-L45"
+    start="39" end="45" />
 
-  await account.useGlobalContract({ accountId: "user.testnet" });
-  ```
-
-  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js" target="_blank" rel="noreferrer noopener" class="text-center">
-    See full example on GitHub
-  </a>
   </TabItem>
 
   <TabItem value="hash" label="By Hash" default>
@@ -222,16 +217,13 @@ Let’s see how you can reference and use your global contract from another acco
   To reference a global contract by hash, you need to call the `useGlobalContract` function and pass the source `codeHash` of the original contract.
 
   ```js
-  const account = new Account("another_user.testnet", provider, signer);
-
-  await account.useGlobalContract({
-    codeHash: "36b15ea09f737220583f63ad120d91b7e233d2039bebea43be527f8fd85450c9",
-  });
+  const hash = "DxfRbrjT3QPmoANMDYTR6iXPGJr7xRUyDnQhcAWjcoFF";
   ```
 
-  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js" target="_blank" rel="noreferrer noopener" class="text-center">
-    See full example on GitHub
-  </a>
+    <Github fname="deploy-global-contract-by-hash.js" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js#L42-L50"
+    start="42" end="50" />
+
   </TabItem>
   </Tabs>
 
@@ -244,44 +236,26 @@ Let’s see how you can reference and use your global contract from another acco
 
   To reference a global contract by account, you need to call the `use_global_account_id` function and pass the source `accountId` where the contract was originally deployed.
 
-  ```rust
-    let global_account_id: AccountId = "nft-contract.testnet".parse().unwrap();
-    let my_account_id: AccountId = "my-contract.testnet".parse().unwrap();
-    let my_signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+    <Github fname="global_contract_accountid.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs#L61-L70"
+    start="61" end="70" />
 
-    let result: FinalExecutionOutcomeView = Contract::deploy(my_account_id)
-        .use_global_account_id(global_account_id)
-        .without_init_call()
-        .with_signer(my_signer)
-        .send_to_testnet()
-        .await.unwrap();
-  ```
-
-  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs" target="_blank" rel="noreferrer noopener" class="text-center">
-    See full example on GitHub
-  </a>
   </TabItem>
 
   <TabItem value="hash" label="By Hash" default>
 
   To reference a global contract by hash, you need to call the `use_global_hash` function and pass the source `hash` of the original contract.
-
+  
   ```rust
-    let global_hash: types::CryptoHash = "DxfRbrjT3QPmoANMDYTR6iXPGJr7xRUyDnQhcAWjcoFF".parse().unwrap();
-    let account_id: AccountId = "my-contract.testnet".parse().unwrap();
-    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
-
-    let result: FinalExecutionOutcomeView = Contract::deploy(account_id)
-        .use_global_hash(global_hash)
-        .without_init_call()
-        .with_signer(signer)
-        .send_to_testnet()
-        .await.unwrap();
+    // Get a global contract hash
+    let code = std::fs::read("../contracts/contract.wasm").unwrap();
+    let global_hash = near_primitives::hash::CryptoHash::hash_bytes(&code);
   ```
 
-  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs" target="_blank" rel="noreferrer noopener" class="text-center">
-    See full example on GitHub
-  </a>
+    <Github fname="global_contract_hash.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs#L62-L70"
+    start="62" end="70" />
+
   </TabItem>
   </Tabs>
 
