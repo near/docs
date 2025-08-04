@@ -3,11 +3,10 @@ import styles from './CreateTokenDrop.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { toast } from 'react-toastify';
 import { network } from '../config';
-import { KeyPair } from 'near-api-js';
+import { generateAndStore } from '../hooks/useLinkdrops';
+import { NEAR } from '@near-js/tokens';
 
-const parseNearAmount = (amount) => {
-  return (parseFloat(amount) * Math.pow(10, 24)).toString();
-};
+const KEYPOM_CONTRACT_ADDRESS = network.linkdrop;
 
 const formatBalance = (balance, decimals = 24) => {
   const balanceStr = balance.toString();
@@ -24,27 +23,11 @@ const parseAmount = (amount, decimals) => {
 };
 
 const depositForFT = (numberLinks) => 
-  parseNearAmount((0.0426 * numberLinks).toString());
+  NEAR.toUnits(0.0426 * numberLinks).toString();
 
 
 const depositForNear = (amountPerLink, numberLinks) =>
-  parseNearAmount(((0.0426 + amountPerLink) * numberLinks).toString());
-
-const KEYPOM_CONTRACT_ADDRESS = network.KEYPOM_CONTRACT_ADDRESS;
-
-const generateAndStore = (dropName, dropsNumber) => {
-  const keys = [];
-  const keysLocalStorage = getKeypomKeys(dropName);
-  for (let index = 0; index < dropsNumber; index++) {
-    const newKeyPair = KeyPair.fromRandom('ed25519');
-    const publicKey = newKeyPair.getPublicKey().toString();
-    keys.push(publicKey);
-    keysLocalStorage.push({ private: newKeyPair.toString(), public: publicKey });
-  }
-  setKeypomKeys(dropName, keysLocalStorage);
-
-  return keys;
-};
+  NEAR.toUnits((0.0426 + amountPerLink) * numberLinks).toString();
 
 const CreateTokenDrop = ({ user_fts, reload }) => {
   const [formData, setFormData] = useState({
@@ -109,7 +92,7 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
     setIsSubmitting(true);
 
     const dropId = Date.now().toString();
-    const nearAmount = selectedToken?.contract_id === 'near' ? parseNearAmount(formData.amountPerLink.toString()) : '0';
+    const nearAmount = selectedToken?.contract_id === 'near' ? NEAR.toUnits(formData.amountPerLink).toString() : '0';
     const ftAmount = selectedToken?.contract_id === 'near'
       ? '0'
       : parseAmount(formData.amountPerLink.toString(), selectedToken.metadata?.decimals || 24).toString();

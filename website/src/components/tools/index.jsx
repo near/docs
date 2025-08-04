@@ -7,7 +7,7 @@ import NearIconSvg from '@site/static/img/near_icon.svg';
 import { useCallback, useEffect, useState } from 'react';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import Linkdrops from './Linkdrops';
-import useLinkdrops from '../../hooks/useLinkdrops';
+import useLinkdrops from './hooks/useLinkdrops';
 import whiteList from './white-list.json';
 import { NEAR } from '@near-js/tokens';
 
@@ -52,39 +52,39 @@ const Tools = () => {
 
   const processFT = useCallback(
     async (ft_contracts) => {
-      // if (!signedAccountId) return [];
-      // if (!ft_contracts.length) return [];
+      if (!signedAccountId) return [];
+      if (!ft_contracts.length) return [];
 
-      // setLoadingFT(true);
+      setLoadingFT(true);
 
-      // const getFTData = async (contract_id) => {
-      //   try {
-      //     const balance = await viewFunction({
-      //       contractId: contract_id,
-      //       method: 'ft_balance_of',
-      //       args: { account_id: signedAccountId },
-      //     });
-      //     console.log(`FT balance for ${contract_id}:`, balance);
+      const getFTData = async (contract_id) => {
+        try {
+          const balance = await viewFunction({
+            contractId: contract_id,
+            method: 'ft_balance_of',
+            args: { account_id: signedAccountId },
+          });
+          console.log(`FT balance for ${contract_id}:`, balance);
           
-      //     if (balance === '0') return { contract_id, balance, metadata: {}, verified: false };
-      //     const metadata = (await viewFunction({ contractId: contract_id, method: 'ft_metadata' }));
-      //     const verified = whiteList.filter((item) => item.contract_id === contract_id).length > 0;
-      //     return { contract_id, balance, metadata, verified };
-      //   } catch (e) {
-      //     return { contract_id, balance: '0', metadata: {}, verified: false };
-      //   }
-      // };
+          if (balance === '0') return { contract_id, balance, metadata: {}, verified: false };
+          const metadata = (await viewFunction({ contractId: contract_id, method: 'ft_metadata' }));
+          const verified = whiteList.filter((item) => item.contract_id === contract_id).length > 0;
+          return { contract_id, balance, metadata, verified };
+        } catch (e) {
+          return { contract_id, balance: '0', metadata: {}, verified: false };
+        }
+      };
 
-      // const balance = await getBalance(signedAccountId);
-      // NearToken.balance = balance.toString();
+      const balance = await getBalance(signedAccountId);
+      NearToken.balance = balance.toString();
 
-      // let other_fts = await Promise.all(ft_contracts.map((ft) => getFTData(ft)));
+      let other_fts = await Promise.all(ft_contracts.map((ft) => getFTData(ft)));
       
-      // other_fts = other_fts.filter((ft) => ft.balance !== '0');
-      // const all_fts = [NearToken, ...other_fts.sort((a, b) => Number(b.verified) - Number(a.verified))];
+      other_fts = other_fts.filter((ft) => ft.balance !== '0');
+      const all_fts = [NearToken, ...other_fts.sort((a, b) => Number(b.verified) - Number(a.verified))];
       
-      // setAllFT(all_fts);
-      // setLoadingFT(false);
+      setAllFT(all_fts);
+      setLoadingFT(false);
     },
     [getBalance, signedAccountId, viewFunction],
   );

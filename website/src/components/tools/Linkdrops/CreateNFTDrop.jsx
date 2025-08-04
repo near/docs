@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './CreateNFTDrop.module.scss';
 import { NEAR } from '@near-js/tokens';
-import { generateAndStore } from '../../../hooks/useLinkdrops';
+import { generateAndStore } from '../hooks/useLinkdrops';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { NftImage } from '../Shared/NTFImage';
 import { network } from '../config';
