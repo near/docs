@@ -129,7 +129,7 @@ The `sign` method currently supports both Secp256k1 and Ed25519 signature scheme
 
 The essence of Multi-Party Computation (MPC) is to enable independent parties to perform shared computations on private information without revealing secrets to each other. In practice, this system can be used with blockchain platforms to safely sign a transaction on behalf of a user without ever having to expose a private key.
 
-NEAR's MPC service is comprised of several independent nodes, **none of which can sign by itself**, but instead create **signature-shares** that are **aggregated through multiple rounds** to **jointly** sign a transaction.
+NEAR's MPC service is comprised of several independent nodes, **none of which can sign by itself**, but instead create **signature-shares** that are **aggregated through multiple rounds** to **jointly** sign a transaction. Currently, the service is composed of 8 independent nodes. However the set of participating nodes can be extended with the `vote_new_parameters` method of the `v1.signer` smart contract if enough active nodes vote for it.
 
 This service continuously listens for signature requests (i.e. users calling the `sign` method on the `v1.signer` smart contract) and when a call is detected the MPC service:
 
