@@ -1,4 +1,5 @@
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { KeyPair } from 'near-api-js';
 import { useCallback, useEffect, useState } from 'react';
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.testnet"

@@ -24,7 +24,7 @@ const Carousel = ({ nfts, onSelect = empty, nftSelected }) => {
           }}
           aria-label={`Select NFT: ${nft?.metadata?.title || 'Untitled'}`}
         >
-          <NftImage nft={nft} />
+            <NftImage nft={nft} />
         </div>
       ))}
     </div>

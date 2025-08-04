@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import styles from './CreateTokenDrop.module.scss';
+import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { toast } from 'react-toastify';
+import { network } from '../config';
+import { KeyPair } from 'near-api-js';
 
 const parseNearAmount = (amount) => {
   return (parseFloat(amount) * Math.pow(10, 24)).toString();
@@ -19,19 +23,26 @@ const parseAmount = (amount, decimals) => {
   return BigInt(integerPart + decimalPart.padEnd(decimals, '0'));
 };
 
-const depositForFT = (numberLinks) => {
-  return parseNearAmount((0.0426 * numberLinks).toString());
-};
+const depositForFT = (numberLinks) => 
+  parseNearAmount((0.0426 * numberLinks).toString());
+
 
 const depositForNear = (amountPerLink, numberLinks) =>
   parseNearAmount(((0.0426 + amountPerLink) * numberLinks).toString());
 
-const generateAndStore = (dropName, numberLinks) => {
-  // Mock implementation - replace with actual key generation logic
+const KEYPOM_CONTRACT_ADDRESS = network.KEYPOM_CONTRACT_ADDRESS;
+
+const generateAndStore = (dropName, dropsNumber) => {
   const keys = [];
-  for (let i = 0; i < numberLinks; i++) {
-    keys.push(`mock_key_${Date.now()}_${i}`);
+  const keysLocalStorage = getKeypomKeys(dropName);
+  for (let index = 0; index < dropsNumber; index++) {
+    const newKeyPair = KeyPair.fromRandom('ed25519');
+    const publicKey = newKeyPair.getPublicKey().toString();
+    keys.push(publicKey);
+    keysLocalStorage.push({ private: newKeyPair.toString(), public: publicKey });
   }
+  setKeypomKeys(dropName, keysLocalStorage);
+
   return keys;
 };
 
@@ -44,10 +55,9 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedToken, setSelectedToken] = useState(user_fts?.[0] || null);
+  
+  const { signAndSendTransactions, signedAccountId } = useWalletSelector();
 
-  // Mock wallet selector - replace with actual implementation
-  const signedAccountId = 'mock.testnet'; // Replace with actual wallet connection
-  const KEYPOM_CONTRACT_ADDRESS = 'v2.keypom.testnet'; // Replace with actual contract
 
   const validateForm = () => {
     const newErrors = {};
@@ -75,8 +85,7 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
       ...prev,
       [field]: value
     }));
-    
-    // Clear error when user starts typing
+
     if (errors[field]) {
       setErrors(prev => ({
         ...prev,
@@ -92,61 +101,91 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
 
     setIsSubmitting(true);
 
-    try {
-      const dropId = Date.now().toString();
-      const nearAmount = selectedToken?.contract_id === 'near' ? parseNearAmount(formData.amountPerLink.toString()) : '0';
-      const ftAmount = selectedToken?.contract_id === 'near'
-        ? '0'
-        : parseAmount(formData.amountPerLink.toString(), selectedToken.metadata?.decimals || 24).toString();
-      const isFTDrop = selectedToken?.contract_id !== 'near';
+    const dropId = Date.now().toString();
+    const nearAmount = selectedToken?.contract_id === 'near' ? parseNearAmount(formData.amountPerLink.toString()) : '0';
+    const ftAmount = selectedToken?.contract_id === 'near'
+      ? '0'
+      : parseAmount(formData.amountPerLink.toString(), selectedToken.metadata?.decimals || 24).toString();
+    const isFTDrop = selectedToken?.contract_id !== 'near';
 
-      const args = {
-        deposit_per_use: nearAmount,
-        drop_id: dropId,
-        metadata: JSON.stringify({
-          dropName: formData.dropName,
-        }),
-        public_keys: generateAndStore(formData.dropName, formData.numberLinks),
-        ft: isFTDrop
-          ? {
-              sender_id: signedAccountId,
-              contract_id: selectedToken.contract_id,
-              balance_per_use: ftAmount,
-            }
-          : undefined,
-      };
+    const args = {
+      deposit_per_use: nearAmount,
+      drop_id: dropId,
+      metadata: JSON.stringify({
+        dropName: formData.dropName,
+      }),
+      public_keys: generateAndStore(formData.dropName, formData.numberLinks),
+      ft: isFTDrop
+        ? {
+          sender_id: signedAccountId,
+          contract_id: selectedToken.contract_id,
+          balance_per_use: ftAmount,
+        }
+        : undefined,
+    };
 
-      // Mock transaction creation - replace with actual wallet integration
-      console.log('Creating drop with args:', args);
-      console.log('Deposit amount:', isFTDrop ? depositForFT(formData.numberLinks) : depositForNear(formData.amountPerLink, formData.numberLinks));
+    const transactions = [
+      {
+        receiverId: KEYPOM_CONTRACT_ADDRESS,
+        signerId: signedAccountId,
+        actions: [
+          {
+            type: 'FunctionCall',
+            params: {
+              methodName: 'create_drop',
+              args,
+              gas: '300000000000000',
+              deposit: isFTDrop ? depositForFT(formData.numberLinks) : depositForNear(formData.amountPerLink, formData.numberLinks),
+            },
+          },
+        ],
+      },
+    ];
 
-      // Simulate success
-      setTimeout(() => {
-        alert('Linkdrop Created! Copy the link and share it with your friends');
-        reload(1000);
-        setIsSubmitting(false);
-        
-        // Reset form
-        setFormData({
-          dropName: '',
-          numberLinks: 1,
-          amountPerLink: 0
-        });
-      }, 2000);
-
-    } catch (error) {
-      console.error('Error creating linkdrop:', error);
-      alert('Error: The linkdrop could not be created');
-      setIsSubmitting(false);
+    if (isFTDrop) {
+      const amount = BigInt(ftAmount) * BigInt(data.numberLinks);
+      transactions.push({
+        receiverId: token.contract_id,
+        signerId: signedAccountId,
+        actions: [
+          {
+            type: 'FunctionCall',
+            params: {
+              methodName: 'ft_transfer_call',
+              args: {
+                receiver_id: KEYPOM_CONTRACT_ADDRESS,
+                amount: amount.toString(),
+                msg: dropId,
+              },
+              gas: '300000000000000',
+              deposit: '1',
+            },
+          },
+        ],
+      });
     }
-  };
+
+    try {
+      console.log(transactions);
+      
+      await signAndSendTransactions({ transactions });
+
+      toast.success('Linkdrop Created - Copy the link and share it with your friends');
+
+      reload(1000);
+    } catch (error) {
+      console.log(error);
+
+      toast.error('Error - The linkdrop could not be created');
+    }
+  }
 
   if (!selectedToken) {
     return (

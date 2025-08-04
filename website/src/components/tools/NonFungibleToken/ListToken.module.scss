@@ -114,39 +114,6 @@
   font-size: 0.875rem;
 }
 
-.tooltipWrapper {
-  position: relative;
-  display: inline-block;
-  cursor: help;
-
-  &:hover::after {
-    content: attr(title);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: white;
-    padding: 0.5rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    white-space: nowrap;
-    z-index: 1000;
-    margin-bottom: 5px;
-  }
-
-  &:hover::before {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 5px solid transparent;
-    border-top-color: #333;
-    z-index: 1000;
-  }
-}
-
 .collectionGroup {
   &:last-child {
     margin-bottom: 0 !important;

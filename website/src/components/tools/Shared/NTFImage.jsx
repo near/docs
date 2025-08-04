@@ -2,15 +2,13 @@ import { useEffect, useState } from 'react';
 
 import RoundedImage from './RoundedImage';
 
-
-
 export const NftImage = ({ nft }) => {
-//   const { wallet } = useWalletSelector();
+  //   const { wallet } = useWalletSelector();
   const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
     const fetchNftData = async () => {
-      if ( !nft || !nft.token_id) return;
+      if (!nft || !nft.token_id) return;
 
       const tokenMedia = nft.metadata?.media || '';
 
@@ -28,6 +26,5 @@ export const NftImage = ({ nft }) => {
     fetchNftData();
   }, [nft, imageUrl]);
 
-  // return <img src={imageUrl} alt={nft?.metadata?.title || ''} style={{ objectFit: 'cover', borderRadius: '50%' }} />
   return <RoundedImage src={imageUrl} alt={nft?.metadata?.title || ''} />;
 };

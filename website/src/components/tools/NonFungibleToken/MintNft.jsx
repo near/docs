@@ -1,6 +1,8 @@
 import { useState, useCallback, useEffect } from 'react';
 import styles from './MintNft.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { toast } from 'react-toastify';
+import { network } from '../config';
 
 const MAX_FILE_SIZE = 3 * 1024 * 1024;
 const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'];
@@ -13,7 +15,10 @@ const MintNft = ({ reload }) => {
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoadingPreview, setIsLoadingPreview] = useState(false);
   const [requiredDeposit, setRequiredDeposit] = useState('0');
+  const [step, setStep] = useState('form');
+  const [imagePreview, setImagePreview] = useState(null);
 
   const { callFunction, signedAccountId, signIn } = useWalletSelector();
 
@@ -58,28 +63,54 @@ const MintNft = ({ reload }) => {
     const stringArgs = JSON.stringify(args);
     const costPerByte = '10000000000000000000';
     const estimatedCost = BigInt(stringArgs.length) * BigInt(costPerByte) * BigInt(4);
-
-    const nearAmount = (Number(estimatedCost) / 1e24).toFixed(2);
-    setRequiredDeposit(nearAmount);
+    
+    setRequiredDeposit(estimatedCost);
   }, [signedAccountId]);
-
+  
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
 
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: null }));
     }
+
+    if (step === 'ready-to-mint') {
+      setStep('form');
+    }
   };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0] || null;
     handleInputChange('image', file);
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setImagePreview(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
+    }
+  };
+
+  const onPreview = async () => {
+    if (!validateForm()) return;
+    
+    setIsLoadingPreview(true);
+    await estimateCost(formData.title, formData.description, !!formData.image);
+    setStep('ready-to-mint');
+    setIsLoadingPreview(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    if (step === 'form') {
+      await onPreview();
+      return;
+    }
+
     if (!signedAccountId) return;
 
     setIsSubmitting(true);
@@ -111,30 +142,41 @@ const MintNft = ({ reload }) => {
       };
 
       await callFunction({
-        contractId: 'nft.primitives.testnet',
+        contractId: network.nftContract,
         method: 'nft_mint',
         args,
         gas: '300000000000000',
-        deposit: (BigInt(requiredDeposit.replace('.', '')) * BigInt(1e22)).toString(),
+        deposit: requiredDeposit.toString(),
       });
       
-      alert('NFT minted successfully!');
+      toast.success('NFT minted successfully!');
 
       setFormData({ title: '', description: '', image: null });
+      setImagePreview(null);
+      setStep('form');
 
       if (reload) reload(5000);
 
     } catch (error) {
       console.error('Error minting NFT:', error);
-      alert('Failed to mint NFT. Please try again.');
+      toast.error('Failed to mint NFT. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   useEffect(() => {
-    estimateCost(formData.title, formData.description, !!formData.image);
-  }, [formData.title, formData.description, formData.image, estimateCost]);
+    if (step === 'form') {
+      estimateCost(formData.title, formData.description, !!formData.image);
+    }
+  }, [formData.title, formData.description, formData.image, estimateCost, step]);
+
+  const getButtonText = () => {
+    if (isLoadingPreview) return 'Loading...';
+    if (isSubmitting) return 'Minting NFT...';
+    if (step === 'ready-to-mint') return `Confirm & Mint NFT`;
+    return 'Preview NFT Creation';
+  };
 
   return (
     <>      
@@ -185,6 +227,16 @@ const MintNft = ({ reload }) => {
               Accepted Formats: PNG, JPEG, GIF, SVG | Ideal dimension: 1:1 | Max size: 3MB
             </div>
             {errors.image && <div className={styles.error}>{errors.image}</div>}
+            {imagePreview && (
+              <div className={styles.imagePreview}>
+                <label className={styles.label}>Preview:</label>
+                <img 
+                  src={imagePreview} 
+                  alt="NFT preview" 
+                  className={styles.previewImage}
+                />
+              </div>
+            )}
           </div>
 
           {!signedAccountId ? (
@@ -197,12 +249,22 @@ const MintNft = ({ reload }) => {
             </button>
           ) : (
             <div>
+              {step === 'ready-to-mint' && (
+                <div className={styles.pricePreview}>
+                  <div className={styles.priceAmount}>
+                    Minting Cost: <strong>{requiredDeposit} NEAR</strong>
+                  </div>
+                  <div className={styles.priceNote}>
+                    This amount will be used to cover storage costs on the NEAR blockchain.
+                  </div>
+                </div>
+              )}
               <button
                 type="submit"
-                className={`${styles.button} ${isSubmitting ? styles.loading : ''}`}
-                disabled={isSubmitting}
+                className={`${styles.button} ${styles.primary} ${(isLoadingPreview || isSubmitting) ? styles.loading : ''} ${step === 'ready-to-mint' ? styles.confirm : ''}`}
+                disabled={isLoadingPreview || isSubmitting}
               >
-                {`Mint - Cost: ${requiredDeposit} NEAR`}
+                {getButtonText()}
               </button>
             </div>
           )}

@@ -2,8 +2,11 @@ import { useState } from 'react';
 import styles from './CreateNFTDrop.module.scss';
 import { NEAR } from '@near-js/tokens';
 import { generateAndStore } from '../../../hooks/useLinkdrops';
+import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { NftImage } from '../Shared/NTFImage';
+import { network } from '../config';
 
-const KEYPOM_CONTRACT_ADDRESS = 'v2.keypom.testnet';
+const KEYPOM_CONTRACT_ADDRESS = network.KEYPOM_CONTRACT_ADDRESS;
 
 const getDeposit = (numberLinks) => NEAR.toUnits((0.0426 * numberLinks).toString()).toString() || '0';
 
@@ -20,12 +23,13 @@ const CreateNFTDrop = ({ user_collections, reload }) => {
   const [expandedAccordions, setExpandedAccordions] = useState({});
   const { signedAccountId, signAndSendTransactions } = useWalletSelector();
 
+  console.log(user_collections);
+  
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
-    // Clear error when user starts typing
     if (errors[field]) {
       setErrors(prev => ({
         ...prev,
@@ -137,7 +141,6 @@ const CreateNFTDrop = ({ user_collections, reload }) => {
 
       reload(1000);
       
-      // Reset form
       setFormData({
         dropName: '',
         tokenId: '',
@@ -194,18 +197,9 @@ const CreateNFTDrop = ({ user_collections, reload }) => {
                             }`}
                             onClick={() => selectNft(nft)}
                           >
-                            {nft.media && (
-                              <img
-                                src={nft.media}
-                                alt={nft.title || nft.token_id}
-                                className={styles.nftImage}
-                                onError={(e) => {
-                                  e.target.style.display = 'none';
-                                }}
-                              />
-                            )}
+                            <NftImage nft={nft}/>
                             <div className={styles.nftTitle}>
-                              {nft.title || 'Untitled'}
+                              {nft?.metadata?.title || 'Untitled'}
                             </div>
                             <div className={styles.nftTokenId}>
                               ID: {nft.token_id}

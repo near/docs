@@ -2586,16 +2586,6 @@
     react "18.3.1"
     react-dom "18.3.1"
 
-"@near-wallet-selector/my-near-wallet@^9.2.0":
-  version "9.2.0"
-  resolved "https://registry.yarnpkg.com/@near-wallet-selector/my-near-wallet/-/my-near-wallet-9.2.0.tgz#5a0f3fc1c76296d270a3d1736b30c1b41f24cfb5"
-  integrity sha512-Y3cLVsftnkXeuYHmnqw+Ht03KQUzw0SMCNcZRGIj2ARyEJiHAmYJrrp0sfBg2WJZnDYExijqr/PHfUN8SmDOfQ==
-  dependencies:
-    "@near-wallet-selector/core" "9.2.0"
-    "@near-wallet-selector/wallet-utils" "9.2.0"
-    borsh "2.0.0"
-    near-api-js "5.0.0"
-
 "@near-wallet-selector/nightly@^9.2.0":
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/@near-wallet-selector/nightly/-/nightly-9.2.0.tgz#1aaa8b5b9c406552020e0330b4290996eb404029"

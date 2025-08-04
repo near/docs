@@ -1,14 +1,13 @@
 import { NEAR } from '@near-js/tokens';
 import { useCallback, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import styles from './FungibleToken.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
 
-const network = {
-  ftContract: 'tkn.primitives.testnet'
-};
+import { network } from '../config';
 
 const FACTORY_CONTRACT = network.ftContract;
 const MAX_FILE_SIZE = 10 * 1024;
@@ -31,13 +30,7 @@ const convertToBase64 = (file) => {
   });
 };
 
-const openToast = ({ type, title, description }) => {
-  console.log(`[${type.toUpperCase()}] ${title}: ${description}`);
-  alert(`${title}\n${description}`);
-};
-
 const CreateTokenForm = ({ reload = () => { } }) => {
-
   const {
     control,
     register,
@@ -46,8 +39,20 @@ const CreateTokenForm = ({ reload = () => { } }) => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const { viewFunction, callFunction, getBalance, signedAccountId, signIn, signOut } = useWalletSelector();
+  const { viewFunction, callFunction, getBalance, signedAccountId, signIn } = useWalletSelector();
   const [requiredDeposit, setRequiredDeposit] = useState('0');
+  const [ deposit, setDeposit ] = useState('0');
+  const [step, setStep] = useState('form');
+  const [isLoadingPreview, setIsLoadingPreview] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const watchedFields = watch();
+
+  useEffect(() => {
+    if (step === 'ready-to-create') {
+      setStep('form');
+    }
+  }, [watchedFields.name, watchedFields.symbol, watchedFields.total_supply, watchedFields.decimals, watchedFields.icon]);
 
   const symbolAvailable = useCallback(
     async (symbol) => {
@@ -62,20 +67,16 @@ const CreateTokenForm = ({ reload = () => { } }) => {
     [getBalance],
   );
 
-  const formData = watch();
+  const onPreview = useCallback(
+    async (formData) => {
+      if (!signedAccountId) return;
 
-  const onSubmit = useCallback(
-    async ({ total_supply, decimals, icon, name, symbol }, actuallySubmit) => {
-      if (!signedAccountId && actuallySubmit) return;
-
-      total_supply = total_supply || '0';
-      decimals = decimals || 0;
-      name = name || '';
-      symbol = symbol || '';
-      icon = icon || [];
-
+      setIsLoadingPreview(true);
+      
+      const { total_supply, decimals, icon, name, symbol } = formData;
+      
       let base64Image = '';
-      if (icon[0]) {
+      if (icon && icon[0]) {
         try {
           base64Image = await convertToBase64(icon[0]);
         } catch (error) {
@@ -91,27 +92,72 @@ const CreateTokenForm = ({ reload = () => { } }) => {
           total_supply: supply.toString(),
           metadata: {
             spec: 'ft-1.0.0',
-            name,
-            symbol,
+            name: name || '',
+            symbol: symbol || '',
             icon: base64Image,
-            decimals: Number(decimals),
+            decimals: Number(decimals) || 0,
           },
         },
       };
 
-      console.log('Creating token with args:', args);
+      try {
+        const deposit = await viewFunction({
+          contractId: FACTORY_CONTRACT,
+          method: 'get_required',
+          args
+        });
+        
+        if (deposit) {
+          setDeposit(deposit)
+          setRequiredDeposit(NEAR.toDecimal(deposit,2));
+        }
 
-      const deposit  = await viewFunction({
-        contractId: FACTORY_CONTRACT,
-        method: 'get_required',
-        args
-      });
+        setStep('ready-to-create');
+      } catch (error) {
+        console.error('Error getting required deposit:', error);
+        toast.error('Failed to calculate required deposit');
+      }
       
-      if (deposit) {
-        setRequiredDeposit(NEAR.toUnits(deposit, 2));
+      setIsLoadingPreview(false);
+    },
+    [signedAccountId, viewFunction],
+  );
+
+  const onSubmit = useCallback(
+    async (formData) => {
+      if (step === 'form') {
+        await onPreview(formData);
+        return;
       }
 
-      if (!actuallySubmit) return;
+      if (!signedAccountId) return;
+
+      const { total_supply, decimals, icon, name, symbol } = formData;
+      
+      let base64Image = '';
+      if (icon && icon[0]) {
+        try {
+          base64Image = await convertToBase64(icon[0]);
+        } catch (error) {
+          console.error('Error converting image to base64:', error);
+        }
+      }
+
+      const supply = BigInt(total_supply || '0') * BigInt(Math.pow(10, Number(decimals)));
+
+      const args = {
+        args: {
+          owner_id: signedAccountId,
+          total_supply: supply.toString(),
+          metadata: {
+            spec: 'ft-1.0.0',
+            name: name || '',
+            symbol: symbol || '',
+            icon: base64Image,
+            decimals: Number(decimals) || 0,
+          },
+        },
+      };
 
       let result = false;
 
@@ -121,35 +167,29 @@ const CreateTokenForm = ({ reload = () => { } }) => {
           method: 'create_token',
           args,
           gas: '300000000000000',
-          deposit: requiredDeposit,
+          deposit,
         });
       } catch (error) {
         console.error('Token creation failed:', error);
       }
 
       if (result) {
-        openToast({
-          type: 'success',
-          title: 'Token Created',
-          description: `Token ${name} (${symbol}) created successfully`,
-        });
+        toast.success(`Token ${name} (${symbol}) created successfully`);
         reload(5000);
+        setStep('form');
       } else {
-        openToast({
-          type: 'error',
-          title: 'Error',
-          description: 'Failed to create token',
-        });
+        toast.error('Failed to create token');
       }
     },
-    [signedAccountId, viewFunction, callFunction, reload, requiredDeposit],
+    [step, signedAccountId, onPreview, viewFunction, callFunction, reload, requiredDeposit],
   );
 
-  useEffect(() => {
-    if (formData && Object.keys(formData).some(key => formData[key])) {
-      onSubmit(formData, false);
-    }
-  }, [onSubmit, formData]);
+  const getButtonText = () => {
+    if (isLoadingPreview) return 'Loading...';
+    if (isSubmitting) return 'Creating Token...';
+    if (step === 'ready-to-create') return `Confirm & Create Token`;
+    return 'Preview Token Creation';
+  };
 
   return (
     <>
@@ -158,8 +198,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
       <p>This tool allows you to deploy your own NEP-141 smart contract (Fungible Tokens)</p>
 
       <div className={styles.container}>
-
-        <form onSubmit={handleSubmit((data) => onSubmit(data, true))} className={styles.form}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div className={styles.formGrid}>
             <div className={styles.formGroup}>
               <label className={styles.label}>Token Name</label>
@@ -245,13 +284,36 @@ const CreateTokenForm = ({ reload = () => { } }) => {
                     className={styles.fileInput}
                     type="file"
                     accept={ACCEPTED_IMAGE_TYPES.join(',')}
-                    onChange={(e) => field.onChange(e.target.files)}
+                    onChange={(e) => {
+                      field.onChange(e.target.files);
+                      if (e.target.files && e.target.files[0]) {
+                        const file = e.target.files[0];
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          setImagePreview(event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                      } else {
+                        setImagePreview(null);
+                      }
+                    }}
                     disabled={!signedAccountId}
                   />
                   <div className={styles.fileHint}>
                     Accepted Formats: PNG, JPEG, GIF, SVG | Ideal dimension: 1:1 | Max size: 10kb
                   </div>
                   {fieldState.error && <span className={styles.error}>{fieldState.error.message}</span>}
+                  
+                  {imagePreview && (
+                    <div className={styles.imagePreview}>
+                      <label className={styles.label}>Preview:</label>
+                      <img 
+                        src={imagePreview} 
+                        alt="Token icon preview" 
+                        className={styles.previewImage}
+                      />
+                    </div>
+                  )}
                 </div>
               )}
             />
@@ -267,12 +329,22 @@ const CreateTokenForm = ({ reload = () => { } }) => {
             </button>
           ) : (
             <div>
+              {step === 'ready-to-create' && (
+                <div className={styles.pricePreview}>
+                  <div className={styles.priceAmount}>
+                    Creation Cost: <strong>{requiredDeposit} NEAR</strong>
+                  </div>
+                  <div className={styles.priceNote}>
+                    This amount will be used to cover storage costs on the NEAR blockchain.
+                  </div>
+                </div>
+              )}
               <button
                 type="submit"
-                className={`${styles.button} ${styles.primary} ${isSubmitting ? styles.loading : ''}`}
-                disabled={isSubmitting}
+                className={`${styles.button} ${styles.primary} ${(isLoadingPreview || isSubmitting) ? styles.loading : ''} ${step === 'ready-to-create' ? styles.confirm : ''}`}
+                disabled={isLoadingPreview || isSubmitting}
               >
-                {isSubmitting ? '' : `Create Token - Cost: ${requiredDeposit} N`}
+                {getButtonText()}
               </button>
             </div>
           )}

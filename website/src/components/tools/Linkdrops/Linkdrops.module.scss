@@ -103,7 +103,143 @@
   }
 }
 
-// Dark theme adjustments
+// ListTokenDrop styles
+.dropsList {
+  margin-bottom: 1.5rem;
+  color: var(--ifm-font-color-base);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 2rem;
+  color: var(--ifm-color-emphasis-600);
+  background-color: var(--ifm-color-emphasis-100);
+  border-radius: 8px;
+  border: 1px dashed var(--ifm-color-emphasis-300);
+
+  .emptyIcon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .emptyTitle {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .emptySubtitle {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.9rem;
+  }
+}
+
+.dropsGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.dropCard {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background-color: var(--ifm-background-surface-color);
+  transition: none;
+}
+
+.dropHeader {
+  margin-bottom: 1rem;
+
+  .dropTitle {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    color: var(--ifm-font-color-base);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .dropIcon {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.dropBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+
+  &.nft {
+    background-color: var(--ifm-color-info-contrast-background);
+    color: var(--ifm-color-info);
+  }
+
+  &.token {
+    background-color: var(--ifm-color-success-contrast-background);
+    color: var(--ifm-color-success);
+  }
+}
+
+.dropInfo {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+
+  .infoItem {
+    margin-bottom: 0.25rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+  }
+}
+
+.claimSection {
+  .claimLabel {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: var(--ifm-font-color-base);
+  }
+
+  .claimButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+.copyButton {
+  padding: 0.5rem 1rem;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &.copied {
+    background-color: var(--ifm-color-success);
+  }
+
+  .buttonIcon {
+    font-size: 1rem;
+  }
+}
+
 [data-theme='dark'] {
   .form {
     border-color: var(--ifm-color-emphasis-200);
@@ -116,5 +252,15 @@
     &:before {
       background-color: var(--ifm-background-surface-color);
     }
+  }
+
+  .dropCard {
+    border-color: var(--ifm-color-emphasis-200);
+    background: var(--ifm-background-color);
+  }
+
+  .emptyState {
+    background-color: var(--ifm-color-emphasis-200);
+    border-color: var(--ifm-color-emphasis-400);
   }
 }
