@@ -6,6 +6,8 @@ description: "Learn how to deploy a Global contract and use it from another acco
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {Github, Language} from "@site/src/components/codetabs";
+
 
 If you've ever deployed the same contract code to multiple accounts, you’ve likely noticed that each deployment requires you to pay the full storage cost again.
 
@@ -102,18 +104,10 @@ Since there are two ways to reference a global contract ([by account](../../smar
   
   To do this, use the `deployGlobalContract` function and set the mode to `accountId`, along with the contract’s code bytes.
   
-  ```js
-  import { readFileSync } from "fs";
+    <Github fname="deploy-global-contract-by-account.js" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js#L23-L27"
+    start="23" end="27" />
 
-  const account = new Account("user.testnet", provider, signer);
-
-  const wasm = readFileSync("../contracts/contract.wasm");
-  await account.deployGlobalContract(wasm, "accountId");
-  ```
-
-  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js" target="_blank" rel="noreferrer noopener" class="text-center">
-    See full example on GitHub
-  </a>
   </TabItem>
 
   <TabItem value="hash" label="By Hash" default>
@@ -121,19 +115,11 @@ Since there are two ways to reference a global contract ([by account](../../smar
   Let’s look at an example of deploying a global contract by hash.
   
   To do this, use the `deployGlobalContract` function and set the mode to `codeHash`, along with the contract’s code bytes.
+
+    <Github fname="deploy-global-contract-by-hash.js" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js#L24-L28"
+    start="24" end="28" />
   
-  ```js
-  import { readFileSync } from "fs";
-
-  const account = new Account("user.testnet", provider, signer);
-
-  const wasm = readFileSync("../contracts/contract.wasm");
-  await account.deployGlobalContract(wasm, "codeHash");
-  ```
-
-  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js" target="_blank" rel="noreferrer noopener" class="text-center">
-    See full example on GitHub
-  </a>
   </TabItem>
   </Tabs>
 
@@ -149,22 +135,11 @@ Since there are two ways to reference a global contract ([by account](../../smar
   Let’s look at an example of deploying a global contract by account.
   
   To do this, use the `deploy_global_contract_code` function and use the method `as_account_id`, along with the contract’s code bytes.
+
+    <Github fname="global_contract_accountid.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs#L17-L28"
+    start="17" end="28" />
   
-  ```rust
-    let global_account_id: AccountId = "nft-contract.testnet".parse().unwrap();
-    let code = std::fs::read("path/to/your/contract.wasm").unwrap();
-    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
-
-    let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(code)
-        .as_account_id(global_account_id)
-        .with_signer(signer)
-        .send_to_testnet()
-        .await.unwrap();
-  ```
-
-  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs" target="_blank" rel="noreferrer noopener" class="text-center">
-    See full example on GitHub
-  </a>
   </TabItem>
 
   <TabItem value="hash" label="By Hash" default>
@@ -172,22 +147,11 @@ Since there are two ways to reference a global contract ([by account](../../smar
   Let’s look at an example of deploying a global contract by hash.
   
   To do this, use the `deploy_global_contract_code` function and use the method `as_hash`, along with the contract’s code bytes.
+
+    <Github fname="global_contract_hash.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs#L17-L28"
+    start="17" end="28" />
   
-  ```rust
-    let account_id: AccountId = "my-account.testnet".parse().unwrap();
-    let code = std::fs::read("path/to/your/contract.wasm").unwrap();
-    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
-
-    let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(code)
-        .as_hash()
-        .with_signer(account_id, signer)
-        .send_to_testnet()
-        .await.unwrap();
-  ```
-
-  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs" target="_blank" rel="noreferrer noopener" class="text-center">
-    See full example on GitHub
-  </a>
   </TabItem>
   </Tabs>
 
