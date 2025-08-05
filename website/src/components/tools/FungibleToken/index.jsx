@@ -2,7 +2,6 @@ import CreateTokenForm from './CreateTokenForm';
 import ListToken from './ListToken';
 import styles from './FungibleToken.module.scss';
 
-
 const FungibleToken = ({
   user_fts,
   loading,

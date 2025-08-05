@@ -1,7 +1,6 @@
 import Tabs from '@theme/Tabs';
 import FungibleToken from './FungibleToken';
 import NonFungibleToken from './NonFungibleToken';
-import DecentralizedOrganization from './DecentralizedOrganization';
 import TabItem from '@theme/TabItem';
 import NearIconSvg from '@site/static/img/near_icon.svg';
 import { useCallback, useEffect, useState } from 'react';
@@ -11,13 +10,11 @@ import useLinkdrops from './hooks/useLinkdrops';
 import whiteList from './white-list.json';
 import { NEAR } from '@near-js/tokens';
 
-const network = {
-  apiNearBlocks: 'https://api-testnet.nearblocks.io'
-};
+const API_NEAR_BLOCKS = 'https://api-testnet.nearblocks.io';
 
 const NearToken = {
   contract_id: 'near',
-  balance: NEAR.toUnits(10),
+  balance: NEAR.toUnits(0),
   verified: true,
   metadata: {
     decimals: 24,
@@ -29,22 +26,21 @@ const NearToken = {
 
 const Tools = () => {
   const { getBalance, viewFunction, signedAccountId } = useWalletSelector();
+
   const [allFT, setAllFT] = useState([NearToken]);
   const [loadingFT, setLoadingFT] = useState(false);
+  
   const [allNFT, setAllNFT] = useState([]);
-
   const [loadingNFT, setLoadingNFT] = useState(false);
+
   const { drops, reloadLinkdrops } = useLinkdrops();
-
-  const [allDAO, setAllDAO] = useState([]);
-  const [loadingDAO, setLoadingDAO] = useState(false);
-
 
   const fetchTokens = useCallback(async () => {
     if (!signedAccountId) return { fts: [], nfts: [] };
 
-    const response = await fetch(`${network.apiNearBlocks}/v1/account/${signedAccountId}/tokens`);
+    const response = await fetch(`${API_NEAR_BLOCKS}/v1/account/${signedAccountId}/tokens`);
     if (!response.ok) return { fts: [], nfts: [] };
+
 
     const data = await response.json();
     return data.tokens;
@@ -54,7 +50,7 @@ const Tools = () => {
     async (ft_contracts) => {
       if (!signedAccountId) return [];
       if (!ft_contracts.length) return [];
-
+      console.log("hello", ft_contracts);
       setLoadingFT(true);
 
       const getFTData = async (contract_id) => {
@@ -118,105 +114,6 @@ const Tools = () => {
     [viewFunction, signedAccountId],
   );
 
-  const fetchDaos = useCallback(async () => {
-    if (!signedAccountId) return [];
-
-    const url = new URL(`/v1/account/${signedAccountId}/txns-only`, network.apiNearBlocks);
-    url.searchParams.set('page', '1');
-    url.searchParams.set('page', '10');
-    url.searchParams.set('order', 'desc');
-    url.searchParams.set('method', 'create');
-    url.searchParams.set('to', network.daoContract);
-
-    const response = await fetch(url);
-    if (!response.ok) return [];
-
-    const data = await response.json();
-
-    const daos = (data?.txns || [])
-      .map((tx) => {
-        if (!tx.outcomes?.status) return;
-
-        const action = tx.actions?.[0];
-
-        if (!action) return;
-
-        try {
-          const args = JSON.parse(action.args);
-
-          return [args.name, network.daoContract].join('.');
-        } catch (error) {
-          console.error(`Error while parsing create DAO tx: ${error}`);
-          return;
-        }
-      })
-      .filter(Boolean);
-
-    return Array.from(new Set(daos));
-  }, [signedAccountId]);
-
-  const processDAO = useCallback(
-    async (daos) => {
-      if (!daos.length) return [];
-      setLoadingDAO(true);
-
-      const getDAOData = async (contract_id) => {
-        try {
-          const config = await viewFunction({
-            contractId: contract_id,
-            method: 'get_config',
-            args: {},
-          });
-
-          const metadata = JSON.parse(Buffer.from(config.metadata, 'base64').toString());
-
-          let logo_data;
-          if (metadata.flagLogo) {
-            const logo_response = await fetch(metadata.flagLogo);
-            const logo_blob = await logo_response.blob();
-            logo_data = URL.createObjectURL(logo_blob);
-          }
-
-          return {
-            contract_id: contract_id,
-            public_name: metadata.displayName,
-            description: config.purpose,
-            metadata: {
-              logo_url: metadata.flagLogo,
-              cover_url: metadata.flagCover,
-              logo_data: logo_data,
-            },
-          };
-        } catch (error) {
-          console.error(`Error happened while fetching DAO config: ${error}`);
-          return {
-            contract_id,
-            public_name: '',
-            description: '',
-            metadata: { logo_url: undefined, cover_url: undefined, logo_data: undefined },
-          };
-        }
-      };
-
-      const promises = daos.map((dao) => getDAOData(dao));
-      const all_daos = await Promise.all(promises);
-
-      setAllDAO(all_daos);
-      setLoadingDAO(false);
-    },
-    [viewFunction],
-  );
-
-  const reloadDao = useCallback(
-    async (delay) => {
-      await new Promise((resolve) => setTimeout(resolve, delay));
-
-      const daos = await fetchDaos();
-      await processDAO(daos);
-    },
-    [fetchDaos, processDAO],
-  );
-
   const reload = useCallback(
     async (delay, type) => {
       await new Promise((resolve) => setTimeout(resolve, delay));
@@ -233,13 +130,9 @@ const Tools = () => {
       const tokens = await fetchTokens();
       processFT(tokens.fts);
       processNFT(tokens.nfts);
-
-      // load Decentralized Organizations
-      const daos = await fetchDaos();
-      processDAO(daos);
     };
     init();
-  }, [fetchDaos, fetchTokens, processDAO, processFT, processNFT, signedAccountId]);
+  }, [fetchTokens, processFT, processNFT, signedAccountId]);
 
   
   return <Tabs groupId="code-tabs">
@@ -258,9 +151,6 @@ const Tools = () => {
         reloadNFT={(d) => reload(d, 'nfts')}
         reloadDrops={reloadLinkdrops}
       />
-    </TabItem>
-    <TabItem value="dao" label="DAO">
-      <DecentralizedOrganization loading={loadingDAO} user_daos={allDAO} reload={(d) => reloadDao(d)} />
     </TabItem>
   </Tabs>
 }

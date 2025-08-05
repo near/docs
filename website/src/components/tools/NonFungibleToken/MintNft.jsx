@@ -2,8 +2,8 @@ import { useState, useCallback, useEffect } from 'react';
 import styles from './MintNft.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { toast } from 'react-toastify';
-import { network } from '../config';
 
+const NFT_CONTRACT = 'nft.primitives.testnet'
 const MAX_FILE_SIZE = 3 * 1024 * 1024;
 const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'];
 
@@ -142,7 +142,7 @@ const MintNft = ({ reload }) => {
       };
 
       await callFunction({
-        contractId: network.nftContract,
+        contractId: NFT_CONTRACT,
         method: 'nft_mint',
         args,
         gas: '300000000000000',

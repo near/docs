@@ -2,11 +2,10 @@ import { useState } from 'react';
 import styles from './CreateTokenDrop.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { toast } from 'react-toastify';
-import { network } from '../config';
 import { generateAndStore } from '../hooks/useLinkdrops';
 import { NEAR } from '@near-js/tokens';
 
-const KEYPOM_CONTRACT_ADDRESS = network.linkdrop;
+const KEYPOM_CONTRACT_ADDRESS = 'v2.keypom.testnet';
 
 const formatBalance = (balance, decimals = 24) => {
   const balanceStr = balance.toString();
@@ -133,9 +132,9 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
     ];
 
     if (isFTDrop) {
-      const amount = BigInt(ftAmount) * BigInt(data.numberLinks);
+      const amount = BigInt(ftAmount) * BigInt(formData.numberLinks);
       transactions.push({
-        receiverId: token.contract_id,
+        receiverId: selectedToken.contract_id,
         signerId: signedAccountId,
         actions: [
           {
@@ -155,9 +154,7 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
       });
     }
 
-    try {
-      console.log(transactions);
-      
+    try {      
       await signAndSendTransactions({ transactions });
 
       toast.success('Linkdrop Created - Copy the link and share it with your friends');

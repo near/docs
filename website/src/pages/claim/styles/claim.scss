@@ -1,0 +1,528 @@
+// CSS Custom Properties for theme support
+:root {
+  // Light theme colors
+  --claim-bg-primary: #ffffff;
+  --claim-bg-secondary: #f8fafc;
+  --claim-bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --claim-text-primary: #1e293b;
+  --claim-text-secondary: #64748b;
+  --claim-text-muted: #94a3b8;
+  --claim-border-color: #e2e8f0;
+  --claim-accent-color: #6366f1;
+  --claim-accent-hover: #4f46e5;
+  --claim-success-color: #22c55e;
+  --claim-error-color: #ef4444;
+  --claim-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --claim-shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  --claim-border-radius: 0.75rem;
+}
+
+// Dark theme colors
+[data-theme='dark'] {
+  --claim-bg-primary: #1e293b;
+  --claim-bg-secondary: #0f172a;
+  --claim-bg-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --claim-text-primary: #f1f5f9;
+  --claim-text-secondary: #cbd5e1;
+  --claim-text-muted: #94a3b8;
+  --claim-border-color: #334155;
+  --claim-accent-color: #818cf8;
+  --claim-accent-hover: #6366f1;
+  --claim-success-color: #34d399;
+  --claim-error-color: #f87171;
+  --claim-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --claim-shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+// Main container
+.claim-container {
+  min-height: 100vh;
+  background: var(--claim-bg-gradient);
+  padding: 2rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.claim-card {
+  background: var(--claim-bg-primary);
+  border: 1px solid var(--claim-border-color);
+  border-radius: var(--claim-border-radius);
+  box-shadow: var(--claim-shadow);
+  padding: 2.5rem;
+  margin: 0 auto;
+  max-width: 650px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: var(--claim-shadow-hover);
+  }
+}
+
+.claim-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--claim-text-primary);
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--claim-accent-color), var(--claim-success-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+// Loading state
+.claim-loading {
+  text-align: center;
+  padding: 3rem 2rem;
+  
+  .loading-spinner {
+    margin-bottom: 1.5rem;
+    
+    .spinner-border {
+      display: inline-block;
+      width: 3rem;
+      height: 3rem;
+      vertical-align: -0.125em;
+      border: 0.25em solid var(--claim-accent-color);
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: spinner-border 0.75s linear infinite;
+    }
+    
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+  }
+  
+  .loading-text {
+    color: var(--claim-text-secondary);
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+}
+
+// Error state
+.claim-error {
+  text-align: center;
+  padding: 3rem 2rem;
+  
+  .error-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.3));
+  }
+  
+  .error-message {
+    color: var(--claim-error-color);
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  
+  .retry-button {
+    background-color: var(--claim-error-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: #dc2626;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Sign in state
+.claim-sign-in {
+  text-align: center;
+  padding: 3rem 2rem;
+  
+  .sign-in-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.3));
+  }
+  
+  .sign-in-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--claim-text-primary);
+    margin-bottom: 1rem;
+  }
+  
+  .sign-in-text {
+    color: var(--claim-text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  
+  .btn-sign-in {
+    background: linear-gradient(135deg, var(--claim-accent-color), var(--claim-accent-hover));
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    .btn-icon {
+      font-size: 1.25rem;
+    }
+    
+    &:hover {
+      box-shadow: 0 8px 25px -5px rgba(99, 102, 241, 0.4);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Content area
+.claim-content {
+  .drop-preview {
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    background: var(--claim-bg-secondary);
+    border-radius: var(--claim-border-radius);
+    border: 1px solid var(--claim-border-color);
+  }
+}
+
+// Wallet actions
+.wallet-actions {
+  text-align: center;
+  
+  .wallet-actions-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--claim-text-primary);
+    margin-bottom: 1.5rem;
+  }
+  
+  .wallet-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    .wallet-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      background: var(--claim-bg-secondary);
+      color: var(--claim-text-primary);
+      text-decoration: none;
+      border-radius: 0.75rem;
+      border: 1px solid var(--claim-border-color);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      min-width: 160px;
+      
+      .wallet-icon {
+        font-size: 1.5rem;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+      }
+      
+      &:hover {
+        background: var(--claim-accent-color);
+        color: white;
+        text-decoration: none;
+        box-shadow: var(--claim-shadow-hover);
+        border-color: var(--claim-accent-color);
+      }
+      
+      &.meteor-wallet:hover {
+        background: linear-gradient(135deg, #ff6b6b, #feca57);
+      }
+      
+      &.near-wallet:hover {
+        background: linear-gradient(135deg, #00d4aa, #0072ce);
+      }
+    }
+  }
+}
+
+// Preview components theming
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.preview-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--claim-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.preview-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--claim-accent-color);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px -5px rgba(99, 102, 241, 0.3);
+  }
+}
+
+.preview-amount {
+  font-size: 1.5rem;
+  color: var(--claim-text-secondary);
+  font-weight: 600;
+  background: var(--claim-bg-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--claim-border-color);
+  
+  .amount-value {
+    margin-right: 0.5rem;
+  }
+  
+  .amount-symbol {
+    font-weight: 700;
+    color: var(--claim-accent-color);
+  }
+}
+
+.preview-description {
+  color: var(--claim-text-muted);
+  font-size: 1rem;
+  max-width: 400px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+// NFT specific styles
+.nft-preview {
+  .preview-image {
+    width: 120px;
+    height: 120px;
+    border-radius: var(--claim-border-radius);
+  }
+  
+  .nft-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    
+    .nft-id, .nft-contract {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      
+      .nft-label {
+        color: var(--claim-text-muted);
+        font-weight: 500;
+      }
+      
+      .nft-value {
+        color: var(--claim-text-secondary);
+        font-family: monospace;
+        background: var(--claim-bg-secondary);
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        border: 1px solid var(--claim-border-color);
+      }
+    }
+  }
+  
+  .nft-loading {
+    text-align: center;
+    padding: 2rem;
+    
+    .loading-spinner {
+      margin-bottom: 1rem;
+      
+      .spinner-border {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+    
+    p {
+      color: var(--claim-text-secondary);
+      margin: 0;
+    }
+  }
+}
+
+// FT specific styles
+.ft-preview {
+  .token-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .token-icon-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .token-image {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// NEAR specific styles
+.near-preview {
+  .near-icon-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  
+  .near-icon {
+    width: 80px;
+    height: 80px;
+    transition: all 0.3s ease;
+    color: var(--claim-text-primary);
+    
+    &:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+}
+
+// Dark theme specific adjustments
+[data-theme='dark'] {
+  .claim-container {
+    background-image: 
+      radial-gradient(at 40% 20%, rgba(120, 119, 198, 0.3) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(120, 119, 198, 0.3) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, rgba(120, 119, 198, 0.3) 0px, transparent 50%);
+  }
+  
+  .loading-spinner .spinner-border {
+    filter: drop-shadow(0 0 8px rgba(129, 140, 248, 0.5));
+  }
+  
+  .wallet-link {
+    backdrop-filter: blur(10px);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .claim-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .claim-card {
+    padding: 1.5rem;
+    margin: 0 0.5rem;
+  }
+  
+  .claim-title {
+    font-size: 2rem;
+  }
+  
+  .wallet-links {
+    flex-direction: column;
+    align-items: center;
+    
+    .wallet-link {
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
+    }
+  }
+  
+  .preview-container {
+    padding: 1.5rem 0;
+    gap: 1rem;
+  }
+  
+  .sign-in-icon {
+    font-size: 3rem !important;
+  }
+  
+  .btn-sign-in {
+    padding: 1rem 2rem !important;
+    font-size: 1rem !important;
+  }
+  
+  .nft-details {
+    .nft-id, .nft-contract {
+      flex-direction: column;
+      gap: 0.25rem;
+      
+      .nft-value {
+        font-size: 0.75rem;
+        word-break: break-all;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .claim-card {
+    padding: 1rem;
+  }
+  
+  .claim-title {
+    font-size: 1.75rem;
+  }
+  
+  .preview-title {
+    font-size: 1.5rem;
+  }
+  
+  .preview-amount {
+    font-size: 1.25rem;
+  }
+}
+
+// Animation keyframes
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

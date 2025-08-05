@@ -4,9 +4,8 @@ import { NEAR } from '@near-js/tokens';
 import { generateAndStore } from '../hooks/useLinkdrops';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { NftImage } from '../Shared/NTFImage';
-import { network } from '../config';
 
-const KEYPOM_CONTRACT_ADDRESS = network.KEYPOM_CONTRACT_ADDRESS;
+const KEYPOM_CONTRACT_ADDRESS = 'v2.keypom.testnet';
 
 const getDeposit = (numberLinks) => NEAR.toUnits((0.0426 * numberLinks).toString()).toString() || '0';
 

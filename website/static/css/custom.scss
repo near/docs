@@ -1201,3 +1201,29 @@ div[class^='announcementBar_'] {
 .nws-modal-header{
   justify-content: space-between !important;
 }
+
+.near-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, var(--ifm-color-primary-lighter) 100%);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.near-icon {
+  width: 40px !important;
+  height: 40px !important;
+  display: block;
+  filter: brightness(1);
+  transition: transform 0.3s ease;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

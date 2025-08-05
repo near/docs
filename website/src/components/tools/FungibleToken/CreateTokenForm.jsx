@@ -6,10 +6,7 @@ import { toast } from 'react-toastify';
 import styles from './FungibleToken.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
-
-import { network } from '../config';
-
-const FACTORY_CONTRACT = network.ftContract;
+const FACTORY_CONTRACT = 'tkn.primitives.testnet';
 const MAX_FILE_SIZE = 10 * 1024;
 const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'];
 
