@@ -201,7 +201,6 @@
 .claim-content {
   .drop-preview {
     margin-bottom: 2.5rem;
-    padding: 2rem;
     background: var(--claim-bg-secondary);
     border-radius: var(--claim-border-radius);
     border: 1px solid var(--claim-border-color);
@@ -242,6 +241,20 @@
       .wallet-icon {
         font-size: 1.5rem;
         filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        img, svg {
+          width: 24px;
+          height: 24px;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+        
+        svg {
+          border-radius: 0;
+        }
       }
       
       &:hover {
@@ -250,13 +263,6 @@
         text-decoration: none;
         box-shadow: var(--claim-shadow-hover);
         border-color: var(--claim-accent-color);
-      }
-      
-      &.meteor-wallet:hover {
-        background: linear-gradient(135deg, #ff6b6b, #feca57);
-      }
-      
-      &.near-wallet:hover {
         background: linear-gradient(135deg, #00d4aa, #0072ce);
       }
     }
@@ -277,20 +283,18 @@
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--claim-text-primary);
-  margin-bottom: 0.5rem;
+  margin: 0 !important;
 }
 
 .preview-image {
   width: 80px;
   height: 80px;
   object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid var(--claim-accent-color);
   transition: all 0.3s ease;
   
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 25px -5px rgba(99, 102, 241, 0.3);
+    // box-shadow: 0 8px 25px -5px rgba(99, 102, 241, 0.3);
   }
 }
 
@@ -422,6 +426,33 @@
   }
 }
 
+
+.near-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: var(--claim-text-secondary);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.near-icon {
+  width: 40px !important;
+  height: 40px !important;
+  display: block;
+  filter: brightness(1);
+  transition: transform 0.3s ease;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 // Dark theme specific adjustments
 [data-theme='dark'] {
   .claim-container {
@@ -467,7 +498,7 @@
   }
   
   .preview-container {
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     gap: 1rem;
   }
   
@@ -503,6 +534,7 @@
   }
   
   .preview-title {
+    margin: 0;
     font-size: 1.5rem;
   }
   

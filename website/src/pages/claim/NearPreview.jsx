@@ -6,7 +6,7 @@ const NearPreview = ({ amount }) => {
     <div className="preview-container near-preview">
       <h3 className="preview-title">NEAR Token</h3>
       <div className="near-icon-container">
-        <NearIconSvg width="40" height="40" className="near-icon" />
+        <NearIconSvg width="80" height="80" className="preview-image token-image" />
       </div>
       <div className="preview-amount">
         <span className="amount-value">{amount}</span>
