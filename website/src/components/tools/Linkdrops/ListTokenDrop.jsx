@@ -17,7 +17,7 @@ const ListTokenDrop = ({ drops }) => {
   const generateClaimUrl = (privateKey) => {
     if (typeof window !== 'undefined') {
       const currentOrigin = window.location.origin;
-      return `${currentOrigin}/claim/linkdrop/${privateKey}`;
+      return `${currentOrigin}/claim/linkdrop?id=${privateKey}`;
     }
     return '#';
   };
