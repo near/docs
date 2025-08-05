@@ -17,19 +17,21 @@ const Linkdrops = ({
   const [selector, setSelector] = useState(false);
   return (
     <>
-      <h2>Create a LinkDrop</h2>
-      <p>
-        This tool allows you to create drops that can be claimed by anyone through a simple web link
-      </p>
-
-      <div className={styles.container}>
-        <div className={styles.form}>
-          <div className={styles.header}>
-
-          </div>
-
+      <div className={styles.header}>
+        <div className={styles.titleSection}>
+          <h1 className={styles.mainTitle}>
+            🔗 LinkDrop Creator
+          </h1>
+          <p className={styles.subtitle}>
+            Create shareable drops that can be claimed by anyone through a simple web link
+          </p>
+        </div>
+        
+        <div className={styles.switchSection}>
           <div className={styles.switchContainer}>
-            <span>Token</span>
+            <span className={`${styles.switchLabel} ${!selector ? styles.active : ''}`}>
+              💰 Token
+            </span>
             <label className={styles.switch}>
               <input
                 type="checkbox"
@@ -38,12 +40,18 @@ const Linkdrops = ({
                 onChange={(e) => setSelector(e.target.checked)}
               />
               <span className={styles.slider}>
-                <span className={`${styles.switchIcon} ${styles.left}`}>💰</span>
-                <span className={`${styles.switchIcon} ${styles.right}`}>🖼️</span>
+                <span className={styles.switchKnob}></span>
               </span>
             </label>
-            <span>NFT</span>
+            <span className={`${styles.switchLabel} ${selector ? styles.active : ''}`}>
+              🖼️ NFT
+            </span>
           </div>
+        </div>
+      </div>
+
+      <div className={styles.container}>
+         
 
           {!selector && (
             <CreateTokenDrop
@@ -68,7 +76,6 @@ const Linkdrops = ({
           <div className={styles.poweredBy}>
             Powered by <a href="https://keypom.xyz" target="_blank" rel="noopener noreferrer">Keypom</a>
           </div>
-        </div>
 
         <ListTokenDrop drops={drops} />
       </div>

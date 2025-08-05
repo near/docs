@@ -1,5 +1,4 @@
 .container {
-  max-width: 600px;
   margin: 12px auto;
 }
 
@@ -12,24 +11,65 @@
 }
 
 .header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.titleSection {
+  margin-bottom: 2rem;
+}
+
+.mainTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: var(--ifm-font-color-base);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.switchSection {
+  display: flex;
+  justify-content: center;
 }
 
 .switchContainer {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  color: var(--ifm-font-color-base);
+  padding: 0.75rem 1.5rem;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 50px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.switchLabel {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-600);
+  transition: all 0.3s ease;
+  user-select: none;
+  
+  &.active {
+    color: var(--ifm-color-primary);
+    font-weight: 600;
+  }
 }
 
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 56px;
+  height: 30px;
 }
 
 .switchInput {
@@ -45,46 +85,36 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--ifm-color-emphasis-300);
-  transition: 0.4s;
-  border-radius: 34px;
+  background: var(--ifm-color-emphasis-300);
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  &:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-  }
+.switchKnob {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 2px;
+  top: 2px;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .switchInput:checked + .slider {
-  background-color: var(--ifm-color-primary);
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
 }
 
-.switchInput:checked + .slider:before {
+.switchInput:checked + .slider .switchKnob {
   transform: translateX(26px);
+  background: linear-gradient(145deg, #ffffff, #f8f8f8);
 }
 
-.switchIcon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 16px;
-  color: var(--ifm-font-color-base);
-  z-index: 1;
-  
-  &.left {
-    left: 8px;
-  }
-  
-  &.right {
-    right: 8px;
-  }
+.switch:hover .slider {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 0 0 3px rgba(var(--ifm-color-primary-rgb), 0.1);
 }
 
 .poweredBy {
@@ -246,12 +276,21 @@
     background: var(--ifm-background-color);
   }
   
+  .switchContainer {
+    background: var(--ifm-color-emphasis-200);
+    border-color: var(--ifm-color-emphasis-400);
+  }
+  
   .slider {
-    background-color: var(--ifm-color-emphasis-200);
+    background: var(--ifm-color-emphasis-400);
     
-    &:before {
-      background-color: var(--ifm-background-surface-color);
+    .switchKnob {
+      background: linear-gradient(145deg, var(--ifm-background-surface-color), #e0e0e0);
     }
+  }
+  
+  .switchInput:checked + .slider .switchKnob {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
   }
 
   .dropCard {
