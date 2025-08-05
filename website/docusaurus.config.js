@@ -197,6 +197,7 @@ const config = {
             {
               label: 'Getting Started', to: '#', description: "Take your first steps with NEAR",
               subitems: [
+                { label: 'Create a Testnet Account', to: '/tutorials/protocol/create-account', description: "Create a testnet account to start developing" },
                 { label: 'Your First Smart Contract', to: '/smart-contracts/quickstart', description: "Create a simple Hello World Smart Contract" },
                 { label: 'Your First Web3 App', to: '/web3-apps/quickstart', description: "Build a web app that interacts with a Smart Contract" },
                 { label: '⭐ Mastering NEAR', to: '/tutorials/auction/introduction', description: "Learn how to build web3 apps from end-to-end" },

@@ -4,7 +4,7 @@ const sidebar = {
       type: 'doc',
       id: 'index',
       customProps: {
-        icon: '/img/icons/home.svg',
+        icon: '/icons/home.svg',
       },
     },
     {
@@ -16,51 +16,66 @@ const sidebar = {
       label: 'NEAR Protocol',
       collapsed: true,
       customProps: {
-        icon: '/img/icons/near.svg',
+        icon: '/icons/near.svg',
       },
       link: { type: 'doc', id: 'protocol/basics' },
       items: [
         {
-          type: 'link',
-          href: '/protocol/basics',
-          label: 'Introduction',
-        },
-        {
-          type: 'category',
-          label: 'Accounts / Contracts',
-          link: { type: 'doc', id: 'protocol/account-model' },
-          items: ['protocol/account-id', 'protocol/access-keys'],
-        },
-        {
-          type: 'category',
-          label: 'Transactions',
-          link: { type: 'doc', id: 'protocol/transactions' },
-          items: [
-            'protocol/transaction-anatomy',
-            'protocol/gas',
-            'protocol/transaction-execution',
-            'chain-abstraction/meta-transactions',
+          "Getting Started": [
+            'protocol/basics',
+            'tutorials/protocol/create-account',
           ],
         },
         {
-          'Data Flow': [
-            'protocol/data-flow/near-data-flow',
-            'protocol/data-flow/token-transfer-flow',
-          ],
+          "Concepts": [
+            {
+              type: 'category',
+              label: 'Accounts / Contracts',
+              link: { type: 'doc', id: 'protocol/account-model' },
+              items: ['protocol/account-id', 'protocol/access-keys'],
+            },
+            {
+              type: 'category',
+              label: 'Transactions',
+              link: { type: 'doc', id: 'protocol/transactions' },
+              items: [
+                'protocol/transaction-anatomy',
+                'protocol/gas',
+                'protocol/transaction-execution',
+                'chain-abstraction/meta-transactions',
+              ],
+            },
+            {
+              'Data Flow': [
+                'protocol/data-flow/near-data-flow',
+                'protocol/data-flow/token-transfer-flow',
+              ],
+            },
+            {
+              Tokens: ['protocol/network/tokens', 'protocol/network/token-loss'],
+            },
+            {
+              Storage: ['protocol/storage/storage-staking', 'protocol/storage/storage-solutions'],
+            },
+            {
+              Network: [
+                'protocol/network/validators',
+                'protocol/network/networks',
+                'protocol/network/epoch',
+                'protocol/network/runtime',
+              ],
+            },
+          ]
         },
         {
-          Tokens: ['protocol/network/tokens', 'protocol/network/token-loss'],
-        },
-        {
-          Storage: ['protocol/storage/storage-staking', 'protocol/storage/storage-solutions'],
-        },
-        {
-          Network: [
-            'protocol/network/validators',
-            'protocol/network/networks',
-            'protocol/network/epoch',
-            'protocol/network/runtime',
-          ],
+          "Reference": [
+            'tools/near-cli',
+            {
+              type: 'link',
+              label: 'RPC API ↗',
+              href: '/api/rpc/introduction',
+            },
+          ]
         },
       ],
     },
@@ -69,7 +84,7 @@ const sidebar = {
       label: 'Multi-Chain',
       collapsed: true,
       customProps: {
-        icon: '/img/icons/multichain.svg',
+        icon: '/icons/multichain.svg',
       },
       link: { type: 'doc', id: 'chain-abstraction/what-is' },
       items: [
@@ -127,7 +142,7 @@ const sidebar = {
       collapsed: true,
       link: { type: 'doc', id: 'ai/introduction' },
       customProps: {
-        icon: '/img/icons/ai.svg',
+        icon: '/icons/ai.svg',
       },
       items: [
         'ai/introduction',
@@ -165,7 +180,7 @@ const sidebar = {
       collapsed: true,
       link: { type: 'doc', id: 'smart-contracts/what-is' },
       customProps: {
-        icon: '/img/icons/contract.svg',
+        icon: '/icons/contract.svg',
       },
       items: [
         {
@@ -309,11 +324,9 @@ const sidebar = {
           "Reference": [
             'resources/contracts-list',
             'tools/sdk',
-
+            'tools/clear-state',
           ]
         },
-
-
       ],
     },
     {
@@ -321,7 +334,7 @@ const sidebar = {
       label: 'App Development',
       collapsed: true,
       customProps: {
-        icon: '/img/icons/app.svg',
+        icon: '/icons/app.svg',
       },
       link: { type: 'doc', id: 'web3-apps/what-is' },
       items: [
@@ -332,14 +345,14 @@ const sidebar = {
         },
         {
           "Concepts": [
-            'web3-apps/integrate-contracts',
             'web3-apps/ethereum-wallets',
-            'web3-apps/backend/backend-login'
           ]
         },
         {
           "Tutorials": [
+            'web3-apps/integrate-contracts',
             'tutorials/examples/frontend-multiple-contracts',
+            'web3-apps/backend/backend-login',
             'chain-abstraction/meta-transactions-relayer',
             'data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
             'data-infrastructure/lake-framework/building-indexers/python-lake-indexer',
@@ -374,6 +387,12 @@ const sidebar = {
             }
           ]
         },
+        {
+          "Reference": [
+            'tools/near-api',
+            'tools/wallet-selector',
+          ]
+        }
       ],
     },
     {
@@ -382,7 +401,7 @@ const sidebar = {
       collapsed: true,
       link: { type: 'doc', id: 'primitives/what-is' },
       customProps: {
-        icon: '/img/icons/token.svg',
+        icon: '/icons/token.svg',
       },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
@@ -411,7 +430,7 @@ const sidebar = {
       label: 'Data Infrastructure',
       collapsed: true,
       customProps: {
-        icon: '/img/icons/database.svg',
+        icon: '/icons/database.svg',
       },
       link: { type: 'doc', id: 'data-infrastructure/what-is' },
       items: [
@@ -420,103 +439,50 @@ const sidebar = {
           label: 'Introduction',
           href: '/data-infrastructure/what-is',
         },
-        'data-infrastructure/data-apis',
-        'data-infrastructure/big-query',
         {
-          'Lake Framework': [
-            'data-infrastructure/indexers',
-            'data-infrastructure/lake-framework/near-lake-framework',
-            'data-infrastructure/lake-framework/near-lake',
-            'data-infrastructure/lake-framework/near-lake-state-changes-indexer',
-            'data-infrastructure/lake-framework/migrating-to-near-lake-framework',
+          "Concepts": [
+            'data-infrastructure/data-apis',
+            'data-infrastructure/big-query',
+            'tools/indexing',
             {
-              'Running NEAR Lake': [
-                'data-infrastructure/lake-framework/running-near-lake/run-lake-indexer',
-                'data-infrastructure/lake-framework/running-near-lake/lake-start-options',
-                'data-infrastructure/lake-framework/running-near-lake/credentials',
+              'Lake Framework': [
+                'data-infrastructure/indexers',
+                'data-infrastructure/lake-framework/near-lake-framework',
+                'data-infrastructure/lake-framework/near-lake',
+                'data-infrastructure/lake-framework/near-lake-state-changes-indexer',
+                'data-infrastructure/lake-framework/migrating-to-near-lake-framework',
+                {
+                  'Running NEAR Lake': [
+                    'data-infrastructure/lake-framework/running-near-lake/run-lake-indexer',
+                    'data-infrastructure/lake-framework/running-near-lake/lake-start-options',
+                    'data-infrastructure/lake-framework/running-near-lake/credentials',
+                  ],
+                },
+                {
+                  'Lake Data Structures': [
+                    'data-infrastructure/lake-framework/building-indexers/primitives',
+                    'data-infrastructure/lake-data-structures/toc',
+                    'data-infrastructure/lake-data-structures/block',
+                    'data-infrastructure/lake-data-structures/chunk',
+                    'data-infrastructure/lake-data-structures/shard',
+                    'data-infrastructure/lake-data-structures/transaction',
+                    'data-infrastructure/lake-data-structures/receipt',
+                    'data-infrastructure/lake-data-structures/execution-outcome',
+                    'data-infrastructure/lake-data-structures/state-change',
+                  ],
+                },
               ],
             },
-            {
-              'Lake Data Structures': [
-                'data-infrastructure/lake-framework/building-indexers/primitives',
-                'data-infrastructure/lake-data-structures/toc',
-                'data-infrastructure/lake-data-structures/block',
-                'data-infrastructure/lake-data-structures/chunk',
-                'data-infrastructure/lake-data-structures/shard',
-                'data-infrastructure/lake-data-structures/transaction',
-                'data-infrastructure/lake-data-structures/receipt',
-                'data-infrastructure/lake-data-structures/execution-outcome',
-                'data-infrastructure/lake-data-structures/state-change',
-              ],
-            },
-          ],
+          ]
+        },
+        {
+          "Reference": [
+            'tools/ecosystem-apis/fastnear',
+            'tools/ecosystem-apis/nearblocks',
+            'tools/ecosystem-apis/pikespeak',
+          ]
         },
       ],
-    },
-  ],
-  tools: [
-    'tools/welcome',
-    {
-      type: 'html',
-      value: '<hr/>',
-    },
-    {
-      type: 'html',
-      value: "<span class='menu__link'><b><small> Developer Tools </small></b></span>",
-    },
-    'tools/near-api',
-    'tools/near-cli',
-    'tools/wallet-selector',
-    'tools/clear-state',
-    {
-      type: 'html',
-      value: '<hr/>',
-    },
-    {
-      type: 'html',
-      value: "<span class='menu__link'><b><small> Data Tools </small></b></span>",
-    },
-    'tools/explorer',
-    {
-      type: 'category',
-      label: 'Data APIs',
-      link: { type: 'doc', id: 'tools/ecosystem-apis/introduction' },
-      items: [
-        'tools/ecosystem-apis/introduction',
-        'tools/ecosystem-apis/fastnear',
-        'tools/ecosystem-apis/nearblocks',
-        'tools/ecosystem-apis/pikespeak',
-      ],
-    },
-    'tools/indexing',
-    {
-      type: 'html',
-      value: '<hr/>',
-    },
-    {
-      type: 'html',
-      value: "<span class='menu__link'><b><small> Ecosystem Tools </small></b></span>",
-    },
-    'tools/faucet',
-    {
-      type: 'link',
-      label: 'Developer Portal',
-      href: 'https://dev.near.org/',
-    },
-    {
-      type: 'link',
-      label: 'NEAR Catalog',
-      href: 'https://app.nearcatalog.xyz/',
-    },
-    {
-      type: 'link',
-      label: 'Keypom',
-      href: 'https://keypom.xyz/',
-    },
-    {
-      type: 'link',
-      label: 'Remix IDE Plugin',
-      href: 'https://docs.welldonestudio.io/code/getting-started',
     },
   ],
   api: [
