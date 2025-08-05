@@ -171,7 +171,7 @@ We are currently upgrading via restarting with a new genesis block.
 
 NEAR is a sharded **proof-of-stake** blockchain.
 
-_You can read more in our [Nightshade whitepaper](/docs/Nightshade.pdf)._
+_You can read more in our [Nightshade whitepaper](/papers/Nightshade.pdf)._
 
 > _A few relevant details have been extracted here for convenience:_
 >
