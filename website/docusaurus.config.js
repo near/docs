@@ -194,12 +194,6 @@ const config = {
           activeBaseRegex: '(^/$)|(/build|concepts)',
         },
         {
-          to: '/tutorials/welcome',
-          label: 'Tutorials',
-          position: 'left',
-          activeBaseRegex: '/tutorials/',
-        },
-        {
           type: 'dropdown',
           label: 'Reference',
           position: 'left',

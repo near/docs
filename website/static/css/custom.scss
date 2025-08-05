@@ -452,6 +452,14 @@ li>ul {
   margin-top: 0.4rem;
 }
 
+// dark style
+[data-theme='dark'] .menu__list .menu__list {
+  border-left: 1px solid #fff3;
+}
+.menu__list .menu__list {
+  border-left: 1px solid #0003;
+}
+
 .menu__list .menu__list li hr {
   background-color: #e8f0f9;
   height: 2px;
@@ -553,23 +561,6 @@ li>ul {
 [data-theme='dark'] .card--icon:hover .card__icon {
   border-color: var(--ifm-color-primary);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-}
-
-// Theme-aware icon switching
-.card__icon-svg[src*="light.svg"] {
-  display: block;
-}
-
-.card__icon-svg[src*="dark.svg"] {
-  display: none;
-}
-
-[data-theme='dark'] .card__icon-svg[src*="light.svg"] {
-  display: none;
-}
-
-[data-theme='dark'] .card__icon-svg[src*="dark.svg"] {
-  display: block;
 }
 
 // Legacy image card styling (keep for backwards compatibility)
