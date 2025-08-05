@@ -62,7 +62,7 @@ Make sure you are using **node >= v18**, you can easily switch versions using `n
 :::info Info: Community Starter Templates
 
   These are some community templates that you can use to start quickstart your project. Refer to their pages for more information:
- * [Bitte Templates](https://templates.mintbase.xyz) - A `collection` of templates from [Bitte](https://www.bitte.ai/) and [MintBase](https://mintbase.xyz)
+ * [Bitte Templates](https://github.com/Mintbase/templates) - A `collection` of templates from Bitte and MintBase
  * [NEARBuilders/near-vite-starter](https://github.com/NEARBuilders/near-vite-starter) - `Vite`, `TypeScript`, `Tanstack`, `Tailwind`,`Playwright`
 
 :::

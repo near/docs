@@ -21,7 +21,7 @@ await wallet.callMethod({
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/)_
 
 </TabItem>
 
@@ -44,7 +44,7 @@ await wallet.callMethod({
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend)_
 
 </TabItem>
 
@@ -67,11 +67,11 @@ await wallet.callMethod({
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/tree/main/frontend)_
 
 :::tip
 
-Check how to also do this using [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/transfer)
+Check how to also do this using [`Mintbase JS`](https://github.com/Mintbase/mintbase-js/tree/beta/packages/sdk)
 
 :::
 

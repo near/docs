@@ -8,7 +8,7 @@ Blogchain is a template for creating onchain blogs using Mintbase. It allows use
 
 # Blogchain
 
-[![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://blogchain.mintbase.xyz/)
+[![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://github.com/Mintbase/templates/tree/main/blogchain)
 [![Deploy](https://img.shields.io/badge/Deploy-on%20Vercel-blue)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Ftemplates%2Ftree%2Fmain%2Fblogchain)
 
 Blogchain makes your content unstoppable. Transform your blogs into smart contracts and posts into NFTs.
@@ -16,7 +16,7 @@ Blogchain makes your content unstoppable. Transform your blogs into smart contra
 ![img](https://i.imgur.com/oAVyr9o.png)
 
 :::tip Mintbase Templates
-This is part of the [Mintbase Templates](https://templates.mintbase.xyz/), a collection of templates that you can use to scaffold your own project
+This is part of the [Mintbase Templates](https://github.com/Mintbase/templates), a collection of templates that you can use to scaffold your own project
 :::
 
 ---
@@ -44,7 +44,7 @@ pnpm run dev
 
 ### Step 1: check if the contract (blog) name already exists
 
-Using [@mintbase-js/data](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/data/api/checkstorename) checkStoreName method we can check if the store already exists.
+Using @mintbase-js/data checkStoreName method we can check if the store already exists.
 
 ```typescript
 const { data: checkStore } = await checkStoreName(
@@ -61,7 +61,7 @@ if (checkStore?.nft_contracts.length === 0) {
 
 ### Step 2: if contract name doesn't exist execute the deploy contract action with the instantiated wallet
 
-Create deploy contract args using [mintbase-js/sdk](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/deploycontract) deployContract method. This will deploy an NFT contract from the [mintbase contract factory](https://github.com/Mintbase/mb-contracts/tree/main/mb-factory-v1)
+Create deploy contract args using mintbase-js/sdk deployContract method. This will deploy an NFT contract from the [mintbase contract factory](https://github.com/Mintbase/mb-contracts/tree/main/mb-factory-v1)
 
 ```typescript
 const wallet = await selector.wallet();
@@ -76,7 +76,7 @@ const deployArgs = deployContract({
 });
 ```
 
-We can then execute the deploy contract by passing in the wallet. If you wan't to learn about wallet connection check out the [wallet starter template](https://templates.mintbase.xyz/templates/starter-next)
+We can then execute the deploy contract by passing in the wallet. If you wan't to learn about wallet connection check out the [wallet starter template](https://github.com/Mintbase/templates/tree/main/starter-next)
 
 ```typescript
   await execute({ wallet }, deployArgs);
@@ -88,7 +88,7 @@ We can then execute the deploy contract by passing in the wallet. If you wan't t
 
 ### Step 1: call storage method to upload file inserted by the user to arweave
 
-Using [@mintbase-js/storage](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/storage#uploadreference-referenceobject-referenceobject-arweaveresponse) uploadReference method we upload the nft image to arweave.
+Using @mintbase-js/storage uploadReference method we upload the nft image to arweave.
 
 ```typescript
 const metadata = {
@@ -103,7 +103,7 @@ const reference = referenceJson.id;
 
 ### Step 2: mint the nft in the contract (blog)
 
-Create mint args using [mintbase-js/sdk](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk/mint) mint method.
+Create mint args using mintbase-js/sdk mint method.
 
 ```typescript
 const wallet = await selector.wallet();
@@ -137,7 +137,7 @@ We populate the 'extra' field with the value 'blogpost' to subsequently filter t
 
 ### Get blog posts (nfts) from a blog (smart contract)
 
-Using [Mintbase GraphQL Indexer](https://docs.mintbase.xyz/dev/mintbase-graph) we can fetch the nfts from a specific smart contract - to filter by blog post we use 'blogpost' as an extra field as explained in the previous step.
+Using Mintbase GraphQL Indexer we can fetch the nfts from a specific smart contract - to filter by blog post we use 'blogpost' as an extra field as explained in the previous step.
 
 ```typescript
 export const GET_BLOG_POSTS =

@@ -18,7 +18,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 | Provider                                                                   | Endpoint Root                                                | Public Endpoint    | Archival Node      |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------ | ------------------ |
-| [1RPC](https://docs.1rpc.io/overview/about-1rpc)                           | `https://1rpc.io/near`                                       | :heavy_check_mark: |                    |
+| [1RPC](https://docs.1rpc.io/)                                                    | `https://1rpc.io/near`                                       | :heavy_check_mark: |                    |
 | [All That Node](https://www.allthatnode.com/)                              | `https://allthatnode.com/protocol/near.dsrv`                 |                    | :heavy_check_mark: |
 | [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  |                    |                    |
 | [BlockPI Network](https://blockpi.io)                                      | `https://near.blockpi.network/v1/rpc/public`                 | :heavy_check_mark: |                    |
@@ -61,7 +61,7 @@ As a user, if a dApp or wallet doesn't support RPC failover and the primary prov
 
 ## On NEAR.org RPC Deprecation
 
-Please read the following announcement: [Deprecation of NEAR.org and Pagoda.co RPC Endpoints](https://pages.near.org/blog/deprecation-of-near-org-and-pagoda-co-rpc-endpoints/).
+Please read the following announcement: [Deprecation of NEAR.org and Pagoda.co RPC Endpoints](https://near.org/blog/deprecation-of-near-org-and-pagoda-co-rpc-endpoints/).
 
 > After careful consideration and approval by the Infrastructure Committee, NEAR will implement a phased deprecation of the free public RPC endpoints under `near.org` and `pagoda.co`, beginning June 1, 2025. This deprecation aims to create a more sustainable and decentralized ecosystem, and follows [Pagoda winding down operations](https://near.org/blog/ecosystem-update-announcing-near-one-chain-abstraction-spinouts) and decentralizing its functions into NEAR ecosystem teams and committees.
 

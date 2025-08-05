@@ -24,8 +24,8 @@ Benefits:
 ## Getting started
 
 1. Login into your [Google Cloud Account](https://console.cloud.google.com/).
-2. Open the [NEAR Protocol BigQuery Public Dataset](https://console.cloud.google.com/marketplace/product/bigquery-public-data/crypto-near-mainnet).
-3. Click in the <kbd>[VIEW DATASET](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=crypto_near_mainnet_us&page=dataset)</kbd> button.
+2. Open the [NEAR Protocol BigQuery Public Dataset](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=crypto_near_mainnet_us&page=dataset).
+3. Click in the <kbd>VIEW DATASET</kbd> button.
 4. Click in the <kbd>+</kbd> to create a new tab and write your query, click in the <kbd>RUN</kbd> button, and check the `Query results` below the query.
 5. Done :)
 

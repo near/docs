@@ -21,7 +21,7 @@ The Events have a field `standard` which aligns with NEPs. In this tutorial we'l
 
 In this tutorial our goal is to show you how you can "listen" to the Events contracts emit and how you can benefit from them.
 
-As the example we will be building an indexer that watches all the NFTs minted following the [NEP-171 Events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) standard, assuming we're collectors who don't want to miss a thing. Our indexer should notice every single NFT minted and give us a basic set of data like: in what Receipt it was minted, and show us the link to a marketplace (we'll cover [Paras](https://paras.id) and [Mintbase](https://mintbase.io) in our example).
+As the example we will be building an indexer that watches all the NFTs minted following the [NEP-171 Events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) standard, assuming we're collectors who don't want to miss a thing. Our indexer should notice every single NFT minted and give us a basic set of data like: in what Receipt it was minted, and show us the link to a marketplace (we'll cover [Paras](https://paras.id) and [Mintbase/Bitte](https://bitte.ai/) in our example).
 
 We will use Python version of [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) in this tutorial. Though the concept is the same for Rust, but we want to show more people that it's not that complex to build your own indexer.
 
@@ -218,7 +218,7 @@ Having troubles running the indexer? Please, check you haven't skipped the [Cred
 
 :::
 
-Not so fast! Remember we were talking about having the links to the marketplaces to see the minted tokens? We're gonna extend our data with links whenever possible. At least we're gonna show you how to deal with the NFTs minted on [Paras](https://paras.id) and [Mintbase](https://mintbase.io).
+Not so fast! Remember we were talking about having the links to the marketplaces to see the minted tokens? We're gonna extend our data with links whenever possible. At least we're gonna show you how to deal with the NFTs minted on [Paras](https://paras.id) and [Mintbase/Bitte](https://bitte.ai/).
 
 ## Crafting links to Paras and Mintbase for NFTs minted there
 
@@ -251,7 +251,7 @@ https://paras.id/token/x.paras.near::387427/387427:373
 And again we did the research for you:
 
 ```
-https://www.mintbase.io/thing/[1]:[2]
+https://bitte.ai//thing/[1]:[2]
 ```
 
 Where:
@@ -262,7 +262,7 @@ Where:
 Example:
 
 ```
-https://www.mintbase.io/thing/70eES-icwSw9iPIkUluMHOV055pKTTgQgTiXtwy3Xus:vnartistsdao.mintbase1.near
+https://bitte.ai/thing/70eES-icwSw9iPIkUluMHOV055pKTTgQgTiXtwy3Xus:vnartistsdao.mintbase1.near
 ```
 
 Let's start crafting the links:
@@ -293,7 +293,7 @@ def format_mintbase_nfts(data, receipt_execution_outcome):
 
         meta_id = memo.get("meta_id")
         links.append(
-            f"https://www.mintbase.io/thing/{meta_id}:{receipt_execution_outcome.receipt.receiver_id}"
+            f"https://bitte.ai/thing/{meta_id}:{receipt_execution_outcome.receipt.receiver_id}"
         )
 
     return {"owner": data[0].get("owner_id"), "links": links}
@@ -375,7 +375,7 @@ def format_mintbase_nfts(data, receipt_execution_outcome):
 
         meta_id = memo.get("meta_id")
         links.append(
-            f"https://www.mintbase.io/thing/{meta_id}:{receipt_execution_outcome.receipt.receiver_id}"
+            f"https://bitte.ai/thing/{meta_id}:{receipt_execution_outcome.receipt.receiver_id}"
         )
 
     return {"owner": data[0].get("owner_id"), "links": links}
@@ -448,7 +448,7 @@ Example output:
     "nfts": {
         "owner": "vn-artists-dao.near",
         "links": [
-            "https://www.mintbase.io/thing/aqdCBHB9_2XZY7pwXRRu5rGDeLQl7Q8KgNud1wKgnGo:vnartistsdao.mintbase1.near"
+            "https://bitte.ai/thing/aqdCBHB9_2XZY7pwXRRu5rGDeLQl7Q8KgNud1wKgnGo:vnartistsdao.mintbase1.near"
         ]
     }
 }

@@ -28,15 +28,7 @@ Using those tools, you will implement the following flow:
 
 :::
 
-<details>
 
-<summary> Alternatives to `near-api-js` </summary>
-
-You can optionally use [Naxios](https://wpdas.gitbook.io/naxios). A promise-based NEAR Contract and NEAR Wallet Client for browser.
-
-Naxios was designed to facilitate the React / Next.js integration with NEAR Blockchain and avoid the boilerplate of setting up a wallet and contract.
-
-</details>
 
 
 <details markdown="1">

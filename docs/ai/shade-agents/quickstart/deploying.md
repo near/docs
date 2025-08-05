@@ -126,7 +126,7 @@ This technology has not yet undergone a formal audit. Please conduct your own du
   npm run dev
   ```
 
-  Your app will start on https://localhost:3000
+  Your app will start on http://localhost:3000
 
 ---
 
@@ -157,19 +157,19 @@ For Phala deployments, swap localhost:3000 for your deployment URL.
 - Get the Agent account Id and its balance:
 
   ```
-  https://localhost:3000/api/agent-account
+  http://localhost:3000/api/agent-account
   ```
 
 - Get the derived Ethereum Sepolia price pusher account Id and its balance (you will need to fund this account):
 
   ```
-  https://localhost:3000/api/eth-account
+  http://localhost:3000/api/eth-account
   ```
 
 - Send a transaction through the agent to update the price of Eth:
 
   ```
-  https://localhost:3000/api/transaction
+  http://localhost:3000/api/transaction
   ```
 
 ### Frontend

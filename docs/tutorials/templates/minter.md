@@ -8,7 +8,7 @@ In this tutorial, we will walk through how to create a simple NFT minter using N
 
 # NFT Minter
 
-[![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://minter.mintbase.xyz/)
+[![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://github.com/Mintbase/templates/tree/main/minter)
 [![Deploy](https://img.shields.io/badge/Deploy-on%20Vercel-blue)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Ftemplates%2Fblob%2Fmain%2Fminter)
 
 This is a Next.js 14 frontend minter example that includes a simple interface from which you can mint nfts easily
@@ -16,7 +16,7 @@ This is a Next.js 14 frontend minter example that includes a simple interface fr
 ![img](https://i.imgur.com/QDJPsAA.png)
 
 :::tip Mintbase Templates
-This is part of the [Mintbase Templates](https://templates.mintbase.xyz/), a collection of templates that you can use to scaffold your own project
+This is part of the [Mintbase Templates](https://github.com/Mintbase/templates), a collection of templates that you can use to scaffold your own project
 :::
 
 ---
@@ -27,7 +27,7 @@ This is a simple minter example built on top of **Next.js 14** using some of [@m
 
 *NOTE: As a standard on Mintbase as we use the latest versions of Next.js we recommend using pnpm, but the package manager is up to your personal choice.*
 
-if you dont have a store you can [deploy a new contract](https://www.mintbase.xyz/launchpad/contracts/0) on our launchpad
+if you dont have a store you can deploy a new contract using the Mintbase SDK
 
 ---
 
@@ -35,7 +35,7 @@ if you dont have a store you can [deploy a new contract](https://www.mintbase.xy
 If you would like the minter to use your own NFT contract you can easily deploy one through the mintbase market UI, additionally if you want to open up minting to be available for any person you will need to connect it to a proxy contract
 
 ### Deploying a Near Contract on Mintbase:
-1. Login on Mintbase and access [Contracts Page](https://www.mintbase.xyz/launchpad/contracts/0)
+1. Login on Mintbase and access the Contracts Page
 2. Click on New Contract
 3. Choose Store Name (this will be the contract address to add on your minsta instance, this need to be added on the `process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS` environment variable) and Store Symbol
 4. Proceed to transaction.
@@ -54,7 +54,7 @@ If you would like the minter to use your own NFT contract you can easily deploy 
 
 ### Step 1: Get the wallet connection
 
-This method will get the wallet instance used to send the mint transaction. To learn more about this, you can check our guide at [Wallet Connection Guide](https://docs.mintbase.xyz/dev/getting-started/add-wallet-connection-to-your-react-app).
+This method will get the wallet instance used to send the mint transaction. To learn more about this, you can check our guide at [Wallet Connection Guide](https://github.com/Mintbase/mintbase-js/tree/beta/packages/sdk).
 
 ```typescript
  const getWallet = async () => {
@@ -99,11 +99,10 @@ const onSubmit = async (data: SubmitData) => {
 
 ### Step 3: Upload the NFT reference
 
-The nft reference represents the offchain data which permanently stored on IPFS on Arweave in this case you can use [@mintbase-js/data](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/data) to easily upload it to arweave.
+The nft reference represents the offchain data which permanently stored on IPFS on Arweave in this case you can use @mintbase-js/data to easily upload it to arweave.
 
 In this not only are we uploading an offchain JSON object which contains the media as well as the title but also uploading a separate media file to be included onchain.
 
-[Learn more about how references work here](https://docs.mintbase.xyz/dev/getting-started/anatomy-of-a-non-fungible-token)
 
 ```typescript
 const reference = await uploadReference({

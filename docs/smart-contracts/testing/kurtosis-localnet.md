@@ -5,7 +5,7 @@ sidebar_label: Local Development
 description: "Using Kurtosis NEAR Package to develop locally"
 ---
 
-> [Kurtosis](https://www.kurtosis.com/) has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/).
+> Kurtosis has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/). _(Note: Kurtosis site may be temporarily unavailable.)_
 
 This Kurtosis NEAR Package contains the following components:
 

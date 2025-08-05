@@ -201,7 +201,7 @@ In the future, users may be required to register using an api key. For now, simp
 
 :::tip
 
-Check how to do this also using the [`Mintbase JS`](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/data/api/tokenbyid)
+Check how to do this also using the [`Mintbase JS`](https://github.com/Mintbase/mintbase-js/tree/beta/packages/data)
 
 :::
 
