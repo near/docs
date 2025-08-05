@@ -1,6 +1,17 @@
 import React from 'react';
 
 const FTPreview = ({ token }) => {
+
+  if (!token) {
+    return (
+      <div className="preview-container ft-preview">
+        <div className="loading-placeholder">
+          <p>Loading token preview...</p>
+        </div>
+      </div>
+    );
+  }
+
   const formatTokenAmount = (amount, decimals) => {
     return (BigInt(amount) / BigInt(10 ** decimals)).toString();
   };
