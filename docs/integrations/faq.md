@@ -64,7 +64,7 @@ A validator will stop being a validator for the following reasons:
 - Getting slashed.
   Otherwise a validator will remain a validator indefinitely.
 
-Validator election happens in epochs. The [Nightshade whitepaper](/docs/Nightshade.pdf) introduces epochs this way: "the maintenance of the network is done in epochs" where an epoch is a period of time on the order of half a day.
+Validator election happens in epochs. The [Nightshade whitepaper](/papers/Nightshade.pdf) introduces epochs this way: "the maintenance of the network is done in epochs" where an epoch is a period of time on the order of half a day.
 
 At the beginning of each epoch, some computation produces a list of validators for the _very next epoch_.
 The input to this computation includes all accounts that have "raised their hand to be a validator"
@@ -192,7 +192,7 @@ Finality will be exposed via RPC when querying block or transaction.
 
 Our definition of finality is BOTH:
 
-- Block has quorum pre-commit from the finality gadget. See details of the finality gadget [[here]](/docs/PoST.pdf)
+- Block has quorum pre-commit from the finality gadget. See details of the finality gadget [[here]](/papers/PoST.pdf)
 - At least 120 blocks (2-3 minutes) built on top of the block of interest. This is relevant in case of invalid state transition in some shard and provides enough time for state change challenges. In case all shards are tracked and some mechanics to pause across nodes is employed, this is not needed. We recommend exchanges track all shards.
 
 ## Accounts

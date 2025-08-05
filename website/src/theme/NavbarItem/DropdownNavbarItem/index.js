@@ -21,7 +21,7 @@ function DropdownItem({ to, label, icon, description, onMouseOver, onMouseOut, i
     >
       <a href={to} className={clsx(styles.dropdownItemLink)}>
         <div className={clsx(styles.dropdownItemContainer)}>
-          {!isCategory &&
+          {!isCategory && icon &&
             <img
               className={clsx(styles.dropdownItemImg)}
               src={icon}

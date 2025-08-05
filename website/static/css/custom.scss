@@ -3,7 +3,6 @@
 // ============================================================================
 // CSS VARIABLES & THEME CONFIGURATION
 // ============================================================================
-
 :root {
   // Typography
   --h1-font-size: 30px;
@@ -141,6 +140,23 @@ h3 {
 
 h4 {
   margin: 2em 0 0.5em 0 !important;
+}
+
+/* Add an indicator after external links that'll open in a new window. */
+a[target="_blank"]::after {
+  /* &nearr;, but nicer. SVG adapted from Inter's rendition of "↗". */
+  content: url("data:image/svg+xml,%3Csvg viewBox='0 0 7 7' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.04261 6.80966L0.377841 6.14489L5.32102 1.19318H1.50284L1.51136 0.272727H6.90625V5.67614H5.97727L5.9858 1.85795L1.04261 6.80966Z' fill='black'/%3E%3C/svg%3E%0A");
+  /* inline => inline-block, so that we can give it a height */
+  display: inline-block;
+  height: 0.5em;
+  padding-inline: 0.2em;
+  aspect-ratio: 1;
+  line-height: 1;
+  vertical-align: text-top;
+
+  @media (prefers-color-scheme: dark) {
+    filter: invert(100%);
+  }
 }
 
 // ============================================================================
