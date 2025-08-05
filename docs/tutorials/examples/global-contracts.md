@@ -105,8 +105,8 @@ Since there are two ways to reference a global contract ([by account](../../smar
   To do this, use the `deployGlobalContract` function and set the mode to `accountId`, along with the contract’s code bytes.
   
     <Github fname="deploy-global-contract-by-account.js" language="js"
-    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js#L23-L27"
-    start="23" end="27" />
+    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js#L22-L27"
+    start="22" end="27" />
 
   </TabItem>
 
@@ -117,8 +117,8 @@ Since there are two ways to reference a global contract ([by account](../../smar
   To do this, use the `deployGlobalContract` function and set the mode to `codeHash`, along with the contract’s code bytes.
 
     <Github fname="deploy-global-contract-by-hash.js" language="js"
-    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js#L24-L28"
-    start="24" end="28" />
+    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js#L24-L29"
+    start="24" end="29" />
   
   </TabItem>
   </Tabs>
@@ -217,12 +217,12 @@ Let’s see how you can reference and use your global contract from another acco
   To reference a global contract by hash, you need to call the `useGlobalContract` function and pass the source `codeHash` of the original contract.
 
   ```js
-  const hash = "DxfRbrjT3QPmoANMDYTR6iXPGJr7xRUyDnQhcAWjcoFF";
+  const hash = bs58.encode(sha256(wasm));
   ```
 
     <Github fname="deploy-global-contract-by-hash.js" language="js"
-    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js#L42-L50"
-    start="42" end="50" />
+    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js#L45-L53"
+    start="45" end="53" />
 
   </TabItem>
   </Tabs>
