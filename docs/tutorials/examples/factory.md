@@ -143,6 +143,111 @@ which takes the compiled code to store as a `Vec<u8>`, but that would trigger th
 When dealing with big streams of input data (as is the compiled `wasm` file to be stored), this process
 of deserializing/checking the input ends up **consuming the whole GAS** for the transaction.
 
+<hr className="subsection" />
+
+### How to deploy a contract from a contract
+
+As we saw above (### Deploy the Stored Contract Into a Sub-Account), after calling the `create_factory_subaccount_and_deploy` function, a sub-account is created and the `donation` contract is deployed:
+```rust
+  let code = self.code.clone().unwrap();
+  let contract_bytes = code.len() as u128;
+  let contract_storage_cost = NEAR_PER_STORAGE.saturating_mul(contract_bytes);
+  // Require a little more since storage cost is not exact
+  let minimum_needed = contract_storage_cost.saturating_add(NearToken::from_millinear(100));
+  assert!(
+      attached >= minimum_needed,
+      "Attach at least {minimum_needed} yⓃ"
+  );
+
+  let init_args = near_sdk::serde_json::to_vec(&DonationInitArgs { beneficiary }).unwrap();
+
+  let mut promise = Promise::new(subaccount.clone())
+      .create_account()
+      .transfer(attached)
+      .deploy_contract(code)
+      .function_call(
+          "init".to_owned(),
+          init_args,
+          NO_DEPOSIT,
+          TGAS.saturating_mul(5),
+      );
+```
+From the above code, we can see that the factory contract performs two main actions:
+
+	•	It creates a sub-account
+	•	It transfers the attached funds from the user to the sub-account (used to pay the fee for deploying the `donation` contract)
+	•	Then it calls the init function of the `donation` contract (which is the deployment initializer function) with the given init_args.
+
+From this, we can infer that deploying any custom contract works in a similar manner.
+
+Example: Deploying a near_drop contract from a factory contract:
+
+	•	Clone the `near_drop` code from: https://github.com/near-examples/near-drop
+	•	Build it and obtain the `near_drop.wasm` file
+	•	Run the function: `update_stored_contract`
+
+This function deploy `near_drop` contract
+```rust
+    #[init]
+    #[private]
+    pub fn new(top_level_account: AccountId) -> Self {
+        Self {
+            top_level_account,
+            next_drop_id: 0,
+            drop_id_by_key: LookupMap::new(StorageKey::DropIdByKey),
+            drop_by_id: LookupMap::new(StorageKey::DropById),
+        }
+    }
+```
+We need change init args and function_call to deploy `near_drop` contract
+
+Add a new Args struct:
+```rust
+#[derive(Serialize)]
+#[serde(crate = "near_sdk::serde")]
+struct NearDropInitArgs {
+    top_level_account: AccountId,
+}
+```
+And use it like this:
+```rust
+  let init_args = near_sdk::serde_json::to_vec(&NearDropInitArgs { top_level_account: subaccount.clone() }).unwrap();
+
+  let mut promise = Promise::new(subaccount.clone())
+      .create_account()
+      .transfer(attached)
+      .deploy_contract(code)
+      .function_call(
+          "new".to_owned(),
+          init_args,
+          NO_DEPOSIT,
+          TGAS.saturating_mul(5),
+      );
+```
+
+Additionally, you can write a helper function to calculate the minimum amount of NEAR that needs to be attached when deploying a contract:
+```rust
+  pub fn get_minimum_needed(&self) -> u128 {
+    let code = self.code.clone().unwrap();
+    let contract_bytes = code.len() as u128;
+    let contract_storage_cost = NEAR_PER_STORAGE.saturating_mul(contract_bytes);
+    // Require a little more since storage cost is not exact
+    let minimum_needed = contract_storage_cost.saturating_add(NearToken::from_millinear(100));
+    minimum_needed
+  }
+```
+```bash
+# Use near-cli to get the minimum NEAR required to attach
+near view <factory-account> get_minimum_needed
+```
+
+In summary, to deploy a custom contract from a factory contract, follow these steps:
+
+	1.	Build your smart contract
+	2.	Compile it and get the .wasm file
+	3.	Update the contract code in the factory
+	4.	Modify the init args and deployment logic to fit the custom contract
+
 :::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
