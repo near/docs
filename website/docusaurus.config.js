@@ -258,7 +258,7 @@ const config = {
               ]
             },
             {
-              label: 'Developer Tools', to: '#', description: "Tools built for and by NEAR Developers",
+              label: 'Dev Resources', to: '#', description: "Tools built for and by NEAR Developers",
               subitems: [
                 {
                   label: 'Testnet Faucet ↗',
