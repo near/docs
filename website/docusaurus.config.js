@@ -108,7 +108,7 @@ const config = {
       items: [
         {
           type: 'dropdown',
-          label: 'Docs',
+          label: 'Concepts',
           position: 'left',
           activeBaseRegex: '(^/$)|(/build|concepts)',
           items: [
@@ -275,7 +275,7 @@ const config = {
               ]
             },
             {
-              label: 'Data Tools', to: '/tools/welcome', description: "Services to access and monitor on-chain data",
+              label: 'Data Tools', to: '#', description: "Services to access and monitor on-chain data",
               subitems: [
                 { label: 'Explorers', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/docs/assets/welcome-pages/update.png' },
                 { label: 'Data API', to: '/tools/ecosystem-apis/', description: "Access on-chain data through simple APIs", icon: '/docs/assets/welcome-pages/experiment.png' },
