@@ -304,6 +304,25 @@ const sidebar = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'Ethreum Compatibility',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/ethereum.svg',
+      },
+      link: { type: 'doc', id: 'aurora/what-is' },
+      items: [
+        {
+          type: 'link',
+          label: 'Introduction',
+          href: '/aurora/what-is',
+        },
+        'aurora/build-on-aurora',
+        'aurora/launch-virtual-chain',
+        'aurora/dev-resources',
+      ],
+    }
   ],
   tutorials: [
     {
