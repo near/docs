@@ -92,8 +92,14 @@ Global contracts can be deployed in 2 ways: either by their [hash](#reference-by
 Contracts deployed by hash are effectively immutable and cannot be updated.
 When deployed by account ID the owner can redeploy the contract updating it for all its users.
 
-Global contracts can be deployed using [`NEAR CLI`](#) or by code using [NEAR APIs](#).
+Global contracts can be deployed using [`NEAR CLI`](../tutorials/examples/global-contracts.md#deployment) or by code using [NEAR APIs](../tools/near-api.md#deploy-a-global-contract). Check [this tutorial](../tutorials/examples/global-contracts.md) to learn how to deploy and use Global Contracts using CLI, JavaScript, or Rust.
 
 :::info
-Note that deploying a global contract incurs high storage costs. Tokens are burned to compensate for storing the contract on-chain, unlike regular contracts where tokens are locked based on contract size.
+Deploying a global contract incurs high storage costs. Tokens are burned to compensate for storing the contract on-chain, unlike regular contracts where tokens are locked based on contract size.
 :::
+
+### About Contract updates
+
+If a contract is expected to get upgrades from time to time, then it should be rolled out using the `Account Id` strategy. Using a Global Contract by `Hash` is for immutable contracts that are supposed to stay the same forever.
+
+Keep in mind, when using a Global Contract by [account ID](#reference-by-account), the one that handles the contract update is the original account, so they're responsible for contract state upgrading too.
