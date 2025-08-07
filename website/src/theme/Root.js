@@ -71,7 +71,7 @@ function Root({ children, location }) {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext();
-
+  
   useEffect(() => {
     // Pass message to dev.near.org (docs is embedded there)
     const sendMessage = (url) =>
