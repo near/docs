@@ -1,3 +1,149 @@
+## What is the Coin Flip Contract All About?
+
+md
+---
+id: coin-flip
+title: Coin Flip
+description: "Learn to build a coin flip game smart contract with randomness, betting mechanics, and reward distribution on NEAR Protocol."
+---
+
+## What is the Coin Flip Contract All About?
+
+Think of a coin flip game you might play with a friend. One person flips a coin, and the other person guesses if it will be "heads" or "tails." If you guess right, you win a point. If you guess wrong, you lose a point.
+
+That's exactly what this Coin Flip smart contract does, but on the blockchain!
+
+- **It's a game**: Players log in with their NEAR account and try to guess the outcome of a virtual coin flip.
+- **It keeps score**: The contract remembers how many points each player has, so you can see who's winning.
+- **It's on the blockchain**: This means the game's logic and the score are all transparent and secure. No one can cheat or change the score.
+
+It's a perfect example for beginners because it's simple yet shows off some key concepts of how a blockchain dApp (decentralized application) works.
+
+---
+
+## How Does Randomness Work?
+
+> The Big Idea: Randomness on a Blockchain is Tricky
+
+On a regular computer, randomness is easy. But on the blockchain, it’s a whole different game. Everything must be **deterministic** — if every computer on the NEAR network doesn't agree on the same result, the network breaks.
+
+That means traditional "random number generators" don’t work. If each node got a different result for a coin flip, no one would agree on the outcome.
+
+### How the Coin Flip Contract Handles It
+
+The contract uses a simple (non-secure) simulation of randomness inside a function called `simulateCoinFlip()`. It’s not secure enough for real betting or financial use — but it's perfect for learning.
+
+---
+
+## A Walkthrough of the Code
+
+There are two versions of the smart contract: JavaScript and Rust. They do the same thing. We’ll focus on the **JavaScript** version for simplicity.
+
+### The Key Functions:
+
+- `flip_coin` — lets the user guess heads or tails
+- `points_of` — shows the player’s current score
+
+---
+
+### 1. `flip_coin`
+
+```ts
+@call({})
+flip_coin({ player_guess }: { player_guess: Side }): Side {
+  const player: AccountId = near.predecessorAccountId();
+  near.log(`${player} chose ${player_guess}`);
+
+  const outcome = simulateCoinFlip();
+
+  let player_points: number = this.points.get(player, { defaultValue: 0 })
+
+  if (player_guess == outcome) {
+    near.log(`The result was ${outcome}, you get a point!`);
+    player_points += 1;
+  } else {
+    near.log(`The result was ${outcome}, you lost a point`);
+    player_points = player_points ? player_points - 1 : 0;
+  }
+
+  this.points.set(player, player_points)
+
+  return outcome
+}
+
+What it does:
+	•	Gets the player’s account using near.predecessorAccountId()
+	•	Flips the coin with simulateCoinFlip()
+	•	Compares their guess to the outcome
+	•	Adds or subtracts points (never below zero)
+	•	Saves the new score
+	•	Returns the coin flip result
+
+points_of
+
+ts
+@view({})
+points_of({ player }: { player: AccountId }): number {
+  const points = this.points.get(player, { defaultValue: 0 })
+  near.log(`Points for ${player}: ${points}`)
+  return points
+}
+
+What it does:
+	•	Reads a player’s current score
+	•	Doesn’t change anything (read-only)
+	•	Free to call (view function)
+
+⸻
+
+Before You Try It Yourself
+
+Here’s what you need:
+	•	A NEAR account
+	•	Basic programming knowledge (JavaScript or Rust)
+	•	A code editor or use Gitpod (recommended)
+
+⸻
+
+The Easiest Way to Try It
+
+Use the Gitpod link to launch the app in your browser with no setup:
+
+Gitpod	Clone locally
+	git clone https://github.com/near-examples/coin-flip-examples.git
+Once running:
+	•	Log in with your NEAR account
+	•	Try guessing heads or tails
+	•	Watch your score change
+
+Testing
+
+You can run the tests using:
+
+bash
+# For JavaScript contract
+yarn test
+
+# For Rust contract
+./test.sh
+
+Both versions test core logic like flipping the coin and updating scores.
+
+⸻
+
+Final Notes on Randomness
+
+Randomness on blockchain is tricky. This example uses simple, fake randomness for learning purposes. In real apps (like gambling), you’d want secure randomness from oracles or NEAR’s randomness beacon. Learn more here: Randomness & Security
+
+⸻
+
+Additional Resources
+	•	JS contract: contract.ts
+	•	Rust contract: lib.rs
+	•	JS frontend: index.js
+
+
+
 ---
 id: coin-flip
 title: Coin Flip
