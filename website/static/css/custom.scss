@@ -301,7 +301,6 @@ h4 {
   height: 3px;
   background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
   margin: 0 auto 4rem auto;
-  border-radius: 2px;
 }
 
 /* global spacing */
@@ -1482,4 +1481,460 @@ div[class^='announcementBar_'] {
   40% {
     transform: scale(1);
   }
+}
+
+// ============================================================================
+// NEWSLETTER PAGE STYLES
+// ============================================================================
+
+.newsletter-page {
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .newsletter-content {
+    background: var(--ifm-background-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: none !important;
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      background: transparent;
+
+      td,
+      th {
+        border: none !important;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        background: transparent;
+      }
+
+      tbody tr {
+        border: none !important;
+        background-color: transparent;
+        background: transparent;
+      }
+    }
+
+    // Specifically target the email content wrapper
+    .mceWrapper,
+    .mceSectionHeader,
+    .mceSectionBody,
+    .mceSectionFooter {
+      background-color: transparent;
+      background: transparent;
+    }
+
+    // Override green background from email template
+    table[style*="background-color: rgb(0, 236, 151)"],
+    table[style*="background-color:#00ec97"],
+    td[style*="background-color: rgb(0, 236, 151)"],
+    td[style*="background-color:#00ec97"] {
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+
+    // Ensure content area has proper styling
+    .mceWrapperInner {
+      background-color: var(--ifm-background-color) !important;
+      background: var(--ifm-background-color) !important;
+      padding: 2rem !important;
+      border-radius: 12px;
+    }
+
+    // Style newsletter content text
+    .mceTextBlockContainer {
+      padding: 1rem 0 !important;
+      
+      div[data-block-id] {
+        max-width: 100%;
+      }
+    }
+
+    // Images styling
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: auto;
+      border-radius: 8px;
+    }
+
+    // Center text content and improve typography
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-align: center;
+      margin: 2rem 0 1rem 0;
+      color: var(--ifm-heading-color);
+      font-family: var(--ifm-font-family-base);
+    }
+
+    p {
+      text-align: center;
+      margin: 1rem 0;
+      line-height: 1.6;
+      color: var(--ifm-color-content);
+      font-family: var(--ifm-font-family-base);
+    }
+
+    // Style buttons
+    .mceButtonContainer a {
+      background-color: var(--ifm-color-primary) !important;
+      color: white !important;
+      text-decoration: none;
+      border-radius: 8px !important;
+      padding: 12px 24px !important;
+      display: inline-block;
+      font-weight: 600;
+      border: none !important;
+      
+      &:hover {
+        background-color: var(--ifm-color-primary-dark) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    // Hide social follow block and footer content that shouldn't be visible
+    .mceSocialFollowBlock,
+    .mceFooterSection,
+    tbody[data-block-id="71"] {
+      display: none !important;
+    }
+
+    // Style highlighted text
+    span[style*="background-color: #fefb41"] {
+      background-color: var(--ifm-color-warning-light) !important;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+  }
+
+
+
+  .newsletter-sidebar {
+    position: sticky;
+    top: 2rem;
+
+    @media (max-width: 991px) {
+      position: static;
+      margin-top: 2rem;
+    }
+  }
+
+  .green-box {
+    background: linear-gradient(135deg, #00ec97 0%, #00d480 100%);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 236, 151, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    h3 {
+      margin: 0 !important;
+      color: #000;
+      font-weight: 700;
+      font-size: 1.3rem;
+      text-align: left;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .confirmation-box {
+    background: white;
+    border-radius: 6px;
+    padding: 1rem;
+    color: #000;
+    font-weight: 500;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  .subscribe-form {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background: white;
+
+    &:focus-within {
+      border-color: #00ec97;
+      box-shadow: 0 4px 12px rgba(0, 236, 151, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .subscribe-input {
+      outline: none;
+      border: none;
+      border-radius: 0;
+      flex: 1;
+      padding: 0.875rem 1.25rem;
+      font-size: 1rem;
+      background: transparent;
+      color: #333;
+
+      &:focus {
+        box-shadow: none;
+        border: none;
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #666;
+      }
+    }
+
+    .subscribe-button {
+      border: none;
+      border-radius: 0;
+      padding: 0.875rem 2rem;
+      background: linear-gradient(135deg, #000 0%, #333 100%);
+      color: white;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        background: linear-gradient(135deg, #333 0%, #555 100%);
+        color: white;
+        transform: scale(1.02);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  .links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1.5rem 0;
+
+    li {
+      margin: 0 0 0.5rem 0;
+
+      &.active {
+        font-weight: 700;
+
+        .link-button {
+          color: var(--near-color-royal);
+          font-weight: 700;
+        }
+      }
+
+      .link-button {
+        background: none;
+        border: none;
+        color: var(--ifm-color-content);
+        text-align: left;
+        padding: 0.25rem 0;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: color 0.2s ease;
+
+        // Ensure long subjects wrap nicely
+        word-break: break-word;
+        overflow-wrap: anywhere;
+
+        // Keyboard focus visibility
+        &:focus-visible {
+          outline: 2px solid var(--near-color-royal);
+          outline-offset: 2px;
+          border-radius: 4px;
+        }
+      }
+
+      // Active state via aria-current for better a11y
+      .link-button[aria-current='true'] {
+        color: var(--near-color-royal);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      a {
+        color: var(--ifm-color-content);
+        text-decoration: none;
+        padding: 0.25rem 0;
+        display: block;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: var(--near-color-royal);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: var(--ifm-color-emphasis-300);
+    margin: 1.5rem 0;
+  }
+
+  @media (min-width: 992px) {
+    .container-fluid {
+      min-width: 1120px;
+    }
+  }
+
+  // Responsive improvements
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin: 0 1rem;
+
+    .newsletter-content {
+      padding: 2rem 1.5rem;
+      border-radius: 8px;
+    }
+
+    .green-box {
+      padding: 1.5rem;
+      border-radius: 8px;
+
+      h3 {
+        font-size: 1.2rem;
+      }
+    }
+
+    .subscribe-form {
+      flex-direction: column;
+      border-radius: 8px;
+
+      .subscribe-input {
+        border-radius: 8px 8px 0 0;
+        padding: 1rem 1.25rem;
+      }
+
+      .subscribe-button {
+        border-radius: 0 0 8px 8px;
+        padding: 1rem 2rem;
+      }
+    }
+  }
+}
+
+// Dark theme adjustments
+[data-theme='dark'] {
+  .newsletter-page {
+    .newsletter-content {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      background: var(--ifm-background-color);
+      
+      .mceWrapperInner {
+        background-color: var(--ifm-background-color) !important;
+        background: var(--ifm-background-color) !important;
+      }
+      
+      // Ensure text is visible in dark theme
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--ifm-heading-color) !important;
+      }
+      
+      p {
+        color: var(--ifm-color-content) !important;
+      }
+      
+      // Style links for dark theme
+      a {
+        color: var(--ifm-color-primary-light) !important;
+        
+        &:hover {
+          color: var(--ifm-color-primary-lighter) !important;
+        }
+      }
+      
+      // Dark theme button styling
+      .mceButtonContainer a {
+        background-color: var(--ifm-color-primary) !important;
+        
+        &:hover {
+          background-color: var(--ifm-color-primary-light) !important;
+        }
+      }
+      
+      // Dark theme highlight styling
+      span[style*="background-color: #fefb41"] {
+        background-color: var(--ifm-color-warning-dark) !important;
+        color: var(--ifm-color-content) !important;
+      }
+    }
+
+    .green-box {
+      background: linear-gradient(135deg, #00ec97 0%, #00d480 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      h3 {
+        color: #000;
+        text-align: left;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    .confirmation-box {
+      color: #000;
+      background: white;
+    }
+
+    .subscribe-form {
+      border-color: #444;
+      background: var(--ifm-background-color);
+
+      .subscribe-input {
+        background: transparent;
+        color: var(--ifm-color-content);
+
+        &::placeholder {
+          color: var(--ifm-color-emphasis-600);
+        }
+      }
+
+      &:focus-within {
+        border-color: #00ec97;
+        box-shadow: 0 4px 12px rgba(0, 236, 151, 0.3);
+      }
+    }
+  }
+}
+
+// ============================================================================
+// PLACEHOLDER UTILITIES (loading skeleton)
+// ============================================================================
+.placeholder {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  display: block;
+}
+
+[data-theme='dark'] .placeholder {
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+// Improve placeholder contrast inside glow container
+.placeholder-glow .placeholder {
+  background-image: none; // rely on flat color so it looks good in both themes
 }
