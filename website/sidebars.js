@@ -306,7 +306,7 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Ethreum Compatibility',
+      label: 'EVM Developers',
       collapsed: true,
       customProps: {
         icon: '/img/icons/ethereum.svg',
