@@ -27,7 +27,7 @@ While creating the `Receipt`, the `signer` gets $NEAR deducted from its balance 
 If the `signer` and `receiver` coincide - e.g. the `signer` is adding a Key - the `Receipt` is immediately processed in this first block and the transaction is considered final.
 
 #### Block #2: The Receipt is Processed
-If the `signer` and `receiver` differs - e.g. the `signer` transfers NEAR to the `receiver` - the `Receipt` is processed in a second block. 
+If the `signer` and `receiver` differs - e.g. the `signer` transfers NEAR to the `receiver` - the `Receipt` is processed in a second block.
 
 During this process a `FunctionCall` could span a **cross-contract call**, creating one or multiple new `Receipts`.
 
@@ -114,3 +114,15 @@ See the examples below for more details.
 :::tip
 You can check the status of a transaction using the [NearBlocks explorer](https://nearblocks.io/)
 :::
+
+---
+
+## Nonce values
+
+The `nonce` is a number that is incremented for each transaction sent by the transaction's `Signer`.
+On a valid transaction, the `nonce` value should follow these rules:
+
+- When adding a key, the `nonce` is automatically assigned, so the value in the `ADD_KEY` action is ignored.
+- A transaction is accepted only if the `nonce` value is in the range of:
+  - `[(current_nonce_of_access_key + 1) .. (block_height * 10e6)]`.
+- Once a transaction is accepted, the access key's `nonce` is set to the `nonce` value of the included transaction.
