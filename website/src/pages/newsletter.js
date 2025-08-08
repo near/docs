@@ -57,13 +57,23 @@ const Newsletter = () => {
   );
 
   // Memoize sanitized HTML to avoid re-parsing every render
-  const sanitizedIssueHtml = useMemo(
-    () => DOMPurify.sanitize(parseCampaignHTML(issueDetails)),
-    [issueDetails]
-  );
+  const sanitizedIssueHtml = useMemo(() => {
+    // Add SSR guard for DOMPurify
+    if (typeof window === 'undefined' || !issueDetails) return '';
+    
+    try {
+      const parsedHtml = parseCampaignHTML(issueDetails);
+      return DOMPurify.sanitize(parsedHtml);
+    } catch (error) {
+      console.error('Error sanitizing HTML:', error);
+      return '';
+    }
+  }, [issueDetails]);
 
   // Get issue ID from URL or use first campaign
   const getIssueIdFromUrl = () => {
+    // SSR guard
+    if (typeof window === 'undefined') return null;
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('id');
   };
@@ -83,6 +93,9 @@ const Newsletter = () => {
 
   // Handle browser navigation (back/forward)
   useEffect(() => {
+    // SSR guard
+    if (typeof window === 'undefined') return;
+    
     const handlePopState = () => {
       const urlIssueId = getIssueIdFromUrl();
       if (urlIssueId && urlIssueId !== currentIssueId) {
@@ -126,9 +139,14 @@ const Newsletter = () => {
 
   const handleIssueChange = (newIssueId) => {
     if (!newIssueId || newIssueId === currentIssueId) return;
-    const url = new URL(window.location.href);
-    url.searchParams.set('id', newIssueId);
-    window.history.pushState({}, '', url);
+    
+    // SSR guard
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.set('id', newIssueId);
+      window.history.pushState({}, '', url);
+    }
+    
     setCurrentIssueId(newIssueId);
   };
 
