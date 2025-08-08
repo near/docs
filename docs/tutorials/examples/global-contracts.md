@@ -110,7 +110,7 @@ Since there are two ways to reference a global contract ([by account](../../smar
 
   </TabItem>
 
-  <TabItem value="hash" label="By Hash" default>
+  <TabItem value="hash" label="By Hash">
 
   Let’s look at an example of deploying a global contract by hash.
   
@@ -142,7 +142,7 @@ Since there are two ways to reference a global contract ([by account](../../smar
   
   </TabItem>
 
-  <TabItem value="hash" label="By Hash" default>
+  <TabItem value="hash" label="By Hash">
 
   Let’s look at an example of deploying a global contract by hash.
   
@@ -186,7 +186,7 @@ Let’s see how you can reference and use your global contract from another acco
 
   </TabItem>
 
-  <TabItem value="hash" label="By Hash" default>
+  <TabItem value="hash" label="By Hash">
 
   To reference a global contract by hash, you need to call the `useGlobalContract` function and pass the source `codeHash` of the original contract.
 
@@ -212,7 +212,7 @@ Let’s see how you can reference and use your global contract from another acco
 
   </TabItem>
 
-  <TabItem value="hash" label="By Hash" default>
+  <TabItem value="hash" label="By Hash">
 
   To reference a global contract by hash, you need to call the `useGlobalContract` function and pass the source `codeHash` of the original contract.
 
@@ -242,7 +242,7 @@ Let’s see how you can reference and use your global contract from another acco
 
   </TabItem>
 
-  <TabItem value="hash" label="By Hash" default>
+  <TabItem value="hash" label="By Hash">
 
   To reference a global contract by hash, you need to call the `use_global_hash` function and pass the source `hash` of the original contract.
   
