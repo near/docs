@@ -81,7 +81,7 @@ Since there are two ways to reference a global contract ([by account](../../smar
 
   </TabItem>
 
-  <TabItem value="hash" label="By Hash" default>
+  <TabItem value="hash" label="By Hash">
 
   To deploy a global contract by hash, you need to use `as-global-hash` function and pass the source `<account_Id>` to fund the transaction.
 
