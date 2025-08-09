@@ -145,33 +145,45 @@ const sidebar = {
         icon: '/icons/ai.svg',
       },
       items: [
-        'ai/introduction',
         {
-          "Shade Agents": [
-            "ai/shade-agents/introduction",
-            "ai/shade-agents/examples",
+          "Getting Started": [
+            'ai/introduction',
             {
-              "Quickstart": [
-                "ai/shade-agents/quickstart/deploying",
+              "Shade Agents": [
+                'ai/shade-agents/quickstart/deploying',
                 "ai/shade-agents/quickstart/components",
               ]
+            }
+          ]
+        },
+        {
+          "Concepts": [
+            {
+              "Shade Agents": [
+                "ai/shade-agents/introduction",
+                "ai/shade-agents/examples",
+                "ai/shade-agents/custom-agent-contract",
+                "ai/shade-agents/security",
+                "ai/shade-agents/plugins",
+              ],
             },
-            "ai/shade-agents/custom-agent-contract",
-            "ai/shade-agents/security",
-            "ai/shade-agents/plugins",
-          ],
+          ]
         },
         {
-          type: 'link',
-          label: 'NEAR AI',
-          href: 'https://docs.near.ai/',
-        },
-        {
-          type: 'link',
-          label: 'Bitte Protocol',
-          href: 'https://docs.bitte.ai/',
-        },
-        'web3-apps/ai/ai-assistant'
+          "Reference": [
+            {
+              type: 'link',
+              label: 'NEAR AI',
+              href: 'https://docs.near.ai/',
+            },
+            {
+              type: 'link',
+              label: 'Bitte Protocol',
+              href: 'https://docs.bitte.ai/',
+            },
+          ]
+        }
+        // 'web3-apps/ai/ai-assistant'
       ],
     },
     {
