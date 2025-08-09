@@ -23,6 +23,15 @@
   }
 }
 
+.customCollapsibleActive {
+  background: var(--ifm-menu-color-background-hover);
+
+  &::before {
+    height: 95%;
+    background: var(--icon-svg-color);
+  }
+}
+
 .customMenuLink {
   color: var(--ifm-font-color-base);
   text-transform: uppercase;
