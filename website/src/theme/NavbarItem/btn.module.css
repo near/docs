@@ -1,0 +1,18 @@
+.btn {
+  border-radius: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  font-family: var(--bs-font-sans-serif, 'Poppins', sans-serif);
+  background-color: var(--icon-svg-color);
+  color: #fff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  margin: auto 0.5rem auto 0;
+  border: 2px solid transparent;
+}
+
+.btn:hover {
+  background-color: color-mix(in srgb, var(--icon-svg-color) 80%, black);
+  transform: translateY(-2px);
+  color: #fff;
+}
