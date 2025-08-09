@@ -82,7 +82,9 @@
 [data-theme='dark'] .dropdownItemImg {
   background: #fff; /* white background for contrast */
   border-radius: 6px;
-  padding: 2px; /* creates inset space around icon */
+  padding: 2px;
+  height: 36px;
+  width: 36px;
   box-sizing: border-box;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
   object-fit: contain;
