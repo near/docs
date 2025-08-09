@@ -1,7 +1,6 @@
 ---
 id: global-contracts
 title: Global Contracts
-sidebar_label: Introduction
 description: "Global contracts allow smart contracts to be deployed once and reused by any account without incurring high storage costs."
 ---
 import Tabs from '@theme/Tabs';
@@ -92,64 +91,14 @@ Global contracts can be deployed in 2 ways: either by their [hash](#reference-by
 Contracts deployed by hash are effectively immutable and cannot be updated.
 When deployed by account ID the owner can redeploy the contract updating it for all its users.
 
-Global contracts can be deployed using [`NEAR CLI`](#deploy-with-cli) or by code using [NEAR APIs](#deploy-with-api).
+Global contracts can be deployed using [`NEAR CLI`](../tutorials/examples/global-contracts.md#deployment) or by code using [NEAR APIs](../tools/near-api.md#deploy-a-global-contract). Check [this tutorial](../tutorials/examples/global-contracts.md) to learn how to deploy and use Global Contracts using CLI, JavaScript, or Rust.
 
 :::info
-Note that deploying a global contract incurs high storage costs. Tokens are burned to compensate for storing the contract on-chain, unlike regular contracts where tokens are locked based on contract size.
+Deploying a global contract incurs high storage costs. Tokens are burned to compensate for storing the contract on-chain, unlike regular contracts where tokens are locked based on contract size.
 :::
 
-### Deploy with CLI
+### About Contract updates
 
-The process is similar to [deploying a regular contract](./release/deploy.md#deploying-the-contract) but `deploy-as-global` command should be used instead of `deploy`.
+If a contract is expected to get upgrades from time to time, then it should be rolled out using the `Account Id` strategy. Using a Global Contract by `Hash` is for immutable contracts that are supposed to stay the same forever.
 
-<Tabs groupId="cli-tabs">
-  <TabItem value="by-hash" label="By Hash">
-
-  ```bash
-  near contract deploy-as-global use-file <route_to_wasm> as-global-hash <account_id> network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-
-  <TabItem value="by-account-id" label="By Account Id">
-
-  ```bash
-  near contract deploy-as-global use-file <route_to_wasm> as-global-account-id <account_id> network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-</Tabs>
-
-### Deploy with API
-
-You can also deploy a global contract using NEAR's JavaScript and Rust APIs.
-Check the [NEAR API reference documentation](../tools/near-api.md#deploy-a-global-contract) for complete code examples.
-
-## Using a Global Contract
-
-A previously deployed global contract can be attached to any NEAR account using [`NEAR CLI`](#using-cli) or by code using [NEAR APIs](#using-api).
-
-### Using CLI
-
-Use `near deploy` command. Such a contract behaves exactly like a regular contract.
-
-<Tabs groupId="cli-tabs">
-  <TabItem value="by-hash" label="By Hash">
-
-  ```bash
-  # Using global contract deployed by <global_contract_hash> hash
-  near contract deploy <account_id> use-global-hash <global_contract_hash> without-init-call network-config testnet
-  ```
-  </TabItem>
-
-  <TabItem value="by-account-id" label="By Account Id">
-
-  ```bash
-  # Using global contract deployed by <global_contract_account_id> account id
-  near contract deploy <account_id> use-global-account-id <global_contract_account_id> without-init-call network-config testnet
-  ```
-  </TabItem>
-</Tabs>
-
-### Using API
-
-You can also use a deployed global contract using NEAR's JavaScript and Rust APIs.
-Check the [NEAR API reference documentation](../tools/near-api.md#use-a-global-contract) for complete code examples.
+Keep in mind, when using a Global Contract by [account ID](#reference-by-account), the one that handles the contract update is the original account, so they're responsible for contract state upgrading too.

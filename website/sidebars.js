@@ -215,10 +215,10 @@ const sidebar = {
                   'smart-contracts/anatomy/actions',
                   'smart-contracts/anatomy/crosscontract',
                   'smart-contracts/anatomy/yield-resume',
-                  'smart-contracts/global-contracts',
                   'smart-contracts/security/checklist',
                 ]
               },
+              'smart-contracts/global-contracts',
               {
                 'Deploy, Update & Lock': [
                   'smart-contracts/release/deploy',
@@ -273,6 +273,7 @@ const sidebar = {
             'tutorials/examples/near-drop',
             'tutorials/examples/xcc',
             'tutorials/examples/advanced-xcc',
+            'tutorials/examples/global-contracts',
             'tutorials/examples/update-contract-migrate-state',
             {
               "Build a FT Contract from Scratch": [
@@ -356,14 +357,10 @@ const sidebar = {
             'web3-apps/quickstart']
         },
         {
-          "Concepts": [
-            'web3-apps/ethereum-wallets',
-          ]
-        },
-        {
           "Tutorials": [
             'web3-apps/integrate-contracts',
             'tutorials/examples/frontend-multiple-contracts',
+            'web3-apps/ethereum-wallets',
             'web3-apps/backend/backend-login',
             'chain-abstraction/meta-transactions-relayer',
             'data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
