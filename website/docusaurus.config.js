@@ -107,10 +107,16 @@ const config = {
       },
       items: [
         {
+          label: 'Home',
+          to: '/',
+          position: 'left',
+          activeBaseRegex: '(^/$)',
+        },
+        {
           type: 'dropdown',
           label: 'Concepts',
           position: 'left',
-          activeBaseRegex: '(^/$)|(/build|concepts)',
+          activeBaseRegex: '(build|protocol|concepts)',
           items: [
             {
               label: 'NEAR Protocol', to: '/protocol/basics', description: "Fundamentals of NEAR Protocol",
@@ -192,7 +198,7 @@ const config = {
           type: 'dropdown',
           label: 'Tutorials',
           position: 'left',
-          activeBaseRegex: '/tutorials/',
+          activeBaseRegex: 'tutorials',
           items: [
             {
               label: 'Getting Started', to: '#', description: "Take your first steps with NEAR",
@@ -252,14 +258,43 @@ const config = {
               label: 'Core Libraries', to: '#', description: "Core libraries to build on NEAR Protocol",
               subitems: [
                 { label: 'NEAR API', to: '/tools/near-api', description: "Integrate NEAR into your application with our API libraries", icon: '/docs/assets/welcome-pages/quickstart.png' },
-                { label: 'NEAR SDK', to: '/tools/sdk', description: "Build smart contracts using your favorite programming language", icon: '/docs/assets/welcome-pages/smartcontract.png' },
+                { label: 'Contract SDK', to: '/tools/sdk', description: "Build smart contracts using your favorite programming language", icon: '/docs/assets/welcome-pages/smartcontract.png' },
                 { label: 'NEAR CLI', to: '/tools/near-cli', description: "Interact with NEAR Protocol using our command line interface", icon: '/docs/assets/welcome-pages/near-cli.png' },
                 { label: 'Wallet Selector', to: '/tools/wallet-selector', description: "Integrate multiple wallets into your application", icon: '/docs/assets/welcome-pages/multiple.png' },
               ]
             },
             {
-              label: 'Dev Resources', to: '#', description: "Tools built for and by NEAR Developers",
+              label: 'Data Tools', to: '#', description: "Services to access and monitor on-chain data",
               subitems: [
+                { label: 'Data API', to: '/tools/ecosystem-apis/', description: "Access on-chain data through simple APIs", icon: '/docs/assets/welcome-pages/experiment.png' },
+                { label: 'Indexers', to: '/tools/indexing', description: "Build custom indexers to query on-chain data", icon: '/docs/assets/welcome-pages/blocks.png' },
+              ]
+            },
+            {
+              to: '/api/rpc/introduction',
+              label: '🔌 RPC API',
+              description: "Low level API for interacting with the network",
+            },
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'Resources',
+          position: 'left',
+          items: [
+            {
+              label: 'Developer Support', to: '#', description: "Get help from the NEAR community",
+              subitems: [
+                { label: 'Telegram ↗', to: 'https://t.me/neardev', description: "Join our Telegram channel for developers", icon: '/icons/telegram.svg' },
+                { label: 'Discord ↗', to: 'https://discord.gg/nearprotocol', description: "Join our Discord server to get help from the community", icon: '/icons/discord.svg' },
+              ]
+            },
+            {
+              label: 'Ecosystem Tools', to: '#', description: "Tools to help you build on NEAR",
+              subitems: [
+                { label: 'Wallets ↗', to: 'https://wallet.near.org/', description: "Discover wallets built for NEAR", icon: '/icons/wallet.png' },
+                { label: 'Explorers ↗', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/docs/assets/welcome-pages/update.png' },
+                { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/icons/catalog.png' },
                 {
                   label: 'Testnet Faucet ↗',
                   to: '/tools/faucet',
@@ -272,35 +307,7 @@ const config = {
                   description: "Write, test and deploy smart contracts using the Remix IDE",
                   icon: '/icons/remix.svg'
                 },
-              ]
-            },
-            {
-              label: 'Data Tools', to: '#', description: "Services to access and monitor on-chain data",
-              subitems: [
-                { label: 'Explorers', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/docs/assets/welcome-pages/update.png' },
-                { label: 'Data API', to: '/tools/ecosystem-apis/', description: "Access on-chain data through simple APIs", icon: '/docs/assets/welcome-pages/experiment.png' },
-                { label: 'Indexers', to: '/tools/indexing', description: "Build custom indexers to query on-chain data", icon: '/docs/assets/welcome-pages/blocks.png' },
-              ]
-            },
-          ],
-        },
-        {
-          type: 'dropdown',
-          label: 'Community',
-          position: 'left',
-          items: [
-            {
-              label: 'Developer Support', to: '#', description: "Get help from the NEAR community",
-              subitems: [
-                { label: 'Telegram ↗', to: 'https://t.me/neardev', description: "Join our Telegram channel for developers", icon: '/icons/telegram.svg' },
-                { label: 'Discord ↗', to: 'https://discord.gg/nearprotocol', description: "Join our Discord server to get help from the community", icon: '/icons/discord.svg' },
-              ]
-            },
-            {
-              label: 'Ecosystem Tools', to: '#', description: "Discover projects building on NEAR Protocol",
-              subitems: [
-                { label: 'Wallets', to: 'https://wallet.near.org/', description: "Discover wallets built for NEAR", icon: '/icons/wallet.svg' },
-                { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/icons/catalog.svg' },
+
               ]
             },
             {
@@ -311,11 +318,6 @@ const config = {
               ]
             },
           ],
-        },
-        {
-          to: '/api/rpc/introduction',
-          label: 'RPC',
-          activeBaseRegex: '/api/rpc',
         },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {

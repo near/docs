@@ -186,7 +186,7 @@ function DropdownNavbarItemMobile({
       setCollapsed(!containsActive);
     }
   }, [localPathname, containsActive, setCollapsed]);
-
+  console.log(items);
   return (
     <li
       className={clsx('menu__list-item', {
@@ -218,7 +218,8 @@ function DropdownNavbarItemMobile({
             {...childItemProps}
             key={i}
           />
-        ))}
+          )
+        )}
       </Collapsible>
     </li>
   );

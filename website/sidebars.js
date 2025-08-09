@@ -480,13 +480,12 @@ const sidebar = {
             'tools/explorer',
             {
               type: 'category',
-              label: 'Data API',
+              label: 'Data APIs',
               link: { type: 'doc', id: 'tools/ecosystem-apis/introduction' },
               items: [
-                            'tools/ecosystem-apis/fastnear',
-            'tools/ecosystem-apis/nearblocks',
-            'tools/ecosystem-apis/pikespeak',
-
+                'tools/ecosystem-apis/fastnear',
+                'tools/ecosystem-apis/nearblocks',
+                'tools/ecosystem-apis/pikespeak',
               ]
             }
           ]
