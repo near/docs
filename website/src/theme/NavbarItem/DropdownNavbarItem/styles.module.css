@@ -77,6 +77,9 @@
   opacity: 0.7;
   transform: scale(1);
   transition: opacity 0.25s ease, transform 240ms cubic-bezier(.4,.2,.2,1);
+}
+
+[data-theme='dark'] .dropdownItemImg {
   background: #fff; /* white background for contrast */
   border-radius: 6px;
   padding: 2px; /* creates inset space around icon */
