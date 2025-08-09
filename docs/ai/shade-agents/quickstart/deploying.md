@@ -110,7 +110,7 @@ This technology has not yet undergone a formal audit. Please conduct your own du
 
 ## Local Development
 
-- Make sure the `NEXT_PUBLIC_contractId` prefix is set to `ac.proxy.` followed by your NEAR accountId.
+- Make sure the `NEXT_PUBLIC_contractId` prefix is set to `ac-proxy.` followed by your NEAR accountId.
 
 - In one terminal, run the Shade Agent CLI:
 
