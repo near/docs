@@ -74,15 +74,26 @@
   height: 32px; /* was 36px */
   width: 32px;  /* was 36px */
   margin: 0 0.75rem 0 0;
-  opacity: 0.6;
+  opacity: 0.7;
   transform: scale(1);
   transition: opacity 0.25s ease, transform 240ms cubic-bezier(.4,.2,.2,1);
+  background: #fff; /* white background for contrast */
+  border-radius: 6px;
+  padding: 2px; /* creates inset space around icon */
+  box-sizing: border-box;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+  object-fit: contain;
 }
 
 .dropDownItem:hover .dropdownItemImg,
 .dropDownItem:focus-within .dropdownItemImg {
   opacity: 1;
   transform: scale(1.05);
+}
+
+/* Dark theme specific refinements (keeps white bg, soft outline) */
+[data-theme='dark'] .dropdownItemImg {
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 2px 4px -1px rgba(0,0,0,0.4);
 }
 
 .dropdownItemContainer {

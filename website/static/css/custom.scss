@@ -21,21 +21,6 @@
   --near-font-body: var(--bs-body-font-family);
 
   --ifm-navbar-item-padding-horizontal: 0.6rem;
-
-  // Chat Component Variables
-  --chat-bg: #f8f9fa;
-  --chat-header-bg: #e9ecef;
-  --chat-input-bg: #f3f4f6;
-  --chat-user-message-bg: #007bff;
-  --chat-ai-message-bg: #f1f3f5;
-  --chat-ai-message-border: #dee2e6;
-  --chat-text-color: #212529;
-  --chat-ai-text-color: #212529;
-  --chat-welcome-text: #6c757d;
-  --chat-input-text: #212529;
-  --chat-input-bg-focus: #fff;
-  --chat-toggle-button-bg: #dee2e6;
-  --doc-sidebar-width: 290px !important;
 }
 
 // ============================================================================
@@ -48,20 +33,6 @@
   --ifm-background-color: #000000;
   --ifm-background-surface-color: #111111;
   --icon-svg-color: #22c55e;
-
-  // Dark theme chat variables
-  --chat-bg: #212529;
-  --chat-header-bg: #343a40;
-  --chat-input-bg: #495057;
-  --chat-user-message-bg: #007bff;
-  --chat-ai-message-bg: #495057;
-  --chat-ai-message-border: #6c757d;
-  --chat-text-color: #ffffff;
-  --chat-ai-text-color: #ffffff;
-  --chat-welcome-text: #adb5bd;
-  --chat-input-text: #ffffff;
-  --chat-input-bg-focus: #5a6268;
-  --chat-toggle-button-bg: #343a40;
 
   hr {
     background-color: #2d2d2d;
