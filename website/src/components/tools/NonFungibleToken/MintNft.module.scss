@@ -1,0 +1,167 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-content);
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--ifm-color-content-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: var(--ifm-background-color);
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-content);
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  font-size: 1rem;
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-content);
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
+  }
+
+  &:disabled {
+    background: var(--ifm-color-emphasis-100);
+    cursor: not-allowed;
+  }
+}
+
+.textarea {
+  @extend .input;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.fileInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px dashed var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-color);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--ifm-color-primary);
+  }
+
+  &:disabled {
+    background: var(--ifm-color-emphasis-100);
+    cursor: not-allowed;
+  }
+}
+
+.fileHint {
+  font-size: 0.8rem;
+  color: var(--ifm-color-content-secondary);
+  margin-top: 0.25rem;
+}
+
+.error {
+  color: var(--ifm-color-danger);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: var(--ifm-color-primary-dark);
+  }
+
+  &:disabled {
+    background: var(--ifm-color-emphasis-300);
+    cursor: not-allowed;
+  }
+
+  &.loading {
+    position: relative;
+    color: transparent;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      border: 2px solid transparent;
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.costInfo {
+  font-size: 0.9rem;
+  color: var(--ifm-color-content-secondary);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+// Dark theme adjustments
+[data-theme='dark'] {
+  .form {
+    border-color: var(--ifm-color-emphasis-200);
+  }
+  
+  .input,
+  .textarea {
+    border-color: var(--ifm-color-emphasis-200);
+    
+    &:focus {
+      box-shadow: 0 0 0 2px var(--ifm-color-primary-darkest);
+    }
+  }
+  
+  .fileInput {
+    border-color: var(--ifm-color-emphasis-200);
+  }
+}
