@@ -619,6 +619,9 @@ const sidebar = {
     },
     'integrations/faq',
   ],
+  toolbox: [
+        'toolbox',
+  ]
 };
 
 export default sidebar;

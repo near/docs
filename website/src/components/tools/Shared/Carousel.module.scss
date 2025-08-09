@@ -1,0 +1,138 @@
+// Carousel component styles using Bootstrap and Sass
+.carouselContainer {
+  display: flex;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  padding: 18px 12px 12px 12px; 
+  gap: 12px;
+  scrollbar-width: thin;
+  
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+}
+
+.imgCard {
+  flex: 0 0 auto;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  transform: scale(1);
+  transition: transform 0.3s ease, border 0.3s ease;
+  position: relative;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  &.selected {
+    border: solid 2px #604cc8CC;
+    transform: scale(1.1) translateY(-10px);
+  }
+
+  // Tooltip styles for hover title
+  &[data-title]:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 1000;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    animation: tooltipFadeIn 0.2s ease-out;
+  }
+  
+  // Small arrow pointing up to the image
+  &[data-title]:hover::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 2px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid rgba(0, 0, 0, 0.9);
+    z-index: 1001;
+    pointer-events: none;
+    animation: tooltipFadeIn 0.2s ease-out;
+  }
+}
+
+// Smooth fade-in animation for tooltip
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+// Dark theme support
+[data-theme='dark'] {
+  .imgCard[data-title]:hover::after {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #1a1a1a;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+  }
+  
+  .imgCard[data-title]:hover::before {
+    border-bottom-color: rgba(255, 255, 255, 0.95);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .carouselContainer {
+    padding: 12px 8px 35px 8px; // Adjusted for mobile
+    gap: 8px;
+  }
+  
+  .imgCard {
+    &.selected {
+      transform: scale(1.05) translateY(-5px);
+    }
+
+    // Adjust tooltip for mobile
+    &[data-title]:hover::after {
+      font-size: 11px;
+      padding: 6px 10px;
+      max-width: 150px;
+      margin-top: 6px;
+    }
+
+    &[data-title]:hover::before {
+      margin-top: 1px;
+      border-left-width: 5px;
+      border-right-width: 5px;
+      border-bottom-width: 5px;
+    }
+  }
+}
