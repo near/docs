@@ -29,16 +29,11 @@ const sidebar = {
         {
           "Concepts": [
             {
-              type: 'category',
-              label: 'Accounts / Contracts',
-              link: { type: 'doc', id: 'protocol/account-model' },
-              items: ['protocol/account-id', 'protocol/access-keys'],
+              'Accounts / Contracts': ['protocol/account-model', 'protocol/account-id', 'protocol/access-keys'],
             },
             {
-              type: 'category',
-              label: 'Transactions',
-              link: { type: 'doc', id: 'protocol/transactions' },
-              items: [
+              'Transactions': [
+                'protocol/transactions',
                 'protocol/transaction-anatomy',
                 'protocol/gas',
                 'protocol/transaction-execution',

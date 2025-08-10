@@ -462,6 +462,10 @@ li>ul {
   padding: var(--ifm-menu-link-padding-vertical) calc(var(--ifm-menu-link-padding-horizontal)/2);
 }
 
+.menu__list-item-collapsible {
+  background: none !important;
+}
+
 // ============================================================================
 // CARD COMPONENTS
 // ============================================================================
