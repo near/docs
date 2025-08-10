@@ -13,12 +13,13 @@ NEAR accounts are identified by a unique address, which can be either an implici
 
 ## Types of Account IDs
 
-NEAR accounts are identified by a unique address, which takes one of two forms:
+NEAR accounts are identified by a unique address, which takes one of the following forms:
 1. [**Implicit address**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)
 2. [**Named address**](#named-address), which act as domains (e.g. `alice.near`)
+3. [**Ethereum-like address**](#ethereum-like-address), which are prefixed with `0x` (e.g. `0xfb9243ce...`)
 
 :::tip Searching to create an account?
-You have multiple ways to create an account, you can [sign-up using your email](https://dev.near.org/signup), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://wallet.meteorwallet.app/wallet).
+Check out our guide on how to [create a NEAR account](../tutorials/protocol/create-account.md)
 :::
 
 ---
@@ -31,11 +32,16 @@ For example:
 - Corresponds to the public key: `ed25519:CQLP1o1F3Jbdttek3GoRJYhzfT...`
 - And controls the account: `a96ad3cb539b653e4b869bd7cf26590690e8971...`
 
-Implicit accounts always *exist*, and thus do not need to be created. However, in order to use the account you will still need to fund it with NEAR tokens (or get a relayer to pay your transaction's [gas](./gas.md)).
+
+:::warning
+
+Implicit do *not exist* until you deposit tokens on them.
+
+:::
 
 :::tip
 
-In NEAR, you can delete the private key of an implicit account, which effectively locks the account and prevents anyone to control it
+In NEAR, you can delete the private key of an implicit account, which effectively locks the account and prevents anyone to control it again
 
 :::
 

@@ -54,7 +54,6 @@ If the previous block is **more than half full** the price goes up by 1%, otherw
 
 You can query how much a gas unit costs in `yoctoNEAR` (1Ⓝ = `1e24` yocto) through the [`RPC`](/api/rpc/gas#gas-price). To convert in `Tgas` per `NEAR`, you can use the following formula: `gas_price * 1e12 / 1e24`.
 
-
 <NearWidget height="40px">
 
 ```js

@@ -15,7 +15,7 @@ By signing [transactions](./transactions.md) with their account, users can:
 4. Help onboard new users by **covering the costs** of their transactions (gas fees)
 
 :::tip Want to create an account?
-You have multiple ways to create an account, you can [sign-up using your email](https://dev.near.org/signup), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://wallet.meteorwallet.app)
+Check out our guide on how to [create a NEAR account](../tutorials/protocol/create-account.md)
 :::
 
 ---
@@ -28,9 +28,11 @@ Let's take a closer look at the different elements that compose the NEAR account
 
 
 #### [Account ID](account-id.md)
-NEAR **natively** implements two types of accounts:
+NEAR **natively** implements multiple types of accounts:
 1. **Named accounts** such as `alice.near`, which are simple to remember and share
-2. **Implicit accounts** such as `0xfb9243ce...`, which are derived from a private key
+2. **Implicit accounts** such as `6cefb9243ce...` (64 chars), which are derived from a private key
+3. **Ethereum-like accounts** such as `0x6cefb9243ce...`
+
 
 #### [Permissions Through Access Keys](access-keys.md)
 NEAR accounts can have multiple [keys](access-keys.md), each with their own set of permissions:
@@ -52,4 +54,4 @@ If you're familiar with development on Ethereum, it's worth making a quick note 
 | Secret Key      | Private Key (`0x456...`) | Multiple key-pairs with permissions:<br />- `FullAccess` key<br />- `FunctionCall` key |
 | Smart Contracts | Synchronous execution    | Asynchronous execution                                                                 |
 | Gas Fees        | In the order of dollars  | In the order of tenths of a cent                                                       |
-| Block Time      | ~12 seconds              | ~1.3 second                                                                            |
+| Block Time      | ~12 seconds              | ~0.6 second                                                                            |

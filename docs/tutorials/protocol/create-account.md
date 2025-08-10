@@ -33,7 +33,7 @@ If the wallet created an account with no balance (`0 NEAR`), you will need to fu
 :::
 
 :::note Testnet
-Make sure to create a `testnet` account (ending with `.testnet`, e.g. `alice.testnet`), and not a `mainnet` account (ending with `.near`). 
+Make sure to create a `testnet` account (ending with `.testnet`), and not a `mainnet` account (ending with `.near`). 
 
 NEAR `testnet` is a separate network that allows you to test your applications without spending real money.
 :::
@@ -87,7 +87,7 @@ This command will create a new account with the name `<account.testnet>` and fun
 
 If you already have a NEAR account and want to use it with a wallet or the CLI, you can import it using your seed phrase or private key.
 
-<hr class="sub-section" />
+<hr class="subsection" />
 
 ### Into a Wallet
 
@@ -104,7 +104,7 @@ near account export-account <account.testnet>
 Follow the instructions and you will be able to see your seed phrase or private key
 :::
 
-<hr class="sub-section" />
+<hr class="subsection" />
 
 ### Into the CLI
 
