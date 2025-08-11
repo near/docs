@@ -40,11 +40,27 @@ How you compile the contract depends on your operating system.
 
 <TabItem value="mac" label="Mac">
 
-    Because of a required dependency used in the agent registration flow, agent contracts cannot easily be compiled on a Mac. We suggest you use a Docker container to build the contract inside. Here is an example command:
+    Because of a required dependency used in the agent registration flow, agent contracts cannot easily be compiled on a Mac. We suggest you build the contract inside a Docker container.
+
+    **Setup (run once per machine):**
 
     ```bash
-    docker run --rm -it -v $(pwd):/code -w /code rust:1.86.0 bash -c 'apt-get update && apt-get install -y clang llvm build-essential libudev-dev pkg-config && rustup target add wasm32-unknown-unknown && cargo install cargo-near && cargo near build non-reproducible-wasm'
+    docker volume create rust-cargo && docker volume create rust-rustup
+    docker run --rm -it \
+        -v rust-cargo:/usr/local/cargo -v rust-rustup:/usr/local/rustup \
+        rust:1.86.0 bash -c 'apt-get update && apt-get install -y clang llvm build-essential libudev-dev pkg-config && rustup target add wasm32-unknown-unknown && rustup toolchain install stable && cargo +stable install cargo-near'
     ```
+
+    This creates persistent volumes and installs the necessary tooling. You only need to run this once (unless you delete the volumes).
+
+    **Build the contract:**
+
+    ```bash
+    docker run --rm -it \
+        -v "$(pwd)":/code -v rust-cargo:/usr/local/cargo -v rust-rustup:/usr/local/rustup \
+        -w /code rust:1.86.0 bash -c 'apt-get update && apt-get install -y clang llvm build-essential libudev-dev pkg-config && cargo +1.86.0 near build non-reproducible-wasm'
+    ```
+
 
 </TabItem>
 
