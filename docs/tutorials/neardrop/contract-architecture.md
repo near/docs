@@ -2,231 +2,181 @@
 id: contract-architecture
 title: Contract Architecture
 sidebar_label: Contract Architecture
-description: "Understand the NEAR Drop smart contract structure, including the core data types, storage patterns, and how different drop types are organized and managed."
+description: "Understand how the NEAR Drop contract works - the core data types, storage patterns, and drop management system."
 ---
 
-import {Github} from "@site/src/components/codetabs"
-
-Before diving into implementation, let's understand the architecture of the NEAR Drop smart contract. This foundation will help you understand how the different components work together to create a seamless token distribution system.
+Before we start coding, let's understand how the NEAR Drop contract is structured. Think of it as the blueprint for our token distribution system.
 
 ---
 
-## Core Contract Structure
+## The Big Picture
 
-The NEAR Drop contract is organized around several key concepts that work together to manage token distributions efficiently.
+The contract manages three things:
+1. **Drops** - Collections of tokens ready for distribution
+2. **Keys** - Private keys that unlock specific drops
+3. **Claims** - The process of users getting their tokens
 
-### Main Contract State
+Here's how they connect:
 
-The contract's state is designed to handle multiple types of drops while maintaining efficient storage and lookup patterns:
+```
+Drop #1 (10 NEAR) ──→ Key A ──→ Alice claims
+Drop #1 (10 NEAR) ──→ Key B ──→ Bob claims
+Drop #2 (1 NFT)   ──→ Key C ──→ Carol claims
+```
 
-<Github language="rust" start="22" end="29" url="https://github.com/near-examples/near-drop/blob/main/src/lib.rs" />
+---
 
-Let's break down each field:
+## Contract State
 
-- **`top_level_account`**: The account used to create new NEAR accounts (typically `testnet` or `mainnet`)
-- **`next_drop_id`**: A simple counter that assigns unique identifiers to each drop
-- **`drop_id_by_key`**: Maps public keys to their corresponding drop IDs for efficient lookups
-- **`drop_by_id`**: Stores the actual drop data indexed by drop ID
+The contract stores everything in four simple maps:
 
-:::info Storage Efficiency
-This dual-mapping approach allows for efficient lookups both by public key (when claiming) and by drop ID (when managing drops), while keeping storage costs reasonable.
-:::
+```rust
+pub struct Contract {
+    pub top_level_account: AccountId,     // "testnet" or "near"
+    pub next_drop_id: u64,                // Counter for unique drop IDs
+    pub drop_id_by_key: LookupMap<PublicKey, u64>,    // Key → Drop ID
+    pub drop_by_id: UnorderedMap<u64, Drop>,          // Drop ID → Drop Data
+}
+```
+
+**Why this design?**
+- Find drops quickly by key (for claiming)
+- Find drops by ID (for management) 
+- Keep storage costs reasonable
 
 ---
 
 ## Drop Types
 
-The contract supports three different types of token drops, each represented as an enum variant:
+We support three types of token drops:
 
-<Github language="rust" start="8" end="16" url="https://github.com/near-examples/near-drop/blob/main/src/drop_types.rs" />
+### NEAR Drops
+```rust
+pub struct NearDrop {
+    pub amount: NearToken,    // How much NEAR per claim
+    pub counter: u64,         // How many claims left
+}
+```
 
-### NEAR Token Drops
+### Fungible Token Drops  
+```rust
+pub struct FtDrop {
+    pub ft_contract: AccountId,  // Which FT contract
+    pub amount: String,          // Amount per claim
+    pub counter: u64,            // Claims remaining
+}
+```
 
-The simplest drop type distributes native NEAR tokens:
+### NFT Drops
+```rust
+pub struct NftDrop {
+    pub nft_contract: AccountId,  // Which NFT contract
+    pub token_id: String,         // Specific NFT
+    pub counter: u64,             // Always 1 (NFTs are unique)
+}
+```
 
-<Github language="rust" start="9" end="16" url="https://github.com/near-examples/near-drop/blob/main/src/near_drop.rs" />
-
-Key characteristics:
-- **`amount`**: Amount of NEAR tokens to distribute per claim
-- **Simple Transfer**: Uses native NEAR transfer functionality
-- **No External Dependencies**: Works without additional contracts
-
-### Fungible Token Drops
-
-For distributing NEP-141 compatible fungible tokens:
-
-<Github language="rust" start="16" end="24" url="https://github.com/near-examples/near-drop/blob/main/src/ft_drop.rs" />
-
-Key characteristics:
-- **`ft_contract`**: The contract address of the fungible token
-- **`amount`**: Number of tokens to distribute per claim
-- **Cross-Contract Calls**: Requires interaction with FT contract
-- **Storage Registration**: Recipients must be registered on the FT contract
-
-### Non-Fungible Token Drops
-
-For distributing unique NFTs:
-
-<Github language="rust" start="15" end="22" url="https://github.com/near-examples/near-drop/blob/main/src/nft_drop.rs" />
-
-Key characteristics:
-- **`nft_contract`**: The contract address of the NFT collection
-- **`token_id`**: Specific NFT token being distributed
-- **Unique Distribution**: Each NFT can only be claimed once
-- **Metadata Preservation**: Maintains all NFT properties and metadata
+All wrapped in an enum:
+```rust
+pub enum Drop {
+    Near(NearDrop),
+    FungibleToken(FtDrop), 
+    NonFungibleToken(NftDrop),
+}
+```
 
 ---
 
-## Access Key System
+## The Magic: Function-Call Keys
 
-One of NEAR Drop's most powerful features is its use of function-call access keys to enable gasless claiming.
+Here's where NEAR gets awesome. Instead of requiring gas fees, we use **function-call access keys**.
 
-### How It Works
+When you create a drop:
+1. Generate public/private key pairs
+2. Add public keys to the contract with limited permissions
+3. Share private keys with recipients
+4. Recipients sign transactions using the contract's account (gasless!)
 
-1. **Key Generation**: When creating a drop, the contract generates or accepts public keys
-2. **Access Key Addition**: The contract adds these keys as function-call keys to itself
-3. **Limited Permissions**: Keys can only call specific claiming functions
-4. **Gasless Operations**: Recipients don't need NEAR tokens to claim
-
-### Key Permissions
-
-The function-call access keys are configured with specific permissions:
+The keys can ONLY call claiming functions - nothing else.
 
 ```rust
-// Example of adding a function-call access key
+// Adding a function-call key
 Promise::new(env::current_account_id())
     .add_access_key(
-        public_key.clone(),
-        FUNCTION_CALL_ALLOWANCE,
-        env::current_account_id(),
-        "claim_for,create_account_and_claim".to_string(),
+        public_key,
+        NearToken::from_millinear(5),  // 0.005 NEAR gas allowance
+        env::current_account_id(),      // Can only call this contract  
+        "claim_for,create_account_and_claim".to_string()  // Specific methods
     )
 ```
-
-This setup allows keys to:
-- Call `claim_for` to claim drops to existing accounts
-- Call `create_account_and_claim` to create new accounts and claim drops
-- Nothing else - providing security through limited permissions
 
 ---
 
 ## Storage Cost Management
 
-The contract carefully manages storage costs, which are paid by the drop creator:
-
-### Cost Components
-
-1. **Drop Data Storage**: Storing drop information in the contract state
-2. **Key-to-Drop Mapping**: Mapping public keys to drop IDs
-3. **Access Key Storage**: Adding function-call keys to the contract account
-
-### Storage Calculation Example
+Creating drops costs money because we're storing data on-chain. The costs include:
 
 ```rust
-// Simplified storage cost calculation
-fn calculate_storage_cost(&self, num_keys: u64) -> NearToken {
-    let drop_storage = DROP_STORAGE_COST;
-    let key_storage = num_keys * KEY_STORAGE_COST;
-    let access_key_storage = num_keys * ACCESS_KEY_STORAGE_COST;
-    
-    drop_storage + key_storage + access_key_storage
-}
+const DROP_STORAGE_COST: NearToken = NearToken::from_millinear(10);   // Drop data
+const KEY_STORAGE_COST: NearToken = NearToken::from_millinear(1);     // Key mapping
+const ACCESS_KEY_STORAGE_COST: NearToken = NearToken::from_millinear(1); // Adding key to account
+const FUNCTION_CALL_ALLOWANCE: NearToken = NearToken::from_millinear(5); // Gas for claiming
 ```
 
-:::tip Storage Optimization
-The contract uses efficient data structures and minimal storage patterns to keep costs low while maintaining functionality.
-:::
+**Total for 5-key NEAR drop**: ~0.08 NEAR + token amounts
 
 ---
 
 ## Security Model
 
-The NEAR Drop contract implements several security measures:
+The contract protects against common attacks:
 
-### Access Control
+**Access Control**
+- Only specific functions can be called with function-call keys
+- Keys are removed after use to prevent reuse
+- Amount validation prevents overflows
 
-- **Drop Creation**: Only the drop creator can modify their drops
-- **Function-Call Keys**: Limited to specific claiming functions only
-- **Account Validation**: Ensures only valid NEAR accounts can be created
+**Key Management** 
+- Each key works only once
+- Keys have limited gas allowances
+- Automatic cleanup after claims
 
-### Preventing Abuse
-
-- **One-Time Claims**: Each key can only be used once per drop
-- **Key Cleanup**: Used keys are removed to prevent reuse
-- **Counter Management**: Drop counters prevent double-claiming
-
-### Error Handling
-
+**Error Handling**
 ```rust
-// Example error handling pattern
-if self.drop_id_by_key.get(&public_key).is_none() {
-    env::panic_str("No drop found for this key");
-}
-
-if drop.counter == 0 {
-    env::panic_str("All drops have been claimed");
-}
+// Example validation
+assert!(!token_id.is_empty(), "Token ID cannot be empty");
+assert!(amount > 0, "Amount must be positive");
 ```
-
----
-
-## Cross-Contract Integration
-
-The contract is designed to work seamlessly with other NEAR standards:
-
-### Fungible Token Integration
-
-- Implements NEP-141 interaction patterns
-- Handles storage registration automatically
-- Manages transfer and callback flows
-
-### NFT Integration  
-
-- Supports NEP-171 NFT transfers
-- Preserves token metadata and properties
-- Handles ownership transfers correctly
-
-### Account Creation Integration
-
-- Works with the linkdrop contract pattern
-- Handles account funding and key management
-- Supports both testnet and mainnet account creation
 
 ---
 
 ## File Organization
 
-The contract code is organized into logical modules:
+We'll organize the code into logical modules:
 
 ```
 src/
-├── lib.rs              # Main contract logic and state
-├── drop_types.rs       # Drop type definitions
-├── near_drop.rs        # NEAR token drop implementation
-├── ft_drop.rs          # Fungible token drop implementation  
-├── nft_drop.rs         # NFT drop implementation
-└── claim.rs            # Claiming logic for all drop types
+├── lib.rs              # Main contract and initialization
+├── drop_types.rs       # Drop type definitions  
+├── near_drops.rs       # NEAR token drop logic
+├── ft_drops.rs         # Fungible token drop logic
+├── nft_drops.rs        # NFT drop logic
+├── claim.rs            # Claiming logic for all types
+└── external.rs         # Cross-contract interfaces
 ```
 
-This modular structure makes the code:
-- **Easy to Understand**: Each file has a clear purpose
-- **Maintainable**: Changes to one drop type don't affect others
-- **Extensible**: New drop types can be added easily
+This keeps things organized and makes it easy to understand each piece.
 
 ---
 
-## Next Steps
+## What's Next?
 
-Now that you understand the contract architecture, let's start implementing the core functionality, beginning with NEAR token drops.
+Now that you understand the architecture, let's start building! We'll begin with the simplest drop type: NEAR tokens.
 
-[Continue to NEAR Token Drops →](./near-drops)
+[Continue to NEAR Token Drops →](./near-drops.md)
 
 ---
 
-:::note Key Takeaways
-- The contract uses efficient storage patterns with dual mappings
-- Three drop types support different token standards (NEAR, FT, NFT)
-- Function-call access keys enable gasless claiming operations
-- Security is maintained through limited key permissions and proper validation
-- Modular architecture makes the contract maintainable and extensible
+:::tip Key Takeaway
+The contract is essentially a **key-to-token mapping system** powered by NEAR's function-call access keys. Users get keys, keys unlock tokens, and everything happens without gas fees for the recipient!
 :::
