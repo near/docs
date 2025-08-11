@@ -877,4 +877,153 @@ impl Contract {
         token_id: String,
     ) -> u64 {
         // Validate inputs
-        self.validate_nft_drop_inputs(&public_key
+        self.validate_nft_drop_inputs(&public_key, &nft_contract, &token_id);
+        
+        // Check if drop already exists for this NFT
+        assert!(
+            !self.nft_drop_exists(nft_contract.clone(), token_id.clone()),
+            "{}",
+            ERR_NFT_ALREADY_CLAIMED
+        );
+        
+        // Create the drop
+        self.create_nft_drop(public_key, nft_contract, token_id)
+    }
+    
+    /// Validate NFT drop inputs
+    fn validate_nft_drop_inputs(
+        &self,
+        public_key: &PublicKey,
+        nft_contract: &AccountId,
+        token_id: &String,
+    ) {
+        // Validate public key format
+        assert!(
+            matches!(public_key, PublicKey::ED25519(_)),
+            "Only ED25519 keys are supported"
+        );
+        
+        // Validate NFT contract account ID
+        assert!(
+            nft_contract.as_str().len() >= 2 && nft_contract.as_str().contains('.'),
+            "Invalid NFT contract account ID"
+        );
+        
+        // Validate token ID
+        assert!(!token_id.is_empty(), "{}", ERR_INVALID_TOKEN_ID);
+        assert!(token_id.len() <= 64, "Token ID too long (max 64 characters)");
+        
+        // Check for reserved characters
+        assert!(
+            token_id.chars().all(|c| c.is_alphanumeric() || "-_.".contains(c)),
+            "Token ID contains invalid characters"
+        );
+    }
+}
+```
+
+---
+
+## Gas Optimization for NFT Operations
+
+NFT drops can be gas-intensive due to cross-contract calls. Here are optimization strategies:
+
+```rust
+// Optimized gas constants based on testing
+pub const GAS_FOR_NFT_TRANSFER: Gas = Gas(30_000_000_000_000);      // 30 TGas
+pub const GAS_FOR_NFT_CALLBACK: Gas = Gas(20_000_000_000_000);       // 20 TGas
+pub const GAS_FOR_NFT_VERIFICATION: Gas = Gas(10_000_000_000_000);   // 10 TGas
+
+impl Contract {
+    /// Optimized NFT claiming with gas monitoring
+    fn claim_nft_drop_optimized(
+        &mut self,
+        public_key: PublicKey,
+        receiver_id: AccountId,
+        nft_contract: AccountId,
+        token_id: String,
+    ) {
+        let initial_gas = env::used_gas();
+        
+        // Transfer the NFT with optimized gas allocation
+        ext_nft::ext(nft_contract.clone())
+            .with_static_gas(GAS_FOR_NFT_TRANSFER)
+            .nft_transfer(
+                receiver_id.clone(),
+                token_id.clone(),
+                None,
+                Some("NEAR Drop claim".to_string()) // Shorter memo to save gas
+            )
+            .then(
+                Self::ext(env::current_account_id())
+                    .with_static_gas(GAS_FOR_NFT_CALLBACK)
+                    .nft_transfer_callback_optimized(
+                        public_key,
+                        receiver_id,
+                        nft_contract,
+                        token_id,
+                        initial_gas,
+                    )
+            );
+    }
+    
+    /// Optimized callback with gas usage reporting
+    #[private]
+    pub fn nft_transfer_callback_optimized(
+        &mut self,
+        public_key: PublicKey,
+        receiver_id: AccountId,
+        nft_contract: AccountId,
+        token_id: String,
+        initial_gas: Gas,
+    ) {
+        let gas_used = env::used_gas() - initial_gas;
+        
+        if is_promise_success() {
+            env::log_str(&format!(
+                "NFT {} transferred to {} using {} gas",
+                token_id,
+                receiver_id,
+                gas_used.0
+            ));
+            
+            // Efficient cleanup
+            if let Some(drop_id) = self.drop_id_by_key.get(&public_key) {
+                self.drop_by_id.remove(&drop_id);
+                self.drop_id_by_key.remove(&public_key);
+                
+                // Remove access key
+                Promise::new(env::current_account_id())
+                    .delete_key(public_key);
+            }
+        } else {
+            env::panic_str("NFT transfer failed");
+        }
+    }
+}
+```
+
+---
+
+## Next Steps
+
+You now have a complete NFT drop system that handles:
+- Unique token distribution patterns
+- Cross-contract NFT transfers with proper callbacks  
+- Ownership verification and security measures
+- Advanced patterns like rarity-based and collection drops
+- Comprehensive error handling and gas optimization
+
+The NFT drop implementation completes the core token distribution functionality. Next, let's explore how function-call access keys work in detail to understand the gasless claiming mechanism.
+
+[Continue to Access Key Management →](./access-keys)
+
+---
+
+:::note NFT Drop Considerations
+- Always verify NFT ownership before creating drops
+- NFT drops are inherently single-use (counter always equals 1)
+- Test with various NFT contracts to ensure NEP-171 compatibility
+- Monitor gas costs as they can be higher than NEAR/FT drops
+- Consider implementing batch operations for multiple NFT drops
+:::
