@@ -27,6 +27,8 @@ import CLIBuyNFT from "@site/src/components/docs/primitives/nft/near-cli/buy.md"
 import CLIQueryNFT from "@site/src/components/docs/primitives/nft/near-cli/query.md"
 import CLITransferNFT from "@site/src/components/docs/primitives/nft/near-cli/transfer.md"
 import CLIListNFTForSale from "@site/src/components/docs/primitives/nft/near-cli/list-for-sale.md"
+import CLIDeployContractUsingGlobalAccountId from "@site/src/components/docs/primitives/nft/near-cli/deploy-using-global-account-id.md"
+import CLIDeployContractUsingGlobalHash from "@site/src/components/docs/primitives/nft/near-cli/deploy-using-global-hash.md"
 
 import LantstoolMintNFT from "@site/src/components/docs/primitives/nft/lantstool/mint.md"
 import LantstoolBuyNFT from "@site/src/components/docs/primitives/nft/lantstool/buy.md"
@@ -66,7 +68,10 @@ The easiest way to create and handle NFTs is by using one of the existing commun
 ---
 
 ## Deploying a NFT Contract
-If you want to deploy your own NFT contract, you can create one using our [reference implementation](https://github.com/near-examples/NFT)
+
+### Deploying Your Own Contract
+
+If you want to deploy your own NFT contract, you can create one using our [reference implementation](https://github.com/near-examples/NFT).
 
 Simply personalize it and deploy it to your account.
 
@@ -87,6 +92,29 @@ near deploy <account-id> --wasmFile contract.wasm --initFunction new
 :::tip
 Check the [Contract Wizard](https://dev.near.org/contractwizard.near/widget/ContractWizardUI) to create a personalized NFT contract!.
 
+:::
+
+<hr class="subsection" />
+
+### Deploying Using Global Contract
+
+You can find out what global contracts are [here](../smart-contracts/global-contracts.md). But in short, global contracts allow smart contracts to be deployed once and reused by any account without incurring high storage costs.
+
+In other words, you can deploy a NFT contract using our global NFT contract, which is already deployed and basically is just [a standard NFT contract](https://github.com/near-examples/NFT) without any customization. You need only to call the following deploying command with your initialization parameters.
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
+    Deploy by account id:
+    <CLIDeployContractUsingGlobalAccountId />
+    Deploy by hash:
+    <CLIDeployContractUsingGlobalHash />
+  </TabItem>
+</Tabs>
+
+:::note
+The difference between global contracts deployed by account id and by hash is that the former is updatable, while the latter is immutable. When it's deployed by account id, the owner can redeploy the contract updating it for all its users.
+
+So when you decide which option to use for deploying your NFT contract, you should consider whether you want to it to be updatable by its original owner or not.
 :::
 
 ---

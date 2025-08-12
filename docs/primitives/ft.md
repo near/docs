@@ -31,6 +31,8 @@ import CLIRegister from "@site/src/components/docs/primitives/ft/near-cli/regist
 import CLIAttachTokenToCall from "@site/src/components/docs/primitives/ft/near-cli/attach-to-call.md"
 import CLICreateToken from "@site/src/components/docs/primitives/ft/near-cli/create.md"
 import CLICreateTokenManually from "@site/src/components/docs/primitives/ft/near-cli/create-manually.md"
+import CLICreateTokenUsingGlobalAccountId from "@site/src/components/docs/primitives/ft/near-cli/create-using-global-account-id.md"
+import CLICreateTokenUsingGlobalHash from "@site/src/components/docs/primitives/ft/near-cli/create-using-global-hash.md"
 
 import SmartContractSendToken from "@site/src/components/docs/primitives/ft/smart-contract/send.md"
 import SmartContractAttachTokenToCall from "@site/src/components/docs/primitives/ft/smart-contract/attach-to-call.md"
@@ -48,7 +50,15 @@ In order for a contract to be considered a FT-contract it has to follow the [**N
 
 ---
 
-## Token Factory Tool
+## Create New Token
+
+There are three ways to create a fungible token (FT) on NEAR:
+
+1. Using the **[Token Factory Tool](#token-factory-tool)**, a tool to create a FT contract through graphical interface, or by making calls to its contract.
+2. **Deploying [your own FT Contract](#deploying-your-own-contract)**: Writing and deploying your own FT contract from scratch.
+3. **Deploying a token [using Global Contract](#deploying-a-token-using-global-contract)**: Writing and deploying your own FT contract from scratch.
+
+### Token Factory Tool
 You can create an FT using the toolbox on [Dev Portal](https://dev.near.org/tools). The FT Tool is a token factory, you can interact with it through graphical interface, or by making calls to its contract.
 
 <Tabs groupId="code-tabs">
@@ -65,9 +75,9 @@ You can create an FT using the toolbox on [Dev Portal](https://dev.near.org/tool
 
 The FT you create will live in the account `<your_token_symbol>.tkn.primitives.near` (e.g. `test.tkn.primitives.near`).
 
----
+<hr class="subsection" />
 
-## Deploying Your Own Contract
+### Deploying Your Own Contract
 
 You can also create a fungible token by deploying and initializing a [canonical FT contract](https://github.com/near-examples/FT).
 
@@ -87,6 +97,29 @@ To initialize a FT contract you will need to deploy it and then call the `new` m
 
 :::tip
 Check the [Contract Wizard](https://dev.near.org/contractwizard.near/widget/ContractWizardUI) to create a personalized FT contract!.
+:::
+
+<hr class="subsection" />
+
+### Deploying a Token Using Global Contract
+
+You can find out what global contracts are [here](../smart-contracts/global-contracts.md). But in short, global contracts allow smart contracts to be deployed once and reused by any account without incurring high storage costs.
+
+In other words, you can deploy a FT contract using our global FT contract, which is already deployed and basically is just [a standard FT contract](https://github.com/near-examples/FT) without any customization. You need only to call the following deploying command with your initialization parameters.
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
+    Deploy by account id:
+    <CLICreateTokenUsingGlobalAccountId />
+    Deploy by hash:
+    <CLICreateTokenUsingGlobalHash />
+  </TabItem>
+</Tabs>
+
+:::note
+The difference between global contracts deployed by account id and by hash is that the former is updatable, while the latter is immutable. When it's deployed by account id, the owner can redeploy the contract updating it for all its users.
+
+So when you decide which option to use for deploying your FT contract, you should consider whether you want to it to be updatable by its original owner or not.
 :::
 
 ---
