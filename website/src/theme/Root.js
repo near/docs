@@ -6,6 +6,8 @@ import useIsBrowser from '@docusaurus/useIsBrowser'; // https://docusaurus.io/do
 import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // wallet selector
 import '@near-wallet-selector/modal-ui/styles.css';
@@ -110,6 +112,18 @@ function Root({ children, location }) {
     <PostHogProvider client={posthog}>
       <WalletSelectorProvider config={walletSelectorConfig}>
         {children}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </WalletSelectorProvider>
     </PostHogProvider>
   );

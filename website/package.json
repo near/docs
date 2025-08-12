@@ -39,6 +39,7 @@
     "@docusaurus/plugin-sitemap": "3.8.1",
     "@docusaurus/preset-classic": "3.8.1",
     "@docusaurus/theme-mermaid": "3.8.1",
+    "@near-js/tokens": "^2.2.4",
     "@near-wallet-selector/bitte-wallet": "^9.2.0",
     "@near-wallet-selector/core": "^9.2.0",
     "@near-wallet-selector/ethereum-wallets": "^9.2.0",
@@ -60,21 +61,26 @@
     "gleap": "^13.7.3",
     "lodash": "^4.17.21",
     "monaco-editor": "^0.52.2",
-    "near-api-js": "^6.2.4",
+    "near-api-js": "5.1.1",
     "posthog-js": "^1.257.2",
     "process": "^0.11.10",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-bootstrap-typeahead": "^6.3.2",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.61.1",
     "react-markdown": "^10.1.0",
     "react-monaco-editor": "^0.59.0",
     "react-syntax-highlighter": "^15.6.1",
+    "react-toastify": "^11.0.5",
     "sass": "^1.89.2",
     "stream-browserify": "^3.0.0",
     "styled-components": "^6.1.19",
     "url": "^0.11.4",
     "util": "^0.12.5",
     "vm-browserify": "^1.1.2"
+  },
+  "resolutions": {
+    "near-api-js": "5.1.1"
   }
 }

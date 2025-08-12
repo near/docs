@@ -205,7 +205,9 @@ const sidebar = {
           ],
         },
         {
-          Advanced: ['smart-contracts/global-contracts'],
+          'Global Contracts': [
+            'smart-contracts/global-contracts'
+          ],
         },
         'resources/contracts-list'
       ],
@@ -375,6 +377,7 @@ const sidebar = {
         'tutorials/examples/xcc',
         'tutorials/examples/advanced-xcc',
         'tutorials/examples/update-contract-migrate-state',
+        'tutorials/examples/global-contracts',
         {
           "Build a FT Contract from Scratch": [
             'tutorials/fts/introduction',
@@ -616,6 +619,9 @@ const sidebar = {
     },
     'integrations/faq',
   ],
+  toolbox: [
+        'toolbox',
+  ]
 };
 
 export default sidebar;

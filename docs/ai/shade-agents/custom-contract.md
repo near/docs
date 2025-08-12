@@ -40,10 +40,10 @@ How you compile the contract depends on your operating system.
 
 <TabItem value="mac" label="Mac">
 
-    Because of a required dependency used in the agent registration flow, agent contracts cannot easily be compiled on a Mac. We suggest you use a Docker container to build the contract inside. Here is an example command:
+    Because of a required dependency used in the agent registration flow, agent contracts cannot easily be compiled on a Mac. We suggest you build the contract inside a Docker container. You can use this pre-configured image for compiling NEAR contracts:
 
     ```bash
-    docker run --rm -it -v $(pwd):/code -w /code rust:1.86.0 bash -c 'apt-get update && apt-get install -y clang llvm build-essential libudev-dev pkg-config && rustup target add wasm32-unknown-unknown && cargo install cargo-near && cargo near build non-reproducible-wasm'
+    docker run --rm -v "$(pwd)":/workspace pivortex/near-builder@sha256:cdffded38c6cff93a046171269268f99d517237fac800f58e5ad1bcd8d6e2418 cargo near build non-reproducible-wasm
     ```
 
 </TabItem>
@@ -59,16 +59,8 @@ To deploy your agent with the custom contract, add the `--wasm` flag when using 
 Here is an example:
 
 ```bash
-shade-agent-cli --wasm contract/contract.wasm --funding 5
+shade-agent-cli --wasm contract/target/near/contract.wasm --funding 5
 ```
-
-:::tip
-Make sure you are using the most updated version of the `shade-agent-cli`.
-
-```bash
-npm i -g @neardefi/shade-agent-cli
-```
-:::
 
 ---
 
