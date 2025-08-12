@@ -5,7 +5,7 @@ import useSWR from 'swr';
 import DOMPurify from 'dompurify';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const API_BASE = 'https://dev.near.org/api';
+const API_BASE = 'http://localhost:5000';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -46,23 +46,23 @@ const Newsletter = () => {
 
   // Fetch campaigns using SWR
   const { data: campaigns = [], error: campaignsError, isLoading: campaignLoading } = useSWR(
-    `${API_BASE}/newsletter`,
+    `${API_BASE}/api/campaigns`,
     fetcher
   );
 
   // Fetch issue details using SWR
-  const { data: issueDetails = '', error: issueError, isLoading: issueLoading } = useSWR(
-    currentIssueId ? `${API_BASE}/newsletter/${currentIssueId}` : null,
+  const { data: issueDetails = { cache: false, data: '', success: false }, error: issueError, isLoading: issueLoading } = useSWR(
+    currentIssueId ? `${API_BASE}/api/campaigns/${currentIssueId}/content` : null,
     fetcher
   );
 
   // Memoize sanitized HTML to avoid re-parsing every render
   const sanitizedIssueHtml = useMemo(() => {
     // Add SSR guard for DOMPurify
-    if (typeof window === 'undefined' || !issueDetails) return '';
-    
+    if (typeof window === 'undefined' || !issueDetails?.data) return '';
+
     try {
-      const parsedHtml = parseCampaignHTML(issueDetails);
+      const parsedHtml = parseCampaignHTML(issueDetails.data);
       return DOMPurify.sanitize(parsedHtml);
     } catch (error) {
       console.error('Error sanitizing HTML:', error);
@@ -112,7 +112,7 @@ const Newsletter = () => {
     setSubmitting(true);
     try {
       setResponseError(null);
-      const response = await fetch(`${API_BASE}/newsletter/subscribe`, {
+      const response = await fetch(`${API_BASE}/api/newsletter/subscribe`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
