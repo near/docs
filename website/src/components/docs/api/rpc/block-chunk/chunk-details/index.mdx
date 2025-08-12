@@ -2,15 +2,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { LantstoolLabel } from '@site/src/components/lantstool/LantstoolLabel/LantstoolLabel';
 import { TryOutOnLantstool } from '@site/src/components/lantstool/TryOutOnLantstool';
-import ChunkIdRequestJson from './chunk-id/request-json.mdx';
-import ChunkIdRequestJs from './chunk-id/request-js.mdx';
-import ChunkIdRequestBash from './chunk-id/request-bash.mdx';
-import BlockIdShardIdRequestJson from './block-id-shard-id/request-json.mdx';
-import BlockIdShardIdRequestJs from './block-id-shard-id/request-js.mdx';
-import BlockIdShardIdRequestBash from './block-id-shard-id/request-bash.mdx';
-import ResponseJson from './response-json.mdx';
 import ErrorSchemaDescription from '../../_general/error-schema-description.mdx';
-import ErrorSchemaTable from './error-schema-table.mdx';
+
 
 ## Chunk Details {#chunk-details}
 
@@ -25,13 +18,34 @@ import ErrorSchemaTable from './error-schema-table.mdx';
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
-    <ChunkIdRequestJson />
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "chunk",
+      "params": {
+        "chunk_id": "CzPafxtJmM1FnRoasKWAVhceJzZzkz9RKUBQQ4kY9V1v"
+      }
+    }
+    ```
   </TabItem>
   <TabItem value="js" label="JavaScript">
-    <ChunkIdRequestJs />
+    ```js
+    const response = await near.connection.provider.chunk(
+      'CzPafxtJmM1FnRoasKWAVhceJzZzkz9RKUBQQ4kY9V1v',
+    );
+    ```
   </TabItem>
   <TabItem value="http" label="HTTPie">
-    <ChunkIdRequestBash />
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=chunk \
+      params:='{
+        "chunk_id": "CzPafxtJmM1FnRoasKWAVhceJzZzkz9RKUBQQ4kY9V1v"
+      }'
+    ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/5.api/rpc/block-chunk/get-chunk-by-chunk-id.json" />
@@ -42,13 +56,34 @@ import ErrorSchemaTable from './error-schema-table.mdx';
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
-    <BlockIdShardIdRequestJson />
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "chunk",
+      "params": {
+        "block_id": 187310138,
+        "shard_id": 0
+      }
+    }
+    ```
   </TabItem>
   <TabItem value="js" label="JavaScript">
-    <BlockIdShardIdRequestJs />
+    ```js
+    const response = await near.connection.provider.chunk([187310138, 0]);
+    ```
   </TabItem>
   <TabItem value="http" label="HTTPie">
-    <BlockIdShardIdRequestBash />
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=chunk \
+      params:='{
+        "block_id": 187310138,
+        "shard_id": 0
+      }'
+    ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/5.api/rpc/block-chunk/get-chunk-by-block-shard.json" />
@@ -57,7 +92,64 @@ import ErrorSchemaTable from './error-schema-table.mdx';
 
 <details>
   <summary>Example response:</summary>
-  <ResponseJson />
+  ```json
+  {
+    "jsonrpc": "2.0",
+    "result": {
+      "author": "kiln.pool.f863973.m0",
+      "header": {
+        "balance_burnt": "0",
+        "bandwidth_requests": null,
+        "chunk_hash": "CzPafxtJmM1FnRoasKWAVhceJzZzkz9RKUBQQ4kY9V1v",
+        "congestion_info": {
+          "allowed_shard": 1,
+          "buffered_receipts_gas": "0",
+          "delayed_receipts_gas": "0",
+          "receipt_bytes": 0
+        },
+        "encoded_length": 308,
+        "encoded_merkle_root": "6z9JwwtVfS5nRKcKeJxgzThRRs2wCNvbH88T3cuARe6W",
+        "gas_limit": 1000000000000000,
+        "gas_used": 0,
+        "height_created": 187310138,
+        "height_included": 187310138,
+        "outcome_root": "11111111111111111111111111111111",
+        "outgoing_receipts_root": "AChfy3dXeJjgD2w5zXkUTFb6w8kg3AYGnyyjsvc7hXLv",
+        "prev_block_hash": "Wj6B3RTv73EWDNbSammRDeA9315RaPyRrJYmiP4nG4X",
+        "prev_state_root": "cRMk2zd2bWC1oBfGowgMTpqW9L5SNG2FeE72yT1wpQA",
+        "rent_paid": "0",
+        "shard_id": 0,
+        "signature": "ed25519:L1iCopW8gY5rqwfuZT8Y3bHHXvuvWT87X9rwdY6LmFi8LGZdMhj2CkQCXLGrzdfYXD8B54wPTM9TqJAHcKfFDyW",
+        "tx_root": "CMwUsP8q4DTBUYxXm12jVwC8xTD8L1T1n3jdKLQVh6bm",
+        "validator_proposals": [],
+        "validator_reward": "0"
+      },
+      "receipts": [],
+      "transactions": [
+        {
+          "actions": [
+            {
+              "FunctionCall": {
+                "args": "eyJyZWNvcmRfaWQiOjEsInJlY29yZCI6IkhlbGxvLCBOZWFyIFByb3RvY29sISJ9",
+                "deposit": "0",
+                "gas": 50000000000000,
+                "method_name": "write_record"
+              }
+            }
+          ],
+          "hash": "J3KbUXF9YPu2eGnbDCACxGvmMDZMdP7acGYhVLHGu9y2",
+          "nonce": 187309654000001,
+          "priority_fee": 0,
+          "public_key": "ed25519:EddTahJwZpJjYPPmat7DBm1m2vdrFBzVv7e3T4hzkENd",
+          "receiver_id": "contract.rpc-examples.testnet",
+          "signature": "ed25519:3opUQgg5eNQmE2LJ8zJiitBAVLDFR3svk8LC5VtVGorQuq8jWLocKAt7B4xb6n7DhH8zSVCWcRRrmVL9f1wHiVXa",
+          "signer_id": "account.rpc-examples.testnet"
+        }
+      ]
+    },
+    "id": "dontcare"
+  }
+  ```
 </details>
 
 #### What Could Go Wrong?? {#what-could-go-wrong-2}
@@ -66,4 +158,118 @@ import ErrorSchemaTable from './error-schema-table.mdx';
 
 Here is the exhaustive list of the error variants that can be returned by `chunk` method:
 
-<ErrorSchemaTable />
+<table className="custom-stripe">
+  <thead>
+    <tr>
+      <th>
+        ERROR_TYPE
+        <br />
+        <code>error.name</code>
+      </th>
+      <th>
+        ERROR_CAUSE
+        <br />
+        <code>error.cause.name</code>
+      </th>
+      <th>Status Code</th>
+      <th>Reason</th>
+      <th>Solution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4">HANDLER_ERROR</td>
+      <td>UNKNOWN_BLOCK</td>
+      <td>200</td>
+      <td>
+        The requested block has not been produced yet or it has been garbage-collected (cleaned up
+        to save space on the RPC node)
+      </td>
+      <td>
+        <ul>
+          <li>Check that the requested block is legit</li>
+          <li>
+            If the block had been produced more than 5 epochs ago, try to send your request to{' '}
+            <a
+              href="https://near-nodes.io/intro/node-types#archival-node"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              an archival node
+            </a>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>UNKNOWN_CHUNK</td>
+      <td>200</td>
+      <td>The requested chunk can't be found in a database</td>
+      <td>
+        <ul>
+          <li>Check that the requested chunk is legit</li>
+          <li>
+            If the chunk had been produced more than 5 epochs ago, try to send your request to an
+            archival node
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INVALID_SHARD_ID</td>
+      <td>200</td>
+      <td>
+        Provided <code>shard_id</code> does not exist
+      </td>
+      <td>
+        <ul>
+          <li>
+            Provide <code>shard_id</code> for an existing shard
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>NOT_SYNCED_YET</td>
+      <td>200</td>
+      <td>The node is still syncing and the requested chunk is not in the database yet</td>
+      <td>
+        <ul>
+          <li>Wait until the node finish syncing</li>
+          <li>Send a request to a different node which is synced</li>
+        </ul>
+      </td>
+    </tr>
+    <tr className="stripe">
+      <td>REQUEST_VALIDATION_ERROR</td>
+      <td>PARSE_ERROR</td>
+      <td>400</td>
+      <td>
+        Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)
+      </td>
+      <td>
+        <ul>
+          <li>Check the arguments passed and pass the correct ones</li>
+          <li>
+            Check <code>error.cause.info</code> for more details
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>INTERNAL_ERROR</td>
+      <td>INTERNAL_ERROR</td>
+      <td>500</td>
+      <td>Something went wrong with the node itself or overloaded</td>
+      <td>
+        <ul>
+          <li>Try again later</li>
+          <li>Send a request to a different node</li>
+          <li>
+            Check <code>error.cause.info</code> for more details
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
