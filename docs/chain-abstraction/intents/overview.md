@@ -29,7 +29,7 @@ Here are some resources to get started using NEAR Intents:
 
 - [Official NEAR Intents Documentation](https://docs.near-intents.org)
 - [Dev Support Channel](https://t.me/near_intents): Developer support channel on Telegram
-- [NEAR Intents 1Click API Example](https://github.com/nearuaguild/near-intents-1click-example): Easy integration example that uses 1Click API
+- [NEAR Intents 1Click API Example](https://github.com/near-examples/near-intents-examples): Easy integration example that uses 1Click API
 - [near-intents.org (Live Site)](https://near-intents.org): Live demo application showcasing token swaps
 - [near-intents.org (Repository)](https://github.com/defuse-protocol/defuse-frontend): Frontend source code for `near-intents.org`
 - [Unpacking NEAR Intents: A Deep Dive](https://www.near.org/blog/unpacking-near-intents-a-deep-dive): Blogpost diving deeper into the concept of NEAR Intents.

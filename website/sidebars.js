@@ -377,6 +377,7 @@ const sidebar = {
         'tutorials/examples/xcc',
         'tutorials/examples/advanced-xcc',
         'tutorials/examples/update-contract-migrate-state',
+        'tutorials/examples/global-contracts',
         {
           "Build a FT Contract from Scratch": [
             'tutorials/fts/introduction',
