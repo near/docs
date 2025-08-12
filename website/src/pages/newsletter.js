@@ -3,7 +3,6 @@ import { useState, useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import useSWR from 'swr';
 import DOMPurify from 'dompurify';
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 const API_BASE = 'http://localhost:5000';
 
@@ -152,70 +151,125 @@ const Newsletter = () => {
 
   if (campaignLoading) {
     return (
-      <div className="container-fluid py-4">
-        <div className="d-flex justify-content-center">
-          <div className="spinner-border text-dark" role="status">
-            <span className="visually-hidden">Loading...</span>
+      <Layout title="NEAR Newsletter" description="Subscribe to the NEAR Developer Newsletter">
+        <div className="newsletter-page">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-12">
+                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '80vh' }}>
+                  <div className="text-center">
+                    <div className="loading-container mb-4">
+                      <div className="loading-spinner"></div>
+                      <div className="loading-pulse"></div>
+                    </div>
+                    <h3 className="loading-text mb-2">Loading Newsletter...</h3>
+                    <p className="loading-subtitle">Getting the latest NEAR Dev News ready for you</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 
   if (campaignsError) {
     return (
-      <div className="container-fluid py-4">
-        <div className="alert alert-danger">Failed to load newsletter</div>
-      </div>
+      <Layout title="NEAR Newsletter" description="Subscribe to the NEAR Developer Newsletter">
+        <div className="newsletter-page">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-12">
+                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '70vh' }}>
+                  <div className="text-center" style={{ maxWidth: '600px' }}>
+                    <div className="error-icon mb-4">
+                      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="#ef4444" strokeWidth="2"/>
+                        <path d="m15 9-6 6" stroke="#ef4444" strokeWidth="2"/>
+                        <path d="m9 9 6 6" stroke="#ef4444" strokeWidth="2"/>
+                      </svg>
+                    </div>
+                    <div className="alert alert-danger border-0">
+                      <h4 className="mb-3">Unable to Load Newsletter</h4>
+                      <p className="mb-3">We're having trouble connecting to our newsletter service. This might be temporary.</p>
+                      <button 
+                        className="btn btn-outline-danger me-3" 
+                        onClick={() => window.location.reload()}
+                      >
+                        Try Again
+                      </button>
+                      <a href="/docs" className="btn btn-primary">
+                        Browse Docs Instead
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Layout>
     );
   }
 
   return (
     <Layout title="NEAR Newsletter" description="Subscribe to the NEAR Developer Newsletter">
-    <div className="newsletter-page">
-      <div className="container-fluid">
-        <div className="row">
-          {/* Main Content */}
-          <div className="col-lg-8 col-12">
-            {issueLoading ? (
-              <div className="py-5">
-                <div className="placeholder-glow">
-                  <div className="placeholder col-8 mb-3" style={{ height: '32px' }} />
-                  <div className="placeholder col-10 mb-2" />
-                  <div className="placeholder col-9 mb-2" />
-                  <div className="placeholder col-11 mb-2" />
-                </div>
-              </div>
-            ) : !sanitizedIssueHtml ? (
-              <div className="alert alert-warning mt-3">No issue content available.</div>
-            ) : (
-              <div className="newsletter-content">
-                <div 
-                  dangerouslySetInnerHTML={{ 
-                    __html: sanitizedIssueHtml
-                  }}
-                />
-              </div>
-            )}
+      <div className="newsletter-page">
+        <div className="newsletter-container">
+          {/* Newsletter Header */}
+          <div className="newsletter-header">
+            <h1 className="newsletter-title">
+              <span className="title-highlight">NEAR</span> Dev Newsletter
+            </h1>
+            <p className="newsletter-subtitle">
+              Your weekly scoop on ecosystem updates, dev tools, freelance gigs, and events around the NEAR Protocol
+            </p>
           </div>
 
-          {/* Sidebar */}
-          <div className="col-lg-4 col-12">
+          {/* Main Layout */}
+          <div className="newsletter-layout">
+            {/* Main Content */}
+            <div className="newsletter-main">
+              {issueLoading ? (
+                <div className="loading-placeholder">
+                  <div className="placeholder-glow">
+                    <div className="placeholder title-placeholder" />
+                    <div className="placeholder content-placeholder" />
+                    <div className="placeholder content-placeholder" />
+                    <div className="placeholder content-placeholder short" />
+                  </div>
+                </div>
+              ) : !sanitizedIssueHtml ? (
+                <div className="alert alert-warning">No issue content available.</div>
+              ) : (
+                <div className="newsletter-content">
+                  <div 
+                    dangerouslySetInnerHTML={{ 
+                      __html: sanitizedIssueHtml
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* Sidebar */}
             <div className="newsletter-sidebar">
               {/* Subscribe Form */}
-              <div className="green-box mb-3">
-                <h3 className="mb-3">Subscribe to the newsletter</h3>
+              <div className="green-box subscribe-section">
+                <h3>Subscribe to the newsletter</h3>
                 {isFormSubmitted ? (
                   <div className="confirmation-box" role="status">
-                    <strong>Thank you!</strong> Please visit your e-mail to confirm your subscription.
+                    <strong>Thank you!</strong> 
+                    <span>Please visit your e-mail to confirm your subscription.</span>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit(onSubmit)} className='mt-3' noValidate>
+                  <form onSubmit={handleSubmit(onSubmit)} noValidate>
                     {errors.email && (
-                      <div className="text-danger mb-2">Valid email required.</div>
+                      <div className="error-message">Valid email required.</div>
                     )}
                     {responseError && (
-                      <div className="text-danger mb-2">{responseError}</div>
+                      <div className="error-message">{responseError}</div>
                     )}
                     <div className="subscribe-form">
                       <label htmlFor="newsletter-email" className="visually-hidden">Email address</label>
@@ -224,12 +278,12 @@ const Newsletter = () => {
                         {...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })}
                         type="email"
                         autoComplete="email"
-                        className="form-control subscribe-input"
+                        className="subscribe-input"
                         placeholder="dev@youremail.com"
                         onChange={() => setResponseError(null)}
                         aria-invalid={!!errors.email}
                       />
-                      <button type="submit" className="btn btn-dark" disabled={submitting} aria-busy={submitting}>
+                      <button type="submit" className="subscribe-button" disabled={submitting} aria-busy={submitting}>
                         {submitting ? '...' : 'Subscribe'}
                       </button>
                     </div>
@@ -238,63 +292,65 @@ const Newsletter = () => {
               </div>
 
               {/* Recent Issues */}
-              <div className="green-box">
+              <div className="green-box issues-header">
                 <h3>Recent Issues</h3>
               </div>
-              <ul className="links-list">
-                {campaigns.map((issue) => {
-                  const issueIdToUse = issue.variate_settings?.combinations[0]?.id || issue.id;
-                  const isActive = currentIssueId === issueIdToUse;
-                  const subject = issue.settings?.subject_line || issue.variate_settings?.subject_lines?.[0] || 'Untitled Issue';
-                  
-                  return (
-                    <li key={issue.id} className={isActive ? 'active' : ''}>
-                      <button
-                        className="link-button"
-                        onClick={() => handleIssueChange(issueIdToUse)}
-                        aria-current={isActive ? 'true' : 'false'}
-                      >
-                        {subject}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
+              <div className="links-container">
+                <ul className="links-list">
+                  {campaigns.map((issue) => {
+                    const issueIdToUse = issue.variate_settings?.combinations[0]?.id || issue.id;
+                    const isActive = currentIssueId === issueIdToUse;
+                    const subject = issue.settings?.subject_line || issue.variate_settings?.subject_lines?.[0] || 'Untitled Issue';
+                    
+                    return (
+                      <li key={issue.id} className={isActive ? 'active' : ''}>
+                        <button
+                          className="link-button"
+                          onClick={() => handleIssueChange(issueIdToUse)}
+                          aria-current={isActive ? 'true' : 'false'}
+                        >
+                          {subject}
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
 
-              <hr />
+              <hr className="sidebar-divider" />
 
               {/* External Links */}
-              <div className="green-box mb-3">
+              <div className="green-box external-header">
                 <h3>Looking for more?</h3>
               </div>
-              <ul className="links-list">
-                <li>
-                  <a href="https://nearweek.com" target="_blank" rel="noopener noreferrer">
-                    NEARWEEK →
-                  </a>
-                </li>
-                <li>
-                  <a href="https://x.com/neardevhub" target="_blank" rel="noopener noreferrer">
-                    DevHub on X →
-                  </a>
-                </li>
-                <li>
-                  <a href="https://x.com/NEARProtocol" target="_blank" rel="noopener noreferrer">
-                    NEAR on X →
-                  </a>
-                </li>
-                <li>
-                  <a href="https://near.org/blog" target="_blank" rel="noopener noreferrer">
-                    NEAR Blog →
-                  </a>
-                </li>
-              </ul>
-              <hr />
+              <div className="links-container">
+                <ul className="links-list external-links">
+                  <li>
+                    <a href="https://nearweek.com" target="_blank" rel="noopener noreferrer">
+                      NEARWEEK →
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://x.com/neardevhub" target="_blank" rel="noopener noreferrer">
+                      DevHub on X →
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://x.com/NEARProtocol" target="_blank" rel="noopener noreferrer">
+                      NEAR on X →
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://near.org/blog" target="_blank" rel="noopener noreferrer">
+                      NEAR Blog →
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </Layout>
   );
 };
