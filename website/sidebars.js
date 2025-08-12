@@ -140,21 +140,17 @@ const sidebar = {
         icon: '/icons/ai.svg',
       },
       items: [
+        'ai/introduction',
         {
-          "Getting Started": [
-            'ai/introduction',
+          "Shade Agents": [
             {
-              "Shade Agents": [
+              "Getting Started": [
                 'ai/shade-agents/quickstart/deploying',
                 "ai/shade-agents/quickstart/components",
               ]
-            }
-          ]
-        },
-        {
-          "Concepts": [
+            },
             {
-              "Shade Agents": [
+              "Concepts": [
                 "ai/shade-agents/introduction",
                 "ai/shade-agents/examples",
                 "ai/shade-agents/custom-agent-contract",
