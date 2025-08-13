@@ -1,4 +1,5 @@
 import { icons } from 'lucide-react';
+require('dotenv').config();
 
 // @ts-check
 const path = require('path');
@@ -31,6 +32,13 @@ const config = {
     },
     REACT_APP_PUBLIC_POSTHOG_KEY: process.env.REACT_APP_PUBLIC_POSTHOG_KEY,
     REACT_APP_PUBLIC_POSTHOG_HOST: process.env.REACT_APP_PUBLIC_POSTHOG_HOST,
+    REACT_APP_GOOGLE_CALENDAR_API_KEY: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
+    REACT_APP_LUMA_NEAR_CALENDAR_ID: process.env.REACT_APP_LUMA_NEAR_CALENDAR_ID,
+    REACT_APP_LUMA_NEAR_AI_CALENDAR_ID: process.env.REACT_APP_LUMA_NEAR_AI_CALENDAR_ID,
+    REACT_APP_LUMA_NEAR_HZN_CALENDAR_ID: process.env.REACT_APP_LUMA_NEAR_HZN_CALENDAR_ID,
+    REACT_APP_DEVHUB_COMMUNITY_CALENDAR_ID: process.env.REACT_APP_DEVHUB_COMMUNITY_CALENDAR_ID,
+    REACT_APP_LUMA_DEVHUB_HACKS_CALENDAR_ID: process.env.REACT_APP_LUMA_DEVHUB_HACKS_CALENDAR_ID,
+    REACT_APP_NEAR_TOWN_HALL_CALENDAR_ID: process.env.REACT_APP_NEAR_TOWN_HALL_CALENDAR_ID
   },
   themes: ['@saucelabs/theme-github-codeblock', '@docusaurus/theme-mermaid'],
   onBrokenLinks: 'throw',
