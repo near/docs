@@ -13,6 +13,7 @@ const config = {
   baseUrl: '/',
   organizationName: 'near',
   projectName: 'docs',
+  trailingSlash: false,
   markdown: {
     mermaid: true,
   },
