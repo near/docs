@@ -12,7 +12,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Ever wanted to send tokens to someone who doesn't have a NEAR account yet? Or maybe you want to distribute tokens to a group of people in a seamless way? That's exactly what NEAR Drop contracts are for!
 
-Get more in-depth understanding [Here](../../tutorials/near drop/introduction.md)
+Get step by step usage [Here](../../tutorials/near drop/introduction.md)
 
 ## What Are Drops?
 
