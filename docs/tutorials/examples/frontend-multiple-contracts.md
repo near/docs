@@ -1,87 +1,108 @@
 ---
 id: frontend-multiple-contracts
-title: Frontend Interacting with Multiple Contracts
+title: Interacting with Multiple Contracts from a Frontend
 sidebar_label: Interact with Multiple Contracts
-description: "Learn how to build a frontend that interacts with multiple NEAR smart contracts simultaneously, including querying data and dispatching multiple transactions."
+description: "A guide to connecting your frontend to multiple NEAR smart contracts, querying data, and calling methods on them."
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-This example showcases how to interact with multiple contracts from a single frontend.
+### Introduction
 
-Particularly, this example shows how to:
+In the NEAR protocol, a frontend application can seamlessly interact with multiple smart contracts. This enables building decentralized apps that compose functionality from various on-chain components without restrictions.
 
-1. Query data from multiple contracts.
-2. Call methods in multiple contracts simultaneously.
+#### Key Concept
+Frontends connect to the NEAR network via libraries like near-api-js. View methods (read-only) can be queried from any contract using a shared connection, as they require no signing. Change methods (that modify state) are executed via signed transactions targeted to specific contracts using a wallet (e.g., via @near-wallet-selector).
 
----
+This setup allows parallel or sequential interactions with different contracts, leveraging NEAR's account-based model where each contract has its own address.
 
-## Query Data from Multiple Contracts
+#### Trade-offs and Alternatives
+- **Trade-offs**: Querying multiple contracts is efficient and low-cost, but calling change methods across contracts lacks built-in atomicity—if one transaction fails, others proceed without rollback. This can lead to partial states if not handled carefully.
+- **Alternatives**: For atomic operations across contracts, implement cross-contract calls on the backend (in the smart contracts themselves), where one contract invokes another within a single transaction. This ensures all-or-nothing execution on-chain, reducing frontend complexity.
+- Dispatching multiple independent transactions improves user experience (single wallet approval), but for related actions on the same contract, prefer batching (see below) for true atomicity.
 
-To query multiple contracts simply perform multiple `view` calls:
-
-<Language value="js" language="ts">
-  <Github fname="index.js"
-        url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
-        start="70" end="76" />
-</Language>
+#### Testing Tips
+Test by deploying sample contracts (e.g., a greeting contract and a guest book) to testnet. Use tools like NEAR Explorer to verify query results and transaction outcomes. Simulate failures (e.g., insufficient gas) to check independence of multi-transaction calls. Focus on edge cases like network latency affecting query order.
 
 ---
 
-## Dispatching Multiple Transactions
+### Querying Data from Multiple Contracts
 
-The `wallet` object enables to dispatch multiple transactions simultaneously. However, please notice that the transactions execute independently.
+Querying involves making view calls to different contract addresses using a shared NEAR connection.
 
-Dispatching multiple transactions at once is just a nice way to improve UX, because the user interacts with the wallet only once.
+1. Establish a connection to the network.
+2. For each contract, either create a Contract instance or directly use `account.viewFunction(contractId, methodName, args)`.
+3. Await and handle the results independently.
 
-<Language value="js" language="ts">
-  <Github fname="index.js"
+<CodeTabs>
+  <Language value="js" language="ts">
+    <Github fname="index.js"
           url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
-          start="35" end="62" />
-</Language>
+          start="70" end="76" />
+  </Language>
+</CodeTabs>
 
-In this example, the user signs two independent transactions:
+This code fetches greetings from two separate contracts concurrently, demonstrating non-blocking queries.
 
-1. A transaction to call `set_greeting` in our [Hello NEAR example](https://github.com/near-examples/hello-near-examples)
-2. A transaction to call `add_message` in our [GuestBook example](https://github.com/near-examples/guest-book-examples)
+---
+
+### Dispatching Transactions to Multiple Contracts
+
+To execute change methods on multiple contracts, prepare and sign multiple transactions at once. The wallet handles approval in one step, but executions are independent (no cross-contract rollback).
+
+1. Define each transaction with its receiver (contract ID) and actions (e.g., FunctionCall).
+2. Use `wallet.signAndSendTransactions({ transactions })` to dispatch them.
+
+<CodeTabs>
+  <Language value="js" language="ts">
+    <Github fname="index.js"
+            url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
+            start="35" end="62" />
+  </Language>
+</CodeTabs>
+
+Here, the user sets a greeting on one contract and adds a message to another. If one fails (e.g., due to gas), the other still succeeds.
 
 :::caution
-Even when the user accepts signing the transactions at the same time, the
-transactions remain **independent**. This is, if one fails, the other is **NOT** rolled back.
+Transactions are independent: failure in one does not revert others. Design your app to handle partial successes gracefully.
 :::
 
 ---
 
-## Batch Actions
+### Batching Actions on a Single Contract
 
-You can aggregate multiple [actions](../../smart-contracts/anatomy/actions.md) directed towards a same contract into a single transaction. Batched actions execute **sequentially**, with the added benefit that, if **one fails** then they **all** get reverted.
+For multiple actions on the **same** contract, batch them into one transaction for sequential, atomic execution (all succeed or all revert).
+
+1. Create a transaction with an array of actions.
+2. Include gas and deposit as needed per action.
 
 ```js
-  // Register a user and transfer them FT on a single take
-  const REGISTER_DEPOSIT = "1250000000000000000000";
+// Register a user and transfer them FT in one transaction
+const REGISTER_DEPOSIT = "1250000000000000000000";
 
-  const ftTx = {
-    receiverId: FT_ADDRESS,
-    actions: [
-      {
-        type: 'FunctionCall',
-        params: {
-          methodName: 'storage_deposit',
-          args: { account_id: "<receiver-account>" },
-          gas: THIRTY_TGAS, deposit: REGISTER_DEPOSIT
-        }
-      },
-      {
-        type: 'FunctionCall',
-        params: {
-          methodName: 'ft_transfer',
-          args: { receiver_id: "<receiver-account>", amount: amount_in_yocto },
-          gas: THIRTY_TGAS, deposit: 1 }
+const ftTx = {
+  receiverId: FT_ADDRESS,
+  actions: [
+    {
+      type: 'FunctionCall',
+      params: {
+        methodName: 'storage_deposit',
+        args: { account_id: "<receiver-account>" },
+        gas: THIRTY_TGAS, deposit: REGISTER_DEPOSIT
       }
-    ]
-  }
+    },
+    {
+      type: 'FunctionCall',
+      params: {
+        methodName: 'ft_transfer',
+        args: { receiver_id: "<receiver-account>", amount: amount_in_yocto },
+        gas: THIRTY_TGAS, deposit: 1
+      }
+    }
+  ]
+}
 
-  // Ask the wallet to sign and send the transaction
-  await wallet.signAndSendTransactions({ transactions: [ ftTx ] })
-```
+// Dispatch the batched transaction
+await wallet.signAndSendTransactions({ transactions: [ ftTx ] })
