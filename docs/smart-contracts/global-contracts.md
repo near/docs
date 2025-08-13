@@ -1,7 +1,6 @@
 ---
 id: global-contracts
 title: Global Contracts
-sidebar_label: Introduction
 description: "Global contracts allow smart contracts to be deployed once and reused by any account without incurring high storage costs."
 ---
 import Tabs from '@theme/Tabs';
