@@ -5,6 +5,9 @@ sidebar_label: Account Creation
 description: "Enable new users to create NEAR accounts automatically when claiming their first tokens."
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The ultimate onboarding experience: users can claim tokens AND get a NEAR account created for them automatically. No existing account required!
 
 ---
@@ -28,19 +31,23 @@ This eliminates the biggest barrier to Web3 adoption.
 Account creation happens in two phases:
 
 ### Phase 1: Create the Account
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 Promise::new(account_id.clone())
     .create_account()
     .transfer(NearToken::from_near(1))  // Fund with 1 NEAR
+    </TabItem>
 ```
 
 ### Phase 2: Claim the Tokens
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 .then(
     Self::ext(env::current_account_id())
         .resolve_account_creation(public_key, account_id)
 )
 ```
+</TabItem>
 
 If account creation succeeds, we proceed with the normal claiming process. If it fails (account already exists), we try to claim anyway.
 
@@ -50,6 +57,7 @@ If account creation succeeds, we proceed with the normal claiming process. If it
 
 Add this to your `src/claim.rs`:
 
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 #[near_bindgen]
 impl Contract {
@@ -130,6 +138,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 
@@ -139,6 +148,7 @@ impl Contract {
 
 Let users pick their own account names:
 
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 pub fn create_named_account_and_claim(&mut self, preferred_name: String) -> Promise {
     let public_key = env::signer_account_pk();
@@ -160,11 +170,13 @@ fn sanitize_name(&self, name: &str) -> String {
         .collect()
 }
 ```
+</TabItem>
 
 ### Deterministic Names
 
 Or generate predictable names from keys:
 
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 use near_sdk::env::sha256;
 
@@ -187,6 +199,7 @@ pub fn create_deterministic_account_and_claim(&mut self) -> Promise {
     self.create_account_and_claim(account_id)
 }
 ```
+</TabItem>
 
 ---
 
@@ -194,6 +207,7 @@ pub fn create_deterministic_account_and_claim(&mut self) -> Promise {
 
 Make account creation seamless in your UI:
 
+  <TabItem value="js" label="🌐 JavaScript">
 ```jsx
 function ClaimForm() {
     const [claimType, setClaimType] = useState('new'); // 'existing' or 'new'
@@ -248,6 +262,7 @@ function ClaimForm() {
     );
 }
 ```
+</TabItem>
 
 ---
 
@@ -273,6 +288,7 @@ near view alice-new.testnet account
 
 Handle common issues gracefully:
 
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 impl Contract {
     pub fn create_account_with_fallback(
@@ -314,6 +330,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 
@@ -321,6 +338,7 @@ impl Contract {
 
 Account creation costs depend on the drop type:
 
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 // Funding amounts by drop type
 const NEAR_DROP_FUNDING: NearToken = NearToken::from_millinear(500);    // 0.5 NEAR
@@ -345,6 +363,7 @@ pub fn estimate_cost_with_account_creation(&self, drop_type: &str, num_keys: u64
     base_cost + (funding_per_account * num_keys)
 }
 ```
+</TabItem>
 
 ---
 

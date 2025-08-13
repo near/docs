@@ -5,6 +5,9 @@ sidebar_label: FT Drops
 description: "Add support for NEP-141 fungible tokens with cross-contract calls and automatic user registration."
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Time to level up! Let's add support for fungible token drops. This is where things get interesting because we need to interact with other contracts.
 
 ---
@@ -26,6 +29,7 @@ But don't worry - we'll handle all of this step by step.
 
 First, let's add FT support to our drop types in `src/drop_types.rs`:
 
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 #[derive(BorshDeserialize, BorshSerialize, Clone)]
 pub enum Drop {
@@ -40,8 +44,10 @@ pub struct FtDrop {
     pub counter: u64,
 }
 ```
+</TabItem>
 
 Update the helper methods:
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 impl Drop {
     pub fn get_counter(&self) -> u64 {
@@ -59,6 +65,7 @@ impl Drop {
     }
 }
 ```
+</TabItem>
 
 ---
 
@@ -66,6 +73,7 @@ impl Drop {
 
 Create `src/external.rs` to define how we talk to FT contracts:
 
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 use near_sdk::{ext_contract, AccountId, Gas, NearToken};
 
@@ -90,6 +98,7 @@ pub const GAS_FOR_CALLBACK: Gas = Gas(20_000_000_000_000);
 // Storage deposit for FT registration
 pub const STORAGE_DEPOSIT: NearToken = NearToken::from_millinear(125); // 0.125 NEAR
 ```
+</TabItem>
 
 ---
 
@@ -97,6 +106,7 @@ pub const STORAGE_DEPOSIT: NearToken = NearToken::from_millinear(125); // 0.125 
 
 Add this to your main contract in `src/lib.rs`:
 
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 use crate::external::*;
 
@@ -147,6 +157,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 
@@ -154,6 +165,7 @@ impl Contract {
 
 The tricky part! Update your `src/claim.rs`:
 
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 impl Contract {
     /// Updated core claiming logic
@@ -265,6 +277,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 
@@ -329,6 +342,7 @@ near view test-ft.testnet ft_balance_of '{"account_id": "alice.testnet"}'
 
 ## Add Helper Functions
 
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 #[near_bindgen]
 impl Contract {
@@ -350,6 +364,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 

@@ -4,6 +4,8 @@ title: Contract Architecture
 sidebar_label: Contract Architecture
 description: "Understand how the NEAR Drop contract works - the core data types, storage patterns, and drop management system."
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 Before we start coding, let's understand how the NEAR Drop contract is structured. Think of it as the blueprint for our token distribution system.
 
@@ -30,6 +32,7 @@ Drop #2 (1 NFT)   ──→ Key C ──→ Carol claims
 
 The contract stores everything in four simple maps:
 
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 pub struct Contract {
     pub top_level_account: AccountId,     // "testnet" or "near"
@@ -38,6 +41,7 @@ pub struct Contract {
     pub drop_by_id: UnorderedMap<u64, Drop>,          // Drop ID → Drop Data
 }
 ```
+</TabItem>
 
 **Why this design?**
 - Find drops quickly by key (for claiming)
@@ -51,14 +55,17 @@ pub struct Contract {
 We support three types of token drops:
 
 ### NEAR Drops
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 pub struct NearDrop {
     pub amount: NearToken,    // How much NEAR per claim
     pub counter: u64,         // How many claims left
 }
 ```
+</TabItem>
 
-### Fungible Token Drops  
+### Fungible Token Drops 
+<TabItem value="rust" label="🦀 Rust"> 
 ```rust
 pub struct FtDrop {
     pub ft_contract: AccountId,  // Which FT contract
@@ -66,8 +73,10 @@ pub struct FtDrop {
     pub counter: u64,            // Claims remaining
 }
 ```
+</TabItem>
 
 ### NFT Drops
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 pub struct NftDrop {
     pub nft_contract: AccountId,  // Which NFT contract
@@ -75,8 +84,10 @@ pub struct NftDrop {
     pub counter: u64,             // Always 1 (NFTs are unique)
 }
 ```
+</TabItem>
 
 All wrapped in an enum:
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 pub enum Drop {
     Near(NearDrop),
@@ -84,6 +95,7 @@ pub enum Drop {
     NonFungibleToken(NftDrop),
 }
 ```
+</TabItem>
 
 ---
 
@@ -98,7 +110,7 @@ When you create a drop:
 4. Recipients sign transactions using the contract's account (gasless!)
 
 The keys can ONLY call claiming functions - nothing else.
-
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 // Adding a function-call key
 Promise::new(env::current_account_id())
@@ -109,6 +121,7 @@ Promise::new(env::current_account_id())
         "claim_for,create_account_and_claim".to_string()  // Specific methods
     )
 ```
+</TabItem>
 
 ---
 
@@ -116,12 +129,14 @@ Promise::new(env::current_account_id())
 
 Creating drops costs money because we're storing data on-chain. The costs include:
 
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 const DROP_STORAGE_COST: NearToken = NearToken::from_millinear(10);   // Drop data
 const KEY_STORAGE_COST: NearToken = NearToken::from_millinear(1);     // Key mapping
 const ACCESS_KEY_STORAGE_COST: NearToken = NearToken::from_millinear(1); // Adding key to account
 const FUNCTION_CALL_ALLOWANCE: NearToken = NearToken::from_millinear(5); // Gas for claiming
 ```
+</TabItem>
 
 **Total for 5-key NEAR drop**: ~0.08 NEAR + token amounts
 
@@ -142,11 +157,13 @@ The contract protects against common attacks:
 - Automatic cleanup after claims
 
 **Error Handling**
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 // Example validation
 assert!(!token_id.is_empty(), "Token ID cannot be empty");
 assert!(amount > 0, "Amount must be positive");
 ```
+</TabItem>
 
 ---
 
@@ -154,6 +171,7 @@ assert!(amount > 0, "Amount must be positive");
 
 We'll organize the code into logical modules:
 
+<Tabs groupId="code-tabs">
 ```
 src/
 ├── lib.rs              # Main contract and initialization
@@ -164,6 +182,7 @@ src/
 ├── claim.rs            # Claiming logic for all types
 └── external.rs         # Cross-contract interfaces
 ```
+</Tabs>
 
 This keeps things organized and makes it easy to understand each piece.
 

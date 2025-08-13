@@ -4,7 +4,11 @@ title: Frontend Integration
 sidebar_label: Frontend Integration
 description: "Build a React app that makes creating and claiming drops as easy as a few clicks."
 ---
-
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+<Tabs groupId="code-tabs">
+  <TabItem value="js" label="🌐 JavaScript">
+   <TabItem value="rust" label="🦀 Rust">
 Time to build a user-friendly interface! Let's create a React app that makes your NEAR Drop system accessible to everyone.
 
 ---
@@ -32,7 +36,7 @@ NEXT_PUBLIC_RPC_URL=https://rpc.testnet.near.org
 ## NEAR Connection Service
 
 Create `src/services/near.js`:
-
+  <TabItem value="js" label="🌐 JavaScript">
 ```javascript
 import { connect, keyStores } from 'near-api-js';
 import { setupWalletSelector } from '@near-wallet-selector/core';
@@ -80,6 +84,7 @@ class NearService {
 
 export const nearService = new NearService();
 ```
+</TabItem>
 
 ---
 
@@ -87,6 +92,7 @@ export const nearService = new NearService();
 
 Create `src/utils/crypto.js`:
 
+  <TabItem value="js" label="🌐 JavaScript">
 ```javascript
 import { KeyPair } from 'near-api-js';
 
@@ -108,6 +114,7 @@ export function generateClaimUrl(privateKey) {
   return `${window.location.origin}/claim?key=${encodeURIComponent(privateKey)}`;
 }
 ```
+</TabItem>
 
 ---
 
@@ -115,6 +122,7 @@ export function generateClaimUrl(privateKey) {
 
 Create `src/components/CreateDrop.js`:
 
+  <TabItem value="js" label="🌐 JavaScript">
 ```jsx
 import { useState } from 'react';
 import { nearService } from '../services/near';
@@ -226,13 +234,14 @@ export default function CreateDrop({ onDropCreated }) {
   );
 }
 ```
+</TabItem>
 
 ---
 
 ## Drop Results Component
 
 Create `src/components/DropResults.js`:
-
+  <TabItem value="js" label="🌐 JavaScript">
 ```jsx
 import { useState } from 'react';
 import QRCode from 'react-qr-code';
@@ -361,13 +370,14 @@ export default function DropResults({ dropInfo }) {
   );
 }
 ```
+</TabItem>
 
 ---
 
 ## Claiming Component
 
 Create `src/components/ClaimDrop.js`:
-
+  <TabItem value="js" label="🌐 JavaScript">
 ```jsx
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -521,13 +531,14 @@ export default function ClaimDrop() {
   );
 }
 ```
+</TabItem>
 
 ---
 
 ## Main App Layout
 
 Create `src/pages/index.js`:
-
+  <TabItem value="js" label="🌐 JavaScript">
 ```jsx
 import { useState, useEffect } from 'react';
 import { nearService } from '../services/near';
@@ -598,6 +609,7 @@ export default function Home() {
   );
 }
 ```
+</TabItem>
 
 ---
 

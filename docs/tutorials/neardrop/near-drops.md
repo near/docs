@@ -5,6 +5,9 @@ sidebar_label: NEAR Token Drops
 description: "Build the foundation: distribute native NEAR tokens using function-call keys for gasless claiming."
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Let's start with the simplest drop type: native NEAR tokens. This will teach you the core concepts before we move to more complex token types.
 
 ---
@@ -31,6 +34,7 @@ serde = { version = "1.0", features = ["derive"] }
 
 Let's start with the main contract in `src/lib.rs`:
 
+  <TabItem value="rust" label="🦀 Rust">
 ```rust
 use near_sdk::{
     env, near_bindgen, AccountId, NearToken, Promise, PublicKey,
@@ -59,11 +63,13 @@ pub struct NearDrop {
     pub counter: u64,
 }
 ```
+</TabItem>
 
 ---
 
 ## Contract Initialization
 
+  <TabItem value="rust" label="🦀 Rust">
 ```rust
 impl Default for Contract {
     fn default() -> Self {
@@ -84,13 +90,14 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 
 ## Creating NEAR Drops
 
 The main function everyone will use:
-
+  <TabItem value="rust" label="🦀 Rust">
 ```rust
 // Storage costs (rough estimates)
 const DROP_STORAGE_COST: NearToken = NearToken::from_millinear(10);
@@ -154,6 +161,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 
@@ -161,6 +169,7 @@ impl Contract {
 
 Now for the claiming logic in `src/claim.rs`:
 
+  <TabItem value="rust" label="🦀 Rust">
 ```rust
 use crate::*;
 
@@ -245,6 +254,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 
@@ -252,6 +262,7 @@ impl Contract {
 
 Add some useful view functions:
 
+  <TabItem value="rust" label="🦀 Rust">
 ```rust
 #[near_bindgen]
 impl Contract {
@@ -274,6 +285,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 

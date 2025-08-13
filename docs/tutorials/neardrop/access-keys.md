@@ -4,6 +4,8 @@ title: Access Key Management
 sidebar_label: Access Key Management
 description: "Understand how function-call access keys enable gasless operations in NEAR Drop."
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 This is where NEAR gets really cool. Function-call access keys are what make gasless claiming possible - let's understand how they work!
 
@@ -40,6 +42,7 @@ NEAR has two types of keys:
 
 Here's what happens when you create a drop:
 
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 // 1. Generate public/private key pairs
 let keypair = KeyPair::fromRandom('ed25519');
@@ -56,6 +59,7 @@ Promise::new(contract_account)
 // 3. Give private key to recipient
 // 4. Recipient signs transactions using the CONTRACT'S account (gasless!)
 ```
+</TabItem>
 
 **The result**: Recipients can claim tokens without having NEAR accounts or paying gas!
 
@@ -65,6 +69,7 @@ Promise::new(contract_account)
 
 Function-call keys in NEAR Drop have strict limits:
 
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 pub struct AccessKeyPermission {
     allowance: NearToken::from_millinear(5),    // Gas budget: 0.005 NEAR
@@ -72,6 +77,7 @@ pub struct AccessKeyPermission {
     method_names: ["claim_for", "create_account_and_claim"]  // Only these methods
 }
 ```
+</TabItem>
 
 **What keys CAN do:**
 - Call `claim_for` to claim to existing accounts
@@ -98,6 +104,8 @@ The lifecycle is simple and secure:
 ```
 
 Here's the cleanup code:
+
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 fn cleanup_after_claim(&mut self, public_key: &PublicKey) {
     // Remove mapping
@@ -110,6 +118,7 @@ fn cleanup_after_claim(&mut self, public_key: &PublicKey) {
     env::log_str("Key cleaned up after claim");
 }
 ```
+</TabItem>
 
 ---
 
@@ -119,6 +128,7 @@ fn cleanup_after_claim(&mut self, public_key: &PublicKey) {
 
 You can make keys that expire:
 
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 pub struct TimeLimitedDrop {
     drop: Drop,
@@ -138,11 +148,13 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ### Key Rotation
 
 For extra security, you can rotate keys:
 
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 impl Contract {
     pub fn rotate_drop_keys(&mut self, drop_id: u64, new_keys: Vec<PublicKey>) {
@@ -156,6 +168,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 
@@ -179,6 +192,7 @@ impl Contract {
 
 Track how much gas your keys use:
 
+   <TabItem value="rust" label="🦀 Rust">
 ```rust
 impl Contract {
     pub fn track_key_usage(&mut self, operation: &str) {
@@ -192,6 +206,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 
@@ -199,6 +214,7 @@ impl Contract {
 
 Your frontend can generate keys securely:
 
+<TabItem value="js" label="🌐 JavaScript">
 ```javascript
 import { KeyPair } from 'near-api-js';
 
@@ -219,6 +235,7 @@ function generateClaimUrl(privateKey) {
     return `${window.location.origin}/claim?key=${encodeURIComponent(privateKey)}`;
 }
 ```
+</TabItem>
 
 ---
 

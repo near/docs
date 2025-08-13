@@ -4,6 +4,8 @@ title: NFT Drops
 sidebar_label: NFT Drops
 description: "Distribute unique NFTs with one-time claims and ownership verification."
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 NFT drops are special because each NFT is unique. Unlike NEAR or FT drops where multiple people can get the same amount, each NFT can only be claimed once.
 
@@ -20,7 +22,7 @@ NFT drops are special because each NFT is unique. Unlike NEAR or FT drops where 
 ## Add NFT Support
 
 First, extend your drop types in `src/drop_types.rs`:
-
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 #[derive(BorshDeserialize, BorshSerialize, Clone)]
 pub enum Drop {
@@ -36,8 +38,10 @@ pub struct NftDrop {
     pub counter: u64,  // Always 1 for NFTs
 }
 ```
+</TabItem>
 
 Update the helper methods:
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 impl Drop {
     pub fn get_counter(&self) -> u64 {
@@ -57,6 +61,7 @@ impl Drop {
     }
 }
 ```
+</TabItem>
 
 ---
 
@@ -64,6 +69,7 @@ impl Drop {
 
 Add NFT methods to `src/external.rs`:
 
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 // Interface for NEP-171 NFT contracts
 #[ext_contract(ext_nft)]
@@ -89,6 +95,7 @@ pub struct JsonToken {
 pub const GAS_FOR_NFT_TRANSFER: Gas = Gas(30_000_000_000_000);
 pub const GAS_FOR_NFT_CALLBACK: Gas = Gas(20_000_000_000_000);
 ```
+</TabItem>
 
 ---
 
@@ -96,6 +103,7 @@ pub const GAS_FOR_NFT_CALLBACK: Gas = Gas(20_000_000_000_000);
 
 Add this to your main contract:
 
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 #[near_bindgen]
 impl Contract {
@@ -183,6 +191,7 @@ pub struct NftDropConfig {
     pub token_id: String,
 }
 ```
+</TabItem>
 
 ---
 
@@ -190,6 +199,7 @@ pub struct NftDropConfig {
 
 Update your claiming logic in `src/claim.rs`:
 
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 impl Contract {
     fn process_claim(&mut self, public_key: &PublicKey, receiver_id: &AccountId) {
@@ -270,6 +280,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 
@@ -324,6 +335,7 @@ near view test-nft.testnet nft_token '{"token_id": "unique-nft-001"}'
 
 Add some useful view methods:
 
+<TabItem value="rust" label="🦀 Rust">
 ```rust
 #[near_bindgen]
 impl Contract {
@@ -360,6 +372,7 @@ impl Contract {
     }
 }
 ```
+</TabItem>
 
 ---
 
