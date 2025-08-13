@@ -46,7 +46,6 @@ export default function DocSidebarItemLink({
         {...props}>
         {item.customProps && <CategoryIcon icon={item.customProps? item.customProps.icon : undefined} /> }  
         {label}
-        {!isInternalLink && <IconExternalLink />}
       </Link>
     </li>
   );
