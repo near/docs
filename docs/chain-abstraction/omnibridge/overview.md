@@ -19,9 +19,9 @@ Initial launch includes:
 
 - **Ethereum** - _(Light client + Chain Signatures)_
 - **Bitcoin** - _(Light client + Chain Signatures)_
-- **Solana** - _(Currently Wormhole, transitioning to Chain Signatures)_
-- **Base** - _(Currently Wormhole, transitioning to Chain Signatures)_
-- **Arbitrum** - _(Currently Wormhole, transitioning to Chain Signatures)_
+- **Solana** - _(Wormhole + Chain Signatures)_
+- **Base** - _(Wormhole + Chain Signatures)_
+- **Arbitrum** - _(Wormhole + Chain Signatures)_
 
 :::info
 See [Omni Bridge Roadmap](./roadmap.md) for more details.
