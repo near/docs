@@ -2,28 +2,35 @@
 id: block-chunk
 title: Block / Chunk
 description: "Query the network and get details about specific blocks or chunks using the NEAR RPC API, including block details, changes in blocks, and chunk information."
+hide_table_of_contents: true
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { TryOutOnLantstool } from '@site/src/components/lantstool/TryOutOnLantstool';
 import { LantstoolLabel } from '@site/src/components/lantstool/LantstoolLabel/LantstoolLabel';
+import { SplitLayoutContainer, SplitLayoutLeft, SplitLayoutRight } from '@site/src/components/SplitLayout';
 
 The RPC API enables you to query the network and get details about specific blocks or chunks.
 
 ---
+
 ## Block details {#block-details}
 
-> Queries network and returns block for given height or hash. You can also use
-> `finality` param to return latest block details.
+<SplitLayoutContainer>
+  <SplitLayoutLeft title="Description">
+    Queries network and returns block for given height or hash. You can also use
+    `finality` param to return latest block details.
 
-**Note**: You may choose to search by a specific block _or_ finality, you can not choose both.
+    **Note**: You may choose to search by a specific block _or_ finality, you can not choose both.
 
-- method: `block`
-- params:
-  - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
+    - **method**: `block`
+    - **params**:
+      - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
+  </SplitLayoutLeft>
+  <SplitLayoutRight title="Example">
 
-`finality` example:
+### `finality` example
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
@@ -61,7 +68,7 @@ The RPC API enables you to query the network and get details about specific bloc
   </TabItem>
 </Tabs>
 
-`block_height` example:
+### `block_height` example
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
@@ -99,7 +106,7 @@ The RPC API enables you to query the network and get details about specific bloc
   </TabItem>
 </Tabs>
 
-`block_hash` example:
+### `block_hash` example
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
@@ -136,6 +143,9 @@ The RPC API enables you to query the network and get details about specific bloc
     <TryOutOnLantstool path="docs/5.api/rpc/block-chunk/get-block-by-bloch-hash.json" />
   </TabItem>
 </Tabs>
+
+  </SplitLayoutRight>
+</SplitLayoutContainer>
 
 <details>
   <summary>Example response:</summary>
@@ -182,162 +192,24 @@ The RPC API enables you to query the network and get details about specific bloc
     }
     ```
 </details>
-
-#### What Could Go Wrong?? {#what-could-go-wrong}
-
-Here is the exhaustive list of the error variants that can be returned:
-
-<table className="custom-stripe">
-  <thead>
-    <tr>
-      <th>ERROR_TYPE<br /><code>error.name</code></th>
-      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
-      <th>Status Code</th>
-      <th>Reason</th>
-      <th>Solution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>INTERNAL_ERROR</td>
-      <td>INTERNAL_ERROR</td>
-      <td>500</td>
-      <td>Something went wrong with the node itself or overloaded</td>
-      <td>
-        <ul>
-          <li>Try again later</li>
-          <li>Send a request to a different node</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table className="custom-stripe">
-  <thead>
-    <tr>
-      <th>ERROR_TYPE<br /><code>error.name</code></th>
-      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
-      <th>Status Code</th>
-      <th>Reason</th>
-      <th>Solution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>INTERNAL_ERROR</td>
-      <td>INTERNAL_ERROR</td>
-      <td>500</td>
-      <td>Something went wrong with the node itself or overloaded</td>
-      <td>
-        <ul>
-          <li>Try again later</li>
-          <li>Send a request to a different node</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table className="custom-stripe">
-  <thead>
-    <tr>
-      <th>
-        ERROR_TYPE
-        <br />
-        <code>error.name</code>
-      </th>
-      <th>
-        ERROR_CAUSE
-        <br />
-        <code>error.cause.name</code>
-      </th>
-      <th>Status Code</th>
-      <th>Reason</th>
-      <th>Solution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="2">HANDLER_ERROR</td>
-      <td>UNKNOWN_BLOCK</td>
-      <td>200</td>
-      <td>
-        The requested block has not been produced yet or it has been garbage-collected (cleaned up
-        to save space on the RPC node)
-      </td>
-      <td>
-        <ul>
-          <li>Check that the requested block is legit</li>
-          <li>
-            If the block had been produced more than 5 epochs ago, try to send your request to{' '}
-            <a
-              href="https://near-nodes.io/intro/node-types#archival-node"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              an archival node
-            </a>
-          </li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>NOT_SYNCED_YET</td>
-      <td>200</td>
-      <td>The node is still syncing and the requested block is not in the database yet</td>
-      <td>
-        <ul>
-          <li>Wait until the node finish syncing</li>
-          <li>Send a request to a different node which is synced</li>
-        </ul>
-      </td>
-    </tr>
-    <tr className="stripe">
-      <td>REQUEST_VALIDATION_ERROR</td>
-      <td>PARSE_ERROR</td>
-      <td>400</td>
-      <td>
-        Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)
-      </td>
-      <td>
-        <ul>
-          <li>Check the arguments passed and pass the correct ones</li>
-          <li>
-            Check <code>error.cause.info</code> for more details
-          </li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>INTERNAL_ERROR</td>
-      <td>INTERNAL_ERROR</td>
-      <td>500</td>
-      <td>Something went wrong with the node itself or overloaded</td>
-      <td>
-        <ul>
-          <li>Try again later</li>
-          <li>Send a request to a different node</li>
-          <li>
-            Check <code>error.cause.info</code> for more details
-          </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
 ---
+
 ## Changes in Block {#changes-in-block}
 
-> Returns changes in block for given block height or hash. You can also use
-> `finality` param to return latest block details.
+<SplitLayoutContainer>
+  <SplitLayoutLeft title="Description">
+    Returns changes in block for given block height or hash. You can also use
+    `finality` param to return latest block details.
 
-**Note**: You may choose to search by a specific block _or_ finality, you can not choose both.
+    **Note**: You may choose to search by a specific block _or_ finality, you can not choose both.
 
-- method: `EXPERIMENTAL_changes_in_block`
-- params:
-  - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
+    - **method**: `EXPERIMENTAL_changes_in_block`
+    - **params**:
+      - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
+  </SplitLayoutLeft>
+  <SplitLayoutRight title="Example">
 
-`finality` example:
+### `finality` example
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
@@ -375,7 +247,7 @@ Here is the exhaustive list of the error variants that can be returned:
   </TabItem>
 </Tabs>
 
-`block_height` example:
+### `block_height` example
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
@@ -413,7 +285,7 @@ Here is the exhaustive list of the error variants that can be returned:
   </TabItem>
 </Tabs>
 
-`block_hash` example:
+### `block_hash` example
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
@@ -450,6 +322,8 @@ Here is the exhaustive list of the error variants that can be returned:
     <TryOutOnLantstool path="docs/5.api/rpc/block-chunk/get-block-changes-by-block-hash.json" />
   </TabItem>
 </Tabs>
+  </SplitLayoutRight>
+</SplitLayoutContainer>
 
 <details>
   <summary>Example response: </summary>
@@ -502,159 +376,23 @@ Here is the exhaustive list of the error variants that can be returned:
     ```
 </details>
 
-#### What Could Go Wrong? {#what-could-go-wrong-1}
-
-Here is the exhaustive list of the error variants that can be returned:
-
-<table className="custom-stripe">
-  <thead>
-    <tr>
-      <th>ERROR_TYPE<br /><code>error.name</code></th>
-      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
-      <th>Status Code</th>
-      <th>Reason</th>
-      <th>Solution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>INTERNAL_ERROR</td>
-      <td>INTERNAL_ERROR</td>
-      <td>500</td>
-      <td>Something went wrong with the node itself or overloaded</td>
-      <td>
-        <ul>
-          <li>Try again later</li>
-          <li>Send a request to a different node</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table className="custom-stripe">
-  <thead>
-    <tr>
-      <th>ERROR_TYPE<br /><code>error.name</code></th>
-      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
-      <th>Status Code</th>
-      <th>Reason</th>
-      <th>Solution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>INTERNAL_ERROR</td>
-      <td>INTERNAL_ERROR</td>
-      <td>500</td>
-      <td>Something went wrong with the node itself or overloaded</td>
-      <td>
-        <ul>
-          <li>Try again later</li>
-          <li>Send a request to a different node</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table className="custom-stripe">
-  <thead>
-    <tr>
-      <th>
-        ERROR_TYPE
-        <br />
-        <code>error.name</code>
-      </th>
-      <th>
-        ERROR_CAUSE
-        <br />
-        <code>error.cause.name</code>
-      </th>
-      <th>Status Code</th>
-      <th>Reason</th>
-      <th>Solution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="2">HANDLER_ERROR</td>
-      <td>UNKNOWN_BLOCK</td>
-      <td>200</td>
-      <td>
-        The requested block has not been produced yet or it has been garbage-collected (cleaned up
-        to save space on the RPC node)
-      </td>
-      <td>
-        <ul>
-          <li>Check that the requested block is legit</li>
-          <li>
-            If the block had been produced more than 5 epochs ago, try to send your request to{' '}
-            <a
-              href="https://near-nodes.io/intro/node-types#archival-node"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              an archival node
-            </a>
-          </li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>NOT_SYNCED_YET</td>
-      <td>200</td>
-      <td>The node is still syncing and the requested block is not in the database yet</td>
-      <td>
-        <ul>
-          <li>Wait until the node finish syncing</li>
-          <li>Send a request to a different node which is synced</li>
-        </ul>
-      </td>
-    </tr>
-    <tr className="stripe">
-      <td>REQUEST_VALIDATION_ERROR</td>
-      <td>PARSE_ERROR</td>
-      <td>400</td>
-      <td>
-        Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)
-      </td>
-      <td>
-        <ul>
-          <li>Check the arguments passed and pass the correct ones</li>
-          <li>
-            Check <code>error.cause.info</code> for more details
-          </li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>INTERNAL_ERROR</td>
-      <td>INTERNAL_ERROR</td>
-      <td>500</td>
-      <td>Something went wrong with the node itself or overloaded</td>
-      <td>
-        <ul>
-          <li>Try again later</li>
-          <li>Send a request to a different node</li>
-          <li>
-            Check <code>error.cause.info</code> for more details
-          </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
 ---
+
 ## Chunk Details {#chunk-details}
 
-> Returns details of a specific chunk. You can run a [block details](/api/rpc/block-chunk#block-details)
-> query to get a valid chunk hash.
+<SplitLayoutContainer>
+  <SplitLayoutLeft title="Description">
+    Returns details of a specific chunk. You can run a [block details](/api/rpc/block-chunk#block-details)
+    query to get a valid chunk hash.
 
-- method: `chunk`
-- params:
-  - `chunk_id` _OR_ [`block_id`, `shard_id`](/api/rpc/setup#using-block_id-param)
+    - **method**: `chunk`
+    - **params**:
+      - `chunk_id` _OR_ [`block_id`, `shard_id`](/api/rpc/setup#using-block_id-param)
+  </SplitLayoutLeft>
+  <SplitLayoutRight title="Example">
 
-`chunk_id` example:
+### `chunk_id` example
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
@@ -692,7 +430,7 @@ Here is the exhaustive list of the error variants that can be returned:
   </TabItem>
 </Tabs>
 
-`[block_id, shard_id]` example:
+### `[block_id, shard_id]` example
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
@@ -729,6 +467,11 @@ Here is the exhaustive list of the error variants that can be returned:
     <TryOutOnLantstool path="docs/5.api/rpc/block-chunk/get-chunk-by-block-shard.json" />
   </TabItem>
 </Tabs>
+
+
+  </SplitLayoutRight>
+</SplitLayoutContainer>
+
 
 <details>
   <summary>Example response:</summary>
@@ -791,175 +534,5 @@ Here is the exhaustive list of the error variants that can be returned:
   }
   ```
 </details>
-
-#### What Could Go Wrong?? {#what-could-go-wrong-2}
-
-Here is the exhaustive list of the error variants that can be returned:
-
-<table className="custom-stripe">
-  <thead>
-    <tr>
-      <th>ERROR_TYPE<br /><code>error.name</code></th>
-      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
-      <th>Status Code</th>
-      <th>Reason</th>
-      <th>Solution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>INTERNAL_ERROR</td>
-      <td>INTERNAL_ERROR</td>
-      <td>500</td>
-      <td>Something went wrong with the node itself or overloaded</td>
-      <td>
-        <ul>
-          <li>Try again later</li>
-          <li>Send a request to a different node</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table className="custom-stripe">
-  <thead>
-    <tr>
-      <th>ERROR_TYPE<br /><code>error.name</code></th>
-      <th>ERROR_CAUSE<br /><code>error.cause.name</code></th>
-      <th>Status Code</th>
-      <th>Reason</th>
-      <th>Solution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>INTERNAL_ERROR</td>
-      <td>INTERNAL_ERROR</td>
-      <td>500</td>
-      <td>Something went wrong with the node itself or overloaded</td>
-      <td>
-        <ul>
-          <li>Try again later</li>
-          <li>Send a request to a different node</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<table className="custom-stripe">
-  <thead>
-    <tr>
-      <th>
-        ERROR_TYPE
-        <br />
-        <code>error.name</code>
-      </th>
-      <th>
-        ERROR_CAUSE
-        <br />
-        <code>error.cause.name</code>
-      </th>
-      <th>Status Code</th>
-      <th>Reason</th>
-      <th>Solution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="4">HANDLER_ERROR</td>
-      <td>UNKNOWN_BLOCK</td>
-      <td>200</td>
-      <td>
-        The requested block has not been produced yet or it has been garbage-collected (cleaned up
-        to save space on the RPC node)
-      </td>
-      <td>
-        <ul>
-          <li>Check that the requested block is legit</li>
-          <li>
-            If the block had been produced more than 5 epochs ago, try to send your request to{' '}
-            <a
-              href="https://near-nodes.io/intro/node-types#archival-node"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              an archival node
-            </a>
-          </li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>UNKNOWN_CHUNK</td>
-      <td>200</td>
-      <td>The requested chunk can't be found in a database</td>
-      <td>
-        <ul>
-          <li>Check that the requested chunk is legit</li>
-          <li>
-            If the chunk had been produced more than 5 epochs ago, try to send your request to an
-            archival node
-          </li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>INVALID_SHARD_ID</td>
-      <td>200</td>
-      <td>
-        Provided <code>shard_id</code> does not exist
-      </td>
-      <td>
-        <ul>
-          <li>
-            Provide <code>shard_id</code> for an existing shard
-          </li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>NOT_SYNCED_YET</td>
-      <td>200</td>
-      <td>The node is still syncing and the requested chunk is not in the database yet</td>
-      <td>
-        <ul>
-          <li>Wait until the node finish syncing</li>
-          <li>Send a request to a different node which is synced</li>
-        </ul>
-      </td>
-    </tr>
-    <tr className="stripe">
-      <td>REQUEST_VALIDATION_ERROR</td>
-      <td>PARSE_ERROR</td>
-      <td>400</td>
-      <td>
-        Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)
-      </td>
-      <td>
-        <ul>
-          <li>Check the arguments passed and pass the correct ones</li>
-          <li>
-            Check <code>error.cause.info</code> for more details
-          </li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>INTERNAL_ERROR</td>
-      <td>INTERNAL_ERROR</td>
-      <td>500</td>
-      <td>Something went wrong with the node itself or overloaded</td>
-      <td>
-        <ul>
-          <li>Try again later</li>
-          <li>Send a request to a different node</li>
-          <li>
-            Check <code>error.cause.info</code> for more details
-          </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
 ---
