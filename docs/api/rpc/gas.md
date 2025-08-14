@@ -15,6 +15,14 @@ The RPC API enables you to query the gas price for a specific block or hash.
 
 ---
 
+## Quick Reference
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `block_height` | `number` | Specific block height to query gas price for |
+| `block_hash` | `string` | Specific block hash to query gas price for |
+| `null` | `null` | Returns gas price for the latest block |
+
 ## Gas Price {#gas-price}
 
 <SplitLayoutContainer>
@@ -51,7 +59,7 @@ The RPC API enables you to query the gas price for a specific block or hash.
           jsonrpc=2.0 \
           id=dontcare \
           method=gas_price \
-          params:="[null]"
+          params:='[null]'
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -68,22 +76,22 @@ The RPC API enables you to query the gas price for a specific block or hash.
           "jsonrpc": "2.0",
           "id": "dontcare",
           "method": "gas_price",
-          "params": [17121755]
+          "params": [187310138]
         }
         ```
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.gasPrice(17121755);
+        const response = await near.connection.provider.gasPrice(187310138);
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
         ```bash
-        http POST https://rpc.testnet.near.org \
+        http POST https://archival-rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
           method=gas_price \
-          params:="[17121755]"
+          params:='[187310138]'
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -100,22 +108,24 @@ The RPC API enables you to query the gas price for a specific block or hash.
           "jsonrpc": "2.0",
           "id": "dontcare",
           "method": "gas_price",
-          "params": ["AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj"]
+          "params": ["6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"]
         }
         ```
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.gasPrice("AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj");
+        const response = await near.connection.provider.gasPrice(
+          '6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w',
+        );
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
         ```bash
-        http POST https://rpc.testnet.near.org \
+        http POST https://archival-rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
           method=gas_price \
-          params:="[\"AXa8CHDQSA8RdFCt12rtpFraVq4fDUgJbLPxwbaZcZrj\"]"
+          params:='["6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"]'
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -131,12 +141,29 @@ The RPC API enables you to query the gas price for a specific block or hash.
   ```json
   {
     "jsonrpc": "2.0",
+    "id": "dontcare",
     "result": {
       "gas_price": "100000000"
-    },
-    "id": "dontcare"
+    }
   }
   ```
 </details>
+
+---
+
+## Error Handling
+
+Common errors you might encounter:
+
+- **Block not found**: When querying an invalid or non-existent block
+- **Invalid parameters**: When providing incorrect parameter types or formats
+- **Network errors**: Connection issues with the RPC endpoint
+
+## Best Practices
+
+- Use `null` parameter for real-time gas price monitoring
+- Cache gas price results to avoid excessive API calls
+- Use archival RPC endpoints when querying historical blocks
+- Handle network timeouts gracefully in production applications
 
 ---

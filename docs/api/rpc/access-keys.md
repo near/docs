@@ -11,7 +11,22 @@ import { TryOutOnLantstool } from '@site/src/components/lantstool/TryOutOnLantst
 import { LantstoolLabel } from '@site/src/components/lantstool/LantstoolLabel/LantstoolLabel';
 import { SplitLayoutContainer, SplitLayoutLeft, SplitLayoutRight } from '@site/src/components/SplitLayout';
 
-The RPC API enables you to retrieve information about an account's access keys.
+The RPC API enables you to retrieve information about an account's access keys. Access keys are cryptographic keys that allow actions to be performed on behalf of an account, with different permission levels for security.
+
+## Access Key Types
+
+- **Full Access Keys**: Can perform any action on the account, including deploying contracts, managing other keys, and transferring funds
+- **Function Call Keys**: Restricted to calling specific contract methods with limited allowance for gas fees
+
+## Quick Reference
+
+| Method | Endpoint | Purpose |
+|--------|----------|---------|
+| [`view_access_key`](#view-access-key) | Query single key | Get details of a specific access key |
+| [`view_access_key_list`](#view-access-key-list) | Query all keys | List all access keys for an account |
+| [`single_access_key_changes`](#view-access-key-changes-single) | Track specific changes | Monitor changes to specific keys |
+| [`all_access_key_changes`](#view-access-key-changes-all) | Track all changes | Monitor all key changes for accounts |
+
 
 ---
 
@@ -19,17 +34,17 @@ The RPC API enables you to retrieve information about an account's access keys.
 
 <SplitLayoutContainer>
   <SplitLayoutLeft title="Description">
-    Returns information about a single access key for given account.
-
-    If `permission` of the key is `FunctionCall`, it will return more details
-    such as the `allowance`, `receiver_id`, and `method_names`.
+    Returns information about a single access key for a given account.
+  
+    If `permission` of the key is `FunctionCall`, it will return more details such as the `allowance`, `receiver_id`, and `method_names`.
 
     - **method**: `query`
     - **params**:
       - `request_type`: `view_access_key`
-      - [finality](/api/rpc/setup#using-finality-param) _OR_ [block_id](/api/rpc/setup#using-block_id-param)
-      - `account_id`: _"example.testnet"_
-      - `public_key`: _"example.testnet's public key"_
+      - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
+      - `account_id`: `"example.testnet"`
+      - `public_key`: `"ed25519:..."`
+
   </SplitLayoutLeft>
   <SplitLayoutRight title="Example">
     <Tabs groupId="code-tabs">
@@ -105,6 +120,7 @@ The RPC API enables you to retrieve information about an account's access keys.
     "id": "dontcare"
   }
   ```
+
 </details>
 
 ---
@@ -118,8 +134,9 @@ The RPC API enables you to retrieve information about an account's access keys.
     - **method**: `query`
     - **params**:
       - `request_type`: `view_access_key_list`
-      - [finality](/api/rpc/setup#using-finality-param) _OR_ [block_id](/api/rpc/setup#using-block_id-param)
-      - `account_id`: _"example.testnet"_
+      - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
+      - `account_id`: `"example.testnet"`
+
   </SplitLayoutLeft>
   <SplitLayoutRight title="Example">
 
@@ -222,7 +239,8 @@ The RPC API enables you to retrieve information about an account's access keys.
     - **params**:
       - `changes_type`: `single_access_key_changes`
       - `keys`: `[{ account_id, public_key }]`
-      - [finality](/api/rpc/setup#using-finality-param) _OR_ [block_id](/api/rpc/setup#using-block_id-param)
+      - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
+
   </SplitLayoutLeft>
   <SplitLayoutRight title="Example">
     <Tabs groupId="code-tabs">
@@ -338,7 +356,8 @@ The RPC API enables you to retrieve information about an account's access keys.
     - **params**:
       - `changes_type`: `all_access_key_changes`
       - `account_ids`: `[ "example.testnet", "example2.testnet"]`
-      - [finality](/api/rpc/setup#using-finality-param) _OR_ [block_id](/api/rpc/setup#using-block_id-param)
+      - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
+
   </SplitLayoutLeft>
   <SplitLayoutRight title="Example">
     <Tabs groupId="code-tabs">
@@ -439,5 +458,45 @@ The RPC API enables you to retrieve information about an account's access keys.
     }
     ```
 </details>
+
+---
+
+## Error Handling
+
+### Common Error Types
+
+| Error Code | Description | Solution |
+|------------|-------------|----------|
+| `UnknownAccessKey` | Access key not found | Verify the public key is correct and exists |
+| `UnknownAccount` | Account does not exist | Check account ID spelling and existence |
+| `InvalidAccount` | Invalid account format | Use valid account ID format (e.g., `account.near`) |
+| `UnknownBlock` | Block not found | Use a valid block hash or height |
+| `GarbageCollectedBlock` | Block too old | Use archival node or more recent block |
+| `TooManyInputs` | Too many accounts in request | Reduce number of accounts per request |
+
+
+---
+
+## Best Practices
+
+### Performance Considerations
+
+- **Use specific queries**: Use `view_access_key` when you know the exact key instead of listing all keys
+- **Cache results**: Access key information does not change frequently, consider caching
+- **Batch operations**: When checking multiple keys, use `single_access_key_changes` with multiple keys
+- **Archival nodes**: Only use archival endpoints when historical data is required
+
+### Security Recommendations
+
+- **Monitor full access keys**: Regularly audit accounts with full access keys
+- **Track allowance usage**: Monitor function call key allowances to prevent unexpected failures
+- **Key rotation**: Implement regular access key rotation for security
+- **Least privilege**: Use function call keys with minimal required permissions
+
+### Rate Limiting
+
+- Standard RPC endpoints have rate limits; implement exponential backoff
+- Archival endpoints may have stricter limits
+- Consider using multiple RPC providers for higher throughput
 
 ---

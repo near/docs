@@ -13,6 +13,18 @@ import { SplitLayoutContainer, SplitLayoutLeft, SplitLayoutRight } from '@site/s
 
 The RPC API enables you to view details about accounts and contracts as well as perform contract calls.
 
+## Quick Reference
+
+| Method | Endpoint | Purpose |
+|--------|----------|---------|
+| [`view_account`](#view-account) | Query account info | Get basic account information |
+| [`view_account_changes`](#view-account-changes) | Track account changes | Monitor account state changes |
+| [`view_code`](#view-contract-code) | Query contract code | Get deployed contract WASM code |
+| [`view_state`](#view-contract-state) | Query contract state | Get contract storage data |
+| [`data_changes`](#view-contract-state-changes) | Track state changes | Monitor contract state changes |
+| [`contract_code_changes`](#view-contract-code-changes) | Track code changes | Monitor contract deployments |
+| [`call_function`](#call-a-contract-function) | Call view functions | Execute read-only contract methods |
+
 ---
 ## View account {#view-account}
 
@@ -33,14 +45,22 @@ The RPC API enables you to view details about accounts and contracts as well as 
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "method_name",
-          "params": {}
+          "method": "query",
+          "params": {
+            "request_type": "view_account",
+            "finality": "final",
+            "account_id": "account.rpc-examples.testnet"
+          }
         }
         ```
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.methodName();
+        const response = await near.connection.provider.query({
+          request_type: 'view_account',
+          finality: 'final',
+          account_id: 'account.rpc-examples.testnet',
+        });
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
@@ -48,8 +68,12 @@ The RPC API enables you to view details about accounts and contracts as well as 
         http POST https://rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=method_name \
-          params:='{}'
+          method=query \
+          params:='{
+            "request_type": "view_account",
+            "finality": "final",
+            "account_id": "account.rpc-examples.testnet"
+          }'
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -61,7 +85,21 @@ The RPC API enables you to view details about accounts and contracts as well as 
 
 <details>
   <summary>Example response:</summary>
-  
+  ```json
+  {
+    "jsonrpc": "2.0",
+    "result": {
+      "amount": "999788200694421800000000",
+      "block_hash": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW",
+      "block_height": 187440904,
+      "code_hash": "11111111111111111111111111111111",
+      "locked": "0",
+      "storage_paid_at": 0,
+      "storage_usage": 410
+    },
+    "id": "dontcare"
+  }
+  ```
 </details>
 
 ---
@@ -84,23 +122,33 @@ The RPC API enables you to view details about accounts and contracts as well as 
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "method_name",
-          "params": {}
+          "method": "EXPERIMENTAL_changes",
+          "params": {
+            "changes_type": "account_changes",
+            "account_ids": ["contract.rpc-examples.testnet"],
+            "block_id": 187310139
+          }
         }
         ```
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.methodName();
+        const response = await near.connection.provider.accountChanges(['contract.rpc-examples.testnet'], {
+          blockId: 187310139,
+        });
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
         ```bash
-        http POST https://rpc.testnet.near.org \
+        http POST https://archival-rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=method_name \
-          params:='{}'
+          method=EXPERIMENTAL_changes \
+          params:='{
+            "changes_type": "account_changes",
+            "account_ids": ["contract.rpc-examples.testnet"],
+            "block_id": 187310139
+          }'
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -112,7 +160,47 @@ The RPC API enables you to view details about accounts and contracts as well as 
 
 <details>
   <summary>Example response: </summary>
-  
+  ```json
+  {
+    "jsonrpc": "2.0",
+    "result": {
+      "block_hash": "8woqfx6kyjgfgU1S2L6Kur27h5jpBtDTmG8vQ8vpAUut",
+      "changes": [
+        {
+          "cause": {
+            "receipt_hash": "FseKd4rmjPSAuEz9zh9b5PfUS4jJV4rB6XkeHwVkyXkk",
+            "type": "receipt_processing"
+          },
+          "change": {
+            "account_id": "contract.rpc-examples.testnet",
+            "amount": "4999184472524996100000000",
+            "code_hash": "GVvBFWDPNmomMwXH4LvQW2cRaZJ8N6gxsdBhbJ8ReVJf",
+            "locked": "0",
+            "storage_paid_at": 0,
+            "storage_usage": 81621
+          },
+          "type": "account_update"
+        },
+        {
+          "cause": {
+            "receipt_hash": "FseKd4rmjPSAuEz9zh9b5PfUS4jJV4rB6XkeHwVkyXkk",
+            "type": "action_receipt_gas_reward"
+          },
+          "change": {
+            "account_id": "contract.rpc-examples.testnet",
+            "amount": "4999212038891301300000000",
+            "code_hash": "GVvBFWDPNmomMwXH4LvQW2cRaZJ8N6gxsdBhbJ8ReVJf",
+            "locked": "0",
+            "storage_paid_at": 0,
+            "storage_usage": 81621
+          },
+          "type": "account_update"
+        }
+      ]
+    },
+    "id": "dontcare"
+  }
+  ```
 </details>
 ---
 ## View contract code {#view-contract-code}
@@ -135,14 +223,22 @@ The RPC API enables you to view details about accounts and contracts as well as 
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "method_name",
-          "params": {}
+          "method": "query",
+          "params": {
+            "request_type": "view_code",
+            "finality": "final",
+            "account_id": "contract.rpc-examples.testnet"
+          }
         }
         ```
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.methodName();
+        const response = await near.connection.provider.query({
+          request_type: 'view_code',
+          finality: 'final',
+          account_id: 'contract.rpc-examples.testnet',
+        });
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
@@ -150,8 +246,12 @@ The RPC API enables you to view details about accounts and contracts as well as 
         http POST https://rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=method_name \
-          params:='{}'
+          method=query \
+          params:='{
+            "request_type": "view_code",
+            "finality": "final",
+            "account_id": "contract.rpc-examples.testnet"
+          }'
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -163,7 +263,18 @@ The RPC API enables you to view details about accounts and contracts as well as 
 
 <details>
   <summary>Example response: </summary>
-  
+  ```json
+  {
+    "jsonrpc": "2.0",
+    "result": {
+      "block_hash": "bxucHpnP8VsiB3pLvA7DpBwri9x1DCZxVfBNkrdWbqn",
+      "block_height": 187441984,
+      "code_base64": "AGFzbQEAAAABugEbYAJ/fwF/YAN/f38Bf2ACf38AYAN/...",
+      "hash": "GVvBFWDPNmomMwXH4LvQW2cRaZJ8N6gxsdBhbJ8ReVJf"
+    },
+    "id": "dontcare"
+  }
+  ```
 </details>
 ---
 ## View contract state {#view-contract-state}
@@ -189,14 +300,24 @@ The RPC API enables you to view details about accounts and contracts as well as 
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "method_name",
-          "params": {}
+          "method": "query",
+          "params": {
+            "request_type": "view_state",
+            "finality": "final",
+            "account_id": "contract.rpc-examples.testnet",
+            "prefix_base64": ""
+          }
         }
         ```
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.methodName();
+        const response = await near.connection.provider.query({
+          request_type: 'view_state',
+          finality: 'final',
+          account_id: 'contract.rpc-examples.testnet',
+          prefix_base64: '',
+        });
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
@@ -204,8 +325,13 @@ The RPC API enables you to view details about accounts and contracts as well as 
         http POST https://rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=method_name \
-          params:='{}'
+          method=query \
+          params:='{
+            "request_type": "view_state",
+            "finality": "final",
+            "account_id": "contract.rpc-examples.testnet",
+            "prefix_base64": ""
+          }'
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -217,7 +343,26 @@ The RPC API enables you to view details about accounts and contracts as well as 
 
 <details>
   <summary>Example response:</summary>
-  
+  ```json
+  {
+    "jsonrpc": "2.0",
+    "result": {
+      "block_hash": "GN5R7S8mMTEkUT1njWu9jARV29G7izVDjdSNs976BJVw",
+      "block_height": 187442491,
+      "values": [
+        {
+          "key": "U1RBVEU=",
+          "value": "HQAAAEdyZWV0aW5ncyBmcm9tIE5FQVIgUHJvdG9jb2whAQAAAHI="
+        },
+        {
+          "key": "cgEAAAAAAAAA",
+          "value": "FQAAAEhlbGxvLCBOZWFyIFByb3RvY29sIQ=="
+        }
+      ]
+    },
+    "id": "dontcare"
+  }
+  ```
 
 **Note**: Currently, the response includes a `proof` field directly in the
 `result`, and a `proof` fields on each element of the `values` list. In
@@ -250,23 +395,37 @@ should accept objects with or without these fields set.
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "method_name",
-          "params": {}
+          "method": "EXPERIMENTAL_changes",
+          "params": {
+            "changes_type": "data_changes",
+            "account_ids": ["contract.rpc-examples.testnet"],
+            "key_prefix_base64": "",
+            "block_id": 187310139
+          }
         }
         ```
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.methodName();
+        const response = await near.connection.provider.contractStateChanges(
+          ['contract.rpc-examples.testnet'],
+          { blockId: 187310139 },
+          ''
+        );
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
         ```bash
-        http POST https://rpc.testnet.near.org \
+        http POST https://archival-rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=method_name \
-          params:='{}'
+          method=EXPERIMENTAL_changes \
+          params:='{
+            "changes_type": "data_changes",
+            "account_ids": ["contract.rpc-examples.testnet"],
+            "key_prefix_base64": "",
+            "block_id": 187310139
+          }'
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -278,7 +437,41 @@ should accept objects with or without these fields set.
 
 <details>
   <summary>Example response:</summary>
-  
+  ```json
+  {
+    "jsonrpc": "2.0",
+    "result": {
+      "block_hash": "8woqfx6kyjgfgU1S2L6Kur27h5jpBtDTmG8vQ8vpAUut",
+      "changes": [
+        {
+          "cause": {
+            "receipt_hash": "FseKd4rmjPSAuEz9zh9b5PfUS4jJV4rB6XkeHwVkyXkk",
+            "type": "receipt_processing"
+          },
+          "change": {
+            "account_id": "contract.rpc-examples.testnet",
+            "key_base64": "U1RBVEU=",
+            "value_base64": "HQAAAEdyZWV0aW5ncyBmcm9tIE5FQVIgUHJvdG9jb2whAQAAAHI="
+          },
+          "type": "data_update"
+        },
+        {
+          "cause": {
+            "receipt_hash": "FseKd4rmjPSAuEz9zh9b5PfUS4jJV4rB6XkeHwVkyXkk",
+            "type": "receipt_processing"
+          },
+          "change": {
+            "account_id": "contract.rpc-examples.testnet",
+            "key_base64": "cgEAAAAAAAAA",
+            "value_base64": "FQAAAEhlbGxvLCBOZWFyIFByb3RvY29sIQ=="
+          },
+          "type": "data_update"
+        }
+      ]
+    },
+    "id": "dontcare"
+  }
+  ```
 </details>
 
 ---
@@ -302,23 +495,34 @@ should accept objects with or without these fields set.
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "method_name",
-          "params": {}
+          "method": "EXPERIMENTAL_changes",
+          "params": {
+            "changes_type": "contract_code_changes",
+            "account_ids": ["contract.rpc-examples.testnet"],
+            "block_id": 187309439
+          }
         }
         ```
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.methodName();
+        const response = await near.connection.provider.contractCodeChanges(
+          ['contract.rpc-examples.testnet'],
+          { blockId: 187309439 }
+        );
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
         ```bash
-        http POST https://rpc.testnet.near.org \
+        http POST https://archival-rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=method_name \
-          params:='{}'
+          method=EXPERIMENTAL_changes \
+          params:='{
+            "changes_type": "contract_code_changes",
+            "account_ids": ["contract.rpc-examples.testnet"],
+            "block_id": 187309439
+          }'
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -330,7 +534,28 @@ should accept objects with or without these fields set.
 
 <details>
   <summary>Example response:</summary>
-  
+  ```json
+  {
+    "jsonrpc": "2.0",
+    "result": {
+      "block_hash": "D1ZY3y51Z2v5tXq2nZPmXHgA3zZsPBzbtwHXjCvAEuLV",
+      "changes": [
+        {
+          "cause": {
+            "receipt_hash": "AR4cxtxc52WfnZcGEZHmPfQ1Dk3vQNb7vjSyicykfJWZ",
+            "type": "receipt_processing"
+          },
+          "change": {
+            "account_id": "contract.rpc-examples.testnet",
+            "code_base64": "AGFzbQEAAAABugEbYAJ/fwF/YAN/f38Bf2ACf38AYAN/..."
+          },
+          "type": "contract_code_update"
+        }
+      ]
+    },
+    "id": "dontcare"
+  }
+  ```
 </details>
 
 ---
@@ -355,14 +580,26 @@ should accept objects with or without these fields set.
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "method_name",
-          "params": {}
+          "method": "query",
+          "params": {
+            "request_type": "call_function",
+            "finality": "final",
+            "account_id": "contract.rpc-examples.testnet",
+            "method_name": "get_greeting",
+            "args_base64": ""
+          }
         }
         ```
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.methodName();
+        const response = await near.connection.provider.query({
+          request_type: 'call_function',
+          finality: 'final',
+          account_id: 'contract.rpc-examples.testnet',
+          method_name: 'get_greeting',
+          args_base64: '',
+        });
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
@@ -370,8 +607,14 @@ should accept objects with or without these fields set.
         http POST https://rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=method_name \
-          params:='{}'
+          method=query \
+          params:='{
+            "request_type": "call_function",
+            "finality": "final",
+            "account_id": "contract.rpc-examples.testnet",
+            "method_name": "get_greeting",
+            "args_base64": ""
+          }'
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -384,6 +627,21 @@ should accept objects with or without these fields set.
 <details>
   <summary>Example response:</summary>
   <p>
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "result": {
+        "block_hash": "GTZdXfNmnL6TkJFdBeVMHCadgLuKChVfRNCSVsEQoJ7L",
+        "block_height": 187444191,
+        "logs": [],
+        "result": [
+          34, 71, 114, 101, 101, 116, 105, 110, 103, 115, 32, 102, 114, 111, 109, 32, 78, 69, 65, 82,
+          32, 80, 114, 111, 116, 111, 99, 111, 108, 33, 34
+        ]
+      },
+      "id": "dontcare"
+    }
+    ```
     
     **Note**: `[34, 71, ..., 33, 34]` is an array of bytes, to be specific it is an ASCII code of
     `"Greetings from NEAR Protocol!"`. `near-sdk-rs` and `near-sdk-js` return JSON-serialized
@@ -410,14 +668,26 @@ should accept objects with or without these fields set.
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "method_name",
-          "params": {}
+          "method": "query",
+          "params": {
+            "request_type": "call_function",
+            "finality": "final",
+            "account_id": "contract.rpc-examples.testnet",
+            "method_name": "get_record",
+            "args_base64": "ewogICJyZWNvcmRfaWQiOiAxCn0="
+          }
         }
         ```
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.methodName();
+        const response = await near.connection.provider.query({
+          request_type: 'call_function',
+          finality: 'final',
+          account_id: 'contract.rpc-examples.testnet',
+          method_name: 'get_record',
+          args_base64: 'ewogICJyZWNvcmRfaWQiOiAxCn0=',
+        });
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
@@ -425,8 +695,14 @@ should accept objects with or without these fields set.
         http POST https://rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=method_name \
-          params:='{}'
+          method=query \
+          params:='{
+            "request_type": "call_function",
+            "finality": "final",
+            "account_id": "contract.rpc-examples.testnet",
+            "method_name": "get_record",
+            "args_base64": "ewogICJyZWNvcmRfaWQiOiAxCn0="
+          }'
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -439,9 +715,66 @@ should accept objects with or without these fields set.
 <details>
   <summary>Example response:</summary>
   <p>
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "result": {
+        "block_hash": "8Gp8x1ZcanL3C2ris9rgk1nY8v6MuickLWeM6Gj2jGKs",
+        "block_height": 187445443,
+        "logs": [],
+        "result": [
+          34, 72, 101, 108, 108, 111, 44, 32, 78, 101, 97, 114, 32, 80, 114, 111, 116, 111, 99, 111,
+          108, 33, 34
+        ]
+      },
+      "id": "dontcare"
+    }
+    ```
     
     **Note**: `[34, 72, ..., 108, 33, 34]` is an array of bytes, to be specific it is an ASCII code
     of `"Hello, Near Protocol!"`. `near-sdk-rs` and `near-sdk-js` return JSON-serialized results.
   </p>
 </details>
+
+---
+
+## Error Handling
+
+### Common Error Types
+
+| Error Code | Description | Solution |
+|------------|-------------|----------|
+| `UnknownAccount` | Account does not exist | Check account ID spelling and existence |
+| `InvalidAccount` | Invalid account format | Use valid account ID format (e.g., `account.near`) |
+| `UnknownBlock` | Block not found | Use a valid block hash or height |
+| `GarbageCollectedBlock` | Block too old | Use archival node or more recent block |
+| `TooManyInputs` | Too many accounts in request | Reduce number of accounts per request |
+| `NoContractCode` | Account has no contract deployed | Verify the account has a deployed contract |
+| `MethodNotFound` | Contract method does not exist | Check method name and contract ABI |
+| `InvalidArgs` | Invalid method arguments | Verify args format and encoding |
+
+---
+
+## Best Practices
+
+### Performance Considerations
+
+- **Use specific queries**: Query only the data you need instead of broad state queries
+- **Cache results**: Contract state and code don't change frequently, consider caching
+- **Batch operations**: When checking multiple accounts, use batch methods where available
+- **Archival nodes**: Only use archival endpoints when historical data is required
+
+### Security Recommendations
+
+- **Validate inputs**: Always validate method arguments before contract calls
+- **Monitor contract changes**: Track code and state changes for security audits
+- **Rate limiting**: Implement proper rate limiting to avoid hitting RPC limits
+- **Error handling**: Implement robust error handling for all RPC calls
+
+### Rate Limiting
+
+- Standard RPC endpoints have rate limits; implement exponential backoff
+- Archival endpoints may have stricter limits
+- Consider using multiple RPC providers for higher throughput
+
 ---
