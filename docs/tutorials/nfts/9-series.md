@@ -132,7 +132,7 @@ pub struct Series {
     tokens: UnorderedSet<TokenId>,
     // What is the price of each token in this series? If this is specified, when minting,
     // Users will need to attach enough $NEAR to cover the price.
-    price: Option<Balance>,
+    price: Option<NearToken>,
     // Owner of the collection
     owner_id: AccountId,
 }
