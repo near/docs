@@ -1,7 +1,7 @@
 ---
 id: what-is
 title: What is a Smart Contract?
-sidebar_label: What is a Contract?
+sidebar_label: Introduction
 description: "Learn about NEAR smart contracts - executable code that lives in accounts, stores data, performs transactions, and can be written in JavaScript or Rust."
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: chain-signatures
 title: What are Chain Signatures?
-sidebar_label: What are Chain Signatures?
+sidebar_label: Chain Signatures
 description: "Learn how Chain Signatures enable NEAR accounts to sign and execute transactions across multiple blockchains using Multi-Party Computation for secure cross-chain operations."
 ---
 
