@@ -74,6 +74,7 @@ const config = {
   plugins: [
     './src/plugins/monaco-editor',
     './src/plugins/node-polyfills',
+    './src/plugins/newsletter-api',
     'docusaurus-plugin-sass',
   ],
   themeConfig: {
@@ -318,6 +319,16 @@ const config = {
               ]
             },
           ],
+        },
+        {
+          to: '/api/rpc/introduction',
+          label: 'RPC',
+          activeBaseRegex: '/api/rpc',
+        },
+        {
+          to: '/newsletter',
+          label: 'Newsletter',
+          position: 'right'
         },
         { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {
