@@ -10,7 +10,6 @@ import TabItem from '@theme/TabItem';
 import { TryOutOnLantstool } from '@site/src/components/lantstool/TryOutOnLantstool';
 import { LantstoolLabel } from '@site/src/components/lantstool/LantstoolLabel/LantstoolLabel';
 import { SplitLayoutContainer, SplitLayoutLeft, SplitLayoutRight } from '@site/src/components/SplitLayout';
-import ErrorSchemaDescription from '@site/src/components/docs/api/rpc/_general/error-schema-description.mdx';
 
 The RPC API enables you to query the network and get details about specific blocks or chunks.
 
