@@ -6,6 +6,7 @@ description: "Understand how the NEAR Drop contract works - the core data types,
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {Github} from "@site/src/components/codetabs"
 
 Before we start coding, let's understand how the NEAR Drop contract is structured. Think of it as the blueprint for our token distribution system.
 
@@ -32,16 +33,9 @@ Drop #2 (1 NFT)   ──→ Key C ──→ Carol claims
 
 The contract stores everything in four simple maps:
 
-<TabItem value="rust" label="🦀 Rust">
-```rust
-pub struct Contract {
-    pub top_level_account: AccountId,     // "testnet" or "near"
-    pub next_drop_id: u64,                // Counter for unique drop IDs
-    pub drop_id_by_key: LookupMap<PublicKey, u64>,    // Key → Drop ID
-    pub drop_by_id: UnorderedMap<u64, Drop>,          // Drop ID → Drop Data
-}
-```
-</TabItem>
+<Github fname="lib.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/lib.rs"
+        start="15" end="25" />
 
 **Why this design?**
 - Find drops quickly by key (for claiming)
@@ -55,47 +49,24 @@ pub struct Contract {
 We support three types of token drops:
 
 ### NEAR Drops
-<TabItem value="rust" label="🦀 Rust">
-```rust
-pub struct NearDrop {
-    pub amount: NearToken,    // How much NEAR per claim
-    pub counter: u64,         // How many claims left
-}
-```
-</TabItem>
+<Github fname="drop_types.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/drop_types.rs"
+        start="15" end="20" />
 
 ### Fungible Token Drops 
-<TabItem value="rust" label="🦀 Rust"> 
-```rust
-pub struct FtDrop {
-    pub ft_contract: AccountId,  // Which FT contract
-    pub amount: String,          // Amount per claim
-    pub counter: u64,            // Claims remaining
-}
-```
-</TabItem>
+<Github fname="drop_types.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/drop_types.rs"
+        start="22" end="28" />
 
 ### NFT Drops
-<TabItem value="rust" label="🦀 Rust">
-```rust
-pub struct NftDrop {
-    pub nft_contract: AccountId,  // Which NFT contract
-    pub token_id: String,         // Specific NFT
-    pub counter: u64,             // Always 1 (NFTs are unique)
-}
-```
-</TabItem>
+<Github fname="drop_types.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/drop_types.rs"
+        start="30" end="36" />
 
 All wrapped in an enum:
-<TabItem value="rust" label="🦀 Rust">
-```rust
-pub enum Drop {
-    Near(NearDrop),
-    FungibleToken(FtDrop), 
-    NonFungibleToken(NftDrop),
-}
-```
-</TabItem>
+<Github fname="drop_types.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/drop_types.rs"
+        start="5" end="13" />
 
 ---
 
@@ -110,18 +81,10 @@ When you create a drop:
 4. Recipients sign transactions using the contract's account (gasless!)
 
 The keys can ONLY call claiming functions - nothing else.
-<TabItem value="rust" label="🦀 Rust">
-```rust
-// Adding a function-call key
-Promise::new(env::current_account_id())
-    .add_access_key(
-        public_key,
-        NearToken::from_millinear(5),  // 0.005 NEAR gas allowance
-        env::current_account_id(),      // Can only call this contract  
-        "claim_for,create_account_and_claim".to_string()  // Specific methods
-    )
-```
-</TabItem>
+
+<Github fname="lib.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/lib.rs"
+        start="150" end="165" />
 
 ---
 
@@ -129,14 +92,9 @@ Promise::new(env::current_account_id())
 
 Creating drops costs money because we're storing data on-chain. The costs include:
 
-<TabItem value="rust" label="🦀 Rust">
-```rust
-const DROP_STORAGE_COST: NearToken = NearToken::from_millinear(10);   // Drop data
-const KEY_STORAGE_COST: NearToken = NearToken::from_millinear(1);     // Key mapping
-const ACCESS_KEY_STORAGE_COST: NearToken = NearToken::from_millinear(1); // Adding key to account
-const FUNCTION_CALL_ALLOWANCE: NearToken = NearToken::from_millinear(5); // Gas for claiming
-```
-</TabItem>
+<Github fname="lib.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/lib.rs"
+        start="8" end="13" />
 
 **Total for 5-key NEAR drop**: ~0.08 NEAR + token amounts
 
@@ -157,13 +115,11 @@ The contract protects against common attacks:
 - Automatic cleanup after claims
 
 **Error Handling**
-<TabItem value="rust" label="🦀 Rust">
 ```rust
 // Example validation
 assert!(!token_id.is_empty(), "Token ID cannot be empty");
 assert!(amount > 0, "Amount must be positive");
 ```
-</TabItem>
 
 ---
 
@@ -171,7 +127,6 @@ assert!(amount > 0, "Amount must be positive");
 
 We'll organize the code into logical modules:
 
-<Tabs groupId="code-tabs">
 ```
 src/
 ├── lib.rs              # Main contract and initialization
@@ -182,7 +137,6 @@ src/
 ├── claim.rs            # Claiming logic for all types
 └── external.rs         # Cross-contract interfaces
 ```
-</Tabs>
 
 This keeps things organized and makes it easy to understand each piece.
 
