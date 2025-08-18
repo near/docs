@@ -34,7 +34,7 @@ NEXT_PUBLIC_RPC_URL=https://rpc.testnet.near.org
 
 ## NEAR Connection Service
 
-Create `src/services/near.js`:
+Create `src/utils/near.js`:
 
 <Github fname="near.js" language="javascript" 
         url="https://github.com/Festivemena/Drop/blob/main/src/services/near.js"
