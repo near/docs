@@ -37,7 +37,7 @@ NEXT_PUBLIC_RPC_URL=https://rpc.testnet.near.org
 Create `src/utils/near.js`:
 
 <Github fname="near.js" language="javascript" 
-        url="https://github.com/Festivemena/Drop/blob/main/src/services/near.js"
+        url="https://github.com/Festivemena/Drop/blob/main/src/utils/near.js"
         start="1" end="50" />
 
 ---
