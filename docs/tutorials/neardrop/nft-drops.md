@@ -6,6 +6,7 @@ description: "Distribute unique NFTs with one-time claims and ownership verifica
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {Github} from "@site/src/components/codetabs"
 
 NFT drops are special because each NFT is unique. Unlike NEAR or FT drops where multiple people can get the same amount, each NFT can only be claimed once.
 
@@ -22,46 +23,14 @@ NFT drops are special because each NFT is unique. Unlike NEAR or FT drops where 
 ## Add NFT Support
 
 First, extend your drop types in `src/drop_types.rs`:
-<TabItem value="rust" label="🦀 Rust">
-```rust
-#[derive(BorshDeserialize, BorshSerialize, Clone)]
-pub enum Drop {
-    Near(NearDrop),
-    FungibleToken(FtDrop),
-    NonFungibleToken(NftDrop),  // New!
-}
-
-#[derive(BorshDeserialize, BorshSerialize, Clone)]
-pub struct NftDrop {
-    pub nft_contract: AccountId,
-    pub token_id: String,
-    pub counter: u64,  // Always 1 for NFTs
-}
-```
-</TabItem>
+<Github fname="drop_types.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/drop_types.rs"
+        start="5" end="40" />
 
 Update the helper methods:
-<TabItem value="rust" label="🦀 Rust">
-```rust
-impl Drop {
-    pub fn get_counter(&self) -> u64 {
-        match self {
-            Drop::Near(drop) => drop.counter,
-            Drop::FungibleToken(drop) => drop.counter,
-            Drop::NonFungibleToken(drop) => drop.counter,
-        }
-    }
-    
-    pub fn decrement_counter(&mut self) {
-        match self {
-            Drop::Near(drop) => drop.counter -= 1,
-            Drop::FungibleToken(drop) => drop.counter -= 1,
-            Drop::NonFungibleToken(drop) => drop.counter -= 1,
-        }
-    }
-}
-```
-</TabItem>
+<Github fname="drop_types.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/drop_types.rs"
+        start="42" end="70" />
 
 ---
 
@@ -69,33 +38,9 @@ impl Drop {
 
 Add NFT methods to `src/external.rs`:
 
-<TabItem value="rust" label="🦀 Rust">
-```rust
-// Interface for NEP-171 NFT contracts
-#[ext_contract(ext_nft)]
-pub trait NonFungibleToken {
-    fn nft_transfer(
-        &mut self,
-        receiver_id: AccountId,
-        token_id: String,
-        memo: Option<String>,
-    );
-    
-    fn nft_token(&self, token_id: String) -> Option<JsonToken>;
-}
-
-#[derive(near_sdk::serde::Serialize, near_sdk::serde::Deserialize)]
-#[serde(crate = "near_sdk::serde")]
-pub struct JsonToken {
-    pub token_id: String,
-    pub owner_id: AccountId,
-}
-
-// Gas for NFT operations
-pub const GAS_FOR_NFT_TRANSFER: Gas = Gas(30_000_000_000_000);
-pub const GAS_FOR_NFT_CALLBACK: Gas = Gas(20_000_000_000_000);
-```
-</TabItem>
+<Github fname="external.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/external.rs"
+        start="30" end="65" />
 
 ---
 
@@ -103,95 +48,15 @@ pub const GAS_FOR_NFT_CALLBACK: Gas = Gas(20_000_000_000_000);
 
 Add this to your main contract:
 
-<TabItem value="rust" label="🦀 Rust">
-```rust
-#[near_bindgen]
-impl Contract {
-    /// Create an NFT drop (only 1 key since NFTs are unique)
-    pub fn create_nft_drop(
-        &mut self,
-        public_key: PublicKey,
-        nft_contract: AccountId,
-        token_id: String,
-    ) -> u64 {
-        let deposit = env::attached_deposit();
-        
-        // Calculate cost (only 1 key for NFTs)
-        let cost = DROP_STORAGE_COST + KEY_STORAGE_COST + ACCESS_KEY_ALLOWANCE;
-        assert!(deposit >= cost, "Need {} NEAR for NFT drop", cost.as_near());
-        
-        // Validate token ID
-        assert!(!token_id.is_empty(), "Token ID cannot be empty");
-        assert!(token_id.len() <= 64, "Token ID too long");
-        
-        // Create the drop
-        let drop_id = self.next_drop_id;
-        self.next_drop_id += 1;
-        
-        let drop = Drop::NonFungibleToken(NftDrop {
-            nft_contract: nft_contract.clone(),
-            token_id: token_id.clone(),
-            counter: 1, // Always 1 for NFTs
-        });
-        
-        self.drop_by_id.insert(&drop_id, &drop);
-        self.add_claim_key(&public_key, drop_id);
-        
-        env::log_str(&format!("Created NFT drop {} for token {}", drop_id, token_id));
-        drop_id
-    }
-    
-    /// Create multiple NFT drops at once
-    pub fn create_nft_drops_batch(
-        &mut self,
-        nft_drops: Vec<NftDropConfig>,
-    ) -> Vec<u64> {
-        let mut drop_ids = Vec::new();
-        let total_cost = (DROP_STORAGE_COST + KEY_STORAGE_COST + ACCESS_KEY_ALLOWANCE) 
-            * nft_drops.len() as u64;
-        
-        assert!(env::attached_deposit() >= total_cost, "Insufficient deposit for batch");
-        
-        for config in nft_drops {
-            let drop_id = self.create_single_nft_drop(
-                config.public_key,
-                config.nft_contract,
-                config.token_id,
-            );
-            drop_ids.push(drop_id);
-        }
-        
-        drop_ids
-    }
-    
-    fn create_single_nft_drop(
-        &mut self,
-        public_key: PublicKey,
-        nft_contract: AccountId,
-        token_id: String,
-    ) -> u64 {
-        let drop_id = self.next_drop_id;
-        self.next_drop_id += 1;
-        
-        let drop = Drop::NonFungibleToken(NftDrop {
-            nft_contract, token_id, counter: 1,
-        });
-        
-        self.drop_by_id.insert(&drop_id, &drop);
-        self.add_claim_key(&public_key, drop_id);
-        drop_id
-    }
-}
+<Github fname="nft_drop.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/nft_drop.rs"
+        start="1" end="50" />
 
-#[derive(near_sdk::serde::Deserialize)]
-#[serde(crate = "near_sdk::serde")]
-pub struct NftDropConfig {
-    pub public_key: PublicKey,
-    pub nft_contract: AccountId,
-    pub token_id: String,
-}
-```
-</TabItem>
+Batch NFT creation:
+
+<Github fname="nft_drop.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/nft_drop.rs"
+        start="52" end="100" />
 
 ---
 
@@ -199,88 +64,9 @@ pub struct NftDropConfig {
 
 Update your claiming logic in `src/claim.rs`:
 
-<TabItem value="rust" label="🦀 Rust">
-```rust
-impl Contract {
-    fn process_claim(&mut self, public_key: &PublicKey, receiver_id: &AccountId) {
-        let drop_id = self.drop_id_by_key.get(public_key)
-            .expect("No drop found for this key");
-        
-        let mut drop = self.drop_by_id.get(&drop_id)
-            .expect("Drop data not found");
-        
-        assert!(drop.get_counter() > 0, "Drop already claimed");
-        
-        match &drop {
-            Drop::Near(near_drop) => {
-                Promise::new(receiver_id.clone()).transfer(near_drop.amount);
-                self.cleanup_claim(public_key, &mut drop, drop_id);
-            }
-            Drop::FungibleToken(ft_drop) => {
-                self.claim_ft_tokens(/* ... */);
-            }
-            Drop::NonFungibleToken(nft_drop) => {
-                // Transfer NFT with cross-contract call
-                self.claim_nft(
-                    public_key.clone(),
-                    receiver_id.clone(),
-                    nft_drop.nft_contract.clone(),
-                    nft_drop.token_id.clone(),
-                );
-            }
-        }
-    }
-    
-    /// Claim NFT with cross-contract call
-    fn claim_nft(
-        &mut self,
-        public_key: PublicKey,
-        receiver_id: AccountId,
-        nft_contract: AccountId,
-        token_id: String,
-    ) {
-        ext_nft::ext(nft_contract.clone())
-            .with_static_gas(GAS_FOR_NFT_TRANSFER)
-            .nft_transfer(
-                receiver_id.clone(),
-                token_id.clone(),
-                Some("NEAR Drop claim".to_string()),
-            )
-            .then(
-                Self::ext(env::current_account_id())
-                    .with_static_gas(GAS_FOR_NFT_CALLBACK)
-                    .nft_transfer_callback(public_key, receiver_id, token_id)
-            );
-    }
-    
-    /// Handle NFT transfer result
-    #[private]
-    pub fn nft_transfer_callback(
-        &mut self,
-        public_key: PublicKey,
-        receiver_id: AccountId,
-        token_id: String,
-    ) {
-        let success = env::promise_results_count() == 1 &&
-            matches!(env::promise_result(0), PromiseResult::Successful(_));
-        
-        if success {
-            env::log_str(&format!("NFT {} transferred to {}", token_id, receiver_id));
-            
-            // Clean up the claim
-            if let Some(drop_id) = self.drop_id_by_key.get(&public_key) {
-                // For NFTs, always remove completely since they're unique
-                self.drop_by_id.remove(&drop_id);
-                self.drop_id_by_key.remove(&public_key);
-                Promise::new(env::current_account_id()).delete_key(public_key);
-            }
-        } else {
-            env::panic_str("NFT transfer failed - contract may not own this NFT");
-        }
-    }
-}
-```
-</TabItem>
+<Github fname="claim.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/claim.rs"
+        start="300" end="380" />
 
 ---
 
@@ -335,44 +121,9 @@ near view test-nft.testnet nft_token '{"token_id": "unique-nft-001"}'
 
 Add some useful view methods:
 
-<TabItem value="rust" label="🦀 Rust">
-```rust
-#[near_bindgen]
-impl Contract {
-    /// Get NFT drop details
-    pub fn get_nft_drop_info(&self, drop_id: u64) -> Option<(AccountId, String, bool)> {
-        if let Some(Drop::NonFungibleToken(nft_drop)) = self.drop_by_id.get(&drop_id) {
-            Some((
-                nft_drop.nft_contract,
-                nft_drop.token_id,
-                nft_drop.counter == 0, // is_claimed
-            ))
-        } else {
-            None
-        }
-    }
-    
-    /// Calculate NFT drop cost
-    pub fn estimate_nft_drop_cost(&self) -> NearToken {
-        DROP_STORAGE_COST + KEY_STORAGE_COST + ACCESS_KEY_ALLOWANCE
-    }
-    
-    /// Check if NFT drop exists for a token
-    pub fn nft_drop_exists(&self, nft_contract: AccountId, token_id: String) -> bool {
-        for drop_id in 0..self.next_drop_id {
-            if let Some(Drop::NonFungibleToken(nft_drop)) = self.drop_by_id.get(&drop_id) {
-                if nft_drop.nft_contract == nft_contract && 
-                   nft_drop.token_id == token_id && 
-                   nft_drop.counter > 0 {
-                    return true;
-                }
-            }
-        }
-        false
-    }
-}
-```
-</TabItem>
+<Github fname="nft_drop.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/nft_drop.rs"
+        start="150" end="200" />
 
 ---
 
