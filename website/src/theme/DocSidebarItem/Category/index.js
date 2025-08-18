@@ -160,9 +160,9 @@ export default function DocSidebarItemCategory({
       <div
         className={clsx(
           item.customProps && styles.customCollapsible,
-          'menu__list-item-collapsible', {
-          'menu__list-item-collapsible--active': isCurrentPage,
-        })}>
+          isActive && styles.customCollapsibleActive,
+          'menu__list-item-collapsible'
+          )}>
         <Link
           className={clsx('menu__link', {
             'menu__link--sublist': collapsible,
