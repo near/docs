@@ -173,7 +173,7 @@ If the transaction ends up using less gas than the amount deducted, the differen
 
 <summary> Gas Refund Fee </summary>
 
-Since protocol version 78, the unspent gas at the end of receipt execution is subject to a gas refund fee. The fee is calculated as `max(1 Tgas, 0.05 * unspent_gas) * gas_price`. The gas price is from the time of purchase.
+Since protocol version 78, the unspent gas at the end of receipt execution is subject to a gas refund fee. The fee is still at 0 while we give projects time to adapt. The plan is to move to a fee calculated as `max(1 Tgas, 0.05 * unspent_gas) * gas_price`. The gas price is from the time of purchase.
 
 _But why introducing such a fee instead of refunding all gas?_
 
