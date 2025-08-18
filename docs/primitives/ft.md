@@ -31,8 +31,6 @@ import CLIRegister from "@site/src/components/docs/primitives/ft/near-cli/regist
 import CLIAttachTokenToCall from "@site/src/components/docs/primitives/ft/near-cli/attach-to-call.md"
 import CLICreateToken from "@site/src/components/docs/primitives/ft/near-cli/create.md"
 import CLICreateTokenManually from "@site/src/components/docs/primitives/ft/near-cli/create-manually.md"
-import CLICreateTokenUsingGlobalAccountId from "@site/src/components/docs/primitives/ft/near-cli/create-using-global-account-id.md"
-import CLICreateTokenUsingGlobalHash from "@site/src/components/docs/primitives/ft/near-cli/create-using-global-hash.md"
 
 import SmartContractSendToken from "@site/src/components/docs/primitives/ft/smart-contract/send.md"
 import SmartContractAttachTokenToCall from "@site/src/components/docs/primitives/ft/smart-contract/attach-to-call.md"
@@ -110,9 +108,30 @@ In other words, you can deploy a FT contract using our global FT contract, which
 <Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     Deploy by account id:
-    <CLICreateTokenUsingGlobalAccountId />
+
+    ```bash
+    near contract deploy <account-id> use-global-account-id ft.globals.primitives.testnet \
+      with-init-call \
+      new_default_meta \
+      json-args '{"owner_id": "<account-id>", "total_supply": "100000000000000000000000000000"}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain send
+    ```
+
     Deploy by hash:
-    <CLICreateTokenUsingGlobalHash />
+
+    ```bash
+    near contract deploy <account-id> use-global-hash 3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX \
+      with-init-call \
+      new_default_meta \
+      json-args '{"owner_id": "<account-id>", "total_supply": "100000000000000000000000000000"}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain send
+    ```
   </TabItem>
 </Tabs>
 

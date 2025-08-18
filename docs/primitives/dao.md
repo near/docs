@@ -28,8 +28,6 @@ import CLIGetProposalList from "@site/src/components/docs/primitives/dao/near-cl
 import CLICreateDAO from "@site/src/components/docs/primitives/dao/near-cli/create-dao.md"
 import CLICreateProposal from "@site/src/components/docs/primitives/dao/near-cli/create-proposal.md"
 import CLIVoteForProposal from "@site/src/components/docs/primitives/dao/near-cli/vote-for-proposal.md"
-import CLIDeployContractUsingGlobalAccountId from "@site/src/components/docs/primitives/dao/near-cli/deploy-using-global-account-id.md"
-import CLIDeployContractUsingGlobalHash from "@site/src/components/docs/primitives/dao/near-cli/deploy-using-global-hash.md"
 
 import LantstoolGetDAOList from "@site/src/components/docs/primitives/dao/lantstool/get-dao-list.md"
 import LantstoolGetProposalList from "@site/src/components/docs/primitives/dao/lantstool/get-proposal-list.md"
@@ -86,9 +84,32 @@ In other words, you can deploy a DAO contract using our global DAO contract, whi
 <Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     Deploy by account id:
-    <CLIDeployContractUsingGlobalAccountId />
+
+    ```bash
+    near contract deploy <account-id> use-global-account-id dao.globals.primitives.testnet \
+      with-init-call new \
+      json-args '{"config": {"name": "Primitives", "purpose": "Building primitives on NEAR", "metadata":""}, "policy": ["<account-id>"]}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain \
+      send
+    ```
+
+
     Deploy by hash:
-    <CLIDeployContractUsingGlobalHash />
+
+    ```bash
+    near contract deploy <account-id> use-global-hash Ea8tHXFSQVszVwGASyzAfLq65DjcRDhkfab4FcPaRpgD \
+      with-init-call new \
+      json-args '{"config": {"name": "Primitives", "purpose": "Building primitives on NEAR", "metadata":""}, "policy": ["<account-id>"]}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain \
+      send
+    ```
+
   </TabItem>
 </Tabs>
 
