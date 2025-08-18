@@ -1,6 +1,8 @@
 ---
 id: what-is
 title: What are Web3 Apps?
+sidebar_label: Introduction
+description: "Learn about Web3 applications (dApps) that leverage smart contracts and blockchain data to offer transparency, security, and user control over assets and data."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -8,7 +10,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Web3 Applications - also known as decentralized apps (dApps) - leverage [smart contracts](../smart-contracts/what-is.md) and blockchain data to offer **transparency**, **security** and **giving back control** to users over their assets and data.
 
-![img](/docs/assets/welcome-pages/examples.png)
+![img](/docs/assets/welcome-pages/3.web3-apps.png)
 
 NEAR simplifies building Web3 apps for the general public, making it easy to **interact** with different blockchains, while helping to **onboard users** that are not familiarized with crypto.
 

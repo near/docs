@@ -1,6 +1,7 @@
 ---
 id: clear-state
-title: "Clear Contract State"
+title: Clear Contract State
+description: "This simple command-line tool allows you to clean up the state of a NEAR account without deleting it."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

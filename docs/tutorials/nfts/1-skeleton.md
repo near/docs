@@ -2,6 +2,7 @@
 id: skeleton
 title: Skeleton and Rust Architecture
 sidebar_label: Contract Architecture
+description: "In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this _\"Zero to Hero\"_ series."
 ---
 import {Github} from "@site/src/components/codetabs"
 

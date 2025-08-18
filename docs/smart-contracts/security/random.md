@@ -1,6 +1,7 @@
 ---
 id: random
 title: Random Numbers
+description: "Learn about secure random number generation in NEAR smart contracts and how to avoid predictable randomness vulnerabilities."
 ---
 
 When writing smart contracts in NEAR you have access to a `random seed` that enables you to create random numbers/strings

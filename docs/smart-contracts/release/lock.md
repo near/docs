@@ -1,10 +1,13 @@
 ---
 id: lock
 title: Locking Accounts
+description: "Learn how to lock NEAR smart contracts to prevent unauthorized modifications and ensure contract immutability when needed."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+In NEAR, you can lock an account by removing all its [full access keys](/tools/near-cli#delete-key). This is useful to prevent any further transactions from being executed in the account's name, effectively locking it.
 
 Removing all [full access keys](/tools/near-cli#delete-key) from an account will effectively **lock it**.
 

@@ -1,6 +1,7 @@
 ---
 id: what-is
-title: What are Primitives? 
+title: What are Primitives?
+description: "Learn about blockchain primitives including Fungible Tokens (FT), Non-Fungible Tokens (NFT), Decentralized Autonomous Organizations (DAO), and LinkDrops as building blocks for applications."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -8,7 +9,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
 Primitives are fundamental building blocks that can be combined to create a fully functional application. Blockchain primitives include [Fungible Tokens (FT)](#fungible-tokens-ft), [Non Fungible Tokens (NFT)](#non-fungible-tokens-nft), [Decentralized Autonomous organizations (DAO)](#decentralized-autonomous-organizations-dao), [Link Drops](#linkdrops) and more.
 
-![img](/docs/assets/welcome-pages/primitives.png)
+![img](/docs/assets/welcome-pages/5.primitives.png)
 
 ---
 

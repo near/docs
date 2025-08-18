@@ -3,6 +3,7 @@ id: storage
 title: State
 sidebar_label: State (Storage)
 hide_table_of_contents: true
+description: "Smart contracts store data in their account's state, which is public on the chain. The storage starts empty until a contract is deployed and the state is initialized."
 ---
 
 import Tabs from '@theme/Tabs';

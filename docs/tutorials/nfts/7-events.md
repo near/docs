@@ -1,6 +1,7 @@
 ---
 id: events
 title: Events
+description: "In this tutorial, you'll learn about the events standard and how to implement it in your smart contract."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
@@ -163,7 +164,7 @@ In addition, you need to add an `authorized_id` and `memo` to the parameters for
 
 :::tip
 
-We will talk more about this [`authorized_id`](./5-approval.md) in the following chapter.
+We will talk more about this [`authorized_id`](./5-approvals.md) in the following chapter.
 
 :::
 

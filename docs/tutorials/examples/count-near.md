@@ -1,6 +1,7 @@
 ---
 id: count-near
 title: Count on NEAR
+description: "Build a simple counter smart contract on NEAR Protocol with increment, decrement, and reset functionality, including frontend integration and testing."
 ---
 
 import {CodeTabs, Language, Github} from '@site/src/components/codetabs';
@@ -8,8 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
-Our counter example is a friendly decentralized app that stores a number and exposes methods to `increment`,
-`decrement`, and `reset` it.
+Our counter example is a friendly decentralized app that stores a number and exposes methods to `increment`,`decrement`, and `reset` it.
 
 ![img](/docs/assets/examples/count-on-near-banner.png)
 

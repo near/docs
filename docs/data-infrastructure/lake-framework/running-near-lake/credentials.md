@@ -1,9 +1,8 @@
 ---
-sidebar_label: "Credentials"
+sidebar_label: Credentials
 id: credentials
+description: "To access the data provided by NEAR Lake you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage."
 ---
-
-# Credentials
 
 To access the data provided by [NEAR Lake](../near-lake.md) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
 

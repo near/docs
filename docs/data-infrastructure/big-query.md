@@ -2,7 +2,12 @@
 id: big-query
 title: BigQuery Public Dataset
 sidebar_label: BigQuery
+description: "Learn how to use NEAR Protocol's BigQuery public dataset for blockchain data analysis, including querying on-chain data, understanding costs, and accessing historical transaction data."
 ---
+
+This document provides an overview of the  BigQuery public dataset that allows users to query historical on-chain data from the NEAR Protocol. It includes setup instructions, example queries, and information about the available data structures.
+
+# NEAR Public Lakehouse
 
 Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data. This includes:
 
@@ -19,8 +24,8 @@ Benefits:
 ## Getting started
 
 1. Login into your [Google Cloud Account](https://console.cloud.google.com/).
-2. Open the [NEAR Protocol BigQuery Public Dataset](https://console.cloud.google.com/marketplace/product/bigquery-public-data/crypto-near-mainnet).
-3. Click in the <kbd>[VIEW DATASET](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=crypto_near_mainnet_us&page=dataset)</kbd> button.
+2. Open the [NEAR Protocol BigQuery Public Dataset](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=crypto_near_mainnet_us&page=dataset).
+3. Click in the <kbd>VIEW DATASET</kbd> button.
 4. Click in the <kbd>+</kbd> to create a new tab and write your query, click in the <kbd>RUN</kbd> button, and check the `Query results` below the query.
 5. Done :)
 
@@ -59,7 +64,7 @@ ORDER BY 1 DESC;
 You can check how much data it will query before running it in the BigQuery console UI. Again, since BigQuery uses a columnar data structure and partitions, it's recommended to select only the columns and partitions (`block_date`) needed to avoid unnecessary query costs.
 :::
 
-![Query Costs](/docs/BQ_Query_Cost.png "BQ Query Costs")
+![Query Costs](/docs/assets/data-infra/BQ_Query_Cost.png "BQ Query Costs")
 
 ## Architecture
 
@@ -67,7 +72,7 @@ The data is loaded in a streaming fashion using [Databricks Autoloader](https://
 
 The silver tables are also copied into the [GCP BigQuery Public Dataset](https://cloud.google.com/bigquery/public-data).
 
-![Architecture](/docs/Architecture.png "Architecture")
+![Architecture](/docs/assets/data-infra/Architecture.png "Architecture")
 
 :::info
 

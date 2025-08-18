@@ -1,6 +1,7 @@
 ---
 id: backend-login
-title: Authenticate NEAR Users 
+title: Authenticate NEAR Users
+description: "Learn how to authenticate NEAR users in your backend service by creating challenges, requesting wallet signatures, and verifying signatures."
 ---
 
 import {Github} from "@site/src/components/codetabs"

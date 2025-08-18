@@ -1,14 +1,10 @@
 ---
 id: nearblocks
 title: NearBlocks
+description: "NearBlocks provides a comprehensive API for accessing on-chain data from the NEAR Protocol. It offers a wide range of endpoints to query various aspects of the blockchain, including accounts, transactions, blocks, functions calls and more."
 ---
 
-[NearBlocks](https://api.nearblocks.io/api-docs/) provides an endpoint to query actions that happened on a NEAR account, possible use cases include:
-
-- Query an account balance
-- Query all function calls to specific contract
-- Get total NEAR supply and circulating supply
-- Query the number of total transactions on NEAR 
+[NearBlocks](https://api.nearblocks.io/api-docs/) provides a comprehensive API for accessing on-chain data from the NEAR Protocol. It offers a wide range of endpoints to query various aspects of the blockchain, including accounts, transactions, blocks, functions calls and more.
 
 :::tip Documentation 
 

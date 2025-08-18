@@ -1,7 +1,10 @@
 ---
 id: transaction-anatomy
 title: Anatomy of a Transaction
+description: "Learn about the structure and components of NEAR Protocol transactions, including signers, receivers, actions, and transaction validation fields."
 ---
+
+This section explains the anatomy of a transaction in the NEAR Protocol, describing its structure, components, and the actions that can be performed within a transaction.
 
 A transaction is a request from a user to the network to perform a set of actions. To create a transaction, the user must specify the following fields:
 

@@ -1,6 +1,7 @@
 ---
 id: getting-started
 title: Getting Started with Chain Signatures
+description: "Learn how to get started with Chain Signatures on NEAR, a groundbreaking technology that enables accounts to sign and execute transactions across multiple blockchains using MPC."
 ---
 
 Chain Signatures is a groundbreaking technology built on NEAR that enables all accounts, including smart contracts, to sign and execute transactions across multiple blockchains.
@@ -17,7 +18,7 @@ Chain Signatures enhances blockchain interoperability, giving ownership of diver
 
 When a NEAR account - could be a user or a **smart contract** - wants to interact with a foreign blockchain, it just need to follow four simple steps.
 
-![Chain Signatures](/docs/assets/chain-abstract-2.svg)
+![Chain Signatures](/docs/assets/chain-abstraction/chain-abstract-2.svg)
 _Chain signatures flow_
 
 #### 1. Deriving Foreign Addresses

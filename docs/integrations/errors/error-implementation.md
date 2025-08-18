@@ -2,6 +2,7 @@
 id: error-implementation
 title: Source Code Survey
 sidebar_label: Source Code Survey
+description: "Learn how to properly implement error handling in NEAR protocol applications, including best practices for catching and managing errors."
 ---
 
 This page provides a very high level, sometimes "pseudocode", view of error types and related messages as implemented by the NEAR platform.

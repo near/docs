@@ -2,6 +2,7 @@
 id: introduction
 title: Fungible Tokens Zero to Hero
 sidebar_label: Introduction
+description: "In this _Zero to Hero_ series, you'll find a set of tutorials covering every aspect of a fungible token (FT) smart contract. You'll start by interacting with a pre-deployed contract and by the end you'll have built a fully-fledged FT smart contract that supports every extension of the standards."
 ---
 
 In this _Zero to Hero_ series, you'll find a set of tutorials covering every aspect of a fungible token (FT) smart contract. You'll start by interacting with a pre-deployed contract and by the end you'll have built a fully-fledged FT smart contract that supports every extension of the standards.

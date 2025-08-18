@@ -1,10 +1,13 @@
 ---
 id: integrate-contracts
 title: Integrating Contracts
+description: "Learn how to integrate NEAR smart contracts into your frontend using Wallet Selector and NEAR API JS - handle user login, call contract methods, and manage transactions."
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+Integrating smart contracts into your web3 application is a crucial step in building decentralized applications (dApps) on the NEAR Protocol. This guide will walk you through the process of integrating NEAR smart contracts into your frontend application, enabling you to interact with the blockchain seamlessly.
 
 To integrate NEAR to your frontend, you will leverage two tools:
 
@@ -25,15 +28,7 @@ Using those tools, you will implement the following flow:
 
 :::
 
-<details>
 
-<summary> Alternatives to `near-api-js` </summary>
-
-You can optionally use [Naxios](https://wpdas.gitbook.io/naxios). A promise-based NEAR Contract and NEAR Wallet Client for browser.
-
-Naxios was designed to facilitate the React / Next.js integration with NEAR Blockchain and avoid the boilerplate of setting up a wallet and contract.
-
-</details>
 
 
 <details markdown="1">
@@ -309,7 +304,7 @@ By calling the `getBalance` method the user can get the balance of a given accou
 
 ## Get Access Keys
 
-The final method the the wallet selector hooks exposes is `getAccessKeys` which is used to return an object of all the access keys on the account that is currently logged in.
+The final method the wallet selector hooks exposes is `getAccessKeys` which is used to return an object of all the access keys on the account that is currently logged in.
 
 <Language value="js" language="js">
 ```js

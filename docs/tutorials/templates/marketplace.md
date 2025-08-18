@@ -1,6 +1,12 @@
+---
+description: "This tutorial provides a step-by-step guide to creating a marketplace frontend using Mintbase's SDK. It covers connecting a wallet, retrieving NFTs, store data, metadata, and executing contract calls for buying NFTs. The guide is part of the Mintbase Templates collection and includes setup instructions, code snippets, and environment variable configurations."
+---
+This tutorial provides a step-by-step guide to creating a marketplace frontend using Mintbase's SDK. It covers connecting a wallet, retrieving NFTs, store data, metadata, and executing contract calls for buying NFTs. The guide is part of the Mintbase Templates collection and includes setup instructions, code snippets, and environment variable configurations.
+
+
 # Marketplace Frontend
 
-[![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://marketplace-template.mintbase.xyz/)
+[![Demo](https://img.shields.io/badge/Demo-Visit%20Demo-brightgreen)](https://github.com/Mintbase/templates/tree/main/marketplace)
 [![Deploy](https://img.shields.io/badge/Deploy-on%20Vercel-blue)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMintbase%2Ftemplates%2Ftree%2Fmain%2Fmarketplace)
 
 Unlock Your NFT Storefront: Clone & Customize Your Path to Blockchain Success with this whitelabel marketplace template!
@@ -8,20 +14,20 @@ Unlock Your NFT Storefront: Clone & Customize Your Path to Blockchain Success wi
 ![img](https://i.imgur.com/FjcUss9.png)
 
 :::tip Mintbase Templates
-This is part of the [Mintbase Templates](https://templates.mintbase.xyz/), a collection of templates that you can use to scaffold your own project
+This is part of the [Mintbase Templates](https://github.com/Mintbase/templates), a collection of templates that you can use to scaffold your own project
 :::
 
 ---
 
 ## Project Walkthrough
 
-This guide will take you step by step through the process of creating a basic marketplace frontend where you can purchase tokens and filter your selection by store. It uses [mintbase-js/data](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/data) for retrieving data and [mintbase-js/sdk](https://docs.mintbase.xyz/dev/mintbase-sdk-ref/sdk) for executing marketplace methods on the [mintbase marketplace contract](https://github.com/Mintbase/mb-contracts/tree/main/mb-interop-market).
+This guide will take you step by step through the process of creating a basic marketplace frontend where you can purchase tokens and filter your selection by store. It uses mintbase-js/data for retrieving data and mintbase-js/sdk for executing marketplace methods on the [mintbase marketplace contract](https://github.com/Mintbase/mb-contracts/tree/main/mb-interop-market).
 
 The mintbase-js/data package provides convenient functions for retrieving nft data from the mintbase indexer. In this example, you will be able to view and purchase NFTs from a specific nft contract.
 
 You can find more information on Github: [GitHub link](https://github.com/Mintbase/mintbase-js/tree/beta/packages/data)
 
-A live demo of the marketplace can be found here: [Live demo link](https://marketplace-template.mintbase.xyz/)
+A live demo of the marketplace can be found here: [Live demo link](https://github.com/Mintbase/templates/tree/main/marketplace)
 
 
 ### Setup
@@ -38,7 +44,7 @@ pnpm dev
 
 ### Step 1: Connect Wallet
 
-Before proceeding, it is important to have a wallet connection feature implemented in your application in order to interact with the contract. To do this, you can check our guide [Wallet Connection Guide](https://docs.mintbase.xyz/dev/getting-started/add-wallet-connection-to-your-react-app).
+Before proceeding, it is important to have a wallet connection feature implemented in your application in order to interact with the contract. To do this, you can check our guide [Wallet Connection Guide](https://github.com/Mintbase/mintbase-js/tree/beta/packages/sdk).
 
 <hr class="subsection" />
 
@@ -195,8 +201,8 @@ copy .env.example .env.local
 
 To get your `api key` visit :
 
-[Mintbase Developers Page for Mainnet](https://www.mintbase.xyz/developer):
-[Mintbase Developers Page for testnet](https://testnet.mintbase.xyz/developer):
+[Mintbase Developers Page for Mainnet](https://github.com/Mintbase/mintbase-js):
+[Mintbase Developers Page for testnet](https://github.com/Mintbase/mintbase-js):
 
 ```
 NEXT_PUBLIC_DEVELOPER_KEY=your_mintbase_api_key

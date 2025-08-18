@@ -1,10 +1,17 @@
 ---
 id: account-id
 title: Address (Account ID)
+description: "Learn about NEAR account addresses - implicit addresses (64 characters) and named addresses that work as domains, including sub-account creation and management."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+NEAR accounts are identified by a unique address, which can be either an implicit address (64 characters long) or a named address (e.g. `account.near`, `sub.account.near`).
+
+--- 
+
+## Types of Account IDs
 
 NEAR accounts are identified by a unique address, which takes one of two forms:
 1. [**Implicit address**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)

@@ -1,6 +1,7 @@
 ---
 id: setup
-title: Setup 
+title: Setup
+description: "Learn how to set up RPC endpoints for NEAR networks, configure authentication, and use tools like Postman, JavaScript, and HTTPie to interact with the API."
 ---
 
 In order to use the RPC API you will need to setup the correct RPC endpoints.
@@ -41,10 +42,10 @@ An easy way to test the queries in this documentation page is to use an API requ
 You only need to configure two things:
 
 1. Make sure you add a header with a key of `Content-Type` and value of `application/json`.
-   ![postman-setup-header](/docs/assets/postman-setup-headers.png)
+   ![postman-setup-header](/docs/assets/api/postman-setup-headers.png)
 
 2. Then select the `Body` tab and choose the `raw` radio button and ensure `JSON` is the selected format.
-   ![postman-setup-header](/docs/assets/postman-setup-body.png)
+   ![postman-setup-header](/docs/assets/api/postman-setup-body.png)
 
 After that is set up, just copy/paste the `JSON object` example snippets below into the `body` of your request, on Postman, and click `send`.
 
