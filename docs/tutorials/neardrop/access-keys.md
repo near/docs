@@ -6,6 +6,7 @@ description: "Understand how function-call access keys enable gasless operations
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {Github} from "@site/src/components/codetabs"
 
 This is where NEAR gets really cool. Function-call access keys are what make gasless claiming possible - let's understand how they work!
 
@@ -42,24 +43,9 @@ NEAR has two types of keys:
 
 Here's what happens when you create a drop:
 
-   <TabItem value="rust" label="🦀 Rust">
-```rust
-// 1. Generate public/private key pairs
-let keypair = KeyPair::fromRandom('ed25519');
-
-// 2. Add public key to contract with limited permissions
-Promise::new(contract_account)
-    .add_access_key(
-        public_key,
-        NearToken::from_millinear(5),  // 0.005 NEAR gas budget
-        contract_account,               // Can only call this contract
-        "claim_for,create_account_and_claim"  // Only these methods
-    )
-
-// 3. Give private key to recipient
-// 4. Recipient signs transactions using the CONTRACT'S account (gasless!)
-```
-</TabItem>
+<Github fname="lib.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/lib.rs"
+        start="140" end="170" />
 
 **The result**: Recipients can claim tokens without having NEAR accounts or paying gas!
 
@@ -69,15 +55,9 @@ Promise::new(contract_account)
 
 Function-call keys in NEAR Drop have strict limits:
 
-   <TabItem value="rust" label="🦀 Rust">
-```rust
-pub struct AccessKeyPermission {
-    allowance: NearToken::from_millinear(5),    // Gas budget: 0.005 NEAR
-    receiver_id: "drop-contract.testnet",       // Can only call this contract
-    method_names: ["claim_for", "create_account_and_claim"]  // Only these methods
-}
-```
-</TabItem>
+<Github fname="lib.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/lib.rs"
+        start="8" end="20" />
 
 **What keys CAN do:**
 - Call `claim_for` to claim to existing accounts
@@ -105,20 +85,9 @@ The lifecycle is simple and secure:
 
 Here's the cleanup code:
 
-   <TabItem value="rust" label="🦀 Rust">
-```rust
-fn cleanup_after_claim(&mut self, public_key: &PublicKey) {
-    // Remove mapping
-    self.drop_id_by_key.remove(public_key);
-    
-    // Delete the access key
-    Promise::new(env::current_account_id())
-        .delete_key(public_key.clone());
-        
-    env::log_str("Key cleaned up after claim");
-}
-```
-</TabItem>
+<Github fname="claim.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/claim.rs"
+        start="200" end="220" />
 
 ---
 
@@ -128,47 +97,17 @@ fn cleanup_after_claim(&mut self, public_key: &PublicKey) {
 
 You can make keys that expire:
 
-   <TabItem value="rust" label="🦀 Rust">
-```rust
-pub struct TimeLimitedDrop {
-    drop: Drop,
-    expires_at: Timestamp,
-}
-
-impl Contract {
-    pub fn cleanup_expired_keys(&mut self) {
-        let now = env::block_timestamp();
-        
-        // Find and remove expired drops
-        for (drop_id, drop) in self.time_limited_drops.iter() {
-            if now > drop.expires_at {
-                self.remove_all_keys_for_drop(drop_id);
-            }
-        }
-    }
-}
-```
-</TabItem>
+<Github fname="lib.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/lib.rs"
+        start="300" end="330" />
 
 ### Key Rotation
 
 For extra security, you can rotate keys:
 
-   <TabItem value="rust" label="🦀 Rust">
-```rust
-impl Contract {
-    pub fn rotate_drop_keys(&mut self, drop_id: u64, new_keys: Vec<PublicKey>) {
-        // Remove old keys
-        self.remove_old_keys(drop_id);
-        
-        // Add new keys
-        for key in new_keys {
-            self.add_claim_key(&key, drop_id);
-        }
-    }
-}
-```
-</TabItem>
+<Github fname="lib.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/lib.rs"
+        start="350" end="380" />
 
 ---
 
@@ -192,21 +131,9 @@ impl Contract {
 
 Track how much gas your keys use:
 
-   <TabItem value="rust" label="🦀 Rust">
-```rust
-impl Contract {
-    pub fn track_key_usage(&mut self, operation: &str) {
-        let gas_used = env::used_gas();
-        
-        // Log for monitoring
-        env::log_str(&format!("{} used {} gas", operation, gas_used.0));
-        
-        // Could store in state for analytics
-        self.gas_usage_stats.insert(operation, gas_used);
-    }
-}
-```
-</TabItem>
+<Github fname="lib.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/lib.rs"
+        start="400" end="420" />
 
 ---
 
@@ -214,28 +141,15 @@ impl Contract {
 
 Your frontend can generate keys securely:
 
-<TabItem value="js" label="🌐 JavaScript">
-```javascript
-import { KeyPair } from 'near-api-js';
+<Github fname="crypto.js" language="javascript" 
+        url="https://github.com/Festivemena/Drop/blob/main/src/utils/crypto.js"
+        start="1" end="30" />
 
-// Generate keys on the client
-function generateDropKeys(count) {
-    return Array.from({ length: count }, () => {
-        const keyPair = KeyPair.fromRandom('ed25519');
-        return {
-            publicKey: keyPair.publicKey.toString(),
-            privateKey: keyPair.secretKey,
-            claimUrl: generateClaimUrl(keyPair.secretKey)
-        };
-    });
-}
+Create claim URLs:
 
-// Create claim URLs
-function generateClaimUrl(privateKey) {
-    return `${window.location.origin}/claim?key=${encodeURIComponent(privateKey)}`;
-}
-```
-</TabItem>
+<Github fname="crypto.js" language="javascript" 
+        url="https://github.com/Festivemena/Drop/blob/main/src/utils/crypto.js"
+        start="32" end="45" />
 
 ---
 
