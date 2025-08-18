@@ -7,6 +7,7 @@ description: "Add support for NEP-141 fungible tokens with cross-contract calls 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {Github} from "@site/src/components/codetabs"
 
 Time to level up! Let's add support for fungible token drops. This is where things get interesting because we need to interact with other contracts.
 
@@ -29,43 +30,14 @@ But don't worry - we'll handle all of this step by step.
 
 First, let's add FT support to our drop types in `src/drop_types.rs`:
 
-   <TabItem value="rust" label="🦀 Rust">
-```rust
-#[derive(BorshDeserialize, BorshSerialize, Clone)]
-pub enum Drop {
-    Near(NearDrop),
-    FungibleToken(FtDrop),  // New!
-}
-
-#[derive(BorshDeserialize, BorshSerialize, Clone)]
-pub struct FtDrop {
-    pub ft_contract: AccountId,
-    pub amount: String,  // String to handle large numbers
-    pub counter: u64,
-}
-```
-</TabItem>
+<Github fname="drop_types.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/drop_types.rs"
+        start="5" end="35" />
 
 Update the helper methods:
-   <TabItem value="rust" label="🦀 Rust">
-```rust
-impl Drop {
-    pub fn get_counter(&self) -> u64 {
-        match self {
-            Drop::Near(drop) => drop.counter,
-            Drop::FungibleToken(drop) => drop.counter,
-        }
-    }
-    
-    pub fn decrement_counter(&mut self) {
-        match self {
-            Drop::Near(drop) => drop.counter -= 1,
-            Drop::FungibleToken(drop) => drop.counter -= 1,
-        }
-    }
-}
-```
-</TabItem>
+<Github fname="drop_types.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/drop_types.rs"
+        start="37" end="60" />
 
 ---
 
@@ -73,32 +45,9 @@ impl Drop {
 
 Create `src/external.rs` to define how we talk to FT contracts:
 
-<TabItem value="rust" label="🦀 Rust">
-```rust
-use near_sdk::{ext_contract, AccountId, Gas, NearToken};
-
-// Interface for NEP-141 fungible token contracts
-#[ext_contract(ext_ft)]
-pub trait FungibleToken {
-    fn ft_transfer(&mut self, receiver_id: AccountId, amount: String, memo: Option<String>);
-    fn storage_deposit(&mut self, account_id: Option<AccountId>);
-}
-
-// Interface for callbacks to our contract
-#[ext_contract(ext_self)]
-pub trait DropCallbacks {
-    fn ft_transfer_callback(&mut self, public_key: PublicKey, receiver_id: AccountId);
-}
-
-// Gas constants
-pub const GAS_FOR_FT_TRANSFER: Gas = Gas(20_000_000_000_000);
-pub const GAS_FOR_STORAGE_DEPOSIT: Gas = Gas(30_000_000_000_000);
-pub const GAS_FOR_CALLBACK: Gas = Gas(20_000_000_000_000);
-
-// Storage deposit for FT registration
-pub const STORAGE_DEPOSIT: NearToken = NearToken::from_millinear(125); // 0.125 NEAR
-```
-</TabItem>
+<Github fname="external.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/external.rs"
+        start="1" end="30" />
 
 ---
 
@@ -106,58 +55,9 @@ pub const STORAGE_DEPOSIT: NearToken = NearToken::from_millinear(125); // 0.125 
 
 Add this to your main contract in `src/lib.rs`:
 
-<TabItem value="rust" label="🦀 Rust">
-```rust
-use crate::external::*;
-
-#[near_bindgen]
-impl Contract {
-    /// Create a fungible token drop
-    pub fn create_ft_drop(
-        &mut self,
-        public_keys: Vec<PublicKey>,
-        ft_contract: AccountId,
-        amount_per_drop: String,
-    ) -> u64 {
-        let num_keys = public_keys.len() as u64;
-        let deposit = env::attached_deposit();
-        
-        // Validate amount format
-        amount_per_drop.parse::<u128>()
-            .expect("Invalid amount format");
-        
-        // Calculate costs
-        let storage_cost = DROP_STORAGE_COST + KEY_STORAGE_COST * num_keys;
-        let gas_cost = ACCESS_KEY_ALLOWANCE * num_keys;
-        let registration_buffer = STORAGE_DEPOSIT * num_keys; // For user registration
-        let total_cost = storage_cost + gas_cost + registration_buffer;
-        
-        assert!(deposit >= total_cost, "Need {} NEAR for FT drop", total_cost.as_near());
-        
-        // Create the drop
-        let drop_id = self.next_drop_id;
-        self.next_drop_id += 1;
-        
-        let drop = Drop::FungibleToken(FtDrop {
-            ft_contract: ft_contract.clone(),
-            amount: amount_per_drop.clone(),
-            counter: num_keys,
-        });
-        
-        self.drop_by_id.insert(&drop_id, &drop);
-        
-        // Add keys
-        for public_key in public_keys {
-            self.add_claim_key(&public_key, drop_id);
-        }
-        
-        env::log_str(&format!("Created FT drop {} with {} {} tokens per claim", 
-                             drop_id, amount_per_drop, ft_contract));
-        drop_id
-    }
-}
-```
-</TabItem>
+<Github fname="ft_drop.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/ft_drop.rs"
+        start="1" end="60" />
 
 ---
 
@@ -165,119 +65,15 @@ impl Contract {
 
 The tricky part! Update your `src/claim.rs`:
 
-<TabItem value="rust" label="🦀 Rust">
-```rust
-impl Contract {
-    /// Updated core claiming logic
-    fn process_claim(&mut self, public_key: &PublicKey, receiver_id: &AccountId) {
-        let drop_id = self.drop_id_by_key.get(public_key)
-            .expect("No drop found for this key");
-        
-        let mut drop = self.drop_by_id.get(&drop_id)
-            .expect("Drop data not found");
-        
-        assert!(drop.get_counter() > 0, "No claims remaining");
-        
-        match &drop {
-            Drop::Near(near_drop) => {
-                // Handle NEAR tokens (same as before)
-                Promise::new(receiver_id.clone()).transfer(near_drop.amount);
-                self.cleanup_claim(public_key, &mut drop, drop_id);
-            }
-            Drop::FungibleToken(ft_drop) => {
-                // Handle FT tokens with cross-contract call
-                self.claim_ft_tokens(
-                    public_key.clone(),
-                    receiver_id.clone(),
-                    ft_drop.ft_contract.clone(),
-                    ft_drop.amount.clone(),
-                );
-                // Note: cleanup happens in callback for FT drops
-            }
-        }
-    }
-    
-    /// Claim FT tokens with automatic user registration
-    fn claim_ft_tokens(
-        &mut self,
-        public_key: PublicKey,
-        receiver_id: AccountId,
-        ft_contract: AccountId,
-        amount: String,
-    ) {
-        // First, register the user on the FT contract
-        ext_ft::ext(ft_contract.clone())
-            .with_static_gas(GAS_FOR_STORAGE_DEPOSIT)
-            .with_attached_deposit(STORAGE_DEPOSIT)
-            .storage_deposit(Some(receiver_id.clone()))
-            .then(
-                Self::ext(env::current_account_id())
-                    .with_static_gas(GAS_FOR_CALLBACK)
-                    .ft_registration_callback(public_key, receiver_id, ft_contract, amount)
-            );
-    }
-    
-    /// Handle FT registration result
-    #[private]
-    pub fn ft_registration_callback(
-        &mut self,
-        public_key: PublicKey,
-        receiver_id: AccountId,
-        ft_contract: AccountId,
-        amount: String,
-    ) {
-        // Registration succeeded or user was already registered
-        // Now transfer the actual tokens
-        ext_ft::ext(ft_contract.clone())
-            .with_static_gas(GAS_FOR_FT_TRANSFER)
-            .ft_transfer(
-                receiver_id.clone(),
-                amount.clone(),
-                Some("NEAR Drop claim".to_string())
-            )
-            .then(
-                Self::ext(env::current_account_id())
-                    .with_static_gas(GAS_FOR_CALLBACK)
-                    .ft_transfer_callback(public_key, receiver_id)
-            );
-    }
-    
-    /// Handle FT transfer result
-    #[private]
-    pub fn ft_transfer_callback(&mut self, public_key: PublicKey, receiver_id: AccountId) {
-        let success = env::promise_results_count() == 1 &&
-            matches!(env::promise_result(0), PromiseResult::Successful(_));
-        
-        if success {
-            env::log_str(&format!("FT tokens transferred to {}", receiver_id));
-            
-            // Clean up the claim
-            if let Some(drop_id) = self.drop_id_by_key.get(&public_key) {
-                if let Some(mut drop) = self.drop_by_id.get(&drop_id) {
-                    self.cleanup_claim(&public_key, &mut drop, drop_id);
-                }
-            }
-        } else {
-            env::panic_str("FT transfer failed");
-        }
-    }
-    
-    /// Clean up after successful claim
-    fn cleanup_claim(&mut self, public_key: &PublicKey, drop: &mut Drop, drop_id: u64) {
-        drop.decrement_counter();
-        
-        if drop.get_counter() == 0 {
-            self.drop_by_id.remove(&drop_id);
-        } else {
-            self.drop_by_id.insert(&drop_id, drop);
-        }
-        
-        self.drop_id_by_key.remove(public_key);
-        Promise::new(env::current_account_id()).delete_key(public_key.clone());
-    }
-}
-```
-</TabItem>
+<Github fname="claim.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/claim.rs"
+        start="150" end="200" />
+
+FT claiming with automatic user registration:
+
+<Github fname="claim.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/claim.rs"
+        start="202" end="280" />
 
 ---
 
@@ -342,29 +138,9 @@ near view test-ft.testnet ft_balance_of '{"account_id": "alice.testnet"}'
 
 ## Add Helper Functions
 
-<TabItem value="rust" label="🦀 Rust">
-```rust
-#[near_bindgen]
-impl Contract {
-    /// Calculate FT drop cost
-    pub fn estimate_ft_drop_cost(&self, num_keys: u64) -> NearToken {
-        let storage_cost = DROP_STORAGE_COST + KEY_STORAGE_COST * num_keys;
-        let gas_cost = ACCESS_KEY_ALLOWANCE * num_keys;
-        let registration_buffer = STORAGE_DEPOSIT * num_keys;
-        storage_cost + gas_cost + registration_buffer
-    }
-    
-    /// Get FT drop details
-    pub fn get_ft_drop_info(&self, drop_id: u64) -> Option<(AccountId, String, u64)> {
-        if let Some(Drop::FungibleToken(ft_drop)) = self.drop_by_id.get(&drop_id) {
-            Some((ft_drop.ft_contract, ft_drop.amount, ft_drop.counter))
-        } else {
-            None
-        }
-    }
-}
-```
-</TabItem>
+<Github fname="ft_drop.rs" language="rust" 
+        url="https://github.com/Festivemena/Near-drop/blob/main/contract/src/ft_drop.rs"
+        start="120" end="150" />
 
 ---
 
