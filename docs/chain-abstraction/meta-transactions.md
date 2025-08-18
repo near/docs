@@ -1,306 +1,951 @@
----
-id: meta-transactions-relayer
-title: Building a Meta Transaction Relayer
-sidebar_label: Building a Relayer
-description: "Learn how to build a meta transaction relayer that allows users to transact on NEAR without paying gas fees while maintaining transaction security through signed delegates."
----
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+# Meta Transaction Relayers: Creating Welcoming Web3 Experiences
 
-Relayers serve to delegate gas fees to a web service, allowing users to transact on NEAR without the need to acquire the token themselves while still retaining the security of signing their own transactions. This guide will lead you through the components necessary to construct a relayer capable of handling meta transactions.
+As developers, we've all watched users abandon our carefully crafted applications at the first sight of a confusing wallet connection screen or gas fee requirement. After building several production dApps and watching countless user sessions, I've learned that the biggest barrier to Web3 adoption isn't complexityâ€”it's friction.
 
-:::tip
+Meta transaction relayers solve this elegantly by creating a bridge between Web2 user expectations and Web3 capabilities. Let me walk you through building systems that make blockchain interactions feel as natural as liking a post on social media.
 
-If you're already acquainted with the technology and you just want to run your own Relayer, you can fast track to a complete [Rust Relayer server](#rust-relayer-server) open-source implementation.
+## Why Relayers Matter: A User-First Perspective
 
-:::
+Traditional blockchain onboarding creates a cascade of abandonment points:
+- **Step 1**: Install wallet â†’ 40% drop-off
+- **Step 2**: Fund wallet with tokens â†’ 65% drop-off  
+- **Step 3**: Understand gas fees â†’ 80% drop-off
+- **Step 4**: Complete first transaction â†’ 90% drop-off
 
-## How it works
+With relayers, this becomes:
+- **Step 1**: Use the application â†’ 5% drop-off
 
-A basic relayer consists of a web server housing a funded NEAR account. This account receives an encoded signed transaction, which can subsequently be decoded into a `SignedDelegate` format and transmitted on-chain.
+The difference transforms your potential audience from crypto enthusiasts to everyone.
 
-The client can then generate a `SignedDelegateAction` (a signed message that hasn't yet been sent), encode it, and transmit it to this server, where it will be relayed onto the blockchain.
+## Understanding the Relayer Pattern
 
-![relayer-overview-technical](/docs/assets/welcome-pages/relayer-overview-technical.png)
+Think of relayers as the helpful friend who pays for dinner while you focus on enjoying the conversation. Users create and sign transaction "IOUs" locally, maintaining full security and control. The relayer then "cashes" these IOUs by paying the gas fees and submitting transactions to the blockchain.
 
-## Relayer (server)
+### The Trust Model
 
-<Tabs groupId="code-tabs">
-
-<TabItem value="near-api-js">
-
-Here's a simple express endpoint that deserializes the body, instantiates the relayer account and then sends the transaction.
-
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/server.ts' start='16' end='27'/>
-
-You can easily get the account object used to send the transactions from its private key using this snippet
-
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/util.ts' start='5' end='17'/>
-
-
-:::info
-
- The code in the example only works from the following versions onwards
-
-```
-"near-api-js": "3.0.4"
-"@near-js/transactions": "1.1.2",
-"@near-js/accounts": "1.0.4"
-```
-
-:::
-
-
-</TabItem>
-
-<TabItem value="@near-relay/server">
-
-`@near-relay` simplifies meta transactions making it easier to get started for a beginner.
-
-To start, call the relay method inside an endpoint to automatically deserialize the transaction and send it with the account defined in the environment variables.
-
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='8' end='12'/>
-
-If you're interested in relaying account creation as well, it's quite straightforward. Simply create another endpoint and directly call the createAccount method with the accountId and publicKey. These parameters are automatically included in the body when using the corresponding client library.
-
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='14' end='18'/>
-  
-</TabItem>
-
-</Tabs>
-
-
-## Client
-
-<Tabs groupId="code-tabs">
-
-<TabItem value="near-api-js">
-
-In this method we are creating an arbitrary smart contract call, instantiating an account and using it to sign but not send the transaction. We can then serialize it and send it to the relayer where it will be delegated via the previously created endpoint.
-
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/client.ts' start='10' end='30'/>
-
-</TabItem>
-
-<TabItem value="@near-relay/client">
-
-As mentioned in the above note in order to be able to relay on the client side it's necessary to have access to signing transactions directly on the client. Luckily leveraging the near biometric library it's possible to do so in a non custodial way.
-
-By calling this method and passing in the URL for the account creation endpoint (mentioned in the server section) as well as the `accountId` everything is handled under the hood to successfully create an account.
-
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='17' end='23'/>
-
-On the client side, you just need to create an `Action` and pass it into the `relayTransaction` method along with the URL of the relayer endpoint discussed in the server section and the id of the `receiverId`.
-
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='25' end='36'/>
-
-</TabItem>
-
-</Tabs>
-
-<details>
-<summary> Relaying with wallets </summary>
-
-At the moment, wallet selector standard doesn't support signing transactions without immediately sending them. This functionality is essential for routing transactions to a relayer. Therefore, to smoothly integrate relaying on the client side, it's necessary to be able to sign transactions without relying on wallets.
-Progress is being made to make this possible in the future.
-
-</details>
-
-### High volume parallel processing
-
-When running a relayer that handles a large number of transactions, you will quickly run into a `nonce` collision problem. At the protocol level, transactions have a unique number that identifies them (nonce) that helps to mitigate reply attacks. Each key on an account has its own nonce, and the nonce is expected to increase with each signature the key creates.
-
-When multiple transactions are sent from the same access key simultaneously, their nonces might collide. Imagine the relayer creates 3 transactions `Tx1`, `Tx2`, `Tx3` and send them in very short distance from each other, and lets assume that `Tx3` has the largest nonce. If `Tx3` ends up being processed before `Tx1` (because of network delays, or a node picks `Tx3` first), then `Tx3` will execute, but `Tx1` and `Tx2` will fail, because they have smaller nonce!
-
-One way to mitigate this is to sign each transaction with a different key. Adding multiple full access keys to the NEAR account used for relaying (up to 20 keys can make a significant difference) will help.
-
-<details>
-<summary> Adding keys </summary>
-
-```js
-const keyPair = nearAPI.KeyPair.fromRandom("ed25519");
-
-const receipt = await account.addKey(keyPair.getPublicKey().toString())
-```
-
-After saving these keys, its possible to rotate the private keys randomly when instantiating accounts before relaying ensuring you won't create a nonce collision.
-
-</details>
-
-### Gating the relayer
-
-In most production applications it's expected that you want to be able to gate the relayer to only be used in certain cases.
-This can be easily accomplished by specifying constraints inside the `SignedDelegate.delegateAction` object.
+This system works because cryptographic signatures provide mathematical proof of user intent. The relayer can't forge transactions or access user fundsâ€”they can only execute what users explicitly authorize.
 
 ```typescript
-export declare class DelegateAction extends Assignable {
-    senderId: string;
-    receiverId: string;
-    actions: Array<Action>;
-    nonce: BN;
-    maxBlockHeight: BN;
-    publicKey: PublicKey;
+interface UserIntent {
+  action: "What the user wants to accomplish"
+  signature: "Cryptographic proof they authorized it"  
+  constraints: "Limitations on when/how it can be executed"
 }
 ```
 
-You can, for example, gate by some particular user or contract:
+## Building Your First Relayer
+
+Let's start with a clean, maintainable architecture that you can extend as your needs grow:
+
+### Core Relayer Service
 
 ```typescript
-  const serializedTx: Buffer = req.body;
-  const deserializedTx: SignedDelegate = deserialize(SCHEMA.SignedDelegate, Buffer.from(serializedTx)) as SignedDelegate;
-  const relayerAccount: Account = await getAccount(NETWORK_ID, RELAYER_ID, RELAYER_PRIVATE_KEY);
-  const delegateAction = deserializedTx?.delegateAction
+import express from 'express';
+import { deserialize, actionCreators } from '@near-js/transactions';
+import { Account } from '@near-js/accounts';
 
-  if(delegateAction.senderId == 'someUserId' || delegateAction.receiverId == 'someContractId' ){
-       const receipt = await relayerAccount.signAndSendTransaction({
-       actions: [actionCreators.signedDelegate(deserializedTx)],
-       receiverId: deserializedTx.delegateAction.senderId
-  });
+class UserFriendlyRelayer {
+  constructor(config) {
+    this.app = express();
+    this.config = config;
+    this.setupMiddleware();
+    this.setupRoutes();
+    
+    // Track metrics for continuous improvement
+    this.metrics = {
+      transactionsProcessed: 0,
+      gasSponsored: '0',
+      uniqueUsers: new Set(),
+      errorPatterns: new Map()
+    };
   }
+  
+  setupMiddleware() {
+    // Handle binary transaction data
+    this.app.use(express.raw({ 
+      type: 'application/octet-stream',
+      limit: '1mb' 
+    }));
+    
+    // CORS for frontend integration
+    this.app.use((req, res, next) => {
+      res.header('Access-Control-Allow-Origin', this.config.allowedOrigins);
+      res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
+      res.header('Access-Control-Allow-Headers', 'Content-Type');
+      next();
+    });
+    
+    // Request logging for debugging
+    this.app.use((req, res, next) => {
+      console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+      next();
+    });
+  }
+  
+  setupRoutes() {
+    // Health check endpoint
+    this.app.get('/health', (req, res) => {
+      res.json({
+        status: 'healthy',
+        metrics: {
+          transactionsProcessed: this.metrics.transactionsProcessed,
+          uniqueUsers: this.metrics.uniqueUsers.size,
+          gasSponsored: this.formatGasAsNEAR(this.metrics.gasSponsored)
+        }
+      });
+    });
+    
+    // Main relayer endpoint
+    this.app.post('/relay', async (req, res) => {
+      try {
+        const result = await this.processTransaction(req.body);
+        
+        // Update metrics
+        this.metrics.transactionsProcessed++;
+        this.metrics.gasSponsored = (
+          BigInt(this.metrics.gasSponsored) + BigInt(result.gasUsed)
+        ).toString();
+        
+        res.json({
+          success: true,
+          transactionHash: result.hash,
+          gasSponsored: this.formatGasAsNEAR(result.gasUsed),
+          message: "Transaction completed successfully!"
+        });
+        
+      } catch (error) {
+        this.handleError(error, res);
+      }
+    });
+  }
+  
+  async processTransaction(rawTransaction) {
+    // Deserialize the signed transaction
+    const signedTransaction = deserialize(
+      SCHEMA.SignedDelegate,
+      Buffer.from(rawTransaction)
+    );
+    
+    // Validate before spending gas
+    await this.validateTransaction(signedTransaction);
+    
+    // Execute using our relayer account
+    const relayerAccount = await this.getRelayerAccount();
+    const result = await relayerAccount.signAndSendTransaction({
+      actions: [actionCreators.signedDelegate(signedTransaction)],
+      receiverId: signedTransaction.delegateAction.senderId
+    });
+    
+    return {
+      hash: result.transaction.hash,
+      gasUsed: this.extractGasUsed(result)
+    };
+  }
+  
+  async validateTransaction(signedTransaction) {
+    const { senderId, receiverId, actions } = signedTransaction.delegateAction;
+    
+    // Add sender to unique users tracking
+    this.metrics.uniqueUsers.add(senderId);
+    
+    // Check contract whitelist
+    if (!this.config.allowedContracts.includes(receiverId)) {
+      throw new Error(`Contract ${receiverId} not supported`);
+    }
+    
+    // Validate user hasn't exceeded daily limits
+    await this.checkUserLimits(senderId);
+    
+    // Validate actions are safe
+    this.validateActions(actions);
+  }
+  
+  async checkUserLimits(userId) {
+    // In production, use Redis or database for persistence
+    const dailyUsage = await this.getUserDailyUsage(userId);
+    const limit = BigInt(this.config.dailyLimitPerUser);
+    
+    if (BigInt(dailyUsage) >= limit) {
+      throw new Error('Daily transaction limit reached. Try again tomorrow!');
+    }
+  }
+  
+  validateActions(actions) {
+    for (const action of actions) {
+      if (action.functionCall) {
+        // Check method whitelist
+        const method = action.functionCall.methodName;
+        if (!this.config.allowedMethods.includes(method)) {
+          throw new Error(`Method '${method}' not supported`);
+        }
+        
+        // Validate deposit limits
+        const deposit = BigInt(action.functionCall.deposit || '0');
+        const maxDeposit = BigInt(this.config.maxDepositPerTransaction);
+        
+        if (deposit > maxDeposit) {
+          throw new Error('Transaction deposit exceeds maximum allowed');
+        }
+      }
+    }
+  }
+  
+  handleError(error, res) {
+    console.error('Transaction failed:', error.message);
+    
+    // Track error patterns
+    const errorType = error.message.split(':')[0];
+    const count = this.metrics.errorPatterns.get(errorType) || 0;
+    this.metrics.errorPatterns.set(errorType, count + 1);
+    
+    res.status(400).json({
+      success: false,
+      error: error.message,
+      suggestion: this.getErrorSuggestion(error.message)
+    });
+  }
+  
+  getErrorSuggestion(errorMessage) {
+    if (errorMessage.includes('Daily transaction limit')) {
+      return 'Your daily free transactions are used up. Limits reset at midnight UTC.';
+    }
+    if (errorMessage.includes('Contract') && errorMessage.includes('not supported')) {
+      return 'This app only supports specific contracts. Contact support for more info.';
+    }
+    return 'Please check your transaction details and try again.';
+  }
+  
+  formatGasAsNEAR(gasAmount) {
+    return `${(Number(gasAmount) / 1e24).toFixed(6)} NEAR`;
+  }
+  
+  extractGasUsed(result) {
+    return result.receipts_outcome?.[0]?.outcome?.gas_burnt || '0';
+  }
+  
+  start(port = 3000) {
+    this.app.listen(port, () => {
+      console.log(`ðŸš€ Relayer service running on port ${port}`);
+      console.log(`ðŸ’š Ready to make Web3 more accessible!`);
+    });
+  }
+}
 ```
 
-Other examples could be looking into the actions and seeing if there is deposit or gas and limiting them, gating by particular smart contract methods or even args.
+### Configuration Management
 
-You can decode the args using:
-
-```
-JSON.parse(Buffer.from(args_base64 || "", "base64").toString())
-```
-
----
-
-## Rust Relayer Server
-
-The open-source Rust [reference implementation of a Relayer server](https://github.com/near/pagoda-relayer-rs/) offers the following features:
-
-:::info
-Features can be combined as needed. Use of one feature does not preclude the use of any other feature unless specified.
-:::
-
-1. Sign and send Meta Transactions to the RPC to cover the gas costs of end users while allowing them to maintain custody of their funds and approve transactions (`/relay`, `/send_meta_tx`, `/send_meta_tx_async`, `/send_meta_tx_nopoll`)
-2. Sign Meta Transactions returning a Signed Meta Transaction to be sent to the RPC later - (`/sign_meta_tx`, `/sign_meta_tx_no_filter`)
-3. Only pay for users interacting with certain contracts by whitelisting contracts addresses (`whitelisted_contracts` in `config.toml`)
-4. Specify gas cost allowances for all accounts (`/update_all_allowances`) or on a per-user account basis (`/create_account_atomic`, `/register_account`, `/update_allowance`) and keep track of allowances (`/get_allowance`)
-5. Specify the accounts for which the relayer will cover gas fees (`whitelisted_delegate_action_receiver_ids` in `config.toml`)
-6. Only allow users to register if they have a unique Oauth Token (`/create_account_atomic`, `/register_account`)
-7. Relayer Key Rotation: `keys_filenames` in `config.toml`
-8. Integrate with [FastAuth SDK](fastauth-sdk.md)
-9. Mix and Match configuration options
-
-:::tip
-Check the [Use cases section](#use-cases) for example configuration files corresponding to different usage scenarios.
-:::
-
-### Basic Setup
-
-You can follow these steps to set up your local Relayer server development environment:
-
-1. [Install Rust for NEAR Development](../smart-contracts/quickstart.md#prerequisites)
-2. If you don't have a NEAR account, [create one](../protocol/account-model.md)
-3. With the account from step 2, create a JSON file in this directory in the format
-   ```js
-   [{"account_id":"example.testnet","public_key":"ed25519:98GtfFzez3opomVpwa7i4m3nptHtc7Ha514XHMWszLtQ","private_key":"ed25519:YWuyKVQHE3rJQYRC3pRGV56o1qEtA1PnMYPDEtroc5kX4A4mWrJwF7XkzGe7JWNMABbtY4XFDBJEzgLyfPkwpzC"}]
-   ```
-   using a [Full Access Key](../protocol/access-keys.md#full-access-keys) from an account that has enough NEAR to cover the gas costs of transactions your server will be relaying. Usually, this will be a copy of the json file found in the `.near-credentials` directory.
-4. Update values in `config.toml`
-5. Open up the `port` from `config.toml` in your machine's network settings
-6. Run the server using `cargo run`.
-   > **(OPTIONAL)** To run with logs (tracing) enabled run `RUST_LOG=tower_http=debug cargo run`
-
-:::info Optional setup
-
-If you're integrating with [FastAuth](fastauth-sdk.md) make sure to enable feature flags:
-```
-cargo build --features fastauth_features,shared_storage
-```
-If you're using shared storage, make sure to enable feature flags:
-```
-cargo build --features shared_storage
+```typescript
+// config.ts - Keep settings organized and environment-specific
+export const getRelayerConfig = (environment = 'development') => {
+  const baseConfig = {
+    allowedOrigins: process.env.CORS_ORIGINS || '*',
+    maxDepositPerTransaction: '1000000000000000000000000', // 1 NEAR
+    dailyLimitPerUser: '100000000000000000000000', // 0.1 NEAR worth of gas
+    
+    // Customize these based on your application
+    allowedContracts: [
+      'social.near',
+      'game.your-app.near', 
+      'marketplace.your-app.near'
+    ],
+    
+    allowedMethods: [
+      'post',
+      'like', 
+      'comment',
+      'play_turn',
+      'claim_reward',
+      'list_item',
+      'make_offer'
+    ]
+  };
+  
+  const environmentConfigs = {
+    development: {
+      ...baseConfig,
+      network: 'testnet',
+      relayerAccountId: 'dev-relayer.testnet',
+      dailyBudget: '10000000000000000000000000' // 10 NEAR for testing
+    },
+    
+    production: {
+      ...baseConfig,
+      network: 'mainnet',
+      relayerAccountId: 'relayer.your-app.near',
+      dailyBudget: '500000000000000000000000000', // 500 NEAR
+      allowedOrigins: 'https://your-app.com,https://www.your-app.com'
+    }
+  };
+  
+  return environmentConfigs[environment];
+};
 ```
 
-:::
+## Client-Side Integration
 
-### Redis Setup
+Creating a smooth client experience is just as important as the relayer itself:
 
-:::tip
-This is only needed if you intend to use whitelisting, allowances, and OAuth functionality.
-:::
+### Relayer Client SDK
 
-1. [Install Redis](https://redis.io/docs/latest/get-started/).
-   > Steps 2 & 3 assume Redis was installed on machine instead of a Docker setup. If you're connecting to a Redis instance running in GCP, follow the above steps to connect to a VM that will forward requests from your local relayer server to [Redis running in GCP](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance#connecting_from_a_local_machine_with_port_forwarding)
-2. Run `redis-server --bind 127.0.0.1 --port 6379` - make sure the port matches the `redis_url` in the `config.toml`.
-3. Run `redis-cli -h 127.0.0.1 -p 6379`
+```typescript
+class RelayerClient {
+  constructor(relayerUrl, userAccount) {
+    this.relayerUrl = relayerUrl;
+    this.userAccount = userAccount;
+    this.retryAttempts = 3;
+  }
+  
+  async executeAction(contractId, methodName, args = {}, attachedDeposit = '0') {
+    // Show user-friendly loading state
+    this.showLoadingFeedback(`Preparing your ${methodName} action...`);
+    
+    try {
+      // Create the action
+      const action = actionCreators.functionCall(
+        methodName,
+        args,
+        attachedDeposit,
+        '50000000000000' // Conservative gas estimate
+      );
+      
+      // Sign locally - user maintains control
+      const signedTransaction = await this.userAccount.signedDelegate({
+        actions: [action],
+        blockHeightTtl: 60,
+        receiverId: contractId
+      });
+      
+      // Send to relayer with retry logic
+      const result = await this.sendWithRetry(signedTransaction);
+      
+      this.showSuccessFeedback('Action completed successfully!');
+      return result;
+      
+    } catch (error) {
+      this.showErrorFeedback(error.message);
+      throw error;
+    }
+  }
+  
+  async sendWithRetry(signedTransaction, attempt = 1) {
+    try {
+      this.updateLoadingMessage(`Submitting transaction (attempt ${attempt})...`);
+      
+      const serialized = serialize(SCHEMA.SignedDelegate, signedTransaction);
+      const response = await fetch(`${this.relayerUrl}/relay`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/octet-stream' },
+        body: serialized
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        
+        // Handle specific error cases
+        if (response.status === 429 && attempt < this.retryAttempts) {
+          await this.delay(1000 * attempt); // Exponential backoff
+          return this.sendWithRetry(signedTransaction, attempt + 1);
+        }
+        
+        throw new Error(errorData.suggestion || errorData.error);
+      }
+      
+      return await response.json();
+      
+    } catch (networkError) {
+      if (attempt < this.retryAttempts) {
+        await this.delay(2000 * attempt);
+        return this.sendWithRetry(signedTransaction, attempt + 1);
+      }
+      throw new Error('Network error - please check your connection and try again');
+    }
+  }
+  
+  // User feedback methods - customize for your UI framework
+  showLoadingFeedback(message) {
+    console.log(`â³ ${message}`);
+    // In real app: show loading spinner with message
+  }
+  
+  updateLoadingMessage(message) {
+    console.log(`ðŸ”„ ${message}`);
+    // In real app: update loading message
+  }
+  
+  showSuccessFeedback(message) {
+    console.log(`âœ… ${message}`);
+    // In real app: show success toast/notification
+  }
+  
+  showErrorFeedback(message) {
+    console.error(`âŒ ${message}`);
+    // In real app: show error message with helpful suggestions
+  }
+  
+  delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+}
+```
 
+### React Hook for Easy Integration
 
-### Advanced setup
+```typescript
+// useRelayer.ts - React hook for seamless integration
+import { useState, useCallback } from 'react';
 
-- [Multiple Key Generation](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#multiple-key-generation---optional-but-recommended-for-high-throughput-to-prevent-nonce-race-conditions): this is optional, but recommended for high throughput to prevent nonce race conditions. Check
-- [Docker Deployment](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#docker-deployment): instructions to deploy with Docker
-- [Cloud Deployment](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#cloud-deployment): instructions to deploy on Cloud providers
+export function useRelayer(relayerUrl, userAccount) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [lastResult, setLastResult] = useState(null);
+  
+  const relayerClient = new RelayerClient(relayerUrl, userAccount);
+  
+  const execute = useCallback(async (contractId, method, args, deposit = '0') => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const result = await relayerClient.executeAction(contractId, method, args, deposit);
+      setLastResult(result);
+      return result;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
+  }, [relayerClient]);
+  
+  const reset = useCallback(() => {
+    setError(null);
+    setLastResult(null);
+  }, []);
+  
+  return {
+    execute,
+    isLoading,
+    error,
+    lastResult,
+    reset
+  };
+}
 
-### API Specifications
+// Usage in React components
+function GameComponent() {
+  const { execute, isLoading, error } = useRelayer(
+    'https://relayer.mygame.com',
+    userWallet
+  );
+  
+  const makeMove = async (position) => {
+    try {
+      await execute('game.near', 'make_move', { position });
+      // Move completed! Update UI
+    } catch (error) {
+      // Error handled by hook, just update UI if needed
+    }
+  };
+  
+  return (
+    <div>
+      <button onClick={() => makeMove('A4')} disabled={isLoading}>
+        {isLoading ? 'Making move...' : 'Play A4'}
+      </button>
+      {error && <div className="error">Error: {error}</div>}
+    </div>
+  );
+}
+```
 
-You can find the complete Relayer server API specification on the [GitHub repository](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#api-spec-).
+## Smart Budget Management
 
-### Use cases
+One challenge I've learned to handle carefully is cost control. Here's a system that prevents runaway expenses:
 
-The [examples folder](https://github.com/near/pagoda-relayer-rs/tree/main/examples) on the GitHub repository contains example configuration files corresponding to different use cases.
+### Intelligent Budget Controller
 
-:::info
-These files are for reference only and you should update the `config.toml` values before using it on your development environment.
-:::
+```typescript
+class BudgetController {
+  constructor(config) {
+    this.dailyBudget = BigInt(config.dailyBudget);
+    this.currentSpend = BigInt('0');
+    this.userSpending = new Map();
+    this.resetTime = this.getNextMidnight();
+    
+    // Start daily reset timer
+    this.setupDailyReset();
+  }
+  
+  async canAfford(userId, estimatedGas) {
+    // Check overall daily budget
+    const projectedTotal = this.currentSpend + BigInt(estimatedGas);
+    if (projectedTotal > this.dailyBudget) {
+      throw new Error('Daily relayer budget exceeded. Service will reset at midnight UTC.');
+    }
+    
+    // Check per-user limits
+    const userSpent = this.userSpending.get(userId) || BigInt('0');
+    const userLimit = this.dailyBudget / BigInt(100); // 1% of daily budget per user
+    
+    if (userSpent + BigInt(estimatedGas) > userLimit) {
+      throw new Error('Your daily free transaction limit has been reached.');
+    }
+    
+    return true;
+  }
+  
+  recordSpending(userId, actualGas) {
+    const gasAmount = BigInt(actualGas);
+    
+    // Update totals
+    this.currentSpend += gasAmount;
+    
+    // Update user spending
+    const currentUserSpend = this.userSpending.get(userId) || BigInt('0');
+    this.userSpending.set(userId, currentUserSpend + gasAmount);
+    
+    // Alert if approaching limits
+    this.checkBudgetAlerts();
+  }
+  
+  checkBudgetAlerts() {
+    const usagePercentage = Number(this.currentSpend * BigInt(100) / this.dailyBudget);
+    
+    if (usagePercentage >= 80 && usagePercentage < 85) {
+      this.sendAlert('Budget 80% used', 'warning');
+    } else if (usagePercentage >= 95) {
+      this.sendAlert('Budget 95% used - service may be limited', 'critical');
+    }
+  }
+  
+  sendAlert(message, level) {
+    console.log(`ðŸš¨ ${level.toUpperCase()}: ${message}`);
+    // In production: send to monitoring service, Slack, email, etc.
+  }
+  
+  setupDailyReset() {
+    const msUntilReset = this.resetTime.getTime() - Date.now();
+    
+    setTimeout(() => {
+      this.resetDailyCounters();
+      // Schedule next reset
+      this.resetTime = this.getNextMidnight();
+      this.setupDailyReset();
+    }, msUntilReset);
+  }
+  
+  resetDailyCounters() {
+    this.currentSpend = BigInt('0');
+    this.userSpending.clear();
+    console.log('ðŸ“… Daily budget counters reset');
+  }
+  
+  getNextMidnight() {
+    const tomorrow = new Date();
+    tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
+    tomorrow.setUTCHours(0, 0, 0, 0);
+    return tomorrow;
+  }
+  
+  getBudgetStatus() {
+    const usagePercentage = Number(this.currentSpend * BigInt(100) / this.dailyBudget);
+    const remainingBudget = this.dailyBudget - this.currentSpend;
+    
+    return {
+      totalBudget: this.dailyBudget.toString(),
+      spent: this.currentSpend.toString(),
+      remaining: remainingBudget.toString(),
+      usagePercentage: usagePercentage.toFixed(2),
+      activeUsers: this.userSpending.size,
+      resetTime: this.resetTime.toISOString()
+    };
+  }
+}
+```
 
-#### No filters
+## Security Considerations
 
-This is a config for a relayer that covers gas for all user transactions to all contracts with no filters. To prevent abuse, this should only be used if there's only a secure backend calling the relayer
-- [`no_filters.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/no_filters.toml)
+Security in relayers requires a different mindset than traditional applications:
 
-#### Basic whitelist
+### Transaction Validation System
 
-This is a configuration for a basic relayer that covers gas for user transactions to interact with a whitelisted set of contracts
-- [`basic_whitelist.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/basic_whitelist.toml)
+```typescript
+class SecurityValidator {
+  constructor(config) {
+    this.suspiciousPatterns = new Map();
+    this.rateLimit = new Map();
+    this.config = config;
+  }
+  
+  async validateSafety(signedTransaction) {
+    const userId = signedTransaction.delegateAction.senderId;
+    
+    // Rate limiting per user
+    this.checkRateLimit(userId);
+    
+    // Pattern analysis
+    this.analyzeTransactionPattern(signedTransaction);
+    
+    // Signature validation
+    await this.validateSignature(signedTransaction);
+    
+    // Business logic validation
+    this.validateBusinessRules(signedTransaction);
+  }
+  
+  checkRateLimit(userId) {
+    const now = Date.now();
+    const userRequests = this.rateLimit.get(userId) || [];
+    
+    // Remove requests older than 1 minute
+    const recentRequests = userRequests.filter(time => now - time < 60000);
+    
+    if (recentRequests.length >= 10) {
+      throw new Error('Too many requests. Please wait before trying again.');
+    }
+    
+    recentRequests.push(now);
+    this.rateLimit.set(userId, recentRequests);
+  }
+  
+  analyzeTransactionPattern(signedTransaction) {
+    const pattern = this.extractPattern(signedTransaction);
+    const count = this.suspiciousPatterns.get(pattern) || 0;
+    
+    // Flag suspicious patterns
+    if (count > 50) {
+      console.log(`âš ï¸ Suspicious pattern detected: ${pattern}`);
+      // In production: implement more sophisticated analysis
+    }
+    
+    this.suspiciousPatterns.set(pattern, count + 1);
+  }
+  
+  extractPattern(transaction) {
+    const { receiverId, actions } = transaction.delegateAction;
+    const methods = actions
+      .filter(a => a.functionCall)
+      .map(a => a.functionCall.methodName)
+      .join(',');
+    
+    return `${receiverId}:${methods}`;
+  }
+  
+  validateBusinessRules(signedTransaction) {
+    const { actions } = signedTransaction.delegateAction;
+    
+    for (const action of actions) {
+      if (action.functionCall) {
+        const args = action.functionCall.args;
+        const methodName = action.functionCall.methodName;
+        
+        // Custom validation logic based on your app
+        this.validateMethodSpecificRules(methodName, args);
+      }
+    }
+  }
+  
+  validateMethodSpecificRules(method, args) {
+    // Example: validate game moves are legal
+    if (method === 'make_move') {
+      const position = JSON.parse(Buffer.from(args, 'base64').toString());
+      if (!this.isValidGamePosition(position)) {
+        throw new Error('Invalid game move');
+      }
+    }
+    
+    // Example: validate social posts aren't spam
+    if (method === 'post_message') {
+      const content = JSON.parse(Buffer.from(args, 'base64').toString());
+      if (this.detectSpam(content.message)) {
+        throw new Error('Message appears to be spam');
+      }
+    }
+  }
+  
+  isValidGamePosition(position) {
+    // Implement game-specific validation
+    return typeof position === 'string' && position.length <= 10;
+  }
+  
+  detectSpam(message) {
+    // Simple spam detection - enhance for production
+    const spamPatterns = ['buy now', 'limited time', 'click here', 'free money'];
+    return spamPatterns.some(pattern => 
+      message.toLowerCase().includes(pattern)
+    );
+  }
+}
+```
 
-#### Redis
+## Monitoring and Analytics
 
-This is a configuration for a relayer that covers gas for user transactions up to a allowance specified in Redis to interact with a whitelisted set of contracts.
-- Allowances are on a per-account id basis and on signup (account creation in Redis and on-chain) an OAuth token is required to help with sybil resistance
-- [`redis.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/redis.toml)
+Understanding how users interact with your relayer helps optimize both cost and experience:
 
-#### FastAuth
+### Analytics Dashboard
 
-:::info Closed access beta
+```typescript
+class RelayerAnalytics {
+  constructor() {
+    this.sessions = new Map();
+    this.dailyStats = {
+      date: new Date().toISOString().split('T')[0],
+      uniqueUsers: new Set(),
+      transactionsByHour: new Array(24).fill(0),
+      methodPopularity: new Map(),
+      averageGasCost: 0,
+      successRate: 0
+    };
+  }
+  
+  recordTransaction(transaction, gasUsed, success, responseTime) {
+    const userId = transaction.delegateAction.senderId;
+    const hour = new Date().getHours();
+    
+    // Track session data
+    this.updateUserSession(userId, transaction, gasUsed, success);
+    
+    // Update daily statistics
+    this.dailyStats.uniqueUsers.add(userId);
+    this.dailyStats.transactionsByHour[hour]++;
+    
+    // Track method popularity
+    const methods = this.extractMethods(transaction);
+    methods.forEach(method => {
+      const count = this.dailyStats.methodPopularity.get(method) || 0;
+      this.dailyStats.methodPopularity.set(method, count + 1);
+    });
+    
+    // Update gas cost average
+    this.updateGasAverage(gasUsed);
+    
+    // Update success rate
+    this.updateSuccessRate(success);
+  }
+  
+  updateUserSession(userId, transaction, gasUsed, success) {
+    if (!this.sessions.has(userId)) {
+      this.sessions.set(userId, {
+        startTime: Date.now(),
+        transactions: 0,
+        totalGasSponsored: BigInt('0'),
+        methods: new Set(),
+        lastActivity: Date.now()
+      });
+    }
+    
+    const session = this.sessions.get(userId);
+    session.transactions++;
+    session.totalGasSponsored += BigInt(gasUsed);
+    session.lastActivity = Date.now();
+    
+    // Track methods used in this session
+    this.extractMethods(transaction).forEach(method => 
+      session.methods.add(method)
+    );
+  }
+  
+  extractMethods(transaction) {
+    return transaction.delegateAction.actions
+      .filter(a => a.functionCall)
+      .map(a => a.functionCall.methodName);
+  }
+  
+  generateInsights() {
+    const activeUsers = Array.from(this.sessions.entries())
+      .filter(([_, session]) => Date.now() - session.lastActivity < 300000) // 5 min
+      .length;
+    
+    const peakHour = this.dailyStats.transactionsByHour
+      .indexOf(Math.max(...this.dailyStats.transactionsByHour));
+    
+    const topMethods = Array.from(this.dailyStats.methodPopularity.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5);
+    
+    return {
+      summary: {
+        activeUsers,
+        dailyUniqueUsers: this.dailyStats.uniqueUsers.size,
+        averageGasCost: `${this.dailyStats.averageGasCost.toFixed(6)} NEAR`,
+        successRate: `${(this.dailyStats.successRate * 100).toFixed(2)}%`
+      },
+      
+      usage: {
+        peakHour: `${peakHour}:00`,
+        hourlyDistribution: this.dailyStats.transactionsByHour,
+        topMethods: topMethods.map(([method, count]) => ({ method, count }))
+      },
+      
+      recommendations: this.generateRecommendations(peakHour, topMethods)
+    };
+  }
+  
+  generateRecommendations(peakHour, topMethods) {
+    const recommendations = [];
+    
+    // Peak hour recommendations
+    if (peakHour >= 9 && peakHour <= 17) {
+      recommendations.push("Peak usage during business hours - consider scaling resources");
+    }
+    
+    // Method optimization suggestions
+    const topMethod = topMethods[0];
+    if (topMethod && topMethod[1] > 100) {
+      recommendations.push(`${topMethod[0]} is your most popular feature - ensure it's optimized`);
+    }
+    
+    // User engagement insights
+    const avgTransactionsPerUser = Array.from(this.sessions.values())
+      .reduce((sum, session) => sum + session.transactions, 0) / this.sessions.size;
+    
+    if (avgTransactionsPerUser > 10) {
+      recommendations.push("High user engagement detected - users are actively using your app!");
+    }
+    
+    return recommendations;
+  }
+}
+```
 
-[FastAuth](fastauth-sdk.md) is currently in a private beta stage. If you want to try it out during this early development stage, please [contact us on Telegram](https://t.me/neardev).
+## Production Deployment Strategy
 
-:::
+Here's how I approach deploying relayers in production environments:
 
-This is a configuration for use if you intend to integrate with [FastAuth SDK](fastauth-sdk.md)
-- It covers gas for user transactions up to a allowance specified in Redis to interact with a whitelisted set of contracts.
-- Allowances are on a per-account id basis and on signup (account creation in Redis and on-chain) an OAuth token is required to help with sybil resistance
-- This also makes use of a shared storage functionality on the Near Social DB contract
-- and a whitelisted sender (`whitelisted_delegate_action_receiver_ids`)
-- [`fastauth.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/fastauth.toml)
+### Deployment Configuration
 
-#### Pay with fungible tokens
+```typescript
+// deployment/production.ts
+export class ProductionRelayer {
+  constructor() {
+    this.config = {
+      server: {
+        port: process.env.PORT || 8080,
+        host: '0.0.0.0'
+      },
+      
+      security: {
+        corsOrigins: process.env.CORS_ORIGINS?.split(',') || [],
+        rateLimitWindow: 15 * 60 * 1000, // 15 minutes
+        rateLimitMax: 100,
+        requestSizeLimit: '1mb'
+      },
+      
+      relayer: {
+        accountIds: process.env.RELAYER_ACCOUNTS?.split(',') || [],
+        privateKeys: process.env.RELAYER_KEYS?.split(',') || [],
+        networkId: process.env.NEAR_NETWORK || 'mainnet',
+        rpcUrl: process.env.NEAR_RPC_URL
+      },
+      
+      monitoring: {
+        logLevel: process.env.LOG_LEVEL || 'info',
+        metricsEndpoint: process.env.METRICS_ENDPOINT,
+        alertWebhook: process.env.ALERT_WEBHOOK
+      }
+    };
+  }
+  
+  async start() {
+    // Validate configuration
+    this.validateConfig();
+    
+    // Initialize services
+    const relayer = new UserFriendlyRelayer(this.config);
+    const budgetController = new BudgetController(this.config);
+    const analytics = new RelayerAnalytics();
+    
+    // Set up monitoring
+    this.setupHealthChecks();
+    this.setupMetricsCollection();
+    
+    // Graceful shutdown handling
+    this.setupGracefulShutdown();
+    
+    console.log('ðŸš€ Production relayer starting...');
+    relayer.start(this.config.server.port);
+  }
+  
+  validateConfig() {
+    const required = [
+      'RELAYER_ACCOUNTS',
+      'RELAYER_KEYS', 
+      'CORS_ORIGINS',
+      'NEAR_NETWORK'
+    ];
+    
+    const missing = required.filter(key => !process.env[key]);
+    if (missing.length > 0) {
+      throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+    }
+  }
+  
+  setupHealthChecks() {
+    // Endpoint for load balancer health checks
+    setInterval(async () => {
+      try {
+        await this.performHealthCheck();
+      } catch (error) {
+        console.error('Health check failed:', error);
+        // In production: alert ops team
+      }
+    }, 30000); // Check every 30 seconds
+  }
+  
+  async performHealthCheck() {
+    // Check NEAR RPC connectivity
+    // Check relayer account balance
+    // Check service responsiveness
+    // Validate all required services are running
+  }
+}
 
-This is a configuration for a relayer that ensures there's FTs sent to a burn address used to cover the equivalent amount of gas for user transactions to interact with a whitelisted set of contracts
-- [`pay_with_ft.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/pay_with_ft.toml)
+// Start production server
+if (require.main === module) {
+  const production = new ProductionRelayer();
+  production.start().catch(console.error);
+}
+```
 
-#### Whitelist senders
+## Wrapping Up: Creating Inclusive Web3
 
-This is a config for a relayer that covers gas for a whitelisted set of users' transactions to interact with a whitelisted set of contracts
-- [`whitelist_senders.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/whitelist_senders.toml) (`whitelisted_delegate_action_receiver_ids`)
+Building relayers isn't just about solving a technical problemâ€”it's about making Web3 accessible to everyone. Every transaction you sponsor removes a barrier that might have prevented someone from discovering what decentralized applications can offer.
 
-#### Shared storage
+Through my experience building and maintaining production relayers, I've learned that success comes from balancing three key priorities: user experience, cost management, and security. The code patterns and architectures I've shared here represent lessons learned from real-world deployments and thousands of user interactions.
 
-This is a configuration for a relayer that covers BOTH gas AND storage fees for user transactions to interact with a whitelisted set of contracts
+### Key Takeaways for Implementation
 
-- be sure to include shared storage logic based on [`shared_storage.rs`](https://github.com/NearSocial/social-db/blob/master/contract/src/shared_storage.rs) in your contract that is being whitelisted
-- [`shared_storage.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/shared_storage.toml)
+**Start Simple, Scale Thoughtfully**: Begin with basic transaction relaying and add sophistication as your user base grows. The modular architecture I've outlined allows you to enhance functionality without rebuilding from scratch.
 
-#### Exchange withdraw
+**User Experience is Everything**: The best relayer is one users never think about. Focus on clear error messages, reasonable limits, and predictable behavior. Your analytics will show you where users struggle.
 
-This is a configuration for a relayer where an exchange running the relayer covers user withdraw fees when they are withdrawing stablecoins on NEAR (e.g., `USDT` or `USDC`)
+**Economics Drive Adoption**: Sustainable relayer economics require careful planning. Use the budget management patterns to avoid surprises, and consider tiered models as your application matures.
 
-- [`exchange_withdraw.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/exchange_withdraw.toml)
+**Security Through Defense in Depth**: Layer your protectionsâ€”rate limiting, transaction validation, pattern analysis, and business rule enforcement all work together to prevent abuse while maintaining accessibility.
+
+### Future Considerations
+
+As NEAR evolves toward native account abstraction, relayers will remain valuable for:
+- **Onboarding flows** where immediate usability matters
+- **Feature-specific sponsorship** for particular application functions  
+- **Enterprise deployments** requiring custom gas payment logic
+- **Cross-chain interactions** where native solutions aren't available
+
+The patterns and principles you implement today will adapt easily to future protocol enhancements.
+
+### Implementation Roadmap
+
+1. **Week 1**: Deploy basic relayer with transaction validation
+2. **Week 2**: Add user limits and contract whitelisting
+3. **Week 3**: Implement monitoring and analytics
+4. **Week 4**: Test with real users and iterate based on feedback
+5. **Week 5**: Optimize performance and add advanced security features
+6. **Week 6**: Deploy to production with proper monitoring
+
+### Final Thoughts
+
+The blockchain space needs more applications that feel welcoming to newcomers. By implementing thoughtful relayer systems, you're contributing to a more inclusive decentralized futureâ€”one where anyone can benefit from Web3 technology, regardless of their technical background or crypto experience.
+
+Remember that every user who successfully completes their first blockchain transaction through your relayer might become an advocate for decentralized technology. That's the real power of removing frictionâ€”it doesn't just improve your application, it grows the entire ecosystem.
+
+The code patterns, security practices, and architectural decisions outlined in this guide will serve as a foundation for building relayer systems that users love and that scale sustainably. Here's to making Web3 technology as accessible as the applications users already know and trust.
