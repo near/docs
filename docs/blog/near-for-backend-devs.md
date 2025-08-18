@@ -1,10 +1,10 @@
 # NEAR for Web2 Backend Developers: A Familiar Frontier
 
-As an experienced backend developer, you're adept at building robust services, managing databases, and ensuring system reliability. When you hear "blockchain," it might sound like a completely different paradigm. However, platforms like [NEAR Protocol](/protocol/basics) are designed to be surprisingly accessible, offering a new kind of backend infrastructure that leverages many concepts you're already familiar with.
+As an experienced backend developer, you're adept at building robust services, managing databases, and ensuring system reliability. When you hear "blockchain" it might sound like a completely different paradigm. However, platforms like [NEAR Protocol](/protocol/basics) are designed to be surprisingly accessible, offering a new kind of backend infrastructure that leverages many concepts you're already familiar with.
 
 This article will guide you through understanding NEAR from a backend perspective. We'll explore how it can be seen as a decentralized, highly available backend platform where:
 
-*   **Your Application's Backend Logic** lives in "[smart contracts](/smart-contracts/what-is)," which you can write in familiar languages like [Rust](/tools/sdk) (and others that compile to [WebAssembly](/smart-contracts/anatomy/)).
+*   **Your Application's Backend Logic** lives in "[smart contracts](/smart-contracts/what-is)" which you can write in familiar languages like [Rust](/tools/sdk) (and others that compile to [WebAssembly](/smart-contracts/anatomy/)).
 *   **Application State** is managed per application, similar to having a dedicated database for your service, but with global availability and data integrity secured by the network.
 *   **User Identity and Permissions** are cryptographically secured and can be reliably checked within your application logic using an [AccountId](/protocol/account-model).
 *   **Data Replication** is handled by the network, providing something akin to a master-master replication setup with eventual consistency, typically reaching [finality](/protocol/transaction-execution#receipts--finality) (undisputed agreement) in about 1-2 seconds.
@@ -21,22 +21,22 @@ On NEAR, each application (called a "smart contract" or just "contract") gets it
 
 *   **Isolated State:** All data for your application is stored within the context of its `AccountId`. It's like having a dedicated key-value store or a NoSQL document database scoped specifically to your application. One application cannot directly tamper with the raw storage of another.
 *   **Mutability with Control:** While the history of *changes* to this state is cryptographically secured and immutable (forming the blockchain), the *current state* of your application's data is indeed mutable. However, these mutations are not arbitrary. They can only occur by invoking the logic defined within your smart contract – your application's backend code. You define the rules for how state can change.
-*   **Data Replication & Availability:** This application state isn't just on one machine. The NEAR network, composed of many independent "[validator" nodes](/protocol/network/validators), replicates this state. This is analogous to a distributed database system with master-master replication. If some nodes go offline, the network continues to operate, and your application's state remains available.
-*   **Eventual Consistency with Fast Finality:** When a user interacts with your application to change its state (e.g., posting a tweet), this change is broadcast to the network. Validators process it, and once consensus is reached, the change is final. NEAR is designed for fast [finality](/protocol/transactions/overview#transaction-lifecycle--finality), typically around 1-2 seconds. After this, the new state is an undisputed part of the global record. This is a form of eventual consistency, but with a very short window to reach that consistent, final state.
+*   **Data Replication & Availability:** This application state isn't just on one machine. The NEAR network, composed of many independent ["validator nodes"](/protocol/network/validators), replicates this state. This is analogous to a distributed database system with master-master replication. If some nodes go offline, the network continues to operate, and your application's state remains available.
+*   **Eventual Consistency with Fast Finality:** When a user interacts with your application to change its state (e.g., posting a tweet), this change is broadcast to the network. Validators process it, and once consensus is reached, the change is final. NEAR is designed for fast [finality](/protocol/transaction-execution), typically around 1-2 seconds. After this, the new state is an undisputed part of the global record. This is a form of eventual consistency, but with a very short window to reach that consistent, final state.
 
 **2. Backend Logic: Smart Contracts**
 
-The code that defines how your application's state can be read and modified is what we call a "[smart contract](/smart-contracts/what-is)."
+The code that defines how your application's state can be read and modified is what we call a "[smart contract](/smart-contracts/what-is)".
 
 *   **Your Business Logic:** This is where you write your application's rules. For our Twitter example, this logic will define how a tweet is created, who can post it, how tweets are retrieved, etc.
-*   **Execution Environment:** This code doesn't run on a traditional OS. It's compiled into [WebAssembly (Wasm)](/smart-contracts/anatomy/wasm), a highly efficient and sandboxed binary format. This Wasm code is what's stored on the NEAR platform under your application's `AccountId` and executed by the validator nodes. The use of Wasm means you can write this logic in several familiar languages, with [Rust](/tools/sdk) being a primary and robust choice offering strong safety and performance.
+*   **Execution Environment:** This code doesn't run on a traditional OS. It's compiled into WebAssembly (Wasm), a highly efficient and sandboxed binary format. This Wasm code is what's stored on the NEAR platform under your application's `AccountId` and executed by the validator nodes. The use of Wasm means you can write this logic in several familiar languages, with [Rust](/tools/sdk) being a primary and robust choice offering strong safety and performance.
 *   **Millions of Contracts:** The NEAR blockchain can host millions of these smart contracts, each operating within its own account namespace, managing its own state, and exposing its own set of functions.
 
 **3. User Identity and Authorization: Cryptographic Certainty**
 
 In traditional web2 backends, you manage user authentication (e.g., passwords, OAuth) and then use sessions or tokens to identify users for subsequent requests. NEAR has a built-in, cryptographically secure way to identify who is initiating an action.
 
-*   **Transactions and Signatures:** Every interaction that attempts to change your application's state must be initiated as a "[transaction](/protocol/transactions/overview)" signed by a NEAR account. This signature proves ownership of that account.
+*   **Transactions and Signatures:** Every interaction that attempts to change your application's state must be initiated as a "[transaction](protocol/transactions)" signed by a NEAR account. This signature proves ownership of that account.
 *   **`predecessor_account_id`:** When your smart contract code is executed, it has access to [`env::predecessor_account_id()`](https://docs.rs/near-sdk/latest/near_sdk/env/fn.predecessor_account_id.html). This reliably tells your code which NEAR account signed and sent the transaction that triggered the current function call.
 *   **Built-in Access Control:** You can use `predecessor_account_id` to implement powerful access control. For example:
     *   A user can only modify or delete data they "own" (e.g., only the author of a tweet can delete it).
@@ -47,7 +47,7 @@ By combining these elements – namespaced and replicated state, Wasm-compiled b
 
 ## Smart Contracts in Rust: The Twitter Example
 
-Now, let's see how this translates into code. Your backend logic on NEAR is encapsulated in a smart contract. As mentioned, these contracts are compiled to [WebAssembly (Wasm)](/smart-contracts/anatomy/wasm), allowing you to use languages like [Rust](/tools/sdk). Rust is a popular choice due to its performance, safety features, and strong tooling support within the NEAR ecosystem.
+Now, let's see how this translates into code. Your backend logic on NEAR is encapsulated in a smart contract. As mentioned, these contracts are compiled to WebAssembly (Wasm), allowing you to use languages like [Rust](/tools/sdk). Rust is a popular choice due to its performance, safety features, and strong tooling support within the NEAR ecosystem.
 
 We'll build a simplified Twitter-like application. Users will be able to post tweets, view all tweets, view tweets by a specific author, and like tweets. The core idea is that each tweet is undeniably linked to its author via their NEAR account ID.
 
@@ -61,7 +61,7 @@ Here's the Rust code for our contract:
 // This smart contract implements a Twitter-like platform on the NEAR blockchain.
 // For backend engineers new to blockchain, think of this as a REST API service that:
 // - Stores data permanently on a distributed database (the blockchain)
-// - Has no central server - it runs on thousands of nodes worldwide
+// - Has no central server - it runs on hundreds of nodes worldwide
 // - Charges small fees (gas) for write operations to prevent spam
 // - Is immutable once deployed (like deploying code that can't be changed)
 //
@@ -386,7 +386,7 @@ Think of it like interacting with a standard web API, but instead of HTTP reques
 
 These are "call" methods (marked `&mut self` in Rust) because they modify the contract's state.
 
-*   **Transactions:** To execute these, a user (or an application acting on their behalf) constructs a [transaction](/protocol/transactions/overview). This transaction specifies:
+*   **Transactions:** To execute these, a user (or an application acting on their behalf) constructs a [transaction](/protocol/transactions). This transaction specifies:
     *   The `receiver_id`: Your contract's account ID (e.g., `twitter-app.your-account.near`).
     *   The `method_name`: The function to call (e.g., `"post_tweet"`).
     *   `args`: The arguments for the function, typically as a JSON string (e.g., `{"text": "My first NEAR tweet!"}`).
@@ -442,7 +442,7 @@ As an experienced backend developer, you might be wondering what advantages buil
     *   Once deployed, your smart contract logic cannot be easily shut down or tampered with by a single entity, including the original developer (unless specific upgrade mechanisms are built in and governed by clear rules). This provides a degree of censorship resistance for applications and their data.
 
 6.  **Fast Finality and Scalable by Design:**
-    *   NEAR's ~1-2 second [finality](/protocol/transactions/overview#transaction-lifecycle--finality) means transactions are quickly confirmed and irreversible, providing a responsive user experience for a decentralized system.
+    *   NEAR's ~1-2 second [finality](/protocol/transaction-execution) means transactions are quickly confirmed and irreversible, providing a responsive user experience for a decentralized system.
     *   The sharding architecture ([Nightshade](https://near.org/blog/near-launches-nightshade-sharding-paving-the-way-for-mass-adoption)) is designed for scalability, allowing the network to handle an increasing number of transactions as more applications and users join the ecosystem. This addresses a common concern with older blockchain technologies.
 
 7.  **Interoperability and Composability (Advanced):**
