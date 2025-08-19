@@ -1,10 +1,10 @@
 import Layout from '@theme/Layout'
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import useSWR from 'swr';
 import DOMPurify from 'dompurify';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = 'https://tmp-docs-ai-service.onrender.com';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -68,6 +68,33 @@ const Newsletter = () => {
       return '';
     }
   }, [issueDetails]);
+
+  // Shadow DOM isolated renderer
+  const IssueContent = ({ html }) => {
+    const hostRef = useRef(null);
+    useEffect(() => {
+      if (typeof window === 'undefined') return;
+      if (!hostRef.current) return;
+      // Create or reuse shadow root
+      const shadow = hostRef.current.shadowRoot || hostRef.current.attachShadow({ mode: 'open' });
+      // Minimal reset inside shadow DOM – avoids inheriting site styles while allowing CSS variables
+      const reset = `:host{display:block;font-family:var(--ifm-font-family-base, system-ui, sans-serif);line-height:1.5;color:#1a202c}`+
+        `*,*::before,*::after{box-sizing:border-box}`+
+        `body,div,section,article,header,footer,h1,h2,h3,h4,h5,h6,p,ul,ol,li,table,tr,td,th{margin:0;padding:0;font:inherit}`+
+        `h1{font-size:2rem;margin:1.5rem 0 .75rem;font-weight:600}`+
+        `h2{font-size:1.5rem;margin:1.25rem 0 .6rem;font-weight:600}`+
+        `h3{font-size:1.2rem;margin:1rem 0 .5rem;font-weight:600}`+
+        `p{margin:.75rem 0}`+
+        `a{color:var(--near-color-royal,#2563eb);text-decoration:underline}`+
+        `img{height:auto;margin:1rem auto}`+
+        `table{width:100%;border-collapse:collapse}`+
+        `td,th{vertical-align:top}`+
+        `ul,ol{padding-left:1.25rem}`;
+      // Inject (preserve any internal styles that come with the HTML)
+      shadow.innerHTML = `<style>${reset}</style>${html || ''}`;
+    }, [html]);
+    return <div ref={hostRef} />;
+  };
 
   // Get issue ID from URL or use first campaign
   const getIssueIdFromUrl = () => {
@@ -151,65 +178,9 @@ const Newsletter = () => {
 
   if (campaignLoading) {
     return (
-      <Layout title="NEAR Newsletter" description="Subscribe to the NEAR Developer Newsletter">
-        <div className="newsletter-page">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-12">
-                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '80vh' }}>
-                  <div className="text-center">
-                    <div className="loading-container mb-4">
-                      <div className="loading-spinner"></div>
-                      <div className="loading-pulse"></div>
-                    </div>
-                    <h3 className="loading-text mb-2">Loading Newsletter...</h3>
-                    <p className="loading-subtitle">Getting the latest NEAR Dev News ready for you</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Layout>
-    );
-  }
-
-  if (campaignsError) {
-    return (
-      <Layout title="NEAR Newsletter" description="Subscribe to the NEAR Developer Newsletter">
-        <div className="newsletter-page">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-12">
-                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '70vh' }}>
-                  <div className="text-center" style={{ maxWidth: '600px' }}>
-                    <div className="error-icon mb-4">
-                      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="10" stroke="#ef4444" strokeWidth="2"/>
-                        <path d="m15 9-6 6" stroke="#ef4444" strokeWidth="2"/>
-                        <path d="m9 9 6 6" stroke="#ef4444" strokeWidth="2"/>
-                      </svg>
-                    </div>
-                    <div className="alert alert-danger border-0">
-                      <h4 className="mb-3">Unable to Load Newsletter</h4>
-                      <p className="mb-3">We're having trouble connecting to our newsletter service. This might be temporary.</p>
-                      <button 
-                        className="btn btn-outline-danger me-3" 
-                        onClick={() => window.location.reload()}
-                      >
-                        Try Again
-                      </button>
-                      <a href="/docs" className="btn btn-primary">
-                        Browse Docs Instead
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Layout>
+      <h1 className="newsletter-title">
+        Loading Newsletter...
+      </h1>
     );
   }
 
@@ -244,11 +215,7 @@ const Newsletter = () => {
                 <div className="alert alert-warning">No issue content available.</div>
               ) : (
                 <div className="newsletter-content">
-                  <div 
-                    dangerouslySetInnerHTML={{ 
-                      __html: sanitizedIssueHtml
-                    }}
-                  />
+                  <IssueContent html={sanitizedIssueHtml} />
                 </div>
               )}
             </div>
@@ -317,8 +284,6 @@ const Newsletter = () => {
                 </ul>
               </div>
 
-              <hr className="sidebar-divider" />
-
               {/* External Links */}
               <div className="green-box external-header">
                 <h3>Looking for more?</h3>
@@ -327,22 +292,17 @@ const Newsletter = () => {
                 <ul className="links-list external-links">
                   <li>
                     <a href="https://nearweek.com" target="_blank" rel="noopener noreferrer">
-                      NEARWEEK →
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://x.com/neardevhub" target="_blank" rel="noopener noreferrer">
-                      DevHub on X →
+                      NEARWEEK
                     </a>
                   </li>
                   <li>
                     <a href="https://x.com/NEARProtocol" target="_blank" rel="noopener noreferrer">
-                      NEAR on X →
+                      NEAR on X
                     </a>
                   </li>
                   <li>
                     <a href="https://near.org/blog" target="_blank" rel="noopener noreferrer">
-                      NEAR Blog →
+                      NEAR Blog
                     </a>
                   </li>
                 </ul>

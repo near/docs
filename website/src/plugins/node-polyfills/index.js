@@ -17,11 +17,12 @@ module.exports = function (context, options) {
           alias: {},
           fallback: {
             crypto: require.resolve('crypto-browserify'),
-            http: require.resolve('stream-http'),
-            https: require.resolve('https-browserify'),
-            buffer: require.resolve('buffer'),
+            // http: require.resolve('stream-http'),
+            // https: require.resolve('https-browserify'),
+            // buffer: require.resolve('buffer'),
             stream: require.resolve('stream-browserify'),
-            url: require.resolve('url'),
+            vm: require.resolve('vm-browserify'),
+            // url: require.resolve('url'),
           },
         },
       };
