@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // @ts-check
 
 /** @type {import('@docusaurus/types').Config} */
@@ -8,6 +10,7 @@ const config = {
   baseUrl: '/',
   organizationName: 'near',
   projectName: 'docs',
+  trailingSlash: false,
   markdown: {
     mermaid: true,
   },
@@ -27,6 +30,9 @@ const config = {
     },
     REACT_APP_PUBLIC_POSTHOG_KEY: process.env.REACT_APP_PUBLIC_POSTHOG_KEY,
     REACT_APP_PUBLIC_POSTHOG_HOST: process.env.REACT_APP_PUBLIC_POSTHOG_HOST,
+    REACT_APP_GOOGLE_CALENDAR_API_KEY: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
+    REACT_APP_LUMA_NEAR_CALENDAR_ID: process.env.REACT_APP_LUMA_NEAR_CALENDAR_ID,
+    REACT_APP_DEVHUB_GOOGLE_CALENDAR_ID: process.env.REACT_APP_DEVHUB_GOOGLE_CALENDAR_ID,
   },
   themes: ['@saucelabs/theme-github-codeblock', '@docusaurus/theme-mermaid'],
   onBrokenLinks: 'throw',
@@ -279,6 +285,7 @@ const config = {
           position: 'left',
           items: [
             {
+              label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem",
               label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR",
             },
             {
@@ -306,7 +313,6 @@ const config = {
                   description: "Write, test and deploy smart contracts using the Remix IDE",
                   icon: '/icons/remix.svg'
                 },
-
               ]
             },
             {
