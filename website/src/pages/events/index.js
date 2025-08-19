@@ -1,7 +1,7 @@
 import Layout from '@theme/Layout'
 import './events.scss'
 import { useState, useEffect } from 'react'
-import { fetchGoogleCalendarEvents, fetchLumaEvents } from './tools'
+import { fetchGoogleCalendarEvents, fetchLumaEvents } from '../../tools/tools'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 
 const Events = () => {
