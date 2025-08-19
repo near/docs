@@ -1,365 +1,570 @@
----
-id: advanced-xcc
-title: Complex Cross Contract Call
-description: "Master advanced cross-contract call patterns in NEAR Protocol, including callbacks, error handling, and complex multi-contract interactions."
----
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+# Advanced Cross-Contract Calls: Solving Real Problems with Smart Contract Orchestration
 
-This example presents 3 instances of complex cross-contract calls on the NEAR blockchain, showcasing how to batch multiple function calls to a same contract, call multiple contracts in parallel, and handle responses in the callback. It includes both the smart contract and the frontend components. 
+Cross-contract calls become "advanced" when they solve complex business problems that single contracts cannot handle. This guide explores specific challenges and demonstrates how sophisticated cross-contract patterns provide elegant solutions.
 
+## Problem: Building Atomic Multi-Step Operations
 
-:::info Simple Cross-Contract Calls
+**Challenge**: Your DeFi application needs to swap tokens, add liquidity, and stake LP tokens in one transaction. If any step fails, users lose funds or end up in inconsistent states.
 
-Check the tutorial on how to use [simple cross-contract calls](xcc.md)
+**Solution**: Atomic batch execution ensures all operations complete together or none at all.
 
-:::
+### The Atomic Transaction Pattern
 
----
-
-## Obtaining the Cross Contract Call Example
-
-You have two options to start the Donation Example:
-
-1. You can use the app through `Github Codespaces`, which will open a web-based interactive environment.
-2. Clone the repository locally and use it from your computer.
-
-| Codespaces                                                                                                                      | Clone locally                                               |
-| ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/cross-contract-calls?quickstart=1) | 🌐 `https://github.com/near-examples/cross-contract-calls` |
-
----
-
-## Structure of the Example
-
-The smart contract is available in two flavors: Rust and JavaScript
-
-<Tabs groupId="code-tabs">
-
-  <TabItem value="js" label="🌐 JavaScript">
-
-```bash
-┌── sandbox-ts # sandbox testing
-│    ├── external-contracts
-│    │    ├── counter.wasm
-│    │    ├── guest-book.wasm
-│    │    └── hello-near.wasm
-│    └── main.ava.ts
-├── src # contract's code
-│    ├── internal
-│    │    ├── batch_actions.ts
-│    │    ├── constants.ts
-│    │    ├── multiple_contracts.ts
-│    │    ├── similar_contracts.ts
-│    │    └── utils.ts
-│    └── contract.ts
-├── package.json
-├── README.md
-└── tsconfig.json
+```javascript
+class DeFiComposer {
+    // Execute complex DeFi strategy atomically
+    async executeYieldStrategy(params) {
+        const { tokenA, tokenB, amount, minLiquidity, stakingContract } = params;
+        
+        // Create atomic batch - these execute in sequence
+        const swapPromise = this.createSwapStep(tokenA, tokenB, amount);
+        
+        // Only executes if swap succeeds
+        const liquidityPromise = swapPromise.then(() => 
+            this.createLiquidityStep(tokenB, minLiquidity)
+        );
+        
+        // Only executes if liquidity addition succeeds  
+        const stakingPromise = liquidityPromise.then(() =>
+            this.createStakingStep(stakingContract)
+        );
+        
+        return stakingPromise.then(() => this.finalizeStrategy());
+    }
+    
+    createSwapStep(tokenA, tokenB, amount) {
+        return near.call(this.dexContract, 'swap_tokens', {
+            token_in: tokenA,
+            token_out: tokenB, 
+            amount_in: amount
+        }, '30000000000000'); // 30 Tgas
+    }
+}
 ```
 
-  </TabItem>
+**Why This Works**: Each step only executes after the previous succeeds. If the swap fails, liquidity and staking never happen. If liquidity fails, the swap automatically reverses.
 
-  <TabItem value="rust" label="🦀 Rust">
-
-```bash
-┌── tests # sandbox testing
-│    ├── external-contracts
-│    │    ├── counter.wasm
-│    │    ├── guest-book.wasm
-│    │    └── hello-near.wasm
-│    └── main.ava.ts
-├── src # contract's code
-│    ├── batch_actions.rs
-│    ├── lib.rs
-│    ├── multiple_contracts.rs
-│    └── similar_contracts.rs
-├── Cargo.toml # package manager
-├── README.md
-└── rust-toolchain.toml
+```rust
+// Rust implementation showing explicit rollback handling
+impl YieldStrategy {
+    pub fn execute_compound_strategy(&mut self, params: StrategyParams) -> Promise {
+        // Step 1: Swap tokens
+        token_swap::ext(self.swap_contract.clone())
+            .with_static_gas(Gas::from_tgas(20))
+            .swap_exact_tokens_for_tokens(params.clone())
+            .then(
+                Self::ext(env::current_account_id())
+                    .with_static_gas(Gas::from_tgas(40))
+                    .handle_swap_result(params)
+            )
+    }
+    
+    #[private]
+    pub fn handle_swap_result(
+        &mut self,
+        params: StrategyParams,
+        #[callback_result] swap_result: Result<SwapOutput, PromiseError>,
+    ) -> Promise {
+        match swap_result {
+            Ok(output) => {
+                // Proceed to liquidity step
+                self.add_liquidity_step(params, output)
+            },
+            Err(_) => {
+                // Swap failed - strategy ends here, no cleanup needed
+                env::log_str("Swap failed, strategy aborted");
+                self.create_failure_response("Swap step failed")
+            }
+        }
+    }
+}
 ```
 
-  </TabItem>
+## Problem: Aggregating Data from Multiple Sources
 
-</Tabs>
+**Challenge**: Your application displays real-time market data from multiple price feeds, user portfolios across different protocols, and social sentiment. Waiting for each call sequentially takes too long.
 
----
+**Solution**: Parallel execution with intelligent fallbacks.
 
-## Smart Contract
+### The Data Aggregation Pattern
 
-### Batch Actions
+```typescript
+class MarketDashboard {
+    
+    async loadDashboardData(userId: string): Promise<DashboardData> {
+        // Launch all data fetching simultaneously
+        const priceDataPromise = this.fetchPriceData();
+        const portfolioPromise = this.fetchUserPortfolio(userId);
+        const sentimentPromise = this.fetchMarketSentiment();
+        const newsPromise = this.fetchLatestNews();
+        
+        // Handle results as they complete
+        const results = await this.gatherResults([
+            priceDataPromise,
+            portfolioPromise,
+            sentimentPromise,
+            newsPromise
+        ]);
+        
+        return this.buildDashboard(results);
+    }
+    
+    async gatherResults(promises: Promise<any>[]): Promise<any[]> {
+        // Use Promise.allSettled to handle partial failures gracefully
+        const settled = await Promise.allSettled(promises);
+        
+        return settled.map((result, index) => {
+            if (result.status === 'fulfilled') {
+                return result.value;
+            } else {
+                near.log(`Data source ${index} failed: ${result.reason}`);
+                return this.getDefaultData(index);
+            }
+        });
+    }
+    
+    getDefaultData(sourceIndex: number): any {
+        const defaults = {
+            0: this.getCachedPrices(),      // Cached price data
+            1: { balance: '0', tokens: [] }, // Empty portfolio
+            2: { sentiment: 'neutral' },     // Neutral sentiment
+            3: []                            // No news items
+        };
+        return defaults[sourceIndex];
+    }
+}
+```
 
-You can aggregate multiple actions directed towards one same contract into a batched transaction.
-Methods called this way are executed sequentially, with the added benefit that, if one fails then
-they **all get reverted**.
+**Why This Works**: All network calls start immediately rather than waiting in sequence. The application shows partial data when some sources are slow or unavailable, providing better user experience than blocking on failures.
 
-<CodeTabs>
-  <Language value="js" language="js">
-    <Github fname="contract.ts"
-          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-          start="38" end="41" />
-    <Github fname="batch_actions.ts"
-          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
-          start="5" end="17" />
-  </Language>
-  <Language value="rust" language="rust">
-    <Github fname="batch_actions.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-            start="8" end="20" />
-  </Language>
-</CodeTabs>
+```rust
+// Rust parallel implementation with timeout handling
+impl DataAggregator {
+    pub fn fetch_market_overview(&self) -> Promise {
+        // Create multiple parallel promises
+        let price_feed1 = price_oracle1::ext(self.oracle1.clone())
+            .with_static_gas(Gas::from_tgas(10))
+            .get_latest_prices();
+            
+        let price_feed2 = price_oracle2::ext(self.oracle2.clone())
+            .with_static_gas(Gas::from_tgas(10))
+            .get_latest_prices();
+            
+        let volume_data = volume_tracker::ext(self.volume_contract.clone())
+            .with_static_gas(Gas::from_tgas(10))
+            .get_24h_volumes();
+        
+        // Combine all promises for parallel execution
+        price_feed1
+            .and(price_feed2)
+            .and(volume_data)
+            .then(
+                Self::ext(env::current_account_id())
+                    .with_static_gas(Gas::from_tgas(15))
+                    .process_aggregated_data()
+            )
+    }
+    
+    #[private]
+    pub fn process_aggregated_data(
+        &self,
+        #[callback_result] feed1: Result<PriceData, PromiseError>,
+        #[callback_result] feed2: Result<PriceData, PromiseError>,
+        #[callback_result] volumes: Result<VolumeData, PromiseError>,
+    ) -> MarketOverview {
+        // Build comprehensive view from available data
+        let price_data = self.consolidate_price_feeds(feed1, feed2);
+        let volume_data = volumes.unwrap_or_default();
+        
+        MarketOverview {
+            prices: price_data,
+            volumes: volume_data,
+            data_quality: self.assess_data_quality(&feed1, &feed2, &volumes),
+            timestamp: env::block_timestamp(),
+        }
+    }
+}
+```
 
-#### Getting the Last Response
+## Problem: Complex Approval Workflows
 
-In this case, the callback has access to the value returned by the **last
-action** from the chain.
+**Challenge**: Your governance system requires proposals to pass through multiple validation stages: technical review, economic impact assessment, legal compliance check, and community voting. Each stage has different contracts and approval criteria.
 
-<CodeTabs>
-  <Language value="js" language="js">
-    <Github fname="contract.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="43" end="46" />
-    <Github fname="batch_actions.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
-      start="19" end="29" />
-    <Github fname="utils.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
-      start="3" end="20" />
-  </Language>
-  <Language value="rust" language="rust">
-    <Github fname="batch_actions.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-            start="22" end="35" />
-  </Language>
-</CodeTabs>
+**Solution**: Multi-stage promise chains with conditional execution.
 
----
+### The Workflow Orchestration Pattern
 
-### Calling Multiple Contracts
+```javascript
+class GovernanceWorkflow {
+    
+    async processProposal(proposalId) {
+        const proposal = await this.getProposal(proposalId);
+        
+        // Stage 1: Technical validation (required)
+        const techValidation = this.validateTechnicalAspects(proposal);
+        
+        // Stage 2: Economic analysis (parallel with legal review)
+        const economicReview = techValidation.then(() => 
+            this.analyzeEconomicImpact(proposal)
+        );
+        
+        const legalReview = techValidation.then(() =>
+            this.checkLegalCompliance(proposal)  
+        );
+        
+        // Stage 3: Community vote (only after all reviews pass)
+        const reviewResults = Promise.all([economicReview, legalReview]);
+        
+        const communityVote = reviewResults.then((results) => {
+            const [economicResult, legalResult] = results;
+            
+            if (economicResult.approved && legalResult.approved) {
+                return this.initiateVoting(proposal);
+            } else {
+                throw new Error('Proposal failed review stage');
+            }
+        });
+        
+        return communityVote.then(() => this.finalizeProposal(proposalId));
+    }
+    
+    async validateTechnicalAspects(proposal) {
+        return near.call(this.techReviewContract, 'validate_proposal', {
+            proposal_id: proposal.id,
+            code_changes: proposal.codeChanges,
+            impact_assessment: proposal.technicalImpact
+        }, '50000000000000'); // 50 Tgas for complex validation
+    }
+}
+```
 
-A contract can call multiple other contracts. This creates multiple transactions that execute
-all in parallel. If one of them fails the rest **ARE NOT REVERTED**.
+**Why This Works**: The workflow enforces business logic through promise dependencies. Technical validation must complete before other reviews begin. Both economic and legal reviews must approve before community voting starts.
 
-<CodeTabs>
-  <Language value="js" language="js">
-    <Github fname="contract.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="48" end="51" />
-    <Github fname="multiple_contracts.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
-      start="6" end="21" />
-  </Language>
-  <Language value="rust" language="rust">
-    <Github fname="multiple_contracts.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
-            start="16" end="55" />
-  </Language>
-</CodeTabs>
+## Problem: Handling Service Failures Gracefully
 
-#### Getting All Responses
+**Challenge**: Your application depends on external price oracles, but they sometimes go offline or return stale data. Users should still be able to interact with your application during outages.
 
-In this case, the callback has access to an **array of responses**, which have either the
-value returned by each call, or an error message.
+**Solution**: Circuit breaker pattern with fallback strategies.
 
-<CodeTabs>
-  <Language value="js" language="js">
-    <Github fname="contract.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="53" end="58" />
-    <Github fname="multiple_contracts.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
-      start="24" end="41" />
-    <Github fname="utils.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
-      start="3" end="20" />
-  </Language>
-  <Language value="rust" language="rust">
-    <Github fname="multiple_contracts.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
-            start="58" end="92" />
-  </Language>
-</CodeTabs>
+### The Resilient Service Pattern
 
----
+```rust
+#[derive(BorshSerialize, BorshDeserialize)]
+pub struct ServiceHealthMonitor {
+    failed_calls: HashMap<AccountId, u32>,
+    last_successful_call: HashMap<AccountId, u64>,
+    circuit_open: HashMap<AccountId, bool>,
+}
 
-### Multiple Calls - Same Result Type
+impl PriceService {
+    pub fn get_price_with_fallback(&mut self, asset: String) -> Promise {
+        if self.is_circuit_open(&self.primary_oracle) {
+            near_sdk::log!("Primary oracle circuit open, using fallback");
+            return self.get_price_from_secondary(asset);
+        }
+        
+        // Try primary oracle with circuit breaker
+        oracle::ext(self.primary_oracle.clone())
+            .with_static_gas(Gas::from_tgas(10))
+            .get_asset_price(asset.clone())
+            .then(
+                Self::ext(env::current_account_id())
+                    .with_static_gas(Gas::from_tgas(15))
+                    .handle_price_response(asset, self.primary_oracle.clone())
+            )
+    }
+    
+    #[private]
+    pub fn handle_price_response(
+        &mut self,
+        asset: String,
+        oracle: AccountId,
+        #[callback_result] price_result: Result<U128, PromiseError>,
+    ) -> Promise {
+        match price_result {
+            Ok(price) => {
+                self.record_successful_call(oracle);
+                self.create_success_response(price)
+            },
+            Err(error) => {
+                self.record_failed_call(oracle);
+                
+                if self.should_open_circuit(oracle.clone()) {
+                    near_sdk::log!("Opening circuit for oracle: {}", oracle);
+                    self.monitor.circuit_open.insert(oracle, true);
+                }
+                
+                // Try fallback service
+                self.get_price_from_secondary(asset)
+            }
+        }
+    }
+    
+    fn should_open_circuit(&self, oracle: AccountId) -> bool {
+        let failed_count = self.monitor.failed_calls.get(&oracle).unwrap_or(&0);
+        *failed_count >= 3 // Open circuit after 3 consecutive failures
+    }
+}
+```
 
-This example is a particular case of the previous one ([Calling Multiple Contracts](#calling-multiple-contracts)).
-It simply showcases a different way to check the results by directly accessing the `promise_result` array.
+**Why This Works**: The system automatically detects failing services and routes traffic to healthy alternatives. Users experience degraded but functional service rather than complete outages.
 
-In this case, we call multiple contracts that will return the same type:
+## Problem: Coordinating Complex Multi-Token Operations
 
-<CodeTabs>
-  <Language value="js" language="js">
-    <Github fname="contract.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="65" end="70" />
-    <Github fname="similar_contracts.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
-      start="6" end="35" />
-  </Language>
-  <Language value="rust" language="rust">
-    <Github fname="similar_contracts.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
-            start="8" end="31" />
-  </Language>
-</CodeTabs>
+**Challenge**: Your portfolio rebalancer needs to sell multiple tokens, buy different tokens, and redistribute them across various yield farming protocols. The operations must be coordinated to avoid price slippage and maintain desired allocations.
 
-#### Getting All Responses
+**Solution**: Staged execution with dynamic adjustment.
 
-In this case, the callback again has access to an **array of responses**, which we can iterate checking the
-results.
+### The Portfolio Rebalancing Pattern
 
-<CodeTabs>
-  <Language value="js" language="js">
-    <Github fname="contract.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="62" end="65" />
-    <Github fname="similar_contracts.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
-      start="37" end="54" />
-    <Github fname="utils.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
-      start="3" end="20" />
-  </Language>
-  <Language value="rust" language="rust">
-    <Github fname="similar_contracts.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
-            start="32" end="57" />
-  </Language>
-</CodeTabs>
+```typescript
+class PortfolioRebalancer {
+    
+    async rebalancePortfolio(userId: string, targetAllocations: Allocation[]) {
+        const currentPortfolio = await this.getCurrentPortfolio(userId);
+        const rebalanceplan = this.calculateRebalanceplan(currentPortfolio, targetAllocations);
+        
+        // Phase 1: Execute all sells in parallel (order doesn't matter)
+        const sellPromises = rebalanceplan.sells.map(sell => 
+            this.executeSell(sell.token, sell.amount)
+        );
+        
+        const sellResults = await Promise.allSettled(sellPromises);
+        const availableFunds = this.calculateAvailableFunds(sellResults);
+        
+        // Phase 2: Execute buys based on actual funds available
+        const adjustedBuys = this.adjustBuyOrders(rebalanceplan.buys, availableFunds);
+        
+        const buyPromises = adjustedBuys.map(buy =>
+            this.executeBuy(buy.token, buy.amount)
+        );
+        
+        const buyResults = await Promise.allSettled(buyPromises);
+        
+        // Phase 3: Distribute to yield protocols (sequential to avoid conflicts)
+        return this.distributeToProtocols(buyResults, targetAllocations);
+    }
+    
+    async distributeToProtocols(buyResults: any[], allocations: Allocation[]) {
+        let distributionPromise = Promise.resolve();
+        
+        // Process each protocol sequentially to avoid race conditions
+        for (const allocation of allocations) {
+            distributionPromise = distributionPromise.then(() => 
+                this.deployToProtocol(allocation.protocol, allocation.tokens)
+            );
+        }
+        
+        return distributionPromise;
+    }
+    
+    async deployToProtocol(protocolContract: string, tokens: TokenAmount[]) {
+        return near.call(protocolContract, 'deposit_multiple_tokens', {
+            tokens: tokens.map(t => ({
+                contract_id: t.contractId,
+                amount: t.amount
+            }))
+        }, '100000000000000'); // 100 Tgas for complex deployment
+    }
+}
+```
 
----
+**Why This Works**: Sells execute in parallel for speed, buys are adjusted based on actual proceeds, and protocol deposits happen sequentially to avoid conflicts. The system adapts to market conditions and partial failures.
 
-### Testing the Contract
+## Problem: Implementing Secure Multi-Signature Operations
 
-The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
+**Challenge**: Your multi-sig wallet needs to collect signatures from multiple parties, validate them, and execute transactions only when threshold requirements are met. The process must be secure against various attack vectors.
 
-<Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
+**Solution**: Signature aggregation with validation checkpoints.
 
-  ```bash
-  cd contract-advanced-ts
-  yarn
-  yarn test
-  ```
+### The Multi-Signature Coordination Pattern
 
-  </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
-  
-  ```bash
-  cd contract-advanced-rs
-  cargo test
-  ```
+```rust
+impl MultiSigCoordinator {
+    pub fn execute_transaction(&mut self, tx_id: u64) -> Promise {
+        let transaction = self.get_pending_transaction(tx_id);
+        
+        // Collect signatures from all signers in parallel
+        let signature_collection: Vec<Promise> = transaction.required_signers
+            .iter()
+            .enumerate()
+            .map(|(index, signer)| {
+                signature_service::ext(self.signature_validator.clone())
+                    .with_static_gas(Gas::from_tgas(10))
+                    .validate_signature(
+                        signer.clone(),
+                        transaction.transaction_hash.clone(),
+                        index as u8
+                    )
+            })
+            .collect();
+        
+        // Combine all signature validations
+        let combined_validation = signature_collection
+            .into_iter()
+            .reduce(|acc, promise| acc.and(promise))
+            .expect("At least one signer required");
+        
+        combined_validation.then(
+            Self::ext(env::current_account_id())
+                .with_static_gas(Gas::from_tgas(30))
+                .process_signature_results(tx_id)
+        )
+    }
+    
+    #[private]
+    pub fn process_signature_results(
+        &mut self,
+        tx_id: u64,
+        #[callback_vec] signature_results: Vec<Result<bool, PromiseError>>,
+    ) -> Promise {
+        let valid_signatures = signature_results
+            .iter()
+            .filter(|result| result.as_ref().unwrap_or(&false) == &true)
+            .count();
+        
+        let transaction = self.get_pending_transaction(tx_id);
+        
+        if valid_signatures >= transaction.required_threshold {
+            self.execute_validated_transaction(tx_id)
+        } else {
+            env::log_str(&format!("Insufficient signatures: {}/{}", 
+                valid_signatures, transaction.required_threshold));
+            self.create_rejection_response(tx_id)
+        }
+    }
+    
+    fn execute_validated_transaction(&mut self, tx_id: u64) -> Promise {
+        let transaction = self.get_pending_transaction(tx_id);
+        
+        // Execute the actual transaction
+        env::promise_create(
+            transaction.target_contract,
+            &transaction.method_name,
+            &transaction.arguments,
+            transaction.attached_deposit,
+            Gas::from_tgas(50)
+        ).then(
+            Self::ext(env::current_account_id())
+                .with_static_gas(Gas::from_tgas(10))
+                .finalize_transaction(tx_id)
+        )
+    }
+}
+```
 
-  </TabItem>
+**Why This Works**: Signature validation happens in parallel for speed, threshold checking prevents unauthorized transactions, and the final execution is atomic with proper cleanup.
 
-</Tabs>
+## Testing Complex Cross-Contract Scenarios
 
-:::tip
-The `integration tests` use a sandbox to create NEAR users and simulate interactions with the contract.
-:::
+Real-world cross-contract applications require comprehensive testing that covers success paths, failure scenarios, and edge cases.
 
-<hr class="subsection" />
+### Integration Test Strategies
 
-### Deploying the Contract to the NEAR network
+```javascript
+describe('Advanced Cross-Contract Scenarios', () => {
+    let contracts;
+    
+    beforeEach(async () => {
+        contracts = await setupMultiContractEnvironment();
+    });
+    
+    test('atomic operations roll back on failure', async () => {
+        // Setup: Make one of the operations fail
+        await contracts.helper.call('setFailureMode', { shouldFail: true });
+        
+        const initialState = await contracts.main.view('getState');
+        
+        // Execute atomic batch that should fail
+        const result = await contracts.main.call('executeAtomicBatch', {});
+        
+        expect(result.success).toBe(false);
+        
+        // Verify no partial changes occurred
+        const finalState = await contracts.main.view('getState');
+        expect(finalState).toEqual(initialState);
+    });
+    
+    test('parallel operations handle partial failures', async () => {
+        // Make some operations fail
+        await contracts.service1.call('setFailureMode', { shouldFail: true });
+        
+        const result = await contracts.main.call('executeParallelOperations', {});
+        
+        // Should have partial success
+        expect(result.successful_operations).toBeGreaterThan(0);
+        expect(result.failed_operations).toBeGreaterThan(0);
+        expect(result.fallback_used).toBe(true);
+    });
+});
+```
 
-In order to deploy the contract you will need to create a NEAR account.
+## Performance Optimization Strategies
 
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Short">
+### Gas Management for Complex Workflows
 
-  ```bash
-  # Create a new account pre-funded by a faucet
-  near create-account <accountId> --useFaucet
-  ```
-  </TabItem>
+```rust
+// Gas estimation for complex operations
+const GAS_PER_SIGNATURE_CHECK: u64 = 5_000_000_000_000; // 5 Tgas
+const GAS_PER_PARALLEL_CALL: u64 = 10_000_000_000_000; // 10 Tgas
+const CALLBACK_OVERHEAD: u64 = 5_000_000_000_000; // 5 Tgas
 
-  <TabItem value="full" label="Full">
+impl GasOptimizer {
+    pub fn estimate_required_gas(&self, operation: &Operation) -> Gas {
+        let base_gas = match operation.operation_type {
+            OperationType::AtomicBatch => {
+                operation.steps.len() as u64 * 15_000_000_000_000 // 15 Tgas per step
+            },
+            OperationType::ParallelExecution => {
+                operation.parallel_calls.len() as u64 * GAS_PER_PARALLEL_CALL
+            },
+            OperationType::MultiSigValidation => {
+                operation.signature_count as u64 * GAS_PER_SIGNATURE_CHECK
+            }
+        };
+        
+        Gas::from_tgas(base_gas + CALLBACK_OVERHEAD)
+    }
+    
+    pub fn optimize_batch_size(&self, operations: Vec<Operation>) -> Vec<Vec<Operation>> {
+        let mut batches = Vec::new();
+        let mut current_batch = Vec::new();
+        let mut current_gas = 0u64;
+        
+        for operation in operations {
+            let required_gas = self.estimate_required_gas(&operation).0;
+            
+            if current_gas + required_gas > MAX_GAS_PER_TRANSACTION {
+                if !current_batch.is_empty() {
+                    batches.push(current_batch);
+                    current_batch = Vec::new();
+                    current_gas = 0;
+                }
+            }
+            
+            current_batch.push(operation);
+            current_gas += required_gas;
+        }
+        
+        if !current_batch.is_empty() {
+            batches.push(current_batch);
+        }
+        
+        batches
+    }
+}
+```
 
-  ```bash
-  # Create a new account pre-funded by a faucet
-  near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
-  ```
-  </TabItem>
-</Tabs>
+## Best Practices Summary
 
-Go into the directory containing the smart contract (`cd contract-advanced-ts` or `cd contract-advanced-rs`), build and deploy it:
+**Design for Failure**: Every cross-contract call can fail. Design your system to handle failures gracefully and provide meaningful feedback to users.
 
-<Tabs groupId="code-tabs">
+**Use Appropriate Patterns**: Choose atomic batches when consistency matters, parallel execution when speed matters, and mixed patterns when you need both.
 
-  <TabItem value="js" label="🌐 JavaScript">
+**Monitor Performance**: Track gas usage, success rates, and execution times. Use this data to optimize your cross-contract interactions.
 
-    ```bash
-    npm run build
-    near deploy <accountId> ./build/cross_contract.wasm --initFunction new --initArgs '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}'
-    ```
+**Test Thoroughly**: Test not just success scenarios but also various failure combinations. Real networks have failures, delays, and partial outages.
 
-  </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
-  
-  ```bash
-  cargo near deploy build-non-reproducible-wasm <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
-  ```
+**Plan for Scale**: Design your systems to handle increasing numbers of contracts, users, and operations without degrading performance.
 
-  </TabItem>
-
-</Tabs>
-
-<hr class="subsection" />
-
-### CLI: Interacting with the Contract
-
-To interact with the contract through the console, you can use the following commands:
-
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Short">
-  
-  ```bash
-  # Execute contracts sequentially
-  # Replace <accountId> with your account ID
-  near call <accountId> batch_actions --accountId <accountId> --gas 300000000000000   
-
-  # Execute contracts in parallel
-  # Replace <accountId> with your account ID
-  near call <accountId>  multiple_contracts --accountId <accountId> --gas 300000000000000   
-
-  # Execute multiple instances of the same contract in parallel
-  # Replace <accountId> with your account ID
-  near call <accountId> similar_contracts --accountId <accountId> --gas 300000000000000
-  ```
-  </TabItem>
-
-  <TabItem value="full" label="Full">
-  
-  ```bash
-  # Execute contracts sequentially
-  # Replace <accountId> with your account ID
-  near contract call-function as-transaction <accountId> batch_actions json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
-
-  # Execute contracts in parallel
-  # Replace <accountId> with your account ID
-  near contract call-function as-transaction <accountId> multiple_contracts json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
-
-  # Execute multiple instances of the same contract in parallel
-  # Replace <accountId> with your account ID
-  near contract call-function as-transaction <accountId> similar_contracts json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-</Tabs>
-
-
-:::info
-If at some point you get an "Exceeded the prepaid gas" error, try to increase the gas amount used within the functions when calling other contracts
-:::
-
-:::note Versioning for this article
-
-At the time of this writing, this example works with the following versions:
-
-- near-cli: `4.0.13`
-- node: `18.19.1`
-- rustc: `1.77.0`
-
-:::
+Advanced cross-contract calls solve real business problems by enabling sophisticated coordination between smart contracts. The key is matching the right pattern to your specific problem while maintaining reliability and performance.
