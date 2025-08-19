@@ -286,6 +286,7 @@ const config = {
           items: [
             {
               label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem",
+            }, {
               label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR",
             },
             {
