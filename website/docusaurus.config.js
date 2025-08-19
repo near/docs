@@ -275,9 +275,12 @@ const config = {
         },
         {
           type: 'dropdown',
-          label: 'Resources',
+          label: 'Ecosystem',
           position: 'left',
           items: [
+            {
+              label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR",
+            },
             {
               label: 'Developer Support', to: '#', description: "Get help from the NEAR community",
               subitems: [
