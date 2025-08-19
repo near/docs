@@ -4,7 +4,7 @@ title: Gas (Execution Fees)
 description: "Learn about NEAR's gas system - execution fees that prevent spam, incentivize developers with 30% of burned gas, and use deterministic gas units with dynamic pricing."
 ---
 
-import {NearWidget} from "@site/src/components/near-widget"
+import { Gas } from '@site/src/components/widgets/gas';
 
 This section explains how gas works in the NEAR Protocol, including how it is calculated, charged, and used to incentivize developers.
 
@@ -54,28 +54,7 @@ If the previous block is **more than half full** the price goes up by 1%, otherw
 
 You can query how much a gas unit costs in `yoctoNEAR` (1Ⓝ = `1e24` yocto) through the [`RPC`](/api/rpc/gas#gas-price). To convert in `Tgas` per `NEAR`, you can use the following formula: `gas_price * 1e12 / 1e24`.
 
-
-<NearWidget height="40px">
-
-```js
-const query = fetch('https://rpc.near.org', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    jsonrpc: '2.0',
-    id: 'dontcare',
-    method: 'gas_price',
-    params: [null]
-  })
-})
-
-const yocto = query.body.result.gas_price
-return `Right now, 1 Tgas costs ${Number(yocto) * 1e12 / 1e24}Ⓝ`
-```
-
-</NearWidget>
+Right now, 1 Tgas costs: <Gas /> Ⓝ
 
 </details>
 
@@ -173,7 +152,7 @@ If the transaction ends up using less gas than the amount deducted, the differen
 
 <summary> Gas Refund Fee </summary>
 
-Since protocol version 78, the unspent gas at the end of receipt execution is subject to a gas refund fee. The fee is calculated as `max(1 Tgas, 0.05 * unspent_gas) * gas_price`. The gas price is from the time of purchase.
+Since protocol version 78, the unspent gas at the end of receipt execution is subject to a gas refund fee. The fee is still at 0 while we give projects time to adapt. The plan is to move to a fee calculated as `max(1 Tgas, 0.05 * unspent_gas) * gas_price`. The gas price is from the time of purchase.
 
 _But why introducing such a fee instead of refunding all gas?_
 
