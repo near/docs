@@ -58,6 +58,7 @@
     "clsx": "^2.1.1",
     "crypto-browserify": "^3.12.1",
     "docusaurus-plugin-sass": "^0.2.6",
+    "dotenv": "^17.2.1",
     "gleap": "^13.7.3",
     "lodash": "^4.17.21",
     "monaco-editor": "^0.52.2",

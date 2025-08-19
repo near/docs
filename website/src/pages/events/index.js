@@ -1,5 +1,5 @@
 import Layout from '@theme/Layout'
-import { useEvents } from '../../components/events/hooks/useEvents'
+import { useEvents } from './hooks/useEvents'
 import './events.scss'
 
 const EventCard = ({ event, isHighlighted = false }) => {

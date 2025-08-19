@@ -1,4 +1,3 @@
-import { icons } from 'lucide-react';
 require('dotenv').config();
 
 // @ts-check
@@ -286,9 +285,12 @@ const config = {
         },
         {
           type: 'dropdown',
-          label: 'Resources',
+          label: 'Ecosystem',
           position: 'left',
           items: [
+            {
+              label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem",
+            },
             {
               label: 'Developer Support', to: '#', description: "Get help from the NEAR community",
               subitems: [
@@ -314,7 +316,6 @@ const config = {
                   description: "Write, test and deploy smart contracts using the Remix IDE",
                   icon: '/icons/remix.svg'
                 },
-
               ]
             },
             {

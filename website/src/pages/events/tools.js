@@ -30,7 +30,7 @@ export const fetchGoogleCalendarEvents = async (
   startFrom,
   limit,
   pageToken,
-  googleCalendarApiKey = 'AIzaSyCUIzCNAeNYDuxQG-_uNrW-0O2AbRK89v4',
+  googleCalendarApiKey
 ) => {
   const res = await fetch(
     `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${googleCalendarApiKey}&maxResults=${limit}&timeMin=${startFrom}&singleEvents=true&orderBy=startTime&pageToken=${pageToken}`,
