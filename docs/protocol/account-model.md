@@ -2,6 +2,7 @@
 id: account-model
 title: NEAR Accounts
 sidebar_label: Overview
+description: "Learn about NEAR Protocol's account model, including named and implicit accounts, access keys, permissions, and how NEAR accounts differ from other blockchain platforms."
 ---
 
 Users participate in the NEAR ecosystem through their NEAR accounts. These accounts are identified by a [unique address](./account-id.md), can optionally hold a [smart contract](../smart-contracts/what-is.md), and are controlled through [Access Keys](./access-keys.md).

@@ -1,6 +1,7 @@
 ---
 id: near-lake-framework
-sidebar_label: "NEAR Lake Framework"
+sidebar_label: NEAR Lake Framework
+description: "NEAR Lake Framework is an ecosystem of library companions to NEAR Lake. They allow you to build your own indexer that subscribes to the stream of blocks from the NEAR Lake data source and create your own logic to process the NEAR Protocol data in the programming languages of your choice (at the moment, there are implementations in Python, JavaScript, and Rust)."
 ---
 
 NEAR Lake Framework is an ecosystem of library companions to [NEAR Lake](/data-infrastructure/lake-framework/near-lake). They allow you to build your own indexer that subscribes to the stream of blocks from the [NEAR Lake](/data-infrastructure/lake-framework/near-lake) data source and create your own logic to process the NEAR Protocol data in the programming languages of your choice (at the moment, there are implementations in [Python](http://pypi.org/project/near-lake-framework), [JavaScript](https://www.npmjs.com/package/near-lake-framework), and [Rust](https://crates.io/crates/near-lake-framework)).

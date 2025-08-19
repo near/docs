@@ -2,10 +2,10 @@
 id: kurtosis-localnet
 title: Creating a Local Development Environment
 sidebar_label: Local Development
-description: Using Kurtosis NEAR Package to develop locally
+description: "Using Kurtosis NEAR Package to develop locally"
 ---
 
-> [Kurtosis](https://www.kurtosis.com/) has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/).
+> Kurtosis has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/). _(Note: Kurtosis site may be temporarily unavailable.)_
 
 This Kurtosis NEAR Package contains the following components:
 
@@ -77,8 +77,8 @@ Starting the near-package with input struct(backend_ip_address = "127.0.0.1")
 > print "Launching contract helper postgresql"
 Launching contract helper postgresql
 
-> print "Adding contract helper Posgresql DB running on port '5432'"
-Adding contract helper Posgresql DB running on port '5432'
+> print "Adding contract helper Postgresql DB running on port '5432'"
+Adding contract helper Postgresql DB running on port '5432'
 
 > add_service service_id="contract-helper-db"
 Service 'contract-helper-db' added with service GUID 'contract-helper-db-1670311755'

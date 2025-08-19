@@ -2,6 +2,7 @@
 id: storage-solutions
 title: Decentralized Storage Solutions
 sidebar_label: Alternative Solutions
+description: "Explore decentralized storage alternatives for NEAR Protocol applications, including Arweave, Crust, and IPFS integration for cost-effective data storage."
 ---
 
 > In this article you'll find a brief overview of different decentralized storage solutions that can be integrated into your decentralized applications (dApps). This will allow you to store large amounts of data using a more economical alternative to native NEAR storage.
@@ -84,11 +85,11 @@ yarn start
 
 - Now you're ready to upload an image by selecting the <kbd>Choose File</kbd> button:
 
-![Arweave step 1](/docs/assets/arweave-1.png)
+![Arweave step 1](/docs/assets/protocol/storage/arweave-1.png)
 
 - You should see the transaction ID window become populated after hitting the <kbd>Submit</kbd> button:
 
-![Arweave step 2](/docs/assets/arweave-2.png)
+![Arweave step 2](/docs/assets/protocol/storage/arweave-2.png)
 
 :::tip
 If you get an error, make sure your arlocal node is running in a **separate terminal.**
@@ -109,7 +110,7 @@ When dealing with a real Arweave node you will have to wait until your transacti
 
 - Now you can copy and paste any of your listed arweave transaction IDs in step 5 on the frontend to retrieve your file from your local node:
 
-![Arweave step 3](/docs/assets/arweave-3.png)
+![Arweave step 3](/docs/assets/protocol/storage/arweave-3.png)
 
 :::info
 Using Arweave's live network will require purchasing artokens to pay for storage. You can find out more at [arweave.org](https://www.arweave.org/).

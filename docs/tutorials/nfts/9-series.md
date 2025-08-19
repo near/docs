@@ -2,17 +2,13 @@
 id: series
 title: Customizing the NFT Contract
 sidebar_label: Lazy Minting, Collections, and More!
+description: "In this tutorial, you'll learn how to take the existing NFT contract you've been working with and modify it to meet some of the most common needs in the ecosystem.This includes Lazy Minting NFTs, Creating Collections, Restricting Minting Access, and Highly Optimizing Storage, and hacking enumeration methods."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this tutorial, you'll learn how to take the [existing NFT contract](https://github.com/near-examples/nft-tutorial) you've been working with and modify it to meet some of the most common needs in the ecosystem. This includes:
-- [Lazy Minting NFTs](#lazy-minting)
-- [Creating Collections](#nft-collections-and-series)
-- [Restricting Minting Access](#restricted-access)
-- [Highly Optimizing Storage](#modifying-view-calls-for-optimizations)
-- Hacking Enumeration Methods
+In this tutorial, you'll learn how to take the [existing NFT contract](https://github.com/near-examples/nft-tutorial) you've been working with and modify it to meet some of the most common needs in the ecosystem.This includes [Lazy Minting NFTs](#lazy-minting), [Creating Collections](#nft-collections-and-series), [Restricting Minting Access](#restricted-access), and [Highly Optimizing Storage](#modifying-view-calls-for-optimizations), and hacking enumeration methods.
 
 ---
 

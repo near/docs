@@ -1,6 +1,7 @@
 ---
 id: welcome
 title: Security
+description: "Learn about smart contract security best practices on NEAR, including common vulnerabilities, attack vectors, and how to build secure decentralized applications."
 ---
 
 Here you will find information on how to keep your smart contract and decentralized applications secure.

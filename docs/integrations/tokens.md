@@ -2,10 +2,13 @@
 id: fungible-tokens
 title: Fungible tokens
 sidebar_label: Fungible Tokens
+description: "Learn how to integrate NEAR tokens (NEAR, FT, and NFT) into your application, including balance queries, transfers, and token metadata."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+This document provides an overview of the NEAR fungible token standard, including how to check balances, get metadata, and perform transfers. It also covers the storage requirements for fungible tokens and how to manage storage deposits.
 
 ## Introduction {#introduction}
 

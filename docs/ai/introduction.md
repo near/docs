@@ -1,10 +1,13 @@
 ---
 id: introduction
 title: AI and NEAR
-sidebar_label: AI and NEAR
+sidebar_label: Introduction
+description: "Introduction to NEAR's User-Owned AI vision, featuring Shade Agents for verifiable multichain AI agents, NEAR AI network infrastructure, and Bitte Protocol for smart contract interactions."
 ---
 
 NEAR's vision is to create a future of **User-Owned AI**, where AI and agents serve their users, not corporations. For this vision to become a reality, AI must protect user data, prioritize the user's interests, and operate on a sustainable, user-aligned economic model. The NEAR ecosystem has multiple technologies to enable User-Owned AI.
+
+![img](/docs/assets/welcome-pages/9.near-nodes.png)
 
 ---
 
@@ -40,4 +43,4 @@ Agents are accessible through the [NEAR AI Assistant](https://chat.near.ai/chat)
 
 ## Bitte Protocol
 
-[Bitte Protocol](https://docs.bitte.ai/prompts/quickstart) is a framework for creating AI agents that interact with smart contracts on NEAR and other chains via natural language. Bitte agents are quick and easy to get started with, you can build an agent for a smart contract in a couple of hours with little prior knowledge of agents. 
+[Bitte Protocol](https://docs.bitte.ai/agents/build-agent) is a framework for creating AI agents that interact with smart contracts on NEAR and other chains via natural language. Bitte agents are quick and easy to get started with, you can build an agent for a smart contract in a couple of hours with little prior knowledge of agents. 

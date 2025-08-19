@@ -1,145 +1,91 @@
 ---
 id: index
-title: Welcome to NEAR
+title: NEAR Protocol Documentation
 sidebar_label: Home
 hide_table_of_contents: true
+hide_title: true
+description: "NEAR Protocol documentation - Build decentralized applications and AI agents with seamless cross-chain capabilities on a layer-1 blockchain built for scale."
 ---
 
-import {FeatureList, Column, Feature} from "@site/src/components/featurelist";
 import {Container, Card} from "@site/src/components/cards";
 
-Imagine a place where you can build Web3 apps with the simplicity of Web2. Imagine a place where you can empower communities, supercharge AI, and easily integrate your app with other chains. Welcome to NEAR; you're going to like it here.
+<div className="landing">
 
-<Container>
-    <Card img={require("@site/static/docs/assets/welcome-pages/protocol.png").default}
-          title="NEAR Protocol"
-          text="Learn what NEAR is and how it works"
-          links={{
-            "What is NEAR?": "/protocol/basics",
-            "Named Accounts": "/protocol/account-id",
-            "Access Keys": "/protocol/access-keys",
-            "Transactions": "/protocol/transactions"
-          }}
-    />
-    <Card img={require("@site/static/docs/assets/welcome-pages/chain-abstraction-landing.png").default}
-          title="Chain Abstraction"
-          text="Forget about the chain, focus on usability"
-          links={{
-            "What is Chain Abstraction?": "/chain-abstraction/what-is",
-            "Chain Signatures ✨": "/chain-abstraction/chain-signatures",
-            "Meta-transactions": "/chain-abstraction/meta-transactions",
-            "NEAR Intents": "/chain-abstraction/intents/overview",
-          }}
-    />
-    <Card img={require("@site/static/docs/assets/welcome-pages/examples-landing.png").default}
-          title="Web3 Applications"
-          text="Supercharge your App using NEAR"
-          links={{
-            "What are Web3 Applications?": "/web3-apps/what-is",
-            "Quickstart ✨": "/web3-apps/quickstart",
-            "Create an AI Assistant 🤖✨": "/web3-apps/ai/ai-assistant",
-            "Use a Contract in Your Frontend": "/web3-apps/integrate-contracts",
-          }}
-    />
-    <Card img={require("@site/static/docs/assets/welcome-pages/contracts.png").default}
-          title="Smart Contracts"
-          text="NEAR accounts can host small programs"
-          links={{
-            "What is a Contract?": "/smart-contracts/what-is",
-            "Quickstart ✨": "/smart-contracts/quickstart",
-            "Contract's Anatomy": "/smart-contracts/anatomy/",
-            "Sandbox Testing": "/smart-contracts/testing/integration-test"
-          }}
-    />
-    <Card img={require("@site/static/docs/assets/welcome-pages/primitives-landing.png").default}
-          title="Primitives"
-          text="FTs, NFTs, and everything your app needs"
-          links={{
-            "What are Primitives?": "/primitives/what-is",
-            "Fungible Tokens (FT)": "/primitives/ft",
-            "Non-Fungible Tokens (NFT)": "/primitives/nft",
-            "Autonomous Organizations": "/primitives/dao",
-            "Decentralized Exchanges": "/primitives/dex",
-            "Linkdrops": "/primitives/linkdrop",
-          }}
-    />
-    <Card img={require("@site/static/docs/assets/welcome-pages/data-lake-landing.png").default}
-          title="Data Infrastructure"
-          text="Easily extract and analyze on-chain data"
-          links={{
-            "What is Data Infrastructure?": "/data-infrastructure/what-is",
-            "BigQuery": "/data-infrastructure/big-query",
-            "Data APIs": "/data-infrastructure/data-apis",
-            "Lake Framework": "/data-infrastructure/lake-framework/near-lake-framework",
-          }}
-    />
-</Container>
-
----
-
-## External Resources
-
-Here are more sources from our ecosystem that can help you to learn more about NEAR.
-
-<div className="row cards">
-  <div className="col col--6">
-    <a href="https://dev.near.org/applications" target="_blank" rel="noopener noreferrer">
-      <div className="card">
-        <div className="card__image">
-          <img src={require("@site/static/docs/assets/welcome-pages/awesomenear.jpg").default} alt="Discover" />
-        </div>
-        <div className="card__body">
-          <h3>
-          Discover
-          </h3>
-          Discover awesome apps in the Near ecosystem
-        </div>
-      </div>
-    </a>
+  <div className="landing-intro">
+    <h1>NEAR Protocol Documentation</h1>
+    <p className="landing-subtitle">Build decentralized applications and AI agents with seamless cross-chain capabilities</p>
+    <div className="landing-underline"></div>
   </div>
-  <div className="col col--6">
-    <a href="https://near.github.io/nearcore/" target="_blank" rel="noopener noreferrer">
-      <div className="card">
-        <div className="card__image">
-          <img src={require("@site/static/docs/assets/welcome-pages/nomicon.png").default} alt="NEAR Core" />
-        </div>
-        <div className="card__body">
-          <h3>
-          NEAR Core
-          </h3>
-          Learn the official protocol documentation
-        </div>
-      </div>
-    </a>
+
+  <Container>
+    <Card 
+      img="/icons/near.svg"
+      title="New to NEAR?"
+      text="NEAR is a layer-1 blockchain built for scale and multichain compatibility. Battle-tested with 13M+ transaction peaks and 5 years of zero downtime"
+      links={{
+              "What is NEAR?": "/protocol/basics",
+              "Account Model": "/protocol/account-id",
+              "Transactions": "/protocol/transactions"    }}
+    />
+    <Card
+      img="/icons/ai.svg"
+      title="AI Native Infrastructure"
+      text="NEAR is the execution layer for AI-native apps—enabling agents to own assets, make decisions, and transact freely across networks"
+      links={{
+        "Getting Started": "/ai/introduction",
+        "Shade Agents": "/ai/shade-agents/introduction",
+        "NEAR AI Docs": "https://docs.near.ai"
+      }}
+    />
+    <Card 
+      img="/icons/multichain.svg"
+      title="Multi-Chain"
+      text="Tap into any blockchain with NEAR's chain abstraction layer"
+      links={{
+        "What is Chain Abstraction?": "/chain-abstraction/what-is",
+        "NEAR Intents": "/chain-abstraction/intents/overview",
+        "Chain Signatures": "/chain-abstraction/chain-signatures"
+       }}
+    />
+  </Container>
+    
+  <Container>
+    <Card 
+      img="/icons/app.svg"
+      title="Web3 Applications"
+      text="Create modern web applications that interact with the NEAR blockchain. Learn frontend integration and user experience best practices"
+      links={{
+        "What are Web3 Apps?": "/web3-apps/what-is",
+        "Quickstart ✨": "/web3-apps/quickstart",
+        "Use a Contract in Your Frontend": "/web3-apps/integrate-contracts",    }}
+    />
+    <Card 
+      img="/icons/contract.svg"
+      title="Smart Contracts"
+      text="Deploy and interact with smart contracts on NEAR. From basic concepts to advanced patterns and security best practices"
+      links={{
+        "What are Smart Contracts?": "/smart-contracts/what-is",
+        "Quickstart ✨": "/smart-contracts/quickstart",
+        "Contract's Anatomy": "/smart-contracts/anatomy/",  }}
+    />
+    <Card 
+      img="/icons/token.svg"
+      title="Tokens and Primitives"
+      text="Learn about FTs, NFTs, DAOs and everything you need to build an application on NEAR"
+      links={{
+        "Fungible Tokens (FT)": "/primitives/ft",
+        "Non-Fungible Tokens (NFT)": "/primitives/nft",
+        "Autonomous Organizations": "/primitives/dao"
+        }}
+    />
+  </Container>
+
+  <div className="landing-footer">
+    <h2>Ready to start building?</h2>
+    <p>Discover what makes NEAR the perfect platform for your next application</p>
+    <div className="landing-cta">
+      <a href="/protocol/basics" className="button button--primary button--lg">Explore NEAR</a>
+    </div>
   </div>
-  <div className="col col--6">
-    <a href="https://near-nodes.io" target="_blank" rel="noopener noreferrer">
-      <div className="card">
-        <div className="card__image">
-          <img src={require("@site/static/docs/assets/welcome-pages/validate.png").default} alt="Validate" />
-        </div>
-        <div className="card__body">
-          <h3>
-          Running a Node
-          </h3>
-          Become a validator, help keeping the blockchain safe
-        </div>
-      </div>
-    </a>
-  </div>
-  <div className="col col--6">
-    <a href="https://templates.mintbase.xyz/" target="_blank" rel="noopener noreferrer">
-      <div className="card">
-        <div className="card__image">
-          <img src={require("@site/static/docs/assets/welcome-pages/mintbase-templates.png").default} alt="Templates" />
-        </div>
-        <div className="card__body">
-          <h3>
-          Templates
-          </h3>
-          Templates for creating web3 applications
-        </div>
-      </div>
-    </a>
-  </div>
+
 </div>

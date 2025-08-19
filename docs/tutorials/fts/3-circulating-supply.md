@@ -2,6 +2,7 @@
 id: circulating-supply
 title: Creating a Circulating Supply
 sidebar_label: Circulating Supply
+description: "In the previous tutorial, you looked at what a fungible token was and how you could define one in your smart contract. In this tutorial, you'll learn how to create a circulating supply belonging to the contract owner and view all the tokens, with their metadata, in the NEAR wallet."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

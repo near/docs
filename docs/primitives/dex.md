@@ -2,6 +2,7 @@
 id: dex
 title: Decentralized Exchanges (DEX)
 hide_table_of_contents: false
+description: "Learn how to interact with decentralized exchanges on NEAR Protocol, including token swapping, liquidity pools, and integration with Ref Finance DEX."
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
@@ -39,7 +40,7 @@ A Decentralized Exchange (DEX) is an application that allows users to trade toke
 
 ![dex](/docs/primitives/dex.png)
 
-In brief, DEXs work by having [pools of token pairs](https://guide.ref.finance/products/overview/pooling) (e.g. NEAR-USDC) that users can deposit tokens into.
+In brief, DEXs work by having [pools of token pairs](https://guide.rhea.finance/products/overview/pooling) (e.g. NEAR-USDC) that users can deposit tokens into.
 
 The ratio of the tokens in the pool determines the exchange rate for a swap. Indeed, swapping is adding tokens to one side of the pool while removing tokens from the other side of the pool.
 
@@ -47,7 +48,7 @@ The ratio of the tokens in the pool determines the exchange rate for a swap. Ind
 
 This docs refer to [Ref Finance](https://www.ref.finance/), a community built DEX in NEAR.
 
-Please check their [docs](https://guide.ref.finance/developers-1/cli-trading) for more information.
+Please check their [docs](https://guide.rhea.finance/) for more information.
 
 :::
 

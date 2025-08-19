@@ -1,6 +1,7 @@
 ---
 id: core
 title: Transfers
+description: "In this tutorial you'll learn how to implement NFT transfers as defined in the core standards into your smart contract."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
@@ -242,7 +243,7 @@ If you query for your tokens, you should still have `token-2` and at this point,
 
 In this tutorial, you learned how to expand an NFT contract past the minting functionality and you added ways for users to transfer NFTs. You [broke down](#introduction) the problem into smaller, more digestible subtasks and took that information and implemented both the [NFT transfer](#transfer-function) and [NFT transfer call](#transfer-call-function) functions. In addition, you deployed another [patch fix](#redeploying-contract) to your smart contract and [tested](#testing-changes) the transfer functionality.
 
-In the [next tutorial](5-approval.md), you'll learn about the approval management system and how you can approve others to transfer tokens on your behalf.
+In the [next tutorial](5-approvals.md), you'll learn about the approval management system and how you can approve others to transfer tokens on your behalf.
 
 :::note Versioning for this article
 

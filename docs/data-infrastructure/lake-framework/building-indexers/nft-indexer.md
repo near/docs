@@ -1,9 +1,17 @@
 ---
 sidebar_label: NFT Indexer
+description: "This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the NEAR Lake Framework JS. The indexer will listen for nft_mint events and print relevant data about newly minted NFTs."
 ---
 
-# Building an NFT indexer
+This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the [NEAR Lake Framework JS](/data-infrastructure/lake-framework/near-lake-framework). The indexer will listen for `nft_mint` events and print relevant data about newly minted NFTs.
 
+The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
+- `receiptId` of the [Receipt](/data-infrastructure/lake-data-structures/receipt) where the mint has happened
+- Marketplace
+- NFT owner account name
+- Links to the NFTs on the marketplaces
+
+The final source code is available on the GitHub [`near-examples/near-lake-nft-indexer`](https://github.com/near-examples/near-lake-nft-indexer)
 
 :::note Source code for the tutorial
 
@@ -11,15 +19,6 @@ sidebar_label: NFT Indexer
 
 :::
 
-## The End
-
-This tutorial ends with a working NFT indexer built on top [NEAR Lake Framework JS](/data-infrastructure/lake-framework/near-lake-framework). The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
-- `receiptId` of the [Receipt](/data-infrastructure/lake-data-structures/receipt) where the mint has happened
-- Marketplace
-- NFT owner account name
-- Links to the NFTs on the marketplaces
-
-The final source code is available on the GitHub [`near-examples/near-lake-nft-indexer`](https://github.com/near-examples/near-lake-nft-indexer)
 
 ## Motivation
 
@@ -29,7 +28,7 @@ The Events have a field `standard` which aligns with NEPs. In this tutorial we'l
 
 In this tutorial our goal is to show you how you can "listen" to the Events contracts emit and how you can benefit from them.
 
-As the example we will be building an indexer that watches all the NFTs minted following the [NEP-171 Events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) standard, assuming we're collectors who don't want to miss a thing. Our indexer should notice every single NFT minted and give us a basic set of data like: in what Receipt it was minted, and show us the link to a marketplace (we'll cover [Paras](https://paras.id) and [Mintbase](https://mintbase.io) in our example).
+As the example we will be building an indexer that watches all the NFTs minted following the [NEP-171 Events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) standard, assuming we're collectors who don't want to miss a thing. Our indexer should notice every single NFT minted and give us a basic set of data like: in what Receipt it was minted, and show us the link to a marketplace (we'll cover Paras and Bitte/Mintbase in our example).
 
 We will use JS version of [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) in this tutorial. Though the concept is the same for Rust, but we want to show more people that it's not that complex to build your own indexer.
 
@@ -318,7 +317,7 @@ Having troubles running the indexer? Please, check you haven't skipped the [Cred
 
 :::
 
-Not so fast! Remember we were talking about having the links to the marketplaces to see the minted tokens? We're gonna extend our data with links whenever possible. At least we're gonna show you how to deal with the NFTs minted on [Paras](https://paras.id) and [Mintbase](https://mintbase.io).
+Not so fast! Remember we were talking about having the links to the marketplaces to see the minted tokens? We're gonna extend our data with links whenever possible. At least we're gonna show you how to deal with the NFTs minted on Paras and Bitte/Mintbase.
 
 ## Crafting links to Paras and Mintbase for NFTs minted there
 
@@ -360,7 +359,7 @@ interface ParasEventLogData {
 And again we did the research for you:
 
 ```
-https://www.mintbase.io/thing/[1]:[2]
+https://bitte.ai/thing/[1]:[2]
 ```
 
 Where:
@@ -371,7 +370,7 @@ Where:
 Example:
 
 ```
-https://www.mintbase.io/thing/70eES-icwSw9iPIkUluMHOV055pKTTgQgTiXtwy3Xus:vnartistsdao.mintbase1.near
+https://bitte.ai/thing/70eES-icwSw9iPIkUluMHOV055pKTTgQgTiXtwy3Xus:vnartistsdao.mintbase1.near
 ```
 
 Let's add the interface for later use somewhere after `interface EventLogData`:
@@ -390,8 +389,6 @@ let output = []
 for (let relevantOutcome of relevantOutcomes) {
   let marketplace = "Unknown"
   let nfts = []
-
-
 }
 ```
 
@@ -434,7 +431,7 @@ Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have [
           const memo = JSON.parse(eventData.memo)
           return {
             owner: eventData.owner_id,
-            links: [`https://mintbase.io/thing/${memo["meta_id"]}:${relevantOutcome.receipt.receiverId}`]
+            links: [`https://bitte.ai/thing/${memo["meta_id"]}:${relevantOutcome.receipt.receiverId}`]
           }
         })
       })
@@ -502,7 +499,7 @@ All together:
           const memo = JSON.parse(eventData.memo)
           return {
             owner: eventData.owner_id,
-            links: [`https://mintbase.io/thing/${memo["meta_id"]}:${relevantOutcome.receipt.receiverId}`]
+            links: [`https://bitte.ai/thing/${memo["meta_id"]}:${relevantOutcome.receipt.receiverId}`]
           }
         })
       })
@@ -578,7 +575,7 @@ We caught freshly minted NFTs!
       {
         owner: 'chiming.near',
         links: [
-          'https://mintbase.io/thing/HOTcn6LTo3qTq8bUbB7VwA1GfSDYx2fYOqvP0L_N5Es:vnartistsdao.mintbase1.near'
+          'https://bitte.ai/thing/HOTcn6LTo3qTq8bUbB7VwA1GfSDYx2fYOqvP0L_N5Es:vnartistsdao.mintbase1.near'
         ]
       }
     ]

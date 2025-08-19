@@ -2,6 +2,7 @@
 id: types
 title: SDK Types
 hide_table_of_contents: true
+description: "Lets discuss which types smart contracts use to input and output data, as well as how such data is stored and handled in the contract's code."
 ---
 
 import Tabs from '@theme/Tabs';

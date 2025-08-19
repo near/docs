@@ -1,9 +1,16 @@
 ---
 id: run-lake-indexer
 sidebar_label: Running Lake Indexer
+description: "Learn how to set up and run a NEAR Lake Indexer, including prerequisites, network configuration, and commands for syncing from the latest or a specific block."
 ---
 
-# Running NEAR Lake Indexer
+Learn how to set up and run a NEAR Lake Indexer, including prerequisites, network configuration, and commands for syncing from the latest or a specific block.
+
+The Lake Indexer setup consists of the following components:
+
+- AWS S3 Bucket as a storage
+- NEAR Lake binary that operates as a regular NEAR Protocol peer-to-peer node, so you will operate it as
+  any other [Regular/RPC Node in NEAR](https://near-nodes.io/rpc/hardware-rpc)
 
 :::info
 
@@ -11,14 +18,6 @@ NEAR Lake is a blockchain indexer built on top of [NEAR Indexer microframework](
 to watch the network and store all the events as JSON files on AWS S3.
 
 :::
-
-## How to start
-
-The Lake Indexer setup consists of the following components:
-
-- AWS S3 Bucket as a storage
-- NEAR Lake binary that operates as a regular NEAR Protocol peer-to-peer node, so you will operate it as
-  any other [Regular/RPC Node in NEAR](https://near-nodes.io/rpc/hardware-rpc)
 
 ### Prepare Development Environment
 

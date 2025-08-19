@@ -1,16 +1,14 @@
 ---
 id: advanced-xcc
 title: Complex Cross Contract Call
+description: "Master advanced cross-contract call patterns in NEAR Protocol, including callbacks, error handling, and complex multi-contract interactions."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-This example presents 3 instances of complex cross-contract calls. Particularly, it shows:
+This example presents 3 instances of complex cross-contract calls on the NEAR blockchain, showcasing how to batch multiple function calls to a same contract, call multiple contracts in parallel, and handle responses in the callback. It includes both the smart contract and the frontend components. 
 
-1. How to batch multiple function calls to a same contract.
-2. How to call multiple contracts in parallel, each returning a different type.
-3. Different ways of handling the responses in the callback.
 
 :::info Simple Cross-Contract Calls
 

@@ -1,6 +1,7 @@
 ---
 id: sybil
 title: Sybil Attacks
+description: "Learn about sybil attacks in NEAR smart contracts and how to prevent them with proper identity verification and anti-gaming mechanisms."
 ---
 
 While developing your smart contract, keep in mind that an individual can potentially create multiple NEAR accounts. This is especially relevant in ecosystems involving crowd decisions, such as [DAOs](../../primitives/dao.md). 

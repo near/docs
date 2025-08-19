@@ -1,6 +1,7 @@
 ---
 id: update-contract-migrate-state
 title: Self Upgrade & State Migration
+description: "Learn how to implement upgradeable smart contracts on NEAR Protocol, including migration patterns and state management during contract updates."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

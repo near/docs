@@ -1,10 +1,8 @@
 ---
 sidebar_label: Migrating to NEAR Lake framework
 id: migrating-to-near-lake-framework
+description: "We encourage everyone who don't have a hard requirement to use NEAR Indexer Framework consider the migration to NEAR Lake Framework."
 ---
-
-# Migrating to NEAR Lake Framework
-
 
 We encourage everyone who don't have a hard requirement to use [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) consider the migration to [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework).
 

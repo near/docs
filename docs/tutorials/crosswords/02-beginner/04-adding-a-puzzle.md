@@ -1,7 +1,8 @@
 ---
 sidebar_position: 4
-sidebar_label: "Add a puzzle"
-title: "Adding a new puzzle now that we're using a collection that can contain multiple crossword puzzles"
+sidebar_label: Add a puzzle
+title: Adding a new puzzle now that we're using a collection that can contain multiple crossword puzzles
+description: "In this chapter, we will add a new crossword puzzle to our smart contract. We will provide the necessary clues and answers, deploy the updated contract, and ensure that the new puzzle is correctly added to the collection."
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,6 +11,8 @@ import TabItem from '@theme/TabItem';
 import blankCrossword from '/docs/assets/crosswords/chapter-2-crossword-blank.png';
 import teachingDeployment from '/docs/assets/crosswords/teaching-just-teacher--herogranada.near--GranadaHero.jpeg';
 import recreatingSubaccount from '/docs/assets/crosswords/erase-recreate-subaccount--3one9.near--3one92.gif';
+
+In this chapter, we will add a new crossword puzzle to our smart contract. We will provide the necessary clues and answers, deploy the updated contract, and ensure that the new puzzle is correctly added to the collection.
 
 # Adding a puzzle
 

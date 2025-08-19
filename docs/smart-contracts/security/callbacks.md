@@ -1,7 +1,10 @@
 ---
 id: callbacks
 title: Cross-Contract Calls
+description: "Learn about callback security in NEAR smart contracts, including proper error handling, state management, and preventing callback-related vulnerabilities."
 ---
+
+In NEAR, smart contracts can call each other. This is a powerful feature that allows you to build complex applications by composing smaller contracts. However, it also introduces some security considerations that you need to be aware of.
 
 While writing cross-contract calls there is a significant aspect to keep in mind: all the calls are **independent** and **asynchronous**. In other words:
 

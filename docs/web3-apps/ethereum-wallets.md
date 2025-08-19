@@ -1,11 +1,10 @@
 ---
-sidebar_label: "Ethereum Wallets on Near"
+sidebar_label: Ethereum Wallets on Near
 id: ethereum-wallets
+description: "Learn how to integrate Ethereum wallets like MetaMask into your NEAR DApp using the Near Wallet Selector, Web3Modal, and wagmi libraries."
 ---
 
 import { Github } from "@site/src/components/codetabs"
-
-# How to integrate Ethereum Wallets to Near DApps?
 
 In this article we will describe how to add EVM wallets support to your Near app, which is already uses the [Near Wallet Selector](https://github.com/near/wallet-selector/).
 

@@ -1,6 +1,9 @@
 ---
 sidebar_label: Token Transfer
+description: "Detailed explanation of token transfer flow in NEAR Protocol, including cross-shard transfers, gas refunds, and the receipt-based execution model."
 ---
+
+This section explains the flow of token transfers in the NEAR Protocol, detailing how tokens are moved between accounts, the role of receipts, and the importance of gas refunds in the process.
 
 # Token Transfer flow
 
@@ -45,7 +48,7 @@ Assume we have two accounts **alice.near** and **bob.near**. They belong to diff
 
 A [Transaction](/data-infrastructure/lake-data-structures/transaction) signed by **alice.near** is sent to the network. It is immediately executed, [ExecutionOutcome](/data-infrastructure/lake-data-structures/execution-outcome) is the output or result from converting the transaction into a [Receipt](/data-infrastructure/lake-data-structures/receipt).
 
-![Transaction execution](/docs/flow/03-tx-outcome-receipt.png)
+![Transaction execution](/docs/protocol/data-flow/03-tx-outcome-receipt.png)
 
 During the above process **alice.near**, the sender, was charged a fee (gas). The [Receipt](/data-infrastructure/lake-data-structures/receipt) created as result of the [Transaction](/data-infrastructure/lake-data-structures/transaction) follows these rules:
 
@@ -56,13 +59,13 @@ So, in our case the receiver is **bob.near** and that account belongs to a diffe
 
 In our example the Receipt is executed in the very next Block.
 
-![The Receipt is executed in the next Block](/docs/flow/04-send-nears-flow.png)
+![The Receipt is executed in the next Block](/docs/protocol/data-flow/04-send-nears-flow.png)
 
 Almost done. Remember the refund? So the [ExecutionOutcome](/data-infrastructure/lake-data-structures/execution-outcome) for the Receipt will be another Receipt that is refunding the Gas to the sender. **bob.near** has received tokens from **alice.near**. Now, **alice.near** becomes the receiver for a new (and last) Receipt (keep in mind the sender in this Receipt is always **system**).
 
 Keep in mind rule #2: the Receipt must be executed on the receiver's Shard. So this Receipt moves to the Shard where **alice.near** belongs to. And it is the last execution in this process.
 
-![Complete scheme of Token transfer between the accounts from different Shards](/docs/flow-token-transfer/01-diff-shards-complete.png)
+![Complete scheme of Token transfer between the accounts from different Shards](/docs/protocol/flow-token-transfer/01-diff-shards-complete.png)
 
 This is it. Tokens have been transferred from the account on one Shard to the account on a different Shard, and the initial sender, **alice.near**, received a refund of Gas.
 
@@ -73,12 +76,12 @@ Let's have a look at the example where both accounts are on the same [Shard](/da
 
 A [Transaction](/data-infrastructure/lake-data-structures/transaction) signed by **alice.near** is sent to the network. It is immediately executed, [ExecutionOutcome](/data-infrastructure/lake-data-structures/execution-outcome) is the result of converting the transaction into a [Receipt](/data-infrastructure/lake-data-structures/receipt).
 
-![Transaction execution](/docs/flow/03-tx-outcome-receipt.png)
+![Transaction execution](/docs/protocol/data-flow/03-tx-outcome-receipt.png)
 
 The Receipt is already on the receiver's Shard, so it is put in the execution queue of the next [Block](/data-infrastructure/lake-data-structures/block). It is executed in the next Block, and the [ExecutionOutcome](/data-infrastructure/lake-data-structures/execution-outcome) result is a new Receipt with the refund to the initial sender, **alice.near**.
 The Same rules apply to this Receipt, it is put into the execution queue and executed in the next Block.
 
-![Complete scheme of Token transfer between the account from the same Shards](/docs/flow-token-transfer/02-same-shard-complete.png)
+![Complete scheme of Token transfer between the account from the same Shards](/docs/protocol/flow-token-transfer/02-same-shard-complete.png)
 
 This is it. You may wonder why the process is overcomplicated for the same Shard case. The answer is: **the same rules are always applied**. Also, this mechanism allows to build the NEAR Protocol data flow by only one set of rules, no matter how many Shards exist. Also, we avoid a lot of "ifs" and we don't have to keep in mind different corner cases because the process always follows the same rules.
 

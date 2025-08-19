@@ -1,6 +1,7 @@
 ---
 id: request
 title: "Abstract DAO: Requests"
+description: "The Abstract DAO contract works as an intermediary between decentralized organizations in NEAR and EVM networks. To better understand how it works it is better to start by using it by itself, without using a DAO yet."
 ---
 
 import Tabs from '@theme/Tabs';

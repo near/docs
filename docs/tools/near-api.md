@@ -2,15 +2,18 @@
 id: near-api
 title: NEAR API
 sidebar_label: NEAR API
+description: "Collection of language-specific SDKs (JavaScript, Rust, Python) for interacting with NEAR blockchain - call functions, manage accounts, transfer tokens, and deploy contracts."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github, Language} from "@site/src/components/codetabs"
 
-The NEAR API is a collection of language-specific SDKs that allow developers to interact with the NEAR blockchain from both frontend and backend applications. These libraries enable you to:
+The NEAR API is a collection of language-specific SDKs that allow developers to interact with the NEAR blockchain from both frontend and backend applications.
 
-- Invoke `view` and `call` functions on deployed smart contracts
+These libraries enable you to:
+
+- Invoke view and call functions on deployed smart contracts
 - Query on-chain data such as account state, keys, balance
 - Create and manage NEAR accounts
 - Transfer tokens, including native NEAR, Fungible Tokens, Non-Fungible Tokens
@@ -81,7 +84,7 @@ To allow users to login into your web application using a wallet you will need t
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
-  You can use the API library in the browser, or in Node.js runtime. 
+  You can use the API library in the browser, or in Node.js runtime.
 
   ```js
   import { Account } from "@near-js/accounts";
@@ -95,7 +98,7 @@ To allow users to login into your web application using a wallet you will need t
     All these examples are written for the browser, to use these examples in Node.js you should convert the project to an ES module. To do this, add the following to your `package.json`:
 
   <Github fname="package.json" language="javascript"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/javascript/package.json#L1-L2"
+    url="https://github.com/near-examples/near-api-examples/tree/main/javascript/package.json#L1-L2"
     start="1" end="2" />
 
   </details>
@@ -103,10 +106,10 @@ To allow users to login into your web application using a wallet you will need t
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
 
-  The methods to interact with the NEAR API are available through the `prelude` module.
+  The methods to interact with the NEAR API are available through the `near_api` module.
 
   <Github fname="send_tokens.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/send_tokens.rs#L2"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/send_tokens.rs#L2"
     start="2" end="2" />
 
   </TabItem>
@@ -137,13 +140,13 @@ To allow users to login into your web application using a wallet you will need t
   Preset connections `mainnet` and `testnet` are available that come with standard configurations for each network.
 
   <Github fname="send_tokens.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/send_tokens.rs#L19"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/send_tokens.rs#L19"
     start="19" end="19" />
 
   You can also create your own custom connection.
 
   <Github fname="custom_rpc.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/custom_rpc.rs#L6-L16"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/custom_rpc.rs#L6-L16"
     start="6" end="16" />
 
   </TabItem>
@@ -151,7 +154,7 @@ To allow users to login into your web application using a wallet you will need t
 
 <hr class="subsection" />
 
-### Key Handlers: Stores & Signers 
+### Key Handlers: Stores & Signers
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
@@ -284,7 +287,7 @@ To allow users to login into your web application using a wallet you will need t
   Signers can be created using the Keystore that is also used as the standard for saving keys with the NEAR CLI.
 
   <Github fname="keystore.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/signer_options/keystore.rs#L12-L18"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/signer_options/keystore.rs#L12-L18"
     start="12" end="18" />
 
   </TabItem>
@@ -293,7 +296,7 @@ To allow users to login into your web application using a wallet you will need t
   Signers can be created using the credentials directory which is the legacy option for saving keys with the NEAR CLI.
 
   <Github fname="credentials_directory.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/signer_options/credentials_directory.rs#L10-L13"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/signer_options/credentials_directory.rs#L10-L13"
     start="10" end="13" />
 
   </TabItem>
@@ -302,7 +305,7 @@ To allow users to login into your web application using a wallet you will need t
   Signers can be created by loading a public and private key from a file.
 
   <Github fname="credentials_file.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/signer_options/credentials_file.rs#L12-L13"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/signer_options/credentials_file.rs#L12-L13"
     start="12" end="13" />
 
   </TabItem>
@@ -310,10 +313,10 @@ To allow users to login into your web application using a wallet you will need t
 
   Signers can be created by using a private key string.
 
-  Private keys have the format "ed25519:5Fg2...".
+  Private keys have the format `ed25519:5Fg2...`.
 
   <Github fname="private_key_string.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/signer_options/private_key_string.rs#L13-L14"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/signer_options/private_key_string.rs#L13-L14"
     start="13" end="14" />
 
   </TabItem>
@@ -321,10 +324,10 @@ To allow users to login into your web application using a wallet you will need t
 
   Signers can be created by using a seed phrase.
 
-  Seed phrases have the format "shoe three gate ..." and are usually 12 words long.
+  Seed phrases have the format `shoe three gate ...` and are usually 12 words long.
 
   <Github fname="seed_phrase.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/signer_options/seed_phrase.rs#L11-L12"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/signer_options/seed_phrase.rs#L11-L12"
     start="11" end="12" />
 
   </TabItem>
@@ -351,7 +354,7 @@ To allow users to login into your web application using a wallet you will need t
   It’s also important to note that each `Provider` can internally use different transport protocols (such as HTTPS or WebSocket), making the failover strategy flexible across various infrastructure setups.
 
   ```js
-  import { JsonRpcProvider, FailoverPrcProvider } from "@near-js/providers";
+  import { JsonRpcProvider, FailoverRpcProvider } from "@near-js/providers";
   
   const jsonProviders = [
     new JsonRpcProvider({ url: "https://incorrect-rpc-url.com" }), // Incorrect RPC URL
@@ -409,7 +412,7 @@ This will return an Account object for you to interact with.
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="account_details.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/account_details.rs#L5-L7"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/account_details.rs#L5-L7"
     start="5" end="7" />
 
   </TabItem>
@@ -497,7 +500,7 @@ Gets the available and staked balance of an account in yoctoNEAR.
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="account_details.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/account_details.rs#L13-L18"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/account_details.rs#L13-L18"
     start="13" end="18" />
 
   </TabItem>
@@ -545,7 +548,7 @@ Get basic account information, such as its code hash and storage usage.
   <TabItem value="rust" label="🦀 Rust">
   
   <Github fname="account_details.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/account_details.rs#L21-L21"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/account_details.rs#L21-L21"
     start="21" end="21" />
 
   </TabItem>
@@ -587,7 +590,7 @@ When creating a new account, you’ll need to provide:
   await account.createAccount(
     "another_user.testnet",
     keyPair.getPublicKey(),
-    // attaches 1.234 NEAR tokens that will become 
+    // attaches 1.234 NEAR tokens that will become
     // an initial balance of "another_user.testnet"
     NEAR.toUnits("1.234")
   );
@@ -610,7 +613,7 @@ When creating a new account, you’ll need to provide:
   await account.createAccount(
     "another_user.testnet",
     publicKey,
-    // attaches 1.234 NEAR tokens that will become 
+    // attaches 1.234 NEAR tokens that will become
     // an initial balance of "another_user.testnet"
     NEAR.toUnits("1.234")
   );
@@ -624,8 +627,8 @@ When creating a new account, you’ll need to provide:
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="create_account.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/create_account.rs#L32-L49"
-    start="32" end="49" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account.rs#L32-L47"
+    start="32" end="47" />
 
   <details>
     <summary>Creating an account from a seed phrase</summary>
@@ -633,7 +636,7 @@ When creating a new account, you’ll need to provide:
     You can also create an account via a randomly generated seed phrase.
 
     <Github fname="create_account_from_seed.rs" language="rust"
-      url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/create_account_from_seed.rs#L32-L48"
+      url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account_from_seed.rs#L32-L48"
       start="32" end="48" />
 
   </details>
@@ -676,7 +679,7 @@ To create a sub-account, the parent must send a transaction to itself with the [
   await account.createAccount(
     "project.user.testnet",
     keyPair.getPublicKey(),
-    // attaches 1.234 NEAR tokens that will become 
+    // attaches 1.234 NEAR tokens that will become
     // an initial balance of "project.user.testnet"
     NEAR.toUnits("1.234")
   );
@@ -690,8 +693,8 @@ To create a sub-account, the parent must send a transaction to itself with the [
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="create_account.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/create_account.rs#L65-L82"
-    start="65" end="82" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account.rs#L61-L82"
+    start="61" end="82" />
 
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -728,7 +731,7 @@ Deleting an account **DOES NOT** affect its sub-accounts - they will remain acti
   ```js
   const account = new Account("user.testnet", provider, signer);
 
-  // account "user.testnet" gets deleted 
+  // account "user.testnet" gets deleted
   // and remaining funds will go to account "beneficiary.testnet" (if it exists)
   await account.deleteAccount("beneficiary.testnet");
   ```
@@ -741,8 +744,8 @@ Deleting an account **DOES NOT** affect its sub-accounts - they will remain acti
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="delete_account.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/delete_account.rs#L54-L59"
-    start="54" end="59" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/delete_account.rs#L51-L59"
+    start="51" end="59" />
 
   </TabItem>
 </Tabs>
@@ -764,7 +767,7 @@ Accounts can transfer different types of tokens to other accounts, including the
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  To begin with, you’ll need the `@near-js/tokens` package, which provides the necessary utilities. 
+  To begin with, you’ll need the `@near-js/tokens` package, which provides the necessary utilities.
   
   Once you've [created an `Account` instance](#instantiate-account), you can transfer tokens to others. Let’s start by looking at how to transfer native `NEAR` tokens.
 
@@ -847,7 +850,7 @@ Accounts can transfer different types of tokens to other accounts, including the
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="send_tokens.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/send_tokens.rs#L22-L28"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/send_tokens.rs#L22-L28"
     start="22" end="28" />
 
   </TabItem>
@@ -874,7 +877,7 @@ A smart contract exposes its methods, and making a function call that modifies s
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  Once you've [created an `Account` instance](#instantiate-account), you can start interacting with smart contracts. 
+  Once you've [created an `Account` instance](#instantiate-account), you can start interacting with smart contracts.
   
   For example, let’s say there’s a [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract deployed at `guestbook.near-examples.testnet`, and you want to add a message to it. To do that, you’d call its `add_message` method.
 
@@ -904,11 +907,11 @@ A smart contract exposes its methods, and making a function call that modifies s
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L23-L24"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L23-L24"
     start="23" end="24" />
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L37-L49"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L37-L49"
     start="37" end="49" />
 
   </TabItem>
@@ -969,7 +972,7 @@ You can send multiple [actions](../protocol/transaction-anatomy.md#actions) in a
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="batch_actions.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/batch_actions.rs#L22-L42"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/batch_actions.rs#L22-L42"
     start="22" end="42" />
 
   </TabItem>
@@ -1080,7 +1083,7 @@ If your use case requires strict ordering or depends on all actions succeeding t
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="simultaneous_transactions.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/simultaneous_transactions.rs#L23-L55"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/simultaneous_transactions.rs#L23-L55"
     start="23" end="55" />
 
   </TabItem>
@@ -1140,7 +1143,7 @@ Unlike many other blockchains, contracts on NEAR are mutable, meaning you have t
   Note that the `signer` here needs to be a signer for the same `account_id` as the one used to construct the `Contract` object.
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L54-L61"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L54-L61"
     start="54" end="61" />
 
   </TabItem>
@@ -1164,13 +1167,11 @@ Unlike many other blockchains, contracts on NEAR are mutable, meaning you have t
 
 ### Deploy a Global Contract {#deploy-a-global-contract}
 
-If you've ever deployed the same contract code to multiple accounts, you’ve likely noticed that each deployment requires you to pay the full storage cost again — since the size of the WASM file determines how much `NEAR` is locked on the account.
-
-Global Contracts solve this inefficiency by allowing the same contract code to be shared across multiple accounts, so storage cost is paid only once.
+[Global contracts](../smart-contracts/global-contracts.md) allow smart contracts to be deployed once and reused by any account without incurring high storage costs.
 
 There are two ways to reference a global contract:
-- **By account:** The contract code is tied to another account. If that account later deploys a new version of the contract, your account will automatically start using the updated code, with no need for redeployment.
-- **By hash:** You reference the contract by its immutable code hash. This ensures you're always using the exact same version, and it will never change unless you explicitly redeploy with a different hash.
+- **[By account](../smart-contracts/global-contracts.md#reference-by-account):** The contract code is tied to another account.
+- **[By hash](../smart-contracts/global-contracts.md#reference-by-hash):** You reference the contract by its immutable code hash.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
@@ -1193,14 +1194,6 @@ There are two ways to reference a global contract:
   await account.deployGlobalContract(wasm, "accountId");
   ```
 
-  Once the global contract is deployed, let’s see how an end user can reference and use it in their own account. To do this, they need to call the `useGlobalContract` function and pass the source `accountId` where the contract was originally deployed.
-
-  ```js
-  const account = new Account("another_user.testnet", provider, signer);
-
-  await account.useGlobalContract({ accountId: "user.testnet" });
-  ```
-
   <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js" target="_blank" rel="noreferrer noopener" class="text-center">
     See full example on GitHub
   </a>
@@ -1221,7 +1214,96 @@ There are two ways to reference a global contract:
   await account.deployGlobalContract(wasm, "codeHash");
   ```
 
-  Once the global contract is deployed, let’s see how an end user can reference and use it in their own account. To do this, they need to call the `useGlobalContract` function and pass the source `codeHash` of the original contract.
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+  </Tabs>
+
+  </TabItem>
+
+  <TabItem value="rust" label="🦀 Rust">
+
+  Once you've created an Account instance, you can deploy your regular contract as a global contract.
+
+  <Tabs>
+  <TabItem value="account" label="By Account" default>
+
+  Let’s look at an example of deploying a global contract by account.
+  
+  To do this, use the `deploy_global_contract_code` function and use the method `as_account_id`, along with the contract’s code bytes.
+  
+  ```rust
+    let global_account_id: AccountId = "nft-contract.testnet".parse().unwrap();
+    let code = std::fs::read("path/to/your/contract.wasm").unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(code)
+        .as_account_id(global_account_id)
+        .with_signer(signer)
+        .send_to_testnet()
+        .await.unwrap();
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+
+  <TabItem value="hash" label="By Hash" default>
+
+  Let’s look at an example of deploying a global contract by hash.
+  
+  To do this, use the `deploy_global_contract_code` function and use the method `as_hash`, along with the contract’s code bytes.
+  
+  ```rust
+    let account_id: AccountId = "my-account.testnet".parse().unwrap();
+    let code = std::fs::read("path/to/your/contract.wasm").unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(code)
+        .as_hash()
+        .with_signer(account_id, signer)
+        .send_to_testnet()
+        .await.unwrap();
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+  </Tabs>
+
+  </TabItem>
+
+</Tabs>
+
+### Use a Global Contract
+
+Once a [global contract](../smart-contracts/global-contracts.md) has been [deployed](#deploy-a-global-contract), let’s see how you can reference and use it from another account.
+
+<Tabs groupId="api">
+  <TabItem value="js" label="🌐 JavaScript">
+
+  <Tabs>
+  <TabItem value="account" label="By Account" default>
+
+  To reference a global contract by account, you need to call the `useGlobalContract` function and pass the source `accountId` where the contract was originally deployed.
+
+  ```js
+  const account = new Account("another_user.testnet", provider, signer);
+
+  await account.useGlobalContract({ accountId: "user.testnet" });
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+
+  <TabItem value="hash" label="By Hash" default>
+
+  To reference a global contract by hash, you need to call the `useGlobalContract` function and pass the source `codeHash` of the original contract.
 
   ```js
   const account = new Account("another_user.testnet", provider, signer);
@@ -1237,9 +1319,58 @@ There are two ways to reference a global contract:
   </TabItem>
   </Tabs>
 
+  </TabItem>
 
+  <TabItem value="rust" label="🦀 Rust">
+
+  <Tabs>
+  <TabItem value="account" label="By Account" default>
+
+  To reference a global contract by account, you need to call the `use_global_account_id` function and pass the source `accountId` where the contract was originally deployed.
+
+  ```rust
+    let global_account_id: AccountId = "nft-contract.testnet".parse().unwrap();
+    let my_account_id: AccountId = "my-contract.testnet".parse().unwrap();
+    let my_signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy(my_account_id)
+        .use_global_account_id(global_account_id)
+        .without_init_call()
+        .with_signer(my_signer)
+        .send_to_testnet()
+        .await.unwrap();
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+
+  <TabItem value="hash" label="By Hash" default>
+
+  To reference a global contract by hash, you need to call the `use_global_hash` function and pass the source `hash` of the original contract.
+
+  ```rust
+    let global_hash: types::CryptoHash = "DxfRbrjT3QPmoANMDYTR6iXPGJr7xRUyDnQhcAWjcoFF".parse().unwrap();
+    let account_id: AccountId = "my-contract.testnet".parse().unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy(account_id)
+        .use_global_hash(global_hash)
+        .without_init_call()
+        .with_signer(signer)
+        .send_to_testnet()
+        .await.unwrap();
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs" target="_blank" rel="noreferrer noopener" class="text-center">
+    See full example on GitHub
+  </a>
+  </TabItem>
+  </Tabs>
 
   </TabItem>
+
 </Tabs>
 
 ---
@@ -1273,7 +1404,7 @@ View functions are read-only methods on a smart contract that do not modify stat
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L22-L33"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L22-L33"
     start="22" end="33" />
 
   </TabItem>
@@ -1320,7 +1451,7 @@ List all the access keys for an account.
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/keys.rs#L22-L22"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L22-L22"
     start="22" end="22" />
 
   </TabItem>
@@ -1367,8 +1498,8 @@ A [Full Access key](/protocol/access-keys.md#full-access-keys), as the name sugg
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/keys.rs#L22-L39"
-    start="22" end="39" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L25-L37"
+    start="25" end="37" />
 
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -1431,8 +1562,8 @@ One of the most powerful use cases for this type of key is enabling seamless use
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/keys.rs#L43-L62"
-    start="43" end="62" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L38-L56"
+    start="38" end="56" />
 
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -1479,8 +1610,8 @@ Be very careful when deleting keys. If you remove the same key used to sign the 
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/keys.rs#L67-L72"
-    start="67" end="72" />
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L57-L72"
+    start="57" end="72" />
 
   </TabItem>
   <TabItem value="python" label="🐍 Python">
@@ -1537,7 +1668,7 @@ Convert an amount in NEAR to an amount in yoctoNEAR.
   <TabItem value="rust" label="🦀 Rust">
 
   <Github fname="utils.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/utils.rs#L7"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/utils.rs#L7"
     start="7" end="7" />
 
   </TabItem>
@@ -1580,7 +1711,7 @@ Convert an amount in NEAR to an amount in yoctoNEAR.
   Format an amount of NEAR into a string of NEAR or yoctoNEAR depending on the amount.
 
   <Github fname="utils.rs" language="rust"
-    url="https://github.com/PiVortex/near-api-examples/tree/main/rust/examples/utils.rs#L32"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/utils.rs#L32"
     start="32" end="32" />
 
   </TabItem>
@@ -1603,7 +1734,7 @@ Convert an amount in NEAR to an amount in yoctoNEAR.
 
   - [Documentation](https://docs.rs/near-api/latest/near_api/)
   - [Github](https://github.com/near/near-api-rs)
-  - [Full Examples](https://github.com/PiVortex/near-api-examples/tree/main/rust)
+  - [Full Examples](https://github.com/near-examples/near-api-examples/tree/main/rust)
 
   </TabItem>
   <TabItem value="python" label="🐍 Python">

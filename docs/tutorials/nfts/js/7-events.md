@@ -2,6 +2,7 @@
 id: events
 title: Events
 sidebar_label: Events
+description: "In this tutorial, you'll learn about the events standard and how to implement it in your smart contract."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

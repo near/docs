@@ -2,6 +2,7 @@
 id: nft-chain-keys
 title: NFT Chain Keys Smart Contract
 sidebar_label: NFT Chain Keys Contract
+description: "Learn about NFT Chain Keys, a smart contract that makes remote account ownership provable and transferrable using NEP-171 NFT standards and MPC signatures."
 ---
 
 The NFT Chain Keys smart contract makes the ownership of remote accounts both provable and transferrable. This new paradigm allows you to create new end-user experiences that leverage provable and transferrable remote accounts as a core primitive.

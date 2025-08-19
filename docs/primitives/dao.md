@@ -3,6 +3,7 @@ id: dao
 title: Decentralized Autonomous Organizations
 sidebar_label: Autonomous Organizations (DAO)
 hide_table_of_contents: false
+description: "Learn about Decentralized Autonomous Organizations (DAOs) on NEAR - self-organized groups that coordinate membership, decision-making, and funding through smart contract voting."
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
@@ -52,7 +53,7 @@ easily generalizable to other DAO implementations.
 ---
 
 ## Create a DAO
-The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos).
+The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos).
 
 You can also create a DAO by interacting with the `sputnik-dao` contract.
 

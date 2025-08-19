@@ -1,6 +1,7 @@
 ---
 id: frontrunning
 title: Front Running
+description: "Learn about frontrunning attacks in NEAR smart contracts and how to prevent them with proper transaction ordering and MEV protection techniques."
 ---
 
 In the NEAR network, validators have access to the transaction pool, and can therefore see them before they execute. This enables validators to analyze transactions for a potential profit and frontrun them with a transaction of their own.

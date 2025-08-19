@@ -2,11 +2,12 @@
 id: wallet-selector
 title: Wallet Selector
 sidebar_label: NEAR Wallet Selector
+description: "NEAR Wallet Selector is a JavaScript/TypeScript library that enables users to connect to your dApp using their preferred wallet with a unified interface across the NEAR ecosystem."
 ---
 
 The [Wallet Selector](https://github.com/near/wallet-selector) is a `JS`/`TS` library that lets users connect to your application using their preferred wallet. 
 
-![Preview](/docs/assets/wallet-selector-preview.png)
+![Preview](/docs/assets/tools/wallet-selector-preview.png)
 *Initial screen of [Wallet Selector](https://near.github.io/wallet-selector/)*
 
 <details>
@@ -18,8 +19,7 @@ Here is a list of user-friendly wallets that support the NEAR blockchain, you ca
 
 - [Meteor Wallet](https://wallet.meteorwallet.app/): Both a browser and extension wallet, with advanced NFT features.
 
-- [Mintbase Wallet](https://wallet.mintbase.xyz/): A passkey meta-transaction, browser wallet, with advanced NFT and AI features. If you're looking to integrate Mintbase Wallet into your applications, [check this tutorial](https://docs.mintbase.xyz/wallet/integrating-mintbase-wallet) to get started.
-
+- [Bitte Wallet](https://github.com/BitteProtocol/wallet): A passkey meta-transaction, browser wallet, with advanced NFT Tooling and AI features. If you're looking to integrate Bitte Wallet into your applications,
 - [MyNearWallet](https://mynearwallet.com/): A browser based wallet that offers the same UI and features of `wallet.near.org`.
 
 - [NEAR Mobile](https://nearmobile.app/): A non-custodial wallet that is easy to use and well designed to manage your crypto wherever you go.

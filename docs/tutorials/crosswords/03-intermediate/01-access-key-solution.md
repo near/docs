@@ -1,11 +1,14 @@
 ---
 sidebar_position: 2
-sidebar_label: "Solution as seed phrase"
-title: "Replacing the solution hash with an access key"
+sidebar_label: Solution as seed phrase
+title: Replacing the solution hash with an access key
+description: "So far in this tutorial, the user sends the plaintext solution to the crossword puzzle smart contract, where it's hashed and compared with the known answer."
 ---
 
 import puzzleFrontrun from '/docs/assets/crosswords/puzzle-frontrun.png';
 import padlockSafe from '/docs/assets/crosswords/safe-with-access-key--soulless.near--ZeroSerotonin__.png';
+
+So far in this tutorial, the user sends the plaintext solution to the crossword puzzle smart contract, where it's hashed and compared with the known answer.
 
 # Replacing our solution hash
 

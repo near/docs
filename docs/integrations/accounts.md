@@ -2,12 +2,13 @@
 id: accounts
 title: Accounts
 sidebar_label: Accounts
+description: "Learn about NEAR account management for exchanges and integrations, including account creation, key management, and balance tracking."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Introduction {#introduction}
+This document provides relevant information about NEAR accounts for exchanges looking forward to integrate the NEAR token
 
 Please see the [documentation for accounts](/protocol/account-model) for basic information.
 

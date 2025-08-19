@@ -2,6 +2,7 @@
 id: predeployed-contract
 title: Pre-deployed Contract
 sidebar_label: Pre-deployed Contract
+description: "Create your first non-fungible token by using a pre-deployed NFT smart contract which works exactly as the one you will build on this tutorial."
 ---
 
 import Tabs from '@theme/Tabs';

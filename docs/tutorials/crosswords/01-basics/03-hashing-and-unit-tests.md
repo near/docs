@@ -1,15 +1,14 @@
 ---
 sidebar_position: 4
-sidebar_label: "Hash the solution, unit tests, and an init method"
-title: "Introduction to basic hashing and adding unit tests"
+sidebar_label: Hash the solution, unit tests, and an init method
+title: Introduction to basic hashing and adding unit tests
+description: "In the previous section, we stored the crossword solution as plain text as a String type on the smart contract. If we're trying to hide the solution from the users, this isn't a great approach as it'll be public to anyone looking at the state. Let's instead hash our crossword solution and store that instead. There are different ways to hash data, but let's use sha256 which is one of the hashing algorithms available in the Rust SDK."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import batchCookieTray from '/docs/assets/crosswords/batch-of-actions--dobulyo.near--w_artsu.jpg';
-
-# Hash the solution, add basic unit tests
 
 In the previous section, we stored the crossword solution as plain text as a `String` type on the smart contract. If we're trying to hide the solution from the users, this isn't a great approach as it'll be public to anyone looking at the state. Let's instead hash our crossword solution and store that instead. There are different ways to hash data, but let's use `sha256` which is one of the hashing algorithms available in [the Rust SDK](https://docs.rs/near-sdk/latest/near_sdk/env/fn.sha256.html).
 
