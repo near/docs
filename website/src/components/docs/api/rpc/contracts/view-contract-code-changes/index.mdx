@@ -14,7 +14,7 @@ import ErrorSchemaDescription from '../../_general/error-schema-description.mdx'
 > Returns code changes made when deploying a contract. Change is returned is a
 > base64 encoded WASM file.
 
-- method: `EXPERIMENTAL_changes`
+- method: `changes`
 - params:
   - `changes_type`: `contract_code_changes`
   - `account_ids`: `["example.testnet"]`,
@@ -46,6 +46,6 @@ Example:
 
 <ErrorSchemaDescription />
 
-Here is the exhaustive list of the error variants that can be returned by `EXPERIMENTAL_changes` method:
+Here is the exhaustive list of the error variants that can be returned by `changes` method:
 
 <ErrorSchemaTable />

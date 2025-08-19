@@ -14,7 +14,7 @@ import ErrorSchemaTable from './error-schema-table.mdx';
 Returns individual access key changes in a specific block. You can query multiple
 keys by passing an array of objects containing the `account_id` and `public_key`.
 
-- method: `EXPERIMENTAL_changes`
+- method: `changes`
 - params:
   - `changes_type`: `single_access_key_changes`
   - `keys`: `[{ account_id, public_key }]`
@@ -47,6 +47,6 @@ Example:
 <ErrorSchemaDescription />
 
 Here is the exhaustive list of the error variants that can be returned
-by `EXPERIMENTAL_changes_in_block` method:
+by `changes` method:
 
 <ErrorSchemaTable />
