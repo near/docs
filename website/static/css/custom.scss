@@ -136,6 +136,10 @@ a.menu__link[target="_blank"]::after {
   display: inherit;
 }
 
+a.cover-card[target="_blank"]::after {
+  display: none;
+}
+
 // ============================================================================
 // LANDING PAGE STYLES
 // ============================================================================
