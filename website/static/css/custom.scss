@@ -32,7 +32,7 @@
   --near-color-royal: #82aaff;
   --ifm-background-color: #000000;
   --ifm-background-surface-color: #111111;
-  --icon-svg-color: #22c55e;
+  --icon-svg-color: #20bd5a;
 
   hr {
     background-color: #2d2d2d;
@@ -1158,4 +1158,22 @@ div[class^='announcementBar_'] {
 .block:hover {
   border-left: 2px solid #c4ebfb;
   cursor: pointer;
+}
+
+// ============================================================================
+// BLOG POST
+// ============================================================================
+
+#__blog-post-container {
+  h2 {
+    margin-top: 4rem;
+  }
+}
+
+// ============================================================================
+// Wallet Selector - Fixes
+// ============================================================================
+
+.nws-modal-header{
+  justify-content: space-between !important;
 }
