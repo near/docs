@@ -2,14 +2,14 @@ export const fetchLumaEvents = async (
   calendarApiId,
   limit,
   offset,
-  lumaApiUrl = 'https://api.lu.ma',
+  lumaApiUrl = 'http://localhost:5000',
 ) => {
   const queryFrom = `period=future`;
   const queryLimit = `pagination_limit=${limit ?? 10}`;
   const queryOffset = offset ? `pagination_offset=${offset}` : '';
   const queryParams = [queryFrom, queryLimit, queryOffset].filter(Boolean).join('&');
 
-  const res = await fetch(`${lumaApiUrl}/calendar/get-items?calendar_api_id=${calendarApiId}&${queryParams}`, {
+  const res = await fetch(`${lumaApiUrl}/api/calendar/calendar_api_id=${calendarApiId}?${queryParams}`, {
     method: 'GET',
     headers: {
       accept: 'application/json',

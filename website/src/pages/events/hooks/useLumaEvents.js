@@ -16,7 +16,7 @@ export function useLumaEvents(calendarApiIds, limit = 3) {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const lumaApiUrl = 'https://api.lu.ma';
+        const lumaApiUrl = 'http://localhost:5000';
         const allEvents = await Promise.all(calendarApiIds.map((id) => fetchLumaEvents(id, limit, 0, lumaApiUrl)));
 
         const combinedEvents = allEvents.flatMap((result) => result.entries);
