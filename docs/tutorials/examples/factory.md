@@ -1,25 +1,63 @@
 ---
 id: factory
-title: Factory
-description: "A factory is a smart contract that stores a compiled contract, and automatizes deploying the stored contract onto new sub-accounts."
+title: How to Deploy Contracts from Contracts
+description: "Learn how to implement the factory pattern on NEAR to programmatically deploy smart contracts from within other smart contracts."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-A factory is a smart contract that stores a compiled contract, and automatizes deploying the stored contract onto new sub-accounts.
+# How to Deploy Contracts from Contracts
 
-We have a [**A Generic Factory**](https://github.com/near-examples/factory-rust) that deploys the [donation contract](./donation.md). This donation contract can be changed for whichever compiled contract you like (e.g. a fungible token or DAO). 
+The factory pattern is a powerful design pattern that allows one smart contract to deploy and manage other smart contracts programmatically. This tutorial will teach you how to build a factory contract that can store compiled contract code and deploy it to new sub-accounts automatically.
+
+## What is a Factory Contract?
+
+A factory contract is a smart contract that acts as a template deployer. Instead of manually deploying each instance of a contract, the factory automates this process by:
+
+- Storing compiled contract bytecode
+- Creating new sub-accounts 
+- Deploying the stored contract to those sub-accounts
+- Managing and updating the stored contract code
+
+This pattern is particularly useful when you need to deploy many instances of the same contract type, such as creating multiple DAOs, token contracts, or any standardized smart contract.
+
+## Why Use the Factory Pattern?
+
+**Cost Efficiency**: Deploy once, reuse many times without re-uploading contract code.
+
+**Standardization**: Ensure all deployed contracts follow the same tested pattern.
+
+**Automation**: Programmatically create contracts without manual intervention.
+
+**Upgradability**: Update the stored contract template for future deployments.
+
+**Access Control**: Implement permissions for who can deploy new instances.
 
 ---
 
-## Overview {#generic-factory}
+## Understanding NEAR Account Limitations
 
-The factory is a smart contract that:
+Before implementing a factory, it's crucial to understand NEAR's account creation rules:
 
-1. Creates sub-accounts of itself and deploys its contract on them (`create_factory_subaccount_and_deploy`).
-2. Can change the stored contract using the `update_stored_contract` method.
+### What Factories Can Do
+- Create sub-accounts of themselves (e.g., `factory.near` can create `instance1.factory.near`)
+- Deploy contracts to their own sub-accounts
+- Manage the stored contract bytecode
+
+### What Factories Cannot Do
+- Create sub-accounts for other accounts
+- Deploy contracts to accounts they don't own
+- Control sub-accounts after creation (they become independent)
+
+This means your factory at `factory.testnet` can create `dao1.factory.testnet` and `dao2.factory.testnet`, but cannot create `dao1.alice.testnet`.
+
+---
+
+## Building Your Factory Contract
+
+Let's examine the core components of a factory contract:
 
 <CodeTabs>
   <Language value="rust" language="rust">
@@ -32,96 +70,41 @@ The factory is a smart contract that:
   </Language>
 </CodeTabs>
 
+### Core Factory Methods
+
+The factory implements two essential methods:
+
+**`create_factory_subaccount_and_deploy`**: Creates a new sub-account and deploys the stored contract to it.
+
+**`update_stored_contract`**: Updates the contract bytecode that will be deployed to future instances.
+
 ---
 
-## Quickstart
+## Implementing Contract Deployment
 
-1. Make sure you have installed [rust](https://www.rust-lang.org/).
-2. Install the [`NEAR CLI`](/tools/near-cli#installation)
+When you call `create_factory_subaccount_and_deploy`, the factory:
 
-<hr className="subsection" />
-
-### Build and Deploy the Factory
-
-You can automatically compile and deploy the contract in the NEAR testnet by running:
-
-```bash
-./deploy.sh
-```
-
-Once finished, check the `neardev/dev-account` file to find the address in which the contract was deployed:
-
-```bash
-cat ./neardev/dev-account
-# e.g. dev-1659899566943-21539992274727
-```
-
-<hr className="subsection" />
-
-### Deploy the Stored Contract Into a Sub-Account
-
-`create_factory_subaccount_and_deploy` will create a sub-account of the factory and deploy the
-stored contract on it.
+1. **Creates the sub-account** using NEAR's account creation APIs
+2. **Transfers the required deposit** for account creation and storage
+3. **Deploys the stored contract** bytecode to the new account
+4. **Initializes the contract** with the provided parameters
 
 ```bash
 near call <factory-account> create_factory_subaccount_and_deploy '{ "name": "sub", "beneficiary": "<account-to-be-beneficiary>"}' --deposit 1.24 --accountId <account-id> --gas 300000000000000
 ```
 
-This will create the `sub.<factory-account>`, which will have a `donation` contract deployed on it:
-
-```bash
-near view sub.<factory-account> get_beneficiary
-# expected response is: <account-to-be-beneficiary>
-```
-
-<hr className="subsection" />
-
-### Update the Stored Contract
-
-`update_stored_contract` enables to change the compiled contract that the factory stores.
-
-The method is interesting because it has no declared parameters, and yet it takes
-an input: the new contract to store as a stream of bytes.
-
-To use it, we need to transform the contract we want to store into its `base64`
-representation, and pass the result as input to the method:
-
-```bash
-# Use near-cli to update stored contract
-export BYTES=`cat ./src/to/new-contract/contract.wasm | base64`
-near call <factory-account> update_stored_contract "$BYTES" --base64 --accountId <factory-account> --gas 30000000000000
-```
-
-> This works because the arguments of a call can be either a `JSON` object or a `String Buffer`
+The deposit covers:
+- Account creation costs (~0.1 NEAR)
+- Storage costs for the contract code
+- Initial balance for the new contract
 
 ---
 
-## Factories - Concepts & Limitations
+## Managing Contract Updates
 
-Factories are an interesting concept, here we further explain some of their implementation aspects,
-as well as their limitations.
+One of the factory pattern's key advantages is the ability to update the stored contract for future deployments:
 
-<hr className="subsection" />
-
-### Automatically Creating Accounts
-
-NEAR accounts can only create sub-accounts of itself, therefore, the `factory` can only create and
-deploy contracts on its own sub-accounts.
-
-This means that the factory:
-
-1. **Can** create `sub.factory.testnet` and deploy a contract on it.
-2. **Cannot** create sub-accounts of the `predecessor`.
-3. **Can** create new accounts (e.g. `account.testnet`), but **cannot** deploy contracts on them.
-
-It is important to remember that, while `factory.testnet` can create `sub.factory.testnet`, it has
-no control over it after its creation.
-
-<hr className="subsection" />
-
-### The Update Method
-
-The `update_stored_contracts` has a very short implementation:
+### The Update Method Implementation
 
 ```rust
 #[private]
@@ -130,25 +113,122 @@ pub fn update_stored_contract(&mut self) {
 }
 ```
 
-On first sight it looks like the method takes no input parameters, but we can see that its only
-line of code reads from `env::input()`. What is happening here is that `update_stored_contract`
-**bypasses** the step of **deserializing the input**.
+This method uses a clever optimization: instead of deserializing the input parameters (which would consume excessive gas for large files), it reads the raw input directly using `env::input()`.
 
-You could implement `update_stored_contract(&mut self, new_code: Vec<u8>)`,
-which takes the compiled code to store as a `Vec<u8>`, but that would trigger the contract to:
+### Why This Optimization Matters
 
-1. Deserialize the `new_code` variable from the input.
-2. Sanitize it, making sure it is correctly built.
+Standard parameter deserialization would:
+1. Parse the entire WASM file from JSON
+2. Validate the input format
+3. Convert it to the appropriate data type
 
-When dealing with big streams of input data (as is the compiled `wasm` file to be stored), this process
-of deserializing/checking the input ends up **consuming the whole GAS** for the transaction.
+For large contract files, this process consumes the entire gas limit. The direct input approach bypasses this overhead.
 
-:::note Versioning for this article
+### Updating Your Stored Contract
 
-At the time of this writing, this example works with the following versions:
+```bash
+# Convert your contract to base64
+export BYTES=`cat ./path/to/new-contract.wasm | base64`
 
+# Update the factory's stored contract
+near call <factory-account> update_stored_contract "$BYTES" --base64 --accountId <factory-account> --gas 30000000000000
+```
+
+---
+
+## Testing Your Factory
+
+### 1. Deploy the Factory
+
+```bash
+./deploy.sh
+```
+
+Check the deployment:
+```bash
+cat ./neardev/dev-account
+# Returns: dev-1659899566943-21539992274727
+```
+
+### 2. Create Your First Instance
+
+```bash
+near call <factory-account> create_factory_subaccount_and_deploy '{ "name": "test-instance", "beneficiary": "alice.testnet"}' --deposit 1.24 --accountId <your-account> --gas 300000000000000
+```
+
+### 3. Verify the Deployment
+
+```bash
+near view test-instance.<factory-account> get_beneficiary
+# Expected: alice.testnet
+```
+
+---
+
+## Best Practices and Considerations
+
+### Gas Management
+- Contract deployment requires significant gas (200-300 TGas)
+- Always specify sufficient gas limits
+- Test gas requirements with smaller contracts first
+
+### Storage Costs
+- Factor in storage costs for both factory and deployed contracts
+- Require sufficient deposit to cover all costs
+- Consider implementing deposit refund mechanisms
+
+### Security Considerations
+- Implement access controls for who can deploy contracts
+- Validate initialization parameters before deployment
+- Consider implementing factory ownership and permissions
+
+### Contract Versioning
+- Implement version tracking for stored contracts
+- Consider allowing multiple contract versions
+- Document breaking changes between versions
+
+---
+
+## Alternative Approaches
+
+### Direct Account Creation
+Instead of using a factory, you could create accounts directly, but this requires:
+- Manual contract deployment for each instance
+- Separate storage costs for each deployment
+- More complex coordination between deployments
+
+### Proxy Pattern
+For upgradeable contracts, consider the proxy pattern where:
+- A proxy contract delegates calls to an implementation contract
+- Updates change the implementation address
+- All instances can be upgraded simultaneously
+
+### When to Use Factories
+Factories work best when:
+- You need many instances of similar contracts
+- Instances should be independent after creation
+- You want to standardize deployment parameters
+- Cost optimization is important for multiple deployments
+
+---
+
+## Common Pitfalls to Avoid
+
+**Insufficient Deposits**: Always calculate the minimum required deposit including account creation, storage, and initialization costs.
+
+**Gas Limit Errors**: Contract deployment is gas-intensive. Start with higher limits and optimize down.
+
+**Access Control**: Implement proper permissions to prevent unauthorized contract deployments.
+
+**Storage Management**: Monitor storage costs as they accumulate with each stored contract and deployment.
+
+**Sub-account Naming**: Plan your naming convention carefully as sub-accounts cannot be renamed after creation.
+
+:::note Development Environment
+This tutorial works with:
 - near-cli: `4.0.13`
-- node: `18.19.1`
+- node: `18.19.1` 
 - rustc: `1.77.0`
-
 :::
+
+The factory pattern provides a powerful way to scale smart contract deployment on NEAR. By understanding the account limitations, gas considerations, and implementation details, you can build efficient factory contracts that automate and standardize your deployment process.
