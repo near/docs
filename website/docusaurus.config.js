@@ -285,10 +285,12 @@ const config = {
           position: 'left',
           items: [
             {
-              label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem",
-            },
-            {
-              label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR",
+              label: 'Discover', to: '#', description: "Discover events, news and projects",
+              subitems: [
+                { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem" },
+                { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR" },
+                { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/icons/catalog.png' },
+              ]
             },
             {
               label: 'Developer Support', to: '#', description: "Get help from the NEAR community",
@@ -308,7 +310,6 @@ const config = {
                   icon: '/icons/token.svg'
                 },
                 { label: 'Explorers ↗', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/docs/assets/welcome-pages/update.png' },
-                { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/icons/catalog.png' },
                 {
                   label: 'Remix IDE Plugin ↗',
                   to: 'https://docs.welldonestudio.io/code/getting-started',
