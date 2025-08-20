@@ -179,16 +179,10 @@ const Newsletter = () => {
   if (campaignLoading) {
     return (
       <Layout title="NEAR Newsletter" description="Subscribe to the NEAR Developer Newsletter">
-        <div className="newsletter-page">
-          <div className="newsletter-container">
-            <div className="newsletter-header">
-              <h1 className="newsletter-title">
-                Loading Newsletter...
-              </h1>
-            </div>
-          </div>
-        </div>
-      </Layout >
+        <h1 className="newsletter-loading">
+          Loading Newsletter...
+        </h1>
+      </Layout>
     );
   }
 
