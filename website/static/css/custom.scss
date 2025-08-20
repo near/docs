@@ -1186,6 +1186,13 @@ div[class^='announcementBar_'] {
 // NEWSLETTER PAGE STYLES (Simplified)
 // ============================================================================
 
+.newsletter-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .newsletter-page {
   min-height: 100vh;
   padding: 2rem 0;
