@@ -281,24 +281,9 @@ const config = {
         },
         {
           type: 'dropdown',
-          label: 'Ecosystem',
+          label: 'Resources',
           position: 'left',
           items: [
-            {
-              label: 'Discover', to: '#', description: "Discover events, news and projects",
-              subitems: [
-                { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem" },
-                { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR" },
-                { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/icons/catalog.png' },
-              ]
-            },
-            {
-              label: 'Developer Support', to: '#', description: "Get help from the NEAR community",
-              subitems: [
-                { label: 'Telegram ↗', to: 'https://t.me/neardev', description: "Join our Telegram channel for developers", icon: '/icons/telegram.svg' },
-                { label: 'Discord ↗', to: 'https://discord.gg/nearprotocol', description: "Join our Discord server to get help from the community", icon: '/icons/discord.svg' },
-              ]
-            },
             {
               label: 'Ecosystem Tools', to: '#', description: "Tools to help you build on NEAR",
               subitems: [
@@ -316,6 +301,22 @@ const config = {
                   description: "Write, test and deploy smart contracts using the Remix IDE",
                   icon: '/icons/remix.svg'
                 },
+              ]
+            },
+            {
+              label: 'Developer Support', to: '#', description: "Get help from the NEAR community",
+              subitems: [
+                { label: 'Telegram ↗', to: 'https://t.me/neardev', description: "Join our Telegram channel for developers", icon: '/icons/telegram.svg' },
+                { label: 'Discord ↗', to: 'https://discord.gg/nearprotocol', description: "Join our Discord server to get help from the community", icon: '/icons/discord.svg' },
+                { label: 'WeChat ↗', to: 'https://pages.near.org/ecosystem/community/wechat/', description: "Join our WeChat community", icon: '/icons/wechat.svg' },
+              ]
+            },
+            {
+              label: 'Discover', to: '#', description: "Discover events, news and projects",
+              subitems: [
+                { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/icons/event.png' },
+                { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/icons/newspaper.png' },
+                { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/icons/catalog.png' },
               ]
             },
             {

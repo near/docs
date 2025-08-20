@@ -1,0 +1,107 @@
+.faucet-section {
+    padding: 4rem 0;
+    min-height: 100vh;
+}
+
+.faucet-container {
+    max-width: 560px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.faucet-container h1 {
+    font-size: 1.75rem;
+    margin: 0;
+}
+
+.faucet-container p {
+    margin: 0;
+}
+
+.faucet-card {
+    border: 1px solid var(--sand6, #ddd);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+/* Added flex layout for form */
+.faucet-card form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--faucet-form-gap, 1rem);
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.field-label {
+    display: block;
+    font-size: .875rem;
+    font-weight: 600;
+    margin-bottom: .25rem;
+}
+
+input[name=accountId] {
+    width: 100%;
+    padding: .75rem .9rem;
+    border: 1px solid var(--sand7, #ccc);
+    border-radius: 8px;
+    font-size: .95rem;
+    font-family: inherit;
+}
+
+input[name=accountId]:focus {
+    outline: 2px solid var(--blue6, #5b9bff);
+    outline-offset: 2px;
+}
+
+input.error {
+    border-color: var(--red8, #d93025);
+}
+
+input.success {
+    border-color: var(--green8, #1e8e3e);
+}
+
+.input-msg {
+    font-size: .75rem;
+    line-height: 1.1;
+}
+
+.input-msg.error {
+    color: var(--red10, #b31412);
+}
+
+.input-msg.success {
+    color: var(--green10, #137333);
+}
+
+.faucet-card button {
+    align-items: center;
+    text-align: center;
+    padding: .7rem 1.1rem;
+    background: var(--blue9, #265d97);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.help-text {
+    font-size: .875rem;
+}
+
+.help-text a {
+    color: var(--blue10, #1e4c7b);
+}
