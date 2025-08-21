@@ -63,6 +63,13 @@ const sidebar = {
           ]
         },
         {
+          "Tutorials": [
+            'tutorials/protocol/create-account',
+            'tutorials/protocol/importing-account',
+            'tools/faucet'
+          ]
+        },
+        {
           "Reference": [
             'tools/near-cli',
             {
@@ -535,7 +542,7 @@ const sidebar = {
     'integrations/faq',
   ],
   toolbox: [
-        'toolbox',
+    'toolbox',
   ]
 };
 

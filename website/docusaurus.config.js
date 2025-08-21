@@ -289,7 +289,7 @@ const config = {
               subitems: [
                 { label: 'Wallets ↗', to: 'https://wallet.near.org/', description: "Discover wallets built for NEAR", icon: '/icons/wallet.png' },
                 {
-                  label: 'Testnet Faucet ↗',
+                  label: 'Testnet Faucet',
                   to: '/tools/faucet',
                   description: "Get testnet tokens to test your applications",
                   icon: '/icons/token.svg'

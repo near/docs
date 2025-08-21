@@ -1,24 +1,14 @@
 ---
 id: faucet
-title: Testnet Token Faucet
-sidebar_label: Testnet Faucet
-description: "In the NEAR ecosystem, a faucet is a service that provides free tokens to developers and users for testing and development purposes. This is particularly useful for those working on the NEAR testnet, where real tokens are not required but access to tokens is necessary for testing smart contracts and applications."
+title: Token Faucet
+sidebar_label: Get Testnet Tokens
+description: "Learn how to get free testnet tokens for development and testing on the NEAR blockchain"
 ---
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import { Faucet } from '@site/src/components/faucet';
 
-In the NEAR ecosystem, a **faucet** is a service that provides free tokens to developers and users for testing and development purposes. This is particularly useful for those working on the NEAR testnet, where real tokens are not required but access to tokens is necessary for testing smart contracts and applications.
+A **faucet** provides free `testnet` tokens for testing and development purposes.
 
-There are currently two testnet faucets:
-
-- [Developer Portal Faucet](https://dev.near.org/faucet)
-- [Testnet NEAR Faucet](https://near-faucet.io/)
-
-:::info Supported tokens
-
-The [Developer Portal Faucet](https://dev.near.org/faucet) provides only `testnet` native tokens, while the [Testnet Faucet](https://near-faucet.io/) supports a wide range of fungible tokens, including NEAR, Tether USD, USD Coin, Ether, and many others.
-
-:::
+There are two testnet faucets: the built‑in faucet on this page - which provides native `testnet` NEAR only - and the [Testnet Faucet](#external-faucets), which supports many fungible tokens (NEAR, USDT, and more).
 
 :::warning The faucets are not working?
 
@@ -28,21 +18,26 @@ If any of the faucets is not working, please report it on our [NEAR Telegram Cha
 
 ---
 
-## Getting Testnet tokens
+## Faucet
 
-If you have a NEAR `testnet` account and need tokens to experiment, test, and build on the NEAR blockchain, follow these simple steps to get free tokens:
+Simply introduce the account you want to receive the tokens in, and click on the "Request" button. The faucet will send a small amount of `testnet` NEAR tokens to that account.
 
-1. Open the [Developer Portal Faucet](https://dev.near.org/faucet) or [Testnet Faucet website](https://near-faucet.io/)
+<Faucet />
+
+---
+
+## [Testnet NEAR Faucet](https://near-faucet.io/)
+
+Navigate to the [Testnet Faucet](https://near-faucet.io/) page, input your address and select which type of token you need! The faucet supports a wide range of fungible tokens, including NEAR, Tether USD, Ether, and many others.
+
 
 ![Faucet](/docs/assets/tools/faucet.png)
-*Main page of [Testnet Faucet](https://near-faucet.io/)*
 
-2. Fill out the information:
-   - Desired token (`NEAR` by default)
-   - Wallet address (e.g., `myaccount.testnet`)
-   - Amount
-3. Click `Request` and receive your Tokens
-   - The faucet will provide a link with the token transaction.
+:::info Supported tokens
+
+Please know that the faucet might be out of tokens at times, keep reading below for alternative ways to get other fungible tokens
+
+:::
 
 ---
 
