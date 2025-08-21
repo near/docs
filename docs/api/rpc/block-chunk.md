@@ -20,7 +20,7 @@ Here's a quick reference table for all the methods in this section:
 | Method | Description | Parameters |
 |--------|-------------|------------|
 | [`block`](#block-details) | Get block details by height, hash, or finality | `finality` OR `block_id` |
-| [`EXPERIMENTAL_changes_in_block`](#changes-in-block) | Get changes in a specific block | `finality` OR `block_id` |
+| [`changes`](#changes-in-block) | Get changes in a specific block | `finality` OR `block_id` |
 | [`chunk`](#chunk-details) | Get chunk details by chunk_id or block_id + shard_id | `chunk_id` OR [`block_id`, `shard_id`] |
 
 
@@ -408,7 +408,7 @@ Here's a quick reference table for all the methods in this section:
 
     **Note**: You may choose to search by a specific block _or_ finality, you can not choose both.
 
-    - **method**: `EXPERIMENTAL_changes_in_block`
+    - **method**: `changes`
     - **params**:
       - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
   </SplitLayoutLeft>
@@ -422,7 +422,7 @@ Here's a quick reference table for all the methods in this section:
       {
         "jsonrpc": "2.0",
         "id": "dontcare",
-        "method": "EXPERIMENTAL_changes_in_block",
+        "method": "changes",
         "params": {
           "finality": "final"
         }
@@ -441,7 +441,7 @@ Here's a quick reference table for all the methods in this section:
       http POST https://rpc.testnet.near.org \
         jsonrpc=2.0 \
         id=dontcare \
-        method=EXPERIMENTAL_changes_in_block \
+        method=changes \
         params:='{
           "finality": "final"
         }'
@@ -460,7 +460,7 @@ Here's a quick reference table for all the methods in this section:
       {
         "jsonrpc": "2.0",
         "id": "dontcare",
-        "method": "EXPERIMENTAL_changes_in_block",
+        "method": "changes",
         "params": {
           "block_id": 187310138
         }
@@ -479,7 +479,7 @@ Here's a quick reference table for all the methods in this section:
       http POST https://archival-rpc.testnet.near.org \
         jsonrpc=2.0 \
         id=dontcare \
-        method=EXPERIMENTAL_changes_in_block \
+        method=changes \
         params:='{
           "block_id": 187310138
         }'
@@ -498,7 +498,7 @@ Here's a quick reference table for all the methods in this section:
       {
         "jsonrpc": "2.0",
         "id": "dontcare",
-        "method": "EXPERIMENTAL_changes_in_block",
+        "method": "changes",
         "params": {
           "block_id": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"
         }
@@ -517,7 +517,7 @@ Here's a quick reference table for all the methods in this section:
       http POST https://archival-rpc.testnet.near.org \
         jsonrpc=2.0 \
         id=dontcare \
-        method=EXPERIMENTAL_changes_in_block \
+        method=changes \
         params:='{
           "block_id": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"
         }'

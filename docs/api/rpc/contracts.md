@@ -109,7 +109,7 @@ The RPC API enables you to view details about accounts and contracts as well as 
   <SplitLayoutLeft title="Description">
     Returns account changes from transactions in a given account.
 
-    - **method**: `EXPERIMENTAL_changes`
+    - **method**: `changes`
     - **params**:
       - `changes_type`: `account_changes`
       - `account_ids`: [`"example.testnet"`]
@@ -122,7 +122,7 @@ The RPC API enables you to view details about accounts and contracts as well as 
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "EXPERIMENTAL_changes",
+          "method": "changes",
           "params": {
             "changes_type": "account_changes",
             "account_ids": ["contract.rpc-examples.testnet"],
@@ -143,7 +143,7 @@ The RPC API enables you to view details about accounts and contracts as well as 
         http POST https://archival-rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=EXPERIMENTAL_changes \
+          method=changes \
           params:='{
             "changes_type": "account_changes",
             "account_ids": ["contract.rpc-examples.testnet"],
@@ -381,7 +381,7 @@ should accept objects with or without these fields set.
     (encoded to base64). Pass an empty string for this param if you would like
     to return all state changes.
 
-    - **method**: `EXPERIMENTAL_changes`
+    - **method**: `changes`
     - **params**:
       - `changes_type`: `data_changes`
       - `account_ids`: `["example.testnet"]`,
@@ -395,7 +395,7 @@ should accept objects with or without these fields set.
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "EXPERIMENTAL_changes",
+          "method": "changes",
           "params": {
             "changes_type": "data_changes",
             "account_ids": ["contract.rpc-examples.testnet"],
@@ -419,7 +419,7 @@ should accept objects with or without these fields set.
         http POST https://archival-rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=EXPERIMENTAL_changes \
+          method=changes \
           params:='{
             "changes_type": "data_changes",
             "account_ids": ["contract.rpc-examples.testnet"],
@@ -482,7 +482,7 @@ should accept objects with or without these fields set.
     Returns code changes made when deploying a contract. Change is returned is a
     base64 encoded WASM file.
 
-    - **method**: `EXPERIMENTAL_changes`
+    - **method**: `changes`
     - **params**:
       - `changes_type`: `contract_code_changes`
       - `account_ids`: `["example.testnet"]`,
@@ -495,7 +495,7 @@ should accept objects with or without these fields set.
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "EXPERIMENTAL_changes",
+          "method": "changes",
           "params": {
             "changes_type": "contract_code_changes",
             "account_ids": ["contract.rpc-examples.testnet"],
@@ -517,7 +517,7 @@ should accept objects with or without these fields set.
         http POST https://archival-rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=EXPERIMENTAL_changes \
+          method=changes \
           params:='{
             "changes_type": "contract_code_changes",
             "account_ids": ["contract.rpc-examples.testnet"],

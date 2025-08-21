@@ -235,7 +235,7 @@ The RPC API enables you to retrieve information about an account's access keys. 
     Returns individual access key changes in a specific block. You can query multiple
     keys by passing an array of objects containing the `account_id` and `public_key`.
 
-    - **method**: `EXPERIMENTAL_changes`
+    - **method**: `changes`
     - **params**:
       - `changes_type`: `single_access_key_changes`
       - `keys`: `[{ account_id, public_key }]`
@@ -249,7 +249,7 @@ The RPC API enables you to retrieve information about an account's access keys. 
       {
         "jsonrpc": "2.0",
         "id": "dontcare",
-        "method": "EXPERIMENTAL_changes",
+        "method": "changes",
         "params": {
           "changes_type": "single_access_key_changes",
           "keys": [
@@ -281,7 +281,7 @@ The RPC API enables you to retrieve information about an account's access keys. 
       http POST https://archival-rpc.testnet.near.org \
         jsonrpc=2.0 \
         id=dontcare \
-        method=EXPERIMENTAL_changes \
+        method=changes \
         params:='{
           "changes_type": "single_access_key_changes",
           "keys": [
@@ -352,7 +352,7 @@ The RPC API enables you to retrieve information about an account's access keys. 
     Returns changes to **all** access keys of a specific block.
     Multiple accounts can be queried by passing an array of `account_ids`.
 
-    - **method**: `EXPERIMENTAL_changes`
+    - **method**: `changes`
     - **params**:
       - `changes_type`: `all_access_key_changes`
       - `account_ids`: `[ "example.testnet", "example2.testnet"]`
@@ -366,7 +366,7 @@ The RPC API enables you to retrieve information about an account's access keys. 
       {
         "jsonrpc": "2.0",
         "id": "dontcare",
-        "method": "EXPERIMENTAL_changes",
+        "method": "changes",
         "params": {
           "changes_type": "all_access_key_changes",
           "account_ids": ["account.rpc-examples.testnet"],
@@ -387,7 +387,7 @@ The RPC API enables you to retrieve information about an account's access keys. 
       http POST https://archival-rpc.testnet.near.org \
         jsonrpc=2.0 \
         id=dontcare \
-        method=EXPERIMENTAL_changes \
+        method=changes \
         params:='{
           "changes_type": "all_access_key_changes",
           "account_ids": ["account.rpc-examples.testnet"],
