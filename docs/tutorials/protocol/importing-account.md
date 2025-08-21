@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 If you created a NEAR account using a wallet or the CLI, you can export its seed phrase (or private key) to use it in other wallets or tools. Let's cover how to:
 
-1. Export an existing account [from the CLI](#from-the-cli)
+1. [Exporting](#exporting-your-seed-phrase) an existing account
 1. Import an existing account [into a wallet](#importing-into-a-wallet)
 2. Import an existing account [into the CLI](#importing-into-the-cli)
 
