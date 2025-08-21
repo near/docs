@@ -60,7 +60,7 @@ On the [next page](./components.md), you'll see how to edit this agent for your 
 
 <summary> What is a Phala Cloud </summary>
 
-Phala Cloud is a service that offers secure and private hosting in a TEE using [Dstack](https://docs.phala.network/overview/phala-network/dstack). Phala Cloud makes it easy to run a TEE, that's why we use it in our template!
+Phala Cloud is a cloud service that supports hosting applications in a TEE using [Dstack](https://docs.phala.network/overview/phala-network/dstack). It easy to run an agent in TEE.
 
 </details>
 

@@ -13,7 +13,7 @@ Previous Web3 agents fall into one of two categories:
 1. They are trustless and verifiable by using a trusted execution environment (TEE), but if the TEE goes down, the private keys and funds of the agent are lost.
 2. The agent’s accounts are persistent, but the agents are centralized.
 
-Shade Agents provide verifiability and non-custody by operating in TEEs, but also persistent control of accounts by using NEAR's decentralized key management. Any instance of an agent running the same code inside a TEE has access to the same accounts. You don't need to worry about private keys being lost or exposed. 
+Shade Agents provide verifiability and non-custody by operating in TEEs, but also persistent control of accounts by using NEAR's decentralized key management. Any instance of an agent running the same code inside a TEE can access the same accounts meaning you don't need to worry about private keys being lost or exposed. 
 
 Thanks to combining TEEs with the NEAR tech stack, Shade Agents can autonomously sign transactions across any chain, interact with AI models and external data sources, manage assets, and perform privacy-preserving, verifiable computations, offering the flexibility and performance of Web2 with the verifiability of Web3.
 
@@ -96,15 +96,13 @@ Within agent gated functions, we can implement an additional layer of security t
 
 ## Development flows
 
-In most cases you will develop your agent using the [quickstart template](./quickstart/deploying.md). This template is designed to enable you to sign transactions from your agent on any blockchain. In some cases, you may want to deploy a [custom agent contract](./custom-contract.md), which allows for more customizability inside of the agent contract, allows you to restrict your agent to certain actions, and is used for building Shade Agents that just interact with NEAR.
-
-In very rare cases, you may want to implement niche features that cannot be done with the `shade-agent-cli` or `shade-agent-api`. In such cases, you can develop a Shade Agent without these tools. Here is an [example repository](https://github.com/NearDeFi/shade-agent-no-api). 
+In most cases you will develop your agent using the [quickstart template](./quickstart/deploying.md). This template is designed to enable you to sign transactions from your agent on any blockchain. In some cases, you may want to deploy a [custom agent contract](./custom-contracts/overview.md), which allows for more customizability inside of the agent contract, allows you to restrict your agent to certain actions, and is used for building Shade Agents that just interact with NEAR.
 
 ---
 
 ## Languages and Frameworks
 
-The agent is just a backend service that runs inside a TEE instead of a centralized server. You can run the agent on an internal cron job to perform an action every set time period, or in response to actions, or it can expose API routes that can be called.
+The agent is just a backend service that runs inside a TEE instead of a centralized server. You can run the agent on an internal cron job to perform an action every set time period, respond to actions, or it can expose API routes that can be called.
 
 Agents can be written in virtually any programming language and use any framework, as long as you can build a `Docker image` for your program.
 

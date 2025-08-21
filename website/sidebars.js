@@ -143,21 +143,31 @@ const sidebar = {
         'ai/introduction',
         {
           "Shade Agents": [
+            "ai/shade-agents/introduction",
+            "ai/shade-agents/examples",
             {
-              "Getting Started": [
+              "Quickstart": [
                 'ai/shade-agents/quickstart/deploying',
                 "ai/shade-agents/quickstart/components",
+                "ai/shade-agents/quickstart/modifying",
               ]
             },
             {
-              "Concepts": [
-                "ai/shade-agents/introduction",
-                "ai/shade-agents/examples",
-                "ai/shade-agents/custom-agent-contract",
-                "ai/shade-agents/security",
-                "ai/shade-agents/plugins",
+              "Framework": [
+                "ai/shade-agents/framework/overview",
+                "ai/shade-agents/framework/api",
+                "ai/shade-agents/framework/cli",
               ],
             },
+            {
+              "Custom Agent Contracts": [
+                "ai/shade-agents/custom-contracts/overview",
+                "ai/shade-agents/custom-contracts/near-agents",
+                "ai/shade-agents/custom-contracts/yield-for-agent",
+              ]
+            },
+            "ai/shade-agents/plugins",
+            "ai/shade-agents/security",
           ]
         },
         {
