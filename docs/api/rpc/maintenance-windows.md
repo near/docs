@@ -109,22 +109,5 @@ Successful responses return an array of maintenance window ranges:
 
 ## Best Practices
 
-### Performance Considerations
-
 - **Cache results**: Maintenance windows don't change frequently during an epoch
 - **Monitor epoch changes**: Query again when a new epoch starts
-- **Use appropriate endpoints**: Standard RPC endpoints are sufficient for current epoch data
-
-### Validator Monitoring
-
-- **Regular checks**: Monitor maintenance windows to plan validator operations
-- **Epoch tracking**: Be aware that maintenance windows are epoch-specific
-- **Downtime planning**: Use maintenance windows to schedule validator maintenance
-
-### Rate Limiting
-
-- Standard RPC endpoints have rate limits; implement exponential backoff
-- Consider using multiple RPC providers for higher availability
-- Batch multiple validator queries if monitoring multiple nodes
-
----

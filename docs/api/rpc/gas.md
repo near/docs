@@ -148,22 +148,3 @@ The RPC API enables you to query the gas price for a specific block or hash.
   }
   ```
 </details>
-
----
-
-## Error Handling
-
-Common errors you might encounter:
-
-- **Block not found**: When querying an invalid or non-existent block
-- **Invalid parameters**: When providing incorrect parameter types or formats
-- **Network errors**: Connection issues with the RPC endpoint
-
-## Best Practices
-
-- Use `null` parameter for real-time gas price monitoring
-- Cache gas price results to avoid excessive API calls
-- Use archival RPC endpoints when querying historical blocks
-- Handle network timeouts gracefully in production applications
-
----

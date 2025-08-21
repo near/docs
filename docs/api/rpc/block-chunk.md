@@ -764,28 +764,4 @@ Here's a quick reference table for all the methods in this section:
 
 ## Best Practices
 
-### Performance Considerations
-
-- **Use finality parameter**: When you don't need a specific block, use `finality: "final"` for the latest finalized block
 - **Cache block data**: Block information is immutable once finalized, ideal for caching
-- **Batch chunk queries**: When analyzing multiple chunks, batch requests efficiently
-- **Monitor rate limits**: Implement exponential backoff for rate-limited requests
-
-### Data Access Strategies
-
-- **Archival vs. Regular nodes**: Use archival nodes only for blocks older than 5 epochs
-- **Block vs. chunk queries**: Use block queries for metadata, chunk queries for transaction details
-- **Change tracking**: Monitor block changes for real-time blockchain state updates
-
-### Error Handling Best Practices
-
-- **Implement retries**: Network issues are common; implement retry logic with backoff
-- **Handle sync states**: Account for nodes that might not be fully synced
-- **Validate responses**: Always check response format before processing data
-- **Fallback endpoints**: Maintain multiple RPC endpoints for reliability
-
-### Rate Limiting
-
-- Standard RPC endpoints have rate limits; implement exponential backoff
-- Consider using multiple RPC providers for higher availability
-- Batch multiple queries when possible to reduce request count

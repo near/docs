@@ -596,15 +596,6 @@ The RPC API enables you to retrieve the current genesis and protocol configurati
 
 ---
 
-## Error Handling
-
-Common errors you might encounter:
-
-- **Invalid finality parameter**: When providing an unsupported finality value
-- **Block not found**: When querying a non-existent block ID
-- **Method not found**: When using incorrect method names
-- **Network errors**: Connection issues with the RPC endpoint
-
 ## Best Practices
 
 - Use `finality: "final"` for most recent confirmed protocol configuration

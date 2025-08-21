@@ -757,24 +757,5 @@ should accept objects with or without these fields set.
 
 ## Best Practices
 
-### Performance Considerations
-
 - **Use specific queries**: Query only the data you need instead of broad state queries
-- **Cache results**: Contract state and code don't change frequently, consider caching
-- **Batch operations**: When checking multiple accounts, use batch methods where available
-- **Archival nodes**: Only use archival endpoints when historical data is required
-
-### Security Recommendations
-
 - **Validate inputs**: Always validate method arguments before contract calls
-- **Monitor contract changes**: Track code and state changes for security audits
-- **Rate limiting**: Implement proper rate limiting to avoid hitting RPC limits
-- **Error handling**: Implement robust error handling for all RPC calls
-
-### Rate Limiting
-
-- Standard RPC endpoints have rate limits; implement exponential backoff
-- Archival endpoints may have stricter limits
-- Consider using multiple RPC providers for higher throughput
-
----

@@ -340,31 +340,5 @@ The RPC API enables you to query status information for nodes and validators.
 
 ## Best Practices
 
-### Performance Optimization
-
 - **Cache validator data**: Validator information changes infrequently, consider caching for several minutes
 - **Use specific queries**: Request only the data you need to minimize response size
-- **Batch requests**: When possible, batch multiple RPC calls to reduce network overhead
-- **Monitor node sync**: Check sync status before relying on validator data
-
-### Network Monitoring
-
-- **Track peer count**: Monitor `num_active_peers` to ensure good network connectivity
-- **Monitor validator performance**: Use validator stats to track block and chunk production
-- **Check network health**: Use `network_info` to monitor data transmission rates
-
-### Security Considerations
-
-- **Validate data**: Always validate validator and network data before using in applications
-- **Handle sync states**: Account for nodes that may be syncing or behind latest blocks
-- **Use multiple endpoints**: Don't rely on a single RPC endpoint for critical applications
-- **Rate limiting**: Implement proper rate limiting to avoid hitting RPC limits
-
-### Error Handling Best Practices
-
-- **Implement retries**: Use exponential backoff for temporary failures
-- **Handle network issues**: Gracefully handle connection timeouts and network errors
-- **Log errors**: Maintain detailed logs for debugging and monitoring
-- **Fallback strategies**: Have backup RPC endpoints available
-
----

@@ -856,8 +856,6 @@ or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above
 
 ## Best Practices
 
-### Transaction Management
-
 - **Use appropriate wait_until levels**: Choose the right execution level based on your requirements
   - `NONE`: For fire-and-forget scenarios
   - `INCLUDED`: When you need confirmation the transaction is in a block
@@ -867,26 +865,3 @@ or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above
 - **Handle timeouts gracefully**: Implement proper timeout handling and retry logic
 - **Monitor gas usage**: Track gas consumption to optimize transaction costs
 - **Batch operations**: When possible, batch multiple actions in a single transaction
-
-### Security Considerations
-
-- **Validate signatures**: Always verify transaction signatures before processing
-- **Use secure key management**: Store private keys securely and never expose them
-- **Implement nonce tracking**: Prevent replay attacks by properly managing nonces
-- **Monitor for failed transactions**: Check transaction status and handle failures appropriately
-
-### Performance Optimization
-
-- **Cache frequently accessed data**: Cache account information and contract state when possible
-- **Use archival nodes sparingly**: Only use archival endpoints when historical data is required
-- **Implement connection pooling**: Reuse RPC connections to improve performance
-- **Rate limiting**: Implement proper rate limiting to avoid hitting RPC limits
-
-### Monitoring and Debugging
-
-- **Log transaction details**: Maintain detailed logs for debugging and auditing
-- **Monitor receipt execution**: Track receipt outcomes for complex transaction flows
-- **Use block explorers**: Leverage tools like NearBlocks for transaction investigation
-- **Set up alerts**: Monitor for failed transactions and unusual patterns
-
----
