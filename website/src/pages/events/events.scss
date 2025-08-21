@@ -2,6 +2,16 @@ h3{
   margin: 0 !important;
 }
 
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
 .events-page {
   background: var(--ifm-background-color);
   min-height: 100vh;

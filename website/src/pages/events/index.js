@@ -7,6 +7,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 const Events = () => {
   const [lumaEvents, setLumaEvents] = useState([]);
   const [devEvents, setDevEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const { siteConfig: { customFields } } = useDocusaurusContext();
 
@@ -24,11 +25,22 @@ const Events = () => {
       googleEvents = googleEvents.sort((a, b) => new Date(a.start) - new Date(b.start));
 
       setLumaEvents(lumaEvents);
-      setDevEvents(googleEvents); // Set the first event as highlighted
+      setDevEvents(googleEvents);
+      setLoading(false);
     };
 
     fetchEvents();
   }, []);
+
+  if (loading) {
+    return (
+      <Layout title="Loading Events" description="Loading upcoming NEAR events...">
+        <div className="loading-container">
+          <h1>Loading Events...</h1>
+        </div>
+      </Layout>
+    )
+  }
 
   return (
     <Layout title="Events" description="Upcoming NEAR events and community gatherings">
@@ -36,9 +48,6 @@ const Events = () => {
         {/* Header Section */}
         <section className="py-5">
           <div className="container" style={{ maxWidth: '960px' }}>
-            <div className="py-3">
-              <h1 className="section-title">Upcoming Events</h1>
-            </div>
 
             {/* Highlighted Event */}
             {lumaEvents.length && (
@@ -63,7 +72,7 @@ const Events = () => {
               <h2 className="section-title">Community Events</h2>
             </div>
 
-            Community Events Grid
+            {/* Community Events Grid */}
             <div className="row events-grid py-4">
               {devEvents.map((event) => (
                 <div key={event.id} className="col-12 col-md-6 col-lg-4">
@@ -103,9 +112,12 @@ const EventCard = ({ event, isHighlighted = false }) => {
 
   return (
     <a href={event.url} target="_blank" rel="noopener noreferrer" className={cardClass}>
+      
+      {event.thumbnail && (
       <div className="event-image">
         <img src={event.thumbnail} alt={event.title} />
       </div>
+      )}
 
       {!isHighlighted && (
         <>
