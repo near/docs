@@ -69,12 +69,14 @@ export const fetchGoogleCalendarEvents = async (googleCalendarId, googleCalendar
   // flatten the items
   items = [...items].flat();
 
+  console.log('Google Calendar Events:', items);
+
   const formattedEvents = items.map((event) => {
     return {
       id: event.id,
       title: event.summary,
       start: event.start.dateTime,
-      thumbnail: `https://lh3.googleusercontent.com/d/${event.attachments?.[0]?.fileId}=w1000`,
+      thumbnail: event.attachments? `https://lh3.googleusercontent.com/d/${event.attachments[0].fileId}=w1000` : null,
       location: '',
       url: event.htmlLink,
     };

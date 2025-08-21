@@ -4,8 +4,6 @@ import { KeyPairSigner } from '@near-js/signers';
 import { useState } from 'react';
 import './faucet.scss';
 
-import Layout from '@theme/Layout'
-
 async function createAndDeleteTmpAcc(beneficiary) {
   const tmpAccount = `${beneficiary.slice(0, 32).replace('.', '-')}-${Date.now()}.testnet`;
   const signer = KeyPairSigner.fromSecretKey(
@@ -27,7 +25,7 @@ async function createAndDeleteTmpAcc(beneficiary) {
   return account.deleteAccount(beneficiary);
 }
 
-const ToolsPage = () => {
+export const Faucet = () => {
   const [error, setError] = useState();
   const [label, setLabel] = useState('Request');
 
@@ -53,48 +51,36 @@ const ToolsPage = () => {
   };
 
   return (
-    <Layout>
-      <div className="faucet-section">
-        <div className="faucet-container">
-          <h1>NEAR Testnet Faucet</h1>
-          <p>Request testnet NEAR tokens to test your applications</p>
-          <div className="faucet-card">
-            <form onSubmit={requestFaucet}>
-              <div className="field-group">
-                <label htmlFor="accountId">
-                  <span className="field-label">Testnet Account ID</span>
-                  <input
-                    id="accountId"
-                    name="accountId"
-                    required
-                    placeholder="account.testnet | 0x123... | implicit address"
-                    className={
-                      error ? 'error' : label === 'Funded!' ? 'success' : ''
-                    }
-                  />
-                </label>
-                {error && <div className="input-msg error">{error}</div>}
-                {label === 'Funded!' && (
-                  <div className="input-msg success">Account funded!</div>
-                )}
-              </div>
-              <button
-                type="submit"
-                className={label === 'Funded!' ? 'affirmative' : ''}
-                disabled={label !== 'Request'}
-              >
-                {label === 'Requesting' && '🕔 '}
-                {label}
-              </button>
-            </form>
-          </div>
-          <p className="help-text">
-            Not working? Please report at <a href="https://t.me/neardev">https://t.me/neardev</a>
-          </p>
-        </div>
+    <form className="faucet-card" onSubmit={requestFaucet}>
+      <div className="field-group">
+        <label htmlFor="accountId">
+          <span className="field-label">Testnet Account ID</span>
+          <input
+            id="accountId"
+            name="accountId"
+            required
+            placeholder="account.testnet | 0x123... | implicit address"
+            className={
+              error ? 'error' : label === 'Funded!' ? 'success' : ''
+            }
+          />
+        </label>
+        {error && <div className="input-msg error">{error}</div>}
+        {label === 'Funded!' && (
+          <div className="input-msg success">Account funded!</div>
+        )}
       </div>
-    </Layout>
+      <button
+        type="submit"
+        className={label === 'Funded!' ? 'affirmative' : ''}
+        disabled={label !== 'Request'}
+      >
+        {label === 'Requesting' && '🕔 '}
+        {label}
+      </button>
+      <p className="help-text">
+        Not working? Please report at <a href="https://t.me/neardev">https://t.me/neardev</a>
+      </p>
+    </form>
   );
 };
-
-export default ToolsPage;
