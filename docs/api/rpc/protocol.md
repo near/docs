@@ -228,6 +228,12 @@ The RPC API enables you to retrieve the current genesis and protocol configurati
   }
   ```
 </details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
+</details>
 ---
 
 ## Protocol Config {#protocol-config}
@@ -592,6 +598,12 @@ The RPC API enables you to retrieve the current genesis and protocol configurati
   "id": "dontcare"
 }
   ```
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
 </details>
 
 ---

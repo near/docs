@@ -101,6 +101,12 @@ The RPC API enables you to view details about accounts and contracts as well as 
   }
   ```
 </details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
+</details>
 
 ---
 ## View account changes {#view-account-changes}
@@ -202,6 +208,12 @@ The RPC API enables you to view details about accounts and contracts as well as 
   }
   ```
 </details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
+</details>
 ---
 ## View contract code {#view-contract-code}
 
@@ -275,6 +287,12 @@ The RPC API enables you to view details about accounts and contracts as well as 
     "id": "dontcare"
   }
   ```
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
 </details>
 ---
 ## View contract state {#view-contract-state}
@@ -369,6 +387,12 @@ The RPC API enables you to view details about accounts and contracts as well as 
 the future, the `result.proof` will be included only if the result is **not empty**,
 and the `proof` field will be removed from all `values`. When parsing the result, you
 should accept objects with or without these fields set.
+
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
 
 </details>
 
@@ -473,6 +497,12 @@ should accept objects with or without these fields set.
   }
   ```
 </details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
+</details>
 
 ---
 ## View contract code changes {#view-contract-code-changes}
@@ -556,6 +586,12 @@ should accept objects with or without these fields set.
     "id": "dontcare"
   }
   ```
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
 </details>
 
 ---
@@ -648,6 +684,12 @@ should accept objects with or without these fields set.
     results.
   </p>
 </details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
+</details>
 
 ---
 
@@ -734,6 +776,12 @@ should accept objects with or without these fields set.
     **Note**: `[34, 72, ..., 108, 33, 34]` is an array of bytes, to be specific it is an ASCII code
     of `"Hello, Near Protocol!"`. `near-sdk-rs` and `near-sdk-js` return JSON-serialized results.
   </p>
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
 </details>
 
 ---

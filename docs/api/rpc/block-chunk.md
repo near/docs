@@ -397,6 +397,12 @@ Here's a quick reference table for all the methods in this section:
 ```
 
 </details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
+</details>
 ---
 
 ## Changes in Block {#changes-in-block}
@@ -580,6 +586,12 @@ Here's a quick reference table for all the methods in this section:
     }
     ```
 </details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
+</details>
 
 ---
 
@@ -737,6 +749,12 @@ Here's a quick reference table for all the methods in this section:
     "id": "dontcare"
   }
   ```
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
 </details>
 
 ---

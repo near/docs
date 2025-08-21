@@ -138,6 +138,12 @@ The RPC API enables you to send transactions and query their status on the NEAR 
   }
   ```
 </details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
+</details>
 
 ---
 ## Transaction Status {#transaction-status}
@@ -296,6 +302,12 @@ http POST https://archival-rpc.testnet.near.org \
     "id": "dontcare"
   }
   ```
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
 </details>
 
 ---
@@ -550,6 +562,12 @@ const response = await near.connection.provider.txStatusReceipts(
 }
   ```
 </details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
+</details>
 
 ---
 ## Receipt by ID {#receipt-by-id}
@@ -634,6 +652,12 @@ const response = await near.connection.provider.txStatusReceipts(
     "id": "dontcare"
   }
   ```
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
 </details>
 
 ---
@@ -721,6 +745,12 @@ pub enum TxExecutionStatus {
     "id": "dontcare"
   }
   ```
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
 </details>
 
 Final transaction results can be queried using [Transaction Status](#transaction-status)
@@ -833,6 +863,12 @@ or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above
     "id": "dontcare"
   }
   ```
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
 </details>
 
 ---

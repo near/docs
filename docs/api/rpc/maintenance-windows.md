@@ -83,7 +83,12 @@ The RPC API enables you to query future maintenance windows for a specific valid
     `[1028, 1031]` includes block heights 1028, 1029 and 1030.
   </p>
 </details>
+<details>
+<summary>Error handling:</summary>
 
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
+</details>
 ---
 
 ## Error Handling

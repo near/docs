@@ -121,6 +121,12 @@ The RPC API enables you to query status information for nodes and validators.
   }
   ```
 </details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
+</details>
 ---
 
 ## Network Info {#network-info}
@@ -189,6 +195,12 @@ The RPC API enables you to query status information for nodes and validators.
     "id": "dontcare"
   }
   ```
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
 </details>
 
 ---
@@ -319,6 +331,12 @@ The RPC API enables you to query status information for nodes and validators.
     "id": "dontcare"
   }
   ```
+</details>
+<details>
+<summary>Error handling:</summary>
+
+When making RPC API requests, you may encounter various errors related to network configuration, rate limiting, or request formatting. For comprehensive information about error types, causes, and solutions, see the [RPC Errors](/api/rpc/errors) documentation.
+
 </details>
 
 ---
