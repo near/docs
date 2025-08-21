@@ -148,8 +148,7 @@ const sidebar = {
             {
               "Quickstart": [
                 'ai/shade-agents/quickstart/deploying',
-                "ai/shade-agents/quickstart/components",
-                "ai/shade-agents/quickstart/modifying",
+                "ai/shade-agents/quickstart/components",   
               ]
             },
             {
@@ -162,6 +161,7 @@ const sidebar = {
             {
               "Custom Agent Contracts": [
                 "ai/shade-agents/custom-contracts/overview",
+                "ai/shade-agents/custom-contracts/agent-guard-rails",
                 "ai/shade-agents/custom-contracts/near-agents",
                 "ai/shade-agents/custom-contracts/yield-for-agent",
               ]
