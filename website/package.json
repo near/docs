@@ -34,7 +34,6 @@
     "serve": "^14.2.4"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@docusaurus/core": "3.8.1",
     "@docusaurus/plugin-ideal-image": "3.8.1",
     "@docusaurus/plugin-sitemap": "3.8.1",
