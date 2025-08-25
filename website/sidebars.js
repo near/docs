@@ -520,6 +520,7 @@ const sidebar = {
     'api/rpc/network',
     'api/rpc/transactions',
     'api/rpc/maintenance-windows',
+    'api/rpc/errors',
   ],
   exchanges: [
     {
