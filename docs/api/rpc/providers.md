@@ -51,8 +51,6 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [Tatum](https://tatum.io/chain/near/)                                      | `https://near-testnet.gateway.tatum.io/`                     |                    |
 | [Zeeve](https://www.zeeve.io/)                                             | -                                                            |                    |
 
-
-
 ## RPC Failover
 
 In `near-api-js` you can use [`FailoverRpcProvider`](../../tools/near-api.md#rpc-failover) to automatically switch RPC providers when one provider is experiencing downtime, or implement an RPC selection widget that allows users to add their own RPC provider.

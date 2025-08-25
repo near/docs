@@ -63,6 +63,13 @@ const sidebar = {
           ]
         },
         {
+          "Tutorials": [
+            'tutorials/protocol/create-account',
+            'tutorials/protocol/importing-account',
+            'tools/faucet'
+          ]
+        },
+        {
           "Reference": [
             'tools/near-cli',
             {
@@ -513,6 +520,7 @@ const sidebar = {
     'api/rpc/network',
     'api/rpc/transactions',
     'api/rpc/maintenance-windows',
+    'api/rpc/errors',
   ],
   exchanges: [
     {
@@ -534,6 +542,9 @@ const sidebar = {
     },
     'integrations/faq',
   ],
+  toolbox: [
+    'toolbox',
+  ]
 };
 
 export default sidebar;

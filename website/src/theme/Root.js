@@ -6,6 +6,38 @@ import useIsBrowser from '@docusaurus/useIsBrowser'; // https://docusaurus.io/do
 import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// wallet selector
+import '@near-wallet-selector/modal-ui/styles.css';
+import { setupBitteWallet } from '@near-wallet-selector/bitte-wallet';
+// import { setupEthereumWallets } from '@near-wallet-selector/ethereum-wallets';
+// import { wagmiConfig, web3Modal } from '@/eth-wallets/adapter';
+import { setupHereWallet } from '@near-wallet-selector/here-wallet';
+import { setupHotWallet } from '@near-wallet-selector/hot-wallet';
+import { setupLedger } from '@near-wallet-selector/ledger';
+import { setupMeteorWallet } from '@near-wallet-selector/meteor-wallet';
+import { setupNightly } from '@near-wallet-selector/nightly';
+import { WalletSelectorProvider } from '@near-wallet-selector/react-hook';
+import { setupSender } from '@near-wallet-selector/sender';
+
+const networkId = 'testnet';
+
+const walletSelectorConfig = {
+  network: networkId,
+  modules: [
+    // setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn: true }),
+    setupMeteorWallet(),
+    setupBitteWallet(),
+    setupHotWallet(),
+    setupHereWallet(),
+    setupSender(),
+    setupNightly(),
+    setupLedger(),
+  ],
+};
+
 
 function initializeGleap() {
   if (typeof window !== "undefined") {
@@ -76,7 +108,25 @@ function Root({ children, location }) {
 
 
 
-  return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
+  return (
+    <PostHogProvider client={posthog}>
+      <WalletSelectorProvider config={walletSelectorConfig}>
+        {children}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+      </WalletSelectorProvider>
+    </PostHogProvider>
+  );
 }
 
 const router = withRouter(Root);
