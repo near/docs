@@ -17,7 +17,7 @@ In this section, we'll explore the main components of the [quickstart template](
 The template we're using is a simple Shade Agent built with Hono and written in TypeScript that acts as a verifiable ETH price oracle. It takes prices from two different APIs, takes the average, and then pushes the price to an Ethereum contract. The template also comes with a frontend to make it easier to interact with the Shade Agent.
 
 The project has three different APIs:
-1) [**agentAccount**](https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/agentAccount.ts) - This API simply fetches the agent's NEAR account Id and its balance by using the `agentAccountId` and `agent("getBalance")` functions from the `shade-agent-js` library.
+1) [**agentAccount**](https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/agentAccount.ts) - This API simply fetches the agent's NEAR account ID and its balance by using the `agentAccountId` and `agent("getBalance")` functions from the `shade-agent-js` library.
 2) [**ethAccount**](https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/ethAccount.ts) - This API returns the `Ethereum Sepolia account` that the Shade Agent uses to update the price of Ethereum in the Sepolia contract. This API is used so the user knows which account to fund for gas.
 3) [**transaction**](https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts) - This is where the core logic of the agent is defined. When this API is called, the agent will build and sign a transaction. We'll look deeper into this API route in the next part.
 
@@ -35,7 +35,7 @@ In this example, we're signing a transaction to call an Ethereum contract to upd
 
 Next, we build the `transaction payload` to be signed. To do this, we're using the `chainsig.js` library. 
 Using this library, we:
-1. `Derive the Ethereum address` that will be sending the transaction. This function takes the agent contract account Id since this is the predecessor account that is calling the Chain Signatures [MPC contract](https://github.com/Near-One/mpc/tree/main/libs/chain-signatures/contract), and a path. The path can be whatever string you like, different paths will derive different addresses.
+1. `Derive the Ethereum address` that will be sending the transaction. This function takes the agent contract account ID since this is the predecessor account that is calling the Chain Signatures [MPC contract](https://github.com/Near-One/mpc/tree/main/libs/chain-signatures/contract), and a path. The path can be whatever string you like, different paths will derive different addresses.
 2. Create the `data`. This is what action we're performing, in this case, a function call to update the price in the contract.
 3. `Build the transaction and the transaction payload` by inputting the derived address, the target Ethereum smart contract, and the data.
 

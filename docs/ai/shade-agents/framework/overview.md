@@ -5,72 +5,164 @@ sidebar_label: Framework Overview
 description: "TODO"
 ---
 
-The Shade Agent Framework provides a suite of tools to make it easy to develop and deploy Shade Agents without needing to thoroughly understand the complexities of the underlying infrastructure. In this section of docs we'll look closer at the tooling provided by the framework and the key components you need when building an agent.
+The Shade Agent Framework provides a suite of tools designed to simplify the development and deployment of Shade Agents. This framework abstracts away the complexities of the underlying infrastructure, allowing developers to focus on building their agent logic. In this section, we'll explore the tooling provided by the framework and examine the key components you need when building an agent.
+
+---
 
 ## Languages, Templates and Architecture 
 
-We recommend when starting to build with the Shade Agent Framework you start by forking the quickstart [Shade Agent Template](https://github.com/NearDeFi/shade-agent-template). This template has all the necessary files to build a Shade Agent (which we will go through later in this page). Since the agent is written in TypeScript, and uses `shade-agent-js`, it has great synergies with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions and deriving multichain accounts. We also maintain a [python example](https://github.com/NearDeFi/shade-python-example/tree/main) using `shade-agent-py` so you can develop agents in python, however we do not maintain tooling for building multichain transactions and deriving multichain accounts so additional work is required. Agents can actually be written in any language that you can build a docker image by using the API directly, you can see how to do this in the [API page](./api.md).
+When starting to build with the Shade Agent Framework, we recommend forking the quickstart [Shade Agent Template](https://github.com/NearDeFi/shade-agent-template). This template contains all the necessary files to build a Shade Agent (which we'll explore later on this page).
 
-An Agent is just a backend service (or server) that uses the shade-agent-api and runs inside a TEE instead of on a centralized server. You can develop with whatever backend framework you like, expose API routes, run cron jobs or index events and respond to them with an action. If you're serious about developing Shade Agents we recommend that you are already familiar with creating backend services.
+Since the agent is written in TypeScript and uses `shade-agent-js`, it integrates seamlessly with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions and deriving multichain accounts.
 
-In our quickstart template we deploy everyone a generic agent contract under the hood that can be used to sign transactions on any blockchain. The generic agent contract is sufficient for many use cases, but in some production use cases you may want to develop your own agent contract so you can implement strict guard rails in your contract to stop malicious actions even if the TEE is somehow compromised. Custom agent contracts are very useful if you're developing just on NEAR. To learn more about when to use a custom agent contract and how to build them, please refer to our [custom contract section](../custom-contracts/overview.md). 
+We also maintain a [Python example](https://github.com/NearDeFi/shade-python-example/tree/main) that uses `shade-agent-py`, allowing you to develop agents in Python. However, note that we don't currently maintain tooling for building multichain transactions and deriving multichain accounts in Python, so additional development work will be required.
+
+Agents can be written in any language as long as you can create a Docker image for it by using the API directly. You can learn more about this approach on the [API page](./api.md).
+
+An Agent is essentially a backend service (or server) that uses the Shade Agent API and runs inside a Trusted Execution Environment (TEE) instead of on a centralized server. You can develop using any backend framework you prefer, expose API routes, run cron jobs, or index events and respond to them with actions. If you're planning to develop Shade Agents seriously, we recommend having prior experience with creating backend services.
+
+In our quickstart template, we deploy a generic agent contract that can be used to sign transactions on any blockchain. This generic agent contract is sufficient for many use cases. However, in some production scenarios, you may want to develop your own custom agent contract to implement strict guardrails that prevent malicious actions, even if the TEE is somehow compromised. Custom agent contracts are particularly useful when developing exclusively on NEAR. To learn more about when to use a custom agent contract and how to build them, please refer to our [custom contract section](../custom-contracts/overview.md). 
 
 ---
 
 ## Shade Agent API
 
-The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract. To learn more about how the API works and how to use it in different languages, please refer to our [API page](./api.md).
+The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract. To learn more about how the API works and how to use it in different languages, please refer to the [API page](./api.md).
 
 ---
 
 ## Shade Agent CLI
 
-The Shade Agent CLI abstracts away the complexity of deploying a Shade Agent. To learn more about how the CLI works and how to use it, please refer to [CLI page](./cli.md).
+The Shade Agent CLI abstracts away the complexity of deploying a Shade Agent. To learn more about how the CLI works and how to use it, please refer to the [CLI page](./cli.md).
 
 ---
 
-## Phala Cloud 
+## Phala Cloud
 
-Phala Cloud is a cloud solution that makes it easy to host applications and agents inside Trusted Execution Environments. The Shade Agent Framework uses it for deploying agents. You can deploy any standard Docker application to Phala. To learn more about Phala you can visit there [documentation](https://docs.phala.network/phala-cloud/what-is/what-is-phala-cloud).
+Phala Cloud is a cloud solution that simplifies hosting applications and agents inside Trusted Execution Environments. The Shade Agent Framework uses Phala Cloud for agent deployment. You can deploy any standard Docker application to Phala. To learn more about Phala, visit their [documentation](https://docs.phala.network/phala-cloud/what-is/what-is-phala-cloud).
 
-When your agent is deployed you can manage the deployment from the [dashboard](https://cloud.phala.network/dashboard).
+Once your agent is deployed, you can manage the deployment from the [dashboard](https://cloud.phala.network/dashboard).
+
+To deploy an agent to production, you'll need a Phala Cloud account. You can create one [here](https://cloud.phala.network/register). 
 
 ---
 
 ## Docker
 
-Docker is a platform that lets you package an application into a self contained environment. By creating a Docker image you can run your agent in the TEE. An agent is usually made up of two docker images (the application and the shade-agent-api) but can be made up of more. When building Shade Agents it can be useful to understand how docker works, if interested please visit Docker's [documentation](https://docs.docker.com/get-started/docker-overview/). 
+Docker is a platform that allows you to package an application into a self-contained environment. By creating a Docker image, you can run your agent in the TEE. An agent typically consists of two Docker images (the application and the Shade Agent API), but it can include more. When building Shade Agents, it's helpful to understand how Docker works. If you're interested in learning more about Docker, please visit the [documentation](https://docs.docker.com/get-started/docker-overview/). 
 
-There are two Docker related files we include in our project, the `Dockerfile` and the `Docker Compose` file. 
+You'll need to set up docker on your machine if you do not have it already and create an account:
+- Install Docker for [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) or [Linux](https://docs.docker.com/desktop/setup/install/linux/) and create an account.
+- Log in to Docker, using `docker login` for Mac or `sudo docker login` for Linux.
 
-### Dockerfile 
+There are two Docker-related files included in our project: the `Dockerfile` and the `Docker Compose` file. 
 
-The Dockerfile tells Docker how to build your image and run it. The Shade Agent CLI automatically builds your Docker image for you using the Dockerfile and pushes the image to Docker Hub so it is accessible over the internet.
+### Dockerfile
+
+The Dockerfile tells Docker how to build and run your image. The Shade Agent CLI automatically builds your Docker image using the Dockerfile and pushes it to Docker Hub, making it accessible over the internet.
 
 A standard Dockerfile will:
-1) Start with a `base image` which is the starting point for your application like Ubuntu, Alpine, whether you want node or python pre-installed, etc.
-2) Set the working directory
-3) Install system dependencies 
-4) Add relevant files from the project to the image. In our examples everything within the `source folder` is included as well as the `manifest file` (the file that lists your dependencies like package.json or python.toml)
-5) Install project dependencies 
-6) Build the project
-7) Set the environment (production, development)
-7) Tell docker how to start the application
+1. Start with a `base image`, which serves as the starting point for your application (e.g., Ubuntu, Alpine, Node.js, Python pre-installed)
+2. Set the working directory
+3. Install system dependencies
+4. Add relevant files from the project to the image (in our examples, everything within the `source folder` is included, along with the `manifest file` that lists your dependencies like package.json or pyproject.toml)
+5. Install project dependencies
+6. Build the project
+7. Set the environment (production, development)
+8. Tell Docker how to start the application
 
-In most cases you can ignore the Dockerfile and use the one already supplied in the template.
+In most cases, you can use the Dockerfile already supplied in the template without modification.
 
 Here are example Dockerfiles for a [Typescript](https://github.com/NearDeFi/shade-agent-template/blob/main/Dockerfile) and [Python](https://github.com/NearDeFi/shade-python-example/blob/main/Dockerfile) agent.
 
 You can learn more about the Dockerfile [here](https://docs.docker.com/reference/dockerfile/)
 
-### Docker Compose 
+### Docker Compose
 
-The Docker compose file (docker-compose.yaml) defines which docker images are going to be included within your agent. This is what is actually uploaded to Phala Cloud to run your agent which pulls the image's specified. The compose file also includes which environment variables are being passed to the image, which port the image is being expose on and more.
+The Docker Compose file (docker-compose.yaml) defines which Docker images will be included within your agent. This file is what is actually uploaded to Phala Cloud to run your agent, which then pulls the specified images. The compose file also specifies which environment variables are passed to the images, whether images are exposed on ports, and other configuration details.
 
-The images being used are automatically set when you run the Shade Agent CLI. In most cases you can ignore the Docker Compose file and use the one already supplied [in the template](https://github.com/NearDeFi/shade-agent-template/blob/main/docker-compose.yaml). If you want to include additional Docker images in your agent or use additional environment variables to your application then you will need to edit the Docker compose file.
+The images used are automatically configured when you run the Shade Agent CLI. In most cases, you can use the Docker Compose file already supplied [in the template](https://github.com/NearDeFi/shade-agent-template/blob/main/docker-compose.yaml). However, if you want to include additional Docker images in your agent or use additional environment variables for your application, you'll need to edit the Docker Compose file.
 
-You can learn more about the Docker compose file [here](https://docs.docker.com/reference/compose-file/)
+You can learn more about the Docker Compose file [here](https://docs.docker.com/reference/compose-file/)
 
 ---
 
-## Environment Variables 
+## Environment Variables
+
+Environment variables are a crucial component of the Shade Agent Framework. They configure your Shade Agent and are passed encrypted into your agent when it goes live. Note that the same agent code (same Docker Compose file) can use different environment variables in different deployments.
+
+The environment variables file must be named `.env.development.local`.
+
+### Required Variables
+
+Below, we'll walk through each environment variable required by the Shade Agent Framework: 
+
+- **NEAR_ACCOUNT_ID**
+
+    :::info Example
+    NEAR_ACCOUNT_ID=example-account.testnet
+    :::
+
+    This is the NEAR account ID that is used to create the agent contract's account when running the Shade Agent CLI and to automatically fund the agent account during startup. You should ensure this account remains funded as you continue to deploy additional agents.
+
+    You can create a NEAR account by using the NEAR CLI.
+
+    Install the CLI:
+
+    ```bash
+    curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+    ```
+
+    Create an account:
+
+    ```bash
+    export ACCOUNT_ID=example-name.testnet
+    near account create-account sponsor-by-faucet-service $ACCOUNT_ID autogenerate-new-keypair save-to-keychain network-config testnet create
+    ```
+
+    Replace `example-name.testnet` with a unique account ID.
+
+- **NEAR_SEED_PHRASE**
+
+    :::info Example
+    NEAR_SEED_PHRASE="book chapter unknown knife strange inherit amazing artist mixture loan rotate lyrics"
+    :::
+
+    This is the seed phrase for the NEAR_ACCOUNT_ID. When creating an account with the above command the seed phrase will be printed to the terminal
+
+- **NEXT_PUBLIC_contractId**
+
+    :::info Examples
+    NEXT_PUBLIC_contractId=ac-proxy.example-account.testnet
+    NEXT_PUBLIC_contractId=ac-sandbox.example-account.testnet
+    :::
+
+    This is the NEAR account ID where the agent contract will be deployed when running the Shade Agent CLI. The account is automatically created when you run the Shade Agent CLI. This account must be your NEAR_ACCOUNT_ID prefixed with either `ac-proxy.` or `ac-sandbox.`, which determines whether the deployment is local or to a TEE, respectively. For `ac-proxy.` deployments, the agent contract doesn't require agent registration since local environments cannot provide valid TEE attestation.
+
+- **API_CODEHASH**
+
+    The API_CODEHASH defines the code hash of the Shade Agent API. You only need to update this when a new API version is released. The [Quickstart Template](https://github.com/NearDeFi/shade-agent-template/blob/main/.env.development.local.example#L9) always includes the most up-to-date API code hash. 
+
+- **APP_CODEHASH**
+
+    The APP_CODEHASH defines the code hash of your agent. You don't need to edit this as it will be automatically updated when running the Shade Agent CLI in production.
+
+- **DOCKER_TAG**
+
+    :::info Example
+    DOCKER_TAG=username/my-app
+    :::
+
+    You need to edit the Docker tag so that the first part matches your Docker username. You can set the second part to whatever you want your image to be called.
+
+- **PHALA_API_KEY**
+
+    :::info Example
+    PHALA_API_KEY=phak_tIhrDY0mXJMgmLLMEMoM6yBxOsjfVM-sTmXmjOF4Fks
+    :::
+
+    You need a Phala API key to upload your agent to Phala Cloud when running the Shade Agent CLI. You can get a key [here](https://cloud.phala.network/dashboard/tokens).
+
+### Your Own Variables
+
+You should also set any additional environment variables your agent may need in the `.env.development.local` file. Remember to update your [Docker Compose](https://github.com/NearDeFi/shade-agent-template/blob/main/docker-compose.yaml#L21) file to pass these additional variables to your agent. 

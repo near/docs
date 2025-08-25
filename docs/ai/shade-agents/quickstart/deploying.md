@@ -43,7 +43,8 @@ On the [next page](./components.md), you'll see how to edit this agent for your 
 - Create a `NEAR testnet account` and record the account name and `seed phrase`:
 
   ```bash
-  near account create-account sponsor-by-faucet-service example-name.testnet autogenerate-new-keypair print-to-terminal network-config testnet create
+  export ACCOUNT_ID=example-name.testnet
+  near account create-account sponsor-by-faucet-service $ACCOUNT_ID autogenerate-new-keypair save-to-keychain network-config testnet create
   ```
 
   replacing `example-name.testnet` with a unique account Id.
@@ -154,13 +155,13 @@ You can interact with your agent via the APIs directly or via a lightweight fron
 
 For Phala deployments, swap localhost:3000 for your deployment URL.
 
-- Get the Agent account Id and its balance:
+- Get the Agent account ID and its balance:
 
   ```
   http://localhost:3000/api/agent-account
   ```
 
-- Get the derived Ethereum Sepolia price pusher account Id and its balance (you will need to fund this account):
+- Get the derived Ethereum Sepolia price pusher account ID and its balance (you will need to fund this account):
 
   ```
   http://localhost:3000/api/eth-account

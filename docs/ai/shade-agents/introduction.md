@@ -59,7 +59,7 @@ The Agent Contract has three main functions:
 
 After the contract is deployed, a `code hash` is set to ensure that only agents running the correct code (i.e. it has the same code hash) can be registered in the agent contract.
 
-Developers or protocols may need to modify the code running inside agents over time. Because of this, when the contract is initialized an `owner` account Id is set. Only the owner can approve a new `code hash`.
+Developers or protocols may need to modify the code running inside agents over time. Because of this, when the contract is initialized an `owner` account ID is set. Only the owner can approve a new `code hash`.
 
 The `shade-agent-cli` handles the deployment of the agent contract and automatically approves the code hash of your agent.
 
@@ -69,7 +69,7 @@ Upgradeability can be designed for the specific use case. Common upgrade methods
 
 #### Register Agent
 
-The `register_agent` function verifies that the agent is running in a TEE and executing the expected code (as defined by the approved code hash). Upon successful verification, the agent's account Id becomes registered and gains access to transaction signing (request_signature).
+The `register_agent` function verifies that the agent is running in a TEE and executing the expected code (as defined by the approved code hash). Upon successful verification, the agent's account ID becomes registered and gains access to transaction signing (request_signature).
 
 The `shade-agent-api` automatically registers the agent when booting up in the TEE.
 
