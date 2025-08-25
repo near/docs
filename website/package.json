@@ -24,6 +24,7 @@
     "fetch-changelog": "node ./src/utils/getChangelogs.js && npm run docusaurus download-remote-near-changelog"
   },
   "devDependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@docusaurus/module-type-aliases": "3.8.1",
     "@docusaurus/types": "3.8.1",
     "@types/react": "^18.2.42",
