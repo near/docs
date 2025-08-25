@@ -70,7 +70,10 @@ Fetches the NEAR account ID of the agent.
   <TabItem value="python" label="🐍 Python">
 
     ```py
+    from shade_agent import agent_account_id
     
+    res = await agent_account_id()
+    account_id = res["account_id"]
     ```
 
   </TabItem>
@@ -111,7 +114,11 @@ This function will only return the details once the agent has successfully regis
   <TabItem value="python" label="🐍 Python">
 
     ```py
+    from shade_agent import agent_info
     
+    res = await agent_info()
+    codehash = res["codehash"]
+    checksum = res["checksum"]
     ```
 
   </TabItem>
@@ -137,7 +144,7 @@ Fetches the NEAR balance of the agent's account in yoctoNEAR (1 NEAR = 10^24 yoc
     ```ts
     import { agent } from '@neardefi/shade-agent-js';
 
-    const res = await agent('getBalance');
+    const res = await agent("getBalance");
     const balance = res.balance
     ```
    
@@ -147,7 +154,10 @@ Fetches the NEAR balance of the agent's account in yoctoNEAR (1 NEAR = 10^24 yoc
   <TabItem value="python" label="🐍 Python">
 
     ```py
+    from shade_agent import agent
     
+    res = await agent("getBalance")
+    balance = res["balance"]
     ```
 
   </TabItem>
@@ -181,7 +191,7 @@ It returns the signature for the transaction.
     const res = await requestSignature({
         path: "ethereum-1",
         payload: "cf80cd8a...",
-        keyType: "Ecdsa" // Or "Eddsa"
+        keyType: "Ecdsa", // Or "Eddsa"
     });
     ```
 
@@ -189,9 +199,15 @@ It returns the signature for the transaction.
 
   <TabItem value="python" label="🐍 Python">
 
-  ```py
-  
-  ```
+    ```py
+    from shade_agent import request_signature
+
+    res = await request_signature(
+        path="ethereum-1", 
+        payload="cf80cd8a...", 
+        key_type="Ecdsa", # Or "Eddsa"
+    )
+    ```
 
   </TabItem>
 
@@ -237,7 +253,7 @@ It returns the signature for the transaction.
     }
     ```
 
-    If your using the chainsig.js library you don't need to worry about the format of these responses.
+    If your using the chainsig.js library you don't need to worry about the format of these responses since the library handles it.
 
 </details>
 
@@ -260,7 +276,7 @@ Makes a function call to the agent contract from the agent. This is used for cus
             arg1,
             arg2,
         }
-        gas: "30000000000000" // Optional 
+        gas: "30000000000000", // Optional 
     })
     ```
 
@@ -268,9 +284,18 @@ Makes a function call to the agent contract from the agent. This is used for cus
 
   <TabItem value="python" label="🐍 Python">
 
-  ```py
-  
-  ```
+    ```py
+    from shade_agent import agent_call
+
+    res = await agent_call({
+        "methodName": "example_call_method",
+        "args": {
+            "arg1": arg1,
+            "arg2": arg2,
+        },
+        "gas": "30000000000000", # Optional
+    })
+    ```
 
   </TabItem>
 
@@ -309,9 +334,17 @@ Makes a function call to a view method (a method that does not require gas) on t
 
   <TabItem value="python" label="🐍 Python">
 
-  ```py
-  
-  ```
+    ```py
+    from shade_agent import agent_call
+
+    res = await agent_view({
+        "methodName": "example_view_method",
+        "args": {
+            "arg1": arg1,
+            "arg2": arg2,
+        },
+    })
+    ```
 
   </TabItem>
 
