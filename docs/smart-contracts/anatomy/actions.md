@@ -351,15 +351,15 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
   #[derive(Default)]
   pub struct Contract { }
 
-  const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1); //0.001Ⓝ
 
   #[near]
   impl Contract {
-    pub fn create(&self, prefix: String){
+    pub fn create(&mut self, prefix: String) {
       let account_id = prefix + "." + &env::current_account_id().to_string();
       Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE);
+        .create_account()
+        .transfer(MIN_STORAGE);
     }
   }
 ```
@@ -481,12 +481,12 @@ the `create_account` method of `near` or `testnet` root contracts.
   #[derive(Default)]
   pub struct Contract { }
 
-  const CALL_GAS: Gas = Gas(28_000_000_000_000);
-  const MIN_STORAGE: Balance = 1_820_000_000_000_000_000_000; //0.00182Ⓝ
+  const CALL_GAS: Gas = Gas::from_gas(28_000_000_000_000);
+  const MIN_STORAGE: NearToken = NearToken::from_yoctonear(1_820_000_000_000_000_000_000); //0.00182Ⓝ
 
   #[near]
   impl Contract {
-    pub fn create_account(&self, account_id: String, public_key: String){
+    pub fn create_account(&mut self, account_id: String, public_key: String){
       let args = json!({
                   "new_account_id": account_id,
                   "new_public_key": public_key,
@@ -494,7 +494,7 @@ the `create_account` method of `near` or `testnet` root contracts.
 
       // Use "near" to create mainnet accounts
       Promise::new("testnet".parse().unwrap())
-      .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
+        .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
     }
   }
 ```
@@ -595,7 +595,7 @@ When creating an account you can also batch the action of deploying a contract t
   #[derive(Default)]
   pub struct Contract { }
 
-  const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1100); //1.1Ⓝ
   const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
 
   #[near]
@@ -603,9 +603,9 @@ When creating an account you can also batch the action of deploying a contract t
     pub fn create_hello(&self, prefix: String){
       let account_id = prefix + "." + &env::current_account_id().to_string();
       Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE)
-      .deploy_contract(HELLO_CODE.to_vec());
+        .create_account()
+        .transfer(MIN_STORAGE)
+        .deploy_contract(HELLO_CODE.to_vec());
     }
   }
 ```
@@ -724,13 +724,13 @@ There are two options for adding keys to the account:
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::{near, env, Promise, Balance, PublicKey};
+  use near_sdk::{near, env, Promise, NearToken, PublicKey};
 
   #[near(serializers = [json, borsh])]
   #[derive(Default)]
   pub struct Contract { }
 
-  const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1100); //1.1Ⓝ
   const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
 
   #[near]
@@ -738,10 +738,10 @@ There are two options for adding keys to the account:
     pub fn create_hello(&self, prefix: String, public_key: PublicKey){
       let account_id = prefix + "." + &env::current_account_id().to_string();
       Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE)
-      .deploy_contract(HELLO_CODE.to_vec())
-      .add_full_access_key(public_key);
+        .create_account()
+        .transfer(MIN_STORAGE)
+        .deploy_contract(HELLO_CODE.to_vec())
+        .add_full_access_key(public_key);
     }
   }
 ```
@@ -860,27 +860,27 @@ There are two scenarios in which you can use the `delete_account` action:
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::{near, env, Promise, Neartoken, AccountId};
+  use near_sdk::{near, env, Promise, NearToken, AccountId};
 
   #[near(contract_state)]
   #[derive(Default)]
   pub struct Contract { }
 
-  const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1); //0.001Ⓝ
 
   #[near]
   impl Contract {
     pub fn create_delete(&self, prefix: String, beneficiary: AccountId){
       let account_id = prefix + "." + &env::current_account_id().to_string();
       Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE)
-      .delete_account(beneficiary);
+        .create_account()
+        .transfer(MIN_STORAGE)
+        .delete_account(beneficiary);
     }
 
     pub fn self_delete(beneficiary: AccountId){
       Promise::new(env::current_account_id())
-      .delete_account(beneficiary);
+        .delete_account(beneficiary);
     }
   }
 ```
