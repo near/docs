@@ -43,14 +43,14 @@ In [`send-tokens-easy.js`](https://github.com/near-examples/transaction-examples
 2. [`dotenv`](https://www.npmjs.com/package/dotenv) (used to load environment variables for private key)
 
 ```js
-const nearAPI = require("near-api-js");
-const { connect, KeyPair, keyStores, utils } = nearAPI;
+const { Near, Account, KeyPair, keyStores, utils } = require("near-api-js");
 require("dotenv").config();
 ```
 
-The second line above deconstructs several utilities from nearAPI that you will use to interact with the blockchain.
+The destructured utilities from near-api-js that you will use to interact with the blockchain:
 
-- `connect` - create a connection to NEAR passing configuration variables
+- `Near` - create a connection to NEAR passing configuration variables
+- `Account` - creates an account object for interacting with the blockchain
 - `KeyPair` - creates a keyPair from the private key you'll provide in an `.env` file
 - `keyStores` - stores the keyPair that you will create from the private key and used to sign Transactions
 - `utils` - used to format NEAR amounts
@@ -72,7 +72,7 @@ When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be conv
 - To perform this you will use the [`near-api-js`](https://github.com/near/near-api-js) method [`parseNearAmount()`](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/format.ts#L53-L63) (located in `utils/format`)
 
 ```js
-const amount = nearAPI.utils.format.parseNearAmount("1.5");
+const amount = utils.format.parseNearAmount("1.5");
 ```
 
 ### Create a Key Store
@@ -110,9 +110,9 @@ const config = {
 };
 
 // connect to NEAR! :)
-const near = await connect(config);
+const near = new Near(config);
 // create a NEAR account object
-const senderAccount = await near.account(sender);
+const senderAccount = new Account(near.connection, sender);
 ```
 
 You'll notice the last line uses your NEAR connection to create a `senderAccount` object that you'll use to perform the transaction.
@@ -152,7 +152,7 @@ In [`send-tokens-deconstructed.js`](https://github.com/near-examples/transaction
 3. [`dotenv`](https://www.npmjs.com/package/dotenv) (used to load environment variables)
 
 ```js
-const nearAPI = require("near-api-js");
+const { providers, KeyPair, utils, transactions } = require("near-api-js");
 const sha256 = require("js-sha256");
 require("dotenv").config();
 ```
@@ -178,7 +178,7 @@ When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be conv
 - To perform this you will use the [`near-api-js`](https://github.com/near/near-api-js) method [`parseNearAmount()`](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/utils/format.ts#L53-L63) (located in `utils/format`)
 
 ```js
-const amount = nearAPI.utils.format.parseNearAmount("1.5");
+const amount = utils.format.parseNearAmount("1.5");
 ```
 
 ---
@@ -188,9 +188,9 @@ const amount = nearAPI.utils.format.parseNearAmount("1.5");
 In this example, we will create a NEAR RPC `provider` that allows us to interact with the chain via [RPC endpoints](/api/rpc/introduction).
 
 ```js
-const provider = new nearAPI.providers.JsonRpcProvider(
-  `https://rpc.${networkId}.near.org`
-);
+const provider = new providers.JsonRpcProvider({
+  url: `https://rpc.${networkId}.near.org`
+});
 ```
 
 ---
@@ -209,7 +209,7 @@ Once you have access to the private key of the sender's account, create an envir
 
 ```js
 const privateKey = process.env.SENDER_PRIVATE_KEY;
-const keyPair = nearAPI.KeyPair.fromString(privateKey);
+const keyPair = KeyPair.fromString(privateKey);
 ```
 
 ---
@@ -293,10 +293,12 @@ const publicKey = keyPair.getPublicKey();
 - Current nonce can be retrieved using the `provider` we [created earlier](#setting-up-a-connection-to-near).
 
 ```js
-const accessKey = await provider.query(
-  `access_key/${sender}/${publicKey.toString()}`,
-  ""
-);
+const accessKey = await provider.query({
+  request_type: "view_access_key",
+  finality: "final",
+  account_id: sender,
+  public_key: publicKey.toString(),
+});
 ```
 
 - now we can create a unique number for our transaction by incrementing the current `nonce`.
@@ -309,10 +311,10 @@ const nonce = ++accessKey.nonce;
 
 - There are currently eight supported `Action` types. [[see here]](/protocol/transaction-anatomy#actions)
 - For this example, we are using `Transfer`
-- This transfer action can be created using the [imported `nearAPI` object](#imports) and the [formatted Ⓝ amount](#formatting-token-amounts) created earlier.
+- This transfer action can be created using the [imported `transactions` object](#imports) and the [formatted Ⓝ amount](#formatting-token-amounts) created earlier.
 
 ```js
-const actions = [nearAPI.transactions.transfer(amount)];
+const actions = [transactions.transfer(amount)];
 ```
 
 [[click here]](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L70-L72) to view source for `transfer()`.
@@ -320,10 +322,10 @@ const actions = [nearAPI.transactions.transfer(amount)];
 ### 6 `blockHash`
 
 - Each transaction requires a current block hash (within 24hrs) to prove that the transaction was created recently.
-- Hash must be converted to an array of bytes using the `base_decode` method found in [`nearAPI`](#imports).
+- Hash must be converted to an array of bytes using the `base_decode` method found in [`utils`](#imports).
 
 ```js
-const recentBlockHash = nearAPI.utils.serialize.base_decode(
+const recentBlockHash = utils.serialize.base_decode(
   accessKey.block_hash
 );
 ```
@@ -336,10 +338,10 @@ const recentBlockHash = nearAPI.utils.serialize.base_decode(
 
 With all of our [required arguments](#transaction-requirements), we can construct the transaction.
 
-- Using [`nearAPI`](#imports), we call on `createTransaction()` to perform this task.
+- Using [`transactions`](#imports), we call on `createTransaction()` to perform this task.
 
 ```js
-const transaction = nearAPI.transactions.createTransaction(
+const transaction = transactions.createTransaction(
   sender,
   publicKey,
   receiver,
@@ -357,11 +359,11 @@ const transaction = nearAPI.transactions.createTransaction(
 
 Now that the transaction is created, we sign it before sending it to the NEAR blockchain. At the lowest level, there are four steps to this process.
 
-1. Using [`nearAPI`](#imports), we call on `serialize()` to serialize the transaction in [Borsh](https://borsh.io/).
+1. Using [`utils`](#imports), we call on `serialize()` to serialize the transaction in [Borsh](https://borsh.io/).
 
 ```js
-const serializedTx = nearAPI.utils.serialize.serialize(
-  nearAPI.transactions.SCHEMA.Transaction,
+const serializedTx = utils.serialize.serialize(
+  transactions.SCHEMA.Transaction,
   transaction
 );
 ```
@@ -378,12 +380,12 @@ const serializedTxHash = new Uint8Array(sha256.sha256.array(serializedTx));
 const signature = keyPair.sign(serializedTxHash);
 ```
 
-4. Construct the signed transaction using `near-api-js` [SignedTransaction class](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L112-L123).
+4. Construct the signed transaction using near-api-js [SignedTransaction class](https://github.com/near/near-api-js/blob/d4d4cf1ac3182fa998b1e004e6782219325a641b/src/transaction.ts#L112-L123).
 
 ```js
-const signedTransaction = new nearAPI.transactions.SignedTransaction({
+const signedTransaction = new transactions.SignedTransaction({
   transaction,
-  signature: new nearAPI.transactions.Signature({
+  signature: new transactions.Signature({
     keyType: transaction.publicKey.keyType,
     data: signature.signature,
   }),
@@ -395,7 +397,7 @@ const signedTransaction = new nearAPI.transactions.SignedTransaction({
 Final step is to encode and send the transaction.
 
 - First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
-- Then we send the transaction via [RPC call](/api/rpc/introduction) using the `sendJsonRpc()` method nested inside [`near`](#setting-up-a-connection-to-near).
+- Then we send the transaction via [RPC call](/api/rpc/introduction) using the `sendJsonRpc()` method nested inside [`provider`](#setting-up-a-connection-to-near).
 
 ```js
 // encodes transaction to serialized Borsh (required for all transactions)
