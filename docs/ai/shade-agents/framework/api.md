@@ -15,11 +15,9 @@ When the API image boots up it will automatically create the agents account, fun
 
 The API can be used in any language but we maintain API wrappers in TypeScript and Python. We recommend your develop in TypeScript as it has great synergies with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions.
 
-Does not actually return json returns javascript object
-
 ---
 
-## Install 
+## Setup 
 
 <Tabs groupId="code-tabs">
 
@@ -41,7 +39,21 @@ Does not actually return json returns javascript object
 
   <TabItem value="other-languages" label="💻 Other Languages">
 
-    No installation required
+    You can use the Shade Agent API directly with any language that supports HTTP requests. The base API endpoints change depending on your deployment:
+
+    **Local Development:**
+    ```
+    http://localhost:3140/api/agent
+    ```
+
+    **Production (TEE):**
+    ```
+    http://shade-agent-api:3140/api/agent
+    ```
+
+    All endpoints expect POST requests with JSON payloads and return JSON responses.
+
+    If you are running your API on a port other than 3140 you should ammend the base URL accordingly.
 
   </TabItem>
 
@@ -80,7 +92,19 @@ Fetches the NEAR account ID of the agent.
 
   <TabItem value="other-languages" label="💻 Other Languages">
 
-  
+    **POST /getAccountId**
+
+    Request body
+    ```json
+    {}
+    ```
+
+    Example response
+    ```json
+    {
+      "accountId": "1af660a79008c0ce0c5a5605c6107fd7f355a41cb407d4728300a4e15b35cdbb"
+    }
+    ```
 
   </TabItem>
 
@@ -125,7 +149,25 @@ This function will only return the details once the agent has successfully regis
 
   <TabItem value="other-languages" label="💻 Other Languages">
 
-  
+    **POST /view**
+
+    Request body
+    ```json
+    {
+      "methodName": "get_agent",
+      "args": {
+        "account_id": "agent-account.testnet"
+      }
+    }
+    ```
+
+    Example response
+    ```json
+    {
+      "codehash": "03bcd36d3ffb5346c9e1e0166a4c2734a9e7cceedee6f7d992499aeb7fa54ead",
+      "checksum": "0c32c5c598bc8a3bfec47f3d7d9a9d600c8a60e5b97d90a4c2856a7c829eb6d4"
+    }
+    ```
 
   </TabItem>
 
@@ -164,7 +206,19 @@ Fetches the NEAR balance of the agent's account in yoctoNEAR (1 NEAR = 10^24 yoc
 
   <TabItem value="other-languages" label="💻 Other Languages">
 
-  
+    **POST /getBalance**
+
+    Request body
+    ```json
+    {}
+    ```
+
+    Example response
+    ```json
+    {
+      "balance": "203436730084671139765003"
+    }
+    ```
 
   </TabItem>
 
@@ -189,11 +243,49 @@ It returns the signature for the transaction.
     import { requestSignature } from '@neardefi/shade-agent-js';
 
     const res = await requestSignature({
-        path: "ethereum-1",
-        payload: "cf80cd8a...",
-        keyType: "Ecdsa", // Or "Eddsa"
+      path: "ethereum-1",
+      payload: "cf80cd8a...",
+      keyType: "Ecdsa", // Or "Eddsa"
     });
     ```
+
+    <details>
+    <summary>Example response</summary>
+
+        For `Ecdsa` the function returns the components of the signature as hex strings. Note that to get r remove the first two hex characters from big_r.
+
+        ```typescript
+        {
+          scheme: 'Secp256k1',
+          big_r: {
+            affine_point: '03D537AFFD52BE9AF0DA6CF41B573F4BE065434AEE2D25A500BC730C06E7EB2AF1'
+          },
+          s: {
+            scalar: '3470037EB46DC6D1921900B635785290184EC980CFEC7109EB103B5698D4F725'
+          },
+          recovery_id: 0
+        }
+        ```
+
+        For `Eddsa` the function returns the whole signature as a 64-byte array.
+
+        ```typescript
+        {
+          scheme: 'Ed25519',
+          signature: [
+              5, 105,  30, 208, 192,  39, 154, 105, 252,  20, 132,
+              64, 247, 207, 223, 127, 197,  43,  30, 145, 164, 224,
+              1,  45, 240,  28, 155, 218, 204,   5, 136, 111, 238,
+              40, 120, 122, 249, 166, 193, 174, 120,  94, 177,  39,
+              179, 193, 170, 117,  37,  36, 155,  38,  72,  24, 118,
+              235, 187, 110, 129,  26, 186,   7,   0,   8
+          ]
+        }
+        ```
+
+        If your using the chainsig.js library you don't need to worry about the format of these responses since the library handles it.
+
+    </details>
 
   </TabItem>
 
@@ -203,65 +295,111 @@ It returns the signature for the transaction.
     from shade_agent import request_signature
 
     res = await request_signature(
-        path="ethereum-1", 
-        payload="cf80cd8a...", 
-        key_type="Ecdsa", # Or "Eddsa"
+      path="ethereum-1", 
+      payload="cf80cd8a...", 
+      key_type="Ecdsa", # Or "Eddsa"
     )
     ```
 
-  </TabItem>
+    <details>
+    <summary>Example response</summary>
 
-  <TabItem value="other-languages" label="💻 Other Languages">
+        For `Ecdsa` the function returns the components of the signature as hex strings. Note that to get r remove the first two hex characters from big_r.
 
-  
+        ```python
+        {
+          'scheme': 'Secp256k1',
+          'big_r': {
+            'affine_point': '03D537AFFD52BE9AF0DA6CF41B573F4BE065434AEE2D25A500BC730C06E7EB2AF1'
+          },
+          's': {
+            'scalar': '3470037EB46DC6D1921900B635785290184EC980CFEC7109EB103B5698D4F725'
+          },
+          'recovery_id': 0
+        }
+        ```
 
-  </TabItem>
+        For `Eddsa` the function returns the whole signature as a 64-byte array.
 
-</Tabs>
-
-<details>
-  <summary>Example response</summary>
-
-    For `Ecdsa` the function returns the components of the signature as hex strings. Note that to get r remove the first two hex characters from big_r.
-
-    ```typescript
-    {
-        scheme: 'Secp256k1',
-        big_r: {
-            affine_point: '03D537AFFD52BE9AF0DA6CF41B573F4BE065434AEE2D25A500BC730C06E7EB2AF1'
-        },
-        s: {
-            scalar: '3470037EB46DC6D1921900B635785290184EC980CFEC7109EB103B5698D4F725'
-        },
-        recovery_id: 0
-    }
-    ```
-
-    For `Eddsa` the function returns the whole signature as a 64-byte array.
-
-    ```typescript
-    {
-        scheme: 'Ed25519',
-        signature: [
+        ```python
+        {
+          'scheme': 'Ed25519',
+          'signature': [
             5, 105,  30, 208, 192,  39, 154, 105, 252,  20, 132,
             64, 247, 207, 223, 127, 197,  43,  30, 145, 164, 224,
             1,  45, 240,  28, 155, 218, 204,   5, 136, 111, 238,
             40, 120, 122, 249, 166, 193, 174, 120,  94, 177,  39,
             179, 193, 170, 117,  37,  36, 155,  38,  72,  24, 118,
             235, 187, 110, 129,  26, 186,   7,   0,   8
-        ]
+          ]
+        }
+        ```
+
+    </details>
+
+  </TabItem>
+
+  <TabItem value="other-languages" label="💻 Other Languages">
+
+    **POST /call**
+
+    Request body
+    ```json
+    {
+      "methodName": "request_signature",
+      "args": {
+        "path": "ethereum-1",
+        "payload": "cf80cd8a...",
+        "key_type": "Ecdsa"
+      }
     }
     ```
 
-    If your using the chainsig.js library you don't need to worry about the format of these responses since the library handles it.
+<details>
+  <summary>Example response</summary>
+
+    For `Ecdsa` the function returns the components of the signature as hex strings. Note that to get r remove the first two hex characters from big_r.
+
+    ```json
+    {
+      "scheme": "Secp256k1",
+      "big_r": {
+        "affine_point": "03D537AFFD52BE9AF0DA6CF41B573F4BE065434AEE2D25A500BC730C06E7EB2AF1"
+      },
+      "s": {
+        "scalar": "3470037EB46DC6D1921900B635785290184EC980CFEC7109EB103B5698D4F725"
+      },
+      "recovery_id": 0
+    }
+    ```
+
+    For `Eddsa` the function returns the whole signature as a 64-byte array.
+
+    ```json
+    {
+      "scheme": "Ed25519",
+      "signature": [
+        5, 105,  30, 208, 192,  39, 154, 105, 252,  20, 132,
+        64, 247, 207, 223, 127, 197,  43,  30, 145, 164, 224,
+        1,  45, 240,  28, 155, 218, 204,   5, 136, 111, 238,
+        40, 120, 122, 249, 166, 193, 174, 120,  94, 177,  39,
+        179, 193, 170, 117,  37,  36, 155,  38,  72,  24, 118,
+        235, 187, 110, 129,  26, 186,   7,   0,   8
+      ]
+    }
+    ```
 
 </details>
+
+  </TabItem>
+
+</Tabs>
 
 ---
 
 ## Agent Call
 
-Makes a function call to the agent contract from the agent. This is used for custom contracts when you want to call a function other than request_signature. It returns the result the result of the function call.
+Makes a function call to the agent contract from the agent. This is used for custom contracts when you want to call a function other than request_signature. It returns the result of the function call.
 
 <Tabs groupId="code-tabs">
 
@@ -271,12 +409,12 @@ Makes a function call to the agent contract from the agent. This is used for cus
     import { agentCall } from '@neardefi/shade-agent-js';
 
     const res = await agentCall({
-        methodName: "example_call_method",
-        args: {
-            arg1,
-            arg2,
-        }
-        gas: "30000000000000", // Optional 
+      methodName: "example_call_method",
+      args: {
+        arg1: "Value1",
+        arg2: "Value2",
+      },
+      gas: "30000000000000", // Optional 
     })
     ```
 
@@ -288,12 +426,12 @@ Makes a function call to the agent contract from the agent. This is used for cus
     from shade_agent import agent_call
 
     res = await agent_call({
-        "methodName": "example_call_method",
-        "args": {
-            "arg1": arg1,
-            "arg2": arg2,
-        },
-        "gas": "30000000000000", # Optional
+      "methodName": "example_call_method",
+      "args": {
+        "arg1": "Value1",
+        "arg2": "Value2,
+      },
+      "gas": "30000000000000", # Optional
     })
     ```
 
@@ -301,7 +439,19 @@ Makes a function call to the agent contract from the agent. This is used for cus
 
   <TabItem value="other-languages" label="💻 Other Languages">
 
-  
+    **POST /call**
+
+    Request body
+    ```json
+    {
+      "methodName": "example_call_method",
+      "args": {
+        "arg1": "value1",
+        "arg2": "value2"
+      },
+      "gas": "30000000000000" // Optional
+    }
+    ```
 
   </TabItem>
 
@@ -312,7 +462,7 @@ Makes a function call to the agent contract from the agent. This is used for cus
 
 ## Agent View
 
-Makes a function call to a view method (a method that does not require gas) on the agent contract. It returns the result the result of the function call. 
+Makes a function call to a view method (a method that does not require gas) on the agent contract. It returns the result of the function call. 
 
 <Tabs groupId="code-tabs">
 
@@ -322,11 +472,11 @@ Makes a function call to a view method (a method that does not require gas) on t
     import { agentView } from '@neardefi/shade-agent-js';
 
     const res = await agentView({
-        methodName: "example_view_method",
-        args: {
-            arg1,
-            arg2,
-        } 
+      methodName: "example_view_method",
+      args: {
+        arg1: "value1",
+        arg2: "value2",
+      },
     })
     ```
 
@@ -335,14 +485,14 @@ Makes a function call to a view method (a method that does not require gas) on t
   <TabItem value="python" label="🐍 Python">
 
     ```py
-    from shade_agent import agent_call
+    from shade_agent import agent_view
 
     res = await agent_view({
-        "methodName": "example_view_method",
-        "args": {
-            "arg1": arg1,
-            "arg2": arg2,
-        },
+      "methodName": "example_view_method",
+      "args": {
+        "arg1": "value1",
+        "arg2": "value2",
+      },
     })
     ```
 
@@ -350,7 +500,18 @@ Makes a function call to a view method (a method that does not require gas) on t
 
   <TabItem value="other-languages" label="💻 Other Languages">
 
-  
+    **POST /view**
+
+    Request body
+    ```json
+    {
+      "methodName": "example_view_method",
+      "args": {
+        "arg1": "value1",
+        "arg2": "value2"
+      }
+    }
+    ```
 
   </TabItem>
 
