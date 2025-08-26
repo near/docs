@@ -99,7 +99,7 @@ Fetches the NEAR account ID of the agent.
     {}
     ```
 
-    Example response
+    Response
     ```json
     {
       "accountId": "14bc8ee18f2d1ef51e7d581bdd96797804c56247733defdae67ad41314686fd7"
@@ -161,7 +161,7 @@ This function will only return the details once the agent has successfully regis
     }
     ```
 
-    Example response
+    Response
     ```json
     {
       "codehash": "03bcd36d3ffb5346c9e1e0166a4c2734a9e7cceedee6f7d992499aeb7fa54ead",
@@ -213,7 +213,7 @@ Fetches the NEAR balance of the agent's account in yoctoNEAR (1 NEAR = 10^24 yoc
     {}
     ```
 
-    Example response
+    Response
     ```json
     {
       "balance": "203436730084671139765003"
@@ -250,7 +250,7 @@ It returns the signature for the transaction.
     ```
 
     <details>
-    <summary>Example response</summary>
+    <summary>Response</summary>
 
         For `Ecdsa` the function returns the components of the signature as hex strings. Note that to get r remove the first two hex characters from big_r.
 
@@ -302,7 +302,7 @@ It returns the signature for the transaction.
     ```
 
     <details>
-    <summary>Example response</summary>
+    <summary>Response</summary>
 
         For `Ecdsa` the function returns the components of the signature as hex strings. Note that to get r remove the first two hex characters from big_r.
 
@@ -356,7 +356,7 @@ It returns the signature for the transaction.
     ```
 
 <details>
-  <summary>Example response</summary>
+  <summary>Response</summary>
 
     For `Ecdsa` the function returns the components of the signature as hex strings. Note that to get r remove the first two hex characters from big_r.
 
