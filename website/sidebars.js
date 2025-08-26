@@ -156,6 +156,7 @@ const sidebar = {
                 "ai/shade-agents/framework/overview",
                 "ai/shade-agents/framework/api",
                 "ai/shade-agents/framework/cli",
+                "ai/shade-agents/framework/environment-variables",
               ],
             },
             {

@@ -43,6 +43,13 @@ Environment variables are a crucial component of the Shade Agent Framework. They
 
 ---
 
+## Agent Contract
+
+talk about deploying custom agent contract and when 
+
+---
+
+
 ## Phala Cloud
 
 Phala Cloud is a cloud solution that simplifies hosting applications and agents inside Trusted Execution Environments. The Shade Agent Framework uses Phala Cloud for agent deployment. You can deploy any standard Docker application to Phala. To learn more about Phala, visit their [documentation](https://docs.phala.network/phala-cloud/what-is/what-is-phala-cloud).

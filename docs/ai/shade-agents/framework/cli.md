@@ -66,9 +66,9 @@ To use a non default RPC with the CLI and the API create a filed named `near-rpc
         "url": "https://neart.lava.build:443"
       },
       "options": {
-        "retries": 5,
+        "retries": 3,
         "backoff": 2,
-        "wait": 1500
+        "wait": 1000
       }
     },
     {
@@ -85,4 +85,4 @@ To use a non default RPC with the CLI and the API create a filed named `near-rpc
 }
 ```
 
-If required you can specify headers under connectionInfo.
+If required, you can specify headers under connectionInfo.

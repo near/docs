@@ -102,7 +102,7 @@ Fetches the NEAR account ID of the agent.
     Example response
     ```json
     {
-      "accountId": "1af660a79008c0ce0c5a5605c6107fd7f355a41cb407d4728300a4e15b35cdbb"
+      "accountId": "14bc8ee18f2d1ef51e7d581bdd96797804c56247733defdae67ad41314686fd7"
     }
     ```
 
@@ -156,7 +156,7 @@ This function will only return the details once the agent has successfully regis
     {
       "methodName": "get_agent",
       "args": {
-        "account_id": "agent-account.testnet"
+        "account_id": "14bc8ee18f2d1ef51e7d581bdd96797804c56247733defdae67ad41314686fd7"
       }
     }
     ```
