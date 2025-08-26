@@ -37,6 +37,12 @@ The Shade Agent CLI abstracts away the complexity of deploying a Shade Agent. To
 
 ---
 
+## Environment Variables
+
+Environment variables are a crucial component of the Shade Agent Framework. They configure your Shade Agent and are passed encrypted into your agent when it goes live. To learn more about configuring environment variables in your project, please refer to the [Environment Variables page](./environment-variables.md).
+
+---
+
 ## Phala Cloud
 
 Phala Cloud is a cloud solution that simplifies hosting applications and agents inside Trusted Execution Environments. The Shade Agent Framework uses Phala Cloud for agent deployment. You can deploy any standard Docker application to Phala. To learn more about Phala, visit their [documentation](https://docs.phala.network/phala-cloud/what-is/what-is-phala-cloud).
@@ -85,84 +91,3 @@ The images used are automatically configured when you run the Shade Agent CLI. I
 
 You can learn more about the Docker Compose file [here](https://docs.docker.com/reference/compose-file/)
 
----
-
-## Environment Variables
-
-Environment variables are a crucial component of the Shade Agent Framework. They configure your Shade Agent and are passed encrypted into your agent when it goes live. Note that the same agent code (same Docker Compose file) can use different environment variables in different deployments.
-
-The environment variables file must be named `.env.development.local`.
-
-### Required Variables
-
-Below, we'll walk through each environment variable required by the Shade Agent Framework: 
-
-- **NEAR_ACCOUNT_ID**
-
-    :::info Example
-    NEAR_ACCOUNT_ID=example-account.testnet
-    :::
-
-    This is the NEAR account ID that is used to create the agent contract's account when running the Shade Agent CLI and to automatically fund the agent account during startup. You should ensure this account remains funded as you continue to deploy additional agents.
-
-    You can create a NEAR account by using the NEAR CLI.
-
-    Install the CLI:
-
-    ```bash
-    curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
-    ```
-
-    Create an account:
-
-    ```bash
-    export ACCOUNT_ID=example-name.testnet
-    near account create-account sponsor-by-faucet-service $ACCOUNT_ID autogenerate-new-keypair save-to-keychain network-config testnet create
-    ```
-
-    Replace `example-name.testnet` with a unique account ID.
-
-- **NEAR_SEED_PHRASE**
-
-    :::info Example
-    NEAR_SEED_PHRASE="book chapter unknown knife strange inherit amazing artist mixture loan rotate lyrics"
-    :::
-
-    This is the seed phrase for the NEAR_ACCOUNT_ID. When creating an account with the above command the seed phrase will be printed to the terminal
-
-- **NEXT_PUBLIC_contractId**
-
-    :::info Examples
-    NEXT_PUBLIC_contractId=ac-proxy.example-account.testnet
-    NEXT_PUBLIC_contractId=ac-sandbox.example-account.testnet
-    :::
-
-    This is the NEAR account ID where the agent contract will be deployed when running the Shade Agent CLI. The account is automatically created when you run the Shade Agent CLI. This account must be your NEAR_ACCOUNT_ID prefixed with either `ac-proxy.` or `ac-sandbox.`, which determines whether the deployment is local or to a TEE, respectively. For `ac-proxy.` deployments, the agent contract doesn't require agent registration since local environments cannot provide valid TEE attestation.
-
-- **API_CODEHASH**
-
-    The API_CODEHASH defines the code hash of the Shade Agent API. You only need to update this when a new API version is released. The [Quickstart Template](https://github.com/NearDeFi/shade-agent-template/blob/main/.env.development.local.example#L9) always includes the most up-to-date API code hash. 
-
-- **APP_CODEHASH**
-
-    The APP_CODEHASH defines the code hash of your agent. You don't need to edit this as it will be automatically updated when running the Shade Agent CLI in production.
-
-- **DOCKER_TAG**
-
-    :::info Example
-    DOCKER_TAG=username/my-app
-    :::
-
-    You need to edit the Docker tag so that the first part matches your Docker username. You can set the second part to whatever you want your image to be called.
-
-- **PHALA_API_KEY**
-
-    :::info Example
-    PHALA_API_KEY=phak_tIhrDY0mXJMgmLLMEMoM6yBxOsjfVM-sTmXmjOF4Fks
-    :::
-
-    You need a Phala API key to upload your agent to Phala Cloud when running the Shade Agent CLI. You can get a key [here](https://cloud.phala.network/dashboard/tokens).
-
-### Your Own Variables
-
-You should also set any additional environment variables your agent may need in the `.env.development.local` file. Remember to update your [Docker Compose](https://github.com/NearDeFi/shade-agent-template/blob/main/docker-compose.yaml#L21) file to pass these additional variables to your agent. 

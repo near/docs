@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github, Language} from "@site/src/components/codetabs"
 
-The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract. The API is packaged as a Docker image and included in your agent when uploaded to Phala Cloud. The API is accessible internally by default on port 3040, it is not accessible from outside the TEE.
+The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract. The API is packaged as a Docker image and included in your agent when uploaded to Phala Cloud. The API is accessible internally by default on port 3140, it is not accessible from outside the TEE.
 
 When the API image boots up it will automatically create the agents account, fund it with the NEAR_ACCOUNT_ID from the environment variables and register the agent in the agent contract.
 
