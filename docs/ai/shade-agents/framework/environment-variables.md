@@ -69,7 +69,7 @@ Below, we'll walk through each environment variable required by the Shade Agent 
     DOCKER_TAG=username/my-app
     :::
 
-    You need to edit the Docker tag so that the first part matches your Docker username. You can set the second part to whatever you want your image to be called.
+    The `Docker_TAG` specifies how to find your app image on Docker hub. You need to edit the Docker tag so that the first part matches your Docker username. You can set the second part to whatever you want your image to be called. When the CLI is ran the docker tag for your apps image in the docker-compose.yaml will be automatically updated.
 
 - **PHALA_API_KEY**
 
@@ -77,7 +77,7 @@ Below, we'll walk through each environment variable required by the Shade Agent 
     PHALA_API_KEY=phak_tIhrDY0mXJMgmLLMEMoM6yBxOsjfVM-sTmXmjOF4Fks
     :::
 
-    You need a Phala API key to upload your agent to Phala Cloud when running the Shade Agent CLI. You can get a key [here](https://cloud.phala.network/dashboard/tokens).
+    The PHALA_API_KEY is used to upload your agent to Phala Cloud when running the Shade Agent CLI. You can get a key [here](https://cloud.phala.network/dashboard/tokens).
 
 ## Optional Environment Variables 
 
@@ -87,10 +87,8 @@ Below, we'll walk through each environment variable required by the Shade Agent 
     API_PORT=4000
     :::
 
-    By setting this environment variable you can modify the port which your API is hosted on. The API by default is hosted on port 3140.
+    The API_PORT defines which port number the Shade Agent API port is exposed on. The API by default is hosted on port 3140.
 
-
-
-### Your Own Variables
+## Your Own Variables
 
 You should also set any additional environment variables your agent may need in the `.env.development.local` file. Remember to update your [Docker Compose](https://github.com/NearDeFi/shade-agent-template/blob/main/docker-compose.yaml#L21) file to pass these additional variables to your agent. 

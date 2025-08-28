@@ -5,6 +5,8 @@ sidebar_label: Framework Overview
 description: "TODO"
 ---
 
+import { SigsSupport } from '@site/src/components/sigsSupport';
+
 The Shade Agent Framework provides a suite of tools designed to simplify the development and deployment of Shade Agents. This framework abstracts away the complexities of the underlying infrastructure, allowing developers to focus on building their agent logic. In this section, we'll explore the tooling provided by the framework and examine the key components you need when building an agent.
 
 ---
@@ -20,8 +22,6 @@ We also maintain a [Python example](https://github.com/NearDeFi/shade-python-exa
 Agents can be written in any language as long as you can create a Docker image for it by using the API directly. You can learn more about this approach on the [API page](./api.md).
 
 An Agent is essentially a backend service (or server) that uses the Shade Agent API and runs inside a Trusted Execution Environment (TEE) instead of on a centralized server. You can develop using any backend framework you prefer, expose API routes, run cron jobs, or index events and respond to them with actions. If you're planning to develop Shade Agents seriously, we recommend having prior experience with creating backend services.
-
-In our quickstart template, we deploy a generic agent contract that can be used to sign transactions on any blockchain. This generic agent contract is sufficient for many use cases. However, in some production scenarios, you may want to develop your own custom agent contract to implement strict guardrails that prevent malicious actions, even if the TEE is somehow compromised. Custom agent contracts are particularly useful when developing exclusively on NEAR. To learn more about when to use a custom agent contract and how to build them, please refer to our [custom contract section](../custom-contracts/overview.md). 
 
 ---
 
@@ -45,7 +45,14 @@ Environment variables are a crucial component of the Shade Agent Framework. They
 
 ## Agent Contract
 
-talk about deploying custom agent contract and when 
+By default the Shade Agent CLI will deploy a generic agent contract that implements the three methods, approve_codehash, register_agent, and request_signature, talked about in the introduction. This generic agent contract works for many use cases since you can register any arbitrary agent and have it request signatures for any chain - it's very flexible. 
+
+There are also cases when you should develop your own custom agent contract. These include, but are not limited to:
+1) You want to implement strict guardrails that prevent malicious actions, even if the TEE is somehow compromised
+2) You want to implement a custom agent registration or code hash upgradability mechanism
+3) You want to build an agent that just interacts with the NEAR blockchain
+
+Further documentation can be found in the [custom contract section](../custom-contracts/overview.md).
 
 ---
 
@@ -98,3 +105,24 @@ The images used are automatically configured when you run the Shade Agent CLI. I
 
 You can learn more about the Docker Compose file [here](https://docs.docker.com/reference/compose-file/)
 
+---
+
+## Next Steps
+
+Now that you have an overview of the framework, we recommend exploring these sections next:
+1. Framework components: [API](./api.md), [CLI](./cli.md), and [Environment Variables](./environment-variables.md)
+2. [Custom Contracts](../custom-contracts/overview.md) - build specialized agent contracts
+3. [Plugins](../plugins.md) - extend your agent's capabilities
+4. [Security Considerations](../security.md) - check your agent abides by best practices
+
+
+<!-- 
+
+Before Security Considerations 
+
+4. [Templates and Examples]() - get up and running with different Shade Agent architectures and use cases as quickly as possible
+
+-->
+
+
+<SigsSupport />

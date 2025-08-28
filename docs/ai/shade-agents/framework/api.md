@@ -116,7 +116,7 @@ Fetches the NEAR account ID of the agent.
 
 Fetches the code hash and checksum for the agent.
 - The `code hash` is the code hash of the app image running inside the agent.
-- The `checksum` is produced by the TEEs attestation and represents a unique identifier for an instance of an agent.
+- The `checksum` is produced by the TEEs attestation and represents that the agent is registered.
 
 This function will only return the details once the agent has successfully registered in the agent contract. For running the API locally it will only return the code hash not the checksum.
 

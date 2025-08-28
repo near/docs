@@ -5,7 +5,6 @@ sidebar_label: Overview
 description: "This document explains how to create and deploy a custom Shade Agent contract on NEAR, including compiling, deploying, and interacting with the contract."
 ---
 
-import { SigsSupport } from '@site/src/components/sigsSupport';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -54,7 +53,7 @@ How you compile the contract depends on your operating system.
 
 ## Deploying the Custom Contract
 
-To deploy your agent with the custom contract, add the `--wasm` flag when using the `shade-agent-cli`, specifying the path to your wasm file. Depending on the size of the wasm, you may require more NEAR to deploy the contract. This can be done using the `--funding` flag, followed by the amount of NEAR (100KB = 1 NEAR).
+To deploy your agent with the custom contract, add the `--wasm` flag when using the Shade Agent CLI, specifying the path to your wasm file. Depending on the size of the wasm, you may require more NEAR to deploy the contract. This can be done using the `--funding` flag, followed by the amount of NEAR (100KB = 1 NEAR).
 
 Here is an example:
 
@@ -66,16 +65,4 @@ shade-agent-cli --wasm contract/target/near/contract.wasm --funding 5
 
 ## Interacting with Custom Contract 
 
-To call a function on your custom agent contract, use the `agentCall` function provided by `shade-agent-js`. Supply the `methodName` and the `args` to the function call.
-
-```js
-const res = await agentCall({
-   methodName: 'example_function',
-   args: {
-       arg1,
-       arg2,
-   },
-});
-```
-
-<SigsSupport />
+To call a function on your custom agent contract, use the `agentCall` function provided by the Shade Agent API. Please refer to the [relevant docs](../framework/api.md#agent-call) for calling the contract in your desired language. 

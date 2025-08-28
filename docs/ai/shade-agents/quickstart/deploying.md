@@ -185,4 +185,10 @@ npm run dev
 
 To use the frontend with your Phala deployment change the `API_URL` to Phala URL in your [config.js](https://github.com/NearDeFi/shade-agent-template/blob/main/frontend/src/config.js) file.
 
+--- 
+
+## Next Steps
+
+Now that you've successfully deployed your first Shade Agent, proceed to the [key components page](./components.md) to understand how agents work and learn how to customize it for your specific use case. 
+
 <SigsSupport />

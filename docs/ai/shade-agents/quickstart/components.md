@@ -25,7 +25,7 @@ The project has three different APIs:
 
 ## Signing Transactions
 
-In the [transaction API Route](https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/ethAccount.ts), the `requestSignature` function from the `shade-agent-js` library is used to sign a transaction.
+In the [transaction API Route](https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts), the `requestSignature` function from the `shade-agent-js` library is used to sign a transaction.
 
 In this example, we're signing a transaction to call an Ethereum contract to update the stored price of ETH. First, we retrieve the price of ETH (in this example, the function queries two different APIs and calculates the average).
 
@@ -72,5 +72,11 @@ You can set up chain adapters for a variety of chains, including EVM, Bitcoin, N
 Implementation details differ slightly from chain to chain; as such, we recommend you review our [chain signature docs](../../../chain-abstraction/chain-signatures/implementation.md). Note that step 3 of requesting a signature is different; we use the `requestSignature` function from `shade-agent-js`.
 
 If you are using a chain that uses the `ed25519` signature scheme (NEAR, Solana, SUI, Aptos, etc.), you should specify the `keyType` as `Eddsa` when calling `requestSignature`.
+
+--- 
+
+## Next Steps
+
+Now that you've explored the basics of Shade Agents, we recommend diving deeper into the [framework overview](../framework/overview.md) to understand the core concepts needed for building production-ready Shade Agents.
 
 <SigsSupport />

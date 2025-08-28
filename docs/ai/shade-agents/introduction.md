@@ -64,7 +64,7 @@ Developers or protocols may need to modify the code running inside agents over t
 The `shade-agent-cli` handles the deployment of the agent contract and automatically approves the code hash of your agent.
 
 :::tip
-Upgradeability can be designed for the specific use case. Common upgrade methods include approving a new code hash through DAO voting or implementing a grace period or cooldown, allowing users to withdraw funds if they're uncomfortable with the incoming code hash for the new agent.
+Upgradeability can be designed for the specific use case. Common upgrade methods include approving a new code hash through DAO voting or implementing a grace period or cool down, allowing users to withdraw funds if they're uncomfortable with the incoming code hash for the new agent.
 :::
 
 #### Register Agent
@@ -89,23 +89,23 @@ The request signature function accepts three arguments:
 The `shade-agent-api` exposes the `requestSignature` function to sign transactions on behalf of the Shade Agent within your agent.
 
 :::tip
-Within agent gated functions, we can implement an additional layer of security to strictly limit the Shade Agent's actions. For example, it could be restricted to only create transactions on Solana, perform swaps but not transfers, or transfer a maximum of 1 ETH per day.
+Within agent gated functions, we can implement an additional layer of security to strictly limit the Shade Agent's actions. For example, it could be restricted to only create transactions for Solana, perform swaps but not transfers, or transfer a maximum of 1 ETH per day.
 :::
-
----
-
-## Development flows
-
-In most cases you will develop your agent using the [quickstart template](./quickstart/deploying.md). This template is designed to enable you to sign transactions from your agent on any blockchain. In some cases, you may want to deploy a [custom agent contract](./custom-contracts/overview.md), which allows for more customizability inside of the agent contract, allows you to restrict your agent to certain actions, and is used for building Shade Agents that just interact with NEAR.
 
 ---
 
 ## Languages and Frameworks
 
-The agent is just a backend service that runs inside a TEE instead of a centralized server. You can run the agent on an internal cron job to perform an action every set time period, respond to actions, or it can expose API routes that can be called.
+The agent is just a backend service that runs inside a TEE instead of a centralized server. You can run the agent on an internal cron job, respond to actions, or it can expose API routes that can be called.
 
 Agents can be written in virtually any programming language and use any framework, as long as you can build a `Docker image` for your program.
 
-For most use cases you do not need to write your own agent contract. If you require a custom contract then these are written in Rust.
+If you require a custom agent contract (which not all use cases do) then these are written in Rust.
+
+---
+
+## Next Steps 
+
+Now that you've learned what Shade Agents are and why they're powerful, head to the [quickstart](./quickstart/deploying.md) to deploy your first agent and see how to build them.
 
 <SigsSupport />
