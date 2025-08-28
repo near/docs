@@ -9,7 +9,6 @@ description: "Learn how to implement secure and fair randomness in NEAR smart co
 
 Randomness is a cornerstone of many Web3 applications, from games like lotteries and coin flips to DeFi protocols and NFT minting. However, generating randomness on a blockchain is tricky because all nodes must agree on the same result. In this beginner-friendly tutorial, we'll build a Coin Flip game on NEAR Protocol to learn how to handle randomness securely and fairly. We'll use both JavaScript and Rust, include testing, and explore advanced patterns for more complex applications—all while keeping things clear and approachable.
 
-![img](/docs/assets/examples/coin-flip.png)
 
 ## Why Randomness on Chain Is Hard
 
