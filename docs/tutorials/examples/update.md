@@ -6,73 +6,90 @@ description: "Learn how to implement upgradeable smart contracts on NEAR Protoco
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+# NEAR Contract Upgrades & State Migration
 
-Three examples on how to handle updates and [state migration](../../smart-contracts/release/upgrade.md):
-1. [State Migration](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates): How to implement a `migrate` method to migrate state between contract updates.
-2. [State Versioning](https://github.com/near-examples/update-migrate-rust/tree/main/enum-updates): How to use readily use versioning on a state, to simplify updating it later.
-3. [Self Update](https://github.com/near-examples/update-migrate-rust/tree/main/self-updates): How to implement a contract that can update itself.
+"State migration" means that when your smart contract is deployed on NEAR and it has users’ data stored, upgrading to a new version of the contract does not lead to a loss of that data. In other words, it lets you upgrade your contract while keeping users’ state intact.If you don’t, the contract may produce errors like `Cannot deserialize state`.
 
 ---
 
-## State Migration
-The [State Migration example](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates) shows how to handle state-breaking changes
-between contract updates.
+## State Migration 
+Old state sturcture
+```bash 
+#[near(serializers=[borsh])]
+pub struct OldPostedMessage {
+    pub premium: bool,
+    pub sender: AccountId,
+    pub text: String,
+}
 
-It is composed by 2 contracts:
-1. Base: A Guest Book where people can write messages.
-2. Update: An update in which we remove a parameter and change the internal structure.
+#[near(serializers=[borsh])]
+pub struct OldState {
+    messages: Vector<OldPostedMessage>,
+    payments: Vector<NearToken>,
+}
+```
+New State Structure
 
-<CodeTabs>
-  <Language value="rust" language="rust">
-    <Github fname="migrate.rs"
-            url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
-            start="18" end="45" />
-  </Language>
-</CodeTabs>
+```
+#[near(serializers=[json, borsh])]
+pub struct PostedMessage {
+    pub payment: NearToken,
+    pub premium: bool,
+    pub sender: AccountId,
+    pub text: String,
+}
 
-#### The Migration Method
-The migration method deserializes the current state (`OldState`) and iterates through the messages, updating them
-to the new `PostedMessage` that includes the `payment` field.
+#[near(contract_state)]
+pub struct GuestBook {
+    messages: Vector<PostedMessage>,
+}
+```
 
-:::tip
-Notice that migrate is actually an [initialization method](../../smart-contracts/anatomy/storage.md) that ignores the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
-:::
+### Migrating State
+Asking the contract to migrate the state from old to new
 
----
+```bash 
+#[near]
+impl GuestBook {
+    #[private]
+    #[init(ignore_state)]
+    pub fn migrate() -> Self {
+        // 1. Loading the old state from the storage
+        let mut old_state: OldState = env::state_read().expect("failed");
 
-## State Versioning
-The [State Versioning example](https://github.com/near-examples/update-migrate-rust/tree/main/enum-updates) shows how to use
-[Enums](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html) to implement state versioning on a contract.
+        
+        let mut new_messages: Vector<PostedMessage> = Vector::new(MESSAGES_PREFIX);
 
-Versioning simplifies updating the contract since you only need to add a new version of the structure.
-All versions can coexist, thus you will not need to change previously existing structures.
+        // 2. Iterating over the old messsages and connecting them with the corresponding payments
+        for (idx, posted) in old_state.messages.iter().enumerate() {
+            let payment = old_state.payments
+                .get(idx as u64)
+                .expect("failed to get payment")
+                .clone();
 
-The example is composed by 2 contracts:
-1. Base: The Guest Book contract using versioned `PostedMessages` (`PostedMessagesV1`).
-2. Update: An update that adds a new version of `PostedMessages` (`PostedMessagesV2`).
+            new_messages.push(&PostedMessage {
+                payment,
+                premium: posted.premium,
+                sender: posted.sender.clone(),
+                text: posted.text.clone(),
+            })
+        }
 
-<CodeTabs>
-  <Language value="rust" language="rust">
-    <Github fname="versioned_msg.rs"
-            url="https://github.com/near-examples/update-migrate-rust/blob/main/enum-updates/update/src/versioned_msg.rs"
-            start="18" end="36" />
-  </Language>
-</CodeTabs>
+        // 4. Clean up the old payments vector to avoid dangling state
+        old_state.payments.clear();
 
----
+        // 5. Return the new GuestBook state
+        Self {
+            messages: new_messages,
+        }
+    }
+}
+```
+### Retreiving the data after migration
 
-## Self Update
-The [Self Update example](https://github.com/near-examples/update-migrate-rust/tree/main/self-updates) shows how to implement a contract
-that can update itself.
+now when you try to retreive the messages `get_messages` will always return messages including the new field changed in the contract
 
-It is composed by 2 contracts:
-1. Base: A Guest Book were people can write messages, implementing a `update_contract` method.
-2. Update: An update in which we remove a parameter and change the internal structure.
-
-<CodeTabs>
-  <Language value="rust" language="rust">
-    <Github fname="update.rs"
-            url="https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs"
-            start="10" end="31" />
-  </Language>
-</CodeTabs>
+```bash
+   # NEAR CLI
+   near view <target-account-id> get_messages
+```
