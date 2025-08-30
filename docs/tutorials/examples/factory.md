@@ -1,154 +1,55 @@
 ---
 id: factory
-title: Factory
-description: "A factory is a smart contract that stores a compiled contract, and automatizes deploying the stored contract onto new sub-accounts."
+title: Factory: Deploy a contract from a contract
+description: "Build a reusable factory that deploys a compiled contract to new sub-accounts, and learn when to use it, trade-offs, and safety tips."
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+A **factory** is a smart contract that *stores* another contract’s compiled Wasm and can **programmatically deploy** that code to **new sub-accounts** (e.g. `sub.factory.testnet`). It’s ideal when you want to spin up many similar contracts—like many donations vaults, FTs/NFTs per community, or app-specific instances.
 
-A factory is a smart contract that stores a compiled contract, and automatizes deploying the stored contract onto new sub-accounts.
-
-We have a [**A Generic Factory**](https://github.com/near-examples/factory-rust) that deploys the [donation contract](./donation.md). This donation contract can be changed for whichever compiled contract you like (e.g. a fungible token or DAO). 
+We’ll use the generic Rust factory that deploys a small **donation** contract. You can store any Wasm you want (FT, DAO, etc.).
 
 ---
 
-## Overview {#generic-factory}
+## When (and when not) to use a factory
 
-The factory is a smart contract that:
+**Great for**
+- **Mass deployment** of the same app pattern (per-user/per-team instances).
+- **One-click onboarding**: a single call that creates the account, deploys code, and initializes it.
 
-1. Creates sub-accounts of itself and deploys its contract on them (`create_factory_subaccount_and_deploy`).
-2. Can change the stored contract using the `update_stored_contract` method.
-
-<CodeTabs>
-  <Language value="rust" language="rust">
-    <Github fname="deploy.rs"
-            url="https://github.com/near-examples/factory-rust/blob/main/src/deploy.rs"
-            start="14" end="66" />
-    <Github fname="manager.rs"
-            url="https://github.com/near-examples/factory-rust/blob/main/src/manager.rs"
-            start="5" end="19" />
-  </Language>
-</CodeTabs>
+**Trade-offs & alternatives**
+- Factories can deploy **only to their own sub-accounts** (e.g. `x.factory.testnet`). They cannot deploy to arbitrary accounts. If you need one global instance for everyone, consider the **Global Contracts** pattern instead.
+- **Ownership/safety**: after creation, the sub-account is **independent**; the factory does not control it. Design access keys and initialization carefully.
+- **Updates at scale**: Factories can update the **stored** code for *future* deployments; already-deployed sub-accounts won’t change. For upgrading code that’s already on an account, see contract upgrade patterns.
 
 ---
 
-## Quickstart
+## The two core calls
 
-1. Make sure you have installed [rust](https://www.rust-lang.org/).
-2. Install the [`NEAR CLI`](/tools/near-cli#installation)
+1) **Create + deploy**  
+`create_factory_subaccount_and_deploy(name, beneficiary, public_key?)` (payable)  
+- Creates `name.<factory>`  
+- Deploys the stored Wasm  
+- Calls the new contract’s `init` (here: sets a **beneficiary**)  
 
-<hr className="subsection" />
+2) **Update stored Wasm**  
+`update_stored_contract()` (no params)  
+- Reads **raw input bytes** directly from `env::input()` to avoid expensive JSON deserialization for large Wasm payloads. You pass the Wasm as **base64 bytes** from your client/CLI.
 
-### Build and Deploy the Factory
-
-You can automatically compile and deploy the contract in the NEAR testnet by running:
-
-```bash
-./deploy.sh
-```
-
-Once finished, check the `neardev/dev-account` file to find the address in which the contract was deployed:
-
-```bash
-cat ./neardev/dev-account
-# e.g. dev-1659899566943-21539992274727
-```
-
-<hr className="subsection" />
-
-### Deploy the Stored Contract Into a Sub-Account
-
-`create_factory_subaccount_and_deploy` will create a sub-account of the factory and deploy the
-stored contract on it.
-
-```bash
-near call <factory-account> create_factory_subaccount_and_deploy '{ "name": "sub", "beneficiary": "<account-to-be-beneficiary>"}' --deposit 1.24 --accountId <account-id> --gas 300000000000000
-```
-
-This will create the `sub.<factory-account>`, which will have a `donation` contract deployed on it:
-
-```bash
-near view sub.<factory-account> get_beneficiary
-# expected response is: <account-to-be-beneficiary>
-```
-
-<hr className="subsection" />
-
-### Update the Stored Contract
-
-`update_stored_contract` enables to change the compiled contract that the factory stores.
-
-The method is interesting because it has no declared parameters, and yet it takes
-an input: the new contract to store as a stream of bytes.
-
-To use it, we need to transform the contract we want to store into its `base64`
-representation, and pass the result as input to the method:
-
-```bash
-# Use near-cli to update stored contract
-export BYTES=`cat ./src/to/new-contract/contract.wasm | base64`
-near call <factory-account> update_stored_contract "$BYTES" --base64 --accountId <factory-account> --gas 30000000000000
-```
-
-> This works because the arguments of a call can be either a `JSON` object or a `String Buffer`
+> The reference implementation lives here (Rust): `create_factory_subaccount_and_deploy` and `update_stored_contract`.
 
 ---
 
-## Factories - Concepts & Limitations
+## Quickstart (testnet)
 
-Factories are an interesting concept, here we further explain some of their implementation aspects,
-as well as their limitations.
+> You can use **NEAR CLI** from a terminal. If you prefer the new **near-cli-rs** (Rust), the flow is the same; examples below show both syntaxes where it matters.
 
-<hr className="subsection" />
+### 1) Deploy the factory once
+Use the example repo’s deploy flow or your own build. The reference example uses `cargo-near`/CI; deploy the factory to **testnet** (e.g., `factory.testnet`).
 
-### Automatically Creating Accounts
+### 2) Create a child & deploy the stored contract
 
-NEAR accounts can only create sub-accounts of itself, therefore, the `factory` can only create and
-deploy contracts on its own sub-accounts.
-
-This means that the factory:
-
-1. **Can** create `sub.factory.testnet` and deploy a contract on it.
-2. **Cannot** create sub-accounts of the `predecessor`.
-3. **Can** create new accounts (e.g. `account.testnet`), but **cannot** deploy contracts on them.
-
-It is important to remember that, while `factory.testnet` can create `sub.factory.testnet`, it has
-no control over it after its creation.
-
-<hr className="subsection" />
-
-### The Update Method
-
-The `update_stored_contracts` has a very short implementation:
-
-```rust
-#[private]
-pub fn update_stored_contract(&mut self) {
-  self.code = env::input().expect("Error: No input").to_vec();
-}
-```
-
-On first sight it looks like the method takes no input parameters, but we can see that its only
-line of code reads from `env::input()`. What is happening here is that `update_stored_contract`
-**bypasses** the step of **deserializing the input**.
-
-You could implement `update_stored_contract(&mut self, new_code: Vec<u8>)`,
-which takes the compiled code to store as a `Vec<u8>`, but that would trigger the contract to:
-
-1. Deserialize the `new_code` variable from the input.
-2. Sanitize it, making sure it is correctly built.
-
-When dealing with big streams of input data (as is the compiled `wasm` file to be stored), this process
-of deserializing/checking the input ends up **consuming the whole GAS** for the transaction.
-
-:::note Versioning for this article
-
-At the time of this writing, this example works with the following versions:
-
-- near-cli: `4.0.13`
-- node: `18.19.1`
-- rustc: `1.77.0`
-
-:::
+**near-cli (Node):**
+```bash
+near call <factory-account> create_factory_subaccount_and_deploy \
+  '{"name":"sub","beneficiary":"<your.testnet>"}' \
+  --deposit 1.24 --accountId <your.testnet> --gas 300000000000000
