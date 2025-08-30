@@ -1,3 +1,10 @@
+---
+id: near-mcp
+title: NEAR MCP Server
+sidebar_label: NEAR MCP Server
+description: "Equip AI agents with tools for using the NEAR blockchain via Model Context Protocol (MCP)."
+---
+
 # NEAR MCP Server
 
 ## Introduction
