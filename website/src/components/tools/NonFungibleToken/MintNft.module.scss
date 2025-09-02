@@ -1,0 +1,233 @@
+.container {
+  margin: 12px auto;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-content);
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.form {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: var(--ifm-background-color);
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-content);
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  font-size: 1rem;
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-content);
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
+  }
+
+  &:disabled {
+    background: var(--ifm-color-emphasis-100);
+    cursor: not-allowed;
+  }
+}
+
+.textarea {
+  @extend .input;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.fileInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px dashed var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-color);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--ifm-color-primary);
+  }
+
+  &:disabled {
+    background: var(--ifm-color-emphasis-100);
+    cursor: not-allowed;
+  }
+}
+
+.fileHint {
+  font-size: 0.8rem;
+  color: var(--ifm-color-content-secondary);
+  margin-top: 0.25rem;
+}
+
+.imagePreview {
+  margin-top: 1rem;
+
+  .label {
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+.previewImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+  display: block;
+}
+
+.error {
+  color: var(--ifm-color-danger);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.pricePreview {
+  background: var(--ifm-color-primary-lightest);
+  border: 1px solid var(--ifm-color-primary-light);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.priceAmount {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-primary-darkest);
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+.priceNote {
+  font-size: 0.85rem;
+  color: var(--ifm-color-primary-dark);
+  margin: 0;
+}
+
+.button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 12px;
+
+  &:hover:not(:disabled) {
+    background: var(--ifm-color-primary-dark);
+  }
+
+  &:disabled {
+    background: var(--ifm-color-emphasis-300);
+    cursor: not-allowed;
+  }
+
+  &.primary {
+    background: var(--ifm-color-primary);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background: var(--ifm-color-primary-dark);
+    }
+  }
+
+  &.confirm {
+    background: var(--ifm-color-success);
+
+    &:hover:not(:disabled) {
+      background: var(--ifm-color-success-dark);
+    }
+  }
+
+  &.loading {
+    position: relative;
+    color: transparent;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      border: 2px solid transparent;
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+// Dark theme adjustments
+[data-theme='dark'] {
+  .form {
+    border-color: var(--ifm-color-emphasis-200);
+  }
+  
+  .input,
+  .textarea {
+    border-color: var(--ifm-color-emphasis-200);
+    
+    &:focus {
+      box-shadow: 0 0 0 2px var(--ifm-color-primary-darkest);
+    }
+  }
+  
+  .fileInput {
+    border-color: var(--ifm-color-emphasis-200);
+  }
+
+  .pricePreview {
+    background: var(--ifm-color-primary-darkest);
+    border-color: var(--ifm-color-primary-dark);
+  }
+
+  .priceAmount {
+    color: var(--ifm-color-primary-lightest);
+  }
+
+  .priceNote {
+    color: var(--ifm-color-primary-light);
+  }
+}
