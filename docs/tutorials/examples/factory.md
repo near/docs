@@ -1,16 +1,20 @@
 ---
 id: factory
 title: Factory
-description: "A factory is a smart contract that stores a compiled contract, and automatizes deploying the stored contract onto new sub-accounts."
+description: "A factory is a smart contract that stores a global contract id, and automatizes deploying contracts onto new sub-accounts."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 
-A factory is a smart contract that stores a compiled contract, and automatizes deploying the stored contract onto new sub-accounts.
+A factory is a smart contract that stores a global contract id, and automatizes deploying contracts onto new sub-accounts.
 
-We have a [**A Generic Factory**](https://github.com/near-examples/factory-rust) that deploys the [donation contract](./donation.md). This donation contract can be changed for whichever compiled contract you like (e.g. a fungible token or DAO). 
+We have a [**A Generic Factory**](https://github.com/near-examples/factory-rust) that deploys new contracts based on global contract id. The global contract id can be global account id or hash. You can change the global contract id by calling `update_global_contract_id` method. The factory creates sub-accounts of itself and deploys corresponding contract on them.
+
+:::info
+You can learn more about global contracts on NEAR [here](../../smart-contracts/global-contracts.md).
+:::
 
 ---
 
@@ -18,17 +22,17 @@ We have a [**A Generic Factory**](https://github.com/near-examples/factory-rust)
 
 The factory is a smart contract that:
 
-1. Creates sub-accounts of itself and deploys its contract on them (`create_factory_subaccount_and_deploy`).
-2. Can change the stored contract using the `update_stored_contract` method.
+1. Creates sub-accounts of itself and deploys its contract on them (`deploy`).
+2. Can change the stored contract id using the `update_global_contract_id` method.
 
 <CodeTabs>
   <Language value="rust" language="rust">
     <Github fname="deploy.rs"
-            url="https://github.com/near-examples/factory-rust/blob/main/src/deploy.rs"
-            start="14" end="66" />
+            url="https://github.com/near-examples/factory-rust/blob/add-global-contracts/src/lib.rs"
+            start="51" end="82" />
     <Github fname="manager.rs"
-            url="https://github.com/near-examples/factory-rust/blob/main/src/manager.rs"
-            start="5" end="19" />
+            url="https://github.com/near-examples/factory-rust/blob/add-global-contracts/src/manager.rs"
+            start="8" end="10" />
   </Language>
 </CodeTabs>
 
@@ -38,6 +42,7 @@ The factory is a smart contract that:
 
 1. Make sure you have installed [rust](https://www.rust-lang.org/).
 2. Install the [`NEAR CLI`](/tools/near-cli#installation)
+3. Install the [`cargo near`](https://github.com/near/cargo-near) extension.
 
 <hr className="subsection" />
 
@@ -46,53 +51,57 @@ The factory is a smart contract that:
 You can automatically compile and deploy the contract in the NEAR testnet by running:
 
 ```bash
-./deploy.sh
-```
-
-Once finished, check the `neardev/dev-account` file to find the address in which the contract was deployed:
-
-```bash
-cat ./neardev/dev-account
-# e.g. dev-1659899566943-21539992274727
+cargo near deploy
 ```
 
 <hr className="subsection" />
 
 ### Deploy the Stored Contract Into a Sub-Account
 
-`create_factory_subaccount_and_deploy` will create a sub-account of the factory and deploy the
-stored contract on it.
+`deploy` method will create a sub-account of the factory and deploy contract on it using stored global contract id.
 
 ```bash
-near call <factory-account> create_factory_subaccount_and_deploy '{ "name": "sub", "beneficiary": "<account-to-be-beneficiary>"}' --deposit 1.24 --accountId <account-id> --gas 300000000000000
+near contract call-function as-transaction <factory-account> deploy json-args '{"name": "sub"}' prepaid-gas '100.0 Tgas' attached-deposit '0.2 NEAR' sign-as <your-account> network-config testnet sign-with-keychain send
 ```
 
-This will create the `sub.<factory-account>`, which will have a `donation` contract deployed on it:
+This will create the `sub.<factory-account>`, which will have a global contract deployed on it.
+
+By default, the global contract is the [Fungible Token](../../primitives/ft.md#deploying-a-token-using-global-contract) primitive contract `ft.globals.primitives.testnet`. To initilize the contract, you can call its `new_default_meta` method:
 
 ```bash
-near view sub.<factory-account> get_beneficiary
-# expected response is: <account-to-be-beneficiary>
+near contract call-function as-transaction sub.<factory-account> new_default_meta json-args '{"owner_id": "<your-account>", "total_supply": "100000000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <your-account> network-config testnet sign-with-keychain send
+```
+
+Then you can call `ft_metadata` method to verify that the contract is deployed and initialized correctly:
+
+```bash
+near contract call-function as-read-only sub.<factory-account> ft_metadata json-args {} network-config testnet now
+# The response should be like this:
+# {
+#  "decimals": 24,
+#  "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 288 288'%3E%3Cg id='l' data-name='l'%3E%3Cpath d='M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z'/%3E%3C/g%3E%3C/svg%3E",
+#  "name": "Example NEAR fungible token",
+#  "reference": null,
+#  "reference_hash": null,
+#  "spec": "ft-1.0.0",
+#  "symbol": "EXAMPLE"
+#}
 ```
 
 <hr className="subsection" />
 
 ### Update the Stored Contract
 
-`update_stored_contract` enables to change the compiled contract that the factory stores.
+`update_global_contract_id` enables to change the global contract id that the factory stores.
 
 The method is interesting because it has no declared parameters, and yet it takes
 an input: the new contract to store as a stream of bytes.
 
-To use it, we need to transform the contract we want to store into its `base64`
-representation, and pass the result as input to the method:
+To use it, we need to pass the contract id we want to store. It can be in form of account id or global contract hash. What is the difference between them you can read in [Global Contracts](../../smart-contracts/global-contracts.md#solution) section.
 
 ```bash
-# Use near-cli to update stored contract
-export BYTES=`cat ./src/to/new-contract/contract.wasm | base64`
-near call <factory-account> update_stored_contract "$BYTES" --base64 --accountId <factory-account> --gas 30000000000000
+near contract call-function as-transaction <factory-account> update_global_contract_id json-args '{"contract_id": "3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <factory-account> network-config testnet sign-with-keychain send
 ```
-
-> This works because the arguments of a call can be either a `JSON` object or a `String Buffer`
 
 ---
 
@@ -119,36 +128,23 @@ no control over it after its creation.
 
 <hr className="subsection" />
 
+### The Deploy Method
+
+During the creation of a sub-account we add signers public key to the new sub-account as a full access key. It means that the predecessor will be able to control the new sub-account after its creation.
+
+Also, in the tutorial, we attach deposit to the `deploy` call which goes straight to the new sub-account. When we deploy a new contract using global contracts, we need to initialize it after deployment. That tokens will cover the storage after the deployed contract is initialized.
+
+<hr className="subsection" />
+
 ### The Update Method
 
-The `update_stored_contracts` has a very short implementation:
+The `update_global_contract_id` has a very short implementation:
 
 ```rust
 #[private]
-pub fn update_stored_contract(&mut self) {
-  self.code = env::input().expect("Error: No input").to_vec();
+pub fn update_global_contract_id(&mut self, contract_id: String) {
+    self.global_contract_id = GlobalContractId::from(contract_id);
 }
 ```
 
-On first sight it looks like the method takes no input parameters, but we can see that its only
-line of code reads from `env::input()`. What is happening here is that `update_stored_contract`
-**bypasses** the step of **deserializing the input**.
-
-You could implement `update_stored_contract(&mut self, new_code: Vec<u8>)`,
-which takes the compiled code to store as a `Vec<u8>`, but that would trigger the contract to:
-
-1. Deserialize the `new_code` variable from the input.
-2. Sanitize it, making sure it is correctly built.
-
-When dealing with big streams of input data (as is the compiled `wasm` file to be stored), this process
-of deserializing/checking the input ends up **consuming the whole GAS** for the transaction.
-
-:::note Versioning for this article
-
-At the time of this writing, this example works with the following versions:
-
-- near-cli: `4.0.13`
-- node: `18.19.1`
-- rustc: `1.77.0`
-
-:::
+The method is marked as `#[private]`, which means that it can only be called by the contract itself.
