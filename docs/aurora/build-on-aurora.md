@@ -6,8 +6,8 @@ description: "Overview of building on Aurora and key concepts such as cross-chai
 
 Developing your Dapp on Aurora is done in the same way as on any other EVM chain. The main steps in this process are:
 
-Writing and deploying your smart contracts in Solidity by using Hardhat, Foundry, Truffle or Remix.
-Creating a frontend that interacts with these smart contracts and blockchain.
+- Writing and deploying your smart contracts in Solidity by using Hardhat, Foundry, Truffle, or Remix.
+- Creating a frontend that interacts with these smart contracts and blockchain.
 
 :::info
 This section is just an overview of the development process on Aurora. For more detailed information, please refer to the [Aurora documentation](https://doc.aurora.dev/build-a-dapp/introduction).
@@ -27,7 +27,7 @@ To deploy your first contract on Aurora, basically you need to:
 
 ## Build Frontend
 
-Aurora supports the major of the EVM-compatible Connect Wallet modules, such as:
+Aurora supports major EVM-compatible Connect Wallet modules, such as:
 
 - [Wagmi](https://wagmi.sh/)
 - [AppKit (known also as Web3Modal)](https://walletconnect.com/appkit)

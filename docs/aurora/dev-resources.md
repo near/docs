@@ -1,7 +1,7 @@
 ---
 id: dev-resources
 title: Developer Resources
-description: "Overview of a available developer resources on Aurora."
+description: "Overview of the available developer resources on Aurora."
 ---
 
 * [Aurora documentation](https://doc.aurora.dev/) - the official documentation for developers

@@ -18,7 +18,7 @@ Aurora is an EVM implemented as a smart contract on NEAR Protocol which provides
 
 ## Different Development Paths
 
-As a developer, user can choose between two different ways to build on Aurora:
+As a developer, a user can choose between two different ways to build on Aurora:
 - **[Build on Aurora mainnet](./build-on-aurora.md)**: The fastest way to deploy your Ethereum-based dapp with the low fees and high performance of the NEAR Protocol.
 
 - **[Deploy a Virtual Chain](./launch-virtual-chain.md)**: Create your own blockchain in minutes with customizable gas, permissions, and ecosystem integrations.
