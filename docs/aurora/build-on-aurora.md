@@ -10,7 +10,7 @@ Developing your Dapp on Aurora is done in the same way as on any other EVM chain
 - Creating a frontend that interacts with these smart contracts and blockchain.
 
 :::info
-This section is just an overview of the development process on Aurora. For more detailed information, please refer to the [Aurora documentation](https://doc.aurora.dev/build-a-dapp/introduction).
+This section is an overview of the development process on Aurora. For detailed information, please refer to the [Aurora documentation](https://doc.aurora.dev/build-a-dapp/introduction).
 :::
 
 ## Deploy Contracts
@@ -34,9 +34,11 @@ Aurora supports major EVM-compatible Connect Wallet modules, such as:
 - [RainbowKit](https://www.rainbowkit.com/)
 - [ConnectKit](https://family.co/docs/connectkit)
 - [Dynamic](https://dynamic.xyz/)
-- [Privy](https://privy.io/).
+- [Privy](https://privy.io/)
 
-Code examples and guides how to connect wallet and interact with smart contracts from the frontend can be found in the official [Aurora documentation](https://doc.aurora.dev/build-a-dapp/frontend/connect-wallet).
+:::tip
+Code examples and guides on how to connect a wallet and interact with smart contracts from the frontend can be found in the official [Aurora documentation](https://doc.aurora.dev/build-a-dapp/frontend/connect-wallet).
+:::
 
 ---
 
@@ -69,3 +71,13 @@ To make onboarding users easier, even ones unfamiliar with the Web3 ecosystem, A
 - Connect to DApps via WalletConnect v2.
 
 To learn more about Aurora Pass, please refer to the [Aurora documentation](https://doc.aurora.dev/onboard/introduction).
+
+## Developer Resources
+
+Available developer resources on Aurora:
+
+* [Aurora documentation](https://doc.aurora.dev/) - the official documentation for developers.
+* [Aurora Explorer](https://explorer.aurora.dev/) - view transactions, blocks, and accounts on Aurora.
+* [Aurora Cloud](https://auroracloud.dev/) - run your own Virtual Chain.
+* [Aurora Pass](https://aurorapass.app/) - a mobile cryptocurrency wallet.
+* [Dev Tools](https://doc.aurora.dev/dev-tools/quickstart) - a list of tools to help you build on Aurora, including RPC providers, indexers, oracles, and more.

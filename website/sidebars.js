@@ -515,7 +515,6 @@ const sidebar = {
         },
         'aurora/build-on-aurora',
         'aurora/launch-virtual-chain',
-        'aurora/dev-resources',
       ],
     }
   ],

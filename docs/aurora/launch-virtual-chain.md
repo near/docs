@@ -4,7 +4,7 @@ title: Launch a Virtual Chain
 description: "Overview of a virtual chains on Aurora, including its purpose, benefits, and how to launch one."
 ---
 
-Virtual Chains are a unique innovation from Aurora providing a dedicated and customised chain, or appchain.
+Virtual Chains are a unique innovation from Aurora, providing a dedicated and customized chain, or appchain.
 
 Each Virtual Chain is a copy of the Aurora Engine (the Aurora smart contract) and deployed on Near. This means that they inherit most of the performance and security features from Near:
 
@@ -18,13 +18,13 @@ Each Virtual Chain is a copy of the Aurora Engine (the Aurora smart contract) an
 
 Usually, appchains are side chains or rollups, which are completely separate blockchains from the main settlement chain. This has several consequences:
 
-- Each appchain needs to have its own validators set, which can be expensive to set up and run, and affects the decentralisation and security of the network. Typically, an appchain requires a minimum of 5 validators (which already comes at a cost)
+- Each appchain needs to have its own validator set, which can be expensive to set up and run, and affects the decentralization and security of the network. Typically, an appchain requires a minimum of 5 validators (which already comes at a cost)
 
 - Appchains come empty, meaning the team will need to redevelop all the tools they might have wanted to use, such as onramps, oracles, indexers, etc... This involves third parties and can be extremely costly and time consuming.
 
 - Instead, each Virtual Chain automatically gets all the 220 validators from Near
 
-- Because Virtual Chains are smart contracts on Near, this allowed us to build tools and services that automatically support all new Virtual Chain, such as onramp, centralised exchange support, Oracle, etc... so that you don't have to start from scratch.
+- Because Virtual Chains are smart contracts on Near, this allowed us to build tools and services that automatically support all new Virtual Chain, such as onramp, centralized exchange support, Oracle, etc, so that you don't have to start from scratch.
 
 ---
 
