@@ -13,7 +13,7 @@ In this tutorial, we will walk through how to create a simple NFT minter using N
 
 This is a Next.js 14 frontend minter example that includes a simple interface from which you can mint nfts easily
 
-![img](/docs/assets/tutorials/templates/minter-preview.png)
+![img](/static/docs/assets/tutorials/templates/minter-preview.png)
 
 :::tip Mintbase Templates
 This is part of the [Mintbase Templates](https://github.com/Mintbase/templates), a collection of templates that you can use to scaffold your own project

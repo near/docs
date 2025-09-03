@@ -42,6 +42,7 @@ const config = {
     [
       '@docusaurus/preset-classic',
       {
+        staticDirectories: ['static', '../static'],
         docs: {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,

@@ -11,7 +11,7 @@ This tutorial provides a step-by-step guide to creating a marketplace frontend u
 
 Unlock Your NFT Storefront: Clone & Customize Your Path to Blockchain Success with this whitelabel marketplace template!
 
-![img](/docs/assets/tutorials/templates/marketplace-preview.png)
+![img](/static/docs/assets/tutorials/templates/marketplace-preview.png)
 
 :::tip Mintbase Templates
 This is part of the [Mintbase Templates](https://github.com/Mintbase/templates), a collection of templates that you can use to scaffold your own project

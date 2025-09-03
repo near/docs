@@ -13,7 +13,7 @@ Blogchain is a template for creating onchain blogs using Mintbase. It allows use
 
 Blogchain makes your content unstoppable. Transform your blogs into smart contracts and posts into NFTs.
 
-![img](/docs/assets/tutorials/templates/blog-preview.png)
+![img](/static/docs/assets/tutorials/templates/blog-preview.png)
 
 :::tip Mintbase Templates
 This is part of the [Mintbase Templates](https://github.com/Mintbase/templates), a collection of templates that you can use to scaffold your own project
