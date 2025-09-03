@@ -38,11 +38,11 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   onBrokenAnchors: 'throw',
+  staticDirectories: ['static', '../static'],
   presets: [
     [
       '@docusaurus/preset-classic',
       {
-        staticDirectories: ['static', '../static'],
         docs: {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
