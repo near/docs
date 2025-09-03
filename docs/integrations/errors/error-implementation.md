@@ -62,15 +62,15 @@ pub enum InvalidTxError {
     /// Account does not have enough balance to cover TX cost
     NotEnoughBalance {
         signer_id: AccountId,
-        balance: Balance,
-        cost: Balance,
+        balance: NearToken,
+        cost: NearToken,
     },
     /// Signer account rent is unpaid
     RentUnpaid {
         /// An account which is required to pay the rent
         signer_id: AccountId,
         /// Required balance to cover the state rent
-        amount: Balance,
+        amount: NearToken,
     },
     /// An integer overflow occurred during transaction cost estimation.
     CostOverflow,
@@ -150,20 +150,20 @@ pub enum StorageError {
 /// Happens when the input balance doesn't match the output balance in Runtime apply.
 pub struct BalanceMismatchError {
     // Input balances
-    pub incoming_validator_rewards: Balance,
-    pub initial_accounts_balance: Balance,
-    pub incoming_receipts_balance: Balance,
-    pub processed_delayed_receipts_balance: Balance,
-    pub initial_postponed_receipts_balance: Balance,
+    pub incoming_validator_rewards: NearToken,
+    pub initial_accounts_balance: NearToken,
+    pub incoming_receipts_balance: NearToken,
+    pub processed_delayed_receipts_balance: NearToken,
+    pub initial_postponed_receipts_balance: NearToken,
     // Output balances
-    pub final_accounts_balance: Balance,
-    pub outgoing_receipts_balance: Balance,
-    pub new_delayed_receipts_balance: Balance,
-    pub final_postponed_receipts_balance: Balance,
-    pub total_rent_paid: Balance,
-    pub total_validator_reward: Balance,
-    pub total_balance_burnt: Balance,
-    pub total_balance_slashed: Balance,
+    pub final_accounts_balance: NearToken,
+    pub outgoing_receipts_balance: NearToken,
+    pub new_delayed_receipts_balance: NearToken,
+    pub final_postponed_receipts_balance: NearToken,
+    pub total_rent_paid: NearToken,
+    pub total_validator_reward: NearToken,
+    pub total_balance_burnt: NearToken,
+    pub total_balance_slashed: NearToken,
 }
 ```
 
@@ -206,8 +206,8 @@ pub enum InvalidAccessKeyError {
     NotEnoughAllowance {
         account_id: AccountId,
         public_key: PublicKey,
-        allowance: Balance,
-        cost: Balance,
+        allowance: NearToken,
+        cost: NearToken,
     },
     /// Having a deposit with a function call action is not allowed with a function call access key.
     DepositWithFunctionCall,
@@ -352,23 +352,23 @@ pub enum ActionErrorKind {
     /// Foreign sender (sender=!receiver) can delete an account only if a target account hasn't enough tokens to pay rent
     DeleteAccountHasRent {
         account_id: AccountId,
-        balance: Balance,
+        balance: NearToken,
     },
     /// ActionReceipt can't be completed, because the remaining balance will not be enough to pay rent.
     RentUnpaid {
         /// An account which is required to pay the rent
         account_id: AccountId,
         /// Rent due to pay.
-        amount: Balance,
+        amount: NearToken,
     },
     /// Account is not yet staked, but tries to unstake
     TriesToUnstake { account_id: AccountId },
     /// The account doesn't have enough balance to increase the stake.
     TriesToStake {
         account_id: AccountId,
-        stake: Balance,
-        locked: Balance,
-        balance: Balance,
+        stake: NearToken,
+        locked: NearToken,
+        balance: NearToken,
     },
     /// An error occurred during a `FunctionCall` Action.
     FunctionCallError(FunctionCallError),

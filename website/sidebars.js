@@ -63,6 +63,13 @@ const sidebar = {
           ]
         },
         {
+          "Tutorials": [
+            'tutorials/protocol/create-account',
+            'tutorials/protocol/importing-account',
+            'tools/faucet'
+          ]
+        },
+        {
           "Reference": [
             'tools/near-cli',
             {
@@ -492,6 +499,24 @@ const sidebar = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'EVM Developers',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/ethereum.svg',
+      },
+      link: { type: 'doc', id: 'aurora/what-is' },
+      items: [
+        {
+          type: 'link',
+          label: 'Introduction',
+          href: '/aurora/what-is',
+        },
+        'aurora/build-on-aurora',
+        'aurora/launch-virtual-chain',
+      ],
+    }
   ],
   api: [
     'api/rpc/introduction',
@@ -513,6 +538,7 @@ const sidebar = {
     'api/rpc/network',
     'api/rpc/transactions',
     'api/rpc/maintenance-windows',
+    'api/rpc/errors',
   ],
   exchanges: [
     {
@@ -535,7 +561,7 @@ const sidebar = {
     'integrations/faq',
   ],
   toolbox: [
-        'toolbox',
+    'toolbox',
   ]
 };
 
