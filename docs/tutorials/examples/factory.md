@@ -23,16 +23,16 @@ You can learn more about global contracts on NEAR [here](../../smart-contracts/g
 The factory is a smart contract that:
 
 1. Creates sub-accounts of itself and deploys its contract on them (`deploy`).
-2. Can change the stored contract id using the `update_global_contract_id` method.
+2. Can manage its settings using the `update_global_contract_id` and `update_min_deposit` methods.
 
 <CodeTabs>
   <Language value="rust" language="rust">
     <Github fname="deploy.rs"
             url="https://github.com/near-examples/factory-rust/blob/add-global-contracts/src/lib.rs"
-            start="51" end="82" />
+            start="54" end="93" />
     <Github fname="manager.rs"
             url="https://github.com/near-examples/factory-rust/blob/add-global-contracts/src/manager.rs"
-            start="8" end="10" />
+            start="7" end="23" />
   </Language>
 </CodeTabs>
 
@@ -58,13 +58,17 @@ cargo near deploy
 
 ### Deploy the Stored Contract Into a Sub-Account
 
-`deploy` method will create a sub-account of the factory and deploy contract on it using stored global contract id.
+Method `deploy` will create a sub-account of the factory and deploy contract on it using stored global contract id. It also asserts that the attached deposit is at least the minimum required deposit stored in the factory.
+
+:::info
+Technically, there is no need to attach any deposit just to deploy a contract using global contracts. But to initialize it further, you will need some NEAR tokens to cover the storage cost. Since initiliazing method can't accept deposit, it makes sense to attach some minimum amount of tokens during creating account and deploying a contract.
+:::
+
+The following command will create the `sub.<factory-account>`, which will have a global contract deployed on it.
 
 ```bash
 near contract call-function as-transaction <factory-account> deploy json-args '{"name": "sub"}' prepaid-gas '100.0 Tgas' attached-deposit '0.2 NEAR' sign-as <your-account> network-config testnet sign-with-keychain send
 ```
-
-This will create the `sub.<factory-account>`, which will have a global contract deployed on it.
 
 By default, the global contract is the [Fungible Token](../../primitives/ft.md#deploying-a-token-using-global-contract) primitive contract `ft.globals.primitives.testnet`. To initilize the contract, you can call its `new_default_meta` method:
 
@@ -133,18 +137,3 @@ no control over it after its creation.
 During the creation of a sub-account we add signers public key to the new sub-account as a full access key. It means that the predecessor will be able to control the new sub-account after its creation.
 
 Also, in the tutorial, we attach deposit to the `deploy` call which goes straight to the new sub-account. When we deploy a new contract using global contracts, we need to initialize it after deployment. That tokens will cover the storage after the deployed contract is initialized.
-
-<hr className="subsection" />
-
-### The Update Method
-
-The `update_global_contract_id` has a very short implementation:
-
-```rust
-#[private]
-pub fn update_global_contract_id(&mut self, contract_id: String) {
-    self.global_contract_id = GlobalContractId::from(contract_id);
-}
-```
-
-The method is marked as `#[private]`, which means that it can only be called by the contract itself.
