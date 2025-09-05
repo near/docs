@@ -499,6 +499,24 @@ const sidebar = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'EVM Developers',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/ethereum.svg',
+      },
+      link: { type: 'doc', id: 'aurora/what-is' },
+      items: [
+        {
+          type: 'link',
+          label: 'Introduction',
+          href: '/aurora/what-is',
+        },
+        'aurora/build-on-aurora',
+        'aurora/launch-virtual-chain',
+      ],
+    }
   ],
   api: [
     'api/rpc/introduction',
