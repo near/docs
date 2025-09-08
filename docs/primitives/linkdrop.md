@@ -21,9 +21,9 @@ In order for a contract to be considered a Linkdrop-contract it has to follow th
 
 ---
 
-## [Keypom](https://keypom.xyz/)
+## Keypom
 
-The simplest way to create Linkdrops is by using [Keypom](https://keypom.xyz/). Keypom is a community project that allows you to create Linkdrops for NEAR tokens and NFTs in a few clicks.
+The simplest way to create Linkdrops is by using [Keypom](https://github.com/keypom/keypom). Keypom is a community project that allows you to create Linkdrops for NEAR tokens and NFTs in a few clicks.
 
 ![keypom](/docs/primitives/keypom.png)
 
@@ -493,12 +493,12 @@ const getLinks = () => {
 </details>
 
 :::note
-If you didn't save your linkdrop links before closing NEAR App, you can always find them on [Keypom app](https://keypom.xyz/drops).
+If you didn't save your linkdrop links before closing NEAR App, you can always find them on Keypom app.
 :::
 
 ---
 
 ## Additional Resources
 
-1. [Linkdrop plus](https://near.org/near/widget/ComponentDetailsPage?src=cuongdcdev.near/widget/linkdrop_plus) allows to create a Simple Drop. Powered by [Keypom](https://keypom.xyz/)
+1. [Linkdrop plus](https://near.org/near/widget/ComponentDetailsPage?src=cuongdcdev.near/widget/linkdrop_plus) allows to create a Simple Drop. Powered by [Keypom](https://github.com/keypom/keypom).
 2. [Keypom Drop Viewer](https://near.org/near/widget/ComponentDetailsPage?src=kiskesis.near/widget/Keypom-Drop-Viewer-fork) shows drops created by current logged in user.
