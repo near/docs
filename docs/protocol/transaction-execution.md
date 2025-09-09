@@ -122,7 +122,7 @@ You can check the status of a transaction using the [NearBlocks explorer](https:
 The `nonce` is a number that is incremented for each transaction sent by the transaction's `Signer`.
 On a valid transaction, the `nonce` value should follow these rules:
 
-- When adding a key, the `nonce` is automatically assigned, so the value in the `ADD_KEY` action is ignored.
+- When adding a key, the `nonce` is automatically assigned - particularly, it is given the value `block height * 10^6` - so the value in the `ADD_KEY` action is ignored
 - A transaction is accepted only if the `nonce` value is in the range of:
-  - `[(current_nonce_of_access_key + 1) .. (block_height * 10^6)]`.
-- Once a transaction is accepted, the access key's `nonce` is set to the `nonce` value of the included transaction.
+  - `[(current_nonce_of_access_key + 1) .. (block_height * 10^6)]`
+- Once a transaction is accepted, the access key's `nonce` is set to the `nonce` value of the included transaction
