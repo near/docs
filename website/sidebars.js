@@ -144,7 +144,7 @@ const sidebar = {
         {
           "Shade Agents": [
             "ai/shade-agents/introduction",
-            "ai/shade-agents/examples",
+            "ai/shade-agents/what-can-you-build",
             {
               "Quickstart": [
                 'ai/shade-agents/quickstart/deploying',
@@ -169,6 +169,25 @@ const sidebar = {
             },
             "ai/shade-agents/plugins",
             "ai/shade-agents/security",
+            {
+              "Templates and Examples": [
+                "ai/shade-agents/examples/overview",
+                {
+                  "Quickstart": [
+                    'ai/shade-agents/quickstart/deploying',
+                    "ai/shade-agents/quickstart/components", 
+                  ]
+                },
+                {
+                  "AI DAO": [
+                    "ai/shade-agents/examples/ai-dao/overview",
+                    "ai/shade-agents/examples/ai-dao/agent-contract",
+                    "ai/shade-agents/examples/ai-dao/agent",
+                    "ai/shade-agents/examples/ai-dao/deploying",
+                  ]
+                }
+              ]
+            },
           ]
         },
         {

@@ -1,5 +1,5 @@
 ---
-id: examples
+id: what-can-you-build
 title: What can you Build?
 sidebar_label: What can you Build?
 description: "Explore example Shade Agent implementations and agentic protocol ideas, including trading agents, DeFi protocols, and autonomous applications."

@@ -113,16 +113,8 @@ Now that you have an overview of the framework, we recommend exploring these sec
 1. Framework components: [API](./api.md), [CLI](./cli.md), and [Environment Variables](./environment-variables.md)
 2. [Custom Contracts](../custom-contracts/overview.md) - build specialized agent contracts
 3. [Plugins](../plugins.md) - extend your agent's capabilities
+4. [Templates and Examples](../examples/overview.md) - get up and running with different Shade Agent architectures and use cases as quickly as possible and learn the how to build apps in full
 4. [Security Considerations](../security.md) - check your agent abides by best practices
-
-
-<!-- 
-
-Before Security Considerations 
-
-4. [Templates and Examples]() - get up and running with different Shade Agent architectures and use cases as quickly as possible
-
--->
 
 
 <SigsSupport />

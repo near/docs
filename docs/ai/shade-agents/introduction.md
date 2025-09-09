@@ -18,7 +18,7 @@ Shade Agents provide verifiability and non-custody by operating in TEEs, but als
 Thanks to combining TEEs with the NEAR tech stack, Shade Agents can autonomously sign transactions across any chain, interact with AI models and external data sources, manage assets, and perform privacy-preserving, verifiable computations, offering the flexibility and performance of Web2 with the verifiability of Web3.
 
 :::info
-Shade Agents power [Agentic Protocols](./examples.md#agentic-protocols): a new type of decentralized application designed to be autonomous, proactive, and intelligent.
+Shade Agents power [Agentic Protocols](./what-can-you-build.md#agentic-protocols): a new type of decentralized application designed to be autonomous, proactive, and intelligent.
 :::
 
 ---
