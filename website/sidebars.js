@@ -268,7 +268,12 @@ const sidebar = {
             'tutorials/examples/donation',
             'tutorials/examples/coin-flip',
             'tutorials/examples/factory',
-            'tutorials/examples/near-drop',
+            {
+              "LinkDrops": [
+              'tutorials/neardrop/introduction',
+              'tutorials/neardrop/contract-architecture',
+              'tutorials/neardrop/near-drops',
+            ]},
             'tutorials/examples/xcc',
             'tutorials/examples/advanced-xcc',
             'tutorials/examples/global-contracts',
