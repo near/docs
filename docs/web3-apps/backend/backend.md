@@ -48,6 +48,7 @@ The `signMessage` method needed to sign the challenge is supported by these wall
 - NearMobileWallet
 - MyNearWallet
 - Sender
+- Intear Wallet
 
 
 The message that the user needs to sign contains 4 fields:
