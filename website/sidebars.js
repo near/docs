@@ -273,6 +273,11 @@ const sidebar = {
               'tutorials/neardrop/introduction',
               'tutorials/neardrop/contract-architecture',
               'tutorials/neardrop/near-drops',
+              'tutorials/neardrop/ft-drops',
+              'tutorials/neardrop/nft-drops',
+              'tutorials/neardrop/access-keys',
+              'tutorials/neardrop/account-creation',
+              'tutorials/neardrop/frontend'
             ]},
             'tutorials/examples/xcc',
             'tutorials/examples/advanced-xcc',

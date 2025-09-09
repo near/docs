@@ -238,20 +238,6 @@ const config = {
 
               ]
             },
-             {
-              label: 'Near Drop', to: '#', description: "Create contracts that drops assets",
-              subitems: [
-                { label: 'Introduction', to: '/tutorials/neardrop/introduction', description: "Create your first smart contract" },
-                { label: 'Contract Architecture', to: '/tutorials/neardrop/contract-architecture', description: "Understand how the NEAR Drop contract works" },
-                { label: 'Near Drops', to: '/tutorials/neardrop/near-drops', description: "Learn how to create Native Near drop contract " },
-                { label: 'Ft Drops', to: '/tutorials/neardrop/ft-drops', description: "Learn to create NEP-141 Fungible Token drop contract" },
-                { label: 'NFT Drops', to: '/tutorials/neardrop/nft-drops', description: "Learn to create NFT drop contract" },
-                { label: 'Access Keys', to: '/tutorials/neardrop/access-keys', description: "Enable gasless operations in your drop contract" },
-                { label: 'Account Creation', to: '/tutorials/neardrop/account-creation', description: "Enable Users create new accounts to claim the drops" },
-                 { label: 'Frontend Integration', to: '/tutorials/neardrop/frontend', description: "Enable easy creation and claims for your contract" },
-
-              ]
-            },
             {
               label: 'App Development', to: '#', description: "Supercharge your apps with NEAR",
               subitems: [
