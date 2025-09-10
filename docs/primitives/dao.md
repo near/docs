@@ -55,6 +55,7 @@ easily generalizable to other DAO implementations.
 ## Create a DAO
 The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos).
 
+### Using Sputnik DAO Contract
 You can also create a DAO by interacting with the `sputnik-dao` contract.
 
 <Tabs groupId="code-tabs">
@@ -71,6 +72,52 @@ You can also create a DAO by interacting with the `sputnik-dao` contract.
     <SmartContractCreateDAO />
   </TabItem>
 </Tabs>
+
+<hr className="subsection" />
+
+### Using Global Contract
+
+You can find out what global contracts are [here](../smart-contracts/global-contracts.md). But in short, global contracts allow smart contracts to be deployed once and reused by any account without incurring high storage costs.
+
+In other words, you can deploy a DAO contract using our global DAO contract, which is already deployed and basically is just [a Sputnik DAO contract](https://github.com/near-daos/sputnik-dao-contract/tree/main/sputnikdao2) without any customization. You need only to call the following deploying command with your initialization parameters.
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
+    Deploy by account id:
+
+    ```bash
+    near contract deploy <account-id> use-global-account-id dao.globals.primitives.testnet \
+      with-init-call new \
+      json-args '{"config": {"name": "Primitives", "purpose": "Building primitives on NEAR", "metadata":""}, "policy": ["<account-id>"]}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain \
+      send
+    ```
+
+
+    Deploy by hash:
+
+    ```bash
+    near contract deploy <account-id> use-global-hash Ea8tHXFSQVszVwGASyzAfLq65DjcRDhkfab4FcPaRpgD \
+      with-init-call new \
+      json-args '{"config": {"name": "Primitives", "purpose": "Building primitives on NEAR", "metadata":""}, "policy": ["<account-id>"]}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain \
+      send
+    ```
+
+  </TabItem>
+</Tabs>
+
+:::note
+The difference between global contracts deployed by account id and by hash is that the former is updatable, while the latter is immutable. When it's deployed by account id, the owner can redeploy the contract updating it for all its users.
+
+So when you decide which option to use for deploying your DAO contract, you should consider whether you want to it to be updatable by its original owner or not.
+:::
 
 <hr className="subsection" />
 
