@@ -26,6 +26,16 @@ This example covers several key components of the Shade Agent Framework along wi
 - **Yield and Resume Pattern**: Building a Shade Agent that uses the yield and resume model
 - **Verifiable AI Integration**: Implementing a Shade Agent that uses verifiable inference
 
+---
+
+## Required knowledge 
+
+Before starting this tutorial we recommend that you have have a good understanding of these concepts:
+- [Shade Agents](../../introduction.md) 
+- [NEAR Smart Contracts](../../../../smart-contracts/what-is.md)
+- [Custom Agent Contracts](../../custom-contracts/overview.md)
+
+---
 
 ## Getting Started
 

@@ -170,7 +170,7 @@ const sidebar = {
             "ai/shade-agents/plugins",
             "ai/shade-agents/security",
             {
-              "Templates and Examples": [
+              "Examples and Templates": [
                 "ai/shade-agents/examples/overview",
                 {
                   "Quickstart": [
