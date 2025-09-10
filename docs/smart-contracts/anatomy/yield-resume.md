@@ -197,6 +197,16 @@ The reason to not raise an error, is because we are changing the state (removing
 
 ---
 
+## Managing State
+
+When using yield and resume, it's important that you carefully manage the contract's state. Because of its asynchronous execution, the yield and the resume happen, and are finalized in separate blocks.
+
+If you change the state of the contract in the function where you yield the promise (the `request` function here), then you need to make sure that you revert the state in the function that resumes (the `return_external_response` function here) in the case that the promise times out or the response is invalid.
+
+It is best practice to check the validity of the response within the function where the resume is signalled (the `respond` function here) and panic if the response is not valid; the external service can attempt to respond again before the promise times out. You should not panic in `return_external_response` as this is only called when the promise has been resolved (it was resumed or timed out), meaning it can't be resumed again, and the state in `request` has been settled. You should gracefully complete the function and revert the state.
+
+---
+
 ## Complete Example
 
 Here's a more complete implementation of a yield-resume pattern in Python:
