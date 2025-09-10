@@ -20,6 +20,13 @@ import {Container, Card} from "@site/src/components/cards";
   <Container>
     <Card 
       img="/icons/near.svg"
+      title="NEAR Quest"
+      text="Interactive learning journey through gamified quests and challenges designed to build your NEAR development skills step by step"
+      links={{
+              "Start Your Quest": "/tutorials/near-quest"    }}
+    />
+    <Card 
+      img="/icons/near.svg"
       title="Mastering NEAR"
       text="New to NEAR development? Start with our comprehensive introduction to building Web3 applications"
       links={{

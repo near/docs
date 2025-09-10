@@ -1,0 +1,233 @@
+// Question Card Component Styles
+.question-card {
+  .question-header {
+    margin-bottom: 1.5rem;
+
+    .question-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--ifm-color-content, #111827);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+  }
+
+  .question-content {
+    .question-text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ifm-color-content, #111827);
+      margin: 0 0 2rem 0;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .choices-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+
+      .choice-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        border: 2px solid var(--ifm-color-emphasis-200, #e5e7eb);
+        border-radius: 8px;
+        background-color: var(--ifm-card-background-color, #ffffff);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: left;
+        width: 100%;
+
+        &:hover:not(:disabled) {
+          border-color: var(--ifm-color-primary, #3b82f6);
+          background-color: var(--ifm-color-primary-lightest, #f0f9ff);
+        }
+
+        &.selected {
+          border-color: var(--ifm-color-primary, #3b82f6);
+          background-color: var(--ifm-color-primary-lightest, #dbeafe);
+
+          .choice-label {
+            color: var(--ifm-color-primary-dark, #1e40af);
+          }
+        }
+
+        &.correct {
+          border-color: var(--ifm-color-success, #16a34a);
+          background-color: var(--ifm-color-success-lightest, #dcfce7);
+
+          .choice-label {
+            color: var(--ifm-color-success-dark, #15803d);
+          }
+        }
+
+        &.incorrect {
+          border-color: var(--ifm-color-danger, #ef4444);
+          background-color: var(--ifm-color-danger-lightest, #fef2f2);
+
+          .choice-label {
+            color: var(--ifm-color-danger-dark, #dc2626);
+          }
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+        }
+
+        .choice-label {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: var(--ifm-color-content-secondary, #6b7280);
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .choice-text {
+          font-size: 0.875rem;
+          color: var(--ifm-color-content, #111827);
+          line-height: 1.4;
+          font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+          background-color: var(--ifm-color-emphasis-50, #f9fafb);
+          padding: 0.5rem;
+          border-radius: 4px;
+          width: 100%;
+          box-sizing: border-box;
+        }
+      }
+    }
+
+    .feedback-section {
+      display: flex;
+      justify-content: center;
+
+      .feedback {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 500;
+
+        &.correct-feedback {
+          background-color: var(--ifm-color-success-lightest, #dcfce7);
+          border: 1px solid var(--ifm-color-success-light, #86efac);
+          color: var(--ifm-color-success-dark, #15803d);
+
+          .feedback-icon {
+            color: var(--ifm-color-success, #16a34a);
+            font-weight: 700;
+          }
+        }
+
+        &.incorrect-feedback {
+          background-color: var(--ifm-color-danger-lightest, #fef2f2);
+          border: 1px solid var(--ifm-color-danger-light, #fca5a5);
+          color: var(--ifm-color-danger-dark, #dc2626);
+
+          .feedback-icon {
+            color: var(--ifm-color-danger, #ef4444);
+            font-weight: 700;
+          }
+        }
+
+        .feedback-text {
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}
+
+// Dark mode support
+[data-theme='dark'] {
+  .question-card {
+    .question-header .question-title {
+      color: var(--ifm-color-content, #f9fafb);
+    }
+
+    .question-content {
+      .question-text {
+        color: var(--ifm-color-content, #f9fafb);
+      }
+
+      .choices-grid {
+        .choice-item {
+          border-color: var(--ifm-color-emphasis-300, #4b5563);
+          background-color: var(--ifm-color-emphasis-100, #1f2937);
+
+          &:hover:not(:disabled) {
+            border-color: var(--ifm-color-primary, #3b82f6);
+            background-color: var(--ifm-color-primary-darker, #1e3a8a);
+          }
+
+          &.selected {
+            background-color: var(--ifm-color-primary-darker, #1e3a8a);
+
+            .choice-label {
+              color: var(--ifm-color-primary-lighter, #93c5fd);
+            }
+          }
+
+          &.correct {
+            background-color: var(--ifm-color-success-darker, #14532d);
+
+            .choice-label {
+              color: var(--ifm-color-success-light, #4ade80);
+            }
+          }
+
+          &.incorrect {
+            background-color: var(--ifm-color-danger-darker, #7f1d1d);
+
+            .choice-label {
+              color: var(--ifm-color-danger-light, #f87171);
+            }
+          }
+
+          .choice-label {
+            color: var(--ifm-color-content-secondary, #d1d5db);
+          }
+
+          .choice-text {
+            color: var(--ifm-color-content, #f9fafb);
+            background-color: var(--ifm-color-emphasis-200, #374151);
+          }
+        }
+      }
+
+      .feedback-section {
+        .feedback {
+          &.correct-feedback {
+            background-color: var(--ifm-color-success-darker, #14532d);
+            border-color: var(--ifm-color-success, #16a34a);
+            color: var(--ifm-color-success-light, #4ade80);
+
+            .feedback-icon {
+              color: var(--ifm-color-success-light, #4ade80);
+            }
+          }
+
+          &.incorrect-feedback {
+            background-color: var(--ifm-color-danger-darker, #7f1d1d);
+            border-color: var(--ifm-color-danger, #ef4444);
+            color: var(--ifm-color-danger-light, #f87171);
+
+            .feedback-icon {
+              color: var(--ifm-color-danger-light, #f87171);
+            }
+          }
+        }
+      }
+    }
+  }
+}

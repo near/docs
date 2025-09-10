@@ -356,6 +356,7 @@ const sidebar = {
         },
         {
           "Tutorials": [
+            'tutorials/near-quest',
             'web3-apps/integrate-contracts',
             'tutorials/examples/frontend-multiple-contracts',
             'web3-apps/ethereum-wallets',
