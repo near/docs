@@ -22,7 +22,7 @@ This example is not just a learning tool but also serves as a great `template fo
 ## What You'll Learn
 
 This example covers several key components of the Shade Agent Framework along with NEAR's tech stack in general and how they can work together to create a product that is `decentralized and verifiable throughout the whole stack`. This example covers:
-- **NEAR-native Development**: How to develop a Shade Agent that operates exclusively on NEAR Protocol
+- **NEAR-native Shade Agent**: How to develop a Shade Agent that operates exclusively on NEAR Protocol
 - **Yield and Resume Pattern**: Building a Shade Agent that uses the yield and resume model
 - **Verifiable AI Integration**: Implementing a Shade Agent that uses verifiable inference
 
