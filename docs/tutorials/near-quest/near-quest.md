@@ -1,7 +1,7 @@
 ---
 id: near-quest
 title: NEAR Quest
-sidebar_label: NEAR Quest
+sidebar_label: 📖 NEAR Quest
 description: Learn NEAR development through interactive quests and challenges designed to build your skills step by step.
 hide_table_of_contents: true
 ---

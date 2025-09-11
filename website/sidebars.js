@@ -1,4 +1,9 @@
 const sidebar = {
+  academy: [
+        'tutorials/near-quest/protocol',
+        'tutorials/near-quest/wallet',
+        'tutorials/near-quest/hello-world',
+  ],
   build: [
     {
       type: 'doc',
@@ -356,7 +361,6 @@ const sidebar = {
         },
         {
           "Tutorials": [
-            'tutorials/near-quest',
             'web3-apps/integrate-contracts',
             'tutorials/examples/frontend-multiple-contracts',
             'web3-apps/ethereum-wallets',
