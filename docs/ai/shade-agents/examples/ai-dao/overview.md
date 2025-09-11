@@ -7,7 +7,7 @@ description: "TODO"
 
 # Verifiable AI DAO
 
-In this example, we'll explore how to build a `verifiable AI DAO` using the Shade Agent Framework.
+In this example, you'll explore how to build a `fully verifiable AI DAO` using the Shade Agent Framework.
 
 The DAO has a manifesto that is set by the admin that states how the DAO should decide which proposals to approve and which to deny. Anyone can submit a proposal to the DAO. Once submitted, the Shade Agent will use an LLM to vote on the proposal. The agent will then respond to the contract with an `Approved` or `Rejected` decision and a reason for the decision. The DAO voting process is simply an LLM that uses the proposal and manifesto to vote, but this could be extended to take into account sentiment online and use advanced reasoning.
 

@@ -23,13 +23,6 @@ On the [next page](./components.md), you'll see how to edit this agent for your 
 
 ## Prerequisites
 
-- First, `clone` the [template](https://github.com/NearDeFi/shade-agent-template).
-
-  ```bash
-  git clone https://github.com/NearDeFi/shade-agent-template
-  cd shade-agent-template
-  ```
-
 - Install NEAR and Shade Agent tooling:
 
   ```bash
@@ -68,6 +61,13 @@ Phala Cloud is a cloud service that supports hosting applications in a TEE. It m
 ---
 
 ## Set up
+
+- First, `clone` the [template](https://github.com/NearDeFi/shade-agent-template).
+
+  ```bash
+  git clone https://github.com/NearDeFi/shade-agent-template
+  cd shade-agent-template
+  ```
 
 - Rename the `.env.development.local.example` file name to `.env.development.local` and configure your environment variables.
 
