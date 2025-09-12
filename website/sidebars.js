@@ -265,8 +265,8 @@ const sidebar = {
           "Tutorials": [
             'tutorials/examples/count-near',
             'tutorials/examples/guest-book',
-            'tutorials/examples/donation',
-            'tutorials/examples/coin-flip',
+            // 'tutorials/examples/donation',
+            // 'tutorials/examples/coin-flip',
             'tutorials/examples/factory',
             {
               "LinkDrops": [
@@ -279,8 +279,45 @@ const sidebar = {
               'tutorials/neardrop/account-creation',
               'tutorials/neardrop/frontend'
             ]},
+            {
+              "Advanced Cross-Contract Call": [
+                'tutorials/advanced-xcc/0-introduction',
+                'tutorials/advanced-xcc/1-setup',
+                'tutorials/advanced-xcc/2-batch-actions',
+                'tutorials/advanced-xcc/3-parallel-execution',
+                'tutorials/advanced-xcc/4-response-handling',
+                'tutorials/advanced-xcc/5-testing-deployment',
+              ]},
+              {
+                "Factory": [
+                  'tutorials/factory/0-introduction',
+                  'tutorials/factory/1-factory-contract',
+                  'tutorials/factory/2-deploy-factory',
+                  'tutorials/factory/3-create-instances',
+                  'tutorials/factory/4-update-contract',
+                ]},
+            {
+              "Coin Flip": [
+                'tutorials/coin-flip/0-introduction',
+                'tutorials/coin-flip/1-understanding-randomness',
+                'tutorials/coin-flip/2-setup',
+                'tutorials/coin-flip/3-contract',
+                'tutorials/coin-flip/4-randomness-implementation',
+                'tutorials/coin-flip/5-testing',
+                'tutorials/coin-flip/6-advanced-patterns',
+              ]},
+              {
+              "Donation": [
+                'tutorials/donation/0-introduction',
+                'tutorials/donation/1-setup',
+                'tutorials/donation/2-contract',
+                'tutorials/donation/3-tracking',
+                'tutorials/donation/4-queries',
+                'tutorials/donation/5-deploy',  
+                'tutorials/donation/6-frontend',
+              ]},
             'tutorials/examples/xcc',
-            'tutorials/examples/advanced-xcc',
+            // 'tutorials/examples/advanced-xcc',
             'tutorials/examples/global-contracts',
             'tutorials/examples/update-contract-migrate-state',
             {

@@ -5,7 +5,7 @@ sidebar_label: Advanced Techniques
 description: "Explore advanced randomness patterns and techniques for complex applications beyond simple coin flips."
 ---
 
-Now that you've mastered basic randomness with our coin flip game, let's explore advanced patterns and techniques that enable more sophisticated randomness-powered applications. These patterns will help you build complex games, fair lotteries, and advanced DeFi protocols.
+Now that you've mastered basic randomness with our coin flip game, let's explore advanced patterns that enable more sophisticated randomness-powered applications. These patterns will help you build complex games, fair lotteries, and advanced DeFi protocols.
 
 ## Pattern 1: Weighted Random Selection
 
@@ -13,11 +13,8 @@ Sometimes you need outcomes with different probabilities - like rare items in ga
 
 ### Basic Weighted Selection
 
-<Github language="rust" url="https://github.com/near-examples/coin-flip-randomness-tutorial/blob/main/rust-contract/src/advanced_patterns.rs#L10-L45">
-
 ```rust
 use near_sdk::{env, near_bindgen};
-use std::collections::HashMap;
 
 #[near_bindgen]
 impl CoinFlipContract {
@@ -27,17 +24,13 @@ impl CoinFlipContract {
             env::panic_str("No options provided");
         }
         
-        // Calculate total weight
         let total_weight: u32 = weights.iter().map(|(_, weight)| weight).sum();
         if total_weight == 0 {
             env::panic_str("Total weight cannot be zero");
         }
         
-        // Generate random value in range [0, total_weight)
-        let random_seed = env::random_seed();
         let random_value = self.random_u32_range(0, total_weight);
         
-        // Find the selected item
         let mut cumulative_weight = 0u32;
         for (item, weight) in weights {
             cumulative_weight += weight;
@@ -65,11 +58,7 @@ impl CoinFlipContract {
 }
 ```
 
-</Github>
-
 ### JavaScript Weighted Selection
-
-<Github language="javascript" url="https://github.com/near-examples/coin-flip-randomness-tutorial/blob/main/js-contract/src/advanced_patterns.js#L10-L40">
 
 ```javascript
 export class AdvancedRandomness extends CoinFlipContract {
@@ -79,16 +68,13 @@ export class AdvancedRandomness extends CoinFlipContract {
       throw new Error('No options provided');
     }
     
-    // Calculate total weight
     const totalWeight = weights.reduce((sum, [item, weight]) => sum + weight, 0);
     if (totalWeight === 0) {
       throw new Error('Total weight cannot be zero');
     }
     
-    // Generate random value
     const randomValue = this.randomU32Range(0, totalWeight);
     
-    // Find selected item
     let cumulativeWeight = 0;
     for (const [item, weight] of weights) {
       cumulativeWeight += weight;
@@ -97,7 +83,6 @@ export class AdvancedRandomness extends CoinFlipContract {
       }
     }
     
-    // Fallback
     return weights[weights.length - 1][0];
   }
   
@@ -113,20 +98,9 @@ export class AdvancedRandomness extends CoinFlipContract {
 }
 ```
 
-</Github>
-
-### Example Usage: Loot Box System
-
-<Github language="rust" url="https://github.com/near-examples/coin-flip-randomness-tutorial/blob/main/rust-contract/src/loot_system.rs">
+### Example: Loot Box System
 
 ```rust
-#[derive(BorshSerialize, BorshDeserialize)]
-pub struct LootBox {
-    pub common_items: Vec<String>,
-    pub rare_items: Vec<String>, 
-    pub legendary_items: Vec<String>,
-}
-
 #[near_bindgen]
 impl CoinFlipContract {
     /// Open a loot box with tiered rewards
@@ -162,20 +136,16 @@ impl CoinFlipContract {
 }
 ```
 
-</Github>
-
 ## Pattern 2: Bias-Free Range Selection
 
 For critical applications like lotteries, you need perfectly unbiased random selection:
 
 ### Rejection Sampling for Unbiased Results
 
-<Github language="rust" url="https://github.com/near-examples/coin-flip-randomness-tutorial/blob/main/rust-contract/src/unbiased_random.rs">
-
 ```rust
 #[near_bindgen]
 impl CoinFlipContract {
-    /// Generate unbiased random number in range [min, max) using rejection sampling
+    /// Generate unbiased random number in range [min, max)
     pub fn unbiased_range(&self, min: u32, max: u32) -> u32 {
         if min >= max {
             return min;
@@ -184,10 +154,10 @@ impl CoinFlipContract {
         let range = max - min;
         let random_seed = env::random_seed();
         
-        // Calculate the maximum valid value to avoid bias
+        // Calculate maximum valid value to avoid bias
         let max_valid = u32::MAX - (u32::MAX % range);
         
-        // Try up to 8 times with different bytes from the seed
+        // Try different bytes from the seed
         for i in (0..29).step_by(4) {
             let candidate = u32::from_le_bytes([
                 random_seed[i], 
@@ -196,13 +166,12 @@ impl CoinFlipContract {
                 random_seed[i + 3]
             ]);
             
-            // Accept only if within valid range
             if candidate < max_valid {
                 return min + (candidate % range);
             }
         }
         
-        // Fallback: use simple modulo (minimal bias for 32-byte seed)
+        // Fallback
         let fallback = u32::from_le_bytes([
             random_seed[0], random_seed[1], random_seed[2], random_seed[3]
         ]);
@@ -234,71 +203,11 @@ impl CoinFlipContract {
 }
 ```
 
-</Github>
-
-### JavaScript Unbiased Implementation
-
-<Github language="javascript" url="https://github.com/near-examples/coin-flip-randomness-tutorial/blob/main/js-contract/src/unbiased_random.js">
-
-```javascript
-export class UnbiasedRandom extends CoinFlipContract {
-  @call({})
-  unbiasedRange({ min, max }) {
-    if (min >= max) return min;
-    
-    const range = max - min;
-    const randomSeed = near.randomSeed();
-    
-    // Calculate maximum valid value
-    const maxValid = Math.floor(0xFFFFFFFF / range) * range;
-    
-    // Try multiple candidates
-    for (let i = 0; i < 7; i += 4) {
-      const candidate = randomSeed[i] + (randomSeed[i + 1] << 8) + 
-                       (randomSeed[i + 2] << 16) + (randomSeed[i + 3] << 24);
-      
-      if (candidate < maxValid) {
-        return min + (candidate % range);
-      }
-    }
-    
-    // Fallback
-    const fallback = randomSeed[0] + (randomSeed[1] << 8) + 
-                    (randomSeed[2] << 16) + (randomSeed[3] << 24);
-    return min + (fallback % range);
-  }
-  
-  @call({})
-  lotteryWinners({ participants, winnerCount }) {
-    if (!participants || participants.length === 0 || winnerCount <= 0) {
-      return [];
-    }
-    
-    const actualWinnerCount = Math.min(winnerCount, participants.length);
-    const winners = [];
-    const remaining = [...participants]; // Copy array
-    
-    for (let i = 0; i < actualWinnerCount; i++) {
-      if (remaining.length === 0) break;
-      
-      const index = this.unbiasedRange({ min: 0, max: remaining.length });
-      winners.push(remaining.splice(index, 1)[0]);
-    }
-    
-    return winners;
-  }
-}
-```
-
-</Github>
-
 ## Pattern 3: Multi-Round Randomness
 
 For complex games requiring multiple random events:
 
 ### Sequential Randomness with Entropy Mixing
-
-<Github language="rust" url="https://github.com/near-examples/coin-flip-randomness-tutorial/blob/main/rust-contract/src/multi_round.rs">
 
 ```rust
 use near_sdk::collections::UnorderedMap;
@@ -317,8 +226,6 @@ impl CoinFlipContract {
     /// Complex game with multiple random elements
     pub fn play_complex_game(&mut self, player: AccountId) -> GameRound {
         let round_id = self.total_games + 1;
-        
-        // Generate base entropy
         let base_seed = env::random_seed();
         
         // Roll 3 dice with different entropy sources
@@ -333,7 +240,7 @@ impl CoinFlipContract {
             .map(|i| self.entropy_card(&base_seed, &player, i))
             .collect();
         
-        // Calculate bonus multiplier based on results
+        // Calculate bonus multiplier based on dice sum
         let dice_sum: u32 = dice_rolls.iter().map(|&x| x as u32).sum();
         let bonus_multiplier = match dice_sum {
             3..=6 => 0.5,    // Low roll
@@ -377,31 +284,19 @@ impl CoinFlipContract {
 }
 ```
 
-</Github>
-
 ## Pattern 4: Commit-Reveal for High-Stakes Applications
 
 For maximum security in high-value scenarios:
 
 ### Commit-Reveal Scheme
 
-<Github language="rust" url="https://github.com/near-examples/coin-flip-randomness-tutorial/blob/main/rust-contract/src/commit_reveal.rs">
-
 ```rust
-use near_sdk::collections::LookupMap;
-
 #[derive(BorshSerialize, BorshDeserialize)]
 pub struct Commitment {
     pub player: AccountId,
     pub commitment_hash: Vec<u8>,
     pub timestamp: u64,
     pub stake: u128,
-}
-
-#[derive(BorshSerialize, BorshDeserialize)]
-pub struct Reveal {
-    pub nonce: String,
-    pub guess: CoinSide,
 }
 
 #[near_bindgen]
@@ -423,7 +318,6 @@ impl CoinFlipContract {
         };
         
         self.commitments.insert(&player, &commitment);
-        
         env::log_str(&format!("Commitment recorded for {}", player));
     }
     
@@ -442,28 +336,25 @@ impl CoinFlipContract {
         
         assert_eq!(reveal_hash, commitment.commitment_hash, "Invalid reveal");
         
-        // Check timing (e.g., reveal must be within 10 minutes)
+        // Check timing (reveal must be within 10 minutes)
         let elapsed = env::block_timestamp() - commitment.timestamp;
-        assert!(elapsed <= 600_000_000_000, "Reveal window expired"); // 10 minutes in nanoseconds
+        assert!(elapsed <= 600_000_000_000, "Reveal window expired");
         
-        // Use both NEAR's randomness AND commitment timing for extra entropy
+        // Use mixed entropy for outcome
         let game_outcome = self.commit_reveal_flip(&commitment, &nonce);
         
         // Handle payout
         if guess == game_outcome {
-            // Player wins: return stake + bonus
             Promise::new(player).transfer(commitment.stake * 2);
         }
-        // If player loses, stake stays in contract
         
         game_outcome
     }
     
-    /// Generate outcome using commitment entropy + NEAR randomness
+    /// Generate outcome using multiple entropy sources
     fn commit_reveal_flip(&self, commitment: &Commitment, nonce: &str) -> CoinSide {
         let mut entropy_sources = Vec::new();
         
-        // Mix multiple entropy sources
         entropy_sources.extend_from_slice(&env::random_seed());
         entropy_sources.extend_from_slice(&commitment.commitment_hash);
         entropy_sources.extend_from_slice(nonce.as_bytes());
@@ -479,99 +370,11 @@ impl CoinFlipContract {
         }
     }
 }
-
-// Add to contract struct
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
-pub struct CoinFlipContract {
-    // ... existing fields
-    commitments: LookupMap<AccountId, Commitment>,
-}
 ```
-
-</Github>
-
-## Pattern 5: Randomness Quality Monitoring
-
-For production applications, monitor randomness quality:
-
-### Statistical Health Monitoring
-
-<Github language="rust" url="https://github.com/near-examples/coin-flip-randomness-tutorial/blob/main/rust-contract/src/quality_monitor.rs">
-
-```rust
-#[derive(BorshSerialize, BorshDeserialize, Default)]
-pub struct RandomnessHealth {
-    pub total_samples: u64,
-    pub byte_distribution: [u32; 256],
-    pub last_update: u64,
-    pub health_score: f64,
-}
-
-#[near_bindgen]
-impl CoinFlipContract {
-    /// Record randomness usage for quality monitoring
-    pub fn record_randomness(&mut self, sample: u8) {
-        self.randomness_health.total_samples += 1;
-        self.randomness_health.byte_distribution[sample as usize] += 1;
-        self.randomness_health.last_update = env::block_timestamp();
-        
-        // Update health score every 1000 samples
-        if self.randomness_health.total_samples % 1000 == 0 {
-            self.randomness_health.health_score = self.calculate_health_score();
-        }
-    }
-    
-    /// Calculate statistical health score (0.0 = poor, 1.0 = perfect)
-    fn calculate_health_score(&self) -> f64 {
-        if self.randomness_health.total_samples < 1000 {
-            return 1.0; // Insufficient data
-        }
-        
-        let expected_per_bucket = self.randomness_health.total_samples as f64 / 256.0;
-        let mut chi_square = 0.0;
-        
-        for &observed in &self.randomness_health.byte_distribution {
-            let diff = observed as f64 - expected_per_bucket;
-            chi_square += (diff * diff) / expected_per_bucket;
-        }
-        
-        // Convert chi-square to health score (simplified)
-        let normalized_chi_square = chi_square / self.randomness_health.total_samples as f64;
-        1.0 / (1.0 + normalized_chi_square)
-    }
-    
-    /// Get randomness quality report
-    pub fn get_randomness_health(&self) -> RandomnessHealth {
-        self.randomness_health.clone()
-    }
-    
-    /// Alert if randomness quality is poor
-    pub fn check_randomness_alert(&self) -> Option<String> {
-        if self.randomness_health.total_samples < 1000 {
-            return None;
-        }
-        
-        if self.randomness_health.health_score < 0.8 {
-            Some(format!(
-                "⚠️  Randomness quality degraded: {:.2} (samples: {})", 
-                self.randomness_health.health_score,
-                self.randomness_health.total_samples
-            ))
-        } else {
-            None
-        }
-    }
-}
-```
-
-</Github>
 
 ## Real-World Application Examples
 
 ### NFT Mystery Box
-
-<Github language="rust" url="https://github.com/near-examples/coin-flip-randomness-tutorial/blob/main/rust-contract/src/nft_mystery_box.rs">
 
 ```rust
 #[derive(BorshSerialize, BorshDeserialize)]
@@ -587,9 +390,7 @@ impl CoinFlipContract {
     /// Mint NFT with random attributes
     #[payable]
     pub fn mint_random_nft(&mut self) -> NFTMetadata {
-        let player = env::predecessor_account_id();
         let payment = env::attached_deposit();
-        
         assert!(payment >= 1_000_000_000_000_000_000_000_000, "Insufficient payment"); // 1 NEAR
         
         // Determine rarity (5% legendary, 15% rare, 80% common)
@@ -600,7 +401,7 @@ impl CoinFlipContract {
         ];
         let rarity = self.weighted_selection(rarity_weights);
         
-        // Generate random attributes based on rarity
+        // Generate attributes based on rarity
         let (attribute1, attribute2) = match rarity.as_str() {
             "legendary" => (
                 self.select_from_pool(&["Dragon", "Phoenix", "Cosmic"]),
@@ -633,13 +434,9 @@ impl CoinFlipContract {
 }
 ```
 
-</Github>
-
 ## Testing Advanced Patterns
 
-Create comprehensive tests for advanced patterns:
-
-<Github language="rust" url="https://github.com/near-examples/coin-flip-randomness-tutorial/blob/main/rust-contract/tests/test_advanced_patterns.rs">
+Create comprehensive tests for these advanced patterns:
 
 ```rust
 #[tokio::test]
@@ -668,12 +465,11 @@ async fn test_weighted_selection() -> Result<(), Box<dyn std::error::Error>> {
         *results.entry(result).or_insert(0) += 1;
     }
     
-    // Verify distribution roughly matches weights
     let common_count = results.get("common").unwrap_or(&0);
     let rare_count = results.get("rare").unwrap_or(&0);
     let legendary_count = results.get("legendary").unwrap_or(&0);
     
-    // Should be roughly 70%, 25%, 5% (with some variance)
+    // Verify distribution roughly matches weights (70%, 25%, 5%)
     assert!(*common_count > 600 && *common_count < 800);
     assert!(*rare_count > 200 && *rare_count < 350);
     assert!(*legendary_count > 20 && *legendary_count < 80);
@@ -683,53 +479,197 @@ async fn test_weighted_selection() -> Result<(), Box<dyn std::error::Error>> {
     
     Ok(())
 }
+
+#[tokio::test]
+async fn test_unbiased_range() -> Result<(), Box<dyn std::error::Error>> {
+    let worker = near_workspaces::sandbox().await?;
+    let contract_wasm = near_workspaces::compile_project("./").await?;
+    let contract = worker.dev_deploy(&contract_wasm).await?;
+    
+    let mut results = vec![0u32; 10];
+    
+    // Test range 0-9, should be roughly uniform
+    for _ in 0..1000 {
+        let result: u32 = contract
+            .call("unbiased_range")
+            .args_json(json!({"min": 0, "max": 10}))
+            .transact()
+            .await?
+            .json()?;
+        
+        assert!(result < 10, "Result should be in range [0,10)");
+        results[result as usize] += 1;
+    }
+    
+    // Each bucket should have roughly 100 samples (with some variance)
+    for (i, count) in results.iter().enumerate() {
+        assert!(*count > 70 && *count < 130, 
+                "Bucket {} has {} samples, expected ~100", i, count);
+    }
+    
+    println!("✅ Unbiased range test passed");
+    Ok(())
+}
+
+#[tokio::test]
+async fn test_lottery_winners() -> Result<(), Box<dyn std::error::Error>> {
+    let worker = near_workspaces::sandbox().await?;
+    let contract_wasm = near_workspaces::compile_project("./").await?;
+    let contract = worker.dev_deploy(&contract_wasm).await?;
+    
+    let participants = vec![
+        "alice.near".to_string(),
+        "bob.near".to_string(), 
+        "charlie.near".to_string(),
+        "david.near".to_string(),
+        "eve.near".to_string(),
+    ];
+    
+    let winners: Vec<String> = contract
+        .call("lottery_winners")
+        .args_json(json!({"participants": participants, "winner_count": 3}))
+        .transact()
+        .await?
+        .json()?;
+    
+    // Should select exactly 3 unique winners
+    assert_eq!(winners.len(), 3);
+    
+    // Winners should be from the original participants
+    for winner in &winners {
+        assert!(participants.contains(winner));
+    }
+    
+    // Winners should be unique
+    let mut unique_winners = winners.clone();
+    unique_winners.sort();
+    unique_winners.dedup();
+    assert_eq!(unique_winners.len(), winners.len());
+    
+    println!("✅ Lottery winners: {:?}", winners);
+    Ok(())
+}
 ```
 
-</Github>
+### JavaScript Testing
 
-## Key Takeaways
+```javascript
+test('weighted selection maintains proper distribution', async (t) => {
+  const { contract } = t.context.accounts;
+  
+  const weights = [
+    ['common', 70],
+    ['rare', 25], 
+    ['legendary', 5]
+  ];
+  
+  const results = { common: 0, rare: 0, legendary: 0 };
+  
+  for (let i = 0; i < 500; i++) {
+    const result = await contract.view('weightedSelection', { weights });
+    results[result]++;
+  }
+  
+  // Verify rough distribution
+  t.true(results.common > 300 && results.common < 400);
+  t.true(results.rare > 100 && results.rare < 200);
+  t.true(results.legendary > 10 && results.legendary < 50);
+  
+  console.log(`✅ Weighted results: ${JSON.stringify(results)}`);
+});
 
-🎯 **Advanced Patterns Enable:**
-- **Weighted Selection**: Fair probability distributions for games and rewards
-- **Unbiased Ranges**: Perfect fairness for critical applications
-- **Multi-Round Games**: Complex interactions with multiple random elements
+test('commit-reveal scheme works securely', async (t) => {
+  const { alice, contract } = t.context.accounts;
+  
+  // Create commitment
+  const nonce = 'random123';
+  const guess = 'heads';
+  const commitmentData = nonce + guess;
+  const commitment = Buffer.from(await crypto.subtle.digest('SHA-256', 
+    new TextEncoder().encode(commitmentData)));
+  
+  // Phase 1: Commit
+  await alice.call(contract, 'commitGuess', 
+    { commitmentHash: Array.from(commitment) },
+    { attachedDeposit: '1000000000000000000000000' } // 1 NEAR
+  );
+  
+  // Phase 2: Reveal
+  const outcome = await alice.call(contract, 'revealAndPlay', { nonce, guess });
+  
+  t.true(['heads', 'tails'].includes(outcome));
+  console.log(`✅ Commit-reveal outcome: ${outcome}`);
+});
+```
+
+## Best Practices Summary
+
+### ✅ Advanced Pattern Guidelines
+
+1. **Weighted Selection**: Always validate weights sum > 0 and handle edge cases
+2. **Unbiased Ranges**: Use rejection sampling for critical fairness requirements
+3. **Multi-Round Games**: Mix entropy sources for independent random events
+4. **Commit-Reveal**: Implement timing windows and proper hash verification
+5. **NFT Generation**: Combine multiple randomness sources for complex attributes
+
+### 🔒 Security Considerations
+
+- **Input Validation**: Always validate ranges, weights, and array sizes
+- **Entropy Mixing**: Use multiple sources for high-security applications
+- **Timing Attacks**: Implement proper windows for time-sensitive operations
+- **Economic Incentives**: Consider game theory and potential manipulation
+- **Gas Limits**: Optimize complex operations for reasonable gas usage
+
+## Real-World Applications
+
+🎮 **Gaming Applications:**
+- Complex RPGs with multiple random elements
+- Card games with deck shuffling and draws
+- Battle systems with random outcomes and critical hits
+
+💰 **DeFi Protocols:**
+- Fair lotteries and prize distributions
+- Random reward mechanisms in yield farming
+- Governance systems with random jury selection
+
+🖼️ **NFT Projects:**
+- Procedural art generation with weighted traits
+- Mystery box mechanics with rarity tiers
+- Dynamic NFTs with evolving random attributes
+
+## Summary
+
+Advanced randomness patterns enable sophisticated applications by providing:
+
+- **Weighted Selection**: Fair probability distributions for tiered systems
+- **Unbiased Ranges**: Perfect fairness for critical applications  
+- **Multi-Round Games**: Complex interactions with independent random events
 - **Commit-Reveal**: Maximum security for high-stakes scenarios
-- **Quality Monitoring**: Production-ready randomness validation
+- **Real-World Applications**: Production-ready patterns for games, DeFi, and NFTs
 
-🔒 **Security Considerations:**
-- Always validate inputs and handle edge cases
-- Use multiple entropy sources for high-security applications
-- Monitor randomness quality in production
-- Consider economic incentives and potential attacks
-
-🚀 **Real-World Applications:**
-- **Gaming**: Complex RPGs, card games, battle systems
-- **DeFi**: Fair lotteries, random rewards, yield farming bonuses
-- **NFTs**: Procedural generation, mystery boxes, trait assignment
-- **DAOs**: Random sampling, fair governance mechanisms
+These patterns form the foundation for building engaging, fair, and secure randomness-powered applications on NEAR Protocol.
 
 ## Next Steps
 
-You now have a comprehensive toolkit for implementing randomness in NEAR applications! Whether you're building simple games or complex DeFi protocols, these patterns provide the foundation for fair, secure, and engaging randomness-powered features.
+You now have a complete toolkit for implementing advanced randomness in NEAR applications! Consider exploring:
 
-Consider exploring:
-- Cross-contract randomness sharing
-- Randomness oracles for external data
+- Cross-contract randomness coordination
+- Integration with external oracle systems  
 - Advanced cryptographic techniques like VDFs
-- Integration with other NEAR Protocol features
+- Combining randomness with other NEAR Protocol features
 
 :::tip Production Checklist
-Before deploying randomness-critical contracts:
-- ✅ Implement comprehensive testing
-- ✅ Add quality monitoring  
-- ✅ Plan for edge cases and failures
-- ✅ Consider economic implications
-- ✅ Audit for security vulnerabilities
+Before deploying advanced randomness contracts:
+- ✅ Implement comprehensive statistical testing
+- ✅ Add proper input validation and error handling
+- ✅ Consider economic implications and attack vectors
+- ✅ Optimize gas usage for complex operations
+- ✅ Plan for contract upgrades and maintenance
 :::
 
 :::info Community Resources
-Join the NEAR developer community to share your randomness-powered applications:
-- [NEAR Discord](https://near.chat)
-- [Developer Telegram](https://t.me/neardev)
-- [GitHub Discussions](https://github.com/near/nearcore/discussions)
+Share your randomness-powered applications with the community:
+- [NEAR Discord](https://near.chat) - Get help and feedback
+- [Developer Telegram](https://t.me/neardev) - Connect with other builders
+- [GitHub Discussions](https://github.com/near/nearcore/discussions) - Technical discussions
 :::

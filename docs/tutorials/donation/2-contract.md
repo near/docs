@@ -1,31 +1,20 @@
----
-id: contract
-title: Building the Core Donation Contract
-sidebar_label: Core Contract
-description: "Learn how to create the fundamental structure of a donation smart contract that can receive and handle NEAR tokens."
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import {Github} from '@site/src/components/codetabs';
+# Building the Core Donation Contract
 
 Now that our development environment is ready, let's build the core donation smart contract. This contract will handle NEAR token transfers, track donations, and manage beneficiaries.
 
 ## Contract Structure Overview
 
 Our donation contract needs to:
-
-1. **Accept donations** through payable functions
-2. **Store donation records** for transparency
-3. **Forward tokens** to the beneficiary immediately
-4. **Track donation statistics** like total amount and donor count
+- **Accept donations** through payable functions
+- **Store donation records** for transparency
+- **Forward tokens** to the beneficiary immediately
+- **Track donation statistics** like total amount and donor count
 
 ## Basic Contract Setup
 
 Let's start by creating the fundamental contract structure.
 
-<Tabs groupId="code-tabs">
-  <TabItem value="rust" label="🦀 Rust">
+### Rust Implementation
 
 First, update `src/lib.rs`:
 
@@ -83,8 +72,7 @@ pub struct DonationContract {
 }
 ```
 
-  </TabItem>
-  <TabItem value="js" label="🌐 JavaScript">
+### JavaScript Implementation
 
 Create `contract-ts/src/contract.ts`:
 
@@ -122,15 +110,11 @@ export class Donation {
 }
 ```
 
-  </TabItem>
-</Tabs>
-
 ## Implementing the Donation Function
 
 The core functionality is the `donate` method that accepts NEAR tokens and forwards them to the beneficiary.
 
-<Tabs groupId="code-tabs">
-  <TabItem value="rust" label="🦀 Rust">
+### Rust Implementation
 
 Add this method to `src/donation.rs`:
 
@@ -171,9 +155,7 @@ impl DonationContract {
         // Log the donation event
         env::log_str(&format!(
             "Thank you @{} for donating {}! Total raised: {}",
-            donor,
-            donation_amount,
-            self.total_donations
+            donor, donation_amount, self.total_donations
         ));
     }
     
@@ -189,8 +171,7 @@ impl DonationContract {
 }
 ```
 
-  </TabItem>
-  <TabItem value="js" label="🌐 JavaScript">
+### JavaScript Implementation
 
 Add this method to `contract-ts/src/contract.ts`:
 
@@ -254,28 +235,21 @@ export class DonationContract {
 }
 ```
 
-  </TabItem>
-</Tabs>
-
 ## Key Concepts Explained
 
 ### Payable Functions
-
 The `#[payable]` decorator (Rust) or `payableFunction: true` (JS) allows the function to receive NEAR tokens. Without this, the function would panic if tokens are attached.
 
 ### Token Transfer
-
 - **Rust**: `Promise::new(account).transfer(amount)` creates a promise to transfer tokens
 - **JavaScript**: `near.promiseBatchCreate()` and `near.promiseBatchActionTransfer()` achieve the same
 
 ### Storage Considerations
-
 We use efficient storage patterns:
 - **HashMap** (Rust) stores donation records in contract state
 - **LookupMap** (JavaScript) provides similar functionality with optimized storage access
 
 ### Error Handling
-
 Both implementations include proper error handling:
 - Checking for zero donations
 - Validating attached deposits
@@ -285,8 +259,7 @@ Both implementations include proper error handling:
 
 Let's test our contract compiles correctly:
 
-<Tabs groupId="code-tabs">
-  <TabItem value="rust" label="🦀 Rust">
+### Rust Build
 
 ```bash
 # Build the contract
@@ -296,8 +269,7 @@ cargo build --target wasm32-unknown-unknown --release
 cargo check
 ```
 
-  </TabItem>
-  <TabItem value="js" label="🌐 JavaScript">
+### JavaScript Build
 
 ```bash
 cd contract-ts
@@ -319,25 +291,11 @@ Add this build script to your `package.json`:
 }
 ```
 
-  </TabItem>
-</Tabs>
-
-If the build succeeds, you're ready to move on to implementing donation tracking and query methods.
-
-:::tip Gas Considerations
-Token transfers consume gas. Always ensure your contract functions have sufficient gas allowance, especially when making cross-contract calls or promises.
-:::
-
-:::info Next Steps
-Our basic donation contract can now accept and forward tokens! In the next section, we'll add comprehensive donation tracking and query capabilities to make the contract more useful and transparent.
-:::
-
 ## Testing the Core Functionality
 
 Before moving forward, let's create a simple test to verify our donation function works:
 
-<Tabs groupId="code-tabs">
-  <TabItem value="rust" label="🦀 Rust">
+### Rust Testing
 
 Create `src/tests.rs`:
 
@@ -366,12 +324,30 @@ mod tests {
 
 Run the test with `cargo test`.
 
-  </TabItem>
-  <TabItem value="js" label="🌐 JavaScript">
-
+### JavaScript Testing
 We'll cover comprehensive testing in the deployment section, including sandbox tests that simulate the full blockchain environment.
 
-  </TabItem>
-</Tabs>
+## Contract Flow Summary
 
-Your donation contract core is now ready! The next step is implementing comprehensive tracking and query methods.
+1. **Initialization**: Contract is deployed with a beneficiary account
+2. **Donation**: Users call `donate()` with attached NEAR tokens
+3. **Recording**: Contract updates donation records and totals
+4. **Transfer**: Tokens are immediately forwarded to beneficiary
+5. **Logging**: Donation event is logged for transparency
+
+:::tip Gas Considerations
+Token transfers consume gas. Always ensure your contract functions have sufficient gas allowance, especially when making cross-contract calls or promises.
+:::
+
+## Next Steps
+
+Your donation contract core is now ready! The basic functionality is in place, but to make it truly useful, you'll need comprehensive donation tracking and query capabilities.
+
+In the next section, **[Donation Tracking](3-tracking.md)**, you'll learn how to:
+- Implement donation history tracking
+- Add pagination for large donor lists  
+- Create efficient query methods for donation data
+- Build analytics functions for donation insights
+
+This will transform your basic donation contract into a fully-featured, transparent donation platform that users can trust and explore.
+:::
