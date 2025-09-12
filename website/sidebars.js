@@ -148,6 +148,7 @@ const sidebar = {
       },
       items: [
         'ai/introduction',
+        'ai/near-mcp',
         {
           "Shade Agents": [
             {
