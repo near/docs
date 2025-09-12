@@ -5,6 +5,7 @@ sidebar_label: NEAR MCP Server
 description: "Equip AI agents with tools for using the NEAR blockchain via Model Context Protocol (MCP)."
 ---
 
+import {Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -24,6 +25,8 @@ Not to be confused with the MPC (Multi-Party Computation) service used by [chain
 
 Since the NEAR MCP Server needs to handle private keys, it is designed to run locally on your machine or on a trusted remote server. Currently there is **no hosted version** of the NEAR MCP server.
 
+<hr class="subsection" />
+
 ### Quickstart
 You can either install the MCP server globally and start it, or run it directly using `npx`.
 
@@ -40,54 +43,82 @@ You can either install the MCP server globally and start it, or run it directly 
   ```
 
 </TabItem>
-<TabItem value="npx" label="Remote">
-
-  ```bash
-  # Install and Run
-  npm install -g @nearai/near-mcp@latest
-  near-mcp run
-
-  # Without Installing
-  npx @nearai/near-mcp@latest run --port 4000 --remote
-  ```
-</TabItem>
 
 </Tabs>
+
+:::tip
+
+By default the MCP server will run a local input/output server, to start a web server instead add the `--port 4000 --remote` flags
+
+```bash
+npx @nearai/near-mcp@latest run --port 4000 --remote
+```
+
+:::
 
 <hr class="subsection" />
 
 ### Local MCP Server
 
-When the server starts
-Using the server will variate depending if you are using a local or remote deployment.
+Once the NEAR MPC starts locally it starts what is called a [`stdio server`](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports#stdio). To connect your AI agent to the server you will need to use an MCP client library:
 
-<Tabs>
-<TabItem value="local" label="Local Deployment">
+<Github fname="near-mcp.py" language="python"
+        url="https://github.com/gagdiez/minimal-ai/blob/main/examples/near-mcp.py" start="120" end="123" />
 
-  By default, the MCP server will use your local NEAR CLI keystore at `~/.near-keystore/`. Make sure you have some accounts with keys there. You can create and manage accounts with the [NEAR CLI](https://docs.near.org/tools/near-cli).
+In order to use the NEAR MCP server, you will need to manually parse its tool:
 
-  You can also specify a different keystore path with the `NEAR_KEYSTORE` environment variable:
+<Github fname="near-mcp.py" language="python"
+        url="https://github.com/gagdiez/minimal-ai/blob/main/examples/near-mcp.py#L34-L46" start="34" end="46" />
 
-  ```bash
-  NEAR_KEYSTORE=/path/to/keystore npx @nearai/near-mcp@latest run
-  ```
+You can then use the tools as part of your prompt:
 
-</TabItem>
+<Github fname="near-mcp.py" language="python"
+        url="https://github.com/gagdiez/minimal-ai/blob/main/examples/near-mcp.py#L91-L96" start="91" end="96" />
 
-</Tabs>
+:::tip Accounts
 
-:::tip Advanced
-Read these [instructions](https://github.com/nearai/near-mcp/blob/main/tee.md) to deploy the MCP server remotely on Phala Cloud.
+By default the MCP server will have no accounts loaded, your agent can either import and account using the `system_import_account` tool, or you can specify which keystore to load by setting the `NEAR_KEYSTORE` environment variable
+
+```bash
+NEAR_KEYSTORE=/path/to/keystore npx @nearai/near-mcp@latest run
+```
+
 :::
 
+<hr class="subsection" />
+
+
+### Example Prompts
+
+The Agent using the MCP server will readily have tool to answer prompts like:
+
+- What is the balance of `agency.testnet`?
+- Add the account `example.testnet` using the private key `ed25519:...`
+- Transfer 0.1 NEAR from `agency.testnet` to `example.testnet`
+- Call the `ft_transfer` method on the `usdc.fakes.testnet` contract
+- What are the public methods of `social.near`?
 
 ---
 
 ## Integrate With AI Clients
 
-You can use the NEAR MCP server with any standard MCP client. Here are instructions for two popular clients: Claude Code and Claude Desktop.
+You can use the NEAR MCP server with any standard MCP client. Here are instructions for some popular clients:
 
 <Tabs>
+
+<TabItem value="cursor" label="Cursor IDE">
+
+  Go to **Settings** > **MCP Servers**, and add a new server with the following details:
+
+  - **Name**: near-mcp
+  - **Command**: npx
+  - **Arguments**: ["-y", "@nearai/near-mcp@latest", "run"]
+  - **Environment Variables**: (optional) Add any necessary environment variables, e.g., `NEAR_KEYSTORE`.
+
+  You can now use the NEAR MCP tools in your prompts.
+  
+</TabItem>
+
 <TabItem value="claude_coe" label="Claude Code">
 
   ##### 1. Install Claude Code
@@ -132,39 +163,11 @@ You can use the NEAR MCP server with any standard MCP client. Here are instructi
 
 ---
 
-## Example Prompts
+## Remote MCP Server
 
-The MCP server will readily understand prompts like:
-
-- List available NEAR MCP tools
-- What is the balance of `agency.testnet`?
-- What are the public methods of `social.near`?
+Read these [instructions](https://github.com/nearai/near-mcp/blob/main/tee.md) to deploy the MCP server remotely on Phala Cloud.
 
 ---
-
-## Manual Setup
-
-You can also run the NEAR MCP server manually
-
-
-### Verify
-
-You should see this:
-
-```json
-{"method":"notifications/message","params":{"level":"info","data":{"message":"NEAR MCP server started..."}}}
-{"method":"notifications/message","params":{"level":"info","data":{"message":"Using NEAR keystore at: ~/.near-keystore"}}}
-```
-
-## Security
-
-:::caution WARNING
-This MCP server is meant for **local use only**.
-:::
-
-- Private keys are stored unencrypted at `~/.near-keystore/`
-- NEAR MCP tools handle signing without exposing private keys
-- **Exception:** `system_import_account` tool requires giving a private key to the model
 
 ## Contributing
 
