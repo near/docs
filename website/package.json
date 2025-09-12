@@ -24,9 +24,9 @@
     "fetch-changelog": "node ./src/utils/getChangelogs.js && npm run docusaurus download-remote-near-changelog"
   },
   "devDependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@docusaurus/module-type-aliases": "3.8.1",
     "@docusaurus/types": "3.8.1",
+    "@emailjs/browser": "^4.4.1",
     "@types/react": "^18.2.42",
     "buffer": "^6.0.3",
     "glob": "^11.0.3",
@@ -60,7 +60,7 @@
     "axios": "^1.8.2",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
-    "clsx": "^1.1.1",
+    "clsx": "^2.1.1",
     "crypto-browserify": "^3.12.1",
     "docusaurus-plugin-remote-content": "^4.0.0",
     "docusaurus-plugin-sass": "^0.2.6",

@@ -1,0 +1,263 @@
+// MultiStepExample component styles
+.multistep-example {
+  padding: 3rem 1rem;
+  background-color: var(--ifm-background-color, #ffffff);
+  min-height: 100vh;
+
+  .example-container {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 2rem;
+
+    .example-title {
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--ifm-color-content, #111827);
+      background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-secondary) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+
+// Form styling for the example
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ifm-color-content, #374151);
+    margin-bottom: 0.375rem;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--ifm-color-emphasis-300, #d1d5db);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    background-color: var(--ifm-card-background-color, #ffffff);
+    color: var(--ifm-color-content, #111827);
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      outline: none;
+      border-color: var(--ifm-color-primary, #3b82f6);
+      box-shadow: 0 0 0 3px var(--ifm-color-primary-lighter, rgba(59, 130, 246, 0.1));
+    }
+
+    &::placeholder {
+      color: var(--ifm-color-emphasis-600, #9ca3af);
+    }
+  }
+
+  .form-range {
+    width: 100%;
+    margin: 0.75rem 0;
+    height: 6px;
+    background: var(--ifm-color-emphasis-200, #e5e7eb);
+    border-radius: 3px;
+    outline: none;
+    
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--ifm-color-primary, #3b82f6);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      
+      &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 8px var(--ifm-color-primary-lighter, rgba(59, 130, 246, 0.1));
+      }
+    }
+  }
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--ifm-color-emphasis-100, #f3f4f6);
+    }
+
+    .checkbox-input {
+      width: 1.125rem;
+      height: 1.125rem;
+      border: 2px solid var(--ifm-color-emphasis-400, #9ca3af);
+      border-radius: 4px;
+      color: var(--ifm-color-primary, #3b82f6);
+      transition: all 0.2s ease-in-out;
+
+      &:focus {
+        box-shadow: 0 0 0 3px var(--ifm-color-primary-lighter, rgba(59, 130, 246, 0.2));
+      }
+
+      &:checked {
+        border-color: var(--ifm-color-primary, #3b82f6);
+        background-color: var(--ifm-color-primary, #3b82f6);
+      }
+    }
+
+    .checkbox-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ifm-color-content, #374151);
+      cursor: pointer;
+    }
+  }
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ifm-color-content-secondary, #6b7280);
+  margin-top: 0.5rem;
+}
+
+.range-value {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--ifm-color-emphasis-100, #f3f4f6);
+  border-radius: 6px;
+  color: var(--ifm-color-primary, #3b82f6);
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .multistep-example {
+    padding: 2rem 0.75rem;
+
+    .example-container {
+      padding: 1rem;
+
+      .example-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  .form-section {
+    gap: 1.25rem;
+  }
+
+  .form-field {
+    .form-input,
+    .form-select,
+    .form-textarea {
+      padding: 0.75rem;
+    }
+  }
+}
+
+// Dark mode support
+[data-theme='dark'] {
+  .multistep-example {
+    background-color: var(--ifm-background-color, #0d1117);
+
+    .example-container {
+      .example-title {
+        color: var(--ifm-color-content, #f9fafb);
+      }
+    }
+  }
+
+  .form-field {
+    .form-label {
+      color: var(--ifm-color-content, #d1d5db);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background-color: var(--ifm-card-background-color, #1f2937);
+      border-color: var(--ifm-color-emphasis-400, #4b5563);
+      color: var(--ifm-color-content, #f9fafb);
+
+      &:focus {
+        border-color: var(--ifm-color-primary, #60a5fa);
+        box-shadow: 0 0 0 3px var(--ifm-color-primary-lighter, rgba(96, 165, 250, 0.1));
+      }
+
+      &::placeholder {
+        color: var(--ifm-color-emphasis-600, #6b7280);
+      }
+    }
+
+    .form-range {
+      background: var(--ifm-color-emphasis-400, #374151);
+
+      &::-webkit-slider-thumb {
+        background: var(--ifm-color-primary, #60a5fa);
+
+        &:hover {
+          box-shadow: 0 0 0 8px var(--ifm-color-primary-lighter, rgba(96, 165, 250, 0.1));
+        }
+      }
+    }
+  }
+
+  .checkbox-group {
+    .checkbox-item {
+      &:hover {
+        background-color: var(--ifm-color-emphasis-200, #374151);
+      }
+
+      .checkbox-input {
+        background-color: var(--ifm-card-background-color, #1f2937);
+        border-color: var(--ifm-color-emphasis-500, #6b7280);
+
+        &:checked {
+          border-color: var(--ifm-color-primary, #60a5fa);
+          background-color: var(--ifm-color-primary, #60a5fa);
+        }
+      }
+
+      .checkbox-label {
+        color: var(--ifm-color-content, #d1d5db);
+      }
+    }
+  }
+
+  .range-labels {
+    color: var(--ifm-color-content-secondary, #9ca3af);
+  }
+
+  .range-value {
+    background-color: var(--ifm-color-emphasis-200, #374151);
+    color: var(--ifm-color-primary, #60a5fa);
+  }
+}
