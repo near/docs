@@ -38,6 +38,7 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   onBrokenAnchors: 'throw',
+  staticDirectories: ['static', '../static'],
   presets: [
     [
       '@docusaurus/preset-classic',
