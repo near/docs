@@ -2,7 +2,7 @@
 id: security
 title: Security Considerations
 sidebar_label: Security Considerations
-description: This document outlines security considerations for deploying Shade Agents on the NEAR blockchain, including duplicate actions, transaction restrictions, and RPC trust.
+description: "This document outlines security considerations for deploying Shade Agents on the NEAR blockchain, including duplicate actions, transaction restrictions, and RPC trust."
 ---
 
 import { SigsSupport } from '@site/src/components/sigsSupport';

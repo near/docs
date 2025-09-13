@@ -25,7 +25,7 @@ These agents can autonomously sign transactions across any chain, interact with 
 
 
 :::info
-Shade Agents power [Agentic Protocols](./shade-agents/examples.md#agentic-protocols): a new type of decentralized application designed to be autonomous, proactive, and intelligent.
+Shade Agents power [Agentic Protocols](./shade-agents/what-can-you-build#agentic-protocols): a new type of decentralized application designed to be autonomous, proactive, and intelligent.
 :::
 
 ---
