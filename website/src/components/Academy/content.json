@@ -381,13 +381,7 @@
     },
     "check-hello-near": {
         "sectionTitle": "hello-near",
-        "check-acount2": [
-            {
-                "componentType": "contract-check",
-                "lessonTitle": "Verify Hello World Contract",
-                "description": "Check that your Hello World smart contract is properly deployed on NEAR testnet"
-            }
-        ]
+        "check-acount2": [{}]
     }    
 
 }

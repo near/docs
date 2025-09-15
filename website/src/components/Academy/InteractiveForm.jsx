@@ -5,6 +5,17 @@ import './InteractiveForm.scss';
 import Content from './content.json';
 import useAcademyProgress from './store/useAcademyProgress';
 
+const convertTotitle = (text) => {
+    return text
+        .trim()
+        .split('-')
+        .filter(word => word.length > 0)
+        .map(word =>
+            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+        )
+        .join(' ');
+}
+
 const InteractiveForm = ({ id }) => {
     if (!id) {
         return <div className="interactive-lesson-error">Error: No lesson ID provided.</div>;
@@ -140,12 +151,11 @@ const InteractiveForm = ({ id }) => {
 
     const currentStepData = lessonData[currentStepIndex];
 
-    // Mostrar página de completado
     if (showCompletionPage) {
         return (
             <div className="interactive-lesson">
                 <div className="lesson-header">
-                    <h1 className="lesson-title">Introduction to React</h1>
+                    <h1 className="lesson-title">{convertTotitle(lessonModule)}</h1>
                     <LessonProgress
                         current={lessonData.length}
                         total={lessonData.length}
@@ -162,7 +172,7 @@ const InteractiveForm = ({ id }) => {
                                     <h2>Congratulations!</h2>
                                     <p>You have successfully completed the entire lesson.</p>
                                     <p>You have demonstrated an excellent understanding of the concepts presented.</p>
-                                    
+
                                     <div className="completion-stats">
                                         <div className="stat-item">
                                             <span className="stat-number">{lessonData.length}</span>
@@ -203,7 +213,7 @@ const InteractiveForm = ({ id }) => {
     return (
         <div className={`interactive-lesson`}>
             <div className="lesson-header">
-                <h1 className="lesson-title">Introduction to React</h1>
+                <h1 className="lesson-title">{convertTotitle(lessonModule)}</h1>
                 <LessonProgress
                     current={currentStepIndex + 1}
                     total={lessonData.length}

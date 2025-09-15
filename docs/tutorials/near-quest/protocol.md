@@ -5,6 +5,7 @@ sidebar_label: ✅ Protocol
 description: Learn NEAR development through interactive quests and challenges designed to build your skills step by step.
 ---
 
+import InteractiveForm from "@site/src/components/Academy/InteractiveForm";
 
 Welcome! We are excited for you to embark on your NEAR Quest journey. Let's start by learning the fundamentals!
 
