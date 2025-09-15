@@ -21,12 +21,20 @@ In addition, a transaction has the following fields to ensure its integrity and 
 Users create transactions and sign them with their private keys. Then, the **transaction and its signature** are broadcast together to the network, where they are validated and processed.
 
 :::tip
-Each transaction has exactly one `Signer` and `Receiver`, but can have multiple `Actions`
+Each transaction has exactly one `Signer` and `Receiver`, but can have multiple `Actions`.
+:::
+
+:::info About nonce values
+- When adding a key, the `nonce` is automatically assigned - particularly, it is given the value `block height * 10^6` - so the value in the `ADD_KEY` action is ignored
+- A transaction is accepted only if the `nonce` value is in the range of:
+  - `[(current_nonce_of_access_key + 1) .. (block_height * 10^6)]`
+- Once a transaction is accepted, the access key's `nonce` is set to the `nonce` value of the included transaction
 :::
 
 ---
 
 ## Actions
+
 Each transaction can have **one or multiple** `Actions`, which are the actual operations to be performed on the `Receiver` account. There are 9 types of actions that can be performed:
 
 1. `FunctionCall`: to invoke a function on a contract (optionally attaching NEAR to the call)
