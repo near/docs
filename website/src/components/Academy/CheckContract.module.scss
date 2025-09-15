@@ -1,0 +1,87 @@
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.95rem;
+  font-family: var(--ifm-font-family-base);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
+  }
+
+  &::placeholder {
+    color: var(--ifm-color-emphasis-600);
+  }
+}
+
+.inputError {
+  border-color: var(--ifm-color-danger);
+  box-shadow: 0 0 0 2px var(--ifm-color-danger-lightest);
+}
+
+// Error message
+.errorMessage {
+  color: var(--ifm-color-danger);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+// Success message
+.successMessage {
+  padding: 0.75rem;
+  background-color: var(--ifm-color-success-contrast-background);
+  border: 1px solid var(--ifm-color-success-dark);
+  border-radius: 6px;
+  color: var(--ifm-color-success-darkest);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+// Input container for horizontal layout
+.inputContainer {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.inputWrapper {
+  flex: 1;
+}
+
+.submitButton {
+  flex-shrink: 0;
+  height: fit-content;
+  padding: 0.75rem 1.5rem;
+  white-space: nowrap;
+}
+
+// Mobile responsiveness
+@media (max-width: 768px) {
+  .container {
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+
+  .input {
+    font-size: 16px; // Prevents zoom on iOS
+  }
+
+  .inputContainer {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+}

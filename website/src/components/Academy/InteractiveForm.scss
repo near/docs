@@ -1,0 +1,110 @@
+// Interactive Lesson Component Styles
+.interactive-lesson {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .lesson-header {
+    margin-bottom: 2rem;
+    text-align: center;
+
+    .lesson-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ifm-color-content, #111827);
+      margin: 0 0 1.5rem 0;
+    }
+  }
+
+  .lesson-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+
+    @media (max-width: 968px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .lesson-main {
+    .lesson-content-area {
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      min-height: 400px;
+
+      .content-section {
+        .lesson-content {
+          h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--ifm-color-content, #111827);
+            margin: 0 0 1rem 0;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+
+          h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ifm-color-content, #111827);
+            margin: 0 0 1rem 0;
+          }
+
+          p {
+            color: var(--ifm-color-content-secondary, #6b7280);
+            line-height: 1.6;
+            margin: 0 0 1rem 0;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .lesson-navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+  }
+}
+
+.interactive-lesson-error {
+  padding: 1rem;
+  color: var(--ifm-color-danger);
+  background-color: var(--ifm-alert-background-color);
+  border: 1px solid var(--ifm-color-danger);
+  border-radius: var(--ifm-border-radius);
+  margin: 1rem 0;
+}
+
+// Dark mode support
+[data-theme='dark'] {
+  .interactive-lesson {
+    .lesson-header .lesson-title {
+      color: var(--ifm-color-content, #f9fafb);
+    }
+
+    .lesson-main .lesson-content-area {
+      border-color: var(--ifm-color-emphasis-300, #374151);
+
+      .content-section .lesson-content {
+        h3, h4 {
+          color: var(--ifm-color-content, #f9fafb);
+        }
+
+        p {
+          color: var(--ifm-color-content-secondary, #d1d5db);
+        }
+      }
+
+      .review-section {
+        color: var(--ifm-color-content, #f9fafb);
+      }
+    }
+  }
+}

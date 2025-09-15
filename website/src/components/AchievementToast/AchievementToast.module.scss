@@ -1,410 +1,180 @@
-// Achievement Toast Styles - Steam-inspired design with NEAR branding
+/* Achievement Toast Styles */
 .achievementToast {
-  position: fixed;
-  top: 20px;
-  right: -400px; // Start off-screen
-  width: 380px;
-  background: linear-gradient(135deg, 
-    rgba(21, 32, 43, 0.95) 0%, 
-    rgba(33, 47, 61, 0.95) 50%, 
-    rgba(21, 32, 43, 0.95) 100%);
-  border: 2px solid #3b82f6;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a66 100%);
+  border: 2px solid #4a90e2;
   border-radius: 8px;
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(59, 130, 246, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  color: white;
-  font-family: var(--bs-font-sans-serif);
-  z-index: 9999;
-  cursor: pointer;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  
-  &:hover {
-    transform: translateX(-5px) scale(1.02);
-    box-shadow: 
-      0 15px 40px rgba(0, 0, 0, 0.6),
-      0 0 25px rgba(59, 130, 246, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  }
-}
-
-.visible {
-  right: 20px;
-  transform: translateX(0);
-}
-
-// Rarity variants
-.common {
-  border-color: #6b7280;
-  
-  .glow {
-    background: radial-gradient(circle at center, rgba(107, 114, 128, 0.3) 0%, transparent 70%);
-  }
-}
-
-.rare {
-  border-color: #3b82f6;
-  
-  .glow {
-    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
-  }
-}
-
-.epic {
-  border-color: #8b5cf6;
-  animation: epicPulse 2s ease-in-out infinite alternate;
-  
-  .glow {
-    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
-  }
-  
-  .iconContainer {
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0.1) 70%);
-    border: 2px solid rgba(139, 92, 246, 0.6);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
-  }
-  
-  .content {
-    background: linear-gradient(135deg, 
-      rgba(139, 92, 246, 0.1) 0%, 
-      transparent 50%, 
-      rgba(139, 92, 246, 0.1) 100%);
-  }
-}
-
-.legendary {
-  border-color: #f59e0b;
-  
-  .glow {
-    background: radial-gradient(circle at center, rgba(245, 158, 11, 0.5) 0%, transparent 70%);
-  }
-  
-  .content {
-    background: linear-gradient(135deg, 
-      rgba(245, 158, 11, 0.1) 0%, 
-      transparent 50%, 
-      rgba(245, 158, 11, 0.1) 100%);
-  }
-}
-
-.glow {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  right: -50%;
-  bottom: -50%;
-  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
-  animation: pulseGlow 2s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-.content {
-  position: relative;
-  display: flex;
-  align-items: center;
   padding: 16px;
-  gap: 12px;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.05) 0%, 
-    transparent 50%, 
-    rgba(255, 255, 255, 0.02) 100%);
-}
-
-.iconContainer {
+  min-width: 320px;
+  max-width: 400px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 70%);
-  border: 2px solid rgba(59, 130, 246, 0.5);
-  border-radius: 50%;
-  flex-shrink: 0;
+  overflow: hidden;
 }
 
-.icon {
-  font-size: 28px;
-  animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.sparkles {
+.achievementToast::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  pointer-events: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: shimmer 2s ease-in-out infinite;
 }
 
-.sparkle {
-  position: absolute;
-  font-size: 12px;
-  animation: sparkle 2s ease-in-out infinite;
+@keyframes slideIn {
+  from {
+    transform: translateX(100%) rotateX(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) rotateX(0deg);
+    opacity: 1;
+  }
 }
 
-.sparkle1 {
-  top: -5px;
-  right: -5px;
-  animation-delay: 0s;
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
-.sparkle2 {
-  bottom: -8px;
-  left: -8px;
-  animation-delay: 0.7s;
+/* Rarity-specific styles */
+.achievementToast.common {
+  border-color: #6b7280;
+  background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
 }
 
-.sparkle3 {
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation-delay: 1.4s;
+.achievementToast.rare {
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
 }
 
-.text {
-  flex: 1;
-  min-width: 0; // Allow text to shrink
+.achievementToast.epic {
+  border-color: #8b5cf6;
+  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
 }
 
-.header {
+.achievementToast.legendary {
+  border-color: #f59e0b;
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  box-shadow: 
+    0 8px 32px rgba(245, 158, 11, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.achievementHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.achievementIcon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.achievementTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.achievementDescription {
+  font-size: 13px;
+  color: #e5e7eb;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.achievementFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4px;
+  font-size: 12px;
+  color: #9ca3af;
 }
 
-.headerRight {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.label {
-  font-size: 11px;
+.xpBadge {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 12px;
   font-weight: 600;
+}
+
+.rarityBadge {
   text-transform: uppercase;
-  color: #82aaff;
+  font-weight: 600;
   letter-spacing: 0.5px;
 }
 
-.xp {
-  font-size: 12px;
-  font-weight: 700;
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.1);
-  padding: 2px 6px;
-  border-radius: 4px;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+.rarityBadge.common {
+  color: #d1d5db;
 }
 
-.queueIndicator {
-  font-size: 11px;
-  font-weight: 600;
-  color: #82aaff;
-  background: rgba(130, 170, 255, 0.1);
-  padding: 2px 6px;
-  border-radius: 4px;
-  border: 1px solid rgba(130, 170, 255, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
+.rarityBadge.rare {
+  color: #60a5fa;
 }
 
-.title {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0 0 4px 0;
-  color: white;
-  line-height: 1.2;
-  word-wrap: break-word;
+.rarityBadge.epic {
+  color: #a78bfa;
 }
 
-.description {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
-  margin: 0;
-  line-height: 1.3;
-  word-wrap: break-word;
+.rarityBadge.legendary {
+  color: #fbbf24;
 }
 
-.close {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 24px;
-  font-weight: 300;
-  cursor: pointer;
-  padding: 0;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-  
-  &:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.1);
-  }
-}
+/* Dark theme adjustments - styles are already optimized for dark theme */
 
-.progressBar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-}
-
-.progressFill {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, #3b82f6, #82aaff);
-  transform: translateX(-100%);
-  animation: progressFill 6s linear forwards;
-}
-
-// Animations
-@keyframes bounceIn {
-  0% {
-    transform: scale(0) rotate(-180deg);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.2) rotate(-90deg);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes sparkle {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(0.5) rotate(0deg);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2) rotate(180deg);
-  }
-}
-
-@keyframes pulseGlow {
-  0% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0.8;
-    transform: scale(1.1);
-  }
-}
-
-@keyframes progressFill {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-@keyframes epicPulse {
-  0% {
-    box-shadow: 
-      0 10px 30px rgba(0, 0, 0, 0.5),
-      0 0 20px rgba(139, 92, 246, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  100% {
-    box-shadow: 
-      0 15px 40px rgba(0, 0, 0, 0.6),
-      0 0 30px rgba(139, 92, 246, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  }
-}
-
-// Dark theme adjustments
-:global([data-theme='dark']) .achievementToast {
-  background: linear-gradient(135deg, 
-    rgba(13, 17, 23, 0.95) 0%, 
-    rgba(33, 38, 45, 0.95) 50%, 
-    rgba(13, 17, 23, 0.95) 100%);
-}
-
-:global([data-theme='dark']) .legendary .content {
-  background: linear-gradient(135deg, 
-    rgba(245, 158, 11, 0.15) 0%, 
-    transparent 50%, 
-    rgba(245, 158, 11, 0.15) 100%);
-}
-
-// Light theme adjustments
+/* Light theme adjustments */
 :global([data-theme='light']) .achievementToast {
-  background: linear-gradient(135deg, 
-    rgba(248, 250, 252, 0.95) 0%, 
-    rgba(241, 245, 249, 0.95) 50%, 
-    rgba(248, 250, 252, 0.95) 100%);
-  color: #1f2937;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-color: #e2e8f0;
+  color: #1e293b;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
-:global([data-theme='light']) .title {
-  color: #1f2937;
+:global([data-theme='light']) .achievementTitle {
+  color: #1e293b;
 }
 
-:global([data-theme='light']) .description {
-  color: rgba(31, 41, 55, 0.8);
+:global([data-theme='light']) .achievementDescription {
+  color: #64748b;
 }
 
-:global([data-theme='light']) .close {
-  color: rgba(31, 41, 55, 0.6);
-  
-  &:hover {
-    color: #1f2937;
-    background: rgba(31, 41, 55, 0.1);
-  }
+:global([data-theme='light']) .achievementFooter {
+  color: #64748b;
 }
 
-// Responsive design
-@media (max-width: 768px) {
+:global([data-theme='light']) .xpBadge {
+  background: rgba(0, 0, 0, 0.1);
+  color: #1e293b;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
   .achievementToast {
-    width: calc(100vw - 40px);
-    right: -100vw;
-  }
-  
-  .visible {
-    right: 20px;
-  }
-  
-  .content {
+    min-width: 280px;
+    max-width: 320px;
     padding: 12px;
-    gap: 10px;
   }
   
-  .iconContainer {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .icon {
-    font-size: 24px;
-  }
-  
-  .title {
+  .achievementTitle {
     font-size: 14px;
   }
   
-  .description {
+  .achievementDescription {
     font-size: 12px;
+  }
+  
+  .achievementIcon {
+    font-size: 20px;
   }
 }

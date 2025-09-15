@@ -6,9 +6,6 @@ description: Learn NEAR development through interactive quests and challenges de
 hide_table_of_contents: true
 ---
 
-import QuestAchievementDemo from "@site/src/components/QuestAchievementDemo";
-import { MultiStepExample } from "@site/src/components/MultiStep";
-import { InteractiveLessonComponent } from "@site/src/components/InteractiveLessonComponent";
 
 Welcome to NEAR Quest - an interactive learning journey designed to help you master NEAR Protocol development through hands-on challenges and guided quests.
 
@@ -94,15 +91,12 @@ Each quest includes:
 Experience NEAR Quest's interactive lesson format below! This demo shows how lessons are structured with content, progress tracking, and review questions to reinforce your learning.
 :::
 
-<InteractiveLessonComponent />
 
 :::tip Try the Achievement System
 Click the buttons below to experience NEAR Quest's gamified achievement system in action! The toast notifications are inspired by Steam's achievement design but tailored for Web3 development milestones.
 :::
 
-<MultiStepExample />
 
-<QuestAchievementDemo />
 
 ## Quest Progress Tracking
 

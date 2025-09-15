@@ -5,9 +5,6 @@ sidebar_label: ✅ Protocol
 description: Learn NEAR development through interactive quests and challenges designed to build your skills step by step.
 ---
 
-import QuestAchievementDemo from "@site/src/components/QuestAchievementDemo";
-import { MultiStepExample } from "@site/src/components/MultiStep";
-import { InteractiveLessonComponent } from "@site/src/components/InteractiveLessonComponent";
 
 Welcome! We are excited for you to embark on your NEAR Quest journey. Let's start by learning the fundamentals!
 
@@ -28,7 +25,6 @@ In technical terms, NEAR is a [layer-one](https://coinmarketcap.com/academy/glos
 
 
 
-<InteractiveLessonComponent />
 
 
 
@@ -44,9 +40,7 @@ Experience NEAR Quest's interactive lesson format below! This demo shows how les
 Click the buttons below to experience NEAR Quest's gamified achievement system in action! The toast notifications are inspired by Steam's achievement design but tailored for Web3 development milestones.
 :::
 
-<MultiStepExample />
 
-<QuestAchievementDemo />
 
 ## Quest Progress Tracking
 

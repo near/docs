@@ -1,0 +1,393 @@
+{
+    "protocol": {
+        "sectionTitle": "Protocol",
+        "react-intro": [
+            {
+                "componentType": "content",
+                "lessonTitle": "Introduction to React",
+                "htmlContent": "<h4>Introduction to React</h4><p>This is where the main lesson content would be displayed. You could include text, images, videos, interactive examples, and other educational materials.</p><p>The content area is designed to be flexible and can accommodate various types of learning materials to help students understand the concepts being taught.</p>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "q1",
+                "questionText": "Which of the following is the correct way to create a React component?",
+                "answerChoices": [
+                    {
+                        "choiceText": "function Component() { return <div>Hello</div>; }",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "const Component = () => <div>Hello</div>;",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "class Component extends React.Component { render() { return <div>Hello</div>; } }",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "All of the above",
+                        "isCorrect": true
+                    }
+                ]
+            },
+            {
+                "componentType": "content",
+                "lessonTitle": "React Components and JSX",
+                "htmlContent": "<h4>Understanding React Components</h4><p>React components are the building blocks of React applications. They let you split the UI into independent, reusable pieces, and think about each piece in isolation.</p><p>JSX is a syntax extension for JavaScript that looks similar to HTML. It allows you to write HTML-like code in your JavaScript files, making it easier to create and visualize your component structure.</p><code>const Welcome = (props) => { return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;; };</code>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "q2",
+                "questionText": "What is JSX in React?",
+                "answerChoices": [
+                    {
+                        "choiceText": "A JavaScript library",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "A syntax extension that allows HTML-like code in JavaScript",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "A CSS framework",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "A database query language",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "componentType": "content",
+                "lessonTitle": "Props and State",
+                "htmlContent": "<h4>Props vs State in React</h4><p>Props (properties) are read-only data passed from parent components to child components. They allow components to be dynamic and reusable.</p><p>State is data that belongs to a component and can change over time. When state changes, React re-renders the component to reflect the new state.</p><ul><li><strong>Props:</strong> Immutable, passed down from parent</li><li><strong>State:</strong> Mutable, managed within the component</li></ul><p>Use the useState hook in functional components to manage state.</p>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "q3",
+                "questionText": "Which hook is used to manage state in functional React components?",
+                "answerChoices": [
+                    {
+                        "choiceText": "useEffect",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "useState",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "useContext",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "useReducer",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "componentType": "content",
+                "lessonTitle": "React Hooks and Effects",
+                "htmlContent": "<h4>Understanding React Hooks</h4><p>React Hooks are functions that let you use state and other React features in functional components. They were introduced in React 16.8.</p><p>The useEffect hook lets you perform side effects in functional components. It serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount combined in React class components.</p><p>Common use cases for useEffect include:</p><ul><li>Data fetching</li><li>Setting up subscriptions</li><li>Manually changing the DOM</li><li>Cleanup operations</li></ul>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "q4",
+                "questionText": "When does useEffect run by default?",
+                "answerChoices": [
+                    {
+                        "choiceText": "Only on component mount",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "Only on component unmount",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "After every render (mount and update)",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "Only when props change",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "componentType": "content",
+                "lessonTitle": "Event Handling in React",
+                "htmlContent": "<h4>Handling Events in React</h4><p>React events are named using camelCase, and you pass a function as the event handler rather than a string. React uses SyntheticEvents, which wrap native events to provide consistent behavior across different browsers.</p><p>Common event handlers include onClick, onChange, onSubmit, onMouseOver, and onKeyDown. Event handlers receive an event object as their first parameter.</p><code>const Button = () => { const handleClick = (e) => { console.log('Button clicked!'); }; return &lt;button onClick={handleClick}&gt;Click me&lt;/button&gt;; };</code>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "q5",
+                "questionText": "Which of the following is the correct way to handle a click event in React?",
+                "answerChoices": [
+                    {
+                        "choiceText": "<button onclick=\"handleClick()\">Click</button>",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "<button onClick={handleClick}>Click</button>",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "<button on-click={handleClick}>Click</button>",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "<button click={handleClick}>Click</button>",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        ],
+        "javascript-fundamentals": [
+            {
+                "componentType": "content",
+                "lessonTitle": "Introduction to JavaScript",
+                "htmlContent": "<h4>Introduction to JavaScript</h4><p>JavaScript is a versatile programming language that powers the web. It's used for both front-end and back-end development, making it one of the most important languages to learn for web developers.</p><p>JavaScript enables interactive web pages and is an essential part of web applications. Along with HTML and CSS, JavaScript is one of the core technologies of the World Wide Web.</p>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "js-q1",
+                "questionText": "What type of language is JavaScript?",
+                "answerChoices": [
+                    {
+                        "choiceText": "Compiled language",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "Interpreted language",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "Assembly language",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "Machine language",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "componentType": "content",
+                "lessonTitle": "Variables and Data Types",
+                "htmlContent": "<h4>JavaScript Variables and Data Types</h4><p>JavaScript has several ways to declare variables: var, let, and const. Modern JavaScript primarily uses let and const for better scope management.</p><p>JavaScript supports various data types including:</p><ul><li><strong>Primitives:</strong> string, number, boolean, null, undefined, symbol</li><li><strong>Objects:</strong> arrays, functions, objects</li></ul><code>let name = 'John'; // string<br>const age = 25; // number<br>let isActive = true; // boolean</code>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "js-q2",
+                "questionText": "Which keyword should you use to declare a constant in JavaScript?",
+                "answerChoices": [
+                    {
+                        "choiceText": "var",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "let",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "const",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "constant",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "componentType": "content",
+                "lessonTitle": "Functions and Scope",
+                "htmlContent": "<h4>JavaScript Functions and Scope</h4><p>Functions are reusable blocks of code that perform specific tasks. JavaScript supports multiple ways to define functions: function declarations, function expressions, and arrow functions.</p><p>Scope determines where variables can be accessed in your code. JavaScript has global scope, function scope, and block scope.</p><code>// Function declaration<br>function greet(name) { return 'Hello, ' + name; }<br><br>// Arrow function<br>const greet = (name) => `Hello, ${name}`;</code>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "js-q3",
+                "questionText": "What is the correct syntax for an arrow function?",
+                "answerChoices": [
+                    {
+                        "choiceText": "function => (x) { return x * 2; }",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "const double = (x) => { return x * 2; }",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "const double = (x) -> { return x * 2; }",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "const double => (x) { return x * 2; }",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "componentType": "content",
+                "lessonTitle": "Arrays and Objects",
+                "htmlContent": "<h4>Working with Arrays and Objects</h4><p>Arrays and objects are fundamental data structures in JavaScript. Arrays store ordered lists of values, while objects store key-value pairs.</p><p>Modern JavaScript provides many useful methods for working with arrays like map(), filter(), reduce(), and forEach(). Objects can be created using object literals or constructor functions.</p><ul><li><strong>Arrays:</strong> [1, 2, 3, 'hello', true]</li><li><strong>Objects:</strong> { name: 'John', age: 30, city: 'New York' }</li></ul>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "js-q4",
+                "questionText": "Which method would you use to create a new array with all elements that pass a test?",
+                "answerChoices": [
+                    {
+                        "choiceText": "map()",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "filter()",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "reduce()",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "forEach()",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        ]
+    },
+    "wallet": {
+        "sectionTitle": "Wallet",
+        "wallet-basics": [
+            {
+                "componentType": "content",
+                "lessonTitle": "Introduction to NEAR Wallets",
+                "htmlContent": "<h4>Introduction to NEAR Wallets</h4><p>A NEAR wallet is your gateway to the NEAR ecosystem. It allows you to store, send, and receive NEAR tokens, interact with decentralized applications (dApps), and manage your digital assets securely.</p><p>NEAR wallets provide a user-friendly interface for managing your blockchain interactions, making it easy for both beginners and experienced users to participate in the decentralized economy.</p>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "w-q1",
+                "questionText": "What is the primary purpose of a NEAR wallet?",
+                "answerChoices": [
+                    {
+                        "choiceText": "To store files on the blockchain",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "To store, send, and receive NEAR tokens",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "To mine NEAR tokens",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "To validate transactions",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "componentType": "content",
+                "lessonTitle": "Wallet Security and Best Practices",
+                "htmlContent": "<h4>Securing Your NEAR Wallet</h4><p>Security is paramount when dealing with cryptocurrency wallets. Your wallet contains valuable assets, so it's crucial to follow best practices to keep them safe.</p><p>Key security measures include:</p><ul><li><strong>Seed Phrase:</strong> Store your recovery phrase securely offline</li><li><strong>Strong Passwords:</strong> Use unique, complex passwords</li><li><strong>Two-Factor Authentication:</strong> Enable 2FA when available</li><li><strong>Regular Backups:</strong> Keep multiple secure backups of your wallet</li></ul><p>Never share your private keys or seed phrase with anyone, and be cautious of phishing attempts.</p>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "w-q2",
+                "questionText": "What should you do with your wallet's seed phrase?",
+                "answerChoices": [
+                    {
+                        "choiceText": "Share it with trusted friends",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "Store it securely offline",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "Save it in your email",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "Post it on social media",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "componentType": "content",
+                "lessonTitle": "Interacting with dApps",
+                "htmlContent": "<h4>Using Your Wallet with Decentralized Applications</h4><p>One of the most powerful features of NEAR wallets is their ability to interact with decentralized applications (dApps). Your wallet acts as your identity and authorization tool in the decentralized web.</p><p>When connecting to a dApp, you'll typically see a connection request that asks for permission to:</p><ul><li>View your account address</li><li>Request transaction approvals</li><li>Access specific smart contract functions</li></ul><p>Always review permissions carefully before connecting your wallet to any dApp, and only use trusted applications.</p>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "w-q3",
+                "questionText": "What should you do before connecting your wallet to a dApp?",
+                "answerChoices": [
+                    {
+                        "choiceText": "Share your private key",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "Review the permissions and verify the dApp is trusted",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "Send tokens first",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "Create a new wallet",
+                        "isCorrect": false
+                    }
+                ]
+            },
+            {
+                "componentType": "content",
+                "lessonTitle": "Managing Transactions",
+                "htmlContent": "<h4>Understanding NEAR Transactions</h4><p>Transactions on NEAR are fast, secure, and cost-effective. Your wallet helps you manage all types of transactions, from simple token transfers to complex smart contract interactions.</p><p>Key transaction concepts:</p><ul><li><strong>Gas Fees:</strong> Small fees paid for transaction processing</li><li><strong>Transaction Hash:</strong> Unique identifier for each transaction</li><li><strong>Confirmation Time:</strong> Usually under 2 seconds on NEAR</li><li><strong>Transaction History:</strong> Complete record of all your transactions</li></ul><p>Always double-check transaction details before confirming, as blockchain transactions are irreversible.</p>"
+            },
+            {
+                "componentType": "quiz",
+                "quizId": "w-q4",
+                "questionText": "What are gas fees used for in NEAR transactions?",
+                "answerChoices": [
+                    {
+                        "choiceText": "To increase transaction speed",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "To pay for transaction processing",
+                        "isCorrect": true
+                    },
+                    {
+                        "choiceText": "To store data permanently",
+                        "isCorrect": false
+                    },
+                    {
+                        "choiceText": "To encrypt transactions",
+                        "isCorrect": false
+                    }
+                ]
+            }
+        ]
+    }, 
+    "create-wallet": {
+        "sectionTitle": "Wallet2",
+        "check-acount":[{}]
+    },
+    "check-hello-near": {
+        "sectionTitle": "hello-near",
+        "check-acount2": [
+            {
+                "componentType": "contract-check",
+                "lessonTitle": "Verify Hello World Contract",
+                "description": "Check that your Hello World smart contract is properly deployed on NEAR testnet"
+            }
+        ]
+    }    
+
+}

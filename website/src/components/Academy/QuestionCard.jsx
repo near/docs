@@ -1,4 +1,3 @@
-import React from 'react';
 import './QuestionCard.scss';
 
 const QuestionCard = ({ 

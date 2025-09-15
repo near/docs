@@ -1,11 +1,10 @@
-import React from 'react';
 import './LessonProgress.scss';
 
 const LessonProgress = ({ current, total, progress }) => {
   return (
     <div className="lesson-progress">
       <div className="progress-header">
-        <h3 className="progress-title">TOTAL PROGRESS</h3>
+        <h3 className="progress-title">Total Progress</h3>
         <div className="progress-bar">
           <div 
             className="progress-fill" 
@@ -13,10 +12,10 @@ const LessonProgress = ({ current, total, progress }) => {
           ></div>
         </div>
         <div className="progress-stats">
-          <span className="lessons-completed">
-            {current} of {total} lessons completed
+          <span className="lessons-completed badge">
+            {current}/{total}
           </span>
-          <span className="progress-percentage">
+          <span className="progress-percentage badge">
             {progress}%
           </span>
         </div>

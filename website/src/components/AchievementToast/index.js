@@ -1,2 +1,3 @@
 export { default as AchievementToast } from './AchievementToast.jsx';
-export { useAchievements, ACHIEVEMENTS } from './useAchievements.js';
+export { useAchievements } from './useAchievements.js';
+export { ACHIEVEMENTS } from './achievements.js';
