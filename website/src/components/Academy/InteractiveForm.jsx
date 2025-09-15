@@ -24,6 +24,7 @@ const InteractiveForm = ({ id }) => {
     const [isAnswered, setIsAnswered] = useState(false);
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
     const [progress, setProgress] = useState(0);
+    const [showCompletionPage, setShowCompletionPage] = useState(false);
 
     useEffect(() => {
         let lastCompletedStep = -1;
@@ -40,6 +41,7 @@ const InteractiveForm = ({ id }) => {
         setSelectedChoice(null);
         setShowFeedback(false);
         setIsAnswered(false);
+        setShowCompletionPage(false);
 
         const initialProgress = Math.round((startStep / lessonData.length) * 100);
         setProgress(initialProgress);
@@ -80,10 +82,9 @@ const InteractiveForm = ({ id }) => {
         if (selectedChoiceData?.isCorrect) {
             markLessonComplete(section, lessonModule, currentStepIndex);
 
-            // onProgressUpdate?.(newProgress); 
-
             if (currentStepIndex >= lessonData.length - 1) {
-                // onLessonComplete?.();
+                setShowCompletionPage(true);
+                setProgress(100);
             }
         }
     };
@@ -100,7 +101,8 @@ const InteractiveForm = ({ id }) => {
                 setShowFeedback(false);
                 setIsAnswered(false);
             } else {
-                // onLessonComplete?.();
+                setShowCompletionPage(true);
+                setProgress(100);
             }
         } else if (currentStep.componentType === 'quiz' && isAnswered) {
             const selectedChoiceIndex = parseInt(selectedChoice.replace('choice', '')) - 1;
@@ -112,7 +114,8 @@ const InteractiveForm = ({ id }) => {
                 setShowFeedback(false);
                 setIsAnswered(false);
             } else {
-                // onLessonComplete?.();
+                setShowCompletionPage(true);
+                setProgress(100);
             }
         }
     };
@@ -126,7 +129,76 @@ const InteractiveForm = ({ id }) => {
         }
     };
 
+    const handleRestartLesson = () => {
+        setCurrentStepIndex(0);
+        setSelectedChoice(null);
+        setShowFeedback(false);
+        setIsAnswered(false);
+        setShowCompletionPage(false);
+        setProgress(0);
+    };
+
     const currentStepData = lessonData[currentStepIndex];
+
+    // Mostrar página de completado
+    if (showCompletionPage) {
+        return (
+            <div className="interactive-lesson">
+                <div className="lesson-header">
+                    <h1 className="lesson-title">Introduction to React</h1>
+                    <LessonProgress
+                        current={lessonData.length}
+                        total={lessonData.length}
+                        progress={100}
+                    />
+                </div>
+
+                <div className="lesson-layout">
+                    <div className="lesson-main">
+                        <div className="lesson-content-area">
+                            <div className="completion-section">
+                                <div className="completion-content">
+                                    <div className="completion-icon">🎉</div>
+                                    <h2>Congratulations!</h2>
+                                    <p>You have successfully completed the entire lesson.</p>
+                                    <p>You have demonstrated an excellent understanding of the concepts presented.</p>
+                                    
+                                    <div className="completion-stats">
+                                        <div className="stat-item">
+                                            <span className="stat-number">{lessonData.length}</span>
+                                            <span className="stat-label">Completed steps</span>
+                                        </div>
+                                        <div className="stat-item">
+                                            <span className="stat-number">100%</span>
+                                            <span className="stat-label">Progress</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="lesson-navigation">
+                            <button
+                                className="button button--outline button--primary"
+                                onClick={handleRestartLesson}
+                            >
+                                Restart Lesson
+                            </button>
+                            <button
+                                className="button button--primary"
+                                onClick={() => {
+                                    // Here you can add navigation to the next lesson or main page
+                                    console.log('Continue to next lesson');
+                                }}
+                            >
+                                Continue
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className={`interactive-lesson`}>

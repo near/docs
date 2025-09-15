@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import toast from 'react-hot-toast';
 import Content from '../content.json';
 
 // Calculate total lessons across all sections and modules
@@ -12,7 +13,7 @@ const calculateTotals = () => {
     totalSections++;
     const sectionData = Content[section];
     let sectionLessons = 0;
-    
+
     Object.keys(sectionData).forEach((module) => {
       if (module !== 'sectionTitle') {
         const moduleData = sectionData[module];
@@ -44,34 +45,49 @@ const useAcademyProgress = create(
       sectionProgress: { ...sectionDetails },
       totalLessons,
       totalSections,
-      
+
       // Actions
       markLessonComplete: (sectionId, moduleId, lessonIndex, contractName = null) => {
         const lessonKey = `${sectionId}.${moduleId}.${lessonIndex}`;
-        
+
         set((state) => {
           const newCompletedLessons = { ...state.completedLessons };
           const newContractNames = { ...state.contractNames };
           const newSectionProgress = { ...state.sectionProgress };
-          
+
           const wasAlreadyCompleted = newCompletedLessons[lessonKey];
-          
+
           // Mark lesson as completed
           newCompletedLessons[lessonKey] = true;
-          
+
           // Save contract name if provided (always update, even if lesson was already completed)
           if (contractName && contractName.trim()) {
             newContractNames[lessonKey] = contractName.trim();
           }
-          
+
           // Update section progress only if lesson wasn't already completed
           if (!wasAlreadyCompleted && newSectionProgress[sectionId]) {
+            const newCompletedCount = newSectionProgress[sectionId].completedLessons + 1;
+            const totalSectionLessons = newSectionProgress[sectionId].totalLessons;
+            
             newSectionProgress[sectionId] = {
               ...newSectionProgress[sectionId],
-              completedLessons: newSectionProgress[sectionId].completedLessons + 1
+              completedLessons: newCompletedCount
             };
+
+            if (newCompletedCount === totalSectionLessons) {
+              setTimeout(() => {
+                toast.success(
+                  `🎉 Congratulations! You have completed the "${newSectionProgress[sectionId].title}" section`,
+                  {
+                    duration: 4000,
+                    position: 'top-center',
+                  }
+                );
+              }, 200); // Increased delay to ensure UI is ready
+            }
           }
-          
+
           return {
             completedLessons: newCompletedLessons,
             contractNames: newContractNames,
@@ -79,24 +95,24 @@ const useAcademyProgress = create(
           };
         });
       },
-      
+
       markLessonIncomplete: (sectionId, moduleId, lessonIndex) => {
         const lessonKey = `${sectionId}.${moduleId}.${lessonIndex}`;
-        
+
         set((state) => {
           const newCompletedLessons = { ...state.completedLessons };
           const newContractNames = { ...state.contractNames };
           const newSectionProgress = { ...state.sectionProgress };
-          
+
           // Mark lesson as incomplete
           if (newCompletedLessons[lessonKey]) {
             delete newCompletedLessons[lessonKey];
-            
+
             // Remove contract name if it exists
             if (newContractNames[lessonKey]) {
               delete newContractNames[lessonKey];
             }
-            
+
             // Update section progress
             if (newSectionProgress[sectionId]) {
               newSectionProgress[sectionId] = {
@@ -105,7 +121,7 @@ const useAcademyProgress = create(
               };
             }
           }
-          
+
           return {
             completedLessons: newCompletedLessons,
             contractNames: newContractNames,
@@ -113,38 +129,38 @@ const useAcademyProgress = create(
           };
         });
       },
-      
+
       isLessonCompleted: (sectionId, moduleId, lessonIndex) => {
         const lessonKey = `${sectionId}.${moduleId}.${lessonIndex}`;
         return get().completedLessons[lessonKey] || false;
       },
-      
+
       getTotalCompletedLessons: () => {
         return Object.keys(get().completedLessons).length;
       },
-      
+
       getOverallProgress: () => {
         const completed = Object.keys(get().completedLessons).length;
         return Math.round((completed / totalLessons) * 100);
       },
-      
+
       getSectionProgress: (sectionId) => {
         return get().sectionProgress[sectionId] || null;
       },
-      
+
       getAllSections: () => {
         return get().sectionProgress;
       },
-      
+
       getContractName: (sectionId, moduleId, lessonIndex) => {
         const lessonKey = `${sectionId}.${moduleId}.${lessonIndex}`;
         return get().contractNames[lessonKey] || null;
       },
-      
+
       getAllContractNames: () => {
         return get().contractNames;
       },
-      
+
       resetProgress: () => {
         set({
           completedLessons: {},

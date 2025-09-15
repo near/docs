@@ -108,3 +108,87 @@
     }
   }
 }
+
+// Completion Page Styles
+.completion-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+
+  .completion-content {
+    text-align: center;
+    max-width: 500px;
+
+    .completion-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--ifm-color-success, #10b981);
+      margin: 0 0 1rem 0;
+    }
+
+    p {
+      color: var(--ifm-color-content-secondary, #6b7280);
+      line-height: 1.6;
+      margin: 0 0 1rem 0;
+      font-size: 1.1rem;
+
+      &:last-of-type {
+        margin-bottom: 2rem;
+      }
+    }
+
+    .completion-stats {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin: 2rem 0;
+
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .stat-number {
+          font-size: 2rem;
+          font-weight: 700;
+          color: var(--ifm-color-success, #10b981);
+          margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+          color: var(--ifm-color-content-secondary, #6b7280);
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+// Dark mode support for completion page
+[data-theme='dark'] {
+  .completion-section .completion-content {
+    h2 {
+      color: var(--ifm-color-success, #34d399);
+    }
+
+    p {
+      color: var(--ifm-color-content-secondary, #d1d5db);
+    }
+
+    .completion-stats .stat-item {
+      .stat-number {
+        color: var(--ifm-color-success, #34d399);
+      }
+
+      .stat-label {
+        color: var(--ifm-color-content-secondary, #d1d5db);
+      }
+    }
+  }
+}

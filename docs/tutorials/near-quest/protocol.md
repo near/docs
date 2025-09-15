@@ -73,3 +73,5 @@ Let your NEAR development journey begin! 🚀
 ---
 
 *NEAR Quest is designed to make learning blockchain development engaging and practical. Each quest builds upon previous knowledge while introducing new concepts in an approachable way.*
+<InteractiveForm id="protocol.react-intro"/>
+<InteractiveForm id="protocol.javascript-fundamentals"/>
