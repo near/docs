@@ -5,7 +5,6 @@ sidebar_label: 📖 Create your first smart contract
 description: Learn NEAR development through interactive quests and challenges designed to build your skills step by step.
 ---
 
-import InteractiveForm from "@site/src/components/Academy/InteractiveForm";
 import CheckContract from "@site/src/components/Academy/CheckContract";
 
 It is time to create your first smart contract! If you haven't done it yet, please create your NEAR Wallet first.

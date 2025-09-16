@@ -5,12 +5,11 @@ sidebar_label: ✅ Protocol
 description: Learn NEAR development through interactive quests and challenges designed to build your skills step by step.
 ---
 
-import InteractiveForm from "@site/src/components/Academy/InteractiveForm";
-import { MultipleChoice, Option } from "@site/src/components/Academy/InteractiveForm";
+import { Quiz, MultipleChoice, Option } from "@site/src/components/Academy/Quiz";
 import Progress from "@site/src/components/Academy/Progress";
 
 
-<Progress total={6} />
+<Progress course="protocol" total={6} />
 
 
 Welcome! We are excited for you to embark on your NEAR Quest journey. Let's start by learning the fundamentals!
@@ -39,7 +38,7 @@ Ut orci nunc, semper eget tincidunt et, egestas ut ligula. Sed sit amet turpis r
 
 ## Quiz
 
-<InteractiveForm id="protocol-quiz">
+<Quiz course="protocol" id="protocol-quiz">
     <MultipleChoice question="Which of the following best describes NEAR?">
         <Option> A. NEAR is a layer-one, sharded, proof-of-stake blockchain.</Option>
         <Option> B. NEAR is a layer-two, non-sharded, proof-of-work blockchain.</Option>
@@ -58,4 +57,4 @@ Ut orci nunc, semper eget tincidunt et, egestas ut ligula. Sed sit amet turpis r
         <Option> C. Proof-of-stake and proof-of-work use the same amount of electricity.</Option>
         <Option> D. Proof-of-stake is not used in NEAR </Option>
     </MultipleChoice>
-</InteractiveForm>
+</Quiz>

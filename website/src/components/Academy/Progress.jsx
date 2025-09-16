@@ -1,20 +1,20 @@
-
+import React, { useEffect } from 'react';
 import './Progress.scss';
-import useLessonStore from './stores/lessonStore';
 
 const Progress = ({ course, total }) => {
-  // course="basics"
-  const { getCompletedLessons, getAllSavedContracts} = useLessonStore();
 
-  const allCompletedLessons = getCompletedLessons();
+  const [completedLessons, setCompletedLessons] = React.useState(0);
+  const localStorageKey = `academy-progress-${course}`;
+
   
-  // const courseCompletedLessons = course 
-  //   ? allCompletedLessons.filter(lessonId => lessonId.startsWith(`${course}-`))
-  //   : allCompletedLessons;
+  useEffect(() => {
 
-  const completedCount = allCompletedLessons.length + getAllSavedContracts().size;
-  const totalLessons = total || 0;
-  const progressPercentage = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
+    const savedProgress = localStorage.getItem(localStorageKey);
+
+    if (savedProgress) {
+      setCompletedLessons(parseInt(savedProgress, 10));
+    }
+  }, [])
 
   return (
     <div className="lesson-progress academy-progress">
@@ -25,15 +25,15 @@ const Progress = ({ course, total }) => {
         <div className="progress-bar">
           <div 
             className="progress-fill" 
-            style={{ width: `${progressPercentage}%` }}
+            style={{ width: `${completedLessons / total}%` }}
           ></div>
         </div>
         <div className="progress-stats">
           <span className="lessons-completed">
-            {completedCount} of {totalLessons} lessons completed
+            {completedLessons} of {total} lessons completed
           </span>
           <span className="progress-percentage">
-            {progressPercentage}%
+            {completedLessons / total}%
           </span>
         </div>
       </div>

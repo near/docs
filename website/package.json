@@ -89,8 +89,7 @@
     "swr": "^2.3.6",
     "url": "^0.11.4",
     "util": "^0.12.5",
-    "vm-browserify": "^1.1.2",
-    "zustand": "^5.0.8"
+    "vm-browserify": "^1.1.2"
   },
   "resolutions": {
     "near-api-js": "5.1.1"
