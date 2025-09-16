@@ -1,7 +1,7 @@
 ---
 id: setup
 title: Setting up the Donation Contract
-sidebar_label: 1. Contract Setup
+sidebar_label: Contract Setup
 ---
 
 import Tabs from "@theme/Tabs";

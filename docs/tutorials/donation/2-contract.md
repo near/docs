@@ -1,7 +1,7 @@
 ---
-id: donations
+id: contract
 title: Handling Token Donations
-sidebar_label: 2. Handle Donations
+sidebar_label: Handle Donations
 ---
 
 import Tabs from "@theme/Tabs";

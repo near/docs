@@ -298,7 +298,7 @@ const sidebar = {
             {
               "Coin Flip": [
                 'tutorials/coin-flip/introduction',
-                'tutorials/coin-flip/randomnes-basics',
+                'tutorials/coin-flip/randomness-basics',
                 'tutorials/coin-flip/basic-contract',
                 'tutorials/coin-flip/testing-randomness',
                 'tutorials/coin-flip/advanced-patterns',

@@ -1,7 +1,7 @@
 ---
 id: queries
 title: Querying Donation Data
-sidebar_label: 3. Query Donation Data
+sidebar_label: Query Donation Data
 ---
 
 import Tabs from "@theme/Tabs";

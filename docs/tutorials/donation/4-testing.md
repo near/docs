@@ -1,7 +1,7 @@
 ---
 id: testing
 title: Deploy and Test Your Contract
-sidebar_label: 4. Deploy and Test
+sidebar_label: Deploy and Test
 ---
 
 import Tabs from "@theme/Tabs";
