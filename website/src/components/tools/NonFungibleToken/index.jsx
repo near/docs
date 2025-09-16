@@ -1,6 +1,6 @@
 import ListToken from './ListToken';
-import MintNft from './MintNft';
-import styles from './MintNft.module.scss';
+import MintNft from './MintNFT';
+import styles from './MintNFT.module.scss';
 
 const NonFungibleToken = ({
   user_collections,
@@ -9,6 +9,10 @@ const NonFungibleToken = ({
 }) => {
   return (
     <>
+      <h2>Mint a Non-Fungible Token</h2>
+      <p>
+        This tool allows you to mint Non-Fungible Tokens
+      </p>
       <MintNft reload={reload} />
       <ListToken loading={loading} collections={user_collections} />
       <hr />

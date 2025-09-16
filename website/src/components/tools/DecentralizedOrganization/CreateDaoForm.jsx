@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 import styles from './CreateDaoForm.module.scss';
 // import LabelWithTooltip from '../Shared/LabelWithTooltip';
 import { NEAR } from '@near-js/tokens';
-import { network } from '../config';
 
 const KILOBYTE = 1024;
 const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
@@ -46,7 +45,7 @@ async function uploadFileToIpfs(file) {
   return fileData.cid;
 }
 
-const FACTORY_CONTRACT = network.daoContract;
+const FACTORY_CONTRACT = 'dao.primitives.testnet';
 
 const CreateDaoForm = ({ reload }) => {
   const {
