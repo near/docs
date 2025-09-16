@@ -6,6 +6,7 @@ sidebar_label: Contract Setup
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import {Github} from '@site/src/components/codetabs';
 
 The first step is setting up the basic structure of our donation contract. We'll define the contract state, initialization method, and basic beneficiary management.
 
