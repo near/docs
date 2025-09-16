@@ -1,36 +1,28 @@
 import { useWalletSelector } from "@near-wallet-selector/react-hook";
 import { useEffect, useState } from "react";
-import useAcademyProgress from "./store/useAcademyProgress";
-import Content from "./content.json";
 import styles from "./CheckContract.module.scss";
+import useLessonStore from "./stores/lessonStore";
 
-const CheckContract = ({ id }) => {
-    if (!id) {
-        return <div className="interactive-lesson-error">Error: No lesson ID provided.</div>;
+
+const CheckContract = ({ method }) => {
+    if (!method) {
+        return <div className="interactive-lesson-error">Error: No method provided.</div>;
     }
-
-    const [section, lessonModule, index] = id.split('.');
-
-    if (!Content[section] || !Content[section][lessonModule] || !Content[section][lessonModule][index]) {
-        return <div className="interactive-lesson-error">Error: Invalid lesson ID.</div>;
-    }
-
-    const { markLessonComplete, isLessonCompleted, getContractName } = useAcademyProgress();
+    const { saveContract, getSavedContract } = useLessonStore();
     const { signedAccountId, signIn } = useWalletSelector();
 
     const [contractAddress, setContractAddress] = useState('');
     const [isValidating, setIsValidating] = useState(false);
     const [validationMessage, setValidationMessage] = useState('');
 
-    const savedContractName = getContractName(section, lessonModule, index);
-    const lessonCompleted = isLessonCompleted(section, lessonModule, parseInt(index, 10));
+    const savedContractAddress = getSavedContract(method);
 
     useEffect(() => {
-        if (lessonCompleted && savedContractName) {
-            setContractAddress(savedContractName);
+        if (savedContractAddress) {
+            setContractAddress(savedContractAddress);
             setValidationMessage('Contract verified successfully!');
         }
-    }, [lessonCompleted, savedContractName]);
+    }, [savedContractAddress]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -47,7 +39,7 @@ const CheckContract = ({ id }) => {
             setIsValidating(false);
             setValidationMessage('Contract verified successfully!');
 
-            markLessonComplete(section, lessonModule, index, contractAddress);
+            saveContract(method, contractAddress.trim());
         }, 2000);
     };
 
@@ -60,8 +52,8 @@ const CheckContract = ({ id }) => {
         <div className={`margin-top--lg margin-bottom--md`}>
             <form onSubmit={handleSubmit}>
                 <div className="margin-bottom--md">
-                    <label htmlFor="contractInput" className="margin-bottom--sm text--left" style={{display: 'block', fontWeight: 500}}>
-                        {lessonCompleted ? 'Current Contract' : 'Enter Contract'}
+                    <label htmlFor="contractInput" className="margin-bottom--sm text--left" style={{ display: 'block', fontWeight: 500 }}>
+                       Enter Contract
                     </label>
                     <div className={styles.inputContainer}>
                         <div className={styles.inputWrapper}>
@@ -81,7 +73,7 @@ const CheckContract = ({ id }) => {
                         </div>
                         <button
                             type="submit"
-                            disabled={isValidating}
+                            disabled={isValidating }
                             className={`button button--primary ${styles.submitButton} ${isValidating ? 'button--outline' : ''}`}
                         >
                             {isValidating ? 'Verifying...' : 'Verify Contract'}

@@ -1,13 +1,13 @@
 import { useWalletSelector } from "@near-wallet-selector/react-hook";
 import { useEffect } from "react";
-import useAcademyProgress from "./store/useAcademyProgress";
+import useLessonStore from "./stores/lessonStore";
 
 const CheckLogin = () => {
     const { signedAccountId, signIn } = useWalletSelector();
-    const { markLessonComplete, isLessonCompleted } = useAcademyProgress();
+    const { markLessonAsCompleted, isLessonCompleted } = useLessonStore();
     useEffect(() => {
         if (signedAccountId && !isLessonCompleted('create-wallet', 'check-acount', 0)) {
-            markLessonComplete('create-wallet', 'check-acount', 0);
+            markLessonAsCompleted('login');
         }
     }, [signedAccountId]);
     if (signedAccountId) {
