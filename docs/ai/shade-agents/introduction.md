@@ -100,7 +100,7 @@ The agent is just a backend service that runs inside a TEE instead of a centrali
 
 Agents can be written in virtually any programming language and use any framework, as long as you can build a `Docker image` for your program.
 
-If you require a custom agent contract (which not all use cases do) then these are written in Rust.
+If you require a custom agent contract, which not all use cases do, then these are written in Rust.
 
 ---
 

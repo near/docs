@@ -2,7 +2,7 @@
 id: environment-variables
 title: Environment Variables
 sidebar_label: Environment Variables
-description: "TODO"
+description: "Learn about the required and optional environment variables as part of the Shade Agent Framework."
 ---
 
 Environment variables are a crucial component of the Shade Agent Framework. They configure your Shade Agent and are passed encrypted into your agent when it goes live. Note that the same agent code (same Docker Compose file) can use different environment variables in different deployments.

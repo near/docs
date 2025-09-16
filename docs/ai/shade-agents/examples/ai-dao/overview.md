@@ -2,7 +2,7 @@
 id: overview
 title: Overview
 sidebar_label: Overview
-description: "TODO"
+description: "A brief overview of the Verifiable AI DAO example built using the Shade Agent Framework that walks through NEAR native deployments, using yield and resume with Shade Agents and leveraging verifiable AI."
 ---
 
 # Verifiable AI DAO
@@ -33,7 +33,7 @@ This example covers several key components of the Shade Agent Framework along wi
 Before starting this tutorial we recommend that you have have a good understanding of these concepts:
 - [Shade Agents](../../introduction.md) 
 - [NEAR Smart Contracts](../../../../smart-contracts/what-is.md)
-- [Custom Agent Contracts](../../custom-contracts/overview.md)
+- [Custom Agent Contracts](../../custom-agent-contract.md)
 
 ---
 

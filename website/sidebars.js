@@ -159,14 +159,7 @@ const sidebar = {
                 "ai/shade-agents/framework/environment-variables",
               ],
             },
-            {
-              "Custom Agent Contracts": [
-                "ai/shade-agents/custom-contracts/overview",
-                "ai/shade-agents/custom-contracts/agent-guard-rails",
-                "ai/shade-agents/custom-contracts/near-agents",
-                "ai/shade-agents/custom-contracts/yield-for-agent",
-              ]
-            },
+            "ai/shade-agents/custom-agent-contract",
             "ai/shade-agents/plugins",
             "ai/shade-agents/security",
             {

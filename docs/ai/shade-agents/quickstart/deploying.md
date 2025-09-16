@@ -2,7 +2,7 @@
 id: deploying
 title: Deploying an Agent
 sidebar_label: Deploying an Agent
-description: "Learn how to deploy Shade Agents to production environments with full contract customization and flexible architecture for real-world applications."
+description: "Learn how to quickly deploy your first Shade Agent."
 ---
 
 import { SigsSupport } from '@site/src/components/sigsSupport';

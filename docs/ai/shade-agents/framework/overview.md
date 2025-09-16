@@ -2,7 +2,7 @@
 id: overview
 title: Framework Overview
 sidebar_label: Framework Overview
-description: "TODO"
+description: "Learn about the core components of the Shade Agent Framework with a high level overview of each of it's parts."
 ---
 
 import { SigsSupport } from '@site/src/components/sigsSupport';
@@ -52,10 +52,9 @@ There are also cases when you should develop your own custom agent contract. The
 2) You want to implement a custom agent registration or code hash upgradability mechanism
 3) You want to build an agent that just interacts with the NEAR blockchain
 
-Further documentation can be found in the [custom contract section](../custom-contracts/overview.md).
+Further documentation can be found in the [custom contract section](../custom-agent-contract.md).
 
 ---
-
 
 ## Phala Cloud
 
@@ -111,7 +110,7 @@ You can learn more about the Docker Compose file [here](https://docs.docker.com/
 
 Now that you have an overview of the framework, we recommend exploring these sections next:
 1. Framework components: [API](./api.md), [CLI](./cli.md), and [Environment Variables](./environment-variables.md)
-2. [Custom Contracts](../custom-contracts/overview.md) - build specialized agent contracts
+2. [Custom Contracts](../custom-agent-contract.md) - build specialized agent contracts
 3. [Plugins](../plugins.md) - extend your agent's capabilities
 4. [Templates and Examples](../examples/overview.md) - get up and running with different Shade Agent architectures and use cases as quickly as possible and learn the how to build apps in full
 4. [Security Considerations](../security.md) - check your agent abides by best practices

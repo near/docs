@@ -2,7 +2,7 @@
 id: cli
 title: Shade Agent CLI
 sidebar_label: Shade Agent CLI
-description: "TODO"
+description: "Learn about the Shade Agent CLI and how to use it deploy Shade Agents."
 ---
 
 The [Shade Agent CLI](https://github.com/NearDeFi/shade-agent-cli/tree/main) abstracts away the complexity of deploying a Shade Agent.
@@ -53,7 +53,7 @@ The CLI comes with a list of flags to configure the CLI and switch part off. If 
 
 - **--wasm `<path>`** 
 
-  Path to a custom agent contract WASM file (e.g. `contract/near/contract.wasm`) to deploy instead of the default contract. Use this when using [custom contracts](../custom-contracts/overview.md). 
+  Path to a custom agent contract WASM file (e.g. `contract/near/contract.wasm`) to deploy instead of the default contract. Use this when using [custom contracts](../custom-agent-contract.md). 
 
 - **--funding `<amount>`** 
 

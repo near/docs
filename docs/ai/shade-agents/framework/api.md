@@ -2,7 +2,7 @@
 id: api
 title: Shade Agent API
 sidebar_label: Shade Agent API
-description: "TODO"
+description: "Learn how to use the Shade Agent API."
 ---
 
 import Tabs from '@theme/Tabs';

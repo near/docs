@@ -2,7 +2,7 @@
 id: agent
 title: Agent
 sidebar_label: Agent
-description: "TODO"
+description: "Learn about the key parts of agent as part of the Verifiable AI DAO Shade Agent example that walks through how to index the agent contract, using verifiable AI and interacting with the custom agent contract."
 ---
 
 import {Github} from "@site/src/components/codetabs"

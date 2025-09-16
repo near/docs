@@ -2,7 +2,7 @@
 id: what-can-you-build
 title: What can you Build?
 sidebar_label: What can you Build?
-description: "Explore example Shade Agent implementations and agentic protocol ideas, including trading agents, DeFi protocols, and autonomous applications."
+description: "Explore the features of Shade Agents and what they enable you to build, including Agentic Protocols, autonomous yield optimizers, and verifiable oracles."
 ---
 
 With their extensive list of features, Shade Agents unlock a wide range of new use cases, enable many previously centralized apps to become decentralized, and change how blockchain applications are designed. 
@@ -33,7 +33,7 @@ Shade Agents enable a new paradigm of decentralized applications where a compone
 - A Yield Optimizer that earns optimal yield on assets across various DeFi protocols on different chains and autonomously rebalances according to a verifiable algorithm to get users the best rate, always.
 - A staking protocol that can implement complex reward mechanics.
 - A private DAO agent on Ethereum Mainnet that takes votes confidentially and publishes the end result in a single transaction.
-- A smart contract that can verifiably book users plane tickets by calling the contract with funds and passing secrets (passport information and email address) to the agent directly.
+- A smart contract that can verifiably book users' plane tickets by calling the contract with funds and passing secrets (passport information and email address) to the agent directly.
 
 ---
 

@@ -2,7 +2,7 @@
 id: deploying
 title: Deploying
 sidebar_label: Deploying
-description: "TODO"
+description: "Learn how to deploy the Verifiable AI DAO Shade Agent which includes how to deploy a custom agent contract."
 ---
 
 On this page we'll guide you through deploying your own instance of the AI DAO.

@@ -2,7 +2,7 @@
 id: agent-contract
 title: Agent Contract
 sidebar_label: Agent Contract
-description: "TODO"
+description: "Learn about the key parts of the agent contract as part of the Verifiable AI DAO Shade Agent example including how to create a custom agent contract and create a yield and resume based Shade Agent."
 ---
 
 import Tabs from '@theme/Tabs';
