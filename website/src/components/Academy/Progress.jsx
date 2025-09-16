@@ -5,6 +5,7 @@ const Progress = ({ course, total }) => {
   if (!course) {
     return <div>Error: No course provided.</div>;
   }
+  
   const { completedLessons } = useAcademyProgress(course);
   const percentage = Math.round((completedLessons / total) * 100);
   return (

@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useAcademyProgress } from "./AcademyProgressContext";
 
 const CheckLogin = ({course}) => {
-
   if (!course) {
     return <div>Error: No course provided.</div>;
   }

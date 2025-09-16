@@ -9,6 +9,7 @@ const Quiz = ({ course, id, children }) => {
   if (!course) {
     return <div>Error: No course provided.</div>;
   }
+  
   const {incrementCompletedLessons} = useAcademyProgress(course);
   const [isCompleted, setIsCompleted] = useState(false);
   const localStorageKey = `academy-quiz-${course}-${id}`;
