@@ -1,222 +1,218 @@
 ---
 id: setup
-title: Setting up Your Development Environment
-sidebar_label: Development Setup
-description: "Learn how to set up your development environment for building NEAR smart contracts with token handling capabilities."
+title: Setting up the Donation Contract
+sidebar_label: 1. Contract Setup
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-Before building our donation smart contract, we need to set up a proper development environment. This includes installing the necessary tools, creating accounts, and initializing our project structure.
+The first step is setting up the basic structure of our donation contract. We'll define the contract state, initialization method, and basic beneficiary management.
 
-## Prerequisites
+## Contract State Structure
 
-Ensure you have the following tools installed on your system:
+The donation contract needs to track two key pieces of data: who receives the donations (beneficiary) and how much each donor has contributed.
 
-- **Node.js** (v18 or later) and **npm** or **yarn**
-- **Rust** (latest stable version) with `wasm32-unknown-unknown` target
-- **NEAR CLI** for account management and deployment
+<Tabs>
+  <TabItem value="rust" label="Rust" default>
 
-<Tabs groupId="os">
-  <TabItem value="macos" label="macOS">
+```rust
+use near_sdk::store::IterableMap;
+use near_sdk::{near, AccountId, NearToken, PanicOnDefault};
 
-```bash
-# Install Node.js via Homebrew
-brew install node
-
-# Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup target add wasm32-unknown-unknown
-
-# Install NEAR CLI
-npm install -g near-cli
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    pub beneficiary: AccountId,
+    pub donations: IterableMap<AccountId, NearToken>,
+}
 ```
 
   </TabItem>
-  <TabItem value="linux" label="Linux">
+  <TabItem value="ts" label="TypeScript">
 
-```bash
-# Install Node.js via package manager
-sudo apt update
-sudo apt install nodejs npm
+```ts
+import { NearBindgen, near, call, view, initialize, UnorderedMap } from 'near-sdk-js'
 
-# Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup target add wasm32-unknown-unknown
+@NearBindgen({ requireInit: true })
+class DonationContract {
+  beneficiary: string = "";
+  donations = new UnorderedMap<bigint>('uid-1');
 
-# Install NEAR CLI
-npm install -g near-cli
-```
-
-  </TabItem>
-  <TabItem value="windows" label="Windows">
-
-```bash
-# Install Node.js from https://nodejs.org
-# Download and install Rust from https://rustup.rs
-rustup target add wasm32-unknown-unknown
-
-# Install NEAR CLI
-npm install -g near-cli
+  static schema = {
+    beneficiary: "string",
+    donations: { class: UnorderedMap, value: "bigint" }
+  }
+}
 ```
 
   </TabItem>
 </Tabs>
 
-## Creating NEAR Accounts
+## Contract Initialization
 
-For this tutorial, we'll need two accounts: one for development/deployment and one to act as the donation beneficiary.
+Every NEAR contract needs an initialization method to set up the initial state. Our contract requires a beneficiary to be specified during deployment.
 
-### Create Developer Account
+<Tabs>
+  <TabItem value="rust" label="Rust">
 
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Near CLI (Short)">
-
-```bash
-# Create a new developer account with testnet funding
-near create-account donation-dev.testnet --useFaucet
+```rust
+#[near]
+impl Contract {
+    #[init]
+    #[private] // only callable by the contract's account
+    pub fn init(beneficiary: AccountId) -> Self {
+        Self {
+            beneficiary,
+            donations: IterableMap::new(b"d"),
+        }
+    }
+}
 ```
 
   </TabItem>
-  <TabItem value="full" label="Near CLI (Full)">
+  <TabItem value="ts" label="TypeScript">
 
-```bash
-# Create a new account pre-funded by faucet service
-near account create-account sponsor-by-faucet-service donation-dev.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+```ts
+@initialize({ privateFunction: true })
+init({ beneficiary }: { beneficiary: string }) {
+  this.beneficiary = beneficiary
+}
 ```
 
   </TabItem>
 </Tabs>
-
-### Create Beneficiary Account
-
-```bash
-# Create an account that will receive donations
-near create-account donation-beneficiary.testnet --useFaucet
-```
 
 :::tip
-Write down your account names as we'll use them throughout the tutorial. Replace `donation-dev.testnet` and `donation-beneficiary.testnet` with your actual account names.
+The `#[private]` decorator in Rust and `privateFunction: true` in TypeScript ensure only the contract account can call the initialization method.
 :::
 
-## Project Initialization
+## Beneficiary Management
 
-Now let's create our project structure. We'll build both Rust and JavaScript versions of the contract.
+Add methods to view and update the beneficiary. The update method should be restricted to the contract owner for security.
 
-### Initialize Rust Contract
+<Tabs>
+  <TabItem value="rust" label="Rust">
 
+```rust
+impl Contract {
+    pub fn get_beneficiary(&self) -> &AccountId {
+        &self.beneficiary
+    }
+
+    #[private] // only callable by the contract's account
+    pub fn change_beneficiary(&mut self, new_beneficiary: AccountId) {
+        self.beneficiary = new_beneficiary;
+    }
+}
+```
+
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
+
+```ts
+@view({})
+get_beneficiary(): string { 
+  return this.beneficiary 
+}
+
+@call({ privateFunction: true })
+change_beneficiary(beneficiary: string) {
+  this.beneficiary = beneficiary;
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## Building the Contract
+
+Now let's build the contract to ensure our setup is correct.
+
+<Tabs>
+  <TabItem value="rust" label="Rust">
+
+First, create your `Cargo.toml`:
+
+<Github fname="Cargo.toml"
+        url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/Cargo.toml"
+        start="1" end="15" />
+
+Build the contract:
 ```bash
-# Create project directory
-mkdir near-donation-tutorial
-cd near-donation-tutorial
-
-# Initialize Rust contract
-cargo init --name donation-contract
+cargo near build
 ```
 
-Add the following to your `Cargo.toml`:
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
 
-```toml
-[package]
-name = "donation-contract"
-version = "0.1.0"
-edition = "2021"
+Create your `package.json`:
 
-[lib]
-crate-type = ["cdylib"]
+<Github fname="package.json"
+        url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/package.json"
+        start="1" end="12" />
 
-[dependencies]
-near-sdk = "5.0"
-serde_json = "1.0"
-
-[profile.release]
-codegen-units = 1
-opt-level = "z"
-lto = true
-debug = false
-panic = "abort"
-overflow-checks = true
-```
-
-### Initialize TypeScript Contract (Alternative)
-
-If you prefer TypeScript, create a separate directory:
-
+Build the contract:
 ```bash
-# In the same project root
-mkdir contract-ts
-cd contract-ts
-npm init -y
-
-# Install NEAR SDK for JavaScript
-npm install near-sdk-js
-npm install -D typescript @types/node
+npm run build
 ```
 
-## Project Structure
+  </TabItem>
+</Tabs>
 
-Your project should now look like this:
+## Basic Unit Test
 
+Let's add a simple test to verify our initialization works correctly.
+
+<Tabs>
+  <TabItem value="rust" label="Rust">
+
+```rust
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    const BENEFICIARY: &str = "beneficiary.testnet";
+
+    #[test]
+    fn initializes() {
+        let contract = Contract::init(BENEFICIARY.parse().unwrap());
+        assert_eq!(contract.beneficiary, BENEFICIARY.parse::<AccountId>().unwrap());
+    }
+}
+```
+
+Run the test:
 ```bash
-near-donation-tutorial/
-├── src/                    # Rust contract source
-│   ├── lib.rs
-│   └── donation.rs
-├── contract-ts/           # TypeScript contract (optional)
-│   ├── src/
-│   └── package.json
-├── tests/                 # Integration tests
-├── frontend/              # Web interface (we'll add this later)
-├── Cargo.toml
-└── README.md
+cargo test
 ```
 
-## Environment Configuration
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
 
-Set up your environment variables for easier development:
+```ts
+// In your test file with NEAR Workspaces
+import { Worker, NEAR } from 'near-workspaces';
 
-```bash
-# Create .env file
-echo "CONTRACT_NAME=donation-dev.testnet" >> .env
-echo "BENEFICIARY=donation-beneficiary.testnet" >> .env
-echo "NETWORK=testnet" >> .env
+test.beforeEach(async (t) => {
+  const worker = t.context.worker = await Worker.init();
+  const root = worker.rootAccount;
+
+  const beneficiary = await root.createSubAccount("beneficiary");
+  const contract = await root.createSubAccount("contract");
+
+  await contract.deploy(process.argv[2]);
+  await contract.call(contract, "init", { beneficiary: beneficiary.accountId });
+
+  t.context.accounts = { contract, beneficiary };
+});
 ```
 
-## Verification
+  </TabItem>
+</Tabs>
 
-Let's verify everything is set up correctly:
+## Next Steps
 
-```bash
-# Check Rust installation
-rustc --version
-cargo --version
+With the basic contract structure in place, you're ready to implement the core donation functionality. The next chapter will cover how to handle token transfers using payable methods.
 
-# Check NEAR CLI
-near --version
-
-# Check Node.js (for frontend later)
-node --version
-npm --version
-
-# Test account access
-near state donation-dev.testnet --networkId testnet
-```
-
-You should see account information including balance and storage usage.
-
-:::info Next Steps
-With your development environment ready, we can now start building the donation smart contract. In the next section, we'll implement the core contract structure and token handling logic.
-:::
-
-## Troubleshooting
-
-### Common Issues
-
-**Rust target not found**: Run `rustup target add wasm32-unknown-unknown`
-
-**NEAR CLI authentication**: Run `near login` and follow the browser authentication process
-
-**Account creation fails**: Ensure you have sufficient funds or use the faucet option
-
-**Permission errors**: On Unix systems, you might need to use `sudo` for global npm installs
+Continue to [Handle Donations](2-donations.md) to learn about accepting NEAR token payments.

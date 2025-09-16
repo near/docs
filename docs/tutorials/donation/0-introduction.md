@@ -2,30 +2,30 @@
 id: introduction
 title: Building a Donation Smart Contract
 sidebar_label: Introduction
-description: "This tutorial will guide you through building a donation smart contract that handles NEAR tokens, tracks donations, and manages beneficiaries."
+description: "This tutorial will guide you through building a donation smart contract that handles NEAR token transfers, tracks donations, and manages beneficiaries."
 ---
 
-import {Github} from '@site/src/components/codetabs';
-
-Learn how to build a complete donation system on NEAR that accepts, tracks, and manages token transfers. This tutorial demonstrates the fundamental concepts of handling tokens in NEAR smart contracts while building a practical application that users can interact with.
-
-![Donation App Interface](/docs/assets/examples/donation.png)
-_The donation app interface showing recent donations and donation form_
+Learn how to build a smart contract that accepts NEAR token donations, tracks contributors, and automatically forwards funds to beneficiaries. This tutorial covers the essential patterns for handling token transfers in NEAR Protocol smart contracts.
 
 ## How It Works
 
-The donation smart contract acts as an intermediary that:
+The donation contract demonstrates key concepts in NEAR token handling:
 
-1. **Accepts NEAR tokens** from users through payable function calls
-2. **Tracks donation history** by storing donor information and amounts
-3. **Forwards tokens** to a designated beneficiary account
-4. **Provides query methods** to retrieve donation statistics and history
-
-The key advantage of this approach is transparent donation tracking while ensuring funds reach their intended destination immediately.
+- **Payable Methods**: Functions that can receive NEAR tokens with transactions
+- **Token Transfers**: Automatically forwarding received tokens to beneficiaries
+- **Storage Management**: Tracking donation history while managing storage costs
+- **View Methods**: Querying donation data without gas fees
 
 :::info
 
-The complete source code for this tutorial is available in the [donation examples repository](https://github.com/near-examples/donation-examples). The contract is deployed on testnet at `donation.near-examples.testnet` for testing purposes.
+The complete source code for this tutorial is available in the [GitHub repository](https://github.com/near-examples/donation-examples). 
+
+The repository contains:
+- **contract-rs/**: Rust implementation of the donation contract
+- **contract-ts/**: TypeScript implementation of the donation contract  
+- **frontend/**: Next.js frontend application
+
+A deployed contract is available on testnet at `donation.near-examples.testnet` for testing.
 
 :::
 
@@ -33,22 +33,37 @@ The complete source code for this tutorial is available in the [donation example
 
 In this tutorial, you will learn how to:
 
-- [Set up your development environment](1-setup.md) for NEAR smart contract development
-- [Build the donation contract](2-contract.md) with token handling capabilities
-- [Implement donation tracking](3-tracking.md) and storage management
-- [Create query methods](4-queries.md) to retrieve donation data
-- [Deploy and test the contract](5-deploy.md) on NEAR testnet
-- [Build a frontend interface](6-frontend.md) to interact with your contract
+- [Set up the donation contract structure](1-setup.md) with proper initialization
+- [Handle token transfers](2-donations.md) using payable methods and storage management  
+- [Query donation data](3-queries.md) with efficient view methods
+- [Deploy and test](4-testing.md) your contract on NEAR testnet
+- [Build a frontend](5-frontend.md) to interact with your donation contract
 
-## Key Concepts Covered
+## Prerequisites
 
-Throughout this tutorial, you'll master these essential NEAR development concepts:
+Before starting, make sure you have:
 
-- **Token Transfers**: How to accept and forward NEAR tokens in smart contracts
-- **Payable Functions**: Using `#[payable]` decorator to receive token deposits
-- **Storage Management**: Efficiently storing and retrieving donation data
-- **Error Handling**: Implementing robust error handling for financial operations
-- **Testing**: Writing comprehensive tests for token-handling contracts
-- **Frontend Integration**: Connecting a web interface to your smart contract
+- Basic understanding of smart contracts
+- [NEAR CLI](https://docs.near.org/tools/near-cli) installed
+- A NEAR testnet account
+- Node.js 18+ (for TypeScript examples)
+- Rust toolchain (for Rust examples)
 
-Let's start by setting up your development environment!
+## Contract Overview
+
+The donation contract includes these core features:
+
+```rust
+pub struct Contract {
+    pub beneficiary: AccountId,           // Who receives donations
+    pub donations: IterableMap<AccountId, NearToken>, // Track donor contributions
+}
+```
+
+**Key Methods:**
+- `donate()` - Payable method to accept NEAR tokens
+- `get_beneficiary()` - View current beneficiary
+- `get_donations()` - List all donations with pagination
+- `number_of_donors()` - Count total unique donors
+
+This tutorial will walk you through implementing each component step-by-step, with examples in both Rust and TypeScript.

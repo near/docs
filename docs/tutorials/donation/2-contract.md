@@ -1,353 +1,145 @@
-# Building the Core Donation Contract
+---
+id: donations
+title: Handling Token Donations
+sidebar_label: 2. Handle Donations
+---
 
-Now that our development environment is ready, let's build the core donation smart contract. This contract will handle NEAR token transfers, track donations, and manage beneficiaries.
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import {Github} from '@site/src/components/codetabs';
 
-## Contract Structure Overview
+Now we'll implement the core donation functionality. This involves creating payable methods that can receive NEAR tokens, managing storage costs, and automatically forwarding funds to the beneficiary.
 
-Our donation contract needs to:
-- **Accept donations** through payable functions
-- **Store donation records** for transparency
-- **Forward tokens** to the beneficiary immediately
-- **Track donation statistics** like total amount and donor count
+## Understanding Storage Costs
 
-## Basic Contract Setup
+NEAR charges for data storage in smart contracts. Each new donor entry requires storage, so we need to account for this cost in our donation logic.
 
-Let's start by creating the fundamental contract structure.
+<Tabs>
+  <TabItem value="rust" label="Rust" default>
 
-### Rust Implementation
+<Github fname="donation.rs"
+        url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/donation.rs"
+        start="5" end="5" />
 
-First, update `src/lib.rs`:
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
 
-```rust
-use near_sdk::{
-    env, near_bindgen, require, AccountId, Balance, BorshDeserialize, 
-    BorshSerialize, PanicOnDefault, Promise
-};
-use std::collections::HashMap;
+<Github fname="model.ts"
+        url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/model.ts"
+        start="1" end="1" />
 
-mod donation;
-pub use donation::*;
+  </TabItem>
+</Tabs>
 
-#[near_bindgen]
-impl DonationContract {
-    #[init]
-    pub fn new(beneficiary: AccountId) -> Self {
-        require!(!env::state_exists(), "Already initialized");
-        Self {
-            beneficiary,
-            donations: HashMap::new(),
-            total_donations: 0,
-        }
-    }
-}
-```
+:::tip
+Storage costs are one-time fees paid when first storing data. Subsequent updates to existing data don't require additional storage fees.
+:::
 
-Now create `src/donation.rs`:
+## The Donation Method
 
-```rust
-use near_sdk::{
-    env, near_bindgen, require, AccountId, Balance, BorshDeserialize, 
-    BorshSerialize, PanicOnDefault, Promise, json_types::U128
-};
-use std::collections::HashMap;
+The `donate` method is the heart of our contract. It must be marked as `payable` to accept NEAR tokens, handle storage costs, track donations, and forward funds.
 
-/// Represents a single donation record
-#[derive(BorshDeserialize, BorshSerialize)]
-pub struct Donation {
-    pub account_id: AccountId,
-    pub total_amount: Balance,
-    pub timestamp: u64,
-}
+<Tabs>
+  <TabItem value="rust" label="Rust">
 
-/// The main donation contract
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
-pub struct DonationContract {
-    /// Account that receives the donations
-    pub beneficiary: AccountId,
-    /// Map of donor account to their donation info
-    pub donations: HashMap<AccountId, Donation>,
-    /// Total amount donated to this contract
-    pub total_donations: Balance,
-}
-```
+<Github fname="donation.rs"
+        url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/donation.rs"
+        start="12" end="54" />
 
-### JavaScript Implementation
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
 
-Create `contract-ts/src/contract.ts`:
+<Github fname="contract.ts"
+        url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
+        start="16" end="44" />
 
-```typescript
-import { NearBindgen, near, call, view, initialize, LookupMap } from 'near-sdk-js';
-import { Donation } from './model';
-
-@NearBindgen({})
-class DonationContract {
-  beneficiary: string = '';
-  donations: LookupMap<Donation> = new LookupMap('d');
-  totalDonations: string = '0';
-
-  @initialize({})
-  init({ beneficiary }: { beneficiary: string }): void {
-    this.beneficiary = beneficiary;
-    this.totalDonations = '0';
-  }
-}
-```
-
-And create `contract-ts/src/model.ts`:
-
-```typescript
-export class Donation {
-  account_id: string;
-  total_amount: string;
-  timestamp: string;
-
-  constructor(account_id: string, total_amount: string, timestamp: string) {
-    this.account_id = account_id;
-    this.total_amount = total_amount;
-    this.timestamp = timestamp;
-  }
-}
-```
-
-## Implementing the Donation Function
-
-The core functionality is the `donate` method that accepts NEAR tokens and forwards them to the beneficiary.
-
-### Rust Implementation
-
-Add this method to `src/donation.rs`:
-
-```rust
-#[near_bindgen]
-impl DonationContract {
-    /// Accepts a donation and forwards it to the beneficiary
-    #[payable]
-    pub fn donate(&mut self) {
-        let donor: AccountId = env::predecessor_account_id();
-        let donation_amount: Balance = env::attached_deposit();
-        
-        // Ensure a donation was actually sent
-        require!(donation_amount > 0, "Donation amount must be greater than 0");
-        
-        // Update donation records
-        self.total_donations += donation_amount;
-        
-        match self.donations.get(&donor) {
-            Some(mut existing_donation) => {
-                existing_donation.total_amount += donation_amount;
-                existing_donation.timestamp = env::block_timestamp();
-                self.donations.insert(donor.clone(), existing_donation);
-            }
-            None => {
-                let new_donation = Donation {
-                    account_id: donor.clone(),
-                    total_amount: donation_amount,
-                    timestamp: env::block_timestamp(),
-                };
-                self.donations.insert(donor.clone(), new_donation);
-            }
-        }
-        
-        // Transfer the donation to the beneficiary
-        Promise::new(self.beneficiary.clone()).transfer(donation_amount);
-        
-        // Log the donation event
-        env::log_str(&format!(
-            "Thank you @{} for donating {}! Total raised: {}",
-            donor, donation_amount, self.total_donations
-        ));
-    }
-    
-    /// Get the current beneficiary
-    pub fn get_beneficiary(&self) -> AccountId {
-        self.beneficiary.clone()
-    }
-    
-    /// Get total donations received
-    pub fn get_total_donations(&self) -> U128 {
-        U128(self.total_donations)
-    }
-}
-```
-
-### JavaScript Implementation
-
-Add this method to `contract-ts/src/contract.ts`:
-
-```typescript
-import { NearBindgen, near, call, view, initialize, LookupMap, assert } from 'near-sdk-js';
-import { Donation } from './model';
-
-@NearBindgen({})
-export class DonationContract {
-  beneficiary: string = '';
-  donations: LookupMap<Donation> = new LookupMap('d');
-  totalDonations: string = '0';
-
-  @initialize({})
-  init({ beneficiary }: { beneficiary: string }): void {
-    this.beneficiary = beneficiary;
-    this.totalDonations = '0';
-  }
-
-  @call({ payableFunction: true })
-  donate(): void {
-    const donor = near.predecessorAccountId();
-    const donationAmount = near.attachedDeposit();
-    
-    assert(donationAmount > BigInt(0), 'Donation amount must be greater than 0');
-    
-    // Update total donations
-    this.totalDonations = (BigInt(this.totalDonations) + donationAmount).toString();
-    
-    // Update donation records
-    const existingDonation = this.donations.get(donor);
-    if (existingDonation) {
-      existingDonation.total_amount = (BigInt(existingDonation.total_amount) + donationAmount).toString();
-      existingDonation.timestamp = near.blockTimestamp().toString();
-      this.donations.set(donor, existingDonation);
-    } else {
-      const newDonation = new Donation(
-        donor,
-        donationAmount.toString(),
-        near.blockTimestamp().toString()
-      );
-      this.donations.set(donor, newDonation);
-    }
-    
-    // Transfer to beneficiary
-    const promise = near.promiseBatchCreate(this.beneficiary);
-    near.promiseBatchActionTransfer(promise, donationAmount);
-    
-    near.log(`Thank you @${donor} for donating ${donationAmount}! Total raised: ${this.totalDonations}`);
-  }
-
-  @view({})
-  get_beneficiary(): string {
-    return this.beneficiary;
-  }
-
-  @view({})
-  get_total_donations(): string {
-    return this.totalDonations;
-  }
-}
-```
+  </TabItem>
+</Tabs>
 
 ## Key Concepts Explained
 
-### Payable Functions
-The `#[payable]` decorator (Rust) or `payableFunction: true` (JS) allows the function to receive NEAR tokens. Without this, the function would panic if tokens are attached.
+**Payable Functions**: The `#[payable]` decorator (Rust) or `payableFunction: true` (TypeScript) allows methods to receive NEAR tokens.
 
-### Token Transfer
-- **Rust**: `Promise::new(account).transfer(amount)` creates a promise to transfer tokens
-- **JavaScript**: `near.promiseBatchCreate()` and `near.promiseBatchActionTransfer()` achieve the same
+**Storage Management**: We charge new donors a storage fee but not returning donors, since their data already exists.
 
-### Storage Considerations
-We use efficient storage patterns:
-- **HashMap** (Rust) stores donation records in contract state
-- **LookupMap** (JavaScript) provides similar functionality with optimized storage access
+**Promise Transfers**: We use `Promise::new().transfer()` in Rust or `promiseBatchCreate` + `promiseBatchActionTransfer` in TypeScript to send tokens to the beneficiary.
 
-### Error Handling
-Both implementations include proper error handling:
-- Checking for zero donations
-- Validating attached deposits
-- Ensuring proper initialization
+**Deposit Handling**: `env::attached_deposit()` (Rust) or `near.attachedDeposit()` (TypeScript) gets the amount of NEAR sent with the transaction.
 
-## Building the Contract
+## Testing the Donation Logic
 
-Let's test our contract compiles correctly:
+Let's examine how the donation handling is tested to understand the expected behavior.
 
-### Rust Build
+<Tabs>
+  <TabItem value="rust" label="Rust">
+
+<Github fname="lib.rs"
+        url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
+        start="49" end="85" />
+
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
+
+<Github fname="main.ava.js"
+        url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+        start="33" end="48" />
+
+  </TabItem>
+</Tabs>
+
+## Advanced Testing with Workspaces
+
+For integration testing, both implementations use NEAR Workspaces to simulate real blockchain interactions:
+
+<Tabs>
+  <TabItem value="rust" label="Rust">
+
+<Github fname="workspaces.rs"
+        url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/tests/workspaces.rs"
+        start="20" end="45" />
+
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
+
+<Github fname="main.ava.js"
+        url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+        start="49" end="60" />
+
+  </TabItem>
+</Tabs>
+
+## Running Tests
+
+Test your donation logic to ensure everything works correctly:
+
+<Tabs>
+  <TabItem value="rust" label="Rust">
 
 ```bash
-# Build the contract
-cargo build --target wasm32-unknown-unknown --release
+# Unit tests
+cargo test
 
-# Check for any compilation errors
-cargo check
+# Integration tests with workspaces
+cargo test --test workspaces
 ```
 
-### JavaScript Build
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
 
 ```bash
-cd contract-ts
-
-# Install dependencies if not already done
-npm install
-
-# Build the contract
+# Build and test
 npm run build
+npm run test
 ```
 
-Add this build script to your `package.json`:
+  </TabItem>
+</Tabs>
 
-```json
-{
-  "scripts": {
-    "build": "near-sdk-js build src/contract.ts build/contract.wasm"
-  }
-}
-```
+## Key Takeaways
 
-## Testing the Core Functionality
+- **Payable methods** can receive NEAR tokens with transactions
+- **Storage costs** must be handled for new data entries
+- **Promise transfers** allow contracts to send tokens to other accounts
+- **Testing** verifies both donation recording and fund forwarding work correctly
 
-Before moving forward, let's create a simple test to verify our donation function works:
-
-### Rust Testing
-
-Create `src/tests.rs`:
-
-```rust
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use near_sdk::testing_env;
-    use near_sdk::test_utils::{accounts, VMContextBuilder};
-
-    #[test]
-    fn test_donation() {
-        let mut context = VMContextBuilder::new();
-        testing_env!(context
-            .predecessor_account_id(accounts(0))
-            .attached_deposit(1_000_000_000_000_000_000_000_000) // 1 NEAR
-            .build());
-
-        let mut contract = DonationContract::new(accounts(1));
-        contract.donate();
-
-        assert_eq!(contract.get_total_donations().0, 1_000_000_000_000_000_000_000_000);
-    }
-}
-```
-
-Run the test with `cargo test`.
-
-### JavaScript Testing
-We'll cover comprehensive testing in the deployment section, including sandbox tests that simulate the full blockchain environment.
-
-## Contract Flow Summary
-
-1. **Initialization**: Contract is deployed with a beneficiary account
-2. **Donation**: Users call `donate()` with attached NEAR tokens
-3. **Recording**: Contract updates donation records and totals
-4. **Transfer**: Tokens are immediately forwarded to beneficiary
-5. **Logging**: Donation event is logged for transparency
-
-:::tip Gas Considerations
-Token transfers consume gas. Always ensure your contract functions have sufficient gas allowance, especially when making cross-contract calls or promises.
-:::
-
-## Next Steps
-
-Your donation contract core is now ready! The basic functionality is in place, but to make it truly useful, you'll need comprehensive donation tracking and query capabilities.
-
-In the next section, **[Donation Tracking](3-tracking.md)**, you'll learn how to:
-- Implement donation history tracking
-- Add pagination for large donor lists  
-- Create efficient query methods for donation data
-- Build analytics functions for donation insights
-
-This will transform your basic donation contract into a fully-featured, transparent donation platform that users can trust and explore.
-:::
+Continue to [Query Donation Data](3-queries.md) to learn about implementing view methods for retrieving donation information.

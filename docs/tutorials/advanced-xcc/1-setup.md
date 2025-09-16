@@ -5,36 +5,34 @@ sidebar_label: Project Setup
 description: "Get the advanced cross-contract calls example project running locally with all necessary dependencies and test contracts."
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-Before we dive into building advanced cross-contract calls, let's set up the complete project environment. This includes the main contract, external test contracts, and all necessary tooling.
+Let's set up the project environment with the main contract and test contracts.
 
 ## Obtaining the Project
 
-You have two options to start with the Advanced Cross-Contract Calls example:
-
-| GitHub Codespaces | Clone Locally |
-|------------------|---------------|
-| [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/cross-contract-calls?quickstart=1) | 🌐 `https://github.com/near-examples/cross-contract-calls` |
-
-<Tabs>
-  <TabItem value="codespaces" label="GitHub Codespaces" default>
-  
-Click the "Open in GitHub Codespaces" button above to get a fully configured development environment in your browser.
-
-  </TabItem>
-  <TabItem value="local" label="Local Setup">
-
 ```bash
-# Clone the repository
 git clone https://github.com/near-examples/cross-contract-calls
 cd cross-contract-calls
+```
 
-# Choose your preferred language
-cd contract-advanced-ts  # for TypeScript
-# or
-cd contract-advanced-rs  # for Rust
+Choose your language:
+
+<Tabs>
+  <TabItem value="js" label="JavaScript" default>
+
+```bash
+cd contract-advanced-ts
+npm install
+```
+
+  </TabItem>
+  <TabItem value="rust" label="Rust">
+
+```bash
+cd contract-advanced-rs
+cargo check
 ```
 
   </TabItem>
@@ -42,236 +40,130 @@ cd contract-advanced-rs  # for Rust
 
 ## Project Structure
 
-The project includes everything you need to build and test advanced cross-contract calls:
-
-<Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 TypeScript">
-
-```bash
-contract-advanced-ts/
-┌── sandbox-ts/                    # Sandbox testing environment
-│   ├── external-contracts/        # Pre-compiled test contracts
-│   │   ├── counter.wasm           # Simple counter contract
-│   │   ├── guest-book.wasm        # Guest book contract  
-│   │   └── hello-near.wasm        # Hello world contract
-│   └── main.ava.ts               # Integration tests
-├── src/                          # Main contract code
-│   ├── internal/                 # Internal modules
-│   │   ├── batch_actions.ts      # Batch operations logic
-│   │   ├── constants.ts          # Contract constants
-│   │   ├── multiple_contracts.ts # Parallel execution logic
-│   │   ├── similar_contracts.ts  # Same-type contract calls
-│   │   └── utils.ts              # Utility functions
-│   └── contract.ts               # Main contract entry point
-├── package.json                  # Dependencies and scripts
-├── README.md
-└── tsconfig.json                # TypeScript configuration
+```
+├── tests/                    # Test environment
+│   └── external-contracts/   # Pre-compiled contracts
+│       ├── counter.wasm      # Simple counter
+│       ├── guest-book.wasm   # Message storage
+│       └── hello-near.wasm   # Greeting contract
+├── src/                      # Main contract code
+│   ├── batch_actions.*       # Batch operations
+│   ├── multiple_contracts.*  # Parallel execution
+│   └── similar_contracts.*   # Same-type calls
+└── README.md
 ```
 
-  </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
+## Test Contracts Overview
 
-```bash
-contract-advanced-rs/
-┌── tests/                        # Sandbox testing environment  
-│   ├── external-contracts/       # Pre-compiled test contracts
-│   │   ├── counter.wasm          # Simple counter contract
-│   │   ├── guest-book.wasm       # Guest book contract
-│   │   └── hello-near.wasm       # Hello world contract
-│   └── test_basics.rs           # Integration tests
-├── src/                         # Main contract code
-│   ├── batch_actions.rs         # Batch operations logic
-│   ├── lib.rs                   # Main contract entry point
-│   ├── multiple_contracts.rs    # Parallel execution logic
-│   └── similar_contracts.rs     # Same-type contract calls
-├── Cargo.toml                   # Dependencies and metadata
-├── README.md
-└── rust-toolchain.toml          # Rust toolchain configuration
-```
+### Hello NEAR Contract
+- `get_greeting()` - Returns current greeting
+- `set_greeting(message: string)` - Updates greeting
 
-  </TabItem>
-</Tabs>
+### Counter Contract  
+- `get_num()` - Returns current count
+- `increment()` - Increases by 1
+- `decrement()` - Decreases by 1
 
-## Installing Dependencies
-
-<Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 TypeScript">
-
-```bash
-# Navigate to the TypeScript contract directory
-cd contract-advanced-ts
-
-# Install dependencies
-npm install
-# or
-yarn install
-```
-
-  </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
-
-```bash
-# Navigate to the Rust contract directory  
-cd contract-advanced-rs
-
-# Rust dependencies are managed automatically by Cargo
-# Verify your setup
-cargo check
-```
-
-  </TabItem>
-</Tabs>
-
-## Understanding the Test Contracts
-
-The project includes three pre-compiled contracts that we'll interact with:
-
-### 1. Hello NEAR Contract
-A simple contract that returns greeting messages.
-
-**Key Methods:**
-- `get_greeting()` - Returns the current greeting
-- `set_greeting(message: string)` - Updates the greeting
-
-### 2. Guest Book Contract  
-A contract for storing visitor messages.
-
-**Key Methods:**
-- `add_message(text: string)` - Adds a new message
+### Guest Book Contract
+- `add_message(text: string)` - Adds message
 - `get_messages()` - Returns all messages
 
-### 3. Counter Contract
-A simple counter with increment/decrement functionality.
+## Building the Contract
 
-**Key Methods:**
-- `get_num()` - Returns current count
-- `increment()` - Increases count by 1
-- `decrement()` - Decreases count by 1
-
-## Building the Main Contract
-
-Let's build and test the main contract to ensure everything is working:
-
-<Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 TypeScript">
+<Tabs>
+  <TabItem value="js" label="JavaScript" default>
 
 ```bash
-# Build the contract
 npm run build
+# Output: build/cross_contract.wasm
+```
 
-# Run tests to verify everything works
+  </TabItem>
+  <TabItem value="rust" label="Rust">
+
+```bash
+cargo near build
+# Output: target/wasm32-unknown-unknown/release/cross_contract.wasm
+```
+
+  </TabItem>
+</Tabs>
+
+## Running Tests
+
+Verify everything works:
+
+<Tabs>
+  <TabItem value="js" label="JavaScript" default>
+
+```bash
 npm test
 ```
 
   </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
+  <TabItem value="rust" label="Rust">
 
 ```bash
-# Build the contract
-cargo build --target wasm32-unknown-unknown --release
-
-# Run tests to verify everything works  
 cargo test
 ```
 
   </TabItem>
 </Tabs>
 
-If the tests pass, you're ready to proceed! The output should look something like:
-
-```bash
-✓ Test batch actions with sequential execution
-✓ Test multiple contracts with parallel execution  
-✓ Test similar contracts with response handling
-✓ Integration tests passed
+Expected output:
+```
+✓ Test batch actions
+✓ Test multiple contracts  
+✓ Test similar contracts
 ```
 
-## Deploying Test Contracts (Optional)
+## Contract Initialization
 
-For this tutorial, we'll primarily use the sandbox environment, but if you want to deploy the test contracts to testnet:
+The main contract needs external contract addresses:
 
 <Tabs>
-  <TabItem value="short" label="Quick Commands">
-
-```bash
-# Create accounts for test contracts
-near create-account hello-test.testnet --useFaucet
-near create-account guestbook-test.testnet --useFaucet  
-near create-account counter-test.testnet --useFaucet
-
-# Deploy the contracts
-near deploy hello-test.testnet ./sandbox-ts/external-contracts/hello-near.wasm
-near deploy guestbook-test.testnet ./sandbox-ts/external-contracts/guest-book.wasm
-near deploy counter-test.testnet ./sandbox-ts/external-contracts/counter.wasm
-```
-
-  </TabItem>
-  <TabItem value="full" label="Full CLI Commands">
-
-```bash
-# Create test contract accounts
-near account create-account sponsor-by-faucet-service hello-test.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
-near account create-account sponsor-by-faucet-service guestbook-test.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
-near account create-account sponsor-by-faucet-service counter-test.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
-
-# Deploy contracts  
-near contract deploy hello-test.testnet use-file ./sandbox-ts/external-contracts/hello-near.wasm with-init-call new json-args '{}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
-near contract deploy guestbook-test.testnet use-file ./sandbox-ts/external-contracts/guest-book.wasm with-init-call new json-args '{}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
-near contract deploy counter-test.testnet use-file ./sandbox-ts/external-contracts/counter.wasm with-init-call new json-args '{}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
-```
-
-  </TabItem>
-</Tabs>
-
-## Project Configuration
-
-The main contract needs to know which external contracts to interact with. This is configured during initialization:
-
-<Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 TypeScript">
+  <TabItem value="js" label="JavaScript" default>
 
 ```typescript
-// Example initialization in contract.ts
 @NearBindgen({})
-export class CrossContractCalls {
+export class CrossContractCall {
   hello_account: AccountId;
-  guestbook_account: AccountId; 
   counter_account: AccountId;
+  guestbook_account: AccountId;
 
   @initialize({})
-  new({
+  init({
     hello_account,
-    guestbook_account,
     counter_account,
+    guestbook_account,
   }: {
     hello_account: AccountId;
-    guestbook_account: AccountId;
     counter_account: AccountId;
+    guestbook_account: AccountId;
   }) {
     this.hello_account = hello_account;
-    this.guestbook_account = guestbook_account;
     this.counter_account = counter_account;
+    this.guestbook_account = guestbook_account;
   }
 }
 ```
 
   </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
+  <TabItem value="rust" label="Rust">
 
 ```rust
-// Example initialization in lib.rs
 #[near_bindgen]
-impl CrossContractCalls {
+impl Contract {
     #[init]
-    pub fn new(
+    pub fn init(
         hello_account: AccountId,
-        guestbook_account: AccountId,
         counter_account: AccountId,
+        guestbook_account: AccountId,
     ) -> Self {
         Self {
             hello_account,
-            guestbook_account, 
             counter_account,
+            guestbook_account,
         }
     }
 }
@@ -280,23 +172,18 @@ impl CrossContractCalls {
   </TabItem>
 </Tabs>
 
-## Next Steps
+## Deploy Your Contract
 
-With your development environment set up and working, you're ready to dive into the core concepts:
+```bash
+# Create your account
+near account create-account sponsor-by-faucet-service xcc.YOUR_NAME.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
 
-1. **[Batch Actions](2-batch-actions.md)** - Learn to execute multiple actions atomically
-2. **[Parallel Execution](3-parallel-execution.md)** - Execute multiple contracts simultaneously
-3. **[Response Handling](4-response-handling.md)** - Handle complex response patterns
+# Deploy with initialization
+near contract deploy xcc.YOUR_NAME.testnet use-file ./build/cross_contract.wasm with-init-call init json-args '{
+  "hello_account":"hello.near-examples.testnet",
+  "counter_account":"counter.near-examples.testnet",
+  "guestbook_account":"guestbook.near-examples.testnet"
+}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+```
 
-:::tip Troubleshooting
-
-If you encounter issues during setup:
-
-- Ensure you have the latest version of NEAR CLI
-- For Rust: Make sure you have the `wasm32-unknown-unknown` target installed: `rustup target add wasm32-unknown-unknown`
-- For TypeScript: Ensure Node.js version 18 or higher
-- Check that all test contracts are present in the `external-contracts` directory
-
-:::
-
-Let's move on to [implementing batch actions](2-batch-actions.md)!
+Now let's explore [batch actions](2-batch-actions.md) in the next chapter!

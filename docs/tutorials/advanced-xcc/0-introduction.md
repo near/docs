@@ -1,5 +1,5 @@
 ---
-id: advanced-xcc-introduction
+id: introduction
 title: Advanced Cross-Contract Calls on NEAR
 sidebar_label: Introduction
 description: "Master complex cross-contract call patterns in NEAR Protocol, including batch operations, parallel execution, and advanced error handling."
@@ -7,93 +7,77 @@ description: "Master complex cross-contract call patterns in NEAR Protocol, incl
 
 Cross-contract calls are one of NEAR's most powerful features, enabling smart contracts to interact with each other seamlessly. While basic cross-contract calls allow simple interactions, advanced patterns unlock the full potential of NEAR's composable architecture.
 
-In this comprehensive tutorial, you'll learn to build sophisticated multi-contract interactions that can batch operations, execute calls in parallel, and handle complex response patterns - all while maintaining proper error handling and gas management.
-
 ## What You'll Build
 
-By the end of this tutorial, you'll have a complete understanding of how to:
+By the end of this tutorial, you'll master how to:
 
-- **Batch multiple actions** to the same contract with atomic rollback capabilities
+- **Batch multiple actions** to the same contract with atomic rollback
 - **Execute parallel calls** to different contracts simultaneously
 - **Handle complex responses** from multiple contract interactions
 - **Manage gas efficiently** across multiple contract calls
 - **Implement robust error handling** for multi-contract scenarios
 
-## Real-World Applications
+## Why Advanced Cross-Contract Calls Matter
 
-These advanced patterns are essential for building:
+These patterns are essential for:
 
 - **DeFi protocols** that interact with multiple token contracts and AMMs
-- **Cross-chain bridges** that coordinate with multiple validator contracts  
 - **Gaming platforms** that manage assets across different contract systems
 - **DAO governance** systems that execute proposals across multiple contracts
 - **NFT marketplaces** that coordinate with various collection contracts
 
-## Tutorial Structure
+:::info Source Code
 
-This tutorial is organized into focused, hands-on chapters:
+The complete source code is available at [near-examples/cross-contract-calls](https://github.com/near-examples/cross-contract-calls).
 
-1. **[Project Setup](1-setup.md)** - Get the example project running locally
-2. **[Batch Actions](2-batch-actions.md)** - Learn to batch multiple calls with atomic rollback
-3. **[Parallel Execution](3-parallel-execution.md)** - Execute multiple contracts simultaneously  
-4. **[Response Handling](4-response-handling.md)** - Master complex callback patterns
-5. **[Testing & Deployment](5-testing-deployment.md)** - Test and deploy your contracts
-
-## Prerequisites
-
-Before starting, ensure you have:
-
-- Basic understanding of [NEAR smart contracts](../../smart-contracts/intro.md)
-- Familiarity with [simple cross-contract calls](../simple-xcc.md)
-- [NEAR CLI](../../tooling/near-cli.md) installed and configured
-- A NEAR testnet account with some tokens
-
-:::info Understanding Cross-Contract Calls
-
-If you're new to cross-contract calls, we recommend starting with our [simple cross-contract calls tutorial](../simple-xcc.md) before diving into these advanced patterns.
+Test contracts are deployed on testnet:
+- `hello.near-examples.testnet`
+- `counter.near-examples.testnet`
+- `guestbook.near-examples.testnet`
 
 :::
 
-## How Advanced Cross-Contract Calls Work
+## How It Works
 
-Advanced cross-contract calls leverage NEAR's promise-based architecture to create sophisticated interaction patterns:
+Advanced cross-contract calls leverage NEAR's promise-based architecture:
 
 ```mermaid
 graph TD
     A[Your Contract] --> B[Batch Actions]
     A --> C[Parallel Calls]
     
-    B --> D[Contract A - Action 1]
-    B --> E[Contract A - Action 2]  
-    B --> F[Contract A - Action 3]
+    B --> D[Same Contract - Action 1]
+    B --> E[Same Contract - Action 2]  
+    B --> F[Same Contract - Action 3]
     
-    C --> G[Contract B]
-    C --> H[Contract C]
-    C --> I[Contract D]
+    C --> G[Contract A]
+    C --> H[Contract B]
+    C --> I[Contract C]
     
-    D --> J[Single Response]
+    D --> J[Single Result]
     E --> J
     F --> J
     
-    G --> K[Multiple Responses]
+    G --> K[Array of Results]
     H --> K
     I --> K
-    
-    J --> L[Your Callback]
-    K --> L
 ```
 
-The key differences from simple cross-contract calls:
+Key concepts:
 
 - **Atomicity**: Batch actions either all succeed or all fail
-- **Parallelism**: Multiple contracts can be called simultaneously
+- **Parallelism**: Multiple contracts execute simultaneously
 - **Complex responses**: Handle arrays of results with individual success/failure states
 - **Gas optimization**: Efficient gas distribution across multiple calls
 
-Ready to dive in? Let's [get started with the project setup](1-setup.md)!
+## What You Will Learn
 
-:::tip Expert Tip
+This tutorial is organized into focused chapters:
 
-Advanced cross-contract calls are powerful but complex. Always test thoroughly in a sandbox environment before deploying to mainnet, as gas costs and failure modes can be difficult to predict.
+1. **[Project Setup](1-setup.md)** - Get the example project running locally
+2. **[Batch Actions](2-batch-actions.md)** - Learn atomic multi-action patterns
+3. **[Parallel Execution](3-parallel-execution.md)** - Execute multiple contracts simultaneously  
+4. **[Response Handling](4-response-handling.md)** - Master complex callback patterns
+5. **[Testing & Deployment](5-testing-deployment.md)** - Test and deploy your contracts
 
-:::
+Let's [get started with the project setup](1-setup.md)!

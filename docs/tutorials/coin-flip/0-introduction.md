@@ -1,82 +1,50 @@
 ---
 id: introduction
-title: Building a Coin Flip Game with Secure Randomness
+title: On-Chain Randomness with NEAR
 sidebar_label: Introduction
-description: "Learn how to implement secure and fair randomness in NEAR smart contracts through a practical coin flip game tutorial."
+description: "Learn how to implement secure and verifiable randomness in NEAR smart contracts through a practical coin flip game."
 ---
 
-Generating truly random numbers in blockchain applications is one of the most challenging aspects of smart contract development. Unlike traditional applications where you can use `Math.random()` or system entropy, blockchain requires all nodes to reach consensus on the same result - making randomness both critical and complex.
-
-This tutorial will guide you through building a **Coin Flip Game** on NEAR Protocol, teaching you how to handle randomness securely and fairly using NEAR's built-in Verifiable Random Function (VRF).
+Generating random numbers on a blockchain is fundamentally different from traditional programming. While you might use `Math.random()` in JavaScript or `/dev/urandom` in Linux, blockchains require every node to agree on the same "random" value - making true randomness impossible. This tutorial will teach you how to implement secure, verifiable randomness in NEAR smart contracts.
 
 ## The Challenge of Blockchain Randomness
 
-In traditional programming, generating randomness seems straightforward:
+In a blockchain environment, randomness faces unique constraints:
 
-```javascript
-// ❌ This won't work on blockchain!
-const outcome = Math.random() > 0.5 ? 'heads' : 'tails';
-```
+- **Determinism**: All validators must compute identical results
+- **Unpredictability**: Users shouldn't be able to predict outcomes before transactions
+- **Manipulation Resistance**: Miners or validators shouldn't influence results
 
-But on a blockchain, this approach fails because:
+NEAR solves this through a Verifiable Random Function (VRF) that provides cryptographically secure randomness available directly in your smart contracts.
 
-- **Consensus Requirement**: Every validator must compute the same result
-- **Predictability**: Malicious actors could manipulate predictable inputs
-- **Determinism**: The same inputs must always produce the same outputs
+## How NEAR's Randomness Works
 
-## NEAR's Solution: Verifiable Random Function
+NEAR provides randomness through:
+- **Rust**: `env::random_seed()` 
+- **JavaScript**: `near.randomSeed()`
 
-NEAR Protocol solves this elegantly with a **Verifiable Random Function (VRF)** that provides:
+Both return a 32-byte array derived from:
+- Block producer's cryptographic signature
+- Previous epoch's random value  
+- Block height and timestamp
+- Network-specific constants
 
-- **Security**: Cryptographically secure and manipulation-resistant
-- **Consistency**: All nodes get the same random seed per block
-- **Simplicity**: Easy-to-use APIs in both Rust and JavaScript
-- **No External Dependencies**: Built directly into the protocol
+This ensures randomness that is unpredictable for users but deterministic for validators.
 
-## What You'll Build
+:::info
+The complete source code for this tutorial is available in the [near-examples/coin-flip-examples](https://github.com/near-examples/coin-flip-examples) repository.
 
-By the end of this tutorial, you'll have created a fully functional coin flip game where:
-
-- Players guess "heads" or "tails"
-- Correct guesses earn points, wrong guesses lose points
-- All randomness is cryptographically secure and fair
-- The contract handles edge cases and validates inputs
-
-## What You'll Learn
-
-This tutorial covers:
-
-1. [Understanding NEAR's randomness system](1-understanding-randomness.md)
-2. [Setting up your development environment](2-setup.md)  
-3. [Building the smart contract](3-contract.md)
-4. [Implementing secure random logic](4-randomness-implementation.md)
-5. [Testing your contract](5-testing.md)
-6. [Advanced randomness patterns](6-advanced-patterns.md)
-
-## Prerequisites
-
-Before starting, you should have:
-
-- Basic understanding of NEAR Protocol
-- Familiarity with either Rust or JavaScript
-- NEAR CLI installed ([installation guide](https://docs.near.org/tools/near-cli))
-- A NEAR testnet account
-
-:::info Complete Code Repository
-
-The complete source code for this tutorial is available in the [GitHub repository](https://github.com/near-examples/coin-flip-randomness-tutorial).
-
-You can also interact with the deployed contract on testnet at `coin-flip.examples.testnet`.
-
+A live version is deployed on testnet at `coinflip.near-examples.testnet` for testing.
 :::
 
-## Why This Matters
+## What You Will Build
 
-Understanding randomness on NEAR opens doors to building:
+You'll create a coin flip game that demonstrates:
 
-- **Gaming Applications**: Dice games, card shuffles, loot drops
-- **DeFi Protocols**: Lotteries, random reward distributions  
-- **NFT Projects**: Random trait generation, mystery boxes
-- **Governance Tools**: Random jury selection, tie-breaking
+- [Understanding randomness challenges](1-randomness-basics.md) on blockchain and NEAR's solution
+- [Building a simple coin flip contract](2-basic-contract.md) with secure randomness
+- [Testing randomness](3-testing-randomness.md) to ensure fairness and distribution
+- [Advanced randomness patterns](4-advanced-patterns.md) for complex applications
+- [Deploying and interacting](5-deployment.md) with your random contract
 
-Let's dive in and start building your first randomness-powered dApp on NEAR!
+Let's start by understanding the fundamentals of [on-chain randomness](1-randomness-basics.md).
