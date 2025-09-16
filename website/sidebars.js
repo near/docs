@@ -281,11 +281,11 @@ const sidebar = {
             ]},
             {
               "Advanced Cross-Contract Call": [
-                'tutorials/advanced-xcc/0-introduction',
-                'tutorials/advanced-xcc/1-setup',
-                'tutorials/advanced-xcc/2-batch-actions',
-                'tutorials/advanced-xcc/3-parallel-execution',
-                'tutorials/advanced-xcc/4-testing-deployment'
+                'tutorials/advanced-xcc/introduction',
+                'tutorials/advanced-xcc/setup',
+                'tutorials/advanced-xcc/batch-actions',
+                'tutorials/advanced-xcc/parallel-execution',
+                'tutorials/advanced-xcc/testing-deployment'
               ]},
               // {
               //   "Factory": [
@@ -297,21 +297,21 @@ const sidebar = {
               //   ]},
             {
               "Coin Flip": [
-                'tutorials/coin-flip/0-introduction',
-                'tutorials/coin-flip/1-randomnes-basics',
-                'tutorials/coin-flip/2-basic-contract',
-                'tutorials/coin-flip/3-testing-randomness',
-                'tutorials/coin-flip/4-advanced-patterns',
-                'tutorials/coin-flip/5-deployment',
+                'tutorials/coin-flip/introduction',
+                'tutorials/coin-flip/randomnes-basics',
+                'tutorials/coin-flip/basic-contract',
+                'tutorials/coin-flip/testing-randomness',
+                'tutorials/coin-flip/advanced-patterns',
+                'tutorials/coin-flip/deployment',
               ]},
               {
               "Donation": [
-                'tutorials/donation/0-introduction',
-                'tutorials/donation/1-setup',
-                'tutorials/donation/2-contract',
-                'tutorials/donation/3-queries',
-                'tutorials/donation/4-testing',
-                'tutorials/donation/5-frontend'
+                'tutorials/donation/introduction',
+                'tutorials/donation/setup',
+                'tutorials/donation/contract',
+                'tutorials/donation/queries',
+                'tutorials/donation/testing',
+                'tutorials/donation/frontend'
               ]},
             'tutorials/examples/xcc',
             // 'tutorials/examples/advanced-xcc',

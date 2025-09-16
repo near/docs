@@ -77,7 +77,6 @@ This tutorial is organized into focused chapters:
 1. **[Project Setup](1-setup.md)** - Get the example project running locally
 2. **[Batch Actions](2-batch-actions.md)** - Learn atomic multi-action patterns
 3. **[Parallel Execution](3-parallel-execution.md)** - Execute multiple contracts simultaneously  
-4. **[Response Handling](4-response-handling.md)** - Master complex callback patterns
-5. **[Testing & Deployment](5-testing-deployment.md)** - Test and deploy your contracts
+5. **[Testing & Deployment](4-testing-deployment.md)** - Test and deploy your contracts
 
 Let's [get started with the project setup](1-setup.md)!
