@@ -27,14 +27,15 @@ const random = previousTx.hash % 6 + 1;
 ```
 
   </TabItem>
+  
   <TabItem value="problem" label="The Problem">
-
+```plain
 These methods fail because:
 - **Timestamps** are predictable and can be slightly manipulated by block producers
 - **Block hashes** are known before user transactions are included
 - **Transaction data** is public before execution
 - **External input** breaks consensus as nodes can't agree
-
+```
   </TabItem>
 </Tabs>
 

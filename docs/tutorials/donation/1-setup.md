@@ -215,4 +215,4 @@ test.beforeEach(async (t) => {
 
 With the basic contract structure in place, you're ready to implement the core donation functionality. The next chapter will cover how to handle token transfers using payable methods.
 
-Continue to [Handle Donations](2-donations.md) to learn about accepting NEAR token payments.
+Continue to [Handle Donations](2-contract.md) to learn about accepting NEAR token payments.

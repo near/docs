@@ -34,7 +34,7 @@ A deployed contract is available on testnet at `donation.near-examples.testnet` 
 In this tutorial, you will learn how to:
 
 - [Set up the donation contract structure](1-setup.md) with proper initialization
-- [Handle token transfers](2-donations.md) using payable methods and storage management  
+- [Handle token transfers](2-contract.md) using payable methods and storage management  
 - [Query donation data](3-queries.md) with efficient view methods
 - [Deploy and test](4-testing.md) your contract on NEAR testnet
 - [Build a frontend](5-frontend.md) to interact with your donation contract
