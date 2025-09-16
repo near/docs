@@ -1,3 +1,4 @@
+---
 id: advanced-patterns
 title: Advanced Randomness Patterns
 sidebar_label: Advanced Patterns
