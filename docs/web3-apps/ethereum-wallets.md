@@ -121,7 +121,7 @@ Notice that the modal uses a `projectId`, which refers to your unique project on
 3. Create a project on Cloud Reown.
 4. You can copy your `projectId`:
 
-![reown_projectid](https://doc.aurora.dev/assets/images/reown_projectid-dbd1cc5521998d2f16545598ac925a5e.png)
+![reown_projectid](/docs/assets/web3-apps/reown_projectid.png)
 
 :::tip
 
@@ -151,11 +151,11 @@ import { setupEthereumWallets } from "@near-wallet-selector/ethereum-wallets";
 
 That is it! Just re-build your project and click on login! You should see Ethereum Wallets option in your Near Selector:
 
-![ethwallets_popup1](https://doc.aurora.dev/assets/images/ethwallets_popup1-b113d70e3578a75f0f996aa3bcdf43e9.png)
+![ethwallets_popup1](/docs/assets/web3-apps/ethwallets_popup1.png)
 
 And after click to be able to choose the EVM wallet of your taste:
 
-![ethwallets_popup2](https://doc.aurora.dev/assets/images/ethwallets_popup2-8484d037a465af5134f112fba6eef918.png)
+![ethwallets_popup2](/docs/assets/web3-apps/ethwallets_popup2.png)
 
 ---
 
