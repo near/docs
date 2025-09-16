@@ -12,7 +12,6 @@ import DocItemContent from '@theme/DocItem/Content';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import ContentVisibility from '@theme/ContentVisibility';
 import styles from './styles.module.css';
-import { Toaster } from 'react-hot-toast';
 
 
 import { FeedbackComponent } from '../../../components/FeedbackComponent';
@@ -47,7 +46,6 @@ export default function DocItemLayout({ children }) {
 
   return (
     <div className="row">
-      <Toaster />
       <div className={clsx('col', !docTOC.hidden && styles.docItemCol)}>
         <ContentVisibility metadata={metadata} />
         <DocVersionBanner />

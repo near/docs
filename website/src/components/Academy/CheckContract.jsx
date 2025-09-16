@@ -1,28 +1,34 @@
 import { useWalletSelector } from "@near-wallet-selector/react-hook";
 import { useEffect, useState } from "react";
 import styles from "./CheckContract.module.scss";
-import useLessonStore from "./stores/lessonStore";
+import { useAcademyProgress } from "./AcademyProgressContext";
 
-
-const CheckContract = ({ method }) => {
+const CheckContract = ({ course,method }) => {
   if (!method) {
     return <div className="interactive-lesson-error">Error: No method provided.</div>;
   }
-  const { saveContract, getSavedContract } = useLessonStore();
+
+  if (!course) {
+    return <div className="interactive-lesson-error">Error: No course provided.</div>;
+  }
+
   const { signedAccountId, signIn } = useWalletSelector();
+  const {incrementCompletedLessons} = useAcademyProgress(course);
+  const localStorageKey = `academy-quiz-${course}-${method}`;
 
   const [contractAddress, setContractAddress] = useState('');
   const [isValidating, setIsValidating] = useState(false);
   const [validationMessage, setValidationMessage] = useState('');
 
-  const savedContractAddress = getSavedContract(method);
-
   useEffect(() => {
+    const savedContractAddress = localStorage.getItem(localStorageKey) || "";
+
     if (savedContractAddress) {
-      setContractAddress(savedContractAddress);
-      setValidationMessage('Contract verified successfully!');
+        setContractAddress(savedContractAddress);
+        setValidationMessage('Contract verified successfully!');
     }
-  }, [savedContractAddress]);
+  }, [])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +45,8 @@ const CheckContract = ({ method }) => {
       setIsValidating(false);
       setValidationMessage('Contract verified successfully!');
 
-      saveContract(method, contractAddress.trim());
+      if(!(localStorage.getItem(localStorageKey) || "")) incrementCompletedLessons();
+      localStorage.setItem(localStorageKey, contractAddress.trim());
     }, 2000);
   };
 

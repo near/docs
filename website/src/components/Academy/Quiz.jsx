@@ -1,11 +1,13 @@
 import { Children, cloneElement, useEffect, useState } from 'react';
 import './Quiz.scss';
+import { useAcademyProgress } from './AcademyProgressContext';
 
 const Quiz = ({ course, id, children }) => {
   if (!id) {
     return <div className="interactive-lesson-error">Error: No lesson ID provided.</div>;
   }
 
+  const {incrementCompletedLessons} = useAcademyProgress(course);
   const [isCompleted, setIsCompleted] = useState(false);
   const localStorageKey = `academy-quiz-${course}-${id}`;
 
@@ -29,11 +31,7 @@ const Quiz = ({ course, id, children }) => {
     } else {
       setIsCompleted(true);
       localStorage.setItem(localStorageKey, 'completed');
-      //add 1 to the completed course `academy-progress-${course}`
-      const progressKey = `academy-progress-${course}`;
-      const currentProgress = localStorage.getItem(progressKey);
-      const newProgress = currentProgress ? parseInt(currentProgress) + 1 : 1;
-      localStorage.setItem(progressKey, newProgress.toString());
+      incrementCompletedLessons();
     }
   };
 
@@ -71,7 +69,7 @@ const Quiz = ({ course, id, children }) => {
   );
 
   let quiz = (
-    <div>
+    <>
       <div className="lesson-content-area">
         {processedChildren[currentStepIndex]}
       </div>
@@ -96,16 +94,14 @@ const Quiz = ({ course, id, children }) => {
           </button>
         )}
       </div>
-    </div>
+    </>
   )
 
   return (
     <div className="interactive-lesson">
-      <div className="lesson-layout">
         <div className="lesson-main">
           {isCompleted ? completed : quiz}
         </div>
-      </div>
     </div>
   );
 };
@@ -132,8 +128,6 @@ const MultipleChoice = ({
     }
     return child;
   });
-
-  console.log({ children })
 
   return (
     <div className="multiple-choice-question" id={questionId}>

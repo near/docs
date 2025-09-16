@@ -11,6 +11,7 @@
   // background: linear-gradient(135deg, #2d3748, #1a202c);
   border: none;
   border-radius: 16px;
+  margin-bottom: 24px;
   color: var(--ifm-color-content, #111827);
 
   .progress-header {
@@ -29,7 +30,7 @@
       background-color: #4a5568;
       border-radius: 6px;
       overflow: hidden;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
 
       .progress-fill {
         height: 100%;

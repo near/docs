@@ -78,7 +78,6 @@
     "react-bootstrap-typeahead": "^6.3.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.61.1",
-    "react-hot-toast": "^2.6.0",
     "react-markdown": "^10.1.0",
     "react-monaco-editor": "^0.59.0",
     "react-syntax-highlighter": "^15.6.1",

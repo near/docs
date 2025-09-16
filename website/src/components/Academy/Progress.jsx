@@ -1,21 +1,9 @@
-import React, { useEffect } from 'react';
+import { useAcademyProgress } from './AcademyProgressContext';
 import './Progress.scss';
 
 const Progress = ({ course, total }) => {
-
-  const [completedLessons, setCompletedLessons] = React.useState(0);
-  const localStorageKey = `academy-progress-${course}`;
-
-  
-  useEffect(() => {
-
-    const savedProgress = localStorage.getItem(localStorageKey);
-
-    if (savedProgress) {
-      setCompletedLessons(parseInt(savedProgress, 10));
-    }
-  }, [])
-
+  const {completedLessons} = useAcademyProgress(course);
+  const percentage = Math.round((completedLessons / total) * 100);
   return (
     <div className="lesson-progress academy-progress">
       <div className="progress-header">
@@ -25,15 +13,15 @@ const Progress = ({ course, total }) => {
         <div className="progress-bar">
           <div 
             className="progress-fill" 
-            style={{ width: `${completedLessons / total}%` }}
+            style={{ width: `${percentage}%` }}
           ></div>
         </div>
         <div className="progress-stats">
-          <span className="lessons-completed">
-            {completedLessons} of {total} lessons completed
+          <span className="lessons-completed badge">
+            {completedLessons} / {total}
           </span>
-          <span className="progress-percentage">
-            {completedLessons / total}%
+          <span className="progress-percentage badge">
+            {percentage}%
           </span>
         </div>
       </div>

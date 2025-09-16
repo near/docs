@@ -38,18 +38,6 @@
     }
   }
 
-  .lesson-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    align-items: start;
-
-    @media (max-width: 968px) {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-  }
-
   .lesson-main {
     .lesson-content-area {
       padding: 2rem;
@@ -89,7 +77,7 @@
 
     .lesson-navigation {
       display: flex;
-      justify-content: space-between;
+      justify-content: end;
       gap: 1rem;
     }
   }
@@ -172,16 +160,18 @@
     }
 
     .completion-message {
-      background-color: var(--ifm-color-info-lightest, #e0f2fe);
-      border: 1px solid var(--ifm-color-info-light, #81d4fa);
-      border-radius: 6px;
-      padding: 1rem;
+      background: #e6f9ee;
+      color: #166534;
+      border-radius: 8px;
+      padding: 1.25rem;
       margin: 1.5rem 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
       p {
         margin: 0;
-        color: var(--ifm-color-info-dark, #0277bd);
-        font-size: 0.9rem;
+        color: var(--ifm-color-success-dark, #15803d);
+        font-size: 0.95rem;
+        font-weight: 500;
       }
     }
 
@@ -224,11 +214,13 @@
     }
 
     .completion-message {
-      background-color: var(--ifm-color-info-darker, #0f172a);
-      border-color: var(--ifm-color-info, #0ea5e9);
+      background: #1a2e22;
+      color: #4ade80;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
       p {
-        color: var(--ifm-color-info-light, #7dd3fc);
+        color: var(--ifm-color-success-light, #4ade80);
+        font-weight: 500;
       }
     }
 
