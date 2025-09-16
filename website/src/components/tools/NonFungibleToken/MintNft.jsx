@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import styles from './MintNft.module.scss';
+import styles from './MintNFT.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { toast } from 'react-toastify';
 
@@ -7,7 +7,7 @@ const NFT_CONTRACT = 'nft.primitives.testnet'
 const MAX_FILE_SIZE = 3 * 1024 * 1024;
 const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'];
 
-const MintNft = ({ reload }) => {
+const MintNFT = ({ reload }) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -51,22 +51,22 @@ const MintNft = ({ reload }) => {
 
   const estimateCost = useCallback(async (title, description, hasImage) => {
     const args = {
-      receiver_id: signedAccountId ,
+      receiver_id: signedAccountId,
       token_id: crypto.randomUUID(),
       token_metadata: {
         media: hasImage ? 'https://ipfs.near.social/ipfs/mock-cid' : '',
         title: title || '',
-        description: description ,
+        description: description,
       },
     };
 
     const stringArgs = JSON.stringify(args);
     const costPerByte = '10000000000000000000';
     const estimatedCost = BigInt(stringArgs.length) * BigInt(costPerByte) * BigInt(4);
-    
+
     setRequiredDeposit(estimatedCost);
   }, [signedAccountId]);
-  
+
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
 
@@ -96,7 +96,7 @@ const MintNft = ({ reload }) => {
 
   const onPreview = async () => {
     if (!validateForm()) return;
-    
+
     setIsLoadingPreview(true);
     await estimateCost(formData.title, formData.description, !!formData.image);
     setStep('ready-to-mint');
@@ -148,7 +148,7 @@ const MintNft = ({ reload }) => {
         gas: '300000000000000',
         deposit: requiredDeposit.toString(),
       });
-      
+
       toast.success('NFT minted successfully!');
 
       setFormData({ title: '', description: '', image: null });
@@ -179,99 +179,93 @@ const MintNft = ({ reload }) => {
   };
 
   return (
-    <>      
-    <h2>Mint a Non-Fungible Token</h2>
-      <p>
-        This tool allows you to deploy your own NEP-171 smart contract (Non-Fungible Tokens)
-      </p>
-      <div className={styles.container}>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <div className={styles.formGroup}>
-            <label className={styles.label} htmlFor="title">Title</label>
-            <input
-              id="title"
-              type="text"
-              className={styles.input}
-              placeholder="Enter title"
-              value={formData.title}
-              onChange={(e) => handleInputChange('title', e.target.value)}
-              disabled={!signedAccountId}
-            />
-            {errors.title && <div className={styles.error}>{errors.title}</div>}
-          </div>
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.formGroup}>
+          <label className={styles.label} htmlFor="title">Title</label>
+          <input
+            id="title"
+            type="text"
+            className={styles.input}
+            placeholder="Enter title"
+            value={formData.title}
+            onChange={(e) => handleInputChange('title', e.target.value)}
+            disabled={!signedAccountId}
+          />
+          {errors.title && <div className={styles.error}>{errors.title}</div>}
+        </div>
 
-          <div className={styles.formGroup}>
-            <label className={styles.label} htmlFor="description">Description</label>
-            <textarea
-              id="description"
-              className={styles.textarea}
-              placeholder="Enter description"
-              value={formData.description}
-              onChange={(e) => handleInputChange('description', e.target.value)}
-              disabled={!signedAccountId}
-            />
-            {errors.description && <div className={styles.error}>{errors.description}</div>}
-          </div>
+        <div className={styles.formGroup}>
+          <label className={styles.label} htmlFor="description">Description</label>
+          <textarea
+            id="description"
+            className={styles.textarea}
+            placeholder="Enter description"
+            value={formData.description}
+            onChange={(e) => handleInputChange('description', e.target.value)}
+            disabled={!signedAccountId}
+          />
+          {errors.description && <div className={styles.error}>{errors.description}</div>}
+        </div>
 
-          <div className={styles.formGroup}>
-            <label className={styles.label} htmlFor="image">Image Upload</label>
-            <input
-              id="image"
-              type="file"
-              className={styles.fileInput}
-              accept={ACCEPTED_IMAGE_TYPES.join(',')}
-              onChange={handleFileChange}
-              disabled={!signedAccountId}
-            />
-            <div className={styles.fileHint}>
-              Accepted Formats: PNG, JPEG, GIF, SVG | Ideal dimension: 1:1 | Max size: 3MB
-            </div>
-            {errors.image && <div className={styles.error}>{errors.image}</div>}
-            {imagePreview && (
-              <div className={styles.imagePreview}>
-                <label className={styles.label}>Preview:</label>
-                <img 
-                  src={imagePreview} 
-                  alt="NFT preview" 
-                  className={styles.previewImage}
-                />
-              </div>
-            )}
+        <div className={styles.formGroup}>
+          <label className={styles.label} htmlFor="image">Image Upload</label>
+          <input
+            id="image"
+            type="file"
+            className={styles.fileInput}
+            accept={ACCEPTED_IMAGE_TYPES.join(',')}
+            onChange={handleFileChange}
+            disabled={!signedAccountId}
+          />
+          <div className={styles.fileHint}>
+            Accepted Formats: PNG, JPEG, GIF, SVG | Ideal dimension: 1:1 | Max size: 3MB
           </div>
-
-          {!signedAccountId ? (
-            <button
-              type="button"
-              onClick={signIn}
-              className={`${styles.button} ${styles.primary}`}
-            >
-              Connect Wallet
-            </button>
-          ) : (
-            <div>
-              {step === 'ready-to-mint' && (
-                <div className={styles.pricePreview}>
-                  <div className={styles.priceAmount}>
-                    Minting Cost: <strong>{requiredDeposit} NEAR</strong>
-                  </div>
-                  <div className={styles.priceNote}>
-                    This amount will be used to cover storage costs on the NEAR blockchain.
-                  </div>
-                </div>
-              )}
-              <button
-                type="submit"
-                className={`${styles.button} ${styles.primary} ${(isLoadingPreview || isSubmitting) ? styles.loading : ''} ${step === 'ready-to-mint' ? styles.confirm : ''}`}
-                disabled={isLoadingPreview || isSubmitting}
-              >
-                {getButtonText()}
-              </button>
+          {errors.image && <div className={styles.error}>{errors.image}</div>}
+          {imagePreview && (
+            <div className={styles.imagePreview}>
+              <label className={styles.label}>Preview:</label>
+              <img
+                src={imagePreview}
+                alt="NFT preview"
+                className={styles.previewImage}
+              />
             </div>
           )}
-        </form>
-      </div>
-    </>
+        </div>
+
+        {!signedAccountId ? (
+          <button
+            type="button"
+            onClick={signIn}
+            className={`${styles.button} ${styles.primary}`}
+          >
+            Connect Wallet
+          </button>
+        ) : (
+          <div>
+            {step === 'ready-to-mint' && (
+              <div className={styles.pricePreview}>
+                <div className={styles.priceAmount}>
+                  Minting Cost: <strong>{requiredDeposit} NEAR</strong>
+                </div>
+                <div className={styles.priceNote}>
+                  This amount will be used to cover storage costs on the NEAR blockchain.
+                </div>
+              </div>
+            )}
+            <button
+              type="submit"
+              className={`${styles.button} ${styles.primary} ${(isLoadingPreview || isSubmitting) ? styles.loading : ''} ${step === 'ready-to-mint' ? styles.confirm : ''}`}
+              disabled={isLoadingPreview || isSubmitting}
+            >
+              {getButtonText()}
+            </button>
+          </div>
+        )}
+      </form>
+    </div>
   );
 };
 
-export default MintNft;
+export default MintNFT;
