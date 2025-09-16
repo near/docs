@@ -9,11 +9,11 @@ import {Github, Language} from "@site/src/components/codetabs"
 
 Since an auction contract hosts a single auction, each time you would like to host a new auction you will need to deploy a new contract. Rather than finding the compiled WASM file, creating a new account, deploying the contract, and then initializing it each time, you can use a factory contract to do this for you.
 
-Luckily for us, there is already a [factory contract example](https://github.com/near-examples/factory-rust)! We will fork this example and slightly modify it to suit our use case. If you would like to learn more about how the factory contract works, you can take a look at the [associated documentation](/tutorials/examples/factory#generic-factory).
+Luckily for us, there is already a [factory contract example](https://github.com/near-examples/factory-rust)! We will fork this example and slightly modify it to suit our use case. 
 
 The factory example only comes in rust since, currently, the JavaScript SDK does not allow you to embed the WASM file in the contract. This is a limitation of the SDK and not the blockchain itself.
 
----
+--- 
 
 ## Changing the default contract
 

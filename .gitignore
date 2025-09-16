@@ -9,6 +9,7 @@ website/i18n/*
 website/.docusaurus/*
 website/package-lock.json
 website/yarn.lock
+website/pnpm-lock.yaml
 neardev
 .idea
 .docz

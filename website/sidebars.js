@@ -265,17 +265,56 @@ const sidebar = {
           "Tutorials": [
             'tutorials/examples/count-near',
             'tutorials/examples/guest-book',
-            'tutorials/examples/donation',
-            'tutorials/examples/coin-flip',
+            // 'tutorials/examples/donation',
+            // 'tutorials/examples/coin-flip',
             'tutorials/examples/factory',
             {
               "LinkDrops": [
               'tutorials/neardrop/introduction',
               'tutorials/neardrop/contract-architecture',
               'tutorials/neardrop/near-drops',
+              'tutorials/neardrop/ft-drops',
+              'tutorials/neardrop/nft-drops',
+              'tutorials/neardrop/access-keys',
+              'tutorials/neardrop/account-creation',
+              'tutorials/neardrop/frontend'
             ]},
+            {
+              "Advanced Cross-Contract Call": [
+                'tutorials/advanced-xcc/introduction',
+                'tutorials/advanced-xcc/setup',
+                'tutorials/advanced-xcc/batch-actions',
+                'tutorials/advanced-xcc/parallel-execution',
+                'tutorials/advanced-xcc/testing-deployment'
+              ]},
+              // {
+              //   "Factory": [
+              //     'tutorials/factory/0-introduction',
+              //     'tutorials/factory/1-factory-contract',
+              //     'tutorials/factory/2-deploy-factory',
+              //     'tutorials/factory/3-create-instances',
+              //     'tutorials/factory/4-update-contract',
+              //   ]},
+            {
+              "Coin Flip": [
+                'tutorials/coin-flip/introduction',
+                'tutorials/coin-flip/randomness-basics',
+                'tutorials/coin-flip/basic-contract',
+                'tutorials/coin-flip/testing-randomness',
+                'tutorials/coin-flip/advanced-patterns',
+                'tutorials/coin-flip/deployment',
+              ]},
+              {
+              "Donation": [
+                'tutorials/donation/introduction',
+                'tutorials/donation/setup',
+                'tutorials/donation/contract',
+                'tutorials/donation/queries',
+                'tutorials/donation/testing',
+                'tutorials/donation/frontend'
+              ]},
             'tutorials/examples/xcc',
-            'tutorials/examples/advanced-xcc',
+            // 'tutorials/examples/advanced-xcc',
             'tutorials/examples/global-contracts',
             'tutorials/examples/update-contract-migrate-state',
             {
