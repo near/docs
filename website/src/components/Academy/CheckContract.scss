@@ -1,4 +1,4 @@
-.input {
+.check-contract-input {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid var(--ifm-color-emphasis-300);
@@ -15,18 +15,13 @@
     box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
   }
 
-  &::placeholder {
-    color: var(--ifm-color-emphasis-600);
+  &.error {
+    border-color: var(--ifm-color-danger);
+    box-shadow: 0 0 0 2px var(--ifm-color-danger-lightest);
   }
 }
 
-.inputError {
-  border-color: var(--ifm-color-danger);
-  box-shadow: 0 0 0 2px var(--ifm-color-danger-lightest);
-}
-
-// Error message
-.errorMessage {
+.check-contract-error-message {
   color: var(--ifm-color-danger);
   font-size: 0.85rem;
   display: flex;
@@ -34,54 +29,41 @@
   gap: 0.25rem;
 }
 
-// Success message
-.successMessage {
+.check-contract-success-message {
   padding: 0.75rem;
-  background-color: var(--ifm-color-success-contrast-background);
-  border: 1px solid var(--ifm-color-success-dark);
+  background: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
-  color: var(--ifm-color-success-darkest);
   font-size: 0.9rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border: 1px solid var(--ifm-color-success);
 }
 
-// Input container for horizontal layout
-.inputContainer {
+.check-contract-input-container {
   display: flex;
   gap: 0.75rem;
   align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 }
 
-.inputWrapper {
+.check-contract-input-wrapper {
   flex: 1;
 }
 
-.submitButton {
+.check-contract-submit-button {
   flex-shrink: 0;
   height: fit-content;
   padding: 0.75rem 1.5rem;
   white-space: nowrap;
-}
 
-// Mobile responsiveness
-@media (max-width: 768px) {
-  .container {
-    margin: 0;
-    padding: 0 0.5rem;
-  }
-
-  .input {
-    font-size: 16px; // Prevents zoom on iOS
-  }
-
-  .inputContainer {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .submitButton {
+  @media (max-width: 768px) {
     width: 100%;
   }
 }

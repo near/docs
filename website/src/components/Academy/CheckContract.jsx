@@ -1,15 +1,14 @@
 import { useWalletSelector } from "@near-wallet-selector/react-hook";
 import { useEffect, useState } from "react";
-import styles from "./CheckContract.module.scss";
 import { useAcademyProgress } from "./AcademyProgressContext";
+import './CheckContract.scss';
 
 const CheckContract = ({ course,method }) => {
   if (!method) {
-    return <div className="interactive-lesson-error">Error: No method provided.</div>;
+    return <div>Error: No lesson method provided.</div>;
   }
-
   if (!course) {
-    return <div className="interactive-lesson-error">Error: No course provided.</div>;
+    return <div>Error: No course provided.</div>;
   }
 
   const { signedAccountId, signIn } = useWalletSelector();
@@ -25,7 +24,7 @@ const CheckContract = ({ course,method }) => {
 
     if (savedContractAddress) {
         setContractAddress(savedContractAddress);
-        setValidationMessage('Contract verified successfully!');
+        setValidationMessage('✅ Contract verified successfully!');
     }
   }, [])
 
@@ -43,11 +42,18 @@ const CheckContract = ({ course,method }) => {
 
     setTimeout(() => {
       setIsValidating(false);
-      setValidationMessage('Contract verified successfully!');
+      setValidationMessage('✅ Contract verified successfully!');
 
       if(!(localStorage.getItem(localStorageKey) || "")) incrementCompletedLessons();
       localStorage.setItem(localStorageKey, contractAddress.trim());
     }, 2000);
+  };
+
+  const handlerChange = (e) => {
+    setContractAddress(e.target.value);
+    if (validationMessage) {
+      setValidationMessage('');
+    }
   };
 
 
@@ -62,18 +68,18 @@ const CheckContract = ({ course,method }) => {
           <label htmlFor="contractInput" className="margin-bottom--sm text--left" style={{ display: 'block', fontWeight: 500 }}>
              Enter Contract
           </label>
-          <div className={styles.inputContainer}>
-            <div className={styles.inputWrapper}>
+          <div className="check-contract-input-container">
+            <div className="check-contract-input-wrapper">
               <input
                 id="contractInput"
                 type="text"
-                className={`${styles.input} ${validationMessage && !contractAddress.trim() ? styles.inputError : ''}`}
+                className={`check-contract-input ${validationMessage && !contractAddress.trim() ? 'error' : ''}`}
                 value={contractAddress}
-                onChange={(e) => setContractAddress(e.target.value)}
+                onChange={handlerChange}
                 placeholder="e.g., hello-near.testnet or contract.near"
               />
               {validationMessage && !contractAddress.trim() && (
-                <div className={`${styles.errorMessage} margin-top--sm`}>
+                <div className="margin-top--sm check-contract-error-message">
                   <span>⚠ {validationMessage}</span>
                 </div>
               )}
@@ -81,7 +87,7 @@ const CheckContract = ({ course,method }) => {
             <button
               type="submit"
               disabled={isValidating }
-              className={`button button--primary ${styles.submitButton} ${isValidating ? 'button--outline' : ''}`}
+              className={`button button--primary check-contract-submit-button ${isValidating ? 'button--outline' : ''}`}
             >
               {isValidating ? 'Verifying...' : 'Verify Contract'}
             </button>
@@ -89,8 +95,8 @@ const CheckContract = ({ course,method }) => {
         </div>
 
         {validationMessage && contractAddress.trim() && (
-          <div className={`${styles.successMessage} margin-top--md`}>
-            <span>✓ {validationMessage}</span>
+          <div className="margin-top--md check-contract-success-message">
+            <span>{validationMessage}</span>
           </div>
         )}
       </form>

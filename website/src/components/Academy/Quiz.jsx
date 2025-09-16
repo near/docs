@@ -4,9 +4,11 @@ import { useAcademyProgress } from './AcademyProgressContext';
 
 const Quiz = ({ course, id, children }) => {
   if (!id) {
-    return <div className="interactive-lesson-error">Error: No lesson ID provided.</div>;
+    return <div>Error: No lesson ID provided.</div>;
   }
-
+  if (!course) {
+    return <div>Error: No course provided.</div>;
+  }
   const {incrementCompletedLessons} = useAcademyProgress(course);
   const [isCompleted, setIsCompleted] = useState(false);
   const localStorageKey = `academy-quiz-${course}-${id}`;

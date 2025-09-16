@@ -38,7 +38,7 @@ Ut orci nunc, semper eget tincidunt et, egestas ut ligula. Sed sit amet turpis r
 
 ## Quiz
 
-<Quiz course="protocol" id="protocol-quiz">
+<Quiz id="protocol-quiz">
     <MultipleChoice question="Which of the following best describes NEAR?">
         <Option> A. NEAR is a layer-one, sharded, proof-of-stake blockchain.</Option>
         <Option> B. NEAR is a layer-two, non-sharded, proof-of-work blockchain.</Option>

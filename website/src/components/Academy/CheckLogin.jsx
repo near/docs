@@ -5,7 +5,7 @@ import { useAcademyProgress } from "./AcademyProgressContext";
 const CheckLogin = ({course}) => {
 
   if (!course) {
-    return <div className="interactive-lesson-error">Error: No course provided.</div>;
+    return <div>Error: No course provided.</div>;
   }
 
   const {signedAccountId, signIn} = useWalletSelector();
