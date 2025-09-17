@@ -2,7 +2,7 @@
 sidebar_position: 4
 sidebar_label: Linkdrop contract
 title: Introducing the linkdrop contract we can use
-description: "We're going to take a small detour to talk about the linkdrop smart contract. It's best that we first understand this contract and its purpose, then discuss calling a method on this contract."
+description: "Learn how the linkdrop contract enables creating new NEAR accounts through cross-contract calls."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

@@ -2,7 +2,7 @@
 id: enumeration
 title: Enumeration
 sidebar_label: Enumeration
-description: "In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard"
+description: "In this tutorial, you'll extend your NEAR NFT smart contract to implement the remaining enumeration methods—`nft_total_supply`, `nft_tokens`, and `nft_supply_for_owner`—allowing users and wallets to query the contract's state as per the standard."
 ---
 import {Github} from "@site/src/components/codetabs"
 

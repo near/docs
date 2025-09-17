@@ -2,7 +2,7 @@
 sidebar_position: 1
 sidebar_label: Overview
 title: Highlights of some beginner topics covered.
-description: "In the last chapter we installed Rust and got up and running with a simple smart contract. The contract has a few issues, however, and isn't as powerful as we'd like it to be. For instance, we can only store one crossword puzzle in the smart contract, the frontend is hardcoded, and we don't offer any incentives to the person who wins."
+description: "We set up a basic Rust smart contract in the last chapter. Now, we'll expand it to store multiple crosswords, add prizes, and explore key NEAR concepts."
 ---
 
 import chapter2Correct from '/docs/assets/crosswords/chapter-2-solve.gif';

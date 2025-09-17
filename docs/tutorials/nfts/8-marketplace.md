@@ -2,7 +2,7 @@
 id: marketplace
 title: Marketplace
 sidebar_label: Marketplace
-description: "In this tutorial, you'll learn the basics of an NFT marketplace contract where you can buy and sell non-fungible tokens for $NEAR. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the NFT standard."
+description: "In this tutorial, you'll learn the basics of an NFT marketplace for buying and selling NFTs with $NEAR, using a fully standard NFT contract."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

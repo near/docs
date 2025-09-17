@@ -2,7 +2,7 @@
 id: upgrade-contract
 title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
-description: "In this tutorial, you'll build off the work you previously did to implement the minting functionality on a skeleton smart contract. You got to the point where NFTs could be minted and the wallet correctly picked up on the fact that you owned an NFT. However, it had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call."
+description: "In this tutorial, you'll learn how to upgrade an existing NFT smart contract by implementing the nft_tokens_for_owner method, allowing wallets to display owned NFTs correctly. This tutorial covers deploying patch fixes, handling contract state safely, and testing your upgraded contract on NEAR."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

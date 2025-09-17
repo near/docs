@@ -2,7 +2,7 @@
 id: predeployed-contract
 title: Pre-deployed Contract
 sidebar_label: Pre-deployed Contract
-description: "> Learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract."
+description: "Learn how to easily create your own non-fungible tokens without doing any software development by using a readily-available NFT smart contract."
 ---
 
 import Tabs from '@theme/Tabs';

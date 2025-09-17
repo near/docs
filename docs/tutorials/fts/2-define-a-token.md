@@ -2,7 +2,7 @@
 id: defining-a-token
 title: Defining a Fungible Token
 sidebar_label: Defining Your Token
-description: "This is the first of many tutorials in a series where you'll be creating a complete FT smart contract from scratch that conforms with all the NEAR FT standards. Today you'll learn what a Fungible Token is and how you can define one on the NEAR blockchain. You will be modifying a bare-bones skeleton smart contract by filling in the necessary code snippets needed to add this functionality."
+description: "Learn how to define a Fungible Token (FT) on NEAR by customizing the skeleton smart contract. This tutorial covers metadata setup, initialization functions, and querying the token on-chain."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';
