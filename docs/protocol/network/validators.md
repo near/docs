@@ -6,11 +6,11 @@ description: "Learn about NEAR Protocol validators, their roles in network secur
 
 At its core, NEAR Protocol is a decentralized blockchain that operates on a network of independent participants called validators who process transactions and secure the network.
 
-These validators must reach consensus—meaning they need to agree on which transactions are valid and should be added to the blockchain. This ensures no one can steal funds, double-spend tokens, or manipulate the system. The method validators use to reach this agreement is called a consensus mechanism.
+These validators must reach consensus, meaning they need to agree on which transactions are valid and should be added to the blockchain. This ensures no one steals funds, double-spend tokens, or manipulates the system.
 
-NEAR Protocol uses [Proof-of-Stake (PoS)](https://en.wikipedia.org/wiki/Proof_of_stake), a consensus mechanism that secures the network through economic incentives rather than energy-intensive computational power. Unlike Bitcoin's [proof-of-work](https://en.wikipedia.org/wiki/Proof_of_work) system that requires massive amounts of electricity, PoS makes the network environmentally sustainable while maintaining robust security.
+NEAR validators use [Proof-of-Stake (PoS)](https://en.wikipedia.org/wiki/Proof_of_stake), a consensus mechanism that secures the network through economic incentives rather than energy-intensive computational power. Unlike Bitcoin's [proof-of-work](https://en.wikipedia.org/wiki/Proof_of_work) system that requires massive amounts of electricity, PoS makes the network environmentally sustainable while maintaining robust security.
 
-In Proof-of-Stake, users demonstrate support for specific validators by delegating their NEAR tokens through a process called staking. The principle is straightforward: validators with more delegated tokens have earned greater community trust, creating strong economic incentives to act honestly. Any malicious behavior would damage both their reputation and the value of all staked tokens—including their own—making dishonesty economically irrational.
+In Proof-of-Stake, users demonstrate support for specific validators by delegating their NEAR tokens through a process called staking. The principle is straightforward: validators with more delegated tokens are trusted by the community to keep the network safe. If any of these validators is found doing a malicious activity they get kicked from the network and all the tokens staked on them are burned, making dishonesty economically irrational.
 
 ### Securing the Network
 Validators have two main jobs. The first is to validate and execute transactions, aggregating them in the blocks that form the blockchain. Their second job is to oversee other validators, making sure no one produces an invalid block or creates an alternative chain (eg. with the goal of creating a double spend).
