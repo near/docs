@@ -1,8 +1,14 @@
 const sidebar = {
   academy: [
-        'tutorials/near-quest/protocol',
-        'tutorials/near-quest/wallet',
-        'tutorials/near-quest/hello-world',
+        'quest/introduction',
+        {
+          type: 'html',
+          value: '<hr/>',
+        },
+        'quest/a-file',
+        'quest/protocol',
+        'quest/wallet',
+        'quest/hello-world',
   ],
   build: [
     {

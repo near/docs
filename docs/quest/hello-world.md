@@ -9,7 +9,7 @@ import CheckContract from "@site/src/components/Academy/CheckContract";
 import Progress from "@site/src/components/Academy/Progress";
 
 
-<Progress course="protocol" total={6} />
+<Progress course="protocol" total={3} />
 
 It is time to create your first smart contract! If you haven't done it yet, please create your NEAR Wallet first.
 

@@ -8,9 +8,7 @@ description: Learn NEAR development through interactive quests and challenges de
 import { Quiz, MultipleChoice, Option } from "@site/src/components/Academy/Quiz";
 import Progress from "@site/src/components/Academy/Progress";
 
-
-<Progress course="protocol" total={6} />
-
+<Progress course="protocol" total={3} />
 
 Welcome! We are excited for you to embark on your NEAR Quest journey. Let's start by learning the fundamentals!
 
@@ -38,7 +36,32 @@ Ut orci nunc, semper eget tincidunt et, egestas ut ligula. Sed sit amet turpis r
 
 ## Quiz
 
-<Quiz id="protocol-quiz">
+<Quiz course="protocol" id="protocol-quiz">
+    <MultipleChoice question="Which of the following best describes NEAR?">
+        <Option> A. NEAR is a layer-one, sharded, proof-of-stake blockchain.</Option>
+        <Option> B. NEAR is a layer-two, non-sharded, proof-of-work blockchain.</Option>
+        <Option> C. NEAR is a layer-one, non-sharded, proof-of-stake blockchain.</Option>
+        <Option correct> D. NEAR is a layer-two, sharded, proof-of-work blockchain.</Option>
+    </MultipleChoice>
+    <MultipleChoice question="What does 'layer-one' mean in the context of NEAR?">
+        <Option correct> A. Sharding helps NEAR process transactions quickly and efficiently.</Option>
+        <Option> B. Sharding makes NEAR less secure.</Option>
+        <Option> C. Sharding increases the cost of using NEAR.</Option>
+        <Option> D. Sharding is not used in NEAR.</Option>
+    </MultipleChoice>
+    <MultipleChoice question="How does proof-of-stake in NEAR compare to proof-of-work in terms of electricity usage?">
+        <Option> A. Proof-of-stake uses more electricity than proof-of-work.</Option>
+        <Option correct> B. Proof-of-stake uses less electricity than proof-of-work.</Option>
+        <Option> C. Proof-of-stake and proof-of-work use the same amount of electricity.</Option>
+        <Option> D. Proof-of-stake is not used in NEAR </Option>
+    </MultipleChoice>
+</Quiz>
+
+
+
+## Quiz
+
+<Quiz course="protocol" id="protocol-quiz-2">
     <MultipleChoice question="Which of the following best describes NEAR?">
         <Option> A. NEAR is a layer-one, sharded, proof-of-stake blockchain.</Option>
         <Option> B. NEAR is a layer-two, non-sharded, proof-of-work blockchain.</Option>
