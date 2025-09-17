@@ -4,15 +4,13 @@ title: Validators
 description: "Learn about NEAR Protocol validators, their roles in network security, consensus mechanisms, validator economics, and how to become a validator."
 ---
 
-The NEAR network is decentralized, meaning that multiple people collaborate in order to keep it safe. We call such people **validators**.
+At its core, NEAR Protocol is a decentralized blockchain that operates on a network of independent participants called validators who process transactions and secure the network.
 
-In order to make sure that all the transactions in the network are valid, i.e. that nobody is trying to steal money, the validators follow a specific consensus
-mechanism.
+These validators must reach consensus, meaning they need to agree on which transactions are valid and should be added to the blockchain. This ensures no one steals funds, double-spend tokens, or manipulates the system.
 
-Currently, there are a few well-known consensus mechanisms to keep a blockchain working correctly and resistant to attacks.
-NEAR Protocol uses a version of **Proof-of-Stake**, particularly [Thresholded Proof of Stake](https://near.org/blog/thresholded-proof-of-stake/).
+NEAR validators use [Proof-of-Stake (PoS)](https://en.wikipedia.org/wiki/Proof_of_stake), a consensus mechanism that secures the network through economic incentives rather than energy-intensive computational power. Unlike Bitcoin's [proof-of-work](https://en.wikipedia.org/wiki/Proof_of_work) system that requires massive amounts of electricity, PoS makes the network environmentally sustainable while maintaining robust security.
 
-In Proof-of-Stake, users show support to specific network validators by delegating NEAR tokens to them. This process is known as **staking**. The main idea is that, if a validator has a large amount of tokens delegated is because the community trusts them.
+In Proof-of-Stake, users demonstrate support for specific validators by delegating their NEAR tokens through a process called staking. The principle is straightforward: validators with more delegated tokens are trusted by the community to keep the network safe. If any of these validators is found doing a malicious activity they get kicked from the network and all the tokens staked on them are burned, making dishonesty economically irrational.
 
 ### Securing the Network
 Validators have two main jobs. The first is to validate and execute transactions, aggregating them in the blocks that form the blockchain. Their second job is to oversee other validators, making sure no one produces an invalid block or creates an alternative chain (eg. with the goal of creating a double spend).
