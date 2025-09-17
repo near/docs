@@ -25,7 +25,7 @@ Let's look at an example that takes a prompt from a user (e.g. "What is 2+2"), a
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
-    <Github fname="lib.rs"
+    <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
             start="43" end="70" />
   </TabItem>
@@ -110,7 +110,7 @@ The `env::promise_yield_resume` function in Rust or `near.promise_yield_resume` 
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
-    <Github fname="lib.rs"
+    <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
             start="72" end="75" />
   </TabItem>
@@ -141,7 +141,7 @@ The function being resumed will have access to all parameters passed to it, incl
 
 <Tabs className="language-tabs" groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
-    <Github fname="lib.rs"
+    <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
             start="77" end="89" />
   </TabItem>

@@ -135,6 +135,7 @@ const config = {
               label: 'AI & Agents', to: '/ai/introduction', description: "NEAR is the blockchain for AI",
               subitems: [
                 { label: 'Introduction', to: '/ai/introduction', description: "Learn how NEAR is the blockchain for AI" },
+                { label: 'NEAR MCP', to: '/ai/near-mcp', description: 'Enable AI applications to interact with NEAR' },
                 { label: 'Shade Agents', to: '/ai/shade-agents/introduction', description: "The first truly permissionless and decentralized AI agents" },
                 { label: 'NEAR AI', to: 'https://docs.near.ai/', description: "A simple platform to build and host AI agents" },
                 { label: 'Bitte AI', to: 'https://docs.bitte.ai/', description: "Discover how simple it is to create Open Agents" },
@@ -294,6 +295,13 @@ const config = {
                   description: "Get testnet tokens to test your applications",
                   icon: '/icons/token.svg'
                 },
+                {
+                  label: 'Primitives Toolbox',
+                  to: '/toolbox',
+                  description: "Create FT, NFT, Linkdrop and DAO",
+                  icon: '/icons/toolbox.svg'
+                },
+
                 { label: 'Explorers', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/docs/assets/welcome-pages/update.png' },
                 {
                   label: 'Remix IDE Plugin ↗',

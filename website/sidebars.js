@@ -148,6 +148,7 @@ const sidebar = {
       },
       items: [
         'ai/introduction',
+        'ai/near-mcp',
         {
           "Shade Agents": [
             {
@@ -412,11 +413,7 @@ const sidebar = {
       },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
-        {
-          "Fungible Tokens": [
-            'primitives/ft',
-          ]
-        },
+        'primitives/ft',
         {
           "Non-Fungible Tokens": [
             'primitives/nft',
@@ -499,6 +496,24 @@ const sidebar = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'EVM Developers',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/ethereum.svg',
+      },
+      link: { type: 'doc', id: 'aurora/what-is' },
+      items: [
+        {
+          type: 'link',
+          label: 'Introduction',
+          href: '/aurora/what-is',
+        },
+        'aurora/build-on-aurora',
+        'aurora/launch-virtual-chain',
+      ],
+    }
   ],
   api: [
     'api/rpc/introduction',
@@ -541,9 +556,6 @@ const sidebar = {
       ],
     },
     'integrations/faq',
-  ],
-  toolbox: [
-    'toolbox',
   ]
 };
 
