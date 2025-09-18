@@ -32,6 +32,14 @@
   }
 }
 
+/* Add left border for active subcategories only (not main categories) */
+
+/* Add left border for open subcategories (not main categories) */
+.openSubcategory {
+  border-left: 2px solid rgba(151, 151, 151, 0.851);
+  border-radius: 0;
+}
+
 .customMenuLink {
   color: var(--ifm-font-color-base);
   text-transform: uppercase;

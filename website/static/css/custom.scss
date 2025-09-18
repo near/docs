@@ -406,11 +406,11 @@ li>ul {
 
 // dark style
 [data-theme='dark'] .menu__list .menu__list {
-  border-left: 1px solid #fff3;
+  border-left: 2px solid rgba(130, 170, 255, 0.2);
 }
 
 .menu__list .menu__list {
-  border-left: 1px solid #0003;
+  border-left: 2px solid rgba(130, 170, 255, 0.2);
 }
 
 .menu__list .menu__list li hr {
