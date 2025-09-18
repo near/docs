@@ -291,7 +291,7 @@ const config = {
                 { label: 'Wallets ↗', to: 'https://wallet.near.org/', target: '_blank', description: "Discover wallets built for NEAR", icon: '/icons/wallet.png' },
                 {
                   label: 'Testnet Faucet',
-                  to: '/tools/faucet',
+                  to: '/faucet',
                   description: "Get testnet tokens to test your applications",
                   icon: '/icons/token.svg'
                 },
