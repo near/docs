@@ -87,7 +87,10 @@ hr {
   margin: 3.5em 0;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: 600;
   margin: 0 0 0.5em 0;
 }
@@ -665,8 +668,15 @@ img+em {
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
 }
 
 @media (max-width: 1140px) {
@@ -758,14 +768,16 @@ div[class^='announcementBar_'] {
 }
 
 
-
-
-
-
-
 // ============================================================================
 // NEWSLETTER PAGE STYLES (Minimal)
 // ============================================================================
+
+.newsletter-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 .newsletter-page {
   padding: 2rem 0;
@@ -819,33 +831,94 @@ div[class^='announcementBar_'] {
   background: #1a202c;
   color: #fff;
   border: none;
-  cursor: pointer;
 }
 
+// Links list (issues / external)
 .links-list {
   list-style: none;
   padding: 0;
   border: 1px solid #e1e5ea;
+  background: #fff;
 }
 
-.links-list a {
+.links-list li + li {
+  border-top: 1px solid #e1e5ea;
+}
+
+.links-list a,
+.links-list .link-button {
   display: block;
-  padding: 0.75rem;
-  text-decoration: none;
+  padding: .75rem .9rem;
   color: #374151;
+  font-size: .9rem;
+  line-height: 1.3;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
 }
 
-.links-list a:hover {
+.links-list a:hover,
+.links-list .link-button:hover {
   background: #f1f5f9;
   color: var(--near-color-royal);
+}
+
+.links-list .link-button[aria-current='true'],
+.links-list li.active>a {
+  font-weight: 600;
+  color: var(--near-color-royal);
+}
+
+// Dark theme minimal overrides
+[data-theme='dark'] .newsletter-page {
+  .green-box {
+    background: #065f5b;
+  }
+
+  .subscribe-input {
+    background: #1e293b;
+    border-color: #475569;
+    color: #f1f5f9;
+  }
+
+  .subscribe-input:focus {
+    outline: 1px solid #82aaff;
+    border-color: #82aaff;
+  }
+
+  .subscribe-button {
+    background: #334155;
+  }
+
+  .links-list {
+    background: #1e293b;
+    border-color: #2d3b4c;
+  }
+
+  .links-list li + li {
+    border-top-color: #2d3b4c;
+  }
+
+  .links-list a,
+  .links-list .link-button {
+    color: #cbd5e1;
+  }
+
+  .links-list a:hover,
+  .links-list .link-button:hover {
+    background: #334155;
+    color: #82aaff;
+  }
 }
 
 @media (max-width: 1024px) {
   .newsletter-layout {
     flex-direction: column;
   }
+
   .newsletter-sidebar {
     width: 100%;
   }
 }
-
