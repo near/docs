@@ -10,7 +10,7 @@ This page provides a collection of best practices for writing smart contracts on
 
 # Best practices
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
 
 Here we lay out some best practices for writing smart contracts on NEAR, such as:

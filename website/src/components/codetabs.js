@@ -15,7 +15,7 @@ export function CodeTabs({ children }) {
   }
 
   return (
-    <Tabs className="language-tabs" groupId="code-tabs">
+    <Tabs groupId="code-tabs">
       {children.map((component, index) => {
         return (
           <TabItem value={component.props.value} label={lang2label[component.props.value]}>

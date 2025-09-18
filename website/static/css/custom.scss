@@ -17,8 +17,6 @@
   // Font Configuration
   --bs-font-sans-serif: 'Poppins', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif;
   --bs-body-font-family: var(--bs-font-sans-serif);
-  --near-font-headlines: var(--bs-font-sans-serif);
-  --near-font-body: var(--bs-body-font-family);
 
   --ifm-navbar-item-padding-horizontal: 0.6rem;
 }
@@ -90,10 +88,6 @@ hr {
   margin: 3.5em 0;
 }
 
-.text-center {
-  text-align: center !important;
-}
-
 h1 {
   font-size: var(--h1-font-size);
   margin: 0 0 0 0;
@@ -117,27 +111,11 @@ h4 {
 
 /* Add an indicator after external links that'll open in a new window. */
 a[target="_blank"]::after {
-  /* &nearr;, but nicer. SVG adapted from Inter's rendition of "↗". */
-  content: url("data:image/svg+xml,%3Csvg viewBox='0 0 7 7' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.04261 6.80966L0.377841 6.14489L5.32102 1.19318H1.50284L1.51136 0.272727H6.90625V5.67614H5.97727L5.9858 1.85795L1.04261 6.80966Z' fill='black'/%3E%3C/svg%3E%0A");
-  /* inline => inline-block, so that we can give it a height */
+  content: "↗";
   display: inline-block;
   height: 0.5em;
   padding-inline: 0.2em;
-  aspect-ratio: 1;
-  line-height: 1;
   vertical-align: text-top;
-
-  @media (prefers-color-scheme: dark) {
-    filter: invert(100%);
-  }
-}
-
-a.menu__link[target="_blank"]::after {
-  display: inherit;
-}
-
-a.cover-card[target="_blank"]::after {
-  display: none;
 }
 
 // ============================================================================
@@ -168,9 +146,9 @@ a.cover-card[target="_blank"]::after {
   font-weight: 700;
   margin: 0 auto 1.5rem auto;
   background: linear-gradient(135deg, #5f8afa 0%, #22c55e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   letter-spacing: -0.02em;
   line-height: 1.1;
   max-width: 900px;
@@ -199,9 +177,9 @@ a.cover-card[target="_blank"]::after {
   font-weight: 700;
   margin-bottom: 1.5rem;
   background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .landing-hero p {
@@ -284,28 +262,6 @@ a.cover-card[target="_blank"]::after {
 .container {
   padding-top: 2rem;
   margin: 0 auto 4rem auto;
-  max-width: var(--ifm-container-width);
-  padding-left: var(--ifm-spacing-horizontal);
-  padding-right: var(--ifm-spacing-horizontal);
-  width: 100%;
-}
-
-// Add section divider
-.container+.container::before {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
-  margin: 0 auto 4rem auto;
-}
-
-/* global spacing */
-.docMainWrapper .wrapper,
-.headerWrapper.wrapper,
-.wrapper {
-  padding: 25px;
-  margin: 25px;
 }
 
 article {
@@ -360,9 +316,9 @@ article {
   font-weight: 700;
   margin-bottom: 1.5rem;
   background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   line-height: 1.2;
 }
 
@@ -707,18 +663,6 @@ a.navbar__link.false::after {
   margin-bottom: 1.5rem !important;
 }
 
-.breadcrumbs__link {
-  padding-left: 0;
-}
-
-.breadcrumbs__item--active .breadcrumbs__link {
-  background-color: transparent !important;
-}
-
-.breadcrumbs__link:hover {
-  background-color: transparent !important;
-}
-
 // ============================================================================
 // LINK STYLES
 // ============================================================================
@@ -731,40 +675,15 @@ a:hover {
   text-decoration: none;
 }
 
-footer .menu-item a {
-  color: white;
-}
 
-.footer {
-  text-align: center;
-}
 
-.footer .container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
 
-.footer ul {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  list-style: none;
-  padding: 0;
-}
-
-.footer ul li {
-  margin: 0;
-}
 
 .theme-edit-this-page {
   color: var(--near-color-royal);
 }
 
-.features a[href^='http']::after,
-.cards a[href^='http']::after {
-  content: '';
-}
+
 
 // ============================================================================
 // AVATAR & IMAGE STYLES
@@ -787,21 +706,12 @@ html:not(.blog-post-page) .avatar__photo {
   border-radius: 0%;
 }
 
-img+em,
-iframe+em {
+img+em {
   font-style: normal;
   display: inherit;
   text-align: center;
   font-size: 90%;
   margin: 0.5em 0 2rem 0;
-}
-
-.monaco+em {
-  font-style: normal;
-  display: inherit;
-  text-align: right;
-  font-size: 90%;
-  margin: 0.5em 0 0 0;
 }
 
 // ============================================================================
@@ -812,23 +722,6 @@ iframe+em {
   border-radius: 10px;
   background-color: #f6f8fa;
   padding: 1rem;
-}
-
-.code_iframe {
-  border-radius: 10px;
-  border: 3px solid #9a9a9a;
-  padding: 1rem;
-  margin: 1rem 0 2rem 0;
-}
-
-.vm-widget {
-  min-width: 100%;
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.monaco-editor-background {
-  background-color: #f6f8fa !important;
 }
 
 .code-block-container {
@@ -876,44 +769,11 @@ iframe+em {
   }
 }
 
-// ============================================================================
-// TABLE STYLES
-// ============================================================================
 
-table {
-  display: inline-table;
-  min-width: 100%;
-}
 
-// ============================================================================
-// SECTION STYLES
-// ============================================================================
 
-.section-title {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 4rem 0 2rem 0;
-  color: var(--ifm-heading-color);
-}
 
-.subsection {
-  width: 50%;
-  margin: 2.5em auto;
-  height: 0.5px;
-}
 
-// ============================================================================
-// THEME ADMONITION
-// ============================================================================
-
-.theme-admonition {
-  margin-top: 2em;
-}
-
-// ============================================================================
-// RESPONSIVE STYLES
-// ============================================================================
 
 @media (max-width: 1140px) {
   article {
@@ -921,13 +781,7 @@ table {
   }
 }
 
-// ============================================================================
-// 404 PAGE
-// ============================================================================
 
-.p404 h4 {
-  font-weight: 400 !important;
-}
 
 // ============================================================================
 // FEEDBACK COMPONENT
@@ -1103,17 +957,7 @@ table {
   }
 }
 
-// Ensure all content after feedback component appears below it
-.feedback-container~* {
-  clear: both;
-}
 
-// Alternative approach - add clearfix to feedback container
-.feedback-container::after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 .pagination-nav {
   margin-top: 1rem !important;
@@ -1135,52 +979,11 @@ div[class^='announcementBar_'] {
   font-weight: 600;
 }
 
-// ============================================================================
-// CODE EXPLAINER
-// ============================================================================
 
-.col-blocks {
-  --ifm-col-width: calc(4.5 / 12 * 100%) !important;
-  padding-right: 0;
-}
 
-.col-files {
-  --ifm-col-width: calc(7.5 / 12 * 100%) !important;
-}
 
-.block-selected {
-  border-left: 2px solid var(--near-color-royal) !important;
-}
 
-.block {
-  font-size: 0.95em;
-  text-align: justify;
-  padding: 0 0.8em 0 1em !important;
-  border-left: 2px solid #eee;
-}
 
-.block:hover {
-  border-left: 2px solid #c4ebfb;
-  cursor: pointer;
-}
-
-// ============================================================================
-// BLOG POST
-// ============================================================================
-
-#__blog-post-container {
-  h2 {
-    margin-top: 4rem;
-  }
-}
-
-// ============================================================================
-// Wallet Selector - Fixes
-// ============================================================================
-
-.nws-modal-header {
-  justify-content: space-between !important;
-}
 
 // ============================================================================
 // NEWSLETTER PAGE STYLES (Simplified)
@@ -1435,16 +1238,3 @@ div[class^='announcementBar_'] {
   }
 }
 
-// ============================================================================
-// PLACEHOLDER UTILITIES (loading skeleton)
-// ============================================================================
-.placeholder {
-  background-color: rgba(0, 0, 0, 0.08);
-  border-radius: 6px;
-  display: block;
-}
-
-// Improve placeholder contrast inside glow container
-.placeholder-glow .placeholder {
-  background-image: none; // rely on flat color so it looks good in both themes
-}
