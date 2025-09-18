@@ -10,7 +10,7 @@ A **faucet** provides free `testnet` tokens for testing and development purposes
 
 There are two testnet faucets: the built‑in faucet on this page - which provides native `testnet` NEAR only - and the [Testnet Faucet](#testnet-near-faucet), which supports many fungible tokens (NEAR, USDT, and more).
 
-:::tip
+:::info
 
 If any of the faucets is not working, please report it on our [NEAR Telegram Channel](https://t.me/neardev)
 
