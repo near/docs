@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
-import { KeyPair } from 'near-api-js';
-import { formatNearAmount } from 'near-api-js/lib/utils/format';
+import { KeyPair } from '@near-js/crypto';
+import { NEAR } from '@near-js/tokens';
 import FTPreview from './FTPreview';
 import NFTPreview from './NFTPreview';
 import NearPreview from './NearPreview';
@@ -76,7 +76,7 @@ const Claim = () => {
             method: 'get_key_balance',
             args: { key: pk.getPublicKey().toString() },
           }));
-          setDropData({ amount: formatNearAmount(balance) });
+          setDropData({ amount: NEAR.toDecimal(balance) });
         }
       } catch (err) {
         console.error(err);
