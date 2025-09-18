@@ -291,10 +291,17 @@ const config = {
                 { label: 'Wallets ↗', to: 'https://wallet.near.org/', target: '_blank', description: "Discover wallets built for NEAR", icon: '/icons/wallet.png' },
                 {
                   label: 'Testnet Faucet',
-                  to: '/tools/faucet',
+                  to: '/faucet',
                   description: "Get testnet tokens to test your applications",
                   icon: '/icons/token.svg'
                 },
+                {
+                  label: 'Primitives Toolbox',
+                  to: '/toolbox',
+                  description: "Create FT, NFT, Linkdrop and DAO",
+                  icon: '/icons/toolbox.svg'
+                },
+
                 { label: 'Explorers', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/docs/assets/welcome-pages/update.png' },
                 {
                   label: 'Remix IDE Plugin ↗',

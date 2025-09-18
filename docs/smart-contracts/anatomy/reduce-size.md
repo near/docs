@@ -11,7 +11,7 @@ In this page, we will explore strategies for reducing the size of smart contract
 
 # Reducing a contract's size
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
 
 ## Advice & examples

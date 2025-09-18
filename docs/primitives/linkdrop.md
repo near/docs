@@ -19,13 +19,11 @@ They work by storing assets and linking [AccessKeys](../protocol/access-keys.md)
 
 In order for a contract to be considered a Linkdrop-contract it has to follow the [**NEP-452 standard**](https://github.com/near/NEPs/blob/master/neps/nep-0452.md). The **NEP-452** explains the **minimum interface** required to be implemented, as well as the expected functionality.
 
----
+:::tip
 
-## Keypom
+The simplest way to create a linkdrop is by interacting with our [LinkDrop Generator](/toolbox)
 
-The simplest way to create Linkdrops is by using [Keypom](https://github.com/keypom/keypom). Keypom is a community project that allows you to create Linkdrops for NEAR tokens and NFTs in a few clicks.
-
-![keypom](/docs/primitives/keypom.png)
+:::
 
 ---
 
@@ -39,82 +37,29 @@ In order to create any kind of drop, you need to first generate key pairs. You w
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
-<Tabs className="file-tabs">
+    ```js
+    import { KeyPair } from 'near-api-js';
 
-<TabItem value="near-api-js" label="near-api-js">
-
-```js
-import { KeyPair } from 'near-api-js';
-
-const newKeyPair = KeyPair.fromRandom('ed25519');
-newKeyPair.public_key = newKeyPair.publicKey.toString();
-```
-
-</TabItem>
-
-<TabItem value="Keypom API" label="Keypom API">
-
-```js
-const state = {};
-
-const dropsNumber = "2";
-const keysGeneratorUrl = "https://keypom.sctuts.com/keypair/";
-
-fetch(keysGeneratorUrl + dropsNumber + "/rootEntrophy").then((res) => {
-  const keyPairs = JSON.parse(res.body);
-  const pubKeys = [];
-  const privKeys = [];
-
-  keyPairs.forEach((e) => {
-    pubKeys.push(e.pub);
-    privKeys.push(e.priv);
-  });
-
-  state.publicKeys = pubKeys;
-  state.privKeys = privKeys;
-});
-```
-
-</TabItem>
-
-</Tabs>
+    const newKeyPair = KeyPair.fromRandom('ed25519');
+    newKeyPair.public_key = newKeyPair.publicKey.toString();
+    ```
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
-<Tabs className="file-tabs">
+  ```bash
+  near generate-key
 
-<TabItem value="Near CLI" label="Near CLI">
+  # Key pair with ed25519:33Vn9VtNEtWQPPd1f4jf5HzJ5weLcvGHU8oz7o5UnPqy public key for an account "1e5b1346bdb4fc5ccd465f6757a9082a84bcacfd396e7d80b0c726252fe8b3e8"
+  ```
 
-```bash
-# This command creates a key pair locally in .near-credentials with an implicit account as the accountId (hash representation of the public key)
-
-near generate-key
-```
-
-**Example response:**
-
-```bash
-Key pair with ed25519:33Vn9VtNEtWQPPd1f4jf5HzJ5weLcvGHU8oz7o5UnPqy public key for an account "1e5b1346bdb4fc5ccd465f6757a9082a84bcacfd396e7d80b0c726252fe8b3e8"
-```
-
-</TabItem>
-
-<TabItem value="Keypom API" label="Keypom API">
-```bash
-export NUMBER_OF_DROPS=2
-
-curl https://keypom.sctuts.com/keypair/$NUMBER_OF_DROPS/rootEntrophy
-```
-
-</TabItem>
-
-</Tabs>
 </TabItem>
 
   <TabItem value="Lantstool" label={<LantstoolLabel/>}>
+
     <p>Generate a new key on [Lantstool](https://app.lantstool.dev/)</p>
     ![lantstool](/docs/assets/lantstool/lantstool-near_protocol-utils-key_generator.png)
+  
   </TabItem>
 </Tabs>
 
@@ -167,6 +112,12 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 
 :::info
 To claim the drop, you will need to send the user a [link with the private key](#building-drop-links)
+:::
+
+:::tip
+
+The simplest way to create a linkdrop is by interacting with our [LinkDrop Generator](/toolbox)
+
 :::
 
 ---
@@ -278,6 +229,12 @@ near call nft.primitives.near nft_transfer_call '{"receiver_id": "v2.keypom.near
 The `linkdrop` contract will validate that you are transferring the NFT to a drop that belongs to you
 :::
 
+:::tip
+
+The simplest way to create a linkdrop is by interacting with our [LinkDrop Generator](/toolbox)
+
+:::
+
 ---
 
 ## FT Drops
@@ -385,6 +342,12 @@ near call ft.primitives.near ft_transfer '{"receiver_id": "v2.keypom.near", "amo
   </TabItem>
 </Tabs>
 
+:::tip
+
+The simplest way to create a linkdrop is by interacting with our [LinkDrop Generator](/toolbox)
+
+:::
+
 ---
 
 ## Function Call Drop
@@ -462,43 +425,9 @@ near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_pe
 
 ## Building drop links
 
-```js
-const getLinks = () => {
-  const links = [];
+To create a linkdrop link, simply append the private key to the `claim` page:
 
-  // It assumes that private keys have been already stored in State by using State.init() and State.update() method
-  state.privKeys.map((e, i) => {
-    const link =
-      "https://app.mynearwallet.com" + "/linkdrop/v2.keypom.near/" + e;
-    links.push(link);
-  });
 
-  return links;
-};
 ```
-
-<details>
-<summary>Example response</summary>
-<p>
-
-```js
-[
-  'https://app.mynearwallet.com/linkdrop/v2.keypom.near/ed25519:2H32THYM8ob336yk81cZUxpidvKi34zLck6a97ypmCY8bbSAuEfrCTu9LWmWGiG9df2C6vkg2FGKGZzY9qE4aEcj',
-  'https://app.mynearwallet.com/linkdrop/v2.keypom.near/ed25519:3eoMcqKmmY9Q6qgBy3hZy65HisZ8NXQd9aGGYUGe6RRsmNpGJS5YN64MgZaBVVYJJhbFXhQ2ca3DRRBiKh1rYM48'
-]
+http://localhost:3001/claim/linkdrop?id=ed25519:5Ly2arHZ4niWBVyEuzpN3J8QQX1BrYfWsirGqdYR3JfqUDhJ3SRK7JeQfVsh4UL8Wn6uf8RzWE4RPHymkePywVVd
 ```
-
-</p>
-
-</details>
-
-:::note
-If you didn't save your linkdrop links before closing NEAR App, you can always find them on Keypom app.
-:::
-
----
-
-## Additional Resources
-
-1. [Linkdrop plus](https://near.org/near/widget/ComponentDetailsPage?src=cuongdcdev.near/widget/linkdrop_plus) allows to create a Simple Drop. Powered by [Keypom](https://github.com/keypom/keypom).
-2. [Keypom Drop Viewer](https://near.org/near/widget/ComponentDetailsPage?src=kiskesis.near/widget/Keypom-Drop-Viewer-fork) shows drops created by current logged in user.

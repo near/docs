@@ -66,7 +66,7 @@ const sidebar = {
           "Tutorials": [
             'tutorials/protocol/create-account',
             'tutorials/protocol/importing-account',
-            'tools/faucet'
+            'faucet'
           ]
         },
         {
@@ -413,11 +413,7 @@ const sidebar = {
       },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
-        {
-          "Fungible Tokens": [
-            'primitives/ft',
-          ]
-        },
+        'primitives/ft',
         {
           "Non-Fungible Tokens": [
             'primitives/nft',
@@ -560,9 +556,6 @@ const sidebar = {
       ],
     },
     'integrations/faq',
-  ],
-  toolbox: [
-    'toolbox',
   ]
 };
 

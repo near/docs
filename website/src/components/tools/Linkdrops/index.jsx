@@ -13,45 +13,38 @@ const Linkdrops = ({
   reloadNFT,
   reloadDrops,
 }) => {
-  
+
   const [selector, setSelector] = useState(false);
   return (
     <>
-      <div className={styles.header}>
-        <div className={styles.titleSection}>
-          <h1 className={styles.mainTitle}>
-            🔗 LinkDrop Creator
-          </h1>
-          <p className={styles.subtitle}>
-            Create shareable drops that can be claimed by anyone through a simple web link
-          </p>
-        </div>
-        
-        <div className={styles.switchSection}>
-          <div className={styles.switchContainer}>
-            <span className={`${styles.switchLabel} ${!selector ? styles.active : ''}`}>
-              💰 Token
+      <h2>Create a Linkdrop</h2>
+      <p>
+        This tool allows you to create your own linkdrop campaigns for both Fungible and Non-Fungible Tokens
+      </p>
+
+      <div className={styles.switchSection}>
+        <div className={styles.switchContainer}>
+          <span className={`${styles.switchLabel} ${!selector ? styles.active : ''}`}>
+            Token
+          </span>
+          <label className={styles.switch}>
+            <input
+              type="checkbox"
+              className={styles.switchInput}
+              checked={selector}
+              onChange={(e) => setSelector(e.target.checked)}
+            />
+            <span className={styles.slider}>
+              <span className={styles.switchKnob}></span>
             </span>
-            <label className={styles.switch}>
-              <input
-                type="checkbox"
-                className={styles.switchInput}
-                checked={selector}
-                onChange={(e) => setSelector(e.target.checked)}
-              />
-              <span className={styles.slider}>
-                <span className={styles.switchKnob}></span>
-              </span>
-            </label>
-            <span className={`${styles.switchLabel} ${selector ? styles.active : ''}`}>
-              🖼️ NFT
-            </span>
-          </div>
+          </label>
+          <span className={`${styles.switchLabel} ${selector ? styles.active : ''}`}>
+            NFT
+          </span>
         </div>
       </div>
+        <div className={styles.container}>
 
-      <div className={styles.container}>
-         
 
           {!selector && (
             <CreateTokenDrop
@@ -77,10 +70,10 @@ const Linkdrops = ({
             Powered by <a href="https://keypom.xyz" target="_blank" rel="noopener noreferrer">Keypom</a>
           </div>
 
-        <ListTokenDrop drops={drops} />
-      </div>
-    </>
-  );
+          <ListTokenDrop drops={drops} />
+        </div>
+      </>
+      );
 };
 
-export default Linkdrops;
+      export default Linkdrops;
