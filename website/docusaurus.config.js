@@ -324,6 +324,7 @@ const config = {
               subitems: [
                 { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/icons/event.png' },
                 { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/icons/newspaper.png' },
+                { label: 'Communities', "to": "/communities", description: "Find a NEAR community near you", icon: "/icons/communities.png" },
                 { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/icons/catalog.png' },
               ]
             },
