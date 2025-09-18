@@ -66,7 +66,7 @@ const sidebar = {
           "Tutorials": [
             'tutorials/protocol/create-account',
             'tutorials/protocol/importing-account',
-            'tools/faucet'
+            'faucet'
           ]
         },
         {

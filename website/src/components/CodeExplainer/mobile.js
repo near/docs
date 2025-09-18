@@ -77,7 +77,7 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
     <>
       <div className="code-explain" style={{ position: 'relative' }}>
         <div id="codeblocks">
-          <Tabs className="file-tabs" selectedValue={language} selectValue={(e) => setLanguage(e)}>
+          <Tabs selectedValue={language} selectValue={(e) => setLanguage(e)}>
             {languages.map((lang) => (
               <TabItem value={lang} label={lang2label[lang]}></TabItem>
             ))}
