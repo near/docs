@@ -2,7 +2,7 @@
 id: series
 title: Customizing the NFT Contract
 sidebar_label: Lazy Minting, Collections, and More!
-description: "Learn how to extend the basic NFT contract to support Lazy Minting, Collections, Restricted Access, and optimized storage. This tutorial covers creating NFT series, setting prices, restricting minters, and implementing on-demand minting."
+description: "Learn how to create NFT series"
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

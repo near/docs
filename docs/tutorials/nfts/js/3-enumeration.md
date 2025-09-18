@@ -2,7 +2,7 @@
 id: enumeration
 title: Enumeration
 sidebar_label: Enumeration
-description: "In this tutorial, you'll extend your NEAR NFT smart contract to implement the remaining enumeration methods—`nft_total_supply`, `nft_tokens`, and `nft_supply_for_owner`—allowing users and wallets to query the contract's state as per the standard."
+description: "In this tutorial, you'll extend your NFT contract with enumeration methods"
 ---
 import {Github} from "@site/src/components/codetabs"
 

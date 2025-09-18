@@ -2,7 +2,7 @@
 id: upgrade-contract
 title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
-description: "Learn how to upgrade your NEAR NFT smart contract to implement the `nft_tokens_for_owner` function so minted NFTs can be properly displayed in wallets."
+description: "Learn how to upgrade your NEAR NFT contract so minted NFTs can be properly displayed in wallets."
 ---
 import {Github} from "@site/src/components/codetabs"
 
