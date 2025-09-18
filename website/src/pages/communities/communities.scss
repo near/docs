@@ -1,41 +1,43 @@
+/* Communities Container */
 .container-communities {
     max-width: 1200px;
-    margin: 24px auto;
+    margin: 1.5rem auto;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 24px;
+    gap: 1.5rem;
 }
 
+/* Main Card */
 .main-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    background: #A8F5E5;
-    border-radius: 16px;
-    padding: 16px;
+    background: #a8f5e5;
+    border-radius: 1rem;
+    padding: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .main-card__title {
-    font-size: 28px;
+    font-size: 1.75rem;
     font-weight: 700;
-    color: #2D3748;
-    margin-bottom: 24px;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
 }
 
 .main-card__description {
-    font-size: 16px;
-    color: #2D3748;
-    margin-bottom: 32px;
+    font-size: 1rem;
+    color: #2d3748;
+    margin-bottom: 2rem;
     line-height: 1.6;
 }
 
+/* Channels Section */
 .channels-section__title {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: #2D3748;
-    margin-bottom: 24px;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -43,16 +45,16 @@
 .channels-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: 1rem;
 }
 
 .channel-item {
     display: flex;
     align-items: center;
-    padding: 16px;
-    border-radius: 8px;
+    padding: 1rem;
+    border-radius: 0.5rem;
     text-decoration: none;
-    color: #2D3748;
+    color: #2d3748;
     font-weight: 500;
     transition: all 0.2s ease;
     background: rgba(255, 255, 255, 0.3);
@@ -64,8 +66,10 @@
 }
 
 .channel-item__icon {
-    margin-right: 12px;
-    font-size: 18px;
+    margin-right: 0.75rem;
+    font-size: 1.125rem;
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
 .channel-item__text {
@@ -75,59 +79,60 @@
 .channel-item__arrow {
     margin-left: auto;
     color: #718096;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
+/* Sidebar */
 .sidebar {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 .sidebar-card {
-    border-radius: 16px;
-    padding: 16px;
+    border-radius: 1rem;
+    padding: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .sidebar-card--purple {
-    background: #B8B3E6;
+    background: #b8b3e6;
 }
 
 .sidebar-card--yellow {
-    background: #F5D49A;
+    background: #f5d49a;
 }
 
 .sidebar-card__title {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: #2D3748;
+    color: #2d3748;
 }
 
 .sidebar-card__description {
-    font-size: 16px;
+    font-size: 1rem;
     color: #718096;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
     line-height: 1.5;
 }
 
 .sidebar-card__info {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #718096;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
 }
 
 .sidebar-card__button {
     display: inline-flex;
     align-items: center;
-    padding: 12px 16px;
+    padding: 0.75rem 1rem;
     background: rgba(255, 255, 255, 0.4);
     border: none;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     text-decoration: none;
-    color: #2D3748;
+    color: #2d3748;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 0.875rem;
     transition: all 0.2s ease;
     cursor: pointer;
 }
@@ -138,14 +143,16 @@
 }
 
 .sidebar-card__button-icon {
-    margin-right: 8px;
-    font-size: 16px;
+    margin-right: 0.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
-    .container {
+    .container-communities {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 1.25rem;
     }
 
     .channels-grid {
@@ -153,10 +160,11 @@
     }
 
     .main-card {
-        padding: 24px;
+        padding: 1.5rem;
     }
 }
 
+/* Communities Section */
 .communities-section {
     margin: 2rem auto 4rem auto;
     width: 100%;
@@ -171,13 +179,12 @@
         font-weight: 700;
         color: #1a1a1a;
         margin-bottom: 2rem;
-
     }
 
     .communities-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 0.75rem;
 
         @media (min-width: 480px) {
             grid-template-columns: repeat(2, 1fr);
@@ -189,7 +196,6 @@
 
         @media (min-width: 1200px) {
             grid-template-columns: repeat(3, 1fr);
-
         }
     }
 
@@ -202,7 +208,7 @@
         cursor: pointer;
         display: flex;
         align-items: flex-start;
-        gap: 2px;
+        gap: 0.125rem;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
         &:hover {
@@ -217,8 +223,8 @@
             margin: 0;
 
             .avatar__photo--lg {
-                width: 60px;
-                height: 60px;
+                width: 3.75rem;
+                height: 3.75rem;
                 border-radius: 50%;
                 object-fit: cover;
             }
@@ -234,9 +240,75 @@
 
 
 
-.dark {
+[data-theme='dark'] {
+    /* Main Card Dark Theme */
+    .main-card {
+        background: #2d4c47;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .main-card__title {
+        color: #e2e8f0;
+    }
+
+    .main-card__description {
+        color: #cbd5e0;
+    }
+
+    /* Channels Section Dark Theme */
+    .channels-section__title {
+        color: #e2e8f0;
+    }
+
+    .channel-item {
+        color: #e2e8f0;
+        background: rgba(255, 255, 255, 0.1);
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    }
+
+    .channel-item__arrow {
+        color: #9ca3af;
+    }
+
+    /* Sidebar Dark Theme */
+    .sidebar-card {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar-card--purple {
+        background: #6b5b95;
+    }
+
+    .sidebar-card--yellow {
+        background: #b8860b;
+    }
+
+    .sidebar-card__title {
+        color: #e2e8f0;
+    }
+
+    .sidebar-card__description {
+        color: #cbd5e0;
+    }
+
+    .sidebar-card__info {
+        color: #e2e8f0;
+    }
+
+    .sidebar-card__button {
+        background: rgba(255, 255, 255, 0.1);
+        color: #e2e8f0;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    }
+
+    /* Communities Section Dark Theme */
     .communities-section {
-        background-color: #111827;
 
         .communities-title {
             color: white;
@@ -249,6 +321,12 @@
             &:hover {
                 background-color: #374151;
                 border-color: #4b5563;
+            }
+
+            .avatar {
+                .avatar__name {
+                    color: white;
+                }
             }
 
             .community-name {
