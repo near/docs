@@ -153,7 +153,7 @@ In this example the AI DAO uses a custom agent contract. Because of this you nee
 - Set the manifesto that the agent will use to vote in the contract. Since the NEAR_ACCOUNT_ID in your environment variables is automatically assigned the owner of the agent contract you need to sign this transaction using it's SEED_PHRASE.
 
     ```bash
-    near contract call-function as-transaction YOUR_CONTRACT_ID set_manifesto json-args '{"manifesto_text": "You only approve gaming-related proposals, reject everything else"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as YOUR_ACCOUNT_ID network-config testnet sign-with-seed-phrase 'YOUR_SEED_PHRASE' --seed-phrase-hd-path 'm/44'\''/397'\''/0'\''' send
+    near contract call-function as-transaction YOUR_CONTRACT_ID set_manifesto json-args '{"manifesto_text": "This DAO only approves gaming related proposals and rejects everything else"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as YOUR_ACCOUNT_ID network-config testnet sign-with-seed-phrase 'YOUR_SEED_PHRASE' --seed-phrase-hd-path 'm/44'\''/397'\''/0'\''' send
     ```
 
     Make sure to replace YOUR_CONTRACT_ID, YOUR_ACCOUNT_ID and YOUR_SEED_PHRASE with the appropriate values before executing the command. You can optionally change the manifesto_text as well.

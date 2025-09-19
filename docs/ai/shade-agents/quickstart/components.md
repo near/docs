@@ -10,6 +10,7 @@ import { SigsSupport } from '@site/src/components/sigsSupport';
 
 In this section, we'll explore the main components of the [quickstart template](https://github.com/NearDeFi/shade-agent-template) to understand how to develop a Shade Agent. We'll also look at how to modify the template to build an agent for your use case.
 
+
 ---
 
 ## Template Structure

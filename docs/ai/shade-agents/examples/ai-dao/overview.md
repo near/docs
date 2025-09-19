@@ -5,15 +5,18 @@ sidebar_label: Overview
 description: "A brief overview of the Verifiable AI DAO example built using the Shade Agent Framework that walks through NEAR native deployments, using yield and resume with Shade Agents and leveraging verifiable AI."
 ---
 
+import { TryDemo } from '@site/src/components/TryDemo';
+
 # Verifiable AI DAO
 
 In this example, you'll explore how to build a `fully verifiable AI DAO` using the Shade Agent Framework.
 
 The DAO has a manifesto that is set by the admin that states how the DAO should decide which proposals to approve and which to deny. Anyone can submit a proposal to the DAO. Once submitted, the Shade Agent will use an LLM to vote on the proposal. The agent will then respond to the contract with an `Approved` or `Rejected` decision and a reason for the decision. The DAO voting process is simply an LLM that uses the proposal and manifesto to vote, but this could be extended to take into account sentiment online and use advanced reasoning.
 
-:::tip Live Demo
-Try the live demo here.
-:::
+<TryDemo 
+  url="https://verifiable-ai-dao.vercel.app/" 
+  text="Try the live demo"
+/>
 
 This example is not just a learning tool but also serves as a great `template for building yield and resume-based Shade Agents` - that being a smart contract that, when called, halts its execution for the agent to complete some logic and resume the transaction when it has a result, enabled by NEAR's asynchronous design. This way, the agent and LLM become a part of the contract, and you can now build smart contracts with similar trust assumptions that have the extended capabilities of a backend server (can call APIs, use LLMs, etc.).
 

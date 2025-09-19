@@ -5,6 +5,7 @@ sidebar_label: Deploying an Agent
 description: "Learn how to quickly deploy your first Shade Agent."
 ---
 
+import { TryDemo } from '@site/src/components/TryDemo';
 import { SigsSupport } from '@site/src/components/sigsSupport';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,6 +13,11 @@ import TabItem from '@theme/TabItem';
 In this section, we'll walk you through deploying a Shade Agent. The Shade Agent Framework abstracts the complexities of creating a agent by removing TEE specific code and handling the deployment of the agent contract under hood.
 
 The [template](https://github.com/NearDeFi/shade-agent-template) we're using is a simple Shade Agent built with Hono and written in TypeScript that acts as a verifiable ETH price oracle. It fetches the price of Eth from two different APIs, takes the average, and then pushes the price to an Ethereum contract. 
+
+<TryDemo 
+  url="https://shade-agent-template-woad.vercel.app/" 
+  text="Try the live demo"
+/>
 
 We'll cover two deployment scenarios:
 1. **Local Development**: Running the agent locally for rapid testing and development.
