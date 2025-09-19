@@ -1,7 +1,7 @@
 ---
 sidebar_label: Start options
 id: lake-start-options
-description: "This tutorial will guide you through creating a simple indexer using the NEAR Lake Framework that can start from a specified block height, the latest final block, or the last indexed block."
+description: "Learn how to create a NEAR Lake Framework indexer with flexible start options: from a specific block, the latest final block, or resuming after an interruption."
 ---
 
 This tutorial will guide you through creating a simple indexer using the NEAR Lake Framework that can start from a specified block height, the latest final block, or the last indexed block.

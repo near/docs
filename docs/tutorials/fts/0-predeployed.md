@@ -2,7 +2,7 @@
 id: predeployed-contract
 title: Pre-deployed Contract
 sidebar_label: Pre-deployed Contract
-description: "Learn how to easily receive fungible tokens without doing any software development by using a readily-available FT smart contract."
+description: "Learn how to easily receive fungible tokens without coding."
 ---
 
 import Tabs from '@theme/Tabs';

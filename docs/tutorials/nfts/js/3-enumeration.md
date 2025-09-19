@@ -2,7 +2,7 @@
 id: enumeration
 title: Enumeration
 sidebar_label: Enumeration
-description: "In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods. In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard"
+description: "In this tutorial, you'll extend your NFT contract with enumeration methods."
 ---
 import {Github} from "@site/src/components/codetabs"
 

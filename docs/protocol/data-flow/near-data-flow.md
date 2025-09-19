@@ -1,7 +1,7 @@
 ---
 title: NEAR Data Flow
 sidebar_label: NEAR Data Flow
-description: "Understanding how data flows through NEAR Protocol blockchain, including shards, transactions, receipts, and cross-shard communication."
+description: "Learn how data flows in NEAR Protocol, including transactions, receipts, shards, and cross-shard communication."
 ---
 
 NEAR Protocol blockchain data flow might be a bit tricky at a glance. But it is pretty straightforward and follows well-defined rules. In this article, we are going to have a closer look at how the data flows in NEAR Protocol blockchain.

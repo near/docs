@@ -2,7 +2,7 @@
 id: minting-nfts
 title: Minting NFTs
 sidebar_label: Minting NFTs
-description: "In this tutorial you'll learn how to easily create your own NFTs without doing any software development by using a readily-available smart contract and a decentralized storage solution like IPFS."
+description: "Learn how to mint your own NFTs without coding."
 ---
 
 import Tabs from '@theme/Tabs';

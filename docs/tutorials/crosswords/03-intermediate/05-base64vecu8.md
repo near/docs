@@ -2,7 +2,7 @@
 sidebar_position: 6
 sidebar_label: Base64 params, wrap up
 title: Using base64-encoded arguments when we create a new crossword puzzle
-description: "Let's modify our new_puzzle method a bit, and demonstrate how a smart contract author might use base64-encoded arguments.We're going to send all the arguments as a base64-encoded string, and make this a bit simpler. For this, we're going to use Base64VecU8 from the SDK."
+description: "Learn how to simplify smart contract calls by sending crossword puzzle arguments as base64-encoded data."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

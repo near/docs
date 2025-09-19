@@ -2,7 +2,7 @@
 sidebar_position: 3
 sidebar_label: Seed phrase logic
 title: Implementing the seed phrase logic from the necessary libraries
-description: "In this chapter, we will implement the seed phrase logic necessary for the crossword puzzle. This includes generating a random seed phrase for new accounts and parsing the solution as a seed phrase to derive keys for submitting solutions. We will use the near-seed-phrase library to handle these tasks."
+description: "Learn how to use seed phrases in NEAR to generate new accounts and securely derive keys from puzzle solutions."
 ---
 
 In this chapter, we will implement the seed phrase logic necessary for the crossword puzzle. This includes generating a random seed phrase for new accounts and parsing the solution as a seed phrase to derive keys for submitting solutions. We will use the `near-seed-phrase` library to handle these tasks.

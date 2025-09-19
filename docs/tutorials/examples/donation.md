@@ -1,7 +1,7 @@
 ---
 id: donation
 title: Donation
-description: "Build a donation smart contract that accepts NEAR tokens, tracks donations, and distributes funds to beneficiaries with transparent accounting."
+description: "Learn to build a donation smart contract that accepts NEAR tokens, tracks donations, and distributes funds to beneficiaries."
 ---
 
 import {CodeTabs, Language, Github} from '@site/src/components/codetabs';

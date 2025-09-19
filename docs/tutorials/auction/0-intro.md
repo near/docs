@@ -2,7 +2,7 @@
 id: introduction
 title: A Step-by-Step Guide to Mastering NEAR
 sidebar_label: Introduction
-description: "Welcome! In this guide we will help you navigate NEAR tech stack, so you can build Web3 applications from start to finish in no-time."
+description: "Learn the NEAR tech stack step by step and build Web3 apps, from smart contracts to frontends."
 ---
 
 import Tabs from '@theme/Tabs';

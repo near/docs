@@ -1,7 +1,7 @@
 ---
 id: launch-virtual-chain
 title: Launch a Virtual Chain
-description: "Overview of a virtual chains on Aurora, including its purpose, benefits, and how to launch one."
+description: "Explore Virtual Chains on Aurora, their purpose, advantages, and how to create one with Aurora Cloud"
 ---
 
 Virtual Chains are a unique innovation from Aurora, providing a dedicated and customized chain, or appchain.

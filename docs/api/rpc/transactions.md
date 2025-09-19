@@ -1,7 +1,7 @@
 ---
 id: transactions
 title: Transactions
-description: "Send transactions and query their status using the NEAR RPC API, including transaction status, receipts, and deprecated methods."
+description: "Learn how to use the RPC API to send transactions, check status, retrieve receipts, and monitor execution."
 hide_table_of_contents: true
 ---
 

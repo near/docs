@@ -3,7 +3,7 @@ id: storage
 title: State
 sidebar_label: State (Storage)
 hide_table_of_contents: true
-description: "Smart contracts store data in their account's state, which is public on the chain. The storage starts empty until a contract is deployed and the state is initialized."
+description: "Explore how NEAR smart contracts manage their state, including initialization, storage of data, and the independent lifecycle of code and state."
 ---
 
 import Tabs from '@theme/Tabs';

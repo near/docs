@@ -2,7 +2,7 @@
 sidebar_position: 4
 sidebar_label: Actions and sending NEAR
 title: There are several Actions an account can do, including sending the winner of the crossword puzzle NEAR using the Transfer Action
-description: "We're going to introduce a new Action: Transfer. In this chapter, we'd like the first person to solve the crossword puzzle to earn some prize money, sent in NEAR."
+description: "Learn how to use the Transfer Action in NEAR smart contracts to send a prize to the first crossword puzzle solver."
 ---
 import {Github} from "@site/src/components/codetabs"
 
