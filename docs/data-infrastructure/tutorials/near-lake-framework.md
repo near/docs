@@ -108,16 +108,16 @@ From the block data, we can access the transactions, their receipts and actions.
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
         start="24" end="89" />
     </TabItem>
-
-    The example of logged data:
-      ```bash
-      Block height: 214692896
-
-      Transaction hash HQsRK16ABEQWtKpHKWMbPgUreXCD95ZpKw47YkHxGsEc related to 6QpDUkd5n2xJ6mTjkdzXDbvMFo5mEzANS1t4Hfr76SAY executed with status "SuccessValue"
-      aha_6.testnet
-      {"contract_id":"3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX"}
-      ```
 </Tabs>
+
+The example of logged data:
+```bash
+Block height: 214692896
+
+Transaction hash HQsRK16ABEQWtKpHKWMbPgUreXCD95ZpKw47YkHxGsEc related to 6QpDUkd5n2xJ6mTjkdzXDbvMFo5mEzANS1t4Hfr76SAY executed with status "SuccessValue"
+aha_6.testnet
+{"contract_id":"3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX"}
+```
 
 <MovingForwardSupportSection />
 
