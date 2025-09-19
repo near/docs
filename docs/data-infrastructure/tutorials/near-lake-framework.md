@@ -11,14 +11,14 @@ import MovingForwardSupportSection from '@site/src/components/MovingForwardSuppo
 
 NEAR Lake Framework is a small library companion to NEAR Lake. It allows you to build your own indexer that subscribes to the stream of blocks from the NEAR Lake data source and create your own logic to process the NEAR Protocol data.
 
-NEAR Lake Framework is available in two languages: [Rust](https://github.com/near/near-lake-framework-rs), [JavaScript/TypeScript](https://github.com/near/near-lake-framework-js) and [Python](https://github.com/frolvanya/near-lake-framework-py).
+NEAR Lake Framework is available in three languages: [Rust](https://github.com/near/near-lake-framework-rs), [JavaScript/TypeScript](https://github.com/near/near-lake-framework-js) and [Python](https://github.com/frolvanya/near-lake-framework-py).
 
 In this tutorial, we will build a simple indexer using the NEAR Lake Framework. The indexer will listen for FunctionCalls on a specific contract and log the details of each call.
 
 The full source code for the indexer is available in the [GitHub repository](https://github.com/near-examples/indexer-tx-watcher-example-lake?tab=readme-ov-file).
 
 :::info
-Using NEAR Lake Framework, we can subscribe to the stream of blocks from the NEAR Lake data source. The source of data are JSON files stored in an AWS S3 bucket by [NEAR Lake Indexer](https://github.com/aurora-is-near/near-lake-indexer). The NEAR Lake Framework takes care of downloading and parsing the data for users, but **the reader is paying the costs**. More details about technical limitations and **estimating costs** can be found [here](data-infrastructure/lake-framework/near-lake-framework#how-does-it-compare-to-near-indexer-framework).
+Using NEAR Lake Framework, we can subscribe to the stream of blocks from the NEAR Lake data source. The source of data are JSON files stored in an AWS S3 bucket by [NEAR Lake Indexer](https://github.com/aurora-is-near/near-lake-indexer). The NEAR Lake Framework takes care of downloading and parsing the data for users, but **the reader is paying the costs**. More details about technical limitations and **estimating costs** can be found [here](../lake-framework/near-lake-framework#how-does-it-compare-to-near-indexer-framework).
 :::
 
 ---
@@ -27,11 +27,11 @@ Using NEAR Lake Framework, we can subscribe to the stream of blocks from the NEA
 
 ### AWS Credentials
 
-To access the data provided by [NEAR Lake](data-infrastructure/lake-framework/near-lake) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
+To access the data provided by [NEAR Lake](../lake-framework/near-lake) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
 
 :::info AWS credentials
 
-Please note that using your own AWS Credentials is the only way to access the data provided by [NEAR Lake](data-infrastructure/lake-framework/near-lake) ecosystem.
+Please note that using your own AWS Credentials is the only way to access the data provided by [NEAR Lake](../lake-framework/near-lake) ecosystem.
 
 :::
 
