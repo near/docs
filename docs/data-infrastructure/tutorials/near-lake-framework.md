@@ -102,24 +102,14 @@ From the block data, we can access the transactions, their receipts and actions.
       <Github fname="main.rs" language="rust"
         url="https://github.com/near-examples/indexer-tx-watcher-example-lake/blob/merge-with-js-example/rust/src/main.rs"
         start="72" end="156" />
-
-      The example of logged data:
-      ```bash
-      Block height: 214692896
-
-      Transaction hash Some("HQsRK16ABEQWtKpHKWMbPgUreXCD95ZpKw47YkHxGsEc") related to aha_6.testnet executed with status SuccessValue('')
-      aha_6.testnet
-      Object {
-          "contract_id": String("3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX"),
-      }
-      ```
     </TabItem>
     <TabItem value="js" label="JavaScript">
       <Github fname="index.ts" language="javascript"
         url="https://github.com/near-examples/indexer-tx-watcher-example-lake/blob/merge-with-js-example/js/index.ts"
         start="24" end="89" />
+    </TabItem>
 
-      The example of logged data:
+    The example of logged data:
       ```bash
       Block height: 214692896
 
@@ -127,7 +117,6 @@ From the block data, we can access the transactions, their receipts and actions.
       aha_6.testnet
       {"contract_id":"3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX"}
       ```
-    </TabItem>
 </Tabs>
 
 <MovingForwardSupportSection />
