@@ -27,6 +27,11 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  padding: 0.75rem;
+  background: var(--ifm-color-danger-contrast-background);
+  border: 1px solid var(--ifm-color-danger);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .check-contract-success-message {
