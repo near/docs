@@ -1,7 +1,7 @@
 ---
-id: integrate-contracts
-title: Integrating Contracts
-description: "Learn how to integrate NEAR smart contracts into your frontend using Wallet Selector and NEAR API JS - handle user login, call contract methods, and manage transactions."
+id: wallet-selector
+title: Wallet Selector Tutorial
+description: "Enable users to sign-in using their NEAR wallet with the Wallet Selector"
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
@@ -73,7 +73,7 @@ npm install \
 :::tip
 
 The wallet selector supports multiple wallet packages to select from, [see the full list on the Repo](https://github.com/near/wallet-selector#installation-and-usage).
-We cover how to support Ethereum wallets in the next section: [Ethereum Wallets on Near](ethereum-wallets.md)
+We cover how to support Ethereum wallets in the next section: [Ethereum Wallets on Near](./ethereum-wallets.md)
 :::
 
 ---
@@ -353,11 +353,11 @@ function formatAmount(amount) {
 
 NEAR API JS does not limit itself to simply calling methods in a contract. In fact, you can use it to transform your web-app into a rich user experience. While we will not cover these topics in depth, it is important for you to know that with NEAR API JS you can also:
 
-- **[Sign and verify messages](./backend/backend.md)**: this is very useful for proving that a message was created by the user.
-- **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.ts)**: this enables to link multiple [actions](../protocol/transaction-anatomy.md#actions) (e.g. multiple function calls). If one of the transactions fails, then they are all reverted.
+- **[Sign and verify messages](../../backend/backend.md)**: this is very useful for proving that a message was created by the user.
+- **[Create batch transactions](https://github.com/near/near-api-js/tree/master/packages/cookbook/transactions/batch-transactions.ts)**: this enables to link multiple [actions](../../../protocol/transaction-anatomy.md#actions) (e.g. multiple function calls). If one of the transactions fails, then they are all reverted.
 - **[Create accounts](https://github.com/near/near-api-js/tree/master/packages/cookbook/accounts/create-testnet-account.ts)**: deploy accounts for your users!
 
-Check the [NEAR API](../tools/near-api.md) section to learn how to supercharge your web-app.
+Check the [NEAR API](../../../tools/near-api.md) section to learn how to supercharge your web-app.
 
 :::note Versioning for this article
 

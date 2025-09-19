@@ -12,7 +12,9 @@ import MovingForwardSupportSection from '@site/src/components/MovingForwardSuppo
 In this guide we will show you how to quickly spin up a frontend where users can **login** using their wallets and interact with a **contract**.
 
 :::tip Searching to integrate NEAR in your App?
-If you already have an application and want to integrate NEAR into it, we recommend you to first go through this guide and then check our documentation on [integrating NEAR to a frontend](./integrate-contracts.md)
+
+If you already have an application and want to integrate NEAR into it, we recommend you to first go through this guide and then check our documentation on [integrating NEAR to a frontend](./tutorials/web-login/wallet-selector.md)
+
 :::
 
 ---
@@ -102,7 +104,7 @@ const walletSelectorConfig = {
 };
 ```
 
-This example additionally includes the option to login with `Metamask` and other `EVM wallets`. Further information on how to add EVM wallets to your application can be found in the [Ethereum Wallets on NEAR documentation](./ethereum-wallets.md).
+This example additionally includes the option to login with `Metamask` and other `EVM wallets`. Further information on how to add EVM wallets to your application can be found in the [Ethereum Wallets on NEAR documentation](./tutorials/web-login/ethereum-wallets.md).
 
 <details>
 <summary>What is the wallet selector?</summary>
