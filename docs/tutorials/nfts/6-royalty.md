@@ -2,7 +2,7 @@
 id: royalty
 title: Royalty
 sidebar_label: Royalty
-description: "In this tutorial, you'll extend your NFT smart contract to implement perpetual royalties, enabling designated accounts to receive a percentage of the sale price whenever the NFT is sold."
+description: "Learn how to add perpetual royalties to NFT so creators earn a percentage on every sale."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

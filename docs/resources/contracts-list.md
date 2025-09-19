@@ -1,7 +1,7 @@
 ---
 id: contracts-list
 title: Contracts List
-description: "List of contracts of various projects deployed on NEAR. This list is not exhaustive and is meant to be a reference for developers and users"
+description: "Explore NEAR contracts deployed across projects, serving as a reference for developers and platform users."
 ---
 
 List of contracts of various projects deployed on NEAR. This list is not exhaustive and is meant to be a reference for developers and users

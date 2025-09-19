@@ -2,7 +2,7 @@
 sidebar_position: 1
 sidebar_label: Overview
 title: Highlights of some beginner topics covered.
-description: "We set up a basic Rust smart contract in the last chapter. Now, we'll expand it to store multiple crosswords, add prizes, and explore key NEAR concepts."
+description: "Learn to expand the Rust crossword contract with multiple puzzles, prizes, and key NEAR concepts."
 ---
 
 import chapter2Correct from '/docs/assets/crosswords/chapter-2-solve.gif';

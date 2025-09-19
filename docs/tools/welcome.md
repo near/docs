@@ -3,7 +3,7 @@ id: welcome
 title: Tools
 sidebar_label: Home
 hide_table_of_contents: true
-description: "Complete set of NEAR ecosystem tools including CLI, API, SDK, wallet selector, explorers, data APIs, indexers, and developer resources."
+description: "Explore the complete set of NEAR ecosystem tools, including CLI, APIs, SDKs, wallets, explorers, and developer resources to build and interact with NEAR seamlessly."
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"

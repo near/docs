@@ -2,7 +2,7 @@
 id: skeleton
 title: Skeleton and JavaScript Architecture
 sidebar_label: Contract Architecture
-description: "Discover the architecture and layout of the NFT smart contract in this Zero to Hero series. Learn how the JavaScript files are structured, understand the purpose of each module, and get ready to build a fully functional NFT contract."
+description: "Discover the architecture and layout of the NFT smart contract in this Zero to Hero series."
 ---
 import {Github} from "@site/src/components/codetabs"
 

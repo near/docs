@@ -3,7 +3,7 @@ id: overview
 sidebar_position: 1
 sidebar_label: Crossword Game Overview
 title: Basics overview laying out what will be accomplished in this first section.
-description: "Introductory chapter teaching smart contract fundamentals through a simple interactive crossword puzzle project."
+description: "Learn smart contract basics with an interactive crossword puzzle project using NEAR and Rust."
 ---
 
 import basicCrossword from '/docs/assets/crosswords/basics-crossword.jpg';

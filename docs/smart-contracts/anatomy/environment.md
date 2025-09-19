@@ -1,7 +1,7 @@
 ---
 id: environment
 title: Environment
-description: "The environment is a set of variables and functions that are available to your smart contract when it is executed. It provides information such as who called the method, how much money was attached to the call, and how many computational resources are available."
+description: "Learn the NEAR smart contract environment, including caller info, balances, gas, timestamps, and useful functions."
 ---
 
 import Tabs from '@theme/Tabs';

@@ -2,7 +2,7 @@
 id: introduction
 title: NFT Zero to Hero
 sidebar_label: Introduction
-description: "In this Zero to Hero series, you'll go from minting an NFT with a pre-deployed contract to building a fully-featured NFT smart contract that supports all major extensions."
+description: "Learn how to mint NFTs and build a full NFT contract step by step."
 ---
 
 In this _Zero to Hero_ series, you'll find a set of tutorials that will cover every aspect of a non-fungible token (NFT) smart contract.

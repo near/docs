@@ -1,7 +1,7 @@
 ---
 id: global-contracts
 title: Global Contracts
-description: "Global contracts allow smart contracts to be deployed once and reused by any account without incurring high storage costs."
+description: "Learn how NEAR's Global Contracts let you deploy smart contracts once and reuse them across accounts."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

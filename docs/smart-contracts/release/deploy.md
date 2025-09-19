@@ -2,7 +2,7 @@
 id: deploy
 title: NEAR CLI - Basics
 sidebar_label: Deploying and Using
-description: "After your contract is ready you can deploy it in the NEAR network for everyone to use it."
+description: "Learn how to deploy a NEAR contract using NEAR CLI and interact with its methods securely."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

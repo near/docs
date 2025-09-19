@@ -2,7 +2,7 @@
 id: circulating-supply
 title: Creating a Circulating Supply
 sidebar_label: Circulating Supply
-description: "Learn how to create an initial circulating supply for your fungible token on NEAR, assign it to the contract owner, implement standard event logs, and view the tokens in the NEAR wallet."
+description: "Learn to create a NEAR fungible token's initial supply, log events, and view it in wallet."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

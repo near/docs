@@ -1,7 +1,7 @@
 ---
 id: implementation
 title: Implementing Chain Signatures
-description: "Learn how to implement Chain Signatures to enable NEAR accounts to sign and execute transactions across multiple blockchain protocols using the chainsig.js library."
+description: "Learn how to implement Chain Signatures for NEAR accounts to sign transactions across multiple blockchains."
 ---
 
 import Tabs from '@theme/Tabs';

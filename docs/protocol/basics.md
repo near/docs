@@ -1,7 +1,7 @@
 ---
 id: basics
 title: What is NEAR?
-description: "NEAR is a user-friendly and carbon-neutral blockchain built for speed, security, and infinite scalability with features like named accounts, account abstraction, and cross-chain capabilities."
+description: "Learn about NEAR, a user-friendly, scalable, and carbon-neutral blockchain with robust developer and cross-chain feature"
 ---
 
 NEAR is a **user-friendly** and [**carbon-neutral**](https://near.org/blog/near-climate-neutral-product/) blockchain, built to be [fast, secure, and infinitely scalable](https://www.leewayhertz.com/comparison-of-blockchain-protocols#Parallel-comparison-of-various-blockchain-networks).It offers a simple user experience with named accounts, low fees, and a robust developer ecosystem.

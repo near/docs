@@ -2,7 +2,7 @@
 id: functions
 title: External Interface
 hide_table_of_contents: true
-description: "Smart contracts expose functions so users can interact with them. There are different types of functions including read-only, private and payable."
+description: "Learn how smart contracts expose functions: read-only, private, payable, and state-changing methods."
 ---
 
 import Tabs from '@theme/Tabs';

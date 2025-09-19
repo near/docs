@@ -1,7 +1,7 @@
 ---
 id: access-keys
 title: Access Keys
-description: "Retrieve information about an account's access keys using the NEAR RPC API, including viewing keys, listing all keys, and tracking access key changes."
+description: "Learn how to retrieve and track NEAR account access keys using the RPC API, including full and function-call keys."
 hide_table_of_contents: true
 ---
 

@@ -2,7 +2,7 @@
 id: skeleton
 title: Skeleton and Rust Architecture
 sidebar_label: Contract Architecture
-description: "Explore the architecture of a Fungible Token (FT) smart contract in Rust. Learn the file structure, core logic, metadata, and storage management needed to build a feature-complete FT contract in this *Zero to Hero* series."
+description: "Discover the architecture and layout of the FT smart contract in this Zero to Hero series."
 ---
 import {Github} from "@site/src/components/codetabs"
 

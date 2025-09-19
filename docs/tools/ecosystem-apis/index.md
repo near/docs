@@ -2,7 +2,8 @@
 id: introduction
 title: Data APIs
 sidebar_label: Introduction
-description: "If you are building a decentralized applications, chances are that you will need to query on-chain data. Since building a full indexer is not always feasible, the community has created a set of APIs that you can use to query data from the NEAR blockchain."
+description: "Learn about community-built Data APIs that let you query NEAR blockchain data without running an indexer."
+
 ---
 
 If you are building a decentralized applications, chances are that you will need to query on-chain data. Since building a full indexer is not always feasible, the community has created a set of APIs that you can use to query data from the NEAR blockchain.

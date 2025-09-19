@@ -1,7 +1,7 @@
 ---
 id: serialization
 title: Notes on Serialization
-description: "Smart contracts need to be able to communicate complex data in a simple way, while also reading and storing such data into their states efficiently."
+description: "Learn how NEAR smart contracts serialize and deserialize data for efficient communication, storage, and state management using JSON and Borsh."
 ---
 
 import Tabs from '@theme/Tabs';

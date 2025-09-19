@@ -2,7 +2,7 @@
 id: wallet-selector
 title: Wallet Selector
 sidebar_label: NEAR Wallet Selector
-description: "NEAR Wallet Selector is a JavaScript/TypeScript library that enables users to connect to your dApp using their preferred wallet with a unified interface across the NEAR ecosystem."
+description: "Learn to connect dApp to multiple NEAR wallets for seamless sign-in, transactions, and account management." 
 ---
 
 The [Wallet Selector](https://github.com/near/wallet-selector) is a `JS`/`TS` library that lets users connect to your application using their preferred wallet. 

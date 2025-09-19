@@ -2,7 +2,7 @@
 id: upgrade-contract
 title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
-description: "In this tutorial, you'll learn how to upgrade an existing NFT smart contract by implementing the nft_tokens_for_owner method, allowing wallets to display owned NFTs correctly. This tutorial covers deploying patch fixes, handling contract state safely, and testing your upgraded contract on NEAR."
+description: "Learn how to implement the nft_tokens_for_owner method."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

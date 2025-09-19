@@ -1,7 +1,7 @@
 ---
 id: reproducible-builds
 title: Reproducible Builds
-description: "Reproducible builds let different people build the same program and get the exact same outputs as one another. They help users trust that deployed contracts are built correctly and correspond to the source code. To verify your contract, users can build it themselves and check that the binaries are identical."
+description: "Learn how reproducible builds help verify NEAR contracts produce identical outputs across different environments."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
