@@ -64,14 +64,14 @@ To initialize the NEAR Lake Framework, we need to provide the following basic se
       The Rust package provides a way to use the default configuration for testnet/mainnet and requires only to choose network and set the start block height which in the example we pass as command line argument. 
 
       <Github fname="main.rs" language="rust"
-        url="https://github.com/near-examples/indexer-tx-watcher-example-lake/blob/merge-with-js-example/rust/src/main.rs"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/rust/src/main.rs"
         start="23" end="31" />
     </TabItem>
     <TabItem value="js" label="JavaScript">
       In JavaScript/TypeScript, we will just create the configuration object manually. Block height is passed as a command line argument.
 
       <Github fname="index.ts" language="javascript"
-        url="https://github.com/near-examples/indexer-tx-watcher-example-lake/blob/merge-with-js-example/js/index.ts"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
         start="5" end="14" />
     </TabItem>
 </Tabs>
@@ -83,12 +83,12 @@ To run the indexer, we need to create a function that will handle every message 
 <Tabs groupId="code-tabs">
     <TabItem value="rust" label="Rust" default>
       <Github fname="main.rs" language="rust"
-        url="https://github.com/near-examples/indexer-tx-watcher-example-lake/blob/merge-with-js-example/rust/src/main.rs"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/rust/src/main.rs"
         start="51" end="70" />
     </TabItem>
     <TabItem value="js" label="JavaScript">
       <Github fname="index.ts" language="javascript"
-        url="https://github.com/near-examples/indexer-tx-watcher-example-lake/blob/merge-with-js-example/js/index.ts"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
         start="98" end="101" />
     </TabItem>
 </Tabs>
@@ -100,12 +100,12 @@ From the block data, we can access the transactions, their receipts and actions.
 <Tabs groupId="code-tabs">
     <TabItem value="rust" label="Rust" default>
       <Github fname="main.rs" language="rust"
-        url="https://github.com/near-examples/indexer-tx-watcher-example-lake/blob/merge-with-js-example/rust/src/main.rs"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/rust/src/main.rs"
         start="72" end="156" />
     </TabItem>
     <TabItem value="js" label="JavaScript">
       <Github fname="index.ts" language="javascript"
-        url="https://github.com/near-examples/indexer-tx-watcher-example-lake/blob/merge-with-js-example/js/index.ts"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
         start="24" end="89" />
     </TabItem>
 
