@@ -6,7 +6,7 @@ description: "Learn about the one yocto security pattern in NEAR smart contracts
 
 NEAR uses a system of [Access Keys](../../protocol/access-keys.md) to simplify handling accounts.There are basically two type of keys: `Full Access`, that have full control over an account (i.e. can perform all [actions](../anatomy/actions.md)), and`Function Call`, that only have permission to call a specified smart contract's method(s) that _do not_ attach Ⓝ as a deposit.
 
-When a user [signs in on a website](../../web3-apps/integrate-contracts.md#user-sign-in--sign-out) to interact with your contract, what actually happens is
+When a user [signs in on a website](../../web3-apps/tutorials/web-login/wallet-selector.md#user-sign-in--sign-out) to interact with your contract, what actually happens is
 that a `Function Call` key is created and stored in the website. Since the website has access to the `Function Call` key, it can use it to
 call the authorized methods as it pleases. While this is very user friendly for most cases, it is important to be careful in scenarios involving
 transferring of valuable assets like [NFTs](../../primitives/nft.md) or [FTs](../../primitives/ft.md). In such cases, you need to ensure that
