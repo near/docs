@@ -21,7 +21,7 @@ Every method execution has an environment associated with information such as:
 
 ## Environment Variables
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 | Variable Name          | SDK Variable                  | Description                                                                          |
@@ -199,7 +199,7 @@ During [cross-contract calls](./crosscontract.md) always make sure the callback 
 
 If you already [estimated the Gas](../../protocol/gas.md#estimating-costs-for-a-call) a method needs, you can ensure it never runs out of Gas by using `assert`
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
@@ -233,7 +233,7 @@ def check_gas(required_gas=20_000_000_000_000):  # 20 TGas
 
 Besides environmental variables, the SDK also exposes some functions to perform basic cryptographic operations
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 | Function Name         | SDK method                                       | Description                                                                                                                                                                                                                                                                                                                      |

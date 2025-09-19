@@ -33,7 +33,9 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
     // #files is sticky, and it "sticks" at the height of the .navbar
     const nav = document.querySelector('.navbar');
     const filesElem = document.getElementById('files');
-    filesElem.style.top = `${nav.clientHeight}px`;
+    const navHeight = nav.clientHeight;
+    const availableHeight = window.innerHeight - navHeight;
+    filesElem.style.top = `${navHeight}px`;
 
     // each file has a maxHeight
     const fileTabs = document.querySelector('.file-tabs');
@@ -41,8 +43,15 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
     const allFiles = document.querySelectorAll(`.language-${language}`);
     allFiles.forEach(
       (elem) =>
-        (elem.style.maxHeight = `calc(100vh - ${nav.clientHeight}px - ${fileTabs.clientHeight}px)`),
+        (elem.style.maxHeight = `calc(100vh - ${navHeight}px - ${fileTabs.clientHeight}px)`),
     );
+
+    // Ensure the sticky code column stays within viewport bounds
+    filesElem.style.maxHeight = `${availableHeight}px`;
+    
+    // Set the parent container to provide proper sticky context
+    const codeExplainContainer = document.querySelector('.code-explain');
+    codeExplainContainer.style.position = 'relative';
 
     // calculate the size of the code explanations
     const t0 = document.getElementById(`block0`).getBoundingClientRect().top;
@@ -53,14 +62,31 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
     const nonTranslatedCodeBlocks =
       document.getElementById('codeblocks').getBoundingClientRect().top + window.scrollY;
 
-    // add margin so the last block takes the code with it
-    const tN = document.getElementById(`block${blocks.length - 1}`).getBoundingClientRect().top;
-    document.getElementById('extra-padding').style.height =
-      `${filesElem.clientHeight - Math.abs(tN - bN) - nav.clientHeight}px`;
+    // add margin so the last block takes the code with it when it reaches the bottom
+    const extraPaddingHeight = availableHeight; // Full viewport height for complete scroll-together effect
+    document.getElementById('extra-padding').style.height = `${extraPaddingHeight/3}px`;
 
     const handleScroll = () => {
-      const scrolled = window.scrollY - nonTranslatedCodeBlocks + nav.clientHeight;
+      const scrolled = window.scrollY - nonTranslatedCodeBlocks + navHeight;
       const scrollPercentage = window.scrollY ? scrolled / blocksHeight : 0;
+
+      // Get the text container and its position
+      const textContainer = document.getElementById('codeblocks');
+      const textContainerRect = textContainer.getBoundingClientRect();
+      const textContainerBottom = textContainerRect.bottom;
+      const viewportHeight = window.innerHeight;
+      
+      // Only trigger scroll-together when we've scrolled past the natural end of text content
+      // This happens when the bottom of text container has passed the bottom of viewport
+      if (textContainerBottom < viewportHeight) {
+        // We've scrolled past the end - now move code up with remaining scroll
+        const pastEndDistance = viewportHeight - textContainerBottom;
+        const newTop = Math.max(0, navHeight - pastEndDistance);
+        filesElem.style.top = `${newTop}px`;
+      } else {
+        // Normal sticky behavior - text is still filling the viewport
+        filesElem.style.top = `${navHeight}px`;
+      }
 
       // select the block that corresponds the percentage of the scroll bar
       let linf = 0;
@@ -88,7 +114,7 @@ function DesktopView({ props: { blocks, files, languages, language, setLanguage 
     <>
       <div className="row code-explain">
         <div className="col-blocks col" id="codeblocks">
-          <Tabs className="file-tabs" selectedValue={language} selectValue={(e) => setLanguage(e)}>
+          <Tabs selectedValue={language} selectValue={(e) => setLanguage(e)}>
             {languages.map((lang) => (
               <TabItem value={lang} label={lang2label[lang]}></TabItem>
             ))}

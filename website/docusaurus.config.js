@@ -291,10 +291,17 @@ const config = {
                 { label: 'Wallets ↗', to: 'https://wallet.near.org/', target: '_blank', description: "Discover wallets built for NEAR", icon: '/icons/wallet.png' },
                 {
                   label: 'Testnet Faucet',
-                  to: '/tools/faucet',
+                  to: '/faucet',
                   description: "Get testnet tokens to test your applications",
                   icon: '/icons/token.svg'
                 },
+                {
+                  label: 'Primitives Toolbox',
+                  to: '/toolbox',
+                  description: "Create FT, NFT, Linkdrop and DAO",
+                  icon: '/icons/toolbox.svg'
+                },
+
                 { label: 'Explorers', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/docs/assets/welcome-pages/update.png' },
                 {
                   label: 'Remix IDE Plugin ↗',
@@ -317,6 +324,7 @@ const config = {
               subitems: [
                 { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/icons/event.png' },
                 { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/icons/newspaper.png' },
+                { label: 'Communities', "to": "/communities", description: "Find a NEAR community near you", icon: "/icons/communities.png" },
                 { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/icons/catalog.png' },
               ]
             },

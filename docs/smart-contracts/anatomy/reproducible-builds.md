@@ -10,7 +10,7 @@ Reproducible builds let different people build the same program and get the exac
 
 ## Problem
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
   
 If you build your contract on two different machines, most likely you will get two similar but not identical binaries. Your build artifact can be affected by the locale, timezone, build path, and billions of other factors in your build environment. Thus, the Rust community has a long history of addressing this issue.

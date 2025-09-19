@@ -1,6 +1,7 @@
 import Tabs from '@theme/Tabs';
 import FungibleToken from './FungibleToken';
 import NonFungibleToken from './NonFungibleToken';
+import DAO from './DecentralizedOrganization';
 import TabItem from '@theme/TabItem';
 import NearIconSvg from '@site/static/img/near_icon.svg';
 import { useCallback, useEffect, useState } from 'react';
@@ -29,7 +30,7 @@ const Tools = () => {
 
   const [allFT, setAllFT] = useState([NearToken]);
   const [loadingFT, setLoadingFT] = useState(false);
-  
+
   const [allNFT, setAllNFT] = useState([]);
   const [loadingNFT, setLoadingNFT] = useState(false);
 
@@ -61,7 +62,7 @@ const Tools = () => {
             args: { account_id: signedAccountId },
           });
           console.log(`FT balance for ${contract_id}:`, balance);
-          
+
           if (balance === '0') return { contract_id, balance, metadata: {}, verified: false };
           const metadata = (await viewFunction({ contractId: contract_id, method: 'ft_metadata' }));
           const verified = whiteList.filter((item) => item.contract_id === contract_id).length > 0;
@@ -75,10 +76,10 @@ const Tools = () => {
       NearToken.balance = balance.toString();
 
       let other_fts = await Promise.all(ft_contracts.map((ft) => getFTData(ft)));
-      
+
       other_fts = other_fts.filter((ft) => ft.balance !== '0');
       const all_fts = [NearToken, ...other_fts.sort((a, b) => Number(b.verified) - Number(a.verified))];
-      
+
       setAllFT(all_fts);
       setLoadingFT(false);
     },
@@ -134,25 +135,30 @@ const Tools = () => {
     init();
   }, [fetchTokens, processFT, processNFT, signedAccountId]);
 
-  
-  return <Tabs groupId="code-tabs">
-    <TabItem value="FT" label="FT">
-      <FungibleToken user_fts={allFT} loading={loadingFT} reload={(d) => reload(d, 'fts')} />
-    </TabItem>
-    <TabItem value="NFT" label="NFT">
-      <NonFungibleToken user_collections={allNFT} loading={loadingNFT} reload={(d) => reload(d, 'nfts')} />
-    </TabItem>
-    <TabItem value="Linkdrops" label="Linkdrops">
-      <Linkdrops
-        user_fts={allFT}
-        user_collections={allNFT}
-        drops={drops}
-        reloadFT={(d) => reload(d, 'fts')}
-        reloadNFT={(d) => reload(d, 'nfts')}
-        reloadDrops={reloadLinkdrops}
-      />
-    </TabItem>
-  </Tabs>
+
+  return <>
+    <Tabs groupId="code-tabs">
+      <TabItem value="FT" label="FT">
+        <FungibleToken user_fts={allFT} loading={loadingFT} reload={(d) => reload(d, 'fts')} />
+      </TabItem>
+      <TabItem value="NFT" label="NFT">
+        <NonFungibleToken user_collections={allNFT} loading={loadingNFT} reload={(d) => reload(d, 'nfts')} />
+      </TabItem>
+      <TabItem value="Linkdrops" label="Linkdrops">
+        <Linkdrops
+          user_fts={allFT}
+          user_collections={allNFT}
+          drops={drops}
+          reloadFT={(d) => reload(d, 'fts')}
+          reloadNFT={(d) => reload(d, 'nfts')}
+          reloadDrops={reloadLinkdrops}
+        />
+      </TabItem>
+      <TabItem value="DAO" label="DAO">
+        <DAO />
+      </TabItem>
+    </Tabs>
+  </>
 }
 
 export default Tools;
