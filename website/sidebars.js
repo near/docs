@@ -485,7 +485,7 @@ const sidebar = {
         },
         {
           "Tutorials": [
-            'tutorials/indexing/near-lake-framework',
+            'data-infrastructure/tutorials/near-lake-framework',
           ]
         },
         {
