@@ -2,25 +2,25 @@
 id: agent-contract
 title: Agent Contract
 sidebar_label: Agent Contract
-description: "Learn about the key parts of the agent contract as part of the Verifiable AI DAO Shade Agent example including how to create a custom agent contract and create a yield and resume based Shade Agent."
+description: "Learn about the key parts of the agent contract as part of the Verifiable AI DAO Shade Agent example, including how to create a custom agent contract and create a yield and resume-based Shade Agent."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github} from "@site/src/components/codetabs"
 
-On this page you'll look at the DAO smart contract that uses yield and resume that uses the Shade Agent vote on its proposals within the flow of a single transaction.
+On this page, you'll look at the DAO smart contract that uses the yield and resume pattern to enable the Shade Agent to vote on proposals within a `single transaction` flow.
 
-When developing this example we started by forking the [default agent contract](https://github.com/NearDeFi/shade-agent-js/tree/main/contracts/sandbox). The structure of the contract is mostly the same but removes the request_signature function and implements DAO specific code. On this page you'll walk through the DAO specific code for the agent contract.
+This example is based on the [default agent contract](https://github.com/NearDeFi/shade-agent-js/tree/main/contracts/sandbox), modified to remove the `request_signature` function and implement DAO-specific functionality. This page focuses on the DAO-specific code, as agent registration follows the default contract.
 
 ---
 
 ## Contract Structure
 
-The agent contract includes additional state over the default contract. It stores:
+The DAO agent contract extends the default contract with additional state:
 - The DAO's manifesto
-- A list of pending proposals
-- A list of finalized proposals 
+- A map of pending proposals
+- A map of finalized proposals 
 - The current proposal ID
 
 <Github fname="lib.rs" language="rust"
@@ -29,27 +29,27 @@ The agent contract includes additional state over the default contract. It store
 
 ### Manifesto 
 
-The manifesto contains two parts, the `manifesto text` itself, that states how the DAO should make decisions and the `hash` of the manifesto. The hash will be used to verify that the agent is using the correct manifesto to make its decision.
+The manifesto consists of two components: the `manifesto text` that defines the DAO's decision-making principles and a `hash` of the manifesto for verifying the agent uses the correct manifesto when voting.
 
 <Github fname="dao.rs" language="rust"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L7-L10"
     start="7" end="10" />
 
-The manifesto and its hash are set to an empty strings when the contract is initialized.
+The manifesto and its hash are initialized as empty strings.
 
 ### Pending Proposals
 
-This stores a list of all proposals that are ready to be responded to by the agent. Each proposal request includes the `proposal text` and `yield ID`. The yield ID is a unique identifier for each active request as part of the yield and resume flow.
+This stores all proposals that are awaiting a vote from the agent. Each proposal request includes the `proposal text` and `yield ID` - a unique identifier for each yielded promise (each active pending proposal request).
 
 <Github fname="dao.rs" language="rust"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L14-L17"
     start="14" end="17" />
 
-The map is set to empty when the contract is initialized.
+The map is initialized as empty.
 
 ### Finalized Proposals 
 
-This stores a list of all proposals that have been voted on by the agent. Each finalized proposal contains the `proposal text`, the `proposal result` which is a an enum of `Approved` or `Rejected`, and the `reasoning` for the decision. The result and the reasoning are provided by the agent.
+This stores all proposals that the agent has voted on. Each finalized proposal contains the `proposal text`, `proposal result` (enum of `Approved` or `Rejected`), and `reasoning` for the vote. The result and reasoning are provided by the agent.
 
 <Tabs groupId="code-tabs">
   <TabItem value="finalized-proposal" label="FinalizedProposal">
@@ -68,19 +68,17 @@ This stores a list of all proposals that have been voted on by the agent. Each f
   </TabItem>
 </Tabs>
 
-The map is set to empty when the contract is initialized.
+The map is initialized as empty.
 
 ### Current Proposal ID
 
-The current proposal ID is an integer identifier of the last proposal request made, it's used to identify different pending proposals. It increments each proposal request. If a proposal is not voted on by the agent then the proposal ID will still increment leading to non-consecutive proposal IDs within the finalized proposals map. Note that this the proposal ID is different to the yield ID.
-
-The proposal ID is set to zero when the contract is initialized so the first proposal will have ID one.
+The current proposal ID is an integer identifier that increments with each proposal request and is used to identify different proposals. If a proposal is not voted on by the agent then the proposal ID will still increment leading to `non-consecutive proposal IDs` within the finalized proposals map. Note that this the proposal ID is different to the yield ID.
 
 ---
 
 ## Setting the Manifesto
 
-The contract has a function to set the manifesto. This function is restricted so that only the `owner` can set the manifesto. In production the owner would likely be a multisig contract. The contract owner simply provides the text of the manifesto then its hash is computed and both are stored in the contract's state.
+The contract provides a function to set the manifesto, that only the contract `owner` can call. The owner provides the manifesto text, which is `hashed` and stored along with the text in the contract's state. In production, the owner would typically be a `multisig` contract.
 
 <Github fname="dao.rs" language="rust"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L55-L67"
@@ -90,25 +88,25 @@ The contract has a function to set the manifesto. This function is restricted so
 
 ## Creating a Proposal
 
-When a user calls the `create_proposal` function on the contract, providing the proposal text as args, the function creates a `yielded promise`. The promise will call the specified function, `return_external_response`, function with arguments of `proposal_id` and `proposal_text` when the promise resolves. The promise will resolve when either the promise is resumed by the agent responding or the promise times out (no response within 200 blocks which is around 2 minutes).
+When a user calls `create_proposal` with the proposal text, the function creates a `yielded promise`. The promise calls the specified function,`return_external_response`, with the arguments of `proposal_id` and `proposal_text` when the promise resolves. The promise resolves when the agent responds or the promise times out after 200 blocks (~2 minutes).
 
 <Github fname="dao.rs" language="rust"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L83-L91"
     start="83" end="91" />
 
-Next the function reads the `yield id` from the register for the promise that was just created. The `yield id` is a unique hash identifier for a yielded promise used to make sure the correct response goes to the correct pending proposal. The yield ID is generated by the register, the register takes an integer identifier since you can have multiple different registers in a contract, in the example the contract just uses zero for register.
+The function then reads the `yield id` from the `register` for the created promise. The `yield id` is a unique hash identifier that ensures responses are matched to the correct pending proposal. The yield ID is generated by the `register`, which takes an integer identifier that specifies which register is being used, since there is just one yield-resume register, it's set to zero.
 
 <Github fname="dao.rs" language="rust"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L94-L97"
     start="94" end="97" />
 
-The function then creates a new proposal request and inserts it into the map of pending proposals. This map is used so the agent can fetch the text for the proposals it needs to respond to.
+A new proposal request is created and inserted into the pending proposals map, allowing the agent to fetch proposals that it needs to respond to.
 
 <Github fname="dao.rs" language="rust"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L100-L105"
     start="100" end="105" />
 
-Lastly the function returns the yielded promise so it is executed.
+Lastly, the function `returns the yielded promise` making it ready to be resumed.
 
 <Github fname="dao.rs" language="rust"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L108"
@@ -118,16 +116,16 @@ Lastly the function returns the yielded promise so it is executed.
 
 ## Agent Response and Validation
 
-Once the agent has made it's decision it will call the `agent_vote` function. This function essentially does some checks that the response is valid and, if so, resumes the yielded promise.
+Once the agent makes its decision, it calls the `agent_vote` function. This function checks whether the response is valid and resumes the yielded promise if so.
 
-The agent responds with the `yield_id` for the promise it intends resume, the `proposal ID` it's voting on, the `hash of the propsal`, the `hash of the manifesto`, the `vote` and the `reasoning` behind the vote.
+The agent responds with the `yield_id` for the promise it intends to resume, the `proposal ID` it's voting on, the `hash of the proposal`, the `hash of the manifesto`, the `vote`, and the `reasoning` behind the vote.
 
 <Tabs groupId="code-tabs">
   <TabItem value="args" label="Args">
 
     <Github fname="dao.rs" language="rust"
-        url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L100"
-        start="100" end="100" />
+        url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L112"
+        start="112" end="112" />
 
   </TabItem>
   <TabItem value="ai-response" label="AiResponse">
@@ -139,81 +137,79 @@ The agent responds with the `yield_id` for the promise it intends resume, the `p
   </TabItem>
 </Tabs>
 
-Most importantly, the function first checks if the caller is a valid registered agent, so the contract can verify that the DAO is making its decision via the expected process.
+Most importantly, the function checks if the caller is a `valid registered agent`, ensuring the DAO makes decisions through the expected process (that's defined by the verifiable agent).
 
 <Github fname="dao.rs" language="rust"
-    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L102"
-    start="102" end="102" />
+    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L114"
+    start="114" end="114" />
 
-The function also checks that the manifesto hash and the proposal hash the agent submits match those stored and expected by the contract. This is done to verify that the agent is using the correct manifesto and proposal when voting on a given proposal. This is required to remove the trust on the RPC that is fetching the proposals and manifesto as there could be a problem in the RPC causing it to fetch the wrong details or the RPC could intentionally provide the wrong details to try to corrupt the vote.
-
-<Github fname="dao.rs" language="rust"
-    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L106-L120"
-    start="106" end="120" />
-
-If any of these checks fail then the function will panic and the promise will not be resumed (in this function call, it could be resumed later if called with valid args before the promise times out).
-
-Lastly, if all checks pass, the function will resume the promise, specifying the yield_id it intends to resume and the response from the agent.
+The function validates that the `manifesto hash` and `proposal hash` submitted by the agent match those stored in the contract. This verification ensures the agent used the correct manifesto and proposal when voting, `removing trust in the RPC` that fetches proposals and manifesto data. There could be a bug in the RPC causing it to fetch the wrong details and the RPC or a malicious intermediary could intentionally provide the wrong details to try to corrupt the vote.
 
 <Github fname="dao.rs" language="rust"
-    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L123"
-    start="123" end="123" />
+    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L123-L137"
+    start="123" end="137" />
+
+If any of these checks fail then the function panics and the promise is not be resumed (it could be resumed later with valid arguments before timeout). If all checks pass, then the function resumes the promise with the specified yield_id and the agent's response as an argument.
+
+<Github fname="dao.rs" language="rust"
+    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L140"
+    start="140" end="140" />
 
 ---
 
 ### Proposal Finalization
 
-When the yielded promise is resolved, the promise is resumed or it times out, the `return_external_response` function is called. It's labelled private so that accounts can't call it, only the yielded promise. 
+When the yielded promise resolves (either resumed or timed out), the `return_external_response` function is called. This function is private and can only be called by the yielded promise, not by external accounts. 
 
-The function takes the arguments passed both from when the promise was created and when it was resumed.
-
-<Github fname="dao.rs" language="rust"
-    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#127-L133"
-    start="127" end="133" />
-
-The function first removes the proposal that is being responded to from the map of pending proposals. It will remove the proposal from the map regardless of whether the promise was resumed or timed out.
+The function receives arguments from both the promise creation and resumption.
 
 <Github fname="dao.rs" language="rust"
-    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L134"
-    start="134" end="134" />
+    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#144-L150"
+    start="144" end="150" />
 
-If the response is valid, i.e. the yielded promise was successfully resumed, the proposal along with the result, will be added to the map of finalized proposals and a response will be returned to the caller within the same transaction of the proposal being submitted.
+The function first removes the proposal being responded to from the pending proposals map, regardless of whether the promise was resumed or timed out.
 
 <Github fname="dao.rs" language="rust"
-    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L136-L151"
-    start="136" end="151" />
+    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L151"
+    start="151" end="151" />
 
-If the response is invalid, i.e. the yielded promise timed out, the function will return a promise to call the `fail_on_timeout` function that will panic and produce a failed [receipt](../../../../protocol/transaction-execution) in a separate block to give a clear error to the user (the return_external_response receipt will still be successful).
+If the response is valid, i.e. the yielded promise was successfully resumed, the proposal and the result are added to the map of finalized proposals, and a response is returned to the caller within the same transaction that the proposal was submitted in.
+
+<Github fname="dao.rs" language="rust"
+    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L153-L168"
+    start="153" end="168" />
+
+If the response is invalid, i.e. the yielded promise timed out, the function returns a promise to call `fail_on_timeout`, which panics and produces a failed [receipt](../../../../protocol/transaction-execution) in a separate block to provide a clear error to the user (the return_external_response receipt is still successful).
 
 <Tabs groupId="code-tabs">
   <TabItem value="promise" label="Promise">
 
     <Github fname="dao.rs" language="rust"
-        url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L152-L161"
-        start="152" end="161" />
+        url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L169-L178"
+        start="169" end="178" />
 
   </TabItem>
   <TabItem value="panic-function" label="Panic function">
 
     <Github fname="dao.rs" language="rust"
-        url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L166-L169"
-        start="166" end="169" />
+        url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L183-L186"
+        start="183" end="186" />
   
   </TabItem>
 </Tabs>
 
 :::tip
-You can learn more about yield and resume in the [yield and resume section](../../../../smart-contracts/anatomy/yield-resume.md) of the docs.
+Visit the [yield and resume section](../../../../smart-contracts/anatomy/yield-resume.md) of the docs for a deeper look into this pattern.
 :::
 
 ---
 
 ## View Functions
 
-The contract exposes [view functions](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L171-L205) to get the manifesto text, get the pending proposals and get finalized proposals.
+The contract exposes [view functions](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L171-L205) to retrieve the manifesto text, pending proposals, and finalized proposals.
 
 ---
 
 ## Next steps
 
-Now you've looked at what goes into a yield and resume Shade Agent contract, you'll move on to looking at the decentralized, verifiable agent that queries the contract for pending requests and responds to them. Head over to the [agent page](./agent.md).
+Now that you understand the DAO agent contract implementation, continue to the [agent page](./agent.md) to explore the decentralized, verifiable agent that queries the contract for pending requests and responds to them.
