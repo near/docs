@@ -9,6 +9,8 @@ const FungibleToken = ({
 }) => {
   return (
     <>
+      <h2>Mint a Fungible Token</h2>
+      <p>This tool allows you to deploy your own NEP-141 smart contract (Fungible Tokens)</p>
       <CreateTokenForm reload={reload} />
       <ListToken loading={loading} tokens={user_fts} />
       <hr />

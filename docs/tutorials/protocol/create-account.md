@@ -32,7 +32,7 @@ NEAR `testnet` is a separate network that allows you to test your applications w
 
 :::tip Funding the Wallet
 
-Need `testnet` funds? try using one of our [faucets](../../tools/faucet.md)
+Need `testnet` funds? try using one of our [faucets](../../faucet.md)
 
 :::
 
@@ -87,7 +87,7 @@ Now that you have created a NEAR account, you can start developing applications 
 
 Here are some resources to help you get started:
 
-- Fund the wallet through one of our [faucets](../../tools/faucet.md)
+- Fund the wallet through one of our [faucets](../../faucet.md)
 - Create your [first smart contract](../../smart-contracts/quickstart.md)
 - Build a [Web3 Application](../../web3-apps/quickstart.md)
 - Learn how to build an [Auction App from end-to-end](../../tutorials/auction/0-intro.md)

@@ -50,13 +50,15 @@ In contrast with [FT](ft.md) and [NFT](nft.md), DAO contract's are not standardi
 reference the [Astra dao](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos) [contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
 easily generalizable to other DAO implementations.
 
+:::tip
+The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos).
+:::
+
 ---
 
 ## Create a DAO
-The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos).
 
-### Using Sputnik DAO Contract
-You can also create a DAO by interacting with the `sputnik-dao` contract.
+You can create a DAO by interacting with the `sputnik-dao` contract:
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
@@ -73,17 +75,18 @@ You can also create a DAO by interacting with the `sputnik-dao` contract.
   </TabItem>
 </Tabs>
 
+:::tip
+The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos).
+:::
+
 <hr className="subsection" />
 
 ### Using Global Contract
 
-You can find out what global contracts are [here](../smart-contracts/global-contracts.md). But in short, global contracts allow smart contracts to be deployed once and reused by any account without incurring high storage costs.
-
-In other words, you can deploy a DAO contract using our global DAO contract, which is already deployed and basically is just [a Sputnik DAO contract](https://github.com/near-daos/sputnik-dao-contract/tree/main/sputnikdao2) without any customization. You need only to call the following deploying command with your initialization parameters.
+You can deploy a new DAO using our global contract - a pre-deployed [a Sputnik DAO contract](https://github.com/near-daos/sputnik-dao-contract/tree/main/sputnikdao2) that you can reuse. [Global contracts](../smart-contracts/global-contracts.md) are deployed once and can be reused by any account without incurring high storage costs.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    Deploy by account id:
+  <TabItem value="By AccountId" label="account">
 
     ```bash
     near contract deploy <account-id> use-global-account-id dao.globals.primitives.testnet \
@@ -96,8 +99,8 @@ In other words, you can deploy a DAO contract using our global DAO contract, whi
       send
     ```
 
-
-    Deploy by hash:
+  </TabItem>
+  <TabItem value="By Hash" label="hash">
 
     ```bash
     near contract deploy <account-id> use-global-hash Ea8tHXFSQVszVwGASyzAfLq65DjcRDhkfab4FcPaRpgD \
@@ -114,9 +117,7 @@ In other words, you can deploy a DAO contract using our global DAO contract, whi
 </Tabs>
 
 :::note
-The difference between global contracts deployed by account id and by hash is that the former is updatable, while the latter is immutable. When it's deployed by account id, the owner can redeploy the contract updating it for all its users.
-
-So when you decide which option to use for deploying your DAO contract, you should consider whether you want to it to be updatable by its original owner or not.
+Deploying by **hash** creates an immutable contract that never changes. Deploying by **account ID** creates an updatable contract that changes when the referenced account's contract is updated. Choose based on whether you want your FT contract to be updatable or permanent.
 :::
 
 <hr className="subsection" />

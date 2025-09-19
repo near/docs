@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="800px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+    <g>
+        <path d="M12 2C6.48 2 2 6.48 2 12C2 14.01 2.62 15.86 3.64 17.43L2.05 21.58C1.84 22.11 2.28 22.66 2.85 22.58L7.4 21.93C9.02 22.64 10.83 23 12.71 22.96C18.05 22.79 22.2 18.32 21.99 12.98C21.78 7.87 17.64 2 12 2ZM12 20C10.54 20 9.18 19.65 8 19.05L3.85 19.75L5.1 16.43C4.45 15.15 4 13.64 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="currentColor" fill-rule="nonzero">
+        </path>
+    </g>
+</svg>

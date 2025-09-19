@@ -24,7 +24,7 @@ but **cannot** call two methods on different contracts.
 
 You can send $NEAR from your contract to any other account on the network. The Gas cost for transferring $NEAR is fixed and is based on the protocol's genesis config. Currently, it costs `~0.45 TGas`.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
@@ -130,7 +130,7 @@ Your smart contract can call methods in another contract. In the snippet below w
 in a deployed [Hello NEAR](../quickstart.md) contract, and check if everything went
 right in the callback.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
@@ -319,7 +319,7 @@ Accounts do **NOT** have control over their sub-accounts, since they have their 
 Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.near`, `token.project.near`).
 
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
@@ -445,7 +445,7 @@ Accounts can only create immediate sub-accounts of themselves.
 If your contract wants to create a `.mainnet` or `.testnet` account, then it needs to [call](#function-call)
 the `create_account` method of `near` or `testnet` root contracts.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
@@ -585,7 +585,7 @@ func ExampleCreateAccount() {
 
 When creating an account you can also batch the action of deploying a contract to it. Note that for this, you will need to pre-load the byte-code you want to deploy in your contract.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
 
 ```rust
@@ -696,7 +696,7 @@ There are two options for adding keys to the account:
 
 <br/>
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
@@ -826,7 +826,7 @@ There are two scenarios in which you can use the `delete_account` action:
 1. As the **last** action in a chain of batched actions.
 2. To make your smart contract delete its own account.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js

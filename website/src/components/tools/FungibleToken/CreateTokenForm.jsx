@@ -38,7 +38,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
 
   const { viewFunction, callFunction, getBalance, signedAccountId, signIn } = useWalletSelector();
   const [requiredDeposit, setRequiredDeposit] = useState('0');
-  const [ deposit, setDeposit ] = useState('0');
+  const [deposit, setDeposit] = useState('0');
   const [step, setStep] = useState('form');
   const [isLoadingPreview, setIsLoadingPreview] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
@@ -69,9 +69,9 @@ const CreateTokenForm = ({ reload = () => { } }) => {
       if (!signedAccountId) return;
 
       setIsLoadingPreview(true);
-      
+
       const { total_supply, decimals, icon, name, symbol } = formData;
-      
+
       let base64Image = '';
       if (icon && icon[0]) {
         try {
@@ -103,10 +103,10 @@ const CreateTokenForm = ({ reload = () => { } }) => {
           method: 'get_required',
           args
         });
-        
+
         if (deposit) {
           setDeposit(deposit)
-          setRequiredDeposit(NEAR.toDecimal(deposit,2));
+          setRequiredDeposit(NEAR.toDecimal(deposit, 2));
         }
 
         setStep('ready-to-create');
@@ -114,7 +114,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
         console.error('Error getting required deposit:', error);
         toast.error('Failed to calculate required deposit');
       }
-      
+
       setIsLoadingPreview(false);
     },
     [signedAccountId, viewFunction],
@@ -130,7 +130,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
       if (!signedAccountId) return;
 
       const { total_supply, decimals, icon, name, symbol } = formData;
-      
+
       let base64Image = '';
       if (icon && icon[0]) {
         try {
@@ -189,165 +189,159 @@ const CreateTokenForm = ({ reload = () => { } }) => {
   };
 
   return (
-    <>
-      <h2>Mint a Fungible Token</h2>
-
-      <p>This tool allows you to deploy your own NEP-141 smart contract (Fungible Tokens)</p>
-
-      <div className={styles.container}>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-          <div className={styles.formGrid}>
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Token Name</label>
-              <input
-                className={styles.input}
-                placeholder="e.g. Test Token"
-                {...register('name', { required: 'Token name is required' })}
-                disabled={!signedAccountId}
-              />
-              {errors.name && <span className={styles.error}>{errors.name.message}</span>}
-            </div>
-
-            <Controller
-              control={control}
-              name="symbol"
-              rules={{
-                required: 'Symbol is required',
-                validate: symbolAvailable,
-              }}
-              render={({ field, fieldState }) => (
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Token Symbol</label>
-                  <input
-                    className={styles.input}
-                    placeholder="e.g. TEST"
-                    {...field}
-                    disabled={!signedAccountId}
-                  />
-                  {fieldState.error && <span className={styles.error}>{fieldState.error.message}</span>}
-                </div>
-              )}
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <div className={styles.formGrid}>
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Token Name</label>
+            <input
+              className={styles.input}
+              placeholder="e.g. Test Token"
+              {...register('name', { required: 'Token name is required' })}
+              disabled={!signedAccountId}
             />
+            {errors.name && <span className={styles.error}>{errors.name.message}</span>}
           </div>
 
-          <div className={styles.formGrid}>
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Total Supply</label>
-              <input
-                className={styles.input}
-                placeholder="e.g. 1000"
-                {...register('total_supply', {
-                  required: 'Total supply is required',
-                  pattern: {
-                    value: /^[1-9][0-9]*$/,
-                    message: 'Total supply must be a whole number greater than 0',
-                  },
-                })}
-                disabled={!signedAccountId}
-              />
-              {errors.total_supply && <span className={styles.error}>{errors.total_supply.message}</span>}
-            </div>
+          <Controller
+            control={control}
+            name="symbol"
+            rules={{
+              required: 'Symbol is required',
+              validate: symbolAvailable,
+            }}
+            render={({ field, fieldState }) => (
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Token Symbol</label>
+                <input
+                  className={styles.input}
+                  placeholder="e.g. TEST"
+                  {...field}
+                  disabled={!signedAccountId}
+                />
+                {fieldState.error && <span className={styles.error}>{fieldState.error.message}</span>}
+              </div>
+            )}
+          />
+        </div>
 
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Decimals</label>
-              <input
-                className={styles.input}
-                type="number"
-                placeholder="e.g. 6"
-                {...register('decimals', {
-                  required: 'Decimals is required',
-                  valueAsNumber: true,
-                  min: { value: 0, message: 'Decimals must be non-negative' },
-                  max: { value: 24, message: 'Decimals must be 24 or less' },
-                })}
-                disabled={!signedAccountId}
-              />
-              {errors.decimals && <span className={styles.error}>{errors.decimals.message}</span>}
-            </div>
+        <div className={styles.formGrid}>
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Total Supply</label>
+            <input
+              className={styles.input}
+              placeholder="e.g. 1000"
+              {...register('total_supply', {
+                required: 'Total supply is required',
+                pattern: {
+                  value: /^[1-9][0-9]*$/,
+                  message: 'Total supply must be a whole number greater than 0',
+                },
+              })}
+              disabled={!signedAccountId}
+            />
+            {errors.total_supply && <span className={styles.error}>{errors.total_supply.message}</span>}
           </div>
 
-          <div className={styles.fileInputGroup}>
-            <Controller
-              control={control}
-              name="icon"
-              rules={{
-                required: 'Image is required',
-                validate: validateImage,
-              }}
-              render={({ field, fieldState }) => (
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>Image Upload</label>
-                  <input
-                    className={styles.fileInput}
-                    type="file"
-                    accept={ACCEPTED_IMAGE_TYPES.join(',')}
-                    onChange={(e) => {
-                      field.onChange(e.target.files);
-                      if (e.target.files && e.target.files[0]) {
-                        const file = e.target.files[0];
-                        const reader = new FileReader();
-                        reader.onload = (event) => {
-                          setImagePreview(event.target.result);
-                        };
-                        reader.readAsDataURL(file);
-                      } else {
-                        setImagePreview(null);
-                      }
-                    }}
-                    disabled={!signedAccountId}
-                  />
-                  <div className={styles.fileHint}>
-                    Accepted Formats: PNG, JPEG, GIF, SVG | Ideal dimension: 1:1 | Max size: 10kb
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Decimals</label>
+            <input
+              className={styles.input}
+              type="number"
+              placeholder="e.g. 6"
+              {...register('decimals', {
+                required: 'Decimals is required',
+                valueAsNumber: true,
+                min: { value: 0, message: 'Decimals must be non-negative' },
+                max: { value: 24, message: 'Decimals must be 24 or less' },
+              })}
+              disabled={!signedAccountId}
+            />
+            {errors.decimals && <span className={styles.error}>{errors.decimals.message}</span>}
+          </div>
+        </div>
+
+        <div className={styles.fileInputGroup}>
+          <Controller
+            control={control}
+            name="icon"
+            rules={{
+              required: 'Image is required',
+              validate: validateImage,
+            }}
+            render={({ field, fieldState }) => (
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Image Upload</label>
+                <input
+                  className={styles.fileInput}
+                  type="file"
+                  accept={ACCEPTED_IMAGE_TYPES.join(',')}
+                  onChange={(e) => {
+                    field.onChange(e.target.files);
+                    if (e.target.files && e.target.files[0]) {
+                      const file = e.target.files[0];
+                      const reader = new FileReader();
+                      reader.onload = (event) => {
+                        setImagePreview(event.target.result);
+                      };
+                      reader.readAsDataURL(file);
+                    } else {
+                      setImagePreview(null);
+                    }
+                  }}
+                  disabled={!signedAccountId}
+                />
+                <div className={styles.fileHint}>
+                  Accepted Formats: PNG, JPEG, GIF, SVG | Ideal dimension: 1:1 | Max size: 10kb
+                </div>
+                {fieldState.error && <span className={styles.error}>{fieldState.error.message}</span>}
+
+                {imagePreview && (
+                  <div className={styles.imagePreview}>
+                    <label className={styles.label}>Preview:</label>
+                    <img
+                      src={imagePreview}
+                      alt="Token icon preview"
+                      className={styles.previewImage}
+                    />
                   </div>
-                  {fieldState.error && <span className={styles.error}>{fieldState.error.message}</span>}
-                  
-                  {imagePreview && (
-                    <div className={styles.imagePreview}>
-                      <label className={styles.label}>Preview:</label>
-                      <img 
-                        src={imagePreview} 
-                        alt="Token icon preview" 
-                        className={styles.previewImage}
-                      />
-                    </div>
-                  )}
-                </div>
-              )}
-            />
-          </div>
+                )}
+              </div>
+            )}
+          />
+        </div>
 
-          {!signedAccountId ? (
+        {!signedAccountId ? (
+          <button
+            type="button"
+            onClick={signIn}
+            className={`${styles.button} ${styles.primary}`}
+          >
+            Connect Wallet
+          </button>
+        ) : (
+          <div>
+            {step === 'ready-to-create' && (
+              <div className={styles.pricePreview}>
+                <div className={styles.priceAmount}>
+                  Creation Cost: <strong>{requiredDeposit} NEAR</strong>
+                </div>
+                <div className={styles.priceNote}>
+                  This amount will be used to cover storage costs on the NEAR blockchain.
+                </div>
+              </div>
+            )}
             <button
-              type="button"
-              onClick={signIn}
-              className={`${styles.button} ${styles.primary}`}
+              type="submit"
+              className={`${styles.button} ${styles.primary} ${(isLoadingPreview || isSubmitting) ? styles.loading : ''} ${step === 'ready-to-create' ? styles.confirm : ''}`}
+              disabled={isLoadingPreview || isSubmitting}
             >
-              Connect Wallet
+              {getButtonText()}
             </button>
-          ) : (
-            <div>
-              {step === 'ready-to-create' && (
-                <div className={styles.pricePreview}>
-                  <div className={styles.priceAmount}>
-                    Creation Cost: <strong>{requiredDeposit} NEAR</strong>
-                  </div>
-                  <div className={styles.priceNote}>
-                    This amount will be used to cover storage costs on the NEAR blockchain.
-                  </div>
-                </div>
-              )}
-              <button
-                type="submit"
-                className={`${styles.button} ${styles.primary} ${(isLoadingPreview || isSubmitting) ? styles.loading : ''} ${step === 'ready-to-create' ? styles.confirm : ''}`}
-                disabled={isLoadingPreview || isSubmitting}
-              >
-                {getButtonText()}
-              </button>
-            </div>
-          )}
-        </form>
-      </div>
-    </>
+          </div>
+        )}
+      </form>
+    </div>
   );
 };
 

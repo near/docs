@@ -1,7 +1,3 @@
-h3{
-  margin: 0 !important;
-}
-
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -141,6 +137,7 @@ h3{
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
     gap: 6px;
     text-decoration: none;
     color: var(--ifm-font-color-base);

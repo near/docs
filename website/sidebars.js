@@ -77,7 +77,7 @@ const sidebar = {
           "Tutorials": [
             'tutorials/protocol/create-account',
             'tutorials/protocol/importing-account',
-            'tools/faucet'
+            'faucet'
           ]
         },
         {
@@ -159,6 +159,7 @@ const sidebar = {
       },
       items: [
         'ai/introduction',
+        'ai/near-mcp',
         {
           "Shade Agents": [
             {
@@ -423,11 +424,7 @@ const sidebar = {
       },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
-        {
-          "Fungible Tokens": [
-            'primitives/ft',
-          ]
-        },
+        'primitives/ft',
         {
           "Non-Fungible Tokens": [
             'primitives/nft',
@@ -491,6 +488,11 @@ const sidebar = {
                 },
               ],
             },
+          ]
+        },
+        {
+          "Tutorials": [
+            'data-infrastructure/tutorials/near-lake-framework',
           ]
         },
         {
@@ -570,9 +572,6 @@ const sidebar = {
       ],
     },
     'integrations/faq',
-  ],
-  toolbox: [
-    'toolbox',
   ]
 };
 

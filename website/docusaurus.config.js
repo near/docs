@@ -135,6 +135,7 @@ const config = {
               label: 'AI & Agents', to: '/ai/introduction', description: "NEAR is the blockchain for AI",
               subitems: [
                 { label: 'Introduction', to: '/ai/introduction', description: "Learn how NEAR is the blockchain for AI" },
+                { label: 'NEAR MCP', to: '/ai/near-mcp', description: 'Enable AI applications to interact with NEAR' },
                 { label: 'Shade Agents', to: '/ai/shade-agents/introduction', description: "The first truly permissionless and decentralized AI agents" },
                 { label: 'NEAR AI', to: 'https://docs.near.ai/', description: "A simple platform to build and host AI agents" },
                 { label: 'Bitte AI', to: 'https://docs.bitte.ai/', description: "Discover how simple it is to create Open Agents" },
@@ -290,10 +291,17 @@ const config = {
                 { label: 'Wallets ↗', to: 'https://wallet.near.org/', target: '_blank', description: "Discover wallets built for NEAR", icon: '/icons/wallet.png' },
                 {
                   label: 'Testnet Faucet',
-                  to: '/tools/faucet',
+                  to: '/faucet',
                   description: "Get testnet tokens to test your applications",
                   icon: '/icons/token.svg'
                 },
+                {
+                  label: 'Primitives Toolbox',
+                  to: '/toolbox',
+                  description: "Create FT, NFT, Linkdrop and DAO",
+                  icon: '/icons/toolbox.svg'
+                },
+
                 { label: 'Explorers', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/docs/assets/welcome-pages/update.png' },
                 {
                   label: 'Remix IDE Plugin ↗',
@@ -316,6 +324,7 @@ const config = {
               subitems: [
                 { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/icons/event.png' },
                 { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/icons/newspaper.png' },
+                { label: 'Communities', "to": "/communities", description: "Find a NEAR community near you", icon: "/icons/communities.png" },
                 { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/icons/catalog.png' },
               ]
             },

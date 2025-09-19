@@ -13,7 +13,7 @@ export const TryOutOnLantstool = ({
   branch = 'main',
   path,
 }) => (
-  <>
+  <div style={{maxHeight: '400px', overflow: 'auto'}}>
     <p>
       Try it out on{' '}
       <a
@@ -29,5 +29,5 @@ export const TryOutOnLantstool = ({
       url={`https://github.com/${user}/${repo}/blob/${branch}/${path}`}
       withSourceLink={false}
     />
-  </>
+  </div>
 );

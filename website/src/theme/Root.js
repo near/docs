@@ -25,7 +25,7 @@ import { AcademyProgressProvider } from '../components/Academy/AcademyProgressCo
 const networkId = 'testnet';
 
 const walletSelectorConfig = {
-  network: networkId,
+  network: {networkId: networkId, nodeUrl: 'https://test.rpc.fastnear.com'},
   modules: [
     // setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn: true }),
     setupMeteorWallet(),
