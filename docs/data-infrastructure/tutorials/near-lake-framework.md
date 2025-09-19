@@ -15,7 +15,7 @@ NEAR Lake Framework is available in three languages: [Rust](https://github.com/n
 
 In this tutorial, we will build a simple indexer using the NEAR Lake Framework. The indexer will listen for FunctionCalls on a specific contract and log the details of each call.
 
-The full source code for the indexer is available in the [GitHub repository](https://github.com/near-examples/indexer-tx-watcher-example-lake?tab=readme-ov-file).
+The full source code for the indexer is available in the [GitHub repository](https://github.com/near-examples/indexer-near-lake-framework?tab=readme-ov-file).
 
 :::info
 Using NEAR Lake Framework, we can subscribe to the stream of blocks from the NEAR Lake data source. The source of data are JSON files stored in an AWS S3 bucket by [NEAR Lake Indexer](https://github.com/aurora-is-near/near-lake-indexer). The NEAR Lake Framework takes care of downloading and parsing the data for users, but **the reader is paying the costs**. More details about technical limitations and **estimating costs** can be found [here](../lake-framework/near-lake-framework#how-does-it-compare-to-near-indexer-framework).
