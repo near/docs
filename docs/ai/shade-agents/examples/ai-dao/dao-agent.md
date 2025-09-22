@@ -1,7 +1,7 @@
 ---
-id: agent
-title: Agent
-sidebar_label: Agent
+id: dao-agent
+title: DAO Agent
+sidebar_label: DAO Agent
 description: "Learn about the key parts of the agent as part of the Verifiable AI DAO Shade Agent example that walks through how to index the agent contract, using verifiable AI, and interacting with the custom agent contract."
 ---
 
@@ -13,13 +13,13 @@ On this page, you'll examine the agent component of the DAO. The agent continuou
 
 ## Starting the Agent
 
-Before an agent can execute any actions on-chain, it must first be registered. When in production (running on Phala Cloud, not locally), the agent runs a loop to check its registration status. An agent can see if it's registered using the `agentInfo` function provided by `shade-agent-js`; once registered, `agentInfo` will return a checksum.
+Before an agent can execute any actions on-chain, it must first be `registered`. When in production (running on Phala Cloud, not locally), the agent runs a loop to check its registration status. An agent can see if it's registered using the `agentInfo` function provided by `shade-agent-js`; once registered, `agentInfo` will return a checksum.
 
 After the agent is registered, it starts the `responder`, which contains the core logic of the agent.
 
 <Github fname="index.ts" language="typescript"
-    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/src/index.ts#L26-L44"
-    start="26" end="44" />
+    url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/src/index.ts#L26-L43"
+    start="26" end="43" />
 
 ---
 
@@ -43,7 +43,7 @@ Having retrieved both the proposal and manifesto, the agent is ready to make its
 
 ## Voting with an LLM
 
-To make a decision on the proposal, the agent uses an LLM provided by [NEAR AI Cloud](https://docs.near.ai/cloud/get-started/). NEAR AI Cloud provides verifiable and private inference by running LLMs in GPU TEEs. In this example the DAO uses NEAR AI Cloud for its `verifiable` component. This allows the agent verify that no one is interfering with the the LLM response, as could happen when using a centralized model hosting platform. The agent knows the response from the LLM is actually a function of the input, and comes from the expected model being called. 
+To make a decision on the proposal, the agent uses an LLM provided by [NEAR AI Cloud](https://docs.near.ai/cloud/get-started/). NEAR AI Cloud provides verifiable and private inference by running LLMs in GPU TEEs. In this example, the DAO uses NEAR AI Cloud for its `verifiable` component. This allows the agent verify that no one is interfering with the the LLM response, as could happen with centralized model hosting. The agent knows the response from the LLM is actually a function of the input, and comes from the expected model. 
 
 :::note
 In this example, the agent does not actually verify the attestation from the LLM. Full verification will be added in a future update to the example.
@@ -64,7 +64,7 @@ A request to an LLM typically takes two prompts:
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/src/ai.ts#L26-L33"
     start="26" end="33" />
 
-Next, the agent constructs the `JSON request` to be sent to the model. There are several important aspects of this request:
+Next, the agent constructs the `JSON request` to send to the model. There are several important aspects of this request:
 - The request specifies the `model` to call - in this example, DeepSeek V3 0324. You can find a full list of [available models here](https://cloud.near.ai/models).
 - The request is using `non-streaming` mode. This means the model waits until the full response is ready before returning it, rather than streaming, where the response is sent piece by piece while the model is still generating it. Non-streaming is simpler here as the agent doesn't need to display the response or take any action until the whole response is ready.
 - The request uses `tool calling` to ensure that the model responds with a vote of exactly `Approved` or `Rejected` and `reasoning` for its choice. If the model fails to conform to the required output, it will return an error. You can read more on [tool calling/function calling here](https://platform.openai.com/docs/guides/function-calling).
@@ -83,7 +83,7 @@ The agent then sends the request to the model, extracts the vote and reasoning f
 
 ## Submitting the Vote
 
-Once the agent receives the response from the LLM, it's nearly ready to submit the vote to the agent contract. Before sending the vote, the agent hashes both the proposal it's voting on and the manifesto it's using to make it's decision. This is done so the DAO can verify that the agent used the correct proposal and manifesto to vote and that the query wasn't corrupted by the RPC or intercepted and modified on transit to the agent.
+Once the agent receives the response from the LLM, it's nearly ready to submit the vote to the agent contract. Before sending the vote, the agent `hashes` both the proposal it's voting on and the manifesto it's using to make it's decision. This is done so the DAO can verify that the agent used the correct proposal and manifesto to vote and that the query wasn't corrupted by the RPC or intercepted and modified on transit to the agent.
 
 <Github fname="responder.ts" language="typescript"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/src/responder.ts#L46-L47"

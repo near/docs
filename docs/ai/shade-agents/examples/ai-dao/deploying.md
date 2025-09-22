@@ -28,7 +28,7 @@ On this page we'll guide you through deploying your own instance of the AI DAO.
   cd shade-agent-template
   ```
 
-- Rename the `.env.development.local.example` file name to `.env.development.local` and configure your environment variables.
+- Rename the `.env.development.local.example` file name to `.env.development.local` and configure your `environment variables`.
 
 - Start up Docker:
 

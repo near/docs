@@ -174,8 +174,8 @@ const sidebar = {
                 {
                   "AI DAO": [
                     "ai/shade-agents/examples/ai-dao/overview",
-                    "ai/shade-agents/examples/ai-dao/agent-contract",
-                    "ai/shade-agents/examples/ai-dao/agent",
+                    "ai/shade-agents/examples/ai-dao/dao-agent-contract",
+                    "ai/shade-agents/examples/ai-dao/dao-agent",
                     "ai/shade-agents/examples/ai-dao/deploying",
                   ]
                 }
