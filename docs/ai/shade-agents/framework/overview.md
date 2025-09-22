@@ -17,7 +17,7 @@ The Shade Agent Framework provides a suite of tools designed to simplify the dev
 
 When starting to build with the Shade Agent Framework, we recommend forking the [Quickstart Shade Agent Template](https://github.com/NearDeFi/shade-agent-template). This template contains all the necessary files to build a Shade Agent and provides the fastest starting path.
 
-Additional templates can be found in our [Templates and Examples](../examples/overview.md) section.
+Additional templates can be found in our [Example and Templates](../examples/overview.md) section.
 
 ### Supported Languages
 

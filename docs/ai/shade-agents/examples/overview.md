@@ -1,8 +1,8 @@
 ---
 id: overview
-title: Templates and Examples
+title: Examples and Templates
 sidebar_label: Overview
-description: "Review the list of our Shade Agent templates and examples."
+description: "Review the list of our Shade Agent examples and templates."
 ---
 
 This section provides templates and examples to help you get started building Shade Agents.
