@@ -5,19 +5,19 @@ sidebar_label: Deploying
 description: "Learn how to deploy the Verifiable AI DAO Shade Agent which includes how to deploy a custom agent contract."
 ---
 
-On this page we'll guide you through deploying your own instance of the AI DAO.
-
----
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github} from "@site/src/components/codetabs"
 
+On this page we'll guide you through deploying your own instance of the AI DAO.
+
+---
+
 ## Prerequisites  
 
-- First please make sure you have all the [prerequisites from our quickstart section](../../quickstart/deploying.md#prerequisites).
+- First please make sure you have all the [prerequisites from our quickstart](../../quickstart/deploying.md#prerequisites).
 
-- You'll also need to set up an account over at NEAR AI Cloud, fund it and obtain an API key. This can be done over on the [NEAR AI Cloud Dashboard](https://cloud.near.ai/dashboard/overview).
+- Additionally, you'll need to set up an account on NEAR AI Cloud, fund it, and obtain an API key. This can be done through the [NEAR AI Cloud Dashboard](https://cloud.near.ai/dashboard/overview).
 
 ---
 
@@ -64,15 +64,15 @@ import {Github} from "@site/src/components/codetabs"
 
 ## Local Development
 
-In this example the AI DAO uses a custom agent contract. Because of this you need to switch the contract your using depending on if your developing locally or deploying the agent to a TEE.
+In this example, the AI DAO uses a custom agent contract. Because of this, you need to manually switch the contract deployed depending on whether you're developing locally or deploying the agent to a TEE.
 
-- For local development you need to comment out the [require approved code hash line](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L102) within the `agent_vote` function in the contract. This allows anyone to call the function, not just an registered agent. By design it is impossible for an agent to become a registered agent when running locally as it cannot provide a valid TEE attestation.
+- For local development, you need to comment out the [require approved code hash line](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L102) within the `agent_vote` function. This allows anyone to call the function, not just a registered agent. By design, it's impossible for an agent to register when running locally, as it can't provide a valid TEE attestation.
 
     <Github fname="dao.rs" language="rust"
         url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L101-L102"
         start="101" end="102" />
 
-- Because the AI DAO is using a custom agent contract, you need to compile it yourself.
+- Since the AI DAO uses a custom agent contract, you need to compile it yourself.
 
     <Tabs groupId="code-tabs">
 
@@ -94,9 +94,9 @@ In this example the AI DAO uses a custom agent contract. Because of this you nee
 
     </Tabs>
 
-- Make sure that the NEXT_PUBLIC_contractId prefix is set to ac-proxy. followed by your NEAR accountId so the CLI is configured for local deployment.
+- Make sure that the NEXT_PUBLIC_contractId prefix is set to `ac-proxy.` followed by your NEAR account ID so the CLI is configured for local deployment.
 
-- Run the Shade Agent CLI with the the wasm flag and the funding flag. The wasm flag tells the CLI the path to the wasm of the agent contract you're deploying and the funding flag tells the CLI how much NEAR to fund the deployment with, 7 NEAR is sufficient for the size of the DAO contract.
+- Run the Shade Agent CLI with the `wasm` and `funding` flags. The wasm flag tells the CLI the path to the wasm file of the agent contract you're deploying, and the funding flag tells the CLI how much NEAR to fund the deployment with. 7 NEAR is sufficient for the size of the DAO contract.
 
     ```bash
     shade-agent-cli --wasm contract/target/near/contract.wasm --funding 7
@@ -108,7 +108,7 @@ In this example the AI DAO uses a custom agent contract. Because of this you nee
 
 ## TEE Deployment 
 
-- Re-introduce the [require approved code hash line](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L102) so it requires an agent to be registered meaning its running in a genuine TEE and running the expected agent code.
+- Re-introduce the [require approved code hash line](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L102) so it requires an agent to be registered, meaning it's running in a genuine TEE and executing the expected agent code.
 
     <Github fname="dao.rs" language="rust"
         url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L101-L102"
@@ -136,9 +136,9 @@ In this example the AI DAO uses a custom agent contract. Because of this you nee
 
     </Tabs>
 
-- Change the NEXT_PUBLIC_contractId prefix to ac-sandbox. followed by your NEAR accountId so the CLI is configured for TEE deployment.
+- Change the NEXT_PUBLIC_contractId prefix to `ac-sandbox.` followed by your NEAR account ID so the CLI is configured for TEE deployment.
 
-- Run the Shade Agent CLI with the the wasm flag and the funding flag. 
+- Run the Shade Agent CLI with the `wasm` and `funding` flags. 
 
     ```bash
     shade-agent-cli --wasm contract/target/near/contract.wasm --funding 7
@@ -150,13 +150,13 @@ In this example the AI DAO uses a custom agent contract. Because of this you nee
 
 ### Interacting with the AI DAO
 
-- Set the manifesto that the agent will use to vote in the contract. Since the NEAR_ACCOUNT_ID in your environment variables is automatically assigned the owner of the agent contract you need to sign this transaction using it's SEED_PHRASE.
+- Set the DAO manifesto in the contract. Since the NEAR_ACCOUNT_ID in your environment variables is automatically assigned the owner of the agent contract, you need to sign this transaction using its SEED_PHRASE.
 
     ```bash
-    near contract call-function as-transaction YOUR_CONTRACT_ID set_manifesto json-args '{"manifesto_text": "This DAO only approves gaming related proposals and rejects everything else"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as YOUR_ACCOUNT_ID network-config testnet sign-with-seed-phrase 'YOUR_SEED_PHRASE' --seed-phrase-hd-path 'm/44'\''/397'\''/0'\''' send
+    near contract call-function as-transaction YOUR_CONTRACT_ID set_manifesto json-args '{"manifesto_text": "This DAO only approves gaming-related proposals and rejects everything else"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as YOUR_ACCOUNT_ID network-config testnet sign-with-seed-phrase 'YOUR_SEED_PHRASE' --seed-phrase-hd-path 'm/44'\''/397'\''/0'\''' send
     ```
 
-    Make sure to replace YOUR_CONTRACT_ID, YOUR_ACCOUNT_ID and YOUR_SEED_PHRASE with the appropriate values before executing the command. You can optionally change the manifesto_text as well.
+    Make sure to replace YOUR_CONTRACT_ID, YOUR_ACCOUNT_ID, and YOUR_SEED_PHRASE with the appropriate values before executing the command. You can optionally change the manifesto_text as well.
 
 -  Set your NEXT_PUBLIC_contractId in the frontend's [config.js](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/frontend/src/config.js) file.
 

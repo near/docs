@@ -29,7 +29,7 @@ The DAO agent contract extends the default contract with additional state:
 
 ### Manifesto 
 
-The manifesto consists of two components: the `manifesto text` that defines the DAO's decision-making principles and a `hash` of the manifesto for verifying the agent uses the correct manifesto when voting.
+The manifesto consists of two components: the `manifesto text` that defines the DAO's decision-making principles and a `hash` of the manifesto for verifying that the agent uses the correct manifesto when voting.
 
 <Github fname="dao.rs" language="rust"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L7-L10"
@@ -72,13 +72,13 @@ The map is initialized as empty.
 
 ### Current Proposal ID
 
-The current proposal ID is an integer identifier that increments with each proposal request and is used to identify different proposals. If a proposal is not voted on by the agent then the proposal ID will still increment leading to `non-consecutive proposal IDs` within the finalized proposals map. Note that this the proposal ID is different to the yield ID.
+The current proposal ID is an integer identifier that increments with each proposal request and is used to identify different proposals. If a proposal is not voted on by the agent, then the proposal ID will still increment, leading to `non-consecutive proposal IDs` within the finalized proposals map. Note that the proposal ID is different to the yield ID.
 
 ---
 
 ## Setting the Manifesto
 
-The contract provides a function to set the manifesto, that only the contract `owner` can call. The owner provides the manifesto text, which is `hashed` and stored along with the text in the contract's state. In production, the owner would typically be a `multisig` contract.
+The contract provides a function to set the manifesto, which only the contract `owner` can call. The owner provides the manifesto text, which is `hashed` and stored along with the text in the contract's state. In production, the owner would typically be a `multisig` contract.
 
 <Github fname="dao.rs" language="rust"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L55-L67"
@@ -212,4 +212,4 @@ The contract exposes [view functions](https://github.com/NearDeFi/verifiable-ai-
 
 ## Next steps
 
-Now that you understand the DAO agent contract implementation, continue to the [agent page](./agent.md) to explore the decentralized, verifiable agent that queries the contract for pending requests and responds to them.
+Now that you understand the DAO agent contract implementation, continue to the [agent page](./agent.md) to learn about the verifiable agent that queries the contract for pending requests and casts a vote using an LLM.
