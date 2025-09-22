@@ -334,7 +334,7 @@ const sidebar = {
         },
         {
           "Reference": [
-            'resources/contracts-list',
+            'smart-contracts/contracts-list',
             'tools/sdk',
             'tools/clear-state',
           ]
@@ -355,11 +355,22 @@ const sidebar = {
             'web3-apps/what-is',
             'web3-apps/quickstart']
         },
+        { 
+          "Concepts": [
+            'web3-apps/concepts/web-login',
+            'web3-apps/concepts/eth-wallets-on-near',
+            'web3-apps/concepts/data-types'
+          ]
+        },
         {
           "Tutorials": [
-            'web3-apps/integrate-contracts',
+            {
+              "Web Login": [
+                'web3-apps/tutorials/web-login/wallet-selector',
+                'web3-apps/tutorials/web-login/ethereum-wallets',
+              ]
+            },
             'tutorials/examples/frontend-multiple-contracts',
-            'web3-apps/ethereum-wallets',
             'web3-apps/backend/backend-login',
             'chain-abstraction/meta-transactions-relayer',
             'data-infrastructure/lake-framework/building-indexers/js-lake-indexer',

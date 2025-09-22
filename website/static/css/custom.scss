@@ -120,6 +120,14 @@ a[target="_blank"]::after {
   vertical-align: text-top;
 }
 
+a.menu__link[target="_blank"]::after {
+  display: inherit;
+}
+
+a.cover-card[target="_blank"]::after {
+  display: none;
+}
+
 // ============================================================================
 // LANDING PAGE STYLES
 // ============================================================================
@@ -610,12 +618,30 @@ html:not(.blog-post-page) .avatar__photo {
   border-radius: 0%;
 }
 
-img+em {
+img+em, .monaco+em {
   font-style: normal;
   display: inherit;
   text-align: center;
   font-size: 90%;
   margin: 0.5em 0 2rem 0;
+}
+
+// ============================================================================
+// SECTION STYLES
+// ============================================================================
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 4rem 0 2rem 0;
+  color: var(--ifm-heading-color);
+}
+
+.subsection {
+  width: 50%;
+  margin: 2.5em auto;
+  height: 0.5px;
 }
 
 // ============================================================================

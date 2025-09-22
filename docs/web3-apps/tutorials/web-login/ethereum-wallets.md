@@ -1,25 +1,34 @@
 ---
-sidebar_label: Ethereum Wallets on Near
+title: EVM Wallets Login
 id: ethereum-wallets
 description: "Learn how to integrate Ethereum wallets like MetaMask into your NEAR DApp using the Near Wallet Selector, Web3Modal, and wagmi libraries."
 ---
 
 import { Github } from "@site/src/components/codetabs"
 
-In this article we will describe how to add EVM wallets support to your Near app, which is already uses the [Near Wallet Selector](https://github.com/near/wallet-selector/).
+Using the [Wallet Selector](./wallet-selector.md) it is possible to login into NEAR applications using Ethereum wallets like MetaMask, WalletConnect and many others.
+
+This tutorial will guide you to add Ethereum wallet support to your NEAR application using the [Reown](https://reown.com/appkit) library, which is widely used in the Ethereum ecosystem.
+
+:::info
+
+Learn more about Ethereum Wallets on NEAR in our [concepts page](../../concepts/eth-wallets.md)
+
+:::
+
+---
+
+## Overview
 
 To integrate Metamask and other EVM wallets you will need to:
 
-1. Update the `Wallet Selector` and add the Web3Modal libraries (`wagmi`, `web3wallet`, `@near-wallet-selector/ethereum-wallets`)
-2. Create configurations so the Ethereum wallets can communicate with our Near RPCs
-3. Create a Web3Modal and connect it to the Near Wallet Selector
-4. Initialize the Ethereum Wallets 
+1. Add the `@near-wallet-selector/ethereum-wallets` module
+2. Add the EVM libraries `wagmi` and `reown`
+3. Create configurations so the Ethereum wallets can communicate with our [Translator RPC](../../concepts/eth-wallets.md#translator-rpc)
+4. Create a Web3Modal and connect it to the Near Wallet Selector
+5. Initialize the Ethereum Wallets 
 
-We will show how we added Ethereum Wallets support to our [**Hello Near Examples**](https://github.com/near-examples/hello-near-examples/tree/main/frontend). Let's go step-by-step with it!
-
-:::info
-AuroraLabs team has worked on this feature almost for a year now. You can learn more about it from [NEP-518](https://github.com/near/NEPs/issues/518).
-:::
+We will show how we added Ethereum Wallets support to our [**Hello Near Examples**](https://github.com/near-examples/hello-near-examples/tree/main/frontend).
 
 :::tip
 
@@ -43,12 +52,12 @@ In your `package.json`, add the `@near-wallet-selector/ethereum-wallets` package
 ```json title="package.json"
   "dependencies": {
     ...
-    "@near-wallet-selector/core": "^8.9.13",
+    "@near-wallet-selector/core": "^9.5.0",
     // highlight-next-line
-    "@near-wallet-selector/ethereum-wallets": "^8.9.13",
-    "@near-wallet-selector/here-wallet": "^8.9.13",
-    "@near-wallet-selector/modal-ui": "^8.9.13",
-    "@near-wallet-selector/my-near-wallet": "^8.9.13",
+    "@near-wallet-selector/ethereum-wallets": "^9.5.0",
+    "@near-wallet-selector/here-wallet": "^9.5.0",
+    "@near-wallet-selector/modal-ui": "^9.5.0",
+    "@near-wallet-selector/my-near-wallet": "^9.5.0",
     ...
     }
 ```
@@ -62,22 +71,12 @@ In your `package.json`, add the `@near-wallet-selector/ethereum-wallets` package
 It is based on [wagmi] hooks library for React. We will describe the React integration here, but if you are on another platform - just go [here](https://docs.reown.com/appkit/overview#get-started), and try using specific instructions suitable for you to install it.
 
 ```bash
-npm install @web3modal/wagmi wagmi viem @tanstack/react-query
+npm install @reown/appkit-adapter-wagmi @reown/appkit @wagmi/core viem
 ```
 
 ---
 
-## 2. Add Near chain config with our RPCs
-
-We updated the config file of our repo to add the chain information necessary for Metamask to communicate with our RPC.
-
-<Github fname="config.js" language="js"
-      url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/config.js"
-      start="6" end="20" />
-
----
-
-## 3. Add Web3Modal
+## 2. Add Web3Modal
 
 First, let's create a new file to handle the Web3Modal (i.e. the modal shown when selecting the `Ethereum Wallets` on the `Wallet Selector`), and all the configs needed to setup the Ethereum Wallets.
 
@@ -141,8 +140,8 @@ import { wagmiConfig, web3Modal } from '@/wallets/web3modal';
 import { setupEthereumWallets } from "@near-wallet-selector/ethereum-wallets";
 ```
 
-<Github fname="web3modal.js" language="js" start="42" end="53" metastring="{10}"
-      url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js" />
+<Github fname="web3modal.js" language="js" start="19" end="38" metastring="{8}"
+      url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js" />
 
 
 ---
