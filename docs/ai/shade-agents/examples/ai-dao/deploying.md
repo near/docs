@@ -17,7 +17,7 @@ On this page we'll guide you through deploying your own instance of the AI DAO.
 
 - First please make sure you have all the [prerequisites from our quickstart](../../quickstart/deploying.md#prerequisites).
 
-- Additionally, you'll need to set up an account on NEAR AI Cloud, fund it, and obtain an API key. This can be done through the [NEAR AI Cloud Dashboard](https://cloud.near.ai/dashboard/overview).
+- Additionally, you'll need to set up an account on `NEAR AI Cloud`, fund it, and obtain an API key. This can be done through the [NEAR AI Cloud Dashboard](https://cloud.near.ai/dashboard/overview).
 
 ---
 
@@ -64,7 +64,7 @@ On this page we'll guide you through deploying your own instance of the AI DAO.
 
 ## Local Development
 
-In this example, the AI DAO uses a custom agent contract. Because of this, you need to manually switch the contract deployed depending on whether you're developing locally or deploying the agent to a TEE.
+In this example, the AI DAO uses a `custom agent contract`. Because of this, you need to manually switch the contract deployed depending on whether you're developing locally or deploying the agent to a TEE.
 
 - For local development, you need to comment out the [require approved code hash line](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L102) within the `agent_vote` function. This allows anyone to call the function, not just a registered agent. By design, it's impossible for an agent to register when running locally, as it can't provide a valid TEE attestation.
 
@@ -150,15 +150,15 @@ In this example, the AI DAO uses a custom agent contract. Because of this, you n
 
 ### Interacting with the AI DAO
 
-- Set the DAO manifesto in the contract. Since the NEAR_ACCOUNT_ID in your environment variables is automatically assigned the owner of the agent contract, you need to sign this transaction using its SEED_PHRASE.
+- Set the DAO manifesto in the contract. Since the `NEAR_ACCOUNT_ID` in your environment variables is automatically assigned the `owner` of the agent contract, you need to sign this transaction using its `SEED_PHRASE`.
 
     ```bash
     near contract call-function as-transaction YOUR_CONTRACT_ID set_manifesto json-args '{"manifesto_text": "This DAO only approves gaming-related proposals and rejects everything else"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as YOUR_ACCOUNT_ID network-config testnet sign-with-seed-phrase 'YOUR_SEED_PHRASE' --seed-phrase-hd-path 'm/44'\''/397'\''/0'\''' send
     ```
 
-    Make sure to replace YOUR_CONTRACT_ID, YOUR_ACCOUNT_ID, and YOUR_SEED_PHRASE with the appropriate values before executing the command. You can optionally change the manifesto_text as well.
+    Make sure to replace `YOUR_CONTRACT_ID`, `YOUR_ACCOUNT_ID`, and `YOUR_SEED_PHRASE` with the appropriate values before executing the command. You can optionally change the manifesto_text as well.
 
--  Set your NEXT_PUBLIC_contractId in the frontend's [config.js](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/frontend/src/config.js) file.
+-  Set your `NEXT_PUBLIC_contractId` in the frontend's [config.js](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/frontend/src/config.js) file.
 
 - Start the frontend
 
