@@ -412,11 +412,7 @@ const sidebar = {
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
         'primitives/ft',
-        {
-          "Non-Fungible Tokens": [
-            'primitives/nft',
-          ]
-        },
+        'primitives/nft',
         'protocol/network/staking',
         'primitives/linkdrop',
         'primitives/oracles',
