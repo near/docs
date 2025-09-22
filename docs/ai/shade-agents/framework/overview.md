@@ -2,38 +2,49 @@
 id: overview
 title: Framework Overview
 sidebar_label: Framework Overview
-description: "Learn about the core components of the Shade Agent Framework with a high level overview of each of it's parts."
+description: "Learn about the core components of the Shade Agent Framework with a high-level overview of each of its parts."
 ---
 
 import { SigsSupport } from '@site/src/components/sigsSupport';
 
-The Shade Agent Framework provides a suite of tools designed to simplify the development and deployment of Shade Agents. This framework abstracts away the complexities of the underlying infrastructure, allowing developers to focus on building their agent logic. In this section, we'll explore the tooling provided by the framework and examine the key components you need when building an agent.
+The Shade Agent Framework provides a suite of tools designed to simplify the development and deployment of Shade Agents. The framework abstracts away the complexities of the underlying infrastructure, allowing developers to focus on building their agent logic. In this section, we'll explore the tooling provided by the framework and examine the key components you need when building an agent.
 
 ---
 
-## Languages, Templates and Architecture 
+## Templates, Languages, and Architecture 
 
-When starting to build with the Shade Agent Framework, we recommend forking the quickstart [Shade Agent Template](https://github.com/NearDeFi/shade-agent-template). This template contains all the necessary files to build a Shade Agent (which we'll explore later on this page).
+### Templates
 
-Since the agent is written in TypeScript and uses `shade-agent-js`, it integrates seamlessly with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions and deriving multichain accounts.
+When starting to build with the Shade Agent Framework, we recommend forking the [Quickstart Shade Agent Template](https://github.com/NearDeFi/shade-agent-template). This template contains all the necessary files to build a Shade Agent and provides the fastest starting path.
 
-We also maintain a [Python example](https://github.com/NearDeFi/shade-python-example/tree/main) that uses `shade-agent-py`, allowing you to develop agents in Python. However, note that we don't currently maintain tooling for building multichain transactions and deriving multichain accounts in Python, so additional development work will be required.
+Additional templates can be found in our [Templates and Examples](../examples/overview.md) section.
 
-Agents can be written in any language as long as you can create a Docker image for it by using the API directly. You can learn more about this approach on the [API page](./api.md).
+### Supported Languages
 
-An Agent is essentially a backend service (or server) that uses the Shade Agent API and runs inside a Trusted Execution Environment (TEE) instead of on a centralized server. You can develop using any backend framework you prefer, expose API routes, run cron jobs, or index events and respond to them with actions. If you're planning to develop Shade Agents seriously, we recommend having prior experience with creating backend services.
+**TypeScript/JavaScript (Recommended)**
+Agents are primarily written in TypeScript/JavaScript using `shade-agent-js`, which integrates seamlessly with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions and deriving multichain accounts.
+
+**Python**
+We also maintain `shade-agent-py`, which allows you to develop agents in Python. Here is an [example](https://github.com/NearDeFi/shade-python-example/tree/main). However, note that we don't currently maintain tooling for building multichain transactions and deriving multichain accounts in Python, so additional development work will be required.
+
+**Other Languages**
+Agents can be written in any language, provided you can create a Docker image for the agent. To build a Shade Agent in other languages you can use the API directly. Learn more about this approach on the [API page](./api.md).
+
+### Architecture Overview
+
+A Shade Agent is essentially a `backend service` that uses the Shade Agent API and runs inside a Trusted Execution Environment (TEE) instead of on a centralized server. You can develop using any backend framework you prefer, expose API routes, run cron jobs, or index events and respond to them with actions. 
 
 ---
 
 ## Shade Agent API
 
-The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract. To learn more about how the API works and how to use it in different languages, please refer to the [API page](./api.md).
+The Shade Agent API abstracts away the complexity of TEE operations and agent contract interactions. For detailed information on how the API works and how to use it across different languages, please refer to the [API page](./api.md).
 
 ---
 
 ## Shade Agent CLI
 
-The Shade Agent CLI abstracts away the complexity of deploying a Shade Agent. To learn more about how the CLI works and how to use it, please refer to the [CLI page](./cli.md).
+The Shade Agent CLI makes it simplifies deploying a Shade Agent. To learn more about how the CLI works and how to use it, please refer to the [CLI page](./cli.md).
 
 ---
 
@@ -45,10 +56,10 @@ Environment variables are a crucial component of the Shade Agent Framework. They
 
 ## Agent Contract
 
-By default the Shade Agent CLI will deploy a generic agent contract that implements the three methods, approve_codehash, register_agent, and request_signature, talked about in the introduction. This generic agent contract works for many use cases since you can register any arbitrary agent and have it request signatures for any chain - it's very flexible. 
+By default, the Shade Agent CLI will deploy a generic agent contract that implements the three core functions, `approve_codehash`, `register_agent`, and `request_signature`, discussed in the introduction. This generic agent contract works for many use cases since you can register any arbitrary agent and have it request signatures for any chain - it's very flexible. 
 
-There are also cases when you should develop your own custom agent contract. These include, but are not limited to:
-1) You want to implement strict guardrails that prevent malicious actions, even if the TEE is somehow compromised
+There are also cases when you should develop your own `custom agent contract`. These include, but are not limited to:
+1) You want to implement strict `guard rails` that prevent malicious actions, even if the TEE is somehow compromised
 2) You want to implement a custom agent registration or code hash upgradability mechanism
 3) You want to build an agent that just interacts with the NEAR blockchain
 
@@ -70,7 +81,7 @@ To deploy an agent to production, you'll need a Phala Cloud account. You can cre
 
 Docker is a platform that allows you to package an application into a self-contained environment. By creating a Docker image, you can run your agent in the TEE. An agent typically consists of two Docker images (the application and the Shade Agent API), but it can include more. When building Shade Agents, it's helpful to understand how Docker works. If you're interested in learning more about Docker, please visit the [documentation](https://docs.docker.com/get-started/docker-overview/). 
 
-You'll need to set up docker on your machine if you do not have it already and create an account:
+You'll need to set up Docker on your machine if you do not have it already, and create an account:
 - Install Docker for [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) or [Linux](https://docs.docker.com/desktop/setup/install/linux/) and create an account.
 - Log in to Docker, using `docker login` for Mac or `sudo docker login` for Linux.
 
@@ -84,7 +95,7 @@ A standard Dockerfile will:
 1. Start with a `base image`, which serves as the starting point for your application (e.g., Ubuntu, Alpine, Node.js, Python pre-installed)
 2. Set the working directory
 3. Install system dependencies
-4. Add relevant files from the project to the image (in our examples, everything within the `source folder` is included, along with the `manifest file` that lists your dependencies like package.json or pyproject.toml)
+4. Add relevant files from the project to the image (in our examples, everything within the `source folder` is included, along with the `manifest file` that lists your dependencies like the package.json or pyproject.toml)
 5. Install project dependencies
 6. Build the project
 7. Set the environment (production, development)
@@ -98,7 +109,7 @@ You can learn more about the Dockerfile [here](https://docs.docker.com/reference
 
 ### Docker Compose
 
-The Docker Compose file (docker-compose.yaml) defines which Docker images will be included within your agent. This file is what is actually uploaded to Phala Cloud to run your agent, which then pulls the specified images. The compose file also specifies which environment variables are passed to the images, whether images are exposed on ports, and other configuration details.
+The Docker Compose file (docker-compose.yaml) defines which Docker images will be included within your agent. This file is what is actually uploaded to Phala Cloud to run your agent, which pulls the specified images on boot. The compose file also specifies which environment variables are passed to the images, whether images are exposed on ports, and other configuration details.
 
 The images used are automatically configured when you run the Shade Agent CLI. In most cases, you can use the Docker Compose file already supplied [in the template](https://github.com/NearDeFi/shade-agent-template/blob/main/docker-compose.yaml). However, if you want to include additional Docker images in your agent or use additional environment variables for your application, you'll need to edit the Docker Compose file.
 

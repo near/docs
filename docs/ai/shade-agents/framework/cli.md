@@ -2,14 +2,14 @@
 id: cli
 title: Shade Agent CLI
 sidebar_label: Shade Agent CLI
-description: "Learn about the Shade Agent CLI and how to use it deploy Shade Agents."
+description: "Learn about the Shade Agent CLI and how to use it to deploy Shade Agents."
 ---
 
-The [Shade Agent CLI](https://github.com/NearDeFi/shade-agent-cli/tree/main) abstracts away the complexity of deploying a Shade Agent.
+The [Shade Agent CLI](https://github.com/NearDeFi/shade-agent-cli/tree/main) makes it simple to deploy a Shade Agent.
 
-Under the hood the CLI:
-- Builds and publishes the Docker Image for your agent app and modifies your environment variables and docker-compose.yaml to match your new image
-- Creates the agent contract account, deploys the agent contract to it and initializes it with the ACCOUNT_ID as the owner
+Under the hood, the CLI:
+- Builds and publishes the Docker Image for your agent app, and modifies your environment variables and docker-compose.yaml to match your new image hash
+- Creates the agent contract account, deploys the agent contract to it, and initializes it with the NEAR_ACCOUNT_ID as the owner
 - Approves the image code hashes for your agent (app and API image)
 - Deploys the agent to a TEE on Phala Cloud
 
@@ -19,7 +19,7 @@ Under the hood the CLI:
 
 The `NEXT_PUBLIC_contractId` in your environment variables prefix should be set to `ac-proxy.` for local development and `ac-sandbox.` for TEE deployment.
 
-For local deployment the CLI works a little differently:
+For local deployment, the CLI works a little differently:
 - No Docker Image is built or published for your agent app
 - An agent contract that doesn't require agent registration is deployed instead (since locally you cannot produce a valid TEE attestation)
 - The API image is hosted locally instead of deploying anything to a TEE
@@ -36,7 +36,7 @@ npm i -g @neardefi/shade-agent-cli
 
 ## Usage
 
-The Shade Agent CLI is a single command with standard configurations. Run the command within the root of your project.
+The Shade Agent CLI is a single command that runs the CLI with standard configurations. Run the command within the root of your project.
 
 ```bash
 shade-agent-cli
@@ -48,16 +48,15 @@ Your project root must contain your `.env.development.local`, `Dockerfile` and `
 
 ## Flags 
 
-The CLI comes with a list of flags to configure the CLI and switch part off. If you need further customizability when deploying your agent we suggest you switch off the relevant part via a flag and complete that step manually using native tools - [Docker CLI](https://docs.docker.com/reference/cli/docker/), [NEAR CLI](https://docs.near.org/tools/near-cli) and [Phala CLI](https://docs.phala.network/phala-cloud/phala-cloud-cli/overview)
-
+The CLI includes various flags to configure deployment options and disable specific components. If you require further customizability when deploying your agent, you can disable the relevant components using flags and complete those steps manually with native tools: [Docker CLI](https://docs.docker.com/reference/cli/docker/), [NEAR CLI](https://docs.near.org/tools/near-cli) and [Phala CLI](https://docs.phala.network/phala-cloud/phala-cloud-cli/overview)
 
 - **--wasm `<path>`** 
 
-  Path to a custom agent contract WASM file (e.g. `contract/near/contract.wasm`) to deploy instead of the default contract. Use this when using [custom contracts](../custom-agent-contract.md). 
+  Path to a custom agent contract WASM file (e.g. `contract/near/contract.wasm`) to deploy instead of the default contract. Use this when deploying [custom contracts](../custom-agent-contract.md). 
 
 - **--funding `<amount>`** 
 
-  Amount of NEAR tokens to fund the contract deployment (e.g. `5` for 5 NEAR). Use this when deploying a custom contract.
+  Amount of NEAR tokens to fund the contract deployment with (e.g. `5` for 5 NEAR). Use this when deploying a custom contract.
 
 - **--image** 
 
@@ -85,7 +84,7 @@ The CLI comes with a list of flags to configure the CLI and switch part off. If 
 
 - **--no-cache**
 
-  Run docker build with --no-cache. Use this when you need clean builds or want to update cached layers (e.g. cached layers may use older packages). 
+  Run Docker build with --no-cache. Use this when you need clean builds or want to update cached layers (e.g. cached layers may use older packages). 
 
 :::note
 Some options are mutually exclusive. See error messages for details if you use conflicting flags.
@@ -95,7 +94,7 @@ Some options are mutually exclusive. See error messages for details if you use c
 
 ## Custom RPC
 
-To use the non default RPC with the CLI and the API create a filed named `near-rpc.json` with your projects root and configure the RPCs you would like to use, for example:
+To use customs RPCs with the CLI and the API, create a file named `near-rpc.json` within your project's root and configure the RPCs you would like to use, for example:
 
 ```json
 {

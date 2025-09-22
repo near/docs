@@ -8,7 +8,7 @@ description: "Learn how to use custom Shade Agent contracts, including compiling
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In some cases, you may want to deploy a custom agent contract. This allows for more customizability inside the agent contract, allows you to restrict your agent to certain actions, and is used for building Shade Agents that interact with just NEAR.
+In some cases, you may want to deploy a `custom agent contract`. This allows for more customizability inside the agent contract, allows you to restrict your agent to certain actions by implementing `guard rails`, and is used for building Shade Agents that interact with just NEAR.
 
 ---
 

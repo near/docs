@@ -19,7 +19,7 @@ Below, we'll walk through each environment variable required by the Shade Agent 
     NEAR_ACCOUNT_ID=example-account.testnet
     :::
 
-    This is the NEAR account ID that is used to create the agent contract's account when running the Shade Agent CLI and to automatically fund the agent account during startup. You should ensure this account remains funded as you continue to deploy additional agents.
+    This is the NEAR account ID used to create the agent contract's account when running the Shade Agent CLI and is used to automatically fund the agent's account on boot. You should ensure this account remains funded as you continue to deploy additional agents.
 
     You can create a NEAR account by using the NEAR CLI.
 
@@ -44,7 +44,7 @@ Below, we'll walk through each environment variable required by the Shade Agent 
     NEAR_SEED_PHRASE="book chapter unknown knife strange inherit amazing artist mixture loan rotate lyrics"
     :::
 
-    This is the seed phrase for the NEAR_ACCOUNT_ID. When creating an account with the above command the seed phrase will be printed to the terminal
+    This is the seed phrase for the NEAR_ACCOUNT_ID. When creating an account with the above command the seed phrase will be printed to the terminal.
 
 - **NEXT_PUBLIC_contractId**
 
@@ -53,7 +53,7 @@ Below, we'll walk through each environment variable required by the Shade Agent 
     NEXT_PUBLIC_contractId=ac-sandbox.example-account.testnet
     :::
 
-    This is the NEAR account ID where the agent contract will be deployed when running the Shade Agent CLI. The account is automatically created when you run the Shade Agent CLI. This account must be your NEAR_ACCOUNT_ID prefixed with either `ac-proxy.` or `ac-sandbox.`, which determines whether the deployment is local or to a TEE, respectively. For `ac-proxy.` deployments, the agent contract doesn't require agent registration since local environments cannot provide valid TEE attestation.
+    This is the NEAR account ID where the agent contract will be deployed when running the Shade Agent CLI. The account is automatically created when you run the Shade Agent CLI. This account must be your NEAR_ACCOUNT_ID prefixed with either `ac-proxy.` or `ac-sandbox.`, which determines whether the deployment is local or to a TEE, respectively. 
 
 - **API_CODEHASH**
 
@@ -69,7 +69,7 @@ Below, we'll walk through each environment variable required by the Shade Agent 
     DOCKER_TAG=username/my-app
     :::
 
-    The `Docker_TAG` specifies how to find your app image on Docker hub. You need to edit the Docker tag so that the first part matches your Docker username. You can set the second part to whatever you want your image to be called. When the CLI is ran the docker tag for your apps image in the docker-compose.yaml will be automatically updated.
+    The DOCKER_TAG specifies the location of your app image on Docker Hub. Edit this tag to match your Docker username in the first part, and choose any name you'd like for the second part. The CLI will automatically update the Docker tag in your docker-compose.yaml file when it runs in production.
 
 - **PHALA_API_KEY**
 
@@ -87,7 +87,7 @@ Below, we'll walk through each environment variable required by the Shade Agent 
     API_PORT=4000
     :::
 
-    The API_PORT defines which port number the Shade Agent API port is exposed on. The API by default is hosted on port 3140.
+    The API_PORT defines which port number the Shade Agent API is exposed on. The API by default is hosted on port 3140.
 
 ## Your Own Variables
 

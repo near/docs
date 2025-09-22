@@ -9,11 +9,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github, Language} from "@site/src/components/codetabs"
 
-The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract. The API is packaged as a Docker image and included in your agent when uploaded to Phala Cloud. The API is accessible internally by default on port 3140, it is not accessible from outside the TEE.
+The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract. The API is packaged as a Docker image and included in your agent when it's uploaded to Phala Cloud. The API is accessible internally by default on port 3140 - it is not accessible from outside the TEE.
 
-When the API image boots up it will automatically create the agents account, fund it with the NEAR_ACCOUNT_ID from the environment variables and register the agent in the agent contract.
+When the API image boots up it will automatically derive the agent's NEAR account (random implicit account), fund it with 0.3 NEAR from the NEAR_ACCOUNT_ID specified in the environment variables and register the agent in the agent contract.
 
-The API can be used in any language but we maintain API wrappers in TypeScript and Python. We recommend your develop in TypeScript as it has great synergies with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions.
+The API can be used in any language but we maintain API wrappers in TypeScript/JavaScript and Python. We recommend your develop in TypeScript as it has great synergies with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions.
 
 ---
 
@@ -51,9 +51,9 @@ The API can be used in any language but we maintain API wrappers in TypeScript a
     http://shade-agent-api:3140/api/agent
     ```
 
-    All endpoints expect POST requests with JSON payloads and return JSON responses.
+    All endpoints expect `POST` requests with JSON payloads and return JSON responses.
 
-    If you are running your API on a port other than 3140 you should ammend the base URL accordingly.
+    If you're running your API on a port other than 3140, you should amend the base URL accordingly.
 
   </TabItem>
 
@@ -228,7 +228,7 @@ Fetches the NEAR balance of the agent's account in yoctoNEAR (1 NEAR = 10^24 yoc
 
 ## Request Signature
 
-Requests a signature from the Shade Agent system for a multichain account. It has three arguments:
+Requests a signature from the Shade Agent for a multichain account (by calling request_signature on the agent contract). It has three arguments:
 - **path** - An string that maps the signature to a specific account, the path can be set to anything and by changing the path you will be signing for a different account.
 - **payload** - The hash of the transaction to be signed, given as a hex string.
 - **keyType** - The signature scheme being used to sign the payload `Ecdsa` (secp256k1) or `Eddsa` (ed25519). 
@@ -252,7 +252,7 @@ It returns the signature for the transaction.
     <details>
     <summary>Response</summary>
 
-        For `Ecdsa` the function returns the components of the signature as hex strings. Note that to get r remove the first two hex characters from big_r.
+        For `Ecdsa`, the function returns the components of the signature as hex strings. Note that to get `r`, remove the first two hex characters from `big_r`.
 
         ```typescript
         {
@@ -267,7 +267,7 @@ It returns the signature for the transaction.
         }
         ```
 
-        For `Eddsa` the function returns the whole signature as a 64-byte array.
+        For `Eddsa`, the function returns the whole signature as a 64-byte array.
 
         ```typescript
         {
@@ -283,7 +283,7 @@ It returns the signature for the transaction.
         }
         ```
 
-        If your using the chainsig.js library you don't need to worry about the format of these responses since the library handles it.
+        If you're using the chainsig.js library, you don't need to worry about the format of these responses since the library handles it.
 
     </details>
 
@@ -304,7 +304,7 @@ It returns the signature for the transaction.
     <details>
     <summary>Response</summary>
 
-        For `Ecdsa` the function returns the components of the signature as hex strings. Note that to get r remove the first two hex characters from big_r.
+        For `Ecdsa`, the function returns the components of the signature as hex strings. Note that to get `r`, remove the first two hex characters from `big_r`.
 
         ```python
         {
@@ -319,7 +319,7 @@ It returns the signature for the transaction.
         }
         ```
 
-        For `Eddsa` the function returns the whole signature as a 64-byte array.
+        For `Eddsa`, the function returns the whole signature as a 64-byte array.
 
         ```python
         {
@@ -358,7 +358,7 @@ It returns the signature for the transaction.
 <details>
   <summary>Response</summary>
 
-    For `Ecdsa` the function returns the components of the signature as hex strings. Note that to get r remove the first two hex characters from big_r.
+    For `Ecdsa`, the function returns the components of the signature as hex strings. Note that to get `r`, remove the first two hex characters from `big_r`.
 
     ```json
     {
@@ -373,7 +373,7 @@ It returns the signature for the transaction.
     }
     ```
 
-    For `Eddsa` the function returns the whole signature as a 64-byte array.
+    For `Eddsa`, the function returns the whole signature as a 64-byte array.
 
     ```json
     {
@@ -429,7 +429,7 @@ Makes a function call to the agent contract from the agent. This is used for cus
       "methodName": "example_call_method",
       "args": {
         "arg1": "Value1",
-        "arg2": "Value2,
+        "arg2": "Value2",
       },
       "gas": "30000000000000", # Optional
     })
