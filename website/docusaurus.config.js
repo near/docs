@@ -270,7 +270,7 @@ const config = {
               label: 'Data Tools', to: '#', description: "Services to access and monitor on-chain data",
               subitems: [
                 { label: 'Data API', to: '/tools/ecosystem-apis/', description: "Access on-chain data through simple APIs", icon: '/docs/assets/welcome-pages/experiment.png' },
-                { label: 'Indexers', to: '/tools/indexing', description: "Build custom indexers to query on-chain data", icon: '/docs/assets/welcome-pages/blocks.png' },
+                { label: 'Indexers', to: '/tools/indexer', description: "Build custom indexers to query on-chain data", icon: '/docs/assets/welcome-pages/blocks.png' },
               ]
             },
             {
@@ -303,6 +303,7 @@ const config = {
                 },
 
                 { label: 'Explorers', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/docs/assets/welcome-pages/update.png' },
+                { label: 'Indexers', to: '/tools/indexer', description: "Listen to the blockchain, process the transactions and store them in a database", icon: '/docs/assets/welcome-pages/blocks.png' },
                 {
                   label: 'Remix IDE Plugin ↗',
                   to: 'https://docs.welldonestudio.io/code/getting-started',

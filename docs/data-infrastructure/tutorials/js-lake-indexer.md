@@ -204,7 +204,7 @@ That's it. Now we can compile the code and run it
 
 :::danger Credentials
 
-To be able to access the data from [NEAR Lake](/data-infrastructure/lake-framework/near-lake) you need to provide credentials. Please, see the [Credentials](../running-near-lake/credentials.md) article
+To be able to access the data from [NEAR Lake](/data-infrastructure/lake-framework/near-lake) you need to provide credentials. Please, see the [Credentials](./running-near-lake/credentials.md) article
 
 :::
 

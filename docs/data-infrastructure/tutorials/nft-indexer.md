@@ -36,7 +36,7 @@ We will use JS version of [NEAR Lake Framework](/data-infrastructure/lake-framew
 
 :::danger Credentials
 
-Please, ensure you've the credentials set up as described on the [Credentials](../running-near-lake/credentials.md) page. Otherwise you won't be able to get the code working.
+Please, ensure you've the credentials set up as described on the [Credentials](./running-near-lake/credentials.md) page. Otherwise you won't be able to get the code working.
 
 :::
 
@@ -313,7 +313,7 @@ npm run start
 
 :::note
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](../running-near-lake/credentials.md) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [Credentials](./running-near-lake/credentials.md) part :)
 
 :::
 
@@ -420,7 +420,7 @@ A few words about what is going on here. If the Receipt's receiver account name 
 
 After that we iterate over the Events and its `data` using the `ParasEventLogData` we've defined earlier. Collecting a list of objects with the NFTs owner and NFTs links.
 
-Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have [migrated to NEAR Lake Framework](../../lake-framework/migrating-to-near-lake-framework.md) already, saying "Hi!" and crafting the link:
+Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have [migrated to NEAR Lake Framework](./migrating-to-near-lake-framework.md) already, saying "Hi!" and crafting the link:
 
 ```ts title=index.ts
   } else if (relevantOutcome.receipt.receiverId.match(/\.mintbase\d+\.near$/)) {
@@ -544,7 +544,7 @@ npm run start
 
 :::note
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](../running-near-lake/credentials.md) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [Credentials](./running-near-lake/credentials.md) part :)
 
 :::
 

@@ -362,8 +362,6 @@ const sidebar = {
             'web3-apps/ethereum-wallets',
             'web3-apps/backend/backend-login',
             'chain-abstraction/meta-transactions-relayer',
-            'data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
-            'data-infrastructure/lake-framework/building-indexers/python-lake-indexer',
             {
               type: 'category',
               label: 'Mastering NEAR',
@@ -417,8 +415,6 @@ const sidebar = {
         {
           "Non-Fungible Tokens": [
             'primitives/nft',
-            'data-infrastructure/lake-framework/building-indexers/nft-indexer',
-            'data-infrastructure/lake-framework/building-indexers/python-nft-indexer',
           ]
         },
         'protocol/network/staking',
@@ -447,24 +443,14 @@ const sidebar = {
           "Concepts": [
             'data-infrastructure/data-apis',
             'data-infrastructure/big-query',
-            'tools/indexing',
             {
               'Lake Framework': [
                 'data-infrastructure/indexers',
                 'data-infrastructure/lake-framework/near-lake-framework',
                 'data-infrastructure/lake-framework/near-lake',
-                'data-infrastructure/lake-framework/near-lake-state-changes-indexer',
-                'data-infrastructure/lake-framework/migrating-to-near-lake-framework',
-                {
-                  'Running NEAR Lake': [
-                    'data-infrastructure/lake-framework/running-near-lake/run-lake-indexer',
-                    'data-infrastructure/lake-framework/running-near-lake/lake-start-options',
-                    'data-infrastructure/lake-framework/running-near-lake/credentials',
-                  ],
-                },
                 {
                   'Lake Data Structures': [
-                    'data-infrastructure/lake-framework/building-indexers/primitives',
+                    'data-infrastructure/lake-data-structures/primitives',
                     'data-infrastructure/lake-data-structures/toc',
                     'data-infrastructure/lake-data-structures/block',
                     'data-infrastructure/lake-data-structures/chunk',
@@ -482,11 +468,25 @@ const sidebar = {
         {
           "Tutorials": [
             'data-infrastructure/tutorials/near-lake-framework',
+            'data-infrastructure/tutorials/migrating-to-near-lake-framework',
+            'data-infrastructure/tutorials/near-lake-state-changes-indexer',
+            {
+                'Running NEAR Lake': [
+                  'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
+                  'data-infrastructure/tutorials/running-near-lake/lake-start-options',
+                  'data-infrastructure/tutorials/running-near-lake/credentials',
+                ],
+            },
+            'data-infrastructure/tutorials/js-lake-indexer',
+            'data-infrastructure/tutorials/python-lake-indexer',
+            'data-infrastructure/tutorials/nft-indexer',
+            'data-infrastructure/tutorials/python-nft-indexer',
           ]
         },
         {
           "Reference": [
             'tools/explorer',
+            'tools/indexer',
             {
               type: 'category',
               label: 'Data APIs',

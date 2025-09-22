@@ -1,7 +1,7 @@
 ---
-id: indexing
-title: Indexing Solutions on NEAR
-sidebar_label: Indexing Solutions
+id: indexer
+title: Indexer
+sidebar_label: Indexers
 description: "Indexers are services that are constantly listening to the blockchain, processing the transactions and storing them in a database that can be easily queried."
 ---
 
