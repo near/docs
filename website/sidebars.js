@@ -491,6 +491,11 @@ const sidebar = {
           ]
         },
         {
+          "Tutorials": [
+            'data-infrastructure/tutorials/near-lake-framework',
+          ]
+        },
+        {
           "Reference": [
             'tools/explorer',
             {
