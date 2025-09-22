@@ -355,13 +355,21 @@ const sidebar = {
             'web3-apps/what-is',
             'web3-apps/quickstart']
         },
-        'web3-apps/concepts/web-login',
+        { 
+          "Concepts": [
+            'web3-apps/concepts/web-login',
+            'web3-apps/concepts/eth-wallets-on-near',
+            'web3-apps/concepts/data-types'
+          ]
+        },
         {
           "Tutorials": [
-            {"Web Login": [
-              'web3-apps/tutorials/web-login/wallet-selector',
-              'web3-apps/tutorials/web-login/ethereum-wallets',
-            ]},
+            {
+              "Web Login": [
+                'web3-apps/tutorials/web-login/wallet-selector',
+                'web3-apps/tutorials/web-login/ethereum-wallets',
+              ]
+            },
             'tutorials/examples/frontend-multiple-contracts',
             'web3-apps/backend/backend-login',
             'chain-abstraction/meta-transactions-relayer',

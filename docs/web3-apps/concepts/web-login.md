@@ -1,12 +1,27 @@
 ---
-title: Web Login
+title: Web Login Methods
 id: web-login
 description: "Learn all the login options available for your website or web app"
 ---
 
-NEAR offers multiple options to integrate web login into your web app or website, each tailored to different use cases and user experiences.
+NEAR offers multiple options to allow users to login using NEAR accounts. Below are the most popular methods to
+integrate web login into your web app or website, each tailored to different use cases and user experiences.
 
-From adding a selector to users can login using their existing NEAR wallet, to email or social login, NEAR has a solution for you.
+Once the user is logged in, they will be able to use their accounts to interact with the NEAR blockchain, making
+call to smart contracts, transfer tokens, and more.
+
+<details>
+
+<summary> Summary of Available Methods </summary>
+
+| Method                                    | Wallet Login | Social Login | Key Owners | Description                                      |
+|-------------------------------------------|--------------|--------------|------------|--------------------------------------------------|
+| [Wallet Selector](#wallet-selector)       | ✅            | ❌            | User       | Popup modal to select from existing NEAR wallets |
+| [NEAR Selector](#near-selector)           | ✅            | ❌            | User       | Popup modal to select from existing NEAR wallets |
+| [Privy Social Login](#privy-social-login) | ❌            | ✅            |            | Developer                                        |
+| [Web3Auth](#web3auth)                     | ❌            | ✅            | User       | Login using email or social accounts             |
+
+</details>
 
 ---
 
@@ -59,4 +74,8 @@ Check our [Privy Integration Example](https://github.com/near-examples/hello-pri
 
 Check our [Web3Auth Integration Example](https://github.com/near-examples/hello-web3auth/) to learn how to integrate Privy into your web app
 
+:::
+
+:::warning Ethereum Wallets
+The ethereum wallet login offered by Web3Auth will not allow you to interact with NEAR contracts
 :::
