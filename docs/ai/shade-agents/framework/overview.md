@@ -75,6 +75,8 @@ Once your agent is deployed, you can manage the deployment from the [dashboard](
 
 To deploy an agent to production, you'll need a Phala Cloud account. You can create one [here](https://cloud.phala.network/register). 
 
+After deploying to Phala Cloud, monitor your deployments and delete unused ones to avoid unnecessary costs.
+
 ---
 
 ## Docker
