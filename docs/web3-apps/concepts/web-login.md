@@ -17,7 +17,7 @@ call to smart contracts, transfer tokens, and more.
 | Method                                    | Wallet Login | Social Login | Key Owners | Description                                      |
 |-------------------------------------------|--------------|--------------|------------|--------------------------------------------------|
 | [Wallet Selector](#wallet-selector)       | ✅            | ❌            | User       | Popup modal to select from existing NEAR wallets |
-| [NEAR Selector](#near-selector)           | ✅            | ❌            | User       | Popup modal to select from existing NEAR wallets |
+| [NEAR Connector](#near-connector)           | ✅            | ❌            | User       | Popup modal to select from existing NEAR wallets |
 | [Privy Social Login](#privy-social-login) | ❌            | ✅            |            | Developer                                        |
 | [Web3Auth](#web3auth)                     | ❌            | ✅            | User       | Login using email or social accounts             |
 
