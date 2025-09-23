@@ -9,7 +9,7 @@ import { TryDemo } from '@site/src/components/TryDemo';
 
 # Verifiable AI DAO
 
-In this example, you'll explore how to build a `fully verifiable AI DAO` using the Shade Agent Framework. The DAO smart contract receives governance proposals and uses a Shade Agent with a verifiable LLM to automatically vote on proposals according to its predefined manifesto, ensuring transparent and auditable AI-driven governance decisions.
+In this example, you'll explore how to build a `fully verifiable AI DAO` using the Shade Agent Framework. The Verifiable AI DAO is a DAO smart contract that uses a Shade Agent with a verifiable LLM to vote on governance proposals according to its predefined manifesto, ensuring transparent and auditable AI-driven governance decisions.
 
 <TryDemo 
   url="https://verifiable-ai-dao.vercel.app/" 
@@ -23,7 +23,7 @@ This example also serves as a `template` for building `yield and resume-based Sh
 ## What You'll Learn
 
 This example demonstrates how key components of the Shade Agent Framework work together with NEAR's broader tech stack to create a product that is `decentralized and verifiable throughout the entire stack`. The example covers:
-- **NEAR-native Shade Agent**: How to develop a Shade Agent that operates exclusively on the NEAR Protocol
+- **NEAR-native Shade Agent**: How to develop a Shade Agent that operates exclusively on the NEAR blockchain
 - **Yield and Resume Pattern**: Building a Shade Agent that uses the yield and resume pattern
 - **Verifiable AI Integration**: Implementing a Shade Agent that uses NEAR AI's verifiable inference
 
@@ -43,4 +43,3 @@ To understand this example, you should have familiarity with these concepts:
 The complete source code for this example is available in the [verifiable-ai-dao repository](https://github.com/NearDeFi/verifiable-ai-dao).
 
 Continue to the [Agent Contract section](./dao-agent-contract.md) to get started and learn about implementing yield and resume-based agent contracts.
-

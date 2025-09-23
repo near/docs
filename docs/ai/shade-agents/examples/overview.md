@@ -5,17 +5,57 @@ sidebar_label: Overview
 description: "Review the list of our Shade Agent examples and templates."
 ---
 
-This section provides templates and examples to help you get started building Shade Agents.
+import { TryDemo } from '@site/src/components/TryDemo';
 
-## Quickstart Template
+This section provides templates and examples to help you build Shade Agents faster and learn key concepts.
 
-The [Quickstart](../quickstart/deploying.md) provides a `basic template` for building your first `multichain` Shade Agent. It demonstrates the core components of the framework, walks you through the deployment process step by step, and shows how you can modify the example for your own use case on different chains. This is the recommended starting point for developers new to Shade Agents.
+---
 
-## AI DAO Example
+## Quickstart 
 
-The [Verifiable AI DAO](./ai-dao/overview.md) is a comprehensive example that demonstrates how to build a fully verifiable AI-powered DAO using the Shade Agent Framework. This example showcases advanced features, including:
-- **NEAR-native Shade Agent**: How to develop a Shade Agent that operates exclusively on the NEAR Protocol
-- **Yield and Resume Pattern**: Building a Shade Agent that uses the yield and resume pattern
-- **Verifiable AI Integration**: Implementing a Shade Agent that uses NEAR AI's verifiable inference
+Explore the [Quickstart docs](../quickstart/deploying.md)
 
-This example serves as a great starting template for building `yield and resume-based Shade Agents`. This is a smart contract that, when called, halts its execution for the verified agent to complete some logic and resume the transaction when it has a result.
+<TryDemo 
+  url="https://shade-agent-template-woad.vercel.app/" 
+  text="Try the live demo"
+/>
+
+### Summary
+
+The Quickstart features a verifiable Oracle secured by the Shade Agent Framework that pushes the price of ETH to a smart contract on Ethereum.
+
+### Template 
+
+The Quickstart provides a basic template for building your first multichain Shade Agent. This is the recommended starting point for developers new to Shade Agents. 
+
+### Learning Outcomes
+
+- Learn how to get started building with Shade Agents
+- Learn the key components of a Shade Agent
+- Learn to deploy a Shade Agent
+- Learn how to sign transactions for different chains
+
+---
+
+## Verifiable AI DAO
+
+Explore the [Verifiable AI DAO docs](./ai-dao/overview.md)
+
+<TryDemo 
+  url="https://verifiable-ai-dao.vercel.app/" 
+  text="Try the live demo"
+/>
+
+### Summary
+
+The Verifiable AI DAO is a DAO smart contract that uses a Shade Agent with a verifiable LLM to vote on governance proposals according to its predefined manifesto, ensuring transparent and auditable AI-driven governance decisions.
+
+### Template 
+
+The Verifiable AI DAO is a template for building yield and resume-based Shade Agents.
+
+### Learning Outcomes
+
+- Learn to build a Shade Agent that uses the yield and resume pattern
+- Learn to develop a Shade Agent that operates exclusively on the NEAR blockchain
+- Learn to use NEAR AI's verifiable inference within a Shade Agent
