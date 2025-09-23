@@ -34,7 +34,7 @@ A large dataset with on-chain data publicly available on Google Cloud Platform. 
 
 <hr subclass="subsection" />
 
-## [NEAR Lake](./lake-framework/near-lake.md)
+## [NEAR Lake](./near-lake-framework.md)
 A solution that watches over the NEAR network and stores all the events for your easy access.
 
 - Cost-efficient solution: Cost-efficient solution for building self-hosted indexers in Rust, JavaScript, Python, Go and other languages

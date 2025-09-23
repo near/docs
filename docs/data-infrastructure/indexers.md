@@ -100,4 +100,4 @@ We hope this article gives you an understanding of the Indexer concept. Also, we
 ## What's next?
 We encourage you to learn more about the [Lake Indexer project](./lake-framework/near-lake). Please, proceed to [Tutorials](./tutorials/near-lake-state-changes-indexer) section to learn how to build an indexer on practice.
 
-Alternatively, there are a few other third-party indexers that are tightly integrated with the NEAR ecosystem. You can review all of your data sourcing options (including The Graph, Pagoda, Pikespeak, and SubQuery) under [indexing tools](../tools/indexer.md).
+Alternatively, there are a few other third-party indexers that are tightly integrated with the NEAR ecosystem. You can review all of your data sourcing options (including The Graph, Pagoda, Pikespeak, and SubQuery) under [indexing tools](../tools/data-services.md).
