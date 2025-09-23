@@ -42,11 +42,17 @@ You can learn how to integrate the wallet selector into your app in our [Wallet 
 
 ---
 
-## NEAR Selector
+## NEAR Connector
 
-Considered a successor to the wallet selector, the [NEAR Selector](https://github.com/AZbang/hot-connector) is a zero-dependency lightweight library that allows users to connect to your dApp using their preferred wallet.
+Considered a successor to the wallet selector, the [NEAR Connector](https://github.com/AZbang/hot-connector) is a zero-dependency lightweight library that allows users to connect to your dApp using their preferred wallet.
 
 ![Preview](https://github.com/user-attachments/assets/c4422057-38bb-4cd9-8bd0-568e29f46280)
+
+:::tip
+
+Check our [NEAR Connector Integration Example](https://github.com/near-examples/hello-near-connector) to learn how to integrate the NEAR Connector into your web app
+
+:::
 
 ---
 
