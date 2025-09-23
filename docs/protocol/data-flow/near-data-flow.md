@@ -32,27 +32,27 @@ In fact, any blockchain flow can be represented as an infinite timeline that has
 And a block appears on that timeline with some interval. Each of these blocks holds the information about the previous one, thus, creating a *chain of blocks*.
 
 
-NEAR Protocol has a sharded nature, meaning that more than one parallel network, called a [Shard](../../data-infrastructure/lake-data-structures/shard.mdx), can be live at any moment. And each Shard produces a chunk of a block at a given interval. A Block in NEAR Blockchain is a collection of the block chunks from all shards. Block chunk is shortened to [Chunk](../../data-infrastructure/lake-data-structures/chunk.mdx) in NEAR Protocol documentation.
+NEAR Protocol has a sharded nature, meaning that more than one parallel network, called a `Shard`, can be live at any moment. And each Shard produces a chunk of a block at a given interval. A Block in NEAR Blockchain is a collection of the block chunks from all shards. Block chunk is shortened to `Chunk` in NEAR Protocol documentation.
 
 Returning to the data flow itself. The best we can do is to imagine tracks like we could see in audio/video editing apps. Each Shard has its own set of tracks. The top track is for Chunks. They appear no matter what at a given interval, for NEAR Blockchain the interval is about one second. Chunks are being produced even if nothing is happening on the blockchain.
 
 ![Timeline as tracks](/docs/protocol/data-flow/02-tracks.png)
 
-But what do we mean by saying something is happening? We mean that something has triggered some changes in the blockchain. And the most well-known method to trigger any changes is to send a [Transaction](../../data-infrastructure/lake-data-structures/transaction.mdx) to the blockchain with instructions of what we want to change and who has requested those changes.
+But what do we mean by saying something is happening? We mean that something has triggered some changes in the blockchain. And the most well-known method to trigger any changes is to send a `Transaction` to the blockchain with instructions of what we want to change and who has requested those changes.
 
-A transaction needs to be constructed, signed and sent to the blockchain. Once it is executed we expect to have a result - [ExecutionOutcome](../../data-infrastructure/lake-data-structures/execution_outcome.mdx). Oh, that is simple. But it’s not really accurate for NEAR Blockchain.
+A transaction needs to be constructed, signed and sent to the blockchain. Once it is executed we expect to have a result - `ExecutionOutcome`. Oh, that is simple. But it’s not really accurate for NEAR Blockchain.
 
 ![Transaction execution](/docs/protocol/data-flow/03-tx-outcome-receipt.png)
 
-In the beginning there is a [Transaction](../../data-infrastructure/lake-data-structures/transaction.mdx), it contains instructions we want to be executed on the blockchain. Transaction is sent to NEAR Blockchain.
+In the beginning there is a `Transaction`, it contains instructions we want to be executed on the blockchain. Transaction is sent to NEAR Blockchain.
 
-And yes, it is executed there immediately BUT the immediate result of the transaction execution is always just *an acknowledgment that it will be executed on the chain;* this internal execution request is known as [Receipt](../../data-infrastructure/lake-data-structures/receipt.mdx). You can think of the [Receipt](../../data-infrastructure/lake-data-structures/receipt.mdx) as an internal transaction that exists to pass information across shards.
+And yes, it is executed there immediately BUT the immediate result of the transaction execution is always just *an acknowledgment that it will be executed on the chain;* this internal execution request is known as `Receipt. You can think of the `Receipt` as an internal transaction that exists to pass information across shards.
 
 Let’s get back to the tracks to look at the example.
 
-Assuming we have two accounts living on different [Shards](../../data-infrastructure/lake-data-structures/shard.mdx) **alice.near** and **bob.near**. **alice.near** creates a [Transaction](../../data-infrastructure/lake-data-structures/transaction.mdx) to send a few tokens to **bob.near**. The [Transaction](../../data-infrastructure/lake-data-structures/transaction.mdx) is immediately executed and the [ExecutionOutcome](../../data-infrastructure/lake-data-structures/execution_outcome.mdx) for the [Transaction](../../data-infrastructure/lake-data-structures/transaction.mdx) is always a [Receipt](../../data-infrastructure/lake-data-structures/receipt.mdx).
+Assuming we have two accounts living on different `Shards` **alice.near** and **bob.near**. **alice.near** creates a `Transaction` to send a few tokens to **bob.near**. The `Transaction` is immediately executed and the `ExecutionOutcome` for the `Transaction` is always a `Receipt`.
 
-But this [Receipt](../../data-infrastructure/lake-data-structures/receipt.mdx) cannot be executed here, because **bob.near** doesn’t live on the same Shard as **alice.near**, so **the Receipt must be executed on the receiver’s Shard**. So the Receipt is moving to the Shard where **bob.near** belongs to.
+But this `Receipt` cannot be executed here, because **bob.near** doesn’t live on the same Shard as **alice.near**, so **the Receipt must be executed on the receiver’s Shard**. So the Receipt is moving to the Shard where **bob.near** belongs to.
 
 On the destination Shard the Receipt is executed and the process is considered as done.
 
@@ -68,8 +68,8 @@ So the final scheme will look like:
 
 ## Summary
 
-We have learnt the main principles of how data is flowing in NEAR Protocol. We have found out that [Transactions](../../data-infrastructure/lake-data-structures/transaction.mdx) execute and the [ExecutionOutcome](../../data-infrastructure/lake-data-structures/execution_outcome.mdx) of the Transaction is always a [Receipt](../../data-infrastructure/lake-data-structures/receipt.mdx).
+We have learnt the main principles of how data is flowing in NEAR Protocol. We have found out that `Transaction` execute and the `ExecutionOutcome` of the Transaction is always a `Receipt`.
 
-Now we know that [Receipt](../../data-infrastructure/lake-data-structures/receipt.mdx) is a main internal asset for NEAR Protocol blockchain and it has a power of traveling between [Shards](../../data-infrastructure/lake-data-structures/shard.mdx). We learnt the NEAR Data flow on a simple example. Of course in real life with more complex transactions that involve cross-contract calls, there will be more Receipts and ExecutionOutcomes.
+Now we know that `Receipt` is a main internal asset for NEAR Protocol blockchain and it has a power of traveling between `Shards`. We learnt the NEAR Data flow on a simple example. Of course in real life with more complex transactions that involve cross-contract calls, there will be more Receipts and ExecutionOutcomes.
 
 We hope this article is useful and you will be able to build your dApps and indexers easily with the knowledge of how data if flowing in NEAR Protocol.

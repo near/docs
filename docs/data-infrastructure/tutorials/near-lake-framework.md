@@ -1,6 +1,6 @@
 ---
-id: near-lake-framework
-title: NEAR Lake Framework
+id: listen-function-calls
+title: Intercept Function Calls
 description: "This tutorial will guide you through building a simple indexer using the NEAR Lake Framework. The indexer will listen for FunctionCalls on a specific contract and log the details of each call."
 ---
 
@@ -8,10 +8,6 @@ import {Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
-
-NEAR Lake Framework is a small library companion to NEAR Lake. It allows you to build your own indexer that subscribes to the stream of blocks from the NEAR Lake data source and create your own logic to process the NEAR Protocol data.
-
-NEAR Lake Framework is available in three languages: [Rust](https://github.com/near/near-lake-framework-rs), [JavaScript/TypeScript](https://github.com/near/near-lake-framework-js) and [Python](https://github.com/frolvanya/near-lake-framework-py).
 
 In this tutorial, we will build a simple indexer using the NEAR Lake Framework. The indexer will listen for FunctionCalls on a specific contract and log the details of each call.
 

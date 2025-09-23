@@ -1,20 +1,25 @@
 ---
-sidebar_label: Intro to Indexers
+id: indexers
+title: Introduction to Indexers
+sidebar_label: Introduction
 description: "Learn about blockchain indexers, how they work with NEAR Protocol, the difference between pull and push models, and when to use indexers for data querying."
 ---
 
-Here you will find everything you need to know in order to familiarize yourself with the concept of indexers and even build your own one.
+Here you will find everything you need to know in order to familiarize yourself with the concept of indexers.
 
-:::info Disclaimer
+:::info
 
-The explanation on this page assumes you have a certain level of understanding of the blockchain technology.
+We recommend checking the [NEAR Data Flow](../protocol/data-flow/near-data-flow.md) to familiarize yourself with how data flows within the NEAR ecosystem
 
 :::
 
+---
 
-### Blockchains and their nature
+## Blockchains and their nature
 
-Blockchain data is optimized for serialized **writes**, one block at a time, as the chain is being created. Querying the blockchain for data about a specific block or account is fairly straightforward or a "narrow" query. However, querying data across many blocks can be cumbersome because we have to aggregate results from multiple single-block queries. Therefore, we can consider these *"wide" queries*.
+Blockchain data is optimized for serialized **writes**, one block at a time, as the chain is being created. Querying the blockchain for data about a specific block or account is fairly straightforward, as only the data for a specific block needs to be retrieved.
+
+However, querying data across many blocks (e.g. `all transfers between date X and Y`) can be cumbersome because we have to aggregate results from multiple single-block queries.
 
 Given the fact that a blockchain itself is a distributed database, and a smart contract (decentralized application, dApp) is an application that runs on a virtual machine inside a blockchain, we need to understand that smart contracts should *not* be considered as a "backend". While some applications might consist only of smart contracts, building a dApp with only smart contracts, in most cases, is not possible.
 
@@ -39,7 +44,9 @@ Say, we have a smart contract that sells e-books. Once a user buys a book we wan
 
 The dApp has a helper deployed somewhere off-chain, and this helper has code that can send an email with a copy of an e-book. But how would we trigger the helper?
 
-### Getting the data from a blockchain from the external world
+---
+
+## Getting the data from a blockchain from the external world
 
 NEAR blockchain implements a [JSON-RPC endpoint](/api/rpc/introduction) for everyone to interact with the blockchain. Through the JSON-RPC API users can call smart contracts triggering them to be executed with given parameters. Also, users can view the data from the blockchain.
 
@@ -51,7 +58,9 @@ This approach is so-called *pull model* of getting the data. There is nothing wr
 
 Also, not all the data is available through the JSON-RPC. *Local Receipts* for example are not available through the JSON-RPC, because they are not stored in NEAR node's internal database.
 
-### Indexer
+---
+
+## Indexer
 
 A blockchain indexer is an implementation of the *push model* of getting the data. Instead of actively pulling the data from the source, your helper waits for the data to be sent to it. The data is complete and so the helper can start analyzing it immediately; ideally the data is complete enough to avoid additional pulls to get more details.
 
@@ -65,6 +74,7 @@ An indexer listens to the *stream of data as it's being written on chain* and ca
 
 :::
 
+---
 
 ## Indexers and "wide" queries
 
@@ -80,9 +90,12 @@ Because indexers listen to the *stream of data* from the blockchain and the data
 
 Another example that highlights the need for a "wide query" is when you use a seed phrase to recover one or more accounts. Since a seed phrase essentially represents a signing key pair, the recovery is for all accounts that share the associated public key. Therefore, when a seed phrase is used to recover an account via [NEAR Wallet](https://wallet.near.org), the query requires that all accounts with a matching public key are found and recovered. Utilizing [Near Lake Framework](https://github.com/near/near-lake-framework-rs) can be used to store this data in a permanent database and this allows [NEAR Wallet](https://wallet.near.org) to perform such "wide queries". This is impossible to achieve using JSON-RPC only.
 
+---
 ## Summary
 
 We hope this article gives you an understanding of the Indexer concept. Also, we hope now you can easily decide whether you need an indexer for your application.
+
+---
 
 ## What's next?
 We encourage you to learn more about the [Lake Indexer project](./lake-framework/near-lake). Please, proceed to [Tutorials](./tutorials/near-lake-state-changes-indexer) section to learn how to build an indexer on practice.

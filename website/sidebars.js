@@ -440,49 +440,46 @@ const sidebar = {
             'data-infrastructure/data-apis',
             'data-infrastructure/big-query',
             {
-              'Lake Framework': [
+              'Indexers': [
                 'data-infrastructure/indexers',
-                'data-infrastructure/lake-framework/near-lake-framework',
-                'data-infrastructure/lake-framework/near-lake',
-                {
-                  'Lake Data Structures': [
-                    'data-infrastructure/lake-data-structures/primitives',
-                    'data-infrastructure/lake-data-structures/toc',
-                    'data-infrastructure/lake-data-structures/block',
-                    'data-infrastructure/lake-data-structures/chunk',
-                    'data-infrastructure/lake-data-structures/shard',
-                    'data-infrastructure/lake-data-structures/transaction',
-                    'data-infrastructure/lake-data-structures/receipt',
-                    'data-infrastructure/lake-data-structures/execution-outcome',
-                    'data-infrastructure/lake-data-structures/state-change',
-                  ],
-                },
+                'data-infrastructure/near-lake-framework',
               ],
             },
           ]
         },
         {
           "Tutorials": [
-            'data-infrastructure/tutorials/near-lake-framework',
-            'data-infrastructure/tutorials/migrating-to-near-lake-framework',
-            'data-infrastructure/tutorials/near-lake-state-changes-indexer',
+            // {"NEAR Indexer": []},
             {
-                'Running NEAR Lake': [
-                  'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
-                  'data-infrastructure/tutorials/running-near-lake/lake-start-options',
-                  'data-infrastructure/tutorials/running-near-lake/credentials',
-                ],
+              "NEAR Lake Framework": [
+                'data-infrastructure/tutorials/listen-function-calls',
+                'data-infrastructure/tutorials/state-changes',
+                'data-infrastructure/tutorials/python-lake-indexer',
+                {
+                  "NFT Indexer": [
+                    'data-infrastructure/tutorials/nft-indexer',
+                    'data-infrastructure/tutorials/python-nft-indexer',
+                  ]
+                },
+              ]
             },
-            'data-infrastructure/tutorials/js-lake-indexer',
-            'data-infrastructure/tutorials/python-lake-indexer',
-            'data-infrastructure/tutorials/nft-indexer',
-            'data-infrastructure/tutorials/python-nft-indexer',
+            {
+              'NEAR Indexer': [
+                {
+                  "Data Lake": [
+                    'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
+                    'data-infrastructure/tutorials/running-near-lake/lake-start-options',
+                    'data-infrastructure/tutorials/running-near-lake/credentials',
+                  ]
+                }
+              ],
+            },
           ]
         },
         {
           "Reference": [
             'tools/explorer',
-            'tools/indexer',
+            'tools/data-services',
             {
               type: 'category',
               label: 'Data APIs',
