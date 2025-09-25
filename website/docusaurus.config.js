@@ -192,7 +192,7 @@ const config = {
                 { label: 'Introduction', to: '/data-infrastructure/what-is', description: "Discover what data solutions NEAR Protocol offers" },
                 { label: 'Data APIs', to: '/data-infrastructure/data-apis', description: "Consume on-chain data through existing community APIs" },
                 { label: 'BigQuery', to: '/data-infrastructure/big-query', description: "Learn how to query past NEAR Protocol data on Google's BigQuery" },
-                { label: 'NEAR Lake', to: '/data-infrastructure/lake-framework/near-lake-framework', description: "Process the live stream of NEAR data using your favorite language" },
+                { label: 'NEAR Lake', to: '/data-infrastructure/near-lake-framework', description: "Process the live stream of NEAR data using your favorite language" },
               ]
             },
           ]
