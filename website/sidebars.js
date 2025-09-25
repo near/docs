@@ -1,4 +1,15 @@
 const sidebar = {
+  academy: [
+        'quest/introduction',
+        {
+          type: 'html',
+          value: '<hr/>',
+        },
+        'quest/a-file',
+        'quest/protocol',
+        'quest/wallet',
+        'quest/hello-world',
+  ],
   build: [
     {
       type: 'doc',

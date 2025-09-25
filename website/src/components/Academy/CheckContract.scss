@@ -1,0 +1,74 @@
+.check-contract-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.95rem;
+  font-family: var(--ifm-font-family-base);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
+  }
+
+  &.error {
+    border-color: var(--ifm-color-danger);
+    box-shadow: 0 0 0 2px var(--ifm-color-danger-lightest);
+  }
+}
+
+.check-contract-error-message {
+  color: var(--ifm-color-danger);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: var(--ifm-color-danger-contrast-background);
+  border: 1px solid var(--ifm-color-danger);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.check-contract-success-message {
+  padding: 0.75rem;
+  background: var(--ifm-color-success-contrast-background);
+  color: var(--ifm-color-success-contrast-foreground);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--ifm-color-success);
+}
+
+.check-contract-input-container {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+.check-contract-input-wrapper {
+  flex: 1;
+}
+
+.check-contract-submit-button {
+  flex-shrink: 0;
+  height: fit-content;
+  padding: 0.75rem 1.5rem;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
