@@ -28,6 +28,7 @@ const sidebar = {
         },
         {
           "Concepts": [
+            'protocol/architecture',
             {
               'Accounts / Contracts': ['protocol/account-model', 'protocol/account-id', 'protocol/access-keys'],
             },
@@ -355,7 +356,7 @@ const sidebar = {
             'web3-apps/what-is',
             'web3-apps/quickstart']
         },
-        { 
+        {
           "Concepts": [
             'web3-apps/concepts/web-login',
             'web3-apps/concepts/eth-wallets-on-near',
