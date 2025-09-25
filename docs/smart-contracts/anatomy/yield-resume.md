@@ -13,7 +13,7 @@ This is a powerful feature that allows contracts to wait for external events, su
 
 :::info
 
-Contract can wait for 200 blocks - around 2 minutes - after which the yielded function will execute, receiving a "timeout error" as input
+The contract can wait for 200 blocks - around 2 minutes - after which the yielded function will execute, receiving a "timeout error" as input
 
 :::
 
