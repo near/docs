@@ -24,18 +24,16 @@ In general, all wallets will offer similar functionality, so in theory you can c
 
 Remember to write down the seed phrase, as it is the only way to access your account!
 
-:::tip Funding the Wallet
-
-If the wallet created an account with no balance (`0 NEAR`), you will need to fund it using some `testnet` tokens. For this you can try one of the following faucets:
-- [Dev Faucet](https://dev.near.org/faucet)
-- [NEAR Faucet](https://near-faucet.io/)
-
-:::
-
-:::note Testnet
+:::warning Testnet
 Make sure to create a `testnet` account (ending with `.testnet`, e.g. `alice.testnet`), and not a `mainnet` account (ending with `.near`). 
 
 NEAR `testnet` is a separate network that allows you to test your applications without spending real money.
+:::
+
+:::tip Funding the Wallet
+
+Need `testnet` funds? try using one of our [faucets](../../faucet.md)
+
 :::
 
 ---
@@ -83,47 +81,13 @@ This command will create a new account with the name `<account.testnet>` and fun
 
 ---
 
-## Importing an Existing Account
-
-If you already have a NEAR account and want to use it with a wallet or the CLI, you can import it using your seed phrase or private key.
-
-<hr class="sub-section" />
-
-### Into a Wallet
-
-To import an existing account into a wallet, follow the instructions provided by the specific wallet you are using. Most wallets will have an option to "Import Account" or "Restore from Seed Phrase"
-
-:::tip How do I get my seed phrase from the CLI?
-
-If you have created your account using the CLI, you can retrieve your seed phrase or private key using the following command:
-
-```bash
-near account export-account <account.testnet>
-```
-
-Follow the instructions and you will be able to see your seed phrase or private key
-:::
-
-<hr class="sub-section" />
-
-### Into the CLI
-
-To import an existing account into the CLI, you can use the following command:
-
-```bash
-near account import-account
-```
-
-This command will prompt you to enter your seed phrase or private key. Once you enter it, the CLI will import your account and you can start using it.
-
----
-
 ## Next Steps
 
 Now that you have created a NEAR account, you can start developing applications on the NEAR Protocol.
 
 Here are some resources to help you get started:
 
-- Create your [first smart contract](/smart-contracts/quickstart)
-- Build a [Web3 Application](/web3-apps/quickstart)
-- Learn how to build an [Auction App from end-to-end](/tutorials/auction/introduction)
+- Fund the wallet through one of our [faucets](../../faucet.md)
+- Create your [first smart contract](../../smart-contracts/quickstart.md)
+- Build a [Web3 Application](../../web3-apps/quickstart.md)
+- Learn how to build an [Auction App from end-to-end](../../tutorials/auction/0-intro.md)

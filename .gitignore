@@ -16,3 +16,4 @@ serve*
 .vscode
 .env.local
 website/.cache/
+.env

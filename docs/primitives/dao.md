@@ -50,12 +50,15 @@ In contrast with [FT](ft.md) and [NFT](nft.md), DAO contract's are not standardi
 reference the [Astra dao](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos) [contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
 easily generalizable to other DAO implementations.
 
+:::tip
+The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos).
+:::
+
 ---
 
 ## Create a DAO
-The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos).
 
-You can also create a DAO by interacting with the `sputnik-dao` contract.
+You can create a DAO by interacting with the `sputnik-dao` contract:
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
@@ -71,6 +74,51 @@ You can also create a DAO by interacting with the `sputnik-dao` contract.
     <SmartContractCreateDAO />
   </TabItem>
 </Tabs>
+
+:::tip
+The simplest way to create and interact with a DAO is to go through the [AstraDAO UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos).
+:::
+
+<hr className="subsection" />
+
+### Using Global Contract
+
+You can deploy a new DAO using our global contract - a pre-deployed [a Sputnik DAO contract](https://github.com/near-daos/sputnik-dao-contract/tree/main/sputnikdao2) that you can reuse. [Global contracts](../smart-contracts/global-contracts.md) are deployed once and can be reused by any account without incurring high storage costs.
+
+<Tabs groupId="code-tabs">
+  <TabItem value="By AccountId" label="account">
+
+    ```bash
+    near contract deploy <account-id> use-global-account-id dao.globals.primitives.testnet \
+      with-init-call new \
+      json-args '{"config": {"name": "Primitives", "purpose": "Building primitives on NEAR", "metadata":""}, "policy": ["<account-id>"]}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain \
+      send
+    ```
+
+  </TabItem>
+  <TabItem value="By Hash" label="hash">
+
+    ```bash
+    near contract deploy <account-id> use-global-hash Ea8tHXFSQVszVwGASyzAfLq65DjcRDhkfab4FcPaRpgD \
+      with-init-call new \
+      json-args '{"config": {"name": "Primitives", "purpose": "Building primitives on NEAR", "metadata":""}, "policy": ["<account-id>"]}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain \
+      send
+    ```
+
+  </TabItem>
+</Tabs>
+
+:::note
+Deploying by **hash** creates an immutable contract that never changes. Deploying by **account ID** creates an updatable contract that changes when the referenced account's contract is updated. Choose based on whether you want your FT contract to be updatable or permanent.
+:::
 
 <hr className="subsection" />
 

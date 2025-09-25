@@ -63,6 +63,13 @@ const sidebar = {
           ]
         },
         {
+          "Tutorials": [
+            'tutorials/protocol/create-account',
+            'tutorials/protocol/importing-account',
+            'faucet'
+          ]
+        },
+        {
           "Reference": [
             'tools/near-cli',
             {
@@ -141,6 +148,7 @@ const sidebar = {
       },
       items: [
         'ai/introduction',
+        'ai/near-mcp',
         {
           "Shade Agents": [
             "ai/shade-agents/introduction",
@@ -349,7 +357,7 @@ const sidebar = {
         },
         {
           "Reference": [
-            'resources/contracts-list',
+            'smart-contracts/contracts-list',
             'tools/sdk',
             'tools/clear-state',
           ]
@@ -370,11 +378,22 @@ const sidebar = {
             'web3-apps/what-is',
             'web3-apps/quickstart']
         },
+        { 
+          "Concepts": [
+            'web3-apps/concepts/web-login',
+            'web3-apps/concepts/eth-wallets-on-near',
+            'web3-apps/concepts/data-types'
+          ]
+        },
         {
           "Tutorials": [
-            'web3-apps/integrate-contracts',
+            {
+              "Web Login": [
+                'web3-apps/tutorials/web-login/wallet-selector',
+                'web3-apps/tutorials/web-login/ethereum-wallets',
+              ]
+            },
             'tutorials/examples/frontend-multiple-contracts',
-            'web3-apps/ethereum-wallets',
             'web3-apps/backend/backend-login',
             'chain-abstraction/meta-transactions-relayer',
             'data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
@@ -428,11 +447,7 @@ const sidebar = {
       },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
-        {
-          "Fungible Tokens": [
-            'primitives/ft',
-          ]
-        },
+        'primitives/ft',
         {
           "Non-Fungible Tokens": [
             'primitives/nft',
@@ -499,6 +514,11 @@ const sidebar = {
           ]
         },
         {
+          "Tutorials": [
+            'data-infrastructure/tutorials/near-lake-framework',
+          ]
+        },
+        {
           "Reference": [
             'tools/explorer',
             {
@@ -515,6 +535,24 @@ const sidebar = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'EVM Developers',
+      collapsed: true,
+      customProps: {
+        icon: '/img/icons/ethereum.svg',
+      },
+      link: { type: 'doc', id: 'aurora/what-is' },
+      items: [
+        {
+          type: 'link',
+          label: 'Introduction',
+          href: '/aurora/what-is',
+        },
+        'aurora/build-on-aurora',
+        'aurora/launch-virtual-chain',
+      ],
+    }
   ],
   api: [
     'api/rpc/introduction',
@@ -536,6 +574,7 @@ const sidebar = {
     'api/rpc/network',
     'api/rpc/transactions',
     'api/rpc/maintenance-windows',
+    'api/rpc/errors',
   ],
   exchanges: [
     {
@@ -556,7 +595,7 @@ const sidebar = {
       ],
     },
     'integrations/faq',
-  ],
+  ]
 };
 
 export default sidebar;

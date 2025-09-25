@@ -24,7 +24,7 @@ but **cannot** call two methods on different contracts.
 
 You can send $NEAR from your contract to any other account on the network. The Gas cost for transferring $NEAR is fixed and is based on the protocol's genesis config. Currently, it costs `~0.45 TGas`.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
@@ -130,7 +130,7 @@ Your smart contract can call methods in another contract. In the snippet below w
 in a deployed [Hello NEAR](../quickstart.md) contract, and check if everything went
 right in the callback.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
@@ -319,7 +319,7 @@ Accounts do **NOT** have control over their sub-accounts, since they have their 
 Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.near`, `token.project.near`).
 
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
@@ -351,15 +351,15 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
   #[derive(Default)]
   pub struct Contract { }
 
-  const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1); //0.001Ⓝ
 
   #[near]
   impl Contract {
-    pub fn create(&self, prefix: String){
+    pub fn create(&mut self, prefix: String) {
       let account_id = prefix + "." + &env::current_account_id().to_string();
       Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE);
+        .create_account()
+        .transfer(MIN_STORAGE);
     }
   }
 ```
@@ -445,7 +445,7 @@ Accounts can only create immediate sub-accounts of themselves.
 If your contract wants to create a `.mainnet` or `.testnet` account, then it needs to [call](#function-call)
 the `create_account` method of `near` or `testnet` root contracts.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
@@ -481,12 +481,12 @@ the `create_account` method of `near` or `testnet` root contracts.
   #[derive(Default)]
   pub struct Contract { }
 
-  const CALL_GAS: Gas = Gas(28_000_000_000_000);
-  const MIN_STORAGE: Balance = 1_820_000_000_000_000_000_000; //0.00182Ⓝ
+  const CALL_GAS: Gas = Gas::from_gas(28_000_000_000_000);
+  const MIN_STORAGE: NearToken = NearToken::from_yoctonear(1_820_000_000_000_000_000_000); //0.00182Ⓝ
 
   #[near]
   impl Contract {
-    pub fn create_account(&self, account_id: String, public_key: String){
+    pub fn create_account(&mut self, account_id: String, public_key: String){
       let args = json!({
                   "new_account_id": account_id,
                   "new_public_key": public_key,
@@ -494,7 +494,7 @@ the `create_account` method of `near` or `testnet` root contracts.
 
       // Use "near" to create mainnet accounts
       Promise::new("testnet".parse().unwrap())
-      .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
+        .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
     }
   }
 ```
@@ -585,7 +585,7 @@ func ExampleCreateAccount() {
 
 When creating an account you can also batch the action of deploying a contract to it. Note that for this, you will need to pre-load the byte-code you want to deploy in your contract.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
 
 ```rust
@@ -595,7 +595,7 @@ When creating an account you can also batch the action of deploying a contract t
   #[derive(Default)]
   pub struct Contract { }
 
-  const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1100); //1.1Ⓝ
   const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
 
   #[near]
@@ -603,9 +603,9 @@ When creating an account you can also batch the action of deploying a contract t
     pub fn create_hello(&self, prefix: String){
       let account_id = prefix + "." + &env::current_account_id().to_string();
       Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE)
-      .deploy_contract(HELLO_CODE.to_vec());
+        .create_account()
+        .transfer(MIN_STORAGE)
+        .deploy_contract(HELLO_CODE.to_vec());
     }
   }
 ```
@@ -696,7 +696,7 @@ There are two options for adding keys to the account:
 
 <br/>
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
@@ -724,13 +724,13 @@ There are two options for adding keys to the account:
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::{near, env, Promise, Balance, PublicKey};
+  use near_sdk::{near, env, Promise, NearToken, PublicKey};
 
   #[near(serializers = [json, borsh])]
   #[derive(Default)]
   pub struct Contract { }
 
-  const MIN_STORAGE: Balance = 1_100_000_000_000_000_000_000_000; //1.1Ⓝ
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1100); //1.1Ⓝ
   const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
 
   #[near]
@@ -738,10 +738,10 @@ There are two options for adding keys to the account:
     pub fn create_hello(&self, prefix: String, public_key: PublicKey){
       let account_id = prefix + "." + &env::current_account_id().to_string();
       Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE)
-      .deploy_contract(HELLO_CODE.to_vec())
-      .add_full_access_key(public_key);
+        .create_account()
+        .transfer(MIN_STORAGE)
+        .deploy_contract(HELLO_CODE.to_vec())
+        .add_full_access_key(public_key);
     }
   }
 ```
@@ -826,7 +826,7 @@ There are two scenarios in which you can use the `delete_account` action:
 1. As the **last** action in a chain of batched actions.
 2. To make your smart contract delete its own account.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
 ```js
@@ -860,27 +860,27 @@ There are two scenarios in which you can use the `delete_account` action:
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
-  use near_sdk::{near, env, Promise, Neartoken, AccountId};
+  use near_sdk::{near, env, Promise, NearToken, AccountId};
 
   #[near(contract_state)]
   #[derive(Default)]
   pub struct Contract { }
 
-  const MIN_STORAGE: Balance = 1_000_000_000_000_000_000_000; //0.001Ⓝ
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1); //0.001Ⓝ
 
   #[near]
   impl Contract {
     pub fn create_delete(&self, prefix: String, beneficiary: AccountId){
       let account_id = prefix + "." + &env::current_account_id().to_string();
       Promise::new(account_id.parse().unwrap())
-      .create_account()
-      .transfer(MIN_STORAGE)
-      .delete_account(beneficiary);
+        .create_account()
+        .transfer(MIN_STORAGE)
+        .delete_account(beneficiary);
     }
 
     pub fn self_delete(beneficiary: AccountId){
       Promise::new(env::current_account_id())
-      .delete_account(beneficiary);
+        .delete_account(beneficiary);
     }
   }
 ```

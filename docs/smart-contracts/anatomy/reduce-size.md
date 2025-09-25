@@ -11,7 +11,7 @@ In this page, we will explore strategies for reducing the size of smart contract
 
 # Reducing a contract's size
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
 
 ## Advice & examples
@@ -174,7 +174,7 @@ For a `no_std` approach to minimal contracts, observe the following examples:
 <details>
   <summary>Expand to see what's available from <code>sys.rs</code></summary>
 
-<Github language="rust" url="https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/environment/sys.rs" />
+<Github language="rust" url="https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/environment/env.rs" />
 
 </details>
 

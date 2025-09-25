@@ -10,7 +10,7 @@ balancing.
 
 :::tip
 
-If you want to use a custom RPC provider with NEAR Wallet Selector, [check this example](../../web3-apps/integrate-contracts.md#setting-customs-rpc-endpoints).
+If you want to use a custom RPC provider with NEAR Wallet Selector, [check this example](../../web3-apps/tutorials/web-login/wallet-selector.md#setting-customs-rpc-endpoints).
 
 :::
 
@@ -50,8 +50,6 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            |                    |
 | [Tatum](https://tatum.io/chain/near/)                                      | `https://near-testnet.gateway.tatum.io/`                     |                    |
 | [Zeeve](https://www.zeeve.io/)                                             | -                                                            |                    |
-
-
 
 ## RPC Failover
 

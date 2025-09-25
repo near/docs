@@ -10,37 +10,27 @@ import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import BOSMintNFT from "@site/src/components/docs/primitives/nft/bos/mint.md"
-import BOSBuyNFT from "@site/src/components/docs/primitives/nft/bos/buy.md"
-import BOSQueryNFT from "@site/src/components/docs/primitives/nft/bos/query.md"
-import BOSTransferNFT from "@site/src/components/docs/primitives/nft/bos/transfer.md"
-import BOSListNFTForSale from "@site/src/components/docs/primitives/nft/bos/list-for-sale.md"
-
 import WebAppMintNFT from "@site/src/components/docs/primitives/nft/web-app/mint.md"
-import WebAppBuyNFT from "@site/src/components/docs/primitives/nft/web-app/buy.md"
 import WebAppQueryNFT from "@site/src/components/docs/primitives/nft/web-app/query.md"
 import WebAppTransferNFT from "@site/src/components/docs/primitives/nft/web-app/transfer.md"
-import WebAppListNFTForSale from "@site/src/components/docs/primitives/nft/web-app/list-for-sale.md"
 
 import CLIMintNFT from "@site/src/components/docs/primitives/nft/near-cli/mint.md"
-import CLIBuyNFT from "@site/src/components/docs/primitives/nft/near-cli/buy.md"
 import CLIQueryNFT from "@site/src/components/docs/primitives/nft/near-cli/query.md"
 import CLITransferNFT from "@site/src/components/docs/primitives/nft/near-cli/transfer.md"
-import CLIListNFTForSale from "@site/src/components/docs/primitives/nft/near-cli/list-for-sale.md"
 
 import LantstoolMintNFT from "@site/src/components/docs/primitives/nft/lantstool/mint.md"
-import LantstoolBuyNFT from "@site/src/components/docs/primitives/nft/lantstool/buy.md"
 import LantstoolQuryNFT from "@site/src/components/docs/primitives/nft/lantstool/query.md"
 import LantstoolTransferNFT from "@site/src/components/docs/primitives/nft/lantstool/transfer.md"
-import LantstoolListNFTForSale from "@site/src/components/docs/primitives/nft/lantstool/list-for-sale.md"
 
 import SmartContractMintNFT from "@site/src/components/docs/primitives/nft/smart-contract/mint.md"
-import SmartContractBuyNFT from "@site/src/components/docs/primitives/nft/smart-contract/buy.md"
 import SmartContractQueryNFT from "@site/src/components/docs/primitives/nft/smart-contract/query.md"
 import SmartContractTransferNFT from "@site/src/components/docs/primitives/nft/smart-contract/transfer.md"
 
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
+
+import MintNFT from "@site/src/components/tools/NonFungibleToken/MintNFT";
+
 
 In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.
 
@@ -56,19 +46,9 @@ Be mindful of not confusing an NFT with an NFT-marketplace. NFT simply store inf
 
 ---
 
-## Community Projects
-The easiest way to create and handle NFTs is by using one of the existing community projects.
-
-1. Paras - a classic NFT marketplace. Just login with your NEAR account, create a collection and share the link with your community.
-2. Bitte Protocol + Mintbase - a toolkit for building NFT applications using Mintbase tooling, under the Bitte Protocol on the NEAR blockchain.
-3. Enleap - a no-code launchpad for NFTs. Provides NFT minting, staking, whitelist managing, tracking functionality.
-
----
-
 ## Deploying a NFT Contract
-If you want to deploy your own NFT contract, you can create one using our [reference implementation](https://github.com/near-examples/NFT)
 
-Simply personalize it and deploy it to your account.
+If you want to deploy your own NFT contract, you can create one using our [reference implementation](https://github.com/near-examples/NFT).
 
 <Tabs groupId="code-tabs">
  <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -83,10 +63,45 @@ near deploy <account-id> --wasmFile contract.wasm --initFunction new
   </TabItem>
 </Tabs>
 
+<hr class="subsection" />
 
-:::tip
-Check the [Contract Wizard](https://dev.near.org/contractwizard.near/widget/ContractWizardUI) to create a personalized NFT contract!.
+### Global Contract
 
+You can deploy a new Non-Fungible Token using our global NFT contract - a pre-deployed [standard NFT contract](https://github.com/near-examples/NFT) that you can reuse. [Global contracts](../smart-contracts/global-contracts.md) are deployed once and can be reused by any account without incurring high storage costs.
+
+<Tabs groupId="code-tabs">
+  <TabItem value="account" label="By Account">
+
+    ```bash
+    near contract deploy <account-id> use-global-account-id nft.globals.primitives.testnet \
+      with-init-call new \
+      json-args '{"owner_id": "<account-id>", "metadata": {"spec": "nft-1.0.0", "name": "MY_NFT", "symbol": "NFT2000", "icon": "data:image/svg+xml,%3Csvg xmlns='\''http://www.w3.org/2000/svg'\'' viewBox='\''0 0 288 288'\''%3E%3Cg id='\''l'\'' data-name='\''l'\''%3E%3Cpath d='\''M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z'\''/%3E%3C/g%3E%3C/svg%3E"}}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain \
+      send
+    ```
+
+  </TabItem>
+  <TabItem value="hash" label="By Hash">
+
+    ```bash
+    near contract deploy <account-id> use-global-hash ivu1e9obVRnMJLSvVPRgtYefUYUS1L3f5eYHjS86zL9 \
+      with-init-call new \
+      json-args '{"owner_id": "<account-id>", "metadata": {"spec": "nft-1.0.0", "name": "MY_NFT", "symbol": "NFT2000", "icon": "data:image/svg+xml,%3Csvg xmlns='\''http://www.w3.org/2000/svg'\'' viewBox='\''0 0 288 288'\''%3E%3Cg id='\''l'\'' data-name='\''l'\''%3E%3Cpath d='\''M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z'\''/%3E%3C/g%3E%3C/svg%3E"}}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain \
+      send
+    ```
+
+  </TabItem>
+</Tabs>
+
+:::note
+Deploying by **hash** creates an immutable contract that never changes. Deploying by **account ID** creates an updatable contract that changes when the referenced account's contract is updated. Choose based on whether you want your FT contract to be updatable or permanent.
 :::
 
 ---
@@ -95,6 +110,9 @@ Check the [Contract Wizard](https://dev.near.org/contractwizard.near/widget/Cont
 To create a new NFT (a.k.a. minting it) you will call the `nft_mint` method passing as arguments the metadata that defines the NFT.
 
 <Tabs groupId="code-tabs">
+  <TabItem value="UI" label="🎨 UI">
+    <MintNFT />
+  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     <WebAppMintNFT />
   </TabItem>
@@ -187,7 +205,7 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
 ## Attaching NFTs to a Call
 Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, the NFT standard enables to attach a non-fungible tokens in a call by using the NFT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the NFT-contract to do both a transfer and a function call in your name.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
@@ -257,64 +275,7 @@ If the `msg` parameter is included, then a cross-contract call will be made to `
 
 ---
 
-## List a NFT for sale
-
-Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) do not implement marketplace functionality.
-
-For this purpose, there are ecosystem apps such as Paras or Bitte Protocol + Mintbase, that use dedicated marketplace contracts. 
-
-In order to put a NFT for a sale on a marketplace you need to do two actions:
-
-1. Cover data storage costs in the marketplace contract.
-2. Approve the marketplace to sell the NFT in your NFT contract.
-
-<br />
-
-<Tabs groupId="code-tabs">
-  <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppListNFTForSale />
-  </TabItem>
-  <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLIListNFTForSale />
-  </TabItem>
-  <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <LantstoolListNFTForSale/>
-  </TabItem>
-</Tabs>
-
----
-
-## Buy a NFT
-
-Basic NFT contracts following [the NEP-171 and NEP-177 standards](https://nomicon.io/Standards/Tokens/NonFungibleToken) do not implement marketplace functionality.
-
-For this purpose, there are ecosystem apps such as Paras or Bitte Protocol + Mintbase, that use dedicated marketplace contracts. _(Note: Some marketplace services may be temporarily unavailable.)_
-
-<Tabs groupId="code-tabs">
-  <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppBuyNFT />
-  </TabItem>
-  <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLIBuyNFT />
-  </TabItem>
-  <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <LantstoolBuyNFT/>
-  </TabItem>
-  <TabItem value="📄 Contract" label="📄 Contract" default>
-    <SmartContractBuyNFT />
-  </TabItem>
-</Tabs>
-
----
-
 ## Tutorials
 
 - [NFT Tutorial](/tutorials/nfts/js/introduction) _Zero to Hero_ (JavaScript SDK) - a set of tutorials that cover how to create a NFT contract using JavaScript.
 - [NFT Tutorial](/tutorials/nfts/introduction) _Zero to Hero_ (Rust SDK) - a set of tutorials that cover how to create a NFT contract using Rust.
-
-
-## Additional Resources
-
-1. [NFT Tutorial by Keypom](https://github.com/keypom/nft-tutorial-series) (a fork of the NEAR example tutorial).
-2. [Paras API documentation](https://parashq.github.io/).
-

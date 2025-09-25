@@ -38,6 +38,9 @@ import SmartContractAttachTokenToCall from "@site/src/components/docs/primitives
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
+import CreateTokenForm from "@site/src/components/tools/FungibleToken/CreateTokenForm";
+
+
 Besides the native NEAR token, NEAR accounts have access to a [multitude of tokens](https://guide.rhea.finance/developers-1/cli-trading#query-whitelisted-tokens) to use throughout the ecosystem. Moreover, it is even possible for users to create their own fungible tokens.
 
 In contrast with the NEAR native token, fungible token (FT) are **not stored** in the user's account. In fact, each FT lives in **their own contract** which is in charge of doing **bookkeeping**. This is, the contract keeps track of how many tokens each user has, and handles transfers internally.
@@ -48,8 +51,25 @@ In order for a contract to be considered a FT-contract it has to follow the [**N
 
 ---
 
-## Token Factory Tool
-You can create an FT using the toolbox on [Dev Portal](https://dev.near.org/tools). The FT Tool is a token factory, you can interact with it through graphical interface, or by making calls to its contract.
+## Creating a New Token
+
+The simplest way to create a new Fungible Token is by using a factory contract, to which you only need to provide the token metadata, and they will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
+
+<details>
+
+<summary> 1. Using the Token Factory Tool </summary>
+
+We have created a simple UI to interact with the existing `tkn.primitives.testnet` factory contract
+
+<CreateTokenForm />
+
+</details>
+
+<details>
+
+<summary> 2. Interacting with a pre-deployed Token Factory smart contract </summary>
+
+Here is how to directly interact with the factory contract through your application: 
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
@@ -64,6 +84,8 @@ You can create an FT using the toolbox on [Dev Portal](https://dev.near.org/tool
 </Tabs>
 
 The FT you create will live in the account `<your_token_symbol>.tkn.primitives.near` (e.g. `test.tkn.primitives.near`).
+
+</details>
 
 ---
 
@@ -85,8 +107,44 @@ To initialize a FT contract you will need to deploy it and then call the `new` m
 </Tabs>
 
 
-:::tip
-Check the [Contract Wizard](https://dev.near.org/contractwizard.near/widget/ContractWizardUI) to create a personalized FT contract!.
+<hr class="subsection" />
+
+### Global Contracts
+
+You can deploy a new Fungible Token using our global FT contract - a pre-deployed [standard FT contract](https://github.com/near-examples/FT) that you can reuse. [Global contracts](../smart-contracts/global-contracts.md) are deployed once and can be reused by any account without incurring high storage costs.
+
+<Tabs groupId="code-tabs">
+  <TabItem value="account" label="By Account">
+
+    ```bash
+    near contract deploy <account-id> use-global-account-id ft.globals.primitives.testnet \
+      with-init-call \
+      new_default_meta \
+      json-args '{"owner_id": "<account-id>", "total_supply": "100000000000000000000000000000"}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain send
+    ```
+
+  </TabItem>
+  <TabItem value="hash" label="By Hash">
+
+    ```bash
+    near contract deploy <account-id> use-global-hash 3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX \
+      with-init-call \
+      new_default_meta \
+      json-args '{"owner_id": "<account-id>", "total_supply": "100000000000000000000000000000"}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
+
+:::note
+Deploying by **hash** creates an immutable contract that never changes. Deploying by **account ID** creates an updatable contract that changes when the referenced account's contract is updated. Choose based on whether you want your FT contract to be updatable or permanent.
 :::
 
 ---
