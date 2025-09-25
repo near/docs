@@ -1,5 +1,7 @@
 ---
-sidebar_position: 4
+id: architecture
+title: Architecture
+description: "Comprehensive high-level overview of NEAR Protocol's architecture."
 ---
 
 # Architecture
