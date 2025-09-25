@@ -25,14 +25,14 @@ Additional templates can be found in our [Examples and Templates](../examples/ov
 Agents are primarily written in TypeScript/JavaScript using `shade-agent-js`, which integrates seamlessly with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions and deriving multichain accounts.
 
 **Python**
-We also maintain `shade-agent-py`, which allows you to develop agents in Python. Here is an [example](https://github.com/NearDeFi/shade-python-example/tree/main). However, note that we don't currently maintain tooling for building multichain transactions and deriving multichain accounts in Python, so additional development work will be required.
+We also maintain `shade-agent-py`, which allows you to develop agents in Python. Here is an [example](https://github.com/NearDeFi/shade-python-example/tree/main). However, note that we don't currently maintain tooling for building multichain transactions and deriving multichain accounts in Python, so additional development work will be required for multichain use cases.
 
 **Other Languages**
 Agents can be written in any language, provided you can create a Docker image for the agent. To build a Shade Agent in other languages you can use the API directly. Learn more about this approach on the [API page](./api.md).
 
 ### Architecture Overview
 
-A Shade Agent is essentially a `backend service` that uses the Shade Agent API and runs inside a Trusted Execution Environment (TEE) instead of on a centralized server. You can develop using any backend framework you prefer, expose API routes, run cron jobs, or index events and respond to them with actions. 
+A Shade Agent is essentially a `backend service` that uses the Shade Agent API and runs inside a Trusted Execution Environment (TEE) instead of on a classic server. You can develop using any backend framework you prefer, expose API routes, run cron jobs, or index events and respond to them with actions. 
 
 ---
 
@@ -59,7 +59,7 @@ Environment variables are a crucial component of the Shade Agent Framework. They
 By default, the Shade Agent CLI will deploy a generic agent contract that implements the three core functions, `approve_codehash`, `register_agent`, and `request_signature`, discussed in the introduction. This generic agent contract works for many use cases since you can register any arbitrary agent and have it request signatures for any chain - it's very flexible. 
 
 There are also cases when you should develop your own `custom agent contract`. These include, but are not limited to:
-1) You want to implement strict `guard rails` that prevent malicious actions, even if the TEE is somehow compromised
+1) You want to implement strict `guard rails` that prevent malicious actions, even if the TEE is somehow compromised - Review our [security considerations](../security.md#restricting-actions) for more details
 2) You want to implement a custom agent registration or code hash upgradability mechanism
 3) You want to build an agent that just interacts with the NEAR blockchain
 

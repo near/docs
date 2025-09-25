@@ -146,7 +146,7 @@ In this example, the AI DAO uses a `custom agent contract`. Because of this, you
 
     The CLI may prompt you to enter your sudo password.
 
-    After deploying to Phala Cloud, monitor your deployments and delete unused ones to avoid unnecessary costs.
+    After deploying to Phala Cloud, monitor your deployments and delete unused ones to avoid unnecessary costs. You can manage your deployments from the[dashboard](https://cloud.phala.network/dashboard).
 
 ---
 

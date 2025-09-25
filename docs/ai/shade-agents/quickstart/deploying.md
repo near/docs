@@ -151,7 +151,7 @@ This technology has not yet undergone a formal audit. Please conduct your own du
 
   The last `URL` the CLI outputs is the URL of your app. If your application is not working, head over to your App on the Phala Dashboard and review the logs.
 
-  After deploying to Phala Cloud, monitor your deployments and delete unused ones to avoid unnecessary costs.
+  After deploying to Phala Cloud, monitor your deployments and delete unused ones to avoid unnecessary costs. You can manage your deployments from the[dashboard](https://cloud.phala.network/dashboard).
 
 ---
 

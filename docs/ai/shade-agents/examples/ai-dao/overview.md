@@ -9,14 +9,14 @@ import { TryDemo } from '@site/src/components/TryDemo';
 
 # Verifiable AI DAO
 
-In this example, you'll explore how to build a `fully verifiable AI DAO` using the Shade Agent Framework. The Verifiable AI DAO is a DAO smart contract that uses a Shade Agent with a verifiable LLM to vote on governance proposals according to its predefined manifesto, ensuring transparent and auditable AI-driven governance decisions.
+In this example, you'll explore how to build a `fully verifiable AI DAO` using the Shade Agent Framework. The Verifiable AI DAO is a DAO smart contract that uses a Shade Agent with a verifiable LLM to vote on governance proposals according to its predefined manifesto, to create transparent, AI-driven governance that is decentralized and auditable from end-to-end.
 
 <TryDemo 
   url="https://verifiable-ai-dao.vercel.app/" 
   text="Try the live demo"
 />
 
-This example also serves as a `template` for building `yield and resume-based Shade Agents`. This is a smart contract that, when called, halts its execution for the verified agent to complete some logic and resume the transaction when it has a result, enabled by NEAR's asynchronous design. This pattern allows the agent and LLM become a part of the contract, enabling smart contracts with extended capabilities of a backend server that can make API calls and use LLM inference.
+This example also serves as a `template` for building `yield and resume-based Shade Agents`. This is a smart contract that, when called, halts its execution for the verified agent to complete some logic and resume the transaction when it has a result, enabled by NEAR's asynchronous design. This pattern allows the agent and LLM become a part of the contract, enabling smart contracts with extended capabilities of a backend server that can make API calls and use LLM inference. This is especially useful when making cross-contract calls to smart contracts that use yield and resume, allowing you to receive the result in the callback - for example, an on-demand oracle.
 
 ---
 
