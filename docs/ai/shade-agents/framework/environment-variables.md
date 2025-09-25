@@ -23,7 +23,7 @@ Below, we'll walk through each environment variable required by the Shade Agent 
 
     You can create a NEAR account by using the NEAR CLI.
 
-    Install the CLI:
+    Install the NEAR CLI:
 
     ```bash
     curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
