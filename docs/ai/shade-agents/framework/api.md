@@ -9,11 +9,17 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {Github, Language} from "@site/src/components/codetabs"
 
-The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract. The API is packaged as a Docker image and included in your agent when it's uploaded to Phala Cloud. The API is accessible internally by default on port 3140 - it is not accessible from outside the TEE.
+The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract to help you build a Shade Agent quickly. 
 
-When the API image boots up it will automatically derive the agent's NEAR account (random implicit account), fund it with 0.3 NEAR from the NEAR_ACCOUNT_ID specified in the environment variables and register the agent in the agent contract.
+---
 
-The API can be used in any language but we maintain API wrappers in TypeScript/JavaScript and Python. We recommend your develop in TypeScript as it has great synergies with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions.
+## API Overview  
+
+The API is packaged as a Docker image and included in your agent when it's uploaded to Phala Cloud. The API is accessible internally by default on port 3140, but it's not accessible from outside the TEE.
+
+When the API image boots up, it will automatically derive the agent's NEAR account (a random [implicit account](https://near-docs-pr-2740.onrender.com/protocol/account-id#implicit-address)), fund it with 0.3 NEAR from the NEAR_ACCOUNT_ID specified in the environment variables, and registers the agent in the agent contract.
+
+The API can be used in any language, but we maintain API wrappers in TypeScript/JavaScript and Python. We recommend you develop in TypeScript as it has great synergies with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions.
 
 ---
 
@@ -118,7 +124,7 @@ Fetches the code hash and checksum for the agent.
 - The `code hash` is the code hash of the app image running inside the agent.
 - The `checksum` is produced by the TEEs attestation and represents that the agent is registered.
 
-This function will only return the details once the agent has successfully registered in the agent contract. For running the API locally it will only return the code hash not the checksum.
+This function will only return the details once the agent has successfully registered in the agent contract. When running the API locally, it will only return the code hash, and not the checksum.
 
 <Tabs groupId="code-tabs">
 
@@ -229,7 +235,7 @@ Fetches the NEAR balance of the agent's account in yoctoNEAR (1 NEAR = 10^24 yoc
 ## Request Signature
 
 Requests a signature from the Shade Agent for a multichain account (by calling request_signature on the agent contract). It has three arguments:
-- **path** - An string that maps the signature to a specific account, the path can be set to anything and by changing the path you will be signing for a different account.
+- **path** - A string that decides which account the signature is for. The path can be set to anything, and by changing the path, you produce a signature for a different account.
 - **payload** - The hash of the transaction to be signed, given as a hex string.
 - **keyType** - The signature scheme being used to sign the payload `Ecdsa` (secp256k1) or `Eddsa` (ed25519). 
 

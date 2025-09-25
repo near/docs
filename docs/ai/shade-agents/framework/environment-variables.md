@@ -44,7 +44,7 @@ Below, we'll walk through each environment variable required by the Shade Agent 
     NEAR_SEED_PHRASE="book chapter unknown knife strange inherit amazing artist mixture loan rotate lyrics"
     :::
 
-    This is the seed phrase for the NEAR_ACCOUNT_ID. When creating an account with the above command the seed phrase will be printed to the terminal.
+    This is the seed phrase for the NEAR_ACCOUNT_ID. When creating an account with the above command, the seed phrase will be printed to the terminal.
 
 - **NEXT_PUBLIC_contractId**
 

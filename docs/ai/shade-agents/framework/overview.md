@@ -28,7 +28,7 @@ Agents are primarily written in TypeScript/JavaScript using `shade-agent-js`, wh
 We also maintain `shade-agent-py`, which allows you to develop agents in Python. Here is an [example](https://github.com/NearDeFi/shade-python-example/tree/main). However, note that we don't currently maintain tooling for building multichain transactions and deriving multichain accounts in Python, so additional development work will be required for multichain use cases.
 
 **Other Languages**
-Agents can be written in any language, provided you can create a Docker image for the agent. To build a Shade Agent in other languages you can use the API directly. Learn more about this approach on the [API page](./api.md).
+Agents can be written in any language, provided you can create a Docker image for the agent. To build a Shade Agent in other languages, you can use the API directly. Learn more about this approach on the [API page](./api.md).
 
 ### Architecture Overview
 
@@ -44,7 +44,7 @@ The Shade Agent API abstracts away the complexity of TEE operations and agent co
 
 ## Shade Agent CLI
 
-The Shade Agent CLI makes it simplifies deploying a Shade Agent. To learn more about how the CLI works and how to use it, please refer to the [CLI page](./cli.md).
+The Shade Agent CLI simplifies deploying a Shade Agent. To learn more about how the CLI works and how to use it, please refer to the [CLI page](./cli.md).
 
 ---
 
@@ -125,7 +125,7 @@ Now that you have an overview of the framework, we recommend exploring these sec
 1. Framework components: [API](./api.md), [CLI](./cli.md), and [Environment Variables](./environment-variables.md)
 2. [Custom Contracts](../custom-agent-contract.md) - build specialized agent contracts
 3. [Plugins](../plugins.md) - extend your agent's capabilities
-4. [Templates and Examples](../examples/overview.md) - get up and running with different Shade Agent architectures and use cases as quickly as possible and learn the how to build apps in full
+4. [Templates and Examples](../examples/overview.md) - get up and running with different Shade Agent architectures, and use cases as quickly as possible and learn how to build apps in full
 4. [Security Considerations](../security.md) - check your agent abides by best practices
 
 

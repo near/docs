@@ -7,6 +7,10 @@ description: "Learn about the Shade Agent CLI and how to use it to deploy Shade 
 
 The [Shade Agent CLI](https://github.com/NearDeFi/shade-agent-cli/tree/main) makes it simple to deploy a Shade Agent.
 
+---
+
+## CLI Overview 
+
 Under the hood, the CLI:
 - Builds and publishes the Docker Image for your agent app, and modifies your environment variables and docker-compose.yaml to match your new image hash
 - Creates the agent contract account, deploys the agent contract to it, and initializes it with the NEAR_ACCOUNT_ID as the owner
@@ -21,7 +25,7 @@ The `NEXT_PUBLIC_contractId` in your environment variables prefix should be set 
 
 For local deployment, the CLI works a little differently:
 - No Docker Image is built or published for your agent app
-- An agent contract that doesn't require agent registration is deployed instead (since locally you cannot produce a valid TEE attestation)
+- An agent contract that doesn't require agent registration is deployed instead (since locally, you cannot produce a valid TEE attestation)
 - The API image is hosted locally instead of deploying anything to a TEE
 
 ---
@@ -48,7 +52,7 @@ Your project root must contain your `.env.development.local`, `Dockerfile` and `
 
 ## Flags 
 
-The CLI includes various flags to configure deployment options and disable specific components. If you require further customizability when deploying your agent, you can disable the relevant components using flags and complete those steps manually with native tools: [Docker CLI](https://docs.docker.com/reference/cli/docker/), [NEAR CLI](https://docs.near.org/tools/near-cli) and [Phala CLI](https://docs.phala.network/phala-cloud/phala-cloud-cli/overview)
+The CLI includes various flags to configure deployment options and disable specific components. If you require further customizability when deploying your agent, you can disable the relevant components using flags and complete those steps manually with native tools: [Docker CLI](https://docs.docker.com/reference/cli/docker/), [NEAR CLI](https://docs.near.org/tools/near-cli), and [Phala CLI](https://docs.phala.network/phala-cloud/phala-cloud-cli/overview)
 
 - **--wasm `<path>`** 
 
@@ -64,7 +68,7 @@ The CLI includes various flags to configure deployment options and disable speci
 
 - **--contract**
 
-  Build and push the Docker image, and deploy the contract only. Use this when you want customizability over the approving of image code hashes.
+  Build and push the Docker image, and deploy the contract only. Use this when you want customizability over the approval of image code hashes.
 
 - **--phala-only**
 
