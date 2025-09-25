@@ -23,9 +23,9 @@ Contract can wait for 200 blocks - around 4 minutes - after which the yielded fu
 
 Let's look at an example that takes a prompt from a user (e.g. "What is 2+2"), and yields the execution until an external service provides a response.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
-    <Github fname="lib.rs"
+    <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
             start="43" end="70" />
   </TabItem>
@@ -108,9 +108,9 @@ Since we only use it to simplify the process of keeping track of the requests, y
 
 The `env::promise_yield_resume` function in Rust or `near.promise_yield_resume` in Python allows us to signal which yielded promise should execute, as well as which parameters to pass to the resumed function.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
-    <Github fname="lib.rs"
+    <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
             start="72" end="75" />
   </TabItem>
@@ -139,9 +139,9 @@ Since the function used to signal the resume is public, developers must make sur
 
 The function being resumed will have access to all parameters passed to it, including those passed during the yield creation, or the external service response.
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
-    <Github fname="lib.rs"
+    <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
             start="77" end="89" />
   </TabItem>
@@ -201,7 +201,7 @@ The reason to not raise an error, is because we are changing the state (removing
 
 Here's a more complete implementation of a yield-resume pattern in Python:
 
-<Tabs className="language-tabs" groupId="code-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="python" label="🐍 Python">
 ```python
 from near_sdk_py import view, call, near, Context

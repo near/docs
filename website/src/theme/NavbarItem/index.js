@@ -1,21 +1,10 @@
-import React from 'react';
-import ComponentTypes from '@theme/NavbarItem/ComponentTypes';
-function normalizeComponentType(type, props) {
-  // Backward compatibility: navbar item with no type set
-  // but containing dropdown items should use the type "dropdown"
-  if (!type || type === 'default') {
-    return 'items' in props || 'subitems' in props   ? 'dropdown' : 'default';
-  }
-  return type;
-}
-export default function NavbarItem({type, ...props}) {
-  const componentType = normalizeComponentType(type, props);
-  const NavbarItemComponent = ComponentTypes[componentType];
-  if (!NavbarItemComponent) {
-    throw new Error(`No NavbarItem component found for type "${type}".`);
-  }
-  if ('subitems' in props) {
-    props.items = props.subitems; // Backward compatibility for subitems
-  }
-  return <NavbarItemComponent {...props} />;
+import NavbarItem from '@theme-original/NavbarItem';
+import LoginButton from './login-button'
+
+export default function NavbarItemWrapper(props) {
+  if (props.href === 'login') return <LoginButton {...props} />
+
+  const newProps = { ...props };
+  if ('subitems' in props) newProps.items = props.subitems; // Backward compatibility for subitems
+  return <NavbarItem {...newProps} />
 }

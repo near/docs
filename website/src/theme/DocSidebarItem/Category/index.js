@@ -161,6 +161,7 @@ export default function DocSidebarItemCategory({
         className={clsx(
           item.customProps && styles.customCollapsible,
           isActive && styles.customCollapsibleActive,
+          !collapsed && level > 1 && styles.openSubcategory,
           'menu__list-item-collapsible'
           )}>
         <Link
