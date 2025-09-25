@@ -20,7 +20,7 @@ The NEAR ecosystem has a complete set of tools for you to make the most out of o
   <Column title="Data Tools">
     <Feature url="/tools/explorer" title="Explorers" subtitle="Web apps to access on-chain data" image="update.png" />
     <Feature url="/tools/ecosystem-apis/fastnear" title="Data APIs" subtitle="The simplest way to query on-chain data" image="experiment.png" />
-    <Feature url="/tools/indexing" title="Indexers" subtitle="Services to create your own data APIs" image="blocks.png" />
+    <Feature url="/tools/indexer" title="Indexers" subtitle="Services to create your own data APIs" image="blocks.png" />
   </Column>
   <Column title="Ecosystem Tools">
     <Feature url="/tools/faucet" title="Testnet Faucet" subtitle="Get tokens for your testing accounts" image="transaction.png" />
