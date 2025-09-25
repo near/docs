@@ -10,22 +10,6 @@ import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import WebAppMintNFT from "@site/src/components/docs/primitives/nft/web-app/mint.md"
-import WebAppQueryNFT from "@site/src/components/docs/primitives/nft/web-app/query.md"
-import WebAppTransferNFT from "@site/src/components/docs/primitives/nft/web-app/transfer.md"
-
-import CLIMintNFT from "@site/src/components/docs/primitives/nft/near-cli/mint.md"
-import CLIQueryNFT from "@site/src/components/docs/primitives/nft/near-cli/query.md"
-import CLITransferNFT from "@site/src/components/docs/primitives/nft/near-cli/transfer.md"
-
-import LantstoolMintNFT from "@site/src/components/docs/primitives/nft/lantstool/mint.md"
-import LantstoolQuryNFT from "@site/src/components/docs/primitives/nft/lantstool/query.md"
-import LantstoolTransferNFT from "@site/src/components/docs/primitives/nft/lantstool/transfer.md"
-
-import SmartContractMintNFT from "@site/src/components/docs/primitives/nft/smart-contract/mint.md"
-import SmartContractQueryNFT from "@site/src/components/docs/primitives/nft/smart-contract/query.md"
-import SmartContractTransferNFT from "@site/src/components/docs/primitives/nft/smart-contract/transfer.md"
-
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
@@ -53,9 +37,9 @@ If you want to deploy your own NFT contract, you can create one using our [refer
 <Tabs groupId="code-tabs">
  <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
-```bash
-near deploy <account-id> --wasmFile contract.wasm --initFunction new
-```
+  ```bash
+  near deploy <account-id> --wasmFile contract.wasm --initFunction new
+  ```
 
  </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -114,16 +98,81 @@ To create a new NFT (a.k.a. minting it) you will call the `nft_mint` method pass
     <MintNFT />
   </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppMintNFT />
+    
+  ```js
+  import { Wallet } from './near-wallet';
+
+  const CONTRACT_ADDRESS = 'nft.primitives.near';
+  const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+
+  await wallet.callMethod({
+    method: 'nft_mint',
+    args: {
+      token_id: '1',
+      receiver_id: 'bob.near',
+      token_metadata: {
+        title: 'NFT Primitive Token',
+        description: 'Awesome NFT Primitive Token',
+        media: 'string', // URL to associated media, preferably to decentralized, content-addressed storage
+      },
+    },
+    contractId: CONTRACT_ADDRESS,
+    deposit: 10000000000000000000000,
+  });
+  ```
+
+  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLIMintNFT />
+   
+    ```bash
+    near call nft.primitives.near nft_mint '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --depositYocto 10000000000000000000000, --accountId bob.near
+    ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <LantstoolMintNFT/>
+  <TryOutOnLantstool path="docs/2.build/5.primitives/nft/mint-nft-reference.json" />
   </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract" default>
-    <SmartContractMintNFT />
+
+  ```rust
+  // Validator interface, for cross-contract calls
+  #[ext_contract(ext_nft_contract)]
+  trait ExternalNftContract {
+    fn nft_mint(&self, token_series_id: String, receiver_id: AccountId) -> Promise;
+  }
+
+  // Implement the contract structure
+  #[near]
+  impl Contract {
+    #[payable]
+    pub fn nft_mint(&mut self, token_series_id: String, receiver_id: AccountId) -> Promise {
+      let promise = ext_nft_contract::ext(self.nft_contract.clone())
+        .with_static_gas(Gas(30*TGAS))
+        .with_attached_deposit(env::attached_deposit())
+        .nft_mint(token_series_id, receiver_id);
+
+      return promise.then( // Create a promise to callback query_greeting_callback
+        Self::ext(env::current_account_id())
+        .with_static_gas(Gas(30*TGAS))
+        .nft_mint_callback()
+      )
+    }
+
+    #[private] // Public - but only callable by env::current_account_id()
+    pub fn nft_mint_callback(&self, #[callback_result] call_result: Result<TokenId, PromiseError>) -> Option<TokenId> {
+      // Check if the promise succeeded
+      if call_result.is_err() {
+        log!("There was an error contacting NFT contract");
+        return None;
+      }
+
+      // Return the token data
+      let token_id: TokenId = call_result.unwrap();
+      return Some(token_id);
+    }
+  }
+  ```
   </TabItem>
 </Tabs>
 
@@ -164,16 +213,149 @@ You can query the NFT's information and metadata by calling the `nft_token`.
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppQueryNFT />
+
+  ```js
+  import { Wallet } from './near-wallet';
+
+  const CONTRACT_ADDRESS = 'nft.primitives.near';
+  const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+
+  const response = await wallet.viewMethod({
+    method: 'nft_token',
+    args: {
+      token_id: '1',
+    },
+  });
+  ```
+
+  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+
+  <details>
+
+  <summary> Example response </summary>
+
+  ```json
+  {
+    "token_id": "1",
+    "owner_id": "bob.near",
+    "metadata": {
+      "title": "string", // ex. "Arch Nemesis: Mail Carrier" or "Parcel #5055"
+      "description": "string", // free-form description
+      "media": "string", // URL to associated media, preferably to decentralized, content-addressed storage
+      "media_hash": "string", // Base64-encoded sha256 hash of content referenced by the `media` field. Required if `media` is included.
+      "copies": 1, // number of copies of this set of metadata in existence when token was minted.
+      "issued_at": 1642053411068358156, // When token was issued or minted, Unix epoch in milliseconds
+      "expires_at": 1642053411168358156, // When token expires, Unix epoch in milliseconds
+      "starts_at": 1642053411068358156, // When token starts being valid, Unix epoch in milliseconds
+      "updated_at": 1642053411068358156, // When token was last updated, Unix epoch in milliseconds
+      "extra": "string", // anything extra the NFT wants to store on-chain. Can be stringified JSON.
+      "reference": "string", // URL to an off-chain JSON file with more info.
+      "reference_hash": "string" // Base64-encoded sha256 hash of JSON from reference field. Required if `reference` is included.
+    }
+  }
+  ```
+
+  </details>
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLIQueryNFT />
+
+    ```bash
+    near view nft.primitives.near nft_token '{"token_id": "1"}'
+    ```
+
+  <details>
+
+  <summary> Example response </summary>
+
+    ```json
+    {
+      "token_id": "1",
+      "owner_id": "bob.near",
+      "metadata": {
+        "title": "string", // ex. "Arch Nemesis: Mail Carrier" or "Parcel #5055"
+        "description": "string", // free-form description
+        "media": "string", // URL to associated media, preferably to decentralized, content-addressed storage
+        "media_hash": "string", // Base64-encoded sha256 hash of content referenced by the `media` field. Required if `media` is included.
+        "copies": 1, // number of copies of this set of metadata in existence when token was minted.
+        "issued_at": 1642053411068358156, // When token was issued or minted, Unix epoch in milliseconds
+        "expires_at": 1642053411168358156, // When token expires, Unix epoch in milliseconds
+        "starts_at": 1642053411068358156, // When token starts being valid, Unix epoch in milliseconds
+        "updated_at": 1642053411068358156, // When token was last updated, Unix epoch in milliseconds
+        "extra": "string", // anything extra the NFT wants to store on-chain. Can be stringified JSON.
+        "reference": "string", // URL to an off-chain JSON file with more info.
+        "reference_hash": "string" // Base64-encoded sha256 hash of JSON from reference field. Required if `reference` is included.
+      }
+    }
+    ```
+  </details>
+
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <LantstoolQuryNFT/>
+
+  <TryOutOnLantstool path="docs/2.build/5.primitives/nft/query-nft-data-reference.json" />
+
+  <details>
+
+  <summary> Example response </summary>
+
+  ```json
+  {
+    "token_id": "1",
+    "owner_id": "bob.near",
+    "metadata": {
+      "title": "string", // ex. "Arch Nemesis: Mail Carrier" or "Parcel #5055"
+      "description": "string", // free-form description
+      "media": "string", // URL to associated media, preferably to decentralized, content-addressed storage
+      "media_hash": "string", // Base64-encoded sha256 hash of content referenced by the `media` field. Required if `media` is included.
+      "copies": 1, // number of copies of this set of metadata in existence when token was minted.
+      "issued_at": 1642053411068358156, // When token was issued or minted, Unix epoch in milliseconds
+      "expires_at": 1642053411168358156, // When token expires, Unix epoch in milliseconds
+      "starts_at": 1642053411068358156, // When token starts being valid, Unix epoch in milliseconds
+      "updated_at": 1642053411068358156, // When token was last updated, Unix epoch in milliseconds
+      "extra": "string", // anything extra the NFT wants to store on-chain. Can be stringified JSON.
+      "reference": "string", // URL to an off-chain JSON file with more info.
+      "reference_hash": "string" // Base64-encoded sha256 hash of JSON from reference field. Required if `reference` is included.
+    }
+  }
+  ```
+  </details>
   </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
-    <SmartContractQueryNFT />
+
+  ```rust
+  // Validator interface, for cross-contract calls
+  #[ext_contract(ext_nft_contract)]
+  trait ExternalNftContract {
+    fn nft_token(&self, token_id: TokenId) -> Promise;
+  }
+
+  // Implement the contract structure
+  #[near]
+  impl Contract {
+    pub fn nft_token(&self, token_id: TokenId) -> Promise {
+      let promise = ext_nft_contract::ext(self.nft_contract.clone())
+        .nft_token(token_id);
+
+      return promise.then( // Create a promise to callback query_greeting_callback
+        Self::ext(env::current_account_id())
+        .nft_token_callback()
+      )
+    }
+
+    #[private] // Public - but only callable by env::current_account_id()
+    pub fn nft_token_callback(&self, #[callback_result] call_result: Result<Token, PromiseError>) -> Option<Token> {
+      // Check if the promise succeeded
+      if call_result.is_err() {
+        log!("There was an error contacting NFT contract");
+        return None;
+      }
+
+      // Return the token data
+      let token_data: Token = call_result.unwrap();
+      return Some(token_data);
+    }
+  }
+  ```
   </TabItem>
 </Tabs>
 
@@ -187,16 +369,73 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppTransferNFT />
+      
+  ```js
+  import { Wallet } from './near-wallet';
+
+  const CONTRACT_ADDRESS = 'nft.primitives.near';
+  const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
+
+  await wallet.callMethod({
+    method: 'nft_transfer',
+    args: {
+      token_id: '1',
+      receiver_id: 'bob.near',
+    },
+    contractId: CONTRACT_ADDRESS,
+    deposit: 1,
+  });
+  ```
+
+  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLITransferNFT />
+    
+  ```bash
+    near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "bob.near"}' --accountId bob.near --deposit 0.000000000000000000000001
+  ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
-    <LantstoolTransferNFT/>
+    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/transfer-nft-reference.json" />
   </TabItem>
   <TabItem value="📄 Contract" label="📄 Contract">
-    <SmartContractTransferNFT />
+
+    :::info
+    Please notice that a contract can only transfer an NFT that they own, or an NFT that they were approved to transfer.
+    :::
+
+    ```rust
+    const YOCTO_NEAR: u128 = 1;
+
+    #[ext_contract(ext_nft_contract)]
+    trait ExternalNftContract {
+      fn nft_transfer(&self, receiver_id: AccountId, token_id: TokenId) -> Promise;
+    }
+
+    impl Contract {
+      #[payable]
+      pub fn nft_transfer(&mut self, receiver_id: AccountId, token_id: TokenId) -> Promise {
+        let promise = ext_nft_contract::ext(self.nft_contract.clone())
+          .with_attached_deposit(YOCTO_NEAR)
+          .nft_transfer(receiver_id, token_id);
+
+        return promise.then( // Create a promise to callback query_greeting_callback
+          Self::ext(env::current_account_id())
+          .nft_transfer_callback()
+        )
+      }
+
+      #[private] // Public - but only callable by env::current_account_id()
+      pub fn nft_transfer_callback(&self, #[callback_result] call_result: Result<(), PromiseError>) {
+        // Check if the promise succeeded
+        if call_result.is_err() {
+          log!("There was an error contacting NFT contract");
+        }
+      }
+    }
+    ```
+
   </TabItem>
 </Tabs>
 
@@ -252,15 +491,14 @@ You can authorize other users to transfer an NFT you own. This is useful, for ex
 
 <Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-
-```bash
-near call <nft-contract> nft_approve '{
-"token_id": "<token-unique-id>",
-"account_id": "<authorized-account>",
-"msg": "<json-structure>"
-}' --accountId <your-account> --depositYocto 1
-```
-
+  
+    ```bash
+    near call <nft-contract> nft_approve '{
+    "token_id": "<token-unique-id>",
+    "account_id": "<authorized-account>",
+    "msg": "<json-structure>"
+    }' --accountId <your-account> --depositYocto 1
+    ```
 </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/2.build/5.primitives/nft/approve-user.json" />
