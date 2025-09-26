@@ -17,7 +17,7 @@ On this page we'll guide you through deploying your own instance of the AI DAO.
 
 - First please make sure you have all the [prerequisites from our quickstart](../../quickstart/deploying.md#prerequisites).
 
-- Additionally, you'll need to set up an account on `NEAR AI Cloud`, fund it, and obtain an API key. This can be done through the [NEAR AI Cloud Dashboard](https://cloud.near.ai/dashboard/overview).
+- Additionally, you'll need to set up an account on `NEAR AI`, fund it, and obtain an API key. This can be done through the [NEAR AI Dashboard](https://cloud.near.ai/dashboard/overview).
 
 ---
 

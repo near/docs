@@ -58,4 +58,4 @@ The Verifiable AI DAO is a template for building yield and resume-based Shade Ag
 
 - Learn to build a Shade Agent that uses the yield and resume pattern
 - Learn to develop a Shade Agent that operates exclusively on the NEAR blockchain
-- Learn to use NEAR AI's verifiable inference within a Shade Agent
+- Learn to use NEAR AI's verifiable/private inference within a Shade Agent

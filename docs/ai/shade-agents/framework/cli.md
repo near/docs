@@ -68,7 +68,7 @@ The CLI includes various flags to configure deployment options and disable speci
 
 - **--contract**
 
-  Build and push the Docker image, and deploy the contract only. Use this when you want customizability over the approval of image code hashes.
+  Build and push the Docker image, and deploy the contract only. Use this when you want customizability over the contract initialization and approval of image code hashes.
 
 - **--phala-only**
 
