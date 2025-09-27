@@ -2,6 +2,7 @@
 id: queries
 title: Querying Donation Data
 sidebar_label: Query Donation Data
+description: Learn how to query your Donation Contracts for various datas
 ---
 
 import Tabs from "@theme/Tabs";

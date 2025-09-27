@@ -2,6 +2,7 @@
 id: randomness-basics
 title: Understanding On-Chain Randomness
 sidebar_label: Randomness Fundamentals
+description: Understand the basics of On-Chain Randomness and why this approach works
 ---
 
 import Tabs from "@theme/Tabs";

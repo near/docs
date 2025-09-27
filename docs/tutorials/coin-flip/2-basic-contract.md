@@ -2,6 +2,7 @@
 id: basic-contract
 title: Building a Coin Flip Contract
 sidebar_label: Building the Contract
+description: Learn how to build the Coin Flip Contract
 ---
 
 import Tabs from "@theme/Tabs";

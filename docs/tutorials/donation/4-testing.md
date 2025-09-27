@@ -2,6 +2,7 @@
 id: testing
 title: Deploy and Test Your Contract
 sidebar_label: Deploy and Test
+Description: Learn how to deploy and test your smart contract
 ---
 
 import Tabs from "@theme/Tabs";

@@ -2,6 +2,7 @@
 id: deployment
 title: Deploying and Interacting with Your Contract
 sidebar_label: Deployment & Interaction
+description: Now is the time to Deploy and Interact with your Smart Contract
 ---
 
 import Tabs from "@theme/Tabs";

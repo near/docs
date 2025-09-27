@@ -2,6 +2,7 @@
 id: testing-randomness
 title: Testing On-Chain Randomness
 sidebar_label: Testing Randomness
+description: Learn how to Test you Coin Flip Contract and understand practically how On-Chain Randomness works
 ---
 
 import Tabs from "@theme/Tabs";

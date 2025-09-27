@@ -2,6 +2,7 @@
 id: contract
 title: Handling Token Donations
 sidebar_label: Handle Donations
+description: Learn how to Handle Token Donations and implement core Functionalities
 ---
 
 import Tabs from "@theme/Tabs";

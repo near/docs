@@ -2,6 +2,7 @@
 id: setup
 title: Setting up the Donation Contract
 sidebar_label: Contract Setup
+description: Learn the Rudiments of Setting Up your Donation Smart Contract
 ---
 
 import Tabs from "@theme/Tabs";

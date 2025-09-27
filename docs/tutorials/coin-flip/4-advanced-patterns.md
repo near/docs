@@ -2,6 +2,7 @@
 id: advanced-patterns
 title: Advanced Randomness Patterns
 sidebar_label: Advanced Patterns
+description: Learn a thing or two on Advanced Randomness Patterns
 ---
 
 import Tabs from "@theme/Tabs";

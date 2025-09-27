@@ -2,6 +2,7 @@
 id: frontend  
 title: Building a Frontend Interface
 sidebar_label:  Build Frontend
+description: Build the frontend to better understand how users interact with the smart contract 
 ---
 
 import Tabs from "@theme/Tabs";
