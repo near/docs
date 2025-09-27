@@ -18,7 +18,6 @@ const sidebar = {
       customProps: {
         icon: '/icons/near.svg',
       },
-      link: { type: 'doc', id: 'protocol/basics' },
       items: [
         {
           "Getting Started": [
