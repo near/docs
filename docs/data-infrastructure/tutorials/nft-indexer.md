@@ -3,10 +3,10 @@ sidebar_label: NFT Indexer
 description: "This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the NEAR Lake Framework JS. The indexer will listen for nft_mint events and print relevant data about newly minted NFTs."
 ---
 
-This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the [NEAR Lake Framework JS](/data-infrastructure/lake-framework/near-lake-framework). The indexer will listen for `nft_mint` events and print relevant data about newly minted NFTs.
+This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the [NEAR Lake Framework JS](/data-infrastructure/near-lake-framework). The indexer will listen for `nft_mint` events and print relevant data about newly minted NFTs.
 
 The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
-- `receiptId` of the [Receipt](/data-infrastructure/lake-data-structures/receipt) where the mint has happened
+- `receiptId` of the `Receipt` where the mint has happened
 - Marketplace
 - NFT owner account name
 - Links to the NFTs on the marketplaces
@@ -22,7 +22,7 @@ The final source code is available on the GitHub [`near-examples/near-lake-nft-i
 
 ## Motivation
 
-NEAR Protocol had introduced a nice feature [Events](https://nomicon.io/Standards/EventsFormat). The Events allow a contract developer to add standardized logs to the [`ExecutionOutcomes`](/data-infrastructure/lake-data-structures/execution-outcome) thus allowing themselves or other developers to read those logs in more convenient manner via API or indexers.
+NEAR Protocol had introduced a nice feature [Events](https://nomicon.io/Standards/EventsFormat). The Events allow a contract developer to add standardized logs to the `ExecutionOutcomes` thus allowing themselves or other developers to read those logs in more convenient manner via API or indexers.
 
 The Events have a field `standard` which aligns with NEPs. In this tutorial we'll be talking about [NEP-171 Non-Fungible Token standard](https://github.com/near/NEPs/discussions/171).
 
@@ -30,13 +30,13 @@ In this tutorial our goal is to show you how you can "listen" to the Events cont
 
 As the example we will be building an indexer that watches all the NFTs minted following the [NEP-171 Events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) standard, assuming we're collectors who don't want to miss a thing. Our indexer should notice every single NFT minted and give us a basic set of data like: in what Receipt it was minted, and show us the link to a marketplace (we'll cover Paras and Bitte/Mintbase in our example).
 
-We will use JS version of [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) in this tutorial. Though the concept is the same for Rust, but we want to show more people that it's not that complex to build your own indexer.
+We will use JS version of [NEAR Lake Framework](/data-infrastructure/near-lake-framework) in this tutorial. Though the concept is the same for Rust, but we want to show more people that it's not that complex to build your own indexer.
 
 ## Preparation
 
 :::danger Credentials
 
-Please, ensure you've the credentials set up as described on the [Credentials](../running-near-lake/credentials.md) page. Otherwise you won't be able to get the code working.
+Please, ensure you've the credentials set up as described on the [Credentials](./running-near-lake/credentials.md) page. Otherwise you won't be able to get the code working.
 
 :::
 
@@ -118,7 +118,7 @@ const lakeConfig: types.LakeConfig = {
 
 Just a few words on the config, we have set `s3BucketName` for mainnet, default `s3RegionName` and a fresh-ish block height for `startBlockHeight`. You can go to [NEAR Explorer](https://nearblocks.io) and get **the freshest** block height for your setup. Though you can use the same as we do.
 
-Now we need to create a callback function that we'll be called to handle [`StreamerMessage`](/data-infrastructure/lake-data-structures/toc) our indexer receives.
+Now we need to create a callback function that we'll be called to handle `StreamerMessage` our indexer receives.
 
 ```ts title=index.ts
 async function handleStreamerMessage(
@@ -132,7 +132,7 @@ async function handleStreamerMessage(
 
 In `near-lake-framework` JS library the handler have to be presented as a callback function. This function have to:
 - be asynchronous
-- accept an argument of type [`StreamerMessage`](/data-infrastructure/lake-data-structures/toc)
+- accept an argument of type `StreamerMessage`
 - return nothing (`void`)
 
 :::
@@ -172,8 +172,8 @@ async function handleStreamerMessage(
 
 First of all let's find out where we can catch the Events. We hope you are familiar with how the [Data Flow in NEAR Blockchain](/protocol/data-flow/near-data-flow), but let's revise our knowledge:
 - Mint an NFT is an action in an NFT contract (doesn't matter which one)
-- Actions are located in a [Receipt](/data-infrastructure/lake-data-structures/receipt)
-- A result of the Receipt execution is [ExecutionOutcome](/data-infrastructure/lake-data-structures/execution-outcome)
+- Actions are located in a `Receipt`
+- A result of the Receipt execution is `ExecutionOutcome`
 - `ExecutionOutcome` in turn, catches the logs a contract "prints"
 - [Events](https://nomicon.io/Standards/EventsFormat) built on top of the logs
 
@@ -205,9 +205,9 @@ async function handleStreamerMessage(
 }
 ```
 
-We have iterated through all the [Shards](/data-infrastructure/lake-data-structures/shard) and collected the lists of all ExecutionOutcomes into a single list (in our case we don't care on which Shard did the mint happen)
+We have iterated through all the `Shards` and collected the lists of all `ExecutionOutcomes` into a single list (in our case we don't care on which Shard did the mint happen)
 
-Now we want to deal only with those ExecutionOutcomes that contain logs of Events format. Such logs start with `EVENT_JSON:` according to the [Events docs](https://nomicon.io/Standards/EventsFormat#events).
+Now we want to deal only with those `ExecutionOutcomes` that contain logs of Events format. Such logs start with `EVENT_JSON:` according to the [Events docs](https://nomicon.io/Standards/EventsFormat#events).
 
 Also, we don't require all the data from ExecutionOutcome, let's handle it:
 
@@ -313,7 +313,7 @@ npm run start
 
 :::note
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](../running-near-lake/credentials.md) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [Credentials](./running-near-lake/credentials.md) part :)
 
 :::
 
@@ -420,7 +420,7 @@ A few words about what is going on here. If the Receipt's receiver account name 
 
 After that we iterate over the Events and its `data` using the `ParasEventLogData` we've defined earlier. Collecting a list of objects with the NFTs owner and NFTs links.
 
-Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have [migrated to NEAR Lake Framework](../../lake-framework/migrating-to-near-lake-framework.md) already, saying "Hi!" and crafting the link:
+Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have migrated to [NEAR Lake Framework](./near-lake-framework.md) already, saying "Hi!" and crafting the link:
 
 ```ts title=index.ts
   } else if (relevantOutcome.receipt.receiverId.match(/\.mintbase\d+\.near$/)) {
@@ -544,7 +544,7 @@ npm run start
 
 :::note
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](../running-near-lake/credentials.md) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [Credentials](./running-near-lake/credentials.md) part :)
 
 :::
 

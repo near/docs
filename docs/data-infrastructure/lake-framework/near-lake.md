@@ -51,7 +51,7 @@ The data structure used by Lake Indexer is the following:
 
 ### How to use it
 
-We have created the [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) to have a simple straightforward way to create an indexer on top of the data stored by NEAR Lake itself.
+We have created the [NEAR Lake Framework](/data-infrastructure/near-lake-framework) to have a simple straightforward way to create an indexer on top of the data stored by NEAR Lake itself.
 
 :::info NEAR Lake Framework
 
