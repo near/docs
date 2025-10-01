@@ -18,7 +18,7 @@ const sidebar = {
       customProps: {
         icon: '/icons/near.svg',
       },
-      link: { type: 'doc', id: 'protocol/basics' },
+      link: { type: 'generated-index', slug: 'protocol/basics' },
       items: [
         {
           "Getting Started": [
@@ -88,7 +88,7 @@ const sidebar = {
       customProps: {
         icon: '/icons/multichain.svg',
       },
-      link: { type: 'doc', id: 'chain-abstraction/what-is' },
+      link: { type: 'generated-index', slug: 'chain-abstraction/what-is' },
       items: [
         {
           "Getting Started": [
@@ -116,7 +116,7 @@ const sidebar = {
             {
               type: 'category',
               label: 'Controlling NEAR Accounts',
-              link: { type: 'doc', id: 'tutorials/controlling-near-accounts/introduction' },
+              link: { type: 'generated-index', slug: 'tutorials/controlling-near-accounts/introduction' },
               items: [
                 'tutorials/controlling-near-accounts/introduction',
                 'tutorials/controlling-near-accounts/setup',
@@ -126,7 +126,7 @@ const sidebar = {
             {
               type: 'category',
               label: 'Cross-Chain DAO Governance',
-              link: { type: 'doc', id: 'tutorials/multichain-dao/introduction' },
+              link: { type: 'generated-index', slug: 'tutorials/multichain-dao/introduction' },
               items: [
                 'tutorials/multichain-dao/introduction',
                 'tutorials/multichain-dao/request',
@@ -142,7 +142,7 @@ const sidebar = {
       type: 'category',
       label: 'AI and Agents',
       collapsed: true,
-      link: { type: 'doc', id: 'ai/introduction' },
+      link: { type: 'generated-index', slug: 'ai/introduction' },
       customProps: {
         icon: '/icons/ai.svg',
       },
@@ -189,7 +189,7 @@ const sidebar = {
       type: 'category',
       label: 'Smart Contracts',
       collapsed: true,
-      link: { type: 'doc', id: 'smart-contracts/what-is' },
+      link: { type: 'generated-index', slug: 'smart-contracts/what-is' },
       customProps: {
         icon: '/icons/contract.svg',
       },
@@ -348,7 +348,7 @@ const sidebar = {
       customProps: {
         icon: '/icons/app.svg',
       },
-      link: { type: 'doc', id: 'web3-apps/what-is' },
+      link: { type: 'generated-index', slug: 'web3-apps/what-is' },
       items: [
         {
           "Getting Started": [
@@ -439,12 +439,12 @@ const sidebar = {
       customProps: {
         icon: '/icons/database.svg',
       },
-      link: { type: 'doc', id: 'data-infrastructure/what-is' },
+      link: { type: 'generated-index', slug: 'data-infrastructure/what-is' },
       items: [
         {
           type: 'link',
           label: 'Introduction',
-          href: '/data-infrastructure/what-is',
+          href: 'data-infrastructure/what-is',
         },
         {
           "Concepts": [
@@ -512,13 +512,9 @@ const sidebar = {
       customProps: {
         icon: '/img/icons/ethereum.svg',
       },
-      link: { type: 'doc', id: 'aurora/what-is' },
+      link: { type: 'generated-index', slug: 'aurora/what-is' },
       items: [
-        {
-          type: 'link',
-          label: 'Introduction',
-          href: '/aurora/what-is',
-        },
+        'aurora/what-is',
         'aurora/build-on-aurora',
         'aurora/launch-virtual-chain',
       ],

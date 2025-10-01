@@ -878,8 +878,59 @@ A smart contract exposes its methods, and making a function call that modifies s
   <TabItem value="js" label="🌐 JavaScript">
 
   Once you've [created an `Account` instance](#instantiate-account), you can start interacting with smart contracts.
-  
-  For example, let’s say there’s a [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract deployed at `guestbook.near-examples.testnet`, and you want to add a message to it. To do that, you’d call its `add_message` method.
+
+  The most convenient way to interact with contracts is the `TypedContract` class. It provides full type safety for method names, arguments, and return values, especially when used together with an ABI.
+
+  For example, lets say there is a [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract deployed at `guestbook.near-examples.testnet`, and you want to add a message to it. To do that, you’d call its `add_message` method.
+
+  ```js
+  import { NEAR } from "@near-js/tokens";
+  import { TypedContract, AbiRoot } from "@near-js/accounts";
+
+  // "as const satisfies AbiRoot" is necessary for TypeScript to infer ABI types
+  const guestbookAbi = {...} as const satisfies AbiRoot;
+
+  const account = new Account("user.testnet", provider, signer);
+  const contract = new TypedContract({
+    contractId: "guestbook.near-examples.testnet",
+    provider,
+    abi: guestbookAbi,
+  });
+
+  await contract.call.add_message({
+    account: account, // Account must have Signer to sign tx
+    args: {
+      text: "Hello, world!"
+    },
+    deposit: NEAR.toUnits("0.0001"), // optional
+    gas: BigInt("30000000000000") // 30 TGas, optional
+  });
+  ```
+
+  <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/typed-contract-interaction.js" class="text-center" target="_blank" rel="noreferrer noopener">
+    See full example on GitHub
+  </a>
+
+  In this function call, we’ve attached a small deposit of 0.001 NEAR to [cover the storage cost](/protocol/storage/storage-staking) of adding the message.
+
+  We’ve also [attached 30 TGas](/protocol/gas) to limit the amount of computational resources the method can consume.
+
+  <details>
+    <summary>What if I don't have ABI?</summary>
+
+    If no ABI was provided, `TypedContract` would still work, though return types by default would be `unknown`, which you could override with generics as in the example below:
+
+    ```js
+    type Message = { sender: string; text: string; premium: boolean };
+    const messages = await contract.view.get_messages<Message[]>();
+    //      ^? { sender: string; text: string; premium: boolean }[]
+    ```
+
+  </details>
+
+  ----------------------
+
+  You can also call contract methods directly using the `Account` class. This approach is supported, but not recommended anymore, because it doesn’t provide compile-time safety for method names or arguments. The main benefit of this style is that it is quick to set up.
 
   ```js
   import { NEAR } from "@near-js/tokens";
@@ -898,10 +949,6 @@ A smart contract exposes its methods, and making a function call that modifies s
   <a href="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/contract-interaction.js" class="text-center" target="_blank" rel="noreferrer noopener">
     See full example on GitHub
   </a>
-
-  In this function call, we’ve attached a small deposit of 0.001 NEAR to [cover the storage cost](/protocol/storage/storage-staking) of adding the message.
-
-  We’ve also [attached 30 TGas](/protocol/gas) to limit the amount of computational resources the method can consume.
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
