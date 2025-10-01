@@ -879,9 +879,9 @@ A smart contract exposes its methods, and making a function call that modifies s
 
   Once you've [created an `Account` instance](#instantiate-account), you can start interacting with smart contracts.
 
-  The newest and the most convenient way to interact with contracts is the `TypedContract` class. It provides full type safety for method names, arguments, and return values, especially when used together with an ABI.
+  The most convenient way to interact with contracts is the `TypedContract` class. It provides full type safety for method names, arguments, and return values, especially when used together with an ABI.
 
-  For example, let’s say there’s a [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract deployed at `guestbook.near-examples.testnet`, and you want to add a message to it. To do that, you’d call its `add_message` method.
+  For example, lets say there is a [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract deployed at `guestbook.near-examples.testnet`, and you want to add a message to it. To do that, you’d call its `add_message` method.
 
   ```js
   import { NEAR } from "@near-js/tokens";
@@ -930,7 +930,7 @@ A smart contract exposes its methods, and making a function call that modifies s
 
   ----------------------
 
-  You can also call contract methods directly using the `Account` class. This approach is supported, but not recommended anymore, because it doesn’t provide compile-time safety for method names or arguments. The main benefit of this style is that it’s quick to set up.
+  You can also call contract methods directly using the `Account` class. This approach is supported, but not recommended anymore, because it doesn’t provide compile-time safety for method names or arguments. The main benefit of this style is that it is quick to set up.
 
   ```js
   import { NEAR } from "@near-js/tokens";
