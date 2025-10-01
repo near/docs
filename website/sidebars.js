@@ -465,7 +465,6 @@ const sidebar = {
               "NEAR Lake Framework": [
                 'data-infrastructure/tutorials/listen-function-calls',
                 'data-infrastructure/tutorials/state-changes',
-                'data-infrastructure/tutorials/python-lake-indexer',
                 {
                   "NFT Indexer": [
                     'data-infrastructure/tutorials/nft-indexer',
