@@ -205,6 +205,12 @@ If you change the state of the contract in the function where you yield the prom
 
 It is best practice to check the validity of the response within the function where the resume is signaled (the `respond` function here) and panic if the response is not valid; the external service can attempt to respond again before the promise times out. You should not panic in `return_external_response` as this is only called when the promise has been resolved (it was resumed or timed out), meaning it can't be resumed again, and the state in `request` has been settled. You should gracefully complete the function and revert the state.
 
+:::info
+
+Check more docs on [callback security](../security/callbacks.md#async-callbacks) and [reentrancy attacks](../security/reentrancy.md) to avoid common pitfalls when dealing with asynchronous calls
+
+:::
+
 ---
 
 ## Complete Example
