@@ -3,7 +3,7 @@ id: events
 title: Events
 description: "In this tutorial, you'll learn about the events standard and how to implement it in your smart contract."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

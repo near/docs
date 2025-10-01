@@ -6,7 +6,7 @@ description: "Learn how to build a frontend that interacts with multiple NEAR sm
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 This example showcases how to interact with multiple contracts from a single frontend.
 

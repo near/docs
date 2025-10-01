@@ -3,7 +3,7 @@ id: yield-resume
 title: Yield and Resume
 description: "NEAR smart contracts can yield execution, until an external service resumes them. In practice, the contract yields a cross-contract call to itself, until an external service executes a function and the contract decides to resume."
 ---
-import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
+import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

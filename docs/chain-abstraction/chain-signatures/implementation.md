@@ -6,7 +6,7 @@ description: "Learn how to implement Chain Signatures to enable NEAR accounts to
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 Chain signatures enable NEAR accounts, including smart contracts, to sign and execute transactions across many blockchain protocols.
 

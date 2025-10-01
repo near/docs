@@ -6,7 +6,7 @@ description: "This example performs the simplest cross-contract call possible: i
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
+import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs'
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 This example performs the simplest cross-contract call possible: it calls our [Hello NEAR](https://github.com/near-examples/hello-near-examples) example to set and retrieve a greeting.

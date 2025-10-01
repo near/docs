@@ -4,7 +4,7 @@ title: NEAR Lake Framework
 description: "This tutorial will guide you through building a simple indexer using the NEAR Lake Framework. The indexer will listen for FunctionCalls on a specific contract and log the details of each call."
 ---
 
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';

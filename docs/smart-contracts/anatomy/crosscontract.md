@@ -4,7 +4,7 @@ title: Cross-Contract Calls
 description: "Cross-contract calls are a powerful feature of NEAR smart contracts, allowing one contract to interact with another. This enables complex interactions and functionalities across different contracts, enhancing the ecosystem's capabilities."
 ---
 
-import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
+import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

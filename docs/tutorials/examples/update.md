@@ -5,7 +5,7 @@ description: "Learn how to implement upgradeable smart contracts on NEAR Protoco
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 Three examples on how to handle updates and [state migration](../../smart-contracts/release/upgrade.md):
 1. [State Migration](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates): How to implement a `migrate` method to migrate state between contract updates.

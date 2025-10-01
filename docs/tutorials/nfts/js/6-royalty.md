@@ -4,7 +4,7 @@ title: Royalty
 sidebar_label: Royalty
 description: "In this tutorial you'll continue building your non-fungible token (NFT) smart contract, and learn how to implement perpetual royalties into your NFTs. This will allow people to get a percentage of the purchase price when an NFT is sold."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

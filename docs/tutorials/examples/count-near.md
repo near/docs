@@ -4,7 +4,7 @@ title: Count on NEAR
 description: "Build a simple counter smart contract on NEAR Protocol with increment, decrement, and reset functionality, including frontend integration and testing."
 ---
 
-import {CodeTabs, Language, Github} from '@site/src/components/codetabs';
+import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';

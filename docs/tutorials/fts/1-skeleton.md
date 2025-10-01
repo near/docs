@@ -4,7 +4,7 @@ title: Skeleton and Rust Architecture
 sidebar_label: Contract Architecture
 description: "In this article, you'll learn about the basic architecture behind the FT contract that you'll develop while following this _\"Zero to Hero\"_ series. You'll discover the contract's layout and you'll see how the Rust files are structured in order to build a feature-complete smart contract."
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 In this article, you'll learn about the basic architecture behind the FT contract that you'll develop while following this _"Zero to Hero"_ series. You'll discover the contract's layout and you'll see how the Rust files are structured in order to build a feature-complete smart contract.
 

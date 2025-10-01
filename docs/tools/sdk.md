@@ -7,7 +7,7 @@ description: "NEAR SDK libraries for developing smart contracts in Rust and Java
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist";
 
 The NEAR SDK is a library that allow to develop smart contracts. Currently, there exist two versions of NEAR SDK: one for Rust and one for JavaScript.

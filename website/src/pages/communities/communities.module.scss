@@ -7,45 +7,19 @@
     gap: 1.5rem;
 }
 
-/* Main Card */
+/* Main Card - override some Card component styles */
 .main-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: #a8f5e5;
-    border-radius: 1rem;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.main-card__title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #2d3748;
-    margin-bottom: 1.5rem;
-}
-
-.main-card__description {
-    font-size: 1rem;
-    color: #2d3748;
-    margin-bottom: 2rem;
-    line-height: 1.6;
 }
 
 /* Channels Section */
-.channels-section__title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #2d3748;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
 .channels-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+    margin-top: 1rem;
 }
 
 .channel-item {
@@ -58,11 +32,13 @@
     font-weight: 500;
     transition: all 0.2s ease;
     background: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
 }
 
 .channel-item:hover {
     background: rgba(255, 255, 255, 0.5);
     transform: translateY(-1px);
+    text-decoration: none;
 }
 
 .channel-item__icon {
@@ -90,36 +66,12 @@
 }
 
 .sidebar-card {
-    border-radius: 1rem;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.sidebar-card--purple {
-    background: #b8b3e6;
-}
-
-.sidebar-card--yellow {
-    background: #f5d49a;
-}
-
-.sidebar-card__title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #2d3748;
-}
-
-.sidebar-card__description {
-    font-size: 1rem;
-    color: #718096;
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
+    height: 100%;
 }
 
 .sidebar-card__info {
     font-size: 0.875rem;
-    color: #718096;
-    margin-bottom: 1.5rem;
+    margin: 0;
 }
 
 .sidebar-card__button {
@@ -200,40 +152,41 @@
     }
 
     .community-card {
-        background: white;
-        border: 1px solid #e5e7eb;
-        border-radius: 1rem;
-        padding: 1rem;
-        transition: all 0.2s ease;
-        cursor: pointer;
-        display: flex;
-        align-items: flex-start;
-        gap: 0.125rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-
-        &:hover {
-            background-color: #f9fafb;
-            border-color: #d1d5db;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
+        height: 100%;
+        
+        .community-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
         }
 
-        .avatar {
-            padding: 0;
+        .community-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .community-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .community-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0 0 0.25rem 0;
+            line-height: 1.3;
+        }
+
+        .community-summary {
+            font-size: 0.875rem;
+            color: #6b7280;
             margin: 0;
-
-            .avatar__photo--lg {
-                width: 3.75rem;
-                height: 3.75rem;
-                border-radius: 50%;
-                object-fit: cover;
-            }
-
-            .avatar__name {
-                font-size: 1.25rem;
-                font-weight: 600;
-                color: #1a1a1a;
-            }
+            line-height: 1.4;
         }
     }
 }
@@ -241,57 +194,17 @@
 
 
 [data-theme='dark'] {
-    /* Main Card Dark Theme */
-    .main-card {
-        background: #2d4c47;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .main-card__title {
-        color: #e2e8f0;
-    }
-
-    .main-card__description {
-        color: #cbd5e0;
-    }
-
-    /* Channels Section Dark Theme */
-    .channels-section__title {
-        color: #e2e8f0;
-    }
-
     .channel-item {
         color: #e2e8f0;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.06);
 
         &:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.10);
         }
     }
 
     .channel-item__arrow {
         color: #9ca3af;
-    }
-
-    /* Sidebar Dark Theme */
-    .sidebar-card {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .sidebar-card--purple {
-        background: #6b5b95;
-    }
-
-    .sidebar-card--yellow {
-        background: #b8860b;
-    }
-
-    .sidebar-card__title {
-        color: #e2e8f0;
-    }
-
-    .sidebar-card__description {
-        color: #cbd5e0;
     }
 
     .sidebar-card__info {
@@ -307,38 +220,34 @@
         }
     }
 
-    /* Communities Section Dark Theme */
-    .communities-section {
+    .main-card,
+    .sidebar-card,
+    .community-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.02);
+        box-shadow: none;
+    }
 
+    .channels-grid {
+        background: transparent;
+    }
+
+    .sidebar-card__button {
+        border: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .communities-section {
         .communities-title {
             color: white;
         }
 
         .community-card {
-            background-color: #1f2937;
-            border-color: #374151;
-
-            &:hover {
-                background-color: #374151;
-                border-color: #4b5563;
-            }
-
-            .avatar {
-                .avatar__name {
-                    color: white;
-                }
-            }
-
             .community-name {
                 color: white;
             }
 
             .community-summary {
                 color: #9ca3af;
-            }
-
-            .community-icon {
-                background-color: #374151;
             }
         }
     }

@@ -7,7 +7,7 @@ description: "Collection of language-specific SDKs (JavaScript, Rust, Python) fo
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github, Language} from "@site/src/components/codetabs"
+import {Github, Language} from "@site/src/components/UI/Codetabs"
 
 The NEAR API is a collection of language-specific SDKs that allow developers to interact with the NEAR blockchain from both frontend and backend applications.
 

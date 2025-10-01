@@ -12,7 +12,87 @@
 
   // NEAR Brand Colors
   --near-color-royal: #5f8afa;
+  --near-brand-primary: #5f8afa;
+  --near-brand-primary-100: #e0ecfe;
+  --near-brand-primary-200: #c7dafe;
+  --near-brand-primary-600: #4f46e5;
   --icon-svg-color: #3b82f6;
+
+  // Danger/Error Colors
+  --color-danger: #dc2626;
+  --color-danger-hover: #b91c1c;
+  --color-danger-active: #991b1b;
+
+  // Color System
+  --color-bg-surface: #ffffff;
+  --color-bg-subtle: #f8fafc;
+  --color-bg-primary: #ffffff;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-text-tertiary: #94a3b8;
+  --color-text-inverse: #ffffff;
+  --color-border-primary: #e2e8f0;
+  --color-border-secondary: #cbd5e0;
+  --color-border-focus: #5f8afa;
+
+  // Spacing System
+  --space-1: 0.25rem;   // 4px
+  --space-2: 0.5rem;    // 8px
+  --space-4: 1rem;      // 16px
+  --space-5: 1.25rem;   // 20px
+  --space-6: 1.5rem;    // 24px
+  --space-8: 2rem;      // 32px
+  --space-10: 2.5rem;   // 40px
+  --space-12: 3rem;     // 48px
+  --space-16: 4rem;     // 64px
+  --space-40: 10rem;    // 160px
+  --space-50: 12.5rem;  // 200px
+
+  // Component Spacing
+  --space-component-sm: 0.75rem;  // 12px
+  --space-component-md: 1rem;     // 16px
+  --space-component-lg: 1.5rem;   // 24px
+
+  // Border Radius
+  --radius-sm: 0.25rem;    // 4px
+  --radius-md: 0.375rem;   // 6px
+  --radius-card: 0.75rem;  // 12px
+  --radius-full: 9999px;
+
+  // Borders
+  --border-card: 1px solid var(--color-border-primary);
+  --border-2: 2px;
+  --border-solid: solid;
+
+  // Typography Scale
+  --text-xs: 0.75rem;     // 12px
+  --text-sm: 0.875rem;    // 14px
+  --text-base: 1rem;      // 16px
+  --text-lg: 1.125rem;    // 18px
+  --text-xl: 1.25rem;     // 20px
+
+  // Font Weights
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // Line Heights
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-relaxed: 1.625;
+
+  // Shadows
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 4px 6px rgba(0, 0, 0, 0.07), 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  // Icon Sizes
+  --size-icon-md: 1.5rem;  // 24px
+
+  // Transitions
+  --transition-all: all 0.2s ease;
+  --transition-colors: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  --transition-transform: transform 0.2s ease;
+  --transition-slow: 0.3s;
 
   // Font Configuration
   --bs-font-sans-serif: 'Poppins', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif;
@@ -27,9 +107,29 @@
 [data-theme='dark'] {
   --ifm-color-primary: #82aaff;
   --near-color-royal: #82aaff;
+  --near-brand-primary: #82aaff;
+  --near-brand-primary-100: #1a2942;
+  --near-brand-primary-200: #2d4466;
+  --near-brand-primary-600: #5b7acc;
   --ifm-background-color: #000000;
   --ifm-background-surface-color: #111111;
   --icon-svg-color: #20bd5a;
+
+  // Dark theme color overrides
+  --color-bg-surface: #1e293b;
+  --color-bg-subtle: #334155;
+  --color-bg-primary: #1e293b;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-tertiary: #94a3b8;
+  --color-text-inverse: #0f172a;
+  --color-border-primary: #475569;
+  --color-border-secondary: #64748b;
+  --color-border-focus: #82aaff;
+
+  // Dark theme shadows
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.3);
 
   hr {
     background-color: #2d2d2d;
@@ -104,11 +204,11 @@ h2 {
 }
 
 h3 {
-  margin: 1.75em 0 0.5em 0 !important;
+  margin: 1.75em 0 0.5em 0;
 }
 
 h4 {
-  margin: 2em 0 0.5em 0 !important;
+  margin: 2em 0 0.5em 0;
 }
 
 /* Add an indicator after external links that'll open in a new window. */

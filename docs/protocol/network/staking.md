@@ -6,7 +6,7 @@ description: "Complete guide to staking NEAR tokens, including delegation to val
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";

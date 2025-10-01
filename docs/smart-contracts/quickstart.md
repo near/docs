@@ -5,7 +5,7 @@ sidebar_label: Quickstart
 description: "Quick tutorial to create your first NEAR smart contract in JavaScript, Rust, or Python - build, test, and deploy a Hello World contract to NEAR testnet."
 ---
 
-import {Github} from '@site/src/components/codetabs';
+import {Github} from '@site/src/components/UI/Codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';

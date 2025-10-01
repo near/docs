@@ -3,7 +3,7 @@ id: wallet-selector
 title: Wallet Selector Tutorial
 description: "Enable users to sign-in using their NEAR wallet with the Wallet Selector"
 ---
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

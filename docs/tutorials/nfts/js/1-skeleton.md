@@ -4,7 +4,7 @@ title: Skeleton and JavaScript Architecture
 sidebar_label: Contract Architecture
 description: "> In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this _\"Zero to Hero\"_ series."
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 > In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this _"Zero to Hero"_ series.
 > You'll discover the contract's layout and you'll see how the JavaScript files are structured in order to build a feature-complete smart contract.

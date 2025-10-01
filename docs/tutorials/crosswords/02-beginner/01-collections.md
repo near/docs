@@ -4,7 +4,7 @@ sidebar_label: Store multiple puzzles
 title: Store multiple crossword puzzles using a specialized collection in NEAR called a LookupMap
 description: "In this chapter, we will add a new crossword puzzle to our smart contract. We will provide the necessary clues and answers, deploy the updated contract, and ensure that the new puzzle is correctly added to the collection."
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 import bookPagination from '/docs/assets/crosswords/paging-through-hashes-swing--pierced_staggg.near--pierced_stag.jpg';
 import guardsAroundContract from '/docs/assets/crosswords/guards-contract-permissions--connoisseur_dane.near--connoisseurdane.png';

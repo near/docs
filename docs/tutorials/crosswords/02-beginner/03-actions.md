@@ -4,7 +4,7 @@ sidebar_label: Actions and sending NEAR
 title: There are several Actions an account can do, including sending the winner of the crossword puzzle NEAR using the Transfer Action
 description: "We're going to introduce a new Action: Transfer. In this chapter, we'd like the first person to solve the crossword puzzle to earn some prize money, sent in NEAR."
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 import allActions from '/docs/assets/crosswords/crossword-actions.png';
 import transferNEAR from '/docs/assets/crosswords/transfer-brand-blue--qiqi04.near--blankworl.png';

@@ -4,7 +4,7 @@ title: Enumeration
 sidebar_label: Enumeration
 description: "In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
