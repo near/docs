@@ -199,7 +199,7 @@ The reason to not raise an error, is because we are changing the state (removing
 
 ## Managing State
 
-When using yield and resume, it's important that you carefully manage the contract's state. Because of its asynchronous execution, the yield and the resume happen, and are finalized in separate blocks.
+When using yield and resume, it's important that you carefully manage the contract's state. Because of its asynchronous execution, the contract function in which the contract yields and resumes are independent.
 
 If you change the state of the contract in the function where you yield the promise (the `request` function here), then you need to make sure that you revert the state in the function that resumes (the `return_external_response` function here) in the case that the promise times out or the response is invalid.
 
