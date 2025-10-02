@@ -444,7 +444,7 @@ const sidebar = {
         {
           type: 'link',
           label: 'Introduction',
-          href: 'data-infrastructure/what-is',
+          href: '/data-infrastructure/what-is',
         },
         {
           "Concepts": [
