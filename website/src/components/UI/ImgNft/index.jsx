@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import RoundedImage from './RoundedImage';
 
-export const NftImage = ({ nft }) => {
+export const ImgNft = ({ nft }) => {
   //   const { wallet } = useWalletSelector();
   const [imageUrl, setImageUrl] = useState('');
 
@@ -28,3 +28,5 @@ export const NftImage = ({ nft }) => {
 
   return <RoundedImage src={imageUrl} alt={nft?.metadata?.title || ''} />;
 };
+
+export const NftImage = ImgNft;

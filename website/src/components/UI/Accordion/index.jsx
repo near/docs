@@ -12,9 +12,24 @@ const Accordion = ({ title, detail }) => {
 
   useEffect(() => {
     if (contentRef.current) {
-      setMaxHeight(isOpen ? contentRef.current.scrollHeight : 0);
+      // Use a small delay to ensure content is fully rendered
+      const updateHeight = () => {
+        if (contentRef.current) {
+          setMaxHeight(isOpen ? contentRef.current.scrollHeight : 0);
+        }
+      };
+      
+      if (isOpen) {
+        // Initial update
+        updateHeight();
+        // Update again after a short delay to catch any dynamic content
+        const timer = setTimeout(updateHeight, 100);
+        return () => clearTimeout(timer);
+      } else {
+        setMaxHeight(0);
+      }
     }
-  }, [isOpen]);
+  }, [isOpen, detail]);
 
   return (
     <div className={styles.accordion}>

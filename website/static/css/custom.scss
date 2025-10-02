@@ -22,6 +22,10 @@
   --color-danger: #dc2626;
   --color-danger-hover: #b91c1c;
   --color-danger-active: #991b1b;
+  
+  // Success Colors
+  --color-success: #22c55e;
+  --color-success-dark: #16a34a;
 
   // Color System
   --color-bg-surface: #ffffff;
@@ -38,6 +42,7 @@
   // Spacing System
   --space-1: 0.25rem;   // 4px
   --space-2: 0.5rem;    // 8px
+  --space-3: 0.75rem;   // 12px
   --space-4: 1rem;      // 16px
   --space-5: 1.25rem;   // 20px
   --space-6: 1.5rem;    // 24px
@@ -58,9 +63,11 @@
   --radius-md: 0.375rem;   // 6px
   --radius-card: 0.75rem;  // 12px
   --radius-full: 9999px;
+  --radius-circle: 50%;
 
   // Borders
   --border-card: 1px solid var(--color-border-primary);
+  --border-1: 1px;
   --border-2: 2px;
   --border-solid: solid;
 
@@ -72,18 +79,28 @@
   --text-xl: 1.25rem;     // 20px
 
   // Font Weights
+  --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
   // Line Heights
   --leading-tight: 1.25;
+  --leading-normal: 1.5;
   --leading-snug: 1.375;
   --leading-relaxed: 1.625;
 
   // Shadows
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
   --shadow-card-hover: 0 4px 6px rgba(0, 0, 0, 0.07), 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  // Tooltip
+  --color-tooltip-bg: #1e293b;
+  --color-tooltip-text: #ffffff;
+
+  // Z-index
+  --z-tooltip: 1000;
 
   // Icon Sizes
   --size-icon-md: 1.5rem;  // 24px
@@ -92,6 +109,7 @@
   --transition-all: all 0.2s ease;
   --transition-colors: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
   --transition-transform: transform 0.2s ease;
+  --transition-fast: 0.15s ease;
   --transition-slow: 0.3s;
 
   // Font Configuration
@@ -130,6 +148,11 @@
   // Dark theme shadows
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
   --shadow-card-hover: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+
+  // Dark theme tooltip
+  --color-tooltip-bg: #f1f5f9;
+  --color-tooltip-text: #1e293b;
 
   hr {
     background-color: #2d2d2d;

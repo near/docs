@@ -3,7 +3,10 @@ import styles from './CreateNFTDrop.module.scss';
 import { NEAR } from '@near-js/tokens';
 import { generateAndStore } from '../hooks/useLinkdrops';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
-import { NftImage } from '../Shared/NTFImage';
+import { ImgNft } from '../../UI/ImgNft';
+import Card from '../../UI/Card';
+import Button from '../../UI/Button';
+import Input from '../../UI/Input';
 
 const KEYPOM_CONTRACT_ADDRESS = 'v2.keypom.testnet';
 
@@ -156,20 +159,17 @@ const CreateNFTDrop = ({ user_collections, reload }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <Card className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Token Drop name</label>
-          <input
-            type="text"
-            className={styles.input}
-            placeholder="NEARCon Token Giveaway"
-            value={formData.dropName}
-            onChange={(e) => handleInputChange('dropName', e.target.value)}
-            disabled={!signedAccountId}
-          />
-          {errors.dropName && <div className={styles.error}>{errors.dropName}</div>}
-        </div>
+        <Input
+          id="drop-name"
+          label="Token Drop name"
+          placeholder="NEARCon Token Giveaway"
+          value={formData.dropName}
+          onChange={(e) => handleInputChange('dropName', e.target.value)}
+          disabled={!signedAccountId}
+          error={errors.dropName}
+        />
 
         <div className={styles.formGroup}>
           <div className={styles.text}>Please select one of your NFTs to drop:</div>
@@ -196,7 +196,7 @@ const CreateNFTDrop = ({ user_collections, reload }) => {
                             }`}
                             onClick={() => selectNft(nft)}
                           >
-                            <NftImage nft={nft}/>
+                            <ImgNft nft={nft}/>
                             <div className={styles.nftTitle}>
                               {nft?.metadata?.title || 'Untitled'}
                             </div>
@@ -214,39 +214,36 @@ const CreateNFTDrop = ({ user_collections, reload }) => {
           </div>
         </div>
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>NFT contract address</label>
-          <input
-            type="text"
-            className={styles.input}
-            placeholder="Select a Token"
-            value={formData.contractId}
-            disabled
-          />
-          {errors.contractId && <div className={styles.error}>{errors.contractId}</div>}
-        </div>
+        <Input
+          id="contract-id"
+          label="NFT contract address"
+          placeholder="Select a Token"
+          value={formData.contractId}
+          disabled
+          error={errors.contractId}
+        />
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Token ID</label>
-          <input
-            type="text"
-            className={styles.input}
-            placeholder="Select a Token"
-            value={formData.tokenId}
-            disabled
-          />
-          {errors.tokenId && <div className={styles.error}>{errors.tokenId}</div>}
-        </div>
+        <Input
+          id="token-id"
+          label="Token ID"
+          placeholder="Select a Token"
+          value={formData.tokenId}
+          disabled
+          error={errors.tokenId}
+        />
 
-        <button
+        <Button
+          className='margin-top--md'
           type="submit"
-          className={`${styles.button} ${styles.primary} ${isSubmitting ? styles.loading : ''}`}
+          variant="primary"
+          fullWidth
+          loading={isSubmitting}
           disabled={!signedAccountId || isSubmitting}
         >
           Create Drop
-        </button>
+        </Button>
       </form>
-    </div>
+    </Card>
   );
 };
 

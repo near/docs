@@ -1,8 +1,3 @@
-// ============================================================================
-// BUTTON COMPONENT
-// Uses CSS variables from custom.scss
-// ============================================================================
-
 .button {
   // Base styles
   display: inline-flex;
@@ -37,6 +32,10 @@
   &:active:not(:disabled) {
     transform: scale(0.98);
   }
+
+  &[target="_blank"]::after {
+    content: none;
+  }
 }
 
 // ============================================================================
@@ -68,7 +67,7 @@
 // Primary Button
 .button--primary {
   background: var(--near-brand-primary);
-  color: var(--color-text-inverse);
+  color: var(--color-text-inverse)!important;
   border-color: var(--near-brand-primary);
   
   &:hover:not(:disabled) {

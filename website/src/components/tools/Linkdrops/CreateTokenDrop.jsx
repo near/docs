@@ -4,6 +4,9 @@ import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { toast } from 'react-toastify';
 import { generateAndStore } from '../hooks/useLinkdrops';
 import { NEAR } from '@near-js/tokens';
+import Card from '../../UI/Card';
+import Button from '../../UI/Button';
+import Input from '../../UI/Input';
 
 const KEYPOM_CONTRACT_ADDRESS = 'v2.keypom.testnet';
 
@@ -169,29 +172,24 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
 
   if (!selectedToken) {
     return (
-      <div className={styles.container}>
-        <div className={styles.form}>
-          <p>No tokens available. Please connect your wallet and ensure you have tokens.</p>
-        </div>
-      </div>
+      <Card className={styles.container}>
+        <p>No tokens available. Please connect your wallet and ensure you have tokens.</p>
+      </Card>
     );
   }
 
   return (
-    <div className={styles.container}>
+    <Card className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Token Drop name</label>
-          <input
-            type="text"
-            className={styles.input}
-            placeholder="NEARCon Token Giveaway"
-            value={formData.dropName}
-            onChange={(e) => handleInputChange('dropName', e.target.value)}
-            disabled={!signedAccountId || isSubmitting}
-          />
-          {errors.dropName && <div className={styles.error}>{errors.dropName}</div>}
-        </div>
+        <Input
+          id="drop-name"
+          label="Token Drop name"
+          placeholder="NEARCon Token Giveaway"
+          value={formData.dropName}
+          onChange={(e) => handleInputChange('dropName', e.target.value)}
+          disabled={!signedAccountId || isSubmitting}
+          error={errors.dropName}
+        />
 
         <div className={styles.formGroup}>
           <label className={styles.label}>Select Token</label>
@@ -209,48 +207,45 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
           </select>
         </div>
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Amount per link</label>
-          <input
-            type="number"
-            className={styles.input}
-            placeholder="Enter an amount"
-            value={formData.amountPerLink}
-            onChange={(e) => handleInputChange('amountPerLink', parseFloat(e.target.value) || 0)}
-            disabled={!signedAccountId || isSubmitting}
-            min="0"
-            step="any"
-          />
-          <div className={styles.assistiveText}>
-            {formatBalance(selectedToken.balance, selectedToken.metadata?.decimals)} available
-          </div>
-          {errors.amountPerLink && <div className={styles.error}>{errors.amountPerLink}</div>}
-        </div>
+        <Input
+          id="amount-per-link"
+          type="number"
+          label="Amount per link"
+          placeholder="Enter an amount"
+          value={formData.amountPerLink}
+          onChange={(e) => handleInputChange('amountPerLink', parseFloat(e.target.value) || 0)}
+          disabled={!signedAccountId || isSubmitting}
+          min="0"
+          step="any"
+          helperText={`${formatBalance(selectedToken.balance, selectedToken.metadata?.decimals)} available`}
+          error={errors.amountPerLink}
+        />
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Number of links</label>
-          <input
-            type="number"
-            className={styles.input}
-            placeholder="1 - 30"
-            value={formData.numberLinks}
-            onChange={(e) => handleInputChange('numberLinks', parseInt(e.target.value) || 1)}
-            disabled={!signedAccountId || isSubmitting}
-            min="1"
-            max="30"
-          />
-          {errors.numberLinks && <div className={styles.error}>{errors.numberLinks}</div>}
-        </div>
+        <Input
+          id="number-of-links"
+          type="number"
+          label="Number of links"
+          placeholder="1 - 30"
+          value={formData.numberLinks}
+          onChange={(e) => handleInputChange('numberLinks', parseInt(e.target.value) || 1)}
+          disabled={!signedAccountId || isSubmitting}
+          min="1"
+          max="30"
+          error={errors.numberLinks}
+        />
 
-        <button
+        <Button
+          className='margin-top--md'
           type="submit"
-          className={`${styles.button} ${isSubmitting ? styles.loading : ''}`}
+          variant="primary"
+          fullWidth
+          loading={isSubmitting}
           disabled={!signedAccountId || isSubmitting}
         >
-          {isSubmitting ? '' : 'Create Drop'}
-        </button>
+          Create Drop
+        </Button>
       </form>
-    </div>
+    </Card>
   );
 };
 

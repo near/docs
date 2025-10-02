@@ -2,6 +2,9 @@ import { useState, useCallback, useEffect } from 'react';
 import styles from './MintNFT.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { toast } from 'react-toastify';
+import Button from '../../UI/Button';
+import Input from '../../UI/Input';
+import Card from '../../UI/Card';
 
 const NFT_CONTRACT = 'nft.primitives.testnet'
 const MAX_FILE_SIZE = 3 * 1024 * 1024;
@@ -179,21 +182,19 @@ const MintNFT = ({ reload }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="title">Title</label>
-          <input
-            id="title"
-            type="text"
-            className={styles.input}
-            placeholder="Enter title"
-            value={formData.title}
-            onChange={(e) => handleInputChange('title', e.target.value)}
-            disabled={!signedAccountId}
-          />
-          {errors.title && <div className={styles.error}>{errors.title}</div>}
-        </div>
+    <Card className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <Input
+          id="title"
+          type="text"
+          label="Title"
+          placeholder="Enter title"
+          value={formData.title}
+          onChange={(e) => handleInputChange('title', e.target.value)}
+          disabled={!signedAccountId}
+          error={errors.title}
+          fullWidth
+        />
 
         <div className={styles.formGroup}>
           <label className={styles.label} htmlFor="description">Description</label>
@@ -235,13 +236,14 @@ const MintNFT = ({ reload }) => {
         </div>
 
         {!signedAccountId ? (
-          <button
+          <Button
             type="button"
             onClick={signIn}
-            className={`${styles.button} ${styles.primary}`}
+            variant="primary"
+            fullWidth
           >
             Connect Wallet
-          </button>
+          </Button>
         ) : (
           <div>
             {step === 'ready-to-mint' && (
@@ -254,17 +256,19 @@ const MintNFT = ({ reload }) => {
                 </div>
               </div>
             )}
-            <button
+            <Button
               type="submit"
-              className={`${styles.button} ${styles.primary} ${(isLoadingPreview || isSubmitting) ? styles.loading : ''} ${step === 'ready-to-mint' ? styles.confirm : ''}`}
+              variant={step === 'ready-to-mint' ? 'success' : 'primary'}
+              fullWidth
+              loading={isLoadingPreview || isSubmitting}
               disabled={isLoadingPreview || isSubmitting}
             >
               {getButtonText()}
-            </button>
+            </Button>
           </div>
         )}
       </form>
-    </div>
+    </Card>
   );
 };
 
