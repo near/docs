@@ -1,6 +1,6 @@
 ---
 sidebar_label: Token Transfer
-description: "Learn how NEAR tokens are transferred, including cross-shard flows, gas refunds, and receipt-based execution."
+description: "Learn all steps involved on a token transfer."
 ---
 
 This section explains the flow of token transfers in the NEAR Protocol, detailing how tokens are moved between accounts, the role of receipts, and the importance of gas refunds in the process.
