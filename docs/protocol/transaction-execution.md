@@ -1,7 +1,7 @@
 ---
 id: transaction-execution
 title: Lifecycle of a Transaction
-description: "Learn how NEAR transactions are executed, processed, and finalized, including cross-contract calls and status handling."
+description: "Learn how NEAR transactions are executed and finalized"
 ---
 
 `Transactions` are constructed by users to express the intent of performing actions in the network. Once in the network, transactions are converted into `Receipts`, which are messages exchanged between network nodes.
