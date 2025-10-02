@@ -2,7 +2,7 @@
 id: functions
 title: External Interface
 hide_table_of_contents: true
-description: "Learn how smart contracts expose functions: read-only, private, payable, and state-changing methods."
+description: "Learn how to define your contract's interface."
 ---
 
 import Tabs from '@theme/Tabs';
