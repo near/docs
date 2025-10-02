@@ -1,7 +1,7 @@
 ---
-id: near-lake-state-changes-indexer
-title: NEAR Lake Indexer Tutorial
-description: "Learn how to build a simple indexer using the NEAR Lake Framework."
+id: state-changes
+title: Intercept State Changes
+description: "This tutorial will guide you through building a simple indexer using the NEAR Lake Framework. The indexer will listen for StateChange events and print relevant data about account changes."
 ---
 
 This tutorial will guide you through building a simple indexer using the NEAR Lake Framework. The indexer will listen for `StateChange` events and print relevant data about account changes.
