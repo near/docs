@@ -1,7 +1,7 @@
 ---
 id: crosscontract
 title: Cross-Contract Calls
-description: "Learn cross-contract calls on NEAR to interact asynchronously between contracts and handle callbacks."
+description: "Contract can interact with other contracts on the network"
 ---
 
 import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
