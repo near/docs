@@ -2,7 +2,7 @@
 id: networks
 title: NEAR Networks
 sidebar_label: Networks
-description: "Explore NEAR networks, from production-ready mainnet to testnet and localnet for development and testing."
+description: "Explore the different networks available in NEAR"
 ---
 
 NEAR Protocol operates on several networks, each with its own independent validators and unique state. These networks are designed to serve different purposes, from production-ready applications to testing and development environments.
