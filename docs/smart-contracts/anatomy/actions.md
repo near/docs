@@ -1,7 +1,7 @@
 ---
 id: actions
 title: Transfers & Actions
-description: "Learn how NEAR smart contracts perform actions like transferring NEAR, calling contracts, creating sub-accounts, deploying contracts, and managing access keys"
+description: "Learn how contracts can make transfers, call other contracts, and more"
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
