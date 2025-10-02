@@ -22,17 +22,17 @@ You can learn more about global contracts on NEAR [here](../../smart-contracts/g
 
 The factory is a smart contract that:
 
-1. Creates sub-accounts of itself and deploys its contract on them (`deploy`).
-2. Can manage its settings using the `update_global_contract_id` and `update_min_deposit` methods.
+1. Creates sub-accounts of itself and deploys its contract on them (`deploy`)
+2. Can update the contract it deploys
 
 <CodeTabs>
   <Language value="rust" language="rust">
     <Github fname="deploy.rs"
-            url="https://github.com/near-examples/factory-rust/blob/add-global-contracts/src/lib.rs"
-            start="54" end="93" />
+            url="https://github.com/near-examples/factory-rust/blob/main/src/lib.rs"
+            start="35" end="75" />
     <Github fname="manager.rs"
-            url="https://github.com/near-examples/factory-rust/blob/add-global-contracts/src/manager.rs"
-            start="7" end="23" />
+            url="https://github.com/near-examples/factory-rust/blob/main/src/manager.rs"
+            start="8" end="11" />
   </Language>
 </CodeTabs>
 

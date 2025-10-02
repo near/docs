@@ -120,6 +120,14 @@ a[target="_blank"]::after {
   vertical-align: text-top;
 }
 
+a.menu__link[target="_blank"]::after {
+  display: inherit;
+}
+
+a.cover-card[target="_blank"]::after {
+  display: none;
+}
+
 // ============================================================================
 // LANDING PAGE STYLES
 // ============================================================================
@@ -136,7 +144,7 @@ a[target="_blank"]::after {
 }
 
 .landing-intro h1 {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 700;
   margin: 0 auto 1.5rem auto;
   background: linear-gradient(135deg, #5f8afa 0%, #22c55e 100%);
@@ -149,19 +157,19 @@ a[target="_blank"]::after {
 }
 
 .landing-underline {
-  width: 120px;
-  height: 4px;
+  width: 80px;
+  height: 2px;
   background: linear-gradient(135deg, #5f8afa 0%, #22c55e 100%);
-  margin: 2rem auto 0 auto;
-  border-radius: 2px;
+  margin: 1.5rem auto 0 auto;
+  border-radius: 1px;
 }
 
 .landing-hero,
 .landing-footer {
   text-align: center;
   padding: 3rem 2rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, var(--ifm-background-color) 100%);
-  border-radius: 16px;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
   border: 1px solid var(--ifm-color-emphasis-200);
 }
 
@@ -171,11 +179,8 @@ a[target="_blank"]::after {
 
 .landing-hero h1,
 .landing-footer h2 {
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
 }
 
 .landing-hero h1 {
@@ -264,25 +269,17 @@ article {
 // Landing page footer section
 .landing-footer {
   text-align: center;
-  padding: 5rem 2rem;
-  margin: 5rem auto 0 auto;
-  background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, var(--ifm-background-color) 100%);
-  border-radius: 24px;
+  padding: 4rem 2rem;
+  margin: 4rem auto 0 auto;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
   border: 1px solid var(--ifm-color-emphasis-200);
   position: relative;
-  overflow: hidden;
   max-width: 1000px;
 }
 
 .landing-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(95, 138, 250, 0.05) 0%, transparent 70%);
-  pointer-events: none;
+  display: none;
 }
 
 .landing-footer>* {
@@ -292,22 +289,15 @@ article {
 
 // landing footer dark
 [data-theme='dark'] .landing-footer {
-  background: linear-gradient(135deg, var(--ifm-background-surface-color) 0%, var(--ifm-background-color) 100%);
+  background: var(--ifm-background-surface-color);
   border-color: var(--ifm-color-emphasis-300);
 }
 
-[data-theme='dark'] .landing-footer::before {
-  background: radial-gradient(circle at 50% 50%, rgba(130, 170, 255, 0.03) 0%, transparent 70%);
-}
-
 .landing-footer h2 {
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 600;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: var(--ifm-heading-color);
   line-height: 1.2;
 }
 
@@ -327,14 +317,14 @@ article {
 }
 
 .landing-cta .button {
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
   text-decoration: none;
-  border: 2px solid transparent;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .landing-cta .button--primary {
@@ -343,8 +333,9 @@ article {
 }
 
 .landing-cta .button--primary:hover {
-  border-color: var(--ifm-color-primary-dark);
-  transform: translateY(-3px);
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 // ============================================================================
@@ -408,9 +399,9 @@ li>ul {
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  border-color: var(--ifm-color-primary-lighter);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-color: var(--ifm-color-emphasis-300);
 }
 
 [data-theme='dark'] .card {
@@ -463,8 +454,8 @@ li>ul {
 }
 
 .card--icon:hover .card__icon {
-  transform: scale(1.05);
-  border-color: var(--ifm-color-primary);
+  transform: scale(1.02);
+  border-color: var(--ifm-color-emphasis-400);
 }
 
 [data-theme='dark'] .card__icon {
@@ -524,16 +515,16 @@ li>ul {
 .card__links a {
   display: inline-block;
   padding: 0.25rem 0.5rem;
-  border-radius: 6px;
+  border-radius: 4px;
   text-decoration: none;
   color: var(--ifm-color-primary);
   font-weight: 500;
   transition: all 0.2s ease;
 
   &:hover {
-    transform: translateX(4px);
+    transform: translateX(2px);
     text-decoration: none;
-    color: var(--near-color-royal);
+    color: var(--ifm-color-primary-dark);
   }
 }
 
@@ -627,12 +618,30 @@ html:not(.blog-post-page) .avatar__photo {
   border-radius: 0%;
 }
 
-img+em {
+img+em, .monaco+em {
   font-style: normal;
   display: inherit;
   text-align: center;
   font-size: 90%;
   margin: 0.5em 0 2rem 0;
+}
+
+// ============================================================================
+// SECTION STYLES
+// ============================================================================
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 4rem 0 2rem 0;
+  color: var(--ifm-heading-color);
+}
+
+.subsection {
+  width: 50%;
+  margin: 2.5em auto;
+  height: 0.5px;
 }
 
 // ============================================================================
@@ -767,6 +776,32 @@ div[class^='announcementBar_'] {
   font-weight: 600;
 }
 
+// ============================================================================
+// CODE EXPLAINER
+// ============================================================================
+.col-blocks {
+  --ifm-col-width: calc(4.5 / 12 * 100%) !important;
+  padding-right: 0;
+}
+
+.col-files {
+  --ifm-col-width: calc(7.5 / 12 * 100%) !important;
+}
+.block-selected {
+  border-left: 2px solid var(--near-color-royal) !important;
+}
+
+.block {
+  font-size: 0.95em;
+  text-align: justify;
+  padding: 0 0.8em 0 1em !important;
+  border-left: 2px solid #eee;
+}
+
+.block:hover {
+  border-left: 2px solid #c4ebfb;
+  cursor: pointer;
+}
 
 // ============================================================================
 // NEWSLETTER PAGE STYLES (Minimal)

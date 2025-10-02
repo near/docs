@@ -5,7 +5,7 @@ sidebar_label: Create a Transaction
 description: "Learn how to create, sign, and send transactions on NEAR protocol, including transaction structure, actions, and best practices for integration."
 ---
 
-To construct & process transactions you will need our API JavaScript library: [`near-api-js`](/web3-apps/integrate-contracts). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.
+To construct & process transactions you will need our API JavaScript library: [`near-api-js`](../tools/near-api.md). There are many ways to create transactions but for this example we'll show you two ways to create a simple token transfer transaction.
 
 - [HIGH LEVEL](#high-level----create-a-transaction) - _easiest way to create a transaction_
 - [LOW LEVEL](#low-level----create-a-transaction) - _performs the exact same transaction as above, but deconstructs the entire process for those curious about each step_
