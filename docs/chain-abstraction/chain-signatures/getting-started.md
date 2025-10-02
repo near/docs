@@ -1,7 +1,7 @@
 ---
 id: getting-started
 title: Getting Started with Chain Signatures
-description: "Learn how to start using Chain Signatures on NEAR to sign and execute cross-chain transactions."
+description: "Learn how to sign and execute cross-chain transactions"
 ---
 
 Chain Signatures is a groundbreaking technology built on NEAR that enables all accounts, including smart contracts, to sign and execute transactions across multiple blockchains.

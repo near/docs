@@ -1,7 +1,7 @@
 ---
 id: implementation
 title: Implementing Chain Signatures
-description: "Learn how to implement Chain Signatures for NEAR accounts to sign transactions across multiple blockchains."
+description: "Learn how to sign transactions across multiple blockchains."
 ---
 
 import Tabs from '@theme/Tabs';

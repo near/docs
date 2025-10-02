@@ -2,7 +2,7 @@
 id: how-it-works
 sidebar_label: How It Works
 title: How Omni Bridge Works
-description: "Learn how Omni Bridge uses Chain Signatures and MPC to enable secure, trustless cross-chain transfers."
+description: "Learn how Omni Bridge uses Chain Signatures to enable cross-chain transfers."
 ---
 
 The journey toward truly trustless cross-chain communication took a significant leap forward when the NEAR team [created the first trustless bridge with Ethereum](https://near.org/blog/the-rainbow-bridge-is-live) (Rainbow Bridge). This pioneering achievement demonstrated that completely trustless cross-chain communication was possible, marking a crucial step toward the vision of chain abstraction. However, this approach relied on implementing a NEAR light client directly on Ethereum - essentially requiring Ethereum to understand and verify NEAR's complex blockchain rules.

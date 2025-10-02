@@ -1,7 +1,7 @@
 ---
 id: build-on-aurora
 title: Build on Aurora
-description: "Learn how to build on Aurora with EVM compatibility, cross-chain apps, and user onboarding tools"
+description: "Learn how to build on Aurora, our EVM compatible chain"
 ---
 
 Developing your Dapp on Aurora is done in the same way as on any other EVM chain. The main steps in this process are:

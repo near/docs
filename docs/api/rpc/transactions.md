@@ -1,7 +1,7 @@
 ---
 id: transactions
 title: Transactions
-description: "Learn how to use the RPC API to send transactions, check status, retrieve receipts, and monitor execution."
+description: "Send transactions and query their status using the RPC"
 hide_table_of_contents: true
 ---
 

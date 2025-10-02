@@ -1,7 +1,7 @@
 ---
 id: what-is
 title: What is Aurora?
-description: "Learn what Aurora is: an EVM-compatible blockchain on NEAR enabling low-cost dApps, Aurora Cloud, and Rainbow Bridge."
+description: "Learn about our EVM-compatible blockchain on NEAR"
 ---
 
 [Aurora](https://aurora.dev/) is an EVM (Ethereum Virtual Machine) compatible blockchain and ecosystem, running as a decentralized layer 2 on the NEAR Protocol. It powers innovations such as Aurora Cloud, the infrastructure solution to onboard web2 businesses onto web3.

@@ -1,7 +1,7 @@
 ---
 id: block-chunk
 title: Block / Chunk
-description: "Learn how to query the NEAR RPC API to retrieve details about blocks and chunks."
+description: Learn how to retrieve details about blocks and chunks from the RPC
 hide_table_of_contents: true
 ---
 
