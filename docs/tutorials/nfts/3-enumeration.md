@@ -2,7 +2,7 @@
 id: enumeration
 title: Enumeration
 sidebar_label: Enumeration
-description: "In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the standard."
+description: "Extend your NFT smart contract with enumeration methods to track and query tokens."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

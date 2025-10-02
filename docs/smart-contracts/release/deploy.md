@@ -1,8 +1,8 @@
 ---
 id: deploy
-title: NEAR CLI - Basics
+title: Deploying
 sidebar_label: Deploying and Using
-description: "After your contract is ready you can deploy it in the NEAR network for everyone to use it."
+description: "Deploy a contract to the network."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

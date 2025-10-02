@@ -2,7 +2,7 @@
 id: implementation-details
 sidebar_label: Implementation Details
 title: Implementation Details
-description: "Learn about the technical implementation of Omni Bridge, including bridge token factory patterns, MPC signing, security models, and relayer networks for cross-chain transfers."
+description: "Explore Omni Bridge's technical architecture"
 ---
 
 The Omni Bridge is a sophisticated cross-chain bridge infrastructure that enables secure and efficient token transfers between NEAR Protocol and various other blockchain networks. This document provides a detailed technical overview of the bridge's architecture, covering its core components, security model, and operational mechanisms. By leveraging a combination of Multi-Party Computation (MPC), chain-specific light clients, and a permissionless relayer network, the bridge achieves a robust balance of security, decentralization, and user experience.

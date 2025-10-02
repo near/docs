@@ -2,7 +2,7 @@
 id: core
 title: Core
 sidebar_label: Core
-description: "In this tutorial you'll learn how to implement the core standards into your smart contract."
+description: "Learn how to implement the core standards into your smart contract."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

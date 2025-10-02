@@ -1,7 +1,7 @@
 ---
 id: block-chunk
 title: Block / Chunk
-description: "Query the network and get details about specific blocks or chunks using the NEAR RPC API, including block details, changes in blocks, and chunk information."
+description: Learn how to retrieve details about blocks and chunks from the RPC
 hide_table_of_contents: true
 ---
 

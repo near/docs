@@ -1,7 +1,7 @@
 ---
 id: data-services
 title: Existing Services
-description: "Indexers are services that are constantly listening to the blockchain, processing the transactions and storing them in a database that can be easily queried."
+description: "Indexers are constantly listening for transactions and storing them so they can be easily queried."
 ---
 
 Data Services are constantly listening to the blockchain, processing the transactions and storing them in a database that can be easily queried. You can use them to access blockchain data efficiently:
