@@ -1,7 +1,7 @@
 ---
 id: tokens
 title: Tokens
-description: "Learn about NEAR, the native token supporting network security, transaction fees, and ecosystem applications."
+description: "Learn about NEAR's native token and its role in the network"
 ---
 
 NEAR Protocol has a native token, NEAR (Ⓝ), which is used for various purposes within the ecosystem. This document provides an overview of the NEAR token, its use cases, and how it functions within the NEAR Protocol.
