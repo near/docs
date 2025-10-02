@@ -1,7 +1,7 @@
 ---
 id: network
 title: Network
-description: "Query node status, network connections, and active validators on the NEAR blockchain using RPC."
+description: "Query node status, network connections, and active validators using the RPC."
 hide_table_of_contents: true
 ---
 

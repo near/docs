@@ -1,7 +1,7 @@
 ---
 id: protocol
 title: Protocol
-description: "Learn how to retrieve the current genesis and protocol configuration with the NEAR RPC API."
+description: Learn how to retrieve the genesis and current protocol configurations
 hide_table_of_contents: true
 ---
 

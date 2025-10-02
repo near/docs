@@ -1,7 +1,7 @@
 ---
 id: providers
 title: RPC Providers
-description: "Discover reliable NEAR RPC providers for mainnet and testnet, with public endpoints, archival nodes, and failover options."
+description: "Discover NEAR RPC providers for mainnet and testnet"
 ---
 
 There are multiple RPC providers from which you can choose from. These providers will work as intermediaries to help you interact with the NEAR network.
