@@ -2,7 +2,7 @@
 id: did
 title: Decentralized Identifiers (DIDs)
 hide_table_of_contents: false
-description: "Learn how did:near enables decentralized identifiers, credential proofs, and W3C-compliant identity resolution on NEAR." 
+description: "Learn about W3C-compliant identity resolution on NEAR." 
 ---
 
 This document details how to use the `did:near` method for decentralized identifiers on the NEAR blockchain, how it complies with [W3C DID Core](https://www.w3.org/TR/did-core/), and how it integrates with verifiable credentials (VCs), proof registries, and resolution tooling.
