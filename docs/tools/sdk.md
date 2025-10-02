@@ -2,7 +2,7 @@
 id: sdk
 title: NEAR SDK
 hide_table_of_contents: false
-description: "Learn NEAR SDK for building smart contracts in Rust and JavaScript with examples and references."
+description: "Choose an SDK to start building contracts."
 ---
 
 import Tabs from '@theme/Tabs';

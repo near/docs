@@ -1,7 +1,7 @@
 ---
 id: advanced-xcc
 title: Complex Cross Contract Call
-description: "Learn advanced NEAR cross-contract calls, including batching, parallel execution, and callback handling."
+description: "Batching, parallel actions, and callback handling."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

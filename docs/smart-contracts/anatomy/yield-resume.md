@@ -1,7 +1,7 @@
 ---
 id: yield-resume
 title: Yield and Resume
-description: "Learn how NEAR smart contracts yield execution."
+description: "Wait for an external response and resume execution"
 ---
 import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
 import Tabs from '@theme/Tabs';

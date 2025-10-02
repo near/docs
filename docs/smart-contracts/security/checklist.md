@@ -1,7 +1,7 @@
 ---
 id: checklist
 title: ✅ Checklist
-description: "Learn how to secure NEAR smart contracts with a checklist of best practices and common safeguards."
+description: "Best practices for security and common safeguards."
 ---
 
 Once you finished developing your smart contract please go through the following list in order to ensure everything is safe for the end user.

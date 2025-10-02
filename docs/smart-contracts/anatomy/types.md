@@ -2,7 +2,7 @@
 id: types
 title: SDK Types
 hide_table_of_contents: true
-description: "Learn how NEAR smart contracts handle input, output, storage, and complex types across JS, Rust, Python."
+description: "Learn everything the SDK has to offer to efficiently store data."
 ---
 
 import Tabs from '@theme/Tabs';

@@ -2,7 +2,7 @@
 id: near-api
 title: NEAR API
 sidebar_label: NEAR API
-description: "Learn to use NEAR API SDKs in JavaScript, Rust, and Python to interact with blockchain."
+description: "Learn to use APIs in JavaScript, Rust, and Python to interact with the blockchain."
 ---
 
 import Tabs from '@theme/Tabs';

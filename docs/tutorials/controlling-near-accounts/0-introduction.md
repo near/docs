@@ -2,7 +2,7 @@
 id: introduction
 title: Controlling a NEAR account
 sidebar_label: Introduction
-description: "Learn to control a NEAR account securely using Multi-Party Computation (MPC) and Chain Abstraction."
+description: "Learn to control a NEAR account securely using Multi-Party Computation."
 ---
 
 Imagine acting on behalf of another Near account - without ever holding its private key. Sounds futuristic? It’s possible today, thanks to [Chain Abstraction and Multi-Party Computation (MPC)](../../chain-abstraction/what-is.md#chain-signatures), and this tutorial will walk you step-by-step through the entire process of transferring 0.1 NEAR on behalf of another Near account.

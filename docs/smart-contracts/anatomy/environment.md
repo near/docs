@@ -1,7 +1,7 @@
 ---
 id: environment
 title: Environment
-description: "Learn the NEAR smart contract environment, including caller info, balances, gas, timestamps, and useful functions."
+description: "Know which account called you, how much gas and tokens were attached, and more."
 ---
 
 import Tabs from '@theme/Tabs';

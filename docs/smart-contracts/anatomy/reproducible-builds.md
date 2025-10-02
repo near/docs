@@ -1,7 +1,7 @@
 ---
 id: reproducible-builds
 title: Reproducible Builds
-description: "Learn how reproducible builds help verify NEAR contracts produce identical outputs across different environments."
+description: "Create identical builds across different developer environments."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

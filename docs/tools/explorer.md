@@ -2,7 +2,7 @@
 id: explorer
 title: Explorer
 sidebar_label: Explorers
-description: "Learn how NEAR blockchain explorers let you track accounts, transactions, contracts, and blocks in real time."
+description: "Explore the chain through a Web UI."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

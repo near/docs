@@ -3,7 +3,7 @@ id: storage
 title: State
 sidebar_label: State (Storage)
 hide_table_of_contents: true
-description: "Explore how NEAR smart contracts manage their state, including initialization, storage of data, and the independent lifecycle of code and state."
+description: "Explore how NEAR smart contracts manage their state."
 ---
 
 import Tabs from '@theme/Tabs';

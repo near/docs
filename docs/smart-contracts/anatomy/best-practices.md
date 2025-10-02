@@ -1,7 +1,7 @@
 ---
 id: best-practices
 title: Best Practices
-description: "Learn how NEAR smart contracts transfer funds, call other contracts, create sub-accounts, deploy contracts, and manage keys."
+description: "A collection of best practices for writing smart contracts on NEAR."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

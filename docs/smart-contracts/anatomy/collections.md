@@ -1,7 +1,7 @@
 ---
 id: collections
 title: Collections
-description: "Learn NEAR's native and SDK collections to efficiently store, access, and manage smart contract data."
+description: "Efficiently store, access, and manage data in smart contracts."
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';

@@ -2,7 +2,7 @@
 id: introduction
 title: A Step-by-Step Guide to Mastering NEAR
 sidebar_label: Introduction
-description: "Learn the NEAR tech stack step by step and build Web3 apps, from smart contracts to frontends."
+description: "Build a full web3 app, from its contract to a frontend using indexers."
 ---
 
 import Tabs from '@theme/Tabs';

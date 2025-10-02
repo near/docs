@@ -2,7 +2,7 @@
 id: introduction
 title: Data APIs
 sidebar_label: Introduction
-description: "Learn about community-built Data APIs that let you query NEAR blockchain data without running an indexer."
+description: "Learn about Data APIs that let you query NEAR blockchain data without running an indexer."
 
 ---
 

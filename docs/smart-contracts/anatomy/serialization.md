@@ -1,7 +1,7 @@
 ---
 id: serialization
 title: Notes on Serialization
-description: "Learn how NEAR smart contracts serialize and deserialize data for efficient communication, storage, and state management using JSON and Borsh."
+description: "Learn how contract serialize data for function calls and storage."
 ---
 
 import Tabs from '@theme/Tabs';

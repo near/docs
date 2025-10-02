@@ -1,7 +1,7 @@
 ---
 id: near-cli
 title: NEAR CLI
-description: "Learn to use NEAR CLI to create accounts, manage keys, send tokens, deploy contracts, and interact with blockchain."
+description: "Interact with NEAR through the terminal."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

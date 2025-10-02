@@ -1,7 +1,7 @@
 ---
 id: coin-flip
 title: Coin Flip
-description: "Learn to build a coin flip game smart contract with randomness, betting mechanics, and reward distribution."
+description: "Learn to handle randomness on NEAR."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

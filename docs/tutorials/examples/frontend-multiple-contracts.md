@@ -1,8 +1,8 @@
 ---
 id: frontend-multiple-contracts
 title: Frontend Interacting with Multiple Contracts
-sidebar_label: Interact with Multiple Contracts
-description: "Learn how to build a frontend that interacts with multiple NEAR smart contracts simultaneously."
+sidebar_label: Use Multiple Contracts
+description: "Interact with multiple contracts in your frontend."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

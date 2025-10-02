@@ -1,7 +1,7 @@
 ---
 id: serialization-protocols
 title: Serialization Protocols
-description: "Learn how JSON and Borsh serialization protocols handle smart contract data for calls and on-chain storage."
+description: "Learn which protocols smart contracts use to serialize data."
 ---
 
 import {Github} from "@site/src/components/codetabs";

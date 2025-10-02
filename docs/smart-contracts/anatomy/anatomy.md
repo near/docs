@@ -2,7 +2,7 @@
 id: anatomy
 title: Basic Anatomy
 hide_table_of_contents: true
-description: "Learn how to structure a NEAR Hello World contract, including state, methods, and SDK usage."
+description: "Learn the basic anatomy of all smart contracts."
 ---
 
 import Tabs from '@theme/Tabs';

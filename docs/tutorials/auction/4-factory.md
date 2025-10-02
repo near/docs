@@ -2,7 +2,7 @@
 id: auction-factory
 title: Auction factory
 sidebar_label: Auction Factory
-description: "Learn how to use and modify a factory contract to deploy and initialize new auction contracts easily."
+description: "Create new auctions through a factory."
 ---
 
 import {Github, Language} from "@site/src/components/codetabs"
