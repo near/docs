@@ -2,9 +2,10 @@
 id: deploying
 title: Deploying an Agent
 sidebar_label: Deploying an Agent
-description: "Learn how to deploy Shade Agents to production environments with full contract customization and flexible architecture for real-world applications."
+description: "Learn how to quickly deploy your first Shade Agent."
 ---
 
+import { TryDemo } from '@site/src/components/TryDemo';
 import { SigsSupport } from '@site/src/components/sigsSupport';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,6 +13,11 @@ import TabItem from '@theme/TabItem';
 In this section, we'll walk you through deploying a Shade Agent. The Shade Agent Framework abstracts the complexities of creating a agent by removing TEE specific code and handling the deployment of the agent contract under hood.
 
 The [template](https://github.com/NearDeFi/shade-agent-template) we're using is a simple Shade Agent built with Hono and written in TypeScript that acts as a verifiable ETH price oracle. It fetches the price of Eth from two different APIs, takes the average, and then pushes the price to an Ethereum contract. 
+
+<TryDemo 
+  url="https://shade-agent-template-woad.vercel.app/" 
+  text="Try the live demo"
+/>
 
 We'll cover two deployment scenarios:
 1. **Local Development**: Running the agent locally for rapid testing and development.
@@ -22,13 +28,6 @@ On the [next page](./components.md), you'll see how to edit this agent for your 
 ---
 
 ## Prerequisites
-
-- First, `clone` the [template](https://github.com/NearDeFi/shade-agent-template).
-
-  ```bash
-  git clone https://github.com/NearDeFi/shade-agent-template
-  cd shade-agent-template
-  ```
 
 - Install NEAR and Shade Agent tooling:
 
@@ -43,7 +42,8 @@ On the [next page](./components.md), you'll see how to edit this agent for your 
 - Create a `NEAR testnet account` and record the account name and `seed phrase`:
 
   ```bash
-  near account create-account sponsor-by-faucet-service example-name.testnet autogenerate-new-keypair print-to-terminal network-config testnet create
+  export ACCOUNT_ID=example-name.testnet
+  near account create-account sponsor-by-faucet-service $ACCOUNT_ID autogenerate-new-keypair save-to-keychain network-config testnet create
   ```
 
   replacing `example-name.testnet` with a unique account Id.
@@ -60,13 +60,20 @@ On the [next page](./components.md), you'll see how to edit this agent for your 
 
 <summary> What is a Phala Cloud </summary>
 
-Phala Cloud is a service that offers secure and private hosting in a TEE using [Dstack](https://docs.phala.network/overview/phala-network/dstack). Phala Cloud makes it easy to run a TEE, that's why we use it in our template!
+Phala Cloud is a cloud service that supports hosting applications in a TEE. It makes it easy to run an agent in TEE.
 
 </details>
 
 ---
 
 ## Set up
+
+- First, `clone` the [template](https://github.com/NearDeFi/shade-agent-template).
+
+  ```bash
+  git clone https://github.com/NearDeFi/shade-agent-template
+  cd shade-agent-template
+  ```
 
 - Rename the `.env.development.local.example` file name to `.env.development.local` and configure your environment variables.
 
@@ -144,6 +151,8 @@ This technology has not yet undergone a formal audit. Please conduct your own du
 
   The last `URL` the CLI outputs is the URL of your app. If your application is not working, head over to your App on the Phala Dashboard and review the logs.
 
+  After deploying to Phala Cloud, monitor your deployments and delete unused ones to avoid unnecessary costs. You can manage your deployments from the[dashboard](https://cloud.phala.network/dashboard).
+
 ---
 
 ## Interacting with the Agent
@@ -154,13 +163,13 @@ You can interact with your agent via the APIs directly or via a lightweight fron
 
 For Phala deployments, swap localhost:3000 for your deployment URL.
 
-- Get the Agent account Id and its balance:
+- Get the Agent account ID and its balance:
 
   ```
   http://localhost:3000/api/agent-account
   ```
 
-- Get the derived Ethereum Sepolia price pusher account Id and its balance (you will need to fund this account):
+- Get the derived Ethereum Sepolia price pusher account ID and its balance (you will need to fund this account):
 
   ```
   http://localhost:3000/api/eth-account
@@ -183,5 +192,11 @@ npm run dev
 ```
 
 To use the frontend with your Phala deployment change the `API_URL` to Phala URL in your [config.js](https://github.com/NearDeFi/shade-agent-template/blob/main/frontend/src/config.js) file.
+
+--- 
+
+## Next Steps
+
+Now that you've successfully deployed your first Shade Agent, proceed to the [key components page](./components.md) to understand how agents work and learn how to customize it for your specific use case. 
 
 <SigsSupport />

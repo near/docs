@@ -154,18 +154,47 @@ const sidebar = {
           "Shade Agents": [
             {
               "Getting Started": [
-                'ai/shade-agents/quickstart/deploying',
-                "ai/shade-agents/quickstart/components",
+                "ai/shade-agents/introduction",
+                { "Quickstart": [
+                  "ai/shade-agents/quickstart/deploying",
+                  "ai/shade-agents/quickstart/components",
+                ]},
               ]
             },
             {
               "Concepts": [
-                "ai/shade-agents/introduction",
-                "ai/shade-agents/examples",
-                "ai/shade-agents/custom-agent-contract",
+                "ai/shade-agents/framework/overview",
+                "ai/shade-agents/what-can-you-build",
                 "ai/shade-agents/security",
+              ]
+            },
+            {
+              "Tutorials": [
+                "ai/shade-agents/examples/overview",
+                {
+                  "Quickstart": [
+                    'ai/shade-agents/quickstart/deploying',
+                    "ai/shade-agents/quickstart/components", 
+                  ]
+                },
+                {
+                  "AI DAO": [
+                    "ai/shade-agents/examples/ai-dao/overview",
+                    "ai/shade-agents/examples/ai-dao/dao-agent-contract",
+                    "ai/shade-agents/examples/ai-dao/dao-agent",
+                    "ai/shade-agents/examples/ai-dao/deploying",
+                  ]
+                }
+              ]
+            },
+            {
+              "Reference": [
+                "ai/shade-agents/framework/api",
+                "ai/shade-agents/framework/cli",
+                "ai/shade-agents/framework/environment-variables",
+                "ai/shade-agents/custom-agent-contract",
                 "ai/shade-agents/plugins",
-              ],
+              ]
             },
           ]
         },
