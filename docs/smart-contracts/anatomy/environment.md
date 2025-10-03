@@ -1,7 +1,7 @@
 ---
 id: environment
 title: Environment
-description: "The environment is a set of variables and functions that are available to your smart contract when it is executed. It provides information such as who called the method, how much money was attached to the call, and how many computational resources are available."
+description: "Know which account called you, how much gas and tokens were attached, and more."
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,7 +1,7 @@
 ---
 id: what-is
 title: What is Data Infrastructure?
-description: "Overview of NEAR's data infrastructure solutions including Data APIs, BigQuery Public Dataset, and NEAR Lake for accessing and monitoring on-chain data."
+description: "Explore NEAR's data infrastructure for accessing on-chain data"
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -34,7 +34,7 @@ A large dataset with on-chain data publicly available on Google Cloud Platform. 
 
 <hr subclass="subsection" />
 
-## [NEAR Lake](./lake-framework/near-lake.md)
+## [NEAR Lake](./near-lake-framework.md)
 A solution that watches over the NEAR network and stores all the events for your easy access.
 
 - Cost-efficient solution: Cost-efficient solution for building self-hosted indexers in Rust, JavaScript, Python, Go and other languages

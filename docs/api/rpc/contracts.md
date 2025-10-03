@@ -1,7 +1,7 @@
 ---
 id: contracts
 title: Accounts / Contracts
-description: "View details about accounts and contracts, check contract state and code, and perform contract function calls using NEAR RPC API."
+description: "Learn to query information from accounts and contracts using the RPC"
 hide_table_of_contents: true
 ---
 

@@ -2,7 +2,7 @@
 id: quickstart
 title: Your First Smart Contract
 sidebar_label: Quickstart
-description: "Quick tutorial to create your first NEAR smart contract in JavaScript, Rust, or Python - build, test, and deploy a Hello World contract to NEAR testnet."
+description: "Create your first contract using your favorite language."
 ---
 
 import {Github} from '@site/src/components/UI/Codetabs';

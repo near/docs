@@ -1,7 +1,7 @@
 ---
 sidebar_label: Start options
 id: lake-start-options
-description: "This tutorial will guide you through creating a simple indexer using the NEAR Lake Framework that can start from a specified block height, the latest final block, or the last indexed block."
+description: "Learn how to create an indexer using the NEAR Lake Framework."
 ---
 
 This tutorial will guide you through creating a simple indexer using the NEAR Lake Framework that can start from a specified block height, the latest final block, or the last indexed block.
@@ -34,11 +34,11 @@ There is another important side - the maintenance. This involves:
 
 Almost in all of the above cases you might want to start or restart your indexer not only from the specific block you need to provide, but from the block it was stopped, or from the latest final block in the network.
 
-[NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) doesn't provide such options. Actually, we didn't empower the library with these options to start indexer intentionally.
+[NEAR Lake Framework](/data-infrastructure/near-lake-framework) doesn't provide such options. Actually, we didn't empower the library with these options to start indexer intentionally.
 
 :::info Intent
 
-We want to keep [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) crate in the narrowest possible way. The goal for the library is to do a single job and allow it to be empowered with any features but outside of the crate itself
+We want to keep [NEAR Lake Framework](/data-infrastructure/near-lake-framework) crate in the narrowest possible way. The goal for the library is to do a single job and allow it to be empowered with any features but outside of the crate itself
 
 :::
 

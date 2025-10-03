@@ -1,14 +1,14 @@
 ---
 sidebar_label: Credentials
 id: credentials
-description: "To access the data provided by NEAR Lake you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage."
+description: "Learn how to provide AWS credentials to access NEAR Lake data"
 ---
 
-To access the data provided by [NEAR Lake](../near-lake.md) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
+To access the data provided by [NEAR Lake](../../near-lake-framework.md) you need to provide valid AWS credentials in order to be charged by the AWS for the S3 usage.
 
 :::info AWS credentials
 
-Please note that using your own AWS Credentials is the only way to access the data provided by [NEAR Lake](../near-lake.md) ecosystem.
+Please note that using your own AWS Credentials is the only way to access the data provided by [NEAR Lake](../../near-lake-framework.md) ecosystem.
 
 :::
 

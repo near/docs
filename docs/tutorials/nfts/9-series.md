@@ -2,7 +2,7 @@
 id: series
 title: Customizing the NFT Contract
 sidebar_label: Lazy Minting, Collections, and More!
-description: "In this tutorial, you'll learn how to take the existing NFT contract you've been working with and modify it to meet some of the most common needs in the ecosystem.This includes Lazy Minting NFTs, Creating Collections, Restricting Minting Access, and Highly Optimizing Storage, and hacking enumeration methods."
+description: "Learn how to create NFT series."
 ---
 import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';

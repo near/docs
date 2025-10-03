@@ -1,7 +1,7 @@
 ---
 id: near-drop
 title: Near Drop
-description: "NEAR Drop is a smart contract that allows users to create token drops ($NEAR, Fungible and Non-Fungible Tokens), and link them to specific private keys. Whoever has the private key can claim the drop into an existing account, or ask the contract to create a new one for them."
+description: "Learn how NEAR Drop enables token drops (NEAR, FT, NFT) claimable via private keys."
 ---
 
 import Tabs from '@theme/Tabs';

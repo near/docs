@@ -10,31 +10,6 @@ import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import BOSGetMetadata from "@site/src/components/docs/primitives/ft/bos/get-metadata.md"
-import BOSCheckBalance from "@site/src/components/docs/primitives/ft/bos/check-balance.md"
-import BOSSendToken from "@site/src/components/docs/primitives/ft/bos/send.md"
-import BOSRegister from "@site/src/components/docs/primitives/ft/bos/register.md"
-import BOSAttachTokenToCall from "@site/src/components/docs/primitives/ft/bos/attach-to-call.md"
-import BOSCreateToken from "@site/src/components/docs/primitives/ft/bos/create.md"
-
-import WebAppGetMetadata from "@site/src/components/docs/primitives/ft/web-app/get-metadata.md"
-import WebAppCheckBalance from "@site/src/components/docs/primitives/ft/web-app/check-balance.md"
-import WebAppSendToken from "@site/src/components/docs/primitives/ft/web-app/send.md"
-import WebAppRegister from "@site/src/components/docs/primitives/ft/web-app/register.md"
-import WebAppAttachTokenToCall from "@site/src/components/docs/primitives/ft/web-app/attach-to-call.md"
-import WebAppCreateToken from "@site/src/components/docs/primitives/ft/web-app/create.md"
-
-import CLIGetMetadata from "@site/src/components/docs/primitives/ft/near-cli/get-metadata.md"
-import CLICheckBalance from "@site/src/components/docs/primitives/ft/near-cli/check-balance.md"
-import CLISendToken from "@site/src/components/docs/primitives/ft/near-cli/send.md"
-import CLIRegister from "@site/src/components/docs/primitives/ft/near-cli/register.md"
-import CLIAttachTokenToCall from "@site/src/components/docs/primitives/ft/near-cli/attach-to-call.md"
-import CLICreateToken from "@site/src/components/docs/primitives/ft/near-cli/create.md"
-import CLICreateTokenManually from "@site/src/components/docs/primitives/ft/near-cli/create-manually.md"
-
-import SmartContractSendToken from "@site/src/components/docs/primitives/ft/smart-contract/send.md"
-import SmartContractAttachTokenToCall from "@site/src/components/docs/primitives/ft/smart-contract/attach-to-call.md"
-
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
@@ -73,10 +48,44 @@ Here is how to directly interact with the factory contract through your applicat
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppCreateToken />
+
+    ```js
+    import { Wallet } from './near-wallet';
+
+    const wallet = new Wallet({});
+
+    const args = {
+      args: {
+        owner_id: 'bob.near',
+        total_supply: '1000000000',
+        metadata: {
+          spec: 'ft-1.0.0',
+          name: 'Test Token',
+          symbol: 'test',
+          icon: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+          decimals: 18,
+        },
+      },
+      account_id: 'bob.near',
+    };
+
+    await wallet.callMethod({
+      method: 'create_token',
+      args,
+      contractId: 'tkn.primitives.near',
+      gas: 300000000000000,
+      deposit: '2234830000000000000000000',
+    });
+    ```
+
+  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLICreateToken />
+
+    ```bash
+    near call tkn.primitives.near create_token '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}' --gas 300000000000000 --depositYocto 2234830000000000000000000 --accountId bob.near
+    ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/2.build/5.primitives/ft/create-ft-via-factory.json" />
@@ -99,7 +108,25 @@ To initialize a FT contract you will need to deploy it and then call the `new` m
 
 <Tabs groupId="code-tabs">
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLICreateTokenManually />
+
+    ```bash
+    cargo near deploy build-non-reproducible-wasm <account-id> \
+      with-init-call new \
+      json-args '{
+        "owner_id": "<owner-account>",
+        "total_supply": "1000000000000000",
+        "metadata": {
+          "spec": "ft-1.0.0",
+          "name": "Example Token Name",
+          "symbol": "EXLT",
+          "decimals": 8
+        }
+      }' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain send
+    ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/2.build/5.primitives/ft/create-ft-manually.json" />
@@ -126,7 +153,6 @@ You can deploy a new Fungible Token using our global FT contract - a pre-deploye
       network-config testnet \
       sign-with-keychain send
     ```
-
   </TabItem>
   <TabItem value="hash" label="By Hash">
 
@@ -154,10 +180,65 @@ You can query the FT's metadata by calling the `ft_metadata`.
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppGetMetadata />
+
+  ```js
+  import { Wallet } from './near-wallet';
+
+  const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
+  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
+
+  await wallet.viewMethod({
+    method: 'ft_metadata',
+    args: {},
+    contractId: TOKEN_CONTRACT_ADDRESS,
+  });
+  ```
+
+  <details>
+  <summary>Example response</summary>
+  <p>
+
+  ```json
+  {
+    "spec": "ft-1.0.0",
+    "name": "Ref Finance Token",
+    "symbol": "REF",
+    "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='16 24 248 248' style='background: %23000'%3E%3Cpath d='M164,164v52h52Zm-45-45,20.4,20.4,20.6-20.6V81H119Zm0,18.39V216h41V137.19l-20.6,20.6ZM166.5,81H164v33.81l26.16-26.17A40.29,40.29,0,0,0,166.5,81ZM72,153.19V216h43V133.4l-11.6-11.61Zm0-18.38,31.4-31.4L115,115V81H72ZM207,121.5h0a40.29,40.29,0,0,0-7.64-23.66L164,133.19V162h2.5A40.5,40.5,0,0,0,207,121.5Z' fill='%23fff'/%3E%3Cpath d='M189 72l27 27V72h-27z' fill='%2300c08b'/%3E%3C/svg%3E%0A",
+    "reference": null,
+    "reference_hash": null,
+    "decimals": 18
+  }
+  ```
+
+  </p>
+  </details>
+
+  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLIGetMetadata />
+
+    ```bash
+    near view token.v2.ref-finance.near ft_metadata
+    ```
+
+  <details>
+  <summary>Example response</summary>
+  <p>
+
+    ```bash
+    {
+      spec: "ft-1.0.0",
+      name: "Ref Finance Token",
+      symbol: "REF",
+      icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='16 24 248 248' style='background: %23000'%3E%3Cpath d='M164,164v52h52Zm-45-45,20.4,20.4,20.6-20.6V81H119Zm0,18.39V216h41V137.19l-20.6,20.6ZM166.5,81H164v33.81l26.16-26.17A40.29,40.29,0,0,0,166.5,81ZM72,153.19V216h43V133.4l-11.6-11.61Zm0-18.38,31.4-31.4L115,115V81H72ZM207,121.5h0a40.29,40.29,0,0,0-7.64-23.66L164,133.19V162h2.5A40.5,40.5,0,0,0,207,121.5Z' fill='%23fff'/%3E%3Cpath d='M189 72l27 27V72h-27z' fill='%2300c08b'/%3E%3C/svg%3E%0A",
+      reference: null,
+      reference_hash: null,
+      decimals: 18
+    }
+    ```
+  </p>
+  </details>
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/2.build/5.primitives/ft/query-ft-metadata.json" />
@@ -171,10 +252,55 @@ To know how many coins a user has you will need to query the method `ft_balance_
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppCheckBalance />
+
+  :::info
+  Remember about fungible token precision. You may need this value to show a response of balance requests in an understandable-to-user way in your app. How to get precision value (decimals) you may find [here](#querying-metadata).
+  :::
+
+  ```js
+  import { Wallet } from './near-wallet';
+
+  const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
+  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
+
+  await wallet.viewMethod({
+    method: 'ft_balance_of',
+    args: {
+      account_id: 'bob.near',
+    },
+    contractId: TOKEN_CONTRACT_ADDRESS,
+  });
+  ```
+
+  <details>
+  <summary>Example response</summary>
+  <p>
+
+  ```json
+  "3479615037675962643842"
+  ```
+
+  </p>
+  </details>
+
+  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLICheckBalance />
+
+  ```bash
+  near view token.v2.ref-finance.near ft_balance_of '{"account_id": "bob.near"}'
+  ```
+
+  <details>
+  <summary>Example response</summary>
+  <p>
+
+  ```bash
+  '376224322825327177426'
+  ```
+  </p>
+  </details>
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/2.build/5.primitives/ft/check-ft-balance.json" />
@@ -190,10 +316,26 @@ By calling this `storage_deposit` the user can register themselves or **register
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppRegister />
+
+  ```js
+  await wallet.callMethod({
+    method: 'storage_deposit',
+    args: {
+      account_id: 'alice.near',
+    },
+    contractId: TOKEN_CONTRACT_ADDRESS,
+    deposit: 1250000000000000000000,
+  });
+  ```
+
+  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLIRegister />
+
+  ```bash
+  near call token.v2.ref-finance.near storage_deposit '{"account_id": "alice.near"}' --depositYocto 1250000000000000000000 --accountId bob.near
+  ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/2.build/5.primitives/ft/register-user.json" />
@@ -215,16 +357,67 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppSendToken />
+    
+  ```js
+  import { Wallet } from './near-wallet';
+
+  const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
+  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
+
+  await wallet.callMethod({
+    method: 'ft_transfer',
+    args: {
+      receiver_id: 'alice.near',
+      amount: '100000000000000000',
+    },
+    contractId: TOKEN_CONTRACT_ADDRESS,
+    deposit: 1,
+  });
+  ```
+
+  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLISendToken />
+
+    ```bash
+    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "alice.near", "amount": "100000000000000000"}' --depositYocto 1 --accountId bob.near
+    ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/2.build/5.primitives/ft/transfer-tokens.json" />
   </TabItem>
   <TabItem value="📄 Contract"  label="📄 Contract"  default>
-    <SmartContractSendToken />
+    
+  ```rust
+  #[near]
+  impl Contract {
+    #[payable]
+    pub fn send_tokens(&mut self, receiver_id: AccountId, amount: U128) -> Promise {
+      assert_eq!(env::attached_deposit(), 1, "Requires attached deposit of exactly 1 yoctoNEAR");
+
+      let promise = ext(self.ft_contract.clone())
+        .with_attached_deposit(YOCTO_NEAR)
+        .ft_transfer(receiver_id, amount, None);
+
+      return promise.then( // Create a promise to callback query_greeting_callback
+        Self::ext(env::current_account_id())
+        .with_static_gas(Gas(30*TGAS))
+        .external_call_callback()
+      )
+    }
+
+    #[private] // Public - but only callable by env::current_account_id()
+    pub fn external_call_callback(&self, #[callback_result] call_result: Result<(), PromiseError>) {
+      // Check if the promise succeeded
+      if call_result.is_err() {
+        log!("There was an error contacting external contract");
+      }
+    }
+  }
+  ```
+
+  _This snippet assumes that the contract is already holding some FTs and that you want to send them to another account._
   </TabItem>
 </Tabs>
 
@@ -237,16 +430,80 @@ Let's assume that you need to deposit FTs on Ref Finance.
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
-    <WebAppAttachTokenToCall />
+
+  ```js
+  import { Wallet } from './near-wallet';
+
+  const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
+  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
+
+  await wallet.callMethod({
+    method: 'ft_transfer_call',
+    args: {
+      receiver_id: 'v2.ref-finance.near',
+      amount: '100000000000000000',
+      msg: '',
+    },
+    contractId: TOKEN_CONTRACT_ADDRESS,
+    gas: 300000000000000,
+    deposit: 1,
+  });
+  ```
+
+  <details>
+  <summary>Example response</summary>
+  <p>
+
+  ```json
+  "100000000000000000"
+  ```
+
+  </p>
+  </details>
+
+  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
-    <CLIAttachTokenToCall />
+
+  ```bash
+  near call token.v2.ref-finance.near ft_transfer_call '{"receiver_id": "v2.ref-finance.near", "amount": "100000000000000000", "msg": ""}' --gas 300000000000000 --depositYocto 1 --accountId bob.near
+  ```
+
+  <details>
+  <summary>Example response</summary>
+  <p>
+
+  ```bash
+  '100000000000000000'
+  ```
+
+  </p>
+  </details>
+
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
     <TryOutOnLantstool path="docs/2.build/5.primitives/ft/attach-ft-to-call.json" />
   </TabItem>
   <TabItem value="📄 Contract"  label="📄 Contract"  default>
-    <SmartContractAttachTokenToCall />
+
+  ```rust
+  #[payable]
+  pub fn call_with_attached_tokens(&mut self, receiver_id: AccountId, amount: U128) -> Promise {
+    assert_eq!(env::attached_deposit(), 1, "Requires attached deposit of exactly 1 yoctoNEAR");
+
+    let promise = ext(self.ft_contract.clone())
+      .with_static_gas(Gas(150*TGAS))
+      .with_attached_deposit(YOCTO_NEAR)
+      .ft_transfer_call(receiver_id, amount, None, "".to_string());
+
+    return promise.then( // Create a promise to callback query_greeting_callback
+      Self::ext(env::current_account_id())
+      .with_static_gas(Gas(100*TGAS))
+      .external_call_callback()
+    )
+  }
+  ```
   </TabItem>
 </Tabs>
 

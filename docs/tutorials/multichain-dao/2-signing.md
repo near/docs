@@ -1,7 +1,7 @@
 ---
 id: signing
 title: "Abstract Dao: Signatures"
-description: "In the previous section, we saw how to register a signature request on the Abstract DAO contract. Now, it is time to sign the transaction for different chains and relay it to the target EVM network."
+description: "Learn how to sign Abstract DAO requests for different chains and relay them to target EVM networks."
 ---
 
 In the previous section, we saw how to register a signature request on the Abstract DAO contract. Now, it is time to sign the transaction for different chains and relay it to the target EVM network.

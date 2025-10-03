@@ -1,7 +1,7 @@
 ---
 id: count-near
 title: Count on NEAR
-description: "Build a simple counter smart contract on NEAR Protocol with increment, decrement, and reset functionality, including frontend integration and testing."
+description: "A simple counter on NEAR Protocol."
 ---
 
 import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs';

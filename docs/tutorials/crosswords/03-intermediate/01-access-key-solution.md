@@ -2,7 +2,7 @@
 sidebar_position: 2
 sidebar_label: Solution as seed phrase
 title: Replacing the solution hash with an access key
-description: "So far in this tutorial, the user sends the plaintext solution to the crossword puzzle smart contract, where it's hashed and compared with the known answer."
+description: "Learn how to protect puzzle answers on NEAR by turning solutions into access keys instead of sending them in plaintext."
 ---
 
 import puzzleFrontrun from '/docs/assets/crosswords/puzzle-frontrun.png';

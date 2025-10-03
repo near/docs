@@ -2,13 +2,13 @@
 id: skeleton
 title: Skeleton and Rust Architecture
 sidebar_label: Contract Architecture
-description: "In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this _\"Zero to Hero\"_ series."
+description: "Learn the basic file structure of the NFT contract and how each Rust file works."
 ---
 import {Github} from "@site/src/components/UI/Codetabs"
 
-In this article, you'll learn about the basic architecture behind the NFT contract that you'll develop while following this _"Zero to Hero"_ series.
+In this tutorial, you'll explore the architecture of the NFT contract and how Rust files are organized to build a fully-featured smart contract.
 
-You'll discover the contract's layout and you'll see how the Rust files are structured in order to build a feature-complete smart contract.
+You'll get a walkthrough of each file and its role, giving you the foundation to start building and compiling your own NFT contract.
 
 :::info Skeleton Contract
 You can find the skeleton contract in our [GitHub repository](https://github.com/near-examples/nft-tutorial/tree/main/nft-contract-skeleton)

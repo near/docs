@@ -1,7 +1,7 @@
 ---
 id: xcc
 title: Cross Contract Call
-description: "This example performs the simplest cross-contract call possible: it calls our Hello NEAR example to set and retrieve a greeting."
+description: "Learn how to perform a basic cross-contract call on NEAR to set and retrieve greetings."
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,7 +1,7 @@
 ---
 id: events
 title: Events
-description: "In this tutorial, you'll learn about the events standard and how to implement it in your smart contract."
+description: "Learn about the events standard and how to implement it in your smart contract."
 ---
 import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';

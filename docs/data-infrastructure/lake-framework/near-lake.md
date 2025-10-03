@@ -2,7 +2,7 @@
 id: near-lake
 sidebar_label: Lake Overview
 title: NEAR Lake Indexer
-description: "NEAR Lake is an indexer built on top of NEAR Indexer Framework to watch the network and store all the event logs such as FT Events and NFT Events as JSON files on AWS S3."
+description: "Learn how NEAR Lake indexes the network"
 ---
 
 NEAR Lake is an indexer built on top of [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) to watch the network and store all the event logs such as [FT Events](https://nomicon.io/Standards/Tokens/FungibleToken/Event) and [NFT Events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) as JSON files on AWS S3.
@@ -51,7 +51,7 @@ The data structure used by Lake Indexer is the following:
 
 ### How to use it
 
-We have created the [NEAR Lake Framework](/data-infrastructure/lake-framework/near-lake-framework) to have a simple straightforward way to create an indexer on top of the data stored by NEAR Lake itself.
+We have created the [NEAR Lake Framework](/data-infrastructure/near-lake-framework) to have a simple straightforward way to create an indexer on top of the data stored by NEAR Lake itself.
 
 :::info NEAR Lake Framework
 
