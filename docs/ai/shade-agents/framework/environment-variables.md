@@ -11,8 +11,6 @@ The environment variables file must be named `.env.development.local`.
 
 ## Required Variables
 
-Below, we'll walk through each environment variable required by the Shade Agent Framework: 
-
 - **NEAR_ACCOUNT_ID**
 
     :::info Example

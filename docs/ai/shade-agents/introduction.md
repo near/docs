@@ -35,7 +35,7 @@ When an agent is booted up in a TEE, the `TEE's hardware-based entropy` generate
 
 <summary>What is a TEE?</summary>
 
-A trusted execution environment is a secure area of a CPU that runs code in an isolated and protected way. This means we know the expected code is running and its execution is not exposed outside of the enclave. TEEs produce attestations to prove that the code is running within a TEE and that it's running the specified code.
+A trusted execution environment is a secure area of a CPU that runs code in an isolated and protected way. This means one can verify that the expected code is running and its execution is not exposed outside of the enclave. TEEs produce attestations to prove that the code is running within a TEE and that it's running the specified code.
 
 </details>
 
@@ -89,7 +89,7 @@ The request signature function accepts three arguments:
 The `shade-agent-api` exposes the `requestSignature` function to sign transactions on behalf of the Shade Agent within your agent.
 
 :::tip
-Within agent gated functions, we can implement an additional layer of security to strictly limit the Shade Agent's actions. For example, it could be restricted to only create transactions for Solana, perform swaps but not transfers, or transfer a maximum of 1 ETH per day.
+Within agent gated functions, you can implement an additional layer of security to strictly limit the Shade Agent's actions. For example, it could be restricted to only create transactions for Solana, perform swaps but not transfers, or transfer a maximum of 1 ETH per day.
 :::
 
 ---

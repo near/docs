@@ -151,27 +151,24 @@ const sidebar = {
         'ai/near-mcp',
         {
           "Shade Agents": [
-            "ai/shade-agents/introduction",
-            "ai/shade-agents/what-can-you-build",
             {
-              "Quickstart": [
-                'ai/shade-agents/quickstart/deploying',
-                "ai/shade-agents/quickstart/components",   
+              "Getting Started": [
+                "ai/shade-agents/introduction",
+                { "Quickstart": [
+                  "ai/shade-agents/quickstart/deploying",
+                  "ai/shade-agents/quickstart/components",
+                ]},
               ]
             },
             {
-              "Framework": [
+              "Concepts": [
                 "ai/shade-agents/framework/overview",
-                "ai/shade-agents/framework/api",
-                "ai/shade-agents/framework/cli",
-                "ai/shade-agents/framework/environment-variables",
-              ],
+                "ai/shade-agents/what-can-you-build",
+                "ai/shade-agents/security",
+              ]
             },
-            "ai/shade-agents/custom-agent-contract",
-            "ai/shade-agents/plugins",
-            "ai/shade-agents/security",
             {
-              "Examples and Templates": [
+              "Tutorials": [
                 "ai/shade-agents/examples/overview",
                 {
                   "Quickstart": [
@@ -187,6 +184,15 @@ const sidebar = {
                     "ai/shade-agents/examples/ai-dao/deploying",
                   ]
                 }
+              ]
+            },
+            {
+              "Reference": [
+                "ai/shade-agents/framework/api",
+                "ai/shade-agents/framework/cli",
+                "ai/shade-agents/framework/environment-variables",
+                "ai/shade-agents/custom-agent-contract",
+                "ai/shade-agents/plugins",
               ]
             },
           ]

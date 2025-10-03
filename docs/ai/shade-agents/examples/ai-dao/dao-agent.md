@@ -99,4 +99,4 @@ The agent then calls `agent_vote` on the agent contract using the `agentCall` fu
 
 ## Next Steps 
 
-That completes the overview of the DAO system as a whole! You can now fork the [repository](https://github.com/NearDeFi/verifiable-ai-dao/tree/main) to create your own yield and resume-based Shade Agent. In the final page of this example, we'll share how to deploy the AI DAO yourself. 
+That completes the overview of the DAO system as a whole! You can now fork the [repository](https://github.com/NearDeFi/verifiable-ai-dao/tree/main) to create your own yield and resume-based Shade Agent. In the final page of this example, you'll learn how to deploy the AI DAO yourself. 

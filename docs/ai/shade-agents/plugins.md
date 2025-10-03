@@ -5,8 +5,8 @@ sidebar_label: Plugins
 description: "Learn how to use plugins to extend Shade Agent functionality."
 ---
 
-Docs for integrating LLMs and Twitter APIs into your Shade Agent will be coming soon.
+Docs for integrating plugins into your Shade Agent will be coming soon.
 
 In the meantime, please feel free to check out these links:
-- An SDK for running [LLMs in TEEs](https://github.com/nearai/private-ml-sdk) and [hosted LLMs running in TEEs](https://openrouter.ai/provider/phala)
+- Docs on using [private and verifiable inference](https://docs.near.ai/cloud/get-started/)
 - An example using a [Twitter API](https://github.com/NearDeFi/shade-agent-basednames)

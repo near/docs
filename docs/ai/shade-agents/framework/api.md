@@ -19,7 +19,7 @@ The API is packaged as a Docker image and included in your agent when it's uploa
 
 When the API image boots up, it will automatically derive the agent's NEAR account (a random [implicit account](https://near-docs-pr-2740.onrender.com/protocol/account-id#implicit-address)), fund it with 0.3 NEAR from the NEAR_ACCOUNT_ID specified in the environment variables, and registers the agent in the agent contract.
 
-The API can be used in any language, but we maintain API wrappers in TypeScript/JavaScript and Python. We recommend you develop in TypeScript as it has great synergies with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions.
+The API can be used in any language, but API wrappers are maintained in TypeScript/JavaScript and Python. It's recommended you develop in TypeScript as it has great synergies with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: deploying
-title: Deploying
-sidebar_label: Deploying
+title: Deploying the AI DAO
+sidebar_label: Deploying the AI DAO
 description: "Learn how to deploy the Verifiable AI DAO Shade Agent which includes how to deploy a custom agent contract."
 ---
 

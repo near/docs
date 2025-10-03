@@ -7,7 +7,7 @@ description: "Learn about the core components of the Shade Agent Framework with 
 
 import { SigsSupport } from '@site/src/components/sigsSupport';
 
-The Shade Agent Framework provides a suite of tools designed to simplify the development and deployment of Shade Agents. The framework abstracts away the complexities of the underlying infrastructure, allowing developers to focus on building their agent logic. In this section, we'll explore the tooling provided by the framework and examine the key components you need when building an agent.
+The Shade Agent Framework provides a suite of tools designed to simplify the development and deployment of Shade Agents. The framework abstracts away the complexities of the underlying infrastructure, allowing developers to focus on building their agent logic. In this section, you'll explore the tooling provided by the framework and examine the key components you need when building an agent.
 
 ---
 
@@ -15,7 +15,7 @@ The Shade Agent Framework provides a suite of tools designed to simplify the dev
 
 ### Templates
 
-When starting to build with the Shade Agent Framework, we recommend forking the [Quickstart Shade Agent Template](https://github.com/NearDeFi/shade-agent-template). This template contains all the necessary files to build a Shade Agent and provides the fastest starting path.
+When starting to build with the Shade Agent Framework, it's recommended to start by forking the [Quickstart Shade Agent Template](https://github.com/NearDeFi/shade-agent-template). This template contains all the necessary files to build a Shade Agent and provides the fastest starting path.
 
 Additional templates can be found in our [Examples and Templates](../examples/overview.md) section.
 
@@ -25,7 +25,7 @@ Additional templates can be found in our [Examples and Templates](../examples/ov
 Agents are primarily written in TypeScript/JavaScript using `shade-agent-js`, which integrates seamlessly with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions and deriving multichain accounts.
 
 **Python**
-We also maintain `shade-agent-py`, which allows you to develop agents in Python. Here is an [example](https://github.com/NearDeFi/shade-python-example/tree/main). However, note that we don't currently maintain tooling for building multichain transactions and deriving multichain accounts in Python, so additional development work will be required for multichain use cases.
+The framework also supports `shade-agent-py`, which allows you to develop agents in Python. Here is an [example](https://github.com/NearDeFi/shade-python-example/tree/main). However, note that tooling for building multichain transactions and deriving multichain accounts is not currently available in Python, so additional development work will be required for multichain use cases.
 
 **Other Languages**
 Agents can be written in any language, provided you can create a Docker image for the agent. To build a Shade Agent in other languages, you can use the API directly. Learn more about this approach on the [API page](./api.md).
@@ -121,7 +121,7 @@ You can learn more about the Docker Compose file [here](https://docs.docker.com/
 
 ## Next Steps
 
-Now that you have an overview of the framework, we recommend exploring these sections next:
+Now that you have an overview of the framework, here are some great sections to explore next:
 1. Framework components: [API](./api.md), [CLI](./cli.md), and [Environment Variables](./environment-variables.md)
 2. [Custom Contracts](../custom-agent-contract.md) - build specialized agent contracts
 3. [Plugins](../plugins.md) - extend your agent's capabilities

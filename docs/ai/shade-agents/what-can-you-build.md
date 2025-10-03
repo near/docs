@@ -49,7 +49,7 @@ Since Shade Agents can access off-chain data and APIs, they make great cheap, fl
 
 ## Smart Contracts using LLMs
 
-Shade Agents allow you to access LLMs from a smart contract that lives on any chain. The LLM and agent are both running in a TEE, so we know that the response from the agent is actually from an LLM and its response is a function of the provided inputs.
+Shade Agents allow you to access LLMs from a smart contract that lives on any chain. The LLM and agent are both running in a TEE, so one can verify that the response from the agent is actually from an LLM and its response is a function of the provided inputs.
 
 There are two main flows:
 
