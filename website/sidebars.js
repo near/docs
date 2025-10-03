@@ -402,8 +402,6 @@ const sidebar = {
             'tutorials/examples/frontend-multiple-contracts',
             'web3-apps/backend/backend-login',
             'chain-abstraction/meta-transactions-relayer',
-            'data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
-            'data-infrastructure/lake-framework/building-indexers/python-lake-indexer',
             {
               type: 'category',
               label: 'Mastering NEAR',
@@ -454,13 +452,7 @@ const sidebar = {
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
         'primitives/ft',
-        {
-          "Non-Fungible Tokens": [
-            'primitives/nft',
-            'data-infrastructure/lake-framework/building-indexers/nft-indexer',
-            'data-infrastructure/lake-framework/building-indexers/python-nft-indexer',
-          ]
-        },
+        'primitives/nft',
         'protocol/network/staking',
         'primitives/linkdrop',
         'primitives/oracles',
@@ -487,46 +479,47 @@ const sidebar = {
           "Concepts": [
             'data-infrastructure/data-apis',
             'data-infrastructure/big-query',
-            'tools/indexing',
             {
-              'Lake Framework': [
+              'Indexers': [
                 'data-infrastructure/indexers',
-                'data-infrastructure/lake-framework/near-lake-framework',
-                'data-infrastructure/lake-framework/near-lake',
-                'data-infrastructure/lake-framework/near-lake-state-changes-indexer',
-                'data-infrastructure/lake-framework/migrating-to-near-lake-framework',
-                {
-                  'Running NEAR Lake': [
-                    'data-infrastructure/lake-framework/running-near-lake/run-lake-indexer',
-                    'data-infrastructure/lake-framework/running-near-lake/lake-start-options',
-                    'data-infrastructure/lake-framework/running-near-lake/credentials',
-                  ],
-                },
-                {
-                  'Lake Data Structures': [
-                    'data-infrastructure/lake-framework/building-indexers/primitives',
-                    'data-infrastructure/lake-data-structures/toc',
-                    'data-infrastructure/lake-data-structures/block',
-                    'data-infrastructure/lake-data-structures/chunk',
-                    'data-infrastructure/lake-data-structures/shard',
-                    'data-infrastructure/lake-data-structures/transaction',
-                    'data-infrastructure/lake-data-structures/receipt',
-                    'data-infrastructure/lake-data-structures/execution-outcome',
-                    'data-infrastructure/lake-data-structures/state-change',
-                  ],
-                },
+                'data-infrastructure/near-lake-framework',
               ],
             },
           ]
         },
         {
           "Tutorials": [
-            'data-infrastructure/tutorials/near-lake-framework',
+            // {"NEAR Indexer": []},
+            {
+              "NEAR Lake Framework": [
+                'data-infrastructure/tutorials/listen-function-calls',
+                'data-infrastructure/tutorials/state-changes',
+                'data-infrastructure/tutorials/python-lake-indexer',
+                {
+                  "NFT Indexer": [
+                    'data-infrastructure/tutorials/nft-indexer',
+                    'data-infrastructure/tutorials/python-nft-indexer',
+                  ]
+                },
+              ]
+            },
+            {
+              'NEAR Indexer': [
+                {
+                  "Data Lake": [
+                    'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
+                    'data-infrastructure/tutorials/running-near-lake/lake-start-options',
+                    'data-infrastructure/tutorials/running-near-lake/credentials',
+                  ]
+                }
+              ],
+            },
           ]
         },
         {
           "Reference": [
             'tools/explorer',
+            'tools/data-services',
             {
               type: 'category',
               label: 'Data APIs',
