@@ -1,7 +1,7 @@
 ---
 id: fastnear
 title: FastNEAR
-description: "FastNEAR allows to easily query the NEAR blockchain to get an account's assets, map keys into account IDs, explore a block's transactions, etc."
+description: "Learn to use FastNEAR to query NEAR blockchain data."
 ---
 
 [FastNEAR](https://fastnear.com/) allows to easily query the NEAR blockchain to get an account's assets, map keys into account IDs, explore a block's transactions, etc.

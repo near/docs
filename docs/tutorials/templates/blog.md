@@ -1,7 +1,7 @@
 ---
 id: blog
 title: Onchain Blog
-description: "Blogchain is a template for creating onchain blogs using Mintbase. It allows users to deploy their own blog contracts and mint blog posts as NFTs, ensuring content is decentralized and immutable."
+description: "Learn how to deploy an onchain blog with Mintbase, mint posts as NFTs, and manage content."
 ---
 
 Blogchain is a template for creating onchain blogs using Mintbase. It allows users to deploy their own blog contracts and mint blog posts as NFTs, ensuring content is decentralized and immutable.

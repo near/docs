@@ -2,7 +2,7 @@
 id: security
 title: Security Considerations
 sidebar_label: Security Considerations
-description: "Review the security considerations when deploying Shade Agents, including duplicate actions, transaction restrictions, and RPC trust."
+description: "Learn key security practices when deploying Shade Agents, including duplicate actions, transaction restrictions, and RPC trust."
 ---
 
 import { SigsSupport } from '@site/src/components/sigsSupport';

@@ -1,7 +1,7 @@
 ---
 id: reduce-size
 title: Reducing Contract Size
-description: "In this page, we will explore strategies for reducing the size of smart contracts on NEAR. This is particularly useful for developers who want to optimize their contracts for deployment, especially in scenarios where contract size limits are a concern."
+description: "Learn strategies to reduce NEAR smart contract size for optimized deployment and performance."
 ---
 import {Github} from "@site/src/components/codetabs"
 import Tabs from '@theme/Tabs';

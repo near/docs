@@ -70,6 +70,13 @@ To initialize the NEAR Lake Framework, we need to provide the following basic se
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
         start="5" end="14" />
     </TabItem>
+    <TabItem value="python" label="Python" default>
+      In Python, we will create the configuration object manually and then set `s3_bucket_name` and `s3_region_name` properties. Block height is passed as a command line argument. 
+
+      <Github fname="main.py" language="python"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/python/main.py"
+        start="11" end="27" />
+    </TabItem>
 </Tabs>
 
 ## Running the Indexer
@@ -87,6 +94,11 @@ To run the indexer, we need to create a function that will handle every message 
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
         start="98" end="101" />
     </TabItem>
+    <TabItem value="python" label="Python">
+      <Github fname="main.py" language="python"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/python/main.py"
+        start="39" end="47" />
+    </TabItem>
 </Tabs>
 
 ## Parsing the Block Data
@@ -103,6 +115,11 @@ From the block data, we can access the transactions, their receipts and actions.
       <Github fname="index.ts" language="javascript"
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
         start="24" end="89" />
+    </TabItem>
+    <TabItem value="python" label="Python">
+      <Github fname="main.py" language="python"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/python/main.py"
+        start="50" end="96" />
     </TabItem>
 </Tabs>
 
@@ -123,7 +140,9 @@ At the time of this writing, this example works with the following versions:
 
 - near-lake-framework (Rust): `0.7.13`
 - @near-lake/framework (JS): `0.1.5`
-- node: `22.18.0`
+- near-lake-framework (Python): `0.1.3`
 - rustc: `1.86.0`
+- node: `22.18.0`
+- python: `3.13.5`
 
 :::

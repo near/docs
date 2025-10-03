@@ -1,7 +1,7 @@
 ---
 id: yield-resume
 title: Yield and Resume
-description: "NEAR smart contracts can yield execution, until an external service resumes them. In practice, the contract yields a cross-contract call to itself, until an external service executes a function and the contract decides to resume."
+description: "Wait for an external response and resume execution"
 ---
 import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
 import Tabs from '@theme/Tabs';
@@ -13,7 +13,7 @@ This is a powerful feature that allows contracts to wait for external events, su
 
 :::info
 
-Contract can wait for 200 blocks - around 4 minutes - after which the yielded function will execute, receiving a "timeout error" as input
+The contract can wait for 200 blocks - around 2 minutes - after which the yielded function will execute, receiving a "timeout error" as input
 
 :::
 
@@ -183,7 +183,7 @@ In the example above, the `return_external_response` receives parameters:
 
 :::tip There's plenty of time
 
-The contract will be able to wait for 200 blocks - around 4 minutes - before timing out
+The contract will be able to wait for 200 blocks - around 2 minutes - before timing out
 
 :::
 
@@ -192,6 +192,22 @@ The contract will be able to wait for 200 blocks - around 4 minutes - before tim
 Notice that, in this particular example, we choose to return a value both if there is a response or a time out
 
 The reason to not raise an error, is because we are changing the state (removing the request in line `#7`), and raising an error would revert this state change
+
+:::
+
+---
+
+## Managing State
+
+When using yield and resume, it's important that you carefully manage the contract's state. Because of its asynchronous execution, the contract function in which the contract yields and resumes are independent.
+
+If you change the state of the contract in the function where you yield the promise (the `request` function here), then you need to make sure that you revert the state in the function that resumes (the `return_external_response` function here) in the case that the promise times out or the response is invalid.
+
+It is best practice to check the validity of the response within the function where the resume is signaled (the `respond` function here) and panic if the response is not valid; the external service can attempt to respond again before the promise times out. You should not panic in `return_external_response` as this is only called when the promise has been resolved (it was resumed or timed out), meaning it can't be resumed again, and the state in `request` has been settled. You should gracefully complete the function and revert the state.
+
+:::info
+
+Check more docs on [callback security](../security/callbacks.md#async-callbacks) and [reentrancy attacks](../security/reentrancy.md) to avoid common pitfalls when dealing with asynchronous calls
 
 :::
 

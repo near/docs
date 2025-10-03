@@ -2,7 +2,7 @@
 id: custom-agent-contract
 title: Custom Agent Contract
 sidebar_label: Custom Agent Contract
-description: "Learn how to use custom Shade Agent contracts, including compiling, deploying, and interacting with the contract."
+description: "Learn how to build, deploy, and interact with custom Shade Agent contracts."
 ---
 
 import Tabs from '@theme/Tabs';

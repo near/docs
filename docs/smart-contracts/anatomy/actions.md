@@ -1,7 +1,7 @@
 ---
 id: actions
 title: Transfers & Actions
-description: "This page describes the different types of actions that a smart contract can perform on NEAR like transferring NEAR, calling other contracts, creating sub-accounts, and deploying contracts. It also explains how to add access keys to accounts."
+description: "Learn how contracts can make transfers, call other contracts, and more"
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

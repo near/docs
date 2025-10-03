@@ -1,7 +1,7 @@
 ---
 id: providers
 title: RPC Providers
-description: "Comprehensive list of NEAR RPC providers for mainnet and testnet, including public endpoints, archival nodes, and information about the deprecation of NEAR.org RPC endpoints."
+description: "Discover NEAR RPC providers for mainnet and testnet"
 ---
 
 There are multiple RPC providers from which you can choose from. These providers will work as intermediaries to help you interact with the NEAR network.
@@ -18,11 +18,12 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 | Provider                                                                   | Endpoint Root                                                | Public Endpoint    | Archival Node      |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------ | ------------------ |
-| [1RPC](https://docs.1rpc.io/)                                                    | `https://1rpc.io/near`                                       | :heavy_check_mark: |                    |
+| [1RPC](https://docs.1rpc.io/)                                              | `https://1rpc.io/near`                                       | :heavy_check_mark: |                    |
 | [All That Node](https://www.allthatnode.com/)                              | `https://allthatnode.com/protocol/near.dsrv`                 |                    | :heavy_check_mark: |
 | [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  |                    |                    |
 | [BlockPI Network](https://blockpi.io)                                      | `https://near.blockpi.network/v1/rpc/public`                 | :heavy_check_mark: |                    |
 | [dRPC](https://drpc.org/)                                                  | `https://near.drpc.org`                                      | :heavy_check_mark: |                    |
+| [ZAN](https://zan.top/service/apikeys)                                     | `https://api.zan.top/node/v1/near/mainnet/`                  |                    |                    |
 | [fast-near web4](https://github.com/vgrichina/fast-near)                   | `https://rpc.web4.near.page`                                 | :heavy_check_mark: |                    |
 | [FASTNEAR](https://fastnear.com)                                           | `https://free.rpc.fastnear.com`                              | :heavy_check_mark: | :heavy_check_mark: |
 | [GetBlock](https://getblock.io/nodes/near/)                                | `https://getblock.io/nodes/near/`                            |                    |                    |
@@ -42,6 +43,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | Provider                                                                   | Endpoint Root                                                | Public Endpoint    |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------ |
 | [FASTNEAR](https://fastnear.com)                                           | `https://test.rpc.fastnear.com`                              | :heavy_check_mark: | 
+| [ZAN](https://zan.top/service/apikeys)                                     | `https://api.zan.top/node/ws/v1/near/testnet`                |                    |
 | [All That Node](https://www.allthatnode.com/)                              | `https://allthatnode.com/protocol/near.dsrv`                 |                    |
 | [dRPC](https://drpc.org/)                                                  | `https://near-testnet.drpc.org`                              | :heavy_check_mark: |
 | [fast-near web4](https://github.com/vgrichina/fast-near)                   | `https://rpc.web4.testnet.page/account/testnet`              | :heavy_check_mark: |
