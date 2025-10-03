@@ -3,6 +3,10 @@ import { JsonRpcProvider } from '@near-js/providers';
 import { KeyPairSigner } from '@near-js/signers';
 import { useState } from 'react';
 import './faucet.scss';
+import Card from '../UI/Card';
+import Button from '../UI/Button';
+import Input from '../UI/Input';
+
 
 async function createAndDeleteTmpAcc(beneficiary) {
   const tmpAccount = `${beneficiary.slice(0, 32).replace('.', '-')}-${Date.now()}.testnet`;
@@ -51,36 +55,32 @@ export const Faucet = () => {
   };
 
   return (
-    <form className="faucet-card" onSubmit={requestFaucet}>
-      <div className="field-group">
-        <label htmlFor="accountId">
-          <span className="field-label">Testnet Account ID</span>
-          <input
+    <Card className="faucet-wrapper">
+      <form className="faucet-form" onSubmit={requestFaucet}>
+        <div className="field-group">
+          <Input
             id="accountId"
             name="accountId"
+            label="Testnet Account ID"
             required
             placeholder="account.testnet | 0x123... | implicit address"
-            className={
-              error ? 'error' : label === 'Funded!' ? 'success' : ''
-            }
+            error={error}
+            success={label === 'Funded!' ? 'Account funded!' : undefined}
+            fullWidth
           />
-        </label>
-        {error && <div className="input-msg error">{error}</div>}
-        {label === 'Funded!' && (
-          <div className="input-msg success">Account funded!</div>
-        )}
-      </div>
-      <button
-        type="submit"
-        className={label === 'Funded!' ? 'affirmative' : ''}
-        disabled={label !== 'Request'}
-      >
-        {label === 'Requesting' && '🕔 '}
-        {label}
-      </button>
-      <p className="help-text">
-        Not working? Please report at <a href="https://t.me/neardev">https://t.me/neardev</a>
-      </p>
-    </form>
+        </div>
+        <Button
+          type="submit"
+          disabled={label !== 'Request'}
+          loading={label === 'Requesting'}
+          fullWidth
+        >
+          {label === 'Requesting' ? 'Requesting' : label}
+        </Button>
+        <p className="help-text">
+          Not working? Please report at <a href="https://t.me/neardev">https://t.me/neardev</a>
+        </p>
+      </form>
+    </Card>
   );
 };

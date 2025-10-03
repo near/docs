@@ -6,7 +6,7 @@ description: "Quick guide to create a Web3 frontend application with NEAR integr
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from '@site/src/components/codetabs';
+import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 In this guide we will show you how to quickly spin up a frontend where users can **login** using their wallets and interact with a **contract**.

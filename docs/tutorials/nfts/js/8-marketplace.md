@@ -4,7 +4,7 @@ title: Marketplace
 sidebar_label: Marketplace
 description: "Learn how to build an NFT marketplace on NEAR to list, buy, and sell NFTs."
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 In this tutorial, you'll learn the basics of an NFT marketplace contract where you can buy and sell non-fungible tokens for $NEAR. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the [NFT standard](https://nomicon.io/Standards/NonFungibleToken).
 

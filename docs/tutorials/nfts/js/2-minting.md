@@ -4,7 +4,7 @@ title: Minting
 sidebar_label: Minting
 description: "Learn how to implement the logic to mint NFTs on NEAR, store token and metadata, and link tokens to owners using a skeleton smart contract."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

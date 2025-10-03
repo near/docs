@@ -4,7 +4,7 @@ sidebar_label: Hash the solution, unit tests, and an init method
 title: Introduction to basic hashing and adding unit tests
 description:  "Hash the crossword solution, add unit tests, and initialize the smart contract securely."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

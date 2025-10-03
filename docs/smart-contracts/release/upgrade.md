@@ -4,7 +4,7 @@ title: Updating Contracts
 description: "Learn how to upgrade NEAR smart contracts safely, including programmatic updates, migration strategies, and best practices for contract versioning."
 ---
 
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"; 
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"; 
 import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
 Learn how to update NEAR smart contracts, both through tools like NEAR CLI and programmatically. Understand the implications of state migration when changing contract logic.

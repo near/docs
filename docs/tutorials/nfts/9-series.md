@@ -4,7 +4,7 @@ title: Customizing the NFT Contract
 sidebar_label: Lazy Minting, Collections, and More!
 description: "Learn how to create NFT series."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

@@ -1,4 +1,4 @@
-import { NftImage } from './NTFImage';
+import { ImgNft } from '../ImgNft';
 import styles from './Carousel.module.scss';
 
 const empty = (nft) => {
@@ -24,7 +24,7 @@ const Carousel = ({ nfts, onSelect = empty, nftSelected }) => {
           }}
           aria-label={`Select NFT: ${nft?.metadata?.title || 'Untitled'}`}
         >
-            <NftImage nft={nft} />
+            <ImgNft nft={nft} />
         </div>
       ))}
     </div>

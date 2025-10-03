@@ -1,4 +1,4 @@
-import { Github } from '../codetabs';
+import { Github } from '../UI/Codetabs';
 
 /**
  * Lantstool link looks like this:

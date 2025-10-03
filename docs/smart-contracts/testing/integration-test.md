@@ -3,7 +3,7 @@ id: integration-test
 title: Integration Tests
 description: "Learn how to write and run integration tests for NEAR smart contracts using Sandbox testing and realistic blockchain environments."
 ---
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

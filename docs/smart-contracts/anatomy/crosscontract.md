@@ -4,7 +4,7 @@ title: Cross-Contract Calls
 description: "Contract can interact with other contracts on the network"
 ---
 
-import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
+import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

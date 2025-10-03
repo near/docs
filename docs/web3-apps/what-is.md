@@ -6,7 +6,7 @@ description: "Learn about Web3 applications (dApps) that leverage smart contract
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 Web3 Applications - also known as decentralized apps (dApps) - leverage [smart contracts](../smart-contracts/what-is.md) and blockchain data to offer **transparency**, **security** and **giving back control** to users over their assets and data.
 

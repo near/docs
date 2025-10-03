@@ -7,7 +7,7 @@ description: "Learn everything the SDK has to offer to efficiently store data."
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs";
 import CodeBlock from '@theme/CodeBlock';
 
 import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';

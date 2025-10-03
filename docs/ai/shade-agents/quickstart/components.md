@@ -5,7 +5,7 @@ sidebar_label: Key Components
 description: "Learn about the core components of production Shade Agents, including security considerations, worker agents, agent contracts, and deployment patterns."
 ---
 
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 import { SigsSupport } from '@site/src/components/sigsSupport';
 
 In this section, we'll explore the main components of the [quickstart template](https://github.com/NearDeFi/shade-agent-template) and how you can modify it to build your own agent.

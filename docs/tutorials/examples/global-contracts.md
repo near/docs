@@ -6,7 +6,7 @@ description: "Learn how to deploy a Global contract and use it from another acco
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github, Language} from "@site/src/components/codetabs";
+import {Github, Language} from "@site/src/components/UI/Codetabs";
 
 
 If you've ever deployed the same contract code to multiple accounts, you’ve likely noticed that each deployment requires you to pay the full storage cost again.

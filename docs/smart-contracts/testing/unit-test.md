@@ -3,7 +3,7 @@ id: unit-test
 title: Unit Testing
 description: "Learn how to write and run unit tests for NEAR smart contracts to test individual methods and functions in isolation."
 ---
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 Unit tests allow you to test the contract methods individually. They are suitable to check the storage is updated correctly, and that methods return their expected values. They are written in the contract's language and execute locally.
 

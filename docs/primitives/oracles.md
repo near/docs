@@ -4,7 +4,7 @@ title: Oracles
 description: "Learn about blockchain oracles on NEAR Protocol, including price feeds, data integration, and using oracle services like NearDefi Price Oracle and Pyth Network."
 ---
 
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

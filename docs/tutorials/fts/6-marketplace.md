@@ -4,7 +4,7 @@ title: Integrating FT Payments into an NFT Marketplace
 sidebar_label: Adding FTs to a Marketplace
 description: "Learn how to integrate fungible token payments into an NFT marketplace on NEAR Protocol."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

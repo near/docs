@@ -4,7 +4,7 @@ title: Authenticate NEAR Users
 description: "Learn how to authenticate NEAR users in your backend service by creating challenges, requesting wallet signatures, and verifying signatures."
 ---
 
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.
 

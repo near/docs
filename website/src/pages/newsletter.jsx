@@ -3,6 +3,10 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import useSWR from 'swr';
 import DOMPurify from 'dompurify';
+import Card from '@site/src/components/UI/Card';
+import Button from '@site/src/components/UI/Button';
+import Input from '@site/src/components/UI/Input';
+import styles from './newsletter.module.scss';
 
 const API_BASE = 'https://tmp-docs-ai-service.onrender.com';
 
@@ -179,102 +183,104 @@ const Newsletter = () => {
   if (campaignLoading) {
     return (
       <Layout title="NEAR Newsletter" description="Subscribe to the NEAR Developer Newsletter">
-        <h1 className="newsletter-loading">
-          Loading Newsletter...
-        </h1>
+        <div className={styles.loadingContainer}>
+          <h1>Loading Newsletter...</h1>
+        </div>
       </Layout>
     );
   }
 
   return (
     <Layout title="NEAR Newsletter" description="Subscribe to the NEAR Developer Newsletter">
-      <div className="newsletter-page">
-        <div className="newsletter-container">
+      <div className={styles.newsletterPage}>
+        <div className={styles.container}>
           {/* Newsletter Header */}
-          <div className="newsletter-header">
-            <h1 className="newsletter-title">
-              <span className="title-highlight">NEAR</span> Dev Newsletter
+          <div className={styles.header}>
+            <h1 className={styles.title}>
+              <span className={styles.titleHighlight}>NEAR</span> Dev Newsletter
             </h1>
-            <p className="newsletter-subtitle">
+            <p className={styles.subtitle}>
               Your weekly scoop on ecosystem updates, dev tools, freelance gigs, and events around the NEAR Protocol
             </p>
           </div>
 
           {/* Main Layout */}
-          <div className="newsletter-layout">
+          <div className={styles.layout}>
             {/* Main Content */}
-            <div className="newsletter-main">
-              {issueLoading ? (
-                <div className="loading-placeholder">
-                  <div className="placeholder-glow">
-                    <div className="placeholder title-placeholder" />
-                    <div className="placeholder content-placeholder" />
-                    <div className="placeholder content-placeholder" />
-                    <div className="placeholder content-placeholder short" />
+            <div className={styles.main}>
+              <Card className={styles.contentCard}>
+                {issueLoading ? (
+                  <div className={styles.loadingPlaceholder}>
+                    <div className={styles.placeholderGlow}>
+                      <div className={styles.placeholderTitle} />
+                      <div className={styles.placeholderContent} />
+                      <div className={styles.placeholderContent} />
+                      <div className={styles.placeholderContentShort} />
+                    </div>
                   </div>
-                </div>
-              ) : !sanitizedIssueHtml ? (
-                <div className="alert alert-warning">No issue content available.</div>
-              ) : (
-                <div className="newsletter-content">
-                  <IssueContent html={sanitizedIssueHtml} />
-                </div>
-              )}
+                ) : !sanitizedIssueHtml ? (
+                  <div className={styles.alert}>No issue content available.</div>
+                ) : (
+                  <div className={styles.content}>
+                    <IssueContent html={sanitizedIssueHtml} />
+                  </div>
+                )}
+              </Card>
             </div>
 
             {/* Sidebar */}
-            <div className="newsletter-sidebar">
+            <div className={styles.sidebar}>
               {/* Subscribe Form */}
-              <div className="green-box subscribe-section">
+              <Card className={styles.subscribeCard}>
                 <h3>Subscribe to the newsletter</h3>
                 {isFormSubmitted ? (
-                  <div className="confirmation-box" role="status">
+                  <div className={styles.confirmationBox} role="status">
                     <strong>Thank you!</strong>
                     <span>Please visit your e-mail to confirm your subscription.</span>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                  <form onSubmit={handleSubmit(onSubmit)} noValidate className={styles.subscribeForm}>
                     {errors.email && (
-                      <div className="error-message">Valid email required.</div>
+                      <div className={styles.errorMessage}>Valid email required.</div>
                     )}
                     {responseError && (
-                      <div className="error-message">{responseError}</div>
+                      <div className={styles.errorMessage}>{responseError}</div>
                     )}
-                    <div className="subscribe-form">
-                      <label htmlFor="newsletter-email" className="visually-hidden">Email address</label>
-                      <input
-                        id="newsletter-email"
-                        {...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })}
-                        type="email"
-                        autoComplete="email"
-                        className="subscribe-input"
-                        placeholder="dev@youremail.com"
-                        onChange={() => setResponseError(null)}
-                        aria-invalid={!!errors.email}
-                      />
-                      <button type="submit" className="subscribe-button" disabled={submitting} aria-busy={submitting}>
-                        {submitting ? '...' : 'Subscribe'}
-                      </button>
-                    </div>
+                    <Input
+                      id="newsletter-email"
+                      {...register('email', { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ })}
+                      type="email"
+                      autoComplete="email"
+                      placeholder="dev@youremail.com"
+                      onChange={() => setResponseError(null)}
+                      error={errors.email?.message}
+                    />
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      fullWidth
+                      loading={submitting}
+                      disabled={submitting}
+                    >
+                      Subscribe
+                    </Button>
                   </form>
                 )}
-              </div>
+              </Card>
 
               {/* Recent Issues */}
-              <div className="green-box issues-header">
+              <Card className={styles.issuesCard}>
                 <h3>Recent Issues</h3>
-              </div>
-              <div className="links-container">
-                <ul className="links-list">
+                <ul className={styles.linksList}>
                   {campaigns.map((issue) => {
                     const issueIdToUse = issue.variate_settings?.combinations[0]?.id || issue.id;
                     const isActive = currentIssueId === issueIdToUse;
                     const subject = issue.settings?.subject_line || issue.variate_settings?.subject_lines?.[0] || 'Untitled Issue';
 
                     return (
-                      <li key={issue.id} className={isActive ? 'active' : ''}>
+                      <li key={issue.id} className={isActive ? styles.active : ''}>
                         <button
-                          className="link-button"
+                          className={styles.linkButton}
                           onClick={() => handleIssueChange(issueIdToUse)}
                           aria-current={isActive ? 'true' : 'false'}
                         >
@@ -284,31 +290,35 @@ const Newsletter = () => {
                     );
                   })}
                 </ul>
-              </div>
+              </Card>
 
               {/* External Links */}
-              <div className="green-box external-header">
+              <Card className={styles.externalCard}>
                 <h3>Looking for more?</h3>
-              </div>
-              <div className="links-container">
-                <ul className="links-list external-links">
-                  <li>
-                    <a href="https://nearweek.com" target="_blank" rel="noopener noreferrer">
-                      NEARWEEK
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://x.com/NEARProtocol" target="_blank" rel="noopener noreferrer">
-                      NEAR on X
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://near.org/blog" target="_blank" rel="noopener noreferrer">
-                      NEAR Blog
-                    </a>
-                  </li>
-                </ul>
-              </div>
+                <div className={styles.externalLinks}>
+                  <Button
+                    href="https://nearweek.com"
+                    target="_blank"
+                    fullWidth
+                  >
+                    NEARWEEK
+                  </Button>
+                  <Button
+                    href="https://x.com/NEARProtocol"
+                    target="_blank"
+                    fullWidth
+                  >
+                    NEAR on X
+                  </Button>
+                  <Button
+                    href="https://near.org/blog"
+                    target="_blank"
+                    fullWidth
+                  >
+                    NEAR Blog
+                  </Button>
+                </div>
+              </Card>
             </div>
           </div>
         </div>

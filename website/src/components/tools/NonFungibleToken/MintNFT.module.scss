@@ -1,96 +1,87 @@
 .container {
-  margin: 12px auto;
-}
-
-.title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--ifm-color-content);
-}
-
-.subtitle {
-  font-size: 0.9rem;
-  color: var(--ifm-color-content-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin: var(--space-component-md) auto;
+  padding: var(--space-6);
 }
 
 .form {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  padding: 1.5rem;
-  border-radius: 10px;
-  background: var(--ifm-background-color);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
 }
 
 .formGroup {
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .label {
   display: block;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  color: var(--ifm-color-content);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
 }
 
-.input {
+.textarea {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 6px;
-  font-size: 1rem;
-  background: var(--ifm-background-color);
-  color: var(--ifm-color-content);
-  transition: border-color 0.2s ease;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-family: var(--bs-body-font-family);
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  transition: var(--transition-all);
+  min-height: 80px;
+  resize: vertical;
 
   &:focus {
     outline: none;
-    border-color: var(--ifm-color-primary);
-    box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
+    border-color: var(--near-brand-primary);
+    box-shadow: 0 0 0 3px var(--near-brand-primary-100);
   }
 
   &:disabled {
-    background: var(--ifm-color-emphasis-100);
+    background: var(--color-bg-subtle);
     cursor: not-allowed;
   }
 }
 
-.textarea {
-  @extend .input;
-  min-height: 80px;
-  resize: vertical;
-}
-
 .fileInput {
   width: 100%;
-  padding: 0.75rem;
-  border: 2px dashed var(--ifm-color-emphasis-300);
-  border-radius: 6px;
-  background: var(--ifm-background-color);
+  padding: var(--space-3);
+  border: var(--border-2) dashed var(--color-border-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface);
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: var(--transition-colors);
 
   &:hover {
-    border-color: var(--ifm-color-primary);
+    border-color: var(--near-brand-primary);
   }
 
   &:disabled {
-    background: var(--ifm-color-emphasis-100);
+    background: var(--color-bg-subtle);
     cursor: not-allowed;
   }
 }
 
 .fileHint {
-  font-size: 0.8rem;
-  color: var(--ifm-color-content-secondary);
-  margin-top: 0.25rem;
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
 }
 
 .imagePreview {
-  margin-top: 1rem;
+  margin-top: var(--space-4);
 
   .label {
-    margin-bottom: 0.5rem;
-    font-size: 0.85rem;
+    margin-bottom: var(--space-2);
   }
 }
 
@@ -98,136 +89,71 @@
   width: 80px;
   height: 80px;
   object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid var(--ifm-color-emphasis-300);
-  background: var(--ifm-background-color);
+  border-radius: var(--radius-md);
+  border: var(--border-2) var(--border-solid) var(--color-border-primary);
+  background: var(--color-bg-surface);
   display: block;
 }
 
 .error {
-  color: var(--ifm-color-danger);
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
+  color: var(--color-danger);
+  font-size: var(--text-sm);
+  margin-top: var(--space-1);
 }
 
 .pricePreview {
-  background: var(--ifm-color-primary-lightest);
-  border: 1px solid var(--ifm-color-primary-light);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  background: var(--near-brand-primary-100);
+  border: 1px solid var(--near-brand-primary-200);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
   text-align: center;
 }
 
 .priceAmount {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: var(--ifm-color-primary-darkest);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-3);
+  color: var(--near-brand-primary-600);
 
   strong {
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
   }
 }
 
 .priceNote {
-  font-size: 0.85rem;
-  color: var(--ifm-color-primary-dark);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
   margin: 0;
-}
-
-.button {
-  width: 100%;
-  padding: 0.75rem 1.5rem;
-  background: var(--ifm-color-primary);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  margin-bottom: 12px;
-
-  &:hover:not(:disabled) {
-    background: var(--ifm-color-primary-dark);
-  }
-
-  &:disabled {
-    background: var(--ifm-color-emphasis-300);
-    cursor: not-allowed;
-  }
-
-  &.primary {
-    background: var(--ifm-color-primary);
-    color: white;
-
-    &:hover:not(:disabled) {
-      background: var(--ifm-color-primary-dark);
-    }
-  }
-
-  &.confirm {
-    background: var(--ifm-color-success);
-
-    &:hover:not(:disabled) {
-      background: var(--ifm-color-success-dark);
-    }
-  }
-
-  &.loading {
-    position: relative;
-    color: transparent;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 20px;
-      height: 20px;
-      border: 2px solid transparent;
-      border-top: 2px solid white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-  }
-}
-
-@keyframes spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 // Dark theme adjustments
 [data-theme='dark'] {
   .form {
-    border-color: var(--ifm-color-emphasis-200);
+    border-color: var(--color-border-primary);
   }
   
-  .input,
   .textarea {
-    border-color: var(--ifm-color-emphasis-200);
+    border-color: var(--color-border-primary);
     
     &:focus {
-      box-shadow: 0 0 0 2px var(--ifm-color-primary-darkest);
+      box-shadow: 0 0 0 3px var(--near-brand-primary-100);
     }
   }
   
   .fileInput {
-    border-color: var(--ifm-color-emphasis-200);
+    border-color: var(--color-border-primary);
   }
 
   .pricePreview {
-    background: var(--ifm-color-primary-darkest);
-    border-color: var(--ifm-color-primary-dark);
+    background: var(--near-brand-primary-100);
+    border-color: var(--near-brand-primary-200);
   }
 
   .priceAmount {
-    color: var(--ifm-color-primary-lightest);
+    color: var(--near-brand-primary);
   }
 
   .priceNote {
-    color: var(--ifm-color-primary-light);
+    color: var(--color-text-secondary);
   }
 }

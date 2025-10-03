@@ -4,7 +4,7 @@ title: Defining a Fungible Token
 sidebar_label: Defining Your Token
 description: "Learn to define a NEAR fungible token, set metadata, initialize, and query it on-chain."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

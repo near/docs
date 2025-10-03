@@ -4,7 +4,7 @@ title: Skeleton and Rust Architecture
 sidebar_label: Contract Architecture
 description: "Learn the basic file structure of the NFT contract and how each Rust file works."
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 In this tutorial, you'll explore the architecture of the NFT contract and how Rust files are organized to build a fully-featured smart contract.
 

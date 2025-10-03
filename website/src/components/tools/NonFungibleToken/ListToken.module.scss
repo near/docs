@@ -1,88 +1,37 @@
-.accordion {
-  border-radius: 6px;
-  box-shadow: 0 0 0 2px #8b5cf6;
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
-
-.accordionItem {
-  border: none;
-}
-
-.accordionHeader {
-  width: 100%;
-  padding: 1rem 1.5rem;
-  background-color: #f8f9fa;
-  border: none;
-  border-bottom: 1px solid #dee2e6;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    background-color: #e9ecef;
-  }
-
-  &:focus {
-    outline: 2px solid #8b5cf6;
-    outline-offset: -2px;
-  }
-}
-
-.chevron {
-  transition: transform 0.2s ease;
-  font-size: 0.8rem;
-  color: #6c757d;
-
-  &.expanded {
-    transform: rotate(180deg);
-  }
-}
-
-.accordionContent {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  background-color: #fff;
-
-  &.show {
-    max-height: 1000px; // Large enough to accommodate content
-    padding: 1.5rem;
-  }
-}
-
 .loadingText,
 .emptyText {
   text-align: center;
-  padding: 2rem;
-  color: #6c757d;
+  padding: var(--space-8);
+  color: var(--color-text-tertiary);
   font-style: italic;
+  font-size: var(--text-base);
 }
 
 .tokenTable {
   margin-bottom: 0;
+  width: 100%;
+  border-collapse: collapse;
 
   th {
     border-top: none;
-    font-weight: 600;
-    color: #495057;
-    font-size: 0.875rem;
-    padding: 0.75rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    padding: var(--space-component-sm);
+    background-color: var(--color-bg-subtle);
   }
 
   td {
-    padding: 0.75rem;
+    padding: var(--space-component-sm);
     vertical-align: middle;
-    border-top: 1px solid #dee2e6;
+    border-top: 1px solid var(--color-border-primary);
   }
 
   tbody tr {
+    transition: var(--transition-colors);
+
     &:hover {
-      background-color: #f8f9fa;
+      background-color: var(--color-bg-subtle);
     }
   }
 }
@@ -95,7 +44,7 @@
   height: 25px;
 
   img {
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     object-fit: cover;
   }
 }
@@ -105,111 +54,52 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 200px;
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
 }
 
 .balance {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
 }
 
 .collectionGroup {
+  margin-bottom: var(--space-6);
+
   &:last-child {
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
   }
 }
 
 .collectionName {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #6c757d;
-  margin: 0.5rem 0 0 0;
-}
-
-// Dark theme support
-[data-theme='dark'] {
-  .accordionHeader {
-    background-color: #343a40;
-    color: #f8f9fa;
-    border-bottom-color: #495057;
-
-    &:hover {
-      background-color: #495057;
-    }
-  }
-
-  .accordionContent {
-    background-color: #212529;
-  }
-
-  .tokenTable {
-    color: #f8f9fa;
-
-    th {
-      background-color: #343a40 !important;
-      color: #f8f9fa;
-      border-color: #495057;
-    }
-
-    td {
-      border-color: #495057;
-    }
-
-    tbody tr:hover {
-      background-color: #343a40;
-    }
-  }
-
-  .loadingText,
-  .emptyText {
-    color: #adb5bd;
-  }
-
-  .tooltipWrapper:hover::after {
-    background-color: #f8f9fa;
-    color: #333;
-  }
-
-  .tooltipWrapper:hover::before {
-    border-top-color: #f8f9fa;
-  }
-
-  .collectionName {
-    color: #adb5bd;
-  }
-}
-
-// Bootstrap utility classes override for better integration
-.text-sm {
-  font-size: 0.875rem !important;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+  margin: var(--space-2) 0 0 0;
 }
 
 // Responsive design
 @media (max-width: 768px) {
-  .accordionContent.show {
-    padding: 1rem;
-  }
-
   .textClamp {
     max-width: 120px;
   }
 
   .tokenTable {
-    font-size: 0.8rem;
+    font-size: var(--text-xs);
 
     th,
     td {
-      padding: 0.5rem 0.25rem;
+      padding: var(--space-2);
     }
   }
 
-  .accordionHeader {
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
+  .collectionName {
+    font-size: var(--text-xs);
   }
 
-  .collectionName {
-    font-size: 0.8rem;
+  .loadingText,
+  .emptyText {
+    padding: var(--space-4);
+    font-size: var(--text-sm);
   }
 }

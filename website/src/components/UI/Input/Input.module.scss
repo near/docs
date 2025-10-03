@@ -1,0 +1,230 @@
+// ============================================================================
+// INPUT COMPONENT
+// Uses CSS variables from custom.scss
+// ============================================================================
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.inputWrapper--fullWidth {
+  width: 100%;
+}
+
+// ============================================================================
+// LABEL
+// ============================================================================
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
+.label__text {
+  display: inline-block;
+}
+
+.label__required {
+  color: var(--color-danger);
+  font-size: var(--text-base);
+}
+
+// ============================================================================
+// INPUT CONTAINER
+// ============================================================================
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+// ============================================================================
+// INPUT BASE STYLES
+// ============================================================================
+
+.input {
+  // Base styles
+  width: 100%;
+  display: block;
+  
+  // Typography
+  font-family: var(--bs-body-font-family);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  
+  // Layout
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-bg-surface);
+  
+  // Transitions
+  transition: var(--transition-all);
+  
+  // Remove default styles
+  appearance: none;
+  
+  &::placeholder {
+    color: var(--color-text-tertiary);
+  }
+  
+  &:hover:not(:disabled):not(:focus) {
+    border-color: var(--color-border-secondary);
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: var(--near-brand-primary);
+    box-shadow: 0 0 0 3px var(--near-brand-primary-100);
+  }
+  
+  &:disabled {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-tertiary);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  &:read-only {
+    background: var(--color-bg-subtle);
+    cursor: default;
+  }
+}
+
+// ============================================================================
+// SIZE VARIANTS
+// ============================================================================
+
+.input--small {
+  padding: calc(var(--space-1) + 2px) var(--space-3);
+  font-size: var(--text-sm);
+  min-height: 32px;
+}
+
+.input--medium {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-base);
+  min-height: 40px;
+}
+
+.input--large {
+  padding: var(--space-component-md) var(--space-4);
+  font-size: var(--text-lg);
+  min-height: 48px;
+}
+
+// ============================================================================
+// STATE VARIANTS
+// ============================================================================
+
+// Error State
+.input--error {
+  border-color: var(--color-danger);
+  
+  &:focus {
+    border-color: var(--color-danger);
+    box-shadow: 0 0 0 3px var(--color-danger-subtle, rgba(220, 38, 38, 0.1));
+  }
+}
+
+// Success State
+.input--success {
+  border-color: var(--color-success);
+  
+  &:focus {
+    border-color: var(--color-success);
+    box-shadow: 0 0 0 3px var(--color-success-subtle, rgba(34, 197, 94, 0.1));
+  }
+}
+
+// Disabled State
+.input--disabled {
+  opacity: 0.5;
+}
+
+// ============================================================================
+// INPUT WITH ICONS
+// ============================================================================
+
+.input--withLeftIcon {
+  padding-left: var(--space-10);
+}
+
+.input--withRightIcon {
+  padding-right: var(--space-10);
+}
+
+.input__icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  pointer-events: none;
+  
+  &:first-child {
+    left: var(--space-3);
+  }
+  
+  &:last-child {
+    right: var(--space-3);
+  }
+  
+  svg {
+    width: 1.25em;
+    height: 1.25em;
+  }
+}
+
+// ============================================================================
+// MESSAGES (ERROR, SUCCESS, HELPER)
+// ============================================================================
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  line-height: var(--leading-tight);
+  min-height: 20px;
+}
+
+.message--error {
+  color: var(--color-danger);
+}
+
+.message--success {
+  color: var(--color-success);
+}
+
+.message--helper {
+  color: var(--color-text-secondary);
+}
+
+// ============================================================================
+// RESPONSIVE ADJUSTMENTS
+// ============================================================================
+
+@media (max-width: 768px) {
+  .input--large {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-base);
+    min-height: 44px;
+  }
+  
+  .label {
+    font-size: var(--text-xs);
+  }
+  
+  .message {
+    font-size: var(--text-xs);
+  }
+}

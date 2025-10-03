@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import styles from './CreateTokenDrop.module.scss';
+import styles from './CreateDrop.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { toast } from 'react-toastify';
 import { generateAndStore } from '../hooks/useLinkdrops';
 import { NEAR } from '@near-js/tokens';
+import Card from '../../UI/Card';
+import Button from '../../UI/Button';
+import Input from '../../UI/Input';
 
 const KEYPOM_CONTRACT_ADDRESS = 'v2.keypom.testnet';
 
@@ -21,9 +24,8 @@ const parseAmount = (amount, decimals) => {
   return BigInt(integerPart + decimalPart.padEnd(decimals, '0'));
 };
 
-const depositForFT = (numberLinks) => 
+const depositForFT = (numberLinks) =>
   NEAR.toUnits(0.0426 * numberLinks).toString();
-
 
 const depositForNear = (amountPerLink, numberLinks) =>
   NEAR.toUnits((0.0426 + amountPerLink) * numberLinks).toString();
@@ -37,9 +39,8 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedToken, setSelectedToken] = useState(user_fts?.[0] || null);
-  
-  const { signAndSendTransactions, signedAccountId } = useWalletSelector();
 
+  const { signAndSendTransactions, signedAccountId } = useWalletSelector();
 
   const validateForm = () => {
     const newErrors = {};
@@ -154,7 +155,7 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
       });
     }
 
-    try {      
+    try {
       await signAndSendTransactions({ transactions });
 
       toast.success('Linkdrop Created - Copy the link and share it with your friends');
@@ -169,88 +170,78 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
 
   if (!selectedToken) {
     return (
-      <div className={styles.container}>
-        <div className={styles.form}>
-          <p>No tokens available. Please connect your wallet and ensure you have tokens.</p>
-        </div>
-      </div>
+      <Card className={styles.container}>
+        <p>No tokens available. Please connect your wallet and ensure you have tokens.</p>
+      </Card>
     );
   }
 
   return (
-    <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Token Drop name</label>
-          <input
-            type="text"
-            className={styles.input}
-            placeholder="NEARCon Token Giveaway"
-            value={formData.dropName}
-            onChange={(e) => handleInputChange('dropName', e.target.value)}
-            disabled={!signedAccountId || isSubmitting}
-          />
-          {errors.dropName && <div className={styles.error}>{errors.dropName}</div>}
-        </div>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <Input
+        id="drop-name"
+        label="Token Drop name"
+        placeholder="NEARCon Token Giveaway"
+        value={formData.dropName}
+        onChange={(e) => handleInputChange('dropName', e.target.value)}
+        disabled={!signedAccountId || isSubmitting}
+        error={errors.dropName}
+      />
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Select Token</label>
-          <select
-            className={styles.select}
-            value={selectedToken?.contract_id || ''}
-            onChange={(e) => handleTokenChange(e.target.value)}
-            disabled={!signedAccountId || isSubmitting}
-          >
-            {user_fts?.map((token, index) => (
-              <option key={index} value={token.contract_id}>
-                {token.metadata?.symbol || token.symbol || 'Unknown'} ({token.contract_id})
-              </option>
-            ))}
-          </select>
-        </div>
+      <div>
+      <label className={styles.label}>Select Token</label>
+      <select
+        className={styles.select}
+        value={selectedToken?.contract_id || ''}
+        onChange={(e) => handleTokenChange(e.target.value)}
+        disabled={!signedAccountId || isSubmitting}
+      >
+        {user_fts?.map((token, index) => (
+          <option key={index} value={token.contract_id}>
+            {token.metadata?.symbol || token.symbol || 'Unknown'} ({token.contract_id})
+          </option>
+        ))}
+      </select>
+      </div>
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Amount per link</label>
-          <input
-            type="number"
-            className={styles.input}
-            placeholder="Enter an amount"
-            value={formData.amountPerLink}
-            onChange={(e) => handleInputChange('amountPerLink', parseFloat(e.target.value) || 0)}
-            disabled={!signedAccountId || isSubmitting}
-            min="0"
-            step="any"
-          />
-          <div className={styles.assistiveText}>
-            {formatBalance(selectedToken.balance, selectedToken.metadata?.decimals)} available
-          </div>
-          {errors.amountPerLink && <div className={styles.error}>{errors.amountPerLink}</div>}
-        </div>
+      <Input
+        id="amount-per-link"
+        type="number"
+        label="Amount per link"
+        placeholder="Enter an amount"
+        value={formData.amountPerLink}
+        onChange={(e) => handleInputChange('amountPerLink', parseFloat(e.target.value) || 0)}
+        disabled={!signedAccountId || isSubmitting}
+        min="0"
+        step="any"
+        helperText={`${formatBalance(selectedToken.balance, selectedToken.metadata?.decimals)} available`}
+        error={errors.amountPerLink}
+      />
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Number of links</label>
-          <input
-            type="number"
-            className={styles.input}
-            placeholder="1 - 30"
-            value={formData.numberLinks}
-            onChange={(e) => handleInputChange('numberLinks', parseInt(e.target.value) || 1)}
-            disabled={!signedAccountId || isSubmitting}
-            min="1"
-            max="30"
-          />
-          {errors.numberLinks && <div className={styles.error}>{errors.numberLinks}</div>}
-        </div>
+      <Input
+        id="number-of-links"
+        type="number"
+        label="Number of links"
+        placeholder="1 - 30"
+        value={formData.numberLinks}
+        onChange={(e) => handleInputChange('numberLinks', parseInt(e.target.value) || 1)}
+        disabled={!signedAccountId || isSubmitting}
+        min="1"
+        max="30"
+        error={errors.numberLinks}
+      />
 
-        <button
-          type="submit"
-          className={`${styles.button} ${isSubmitting ? styles.loading : ''}`}
-          disabled={!signedAccountId || isSubmitting}
-        >
-          {isSubmitting ? '' : 'Create Drop'}
-        </button>
-      </form>
-    </div>
+      <Button
+        className='margin-top--md'
+        type="submit"
+        variant="primary"
+        fullWidth
+        loading={isSubmitting}
+        disabled={!signedAccountId || isSubmitting}
+      >
+        Create Drop
+      </Button>
+    </form>
   );
 };
 

@@ -1,0 +1,260 @@
+.button {
+  // Base styles
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  
+  // Typography
+  font-family: var(--bs-body-font-family);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-tight);
+  text-decoration: none;
+  white-space: nowrap;
+  
+  // Layout
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  
+  // Transitions
+  transition: var(--transition-all);
+  
+  // Remove default button styles
+  appearance: none;
+  user-select: none;
+  
+  &:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+  }
+  
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &[target="_blank"]::after {
+    content: none;
+  }
+}
+
+// ============================================================================
+// SIZE VARIANTS
+// ============================================================================
+
+.button--small {
+  padding: calc(var(--space-1) + 2px) var(--space-4);
+  font-size: var(--text-sm);
+  min-height: 32px;
+}
+
+.button--medium {
+  padding: var(--space-2) var(--space-6);
+  font-size: var(--text-base);
+  min-height: 40px;
+}
+
+.button--large {
+  padding: var(--space-component-md) var(--space-8);
+  font-size: var(--text-lg);
+  min-height: 48px;
+}
+
+// ============================================================================
+// COLOR VARIANTS
+// ============================================================================
+
+// Primary Button
+.button--primary {
+  background: var(--near-brand-primary);
+  color: var(--color-text-inverse)!important;
+  border-color: var(--near-brand-primary);
+  
+  &:hover:not(:disabled) {
+    background: var(--near-brand-primary-600);
+    border-color: var(--near-brand-primary-600);
+    box-shadow: var(--shadow-card);
+  }
+  
+  &:active:not(:disabled) {
+    background: var(--near-brand-primary-600);
+  }
+}
+
+// Secondary Button
+.button--secondary {
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-primary);
+  
+  &:hover:not(:disabled) {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-border-secondary);
+    box-shadow: var(--shadow-card);
+  }
+  
+  &:active:not(:disabled) {
+    background: var(--color-bg-subtle);
+  }
+}
+
+// Outline Button
+.button--outline {
+  background: transparent;
+  color: var(--near-brand-primary);
+  border-color: var(--near-brand-primary);
+  
+  &:hover:not(:disabled) {
+    background: var(--color-bg-subtle);
+    border-color: var(--near-brand-primary-600);
+  }
+  
+  &:active:not(:disabled) {
+    background: var(--near-brand-primary-100);
+  }
+}
+
+// Ghost Button
+.button--ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+  border-color: transparent;
+  
+  &:hover:not(:disabled) {
+    background: var(--color-bg-subtle);
+    color: var(--near-brand-primary);
+  }
+  
+  &:active:not(:disabled) {
+    background: var(--color-bg-subtle);
+  }
+}
+
+// Danger Button
+.button--danger {
+  background: var(--color-danger);
+  color: var(--color-text-inverse);
+  border-color: var(--color-danger);
+  
+  &:hover:not(:disabled) {
+    background: var(--color-danger-hover);
+    border-color: var(--color-danger-hover);
+    box-shadow: var(--shadow-card);
+  }
+  
+  &:active:not(:disabled) {
+    background: var(--color-danger-active);
+  }
+}
+
+// ============================================================================
+// STATE VARIANTS
+// ============================================================================
+
+// Full Width
+.button--fullWidth {
+  width: 100%;
+}
+
+// Disabled State
+.button--disabled,
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+// Loading State
+.button--loading {
+  position: relative;
+  pointer-events: none;
+  
+  .button__text,
+  .button__icon {
+    opacity: 0;
+  }
+}
+
+// ============================================================================
+// BUTTON ELEMENTS
+// ============================================================================
+
+.button__text {
+  display: inline-block;
+}
+
+.button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  
+  svg {
+    width: 1.25em;
+    height: 1.25em;
+  }
+}
+
+.button__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ============================================================================
+// LOADING SPINNER
+// ============================================================================
+
+.spinner {
+  width: 1.25em;
+  height: 1.25em;
+  animation: spin 1s linear infinite;
+}
+
+.spinnerCircle {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 20;
+  stroke-linecap: round;
+  animation: spinnerDash 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinnerDash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+// ============================================================================
+// RESPONSIVE ADJUSTMENTS
+// ============================================================================
+
+@media (max-width: 768px) {
+  .button {
+    gap: var(--space-1);
+  }
+  
+  .button--large {
+    padding: var(--space-2) var(--space-6);
+    font-size: var(--text-base);
+    min-height: 44px;
+  }
+}

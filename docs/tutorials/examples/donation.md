@@ -4,7 +4,7 @@ title: Donation
 description: "Learn to build a donation smart contract that accepts NEAR tokens, tracks donations, and distributes funds to beneficiaries."
 ---
 
-import {CodeTabs, Language, Github} from '@site/src/components/codetabs';
+import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';

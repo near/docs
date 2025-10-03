@@ -3,7 +3,7 @@ id: core
 title: Transfers
 description: "Learn how to implement NFT transfers, including simple and cross-contract transfer calls, in your smart contract."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

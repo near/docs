@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CodeBlock from '@theme/CodeBlock';
 
-import { Github } from '../codetabs';
+import { Github } from '../UI/Codetabs';
 
 import DesktopView from './desktop';
 import MobileView from './mobile';

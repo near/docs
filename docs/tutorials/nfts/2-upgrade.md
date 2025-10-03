@@ -4,7 +4,7 @@ title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
 description: "Learn how to implement the nft_tokens_for_owner method."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

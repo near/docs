@@ -6,7 +6,7 @@ description: "Interact with multiple contracts in your frontend."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 This example showcases how to interact with multiple contracts from a single frontend.
 

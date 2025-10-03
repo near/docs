@@ -3,7 +3,7 @@ id: reduce-size
 title: Reducing Contract Size
 description: "Learn strategies to reduce NEAR smart contract size for optimized deployment and performance."
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

@@ -3,7 +3,7 @@ id: yield-resume
 title: Yield and Resume
 description: "Wait for an external response and resume execution"
 ---
-import {CodeTabs, Language, Github} from '@site/src/components/codetabs'
+import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

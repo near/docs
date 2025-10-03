@@ -4,7 +4,7 @@ sidebar_label: Linkdrop contract
 title: Introducing the linkdrop contract we can use
 description: "Learn how the linkdrop contract enables creating new NEAR accounts through cross-contract calls."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

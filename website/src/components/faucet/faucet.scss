@@ -1,7 +1,4 @@
-.faucet-card {
-    border: 1px solid var(--sand6, #ddd);
-    border-radius: 12px;
-    padding: 1.5rem;
+.faucet-form {
     display: flex;
     flex-direction: column;
     gap: var(--faucet-form-gap, 1rem);
@@ -20,28 +17,6 @@
     margin-bottom: .25rem;
 }
 
-input[name=accountId] {
-    width: 100%;
-    padding: .75rem .9rem;
-    border: 1px solid var(--sand7, #ccc);
-    border-radius: 8px;
-    font-size: .95rem;
-    font-family: inherit;
-}
-
-input[name=accountId]:focus {
-    outline: 2px solid var(--blue6, #5b9bff);
-    outline-offset: 2px;
-}
-
-input.error {
-    border-color: var(--red8, #d93025);
-}
-
-input.success {
-    border-color: var(--green8, #1e8e3e);
-}
-
 .input-msg {
     font-size: .75rem;
     line-height: 1.1;
@@ -55,27 +30,13 @@ input.success {
     color: var(--green10, #137333);
 }
 
-.faucet-card button {
-    align-items: center;
-    text-align: center;
-    padding: .7rem 1.1rem;
-    background: var(--blue9, #265d97);
-    color: #fff;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-button:disabled {
-    opacity: .6;
-    cursor: not-allowed;
-}
-
 .help-text {
     font-size: .875rem;
+    margin: 0;
 }
 
 .help-text a {
-    color: var(--blue10, #1e4c7b);
+    color: inherit;
+    text-decoration: underline;
+    font-weight: 600;
 }

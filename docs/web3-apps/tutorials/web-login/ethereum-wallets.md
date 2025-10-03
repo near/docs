@@ -4,7 +4,7 @@ id: ethereum-wallets
 description: "Learn how to integrate Ethereum wallets like MetaMask into your NEAR DApp using the Near Wallet Selector, Web3Modal, and wagmi libraries."
 ---
 
-import { Github } from "@site/src/components/codetabs"
+import { Github } from "@site/src/components/UI/Codetabs"
 
 Using the [Wallet Selector](./wallet-selector.md) it is possible to login into NEAR applications using Ethereum wallets like MetaMask, WalletConnect and many others.
 
