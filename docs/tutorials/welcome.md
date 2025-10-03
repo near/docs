@@ -8,10 +8,10 @@ hide_title: true
 ---
 
 import Card from "@site/src/components/UI/Card";
+import Button from "@site/src/components/UI/Button";
 
 <div className="landing">
 
-{" "}
 <div className="landing-intro">
   <h1>Examples & Tutorials</h1>
   <p className="landing-subtitle">
@@ -111,12 +111,13 @@ import Card from "@site/src/components/UI/Card";
   <h2>Ready to build something amazing?</h2>
   <p>Start with our hands-on tutorials and learn by doing!</p>
   <div className="landing-cta">
-    <a
+    <Button
       href="/tutorials/auction/introduction"
-      className="button button--primary button--lg"
+      variant="primary"
+      size="large"
     >
       Start Building
-    </a>
+    </Button>
   </div>
 </div>
 
