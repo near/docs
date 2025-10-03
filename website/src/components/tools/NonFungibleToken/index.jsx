@@ -14,11 +14,8 @@ const NonFungibleToken = ({
         This tool allows you to mint Non-Fungible Tokens
       </p>
       <MintNft reload={reload} />
+      <div style={{ margin: 'var(--space-4) 0' }} />
       <ListToken loading={loading} collections={user_collections} />
-      <hr />
-      <p>For more advanced options please use tools created by the community:</p>
-      <Button fullWidth href="https://www.mintbase.xyz/" target="_blank" className="margin-bottom--md">MintBase</Button>
-      <Button fullWidth href="https://paras.id/" target="_blank" className="margin-bottom--md">Paras</Button>
     </>
   );
 };

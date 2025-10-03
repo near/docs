@@ -13,8 +13,8 @@ const FungibleToken = ({
       <p>This tool allows you to deploy your own NEP-141 smart contract (Fungible Tokens)</p>
       <CreateTokenForm reload={reload} />
       <ListToken loading={loading} tokens={user_fts} />
-      <hr />
-      <p>For more advanced options please use tools created by the community:</p>
+      <hr className='subsection' />
+      <p>Tools created by the community:</p>
       <Button 
         variant="primary" 
         href="https://tkn.homes/" 

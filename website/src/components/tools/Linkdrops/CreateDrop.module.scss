@@ -3,13 +3,18 @@
 }
 
 .form {
-  padding: var(--space-8);
-}
-
-.formGroup {
   display: flex;
   flex-direction: column;
   margin-bottom: var(--space-6);
+  width: 100%;
+  gap: var(--space-4);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-4);
+  width: 100%;
 }
 
 .label {
@@ -21,6 +26,7 @@
 
 .input,
 .select {
+  width: 100%;
   padding: var(--space-3);
   border: var(--border-1) solid var(--color-border-primary);
   border-radius: var(--radius-md);

@@ -20,7 +20,7 @@ const ListToken = ({ loading, collections }) => {
 
   return (
     <Accordion 
-      title="All Your Non-Fungible Tokens" 
+      title="Your Non-Fungible Tokens" 
       detail={content}
     />
   );

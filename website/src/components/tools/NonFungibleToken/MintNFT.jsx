@@ -182,7 +182,7 @@ const MintNFT = ({ reload }) => {
   };
 
   return (
-    <Card className={styles.container}>
+    <Card>
       <form onSubmit={handleSubmit} className={styles.form}>
         <Input
           id="title"

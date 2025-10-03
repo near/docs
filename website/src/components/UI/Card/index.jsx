@@ -17,7 +17,6 @@ const Card = ({
 }) => {
   // Determine if card should be clickable
   const isClickable = href || onClick;
-  const Component = href ? 'a' : 'div';
   
   // Build CSS classes
   const cardClasses = [
@@ -90,7 +89,7 @@ const Card = ({
   // Render appropriate component
   if (href) {
     return (
-      <Component
+      <a
         className={cardClasses}
         href={href}
         target={target}
@@ -99,12 +98,12 @@ const Card = ({
         {...props}
       >
         {cardContent}
-      </Component>
+      </a>
     );
   }
 
   return (
-    <Component
+    <div
       className={cardClasses}
       onClick={onClick}
       role={isClickable ? 'button' : undefined}
@@ -118,7 +117,7 @@ const Card = ({
       {...props}
     >
       {cardContent}
-    </Component>
+    </div>
   );
 };
 

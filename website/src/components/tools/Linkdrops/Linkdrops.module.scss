@@ -2,18 +2,15 @@
   margin: var(--space-3) auto;
 }
 
-
 .switchSection {
   display: flex;
   justify-content: center;
-  margin-bottom: var(--space-6);
 }
 
 .switchContainer {
   display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-3) var(--space-6);
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
   background: var(--color-bg-subtle);
   border-radius: var(--radius-full);
   border: var(--border-1) solid var(--color-border-primary);
@@ -35,8 +32,8 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 56px;
-  height: 30px;
+  width: 42px;
+  height: 24px;
 }
 
 .switchInput {
@@ -61,8 +58,8 @@
 .switchKnob {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 20px;
+  width: 20px;
   left: 2px;
   top: 2px;
   background: linear-gradient(145deg, #ffffff, #f0f0f0);
@@ -76,7 +73,7 @@
 }
 
 .switchInput:checked + .slider .switchKnob {
-  transform: translateX(26px);
+  transform: translateX(20px);
   background: linear-gradient(145deg, #ffffff, #f8f8f8);
 }
 

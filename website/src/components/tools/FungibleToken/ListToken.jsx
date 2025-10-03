@@ -106,7 +106,7 @@ const ListToken = ({ tokens, loading }) => {
   );
 
   return (
-      <Accordion title="All Your Fungible Tokens" detail={accordionContent} />
+      <Accordion title="Your Fungible Tokens" detail={accordionContent} />
   );
 };
 

@@ -192,8 +192,8 @@ const CreateTokenForm = ({ reload = () => { } }) => {
   };
 
   return (
-    <Card className={styles.container}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <Card style={{marginBottom: 'var(--space-4)'}}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formGrid}>
           <Input
             id="token-name"

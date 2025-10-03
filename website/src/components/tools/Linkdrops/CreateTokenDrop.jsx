@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './CreateTokenDrop.module.scss';
+import styles from './CreateDrop.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { toast } from 'react-toastify';
 import { generateAndStore } from '../hooks/useLinkdrops';
@@ -24,9 +24,8 @@ const parseAmount = (amount, decimals) => {
   return BigInt(integerPart + decimalPart.padEnd(decimals, '0'));
 };
 
-const depositForFT = (numberLinks) => 
+const depositForFT = (numberLinks) =>
   NEAR.toUnits(0.0426 * numberLinks).toString();
-
 
 const depositForNear = (amountPerLink, numberLinks) =>
   NEAR.toUnits((0.0426 + amountPerLink) * numberLinks).toString();
@@ -40,9 +39,8 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedToken, setSelectedToken] = useState(user_fts?.[0] || null);
-  
-  const { signAndSendTransactions, signedAccountId } = useWalletSelector();
 
+  const { signAndSendTransactions, signedAccountId } = useWalletSelector();
 
   const validateForm = () => {
     const newErrors = {};
@@ -157,7 +155,7 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
       });
     }
 
-    try {      
+    try {
       await signAndSendTransactions({ transactions });
 
       toast.success('Linkdrop Created - Copy the link and share it with your friends');
@@ -179,73 +177,71 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
   }
 
   return (
-    <Card className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <Input
-          id="drop-name"
-          label="Token Drop name"
-          placeholder="NEARCon Token Giveaway"
-          value={formData.dropName}
-          onChange={(e) => handleInputChange('dropName', e.target.value)}
-          disabled={!signedAccountId || isSubmitting}
-          error={errors.dropName}
-        />
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <Input
+        id="drop-name"
+        label="Token Drop name"
+        placeholder="NEARCon Token Giveaway"
+        value={formData.dropName}
+        onChange={(e) => handleInputChange('dropName', e.target.value)}
+        disabled={!signedAccountId || isSubmitting}
+        error={errors.dropName}
+      />
 
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Select Token</label>
-          <select
-            className={styles.select}
-            value={selectedToken?.contract_id || ''}
-            onChange={(e) => handleTokenChange(e.target.value)}
-            disabled={!signedAccountId || isSubmitting}
-          >
-            {user_fts?.map((token, index) => (
-              <option key={index} value={token.contract_id}>
-                {token.metadata?.symbol || token.symbol || 'Unknown'} ({token.contract_id})
-              </option>
-            ))}
-          </select>
-        </div>
+      <div>
+      <label className={styles.label}>Select Token</label>
+      <select
+        className={styles.select}
+        value={selectedToken?.contract_id || ''}
+        onChange={(e) => handleTokenChange(e.target.value)}
+        disabled={!signedAccountId || isSubmitting}
+      >
+        {user_fts?.map((token, index) => (
+          <option key={index} value={token.contract_id}>
+            {token.metadata?.symbol || token.symbol || 'Unknown'} ({token.contract_id})
+          </option>
+        ))}
+      </select>
+      </div>
 
-        <Input
-          id="amount-per-link"
-          type="number"
-          label="Amount per link"
-          placeholder="Enter an amount"
-          value={formData.amountPerLink}
-          onChange={(e) => handleInputChange('amountPerLink', parseFloat(e.target.value) || 0)}
-          disabled={!signedAccountId || isSubmitting}
-          min="0"
-          step="any"
-          helperText={`${formatBalance(selectedToken.balance, selectedToken.metadata?.decimals)} available`}
-          error={errors.amountPerLink}
-        />
+      <Input
+        id="amount-per-link"
+        type="number"
+        label="Amount per link"
+        placeholder="Enter an amount"
+        value={formData.amountPerLink}
+        onChange={(e) => handleInputChange('amountPerLink', parseFloat(e.target.value) || 0)}
+        disabled={!signedAccountId || isSubmitting}
+        min="0"
+        step="any"
+        helperText={`${formatBalance(selectedToken.balance, selectedToken.metadata?.decimals)} available`}
+        error={errors.amountPerLink}
+      />
 
-        <Input
-          id="number-of-links"
-          type="number"
-          label="Number of links"
-          placeholder="1 - 30"
-          value={formData.numberLinks}
-          onChange={(e) => handleInputChange('numberLinks', parseInt(e.target.value) || 1)}
-          disabled={!signedAccountId || isSubmitting}
-          min="1"
-          max="30"
-          error={errors.numberLinks}
-        />
+      <Input
+        id="number-of-links"
+        type="number"
+        label="Number of links"
+        placeholder="1 - 30"
+        value={formData.numberLinks}
+        onChange={(e) => handleInputChange('numberLinks', parseInt(e.target.value) || 1)}
+        disabled={!signedAccountId || isSubmitting}
+        min="1"
+        max="30"
+        error={errors.numberLinks}
+      />
 
-        <Button
-          className='margin-top--md'
-          type="submit"
-          variant="primary"
-          fullWidth
-          loading={isSubmitting}
-          disabled={!signedAccountId || isSubmitting}
-        >
-          Create Drop
-        </Button>
-      </form>
-    </Card>
+      <Button
+        className='margin-top--md'
+        type="submit"
+        variant="primary"
+        fullWidth
+        loading={isSubmitting}
+        disabled={!signedAccountId || isSubmitting}
+      >
+        Create Drop
+      </Button>
+    </form>
   );
 };
 

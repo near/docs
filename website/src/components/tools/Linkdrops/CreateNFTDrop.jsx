@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import styles from './CreateNFTDrop.module.scss';
+import styles from './CreateDrop.module.scss';
 import { NEAR } from '@near-js/tokens';
 import { generateAndStore } from '../hooks/useLinkdrops';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { ImgNft } from '../../UI/ImgNft';
-import Card from '../../UI/Card';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
 
@@ -159,91 +158,89 @@ const CreateNFTDrop = ({ user_collections, reload }) => {
   };
 
   return (
-    <Card className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <Input
-          id="drop-name"
-          label="Token Drop name"
-          placeholder="NEARCon Token Giveaway"
-          value={formData.dropName}
-          onChange={(e) => handleInputChange('dropName', e.target.value)}
-          disabled={!signedAccountId}
-          error={errors.dropName}
-        />
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <Input
+        id="drop-name"
+        label="Token Drop name"
+        placeholder="NEARCon Token Giveaway"
+        value={formData.dropName}
+        onChange={(e) => handleInputChange('dropName', e.target.value)}
+        disabled={!signedAccountId}
+        error={errors.dropName}
+      />
 
-        <div className={styles.formGroup}>
-          <div className={styles.text}>Please select one of your NFTs to drop:</div>
-          <div className={styles.accordion}>
-            {user_collections?.map((collection) =>
-              Object.entries(collection).map(([contractId, nfts]) => (
-                <div key={contractId} className={styles.accordionItem}>
-                  <button
-                    type="button"
-                    className={styles.accordionTrigger}
-                    onClick={() => toggleAccordion(contractId)}
-                    aria-expanded={expandedAccordions[contractId] || false}
-                  >
-                    {contractId}
-                  </button>
-                  {expandedAccordions[contractId] && (
-                    <div className={styles.accordionContent}>
-                      <div className={styles.nftGrid}>
-                        {nfts?.map((nft) => (
-                          <div
-                            key={nft.token_id}
-                            className={`${styles.nftCard} ${
-                              selectedNft?.token_id === nft.token_id ? styles.selected : ''
-                            }`}
-                            onClick={() => selectNft(nft)}
-                          >
-                            <ImgNft nft={nft}/>
-                            <div className={styles.nftTitle}>
-                              {nft?.metadata?.title || 'Untitled'}
-                            </div>
-                            <div className={styles.nftTokenId}>
-                              ID: {nft.token_id}
-                            </div>
+      <div className={styles.inputGroup}>
+        <div className={styles.text}>Please select one of your NFTs to drop:</div>
+        <div className={styles.accordion}>
+          {user_collections?.map((collection) =>
+            Object.entries(collection).map(([contractId, nfts]) => (
+              <div key={contractId} className={styles.accordionItem}>
+                <button
+                  type="button"
+                  className={styles.accordionTrigger}
+                  onClick={() => toggleAccordion(contractId)}
+                  aria-expanded={expandedAccordions[contractId] || false}
+                >
+                  {contractId}
+                </button>
+                {expandedAccordions[contractId] && (
+                  <div className={styles.accordionContent}>
+                    <div className={styles.nftGrid}>
+                      {nfts?.map((nft) => (
+                        <div
+                          key={nft.token_id}
+                          className={`${styles.nftCard} ${
+                            selectedNft?.token_id === nft.token_id ? styles.selected : ''
+                          }`}
+                          onClick={() => selectNft(nft)}
+                        >
+                          <ImgNft nft={nft}/>
+                          <div className={styles.nftTitle}>
+                            {nft?.metadata?.title || 'Untitled'}
                           </div>
-                        ))}
-                      </div>
+                          <div className={styles.nftTokenId}>
+                            ID: {nft.token_id}
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  )}
-                </div>
-              ))
-            )}
-          </div>
+                  </div>
+                )}
+              </div>
+            ))
+          )}
         </div>
+      </div>
 
-        <Input
-          id="contract-id"
-          label="NFT contract address"
-          placeholder="Select a Token"
-          value={formData.contractId}
-          disabled
-          error={errors.contractId}
-        />
+      <Input
+        id="contract-id"
+        label="NFT contract address"
+        placeholder="Select a Token"
+        value={formData.contractId}
+        disabled
+        error={errors.contractId}
+      />
 
-        <Input
-          id="token-id"
-          label="Token ID"
-          placeholder="Select a Token"
-          value={formData.tokenId}
-          disabled
-          error={errors.tokenId}
-        />
+      <Input
+        id="token-id"
+        label="Token ID"
+        placeholder="Select a Token"
+        value={formData.tokenId}
+        disabled
+        error={errors.tokenId}
+      />
 
-        <Button
-          className='margin-top--md'
-          type="submit"
-          variant="primary"
-          fullWidth
-          loading={isSubmitting}
-          disabled={!signedAccountId || isSubmitting}
-        >
-          Create Drop
-        </Button>
-      </form>
-    </Card>
+      <Button
+        className='margin-top--md'
+        type="submit"
+        variant="primary"
+        fullWidth
+        loading={isSubmitting}
+        disabled={!signedAccountId || isSubmitting}
+      >
+        Create Drop
+      </Button>
+    </form>
   );
 };
 

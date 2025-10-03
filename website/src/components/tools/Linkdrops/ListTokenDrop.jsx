@@ -26,8 +26,8 @@ const ListTokenDrop = ({ drops }) => {
 
   if (!drops || drops.length === 0) {
     return (
-      <Card className={styles.container}>
-        <h3 className={styles.dropsList}>Your Drops</h3>
+      <Card style={{ marginTop: 'var(--space-4)' }}>
+        <h3>Your Drops</h3>
         <div className={styles.emptyState}>
           <div className={styles.emptyIcon}>📦</div>
           <p className={styles.emptyTitle}>No drops created yet</p>
@@ -40,7 +40,7 @@ const ListTokenDrop = ({ drops }) => {
   }
 
   return (
-    <Card className={styles.container}>
+    <Card style={{ marginTop: 'var(--space-4)' }}>
       <h3 className={styles.dropsList}>Your Drops</h3>
       <div className={styles.dropsGrid}>
         {drops.map((drop, index) => {
