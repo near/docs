@@ -210,27 +210,3 @@
   0% { transform: translateY(-50%) rotate(0deg); }
   100% { transform: translateY(-50%) rotate(360deg); }
 }
-
-// Dark theme adjustments
-[data-theme='dark'] {
-  .form {
-    border-color: var(--ifm-color-emphasis-200);
-    background: var(--ifm-background-color);
-  }
-
-  .formSection {
-    border-color: var(--ifm-color-emphasis-200);
-    background: var(--ifm-background-surface-color);
-  }
-
-  .input,
-  .textarea {
-    border-color: var(--ifm-color-emphasis-200);
-    background: var(--ifm-background-surface-color);
-  }
-
-  .fileInput {
-    border-color: var(--ifm-color-emphasis-200);
-    background: var(--ifm-background-surface-color);
-  }
-}
