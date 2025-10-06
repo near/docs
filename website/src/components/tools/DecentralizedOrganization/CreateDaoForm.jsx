@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import styles from './CreateDaoForm.module.scss';
 // import LabelWithTooltip from '../Shared/LabelWithTooltip';
 import { NEAR } from '@near-js/tokens';
+import Card from '../../UI/Card';
 
 const KILOBYTE = 1024;
 const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
@@ -209,20 +210,22 @@ const CreateDaoForm = ({ reload }) => {
   }, [signedAccountId]);
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Create a Decentralized Autonomous Organization</h2>
-      <p className={styles.subtitle}>This tool allows you to deploy your own Sputnik DAO smart contract (DAOs)</p>
+    <>
+      <h2>Create a Decentralized Autonomous Organization</h2>
+      <p>This tool allows you to deploy your own Sputnik DAO smart contract (DAOs)</p>
 
+      <Card>
       <form onSubmit={handleSubmit((data) => onSubmit(data))} className={styles.form}>
         <div className={styles.section}>
-          <h3 className={styles.sectionTitle}>Public Information</h3>
+          <h3>Public Information</h3>
           <div className={styles.formSection}>
+            <label className={styles.label}>Organization Name *</label>
+            
             <div className={styles.formGrid}>
               <div className={styles.formGroup}>
-                <label className={styles.label}>Organization Name *</label>
                 <input
                   className={styles.input}
-                  placeholder="Enter Public Name"
+                  placeholder="Display Name for the DAO"
                   {...register('display_name', { required: 'Display name is required' })}
                   disabled={!signedAccountId}
                 />
@@ -238,15 +241,9 @@ const CreateDaoForm = ({ reload }) => {
                 }}
                 render={({ field, fieldState }) => (
                   <div className={styles.formGroup}>
-                    <label className={styles.label}>
-                      {/* <LabelWithTooltip
-                        label="Account ID *"
-                        tooltip="Name of the sub-account to which contract will be deployed"
-                      /> */}
-                    </label>
                     <input
                       className={styles.input}
-                      placeholder="Enter account name"
+                      placeholder="DAO Account prefix (e.g. my-org)"
                       {...field}
                       disabled={!signedAccountId}
                     />
@@ -388,7 +385,8 @@ const CreateDaoForm = ({ reload }) => {
           }
         </button>
       </form>
-    </div>
+    </Card>
+    </>
   );
 };
 

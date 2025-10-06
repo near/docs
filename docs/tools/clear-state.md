@@ -5,7 +5,7 @@ description: "Clean up a contract's state."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 
 
 This simple command-line tool allows you to clean up the state of a NEAR account without deleting it.

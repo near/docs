@@ -5,7 +5,7 @@ description: "Learn about chain abstraction and how NEAR's framework makes block
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs";
 
 Blockchain development today faces a critical challenge: users need to understand complex blockchain concepts, manage multiple wallets, and deal with different networks just to use basic applications. Chain abstraction solves this by making blockchain technology invisible to end users while preserving all of the underlying benefits.
 

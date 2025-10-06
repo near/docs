@@ -1,7 +1,7 @@
 import React from 'react';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import GitHubInternal from './github';
+import GitHubInternal from '../../github';
 
 const lang2label = {
   rust: '🦀 Rust',

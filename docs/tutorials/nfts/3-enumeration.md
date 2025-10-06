@@ -4,7 +4,7 @@ title: Enumeration
 sidebar_label: Enumeration
 description: "Extend your NFT smart contract with enumeration methods to track and query tokens."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

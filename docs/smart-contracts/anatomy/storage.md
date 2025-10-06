@@ -8,7 +8,7 @@ description: "Explore how NEAR smart contracts manage their state."
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs";
 import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';
 
 Smart contracts store data in their account's state, which is public on the chain. The storage starts **empty** until a contract is deployed and the state is initialized.

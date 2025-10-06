@@ -4,7 +4,7 @@ title: Minting
 sidebar_label: Minting
 description: "Learn to mint NFTs from scratch with a smart contract that follows all NEAR NFT standards."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

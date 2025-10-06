@@ -5,11 +5,11 @@ sidebar_label: DAO Agent
 description: "Learn about the key parts of the agent as part of the Verifiable AI DAO Shade tutorial that walks through how to index the agent contract, using verifiable AI, and interacting with the custom agent contract."
 ---
 
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 On this page, you'll examine the agent component of the DAO. The agent continuously monitors for new proposals, uses an LLM to evaluate them, and submits its vote along with reasoning back to the smart contract.
 
---- 
+---
 
 ## Starting the Agent
 
@@ -43,13 +43,13 @@ Having retrieved both the proposal and manifesto, the agent is ready to make its
 
 ## Voting with an LLM
 
-To make a decision on the proposal, the agent uses an LLM provided by [NEAR AI](https://docs.near.ai/cloud/get-started/). NEAR AI provides verifiable and private inference by running LLMs in GPU TEEs. In this tutorial, the DAO uses NEAR AI for its `verifiable` component. This allows the agent verify that no one is interfering with the the LLM response, as could happen with centralized model hosting. The agent knows the response from the LLM is actually a function of the input, and comes from the expected model. 
+To make a decision on the proposal, the agent uses an LLM provided by [NEAR AI](https://docs.near.ai/cloud/get-started/). NEAR AI provides verifiable and private inference by running LLMs in GPU TEEs. In this tutorial, the DAO uses NEAR AI for its `verifiable` component. This allows the agent verify that no one is interfering with the the LLM response, as could happen with centralized model hosting. The agent knows the response from the LLM is actually a function of the input, and comes from the expected model.
 
 :::note
 In this tutorial, the agent does not actually verify the attestation from the LLM. Full verification will be added in a future update to the tutorial.
 :::
 
-The DAO uses the `Open AI SDK` to interact with the model. First, the agent sets up the client passing the `base URL` for NEAR AI and an `API key` for the Cloud (we'll explain how to obtain a key in the next section). 
+The DAO uses the `Open AI SDK` to interact with the model. First, the agent sets up the client passing the `base URL` for NEAR AI and an `API key` for the Cloud (we'll explain how to obtain a key in the next section).
 
 
 <Github fname="ai.ts" language="typescript"
@@ -97,6 +97,6 @@ The agent then calls `agent_vote` on the agent contract using the `agentCall` fu
 
 ---
 
-## Next Steps 
+## Next Steps
 
-That completes the overview of the DAO system as a whole! You can now fork the [repository](https://github.com/NearDeFi/verifiable-ai-dao/tree/main) to create your own yield and resume-based Shade Agent. On the [final page](./deploying.md) of this tutorial, you'll learn how to deploy the AI DAO yourself. 
+That completes the overview of the DAO system as a whole! You can now fork the [repository](https://github.com/NearDeFi/verifiable-ai-dao/tree/main) to create your own yield and resume-based Shade Agent. On the [final page](./deploying.md) of this tutorial, you'll learn how to deploy the AI DAO yourself.

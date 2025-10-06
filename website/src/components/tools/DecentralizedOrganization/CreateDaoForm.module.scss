@@ -4,26 +4,14 @@
   padding: 1rem;
 }
 
-.title {
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--ifm-heading-color);
-  text-align: center;
-}
-
 .subtitle {
   font-size: 1rem;
-  color: var(--ifm-color-emphasis-700);
   text-align: center;
   margin-bottom: 2rem;
 }
 
 .form {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
-  padding: 2rem;
-  background: var(--ifm-background-surface-color);
+  gap: var(--space-4);
 }
 
 .section {
@@ -32,13 +20,6 @@
   &:last-child {
     margin-bottom: 0;
   }
-}
-
-.sectionTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--ifm-heading-color);
 }
 
 .formSection {
@@ -85,7 +66,6 @@
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 6px;
   background: var(--ifm-background-color);
-  color: var(--ifm-font-color-base);
   font-size: 0.9rem;
   transition: border-color 0.2s ease;
 
@@ -97,12 +77,7 @@
 
   &:disabled {
     background: var(--ifm-color-emphasis-100);
-    color: var(--ifm-color-emphasis-600);
     cursor: not-allowed;
-  }
-
-  &::placeholder {
-    color: var(--ifm-color-emphasis-600);
   }
 }
 
@@ -117,7 +92,6 @@
   border: 2px dashed var(--ifm-color-emphasis-300);
   border-radius: 6px;
   background: var(--ifm-background-color);
-  color: var(--ifm-font-color-base);
   font-size: 0.9rem;
   cursor: pointer;
   transition: border-color 0.2s ease;
@@ -128,20 +102,17 @@
 
   &:disabled {
     background: var(--ifm-color-emphasis-100);
-    color: var(--ifm-color-emphasis-600);
     cursor: not-allowed;
   }
 }
 
 .fileHint {
   font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-700);
   margin-top: 0.5rem;
 }
 
 .assistiveText {
   font-size: 0.8rem;
-  color: var(--ifm-color-primary-dark);
   margin-top: 0.25rem;
 }
 

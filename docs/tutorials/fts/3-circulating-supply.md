@@ -4,7 +4,7 @@ title: Creating a Circulating Supply
 sidebar_label: Circulating Supply
 description: "Learn to create a NEAR fungible token's initial supply, log events, and view it in wallet."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

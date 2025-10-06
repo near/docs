@@ -5,7 +5,7 @@ sidebar_label: Key Components
 description: "Learn about the components of a simple Shade Agent."
 ---
 
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 import { SigsSupport } from '@site/src/components/sigsSupport';
 
 In this section, we'll explore the main components of the [quickstart template](https://github.com/NearDeFi/shade-agent-template) to understand how to develop a Shade Agent. We'll also look at how to modify the template to build an agent for your use case.
@@ -31,23 +31,23 @@ In the [transaction API Route](https://github.com/NearDeFi/shade-agent-template/
 In this example, we're signing a transaction to call an Ethereum contract to update the stored price of ETH. First, we retrieve the price of ETH (in this example, the function queries two different APIs and calculates the average).
 
 <Github fname="transaction.ts" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/fix-vulnerabilities/src/routes/transaction.ts#L25"
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts#L25"
     start="25" end="25" />
 
-Next, we build the `transaction payload` to be signed. To do this, we're using the `chainsig.js` library. 
+Next, we build the `transaction payload` to be signed. To do this, we're using the `chainsig.js` library.
 Using this library, we:
 1. `Derive the Ethereum address` that will be sending the transaction. This function takes the agent contract account ID since this is the predecessor account that is calling the Chain Signatures [MPC contract](https://github.com/Near-One/mpc/tree/main/libs/chain-signatures/contract), and a path. The path can be whatever string you like, different paths will derive different addresses.
 2. Create the `data`. This is what action we're performing, in this case, a function call to update the price in the contract.
 3. `Build the transaction and the transaction payload` by inputting the derived address, the target Ethereum smart contract, and the data.
 
 <Github fname="transaction.ts" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/fix-vulnerabilities/src/routes/transaction.ts#L64-L80"
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts#L64-L80"
     start="65" end="81" />
 
 Once we have the payload (also known as the hash), we can call the `requestSignature` function to sign the transaction. We specify the `keyType` as `Ecdsa` as we're signing for a blockchain that uses the `secp256k1` signature scheme.
 
 <Github fname="transaction.ts" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/fix-vulnerabilities/src/routes/transaction.ts#L37-L40"
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts#L37-L40"
     start="37" end="41" />
 
 The result is the `signature`.
@@ -55,17 +55,17 @@ The result is the `signature`.
 We then attach the signature to the Ethereum transaction and broadcast it to the target network.
 
 <Github fname="transaction.ts" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/fix-vulnerabilities/src/routes/transaction.ts#L44-L50"
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/src/routes/transaction.ts#L44-L50"
     start="44" end="51" />
 
 ---
 
-## Using Different Chains 
+## Using Different Chains
 
-We set up a chain adapter for Ethereum Sepolia in the [Ethereum.ts](https://github.com/NearDeFi/shade-agent-template/blob/main/src/utils/ethereum.ts) file using the `chainsig.js` library. This library allows us to easily construct transaction payloads to be signed by the agent. 
+We set up a chain adapter for Ethereum Sepolia in the [Ethereum.ts](https://github.com/NearDeFi/shade-agent-template/blob/main/src/utils/ethereum.ts) file using the `chainsig.js` library. This library allows us to easily construct transaction payloads to be signed by the agent.
 
 <Github fname="transaction.ts" language="javascript"
-    url="https://github.com/NearDeFi/shade-agent-template/blob/fix-vulnerabilities/src/utils/ethereum.ts#L42-L51"
+    url="https://github.com/NearDeFi/shade-agent-template/blob/main/src/utils/ethereum.ts#L42-L51"
     start="42" end="51" />
 
 You can set up chain adapters for a variety of chains, including EVM, Bitcoin, NEAR, Solana, SUI, XRP, Cosmos, and more to allow your agent to interact with multiple different chains. You can see a full list of the chains currently supported [here](https://github.com/NearDeFi/chainsig.js/tree/main?tab=readme-ov-file#supported-chains), but feel free to contribute any chain that is not yet supported.
@@ -74,7 +74,7 @@ Implementation details differ slightly from chain to chain; as such, we recommen
 
 If you are using a chain that uses the `ed25519` signature scheme (NEAR, Solana, SUI, Aptos, etc.), you should specify the `keyType` as `Eddsa` when calling `requestSignature`.
 
---- 
+---
 
 ## Next Steps
 

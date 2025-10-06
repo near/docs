@@ -5,7 +5,7 @@ description: "Learn to handle randomness on NEAR."
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 This example demonstrates a simple coin flip game on the NEAR blockchain, where players can guess the outcome of a coin flip and earn points. It includes both the smart contract and the frontend components.
 

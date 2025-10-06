@@ -4,7 +4,7 @@ sidebar_label: Base64 params, wrap up
 title: Using base64-encoded arguments when we create a new crossword puzzle
 description: "Learn how to simplify smart contract calls by sending crossword puzzle arguments as base64-encoded data."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import base64Encode from '/docs/assets/crosswords/boop-base64-encode.gif';

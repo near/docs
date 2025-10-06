@@ -7,13 +7,13 @@ description: "Learn how to use the Shade Agent API."
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github, Language} from "@site/src/components/codetabs"
+import {Github, Language} from "@site/src/components/UI/Codetabs"
 
-The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract to help you build a Shade Agent quickly. 
+The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract to help you build a Shade Agent quickly.
 
 ---
 
-## API Overview  
+## API Overview
 
 The API is packaged as a Docker image and included in your agent when it's uploaded to Phala Cloud. The API is accessible internally by default on port 3140, but it's not accessible from outside the TEE.
 
@@ -23,7 +23,7 @@ The API can be used in any language, but API wrappers are maintained in TypeScri
 
 ---
 
-## Setup 
+## Setup
 
 <Tabs groupId="code-tabs">
 
@@ -181,7 +181,7 @@ This function will only return the details once the agent has successfully regis
 
 ---
 
-## Agent Balance 
+## Agent Balance
 
 Fetches the NEAR balance of the agent's account in yoctoNEAR (1 NEAR = 10^24 yoctoNEAR).
 
@@ -237,7 +237,7 @@ Fetches the NEAR balance of the agent's account in yoctoNEAR (1 NEAR = 10^24 yoc
 Requests a signature from the Shade Agent for a multichain account (by calling request_signature on the agent contract). It has three arguments:
 - **path** - A string that decides which account the signature is for. The path can be set to anything, and by changing the path, you produce a signature for a different account.
 - **payload** - The hash of the transaction to be signed, given as a hex string.
-- **keyType** - The signature scheme being used to sign the payload `Ecdsa` (secp256k1) or `Eddsa` (ed25519). 
+- **keyType** - The signature scheme being used to sign the payload `Ecdsa` (secp256k1) or `Eddsa` (ed25519).
 
 It returns the signature for the transaction.
 
@@ -301,8 +301,8 @@ It returns the signature for the transaction.
     from shade_agent import request_signature
 
     res = await request_signature(
-      path="ethereum-1", 
-      payload="cf80cd8a...", 
+      path="ethereum-1",
+      payload="cf80cd8a...",
       key_type="Ecdsa", # Or "Eddsa"
     )
     ```
@@ -420,7 +420,7 @@ Makes a function call to the agent contract from the agent. This is used for cus
         arg1: "Value1",
         arg2: "Value2",
       },
-      gas: "30000000000000", // Optional 
+      gas: "30000000000000", // Optional
     })
     ```
 
@@ -468,7 +468,7 @@ Makes a function call to the agent contract from the agent. This is used for cus
 
 ## Agent View
 
-Makes a function call to a view method (a method that does not require gas) on the agent contract. It returns the result of the function call. 
+Makes a function call to a view method (a method that does not require gas) on the agent contract. It returns the result of the function call.
 
 <Tabs groupId="code-tabs">
 

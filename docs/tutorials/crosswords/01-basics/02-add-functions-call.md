@@ -5,7 +5,7 @@ title: Alter the smart contract, learning about basics of development
 description: "Modify the smart contract, create a subaccount, and learn to call methods on NEAR."
 
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

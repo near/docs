@@ -4,7 +4,7 @@ sidebar_label: Set up Rust and a contract skeleton
 title: Set up Rust, get a NEAR testnet account, NEAR CLI, and get a basic smart contract skeleton ready
 description: "Set up Rust, NEAR testnet account, and CLI to create a basic smart contract skeleton."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

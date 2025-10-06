@@ -7,7 +7,7 @@ description: "Learn about linkdrops following NEP-452 standard - distribute asse
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import { Github } from "@site/src/components/codetabs"
+import { Github } from "@site/src/components/UI/Codetabs"
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
