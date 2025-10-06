@@ -4,7 +4,7 @@ title: Royalty
 sidebar_label: Royalty
 description: "Learn how to add perpetual royalties to NFT so creators earn a percentage on every sale."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

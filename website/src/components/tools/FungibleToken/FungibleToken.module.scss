@@ -1,19 +1,12 @@
 .container {
-  margin: 12px auto;
-}
-
-.form {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
-  padding: 2rem;
-  background: var(--ifm-background-surface-color);
+  margin: var(--space-3) auto;
 }
 
 .formGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -26,75 +19,49 @@
 }
 
 .label {
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  color: var(--ifm-font-color-base);
-  font-size: 0.9rem;
-}
-
-.input {
-  padding: 0.75rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 6px;
-  background: var(--ifm-background-color);
-  color: var(--ifm-font-color-base);
-  font-size: 0.9rem;
-  transition: border-color 0.2s ease;
-
-  &:focus {
-    outline: none;
-    border-color: var(--ifm-color-primary);
-    box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
-  }
-
-  &:disabled {
-    background: var(--ifm-color-emphasis-100);
-    color: var(--ifm-color-emphasis-600);
-    cursor: not-allowed;
-  }
-
-  &::placeholder {
-    color: var(--ifm-color-emphasis-600);
-  }
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
 }
 
 .fileInput {
-  padding: 0.5rem;
-  border: 2px dashed var(--ifm-color-emphasis-300);
-  border-radius: 6px;
-  background: var(--ifm-background-color);
-  color: var(--ifm-font-color-base);
-  font-size: 0.9rem;
+  padding: var(--space-2);
+  border: var(--border-2) dashed var(--color-border-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: var(--transition-colors);
 
   &:hover {
-    border-color: var(--ifm-color-primary);
+    border-color: var(--near-brand-primary);
   }
 
   &:disabled {
-    background: var(--ifm-color-emphasis-100);
-    color: var(--ifm-color-emphasis-600);
+    background: var(--color-bg-subtle);
+    color: var(--color-text-tertiary);
     cursor: not-allowed;
   }
 }
 
 .fileInputGroup {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 .fileHint {
-  font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-700);
-  margin-top: 0.5rem;
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-2);
 }
 
 .imagePreview {
-  margin-top: 1rem;
+  margin-top: var(--space-4);
 
   .label {
-    margin-bottom: 0.5rem;
-    font-size: 0.85rem;
+    margin-bottom: var(--space-2);
+    font-size: var(--text-xs);
   }
 }
 
@@ -102,267 +69,60 @@
   width: 80px;
   height: 80px;
   object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid var(--ifm-color-emphasis-300);
-  background: var(--ifm-background-color);
+  border-radius: var(--radius-card);
+  border: var(--border-2) solid var(--color-border-primary);
+  background: var(--color-bg-primary);
   display: block;
 }
 
 .error {
-  color: var(--ifm-color-danger);
-  font-size: 0.8rem;
-  margin-top: 0.25rem;
-}
-
-.button {
-  width: 100%;
-  padding: 0.875rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &.primary {
-    background: var(--ifm-color-primary);
-    color: white;
-
-    &:hover:not(:disabled) {
-      background: var(--ifm-color-primary-dark);
-    }
-  }
-
-  &.secondary {
-    background: var(--ifm-color-emphasis-200);
-    color: var(--ifm-font-color-base);
-    border: 1px solid var(--ifm-color-emphasis-300);
-
-    &:hover:not(:disabled) {
-      background: var(--ifm-color-emphasis-300);
-    }
-  }
-
-  &.disabled {
-    background: var(--ifm-color-emphasis-300);
-    color: var(--ifm-color-emphasis-600);
-    cursor: not-allowed;
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-  &.loading {
-    position: relative;
-    color: transparent;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 20px;
-      height: 20px;
-      border: 2px solid transparent;
-      border-top: 2px solid currentColor;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      color: white;
-    }
-  }
-
-  &.confirm {
-    background: var(--ifm-color-success);
-
-    &:hover:not(:disabled) {
-      background: var(--ifm-color-success-dark);
-    }
-  }
-}
-
-.preview {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
-  padding: 2rem;
-  background: var(--ifm-background-surface-color);
-}
-
-.previewGrid {
-  display: grid;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.previewItem {
-  padding: 1rem;
-  background: var(--ifm-color-emphasis-50);
-  border-radius: 8px;
-  border: 1px solid var(--ifm-color-emphasis-200);
-
-  strong {
-    color: var(--ifm-font-color-base);
-    display: block;
-    margin-bottom: 0.25rem;
-  }
-}
-
-.costSection {
-  background: var(--ifm-color-primary-lightest);
-  border: 1px solid var(--ifm-color-primary-light);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-
-  h4 {
-    margin: 0 0 1rem 0;
-    color: var(--ifm-color-primary-darkest);
-  }
-}
-
-.costAmount {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-
-  strong {
-    color: var(--ifm-color-primary-darkest);
-  }
-}
-
-.costNote {
-  color: var(--ifm-color-primary-dark);
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.buttonGroup {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.confirmation {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
-  padding: 3rem 2rem;
-  background: var(--ifm-background-surface-color);
-  text-align: center;
-
-  h3 {
-    margin-bottom: 1rem;
-    color: var(--ifm-color-primary);
-  }
-
-  p {
-    margin-bottom: 2rem;
-    color: var(--ifm-color-emphasis-700);
-  }
-}
-
-.loadingSpinner {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  background: var(--ifm-color-primary-lightest);
-  border-radius: 8px;
-  color: var(--ifm-color-primary-dark);
-  font-weight: 500;
-
-  &::before {
-    content: '';
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--ifm-color-primary-light);
-    border-top: 2px solid var(--ifm-color-primary);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
+  color: var(--color-danger);
+  font-size: var(--text-xs);
+  margin-top: var(--space-1);
 }
 
 .pricePreview {
-  background: var(--ifm-color-primary-lightest);
-  border: 1px solid var(--ifm-color-primary-light);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  background: var(--near-brand-primary-100);
+  border: var(--border-1) solid var(--near-brand-primary-200);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
   text-align: center;
 }
 
 .priceAmount {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: var(--ifm-color-primary-darkest);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
 
   strong {
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
   }
 }
 
 .priceNote {
-  font-size: 0.85rem;
-  color: var(--ifm-color-primary-dark);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
   margin: 0;
-}
-
-@keyframes spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 // Dark theme adjustments
 [data-theme='dark'] {
-  .form {
-    border-color: var(--ifm-color-emphasis-200);
-    background: var(--ifm-background-color);
-  }
-
-  .input {
-    border-color: var(--ifm-color-emphasis-200);
-    background: var(--ifm-background-surface-color);
-  }
-
   .fileInput {
-    border-color: var(--ifm-color-emphasis-200);
-    background: var(--ifm-background-surface-color);
-  }
-
-  .preview,
-  .confirmation {
-    border-color: var(--ifm-color-emphasis-200);
-    background: var(--ifm-background-color);
-  }
-
-  .previewItem {
-    background: var(--ifm-color-emphasis-100);
-    border-color: var(--ifm-color-emphasis-300);
-  }
-
-  .button.secondary {
-    background: var(--ifm-color-emphasis-300);
-    border-color: var(--ifm-color-emphasis-400);
-
-    &:hover:not(:disabled) {
-      background: var(--ifm-color-emphasis-400);
-    }
+    border-color: var(--color-border-primary);
+    background: var(--color-bg-surface);
   }
 
   .pricePreview {
-    background: var(--ifm-color-primary-darkest);
-    border-color: var(--ifm-color-primary-dark);
+    background: var(--near-brand-primary-100);
+    border-color: var(--near-brand-primary-200);
   }
 
   .priceAmount {
-    color: var(--ifm-color-primary-lightest);
+    color: var(--color-text-primary);
   }
 
   .priceNote {
-    color: var(--ifm-color-primary-light);
+    color: var(--color-text-secondary);
   }
 }

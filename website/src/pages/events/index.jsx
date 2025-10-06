@@ -3,6 +3,8 @@ import './events.scss'
 import { useState, useEffect } from 'react'
 import { fetchGoogleCalendarEvents, fetchLumaEvents } from '../../tools/tools'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import Card from '../../components/UI/Card'
+import Button from '../../components/UI/Button'
 
 const Events = () => {
   const [lumaEvents, setLumaEvents] = useState([]);
@@ -50,13 +52,13 @@ const Events = () => {
           <div className="container" style={{ maxWidth: '960px' }}>
 
             {/* Highlighted Event */}
-            {lumaEvents.length && (
-              <div className="highlighted-event">
+            {lumaEvents.length > 0 && (
+              <Card className="highlighted-event">
                 <EventCard event={lumaEvents[0]} isHighlighted={true} />
-              </div>
+              </Card>
             )}
             <div className="row events-grid py-4">
-              {lumaEvents.map((event) => (
+              {lumaEvents.slice(1).map((event) => (
                 <div key={event.id} className="col-12 col-md-6 col-lg-4">
                   <EventCard event={event} />
                 </div>
@@ -91,14 +93,14 @@ const Events = () => {
               <p>
                 Do you want your NEAR community event posted here? Submit your event details via Luma to be considered.
               </p>
-              <a
+              <Button
                 href="https://lu.ma/NEAR-community"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary btn-lg"
+                variant="primary"
+                size="large"
               >
                 Submit Event
-              </a>
+              </Button>
             </div>
           </div>
         </section>
@@ -108,30 +110,15 @@ const Events = () => {
 }
 
 const EventCard = ({ event, isHighlighted = false }) => {
-  const cardClass = isHighlighted ? 'cover-card' : 'community-event'
-
-  return (
-    <a href={event.url} target="_blank" rel="noopener noreferrer" className={cardClass}>
-      
-      {event.thumbnail && (
-      <div className="event-image">
-        <img src={event.thumbnail} alt={event.title} />
-      </div>
-      )}
-
-      {!isHighlighted && (
-        <>
-          <h3 className="h5 fw-medium mb-2">{event.title}</h3>
-          <div className="d-flex align-items-center gap-4">
-            <div className="event-meta">
-              <i className="ph-calendar-blank"></i>
-              <span>{event.start}</span>
-            </div>
+  if (isHighlighted) {
+    return (
+      <a href={event.url} target="_blank" rel="noopener noreferrer" className="cover-card">
+        {event.thumbnail && (
+          <div className="event-image">
+            <img src={event.thumbnail} alt={event.title} />
           </div>
-        </>
-      )}
+        )}
 
-      {isHighlighted && (
         <div className="d-flex flex-column">
           <h2 className="title h1 fw-medium mb-3" style={{
             display: '-webkit-box',
@@ -163,9 +150,31 @@ const EventCard = ({ event, isHighlighted = false }) => {
             )}
           </div>
         </div>
+      </a>
+    );
+  }
+
+  return (
+    <Card 
+      href={event.url}
+      target="_blank"
+      className="community-event"
+      image={event.thumbnail && (
+        <div className="event-image">
+          <img src={event.thumbnail} alt={event.title} />
+        </div>
       )}
-    </a>
-  )
-}
+      variant="image"
+      title={event.title}
+    >
+      <div className="d-flex align-items-center gap-4">
+        <div className="event-meta">
+          <i className="ph-calendar-blank"></i>
+          <span>{event.start}</span>
+        </div>
+      </div>
+    </Card>
+  );
+};
 
 export default Events

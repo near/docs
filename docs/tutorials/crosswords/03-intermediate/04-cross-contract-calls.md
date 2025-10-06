@@ -4,7 +4,7 @@ sidebar_label: Cross-contract calls, etc.
 title: Adding cross-contract calls, access key shuffling, etc.
 description: "Learn how to add cross-contract calls, manage access keys, and handle rewards in the crossword contract."
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 In this chapter, we will cover some intermediate concepts in smart contract development on NEAR. This includes cross-contract calls and access keys, which are essential for building more complex applications.
 

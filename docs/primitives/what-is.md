@@ -5,7 +5,7 @@ description: "Learn about blockchain primitives including Fungible Tokens (FT), 
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 Primitives are fundamental building blocks that can be combined to create a fully functional application. Blockchain primitives include [Fungible Tokens (FT)](#fungible-tokens-ft), [Non Fungible Tokens (NFT)](#non-fungible-tokens-nft), [Decentralized Autonomous organizations (DAO)](#decentralized-autonomous-organizations-dao), [Link Drops](#linkdrops) and more.
 

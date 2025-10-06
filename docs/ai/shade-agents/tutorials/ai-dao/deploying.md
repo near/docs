@@ -7,13 +7,13 @@ description: "Learn how to deploy the Verifiable AI DAO Shade Agent which includ
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 On this page we'll guide you through deploying your own instance of the AI DAO.
 
 ---
 
-## Prerequisites  
+## Prerequisites
 
 - First please make sure you have all the [prerequisites from our quickstart](../../getting-started/quickstart/deploying.md#prerequisites).
 
@@ -44,7 +44,7 @@ On this page we'll guide you through deploying your own instance of the AI DAO.
 
     <TabItem value="mac" label="Mac">
 
-      Simply open the Docker Desktop application or run: 
+      Simply open the Docker Desktop application or run:
 
       ```bash
       open -a Docker
@@ -54,7 +54,7 @@ On this page we'll guide you through deploying your own instance of the AI DAO.
 
   </Tabs>
 
-- Install dependencies 
+- Install dependencies
 
   ```bash
   npm i
@@ -106,7 +106,7 @@ In this tutorial, the AI DAO uses a `custom agent contract`. Because of this, yo
 
 ---
 
-## TEE Deployment 
+## TEE Deployment
 
 - Re-introduce the [require approved code hash line](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L114) so it requires an agent to be registered, meaning it's running in a genuine TEE and executing the expected agent code.
 
@@ -114,7 +114,7 @@ In this tutorial, the AI DAO uses a `custom agent contract`. Because of this, yo
         url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L114"
         start="114" end="114" />
 
-- Because the contract has changed since you last deployed it, you need to compile it again. 
+- Because the contract has changed since you last deployed it, you need to compile it again.
 
     <Tabs groupId="code-tabs">
 
@@ -138,7 +138,7 @@ In this tutorial, the AI DAO uses a `custom agent contract`. Because of this, yo
 
 - Change the NEXT_PUBLIC_contractId prefix to `ac-sandbox.` followed by your NEAR account ID so the CLI is configured for TEE deployment.
 
-- Run the Shade Agent CLI with the `wasm` and `funding` flags. 
+- Run the Shade Agent CLI with the `wasm` and `funding` flags.
 
     ```bash
     shade-agent-cli --wasm contract/target/near/contract.wasm --funding 7

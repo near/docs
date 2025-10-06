@@ -5,7 +5,7 @@ sidebar_label: Quickstart
 description: "Create your first contract using your favorite language."
 ---
 
-import {Github} from '@site/src/components/codetabs';
+import {Github} from '@site/src/components/UI/Codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';

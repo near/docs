@@ -4,7 +4,7 @@ sidebar_label: Add simple frontend
 title: Add a simple frontend to the crossword puzzle that checks the solution's hash
 description: "Add a simple frontend using React and near-api-js to communicate with the smart contract."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

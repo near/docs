@@ -4,7 +4,7 @@ title: Guest Book
 description: "Create a NEAR Guest Book smart contract to store user messages, attach NEAR tokens, and integrate with a frontend, including premium messages and testing instructions"
 ---
 
-import {CodeTabs, Language, Github} from '@site/src/components/codetabs';
+import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';

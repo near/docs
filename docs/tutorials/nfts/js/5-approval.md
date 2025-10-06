@@ -4,7 +4,7 @@ title: Approvals
 sidebar_label: Approvals
 description: "Learn the basics of an approval management system for NFTs, allowing you to grant others access to transfer NFTs on your behalf."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
