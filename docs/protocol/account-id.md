@@ -16,7 +16,7 @@ NEAR accounts are identified by a unique address, which can be either an implici
 NEAR accounts are identified by a unique address, which takes one of two forms:
 1. [**Implicit address**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)
 2. [**Named address**](#named-address), which act as domains (e.g. `alice.near`)
-3. [**Unique string**](#arbitrary-string) (e.g. `a-random-string-on-the-blockchain`)
+3. **Unique string** (e.g. `a-random-string-on-the-blockchain`)
 
 :::tip Searching to create an account?
 You have multiple ways to create an account, you can [sign-up using your email](https://dev.near.org/signup), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://wallet.meteorwallet.app/wallet).
