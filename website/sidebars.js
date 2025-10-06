@@ -172,12 +172,6 @@ const sidebar = {
               "Tutorials": [
                 "ai/shade-agents/tutorials/tutorials-overview",
                 {
-                  "Quickstart": [
-                    'ai/shade-agents/getting-started/quickstart/deploying',
-                    "ai/shade-agents/getting-started/quickstart/components", 
-                  ]
-                },
-                {
                   "AI DAO": [
                     "ai/shade-agents/tutorials/ai-dao/overview",
                     "ai/shade-agents/tutorials/ai-dao/dao-agent-contract",
