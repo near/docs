@@ -2,7 +2,7 @@
 id: security
 title: Security Considerations
 sidebar_label: Security Considerations
-description: Learn key security practices for deploying Shade Agents
+description: "Learn key security practices when deploying Shade Agents, including duplicate actions, transaction restrictions, and RPC trust."
 ---
 
 import { SigsSupport } from '@site/src/components/sigsSupport';
@@ -64,7 +64,7 @@ In the quickstart, our agent can take an API request from anyone. In a lot of ca
 
 ## Removing Agent Contract Keys
 
-Before deploying your agent contract to production, you should ensure that all access keys to the agent contract account have been removed. Otherwise, this would allow the access key owner to withdraw the funds stored on multichain accounts. implement an [upgrade mechanism](../../tutorials/examples/update.md) that is controlled by a multisig or DAO.
+Before deploying your agent contract to production, you should ensure that all access keys to the agent contract account have been removed. Otherwise, this would allow the access key owner to withdraw the funds held by the Shade Agent. It is best practice to implement an [upgrade mechanism](../../../tutorials/examples/update.md) that is controlled by a multisig or DAO.
 
 ---
 
