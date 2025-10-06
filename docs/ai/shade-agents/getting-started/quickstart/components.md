@@ -70,7 +70,7 @@ We set up a chain adapter for Ethereum Sepolia in the [Ethereum.ts](https://gith
 
 You can set up chain adapters for a variety of chains, including EVM, Bitcoin, NEAR, Solana, SUI, XRP, Cosmos, and more to allow your agent to interact with multiple different chains. You can see a full list of the chains currently supported [here](https://github.com/NearDeFi/chainsig.js/tree/main?tab=readme-ov-file#supported-chains), but feel free to contribute any chain that is not yet supported.
 
-Implementation details differ slightly from chain to chain; as such, we recommend you review our [chain signature docs](../../../chain-abstraction/chain-signatures/implementation.md). Note that step 3 of requesting a signature is different; we use the `requestSignature` function from `shade-agent-js` instead.
+Implementation details differ slightly from chain to chain; as such, we recommend you review our [chain signature docs](../../../../chain-abstraction/chain-signatures/implementation.md). Note that step 3 of requesting a signature is different; we use the `requestSignature` function from `shade-agent-js` instead.
 
 If you are using a chain that uses the `ed25519` signature scheme (NEAR, Solana, SUI, Aptos, etc.), you should specify the `keyType` as `Eddsa` when calling `requestSignature`.
 
@@ -78,6 +78,6 @@ If you are using a chain that uses the `ed25519` signature scheme (NEAR, Solana,
 
 ## Next Steps
 
-Now that you've explored the basics of Shade Agents, we recommend diving deeper into the [framework overview](../framework/overview.md) to understand the core concepts needed for building production-ready Shade Agents.
+Now that you've explored the basics of Shade Agents, we recommend diving deeper into the [framework overview](../../concepts/framework-overview.md) to understand the core concepts needed for building production-ready Shade Agents.
 
 <SigsSupport />

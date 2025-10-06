@@ -223,7 +223,7 @@ const config = {
             {
               label: 'AI & Agents', to: '#', description: "NEAR is the blockchain for AI",
               subitems: [
-                { label: 'Shade Agents', to: '/ai/shade-agents/introduction', description: "Build a agent that safely control assets across chains" },
+                { label: 'Shade Agents', to: '/ai/shade-agents/getting-started/introduction', description: "Build a agent that safely control assets across chains" },
               ]
             },
             {

@@ -1,5 +1,5 @@
 ---
-id: overview
+id: framework-overview
 title: Framework Overview
 sidebar_label: Framework Overview
 description: "Learn about the core components of the Shade Agent Framework with a high-level overview of each of its parts."
@@ -17,7 +17,7 @@ The Shade Agent Framework provides a suite of tools designed to simplify the dev
 
 When starting to build with the Shade Agent Framework, it's recommended to start by forking the [Quickstart Shade Agent Template](https://github.com/NearDeFi/shade-agent-template). This template contains all the necessary files to build a Shade Agent and provides the fastest starting path.
 
-Additional templates can be found in our [Examples and Templates](../examples/overview.md) section.
+Additional templates can be found in our [Tutorials and Templates](../tutorials/tutorials-overview.md) section.
 
 ### Supported Languages
 
@@ -28,7 +28,7 @@ Agents are primarily written in TypeScript/JavaScript using `shade-agent-js`, wh
 The framework also supports `shade-agent-py`, which allows you to develop agents in Python. Here is an [example](https://github.com/NearDeFi/shade-python-example/tree/main). However, note that tooling for building multichain transactions and deriving multichain accounts is not currently available in Python, so additional development work will be required for multichain use cases.
 
 **Other Languages**
-Agents can be written in any language, provided you can create a Docker image for the agent. To build a Shade Agent in other languages, you can use the API directly. Learn more about this approach on the [API page](./api.md).
+Agents can be written in any language, provided you can create a Docker image for the agent. To build a Shade Agent in other languages, you can use the API directly. Learn more about this approach on the [API page](../reference/api.md).
 
 ### Architecture Overview
 
@@ -38,19 +38,19 @@ A Shade Agent is essentially a `backend service` that uses the Shade Agent API a
 
 ## Shade Agent API
 
-The Shade Agent API abstracts away the complexity of TEE operations and agent contract interactions. For detailed information on how the API works and how to use it across different languages, please refer to the [API page](./api.md).
+The Shade Agent API abstracts away the complexity of TEE operations and agent contract interactions. For detailed information on how the API works and how to use it across different languages, please refer to the [API page](../reference/api.md).
 
 ---
 
 ## Shade Agent CLI
 
-The Shade Agent CLI simplifies deploying a Shade Agent. To learn more about how the CLI works and how to use it, please refer to the [CLI page](./cli.md).
+The Shade Agent CLI simplifies deploying a Shade Agent. To learn more about how the CLI works and how to use it, please refer to the [CLI page](../reference/cli.md).
 
 ---
 
 ## Environment Variables
 
-Environment variables are a crucial component of the Shade Agent Framework. They configure your Shade Agent and are passed encrypted into your agent when it goes live. To learn more about configuring environment variables in your project, please refer to the [Environment Variables page](./environment-variables.md).
+Environment variables are a crucial component of the Shade Agent Framework. They configure your Shade Agent and are passed encrypted into your agent when it goes live. To learn more about configuring environment variables in your project, please refer to the [Environment Variables page](../reference/environment-variables.md).
 
 ---
 
@@ -59,11 +59,11 @@ Environment variables are a crucial component of the Shade Agent Framework. They
 By default, the Shade Agent CLI will deploy a generic agent contract that implements the three core functions, `approve_codehash`, `register_agent`, and `request_signature`, discussed in the introduction. This generic agent contract works for many use cases since you can register any arbitrary agent and have it request signatures for any chain - it's very flexible. 
 
 There are also cases when you should develop your own `custom agent contract`. These include, but are not limited to:
-1) You want to implement strict `guard rails` that prevent malicious actions, even if the TEE is somehow compromised - Review our [security considerations](../security.md#restricting-actions) for more details
+1) You want to implement strict `guard rails` that prevent malicious actions, even if the TEE is somehow compromised - Review our [security considerations](../concepts/security.md#restricting-actions) for more details
 2) You want to implement a custom agent registration or code hash upgradability mechanism
 3) You want to build an agent that just interacts with the NEAR blockchain
 
-Further documentation can be found in the [custom contract section](../custom-agent-contract.md).
+Further documentation can be found in the [custom contract section](../reference/custom-agent-contract.md).
 
 ---
 
@@ -122,11 +122,11 @@ You can learn more about the Docker Compose file [here](https://docs.docker.com/
 ## Next Steps
 
 Now that you have an overview of the framework, here are some great sections to explore next:
-1. Framework components: [API](./api.md), [CLI](./cli.md), and [Environment Variables](./environment-variables.md)
-2. [Custom Contracts](../custom-agent-contract.md) - build specialized agent contracts
-3. [Plugins](../plugins.md) - extend your agent's capabilities
-4. [Templates and Examples](../examples/overview.md) - get up and running with different Shade Agent architectures, and use cases as quickly as possible and learn how to build apps in full
-4. [Security Considerations](../security.md) - check your agent abides by best practices
+1. Framework components: [API](../reference/api.md), [CLI](../reference/cli.md), and [Environment Variables](../reference/environment-variables.md)
+2. [Custom Contracts](../reference/custom-agent-contract.md) - build specialized agent contracts
+3. [Plugins](../reference/plugins.md) - extend your agent's capabilities
+4. [Tutorials and Templates](../tutorials/tutorials-overview.md) - get up and running with different Shade Agent architectures, and use cases as quickly as possible and learn how to build apps in full
+4. [Security Considerations](../concepts/security.md) - check your agent abides by best practices
 
 
 <SigsSupport />

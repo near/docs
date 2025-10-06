@@ -2,7 +2,7 @@
 id: dao-agent
 title: DAO Agent
 sidebar_label: DAO Agent
-description: "Learn about the key parts of the agent as part of the Verifiable AI DAO Shade Agent example that walks through how to index the agent contract, using verifiable AI, and interacting with the custom agent contract."
+description: "Learn about the key parts of the agent as part of the Verifiable AI DAO Shade tutorial that walks through how to index the agent contract, using verifiable AI, and interacting with the custom agent contract."
 ---
 
 import {Github} from "@site/src/components/codetabs"
@@ -43,13 +43,13 @@ Having retrieved both the proposal and manifesto, the agent is ready to make its
 
 ## Voting with an LLM
 
-To make a decision on the proposal, the agent uses an LLM provided by [NEAR AI](https://docs.near.ai/cloud/get-started/). NEAR AI provides verifiable and private inference by running LLMs in GPU TEEs. In this example, the DAO uses NEAR AI for its `verifiable` component. This allows the agent verify that no one is interfering with the the LLM response, as could happen with centralized model hosting. The agent knows the response from the LLM is actually a function of the input, and comes from the expected model. 
+To make a decision on the proposal, the agent uses an LLM provided by [NEAR AI](https://docs.near.ai/cloud/get-started/). NEAR AI provides verifiable and private inference by running LLMs in GPU TEEs. In this tutorial, the DAO uses NEAR AI for its `verifiable` component. This allows the agent verify that no one is interfering with the the LLM response, as could happen with centralized model hosting. The agent knows the response from the LLM is actually a function of the input, and comes from the expected model. 
 
 :::note
-In this example, the agent does not actually verify the attestation from the LLM. Full verification will be added in a future update to the example.
+In this tutorial, the agent does not actually verify the attestation from the LLM. Full verification will be added in a future update to the tutorial.
 :::
 
-The example uses the `Open AI SDK` to interact with the model. First, the agent sets up the client passing the `base URL` for NEAR AI and an `API key` for the Cloud (we'll explain how to obtain a key in the next section). 
+The DAO uses the `Open AI SDK` to interact with the model. First, the agent sets up the client passing the `base URL` for NEAR AI and an `API key` for the Cloud (we'll explain how to obtain a key in the next section). 
 
 
 <Github fname="ai.ts" language="typescript"
@@ -57,15 +57,15 @@ The example uses the `Open AI SDK` to interact with the model. First, the agent 
     start="21" end="24" />
 
 A request to an LLM typically takes two prompts:
-- **The System Message** sets the `behavior and role` of the LLM. In this example, the message explains to the model that it's acting as a DAO and needs to vote Approved or Rejected on proposals, making its decisions based on the manifesto.
-- **The User Message** is the `input` that the LLM responds to. In typical chat applications, this would be any message you type to the assistant. In this example, the user message is a combination of the proposal and the DAO's manifesto.
+- **The System Message** sets the `behavior and role` of the LLM. In this tutorial, the message explains to the model that it's acting as a DAO and needs to vote Approved or Rejected on proposals, making its decisions based on the manifesto.
+- **The User Message** is the `input` that the LLM responds to. In typical chat applications, this would be any message you type to the assistant. In this tutorial, the user message is a combination of the proposal and the DAO's manifesto.
 
 <Github fname="ai.ts" language="typescript"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/src/ai.ts#L26-L33"
     start="26" end="33" />
 
 Next, the agent constructs the `JSON request` to send to the model. There are several important aspects of this request:
-- The request specifies the `model` to call - in this example, DeepSeek V3 0324. You can find a full list of [available models here](https://cloud.near.ai/models).
+- The request specifies the `model` to call - in this tutorial, DeepSeek V3 0324. You can find a full list of [available models here](https://cloud.near.ai/models).
 - The request is using `non-streaming` mode. This means the model waits until the full response is ready before returning it, rather than streaming, where the response is sent piece by piece while the model is still generating it. Non-streaming is simpler here as the agent doesn't need to display the response or take any action until the whole response is ready.
 - The request uses `tool calling` to ensure that the model responds with a vote of exactly `Approved` or `Rejected` and `reasoning` for its choice. If the model fails to conform to the required output, it will return an error. You can read more on [tool calling/function calling here](https://platform.openai.com/docs/guides/function-calling).
 
@@ -99,4 +99,4 @@ The agent then calls `agent_vote` on the agent contract using the `agentCall` fu
 
 ## Next Steps 
 
-That completes the overview of the DAO system as a whole! You can now fork the [repository](https://github.com/NearDeFi/verifiable-ai-dao/tree/main) to create your own yield and resume-based Shade Agent. In the final page of this example, you'll learn how to deploy the AI DAO yourself. 
+That completes the overview of the DAO system as a whole! You can now fork the [repository](https://github.com/NearDeFi/verifiable-ai-dao/tree/main) to create your own yield and resume-based Shade Agent. On the [final page](./deploying.md) of this tutorial, you'll learn how to deploy the AI DAO yourself. 

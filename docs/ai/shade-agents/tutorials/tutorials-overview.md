@@ -1,19 +1,19 @@
 ---
-id: overview
-title: Examples and Templates
+id: tutorials-overview
+title: Tutorials and Templates
 sidebar_label: Overview
-description: "Review the list of our Shade Agent examples and templates."
+description: "Review the list of our Shade Agent tutorials and templates."
 ---
 
 import { TryDemo } from '@site/src/components/TryDemo';
 
-This section provides templates and examples to help you build Shade Agents faster and learn key concepts.
+This section provides tutorials and templates to help you build Shade Agents faster and learn key concepts.
 
 ---
 
 ## Quickstart 
 
-Explore the [Quickstart docs](../quickstart/deploying.md)
+Explore the [Quickstart docs](../getting-started/quickstart/deploying.md)
 
 <TryDemo 
   url="https://shade-agent-template-woad.vercel.app/" 

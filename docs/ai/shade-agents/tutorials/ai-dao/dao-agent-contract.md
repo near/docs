@@ -2,7 +2,7 @@
 id: dao-agent-contract
 title: DAO Agent Contract
 sidebar_label: DAO Agent Contract
-description: "Learn about the key parts of the agent contract as part of the Verifiable AI DAO Shade Agent example, including how to create a custom agent contract and create a yield and resume-based Shade Agent."
+description: "Learn about the key parts of the agent contract as part of the Verifiable AI DAO Shade Agent tutorial, including how to create a custom agent contract and create a yield and resume-based Shade Agent."
 ---
 
 import Tabs from '@theme/Tabs';
@@ -11,7 +11,7 @@ import {Github} from "@site/src/components/codetabs"
 
 On this page, you'll look at the DAO smart contract that uses the yield and resume pattern to enable the Shade Agent to vote on proposals within a `single transaction` flow.
 
-This example is based on the [default agent contract](https://github.com/NearDeFi/shade-agent-js/tree/main/contracts/sandbox), modified to remove the `request_signature` function and implement DAO-specific functionality. This page focuses on the DAO-specific code, as agent registration follows the default contract.
+The AI DAO contract is a fork of the [default agent contract](https://github.com/NearDeFi/shade-agent-js/tree/main/contracts/sandbox), modified to remove the `request_signature` function and implement DAO-specific functionality. This page focuses on the DAO-specific code, as agent registration follows the default contract.
 
 ---
 
@@ -206,7 +206,7 @@ Visit the [yield and resume section](../../../../smart-contracts/anatomy/yield-r
 
 ## View Functions
 
-The contract exposes [view functions](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L171-L205) to retrieve the manifesto text, pending proposals, and finalized proposals.
+The contract exposes [view functions](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L188-L223) to retrieve the manifesto text, pending proposals, and finalized proposals.
 
 ---
 

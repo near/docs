@@ -18,7 +18,7 @@ Shade Agents provide verifiability and non-custody by operating in TEEs, but als
 Thanks to combining TEEs with the NEAR tech stack, Shade Agents can autonomously sign transactions across any chain, interact with AI models and external data sources, manage assets, and perform privacy-preserving, verifiable computations, offering the flexibility and performance of Web2 with the verifiability of Web3.
 
 :::info
-Shade Agents power [Agentic Protocols](./what-can-you-build.md#agentic-protocols): a new type of decentralized application designed to be autonomous, proactive, and intelligent.
+Shade Agents power [Agentic Protocols](../concepts/what-can-you-build.md#agentic-protocols): a new type of decentralized application designed to be autonomous, proactive, and intelligent.
 :::
 
 ---
@@ -45,7 +45,7 @@ The agent calls the `register_agent` function on the `agent smart contract`, pro
 
 If the attestation quote is valid and the code hash matches the expected code hash of the agent (defined during the agent contract's deployment), the agent's account is approved as a valid agent inside the agent contract.
 
-Once registered, the `agent` can call the `request_signature` function on the agent contract, enabling it to sign transactions on behalf of the Shade Agent. `request_signature` leverages [chain signatures](../../chain-abstraction/chain-signatures.md) for decentralized key management, allowing the Shade Agent to hold assets and sign transactions on nearly any chain.
+Once registered, the `agent` can call the `request_signature` function on the agent contract, enabling it to sign transactions on behalf of the Shade Agent. `request_signature` leverages [chain signatures](../../../chain-abstraction/chain-signatures.md) for decentralized key management, allowing the Shade Agent to hold assets and sign transactions on nearly any chain.
 
 `Anyone` can deploy the same Docker image of the `agent` to a different TEE. Since the Docker image will have the same code hash, it can then be registered as a new valid agent, and thus gain access to signing transactions using the Shade Agent's accounts. This means the accounts are persisted across different TEE instances. To facilitate this functionality, agents are designed to be stateless.
 

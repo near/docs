@@ -56,7 +56,7 @@ The CLI includes various flags to configure deployment options and disable speci
 
 - **--wasm `<path>`** 
 
-  Path to a custom agent contract WASM file (e.g. `contract/near/contract.wasm`) to deploy instead of the default contract. Use this when deploying [custom contracts](../custom-agent-contract.md). 
+  Path to a custom agent contract WASM file (e.g. `contract/near/contract.wasm`) to deploy instead of the default contract. Use this when deploying [custom contracts](./custom-agent-contract.md). 
 
 - **--funding `<amount>`** 
 

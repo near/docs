@@ -15,13 +15,13 @@ On this page we'll guide you through deploying your own instance of the AI DAO.
 
 ## Prerequisites  
 
-- First please make sure you have all the [prerequisites from our quickstart](../../quickstart/deploying.md#prerequisites).
+- First please make sure you have all the [prerequisites from our quickstart](../../getting-started/quickstart/deploying.md#prerequisites).
 
 - Additionally, you'll need to set up an account on `NEAR AI`, fund it, and obtain an API key. This can be done through the [NEAR AI Dashboard](https://cloud.near.ai/dashboard/overview).
 
 ---
 
-- First, `clone` the [example](https://github.com/NearDeFi/verifiable-ai-dao/tree/main).
+- First, `clone` the [repo](https://github.com/NearDeFi/verifiable-ai-dao/tree/main).
 
   ```bash
   git clone https://github.com/NearDeFi/shade-agent-template
@@ -64,13 +64,13 @@ On this page we'll guide you through deploying your own instance of the AI DAO.
 
 ## Local Development
 
-In this example, the AI DAO uses a `custom agent contract`. Because of this, you need to manually switch the contract deployed depending on whether you're developing locally or deploying the agent to a TEE.
+In this tutorial, the AI DAO uses a `custom agent contract`. Because of this, you need to manually switch the contract deployed depending on whether you're developing locally or deploying the agent to a TEE.
 
-- For local development, you need to comment out the [require approved code hash line](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L102) within the `agent_vote` function. This allows anyone to call the function, not just a registered agent. By design, it's impossible for an agent to register when running locally, as it can't provide a valid TEE attestation.
+- For local development, you need to comment out the [require approved code hash line](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L114) within the `agent_vote` function. This allows anyone to call the function, not just a registered agent. By design, it's impossible for an agent to register when running locally, as it can't provide a valid TEE attestation.
 
     <Github fname="dao.rs" language="rust"
-        url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L101-L102"
-        start="101" end="102" />
+        url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L114"
+        start="114" end="114" />
 
 - Since the AI DAO uses a custom agent contract, you need to compile it yourself.
 
@@ -108,11 +108,11 @@ In this example, the AI DAO uses a `custom agent contract`. Because of this, you
 
 ## TEE Deployment 
 
-- Re-introduce the [require approved code hash line](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L102) so it requires an agent to be registered, meaning it's running in a genuine TEE and executing the expected agent code.
+- Re-introduce the [require approved code hash line](https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L114) so it requires an agent to be registered, meaning it's running in a genuine TEE and executing the expected agent code.
 
     <Github fname="dao.rs" language="rust"
-        url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L101-L102"
-        start="101" end="102" />
+        url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/dao.rs#L114"
+        start="114" end="114" />
 
 - Because the contract has changed since you last deployed it, you need to compile it again. 
 
