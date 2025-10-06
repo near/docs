@@ -2,7 +2,7 @@
 id: kurtosis-localnet
 title: Creating a Local Development Environment
 sidebar_label: Local Development
-description: "Using Kurtosis NEAR Package to develop locally"
+description: "Setup a local NEAR development environment."
 ---
 
 > Kurtosis has created an easy way to spin up a local NEAR testing environment using a [Docker container](https://www.docker.com/). _(Note: Kurtosis site may be temporarily unavailable.)_

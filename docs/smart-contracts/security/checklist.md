@@ -1,7 +1,7 @@
 ---
 id: checklist
 title: ✅ Checklist
-description: "Security checklist for NEAR smart contracts covering common vulnerabilities, best practices, and pre-deployment security verification steps."
+description: "Best practices for security and common safeguards."
 ---
 
 Once you finished developing your smart contract please go through the following list in order to ensure everything is safe for the end user.

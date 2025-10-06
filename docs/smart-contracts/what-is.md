@@ -2,7 +2,7 @@
 id: what-is
 title: What is a Smart Contract?
 sidebar_label: Introduction
-description: "Learn about NEAR smart contracts - executable code that lives in accounts, stores data, performs transactions, and can be written in JavaScript or Rust."
+description: "Learn about the apps that can live in our accounts."
 ---
 
 Smart contracts are pieces of **executable code** that live in a NEAR account. They can **store data**, **perform transactions** in the account’s name, and **expose methods** so other accounts can interact with them.

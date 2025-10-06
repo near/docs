@@ -2,7 +2,7 @@
 id: functions
 title: External Interface
 hide_table_of_contents: true
-description: "Smart contracts expose functions so users can interact with them. There are different types of functions including read-only, private and payable."
+description: "Learn how to define your contract's interface."
 ---
 
 import Tabs from '@theme/Tabs';

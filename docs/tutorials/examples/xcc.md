@@ -1,7 +1,7 @@
 ---
 id: xcc
 title: Cross Contract Call
-description: "This example performs the simplest cross-contract call possible: it calls our Hello NEAR example to set and retrieve a greeting."
+description: "Learn how to perform a basic cross-contract call on NEAR to set and retrieve greetings."
 ---
 
 import Tabs from '@theme/Tabs';
@@ -91,8 +91,8 @@ The contract exposes methods to query the greeting and change it. These methods 
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
             start="22" end="51" />
             <Github fname="external.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external.rs"
-            start="2" end="12" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
+            start="4" end="12" />
   </Language>
 </CodeTabs>
 

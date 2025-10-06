@@ -29,7 +29,7 @@ const sidebar = {
       customProps: {
         icon: '/icons/near.svg',
       },
-      link: { type: 'doc', id: 'protocol/basics' },
+      link: { type: 'generated-index', slug: 'protocol/basics' },
       items: [
         {
           "Getting Started": [
@@ -39,6 +39,7 @@ const sidebar = {
         },
         {
           "Concepts": [
+            'protocol/architecture',
             {
               'Accounts / Contracts': ['protocol/account-model', 'protocol/account-id', 'protocol/access-keys'],
             },
@@ -99,7 +100,7 @@ const sidebar = {
       customProps: {
         icon: '/icons/multichain.svg',
       },
-      link: { type: 'doc', id: 'chain-abstraction/what-is' },
+      link: { type: 'generated-index', slug: 'chain-abstraction/what-is' },
       items: [
         {
           "Getting Started": [
@@ -127,7 +128,7 @@ const sidebar = {
             {
               type: 'category',
               label: 'Controlling NEAR Accounts',
-              link: { type: 'doc', id: 'tutorials/controlling-near-accounts/introduction' },
+              link: { type: 'generated-index', slug: 'tutorials/controlling-near-accounts/introduction' },
               items: [
                 'tutorials/controlling-near-accounts/introduction',
                 'tutorials/controlling-near-accounts/setup',
@@ -137,7 +138,7 @@ const sidebar = {
             {
               type: 'category',
               label: 'Cross-Chain DAO Governance',
-              link: { type: 'doc', id: 'tutorials/multichain-dao/introduction' },
+              link: { type: 'generated-index', slug: 'tutorials/multichain-dao/introduction' },
               items: [
                 'tutorials/multichain-dao/introduction',
                 'tutorials/multichain-dao/request',
@@ -153,7 +154,7 @@ const sidebar = {
       type: 'category',
       label: 'AI and Agents',
       collapsed: true,
-      link: { type: 'doc', id: 'ai/introduction' },
+      link: { type: 'generated-index', slug: 'ai/introduction' },
       customProps: {
         icon: '/icons/ai.svg',
       },
@@ -164,18 +165,41 @@ const sidebar = {
           "Shade Agents": [
             {
               "Getting Started": [
-                'ai/shade-agents/quickstart/deploying',
-                "ai/shade-agents/quickstart/components",
+                "ai/shade-agents/getting-started/introduction",
+                { "Quickstart": [
+                  "ai/shade-agents/getting-started/quickstart/deploying",
+                  "ai/shade-agents/getting-started/quickstart/components",
+                ]},
               ]
             },
             {
               "Concepts": [
-                "ai/shade-agents/introduction",
-                "ai/shade-agents/examples",
-                "ai/shade-agents/custom-agent-contract",
-                "ai/shade-agents/security",
-                "ai/shade-agents/plugins",
-              ],
+                "ai/shade-agents/concepts/framework-overview",
+                "ai/shade-agents/concepts/what-can-you-build",
+                "ai/shade-agents/concepts/security",
+              ]
+            },
+            {
+              "Tutorials": [
+                "ai/shade-agents/tutorials/tutorials-overview",
+                {
+                  "AI DAO": [
+                    "ai/shade-agents/tutorials/ai-dao/overview",
+                    "ai/shade-agents/tutorials/ai-dao/dao-agent-contract",
+                    "ai/shade-agents/tutorials/ai-dao/dao-agent",
+                    "ai/shade-agents/tutorials/ai-dao/deploying",
+                  ]
+                }
+              ]
+            },
+            {
+              "Reference": [
+                "ai/shade-agents/reference/api",
+                "ai/shade-agents/reference/cli",
+                "ai/shade-agents/reference/environment-variables",
+                "ai/shade-agents/reference/custom-agent-contract",
+                "ai/shade-agents/reference/plugins",
+              ]
             },
           ]
         },
@@ -200,7 +224,7 @@ const sidebar = {
       type: 'category',
       label: 'Smart Contracts',
       collapsed: true,
-      link: { type: 'doc', id: 'smart-contracts/what-is' },
+      link: { type: 'generated-index', slug: 'smart-contracts/what-is' },
       customProps: {
         icon: '/icons/contract.svg',
       },
@@ -345,7 +369,7 @@ const sidebar = {
         },
         {
           "Reference": [
-            'resources/contracts-list',
+            'smart-contracts/contracts-list',
             'tools/sdk',
             'tools/clear-state',
           ]
@@ -359,7 +383,7 @@ const sidebar = {
       customProps: {
         icon: '/icons/app.svg',
       },
-      link: { type: 'doc', id: 'web3-apps/what-is' },
+      link: { type: 'generated-index', slug: 'web3-apps/what-is' },
       items: [
         {
           "Getting Started": [
@@ -367,14 +391,23 @@ const sidebar = {
             'web3-apps/quickstart']
         },
         {
+          "Concepts": [
+            'web3-apps/concepts/web-login',
+            'web3-apps/concepts/eth-wallets-on-near',
+            'web3-apps/concepts/data-types'
+          ]
+        },
+        {
           "Tutorials": [
-            'web3-apps/integrate-contracts',
+            {
+              "Web Login": [
+                'web3-apps/tutorials/web-login/wallet-selector',
+                'web3-apps/tutorials/web-login/ethereum-wallets',
+              ]
+            },
             'tutorials/examples/frontend-multiple-contracts',
-            'web3-apps/ethereum-wallets',
             'web3-apps/backend/backend-login',
             'chain-abstraction/meta-transactions-relayer',
-            'data-infrastructure/lake-framework/building-indexers/js-lake-indexer',
-            'data-infrastructure/lake-framework/building-indexers/python-lake-indexer',
             {
               type: 'category',
               label: 'Mastering NEAR',
@@ -425,13 +458,7 @@ const sidebar = {
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
         'primitives/ft',
-        {
-          "Non-Fungible Tokens": [
-            'primitives/nft',
-            'data-infrastructure/lake-framework/building-indexers/nft-indexer',
-            'data-infrastructure/lake-framework/building-indexers/python-nft-indexer',
-          ]
-        },
+        'primitives/nft',
         'protocol/network/staking',
         'primitives/linkdrop',
         'primitives/oracles',
@@ -447,7 +474,7 @@ const sidebar = {
       customProps: {
         icon: '/icons/database.svg',
       },
-      link: { type: 'doc', id: 'data-infrastructure/what-is' },
+      link: { type: 'generated-index', slug: 'data-infrastructure/what-is' },
       items: [
         {
           type: 'link',
@@ -458,46 +485,46 @@ const sidebar = {
           "Concepts": [
             'data-infrastructure/data-apis',
             'data-infrastructure/big-query',
-            'tools/indexing',
             {
-              'Lake Framework': [
+              'Indexers': [
                 'data-infrastructure/indexers',
-                'data-infrastructure/lake-framework/near-lake-framework',
-                'data-infrastructure/lake-framework/near-lake',
-                'data-infrastructure/lake-framework/near-lake-state-changes-indexer',
-                'data-infrastructure/lake-framework/migrating-to-near-lake-framework',
-                {
-                  'Running NEAR Lake': [
-                    'data-infrastructure/lake-framework/running-near-lake/run-lake-indexer',
-                    'data-infrastructure/lake-framework/running-near-lake/lake-start-options',
-                    'data-infrastructure/lake-framework/running-near-lake/credentials',
-                  ],
-                },
-                {
-                  'Lake Data Structures': [
-                    'data-infrastructure/lake-framework/building-indexers/primitives',
-                    'data-infrastructure/lake-data-structures/toc',
-                    'data-infrastructure/lake-data-structures/block',
-                    'data-infrastructure/lake-data-structures/chunk',
-                    'data-infrastructure/lake-data-structures/shard',
-                    'data-infrastructure/lake-data-structures/transaction',
-                    'data-infrastructure/lake-data-structures/receipt',
-                    'data-infrastructure/lake-data-structures/execution-outcome',
-                    'data-infrastructure/lake-data-structures/state-change',
-                  ],
-                },
+                'data-infrastructure/near-lake-framework',
               ],
             },
           ]
         },
         {
           "Tutorials": [
-            'data-infrastructure/tutorials/near-lake-framework',
+            // {"NEAR Indexer": []},
+            {
+              "NEAR Lake Framework": [
+                'data-infrastructure/tutorials/listen-function-calls',
+                'data-infrastructure/tutorials/state-changes',
+                {
+                  "NFT Indexer": [
+                    'data-infrastructure/tutorials/nft-indexer',
+                    'data-infrastructure/tutorials/python-nft-indexer',
+                  ]
+                },
+              ]
+            },
+            {
+              'NEAR Indexer': [
+                {
+                  "Data Lake": [
+                    'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
+                    'data-infrastructure/tutorials/running-near-lake/lake-start-options',
+                    'data-infrastructure/tutorials/running-near-lake/credentials',
+                  ]
+                }
+              ],
+            },
           ]
         },
         {
           "Reference": [
             'tools/explorer',
+            'tools/data-services',
             {
               type: 'category',
               label: 'Data APIs',
@@ -519,13 +546,9 @@ const sidebar = {
       customProps: {
         icon: '/img/icons/ethereum.svg',
       },
-      link: { type: 'doc', id: 'aurora/what-is' },
+      link: { type: 'generated-index', slug: 'aurora/what-is' },
       items: [
-        {
-          type: 'link',
-          label: 'Introduction',
-          href: '/aurora/what-is',
-        },
+        'aurora/what-is',
         'aurora/build-on-aurora',
         'aurora/launch-virtual-chain',
       ],

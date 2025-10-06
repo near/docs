@@ -2,7 +2,7 @@
 id: minting
 title: Minting
 sidebar_label: Minting
-description: "This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR NFT standards. Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be modifying a bare-bones skeleton smart contract by filling in the necessary code snippets needed to add minting functionalities."
+description: "Learn how to implement the logic to mint NFTs on NEAR, store token and metadata, and link tokens to owners using a skeleton smart contract."
 ---
 import {Github} from "@site/src/components/codetabs";
 import Tabs from '@theme/Tabs';

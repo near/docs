@@ -1,7 +1,7 @@
 ---
 id: serialization
 title: Notes on Serialization
-description: "Smart contracts need to be able to communicate complex data in a simple way, while also reading and storing such data into their states efficiently."
+description: "Learn how contract serialize data for function calls and storage."
 ---
 
 import Tabs from '@theme/Tabs';
