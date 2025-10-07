@@ -112,7 +112,7 @@ You can choose Indexer Framework sync mode by setting what to stream:
 - BlockHeight(u64) - Specific block height to start syncing from.
 
 <Github fname="main.rs" language="rust"
-        url="https://github.com/near-examples/near-indexer/blob/main/rust/src/main.rs"
+        url="https://github.com/near-examples/near-indexer/blob/main/src/main.rs"
         start="268" end="268" />
 
 <hr class="subsection" />
@@ -132,7 +132,7 @@ Indexer Framework also exposes access to the internal APIs (see Indexer::client_
 From the block data, we can access the transactions, their receipts and actions. In this example, we will look for FunctionCall actions on a specific contract and log the details of each call.
 
 <Github fname="main.rs" language="rust"
-        url="https://github.com/near-examples/near-indexer/blob/main/rust/src/main.rs"
+        url="https://github.com/near-examples/near-indexer/blob/main/src/main.rs"
         start="57" end="290" />
 
 <MovingForwardSupportSection />
