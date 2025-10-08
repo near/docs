@@ -37,7 +37,9 @@ const CreateTokenForm = ({ reload = () => { } }) => {
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm({
+    mode: 'onSubmit'
+  });
 
   const { viewFunction, callFunction, getBalance, signedAccountId, signIn } = useWalletSelector();
   const [requiredDeposit, setRequiredDeposit] = useState('0');
@@ -181,7 +183,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
         toast.error('Failed to create token');
       }
     },
-    [step, signedAccountId, onPreview, viewFunction, callFunction, reload, requiredDeposit],
+    [step, signedAccountId, onPreview, callFunction, reload, deposit],
   );
 
   const getButtonText = () => {

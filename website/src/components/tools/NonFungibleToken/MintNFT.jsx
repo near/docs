@@ -64,10 +64,10 @@ const MintNFT = ({ reload }) => {
     };
 
     const stringArgs = JSON.stringify(args);
-    const costPerByte = '10000000000000000000';
-    const estimatedCost = BigInt(stringArgs.length) * BigInt(costPerByte) * BigInt(4);
+    const costPerByte = BigInt('10000000000000000000');
+    const estimatedCostYocto = BigInt(stringArgs.length) * costPerByte * BigInt(4);
 
-    setRequiredDeposit(estimatedCost);
+    setRequiredDeposit(estimatedCostYocto);
   }, [signedAccountId]);
 
   const handleInputChange = (field, value) => {
@@ -249,7 +249,7 @@ const MintNFT = ({ reload }) => {
             {step === 'ready-to-mint' && (
               <div className={styles.pricePreview}>
                 <div className={styles.priceAmount}>
-                  Minting Cost: <strong>{requiredDeposit} NEAR</strong>
+                  Minting Cost: <strong>{(Number(requiredDeposit) / 1e24).toFixed(4)} NEAR</strong>
                 </div>
                 <div className={styles.priceNote}>
                   This amount will be used to cover storage costs on the NEAR blockchain.
