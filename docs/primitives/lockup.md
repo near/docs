@@ -189,7 +189,7 @@ The process works as follows:
 
 - The validator generates staking rewards over time.
 
-A crucial distinction is that staking rewards are liquid immediately. They are not bound by the original lockup or vesting conditions. For example, if 1000 NEAR are locked and staked for one month, and 10 NEAR are earned as rewards, when the owner decides to unstake, the original 1000 NEAR follow the normal lockup and vesting restrictions, while any rewards already earned can be transfered directly to your account.
+A crucial distinction is that staking rewards are liquid immediately. They are not bound by the original lockup or vesting conditions. For example, if 1000 NEAR are locked and staked for one month, and 10 NEAR are earned as rewards, when the owner decides to unstake, the original 1000 NEAR follow the normal lockup and vesting restrictions, while any rewards already earned can be transferred directly to your account.
 
 You’ll discover real examples as you continue reading.
 
