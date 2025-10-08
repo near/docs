@@ -184,6 +184,7 @@ const config = {
                 { label: 'Linkdrops', to: '/primitives/linkdrop', description: "Distribute assets and rewards to users with a single link" },
                 { label: 'Oracles', to: '/primitives/oracles', description: "Connect your smart contracts to real-world data" },
                 { label: 'Staking', to: '/protocol/network/staking', description: "Leverage the power of NEAR's staking model" },
+                { label: 'Lockups & Vesting', to: '/primitives/lockup', description: "Leverage the power of NEAR's lockup & vesting contracts" },
               ]
             },
             {
