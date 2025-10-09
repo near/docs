@@ -22,7 +22,7 @@ In contrast with the NEAR native token, fungible token (FT) are **not stored** i
 
 ![FT](/assets/docs/primitives/ft.png)
 
-In order for a contract to be considered a FT-contract it has to follow the [**NEP-141 and NEP-148 standards**](https://github.com/near/NEPs/tree/master/neps/nep-0141.md). The **NEP-141** & **NEP-148** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
+In order for a contract to be considered a FT-contract it has to follow the [**NEP-141**](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) and [**NEP-148 standards**](https://github.com/near/NEPs/tree/master/neps/nep-0148.md). The **NEP-141** & **NEP-148** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
 
 ---
 
@@ -44,7 +44,7 @@ We have created a simple UI to interact with the existing `tkn.primitives.testne
 
 <summary> 2. Interacting with a pre-deployed Token Factory smart contract </summary>
 
-Here is how to directly interact with the factory contract through your application: 
+Here is how to directly interact with the factory contract through your application:
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
