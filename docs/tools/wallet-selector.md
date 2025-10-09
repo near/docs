@@ -2,6 +2,7 @@
 id: wallet-selector
 title: Wallet Selector
 sidebar_label: NEAR Wallet Selector
+description: "A single library to connect all NEAR Wallets." 
 ---
 
 import Tabs from '@theme/Tabs';
@@ -325,6 +326,53 @@ const MyComponent = () => {
 </TabItem>
 </Tabs>
 
+### View method
+
+<Tabs groupId="wallet-selector-api">
+<TabItem value="core-api" label="Wallet Selector">
+
+```ts
+(async () => {
+  const wallet = await selector.wallet("my-near-wallet");
+  const result = await wallet.viewMethod({
+    contractId: "guestbook.near-examples.testnet",
+    method: "get_messages",
+    args: {},
+  });
+  console.log("View result:", result);
+})();
+```
+
+</TabItem>
+
+<TabItem value="react-hook" label="React Hook">
+
+```jsx
+import { useWalletSelector } from "@near-wallet-selector/react-hook";
+
+const MyComponent = () => {
+  const { viewFunction } = useWalletSelector();
+
+  const handleViewMethod = async () => {
+    try {
+      const result = await viewFunction({
+        contractId: "guestbook.near-examples.testnet",
+        method: "get_messages",
+        args: {},
+      });
+      console.log("View result:", result);
+    } catch (error) {
+      console.error("View method failed:", error);
+    }
+  };
+
+  return <button onClick={handleViewMethod}>Call View Method</button>;
+};
+```
+
+</TabItem>
+</Tabs>
+
 ### Sign and send transaction
 
 <Tabs groupId="wallet-selector-api">
@@ -338,7 +386,7 @@ const MyComponent = () => {
       {
         type: "FunctionCall",
         params: {
-          methodName: "addMessage",
+          methodName: "add_message",
           args: { text: "Hello World!" },
           gas: "30000000000000",
           deposit: "10000000000000000000000",
@@ -362,8 +410,8 @@ const MyComponent = () => {
   const handleTransaction = async () => {
     try {
       const result = await callFunction({
-        contractId: "guest-book.testnet",
-        method: "addMessage",
+        contractId: "guestbook.near-examples.testnet",
+        method: "add_message",
         args: { text: "Hello World!" },
         gas: "30000000000000",
         deposit: "10000000000000000000000",
@@ -392,12 +440,12 @@ const MyComponent = () => {
   await wallet.signAndSendTransactions({
     transactions: [
       {
-        receiverId: "guest-book.testnet",
+        receiverId: "guestbook.near-examples.testnet",
         actions: [
           {
             type: "FunctionCall",
             params: {
-              methodName: "addMessage",
+              methodName: "add_message",
               args: { text: "Hello World!" },
               gas: "30000000000000",
               deposit: "10000000000000000000000",
@@ -424,12 +472,12 @@ const MyComponent = () => {
     try {
       const transactions = [
         {
-          receiverId: "guest-book.testnet",
+          receiverId: "guestbook.near-examples.testnet",
           actions: [
             {
               type: "FunctionCall",
               params: {
-                methodName: "addMessage",
+                methodName: "add_message",
                 args: { text: "Hello World!" },
                 gas: "30000000000000",
                 deposit: "10000000000000000000000",
