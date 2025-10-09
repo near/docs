@@ -6,22 +6,23 @@ import Card from '@site/src/components/UI/Card';
 
 export default function NotFoundContent({ className }) {
   return (
-    <main style={{margin: "0 auto", textAlign: "center"}} className={clsx('margin-vert--xl', className)}>
+    <main className={clsx('margin-vert--xl', className)}>
       <div className="row">
         <div className="col col--12">
-          <Heading as="h1" className="hero__title text-center">
-            <Translate id="theme.NotFound.title" description="The title of the 404 page">
+          <div style={{margin: "0 auto", textAlign: "center"}}>
+          <Heading as="h1" className="hero__title">
               📕 Oops! We Couldn't Find That Page
-            </Translate>
           </Heading>
-          <p className="margin-vert--sm text-center">
+          <p className="margin-vert--sm">
             <Translate id="theme.NotFound.p1" description="The first paragraph of the 404 page">
               Where you following a link? Let us know using the Feedback button and we will setup a
               redirect for you in no time
             </Translate>
           </p>
+          </div>
           <div className="container margin-vert--sm p404">
-            <h4 className="text-center margin-bottom--lg"> Don't give up! Check these awesome resources </h4>
+            <h4 className="margin-bottom--lg" style={{textAlign: "center"}}> Don't give up! Check these awesome resources </h4>
+
             <div className="row">
               <div className="col col--4">
                 <Card
@@ -32,21 +33,21 @@ export default function NotFoundContent({ className }) {
                   variant="image"
                 >
                   <ul>
-                    <a href="/protocol/basics">
-                      <li>What is NEAR?</li>
-                    </a>
-                    <a href="/protocol/account-id">
-                      <li>Named Accounts</li>
-                    </a>
-                    <a href="/protocol/access-keys">
-                      <li>Access Keys</li>
-                    </a>
-                    <a href="/protocol/transactions">
-                      <li>Transactions</li>
-                    </a>
-                    <a href="/protocol/gas">
-                      <li>Understanding Gas</li>
-                    </a>
+                    <li><a href="/protocol/basics">
+                      What is NEAR?
+                    </a></li>
+                    <li><a href="/protocol/account-id">
+                      Named Accounts
+                    </a></li>
+                    <li><a href="/protocol/access-keys">
+                      Access Keys
+                    </a></li>
+                    <li><a href="/protocol/transactions">
+                      Transactions
+                    </a></li>
+                    <li><a href="/protocol/gas">
+                      Understanding Gas
+                    </a></li>
                   </ul>
                 </Card>
               </div>
@@ -59,21 +60,21 @@ export default function NotFoundContent({ className }) {
                   variant="image"
                 >
                   <ul>
-                    <a href="/smart-contracts/what-is">
-                      <li>Smart Contracts</li>
-                    </a>
-                    <a href="/web3-apps/what-is">
-                      <li>Web3 Applications</li>
-                    </a>
-                    <a href="/chain-abstraction/chain-signatures">
-                      <li>Multi-Chain Signatures</li>
-                    </a>
-                    <a href="/primitives/what-is">
-                      <li>Primitives (FT, NFT, ...)</li>
-                    </a>
-                    <a href="/data-infrastructure/what-is">
-                      <li>Indexers & Data Solutions</li>
-                    </a>
+                    <li><a href="/smart-contracts/what-is">
+                      Smart Contracts
+                    </a></li>
+                    <li><a href="/web3-apps/what-is">
+                      Web3 Applications
+                    </a></li>
+                    <li><a href="/chain-abstraction/chain-signatures">
+                      Multi-Chain Signatures
+                    </a></li>
+                    <li><a href="/primitives/what-is">
+                      Primitives (FT, NFT, ...)
+                    </a></li>
+                    <li><a href="/data-infrastructure/what-is">
+                      Indexers & Data Solutions
+                    </a></li>
                   </ul>
                 </Card>
               </div>
@@ -86,15 +87,15 @@ export default function NotFoundContent({ className }) {
                   variant="image"
                 >
                   <ul>
-                    <a href="/tutorials/examples/count-near">
-                      <li>Basic dApps</li>
-                    </a>
-                    <a href="/tutorials/examples/factory">
-                      <li>Advanced Contracts</li>
-                    </a>
-                    <a href="/tutorials/nfts/introduction">
-                      <li>NFT: Zero to Hero</li>
-                    </a>
+                    <li><a href="/tutorials/examples/count-near">
+                      Basic dApps
+                    </a></li>
+                    <li><a href="/tutorials/examples/factory">
+                      Advanced Contracts
+                    </a></li>
+                    <li><a href="/tutorials/nfts/introduction">
+                      NFT: Zero to Hero
+                    </a></li>
                   </ul>
                 </Card>
               </div>
