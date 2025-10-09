@@ -32,7 +32,7 @@ If you don't have one yet, you can create one easily by following [these instruc
 
 Once you have your Wallet account, you can click on the [Collectibles](https://testnet.mynearwallet.com//?tab=collectibles) tab where all your NFTs will be listed:
 
-![Wallet](/assets/docs/nfts/nft-wallet.png)
+![Wallet](/assets/docs/tutorials/nfts/nft-wallet.png)
 
 <!--
 Briefly talks about how the wallet listens for methods that start with `nft_` and then flags the contracts.
@@ -60,7 +60,7 @@ https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.li
 
 [This repository](https://github.com/near-examples/NFT) includes an example implementation of a [non-fungible token] contract which uses [near-contract-standards] and simulation tests.
 
-[non-fungible token]: https://github.com/near/NEPs/tree/master/neps/nep-0171.md
+[non-fungible token]: https://nomicon.io/Standards/NonFungibleToken
 [near-contract-standards]: https://github.com/near/near-sdk-rs/tree/master/near-contract-standards
 
 ### Clone the NFT repository {#clone-the-nft-repository}
@@ -247,7 +247,7 @@ In our case, we need to initialize the NFT contract before usage. For now, we'll
   </TabItem>
 </Tabs>
 
-> **Tip:** you can find more info about the NFT metadata at [nomicon.io](https://github.com/near/NEPs/tree/master/neps/nep-0177.md).
+> **Tip:** you can find more info about the NFT metadata at [nomicon.io](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
 
 You can then view the metadata by running the following `view` call:
 
@@ -386,7 +386,7 @@ To view tokens owned by an account you can call the NFT contract with the follow
 >
 > **Tip:** after you mint your first non-fungible token, you can [view it in your Wallet](https://testnet.mynearwallet.com//?tab=collectibles):
 >
-> ![Wallet with token](/assets/docs/nfts/nft-wallet-token.png)
+> ![Wallet with token](/assets/docs/tutorials/nfts/nft-wallet-token.png)
 >
 > <br/>
 

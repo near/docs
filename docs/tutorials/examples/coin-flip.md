@@ -9,7 +9,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 This example demonstrates a simple coin flip game on the NEAR blockchain, where players can guess the outcome of a coin flip and earn points. It includes both the smart contract and the frontend components.
 
-![img](/assets/docs/examples/coin-flip.png)
+![img](/assets/docs/tutorials/examples/coin-flip.png)
 
 ---
 
@@ -34,7 +34,7 @@ If you are running the app locally, you should build and deploy a contract (Java
 ## Interacting With the Counter
 Go ahead and log in with your NEAR account. If you don't have one, you can create one on the fly. Once logged in, use the `tails` and `heads` buttons to try to guess the next coin flip outcome.
 
-![img](/assets/docs/examples/coin-flip.png)
+![img](/assets/docs/tutorials/examples/coin-flip.png)
 *Frontend of the Game*
 
 ---

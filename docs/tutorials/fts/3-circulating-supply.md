@@ -100,7 +100,7 @@ This will initialize the total supply to what you passed in and will call the `i
 
 ### Getting the supply
 
-Now that you've created a way to set the total supply, you'll also want a way to query for it as well as the balance for a specific user. The [standard](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) dictates that you should have two methods on your smart contract for doing these operations:
+Now that you've created a way to set the total supply, you'll also want a way to query for it as well as the balance for a specific user. The [standard](https://nomicon.io/Standards/Tokens/FungibleToken/Core) dictates that you should have two methods on your smart contract for doing these operations:
 - **`ft_total_supply`**
 - **`ft_balance_of`**
 
@@ -367,7 +367,7 @@ If you query for the balance of some other account, it should return `0`.
 
 Now that your contract implements the necessary functions that the wallet uses to pickup your contract and display the FTs, you should be able to see your tokens on display in the [balances tab](https://testnet.mynearwallet.com/).
 
-<img width="65%" src="/assets/docs/fts/filled-fts-in-wallet.png" />
+<img width="65%" src="/assets/docs/tutorials/fts/filled-fts-in-wallet.png" />
 
 🎉🎉🎉 **This is awesome! Go team!** 🎉🎉🎉 You can now see your very first fungible tokens in the wallet!
 
@@ -375,7 +375,7 @@ Now that your contract implements the necessary functions that the wallet uses t
 
 ## Conclusion
 
-Today you went through and created the logic for minting a total supply. You then implemented some of the core standard logic and the [events standard](https://github.com/near/NEPs/blob/master/neps/nep-0300.md). You created events for [minting](#modifications-to-the-contract) FTs on initialization. You then deployed and [tested](#testing) your changes and saw your very first FTs in the wallet!
+Today you went through and created the logic for minting a total supply. You then implemented some of the core standard logic and the [events standard](https://nomicon.io/Standards/Tokens/FungibleToken/Event). You created events for [minting](#modifications-to-the-contract) FTs on initialization. You then deployed and [tested](#testing) your changes and saw your very first FTs in the wallet!
 
 In the next tutorial, you'll look at the basics of registering accounts so that they can transfer and receive FTs.
 

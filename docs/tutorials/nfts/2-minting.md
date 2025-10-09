@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://github.com/near/NEPs/tree/master/neps/nep-0171.md).
+This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://nomicon.io/Standards/NonFungibleToken/).
 
 Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be filling a bare-bones [skeleton smart contract](1-skeleton.md) to add minting functionalities.
 
@@ -96,7 +96,7 @@ Now that you've defined what information to store on the contract itself and you
 
 Let's switch over to the `nft-contract-skeleton/src/metadata.rs` file as this is where that information will go.
 
-If you look at the [standards for metadata](https://github.com/near/NEPs/tree/master/neps/nep-0177.md), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
+If you look at the [standards for metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
 
 <Github language="rust" start="10" end="39" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/metadata.rs" />
 
@@ -118,7 +118,7 @@ In addition, some operations might only need the metadata for a token and so hav
 
 #### Function for querying contract metadata
 
-Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `nft_metadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://github.com/near/NEPs/tree/master/neps/nep-0177.md).
+Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `nft_metadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
 
 <Github language="rust" start="60" end="70" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/metadata.rs" />
 
@@ -407,7 +407,7 @@ This should return a `JsonToken` which should contain the `token_id`, `owner_id`
 
 If you navigate to the [collectibles tab](https://testnet.mynearwallet.com/?tab=collectibles) in the NEAR wallet, this should list all the NFTs that you own. It should look something like the what's below.
 
-![empty-nft-in-wallet](/assets/docs/nfts/empty-nft-in-wallet.png)
+![empty-nft-in-wallet](/assets/docs/tutorials/nfts/empty-nft-in-wallet.png)
 
 We've got a problem. The wallet correctly picked up that you minted an NFT, however, the contract doesn't implement the specific view function that is being called. Behind the scenes, the wallet is trying to call `nft_tokens_for_owner` to get a list of all the NFTs owned by your account on the contract. The only function you've created, however, is the `nft_token` function. It wouldn't be very efficient for the wallet to call `nft_token` for every single NFT that a user has to get information and so they try to call the `nft_tokens_for_owner` function.
 
@@ -436,7 +436,7 @@ At the time of this writing, this example works with the following versions:
 - rustc: `1.77.1`
 - near-cli-rs: `0.17.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md), version `1.0.0`
-- Metadata standard: [NEP177](https://github.com/near/NEPs/tree/master/neps/nep-0177.md), version `2.1.0`
+- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- Metadata standard: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), version `2.1.0`
 
 :::

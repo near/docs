@@ -27,7 +27,7 @@ Shade Agents power [Agentic Protocols](../concepts/what-can-you-build.md#agentic
 
 Shade Agents consist of two main components: the `agent` and the `agent smart contract`.
 
-![Shade Agent Architecture](/assets/docs/shade-agents/shade-agent-stack-diagram.png)
+![Shade Agent Architecture](/assets/docs/ai/shade-agent-stack-diagram.png)
 
 When an agent is booted up in a TEE, the `TEE's hardware-based entropy` generates a random private key and account. This private key is exclusively used to call the agent contract, not for storing funds.
 

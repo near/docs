@@ -8,8 +8,8 @@ import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import loggingIn from '/assets/docs/crosswords/logging-in.png';
-import explorerTransfer from '/assets/docs/crosswords/chapter-2-explorer-transfer.jpg';
+import loggingIn from '/assets/docs/tutorials/crosswords/logging-in.png';
+import explorerTransfer from '/assets/docs/tutorials/crosswords/chapter-2-explorer-transfer.jpg';
 
 We're going to add a login button that uses `near-api-js` to login with NEAR.
 
