@@ -28,16 +28,11 @@ export default function NotFoundContent({ className }) {
                 <Card
                   title="Understanding NEAR"
                   description="Learn about NEAR and how it works"
-<<<<<<< HEAD
                   image={require('@site/static/assets/site/near.jpg').default}
-=======
-                  image={require('@site/static/img/near.jpg').default}
->>>>>>> c796b38eda128bb7d175d40f5431647fb1e80d78
                   href="/protocol/basics"
                   variant="image"
                 >
                   <ul>
-<<<<<<< HEAD
                     <li><a href="/protocol/basics">
                       What is NEAR?
                     </a></li>
@@ -53,23 +48,6 @@ export default function NotFoundContent({ className }) {
                     <li><a href="/protocol/gas">
                       Understanding Gas
                     </a></li>
-=======
-                    <a href="/protocol/basics">
-                      <li>What is NEAR?</li>
-                    </a>
-                    <a href="/protocol/account-id">
-                      <li>Named Accounts</li>
-                    </a>
-                    <a href="/protocol/access-keys">
-                      <li>Access Keys</li>
-                    </a>
-                    <a href="/protocol/transactions">
-                      <li>Transactions</li>
-                    </a>
-                    <a href="/protocol/gas">
-                      <li>Understanding Gas</li>
-                    </a>
->>>>>>> c796b38eda128bb7d175d40f5431647fb1e80d78
                   </ul>
                 </Card>
               </div>
@@ -77,16 +55,11 @@ export default function NotFoundContent({ className }) {
                 <Card
                   title="Build"
                   description="Build awesome apps on NEAR"
-<<<<<<< HEAD
                   image={require('@site/static/assets/docs/welcome-pages/4.smart-contracts.png').default}
-=======
-                  image={require('@site/static/assets/docs/welcome-pages/contracts.png').default}
->>>>>>> c796b38eda128bb7d175d40f5431647fb1e80d78
                   href="/smart-contracts/what-is"
                   variant="image"
                 >
                   <ul>
-<<<<<<< HEAD
                     <li><a href="/smart-contracts/what-is">
                       Smart Contracts
                     </a></li>
@@ -102,23 +75,6 @@ export default function NotFoundContent({ className }) {
                     <li><a href="/data-infrastructure/what-is">
                       Indexers & Data Solutions
                     </a></li>
-=======
-                    <a href="/smart-contracts/what-is">
-                      <li>Smart Contracts</li>
-                    </a>
-                    <a href="/web3-apps/what-is">
-                      <li>Web3 Applications</li>
-                    </a>
-                    <a href="/chain-abstraction/chain-signatures">
-                      <li>Multi-Chain Signatures</li>
-                    </a>
-                    <a href="/primitives/what-is">
-                      <li>Primitives (FT, NFT, ...)</li>
-                    </a>
-                    <a href="/data-infrastructure/what-is">
-                      <li>Indexers & Data Solutions</li>
-                    </a>
->>>>>>> c796b38eda128bb7d175d40f5431647fb1e80d78
                   </ul>
                 </Card>
               </div>
@@ -126,16 +82,11 @@ export default function NotFoundContent({ className }) {
                 <Card
                   title="Tutorials"
                   description="Lots of tutorials to get you started"
-<<<<<<< HEAD
                   image={require('@site/static/assets/docs/welcome-pages/2.chain-abstraction.png').default}
-=======
-                  image={require('@site/static/assets/docs/welcome-pages/examples.png').default}
->>>>>>> c796b38eda128bb7d175d40f5431647fb1e80d78
                   href="/tutorials/welcome"
                   variant="image"
                 >
                   <ul>
-<<<<<<< HEAD
                     <li><a href="/tutorials/examples/count-near">
                       Basic dApps
                     </a></li>
@@ -145,17 +96,6 @@ export default function NotFoundContent({ className }) {
                     <li><a href="/tutorials/nfts/introduction">
                       NFT: Zero to Hero
                     </a></li>
-=======
-                    <a href="/tutorials/examples/count-near">
-                      <li>Basic dApps</li>
-                    </a>
-                    <a href="/tutorials/examples/factory">
-                      <li>Advanced Contracts</li>
-                    </a>
-                    <a href="/tutorials/nfts/introduction">
-                      <li>NFT: Zero to Hero</li>
-                    </a>
->>>>>>> c796b38eda128bb7d175d40f5431647fb1e80d78
                   </ul>
                 </Card>
               </div>
