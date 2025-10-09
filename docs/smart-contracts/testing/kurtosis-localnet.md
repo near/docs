@@ -21,7 +21,7 @@ This Kurtosis NEAR Package contains the following components:
 ## Prerequisites {#prerequisites}
 
 - [Docker](https://docs.docker.com/get-docker/)
-- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
+- [Yarn](https://classic.yarnpkg.com/lang/en/assets/docs/install)
 - [NEAR-CLI](/tools/near-cli#installation)
 - [Kurtosis CLI](https://docs.kurtosis.com/install)
   - Start Kurtosis engine after installation using: `kurtosis engine start`
@@ -364,7 +364,7 @@ The Kurtosis Team has created a great [video presentation](https://www.loom.com/
 
 Now that you have [everything setup](#setup), create an account using your local NEAR Wallet at 127.0.0.1:8334.
 
-![Local wallet landing page](/docs/assets/kurtosis/local-wallet-landing-page.png)
+![Local wallet landing page](/assets/docs/kurtosis/local-wallet-landing-page.png)
 
 The account creation is exactly the same as on mainnet or testnet but **only the passphrase recovery mode** will work here. Also note that the root account is `test.near` instead of `testnet` or `mainnet`. This means that all the accounts you create will be "subaccounts" of `test.near`. (ex. `benji.test.near`) [Read more](/protocol/account-id#named-address)
 
@@ -425,7 +425,7 @@ http://127.0.0.1:8331/transactions/3e3H5zqj9noKGYTCMqeZ5pb4NWK7tQsjYKak6ybtpgvD
 
 - Click on this link or copy/paste it into your browser:
 
-![Local explorer sending 1 NEAR](/docs/assets/kurtosis/local-explorer-send-funds.png)
+![Local explorer sending 1 NEAR](/assets/docs/kurtosis/local-explorer-send-funds.png)
 
 Here everything behaves exactly like the `testnet` or `mainnet` NEAR Explorer except it is retrieving data from your local NEAR blockchain!
 
@@ -441,7 +441,7 @@ echo $NEAR_EXPLORER_URL
 http://127.0.0.1:8331
 ```
 
-![Localnet explorer](/docs/assets/kurtosis/localnet-explorer.png)
+![Localnet explorer](/assets/docs/kurtosis/localnet-explorer.png)
 
 ---
 
@@ -477,7 +477,7 @@ Done deploying to goteam.test.near
 
 - Click on the clink to the Explorer and verify that the contract was deployed:
 
-![Local explorer contract deployed](/docs/assets/kurtosis/local-explorer-contract-deployed.png)
+![Local explorer contract deployed](/assets/docs/kurtosis/local-explorer-contract-deployed.png)
 
 Now, let's interact with the deployed contract.
 
@@ -497,7 +497,7 @@ local_near call $ACCOUNT_ID nft_mint '{"token_id": "team_token", "metadata": { "
 
 Once the NFT has been minted, you can view the token on the local wallet's collectibles tab. If you already had the wallet site open, simply refresh. Otherwise open your local NEAR Wallet instance and view your collectible.
 
-![Local wallet collectibles tab](/docs/assets/kurtosis/local-wallet-collectibles-tab.png)
+![Local wallet collectibles tab](/assets/docs/kurtosis/local-wallet-collectibles-tab.png)
 
 We won't spoil what the NFT is, but once you switch over to the collectibles tab your beautiful token should be there!
 
@@ -589,7 +589,7 @@ yarn && yarn start
 
 **Example Response:**
 
-![Local dApp build](/docs/assets/kurtosis/local-dapp-build.png)
+![Local dApp build](/assets/docs/kurtosis/local-dapp-build.png)
 
 - Open the dApp by clicking on the server address in the terminal:
 
@@ -600,7 +600,7 @@ Server running at http://localhost:1234
 
 You should see the Guest Book landing page:
 
-![Local Guest Book Landing Page](/docs/assets/kurtosis/local-guest-book-landing.png)
+![Local Guest Book Landing Page](/assets/docs/kurtosis/local-guest-book-landing.png)
 
 :::tip
 
@@ -610,13 +610,13 @@ If you run into any problems signing into try clearing your browser's local stor
 
 Once you've logged in, you can sign a message with an optional donation.
 
-![Local Guest Book Signed Message](/docs/assets/kurtosis/local-guest-book-signed-message.png)
+![Local Guest Book Signed Message](/assets/docs/kurtosis/local-guest-book-signed-message.png)
 
 - Sign the Guest Book which will create a transaction on `localnet`.
 
 - Once complete, open your local NEAR explorer and you can view the transaction you just created!
 
-![Local Explorer Signed Transaction](/docs/assets/kurtosis/local-explorer-signed-transaction.png)
+![Local Explorer Signed Transaction](/assets/docs/kurtosis/local-explorer-signed-transaction.png)
 
 **Congratulations! You've successfully deployed and interacted with a dApp on a local NEAR blockchain!** 🎉
 

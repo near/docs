@@ -9,9 +9,9 @@ import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import teachingDeployment from '/docs/assets/crosswords/teaching--jeheycell.near--artcultureac.jpeg';
-import createAccount from '/docs/assets/crosswords/creating account with text--seanpineda.near--_seanpineda.png';
-import chalkboardErase from '/docs/assets/crosswords/erasing-subaccount-chalkboard--iambon.near--JohnreyBona.mp4';
+import teachingDeployment from '/assets/docs/crosswords/teaching--jeheycell.near--artcultureac.jpeg';
+import createAccount from '/assets/docs/crosswords/creating account with text--seanpineda.near--_seanpineda.png';
+import chalkboardErase from '/assets/docs/crosswords/erasing-subaccount-chalkboard--iambon.near--JohnreyBona.mp4';
 
 This section will modify the smart contract skeleton from the previous section. This tutorial will start by writing a contract in a somewhat useless way in order to learn the basics. Once we've got a solid understanding, we'll iterate until we have a crossword puzzle.
 
@@ -280,7 +280,7 @@ Correct:
 
 You'll see something like this:
 
-![Command line shows log for successful solution guess](/docs/assets/crosswords/cli-guess-solution.png)
+![Command line shows log for successful solution guess](/assets/docs/crosswords/cli-guess-solution.png)
 
 Notice the log we wrote is output as well as a link to NEAR Explorer.
 
@@ -356,7 +356,7 @@ You may hit an RPC endpoint corresponding to `view_state` and see for yourself. 
     curl -d '{"jsonrpc": "2.0", "method": "query", "id": "see-state", "params": {"request_type": "view_state", "finality": "final", "account_id": "crossword.friend.testnet", "prefix_base64": ""}}' -H 'Content-Type: application/json' https://rpc.testnet.near.org
 ```
 
-![Screenshot of a terminal screen showing a curl request to an RPC endpoint that returns state of a smart contract](/docs/assets/crosswords/rpc-api-view-state.png)
+![Screenshot of a terminal screen showing a curl request to an RPC endpoint that returns state of a smart contract](/assets/docs/crosswords/rpc-api-view-state.png)
 
 More on this RPC endpoint in the [NEAR docs](/api/rpc/contracts#view-contract-state).
 :::

@@ -5,8 +5,8 @@ title: Replacing the solution hash with an access key
 description: "Learn how to protect puzzle answers on NEAR by turning solutions into access keys instead of sending them in plaintext."
 ---
 
-import puzzleFrontrun from '/docs/assets/crosswords/puzzle-frontrun.png';
-import padlockSafe from '/docs/assets/crosswords/safe-with-access-key--soulless.near--ZeroSerotonin__.png';
+import puzzleFrontrun from '/assets/docs/crosswords/puzzle-frontrun.png';
+import padlockSafe from '/assets/docs/crosswords/safe-with-access-key--soulless.near--ZeroSerotonin__.png';
 
 So far in this tutorial, the user sends the plaintext solution to the crossword puzzle smart contract, where it's hashed and compared with the known answer.
 

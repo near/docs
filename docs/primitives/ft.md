@@ -20,7 +20,7 @@ Besides the native NEAR token, NEAR accounts have access to a [multitude of toke
 
 In contrast with the NEAR native token, fungible token (FT) are **not stored** in the user's account. In fact, each FT lives in **their own contract** which is in charge of doing **bookkeeping**. This is, the contract keeps track of how many tokens each user has, and handles transfers internally.
 
-![FT](/docs/primitives/ft.png)
+![FT](/assets/docs/primitives/ft.png)
 
 In order for a contract to be considered a FT-contract it has to follow the [**NEP-141 and NEP-148 standards**](https://nomicon.io/Standards/FungibleToken/). The **NEP-141** & **NEP-148** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
 
