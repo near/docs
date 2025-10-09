@@ -26,7 +26,7 @@ In order for a contract to be considered a FT-contract it has to follow the [**N
 
 ---
 
-## About the FT standard
+## About the FT Standard
 
 [NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) is the blueprint for all community-created fungible tokens (like stablecoins, governance tokens, etc.) on NEAR. It defines a common set of rules and function calls that allow wallets, exchanges, and decentralized applications (dApps) to interact with any NEP-141 compliant token in a predictable way.
 
