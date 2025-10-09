@@ -5,8 +5,8 @@ title: Highlights of some beginner topics covered.
 description: "Learn to expand the Rust crossword contract with multiple puzzles, prizes, and key NEAR concepts."
 ---
 
-import chapter2Correct from '/docs/assets/crosswords/chapter-2-solve.gif';
-import multipleCrosswords from '/docs/assets/crosswords/puzzle-piggy-bank--r3v.near--rev_rodrigueza.png';
+import chapter2Correct from '/assets/docs/crosswords/chapter-2-solve.gif';
+import multipleCrosswords from '/assets/docs/crosswords/puzzle-piggy-bank--r3v.near--rev_rodrigueza.png';
 
 In the last chapter we installed Rust and got up and running with a simple smart contract. The contract has a few issues, however, and isn't as powerful as we'd like it to be. For instance, we can only store one crossword puzzle in the smart contract, the frontend is  hardcoded, and we don't offer any incentives to the person who wins.
 

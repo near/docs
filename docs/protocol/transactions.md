@@ -6,7 +6,7 @@ description: "Learn how users interact with NEAR through transactions composed o
 
 Users interact with NEAR by creating transactions. Specifically, users use their account's [private keys](./access-keys.md) to sign transactions, which are then broadcasted and processed by the network.
 
-![](@site/static/docs/assets/welcome-pages/data-lake.png)
+![](@site/static/assets/docs/welcome-pages/data-lake.png)
 
 A transaction is composed of one or more [`Actions`](./transaction-anatomy.md), and each action costs a deterministic amount of [gas units](./gas.md). These gas units are translated into a cost in NEAR tokens, which the user must pay for the transaction to be processed.
 

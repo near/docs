@@ -7,7 +7,7 @@ description: "A single library to connect all NEAR Wallets."
 
 The [Wallet Selector](https://github.com/near/wallet-selector) is a `JS`/`TS` library that lets users connect to your application using their preferred wallet. 
 
-![Preview](/docs/assets/tools/wallet-selector-preview.png)
+![Preview](/assets/docs/tools/wallet-selector-preview.png)
 *Initial screen of [Wallet Selector](https://near.github.io/wallet-selector/)*
 
 <details>
@@ -120,7 +120,7 @@ import "@near-wallet-selector/modal-ui/styles.css"
 
 ## Reference
 
-The API reference of the selector can be found [`here`](https://github.com/near/wallet-selector/blob/main/packages/core/docs/api/selector.md)
+The API reference of the selector can be found [`here`](https://github.com/near/wallet-selector/blob/main/packages/core/assets/docs/api/selector.md)
 
 ### Sign in
 

@@ -130,7 +130,7 @@ The responsibility of this client is to provide a simple interface for interacti
 - The [`da-rpc-go` package](https://github.com/near/rollup-data-availability/tree/main/gopkg/da-rpc) is the go client bindings for use by non-rust applications, and this calls through to `da-rpc-sys`, which provides another application-level layer for easy interaction with the bindings.
 
 :::info
-See also [the diagram](https://github.com/near/rollup-data-availability/blob/main/docs/da_rpc_client.md)
+See also [the diagram](https://github.com/near/near-cli-rs/blob/main/docs/da_rpc_client.md)
 :::
 
 ---

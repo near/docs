@@ -7,7 +7,7 @@ description: "Learn about the apps that can live in our accounts."
 
 Smart contracts are pieces of **executable code** that live in a NEAR account. They can **store data**, **perform transactions** in the account’s name, and **expose methods** so other accounts can interact with them.
 
-![img](/docs/assets/welcome-pages/4.smart-contracts.png)
+![img](/assets/docs/welcome-pages/4.smart-contracts.png)
 
 Developers can choose between using Javascript or Rust to write smart contracts in NEAR. Indistinctly from the language chosen, the contract will be compiled into WebAssembly, from which point it can be deployed and executed on the NEAR platform.
 
@@ -67,7 +67,7 @@ For instance, you can easily create a crowdfunding contract that accepts $NEAR. 
 
 Just like any piece of software, smart contracts have a development flow - starting with its creation and ending with monitoring it, all of which we cover in our documentation.
 
-![img](/docs/assets/welcome-pages/contract-lifecycle.png)
+![img](/assets/docs/welcome-pages/contract-lifecycle.png)
  "build/building-smart-contracts/testing/introduction",
 The development flow can be summarized as follows:
 - [**Scaffold**](./quickstart.md): The simplest way to create a project is by starting from a template.

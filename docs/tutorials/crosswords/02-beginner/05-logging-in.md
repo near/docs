@@ -5,10 +5,10 @@ title: Covering access keys and login
 description: "Learn how access keys enable secure login and user interaction in NEAR dApps."
 ---
 
-import chapter1Correct from '/docs/assets/crosswords/chapter-1-crossword-correct.gif';
-import accessKeys from '/docs/assets/crosswords/keys-cartoon-good--alcantara_gabriel.near--Bagriel_5_10.png';
-import functionCallAction from '/docs/assets/crosswords/function-call-action.png';
-import tutorialAccessKeys from '/docs/assets/crosswords/access-keys.png';
+import chapter1Correct from '/assets/docs/crosswords/chapter-1-crossword-correct.gif';
+import accessKeys from '/assets/docs/crosswords/keys-cartoon-good--alcantara_gabriel.near--Bagriel_5_10.png';
+import functionCallAction from '/assets/docs/crosswords/function-call-action.png';
+import tutorialAccessKeys from '/assets/docs/crosswords/access-keys.png';
 
 In this chapter, we will cover access keys and login functionality in NEAR. We will implement a login system for our crossword puzzle dApp, allowing users to log in with their NEAR accounts and interact with the smart contract
 

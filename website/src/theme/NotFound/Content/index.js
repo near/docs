@@ -2,6 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 import Translate from '@docusaurus/Translate';
 import Heading from '@theme/Heading';
+import Card from '@site/src/components/UI/Card';
+
 export default function NotFoundContent({ className }) {
   return (
     <main className={clsx('container margin-vert--xl', className)}>
@@ -22,99 +24,79 @@ export default function NotFoundContent({ className }) {
             <h4 className="text-center"> Don't give up! Check these awesome resources </h4>
             <div className="row">
               <div className="col col--4">
-                <div className="card">
-                  <div className="card__image">
-                    <img
-                      src={require('@site/static/docs/assets/welcome-pages/protocol.png').default}
-                      alt="Learn"
-                    />
-                  </div>
-                  <div className="card__body">
-                    <h3>Understanding NEAR</h3>
-                    Learn about NEAR and how it works
-                    <ul className="margin-vert--sm">
-                      <a href="/protocol/basics">
-                        <li>What is NEAR?</li>
-                      </a>
-                      <a href="/protocol/account-id">
-                        <li>Named Accounts</li>
-                      </a>
-                      <a href="/protocol/access-keys">
-                        <li>Access Keys</li>
-                      </a>
-                      <a href="/protocol/transactions">
-                        <li>Transactions</li>
-                      </a>
-                      <a href="/protocol/gas">
-                        <li>Understanding Gas</li>
-                      </a>
-                    </ul>
-                  </div>
-                </div>
+                <Card
+                  title="Understanding NEAR"
+                  description="Learn about NEAR and how it works"
+                  image={require('@site/static/img/near.jpg').default}
+                  href="/protocol/basics"
+                  variant="image"
+                >
+                  <ul>
+                    <a href="/protocol/basics">
+                      <li>What is NEAR?</li>
+                    </a>
+                    <a href="/protocol/account-id">
+                      <li>Named Accounts</li>
+                    </a>
+                    <a href="/protocol/access-keys">
+                      <li>Access Keys</li>
+                    </a>
+                    <a href="/protocol/transactions">
+                      <li>Transactions</li>
+                    </a>
+                    <a href="/protocol/gas">
+                      <li>Understanding Gas</li>
+                    </a>
+                  </ul>
+                </Card>
               </div>
               <div className="col col--4">
-                <div className="card">
-                  <div className="card__image">
-                    <img
-                      src={require('@site/static/docs/assets/welcome-pages/contracts.png').default}
-                      alt="Contracts"
-                    />
-                  </div>
-                  <div className="card__body">
-                    <h3>Build</h3>
-                    Build awesome applications on NEAR
-                    <ul className="margin-vert--sm">
-                      <a href="/smart-contracts/what-is">
-                        <li>Smart Contracts</li>
-                      </a>
-                      <a href="/web3-apps/what-is">
-                        <li>Web3 Applications</li>
-                      </a>
-                      <a href="/chain-abstraction/meta-transactions">
-                        <li>Relayers</li>
-                      </a>
-                      <a href="/chain-abstraction/chain-signatures">
-                        <li>Multi-Chain Signatures</li>
-                      </a>
-                      <a href="/primitives/what-is">
-                        <li>Primitives (FT, NFT, ...)</li>
-                      </a>
-                      <a href="/data-infrastructure/what-is">
-                        <li>Indexers & Data Solutions</li>
-                      </a>
-                      <a href="/chain-abstraction/data-availability">
-                        <li>Data Availability</li>
-                      </a>
-                    </ul>
-                  </div>
-                </div>
+                <Card
+                  title="Build"
+                  description="Build awesome apps on NEAR"
+                  image={require('@site/static/assets/docs/welcome-pages/contracts.png').default}
+                  href="/smart-contracts/what-is"
+                  variant="image"
+                >
+                  <ul>
+                    <a href="/smart-contracts/what-is">
+                      <li>Smart Contracts</li>
+                    </a>
+                    <a href="/web3-apps/what-is">
+                      <li>Web3 Applications</li>
+                    </a>
+                    <a href="/chain-abstraction/chain-signatures">
+                      <li>Multi-Chain Signatures</li>
+                    </a>
+                    <a href="/primitives/what-is">
+                      <li>Primitives (FT, NFT, ...)</li>
+                    </a>
+                    <a href="/data-infrastructure/what-is">
+                      <li>Indexers & Data Solutions</li>
+                    </a>
+                  </ul>
+                </Card>
               </div>
               <div className="col col--4">
-                <a href="/tutorials/welcome">
-                  <div className="card">
-                    <div className="card__image">
-                      <img
-                        src={require('@site/static/docs/assets/welcome-pages/examples.png').default}
-                        alt="Tutorials"
-                      />
-                    </div>
-                    <div className="card__body">
-                      <h3>Tutorials</h3>
-                      Lots of tutorials to get you started
-                      <ul className="margin-vert--sm">
-                        <a href="/tutorials/examples/count-near">
-                          <li>Basic dApps</li>
-                        </a>
-                        <a href="/tutorials/examples/factory">
-                          <li>Advanced Contracts</li>
-                        </a>
-                        <a href="/tutorials/nfts/introduction">
-                          <li>NFT: Zero to Hero</li>
-                        </a>
-                      </ul>
-                    </div>
-                  </div>
-                </a>
+                <Card
+                  title="Tutorials"
+                  description="Lots of tutorials to get you started"
+                  image={require('@site/static/assets/docs/welcome-pages/examples.png').default}
+                  href="/tutorials/welcome"
+                  variant="image"
+                >
+                  <ul>
+                    <a href="/tutorials/examples/count-near">
+                      <li>Basic dApps</li>
+                    </a>
+                    <a href="/tutorials/examples/factory">
+                      <li>Advanced Contracts</li>
+                    </a>
+                    <a href="/tutorials/nfts/introduction">
+                      <li>NFT: Zero to Hero</li>
+                    </a>
+                  </ul>
+                </Card>
               </div>
             </div>
           </div>

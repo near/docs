@@ -7,8 +7,7 @@ import NFTPreview from './NFTPreview';
 import NearPreview from './NearPreview';
 import Layout from '@theme/Layout';
 import './styles/claim.scss';
-import Meteor from '@site/static/img/meteor.svg';
-import MyNearWallet from '@site/static/img/my_near_wallet.png';
+import Meteor from '@site/static/assets/docs/tools/meteor.svg';
 
 const Claim = () => {
   const [key, setKey] = useState(null);
@@ -152,21 +151,6 @@ const Claim = () => {
                       <Meteor style={{ width: '24px', height: '24px' }} />
                     </div>
                     <span>Meteor Wallet</span>
-                  </a>
-                  <a
-                    href={`https://testnet.mynearwallet.com/linkdrop/${contract_id}/${key}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="wallet-link"
-                  >
-                    <div className="wallet-icon">
-                      <img 
-                        src={MyNearWallet} 
-                        alt="My NEAR Wallet" 
-                        style={{ width: '24px', height: '24px' }} 
-                      />
-                    </div>
-                    <span>My NEAR Wallet</span>
                   </a>
                 </div>
               </div>

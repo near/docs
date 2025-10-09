@@ -8,9 +8,9 @@ description: "Learn how to add new crossword puzzles to your smart contract usin
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import blankCrossword from '/docs/assets/crosswords/chapter-2-crossword-blank.png';
-import teachingDeployment from '/docs/assets/crosswords/teaching-just-teacher--herogranada.near--GranadaHero.jpeg';
-import recreatingSubaccount from '/docs/assets/crosswords/erase-recreate-subaccount--3one9.near--3one92.gif';
+import blankCrossword from '/assets/docs/crosswords/chapter-2-crossword-blank.png';
+import teachingDeployment from '/assets/docs/crosswords/teaching-just-teacher--herogranada.near--GranadaHero.jpeg';
+import recreatingSubaccount from '/assets/docs/crosswords/erase-recreate-subaccount--3one9.near--3one92.gif';
 
 In this chapter, we will add a new crossword puzzle to our smart contract. We will provide the necessary clues and answers, deploy the updated contract, and ensure that the new puzzle is correctly added to the collection.
 

@@ -16,7 +16,7 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 
 Decentralized Autonomous Organizations (DAOs) are self-organized groups that form around common purposes. Membership, decision-making, and funding are coordinated by publicly voting on proposals through a smart contract.
 
-![dao](/docs/primitives/dao.png)
+![dao](/assets/docs/primitives/dao.png)
 
 In contrast with [FT](ft.md) and [NFT](nft.md), DAO contract's are not standardized. Because of this, on this page we will use as
 reference the [Astra dao](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos) [contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should

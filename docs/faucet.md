@@ -31,7 +31,7 @@ Simply introduce the account you want to receive the tokens in, and click on the
 Navigate to the [Testnet Faucet](https://near-faucet.io/) page, input your address and select which type of token you need! The faucet supports a wide range of fungible tokens, including NEAR, Tether USD, Ether, and many others.
 
 
-![Faucet](/docs/assets/tools/faucet.png)
+![Faucet](/assets/docs/tools/faucet.png)
 
 :::info Supported tokens
 

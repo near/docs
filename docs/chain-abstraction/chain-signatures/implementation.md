@@ -34,7 +34,7 @@ There are five steps to create a Chain Signature:
 4. [Formatting the Signature](#4-formatting-the-signature) - Format the signature from the MPC contract and add it to the transaction.
 5. [Relaying the Signed Transaction](#5-relaying-the-signed-transaction) - Send the signed transaction to the destination chain for execution.
 
-![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
+![chain-signatures](/assets/docs/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
 
 The [chainsig.js](https://github.com/NearDeFi/chainsig.js) library provides a convenient interface for completing each of these steps.

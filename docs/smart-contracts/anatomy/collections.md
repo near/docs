@@ -830,7 +830,7 @@ In order to expose them all through view calls, we can use pagination.
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
-    With JavaScript this can be done using iterators with [`toArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/toArray) and [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice).
+    With JavaScript this can be done using iterators with [`toArray`](https://developer.mozilla.org/en-US/assets/docs/Web/JavaScript/Reference/Global_Objects/Iterator/toArray) and [`slice`](https://developer.mozilla.org/en-US/assets/docs/Web/JavaScript/Reference/Global_Objects/Array/slice).
 
     ```ts
       /// Returns multiple elements from the `UnorderedMap`.

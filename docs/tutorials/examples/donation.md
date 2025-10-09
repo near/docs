@@ -11,7 +11,7 @@ import MovingForwardSupportSection from '@site/src/components/MovingForwardSuppo
 
 Our donation example enables to forward NEAR Tokens to an account while keeping track of it. It is one of the simplest examples on making a contract handle transfers.
 
-![img](/docs/assets/examples/donation.png)
+![img](/assets/docs/examples/donation.png)
 _Frontend of the Donation App_
 
 ---
