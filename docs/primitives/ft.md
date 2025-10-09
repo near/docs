@@ -26,6 +26,24 @@ In order for a contract to be considered a FT-contract it has to follow the [**N
 
 ---
 
+## About the FT standard
+
+[NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) is the blueprint for all community-created fungible tokens (like stablecoins, governance tokens, etc.) on NEAR. It defines a common set of rules and function calls that allow wallets, exchanges, and decentralized applications (dApps) to interact with any NEP-141 compliant token in a predictable way.
+
+A key concept in NEP-141 is the use of a **receiver pattern** for transfers. This pattern prevents tokens from being stuck in a contract that doesn't know how to handle them.
+
+Instead of a simple _`transfer(to, amount)`_ call that only involves two parties, the pattern introduces a three-step process for more secure and flexible interactions:
+
+- `ft_transfer(receiver_id, amount, memo)`: The standard function to send tokens to another account.
+
+- `ft_transfer_call(receiver_id, amount, memo, msg)`: This is the most important function. It not only transfers tokens but also calls a method on the `receiver_id`'s contract in a single, atomic transaction. This is essential for DeFi and dApps.
+
+- `ft_on_transfer(sender_id, amount, msg)`: A callback function that the receiver contract must implement if it wants to receive tokens via `ft_transfer_call`. This allows the receiving contract to execute logic upon receiving the tokens (e.g., automatically swapping them, depositing them into a liquidity pool, or minting an NFT).
+
+NEP-141's focus on cross-contract calls make it inherently more powerful for a decentralized application ecosystem than a simple _transfer-only_ standard, enabling the complex, interconnected DeFi and dApp experiences that you want to build on a blockchain.
+
+---
+
 ## Creating a New Token
 
 The simplest way to create a new Fungible Token is by using a factory contract, to which you only need to provide the token metadata, and they will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
@@ -426,7 +444,7 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
 ## Attaching FTs to a Call
 Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a function call in your name.
 
-Let's assume that you need to deposit FTs on Ref Finance.
+Let's assume that you need to deposit FTs on [Ref Finance](https://rhea.finance/).
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
@@ -509,10 +527,10 @@ Let's assume that you need to deposit FTs on Ref Finance.
 
 How it works:
 
-1. You call ft_transfer_call in the FT contract passing: the receiver, a message, and the amount.
+1. You call `ft_transfer_call` in the FT contract passing: the receiver, a message, and the amount.
 2. The FT contract transfers the amount to the receiver.
-3. The FT contract calls receiver.ft_on_transfer(sender, msg, amount)
-4. The FT contract handles errors in the ft_resolve_transfer callback.
+3. The FT contract calls `receiver.ft_on_transfer(sender, msg, amount)`
+4. The FT contract handles errors in the `ft_resolve_transfer` callback.
 5. The FT contract returns you how much of the attached amount was actually used.
 
 ---
@@ -575,7 +593,8 @@ impl FungibleTokenReceiver for Contract {
 
 ## Additional Resources
 
-1. [NEP-141 and NEP-148 standards](https://github.com/near/NEPs/tree/master/neps/nep-0141.md)
-2. [FT Event Standards](https://github.com/near/NEPs/blob/master/neps/nep-0300.md)
-3. [FT reference implementation](https://github.com/near-examples/FT)
-4. [Fungible Tokens 101](../tutorials/fts/0-intro.md) - a set of tutorials that cover how to create a FT contract using Rust.
+1. [NEP-141 standard](https://github.com/near/NEPs/tree/master/neps/nep-0141.md)
+2. [NEP-148 standard](https://github.com/near/NEPs/tree/master/neps/nep-0148.md)
+3. [FT Event Standards](https://github.com/near/NEPs/blob/master/neps/nep-0300.md)
+4. [FT reference implementation](https://github.com/near-examples/FT)
+5. [Fungible Tokens 101](../tutorials/fts/0-intro.md) - a set of tutorials that cover how to create a FT contract using Rust.
