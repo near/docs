@@ -48,7 +48,7 @@ export function Feature({ image, title, subtitle, url, highlight = false }) {
       <a className="avatar" href={url} style={{ color: highlight && 'var(--ifm-color-primary)' }}>
         <img
           className="avatar__photo"
-          src={require(`@site/static/docs/assets/welcome-pages/${image}`).default}
+          src={require(`@site/static/assets/docs/welcome-pages/${image}`).default}
         />
         <div className="avatar__intro">
           <div className="avatar__name">

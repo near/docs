@@ -54,7 +54,7 @@ export default function NotFoundContent({ className }) {
                 <Card
                   title="Build"
                   description="Build awesome apps on NEAR"
-                  image={require('@site/static/docs/assets/welcome-pages/contracts.png').default}
+                  image={require('@site/static/assets/docs/welcome-pages/contracts.png').default}
                   href="/smart-contracts/what-is"
                   variant="image"
                 >
@@ -81,7 +81,7 @@ export default function NotFoundContent({ className }) {
                 <Card
                   title="Tutorials"
                   description="Lots of tutorials to get you started"
-                  image={require('@site/static/docs/assets/welcome-pages/examples.png').default}
+                  image={require('@site/static/assets/docs/welcome-pages/examples.png').default}
                   href="/tutorials/welcome"
                   variant="image"
                 >

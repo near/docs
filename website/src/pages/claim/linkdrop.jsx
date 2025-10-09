@@ -7,7 +7,7 @@ import NFTPreview from './NFTPreview';
 import NearPreview from './NearPreview';
 import Layout from '@theme/Layout';
 import './styles/claim.scss';
-import Meteor from '@site/static/docs/assets/tools/meteor.svg';
+import Meteor from '@site/static/assets/docs/tools/meteor.svg';
 
 const Claim = () => {
   const [key, setKey] = useState(null);
