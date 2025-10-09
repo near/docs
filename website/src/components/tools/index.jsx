@@ -51,7 +51,7 @@ const Tools = () => {
     async (ft_contracts) => {
       if (!signedAccountId) return [];
       if (!ft_contracts.length) return [];
-      console.log("hello", ft_contracts);
+      
       setLoadingFT(true);
 
       const getFTData = async (contract_id) => {
@@ -61,7 +61,6 @@ const Tools = () => {
             method: 'ft_balance_of',
             args: { account_id: signedAccountId },
           });
-          console.log(`FT balance for ${contract_id}:`, balance);
 
           if (balance === '0') return { contract_id, balance, metadata: {}, verified: false };
           const metadata = (await viewFunction({ contractId: contract_id, method: 'ft_metadata' }));
