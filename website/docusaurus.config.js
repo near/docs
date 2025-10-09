@@ -104,8 +104,8 @@ const config = {
     navbar: {
       logo: {
         alt: 'NEAR Logo',
-        src: 'img/near_logo.svg',
-        srcDark: 'img/near_logo_white.svg',
+        src: 'assets/site/near_logo.svg',
+        srcDark: 'assets/site/near_logo_white.svg',
       },
       items: [
         {
@@ -260,17 +260,17 @@ const config = {
             {
               label: 'Core Libraries', to: '#', description: "Core libraries to build on NEAR Protocol",
               subitems: [
-                { label: 'NEAR API', to: '/tools/near-api', description: "Integrate NEAR into your application with our API libraries", icon: '/docs/assets/welcome-pages/quickstart.png' },
-                { label: 'Contract SDK', to: '/tools/sdk', description: "Build smart contracts using your favorite programming language", icon: '/docs/assets/welcome-pages/smartcontract.png' },
-                { label: 'NEAR CLI', to: '/tools/near-cli', description: "Interact with NEAR Protocol using our command line interface", icon: '/docs/assets/welcome-pages/near-cli.png' },
-                { label: 'Wallet Selector', to: '/tools/wallet-selector', description: "Integrate multiple wallets into your application", icon: '/docs/assets/welcome-pages/multiple.png' },
+                { label: 'NEAR API', to: '/tools/near-api', description: "Integrate NEAR into your application with our API libraries", icon: '/assets/docs/welcome-pages/quickstart.png' },
+                { label: 'Contract SDK', to: '/tools/sdk', description: "Build smart contracts using your favorite programming language", icon: '/assets/docs/welcome-pages/smartcontract.png' },
+                { label: 'NEAR CLI', to: '/tools/near-cli', description: "Interact with NEAR Protocol using our command line interface", icon: '/assets/docs/welcome-pages/near-cli.png' },
+                { label: 'Wallet Selector', to: '/tools/wallet-selector', description: "Integrate multiple wallets into your application", icon: '/assets/docs/welcome-pages/multiple.png' },
               ]
             },
             {
               label: 'Data Tools', to: '#', description: "Services to access and monitor on-chain data",
               subitems: [
-                { label: 'Data API', to: '/tools/ecosystem-apis/', description: "Access on-chain data through simple APIs", icon: '/docs/assets/welcome-pages/experiment.png' },
-                { label: 'Indexers', to: '/tools/data-services', description: "Build custom indexers to query on-chain data", icon: '/docs/assets/welcome-pages/blocks.png' },
+                { label: 'Data API', to: '/tools/ecosystem-apis/', description: "Access on-chain data through simple APIs", icon: '/assets/docs/welcome-pages/experiment.png' },
+                { label: 'Indexers', to: '/tools/data-services', description: "Build custom indexers to query on-chain data", icon: '/assets/docs/welcome-pages/blocks.png' },
               ]
             },
             {
@@ -288,52 +288,52 @@ const config = {
             {
               label: 'Ecosystem Tools', to: '#', description: "Tools to help you build on NEAR",
               subitems: [
-                { label: 'Wallets ↗', to: 'https://wallet.near.org/', target: '_blank', description: "Discover wallets built for NEAR", icon: '/icons/wallet.png' },
+                { label: 'Wallets ↗', to: 'https://wallet.near.org/', target: '_blank', description: "Discover wallets built for NEAR", icon: '/assets/menu/wallet.png' },
                 {
                   label: 'Testnet Faucet',
                   to: '/faucet',
                   description: "Get testnet tokens to test your applications",
-                  icon: '/icons/token.svg'
+                  icon: '/assets/menu/token.svg'
                 },
                 {
                   label: 'Primitives Toolbox',
                   to: '/toolbox',
                   description: "Create FT, NFT, Linkdrop and DAO",
-                  icon: '/icons/toolbox.svg'
+                  icon: '/assets/menu/toolbox.svg'
                 },
 
-                { label: 'Explorers', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/docs/assets/welcome-pages/update.png' },
-                { label: 'Indexers', to: '/tools/indexer', description: "Listen to the blockchain, process the transactions and store them in a database", icon: '/docs/assets/welcome-pages/blocks.png' },
+                { label: 'Explorers', to: '/tools/explorer', description: "Explore transactions through simple web interfaces", icon: '/assets/docs/welcome-pages/update.png' },
+                { label: 'Indexers', to: '/tools/indexer', description: "Listen to the blockchain, process the transactions and store them in a database", icon: '/assets/docs/welcome-pages/blocks.png' },
                 {
                   label: 'Remix IDE Plugin ↗',
                   to: 'https://docs.welldonestudio.io/code/getting-started',
                   description: "Write, test and deploy smart contracts using the Remix IDE",
-                  icon: '/icons/remix.svg'
+                  icon: '/assets/menu/remix.svg'
                 },
               ]
             },
             {
               label: 'Developer Support', to: '#', description: "Get help from the NEAR community",
               subitems: [
-                { label: 'Telegram ↗', to: 'https://t.me/neardev', description: "Join our Telegram channel for developers", icon: '/icons/telegram.svg' },
-                { label: 'Discord ↗', to: 'https://discord.gg/nearprotocol', description: "Join our Discord server to get help from the community", icon: '/icons/discord.svg' },
-                { label: 'WeChat ↗', to: 'https://pages.near.org/ecosystem/community/wechat/', description: "Join our WeChat community", icon: '/icons/wechat.svg' },
+                { label: 'Telegram ↗', to: 'https://t.me/neardev', description: "Join our Telegram channel for developers", icon: '/assets/menu/telegram.svg' },
+                { label: 'Discord ↗', to: 'https://discord.gg/nearprotocol', description: "Join our Discord server to get help from the community", icon: '/assets/menu/discord.svg' },
+                { label: 'WeChat ↗', to: 'https://pages.near.org/ecosystem/community/wechat/', description: "Join our WeChat community", icon: '/assets/menu/wechat.svg' },
               ]
             },
             {
               label: 'Discover', to: '#', description: "Discover events, news and projects",
               subitems: [
-                { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/icons/event.png' },
-                { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/icons/newspaper.png' },
-                { label: 'Communities', "to": "/communities", description: "Find a NEAR community near you", icon: "/icons/communities.png" },
-                { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/icons/catalog.png' },
+                { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/assets/menu/event.png' },
+                { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/assets/menu/newspaper.png' },
+                { label: 'Communities', "to": "/communities", description: "Find a NEAR community near you", icon: "/assets/menu/communities.png" },
+                { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/assets/menu/catalog.png' },
               ]
             },
             {
               label: 'Educational Courses', to: '#', description: "Courses created by the NEAR community",
               subitems: [
-                { label: 'AgorApp ↗', to: 'https://agorapp.dev/catalog/course?difficulty=&chains=near', description: "Your one-stop platform for learning All Things Web3", icon: '/icons/agorApp.svg' },
-                { label: 'Learn NEAR Club ↗', to: 'https://learnnear.club/', description: "All inclusive hands-on onboarding platform to NEAR Protocol", icon: '/icons/lnc.jpg' },
+                { label: 'AgorApp ↗', to: 'https://agorapp.dev/catalog/course?difficulty=&chains=near', description: "Your one-stop platform for learning All Things Web3", icon: '/assets/menu/agorApp.svg' },
+                { label: 'Learn NEAR Club ↗', to: 'https://learnnear.club/', description: "All inclusive hands-on onboarding platform to NEAR Protocol", icon: '/assets/menu/lnc.jpg' },
               ]
             },
           ],

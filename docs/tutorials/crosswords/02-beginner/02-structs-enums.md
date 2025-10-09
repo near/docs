@@ -5,8 +5,8 @@ title: How to think about structs and enums when writing a Rust smart contract o
 description: "Learn how to use structs and enums in Rust smart contracts on NEAR to organize and manage crossword puzzle data effectively."
 ---
 
-import basicCrossword from '/assets/docs/crosswords/basics-crossword.jpg';
-import enumBox from '/assets/docs/crosswords/enum-a-d-block--eizaconiendo.near--eiza_coniendo.png';
+import basicCrossword from '/assets/docs/tutorials/crosswords/basics-crossword.jpg';
+import enumBox from '/assets/docs/tutorials/crosswords/enum-a-d-block--eizaconiendo.near--eiza_coniendo.png';
 
 In this chapter, we will explore how to use structs and enums in Rust smart contracts on NEAR. Structs are used to model complex data types, while enums help represent discrete states or options. We will see how these concepts can be applied to our crossword puzzle smart contract, allowing us to store and manage puzzle data effectively.
 

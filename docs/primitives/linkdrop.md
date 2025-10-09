@@ -58,7 +58,7 @@ In order to create any kind of drop, you need to first generate key pairs. You w
   <TabItem value="Lantstool" label={<LantstoolLabel/>}>
 
     <p>Generate a new key on [Lantstool](https://app.lantstool.dev/)</p>
-    ![lantstool](/assets/docs/lantstool/lantstool-near_protocol-utils-key_generator.png)
+    ![lantstool](/assets/docs/tools/lantstool-near_protocol-utils-key_generator.png)
   
   </TabItem>
 </Tabs>

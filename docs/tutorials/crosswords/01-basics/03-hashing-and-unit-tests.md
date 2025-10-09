@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import batchCookieTray from '/assets/docs/crosswords/batch-of-actions--dobulyo.near--w_artsu.jpg';
+import batchCookieTray from '/assets/docs/tutorials/crosswords/batch-of-actions--dobulyo.near--w_artsu.jpg';
 
 In the previous section, we stored the crossword solution as plain text as a `String` type on the smart contract. If we're trying to hide the solution from the users, this isn't a great approach as it'll be public to anyone looking at the state. Let's instead hash our crossword solution and store that instead. There are different ways to hash data, but let's use `sha256` which is one of the hashing algorithms available in [the Rust SDK](https://docs.rs/near-sdk/latest/near_sdk/env/fn.sha256.html).
 
@@ -19,7 +19,7 @@ Later on in this tutorial, we'll switch from using `sha256` to using cryptograph
 
 Learn more about hashing from [Evgeny Kapun](https://github.com/abacabadabacaba)'s presentation on the subject. You may find other NEAR-related videos from the channel linked in the screenshot below.
 
-[![Evgeny Kapun presents details on hashing](/assets/docs/crosswords/kapun-hashing.png)](https://youtu.be/PfabikgnD08)
+[![Evgeny Kapun presents details on hashing](/assets/docs/tutorials/crosswords/kapun-hashing.png)](https://youtu.be/PfabikgnD08)
 :::
 
 ## Helper unit test during rapid iteration

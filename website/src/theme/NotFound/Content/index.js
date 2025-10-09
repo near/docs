@@ -6,7 +6,7 @@ import Card from '@site/src/components/UI/Card';
 
 export default function NotFoundContent({ className }) {
   return (
-    <main className={clsx('container margin-vert--xl', className)}>
+    <main style={{margin: "0 auto", textAlign: "center"}} className={clsx('margin-vert--xl', className)}>
       <div className="row">
         <div className="col col--12">
           <Heading as="h1" className="hero__title text-center">
@@ -14,20 +14,20 @@ export default function NotFoundContent({ className }) {
               📕 Oops! We Couldn't Find That Page
             </Translate>
           </Heading>
-          <p className="margin-vert--md text-center">
+          <p className="margin-vert--sm text-center">
             <Translate id="theme.NotFound.p1" description="The first paragraph of the 404 page">
               Where you following a link? Let us know using the Feedback button and we will setup a
               redirect for you in no time
             </Translate>
           </p>
-          <div className="container p404">
-            <h4 className="text-center"> Don't give up! Check these awesome resources </h4>
+          <div className="container margin-vert--sm p404">
+            <h4 className="text-center margin-bottom--lg"> Don't give up! Check these awesome resources </h4>
             <div className="row">
               <div className="col col--4">
                 <Card
                   title="Understanding NEAR"
                   description="Learn about NEAR and how it works"
-                  image={require('@site/static/img/near.jpg').default}
+                  image={require('@site/static/assets/site/near.jpg').default}
                   href="/protocol/basics"
                   variant="image"
                 >
@@ -54,7 +54,7 @@ export default function NotFoundContent({ className }) {
                 <Card
                   title="Build"
                   description="Build awesome apps on NEAR"
-                  image={require('@site/static/assets/docs/welcome-pages/contracts.png').default}
+                  image={require('@site/static/assets/docs/welcome-pages/4.smart-contracts.png').default}
                   href="/smart-contracts/what-is"
                   variant="image"
                 >
@@ -81,7 +81,7 @@ export default function NotFoundContent({ className }) {
                 <Card
                   title="Tutorials"
                   description="Lots of tutorials to get you started"
-                  image={require('@site/static/assets/docs/welcome-pages/examples.png').default}
+                  image={require('@site/static/assets/docs/welcome-pages/2.chain-abstraction.png').default}
                   href="/tutorials/welcome"
                   variant="image"
                 >

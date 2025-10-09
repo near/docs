@@ -407,7 +407,7 @@ This should return a `JsonToken` which should contain the `token_id`, `owner_id`
 
 If you navigate to the [collectibles tab](https://testnet.mynearwallet.com/?tab=collectibles) in the NEAR wallet, this should list all the NFTs that you own. It should look something like the what's below.
 
-![empty-nft-in-wallet](/assets/docs/nfts/empty-nft-in-wallet.png)
+![empty-nft-in-wallet](/assets/docs/tutorials/nfts/empty-nft-in-wallet.png)
 
 We've got a problem. The wallet correctly picked up that you minted an NFT, however, the contract doesn't implement the specific view function that is being called. Behind the scenes, the wallet is trying to call `nft_tokens_for_owner` to get a list of all the NFTs owned by your account on the contract. The only function you've created, however, is the `nft_token` function. It wouldn't be very efficient for the wallet to call `nft_token` for every single NFT that a user has to get information and so they try to call the `nft_tokens_for_owner` function.
 

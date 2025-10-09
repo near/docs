@@ -1,5 +1,5 @@
 import React from 'react';
-import NearIconSvg from '@site/static/img/near_icon.svg';
+import NearIconSvg from '@site/static/assets/site/near_icon.svg';
 
 const NearPreview = ({ amount }) => {
   return (

@@ -367,7 +367,7 @@ If you query for the balance of some other account, it should return `0`.
 
 Now that your contract implements the necessary functions that the wallet uses to pickup your contract and display the FTs, you should be able to see your tokens on display in the [balances tab](https://testnet.mynearwallet.com/).
 
-<img width="65%" src="/assets/docs/fts/filled-fts-in-wallet.png" />
+<img width="65%" src="/assets/docs/tutorials/fts/filled-fts-in-wallet.png" />
 
 🎉🎉🎉 **This is awesome! Go team!** 🎉🎉🎉 You can now see your very first fungible tokens in the wallet!
 

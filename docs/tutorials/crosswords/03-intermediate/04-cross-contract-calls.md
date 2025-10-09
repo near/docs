@@ -10,10 +10,10 @@ In this chapter, we will cover some intermediate concepts in smart contract deve
 
 # Updating the contract
 
-import shuffleKeys from '/assets/docs/crosswords/shuffle-keys.gif';
-import clionSuggestion from '/assets/docs/crosswords/clion-suggestion.gif';
-import carpenterAddingKey from '/assets/docs/crosswords/create-key-carpenter-near--carlcarlkarl.near--CarlCarlKarl.jpg';
-import recycleKey from '/assets/docs/crosswords/remove-key-recycle--eerie_ram.near--eerie_ram.png';
+import shuffleKeys from '/assets/docs/tutorials/crosswords/shuffle-keys.gif';
+import clionSuggestion from '/assets/docs/tutorials/crosswords/clion-suggestion.gif';
+import carpenterAddingKey from '/assets/docs/tutorials/crosswords/create-key-carpenter-near--carlcarlkarl.near--CarlCarlKarl.jpg';
+import recycleKey from '/assets/docs/tutorials/crosswords/remove-key-recycle--eerie_ram.near--eerie_ram.png';
 
 To reiterate, we'd like anyone to be able to participate in the crossword puzzle, even folks who don't have a NEAR account.
 

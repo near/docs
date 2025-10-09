@@ -1,13 +1,13 @@
 import Layout from '@theme/Layout';
 import styles from './communities.module.scss';
 
-import TelegramIcon from '@site/static/icons/telegram.svg';
-import DiscordIcon from '@site/static/icons/discord.svg';
-import WeChatIcon from '@site/static/icons/wechat.svg';
-import GitHubIcon from '@site/static/icons/github.svg';
-import XIcon from '@site/static/icons/x.svg';
-import DocsIcon from '@site/static/icons/docs.svg';
-import SpeechBubbleIcon from '@site/static/icons/speech-bubble.svg';
+import TelegramIcon from '@site/static/assets/menu/telegram.svg';
+import DiscordIcon from '@site/static/assets/menu/discord.svg';
+import WeChatIcon from '@site/static/assets/menu/wechat.svg';
+import GitHubIcon from '@site/static/assets/menu/github.svg';
+import XIcon from '@site/static/assets/menu/x.svg';
+import DocsIcon from '@site/static/assets/menu/docs.svg';
+import SpeechBubbleIcon from '@site/static/assets/menu/speech-bubble.svg';
 import Accordion from '../../components/UI/Accordion';
 import Card from '../../components/UI/Card';
 

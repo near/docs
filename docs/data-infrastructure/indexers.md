@@ -29,7 +29,7 @@ However, the nature of a blockchain is that it *must* be deterministic. A critic
 
 The deterministic nature of a blockchain closes it from external (off-chain) variables. It is totally impossible to perform a call to an API from within a smart contract. A blockchain and a smart contract are closed off from the external (off-chain) world.
 
-![Blockchain closed from outer world](/assets/docs/intro/blockchain.png)
+![Blockchain closed from outer world](/assets/docs/data-infrastructure/blockchain.png)
 
 Blockchains are great at providing a way to apply the requested changes to the state in a decentralized manner. However, in order to observe the changes, you need to actively pull the information from the network.
 
@@ -66,7 +66,7 @@ A blockchain indexer is an implementation of the *push model* of getting the dat
 
 Getting back to our example, the helper becomes **an indexer** that receives every *Block*, along with **Chunks**, **Transactions** with its statuses, etc. In the same way the helper analyzes the data and triggers the code to send the user an email with the e-book they bought.
 
-![Indexer is streaming the data from the blockchain](/assets/docs/intro/indexer.png)
+![Indexer is streaming the data from the blockchain](/assets/docs/data-infrastructure/indexer.png)
 
 :::info An indexer concept
 

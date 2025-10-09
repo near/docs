@@ -32,7 +32,7 @@ If you don't have one yet, you can create one easily by following [these instruc
 
 Once you have your Wallet account, you can click on the [Collectibles](https://testnet.mynearwallet.com//?tab=collectibles) tab where all your NFTs will be listed:
 
-![Wallet](/assets/docs/nfts/nft-wallet.png)
+![Wallet](/assets/docs/tutorials/nfts/nft-wallet.png)
 
 <!--
 Briefly talks about how the wallet listens for methods that start with `nft_` and then flags the contracts.
@@ -386,7 +386,7 @@ To view tokens owned by an account you can call the NFT contract with the follow
 >
 > **Tip:** after you mint your first non-fungible token, you can [view it in your Wallet](https://testnet.mynearwallet.com//?tab=collectibles):
 >
-> ![Wallet with token](/assets/docs/nfts/nft-wallet-token.png)
+> ![Wallet with token](/assets/docs/tutorials/nfts/nft-wallet-token.png)
 >
 > <br/>
 

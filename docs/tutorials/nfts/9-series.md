@@ -627,7 +627,7 @@ https://testnet.nearblocks.io/txns/FxWLFGuap7SFrUPLskVr7Uxxq8hpDtAG76AvshWppBVC
 
 If you check the explorer link, it should show that the owner received on the order of `0.59305 $NEAR`.
 
-<img width="80%" src="/assets/docs/nfts/explorer-payout-series-owner.png" />
+<img width="80%" src="/assets/docs/tutorials/nfts/explorer-payout-series-owner.png" />
 
 <hr class="subsection" />
 
@@ -693,7 +693,7 @@ If you now run the mint command again, it should work.
 
 Now that you've received both NFTs, they should show up in the NEAR wallet. Open the collectibles tab and search for the contract with the title `NFT Series Contract` and you should own two NFTs. One should be the complex series and the other should just be the simple version. Both should have ` - 1` appended to the end of the title because the NFTs are the first editions for each series.
 
-<img width="80%" src="/assets/docs/nfts/series-wallet-collectibles.png" />
+<img width="80%" src="/assets/docs/tutorials/nfts/series-wallet-collectibles.png" />
 
 Hurray! You've successfully deployed and tested the series contract! **GO TEAM!**.
 

@@ -20,7 +20,7 @@ import Card from '@site/src/components/UI/Card';
     <div className="col col--4">
       <Card
         variant="icon"
-        icon={<img src="/icons/near.svg" alt="NEAR Protocol" />}
+        icon={<img src="/assets/menu/near.svg" alt="NEAR Protocol" />}
         title="New to NEAR?"
         description="NEAR is a layer-1 blockchain built for scale and multichain compatibility. Battle-tested with 13M+ transaction peaks and 5 years of zero downtime"
         links={{
@@ -32,7 +32,7 @@ import Card from '@site/src/components/UI/Card';
     <div className="col col--4">
       <Card
         variant="icon"
-        icon={<img src="/icons/ai.svg" alt="AI Native Infrastructure" />}
+        icon={<img src="/assets/menu/ai.svg" alt="AI Native Infrastructure" />}
         title="AI Native Infrastructure"
         description="NEAR is the execution layer for AI-native apps—enabling agents to own assets, make decisions, and transact freely across networks"
         links={{
@@ -45,7 +45,7 @@ import Card from '@site/src/components/UI/Card';
     <div className="col col--4">
       <Card
         variant="icon"
-        icon={<img src="/icons/multichain.svg" alt="Multi-Chain" />}
+        icon={<img src="/assets/menu/multichain.svg" alt="Multi-Chain" />}
         title="Multi-Chain"
         description="Tap into any blockchain with NEAR's chain abstraction layer"
         links={{
@@ -60,7 +60,7 @@ import Card from '@site/src/components/UI/Card';
     <div className="col col--4">
       <Card
         variant="icon"
-        icon={<img src="/icons/app.svg" alt="Web3 Applications" />}
+        icon={<img src="/assets/menu/app.svg" alt="Web3 Applications" />}
         title="Web3 Applications"
         description="Create modern web applications that interact with the NEAR blockchain. Learn frontend integration and user experience best practices"
         links={{
@@ -72,7 +72,7 @@ import Card from '@site/src/components/UI/Card';
     <div className="col col--4">
       <Card
         variant="icon"
-        icon={<img src="/icons/contract.svg" alt="Smart Contracts" />}
+        icon={<img src="/assets/menu/contract.svg" alt="Smart Contracts" />}
         title="Smart Contracts"
         description="Deploy and interact with smart contracts on NEAR. From basic concepts to advanced patterns and security best practices"
         links={{
@@ -84,7 +84,7 @@ import Card from '@site/src/components/UI/Card';
     <div className="col col--4">
       <Card
         variant="icon"
-        icon={<img src="/icons/token.svg" alt="Tokens and Primitives" />}
+        icon={<img src="/assets/menu/token.svg" alt="Tokens and Primitives" />}
         title="Tokens and Primitives"
         description="Learn about FTs, NFTs, DAOs and everything you need to build an application on NEAR"
         links={{
