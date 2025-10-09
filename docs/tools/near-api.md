@@ -762,7 +762,7 @@ Deleting an account **DOES NOT** affect its sub-accounts - they will remain acti
 
 ### Send Tokens {#send-tokens}
 
-Accounts can transfer different types of tokens to other accounts, including the native NEAR token and [NEP-141](https://nomicon.io/Standards/Tokens/FungibleToken/Core) fungible tokens.
+Accounts can transfer different types of tokens to other accounts, including the native NEAR token and [NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) fungible tokens.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">

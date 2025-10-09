@@ -164,7 +164,7 @@ Don't be alarmed if this section feels confusing at this point, but know we'll c
 
 Without getting into detail, a contract may want to make a cross-contract call and "do something" with the return value. Sometimes this return value is an object we're expecting, so we can define a struct with the expected fields to capture the value. In other programming languages this may be referred to as "casting" or "marshaling" the value.
 
-A real-world example of this might be the [Storage Management standard](https://nomicon.io/Standards/StorageManagement.html), as used in a [fungible token](https://github.com/near-examples/FT).
+A real-world example of this might be the [Storage Management standard](https://github.com/near/NEPs/tree/master/neps/nep-0145.md), as used in a [fungible token](https://github.com/near-examples/FT).
 
 Let's say a smart contract wants to determine if `alice.near` is "registered" on the `nDAI` token. More technically, does `alice.near` have a key-value pair for herself in the fungible token contract.
 

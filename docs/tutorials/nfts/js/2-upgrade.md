@@ -98,13 +98,13 @@ Now that your contract implements the necessary functions that the wallet uses t
 
 In this tutorial, you learned about the basics of [upgrading contracts](#upgrading-contracts). Then, you implemented the necessary [modifications to your smart contract](#modifications-to-contract) and [redeployed it](#redeploying-contract). Finally you navigated to the wallet collectibles tab and [viewed your NFTs](#viewing-nfts-in-wallet).
 
-In the [next tutorial](/tutorials/nfts/js/enumeration), you'll implement the remaining functions needed to complete the [enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) standard.
+In the [next tutorial](/tutorials/nfts/js/enumeration), you'll implement the remaining functions needed to complete the [enumeration](https://github.com/near/NEPs/tree/master/neps/nep-0181.md) standard.
 
 :::note Versioning for this article
 
 At the time of this writing, this example works with the following versions:
 
 - near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- NFT standard: [NEP171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md), version `1.0.0`
 
 :::

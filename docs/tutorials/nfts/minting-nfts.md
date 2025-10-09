@@ -60,7 +60,7 @@ https://bafyreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.li
 
 [This repository](https://github.com/near-examples/NFT) includes an example implementation of a [non-fungible token] contract which uses [near-contract-standards] and simulation tests.
 
-[non-fungible token]: https://nomicon.io/Standards/NonFungibleToken
+[non-fungible token]: https://github.com/near/NEPs/tree/master/neps/nep-0171.md
 [near-contract-standards]: https://github.com/near/near-sdk-rs/tree/master/near-contract-standards
 
 ### Clone the NFT repository {#clone-the-nft-repository}
@@ -247,7 +247,7 @@ In our case, we need to initialize the NFT contract before usage. For now, we'll
   </TabItem>
 </Tabs>
 
-> **Tip:** you can find more info about the NFT metadata at [nomicon.io](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
+> **Tip:** you can find more info about the NFT metadata at [nomicon.io](https://github.com/near/NEPs/tree/master/neps/nep-0177.md).
 
 You can then view the metadata by running the following `view` call:
 
