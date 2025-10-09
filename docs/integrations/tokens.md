@@ -12,7 +12,7 @@ This document provides an overview of the NEAR fungible token standard, includin
 
 ## Introduction {#introduction}
 
-Please see the [spec for the fungible token standard](https://nomicon.io/Standards/FungibleToken/) and an [example implementation](https://github.com/near-examples/FT) for reference details.
+Please see the [spec for the fungible token standard](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) and an [example implementation](https://github.com/near-examples/FT) for reference details.
 
 One notable aspect of the standard is that method names are prefixed with `ft_`. This will be a helpful convention when querying for transactions related to fungible tokens.
 
@@ -1103,7 +1103,7 @@ To determine how many fungible tokens were transferred, look at:
 
 ## Transfer and call {#transfer-and-call}
 
-If the idea of a fungible token using "transfer and call" is new, please review the comments above the function in [the Nomicon spec](https://nomicon.io/Standards/Tokens/FungibleToken/Core#reference-level-explanation). Also, see a similar idea [from EIP-677](https://github.com/ethereum/EIPs/issues/677).
+If the idea of a fungible token using "transfer and call" is new, please review the comments above the function in [the Nomicon spec](https://github.com/near/NEPs/tree/master/neps/nep-0141.md#reference-level-explanation). Also, see a similar idea [from EIP-677](https://github.com/ethereum/EIPs/issues/677).
 
 For this example we will build and deploy FT contracts from [near-sdk-rs/examples/fungible-token](https://github.com/near/near-sdk-rs/tree/master/examples/fungible-token).
 
