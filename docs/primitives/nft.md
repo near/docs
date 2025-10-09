@@ -20,7 +20,7 @@ In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and ther
 
 As with fungible tokens, NFTs are **not stored** in the user's wallet, instead, each NFT lives in a **NFT contract**. The NFT contract works as a bookkeeper, this is: it is in charge of handling the creation, storage and transfers of NFTs.
 
-In order for a contract to be considered a NFT-contract it has to follow the [**NEP-171 and NEP-177 standards**](https://github.com/near/NEPs/tree/master/neps/nep-0171.md). The **NEP-171** & **NEP-177** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
+In order for a contract to be considered a NFT-contract it has to follow the [**NEP-171**](https://github.com/near/NEPs/tree/master/neps/nep-0171.md) and [**NEP-177 standards**](https://github.com/near/NEPs/tree/master/neps/nep-0177.md). The **NEP-171** & **NEP-177** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
 
 :::info NFT & Marketplaces
 
