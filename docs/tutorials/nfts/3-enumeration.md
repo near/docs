@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration).
+In this tutorial, you'll expand on and finish the rest of the enumeration methods as per the [standard](https://github.com/near/NEPs/tree/master/neps/nep-0181.md).
 
 In the previous tutorials, you looked at ways to integrate the minting functionality into a skeleton smart contract. In order to get your NFTs to show in the wallet, you also had to deploy a patch fix that implemented one of the enumeration methods.
 
@@ -151,7 +151,7 @@ At the time of this writing, this example works with the following versions:
 - rustc: `1.77.1`
 - near-cli-rs: `0.17.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
-- Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
+- NFT standard: [NEP171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md), version `1.0.0`
+- Enumeration standard: [NEP181](https://github.com/near/NEPs/tree/master/neps/nep-0181.md), version `1.0.0`
 
 :::

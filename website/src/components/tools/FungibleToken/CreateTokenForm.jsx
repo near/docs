@@ -9,7 +9,7 @@ import Card from '../../UI/Card';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
 
-const FACTORY_CONTRACT = 'tkn.primitives.testnet';
+const FACTORY_CONTRACT = 'token.primitives.testnet';
 const MAX_FILE_SIZE = 10 * 1024;
 const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'];
 

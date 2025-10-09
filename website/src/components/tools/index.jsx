@@ -42,7 +42,6 @@ const Tools = () => {
     const response = await fetch(`${API_NEAR_BLOCKS}/v1/account/${signedAccountId}/tokens`);
     if (!response.ok) return { fts: [], nfts: [] };
 
-
     const data = await response.json();
     return data.tokens;
   }, [signedAccountId]);

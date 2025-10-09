@@ -259,6 +259,7 @@
   &__content {
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
+    flex-grow: 1;
 
     p {
       margin-bottom: var(--space-component-sm);

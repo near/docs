@@ -36,10 +36,10 @@ The repository comes with many different folders. Each folder represents a diffe
 
 | File                             | Description                                                                      |
 | -------------------------------- | -------------------------------------------------------------------------------- |
-| [ft_core.rs](#ft_corers)       | Contains the logic for transferring and controlling FTs. This file represents the implementation of the [core](https://nomicon.io/Standards/Tokens/FungibleToken/Core) standard. |              |
+| [ft_core.rs](#ft_corers)       | Contains the logic for transferring and controlling FTs. This file represents the implementation of the [core](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) standard. |              |
 | [lib.rs](#librs)                 | Holds the smart contract initialization functions and dictates what information is kept on-chain.                               |
-| [metadata.rs](#metadatars)       | Defines the metadata structure. This file represents the implementation of the [metadata](https://nomicon.io/Standards/Tokens/FungibleToken/Metadata) extension of the standard.                                      |
-| [storage.rs](#storagers)               | Contains the logic for registration and storage.  This file represents the implementation of the [storage management](https://nomicon.io/Standards/StorageManagement) standard.                                                   |
+| [metadata.rs](#metadatars)       | Defines the metadata structure. This file represents the implementation of the [metadata](https://github.com/near/NEPs/blob/master/neps/nep-0245/Metadata.md) extension of the standard.                                      |
+| [storage.rs](#storagers)               | Contains the logic for registration and storage.  This file represents the implementation of the [storage management](https://github.com/near/NEPs/tree/master/neps/nep-0145.md) standard.                                                   |
 
 ```
 skeleton
@@ -99,7 +99,7 @@ You'll learn more about these functions in the [define a token](2-define-a-token
 ## `metadata.rs`
 
 This file is used to outline the metadata for the Fungible Token itself.
-In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://nomicon.io/Standards/Tokens/FungibleToken/Metadata) extension.
+In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://github.com/near/NEPs/blob/master/neps/nep-0245/Metadata.md) extension.
 
 | Name              | Description                                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -114,7 +114,7 @@ You'll learn more about these functions in the [define a token](2-define-a-token
 
 ## `storage.rs`
 
-Contains the registration logic as per the [storage management](https://nomicon.io/Standards/StorageManagement) standard.
+Contains the registration logic as per the [storage management](https://github.com/near/NEPs/tree/master/neps/nep-0145.md) standard.
 
 | Method                  | Description                                                                                                   |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------- |

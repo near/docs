@@ -41,7 +41,7 @@ Since perpetual royalties will be on a per-token basis, it's safe to assume that
 
 Now, you need some way to relay that information to the marketplace. This method should be able to transfer the NFT exactly like the old solution but with the added benefit of telling the marketplace exactly what accounts should be paid what amounts. If you implement a method that transfers the NFT and then calculates exactly what accounts get paid and to what amount based on a passed-in balance, that should work nicely.
 
-This is what the [royalty standards](https://nomicon.io/Standards/NonFungibleToken/Payout) outlined. Let's now move on and modify our smart contract to introduce this behavior.
+This is what the [royalty standards](https://github.com/near/NEPs/blob/master/neps/nep-0199.md) outlined. Let's now move on and modify our smart contract to introduce this behavior.
 
 ---
 
@@ -292,8 +292,8 @@ At the time of this writing, this example works with the following versions:
 - rustc: `1.77.1`
 - near-cli-rs: `0.17.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
-- Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
-- Royalties standard: [NEP199](https://nomicon.io/Standards/Tokens/NonFungibleToken/Payout), version `2.0.0`
+- NFT standard: [NEP171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md), version `1.0.0`
+- Enumeration standard: [NEP181](https://github.com/near/NEPs/tree/master/neps/nep-0181.md), version `1.0.0`
+- Royalties standard: [NEP199](https://github.com/near/NEPs/tree/master/neps/nep-0171.md/Payout), version `2.0.0`
 
 :::

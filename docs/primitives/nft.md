@@ -20,7 +20,7 @@ In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and ther
 
 As with fungible tokens, NFTs are **not stored** in the user's wallet, instead, each NFT lives in a **NFT contract**. The NFT contract works as a bookkeeper, this is: it is in charge of handling the creation, storage and transfers of NFTs.
 
-In order for a contract to be considered a NFT-contract it has to follow the [**NEP-171 and NEP-177 standards**](https://nomicon.io/Standards/Tokens/NonFungibleToken). The **NEP-171** & **NEP-177** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
+In order for a contract to be considered a NFT-contract it has to follow the [**NEP-171 and NEP-177 standards**](https://github.com/near/NEPs/tree/master/neps/nep-0171.md). The **NEP-171** & **NEP-177** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
 
 :::info NFT & Marketplaces
 
@@ -178,7 +178,7 @@ To create a new NFT (a.k.a. minting it) you will call the `nft_mint` method pass
 
 :::info
 
-See the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata) for the full list of `TokenMetadata` parameters.
+See the [metadata standard](https://github.com/near/NEPs/tree/master/neps/nep-0177.md) for the full list of `TokenMetadata` parameters.
 
 :::
 
@@ -364,7 +364,7 @@ You can query the NFT's information and metadata by calling the `nft_token`.
 ## Transferring a NFT
 Transferring an NFT can happen in two scenarios: (1) you ask to transfer an NFT, and (2) an [authorized account](#approving-users) asks to transfer the NFT.
 
-In both cases, it is necessary to invoke the `nft_transfer` method, indicating the token id, the receiver, and an (optionally) an [approval_id](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement).
+In both cases, it is necessary to invoke the `nft_transfer` method, indicating the token id, the receiver, and an (optionally) an [approval_id](https://github.com/near/NEPs/tree/master/neps/nep-0178.md).
 
 
 <Tabs groupId="code-tabs">
@@ -459,7 +459,7 @@ near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>
 
 :::info
 
-Optionally, a [`memo` parameter](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core#nft-interface) can be passed to provide more information to your contract.
+Optionally, a [`memo` parameter](https://github.com/near/NEPs/tree/master/neps/nep-0171.md#nft-interface) can be passed to provide more information to your contract.
 
 :::
 

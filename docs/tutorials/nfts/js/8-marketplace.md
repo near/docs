@@ -6,7 +6,7 @@ description: "Learn how to build an NFT marketplace on NEAR to list, buy, and se
 ---
 import {Github} from "@site/src/components/UI/Codetabs"
 
-In this tutorial, you'll learn the basics of an NFT marketplace contract where you can buy and sell non-fungible tokens for $NEAR. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the [NFT standard](https://nomicon.io/Standards/NonFungibleToken).
+In this tutorial, you'll learn the basics of an NFT marketplace contract where you can buy and sell non-fungible tokens for $NEAR. In the previous tutorials, you went through and created a fully fledged NFT contract that incorporates all the standards found in the [NFT standard](https://github.com/near/NEPs/tree/master/neps/nep-0171.md).
 
 
 
@@ -128,7 +128,7 @@ In order to update the list price of a token, the owner must call the `update_pr
 
 ### Purchasing NFTs {#purchasing-nfts}
 
-For purchasing NFTs, you must call the `offer` function. It takes an `nft_contract_id` and `token_id` as parameters. You must attach the correct amount of NEAR to the call in order to purchase. Behind the scenes, this will make sure your deposit is greater than the list price and call a private method `processPurchase` which will perform a cross-contract call to the NFT contract to invoke the `nft_transfer_payout` function. This will transfer the NFT using the [approval management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) standard that you learned about and it will return the `Payout` object which includes royalties.
+For purchasing NFTs, you must call the `offer` function. It takes an `nft_contract_id` and `token_id` as parameters. You must attach the correct amount of NEAR to the call in order to purchase. Behind the scenes, this will make sure your deposit is greater than the list price and call a private method `processPurchase` which will perform a cross-contract call to the NFT contract to invoke the `nft_transfer_payout` function. This will transfer the NFT using the [approval management](https://github.com/near/NEPs/tree/master/neps/nep-0178.md) standard that you learned about and it will return the `Payout` object which includes royalties.
 
 The marketplace will then call `resolve_purchase` where it will check for malicious payout objects and then if everything went well, it will pay the correct accounts.
 
@@ -197,6 +197,6 @@ You should now have a solid understanding of NFTs and marketplaces on NEAR. Feel
 At the time of this writing, this example works with the following versions:
 
 - near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- NFT standard: [NEP171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md), version `1.0.0`
 
 :::

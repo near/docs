@@ -62,7 +62,7 @@ Explore the code in our [GitHub repository](https://github.com/near-examples/nft
 
 > This allows people to approve other accounts to transfer NFTs on their behalf.
 
-This file contains the internal logic that complies with the standard's [approvals management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension. Here is a breakdown of the methods and their functions:
+This file contains the internal logic that complies with the standard's [approvals management](https://github.com/near/NEPs/tree/master/neps/nep-0178.md) extension. Here is a breakdown of the methods and their functions:
 
 | Method              | Description                                                                                               |
 | ------------------- | --------------------------------------------------------------------------------------------------------- |
@@ -79,7 +79,7 @@ You'll learn more about these functions in the [approvals section](/tutorials/nf
 
 ## `enumeration.ts`
 
-> This file provides the internal functions needed to view information about NFTs, and follows the standard's [enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration) extension.
+> This file provides the internal functions needed to view information about NFTs, and follows the standard's [enumeration](https://github.com/near/NEPs/tree/master/neps/nep-0181.md) extension.
 
 | Method                   | Description                                                                        |
 | ------------------------ | ---------------------------------------------------------------------------------- |
@@ -97,7 +97,7 @@ You'll learn more about these functions in the [enumeration section](/tutorials/
 ## `metadata.ts`
 
 > This file is used to keep track of the information to be stored for tokens, and metadata.
-> In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata) extension.
+> In addition, you can define a function to view the contract's metadata which is part of the standard's [metadata](https://github.com/near/NEPs/tree/master/neps/nep-0177.md) extension.
 
 | Name              | Description                                                                                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -222,6 +222,6 @@ Using `yarn`, you've been able to compile the contract, and you'll start fleshin
 At the time of this writing, this example works with the following versions:
 
 - near-sdk-js: `0.4.0-5`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
+- NFT standard: [NEP171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md), version `1.0.0`
 
 :::
