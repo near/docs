@@ -36,34 +36,36 @@ You can create a DAO by interacting with the `sputnik-dao` contract:
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
     ```js
-    import { Wallet } from './near-wallet';
+    import { useEffect } from 'react';
+    import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
-    const DAO_FACTORY_CONTRACT_ADDRESS = 'sputnik-dao.near';
-    const wallet = new Wallet({ createAccessKeyFor: DAO_FACTORY_CONTRACT_ADDRESS });
+    const { callFunction } = useWalletSelector();
 
-    await wallet.callMethod({
-      method: 'create',
-      args: {
-        name: 'primitives',
-        args: btoa({
-          config: {
-            name: 'Primitives',
-            purpose: 'Building primitives on NEAR',
-            metadata: '',
-          },
-          policy: ['bob.near'],
-        }),
-      },
-      contractId: DAO_FACTORY_CONTRACT_ADDRESS,
-      gas: 300000000000000,
-      deposit: 6000000000000000000000000,
-    });
+    const handleCreateDAO = async () => {
+      const result = await callFunction({
+        method: 'create',
+        args: {
+          name: 'primitives',
+          args: btoa({
+            config: {
+              name: 'Primitives',
+              purpose: 'Building primitives on NEAR',
+              metadata: '',
+            },
+            policy: ['bob.near'],
+          }),
+        },
+        contractId: DAO_FACTORY_CONTRACT_ADDRESS,
+        gas: 300000000000000,
+        deposit: 6000000000000000000000000,
+      });
+    };
     ```
     :::note
     The full list of roles and permissions you can find [here](https://github.com/near-daos/sputnik-dao-contract#roles-and-permissions).
     :::
 
-   _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+   _The `callFunction` function comes from our [Wallet Selector](/tools/wallet-selector#sign-and-send-transaction)_
   
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -197,19 +199,20 @@ Query the list of DAOs existing in Sputnik Dao.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
   
     ```js
-    import { Wallet } from './near-wallet';
+    import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
     const DAO_FACTORY_CONTRACT_ADDRESS = 'sputnik-dao.near';
-    const wallet = new Wallet({ createAccessKeyFor: DAO_FACTORY_CONTRACT_ADDRESS });
-
-    await wallet.viewMethod({
-      method: 'get_dao_list',
-      args: {},
-      contractId: DAO_FACTORY_CONTRACT_ADDRESS,
-    });
+    const { viewFunction } = useWalletSelector();
+    useEffect(() => {
+      viewFunction({ 
+        contractId: DAO_FACTORY_CONTRACT_ADDRESS, 
+        method: 'get_dao_list' 
+        })
+        .then((response) => console.log(response));
+    }, []);
     ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  _The `viewFunction` function comes from our [Wallet Selector](/tools/wallet-selector#sign-and-send-transactions)_
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -257,18 +260,20 @@ These snippets will enable you to query the proposals existing in a particular D
  <TabItem value="🌐 WebApp" label="🌐 WebApp">
    
     ```js
-    import { Wallet } from './near-wallet';
+    import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
     const DAO_CONTRACT_ADDRESS = 'nearweek-news-contribution.sputnik-dao.near';
-    const wallet = new Wallet({ createAccessKeyFor: DAO_CONTRACT_ADDRESS });
-
-    await wallet.viewMethod({
-      method: 'get_proposals',
-      args: { from_index: 9262, limit: 2 },
-      contractId: DAO_CONTRACT_ADDRESS,
-    });
+    const { viewFunction } = useWalletSelector();
+    useEffect(() => {
+      viewFunction({ 
+        contractId: DAO_CONTRACT_ADDRESS, 
+        method: 'get_proposals' 
+        args: { from_index: 9262, limit: 2 },
+        })
+        .then((response) => console.log(response));
+    }, []);
     ```
-   _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+ _The `viewFunction` function comes from our [Wallet Selector](/tools/wallet-selector#sign-and-send-transactions)_
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -387,32 +392,35 @@ Create a proposal so other users can vote in favor or against it.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
    
     ```js
-    import { Wallet } from './near-wallet';
+    import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
     const DAO_CONTRACT_ADDRESS = 'primitives.sputnik-dao.near';
-    const wallet = new Wallet({ createAccessKeyFor: DAO_CONTRACT_ADDRESS });
+    const { callFunction } = useWalletSelector();
 
-    await wallet.callMethod({
-      method: 'add_proposal',
-      args: {
-        proposal: {
-          description: 'My first proposal',
-          kind: {
-            Transfer: {
-              token_id: '',
-              receiver_id: 'bob.near',
-              amount: '10000000000000000000000000',
+    const handleAddProposal = async () => {
+      const result = await callFunction({
+        method: 'add_proposal',
+        args: {
+          proposal: {
+            description: 'My first proposal',
+            kind: {
+              Transfer: {
+                token_id: '',
+                receiver_id: 'bob.near',
+                amount: '10000000000000000000000000',
+              },
             },
           },
         },
-      },
-      contractId: DAO_CONTRACT_ADDRESS,
-      gas: 300000000000000,
-      deposit: 100000000000000000000000,
-    });
+        contractId: DAO_CONTRACT_ADDRESS,
+        gas: 300000000000000,
+        deposit: 100000000000000000000000,
+      });
+      console.log(result);
+    };
     ```
 
-   _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+   _The `callFunction` function comes from our [Wallet Selector](/tools/wallet-selector#sign-and-send-transaction)_
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -714,24 +722,28 @@ These snippet will enable your users to cast a vote for proposal of a particular
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { Wallet } from './near-wallet';
+  import { useEffect } from 'react';
+  import { useWalletSelector } from '@near-wallet-selector/react-hook';
 
   const DAO_CONTRACT_ADDRESS = 'primitives.sputnik-dao.near';
-  const wallet = new Wallet({ createAccessKeyFor: DAO_CONTRACT_ADDRESS });
+  const { callFunction } = useWalletSelector();
 
-  await wallet.callMethod({
-    method: 'act_proposal',
-    args: { id: 0, action: 'VoteApprove' },
-    contractId: DAO_CONTRACT_ADDRESS,
-    gas: 300000000000000,
-  });
+  const handleVoteProposal = async () => {
+    const result = await callFunction({
+      method: 'act_proposal',
+      args: { id: 0, action: 'VoteApprove' },
+      contractId: DAO_CONTRACT_ADDRESS,
+      gas: 300000000000000,
+    });
+    console.log(result);
+  };
   ```
 
   :::note
   Available vote options: `VoteApprove`, `VoteReject`, `VoteRemove`.
   :::
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  _The `callFunction` function comes from our [Wallet Selector](/tools/wallet-selector#sign-and-send-transaction)_
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
