@@ -533,7 +533,7 @@ const sidebar = {
       label: 'EVM Developers',
       collapsed: true,
       customProps: {
-        icon: '/img/icons/ethereum.svg',
+        icon: '/icons/ethereum.svg',
       },
       link: { type: 'generated-index', slug: 'aurora/what-is' },
       items: [

@@ -79,7 +79,7 @@ const config = {
     'docusaurus-plugin-sass',
   ],
   themeConfig: {
-    image: 'docs/assets/welcome-pages/protocol.png',
+    image: 'image/near.jpg',
     // announcementBar: {
     //   id: 'id-0010',
     //   content:

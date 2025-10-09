@@ -229,10 +229,9 @@
 
   // Body element
   &__body {
-    padding: var(--space-6);
+    padding: var(--space-2) var(--space-6);
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     color: var(--color-text-primary);
   }
 
@@ -258,6 +257,7 @@
   &__content {
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
+    flex-grow: 1;
 
     p {
       margin-bottom: var(--space-component-sm);
