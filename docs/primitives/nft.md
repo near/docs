@@ -30,6 +30,28 @@ Be mindful of not confusing an NFT with an NFT-marketplace. NFT simply store inf
 
 ---
 
+## About the NFT Standard
+
+[NEP-171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md) is the foundational standard for Non-Fungible Tokens (NFTs) on the NEAR blockchain. It defines a common set of rules that all NFT contracts must follow, ensuring interoperability, predictability, and a consistent experience for users, wallets, and marketplaces.
+
+The core philosophy of NEP-171 is simplicity and gas efficiency (the cost of viewing or querying data is free). It provides a minimal, event-driven skeleton, leaving more complex logic (like sale mechanics or detailed metadata) to other complementary standards.
+
+Due to its minimalist design, the NEP-171 standard only mandates three core functionalities:
+
+- `nft_transfer`: Transfer an NFT to a new owner.
+
+- `nft_token`: The primary view method to query all information about a specific token (its ID, owner, and approved accounts).
+
+- [Events](https://github.com/near/NEPs/blob/master/neps/nep-0171.md#events): The contract must emit standardized events for all transfers and approvals. This allows indexers and applications to reliably track NFT activity without scanning every transaction.
+
+Everything else—like minting, burning, enumeration (listing all tokens), and rich metadata—is defined in separate, complementary standards:
+
+- [Metadata Standard](https://github.com/near/NEPs/tree/master/neps/nep-0177.md): Defines how to attach metadata (name, description, image, etc.) to the contract and individual tokens.
+- [Approval Management Standard](https://github.com/near/NEPs/blob/master/neps/nep-0178.md): Standardizes the mechanism that allows a token owner to grant permission to another account (or a contract) to transfer a specific token on their behalf. This is essential for listing NFTs on a marketplace..
+- [Enumeration Standard](https://github.com/near/NEPs/tree/master/neps/nep-0181.md): Provides methods to list all tokens, tokens by owner, etc., without which the NFTs would be unlistable.
+
+---
+
 ## Deploying a NFT Contract
 
 If you want to deploy your own NFT contract, you can create one using our [reference implementation](https://github.com/near-examples/NFT).
