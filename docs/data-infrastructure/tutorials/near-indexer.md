@@ -16,7 +16,7 @@ To get our indexer up and running we will need two steps:
 1. To [initialize](#initialization) the indexer
 2. To [start it](#run)
 
-The full source code for the indexer is available in the [GitHub repository](https://github.com/near-examples/near-indexer?tab=readme-ov-file).
+The full source code for the indexer example is available in the [GitHub repository](https://github.com/near-examples/near-indexer?tab=readme-ov-file).
 
 ---
 
@@ -55,6 +55,8 @@ A configuration file (`~/.near/<network>/config.json`) is created automatically,
 
 See the [Custom Configuration](#custom-configuration) section below to learn more about further configuration options.
 
+:::
+
 ---
 
 ## Starting the Indexer
@@ -64,17 +66,17 @@ After we finish initializing the indexer, and configuring it, we can start it by
 <Tabs groupId="code-tabs">
     <TabItem value="localnet" label="Localnet" default>
       ```bash
-        cargo run --release -- --home-dir ~/.near/localnet run
+        cargo run --release -- --home-dir ~/.near/localnet --accounts bob.near --block-height 137510 run
       ```
     </TabItem>
     <TabItem value="testnet" label="Testnet" default>
       ```bash
-        cargo run --release -- --home-dir ~/.near/testnet run
+        cargo run --release -- --home-dir ~/.near/testnet --accounts bob.testnet --block-height 218137510 run
       ```
     </TabItem>
     <TabItem value="mainnet" label="Mainnet" default>
       ```bash
-        cargo run --release -- --home-dir ~/.near/mainnet run
+        cargo run --release -- --home-dir ~/.near/mainnet --accounts bob.near --block-height 167668637 run
       ```
     </TabItem>
 </Tabs>
@@ -87,7 +89,7 @@ From the block data, we can access the transactions, their receipts and actions.
 
 <Github fname="main.rs" language="rust"
         url="https://github.com/near-examples/near-indexer/blob/main/src/main.rs"
-        start="57" end="290" />
+        start="71" end="154" />
 
 ---
 
@@ -97,7 +99,7 @@ By default, nearcore is configured to do as little work as possible while still 
 
 ### Shards/Accounts to Track
 
-We need to ensure that NEAR Indexer follows all the necessary shards, so by default the `"tracked_shards_config"` is set to `"AllShards"`. The most common tweak you might need to apply is listing to specific shards; to do that, lists all the shard UIDs you want to track in the `"tracked_shards_config"` section:
+We need to ensure that NEAR Indexer follows all the necessary shards, so by default the `"tracked_shards_config"` is set to `"AllShards"`. The most common tweak you might need to apply is listing to specific shards; to do that, lists all the shard UIDs you want to track in the `"tracked_shards_config"` section (`~/.near/<network>/config.json` file):
 
 ```json
 ...
@@ -133,7 +135,86 @@ You can choose Indexer Framework sync mode by setting what to stream:
 
 <Github fname="main.rs" language="rust"
         url="https://github.com/near-examples/near-indexer/blob/main/src/main.rs"
-        start="268" end="268" />
+        start="34" end="34" />
+
+<hr class="subsection" />
+
+### Streaming Mode
+You can choose Indexer Framework streaming mode by setting what to stream:
+
+- StreamWhileSyncing - Stream while node is syncing
+- WaitForFullSync - Don't stream until the node is fully synced
+
+<Github fname="main.rs" language="rust"
+        url="https://github.com/near-examples/near-indexer/blob/main/src/main.rs"
+        start="35" end="35" />
+
+<hr class="subsection" />
+
+### Finality
+You can choose finality level at which blocks are streamed:
+
+- None - `optimistic`, a block that (though unlikely) might be skipped
+- DoomSlug - `near-final`, a block that is irreversible, unless at least one block producer is slashed
+- Final - `final`, the block is final and irreversible.
+
+<Github fname="main.rs" language="rust"
+        url="https://github.com/near-examples/near-indexer/blob/main/src/main.rs"
+        start="36" end="36" />
+
+<hr class="subsection" />
+
+### Boot Nodes
+If your node can't find any peers to connect to, you can manually specify some boot nodes in the `config.json` file. You can get a list of active peers for your network by running the following command:
+
+<Tabs groupId="code-tabs">
+    <TabItem value="testnet" label="Testnet" default>
+      ```bash
+      curl -X POST https://rpc.testnet.near.org \
+        -H "Content-Type: application/json" \
+        -d '{
+              "jsonrpc": "2.0",
+              "method": "network_info",
+              "params": [],
+              "id": "dontcare"
+            }' | \
+      jq '.result.active_peers as $list1 | .result.known_producers as $list2 |
+      $list1[] as $active_peer | $list2[] |
+      select(.peer_id == $active_peer.id) |
+      "\(.peer_id)@\($active_peer.addr)"' |\
+      awk 'NR>2 {print ","} length($0) {print p} {p=$0}' ORS="" | sed 's/"//g'
+      ```
+    </TabItem>
+    <TabItem value="mainnet" label="Mainnet" default>
+      ```bash
+      curl -X POST https://rpc.mainnet.near.org \
+        -H "Content-Type: application/json" \
+        -d '{
+              "jsonrpc": "2.0",
+              "method": "network_info",
+              "params": [],
+              "id": "dontcare"
+            }' | \
+      jq '.result.active_peers as $list1 | .result.known_producers as $list2 |
+      $list1[] as $active_peer | $list2[] |
+      select(.peer_id == $active_peer.id) |
+      "\(.peer_id)@\($active_peer.addr)"' |\
+      awk 'NR>2 {print ","} length($0) {print p} {p=$0}' ORS="" | sed 's/"//g'
+      ```
+    </TabItem>
+</Tabs>
+
+And then add the output to the `boot_nodes` section of your `config.json` file as a string:
+
+```json
+...
+"network": {
+    "addr": "0.0.0.0:24567",
+    "boot_nodes": "ed25519:8oVENgBp6zJfnwXFe...",
+    ...
+},
+...
+```
 
 <hr class="subsection" />
 
