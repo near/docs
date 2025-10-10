@@ -114,8 +114,6 @@
   --transition-slow: 0.3s;
 
   // Font Configuration
-  --bs-font-sans-serif: 'Poppins', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif;
-  --bs-body-font-family: var(--bs-font-sans-serif);
   --ifm-navbar-item-padding-horizontal: 0.6rem;
 }
 
@@ -183,9 +181,7 @@ html[data-theme='dark'] .main-wrapper {
 // BASE STYLES & TYPOGRAPHY
 // ============================================================================
 
-.bootstrap-scope body,
 body {
-  font-family: var(--bs-body-font-family);
   color: var(--ifm-font-color-base);
   line-height: inherit;
   text-align: left;
@@ -654,7 +650,7 @@ li>ul {
 
 .menu__link {
   padding: 0.6rem 0.8rem;
-  font-weight: 200;
+  font-weight: 400;
 }
 
 // ============================================================================
