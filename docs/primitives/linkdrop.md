@@ -27,6 +27,22 @@ The simplest way to create a linkdrop is by interacting with our [LinkDrop Gener
 
 ---
 
+## About the Linkdrop Standard
+
+[NEP-0452](https://github.com/near/NEPs/blob/master/neps/nep-0452.md) standardizes a secure and flexible method for creating linkdrops on NEAR. A linkdrop is a mechanism where a sender can fund a special, one-time-use account (or `key`) and generate a unique link. Anyone who possesses this link can then claim the assets (like NEAR tokens or NFTs) locked within it, often without needing an existing NEAR account.
+
+The specification keeps the linkdrop logic in a smart contract and introduces a secure key type:
+
+- Separation of Concerns: The standard clearly separates the roles of the **Sender** (who funds the linkdrop), the **Claimer** (who redeems it), and the **Contract** (which holds the logic and assets).
+
+- Function Call Keys: Instead of a full-access key, a linkdrop is secured by a [Function Call Access Key](../protocol/access-keys.md#function-call-keys). This key is only permitted to call a single, specific method on the smart contract (e.g., `claim`). Even if the private key is exposed, an attacker cannot do anything else with it.
+
+- Smart Contract Driven: The entire claiming process is managed by a smart contract. This allows for immense flexibility, enabling linkdrops to contain not just NEAR tokens, but also [NFTs](nft.md), [FTs (Fungible Tokens)](ft.md), or any other on-chain asset.
+
+The NEP-0452 standard defines linkdrop implementation by leveraging smart contracts and Function Call Keys, opening up a wide range of possibilities for developers while prioritizing security and a seamless user experience.
+
+---
+
 ## AccessKeys
 
 In order to create any kind of drop, you need to first generate key pairs. You will need to create **one key per drop**.
