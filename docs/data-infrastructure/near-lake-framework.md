@@ -88,7 +88,7 @@ $17,20 + $21,60 = $30,16
 
 ---
 
-## Comparison with [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer)
+## Comparison with [NEAR Indexer Framework](near-indexer.md)
 
 NEAR Lake Framework is reading data from AWS S3, while the NEAR Indexer is running a full node and reading data from the blockchain directly in real time.
 
