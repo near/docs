@@ -18,8 +18,8 @@ Lockup contracts act as escrows that hold tokens and release them gradually over
 Unlike [Fungible Tokens](ft.md), where transfers happen freely between accounts, lockup contracts restrict token liquidity until predefined conditions are met.  
 They combine two key mechanisms:
 
-- **Lockup** – tokens unlock linearly starting from a given timestamp.
-- **Vesting** – tokens vest according to a schedule, with optional cliff and early termination rules.
+- **Lockup** – tokens remain locked until a certain date is reached.
+- **Vesting** – tokens are made available to the user, but might be released gradually.
 
 By combining these, projects can enforce predictable token release schedules that align incentives and improve transparency.
 
@@ -59,9 +59,7 @@ xychart
 
 ### Vesting Schedule
 
-Vesting adds additional conditions, typically used for employment or investment agreements.
-
-It introduces three key timestamps:
+Vesting adds additional conditions, typically used for employment or investment agreements:
 
 - `start_timestamp` – when vesting starts (e.g. hire date).
 - `cliff_timestamp` – the first time tokens vest (e.g. 1 year).
@@ -72,7 +70,7 @@ A **4-year vesting** with a **1-year cliff** means:
 
 - Year 1: nothing vests.
 - At 1-year mark: 25% vests at once.
-- Remaining 75% vests linearly until year 4.
+- Remaining 75% vests linearly for the remaining 3 years.
 
 ```mermaid
 ---
