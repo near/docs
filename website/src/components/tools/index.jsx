@@ -3,7 +3,7 @@ import FungibleToken from './FungibleToken';
 import NonFungibleToken from './NonFungibleToken';
 import DAO from './DecentralizedOrganization';
 import TabItem from '@theme/TabItem';
-import NearIconSvg from '@site/static/img/near_icon.svg';
+import NearIconSvg from '@site/static/assets/site/near_icon.svg';
 import { useCallback, useEffect, useState } from 'react';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import Linkdrops from './Linkdrops';
@@ -41,7 +41,6 @@ const Tools = () => {
 
     const response = await fetch(`${API_NEAR_BLOCKS}/v1/account/${signedAccountId}/tokens`);
     if (!response.ok) return { fts: [], nfts: [] };
-
 
     const data = await response.json();
     return data.tokens;

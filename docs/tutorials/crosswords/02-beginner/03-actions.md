@@ -4,12 +4,12 @@ sidebar_label: Actions and sending NEAR
 title: There are several Actions an account can do, including sending the winner of the crossword puzzle NEAR using the Transfer Action
 description: "Learn how to use the Transfer Action in NEAR smart contracts to send a prize to the first crossword puzzle solver."
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
-import allActions from '/docs/assets/crosswords/crossword-actions.png';
-import transferNEAR from '/docs/assets/crosswords/transfer-brand-blue--qiqi04.near--blankworl.png';
-import yoctoNEAR from '/docs/assets/crosswords/yoctoNEAR-magnifying--jrbemint.near--JrbeMad.jpg';
-import signerPredecessorCurrent from '/docs/assets/crosswords/predecessor-signer-current--yasuoarts.near--YasuoArt69.png';
+import allActions from '/assets/docs/tutorials/crosswords/crossword-actions.png';
+import transferNEAR from '/assets/docs/tutorials/crosswords/transfer-brand-blue--qiqi04.near--blankworl.png';
+import yoctoNEAR from '/assets/docs/tutorials/crosswords/yoctoNEAR-magnifying--jrbemint.near--JrbeMad.jpg';
+import signerPredecessorCurrent from '/assets/docs/tutorials/crosswords/predecessor-signer-current--yasuoarts.near--YasuoArt69.png';
 
 
 We're going to introduce a new Action: `Transfer`. In this chapter, we'd like the first person to solve the crossword puzzle to earn some prize money, sent in NEAR.

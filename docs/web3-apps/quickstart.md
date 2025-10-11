@@ -6,7 +6,7 @@ description: "Quick guide to create a Web3 frontend application with NEAR integr
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from '@site/src/components/codetabs';
+import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 In this guide we will show you how to quickly spin up a frontend where users can **login** using their wallets and interact with a **contract**.
@@ -74,7 +74,7 @@ Make sure you are using **node >= v18**, you can easily switch versions using `n
 
 Once the app starts you will see the landing page, rendering a navigation bar that allows users to login using their NEAR wallet. You can then navigate to the docs or the `Near Integration` page (which we will do).
 
-![img](/docs/assets/examples/hello-near-landing-page.png)
+![img](/assets/docs/tutorials/examples/hello-near-landing-page.png)
 *Landing page of Hello NEAR Gateway*
 
 Go ahead and sign in with your NEAR account. If you don't have one, you can create one on the fly.
@@ -128,7 +128,7 @@ The code for the navigation bar can be found at `./src/components/navigation.js`
 
 Now that you understand how the landing page works, we can move to the `Near Integration` page, which retrieves a greeting from the [hello.near-examples.testnet](https://testnet.nearblocks.io/address/hello.near-examples.testnet) contract.
 
-![img](/docs/assets/examples/hello-near-gateway.png)
+![img](/assets/docs/tutorials/examples/hello-near-gateway.png)
 *View of the `Near Integration` page*
 
 Login if you haven't done it yet and you will see a simple form that allows you to store a greeting in the smart contract.

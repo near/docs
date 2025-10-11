@@ -4,12 +4,12 @@ sidebar_label: Linkdrop contract
 title: Introducing the linkdrop contract we can use
 description: "Learn how the linkdrop contract enables creating new NEAR accounts through cross-contract calls."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import createMainnetAccount from '/docs/assets/crosswords/create-mainnet-account.png';
-import createTestnetAccount from '/docs/assets/crosswords/create-testnet-wallet-account.png';
+import createMainnetAccount from '/assets/docs/tutorials/crosswords/create-mainnet-account.png';
+import createTestnetAccount from '/assets/docs/tutorials/crosswords/create-testnet-wallet-account.png';
 
 We're going to take a small detour to talk about the linkdrop smart contract.  It's best that we first understand this contract and its purpose, then discuss calling a method on this contract.
 

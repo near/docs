@@ -20,9 +20,9 @@ Besides the native NEAR token, NEAR accounts have access to a [multitude of toke
 
 In contrast with the NEAR native token, fungible token (FT) are **not stored** in the user's account. In fact, each FT lives in **their own contract** which is in charge of doing **bookkeeping**. This is, the contract keeps track of how many tokens each user has, and handles transfers internally.
 
-![FT](/docs/primitives/ft.png)
+![FT](/assets/docs/primitives/ft.png)
 
-In order for a contract to be considered a FT-contract it has to follow the [**NEP-141 and NEP-148 standards**](https://nomicon.io/Standards/FungibleToken/). The **NEP-141** & **NEP-148** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
+In order for a contract to be considered a FT-contract it has to follow the [**NEP-141 and NEP-148 standards**](https://github.com/near/NEPs/tree/master/neps/nep-0141.md). The **NEP-141** & **NEP-148** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
 
 ---
 
@@ -575,7 +575,7 @@ impl FungibleTokenReceiver for Contract {
 
 ## Additional Resources
 
-1. [NEP-141 and NEP-148 standards](https://nomicon.io/Standards/Tokens/FungibleToken/)
-2. [FT Event Standards](https://nomicon.io/Standards/Tokens/FungibleToken/Event)
+1. [NEP-141 and NEP-148 standards](https://github.com/near/NEPs/tree/master/neps/nep-0141.md)
+2. [FT Event Standards](https://github.com/near/NEPs/blob/master/neps/nep-0300.md)
 3. [FT reference implementation](https://github.com/near-examples/FT)
 4. [Fungible Tokens 101](../tutorials/fts/0-intro.md) - a set of tutorials that cover how to create a FT contract using Rust.

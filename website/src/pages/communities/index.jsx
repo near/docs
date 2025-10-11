@@ -1,14 +1,15 @@
 import Layout from '@theme/Layout';
-import './communities.scss';
+import styles from './communities.module.scss';
 
-import TelegramIcon from '@site/static/icons/telegram.svg';
-import DiscordIcon from '@site/static/icons/discord.svg';
-import WeChatIcon from '@site/static/icons/wechat.svg';
-import GitHubIcon from '@site/static/icons/github.svg';
-import XIcon from '@site/static/icons/x.svg';
-import DocsIcon from '@site/static/icons/docs.svg';
-import SpeechBubbleIcon from '@site/static/icons/speech-bubble.svg';
-import Accordion from '../../components/Accordion';
+import TelegramIcon from '@site/static/assets/menu/telegram.svg';
+import DiscordIcon from '@site/static/assets/menu/discord.svg';
+import WeChatIcon from '@site/static/assets/menu/wechat.svg';
+import GitHubIcon from '@site/static/assets/menu/github.svg';
+import XIcon from '@site/static/assets/menu/x.svg';
+import DocsIcon from '@site/static/assets/menu/docs.svg';
+import SpeechBubbleIcon from '@site/static/assets/menu/speech-bubble.svg';
+import Accordion from '../../components/UI/Accordion';
+import Card from '../../components/UI/Card';
 
 const urls = {
     devHub: 'neardevhub.org',
@@ -187,107 +188,111 @@ const CommunitiesPage = () => {
             title="Communities"
             description="Connect with the NEAR community through various channels and join specialized communities."
         >
-            <section className="container-communities">
-                <div className="main-card">
-                    <div>
-                        <h1 className="main-card__title">Have a question? Ask our experts</h1>
-                        <p className="main-card__description">
-                            NEAR is a global community of Web3 enthusiasts and innovators. Dive into one of our social
-                            channels to engage in discussion with our lively community.
+            <section className={styles['container-communities']}>
+                <Card
+                    color="mint"
+                    title="Have a question? Ask our experts"
+                    description="NEAR is a global community of Web3 enthusiasts and innovators. Dive into one of our social channels to engage in discussion with our lively community."
+                    className={styles['main-card']}
+                >
+                    <h4>CHANNELS</h4>
+                    <div className={styles['channels-grid']}>
+                        <a href={urls.telegram} className={styles['channel-item']}>
+                            <TelegramIcon className={styles['channel-item__icon']} />
+                            <span className={styles['channel-item__text']}>Telegram</span>
+                            <span className={styles['channel-item__arrow']}>›</span>
+                        </a>
+                        <a href={urls.discord} className={styles['channel-item']}>
+                            <DiscordIcon className={styles['channel-item__icon']} />
+                            <span className={styles['channel-item__text']}>Discord</span>
+                            <span className={styles['channel-item__arrow']}>›</span>
+                        </a>
+                        <a href={urls.github} className={styles['channel-item']}>
+                            <GitHubIcon className={styles['channel-item__icon']} />
+                            <span className={styles['channel-item__text']}>GitHub</span>
+                            <span className={styles['channel-item__arrow']}>›</span>
+                        </a>
+                        <a href={urls.docs} className={styles['channel-item']}>
+                            <DocsIcon className={styles['channel-item__icon']} />
+                            <span className={styles['channel-item__text']}>Docs</span>
+                            <span className={styles['channel-item__arrow']}>›</span>
+                        </a>
+                        <a href={urls.wechat} className={styles['channel-item']}>
+                            <WeChatIcon className={styles['channel-item__icon']} />
+                            <span className={styles['channel-item__text']}>WeChat</span>
+                            <span className={styles['channel-item__arrow']}>›</span>
+                        </a>
+                        <a href={urls.twitter} className={styles['channel-item']}>
+                            <XIcon className={styles['channel-item__icon']} />
+                            <span className={styles['channel-item__text']}>X</span>
+                            <span className={styles['channel-item__arrow']}>›</span>
+                        </a>
+                    </div>
+                </Card>
+
+                <div className={styles.sidebar}>
+                    <Card
+                        color="purple"
+                        title="Office Hours:"
+                        description="Jump in a voice call with our developers"
+                        className={styles['sidebar-card']}
+                    >
+                        <p className={styles['sidebar-card__info']}>
+                            <strong>Thursdays: 11:00hs & 18:00hs GMT</strong>
                         </p>
-                    </div>
-
-
-                    <div className="channels-section">
-                        <h2 className="channels-section__title">Channels</h2>
-                        <div className="channels-grid">
-                            <a href={urls.telegram} className="channel-item">
-                                <TelegramIcon className="channel-item__icon" />
-                                <span className="channel-item__text">Telegram</span>
-                                <span className="channel-item__arrow">›</span>
-                            </a>
-                            <a href={urls.discord} className="channel-item">
-                                <DiscordIcon className="channel-item__icon" />
-                                <span className="channel-item__text">Discord</span>
-                                <span className="channel-item__arrow">›</span>
-                            </a>
-                            <a href={urls.github} className="channel-item">
-                                <GitHubIcon className="channel-item__icon" />
-                                <span className="channel-item__text">GitHub</span>
-                                <span className="channel-item__arrow">›</span>
-                            </a>
-                            <a href={urls.docs} className="channel-item">
-                                <DocsIcon className="channel-item__icon" />
-                                <span className="channel-item__text">Docs</span>
-                                <span className="channel-item__arrow">›</span>
-                            </a>
-                            <a href={urls.wechat} className="channel-item">
-                                <WeChatIcon className="channel-item__icon" />
-                                <span className="channel-item__text">WeChat</span>
-                                <span className="channel-item__arrow">›</span>
-                            </a>
-                            <a href={urls.twitter} className="channel-item">
-                                <XIcon className="channel-item__icon" />
-                                <span className="channel-item__text">X</span>
-                                <span className="channel-item__arrow">›</span>
-                            </a>
+                        <div style={{ marginTop: '16px' }}>
+                            <button className={styles['sidebar-card__button']}>
+                                <DiscordIcon className={styles['sidebar-card__button-icon']} />
+                                Join our Discord
+                            </button>
                         </div>
-                    </div>
-                </div>
+                    </Card>
 
-                <div className="sidebar">
-                    <div className="sidebar-card sidebar-card--purple">
-                        <h2 className="sidebar-card__title">Office Hours:</h2>
-                        <p className="sidebar-card__description">Jump in a voice call with our developers</p>
-                        <p className="sidebar-card__info">Thursdays: 11:00hs & 18:00hs GMT</p>
-                        <a href={urls.discord} className="sidebar-card__button">
-                            <DiscordIcon className="sidebar-card__button-icon" />
-                            Join our Discord
-                        </a>
-                    </div>
-
-                    <div className="sidebar-card sidebar-card--yellow">
-                        <h2 className="sidebar-card__title">Resolve an issue</h2>
-                        <p className="sidebar-card__description">Get in touch with our customer care team</p>
-                        <a href={urls.supportRequest} className="sidebar-card__button">
-                            <SpeechBubbleIcon className="sidebar-card__button-icon" />
-                            Launch support form
-                        </a>
-                    </div>
+                    <Card
+                        color="orange"
+                        title="Resolve an issue"
+                        description="Get in touch with our customer care team"
+                        className={styles['sidebar-card']}
+                    >
+                        <div style={{ marginTop: '16px' }}>
+                            <button className={styles['sidebar-card__button']}>
+                                <SpeechBubbleIcon className={styles['sidebar-card__button-icon']} />
+                                Launch support form
+                            </button>
+                        </div>
+                    </Card>
                 </div>
             </section>
-            <section className="communities-section">
-                <div className="communities-container">
-                    <h2 className="communities-title">Join a Community</h2>
+            <section className={styles['communities-section']}>
+                <div className={styles['communities-container']}>
+                    <h2 className={styles['communities-title']}>Join a Community</h2>
 
-                    <div className="communities-grid">
+                    <div className={styles['communities-grid']}>
                         {featuredCommunities.map((community, index) => (
-                            <div
+                            <Card
                                 key={index}
-                                className="community-card"
                                 onClick={() => handleCommunityClick(community)}
-                                role="button"
-                                tabIndex={0}
+                                className={styles['community-card']}
                             >
-                                <div class="avatar">
+                                <div className={styles['community-content']}>
                                     <img
-                                        class="avatar__photo avatar__photo--lg"
                                         src={community.icon}
-                                        alt={`${community.name} icon`} />
-
-                                    <div class="avatar__intro">
-                                        <div class="avatar__name">{community.name}</div>
-                                        <small class="avatar__subtitle">{community.summary}</small>
+                                        alt={`${community.name} icon`}
+                                        className={styles['community-icon']}
+                                    />
+                                    <div className={styles['community-info']}>
+                                        <h3 className={styles['community-name']}>{community.name}</h3>
+                                        <p className={styles['community-summary']}>{community.summary}</p>
                                     </div>
                                 </div>
-                            </div>
+                            </Card>
                         ))}
                     </div>
                 </div>
             </section>
-            <section className="communities-section">
-                <div className="communities-container">
-                    <h2 className="communities-title">Frequent Asked Questions</h2>
+            <section className={styles['communities-section']}>
+                <div className={styles['communities-container']}>
+                    <h2 className={styles['communities-title']}>Frequent Asked Questions</h2>
                     {faqs.map((faq, index) =>
                         <Accordion title={faq.question} detail={faq.answer} key={index} />
                     )}

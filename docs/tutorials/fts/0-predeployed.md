@@ -125,7 +125,7 @@ To view tokens owned by an account you can call the FT contract with the followi
 👉 Now try going to your [NEAR Wallet](https://testnet.mynearwallet.com) and view your FTs in the "Balances" tab. 👈
 
 :::note Pre-deployed Contract
-The contract used in this section has been modified such that you can infinitely get `gtNEAR` by calling `ft_mint`. This function is not part of the FT [standards](https://nomicon.io/Standards/Tokens/FungibleToken/Core) and has been implemented for the purpose of this tutorial.
+The contract used in this section has been modified such that you can infinitely get `gtNEAR` by calling `ft_mint`. This function is not part of the FT [standards](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) and has been implemented for the purpose of this tutorial.
 :::
 
 ---

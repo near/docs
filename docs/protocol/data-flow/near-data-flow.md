@@ -26,7 +26,7 @@ In this video we give a quick overview on the main concept of how the data flows
 In fact, any blockchain flow can be represented as an infinite timeline that has a start but has no end.
 
 
-![Blocks Timeline](/docs/protocol/data-flow/01-timeline.png)
+![Blocks Timeline](/assets/docs/protocol/data-flow/01-timeline.png)
 
 
 And a block appears on that timeline with some interval. Each of these blocks holds the information about the previous one, thus, creating a *chain of blocks*.
@@ -36,13 +36,13 @@ NEAR Protocol has a sharded nature, meaning that more than one parallel network,
 
 Returning to the data flow itself. The best we can do is to imagine tracks like we could see in audio/video editing apps. Each Shard has its own set of tracks. The top track is for Chunks. They appear no matter what at a given interval, for NEAR Blockchain the interval is about one second. Chunks are being produced even if nothing is happening on the blockchain.
 
-![Timeline as tracks](/docs/protocol/data-flow/02-tracks.png)
+![Timeline as tracks](/assets/docs/protocol/data-flow/02-tracks.png)
 
 But what do we mean by saying something is happening? We mean that something has triggered some changes in the blockchain. And the most well-known method to trigger any changes is to send a `Transaction` to the blockchain with instructions of what we want to change and who has requested those changes.
 
 A transaction needs to be constructed, signed and sent to the blockchain. Once it is executed we expect to have a result - `ExecutionOutcome`. Oh, that is simple. But it’s not really accurate for NEAR Blockchain.
 
-![Transaction execution](/docs/protocol/data-flow/03-tx-outcome-receipt.png)
+![Transaction execution](/assets/docs/protocol/data-flow/03-tx-outcome-receipt.png)
 
 In the beginning there is a `Transaction`, it contains instructions we want to be executed on the blockchain. Transaction is sent to NEAR Blockchain.
 
@@ -64,7 +64,7 @@ Please refer to the [Token transfer](token-transfer-flow.md) flow article
 
 So the final scheme will look like:
 
-![Complete scheme of sending tokens from an account from one Shard to an account on another](/docs/protocol/data-flow/04-send-nears-flow.png)
+![Complete scheme of sending tokens from an account from one Shard to an account on another](/assets/docs/protocol/data-flow/04-send-nears-flow.png)
 
 ## Summary
 

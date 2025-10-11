@@ -2,18 +2,18 @@
 id: introduction
 title: AI and NEAR
 sidebar_label: Introduction
-description: "Introduction to NEAR's User-Owned AI vision, featuring Shade Agents for verifiable multichain AI agents, NEAR AI network infrastructure, and Bitte Protocol for smart contract interactions."
+description: "Introduction to NEAR's User-Owned AI vision, featuring Shade Agents, NEAR AI, and Bitte Protocol."
 ---
 
 NEAR's vision is to create a future of **User-Owned AI**, where AI and agents serve their users, not corporations. For this vision to become a reality, AI must protect user data, prioritize the user's interests, and operate on a sustainable, user-aligned economic model. The NEAR ecosystem has multiple technologies to enable User-Owned AI.
 
-![img](/docs/assets/welcome-pages/9.near-nodes.png)
+![img](/assets/docs/welcome-pages/9.near-nodes.png)
 
 ---
 
 ## Shade Agents
 
-[Shade Agents](./shade-agents/introduction.md) are an AI agent framework to create verifiable agents that can control accounts across multiple blockchains with the assurance that the agent cannot lose access to its accounts and that its private keys will never be revealed. They are the first truly **verifiable**, **non-custodial**, **multichain AI agents** with no single point of failure.
+[Shade Agents](./shade-agents/getting-started/introduction.md) are an AI agent framework to create verifiable agents that can control accounts across multiple blockchains with the assurance that the agent cannot lose access to its accounts and that its private keys will never be revealed. They are the first truly **verifiable**, **non-custodial**, **multichain AI agents** with no single point of failure.
 
 Current Web3 agents fall into one of two camps:
 1. They are trustless and verifiable by creating and using a private key within a trusted execution environment (TEE), but if the TEE goes down, the accounts and funds are lost.
@@ -25,7 +25,7 @@ These agents can autonomously sign transactions across any chain, interact with 
 
 
 :::info
-Shade Agents power [Agentic Protocols](./shade-agents/examples.md#agentic-protocols): a new type of decentralized application designed to be autonomous, proactive, and intelligent.
+Shade Agents power [Agentic Protocols](./shade-agents/concepts/what-can-you-build#agentic-protocols): a new type of decentralized application designed to be autonomous, proactive, and intelligent.
 :::
 
 ---

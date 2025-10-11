@@ -4,10 +4,10 @@ sidebar_label: Base64 params, wrap up
 title: Using base64-encoded arguments when we create a new crossword puzzle
 description: "Learn how to simplify smart contract calls by sending crossword puzzle arguments as base64-encoded data."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import base64Encode from '/docs/assets/crosswords/boop-base64-encode.gif';
+import base64Encode from '/assets/docs/tutorials/crosswords/boop-base64-encode.gif';
 
 Let's modify our `new_puzzle` method a bit, and demonstrate how a smart contract author might use base64-encoded arguments.We're going to send all the arguments as a base64-encoded string, and make this a bit simpler. For this, we're going to use [`Base64VecU8` from the SDK](https://docs.rs/near-sdk/latest/near_sdk/json_types/struct.Base64VecU8.html).
 

@@ -4,7 +4,7 @@ const sidebar = {
       type: 'doc',
       id: 'index',
       customProps: {
-        icon: '/icons/home.svg',
+        icon: '/assets/menu/home.svg',
       },
     },
     {
@@ -16,7 +16,7 @@ const sidebar = {
       label: 'NEAR Protocol',
       collapsed: true,
       customProps: {
-        icon: '/icons/near.svg',
+        icon: '/assets/menu/near.svg',
       },
       link: { type: 'generated-index', slug: 'protocol/basics' },
       items: [
@@ -28,6 +28,7 @@ const sidebar = {
         },
         {
           "Concepts": [
+            'protocol/architecture',
             {
               'Accounts / Contracts': ['protocol/account-model', 'protocol/account-id', 'protocol/access-keys'],
             },
@@ -86,7 +87,7 @@ const sidebar = {
       label: 'Multi-Chain',
       collapsed: true,
       customProps: {
-        icon: '/icons/multichain.svg',
+        icon: '/assets/menu/multichain.svg',
       },
       link: { type: 'generated-index', slug: 'chain-abstraction/what-is' },
       items: [
@@ -144,7 +145,7 @@ const sidebar = {
       collapsed: true,
       link: { type: 'generated-index', slug: 'ai/introduction' },
       customProps: {
-        icon: '/icons/ai.svg',
+        icon: '/assets/menu/ai.svg',
       },
       items: [
         'ai/introduction',
@@ -153,18 +154,41 @@ const sidebar = {
           "Shade Agents": [
             {
               "Getting Started": [
-                'ai/shade-agents/quickstart/deploying',
-                "ai/shade-agents/quickstart/components",
+                "ai/shade-agents/getting-started/introduction",
+                { "Quickstart": [
+                  "ai/shade-agents/getting-started/quickstart/deploying",
+                  "ai/shade-agents/getting-started/quickstart/components",
+                ]},
               ]
             },
             {
               "Concepts": [
-                "ai/shade-agents/introduction",
-                "ai/shade-agents/examples",
-                "ai/shade-agents/custom-agent-contract",
-                "ai/shade-agents/security",
-                "ai/shade-agents/plugins",
-              ],
+                "ai/shade-agents/concepts/framework-overview",
+                "ai/shade-agents/concepts/what-can-you-build",
+                "ai/shade-agents/concepts/security",
+              ]
+            },
+            {
+              "Tutorials": [
+                "ai/shade-agents/tutorials/tutorials-overview",
+                {
+                  "AI DAO": [
+                    "ai/shade-agents/tutorials/ai-dao/overview",
+                    "ai/shade-agents/tutorials/ai-dao/dao-agent-contract",
+                    "ai/shade-agents/tutorials/ai-dao/dao-agent",
+                    "ai/shade-agents/tutorials/ai-dao/deploying",
+                  ]
+                }
+              ]
+            },
+            {
+              "Reference": [
+                "ai/shade-agents/reference/api",
+                "ai/shade-agents/reference/cli",
+                "ai/shade-agents/reference/environment-variables",
+                "ai/shade-agents/reference/custom-agent-contract",
+                "ai/shade-agents/reference/plugins",
+              ]
             },
           ]
         },
@@ -191,7 +215,7 @@ const sidebar = {
       collapsed: true,
       link: { type: 'generated-index', slug: 'smart-contracts/what-is' },
       customProps: {
-        icon: '/icons/contract.svg',
+        icon: '/assets/menu/contract.svg',
       },
       items: [
         {
@@ -346,7 +370,7 @@ const sidebar = {
       label: 'App Development',
       collapsed: true,
       customProps: {
-        icon: '/icons/app.svg',
+        icon: '/assets/menu/app.svg',
       },
       link: { type: 'generated-index', slug: 'web3-apps/what-is' },
       items: [
@@ -355,7 +379,7 @@ const sidebar = {
             'web3-apps/what-is',
             'web3-apps/quickstart']
         },
-        { 
+        {
           "Concepts": [
             'web3-apps/concepts/web-login',
             'web3-apps/concepts/eth-wallets-on-near',
@@ -418,7 +442,7 @@ const sidebar = {
       collapsed: true,
       link: { type: 'doc', id: 'primitives/what-is' },
       customProps: {
-        icon: '/icons/token.svg',
+        icon: '/assets/menu/token.svg',
       },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
@@ -438,15 +462,11 @@ const sidebar = {
       label: 'Data Infrastructure',
       collapsed: true,
       customProps: {
-        icon: '/icons/database.svg',
+        icon: '/assets/menu/database.svg',
       },
       link: { type: 'generated-index', slug: 'data-infrastructure/what-is' },
       items: [
-        {
-          type: 'link',
-          label: 'Introduction',
-          href: '/data-infrastructure/what-is',
-        },
+        'data-infrastructure/what-is',
         {
           "Concepts": [
             'data-infrastructure/data-apis',
@@ -510,7 +530,7 @@ const sidebar = {
       label: 'EVM Developers',
       collapsed: true,
       customProps: {
-        icon: '/img/icons/ethereum.svg',
+        icon: '/assets/menu/ethereum.svg',
       },
       link: { type: 'generated-index', slug: 'aurora/what-is' },
       items: [

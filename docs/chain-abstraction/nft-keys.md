@@ -11,7 +11,7 @@ The NFT Chain Keys smart contract makes the ownership of remote accounts both pr
 
 The [MPC Account Recovery smart contract](https://github.com/near/mpc-recovery) provides a [`sign`](https://github.com/near/mpc-recovery#sign) method that accepts a `path` parameter. This allows one predecessor account to have access to an effectively unlimited number of MPC keys.
 
-The NFT Chain Keys contract takes advantage of this property and allows secure transfers of MPC keys between users, using the [NEP-171 NFT contract standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core).
+The NFT Chain Keys contract takes advantage of this property and allows secure transfers of MPC keys between users, using the [NEP-171 NFT contract standard](https://github.com/near/NEPs/tree/master/neps/nep-0171.md).
 The contract also implements new functionality to enable chain key management features.
 
 :::info
@@ -24,11 +24,11 @@ The essence of Multi-Party Computation (MPC) is to enable independent parties to
 
 Besides the NEP-171 contract standard, the NFT Chain Keys contract complies with a full suite of NEP standards:
 
-- [NEP-145: Storage Management](https://nomicon.io/Standards/StorageManagement)
-- [NEP-171: NFT Core](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core)
-- [NEP-177: Metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata)
-- [NEP-178: Approval Management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement)
-- [NEP-181: Enumeration](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration)
+- [NEP-145: Storage Management](https://github.com/near/NEPs/tree/master/neps/nep-0145.md)
+- [NEP-171: NFT Core](https://github.com/near/NEPs/tree/master/neps/nep-0171.md)
+- [NEP-177: Metadata](https://github.com/near/NEPs/tree/master/neps/nep-0177.md)
+- [NEP-178: Approval Management](https://github.com/near/NEPs/tree/master/neps/nep-0178.md)
+- [NEP-181: Enumeration](https://github.com/near/NEPs/tree/master/neps/nep-0181.md)
 
 ## Usage
 

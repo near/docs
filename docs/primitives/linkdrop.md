@@ -7,13 +7,13 @@ description: "Learn about linkdrops following NEP-452 standard - distribute asse
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import { Github } from "@site/src/components/codetabs"
+import { Github } from "@site/src/components/UI/Codetabs"
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
 Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.
 
-![Linkdrop](/docs/primitives/linkdrop.png)
+![Linkdrop](/assets/docs/primitives/linkdrop.png)
 
 They work by storing assets and linking [AccessKeys](../protocol/access-keys.md) to them. The `AccessKeys` are then distributed to users in the form of web links. These links take users to a website that automatically uses the keys to call the `claim` method in the `linkdrop` contract.
 
@@ -58,7 +58,7 @@ In order to create any kind of drop, you need to first generate key pairs. You w
   <TabItem value="Lantstool" label={<LantstoolLabel/>}>
 
     <p>Generate a new key on [Lantstool](https://app.lantstool.dev/)</p>
-    ![lantstool](/docs/assets/lantstool/lantstool-near_protocol-utils-key_generator.png)
+    ![lantstool](/assets/docs/tools/lantstool-near_protocol-utils-key_generator.png)
   
   </TabItem>
 </Tabs>

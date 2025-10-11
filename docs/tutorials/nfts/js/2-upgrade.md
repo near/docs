@@ -4,7 +4,7 @@ title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
 description: "Learn how to upgrade your NEAR NFT contract so minted NFTs can be properly displayed in wallets."
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 In this tutorial, you'll build off the work you previously did to implement the [minting functionality](/tutorials/nfts/js/minting) on a skeleton smart contract. You got to the point where NFTs could be minted, however, the wallet had no way of displaying the tokens since your contract didn't implement the method that the wallet was trying to call.
 
@@ -92,7 +92,7 @@ near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_
 
 Now that your contract implements the necessary functions that the wallet uses to display NFTs, you should be able to see your tokens on display in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles).
 
-![filled-nft-in-wallet](/docs/assets/nfts/filled-nft-in-wallet.png)
+![filled-nft-in-wallet](/assets/docs/tutorials/nfts/filled-nft-in-wallet.png)
 
 ## Conclusion
 

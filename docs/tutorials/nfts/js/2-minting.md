@@ -4,11 +4,11 @@ title: Minting
 sidebar_label: Minting
 description: "Learn how to implement the logic to mint NFTs on NEAR, store token and metadata, and link tokens to owners using a skeleton smart contract."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://nomicon.io/Standards/NonFungibleToken/). Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be modifying a bare-bones [skeleton smart contract](/tutorials/nfts/js/skeleton) by filling in the necessary code snippets needed to add minting functionalities.
+This is the first of many tutorials in a series where you'll be creating a complete NFT smart contract from scratch that conforms with all the NEAR [NFT standards](https://github.com/near/NEPs/tree/master/neps/nep-0171.md). Today you'll learn how to create the logic needed to mint NFTs and have them show up in your NEAR wallet. You will be modifying a bare-bones [skeleton smart contract](/tutorials/nfts/js/skeleton) by filling in the necessary code snippets needed to add minting functionalities.
 
 
 
@@ -68,7 +68,7 @@ More often than not when doing development, you'll need to deploy contracts seve
 
 Now that you've defined what information to store on the contract itself and you've defined some ways to initialize the contract, you need to define what information should go in the `Token`, `TokenMetadata`, and `NFTContractMetadata` data types.
 
-Let's switch over to the `nft-contract/src/metadata.ts` file as this is where that information will go. If you look at the [standards for metadata](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
+Let's switch over to the `nft-contract/src/metadata.ts` file as this is where that information will go. If you look at the [standards for metadata](https://github.com/near/NEPs/tree/master/neps/nep-0177.md), you'll find all the necessary information that you need to store for both `TokenMetadata` and `NFTContractMetadata`. Simply fill in the following code.
 
 <Github language="js" start="12" end="104" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts" />
 
@@ -90,7 +90,7 @@ In addition, some operations might only need the metadata for a token and so hav
 
 #### Function for querying contract metadata
 
-Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `internalNftMetadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata).
+Now that you've defined some of the types that were used in the previous section, let's move on and create the first view function `internalNftMetadata`. This will allow users to query for the contract's metadata as per the [metadata standard](https://github.com/near/NEPs/tree/master/neps/nep-0177.md).
 
 <Github language="js" start="143" end="150" url="https://github.com/near-examples/nft-tutorial-js/blob/2.minting/src/nft-contract/metadata.ts" />
 
@@ -380,7 +380,7 @@ In the [next tutorial](/tutorials/nfts/js/upgrade-contract), you'll find out how
 At the time of this writing, this example works with the following versions:
 
 - near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
-- Metadata standard: [NEP177](https://nomicon.io/Standards/Tokens/NonFungibleToken/Metadata), version `2.1.0`
+- NFT standard: [NEP171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md), version `1.0.0`
+- Metadata standard: [NEP177](https://github.com/near/NEPs/tree/master/neps/nep-0177.md), version `2.1.0`
 
 :::

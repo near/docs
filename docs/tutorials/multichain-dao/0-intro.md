@@ -12,11 +12,11 @@ Many multi-chain organizations deploy copies of the same smart contract across m
 
 Generally, this is tackled by handling multiple DAOs - one per chain - where the same action is voted simultaneously, a process that is not only time-consuming, but also very expensive and error-prone.
 
-![multi chain flow](/docs/assets/tutorials/abstract-dao/multi-dao-flow.png)
+![multi chain flow](/assets/docs/tutorials/abstract-dao/multi-dao-flow.png)
 
 To solve this, we have built the [Abstract DAO](https://github.com/nearuaguild/abstract-dao), which enables organizations to **vote once** in NEAR, and then **execute the same action** across **multiple chains**.
 
-![multi chain flow](/docs/assets/tutorials/abstract-dao/near-dao-flow.png)
+![multi chain flow](/assets/docs/tutorials/abstract-dao/near-dao-flow.png)
 
 :::warning
 Abstract DAO is an example, and as such it has not been audited, use it at your own risk.

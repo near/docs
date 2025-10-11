@@ -12,7 +12,7 @@ In NEAR, users control their accounts using access keys, which can be full-acces
 
 In most blockchains, users control their accounts by holding a single [`private key`](https://en.wikipedia.org/wiki/Public-key_cryptography) (a secret only they know) and using it to sign [transactions](./transactions.md).
 
-![img](@site/static/docs/assets/welcome-pages/access-keys.png)
+![img](@site/static/assets/docs/welcome-pages/access-keys.png)
 
 In NEAR we distinguish two types of Access Keys:
 

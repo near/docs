@@ -1,0 +1,181 @@
+.container {
+  margin: var(--space-3) auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-6);
+  width: 100%;
+  gap: var(--space-4);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-4);
+  width: 100%;
+}
+
+.label {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: var(--space-3);
+  border: var(--border-1) solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+  transition: var(--transition-colors);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+    box-shadow: 0 0 0 2px var(--near-brand-primary-100);
+  }
+
+  &:disabled {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-tertiary);
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: var(--color-text-tertiary);
+  }
+}
+
+.select {
+  cursor: pointer;
+}
+
+.accordion {
+  border: var(--border-1) solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+}
+
+.accordionItem {
+  border-bottom: var(--border-1) solid var(--color-border-primary);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.accordionTrigger {
+  width: 100%;
+  padding: var(--space-4);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  transition: var(--transition-colors);
+
+  &:hover {
+    background: var(--color-bg-subtle);
+  }
+
+  &[aria-expanded="true"] {
+    background: var(--color-bg-subtle);
+  }
+}
+
+.accordionContent {
+  padding: var(--space-4);
+  border-top: var(--border-1) solid var(--color-border-primary);
+}
+
+.nftGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-4);
+}
+
+.nftCard {
+  border: var(--border-2) solid var(--color-border-primary);
+  border-radius: var(--radius-card);
+  padding: var(--space-2);
+  cursor: pointer;
+  transition: var(--transition-all);
+  text-align: center;
+
+  &:hover {
+    border-color: var(--near-brand-primary);
+    box-shadow: var(--shadow-card);
+  }
+
+  &.selected {
+    border-color: var(--near-brand-primary);
+    background: var(--near-brand-primary-100);
+  }
+}
+
+.nftImage {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-2);
+}
+
+.nftTitle {
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-1);
+  word-break: break-word;
+}
+
+.nftTokenId {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  word-break: break-all;
+}
+
+.error {
+  color: var(--color-danger);
+  font-size: var(--text-xs);
+  margin-top: var(--space-1);
+}
+
+.text {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+// Dark theme adjustments
+[data-theme='dark'] {
+  .input, .select {
+    border-color: var(--color-border-primary);
+    background: var(--color-bg-surface);
+  }
+
+  .accordion {
+    border-color: var(--color-border-primary);
+  }
+
+  .accordionItem {
+    border-color: var(--color-border-primary);
+  }
+
+  .accordionContent {
+    border-color: var(--color-border-primary);
+  }
+
+  .nftCard {
+    border-color: var(--color-border-primary);
+
+    &.selected {
+      background: var(--near-brand-primary-100);
+    }
+  }
+}

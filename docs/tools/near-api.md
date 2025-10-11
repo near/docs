@@ -7,7 +7,7 @@ description: "Learn to use APIs in JavaScript, Rust, and Python to interact with
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github, Language} from "@site/src/components/codetabs"
+import {Github, Language} from "@site/src/components/UI/Codetabs"
 
 The NEAR API is a collection of language-specific SDKs that allow developers to interact with the NEAR blockchain from both frontend and backend applications.
 
@@ -762,7 +762,7 @@ Deleting an account **DOES NOT** affect its sub-accounts - they will remain acti
 
 ### Send Tokens {#send-tokens}
 
-Accounts can transfer different types of tokens to other accounts, including the native NEAR token and [NEP-141](https://nomicon.io/Standards/Tokens/FungibleToken/Core) fungible tokens.
+Accounts can transfer different types of tokens to other accounts, including the native NEAR token and [NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) fungible tokens.
 
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">

@@ -8,7 +8,7 @@ import { Faucet } from '@site/src/components/faucet';
 
 A **faucet** provides free `testnet` tokens for testing and development purposes.
 
-There are two testnet faucets: the built‑in faucet on this page - which provides native `testnet` NEAR only - and the [Testnet Faucet](#testnet-near-faucet), which supports many fungible tokens (NEAR, USDT, and more).
+There are two testnet faucets: the built‑in faucet on this page - which provides native `testnet` NEAR only - and the [Testnet Faucet](#external-faucet), which supports many fungible tokens (NEAR, USDT, and more).
 
 :::info
 
@@ -26,12 +26,12 @@ Simply introduce the account you want to receive the tokens in, and click on the
 
 ---
 
-## [Testnet NEAR Faucet](https://near-faucet.io/)
+## External Faucet
 
 Navigate to the [Testnet Faucet](https://near-faucet.io/) page, input your address and select which type of token you need! The faucet supports a wide range of fungible tokens, including NEAR, Tether USD, Ether, and many others.
 
 
-![Faucet](/docs/assets/tools/faucet.png)
+![Faucet](/assets/docs/tools/faucet.png)
 
 :::info Supported tokens
 

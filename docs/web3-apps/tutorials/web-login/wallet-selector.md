@@ -3,13 +3,13 @@ id: wallet-selector
 title: Wallet Selector Tutorial
 description: "Enable users to sign-in using their NEAR wallet with the Wallet Selector"
 ---
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 Allowing your users to connect with their favorite wallet and interact with your dApp is a crucial step in building web3 applications. This guide will help you to integrate the `Wallet Selector` into your frontend, enabling users to sign-in and perform transactions using their NEAR wallet.
 
-![Preview](/docs/assets/tools/wallet-selector-preview.png)
+![Preview](/assets/docs/tools/wallet-selector-preview.png)
 
 :::tip
 
@@ -94,7 +94,7 @@ const my_network = {
 
 :::tip
 
-You can find the entire Wallet Selector [API reference here](https://github.com/near/wallet-selector/blob/main/packages/core/docs/api/selector.md).
+You can find the entire Wallet Selector [API reference here](https://github.com/near/wallet-selector/blob/main/packages/core/assets/docs/api/selector.md).
 
 :::
 

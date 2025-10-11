@@ -4,16 +4,16 @@ sidebar_label: Cross-contract calls, etc.
 title: Adding cross-contract calls, access key shuffling, etc.
 description: "Learn how to add cross-contract calls, manage access keys, and handle rewards in the crossword contract."
 ---
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 In this chapter, we will cover some intermediate concepts in smart contract development on NEAR. This includes cross-contract calls and access keys, which are essential for building more complex applications.
 
 # Updating the contract
 
-import shuffleKeys from '/docs/assets/crosswords/shuffle-keys.gif';
-import clionSuggestion from '/docs/assets/crosswords/clion-suggestion.gif';
-import carpenterAddingKey from '/docs/assets/crosswords/create-key-carpenter-near--carlcarlkarl.near--CarlCarlKarl.jpg';
-import recycleKey from '/docs/assets/crosswords/remove-key-recycle--eerie_ram.near--eerie_ram.png';
+import shuffleKeys from '/assets/docs/tutorials/crosswords/shuffle-keys.gif';
+import clionSuggestion from '/assets/docs/tutorials/crosswords/clion-suggestion.gif';
+import carpenterAddingKey from '/assets/docs/tutorials/crosswords/create-key-carpenter-near--carlcarlkarl.near--CarlCarlKarl.jpg';
+import recycleKey from '/assets/docs/tutorials/crosswords/remove-key-recycle--eerie_ram.near--eerie_ram.png';
 
 To reiterate, we'd like anyone to be able to participate in the crossword puzzle, even folks who don't have a NEAR account.
 

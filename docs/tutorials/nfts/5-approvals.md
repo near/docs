@@ -4,7 +4,7 @@ title: Approvals
 sidebar_label: Approvals
 description: "Learn how to manage NFT approvals so that others can transfer NFTs on your behalf."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -24,9 +24,9 @@ If you wish to see the finished code for this _Approval_ tutorial, you can find 
 
 ## Introduction
 
-Up until this point you've created a smart contract that allows users to mint and transfer NFTs as well as query for information using the [enumeration standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration). As we've been doing in the previous tutorials, let's break down the problem into smaller, more digestible, tasks.
+Up until this point you've created a smart contract that allows users to mint and transfer NFTs as well as query for information using the [enumeration standard](https://github.com/near/NEPs/tree/master/neps/nep-0181.md). As we've been doing in the previous tutorials, let's break down the problem into smaller, more digestible, tasks.
 
-Let's first define some of the end goals that we want to accomplish as per the [approval management](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) extension of the standard. We want a user to have the ability to:
+Let's first define some of the end goals that we want to accomplish as per the [approval management](https://github.com/near/NEPs/tree/master/neps/nep-0178.md) extension of the standard. We want a user to have the ability to:
 
 - Grant other accounts access to transfer their NFTs on a per token basis.
 - Check if an account has access to a specific token.
@@ -582,7 +582,7 @@ With the testing finished, you've successfully implemented the approvals extensi
 
 ## Conclusion
 
-Today you went through a lot of logic to implement the [approvals extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement) so let's break down exactly what you did.
+Today you went through a lot of logic to implement the [approvals extension](https://github.com/near/NEPs/tree/master/neps/nep-0178.md) so let's break down exactly what you did.
 
 First, you explored the [basic approach](#allow-an-account-to-transfer-your-nft) of how to solve the problem. You then went through and discovered some of the [problems](#the-problem) with that solution and learned how to [fix it](#the-solution).
 
@@ -590,7 +590,7 @@ After understanding what you should do to implement the approvals extension, you
 
 After implementing the logic behind approving accounts, you went and [changed the restrictions](#changing-the-restrictions-for-transferring-nfts) needed to transfer NFTs. The last step you did to finalize the approving logic was to go back and edit the [nft_core](#changes-to-nft_corers) files to be compatible with the new changes.
 
-At this point, everything was implemented in order to allow accounts to be approved and you extended the functionality of the [core standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) to allow for approved accounts to transfer tokens.
+At this point, everything was implemented in order to allow accounts to be approved and you extended the functionality of the [core standard](https://github.com/near/NEPs/tree/master/neps/nep-0171.md) to allow for approved accounts to transfer tokens.
 
 You implemented a view method to [check](#check-if-an-account-is-approved) if an account is approved and to finish the coding portion of the tutorial, you implemented the logic necessary to [revoke an account](#revoke-an-account) as well as [revoke all accounts](#revoke-all-accounts).
 
@@ -605,8 +605,8 @@ At the time of this writing, this example works with the following versions:
 - rustc: `1.77.1`
 - near-cli-rs: `0.17.0`
 - cargo-near `0.6.1`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
-- Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
-- Approval standard: [NEP178](https://nomicon.io/Standards/Tokens/NonFungibleToken/ApprovalManagement), version `1.1.0`
+- NFT standard: [NEP171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md), version `1.0.0`
+- Enumeration standard: [NEP181](https://github.com/near/NEPs/tree/master/neps/nep-0181.md), version `1.0.0`
+- Approval standard: [NEP178](https://github.com/near/NEPs/tree/master/neps/nep-0178.md), version `1.1.0`
 
 :::

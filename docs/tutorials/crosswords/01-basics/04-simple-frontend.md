@@ -4,11 +4,11 @@ sidebar_label: Add simple frontend
 title: Add a simple frontend to the crossword puzzle that checks the solution's hash
 description: "Add a simple frontend using React and near-api-js to communicate with the smart contract."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import nearReactFriends from '/docs/assets/crosswords/near-and-react--dakila.near--rodolf_dtbbx.png';
+import nearReactFriends from '/assets/docs/tutorials/crosswords/near-and-react--dakila.near--rodolf_dtbbx.png';
 
 This will be the final section in this chapter, where we'll add a simple frontend using React and [`near-api-js`](../../../tools/near-api.md) to communicate with the smart contract.
 
@@ -143,6 +143,6 @@ The last line sends the environment variable `CONTRACT_NAME` into the NodeJS scr
 
 After running the last command to start the React app, you'll be given a link to a local website, like `https://localhost:1234`. When you visit the site you'll see the simple frontend that interacts with our smart contract:
 
-![Crossword puzzle frontend showing a filled out puzzle with clues on the right sidebar](/docs/assets/crosswords/basics-final-frontend.png)
+![Crossword puzzle frontend showing a filled out puzzle with clues on the right sidebar](/assets/docs/tutorials/crosswords/basics-final-frontend.png)
 
 Again, the full code for this chapter is [available here](https://github.com/near-examples/crossword-tutorial-chapter-1).
