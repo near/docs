@@ -7,8 +7,6 @@ description: "A brief overview of the Verifiable AI DAO tutorial built using the
 
 import { TryDemo } from '@site/src/components/TryDemo';
 
-# Verifiable AI DAO
-
 In this tutorial, you'll explore how to build a `fully verifiable AI DAO` using the Shade Agent Framework. The Verifiable AI DAO is a DAO smart contract that uses a Shade Agent with a verifiable LLM to vote on governance proposals according to its predefined manifesto, to create transparent, AI-driven governance that is decentralized and auditable from end-to-end.
 
 <TryDemo 

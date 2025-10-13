@@ -28,6 +28,23 @@ fine-grained control over the account's permissions.
 
 ---
 
+## Function-Call Keys {#function-call-keys}
+
+`Function-Call` keys can only sign transactions calling a **specific contract**, and do **not allow** to **attach NEAR tokens** to the call.
+
+They are defined by three attributes:
+1. `receiver_id`: The **only contract** which the key allows to call, no other contract can be called with this key
+2. `method_names` (Optional): The contract's **methods** the key allows to call. If omitted, all contract's methods can be called
+3. `allowance` (Optional): The **amount of NEAR** allowed to be spent on [gas](gas.md). If omitted, the key can consume **unlimited** gas
+
+`Function Call Keys` are meant to be shared with applications, so third-parties can make contract calls in your name. This is useful in [multiple scenarios as we will see below](/blog/benefits-of-multiple-keys).
+
+:::tip
+`Function-Call` keys are secure to share, as they only permit calls to a specific contract and prohibit NEAR token transfers
+:::
+
+---
+
 ## Full-Access Keys {#full-access-keys}
 As the name suggests, `Full-Access` keys have full control of an account, meaning they can be used to sign [transactions](transactions.md) doing any action in your account's behalf:
 
