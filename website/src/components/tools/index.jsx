@@ -135,7 +135,7 @@ const Tools = () => {
   }, [fetchTokens, processFT, processNFT, signedAccountId]);
 
 
-  return <>
+  return <div className='container'>
     <Tabs groupId="code-tabs">
       <TabItem value="FT" label="FT">
         <FungibleToken user_fts={allFT} loading={loadingFT} reload={(d) => reload(d, 'fts')} />
@@ -157,7 +157,7 @@ const Tools = () => {
         <DAO />
       </TabItem>
     </Tabs>
-  </>
+  </div>
 }
 
 export default Tools;

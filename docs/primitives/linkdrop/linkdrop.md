@@ -1,7 +1,6 @@
 ---
 id: linkdrop
-title: Linkdrops
-hide_table_of_contents: false
+title: Using Linkdrops
 description: "Learn about linkdrops following NEP-452 standard - distribute assets and onboard users to Web3 apps through simple web links using access keys and the Keypom platform."
 ---
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
@@ -11,13 +10,7 @@ import { Github } from "@site/src/components/UI/Codetabs"
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
-Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.
-
-![Linkdrop](/assets/docs/primitives/linkdrop.png)
-
-They work by storing assets and linking [AccessKeys](../protocol/access-keys.md) to them. The `AccessKeys` are then distributed to users in the form of web links. These links take users to a website that automatically uses the keys to call the `claim` method in the `linkdrop` contract.
-
-In order for a contract to be considered a Linkdrop-contract it has to follow the [**NEP-452 standard**](https://github.com/near/NEPs/blob/master/neps/nep-0452.md). The **NEP-452** explains the **minimum interface** required to be implemented, as well as the expected functionality.
+Wanting to use Linkdrops in your dApp? Here you will find all the information you need to get started.
 
 :::tip
 

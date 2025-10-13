@@ -90,7 +90,7 @@ It works as follows:
 Your main account and your funds will never be at risk, as the keys can only be used to call the `create_account` method.
 
 :::tip
-This is the basic principle behind [NEAR Drops](../primitives/linkdrop.md), a way to distribute assets to a large number of users
+This is the basic principle behind [NEAR Drops](../primitives/nft/nft.md), a way to distribute assets to a large number of users
 :::
 
 <hr class="subsection" />
