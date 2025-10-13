@@ -94,12 +94,14 @@ Here is how to directly interact with the factory contract through your applicat
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  import { Wallet } from './near-wallet';
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
-  const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
 
-  await wallet.callMethod({
+  const { callMethod } = useWalletSelector();
+
+  await callMethod({
+    contractId: CONTRACT_ADDRESS,
     method: 'nft_mint',
     args: {
       token_id: '1',
@@ -110,12 +112,11 @@ Here is how to directly interact with the factory contract through your applicat
         media: 'string', // URL to associated media, preferably to decentralized, content-addressed storage
       },
     },
-    contractId: CONTRACT_ADDRESS,
     deposit: 10000000000000000000000,
   });
   ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -212,12 +213,14 @@ You can query the NFT's information and metadata by calling the `nft_token`.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { Wallet } from './near-wallet';
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
-  const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
 
-  const response = await wallet.viewMethod({
+  const { viewMethod } = useWalletSelector();
+
+  const response = await viewMethod({
+    contractId: CONTRACT_ADDRESS,
     method: 'nft_token',
     args: {
       token_id: '1',
@@ -225,7 +228,7 @@ You can query the NFT's information and metadata by calling the `nft_token`.
   });
   ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   <details>
 
@@ -368,23 +371,24 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
       
   ```js
-  import { Wallet } from './near-wallet';
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
-  const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
 
-  await wallet.callMethod({
+  const { callMethod } = useWalletSelector();
+
+  await callMethod({
+    contractId: CONTRACT_ADDRESS,
     method: 'nft_transfer',
     args: {
       token_id: '1',
       receiver_id: 'bob.near',
     },
-    contractId: CONTRACT_ADDRESS,
     deposit: 1,
   });
   ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">

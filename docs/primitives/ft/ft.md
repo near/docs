@@ -37,9 +37,11 @@ Here is how to directly interact with the factory contract through your applicat
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
     ```js
-    import { Wallet } from './near-wallet';
+    import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
-    const wallet = new Wallet({});
+    const TOKEN_FACTORY_ADDRESS = 'token.primitives.near';
+
+    const { callMethod } = useWalletSelector();
 
     const args = {
       args: {
@@ -56,16 +58,16 @@ Here is how to directly interact with the factory contract through your applicat
       account_id: 'bob.near',
     };
 
-    await wallet.callMethod({
+    await callMethod({
+      contractId: TOKEN_FACTORY_ADDRESS,
       method: 'create_token',
       args,
-      contractId: 'token.primitives.near',
       gas: 300000000000000,
       deposit: '2234830000000000000000',
     });
     ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+   Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -169,12 +171,13 @@ You can query the FT's metadata by calling the `ft_metadata`.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { Wallet } from './near-wallet';
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
-  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
 
-  await wallet.viewMethod({
+  const { viewMethod } = useWalletSelector();
+
+  await viewMethod({
     method: 'ft_metadata',
     args: {},
     contractId: TOKEN_CONTRACT_ADDRESS,
@@ -200,7 +203,7 @@ You can query the FT's metadata by calling the `ft_metadata`.
   </p>
   </details>
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
   
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -245,12 +248,13 @@ To know how many coins a user has you will need to query the method `ft_balance_
   :::
 
   ```js
-  import { Wallet } from './near-wallet';
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
-  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
 
-  await wallet.viewMethod({
+  const { viewMethod } = useWalletSelector();
+
+  await viewMethod({
     method: 'ft_balance_of',
     args: {
       account_id: 'bob.near',
@@ -270,7 +274,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
   </p>
   </details>
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -305,17 +309,23 @@ By calling this `storage_deposit` the user can register themselves or **register
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  await wallet.callMethod({
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+
+  const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
+
+  const { callMethod } = useWalletSelector();
+
+  await callMethod({
+    contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'storage_deposit',
     args: {
       account_id: 'alice.near',
     },
-    contractId: TOKEN_CONTRACT_ADDRESS,
     deposit: 1250000000000000000000,
   });
   ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -346,23 +356,24 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  import { Wallet } from './near-wallet';
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
-  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
 
-  await wallet.callMethod({
+  const { callMethod } = useWalletSelector();
+
+  await callMethod({
+    contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'ft_transfer',
     args: {
       receiver_id: 'alice.near',
       amount: '100000000000000000',
     },
-    contractId: TOKEN_CONTRACT_ADDRESS,
     deposit: 1,
   });
   ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -419,19 +430,20 @@ Let's assume that you need to deposit FTs on [Ref Finance](https://rhea.finance/
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { Wallet } from './near-wallet';
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
-  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
 
-  await wallet.callMethod({
+  const { callMethod } = useWalletSelector();
+
+  await callMethod({
+    contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'ft_transfer_call',
     args: {
       receiver_id: 'v2.ref-finance.near',
       amount: '100000000000000000',
       msg: '',
     },
-    contractId: TOKEN_CONTRACT_ADDRESS,
     gas: 300000000000000,
     deposit: 1,
   });
@@ -448,7 +460,7 @@ Let's assume that you need to deposit FTs on [Ref Finance](https://rhea.finance/
   </p>
   </details>
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
