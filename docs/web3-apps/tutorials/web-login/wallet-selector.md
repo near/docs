@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 Allowing your users to connect with their favorite wallet and interact with your dApp is a crucial step in building web3 applications. This guide will help you to integrate the `Wallet Selector` into your frontend, enabling users to sign-in and perform transactions using their NEAR wallet.
 
-![Preview](/docs/assets/tools/wallet-selector-preview.png)
+![Preview](/assets/docs/tools/wallet-selector-preview.png)
 
 :::tip
 

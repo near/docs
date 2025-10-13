@@ -9,7 +9,7 @@ import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs";
 
 Blockchain development today faces a critical challenge: users need to understand complex blockchain concepts, manage multiple wallets, and deal with different networks just to use basic applications. Chain abstraction solves this by making blockchain technology invisible to end users while preserving all of the underlying benefits.
 
-![img](/docs/assets/welcome-pages/2.chain-abstraction.png)
+![img](/assets/docs/welcome-pages/2.chain-abstraction.png)
 
 ## Why Chain Abstraction Matters
 

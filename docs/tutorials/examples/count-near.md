@@ -11,7 +11,7 @@ import MovingForwardSupportSection from '@site/src/components/MovingForwardSuppo
 
 Our counter example is a friendly decentralized app that stores a number and exposes methods to `increment`,`decrement`, and `reset` it.
 
-![img](/docs/assets/examples/count-on-near-banner.png)
+![img](/assets/docs/tutorials/examples/count-on-near-banner.png)
 
 ---
 
@@ -90,7 +90,7 @@ yarn dev
 
 Go ahead and login with your NEAR account. If you don't have one, you will be able to create one in the moment. Once logged in, use the `+` and `-` buttons to increase and decrease the counter. Then, use the Gameboy buttons to reset it and make the counter blink an eye!
 
-![img](/docs/assets/examples/count-on-near.png)
+![img](/assets/docs/tutorials/examples/count-on-near.png)
 _Frontend of the Counter_
 
 <hr class="subsection" />

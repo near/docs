@@ -31,7 +31,7 @@ The [wallet selector](https://github.com/near/wallet-selector) is a javascript l
 
 It includes support for the most popular wallets, and `react hooks` to easily integrate it into your app.
 
-![Preview](/docs/assets/tools/wallet-selector-preview.png)
+![Preview](/assets/docs/tools/wallet-selector-preview.png)
 
 
 :::tip
@@ -74,7 +74,7 @@ Check our [Privy Integration Example](https://github.com/near-examples/hello-pri
 
 [Web3Auth](https://web3auth.io/) is a third-party service that allows users to login using their email or social accounts (Google, Facebook, Twitter, etc). Upon login, a NEAR wallet is created for the user, which they can fund and use to interact with your dApp.
 
-![Preview](/docs/web3-apps/web3auth.jpeg)
+![Preview](/assets/docs/web3-apps/web3auth.jpeg)
 
 :::tip
 

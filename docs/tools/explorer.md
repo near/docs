@@ -15,7 +15,7 @@ Explorers are web applications that allow you to quickly obtain information from
 
 Created by the community, [NearBlocks](https://nearblocks.io/) enables to check accounts and transactions with an interface similar to etherscan.
 
-![NearBlocks](/docs/assets/explorers/nearblocks.png)
+![NearBlocks](/assets/docs/data-infrastructure/explorers/nearblocks.png)
 *Main page of [NearBlocks](https://nearblocks.io/)*
 
 <hr className="subsection"/>
@@ -24,7 +24,7 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 
 [Nearscope](https://nearscope.net/) provides a NEAR node validator and delegator explorer.
 
-![Nearscope](/docs/assets/explorers/nearscope.png)
+![Nearscope](/assets/docs/data-infrastructure/explorers/nearscope.png)
 *Main page of [Nearscope](https://nearscope.net/)*
 
 <hr className="subsection"/>
@@ -33,7 +33,7 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 
 [DappLooker](https://dapplooker.com/) lets you analyze and query NEAR blockchain data, build dashboards to visualize data and share with your community.
 
-![DappLooker](/docs/assets/explorers/dapplooker.png)
+![DappLooker](/assets/docs/data-infrastructure/explorers/dapplooker.png)
 *Main page of [DappLooker](https://dapplooker.com/)*
 
 <hr className="subsection"/>
@@ -42,7 +42,7 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 
 [Pikespeak](https://pikespeak.ai/) provides access to real-time and historical data on the NEAR Protocol.
 
-![Pikespeak](/docs/assets/explorers/pikespeak.png)
+![Pikespeak](/assets/docs/data-infrastructure/explorers/pikespeak.png)
 *Main page of [Pikespeak](https://pikespeak.ai/)*
 
 ## NEARCatalog
@@ -50,5 +50,5 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 [NEARCatalog](https://dev.near.org/applications) provides access to trending decentralized applications (DApps) on the NEAR Protocol.
 
 
-![Nearcatalog](/docs/assets/explorers/nearcatalog.png)
+![Nearcatalog](/assets/docs/data-infrastructure/explorers/nearcatalog.png)
 *Main page of [NEARCatalog](https://dev.near.org/applications)*

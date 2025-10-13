@@ -8,7 +8,7 @@ import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this tutorial, you'll learn about the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and how to implement it in your smart contract.
+In this tutorial, you'll learn about the [events standard](https://github.com/near/NEPs/blob/master/neps/nep-0256.md) and how to implement it in your smart contract.
 
 
 
@@ -307,7 +307,7 @@ Hurray! At this point, your NFT contract is fully complete and the events standa
 
 ## Conclusion
 
-Today you went through the [events standard](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) and implemented the necessary logic in your smart contract. You created events for [minting](#logging-minted-tokens) and [transferring](#logging-transfers) NFTs. You then deployed and [tested](#initialization-and-minting) your changes by minting and transferring NFTs.
+Today you went through the [events standard](https://github.com/near/NEPs/blob/master/neps/nep-0256.md) and implemented the necessary logic in your smart contract. You created events for [minting](#logging-minted-tokens) and [transferring](#logging-transfers) NFTs. You then deployed and [tested](#initialization-and-minting) your changes by minting and transferring NFTs.
 
 In the next tutorial, you'll look at the basics of a marketplace contract and how it was built.
 
@@ -316,7 +316,7 @@ In the next tutorial, you'll look at the basics of a marketplace contract and ho
 At the time of this writing, this example works with the following versions:
 
 - near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
-- Events standard: [NEP297 extension](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event), version `1.0.0`
+- NFT standard: [NEP171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md), version `1.0.0`
+- Events standard: [NEP297 extension](https://github.com/near/NEPs/blob/master/neps/nep-0256.md), version `1.0.0`
 
 :::

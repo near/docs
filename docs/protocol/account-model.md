@@ -24,7 +24,7 @@ You have multiple ways to create an account, you can [sign-up using your email](
 
 Let's take a closer look at the different elements that compose the NEAR account model.
 
-![img](@site/static/docs/assets/welcome-pages/accounts.png)
+![img](@site/static/assets/docs/welcome-pages/accounts.png)
 
 
 #### [Account ID](account-id.md)

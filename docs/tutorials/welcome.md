@@ -24,7 +24,7 @@ import Button from "@site/src/components/UI/Button";
   <div className="col col--4">
     <Card
       variant="icon"
-      icon={<img src="/icons/near.svg" alt="Mastering NEAR" />}
+      icon={<img src="/assets/menu/near.svg" alt="Mastering NEAR" />}
       title="Mastering NEAR"
       description="New to NEAR development? Start with our comprehensive introduction to building Web3 applications"
       links={{
@@ -37,7 +37,7 @@ import Button from "@site/src/components/UI/Button";
   <div className="col col--4">
     <Card
       variant="icon"
-      icon={<img src="/icons/app.svg" alt="Frontend Examples" />}
+      icon={<img src="/assets/menu/app.svg" alt="Frontend Examples" />}
       title="Frontend Examples"
       description="Build modern web interfaces that connect to NEAR contracts with these practical examples"
       links={{
@@ -51,7 +51,7 @@ import Button from "@site/src/components/UI/Button";
   <div className="col col--4">
     <Card
       variant="icon"
-      icon={<img src="/icons/contract.svg" alt="Smart Contract Examples" />}
+      icon={<img src="/assets/menu/contract.svg" alt="Smart Contract Examples" />}
       title="Smart Contract Examples"
       description="Learn smart contract development with real-world examples from simple to advanced patterns"
       links={{
@@ -66,7 +66,7 @@ import Button from "@site/src/components/UI/Button";
   <div className="col col--4">
     <Card
       variant="icon"
-      icon={<img src="/icons/token.svg" alt="Tokens & NFTs" />}
+      icon={<img src="/assets/menu/token.svg" alt="Tokens & NFTs" />}
       title="Tokens & NFTs"
       description="Master fungible and non-fungible tokens on NEAR with comprehensive step-by-step tutorials"
       links={{
@@ -79,7 +79,7 @@ import Button from "@site/src/components/UI/Button";
   <div className="col col--4">
     <Card
       variant="icon"
-      icon={<img src="/icons/multichain.svg" alt="Multichain Development" />}
+      icon={<img src="/assets/menu/multichain.svg" alt="Multichain Development" />}
       title="Multichain Development"
       description="Explore NEAR's multichain capabilities and learn to control accounts across different networks"
       links={{
@@ -93,7 +93,7 @@ import Button from "@site/src/components/UI/Button";
   <div className="col col--4">
     <Card
       variant="icon"
-      icon={<img src="/icons/database.svg" alt="Data Infrastructure" />}
+      icon={<img src="/assets/menu/database.svg" alt="Data Infrastructure" />}
       title="Data Infrastructure"
       description="Build indexers and work with NEAR's data layer to create powerful data-driven applications"
       links={{

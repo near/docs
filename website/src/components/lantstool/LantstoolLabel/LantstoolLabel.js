@@ -1,4 +1,4 @@
-import LantstoolLogo from '@site/static/docs/assets/lantstool/lantstool-logo-circle.svg';
+import LantstoolLogo from '@site/static/assets/docs/tools/lantstool-logo-circle.svg';
 import cn from './LantstoolLabel.module.scss';
 
 export const LantstoolLabel = () => (

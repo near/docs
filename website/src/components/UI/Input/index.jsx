@@ -1,6 +1,7 @@
+import { forwardRef } from 'react';
 import styles from './Input.module.scss';
 
-const Input = ({ 
+const Input = forwardRef(({ 
   id,
   name,
   type = 'text',
@@ -24,7 +25,7 @@ const Input = ({
   onBlur,
   onFocus,
   ...props 
-}) => {
+}, ref) => {
   // Build CSS classes
   const wrapperClasses = [
     styles.inputWrapper,
@@ -64,6 +65,7 @@ const Input = ({
         )}
         
         <input
+          ref={ref}
           id={id}
           name={name}
           type={type}
@@ -110,6 +112,8 @@ const Input = ({
       )}
     </div>
   );
-};
+});
+
+Input.displayName = 'Input';
 
 export default Input;
