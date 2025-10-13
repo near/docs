@@ -13,6 +13,12 @@ If you created a NEAR account using a wallet or the CLI, you can export its seed
 1. Import an existing account [into a wallet](#importing-into-a-wallet)
 2. Import an existing account [into the CLI](#importing-into-the-cli)
 
+:::tip
+
+If you don't have a NEAR account yet, check out our guide on [Creating a NEAR Account](./create-account.md)
+
+:::
+
 ---
 
 ## Exporting Your Seed Phrase

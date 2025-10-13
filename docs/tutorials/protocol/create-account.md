@@ -14,6 +14,12 @@ You can create a `testnet` NEAR account through one of the following methods:
 - [Using one of the wallets listed in wallet.near.org](#using-a-wallet)
 - [Using the command line interface (CLI)](#through-the-cli)
 
+:::tip
+
+If you already have a NEAR account and want to use it in another wallet or the CLI, check out our guide on [Importing a NEAR Account](importing-account)
+
+:::
+
 ---
 
 ## Using a Wallet
