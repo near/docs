@@ -2,7 +2,6 @@
 id: dao
 title: Decentralized Autonomous Organizations
 sidebar_label: Autonomous Organizations (DAO)
-hide_table_of_contents: false
 description: "Learn about Decentralized Autonomous Organizations (DAOs) on NEAR - self-organized groups that coordinate membership, decision-making, and funding through smart contract voting."
 ---
 
@@ -18,7 +17,7 @@ Decentralized Autonomous Organizations (DAOs) are self-organized groups that for
 
 ![dao](/assets/docs/primitives/dao.png)
 
-In contrast with [FT](ft.md) and [NFT](nft.md), DAO contract's are not standardized. Because of this, on this page we will use as
+In contrast with [FT](./ft/ft.md) and [NFT](./nft/nft.md), DAO contract's are not standardized. Because of this, on this page we will use as
 reference the [Astra dao](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos) [contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
 easily generalizable to other DAO implementations.
 
@@ -176,7 +175,7 @@ Deploying by **hash** creates an immutable contract that never changes. Deployin
 ### Voting policy
 Currently, DAOs support two different types of [voting policies](https://github.com/near-daos/sputnik-dao-contract#voting-policy): `TokenWeight`, and `RoleWeight`.
 
-When the vote policy is `TokenWeight`, the council votes using [tokens](ft.md). The weigh of a vote is the proportion of tokens used for voting over the token's total supply.
+When the vote policy is `TokenWeight`, the council votes using [tokens](./ft/ft.md). The weigh of a vote is the proportion of tokens used for voting over the token's total supply.
 
 When the vote policy is `RoleWeight(role)`, the vote weigh is computed as "one over the total number of people with the role".
 

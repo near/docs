@@ -1,7 +1,6 @@
 ---
 id: linkdrop
-title: Linkdrops
-hide_table_of_contents: false
+title: Using Linkdrops
 description: "Learn about linkdrops following NEP-452 standard - distribute assets and onboard users to Web3 apps through simple web links using access keys and the Keypom platform."
 ---
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
@@ -11,35 +10,13 @@ import { Github } from "@site/src/components/UI/Codetabs"
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
-Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.
-
-![Linkdrop](/assets/docs/primitives/linkdrop.png)
-
-They work by storing assets and linking [AccessKeys](../protocol/access-keys.md) to them. The `AccessKeys` are then distributed to users in the form of web links. These links take users to a website that automatically uses the keys to call the `claim` method in the `linkdrop` contract.
-
-In order for a contract to be considered a Linkdrop-contract it has to follow the [**NEP-452 standard**](https://github.com/near/NEPs/blob/master/neps/nep-0452.md). The **NEP-452** explains the **minimum interface** required to be implemented, as well as the expected functionality.
+Wanting to use Linkdrops in your dApp? Here you will find all the information you need to get started.
 
 :::tip
 
 The simplest way to create a linkdrop is by interacting with our [LinkDrop Generator](/toolbox)
 
 :::
-
----
-
-## About the Linkdrop Standard
-
-[NEP-0452](https://github.com/near/NEPs/blob/master/neps/nep-0452.md) standardizes a secure and flexible method for creating linkdrops on NEAR. A linkdrop is a mechanism where a sender can fund a special, one-time-use account (or `key`) and generate a unique link. Anyone who possesses this link can then claim the assets (like NEAR tokens or NFTs) locked within it, often without needing an existing NEAR account.
-
-The specification keeps the linkdrop logic in a smart contract and introduces a secure key type:
-
-- Separation of Concerns: The standard clearly separates the roles of the **Sender** (who funds the linkdrop), the **Claimer** (who redeems it), and the **Contract** (which holds the logic and assets).
-
-- Function Call Keys: Instead of a full-access key, a linkdrop is secured by a [Function Call Access Key](../protocol/access-keys.md#function-call-keys). This key is only permitted to call a single, specific method on the smart contract (e.g., `claim`). Even if the private key is exposed, an attacker cannot do anything else with it.
-
-- Smart Contract Driven: The entire claiming process is managed by a smart contract. This allows for immense flexibility, enabling linkdrops to contain not just NEAR tokens, but also [NFTs](nft.md), [FTs (Fungible Tokens)](ft.md), or any other on-chain asset.
-
-The NEP-0452 standard defines linkdrop implementation by leveraging smart contracts and Function Call Keys, opening up a wide range of possibilities for developers while prioritizing security and a seamless user experience.
 
 ---
 

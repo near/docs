@@ -1,7 +1,6 @@
 ---
 id: nft
-title: Non-Fungible Tokens (NFT)
-hide_table_of_contents: false
+title: Using NFTs
 description: "Learn about NEAR non-fungible tokens (NFT) following NEP-171 and NEP-177 standards - mint, transfer, query, and trade unique digital assets with comprehensive examples."
 ---
 

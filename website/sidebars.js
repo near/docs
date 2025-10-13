@@ -460,13 +460,23 @@ const sidebar = {
             'primitives/nft/nft'
           ]
         },
+        {
+          'Linkdrops': [
+            'primitives/linkdrop/standard',
+            'primitives/linkdrop/linkdrop'
+          ]
+        },
         'protocol/network/staking',
-        'primitives/linkdrop',
         'primitives/oracles',
         'primitives/dao',
         'primitives/dex',
         'primitives/did',
-        'primitives/lockup',
+        {
+          'Lockup Contracts': [
+            'primitives/lockup/introduction',
+            'primitives/lockup/lockup',
+          ]
+        }
       ],
     },
     {

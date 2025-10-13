@@ -1,19 +1,8 @@
 ---
 id: standard
 title: The Standard
-hide_table_of_contents: false
-description: "The NEP-141 standard defines Fungible Tokens (FT) on NEAR"
+description: "Learn how Non-Fungible Tokens (NFT) are defined on NEAR"
 ---
-
-import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
-import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
-
-import CreateTokenForm from "@site/src/components/tools/FungibleToken/CreateTokenForm";
 
 In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.
 
@@ -51,6 +40,8 @@ Returns the token information for a given `token_id`
 nft_token(token_id: string): { token_id: string, owner_id: string } | null
 ```
 
+<br />
+
 #### `nft_transfer`
 Transfers the `token_id` from the caller to the `receiver_id`, optionally the function can include a `memo` field to provide additional information to the contract
 
@@ -61,6 +52,8 @@ The caller must be the **either** the current owner of the token or an **account
 ```ts
 nft_transfer(receiver_id: string, token_id: string, approval_id?: number, memo: string?): void
 ```
+
+<br />
 
 #### `nft_transfer_call`
 
@@ -89,6 +82,8 @@ nft_transfer_call(receiver_id: string, token_id: string, approval_id?: number, m
     ⚠️ Note that this method does not need to be implemented by the NFT contract itself, but rather by any contract that expects to receive non-fungible tokens
 
 </details>
+
+<br />
 
 #### `nft_resolve_transfer`
 
@@ -155,6 +150,8 @@ Returns whether an `approved_account_id` is actually approved to transfer the `t
 nft_is_approved(token_id: string, approved_account_id: string, approval_id?: number): boolean
 ```
 
+<br />
+
 #### `nft_approve`
 
 Grants approval to `account_id` to transfer the `token_id` on behalf of the token owner. Optionally, the function can include a `msg` field to provide additional information to the contract.
@@ -165,6 +162,8 @@ Grants approval to `account_id` to transfer the `token_id` on behalf of the toke
 nft_approve(token_id: string, account_id: string, msg?: string): void
 ```
 
+<br />
+
 #### `nft_revoke`
 Revokes approval for `account_id` to transfer the `token_id` on behalf of the token owner.
 
@@ -173,6 +172,8 @@ Revokes approval for `account_id` to transfer the `token_id` on behalf of the to
 ```ts
 nft_revoke(token_id: string, account_id: string): void
 ```
+
+<br />
 
 #### `nft_revoke_all`
 
@@ -183,32 +184,3 @@ Revokes all approvals for the `token_id`.
 ```ts
 nft_revoke_all(token_id: string): void
 ```
-
-
-
-
-<!--
-
-## NEP-148 (Token Metadata)
-
-[NEP-148](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) is an extension to the NEP-141 standard that defines the fungible tokens **metadata**.
-
-Metadata provides **key information** about the token, such as its **name, symbol, and decimal precision**, particularly, the following fields MUST be included in the token's metadata:
-
-- `spec`: a string. Should be `ft-1.0.0` to indicate that a Fungible Token contract adheres to the current versions of this Metadata and the [Fungible Token Core][FT Core] specs
-- `name`: the human-readable name of the token
-- `symbol`: the abbreviation, like wETH or AMPL
-- `decimals`: used in frontends to show the proper significant digits of a token
-
-The metadata is useful for wallets and other user interfaces to display the token correctly, for example if a token is defined as:
-
-```json
-{
-  "spec": "ft-1.0.0",
-  "name": "My Awesome Token",
-  "symbol": "MAT",
-  "decimals": 4
-}
-```
-
-A balance of `123456` units of such token should be displayed in a user interface as `12.3456 MAT`. -->

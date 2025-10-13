@@ -1,7 +1,6 @@
 ---
 id: ft
-title: Using Fungible Tokens
-hide_table_of_contents: false
+title: Using FTs
 description: "Learn how to create, transfer, and integrate FT in your dApp"
 ---
 

@@ -1,19 +1,8 @@
 ---
 id: standard
 title: The Standard
-hide_table_of_contents: false
-description: "The NEP-141 standard defines Fungible Tokens (FT) on NEAR"
+description: "Learn how Fungible Tokens (FT) are defined on NEAR"
 ---
-
-import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
-import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
-
-import CreateTokenForm from "@site/src/components/tools/FungibleToken/CreateTokenForm";
 
 Besides the native NEAR token, users have access to a multitude of tokens created by institutions and other users known as fungible tokens.
 
