@@ -155,10 +155,12 @@ const sidebar = {
             {
               "Getting Started": [
                 "ai/shade-agents/getting-started/introduction",
-                { "Quickstart": [
-                  "ai/shade-agents/getting-started/quickstart/deploying",
-                  "ai/shade-agents/getting-started/quickstart/components",
-                ]},
+                {
+                  "Quickstart": [
+                    "ai/shade-agents/getting-started/quickstart/deploying",
+                    "ai/shade-agents/getting-started/quickstart/components",
+                  ]
+                },
               ]
             },
             {
@@ -446,15 +448,35 @@ const sidebar = {
       },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
-        'primitives/ft',
-        'primitives/nft',
+        {
+          'Fungible Tokens (FT)': [
+            'primitives/ft/standard',
+            'primitives/ft/ft'
+          ]
+        },
+        {
+          'Non-Fungible Tokens (NFT)': [
+            'primitives/nft/standard',
+            'primitives/nft/nft'
+          ]
+        },
+        {
+          'Linkdrops': [
+            'primitives/linkdrop/standard',
+            'primitives/linkdrop/linkdrop'
+          ]
+        },
         'protocol/network/staking',
-        'primitives/linkdrop',
         'primitives/oracles',
         'primitives/dao',
         'primitives/dex',
         'primitives/did',
-        'primitives/lockup',
+        {
+          'Lockup Contracts': [
+            'primitives/lockup/introduction',
+            'primitives/lockup/lockup',
+          ]
+        }
       ],
     },
     {
