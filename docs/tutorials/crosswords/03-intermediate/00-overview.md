@@ -5,7 +5,7 @@ title: Intermediate concepts (cross-contract calls and more)
 description: "Learn about cross-contract calls and access keys in NEAR to build more advanced smart contracts."
 ---
 
-import accessKeys from '/docs/assets/crosswords/keys-cartoon-good--alcantara_gabriel.near--Bagriel_5_10.png';
+import accessKeys from '/assets/docs/tutorials/crosswords/keys-cartoon-good--alcantara_gabriel.near--Bagriel_5_10.png';
 
 In this chapter, we will cover some intermediate concepts in smart contract development on NEAR. This includes cross-contract calls and access keys, which are essential for building more complex applications.
 

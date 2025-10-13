@@ -4,7 +4,7 @@ const sidebar = {
       type: 'doc',
       id: 'index',
       customProps: {
-        icon: '/icons/home.svg',
+        icon: '/assets/menu/home.svg',
       },
     },
     {
@@ -16,7 +16,7 @@ const sidebar = {
       label: 'NEAR Protocol',
       collapsed: true,
       customProps: {
-        icon: '/icons/near.svg',
+        icon: '/assets/menu/near.svg',
       },
       link: { type: 'generated-index', slug: 'protocol/basics' },
       items: [
@@ -87,7 +87,7 @@ const sidebar = {
       label: 'Multi-Chain',
       collapsed: true,
       customProps: {
-        icon: '/icons/multichain.svg',
+        icon: '/assets/menu/multichain.svg',
       },
       link: { type: 'generated-index', slug: 'chain-abstraction/what-is' },
       items: [
@@ -145,7 +145,7 @@ const sidebar = {
       collapsed: true,
       link: { type: 'generated-index', slug: 'ai/introduction' },
       customProps: {
-        icon: '/icons/ai.svg',
+        icon: '/assets/menu/ai.svg',
       },
       items: [
         'ai/introduction',
@@ -155,10 +155,12 @@ const sidebar = {
             {
               "Getting Started": [
                 "ai/shade-agents/getting-started/introduction",
-                { "Quickstart": [
-                  "ai/shade-agents/getting-started/quickstart/deploying",
-                  "ai/shade-agents/getting-started/quickstart/components",
-                ]},
+                {
+                  "Quickstart": [
+                    "ai/shade-agents/getting-started/quickstart/deploying",
+                    "ai/shade-agents/getting-started/quickstart/components",
+                  ]
+                },
               ]
             },
             {
@@ -215,7 +217,7 @@ const sidebar = {
       collapsed: true,
       link: { type: 'generated-index', slug: 'smart-contracts/what-is' },
       customProps: {
-        icon: '/icons/contract.svg',
+        icon: '/assets/menu/contract.svg',
       },
       items: [
         {
@@ -370,7 +372,7 @@ const sidebar = {
       label: 'App Development',
       collapsed: true,
       customProps: {
-        icon: '/icons/app.svg',
+        icon: '/assets/menu/app.svg',
       },
       link: { type: 'generated-index', slug: 'web3-apps/what-is' },
       items: [
@@ -442,18 +444,39 @@ const sidebar = {
       collapsed: true,
       link: { type: 'doc', id: 'primitives/what-is' },
       customProps: {
-        icon: '/icons/token.svg',
+        icon: '/assets/menu/token.svg',
       },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
-        'primitives/ft',
-        'primitives/nft',
+        {
+          'Fungible Tokens (FT)': [
+            'primitives/ft/standard',
+            'primitives/ft/ft'
+          ]
+        },
+        {
+          'Non-Fungible Tokens (NFT)': [
+            'primitives/nft/standard',
+            'primitives/nft/nft'
+          ]
+        },
+        {
+          'Linkdrops': [
+            'primitives/linkdrop/standard',
+            'primitives/linkdrop/linkdrop'
+          ]
+        },
         'protocol/network/staking',
-        'primitives/linkdrop',
         'primitives/oracles',
         'primitives/dao',
         'primitives/dex',
         'primitives/did',
+        {
+          'Lockup Contracts': [
+            'primitives/lockup/introduction',
+            'primitives/lockup/lockup',
+          ]
+        }
       ],
     },
     {
@@ -461,15 +484,11 @@ const sidebar = {
       label: 'Data Infrastructure',
       collapsed: true,
       customProps: {
-        icon: '/icons/database.svg',
+        icon: '/assets/menu/database.svg',
       },
       link: { type: 'generated-index', slug: 'data-infrastructure/what-is' },
       items: [
-        {
-          type: 'link',
-          label: 'Introduction',
-          href: '/data-infrastructure/what-is',
-        },
+        'data-infrastructure/what-is',
         {
           "Concepts": [
             'data-infrastructure/data-apis',
@@ -533,7 +552,7 @@ const sidebar = {
       label: 'EVM Developers',
       collapsed: true,
       customProps: {
-        icon: '/img/icons/ethereum.svg',
+        icon: '/assets/menu/ethereum.svg',
       },
       link: { type: 'generated-index', slug: 'aurora/what-is' },
       items: [

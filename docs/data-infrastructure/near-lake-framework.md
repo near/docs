@@ -33,7 +33,7 @@ https://github.com/near/near-lake-framework/
 
 The NEAR Lake is a set of AWS S3 buckets which are constantly receiving new blocks from a [running indexer](https://github.com/aurora-is-near/near-lake-indexer) maintained by [Aurora](https://aurora.dev)
 
-Events such as [FT Events](https://nomicon.io/Standards/Tokens/FungibleToken/Event) and [NFT Events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) are constantly being written as JSON files in two AWS S3 buckets:
+Events such as [FT Events](https://github.com/near/NEPs/tree/master/neps/nep-0300.md) and [NFT Events](https://github.com/near/NEPs/tree/master/neps/nep-0256.md) are constantly being written as JSON files in two AWS S3 buckets:
 
 - `near-lake-data-testnet` (`eu-central-1` region)
 - `near-lake-data-mainnet` (`eu-central-1` region)

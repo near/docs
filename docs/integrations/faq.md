@@ -241,7 +241,7 @@ Accounts don’t have associated resources. Gas amount is predetermined for all 
 
 ### How do we know how much gas to add to a transaction?
 
-- See reference documentation here: https://nomicon.io/Economics/Economic
+- See reference documentation here: https://nomicon.io/Economics/Economics.html
 - See API documentation for [discovering gas price via RPC here](/api/rpc/gas#gas-price).
 
 The issuer of a transaction should attach some amount of gas by taking a guess at budget which will get the transaction processed. The contract knows how much to fund different cross contract calls. Gas price is calculated and fixed per block, but may change from block to block depending on how full / busy the block is. If blocks become more than half full then gas price increases.

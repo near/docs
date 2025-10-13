@@ -92,7 +92,7 @@ near view $NFT_CONTRACT_ID nft_tokens_for_owner '{"account_id": "'$NFT_CONTRACT_
 
 Now that your contract implements the necessary functions that the wallet uses to display NFTs, you should be able to see your tokens on display in the [collectibles tab](https://testnet.mynearwallet.com//?tab=collectibles).
 
-![filled-nft-in-wallet](/docs/assets/nfts/filled-nft-in-wallet.png)
+![filled-nft-in-wallet](/assets/docs/tutorials/nfts/filled-nft-in-wallet.png)
 
 ## Conclusion
 

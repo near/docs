@@ -757,7 +757,7 @@ Final transaction results can be queried using [Transaction Status](#transaction
 or [NearBlocks Explorer](https://testnet.nearblocks.io/) using the above
 `result` hash returning a result similar to the example below.
 
-![NEAR-Explorer-transactionHash](/docs/assets/api/NEAR-Explorer-transactionHash.png)
+![NEAR-Explorer-transactionHash](/assets/docs/api/NEAR-Explorer-transactionHash.png)
 
 ---
 

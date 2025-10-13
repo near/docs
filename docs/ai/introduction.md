@@ -7,7 +7,7 @@ description: "Introduction to NEAR's User-Owned AI vision, featuring Shade Agent
 
 NEAR's vision is to create a future of **User-Owned AI**, where AI and agents serve their users, not corporations. For this vision to become a reality, AI must protect user data, prioritize the user's interests, and operate on a sustainable, user-aligned economic model. The NEAR ecosystem has multiple technologies to enable User-Owned AI.
 
-![img](/docs/assets/welcome-pages/9.near-nodes.png)
+![img](/assets/docs/welcome-pages/9.near-nodes.png)
 
 ---
 

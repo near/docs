@@ -12,7 +12,7 @@ In NEAR, users control their accounts using access keys, which can be full-acces
 
 In most blockchains, users control their accounts by holding a single [`private key`](https://en.wikipedia.org/wiki/Public-key_cryptography) (a secret only they know) and using it to sign [transactions](./transactions.md).
 
-![img](@site/static/docs/assets/welcome-pages/access-keys.png)
+![img](@site/static/assets/docs/welcome-pages/access-keys.png)
 
 In NEAR we distinguish two types of Access Keys:
 
@@ -90,7 +90,7 @@ It works as follows:
 Your main account and your funds will never be at risk, as the keys can only be used to call the `create_account` method.
 
 :::tip
-This is the basic principle behind [NEAR Drops](../primitives/linkdrop.md), a way to distribute assets to a large number of users
+This is the basic principle behind [NEAR Drops](../primitives/nft/nft.md), a way to distribute assets to a large number of users
 :::
 
 <hr class="subsection" />

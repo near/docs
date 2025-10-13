@@ -68,20 +68,6 @@ const Card = ({
             {children}
           </div>
         )}
-        
-        {/* Links list */}
-        {links && (
-          <div className={styles.card__links}>
-            {Object.entries(links).map(([label, url], index) => (
-              <div key={index} className={styles.card__linkItem}>
-                <a href={url} target="_blank" rel="noopener noreferrer">
-                  {label}
-                </a>
-              </div>
-            ))}
-          </div>
-        )}
-        
       </div>
     </>
   );

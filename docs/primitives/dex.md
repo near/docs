@@ -1,7 +1,6 @@
 ---
 id: dex
 title: Decentralized Exchanges (DEX)
-hide_table_of_contents: false
 description: "Learn how to interact with decentralized exchanges on NEAR Protocol, including token swapping, liquidity pools, and integration with Ref Finance DEX."
 ---
 
@@ -15,7 +14,7 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 
 A Decentralized Exchange (DEX) is an application that allows users to trade tokens (native & fungible tokens) through smart contracts.
 
-![dex](/docs/primitives/dex.png)
+![dex](/assets/docs/primitives/dex.png)
 
 In brief, DEXs work by having [pools of token pairs](https://guide.rhea.finance/products/overview/pooling) (e.g. NEAR-USDC) that users can deposit tokens into.
 

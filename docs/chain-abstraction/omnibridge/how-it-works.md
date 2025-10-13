@@ -19,11 +19,11 @@ While we still need to support light clients of different networks on NEAR (whic
 
 ### Token Standards and Cross-Chain Communication
 
-Before exploring how Chain Signatures solves these issues, it's important to understand how tokens work on NEAR. [NEP-141](https://nomicon.io/Standards/Tokens/FungibleToken/Core), NEAR's fungible token standard, has a key feature that sets it apart from Ethereum's ERC-20: built-in composability through transfer-and-call functionality.
+Before exploring how Chain Signatures solves these issues, it's important to understand how tokens work on NEAR. [NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md), NEAR's fungible token standard, has a key feature that sets it apart from Ethereum's ERC-20: built-in composability through transfer-and-call functionality.
 
 When a token transfer happens on NEAR using `ft_transfer_call`, the token contract first transfers the tokens and then automatically calls the specified `ft_on_transfer` method on the receiver contract. While these operations happen in sequence within the same transaction, the receiver contract has the ability to reject the transfer, causing the tokens to be refunded. This atomic behavior ensures the integrity and safety of bridge operations by preventing partial execution states.
 
-For more information see [Fungible Tokens](../../primitives/ft.md).
+For more information see [Fungible Tokens](../../primitives/ft/ft.md).
 
 ## Enter Chain Signatures
 

@@ -22,7 +22,7 @@ A basic relayer consists of a web server housing a funded NEAR account. This acc
 
 The client can then generate a `SignedDelegateAction` (a signed message that hasn't yet been sent), encode it, and transmit it to this server, where it will be relayed onto the blockchain.
 
-![relayer-overview-technical](/docs/assets/welcome-pages/relayer-overview-technical.png)
+![relayer-overview-technical](/assets/docs/welcome-pages/relayer-overview-technical.png)
 
 ## Relayer (server)
 
@@ -228,7 +228,7 @@ This is only needed if you intend to use whitelisting, allowances, and OAuth fun
 :::
 
 1. [Install Redis](https://redis.io/docs/latest/get-started/).
-   > Steps 2 & 3 assume Redis was installed on machine instead of a Docker setup. If you're connecting to a Redis instance running in GCP, follow the above steps to connect to a VM that will forward requests from your local relayer server to [Redis running in GCP](https://cloud.google.com/memorystore/docs/redis/connect-redis-instance#connecting_from_a_local_machine_with_port_forwarding)
+   > Steps 2 & 3 assume Redis was installed on machine instead of a Docker setup. If you're connecting to a Redis instance running in GCP, follow the above steps to connect to a VM that will forward requests from your local relayer server to [Redis running in GCP](https://cloud.google.com/memorystore/assets/docs/redis/connect-redis-instance#connecting_from_a_local_machine_with_port_forwarding)
 2. Run `redis-server --bind 127.0.0.1 --port 6379` - make sure the port matches the `redis_url` in the `config.toml`.
 3. Run `redis-cli -h 127.0.0.1 -p 6379`
 

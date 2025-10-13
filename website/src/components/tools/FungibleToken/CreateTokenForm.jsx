@@ -9,7 +9,7 @@ import Card from '../../UI/Card';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
 
-const FACTORY_CONTRACT = 'tkn.primitives.testnet';
+const FACTORY_CONTRACT = 'token.primitives.testnet';
 const MAX_FILE_SIZE = 10 * 1024;
 const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'];
 
@@ -37,7 +37,9 @@ const CreateTokenForm = ({ reload = () => { } }) => {
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm({
+    mode: 'onSubmit'
+  });
 
   const { viewFunction, callFunction, getBalance, signedAccountId, signIn } = useWalletSelector();
   const [requiredDeposit, setRequiredDeposit] = useState('0');
@@ -181,7 +183,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
         toast.error('Failed to create token');
       }
     },
-    [step, signedAccountId, onPreview, viewFunction, callFunction, reload, requiredDeposit],
+    [step, signedAccountId, onPreview, callFunction, reload, deposit],
   );
 
   const getButtonText = () => {
@@ -192,7 +194,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
   };
 
   return (
-    <Card style={{marginBottom: 'var(--space-4)'}}>
+    <Card>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formGrid}>
           <Input

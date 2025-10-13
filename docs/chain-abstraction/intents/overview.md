@@ -7,7 +7,7 @@ description: "Learn how the intents protocol works"
 
 NEAR Intents is a multichain transaction protocol where users specify what they want and let third parties compete to provide the best solution. This works for everything from token swaps to pizza delivery, creating a universal marketplace across crypto and traditional services.
 
-![NEAR Intents Overview](/docs/assets/intents/intents-overview.png)
+![NEAR Intents Overview](/assets/docs/chain-abstraction/intents-overview.png)
 
 ## How It Works
 
