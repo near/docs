@@ -15,8 +15,6 @@ const Claim = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  console.log('Claim component rendered with key:', key);
-
   const contract_id = 'v2.keypom.testnet';
   const { signedAccountId, signIn, viewFunction } = useWalletSelector();
 
