@@ -7,19 +7,30 @@ description: "Learn about NEAR account addresses - implicit addresses (64 charac
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-NEAR accounts are identified by a unique address, which can be either an implicit address (64 characters long), a named address (e.g. `account.near`, `sub.account.near`, `account.sweat`, `account.gov`) or an arbitrary length (max 64 characters) unique string (`some-unique-string`, `0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`).
+NEAR accounts are identified by a unique address, which can take multiple forms:
 
---- 
-
-## Types of Account IDs
-
-NEAR accounts are identified by a unique address, which takes one of two forms:
 1. [**Implicit address**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)
-2. [**Named address**](#named-address), which act as domains (e.g. `alice.near`)
-3. **Unique string** (e.g. `a-random-string-on-the-blockchain`)
+2. [**Named address**](#named-address), which act as domains (e.g. `alice.near`, `sub.account.testnet`)
+3. An ethereum-like account (e.g. `0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`)
+
+<details>
+<summary> Valid Account IDs </summary>
+
+In NEAR, accounts can actually be any string as long as they meet the following criteria:
+- It must have at least 2 characters and can go up to 64 characters
+- It can only use lowercase letters (`a-z`), digits (`0-9`), and separators (`.`, `-`, `_`)
+
+This means that all `root`, `some-unique-string`, `something-to-remember-later`, `0x85f17....`, `fb9243ce` and `user.name` are **all valid account IDs**.
+
+However, users can only create accounts that are either a `named address`, an `implicit address`, or an `ethereum-like address`
+
+</details>
+
 
 :::tip Searching to create an account?
-You have multiple ways to create an account, you can [sign-up using your email](https://dev.near.org/signup), get a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot), or create a [web wallet](https://wallet.meteorwallet.app/wallet).
+
+You have multiple ways to create an account, you can create a [web wallet](https://wallet.meteorwallet.app/wallet), create a mobile wallet through [telegram](https://web.telegram.org/k/#@herewalletbot) or choose any of the available [NEAR wallets](https://wallet.near.org/).
+
 :::
 
 ---
@@ -136,4 +147,16 @@ You can use the same command to create sub-accounts of an existing named account
 
 :::tip
 Accounts have **no control** over their sub-accounts, they are different entities. This means that `near` cannot control `bob.near`, and `bob.near` cannot control `sub.bob.near`.
+:::
+
+---
+
+## Ethereum-like Address
+
+NEAR also supports Ethereum-like accounts which are identified by a hexadecimal address (e.g. `0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`). These accounts are automatically created when a user signs in on a NEAR application using an Ethereum wallet such as MetaMask.
+
+:::tip Learn More
+
+Learn about the technology behind Ethereum-like accounts in our [Blog post](/blog/hello-ethereum-wallets)
+
 :::

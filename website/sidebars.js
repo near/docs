@@ -28,7 +28,6 @@ const sidebar = {
         },
         {
           "Concepts": [
-            'protocol/architecture',
             {
               'Accounts / Contracts': ['protocol/account-model', 'protocol/account-id', 'protocol/access-keys'],
             },
@@ -61,6 +60,7 @@ const sidebar = {
                 'protocol/network/runtime',
               ],
             },
+            'protocol/architecture',
           ]
         },
         {
