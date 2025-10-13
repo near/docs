@@ -15,40 +15,7 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 
 import MintNFT from "@site/src/components/tools/NonFungibleToken/MintNFT";
 
-
-In contrast with fungible tokens, non-fungible tokens (NFT) are unitary and therefore unique. This makes NFTs ideal to represent ownership of assets such as a piece of digital content, or a ticket for an event.
-
-As with fungible tokens, NFTs are **not stored** in the user's wallet, instead, each NFT lives in a **NFT contract**. The NFT contract works as a bookkeeper, this is: it is in charge of handling the creation, storage and transfers of NFTs.
-
-In order for a contract to be considered a NFT-contract it has to follow the [**NEP-171**](https://github.com/near/NEPs/tree/master/neps/nep-0171.md) and [**NEP-177 standards**](https://github.com/near/NEPs/tree/master/neps/nep-0177.md). The **NEP-171** & **NEP-177** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
-
-:::info NFT & Marketplaces
-
-Be mindful of not confusing an NFT with an NFT-marketplace. NFT simply store information (metadata), while NFT-marketplaces are contracts where NFT can be listed and exchanged for a price.
-
-:::
-
----
-
-## About the NFT Standard
-
-[NEP-171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md) is the foundational standard for Non-Fungible Tokens (NFTs) on the NEAR blockchain. It defines a common set of rules that all NFT contracts must follow, ensuring interoperability, predictability, and a consistent experience for users, wallets, and marketplaces.
-
-The core philosophy of NEP-171 is simplicity and gas efficiency (the cost of viewing or querying data is free). It provides a minimal, event-driven skeleton, leaving more complex logic (like sale mechanics or detailed metadata) to other complementary standards.
-
-Due to its minimalist design, the NEP-171 standard only mandates three core functionalities:
-
-- `nft_transfer`: Transfer an NFT to a new owner.
-
-- `nft_token`: The primary view method to query all information about a specific token (its ID, owner, and approved accounts).
-
-- [Events](https://github.com/near/NEPs/blob/master/neps/nep-0171.md#events): The contract must emit standardized events for all transfers and approvals. This allows indexers and applications to reliably track NFT activity without scanning every transaction.
-
-Everything else—like minting, burning, enumeration (listing all tokens), and rich metadata—is defined in separate, complementary standards:
-
-- [Metadata Standard](https://github.com/near/NEPs/tree/master/neps/nep-0177.md): Defines how to attach metadata (name, description, image, etc.) to the contract and individual tokens.
-- [Approval Management Standard](https://github.com/near/NEPs/blob/master/neps/nep-0178.md): Standardizes the mechanism that allows a token owner to grant permission to another account (or a contract) to transfer a specific token on their behalf. This is essential for listing NFTs on a marketplace..
-- [Enumeration Standard](https://github.com/near/NEPs/tree/master/neps/nep-0181.md): Provides methods to list all tokens, tokens by owner, etc., without which the NFTs would be unlistable.
+Wanting to use Non-Fungible Tokens (NFT) in your dApp? Here you will find all the information you need to get started creating your own tokens, registering users, transferring tokens, and integrating them into your smart contracts.
 
 ---
 
@@ -73,7 +40,7 @@ If you want to deploy your own NFT contract, you can create one using our [refer
 
 ### Global Contract
 
-You can deploy a new Non-Fungible Token using our global NFT contract - a pre-deployed [standard NFT contract](https://github.com/near-examples/NFT) that you can reuse. [Global contracts](../smart-contracts/global-contracts.md) are deployed once and can be reused by any account without incurring high storage costs.
+You can deploy a new Non-Fungible Token using our global NFT contract - a pre-deployed [standard NFT contract](https://github.com/near-examples/NFT) that you can reuse. [Global contracts](../../smart-contracts/global-contracts.md) are deployed once and can be reused by any account without incurring high storage costs.
 
 <Tabs groupId="code-tabs">
   <TabItem value="account" label="By Account">
@@ -113,12 +80,18 @@ Deploying by **hash** creates an immutable contract that never changes. Deployin
 ---
 
 ## Minting a NFT
-To create a new NFT (a.k.a. minting it) you will call the `nft_mint` method passing as arguments the metadata that defines the NFT.
+To create a new NFT (a.k.a. minting it) you will call the `nft_mint` method passing as arguments the metadata that defines the NFT. Here is a simple form that you can use to mint your own NFT:
+
+<MintNFT />
+
+
+<details>
+
+<summary> Manual Interaction </summary>
+
+Here is how to directly interact with the factory contract through your application:
 
 <Tabs groupId="code-tabs">
-  <TabItem value="UI" label="🎨 UI">
-    <MintNFT />
-  </TabItem>
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
@@ -209,6 +182,9 @@ See the [metadata standard](https://github.com/near/NEPs/tree/master/neps/nep-01
 Values of gas and deposit might vary depending on which NFT contract you are calling.
 
 :::
+
+
+</details>
 
 <hr className="subsection" />
 

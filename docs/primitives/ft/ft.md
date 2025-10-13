@@ -1,8 +1,8 @@
 ---
 id: ft
-title: Fungible Tokens (FT)
+title: Using Fungible Tokens
 hide_table_of_contents: false
-description: "Learn about NEAR fungible tokens (FT) following NEP-141 and NEP-148 standards - create, transfer, and integrate FT contracts with comprehensive examples and tools."
+description: "Learn how to create, transfer, and integrate FT in your dApp"
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
@@ -15,52 +15,22 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 
 import CreateTokenForm from "@site/src/components/tools/FungibleToken/CreateTokenForm";
 
-
-Besides the native NEAR token, NEAR accounts have access to a [multitude of tokens](https://guide.rhea.finance/developers-1/cli-trading#query-whitelisted-tokens) to use throughout the ecosystem. Moreover, it is even possible for users to create their own fungible tokens.
-
-In contrast with the NEAR native token, fungible token (FT) are **not stored** in the user's account. In fact, each FT lives in **their own contract** which is in charge of doing **bookkeeping**. This is, the contract keeps track of how many tokens each user has, and handles transfers internally.
-
-![FT](/assets/docs/primitives/ft.png)
-
-In order for a contract to be considered a FT-contract it has to follow the [**NEP-141**](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) and [**NEP-148 standards**](https://github.com/near/NEPs/tree/master/neps/nep-0148.md). The **NEP-141** & **NEP-148** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
-
----
-
-## About the FT Standard
-
-[NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) is the blueprint for all community-created fungible tokens (like stablecoins, governance tokens, etc.) on NEAR. It defines a common set of rules and function calls that allow wallets, exchanges, and decentralized applications (dApps) to interact with any NEP-141 compliant token in a predictable way.
-
-A key concept in NEP-141 is the use of a **receiver pattern** for transfers. This pattern prevents tokens from being stuck in a contract that doesn't know how to handle them.
-
-Instead of a simple _`transfer(to, amount)`_ call that only involves two parties, the pattern introduces a three-step process for more secure and flexible interactions:
-
-- `ft_transfer(receiver_id, amount, memo)`: The standard function to send tokens to another account.
-
-- `ft_transfer_call(receiver_id, amount, memo, msg)`: This is the most important function. It not only transfers tokens but also calls a method on the `receiver_id`'s contract in a single, atomic transaction. This is essential for DeFi and dApps.
-
-- `ft_on_transfer(sender_id, amount, msg)`: A callback function that the receiver contract must implement if it wants to receive tokens via `ft_transfer_call`. This allows the receiving contract to execute logic upon receiving the tokens (e.g., automatically swapping them, depositing them into a liquidity pool, or minting an NFT).
-
-NEP-141's focus on cross-contract calls make it inherently more powerful for a decentralized application ecosystem than a simple _transfer-only_ standard, enabling the complex, interconnected DeFi and dApp experiences that you want to build on a blockchain.
+Wanting to use Fungible Tokens (FT) in your dApp? Here you will find all the information you need to get started creating your own tokens, registering users
+, querying balances, transferring tokens, and integrating them into your smart contracts.
 
 ---
 
 ## Creating a New Token
 
-The simplest way to create a new Fungible Token is by using a factory contract, to which you only need to provide the token metadata, and they will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
+The simplest way to create a new Fungible Token is by interacting with a factory contract, to which you only need to provide the token metadata, and they will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
 
-<details>
-
-<summary> 1. Using the Token Factory Tool </summary>
-
-We have created a simple UI to interact with the existing `tkn.primitives.testnet` factory contract
+Here you can make a call to the `token.primitives.testnet` by filling out the form below:
 
 <CreateTokenForm />
 
-</details>
-
 <details>
 
-<summary> 2. Interacting with a pre-deployed Token Factory smart contract </summary>
+<summary> Manual Interaction </summary>
 
 Here is how to directly interact with the factory contract through your application:
 
@@ -90,9 +60,9 @@ Here is how to directly interact with the factory contract through your applicat
     await wallet.callMethod({
       method: 'create_token',
       args,
-      contractId: 'tkn.primitives.near',
+      contractId: 'token.primitives.near',
       gas: 300000000000000,
-      deposit: '2234830000000000000000000',
+      deposit: '2234830000000000000000',
     });
     ```
 
@@ -102,7 +72,7 @@ Here is how to directly interact with the factory contract through your applicat
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
     ```bash
-    near call tkn.primitives.near create_token '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}' --gas 300000000000000 --depositYocto 2234830000000000000000000 --accountId bob.near
+    near call token.primitives.near create_token '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}' --gas 300000000000000 --depositYocto 2234830000000000000000000 --accountId bob.near
     ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -110,7 +80,7 @@ Here is how to directly interact with the factory contract through your applicat
   </TabItem>
 </Tabs>
 
-The FT you create will live in the account `<your_token_symbol>.tkn.primitives.near` (e.g. `test.tkn.primitives.near`).
+The FT you create will live in the account `<your_token_symbol>.token.primitives.near` (e.g. `test.token.primitives.near`).
 
 </details>
 
@@ -156,7 +126,7 @@ To initialize a FT contract you will need to deploy it and then call the `new` m
 
 ### Global Contracts
 
-You can deploy a new Fungible Token using our global FT contract - a pre-deployed [standard FT contract](https://github.com/near-examples/FT) that you can reuse. [Global contracts](../smart-contracts/global-contracts.md) are deployed once and can be reused by any account without incurring high storage costs.
+You can deploy a new Fungible Token using our global FT contract - a pre-deployed [standard FT contract](https://github.com/near-examples/FT) that you can reuse. [Global contracts](../../smart-contracts/global-contracts.md) are deployed once and can be reused by any account without incurring high storage costs.
 
 <Tabs groupId="code-tabs">
   <TabItem value="account" label="By Account">
@@ -535,7 +505,7 @@ How it works:
 
 ---
 
-## Handling Deposits (Contract Only)
+## Handling Deposits
 
 If you want your contract to handle deposit in FTs you have to implement the `ft_on_transfer` method. When executed, such method will know:
 
@@ -597,4 +567,4 @@ impl FungibleTokenReceiver for Contract {
 2. [NEP-148 standard](https://github.com/near/NEPs/tree/master/neps/nep-0148.md)
 3. [FT Event Standards](https://github.com/near/NEPs/blob/master/neps/nep-0300.md)
 4. [FT reference implementation](https://github.com/near-examples/FT)
-5. [Fungible Tokens 101](../tutorials/fts/0-intro.md) - a set of tutorials that cover how to create a FT contract using Rust.
+5. [Fungible Tokens 101](../../tutorials/fts/0-intro.md) - a set of tutorials that cover how to create a FT contract using Rust.
