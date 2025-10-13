@@ -466,6 +466,7 @@ const sidebar = {
         'primitives/dao',
         'primitives/dex',
         'primitives/did',
+        'primitives/lockup',
       ],
     },
     {
