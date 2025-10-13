@@ -33,13 +33,22 @@ If you prefer to explore the complete code example, you can check the [hello-nea
 
 ```bash
 npm install \
-  @near-wallet-selector/core \
   @near-wallet-selector/modal-ui \
-  @near-wallet-selector/react-hook \
-  @near-wallet-selector/bitte-wallet \
+  @near-wallet-selector/bitget-wallet \
+  @near-wallet-selector/coin98-wallet \
+  @near-wallet-selector/ethereum-wallets \
+  @near-wallet-selector/hot-wallet \
+  @near-wallet-selector/intear-wallet \
   @near-wallet-selector/ledger \
+  @near-wallet-selector/math-wallet \
   @near-wallet-selector/meteor-wallet \
-  @near-wallet-selector/nightly
+  @near-wallet-selector/meteor-wallet-app \
+  @near-wallet-selector/near-mobile-wallet \
+  @near-wallet-selector/okx-wallet \
+  @near-wallet-selector/ramper-wallet \
+  @near-wallet-selector/sender \
+  @near-wallet-selector/unity-wallet \
+  @near-wallet-selector/welldone-wallet
 ```
 
 Notice that the wallet selector implements multiple wallet packages to select from, [see the full list on the Repo](https://github.com/near/wallet-selector)
@@ -48,7 +57,9 @@ Notice that the wallet selector implements multiple wallet packages to select fr
 
 ## Initialize the Selector
 
-```jsx title="_app.js"
+To initialize the wallet selector, you will need to set it up in your main application file (e.g., `app.js` or `index.js`). You can choose which wallets to include in the selector by importing their respective setup functions and adding them to the `modules` array.
+
+```jsx title="app.js"
 import { setupBitteWallet } from "@near-wallet-selector/bitte-wallet";
 import { setupLedger } from "@near-wallet-selector/ledger";
 import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
@@ -92,61 +103,11 @@ const my_network = {
 };
 ```
 
-:::tip
-
-You can find the entire Wallet Selector [API reference here](https://github.com/near/wallet-selector/blob/main/packages/core/docs/api/selector.md).
-
-:::
-
 </details>
 
 <hr class="subsection" />
 
 ### `createAccessKeyFor`
-
-When initializing the wallet-selector, you can **optionally** choose to **create a [Function-Call Key](/protocol/access-keys#function-call-keys)** using the `createAccessKeyFor` parameter.
-
-By creating this key, your dApp will be able to **automatically sign non-payable transactions** on behalf of the user for specified contract.
-
----
-
-## Calling View Methods
-
-Once the wallet-selector is up, we can start calling view methods, i.e., the methods that perform read-only operations.
-
-Because of their read-only nature, view methods are **free** to call, and do **not require** the user to be **logged in**.
-
-  <Language value="js" language="jsx">
-    <Github fname="index.js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js" start="8" end="11" />
-  </Language>
-
-
-The snippet above shows how we call view methods in our examples. Under the hood: we are actually making a **direct call to the RPC** using `near-api-js`.
-
-:::tip
-
-View methods have by default 200 TGAS for execution
-
-:::
-
----
-
-## User Sign-In / Sign-Out
-
-In order to interact with methods that modify data or make cross-contract calls it is necessary for the user to first sign in using a NEAR wallet.
-
-We can request the user sign in if `signedAccountId` is not present, the same simplicity applies to signing out.
-
-<Github fname="navigation.js" language="js"
-        url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.js"
-        start="10" end="22" />
-
-By assigning the `signIn` action to a button, when the user clicks it, the wallet selector modal will open.
-
-<hr className="subsection" />
-
-### Function Call Key
 
 If you instantiated the `wallet-selector` passing an account id for the `createAccessKeyFor` parameter, then the wallet will create a [Function-Call Key](/protocol/access-keys#function-call-keys) and store it in the web's local storage.
 
@@ -155,7 +116,8 @@ const walletSelectorConfig = {
   network: "testnet", // "mainnet"
   createAccessKeyFor: "hello.near-examples.testnet",
   modules: [
-  ...
+    setupMeteorWallet()
+    // ...
   ],
 }
 ```
@@ -172,12 +134,52 @@ Please notice that this only applies to **non-payable** methods, if you attach d
 
 ---
 
+## Calling View Methods
+
+Once the wallet-selector is up, we can start calling view methods, i.e., the methods that perform read-only operations.
+
+Because of their read-only nature, view methods are **free** to call, and do **not require** the user to be **logged in**.
+
+<Language value="js" language="tsx">
+  <Github fname="index.tsx"
+    url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" start="11" end="11"  />
+</Language>
+
+<Language value="js" language="tsx">
+  <Github fname="index.tsx"
+    url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" start="18" end="20"  />
+</Language>
+
+The snippets above shows how we call view methods in our examples. Under the hood: we are actually making a **direct call to the RPC** using `near-api-js`.
+
+:::tip
+
+View methods have by default 200 TGAS for execution
+
+:::
+
+---
+
+## User Sign-In / Sign-Out
+
+In order to interact with methods that modify data or make cross-contract calls it is necessary for the user to first sign in using a NEAR wallet.
+
+We can request the user sign in if `signedAccountId` is not present, the same simplicity applies to signing out.
+
+<Github fname="navigation.js" language="js"
+        url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx"
+        start="12" end="22" />
+
+By assigning the `signIn` action to a button, when the user clicks it, the wallet selector modal will open.
+
+---
+
 ## Calling Change Methods
 
 Once the user logs in they can start calling `change methods`. Programmatically, calling `change methods` is similar to calling `view methods`, only that now you can attach deposit to the call, and specify how much GAS you want to use.
 
 <Github fname="index.js" language="js"
-  url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.js"
+  url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx"
   start="26" end="39" />
 
 Under the hood, we are asking the **signedAccountId** to **sign a Function-Call transaction** for us.
@@ -218,20 +220,6 @@ const txs = await signAndSendTransactions({
 Transactions can either be sent as multiple separate transactions simultaneously or as a batch transaction made up of actions where if one of the actions fails, they are all reverted. 
 
 An example of both can be seen [here](../../../tutorials/examples/frontend-multiple-contracts#dispatching-multiple-transactions).
-
----
-
-## Signing Messages
-
-The wallet selector hook also exposes a method that can be used to sign messages:
-
-```js
-...
-const { signMessage } = useWalletSelector();
-
-const sign = await signMessage({ message, recipient, nonce });
-
-```
 
 ---
 

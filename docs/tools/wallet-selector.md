@@ -74,6 +74,7 @@ Next, you'll need to install the wallets you want to support:
 
 ```bash
 npm install \
+  @near-wallet-selector/modal-ui \
   @near-wallet-selector/bitget-wallet \
   @near-wallet-selector/coin98-wallet \
   @near-wallet-selector/ethereum-wallets \
@@ -93,96 +94,90 @@ npm install \
 
 ---
 
-## Setup Wallet Selector
+## Setup
 
-Optionally, you can install our [`modal-ui`](https://www.npmjs.com/package/@near-wallet-selector/modal-ui) or [`modal-ui-js`](https://www.npmjs.com/package/@near-wallet-selector/modal-ui-js) package for a pre-built interface that wraps the `core` API and presents the supported wallets:
+The wallet selector can be set up in two ways: by using its `core` API, or by importing its `React context/hooks` into your app:
 
-```bash
-npm install @near-wallet-selector/modal-ui
-```
-
-Then use it in your dApp:
-
-```ts
-import { setupWalletSelector } from "@near-wallet-selector/core";
-import { setupModal } from "@near-wallet-selector/modal-ui";
-import { setupNearWallet } from "@near-wallet-selector/near-wallet";
-
-const selector = await setupWalletSelector({
-  network: "testnet",
-  modules: [setupNearWallet()],
-});
-
-const modal = setupModal(selector, {
-  contractId: "test.testnet",
-});
-
-modal.show();
-```
-
-:::info Required CSS
-
-To integrate the Wallet Selector, you also need to include the required CSS:
-
-```js
-import "@near-wallet-selector/modal-ui/styles.css";
-```
-
-:::
-
----
-
-## Setup React Hook
-
-This package provides a React context and hook to easily integrate Wallet Selector into your React application.
-
-Install the React hook package:
-
-```bash
-npm install @near-wallet-selector/react-hook \
-@near-wallet-selector/modal-ui
-```
-
-Wrap your app with the provider:
-
-```jsx
-import "@near-wallet-selector/modal-ui/styles.css";
-
-import { setupNearWallet } from "@near-wallet-selector/near-wallet";
-
-import { WalletSelectorProvider } from "@near-wallet-selector/react-hook";
-
-const config = {
-  network: "testnet",
-  modules: [setupNearWallet()],
-};
-
-function App() {
-  return (
-    <WalletSelectorProvider config={config}>
-      {/* Your app components */}
-    </WalletSelectorProvider>
-  );
-}
-```
-
----
-
-## Reference
-
-The API reference of the selector can be found [`here`](https://github.com/near/wallet-selector/blob/main/packages/core/docs/api/selector.md)
-
-### Sign in
 
 <Tabs groupId="wallet-selector-api">
 <TabItem value="core-api" label="Wallet Selector">
 
+  ```ts
+  import "@near-wallet-selector/modal-ui/styles.css";
+  import { setupWalletSelector } from "@near-wallet-selector/core";
+  import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
+  // import other wallets you want to support
+
+  const selector = await setupWalletSelector({
+    network: "testnet",
+    modules: [
+      setupMeteorWallet(),
+      /// add other setup functions
+    ],
+  });
+
+  // Subscribe to changes in the selected account
+  walletSelector.then(async (selector) => {
+    selector.subscribeOnAccountChange(async (signedAccount) => { ... });
+  });
+  ```
+
+</TabItem>
+
+<TabItem value="react-hook" label="React Hook">
+
+  Install the React hook package:
+
+  ```bash
+  npm install @near-wallet-selector/react-hook 
+  ```
+
+Wrap your app with the provider:
+
+  ```jsx
+  import "@near-wallet-selector/modal-ui/styles.css";
+  import { WalletSelectorProvider } from "@near-wallet-selector/react-hook";
+  import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
+  // import other wallets you want to support
+
+  const config = {
+    network: "testnet",
+    modules: [
+      setupMeteorWallet()
+      // add other setup functions
+      ],
+    createAccessKeyFor: "hello.near-examples.testnet",
+  };
+
+  function App() {
+    return (
+      <WalletSelectorProvider config={config}>
+        {/* Your app components */}
+      </WalletSelectorProvider>
+    );
+  }
+  ```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Sign in
+
+<Tabs groupId="wallet-selector-api">
+<TabItem value="core-api" label="Wallet Selector">
+
+To sign in, you will need to create a modal instance and call the `show()` method:
+
 ```ts
-// NEAR Wallet.
-(async () => {
-  const wallet = await selector.wallet("my-near-wallet");
-  const accounts = await wallet.signIn({ contractId: "test.testnet" });
-})();
+  import { setupModal } from "@near-wallet-selector/modal-ui";
+
+  const modal = setupModal(selector, {
+    contractId: "hello.near-examples.testnet",
+  });
+
+  modal.show();
 ```
 
 </TabItem>
@@ -206,16 +201,16 @@ const MyComponent = () => {
 </TabItem>
 </Tabs>
 
-### Sign out
+---
+
+## Sign out
 
 <Tabs groupId="wallet-selector-api">
 <TabItem value="core-api" label="Wallet Selector">
 
 ```ts
-(async () => {
-  const wallet = await selector.wallet("my-near-wallet");
+  const wallet = await selector.wallet();
   await wallet.signOut();
-})();
 ```
 
 </TabItem>
@@ -229,12 +224,7 @@ const MyComponent = () => {
   const { signOut } = useWalletSelector();
 
   const handleSignOut = async () => {
-    try {
-      await signOut();
-      console.log("Successfully signed out");
-    } catch (error) {
-      console.error("Sign out failed:", error);
-    }
+    await signOut();
   };
 
   return <button onClick={handleSignOut}>Sign Out</button>;
@@ -244,17 +234,19 @@ const MyComponent = () => {
 </TabItem>
 </Tabs>
 
-### Get accounts
+---
+
+## Get accounts
+
+You can easily query the signed-in accounts (either one or `none`):
 
 <Tabs groupId="wallet-selector-api">
 <TabItem value="core-api" label="Wallet Selector">
 
 ```ts
-(async () => {
-  const wallet = await selector.wallet("my-near-wallet");
-  const accounts = await wallet.getAccounts();
-  console.log(accounts); // [{ accountId: "test.testnet" }]
-})();
+const wallet = await selector.wallet();
+const accounts = await wallet.getAccounts();
+console.log(accounts); // [{ accountId: "test.testnet" }]
 ```
 
 </TabItem>
@@ -265,35 +257,58 @@ const MyComponent = () => {
 import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
 const MyComponent = () => {
-  const { getAccount, signedAccountId } = useWalletSelector();
-  const fetchAccountInfo = async (accountId) => {
-    const account = await getAccount(signedAccountId);
-    console.log(account);
-  };
-  useEffect(() => {
-    fetchAccountInfo();
-  }, []);
+  const { signedAccountId } = useWalletSelector();
 
-  return <div>Check console for account info</div>;
+  if (signedAccountId) {
+    return <div>Signed in as {signedAccountId}</div>;
+  } else {
+    return <div>Not signed in</div>;
+  }
 };
 ```
 
 </TabItem>
 </Tabs>
 
-### Verify Owner
+---
+
+## Get Balance
+
+The React hook exposes a method that can be used to get the balance of the currently signed-in account:
+
+<Tabs groupId="wallet-selector-api">
+<TabItem value="react-hook" label="React Hook">
+
+```jsx
+const { getBalance } = useWalletSelector();
+
+const balance = await getBalance();
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## Verify Message
+
+In NEAR, users can sign messages with their private keys to prove ownership of their accounts. This is useful for various purposes, such as authentication, authorization, and data integrity.
+
+The wallet selector provides a `signNep413Message` method that allows users to sign messages in a standardized way, following the [NEP-413](https://github.com/near/NEPs/blob/master/neps/nep-0413.md) specification.
+
 
 <Tabs groupId="wallet-selector-api">
 <TabItem value="core-api" label="Wallet Selector">
 
 ```ts
 // MyNearWallet
-(async () => {
-  const wallet = await selector.wallet("my-near-wallet");
-  await wallet.verifyOwner({
-    message: "Test message",
-  });
-})();
+const wallet = await selector.wallet();
+const signedMessage = await wallet.signNep413Message({
+  message: "Test message",
+  accountId: "example.testnet",
+  recipient: "app.near",
+  nonce: Buffer.from(Date.now().toString()),
+});
 ```
 
 </TabItem>
@@ -304,43 +319,53 @@ const MyComponent = () => {
 import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
 const MyComponent = () => {
-  const { signMessage } = useWalletSelector();
+  const { signNep413Message } = useWalletSelector();
 
-  const handleVerifyOwner = async () => {
-    try {
-      const signedMessage = await signMessage({
-        message: "Test message",
-        recipient: "app.near",
-        nonce: Buffer.from(Date.now().toString()),
-      });
-      console.log("Message signed:", signedMessage);
-    } catch (error) {
-      console.error("Verification failed:", error);
-    }
-  };
+  const signedMessage = await signNep413Message({
+    message: "Test message",
+    accountId: "example.testnet",
+    recipient: "app.near",
+    nonce: Buffer.from(Date.now().toString()),
+  });
 
-  return <button onClick={handleVerifyOwner}>Verify Owner</button>;
+  console.log("Message signed:", signedMessage);
 };
 ```
 
 </TabItem>
 </Tabs>
 
-### View method
+---
+
+## Call a Read-Only Method
+
+Smart contracts often expose read-only methods that allow users to query data without modifying the contract's state. These methods are typically used to fetch information such as balances, configurations, or other relevant data.
 
 <Tabs groupId="wallet-selector-api">
 <TabItem value="core-api" label="Wallet Selector">
 
+In order to call a read-only method you will need to use `near-api-js`, as the core wallet selector does not provide this functionality out of the box.
+
 ```ts
-(async () => {
-  const wallet = await selector.wallet("my-near-wallet");
-  const result = await wallet.viewMethod({
-    contractId: "guestbook.near-examples.testnet",
-    method: "get_messages",
-    args: {},
-  });
-  console.log("View result:", result);
-})();
+import { JsonRpcProvider } from "@near-js/providers";
+
+const provider = new JsonRpcProvider({
+  url: "https://free.rpc.fastnear.com",
+});
+
+const viewFunction = async ({
+  contractId,
+  method,
+  args = {},
+}: ViewMethodParams) => {
+  const res = await provider.callFunction(
+    "hello.near-examples.testnet",
+    "get_greeting",
+    {}
+  );
+
+  return JSON.parse(Buffer.from(res.result).toString());
+};
 ```
 
 </TabItem>
@@ -373,28 +398,30 @@ const MyComponent = () => {
 </TabItem>
 </Tabs>
 
-### Sign and send transaction
+---
+
+## Sign and Send a Transaction
+
+You can use the wallet selector to sign and send transactions to the NEAR blockchain. This is useful for performing actions that modify the state of a smart contract, such as transferring tokens, updating data, or executing specific functions.
 
 <Tabs groupId="wallet-selector-api">
 <TabItem value="core-api" label="Wallet Selector">
 
 ```ts
-(async () => {
-  const wallet = await selector.wallet("my-near-wallet");
-  await wallet.signAndSendTransaction({
-    actions: [
-      {
-        type: "FunctionCall",
-        params: {
-          methodName: "add_message",
-          args: { text: "Hello World!" },
-          gas: "30000000000000",
-          deposit: "10000000000000000000000",
-        },
-      },
-    ],
-  });
-})();
+import { actionCreators } from "@near-js/transactions";
+
+const wallet = await selector.wallet();
+await wallet.signAndSendTransaction({
+  receiverId: 'guestbook.near-examples.testnet',
+  actions: [
+    actionCreators.functionCall(
+      "add_message",
+      { text: "Hello World!" },
+      "30000000000000",
+      "10000000000000000000000",
+    )
+  ],
+});
 ```
 
 </TabItem>
@@ -405,7 +432,7 @@ const MyComponent = () => {
 import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
 const MyComponent = () => {
-  const { callFunction } = useWalletSelector();
+  const { signAndSendTransaction, callFunction } = useWalletSelector();
 
   const handleTransaction = async () => {
     try {
@@ -429,33 +456,33 @@ const MyComponent = () => {
 </TabItem>
 </Tabs>
 
-### Sign and send transactions
+## Sign and send transactions
+
+You can use the wallet selector to sign and send multiple transactions in parallel with a single request. 
 
 <Tabs groupId="wallet-selector-api">
 <TabItem value="core-api" label="Wallet Selector">
 
 ```ts
-(async () => {
-  const wallet = await selector.wallet("my-near-wallet");
-  await wallet.signAndSendTransactions({
-    transactions: [
-      {
-        receiverId: "guestbook.near-examples.testnet",
-        actions: [
-          {
-            type: "FunctionCall",
-            params: {
-              methodName: "add_message",
-              args: { text: "Hello World!" },
-              gas: "30000000000000",
-              deposit: "10000000000000000000000",
-            },
+const wallet = await selector.wallet();
+await wallet.signAndSendTransactions({
+  transactions: [
+    {
+      receiverId: "guestbook.near-examples.testnet",
+      actions: [
+        {
+          type: "FunctionCall",
+          params: {
+            methodName: "add_message",
+            args: { text: "Hello World!" },
+            gas: "30000000000000",
+            deposit: "10000000000000000000000",
           },
-        ],
-      },
-    ],
-  });
-})();
+        },
+      ],
+    },
+  ],
+});
 ```
 
 </TabItem>
