@@ -56,4 +56,4 @@ If you're familiar with development on Ethereum, it's worth making a quick note 
 | Secret Key      | Private Key (`0x456...`) | Multiple key-pairs with permissions:<br />- `FullAccess` key<br />- `FunctionCall` key |
 | Smart Contracts | Synchronous execution    | Asynchronous execution                                                                 |
 | Gas Fees        | In the order of dollars  | In the order of tenths of a cent                                                       |
-| Block Time      | ~12 seconds              | ~1.3 second                                                                            |
+| Block Time      | ~12 seconds              | ~600 milliseconds                                                                      |
