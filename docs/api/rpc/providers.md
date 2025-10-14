@@ -23,20 +23,24 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  |                    |                    |
 | [BlockPI Network](https://blockpi.io)                                      | `https://near.blockpi.network/v1/rpc/public`                 | :heavy_check_mark: |                    |
 | [dRPC](https://drpc.org/)                                                  | `https://near.drpc.org`                                      | :heavy_check_mark: |                    |
-| [ZAN](https://zan.top/service/apikeys)                                     | `https://api.zan.top/node/v1/near/mainnet/`                  |                    |                    |
 | [fast-near web4](https://github.com/vgrichina/fast-near)                   | `https://rpc.web4.near.page`                                 | :heavy_check_mark: |                    |
 | [FASTNEAR](https://fastnear.com)                                           | `https://free.rpc.fastnear.com`                              | :heavy_check_mark: | :heavy_check_mark: |
 | [GetBlock](https://getblock.io/nodes/near/)                                | `https://getblock.io/nodes/near/`                            |                    |                    |
-| [Grove](https://grove.city)                                                | `https://near.rpc.grove.city/v1/01fdb492`                     | :heavy_check_mark: | :heavy_check_mark: |
+| [Grove](https://grove.city)                                                | `https://near.rpc.grove.city/v1/01fdb492`                    | :heavy_check_mark: | :heavy_check_mark: |
 | [Lava Network](https://www.lavanet.xyz/get-started/near)                   | `https://near.lava.build:443`                                | :heavy_check_mark: | :heavy_check_mark: |
+| [Intear RPC](https://github.com/INTEARnear)                                | `https://rpc.intea.rs`                                       | :heavy_check_mark: |                    |
 | [Lavender.Five Nodes](https://lavenderfive.com/)                           | `https://near.lavenderfive.com/`                             |                    |                    |
 | [NodeReal](https://nodereal.io)                                            | `https://nodereal.io/api-marketplace/near-rpc`               |                    |                    |
 | [NOWNodes](https://nownodes.io/)                                           | `https://near.nownodes.io/`                                  |                    |                    |
 | [OMNIA](https://omniatech.io)                                              | `https://endpoints.omniatech.io/v1/near/mainnet/public`      | :heavy_check_mark: |                    |
 | [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            |                    |                    |
 | [Seracle](https://docs.seracle.com/)                                       | `https://api.seracle.com/saas/baas/rpc/near/mainnet/public/` |                    |                    |
+| [Shitzu](https://shitzuapes.xyz/)                                          | `https://rpc.shitzuapes.xyz`                                 | :heavy_check_mark: |                    |
 | [Tatum](https://tatum.io/chain/near/)                                      | `https://near-mainnet.gateway.tatum.io/`                     |                    |                    |
+| [ZAN](https://zan.top/service/apikeys)                                     | `https://api.zan.top/node/v1/near/mainnet/`                  |                    |                    |
 | [Zeeve](https://www.zeeve.io/)                                             | -                                                            | :heavy_check_mark: | :heavy_check_mark: |
+
+FastNear maintains [a comprehensive Grafana dashboard](https://grafana.fastnear.com/public-dashboards/577b37c6cfe84b2bae23af471d27cade) with response times for most of the publicly and freemium available endpoints.
 
 ## Testnet
 
@@ -48,6 +52,7 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 | [dRPC](https://drpc.org/)                                                  | `https://near-testnet.drpc.org`                              | :heavy_check_mark: |
 | [fast-near web4](https://github.com/vgrichina/fast-near)                   | `https://rpc.web4.testnet.page/account/testnet`              | :heavy_check_mark: |
 | [FASTNEAR](https://fastnear.com)                                           | `https://rpc.testnet.fastnear.com`                           | :heavy_check_mark: |
+| [Intear RPC](https://github.com/INTEARnear)                                | `https://rpc.shitzuapes.xyz`                                 | :heavy_check_mark: |
 | [Lava Network](https://www.lavanet.xyz/get-started/near)                   | `https://neart.lava.build:443`                               | :heavy_check_mark: |
 | [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            |                    |
 | [Tatum](https://tatum.io/chain/near/)                                      | `https://near-testnet.gateway.tatum.io/`                     |                    |
