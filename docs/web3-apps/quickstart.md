@@ -90,7 +90,7 @@ Our app's template is defined at `./src/pages/_app.js`. It does two things:
 1. Initializes a [wallet selector](../tools/wallet-selector.md), and stores it in context so other components can access it later.
 2. Renders the navigation menu and the page's content.
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js" language="jsx" start="22" end="48" />
+<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" language="jsx" start="22" end="48" />
 
 When initializing the wallet-selector you can choose to **create a [Function-Call Key](../protocol/access-keys.md)** using the `createAccessKeyFor` parameter. This allows the application to sign `non-payable` methods on behalf of the user so they are not required to manually sign each transaction.
 
@@ -120,7 +120,7 @@ The navigation bar implements buttons to `login` and `logout` users with their N
 
 The code for the navigation bar can be found at `./src/components/navigation.js`. The login and logout buttons are implemented by using the `signIn` and `signOut` methods from the wallet selector previously initialized:
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/components/navigation.js" language="jsx" start="10" end="23" />
+<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/components/navigation.tsx" language="jsx" start="10" end="23" />
 
 ---
 
@@ -141,7 +141,7 @@ We retrieve the `wallet` we initialized earlier via the `useContext` hook. The w
 - `viewMethod` is used to call functions that are read-only
 - `callMethod` is used to call functions that modify the state of the contract
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.js" language="jsx" start="13" end="36" />
+<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.tsx" language="jsx" start="13" end="36" />
 
 On load, the first `useEffect` hook will call the contract's `get_greeting` method and set the `greeting` state to the result.
 

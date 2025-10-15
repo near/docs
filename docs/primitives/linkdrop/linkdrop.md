@@ -1,7 +1,6 @@
 ---
 id: linkdrop
-title: Linkdrops
-hide_table_of_contents: false
+title: Using Linkdrops
 description: "Learn about linkdrops following NEP-452 standard - distribute assets and onboard users to Web3 apps through simple web links using access keys and the Keypom platform."
 ---
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
@@ -11,13 +10,7 @@ import { Github } from "@site/src/components/UI/Codetabs"
 import { LantstoolLabel } from "@site/src/components/lantstool/LantstoolLabel/LantstoolLabel";
 import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantstool";
 
-Linkdrops allow users to distribute assets and onboard people to Web3 apps through a simple web link.
-
-![Linkdrop](/assets/docs/primitives/linkdrop.png)
-
-They work by storing assets and linking [AccessKeys](../protocol/access-keys.md) to them. The `AccessKeys` are then distributed to users in the form of web links. These links take users to a website that automatically uses the keys to call the `claim` method in the `linkdrop` contract.
-
-In order for a contract to be considered a Linkdrop-contract it has to follow the [**NEP-452 standard**](https://github.com/near/NEPs/blob/master/neps/nep-0452.md). The **NEP-452** explains the **minimum interface** required to be implemented, as well as the expected functionality.
+Wanting to use Linkdrops in your dApp? Here you will find all the information you need to get started.
 
 :::tip
 
@@ -75,26 +68,26 @@ The contract will create a drop and **return the numerical ID** that identifies 
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { Wallet } from './near-wallet';
+import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const DROP_AMOUNT = "10000000000000000000000"; // 0.1 NEAR
 
-const wallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS });
+const { callMethod } = useWalletSelector();
 
-await wallet.callMethod({
-  method: "create_drop",
+await callMethod({
   contractId: KEYPOM_CONTRACT_ADDRESS,
+  method: "create_drop",
   args: {
     public_keys: state.publicKeys,
     deposit_per_use: DROP_AMOUNT,
   },
-  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000
   gas: "100000000000000",
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js)_
+Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -136,34 +129,33 @@ The contract will then create a drop and **return the numerical ID** that identi
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { Wallet } from './near-wallet';
+import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const keypomConnectedWallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS });
-const nftConnectedWallet = new Wallet({ createAccessKeyFor: NFT_CONTRACT_ADDRESS });
+const { callMethod, accountId } = useWalletSelector();
 
-await wallet.callMethod({
-  method: "create_drop",
+await callMethod({
   contractId: KEYPOM_CONTRACT_ADDRESS,
+  method: "create_drop",
   args: {
     public_keys: state.publicKeys,
     deposit_per_use: DROP_AMOUNT,
     nft: {
       // Who will be sending the NFTs to the Keypom contract
-      sender_id: accountId, // TODO How to get it
+      sender_id: accountId,
       // NFT Contract Id that the tokens will come from
       contract_id: NFT_CONTRACT_ADDRESS,
     },
   },
-  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000
   gas: "100000000000000",
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js)_
+Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -187,21 +179,20 @@ Having the Drop ID, you now need to transfer the NFT to the linkdrop contract, s
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { Wallet } from './near-wallet';
+import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const NFT_TOKEN_ID = "1";
-const DROP_AMOUNT = "10000000000000000000000";
 
-const nftConnectedWallet = new Wallet({ createAccessKeyFor: NFT_CONTRACT_ADDRESS });
+const { callMethod } = useWalletSelector();
 
-await wallet.callMethod({
-  method: "nft_transfer_call",
+await callMethod({
   contractId: NFT_CONTRACT_ADDRESS,
+  method: "nft_transfer_call",
   args: {
-    receiver_id: keypomContract,
-    token_id: nftTokenId,
+    receiver_id: KEYPOM_CONTRACT_ADDRESS,
+    token_id: NFT_TOKEN_ID,
     msg: dropId.toString()
   },
   deposit: 1,
@@ -209,7 +200,7 @@ await wallet.callMethod({
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js)_
+Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -251,35 +242,35 @@ The contract will then create a drop and **return the numerical ID** that identi
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { Wallet } from './near-wallet';
+import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const FT_CONTRACT_ADDRESS = "ft.primitives.near";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const wallet = new Wallet({ createAccessKeyFor: KEYPOM_CONTRACT_ADDRESS });
+const { callMethod, accountId } = useWalletSelector();
 
-await wallet.callMethod({
-  method: "create_drop",
+await callMethod({
   contractId: KEYPOM_CONTRACT_ADDRESS,
+  method: "create_drop",
   args: {
     public_keys: state.publicKeys,
     deposit_per_use: DROP_AMOUNT,
     ftData: {
       contractId: FT_CONTRACT_ADDRESS,
-      senderId: accountId, // TODO How to get account id
+      senderId: accountId,
       // This balance per use is balance of human readable FTs per use.
       amount: "1"
       // Alternatively, you could use absoluteAmount, which is dependant on the decimals value of the FT
       // ex. if decimals of an ft = 8, then 1 FT token would be absoluteAmount = 100000000
     },
   },
-  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000
   gas: "100000000000000",
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js)_
+Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -307,16 +298,16 @@ To transfer FTs to an account, you need to first [register](./ft#registering-a-u
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { Wallet } from './near-wallet';
+import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const FT_CONTRACT_ADDRESS = "ft.primitives.near";
 
-const wallet = new Wallet({ createAccessKeyFor: FT_CONTRACT_ADDRESS });
+const { callMethod } = useWalletSelector();
 
-await wallet.callMethod({
-  method: "ft_transfer",
+await callMethod({
   contractId: FT_CONTRACT_ADDRESS,
+  method: "ft_transfer",
   args: {
     receiver_id: KEYPOM_CONTRACT_ADDRESS,
     amount: "1"
@@ -326,7 +317,7 @@ await wallet.callMethod({
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js)_
+Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -361,18 +352,18 @@ Function call drops can be thought as the abstract version of other drops: you c
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { Wallet } from './near-wallet';
+import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const NFT_TOKEN_ID = "1";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const wallet = new Wallet({ createAccessKeyFor: DAO_CONTRACT_ADDRESS });
+const { callMethod } = useWalletSelector();
 
-await wallet.callMethod({
-  method: "create_drop",
+await callMethod({
   contractId: KEYPOM_CONTRACT_ADDRESS,
+  method: "create_drop",
   args: {
     public_keys: state.publicKeys,
     deposit_per_use: DROP_AMOUNT,
@@ -400,12 +391,12 @@ await wallet.callMethod({
       ]
     }
   },
-  deposit: "23000000000000000000000" // state.publicKeys.length * dropAmount + 3000000000000000000000,
+  deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000
   gas: "100000000000000",
 });
 ```
 
-_The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/near.js)_
+Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">

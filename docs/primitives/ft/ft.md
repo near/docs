@@ -1,8 +1,7 @@
 ---
 id: ft
-title: Fungible Tokens (FT)
-hide_table_of_contents: false
-description: "Learn about NEAR fungible tokens (FT) following NEP-141 and NEP-148 standards - create, transfer, and integrate FT contracts with comprehensive examples and tools."
+title: Using FTs
+description: "Learn how to create, transfer, and integrate FT in your dApp"
 ---
 
 import {FeatureList, Column, Feature} from "@site/src/components/featurelist"
@@ -15,44 +14,34 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 
 import CreateTokenForm from "@site/src/components/tools/FungibleToken/CreateTokenForm";
 
-
-Besides the native NEAR token, NEAR accounts have access to a [multitude of tokens](https://guide.rhea.finance/developers-1/cli-trading#query-whitelisted-tokens) to use throughout the ecosystem. Moreover, it is even possible for users to create their own fungible tokens.
-
-In contrast with the NEAR native token, fungible token (FT) are **not stored** in the user's account. In fact, each FT lives in **their own contract** which is in charge of doing **bookkeeping**. This is, the contract keeps track of how many tokens each user has, and handles transfers internally.
-
-![FT](/assets/docs/primitives/ft.png)
-
-In order for a contract to be considered a FT-contract it has to follow the [**NEP-141 and NEP-148 standards**](https://github.com/near/NEPs/tree/master/neps/nep-0141.md). The **NEP-141** & **NEP-148** standards explain the **minimum interface** required to be implemented, as well as the expected functionality.
+Wanting to use Fungible Tokens (FT) in your dApp? Here you will find all the information you need to get started creating your own tokens, registering users
+, querying balances, transferring tokens, and integrating them into your smart contracts.
 
 ---
 
 ## Creating a New Token
 
-The simplest way to create a new Fungible Token is by using a factory contract, to which you only need to provide the token metadata, and they will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
+The simplest way to create a new Fungible Token is by interacting with a factory contract, to which you only need to provide the token metadata, and they will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
 
-<details>
-
-<summary> 1. Using the Token Factory Tool </summary>
-
-We have created a simple UI to interact with the existing `tkn.primitives.testnet` factory contract
+Here you can make a call to the `token.primitives.testnet` by filling out the form below:
 
 <CreateTokenForm />
 
-</details>
-
 <details>
 
-<summary> 2. Interacting with a pre-deployed Token Factory smart contract </summary>
+<summary> Manual Interaction </summary>
 
-Here is how to directly interact with the factory contract through your application: 
+Here is how to directly interact with the factory contract through your application:
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
     ```js
-    import { Wallet } from './near-wallet';
+    import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
-    const wallet = new Wallet({});
+    const TOKEN_FACTORY_ADDRESS = 'token.primitives.near';
+
+    const { callMethod } = useWalletSelector();
 
     const args = {
       args: {
@@ -69,22 +58,22 @@ Here is how to directly interact with the factory contract through your applicat
       account_id: 'bob.near',
     };
 
-    await wallet.callMethod({
+    await callMethod({
+      contractId: TOKEN_FACTORY_ADDRESS,
       method: 'create_token',
       args,
-      contractId: 'tkn.primitives.near',
       gas: 300000000000000,
-      deposit: '2234830000000000000000000',
+      deposit: '2234830000000000000000',
     });
     ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+   Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
     ```bash
-    near call tkn.primitives.near create_token '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}' --gas 300000000000000 --depositYocto 2234830000000000000000000 --accountId bob.near
+    near call token.primitives.near create_token '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}' --gas 300000000000000 --depositYocto 2234830000000000000000000 --accountId bob.near
     ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -92,7 +81,7 @@ Here is how to directly interact with the factory contract through your applicat
   </TabItem>
 </Tabs>
 
-The FT you create will live in the account `<your_token_symbol>.tkn.primitives.near` (e.g. `test.tkn.primitives.near`).
+The FT you create will live in the account `<your_token_symbol>.token.primitives.near` (e.g. `test.token.primitives.near`).
 
 </details>
 
@@ -138,7 +127,7 @@ To initialize a FT contract you will need to deploy it and then call the `new` m
 
 ### Global Contracts
 
-You can deploy a new Fungible Token using our global FT contract - a pre-deployed [standard FT contract](https://github.com/near-examples/FT) that you can reuse. [Global contracts](../smart-contracts/global-contracts.md) are deployed once and can be reused by any account without incurring high storage costs.
+You can deploy a new Fungible Token using our global FT contract - a pre-deployed [standard FT contract](https://github.com/near-examples/FT) that you can reuse. [Global contracts](../../smart-contracts/global-contracts.md) are deployed once and can be reused by any account without incurring high storage costs.
 
 <Tabs groupId="code-tabs">
   <TabItem value="account" label="By Account">
@@ -182,12 +171,13 @@ You can query the FT's metadata by calling the `ft_metadata`.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { Wallet } from './near-wallet';
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
-  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
 
-  await wallet.viewMethod({
+  const { viewMethod } = useWalletSelector();
+
+  await viewMethod({
     method: 'ft_metadata',
     args: {},
     contractId: TOKEN_CONTRACT_ADDRESS,
@@ -213,7 +203,7 @@ You can query the FT's metadata by calling the `ft_metadata`.
   </p>
   </details>
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
   
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -258,12 +248,13 @@ To know how many coins a user has you will need to query the method `ft_balance_
   :::
 
   ```js
-  import { Wallet } from './near-wallet';
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
-  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
 
-  await wallet.viewMethod({
+  const { viewMethod } = useWalletSelector();
+
+  await viewMethod({
     method: 'ft_balance_of',
     args: {
       account_id: 'bob.near',
@@ -283,7 +274,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
   </p>
   </details>
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -318,17 +309,23 @@ By calling this `storage_deposit` the user can register themselves or **register
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  await wallet.callMethod({
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+
+  const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
+
+  const { callMethod } = useWalletSelector();
+
+  await callMethod({
+    contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'storage_deposit',
     args: {
       account_id: 'alice.near',
     },
-    contractId: TOKEN_CONTRACT_ADDRESS,
     deposit: 1250000000000000000000,
   });
   ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -359,23 +356,24 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  import { Wallet } from './near-wallet';
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
-  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
 
-  await wallet.callMethod({
+  const { callMethod } = useWalletSelector();
+
+  await callMethod({
+    contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'ft_transfer',
     args: {
       receiver_id: 'alice.near',
       amount: '100000000000000000',
     },
-    contractId: TOKEN_CONTRACT_ADDRESS,
     deposit: 1,
   });
   ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -426,25 +424,26 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
 ## Attaching FTs to a Call
 Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a function call in your name.
 
-Let's assume that you need to deposit FTs on Ref Finance.
+Let's assume that you need to deposit FTs on [Ref Finance](https://rhea.finance/).
 
 <Tabs groupId="code-tabs">
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { Wallet } from './near-wallet';
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
-  const wallet = new Wallet({ createAccessKeyFor: TOKEN_CONTRACT_ADDRESS });
 
-  await wallet.callMethod({
+  const { callMethod } = useWalletSelector();
+
+  await callMethod({
+    contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'ft_transfer_call',
     args: {
       receiver_id: 'v2.ref-finance.near',
       amount: '100000000000000000',
       msg: '',
     },
-    contractId: TOKEN_CONTRACT_ADDRESS,
     gas: 300000000000000,
     deposit: 1,
   });
@@ -461,7 +460,7 @@ Let's assume that you need to deposit FTs on Ref Finance.
   </p>
   </details>
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -509,15 +508,15 @@ Let's assume that you need to deposit FTs on Ref Finance.
 
 How it works:
 
-1. You call ft_transfer_call in the FT contract passing: the receiver, a message, and the amount.
+1. You call `ft_transfer_call` in the FT contract passing: the receiver, a message, and the amount.
 2. The FT contract transfers the amount to the receiver.
-3. The FT contract calls receiver.ft_on_transfer(sender, msg, amount)
-4. The FT contract handles errors in the ft_resolve_transfer callback.
+3. The FT contract calls `receiver.ft_on_transfer(sender, msg, amount)`
+4. The FT contract handles errors in the `ft_resolve_transfer` callback.
 5. The FT contract returns you how much of the attached amount was actually used.
 
 ---
 
-## Handling Deposits (Contract Only)
+## Handling Deposits
 
 If you want your contract to handle deposit in FTs you have to implement the `ft_on_transfer` method. When executed, such method will know:
 
@@ -575,7 +574,8 @@ impl FungibleTokenReceiver for Contract {
 
 ## Additional Resources
 
-1. [NEP-141 and NEP-148 standards](https://github.com/near/NEPs/tree/master/neps/nep-0141.md)
-2. [FT Event Standards](https://github.com/near/NEPs/blob/master/neps/nep-0300.md)
-3. [FT reference implementation](https://github.com/near-examples/FT)
-4. [Fungible Tokens 101](../tutorials/fts/0-intro.md) - a set of tutorials that cover how to create a FT contract using Rust.
+1. [NEP-141 standard](https://github.com/near/NEPs/tree/master/neps/nep-0141.md)
+2. [NEP-148 standard](https://github.com/near/NEPs/tree/master/neps/nep-0148.md)
+3. [FT Event Standards](https://github.com/near/NEPs/blob/master/neps/nep-0300.md)
+4. [FT reference implementation](https://github.com/near-examples/FT)
+5. [Fungible Tokens 101](../../tutorials/fts/0-intro.md) - a set of tutorials that cover how to create a FT contract using Rust.

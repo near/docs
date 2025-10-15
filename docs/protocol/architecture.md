@@ -1,10 +1,8 @@
 ---
 id: architecture
 title: Architecture
-description: "Comprehensive high-level overview of NEAR Protocol's architecture."
+description: "A comprehensive high-level overview of NEAR Protocol's architecture"
 ---
-
-# Architecture
 
 NEAR consists roughly of a blockchain layer and a [runtime layer](network/runtime.md).
 These layers are designed to be independent from each other: the blockchain layer can in theory support runtime that processes
