@@ -50,7 +50,7 @@ Considered a successor to the wallet selector, the [NEAR Connector](https://gith
 
 :::tip
 
-Check our [NEAR Connector Integration Example](https://github.com/near-examples/hello-near-connector) to learn how to integrate the NEAR Connector into your web app
+You can learn how to integrate the wallet selector into your app in our [NEAR Connector](../tutorials/web-login/near-conector.md) guide.
 
 :::
 
