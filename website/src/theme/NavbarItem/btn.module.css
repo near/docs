@@ -16,3 +16,21 @@
   transform: translateY(-2px);
   color: #fff;
 }
+
+.aiBtn {
+  border-radius: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  font-family: var(--bs-font-sans-serif, 'Poppins', sans-serif);
+  background-color: var(--docsearch-searchbox-background);
+  color: var(--docsearch-hit-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2px solid transparent;
+  padding: 0.35rem 0.6rem;
+}
+
+.aiBtn:hover {
+  box-shadow: var(--docsearch-searchbox-shadow);
+  color: var(--docsearch-text-color)
+}

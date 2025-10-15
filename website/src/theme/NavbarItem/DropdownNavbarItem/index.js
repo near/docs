@@ -5,6 +5,7 @@ import { isSamePath, useLocalPathname } from '@docusaurus/theme-common/internal'
 import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
 import NavbarItem from '@theme/NavbarItem';
 import styles from './styles.module.css';
+import ColorToggle from '@theme/ColorModeToggle';
 
 // Memoized dropdown item to avoid re-render unless relevant props change
 const RawDropdownItem = ({ to, label, icon, description, onMouseOver, onMouseOut, isCategory = false, isSelected = false, isDimmed = false, ...props }) => {
