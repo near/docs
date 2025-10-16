@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import styles from './btn.module.css';
