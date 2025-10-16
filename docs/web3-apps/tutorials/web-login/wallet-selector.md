@@ -85,9 +85,10 @@ export default function App({ Component }) {
   );
 }
 ```
-<details markdown="1" id="setting-customs-rpc-endpoints">
 
-<summary>Setting custom RPC endpoints</summary>
+<hr class="subsection" />
+
+### Custom RPC
 
 If you want to use a user-defined RPC endpoint with the Wallet Selector, you can set up a [network options](https://github.com/near/wallet-selector/tree/main/packages/core#options) object with the custom URLs.
 For example:
@@ -103,11 +104,9 @@ const my_network = {
 };
 ```
 
-</details>
-
 <hr class="subsection" />
 
-### `createAccessKeyFor`
+### Creating an Access Key
 
 If you instantiated the `wallet-selector` passing an account id for the `createAccessKeyFor` parameter, then the wallet will create a [Function-Call Key](/protocol/access-keys#function-call-keys) and store it in the web's local storage.
 
@@ -138,19 +137,21 @@ Please notice that this only applies to **non-payable** methods, if you attach d
 
 Once the wallet-selector is up, we can start calling view methods, i.e., the methods that perform read-only operations.
 
-Because of their read-only nature, view methods are **free** to call, and do **not require** the user to be **logged in**.
+Because of their read-only nature, view methods are **free** to call, and do **not require** the user to be **logged in**. To make a view call, you simply need to import the `viewFunction` from the wallet selector hooks:
 
 <Language value="js" language="tsx">
   <Github fname="index.tsx"
     url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" start="11" end="11"  />
 </Language>
 
+Then, you can call any view method from any contract by providing the `contractId`, `methodName`, and arguments (`args`):
+
 <Language value="js" language="tsx">
   <Github fname="index.tsx"
     url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" start="18" end="20"  />
 </Language>
 
-The snippets above shows how we call view methods in our examples. Under the hood: we are actually making a **direct call to the RPC** using `near-api-js`.
+Under the hood, `viewFunction`  is actually making a **direct call to the RPC** using `near-api-js`.
 
 :::tip
 
@@ -170,7 +171,11 @@ We can request the user sign in if `signedAccountId` is not present, the same si
         url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx"
         start="12" end="22" />
 
-By assigning the `signIn` action to a button, when the user clicks it, the wallet selector modal will open.
+By assigning the `signIn` action to a button, when the user clicks it, the wallet selector modal will open:
+
+```jsx
+<button onClick={action}>{label}</button>
+```
 
 ---
 
