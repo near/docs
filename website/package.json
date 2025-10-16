@@ -20,8 +20,8 @@
     "docusaurus": "docusaurus"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.8.1",
-    "@docusaurus/types": "3.8.1",
+    "@docusaurus/module-type-aliases": "3.9.1",
+    "@docusaurus/types": "3.9.1",
     "@emailjs/browser": "^4.4.1",
     "@types/react": "^18.2.42",
     "buffer": "^6.0.3",
@@ -31,11 +31,11 @@
     "serve": "^14.2.4"
   },
   "dependencies": {
-    "@docusaurus/core": "3.8.1",
-    "@docusaurus/plugin-ideal-image": "3.8.1",
-    "@docusaurus/plugin-sitemap": "3.8.1",
-    "@docusaurus/preset-classic": "3.8.1",
-    "@docusaurus/theme-mermaid": "3.8.1",
+    "@docusaurus/core": "3.9.1",
+    "@docusaurus/plugin-ideal-image": "3.9.1",
+    "@docusaurus/plugin-sitemap": "3.9.1",
+    "@docusaurus/preset-classic": "3.9.1",
+    "@docusaurus/theme-mermaid": "3.9.1",
     "@feelback/react": "^0.3.4",
     "@near-js/accounts": "^2.2.5",
     "@near-js/crypto": "^2.3.1",
