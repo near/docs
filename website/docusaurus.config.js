@@ -369,6 +369,7 @@ const config = {
       // Public API key: it is safe to commit it
       apiKey: '41e2feb6ffa0d3450ca9d0a0c1826c1c',
       indexName: 'near',
+      askAi: '0ufKvtmOKJ66',
       // Optional: see doc section below
       contextualSearch: true,
       // Optional: Algolia search parameters
