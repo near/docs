@@ -391,9 +391,9 @@ const sidebar = {
           "Tutorials": [
             {
               "Web Login": [
+                'web3-apps/tutorials/web-login/near-connector',
                 'web3-apps/tutorials/web-login/wallet-selector',
                 'web3-apps/tutorials/web-login/ethereum-wallets',
-                'web3-apps/tutorials/web-login/near-conector',
               ]
             },
             'tutorials/examples/frontend-multiple-contracts',
