@@ -5,10 +5,13 @@ const sidebar = {
           type: 'html',
           value: '<hr/>',
         },
-        'quest/a-file',
-        'quest/protocol',
-        'quest/wallet',
-        'quest/hello-world',
+        'quest/intro-to-near',
+        'quest/accounts',
+        'quest/data-flow',
+        'quest/near-network',
+        'quest/primitives',
+        'quest/smart-contracts',
+
   ],
   build: [
     {
