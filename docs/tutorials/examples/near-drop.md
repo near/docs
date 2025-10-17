@@ -6,7 +6,7 @@ description: "Learn how NEAR Drop enables token drops (NEAR, FT, NFT) claimable 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 NEAR Drop is a smart contract that allows users to create token drops ($NEAR, Fungible and Non-Fungible Tokens), and link them to specific private keys. Whoever has the private key can claim the drop into an existing account, or ask the contract to create a new one for them.
 
@@ -17,7 +17,7 @@ Particularly, it shows:
 
 :::tip
 
-This example showcases a simplified version of the contract that both [Keypom](https://keypom.xyz/) and the [Token Drop Utility](https://dev.near.org/tools?tab=linkdrops) use to distribute tokens to users
+This example showcases a simplified version of the contract that both [Keypom](https://github.com/keypom/keypom) and the [Token Drop Utility](https://dev.near.org/tools?tab=linkdrops) use to distribute tokens to users
 
 :::
 
@@ -65,7 +65,7 @@ Creates the `account_id`, and then drops the tokens into it
 
 ## Contract's State
 
-We can see in the contract's state that the contract keeps track of different `PublicKeys`, and links them to a specific `DropId`, which is simply an identifier for a `Drop` (see below). 
+We can see in the contract's state that the contract keeps track of different `PublicKeys`, and links them to a specific `DropId`, which is simply an identifier for a `Drop` (see below).
 
 - `top_level_account`: The account that will be used to create new accounts, generally it will be `testnet` or `mainnet`
 - `next_drop_id`: A simple counter used to assign unique identifiers to each drop

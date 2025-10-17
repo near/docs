@@ -2,6 +2,9 @@ import { useState, useCallback, useEffect } from 'react';
 import styles from './MintNFT.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
 import { toast } from 'react-toastify';
+import Button from '../../UI/Button';
+import Input from '../../UI/Input';
+import Card from '../../UI/Card';
 
 const NFT_CONTRACT = 'nft.primitives.testnet'
 const MAX_FILE_SIZE = 3 * 1024 * 1024;
@@ -61,10 +64,10 @@ const MintNFT = ({ reload }) => {
     };
 
     const stringArgs = JSON.stringify(args);
-    const costPerByte = '10000000000000000000';
-    const estimatedCost = BigInt(stringArgs.length) * BigInt(costPerByte) * BigInt(4);
+    const costPerByte = BigInt('10000000000000000000');
+    const estimatedCostYocto = BigInt(stringArgs.length) * costPerByte * BigInt(4);
 
-    setRequiredDeposit(estimatedCost);
+    setRequiredDeposit(estimatedCostYocto);
   }, [signedAccountId]);
 
   const handleInputChange = (field, value) => {
@@ -179,21 +182,19 @@ const MintNFT = ({ reload }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label className={styles.label} htmlFor="title">Title</label>
-          <input
-            id="title"
-            type="text"
-            className={styles.input}
-            placeholder="Enter title"
-            value={formData.title}
-            onChange={(e) => handleInputChange('title', e.target.value)}
-            disabled={!signedAccountId}
-          />
-          {errors.title && <div className={styles.error}>{errors.title}</div>}
-        </div>
+    <Card>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <Input
+          id="title"
+          type="text"
+          label="Title"
+          placeholder="Enter title"
+          value={formData.title}
+          onChange={(e) => handleInputChange('title', e.target.value)}
+          disabled={!signedAccountId}
+          error={errors.title}
+          fullWidth
+        />
 
         <div className={styles.formGroup}>
           <label className={styles.label} htmlFor="description">Description</label>
@@ -235,36 +236,39 @@ const MintNFT = ({ reload }) => {
         </div>
 
         {!signedAccountId ? (
-          <button
+          <Button
             type="button"
             onClick={signIn}
-            className={`${styles.button} ${styles.primary}`}
+            variant="primary"
+            fullWidth
           >
             Connect Wallet
-          </button>
+          </Button>
         ) : (
           <div>
             {step === 'ready-to-mint' && (
               <div className={styles.pricePreview}>
                 <div className={styles.priceAmount}>
-                  Minting Cost: <strong>{requiredDeposit} NEAR</strong>
+                  Minting Cost: <strong>{(Number(requiredDeposit) / 1e24).toFixed(4)} NEAR</strong>
                 </div>
                 <div className={styles.priceNote}>
                   This amount will be used to cover storage costs on the NEAR blockchain.
                 </div>
               </div>
             )}
-            <button
+            <Button
               type="submit"
-              className={`${styles.button} ${styles.primary} ${(isLoadingPreview || isSubmitting) ? styles.loading : ''} ${step === 'ready-to-mint' ? styles.confirm : ''}`}
+              variant={step === 'ready-to-mint' ? 'success' : 'primary'}
+              fullWidth
+              loading={isLoadingPreview || isSubmitting}
               disabled={isLoadingPreview || isSubmitting}
             >
               {getButtonText()}
-            </button>
+            </Button>
           </div>
         )}
       </form>
-    </div>
+    </Card>
   );
 };
 

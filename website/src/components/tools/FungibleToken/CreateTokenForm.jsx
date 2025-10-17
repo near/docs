@@ -5,8 +5,11 @@ import { toast } from 'react-toastify';
 
 import styles from './FungibleToken.module.scss';
 import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import Card from '../../UI/Card';
+import Button from '../../UI/Button';
+import Input from '../../UI/Input';
 
-const FACTORY_CONTRACT = 'tkn.primitives.testnet';
+const FACTORY_CONTRACT = 'token.primitives.testnet';
 const MAX_FILE_SIZE = 10 * 1024;
 const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'];
 
@@ -34,7 +37,9 @@ const CreateTokenForm = ({ reload = () => { } }) => {
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm({
+    mode: 'onSubmit'
+  });
 
   const { viewFunction, callFunction, getBalance, signedAccountId, signIn } = useWalletSelector();
   const [requiredDeposit, setRequiredDeposit] = useState('0');
@@ -178,7 +183,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
         toast.error('Failed to create token');
       }
     },
-    [step, signedAccountId, onPreview, viewFunction, callFunction, reload, requiredDeposit],
+    [step, signedAccountId, onPreview, callFunction, reload, deposit],
   );
 
   const getButtonText = () => {
@@ -189,19 +194,17 @@ const CreateTokenForm = ({ reload = () => { } }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <Card>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formGrid}>
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Token Name</label>
-            <input
-              className={styles.input}
-              placeholder="e.g. Test Token"
-              {...register('name', { required: 'Token name is required' })}
-              disabled={!signedAccountId}
-            />
-            {errors.name && <span className={styles.error}>{errors.name.message}</span>}
-          </div>
+          <Input
+            id="token-name"
+            label="Token Name"
+            placeholder="e.g. Test Token"
+            disabled={!signedAccountId}
+            error={errors.name?.message}
+            {...register('name', { required: 'Token name is required' })}
+          />
 
           <Controller
             control={control}
@@ -211,54 +214,48 @@ const CreateTokenForm = ({ reload = () => { } }) => {
               validate: symbolAvailable,
             }}
             render={({ field, fieldState }) => (
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Token Symbol</label>
-                <input
-                  className={styles.input}
-                  placeholder="e.g. TEST"
-                  {...field}
-                  disabled={!signedAccountId}
-                />
-                {fieldState.error && <span className={styles.error}>{fieldState.error.message}</span>}
-              </div>
+              <Input
+                id="token-symbol"
+                label="Token Symbol"
+                placeholder="e.g. TEST"
+                disabled={!signedAccountId}
+                error={fieldState.error?.message}
+                {...field}
+              />
             )}
           />
         </div>
 
         <div className={styles.formGrid}>
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Total Supply</label>
-            <input
-              className={styles.input}
-              placeholder="e.g. 1000"
-              {...register('total_supply', {
-                required: 'Total supply is required',
-                pattern: {
-                  value: /^[1-9][0-9]*$/,
-                  message: 'Total supply must be a whole number greater than 0',
-                },
-              })}
-              disabled={!signedAccountId}
-            />
-            {errors.total_supply && <span className={styles.error}>{errors.total_supply.message}</span>}
-          </div>
+          <Input
+            id="total-supply"
+            label="Total Supply"
+            placeholder="e.g. 1000"
+            disabled={!signedAccountId}
+            error={errors.total_supply?.message}
+            {...register('total_supply', {
+              required: 'Total supply is required',
+              pattern: {
+                value: /^[1-9][0-9]*$/,
+                message: 'Total supply must be a whole number greater than 0',
+              },
+            })}
+          />
 
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Decimals</label>
-            <input
-              className={styles.input}
-              type="number"
-              placeholder="e.g. 6"
-              {...register('decimals', {
-                required: 'Decimals is required',
-                valueAsNumber: true,
-                min: { value: 0, message: 'Decimals must be non-negative' },
-                max: { value: 24, message: 'Decimals must be 24 or less' },
-              })}
-              disabled={!signedAccountId}
-            />
-            {errors.decimals && <span className={styles.error}>{errors.decimals.message}</span>}
-          </div>
+          <Input
+            id="decimals"
+            type="number"
+            label="Decimals"
+            placeholder="e.g. 6"
+            disabled={!signedAccountId}
+            error={errors.decimals?.message}
+            {...register('decimals', {
+              required: 'Decimals is required',
+              valueAsNumber: true,
+              min: { value: 0, message: 'Decimals must be non-negative' },
+              max: { value: 24, message: 'Decimals must be 24 or less' },
+            })}
+          />
         </div>
 
         <div className={styles.fileInputGroup}>
@@ -312,13 +309,14 @@ const CreateTokenForm = ({ reload = () => { } }) => {
         </div>
 
         {!signedAccountId ? (
-          <button
+          <Button
             type="button"
             onClick={signIn}
-            className={`${styles.button} ${styles.primary}`}
+            variant="primary"
+            fullWidth
           >
             Connect Wallet
-          </button>
+          </Button>
         ) : (
           <div>
             {step === 'ready-to-create' && (
@@ -331,17 +329,19 @@ const CreateTokenForm = ({ reload = () => { } }) => {
                 </div>
               </div>
             )}
-            <button
+            <Button
               type="submit"
-              className={`${styles.button} ${styles.primary} ${(isLoadingPreview || isSubmitting) ? styles.loading : ''} ${step === 'ready-to-create' ? styles.confirm : ''}`}
+              variant={step === 'ready-to-create' ? 'primary' : 'primary'}
+              fullWidth
+              loading={isLoadingPreview || isSubmitting}
               disabled={isLoadingPreview || isSubmitting}
             >
               {getButtonText()}
-            </button>
+            </Button>
           </div>
         )}
       </form>
-    </div>
+    </Card>
   );
 };
 

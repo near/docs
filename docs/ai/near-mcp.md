@@ -5,7 +5,7 @@ sidebar_label: NEAR MCP Server
 description: "Equip AI agents with tools for using the NEAR blockchain via Model Context Protocol (MCP)."
 ---
 
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

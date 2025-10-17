@@ -4,12 +4,12 @@ sidebar_label: Access keys and login 2/2
 title: Implementing the login button
 description: "Learn how to add a login button that uses near-api-js to login with NEAR."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import loggingIn from '/docs/assets/crosswords/logging-in.png';
-import explorerTransfer from '/docs/assets/crosswords/chapter-2-explorer-transfer.jpg';
+import loggingIn from '/assets/docs/tutorials/crosswords/logging-in.png';
+import explorerTransfer from '/assets/docs/tutorials/crosswords/chapter-2-explorer-transfer.jpg';
 
 We're going to add a login button that uses `near-api-js` to login with NEAR.
 

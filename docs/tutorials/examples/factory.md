@@ -6,7 +6,7 @@ description: "Learn how a factory contract deploys other contracts on sub-accoun
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs"
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
 
 A factory is a smart contract that stores a global contract id, and automatizes deploying contracts onto new sub-accounts.
 
@@ -70,7 +70,7 @@ The following command will create the `sub.<factory-account>`, which will have a
 near contract call-function as-transaction <factory-account> deploy json-args '{"name": "sub"}' prepaid-gas '100.0 Tgas' attached-deposit '0.2 NEAR' sign-as <your-account> network-config testnet sign-with-keychain send
 ```
 
-By default, the global contract is the [Fungible Token](../../primitives/ft.md#global-contracts) primitive contract `ft.globals.primitives.testnet`. To initilize the contract, you can call its `new_default_meta` method:
+By default, the global contract is the [Fungible Token](../../primitives/ft/ft.md#global-contracts) primitive contract `ft.globals.primitives.testnet`. To initilize the contract, you can call its `new_default_meta` method:
 
 ```bash
 near contract call-function as-transaction sub.<factory-account> new_default_meta json-args '{"owner_id": "<your-account>", "total_supply": "100000000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <your-account> network-config testnet sign-with-keychain send

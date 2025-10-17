@@ -11,9 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // wallet selector
 import '@near-wallet-selector/modal-ui/styles.css';
 import { setupBitteWallet } from '@near-wallet-selector/bitte-wallet';
-// import { setupEthereumWallets } from '@near-wallet-selector/ethereum-wallets';
-// import { wagmiConfig, web3Modal } from '@/eth-wallets/adapter';
-import { setupHereWallet } from '@near-wallet-selector/here-wallet';
+import { setupIntearWallet } from '@near-wallet-selector/intear-wallet';
 import { setupHotWallet } from '@near-wallet-selector/hot-wallet';
 import { setupLedger } from '@near-wallet-selector/ledger';
 import { setupMeteorWallet } from '@near-wallet-selector/meteor-wallet';
@@ -21,6 +19,8 @@ import { setupNightly } from '@near-wallet-selector/nightly';
 import { WalletSelectorProvider } from '@near-wallet-selector/react-hook';
 import { setupSender } from '@near-wallet-selector/sender';
 import { AcademyProgressProvider } from '../components/Academy/AcademyProgressContext';
+// import { setupMeteorWalletApp } from '@near-wallet-selector/meteor-wallet-app';
+import { setupWelldoneWallet } from '@near-wallet-selector/welldone-wallet';
 
 const networkId = 'testnet';
 
@@ -31,10 +31,12 @@ const walletSelectorConfig = {
     setupMeteorWallet(),
     setupBitteWallet(),
     setupHotWallet(),
-    setupHereWallet(),
+    setupIntearWallet(),
+    // setupMeteorWalletApp(),
     setupSender(),
     setupNightly(),
     setupLedger(),
+    setupWelldoneWallet()
   ],
 };
 

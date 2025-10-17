@@ -4,7 +4,7 @@ title: Upgrading the Contract
 sidebar_label: Upgrade a Contract
 description: "Learn how to implement the nft_tokens_for_owner method."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -138,7 +138,7 @@ This should return an output similar to the following:
 
 Now that your contract implements the necessary functions that the wallet uses to display NFTs, you should be able to see your tokens on display in the [collectibles tab](https://testnet.mynearwallet.com/?tab=collectibles).
 
-![filled-nft-in-wallet](/docs/assets/nfts/filled-nft-in-wallet.png)
+![filled-nft-in-wallet](/assets/docs/tutorials/nfts/filled-nft-in-wallet.png)
 
 ---
 

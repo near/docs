@@ -4,14 +4,14 @@ title: Donation
 description: "Learn to build a donation smart contract that accepts NEAR tokens, tracks donations, and distributes funds to beneficiaries."
 ---
 
-import {CodeTabs, Language, Github} from '@site/src/components/codetabs';
+import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 Our donation example enables to forward NEAR Tokens to an account while keeping track of it. It is one of the simplest examples on making a contract handle transfers.
 
-![img](/docs/assets/examples/donation.png)
+![img](/assets/docs/tutorials/examples/donation.png)
 _Frontend of the Donation App_
 
 ---

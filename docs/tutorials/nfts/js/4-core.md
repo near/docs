@@ -4,11 +4,11 @@ title: Core
 sidebar_label: Core
 description: "Learn how to implement the core standards into your smart contract."
 ---
-import {Github} from "@site/src/components/codetabs";
+import {Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this tutorial you'll learn how to implement the [core standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core) into your smart contract.
+In this tutorial you'll learn how to implement the [core standards](https://github.com/near/NEPs/tree/master/neps/nep-0171.md) into your smart contract.
 If you're joining us for the first time, feel free to clone [this repo](https://github.com/near-examples/nft-tutorial) and checkout the `3.enumeration` branch to follow along.
 
 
@@ -22,7 +22,7 @@ If you wish to see the finished code for this _Core_ tutorial, you can find it o
 
 ## Introduction {#introduction}
 
-Up until this point, you've created a simple NFT smart contract that allows users to mint tokens and view information using the [enumeration standards](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration). Today, you'll expand your smart contract to allow for users to not only mint tokens, but transfer them as well.
+Up until this point, you've created a simple NFT smart contract that allows users to mint tokens and view information using the [enumeration standards](https://github.com/near/NEPs/tree/master/neps/nep-0181.md). Today, you'll expand your smart contract to allow for users to not only mint tokens, but transfer them as well.
 
 As we did in the [minting tutorial](/tutorials/nfts/js/minting), let's break down the problem into multiple subtasks to make our lives easier. When a token is minted, information is stored in 3 places:
 
@@ -226,7 +226,7 @@ In the [next tutorial](/tutorials/nfts/js/approvals), you'll learn about the app
 At the time of this writing, this example works with the following versions:
 
 - near-cli: `3.0.0`
-- NFT standard: [NEP171](https://nomicon.io/Standards/Tokens/NonFungibleToken/Core), version `1.0.0`
-- Enumeration standard: [NEP181](https://nomicon.io/Standards/Tokens/NonFungibleToken/Enumeration), version `1.0.0`
+- NFT standard: [NEP171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md), version `1.0.0`
+- Enumeration standard: [NEP181](https://github.com/near/NEPs/tree/master/neps/nep-0181.md), version `1.0.0`
 
 :::

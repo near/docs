@@ -7,7 +7,7 @@ description: "Learn about the key parts of the agent contract as part of the Ver
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Github} from "@site/src/components/codetabs"
+import {Github} from "@site/src/components/UI/Codetabs"
 
 On this page, you'll look at the DAO smart contract that uses the yield and resume pattern to enable the Shade Agent to vote on proposals within a `single transaction` flow.
 
@@ -20,14 +20,14 @@ The AI DAO contract is a fork of the [default agent contract](https://github.com
 The DAO agent contract extends the default contract with additional state:
 - The DAO's manifesto
 - A map of pending proposals
-- A map of finalized proposals 
+- A map of finalized proposals
 - The current proposal ID
 
 <Github fname="lib.rs" language="rust"
     url="https://github.com/NearDeFi/verifiable-ai-dao/blob/main/contract/src/lib.rs#L33-L41"
     start="33" end="41" />
 
-### Manifesto 
+### Manifesto
 
 The manifesto consists of two components: the `manifesto text` that defines the DAO's decision-making principles and a `hash` of the manifesto for verifying that the agent uses the correct manifesto when voting.
 
@@ -47,7 +47,7 @@ This stores all proposals that are awaiting a vote from the agent. Each proposal
 
 The map is initialized as empty.
 
-### Finalized Proposals 
+### Finalized Proposals
 
 This stores all proposals that the agent has voted on. Each finalized proposal contains the `proposal text`, `proposal result` (enum of `Approved` or `Rejected`), and `reasoning` for the vote. The result and reasoning are provided by the agent.
 
@@ -159,7 +159,7 @@ If any of these checks fail then the function panics and the promise is not be r
 
 ### Proposal Finalization
 
-When the yielded promise resolves (either resumed or timed out), the `return_external_response` function is called. This function is private and can only be called by the yielded promise, not by external accounts. 
+When the yielded promise resolves (either resumed or timed out), the `return_external_response` function is called. This function is private and can only be called by the yielded promise, not by external accounts.
 
 The function receives arguments from both when the promise was created and when it was resumed.
 

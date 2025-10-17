@@ -5,7 +5,7 @@ description: "Learn to build a simple NFT indexer with NEAR Lake Framework."
 
 This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the [NEAR Lake Framework JS](/data-infrastructure/near-lake-framework). The indexer will listen for `nft_mint` events and print relevant data about newly minted NFTs.
 
-The indexer is watching for `nft_mint` [Events](https://nomicon.io/Standards/EventsFormat) and prints some relevant data:
+The indexer is watching for `nft_mint` [Events](https://github.com/near/NEPs/tree/master/neps/nep-0297.md) and prints some relevant data:
 - `receiptId` of the `Receipt` where the mint has happened
 - Marketplace
 - NFT owner account name
@@ -22,13 +22,13 @@ The final source code is available on the GitHub [`near-examples/near-lake-nft-i
 
 ## Motivation
 
-NEAR Protocol had introduced a nice feature [Events](https://nomicon.io/Standards/EventsFormat). The Events allow a contract developer to add standardized logs to the `ExecutionOutcomes` thus allowing themselves or other developers to read those logs in more convenient manner via API or indexers.
+NEAR Protocol had introduced a nice feature [Events](https://github.com/near/NEPs/tree/master/neps/nep-0297.md). The Events allow a contract developer to add standardized logs to the `ExecutionOutcomes` thus allowing themselves or other developers to read those logs in more convenient manner via API or indexers.
 
 The Events have a field `standard` which aligns with NEPs. In this tutorial we'll be talking about [NEP-171 Non-Fungible Token standard](https://github.com/near/NEPs/discussions/171).
 
 In this tutorial our goal is to show you how you can "listen" to the Events contracts emit and how you can benefit from them.
 
-As the example we will be building an indexer that watches all the NFTs minted following the [NEP-171 Events](https://nomicon.io/Standards/Tokens/NonFungibleToken/Event) standard, assuming we're collectors who don't want to miss a thing. Our indexer should notice every single NFT minted and give us a basic set of data like: in what Receipt it was minted, and show us the link to a marketplace (we'll cover Paras and Bitte/Mintbase in our example).
+As the example we will be building an indexer that watches all the NFTs minted following the [NEP-171 Events](https://github.com/near/NEPs/tree/master/neps/nep-0256.md) standard, assuming we're collectors who don't want to miss a thing. Our indexer should notice every single NFT minted and give us a basic set of data like: in what Receipt it was minted, and show us the link to a marketplace (we'll cover Paras and Bitte/Mintbase in our example).
 
 We will use JS version of [NEAR Lake Framework](/data-infrastructure/near-lake-framework) in this tutorial. Though the concept is the same for Rust, but we want to show more people that it's not that complex to build your own indexer.
 
@@ -175,11 +175,11 @@ First of all let's find out where we can catch the Events. We hope you are famil
 - Actions are located in a `Receipt`
 - A result of the Receipt execution is `ExecutionOutcome`
 - `ExecutionOutcome` in turn, catches the logs a contract "prints"
-- [Events](https://nomicon.io/Standards/EventsFormat) built on top of the logs
+- [Events](https://github.com/near/NEPs/tree/master/neps/nep-0297.md) built on top of the logs
 
 This leads us to the realization that we can watch only for ExecutionOutcomes and ignore everything else `StreamerMessage` brings us.
 
-Also, we need to define an interface to catch the Events. Let's copy the interface definition from the [Events Nomicon page](https://nomicon.io/Standards/EventsFormat#events) and paste it before the `handleStreamerMessage` function.
+Also, we need to define an interface to catch the Events. Let's copy the interface definition from the [Events Nomicon page](https://github.com/near/NEPs/tree/master/neps/nep-0297.md#events) and paste it before the `handleStreamerMessage` function.
 
 ```ts title=index.ts
 interface EventLogData {
@@ -207,7 +207,7 @@ async function handleStreamerMessage(
 
 We have iterated through all the `Shards` and collected the lists of all `ExecutionOutcomes` into a single list (in our case we don't care on which Shard did the mint happen)
 
-Now we want to deal only with those `ExecutionOutcomes` that contain logs of Events format. Such logs start with `EVENT_JSON:` according to the [Events docs](https://nomicon.io/Standards/EventsFormat#events).
+Now we want to deal only with those `ExecutionOutcomes` that contain logs of Events format. Such logs start with `EVENT_JSON:` according to the [Events docs](https://github.com/near/NEPs/tree/master/neps/nep-0297.md#events).
 
 Also, we don't require all the data from ExecutionOutcome, let's handle it:
 
@@ -587,12 +587,12 @@ We caught freshly minted NFTs!
 
 What a ride, yeah? Let's sum up what we have done:
 
-- You've learnt about [Events](https://nomicon.io/Standards/EventsFormat)
+- You've learnt about [Events](https://github.com/near/NEPs/tree/master/neps/nep-0297.md)
 - Now you understand how to follow for the Events
 - Knowing the fact that as a contract developer you can use Events and emit your own events, now you know how to create an indexer that follows those Events
 - We've had a closer look at NFT minting process, you can experiment further and find out how to follow `nft_transfer` Events
 
-The material from this tutorial can be extrapolated for literally any event that follows the [Events format](https://nomicon.io/Standards/EventsFormat)
+The material from this tutorial can be extrapolated for literally any event that follows the [Events format](https://github.com/near/NEPs/tree/master/neps/nep-0297.md)
 
 Not mentioning you have a dedicated indexer to find out about the newest NFTs minted out there and to be the earliest bird to collect them.
 

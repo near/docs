@@ -1,6 +1,6 @@
 import ListToken from './ListToken';
 import MintNft from './MintNFT';
-import styles from './MintNFT.module.scss';
+import Button from '../../UI/Button';
 
 const NonFungibleToken = ({
   user_collections,
@@ -15,10 +15,6 @@ const NonFungibleToken = ({
       </p>
       <MintNft reload={reload} />
       <ListToken loading={loading} collections={user_collections} />
-      <hr />
-      <p>For more advanced options please use tools created by the community:</p>
-      <button className={`${styles.button}`} href="https://www.mintbase.xyz/" target="_blank" >MintBase</button>
-      <button className={`${styles.button}`} href="https://paras.id/" target="_blank" >Paras</button>
     </>
   );
 };

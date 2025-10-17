@@ -72,7 +72,7 @@ $ near
 
 You should then see the following. Use the arrow keys and hit `enter` or simply type out one of the available options to select an option
 
-![](/docs/assets/tools/near-cli-rs.png)
+![](/assets/docs/tools/near-cli-rs.png)
 
 :::important
 We provide examples only of the most used commands. Such commands may have two versions - a **full** one and a **short** one. If you want to explore all options provided by `near-cli` use the interactive mode described above.

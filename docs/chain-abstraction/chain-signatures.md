@@ -10,7 +10,7 @@ Chain signatures enable NEAR accounts, including smart contracts, to sign and ex
 
 This unlocks the next level of blockchain interoperability by giving ownership of diverse assets, cross-chain accounts, and data to every single NEAR account.
 
-![chain-signatures](/docs/assets/welcome-pages/chain-signatures-overview.png)
+![chain-signatures](/assets/docs/welcome-pages/chain-signatures-overview.png)
 _Diagram of a chain signature in NEAR_
 
 <details>
@@ -78,7 +78,7 @@ Controlling accounts and their assets on other blockchain platforms is made poss
 2. [**Multichain Smart Contract**](#multichain-smart-contract) - Receives requests to sign a transaction for other blockchains
 3. [**Multiparty Computation Service**](#multi-party-computation-service) - Third-party service providing signatures to the contract
 
-![Chain Signatures](/docs/assets/chain-abstraction/chain-abstract-2.svg)
+![Chain Signatures](/assets/docs/chain-abstraction/chain-abstract-2.svg)
 _Chain signatures flow_
 
 <hr class="subsection" />

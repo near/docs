@@ -4,7 +4,7 @@ title: Oracles
 description: "Learn about blockchain oracles on NEAR Protocol, including price feeds, data integration, and using oracle services like NearDefi Price Oracle and Pyth Network."
 ---
 
-import {CodeTabs, Language, Github} from "@site/src/components/codetabs";
+import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -34,7 +34,7 @@ Here is a directory of third-party oracle services deployed on the NEAR blockcha
 | -------------------------------------------------------------------------------------------------------- | --------------------------------------- | -------------------------------------------------- |
 | [Price Oracle](#price-oracle-by-neardefi)                                                                | [NearDefi](https://github.com/NearDeFi) | Open source oracle for real-time asset pricing     |
 | [Pyth Network Oracle](#pyth-network-oracle)                                                              | [Pyth Network](https://pyth.network/)   | High-frequency, low-latency oracle for price feeds |
-| **[[Your Project Here]](https://github.com/near/docs/edit/master/docs/primitives/oracles.md)** | -                                       | -                                                  |
+| **[[Your Project Here]](https://github.com/near/assets/docs/edit/master/assets/docs/primitives/oracles.md)** | -                                       | -                                                  |
 
 ---
 

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Linkdrops.module.scss';
+import Card from '../../UI/Card';
+import Button from '../../UI/Button';
 
 const ListTokenDrop = ({ drops }) => {
   const [copiedKey, setCopiedKey] = useState(null);
@@ -24,8 +26,8 @@ const ListTokenDrop = ({ drops }) => {
 
   if (!drops || drops.length === 0) {
     return (
-      <div className={styles.form}>
-        <h3 className={styles.dropsList}>Your Drops</h3>
+      <Card>
+        <h3>Your Drops</h3>
         <div className={styles.emptyState}>
           <div className={styles.emptyIcon}>📦</div>
           <p className={styles.emptyTitle}>No drops created yet</p>
@@ -33,12 +35,12 @@ const ListTokenDrop = ({ drops }) => {
             Create your first drop to get started
           </p>
         </div>
-      </div>
+      </Card>
     );
   }
 
   return (
-    <div className={styles.form}>
+    <Card>
       <h3 className={styles.dropsList}>Your Drops</h3>
       <div className={styles.dropsGrid}>
         {drops.map((drop, index) => {
@@ -93,26 +95,18 @@ const ListTokenDrop = ({ drops }) => {
                       const isCopied = copiedKey === keyId;
                       
                       return (
-                        <button 
+                        <Button
                           key={keyIndex}
+                          variant={isCopied ? 'secondary' : 'primary'}
+                          size="small"
                           onClick={() => {
                             const url = generateClaimUrl(key.private);
                             copyToClipboard(url, keyId);
                           }}
-                          className={`${styles.copyButton} ${isCopied ? styles.copied : ''}`}
+                          leftIcon={<span>{isCopied ? '✓' : '📋'}</span>}
                         >
-                          {isCopied ? (
-                            <>
-                              <span className={styles.buttonIcon}>✓</span>
-                              Copied!
-                            </>
-                          ) : (
-                            <>
-                              <span className={styles.buttonIcon}>📋</span>
-                              Copy Link {drop.keys.length > 1 ? `#${keyIndex + 1}` : ''}
-                            </>
-                          )}
-                        </button>
+                          {isCopied ? 'Copied!' : `Copy Link ${drop.keys.length > 1 ? `#${keyIndex + 1}` : ''}`}
+                        </Button>
                       );
                     })}
                   </div>
@@ -122,7 +116,7 @@ const ListTokenDrop = ({ drops }) => {
           );
         })}
       </div>
-    </div>
+    </Card>
   );
 };
 

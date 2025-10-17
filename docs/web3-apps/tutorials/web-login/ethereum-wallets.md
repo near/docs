@@ -4,7 +4,7 @@ id: ethereum-wallets
 description: "Learn how to integrate Ethereum wallets like MetaMask into your NEAR DApp using the Near Wallet Selector, Web3Modal, and wagmi libraries."
 ---
 
-import { Github } from "@site/src/components/codetabs"
+import { Github } from "@site/src/components/UI/Codetabs"
 
 Using the [Wallet Selector](./wallet-selector.md) it is possible to login into NEAR applications using Ethereum wallets like MetaMask, WalletConnect and many others.
 
@@ -81,7 +81,7 @@ npm install @reown/appkit-adapter-wagmi @reown/appkit @wagmi/core viem
 First, let's create a new file to handle the Web3Modal (i.e. the modal shown when selecting the `Ethereum Wallets` on the `Wallet Selector`), and all the configs needed to setup the Ethereum Wallets.
 
 <Github fname="web3modal.js" language="js"
-      url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/web3modal.js" />
+  url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/web3modal.ts" />
 
 <details>
   <summary> Metadata </summary>
@@ -141,7 +141,7 @@ import { setupEthereumWallets } from "@near-wallet-selector/ethereum-wallets";
 ```
 
 <Github fname="web3modal.js" language="js" start="19" end="38" metastring="{8}"
-      url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js" />
+      url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" />
 
 
 ---

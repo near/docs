@@ -1,7 +1,6 @@
 ---
 id: dex
 title: Decentralized Exchanges (DEX)
-hide_table_of_contents: false
 description: "Learn how to interact with decentralized exchanges on NEAR Protocol, including token swapping, liquidity pools, and integration with Ref Finance DEX."
 ---
 
@@ -15,7 +14,7 @@ import { TryOutOnLantstool } from "@site/src/components/lantstool/TryOutOnLantst
 
 A Decentralized Exchange (DEX) is an application that allows users to trade tokens (native & fungible tokens) through smart contracts.
 
-![dex](/docs/primitives/dex.png)
+![dex](/assets/docs/primitives/dex.png)
 
 In brief, DEXs work by having [pools of token pairs](https://guide.rhea.finance/products/overview/pooling) (e.g. NEAR-USDC) that users can deposit tokens into.
 
@@ -44,8 +43,6 @@ One can query the exchange rate of a token pair by calling the `get-token-price`
     );
     const tokenPriceValue = await tokenPriceResult.json();
     ```
-
-    _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
 
   <details>
   <summary>Example response</summary>
@@ -176,10 +173,13 @@ Query your deposit balances by calling the `get_deposits` method:
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
-  const wallet = new Wallet({ createAccessKeyFor: AMM_CONTRACT_ADDRESS });
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
-  await wallet.viewMethod({
+  const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
+
+  const { viewMethod } = useWalletSelector();
+
+  await viewMethod({
     method: 'get_deposits',
     args: {
       account_id: 'bob.near',
@@ -188,7 +188,7 @@ Query your deposit balances by calling the `get_deposits` method:
   });
   ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   <details>
   <summary>Example response</summary>
@@ -290,10 +290,13 @@ DEXs work by having multiple pools of token pairs (e.g. NEAR-USDC) that users ca
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
-  const wallet = new Wallet({ createAccessKeyFor: AMM_CONTRACT_ADDRESS });
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
-  await wallet.viewMethod({
+  const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
+
+  const { viewMethod } = useWalletSelector();
+
+  await viewMethod({
     method: 'get_pools',
     args: {
       from_index: 0,
@@ -303,7 +306,7 @@ DEXs work by having multiple pools of token pairs (e.g. NEAR-USDC) that users ca
   });
   ```
 
-  _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+  Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   <details>
   <summary>Example response</summary>
@@ -470,12 +473,14 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
     ```js
-    import { Wallet } from './near-wallet';
+    import { useWalletSelector } from "@near-wallet-selector/react-hook";
 
     const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
-    const wallet = new Wallet({ createAccessKeyFor: AMM_CONTRACT_ADDRESS });
 
-    await wallet.callMethod({
+    const { callMethod } = useWalletSelector();
+
+    await callMethod({
+      contractId: AMM_CONTRACT_ADDRESS,
       method: 'swap',
       args: {
         actions: [
@@ -488,13 +493,12 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
           },
         ],
       },
-      contractId: AMM_CONTRACT_ADDRESS,
       gas: 300000000000000,
       deposit: 1,
     });
     ```
 
-    _The `Wallet` object comes from our [quickstart template](https://github.com/near-examples/hello-near-examples/blob/main/frontend/near-wallet.js)_
+   Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
 
   <details>
   <summary>Example response</summary>

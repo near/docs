@@ -5,7 +5,7 @@ sidebar_label: Auction Factory
 description: "Create new auctions through a factory."
 ---
 
-import {Github, Language} from "@site/src/components/codetabs"
+import {Github, Language} from "@site/src/components/UI/Codetabs"
 
 Since an auction contract hosts a single auction, each time you would like to host a new auction you will need to deploy a new contract. Rather than finding the compiled WASM file, creating a new account, deploying the contract, and then initializing it each time, you can use a factory contract to do this for you.
 
