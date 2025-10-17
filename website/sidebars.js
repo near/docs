@@ -1,4 +1,18 @@
 const sidebar = {
+  academy: [
+        'quest/introduction',
+        {
+          type: 'html',
+          value: '<hr/>',
+        },
+        'quest/intro-to-near',
+        'quest/accounts',
+        'quest/data-flow',
+        'quest/near-network',
+        'quest/primitives',
+        'quest/smart-contracts',
+
+  ],
   build: [
     {
       type: 'doc',

@@ -1,0 +1,2 @@
+- Progress bar sticks and moves with the page
+- End of quiz should show the correct/total answers

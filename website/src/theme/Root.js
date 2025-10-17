@@ -6,7 +6,6 @@ import useIsBrowser from '@docusaurus/useIsBrowser'; // https://docusaurus.io/do
 import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // wallet selector
@@ -19,6 +18,7 @@ import { setupMeteorWallet } from '@near-wallet-selector/meteor-wallet';
 import { setupNightly } from '@near-wallet-selector/nightly';
 import { WalletSelectorProvider } from '@near-wallet-selector/react-hook';
 import { setupSender } from '@near-wallet-selector/sender';
+import { AcademyProgressProvider } from '../components/Academy/AcademyProgressContext';
 // import { setupMeteorWalletApp } from '@near-wallet-selector/meteor-wallet-app';
 import { setupWelldoneWallet } from '@near-wallet-selector/welldone-wallet';
 
@@ -113,19 +113,9 @@ function Root({ children, location }) {
   return (
     <PostHogProvider client={posthog}>
       <WalletSelectorProvider config={walletSelectorConfig}>
-        {children}
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
+        <AcademyProgressProvider>
+          {children}
+        </AcademyProgressProvider>
       </WalletSelectorProvider>
     </PostHogProvider>
   );
