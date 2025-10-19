@@ -297,11 +297,11 @@ const sidebar = {
               ]},
               {
                 "Factory": [
-                  'tutorials/factory/0-introduction',
-                  'tutorials/factory/1-setup',
-                  'tutorials/factory/2-deploy',
-                  'tutorials/factory/3-manager',
-                  'tutorials/factory/4-testing',
+                  'tutorials/factory/introduction',
+                  'tutorials/factory/setup',
+                  'tutorials/factory/deploy',
+                  'tutorials/factory/manager',
+                  'tutorials/factory/testing',
                 ]},
             {
               "Coin Flip": [
