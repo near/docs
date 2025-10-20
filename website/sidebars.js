@@ -267,7 +267,7 @@ const sidebar = {
             'tutorials/examples/guest-book',
             // 'tutorials/examples/donation',
             // 'tutorials/examples/coin-flip',
-            // 'tutorials/examples/factory',
+            'tutorials/examples/factory',
             {
               "LinkDrops": [
               'tutorials/neardrop/introduction',
@@ -280,14 +280,6 @@ const sidebar = {
               'tutorials/neardrop/frontend'
             ]},
             {
-              "Update Contract & Migrate State": [
-                'tutorials/update-state/introduction',
-                'tutorials/update-state/basic-migration',
-                'tutorials/update-state/versioned-state',
-                'tutorials/update-state/self-update',
-                'tutorials/update-state/testing',
-          ]},
-            {
               "Advanced Cross-Contract Call": [
                 'tutorials/advanced-xcc/introduction',
                 'tutorials/advanced-xcc/setup',
@@ -295,14 +287,14 @@ const sidebar = {
                 'tutorials/advanced-xcc/parallel-execution',
                 'tutorials/advanced-xcc/testing-deployment'
               ]},
-              {
-                "Factory": [
-                  'tutorials/factory/introduction',
-                  'tutorials/factory/setup',
-                  'tutorials/factory/deploy',
-                  'tutorials/factory/manager',
-                  'tutorials/factory/testing',
-                ]},
+              // {
+              //   "Factory": [
+              //     'tutorials/factory/0-introduction',
+              //     'tutorials/factory/1-factory-contract',
+              //     'tutorials/factory/2-deploy-factory',
+              //     'tutorials/factory/3-create-instances',
+              //     'tutorials/factory/4-update-contract',
+              //   ]},
             {
               "Coin Flip": [
                 'tutorials/coin-flip/introduction',
