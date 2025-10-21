@@ -9,20 +9,63 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
-In this tutorial, we will build an indexer using the NEAR Indexer Framework. The indexer will listen realtime events from NEAR blockchain for FunctionCalls on a specific contract and log the details of each call.
+In this tutorial, we will build an indexer using the NEAR Indexer Framework. The indexer will listen realtime blocks data from NEAR blockchain.
 
 To get our indexer up and running we will need two steps:
 
 1. To [initialize](#initialization) the indexer
-2. To [start it](#run)
+2. To [start it](#starting-the-indexer)
 
-The full source code for the indexer example is available in the [GitHub repository](https://github.com/near-examples/near-indexer?tab=readme-ov-file).
+The full source code for the indexer example is available in the [GitHub repository](https://github.com/near/nearcore/tree/master/tools/indexer/example).
+
+:::important
+Source code link is for `nearcore` repository, as the Indexer Framework is part of the `nearcore` codebase. We provide the link to `master` branch. If you want to use **the latest stable release version** you should check the [releases page](https://github.com/near/nearcore/releases) and checkout the corresponding tag.
+:::
+
+---
+
+## Prerequisites
+
+### Install Rust
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+<hr class="subsection" />
+
+
+### Install developer tools
+
+<Tabs>
+
+<TabItem value="linux" label="Linux">
+```bash
+apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo awscli
+```
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+```bash
+brew install cmake protobuf clang llvm awscli
+```
+</TabItem>
+
+</Tabs>
 
 ---
 
 ## Initialization
 
-In order for our indexer to process blocks it needs to join the NEAR network as a node. To do that, we need first to initialize it, which will download the blockchain `genesis` config, and create a `key` for our node to communicate with other nodes:
+In order for our indexer to process blocks it needs to join the NEAR network as a node. To do that, we need first to initialize it, which will download the blockchain `genesis` config, and create a `key` for our node to communicate with other nodes.
+
+Go to the `nearcore/tools/indexer/example` folder and build the indexer:
+
+```bash
+cd nearcore/tools/indexer/example && cargo build --release
+```
+
+Then, run the following command to initialize the network configuration:
 
 <Tabs groupId="code-tabs">
     <TabItem value="localnet" label="Localnet" default>
@@ -66,17 +109,17 @@ After we finish initializing the indexer, and configuring it, we can start it by
 <Tabs groupId="code-tabs">
     <TabItem value="localnet" label="Localnet" default>
       ```bash
-        cargo run --release -- --home-dir ~/.near/localnet --accounts bob.near --block-height 137510 run
+        cargo run --release -- --home-dir ~/.near/localnet
       ```
     </TabItem>
     <TabItem value="testnet" label="Testnet" default>
       ```bash
-        cargo run --release -- --home-dir ~/.near/testnet --accounts bob.testnet --block-height 218137510 run
+        cargo run --release -- --home-dir ~/.near/testnet run
       ```
     </TabItem>
     <TabItem value="mainnet" label="Mainnet" default>
       ```bash
-        cargo run --release -- --home-dir ~/.near/mainnet --accounts bob.near --block-height 167668637 run
+        cargo run --release -- --home-dir ~/.near/mainnet run
       ```
     </TabItem>
 </Tabs>
@@ -85,11 +128,11 @@ After we finish initializing the indexer, and configuring it, we can start it by
 
 ## Parsing the Block Data
 
-From the block data, we can access the transactions, their receipts and actions. In this example, we will look for FunctionCall actions on a specific contract and log the details of each call.
+From the block data, we can access the transactions, their receipts and actions. See the code below for an example of how to parse the block data:
 
 <Github fname="main.rs" language="rust"
-        url="https://github.com/near-examples/near-indexer/blob/main/src/main.rs"
-        start="71" end="154" />
+        url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"
+        start="13" end="243" />
 
 ---
 
@@ -226,6 +269,21 @@ Indexer Framework also exposes access to the internal APIs (see Indexer::client_
 ...
 "archive": true,
 ...
+```
+
+---
+
+## Using NEAR Indexer in your Project
+
+You can also use NEAR Indexer Framework as a dependency in your own Rust project. To do that, add the following to your `Cargo.toml` file (replace `2.8.0` with the latest stable release version):
+
+```toml
+[dependencies]
+near-indexer = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
+near-indexer-primitives = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
+near-config-utils = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
+near-o11y = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
+near-primitives = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
 ```
 
 <MovingForwardSupportSection />
