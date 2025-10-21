@@ -53,6 +53,14 @@ brew install cmake protobuf clang llvm awscli
 
 </Tabs>
 
+<hr class="subsection" />
+
+### Clone nearcore repository
+
+```bash
+git clone git@github.com:near/nearcore.git
+```
+
 ---
 
 ## Initialization
