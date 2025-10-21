@@ -82,6 +82,7 @@
     "stream-browserify": "^3.0.0",
     "styled-components": "^6.1.19",
     "swr": "^2.3.6",
+    "typed.js": "^2.1.0",
     "url": "^0.11.4",
     "util": "^0.12.5",
     "vm-browserify": "^1.1.2"
