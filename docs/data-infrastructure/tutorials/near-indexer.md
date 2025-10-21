@@ -123,7 +123,8 @@ After we finish initializing the indexer, and configuring it, we can start it by
       ```
     </TabItem>
 </Tabs>
-
+#### Run into an Error?
+- If your indexer cannot find `boot nodes`, check the [boot nodes](#boot-nodes) section
 ---
 
 ## Parsing the Block Data
