@@ -147,7 +147,7 @@ near contract call-function as-transaction <account-id> ft_transfer json-args '{
 
 ### Check Token Price
 
-While most methods follow the NEP-141 standard, the liquid staking contract also provides an additional helper method called `ft_price`. This method isn’t part of the standard itself — it’s implemented specifically for this contract to make it easier to check the current exchange rate between the liquid token and `NEAR`, since the price of the token is determined by the formula we discussed [here](#fungible-token-nep-141).
+While most methods follow the NEP-141 standard, the liquid staking contract also provides an additional helper method called `ft_price`. This method isn’t part of the standard itself — it’s implemented specifically for this contract to make it easier to check the current exchange rate between the liquid token and `NEAR`, since the price of the token is determined by the formula: `exchange_rate = total_staked_near / total_liquid_token_supply`
 
 To query the current price, run the following command:
 
