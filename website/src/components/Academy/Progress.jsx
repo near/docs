@@ -12,7 +12,7 @@ const Progress = ({ course, total }) => {
     <div className="lesson-progress academy-progress">
       <div className="progress-header">
         <h3 className="progress-title">
-          {course ? `${course.toUpperCase()} PROGRESS` : 'ACADEMY PROGRESS'}
+          {course ? `Lesson's Progress` : 'General Progress'}
         </h3>
         <div className="progress-bar">
           <div

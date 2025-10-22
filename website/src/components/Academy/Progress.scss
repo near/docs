@@ -1,40 +1,26 @@
 // Lesson Progress Component Styles
 .badge {
-  background: linear-gradient(135deg, #4299e1, #63b3ed);
-  border-radius: 12px;
-  padding: 0.5rem 1rem;
+  background: var(--icon-svg-color);
+  border-radius: 6px;
+  padding: 0.25rem .5rem;
   color: white;
-  font-weight: 600;
-}
+  }
 
 .lesson-progress {
-  // background: linear-gradient(135deg, #2d3748, #1a202c);
-  border: none;
-  border-radius: 16px;
-  margin-bottom: 24px;
-  color: var(--ifm-color-content, #111827);
+  margin-bottom: 2rem;
 
   .progress-header {
-    .progress-title {
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin: 0 0 0.25rem 0 !important;
-      text-transform: none;
-      letter-spacing: normal;
-      text-align: left;
-    }
-
     .progress-bar {
       width: 100%;
-      height: 12px;
+      height: 6px;
       background-color: #4a5568;
-      border-radius: 6px;
+      border-radius: 3px;
       overflow: hidden;
-      margin-bottom: 1rem;
+      margin-bottom: .75rem;
 
       .progress-fill {
         height: 100%;
-        background: linear-gradient(90deg, #4299e1, #63b3ed);
+        background: var(--icon-svg-color);
         border-radius: 6px;
         transition: width 0.3s ease;
       }
@@ -44,17 +30,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 1rem;
-
-      .lessons-completed {
-        font-weight: 600;
-        font-size: 1.25rem;
-      }
-
-      .progress-percentage {
-        font-weight: 600;
-        font-size: 1.25rem;
-      }
     }
   }
 
@@ -83,56 +58,6 @@
       .section-progress {
         color: var(--ifm-color-content-secondary, #6b7280);
         font-size: 0.75rem;
-      }
-    }
-  }
-}
-
-// Dark mode support
-[data-theme='dark'] {
-  .badge {
-    background: var(--ifm-color-emphasis-100, #1f2937);
-  }
-
-  .lesson-progress {
-    border-color: var(--ifm-color-emphasis-300, #374151);
-    color: #ffffff;
-
-    .progress-header {
-      .progress-title {
-        color: var(--ifm-color-content, #f9fafb);
-      }
-
-      .progress-bar {
-        background-color: var(--ifm-color-emphasis-300, #4b5563);
-      }
-
-      .progress-stats {
-        .lessons-completed {
-          color: var(--ifm-color-content-secondary, #d1d5db);
-        }
-
-        .progress-percentage {
-          color: var(--ifm-color-content, #f9fafb);
-        }
-      }
-    }
-
-    .section-breakdown {
-      border-top-color: var(--ifm-color-emphasis-300, #374151);
-
-      .section-item {
-        &:not(:last-child) {
-          border-bottom-color: var(--ifm-color-emphasis-200, #374151);
-        }
-
-        .section-title {
-          color: var(--ifm-color-content, #f9fafb);
-        }
-
-        .section-progress {
-          color: var(--ifm-color-content-secondary, #d1d5db);
-        }
       }
     }
   }

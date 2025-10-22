@@ -240,13 +240,35 @@ a.cover-card[target="_blank"]::after {
   display: none;
 }
 
+.auto-col {
+
+  padding: 0 var(--ifm-spacing-horizontal);
+
+  @media (max-width: 768px) {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  
+  @media (min-width: 769px) and (max-width: 1200px) {
+    flex: 1 1 calc(50% - 0.75rem);
+    max-width: calc(50% - 0.75rem);
+  }
+  
+  @media (min-width: 1201px) {
+    flex: 1 1 calc(33.333% - 1rem);
+    max-width: calc(33.333% - 1rem);
+  }
+}
+
 // ============================================================================
 // LANDING PAGE STYLES
 // ============================================================================
 
 .landing {
   margin: 0;
-  padding: 0 1rem 0 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .landing-intro {
@@ -315,7 +337,7 @@ a.cover-card[target="_blank"]::after {
   line-height: 1.6;
 }
 
-.landing .col {
+.landing .auto-col {
   margin-bottom: 3rem;
 }
 
@@ -923,6 +945,12 @@ div[class^='announcementBar_'] {
 // ============================================================================
 // NEAR QUEST
 // ============================================================================
+
+.quest-subsection {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+}
 
 .quest-subtitle {
   font-size: 2rem;

@@ -1,17 +1,30 @@
 const sidebar = {
   academy: [
-        'quest/introduction',
-        {
-          type: 'html',
-          value: '<hr/>',
-        },
-        'quest/intro-to-near',
-        'quest/accounts',
-        'quest/data-flow',
-        'quest/near-network',
-        'quest/primitives',
-        'quest/smart-contracts',
-
+    'quest/introduction',
+    {
+      type: 'html',
+      value: '<hr/>',
+    },
+    {
+      type: 'category',
+      label: 'Web3 Apps',
+      collapsed: true,
+      customProps: {
+        icon: '/assets/menu/near.svg',
+      },
+      items: [
+        'quest/web3-apps/intro-to-web3',
+        'quest/web3-apps/building-blocks',
+        'quest/web3-apps/why-near',
+        'quest/web3-apps/examples',
+        'quest/web3-apps/takeaway',
+      ]
+    },
+    'quest/accounts',
+    'quest/data-flow',
+    'quest/near-network',
+    'quest/primitives',
+    'quest/smart-contracts',
   ],
   build: [
     {
