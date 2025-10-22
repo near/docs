@@ -477,7 +477,13 @@ const sidebar = {
             'primitives/lockup/lockup',
           ]
         },
-        "primitives/liquid-staking"
+        {
+          "Liquid Staking":
+            [
+              "primitives/liquid-staking/liquid-staking",
+              "primitives/liquid-staking/deploy-your-own-contract",
+            ]
+        }
       ],
     },
     {
