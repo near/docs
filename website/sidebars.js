@@ -497,6 +497,7 @@ const sidebar = {
               'Indexers': [
                 'data-infrastructure/indexers',
                 'data-infrastructure/near-lake-framework',
+                'data-infrastructure/near-indexer',
               ],
             },
           ]
@@ -523,8 +524,9 @@ const sidebar = {
                     'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
                     'data-infrastructure/tutorials/running-near-lake/lake-start-options',
                     'data-infrastructure/tutorials/running-near-lake/credentials',
-                  ]
-                }
+                  ],
+                },
+                "data-infrastructure/tutorials/listen-to-realtime-events"
               ],
             },
           ]
