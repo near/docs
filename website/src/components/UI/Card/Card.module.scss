@@ -1,6 +1,5 @@
 .card {
-  margin: var(--space-4) 0;
-  padding: var(--space-2) 0;
+  padding: var(--space-1);
   border-radius: var(--radius-card);
   border: var(--border-card);
   background: var(--color-bg-surface);
@@ -95,6 +94,16 @@
     //   border-color: rgba(16, 185, 129, 0.3);
     // }
 
+  }
+
+  // based on #DBEAFE
+  &--blue {
+    background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+
+    .card__title {
+      font-weight: var(--font-weight-bold);
+    }
   }
 
   &--purple {

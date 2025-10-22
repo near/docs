@@ -315,6 +315,10 @@ a.cover-card[target="_blank"]::after {
   line-height: 1.6;
 }
 
+.landing .col {
+  margin-bottom: 3rem;
+}
+
 // Mobile styles
 @media (max-width: 768px) {
   .landing {
@@ -531,15 +535,6 @@ li>ul {
   position: relative;
   padding-top: 2.5rem;
   margin-top: 2rem;
-}
-
-.col {
-  overflow: visible;
-  margin-bottom: 3rem;
-}
-
-.row {
-  overflow: visible;
 }
 
 .card__icon {
@@ -923,4 +918,40 @@ div[class^='announcementBar_'] {
   .newsletter-sidebar {
     width: 100%;
   }
+}
+
+// ============================================================================
+// NEAR QUEST
+// ============================================================================
+
+.quest-subtitle {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.quest-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: black;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.no-shadow {
+  box-shadow: none !important;
+}
+
+// vertical center content
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quest-list li {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
 }
