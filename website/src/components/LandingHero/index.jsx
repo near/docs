@@ -120,7 +120,7 @@ const LandingHero = () => {
       <div className="landing-hero__content">
         <div className="landing-hero__left">
           <h1 className="landing-hero__title">
-            NEAR Protocol
+            NEAR Protocol Docs
           </h1>
           <div className="landing-hero__subtitle-container">
             <h2 className="landing-hero__subtitle">

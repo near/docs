@@ -1,8 +1,11 @@
 .landing-hero {
-  padding: 4rem 0 6rem;
-  max-width: 100%;
-  margin: 0;
   width: 100%;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 
   &__content {
     display: grid;
@@ -437,7 +440,16 @@ html[data-theme='light'] {
 }
 
 // Override any container styles
-.landing {
+:global(.landing) {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+:global(.main-wrapper) {
   max-width: 100% !important;
   padding: 0 !important;
   margin: 0 !important;
