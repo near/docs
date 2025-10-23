@@ -37,21 +37,14 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ### Install developer tools
 
-<Tabs>
-
-<TabItem value="linux" label="Linux">
 ```bash
+apt update
 apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo awscli
 ```
-</TabItem>
 
-<TabItem value="macos" label="macOS">
-```bash
-brew install cmake protobuf clang llvm awscli
-```
-</TabItem>
-
-</Tabs>
+:::important
+The above command is for **Linux** based systems. NEAR Indexer Framework doesn't support Windows or MacOS.
+:::
 
 <hr class="subsection" />
 
