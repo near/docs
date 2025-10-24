@@ -71,6 +71,12 @@ const sidebar = {
         },
         {
           "Reference": [
+            'tools/explorer',
+            {
+              type: 'link',
+              label: 'Wallets ↗',
+              href: 'https://wallet.near.org',
+            },
             'tools/near-cli',
             {
               type: 'link',
@@ -136,6 +142,15 @@ const sidebar = {
             },
           ]
         },
+        {
+          "Reference": [
+            {
+              type: "link",
+              label: "Chainsig.js",
+              href: "https://github.com/NearDeFi/chainsig.js"
+            }
+          ]
+        }
       ],
     },
     {
@@ -193,21 +208,6 @@ const sidebar = {
             },
           ]
         },
-        {
-          "Reference": [
-            {
-              type: 'link',
-              label: 'NEAR AI',
-              href: 'https://docs.near.ai/',
-            },
-            {
-              type: 'link',
-              label: 'Bitte Protocol',
-              href: 'https://docs.bitte.ai/',
-            },
-          ]
-        }
-        // 'web3-apps/ai/ai-assistant'
       ],
     },
     {
@@ -360,6 +360,7 @@ const sidebar = {
         {
           "Reference": [
             'smart-contracts/contracts-list',
+            'tools/near-cli',
             'tools/sdk',
             'tools/clear-state',
           ]
@@ -433,6 +434,7 @@ const sidebar = {
         {
           "Reference": [
             'tools/near-api',
+            'tools/near-cli',
             'tools/wallet-selector',
           ]
         }
@@ -496,64 +498,42 @@ const sidebar = {
       link: { type: 'generated-index', slug: 'data-infrastructure/what-is' },
       items: [
         'data-infrastructure/what-is',
+        'data-infrastructure/data-apis',
+        'data-infrastructure/big-query',
         {
-          "Concepts": [
-            'data-infrastructure/data-apis',
-            'data-infrastructure/big-query',
+          'Indexers': [
+            'data-infrastructure/indexers',
+            'data-infrastructure/near-lake-framework',
+            'data-infrastructure/near-indexer',
             {
-              'Indexers': [
-                'data-infrastructure/indexers',
-                'data-infrastructure/near-lake-framework',
-                'data-infrastructure/near-indexer',
-              ],
-            },
-          ]
-        },
-        {
-          "Tutorials": [
-            // {"NEAR Indexer": []},
-            {
-              "NEAR Lake Framework": [
-                'data-infrastructure/tutorials/listen-function-calls',
-                'data-infrastructure/tutorials/state-changes',
+              "Tutorials": [
                 {
-                  "NFT Indexer": [
-                    'data-infrastructure/tutorials/nft-indexer',
-                    'data-infrastructure/tutorials/python-nft-indexer',
+                  "NEAR Lake Framework": [
+                    'data-infrastructure/tutorials/listen-function-calls',
+                    'data-infrastructure/tutorials/state-changes',
+                    {
+                      "NFT Indexer": [
+                        'data-infrastructure/tutorials/nft-indexer',
+                        'data-infrastructure/tutorials/python-nft-indexer',
+                      ]
+                    },
                   ]
                 },
-              ]
-            },
-            {
-              'NEAR Indexer': [
-                "data-infrastructure/tutorials/listen-to-realtime-events",
                 {
-                  "Building a Data Lake": [
-                    'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
-                    'data-infrastructure/tutorials/running-near-lake/lake-start-options',
-                    'data-infrastructure/tutorials/running-near-lake/credentials',
+                  'NEAR Indexer': [
+                    "data-infrastructure/tutorials/listen-to-realtime-events",
+                    {
+                      "Building a Data Lake": [
+                        'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
+                        'data-infrastructure/tutorials/running-near-lake/lake-start-options',
+                        'data-infrastructure/tutorials/running-near-lake/credentials',
+                      ],
+                    },
                   ],
                 },
-
-              ],
-            },
-          ]
-        },
-        {
-          "Reference": [
-            'tools/explorer',
-            'tools/data-services',
-            {
-              type: 'category',
-              label: 'Data APIs',
-              link: { type: 'doc', id: 'tools/ecosystem-apis/introduction' },
-              items: [
-                'tools/ecosystem-apis/fastnear',
-                'tools/ecosystem-apis/nearblocks',
-                'tools/ecosystem-apis/pikespeak',
               ]
             }
-          ]
+          ],
         },
       ],
     },

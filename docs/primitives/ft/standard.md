@@ -92,6 +92,8 @@ ft_transfer_call(receiver_id: string, amount: string, memo: string?, msg: string
 
     ⚠️ Note that this method does not need to be implemented by the FT contract itself, but rather by any contract that expects to receive fungible tokens
 
+    See a reference implementation in the [using FTs page](./ft.md#handling-deposits)
+
 </details>
 
 <br />
