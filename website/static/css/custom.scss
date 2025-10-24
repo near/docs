@@ -240,6 +240,16 @@ a.cover-card[target="_blank"]::after {
   display: none;
 }
 
+// SEARCH
+.DocSearch-Button-Key {
+  width: 15px !important;
+  height: 16px !important;
+}
+
+.DocSearch-Button-Keys {
+  min-width: calc(27px + .8em) !important;
+}
+
 // ============================================================================
 // LANDING PAGE STYLES
 // ============================================================================
