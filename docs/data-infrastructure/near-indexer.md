@@ -1,10 +1,8 @@
 ---
 id: near-indexer
-title: NEAR Indexer
-description: "NEAR Indexer is a micro-framework that provides a stream of blocks recorded on the NEAR network. It is designed to handle real-time events on the blockchain."
+title: What is NEAR Indexer?
+description: "A framework to handle real-time events on the blockchain"
 ---
-
-# NEAR Indexer
 
 As scaling dApps enter NEAR’s mainnet, an issue may arise: how do they quickly and efficiently access state from our deployed smart contracts, and cut out the cruft? Contracts may grow to have complex data structures and querying the network RPC may not be the optimal way to access state data.
 
