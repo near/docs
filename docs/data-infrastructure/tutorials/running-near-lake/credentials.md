@@ -1,5 +1,5 @@
 ---
-sidebar_label: Credentials
+title: Credentials
 id: credentials
 description: "Learn how to provide AWS credentials to access NEAR Lake data"
 ---

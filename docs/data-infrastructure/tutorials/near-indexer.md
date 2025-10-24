@@ -1,7 +1,7 @@
 ---
 id: listen-to-realtime-events
 title: Listen to Realtime Events
-sidebar_label: Using NEAR Indexer
+sidebar_label: Creating an Indexer
 description: "This tutorial will guide you through building an indexer using the NEAR Indexer Framework. The indexer will listen for FunctionCalls on a specific contract and log the details of each call."
 ---
 

@@ -1,5 +1,5 @@
 ---
-sidebar_label: Start options
+title: Start options
 id: lake-start-options
 description: "Learn how to create an indexer using the NEAR Lake Framework."
 ---
