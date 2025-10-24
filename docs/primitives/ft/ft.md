@@ -422,7 +422,10 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
 ---
 
 ## Attaching FTs to a Call
-Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, the FT standard enables to attach fungible tokens in a call by using the FT-contract as intermediary. This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a function call in your name.
+
+Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, the FT standard enables to **attach fungible tokens** in a call by using the FT-contract as intermediary.
+
+This means that, instead of you attaching tokens directly to the call, you ask the FT-contract to do both a transfer and a function call in your name.
 
 Let's assume that you need to deposit FTs on [Ref Finance](https://rhea.finance/).
 
@@ -528,42 +531,35 @@ If you want your contract to handle deposit in FTs you have to implement the `ft
 The `ft_on_transfer` must return how many FT tokens have to **be refunded**, so the FT contract gives them back to the sender.
 
 ```rust
-// Implement the contract structure
-#[near(contract_state)]
-impl Contract {}
+// Callback on receiving tokens by this contract.
+// `msg` format is either "" for deposit or `TokenReceiverMessage`.
+public fn ft_on_transfer(
+  &mut self,
+  sender_id: AccountId,
+  amount: U128,
+  msg: String,
+) -> PromiseOrValue<U128> {
+  let token_in = env::predecessor_account_id();
 
-#[near]
-impl FungibleTokenReceiver for Contract {
-  // Callback on receiving tokens by this contract.
-  // `msg` format is either "" for deposit or `TokenReceiverMessage`.
-  fn ft_on_transfer(
-    &mut self,
-    sender_id: AccountId,
-    amount: U128,
-    msg: String,
-  ) -> PromiseOrValue<U128> {
-    let token_in = env::predecessor_account_id();
+  assert!(token_in == self.ft_contract, "{}", "The token is not supported");
+  assert!(amount >= self.price, "{}", "The attached amount is not enough");
 
-    assert!(token_in == self.ft_contract, "{}", "The token is not supported");
-    assert!(amount >= self.price, "{}", "The attached amount is not enough");
+  env::log_str(format!("Sender id: {:?}", sender_id).as_str());
 
-    env::log_str(format!("Sender id: {:?}", sender_id).as_str());
-
-    if msg.is_empty() {
-      // Your internal logic here
-      PromiseOrValue::Value(U128(0))
-    } else {
-      let message =
-        serde_json::from_str::<TokenReceiverMessage>(&msg).expect("WRONG_MSG_FORMAT");
-      match message {
-        TokenReceiverMessage::Action {
-          buyer_id,
-        } => {
-          let buyer_id = buyer_id.map(|x| x.to_string());
-          env::log_str(format!("Target buyer id: {:?}", buyer_id).as_str());
-          // Your internal business logic
-          PromiseOrValue::Value(U128(0))
-        }
+  if msg.is_empty() {
+    // Your internal logic here
+    PromiseOrValue::Value(U128(0))
+  } else {
+    let message =
+      serde_json::from_str::<TokenReceiverMessage>(&msg).expect("WRONG_MSG_FORMAT");
+    match message {
+      TokenReceiverMessage::Action {
+        buyer_id,
+      } => {
+        let buyer_id = buyer_id.map(|x| x.to_string());
+        env::log_str(format!("Target buyer id: {:?}", buyer_id).as_str());
+        // Your internal business logic
+        PromiseOrValue::Value(U128(0))
       }
     }
   }
