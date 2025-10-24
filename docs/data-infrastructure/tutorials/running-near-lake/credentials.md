@@ -12,6 +12,8 @@ Please note that using your own AWS Credentials is the only way to access the da
 
 :::
 
+<hr class="subsection" />
+
 ### AWS S3 Credentials
 
 To be able to get objects from the AWS S3 bucket you need to provide your AWS credentials.

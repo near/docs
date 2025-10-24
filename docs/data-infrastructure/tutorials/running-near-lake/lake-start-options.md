@@ -6,7 +6,9 @@ description: "Learn how to create an indexer using the NEAR Lake Framework."
 
 This tutorial will guide you through creating a simple indexer using the NEAR Lake Framework that can start from a specified block height, the latest final block, or the last indexed block.
 
-# NEAR Lake Framework Indexer Start Options Tutorial
+### Start Options
+
+There are three options to start an indexer using NEAR Lake Framework:
 
 - from specified block height (out of the box)
   ```bash
@@ -20,6 +22,8 @@ This tutorial will guide you through creating a simple indexer using the NEAR La
   ```bash
   ./target/release/indexer mainnet from-interruption
   ```
+
+---
 
 ## Motivation
 
@@ -45,6 +49,8 @@ We want to keep [NEAR Lake Framework](/data-infrastructure/near-lake-framework) 
 Though, the possibility to start indexer from the latest block or from the block after the one it has indexed the last, might be very useful.
 
 Also, during [the April Data Platform Community Meeting](https://github.com/near/indexers-docs/blob/main/blog/2022-05-11-community-meeting-record.mdx) we had a question whether we plan to add this feature to the library. We've promised to create a tutorial showing how to do it by your own. So here it is.
+
+---
 
 ## Preparation
 
@@ -163,6 +169,8 @@ This code is not going to build yet. Meanwhile let's have a quick look of what w
 
 OK, all the preparations are done. Let's move on.
 
+---
+
 ## Design the `StartOptions`
 
 So we want to be able to pass a command that defines the way our indexer should start. In this tutorial we'll be using `clap`.
@@ -224,6 +232,8 @@ pub(crate) enum StartOptions {
 
 Pretty simple and straightforward, agree?
 
+---
+
 ## Creating a `LakeConfig`
 
 In order to create `LakeConfig` we're going to use a config builder [`LakeConfigBuilder`](https://docs.rs/near-lake-framework/0.3.0/near_lake_framework/struct.LakeConfigBuilder.html). Fotunately, we've imported it already.
@@ -259,6 +269,8 @@ The only parameter left to set is the most important for us in this tutorial `st
 
 Normally, we just pass the block height number `u64` but we're implementing the start options here.
 
+---
+
 ## Start options logic
 
 Let's create a separate function that will hold the logic of identification the `start_block_height` and call it `get_start_block_height`.
@@ -290,6 +302,8 @@ async fn get_start_block_height(start_options: &StartOptions) -> u64 {
 ```
 
 Er, how should we get the latest block from the network? We should query the JSON RPC and get the final block, extract its height and call it a day.
+
+<hr class="subsection" />
 
 ### `FromLatest`
 
@@ -428,6 +442,8 @@ async fn final_block_height(rpc_url: &str) -> u64 {
 
 You may have noticed the `FromInterruption` and a comment about the placeholder. The reason we've made is to be able to build the application right now to test out that `FromLatest` works as expected.
 
+<hr class="subsection" />
+
 ### Testing `FromLatest`
 
 :::danger Credentials
@@ -457,6 +473,8 @@ Once the code is built you should see something like that in your terminal:
 You can stop it by pressing `CTRL+C`
 
 And now we can move on to `FromInterruption`
+
+<hr class="subsection" />
 
 ### `FromInterruption`
 
@@ -513,6 +531,8 @@ What we are doing here:
 - If the `Result` is `Ok`, we are reading the `contents` and parsing it
 - If the `Result` is `Err` we print a message about the error and call `last_block_height` to get the final block from the network (the fallback we were talking earlier)
 
+<hr class="subsection" />
+
 ### Testing `FromInterruption`
 
 In order to ensure everything works as expected we will start index from the genesis to store the last indexed block. And then we will start it from interruption to ensure we're not starting from latest.
@@ -563,6 +583,8 @@ Restart the indexer from interruption
 You should see the indexer logs beginning from the block you've memorized.
 
 Perfect! It's all done. Now you can adjust the code you got in the result to your needs and use it in your indexers.
+
+---
 
 ## Summary
 
