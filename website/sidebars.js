@@ -362,6 +362,7 @@ const sidebar = {
             'smart-contracts/contracts-list',
             'tools/sdk',
             'tools/clear-state',
+            'tools/using-llms',
           ]
         },
       ],
@@ -434,6 +435,7 @@ const sidebar = {
           "Reference": [
             'tools/near-api',
             'tools/wallet-selector',
+            'tools/using-llms',
           ]
         }
       ],
