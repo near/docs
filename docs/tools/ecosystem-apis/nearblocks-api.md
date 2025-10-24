@@ -16,6 +16,8 @@ You can find the complete endpoint list in [this page](https://api.nearblocks.io
 
 ## Endpoints
 
+NEARBlocks API provides endpoints for both `mainnet` and `testnet`:
+
 - Mainnet: `https://api.nearblocks.io`
 - Testnet: `https://api-testnet.nearblocks.io`
 
@@ -23,15 +25,23 @@ You can find the complete endpoint list in [this page](https://api.nearblocks.io
 NearBlocks API supports `GET` requests only.
 :::
 
-If you have a Pro subscription, you can pass the API key into a REST API call as `Authorization` header with the following format. Replace `API_KEY` with the key string of your API key. For example, to pass an API key for an Account API:
 
-```sh
- curl -X GET -H "Authorization: Bearer API_KEY" "https://api.nearblocks.io/v1/account/wrap.near"
- ```
+<details>
+  <summary> Pro Subscription </summary>
+
+  If you have a Pro subscription, you can pass the API key into a REST API call as `Authorization` header with the following format. Replace `API_KEY` with the key string of your API key. For example, to pass an API key for an Account API:
+
+  ```sh
+  curl -X GET -H "Authorization: Bearer API_KEY" "https://api.nearblocks.io/v1/account/wrap.near"
+  ```
+
+</details>
+
 ---
 
 ## Examples
 
+### All Calls to a Function
 All the transactions where somebody called `create_drop` on Keypom
 
 ```bash
@@ -48,6 +58,8 @@ curl -X GET "https://api.nearblocks.io/v1/account/v2.keypom.near/txns?method=cre
 </details>
 
 <hr className="subsection" />
+
+### Function Calls by Account
 
 All the times that `gagdiez.near` called `create_drop` on Keypom
 

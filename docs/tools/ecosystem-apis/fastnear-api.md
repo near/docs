@@ -24,7 +24,7 @@ Possible use cases include:
 
 ## Endpoints
 
-The [FastNEAR Server](https://github.com/fastnear/fastnear-api-server-rs) provides a low-latency endpoint for wallets and explorers.
+FastNEAR provides low-latency endpoint for both `mainnet` and `testnet`:
 
 - Mainnet: `https://api.fastnear.com`
 - Testnet: `https://test.api.fastnear.com`
@@ -33,8 +33,7 @@ The [FastNEAR Server](https://github.com/fastnear/fastnear-api-server-rs) provid
 
 ## Examples
 
-### [Query last block produced](https://github.com/fastnear/neardata-server/)
-
+### Query Last Block
 ```bash
 curl https://mainnet.neardata.xyz/v0/last_block/final
 ```
@@ -59,7 +58,7 @@ curl https://mainnet.neardata.xyz/v0/last_block/final
 
 <hr className="subsection"/>
 
-### [Query User's Balance](https://github.com/fastnear/fastnear-api-server-rs)
+### Query User's Balance
 
 ```bash
 # Query user's FTs
@@ -77,6 +76,8 @@ curl https://api.fastnear.com/v1/account/root.near/ft
 
 <hr className="subsection"/>
 
+### Query User's NFTs
+
 ```sh
 # Query user's NFTs
 curl https://api.fastnear.com/v1/account/root.near/nft
@@ -92,6 +93,8 @@ curl https://api.fastnear.com/v1/account/root.near/nft
 </details>
 
 <hr className="subsection"/>
+
+### Query User's Full Assets
 
 ```sh
 # Query all user's assets
