@@ -18,7 +18,7 @@ Check the tutorial on how to perform cross-contract calls [in batches and in par
 
 ---
 
-## Obtaining the Cross Contract Call Example
+## Clone the Example
 
 You have two options to start the project:
 
