@@ -1,6 +1,7 @@
 ---
 id: listen-to-realtime-events
 title: Listen to Realtime Events
+sidebar_label: Creating an Indexer
 description: "This tutorial will guide you through building an indexer using the NEAR Indexer Framework. The indexer will listen for FunctionCalls on a specific contract and log the details of each call."
 ---
 
@@ -22,6 +23,10 @@ The full source code for the indexer example is available in the [GitHub reposit
 Source code link is for `nearcore` repository, as the Indexer Framework is part of the `nearcore` codebase. We provide the link to `master` branch. If you want to use **the latest stable release version** you should check the [releases page](https://github.com/near/nearcore/releases) and checkout the corresponding tag.
 :::
 
+:::danger
+NEAR Indexer Framework only works on **`Linux x86`**, it does **not** support Windows or MacOS
+:::
+
 ---
 
 ## Prerequisites
@@ -37,21 +42,14 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ### Install developer tools
 
-<Tabs>
-
-<TabItem value="linux" label="Linux">
 ```bash
+apt update
 apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo awscli
 ```
-</TabItem>
 
-<TabItem value="macos" label="macOS">
-```bash
-brew install cmake protobuf clang llvm awscli
-```
-</TabItem>
-
-</Tabs>
+:::danger
+NEAR Indexer Framework only works on **`Linux x86`**, it does **not** support Windows or MacOS
+:::
 
 <hr class="subsection" />
 

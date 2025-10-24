@@ -526,14 +526,15 @@ const sidebar = {
             },
             {
               'NEAR Indexer': [
+                "data-infrastructure/tutorials/listen-to-realtime-events",
                 {
-                  "Data Lake": [
+                  "Building a Data Lake": [
                     'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
                     'data-infrastructure/tutorials/running-near-lake/lake-start-options',
                     'data-infrastructure/tutorials/running-near-lake/credentials',
                   ],
                 },
-                "data-infrastructure/tutorials/listen-to-realtime-events"
+
               ],
             },
           ]
