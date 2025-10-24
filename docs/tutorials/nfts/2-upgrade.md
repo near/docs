@@ -40,7 +40,7 @@ As for the pagination, Rust has some awesome functions for skipping to a startin
 
 Let's move over to the `enumeration.rs` file and implement that logic:
 
-<Github language="rust" start="46" end="75" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/enumeration.rs" />
+<Github language="rust" start="44" end="74" url="https://github.com/near-examples/nft-tutorial/blob/main/nft-contract-basic/src/enumeration.rs" />
 
 ---
 
