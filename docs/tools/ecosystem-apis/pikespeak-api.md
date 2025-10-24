@@ -13,7 +13,7 @@ Use case includes:
 
 :::tip Documentation
 
-You can find the complete API endpoint list in [this page](https://doc.pikespeak.ai/)
+You can find the complete API endpoint list in [Pikespeak documentation page](https://doc.pikespeak.ai/)
 
 :::
 
@@ -29,6 +29,7 @@ To access the Pikespeak API you'll need to [register and create an account](http
 
 ## Examples
 
+### Check Account Balance
 Check the account balance for `root.near`:
 
 ```sh
@@ -56,6 +57,8 @@ curl -X 'GET' \
 </details>
 
 <hr className="subsection" />
+
+### Most Active Wallets
 
 Most active wallets NEAR senders:
 
@@ -94,6 +97,8 @@ curl -X 'GET' \
 </details>
 
 <hr className="subsection" />
+
+### Historic Account Events
 
 Get historic account events for `keypom.near`:
 
