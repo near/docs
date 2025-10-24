@@ -476,6 +476,13 @@ const sidebar = {
             'primitives/lockup/introduction',
             'primitives/lockup/lockup',
           ]
+        },
+        {
+          "Liquid Staking":
+            [
+              "primitives/liquid-staking/liquid-staking",
+              "primitives/liquid-staking/deploy-your-own-contract",
+            ]
         }
       ],
     },
@@ -497,6 +504,7 @@ const sidebar = {
               'Indexers': [
                 'data-infrastructure/indexers',
                 'data-infrastructure/near-lake-framework',
+                'data-infrastructure/near-indexer',
               ],
             },
           ]
@@ -523,8 +531,9 @@ const sidebar = {
                     'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
                     'data-infrastructure/tutorials/running-near-lake/lake-start-options',
                     'data-infrastructure/tutorials/running-near-lake/credentials',
-                  ]
-                }
+                  ],
+                },
+                "data-infrastructure/tutorials/listen-to-realtime-events"
               ],
             },
           ]
