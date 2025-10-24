@@ -78,10 +78,11 @@ The smart contract is available in two flavors: Rust and JavaScript
 
 The contract exposes methods to query the greeting and change it. These methods do nothing but calling `get_greeting` and `set_greeting` in the `hello-near` example.
 
+<hr class="subsection" />
 
 ### Querying for the Greeting
 
-Notice how the contract performs a cross-contract call to `hello.near-example.testnet` to get the greeting message, and then handles the response in a **callback function**.
+The contract performs a cross-contract call to `hello.near-example.testnet` to get the greeting message, and then handles the response in a **callback function**.
 
 <Tabs>
   <TabItem value="js" label="🌐 JavaScript">
@@ -106,6 +107,8 @@ Notice how the contract performs a cross-contract call to `hello.near-example.te
       start="4" end="12" />
   </TabItem>
 </Tabs>
+
+<hr class="subsection" />
 
 ### Callback Function
 
