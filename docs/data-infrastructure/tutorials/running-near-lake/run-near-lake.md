@@ -1,10 +1,10 @@
 ---
 id: run-lake-indexer
-sidebar_label: Running Lake Indexer
+title: Running Lake Indexer
 description: "Learn how to set up and run a NEAR Lake Indexer, including prerequisites, network configuration, and commands for syncing from the latest or a specific block."
 ---
 
-Learn how to set up and run a NEAR Lake Indexer, including prerequisites, network configuration, and commands for syncing from the latest or a specific block.
+At NEAR we already have a working solution to index blockchain data and store it in AWS S3 buckets called **NEAR Lake**. In this guide you will learn how to set up and run an instance of the NEAR Lake Indexer.
 
 The Lake Indexer setup consists of the following components:
 
@@ -14,10 +14,11 @@ The Lake Indexer setup consists of the following components:
 
 :::info
 
-NEAR Lake is a blockchain indexer built on top of [NEAR Indexer microframework](https://github.com/nearprotocol/nearcore/tree/master/chain/indexer)
-to watch the network and store all the events as JSON files on AWS S3.
+NEAR Lake is an indexer specialized on storing events as JSON files on AWS S3, built on top of the [NEAR Indexer microframework](https://github.com/nearprotocol/nearcore/tree/master/chain/indexer)
 
 :::
+
+<hr class="subsection" />
 
 ### Prepare Development Environment
 
@@ -38,11 +39,15 @@ Before you proceed, make sure you have the following software installed:
   > aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
   > ```
 
+<hr class="subsection" />
+
 ### Compile NEAR Lake
 
 ```bash
 $ cargo build --release
 ```
+
+<hr class="subsection" />
 
 ### Configure NEAR Lake
 
@@ -65,34 +70,38 @@ For example, in order to track all shards, you just add the shard #0 to the list
 ...
 ```
 
+<hr class="subsection" />
+
 ### Run NEAR Lake
 
 Commands to run NEAR Lake, after `./target/release/near-lake`
 
-| Command | Key/Subcommand                | Required/Default                                                       | Responsible for                                                                                                                                                                                                                                                                                                                                                               |
-| ------- | ----------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|         | `--home`                      | Default <br />`~/.near`                                                | Tells the node where too look for necessary files: <br />`config.json`<br />, <br />`genesis.json`<br />, <br />`node_key.json`<br />, and <br />`data`<br /> folder                                                                                                                                                                                                          |
-| `init`  |                               |                                                                        | Tells the node to generate config files in `--home-dir`                                                                                                                                                                                                                                                                                                                       |
-|         | `--chain-id`                  | Required<br /><br /> _ `localnet`<br /> _ `testnet`<br /> \* `mainnet` | Defines the chain to generate config files for                                                                                                                                                                                                                                                                                                                                |
-|         | `--download-config`           | Optional                                                               | If provided tells the node to download `config.json` from the public URL. You can download them manually<br /><br /> - [testnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/rpc/config.json)<br /> - [mainnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/rpc/config.json)      |
-|         | `--download-genesis`          | Optional                                                               | If provided tells the node to download `genesis.json` from the public URL. You can download them manually<br /><br /> - [testnet genesis.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/genesis.json)<br /> - [mainnet genesis.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/genesis.json) |
-|         | TODO:<br />Other `neard` keys |                                                                        |                                                                                                                                                                                                                                                                                                                                                                               |
-| `run`   |                               |                                                                        | Runs the node                                                                                                                                                                                                                                                                                                                                                                 |
-|         | `--bucket`                    | Required                                                               | AWS S3 Bucket name                                                                                                                                                                                                                                                                                                                                                            |
-|         | `--region`                    | Required                                                               | AWS S3 Bucket region                                                                                                                                                                                                                                                                                                                                                          |
-|         | `--fallback-region`           | Default eu-central-1                                                   | AWS S3 Fallback region                                                                                                                                                                                                                                                                                                                                                        |
-|         | `--endpoint`                  | Optional                                                               | AWS S3 compatible API endpoint                                                                                                                                                                                                                                                                                                                                                |
-|         | `--stream-while-syncing`      | Optional                                                               | If provided Indexer streams blocks while they appear on the node instead of waiting the node to be fully synced                                                                                                                                                                                                                                                               |
-|         | `--concurrency`               | Default 1                                                              | Defines the concurrency for the process of saving block data to AWS S3                                                                                                                                                                                                                                                                                                        |
-|         | `sync-from-latest`            | One of the `sync-` subcommands is required                             | Tells the node to start indexing from the latest block in the network                                                                                                                                                                                                                                                                                                         |
-|         | `sync-from-interruption`      | One of the `sync-` subcommands is required                             | Tells the node to start indexing from the block the node was interrupted on (if it is a first start it will fallback to `sync-from-latest`)                                                                                                                                                                                                                                   |
-|         | `sync-from-block --height N`  | One of the <br />`sync-`<br /> subcommands is required                 | Tells the node to start indexing from the specified block height `N` (**Ensure** you node data has the block you want to start from)                                                                                                                                                                                                                                          |
+| Command | Key/Subcommand                | Required/Default                                                       | Responsible for                                                                                                                                                                                                                                                                                                                                                                  |
+|---------|-------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|         | `--home`                      | Default <br />`~/.near`                                                | Tells the node where too look for necessary files: <br />`config.json`<br />, <br />`genesis.json`<br />, <br />`node_key.json`<br />, and <br />`data`<br /> folder                                                                                                                                                                                                             |
+| `init`  |                               |                                                                        | Tells the node to generate config files in `--home-dir`                                                                                                                                                                                                                                                                                                                          |
+|         | `--chain-id`                  | Required<br /><br /> _ `localnet`<br /> _ `testnet`<br /> \* `mainnet` | Defines the chain to generate config files for                                                                                                                                                                                                                                                                                                                                   |
+|         | `--download-config`           | Optional                                                               | If provided tells the node to download `config.json` from the public URL. You can download them manually<br /><br /> - [testnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/rpc/config.json)<br /> - [mainnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/rpc/config.json) |
+|         | `--download-genesis`          | Optional                                                               | If provided tells the node to download `genesis.json` from the public URL. You can download them manually<br /><br /> - [testnet genesis.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/genesis.json)<br /> - [mainnet genesis.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/genesis.json)    |
+|         | TODO:<br />Other `neard` keys |                                                                        |                                                                                                                                                                                                                                                                                                                                                                                  |
+| `run`   |                               |                                                                        | Runs the node                                                                                                                                                                                                                                                                                                                                                                    |
+|         | `--bucket`                    | Required                                                               | AWS S3 Bucket name                                                                                                                                                                                                                                                                                                                                                               |
+|         | `--region`                    | Required                                                               | AWS S3 Bucket region                                                                                                                                                                                                                                                                                                                                                             |
+|         | `--fallback-region`           | Default eu-central-1                                                   | AWS S3 Fallback region                                                                                                                                                                                                                                                                                                                                                           |
+|         | `--endpoint`                  | Optional                                                               | AWS S3 compatible API endpoint                                                                                                                                                                                                                                                                                                                                                   |
+|         | `--stream-while-syncing`      | Optional                                                               | If provided Indexer streams blocks while they appear on the node instead of waiting the node to be fully synced                                                                                                                                                                                                                                                                  |
+|         | `--concurrency`               | Default 1                                                              | Defines the concurrency for the process of saving block data to AWS S3                                                                                                                                                                                                                                                                                                           |
+|         | `sync-from-latest`            | One of the `sync-` subcommands is required                             | Tells the node to start indexing from the latest block in the network                                                                                                                                                                                                                                                                                                            |
+|         | `sync-from-interruption`      | One of the `sync-` subcommands is required                             | Tells the node to start indexing from the block the node was interrupted on (if it is a first start it will fallback to `sync-from-latest`)                                                                                                                                                                                                                                      |
+|         | `sync-from-block --height N`  | One of the <br />`sync-`<br /> subcommands is required                 | Tells the node to start indexing from the specified block height `N` (**Ensure** you node data has the block you want to start from)                                                                                                                                                                                                                                             |
 
 ```bash
 $ ./target/release/near-lake --home ~/.near/testnet run --stream-while-syncing --concurrency 50 sync-from-latest
 ```
 
 After the network is synced, you should see logs of every block height currently received by NEAR Lake.
+
+---
 
 ## Syncing
 
@@ -102,6 +111,8 @@ for the regular `nearcore` node. In order to work and index the data your node m
 with the network. 
 
 While snapshot-based syncing was previously the recommended default, we now recommend [Epoch Sync](https://near-nodes.io/intro/node-epoch-sync) —a faster, more lightweight method that allows a node to catch up from genesis without downloading a large state snapshot.
+
+---
 
 ## Running NEAR Lake as an archival node
 
@@ -131,12 +142,16 @@ All the backups can be downloaded from the public [S3 bucket](https://docs.fastn
 
 See [this link](https://near-nodes.io/archival/run-archival-node-with-nearup) for reference
 
+---
+
 ## Using the data
 
 We write all the data to AWS S3 buckets:
 
 - `near-lake-data-testnet` (`eu-central-1` region) for testnet
 - `near-lake-data-mainnet` (`eu-central-1` region) for mainnet
+
+---
 
 ## Custom S3 storage
 
@@ -155,6 +170,8 @@ $ mkdir -p /data/near-lake-custom && minio server /data
 $ ./target/release/near-lake --home ~/.near/testnet run --endpoint http://127.0.0.1:9000 --bucket near-lake-custom sync-from-latest
 ```
 
+<hr class="subsection" />
+
 ### Data structure
 
 The data structure we use is the following:
@@ -172,9 +189,13 @@ The data structure we use is the following:
 - `block_json` contains JSON-serialized [`BlockView`](https://github.com/near/nearcore/blob/e9a28c46c2bea505b817abf484e6015a61ea7d01/core/primitives/src/views.rs#L711-L716) struct. **Note:** this struct might change in the future, we will announce it
 - `shard_N.json` where `N` is `u64` starting from `0`. Represents the index number of the shard. In order to find out the expected number of shards in the block you can look in `block.json` at `.header.chunks_included`
 
+<hr class="subsection" />
+
 ### Access the data
 
 All NEAR Lake AWS S3 buckets have [Request Payer](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html) enabled. It means that anyone with their own AWS credentials can List and Read the bucket's content and **be charged for it by AWS**. Connections to the bucket have to be done with AWS credentials provided. See [NEAR Lake Framework](https://github.com/near/near-lake-framework) for a reference.
+
+<hr class="subsection" />
 
 ### NEAR Lake Framework
 
