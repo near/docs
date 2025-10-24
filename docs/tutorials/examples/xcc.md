@@ -78,32 +78,57 @@ The smart contract is available in two flavors: Rust and JavaScript
 
 The contract exposes methods to query the greeting and change it. These methods do nothing but calling `get_greeting` and `set_greeting` in the `hello-near` example.
 
-<Tabs>
 
+### Querying for the Greeting
+
+Notice how the contract performs a cross-contract call to `hello.near-example.testnet` to get the greeting message, and then handles the response in a **callback function**.
+
+<Tabs>
   <TabItem value="js" label="🌐 JavaScript">
     <Github fname="contract.ts" language="ts"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
-            start="17" end="39" />
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts#L25-L40"
+            start="25" end="40" />
   </TabItem>
   <TabItem value="rust" label="🦀 Rust (low level)">
     <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L6-L23"
             start="6" end="23" />
-    </TabItem>
-    <TabItem value="rust-hl" label="🦀 Rust (high level)">
-      <Github fname="external.rs" language="rust"
-        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs#L9-L21"
-        start="9" end="21" />
+  </TabItem>
+  <TabItem value="rust-hl" label="🦀 Rust (high level)">
+    <Github fname="external.rs" language="rust"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs#L9-L21"
+      start="9" end="21" />
 
-      Which requires you to define the external contract interface:
+    Which requires you to define the external contract interface:
 
-      <Github fname="external.rs" language="rust"
-        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
-        start="4" end="12" />
-    </TabItem>
-  </Tabs>
+    <Github fname="external.rs" language="rust"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
+      start="4" end="12" />
+  </TabItem>
+</Tabs>
 
-### Testing the Contract
+### Callback Function
+
+The callback function processes the result of the cross-contract call. In this case, it simply returns the greeting message obtained from the `hello-near` contract.
+
+Notice that the callback function is marked as **private**, meaning it can only be called by the contract itself.
+
+<Tabs>
+  <TabItem value="js" label="🌐 JavaScript">
+    <Github fname="contract.ts" language="ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts#L42-L52"
+      start="42" end="52" />
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L25-L39"
+            start="25" end="39" />
+  </TabItem>
+</Tabs>
+
+---
+
+## Testing the Contract
 
 The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
 
