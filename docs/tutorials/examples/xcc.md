@@ -76,25 +76,32 @@ The smart contract is available in two flavors: Rust and JavaScript
 
 ## Smart Contract
 
-### Contract
-The contract exposes methods to query the greeting and change it. These methods do nothing but calling `get_greeting` and
-`set_greeting` in the `hello-near` example.
+The contract exposes methods to query the greeting and change it. These methods do nothing but calling `get_greeting` and `set_greeting` in the `hello-near` example.
 
-<CodeTabs>
-<Language value="js" language="ts">
-    <Github fname="contract.ts"
+<Tabs>
+
+  <TabItem value="js" label="🌐 JavaScript">
+    <Github fname="contract.ts" language="ts"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="17" end="39" />
-  </Language>
-  <Language value="rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="22" end="51" />
-            <Github fname="external.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
-            start="4" end="12" />
-  </Language>
-</CodeTabs>
+  </TabItem>
+  <TabItem value="rust" label="🦀 Rust (low level)">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L6-L23"
+            start="6" end="23" />
+    </TabItem>
+    <TabItem value="rust-hl" label="🦀 Rust (high level)">
+      <Github fname="external.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs#L9-L21"
+        start="9" end="21" />
+
+      Which requires you to define the external contract interface:
+
+      <Github fname="external.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
+        start="4" end="12" />
+    </TabItem>
+  </Tabs>
 
 ### Testing the Contract
 

@@ -503,30 +503,26 @@ const sidebar = {
         {
           'Indexers': [
             'data-infrastructure/indexers',
-            'data-infrastructure/near-lake-framework',
-            'data-infrastructure/near-indexer',
             {
-              "Tutorials": [
+              "NEAR Lake Framework": [
+                'data-infrastructure/near-lake-framework',
+                'data-infrastructure/tutorials/listen-function-calls',
+                'data-infrastructure/tutorials/state-changes',
+              ]
+            },
+            {
+              "NEAR Indexer": [
+                'data-infrastructure/near-indexer',
+                "data-infrastructure/tutorials/listen-to-realtime-events",
                 {
-                  "NEAR Lake Framework": [
-                    'data-infrastructure/tutorials/listen-function-calls',
-                    'data-infrastructure/tutorials/state-changes',
-                  ]
-                },
-                {
-                  'NEAR Indexer': [
-                    "data-infrastructure/tutorials/listen-to-realtime-events",
-                    {
-                      "Building a Data Lake": [
-                        'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
-                        'data-infrastructure/tutorials/running-near-lake/lake-start-options',
-                        'data-infrastructure/tutorials/running-near-lake/credentials',
-                      ],
-                    },
+                  "Building a Data Lake": [
+                    'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
+                    'data-infrastructure/tutorials/running-near-lake/lake-start-options',
+                    'data-infrastructure/tutorials/running-near-lake/credentials',
                   ],
                 },
               ]
-            }
+            },
           ],
         },
       ],
