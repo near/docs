@@ -9,6 +9,8 @@ const LandingHero = () => {
   const options = [
     {
       label: 'AI',
+      buttonText: 'Build AI Agents',
+      buttonLink: '/ai/introduction',
       code: (
         <>
           <span className="comment">// Create an AI agent that owns assets</span>
@@ -41,6 +43,8 @@ const LandingHero = () => {
     },
     {
       label: 'Smart Contracts',
+      buttonText: 'Write Smart Contracts',
+      buttonLink: '/smart-contracts/quickstart',
       code: (
         <>
           <span className="comment">// Deploy a smart contract in minutes</span>
@@ -73,6 +77,8 @@ const LandingHero = () => {
     },
     {
       label: 'Multichain',
+      buttonText: 'Build Cross-chain Apps',
+      buttonLink: '/chain-abstraction/what-is',
       code: (
         <>
           <span className="comment">// Sign transactions on any blockchain</span>
@@ -109,6 +115,8 @@ const LandingHero = () => {
     },
     {
       label: 'Web3 Apps',
+      buttonText: 'Build Web3 Apps',
+      buttonLink: '/web3-apps/quickstart',
       code: (
         <>
           <span className="comment">// Build modern web3 apps with NEAR</span>
@@ -179,21 +187,34 @@ const LandingHero = () => {
     <div className="landing-hero">
       <div className="landing-hero__content">
         <div className="landing-hero__left">
-          <h1 className="landing-hero__title">NEAR Protocol Docs</h1>
-          <div className="landing-hero__subtitle-container">
-            <h2 className="landing-hero__subtitle">
-              The Blockchain for:
-              <br />
+          <div className="landing-hero__title-container">
+            <h1 className="landing-hero__title">
+              <span className="landing-hero__title-gradient">NEAR Protocol</span>
+              <span className="landing-hero__title-white">, the blockchain for:</span>
+            </h1>
+            <div className="landing-hero__typed-container">
               <span className="landing-hero__typed" ref={typedElement}></span>
-            </h2>
+            </div>
           </div>
           <p className="landing-hero__description">
             Build decentralized applications and AI agents with seamless cross-chain capabilities on
             a layer-1 blockchain built for scale
           </p>
           <div className="landing-hero__cta">
-            <a href="/protocol/basics" className="button button--primary button--lg">
-              Get Started
+            <a href={options[activeIndex].buttonLink} className="button button--primary button--lg">
+              {options.map((option, index) => (
+                <span
+                  key={option.buttonText}
+                  style={{
+                    opacity: index === activeIndex ? 1 : 0,
+                    transform: `translateY(${index === activeIndex ? 0 : '20px'})`,
+                    position: index === activeIndex ? 'relative' : 'absolute',
+                    width: '100%',
+                  }}
+                >
+                  {option.buttonText}
+                </span>
+              ))}
             </a>
           </div>
         </div>

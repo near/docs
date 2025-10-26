@@ -30,15 +30,19 @@
     align-items: center;
   }
 
+  &__title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
   &__title {
     font-size: 4rem;
     font-weight: 800;
     line-height: 1.1;
     margin: 0;
-    background: linear-gradient(135deg, #00c1de 0%, #00e298 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     text-align: center;
 
     @media (max-width: 996px) {
@@ -48,6 +52,17 @@
     @media (max-width: 768px) {
       font-size: 3rem;
     }
+  }
+
+  &__title-gradient {
+    background: linear-gradient(135deg, #00c1de 0%, #00e298 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__title-white {
+    color: var(--ifm-color-emphasis-700);
   }
 
   &__subtitle-container {
@@ -75,12 +90,18 @@
     }
   }
 
+  &__typed-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+  }
+
   &__typed {
     font-weight: 700;
     font-size: 2rem;
     display: inline;
     position: relative;
-    margin-top: 0.5rem;
 
     @media (max-width: 768px) {
       font-size: 1.75rem;
@@ -100,6 +121,8 @@
     font-size: 2rem;
     opacity: 1;
     animation: blink 0.7s infinite;
+    display: inline;
+    margin-left: -0.1em;
 
     @media (max-width: 768px) {
       font-size: 1.75rem;
@@ -141,7 +164,15 @@
       padding: 0.75rem 2rem;
       border-radius: 8px;
       font-weight: 600;
-      transition: all 0.2s;
+      min-width: 220px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+
+      span {
+        display: block;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
 
       &--primary {
         background: linear-gradient(135deg, #00c1de 0%, #00e298 100%);
