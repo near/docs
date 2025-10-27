@@ -63,6 +63,7 @@
 
   &__title-white {
     color: var(--ifm-color-emphasis-700);
+    font-size: 2rem;
   }
 
   &__subtitle-container {
@@ -94,7 +95,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 3rem;
+    min-height: 2rem;
+    margin-top: -0.5rem;
   }
 
   &__typed {

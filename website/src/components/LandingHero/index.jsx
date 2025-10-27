@@ -2,9 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import './styles.scss';
 
+const CATEGORY_STRINGS = [
+  'Artificial Intelligence',
+  'Smart Contracts',
+  'Multichain',
+  'Decentralized Applications',
+];
+
 const LandingHero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isUserInteracted, setIsUserInteracted] = useState(false);
   const typedElement = useRef(null);
+  const typedInstance = useRef(null);
 
   const options = [
     {
@@ -160,28 +169,27 @@ const LandingHero = () => {
   ];
 
   useEffect(() => {
-    const typed = new Typed(typedElement.current, {
-      strings: [
-        'Artificial Intelligence',
-        'Smart Contracts',
-        'Multichain',
-        'Decentralized Applications',
-      ],
-      typeSpeed: 50,
-      backSpeed: 30,
-      backDelay: 5000,
-      startDelay: 500,
-      loop: true,
-      showCursor: true,
-      onStringTyped: (arrayPos) => {
-        setActiveIndex(arrayPos);
-      },
-    });
+    if (!isUserInteracted) {
+      typedInstance.current = new Typed(typedElement.current, {
+        strings: CATEGORY_STRINGS,
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 5000,
+        startDelay: 500,
+        loop: true,
+        showCursor: true,
+        onStringTyped: (arrayPos) => {
+          setActiveIndex(arrayPos);
+        },
+      });
 
-    return () => {
-      typed.destroy();
-    };
-  }, []);
+      return () => {
+        if (typedInstance.current) {
+          typedInstance.current.destroy();
+        }
+      };
+    }
+  }, [isUserInteracted]);
 
   return (
     <div className="landing-hero">
@@ -190,10 +198,15 @@ const LandingHero = () => {
           <div className="landing-hero__title-container">
             <h1 className="landing-hero__title">
               <span className="landing-hero__title-gradient">NEAR Protocol</span>
-              <span className="landing-hero__title-white">, the blockchain for:</span>
+              <span className="landing-hero__title-white">, the Blockchain For: </span>
             </h1>
+            <h2></h2>
             <div className="landing-hero__typed-container">
-              <span className="landing-hero__typed" ref={typedElement}></span>
+              {isUserInteracted ? (
+                <span className="landing-hero__typed">{CATEGORY_STRINGS[activeIndex]}</span>
+              ) : (
+                <span className="landing-hero__typed" ref={typedElement}></span>
+              )}
             </div>
           </div>
           <p className="landing-hero__description">
@@ -224,7 +237,19 @@ const LandingHero = () => {
               <button
                 key={option.label}
                 className={`landing-hero__tab ${index === activeIndex ? 'active' : ''}`}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => {
+                  // Destroy typed instance and update index first
+                  if (typedInstance.current) {
+                    typedInstance.current.destroy();
+                    typedInstance.current = null;
+                  }
+                  // Update index in the same batch
+                  setActiveIndex(index);
+                  // Use setTimeout to ensure index is updated before showing static text
+                  setTimeout(() => {
+                    setIsUserInteracted(true);
+                  }, 10);
+                }}
               >
                 {option.label}
               </button>
