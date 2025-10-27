@@ -15,9 +15,17 @@ If you want to learn more about the `llms.txt` standard, check [this website](ht
 
 :::
 
+## Using `llms.txt`
+
+The `llms.txt` core purpose is to provide context that the AI agent can reference before generating or modifying code.
+
+Using an `llms.txt` file as a reference for AI coding agents is an advanced technique to guide the AI's behavior, improve code quality, and enforce project-specific patterns. It's essentially a way to provide contextual, in-the-flow documentation.
+
+Next, you can find examples of how to integrate `llms.txt` with [Visual Studio Code](#visual-studio-code) and [Cursor](#cursor).
+
 ## Visual Studio Code
 
-To use NEAR Documentation as reference when working with Copilot Chat, follow these steps.
+To use [NEAR Docs llms.txt](https://docs.near.org/llms.txt) as reference when working with Copilot Chat, follow these steps.
 
 1. Open the Copilot Chat sidebar on VS Code.
 2. Ask your question, and use the `#fetch` keyword to add `https://docs.near.org/llms.txt` as reference.
