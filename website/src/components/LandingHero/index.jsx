@@ -4,8 +4,8 @@ import './styles.scss';
 
 const CATEGORY_STRINGS = [
   'Artificial Intelligence',
+  'Multichain Applications',
   'Smart Contracts',
-  'Multichain',
   'Decentralized Applications',
 ];
 
@@ -46,41 +46,8 @@ const LandingHero = () => {
           <span className="property">from</span>: <span className="string">'USDC'</span>,{'\n  '}
           <span className="property">to</span>: <span className="string">'NEAR'</span>,{'\n  '}
           <span className="property">amount</span>: <span className="string">'100'</span>
+          {'\n }'}
           {'\n'});
-        </>
-      ),
-    },
-    {
-      label: 'Smart Contracts',
-      buttonText: 'Write Smart Contracts',
-      buttonLink: '/smart-contracts/quickstart',
-      code: (
-        <>
-          <span className="comment">// Deploy a smart contract in minutes</span>
-          {'\n'}
-          <span className="keyword">use</span> near_sdk::near;{'\n'}
-          {'\n'}
-          <span className="decorator">#[near(contract_state)]</span>
-          {'\n'}
-          <span className="keyword">pub struct</span> <span className="class">Contract</span> {'{'}
-          {'\n    '}
-          <span className="property">owner</span>: <span className="type">AccountId</span>,{'\n'}
-          &rbrace;{'\n'}
-          {'\n'}
-          <span className="decorator">#[near]</span>
-          {'\n'}
-          <span className="keyword">impl</span> <span className="class">Contract</span> &lbrace;
-          {'\n    '}
-          <span className="keyword">pub fn</span> <span className="function">transfer</span>(
-          <span className="keyword">&mut</span> <span className="keyword">self</span>,{' '}
-          <span className="parameter">to</span>: <span className="type">AccountId</span>,{' '}
-          <span className="parameter">amount</span>: <span className="type">U128</span>) &lbrace;
-          {'\n        '}
-          <span className="comment">// Your logic here</span>
-          {'\n        '}
-          <span className="keyword">self</span>.<span className="function">internal_transfer</span>
-          (to, amount.<span className="function">into</span>());
-          {'\n    '}&rbrace;{'\n'}&rbrace;{'\n'}
         </>
       ),
     },
@@ -123,7 +90,41 @@ const LandingHero = () => {
       ),
     },
     {
-      label: 'Web3 Apps',
+      label: 'Smart Contracts',
+      buttonText: 'Write Smart Contracts',
+      buttonLink: '/smart-contracts/quickstart',
+      code: (
+        <>
+          <span className="comment">// Deploy a smart contract in minutes</span>
+          {'\n'}
+          <span className="keyword">use</span> near_sdk::near;{'\n'}
+          {'\n'}
+          <span className="decorator">#[near(contract_state)]</span>
+          {'\n'}
+          <span className="keyword">pub struct</span> <span className="class">Contract</span> {'{'}
+          {'\n    '}
+          <span className="property">owner</span>: <span className="type">AccountId</span>,{'\n'}
+          &rbrace;{'\n'}
+          {'\n'}
+          <span className="decorator">#[near]</span>
+          {'\n'}
+          <span className="keyword">impl</span> <span className="class">Contract</span> &lbrace;
+          {'\n    '}
+          <span className="keyword">pub fn</span> <span className="function">transfer</span>(
+          <span className="keyword">&mut</span> <span className="keyword">self</span>,{' '}
+          <span className="parameter">to</span>: <span className="type">AccountId</span>,{' '}
+          <span className="parameter">amount</span>: <span className="type">U128</span>) &lbrace;
+          {'\n        '}
+          <span className="comment">// Your logic here</span>
+          {'\n        '}
+          <span className="keyword">self</span>.<span className="function">internal_transfer</span>
+          (to, amount.<span className="function">into</span>());
+          {'\n    '}&rbrace;{'\n'}&rbrace;{'\n'}
+        </>
+      ),
+    },
+    {
+      label: 'dApps',
       buttonText: 'Build Web3 Apps',
       buttonLink: '/web3-apps/quickstart',
       code: (
@@ -197,10 +198,9 @@ const LandingHero = () => {
         <div className="landing-hero__left">
           <div className="landing-hero__title-container">
             <h1 className="landing-hero__title">
-              <span className="landing-hero__title-gradient">NEAR Protocol</span>
-              <span className="landing-hero__title-white">, the Blockchain For: </span>
+              <span className="landing-hero__title-gradient">NEAR Protocol Docs</span>
             </h1>
-            <h2></h2>
+            <h2><span className="landing-hero__title-white">&gt; the blockchain for </span></h2>
             <div className="landing-hero__typed-container">
               {isUserInteracted ? (
                 <span className="landing-hero__typed">{CATEGORY_STRINGS[activeIndex]}</span>
@@ -232,29 +232,6 @@ const LandingHero = () => {
           </div>
         </div>
         <div className="landing-hero__right">
-          <div className="landing-hero__tabs">
-            {options.map((option, index) => (
-              <button
-                key={option.label}
-                className={`landing-hero__tab ${index === activeIndex ? 'active' : ''}`}
-                onClick={() => {
-                  // Destroy typed instance and update index first
-                  if (typedInstance.current) {
-                    typedInstance.current.destroy();
-                    typedInstance.current = null;
-                  }
-                  // Update index in the same batch
-                  setActiveIndex(index);
-                  // Use setTimeout to ensure index is updated before showing static text
-                  setTimeout(() => {
-                    setIsUserInteracted(true);
-                  }, 10);
-                }}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
           <div className="landing-hero__code-window">
             <div className="landing-hero__code-header">
               <div className="landing-hero__code-dots">
@@ -277,6 +254,29 @@ const LandingHero = () => {
                 </pre>
               ))}
             </div>
+          </div>
+          <div className="landing-hero__tabs">
+            {options.map((option, index) => (
+              <button
+                key={option.label}
+                className={`landing-hero__tab ${index === activeIndex ? 'active' : ''}`}
+                onClick={() => {
+                  // Destroy typed instance and update index first
+                  if (typedInstance.current) {
+                    typedInstance.current.destroy();
+                    typedInstance.current = null;
+                  }
+                  // Update index in the same batch
+                  setActiveIndex(index);
+                  // Use setTimeout to ensure index is updated before showing static text
+                  setTimeout(() => {
+                    setIsUserInteracted(true);
+                  }, 10);
+                }}
+              >
+                {option.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>
