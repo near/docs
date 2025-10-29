@@ -198,8 +198,9 @@ const LandingHero = () => {
         <div className="landing-hero__left">
           <div className="landing-hero__title-container">
             <h1 className="landing-hero__title">
-              <span className="landing-hero__title-gradient">NEAR Protocol Docs</span>
+              <span className="landing-hero__title-gradient">NEAR Protocol Documentation</span>
             </h1>
+            <hr className="landing-hero__divider" />
             <h2><span className="landing-hero__title-white">&gt; the blockchain for </span></h2>
             <div className="landing-hero__typed-container">
               {isUserInteracted ? (
