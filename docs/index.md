@@ -16,8 +16,8 @@ import Card from '@site/src/components/UI/Card';
     <p className="landing-subtitle">Build decentralized applications and AI agents with seamless cross-chain capabilities</p>
     <div className="landing-underline"></div>
   </div>
-     <div className="row">
-    <div className="col col--4">
+  <div className="row">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/near.svg" alt="NEAR Protocol" />}
@@ -31,7 +31,7 @@ import Card from '@site/src/components/UI/Card';
         </ul>
       </Card>
     </div>
-    <div className="col col--4">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/ai.svg" alt="AI Native Infrastructure" />}
@@ -45,7 +45,7 @@ import Card from '@site/src/components/UI/Card';
         </ul>
       </Card>
     </div>
-    <div className="col col--4">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/multichain.svg" alt="Multi-Chain" />}
@@ -59,9 +59,7 @@ import Card from '@site/src/components/UI/Card';
         </ul>
       </Card>
     </div>
-    </div>
-         <div className="row">
-    <div className="col col--4">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/app.svg" alt="Web3 Applications" />}
@@ -75,7 +73,7 @@ import Card from '@site/src/components/UI/Card';
         </ul>
       </Card>
     </div>
-    <div className="col col--4">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/contract.svg" alt="Smart Contracts" />}
@@ -89,7 +87,7 @@ import Card from '@site/src/components/UI/Card';
         </ul>
       </Card>
     </div>
-    <div className="col col--4">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/token.svg" alt="Tokens and Primitives" />}
@@ -103,7 +101,7 @@ import Card from '@site/src/components/UI/Card';
         </ul>
       </Card>
     </div>
-    </div>
+  </div>
   <div className="landing-footer">
     <h2>Ready to start building?</h2>
     <p>Discover what makes NEAR the perfect platform for your next application</p>
