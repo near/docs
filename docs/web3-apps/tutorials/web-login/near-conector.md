@@ -505,7 +505,3 @@ The hook handles:
 For a complete implementation, see the [hello-near-connector example](https://github.com/near-examples/hello-near-connector).
 
 ---
-
-
-
-

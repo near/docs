@@ -393,6 +393,7 @@ const sidebar = {
                 'web3-apps/tutorials/web-login/wallet-selector',
                 'web3-apps/tutorials/web-login/ethereum-wallets',
                 'web3-apps/tutorials/web-login/near-conector',
+                'web3-apps/tutorials/web-login/web3-auth',
               ]
             },
             'tutorials/examples/frontend-multiple-contracts',
