@@ -15,17 +15,17 @@ import Card from '@site/src/components/UI/Card';
 
 Welcome to the world of Web3 applications! In this lesson, we'll explore how modern blockchain applications work on NEAR Protocol, focusing on the key concepts that make Web3 apps different from traditional web applications.
 
+![NEAR Protocol](/assets/docs/welcome-pages/1.near-protocol.png)
+
 ---
 
 ## What Makes Web3 Apps Different?
 
-Let's start with a simple comparison. When you use apps like Facebook or Gmail, you have to trust the companies behind those products to:
-1. Keep your data safe
-2. Not sell your information
-3. Not change the rules on you
-4. Keep the service running
+Let's start with a simple comparison. When you use apps like Facebook or Gmail, you have to trust the companies behind those products to keep your data safe and secure.
 
 **Web3 apps flip this completely on its head.** Instead of trusting a company, you trust the blockchain - a network of computers that no single entity controls.
+
+<br />
 
 <div class="row">
   <div class="col col--6">

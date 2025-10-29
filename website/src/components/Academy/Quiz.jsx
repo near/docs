@@ -1,6 +1,7 @@
 import { Children, cloneElement, useEffect, useState } from 'react';
 import './Quiz.scss';
 import { useAcademyProgress } from './AcademyProgressContext';
+import Card from '../UI/Card';
 
 const Quiz = ({ course, id, children }) => {
   if (!id) {
@@ -135,11 +136,7 @@ const MultipleChoice = ({
   return (
     <div className="multiple-choice-question" id={questionId}>
       <div className="question-content">
-        {question && (
-          <div className="question-text">
-            <h3>{question}</h3>
-          </div>
-        )}
+        {question && <h3>{question}</h3>}
         <div className="choices-grid">
           {processedOptions}
         </div>
@@ -156,36 +153,21 @@ const Option = ({
   showFeedback,
   disabled,
   correct = false,
-  label = ""
 }) => {
-  const getClassName = () => {
-    let className = `option-item ${isSelected ? 'selected' : ''}`;
+  let color = isSelected ? 'blue' : 'default';
+  if (showFeedback){
+    color = correct ? 'mint' : 'red';
+  }
 
-    if (showFeedback) {
-      if (correct) {
-        className += ' correct';
-      } else if (isSelected && !correct) {
-        className += ' incorrect';
-      }
-    }
-
-    return className;
-  };
+  console.log("Is selected:", isSelected, "Correct:", correct, "Show feedback:", showFeedback, "Variant:", color);
 
   return (
-    <div
-      className={getClassName()}
+    <Card
+      color={color}
       id={optionId}
       onClick={!disabled ? onSelect : undefined}
-      style={{ cursor: disabled ? 'default' : 'pointer' }}
-    >
-      {label && (
-        <div className="choice-label">{label}</div>
-      )}
-      <div className="choice-text">
-        {children}
-      </div>
-    </div>
+      description={children}
+    />
   );
 };
 

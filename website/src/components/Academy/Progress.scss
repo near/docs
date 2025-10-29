@@ -1,10 +1,15 @@
 // Lesson Progress Component Styles
 .badge {
   background: var(--icon-svg-color);
-  border-radius: 6px;
-  padding: 0.25rem .5rem;
   color: white;
-  }
+  font-size: small;
+  // align text to center vertically
+  padding: 0.2rem 0.5rem;
+}
+
+.lessons-completed {
+  margin-left: var(--space-2);
+}
 
 .lesson-progress {
   margin-bottom: 2rem;
