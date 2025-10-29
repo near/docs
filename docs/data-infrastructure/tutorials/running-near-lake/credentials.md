@@ -1,5 +1,5 @@
 ---
-sidebar_label: Credentials
+title: Credentials
 id: credentials
 description: "Learn how to provide AWS credentials to access NEAR Lake data"
 ---
@@ -11,6 +11,8 @@ To access the data provided by [NEAR Lake](../../near-lake-framework.md) you nee
 Please note that using your own AWS Credentials is the only way to access the data provided by [NEAR Lake](../../near-lake-framework.md) ecosystem.
 
 :::
+
+<hr class="subsection" />
 
 ### AWS S3 Credentials
 

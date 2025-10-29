@@ -1,7 +1,6 @@
 ---
 id: did
 title: Decentralized Identifiers (DIDs)
-hide_table_of_contents: false
 description: "Learn about W3C-compliant identity resolution on NEAR." 
 ---
 

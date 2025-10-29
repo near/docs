@@ -1,7 +1,6 @@
 ---
 id: sdk
 title: NEAR SDK
-hide_table_of_contents: false
 description: "Choose an SDK to start building contracts."
 ---
 

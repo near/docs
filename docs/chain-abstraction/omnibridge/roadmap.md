@@ -18,7 +18,7 @@ Initial launch includes:
 
 ## Migration Path
 
-1. **Phase 1: Hybrid Operation**
+1. **Phase 1: Hybrid Operation** (ongoing)
 - ETH/BTC: Light client verification
 - Other chains: Wormhole message passing
 - All NEAR outbound: Chain Signatures
@@ -57,7 +57,7 @@ Infrastructure development focuses on reliability and usability. An expanded rel
 
 - [Near-One/omni-bridge](https://github.com/Near-One/omni-bridge) - Omni Bridge repository
 - [Near-One/bridge-sdk-js](https://github.com/Near-One/bridge-sdk-js) - JavaScript SDK
-- [Near-One/bridge-sdk-rs](https://github.com/Near-One/bridge-sdk-rs) - Rust SDK
+- [Near-One/bridge-sdk-rs](https://github.com/Near-One/bridge-sdk-rs) - Rust SDK and Bridge CLI
 
 The code is open source and we welcome contributions from the community. Whether you're interested in adding support for new chains, optimizing performance, or building developer tools, there's room for meaningful contribution.
 

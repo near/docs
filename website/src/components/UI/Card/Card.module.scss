@@ -1,5 +1,5 @@
 .card {
-  margin: 0;
+  padding: var(--space-1);
   border-radius: var(--radius-card);
   border: var(--border-card);
   background: var(--color-bg-surface);
@@ -52,7 +52,6 @@
   ul a,
   ol a {
     display: inline-block;
-    padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-sm);
     text-decoration: none;
     color: var(--near-brand-primary);
@@ -94,6 +93,16 @@
     //   border-color: rgba(16, 185, 129, 0.3);
     // }
 
+  }
+
+  // based on #DBEAFE
+  &--blue {
+    background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+
+    .card__title {
+      font-weight: var(--font-weight-bold);
+    }
   }
 
   &--purple {
@@ -272,13 +281,12 @@
     // Links element
     ul {
       margin-top: auto;
-      padding: var(--space-2);
+      padding: var(--space-2) 0;
       list-style: none;
     }
 
     li {
       border-bottom: 1px solid rgba(0, 0, 0, 0.175);
-      padding-left: var(--space-1);
 
       &:last-child {
         border-bottom: none;
@@ -294,7 +302,7 @@
 
         &:hover {
           color: var(--near-brand-primary);
-          padding-left: var(--space-2);
+          transform: translateX(var(--space-2));
         }
       }
     }

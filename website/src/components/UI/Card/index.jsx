@@ -26,6 +26,7 @@ const Card = ({
     color === 'mint' ? styles['card--mint'] : '',
     color === 'purple' ? styles['card--purple'] : '',
     color === 'orange' ? styles['card--orange'] : '',
+    color === 'blue' ? styles['card--blue'] : '',
     isClickable ? styles['card--clickable'] : '',
     className
   ].filter(Boolean).join(' ');

@@ -81,7 +81,7 @@ npm install @reown/appkit-adapter-wagmi @reown/appkit @wagmi/core viem
 First, let's create a new file to handle the Web3Modal (i.e. the modal shown when selecting the `Ethereum Wallets` on the `Wallet Selector`), and all the configs needed to setup the Ethereum Wallets.
 
 <Github fname="web3modal.js" language="js"
-      url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/web3modal.js" />
+  url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/wallets/web3modal.ts" />
 
 <details>
   <summary> Metadata </summary>
@@ -141,7 +141,7 @@ import { setupEthereumWallets } from "@near-wallet-selector/ethereum-wallets";
 ```
 
 <Github fname="web3modal.js" language="js" start="19" end="38" metastring="{8}"
-      url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.js" />
+      url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" />
 
 
 ---

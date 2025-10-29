@@ -28,7 +28,6 @@ const sidebar = {
         },
         {
           "Concepts": [
-            'protocol/architecture',
             {
               'Accounts / Contracts': ['protocol/account-model', 'protocol/account-id', 'protocol/access-keys'],
             },
@@ -61,17 +60,23 @@ const sidebar = {
                 'protocol/network/runtime',
               ],
             },
+            'protocol/architecture',
           ]
         },
         {
           "Tutorials": [
-            'tutorials/protocol/create-account',
             'tutorials/protocol/importing-account',
             'faucet'
           ]
         },
         {
           "Reference": [
+            'tools/explorer',
+            {
+              type: 'link',
+              label: 'Wallets ↗',
+              href: 'https://wallet.near.org',
+            },
             'tools/near-cli',
             {
               type: 'link',
@@ -137,6 +142,15 @@ const sidebar = {
             },
           ]
         },
+        {
+          "Reference": [
+            {
+              type: "link",
+              label: "Chainsig.js",
+              href: "https://github.com/NearDeFi/chainsig.js"
+            }
+          ]
+        }
       ],
     },
     {
@@ -155,10 +169,12 @@ const sidebar = {
             {
               "Getting Started": [
                 "ai/shade-agents/getting-started/introduction",
-                { "Quickstart": [
-                  "ai/shade-agents/getting-started/quickstart/deploying",
-                  "ai/shade-agents/getting-started/quickstart/components",
-                ]},
+                {
+                  "Quickstart": [
+                    "ai/shade-agents/getting-started/quickstart/deploying",
+                    "ai/shade-agents/getting-started/quickstart/components",
+                  ]
+                },
               ]
             },
             {
@@ -192,21 +208,6 @@ const sidebar = {
             },
           ]
         },
-        {
-          "Reference": [
-            {
-              type: 'link',
-              label: 'NEAR AI',
-              href: 'https://docs.near.ai/',
-            },
-            {
-              type: 'link',
-              label: 'Bitte Protocol',
-              href: 'https://docs.bitte.ai/',
-            },
-          ]
-        }
-        // 'web3-apps/ai/ai-assistant'
       ],
     },
     {
@@ -359,6 +360,7 @@ const sidebar = {
         {
           "Reference": [
             'smart-contracts/contracts-list',
+            'tools/near-cli',
             'tools/sdk',
             'tools/clear-state',
           ]
@@ -390,6 +392,7 @@ const sidebar = {
           "Tutorials": [
             {
               "Web Login": [
+                'web3-apps/tutorials/web-login/near-connector',
                 'web3-apps/tutorials/web-login/wallet-selector',
                 'web3-apps/tutorials/web-login/ethereum-wallets',
                 'web3-apps/tutorials/web-login/near-conector',
@@ -433,6 +436,7 @@ const sidebar = {
         {
           "Reference": [
             'tools/near-api',
+            'tools/near-cli',
             'tools/wallet-selector',
           ]
         }
@@ -448,15 +452,42 @@ const sidebar = {
       },
       items: [
         { type: 'link', label: 'Introduction', href: '/primitives/what-is' },
-        'primitives/ft',
-        'primitives/nft',
+        {
+          'Fungible Tokens (FT)': [
+            'primitives/ft/standard',
+            'primitives/ft/ft'
+          ]
+        },
+        {
+          'Non-Fungible Tokens (NFT)': [
+            'primitives/nft/standard',
+            'primitives/nft/nft'
+          ]
+        },
+        {
+          'Linkdrops': [
+            'primitives/linkdrop/standard',
+            'primitives/linkdrop/linkdrop'
+          ]
+        },
         'protocol/network/staking',
-        'primitives/linkdrop',
         'primitives/oracles',
         'primitives/dao',
         'primitives/dex',
         'primitives/did',
-        'primitives/lockup',
+        {
+          'Lockup Contracts': [
+            'primitives/lockup/introduction',
+            'primitives/lockup/lockup',
+          ]
+        },
+        {
+          "Liquid Staking":
+            [
+              "primitives/liquid-staking/liquid-staking",
+              "primitives/liquid-staking/deploy-your-own-contract",
+            ]
+        }
       ],
     },
     {
@@ -469,61 +500,32 @@ const sidebar = {
       link: { type: 'generated-index', slug: 'data-infrastructure/what-is' },
       items: [
         'data-infrastructure/what-is',
+        'data-infrastructure/data-apis',
+        'data-infrastructure/big-query',
         {
-          "Concepts": [
-            'data-infrastructure/data-apis',
-            'data-infrastructure/big-query',
-            {
-              'Indexers': [
-                'data-infrastructure/indexers',
-                'data-infrastructure/near-lake-framework',
-              ],
-            },
-          ]
-        },
-        {
-          "Tutorials": [
-            // {"NEAR Indexer": []},
+          'Indexers': [
+            'data-infrastructure/indexers',
             {
               "NEAR Lake Framework": [
+                'data-infrastructure/near-lake-framework',
                 'data-infrastructure/tutorials/listen-function-calls',
                 'data-infrastructure/tutorials/state-changes',
-                {
-                  "NFT Indexer": [
-                    'data-infrastructure/tutorials/nft-indexer',
-                    'data-infrastructure/tutorials/python-nft-indexer',
-                  ]
-                },
               ]
             },
             {
-              'NEAR Indexer': [
+              "NEAR Indexer": [
+                'data-infrastructure/near-indexer',
+                "data-infrastructure/tutorials/listen-to-realtime-events",
                 {
-                  "Data Lake": [
+                  "Building a Data Lake": [
                     'data-infrastructure/tutorials/running-near-lake/run-lake-indexer',
                     'data-infrastructure/tutorials/running-near-lake/lake-start-options',
                     'data-infrastructure/tutorials/running-near-lake/credentials',
-                  ]
-                }
-              ],
-            },
-          ]
-        },
-        {
-          "Reference": [
-            'tools/explorer',
-            'tools/data-services',
-            {
-              type: 'category',
-              label: 'Data APIs',
-              link: { type: 'doc', id: 'tools/ecosystem-apis/introduction' },
-              items: [
-                'tools/ecosystem-apis/fastnear',
-                'tools/ecosystem-apis/nearblocks',
-                'tools/ecosystem-apis/pikespeak',
+                  ],
+                },
               ]
-            }
-          ]
+            },
+          ],
         },
       ],
     },
