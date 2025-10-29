@@ -1,7 +1,7 @@
 ---
 id: using-llms
-title: Improving your AI Coding Agents
-sidebar_label: Improving AI Agents
+title: Using NEAR documentation with your AI Coding Agents
+sidebar_label: Docs with AI Coding Agents
 description: "Using llms.txt to improve your workflow when using AI coding agents."
 ---
 
