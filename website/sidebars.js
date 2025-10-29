@@ -164,6 +164,7 @@ const sidebar = {
       items: [
         'ai/introduction',
         'ai/near-mcp',
+        'ai/using-llms',
         {
           "Shade Agents": [
             {
@@ -363,7 +364,6 @@ const sidebar = {
             'tools/near-cli',
             'tools/sdk',
             'tools/clear-state',
-            'tools/using-llms',
           ]
         },
       ],
@@ -437,7 +437,6 @@ const sidebar = {
             'tools/near-api',
             'tools/near-cli',
             'tools/wallet-selector',
-            'tools/using-llms',
           ]
         }
       ],
