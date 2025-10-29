@@ -155,11 +155,10 @@ const Option = ({
   correct = false,
 }) => {
   let color = isSelected ? 'blue' : 'default';
+  let border = isSelected ? '3px solid var(--ifm-color-primary)' : '1px solid var(--ifm-color-border-secondary)';
   if (showFeedback){
-    color = correct ? 'mint' : 'red';
+    color = correct ? 'mint' : isSelected && !correct ? 'red' : '';
   }
-
-  console.log("Is selected:", isSelected, "Correct:", correct, "Show feedback:", showFeedback, "Variant:", color);
 
   return (
     <Card
@@ -167,6 +166,7 @@ const Option = ({
       id={optionId}
       onClick={!disabled ? onSelect : undefined}
       description={children}
+      style={{ cursor: disabled ? 'default' : 'pointer', border: border }}
     />
   );
 };

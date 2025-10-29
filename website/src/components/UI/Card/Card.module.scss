@@ -1,5 +1,5 @@
 .card {
-  padding: var(--space-1);
+  padding: var(--space-3) var(--space-1) var(--space-1);
   border-radius: var(--radius-card);
   border: var(--border-card);
   background: var(--color-bg-surface);
@@ -265,7 +265,7 @@
   // Description element
   &__description {
     flex-grow: 1;
-    margin: 0 0 var(--space-4) 0;
+    margin: 0;
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
     font-size: var(--text-base);
@@ -277,17 +277,9 @@
     line-height: var(--leading-relaxed);
     flex-grow: 1;
 
-    p {
-      margin-bottom: var(--space-component-sm);
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
     // Links element
     ul {
-      margin-top: auto;
+      margin-bottom: 0;
       padding: var(--space-2) 0;
       list-style: none;
     }

@@ -21,7 +21,7 @@ const Card = ({
   // Build CSS classes
   const cardClasses = [
     styles.card,
-    variant !== 'icon' ? styles[`card--${variant}`] : '',
+    variant !== 'default' ? styles[`card--${variant}`] : '',
     color !== 'default' ? styles[`card--${color}`] : '',
     isClickable ? styles['card--clickable'] : '',
     className
