@@ -6,6 +6,7 @@ import './faucet.scss';
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
+import { NEAR } from '@near-js/tokens';
 
 
 async function createAndDeleteTmpAcc(beneficiary) {
@@ -25,8 +26,8 @@ async function createAndDeleteTmpAcc(beneficiary) {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const provider = new JsonRpcProvider({ url: 'https://rpc.testnet.fastnear.com' });
   const account = new Account(tmpAccount, provider, signer);
-  await account.transfer({ receiverId: beneficiary, amount: '10000000000000000000000' });
-  return account.deleteAccount(beneficiary);
+  await account.transfer({ receiverId: beneficiary, amount: NEAR.toUnits('5') });
+  return account.deleteAccount('testnet');
 }
 
 export const Faucet = () => {
