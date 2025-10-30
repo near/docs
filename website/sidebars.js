@@ -399,6 +399,12 @@ const sidebar = {
             },
             'tutorials/examples/frontend-multiple-contracts',
             'web3-apps/backend/backend-login',
+            {
+              'Testing on Localnet': [
+                'web3-apps/tutorials/localnet/introduction',
+                'web3-apps/tutorials/localnet/run',
+              ],
+            },
             'chain-abstraction/meta-transactions-relayer',
             {
               type: 'category',
