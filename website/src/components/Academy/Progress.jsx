@@ -21,12 +21,9 @@ const Progress = ({ course, total }) => {
           <div
             className="progress-fill"
             style={{ width: `${percentage}%` }}
-          ></div>
-        </div>
-        <div className="progress-stats">
-          <span className="progress-percentage badge">
-            {percentage}%
-          </span>
+          >
+          {percentage}%
+          </div>
         </div>
       </div>
     </div>

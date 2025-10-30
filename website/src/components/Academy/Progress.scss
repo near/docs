@@ -3,8 +3,8 @@
   background: var(--icon-svg-color);
   color: white;
   font-size: small;
-  // align text to center vertically
-  padding: 0.2rem 0.5rem;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .lessons-completed {

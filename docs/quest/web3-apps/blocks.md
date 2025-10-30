@@ -1,6 +1,6 @@
 ---
 id: building-blocks
-title: Building Blocks of Web3 Apps
+title: Building Blocks of Decentralized Apps
 description: Learn what are the main building blocks of Web3 apps
 hide_title: true
 ---
@@ -15,9 +15,21 @@ import Card from '@site/src/components/UI/Card';
 
 Every Web3 app is made up of 3 main parts that work together:
 
-1. Your Digital Wallet
+1. Blockchain Network
+2. A Digital Wallet
 2. Smart Contracts
-3. The Frontend
+3. A Frontend
+
+---
+
+## Blockchain Network - The Decentralized Computer
+
+A core component of any decentralized application is the blockchain network it runs on (for example, NEAR Protocol). Blockchain networks are made up of many independent computers - known as nodes - that work together to:
+
+- Securely store funds for each user
+- Validate and record transactions between accounts
+- Store data securely
+- Execute decentralized code (smart contracts)
 
 ---
 

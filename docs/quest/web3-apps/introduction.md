@@ -1,7 +1,7 @@
 ---
 id: intro-to-web3
-title: Introduction to Web3 Apps
-description: Learn the fundamentals of building Web3 applications on NEAR Protocol - understand wallets, smart contracts, and user interactions at a high level.
+title: Introduction to Decentralized Apps
+description: Learn what Decentralized applications are at a high level
 hide_title: true
 ---
 
@@ -11,19 +11,59 @@ import Card from '@site/src/components/UI/Card';
 
 <Progress course="web3-apps" total={3} />
 
-# Introduction to Web3 Applications
+# Introduction to Decentralized Apps
 
-Welcome to the world of Web3 applications! In this lesson, we'll explore how modern blockchain applications work on NEAR Protocol, focusing on the key concepts that make Web3 apps different from traditional web applications.
+Welcome to the world of blockchain! In this lesson, we will explore how modern blockchain applications work on NEAR Protocol, focusing on the key concepts that make Decentralized apps different from traditional ones.
 
 ![NEAR Protocol](/assets/docs/welcome-pages/1.near-protocol.png)
 
 ---
 
-## What Makes Web3 Apps Different?
+## Traditional Apps
 
-Let's start with a simple comparison. When you use apps like Facebook or Gmail, you have to trust the companies behind those products to keep your data safe and secure.
+Did you ever notice that different applications force you to have different accounts? Facebook, Gmail, and your bank all make you create an account, which lives only on their servers.
 
-**Web3 apps flip this completely on its head.** Instead of trusting a company, you trust the blockchain - a network of computers that no single entity controls.
+The problem is not just that you have to remember multiple usernames and passwords. You are also giving full control of your funds and data to these different companies.
+
+Not only you need to trust them with not playing around with your data and assets, but also hope they do not shut down or decide to lock you out of your account.
+
+<br />
+
+<Card title="Traditional Apps" >
+  <ul>
+    <li><a>Multiple accounts, each isolated and tied to a specific service </a></li>
+    <li><a>Companies are in charge of your data and funds</a></li>
+    <li><a>Data can be lost if the company shuts down</a></li>
+    <li><a>Companies can change or shutdown services without notice</a></li>
+  </ul>
+</Card>
+
+---
+
+## The Decentralized World
+
+Decentralized applications built on NEAR Protocol change the traditional model completely. Instead of relying on a single company to manage your account, data and funds, you interact with a decentralized network of computers that work together to provide secure and transparent services.
+
+<hr class="subsection" />
+
+### Accounts
+In NEAR Protocol you have a single identity, known as your NEAR account. A decentralized network of computers keep your funds safe and private. No single entity controls your account, only **you do**. Moreover, you can use this account to access **any application built on NEAR** and even other blockchains.
+
+:::tip Multiple Accounts
+
+You still can have multiple accounts if you choose to, but they are all under your control, and not tied to any specific service
+
+:::
+
+<hr class="subsection" />
+
+### Decentralized Applications
+
+Applications built on NEAR also live on NEAR's decentralized network. Such applications are fully transparent and auditable, and can be configured such that **no single person** can change them, nor shut them down.
+
+Decentralized apps are interoperable by default - any application can interact with others and share data. Moreover, since anyone can create NEAR apps, service providers can connect directly with their users, cutting the man in the middle and thus reducing costs while increasing efficiency.
+
+Finally, in NEAR there are **no geographical borders**. You can access any app from anywhere in the world, and easily send and receive funds across borders.
 
 <br />
 
@@ -31,20 +71,20 @@ Let's start with a simple comparison. When you use apps like Facebook or Gmail, 
   <div class="col col--6">
     <Card title="Traditional Web Apps" >
       <ul>
-        <li><a>Data stored on centralized servers</a></li>
-        <li><a>Accounts created with usernames and passwords</a></li>
-        <li><a>Companies control your data</a></li>
+        <li><a>Multiple accounts, each isolated and tied to a specific service </a></li>
+        <li><a>Companies are in charge of your data and funds</a></li>
         <li><a>Data can be lost if the company shuts down</a></li>
+        <li><a>Companies can change or shutdown services without notice</a></li>
       </ul>
     </Card>
   </div>
   <div class="col col--6">
-    <Card title="Web3 Apps" >
+    <Card title="Decentralized Apps" >
       <ul>
-        <li><a>Data stored on decentralized blockchain</a></li>
-        <li><a>Connect using digital wallets</a></li>
-        <li><a>You control your own data</a></li>
-        <li><a>Data persists even if the app disappears</a></li>
+        <li><a>A single account for all applications</a></li>
+        <li><a>You are in charge of your data and funds</a></li>
+        <li><a>Data persists even if the companies disappear</a></li>
+        <li><a>Services are transparent and auditable</a></li>
       </ul>
     </Card>
   </div>
