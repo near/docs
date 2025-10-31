@@ -267,7 +267,7 @@ const sidebar = {
             'tutorials/examples/guest-book',
             // 'tutorials/examples/donation',
             // 'tutorials/examples/coin-flip',
-            'tutorials/examples/factory',
+            // 'tutorials/examples/factory',
             {
               "LinkDrops": [
               'tutorials/neardrop/introduction',
@@ -280,6 +280,14 @@ const sidebar = {
               'tutorials/neardrop/frontend'
             ]},
             {
+              "Update Contract & Migrate State": [
+                'tutorials/update-state/introduction',
+                'tutorials/update-state/basic-migration',
+                'tutorials/update-state/versioned-state',
+                'tutorials/update-state/self-update',
+                'tutorials/update-state/testing',
+          ]},
+            {
               "Advanced Cross-Contract Call": [
                 'tutorials/advanced-xcc/introduction',
                 'tutorials/advanced-xcc/setup',
@@ -287,14 +295,14 @@ const sidebar = {
                 'tutorials/advanced-xcc/parallel-execution',
                 'tutorials/advanced-xcc/testing-deployment'
               ]},
-              // {
-              //   "Factory": [
-              //     'tutorials/factory/0-introduction',
-              //     'tutorials/factory/1-factory-contract',
-              //     'tutorials/factory/2-deploy-factory',
-              //     'tutorials/factory/3-create-instances',
-              //     'tutorials/factory/4-update-contract',
-              //   ]},
+              {
+                "Factory": [
+                  'tutorials/factory/introduction',
+                  'tutorials/factory/setup',
+                  'tutorials/factory/deploy',
+                  'tutorials/factory/manager',
+                  'tutorials/factory/testing',
+                ]},
             {
               "Coin Flip": [
                 'tutorials/coin-flip/introduction',
@@ -316,7 +324,7 @@ const sidebar = {
             'tutorials/examples/xcc',
             // 'tutorials/examples/advanced-xcc',
             'tutorials/examples/global-contracts',
-            'tutorials/examples/update-contract-migrate-state',
+            //'tutorials/examples/update-contract-migrate-state',
             {
               "Build a FT Contract from Scratch": [
                 'tutorials/fts/introduction',
@@ -401,7 +409,15 @@ const sidebar = {
         {
           "Tutorials": [
             'web3-apps/integrate-contracts',
-            'tutorials/examples/frontend-multiple-contracts',
+            //'tutorials/examples/frontend-multiple-contracts',
+            {
+              "Frontend Multipe Contracts": [
+                'tutorials/frontend-multiple-contracts/introduction',
+                'tutorials/frontend-multiple-contracts/setup',
+                'tutorials/frontend-multiple-contracts/query',
+                'tutorials/frontend-multiple-contracts/transactions',
+                'tutorials/frontend-multiple-contracts/batch-actions'
+          ]},
             'web3-apps/ethereum-wallets',
             'web3-apps/backend/backend-login',
             'chain-abstraction/meta-transactions-relayer',
