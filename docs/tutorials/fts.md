@@ -38,11 +38,6 @@ These are the steps that will bring you from **_Zero_** to **_Hero_** in no time
 | 6    | [Transferring FTs](https://near-examples.github.io/ft-tutorial/transfers)                 | Learn how to transfer FTs and discover some of the true powers that the core standard brings                                                    |
 | 7    | [Marketplace](https://near-examples.github.io/ft-tutorial/marketplace)                    | Learn about how common marketplaces operate on NEAR and dive into some of the code that allows buying and selling NFTs by using Fungible Tokens. |
 
-<!--
-1. [Events](https://near-examples.github.io/ft-tutorial/events): in this tutorial you'll explore the events extension, allowing the contract to react on certain events.
-1. [Marketplace](https://near-examples.github.io/ft-tutorial/marketplace): in the last tutorial you'll be exploring some key aspects of the marketplace contract.
--->
-
 ---
 
 ## Next steps
