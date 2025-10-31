@@ -1,5 +1,5 @@
 ---
-id: introduction
+id: nfts
 title: NFT Zero to Hero
 sidebar_label: Introduction
 description: "Learn how to mint NFTs and build a full NFT contract step by step."
