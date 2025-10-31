@@ -661,6 +661,7 @@ When making RPC API requests, you may encounter various errors related to networ
 </details>
 
 ---
+
 ## Transaction Execution Levels {#tx-status-result}
 
 All the methods listed above have `wait_until` request parameter, and
@@ -690,6 +691,25 @@ pub enum TxExecutionStatus {
   Final,
 }
 ```
+
+<details>
+<summary>Waiting for a Transaction</summary>
+
+When a transaction is submitted, it first gets validated by the RPC node. If the transaction fails structural checks it will be immediately rejected. Otherwise, it enters the following lifecycle:
+
+1. The transaction has been accepted by the RPC node and is waiting to be included in a block. If `wait_until = None`, the RPC will return a response at this stage. The transaction hasn’t started executing yet, though it will typically start in the next block.
+
+2. Once the transaction reaches a validator, it ensures a signature matches signer access key and that the account is charged gas pre-payment, then updates access key nonce. The transaction is included in a chunk/block and converted into a single receipt for execution. If `wait_until = Included`, the RPC returns a response immediately indicating that the transaction has just started the execution (no execution results, logs, and outcomes are available at this point).
+
+3. In the next blocks, the receipt will get executed and it may produce more receipts for cross-contract interactions. Once all receipts finish the execution, RPC returns a response if `wait_until = ExecutedOptimistic`.
+
+4. The block that contains the transaction has been finalized. This may occur even sooner than receipts execution finishes (depending on how many cross-contract interactions there), and when it finishes, the RPC returns a response if `wait_until = IncludedFinal`.
+
+5. Once the block that contains the transaction has been finalized and all receipts have completed execution (both `IncludedFinal` and `ExecutedOptimistic` are satisfied), then RPC returns a response if `wait_until = Executed`.
+
+6. Once blocks containing the transaction and all of its receipts are finalized, the RPC returns a response at this point if `wait_until = Final`.
+
+</details>
 
 ---
 
