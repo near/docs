@@ -661,6 +661,7 @@ When making RPC API requests, you may encounter various errors related to networ
 </details>
 
 ---
+
 ## Transaction Execution Levels {#tx-status-result}
 
 All the methods listed above have `wait_until` request parameter, and
@@ -691,7 +692,10 @@ pub enum TxExecutionStatus {
 }
 ```
 
-When a transaction is submitted, it first gets validated by the RPC node. And if the transaction cannot be deserialized from Borsh or fails structural checks, it will be immediately rejected. Otherwise, it enters the following lifecycle:
+<details>
+<summary>Waiting for a Transaction</summary>
+
+When a transaction is submitted, it first gets validated by the RPC node. If the transaction fails structural checks it will be immediately rejected. Otherwise, it enters the following lifecycle:
 
 1. The transaction has been accepted by the RPC node and is waiting to be included in a block. If `wait_until = None`, the RPC will return a response at this stage. The transaction hasn’t started executing yet, though it will typically start in the next block.
 
@@ -704,6 +708,8 @@ When a transaction is submitted, it first gets validated by the RPC node. And if
 5. Once the block that contains the transaction has been finalized and all receipts have completed execution (both `IncludedFinal` and `ExecutedOptimistic` are satisfied), then RPC returns a response if `wait_until = Executed`.
 
 6. Once blocks containing the transaction and all of its receipts are finalized, the RPC returns a response at this point if `wait_until = Final`.
+
+</details>
 
 ---
 
