@@ -302,58 +302,17 @@ const sidebar = {
             'tutorials/examples/update-contract-migrate-state',
             {
               "Build a FT Contract from Scratch": [
-                'tutorials/fts/introduction',
-                'tutorials/fts/predeployed-contract',
-                'tutorials/fts/skeleton',
-                'tutorials/fts/defining-a-token',
-                'tutorials/fts/circulating-supply',
-                'tutorials/fts/registering-accounts',
-                'tutorials/fts/transfers',
-                'tutorials/fts/marketplace',
+                'tutorials/fts',
               ]
             },
             {
               "Build a NFT Contract from Scratch": [
-                'tutorials/nfts/introduction',
-                {
-                  Basic: [
-                    'tutorials/nfts/predeployed-contract',
-                    'tutorials/nfts/skeleton',
-                    'tutorials/nfts/minting',
-                    'tutorials/nfts/upgrade-contract',
-                    'tutorials/nfts/enumeration',
-                    'tutorials/nfts/core',
-                  ],
-                },
-                'tutorials/nfts/events',
-                {
-                  Marketplace: ['tutorials/nfts/approvals', 'tutorials/nfts/marketplace'],
-                },
-                'tutorials/nfts/royalty',
-                'tutorials/nfts/series',
+                'tutorials/nfts',
               ]
             },
             {
               "Build a NFT Contract from Scratch (JS)": [
-                'tutorials/nfts/js/introduction',
-                {
-                  Basic: [
-                    'tutorials/nfts/js/predeployed-contract',
-                    'tutorials/nfts/js/skeleton',
-                    'tutorials/nfts/js/minting',
-                    'tutorials/nfts/js/upgrade-contract',
-                    'tutorials/nfts/js/enumeration',
-                    'tutorials/nfts/js/core',
-                  ],
-                },
-                'tutorials/nfts/js/events',
-                {
-                  Marketplace: [
-                    'tutorials/nfts/js/approvals',
-                    'tutorials/nfts/js/marketplace'
-                  ],
-                },
-                'tutorials/nfts/js/royalty',
+                'tutorials/nfts-js',
               ]
             },
           ]
