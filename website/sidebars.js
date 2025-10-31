@@ -355,10 +355,17 @@ const sidebar = {
                 'web3-apps/tutorials/web-login/near-connector',
                 'web3-apps/tutorials/web-login/wallet-selector',
                 'web3-apps/tutorials/web-login/ethereum-wallets',
+                'web3-apps/tutorials/web-login/web3-auth',
               ]
             },
             'tutorials/examples/frontend-multiple-contracts',
             'web3-apps/backend/backend-login',
+            {
+              'Testing on Localnet': [
+                'web3-apps/tutorials/localnet/introduction',
+                'web3-apps/tutorials/localnet/run',
+              ],
+            },
             'chain-abstraction/meta-transactions-relayer',
             {
               type: 'category',

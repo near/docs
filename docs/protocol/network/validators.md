@@ -20,7 +20,7 @@ If a validator is caught misbehaving, then they get "slashed", meaning that thei
 In the NEAR networks, an attempt to manipulate the chain would mean taking control over the majority of the validators at once, so that the malicious activity won't be flagged. However, this would require putting a huge sum of capital at risk, since an unsuccessful attack would mean slashing your staked tokens.
 
 ### Validator's Economy
-In exchange for servicing the network, validators are rewarded with a target number of NEAR every epoch. The target value is computed in such a way that, on an annualized basis, it will be 4.5% of the total supply.
+In exchange for servicing the network, validators are rewarded with a target number of NEAR every epoch. The target value is computed in such a way that, on an annualized basis, it will be 2.5% of the total supply.
 
 All transaction fees (minus the part which is allocated as the rebate for contracts) which are collected within each epoch are burned by the system. The inflationary reward is paid out to validators at the same rate regardless of the number of fees collected or burned.
 
@@ -44,7 +44,7 @@ You can read more about our consensus strategy on our <a href="https://github.co
 ## Block & Chunk producers
 The top 100 validators are responsible for producing and validating blocks, as well as producing chunks. Under normal circumstances, each validator is assigned to a single shard, for which it produces chunks.
 
-Block & Chunk producers are guaranteed a minimum annual reward of 4.5%. If less than 100% of the network’s tokens are staked, validators have the potential to earn even higher annual rewards.
+Block & Chunk producers are guaranteed a minimum annual reward of 2.5%. If less than 100% of the network’s tokens are staked, validators have the potential to earn even higher annual rewards.
 
 ## Chunk Validators
 
@@ -54,7 +54,7 @@ Non-top 100 validators take on the role of chunk validators, which has lower har
 
 Chunk validators do not track shards. Their responsibilities are focused solely on validating and endorsing chunks.
 
-Like block and chunk producers, chunk validators are guaranteed a minimum of 4.5% annual rewards. If less than 100% of the network’s tokens are staked, chunk validators may earn even higher rewards. For more details on validator economics, check out [NEAR’s Economics Explained](https://near.org/blog/near-protocol-economics/).
+Like block and chunk producers, chunk validators are guaranteed a minimum of 2.5% annual rewards. If less than 100% of the network’s tokens are staked, chunk validators may earn even higher rewards. For more details on validator economics, check out [NEAR’s Economics Explained](https://near.org/blog/near-protocol-economics/).
 
 ## Dedicated Validator Documentation Site
 
