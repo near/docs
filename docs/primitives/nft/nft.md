@@ -516,5 +516,5 @@ If the `msg` parameter is included, then a cross-contract call will be made to `
 
 ## Tutorials
 
-- [NFT Tutorial](/tutorials/nfts/js/introduction) _Zero to Hero_ (JavaScript SDK) - a set of tutorials that cover how to create a NFT contract using JavaScript.
-- [NFT Tutorial](/tutorials/nfts/introduction) _Zero to Hero_ (Rust SDK) - a set of tutorials that cover how to create a NFT contract using Rust.
+- [NFT Tutorial](/tutorials/nfts-js) _Zero to Hero_ (JavaScript SDK) - a set of tutorials that cover how to create a NFT contract using JavaScript.
+- [NFT Tutorial](/tutorials/nfts) _Zero to Hero_ (Rust SDK) - a set of tutorials that cover how to create a NFT contract using Rust.
