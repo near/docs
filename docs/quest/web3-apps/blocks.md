@@ -35,12 +35,20 @@ A core component of any decentralized application is the blockchain network it r
 
 ## Wallets - Your Digital Identity
 
-Think of your wallet as your digital passport. Instead of carrying cash and cards, it holds:
-- An address that is easy to remember (like `alice.near`)
+Wallets are applications that allow you to easily create and access your digital identity (e.g. your NEAR account, and its associated digital keys and assets).
+
+On your wallet you will find:
+
+- Your account's address (e.g. `alice.near`)
 - Your digital keys (which allow you to act securely on the chain)
 - Your digital assets (tokens, NFTs, etc.)
 
-It's like having a secure digital wallet that holds your identity and assets, but instead of cash, it holds digital tokens and your blockchain identity.
+
+:::tip Accounts vs. Wallets
+Something important to note is that, while the wallet app helps you manage your account, the actual account and its assets live on the blockchain network
+
+This means you can use **different wallet apps** to access the same account
+:::
 
 ---
 
@@ -49,7 +57,8 @@ It's like having a secure digital wallet that holds your identity and assets, bu
 Smart contracts are small pieces of code that live in the chain. They:
 
 - Can store data on the blockchain
-- Handle transactions without human intervention
+- Receive and make transfers without human intervention
+- Execute predefined code when someone interacts with them
 - Are completely transparent - anyone can see what code is running
 
 For example, imagine a smart contract that automatically pays you interest on your savings, or one that stores your digital art collection with guaranteed authenticity.
@@ -77,8 +86,7 @@ Let's walk through a simple example on how these pieces fit together using a [di
 4. **You sign the transaction** - Your wallet asks you to confirm the action
 5. **Your message is stored forever** - It's now permanently saved on the blockchain
 
-The beautiful thing is that once your message is stored, it can't be deleted, changed, or lost. Even if the frontend disappears, your message
-will remain stored in the guestbook smart contract.
+The beautiful thing is that once your message is stored, it can't be deleted, changed, or lost. Even if the frontend disappears, your message will remain stored in the guestbook smart contract.
 
 ---
 
