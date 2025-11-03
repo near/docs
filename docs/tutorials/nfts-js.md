@@ -1,7 +1,7 @@
 ---
 id: nfts-js
 title: NFT Zero to Hero JavaScript Edition
-sidebar_label: Introduction
+sidebar_label: Build a NFT Contract from Scratch (JS)
 description: "Learn NFTs from minting to building a full-featured smart contract in this Zero to Hero series."
 ---
 

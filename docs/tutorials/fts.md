@@ -1,7 +1,7 @@
 ---
 id: fts
 title: Fungible Tokens Zero to Hero
-sidebar_label: Introduction
+sidebar_label: Build a FT Contract from Scratch
 description: "Master NEAR fungible tokens from pre-deployed contracts to building fully-featured FT smart contracts."
 ---
 

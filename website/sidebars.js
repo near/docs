@@ -300,21 +300,9 @@ const sidebar = {
             'tutorials/examples/advanced-xcc',
             'tutorials/examples/global-contracts',
             'tutorials/examples/update-contract-migrate-state',
-            {
-              "Build a FT Contract from Scratch": [
-                'tutorials/fts',
-              ]
-            },
-            {
-              "Build a NFT Contract from Scratch": [
-                'tutorials/nfts',
-              ]
-            },
-            {
-              "Build a NFT Contract from Scratch (JS)": [
-                'tutorials/nfts-js',
-              ]
-            },
+            'tutorials/fts',
+            'tutorials/nfts',
+            'tutorials/nfts-js',
           ]
         },
         {

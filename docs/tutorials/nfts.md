@@ -1,7 +1,7 @@
 ---
 id: nfts
 title: NFT Zero to Hero
-sidebar_label: Introduction
+sidebar_label: Build a NFT Contract from Scratch
 description: "Learn how to mint NFTs and build a full NFT contract step by step."
 ---
 
