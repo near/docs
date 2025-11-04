@@ -10,6 +10,8 @@ In NEAR, users control their accounts using access keys, which can be full-acces
 
 Learn more about the benefits of using multiple keys in our blog post: [Benefits of Function-Call Keys](/blog/benefits-of-multiple-keys)
 
+:::
+
 ---
 
 ## Access Keys

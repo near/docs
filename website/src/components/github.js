@@ -52,6 +52,7 @@ export function GitHubInternal({
   fname,
   metastring,
   withSourceLink = true,
+  height="460px",
 }) {
   const [code, setCode] = useState('Loading...');
 
@@ -61,11 +62,23 @@ export function GitHubInternal({
     promise.then((res) => setCode(res));
   });
 
+  //  remove all # from url
+  url = url.split('#')[0];
+
+  // transform url to point to the specific lines
+  if (start && end) {
+    url = `${url}#L${start}-L${end}`;
+  } else if (start) {
+    url = `${url}#L${start}`;
+  }
+
   return (
     <div fname={fname}>
-      <CodeBlock language={language} metastring={`${metastring} showLineNumbers`}>
-        {code}
-      </CodeBlock>
+      <div style={{maxHeight: height, overflow: 'scroll'}}>
+        <CodeBlock language={language} metastring={`${metastring} showLineNumbers`}>
+          {code}
+        </CodeBlock>
+      </div>
       {withSourceLink && (
         <div
           style={{

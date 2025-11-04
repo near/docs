@@ -1,6 +1,5 @@
 .card {
-  margin: var(--space-4) 0;
-  padding: var(--space-2) 0;
+  padding: var(--space-3) var(--space-1) var(--space-1);
   border-radius: var(--radius-card);
   border: var(--border-card);
   background: var(--color-bg-surface);
@@ -53,7 +52,6 @@
   ul a,
   ol a {
     display: inline-block;
-    padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-sm);
     text-decoration: none;
     color: var(--near-brand-primary);
@@ -95,6 +93,23 @@
       background: rgba(16, 185, 129, 0.03);
       border-color: rgba(16, 185, 129, 0.3);
       border-top-color: #10b981;
+    }
+  }
+
+  // based on #DBEAFE
+  &--blue {
+    background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    color: #1e3a8a;
+
+    .card__title {
+      color: #1e3a8a;
+      font-weight: var(--font-weight-bold);
+    }
+
+    .card__description,
+    .card__content {
+      color: #1e40af;
     }
   }
 
@@ -143,7 +158,7 @@
       border-top-color: #f97316;
     }
 
-    // Buttons and interactive elements inside orange cards
+    // Buttons and interactive elements inside red cards
     button {
       background-color: rgba(255, 255, 255, 0.15);
       color: inherit;
@@ -159,7 +174,7 @@
   // Common styles for buttons in colored cards
   &--mint,
   &--purple,
-  &--orange {
+  &--red {
     button {
       background-color: rgba(255, 255, 255, 0.15);
       color: inherit;
@@ -254,7 +269,7 @@
   // Description element
   &__description {
     flex-grow: 1;
-    margin: 0 0 var(--space-4) 0;
+    margin: 0;
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
     font-size: var(--text-base);
@@ -266,24 +281,15 @@
     line-height: var(--leading-relaxed);
     flex-grow: 1;
 
-    p {
-      margin-bottom: var(--space-component-sm);
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
     // Links element
     ul {
-      margin-top: auto;
-      padding: var(--space-2);
+      margin-bottom: 0;
+      padding: var(--space-2) 0;
       list-style: none;
     }
 
     li {
       border-bottom: 1px solid rgba(0, 0, 0, 0.175);
-      padding-left: var(--space-1);
 
       &:last-child {
         border-bottom: none;

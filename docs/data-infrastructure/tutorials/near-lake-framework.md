@@ -1,6 +1,6 @@
 ---
 id: listen-function-calls
-title: Intercept Function Calls
+title: "Tutorial: Simple Indexer"
 description: "This tutorial will guide you through building a simple indexer using the NEAR Lake Framework. The indexer will listen for FunctionCalls on a specific contract and log the details of each call."
 ---
 
@@ -20,6 +20,10 @@ Using NEAR Lake Framework, we can subscribe to the stream of blocks from the NEA
 ---
 
 ## Initialization
+
+Let's start by initializing the NEAR Lake Framework.
+
+<hr class="subsection" />
 
 ### AWS Credentials
 
@@ -46,6 +50,8 @@ aws_secret_access_key=<YOUR_AWS_ACCESS_KEY>
 
 [AWS docs: Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 
+<hr class="subsection" />
+
 ### Lake Configuration
 
 To initialize the NEAR Lake Framework, we need to provide the following basic settings:
@@ -56,21 +62,21 @@ To initialize the NEAR Lake Framework, we need to provide the following basic se
 
 
 <Tabs groupId="code-tabs">
-    <TabItem value="rust" label="Rust" default>
+    <TabItem value="rust" label="🦀 Rust" default>
       The Rust package provides a way to use the default configuration for testnet/mainnet and requires only to choose network and set the start block height which in the example we pass as command line argument. 
 
       <Github fname="main.rs" language="rust"
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/rust/src/main.rs"
         start="23" end="31" />
     </TabItem>
-    <TabItem value="js" label="JavaScript">
+    <TabItem value="js" label="🌐 JavaScript">
       In JavaScript/TypeScript, we will just create the configuration object manually. Block height is passed as a command line argument.
 
       <Github fname="index.ts" language="javascript"
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
         start="5" end="14" />
     </TabItem>
-    <TabItem value="python" label="Python" default>
+    <TabItem value="python" label="🐍 Python" default>
       In Python, we will create the configuration object manually and then set `s3_bucket_name` and `s3_region_name` properties. Block height is passed as a command line argument. 
 
       <Github fname="main.py" language="python"
@@ -84,17 +90,17 @@ To initialize the NEAR Lake Framework, we need to provide the following basic se
 To run the indexer, we need to create a function that will handle every message from the stream. In this function, we can access the block data and process it as needed.
 
 <Tabs groupId="code-tabs">
-    <TabItem value="rust" label="Rust" default>
+    <TabItem value="rust" label="🦀 Rust" default>
       <Github fname="main.rs" language="rust"
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/rust/src/main.rs"
         start="51" end="70" />
     </TabItem>
-    <TabItem value="js" label="JavaScript">
+    <TabItem value="js" label="🌐 JavaScript">
       <Github fname="index.ts" language="javascript"
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
         start="98" end="101" />
     </TabItem>
-    <TabItem value="python" label="Python">
+    <TabItem value="python" label="🐍 Python">
       <Github fname="main.py" language="python"
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/python/main.py"
         start="39" end="47" />
@@ -106,17 +112,17 @@ To run the indexer, we need to create a function that will handle every message 
 From the block data, we can access the transactions, their receipts and actions. In this example, we will look for FunctionCall actions on a specific contract and log the details of each call.
 
 <Tabs groupId="code-tabs">
-    <TabItem value="rust" label="Rust" default>
+    <TabItem value="rust" label="🦀 Rust" default>
       <Github fname="main.rs" language="rust"
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/rust/src/main.rs"
         start="72" end="156" />
     </TabItem>
-    <TabItem value="js" label="JavaScript">
+    <TabItem value="js" label="🌐 JavaScript">
       <Github fname="index.ts" language="javascript"
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
         start="24" end="89" />
     </TabItem>
-    <TabItem value="python" label="Python">
+    <TabItem value="python" label="🐍 Python">
       <Github fname="main.py" language="python"
         url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/python/main.py"
         start="50" end="96" />

@@ -1,7 +1,7 @@
 ---
 id: near-lake-framework
-title: NEAR Lake Framework
-description: "NEAR Lake Framework is an ecosystem of library companions to NEAR Lake. They allow you to build your own indexer that subscribes to the stream of blocks from the NEAR Lake data source and create your own logic to process the NEAR Protocol data in the programming languages of your choice (at the moment, there are implementations in Python, JavaScript, and Rust)."
+title: What is Lake Framework?
+description: "A library to build your own indexer using the existing Data Lake"
 ---
 
 NEAR Lake Framework is an ecosystem of library companions that read data from the [`NEAR Data Lake`](#data-lake). They allow you to build your own indexer by simply subscribing to the stream of blocks that is being constantly pushed to the [NEAR Lake](#data-lake)
@@ -88,7 +88,7 @@ $17,20 + $21,60 = $30,16
 
 ---
 
-## Comparison with [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer)
+## Comparison with [NEAR Indexer Framework](near-indexer.md)
 
 NEAR Lake Framework is reading data from AWS S3, while the NEAR Indexer is running a full node and reading data from the blockchain directly in real time.
 

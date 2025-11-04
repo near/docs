@@ -31,7 +31,7 @@ import LandingHero from '@site/src/components/LandingHero';
         </ul>
       </Card>
     </div>
-    <div className="col col--4">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/ai.svg" alt="AI Native Infrastructure" />}
@@ -46,7 +46,7 @@ import LandingHero from '@site/src/components/LandingHero';
         </ul>
       </Card>
     </div>
-    <div className="col col--4">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/multichain.svg" alt="Multi-Chain" />}
@@ -78,7 +78,7 @@ import LandingHero from '@site/src/components/LandingHero';
         </ul>
       </Card>
     </div>
-    <div className="col col--4">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/contract.svg" alt="Smart Contracts" />}
@@ -93,7 +93,7 @@ import LandingHero from '@site/src/components/LandingHero';
         </ul>
       </Card>
     </div>
-    <div className="col col--4">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/token.svg" alt="Tokens and Primitives" />}
