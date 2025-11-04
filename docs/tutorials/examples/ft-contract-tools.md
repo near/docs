@@ -35,9 +35,9 @@ When we use deriving macros, we can bring `near_contract_standards` implementati
 
 To derive basic FT methods to our contract, we need to derive `FungibleToken` macro to our contract struct:
 
-<Github fname="main.rs" language="rust"
+<Github fname="lib.rs" language="rust"
         url="https://github.com/near-examples/ft-contract-tools/blob/main/src/lib.rs"
-        start="4" end="6" />
+        start="9" end="12" />
 
 This will bring all the basic FT methods defined in NEP-141 standard to our contract:
 - `new`
@@ -67,19 +67,35 @@ To bring basic owner methods to our contract, we derived also `Owner` macro whic
 
 To initialize the basic FT contract with custom owner, metadata and storage bounds implement `new` method:
 
-<Github fname="main.rs" language="rust"
+<Github fname="lib.rs" language="rust"
         url="https://github.com/near-examples/ft-contract-tools/blob/main/src/lib.rs"
-        start="10" end="27" />
+        start="14" end="35" />
+
+---
+
+## Transfer Hook
+
+To add custom logic on transfer method, we need to implement a hook. Hooks are a way to wrap (inject code before and after) component functions:
+
+<Github fname="transfer_hook.rs" language="rust"
+        url="https://github.com/near-examples/ft-contract-tools/blob/main/src/transfer_hook.rs"
+        start="5" end="33" />
+
+Then derive it to our contract struct:
+
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/ft-contract-tools/blob/main/src/lib.rs"
+        start="9" end="12" />
 
 ---
 
 ## Minting
 
-To mint initial supply of tokens to the owner implement `mint` method and restrict access only to the owner of the contract:
+To mint additional supply of tokens to the owner implement `mint` method and restrict access only to the owner of the contract:
 
-<Github fname="main.rs" language="rust"
-        url="https://github.com/near-examples/ft-contract-tools/blob/main/src/lib.rs"
-        start="29" end="54" />
+<Github fname="mint.rs" language="rust"
+        url="https://github.com/near-examples/ft-contract-tools/blob/main/src/mint.rs"
+        start="5" end="33" />
 
 :::tip
 You can modify this method as you need, for example, to allow minting only when the contract is not paused (requires deriving [`Pausable`](https://github.com/near/near-sdk-contract-tools/tree/develop?tab=readme-ov-file#macro-combinations) hook), or to allow minting only to specific accounts with a certain role or from whitelist with custom limitations.
@@ -91,9 +107,9 @@ You can modify this method as you need, for example, to allow minting only when 
 
 To burn tokens from the owner's account, we implement `burn` method and also restrict access:
 
-<Github fname="main.rs" language="rust"
-        url="https://github.com/near-examples/ft-contract-tools/blob/main/src/lib.rs"
-        start="56" end="70" />
+<Github fname="burn.rs" language="rust"
+        url="https://github.com/near-examples/ft-contract-tools/blob/main/src/burn.rs"
+        start="8" end="25" />
 
 ---
 
