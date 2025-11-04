@@ -1,40 +1,56 @@
 ---
-id: accounts
-title: Understanding NEAR Accounts
-sidebar_label: 👤 Accounts
-description: Learn about NEAR Protocol's account system - understand named accounts, implicit accounts, access keys, and how NEAR accounts work differently from other blockchains.
+id: named-accounts
+title: Named Accounts
+description: Learn about the different types of accounts in NEAR Protocol
+hide_title: true
 ---
 
-import { Quiz, MultipleChoice, Option } from "@site/src/components/Academy/Quiz";
+import Card from '@site/src/components/UI/Card';
+
 import Progress from "@site/src/components/Academy/Progress";
+import { Quiz, MultipleChoice, Option } from "@site/src/components/Academy/Quiz";
 
 <Progress course="accounts" total={3} />
 
-Welcome to the world of NEAR accounts! In this lesson, we'll explore how NEAR Protocol's account system works and why it's designed to be more user-friendly than traditional blockchain accounts.
+## Named Accounts
 
-Think of NEAR accounts as your digital identity on the blockchain - but instead of complex addresses that look like random strings of characters, you get human-readable names that actually make sense.
+NEAR supports multiple types of accounts, each designed to meet different user needs, though the two main ones are **named accounts** and **implicit accounts**.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/suUerHpmNM0?si=jG3NypPwzH83cXuY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="row" style={{marginTop: '2rem'}}>
+  <div class="col col--6">
+    <Card title="Named Accounts" >
+    Named accounts are human-readable account that are easy to remember and share, making them ideal for everyday use:
+
+    - <a>`near` / `account.near` / `account.sweat` / `app.finance.tg`</a>
+
+    </Card>
+  </div>
+  <div class="col col--6">
+    <Card title="Implicit Accounts" >
+    Implicit accounts are derived from cryptographic key pairs and are a long strings of 64 characters
+
+    - <a>`757503837a63ece206449d450ec77ae8d79c88ccda5e62a810f4eeb51db93050`</a>
+    </Card>
+  </div>
+</div>
+<div class="row" style={{marginTop: '2rem'}}>
+    <div class="col col--6">
+        <Card title="Ethereum Accounts" >
+        NEAR Protocol supports Ethereum-like addresses to allow interoperability with EVM-based applications and tools
+
+        - <a>`0x32Be343B94f860124dC4fEe278FDCBD38C102D88`</a>
+        </Card>
+    </div>
+    <div class="col col--6">
+        <Card title="Other Accounts" >
+        NEAR actually supports any address as long as it has between 2 and 64 characters and uses valid characters (a-z, 0-9, -, _), allowing the protocol to accommodate various use cases
+        </Card>
+    </div>
+</div>
 
 ---
 
-## What Makes NEAR Accounts Special?
-
-A **NEAR account** is your personal space on the blockchain where you can:
-- **Store your digital assets** like tokens and collectibles
-- **Interact with smart contracts** and decentralized applications
-- **Control accounts on other blockchains** (like Ethereum or Bitcoin)
-- **Help onboard new users** by covering their transaction costs
-
-The key difference is that instead of having an address like `0x742d35Cc6634C0532925a3b8D`, you can have a simple name like `alice.near` which is much easier to remember and share!
-
----
-
-## Two Types of Accounts
-
-NEAR supports two main types of accounts, each with their own advantages:
-
-### Named Accounts - The User-Friendly Option
+## Named Accounts
 
 **Named accounts** use simple, memorable names like:
 - `alice.near`

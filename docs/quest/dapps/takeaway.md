@@ -9,7 +9,7 @@ import { Quiz, MultipleChoice, Option } from "@site/src/components/Academy/Quiz"
 import Progress from "@site/src/components/Academy/Progress";
 import Card from '@site/src/components/UI/Card';
 
-<Progress course="web3-apps" total={3} />
+<Progress course="dapps" total={5} />
 
 ## The Big Picture
 
@@ -39,7 +39,7 @@ Understanding these fundamental concepts will help you navigate the world of Web
 
 ## Quiz
 
-<Quiz course="web3-apps" id="web3-takeaway-quiz">
+<Quiz course="dapps" id="web3-takeaway-quiz">
   <MultipleChoice question="Which statement best captures the ‘big picture’?">
     <Option> A. Web3 keeps the same trust model as Web2 but adds tokens.</Option>
     <Option correct> B. Users gain control and rely on blockchain instead of centralized companies.</Option>
