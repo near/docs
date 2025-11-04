@@ -75,15 +75,7 @@ One of NEAR's coolest features is named accounts, which are not only easy to sha
 - **Independent entities**: Each account is completely separate - `bob.near` has no control over `app.bob.near`
 - **Domain-like structure**: This creates a familiar, organized system similar to how websites work
 
-
-
-
-
 ---
-
-
-
-
 
 ### Implicit Accounts - The Traditional Option
 

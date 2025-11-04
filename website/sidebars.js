@@ -7,20 +7,32 @@ const sidebar = {
     },
     {
       type: 'category',
-      label: 'Web3 Apps',
+      label: 'Decentralized Apps',
       collapsed: true,
       customProps: {
         icon: '/assets/menu/near.svg',
       },
       items: [
-        'quest/web3-apps/intro-to-web3',
-        'quest/web3-apps/building-blocks',
-        'quest/web3-apps/why-near',
-        'quest/web3-apps/examples',
-        'quest/web3-apps/takeaway',
+        'quest/dapps/intro-to-web3',
+        'quest/dapps/building-blocks',
+        'quest/dapps/why-near',
+        'quest/dapps/examples',
+        'quest/dapps/takeaway',
       ]
     },
-    'quest/accounts',
+    {
+      type: 'category',
+      label: 'NEAR Accounts',
+      collapsed: true,
+      customProps: {
+        icon: '/assets/menu/near.svg',
+      },
+      items: [
+        'quest/accounts/introduction',
+        'quest/accounts/types',
+        'quest/accounts/named-accounts',
+      ]
+    },
     'quest/data-flow',
     'quest/near-network',
     'quest/primitives',

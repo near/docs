@@ -43,7 +43,7 @@ NEAR supports multiple types of accounts, each designed to meet different user n
     </div>
     <div class="col col--6">
         <Card title="Other Accounts" >
-        NEAR actually supports any address as long as it has between 2 and 64 characters and uses valid characters (a-z, 0-9, -, _), allowing the protocol to accommodate various use cases
+        NEAR actually supports any address as long as it has between 2 and 64 characters and uses valid characters (a-z, 0-9, ., -, _), allowing the protocol to accommodate various use cases
         </Card>
     </div>
 </div>
