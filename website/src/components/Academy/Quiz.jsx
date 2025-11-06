@@ -61,12 +61,11 @@ const Quiz = ({ course, id, children }) => {
   let completed = (
     <div className="completion-section">
       <div className="completion-content">
-        <div className="completion-icon">🎉</div>
+        <div className="completion-icon">🥳</div>
         <h2>Congratulations!</h2>
-        <p>You have successfully completed the entire lesson.</p>
-        <p>You have demonstrated an excellent understanding of the concepts presented.</p>
+        <p>You have completed this lesson.</p>
         <div className="completion-message">
-          <p><strong>✅ Progress saved!</strong> Your completion has been saved to your device.</p>
+          <p><strong>✅ Your progress has been saved locally</strong></p>
         </div>
       </div>
     </div>
