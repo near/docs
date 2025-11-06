@@ -30,7 +30,7 @@ Welcome to the world of blockchain! In this lesson, we will explore how modern b
     Not only you need to trust them with not playing around with your data and assets, but also hope they do not shut down or decide to lock you out of your account.
   </div>
   <div class="col col--5">
-    <Card >
+    <Card title="Traditional Web Apps" >
       <ul>
         <li><a>Multiple accounts, each isolated and tied to a specific service </a></li>
         <li><a>Companies are in charge of your data and funds</a></li>
@@ -98,35 +98,23 @@ Moreover, since anyone can create NEAR apps, you can connect directly with your 
 ## Quiz
 
 <Quiz course="dapps" id="web3-intro-quiz">
-  <MultipleChoice question="What do Web3 apps change about trust compared to traditional apps?">
-    <Option> A. Users trust companies more because they are regulated.</Option>
-    <Option correct> B. Users trust the blockchain network instead of a single company.</Option>
-    <Option> C. Users don't need to trust anything at all.</Option>
-    <Option> D. Users trust the app's password system.</Option>
+  <MultipleChoice question="Who is the sole owner of your NEAR account?">
+    <Option> A. NEAR Foundation</Option>
+    <Option correct> B. You</Option>
+    <Option> C. The application you are using</Option>
+    <Option> D. Your wallet provider</Option>
   </MultipleChoice>
-  <MultipleChoice question="Which statement belongs to Web3 apps in the comparison table?">
-    <Option> A. Accounts created with usernames and passwords.</Option>
-    <Option correct> B. Data stored on a decentralized blockchain.</Option>
-    <Option> C. Companies control your data.</Option>
-    <Option> D. Data can be lost if the company shuts down.</Option>
+  <MultipleChoice question="How many NEAR accounts can you have?">
+    <Option> A. Only one per application</Option>
+    <Option correct> B. As many as you want</Option>
+    <Option> C. Only one per wallet</Option>
+    <Option> D. Only one per device</Option>
   </MultipleChoice>
-  <MultipleChoice question="How do users typically access Web3 apps on NEAR?">
-    <Option> A. By creating a traditional username/password account.</Option>
-    <Option correct> B. By connecting with a digital wallet.</Option>
-    <Option> C. By emailing the app owner for access.</Option>
-    <Option> D. By calling a customer support line.</Option>
-  </MultipleChoice>
-  <MultipleChoice question="What happens to user data if a Web3 app’s frontend disappears?">
-    <Option> A. All data is lost permanently.</Option>
-    <Option> B. Data is archived by the company for later recovery.</Option>
-    <Option correct> C. Data persists on the blockchain and remains accessible.</Option>
-    <Option> D. Data becomes private and cannot be viewed.</Option>
-  </MultipleChoice>
-  <MultipleChoice question="Which is NOT a feature of Web3 apps?">
-    <Option> A. You control your own data.</Option>
-    <Option> B. Data persists even if the app disappears.</Option>
-    <Option correct> C. Companies can change the rules unilaterally at any time.</Option>
-    <Option> D. You connect using digital wallets.</Option>
+  <MultipleChoice question="What is one key advantage of decentralized applications over traditional ones?">
+    <Option correct> A. They are transparent and auditable</Option>
+    <Option> B. They are controlled by a single company</Option>
+    <Option> C. They require multiple accounts</Option>
+    <Option> D. They can be easily shut down by the provider</Option>
   </MultipleChoice>
 </Quiz>
 

@@ -1,7 +1,7 @@
 ---
-id: named-accounts
-title: Named Accounts
-description: Learn about the different types of accounts in NEAR Protocol
+id: access-keys
+title: Access Keys & Permissions
+description: Learn about the two main types of NEAR Addresses
 hide_title: true
 ---
 
@@ -12,109 +12,66 @@ import { Quiz, MultipleChoice, Option } from "@site/src/components/Academy/Quiz"
 
 <Progress course="accounts" total={3} />
 
-## Named Accounts
-
-NEAR supports multiple types of accounts, each designed to meet different user needs, though the two main ones are **named accounts** and **implicit accounts**.
-
-<div class="row" style={{marginTop: '2rem'}}>
-  <div class="col col--6">
-    <Card title="Named Accounts" >
-    Named accounts are human-readable account that are easy to remember and share, making them ideal for everyday use:
-
-    - <a>`near` / `account.near` / `account.sweat` / `app.finance.tg`</a>
-
-    </Card>
-  </div>
-  <div class="col col--6">
-    <Card title="Implicit Accounts" >
-    Implicit accounts are derived from cryptographic key pairs and are a long strings of 64 characters
-
-    - <a>`757503837a63ece206449d450ec77ae8d79c88ccda5e62a810f4eeb51db93050`</a>
-    </Card>
-  </div>
-</div>
-<div class="row" style={{marginTop: '2rem'}}>
-    <div class="col col--6">
-        <Card title="Ethereum Accounts" >
-        NEAR Protocol supports Ethereum-like addresses to allow interoperability with EVM-based applications and tools
-
-        - <a>`0x32Be343B94f860124dC4fEe278FDCBD38C102D88`</a>
-        </Card>
-    </div>
-    <div class="col col--6">
-        <Card title="Other Accounts" >
-        NEAR actually supports any address as long as it has between 2 and 64 characters and uses valid characters (a-z, 0-9, ., -, _), allowing the protocol to accommodate various use cases
-        </Card>
-    </div>
-</div>
-
----
-
-## Named Accounts
-
-**Named accounts** use simple, memorable names like:
-- `alice.near`
-- `bob.near` 
-- `mycompany.near`
-
-These work just like domain names on the internet, they're easy to remember, share, and type. Just like how `google.com` is easier to remember than a long IP address, `alice.near` is much more user-friendly than a complex blockchain address.
-
-### Implicit Accounts - The Traditional Option
-
-**Implicit accounts** use traditional blockchain addresses like:
-- `fb9243ce...` (64 characters long)
-- `a96ad3cb539b653e4b869bd7cf26590690e8971...`
-
-These are derived directly from cryptographic key pairs and are similar to accounts on other blockchains like Ethereum.
-
----
-
-## The Account Hierarchy System
-
-One of NEAR's coolest features is its **hierarchical account system**, which works like a domain structure:
-
-### How It Works
-
-Think of it like organizing files on your computer:
-1. **Top-level accounts** (like `near`, `sweat`, `kaiching`) are created by the registrar
-2. **Sub-accounts** can be created under these top-level accounts:
-   - `bob.near` (created under `near`)
-   - `alice.near` (created under `near`)
-3. **Sub-sub-accounts** can be created under existing accounts:
-   - `app.bob.near` (created under `bob.near`)
-   - `store.alice.near` (created under `alice.near`)
-
-### The Rules
-
-- **No cross-account control**: `near` cannot create `app.bob.near` - only `bob.near` can
-- **Independent entities**: Each account is completely separate - `bob.near` has no control over `app.bob.near`
-- **Domain-like structure**: This creates a familiar, organized system similar to how websites work
-
----
-
 ## Access Keys and Permissions
 
-NEAR accounts use a sophisticated **access key system** that provides both security and flexibility:
+Most commonly, blockchains use a rigid system where every account is linked to a single private key that has complete control over it.
 
-### Types of Access Keys
+NEAR accounts use a more flexible and secure **access key system**, allowing accounts to have **multiple keys**, each with different permission levels.
 
-**Full Access Keys:**
-- Complete control over the account
-- Can transfer tokens, create sub-accounts, and modify the account
-- Like having the master key to your house
-
-**Function Call Keys:**
-- Limited permissions for specific smart contracts
-- Can only call certain functions on designated contracts
-- Like having a key that only works for specific rooms
-
-### Why This Matters
-
-- **Key rotation**: If one key is compromised, you can replace it without losing your account
-- **Granular permissions**: Different keys can have different levels of access
-- **Third-party integration**: Apps can request limited permissions instead of full account access
+<div class="row" style={{marginTop: '2rem'}}>
+  <div class="col col--6">
+    <Card title="Full Access Keys">
+      <p>Full Access Keys behave like traditional private keys on other blockchains, meaning they have complete control over the account.</p>
+      <ul>
+        <li><a>Complete control over the account</a></li>
+        <li><a>Like having the master key to your house</a></li>
+      </ul>
+    </Card>
+  </div>
+  <div class="col col--6">
+    <Card title="Function Call Keys">
+      <p>Limited permissions for specific smart contracts and operations.</p>
+      <ul>
+        <li><a>Call specific smart contracts</a></li>
+        <li><a>Call specific functions on the contract</a></li>
+        <li><a>Like a key that only works on specific rooms</a></li>
+      </ul>
+    </Card>
+  </div>
+</div>
 
 ---
+
+## Why This Matters
+
+There are multiple advantages to using multiple access keys with different permissions:
+
+1. **Key rotation**: If one key is compromised, you can replace it without losing your account
+2. **Granular permissions**: Different keys can have different levels of access
+3. **Third-party integration**: Apps can request limited permissions to your account to do specific tasks for you
+
+---
+
+## Why Function Call Keys?
+
+<div class="row">
+    <div class="col col--6">
+    Imagine you are playing a game that registers your score on the blockchain.
+    
+    On other protocols this will require you to either share your private key with the game (truly terrible idea), or to sign every single transaction manually.
+
+    With NEAR, the game can request a `Function Call Key` that **only allows** it call a function to update score on your behalf, **nothing else**.
+
+    </div>
+    <div class="col col--6">
+        <video width="100%" height="215" frameborder="0" autoplay loop allowfullscreen controls>
+            <source src="/assets/docs/quest/accounts/sign.mp4" type="video/mp4" />
+        </video>
+        *This is **not** what the future of web3 gaming looks like*
+    </div>
+</div>
+
+
 
 ## NEAR vs Most Other Blockchains
 
@@ -142,41 +99,9 @@ Let's compare NEAR accounts to most other blockchains to see why NEAR is more us
 - Better integration with traditional web development
 - Predictable and low costs for users
 
----
-
-## Real-World Account Examples
-
-Let's look at how people actually use NEAR accounts:
-
-### Personal Accounts
-- `john.near` - A personal account for everyday use
-- `john.trading.near` - A sub-account specifically for trading activities
-- `john.nft.near` - A sub-account for NFT collections
-
-### Business Accounts
-- `company.near` - Main business account
-- `payroll.company.near` - Sub-account for employee payments
-- `marketing.company.near` - Sub-account for marketing activities
-
-### Application Accounts
-- `myapp.near` - Main application account
-- `api.myapp.near` - Sub-account for API services
-- `user.myapp.near` - Sub-account for user management
-
----
-
 ## Security and Best Practices
 
 ### Security Features
-
-**Implicit Account Security:**
-- You can delete the private key of an implicit account, effectively locking it forever
-- This creates a "burner" account that can receive funds but never spend them
-
-**Named Account Benefits:**
-- Easy to remember and share
-- Can create organized sub-account structures
-- Professional appearance for businesses
 
 ### Best Practices
 

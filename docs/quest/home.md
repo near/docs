@@ -37,7 +37,7 @@ import Card from '@site/src/components/UI/Card';
         title="Total Challenges"
         description="We are releasing new quests regularly, stay tuned!"
       >
-        <h1> 6 </h1>
+        <h2 style={{margin: '1rem 0 .5rem 0'}}> 2 </h2>
       </Card>
     </div>
     <div className="col col--4">
@@ -45,7 +45,7 @@ import Card from '@site/src/components/UI/Card';
         title="Total Completed"
         description="How many quests have you completed so far?"
       >
-        <h1> 6 </h1>
+        <h2 style={{margin: '1rem 0 .5rem 0'}}> 0 </h2>
       </Card>
     </div>
     <div className="col col--4">
@@ -53,7 +53,7 @@ import Card from '@site/src/components/UI/Card';
         title="Level"
         description="Complete quests to level up your NEAR development skills!"
       >
-        <h1> Beginner </h1>
+        <h2 style={{margin: '1rem 0 .5rem 0'}}> Beginner </h2>
       </Card>
     </div>
 </div>
@@ -62,12 +62,12 @@ import Card from '@site/src/components/UI/Card';
     <h2>Ready to Start?</h2>
     <p>Go take your first lesson!</p>
     <div className="landing-cta">
-        <a href="/protocol/basics" className="button button--primary button--lg">Explore NEAR</a>
+        <a href="/quest/dapps/intro-to-web3" className="button button--primary button--lg">Learn all about dApps</a>
     </div>
 </div>
 
 
-
+<!-- 
 
 
 Welcome to NEAR Quest, a gamified learning platform that takes you through progressively challenging tasks to build your skills in:
@@ -189,4 +189,4 @@ Let your NEAR development journey begin! 🚀
 
 ---
 
-*NEAR Quest is designed to make learning blockchain development engaging and practical. Each quest builds upon previous knowledge while introducing new concepts in an approachable way.*
+*NEAR Quest is designed to make learning blockchain development engaging and practical. Each quest builds upon previous knowledge while introducing new concepts in an approachable way.* -->

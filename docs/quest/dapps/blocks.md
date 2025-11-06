@@ -13,12 +13,12 @@ import Card from '@site/src/components/UI/Card';
 
 # Building Blocks of Decentralized Apps
 
-Decentralized applications (dApps or Web3 apps) on NEAR are made up of four different components that work together to provide an awesome user experience:
+Decentralized applications (also known as `dApps` or `Web3` apps) are made up of four different components that work together to provide an awesome user experience:
 
-1. The **decentralized network**
-2. **Accounts & Smart Contracts**
-3. **Wallets**
-4. The **Frontend**
+1. A **decentralized network** that keeps everything running smoothly
+2. **Accounts & Smart Contracts** that store data and funds
+3. **Wallets** to manage the account
+4. A **Frontend** that users interact with
 
 ---
 
@@ -42,9 +42,9 @@ At the infrastructure level, we have the **decentralized network** that keeps `a
   </div>
   <div class="col col--6">
     <Card title="Accounts & Contracts">
-      The decentralized network hosts all users `accounts`, each of which can have a small program called `smart contracts`. For example, a contract can automate investment payments or store digital art
+      The decentralized network hosts all users `accounts`, each of which can have a small program called `smart contracts`
 
-      Smart contracts are completely transparent - anyone can see what code is running
+      Contracts can, for example, automate investment payments or store digital art. They are completely transparent - anyone can see what code is running
 
       <ul>
         <li><a>Store funds and data on the blockchain</a></li>
@@ -77,7 +77,7 @@ On the user side, we have **wallets** that allow you easily manage your accounts
   </div>
   <div class="col col--6">
     <Card title="The Frontend">
-      The website or mobile apps you interact with are what we call `frontends`. These applications can be hosted anywhere, be that some cloud service, your local computer or a blockchain-based storage solution
+      The website or mobile apps you interact with are what we call `frontends`. These applications can be hosted anywhere, be that some cloud service or your local computer
       
       The frontend of a decentralized app knows how to:
       <ul>
@@ -112,11 +112,11 @@ The beautiful thing is that once your message is stored, it can't be deleted, ch
 ## Quiz
 
 <Quiz course="dapps" id="web3-blocks-quiz">
-  <MultipleChoice question="Which of the following is NOT one of the three main building blocks of a Web3 app?">
-    <Option> A. Your digital wallet</Option>
-    <Option> B. Smart contracts</Option>
-    <Option> C. The frontend</Option>
-    <Option correct> D. A centralized database controlled by the app</Option>
+  <MultipleChoice question="Who runs the decentralized network that powers Web3 apps?">
+    <Option> A. A single company</Option>
+    <Option correct> B. Many independent computers around the world</Option>
+    <Option> C. A single government</Option>
+    <Option> D. A single app developer</Option>
   </MultipleChoice>
   <MultipleChoice question="What does your wallet represent?">
     <Option> A. A storage place for smart contract code</Option>
@@ -135,12 +135,6 @@ The beautiful thing is that once your message is stored, it can't be deleted, ch
     <Option> B. To generate private keys</Option>
     <Option correct> C. Provide the UI, connect a wallet, and call smart contract functions</Option>
     <Option> D. To set gas prices on the network</Option>
-  </MultipleChoice>
-  <MultipleChoice question="In the guestbook example, what ensures your message is saved permanently?">
-    <Option> A. The website’s database backup</Option>
-    <Option> B. A moderator manually approves it</Option>
-    <Option correct> C. You sign a transaction with your wallet and the smart contract stores it on-chain</Option>
-    <Option> D. The browser caches it for offline use</Option>
   </MultipleChoice>
 </Quiz>
 

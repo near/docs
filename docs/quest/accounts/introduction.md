@@ -29,11 +29,15 @@ Think of NEAR accounts as your digital identity on the blockchain, which allows 
 
 ## What Makes NEAR Accounts Special?
 
-A **NEAR Account** is your personal space on the blockchain that you can use to:
-- **Store digital assets** such as tokens and collectibles
-- **Receive and send transactions** to other accounts
-- **Interact with smart contracts** and decentralized applications
+**NEAR Accounts** are your personal space on the blockchain, allowing you to:
+- **Hold** tokens and collectibles
+- **Make and receive transfers**
+- **Create and Interact** with decentralized applications
 - **Control accounts on other blockchains** (like Ethereum or Bitcoin)
 <!-- - **Help onboard new users** by covering their transaction costs -->
 
-The key difference with other chains is that, instead of having an address like `0x742d35Cc6634C0532925a3b8D`, you can have a simple named like `alice.near` which is much easier to remember and share!
+A key difference with other chains is that, instead of having an address like `0x742d35Cc6634C0532925a3b8D`, you can have a simple named like `alice.near` which is much easier to remember and share!
+
+Another unique feature of NEAR is that accounts can have multiple keys with different permission levels, allowing for more flexible and secure account management.
+
+Finally, in NEAR all accounts are also smart contracts, meaning you can program them to have custom behaviors and logic!

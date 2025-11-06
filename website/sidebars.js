@@ -29,14 +29,17 @@ const sidebar = {
       },
       items: [
         'quest/accounts/introduction',
-        'quest/accounts/types',
-        'quest/accounts/named-accounts',
+        'quest/accounts/address',
+        'quest/accounts/named-vs-implicit',
+        'quest/accounts/access-keys',
+        'quest/accounts/smart-contracts',
+        'quest/accounts/takeaways',
       ]
     },
-    'quest/data-flow',
-    'quest/near-network',
-    'quest/primitives',
-    'quest/smart-contracts',
+    // 'quest/data-flow',
+    // 'quest/near-network',
+    // 'quest/primitives',
+    // 'quest/smart-contracts',
   ],
   build: [
     {
