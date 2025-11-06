@@ -1,0 +1,69 @@
+// Lesson Progress Component Styles
+.badge {
+  background: var(--icon-svg-color);
+  color: white;
+  font-size: small;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.lessons-completed {
+  margin-left: var(--space-2);
+}
+
+.lesson-progress {
+  margin-bottom: 2rem;
+
+  .progress-header {
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background-color: #4a5568;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: .75rem;
+
+      .progress-fill {
+        height: 100%;
+        background: var(--icon-svg-color);
+        border-radius: 6px;
+        transition: width 0.3s ease;
+      }
+    }
+
+    .progress-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  // Section breakdown for Academy Progress
+  .section-breakdown {
+    margin-top: 1rem;
+    border-top: 1px solid var(--ifm-color-emphasis-200, #e5e7eb);
+    padding-top: 1rem;
+
+    .section-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      font-size: 0.875rem;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--ifm-color-emphasis-100, #f3f4f6);
+      }
+
+      .section-title {
+        color: var(--ifm-color-content, #111827);
+        font-weight: 500;
+      }
+
+      .section-progress {
+        color: var(--ifm-color-content-secondary, #6b7280);
+        font-size: 0.75rem;
+      }
+    }
+  }
+}

@@ -1,4 +1,46 @@
 const sidebar = {
+  academy: [
+    'quest/introduction',
+    {
+      type: 'html',
+      value: '<hr/>',
+    },
+    {
+      type: 'category',
+      label: 'Decentralized Apps',
+      collapsed: true,
+      customProps: {
+        icon: '/assets/menu/near.svg',
+      },
+      items: [
+        'quest/dapps/intro-to-web3',
+        'quest/dapps/building-blocks',
+        'quest/dapps/why-near',
+        'quest/dapps/examples',
+        'quest/dapps/takeaway',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'NEAR Accounts',
+      collapsed: true,
+      customProps: {
+        icon: '/assets/menu/near.svg',
+      },
+      items: [
+        'quest/accounts/introduction',
+        'quest/accounts/address',
+        'quest/accounts/named-vs-implicit',
+        'quest/accounts/access-keys',
+        'quest/accounts/smart-contracts',
+        'quest/accounts/takeaways',
+      ]
+    },
+    // 'quest/data-flow',
+    // 'quest/near-network',
+    // 'quest/primitives',
+    // 'quest/smart-contracts',
+  ],
   build: [
     {
       type: 'doc',
