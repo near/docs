@@ -8,7 +8,7 @@ hide_title: true
 import { Quiz, MultipleChoice, Option } from "@site/src/components/Academy/Quiz";
 import Progress from "@site/src/components/Academy/Progress";
 
-<Progress course="accounts" total={3} />
+<Progress course="accounts" total={6} />
 
 ## Introduction to NEAR Accounts
 

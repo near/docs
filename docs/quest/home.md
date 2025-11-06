@@ -50,7 +50,7 @@ import Card from '@site/src/components/UI/Card';
     </div>
     <div className="col col--4">
       <Card
-        title="Level"
+        title="Your Level"
         description="Complete quests to level up your NEAR development skills!"
       >
         <h2 style={{margin: '1rem 0 .5rem 0'}}> Beginner </h2>

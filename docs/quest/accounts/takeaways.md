@@ -10,7 +10,7 @@ import Card from '@site/src/components/UI/Card';
 import Progress from "@site/src/components/Academy/Progress";
 import { Quiz, MultipleChoice, Option } from "@site/src/components/Academy/Quiz";
 
-<Progress course="accounts" total={3} />
+<Progress course="accounts" total={6} />
 
 ## A Friendly Model Account
 

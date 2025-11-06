@@ -8,7 +8,7 @@ description: Learn how the NEAR network operates - understand validators, epochs
 import { Quiz, MultipleChoice, Option } from "@site/src/components/Academy/Quiz";
 import Progress from "@site/src/components/Academy/Progress";
 
-<Progress course="web3-apps" total={3} />
+<Progress course="web3-apps" total={6} />
 
 Now that you understand how data flows through NEAR Protocol, let's explore how the network itself operates. Understanding the NEAR network is crucial for building Web3 applications because it helps you choose the right environment for development and understand the security guarantees that protect your users.
 

@@ -8,7 +8,7 @@ description: Learn how data moves through NEAR Protocol - understand transaction
 import { Quiz, MultipleChoice, Option } from "@site/src/components/Academy/Quiz";
 import Progress from "@site/src/components/Academy/Progress";
 
-<Progress course="web3-apps" total={3} />
+<Progress course="web3-apps" total={6} />
 
 Now that you understand what Web3 apps are, let's dive deeper into how data actually flows through the NEAR Protocol blockchain. Understanding data flow is crucial for building Web3 applications because it helps you predict how your app will behave and how much it will cost to operate.
 
