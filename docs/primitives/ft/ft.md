@@ -537,7 +537,7 @@ Here is an example from our [auctions tutorial](../../tutorials/auction/3.2-ft.m
         url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L56-L87"
         start="56" end="87" />
 
-_Note: The [`near_contract_standards::fungible_token::receiver`](https://docs.rs/near-contract-standards/latest/near_contract_standards/fungible_token/receiver/trait.FungibleTokenReceiver.html) module exposes a `FungibleTokenReceiver` trait that you could implement on your contract_ 
+_Note: The [`near_contract_standards::fungible_token::receiver`](https://docs.rs/near-contract-standards/latest/near_contract_standards/fungible_token/receiver/trait.FungibleTokenReceiver.html) module exposes a `FungibleTokenReceiver` trait that you could implement on your contract_
 
 ---
 
@@ -547,4 +547,4 @@ _Note: The [`near_contract_standards::fungible_token::receiver`](https://docs.rs
 2. [NEP-148 standard](https://github.com/near/NEPs/tree/master/neps/nep-0148.md)
 3. [FT Event Standards](https://github.com/near/NEPs/blob/master/neps/nep-0300.md)
 4. [FT reference implementation](https://github.com/near-examples/FT)
-5. [Fungible Tokens 101](../../tutorials/fts/0-intro.md) - a set of tutorials that cover how to create a FT contract using Rust.
+5. [Fungible Tokens 101](../../tutorials/fts.md) - a set of tutorials that cover how to create a FT contract using Rust.
