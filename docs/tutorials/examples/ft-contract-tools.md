@@ -69,7 +69,7 @@ To initialize the basic FT contract with custom owner, metadata and storage boun
 
 <Github fname="lib.rs" language="rust"
         url="https://github.com/near-examples/ft-contract-tools/blob/main/src/lib.rs"
-        start="14" end="35" />
+        start="14" end="45" />
 
 ---
 
@@ -109,7 +109,7 @@ To burn tokens from the owner's account, we implement `burn` method and also res
 
 <Github fname="burn.rs" language="rust"
         url="https://github.com/near-examples/ft-contract-tools/blob/main/src/burn.rs"
-        start="8" end="25" />
+        start="5" end="25" />
 
 ---
 
