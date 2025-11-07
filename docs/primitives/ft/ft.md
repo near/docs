@@ -541,6 +541,42 @@ _Note: The [`near_contract_standards::fungible_token::receiver`](https://docs.rs
 
 ---
 
+## Burn Tokens
+
+While the FT standard does not define a `burn` method, you can simply transfer tokens to an account that no one controls, such as [`0000000000000000000000000000000000000000000000000000000000000000`](https://nearblocks.io/es/address/0000000000000000000000000000000000000000000000000000000000000000) (64 zeros).
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🌐 WebApp" label="🌐 WebApp">
+    
+  ```js
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+
+  const { callMethod } = useWalletSelector();
+
+  await callMethod({
+    contractId: 'token.v2.ref-finance.near',
+    method: 'ft_transfer',
+    args: {
+      receiver_id: '0000000000000000000000000000000000000000000000000000000000000000',
+      amount: '100000000000000000',
+    },
+    deposit: 1,
+  });
+  ```
+
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+
+  </TabItem>
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
+
+    ```bash
+    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "0000000000000000000000000000000000000000000000000000000000000000", "amount": "100000000000000000"}' --depositYocto 1 --accountId bob.near
+    ```
+  </TabItem>
+</Tabs>
+
+---
+
 ## Additional Resources
 
 1. [NEP-141 standard](https://github.com/near/NEPs/tree/master/neps/nep-0141.md)
