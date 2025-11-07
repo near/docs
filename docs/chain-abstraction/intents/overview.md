@@ -13,7 +13,7 @@ NEAR Intents is a multichain transaction protocol where users specify what they 
 
 1. **Intent Creation**: A user or AI agent expresses a desired outcome _(ex: Swap Token A for Token B)_ and broadcasts the intent to network of Market Makers (also called Solvers).
 
-2. **Market Makers Compete**: A off-chain decentralized network of Market Makers (aka solvers) compete to fulfill the request in the most optimal way. When the network finds the best solution, it presents it as a quote to the originating user/agent for approval.
+2. **Market Makers Compete**: An off-chain decentralized network of Market Makers (aka solvers) compete to fulfill the request in the most optimal way. When the network finds the best solution, it presents it as a quote to the originating user/agent for approval.
 
 4. **Intent Execution**: If the quote from the Market Maker is accepted, the intent is executed by calling a "Verifier" smart contract on NEAR Protocol. This contract securely verifies and settles the final transaction.
 
