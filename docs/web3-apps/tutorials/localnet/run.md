@@ -8,6 +8,12 @@ Now that we understand what a localnet is, let's walk through the complete workf
 
 For this tutorial, we'll use `near-sandbox`, since it's the easiest and fastest option to start with. Our goal for this tutorial is to set up a local network, create a wallet account on it, deploy a contract, and finally run [a frontend application](https://github.com/near-examples/hello-localnet) that interacts with this contract directly through the local blockchain.
 
+:::tip
+
+Also check the [localnet tutorial](https://github.com/near/mpc/blob/main/docs/localnet/localnet.md) by the NEAR MPC team
+
+:::
+
 ### Prerequisites
 
 Before we begin, make sure you have a few essential tools installed.
