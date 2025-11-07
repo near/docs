@@ -1,4 +1,46 @@
 const sidebar = {
+  academy: [
+    'quest/introduction',
+    {
+      type: 'html',
+      value: '<hr/>',
+    },
+    {
+      type: 'category',
+      label: 'Decentralized Apps',
+      collapsed: true,
+      customProps: {
+        icon: '/assets/menu/near.svg',
+      },
+      items: [
+        'quest/dapps/intro-to-web3',
+        'quest/dapps/building-blocks',
+        'quest/dapps/why-near',
+        'quest/dapps/examples',
+        'quest/dapps/takeaway',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'NEAR Accounts',
+      collapsed: true,
+      customProps: {
+        icon: '/assets/menu/near.svg',
+      },
+      items: [
+        'quest/accounts/introduction',
+        'quest/accounts/address',
+        'quest/accounts/named-vs-implicit',
+        'quest/accounts/access-keys',
+        'quest/accounts/smart-contracts',
+        'quest/accounts/takeaways',
+      ]
+    },
+    // 'quest/data-flow',
+    // 'quest/near-network',
+    // 'quest/primitives',
+    // 'quest/smart-contracts',
+  ],
   build: [
     {
       type: 'doc',
@@ -301,62 +343,9 @@ const sidebar = {
             'tutorials/examples/global-contracts',
             'tutorials/examples/update-contract-migrate-state',
             'tutorials/examples/ft-contract-tools',
-            {
-              "Build a FT Contract from Scratch": [
-                'tutorials/fts/introduction',
-                'tutorials/fts/predeployed-contract',
-                'tutorials/fts/skeleton',
-                'tutorials/fts/defining-a-token',
-                'tutorials/fts/circulating-supply',
-                'tutorials/fts/registering-accounts',
-                'tutorials/fts/transfers',
-                'tutorials/fts/marketplace',
-              ]
-            },
-            {
-              "Build a NFT Contract from Scratch": [
-                'tutorials/nfts/introduction',
-                {
-                  Basic: [
-                    'tutorials/nfts/predeployed-contract',
-                    'tutorials/nfts/skeleton',
-                    'tutorials/nfts/minting',
-                    'tutorials/nfts/upgrade-contract',
-                    'tutorials/nfts/enumeration',
-                    'tutorials/nfts/core',
-                  ],
-                },
-                'tutorials/nfts/events',
-                {
-                  Marketplace: ['tutorials/nfts/approvals', 'tutorials/nfts/marketplace'],
-                },
-                'tutorials/nfts/royalty',
-                'tutorials/nfts/series',
-              ]
-            },
-            {
-              "Build a NFT Contract from Scratch (JS)": [
-                'tutorials/nfts/js/introduction',
-                {
-                  Basic: [
-                    'tutorials/nfts/js/predeployed-contract',
-                    'tutorials/nfts/js/skeleton',
-                    'tutorials/nfts/js/minting',
-                    'tutorials/nfts/js/upgrade-contract',
-                    'tutorials/nfts/js/enumeration',
-                    'tutorials/nfts/js/core',
-                  ],
-                },
-                'tutorials/nfts/js/events',
-                {
-                  Marketplace: [
-                    'tutorials/nfts/js/approvals',
-                    'tutorials/nfts/js/marketplace'
-                  ],
-                },
-                'tutorials/nfts/js/royalty',
-              ]
-            },
+            'tutorials/fts',
+            'tutorials/nfts',
+            'tutorials/nfts-js',
           ]
         },
         {
@@ -397,10 +386,17 @@ const sidebar = {
                 'web3-apps/tutorials/web-login/near-connector',
                 'web3-apps/tutorials/web-login/wallet-selector',
                 'web3-apps/tutorials/web-login/ethereum-wallets',
+                'web3-apps/tutorials/web-login/web3-auth',
               ]
             },
             'tutorials/examples/frontend-multiple-contracts',
             'web3-apps/backend/backend-login',
+            {
+              'Testing on Localnet': [
+                'web3-apps/tutorials/localnet/introduction',
+                'web3-apps/tutorials/localnet/run',
+              ],
+            },
             'chain-abstraction/meta-transactions-relayer',
             {
               type: 'category',

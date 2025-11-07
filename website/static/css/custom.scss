@@ -397,7 +397,7 @@ a.cover-card[target="_blank"]::after {
 }
 
 article {
-  margin: 1rem 1rem 1rem 2rem;
+  margin: .75rem .75rem .75rem 1.75rem;
 }
 
 .menu {
@@ -747,7 +747,7 @@ html:not(.blog-post-page) .avatar__photo {
   border-radius: 0%;
 }
 
-img+em, .monaco+em {
+video+p>em,img+p>em, .monaco+em {
   font-style: normal;
   display: inherit;
   text-align: center;

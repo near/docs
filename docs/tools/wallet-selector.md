@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 The [Wallet Selector](https://github.com/near/wallet-selector) is a `JS`/`TS` library that lets users connect to your application using their preferred wallet.
 
-![Preview](/docs/assets/tools/wallet-selector.png)
+![Preview](/assets/docs/tools/wallet-selector.png)
 _Initial screen of [Wallet Selector](https://near.github.io/wallet-selector/)_
 
 <details>
