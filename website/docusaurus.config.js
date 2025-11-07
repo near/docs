@@ -505,12 +505,12 @@ const config = {
                 },
                 {
                   label: 'Backend Integration',
-                  to: '/tutorials/examples/frontend-multiple-contracts',
+                  to: '/web3-apps/backend',
                   description: 'Authenticate NEAR users in your backend',
                 },
                 {
                   label: 'Frontend with Multiple Contracts',
-                  to: '/web3-apps/backend/backend-login',
+                  to: '/tutorials/examples/frontend-multiple-contracts',
                   description: 'Learn how to communicate with multiple contracts effectively',
                 },
                 {
