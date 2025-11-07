@@ -331,20 +331,36 @@ const sidebar = {
           ]
         },
         {
-          "Tutorials": [
-            'tutorials/examples/count-near',
-            'tutorials/examples/guest-book',
-            'tutorials/examples/donation',
-            'tutorials/examples/coin-flip',
-            'tutorials/examples/factory',
-            'tutorials/examples/near-drop',
-            'tutorials/examples/xcc',
-            'tutorials/examples/advanced-xcc',
-            'tutorials/examples/global-contracts',
-            'tutorials/examples/update-contract-migrate-state',
-            'tutorials/fts',
-            'tutorials/nfts',
-            'tutorials/nfts-js',
+          type: 'category',
+          label: 'Tutorials',
+          link: {
+            type: 'doc',
+            id: 'tutorials/welcome',
+          },
+          items: [
+            {"Beginner": [
+                'tutorials/examples/count-near',
+                'tutorials/examples/guest-book',
+                'tutorials/examples/coin-flip',
+            ]},
+            {"Advanced": [
+                'tutorials/examples/donation',
+                'tutorials/examples/near-drop',
+                'tutorials/examples/update-contract-migrate-state',
+            ]},
+            {"Cross Contracts": [
+                'tutorials/examples/xcc',
+                'tutorials/examples/advanced-xcc',
+            ]},
+            {"Factories": [
+                'tutorials/examples/factory',
+                'tutorials/examples/global-contracts',
+            ]},
+            {"Zero to Hero": [
+                'tutorials/fts',
+                'tutorials/nfts',
+                'tutorials/nfts-js',
+            ]},
           ]
         },
         {
