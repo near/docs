@@ -500,12 +500,12 @@ const config = {
                 },
                 {
                   label: 'Frontend Integration',
-                  to: '/web3-apps/integrate-contracts',
+                  to: '/web3-apps/tutorials/web-login/near-connector',
                   description: 'Learn how to integrate NEAR into your Frontend App',
                 },
                 {
                   label: 'Backend Integration',
-                  to: '/web3-apps/backend/',
+                  to: '/tutorials/examples/frontend-multiple-contracts',
                   description: 'Authenticate NEAR users in your backend',
                 },
                 {
