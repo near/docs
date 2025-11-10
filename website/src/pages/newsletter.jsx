@@ -12,6 +12,56 @@ const API_BASE = 'https://tmp-docs-ai-service.onrender.com';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
+// Custom CSS sanitization to remove white tones and dark colors for legacy Mailchimp markup.
+const containsWhiteTone = (value) => {
+  if (!value) return false;
+  const normalized = value.replace(/\s+/g, '').toLowerCase();
+  if (normalized.includes('white')) return true;
+  if (normalized.includes('#fff') || normalized.includes('#ffffff')) return true;
+  if (normalized.includes('#fefefe') || normalized.includes('#fdfdfd')) return true;
+  if (normalized.includes('rgb(255') || normalized.includes('rgba(255')) return true;
+  return false;
+};
+
+const isDarkColor = (value) => {
+  if (!value) return false;
+  const normalized = value.trim().toLowerCase();
+
+  if (normalized === 'black') return true;
+
+  const hexMatch = normalized.match(/^#([0-9a-f]{3,8})$/i);
+  if (hexMatch) {
+    let hex = hexMatch[1];
+    if (hex.length === 3) {
+      hex = hex
+        .split('')
+        .map((char) => `${char}${char}`)
+        .join('');
+    }
+    if (hex.length >= 6) {
+      const r = parseInt(hex.slice(0, 2), 16);
+      const g = parseInt(hex.slice(2, 4), 16);
+      const b = parseInt(hex.slice(4, 6), 16);
+      const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      return Number.isFinite(luminance) && luminance < 75;
+    }
+  }
+
+  const rgbMatch = normalized.match(/^rgba?\(([^)]+)\)$/);
+  if (rgbMatch) {
+    const [r, g, b] = rgbMatch[1]
+      .split(',')
+      .slice(0, 3)
+      .map((component) => parseInt(component.trim(), 10));
+    if ([r, g, b].every((channel) => Number.isFinite(channel))) {
+      const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      return luminance < 75;
+    }
+  }
+
+  return false;
+};
+
 function parseCampaignHTML(htmlString) {
   // SSR guard and resilience
   if (typeof window === 'undefined' || !htmlString) return '';
@@ -21,7 +71,65 @@ function parseCampaignHTML(htmlString) {
 
     const header = doc.querySelector('tbody[data-block-id="4"].mceWrapper');
     const footer = doc.querySelector('tbody[data-block-id="60"].mceWrapper');
-    const style = doc.querySelector('style');
+
+    // Normalize legacy Mailchimp markup that forces white backgrounds
+    doc.querySelectorAll('[bgcolor]').forEach((element) => {
+      element.removeAttribute('bgcolor');
+    });
+
+    doc.querySelectorAll('[background]').forEach((element) => {
+      element.removeAttribute('background');
+    });
+
+    doc.querySelectorAll('[style]').forEach((element) => {
+      const original = element.getAttribute('style');
+      if (!original) return;
+
+      const normalized = original
+        .split(';')
+        .map((declaration) => declaration.trim())
+        .filter(Boolean)
+        .filter((declaration) => {
+          const [property, ...rawValue] = declaration.split(':');
+          if (!property || rawValue.length === 0) return true;
+
+          const prop = property.trim().toLowerCase();
+          const value = rawValue.join(':').trim();
+
+          if (prop === 'color') {
+            return !isDarkColor(value);
+          }
+
+          if (!prop.startsWith('background')) return true;
+
+          return !containsWhiteTone(value);
+        });
+
+      if (normalized.length > 0) {
+        element.setAttribute('style', normalized.join('; '));
+      } else {
+        element.removeAttribute('style');
+      }
+    });
+
+    doc.querySelectorAll('style').forEach((styleEl) => {
+      const css = styleEl.textContent;
+      if (!css) return;
+
+      let cleaned = css.replace(
+        /(background(?:-color)?)\s*:\s*([^;{}]+)(;?)/gi,
+        (match, property, value, suffix) => {
+          return containsWhiteTone(value) ? '' : `${property}: ${value.trim()}${suffix}`;
+        }
+      );
+
+      cleaned = cleaned.replace(/;;+/g, ';').trim();
+      if (cleaned) {
+        styleEl.textContent = cleaned;
+      } else {
+        styleEl.remove();
+      }
+    });
 
     [footer, header].forEach((element) => {
       if (element) {
@@ -29,7 +137,11 @@ function parseCampaignHTML(htmlString) {
       }
     });
 
-    return (style?.outerHTML || '') + doc.body.innerHTML;
+    const sanitizedStyles = Array.from(doc.querySelectorAll('style'))
+      .map((element) => element.outerHTML)
+      .join('');
+
+    return sanitizedStyles + doc.body.innerHTML;
   } catch {
     return '';
   }
@@ -82,9 +194,10 @@ const Newsletter = () => {
       // Create or reuse shadow root
       const shadow = hostRef.current.shadowRoot || hostRef.current.attachShadow({ mode: 'open' });
       // Minimal reset inside shadow DOM – avoids inheriting site styles while allowing CSS variables
-      const reset = `:host{display:block;font-family:var(--ifm-font-family-base, system-ui, sans-serif);line-height:1.5;color:#1a202c}` +
-        `*,*::before,*::after{box-sizing:border-box}` +
-        `body,div,section,article,header,footer,h1,h2,h3,h4,h5,h6,p,ul,ol,li,table,tr,td,th{margin:0;padding:0;font:inherit}` +
+      const reset = `:host{display:block;font-family:var(--ifm-font-family-base, system-ui, sans-serif);line-height:1.5;color:var(--color-text-primary,#1a202c);background:transparent}` +
+        `*,*::before,*::after{box-sizing:border-box;color:inherit}` +
+        `body,div,section,article,header,footer,h1,h2,h3,h4,h5,h6,p,ul,ol,li,table,tr,td,th{margin:0;padding:0;font:inherit;background:transparent}` +
+        `table,tbody,thead,tfoot,tr,td,th,div,section,article,header,footer{background-color:transparent!important;background-image:none!important}` +
         `h1{font-size:2rem;margin:1.5rem 0 .75rem;font-weight:600}` +
         `h2{font-size:1.5rem;margin:1.25rem 0 .6rem;font-weight:600}` +
         `h3{font-size:1.2rem;margin:1rem 0 .5rem;font-weight:600}` +
