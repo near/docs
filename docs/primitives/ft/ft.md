@@ -302,7 +302,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
 ---
 
 ## Registering a User
-In order for an user to own and transfer tokens they need to first **register** in the contract. This is done by calling `storage_deposit` and attaching 0.00125Ⓝ.
+In order for a user to own and transfer tokens they need to first **register** in the contract. This is done by calling `storage_deposit` and attaching 0.00125Ⓝ.
 
 By calling this `storage_deposit` the user can register themselves or **register other users**.
 
