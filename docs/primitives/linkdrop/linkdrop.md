@@ -261,7 +261,7 @@ await callMethod({
       senderId: accountId,
       // This balance per use is balance of human readable FTs per use.
       amount: "1"
-      // Alternatively, you could use absoluteAmount, which is dependant on the decimals value of the FT
+      // Alternatively, you could use absoluteAmount, which is dependent on the decimals value of the FT
       // ex. if decimals of an ft = 8, then 1 FT token would be absoluteAmount = 100000000
     },
   },

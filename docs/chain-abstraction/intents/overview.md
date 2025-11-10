@@ -13,14 +13,23 @@ NEAR Intents is a multichain transaction protocol where users specify what they 
 
 1. **Intent Creation**: A user or AI agent expresses a desired outcome _(ex: Swap Token A for Token B)_ and broadcasts the intent to network of Market Makers (also called Solvers).
 
-2. **Market Makers Compete**: A off-chain decentralized network of Market Makers (aka solvers) compete to fulfill the request in the most optimal way. When the network finds the best solution, it presents it as a quote to the originating user/agent for approval.
+2. **Market Makers Compete**: An off-chain decentralized network of Market Makers (aka solvers) compete to fulfill the request in the most optimal way. When the network finds the best solution, it presents it as a quote to the originating user/agent for approval.
 
 4. **Intent Execution**: If the quote from the Market Maker is accepted, the intent is executed by calling a "Verifier" smart contract on NEAR Protocol. This contract securely verifies and settles the final transaction.
 
 
 ## NEAR Intents 101
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/mOGD2gzZJqE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+An introduction to NEAR Intents core concepts and how it works.
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/mOGD2gzZJqE" title="NEAR Intents 101" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+## NEAR Intents 102
+
+A step-by-step workshop on how to perform token swaps use NEAR Intents 1Click API.
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/U8ngm2hR4a4" title="NEAR Intents 102" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 ## Resources

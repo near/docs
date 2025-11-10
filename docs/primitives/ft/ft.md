@@ -302,7 +302,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
 ---
 
 ## Registering a User
-In order for an user to own and transfer tokens they need to first **register** in the contract. This is done by calling `storage_deposit` and attaching 0.00125Ⓝ.
+In order for a user to own and transfer tokens they need to first **register** in the contract. This is done by calling `storage_deposit` and attaching 0.00125Ⓝ.
 
 By calling this `storage_deposit` the user can register themselves or **register other users**.
 
@@ -538,6 +538,42 @@ Here is an example from our [auctions tutorial](../../tutorials/auction/3.2-ft.m
         start="56" end="87" />
 
 _Note: The [`near_contract_standards::fungible_token::receiver`](https://docs.rs/near-contract-standards/latest/near_contract_standards/fungible_token/receiver/trait.FungibleTokenReceiver.html) module exposes a `FungibleTokenReceiver` trait that you could implement on your contract_
+
+---
+
+## Burn Tokens
+
+While the FT standard does not define a `burn` method, you can simply transfer tokens to an account that no one controls, such as [`0000000000000000000000000000000000000000000000000000000000000000`](https://nearblocks.io/es/address/0000000000000000000000000000000000000000000000000000000000000000) (64 zeros).
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🌐 WebApp" label="🌐 WebApp">
+    
+  ```js
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+
+  const { callMethod } = useWalletSelector();
+
+  await callMethod({
+    contractId: 'token.v2.ref-finance.near',
+    method: 'ft_transfer',
+    args: {
+      receiver_id: '0000000000000000000000000000000000000000000000000000000000000000',
+      amount: '100000000000000000',
+    },
+    deposit: 1,
+  });
+  ```
+
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+
+  </TabItem>
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
+
+    ```bash
+    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "0000000000000000000000000000000000000000000000000000000000000000", "amount": "100000000000000000"}' --depositYocto 1 --accountId bob.near
+    ```
+  </TabItem>
+</Tabs>
 
 ---
 
