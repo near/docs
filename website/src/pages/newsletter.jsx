@@ -313,7 +313,7 @@ const Newsletter = () => {
               <span className={styles.titleHighlight}>NEAR</span> Dev Newsletter
             </h1>
             <p className={styles.subtitle}>
-              Your weekly scoop on ecosystem updates, dev tools, freelance gigs, and events around the NEAR Protocol
+              Your monthly scoop on ecosystem updates, dev tools, freelance gigs, and events around the NEAR Protocol
             </p>
           </div>
 
