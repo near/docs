@@ -6,7 +6,7 @@ description: "Learn about smart contracts."
 ---
 import Card from '@site/src/components/UI/Card';
 
-Here you will find information on how to keep your smart contract and decentralized applications secure.
+Whether you're a seasoned developer looking to refine your skills or a complete beginner taking your first step into the decentralized world, you've come to the right place. Our comprehensive collection of smart contract tutorials is designed to guide you from core concepts to advanced implementations, providing the hands-on knowledge you need to build, deploy, and audit secure and efficient contracts on the NEAR blockchain.
 
 ---
 
