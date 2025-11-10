@@ -20,7 +20,16 @@ NEAR Intents is a multichain transaction protocol where users specify what they 
 
 ## NEAR Intents 101
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/mOGD2gzZJqE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+An introduction to NEAR Intents core concepts and how it works.
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/mOGD2gzZJqE" title="NEAR Intents 101" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+## NEAR Intents 102
+
+A step-by-step workshop on how to perform token swaps use NEAR Intents 1Click API.
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/U8ngm2hR4a4" title="NEAR Intents 102" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 ## Resources

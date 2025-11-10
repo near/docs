@@ -86,12 +86,9 @@ To allow users to login into your web application using a wallet you will need t
   <TabItem value="js" label="🌐 JavaScript">
   You can use the API library in the browser, or in Node.js runtime.
 
-  ```js
-  import { Account } from "@near-js/accounts";
-  import { JsonRpcProvider } from "@near-js/providers";
-  import { KeyPairSigner } from "@near-js/signers";
-  ```
-
+ <Github fname="send_tokens.js" language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/send-tokens.js"
+    start="1" end="3" />
   <details>
     <summary>Using the API in Node.js</summary>
 
@@ -400,13 +397,9 @@ This will return an Account object for you to interact with.
 
   You can create an `Account` instance using the code below. At a minimum, it requires a `Provider` to fetch data from the blockchain. If you also want to perform actions on behalf of the account (such as sending tokens, signing transactions, or managing keys) - you’ll need to pass a `Signer` as well. See the [section above](#key-handlers-stores--signers) on how to create one using a private key, seed phrase, or JSON file.
 
-  ```js
-  import { JsonRpcProvider } from "@near-js/providers";
-  import { Account } from "@near-js/accounts";
-
-  const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
-  const account = new Account("user.testnet", provider, undefined // here could've been a Signer);
-  ```
+  <Github fname="account-details.js" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/account-details.js"
+    start="1" end="13"/>
 
   </TabItem>
   <TabItem value="rust" label="🦀 Rust">
