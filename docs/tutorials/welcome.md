@@ -18,7 +18,7 @@ Here you will find information on how to keep your smart contract and decentrali
         variant="icon"
         icon={<img src="/assets/menu/near.svg" alt="NEAR Protocol" />}
         title="Beginner"
-        description="NEAR is a layer-1 blockchain built for scale and multichain compatibility. Battle-tested with 13M+ transaction peaks and 5 years of zero downtime"
+        description="Take your first steps and learn the basics of NEAR smart contracts."
       >
         <ul>
           <li><a href="/tutorials/examples/count-near">Count on NEAR</a></li>
@@ -30,9 +30,9 @@ Here you will find information on how to keep your smart contract and decentrali
     <div className="auto-col">
       <Card
         variant="icon"
-        icon={<img src="/assets/menu/ai.svg" alt="AI Native Infrastructure" />}
+        icon={<img src="/assets/menu/ai.svg" alt="Advanced" />}
         title="Advanced"
-        description="NEAR is the execution layer for AI-native apps—enabling agents to own assets, make decisions, and transact freely across networks"
+        description="Learn more about NEAR smart contracts with advanced tutorials."
       >
         <ul>
           <li><a href="/tutorials/examples/donation">Donation</a></li>
@@ -44,9 +44,9 @@ Here you will find information on how to keep your smart contract and decentrali
     <div className="auto-col">
       <Card
         variant="icon"
-        icon={<img src="/assets/menu/multichain.svg" alt="Multi-Chain" />}
+        icon={<img src="/assets/menu/multichain.svg" alt="Cross-Contracts" />}
         title="Cross Contracts"
-        description="Tap into any blockchain with NEAR's chain abstraction layer"
+        description="Learn how to perform cross-contract calls on NEAR."
       >
         <ul>
           <li><a href="/tutorials/examples/xcc">Cross Contract Call</a></li>
@@ -57,9 +57,9 @@ Here you will find information on how to keep your smart contract and decentrali
     <div className="auto-col">
       <Card
         variant="icon"
-        icon={<img src="/assets/menu/app.svg" alt="Web3 Applications" />}
+        icon={<img src="/assets/menu/app.svg" alt="Factories" />}
         title="Factories"
-        description="Create modern web applications that interact with the NEAR blockchain. Learn frontend integration and user experience best practices"
+        description="Learn how to deploy multiple contracts using a factory contract."
       >
         <ul>
           <li><a href="/tutorials/examples/factory">Factory</a></li>
@@ -72,12 +72,12 @@ Here you will find information on how to keep your smart contract and decentrali
         variant="icon"
         icon={<img src="/assets/menu/contract.svg" alt="Smart Contracts" />}
         title="Zero to Hero"
-        description="Deploy and interact with smart contracts on NEAR. From basic concepts to advanced patterns and security best practices"
+        description="Learn how to build a full FT or NFT contract from scratch, one step at a time."
       >
         <ul>
-          <li><a href="/tutorials/fts">Fungible Token (FT) Contract from Scratch</a></li>
-          <li><a href="/tutorials/nfts">Non-Fungible Tokens (NFT) Contract from Scratch</a></li>
-          <li><a href="/tutorials/nfts-js">Non-Fungible Tokens (NFT) Contract from Scratch (JavaScript)</a></li>
+          <li><a href="/tutorials/fts">Fungible Token (FT) Contract</a></li>
+          <li><a href="/tutorials/nfts">Non-Fungible Tokens (NFT) Contract</a></li>
+          <li><a href="/tutorials/nfts-js">Non-Fungible Tokens (NFT) Contract (JavaScript)</a></li>
         </ul>
       </Card>
     </div>
