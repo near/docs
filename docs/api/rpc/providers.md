@@ -52,7 +52,7 @@ FastNear maintains [a comprehensive Grafana dashboard](https://grafana.fastnear.
 | [dRPC](https://drpc.org/)                                                  | `https://near-testnet.drpc.org`                              | :heavy_check_mark: |
 | [fast-near web4](https://github.com/vgrichina/fast-near)                   | `https://rpc.web4.testnet.page/account/testnet`              | :heavy_check_mark: |
 | [FASTNEAR](https://fastnear.com)                                           | `https://rpc.testnet.fastnear.com`                           | :heavy_check_mark: |
-| [Intear RPC](https://rainy.intea.rs)                                               | `https://testnet-rpc.intea.rs`                               | :heavy_check_mark: |
+| [Intear RPC](https://rainy.intea.rs)                                       | `https://testnet-rpc.intea.rs`                               | :heavy_check_mark: |
 | [Lava Network](https://www.lavanet.xyz/get-started/near)                   | `https://neart.lava.build:443`                               | :heavy_check_mark: |
 | [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            |                    |
 | [Tatum](https://tatum.io/chain/near/)                                      | `https://near-testnet.gateway.tatum.io/`                     |                    |
