@@ -82,18 +82,8 @@ const Newsletter = () => {
       // Create or reuse shadow root
       const shadow = hostRef.current.shadowRoot || hostRef.current.attachShadow({ mode: 'open' });
       // Minimal reset inside shadow DOM – avoids inheriting site styles while allowing CSS variables
-      const reset = `:host{display:block;font-family:var(--ifm-font-family-base, system-ui, sans-serif);line-height:1.5;color:#1a202c}` +
-        `*,*::before,*::after{box-sizing:border-box}` +
-        `body,div,section,article,header,footer,h1,h2,h3,h4,h5,h6,p,ul,ol,li,table,tr,td,th{margin:0;padding:0;font:inherit}` +
-        `h1{font-size:2rem;margin:1.5rem 0 .75rem;font-weight:600}` +
-        `h2{font-size:1.5rem;margin:1.25rem 0 .6rem;font-weight:600}` +
-        `h3{font-size:1.2rem;margin:1rem 0 .5rem;font-weight:600}` +
-        `p{margin:.75rem 0}` +
-        `a{color:var(--near-color-royal,#2563eb);text-decoration:underline}` +
-        `img{height:auto;margin:1rem auto}` +
-        `table{width:100%;border-collapse:collapse}` +
-        `td,th{vertical-align:top}` +
-        `ul,ol{padding-left:1.25rem}`;
+      const reset = `.mceSectionBody { color: #1a202c !important; }`;
+
       // Inject (preserve any internal styles that come with the HTML)
       shadow.innerHTML = `<style>${reset}</style>${html || ''}`;
     }, [html]);
@@ -200,7 +190,7 @@ const Newsletter = () => {
               <span className={styles.titleHighlight}>NEAR</span> Dev Newsletter
             </h1>
             <p className={styles.subtitle}>
-              Your weekly scoop on ecosystem updates, dev tools, freelance gigs, and events around the NEAR Protocol
+              Your monthly scoop on ecosystem updates, dev tools, freelance gigs, and events around the NEAR Protocol
             </p>
           </div>
 
@@ -208,7 +198,7 @@ const Newsletter = () => {
           <div className={styles.layout}>
             {/* Main Content */}
             <div className={styles.main}>
-              <Card className={styles.contentCard}>
+              <div>
                 {issueLoading ? (
                   <div className={styles.loadingPlaceholder}>
                     <div className={styles.placeholderGlow}>
@@ -225,7 +215,7 @@ const Newsletter = () => {
                     <IssueContent html={sanitizedIssueHtml} />
                   </div>
                 )}
-              </Card>
+              </div>
             </div>
 
             {/* Sidebar */}
