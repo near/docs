@@ -16,47 +16,77 @@ If you want to use a custom RPC provider with NEAR Wallet Selector, [check this 
 
 ## Mainnet
 
-| Provider                                                                   | Endpoint Root                                                | Public Endpoint    | Archival Node      |
-| -------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------ | ------------------ |
-| [1RPC](https://docs.1rpc.io/)                                              | `https://1rpc.io/near`                                       | :heavy_check_mark: |                    |
-| [All That Node](https://www.allthatnode.com/)                              | `https://allthatnode.com/protocol/near.dsrv`                 |                    | :heavy_check_mark: |
-| [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  |                    |                    |
-| [BlockPI Network](https://blockpi.io)                                      | `https://near.blockpi.network/v1/rpc/public`                 | :heavy_check_mark: |                    |
-| [dRPC](https://drpc.org/)                                                  | `https://near.drpc.org`                                      | :heavy_check_mark: |                    |
-| [fast-near web4](https://github.com/vgrichina/fast-near)                   | `https://rpc.web4.near.page`                                 | :heavy_check_mark: |                    |
-| [FASTNEAR](https://fastnear.com)                                           | `https://free.rpc.fastnear.com`                              | :heavy_check_mark: | :heavy_check_mark: |
-| [GetBlock](https://getblock.io/nodes/near/)                                | `https://getblock.io/nodes/near/`                            |                    |                    |
-| [Grove](https://grove.city)                                                | `https://near.rpc.grove.city/v1/01fdb492`                    | :heavy_check_mark: | :heavy_check_mark: |
-| [Lava Network](https://www.lavanet.xyz/get-started/near)                   | `https://near.lava.build:443`                                | :heavy_check_mark: | :heavy_check_mark: |
-| [Intear RPC](https://github.com/INTEARnear)                                | `https://rpc.intea.rs`                                       | :heavy_check_mark: |                    |
-| [Lavender.Five Nodes](https://lavenderfive.com/)                           | `https://near.lavenderfive.com/`                             |                    |                    |
-| [NodeReal](https://nodereal.io)                                            | `https://nodereal.io/api-marketplace/near-rpc`               |                    |                    |
-| [NOWNodes](https://nownodes.io/)                                           | `https://near.nownodes.io/`                                  |                    |                    |
-| [OMNIA](https://omniatech.io)                                              | `https://endpoints.omniatech.io/v1/near/mainnet/public`      | :heavy_check_mark: |                    |
-| [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            |                    |                    |
-| [Seracle](https://docs.seracle.com/)                                       | `https://api.seracle.com/saas/baas/rpc/near/mainnet/public/` |                    |                    |
-| [Shitzu](https://shitzuapes.xyz/)                                          | `https://rpc.shitzuapes.xyz`                                 | :heavy_check_mark: |                    |
-| [Tatum](https://tatum.io/chain/near/)                                      | `https://near-mainnet.gateway.tatum.io/`                     |                    |                    |
-| [ZAN](https://zan.top/service/apikeys)                                     | `https://api.zan.top/node/v1/near/mainnet/`                  |                    |                    |
-| [Zeeve](https://www.zeeve.io/)                                             | -                                                            | :heavy_check_mark: | :heavy_check_mark: |
+| Provider                                                                   | Endpoint Root                                                | Free Tier          | Rate Limits (Free)            | Archival Node      |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------ | ----------------------------- | ------------------ |
+| [1RPC](https://docs.1rpc.io/)                                              | `https://1rpc.io/near`                                       | :heavy_check_mark: | Public access                 |                    |
+| [All That Node](https://www.allthatnode.com/)                              | `https://allthatnode.com/protocol/near.dsrv`                 | ⚠️ Limited         | Contact provider              | :heavy_check_mark: |
+| [ankr.com](https://www.ankr.com/docs/rpc-service/chains/chains-list/#near) | `https://rpc.ankr.com/near`                                  | :heavy_check_mark: | 200M credits/mo, 30 req/sec   |                    |
+| [BlockPI Network](https://blockpi.io)                                      | `https://near.blockpi.network/v1/rpc/public`                 | :heavy_check_mark: | Public access                 |                    |
+| [dRPC](https://drpc.org/)                                                  | `https://near.drpc.org`                                      | :heavy_check_mark: | 210M CU/mo, ~100 req/sec      |                    |
+| [fast-near web4](https://github.com/vgrichina/fast-near)                   | `https://rpc.web4.near.page`                                 | :heavy_check_mark: | Public access                 |                    |
+| [FASTNEAR](https://fastnear.com)                                           | `https://free.rpc.fastnear.com`                              | :heavy_check_mark: | Public access, [monitored](https://grafana.fastnear.com/public-dashboards/577b37c6cfe84b2bae23af471d27cade) | :heavy_check_mark: |
+| [GetBlock](https://getblock.io/nodes/near/)                                | `https://getblock.io/nodes/near/`                            | ❌                  | Paid only                     |                    |
+| [Grove](https://grove.city)                                                | `https://near.rpc.grove.city/v1/01fdb492`                    | :heavy_check_mark: | Public access                 | :heavy_check_mark: |
+| [Lava Network](https://www.lavanet.xyz/get-started/near)                   | `https://near.lava.build:443`                                | :heavy_check_mark: | Up to 30 req/sec              | :heavy_check_mark: |
+| [Intear RPC](https://github.com/INTEARnear)                                | `https://rpc.intea.rs`                                       | :heavy_check_mark: | Public access                 |                    |
+| [Lavender.Five Nodes](https://lavenderfive.com/)                           | `https://near.lavenderfive.com/`                             | ⚠️ Limited         | Contact provider              |                    |
+| [NodeReal](https://nodereal.io)                                            | `https://nodereal.io/api-marketplace/near-rpc`               | ❌                  | Paid only                     |                    |
+| [NOWNodes](https://nownodes.io/)                                           | `https://near.nownodes.io/`                                  | ❌                  | Paid only                     |                    |
+| [OMNIA](https://omniatech.io)                                              | `https://endpoints.omniatech.io/v1/near/mainnet/public`      | :heavy_check_mark: | Public access                 |                    |
+| [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            | 🔵 Trial           | 10M credits trial             |                    |
+| [Seracle](https://docs.seracle.com/)                                       | `https://api.seracle.com/saas/baas/rpc/near/mainnet/public/` | ⚠️ Limited         | Contact provider              |                    |
+| [Shitzu](https://shitzuapes.xyz/)                                          | `https://rpc.shitzuapes.xyz`                                 | :heavy_check_mark: | Public access                 |                    |
+| [Tatum](https://tatum.io/chain/near/)                                      | `https://near-mainnet.gateway.tatum.io/`                     | ⚠️ Limited         | Contact provider              |                    |
+| [ZAN](https://zan.top/service/apikeys)                                     | `https://api.zan.top/node/v1/near/mainnet/`                  | ⚠️ Limited         | Contact provider              |                    |
+| [Zeeve](https://www.zeeve.io/)                                             | -                                                            | ⚠️ Limited         | Contact provider              | :heavy_check_mark: |
 
-FastNear maintains [a comprehensive Grafana dashboard](https://grafana.fastnear.com/public-dashboards/577b37c6cfe84b2bae23af471d27cade) with response times for most of the publicly and freemium available endpoints.
+**Legend:**
+- ✅ **Free Tier**: Fully free with public access
+- 🔵 **Trial**: Free trial period with credits
+- ⚠️ **Limited**: Free tier available but with restrictions (contact provider for details)
+- ❌ **Paid Only**: No free tier available
+
+### Choosing the Right Provider
+
+When selecting an RPC provider, consider the following factors:
+
+**For Development & Testing:**
+- **FASTNEAR**, **1RPC**, or **Lava Network** offer generous free tiers with good monitoring
+- Testnet providers are ideal for development without worrying about rate limits
+
+**For Production Applications:**
+- **ankr.com**: 200M credits/month with clear limits (30 req/sec)
+- **dRPC**: 210M compute units/month with ~100 req/sec
+- **Lava Network**: Up to 30 req/sec without strict rate limits
+- Consider multiple providers for redundancy (see [RPC Failover](#rpc-failover) below)
+
+**For High-Volume Applications:**
+- Paid tiers from **QuickNode**, **GetBlock**, or **NOWNodes**
+- Consider running your own NEAR node for maximum control
+
+**For Monitoring & Reliability:**
+- Check [FastNear's Grafana dashboard](https://grafana.fastnear.com/public-dashboards/577b37c6cfe84b2bae23af471d27cade) for real-time performance metrics
+- Use providers with archival nodes if you need historical data (older than 5 epochs/~2.5 days)
+
+:::tip Performance Monitoring
+FastNear maintains a [comprehensive Grafana dashboard](https://grafana.fastnear.com/public-dashboards/577b37c6cfe84b2bae23af471d27cade) with response times for most publicly and freemium available endpoints. Use this to compare performance across different regions and providers.
+:::
 
 ## Testnet
 
-| Provider                                                                   | Endpoint Root                                                | Public Endpoint    |
-| -------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------ |
-| [FASTNEAR](https://fastnear.com)                                           | `https://test.rpc.fastnear.com`                              | :heavy_check_mark: | 
-| [ZAN](https://zan.top/service/apikeys)                                     | `https://api.zan.top/node/ws/v1/near/testnet`                |                    |
-| [All That Node](https://www.allthatnode.com/)                              | `https://allthatnode.com/protocol/near.dsrv`                 |                    |
-| [dRPC](https://drpc.org/)                                                  | `https://near-testnet.drpc.org`                              | :heavy_check_mark: |
-| [fast-near web4](https://github.com/vgrichina/fast-near)                   | `https://rpc.web4.testnet.page/account/testnet`              | :heavy_check_mark: |
-| [FASTNEAR](https://fastnear.com)                                           | `https://rpc.testnet.fastnear.com`                           | :heavy_check_mark: |
-| [Intear RPC](https://github.com/INTEARnear)                                | `https://testnet-rpc.intea.rs`                               | :heavy_check_mark: |
-| [Lava Network](https://www.lavanet.xyz/get-started/near)                   | `https://neart.lava.build:443`                               | :heavy_check_mark: |
-| [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            |                    |
-| [Tatum](https://tatum.io/chain/near/)                                      | `https://near-testnet.gateway.tatum.io/`                     |                    |
-| [Zeeve](https://www.zeeve.io/)                                             | -                                                            |                    |
+| Provider                                                                   | Endpoint Root                                                | Free Tier          | Rate Limits (Free)            |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------ | ----------------------------- |
+| [FASTNEAR](https://fastnear.com)                                           | `https://test.rpc.fastnear.com`                              | :heavy_check_mark: | Public access, [monitored](https://grafana.fastnear.com/public-dashboards/577b37c6cfe84b2bae23af471d27cade) |
+| [fast-near web4](https://github.com/vgrichina/fast-near)                   | `https://rpc.web4.testnet.page/account/testnet`              | :heavy_check_mark: | Public access                 |
+| [FASTNEAR](https://fastnear.com)                                           | `https://rpc.testnet.fastnear.com`                           | :heavy_check_mark: | Public access                 |
+| [dRPC](https://drpc.org/)                                                  | `https://near-testnet.drpc.org`                              | :heavy_check_mark: | 210M CU/mo, ~100 req/sec      |
+| [Intear RPC](https://github.com/INTEARnear)                                | `https://testnet-rpc.intea.rs`                               | :heavy_check_mark: | Public access                 |
+| [Lava Network](https://www.lavanet.xyz/get-started/near)                   | `https://neart.lava.build:443`                               | :heavy_check_mark: | Up to 30 req/sec              |
+| [All That Node](https://www.allthatnode.com/)                              | `https://allthatnode.com/protocol/near.dsrv`                 | ⚠️ Limited         | Contact provider              |
+| [ZAN](https://zan.top/service/apikeys)                                     | `https://api.zan.top/node/ws/v1/near/testnet`                | ⚠️ Limited         | Contact provider              |
+| [QuickNode](https://www.quicknode.com/chains/near)                         | -                                                            | 🔵 Trial           | 10M credits trial             |
+| [Tatum](https://tatum.io/chain/near/)                                      | `https://near-testnet.gateway.tatum.io/`                     | ⚠️ Limited         | Contact provider              |
+| [Zeeve](https://www.zeeve.io/)                                             | -                                                            | ⚠️ Limited         | Contact provider              |
 
 ## RPC Failover
 
