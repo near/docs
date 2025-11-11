@@ -536,6 +536,11 @@ const sidebar = {
                 },
               ]
             },
+            {
+              type: "link",
+              label: "The Graph Substreams",
+              href: "https://docs.substreams.dev/tutorials/intro-to-tutorials/near"
+            }
           ],
         },
       ],
