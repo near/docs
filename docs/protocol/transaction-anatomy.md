@@ -35,7 +35,7 @@ Each transaction has exactly one `Signer` and `Receiver`, but can have multiple 
 
 ## Actions
 
-Each transaction can have **one or multiple** `Actions`, which are the actual operations to be performed on the `Receiver` account. There are 9 types of actions that can be performed:
+Each transaction can have **one or multiple** `Actions`, which are the actual operations to be performed on the `Receiver` account. There are 11 types of actions that can be performed:
 
 1. `FunctionCall`: to invoke a function on a contract (optionally attaching NEAR to the call)
 2. `Transfer`: to transfer tokens to another account
@@ -46,6 +46,8 @@ Each transaction can have **one or multiple** `Actions`, which are the actual op
 7. `DeleteKey`: to delete an existing key from the account
 8. `DelegateActions`: to create a meta-transaction
 9. `Stake`: special action to express interest in becoming a network validator
+10. `DeployGlobalContract`: to deploy a contract globally, making it reusable by multiple accounts (see [Global Contracts](/smart-contracts/global-contracts))
+11. `UseGlobalContract`: to reference a previously deployed global contract by its hash or account ID
 
 For example, `bob.near` can bundle the following actions in a single transaction:
 - Create the account `contract.bob.near`

@@ -820,6 +820,152 @@ If an account with a contract deployed does **not** have any access keys, this i
 
 ---
 
+## Deploy Global Contract
+
+Global Contracts allow you to deploy a contract once and reuse it across multiple accounts without paying storage costs repeatedly. You can deploy a global contract either by account ID (upgradable) or by hash (immutable). See the [Global Contracts documentation](../global-contracts.md) for more details.
+
+:::info
+Deploying a global contract burns tokens at 10x the regular storage rate and distributes the contract across all shards. This is significantly more expensive than regular deployment, but enables efficient reuse across many accounts.
+:::
+
+<Tabs groupId="code-tabs">
+  <TabItem value="cli" label="🖥️ CLI">
+
+Deploy a global contract by account ID (upgradable):
+```bash
+near contract deploy-as-global use-file ./contract.wasm as-global-account-id mycontract.testnet network-config testnet sign-with-keychain send
+```
+
+Deploy a global contract by hash (immutable):
+```bash
+near contract deploy-as-global use-file ./contract.wasm as-global-hash mycontract.testnet network-config testnet sign-with-keychain send
+```
+
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+
+```js
+  import { NearBindgen, call } from 'near-sdk-js'
+  import { readFileSync } from 'fs'
+
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    async deploy_global_by_account() {
+      const wasm = readFileSync('./contract.wasm')
+      // Deploy as upgradable global contract
+      await account.deployGlobalContract(wasm, "accountId")
+    }
+
+    @call({})
+    async deploy_global_by_hash() {
+      const wasm = readFileSync('./contract.wasm')
+      // Deploy as immutable global contract
+      await account.deployGlobalContract(wasm, "codeHash")
+    }
+  }
+```
+
+  </TabItem>
+
+  <TabItem value="rust" label="🦀 Rust">
+
+```rust
+  use near_sdk::{near, env, Promise};
+
+  #[near(contract_state)]
+  #[derive(Default)]
+  pub struct Contract { }
+
+  const GLOBAL_CONTRACT: &[u8] = include_bytes!("./contract.wasm");
+
+  #[near]
+  impl Contract {
+    // Note: Deploying global contracts from within a contract
+    // requires using low-level Promise API
+    // See CLI or JavaScript examples for direct deployment
+  }
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Use Global Contract
+
+Once a global contract is deployed, you can reference it from any account. The account will use the global contract's code without storing a copy, paying only for the small reference instead of the full contract size.
+
+<Tabs groupId="code-tabs">
+  <TabItem value="cli" label="🖥️ CLI">
+
+Use a global contract by account ID:
+```bash
+near contract deploy myaccount.testnet use-global-account-id globalcontract.testnet without-init-call network-config testnet
+```
+
+Use a global contract by hash:
+```bash
+near contract deploy myaccount.testnet use-global-hash 7KfRFj3HXN... without-init-call network-config testnet
+```
+
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+
+```js
+  import { NearBindgen, call } from 'near-sdk-js'
+
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    async use_global_by_account() {
+      // Reference global contract by account ID
+      await account.useGlobalContract({ 
+        accountId: "globalcontract.testnet" 
+      })
+    }
+
+    @call({})
+    async use_global_by_hash() {
+      // Reference global contract by hash
+      const hash = "7KfRFj3HXN..." // Contract code hash
+      await account.useGlobalContract({ 
+        codeHash: hash 
+      })
+    }
+  }
+```
+
+  </TabItem>
+
+  <TabItem value="rust" label="🦀 Rust">
+
+```rust
+  use near_sdk::{near, Promise};
+
+  #[near(contract_state)]
+  #[derive(Default)]
+  pub struct Contract { }
+
+  #[near]
+  impl Contract {
+    // Note: Using global contracts from within a contract
+    // requires using low-level Promise API
+    // See CLI or JavaScript examples for direct usage
+  }
+```
+
+  </TabItem>
+</Tabs>
+
+:::tip When to use Global Contracts
+Consider using global contracts when deploying the same contract to 10+ accounts, or when you need immutable shared infrastructure. See the [when to use guide](../global-contracts.md#when-to-use-global-contracts) for details.
+:::
+
+---
+
 ## Delete Account
 
 There are two scenarios in which you can use the `delete_account` action:
