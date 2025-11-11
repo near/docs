@@ -473,7 +473,8 @@ const sidebar = {
         {
           'Non-Fungible Tokens (NFT)': [
             'primitives/nft/standard',
-            'primitives/nft/nft'
+            'primitives/nft/nft',
+            'primitives/nft/nft-contract-tools'
           ]
         },
         {
