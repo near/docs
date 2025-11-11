@@ -665,6 +665,13 @@ const config = {
                   icon: '/assets/menu/discord.svg',
                 },
                 {
+                  label: 'Office Hours ↗',
+                  to: 'https://near.dev/office-hours',
+                  target: '_blank',
+                  description: 'Book time with NEAR developer relations for live support',
+                  icon: '/assets/menu/support.png',
+                },
+                {
                   label: 'WeChat ↗',
                   to: 'https://pages.near.org/ecosystem/community/wechat/',
                   description: 'Join our WeChat community',
