@@ -1,5 +1,5 @@
 ---
-id: ft-contract-tools
+id: sdk-contract-tools
 title: Create FT using Contract Tools
 sidebar_label: Create FT using Contract Tools
 description: "Learn how to create a fungible token (FT) using Contract Tools package"
@@ -15,7 +15,7 @@ In this tutorial, we will create a fungible token (FT) using the [NEAR SDK Contr
 - Owner pattern and derive macro
 - Pause pattern and derive macro
 - Role-based access control
-- Derive macros for NEP standards
+- Derive macros for [NEP standards](./standard.md)
   - NEP-141 (fungible token), extension NEP-148
   - NEP-145 (storage management), and integrations for the fungible token and non-fungible token standards
   - NEP-171 (non-fungible token), extensions NEP-177, NEP-178, NEP-181

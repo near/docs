@@ -467,7 +467,7 @@ const sidebar = {
           'Fungible Tokens (FT)': [
             'primitives/ft/standard',
             'primitives/ft/ft',
-            'tutorials/examples/ft-contract-tools'
+            'primitives/ft/sdk-contract-tools'
           ]
         },
         {
