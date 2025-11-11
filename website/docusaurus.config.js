@@ -36,7 +36,7 @@ const config = {
   },
   themes: ['@saucelabs/theme-github-codeblock', '@docusaurus/theme-mermaid'],
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  markdown: { hooks: { onBrokenMarkdownLinks: 'throw' } },
   onBrokenAnchors: 'throw',
   presets: [
     [
