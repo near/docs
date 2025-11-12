@@ -93,7 +93,7 @@ Let's see how the components described above interact when a user logs in and us
 
 The first time you login through your EVM wallet, the wallet selector will contact the account `ethereum-wallets.near` to create a NEAR account with the same address as your Ethereum wallet. For example, if your address on Metamask is `0xD79...314`, the NEAR account created will be `0xD79...314`.
 
-On this account, the `Wallet Contract` is deployed and a full-access key is added
+On this account, the `Wallet Contract` is deployed and a function-call key is added for the `rlp_execute` function of the contract
 
 <img src="/blog/web3wallets/login.png" style={{width: "auto", display: "block", margin: "0 auto"}} />
 *On your first login, a NEAR accounts with the same address as your Ethereum wallet is created, and the Wallet Contract is deployed on it*
