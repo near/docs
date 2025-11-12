@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, act } from 'react';
 import Typed from 'typed.js';
+import CodeBlock from '@theme/CodeBlock';
+
 import { CATEGORY_STRINGS, OPTIONS } from './options';
 import './styles.scss';
 
@@ -30,9 +32,8 @@ const LandingHero = () => {
   }, []);
 
   return (
-    <div className="landing-hero">
-      <div className="landing-hero__content">
-        <div className="landing-hero__left">
+      <div className="row">
+        <div className="col col--5 text--left vcentered">
           <h2 className="landing-hero__title-gradient">
             NEAR Protocol, the home of
           </h2>
@@ -62,7 +63,7 @@ const LandingHero = () => {
             </a>
           </div>
         </div>
-        <div className="landing-hero__right">
+        <div className="col col--7">
           <div className="landing-hero__code-window">
             <div className="landing-hero__code-header">
               <div className="landing-hero__code-dots">
@@ -70,46 +71,36 @@ const LandingHero = () => {
                 <span></span>
                 <span></span>
               </div>
-              <div className="landing-hero__code-title">
-                {OPTIONS[activeIndex].label.toLowerCase()}-example.
-                {activeIndex === 1 ? 'rs' : activeIndex === 0 ? 'js' : 'js'}
+              <div className="landing-hero__tabs">
+                {OPTIONS.map((option, index) => (
+                  <button
+                    key={option.label}
+                    className={`landing-hero__tab ${index === activeIndex ? 'active' : ''}`}
+                    onClick={() => {
+                      // Stop the typing animation and jump to this category
+                      if (typedInstance.current) {
+                        typedInstance.current.stop();
+                      }
+                      setActiveIndex(index);
+                      // Update the text content directly
+                      if (typedElement.current) {
+                        typedElement.current.textContent = CATEGORY_STRINGS[index];
+                      }
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                ))}
               </div>
             </div>
-            <div className="landing-hero__code-content">
-              {OPTIONS.map((option, index) => (
-                <pre
-                  key={option.label}
-                  className={`landing-hero__code ${index === activeIndex ? 'active' : ''}`}
-                >
-                  {option.code}
-                </pre>
-              ))}
+            <div className="landing-hero__code-content text--left">
+              <CodeBlock language="rust">
+                {OPTIONS[activeIndex].code}
+              </CodeBlock>
             </div>
-          </div>
-          <div className="landing-hero__tabs">
-            {OPTIONS.map((option, index) => (
-              <button
-                key={option.label}
-                className={`landing-hero__tab ${index === activeIndex ? 'active' : ''}`}
-                onClick={() => {
-                  // Stop the typing animation and jump to this category
-                  if (typedInstance.current) {
-                    typedInstance.current.stop();
-                  }
-                  setActiveIndex(index);
-                  // Update the text content directly
-                  if (typedElement.current) {
-                    typedElement.current.textContent = CATEGORY_STRINGS[index];
-                  }
-                }}
-              >
-                {option.label}
-              </button>
-            ))}
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
