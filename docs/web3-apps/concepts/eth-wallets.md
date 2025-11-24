@@ -30,7 +30,7 @@ Since Ethereum wallets create _ethereum transactions_ and talk with _ethereum RP
 2. A `Translator RPC` service, that translates Ethereum RPC calls into NEAR RPC calls
 3. A `Wallet Contract` that allows NEAR accounts to process EVM transactions
 
-<img src="/website/static/assets/blog/web3wallets/diagram.png" height="600px" style={{width: "auto", display: "block", margin: "0 auto"}} />
+<img src="/assets/blog/web3wallets/diagram.png" height="600px" style={{width: "auto", display: "block", margin: "0 auto"}} />
 *High-level architecture of Ethereum wallets on NEAR*
 
 <hr class="subsection" />
