@@ -30,7 +30,7 @@ Since Ethereum wallets create _ethereum transactions_ and talk with _ethereum RP
 2. A `Translator RPC` service, that translates Ethereum RPC calls into NEAR RPC calls
 3. A `Wallet Contract` that allows NEAR accounts to process EVM transactions
 
-<img src="/blog/web3wallets/diagram.png" height="600px" style={{width: "auto", display: "block", margin: "0 auto"}} />
+<img src="/website/static/assets/blog/web3wallets/diagram.png" height="600px" style={{width: "auto", display: "block", margin: "0 auto"}} />
 *High-level architecture of Ethereum wallets on NEAR*
 
 <hr class="subsection" />
@@ -95,7 +95,7 @@ The first time you login through your EVM wallet, the wallet selector will conta
 
 On this account, the `Wallet Contract` is deployed and a function-call key is added for the `rlp_execute` function of the contract
 
-<img src="/blog/web3wallets/login.png" style={{width: "auto", display: "block", margin: "0 auto"}} />
+<img src="/website/static/assets/blog/web3wallets/login.png" style={{width: "auto", display: "block", margin: "0 auto"}} />
 *On your first login, a NEAR accounts with the same address as your Ethereum wallet is created, and the Wallet Contract is deployed on it*
 
 <hr class="subsection" />
@@ -108,7 +108,7 @@ Under the hood, Metamask will create an Ethereum transaction and send it to the 
 
 The `Translator API` will then translate the Ethereum transaction into a **function call** into the `Wallet Contract` deployed in your account. Particularly, it will call the `rlp_execute` function, passing the Ethereum transaction as an argument. 
 
-<img src="/blog/web3wallets/function-call.png" style={{width: "auto", display: "block", margin: "0 auto"}} />
+<img src="/website/static/assets/blog/web3wallets/function-call.png" style={{width: "auto", display: "block", margin: "0 auto"}} />
 
 The `Wallet Contract` will then execute the function call, and the application will receive the result.
 
