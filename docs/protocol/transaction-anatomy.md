@@ -37,17 +37,17 @@ Each transaction has exactly one `Signer` and `Receiver`, but can have multiple 
 
 Each transaction can have **one or multiple** [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html), which are the actual operations to be performed on the `Receiver` account. There are different types of actions that can be performed:
 
-1. `FunctionCall`: to invoke a function on a contract (optionally attaching NEAR to the call)
-2. `Transfer`: to transfer tokens to another account
-3. `DeployContract`: to deploy a contract in the account
-4. `DeployGlobalContract`: registers a global contract referenced by its contract hash or by its account ID
-5. `UseGlobalContract`: uses a registered global contract by contract hash or account ID
-6. `CreateAccount`: to create a new sub-account (e.g. `ana.near` can create `sub.ana.near`)
-7. `DeleteAccount`: to delete the account (transferring the remaining balance to a beneficiary)
-8. `AddKey`: to add a new key to the account (either `FullAccess` or `FunctionCall` access)
-9. `DeleteKey`: to delete an existing key from the account
-10. `DelegateActions`: to create a meta-transaction
-11. `Stake`: special action to express interest in becoming a network validator
+1. [`FunctionCall`](https://nomicon.io/RuntimeSpec/Actions.html#functioncallaction): to invoke a function on a contract (optionally attaching NEAR to the call)
+2. [`Transfer`](https://nomicon.io/RuntimeSpec/Actions.html#transferaction): to transfer tokens to another account
+3. [`DeployContract`](https://nomicon.io/RuntimeSpec/Actions.html#deploycontractaction): to deploy a contract in the account
+4. [`DeployGlobalContract`](https://nomicon.io/RuntimeSpec/Actions.html#deployglobalcontractaction): registers a global contract referenced by its contract hash or by its account ID
+5. [`UseGlobalContract`](https://nomicon.io/RuntimeSpec/Actions.html#useglobalcontractaction): uses a registered global contract by contract hash or account ID
+6. [`CreateAccount`](https://nomicon.io/RuntimeSpec/Actions.html#createaccountaction): to create a new sub-account (e.g. `ana.near` can create `sub.ana.near`)
+7. [`DeleteAccount`](https://nomicon.io/RuntimeSpec/Actions.html#deleteaccountaction): to delete the account (transferring the remaining balance to a beneficiary)
+8. [`AddKey`](https://nomicon.io/RuntimeSpec/Actions.html#addkeyaction): to add a new key to the account (either `FullAccess` or `FunctionCall` access)
+9. [`DeleteKey`](https://nomicon.io/RuntimeSpec/Actions.html#deletekeyaction): to delete an existing key from the account
+10. [`DelegateActions`](https://nomicon.io/RuntimeSpec/Actions.html#delegate-actions): to create a meta-transaction
+11. [`Stake`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction): special action to express interest in becoming a network validator
 
 For example, `bob.near` can bundle the following actions in a single transaction:
 - Create the account `contract.bob.near`
