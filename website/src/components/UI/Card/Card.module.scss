@@ -74,25 +74,18 @@
 
   // Color variants
   &--mint {
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border-primary);
-    border-top: 3px solid #10b981;
-    color: var(--color-text-primary);
+    background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    color: #065f46;
 
     .card__title {
-      color: var(--color-text-primary);
+      color: #065f46;
       font-weight: var(--font-weight-bold);
     }
 
     .card__description,
     .card__content {
-      color: var(--color-text-secondary);
-    }
-
-    &:hover {
-      background: rgba(16, 185, 129, 0.03);
-      border-color: rgba(16, 185, 129, 0.3);
-      border-top-color: #10b981;
+      color: #047857;
     }
   }
 
@@ -114,48 +107,34 @@
   }
 
   &--purple {
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border-primary);
-    border-top: 3px solid #8b5cf6;
-    color: var(--color-text-primary);
+    background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 100%);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    color: #4c1d95;
 
     .card__title {
-      color: var(--color-text-primary);
+      color: #4c1d95;
       font-weight: var(--font-weight-bold);
     }
 
     .card__description,
     .card__content {
-      color: var(--color-text-secondary);
-    }
-
-    &:hover {
-      background: rgba(139, 92, 246, 0.03);
-      border-color: rgba(139, 92, 246, 0.3);
-      border-top-color: #8b5cf6;
+      color: #5b21b6;
     }
   }
 
-  &--orange {
-    background: var(--color-bg-surface);
-    border: 1px solid var(--color-border-primary);
-    border-top: 3px solid #f97316;
-    color: var(--color-text-primary);
+  &--red {
+    background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #7f1d1d;
 
     .card__title {
-      color: var(--color-text-primary);
+      color: #7f1d1d;
       font-weight: var(--font-weight-bold);
     }
 
     .card__description,
     .card__content {
-      color: var(--color-text-secondary);
-    }
-
-    &:hover {
-      background: rgba(249, 115, 22, 0.03);
-      border-color: rgba(249, 115, 22, 0.3);
-      border-top-color: #f97316;
+      color: #991b1b;
     }
 
     // Buttons and interactive elements inside red cards
@@ -298,54 +277,14 @@
       a {
         display: block;
         padding: var(--space-2) 0;
-        padding-left: 0;
         color: var(--color-text-primary);
         text-decoration: none;
         font-size: 0.87rem;
         transition: var(--transition-all);
-        position: relative;
-
-        &::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 18px;
-          height: 18px;
-          background-image: url('/assets/site/near_logo.svg');
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-          opacity: 0;
-          transition: opacity 0.2s ease, transform 0.2s ease;
-          filter: brightness(0) saturate(100%) invert(56%) sepia(91%) saturate(3218%) hue-rotate(140deg) brightness(0.9) contrast(0.85);
-        }
-
-        &::after {
-          content: '→';
-          position: absolute;
-          left: 22px;
-          top: 50%;
-          transform: translateY(-50%);
-          opacity: 0;
-          transition: opacity 0.2s ease;
-          color: var(--near-brand-primary);
-          font-weight: 400;
-          font-size: 0.8rem;
-        }
 
         &:hover {
           color: var(--near-brand-primary);
-          padding-left: 38px;
-
-          &::before {
-            opacity: 1;
-          }
-
-          &::after {
-            opacity: 1;
-          }
+          transform: translateX(var(--space-2));
         }
       }
     }
@@ -375,37 +314,8 @@
     a {
       color: var(--color-text-primary);
 
-      &::before {
-        background-image: url('/assets/site/near_logo_white.svg');
-        width: 18px;
-        height: 18px;
-        filter: brightness(0) saturate(100%) invert(56%) sepia(91%) saturate(3218%) hue-rotate(140deg) brightness(1.1) contrast(0.85);
-      }
-
-      &::after {
-        content: '→';
-        position: absolute;
-        left: 22px;
-        top: 50%;
-        transform: translateY(-50%);
-        opacity: 0;
-        transition: opacity 0.2s ease;
-        color: var(--near-brand-primary);
-        font-weight: 400;
-        font-size: 0.8rem;
-      }
-
       &:hover {
         color: var(--near-brand-primary);
-        padding-left: 38px;
-
-        &::before {
-          opacity: 1;
-        }
-
-        &::after {
-          opacity: 1;
-        }
       }
     }
   }

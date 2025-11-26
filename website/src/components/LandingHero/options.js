@@ -7,11 +7,17 @@ export const OPTIONS = [
     buttonText: "Build Your First Contract",
     buttonLink: "/smart-contracts/quickstart",
     description: "Build smart contracts using languages you already know like Rust, Javascript and Python",
-    language: "rust",
+    language: "python",
     code:  `$> npx create-near-app@latest
 
-✅ What do you want to build? › Smart Contract
-✅ Name your project to create a contract: hello-near
+======================================================
+👋 Welcome to Near! Learn more: https://docs.near.org/
+🔧 Let's get your project ready.
+======================================================
+
+✅ What do you want to build? › "Smart Contract"
+✅ Name your project to create a contract: "hello-near"
+      # Creating your NEAR smart contract...
 ✅ Success! Created 'hello-near', a smart contract in Rust
 
 
@@ -53,17 +59,22 @@ async function main() {
     buttonText: "Build a Web3 App",
     buttonLink: "/web3-apps/quickstart",
     description: "Integrate NEAR into your app in seconds thanks to our APIs and wallet connectors",
-    language: "rust",
+    language: "python",
     code:  `$> npx create-near-app@latest
 
-✅ What do you want to build? › A Web App
-✅ Select a framework for your frontend › Vite (React)
-✅ Name your project: hello-near
+======================================================
+👋 Welcome to Near! Learn more: https://docs.near.org/
+🔧 Let's get your project ready.
+======================================================
 
-- Creating a new NEAR app...
-- Installing dependencies, this might take a while...
-
+✅ What do you want to build? › "A Web App"
+✅ Select a framework for your frontend › "Vite (React)"
+✅ Name your project: "hello-near"
+    # - Creating a new NEAR app...
+    # - Installing dependencies, this might take a while...
 ✅ Success! Created 'hello-near', a web-app using Vite React.
+
+Start using your new NEAR app:
  * cd hello-near
  * npm run dev
 `,
