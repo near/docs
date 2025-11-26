@@ -10,13 +10,11 @@ description: "NEAR Protocol documentation - Build decentralized applications and
 import Card from '@site/src/components/UI/Card';
 import LandingHero from '@site/src/components/LandingHero';
 
-<div className="landing">
 
   <LandingHero />
 
-  <div className="container margin-top--xl">
-    <div className="row">
-    <div className="col col--4">
+  <div className="row">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/near.svg" alt="NEAR Protocol" />}
@@ -61,9 +59,7 @@ import LandingHero from '@site/src/components/LandingHero';
         </ul>
       </Card>
     </div>
-  </div>
-  <div className="row">
-    <div className="col col--4">
+    <div className="auto-col">
       <Card
         variant="icon"
         icon={<img src="/assets/menu/app.svg" alt="Web3 Applications" />}
@@ -109,6 +105,3 @@ import LandingHero from '@site/src/components/LandingHero';
       </Card>
     </div>
   </div>
-  </div>
-
-</div>

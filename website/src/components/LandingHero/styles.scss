@@ -1,5 +1,7 @@
 .landing-hero {
 
+  min-height: 416px;
+
   &__title-gradient {
     background: linear-gradient(135deg, #5f8afa 0%, #22c55e 100%);
     -webkit-background-clip: text;
@@ -7,6 +9,8 @@
     background-clip: text;
     width: 100%;
     margin: 0;
+    margin-top: 32px;
+    margin-bottom: 0.1rem !important;
   }
 
   &__title-typed {
@@ -31,7 +35,8 @@
 
     .button {
       text-decoration: none;
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
       border-radius: 8px;
       font-weight: 600;
       min-width: 220px;
@@ -74,29 +79,28 @@
   &__tabs {
     display: flex;
     gap: 4px;
-    margin-top: .4rem;
     padding: 0;
     align-items: center;
   }
 
   &__tab {
     padding: 0.5rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: none;
-    border-radius: 4px 4px 0 0;
+    border: none;
     cursor: pointer;
     font-size: 0.75rem;
     font-weight: 600;
-    color: #888;
     transition: all 0.2s;
     position: relative;
     z-index: 1;
+    background: transparent;
+
+    &:hover:not(.active) {
+      color: #00a7de;
+    }
 
     &.active {
       color: white;
-      box-shadow: inset 0 1px 0 rgba(0, 193, 222, 0.3);
-      background: #292d3e;
-      border-top: 1px solid rgb(2, 175, 202);
+      border-bottom: 1px solid rgb(2, 175, 202);
     }
   }
 
@@ -142,8 +146,12 @@
   &__code-content {
     padding: 0;
     margin-bottom: calc(-1*var(--ifm-leading));
-    height: 400px;
+    max-height: 400px;
     overflow: scroll;
+
+    .theme-code-block {
+      border-radius: 0;
+    }
   }
 }
 
@@ -160,44 +168,20 @@ html[data-theme='dark'] {
     &__tabs {
       background: transparent;
     }
-
-    &__tab {
-      &:hover:not(.active) {
-        color: #00c1de;
-        background: rgba(0, 193, 222, 0.1);
-      }
-    }
   }
 }
 
 html[data-theme='light'] {
   .landing-hero {
     &__code-window {
-      background: #f6f8fa;
-      border: 2px solid #d0d7de;
-      outline: 1px solid rgba(0, 193, 222, 0.2);
+      border: 1px solid var(--icon-svg-color);
+      background-color: #f5f5f5;
     }
 
-    &__code-header {
-      background: #ffffff;
-      border-bottom-color: #d0d7de;
-    }
-
-    &__code-dots {
-      span {
-        background: #d0d7de !important;
-
-        &:nth-child(1) {
-          background: #ff5f56 !important;
-        }
-
-        &:nth-child(2) {
-          background: #ffbd2e !important;
-        }
-
-        &:nth-child(3) {
-          background: #27c93f !important;
-        }
+    &__tab {
+      &.active {
+        color: var(--icon-svg-color);
+        border-bottom: 1px solid var(--icon-svg-color);
       }
     }
   }
