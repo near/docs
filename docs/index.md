@@ -38,7 +38,7 @@ import LandingHero from '@site/src/components/LandingHero';
       <ul>
         <li><a href="/ai/introduction">Understand AI & Blockchain</a></li>
         <li><a href="/ai/shade-agents/introduction">Build a Multi-chain Trustless Agent</a></li>
-        <li><a href="https://docs.near.ai">Discover NEAR AI</a></li>
+        <li><a href="https://docs.near.ai">Discover the NEAR AI Cloud</a></li>
       </ul>
     </Card>
   </div>
