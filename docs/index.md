@@ -13,13 +13,12 @@ import LandingHero from '@site/src/components/LandingHero';
 
 <LandingHero />
 
-<div className="row" style={{ marginTop: '3rem', gridGap: '3rem 0rem' }}>
+<div className="row" style={{ marginTop: '4rem', gridGap: '3rem 0rem' }}>
   <div className="auto-col">
     <Card
       variant="icon"
       icon={<img src="/assets/menu/near.svg" alt="NEAR Protocol" />}
       title="New to NEAR?"
-      description="NEAR is a layer-1 blockchain built for scale and multichain compatibility. Battle-tested with 13M+ transaction peaks and 5 years of zero downtime"
     >
       <ul>
         <li><a href="/protocol/basics">Learn All About our Protocol</a></li>
@@ -33,7 +32,6 @@ import LandingHero from '@site/src/components/LandingHero';
       variant="icon"
       icon={<img src="/assets/menu/ai.svg" alt="AI Native Infrastructure" />}
       title="AI Native Infrastructure"
-      description="NEAR is the execution layer for AI-native apps—enabling agents to own assets, make decisions, and transact freely across networks"
     >
       <ul>
         <li><a href="/ai/introduction">Understand AI & Blockchain</a></li>
@@ -47,7 +45,6 @@ import LandingHero from '@site/src/components/LandingHero';
       variant="icon"
       icon={<img src="/assets/menu/multichain.svg" alt="Multi-Chain" />}
       title="Multi-Chain"
-      description="Easily control assets on any chain, bridge them, swap them, and build cross-chain applications with NEAR's chain abstraction layer"
     >
       <ul>
         <li><a href="/chain-abstraction/what-is">Learn How Chain Abstraction Works</a></li>
@@ -61,7 +58,6 @@ import LandingHero from '@site/src/components/LandingHero';
       variant="icon"
       icon={<img src="/assets/menu/app.svg" alt="Web3 Applications" />}
       title="Web3 Applications"
-      description="Create modern web applications that interact with the NEAR blockchain. Learn frontend integration and user experience best practices"
     >
       <ul>
         <li><a href="/web3-apps/what-is">Discover What are Web3 Apps</a></li>
@@ -75,7 +71,6 @@ import LandingHero from '@site/src/components/LandingHero';
       variant="icon"
       icon={<img src="/assets/menu/contract.svg" alt="Smart Contracts" />}
       title="Smart Contracts"
-      description="Deploy and interact with smart contracts on NEAR. From basic concepts to advanced patterns and security best practices"
     >
       <ul>
         <li><a href="/smart-contracts/what-is">What are Smart Contracts?</a></li>
@@ -89,7 +84,6 @@ import LandingHero from '@site/src/components/LandingHero';
       variant="icon"
       icon={<img src="/assets/menu/token.svg" alt="Tokens and Primitives" />}
       title="Tokens and Primitives"
-      description="Learn about FTs, NFTs, DAOs and everything you need to build an application on NEAR"
     >
       <ul>
         <li><a href="/primitives/ft">Fungible Tokens (FT)</a></li>

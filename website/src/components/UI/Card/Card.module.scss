@@ -33,9 +33,7 @@
 
   // Icon variant
   &--icon {
-    position: relative;
-    padding-top: var(--space-10);
-    margin-top: var(--space-8);
+    text-align: center;
 
     &:hover {
       transform: translateY(calc(var(--space-2) * -1));
@@ -178,20 +176,16 @@
 
   // Icon element
   &__icon {
-    position: absolute;
-    top: calc(-1 * var(--space-8));
-    left: var(--space-6);
     width: var(--space-16);
     height: var(--space-16);
     background: var(--color-bg-primary);
-    border: var(--border-2) var(--border-solid) var(--color-border-primary);
-    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition-all);
     z-index: 10;
     overflow: visible;
+    margin: 0 auto;
   }
 
   &__iconSvg {

@@ -17,7 +17,6 @@ export const OPTIONS = [
 
 ✅ What do you want to build? › "Smart Contract"
 ✅ Name your project to create a contract: "hello-near"
-      # Creating your NEAR smart contract...
 ✅ Success! Created 'hello-near', a smart contract in Rust
 
 
@@ -70,8 +69,6 @@ async function main() {
 ✅ What do you want to build? › "A Web App"
 ✅ Select a framework for your frontend › "Vite (React)"
 ✅ Name your project: "hello-near"
-    # - Creating a new NEAR app...
-    # - Installing dependencies, this might take a while...
 ✅ Success! Created 'hello-near', a web-app using Vite React.
 
 Start using your new NEAR app:
