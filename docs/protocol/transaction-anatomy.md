@@ -48,6 +48,7 @@ Each transaction can have **one or multiple** [`Actions`](https://nomicon.io/Run
 9. [`DeleteKey`](https://nomicon.io/RuntimeSpec/Actions.html#deletekeyaction): to delete an existing key from the account
 10. [`DelegateActions`](https://nomicon.io/RuntimeSpec/Actions.html#delegate-actions): to create a meta-transaction
 11. [`Stake`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction): special action to express interest in becoming a network validator
+12. [`DeterministicStateInit`](https://nomicon.io/RuntimeSpec/Actions.html#deterministicstateinitaction): special action to create a deterministic account (an advanced kind of implicit account)
 
 For example, `bob.near` can bundle the following actions in a single transaction:
 - Create the account `contract.bob.near`
