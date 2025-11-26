@@ -260,6 +260,38 @@ a.cover-card[target="_blank"]::after {
   }
 }
 
+// ============================================================================
+// QUEST STYLES
+// ============================================================================
+
+.landing-footer {
+  margin-top: 3rem;
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.landing-footer h2 {
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+}
+
+.landing-footer h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.landing-footer p {
+  font-size: 1.2rem;
+  color: var(--ifm-color-content-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
 // Container spacing for cards with floating icons
 .container {
   padding-top: 2rem;
@@ -628,7 +660,7 @@ video+p>em,img+p>em, .monaco+em {
 // ============================================================================
 
 .feedback-container {
-  margin: 2rem 0;
+  margin: 2rem 0.8em 2rem 1.75rem;
   padding: 1rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
