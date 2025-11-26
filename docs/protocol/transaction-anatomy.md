@@ -35,21 +35,19 @@ Each transaction has exactly one `Signer` and `Receiver`, but can have multiple 
 
 ## Actions
 
-Each transaction can have **one or multiple** `Actions`, which are the actual operations to be performed on the `Receiver` account. There are 9 types of actions that can be performed:
+Each transaction can have **one or multiple** [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html), which are the actual operations to be performed on the `Receiver` account. There are different types of actions that can be performed:
 
 1. `FunctionCall`: to invoke a function on a contract (optionally attaching NEAR to the call)
 2. `Transfer`: to transfer tokens to another account
 3. `DeployContract`: to deploy a contract in the account
-4. `DeployGlobalContract`: registers a global contract referenced by its checksum hash, making it immutable.
-5. `DeployGlobalContractByAccountId`: registers a global contract under an account ID, allowing the code to be updated later.
-6. `UseGlobalContract`: uses a registered global contract by checksum hash, ensuring the contract code is immutable.
-7. `UseGlobalContractByAccountId` uses a registered global contract by account ID, allowing rolling updates as the account’s code changes.
-8. `CreateAccount`: to create a new sub-account (e.g. `ana.near` can create `sub.ana.near`)
-9. `DeleteAccount`: to delete the account (transferring the remaining balance to a beneficiary)
-10. `AddKey`: to add a new key to the account (either `FullAccess` or `FunctionCall` access)
-11. `DeleteKey`: to delete an existing key from the account
-12. `DelegateActions`: to create a meta-transaction
-13. `Stake`: special action to express interest in becoming a network validator
+4. `DeployGlobalContract`: registers a global contract referenced by its contract hash or by its account ID
+5. `UseGlobalContract`: uses a registered global contract by contract hash or account ID
+6. `CreateAccount`: to create a new sub-account (e.g. `ana.near` can create `sub.ana.near`)
+7. `DeleteAccount`: to delete the account (transferring the remaining balance to a beneficiary)
+8. `AddKey`: to add a new key to the account (either `FullAccess` or `FunctionCall` access)
+9. `DeleteKey`: to delete an existing key from the account
+10. `DelegateActions`: to create a meta-transaction
+11. `Stake`: special action to express interest in becoming a network validator
 
 For example, `bob.near` can bundle the following actions in a single transaction:
 - Create the account `contract.bob.near`
