@@ -19,7 +19,8 @@ In order to use the RPC API you will need to setup the correct RPC endpoints.
   - localnet `http://localhost:3030`
 
 ### Limits
-- Maximum number of requests per IP: 600 req/min
+- Maximum number of requests per IP for mainnet: 30 req/min, 75 req per 10 mins
+- Maximum number of requests per IP for testnet: 30 req/min, 75 req per 10 mins
 
 <hr className="subsection" />
 
@@ -32,7 +33,8 @@ Querying historical data (older than 5 [epochs](../../protocol/network/epoch.md)
 You can see this interface defined in `nearcore` [here](https://github.com/near/nearcore/blob/bf9ae4ce8c680d3408db1935ebd0ca24c4960884/chain/jsonrpc/client/src/lib.rs#L181).
 
 ### Limits
-- Maximum number of requests per IP: 600 req/min
+- Maximum number of requests per IP for mainnet: 4 req/min, 10 req per 10 mins
+- Maximum number of requests per IP for testnet: 20 req/min, 50 req per 10 mins
 
 ---
 

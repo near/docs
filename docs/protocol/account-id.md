@@ -1,7 +1,7 @@
 ---
 id: account-id
 title: Address (Account ID)
-description: "Learn about NEAR account addresses - implicit addresses (64 characters) and named addresses that work as domains, including sub-account creation and management."
+description: "Learn all about NEAR account addresses"
 ---
 
 import Tabs from '@theme/Tabs';
@@ -62,11 +62,38 @@ near account create-account fund-later use-auto-generation save-to-folder ~/.nea
 
 # The file "~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json" was saved successfully
 
-# Here is your console command if you need to script it or re-run:
-#     near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
+cat ~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json
+```
+
+or `near-seed-phrase` library:
+
+```js
+import { generateSeedPhrase } from "near-seed-phrase";
+const { seedPhrase, publicKey, secretKey } = generateSeedPhrase();
 ```
 
 </details>
+
+<details>
+
+<summary> 🧑‍💻 Technical: How to derive an implicit account from a public key  </summary>
+
+You can derive the implicit account address from a public key by removing the `ed25519:` prefix, decoding the resulting Base58 string into bytes, and then converting those bytes into a hexadecimal string.
+
+```js
+// vanilla js
+import { decode } from 'bs58';
+Buffer.from(decode(publicKey.replace('ed25519:', ''))).toString('hex')
+```
+
+```js
+// near-api-js
+import { utils } from 'near-api-js';
+utils.keyToImplicitAddress(publicKey);
+```
+
+</details>
+
 
 ---
 
@@ -83,7 +110,7 @@ An awesome feature of named accounts is that they can create **sub-accounts** of
     - `account.near` **cannot** create `sub.another-account.near`
 5. Accounts have **no control** over their sub-account, they are different entities
 
-Anyone can create a `.near` or `.testnet` account, you just to call the `create_account` method of the corresponding top-level account - `testnet` on testnet, and `near` on mainnet.
+Anyone can create a `.near` or `.testnet` account, you just need to call the `create_account` method of the corresponding top-level account - `testnet` on testnet, and `near` on mainnet.
 
 <details>
 
@@ -145,8 +172,16 @@ You can use the same command to create sub-accounts of an existing named account
 
 </details>
 
-:::tip
+:::tip Creating Named Accounts
+
+If you are not going through an intermediary (i.e. the CLI, or a wallet), then you can create an implicit account, fund it, and call `create_account` on `near` / `testnet`
+
+:::
+
+:::note
+
 Accounts have **no control** over their sub-accounts, they are different entities. This means that `near` cannot control `bob.near`, and `bob.near` cannot control `sub.bob.near`.
+
 :::
 
 ---

@@ -18,6 +18,8 @@ Join us in creating a friendly contract that stores a greeting, and exposes func
   Want to jump right into the code without setting up a local dev environment?
   
   Checkout [NEAR Playground](https://nearplay.app/) for an easy-to-use online IDE w/ pre-configured templates.
+
+  ![NEAR Playground](@site/static/assets/docs/smart-contracts/NEAR-Playground.png)
 :::
 
 ---

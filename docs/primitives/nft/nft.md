@@ -514,7 +514,45 @@ If the `msg` parameter is included, then a cross-contract call will be made to `
 
 ---
 
+## Burn Tokens
+
+While the NFT standard does not define a `burn` method, you can simply transfer tokens to an account that no one controls, such as [`0000000000000000000000000000000000000000000000000000000000000000`](https://nearblocks.io/es/address/0000000000000000000000000000000000000000000000000000000000000000) (64 zeros).
+
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🌐 WebApp" label="🌐 WebApp">
+      
+  ```js
+  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+
+  const { callMethod } = useWalletSelector();
+
+  await callMethod({
+    contractId: 'nft.primitives.near',
+    method: 'nft_transfer',
+    args: {
+      token_id: '1',
+      receiver_id: '0000000000000000000000000000000000000000000000000000000000000000',
+    },
+    deposit: 1,
+  });
+  ```
+
+  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+
+  </TabItem>
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
+    
+  ```bash
+    near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "0000000000000000000000000000000000000000000000000000000000000000"}' --accountId bob.near --deposit 0.000000000000000000000001
+  ```
+  </TabItem>
+</Tabs>
+
+
+---
+
 ## Tutorials
 
-- [NFT Tutorial](/tutorials/nfts/js/introduction) _Zero to Hero_ (JavaScript SDK) - a set of tutorials that cover how to create a NFT contract using JavaScript.
-- [NFT Tutorial](/tutorials/nfts/introduction) _Zero to Hero_ (Rust SDK) - a set of tutorials that cover how to create a NFT contract using Rust.
+- [NFT Tutorial](/tutorials/nfts-js) _Zero to Hero_ (JavaScript SDK) - a set of tutorials that cover how to create a NFT contract using JavaScript.
+- [NFT Tutorial](/tutorials/nfts) _Zero to Hero_ (Rust SDK) - a set of tutorials that cover how to create a NFT contract using Rust.

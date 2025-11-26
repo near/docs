@@ -500,17 +500,17 @@ const config = {
                 },
                 {
                   label: 'Frontend Integration',
-                  to: '/web3-apps/integrate-contracts',
+                  to: '/web3-apps/tutorials/web-login/near-connector',
                   description: 'Learn how to integrate NEAR into your Frontend App',
                 },
                 {
                   label: 'Backend Integration',
-                  to: '/web3-apps/backend/',
+                  to: '/web3-apps/backend',
                   description: 'Authenticate NEAR users in your backend',
                 },
                 {
                   label: 'Frontend with Multiple Contracts',
-                  to: '/web3-apps/backend/backend-login',
+                  to: '/tutorials/examples/frontend-multiple-contracts',
                   description: 'Learn how to communicate with multiple contracts effectively',
                 },
                 {
@@ -665,6 +665,13 @@ const config = {
                   icon: '/assets/menu/discord.svg',
                 },
                 {
+                  label: 'Office Hours ↗',
+                  to: 'https://near.dev/office-hours',
+                  target: '_blank',
+                  description: 'Book time with NEAR developer relations for live support',
+                  icon: '/assets/menu/support.png',
+                },
+                {
                   label: 'WeChat ↗',
                   to: 'https://pages.near.org/ecosystem/community/wechat/',
                   description: 'Join our WeChat community',
@@ -677,31 +684,12 @@ const config = {
               to: '#',
               description: 'Discover events, news and projects',
               subitems: [
-                {
-                  label: 'Events',
-                  to: '/events',
-                  description: "Find what's coming up in the NEAR ecosystem",
-                  icon: '/assets/menu/event.png',
-                },
-                {
-                  label: 'Newsletter',
-                  to: '/newsletter',
-                  description: 'Catch up with the latest news from NEAR',
-                  icon: '/assets/menu/newspaper.png',
-                },
-                {
-                  label: 'Communities',
-                  to: '/communities',
-                  description: 'Find a NEAR community near you',
-                  icon: '/assets/menu/communities.png',
-                },
-                {
-                  label: 'NEAR Catalog ↗',
-                  to: 'https://near.org/ecosystem/',
-                  description: 'Discover projects built on NEAR',
-                  icon: '/assets/menu/catalog.png',
-                },
-              ],
+                { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/assets/menu/event.png' },
+                { label: 'Blog', to: '/blog', description: "Read blog posts from our community", icon: '/assets/menu/near.svg' },
+                { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/assets/menu/newspaper.png' },
+                { label: 'Communities', "to": "/communities", description: "Find a NEAR community near you", icon: "/assets/menu/communities.png" },
+                { label: 'NEAR Catalog ↗', to: 'https://near.org/ecosystem/', description: "Discover projects built on NEAR", icon: '/assets/menu/catalog.png' },
+              ]
             },
             {
               label: 'Educational Courses',
@@ -724,12 +712,11 @@ const config = {
             },
           ],
         },
-        { label: 'Blog', to: '/blog', activeBaseRegex: '/blog', position: 'right' },
         {
-          type: 'html',
+          label: 'Quest 🧙🏽',
+          to: '/quest/introduction',
           position: 'right',
-          value:
-            '<a class="navbar__link false" href="#" onclick="google.translate.TranslateElement({pageLanguage: \'en\', includedLanguages: \'af,sq,am,en,fa,ar,ps,ja,zh-CN,hy,az,eu,be,bn,bs,bg,ca,ceb,ny,zh-TW,co,hr,cs,da,nl,eo,et,tl,fi,fr,fy,gl,ka,de,el,gu,ht,ha,haw,iw,hi,hmn,hu,is,ig,id,ga,it,jw,kn,kk,km,ko,ku,ky,lo,la,lv,lt,lb,mk,mg,ms,ml,mt,mi,mr,mn,my,ne,no,pl,pt,pa,ro,ru,sm,gd,sr,st,sn,sd,si,sk,sl,so,es,su,sw,sv,tg,ta,te,th,tr,uk,ur,uz,vi,cy,xh,yi,yo,zu\'}, \'google_translate_element\');"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="vertical-align: text-bottom"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg></a>',
+          activeBaseRegex: '/quest',
         },
         {
           type: 'search',
@@ -738,6 +725,12 @@ const config = {
         {
           position: 'right',
           href: 'login',
+        },
+        {
+          type: 'html',
+          position: 'right',
+          value:
+            '<a class="navbar__link false" href="#" onclick="google.translate.TranslateElement({pageLanguage: \'en\', includedLanguages: \'af,sq,am,en,fa,ar,ps,ja,zh-CN,hy,az,eu,be,bn,bs,bg,ca,ceb,ny,zh-TW,co,hr,cs,da,nl,eo,et,tl,fi,fr,fy,gl,ka,de,el,gu,ht,ha,haw,iw,hi,hmn,hu,is,ig,id,ga,it,jw,kn,kk,km,ko,ku,ky,lo,la,lv,lt,lb,mk,mg,ms,ml,mt,mi,mr,mn,my,ne,no,pl,pt,pa,ro,ru,sm,gd,sr,st,sn,sd,si,sk,sl,so,es,su,sw,sv,tg,ta,te,th,tr,uk,ur,uz,vi,cy,xh,yi,yo,zu\'}, \'google_translate_element\');"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" style="vertical-align: text-bottom"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg></a>',
         },
       ],
     },

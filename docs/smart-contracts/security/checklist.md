@@ -20,7 +20,7 @@ Check our [security articles](./welcome.md) to understand how to improve the sec
 
 ## Storage
 3. Each time the state grows it is ensured that there is enough balance to cover it
-4. All collections (i.e. Vector, Map, Tree, etc) have an unique id
+4. All collections (i.e. Vector, Map, Tree, etc) have a unique id
 5. Check for underflow and overflow!. In rust, you can do this by simply adding the `overflow-checks = true` flag in your `Cargo.toml`.
 
 ## Actions

@@ -1,4 +1,46 @@
 const sidebar = {
+  academy: [
+    'quest/introduction',
+    {
+      type: 'html',
+      value: '<hr/>',
+    },
+    {
+      type: 'category',
+      label: 'Decentralized Apps',
+      collapsed: true,
+      customProps: {
+        icon: '/assets/menu/near.svg',
+      },
+      items: [
+        'quest/dapps/intro-to-web3',
+        'quest/dapps/building-blocks',
+        'quest/dapps/why-near',
+        'quest/dapps/examples',
+        'quest/dapps/takeaway',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'NEAR Accounts',
+      collapsed: true,
+      customProps: {
+        icon: '/assets/menu/near.svg',
+      },
+      items: [
+        'quest/accounts/introduction',
+        'quest/accounts/address',
+        'quest/accounts/named-vs-implicit',
+        'quest/accounts/access-keys',
+        'quest/accounts/smart-contracts',
+        'quest/accounts/takeaways',
+      ]
+    },
+    // 'quest/data-flow',
+    // 'quest/near-network',
+    // 'quest/primitives',
+    // 'quest/smart-contracts',
+  ],
   build: [
     {
       type: 'doc',
@@ -289,73 +331,36 @@ const sidebar = {
           ]
         },
         {
-          "Tutorials": [
-            'tutorials/examples/count-near',
-            'tutorials/examples/guest-book',
-            'tutorials/examples/donation',
-            'tutorials/examples/coin-flip',
-            'tutorials/examples/factory',
-            'tutorials/examples/near-drop',
-            'tutorials/examples/xcc',
-            'tutorials/examples/advanced-xcc',
-            'tutorials/examples/global-contracts',
-            'tutorials/examples/update-contract-migrate-state',
-            {
-              "Build a FT Contract from Scratch": [
-                'tutorials/fts/introduction',
-                'tutorials/fts/predeployed-contract',
-                'tutorials/fts/skeleton',
-                'tutorials/fts/defining-a-token',
-                'tutorials/fts/circulating-supply',
-                'tutorials/fts/registering-accounts',
-                'tutorials/fts/transfers',
-                'tutorials/fts/marketplace',
-              ]
-            },
-            {
-              "Build a NFT Contract from Scratch": [
-                'tutorials/nfts/introduction',
-                {
-                  Basic: [
-                    'tutorials/nfts/predeployed-contract',
-                    'tutorials/nfts/skeleton',
-                    'tutorials/nfts/minting',
-                    'tutorials/nfts/upgrade-contract',
-                    'tutorials/nfts/enumeration',
-                    'tutorials/nfts/core',
-                  ],
-                },
-                'tutorials/nfts/events',
-                {
-                  Marketplace: ['tutorials/nfts/approvals', 'tutorials/nfts/marketplace'],
-                },
-                'tutorials/nfts/royalty',
-                'tutorials/nfts/series',
-              ]
-            },
-            {
-              "Build a NFT Contract from Scratch (JS)": [
-                'tutorials/nfts/js/introduction',
-                {
-                  Basic: [
-                    'tutorials/nfts/js/predeployed-contract',
-                    'tutorials/nfts/js/skeleton',
-                    'tutorials/nfts/js/minting',
-                    'tutorials/nfts/js/upgrade-contract',
-                    'tutorials/nfts/js/enumeration',
-                    'tutorials/nfts/js/core',
-                  ],
-                },
-                'tutorials/nfts/js/events',
-                {
-                  Marketplace: [
-                    'tutorials/nfts/js/approvals',
-                    'tutorials/nfts/js/marketplace'
-                  ],
-                },
-                'tutorials/nfts/js/royalty',
-              ]
-            },
+          type: 'category',
+          label: 'Tutorials',
+          link: {
+            type: 'doc',
+            id: 'tutorials/welcome',
+          },
+          items: [
+            {"Beginner": [
+                'tutorials/examples/count-near',
+                'tutorials/examples/guest-book',
+                'tutorials/examples/coin-flip',
+            ]},
+            {"Advanced": [
+                'tutorials/examples/donation',
+                'tutorials/examples/near-drop',
+                'tutorials/examples/update-contract-migrate-state',
+            ]},
+            {"Cross Contracts": [
+                'tutorials/examples/xcc',
+                'tutorials/examples/advanced-xcc',
+            ]},
+            {"Factories": [
+                'tutorials/examples/factory',
+                'tutorials/examples/global-contracts',
+            ]},
+            {"Zero to Hero": [
+                'tutorials/fts',
+                'tutorials/nfts',
+                'tutorials/nfts-js',
+            ]},
           ]
         },
         {
@@ -531,6 +536,11 @@ const sidebar = {
                 },
               ]
             },
+            {
+              type: "link",
+              label: "The Graph Substreams",
+              href: "https://docs.substreams.dev/tutorials/intro-to-tutorials/near"
+            }
           ],
         },
       ],
