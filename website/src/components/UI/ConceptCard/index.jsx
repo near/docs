@@ -1,7 +1,7 @@
 import * as Icons from "lucide-react"
 import styles from "./styles.module.css"
 
-export default function ConceptCard({ title, description, image, index }) {
+export default function ConceptCard({ title, description, image, href, index }) {
   const isEven = index % 2 === 0
 
   // import the icon component dynamically based on the icon prop
@@ -18,10 +18,10 @@ export default function ConceptCard({ title, description, image, index }) {
     <div className={`col col--7 ${styles.contentCol}`} style={{ padding: 0 }}>
       <h2>{title}</h2>
       <p className={styles.description}>{description}</p>
-      <button className={`button button--link ${styles.cta}`} type="button">
+      <a className={styles.cta} href={href}>
         Learn More
         <Icons.ArrowRight className={styles.ctaIcon} aria-hidden="true" />
-      </button>
+      </a>
     </div>
   )
 

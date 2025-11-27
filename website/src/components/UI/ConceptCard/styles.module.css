@@ -55,6 +55,7 @@
   color: var(--ifm-color-primary);
   padding-left: 0;
   text-align: left;
+  cursor: pointer;
 }
 
 .cta:hover {

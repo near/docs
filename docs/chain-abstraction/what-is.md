@@ -20,18 +20,19 @@ Through a combination of innovative technologies, NEAR enables developers to bui
 Three core technologies working together to create seamless cross-chain experiences
 
 <ConceptCard
-  title="NEAR Intents"
-  description='A decentralized system where users simply express desired outcomes (like "swap BTC for ETH at the best price"), and a network of solvers then competes to fulfill these intents optimally'
+  title="Multi-Chain Accounts"
+  description='A core piece of tech that enables NEAR accounts, including smart contracts, to sign transactions for all other blockchains (including Bitcoin, Ethereum and Solana)'
   image="/assets/docs/welcome-pages/10.templates.png"
   index={0}
+  href="/chain-abstraction/chain-signatures"
 />
 
-
 <ConceptCard
-  title="Chain Signatures"
-  description='A core piece of tech that enables NEAR accounts, including smart contracts, to sign transactions for all other blockchains (including Bitcoin, Ethereum and Solana)'
+  title="Swaps via Intents"
+  description='A decentralized system where users simply express desired outcomes (like "swap BTC for ETH at the best price"), and a network of solvers then competes to fulfill these intents optimally'
   image="/assets/docs/welcome-pages/9.near-nodes.png"
   index={1}
+  href="/chain-abstraction/intents/overview"
 />
 
 <ConceptCard
@@ -39,6 +40,7 @@ Three core technologies working together to create seamless cross-chain experien
   description='A multi-chain bridge that enables secure and efficient cross-chain transfers. The bridge serves as both a token factory and custodian, managing native and bridged tokens'
   image="/assets/docs/welcome-pages/4.smart-contracts.png"
   index={2}
+  href="/chain-abstraction/omnibridge/overview"
 />
 
 ---
