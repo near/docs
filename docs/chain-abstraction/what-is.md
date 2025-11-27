@@ -12,13 +12,6 @@ import ConceptCard from '@site/src/components/UI/ConceptCard';
 
 Through a combination of innovative technologies, NEAR enables developers to build applications that work seamlessly across multiple blockchains while abstracting away the underlying complexity for both developers and end users.
 
-![img](/assets/docs/welcome-pages/2.chain-abstraction.png)
-
----
-
-## The Chain Abstraction Framework
-Three core technologies working together to create seamless cross-chain experiences
-
 <ConceptCard
   title="Multi-Chain Accounts"
   description='A core piece of tech that enables NEAR accounts, including smart contracts, to sign transactions for all other blockchains (including Bitcoin, Ethereum and Solana)'

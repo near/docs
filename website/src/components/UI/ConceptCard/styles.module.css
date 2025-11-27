@@ -1,12 +1,9 @@
-/* ConceptCard styles translated to Infima + in-house CSS */
-
 .conceptCard {
   /* spacing using Infima CSS variables */
   margin: var(--ifm-spacing-vertical) 0;
+  padding: calc(var(--ifm-spacing-vertical) * 1.5) .1rem
 }
 
-/* Column padding helpers to simulate a gutter between columns
-   Apply right padding when icon is on the left, and left padding when reversed. */
 .colPadRight {
   padding-right: 2rem !important;
   padding-left: 0 !important;
@@ -26,19 +23,6 @@
   align-items: center;
   justify-content: center;
   height: 16rem; /* md:h-64 equivalent */
-}
-
-.iconCircle {
-  background: #cfe0ff; /* soft blue token; can be swapped to in-house var */
-  border-radius: 1.5rem; /* more visibly rounded than default */
-  padding: 1.25rem; /* a bit larger to balance icon size */
-  display: inline-flex;
-}
-
-.icon {
-  width: 3.5rem; /* slightly smaller for visual balance */
-  height: 3.5rem;
-  color: var(--ifm-color-primary);
 }
 
 /* Vertically center the content within its column */
@@ -84,10 +68,4 @@
   line-height: 1.65;
   color: var(--ifm-color-emphasis-700);
   margin-bottom: calc(var(--ifm-spacing-vertical) * 1.25);
-}
-
-/* Spacing adjustments for the card */
-.conceptCard {
-  padding-top: calc(var(--ifm-spacing-vertical) * 1.5);
-  padding-bottom: calc(var(--ifm-spacing-vertical) * 1.5);
 }
