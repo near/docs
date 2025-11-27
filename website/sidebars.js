@@ -116,7 +116,7 @@ const sidebar = {
             'tools/explorer',
             {
               type: 'link',
-              label: 'Wallets ↗',
+              label: 'Wallets',
               href: 'https://wallet.near.org',
             },
             'tools/near-cli',
