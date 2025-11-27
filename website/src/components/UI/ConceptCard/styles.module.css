@@ -1,0 +1,92 @@
+/* ConceptCard styles translated to Infima + in-house CSS */
+
+.conceptCard {
+  /* spacing using Infima CSS variables */
+  margin: var(--ifm-spacing-vertical) 0;
+}
+
+/* Column padding helpers to simulate a gutter between columns
+   Apply right padding when icon is on the left, and left padding when reversed. */
+.colPadRight {
+  padding-right: 2rem !important;
+  padding-left: 0 !important;
+}
+
+.colPadLeft {
+  padding-left: 2rem !important;
+  padding-right: 0 !important;
+}
+
+.imageWrap {
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.9rem;
+  padding: 2.5rem; /* approx p-12 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16rem; /* md:h-64 equivalent */
+}
+
+.iconCircle {
+  background: #cfe0ff; /* soft blue token; can be swapped to in-house var */
+  border-radius: 1.5rem; /* more visibly rounded than default */
+  padding: 1.25rem; /* a bit larger to balance icon size */
+  display: inline-flex;
+}
+
+.icon {
+  width: 3.5rem; /* slightly smaller for visual balance */
+  height: 3.5rem;
+  color: var(--ifm-color-primary);
+}
+
+/* Vertically center the content within its column */
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+}
+
+/* Content */
+.cta {
+  column-gap: 0.5rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  padding-left: 0;
+  text-align: left;
+}
+
+.cta:hover {
+  color: var(--ifm-color-primary-darker);
+}
+
+.ctaIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Muted text helper; Docusaurus provides text--muted, but ensure consistency */
+.textMuted {
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* Typography tweaks */
+.title {
+  font-size: 1.75rem; /* ~28px, between h2 and h3 default */
+  font-weight: 700;
+  margin-bottom: var(--ifm-spacing-vertical);
+}
+
+.description {
+  font-size: 1.2rem; /* 16px for body copy */
+  line-height: 1.65;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: calc(var(--ifm-spacing-vertical) * 1.25);
+}
+
+/* Spacing adjustments for the card */
+.conceptCard {
+  padding-top: calc(var(--ifm-spacing-vertical) * 1.5);
+  padding-bottom: calc(var(--ifm-spacing-vertical) * 1.5);
+}
