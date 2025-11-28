@@ -49,18 +49,9 @@ Lets start by updating the `package.json`, adding all the necessary libraries to
 
 In your `package.json`, add the `@near-wallet-selector/ethereum-wallets` package, and update **all** wallet selector packages to version `8.9.13` or above:
 
-```json title="package.json"
-  "dependencies": {
-    ...
-    "@near-wallet-selector/core": "^9.5.0",
-    // highlight-next-line
-    "@near-wallet-selector/ethereum-wallets": "^9.5.0",
-    "@near-wallet-selector/here-wallet": "^9.5.0",
-    "@near-wallet-selector/modal-ui": "^9.5.0",
-    "@near-wallet-selector/my-near-wallet": "^9.5.0",
-    ...
-    }
-```
+<Github fname="package.json" language="js"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/package.json"
+            start="17" end="19" />
 
 <hr class="subsection" />
 
