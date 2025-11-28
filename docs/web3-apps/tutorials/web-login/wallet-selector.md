@@ -59,32 +59,9 @@ Notice that the wallet selector implements multiple wallet packages to select fr
 
 To initialize the wallet selector, you will need to set it up in your main application file (e.g., `app.js` or `index.js`). You can choose which wallets to include in the selector by importing their respective setup functions and adding them to the `modules` array.
 
-```jsx title="app.js"
-import { setupBitteWallet } from "@near-wallet-selector/bitte-wallet";
-import { setupLedger } from "@near-wallet-selector/ledger";
-import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
-import { setupNightly } from "@near-wallet-selector/nightly";
-import { WalletSelectorProvider } from "@near-wallet-selector/react-hook";
+<Github fname="_app.tsx" language="ts" start="10" end="68" metastring="{23}"
+      url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" />
 
-const walletSelectorConfig = {
-  network: "testnet", // "mainnet"
-  // Optional: createAccessKeyFor: "hello.near-examples.testnet",
-  modules: [
-    setupBitteWallet(),
-    setupMeteorWallet(),
-    setupLedger(),
-    setupNightly()
-  ],
-}
-
-export default function App({ Component }) {
-  return (
-    <WalletSelectorProvider config={walletSelectorConfig}>
-      <Component {...pageProps} />
-    </WalletSelectorProvider>
-  );
-}
-```
 
 <hr class="subsection" />
 
@@ -110,16 +87,8 @@ const my_network = {
 
 If you instantiated the `wallet-selector` passing an account id for the `createAccessKeyFor` parameter, then the wallet will create a [Function-Call Key](/protocol/access-keys#function-call-keys) and store it in the web's local storage.
 
-```js
-const walletSelectorConfig = {
-  network: "testnet", // "mainnet"
-  createAccessKeyFor: "hello.near-examples.testnet",
-  modules: [
-    setupMeteorWallet()
-    // ...
-  ],
-}
-```
+<Github fname="_app.tsx" language="ts" start="32" end="34" metastring="{32}"
+      url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" />
 
 By default, such key enables to expend a maximum of `0.25Ⓝ` on GAS calling methods in **the specified** contract **without prompting** the user to sign them.
 
