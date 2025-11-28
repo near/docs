@@ -5,14 +5,14 @@ sidebar_label: Quickstart
 description: "Create your first contract using your favorite language."
 ---
 
-import {Github} from '@site/src/components/UI/Codetabs';
+import {Github, Language} from '@site/src/components/UI/Codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 Welcome! [NEAR accounts](../protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
 
-Join us in creating a friendly contract that stores a greeting, and exposes functions to interact with it.
+Join us in creating a friendly auction contract, which allows users to place bids, track the highest bidder and claim tokens at the end of the auction.
 
 :::tip
   Want to jump right into the code without setting up a local dev environment?
@@ -72,7 +72,13 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/release
 
 <TabItem value="py" label="🐍 Python">
 
-```bash
+:::note
+Python quickstart tutorial is coming soon!
+
+In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
+:::
+
+<!-- ```bash
 # Install Python (if not already installed)
 # Use your system's package manager or download from https://www.python.org/downloads/
 
@@ -103,7 +109,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install NEAR CLI-RS to deploy and interact with the contract
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
-```
+``` -->
 
 </TabItem>
 
@@ -183,6 +189,7 @@ hello-near
 ├── tests      # sandbox testing
 │   └── test_basics.rs
 ├── Cargo.toml # package manager
+├── Cargo.lock # package lock file
 ├── README.md
 └── rust-toolchain.toml
 ```
@@ -207,7 +214,13 @@ You can skip the interactive menu and create a new project with specific name ru
 
 <TabItem value="py" label="🐍 Python">
 
-```bash
+:::note
+Python quickstart tutorial is coming soon!
+
+In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
+:::
+
+<!-- ```bash
   npx create-near-app@latest
 ```
 
@@ -230,7 +243,7 @@ hello-near
 
 :::tip
 
-`hello-near` is the name we chose for this project so the tutorial is simpler to follow, but for future projects feel free to use any name you prefer
+`hello-near` is the name we chose for this project so the tutorial is simpler to follow, but for future projects feel free to use any name you prefer.
 
 :::
 
@@ -238,7 +251,7 @@ hello-near
 
 Ensure you have [Emscripten](https://emscripten.org/) properly installed and available in your `PATH`. The compilation process requires it to convert Python code to WebAssembly.
 
-:::
+::: -->
 
 </TabItem>
 
@@ -249,33 +262,38 @@ Ensure you have [Emscripten](https://emscripten.org/) properly installed and ava
 
 ## The Contract
 
-The `Hello World` smart contract stores a greeting in its state, and exposes two functions to interact with it:
-1. `set_greeting`: to change the greeting
-2. `get_greeting`: to fetch the greeting
+The auction smart contract allows users to place bids, track the highest bidder and claim tokens at the end of the auction. Therefore it exposes following methods to interact with it:
+1. `init`: to initialize the contract with auction parameters
+2. `bid`: to place a bid in the auction
+3. `claim`: to claim tokens after the auction ends
+4. `get_highest_bid`: to fetch the highest bid and bidder information
+5. `get_auction_end_time`: to retrieve the auction end time
+6. `get_auctioneer`: to get the auctioneer's account ID
+7. `get_claimed`: to check if a bidder has claimed their tokens
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
-
     <Github fname="index.js" language="js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-            start="4" end="22" />
-
+            url="https://github.com/near/create-near-app/blob/V9/templates/contracts/auction/ts/src/contract.ts"
+            start="9" end="72" />
   </TabItem>
 
   <TabItem value="rust" label="🦀 Rust">
-
     <Github fname="lib.rs" language="rust"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-            start="4" end="32" />
-
+            url="https://github.com/near/cargo-near/blob/update-new-template/cargo-near/src/commands/new/new-project-template/src/lib.rs"
+            start="23" end="103" />
   </TabItem>
 
   <TabItem value="py" label="🐍 Python">
+    :::note
+    Python quickstart tutorial is coming soon!
 
-    <Github fname="contract.py" language="python"
+    In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
+    :::
+
+    <!-- <Github fname="contract.py" language="python"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/contract.py"
-            start="3" end="30" />
-
+            start="3" end="30" /> -->
   </TabItem>
 </Tabs>
 
@@ -316,7 +334,13 @@ Building and testing the contract is as simple as running the `test` command. Th
   
   <TabItem value="py" label="🐍 Python">
 
-  ```bash
+  :::note
+  Python quickstart tutorial is coming soon!
+
+  In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
+  :::
+
+  <!-- ```bash
   uv run pytest
   ```
 
@@ -328,7 +352,7 @@ Building and testing the contract is as simple as running the `test` command. Th
   uv run pytest tests/test_mod.py
   ```
 
-  :::
+  ::: -->
 
   </TabItem>
 </Tabs>
@@ -408,7 +432,7 @@ When running the near account create-account command in a headless Linux environ
 
 When you are ready to create a build of the contract run a one-line command depending on your environment.
 
-<Tabs groupId="cli-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
   ```bash
@@ -434,7 +458,13 @@ When you are ready to create a build of the contract run a one-line command depe
   
   <TabItem value="py" label="🐍 Python">
 
-  ```bash
+  :::note
+  Python quickstart tutorial is coming soon!
+
+  In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
+  :::
+
+  <!-- ```bash
   # Build with nearc through the uv executor (no installation needed)
   uvx nearc contract.py
   ```
@@ -456,7 +486,7 @@ When you are ready to create a build of the contract run a one-line command depe
   - `error: invalid version of emscripten` - Your Emscripten version might be too old. Try updating with `./emsdk install latest && ./emsdk activate latest`.
   - `Could not find platform micropython-dev-wasm32` - This typically means the Emscripten installation is incomplete or not properly activated.
   
-  :::
+  ::: -->
 
   </TabItem>
 </Tabs>
@@ -508,7 +538,13 @@ Having our account created, we can now deploy the contract:
   </TabItem>
   
   <TabItem value="py" label="🐍 Python">
-    <Tabs groupId="cli-tabs">
+    :::note
+    Python quickstart tutorial is coming soon!
+
+    In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
+    :::
+
+    <!-- <Tabs groupId="cli-tabs">
       <TabItem value="short" label="Short">
 
         ```bash
@@ -524,7 +560,7 @@ Having our account created, we can now deploy the contract:
         ```
 
       </TabItem>
-    </Tabs>
+    </Tabs> -->
   </TabItem>
 </Tabs>
 
@@ -538,47 +574,47 @@ To interact with your deployed smart contract, you can call its functions throug
 
 <hr class="subsection" />
 
-#### Get Greeting
-Let's start by fetching the greeting stored in the contract. The `get_greeting` function only reads from the contract's state, and can thus be called for **free**.
+#### Initialize the Contract
+Let's start by initializing the contract with the auction parameters. The `init` method sets up the auction with an end time and the auctioneer's account ID. It can be called only by contract's account itself.
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
 
     ```bash
-    > near view <created-account> get_greeting
-    # "Hello, NEAR world!"
+    > near call <created-account> init '{"end_time": "<time-in-nanoseconds>", "auctioneer": "<created-account>"}' --accountId <created-account>
     ```
   </TabItem>
 
   <TabItem value="full" label="Full">
 
     ```bash
-    > near contract call-function as-read-only <created-account> get_greeting json-args {} network-config testnet now
-    # "Hello, NEAR world!"
+    > near contract call-function as-transaction <created-account> init json-args '{"end_time": "<time-in-nanoseconds>", "auctioneer": "<auctioneer-account>"}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
     ```
   </TabItem>
 </Tabs>
 
+:::note
+  `<auctioneer-account>` should be replaced with the account ID of the auctioneer, which can be the same as `<created-account>` or a different account.
+:::
+
 <hr class="subsection" />
 
-#### Set Greeting
+#### Place a Bid
 
-We can now change the greeting stored in the contract. The `set_greeting` method writes on the contract's [storage](./anatomy/storage.md), and thus requires a user to sign a transaction in order to be executed.
+We can now place a bid in the auction using the `bid` method. This method allows users to place their bids by attaching a deposit. The highest bid and bidder information will be updated accordingly and will be stored on the contract's [storage](./anatomy/storage.md), and thus requires a user to sign a transaction in order to be executed (as well as attaching a deposit).
 
 <Tabs groupId="cli-tabs">
   <TabItem value="short" label="Short">
 
   ```bash
-  > near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
-  # {"success": true}
+  > near call <created-account> bid '{}' --deposit 0.01  --accountId <created-account>
   ```
   </TabItem>
 
   <TabItem value="full" label="Full">
 
     ```bash
-    > near contract call-function as-transaction <created-account> set_greeting json-args '{"greeting": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
-    # {"success": true}
+    > near contract call-function as-transaction <created-account> bid json-args {} prepaid-gas '30.0 Tgas' attached-deposit '0.01 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
     ```
   </TabItem>
 </Tabs>
@@ -589,6 +625,115 @@ Notice that we are signing the transaction using `<created-account>`, so in this
 
 :::
 
+<hr class="subsection" />
+
+#### Claim
+
+After the auction ends, the highest bidder can claim their tokens using the `claim` method. Actually, anyone can call this method on behalf of the highest bidder to transfer the tokens to them. This method requires a signed transaction but does not require any deposit.
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  > near call <created-account> claim '{}' --accountId <created-account>
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    > near contract call-function as-transaction <created-account> claim json-args {} prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
+    ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+#### Get Highest Bid
+
+The `get_highest_bid` function only reads from the contract's state, and can thus be called for **free**.
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  > near view <created-account> get_highest_bid '{}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    > near contract call-function as-read-only <created-account> get_highest_bid json-args {} network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+#### Get Auction End Time
+
+Same as `get_highest_bid`, the `get_auction_end_time` function only reads from the contract's state, and can thus be called for **free**.
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  > near view <created-account> get_auction_end_time '{}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    > near contract call-function as-read-only <created-account> get_auction_end_time json-args {} network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+#### Get Auctioneer
+
+Same as `get_highest_bid`, the `get_auctioneer` function only reads from the contract's state, and can thus be called for **free**.
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  > near view <created-account> get_auctioneer '{}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    > near contract call-function as-read-only <created-account> get_auctioneer json-args {} network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+#### Get Claimed
+
+Same as `get_highest_bid`, the `get_claimed` function only reads from the contract's state, and can thus be called for **free**.
+
+<Tabs groupId="cli-tabs">
+  <TabItem value="short" label="Short">
+
+  ```bash
+  > near view <created-account> get_claimed '{}'
+  ```
+  </TabItem>
+
+  <TabItem value="full" label="Full">
+
+    ```bash
+    > near contract call-function as-read-only <created-account> get_claimed json-args {} network-config testnet now
+    ```
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -606,10 +751,10 @@ If you prefer to see more examples, check our [examples](/tutorials/examples/cou
 
 At the time of this writing, this example works with the following versions:
 
-- node: `20.18.0`
-- rustc: `1.81.0`
-- near-cli-rs: `0.17.0`
-- cargo-near: `0.13.2`
+- node: `22.18.0`
+- rustc: `1.86.0`
+- near-cli-rs: `0.22.0`
+- cargo-near: `0.16.1`
 - Python: `3.13`
 - near-sdk-py: `0.7.3`
 - uvx nearc: `0.9.2`
