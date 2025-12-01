@@ -1,6 +1,6 @@
 .conceptCard {
   /* spacing using Infima CSS variables */
-  margin: var(--ifm-spacing-vertical) 0;
+  margin: 0.5rem 0;
   padding: calc(var(--ifm-spacing-vertical) * 1.5) .1rem
 }
 
@@ -18,11 +18,11 @@
   background-size: cover;
   background-position: center;
   border-radius: 0.9rem;
-  padding: 2.5rem; /* approx p-12 */
+  padding: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 16rem; /* md:h-64 equivalent */
+  min-height: 12rem;
 }
 
 /* Vertically center the content within its column */

@@ -12,29 +12,46 @@ import ConceptCard from '@site/src/components/UI/ConceptCard';
 
 Through a combination of innovative technologies, NEAR enables developers to build applications that work seamlessly across multiple blockchains while abstracting away the underlying complexity for both developers and end users.
 
+---
+
 <ConceptCard
-  title="Multi-Chain Accounts"
-  description='A core piece of tech that enables NEAR accounts, including smart contracts, to sign transactions for all other blockchains (including Bitcoin, Ethereum and Solana)'
   image="/assets/docs/welcome-pages/10.templates.png"
   index={0}
-  href="/chain-abstraction/chain-signatures"
-/>
+>
+
+## Multi-Chain Accounts
+
+Chain Signatures allow NEAR accounts **and smart contracts** to sign transactions for all other chains (including Bitcoin, Ethereum and Solana)
+
+[Learn More](./chain-signatures.md)
+
+</ConceptCard>
 
 <ConceptCard
-  title="Swaps via Intents"
-  description='A decentralized system where users simply express desired outcomes (like "swap BTC for ETH at the best price"), and a network of solvers then competes to fulfill these intents optimally'
   image="/assets/docs/welcome-pages/9.near-nodes.png"
   index={1}
-  href="/chain-abstraction/intents/overview"
-/>
+>
+
+## Swaps via Intents
+
+A decentralized system where users simply **express desired outcomes** (like "swap BTC for ETH at the best price"), and a network of solvers then competes to fulfill these intents optimally
+
+[Learn More](./intents/overview.md)
+
+</ConceptCard>
 
 <ConceptCard
-  title="OmniBridge"
-  description='A multi-chain bridge that enables secure and efficient cross-chain transfers. The bridge serves as both a token factory and custodian, managing native and bridged tokens'
   image="/assets/docs/welcome-pages/4.smart-contracts.png"
   index={2}
-  href="/chain-abstraction/omnibridge/overview"
-/>
+>
+
+## OmniBridge
+
+A multi-chain bridge that enables secure and efficient cross-chain transfers. The bridge serves as both a token factory and custodian, managing native and bridged tokens through a unified interface
+
+[Learn More](./omnibridge/overview.md)
+
+</ConceptCard>
 
 ---
 
