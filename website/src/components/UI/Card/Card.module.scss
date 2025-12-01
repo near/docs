@@ -33,9 +33,7 @@
 
   // Icon variant
   &--icon {
-    position: relative;
-    padding-top: var(--space-10);
-    margin-top: var(--space-8);
+    text-align: center;
 
     &:hover {
       transform: translateY(calc(var(--space-2) * -1));
@@ -87,12 +85,6 @@
     .card__content {
       color: #047857;
     }
-
-    // &:hover {
-    //   background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);
-    //   border-color: rgba(16, 185, 129, 0.3);
-    // }
-
   }
 
   // based on #DBEAFE
@@ -126,12 +118,6 @@
     .card__content {
       color: #5b21b6;
     }
-
-    // &:hover {
-    //   background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-    //   border-color: rgba(139, 92, 246, 0.3);
-    // }
-
   }
 
   &--red {
@@ -148,11 +134,6 @@
     .card__content {
       color: #991b1b;
     }
-
-    // &:hover {
-    //   background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
-    //   border-color: rgba(239, 68, 68, 0.3);
-    // }
 
     // Buttons and interactive elements inside red cards
     button {
@@ -195,20 +176,16 @@
 
   // Icon element
   &__icon {
-    position: absolute;
-    top: calc(-1 * var(--space-8));
-    left: var(--space-6);
     width: var(--space-16);
     height: var(--space-16);
     background: var(--color-bg-primary);
-    border: var(--border-2) var(--border-solid) var(--color-border-primary);
-    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition-all);
     z-index: 10;
     overflow: visible;
+    margin: 0 auto;
   }
 
   &__iconSvg {

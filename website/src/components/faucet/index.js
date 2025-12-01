@@ -10,7 +10,7 @@ import { NEAR } from '@near-js/tokens';
 
 
 async function createAndDeleteTmpAcc(beneficiary) {
-  const tmpAccount = `${beneficiary.slice(0, 32).replace('.', '-')}-${Date.now()}.testnet`;
+  const tmpAccount = `${beneficiary.slice(0, 32).replaceAll('.', '-')}-${Date.now()}.testnet`;
   const signer = KeyPairSigner.fromSecretKey(
     'ed25519:5mixhRL3GcXL9sXx9B4juv6cp3Js4Qo7qY9gWs8bzcQGeSbefXMkCJh5UpmwZYriitMjsppqV4W8zb5bREkYRxLh',
   );

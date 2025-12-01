@@ -11,16 +11,6 @@ Please review this list of security considerations before deploying a Shade Agen
 
 ---
 
-## Duplicate Actions
-
-To ensure liveness, the Shade Agent should consist of multiple identical agents hosted by different providers/on different hardware. When multiple agents are running, all agents will respond to updates (user inputs, agent pings, API updates, etc.) or will create the same action whilst running on a cron. You must ensure that the Shade Agent collectively performs the desired action only `once` in response to each update.
-
-Consider a Kaito Mindshare Trading Agent as an example. If Solana's mindshare increases relative to NEAR, the agent would swap SOL for NEAR. With two agents running, you must ensure this swap doesn't occur twice.
-
-This logic is typically best implemented within the agent contract or a target smart contract being interacted with.
-
----
-
 ## Restricting Actions
 
 While TEEs are considered trusted and tamper-resistant, implementing tight restrictions or `guard rails` on agent actions within the agent contract is recommended so that even if the private key to a agent was extracted funds can't be withdrew.
@@ -33,6 +23,24 @@ Examples of restrictions could be:
 We recommend using the [omni-transactions-rs](https://github.com/near/omni-transaction-rs) library to build transactions within your agent contract rather than in the agent.
 
 Another solution is for the Shade Agent's multichain accounts to not hold funds themselves, but the accounts to be a restricted admin on a contract on the target chain.
+
+---
+
+## Secure Data Centers
+
+With recent exploits of TEEs, such as TEE.fail, it’s important for TEEs to have physical security by running them in secure data centers. 
+
+In addition to verifying agent attestations in the smart contract, it’s recommended to only allow them to register as valid agents (via whitelisting account IDs) after verifying off-chain that they are running within secure data centers (like ones provided by Phala Cloud). Proof of Cloud https://proofofcloud.org/ is an initiative to verify TEEs are running in secure facilities.
+
+---
+
+## Duplicate Actions
+
+To ensure liveness, the Shade Agent should consist of multiple identical agents hosted by different providers/on different hardware. When multiple agents are running, all agents will respond to updates (user inputs, agent pings, API updates, etc.) or will create the same action whilst running on a cron. You must ensure that the Shade Agent collectively performs the desired action only `once` in response to each update.
+
+Consider a Kaito Mindshare Trading Agent as an example. If Solana's mindshare increases relative to NEAR, the agent would swap SOL for NEAR. With two agents running, you must ensure this swap doesn't occur twice.
+
+This logic is typically best implemented within the agent contract or a target smart contract being interacted with.
 
 ---
 

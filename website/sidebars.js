@@ -116,7 +116,7 @@ const sidebar = {
             'tools/explorer',
             {
               type: 'link',
-              label: 'Wallets ↗',
+              label: 'Wallets',
               href: 'https://wallet.near.org',
             },
             'tools/near-cli',
@@ -538,6 +538,11 @@ const sidebar = {
                 },
               ]
             },
+            {
+              type: "link",
+              label: "The Graph Substreams",
+              href: "https://docs.substreams.dev/tutorials/intro-to-tutorials/near"
+            }
           ],
         },
       ],

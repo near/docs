@@ -45,7 +45,7 @@ NEAR is a technical marvel, offering built-in features such as named accounts an
 
 1. 5 years of **100% uptime** and [**4 Billion** transactions](https://pikespeak.ai/near-world/overview) processed
 2. NEAR has sustained peaks of [>13M transactions](https://pikespeak.ai/near-world/overview) in a single day
-3. NEAR is home to decentralized apps with [millions of users](https://dappradar.com/rankings?range=30d):
+3. NEAR is home to decentralized apps with [millions of users](https://dappradar.com/rankings/protocol/near?sort=uawCount&order=desc&range=30d):
     - [Kai-ching](https://cosmose.ai/)
     - [Sweat](https://sweateconomy.com/)
     - [Hot Wallet](https://t.me/herewalletbot/)
