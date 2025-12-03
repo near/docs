@@ -132,8 +132,8 @@ After we finish initializing the indexer, and configuring it, we can start it by
 <details>
 <summary>How it works</summary>
 
-- The command initializes indexer configuration: home directory, sync mode, streaming mode, finality, etc.
-- Creates a Tokio runtime on a dedicated thread
+- The command initializes the indexer's configuration: home directory, sync mode, streaming mode, finality, etc.
+- Creates a Tokio runtime on a dedicated thread.
 - Creates an instance of the Indexer using the provided configuration, starts it, and streams blocks to our handler. Within the handler (`listen_blocks` method), there is an infinite loop that parses block data for each new block received.
 
 <Github fname="main.rs" language="rust"
@@ -148,7 +148,7 @@ After we finish initializing the indexer, and configuring it, we can start it by
 
 ## Parsing the Block Data
 
-Within `listen_blocks` method, we can parse the block data as we get it from the stream. From the block data, we can access the transactions, their receipts and actions. See the code below for an example of how to parse the block data:
+Within the `listen_blocks` method, we can parse the block data as it flows from the stream. From the block data, we can access the transactions, their receipts, and actions. See the code below for an example of how to parse the block data:
 
 <Github fname="main.rs" language="rust"
         url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"

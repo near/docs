@@ -94,11 +94,11 @@ Another example that highlights the need for a "wide query" is when you use a se
 
 ## Indexers in the NEAR ecosystem
 
-There are [multiple indexing options](../tools/data-services.md) available in the NEAR ecosystem. If you are ready to host your own indexer, we recommend using the [Near Lake Framework](./lake-framework/near-lake) as it is simple, reliable, and available in multiple languages (JavaScript, Rust, Python). 
+There are [multiple indexing options](../tools/data-services.md) available in the NEAR ecosystem. If you are ready to host your own indexer, we recommend using the [Near Lake Framework](./lake-framework/near-lake.md) as it is simple, reliable, and available in multiple languages (JavaScript, Rust, Python). 
 
-If speed is critically important for your indexing needs, consider using the [Near Indexer](./near-indexer.md). However, please note that maintaining it can be more complex and costly, as it essentially operates as an independent node in the network. 
+If speed is critical for your indexing needs, consider using [Near Indexer](./near-indexer.md). However, please note that maintaining it can be more complex and costly, as it essentially operates as an independent node in the network. 
 
-If you prefer not to host your own solution, you can utilize [partner services](../tools/data-services.md).
+If you prefer not to host your own solution, you can utilize [third-party services](../tools/data-services.md).
 
 ---
 
