@@ -93,8 +93,8 @@ app.get("/", async (c) => {
   const balance = await agent("getBalance");
 
   return c.json({
-    accountId: accountId.accountId,
-    balance: balance.balance,
+    accountId,
+    balance,
   });
 });
 
