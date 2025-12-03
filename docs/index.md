@@ -73,9 +73,9 @@ import LandingHero from '@site/src/components/LandingHero';
       title="Smart Contracts"
     >
       <ul>
-        <li><a href="/smart-contracts/what-is">What are Smart Contracts?</a></li>
-        <li><a href="/smart-contracts/quickstart">Quickstart ✨</a></li>
-        <li><a href="/smart-contracts/anatomy/">Contract's Anatomy</a></li>
+        <li><a href="/smart-contracts/what-is">Learn what is a Smart Contract</a></li>
+        <li><a href="/smart-contracts/quickstart">Build your First Contract ✨</a></li>
+        <li><a href="/smart-contracts/anatomy/">Understand Fundamental Concepts</a></li>
       </ul>
     </Card>
   </div>
