@@ -116,7 +116,7 @@ const sidebar = {
             'tools/explorer',
             {
               type: 'link',
-              label: 'Wallets ↗',
+              label: 'Wallets',
               href: 'https://wallet.near.org',
             },
             'tools/near-cli',
@@ -466,13 +466,15 @@ const sidebar = {
         {
           'Fungible Tokens (FT)': [
             'primitives/ft/standard',
-            'primitives/ft/ft'
+            'primitives/ft/ft',
+            'primitives/ft/sdk-contract-tools'
           ]
         },
         {
           'Non-Fungible Tokens (NFT)': [
             'primitives/nft/standard',
-            'primitives/nft/nft'
+            'primitives/nft/nft',
+            'primitives/nft/nft-contract-tools'
           ]
         },
         {

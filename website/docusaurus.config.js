@@ -11,9 +11,6 @@ const config = {
   organizationName: 'near',
   projectName: 'docs',
   trailingSlash: false,
-  markdown: {
-    mermaid: true,
-  },
   scripts: [
     'https://buttons.github.io/buttons.js',
     'https://use.fontawesome.com/221fd444f5.js',
@@ -36,7 +33,10 @@ const config = {
   },
   themes: ['@saucelabs/theme-github-codeblock', '@docusaurus/theme-mermaid'],
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  markdown: { 
+    mermaid: true,
+    hooks: { onBrokenMarkdownLinks: 'throw' }
+  },
   onBrokenAnchors: 'throw',
   presets: [
     [
