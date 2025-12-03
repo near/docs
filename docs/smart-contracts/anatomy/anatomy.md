@@ -64,7 +64,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
     Note that the contract's struct definition and the implementation are decorated with macros
 
-    The `#[near(contract_state)]` macro tell the SDK that this structure defines the contract's state, so it knows:
+    The `#[near(contract_state)]` macro tells the SDK that this structure defines the contract's state, so it knows:
     1. What to fetch from storage when the contract is loaded
     2. What to store when the contract is done executing
 
