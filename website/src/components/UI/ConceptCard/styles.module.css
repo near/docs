@@ -4,6 +4,32 @@
   padding: calc(var(--ifm-spacing-vertical) * 1.5) .1rem
 }
 
+/* Wrapper to control which view is shown */
+.conceptCardWrapper {
+  width: 100%;
+}
+
+/* Desktop view - visible by default on larger screens */
+.desktopView {
+  display: flex;
+}
+
+/* Mobile view - hidden by default */
+.mobileView {
+  display: none;
+}
+
+/* On smaller containers, hide desktop and show mobile */
+@media (max-width: 996px) {
+  .desktopView {
+    display: none;
+  }
+  
+  .mobileView {
+    display: block;
+  }
+}
+
 .colPadRight {
   padding-right: 2rem !important;
   padding-left: 0 !important;

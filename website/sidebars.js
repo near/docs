@@ -170,11 +170,7 @@ const sidebar = {
             }
           ]
         },
-        {
-          "Multi-Chain Swaps": [
-            'chain-abstraction/intents/overview',
-          ]
-        },
+        'chain-abstraction/intents/overview',
         {
           "Multi-Chain Bridge": [
             'chain-abstraction/omnibridge/overview',

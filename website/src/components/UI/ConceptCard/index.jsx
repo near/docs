@@ -1,10 +1,8 @@
-import * as Icons from "lucide-react"
 import styles from "./styles.module.css"
+import Card from '../Card';
 
 export default function ConceptCard({ title, description, image, href, index, children }) {
   const isEven = index % 2 === 0
-
-  // import the icon component dynamically based on the icon prop
 
   // Precompose columns for clarity, then render in desired order
   const IconColumn = (
@@ -21,18 +19,28 @@ export default function ConceptCard({ title, description, image, href, index, ch
   )
 
   return (
-    <div className={`row ${styles.conceptCard}`}>
-      {isEven ? (
-        <>
-          {IconColumn}
-          {ContentColumn}
-        </>
-      ) : (
-        <>
-          {ContentColumn}
-          {IconColumn}
-        </>
-      )}
+    <div className={styles.conceptCardWrapper}>
+      {/* Mobile view - show card */}
+      <div className={styles.mobileView} style={{marginBottom: "2rem"}}>
+        <Card href={href} title={title} description={description} image={image} variant="image">
+          {children}
+        </Card>
+      </div>
+
+      {/* Desktop view - show two-column layout */}
+      <div className={`row ${styles.conceptCard} ${styles.desktopView}`}>
+        {isEven ? (
+          <>
+            {IconColumn}
+            {ContentColumn}
+          </>
+        ) : (
+          <>
+            {ContentColumn}
+            {IconColumn}
+          </>
+        )}
+      </div>
     </div>
   )
 }
