@@ -19,7 +19,7 @@ The RPC API enables you to retrieve the current genesis and protocol configurati
 
 | Method | Parameters | Description |
 | --- | --- | --- |
-| [`EXPERIMENTAL_genesis_config`](#genesis-config) | _none_ | Returns current genesis configuration |
+| [`genesis_config`](#genesis-config) | _none_ | Returns current genesis configuration |
 | [`EXPERIMENTAL_protocol_config`](#protocol-config) | `finality` OR `block_id` | Returns protocol configuration for latest or specific block |
 
 ---
@@ -30,7 +30,7 @@ The RPC API enables you to retrieve the current genesis and protocol configurati
   <SplitLayoutLeft title="Description">
     Returns current genesis configuration.
 
-    - **method**: `EXPERIMENTAL_genesis_config`
+    - **method**: `genesis_config`
     - **params**: _none_
   </SplitLayoutLeft>
   <SplitLayoutRight title="Example">
@@ -40,7 +40,7 @@ The RPC API enables you to retrieve the current genesis and protocol configurati
         {
           "jsonrpc": "2.0",
           "id": "dontcare",
-          "method": "EXPERIMENTAL_genesis_config",
+          "method": "genesis_config",
         }
         ```
       </TabItem>
@@ -56,7 +56,7 @@ The RPC API enables you to retrieve the current genesis and protocol configurati
         http POST https://rpc.testnet.near.org \
           jsonrpc=2.0 \
           id=dontcare \
-          method=EXPERIMENTAL_genesis_config \
+          method=genesis_config \
         ```
       </TabItem>
       <TabItem value="Lantstool" label={<LantstoolLabel />}>
