@@ -20,7 +20,7 @@ Here's a quick reference table for all the methods in this section:
 | Method | Description | Parameters |
 |--------|-------------|------------|
 | [`block`](#block-details) | Get block details by height, hash, or finality | `finality` OR `block_id` |
-| [`block effects`](#block-effects) | Get changes in a specific block | `finality` OR `block_id` |
+| [`block_effects`](#block-effects) | Get changes in a specific block | `finality` OR `block_id` |
 | [`chunk`](#chunk-details) | Get chunk details by chunk_id or block_id + shard_id | `chunk_id` OR [`block_id`, `shard_id`] |
 
 
