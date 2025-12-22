@@ -162,21 +162,17 @@ Uses NEAR light client for maximum security:
 * Verifying proof through light client
 * Releasing tokens to recipient
 
-### 2. Solana
+### 2. Supported Non-EVM Chains (e.g., Solana)
 
-Currently using Wormhole for:
+Utilize established message passing protocols (such as Wormhole) for:
 
 * Message passing between chains
 * Transaction verification
 * Integration with NEAR token factory system
 
-### 3. Other Chains
+### 3. Other EVM Chains
 
-Initially using Wormhole for:
-
-* Message passing between chains
-* Transaction verification
-* Will transition to Chain Signatures
+Utilize a combination of light clients (where efficient) and message passing protocols to ensure secure verification of inbound transfers.
 
 ---
 
@@ -207,10 +203,10 @@ Omni Bridge requires different trust assumptions depending on the chain connecti
 * Finality assumptions (e.g., sufficient block confirmations)
 * Chain-specific consensus assumptions
 
-#### For interim Wormhole connections:
+#### For Message Passing connections:
 
-* Wormhole Guardian network security
-* We acknowledge this is a temporary trust assumption until Chain Signatures integration is complete
+* Security of the underlying message passing protocol (e.g., Wormhole Guardian network)
+* Verified by NEAR network participants (e.g., validators and full nodes)
 
 ---
 
@@ -227,6 +223,37 @@ Relayers are permissionless infrastructure operators who monitor for bridge even
 :::info
 The relayer's role is purely operational - executing valid transfers and collecting predetermined fees. Multiple relayers can operate simultaneously, creating competition for faster execution and lower fees.
 :::
+
+---
+
+## Fast Transfers
+
+Standard cross-chain transfers can take time due to finality and verification requirements. **Fast Transfers** allow relayers to expedite this process by fronting liquidity.
+
+### How it Works
+
+1.  **User Initiation:** A user sends a `FastFinTransferMsg` specifying the destination and fee.
+2.  **Relayer Execution:** A relayer detects the request and instantly transfers the equivalent amount (minus fees) to the user on the destination chain from their own funds.
+3.  **Settlement:** The bridge later reimburses the relayer once the original transfer is fully verified and finalized.
+
+:::tip
+Fast transfers are ideal for users who prioritize speed over cost, as relayers may charge a premium for the liquidity and convenience.
+:::
+
+---
+
+## Multi-Token Support (ERC1155)
+
+Omni Bridge supports the **ERC1155** standard, enabling the transfer of multiple token types within a single contract.
+
+### Address Derivation
+To maintain consistency across chains, bridged ERC1155 tokens use a deterministic address derivation scheme:
+*   **Deterministic Address:** `keccak256(tokenAddress + tokenId)`
+*   This ensures that each `tokenId` within an ERC1155 contract maps to a unique, consistent address on the destination chain.
+
+### Key Functions
+*   **`initTransfer1155`**: Initiates a transfer for a specific ERC1155 token ID.
+*   **`logMetadata1155`**: Registers metadata for a specific token ID, ensuring it is recognized by indexers and wallets.
 
 ---
 
