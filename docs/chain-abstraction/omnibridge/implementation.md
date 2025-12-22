@@ -206,7 +206,7 @@ Omni Bridge requires different trust assumptions depending on the chain connecti
 #### For Message Passing connections:
 
 * Security of the underlying message passing protocol (e.g., Wormhole Guardian network)
-* Verified by the NEAR network consumers
+* Verified by NEAR network participants (e.g., validators and full nodes)
 
 ---
 
