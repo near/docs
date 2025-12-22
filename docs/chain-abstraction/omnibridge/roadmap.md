@@ -16,7 +16,7 @@ The bridge currently supports the following networks:
   - Arbitrum
   - BNB Chain
   - Polygon (PoS)
-- **non-EVM Chains:**
+- **Non-EVM Chains:**
   - Bitcoin
   - Solana
   - Zcash
