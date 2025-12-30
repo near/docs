@@ -109,33 +109,13 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releas
 <TabItem value="go" label="🐹 GO">
 
 ```bash
-# Install Go (version <= 1.23.9) using GVM: https://github.com/moovweb/gvm 
-# or the official Go installation method: https://go.dev/doc/install
-
-# GVM Go installation method (recommended for managing different versions of Go)
-sudo apt update
-sudo apt install gcc make
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential curl wget git libssl-dev pkg-config checkinstall
 sudo apt install bison
+
 bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-gvm install go1.23.9 -B
-gvm use go1.23.9 --default
-
-# Install TinyGo: https://tinygo.org/getting-started/install/
-
-# Linux AMD64 (x86_64)
-wget https://github.com/tinygo-org/tinygo/releases/download/v0.37.0/tinygo_0.37.0_amd64.deb
-sudo dpkg -i tinygo_0.37.0_amd64.deb
-
-# Linux ARM64
-wget https://github.com/tinygo-org/tinygo/releases/download/v0.37.0/tinygo_0.37.0_arm64.deb
-sudo dpkg -i tinygo_0.37.0_arm64.deb
-
-# macOS
-brew tap tinygo-org/tools
-brew install tinygo
-
-# Install NEAR Go CLI to manage and interact with smart contracts easily
-# Alternatively, download it from GitHub Releases and move it manually to your bin folder.
+gvm install go1.25.4 -B
+gvm use go1.25.4 --default
 
 curl -LO https://github.com/vlmoon99/near-cli-go/releases/latest/download/install.sh && bash install.sh
 
@@ -552,11 +532,31 @@ When you are ready to create a build of the contract run a one-line command depe
   </TabItem>
 
   <TabItem value="go" label="🐹 GO">
-  ```bash
-  near-go build
-  ```
-  </TabItem>
-</Tabs>
+    ```bash
+    near-go build
+    ```
+
+    :::info Near Go SDK Build Process
+
+    1. All code from the main package, including imports from other modules, is combined into a single **generated_build.go** file.
+    2. The **generated_build.go** file is compiled into `wasm32-unknown-unknown` via **TinyGo**.
+
+    :::
+
+    :::info Customizing the Build
+    
+    The default `near-go build` command works for most standard projects, compiling source code from the current directory into `main.wasm`. 
+    
+    However, if you want to specify a custom output name or **inspect the intermediate glue code** (generated JSON serialization and SDK integration wrappers) for debugging purposes, you can use the available flags:
+
+    ```bash
+    near-go build --output my_contract.wasm --keep-generated
+    ```
+    :::
+
+    </TabItem>
+
+  </Tabs>
 
 ---
 
