@@ -32,7 +32,7 @@ You have two options to start the Counter Example.
 
 The example is divided in two main components:
 
-1. The smart contract, available in two flavors: Rust and JavaScript
+1. The smart contract, available in three flavors: Rust, JavaScript, and Python
 2. The frontend, that interacts with an already deployed contract.
 
 <Tabs groupId="code-tabs">
@@ -64,6 +64,20 @@ The example is divided in two main components:
 ├── Cargo.toml # package manager
 ├── README.md
 └── rust-toolchain.toml
+```
+
+  </TabItem>
+
+  <TabItem value="python" label="🐍 Python">
+
+```bash
+├── tests # contract tests
+│    └── test_contract.py
+├── contract.py # contract's code
+├── contract.wasm # compiled contract
+├── pyproject.toml # package manager
+├── README.md
+└── uv.lock
 ```
 
   </TabItem>
@@ -123,6 +137,11 @@ The contract presents 4 methods: `get_num`, `increment`, `decrement`, and `reset
             url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
             start="5" end="37" />
   </Language>
+  <Language value="python" language="python">
+    <Github fname="contract.py"
+            url="https://github.com/near-examples/counters/blob/main/contract-py/contract.py"
+            start="4" end="52" />
+  </Language>
 </CodeTabs>
 
 ---
@@ -146,6 +165,15 @@ yarn test
   ```bash
   cd contract-rs
   cargo test
+  ```
+
+  </TabItem>
+
+  <TabItem value="python" label="🐍 Python">
+  
+  ```bash
+  cd contract-py
+  uv run pytest
   ```
 
   </TabItem>
@@ -180,7 +208,7 @@ In order to deploy the contract you will need to create a NEAR account.
   </TabItem>
 </Tabs>
 
-Go into the directory containing the smart contract (`cd contract-ts` or `cd contract-rs`), build and deploy it:
+Go into the directory containing the smart contract (`cd contract-ts`, `cd contract-rs`, or `cd contract-py`), build and deploy it:
 
 <Tabs groupId="code-tabs">
 
@@ -196,6 +224,16 @@ Go into the directory containing the smart contract (`cd contract-ts` or `cd con
   
   ```bash
   cargo near deploy build-non-reproducible-wasm <accountId>
+  ```
+
+  </TabItem>
+
+  <TabItem value="python" label="🐍 Python">
+  
+  ```bash
+  uvx nearc contract.py
+  near deploy <accountId> contract.wasm
+  near call <accountId> initialize '{}' --accountId <accountId>
   ```
 
   </TabItem>
