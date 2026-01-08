@@ -8,6 +8,7 @@ description: "Create your first contract using your favorite language."
 import {Github, Language} from '@site/src/components/UI/Codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Card from '@site/src/components/UI/Card';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 Welcome! [NEAR accounts](../protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
@@ -619,19 +620,33 @@ After the auction ends, the highest bidder can be determined by simply calling t
 
 ## Moving Forward
 
-That's it for the quickstart tutorial. You have now seen a fully functional contract with a minimal user interface and testing.
-
-Now we can choose how to expand your knowledge:
-
-- Want to add a frontend to your contract? Check the [action frontend tutorial](../tutorials/auction/2.1-frontend.md) to learn how to build a simple web app that interacts with the auction contract
-
-- Want to extend the auction to use Non-Fungible Tokens (NFT) and Fungible Tokens (FT)? Check the [auction with FT tutorial](../tutorials/auction/3.1-nft.md)
-
-- Want to learn more about the SDK? Check our [Anatomy of a Contract](./anatomy/anatomy.md) page to understand the different components that make up a NEAR smart contract
+<div class="row" style={{marginTop: '2rem', marginBottom: '2rem'}}>
+  <div class="col col--6">
+    <Card title="Create a Frontend" >
+      Check the [action frontend tutorial](../tutorials/auction/2.1-frontend.md) to learn how to build a simple web app that interacts with the auction contract
+    </Card>
+  </div>
+  <div class="col col--6">
+    <Card title="Extend the Contract" >
+      Follow the [auction NFT tutorial](../tutorials/auction/3.1-nft.md) to award the highest bidder a Non-Fungible Token (NFT) and allow users to bid using Fungible Tokens (FT) 
+    </Card>
+  </div>
+</div>
+<div class="row" style={{marginTop: '2rem', marginBottom: '2rem'}}>
+  <div class="col col--6">
+    <Card title="Learn More about the SDK" >
+      Check our [Anatomy of a Contract](./anatomy/anatomy.md) page to understand the different components that make up a NEAR smart contract
+    </Card>
+  </div>
+</div>
 
 <MovingForwardSupportSection />
 
-:::note Versioning for this article
+<br />
+
+<details>
+
+<summary> Versioning for this article </summary>
 
 At the time of this writing, this example works with the following versions:
 
@@ -644,4 +659,4 @@ At the time of this writing, this example works with the following versions:
 - uvx nearc: `0.9.2`
 - emscripten: `4.0.9` (required for Python contracts)
 
-:::
+</details>
