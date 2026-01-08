@@ -120,12 +120,12 @@ The contract exposes methods to donate tokens (`donate`), and methods to retriev
   <Language value="js" language="ts">
     <Github fname="contract.ts"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/src/contract.ts"
-            start="16" end="44" />
+            start="5" end="80" />
   </Language>
   <Language value="rust" language="rust">
     <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/donation.rs"
-            start="17" end="74" />
+            start="16" end="98" />
   </Language>
 </CodeTabs>
 

@@ -91,6 +91,17 @@ Because indexers listen to the *stream of data* from the blockchain and the data
 Another example that highlights the need for a "wide query" is when you use a seed phrase to recover one or more accounts. Since a seed phrase essentially represents a signing key pair, the recovery is for all accounts that share the associated public key. Therefore, when a seed phrase is used to recover an account via [NEAR Wallet](https://wallet.near.org), the query requires that all accounts with a matching public key are found and recovered. Utilizing [Near Lake Framework](https://github.com/near/near-lake-framework-rs) can be used to store this data in a permanent database and this allows [NEAR Wallet](https://wallet.near.org) to perform such "wide queries". This is impossible to achieve using JSON-RPC only.
 
 ---
+
+## Indexers in the NEAR ecosystem
+
+There are [multiple indexing options](../tools/data-services.md) available in the NEAR ecosystem. If you are ready to host your own indexer, we recommend using the [Near Lake Framework](./lake-framework/near-lake.md) as it is simple, reliable, and available in multiple languages (JavaScript, Rust, Python). 
+
+If speed is critical for your indexing needs, consider using [Near Indexer](./near-indexer.md). However, please note that maintaining it can be more complex and costly, as it essentially operates as an independent node in the network. 
+
+If you prefer not to host your own solution, you can utilize [third-party services](../tools/data-services.md).
+
+---
+
 ## Summary
 
 We hope this article gives you an understanding of the Indexer concept. Also, we hope now you can easily decide whether you need an indexer for your application.

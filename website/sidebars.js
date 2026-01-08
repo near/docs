@@ -138,61 +138,47 @@ const sidebar = {
       },
       link: { type: 'generated-index', slug: 'chain-abstraction/what-is' },
       items: [
+        "chain-abstraction/what-is",
         {
-          "Getting Started": [
-            "chain-abstraction/what-is"
-          ]
-        },
-        {
-          "Concepts": [
+          "Multi-Chain Accounts": [
             'chain-abstraction/chain-signatures',
-            'chain-abstraction/intents/overview',
             {
-              'Omni Bridge': [
-                'chain-abstraction/omnibridge/overview',
-                'chain-abstraction/omnibridge/how-it-works',
-                'chain-abstraction/omnibridge/implementation-details',
-                'chain-abstraction/omnibridge/roadmap',
-              ],
-            },
-            'chain-abstraction/data-availability',
-          ]
-        },
-        {
-          "Tutorials": [
-            'chain-abstraction/chain-signatures/implementation',
-            {
-              type: 'category',
-              label: 'Controlling NEAR Accounts',
-              link: { type: 'generated-index', slug: 'tutorials/controlling-near-accounts/introduction' },
-              items: [
-                'tutorials/controlling-near-accounts/introduction',
-                'tutorials/controlling-near-accounts/setup',
-                'tutorials/controlling-near-accounts/transfer',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Cross-Chain DAO Governance',
-              link: { type: 'generated-index', slug: 'tutorials/multichain-dao/introduction' },
-              items: [
-                'tutorials/multichain-dao/introduction',
-                'tutorials/multichain-dao/request',
-                'tutorials/multichain-dao/signing',
-                'tutorials/multichain-dao/voting',
-              ],
-            },
-          ]
-        },
-        {
-          "Reference": [
-            {
-              type: "link",
-              label: "Chainsig.js",
-              href: "https://github.com/NearDeFi/chainsig.js"
+              "Tutorials": [
+                'chain-abstraction/chain-signatures/implementation',
+                {
+                  type: 'category',
+                  label: 'Controlling NEAR Accounts',
+                  link: { type: 'generated-index', slug: 'tutorials/controlling-near-accounts/introduction' },
+                  items: [
+                    'tutorials/controlling-near-accounts/introduction',
+                    'tutorials/controlling-near-accounts/setup',
+                    'tutorials/controlling-near-accounts/transfer',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Cross-Chain DAO Governance',
+                  link: { type: 'generated-index', slug: 'tutorials/multichain-dao/introduction' },
+                  items: [
+                    'tutorials/multichain-dao/introduction',
+                    'tutorials/multichain-dao/request',
+                    'tutorials/multichain-dao/signing',
+                    'tutorials/multichain-dao/voting',
+                  ],
+                },
+              ]
             }
           ]
-        }
+        },
+        'chain-abstraction/intents/overview',
+        {
+          "Multi-Chain Bridge": [
+            'chain-abstraction/omnibridge/overview',
+            'chain-abstraction/omnibridge/how-it-works',
+            'chain-abstraction/omnibridge/implementation-details',
+            'chain-abstraction/omnibridge/roadmap',
+          ]
+        },
       ],
     },
     {
@@ -338,29 +324,39 @@ const sidebar = {
             id: 'tutorials/welcome',
           },
           items: [
-            {"Beginner": [
+            {
+              "Beginner": [
                 'tutorials/examples/count-near',
                 'tutorials/examples/guest-book',
                 'tutorials/examples/coin-flip',
-            ]},
-            {"Advanced": [
+              ]
+            },
+            {
+              "Advanced": [
                 'tutorials/examples/donation',
                 'tutorials/examples/near-drop',
                 'tutorials/examples/update-contract-migrate-state',
-            ]},
-            {"Cross Contracts": [
+              ]
+            },
+            {
+              "Cross Contracts": [
                 'tutorials/examples/xcc',
                 'tutorials/examples/advanced-xcc',
-            ]},
-            {"Factories": [
+              ]
+            },
+            {
+              "Factories": [
                 'tutorials/examples/factory',
                 'tutorials/examples/global-contracts',
-            ]},
-            {"Zero to Hero": [
+              ]
+            },
+            {
+              "Zero to Hero": [
                 'tutorials/fts',
                 'tutorials/nfts',
                 'tutorials/nfts-js',
-            ]},
+              ]
+            },
           ]
         },
         {

@@ -128,17 +128,31 @@ After we finish initializing the indexer, and configuring it, we can start it by
       ```
     </TabItem>
 </Tabs>
+
+<details>
+<summary>How it works</summary>
+
+- The command initializes the indexer's configuration: home directory, sync mode, streaming mode, finality, etc.
+- Creates a Tokio runtime on a dedicated thread.
+- Creates an instance of the Indexer using the provided configuration, starts it, and streams blocks to our handler. Within the handler (`listen_blocks` method), there is an infinite loop that parses block data for each new block received.
+
+<Github fname="main.rs" language="rust"
+        url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"
+        start="271" end="289" />
+
+</details>
+
 #### Run into an Error?
 - If your indexer cannot find `boot nodes`, check the [boot nodes](#boot-nodes) section
 ---
 
 ## Parsing the Block Data
 
-From the block data, we can access the transactions, their receipts and actions. See the code below for an example of how to parse the block data:
+Within the `listen_blocks` method, we can parse the block data as it flows from the stream. From the block data, we can access the transactions, their receipts, and actions. See the code below for an example of how to parse the block data:
 
 <Github fname="main.rs" language="rust"
         url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"
-        start="13" end="243" />
+        start="10" end="254" />
 
 ---
 
@@ -183,8 +197,8 @@ You can choose Indexer Framework sync mode by setting what to stream:
 - BlockHeight(u64) - Specific block height to start syncing from.
 
 <Github fname="main.rs" language="rust"
-        url="https://github.com/near-examples/near-indexer/blob/main/src/main.rs"
-        start="34" end="34" />
+        url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"
+        start="274" end="274" />
 
 <hr class="subsection" />
 
@@ -195,8 +209,8 @@ You can choose Indexer Framework streaming mode by setting what to stream:
 - WaitForFullSync - Don't stream until the node is fully synced
 
 <Github fname="main.rs" language="rust"
-        url="https://github.com/near-examples/near-indexer/blob/main/src/main.rs"
-        start="35" end="35" />
+        url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"
+        start="275" end="275" />
 
 <hr class="subsection" />
 
@@ -208,8 +222,8 @@ You can choose finality level at which blocks are streamed:
 - Final - `final`, the block is final and irreversible.
 
 <Github fname="main.rs" language="rust"
-        url="https://github.com/near-examples/near-indexer/blob/main/src/main.rs"
-        start="36" end="36" />
+        url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"
+        start="276" end="276" />
 
 <hr class="subsection" />
 
@@ -285,11 +299,11 @@ You can also use NEAR Indexer Framework as a dependency in your own Rust project
 
 ```toml
 [dependencies]
-near-indexer = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
-near-indexer-primitives = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
-near-config-utils = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
-near-o11y = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
-near-primitives = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
+near-indexer = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-indexer-primitives = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-config-utils = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-o11y = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-primitives = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
 ```
 
 <MovingForwardSupportSection />

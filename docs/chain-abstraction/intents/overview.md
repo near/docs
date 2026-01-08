@@ -1,7 +1,7 @@
 ---
 id: overview
 title: NEAR Intents
-sidebar_label: NEAR Intents
+sidebar_label: Multi-Chain Swaps
 description: "Learn how the intents protocol works"
 ---
 
