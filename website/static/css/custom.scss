@@ -350,6 +350,19 @@ li>ul {
 }
 
 // ============================================================================
+// TABS STYLES
+// ============================================================================
+.tabs__item {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  border-width: 2px;
+}
+
+.margin-top--md {
+  margin-top: .5rem !important;
+}
+
+// ============================================================================
 // CARD COMPONENTS
 // ============================================================================
 
@@ -577,7 +590,7 @@ html:not(.blog-post-page) .avatar__photo {
   border-radius: 0%;
 }
 
-video+p>em,img+p>em, .monaco+em {
+video+p>em,img+p>em,img+em, .monaco+em {
   font-style: normal;
   display: inherit;
   text-align: center;
