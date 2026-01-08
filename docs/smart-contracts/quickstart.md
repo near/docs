@@ -41,22 +41,6 @@ Before starting, make sure to set up your development environment.
 </details>
 
 <Tabs groupId="code-tabs" queryString>
-  <TabItem value="js" label="🌐 JavaScript">
-
-```bash
-# Install Node.js using nvm (more options in: https://nodejs.org/en/download)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-nvm install latest
-
-# ⚠️ For Mac Silicon users only, Rosetta is needed to compile contracts
-# /usr/sbin/softwareupdate --install-rosetta --agree-to-license
-
-# Install NEAR CLI to deploy and interact with the contract
-npm install -g near-cli-rs@latest
-```
-
-</TabItem>
-
 <TabItem value="rust" label="🦀 Rust">
 
 ```bash
@@ -71,6 +55,22 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releas
 
 # Install cargo near to help building the contract
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
+```
+
+</TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+
+```bash
+# Install Node.js using nvm (more options in: https://nodejs.org/en/download)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install latest
+
+# ⚠️ For Mac Silicon users only, Rosetta is needed to compile contracts
+# /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+
+# Install NEAR CLI to deploy and interact with the contract
+npm install -g near-cli-rs@latest
 ```
 
 </TabItem>
@@ -141,11 +141,22 @@ Need some `testnet` tokens? Use the [faucet](../faucet.md) to top-up your accoun
 Create a smart contract by using one of the scaffolding tools and following their instructions:
 
 <Tabs groupId="code-tabs">
+<TabItem value="rust" label="🦀 Rust">
+
+```bash
+cargo near
+```
+
+![img](@site/static/assets/docs/smart-contracts/hello-near-rs.gif)
+_Creating a project using `cargo near new`_
+
+</TabItem>
+
   <TabItem value="js" label="🌐 JavaScript">
 
 
 ```bash
-  npx create-near-app@latest
+npx create-near-app@latest
 ```
 
 ![img](@site/static/assets/docs/smart-contracts/hello-near-ts.gif)
@@ -156,17 +167,6 @@ _Creating a project using `npx create-near-app@latest`_
 When prompted to choose a template, select the basic `Auction` template to scaffold the auction contract
 
 :::
-
-</TabItem>
-
-<TabItem value="rust" label="🦀 Rust">
-
-```bash
-  cargo near
-```
-
-![img](@site/static/assets/docs/smart-contracts/hello-near-rs.gif)
-_Creating a project using `cargo near new`_
 
 </TabItem>
 
@@ -222,21 +222,6 @@ For this tutorial we chose to name the project `auction`, but feel free to use a
 The scaffolding tools will generate a project with the following structure:
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-
-```bash
-auction
-├── sandbox-test    # sandbox testing
-│   └── main.ava.js
-├── src             # contract's code
-│   └── contract.ts
-├── README.md
-├── package.json    # package manager
-└── tsconfig.json
-```
-
-</TabItem>
-
 <TabItem value="rust" label="🦀 Rust">
 
 ```bash
@@ -249,6 +234,21 @@ auction
 ├── Cargo.lock # package lock file
 ├── README.md
 └── rust-toolchain.toml
+```
+
+</TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+
+```bash
+auction
+├── sandbox-test    # sandbox testing
+│   └── main.ava.js
+├── src             # contract's code
+│   └── contract.ts
+├── README.md
+├── package.json    # package manager
+└── tsconfig.json
 ```
 
 </TabItem>
@@ -281,26 +281,19 @@ auction
 
 ## The Contract
 
-The auction smart contract allows users to place bids, track the highest bidder and claim tokens at the end of the auction. Therefore it exposes following methods to interact with it:
-1. `init`: to initialize the contract with auction parameters
-2. `bid`: to place a bid in the auction
-3. `claim`: to claim tokens after the auction ends
-4. `get_highest_bid`: to fetch the highest bid and bidder information
-5. `get_auction_end_time`: to retrieve the auction end time
-6. `get_auctioneer`: to get the auctioneer's account ID
-7. `get_claimed`: to check if a bidder has claimed their tokens
+The auction smart contract allows users to place bids, track the highest bidder and claim tokens at the end of the auction. 
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-    <Github fname="index.js" language="js"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
-            start="9" end="72" />
-  </TabItem>
-
   <TabItem value="rust" label="🦀 Rust">
     <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
             start="5" end="93" />
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+    <Github fname="index.js" language="js"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+            start="9" end="72" />
   </TabItem>
 
   <TabItem value="py" label="🐍 Python">
@@ -316,6 +309,14 @@ The auction smart contract allows users to place bids, track the highest bidder 
   </TabItem>
 </Tabs>
 
+The most relevant functions of the contract are:
+1. `init`: to initialize the contract with auction parameters
+2. `bid`: to place a bid in the auction
+3. `claim`: to claim tokens after the auction ends
+4. `get_highest_bid`: to fetch the highest bid and bidder information
+
+Besides these functions, the contract also exposes some methods to know when the auction will finish, and to check if the auction is still active
+
 :::tip
 
 After finishing this tutorial, check our [contract's anatomy](./anatomy/anatomy.md) page to learn more about the contract's structure
@@ -329,6 +330,14 @@ After finishing this tutorial, check our [contract's anatomy](./anatomy/anatomy.
 Building and testing the contract is as simple as running the `test` command. The contract will be compiled and the tests will be executed.
 
 <Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
+
+  ```bash
+  cargo test
+  ```
+
+  </TabItem>
+
   <TabItem value="js" label="🌐 JavaScript">
 
     ```bash
@@ -341,13 +350,6 @@ Building and testing the contract is as simple as running the `test` command. Th
     Make sure that you are using `node v24 / 22 / 20`, and that you have installed `Rosetta` if you have a Mac with Apple Silicon
 
     </details>
-
-  </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
-
-  ```bash
-  cargo test
-  ```
 
   </TabItem>
   
@@ -391,28 +393,13 @@ Using a Sandbox allows you to see exactly how the contract will behave once depl
 Now that you know the contract is passing the tests, let's create a `testnet` account in which to deploy the contract.
 
 ```bash
-# Replace <your-account-id.testnet> with a custom name
-near create-account <your-account-id.testnet> --useFaucet
+# Replace <contract-acc.testnet> with a name for your contract account
+near create-account <contract-acc.testnet> --useFaucet
 ```
 
 <details>
-<summary> Example </summary>
 
-```bash
-near create-account lovely-event.testnet --useFaucet
-# New account "lovely-event.testnet" created successfully
-```
-
-</details>
-
-
-:::tip
-
-If you already have a `testnet` account and would like to use it instead, you can login into the `near-cli` with the command `near login`.
-
-:::
-
-:::danger WSL / Headless Linux
+<summary> Got an Error on Windows? </summary>
 
 When working on `WSL` - or any other headless Linux environment - you might encounter issues when trying to create an account as the `cli` tries to save the keys into the system's keychain.
 
@@ -421,6 +408,12 @@ In such cases, you can try the following command to create the account:
 ```bash
 near account create-account sponsor-by-faucet-service <your-account-id.testnet> autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
 ```
+
+</details>
+
+:::tip
+
+If you already have a `testnet` account and would like to use it instead, you can login into the `near-cli` with the command `near login`.
 
 :::
 
@@ -431,14 +424,6 @@ near account create-account sponsor-by-faucet-service <your-account-id.testnet> 
 Now that we know that tests are passing and we have a `testnet` account created, we can proceed to deploy the contract. For that, we first need to compile the contract into WebAssembly:
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-
-  ```bash
-  npm run build
-  ```
-
-  </TabItem>
-
   <TabItem value="rust" label="🦀 Rust">
 
   ```bash
@@ -450,6 +435,14 @@ Now that we know that tests are passing and we have a `testnet` account created,
   For this tutorial we will use the `non-reproducible-wasm` option when building the contract, but please know that you can create a reproducible build if you have `Docker` installed
 
   :::
+
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+
+  ```bash
+  npm run build
+  ```
 
   </TabItem>
   
@@ -491,14 +484,15 @@ Now that we know that tests are passing and we have a `testnet` account created,
 With the contract ready, we can now deploy it to the `testnet` account we created earlier:
 
 <Tabs groupId="cli-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-    ```bash
-    near deploy <contract-acc.testnet> ./build/auction.wasm
-    ```
-  </TabItem>
   <TabItem value="rust" label="🦀 Rust">
     ```bash
     near deploy <contract-acc.testnet> ./target/near/auction.wasm
+    ```
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+    ```bash
+    near deploy <contract-acc.testnet> ./build/auction.wasm
     ```
   </TabItem>
   
