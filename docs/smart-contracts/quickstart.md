@@ -109,9 +109,16 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releas
 <TabItem value="go" label="🐹 GO">
 
 ```bash
+#For Linux arm/x64
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y build-essential curl wget git libssl-dev pkg-config checkinstall
 sudo apt install bison
+
+#For Mac
+xcode-select --install
+brew update
+brew install mercurial
+brew install binaryen
 
 bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 gvm install go1.25.4 -B
