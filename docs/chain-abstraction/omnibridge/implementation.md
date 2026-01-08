@@ -180,6 +180,14 @@ Initially using Wormhole for:
 
 ---
 
+## Transaction Flow: Chain to Chain (via NEAR)
+
+For transfers between two non-NEAR chains (e.g., Ethereum to Solana), the bridge combines both flows using NEAR as an intermediary routing layer. Rather than minting or unlocking tokens on NEAR, the bridge creates a forwarding message that directs tokens to be minted or unlocked on the final destination chain.
+
+From the user's perspective, this appears as a single operation - they initiate the transfer on the source chain, and the off-chain relayer infrastructure handles the intermediate NEAR routing automatically.
+
+---
+
 ## Security Model
 
 ### Trust Assumptions
