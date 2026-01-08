@@ -111,57 +111,52 @@ class CrossContractExample(Contract):
 package main
 
 import (
-	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
 	"github.com/vlmoon99/near-sdk-go/env"
-	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/promise"
 	"github.com/vlmoon99/near-sdk-go/types"
 )
 
-//go:export ExampleQueryingGreetingInfo
-func ExampleQueryingGreetingInfo() {
-	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
-		helloAccount := "hello-nearverse.testnet"
-		gas := uint64(10 * types.ONE_TERA_GAS)
+// @contract:state
+type Contract struct{}
 
-		promiseBuilder.NewCrossContract(helloAccount).
-			Gas(gas).
-			Call("get_greeting", map[string]string{}).
-			Value()
-		return nil
-	})
+// @contract:payable min_deposit=0.001NEAR
+func (c *Contract) ExampleQueryingGreetingInfo() {
+	helloAccount := "hello-nearverse.testnet"
+	gas := uint64(10 * types.ONE_TERA_GAS)
+
+	promise.NewCrossContract(helloAccount).
+		Gas(gas).
+		Call("get_greeting", map[string]string{}).
+		Value()
 }
 
-//go:export ExampleQueryingInformation
-func ExampleQueryingInformation() {
-	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
-		helloAccount := "hello-nearverse.testnet"
-		gas := uint64(10 * types.ONE_TERA_GAS)
+// @contract:payable min_deposit=0.001NEAR
+func (c *Contract) ExampleQueryingInformation() {
+	helloAccount := "hello-nearverse.testnet"
+	gas := uint64(10 * types.ONE_TERA_GAS)
 
-		promiseBuilder.NewCrossContract(helloAccount).
-			Gas(gas).
-			Call("get_greeting", map[string]string{}).
-			Then("ExampleQueryingInformationResponse", map[string]string{})
-		return nil
-	})
+	promise.NewCrossContract(helloAccount).
+		Gas(gas).
+		Call("get_greeting", map[string]string{}).
+		Then("example_querying_information_response", map[string]string{})
 }
 
-//go:export ExampleQueryingInformationResponse
-func ExampleQueryingInformationResponse() {
-	contractBuilder.HandlePromiseResult(func(result *promiseBuilder.PromiseResult) error {
-		if result.Success {
-			env.LogString("State change completed successfully")
-		} else {
-			env.LogString("State change failed")
-		}
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleQueryingInformationResponse(result promise.PromiseResult) {
 
-		env.LogString("Promise result status: " + types.IntToString(int(result.StatusCode)))
-		if len(result.Data) > 0 {
-			env.LogString("Returned data: " + string(result.Data))
-		} else {
-			env.LogString("No return data from state change")
-		}
-		return nil
-	})
+	if result.Success {
+		env.LogString("State change/Query completed successfully")
+	} else {
+		env.LogString("State change/Query failed")
+	}
+
+	env.LogString("Promise result status: " + types.IntToString(result.StatusCode))
+	if len(result.Data) > 0 {
+		env.LogString("Returned data: " + string(result.Data))
+	} else {
+		env.LogString("No return data")
+	}
 }
 ```
 </Language>
@@ -243,52 +238,50 @@ class CrossContractExample(Contract):
 
 <Language value="go" language="go">
 ```go
+
+
 package main
 
 import (
-	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
 	"github.com/vlmoon99/near-sdk-go/env"
-	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/promise"
 	"github.com/vlmoon99/near-sdk-go/types"
 )
 
-//go:export ExampleSendingInformation
-func ExampleSendingInformation() {
-	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
-		helloAccount := "hello-nearverse.testnet"
-		gas := uint64(30 * types.ONE_TERA_GAS)
+// @contract:state
+type Contract struct{}
 
-		args := map[string]string{
-			"message": "New Greeting",
-		}
+// @contract:payable min_deposit=0.00001NEAR
+func (c *Contract) ExampleSendingInformation() {
+	helloAccount := "hello-nearverse.testnet"
+	gas := uint64(30 * types.ONE_TERA_GAS)
 
-		promiseBuilder.NewCrossContract(helloAccount).
-			Gas(gas).
-			Call("set_greeting", args).
-			Then("ExampleChangeGreetingCallback", map[string]string{})
-		return nil
-	})
+	args := map[string]string{
+		"message": "New Greeting",
+	}
+
+	promise.NewCrossContract(helloAccount).
+		Gas(gas).
+		Call("set_greeting", args).
+		Then("example_change_greeting_callback", map[string]string{})
 }
 
-//go:export ExampleChangeGreetingCallback
-func ExampleChangeGreetingCallback() {
-	contractBuilder.HandlePromiseResult(func(result *promiseBuilder.PromiseResult) error {
-		if result.Success {
-			env.LogString("State change completed successfully")
-		} else {
-			env.LogString("State change failed")
-		}
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleChangeGreetingCallback(result promise.PromiseResult) {
+	if result.Success {
+		env.LogString("State change completed successfully")
+	} else {
+		env.LogString("State change failed")
+	}
 
-		env.LogString("Promise result status: " + types.IntToString(int(result.StatusCode)))
-		if len(result.Data) > 0 {
-			env.LogString("Returned data: " + string(result.Data))
-		} else {
-			env.LogString("No return data from state change")
-		}
-		return nil
-	})
+	env.LogString("Promise result status: " + types.IntToString(int(result.StatusCode)))
+	if len(result.Data) > 0 {
+		env.LogString("Returned data: " + string(result.Data))
+	} else {
+		env.LogString("No return data from state change")
+	}
 }
-
 ```
 </Language>
 
@@ -431,47 +424,49 @@ You can attach an unused GAS weight by specifying the `.with_unused_gas_weight()
 package main
 
 import (
-	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
 	"github.com/vlmoon99/near-sdk-go/env"
-	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/promise"
 	"github.com/vlmoon99/near-sdk-go/types"
 )
 
-//go:export ExampleCrossContractCall
-func ExampleCrossContractCall() {
-	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
-		externalAccount := "hello-nearverse.testnet"
-		gas := uint64(5 * types.ONE_TERA_GAS)
+// @contract:state
+type Contract struct{}
 
-		args := map[string]string{
-			"message": "New Greeting",
-		}
-
-		promiseBuilder.NewCrossContract(externalAccount).
-			Gas(gas).
-			Call("set_greeting", args).
-			Then("ExampleCrossContractCallback", map[string]string{
-				"context_data": "saved_for_callback",
-			}).
-			Value()
-		return nil
-	})
+type PromiseCallbackInputData struct {
+	Data string `json:"data"`
 }
 
-//go:export ExampleCrossContractCallback
-func ExampleCrossContractCallback() {
-	contractBuilder.HandlePromiseResult(func(result *promiseBuilder.PromiseResult) error {
-		env.LogString("Executing callback")
+// @contract:payable min_deposit=0.00001NEAR
+func (c *Contract) ExampleCrossContractCall() {
+	externalAccount := "hello-nearverse.testnet"
+	gas := uint64(5 * types.ONE_TERA_GAS)
 
-		if result.Success {
-			env.LogString("Cross-contract call executed successfully")
-		} else {
-			env.LogString("Cross-contract call failed")
-		}
-		return nil
-	})
+	args := map[string]string{
+		"message": "New Greeting",
+	}
+	callback_args := map[string]string{
+		"data": "saved_for_callback",
+	}
+	promise.NewCrossContract(externalAccount).
+		Gas(gas).
+		Call("set_greeting", args).
+		Then("example_cross_contract_callback", callback_args).
+		Value()
 }
 
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleCrossContractCallback(input PromiseCallbackInputData, result promise.PromiseResult) {
+	env.LogString("Executing callback")
+
+	env.LogString("Input CrossContractCallback : " + input.Data)
+
+	if result.Success {
+		env.LogString("Cross-contract call executed successfully")
+	} else {
+		env.LogString("Cross-contract call failed")
+	}
+}
 ```
 </TabItem>
 
@@ -551,18 +546,23 @@ class CrossContractExample(Contract):
 
 <Language value="go" language="go">
 ```go
-//go:export ExampleCrossContractCallback
-func ExampleCrossContractCallback() {
-	contractBuilder.HandlePromiseResult(func(result *promiseBuilder.PromiseResult) error {
-		env.LogString("Executing callback")
 
-		if result.Success {
-			env.LogString("Cross-contract call executed successfully")
-		} else {
-			env.LogString("Cross-contract call failed")
-		}
-		return nil
-	})
+type PromiseCallbackInputData struct {
+	Data string `json:"data"`
+}
+
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleCrossContractCallback(input PromiseCallbackInputData, result promise.PromiseResult) {
+	env.LogString("Executing callback")
+
+	env.LogString("Input CrossContractCallback : " + input.Data)
+
+	if result.Success {
+		env.LogString("Cross-contract call executed successfully")
+	} else {
+		env.LogString("Cross-contract call failed")
+	}
 }
 ```
 </Language>
@@ -695,49 +695,53 @@ package main
 import (
 	"strconv"
 
-	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
 	"github.com/vlmoon99/near-sdk-go/env"
-	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/promise"
 	"github.com/vlmoon99/near-sdk-go/types"
 )
 
-//go:export ExampleBatchCallsSameContract
-func ExampleBatchCallsSameContract() {
-	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
-		helloAccount := "hello-nearverse.testnet"
-		gas := uint64(10 * types.ONE_TERA_GAS)
-		amount, _ := types.U128FromString("0")
-		promiseBuilder.NewCrossContract(helloAccount).
-			Batch().
-			Gas(gas).
-			FunctionCall("set_greeting", map[string]string{
-				"message": "Greeting One",
-			}, amount, gas).
-			FunctionCall("another_method", map[string]string{
-				"arg1": "val1",
-			}, amount, gas).
-			Then(helloAccount).
-			FunctionCall("ExampleBatchCallsCallback", map[string]string{
-				"original_data": "[Greeting One, Greeting Two]",
-			}, amount, gas)
+// @contract:state
+type Contract struct{}
 
-		env.LogString("Batch call created successfully")
-		return nil
-	})
+type PromiseCallbackInputData struct {
+	Data string `json:"data"`
 }
 
-//go:export ExampleBatchCallsCallback
-func ExampleBatchCallsCallback() {
-	contractBuilder.HandlePromiseResult(func(result *promiseBuilder.PromiseResult) error {
-		env.LogString("Processing batch call results")
-		env.LogString("Batch call success: " + strconv.FormatBool(result.Success))
-		if len(result.Data) > 0 {
-			env.LogString("Batch call data: " + string(result.Data))
-		}
-		return nil
-	})
+// @contract:payable min_deposit=0.00001NEAR
+func (c *Contract) ExampleBatchCallsSameContract() {
+	helloAccount := "hello-nearverse.testnet"
+	gas := uint64(10 * types.ONE_TERA_GAS)
+	amount, _ := types.U128FromString("0")
+	callback_args := map[string]string{
+		"data": "[Greeting One, Greeting Two]",
+	}
+
+	promise.NewCrossContract(helloAccount).
+		Batch().
+		Gas(gas).
+		FunctionCall("set_greeting", map[string]string{
+			"message": "Greeting One",
+		}, amount, gas).
+		FunctionCall("another_method", map[string]string{
+			"arg1": "val1",
+		}, amount, gas).
+		Then(helloAccount).
+		FunctionCall("example_batch_calls_callback", callback_args, amount, gas)
+
+	env.LogString("Batch call created successfully")
 }
 
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleBatchCallsCallback(input PromiseCallbackInputData, result promise.PromiseResult) {
+	env.LogString("Processing batch call results")
+	env.LogString("Input CrossContractCallback : " + input.Data)
+
+	env.LogString("Batch call success: " + strconv.FormatBool(result.Success))
+	if len(result.Data) > 0 {
+		env.LogString("Batch call data: " + string(result.Data))
+	}
+}
 ```
 </TabItem>
 
@@ -834,53 +838,51 @@ package main
 import (
 	"strconv"
 
-	contractBuilder "github.com/vlmoon99/near-sdk-go/contract"
 	"github.com/vlmoon99/near-sdk-go/env"
-	promiseBuilder "github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/promise"
 	"github.com/vlmoon99/near-sdk-go/types"
 )
 
-//go:export ExampleParallelCallsDifferentContracts
-func ExampleParallelCallsDifferentContracts() {
-	contractBuilder.HandleClientJSONInput(func(input *contractBuilder.ContractInput) error {
-		contractA := "hello-nearverse.testnet"
-		contractB := "statusmessage.neargocli.testnet"
+// @contract:state
+type Contract struct{}
 
-		promiseA := promiseBuilder.NewCrossContract(contractA).
-			Call("get_greeting", map[string]string{})
-
-		promiseB := promiseBuilder.NewCrossContract(contractB).
-			Call("SetStatus", map[string]string{"message": "Hello, World!"})
-
-		// Join the promises and assign a callback
-		promiseA.Join([]*promiseBuilder.Promise{promiseB}, "ExampleParallelContractsCallback", map[string]string{
-			"contract_ids": contractA + "," + contractB,
-		}).Value()
-
-		env.LogString("Parallel contract calls initialized")
-		return nil
-	})
+type PromiseCallbackInputData struct {
+	Data string `json:"data"`
 }
 
-// Example 12: Handling Results from Parallel Calls
-//
-//go:export ExampleParallelContractsCallback
-func ExampleParallelContractsCallback() {
-	env.LogString("Processing results from multiple contracts")
+// @contract:payable min_deposit=0.00001NEAR
+func (c *Contract) ExampleParallelCallsDifferentContracts() {
+	contractA := "hello-nearverse.testnet"
+	contractB := "child.neargopromises1.testnet"
 
-	count := env.PromiseResultsCount()
-	for i := uint64(0); i < count; i++ {
-		contractBuilder.HandlePromiseResult(func(result *promiseBuilder.PromiseResult) error {
-			env.LogString("Processing result " + types.IntToString(int(i)))
-			env.LogString("Success: " + strconv.FormatBool(result.Success))
-			if len(result.Data) > 0 {
-				env.LogString("Data: " + string(result.Data))
-			}
-			return nil
-		})
+	promiseA := promise.NewCrossContract(contractA).
+		Call("get_greeting", map[string]string{})
+
+	promiseB := promise.NewCrossContract(contractB).
+		Call("SetStatus", map[string]string{"message": "Hello, World!"})
+
+	promiseA.Join([]*promise.Promise{promiseB}, "example_parallel_contracts_callback", map[string]string{
+		"data": contractA + "," + contractB,
+	}).Value()
+
+	env.LogString("Parallel contract calls initialized")
+}
+
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleParallelContractsCallback(input PromiseCallbackInputData, results []promise.PromiseResult) {
+	env.LogString("Processing results from multiple contracts")
+	env.LogString("Input CrossContractCallback : " + input.Data)
+
+	for i, result := range results {
+		env.LogString("Processing result " + types.IntToString(i))
+		env.LogString("Success: " + strconv.FormatBool(result.Success))
+		if len(result.Data) > 0 {
+			env.LogString("Data: " + string(result.Data))
+		}
 	}
 
-	env.LogString("Processed " + types.IntToString(int(count)) + " contract responses")
+	env.LogString("Processed " + types.IntToString(len(results)) + " contract responses")
 }
 ```
 </TabItem>
