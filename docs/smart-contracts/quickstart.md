@@ -21,7 +21,7 @@ Join us in creating a friendly auction contract, which allows users to place bid
 
   Want to jump right into the code without setting up a local dev environment?
   
-  Checkout [NEAR Playground](https://nearplay.app/) for an easy-to-use online IDE w/ pre-configured templates.
+  Check out [NEAR Playground](https://nearplay.app/) for an easy-to-use online IDE with pre-configured templates.
 
   ![NEAR Playground](@site/static/assets/docs/smart-contracts/NEAR-Playground.png)
 
@@ -120,20 +120,6 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releas
 
 </Tabs>
 
-<hr class="subsection" />
-
-### Testnet Account
-
-There is no need to have a `testnet` account to follow this tutorial.
-
-However, if you want to create one, you can do so through [a wallet](https://testnet.mynearwallet.com), and use it from the `near-cli` by invoking `near login`.
-
-:::info Testnet tokens
-
-Need some `testnet` tokens? Use the [faucet](../faucet.md) to top-up your account.
-
-:::
-
 ---
 
 ## Creating the Contract
@@ -217,83 +203,23 @@ For this tutorial we chose to name the project `auction`, but feel free to use a
 
 ---
 
-## Project Structure
-
-The scaffolding tools will generate a project with the following structure:
-
-<Tabs groupId="code-tabs">
-<TabItem value="rust" label="🦀 Rust">
-
-```bash
-auction
-├── src        # contract's code
-│   └── lib.rs
-├── tests      # sandbox testing
-│   └── test_basics.rs
-├── Cargo.toml # package manager
-├── Cargo.lock # package lock file
-├── README.md
-└── rust-toolchain.toml
-```
-
-</TabItem>
-
-  <TabItem value="js" label="🌐 JavaScript">
-
-```bash
-auction
-├── sandbox-test    # sandbox testing
-│   └── main.ava.js
-├── src             # contract's code
-│   └── contract.ts
-├── README.md
-├── package.json    # package manager
-└── tsconfig.json
-```
-
-</TabItem>
-
-<TabItem value="py" label="🐍 Python">
-
-:::note
-Python quickstart tutorial is coming soon!
-
-In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
-:::
-
-<!-- ```bash
-auction
-├── tests                # sandbox testing
-│   └── test_mod.py
-├── contract.py          # Main Python file
-├── pyproject.toml       # Project configuration
-├── README.md            # README
-├── .git                 # Git repository
-├── .gitignore           # Git ignore file
-└── .python-version      # Python version file
-``` -->
-
-</TabItem>
-
-</Tabs>
-
----
-
 ## The Contract
 
 The auction smart contract allows users to place bids, track the highest bidder and claim tokens at the end of the auction. 
+
+Do not worry about the code just yet — for now, it is enough to know that the most relevant function is `bid`, which allows users to place bids by attaching NEAR tokens:
 
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
     <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-            start="5" end="93" />
+            start="37" end="63" />
   </TabItem>
 
   <TabItem value="js" label="🌐 JavaScript">
     <Github fname="index.js" language="js"
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
-            start="9" end="72" />
+            start="23" end="43" />
   </TabItem>
 
   <TabItem value="py" label="🐍 Python">
@@ -309,25 +235,13 @@ The auction smart contract allows users to place bids, track the highest bidder 
   </TabItem>
 </Tabs>
 
-The most relevant functions of the contract are:
-1. `init`: to initialize the contract with auction parameters
-2. `bid`: to place a bid in the auction
-3. `claim`: to claim tokens after the auction ends
-4. `get_highest_bid`: to fetch the highest bid and bidder information
-
-Besides these functions, the contract also exposes some methods to know when the auction will finish, and to check if the auction is still active
-
-:::tip
-
-After finishing this tutorial, check our [contract's anatomy](./anatomy/anatomy.md) page to learn more about the contract's structure
-
-:::
+Besides `bid`, the contract exposes methods to initialize the auction (`init`), query the highest bidder (`get_highest_bid`), and claim tokens once the auction ends (`claim`).
 
 ---
 
 ## Test the Contract
 
-Building and testing the contract is as simple as running the `test` command. The contract will be compiled and the tests will be executed.
+Lets make sure the contract is working as expected by running its tests. Simply run the `test` command, the contract will then be compiled and deployed to a local sandbox for testing:
 
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
@@ -364,78 +278,26 @@ Building and testing the contract is as simple as running the `test` command. Th
   <!-- ```bash
   uv run pytest
   ```
-
-  :::tip
-
-  If you have multiple test files and want to run only one of them just pass the path to the file as an command line argument:
-
-  ```bash
-  uv run pytest tests/test_mod.py
-  ```
-
-  ::: -->
+  -->
 
   </TabItem>
 </Tabs>
 
-:::tip Sandbox Testing
-
-These commands will execute the build tools for each language to compile the contract, and then deploy it within a [Sandbox](./testing/integration-test.md) to test it
-
-Using a Sandbox allows you to see exactly how the contract will behave once deployed on NEAR, while giving you total control over the testing environment
-
-:::
-
----
-
-## Create a Testnet Account
-
-Now that you know the contract is passing the tests, let's create a `testnet` account in which to deploy the contract.
-
-```bash
-# Replace <contract-acc.testnet> with a name for your contract account
-near create-account <contract-acc.testnet> --useFaucet
-```
-
-<details>
-
-<summary> Got an Error on Windows? </summary>
-
-When working on `WSL` - or any other headless Linux environment - you might encounter issues when trying to create an account as the `cli` tries to save the keys into the system's keychain.
-
-In such cases, you can try the following command to create the account:
-
-```bash
-near account create-account sponsor-by-faucet-service <your-account-id.testnet> autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
-```
-
-</details>
-
-:::tip
-
-If you already have a `testnet` account and would like to use it instead, you can login into the `near-cli` with the command `near login`.
-
-:::
+Feel free to check the test files to see how they interact with the contract. In short, a local NEAR sandbox is created, the contract is deployed, and different methods are called to verify the expected behavior.
 
 ---
 
 ## Build & Deploy the Contract
 
-Now that we know that tests are passing and we have a `testnet` account created, we can proceed to deploy the contract. For that, we first need to compile the contract into WebAssembly:
+Now that we know the tests are passing, let us deploy the contract! First, we need to compile it into WebAssembly:
 
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
 
   ```bash
-  cargo near build
+  cargo near build non-reproducible-wasm
   ```
   
-  :::info
-
-  For this tutorial we will use the `non-reproducible-wasm` option when building the contract, but please know that you can create a reproducible build if you have `Docker` installed
-
-  :::
-
   </TabItem>
 
   <TabItem value="js" label="🌐 JavaScript">
@@ -481,9 +343,44 @@ Now that we know that tests are passing and we have a `testnet` account created,
   </TabItem>
 </Tabs>
 
+<hr class="subsection" />
+
+### Create an Account
+
+Let us now create a NEAR account where we will deploy the contract:
+
+```bash
+# Replace <contract-acc.testnet> with a name for your contract account
+near create-account <contract-acc.testnet> --useFaucet
+```
+
+:::tip Already have a testnet account?
+
+If you already have a `testnet` account and would like to use it instead, you can log in with the command `near login`.
+
+:::
+
+<details>
+
+<summary> Got an error on Windows? </summary>
+
+When working on `WSL` - or any other headless Linux environment - you might encounter issues when trying to create an account as the `cli` tries to save the keys into the system's keychain.
+
+In such cases, you can try the following command to create the account:
+
+```bash
+near account create-account sponsor-by-faucet-service <your-account-id.testnet> autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+```
+
+</details>
+
+<hr class="subsection" />
+
+### Deploy it!
+
 With the contract ready, we can now deploy it to the `testnet` account we created earlier:
 
-<Tabs groupId="cli-tabs">
+<Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
     ```bash
     near deploy <contract-acc.testnet> ./target/near/auction.wasm
@@ -497,29 +394,13 @@ With the contract ready, we can now deploy it to the `testnet` account we create
   </TabItem>
   
   <TabItem value="py" label="🐍 Python">
+
     :::note
     Python quickstart tutorial is coming soon!
 
     In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
     :::
 
-    <!-- <Tabs groupId="cli-tabs">
-      <TabItem value="short" label="Short">
-
-        ```bash
-        near deploy <contract-acc.testnet> ./greeting_contract.wasm
-        ```
-
-      </TabItem>
-
-      <TabItem value="full" label="Full">
-
-        ```bash
-        near contract deploy <contract-acc.testnet> use-file ./greeting_contract.wasm without-init-call network-config testnet sign-with-keychain send
-        ```
-
-      </TabItem>
-    </Tabs> -->
   </TabItem>
 </Tabs>
 
@@ -532,19 +413,18 @@ With the contract ready, we can now deploy it to the `testnet` account we create
 To interact with your deployed smart contract, you can call its functions through the command line.
 
 #### Initialize the Contract
-Let's start by initializing the contract with the auction parameters. The `init` method sets up the auction with an end time and the auctioneer's account ID. It can be called only by contract's account itself.
+Let us initialize the auction by setting when it ends and who receives the funds (the auctioneer):
 
 ```bash
+# Get a timestamp for 5 minutes from now (in nanoseconds)
 FIVE_MINUTES_FROM_NOW=$(( $(date +%s%N) + 5 * 60 * 1000000000 ))
+
+# Initialize the auction
 near call <contract-acc.testnet> init "{\"end_time\": \"$FIVE_MINUTES_FROM_NOW\", \"auctioneer\": \"influencer.testnet\"}" --useAccount <contract-acc.testnet>
 ```
 
-:::note
-
-In this case, we are calling the `init` function, passing as parameters that we want the auction to end 5 minutes from now, and that the auctioneer - i.e. the person that is doing the auction - is `influencer.testnet` (you can replace it with any valid `testnet` account)
-
-To make the call we are using the account `<contract-acc.testnet>`, so in this case, we are using the contract's account to initialize itself
-
+:::tip
+Feel free to replace `influencer.testnet` with any valid testnet account — this is where the winning bid will be sent
 :::
 
 <hr class="subsection" />
@@ -571,7 +451,7 @@ Note how in this case we are using the `<bidder-account.testnet>` account (remem
 
 #### Get Highest Bid
 
-The `get_highest_bid` function only reads from the contract's state, for which it does not require to create a transaction or sign anything
+The `get_highest_bid` function only reads from the contract state, so it does not require a transaction or signature:
 
 ```bash
 near view <contract-acc.testnet> get_highest_bid '{}'
@@ -617,7 +497,7 @@ After the auction ends, the highest bidder can be determined by simply calling t
 <div class="row" style={{marginTop: '2rem', marginBottom: '2rem'}}>
   <div class="col col--6">
     <Card title="Create a Frontend" >
-      Check the [action frontend tutorial](../tutorials/auction/2.1-frontend.md) to learn how to build a simple web app that interacts with the auction contract
+      Check the [auction frontend tutorial](../tutorials/auction/2.1-frontend.md) to learn how to build a simple web app that interacts with the auction contract
     </Card>
   </div>
   <div class="col col--6">
