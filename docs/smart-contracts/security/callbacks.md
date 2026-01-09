@@ -4,47 +4,107 @@ title: Cross-Contract Calls
 description: "Learn about callback security in NEAR smart contracts, including proper error handling, state management, and preventing callback-related vulnerabilities."
 ---
 
-In NEAR, smart contracts can call each other. This is a powerful feature that allows you to build complex applications by composing smaller contracts. However, it also introduces some security considerations that you need to be aware of.
+## Overview
 
-While writing cross-contract calls there is a significant aspect to keep in mind: all the calls are **independent** and **asynchronous**. In other words:
-
-- The method in which you make the call and method for the callback are **independent**.
-- Between the call and the callback, people could interact with the contract.
-
-This has important implications on how you should handle the callbacks. Particularly:
-
-1. Your callback method needs to be public, but you want to make sure only your contract can call it.
-2. Make sure you don't leave the contract in a exploitable state between the call and the callback.
-3. Manually rollback any changes to the state in the callback if the external call failed.
+NEAR Protocol smart contracts can call each other through cross-contract calls. This powerful feature enables building complex decentralized applications by composing smaller contracts together. However, cross-contract calls introduce critical security considerations that developers must understand and implement correctly.
 
 ---
 
-## Private Callbacks
-In order for your contract to call itself when a cross-contract call is done, you need to make the callback method public. However, most of the times you would want it to be private. You can make it private while keeping it public by asserting that the `predecessor` is `current_account`. In rust this is done automatically by adding the `#[private]` decorator.
+## Fundamental Principle: Asynchronous and Independent Calls
+
+All cross-contract calls in NEAR are **independent** and **asynchronous**. This means:
+
+- The method that initiates the cross-contract call and the callback method that handles the response are **completely independent** execution contexts
+- Between the initial call and the callback execution, **anyone can interact with your contract** - other users can call any public method
+- The contract state can change between the call and callback, creating potential race conditions.
+
+**Security Implications:**
+
+1. **Callback Access Control**: Callback methods must be public to receive responses, but should only be callable by your contract itself
+2. **State Management**: Never leave the contract in an exploitable or inconsistent state between the call and callback
+3. **Error Handling**: Manually rollback any state changes in the callback if the external cross-contract call failed.
 
 ---
 
-## User's Money
-When a method panics, the money attached to that transaction returns to the `predecessor`. This means that, if you make a cross-contract call and it fails, then the money **returns to your contract**. If the money came from a user calling your contract, then you should transfer it back during the callback.
+## Private Callbacks: Securing Callback Methods
 
-![img](https://miro.medium.com/max/1400/1*Hp4TOcaBqm9LS0wkgWw3nA.png)
-*If the user attached money, we need to manually return it in the callback*
+**Problem**: When a cross-contract call completes, your contract needs to receive the callback. This requires the callback method to be public, but you typically want it to be private to prevent unauthorized access.
 
-:::caution
-Make sure you pass have enough GAS in the callback to make the transfer
-:::
+**Solution**: Verify that the `predecessor` (the account that called the method) equals `current_account` (your contract's account). This ensures only your contract can invoke the callback.
+
+**Implementation in Rust**: Use the `#[private]` decorator macro, which automatically adds the predecessor check:
+
+```rust
+#[private]
+pub fn callback_method(&mut self) {
+    // Only your contract can call this
+}
+```
 
 ---
 
-## Async Callbacks
-Between a cross-contract call and its callback **any method of your contract can be executed**. Not taking this into account is one of the main sources of exploits. It is so common that it has its own name: reentrancy attacks.
+## Handling User Funds in Callbacks
 
-Imagine that we develop a `deposit_and_stake` with the following **wrong logic**: (1) The user sends us money, (2) we add it to its balance, (3) we try to stake it in a validator, (4) if the staking fails, we remove the balance in the callback. Then, a user could schedule a call to withdraw between (2) and (4), and, if the staking failed, we would send money twice to the user.
+**Critical Rule**: When a method panics or fails, any attached NEAR tokens automatically return to the `predecessor` (the account that initiated the transaction).
 
-![img](https://miro.medium.com/max/1400/1*VweWHQYGLBa70uceiWHLQA.png)
-*Between a cross-contract call and the callback anything could happen*
+**Scenario**: 
+1. User calls your contract and attaches 10 NEAR
+2. Your contract makes a cross-contract call to another contract
+3. The external call fails or panics
+4. The 10 NEAR returns to **your contract** (not the original user).
 
-Luckily for us the solution is rather simple. Instead of immediately adding the money to our user’s balance, we wait until the callback. There we check, and if the staking went well, then we add it to their balance.
+**Security Requirement**: If the money originally came from a user calling your contract, you **must manually transfer it back** to the user in the callback handler.
 
-![img](https://miro.medium.com/max/1400/1*o0YVDCp_7l-L3njJMGhU4w.png)
-*Correct way to handle deposits in a cross-contract call*
+**Example Flow**:
+- User sends 10 NEAR → Your contract receives it
+- Your contract calls external contract (fails)
+- 10 NEAR returns to your contract automatically
+- **You must transfer 10 NEAR back to user in callback**.
+
+**Critical Warning**: Always ensure your callback has enough GAS allocated to perform the refund transfer. If the callback runs out of gas before completing the refund, the user's funds may be stuck.
+
+---
+
+## Async Callbacks and Reentrancy Attacks
+
+**Critical Vulnerability**: Between a cross-contract call and its callback, **any public method of your contract can be executed** by anyone. This creates a window for reentrancy attacks, which are one of the most common and dangerous security vulnerabilities in smart contracts.
+
+<hr class="subsection" />
+
+### Reentrancy Attack Example: deposit_and_stake
+
+**Vulnerable Implementation (WRONG)**:
+1. User sends money to your contract
+2. Contract immediately adds money to user's balance
+3. Contract attempts to stake money in validator
+4. If staking fails, callback removes balance.
+
+**Attack Vector**: 
+- Attacker calls `deposit_and_stake` with 10 NEAR
+- Contract adds 10 NEAR to attacker's balance (step 2)
+- Contract makes cross-contract call to validator (step 3)
+- **Before callback executes**, attacker calls `withdraw` method
+- Attacker withdraws 10 NEAR
+- If staking fails, callback removes balance, but attacker already withdrew
+- **Result**: Attacker receives money twice, contract loses funds.
+
+**Secure Implementation (CORRECT)**:
+1. User sends money to your contract
+2. **Do NOT add to balance yet** - store in temporary state
+3. Contract attempts to stake money in validator
+4. In callback: **only if staking succeeded**, then add money to user's balance
+5. If staking failed, return money to user.
+
+**Key Principle**: Delay state changes until the callback confirms the external operation succeeded. Never update balances or critical state before the cross-contract call completes.
+
+---
+
+## Best Practices Summary
+
+1. **Use `#[private]` decorator** for all callback methods in Rust
+2. **Refund user funds** in callbacks if external calls fail
+3. **Allocate sufficient GAS** for callback operations, especially refunds
+4. **Delay state updates** until callback confirms success
+5. **Never update balances** before cross-contract call completion
+6. **Validate all inputs** in callback methods
+7. **Check external call results** before committing state changes.

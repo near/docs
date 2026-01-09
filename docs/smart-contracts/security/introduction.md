@@ -1,6 +1,6 @@
 ---
-id: welcome
-title: Security
+id: introduction
+title: Introduction
 description: "Learn about smart contract security best practices on NEAR, including common vulnerabilities, attack vectors, and how to build secure decentralized applications."
 ---
 
