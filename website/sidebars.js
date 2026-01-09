@@ -298,11 +298,8 @@ const sidebar = {
               {
                 type: 'category',
                 label: 'Security',
-                link: {
-                  type: 'doc',
-                  id: 'smart-contracts/security/welcome',
-                },
                 items: [
+                  'smart-contracts/security/introduction',
                   'smart-contracts/security/checklist',
                   'smart-contracts/security/storage',
                   'smart-contracts/security/callbacks',
