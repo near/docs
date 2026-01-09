@@ -748,7 +748,7 @@ const config = {
       apiKey: '41e2feb6ffa0d3450ca9d0a0c1826c1c',
       indexName: 'docs',
       askAi: {
-        assistantId: '0ufKvtmOKJ66',
+        assistantId: 'ck1jQv3AzZ5R',
         indexName: 'docs.md',
         apiKey: '41e2feb6ffa0d3450ca9d0a0c1826c1c',
         appId: '0LUM67N2P2',
@@ -759,22 +759,6 @@ const config = {
       searchParameters: {
         clickAnalytics: true,
         analytics: true,
-        enableReRanking: true,
-        attributesToRetrieve: [
-          'hierarchy.lvl0',
-          'hierarchy.lvl1',
-          'hierarchy.lvl2',
-          'hierarchy.lvl3',
-          'hierarchy.lvl4',
-          'hierarchy.lvl5',
-          'hierarchy.lvl6',
-          'type',
-          'url',
-          'title',
-          'description',
-          'headers',
-          'headersLevels',
-        ],
       },
       //... other Algolia params
       placeholder: 'Search the Docs...',
