@@ -207,7 +207,7 @@ It is best practice to check the validity of the response within the function wh
 
 :::info
 
-Check more docs on [callback security](../security/callbacks.md#async-callbacks) and [reentrancy attacks](../security/reentrancy.md) to avoid common pitfalls when dealing with asynchronous calls
+Check more docs on [callback security](../security/callbacks.md) and [reentrancy attacks](../security/reentrancy.md) to avoid common pitfalls when dealing with asynchronous calls.
 
 :::
 

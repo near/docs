@@ -8,7 +8,7 @@ In NEAR Protocol, verifying that a transaction actually comes from the user (not
 
 ## NEAR Access Key System
 
-NEAR uses [an access key system]((../../protocol/access-keys.md)) to simplify account management. There are two main types of keys:
+NEAR uses [an access key system](../../protocol/access-keys.md) to simplify account management. There are two main types of keys:
 
 ### 1. Full Access Keys
 - **Full control** over an account
