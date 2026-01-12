@@ -223,23 +223,6 @@ h2 {
   font-size: var(--h2-font-size);
 }
 
-/* Add an indicator after external links that'll open in a new window. */
-a[target="_blank"]::after {
-  content: "↗";
-  display: inline-block;
-  height: 0.5em;
-  padding-inline: 0.2em;
-  vertical-align: text-top;
-}
-
-a.menu__link[target="_blank"]::after {
-  display: inherit;
-}
-
-a.cover-card[target="_blank"]::after {
-  display: none;
-}
-
 .auto-col {
 
   padding: 0 var(--ifm-spacing-horizontal);
