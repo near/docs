@@ -12,7 +12,6 @@ const Card = ({
   variant = 'default', // 'default', 'icon', 'image'
   color = 'default', // 'default', 'mint', 'purple', 'orange'
   className = '',
-  links,
   ...props 
 }) => {
   // Determine if card should be clickable
