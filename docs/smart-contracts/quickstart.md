@@ -5,22 +5,27 @@ sidebar_label: Quickstart
 description: "Create your first contract using your favorite language."
 ---
 
-import {Github} from '@site/src/components/UI/Codetabs';
+import {Github, Language} from '@site/src/components/UI/Codetabs';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Card from '@site/src/components/UI/Card';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
 Welcome! [NEAR accounts](../protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
 
-Join us in creating a friendly contract that stores a greeting, and exposes functions to interact with it.
+Join us in creating a friendly auction contract, which allows users to place bids, track the highest bidder and claim tokens at the end of the auction.
 
-:::tip
+<details>
+
+  <summary> Prefer an online IDE? </summary>
+
   Want to jump right into the code without setting up a local dev environment?
   
-  Checkout [NEAR Playground](https://nearplay.app/) for an easy-to-use online IDE w/ pre-configured templates.
+  Check out [NEAR Playground](https://nearplay.app/) for an easy-to-use online IDE with pre-configured templates.
 
   ![NEAR Playground](@site/static/assets/docs/smart-contracts/NEAR-Playground.png)
-:::
+
+</details>
 
 ---
 
@@ -36,22 +41,6 @@ Before starting, make sure to set up your development environment.
 </details>
 
 <Tabs groupId="code-tabs" queryString>
-  <TabItem value="js" label="🌐 JavaScript">
-
-```bash
-# Install Node.js using nvm (more options in: https://nodejs.org/en/download)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-nvm install latest
-
-# ⚠️ For Mac Silicon users only, Rosetta is needed to compile contracts
-# /usr/sbin/softwareupdate --install-rosetta --agree-to-license
-
-# Install NEAR CLI to deploy and interact with the contract
-npm install -g near-cli-rs@latest
-```
-
-</TabItem>
-
 <TabItem value="rust" label="🦀 Rust">
 
 ```bash
@@ -70,9 +59,31 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/release
 
 </TabItem>
 
-<TabItem value="py" label="🐍 Python">
+  <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
+# Install Node.js using nvm (more options in: https://nodejs.org/en/download)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install latest
+
+# ⚠️ For Mac Silicon users only, Rosetta is needed to compile contracts
+# /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+
+# Install NEAR CLI to deploy and interact with the contract
+npm install -g near-cli-rs@latest
+```
+
+</TabItem>
+
+<TabItem value="py" label="🐍 Python">
+
+:::note
+Python quickstart tutorial is coming soon!
+
+In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
+:::
+
+<!-- ```bash
 # Install Python (if not already installed)
 # Use your system's package manager or download from https://www.python.org/downloads/
 
@@ -103,7 +114,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install NEAR CLI-RS to deploy and interact with the contract
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
-```
+``` -->
 
 </TabItem>
 <TabItem value="go" label="🐹 GO">
@@ -131,24 +142,6 @@ curl -LO https://github.com/vlmoon99/near-cli-go/releases/latest/download/instal
 
 </Tabs>
 
-:::note
-Some `near-cli` commands have two versions - a **full** one and a **short** one. If you want to explore all options provided by `near-cli` use [the interactive mode](../tools/cli.md#interactive-mode).
-:::
-
-:::tip Testnet Account
-
-There is no need to have a `testnet` account to follow this tutorial.
-
-However, if you want to create one, you can do so through [a wallet](https://testnet.mynearwallet.com), and use it from the `near-cli` by invoking `near login`.
-
-:::
-
-:::info Testnet tokens
-
-Need some `testnet` tokens? Use the [faucet](../faucet.md) to top-up your account.
-
-:::
-
 ---
 
 ## Creating the Contract
@@ -156,72 +149,30 @@ Need some `testnet` tokens? Use the [faucet](../faucet.md) to top-up your accoun
 Create a smart contract by using one of the scaffolding tools and following their instructions:
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-
-
-```bash
-  npx create-near-app@latest
-```
-
-![img](@site/static/assets/docs/smart-contracts/hello-near-ts.gif)
-_Creating a project using `create-near-app`_
-
-This will generate a project with the following structure:
-
-```bash
-hello-near
-├── sandbox-test    # sandbox testing
-│   └── main.ava.js
-├── src             # contract's code
-│   └── contract.ts
-├── README.md
-├── package.json    # package manager
-└── tsconfig.json
-```
-
-:::tip
-
-We recommend you to name your project `hello-near` for this tutorial, but feel free to use any name you prefer
-
-:::
-
-</TabItem>
-
 <TabItem value="rust" label="🦀 Rust">
 
 ```bash
-  cargo near
+cargo near
 ```
 
 ![img](@site/static/assets/docs/smart-contracts/hello-near-rs.gif)
 _Creating a project using `cargo near new`_
 
-This will generate a project with the following structure:
+</TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+
 
 ```bash
-hello-near
-├── src        # contract's code
-│   └── lib.rs
-├── tests      # sandbox testing
-│   └── test_basics.rs
-├── Cargo.toml # package manager
-├── README.md
-└── rust-toolchain.toml
+npx create-near-app@latest
 ```
 
-:::tip
+![img](@site/static/assets/docs/smart-contracts/hello-near-ts.gif)
+_Creating a project using `npx create-near-app@latest`_
 
-You can skip the interactive menu and create a new project with specific name running the following command:
+:::important
 
-```bash
-  cargo near new hello-near
-```
-
-:::
-
-:::tip
-
-`hello-near` is the name we chose for this project so the tutorial is simpler to follow, but for future projects feel free to use any name you prefer
+When prompted to choose a template, select the basic `Auction` template to scaffold the auction contract
 
 :::
 
@@ -229,7 +180,13 @@ You can skip the interactive menu and create a new project with specific name ru
 
 <TabItem value="py" label="🐍 Python">
 
-```bash
+:::note
+Python quickstart tutorial is coming soon!
+
+In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
+:::
+
+<!-- ```bash
   npx create-near-app@latest
 ```
 
@@ -239,7 +196,7 @@ _Creating a project using `create-near-app`_
 This will generate a project with the following structure:
 
 ```bash
-hello-near
+auction
 ├── tests                # sandbox testing
 │   └── test_mod.py
 ├── contract.py          # Main Python file
@@ -250,98 +207,73 @@ hello-near
 └── .python-version      # Python version file
 ```
 
-:::tip
-
-`hello-near` is the name we chose for this project so the tutorial is simpler to follow, but for future projects feel free to use any name you prefer
-
-:::
-
 :::important
 
 Ensure you have [Emscripten](https://emscripten.org/) properly installed and available in your `PATH`. The compilation process requires it to convert Python code to WebAssembly.
 
-:::
-
-</TabItem>
-<TabItem value="go" label="🐹 GO">
-
-Create a new project using `near-go create`:
-
-```bash
-near-go create -p "hello-world" -m "github.com/near/hello-world" -t "smart-contract-empty"
-cd hello-world/contract
-```
-
-This creates a Go project with the following structure:
-
-```bash
-hello-world/contract
-├── go.mod
-├── go.sum
-└── main.go
-```
+::: -->
 
 </TabItem>
 
 </Tabs>
 
+:::tip
+
+For this tutorial we chose to name the project `auction`, but feel free to use any name you prefer
+
+:::
 
 ---
 
 ## The Contract
 
-The `Hello World` smart contract stores a greeting in its state, and exposes two functions to interact with it:
-1. `set_greeting`: to change the greeting
-2. `get_greeting`: to fetch the greeting
+The auction smart contract allows users to place bids, track the highest bidder and claim tokens at the end of the auction. 
+
+Do not worry about the code just yet — for now, it is enough to know that the most relevant function is `bid`, which allows users to place bids by attaching NEAR tokens:
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-
-    <Github fname="index.js" language="js"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-            start="4" end="22" />
-
+  <TabItem value="rust" label="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+            start="37" end="63" />
   </TabItem>
 
-  <TabItem value="rust" label="🦀 Rust">
-
-    <Github fname="lib.rs" language="rust"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-            start="4" end="32" />
-
+  <TabItem value="js" label="🌐 JavaScript">
+    <Github fname="index.js" language="js"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+            start="23" end="43" />
   </TabItem>
 
   <TabItem value="py" label="🐍 Python">
+    :::note
+    Python quickstart tutorial is coming soon!
 
-    <Github fname="contract.py" language="python"
+    In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
+    :::
+
+    <!-- <Github fname="contract.py" language="python"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/contract.py"
-            start="3" end="30" />
-
-  </TabItem>
-    <TabItem value="go" label="🐹 GO">
-
-  Edit a `main.go` file for your contract:
-
-    <Github fname="main.go" language="go"
-            url="https://github.com/vlmoon99/near-sdk-go/blob/main/examples/greeting/contract/main.go"
-            start="1" end="77" />
-
+            start="3" end="30" /> -->
   </TabItem>
 </Tabs>
 
-:::tip
-
-After finishing this tutorial, check our [contract's anatomy](./anatomy/anatomy.md) page to learn more about the contract's structure
-
-:::
+Besides `bid`, the contract exposes methods to initialize the auction (`init`), query the highest bidder (`get_highest_bid`), and claim tokens once the auction ends (`claim`).
 
 ---
 
 ## Test the Contract
 
-Building and testing the contract is as simple as running the `test` command. The contract will be compiled and the tests will be executed.
+Lets make sure the contract is working as expected by running its tests. Simply run the `test` command, the contract will then be compiled and deployed to a local sandbox for testing:
 
 <Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
+
+  ```bash
+  cargo test
+  ```
+
+  </TabItem>
+
   <TabItem value="js" label="🌐 JavaScript">
 
     ```bash
@@ -351,142 +283,45 @@ Building and testing the contract is as simple as running the `test` command. Th
     <details>
     <summary> Failing tests? </summary>
 
-    Make sure that you are using `node v18`, `v20` or `v22` - you can manage multiple versions using `nvm` - and that you have `Rosetta` installed on MacOS if you have an Apple Silicon processor.
+    Make sure that you are using `node v24 / 22 / 20`, and that you have installed `Rosetta` if you have a Mac with Apple Silicon
 
     </details>
-
-  </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
-
-  ```bash
-  cargo test
-  ```
 
   </TabItem>
   
   <TabItem value="py" label="🐍 Python">
 
-  ```bash
-  uv run pytest
-  ```
+  :::note
+  Python quickstart tutorial is coming soon!
 
-  :::tip
-
-  If you have multiple test files and want to run only one of them just pass the path to the file as an command line argument:
-
-  ```bash
-  uv run pytest tests/test_mod.py
-  ```
-
+  In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
   :::
 
-  </TabItem>
-
-  <TabItem value="go" label="🐹 GO">
-
-  Create a test file for your contract (make sure you are inside the hello-world/contract directory) :
-
-  ```bash
-  # Create a tests directory
-  touch main_test.go
+  <!-- ```bash
+  uv run pytest
   ```
-
-  Add the following content to `main_test.go`:
-
-  <Github fname="contract.py" language="python"
-        url="https://github.com/vlmoon99/near-sdk-go/blob/main/examples/greeting/contract/main_test.go"
-        start="1" end="51" />
-
-  Run the test (make sure you are inside the hello-world/contract directory):
-
-  ```bash
-  # Test package level
-  near-go test package
-
-  # Test project level
-  near-go test project
-  ```
+  -->
 
   </TabItem>
-
 </Tabs>
 
-In the background, these commands are calling the build tools for each language and using a [Sandbox](./testing/integration-test.md) to test the contract.
-
-:::tip Sandbox
-
-Testing the contracts within a Sandbox allows you to understand how the contract will behave once deployed to the network while having total control over the testing environment.
-
-:::
+Feel free to check the test files to see how they interact with the contract. In short, a local NEAR sandbox is created, the contract is deployed, and different methods are called to verify the expected behavior.
 
 ---
 
-## Create a Testnet Account
+## Build & Deploy the Contract
 
-Now that you know the contract is passing the tests, let's create a `testnet` account in which to deploy the contract. [`near-cli`](../tools/cli.md) supports two versions of some commands - full and short one. It's up to you which format you prefer, but full version provides more features.
+Now that we know the tests are passing, let us deploy the contract! First, we need to compile it into WebAssembly:
 
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Short">
+<Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
 
-    ```bash
-    # Replace <your-account-id.testnet> with a custom name
-    near create-account <your-account-id.testnet> --useFaucet
-    ```
-
-    <details>
-    <summary> Example Result </summary>
-
-    ```bash
-    $> near create-account lovely-event.testnet --useFaucet
-    # New account "lovely-event.testnet" created successfully
-    ```
-
-    </details>
+  ```bash
+  cargo near build non-reproducible-wasm
+  ```
+  
   </TabItem>
 
-  <TabItem value="full" label="Full">
-
-    ```bash
-    # Replace <your-account-id.testnet> with a custom name
-    near account create-account sponsor-by-faucet-service <your-account-id.testnet> autogenerate-new-keypair save-to-keychain network-config testnet create
-    ````
-
-    <details>
-    <summary> Example Result </summary>
-
-    ```bash
-    $> near account create-account sponsor-by-faucet-service lovely-event.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
-
-    # New account "lovely-event.testnet" created successfully
-    ```
-
-    </details>
-
-  </TabItem>
-
-</Tabs>
-
-
-:::tip
-
-Remember that you can create a named account through any wallet (i.e. [MyNearWallet](https://testnet.mynearwallet.com)) and then use it from the `near-cli` by invoking `near login`.
-
-:::
-
-:::warning
-
-When running the near account create-account command in a headless Linux environment (e.g., WSL), the `save-to-keychain` option may fail due to platform limitations. Use `save-to-legacy-keychain` instead of `save-to-keychain` to ensure compatibility.
-
-:::
-
-
----
-
-## Build the Contract
-
-When you are ready to create a build of the contract run a one-line command depending on your environment.
-
-<Tabs groupId="cli-tabs">
   <TabItem value="js" label="🌐 JavaScript">
 
   ```bash
@@ -494,25 +329,16 @@ When you are ready to create a build of the contract run a one-line command depe
   ```
 
   </TabItem>
-
-  <TabItem value="rust" label="🦀 Rust">
-
-  ```bash
-  cargo near build
-  ```
-
-  
-  :::info
-
-  For this tutorial we will use the `non-reproducible-wasm` option when building the contract, but please know that you can create a reproducible build if you have `Docker` installed
-
-  :::
-
-  </TabItem>
   
   <TabItem value="py" label="🐍 Python">
 
-  ```bash
+  :::note
+  Python quickstart tutorial is coming soon!
+
+  In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
+  :::
+
+  <!-- ```bash
   # Build with nearc through the uv executor (no installation needed)
   uvx nearc contract.py
   ```
@@ -534,7 +360,7 @@ When you are ready to create a build of the contract run a one-line command depe
   - `error: invalid version of emscripten` - Your Emscripten version might be too old. Try updating with `./emsdk install latest && ./emsdk activate latest`.
   - `Could not find platform micropython-dev-wasm32` - This typically means the Emscripten installation is incomplete or not properly activated.
   
-  :::
+  ::: -->
 
   </TabItem>
 
@@ -565,96 +391,68 @@ When you are ready to create a build of the contract run a one-line command depe
 
   </Tabs>
 
----
+<hr class="subsection" />
 
-## Deploy the Contract
+### Create an Account
 
-Having our account created, we can now deploy the contract:
+Let us now create a NEAR account where we will deploy the contract:
 
-<Tabs groupId="cli-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-    <Tabs groupId="cli-tabs">
-      <TabItem value="short" label="Short">
+```bash
+# Replace <contract-acc.testnet> with a name for your contract account
+near create-account <contract-acc.testnet> --useFaucet
+```
 
-        ```bash
-        near deploy <created-account> ./build/hello_near.wasm
-        ```
+:::tip Already have a testnet account?
 
-      </TabItem>
-      <TabItem value="full" label="Full">
+If you already have a `testnet` account and would like to use it instead, you can log in with the command `near login`.
 
-        ```bash
-        near contract deploy <created-account> use-file ./build/hello_near.wasm without-init-call network-config testnet sign-with-keychain send
-        ```
+:::
 
-      </TabItem>
-    </Tabs>
-  </TabItem>
+<details>
+
+<summary> Got an error on Windows? </summary>
+
+When working on `WSL` - or any other headless Linux environment - you might encounter issues when trying to create an account as the `cli` tries to save the keys into the system's keychain.
+
+In such cases, you can try the following command to create the account:
+
+```bash
+near account create-account sponsor-by-faucet-service <your-account-id.testnet> autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+```
+
+</details>
+
+<hr class="subsection" />
+
+### Deploy it!
+
+With the contract ready, we can now deploy it to the `testnet` account we created earlier:
+
+<Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
+    ```bash
+    near deploy <contract-acc.testnet> ./target/near/auction.wasm
+    ```
+  </TabItem>
 
-    <Tabs groupId="cli-tabs">
-      <TabItem value="short" label="Short">
-
-        ```bash
-        near deploy <created-account> ./target/near/hello_near.wasm
-        ```
-
-      </TabItem>
-
-      <TabItem value="full" label="Full">
-
-        ```bash
-        near contract deploy <created-account> use-file ./target/near/hello_near.wasm without-init-call network-config testnet sign-with-keychain send
-        ```
-
-      </TabItem>
-    </Tabs>
+  <TabItem value="js" label="🌐 JavaScript">
+    ```bash
+    near deploy <contract-acc.testnet> ./build/auction.wasm
+    ```
   </TabItem>
   
   <TabItem value="py" label="🐍 Python">
-    <Tabs groupId="cli-tabs">
-      <TabItem value="short" label="Short">
 
-        ```bash
-        near deploy <created-account> ./greeting_contract.wasm
-        ```
+    :::note
+    Python quickstart tutorial is coming soon!
 
-      </TabItem>
+    In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
+    :::
 
-      <TabItem value="full" label="Full">
-
-        ```bash
-        near contract deploy <created-account> use-file ./greeting_contract.wasm without-init-call network-config testnet sign-with-keychain send
-        ```
-
-      </TabItem>
-    </Tabs>
   </TabItem>
-    <TabItem value="go" label="🐹 GO">
-    <Tabs groupId="cli-tabs">
-      <TabItem value="near-go-cli" label="Near-Go-Cli">
-        ```bash
-        #Run (make sure you are inside the hello-world/contract directory)
-      
-        near-go build && near-go deploy -id "<created-account>" -n "testnet"
-        ```
-      </TabItem>
-      <TabItem value="short" label="Short">
-        ```bash
-        near deploy <created-account> ./main.wasm
-        ```
-      </TabItem>
-      <TabItem value="full" label="Full">
-        ```bash
-        near contract deploy <created-account> use-file ./main.wasm without-init-call network-config testnet sign-with-keychain send
-        ```
-      </TabItem>
-    </Tabs>
-  </TabItem>
-
 </Tabs>
 
-**Congrats**! Your contract now lives in the NEAR testnet network.
+**Congrats!** Your contract now lives in the NEAR testnet network.
 
 ---
 
@@ -662,83 +460,125 @@ Having our account created, we can now deploy the contract:
 
 To interact with your deployed smart contract, you can call its functions through the command line.
 
-<hr class="subsection" />
+#### Initialize the Contract
+Let us initialize the auction by setting when it ends and who receives the funds (the auctioneer):
 
-#### Get Greeting
-Let's start by fetching the greeting stored in the contract. The `get_greeting` function only reads from the contract's state, and can thus be called for **free**.
+```bash
+# Get a timestamp for 5 minutes from now (in nanoseconds)
+FIVE_MINUTES_FROM_NOW=$(( $(date +%s%N) + 5 * 60 * 1000000000 ))
 
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Short">
-
-    ```bash
-    > near view <created-account> get_greeting
-    # "Hello, NEAR world!"
-    ```
-  </TabItem>
-
-  <TabItem value="full" label="Full">
-
-    ```bash
-    > near contract call-function as-read-only <created-account> get_greeting json-args {} network-config testnet now
-    # "Hello, NEAR world!"
-    ```
-  </TabItem>
-</Tabs>
-
-<hr class="subsection" />
-
-#### Set Greeting
-
-We can now change the greeting stored in the contract. The `set_greeting` method writes on the contract's [storage](./anatomy/storage.md), and thus requires a user to sign a transaction in order to be executed.
-
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Short">
-
-  ```bash
-  > near call <created-account> set_greeting '{"greeting": "Hola"}' --accountId <created-account>
-  # {"success": true}
-  ```
-  </TabItem>
-
-  <TabItem value="full" label="Full">
-
-    ```bash
-    > near contract call-function as-transaction <created-account> set_greeting json-args '{"greeting": "Hola"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <created-account> network-config testnet sign-with-keychain send
-    # {"success": true}
-    ```
-  </TabItem>
-</Tabs>
+# Initialize the auction
+near call <contract-acc.testnet> init "{\"end_time\": \"$FIVE_MINUTES_FROM_NOW\", \"auctioneer\": \"influencer.testnet\"}" --useAccount <contract-acc.testnet>
+```
 
 :::tip
+Feel free to replace `influencer.testnet` with any valid testnet account — this is where the winning bid will be sent
+:::
 
-Notice that we are signing the transaction using `<created-account>`, so in this case, we are asking the contract's account to call its own function
+<hr class="subsection" />
+
+#### Place a Bid
+
+We can now place a bid in the auction by calling the `bid` method while attaching some NEAR deposit. On each bid, the highest bid and bidder information will be recorded in the contract's [storage](./anatomy/storage.md).
+
+```bash
+# Create a new account to place the bid
+near create-account <bidder-account.testnet> --useFaucet
+
+# Place a bid of 0.01 NEAR
+near call <contract-acc.testnet> bid '{}' --deposit 0.01  --useAccount <bidder-account.testnet>
+```
+
+:::note
+
+Note how in this case we are using the `<bidder-account.testnet>` account (remember to rename it!) to call the `bid` function, while attaching a deposit of `0.01` NEAR as our bid
 
 :::
 
+<hr class="subsection" />
+
+#### Get Highest Bid
+
+The `get_highest_bid` function only reads from the contract state, so it does not require a transaction or signature:
+
+```bash
+near view <contract-acc.testnet> get_highest_bid '{}'
+```
+
+<details>
+  <summary> Expected Output </summary>
+
+  ```json
+  {
+    "bidder": "<bidder-account.testnet>",
+    "amount": "10000000000000000000000"
+  }
+  ```
+</details>
+
+:::tip
+
+Feel free to create as many bidder accounts as you want and place more bids to see how the highest bid changes!
+
+:::
+
+<hr class="subsection" />
+
+#### Claim
+
+After the auction ends, anyone can call the `claim` method, which will transfer the `highest bid` amount to the auctioneer and end the auction.
+
+```bash
+near call <contract-acc.testnet> claim '{}' --useAccount <contract-acc.testnet>
+```
+
+:::info Who won?
+
+After the auction ends, the highest bidder can be determined by simply calling the `get_highest_bid` method again
+
+:::
 
 ---
 
 ## Moving Forward
 
-That's it for the quickstart tutorial. You have now seen a fully functional contract with a minimal user interface and testing.
-
-To better understand the contract's structure, check our [contract's anatomy](./anatomy/anatomy.md) page.
-
-If you prefer to see more examples, check our [examples](/tutorials/examples/count-near) page.
+<div class="row" style={{marginTop: '2rem', marginBottom: '2rem'}}>
+  <div class="col col--6">
+    <Card title="Create a Frontend" >
+      Check the [auction frontend tutorial](../tutorials/auction/2.1-frontend.md) to learn how to build a simple web app that interacts with the auction contract
+    </Card>
+  </div>
+  <div class="col col--6">
+    <Card title="Extend the Contract" >
+      Follow the [auction NFT tutorial](../tutorials/auction/3.1-nft.md) to award the highest bidder a Non-Fungible Token (NFT) and allow users to bid using Fungible Tokens (FT) 
+    </Card>
+  </div>
+</div>
+<div class="row" style={{marginTop: '2rem', marginBottom: '2rem'}}>
+  <div class="col col--6">
+    <Card title="Learn More about the SDK" >
+      Check our [Anatomy of a Contract](./anatomy/anatomy.md) page to understand the different components that make up a NEAR smart contract
+    </Card>
+  </div>
+</div>
 
 <MovingForwardSupportSection />
 
-:::note Versioning for this article
+<br />
+
+<details>
+
+<summary> Versioning for this article </summary>
 
 At the time of this writing, this example works with the following versions:
 
-- node: `20.18.0`
-- rustc: `1.81.0`
-- near-cli-rs: `0.17.0`
-- cargo-near: `0.13.2`
+- node: `22.18.0`
+- rustc: `1.86.0`
+- near-cli-rs: `0.22.0`
+- cargo-near: `0.16.1`
 - Python: `3.13`
 - near-sdk-py: `0.7.3`
 - uvx nearc: `0.9.2`
 - emscripten: `4.0.9` (required for Python contracts)
 
-:::
+</details>

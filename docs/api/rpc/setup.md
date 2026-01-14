@@ -38,6 +38,12 @@ You can see this interface defined in `nearcore` [here](https://github.com/near/
 
 ---
 
+  :::important
+
+The endpoints https://*.near.org are officially deprecated and heavy rate-limited. Please use any of [the available RPC providers](https://docs.near.org/api/rpc/providers) in production. See [this announcement](https://www.near.org/blog/deprecation-of-near-org-and-pagoda-co-rpc-endpoints) for more info.
+
+  :::
+
 ## Postman Setup {#postman-setup}
 
 An easy way to test the queries in this documentation page is to use an API request tool such as [Postman](https://www.postman.com/).
