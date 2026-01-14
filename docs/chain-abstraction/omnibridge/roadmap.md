@@ -8,29 +8,27 @@ description: "Explore the Omni Bridge roadmap, including hybrid architecture lau
 Omni Bridge launches with a hybrid architecture, utilizing different verification methods based on chain-specific requirements and technical constraints. This approach allows us to support multiple chains from day one while progressively transitioning to full Chain Signatures integration.
 
 ## Supported Chains
-Initial launch includes:
+The bridge currently supports the following networks:
 
-- **Ethereum** - _(Light client + Chain Signatures)_
-- **Bitcoin** - _(Light client + Chain Signatures)_
-- **Solana** - _(Wormhole + Chain Signatures)_
-- **Base** - _(Wormhole + Chain Signatures)_
-- **Arbitrum** - _(Wormhole + Chain Signatures)_
+- **EVM Chains:**
+  - Ethereum
+  - Base
+  - Arbitrum
+  - BNB Chain
+  - Polygon (PoS)
+- **Non-EVM Chains:**
+  - Bitcoin
+  - Solana
+  - Zcash
 
-## Migration Path
+## Architecture Overview
 
-1. **Phase 1: Hybrid Operation** (ongoing)
-- ETH/BTC: Light client verification
-- Other chains: Wormhole message passing
-- All NEAR outbound: Chain Signatures
+Omni Bridge utilizes **Chain Signatures** as its primary verification mechanism for outbound transfers from NEAR. Incoming transfers rely on chain-specific verification methods, including light clients for maximum security where available.
 
-During this phase, cross-chain messages follow different verification paths depending on direction and chain. NEAR outbound transfers already utilize Chain Signatures, while inbound transfers vary by source chain.
-
-2. **Phase 2: Full Chain Signatures**
-- Progressive transition of all chains
-- Removal of Wormhole dependency
-- Enhanced decentralization
-
-Phase 2 represents our move to a unified verification model. Each chain will transition to Chain Signatures verification as implementation and audits complete, gradually removing the hybrid architecture's complexity.
+### Verification Methods
+- **Ethereum & Bitcoin:** Light Client verification for inbound transfers.
+- **Other Chains:** Message passing protocols verified by the NEAR network.
+- **Outbound (All Chains):** Chain Signatures (MPC) for secure transaction signing.
 
 ## Future Development
 1. **Protocol Improvements**
