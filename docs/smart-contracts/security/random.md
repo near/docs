@@ -4,66 +4,184 @@ title: Random Numbers
 description: "Learn about secure random number generation in NEAR smart contracts and how to avoid predictable randomness vulnerabilities."
 ---
 
-When writing smart contracts in NEAR you have access to a `random seed` that enables you to create random numbers/strings
-within your contract.
+Generating secure random numbers in blockchain environments is challenging because blockchains are deterministic. NEAR Protocol provides a `random seed` mechanism, but understanding its properties and limitations is crucial for building secure applications that rely on randomness.
 
-This `random seed` is **deterministic and verifiable**: it comes from the validator that produced the block signing the previous
-block-hash with their private key.
+---
 
-The way the random seed is created implies two things:
+## How NEAR Random Seed Works
 
-- Only the validator mining the transaction **can predict** which random number will come out. **No one else** could predict it because nobody knows the validator's private key (except the validator itself).
+NEAR provides a `random seed` that enables smart contracts to create random numbers and strings. This seed has unique properties:
 
-- The validator **cannot interfere** with the random number being created. This is because they need to sign the previous block, over which (with a high probability) they had no control.
+### Deterministic and Verifiable
 
+The random seed is **deterministic and verifiable**:
+- It comes from the validator that produced the block
+- The validator signs the previous block-hash with their private key
+- The signature becomes the random seed for the current block
+- Anyone can verify the seed, but only the validator knows it in advance.
 
-However, notice that this still leaves room for three types of attacks from the validator:
-1. [Frontrunning](./frontrunning.md), which we cover in another page
-2. Gaming the input
-3. Refusing to mine the block. 
+---
 
-----
+## Security Properties
 
-## Gaming the Input
-Imagine you have a method that takes an input and gives a reward based on it. For example, you ask the user to choose a number,
-and if it the same as your `random seed` you give them money.
+The way the random seed is created provides two important security properties:
 
-Since the validator knows which `random seed` will come out, it can create a transaction with that specific input and win the prize.
+### 1. Only Validator Can Predict
+- **Only the validator mining the transaction can predict** which random number will be generated
+- **No one else can predict it** because nobody knows the validator's private key (except the validator)
+- This provides some security, but creates a centralization risk.
 
-----
+### 2. Validator Cannot Interfere
+- The validator **cannot interfere** with the random number being created
+- They must sign the previous block-hash, over which they (with high probability) had no control
+- The previous block was likely produced by a different validator.
 
-## Refusing to Mine the Block
-One way to fix the "gaming the input" problem is to force the user to send the input first, and then decide the result on a different block.
-Let's call these two stages: "bet" and "resolve".
+**Important**: While validators cannot directly manipulate the seed, they can still exploit it through other means.
 
-In this way, a validator cannot game the input, since the `random` number against which it will be compared is computed in a different block.
+---
 
-However, something that the validator can still do to increase their chance of winning is:
-1. Create a "bet" transaction with an account.
-2. When it's their turn to validate, decide if they want to "resolve" or not.
+## Attack Type 1: Gaming the Input
 
-If the validator, on their turn, sees that generating a random number makes them win, they can add the transaction to the block. And if they
-see that they will not, they can skip the transaction.
+### The Vulnerability
 
-While this does not ensure that the validator will win (other good validators could mine the transaction), it can improve their chance of winning.
+If your contract asks users to provide an input and rewards them if it matches the random seed, validators can exploit this:
 
-Imagine a flip-coin game, where you choose `heads` or `tails` in the "bet" stage, and later resolve if you won or not. If you are a validator
-you can send a first transaction choosing either input.
+**Example**: 
+- Contract asks user to choose a number between 1-100
+- If user's number matches the random seed, they win a prize
+- Validator knows the random seed before the block is mined
+- Validator creates a transaction with the winning number
+- Validator includes their transaction in the block
+- Validator wins the prize
 
-Then, on your turn to validate, you can check if your chosen input came out. If not, you can simply skip the transaction. This brings your
-probability of winning from `1/2` to `3/4`, that's a 25% increase!
+```rust
+// ❌ VULNERABILITY: Gaming the input - validator can predict and win
+// User provides input and random seed is generated in same block
+pub fn guess_number(&mut self, guess: u8) {
+    let account_id = env::signer_account_id();
 
-These odds, of course, dilute in games with more possible outcomes.
+    // Store user's guess
+    self.bets.insert(account_id.clone(), guess.to_string());
 
-<details>
-<summary>How does the math work here?</summary>
+    // Generate random number in SAME block - validator knows it!
+    let random_seed = env::random_seed();
+    let random_number = (random_seed[0] % 100) as u8;
 
-Imagine you always bet for `heads`.
+    // Validator can see user's guess and create winning transaction
+    if guess == random_number {
+        let reward = NearToken::from_near(1);
+        let previous_user_reward = self.rewards.get(&account_id).unwrap_or(&NearToken::ZERO);
+        let user_reward = previous_user_reward.saturating_add(reward);
+        self.rewards.insert(account_id, user_reward);
+    }
+}
+```
 
-In a fair coin-flip game you have 50-50 percent chance of winning, this is because after the coin is flipped there are two possible outcomes:
-`H` and `T`, and you only win in one (`H`).
+### Why This Works
 
-However, if you can choose to flip again if `tails` comes out, now there are 4 scenarios: `H H` `T H` `H T` `T T`, and in 3 of those
-you win (all the ones including an `H`)!!!.
+Since the validator knows which `random seed` will be generated in their block, they can:
+1. Calculate the winning input
+2. Create a transaction with that input
+3. Include their transaction in the block
+4. Win every time
 
-</details>
+**Result**: Validators can guarantee wins in single-block games.
+
+---
+
+## Attack Type 2: Refusing to Mine the Block
+
+### The Two-Stage Solution
+
+One way to fix "gaming the input" is to use a two-stage process:
+
+1. **Bet Stage**: User sends their input/choice (e.g., "heads" or "tails")
+2. **Resolve Stage**: Contract generates random number and determines winner (in a later block)
+
+This prevents validators from gaming the input because:
+- User's choice is locked in the first block
+- Random seed is generated in a different (later) block
+- Validator cannot know the random seed when user makes their choice
+
+### The Remaining Vulnerability
+
+However, validators can still exploit this through selective block mining:
+
+**Attack Process**:
+1. Validator creates a "bet" transaction with their account
+2. Validator chooses either input (doesn't matter which)
+3. When it's the validator's turn to validate:
+   - They check what random seed will be generated
+   - If their bet would win, they include the "resolve" transaction in the block
+   - If their bet would lose, they skip the "resolve" transaction
+4. Other validators might mine it, but validator increases their win rate
+
+**Result**: Validator improves their probability of winning, though doesn't guarantee it.
+
+---
+
+## Coin Flip Example: Probability Manipulation
+
+### Fair Coin Flip (Without Attack)
+
+In a fair coin-flip game:
+- You choose "heads" or "tails" in the bet stage
+- Random seed determines outcome in resolve stage
+- **Probability of winning: 50%** (1/2)
+
+### With Refusing to Mine Attack
+
+If you're a validator and can refuse to mine losing blocks:
+
+**Scenarios**:
+- You bet "heads"
+- If random seed = "heads": You mine the block and win ✅
+- If random seed = "tails": You skip the block (other validator might mine it)
+  - If other validator mines: You lose ❌
+  - If no one mines: Transaction delayed, you try again later
+
+**Mathematical Analysis**:
+
+If you always bet "heads" and can choose to flip again when "tails" comes out:
+
+**Possible outcomes** (H = heads, T = tails):
+- H H: Win ✅
+- T H: Win ✅ (retry after T)
+- H T: Win ✅ (retry after H)
+- T T: Lose ❌ (retry after T, then T again)
+
+**Result**: You win in 3 out of 4 scenarios = **75% win rate** (3/4)
+
+**Improvement**: From 50% to 75% = **25% increase in win probability**
+
+**Note**: These odds dilute in games with more possible outcomes (e.g., dice with 6 sides).
+
+---
+
+## Best Practices for Randomness
+
+### 1. Use Multi-Block Randomness
+- Separate bet and resolve into different blocks
+- Prevents input gaming attacks
+- Still vulnerable to selective mining, but reduces risk.
+
+### 2. Use Commit-Reveal Schemes
+- Users commit to their choice (hash of choice + secret)
+- Later reveal the choice and secret
+- Random seed generated after reveal
+- Prevents both input gaming and selective mining.
+
+### 3. Use External Oracles
+- Use trusted external randomness sources
+- Chainlink VRF or similar services
+- More secure but requires external dependencies.
+
+### 4. Accept Validator Advantage
+- For non-critical randomness, accept that validators have slight advantage
+- Use for games where small advantage is acceptable
+- Not suitable for high-stakes applications.
+
+### 5. Use Multiple Validators
+- Distribute randomness across multiple validators
+- Reduces single validator control
+- More decentralized approach.
