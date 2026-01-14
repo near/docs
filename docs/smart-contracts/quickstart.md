@@ -117,6 +117,28 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releas
 ``` -->
 
 </TabItem>
+<TabItem value="go" label="🐹 GO">
+
+```bash
+#For Linux arm/x64
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential curl wget git libssl-dev pkg-config checkinstall
+sudo apt install bison
+
+#For Mac
+xcode-select --install
+brew update
+brew install mercurial
+brew install binaryen
+
+bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+gvm install go1.25.4 -B
+gvm use go1.25.4 --default
+
+curl -LO https://github.com/vlmoon99/near-cli-go/releases/latest/download/install.sh && bash install.sh
+
+```
+</TabItem>
 
 </Tabs>
 
@@ -341,7 +363,33 @@ Now that we know the tests are passing, let us deploy the contract! First, we ne
   ::: -->
 
   </TabItem>
-</Tabs>
+
+  <TabItem value="go" label="🐹 GO">
+    ```bash
+    near-go build
+    ```
+
+    :::info Near Go SDK Build Process
+
+    1. All code from the main package, including imports from other modules, is combined into a single **generated_build.go** file.
+    2. The **generated_build.go** file is compiled into `wasm32-unknown-unknown` via **TinyGo**.
+
+    :::
+
+    :::info Customizing the Build
+    
+    The default `near-go build` command works for most standard projects, compiling source code from the current directory into `main.wasm`. 
+    
+    However, if you want to specify a custom output name or **inspect the intermediate glue code** (generated JSON serialization and SDK integration wrappers) for debugging purposes, you can use the available flags:
+
+    ```bash
+    near-go build --output my_contract.wasm --keep-generated
+    ```
+    :::
+
+    </TabItem>
+
+  </Tabs>
 
 <hr class="subsection" />
 

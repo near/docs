@@ -85,7 +85,7 @@ Every method execution has an environment associated with information such as:
 | Predecessor            | `env.GetPredecessorAccountID()` | Account ID that called this method                                                   |
 | Current Account        | `env.GetCurrentAccountId()`     | Account ID of this smart contract                                                    |
 | Signer                 | `env.GetSignerAccountID()`      | Account ID that signed the transaction leading to this execution                     |
-| Attached Deposit       | `env.GetAttachedDepoist()`       | Amount in yoctoNEAR attached to the call by the predecessor                          |
+| Attached Deposit       | `env.GetAttachedDeposit()`       | Amount in yoctoNEAR attached to the call by the predecessor                          |
 | Account Balance        | `env.GetAccountBalance()`        | Balance of this smart contract (including Attached Deposit)                          |
 | Prepaid Gas            | `env.GetPrepaidGas()`            | Amount of gas available for execution                                                |
 | Timestamp              | `env.GetBlockTimeMs()`        | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
