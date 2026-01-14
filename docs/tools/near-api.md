@@ -874,7 +874,7 @@ A smart contract exposes its methods, and making a function call that modifies s
 
   The most convenient way to interact with contracts is the `TypedContract` class. It provides full type safety for method names, arguments, and return values, especially when used together with an ABI.
 
-  For example, lets say there is a [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract deployed at `guestbook.near-examples.testnet`, and you want to add a message to it. To do that, you’d call its `add_message` method.
+  For example, lets say there is a [Guestbook](https://github.com/near-examples/guest-book-examples) contract deployed at `guestbook.near-examples.testnet`, and you want to add a message to it. To do that, you’d call its `add_message` method.
 
   ```js
   import { NEAR } from "@near-js/tokens";
@@ -1068,7 +1068,7 @@ If your use case requires strict ordering or depends on all actions succeeding t
 
   Now that we’ve created two separate keys, we need to create corresponding `Account` instances for each one. These will be used to build and send different transactions independently.
 
-  One of the transactions adds a message to the [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract, while the other increments a counter on a different contract.
+  One of the transactions adds a message to the [Guestbook](https://github.com/near-examples/guest-book-examples) contract, while the other increments a counter on a different contract.
 
   ```js
   const accountOne = new Account(
@@ -1422,7 +1422,7 @@ View functions are read-only methods on a smart contract that do not modify stat
 <Tabs groupId="api">
   <TabItem value="js" label="🌐 JavaScript">
 
-  Let’s look at an example using the [Guestbook](/tutorials/examples/guest-book#testing-the-contract) contract to read how many messages are currently stored.
+  Let’s look at an example using the [Guestbook](https://github.com/near-examples/guest-book-examples) contract to read how many messages are currently stored.
 
   ```js
   import { JsonRpcProvider } from "@near-js/providers";
