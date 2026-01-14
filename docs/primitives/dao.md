@@ -72,7 +72,7 @@ You can create a DAO by interacting with the `sputnik-dao` contract:
     export COUNCIL='["bob.near"]'
     export ARGS=`echo '{"config": {"name": "Primitives", "purpose": "Building primitives on NEAR", "metadata":""}, "policy": '$COUNCIL'}' | base64`
 
-    near call sputnikv2.testnet create "{\"name\": \"primitives\", \"args\": \"$ARGS\"}" --accountId bob.near --amount 6 --gas 150000000000000
+    near call sputnikv2.testnet create "{\"name\": \"primitives\", \"args\": \"$ARGS\"}" --useAccount bob.near --amount 6 --gas 150000000000000
     ```
 
     :::note
@@ -420,7 +420,7 @@ Create a proposal so other users can vote in favor or against it.
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     
    ```bash
-    near call primitives.sputnik-dao.near add_proposal '{"proposal": {"description": "My first proposal", "kind": { "Transfer": {"token_id": "", "receiver_id": "bob.near", "amount": "10000000000000000000000000"}}}}'  --deposit 0.1 --gas 300000000000000 --accountId bob.near
+    near call primitives.sputnik-dao.near add_proposal '{"proposal": {"description": "My first proposal", "kind": { "Transfer": {"token_id": "", "receiver_id": "bob.near", "amount": "10000000000000000000000000"}}}}'  --deposit 0.1 --gas 300000000000000 --useAccount bob.near
   ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -740,7 +740,7 @@ These snippet will enable your users to cast a vote for proposal of a particular
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     
   ```bash
-  near call primitives.sputnik-dao.near act_proposal '{"id": 0, "action": "VoteApprove"}' --gas 300000000000000 --accountId bob.near
+  near call primitives.sputnik-dao.near act_proposal '{"id": 0, "action": "VoteApprove"}' --gas 300000000000000 --useAccount bob.near
   ```
   :::note
   Available vote options: `VoteApprove`, `VoteReject`, `VoteRemove`.

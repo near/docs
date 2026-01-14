@@ -91,7 +91,7 @@ initialize the state. This is not necessary if your contract implements `default
 
 ```bash
 # Call the initialization method (`init` in our examples)
-near call <contractId> <initMethod> [<args>] --accountId <accountId>
+near call <contractId> <initMethod> [<args>] --useAccount <accountId>
 ```
 
 :::info
@@ -125,5 +125,5 @@ Change methods are those that perform both read and write operations. For these 
 since that account will expend GAS in the call.
 
 ```bash
-near call <contractId> <methodName> <jsonArgs> --accountId <yourAccount> [--deposit <amount>] [--gas <GAS>]
+near call <contractId> <methodName> <jsonArgs> --useAccount <yourAccount> [--deposit <amount>] [--gas <GAS>]
 ```

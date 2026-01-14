@@ -319,15 +319,15 @@ To interact with the contract through the console, you can use the following com
   ```bash
   # Execute contracts sequentially
   # Replace <accountId> with your account ID
-  near call <accountId> batch_actions --accountId <accountId> --gas 300000000000000   
+  near call <accountId> batch_actions --useAccount <accountId> --gas 300000000000000   
 
   # Execute contracts in parallel
   # Replace <accountId> with your account ID
-  near call <accountId>  multiple_contracts --accountId <accountId> --gas 300000000000000   
+  near call <accountId>  multiple_contracts --useAccount <accountId> --gas 300000000000000   
 
   # Execute multiple instances of the same contract in parallel
   # Replace <accountId> with your account ID
-  near call <accountId> similar_contracts --accountId <accountId> --gas 300000000000000
+  near call <accountId> similar_contracts --useAccount <accountId> --gas 300000000000000
   ```
   </TabItem>
 

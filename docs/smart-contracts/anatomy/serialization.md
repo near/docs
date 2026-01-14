@@ -175,7 +175,7 @@ If we initialize the state we can see how Borsh is used to serialize the state
 
 ```bash
 # initialize with the string "hi" and 0
-near call $CONTRACT init '{"string":"hi", "first_u8":0}' --accountId $CONTRACT
+near call $CONTRACT init '{"string":"hi", "first_u8":0}' --useAccount $CONTRACT
 
 # check the state
 near view-state $CONTRACT --utf8 --finality optimistic
@@ -221,7 +221,7 @@ value: '\x00'
 If we modify the stored string and add a new number, the state changes accordingly:
 
 ```bash
-near call $CONTRACT change_state '{"string":"bye", "number":1}' --accountId $CONTRACT
+near call $CONTRACT change_state '{"string":"bye", "number":1}' --useAccount $CONTRACT
 ```
 
 <details>

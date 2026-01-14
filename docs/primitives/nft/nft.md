@@ -122,7 +122,7 @@ Here is how to directly interact with the factory contract through your applicat
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
    
     ```bash
-    near call nft.primitives.near nft_mint '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --depositYocto 10000000000000000000000, --accountId bob.near
+    near call nft.primitives.near nft_mint '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --depositYocto 10000000000000000000000, --useAccount bob.near
     ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -394,7 +394,7 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     
   ```bash
-    near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "bob.near"}' --accountId bob.near --deposit 0.000000000000000000000001
+    near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "bob.near"}' --useAccount bob.near --deposit 0.000000000000000000000001
   ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -449,7 +449,7 @@ Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, t
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
-near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>", "token_id": "<token_id>", "msg": "<a-string-message>"}' --accountId <your-account> --depositYocto 1
+near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>", "token_id": "<token_id>", "msg": "<a-string-message>"}' --useAccount <your-account> --depositYocto 1
 ```
 
 </TabItem>
@@ -498,7 +498,7 @@ You can authorize other users to transfer an NFT you own. This is useful, for ex
     "token_id": "<token-unique-id>",
     "account_id": "<authorized-account>",
     "msg": "<json-structure>"
-    }' --accountId <your-account> --depositYocto 1
+    }' --useAccount <your-account> --depositYocto 1
     ```
 </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -544,7 +544,7 @@ While the NFT standard does not define a `burn` method, you can simply transfer 
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     
   ```bash
-    near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "0000000000000000000000000000000000000000000000000000000000000000"}' --accountId bob.near --deposit 0.000000000000000000000001
+    near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "0000000000000000000000000000000000000000000000000000000000000000"}' --useAccount bob.near --deposit 0.000000000000000000000001
   ```
   </TabItem>
 </Tabs>

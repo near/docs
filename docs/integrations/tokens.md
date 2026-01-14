@@ -767,7 +767,7 @@ You can get the same info later by the transaction hash from the previous call:
 
 <!--
 - using NEAR CLI:
-near tx-status <transaction_hash> --accountId <transaction_signer>
+near tx-status <transaction_hash> --useAccount <transaction_signer>
 -->
 
   - with JSON RPC call

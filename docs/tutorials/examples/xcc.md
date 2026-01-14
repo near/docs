@@ -236,11 +236,11 @@ To interact with the contract through the console, you can use the following com
   ```bash
   # Get message from the hello-near contract
   # Replace <accountId> with your account ID
-  near call <accountId> query_greeting --accountId <accountId>
+  near call <accountId> query_greeting --useAccount <accountId>
 
   # Set a new message for the hello-near contract
   # Replace <accountId> with your account ID
-  near call <accountId> change_greeting '{"new_greeting":"XCC Hi"}' --accountId <accountId>
+  near call <accountId> change_greeting '{"new_greeting":"XCC Hi"}' --useAccount <accountId>
   ```
   </TabItem>
 
