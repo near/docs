@@ -5,9 +5,6 @@ sidebar_label: Balance Changes
 description: "Learn how to query and track account balances in NEAR protocol, including native NEAR tokens, fungible tokens, and balance management for integrations."
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 This document provides an overview of how to track balance changes on NEAR accounts, including sending tokens and viewing balance changes using the NEAR CLI and RPC endpoints.
 
 - [NEAR Account](https://testnet.mynearwallet.com/create)
@@ -22,22 +19,9 @@ This document provides an overview of how to track balance changes on NEAR accou
 
 - Send tokens using [`near send`](../tools/cli.md#send-near)
 
-<Tabs groupId="cli-tabs">
-
-  <TabItem value="short" label="Short">
-
-  ```bash
-  near send sender.testnet receiver.testnet 1
-  ```
-  </TabItem>
-
-  <TabItem value="full" label="Full">
-
-  ```bash
-  near tokens sender.testnet send-near receiver.testnet '1 NEAR' network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-</Tabs>
+```bash
+near tokens sender.testnet send-near receiver.testnet '1 NEAR' network-config testnet sign-with-keychain send
+```
 
 - You should see a result in your terminal that looks something like this:
 

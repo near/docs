@@ -5,9 +5,6 @@ sidebar_label: Implicit Accounts
 description: "Learn about implicit accounts in NEAR, how they work with Ethereum-style addresses, and their role in chain abstraction and multi-chain integration."
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 This document provides an overview of implicit accounts in the NEAR Protocol, including how to create them, use them for transactions, and manage them effectively. Implicit accounts are particularly useful for exchanges and other services that need to facilitate transactions without requiring user interaction.
 
 ## Background {#background}
@@ -55,43 +52,17 @@ export ACCOUNT="8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8
 
 Assuming you've received tokens on your new account, you can transfer from it using the following command:
 
-<Tabs groupId="cli-tabs">
-
-  <TabItem value="short" label="Short">
-
-  ```bash
-  near send $ACCOUNT <receiver> <amount>
-  ```
-  </TabItem>
-
-  <TabItem value="full" label="Full">
-
-  ```bash
-  near tokens $ACCOUNT send-near <receiver> '<amount> NEAR' network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-</Tabs>
+```bash
+near tokens $ACCOUNT send-near <receiver> '<amount> NEAR' network-config testnet sign-with-keychain send
+```
 
 ## Transferring to the implicit account {#transferring-to-the-implicit-account}
 
 Let's say someone gives you their account ID `0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223`. You can just transfer to it by running:
 
-<Tabs groupId="cli-tabs">
-
-  <TabItem value="short" label="Short">
-
-  ```bash
-  near send <your_account_id> 0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223 <amount>
-  ```
-  </TabItem>
-
-  <TabItem value="full" label="Full">
-
-  ```bash
-  near tokens<your_account_id> send-near 0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223 '<amount> NEAR' network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-</Tabs>
+```bash
+near tokens<your_account_id> send-near 0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223 '<amount> NEAR' network-config testnet sign-with-keychain send
+```
 
 ## BONUS: Converting public key using python (for learning purposes) {#bonus-converting-public-key-using-python-for-learning-purposes}
 

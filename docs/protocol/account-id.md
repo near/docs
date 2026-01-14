@@ -65,7 +65,7 @@ near account create-account fund-later use-auto-generation save-to-folder ~/.nea
 cat ~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json
 ```
 
-or `near-seed-phrase` library:
+or using the `near-seed-phrase` library:
 
 ```js
 import { generateSeedPhrase } from "near-seed-phrase";
@@ -84,10 +84,8 @@ You can derive the implicit account address from a public key by removing the `e
 // vanilla js
 import { decode } from 'bs58';
 Buffer.from(decode(publicKey.replace('ed25519:', ''))).toString('hex')
-```
 
-```js
-// near-api-js
+// or using near-api-js
 import { utils } from 'near-api-js';
 utils.keyToImplicitAddress(publicKey);
 ```
@@ -114,73 +112,29 @@ Anyone can create a `.near` or `.testnet` account, you just need to call the `cr
 
 <details>
 
-<summary> 🧑‍💻 Technical: How to create a named account  </summary>
+<summary> 🧑‍💻 Technical: How Are Named Accounts Created?  </summary>
 
-Named accounts are created by calling the `create_account` method of the network's top-level account - `testnet` on testnet, and `near` on mainnet.
+In NEAR, named accounts are created using the [`CreateAccount`](./transaction-anatomy.md#actions) action. Both `testnet` and `near` accounts expose the function `create_account`, which triggers `CreateAccount` to create sub-accounts of themselves.
 
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Short">
+For example, if we want to create the account `alice.testnet` with `0.1 NEAR`, we would need to call the `create_account` method of `testnet` using an existing account (e.g. `funding-account.testnet`):
 
-  ```bash
-  near call testnet create_account '{"new_account_id": "new-acc.testnet", "new_public_key": "ed25519:<data>"}' --deposit 0.00182 --accountId funding-account.testnet --networkId testnet
-  ```
-  </TabItem>
+```bash
+near call testnet create_account '{"new_account_id": "alice.testnet", "new_public_key": "ed25519:<data>"}' --useAccount funding-account.testnet --networkId testnet
+```
 
-  <TabItem value="full" label="Full">
+If we then want to create a sub-account of `alice.testnet` - which we control - we can simply trigger the `CreateAccount` action ourselves:
 
-  ```bash
-  near contract call-function as-transaction testnet create_account json-args '{"new_account_id": "new-acc.testnet", "new_public_key": "ed25519:<data>"}' prepaid-gas '100.0 Tgas' attached-deposit '0.00182 NEAR' sign-as funding-account.testnet network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-</Tabs>
+```bash
+near create-account sub-acc.new-acc.testnet --useAccount new-acc.testnet
+```
 
-We abstract this process in the [NEAR CLI](../tools/cli.md) with the following command:
-
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Short">
-
-  ```bash
-  near create-account new-acc.testnet --useAccount funding-account.testnet --publicKey ed25519:<data>
-  ```
-  </TabItem>
-
-  <TabItem value="full" label="Full">
-
-  ```bash
-  near account create-account fund-myself new-acc.testnet '1 NEAR' use-manually-provided-public-key ed25519:<data> sign-as funding-account.testnet network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-</Tabs>
-
-You can use the same command to create sub-accounts of an existing named account:
-
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Short">
-
-  ```bash
-  near create-account sub-acc.new-acc.testnet --useAccount new-acc.testnet
-  ```
-  </TabItem>
-
-  <TabItem value="full" label="Full">
-
-  ```bash
-  near account create-account fund-myself sub-acc.new-acc.testnet '1 NEAR' autogenerate-new-keypair save-to-keychain sign-as new-acc.testnet network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-</Tabs>
+> Note: if you want the accounts to have some initial balance, you can add the `--deposit <amount in NEAR>` flag to the command above
 
 </details>
 
-:::tip Creating Named Accounts
+:::info Creating Named Accounts
 
 If you are not going through an intermediary (i.e. the CLI, or a wallet), then you can create an implicit account, fund it, and call `create_account` on `near` / `testnet`
-
-:::
-
-:::note
-
-Accounts have **no control** over their sub-accounts, they are different entities. This means that `near` cannot control `bob.near`, and `bob.near` cannot control `sub.bob.near`.
 
 :::
 
