@@ -29,18 +29,18 @@ Thanks to the `NEAR CLI` deploying a contract is as simple as:
 ### Compile the Contract
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-
-  ```bash
-  yarn build
-  ```
-
-  </TabItem>
-
   <TabItem value="rust" label="🦀 Rust">
 
   ```bash
   cargo near build
+  ```
+
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+
+  ```bash
+  yarn build
   ```
 
   </TabItem>

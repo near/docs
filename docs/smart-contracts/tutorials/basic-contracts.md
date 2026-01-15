@@ -185,20 +185,20 @@ The contracts are implemented following the latest versions of each SDK, and inc
 Each contract includes sandbox tests that simulate real user interactions. For example, in the `Guest Book` example, the tests cover scenarios like having multiple accounts signing the guest book, including premium messages.
 
 <Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
+  
+```bash
+cd contract-rs
+cargo test
+```
+
+  </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 cd contract-ts
 yarn
 yarn test
-```
-
-  </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
-  
-```bash
-cd contract-rs
-cargo test
 ```
 
   </TabItem>
@@ -235,20 +235,20 @@ Here we are using the `--useFaucet` flag to create a new account and pre-fund it
 Once you created an account to host the contract, you can build and deploy it: 
 
 <Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
+  
+```bash
+cd contract-rs
+cargo near deploy build-non-reproducible-wasm <accountId>
+```
+
+  </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
 ```bash
 cd contract-ts
 npm run build
 near deploy <accountId> ./build/<contract-name>.wasm
-```
-
-  </TabItem>
-  <TabItem value="rust" label="🦀 Rust">
-  
-```bash
-cd contract-rs
-cargo near deploy build-non-reproducible-wasm <accountId>
 ```
 
   </TabItem>
