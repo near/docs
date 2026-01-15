@@ -77,13 +77,7 @@ npm install -g near-cli-rs@latest
 
 <TabItem value="py" label="🐍 Python">
 
-:::note
-Python quickstart tutorial is coming soon!
-
-In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
-:::
-
-<!-- ```bash
+ ```bash
 # Install Python (if not already installed)
 # Use your system's package manager or download from https://www.python.org/downloads/
 
@@ -114,7 +108,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install NEAR CLI-RS to deploy and interact with the contract
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
-``` -->
+``` 
 
 </TabItem>
 <TabItem value="go" label="🐹 GO">
@@ -245,15 +239,9 @@ Do not worry about the code just yet — for now, it is enough to know that the 
   </TabItem>
 
   <TabItem value="py" label="🐍 Python">
-    :::note
-    Python quickstart tutorial is coming soon!
-
-    In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
-    :::
-
-    <!-- <Github fname="contract.py" language="python"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-py/contract.py"
-            start="3" end="30" /> -->
+    <Github fname="contract.py" language="python"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
+            start="20" end="45" />
   </TabItem>
 </Tabs>
 
@@ -291,17 +279,10 @@ Lets make sure the contract is working as expected by running its tests. Simply 
   
   <TabItem value="py" label="🐍 Python">
 
-  :::note
-  Python quickstart tutorial is coming soon!
-
-  In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
-  :::
-
-  <!-- ```bash
+  ```bash
   uv run pytest
   ```
-  -->
-
+  
   </TabItem>
 </Tabs>
 
@@ -332,13 +313,7 @@ Now that we know the tests are passing, let us deploy the contract! First, we ne
   
   <TabItem value="py" label="🐍 Python">
 
-  :::note
-  Python quickstart tutorial is coming soon!
-
-  In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
-  :::
-
-  <!-- ```bash
+   ```bash
   # Build with nearc through the uv executor (no installation needed)
   uvx nearc contract.py
   ```
@@ -360,7 +335,7 @@ Now that we know the tests are passing, let us deploy the contract! First, we ne
   - `error: invalid version of emscripten` - Your Emscripten version might be too old. Try updating with `./emsdk install latest && ./emsdk activate latest`.
   - `Could not find platform micropython-dev-wasm32` - This typically means the Emscripten installation is incomplete or not properly activated.
   
-  ::: -->
+  :::
 
   </TabItem>
 
@@ -443,11 +418,9 @@ With the contract ready, we can now deploy it to the `testnet` account we create
   
   <TabItem value="py" label="🐍 Python">
 
-    :::note
-    Python quickstart tutorial is coming soon!
-
-    In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
-    :::
+    ```bash
+    near deploy <created-account> ./auction.wasm
+    ```
 
   </TabItem>
 </Tabs>
