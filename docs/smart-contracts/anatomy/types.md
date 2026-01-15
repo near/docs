@@ -14,7 +14,7 @@ import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-
 
 Lets discuss which types smart contracts use to input and output data, as well as how such data is stored and handled in the contract's code.
 
-<ExplainCode languages="js,rust,python">
+<ExplainCode languages="rust,js,python">
 
 <Block highlights='{"js":"5,8,13"}' fname="hello-near">
 

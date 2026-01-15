@@ -138,19 +138,19 @@ for such messages to be "premium". You keep track of the messages and payments
 using the following state:
 
 <CodeTabs>
-<Language value="js" language="js">
-
-<Github fname="index.js"
-      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-base.js"
-      start="12" end="33" />
-
-</Language>
-
 <Language value="rust" language="rust">
 
 <Github fname="lib.rs"
     url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs"
     start="10" end="21" />
+
+</Language>
+
+<Language value="js" language="js">
+
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-base.js"
+      start="12" end="33" />
 
 </Language>
 
@@ -162,19 +162,19 @@ At some point you realize that you could keep track of the `payments` inside of
 the `PostedMessage` itself, so you change the contract to:
 
 <CodeTabs>
-<Language value="js" language="js">
-
-<Github fname="index.js"
-      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
-      start="21" end="43" />
-
-</Language>
-
 <Language value="rust" language="rust">
 
 <Github fname="lib.rs"
     url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs"
     start="12" end="23" />
+
+</Language>
+
+<Language value="js" language="js">
+
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
+      start="21" end="43" />
 
 </Language>
 
@@ -197,19 +197,19 @@ state, removes the `payments` vector and adds the information to the
 `PostedMessages`:
 
 <CodeTabs>
-<Language value="js" language="js">
-
-<Github fname="index.js"
-      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
-      start="5" end="68" />
-
-</Language>
-
 <Language value="rust" language="rust">
 
 <Github fname="lib.rs"
     url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
     start="3" end="51" />
+
+</Language>
+
+<Language value="js" language="js">
+
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
+      start="5" end="68" />
 
 </Language>
 

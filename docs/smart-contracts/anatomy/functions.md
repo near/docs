@@ -13,7 +13,7 @@ import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-
 
 Smart contracts expose functions so users can interact with them. There are different types of functions including `read-only`, `private` and `payable`.
 
-<ExplainCode languages="js,rust,python">
+<ExplainCode languages="rust,js,python">
 
 <Block highlights='{"js": "16-20,23-42,45-50,53-55,58-60", "rust": "24-34,37-62,64-75,77-79,81-83", "python": "4-22,25-62,65-94,97-99,102-104,107-121"}' fname="auction">
 

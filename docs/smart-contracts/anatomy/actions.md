@@ -25,23 +25,6 @@ but **cannot** call two methods on different contracts.
 You can send $NEAR from your contract to any other account on the network. The Gas cost for transferring $NEAR is fixed and is based on the protocol's genesis config. Currently, it costs `~0.45 TGas`.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-
-```js
-  import { NearBindgen, NearPromise, call } from 'near-sdk-js'
-  import { AccountId } from 'near-sdk-js/lib/types'
-
-  @NearBindgen({})
-  class Contract{
-    @call({})
-    transfer({ to, amount }: { to: AccountId, amount: bigint }) {
-      return NearPromise.new(to).transfer(amount);
-    }
-  }
-```
-
-</TabItem>
-
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
@@ -55,6 +38,23 @@ You can send $NEAR from your contract to any other account on the network. The G
   impl Contract {
     pub fn transfer(&self, to: AccountId, amount: NearToken){
       Promise::new(to).transfer(amount);
+    }
+  }
+```
+
+</TabItem>
+
+<TabItem value="js" label="🌐 JavaScript">
+
+```js
+  import { NearBindgen, NearPromise, call } from 'near-sdk-js'
+  import { AccountId } from 'near-sdk-js/lib/types'
+
+  @NearBindgen({})
+  class Contract{
+    @call({})
+    transfer({ to, amount }: { to: AccountId, amount: bigint }) {
+      return NearPromise.new(to).transfer(amount);
     }
   }
 ```
@@ -130,7 +130,47 @@ in a deployed [Hello NEAR](../quickstart.md) contract, and check if everything w
 right in the callback.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
+<TabItem value="rust" label="🦀 Rust">
+
+```rust
+  use near_sdk::{near, env, log, Promise, Gas, PromiseError};
+  use serde_json::json;
+
+  #[near(contract_state)]
+  #[derive(Default)]
+  pub struct Contract { }
+
+  const HELLO_NEAR: &str = "hello-nearverse.testnet";
+  const NO_DEPOSIT: u128 = 0;
+  const CALL_GAS: Gas = Gas(5_000_000_000_000);
+
+  #[near]
+  impl Contract {
+    pub fn call_method(&self){
+      let args = json!({ "message": "howdy".to_string() })
+                .to_string().into_bytes().to_vec();
+
+      Promise::new(HELLO_NEAR.parse().unwrap())
+      .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
+      .then(
+        Promise::new(env::current_account_id())
+        .function_call("callback".to_string(), Vec::new(), NO_DEPOSIT, CALL_GAS)
+      );
+    }
+
+    pub fn callback(&self, #[callback_result] result: Result<(), PromiseError>){
+      if result.is_err(){
+          log!("Something went wrong")
+      }else{
+          log!("Message changed")
+      }
+    }
+  }
+```
+
+</TabItem>
+
+<TabItem value="js" label="🌐 JavaScript">
 
 ```js
   import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
@@ -168,46 +208,6 @@ right in the callback.
       } else {
         near.log("Promise failed...")
         return false
-      }
-    }
-  }
-```
-
-</TabItem>
-
-<TabItem value="rust" label="🦀 Rust">
-
-```rust
-  use near_sdk::{near, env, log, Promise, Gas, PromiseError};
-  use serde_json::json;
-
-  #[near(contract_state)]
-  #[derive(Default)]
-  pub struct Contract { }
-
-  const HELLO_NEAR: &str = "hello-nearverse.testnet";
-  const NO_DEPOSIT: u128 = 0;
-  const CALL_GAS: Gas = Gas(5_000_000_000_000);
-
-  #[near]
-  impl Contract {
-    pub fn call_method(&self){
-      let args = json!({ "message": "howdy".to_string() })
-                .to_string().into_bytes().to_vec();
-
-      Promise::new(HELLO_NEAR.parse().unwrap())
-      .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
-      .then(
-        Promise::new(env::current_account_id())
-        .function_call("callback".to_string(), Vec::new(), NO_DEPOSIT, CALL_GAS)
-      );
-    }
-
-    pub fn callback(&self, #[callback_result] result: Result<(), PromiseError>){
-      if result.is_err(){
-          log!("Something went wrong")
-      }else{
-          log!("Message changed")
       }
     }
   }
@@ -324,28 +324,6 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-
-```js
-  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
-
-  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
-
-  @NearBindgen({})
-  class Contract {
-    @call({payableFunction:true})
-    create({prefix}:{prefix: String}) {
-      const account_id = `${prefix}.${near.currentAccountId()}`
-
-      NearPromise.new(account_id)
-      .createAccount()
-      .transfer(MIN_STORAGE)
-    }
-  }
-```
-
-</TabItem>
-
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
@@ -364,6 +342,28 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
       Promise::new(account_id.parse().unwrap())
         .create_account()
         .transfer(MIN_STORAGE);
+    }
+  }
+```
+
+</TabItem>
+
+<TabItem value="js" label="🌐 JavaScript">
+
+```js
+  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
+
+  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+
+  @NearBindgen({})
+  class Contract {
+    @call({payableFunction:true})
+    create({prefix}:{prefix: String}) {
+      const account_id = `${prefix}.${near.currentAccountId()}`
+
+      NearPromise.new(account_id)
+      .createAccount()
+      .transfer(MIN_STORAGE)
     }
   }
 ```
@@ -451,31 +451,6 @@ If your contract wants to create a `.mainnet` or `.testnet` account, then it nee
 the `create_account` method of `near` or `testnet` root contracts.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-
-```js
-  import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
-
-  const MIN_STORAGE: bigint = BigInt("1820000000000000000000"); //0.00182Ⓝ
-  const CALL_GAS: bigint = BigInt("28000000000000");
-
-  @NearBindgen({})
-  class Contract {
-    @call({})
-    create_account({account_id, public_key}:{account_id: String, public_key: String}) {
-      const args = bytes(JSON.stringify({
-        "new_account_id": account_id,
-        "new_public_key": public_key
-      }))
-
-      NearPromise.new("testnet")
-      .functionCall("create_account", args, MIN_STORAGE, CALL_GAS);
-    }
-  }
-```
-
-</TabItem>
-
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
@@ -500,6 +475,31 @@ the `create_account` method of `near` or `testnet` root contracts.
       // Use "near" to create mainnet accounts
       Promise::new("testnet".parse().unwrap())
         .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
+    }
+  }
+```
+
+</TabItem>
+
+<TabItem value="js" label="🌐 JavaScript">
+
+```js
+  import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
+
+  const MIN_STORAGE: bigint = BigInt("1820000000000000000000"); //0.00182Ⓝ
+  const CALL_GAS: bigint = BigInt("28000000000000");
+
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    create_account({account_id, public_key}:{account_id: String, public_key: String}) {
+      const args = bytes(JSON.stringify({
+        "new_account_id": account_id,
+        "new_public_key": public_key
+      }))
+
+      NearPromise.new("testnet")
+      .functionCall("create_account", args, MIN_STORAGE, CALL_GAS);
     }
   }
 ```
@@ -690,30 +690,6 @@ There are two options for adding keys to the account:
 <br/>
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-
-```js
-  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
-  import { PublicKey } from 'near-sdk-js/lib/types'
-
-  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
-
-  @NearBindgen({})
-  class Contract {
-    @call({})
-    create_hello({prefix, public_key}:{prefix: String, public_key: PublicKey}) {
-      const account_id = `${prefix}.${near.currentAccountId()}`
-
-      NearPromise.new(account_id)
-      .createAccount()
-      .transfer(MIN_STORAGE)
-      .addFullAccessKey(public_key)
-    }
-  }
-```
-
-</TabItem>
-
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
@@ -735,6 +711,30 @@ There are two options for adding keys to the account:
         .transfer(MIN_STORAGE)
         .deploy_contract(HELLO_CODE.to_vec())
         .add_full_access_key(public_key);
+    }
+  }
+```
+
+</TabItem>
+
+<TabItem value="js" label="🌐 JavaScript">
+
+```js
+  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
+  import { PublicKey } from 'near-sdk-js/lib/types'
+
+  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    create_hello({prefix, public_key}:{prefix: String, public_key: PublicKey}) {
+      const account_id = `${prefix}.${near.currentAccountId()}`
+
+      NearPromise.new(account_id)
+      .createAccount()
+      .transfer(MIN_STORAGE)
+      .addFullAccessKey(public_key)
     }
   }
 ```
@@ -815,36 +815,6 @@ There are two scenarios in which you can use the `delete_account` action:
 2. To make your smart contract delete its own account.
 
 <Tabs groupId="code-tabs">
-  <TabItem value="js" label="🌐 JavaScript">
-
-```js
-  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
-  import { AccountId } from 'near-sdk-js/lib/types'
-
-  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
-
-  @NearBindgen({})
-  class Contract {
-    @call({})
-    create_delete({prefix, beneficiary}:{prefix: String, beneficiary: AccountId}) {
-      const account_id = `${prefix}.${near.currentAccountId()}`
-
-      NearPromise.new(account_id)
-      .createAccount()
-      .transfer(MIN_STORAGE)
-      .deleteAccount(beneficiary)
-    }
-
-    @call({})
-    self_delete({beneficiary}:{beneficiary: AccountId}) {
-      NearPromise.new(near.currentAccountId())
-      .deleteAccount(beneficiary)
-    }
-  }
-```
-
-</TabItem>
-
 <TabItem value="rust" label="🦀 Rust">
 
 ```rust
@@ -869,6 +839,36 @@ There are two scenarios in which you can use the `delete_account` action:
     pub fn self_delete(beneficiary: AccountId){
       Promise::new(env::current_account_id())
         .delete_account(beneficiary);
+    }
+  }
+```
+
+</TabItem>
+
+<TabItem value="js" label="🌐 JavaScript">
+
+```js
+  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
+  import { AccountId } from 'near-sdk-js/lib/types'
+
+  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    create_delete({prefix, beneficiary}:{prefix: String, beneficiary: AccountId}) {
+      const account_id = `${prefix}.${near.currentAccountId()}`
+
+      NearPromise.new(account_id)
+      .createAccount()
+      .transfer(MIN_STORAGE)
+      .deleteAccount(beneficiary)
+    }
+
+    @call({})
+    self_delete({beneficiary}:{beneficiary: AccountId}) {
+      NearPromise.new(near.currentAccountId())
+      .deleteAccount(beneficiary)
     }
   }
 ```

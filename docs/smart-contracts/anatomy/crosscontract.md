@@ -4,25 +4,22 @@ title: Cross-Contract Calls
 description: "Contract can interact with other contracts on the network"
 ---
 
-import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {Github} from '@site/src/components/UI/Codetabs'
+import Card from '@site/src/components/UI/Card';
 
-Cross-contract calls are a powerful feature of NEAR smart contracts, allowing one contract to interact with another. This enables complex interactions and functionalities across different contracts, enhancing the ecosystem's capabilities.
+NEAR contracts can interact with other deployed contracts, querying information and executing functions on them through cross-contract calls.
 
-Your contract can interact with other deployed contracts, **querying** information and **executing functions** on them.
+Since NEAR is a sharded blockchain, its cross-contract calls behave differently than in other chains. In NEAR, cross-contract calls are **asynchronous** and **independent**.
 
-Since NEAR is a sharded blockchain, its cross-contract calls behave differently than calls do in other chains. In NEAR. cross-contract calls are asynchronous and independent.
-
-:::info Cross-Contract Calls are **Independent**
-
-You will need two independent functions: one to make the call, and another to receive the result
-
+:::tip Asynchronous 
+The **calling function** and the **callback** execute in **different blocks** (typically 1-2 blocks apart). During this time, the contract remains active and can receive other calls.
 :::
 
-:::info Cross-Contract Calls are **Asynchronous**
+:::tip Independent
 
-There is a delay between the call and the callback execution, usually of **1 or 2 blocks**. During this time, the contract is still active and can receive other calls.
+Each function — the one making the call, the external function, and the callback — executes in its own context. If the external call fails, the calling function has already completed successfully; there's no automatic rollback. You must handle failures explicitly in the callback.
 
 :::
 
@@ -32,31 +29,30 @@ There is a delay between the call and the callback execution, usually of **1 or 
 
 While making your contract, it is likely that you will want to query information from another contract. Below, you can see a basic example in which we query the greeting message from our [Hello NEAR](../quickstart.md) example.
 
-<CodeTabs>
-<Language value="js" language="ts">
-    <Github fname="contract.ts"
+<Tabs>
+  <TabItem value="rs" label="🦀 Rust">
+    <Tabs>
+      <TabItem value="low_level.rs" label="low_level.rs">
+        <Github fname="low_level.rs" language="rust"
+                url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs"
+                start="7" end="39" />
+      </TabItem>
+      <TabItem value="high_level.rs" label="high_level.rs">
+        <Github fname="high_level.rs" language="rust"
+                url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
+                start="8" end="37" />
+        The high level API makes use of the interface defined in the [ext_contract.rs](https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs)
+      </TabItem>
+    </Tabs>
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="18" end="52" />
+  </TabItem>
 
-</Language>
-
-<Language value="rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="1" end="29" />
-    <Github fname="external_contract.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
-            start="1" end="8" />
-    <Github fname="high_level.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
-            start="8" end="37" />
-    <Github fname="low_level.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs"
-            start="7" end="39" />
-
-</Language>
-
-<Language value="python" language="python">
+  <TabItem value="python" label="🐍 Python">
 ```python
 from near_sdk_py import call, view, Contract, callback, PromiseResult, CrossContract, init
 
@@ -104,9 +100,9 @@ class CrossContractExample(Contract):
             "message": f"Successfully got greeting: {result.data}"
         }
 ```
-</Language>
+  </TabItem>
 
-<Language value="go" language="go">
+  <TabItem value="go" label="🐹 GO">
 ```go
 package main
 
@@ -159,40 +155,39 @@ func (c *Contract) ExampleQueryingInformationResponse(result promise.PromiseResu
 	}
 }
 ```
-</Language>
-
-</CodeTabs>
+  </TabItem>
+</Tabs>
 
 ---
 
 ## Snippet: Sending Information
 Calling another contract passing information is also a common scenario. Below you can see a function that interacts with the [Hello NEAR](../quickstart.md) example to change its greeting message.
 
-<CodeTabs>
-<Language value="js" language="ts">
-    <Github fname="contract.ts"
+<Tabs>
+  <TabItem value="rs" label="🦀 Rust">
+    <Tabs>
+      <TabItem value="low_level.rs" label="low_level.rs">
+        <Github fname="low_level.rs" language="rust"
+                url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs"
+                start="41" end="72" />
+      </TabItem>
+      <TabItem value="high_level.rs" label="high_level.rs">
+        <Github fname="high_level.rs" language="rust"
+                url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
+                start="39" end="66" />
+
+        The high level API makes use of the interface defined in the [ext_contract.rs](https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs)
+      </TabItem>
+    </Tabs>
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
             start="54" end="87" />
+  </TabItem>
 
-</Language>
-
-<Language value="rust" language="rust">
-    <Github fname="lib.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/lib.rs"
-            start="1" end="29" />
-    <Github fname="external_contract.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
-            start="1" end="8" />
-    <Github fname="high_level.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
-            start="39" end="66" />
-    <Github fname="low_level.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs"
-            start="41" end="72" />
-
-</Language>
-
-<Language value="python" language="python">
+  <TabItem value="python" label="🐍 Python">
 ```python
 from near_sdk_py import call, Contract, callback, PromiseResult, CrossContract
 
@@ -234,12 +229,10 @@ class CrossContractExample(Contract):
             "result": result.data
         }
 ```
-</Language>
+  </TabItem>
 
-<Language value="go" language="go">
+  <TabItem value="go" label="🐹 GO">
 ```go
-
-
 package main
 
 import (
@@ -283,24 +276,23 @@ func (c *Contract) ExampleChangeGreetingCallback(result promise.PromiseResult) {
 	}
 }
 ```
-</Language>
-
-</CodeTabs>
+  </TabItem>
+</Tabs>
 
 ---
 
 ## Promises
 Cross-contract calls work by creating two promises in the network:
-1. A promise to execute code in the external contract (`Promise.create`)
-2. Optional: A promise to call another function with the result (`Promise.then`)
+1. A promise to execute code in the external contract - `Promise.create`
+2. **Optional**: A promise to call another function with the result - `Promise.then`
 
 Both promises will contain the following information:
 
-- The address of the contract you want to interact with
-- The function that you want to execute
-- The (**encoded**) arguments to pass to the function
-- The amount of GAS to use (deducted from the **attached Gas**)
-- The amount of NEAR to attach (deducted from **your contract's balance**)
+- The **address** of the contract you want to interact with
+- The **function** that you want to execute
+- The arguments to pass to the function
+- The amount of **GAS** to use (deducted from the **attached Gas**)
+- The NEAR **deposit** to attach (deducted from **your contract's balance**)
 
 :::tip
 
@@ -308,15 +300,62 @@ The callback can be made to **any** contract. Meaning that the result could pote
 
 :::
 
+---
 
-<hr class="subsection" />
-
-### Creating a Cross Contract Call
+## Creating a Cross Contract Call
 
 To create a cross-contract call with a callback, create two promises and use the `.then` method to link them:
 
-
 <Tabs>
+  <TabItem value="rs" label="🦀 Rust">
+    <Tabs>
+        <TabItem value="high_level" label="High Level API">
+
+        ```rust
+        #[ext_contract(external_trait)]
+        trait Contract {
+            fn function_name(&self, param1: T, param2: T) -> T;
+        }
+
+        external_trait::ext("external_address")
+        .with_attached_deposit(DEPOSIT)
+        .with_static_gas(GAS)
+        .function_name(arguments)
+        .then(
+        // this is the callback
+        Self::ext(env::current_account_id())
+        .with_attached_deposit(DEPOSIT)
+        .with_static_gas(GAS)
+        .callback_name(arguments)
+        );
+
+        ```
+
+        </TabItem>
+        <TabItem value="low_level" label="Low Level API">
+
+        ```rust
+        let arguments = json!({ "foo": "bar" })
+            .to_string()
+            .into_bytes();
+
+        let promise = Promise::new("external_address").function_call(
+            "function_name".to_owned(),
+            arguments,
+            DEPOSIT,
+            GAS
+        );
+
+        promise.then(
+            // Create a promise to callback query_greeting_callback
+            Self::ext(env::current_account_id())
+                .with_static_gas(GAS)
+                .callback_name(),
+        );
+        ```
+        </TabItem>
+    </Tabs>
+  </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
     ```ts
@@ -325,152 +364,79 @@ To create a cross-contract call with a callback, create two promises and use the
       // this function is the callback
       NearPromise.new(near.currentAccountId()).functionCall("callback_name", JSON.stringify(arguments), DEPOSIT, GAS)
     );
-    ```
-
-  </TabItem>
-  <TabItem value="rs" label="🦀 Rust">
-
-    There is a helper macro that allows you to make cross-contract calls with the syntax `#[ext_contract(...)]`. It takes a Rust Trait and converts it to a module with static methods. Each of these static methods takes positional arguments defined by the Trait, then the `receiver_id`, the attached deposit and the amount of gas and returns a new `Promise`. *That's the high-level way to make cross-contract calls.*
-
-    ```rust
-    #[ext_contract(external_trait)]
-    trait Contract {
-        fn function_name(&self, param1: T, param2: T) -> T;
-    }
-
-    external_trait::ext("external_address")
-    .with_attached_deposit(DEPOSIT)
-    .with_static_gas(GAS)
-    .function_name(arguments)
-    .then(
-      // this is the callback
-      Self::ext(env::current_account_id())
-      .with_attached_deposit(DEPOSIT)
-      .with_static_gas(GAS)
-      .callback_name(arguments)
-    );
-
-    ```
-
-    <hr class="subsection" />
-
-    There is another way to achieve the same result. You can create a new `Promise` without using a helper macro. *It's the low-level way to make cross-contract calls.*
-
-    ```rust
-    let arguments = json!({ "foo": "bar" })
-        .to_string()
-        .into_bytes();
-
-    let promise = Promise::new("external_address").function_call(
-        "function_name".to_owned(),
-        arguments,
-        DEPOSIT,
-        GAS
-    );
-
-    promise.then(
-        // Create a promise to callback query_greeting_callback
-        Self::ext(env::current_account_id())
-            .with_static_gas(GAS)
-            .callback_name(),
-    );
-
-    ```
-
-<details>
-<summary> Gas </summary>
-
-You can attach an unused GAS weight by specifying the `.with_unused_gas_weight()` method but it is defaulted to 1. The unused GAS will be split amongst all the functions in the current execution depending on their weights. If there is only 1 function, any weight above 1 will result in all the unused GAS being attached to that function. If you specify a weight of 0, however, the unused GAS will **not** be attached to that function. If you have two functions, one with a weight of 3, and one with a weight of 1, the first function will get `3/4` of the unused GAS and the other function will get `1/4` of the unused GAS.
-
-</details>
-
-  </TabItem>
+      ```
   
-  <TabItem value="python" label="🐍 Python">
-
-    ```python
-    from near_sdk_py import Contract, Context, ONE_TGAS
-    
-    # High-level Contract API (recommended)
-    CrossContract("external_address").call(
-        "function_name",  # Method to call
-        arg1="value1",    # Keyword arguments for the method
-        arg2="value2"
-    ).then(
-        "callback_name",  # Method name in this contract to use as callback
-        context_data="saved_for_callback"  # Additional context data for the callback
-    ).value()
-    
-    # Lower-level Promise API
-    from near_sdk_py import Promise
-    
-    Promise.create_batch("external_address").function_call(
-        "function_name", 
-        {"arg1": "value1", "arg2": "value2"},  # Arguments as a dictionary
-        amount=0,   # Deposit in yoctoNEAR
-        gas=5 * ONE_TGAS  # Gas allowance
-    ).then(
-        Context.current_account_id()  # The contract to call for the callback
-    ).function_call(
-        "callback_name",  # Method name for callback
-        {"context_data": "saved_for_callback"}  # Arguments for the callback
-    ).value()
-    ```
-
   </TabItem>
-<TabItem value="go" label="🐹 GO">
-
-```go
-package main
-
-import (
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-type PromiseCallbackInputData struct {
-	Data string `json:"data"`
-}
-
-// @contract:payable min_deposit=0.00001NEAR
-func (c *Contract) ExampleCrossContractCall() {
-	externalAccount := "hello-nearverse.testnet"
-	gas := uint64(5 * types.ONE_TERA_GAS)
-
-	args := map[string]string{
-		"message": "New Greeting",
-	}
-	callback_args := map[string]string{
-		"data": "saved_for_callback",
-	}
-	promise.NewCrossContract(externalAccount).
-		Gas(gas).
-		Call("set_greeting", args).
-		Then("example_cross_contract_callback", callback_args).
-		Value()
-}
-
-// @contract:view
-// @contract:promise_callback
-func (c *Contract) ExampleCrossContractCallback(input PromiseCallbackInputData, result promise.PromiseResult) {
-	env.LogString("Executing callback")
-
-	env.LogString("Input CrossContractCallback : " + input.Data)
-
-	if result.Success {
-		env.LogString("Cross-contract call executed successfully")
-	} else {
-		env.LogString("Cross-contract call failed")
-	}
-}
-```
-</TabItem>
+  <TabItem value="go" label="🐹 GO">
+  
+  ```go
+  package main
+  
+  import (
+      "github.com/vlmoon99/near-sdk-go/env"
+      "github.com/vlmoon99/near-sdk-go/promise"
+      "github.com/vlmoon99/near-sdk-go/types"
+  )
+  
+  // @contract:state
+  type Contract struct{}
+  
+  type PromiseCallbackInputData struct {
+      Data string `json:"data"`
+  }
+  
+  // @contract:payable min_deposit=0.00001NEAR
+  func (c *Contract) ExampleCrossContractCall() {
+      externalAccount := "hello-nearverse.testnet"
+      gas := uint64(5 * types.ONE_TERA_GAS)
+  
+      args := map[string]string{
+          "message": "New Greeting",
+      }
+      callback_args := map[string]string{
+          "data": "saved_for_callback",
+      }
+      promise.NewCrossContract(externalAccount).
+          Gas(gas).
+          Call("set_greeting", args).
+          Then("example_cross_contract_callback", callback_args).
+          Value()
+  }
+  
+  // @contract:view
+  // @contract:promise_callback
+  func (c *Contract) ExampleCrossContractCallback(input PromiseCallbackInputData, result promise.PromiseResult) {
+      env.LogString("Executing callback")
+  
+      env.LogString("Input CrossContractCallback : " + input.Data)
+  
+      if result.Success {
+          env.LogString("Cross-contract call executed successfully")
+      } else {
+          env.LogString("Cross-contract call failed")
+      }
+  }
+  ```
+  </TabItem>
 
 </Tabs>
+  
+<details>
+
+<summary> Concatenating Promises </summary>
+
+✅ You can concatenate promises: `P1.then(P2).then(P3)`: `P1` executes, then `P2` executes with the result of `P1`, then `P3` executes with the result of `P2`
+
+✅ You can join promises: `(P1.and(P2)).then(P3)`: `P1` and `P2` execute in parallel, after they finish `P3` will execute and have access to **both their results**
+
+⛔ You cannot **return** a joint promise without a callback: `return P1.and(P2)` is invalid, you need to add a `.then()`
+
+⛔ You cannot join promises within a `then`: `P1.then(P2.join([P3]))` is invalid
+
+⛔ You cannot use a `then` within a `then`: `P1.then(P2.then(P3))` is invalid
+
+
+</details>
 
 :::info
 
@@ -492,23 +458,20 @@ If your function finishes correctly, then eventually your callback function will
 
 In the callback function you will have access to the result, which will contain the status of the external function (if it worked or not), and the values in case of success.
 
-<CodeTabs>
-  <Language value="js" language="ts">
-    <Github fname="contract.ts"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
-            start="42" end="53" />
-
-</Language>
-
-<Language value="rust" language="rust">
-
-  <Github fname="high_level.rs"
+<Tabs>
+  <TabItem value="rs" label="🦀 Rust">
+    <Github fname="high_level.rs" language="rust"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
             start="23" end="37" />
+  </TabItem>
 
-</Language>
+  <TabItem value="js" label="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
+            start="42" end="53" />
+  </TabItem>
 
-<Language value="python" language="python">
+  <TabItem value="python" label="🐍 Python">
 ```python
 from near_sdk_py import callback, PromiseResult, Contract
 
@@ -542,11 +505,10 @@ class CrossContractExample(Contract):
             "context": additional_context
         }
 ```
-</Language>
+  </TabItem>
 
-<Language value="go" language="go">
+  <TabItem value="go" label="🐹 GO">
 ```go
-
 type PromiseCallbackInputData struct {
 	Data string `json:"data"`
 }
@@ -565,9 +527,8 @@ func (c *Contract) ExampleCrossContractCallback(input PromiseCallbackInputData, 
 	}
 }
 ```
-</Language>
-
-</CodeTabs>
+  </TabItem>
+</Tabs>
 
 :::info Callback with always execute
 
@@ -604,39 +565,25 @@ operation if necessary.
 
 ---
 
-## Concatenating Functions and Promises
-
-✅ Promises can be concatenate using the `.join` operator: `P1.join([P2, P3], "callback")`: `P1`, `P2`, and `P3` execute in parallel, after they finish, the callback will execute and have access to all their results
-
-⛔ You cannot **return** a joint promise without a callback: `return P1.join([P2])` is invalid since it misses the callback parameter
-
-✅ You can concatenate `then` promises: `P1.then("callback1").then("callback2")`: `P1` executes, then callback1 executes with the result of `P1`, then callback2 executes with the result of callback1
-
-⛔ You cannot use a `join` within a `then`: `P1.then(P2.join([P3]))` is invalid
-
-⛔ You cannot use a `then` within a `then`: `P1.then(P2.then("callback"))` is invalid
-
-<hr class="subsection" />
-
-### Multiple Functions, Same Contract
+## Calling Multiple Functions on the Same Contract
 
 You can call multiple functions in the same external contract, which is known as a **batch call**.
 
 An important property of batch calls is that they **act as a unit**: they execute in the same [receipt](/protocol/transaction-execution#receipts--finality), and if **any function fails**, then they **all get reverted**.
 
 <Tabs>
-  <TabItem value="js" label="🌐 JavaScript">
-
-  <Github fname="batch_actions" language="js"
-        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
-        start="5" end="17" />
-
-  </TabItem>
   <TabItem value="rs" label="🦀 Rust">
 
   <Github fname="lib.ts" language="rust"
         url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
         start="8" end="20" />
+
+  </TabItem>
+  <TabItem value="js" label="🌐 JavaScript">
+
+  <Github fname="batch_actions" language="js"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
+        start="5" end="17" />
 
   </TabItem>
   
@@ -755,26 +702,22 @@ Callbacks only have access to the result of the **last function** in a batch cal
 
 ---
 
-### Multiple Functions: Different Contracts
+## Calling Multiple Functions on Different Contracts
 
 You can also call multiple functions in **different contracts**. These functions will be executed in parallel, and do not impact each other. This means that, if one fails, the others **will execute, and NOT be reverted**.
 
 <Tabs>
-  <TabItem value="js" label="🌐 JavaScript">
-
-  <Github fname="lib.ts" language="js"
-        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
-        start="6" end="21" />
-
-  </TabItem>
   <TabItem value="rs" label="🦀 Rust">
-
-  <Github fname="lib.rs" language="rust"
+      <Github fname="lib.rs" language="rust"
         url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
         start="17" end="55" />
-
   </TabItem>
-  
+  <TabItem value="js" label="🌐 JavaScript">
+      <Github fname="lib.ts" language="js"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
+        start="6" end="21" />
+  </TabItem>
+ 
   <TabItem value="python" label="🐍 Python">
 
 ```python
@@ -894,7 +837,6 @@ func (c *Contract) ExampleParallelContractsCallback(input PromiseCallbackInputDa
 Callbacks have access to the result of **all functions** in a parallel call
 
 :::
-
 
 ---
 

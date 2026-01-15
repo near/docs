@@ -603,6 +603,11 @@ video+p>em,img+p>em,img+em, .monaco+em {
 // CODE & MONACO EDITOR STYLES
 // ============================================================================
 
+.theme-code-block {
+  overflow: scroll;
+  max-height: 100vh;
+}
+
 .monaco {
   border-radius: 10px;
   background-color: #f6f8fa;
