@@ -1,6 +1,6 @@
 ---
-id: near-connector
-title: NEAR Connect Tutorial
+id: wallet-login
+title: Wallet Login
 description: "Connect users to NEAR wallets with a secure, sandbox-based connector library"
 ---
 import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs"
