@@ -373,20 +373,12 @@ const sidebar = {
         {
           "Concepts": [
             'web3-apps/concepts/web-login',
-            'web3-apps/concepts/eth-wallets-on-near',
             'web3-apps/concepts/data-types'
           ]
         },
         {
           "Tutorials": [
-            {
-              "Web Login": [
-                'web3-apps/tutorials/web-login/near-connector',
-                'web3-apps/tutorials/web-login/wallet-selector',
-                'web3-apps/tutorials/web-login/ethereum-wallets',
-                'web3-apps/tutorials/web-login/web3-auth',
-              ]
-            },
+            'web3-apps/tutorials/wallet-login',
             'tutorials/examples/frontend-multiple-contracts',
             'web3-apps/backend/backend-login',
             {
