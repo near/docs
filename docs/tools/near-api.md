@@ -37,6 +37,43 @@ Our API is available in multiple languages, including:
 - Rust: [`near-api-rs`](https://github.com/near/near-api-rs)
 - Python: [`py-near`](https://github.com/pvolnov/py-near)
 
+:::note Community Alternative
+For TypeScript developers, community maintains [near-kit](https://github.com/r-near/near-kit) as an alternative with simplified syntax and enhanced type safety.
+
+Example showing practical benefits:
+```ts
+import { Near, NetworkError, InsufficientBalanceError } from "near-kit"
+
+const near = new Near({ network: "testnet" })
+
+// Type-safe contract calls with built-in error handling
+try {
+  const result = await near.call("counter.near", "increment", { 
+    times: 5 
+  })
+  console.log(`Counter incremented ${result} times`)
+  
+  await near.send("bob.near", "0.5 NEAR") 
+} catch (error) {
+  if (error instanceof InsufficientBalanceError) {
+    console.log(`Insufficient balance: need ${error.required}, have ${error.available}`)
+  } else if (error instanceof NetworkError) {
+    console.log("Network error - retrying automatically...")
+  }
+}
+
+// Batch operations with automatic nonce management
+const receipts = await near.batch(
+  near.send("alice.near", "1 NEAR"),
+  near.call("token.near", "transfer", { 
+    receiver_id: "bob.near", 
+    amount: "1" 
+  })
+)
+```
+
+:::
+
 :::tip Wallet Integration
 To allow users to login into your web application using a wallet you will need the `wallet-selector`. Read more in our [Web Frontend integration](../web3-apps/tutorials/web-login/wallet-selector.md) article
 :::
