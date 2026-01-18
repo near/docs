@@ -223,23 +223,6 @@ h2 {
   font-size: var(--h2-font-size);
 }
 
-/* Add an indicator after external links that'll open in a new window. */
-a[target="_blank"]::after {
-  content: "↗";
-  display: inline-block;
-  height: 0.5em;
-  padding-inline: 0.2em;
-  vertical-align: text-top;
-}
-
-a.menu__link[target="_blank"]::after {
-  display: inherit;
-}
-
-a.cover-card[target="_blank"]::after {
-  display: none;
-}
-
 .auto-col {
 
   padding: 0 var(--ifm-spacing-horizontal);
@@ -256,7 +239,7 @@ a.cover-card[target="_blank"]::after {
   
   @media (min-width: 1201px) {
     flex: 1 1 calc(33.333%);
-    max-width: calc(33.333%);
+    max-width: calc(50%);
   }
 }
 
@@ -347,6 +330,19 @@ li>ul {
 
 .menu__list-item-collapsible {
   background: none !important;
+}
+
+// ============================================================================
+// TABS STYLES
+// ============================================================================
+.tabs__item {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  border-width: 2px;
+}
+
+.margin-top--md {
+  margin-top: .5rem !important;
 }
 
 // ============================================================================
@@ -577,7 +573,7 @@ html:not(.blog-post-page) .avatar__photo {
   border-radius: 0%;
 }
 
-video+p>em,img+p>em, .monaco+em {
+video+p>em,img+p>em,img+em, .monaco+em {
   font-style: normal;
   display: inherit;
   text-align: center;
@@ -606,6 +602,11 @@ video+p>em,img+p>em, .monaco+em {
 // ============================================================================
 // CODE & MONACO EDITOR STYLES
 // ============================================================================
+
+.theme-code-block {
+  overflow: scroll;
+  max-height: 100vh;
+}
 
 .monaco {
   border-radius: 10px;

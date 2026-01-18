@@ -15,6 +15,7 @@ This page provides a collection of best practices for writing smart contracts on
 
 Here we lay out some best practices for writing smart contracts on NEAR, such as:
 
+- [Store Account IDs efficiently](#store-account-ids-efficiently)
 - [Enable overflow checks](#enable-overflow-checks)
 - [Use `require!` early](#use-require-early)
 - [Use `log!`](#use-log)
@@ -24,6 +25,10 @@ Here we lay out some best practices for writing smart contracts on NEAR, such as
 - [Use workspaces](#use-workspaces)
 
 ---
+
+## Store Account IDs efficiently
+
+You can save on smart contract storage if using NEAR Account IDs by encoding them using base32. Since they consist of `[a-z.-_]` characters with a maximum length of 64 characters, they can be encoded using 5 bits per character, with terminal `\0`. Going to a size of 65 * 5 = 325 bits from the original (64 + 4) * 8 = 544 bits. This is a 40% reduction in storage costs
 
 ## Enable overflow checks
 

@@ -74,7 +74,7 @@ Here is how to directly interact with the factory contract through your applicat
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
     ```bash
-    near call token.primitives.near create_token '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}' --gas 300000000000000 --depositYocto 2234830000000000000000000 --accountId bob.near
+    near call token.primitives.near create_token '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}' --gas 300000000000000 --depositYocto 2234830000000000000000000 --useAccount bob.near
     ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -332,7 +332,7 @@ By calling this `storage_deposit` the user can register themselves or **register
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
   ```bash
-  near call token.v2.ref-finance.near storage_deposit '{"account_id": "alice.near"}' --depositYocto 1250000000000000000000 --accountId bob.near
+  near call token.v2.ref-finance.near storage_deposit '{"account_id": "alice.near"}' --depositYocto 1250000000000000000000 --useAccount bob.near
   ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -380,7 +380,7 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
     ```bash
-    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "alice.near", "amount": "100000000000000000"}' --depositYocto 1 --accountId bob.near
+    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "alice.near", "amount": "100000000000000000"}' --depositYocto 1 --useAccount bob.near
     ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -470,7 +470,7 @@ Let's assume that you need to deposit FTs on [Ref Finance](https://rhea.finance/
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
   ```bash
-  near call token.v2.ref-finance.near ft_transfer_call '{"receiver_id": "v2.ref-finance.near", "amount": "100000000000000000", "msg": ""}' --gas 300000000000000 --depositYocto 1 --accountId bob.near
+  near call token.v2.ref-finance.near ft_transfer_call '{"receiver_id": "v2.ref-finance.near", "amount": "100000000000000000", "msg": ""}' --gas 300000000000000 --depositYocto 1 --useAccount bob.near
   ```
 
   <details>
@@ -570,7 +570,7 @@ While the FT standard does not define a `burn` method, you can simply transfer t
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
     ```bash
-    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "0000000000000000000000000000000000000000000000000000000000000000", "amount": "100000000000000000"}' --depositYocto 1 --accountId bob.near
+    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "0000000000000000000000000000000000000000000000000000000000000000", "amount": "100000000000000000"}' --depositYocto 1 --useAccount bob.near
     ```
   </TabItem>
 </Tabs>

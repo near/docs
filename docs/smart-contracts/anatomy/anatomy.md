@@ -12,9 +12,9 @@ import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-
 
 Let's illustrate the basic anatomy of a simple "Hello World" contract. The code on this page comes from our [Hello NEAR repository](https://github.com/near-examples/hello-near-examples) on GitHub.
 
-<ExplainCode languages="js,rust,python,go" >
+<ExplainCode languages="rust,js,python,go" >
 
-<Block highlights='{"js": "1", "rust": "1", "python": "1","go":"1"}' fname="hello-near">
+<Block highlights='{"js": "1", "rust": "1", "python": "1","go":"3-6"}' fname="hello-near">
 
     ### Importing the SDK
     All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment.md), [call other contracts](./crosscontract.md), [transfer tokens](./actions.md), and much more.
@@ -23,12 +23,36 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "5-22", "rust":"5-7,20-31", "python": "5-19","go":"10-77"}' fname="hello-near">
+<Block highlights='{"js": "5-22", "rust":"5-7,20-31", "python": "5-19","go":"8-33"}' fname="hello-near">
 
     ### Contract's Main Structure
     The contract is described through a structure:
     - The attributes define which data the contract stores
     - The functions define its public (and private) interface
+
+</Block>
+
+
+<Block highlights='{"go": "8,13,20,30"}' fname="hello-near">
+
+    ### Comment Directives
+
+    Unlike languages with built-in decorators, the Near Go SDK uses **Comment Directives** to control how your code is compiled into a smart contract.
+
+    The generator (built into the `near-go` CLI) scans your comments for specific tags starting with `@contract:`. 
+    
+    > **Note:** These directives rely on the `near-go` build process and will not work if you compile using raw `tinygo`.
+
+    1. **`@contract:state`**: Placed above a `struct`. It identifies the main state of the smart contract. **Only one state struct is allowed per project.** The CLI automatically generates `getState` and `setState` helper methods.
+    2. **`@contract:init`**: Marks the initialization method (constructor). It checks if the state is empty before running. **Only one init method is allowed per project.**
+    3. **`@contract:view`**: Marks a method as read-only. It exposes the method to the outside world but does not save changes to the state. Compatible with `@contract:promise_callback`.
+    4. **`@contract:mutating`**: Marks a method that modifies the state. The CLI automatically saves the updated state back to storage after execution. Required for callbacks that need to modify data.
+    5. **`@contract:payable`**: Allows the method to accept attached NEAR tokens. You can optionally specify requirements like `min_deposit=1NEAR`. Compatible with `mutating` and `init`.
+    6. **`@contract:promise_callback`**: Handles the result of a cross-contract call by injecting `promise.PromiseResult` into the arguments. **Must be combined** with either `@contract:view` (for read-only logic) or `@contract:mutating` (to save state changes).
+    
+
+
+    **Note:** Methods exported to WASM will automatically be converted to `snake_case` (e.g., `SetGreeting` becomes `set_greeting`).
 
 </Block>
 
@@ -90,7 +114,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "5", "rust": "6,10-16", "python": "7-8", "go": "70"}' fname="hello-near">
+<Block highlights='{"js": "5", "rust": "6,10-16", "python": "7-8", "go": "10,15,17,23,32"}' fname="hello-near">
 
     ### Storage (State)
     We call the data stored in the contract [the contract's state](./storage.md).
@@ -116,7 +140,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "12-14", "rust": "22-24", "python": "10-13","go": "45-58"}' fname="hello-near">
+<Block highlights='{"js": "12-14", "rust": "22-24", "python": "10-13","go": "20-28"}' fname="hello-near">
 
     ### Read Only Functions
     Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account.
@@ -125,7 +149,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "17-20", "rust": "27-30", "python": "15-19","go": "61-77"}' fname="hello-near">
+<Block highlights='{"js": "17-20", "rust": "27-30", "python": "15-19","go": "30-33"}' fname="hello-near">
 
     ### State Mutating Functions
     Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network.

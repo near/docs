@@ -317,23 +317,10 @@ const sidebar = {
           ]
         },
         {
-          type: 'category',
-          label: 'Tutorials',
-          link: {
-            type: 'doc',
-            id: 'tutorials/welcome',
-          },
-          items: [
-            {
-              "Beginner": [
-                'tutorials/examples/count-near',
-                'tutorials/examples/guest-book',
-                'tutorials/examples/coin-flip',
-              ]
-            },
+          "Tutorials": [
+            'smart-contracts/tutorials/basic-contracts',
             {
               "Advanced": [
-                'tutorials/examples/donation',
                 'tutorials/examples/near-drop',
                 'tutorials/examples/update-contract-migrate-state',
               ]

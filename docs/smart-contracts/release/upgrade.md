@@ -28,9 +28,6 @@ Contract's can be updated in two ways:
 Simply re-deploy another contract using your preferred tool, for example, using
 [NEAR CLI](../../tools/cli.md):
 
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Short">
-
 ```bash
 # (optional) If you don't have an account, create one
 near create-account <account-id> --useFaucet
@@ -38,22 +35,6 @@ near create-account <account-id> --useFaucet
 # Deploy the contract
 near deploy <account-id> <wasm-file>
 ```
-
-</TabItem>
-
-<TabItem value="full" label="Full">
-
-```bash
-# (optional) If you don't have an account, create one
-near account create-account sponsor-by-faucet-service somrnd.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
-
-# Deploy the contract
-near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
-```
-
-</TabItem>
-
-</Tabs>
 
 ---
 
@@ -77,19 +58,7 @@ A smart contract can also update itself by implementing a method that:
 #### How to Invoke Such Method?
 
 <Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Near CLI (short)">
-
-```bash
-# Load the contract's raw bytes
-CONTRACT_BYTES=`cat ./path/to/wasm.wasm | base64`
-
-# Call the update_contract method
-near call <contract-account> update_contract "$CONTRACT_BYTES" --base64 --accountId <manager-account> --gas 300000000000000
-```
-
-</TabItem>
-
-<TabItem value="full" label="Near CLI (full)">
+<TabItem value="full" label="CLI">
 
 ```bash
 # Call the update_contract method
@@ -169,19 +138,19 @@ for such messages to be "premium". You keep track of the messages and payments
 using the following state:
 
 <CodeTabs>
-<Language value="js" language="js">
-
-<Github fname="index.js"
-      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-base.js"
-      start="12" end="33" />
-
-</Language>
-
 <Language value="rust" language="rust">
 
 <Github fname="lib.rs"
     url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs"
     start="10" end="21" />
+
+</Language>
+
+<Language value="js" language="js">
+
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-base.js"
+      start="12" end="33" />
 
 </Language>
 
@@ -193,19 +162,19 @@ At some point you realize that you could keep track of the `payments` inside of
 the `PostedMessage` itself, so you change the contract to:
 
 <CodeTabs>
-<Language value="js" language="js">
-
-<Github fname="index.js"
-      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
-      start="21" end="43" />
-
-</Language>
-
 <Language value="rust" language="rust">
 
 <Github fname="lib.rs"
     url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs"
     start="12" end="23" />
+
+</Language>
+
+<Language value="js" language="js">
+
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
+      start="21" end="43" />
 
 </Language>
 
@@ -228,19 +197,19 @@ state, removes the `payments` vector and adds the information to the
 `PostedMessages`:
 
 <CodeTabs>
-<Language value="js" language="js">
-
-<Github fname="index.js"
-      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
-      start="5" end="68" />
-
-</Language>
-
 <Language value="rust" language="rust">
 
 <Github fname="lib.rs"
     url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
     start="3" end="51" />
+
+</Language>
+
+<Language value="js" language="js">
+
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
+      start="5" end="68" />
 
 </Language>
 
