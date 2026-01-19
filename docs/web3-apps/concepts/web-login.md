@@ -1,87 +1,75 @@
 ---
-title: Web Login Methods
+title: Web Login Methods for NEAR
 id: web-login
-description: "Learn all the login options available for your website or web app"
+description: "Learn wallet connection options for your NEAR web app"
 ---
 
-NEAR offers multiple options to allow users to login using NEAR accounts. Below are the most popular methods to
-integrate web login into your web app or website, each tailored to different use cases and user experiences.
+NEAR offers multiple wallet connection methods. The modern NEAR Connect approach is recommended for new projects.
 
-Once the user is logged in, they will be able to use their accounts to interact with the NEAR blockchain, making
-call to smart contracts, transfer tokens, and more.
-
-<details>
-
-<summary> Summary of Available Methods </summary>
-
-| Method                                    | Wallet Login | Social Login | Key Owners | Description                                      |
-|-------------------------------------------|--------------|--------------|------------|--------------------------------------------------|
-| [Wallet Selector](#wallet-selector)       | ✅            | ❌            | User       | Popup modal to select from existing NEAR wallets |
-| [NEAR Connector](#near-connector)           | ✅            | ❌            | User       | Popup modal to select from existing NEAR wallets |
-| [Privy Social Login](#privy-social-login) | ❌            | ✅            |            | Developer                                        |
-| [Web3Auth](#web3auth)                     | ❌            | ✅            | User       | Login using email or social accounts             |
-
-</details>
+| Method | Dependencies | Maintenance | Recommendation |
+|--------|--------------|--------------|----------------|
+| **NEAR Connect** | Zero | Distributed | **Recommended** |
+| Wallet Selector | Multiple | Centralized | Legacy |
+| Privy | Third-party | Third-party | Social login |
+| Web3Auth | Third-party | Third-party | Social login |
 
 ---
 
-## Wallet Selector
+## NEAR Connect (Recommended)
 
-The [wallet selector](https://github.com/near/wallet-selector) is a javascript library that allows you to easily add a `modal popup` to your web, so users can login using one of the existing [NEAR wallets](https://wallet.near.org).
-
-It includes support for the most popular wallets, and `react hooks` to easily integrate it into your app.
-
-![Preview](/assets/docs/tools/wallet-selector-preview.png)
-
-
-:::tip
-
-You can learn how to integrate the wallet selector into your app in our [Wallet Selector Tutorial](../tutorials/web-login/wallet-selector.md) guide.
-
-:::
-
----
-
-## NEAR Connector
-
-Considered a successor to the wallet selector, the [NEAR Connector](https://github.com/AZbang/hot-connector) is a zero-dependency lightweight library that allows users to connect to your dApp using their preferred wallet.
+[NEAR Connect](https://github.com/azbang/near-connect) is modern wallet connector for NEAR. Created by Andrei Zhevlakov (CTO at HOT Labs), it solves maintenance issues of the legacy approach.
 
 ![Preview](https://github.com/user-attachments/assets/c4422057-38bb-4cd9-8bd0-568e29f46280)
 
-:::tip
+### Key Benefits
+- Zero dependencies
+- Sandboxed security
+- Dynamic wallet updates
+- Better performance
 
-You can learn how to integrate the `near connector` into your app in the [NEAR Connector tutorial](../tutorials/web-login/near-connector.md).
+```bash
+yarn add @hot-labs/near-connect
+```
 
+```tsx
+import { NearConnector } from "@hot-labs/near-connect";
+
+const connector = new NearConnector();
+connector.on("wallet:signIn", async (data) => {
+  const wallet = await connector.wallet();
+  // Use wallet API (compatible with near-wallet-selector)
+});
+```
+
+[View full NEAR Connect tutorial](../tutorials/web-login/near-connector.md)
+
+---
+
+## Wallet Selector (Legacy)
+
+The [Wallet Selector](https://github.com/near/wallet-selector) is the traditional approach with maintenance challenges:
+- Monolithic codebase
+- Bundled wallet code
+- Slow update cycle
+
+![Preview](/assets/docs/tools/wallet-selector-preview.png)
+
+:::note
+Consider using [NEAR Connect](#near-connect-recommended) for new projects instead.
 :::
 
 ---
 
-## Privy Social Login
+## Social Login Options
 
-[Privy](https://www.privy.io/) is a third-party service that allows users to login using their email or social accounts (Google, Facebook, Twitter, etc). Upon login, a NEAR wallet is created for the user, which they can fund and use to interact with your dApp.
+### Privy
 
-![Preview](https://framerusercontent.com/images/ugUCPrqIGlKFdxBwSbRoWriZtE.png?scale-down-to=2048&width=4018&height=2262)
+[Privy](https://www.privy.io/) enables social login (email, Google, Facebook) with NEAR wallet creation.
 
-:::tip
+### Web3Auth
 
-Check our [Privy Integration Example](https://github.com/near-examples/hello-privy/) to learn how to integrate Privy into your web app
+[Web3Auth](https://web3auth.io/) provides social login with NEAR wallet creation.
 
-:::
-
----
-
-## Web3Auth
-
-[Web3Auth](https://web3auth.io/) is a third-party service that allows users to login using their email or social accounts (Google, Facebook, Twitter, etc). Upon login, a NEAR wallet is created for the user, which they can fund and use to interact with your dApp.
-
-![Preview](/assets/docs/web3-apps/web3auth.jpeg)
-
-:::tip
-
-Check our [Web3Auth Integration Example](https://github.com/near-examples/hello-web3auth/) to learn how to integrate Privy into your web app
-
-:::
-
-:::warning Ethereum Wallets
-The ethereum wallet login offered by Web3Auth will not allow you to interact with NEAR contracts
+:::warning
+Web3Auth's Ethereum wallet login won't work with NEAR contracts.
 :::
