@@ -116,7 +116,7 @@ Here is how to directly interact with the factory contract through your applicat
   });
   ```
 
-  Learn more about adding the [NEAR Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -228,7 +228,7 @@ You can query the NFT's information and metadata by calling the `nft_token`.
   });
   ```
 
-  Learn more about adding the [NEAR Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   <details>
 
@@ -388,7 +388,7 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
   });
   ```
 
-  Learn more about adding the [NEAR Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -538,7 +538,7 @@ While the NFT standard does not define a `burn` method, you can simply transfer 
   });
   ```
 
-  Learn more about adding the [NEAR Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
