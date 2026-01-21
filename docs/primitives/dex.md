@@ -188,7 +188,7 @@ Query your deposit balances by calling the `get_deposits` method:
   });
   ```
 
-  Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding the [NEAR Connect](../web3-apps/tutorials/wallet-login) to your application
 
   <details>
   <summary>Example response</summary>
@@ -306,7 +306,7 @@ DEXs work by having multiple pools of token pairs (e.g. NEAR-USDC) that users ca
   });
   ```
 
-  Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding the [NEAR Connect](../web3-apps/tutorials/wallet-login) to your application
 
   <details>
   <summary>Example response</summary>
@@ -498,7 +498,7 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
     });
     ```
 
-   Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+   Learn more about adding the [NEAR Connect](../web3-apps/tutorials/wallet-login) to your application
 
   <details>
   <summary>Example response</summary>

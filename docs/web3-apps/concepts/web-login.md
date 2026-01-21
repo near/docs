@@ -14,14 +14,12 @@ call to smart contracts, transfer tokens, and more.
 
 ## NEAR Connector
 
-Considered a successor to the [original wallet selector](https://github.com/near/wallet-selector), the [NEAR Connector](https://github.com/AZbang/hot-connector) is a zero-dependency lightweight library that allows users to connect to your dApp using their preferred wallet.
+[NEAR Connect](https://github.com/azbang/near-connect) is a zero-dependency lightweight library that allows users to connect to your dApp using their preferred wallet. It uses a secure sandbox-based architecture where wallet scripts run in isolated iframes.
 
 ![Preview](https://github.com/user-attachments/assets/c4422057-38bb-4cd9-8bd0-568e29f46280)
 
 :::tip
-
-You can learn how to integrate the `near connector` into your app in the [NEAR Connector tutorial](../tutorials/web-login/near-connector.md).
-
+You can learn how to integrate NEAR Connect into your app in the [NEAR Connector tutorial](../tutorials/wallet-login.md)
 :::
 
 ---

@@ -87,7 +87,7 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding the [NEAR Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -155,7 +155,7 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding the [NEAR Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -200,7 +200,7 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding the [NEAR Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -270,7 +270,7 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding the [NEAR Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -317,7 +317,7 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding the [NEAR Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -396,7 +396,7 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding the [NEAR Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">

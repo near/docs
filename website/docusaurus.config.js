@@ -556,8 +556,8 @@ const config = {
                   icon: '/assets/docs/welcome-pages/near-cli.png',
                 },
                 {
-                  label: 'Wallet Selector',
-                  to: '/tools/wallet-selector',
+                  label: 'NEAR Connect',
+                  to: '/tools/near-connect',
                   description: 'Integrate multiple wallets into your application',
                   icon: '/assets/docs/welcome-pages/multiple.png',
                 },

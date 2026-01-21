@@ -63,7 +63,7 @@ You can create a DAO by interacting with the `sputnik-dao` contract:
     The full list of roles and permissions you can find [here](https://github.com/near-daos/sputnik-dao-contract#roles-and-permissions).
     :::
 
-   Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+   Learn more about adding the [NEAR Connect](../web3-apps/tutorials/wallet-login) to your application
   
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -209,7 +209,7 @@ Query the list of DAOs existing in Sputnik Dao.
     });
     ```
 
-    Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+    Learn more about adding the [NEAR Connect](../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -269,7 +269,7 @@ These snippets will enable you to query the proposals existing in a particular D
     });
     ```
 
-   Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+   Learn more about adding the [NEAR Connect](../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -414,7 +414,7 @@ Create a proposal so other users can vote in favor or against it.
     });
     ```
 
-   Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+   Learn more about adding the [NEAR Connect](../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -734,7 +734,7 @@ These snippet will enable your users to cast a vote for proposal of a particular
   Available vote options: `VoteApprove`, `VoteReject`, `VoteRemove`.
   :::
 
-  Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding the [NEAR Connect](../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">

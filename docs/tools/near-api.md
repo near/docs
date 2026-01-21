@@ -38,7 +38,7 @@ Our API is available in multiple languages, including:
 - Python: [`py-near`](https://github.com/pvolnov/py-near)
 
 :::tip Wallet Integration
-To allow users to login into your web application using a wallet you will need the `wallet-selector`. Read more in our [Web Frontend integration](../web3-apps/tutorials/web-login/wallet-selector.md) article
+To allow users to login into your web application using a wallet you will need a wallet connector. Read more in our [NEAR Connect](../web3-apps/tutorials/wallet-login) article
 :::
 
 ---
@@ -163,9 +163,7 @@ To allow users to login into your web application using a wallet you will need t
   <Tabs>
   <TabItem value="browser" label="Browser" default>
 
-  In browser, you typically don’t need to manage private keys manually. Instead, use [Wallet Selector](https://github.com/near/wallet-selector), the official wallet connection framework for NEAR dApps. It handles account access, key management, and user authentication across multiple wallet providers with a unified interface.
-
-  You can find a full example of browser-based signing with `Wallet Selector` in the [official example here](https://github.com/near/wallet-selector/tree/main/examples).
+  In browser, you typically don’t need to manage private keys manually. Instead, use [NEAR Connect](../web3-apps/tutorials/wallet-login.md) to handle the user authentication and signing process securely
 
   <details>
     <summary>Manually managing keys in the browser (not recommended)</summary>
@@ -1672,7 +1670,7 @@ Users can sign messages using the `wallet-selector` `signMessage` method, which 
   <TabItem value="js" label="🌐 JavaScript">
 
     <Github fname="authenticate.js" language="javascript"
-      url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/verify-signature/authentication.js" />
+      url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/verify-signature.js" />
 
   </TabItem>
 </Tabs>

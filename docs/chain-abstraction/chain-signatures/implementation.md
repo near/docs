@@ -279,7 +279,7 @@ The method requires four parameters:
   1. The `payloads` (or hashes) to be signed for the target blockchain
   2. The derivation `path` for the account we want to use to sign the transaction
   3. The `keyType`, `Ecdsa` for `Secp256k1` signatures and `Eddsa` for `Ed25519` signatures.
-  4. The `signerAccount` which contains the `accountId` that is signing and the `signAndSendTransactions` function from the [wallet selector](../../tools/wallet-selector.md).
+  4. The `signerAccount` which contains the `accountId` that is signing and the `signAndSendTransactions` function from the [NEAR Connect](../../web3-apps/tutorials/wallet-login).
 
 <Tabs groupId="code-tabs">
   <TabItem value="Ξ EVM">

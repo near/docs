@@ -137,7 +137,7 @@ Each frontend connects to a **pre-deployed version of the contract**. Check `./f
 
 ### NEAR Connector Hooks
 
-All frontends use [`near-connect-hooks`](https://www.npmjs.com/package/near-connect-hooks), which wrap the functionality of [NEAR Connector](../../web3-apps/tutorials/web-login/near-connector.md) to handle the connection between the web app and the NEAR blockchain.
+All frontends use [`near-connect-hooks`](https://www.npmjs.com/package/near-connect-hooks), which wrap the functionality of [NEAR Connector](../../web3-apps/tutorials/wallet-login.md) to handle the connection between the web app and the NEAR blockchain.
 
 The `near-connect-hooks` expose a `NearProvider` that is used to wrap the entire application, usually in `pages/_app.js`:
 

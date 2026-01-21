@@ -66,4 +66,4 @@ const signature = wallet.signMessage({ message, recipient, nonce: challenge, cal
 Once the user has signed the challenge, the wallet will call the `callbackUrl` with the signature. The backend can then verify the signature.
 
 <Github fname="authenticate.js" language="javascript"
-      url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/verify-signature/authentication.js" />
+      url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/verify-signature.js" />

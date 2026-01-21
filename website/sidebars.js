@@ -423,7 +423,11 @@ const sidebar = {
           "Reference": [
             'tools/near-api',
             'tools/near-cli',
-            'tools/wallet-selector',
+            { 
+              type: 'link', 
+              label: 'NEAR Connect ↗',
+              href: 'https://github.com/azbang/near-connect'
+            },
           ]
         }
       ],
