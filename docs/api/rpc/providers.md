@@ -10,7 +10,7 @@ balancing.
 
 :::tip
 
-If you want to use a custom RPC provider with NEAR Wallet Selector, [check this example](../../web3-apps/tutorials/web-login/wallet-selector.md#custom-rpc).
+You can use any of these RPC endpoints with [any of our APIs](../../tools/near-api.md#view-function) or [wallet libraries](../../web3-apps/tutorials/wallet-login.md)
 
 :::
 
