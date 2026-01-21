@@ -1,4 +1,4 @@
-import { useWalletSelector } from "@near-wallet-selector/react-hook";
+import { useNearWallet } from "near-connect-hooks";
 import { useEffect } from "react";
 import { useAcademyProgress } from "./AcademyProgressContext";
 
@@ -7,7 +7,7 @@ const CheckLogin = ({course}) => {
     return <div>Error: No course provided.</div>;
   }
 
-  const {signedAccountId, signIn} = useWalletSelector();
+  const {signedAccountId, signIn} = useNearWallet();
   const {incrementCompletedLessons} = useAcademyProgress(course);
   const localStorageKey = `academy-quiz-${course}-check-login`;
 

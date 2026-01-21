@@ -1,10 +1,10 @@
-import { NEAR } from '@near-js/tokens';
+import { NEAR } from 'near-api-js/tokens';
 import { useCallback, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import styles from './FungibleToken.module.scss';
-import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { useNearWallet } from 'near-connect-hooks';
 import Card from '../../UI/Card';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
@@ -41,7 +41,7 @@ const CreateTokenForm = ({ reload = () => { } }) => {
     mode: 'onSubmit'
   });
 
-  const { viewFunction, callFunction, getBalance, signedAccountId, signIn } = useWalletSelector();
+  const { viewFunction, callFunction, getBalance, signedAccountId, signIn } = useNearWallet();
   const [requiredDeposit, setRequiredDeposit] = useState('0');
   const [deposit, setDeposit] = useState('0');
   const [step, setStep] = useState('form');

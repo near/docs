@@ -103,19 +103,19 @@ Login if you haven't done it yet and you will see a simple form that allows you 
 ### Function Call Hooks
 Just like the [navigation bar](#navigation-bar), we use the `useNearWallet` hook to get functions that allow us to call methods on the contract:
 
-- `viewMethod` is used to call functions that are read-only
-- `callMethod` is used to call functions that modify the state of the contract
+- `viewFunction` is used to call functions that are read-only
+- `callFunction` is used to call functions that modify the state of the contract
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.tsx" language="jsx" start="11" end="11" />
 
 #### Calling Read-Only Methods
 
-For example, when we want to fetch the current greeting stored in the contract, we use `viewMethod` inside a `useEffect` hook:
+For example, when we want to fetch the current greeting stored in the contract, we use `viewFunction` inside a `useEffect` hook:
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.tsx" language="jsx" start="17" end="19" />
 
 #### Calling Change Methods
-On the other hand, when the user submits a new greeting, we use `callMethod` to send a transaction to the contract:
+On the other hand, when the user submits a new greeting, we use `callFunction` to send a transaction to the contract:
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.tsx" language="jsx" start="25" end="37" />
 

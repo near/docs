@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { useNearWallet } from 'near-connect-hooks';
 import NftImage from './shared/NftImage';
 
 const NFTPreview = ({ nft }) => {
   const [infoNft, setInfoNft] = useState(undefined);
   const [isLoading, setIsLoading] = useState(true);
-  const { viewFunction } = useWalletSelector();
+  const { viewFunction } = useNearWallet();
   
   useEffect(() => {
     const fetchNftInfo = async () => {

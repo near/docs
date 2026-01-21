@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styles from './CreateDrop.module.scss';
-import { NEAR } from '@near-js/tokens';
+import { NEAR } from 'near-api-js/tokens';
 import { generateAndStore } from '../hooks/useLinkdrops';
-import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { useNearWallet } from 'near-connect-hooks';
 import { ImgNft } from '../../UI/ImgNft';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
@@ -22,7 +22,7 @@ const CreateNFTDrop = ({ user_collections, reload }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [expandedAccordions, setExpandedAccordions] = useState({});
-  const { signedAccountId, signAndSendTransactions } = useWalletSelector();
+  const { signedAccountId, signAndSendTransactions } = useNearWallet();
 
   console.log(user_collections);
   

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import styles from './CreateDrop.module.scss';
-import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { useNearWallet } from 'near-connect-hooks';
 import { toast } from 'react-toastify';
 import { generateAndStore } from '../hooks/useLinkdrops';
-import { NEAR } from '@near-js/tokens';
+import { NEAR } from 'near-api-js/tokens';
 import Card from '../../UI/Card';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
@@ -40,7 +40,7 @@ const CreateTokenDrop = ({ user_fts, reload }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedToken, setSelectedToken] = useState(user_fts?.[0] || null);
 
-  const { signAndSendTransactions, signedAccountId } = useWalletSelector();
+  const { signAndSendTransactions, signedAccountId } = useNearWallet();
 
   const validateForm = () => {
     const newErrors = {};

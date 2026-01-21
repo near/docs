@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import RoundedImage from './RoundedImage';
 
 export const ImgNft = ({ nft }) => {
-  //   const { wallet } = useWalletSelector();
+  //   const { wallet } = useNearWallet();
   const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {

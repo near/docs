@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useWalletSelector } from '@near-wallet-selector/react-hook';
-import { KeyPair } from '@near-js/crypto';
-import { NEAR } from '@near-js/tokens';
+import { useNearWallet } from 'near-connect-hooks';
+import { KeyPair } from 'near-api-js';
+import { NEAR } from 'near-api-js/tokens';
 import FTPreview from './FTPreview';
 import NFTPreview from './NFTPreview';
 import NearPreview from './NearPreview';
@@ -16,7 +16,7 @@ const Claim = () => {
   const [error, setError] = useState(null);
 
   const contract_id = 'v2.keypom.testnet';
-  const { signedAccountId, signIn, viewFunction } = useWalletSelector();
+  const { signedAccountId, signIn, viewFunction } = useNearWallet();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);

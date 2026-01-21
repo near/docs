@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { useNearWallet } from 'near-connect-hooks';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import styles from './CreateDaoForm.module.scss';
 // import LabelWithTooltip from '../Shared/LabelWithTooltip';
-import { NEAR } from '@near-js/tokens';
+import { NEAR } from 'near-api-js/tokens';
 import Card from '../../UI/Card';
 
 const KILOBYTE = 1024;
@@ -70,7 +70,7 @@ const CreateDaoForm = ({ reload }) => {
     control: control,
   });
 
-  const { signedAccountId, callFunction, getBalance } = useWalletSelector();
+  const { signedAccountId, callFunction, getBalance } = useNearWallet();
 
   const data = watch();
 

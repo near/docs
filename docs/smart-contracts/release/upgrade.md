@@ -74,7 +74,7 @@ near contract call-function as-transaction <contract-account> update_contract fi
 const code = fs.readFileSync("./path/to/wasm.wasm");
 
 // Call the update_contract method
-await wallet.callMethod({
+await wallet.callFunction({
   contractId: guestBook,
   method: "update_contract",
   args: code,
