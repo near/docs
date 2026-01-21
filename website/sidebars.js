@@ -492,6 +492,7 @@ const sidebar = {
       link: { type: 'generated-index', slug: 'data-infrastructure/what-is' },
       items: [
         'data-infrastructure/what-is',
+        'data-infrastructure/data-services',
         'data-infrastructure/data-apis',
         'data-infrastructure/big-query',
         {

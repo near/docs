@@ -6,9 +6,9 @@ description: "Indexers are constantly listening for transactions and storing the
 
 Data Services are constantly listening to the blockchain, processing the transactions and storing them in a database that can be easily queried. You can use them to access blockchain data efficiently:
 
-- [BigQuery](../data-infrastructure/big-query.md): Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data.
+- [BigQuery](./big-query.md): Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data.
 
-- [NEAR Lake Framework](../data-infrastructure/near-lake-framework.md): a companion library to NEAR Lake. It allows you to build your own indexer that watches a stream of blocks **from a NEAR Lake data source** and allows you to **create your own logic to process that data**. Keep in mind this is **the one you want to use for future projects**, instead of the Indexer Framework. Read [why it is better](/data-infrastructure/near-lake-framework#comparison-with-near-indexer-framework).
+- [NEAR Lake Framework](./near-lake-framework.md): a companion library to NEAR Lake. It allows you to build your own indexer that watches a stream of blocks **from a NEAR Lake data source** and allows you to **create your own logic to process that data**. Keep in mind this is **the one you want to use for future projects**, instead of the Indexer Framework. Read [why it is better](/data-infrastructure/near-lake-framework#comparison-with-near-indexer-framework).
 
 - [Indexer.xyz Multichain Indexer](https://indexer.xyz/): Indexer.xyz is an application layer that you can build your NFT or DeFi applications entirely on top of. In addition to raw transaction indexing, Indexer.xyz provides you with a standardized GraphQL API layer to easily tap into transactions across contracts and chains.
 
@@ -16,7 +16,7 @@ Data Services are constantly listening to the blockchain, processing the transac
 
 - [GetBlock](https://getblock.io/explorers/near/blocks/): developer tools offering a simple and reliable API access to multiple blockchains including NEAR Protocol.
 
-- [NearBlocks](https://api.nearblocks.io/api-docs/#/): build precise & reliable dApps with NearBlocks APIs.
+- [Community APIs](./data-api.md): build precise & reliable dApps with our community's APIs.
 
 - [Covalent](https://www.covalenthq.com/docs/networks/aurora/): for [Aurora EVM](https://aurora.dev/) indexing, Covalent provides a unified API bringing visibility to billions of Web3 data points.
 
