@@ -1,5 +1,5 @@
-import { useWalletSelector } from '@near-wallet-selector/react-hook';
-import { KeyPair } from '@near-js/crypto';
+import { useNearWallet } from 'near-connect-hooks';
+import { KeyPair } from 'near-api-js';
 import { useCallback, useEffect, useState } from 'react';
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.testnet"
@@ -32,7 +32,7 @@ export const generateAndStore = (dropName, dropsNumber) => {
 
 
 const useLinkdrops = () => {
-  const { signedAccountId, viewFunction } = useWalletSelector();
+  const { signedAccountId, viewFunction } = useNearWallet();
   const [drops, setDrops] = useState([]);
 
   const fetchDropData = useCallback(async () => {

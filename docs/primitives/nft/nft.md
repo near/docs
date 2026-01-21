@@ -94,13 +94,13 @@ Here is how to directly interact with the factory contract through your applicat
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: CONTRACT_ADDRESS,
     method: 'nft_mint',
     args: {
@@ -213,13 +213,13 @@ You can query the NFT's information and metadata by calling the `nft_token`.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
 
-  const { viewMethod } = useWalletSelector();
+  const { viewFunction } = useNearWallet();
 
-  const response = await viewMethod({
+  const response = await viewFunction({
     contractId: CONTRACT_ADDRESS,
     method: 'nft_token',
     args: {
@@ -371,13 +371,13 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
       
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: CONTRACT_ADDRESS,
     method: 'nft_transfer',
     args: {
@@ -523,11 +523,11 @@ While the NFT standard does not define a `burn` method, you can simply transfer 
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
       
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: 'nft.primitives.near',
     method: 'nft_transfer',
     args: {

@@ -9,37 +9,10 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import 'react-toastify/dist/ReactToastify.css';
 
 // wallet selector
-import '@near-wallet-selector/modal-ui/styles.css';
-import { setupBitteWallet } from '@near-wallet-selector/bitte-wallet';
-import { setupIntearWallet } from '@near-wallet-selector/intear-wallet';
-import { setupHotWallet } from '@near-wallet-selector/hot-wallet';
-import { setupLedger } from '@near-wallet-selector/ledger';
-import { setupMeteorWallet } from '@near-wallet-selector/meteor-wallet';
-import { setupNightly } from '@near-wallet-selector/nightly';
-import { WalletSelectorProvider } from '@near-wallet-selector/react-hook';
-import { setupSender } from '@near-wallet-selector/sender';
+import { NearProvider } from 'near-connect-hooks';
 import { AcademyProgressProvider } from '../components/Academy/AcademyProgressContext';
-// import { setupMeteorWalletApp } from '@near-wallet-selector/meteor-wallet-app';
-import { setupWelldoneWallet } from '@near-wallet-selector/welldone-wallet';
 
 const networkId = 'testnet';
-
-const walletSelectorConfig = {
-  network: {networkId: networkId, nodeUrl: 'https://test.rpc.fastnear.com'},
-  modules: [
-    // setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn: true }),
-    setupMeteorWallet(),
-    setupBitteWallet(),
-    setupHotWallet(),
-    setupIntearWallet(),
-    // setupMeteorWalletApp(),
-    setupSender(),
-    setupNightly(),
-    setupLedger(),
-    setupWelldoneWallet()
-  ],
-};
-
 
 function initializeGleap() {
   if (typeof window !== "undefined") {
@@ -112,11 +85,11 @@ function Root({ children, location }) {
 
   return (
     <PostHogProvider client={posthog}>
-      <WalletSelectorProvider config={walletSelectorConfig}>
+      <NearProvider config={networkId}>
         <AcademyProgressProvider>
           {children}
         </AcademyProgressProvider>
-      </WalletSelectorProvider>
+      </NearProvider>
     </PostHogProvider>
   );
 }

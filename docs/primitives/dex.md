@@ -173,13 +173,13 @@ Query your deposit balances by calling the `get_deposits` method:
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
 
-  const { viewMethod } = useWalletSelector();
+  const { viewFunction } = useNearWallet();
 
-  await viewMethod({
+  await viewFunction({
     method: 'get_deposits',
     args: {
       account_id: 'bob.near',
@@ -290,13 +290,13 @@ DEXs work by having multiple pools of token pairs (e.g. NEAR-USDC) that users ca
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
 
-  const { viewMethod } = useWalletSelector();
+  const { viewFunction } = useNearWallet();
 
-  await viewMethod({
+  await viewFunction({
     method: 'get_pools',
     args: {
       from_index: 0,
@@ -473,13 +473,13 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
 
-    const { callMethod } = useWalletSelector();
+    const { callFunction } = useNearWallet();
 
-    await callMethod({
+    await callFunction({
       contractId: AMM_CONTRACT_ADDRESS,
       method: 'swap',
       args: {

@@ -68,14 +68,14 @@ The contract will create a drop and **return the numerical ID** that identifies 
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { useWalletSelector } from "@near-wallet-selector/react-hook";
+import { useNearWallet } from "near-connect-hooks";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const DROP_AMOUNT = "10000000000000000000000"; // 0.1 NEAR
 
-const { callMethod } = useWalletSelector();
+const { callFunction } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: KEYPOM_CONTRACT_ADDRESS,
   method: "create_drop",
   args: {
@@ -129,15 +129,15 @@ The contract will then create a drop and **return the numerical ID** that identi
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { useWalletSelector } from "@near-wallet-selector/react-hook";
+import { useNearWallet } from "near-connect-hooks";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const { callMethod, accountId } = useWalletSelector();
+const { callFunction, accountId } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: KEYPOM_CONTRACT_ADDRESS,
   method: "create_drop",
   args: {
@@ -179,15 +179,15 @@ Having the Drop ID, you now need to transfer the NFT to the linkdrop contract, s
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { useWalletSelector } from "@near-wallet-selector/react-hook";
+import { useNearWallet } from "near-connect-hooks";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const NFT_TOKEN_ID = "1";
 
-const { callMethod } = useWalletSelector();
+const { callFunction } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: NFT_CONTRACT_ADDRESS,
   method: "nft_transfer_call",
   args: {
@@ -242,15 +242,15 @@ The contract will then create a drop and **return the numerical ID** that identi
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { useWalletSelector } from "@near-wallet-selector/react-hook";
+import { useNearWallet } from "near-connect-hooks";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const FT_CONTRACT_ADDRESS = "ft.primitives.near";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const { callMethod, accountId } = useWalletSelector();
+const { callFunction, accountId } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: KEYPOM_CONTRACT_ADDRESS,
   method: "create_drop",
   args: {
@@ -298,14 +298,14 @@ To transfer FTs to an account, you need to first [register](./ft#registering-a-u
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { useWalletSelector } from "@near-wallet-selector/react-hook";
+import { useNearWallet } from "near-connect-hooks";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const FT_CONTRACT_ADDRESS = "ft.primitives.near";
 
-const { callMethod } = useWalletSelector();
+const { callFunction } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: FT_CONTRACT_ADDRESS,
   method: "ft_transfer",
   args: {
@@ -352,16 +352,16 @@ Function call drops can be thought as the abstract version of other drops: you c
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
 ```js
-import { useWalletSelector } from "@near-wallet-selector/react-hook";
+import { useNearWallet } from "near-connect-hooks";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const NFT_TOKEN_ID = "1";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const { callMethod } = useWalletSelector();
+const { callFunction } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: KEYPOM_CONTRACT_ADDRESS,
   method: "create_drop",
   args: {

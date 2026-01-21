@@ -35,13 +35,13 @@ You can create a DAO by interacting with the `sputnik-dao` contract:
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const DAO_FACTORY_CONTRACT_ADDRESS = 'sputnik-dao.near';
 
-    const { callMethod } = useWalletSelector();
+    const { callFunction } = useNearWallet();
 
-    await callMethod({
+    await callFunction({
       contractId: DAO_FACTORY_CONTRACT_ADDRESS,
       method: 'create',
       args: {
@@ -197,12 +197,12 @@ Query the list of DAOs existing in Sputnik Dao.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
   
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const DAO_FACTORY_CONTRACT_ADDRESS = 'sputnik-dao.near';
-    const { viewMethod } = useWalletSelector();
+    const { viewFunction } = useNearWallet();
 
-    await viewMethod({
+    await viewFunction({
       method: 'get_dao_list',
       args: {},
       contractId: DAO_FACTORY_CONTRACT_ADDRESS,
@@ -257,12 +257,12 @@ These snippets will enable you to query the proposals existing in a particular D
  <TabItem value="🌐 WebApp" label="🌐 WebApp">
    
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const DAO_CONTRACT_ADDRESS = 'nearweek-news-contribution.sputnik-dao.near';
-    const { viewMethod } = useWalletSelector();    
+    const { viewFunction } = useNearWallet();    
 
-    await viewMethod({
+    await viewFunction({
       method: 'get_proposals',
       args: { from_index: 9262, limit: 2 },
       contractId: DAO_CONTRACT_ADDRESS,
@@ -388,13 +388,13 @@ Create a proposal so other users can vote in favor or against it.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
    
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const DAO_CONTRACT_ADDRESS = 'primitives.sputnik-dao.near';
 
-    const { callMethod } = useWalletSelector();
+    const { callFunction } = useNearWallet();
 
-    await callMethod({
+    await callFunction({
       contractId: DAO_CONTRACT_ADDRESS,
       method: 'add_proposal',
       args: {
@@ -716,13 +716,13 @@ These snippet will enable your users to cast a vote for proposal of a particular
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const DAO_CONTRACT_ADDRESS = 'primitives.sputnik-dao.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: DAO_CONTRACT_ADDRESS,
     method: 'act_proposal',
     args: { id: 0, action: 'VoteApprove' },

@@ -5,11 +5,11 @@ import DAO from './DecentralizedOrganization';
 import TabItem from '@theme/TabItem';
 import NearIconSvg from '@site/static/assets/site/near_icon.svg';
 import { useCallback, useEffect, useState } from 'react';
-import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { useNearWallet } from 'near-connect-hooks';
 import Linkdrops from './Linkdrops';
 import useLinkdrops from './hooks/useLinkdrops';
 import whiteList from './white-list.json';
-import { NEAR } from '@near-js/tokens';
+import { NEAR } from 'near-api-js/tokens';
 
 const API_NEAR_BLOCKS = 'https://api-testnet.nearblocks.io';
 
@@ -26,7 +26,7 @@ const NearToken = {
 };
 
 const Tools = () => {
-  const { getBalance, viewFunction, signedAccountId } = useWalletSelector();
+  const { getBalance, viewFunction, signedAccountId } = useNearWallet();
 
   const [allFT, setAllFT] = useState([NearToken]);
   const [loadingFT, setLoadingFT] = useState(false);

@@ -1,12 +1,10 @@
-import { Account } from '@near-js/accounts';
-import { JsonRpcProvider } from '@near-js/providers';
-import { KeyPairSigner } from '@near-js/signers';
+import { Account, JsonRpcProvider, KeyPairSigner } from 'near-api-js';
 import { useState } from 'react';
 import './faucet.scss';
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
-import { NEAR } from '@near-js/tokens';
+import { NEAR } from 'near-api-js/tokens';
 
 
 async function createAndDeleteTmpAcc(beneficiary) {

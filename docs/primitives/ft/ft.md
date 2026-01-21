@@ -38,11 +38,11 @@ Here is how to directly interact with the factory contract through your applicat
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const TOKEN_FACTORY_ADDRESS = 'token.primitives.near';
 
-    const { callMethod } = useWalletSelector();
+    const { callFunction } = useNearWallet();
 
     const args = {
       args: {
@@ -59,7 +59,7 @@ Here is how to directly interact with the factory contract through your applicat
       account_id: 'bob.near',
     };
 
-    await callMethod({
+    await callFunction({
       contractId: TOKEN_FACTORY_ADDRESS,
       method: 'create_token',
       args,
@@ -172,13 +172,13 @@ You can query the FT's metadata by calling the `ft_metadata`.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
-  const { viewMethod } = useWalletSelector();
+  const { viewFunction } = useNearWallet();
 
-  await viewMethod({
+  await viewFunction({
     method: 'ft_metadata',
     args: {},
     contractId: TOKEN_CONTRACT_ADDRESS,
@@ -249,13 +249,13 @@ To know how many coins a user has you will need to query the method `ft_balance_
   :::
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
-  const { viewMethod } = useWalletSelector();
+  const { viewFunction } = useNearWallet();
 
-  await viewMethod({
+  await viewFunction({
     method: 'ft_balance_of',
     args: {
       account_id: 'bob.near',
@@ -310,13 +310,13 @@ By calling this `storage_deposit` the user can register themselves or **register
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'storage_deposit',
     args: {
@@ -357,13 +357,13 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'ft_transfer',
     args: {
@@ -434,13 +434,13 @@ Let's assume that you need to deposit FTs on [Ref Finance](https://rhea.finance/
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'ft_transfer_call',
     args: {
@@ -549,11 +549,11 @@ While the FT standard does not define a `burn` method, you can simply transfer t
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: 'token.v2.ref-finance.near',
     method: 'ft_transfer',
     args: {

@@ -1,4 +1,4 @@
-import { useWalletSelector } from "@near-wallet-selector/react-hook";
+import { useNearWallet } from "near-connect-hooks";
 import { useEffect, useState } from "react";
 import { useAcademyProgress } from "./AcademyProgressContext";
 import './CheckContract.scss';
@@ -11,7 +11,7 @@ const CheckContract = ({ course, method }) => {
     return <div>Error: No course provided.</div>;
   }
 
-  const { signedAccountId, signIn, callFunction } = useWalletSelector();
+  const { signedAccountId, signIn, callFunction } = useNearWallet();
   const { incrementCompletedLessons } = useAcademyProgress(course);
   const localStorageKey = `academy-quiz-${course}-${method}`;
 

@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import styles from './MintNFT.module.scss';
-import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { useNearWallet } from 'near-connect-hooks';
 import { toast } from 'react-toastify';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
@@ -23,7 +23,7 @@ const MintNFT = ({ reload }) => {
   const [step, setStep] = useState('form');
   const [imagePreview, setImagePreview] = useState(null);
 
-  const { callFunction, signedAccountId, signIn } = useWalletSelector();
+  const { callFunction, signedAccountId, signIn } = useNearWallet();
 
   const validateImage = (file) => {
     if (!file) return 'Image is required';
