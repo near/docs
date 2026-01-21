@@ -94,11 +94,11 @@ Another example that highlights the need for a "wide query" is when you use a se
 
 ## Indexers in the NEAR ecosystem
 
-There are [multiple indexing options](../tools/data-services.md) available in the NEAR ecosystem. If you are ready to host your own indexer, we recommend using the [Near Lake Framework](./lake-framework/near-lake.md) as it is simple, reliable, and available in multiple languages (JavaScript, Rust, Python). 
+If you are ready to host your own indexer, we recommend using the [Near Lake Framework](./lake-framework/near-lake.md) as it is simple, reliable, and available in multiple languages (JavaScript, Rust, Python). 
 
 If speed is critical for your indexing needs, consider using [Near Indexer](./near-indexer.md). However, please note that maintaining it can be more complex and costly, as it essentially operates as an independent node in the network. 
 
-If you prefer not to host your own solution, you can utilize [third-party services](../tools/data-services.md).
+If you prefer not to host your own solution, you can utilize [third-party services](./data-services.md).
 
 ---
 
@@ -111,4 +111,4 @@ We hope this article gives you an understanding of the Indexer concept. Also, we
 ## What's next?
 We encourage you to learn more about the [Lake Indexer project](./lake-framework/near-lake). Please, proceed to [Tutorials](./tutorials/state-changes) section to learn how to build an indexer on practice.
 
-Alternatively, there are a few other third-party indexers that are tightly integrated with the NEAR ecosystem. You can review all of your data sourcing options (including The Graph, Pagoda, Pikespeak, and SubQuery) under [indexing tools](../tools/data-services.md).
+Alternatively, there are a few other third-party indexers that are tightly integrated with the NEAR ecosystem. You can review all of your data sourcing options (including The Graph, Pagoda, Pikespeak, and SubQuery) under [indexing tools](./data-services.md).
