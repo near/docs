@@ -158,7 +158,7 @@ const resolver = new NearDIDResolver({
       contractId: 'neardidregistry.testnet' // Optional: only for Registry DIDs
     },
     {
-      networkId: 'near',
+      networkId: 'mainnet', // You can use 'near' for mainnet (or 'mainnet', both are equivalent)
       rpcUrl: 'https://rpc.mainnet.near.org',
       contractId: 'neardidregistry.near' // Optional
     }
