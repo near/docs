@@ -31,6 +31,13 @@ We have APIs available for Javascript, Rust, and Python. Add them to your projec
   ```
 
   </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+
+  ```bash
+  npm i near-kit
+  ```
+
+  </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
   ```bash
@@ -64,6 +71,10 @@ Gets the available and staked balance of an account in yoctoNEAR.
     <Github language="javascript"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/tokens-balance.ts" />
   </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+    <Github language="javascript"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/tokens-balance.js" />
+  </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
   <Github fname="account_details.rs" language="rust"
@@ -96,6 +107,12 @@ Get basic account information, such as its code hash and storage usage.
     url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/account-details.ts" />
 
   </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/account-details.js" />
+
+  </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
   
   <Github fname="account_details.rs" language="rust"
@@ -126,6 +143,10 @@ To create a named account like `user.testnet`, you need to call the `create_acco
   <TabItem value="naj" label="🌐 near-api-js">
 
   <Github language="ts" url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/create-tla.ts" />
+  </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+
+  <Github language="js" url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/create-tla.js" />
   </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
@@ -166,6 +187,13 @@ Accounts on NEAR can create sub-accounts under their own namespace, which is use
 
   <Github language="js"
     url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/create-subaccount.ts" />
+
+
+  </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+
+  <Github language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/create-subaccount.js" />
 
 
   </TabItem>
@@ -211,6 +239,12 @@ Accounts on NEAR can delete themselves, transferring any remaining balance to a 
     url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/delete-account.ts"
   />
   </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+
+  <Github language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/delete-account.js"
+  />
+  </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
   <Github fname="delete_account.rs" language="rust"
@@ -242,6 +276,11 @@ Accounts can transfer different types of tokens to other accounts, including the
   <TabItem value="naj" label="🌐 near-api-js">
     <Github language="js"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/send-tokens.ts"
+    />
+  </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+    <Github language="js"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/send-tokens.js"
     />
   </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
@@ -285,6 +324,19 @@ A smart contract exposes its methods, and making a function call that modifies s
     </TabItem>
   </Tabs>
   </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+
+  <Tabs groupId="api">
+    <TabItem value="fc" label="function call">
+    <Github language="js"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js" />
+    </TabItem>
+    <TabItem value="tc" label="typed contract" default>
+    <Github language="js"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/typed-contract-interaction.js" />
+    </TabItem>
+  </Tabs>
+  </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
   <Github fname="contract_interaction.rs" language="rust"
@@ -315,6 +367,10 @@ You can send multiple [actions](../protocol/transaction-anatomy.md#actions) in a
     <Github language="js"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/batch-actions.ts" />
   </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+    <Github language="js"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/batch-actions.js" />
+  </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
   <Github fname="batch_actions.rs" language="rust"
@@ -334,6 +390,10 @@ The only way to have true simultaneous transactions is to use multiple access ke
   <TabItem value="naj" label="🌐 near-api-js">
     <Github language="js"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/simultaneous-transactions.ts" />
+  </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+    <Github language="js"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/simultaneous-transactions.js" />
   </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
@@ -376,6 +436,10 @@ On NEAR, a smart contract is deployed as a WASM file. Every account has the pote
   <TabItem value="naj" label="🌐 near-api-js">
     <Github language="js"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-contract.ts" />
+  </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+    <Github language="js"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-contract.js" />
   </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
@@ -425,6 +489,21 @@ There are two ways to reference a global contract:
     <Github language="js"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts"
       end="23" />
+  </TabItem>
+  </Tabs>
+
+  </TabItem>
+
+  <TabItem value="nk" label="🌐 near-kit">
+
+  <Tabs groupId="global">
+  <TabItem value="account" label="by account" default>
+    <Github language="js"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-account.js" end="27"/>
+  </TabItem>
+  <TabItem value="hash" label="by hash" default>
+    <Github language="js"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-hash.js" end="31"/>
   </TabItem>
   </Tabs>
 
@@ -506,6 +585,19 @@ Once a [global contract](../smart-contracts/global-contracts.md) has been [deplo
     </Tabs>
   </TabItem>
 
+  <TabItem value="nk" label="🌐 near-kit">
+    <Tabs groupId="global">
+      <TabItem value="account" label="by account" default>
+        <Github language="js" start="29"
+          url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-account.js" />
+      </TabItem>
+      <TabItem value="hash" label="by hash" default>
+        <Github language="js" start="36"
+          url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-hash.js" />
+      </TabItem>
+    </Tabs>
+  </TabItem>
+
   <TabItem value="rust" label="🦀 near-api-rs">
 
   <Tabs>
@@ -570,6 +662,10 @@ View functions are read-only methods on a smart contract that do not modify stat
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/contract-interaction.ts"
       start="9" end="21" />
   </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+    <Github language="javascript"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js" end="22"/>
+  </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
   <Github fname="contract_interaction.rs" language="rust"
@@ -632,6 +728,10 @@ Anyone with this key can transfer funds, sign transactions, interact with contra
       start="30" end="37"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts" />
   </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+    <Github language="javascript" start="16" end="27"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js" />
+  </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
   <Github fname="keys.rs" language="rust"
@@ -662,6 +762,10 @@ You can further restrict this key by:
     <Github language="javascript"
       start="39" end="45"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts" />
+  </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+    <Github language="javascript" start="31" end="42"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js" />
   </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
@@ -700,6 +804,10 @@ Accounts on NEAR can delete their own keys.
       start="56" end="56"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts" />
   </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+    <Github language="javascript" start="45" end="54"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js" />
+  </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
   <Github fname="keys.rs" language="rust"
@@ -732,6 +840,12 @@ Users can sign messages using the `wallet-selector` `signMessage` method, which 
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/verify-signature.ts" />
 
   </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+
+    <Github fname="authenticate.js" language="javascript"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/verify-signature.js" />
+
+  </TabItem>
 </Tabs>
 
 ---
@@ -744,7 +858,12 @@ Users can sign messages using the `wallet-selector` `signMessage` method, which 
   - [Documentation](https://near.github.io/near-api-js)
   - [Github](https://github.com/near/near-api-js)
   - [Full Examples](https://github.com/near-examples/near-api-examples/tree/main)
-  - [Cookbook](https://github.com/near/near-api-js/tree/master/packages/cookbook) which contains examples using the near-js/client package, a wrapper tree shakable package for near-api-js.
+
+  </TabItem>
+  <TabItem value="nk" label="🌐 near-kit">
+
+  - [Github](https://github.com/r-near/near-kit/tree/main)
+  - [Full Examples](https://github.com/near-examples/near-api-examples/tree/main/near-kit)
 
   </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
@@ -756,7 +875,7 @@ Users can sign messages using the `wallet-selector` `signMessage` method, which 
   </TabItem>
   <TabItem value="python" label="🐍 py-near">
 
-    - [Phone number transfer](https://py-near.readthedocs.io/en/latest/clients/phone.html)
+    - [Github](github.com/pvolnov/py-near)
 
   </TabItem>
 </Tabs>
