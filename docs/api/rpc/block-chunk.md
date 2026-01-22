@@ -56,7 +56,13 @@ Here's a quick reference table for all the methods in this section:
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.block({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://test.rpc.fastnear.com",
+      });
+
+      const response = await provider.block({
         finality: 'final',
       });
       ```
@@ -94,7 +100,13 @@ Here's a quick reference table for all the methods in this section:
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.block({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://archival-rpc.testnet.near.org",
+      });
+
+      const response = await provider.block({
         blockId: 187310138,
       });
       ```
@@ -132,7 +144,13 @@ Here's a quick reference table for all the methods in this section:
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.block({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://archival-rpc.testnet.near.org",
+      });
+
+      const response = await provider.block({
         blockId: '6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w',
       });
       ```
@@ -436,7 +454,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.blockChanges({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://test.rpc.fastnear.com",
+      });
+
+      const response = await provider.blockChanges({
         finality: 'final',
       });
       ```
@@ -474,7 +498,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.blockChanges({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://archival-rpc.testnet.near.org",
+      });
+
+      const response = await provider.blockChanges({
         blockId: 187310138,
       });
       ```
@@ -512,7 +542,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.blockChanges({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://archival-rpc.testnet.near.org",
+      });
+
+      const response = await provider.blockChanges({
         blockId: '6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w',
       });
       ```
@@ -624,7 +660,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
     ```js
-    const response = await near.connection.provider.chunk(
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.chunk(
       'CzPafxtJmM1FnRoasKWAVhceJzZzkz9RKUBQQ4kY9V1v',
     );
     ```
@@ -663,7 +705,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
     ```js
-    const response = await near.connection.provider.chunk([187310138, 0]);
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.chunk([187310138, 0]);
     ```
   </TabItem>
   <TabItem value="http" label="HTTPie">

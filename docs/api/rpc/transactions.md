@@ -184,11 +184,17 @@ When making RPC API requests, you may encounter various errors related to networ
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-          const response = await near.connection.provider.txStatus(
-    '7AfonAhbK4ZbdBU9VPcQdrTZVZBXE25HmZAMEABs9To1',
-    'rpc-examples.testnet',
-    'FINAL',
-  );
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://archival-rpc.testnet.near.org",
+        });
+
+        const response = await provider.txStatus(
+          '7AfonAhbK4ZbdBU9VPcQdrTZVZBXE25HmZAMEABs9To1',
+          'rpc-examples.testnet',
+          'FINAL',
+        );
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
@@ -349,11 +355,17 @@ When making RPC API requests, you may encounter various errors related to networ
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-const response = await near.connection.provider.txStatusReceipts(
-  '7AfonAhbK4ZbdBU9VPcQdrTZVZBXE25HmZAMEABs9To1',
-  'rpc-examples.testnet',
-  'FINAL',
-);
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://archival-rpc.testnet.near.org",
+        });
+
+        const response = await provider.txStatusReceipts(
+          '7AfonAhbK4ZbdBU9VPcQdrTZVZBXE25HmZAMEABs9To1',
+          'rpc-examples.testnet',
+          'FINAL',
+        );
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
