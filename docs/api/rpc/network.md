@@ -49,7 +49,13 @@ The RPC API enables you to query status information for nodes and validators.
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.status();
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://test.rpc.fastnear.com",
+        });
+
+        const response = await provider.status();
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">

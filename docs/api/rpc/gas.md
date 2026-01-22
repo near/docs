@@ -50,7 +50,13 @@ The RPC API enables you to query the gas price for a specific block or hash.
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.gasPrice(null);
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://test.rpc.fastnear.com",
+        });
+
+        const response = await provider.gasPrice(null);
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
@@ -82,7 +88,13 @@ The RPC API enables you to query the gas price for a specific block or hash.
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.gasPrice(187310138);
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://archival-rpc.testnet.near.org",
+        });
+
+        const response = await provider.gasPrice(187310138);
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
@@ -114,7 +126,13 @@ The RPC API enables you to query the gas price for a specific block or hash.
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.gasPrice(
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://archival-rpc.testnet.near.org",
+        });
+
+        const response = await provider.gasPrice(
           '6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w',
         );
         ```

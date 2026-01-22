@@ -65,12 +65,20 @@ The RPC API enables you to retrieve information about an account's access keys. 
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.query({
-          request_type: 'view_access_key',
-          finality: 'final',
-          account_id: 'account.rpc-examples.testnet',
-          public_key: 'ed25519:EddTahJwZpJjYPPmat7DBm1m2vdrFBzVv7e3T4hzkENd',
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://test.rpc.fastnear.com",
         });
+
+        const response = await provider.query({
+            request_type: 'view_access_key',
+            finality: 'final',
+            account_id: 'account.rpc-examples.testnet',
+            public_key: 'ed25519:EddTahJwZpJjYPPmat7DBm1m2vdrFBzVv7e3T4hzkENd',
+        });
+
+        console.log(response);
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
@@ -163,7 +171,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
     ```js
-    const response = await near.connection.provider.query({
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://test.rpc.fastnear.com",
+    });
+
+    const response = await provider.query({
       request_type: 'view_access_key_list',
       finality: 'final',
       account_id: 'account.rpc-examples.testnet',
@@ -277,7 +291,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.singleAccessKeyChanges(
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://archival-rpc.testnet.near.org",
+      });
+
+      const response = await provider.singleAccessKeyChanges(
         [
           {
             account_id: 'account.rpc-examples.testnet',
@@ -395,7 +415,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.accessKeyChanges(['account.rpc-examples.testnet'], {
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://archival-rpc.testnet.near.org",
+      });
+
+      const response = await provider.accessKeyChanges(['account.rpc-examples.testnet'], {
         blockId: 187309655,
       });
       ```
