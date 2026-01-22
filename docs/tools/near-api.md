@@ -875,7 +875,7 @@ Users can sign messages using the `wallet-selector` `signMessage` method, which 
   </TabItem>
   <TabItem value="python" label="🐍 py-near">
 
-    - [Github](github.com/pvolnov/py-near)
+    - [Github](https://github.com/pvolnov/py-near)
 
   </TabItem>
 </Tabs>
