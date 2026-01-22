@@ -110,7 +110,7 @@ const config = {
       items: [
         {
           type: 'dropdown',
-          label: 'Start Here',
+          label: 'Get Started',
           position: 'left',
           activeBaseRegex: 'tutorials',
           items: [
@@ -147,8 +147,9 @@ const config = {
           items: [
             {
               to: '/api/rpc/introduction',
-              label: '🔌 RPC API',
+              label: 'RPC API',
               description: 'Low level API to interact with NEAR',
+              icon: '/assets/menu/analytics.png',
             },
 
             {
@@ -176,10 +177,10 @@ const config = {
                   icon: '/assets/docs/welcome-pages/near-cli.png',
                 },
                 {
-                  label: 'NEAR Connect',
+                  label: 'Wallet Connector',
                   to: '/tools/near-connect',
                   description: 'Integrate multiple wallets into your application',
-                  icon: '/assets/docs/welcome-pages/multiple.png',
+                  icon: '/assets/docs/welcome-pages/frontend-bos.png',
                 },
               ],
             },
@@ -187,7 +188,7 @@ const config = {
         },
         {
           type: 'dropdown',
-          label: 'Tools',
+          label: 'Utilities',
           position: 'left',
           items: [
             {
@@ -213,15 +214,8 @@ const config = {
               to: 'https://nearplay.app/',
               target: '_blank',
               description: 'Write, test and deploy smart contracts in your browser',
-              icon: '/assets/menu/contract.svg',
+              icon: '/assets/menu/catalog.png',
             },
-            {
-              label: 'Learn NEAR Club ↗',
-              to: 'https://learnnear.club/',
-              description: 'All inclusive hands-on onboarding platform to NEAR Protocol',
-              icon: '/assets/menu/lnc.jpg',
-            },
-
           ],
         },
         {
@@ -229,10 +223,9 @@ const config = {
           to: '#',
           description: 'Discover events, news and projects',
           subitems: [
-            { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/assets/menu/event.png' },
             { label: 'Blog', to: '/blog', description: "Read blog posts from our community", icon: '/assets/menu/near.svg' },
-            { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/assets/menu/newspaper.png' },
-            { label: 'Communities', "to": "/communities", description: "Find a NEAR community near you", icon: "/assets/menu/communities.png" },
+            { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/assets/menu/event.png' },
+            { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/assets/menu/newspaper.png' }
           ]
         },
         {
@@ -245,12 +238,6 @@ const config = {
               to: 'https://t.me/neardev',
               description: 'Join our Telegram channel for developers',
               icon: '/assets/menu/telegram.svg',
-            },
-            {
-              label: 'Discord ↗',
-              to: 'https://discord.gg/nearprotocol',
-              description: 'Join our Discord server to get help from the community',
-              icon: '/assets/menu/discord.svg',
             },
             {
               label: 'WeChat ↗',
