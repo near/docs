@@ -258,10 +258,12 @@ Accounts on NEAR can delete themselves, transferring any remaining balance to a 
 Deleting an account **DOES NOT** affect its sub-accounts - they will remain active.
 :::
 
-:::danger Keep in mind
-- Only NEAR tokens are transferred to the beneficiary.
-- Fungible (FTs) or Non-Fungible tokens (NFTs) held by the account **ARE NOT** automatically transferred. These tokens are still associated with the account, even after the account is deleted. Make sure to transfer those assets manually before deletion, or you're risking losing them permanently! Once the account is gone, those assets are effectively stuck unless the same account is recreated by anyone (not necessarily you).
-- If the beneficiary account doesn't exist, all NEAR tokens sent to it will be burned. Double-check the account ID before proceeding.
+:::danger The Beneficiary Only Receives NEAR Tokens
+Fungible (FTs) or Non-Fungible tokens (NFTs) held by the account **ARE NOT** automatically transferred. These tokens are still associated with the account, even after the account is deleted. Make sure to transfer those assets manually before deletion, or you're risking losing them permanently! Once the account is gone, those assets are effectively stuck unless the same account is recreated by anyone (not necessarily you).
+:::
+
+:::danger Make Sure the Beneficiary Account Exists
+If the beneficiary account doesn't exist, all NEAR tokens sent to it will be burned. Double-check the account ID before proceeding.
 :::
 
 ---
@@ -317,6 +319,9 @@ A smart contract exposes its methods, and making a function call that modifies s
     <TabItem value="fc" label="function call">
     <Github language="js"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/contract-interaction.ts" />
+    :::tip Typed Result
+    When using Typescript, you can type the return of `callFunction<T>`
+    :::
     </TabItem>
     <TabItem value="tc" label="typed contract" default>
     <Github language="js"
@@ -330,6 +335,9 @@ A smart contract exposes its methods, and making a function call that modifies s
     <TabItem value="fc" label="function call">
     <Github language="js"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js" />
+      :::tip Typed Result
+      When using Typescript, you can type the return of `Near.view<T>` and `Near.call<T>`
+      :::
     </TabItem>
     <TabItem value="tc" label="typed contract" default>
     <Github language="js"
@@ -661,10 +669,16 @@ View functions are read-only methods on a smart contract that do not modify stat
     <Github language="javascript"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/contract-interaction.ts"
       start="9" end="21" />
+    :::tip Typed Result
+    When using Typescript, you can type the return of `callFunction<T>`
+    :::
   </TabItem>
   <TabItem value="nk" label="🌐 near-kit">
     <Github language="javascript"
       url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js" end="22"/>
+    :::tip Typed Result
+    When using Typescript, you can type the return of `Near.view<T>`
+    :::
   </TabItem>
   <TabItem value="rust" label="🦀 near-api-rs">
 
