@@ -121,6 +121,7 @@ connector = new NearConnector({
     <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx" start="8" end="16" language="tsx" />
   </TabItem>
 </Tabs>
+
 ---
 
 ## Calling Contract Method
@@ -192,8 +193,41 @@ connector = new NearConnector({
 
 ---
 
-## Send Multiple Transactions
+## Get Balance
 
+<Tabs>
+  <TabItem value="manual" label="library">
+
+  The `near-connector` does not provide a built-in way to get the account balance.
+
+  However, you can use the `near-api-js` package (or any of your preferred APIs) to create a JSON-RPC provider and query the account balance directly:
+
+  ```tsx
+  import { JsonRpcProvider } from "near-api-js";
+
+  const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+  const greeting = await provider.viewAccount({ accountId: "hello.near-examples.testnet" });
+  ```
+  </TabItem>
+  <TabItem value="hooks" label="hooks">
+    You can use the `getBalance` method provided by the `useNearWallet` hook to call read-only methods on the contract:
+
+    ```jsx
+    import { useNearWallet } from 'near-connect-hooks';
+    import { yoctoToNear } from 'near-api-js';
+
+    const { getBalance } = useNearWallet();
+    const balance = await getBalance();
+    console.log(`Balance: ${yoctoToNear(balance.available, 2)} NEAR`);
+    ```
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Send Multiple Transactions
 
 <Tabs>
   <TabItem value="manual" label="library">
