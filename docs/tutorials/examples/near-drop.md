@@ -17,7 +17,7 @@ Particularly, it shows:
 
 :::tip
 
-This example showcases a simplified version of the contract that both [Keypom](https://github.com/keypom/keypom) and the [Token Drop Utility](https://dev.near.org/tools?tab=linkdrops) use to distribute tokens to users
+This example showcases a simplified version of the contract that both [Keypom](https://github.com/keypom/keypom) and the [Token Drop Utility](https://docs.near.org/toolbox?tab=linkdrops) use to distribute tokens to users
 
 :::
 
