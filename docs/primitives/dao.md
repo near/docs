@@ -18,7 +18,7 @@ Decentralized Autonomous Organizations (DAOs) are self-organized groups that for
 ![dao](/assets/docs/primitives/dao.png)
 
 In contrast with [FT](./ft/ft.md) and [NFT](./nft/nft.md), DAO contract's are not standardized. Because of this, on this page we will use as
-reference the [Astra dao](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos) [contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
+reference the [sputnik dao contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
 easily generalizable to other DAO implementations.
 
 :::tip
