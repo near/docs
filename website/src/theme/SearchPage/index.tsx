@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
 import { useLocation, useHistory } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { MeiliSearch } from 'meilisearch';
@@ -60,7 +61,6 @@ export default function SearchPage(): JSX.Element {
   const [processingTime, setProcessingTime] = useState(0);
   const [client, setClient] = useState<MeiliSearch | null>(null);
 
-  // Initialize MeiliSearch client
   useEffect(() => {
     const config = siteConfig.customFields?.meilisearch as {
       host?: string;
@@ -77,7 +77,6 @@ export default function SearchPage(): JSX.Element {
     }
   }, [siteConfig]);
 
-  // Parse URL parameters
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const q = params.get('q') || '';
@@ -93,7 +92,6 @@ export default function SearchPage(): JSX.Element {
     }
   }, [location.search]);
 
-  // Search function
   const search = useCallback(async () => {
     if (!client || !query.trim()) {
       setResults([]);
@@ -136,12 +134,10 @@ export default function SearchPage(): JSX.Element {
     }
   }, [client, query, selectedCategory, currentPage, siteConfig]);
 
-  // Perform search when parameters change
   useEffect(() => {
     search();
   }, [search]);
 
-  // Update URL when parameters change
   const updateUrl = useCallback((newQuery: string, newCategory: string, newPage: number) => {
     const params = new URLSearchParams();
     if (newQuery) params.set('q', newQuery);
@@ -151,43 +147,43 @@ export default function SearchPage(): JSX.Element {
     history.push(`/search?${params.toString()}`);
   }, [history]);
 
-  // Handle search input
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     updateUrl(query, selectedCategory, 1);
   };
 
-  // Handle category change
   const handleCategoryChange = (category: string) => {
     trackSearchFilter('category', category);
     setSelectedCategory(category);
     updateUrl(query, category, 1);
   };
 
-  // Handle page change
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     updateUrl(query, selectedCategory, page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Handle result click
   const handleResultClick = (hit: SearchHit, index: number) => {
     trackSearchResultClick(query, (currentPage - 1) * ITEMS_PER_PAGE + index, hit.path);
   };
 
-  // Render highlighted content
   const renderHighlight = (text: string | undefined, fallback: string) => {
     if (!text) return fallback;
     return <span dangerouslySetInnerHTML={{ __html: text }} />;
   };
 
-  // Calculate total pages
   const totalPages = Math.ceil(totalHits / ITEMS_PER_PAGE);
 
   return (
-    <Layout title="Search" description="Search NEAR Documentation">
-      <div className={styles.container}>
+    // @ts-expect-error - Docusaurus types have React version mismatch
+    <Layout>
+      {/* @ts-expect-error - Docusaurus types have React version mismatch */}
+      <Head>
+        <title>Search | NEAR Documentation</title>
+        <meta name="description" content="Search NEAR Documentation" />
+      </Head>
+        <div className={styles.container}>
         <div className={styles.sidebar}>
           <h3 className={styles.sidebarTitle}>Categories</h3>
           <ul className={styles.categoryList}>

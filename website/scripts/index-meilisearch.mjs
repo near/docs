@@ -1,11 +1,11 @@
+import 'dotenv/config';
 import { MeiliSearch } from 'meilisearch';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createHash } from 'crypto';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const MEILI_HOST = process.env.MEILI_HOST || 'http://localhost:7700';
 const MEILI_MASTER_KEY = process.env.MEILI_MASTER_KEY || 'masterKey123';
@@ -64,14 +64,11 @@ function extractFrontmatter(content) {
 
 function extractHeadings(content) {
   const headings = [];
-  const headingRegex = /^(#{1,6})\s+(.+)$/gm;
+  const headingRegex = /^#{1,6}\s+(.+)$/gm;
   let match;
 
   while ((match = headingRegex.exec(content)) !== null) {
-    headings.push({
-      level: match[1].length,
-      text: match[2].replace(/[*_`]/g, '').trim(),
-    });
+    headings.push(match[1].replace(/[*_`]/g, '').trim());
   }
 
   return headings;
@@ -121,7 +118,7 @@ function getCategoryFromPath(filePath) {
   return CATEGORY_MAP[firstFolder] || 'General';
 }
 
-function getHierarchy(filePath, title) {
+function getHierarchy(filePath) {
   const relativePath = path.relative(DOCS_PATH, filePath);
   const parts = relativePath.split(path.sep);
 
@@ -239,10 +236,10 @@ async function indexDocuments() {
       const urlPath = getUrlPath(filePath);
       const title = frontmatter.title ||
         frontmatter.sidebar_label ||
-        headings[0]?.text ||
+        headings[0] ||
         path.basename(filePath, path.extname(filePath)).replace(/-/g, ' ');
 
-      const hierarchy = getHierarchy(filePath, title);
+      const hierarchy = getHierarchy(filePath);
 
       const doc = {
         id: generateId(urlPath),
@@ -250,7 +247,7 @@ async function indexDocuments() {
         content: cleanedContent.substring(0, 10000), // Limit content size
         path: urlPath,
         section: frontmatter.sidebar_label || title,
-        category: getCategoryFromPath(filePath),
+        category: hierarchy.lvl0,
         version: 'current',
         hierarchy_lvl0: hierarchy.lvl0,
         hierarchy_lvl1: hierarchy.lvl1,
@@ -262,22 +259,22 @@ async function indexDocuments() {
 
       // Also index individual headings as separate documents for better search granularity
       for (const heading of headings.slice(0, 5)) { // Limit to first 5 headings
-        const anchor = heading.text
+        const anchor = heading
           .toLowerCase()
           .replace(/[^\w\s-]/g, '')
           .replace(/\s+/g, '-');
 
         const headingDoc = {
           id: generateId(urlPath + '#' + anchor),
-          title: heading.text,
+          title: heading,
           content: cleanedContent.substring(0, 500),
           path: urlPath + '#' + anchor,
           section: title,
-          category: getCategoryFromPath(filePath),
+          category: hierarchy.lvl0,
           version: 'current',
           hierarchy_lvl0: hierarchy.lvl0,
           hierarchy_lvl1: hierarchy.lvl1,
-          hierarchy_lvl2: heading.text,
+          hierarchy_lvl2: heading,
           timestamp: Date.now(),
         };
 

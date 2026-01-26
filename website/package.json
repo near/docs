@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "@docsearch/core": "^4.5.0",
-    "@headlessui/react": "^1.7.0",
     "meilisearch": "^0.55.0",
     "@docusaurus/core": "3.9.2",
     "@docusaurus/plugin-ideal-image": "3.9.2",

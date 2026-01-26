@@ -66,31 +66,16 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
+  animation: fadeIn 200ms ease-out;
 }
 
-/* Backdrop Transitions */
-.backdropEnter {
-  transition: opacity 200ms ease-out;
-}
-
-.backdropEnterFrom {
-  opacity: 0;
-}
-
-.backdropEnterTo {
-  opacity: 1;
-}
-
-.backdropLeave {
-  transition: opacity 150ms ease-in;
-}
-
-.backdropLeaveFrom {
-  opacity: 1;
-}
-
-.backdropLeaveTo {
-  opacity: 0;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Modal */
@@ -103,35 +88,18 @@
   border-radius: 12px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   overflow: hidden;
+  animation: modalIn 200ms ease-out;
 }
 
-/* Modal Transitions */
-.modalEnter {
-  transition: all 200ms ease-out;
-}
-
-.modalEnterFrom {
-  opacity: 0;
-  transform: scale(0.95) translateY(-20px);
-}
-
-.modalEnterTo {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-.modalLeave {
-  transition: all 150ms ease-in;
-}
-
-.modalLeaveFrom {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-.modalLeaveTo {
-  opacity: 0;
-  transform: scale(0.95) translateY(-20px);
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 /* Search Header */
