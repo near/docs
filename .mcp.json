@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "near-docs": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["/home/matiasbenary/projects/near/docs/website/mcp-meilisearch/index.mjs"],
+      "env": {
+        "MEILI_HOST": "http://localhost:7700",
+        "MEILI_API_KEY": "masterKey123",
+        "MEILI_INDEX_NAME": "near-docs"
+      }
+    }
+  }
+}
