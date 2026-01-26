@@ -50,18 +50,6 @@ function Root({ children, location }) {
   } = useDocusaurusContext();
 
   useEffect(() => {
-    // Pass message to dev.near.org (docs is embedded there)
-    const sendMessage = (url) =>
-      parent.postMessage({ type: 'urlChange', url }, 'https://dev.near.org/');
-    sendMessage(location.pathname);
-
-    const unlisten = history.listen((loc) => sendMessage(loc.pathname));
-    return () => {
-      unlisten();
-    };
-  }, [history]);
-
-  useEffect(() => {
     // Initialize Gleap
     if (isBrowser) {
       initializeGleap();

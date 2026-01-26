@@ -46,9 +46,15 @@ The RPC API enables you to retrieve the current genesis and protocol configurati
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.experimental_protocolConfig({
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://test.rpc.fastnear.com",
+        });
+
+        const response = await provider.experimental_protocolConfig({
           sync_checkpoint: 'genesis',
-});
+        });
         ```
       </TabItem>
       <TabItem value="http" label="HTTPie">
@@ -263,7 +269,13 @@ When making RPC API requests, you may encounter various errors related to networ
       </TabItem>
       <TabItem value="js" label="JavaScript">
         ```js
-        const response = await near.connection.provider.experimental_protocolConfig({
+        import { JsonRpcProvider } from "near-api-js";
+
+        const provider = new JsonRpcProvider({
+            url: "https://test.rpc.fastnear.com",
+        });
+
+        const response = await provider.experimental_protocolConfig({
           finality: "final"
         });
         ```
