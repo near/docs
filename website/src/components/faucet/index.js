@@ -1,15 +1,14 @@
-import { Account } from '@near-js/accounts';
-import { JsonRpcProvider } from '@near-js/providers';
-import { KeyPairSigner } from '@near-js/signers';
+import { Account, JsonRpcProvider, KeyPairSigner } from 'near-api-js';
 import { useState } from 'react';
 import './faucet.scss';
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
+import { NEAR } from 'near-api-js/tokens';
 
 
 async function createAndDeleteTmpAcc(beneficiary) {
-  const tmpAccount = `${beneficiary.slice(0, 32).replace('.', '-')}-${Date.now()}.testnet`;
+  const tmpAccount = `${beneficiary.slice(0, 32).replaceAll('.', '-')}-${Date.now()}.testnet`;
   const signer = KeyPairSigner.fromSecretKey(
     'ed25519:5mixhRL3GcXL9sXx9B4juv6cp3Js4Qo7qY9gWs8bzcQGeSbefXMkCJh5UpmwZYriitMjsppqV4W8zb5bREkYRxLh',
   );
@@ -25,8 +24,8 @@ async function createAndDeleteTmpAcc(beneficiary) {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const provider = new JsonRpcProvider({ url: 'https://rpc.testnet.fastnear.com' });
   const account = new Account(tmpAccount, provider, signer);
-  await account.transfer({ receiverId: beneficiary, amount: '10000000000000000000000' });
-  return account.deleteAccount(beneficiary);
+  await account.transfer({ receiverId: beneficiary, amount: NEAR.toUnits('5') });
+  return account.deleteAccount('testnet');
 }
 
 export const Faucet = () => {

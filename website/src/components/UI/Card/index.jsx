@@ -12,7 +12,6 @@ const Card = ({
   variant = 'default', // 'default', 'icon', 'image'
   color = 'default', // 'default', 'mint', 'purple', 'orange'
   className = '',
-  links,
   ...props 
 }) => {
   // Determine if card should be clickable
@@ -21,12 +20,8 @@ const Card = ({
   // Build CSS classes
   const cardClasses = [
     styles.card,
-    variant === 'icon' ? styles['card--icon'] : '',
-    variant === 'image' ? styles['card--image'] : '',
-    color === 'mint' ? styles['card--mint'] : '',
-    color === 'purple' ? styles['card--purple'] : '',
-    color === 'orange' ? styles['card--orange'] : '',
-    color === 'blue' ? styles['card--blue'] : '',
+    variant !== 'default' ? styles[`card--${variant}`] : '',
+    color !== 'default' ? styles[`card--${color}`] : '',
     isClickable ? styles['card--clickable'] : '',
     className
   ].filter(Boolean).join(' ');

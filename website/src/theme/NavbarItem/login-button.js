@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useWalletSelector } from '@near-wallet-selector/react-hook';
+import { useNearWallet } from 'near-connect-hooks';
 import styles from './btn.module.css';
 
 export default function LoginButton(props) {
-  const { signedAccountId, signIn, signOut } = useWalletSelector();
+  const { signedAccountId, signIn, signOut } = useNearWallet();
   const [action, setAction] = useState(() => { });
   const [label, setLabel] = useState('Loading...');
 

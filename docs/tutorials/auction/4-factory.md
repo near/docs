@@ -71,7 +71,7 @@ near deploy <contractId> ./target/near/contract.wasm
 You can now use the factory to deploy new auction contracts, here is an example command. 
 
 ```bash
-near call auction-factory.testnet deploy_new_auction '{"name": "new-auction", "end_time": "3000000000000000000", "auctioneer": "pivortex.testnet", "ft_contract": "dai.fakes.testnet", "nft_contract": "nft.examples.testnet", "token_id": "7777", "starting_price": "1000000000000000000"}' --accountId pivortex.testnet --deposit 1.6 --gas 100000000000000
+near call auction-factory.testnet deploy_new_auction '{"name": "new-auction", "end_time": "3000000000000000000", "auctioneer": "pivortex.testnet", "ft_contract": "dai.fakes.testnet", "nft_contract": "nft.examples.testnet", "token_id": "7777", "starting_price": "1000000000000000000"}' --useAccount pivortex.testnet --deposit 1.6 --gas 100000000000000
 ```
 
 :::info Deposit and storage costs

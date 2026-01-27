@@ -46,7 +46,7 @@ A transaction needs to be constructed, signed and sent to the blockchain. Once i
 
 In the beginning there is a `Transaction`, it contains instructions we want to be executed on the blockchain. Transaction is sent to NEAR Blockchain.
 
-And yes, it is executed there immediately BUT the immediate result of the transaction execution is always just *an acknowledgment that it will be executed on the chain;* this internal execution request is known as `Receipt. You can think of the `Receipt` as an internal transaction that exists to pass information across shards.
+And yes, it is executed there immediately BUT the immediate result of the transaction execution is always just *an acknowledgment that it will be executed on the chain;* this internal execution request is known as `Receipt`. You can think of the `Receipt` as an internal transaction that exists to pass information across shards.
 
 Let’s get back to the tracks to look at the example.
 
@@ -72,4 +72,4 @@ We have learnt the main principles of how data is flowing in NEAR Protocol. We h
 
 Now we know that `Receipt` is a main internal asset for NEAR Protocol blockchain and it has a power of traveling between `Shards`. We learnt the NEAR Data flow on a simple example. Of course in real life with more complex transactions that involve cross-contract calls, there will be more Receipts and ExecutionOutcomes.
 
-We hope this article is useful and you will be able to build your dApps and indexers easily with the knowledge of how data if flowing in NEAR Protocol.
+We hope this article is useful and you will be able to build your dApps and indexers easily with the knowledge of how data is flowing in NEAR Protocol.

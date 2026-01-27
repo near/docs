@@ -94,13 +94,13 @@ Here is how to directly interact with the factory contract through your applicat
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: CONTRACT_ADDRESS,
     method: 'nft_mint',
     args: {
@@ -116,13 +116,13 @@ Here is how to directly interact with the factory contract through your applicat
   });
   ```
 
-  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
    
     ```bash
-    near call nft.primitives.near nft_mint '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --depositYocto 10000000000000000000000, --accountId bob.near
+    near call nft.primitives.near nft_mint '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --depositYocto 10000000000000000000000, --useAccount bob.near
     ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -213,13 +213,13 @@ You can query the NFT's information and metadata by calling the `nft_token`.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
 
-  const { viewMethod } = useWalletSelector();
+  const { viewFunction } = useNearWallet();
 
-  const response = await viewMethod({
+  const response = await viewFunction({
     contractId: CONTRACT_ADDRESS,
     method: 'nft_token',
     args: {
@@ -228,7 +228,7 @@ You can query the NFT's information and metadata by calling the `nft_token`.
   });
   ```
 
-  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   <details>
 
@@ -371,13 +371,13 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
       
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: CONTRACT_ADDRESS,
     method: 'nft_transfer',
     args: {
@@ -388,13 +388,13 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
   });
   ```
 
-  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     
   ```bash
-    near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "bob.near"}' --accountId bob.near --deposit 0.000000000000000000000001
+    near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "bob.near"}' --useAccount bob.near --deposit 0.000000000000000000000001
   ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -449,7 +449,7 @@ Natively, only NEAR tokens (Ⓝ) can be attached to a function calls. However, t
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
-near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>", "token_id": "<token_id>", "msg": "<a-string-message>"}' --accountId <your-account> --depositYocto 1
+near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>", "token_id": "<token_id>", "msg": "<a-string-message>"}' --useAccount <your-account> --depositYocto 1
 ```
 
 </TabItem>
@@ -498,7 +498,7 @@ You can authorize other users to transfer an NFT you own. This is useful, for ex
     "token_id": "<token-unique-id>",
     "account_id": "<authorized-account>",
     "msg": "<json-structure>"
-    }' --accountId <your-account> --depositYocto 1
+    }' --useAccount <your-account> --depositYocto 1
     ```
 </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -514,7 +514,45 @@ If the `msg` parameter is included, then a cross-contract call will be made to `
 
 ---
 
+## Burn Tokens
+
+While the NFT standard does not define a `burn` method, you can simply transfer tokens to an account that no one controls, such as [`0000000000000000000000000000000000000000000000000000000000000000`](https://nearblocks.io/es/address/0000000000000000000000000000000000000000000000000000000000000000) (64 zeros).
+
+
+<Tabs groupId="code-tabs">
+  <TabItem value="🌐 WebApp" label="🌐 WebApp">
+      
+  ```js
+  import { useNearWallet } from "near-connect-hooks";
+
+  const { callFunction } = useNearWallet();
+
+  await callFunction({
+    contractId: 'nft.primitives.near',
+    method: 'nft_transfer',
+    args: {
+      token_id: '1',
+      receiver_id: '0000000000000000000000000000000000000000000000000000000000000000',
+    },
+    deposit: 1,
+  });
+  ```
+
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+
+  </TabItem>
+  <TabItem value="🖥️ CLI" label="🖥️ CLI">
+    
+  ```bash
+    near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "0000000000000000000000000000000000000000000000000000000000000000"}' --useAccount bob.near --deposit 0.000000000000000000000001
+  ```
+  </TabItem>
+</Tabs>
+
+
+---
+
 ## Tutorials
 
-- [NFT Tutorial](/tutorials/nfts/js/introduction) _Zero to Hero_ (JavaScript SDK) - a set of tutorials that cover how to create a NFT contract using JavaScript.
-- [NFT Tutorial](/tutorials/nfts/introduction) _Zero to Hero_ (Rust SDK) - a set of tutorials that cover how to create a NFT contract using Rust.
+- [NFT Tutorial](/tutorials/nfts-js) _Zero to Hero_ (JavaScript SDK) - a set of tutorials that cover how to create a NFT contract using JavaScript.
+- [NFT Tutorial](/tutorials/nfts) _Zero to Hero_ (Rust SDK) - a set of tutorials that cover how to create a NFT contract using Rust.

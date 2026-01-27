@@ -43,7 +43,7 @@ Having retrieved both the proposal and manifesto, the agent is ready to make its
 
 ## Voting with an LLM
 
-To make a decision on the proposal, the agent uses an LLM provided by [NEAR AI](https://docs.near.ai/cloud/get-started/). NEAR AI provides verifiable and private inference by running LLMs in GPU TEEs. In this tutorial, the DAO uses NEAR AI for its `verifiable` component. This allows the agent verify that no one is interfering with the the LLM response, as could happen with centralized model hosting. The agent knows the response from the LLM is actually a function of the input, and comes from the expected model.
+To make a decision on the proposal, the agent uses an LLM provided by [NEAR AI](https://docs.near.ai/cloud/get-started/). NEAR AI provides verifiable and private inference by running LLMs in GPU TEEs. In this tutorial, the DAO uses NEAR AI for its `verifiable` component. This allows the agent verify that no one is interfering with the LLM response, as could happen with centralized model hosting. The agent knows the response from the LLM is actually a function of the input, and comes from the expected model.
 
 :::note
 In this tutorial, the agent does not actually verify the attestation from the LLM. Full verification will be added in a future update to the tutorial.

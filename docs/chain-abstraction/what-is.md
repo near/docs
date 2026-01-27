@@ -1,31 +1,87 @@
 ---
 id: what-is
 title: What is Chain Abstraction?
-description: "Learn about chain abstraction and how NEAR's framework makes blockchain technology invisible to users while preserving benefits through NEAR Intents, Chain Signatures, and OmniBridge."
+sidebar_label: Introduction
+description: "Learn how NEAR allows you to seamlessly work across all chains"
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs";
+import Card from '@site/src/components/UI/Card';
+import ConceptCard from '@site/src/components/UI/ConceptCard';
 
-Blockchain development today faces a critical challenge: users need to understand complex blockchain concepts, manage multiple wallets, and deal with different networks just to use basic applications. Chain abstraction solves this by making blockchain technology invisible to end users while preserving all of the underlying benefits.
+Through a combination of innovative technologies, NEAR enables developers to build applications that work seamlessly across multiple blockchains while abstracting away the underlying complexity for both developers and end users.
 
-![img](/assets/docs/welcome-pages/2.chain-abstraction.png)
+---
+
+<ConceptCard
+  image="/assets/docs/welcome-pages/10.templates.png"
+  index={0}
+>
+
+## Multi-Chain Accounts
+
+Chain Signatures allow NEAR accounts **and smart contracts** to sign transactions for all other chains (including Bitcoin, Ethereum and Solana)
+
+[Learn More](./chain-signatures.md)
+
+</ConceptCard>
+
+<ConceptCard
+  image="/assets/docs/welcome-pages/9.near-nodes.png"
+  index={1}
+>
+
+## Swaps via Intents
+
+A decentralized system where users simply **express desired outcomes** (like "swap BTC for ETH at the best price"), and a network of solvers then competes to fulfill these intents optimally
+
+[Learn More](./intents/overview.md)
+
+</ConceptCard>
+
+<ConceptCard
+  image="/assets/docs/welcome-pages/4.smart-contracts.png"
+  index={2}
+>
+
+## OmniBridge
+
+A multi-chain bridge that enables secure and efficient cross-chain transfers. The bridge serves as both a token factory and custodian, managing native and bridged tokens through a unified interface
+
+[Learn More](./omnibridge/overview.md)
+
+</ConceptCard>
+
+---
 
 ## Why Chain Abstraction Matters
 
-For **developers**, chain abstraction means:
+By building on NEAR, developers do not need to worry about the complexities of integrating with multiple blockchains. Instead, they can focus on building great applications that work seamlessly across all chains.
 
-- Building cross-chain applications without managing multiple blockchain integrations
-- Focusing on application logic instead of blockchain complexity
-- Reaching users regardless of their preferred blockchain network
+Meanwhile, users can enjoy a smooth experience, using unified accounts and assets without needing to even understand on which blockchain they are operating.
 
-For **users**, it means:
+<div class="row" style={{marginTop: '2rem', marginBottom: '2rem'}}>
+  <div class="col col--6">
+    <Card title="Benefits for Developers" >
+      - <a>Integrate with multiple blockchains through a single NEAR API </a>
+      - <a>Focus on application logic instead of blockchain complexity </a>
+      - <a>Reach users regardless of their preferred blockchain network </a>
+    </Card>
+  </div>
+  <div class="col col--6">
+    <Card title="Benefits for Users" >
+      - <a>Operate across all chains using a single NEAR account </a>
+      - <a>Access assets and services from multiple blockchains seamlessly </a>
+      - <a>Enjoy a unified and intuitive user experience </a>
+    </Card>
+  </div>
+</div>
 
-- Using blockchain applications as easily as traditional web apps
-- No need to understand which blockchain they're interacting with or if they are even using one
-- A seamless experience across different networks and tokens
+<details> 
 
-:::info Example
+<summary> Example: Cross-Chain NFT Marketplace </summary>
+
 Imagine building a digital art marketplace where users can purchase NFTs from different blockchains (Ethereum, Solana, etc.). Without chain abstraction, you'd need to:
 
 - Implement multiple blockchain connections
@@ -34,19 +90,34 @@ Imagine building a digital art marketplace where users can purchase NFTs from di
 - Build complex UIs to explain blockchain concepts
 
 With chain abstraction, both you and your users just focus on the core experience: browsing and trading art. All blockchain complexity is handled automatically behind the scenes.
-:::
 
-## Overview
+</details>
 
-NEAR's chain abstraction framework consists of three core technologies that work together to create seamless cross-chain experiences:
+---
 
-1. [**NEAR Intents**](#near-intents): A decentralized system where users express desired outcomes (like "swap Token A for Token B at the best price") without specifying technical details. A network of solvers then competes to fulfill these intents optimally, handling complex cross-chain operations behind the scenes.
+<!-- ## Overview
 
-2. [**Chain Signatures**](#chain-signatures): Enables NEAR accounts, including smart contracts, to sign and execute transactions on other blockchains (like Bitcoin or Ethereum), allowing cross-chain interactions.
+NEAR's chain abstraction framework consists of three core technologies that work together to create seamless cross-chain experiences: `NEAR Intents`, `Chain Signatures`, and the `OmniBridge`.
 
-3. [**OmniBridge**](#omnibridge): A multi-chain asset bridge that combines Chain Signatures with chain-specific verification methods for secure and efficient cross-chain transfers. Using a hybrid approach of MPC-based signatures and light clients, it significantly reduces verification times from hours to minutes while lowering gas costs across supported chains. The bridge serves as both a token factory and custodian, managing native and bridged tokens through a unified interface.
+### [**NEAR Intents**](./intents/overview.md)
 
-### NEAR Intents
+A decentralized system where users simply express desired outcomes (like "swap BTC for ETH at the best price"), and a network of solvers then competes to fulfill these intents optimally, handling all the technical complexity behind the scenes
+
+<hr class="subsection" />
+
+### [**Chain Signatures**](#chain-signatures)
+
+A core piece of tech that enables NEAR accounts, including smart contracts, to **sign transactions** for all other blockchains (including Bitcoin, Ethereum and Solana)
+
+<hr class="subsection" />
+
+### [**OmniBridge**](#omnibridge)
+
+A **multi-chain bridge** that enables secure and efficient cross-chain transfers. The bridge serves as both a token factory and custodian, managing native and bridged tokens through a unified interface.
+
+--- -->
+
+<!-- ### NEAR Intents
 
 [NEAR Intents](intents/overview.md) are a new transaction type that allows information, requests, assets, and actions to be exchanged between users, services, and AI agents.
 
@@ -131,4 +202,4 @@ This architecture creates a robust bridge system that combines NEAR's ability to
 
 :::info
 For detailed implementation information and current status, see the [OmniBridge documentation](omnibridge/overview.md).
-:::
+::: -->

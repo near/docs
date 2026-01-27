@@ -132,15 +132,10 @@ This option will allow you to manage, control, and retrieve information on your 
 
 `export-account` - export existing account.
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
-  ```bash
-  export ACCOUNT_ID=bob.testnet
-  near account export-account $ACCOUNT_ID using-web-wallet network-config testnet
-  ```
-  </TabItem>
-</Tabs>
+```bash
+export ACCOUNT_ID=bob.testnet
+near account export-account $ACCOUNT_ID using-web-wallet network-config testnet
+```
 
 <hr class="subsection" />
 
@@ -303,18 +298,13 @@ This will allow you to manage your token assets such as NEAR, FTs and NFTs.
 
 `send-ft` - transfer Fungible Tokens to a specified user.
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
+```bash
+export ACCOUNT_ID=bob.testnet
+export RECEIVER_ID=alice.testnet
+export FT_CONTRACT_ID=0c97251cd1f630c444dbusdt.testnet
 
-  ```bash
-  export ACCOUNT_ID=bob.testnet
-  export RECEIVER_ID=alice.testnet
-  export FT_CONTRACT_ID=0c97251cd1f630c444dbusdt.testnet
-
-  near tokens $ACCOUNT_ID send-ft $FT_CONTRACT_ID $RECEIVER_ID amount-ft '1 USDT' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-</Tabs>
+near tokens $ACCOUNT_ID send-ft $FT_CONTRACT_ID $RECEIVER_ID amount-ft '1 USDT' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' network-config testnet sign-with-keychain send
+```
 
 <hr class="subsection" />
 
@@ -322,18 +312,13 @@ This will allow you to manage your token assets such as NEAR, FTs and NFTs.
 
 `send-nft` - transfers NFTs between accounts.
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
+```bash
+export ACCOUNT_ID=bob.testnet
+export RECEIVER_ID=alice.testnet
+export NFT_CONTRACT_ID=nft.examples.testnet
 
-  ```bash
-  export ACCOUNT_ID=bob.testnet
-  export RECEIVER_ID=alice.testnet
-  export NFT_CONTRACT_ID=nft.examples.testnet
-
-  near tokens $ACCOUNT_ID send-nft $NFT_CONTRACT_ID $RECEIVER_ID 1 --prepaid-gas '100.0 Tgas' --attached-deposit '1 yoctoNEAR' network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-</Tabs>
+near tokens $ACCOUNT_ID send-nft $NFT_CONTRACT_ID $RECEIVER_ID 1 --prepaid-gas '100.0 Tgas' --attached-deposit '1 yoctoNEAR' network-config testnet sign-with-keychain send
+```
 
 <hr class="subsection" />
 
@@ -341,16 +326,10 @@ This will allow you to manage your token assets such as NEAR, FTs and NFTs.
 
 `view-near-balance` - view the balance of NEAR tokens.
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
-  ```bash
-  export ACCOUNT_ID=bob.testnet
-  near tokens $ACCOUNT_ID view-near-balance network-config testnet now
-  ```
-
-  </TabItem>
-</Tabs>
+```bash
+export ACCOUNT_ID=bob.testnet
+near tokens $ACCOUNT_ID view-near-balance network-config testnet now
+```
 
 <hr class="subsection" />
 
@@ -358,16 +337,11 @@ This will allow you to manage your token assets such as NEAR, FTs and NFTs.
 
 `view-ft-balance` - view the balance of Fungible Tokens.
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
-  ```bash
-  export ACCOUNT_ID=bob.testnet
-  export FT_CONTRACT_ID=0c97251cd1f630c444dbusdt.testnet
-  near tokens $ACCOUNT_ID view-ft-balance $FT_CONTRACT_ID network-config testnet now
-  ```
-  </TabItem>
-</Tabs>
+```bash
+export ACCOUNT_ID=bob.testnet
+export FT_CONTRACT_ID=0c97251cd1f630c444dbusdt.testnet
+near tokens $ACCOUNT_ID view-ft-balance $FT_CONTRACT_ID network-config testnet now
+```
 
 <hr class="subsection" />
 
@@ -375,16 +349,11 @@ This will allow you to manage your token assets such as NEAR, FTs and NFTs.
 
 `view-nft-assets` - view the balance of NFT tokens.
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
-  ```bash
-  export ACCOUNT_ID=bob.testnet
-  export NFT_CONTRACT_ID=nft.examples.testnet
-  near tokens $ACCOUNT_ID view-nft-assets $NFT_CONTRACT_ID network-config testnet now
-  ```
-  </TabItem>
-</Tabs>
+```bash
+export ACCOUNT_ID=bob.testnet
+export NFT_CONTRACT_ID=nft.examples.testnet
+near tokens $ACCOUNT_ID view-nft-assets $NFT_CONTRACT_ID network-config testnet now
+```
 
 ---
 
@@ -506,14 +475,9 @@ This will allow you to change or modify the network connections for your CLI.
 
 `show-connections` - show a list of network connections.
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
-  ```bash
-  near config show-connections
-  ```
-  </TabItem>
-</Tabs>
+```bash
+near config show-connections
+```
 
 <hr class="subsection" />
 
@@ -521,14 +485,9 @@ This will allow you to change or modify the network connections for your CLI.
 
 `edit-connection` - edit a network connection.
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
-  ```bash
-  near config edit-connection testnet --key rpc_url --value https://test.rpc.fastnear.com
-  ```
-  </TabItem>
-</Tabs>
+```bash
+near config edit-connection testnet --key rpc_url --value https://test.rpc.fastnear.com
+```
 
 ---
 
@@ -585,43 +544,25 @@ If you want to interact with [NEAR Validators](https://pages.near.org/papers/eco
 
 A proposal by a validator indicates they would like to enter the validator set, in order for a proposal to be accepted it must meet the minimum seat price.
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
 ```sh
 near-validator proposals network-config mainnet
 ```
-
-  </TabItem>
-</Tabs>
 
 ### Current Validators
 
 This shows a list of active validators in the current epoch, the number of blocks produced, number of blocks expected, and online rate. Used to monitor if a validator is having issues.
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
 ```sh
 near-validator validators network-config mainnet now
 ```
-
-  </TabItem>
-</Tabs>
 
 ### Next Validators
 
 This shows validators whose proposal was accepted one epoch ago, and that will enter the validator set in the next epoch.
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
 ```sh
 near-validator validators network-config mainnet next
 ```
-
-  </TabItem>
-</Tabs>
 
 ### Staking
 
@@ -631,40 +572,22 @@ For validators, there's also an option to stake NEAR tokens without deploying a 
 
 To view the validator's stake on the last block, you need to enter in the terminal command line:
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
 ```sh
 near-validator staking view-stake examples.testnet network-config testnet now
 ```
-
-  </TabItem>
-</Tabs>
 
 #### Stake directly without a staking pool
 
 To stake the amount you must enter in the terminal command line:
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
 ```sh
 near-validator staking stake-proposal examples.testnet ed25519:AiEo5xepXjY7ChihZJ6AsfoDAaUowhPgvQp997qnFuRP '1500 NEAR' network-config testnet sign-with-keychain send
 ```
-
-  </TabItem>
-</Tabs>
 
 #### Unstake directly without a staking pool
 
 To unstake you must enter in the terminal command line:
 
-<Tabs groupId="cli-commands">
-  <TabItem value="Full">
-
 ```sh
 near-validator staking unstake-proposal examples.testnet ed25519:AiEo5xepXjY7ChihZJ6AsfoDAaUowhPgvQp997qnFuRP network-config testnet sign-with-keychain send
 ```
-
-  </TabItem>
-</Tabs>

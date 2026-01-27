@@ -22,7 +22,7 @@ const RawDropdownItem = ({ to, label, icon, description, onMouseOver, onMouseOut
     >
       <a href={to} className={clsx(styles.dropdownItemLink)}>
         <div className={clsx(styles.dropdownItemContainer)}>
-          {!isCategory && icon && (
+          {icon && (
             <img
               className={clsx(styles.dropdownItemImg)}
               src={icon}

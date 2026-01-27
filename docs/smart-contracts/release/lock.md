@@ -14,33 +14,13 @@ Removing all [full access keys](/tools/near-cli#delete-key) from an account will
 When an account is locked nobody can perform transactions in the account's name (e.g. update the code or transfer money).
 
 #### How to Lock an Account
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Short">
 
-  ```bash
-  near keys <dev-account>
-  # result: [access_key: {"nonce": ..., "public_key": '<key>'}]
+```bash
+near list-keys <dev-account>
+# result: [access_key: {"nonce": ..., "public_key": '<key>'}]
 
-  near delete-key <dev-account> '<key>'
-  ```
-  </TabItem>
-
-  <TabItem value="full" label="Full">
-
-  ```bash
-  near account list-keys <dev-account> network-config testnet now
-  # result:
-
-  +---+------------+-------+-------------+
-  | # | Public Key | Nonce | Permissions |
-  +---+------------+-------+-------------+
-  ..    '<key>'      ...        ...
-  +---+------------+-------+-------------+
-
-  near account delete-key <dev-account> '<key>' network-config testnet sign-with-keychain send
-  ```
-  </TabItem>
-</Tabs>
+near delete-key <dev-account> '<key>'
+```
 
 #### Why Locking an Account
 
@@ -49,6 +29,6 @@ contract or balance.
 
 :::tip Upgrading Locked Contracts
 
-Please do note that, while no external actor can update the contract, the contract **can still upgrade itself**. See [this article](upgrade.md#programmatic-update) for details.
+While no external actor can update the contract, the contract **can still upgrade itself**, see [this article](upgrade.md#programmatic-update) for details
 
 :::

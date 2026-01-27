@@ -15,12 +15,13 @@ To learn more see [How Omni Bridge Works](./how-it-works.md).
 
 Omni Bridge launches with a hybrid architecture, utilizing different verification methods based on chain-specific requirements and technical constraints. This approach allows us to support multiple chains from day one while progressively transitioning to full Chain Signatures integration.
 
-Initial launch includes:
+Currently the supported chains are:
 
 - **Ethereum** - _(Light client + Chain Signatures)_
 - **Bitcoin** - _(Light client + Chain Signatures)_
 - **Solana** - _(Wormhole + Chain Signatures)_
 - **Base** - _(Wormhole + Chain Signatures)_
+- **BNB** - _(Wormhole + Chain Signatures)_
 - **Arbitrum** - _(Wormhole + Chain Signatures)_
 
 :::info

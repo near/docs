@@ -125,7 +125,7 @@ In order to use the contract, make sure to register your account in the DEX by p
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
-near call v2.ref-finance.near storage_deposit '' --accountId <account> --amount 0.1
+near call v2.ref-finance.near storage_deposit '' --useAccount <account> --amount 0.1
 ```
 
 </TabItem>
@@ -146,7 +146,7 @@ In order to swap tokens, one must first deposit tokens into the DEX. For this, y
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
-near call token.v2.ref-finance.near ft_transfer_call {"receiver_id": "v2.ref-finance.near", "amount": "1000000000000", "msg": ""} --gas 300000000000000 --depositYocto 1 --accountId <account>
+near call token.v2.ref-finance.near ft_transfer_call {"receiver_id": "v2.ref-finance.near", "amount": "1000000000000", "msg": ""} --gas 300000000000000 --depositYocto 1 --useAccount <account>
 ```
 
 </TabItem>
@@ -173,13 +173,13 @@ Query your deposit balances by calling the `get_deposits` method:
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
 
-  const { viewMethod } = useWalletSelector();
+  const { viewFunction } = useNearWallet();
 
-  await viewMethod({
+  await viewFunction({
     method: 'get_deposits',
     args: {
       account_id: 'bob.near',
@@ -188,7 +188,7 @@ Query your deposit balances by calling the `get_deposits` method:
   });
   ```
 
-  Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
 
   <details>
   <summary>Example response</summary>
@@ -290,13 +290,13 @@ DEXs work by having multiple pools of token pairs (e.g. NEAR-USDC) that users ca
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
 
-  const { viewMethod } = useWalletSelector();
+  const { viewFunction } = useNearWallet();
 
-  await viewMethod({
+  await viewFunction({
     method: 'get_pools',
     args: {
       from_index: 0,
@@ -306,7 +306,7 @@ DEXs work by having multiple pools of token pairs (e.g. NEAR-USDC) that users ca
   });
   ```
 
-  Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
 
   <details>
   <summary>Example response</summary>
@@ -473,13 +473,13 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
 
-    const { callMethod } = useWalletSelector();
+    const { callFunction } = useNearWallet();
 
-    await callMethod({
+    await callFunction({
       contractId: AMM_CONTRACT_ADDRESS,
       method: 'swap',
       args: {
@@ -498,7 +498,7 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
     });
     ```
 
-   Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+   Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
 
   <details>
   <summary>Example response</summary>
@@ -513,7 +513,7 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
    
   ```bash
   near call v2.ref-finance.near swap "{\"actions\": [{\"pool_id\": 79, \"token_in\": \"token.v2.ref-finance.near\", \"amount_in\": \"100000000000000000\", \"token_out\": \"wrap.near\", \"min_amount_out\": \"1\"}]}" --gas 300000000000000 --depositYocto 1
-  --accountId bob.near
+  --useAccount bob.near
   ```
 
   <details>

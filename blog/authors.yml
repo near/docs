@@ -59,3 +59,11 @@ pivortex:
   socials:
     x: ThePiVortex
     github: PiVortex
+
+matiasbenary:
+  name: Matias Benary
+  title: Developer
+  url: https://github.com/matiasbenary
+  image_url: https://github.com/matiasbenary.png
+  socials:
+    github: matiasbenary

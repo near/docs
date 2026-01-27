@@ -104,8 +104,8 @@ Since there are two ways to reference a global contract ([by account](../../smar
   
   To do this, use the `deployGlobalContract` function and set the mode to `accountId`, along with the contract’s code bytes.
   
-    <Github fname="deploy-global-contract-by-account.js" language="js"
-    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js#L22-L27"
+    <Github fname="deploy-global-contract-by-account.ts" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts#L22-L27"
     start="22" end="27" />
 
   </TabItem>
@@ -116,8 +116,8 @@ Since there are two ways to reference a global contract ([by account](../../smar
   
   To do this, use the `deployGlobalContract` function and set the mode to `codeHash`, along with the contract’s code bytes.
 
-    <Github fname="deploy-global-contract-by-hash.js" language="js"
-    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js#L24-L29"
+    <Github fname="deploy-global-contract-by-hash.ts" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts#L24-L29"
     start="24" end="29" />
   
   </TabItem>
@@ -206,8 +206,8 @@ Let’s see how you can reference and use your global contract from another acco
 
   To reference a global contract by account, you need to call the `useGlobalContract` function and pass the source `accountId` where the contract was originally deployed.
 
-    <Github fname="deploy-global-contract-by-account.js" language="js"
-    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-account.js#L39-L45"
+    <Github fname="deploy-global-contract-by-account.ts" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts#L39-L45"
     start="39" end="45" />
 
   </TabItem>
@@ -220,8 +220,8 @@ Let’s see how you can reference and use your global contract from another acco
   const hash = bs58.encode(sha256(wasm));
   ```
 
-    <Github fname="deploy-global-contract-by-hash.js" language="js"
-    url="https://github.com/near-examples/near-api-examples/blob/main/javascript/examples/deploy-global-contract-by-hash.js#L45-L53"
+    <Github fname="deploy-global-contract-by-hash.ts" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts#L45-L53"
     start="45" end="53" />
 
   </TabItem>
