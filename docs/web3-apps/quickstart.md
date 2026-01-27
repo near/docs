@@ -9,6 +9,12 @@ import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from '@site/src/components/UI/Codetabs';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
+## Quick Answer
+
+**Build a NEAR-enabled frontend in 10 minutes.** Create a React/Next.js app with wallet login and smart contract interaction. Uses `create-near-app` to scaffold a complete dApp with wallet selector (supports MyNearWallet, Meteor, Metamask). Users can sign in, call contract functions, and see results. Includes testnet example contract (`hello.near-examples.testnet`).
+
+---
+
 In this guide we will show you how to quickly spin up a frontend where users can **login** using their wallets and interact with a **contract**.
 
 :::tip Searching to integrate NEAR in your App?
@@ -89,9 +95,18 @@ The navigation bar implements a button to allow users to `login` and `logout` wi
 
 ---
 
-## Interacting with NEAR
+## How Do I Call Smart Contract Functions?
 
 Now that you understand how the landing page works, we can move to the `Near Integration` page, which retrieves a greeting from the [hello.near-examples.testnet](https://testnet.nearblocks.io/address/hello.near-examples.testnet) contract.
+
+### Read vs. Write Operations
+
+| Operation Type | Method | Cost | Requires Signature |
+|---------------|--------|------|-------------------|
+| **Read (view)** | `viewMethod()` | Free | No |
+| **Write (call)** | `callMethod()` | Gas fees (~0.0001 Ⓝ) | Yes |
+
+View methods query contract state without modifying it. Call methods change state and require the user to sign a transaction.
 
 ![img](/assets/docs/tutorials/examples/hello-near-gateway.png)
 *View of the `Near Integration` page*
@@ -118,6 +133,25 @@ For example, when we want to fetch the current greeting stored in the contract, 
 On the other hand, when the user submits a new greeting, we use `callFunction` to send a transaction to the contract:
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.tsx" language="jsx" start="25" end="37" />
+
+---
+
+## Common Questions
+
+### Do users need NEAR tokens to login?
+No. Wallet login is free. Users only pay gas fees when they call contract functions that modify state.
+
+### What wallets can users connect with?
+NEAR wallets (MyNearWallet, Meteor, HERE Wallet) and Ethereum wallets (Metamask, WalletConnect, Coinbase Wallet via EVM support).
+
+### How do I avoid users signing every transaction?
+Create a **function-call access key** by setting `createAccessKeyFor: <contract-name>` in the wallet selector config. This allows the app to sign non-payable methods automatically.
+
+### Can I use this with an existing React app?
+Yes. Install `@near-wallet-selector/core` and follow our [integration guide](./tutorials/web-login/wallet-selector.md).
+
+### Why Next.js instead of plain React?
+Next.js is recommended but not required. You can use Vite/React, Vue, Svelte, or any framework. Check `create-near-app` templates for options.
 
 ---
 

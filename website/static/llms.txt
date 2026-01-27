@@ -1,0 +1,103 @@
+# NEAR Protocol Documentation
+
+## Overview
+NEAR is a blockchain platform designed for building scalable, user-friendly decentralized applications. This documentation provides comprehensive guides for developers building on NEAR.
+
+## Primary Resources
+
+### Getting Started
+- **Smart Contracts Quickstart**: /smart-contracts/quickstart
+  Create your first NEAR smart contract in JavaScript, Rust, Python, or Go. Includes setup, testing, deployment.
+
+- **Web3 Apps Quickstart**: /web3-apps/quickstart
+  Build a frontend application with NEAR wallet integration. React/Next.js example with wallet login and contract interaction.
+
+### Core Concepts
+- **Account Model**: /protocol/account-model
+  NEAR uses human-readable account IDs. Accounts can store smart contracts, hold tokens, and have access keys.
+
+- **Smart Contracts**: /smart-contracts/anatomy/anatomy
+  Contracts are small programs stored on accounts. Write in JavaScript, Rust, Python, or Go. Compiled to WebAssembly.
+
+- **Access Keys**: /protocol/access-keys
+  Two types: Full Access (complete control) and Function Call (limited permissions for dApp UX).
+
+### Chain Abstraction
+- **Chain Signatures**: /chain-abstraction/chain-signatures/getting-started
+  Control addresses on other blockchains (Bitcoin, Ethereum, etc.) from NEAR accounts using MPC signatures.
+
+- **Intents**: /chain-abstraction/intents
+  User-centric transaction model where users declare desired outcomes, not step-by-step instructions.
+
+### AI Integration
+- **NEAR AI**: /ai/introduction
+  Build AI agents that can execute on-chain actions, manage wallets, and interact with smart contracts.
+
+- **Shade Agents**: /ai/shade-agents/getting-started/introduction
+  Framework for creating autonomous AI agents with on-chain identity and capabilities.
+
+### Developer Tools
+- **NEAR CLI**: /tools/cli
+  Command-line interface for deploying contracts, managing accounts, calling functions.
+
+- **Wallet Selector**: /tools/wallet-selector
+  Modal for users to choose their preferred NEAR wallet (MyNearWallet, Meteor, etc.).
+
+- **Ethereum Wallets**: /web3-apps/tutorials/web-login/ethereum-wallets
+  Connect Metamask and other EVM wallets to NEAR apps.
+
+### Data & Indexing
+- **NEAR Lake**: /data-infrastructure/near-lake-framework
+  Stream blockchain data in real-time. Subscribe to on-chain events.
+
+- **BigQuery**: /data-infrastructure/big-query
+  Query historical NEAR blockchain data using SQL.
+
+### Primitives
+- **NFTs**: /primitives/nft/nft
+  NEAR NFT standard (NEP-171). Mint, transfer, and manage non-fungible tokens.
+
+- **Fungible Tokens**: /primitives/ft
+  NEAR FT standard (NEP-141). Create and manage tokens.
+
+## Key Differences from Other Blockchains
+
+- **Human-readable accounts**: Use `alice.near` instead of `0x123...abc`
+- **Progressive gas fees**: Users can get function-call access keys to sign non-payable transactions without wallet prompts
+- **Built-in account abstraction**: No need for separate AA solutions
+- **Native chain abstraction**: Control other chains' addresses from NEAR accounts
+- **Sharded architecture**: Scales horizontally (not just layer-2s)
+
+## Common Developer Questions
+
+**How do I deploy a contract?**
+Use `near deploy <account-id> <wasm-file>` via NEAR CLI.
+
+**Which language should I use?**
+JavaScript/TypeScript for rapid prototyping, Rust for production, Python/Go for specific use cases.
+
+**How do I test contracts?**
+NEAR provides sandbox testing environments. Run `npm test` (JS), `cargo test` (Rust), or `uv run pytest` (Python).
+
+**What's a function-call access key?**
+Limited permission key that can only call specific contract methods. Enables wallet-less UX for users.
+
+**How do I integrate wallet login?**
+Use @near-wallet-selector/core package. Supports multiple wallets in a single modal.
+
+**Can I connect Ethereum wallets?**
+Yes, NEAR supports Metamask and other EVM wallets through chain signatures.
+
+## Support
+
+- **Discord**: https://discord.gg/near
+- **Telegram**: https://t.me/NEARProtocol
+- **GitHub**: https://github.com/near
+- **Forum**: https://gov.near.org
+
+## Last Updated
+January 2026
+
+---
+
+This documentation is maintained by the NEAR DevHub team. For corrections or improvements, open an issue on GitHub.
