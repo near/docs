@@ -12,6 +12,7 @@ const MEILI_MASTER_KEY = process.env.MEILI_MASTER_KEY || 'masterKey123';
 const MEILI_INDEX_NAME = process.env.MEILI_INDEX_NAME || 'near-docs';
 const DOCS_PATH = path.resolve(__dirname, '../../docs');
 const BATCH_SIZE = 100;
+const TASK_TIMEOUT = 300000; // 5 minutes timeout for tasks with embedders
 
 const CATEGORY_MAP = {
   'smart-contracts': 'Smart Contracts',
@@ -52,7 +53,7 @@ function extractFrontmatter(content) {
       let value = line.slice(colonIndex + 1).trim();
       // Remove quotes if present
       if ((value.startsWith('"') && value.endsWith('"')) ||
-          (value.startsWith("'") && value.endsWith("'"))) {
+        (value.startsWith("'") && value.endsWith("'"))) {
         value = value.slice(1, -1);
       }
       frontmatter[key] = value;
@@ -202,7 +203,7 @@ async function indexDocuments() {
     console.log('Creating new index:', MEILI_INDEX_NAME);
     const task = await client.createIndex(MEILI_INDEX_NAME, { primaryKey: 'id' });
     // Wait for index creation to complete
-    await client.tasks.waitForTask(task.taskUid);
+    await client.tasks.waitForTask(task.taskUid, { timeout: TASK_TIMEOUT });
     index = client.index(MEILI_INDEX_NAME);
   }
 
@@ -214,6 +215,13 @@ async function indexDocuments() {
     sortableAttributes: ['timestamp'],
     rankingRules: ['words', 'typo', 'proximity', 'attribute', 'sort', 'exactness'],
     distinctAttribute: 'path',
+    embedders: {
+      default: {
+        source: 'huggingFace',
+        model: 'sentence-transformers/all-MiniLM-L6-v2',
+        documentTemplate: '{{doc.title}} {{doc.content}}',
+      },
+    },
   });
 
   // Get all markdown files
@@ -290,7 +298,7 @@ async function indexDocuments() {
   // Delete all existing documents
   console.log('Clearing existing documents...');
   const deleteTask = await index.deleteAllDocuments();
-  await client.tasks.waitForTask(deleteTask.taskUid);
+  await client.tasks.waitForTask(deleteTask.taskUid, { timeout: TASK_TIMEOUT });
 
   // Upload documents in batches
   console.log('Uploading documents...');
@@ -302,10 +310,10 @@ async function indexDocuments() {
     console.log(`Uploaded batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(documents.length / BATCH_SIZE)} (Task: ${task.taskUid})`);
   }
 
-  // Wait for all indexing tasks to complete
-  console.log('Waiting for indexing to complete...');
+  // Wait for all indexing tasks to complete (takes longer with embedders)
+  console.log('Waiting for indexing to complete (this may take a few minutes with embedders)...');
   for (const taskUid of uploadTasks) {
-    await client.tasks.waitForTask(taskUid);
+    await client.tasks.waitForTask(taskUid, { timeout: TASK_TIMEOUT });
   }
 
   // Get final stats
