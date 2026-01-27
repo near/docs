@@ -1,4 +1,46 @@
 const sidebar = {
+  academy: [
+    'quest/introduction',
+    {
+      type: 'html',
+      value: '<hr/>',
+    },
+    {
+      type: 'category',
+      label: 'Decentralized Apps',
+      collapsed: true,
+      customProps: {
+        icon: '/assets/menu/near.svg',
+      },
+      items: [
+        'quest/dapps/intro-to-web3',
+        'quest/dapps/building-blocks',
+        'quest/dapps/why-near',
+        'quest/dapps/examples',
+        'quest/dapps/takeaway',
+      ]
+    },
+    {
+      type: 'category',
+      label: 'NEAR Accounts',
+      collapsed: true,
+      customProps: {
+        icon: '/assets/menu/near.svg',
+      },
+      items: [
+        'quest/accounts/introduction',
+        'quest/accounts/address',
+        'quest/accounts/named-vs-implicit',
+        'quest/accounts/access-keys',
+        'quest/accounts/smart-contracts',
+        'quest/accounts/takeaways',
+      ]
+    },
+    // 'quest/data-flow',
+    // 'quest/near-network',
+    // 'quest/primitives',
+    // 'quest/smart-contracts',
+  ],
   build: [
     {
       type: 'doc',
@@ -74,7 +116,7 @@ const sidebar = {
             'tools/explorer',
             {
               type: 'link',
-              label: 'Wallets ↗',
+              label: 'Wallets',
               href: 'https://wallet.near.org',
             },
             'tools/near-cli',
@@ -96,61 +138,47 @@ const sidebar = {
       },
       link: { type: 'generated-index', slug: 'chain-abstraction/what-is' },
       items: [
+        "chain-abstraction/what-is",
         {
-          "Getting Started": [
-            "chain-abstraction/what-is"
-          ]
-        },
-        {
-          "Concepts": [
+          "Multi-Chain Accounts": [
             'chain-abstraction/chain-signatures',
-            'chain-abstraction/intents/overview',
             {
-              'Omni Bridge': [
-                'chain-abstraction/omnibridge/overview',
-                'chain-abstraction/omnibridge/how-it-works',
-                'chain-abstraction/omnibridge/implementation-details',
-                'chain-abstraction/omnibridge/roadmap',
-              ],
-            },
-            'chain-abstraction/data-availability',
-          ]
-        },
-        {
-          "Tutorials": [
-            'chain-abstraction/chain-signatures/implementation',
-            {
-              type: 'category',
-              label: 'Controlling NEAR Accounts',
-              link: { type: 'generated-index', slug: 'tutorials/controlling-near-accounts/introduction' },
-              items: [
-                'tutorials/controlling-near-accounts/introduction',
-                'tutorials/controlling-near-accounts/setup',
-                'tutorials/controlling-near-accounts/transfer',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Cross-Chain DAO Governance',
-              link: { type: 'generated-index', slug: 'tutorials/multichain-dao/introduction' },
-              items: [
-                'tutorials/multichain-dao/introduction',
-                'tutorials/multichain-dao/request',
-                'tutorials/multichain-dao/signing',
-                'tutorials/multichain-dao/voting',
-              ],
-            },
-          ]
-        },
-        {
-          "Reference": [
-            {
-              type: "link",
-              label: "Chainsig.js",
-              href: "https://github.com/NearDeFi/chainsig.js"
+              "Tutorials": [
+                'chain-abstraction/chain-signatures/implementation',
+                {
+                  type: 'category',
+                  label: 'Controlling NEAR Accounts',
+                  link: { type: 'generated-index', slug: 'tutorials/controlling-near-accounts/introduction' },
+                  items: [
+                    'tutorials/controlling-near-accounts/introduction',
+                    'tutorials/controlling-near-accounts/setup',
+                    'tutorials/controlling-near-accounts/transfer',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Cross-Chain DAO Governance',
+                  link: { type: 'generated-index', slug: 'tutorials/multichain-dao/introduction' },
+                  items: [
+                    'tutorials/multichain-dao/introduction',
+                    'tutorials/multichain-dao/request',
+                    'tutorials/multichain-dao/signing',
+                    'tutorials/multichain-dao/voting',
+                  ],
+                },
+              ]
             }
           ]
-        }
+        },
+        'chain-abstraction/intents/overview',
+        {
+          "Multi-Chain Bridge": [
+            'chain-abstraction/omnibridge/overview',
+            'chain-abstraction/omnibridge/how-it-works',
+            'chain-abstraction/omnibridge/implementation-details',
+            'chain-abstraction/omnibridge/roadmap',
+          ]
+        },
       ],
     },
     {
@@ -164,6 +192,7 @@ const sidebar = {
       items: [
         'ai/introduction',
         'ai/near-mcp',
+        'ai/using-llms',
         {
           "Shade Agents": [
             {
@@ -289,70 +318,30 @@ const sidebar = {
         },
         {
           "Tutorials": [
-            'tutorials/examples/count-near',
-            'tutorials/examples/guest-book',
-            'tutorials/examples/donation',
-            'tutorials/examples/coin-flip',
-            'tutorials/examples/factory',
-            'tutorials/examples/near-drop',
-            'tutorials/examples/xcc',
-            'tutorials/examples/advanced-xcc',
-            'tutorials/examples/global-contracts',
-            'tutorials/examples/update-contract-migrate-state',
+            'smart-contracts/tutorials/basic-contracts',
             {
-              "Build a FT Contract from Scratch": [
-                'tutorials/fts/introduction',
-                'tutorials/fts/predeployed-contract',
-                'tutorials/fts/skeleton',
-                'tutorials/fts/defining-a-token',
-                'tutorials/fts/circulating-supply',
-                'tutorials/fts/registering-accounts',
-                'tutorials/fts/transfers',
-                'tutorials/fts/marketplace',
+              "Advanced": [
+                'tutorials/examples/near-drop',
+                'tutorials/examples/update-contract-migrate-state',
               ]
             },
             {
-              "Build a NFT Contract from Scratch": [
-                'tutorials/nfts/introduction',
-                {
-                  Basic: [
-                    'tutorials/nfts/predeployed-contract',
-                    'tutorials/nfts/skeleton',
-                    'tutorials/nfts/minting',
-                    'tutorials/nfts/upgrade-contract',
-                    'tutorials/nfts/enumeration',
-                    'tutorials/nfts/core',
-                  ],
-                },
-                'tutorials/nfts/events',
-                {
-                  Marketplace: ['tutorials/nfts/approvals', 'tutorials/nfts/marketplace'],
-                },
-                'tutorials/nfts/royalty',
-                'tutorials/nfts/series',
+              "Cross Contracts": [
+                'tutorials/examples/xcc',
+                'tutorials/examples/advanced-xcc',
               ]
             },
             {
-              "Build a NFT Contract from Scratch (JS)": [
-                'tutorials/nfts/js/introduction',
-                {
-                  Basic: [
-                    'tutorials/nfts/js/predeployed-contract',
-                    'tutorials/nfts/js/skeleton',
-                    'tutorials/nfts/js/minting',
-                    'tutorials/nfts/js/upgrade-contract',
-                    'tutorials/nfts/js/enumeration',
-                    'tutorials/nfts/js/core',
-                  ],
-                },
-                'tutorials/nfts/js/events',
-                {
-                  Marketplace: [
-                    'tutorials/nfts/js/approvals',
-                    'tutorials/nfts/js/marketplace'
-                  ],
-                },
-                'tutorials/nfts/js/royalty',
+              "Factories": [
+                'tutorials/examples/factory',
+                'tutorials/examples/global-contracts',
+              ]
+            },
+            {
+              "Zero to Hero": [
+                'tutorials/fts',
+                'tutorials/nfts',
+                'tutorials/nfts-js',
               ]
             },
           ]
@@ -384,21 +373,20 @@ const sidebar = {
         {
           "Concepts": [
             'web3-apps/concepts/web-login',
-            'web3-apps/concepts/eth-wallets-on-near',
             'web3-apps/concepts/data-types'
           ]
         },
         {
           "Tutorials": [
-            {
-              "Web Login": [
-                'web3-apps/tutorials/web-login/near-connector',
-                'web3-apps/tutorials/web-login/wallet-selector',
-                'web3-apps/tutorials/web-login/ethereum-wallets',
-              ]
-            },
+            'web3-apps/tutorials/wallet-login',
             'tutorials/examples/frontend-multiple-contracts',
             'web3-apps/backend/backend-login',
+            {
+              'Testing on Localnet': [
+                'web3-apps/tutorials/localnet/introduction',
+                'web3-apps/tutorials/localnet/run',
+              ],
+            },
             'chain-abstraction/meta-transactions-relayer',
             {
               type: 'category',
@@ -435,7 +423,11 @@ const sidebar = {
           "Reference": [
             'tools/near-api',
             'tools/near-cli',
-            'tools/wallet-selector',
+            { 
+              type: 'link', 
+              label: 'NEAR Connect ↗',
+              href: 'https://github.com/azbang/near-connect'
+            },
           ]
         }
       ],
@@ -453,13 +445,15 @@ const sidebar = {
         {
           'Fungible Tokens (FT)': [
             'primitives/ft/standard',
-            'primitives/ft/ft'
+            'primitives/ft/ft',
+            'primitives/ft/sdk-contract-tools'
           ]
         },
         {
           'Non-Fungible Tokens (NFT)': [
             'primitives/nft/standard',
-            'primitives/nft/nft'
+            'primitives/nft/nft',
+            'primitives/nft/nft-contract-tools'
           ]
         },
         {
@@ -498,6 +492,7 @@ const sidebar = {
       link: { type: 'generated-index', slug: 'data-infrastructure/what-is' },
       items: [
         'data-infrastructure/what-is',
+        'data-infrastructure/data-services',
         'data-infrastructure/data-apis',
         'data-infrastructure/big-query',
         {
@@ -523,6 +518,11 @@ const sidebar = {
                 },
               ]
             },
+            {
+              type: "link",
+              label: "The Graph Substreams",
+              href: "https://docs.substreams.dev/tutorials/intro-to-tutorials/near"
+            }
           ],
         },
       ],

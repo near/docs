@@ -6,40 +6,13 @@ import useIsBrowser from '@docusaurus/useIsBrowser'; // https://docusaurus.io/do
 import { PostHogProvider } from 'posthog-js/react';
 import posthog from 'posthog-js';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // wallet selector
-import '@near-wallet-selector/modal-ui/styles.css';
-import { setupBitteWallet } from '@near-wallet-selector/bitte-wallet';
-import { setupIntearWallet } from '@near-wallet-selector/intear-wallet';
-import { setupHotWallet } from '@near-wallet-selector/hot-wallet';
-import { setupLedger } from '@near-wallet-selector/ledger';
-import { setupMeteorWallet } from '@near-wallet-selector/meteor-wallet';
-import { setupNightly } from '@near-wallet-selector/nightly';
-import { WalletSelectorProvider } from '@near-wallet-selector/react-hook';
-import { setupSender } from '@near-wallet-selector/sender';
-// import { setupMeteorWalletApp } from '@near-wallet-selector/meteor-wallet-app';
-import { setupWelldoneWallet } from '@near-wallet-selector/welldone-wallet';
+import { NearProvider } from 'near-connect-hooks';
+import { AcademyProgressProvider } from '../components/Academy/AcademyProgressContext';
 
 const networkId = 'testnet';
-
-const walletSelectorConfig = {
-  network: {networkId: networkId, nodeUrl: 'https://test.rpc.fastnear.com'},
-  modules: [
-    // setupEthereumWallets({ wagmiConfig, web3Modal, alwaysOnboardDuringSignIn: true }),
-    setupMeteorWallet(),
-    setupBitteWallet(),
-    setupHotWallet(),
-    setupIntearWallet(),
-    // setupMeteorWalletApp(),
-    setupSender(),
-    setupNightly(),
-    setupLedger(),
-    setupWelldoneWallet()
-  ],
-};
-
 
 function initializeGleap() {
   if (typeof window !== "undefined") {
@@ -77,18 +50,6 @@ function Root({ children, location }) {
   } = useDocusaurusContext();
 
   useEffect(() => {
-    // Pass message to dev.near.org (docs is embedded there)
-    const sendMessage = (url) =>
-      parent.postMessage({ type: 'urlChange', url }, 'https://dev.near.org/');
-    sendMessage(location.pathname);
-
-    const unlisten = history.listen((loc) => sendMessage(loc.pathname));
-    return () => {
-      unlisten();
-    };
-  }, [history]);
-
-  useEffect(() => {
     // Initialize Gleap
     if (isBrowser) {
       initializeGleap();
@@ -112,21 +73,11 @@ function Root({ children, location }) {
 
   return (
     <PostHogProvider client={posthog}>
-      <WalletSelectorProvider config={walletSelectorConfig}>
-        {children}
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
-      </WalletSelectorProvider>
+      <NearProvider config={networkId}>
+        <AcademyProgressProvider>
+          {children}
+        </AcademyProgressProvider>
+      </NearProvider>
     </PostHogProvider>
   );
 }

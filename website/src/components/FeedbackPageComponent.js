@@ -7,7 +7,6 @@ const FeedbackForm = () => {
     email: '',
     subject: '',
     message: '',
-    rating: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
@@ -38,9 +37,6 @@ const FeedbackForm = () => {
         from_email: formData.email || 'Not provided',
         subject: formData.subject,
         message: formData.message,
-        rating: formData.rating
-          ? `${'⭐'.repeat(parseInt(formData.rating))} (${formData.rating}/5)`
-          : 'Not rated',
         submission_date: new Date().toLocaleString(),
       };
 
@@ -59,7 +55,6 @@ const FeedbackForm = () => {
           email: '',
           subject: '',
           message: '',
-          rating: '',
         });
       } else {
         throw new Error(`Failed to submit feedback: ${response.text || 'Unknown error'}`);
@@ -88,7 +83,8 @@ const FeedbackForm = () => {
           NEAR Developer Feedback
         </h2>
         <p style={{ fontSize: '1.1rem' }}>
-        Building for developers, guided by developer feedback. <br/> Tell us what you like, what you don't like, and what we can do to improve.
+          Building for developers, guided by developer feedback. <br /> Tell us what you like, what
+          you don't like, and what we can do to improve.
         </p>
       </div>
 
@@ -167,7 +163,7 @@ const FeedbackForm = () => {
               fontSize: '1rem',
               transition: 'border-color 0.2s ease',
               backgroundColor: 'var(--ifm-background-color)',
-              cursor: 'pointer'
+              cursor: 'pointer',
             }}
           >
             <option value="">Select a subject</option>
@@ -175,36 +171,6 @@ const FeedbackForm = () => {
             <option value="developer-experience">👨‍💻 Developer Experience</option>
             <option value="tooling">🔧 Tooling</option>
             <option value="other">💬 Other</option>
-          </select>
-        </div>
-
-        <div style={{ marginBottom: '1rem' }}>
-          <label
-            htmlFor="rating"
-            style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}
-          >
-            Overall Rating (Optional)
-          </label>
-          <select
-            id="rating"
-            name="rating"
-            value={formData.rating}
-            onChange={handleInputChange}
-            style={{
-              width: '100%',
-              padding: '0.75rem',
-              border: '2px solid var(--ifm-color-emphasis-300)',
-              borderRadius: '8px',
-              fontSize: '1rem',
-              backgroundColor: 'var(--ifm-background-color)',
-            }}
-          >
-            <option value="">Select a rating</option>
-            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
-            <option value="4">⭐⭐⭐⭐ Good</option>
-            <option value="3">⭐⭐⭐ Average</option>
-            <option value="2">⭐⭐ Poor</option>
-            <option value="1">⭐ Very Poor</option>
           </select>
         </div>
 

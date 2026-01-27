@@ -1,5 +1,5 @@
 .card {
-  padding: var(--space-1);
+  padding: var(--space-3) var(--space-1) var(--space-1);
   border-radius: var(--radius-card);
   border: var(--border-card);
   background: var(--color-bg-surface);
@@ -33,9 +33,7 @@
 
   // Icon variant
   &--icon {
-    position: relative;
-    padding-top: var(--space-10);
-    margin-top: var(--space-8);
+    text-align: center;
 
     &:hover {
       transform: translateY(calc(var(--space-2) * -1));
@@ -87,21 +85,22 @@
     .card__content {
       color: #047857;
     }
-
-    // &:hover {
-    //   background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);
-    //   border-color: rgba(16, 185, 129, 0.3);
-    // }
-
   }
 
   // based on #DBEAFE
   &--blue {
     background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
     border: 1px solid rgba(59, 130, 246, 0.2);
+    color: #1e3a8a;
 
     .card__title {
+      color: #1e3a8a;
       font-weight: var(--font-weight-bold);
+    }
+
+    .card__description,
+    .card__content {
+      color: #1e40af;
     }
   }
 
@@ -119,35 +118,24 @@
     .card__content {
       color: #5b21b6;
     }
-
-    // &:hover {
-    //   background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-    //   border-color: rgba(139, 92, 246, 0.3);
-    // }
-
   }
 
-  &--orange {
-    background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
-    border: 1px solid rgba(249, 115, 22, 0.2);
-    color: #9a3412;
+  &--red {
+    background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #7f1d1d;
 
     .card__title {
-      color: #9a3412;
+      color: #7f1d1d;
       font-weight: var(--font-weight-bold);
     }
 
     .card__description,
     .card__content {
-      color: #c2410c;
+      color: #991b1b;
     }
 
-    // &:hover {
-    //   background: linear-gradient(135deg, #fdba74 0%, #fb923c 100%);
-    //   border-color: rgba(249, 115, 22, 0.3);
-    // }
-
-    // Buttons and interactive elements inside orange cards
+    // Buttons and interactive elements inside red cards
     button {
       background-color: rgba(255, 255, 255, 0.15);
       color: inherit;
@@ -163,7 +151,7 @@
   // Common styles for buttons in colored cards
   &--mint,
   &--purple,
-  &--orange {
+  &--red {
     button {
       background-color: rgba(255, 255, 255, 0.15);
       color: inherit;
@@ -188,20 +176,16 @@
 
   // Icon element
   &__icon {
-    position: absolute;
-    top: calc(-1 * var(--space-8));
-    left: var(--space-6);
     width: var(--space-16);
     height: var(--space-16);
     background: var(--color-bg-primary);
-    border: var(--border-2) var(--border-solid) var(--color-border-primary);
-    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition-all);
     z-index: 10;
     overflow: visible;
+    margin: 0 auto;
   }
 
   &__iconSvg {
@@ -224,6 +208,7 @@
     height: var(--space-50);
     background: linear-gradient(135deg, var(--near-brand-primary-100) 0%, var(--near-brand-primary-200) 100%);
     border-radius: var(--radius-card) var(--radius-card) 0 0;
+    margin-top: -0.45rem;
 
     img {
       width: 100%;
@@ -242,14 +227,12 @@
     padding: var(--space-2) var(--space-6);
     display: flex;
     flex-direction: column;
-    color: var(--color-text-primary);
     flex-grow: 1;
   }
 
   // Title element
   &__title {
-    margin: 0 0 var(--space-2) 0;
-    color: var(--color-text-primary);
+    margin: var(--space-1) 0 var(--space-3) 0;
     font-size: var(--text-xl);
     font-weight: var(--font-weight-semibold);
     line-height: var(--leading-tight);
@@ -258,29 +241,19 @@
   // Description element
   &__description {
     flex-grow: 1;
-    margin: 0 0 var(--space-4) 0;
-    color: var(--color-text-secondary);
+    margin: 0;
     line-height: var(--leading-relaxed);
     font-size: var(--text-base);
   }
 
   // Content element
   &__content {
-    color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
     flex-grow: 1;
 
-    p {
-      margin-bottom: var(--space-component-sm);
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
     // Links element
     ul {
-      margin-top: auto;
+      margin-bottom: 0;
       padding: var(--space-2) 0;
       list-style: none;
     }

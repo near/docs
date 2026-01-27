@@ -236,11 +236,11 @@ To interact with the contract through the console, you can use the following com
   ```bash
   # Get message from the hello-near contract
   # Replace <accountId> with your account ID
-  near call <accountId> query_greeting --accountId <accountId>
+  near call <accountId> query_greeting --useAccount <accountId>
 
   # Set a new message for the hello-near contract
   # Replace <accountId> with your account ID
-  near call <accountId> change_greeting '{"new_greeting":"XCC Hi"}' --accountId <accountId>
+  near call <accountId> change_greeting '{"new_greeting":"XCC Hi"}' --useAccount <accountId>
   ```
   </TabItem>
 
@@ -262,7 +262,7 @@ To interact with the contract through the console, you can use the following com
 
 ## Moving Forward
 
-A nice way to learn is by trying to expand a contract. Modify the cross contract example to use the [guest-book](guest-book.md)
+A nice way to learn is by trying to expand a contract. Modify the cross contract example to use the [guest-book](https://github.com/near-examples/guest-book-examples)
 contract!. In this way, you can try to make a cross-contract call that attaches money. Remember to correctly [handle the callback](/smart-contracts/anatomy/crosscontract#callback-function),
 and to return the money to the user in case of error.
 

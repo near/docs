@@ -20,7 +20,7 @@ Here's a quick reference table for all the methods in this section:
 | Method | Description | Parameters |
 |--------|-------------|------------|
 | [`block`](#block-details) | Get block details by height, hash, or finality | `finality` OR `block_id` |
-| [`changes`](#changes-in-block) | Get changes in a specific block | `finality` OR `block_id` |
+| [`block_effects`](#block-effects) | Get changes in a specific block | `finality` OR `block_id` |
 | [`chunk`](#chunk-details) | Get chunk details by chunk_id or block_id + shard_id | `chunk_id` OR [`block_id`, `shard_id`] |
 
 
@@ -56,7 +56,13 @@ Here's a quick reference table for all the methods in this section:
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.block({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://test.rpc.fastnear.com",
+      });
+
+      const response = await provider.block({
         finality: 'final',
       });
       ```
@@ -94,7 +100,13 @@ Here's a quick reference table for all the methods in this section:
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.block({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://archival-rpc.testnet.near.org",
+      });
+
+      const response = await provider.block({
         blockId: 187310138,
       });
       ```
@@ -132,7 +144,13 @@ Here's a quick reference table for all the methods in this section:
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.block({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://archival-rpc.testnet.near.org",
+      });
+
+      const response = await provider.block({
         blockId: '6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w',
       });
       ```
@@ -405,22 +423,21 @@ When making RPC API requests, you may encounter various errors related to networ
 </details>
 ---
 
-## Changes in Block {#changes-in-block}
+## Block Effects {#block-effects}
 
 <SplitLayoutContainer>
   <SplitLayoutLeft title="Description">
-    Returns changes in block for given block height or hash. You can also use
-    `finality` param to return latest block details.
+    Returns changes in block for given block height or hash over all transactions for all the types. Includes changes like `account_touched`, `access_key_touched`, `data_touched`, `contract_code_touched`. You can also use `finality` param to return latest block details.
 
     **Note**: You may choose to search by a specific block _or_ finality, you can not choose both.
 
-    - **method**: `changes`
+    - **method**: `block_effects`
     - **params**:
       - [`finality`](/api/rpc/setup#using-finality-param) _OR_ [`block_id`](/api/rpc/setup#using-block_id-param)
   </SplitLayoutLeft>
   <SplitLayoutRight title="Example">
 
-### changes by finality
+### block_effects by finality
 
 <Tabs groupId="code-tabs">
   <TabItem value="json" label="JSON" default>
@@ -428,7 +445,7 @@ When making RPC API requests, you may encounter various errors related to networ
       {
         "jsonrpc": "2.0",
         "id": "dontcare",
-        "method": "changes",
+        "method": "block_effects",
         "params": {
           "finality": "final"
         }
@@ -437,7 +454,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.blockChanges({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://test.rpc.fastnear.com",
+      });
+
+      const response = await provider.blockChanges({
         finality: 'final',
       });
       ```
@@ -447,7 +470,7 @@ When making RPC API requests, you may encounter various errors related to networ
       http POST https://rpc.testnet.near.org \
         jsonrpc=2.0 \
         id=dontcare \
-        method=changes \
+        method=block_effects \
         params:='{
           "finality": "final"
         }'
@@ -466,7 +489,7 @@ When making RPC API requests, you may encounter various errors related to networ
       {
         "jsonrpc": "2.0",
         "id": "dontcare",
-        "method": "changes",
+        "method": "block_effects",
         "params": {
           "block_id": 187310138
         }
@@ -475,7 +498,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.blockChanges({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://archival-rpc.testnet.near.org",
+      });
+
+      const response = await provider.blockChanges({
         blockId: 187310138,
       });
       ```
@@ -485,7 +514,7 @@ When making RPC API requests, you may encounter various errors related to networ
       http POST https://archival-rpc.testnet.near.org \
         jsonrpc=2.0 \
         id=dontcare \
-        method=changes \
+        method=block_effects \
         params:='{
           "block_id": 187310138
         }'
@@ -504,7 +533,7 @@ When making RPC API requests, you may encounter various errors related to networ
       {
         "jsonrpc": "2.0",
         "id": "dontcare",
-        "method": "changes",
+        "method": "block_effects",
         "params": {
           "block_id": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"
         }
@@ -513,7 +542,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
       ```js
-      const response = await near.connection.provider.blockChanges({
+      import { JsonRpcProvider } from "near-api-js";
+
+      const provider = new JsonRpcProvider({
+          url: "https://archival-rpc.testnet.near.org",
+      });
+
+      const response = await provider.blockChanges({
         blockId: '6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w',
       });
       ```
@@ -523,7 +558,7 @@ When making RPC API requests, you may encounter various errors related to networ
       http POST https://archival-rpc.testnet.near.org \
         jsonrpc=2.0 \
         id=dontcare \
-        method=changes \
+        method=block_effects \
         params:='{
           "block_id": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"
         }'
@@ -543,7 +578,7 @@ When making RPC API requests, you may encounter various errors related to networ
       "jsonrpc": "2.0",
       "result": {
         "block_hash": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w",
-        "changes": [
+        "block_effects": [
           {
             "account_id": "account.rpc-examples.testnet",
             "type": "account_touched"
@@ -625,7 +660,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
     ```js
-    const response = await near.connection.provider.chunk(
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.chunk(
       'CzPafxtJmM1FnRoasKWAVhceJzZzkz9RKUBQQ4kY9V1v',
     );
     ```
@@ -664,7 +705,13 @@ When making RPC API requests, you may encounter various errors related to networ
   </TabItem>
   <TabItem value="js" label="JavaScript">
     ```js
-    const response = await near.connection.provider.chunk([187310138, 0]);
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.chunk([187310138, 0]);
     ```
   </TabItem>
   <TabItem value="http" label="HTTPie">
@@ -776,7 +823,7 @@ When making RPC API requests, you may encounter various errors related to networ
 
 - **Block responses**: Always include `block_hash`, `block_height`, and `header` fields
 - **Chunk responses**: Contain `author`, `header`, `receipts`, and `transactions` arrays
-- **Changes responses**: Include `block_hash` and `changes` array with change details
+- **Changes responses**: Include `block_hash` and `block_effects` array with change details
 
 ---
 

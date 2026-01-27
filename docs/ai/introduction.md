@@ -38,9 +38,3 @@ Shade Agents power [Agentic Protocols](./shade-agents/concepts/what-can-you-buil
 - End-to-end confidential iterations with agents
 
 Agents are accessible through the [NEAR AI Assistant](https://chat.near.ai/chat), a single interface that intelligently selects the most appropriate agents to handle user requests and connects multiple agents together for more complex tasks. The assistant can take actions for the user, has integrated payments, and can dynamically generate frontends on the fly based on user requests.
-
----
-
-## Bitte Protocol
-
-[Bitte Protocol](https://docs.bitte.ai/agents/build-agent) is a framework for creating AI agents that interact with smart contracts on NEAR and other chains via natural language. Bitte agents are quick and easy to get started with, you can build an agent for a smart contract in a couple of hours with little prior knowledge of agents. 

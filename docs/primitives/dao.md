@@ -18,7 +18,7 @@ Decentralized Autonomous Organizations (DAOs) are self-organized groups that for
 ![dao](/assets/docs/primitives/dao.png)
 
 In contrast with [FT](./ft/ft.md) and [NFT](./nft/nft.md), DAO contract's are not standardized. Because of this, on this page we will use as
-reference the [Astra dao](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos) [contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
+reference the [sputnik dao contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
 easily generalizable to other DAO implementations.
 
 :::tip
@@ -35,13 +35,13 @@ You can create a DAO by interacting with the `sputnik-dao` contract:
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const DAO_FACTORY_CONTRACT_ADDRESS = 'sputnik-dao.near';
 
-    const { callMethod } = useWalletSelector();
+    const { callFunction } = useNearWallet();
 
-    await callMethod({
+    await callFunction({
       contractId: DAO_FACTORY_CONTRACT_ADDRESS,
       method: 'create',
       args: {
@@ -63,7 +63,7 @@ You can create a DAO by interacting with the `sputnik-dao` contract:
     The full list of roles and permissions you can find [here](https://github.com/near-daos/sputnik-dao-contract#roles-and-permissions).
     :::
 
-   Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+   Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
   
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -72,7 +72,7 @@ You can create a DAO by interacting with the `sputnik-dao` contract:
     export COUNCIL='["bob.near"]'
     export ARGS=`echo '{"config": {"name": "Primitives", "purpose": "Building primitives on NEAR", "metadata":""}, "policy": '$COUNCIL'}' | base64`
 
-    near call sputnikv2.testnet create "{\"name\": \"primitives\", \"args\": \"$ARGS\"}" --accountId bob.near --amount 6 --gas 150000000000000
+    near call sputnikv2.testnet create "{\"name\": \"primitives\", \"args\": \"$ARGS\"}" --useAccount bob.near --amount 6 --gas 150000000000000
     ```
 
     :::note
@@ -197,19 +197,19 @@ Query the list of DAOs existing in Sputnik Dao.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
   
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const DAO_FACTORY_CONTRACT_ADDRESS = 'sputnik-dao.near';
-    const { viewMethod } = useWalletSelector();
+    const { viewFunction } = useNearWallet();
 
-    await viewMethod({
+    await viewFunction({
       method: 'get_dao_list',
       args: {},
       contractId: DAO_FACTORY_CONTRACT_ADDRESS,
     });
     ```
 
-    Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+    Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -257,19 +257,19 @@ These snippets will enable you to query the proposals existing in a particular D
  <TabItem value="🌐 WebApp" label="🌐 WebApp">
    
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const DAO_CONTRACT_ADDRESS = 'nearweek-news-contribution.sputnik-dao.near';
-    const { viewMethod } = useWalletSelector();    
+    const { viewFunction } = useNearWallet();    
 
-    await viewMethod({
+    await viewFunction({
       method: 'get_proposals',
       args: { from_index: 9262, limit: 2 },
       contractId: DAO_CONTRACT_ADDRESS,
     });
     ```
 
-   Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+   Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -388,13 +388,13 @@ Create a proposal so other users can vote in favor or against it.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
    
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const DAO_CONTRACT_ADDRESS = 'primitives.sputnik-dao.near';
 
-    const { callMethod } = useWalletSelector();
+    const { callFunction } = useNearWallet();
 
-    await callMethod({
+    await callFunction({
       contractId: DAO_CONTRACT_ADDRESS,
       method: 'add_proposal',
       args: {
@@ -414,13 +414,13 @@ Create a proposal so other users can vote in favor or against it.
     });
     ```
 
-   Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+   Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     
    ```bash
-    near call primitives.sputnik-dao.near add_proposal '{"proposal": {"description": "My first proposal", "kind": { "Transfer": {"token_id": "", "receiver_id": "bob.near", "amount": "10000000000000000000000000"}}}}'  --deposit 0.1 --gas 300000000000000 --accountId bob.near
+    near call primitives.sputnik-dao.near add_proposal '{"proposal": {"description": "My first proposal", "kind": { "Transfer": {"token_id": "", "receiver_id": "bob.near", "amount": "10000000000000000000000000"}}}}'  --deposit 0.1 --gas 300000000000000 --useAccount bob.near
   ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -716,13 +716,13 @@ These snippet will enable your users to cast a vote for proposal of a particular
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const DAO_CONTRACT_ADDRESS = 'primitives.sputnik-dao.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: DAO_CONTRACT_ADDRESS,
     method: 'act_proposal',
     args: { id: 0, action: 'VoteApprove' },
@@ -734,13 +734,13 @@ These snippet will enable your users to cast a vote for proposal of a particular
   Available vote options: `VoteApprove`, `VoteReject`, `VoteRemove`.
   :::
 
-  Learn more about adding the [Wallet Selector Hooks](../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
     
   ```bash
-  near call primitives.sputnik-dao.near act_proposal '{"id": 0, "action": "VoteApprove"}' --gas 300000000000000 --accountId bob.near
+  near call primitives.sputnik-dao.near act_proposal '{"id": 0, "action": "VoteApprove"}' --gas 300000000000000 --useAccount bob.near
   ```
   :::note
   Available vote options: `VoteApprove`, `VoteReject`, `VoteRemove`.

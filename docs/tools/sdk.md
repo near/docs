@@ -103,7 +103,7 @@ Start from our [Smart Contract QuickStart Guide](../smart-contracts/quickstart.m
 
 ## Want to See Examples?
 
-We have a section dedicated to [tutorials and examples](../tutorials/examples/guest-book.md) that will help you understand diverse use cases and how to implement them
+We have a section dedicated to [tutorials and examples](../smart-contracts/tutorials/basic-contracts.md) that will help you understand diverse use cases and how to implement them
 
 :::tip
 

@@ -12,16 +12,22 @@ This document details how to use the `did:near` method for decentralized identif
 
 A **Decentralized Identifier (DID)** is a persistent, unique identifier that does not require a centralized registry. On NEAR, DIDs are created based on either account names or raw public keys, and they are fully compatible with the W3C DID standard.
 
+<details>
+  <summary> Authors </summary>
+
+  Built in collaboration with NTT DATA Innovation Center Web3
+</details>
+
 ---
 
 ## The `did:near` Method
 
-This method supports two types of DIDs:
+This method supports two types of DIDs with different resolution strategies:
 
 | Type               | Example                                | Description                          |
-|--------------------|----------------------------------------|--------------------------------------|
-| Named Account      | `did:near:alice.testnet`               | Derived from an on-chain NEAR account |
-| Base58 Public Key  | `did:near:7YzVXb8vKw3...`              | Directly represents an Ed25519 key   |
+|--------------------|-----------------------------------------|--------------------------------------|
+| Named Account      | `did:near:alice.testnet` or `did:near:alice.near` | Resolved directly from on-chain NEAR account keys (FullAccess keys) |
+| Registry DID (Base58) | `did:near:CF5RiJYh4EVmEt8UADTjoP3XaZo1NPWxv6w5TmkLqjpR` | Resolved via smart contract registry using `identity_owner` method |
 
 ---
 
@@ -31,14 +37,17 @@ Example output from resolving a `did:near`:
 
 ```json
 {
-  "@context": "https://w3id.org/did/v1",
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/ed25519-2018/v1"
+  ],
   "id": "did:near:alice.testnet",
   "verificationMethod": [
     {
       "id": "did:near:alice.testnet#owner",
       "type": "Ed25519VerificationKey2018",
       "controller": "did:near:alice.testnet",
-      "publicKeyBase58": "3gfD2z7q..."
+      "publicKeyBase58": "7WLUHT69sw5UpYK9xAY5cbdWKf4vSMruXzwfbL999zXo"
     }
   ],
   "authentication": ["did:near:alice.testnet#owner"],
@@ -68,10 +77,20 @@ This structure follows the [W3C DID Core Spec](https://www.w3.org/TR/did-core/),
 
 ## How Resolution Works
 
-1. Extract `identifier` from the DID.
-2. If `identifier` is a NEAR account ID, resolve via RPC `account.state()`.
-3. If it's a base58 public key, resolve via the registry smart contract using `identity_owner`.
-4. Construct the DID document with the correct public key.
+The resolver uses different strategies based on DID format:
+
+### Named Account DIDs (`did:near:alice.testnet`)
+1. Parse the account ID from the DID (e.g., `alice.testnet`).
+2. Determine the network from the suffix (`.testnet` → testnet, `.near` → mainnet).
+3. Query the NEAR RPC using `near-api-js` to fetch account access keys.
+4. Filter for keys with `permission: "FullAccess"`.
+5. Construct the DID document with all FullAccess public keys as verification methods.
+
+### Registry DIDs (`did:near:CF5RiJYh4EVmEt8UADTjoP3XaZo1NPWxv6w5TmkLqjpR`)
+1. Identify the DID as Base58 format (44-50 character string matching `[1-9A-HJ-NP-Za-km-z]+`).
+2. Call the `identity_owner` view method on the configured registry contract.
+3. Retrieve the owner DID registered for that Base58 identifier.
+4. Construct the DID document with the public key from the registry.
 
 ---
 
@@ -79,14 +98,24 @@ This structure follows the [W3C DID Core Spec](https://www.w3.org/TR/did-core/),
 
 ### Create a DID
 
-If using a NEAR wallet account:
+#### Named Account DID (Direct Resolution)
+If using a NEAR wallet account, the DID is derived directly from the account name:
 ```ts
-const did = "did:near:yourname.testnet";
+const did = "did:near:yourname.testnet";  // For testnet
+const did = "did:near:yourname.near";     // For mainnet
 ```
 
-If using a raw Ed25519 key (base58 encoded):
+#### Registry DID (Contract-Based)
+If using a Base58-encoded identifier registered in a smart contract:
 ```ts
-const did = "did:near:7YzVXb8vKw3...";
+const did = "did:near:CF5RiJYh4EVmEt8UADTjoP3XaZo1NPWxv6w5TmkLqjpR";
+```
+
+#### Network-Specific DIDs
+You can explicitly specify the network:
+```ts
+const did = "did:near:testnet:CF5RiJYh4EVmEt8UADTjoP3XaZo1NPWxv6w5TmkLqjpR";  // Explicitly targets testnet
+const did = "did:near:near:CF5RiJYh4EVmEt8UADTjoP3XaZo1NPWxv6w5TmkLqjpR";     // Explicitly targets mainnet
 ```
 
 ---
@@ -122,12 +151,53 @@ const isValid = await proofType.verifyProof("did:near:subject|bafy..."); // retu
 
 ### Resolver SDK
 
-```ts
-import { NearDidResolver } from '@your-org/did-near-resolver';
+#### Standalone Usage
 
-const resolver = new NearDidResolver();
+```ts
+import { NearDIDResolver } from '@kaytrust/did-near-resolver';
+
+const resolver = new NearDIDResolver({
+  networks: [
+    {
+      networkId: 'testnet',
+      rpcUrl: 'https://rpc.testnet.near.org',
+      contractId: 'neardidregistry.testnet' // Optional: only for Registry DIDs
+    },
+    {
+      networkId: 'mainnet', // You can use 'near' for mainnet (or 'mainnet', both are equivalent)
+      rpcUrl: 'https://rpc.mainnet.near.org',
+      contractId: 'neardidregistry.near' // Optional
+    }
+  ]
+});
+
 const doc = await resolver.resolveDID("did:near:alice.testnet");
 console.log(doc.id); // "did:near:alice.testnet"
+```
+
+#### Integration with `did-resolver`
+
+```ts
+import { Resolver } from 'did-resolver';
+import { getResolver } from '@kaytrust/did-near-resolver';
+
+const nearResolver = getResolver({
+  networks: [
+    {
+      networkId: 'testnet',
+      rpcUrl: 'https://rpc.testnet.near.org',
+      contractId: 'neardidregistry.testnet'
+    }
+  ]
+});
+
+const resolver = new Resolver({
+  ...nearResolver,
+  // ... other DID methods
+});
+
+const result = await resolver.resolve('did:near:alice.testnet');
+console.log(result.didDocument);
 ```
 
 ### ProofType SDK
@@ -148,7 +218,9 @@ const isValid = await proofType.verifyProof(proof);
 - Issuer is linked to the signer account via NEAR transaction.
 - DID resolution and structure is fully W3C-compliant.
 - `cid` is always a Base64-encoded SHA-256 hash of the VC content.
+- **Key Security**: Only `FullAccess` keys are included in the DID document's `verificationMethod` array, ensuring that only keys with complete account authority are used for authentication.
 - Public keys are handled securely via NEAR native accounts or custom registries.
+- **Multi-Network Support**: The resolver automatically routes requests to the correct network (mainnet/testnet) based on the DID suffix.
 
 ---
 
