@@ -2,7 +2,15 @@
 id: introduction
 title: AI and NEAR
 sidebar_label: Introduction
-description: "Introduction to NEAR's User-Owned AI vision, featuring Shade Agents, NEAR AI, and Bitte Protocol."
+description: "Introduction to NEAR's User-Owned AI vision, featuring Shade Agents and NEAR AI."
+---
+
+## Quick Answer
+
+**Build AI agents that control blockchain accounts and execute on-chain actions.** NEAR enables User-Owned AI through two frameworks: **Shade Agents** (verifiable, non-custodial, multichain AI agents in TEEs) and **NEAR AI** (agent network infrastructure with monetization). Agents can sign transactions, manage wallets, and operate autonomously while keeping users in control.
+
+**Key difference:** Your AI agent can't lose access to its funds, and you own the agent's behavior and data—not a corporation.
+
 ---
 
 NEAR's vision is to create a future of **User-Owned AI**, where AI and agents serve their users, not corporations. For this vision to become a reality, AI must protect user data, prioritize the user's interests, and operate on a sustainable, user-aligned economic model. The NEAR ecosystem has multiple technologies to enable User-Owned AI.
@@ -38,3 +46,34 @@ Shade Agents power [Agentic Protocols](./shade-agents/concepts/what-can-you-buil
 - End-to-end confidential iterations with agents
 
 Agents are accessible through the [NEAR AI Assistant](https://chat.near.ai/chat), a single interface that intelligently selects the most appropriate agents to handle user requests and connects multiple agents together for more complex tasks. The assistant can take actions for the user, has integrated payments, and can dynamically generate frontends on the fly based on user requests.
+
+---
+
+## Which Framework Should I Use?
+
+| Framework | Best For | Key Feature | Complexity |
+|-----------|----------|-------------|-----------|
+| **Shade Agents** | Production agents with funds | Non-custodial, verifiable, multichain | Advanced |
+| **NEAR AI** | Monetizing AI agents | Agent marketplace, payments | Moderate |
+
+**Choose Shade Agents** for trustless agents controlling real assets across chains.  
+**Choose NEAR AI** for building agent networks with monetization.
+
+---
+
+## Common Questions
+
+### What makes NEAR's AI approach different?
+**User ownership.** Your agent, your data, your control. Traditional AI platforms own your interactions and can shut down your agents. NEAR agents persist on-chain.
+
+### Can AI agents lose access to their wallets?
+Not with Shade Agents. They use decentralized key management—any instance of the agent with the same code can access the same accounts.
+
+### Do I need to know blockchain development?
+Some smart contract knowledge helps for both Shade Agents and NEAR AI, but you can start with basic tutorials and build up from there.
+
+### How do agents get paid?
+NEAR AI has built-in monetization. Users pay agents for services in cryptocurrency. Agents can also earn by providing services to other agents.
+
+### What chains do these agents support?
+Shade Agents: Bitcoin, Ethereum, NEAR, and any chain NEAR's Chain Signatures supports. NEAR AI: Primarily NEAR with cross-chain capabilities. 
