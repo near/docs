@@ -45,7 +45,7 @@ const config = {
         docs: {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          breadcrumbs: true,
+          breadcrumbs: false,
           editUrl: 'https://github.com/near/docs/edit/master/website',
           path: '../docs',
           sidebarPath: './sidebars.js',
