@@ -10,6 +10,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
+## Quick Answer
+
+**Create a NEAR smart contract in under 5 minutes.** This guide walks you through writing a "Hello World" contract in JavaScript, Rust, Python, or Go, then deploying it to testnet. You'll write a contract that stores a greeting and exposes two functions: `set_greeting` (write) and `get_greeting` (read). Uses NEAR CLI for testing and deployment. No mainnet account needed.
+
+---
+
 Welcome! [NEAR accounts](../protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
 
 Join us in creating a friendly contract that stores a greeting, and exposes functions to interact with it.
@@ -299,11 +305,22 @@ hello-world/contract
 
 ---
 
-## The Contract
+## What Does This Contract Do?
 
 The `Hello World` smart contract stores a greeting in its state, and exposes two functions to interact with it:
 1. `set_greeting`: to change the greeting
 2. `get_greeting`: to fetch the greeting
+
+### Language Comparison
+
+| Language | Best For | Build Time | Ecosystem Maturity |
+|----------|----------|------------|-------------------|
+| **JavaScript/TypeScript** | Rapid prototyping, web developers | Fast (~2s) | Mature |
+| **Rust** | Production apps, performance-critical code | Moderate (~30s) | Most mature |
+| **Python** | Data science, AI integration | Fast (~3s) | Growing |
+| **Go** | Backend developers, microservices | Fast (~5s) | New |
+
+Choose JavaScript for quick experiments, Rust for production, Python for AI/data apps, Go if you're already a Go developer.
 
 <Tabs groupId="code-tabs">
   <TabItem value="js" label="🌐 JavaScript">
@@ -706,6 +723,28 @@ Notice that we are signing the transaction using `<created-account>`, so in this
 
 :::
 
+
+---
+
+## Common Questions
+
+### Do I need a mainnet account to deploy a contract?
+No. This tutorial uses testnet, which is free. Create testnet accounts with `near create-account <name.testnet> --useFaucet`.
+
+### How much does it cost to deploy?
+On testnet: free. On mainnet: ~0.1-0.5 Ⓝ depending on contract size (typically $0.10-$0.50).
+
+### Can I update a contract after deploying?
+Yes. Redeploy with `near deploy <account> <wasm-file>`. The account stays the same, code updates.
+
+### Which language should I choose?
+- **Rust** for production apps (most tooling, best performance)
+- **JavaScript** for rapid prototyping (easiest for web devs)
+- **Python** for AI/data science use cases
+- **Go** if you're already a Go developer
+
+### How do I test without deploying?
+All languages support sandbox testing (shown in this guide). Tests run locally with a simulated NEAR environment.
 
 ---
 

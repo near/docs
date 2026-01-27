@@ -4,6 +4,14 @@ title: Getting Started with Chain Signatures
 description: "Learn how to sign and execute cross-chain transactions"
 ---
 
+## Quick Answer
+
+**Control Bitcoin, Ethereum, and other blockchain addresses from your NEAR account.** Chain Signatures uses Multi-Party Computation (MPC) to let NEAR accounts sign transactions for external chains without bridges. Derive addresses on any blockchain, build DeFi on Bitcoin, create multichain apps with one contract, or enable account abstraction across all chains.
+
+**Key capabilities:** Sign Bitcoin/Ethereum/etc transactions, control external addresses, no wrapped tokens, programmable cross-chain interactions.
+
+---
+
 Chain Signatures is a groundbreaking technology built on NEAR that enables all accounts, including smart contracts, to sign and execute transactions across multiple blockchains.
 
 ![img](https://pages.near.org/wp-content/uploads/2024/02/acct-abstraction-blog-1.png)
@@ -11,6 +19,17 @@ Chain Signatures is a groundbreaking technology built on NEAR that enables all a
 This innovation leverages Multi-Party Computation (MPC) and a distributed network of node operators to create joint signatures from arbitrary payloads, allowing NEAR accounts to control external blockchain accounts.
 
 Chain Signatures enhances blockchain interoperability, giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
+
+### Chain Signatures vs. Traditional Bridges
+
+| Feature | Chain Signatures | Traditional Bridges |
+|---------|-----------------|-------------------|
+| **Security Model** | Decentralized MPC nodes | Trusted validators or relayers |
+| **Asset Type** | Native tokens (real BTC, ETH) | Wrapped tokens (wBTC, wETH) |
+| **Smart Contract Support** | Yes, contracts can sign transactions | Usually user-only |
+| **Chains Supported** | Any blockchain | Specific pairs only |
+| **Bridge Risk** | No locked funds, no bridge exploits | Billions locked, frequent hacks |
+| **UX** | Seamless, single account | Multiple wallets needed |
 
 ---
 
@@ -98,6 +117,28 @@ Chain Signatures can be used to build a wide range of applications that leverage
    * Check out the [web app demo](https://github.com/near-examples/near-multichain/tree/main).
 5. **Engage with the Community:**
    * Join the [Chain Abstraction developers’ channel on Telegram](https://t.me/chain\_abstraction) to connect with other developers and get support.
+
+---
+
+## Common Questions
+
+### What blockchains are supported?
+Bitcoin, Ethereum, Dogecoin, Ripple, Cosmos chains, and any blockchain that supports ECDSA or EdDSA signatures. More chains are continuously being added.
+
+### Do I need to lock tokens in a bridge?
+No. Chain Signatures directly control native assets on the target blockchain. No wrapped tokens, no bridge risk.
+
+### Can smart contracts use Chain Signatures?
+Yes! NEAR smart contracts can sign transactions for other blockchains, enabling programmable cross-chain applications.
+
+### How secure is the MPC system?
+The MPC network is decentralized across multiple node operators. No single node has access to the full private key. Requires threshold consensus to sign.
+
+### What's the difference from account abstraction?
+Chain Signatures *enables* account abstraction across all chains. Your NEAR account (with passkeys, 2FA, etc.) can now control assets on Bitcoin, Ethereum, and more.
+
+### How much does it cost?
+Signing a transaction costs ~0.1 Ⓝ ($0.02-0.05). The actual transaction fee on the target blockchain (BTC network fees, ETH gas) is paid separately.
 
 ---
 
