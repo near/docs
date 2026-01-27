@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  meilisearch:
+    image: getmeili/meilisearch:v1.34
+    container_name: near-docs-search
+    ports:
+      - "7700:7700"
+    environment:
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY:-masterKey123}
+      - MEILI_ENV=development
+    volumes:
+      - meilisearch_data:/meili_data
+
+volumes:
+  meilisearch_data:
+

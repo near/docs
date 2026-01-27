@@ -30,6 +30,11 @@ const config = {
     REACT_APP_GOOGLE_CALENDAR_API_KEY: process.env.REACT_APP_GOOGLE_CALENDAR_API_KEY,
     REACT_APP_LUMA_NEAR_CALENDAR_ID: process.env.REACT_APP_LUMA_NEAR_CALENDAR_ID,
     REACT_APP_DEVHUB_GOOGLE_CALENDAR_ID: process.env.REACT_APP_DEVHUB_GOOGLE_CALENDAR_ID,
+    meilisearch: {
+      host: process.env.MEILI_HOST || 'http://localhost:7700',
+      apiKey: process.env.MEILI_SEARCH_KEY || process.env.MEILI_MASTER_KEY || 'masterKey123',
+      indexName: process.env.MEILI_INDEX_NAME || 'near-docs',
+    },
   },
   themes: ['@saucelabs/theme-github-codeblock', '@docusaurus/theme-mermaid'],
   onBrokenLinks: 'throw',
@@ -275,29 +280,6 @@ const config = {
       logo: {
         src: 'img/near_logo.svg',
       },
-    },
-    algolia: {
-      // The application ID provided by Algolia
-      appId: '0LUM67N2P2',
-      // Public API key: it is safe to commit it
-      apiKey: '41e2feb6ffa0d3450ca9d0a0c1826c1c',
-      indexName: 'docs',
-      askAi: {
-        assistantId: 'ck1jQv3AzZ5R',
-        indexName: 'docs.md',
-        apiKey: '41e2feb6ffa0d3450ca9d0a0c1826c1c',
-        appId: '0LUM67N2P2',
-      },
-      // Optional: see doc section below
-      contextualSearch: true,
-      // Optional: Algolia search parameters
-      searchParameters: {
-        clickAnalytics: true,
-        analytics: true,
-      },
-      //... other Algolia params
-      placeholder: 'Search the Docs...',
-      insights: true,
     },
   },
 };
