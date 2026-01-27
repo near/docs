@@ -2,12 +2,12 @@
 id: introduction
 title: AI and NEAR
 sidebar_label: Introduction
-description: "Introduction to NEAR's User-Owned AI vision, featuring Shade Agents, NEAR AI, and Bitte Protocol."
+description: "Introduction to NEAR's User-Owned AI vision, featuring Shade Agents and NEAR AI."
 ---
 
 ## Quick Answer
 
-**Build AI agents that control blockchain accounts and execute on-chain actions.** NEAR enables User-Owned AI through three frameworks: **Shade Agents** (verifiable, non-custodial, multichain AI agents in TEEs), **NEAR AI** (agent network infrastructure with monetization), and **Bitte Protocol** (natural language smart contract interaction). Agents can sign transactions, manage wallets, and operate autonomously while keeping users in control.
+**Build AI agents that control blockchain accounts and execute on-chain actions.** NEAR enables User-Owned AI through two frameworks: **Shade Agents** (verifiable, non-custodial, multichain AI agents in TEEs) and **NEAR AI** (agent network infrastructure with monetization). Agents can sign transactions, manage wallets, and operate autonomously while keeping users in control.
 
 **Key difference:** Your AI agent can't lose access to its funds, and you own the agent's behavior and data—not a corporation.
 
@@ -49,23 +49,15 @@ Agents are accessible through the [NEAR AI Assistant](https://chat.near.ai/chat)
 
 ---
 
-## Bitte Protocol
-
-[Bitte Protocol](https://docs.bitte.ai/agents/build-agent) is a framework for creating AI agents that interact with smart contracts on NEAR and other chains via natural language. Bitte agents are quick and easy to get started with, you can build an agent for a smart contract in a couple of hours with little prior knowledge of agents.
-
----
-
 ## Which Framework Should I Use?
 
 | Framework | Best For | Key Feature | Complexity |
 |-----------|----------|-------------|-----------|
 | **Shade Agents** | Production agents with funds | Non-custodial, verifiable, multichain | Advanced |
 | **NEAR AI** | Monetizing AI agents | Agent marketplace, payments | Moderate |
-| **Bitte Protocol** | Quick prototypes | Natural language smart contract calls | Beginner |
 
 **Choose Shade Agents** for trustless agents controlling real assets across chains.  
-**Choose NEAR AI** for building agent networks with monetization.  
-**Choose Bitte Protocol** for fast prototyping and simple contract interactions.
+**Choose NEAR AI** for building agent networks with monetization.
 
 ---
 
@@ -78,10 +70,10 @@ Agents are accessible through the [NEAR AI Assistant](https://chat.near.ai/chat)
 Not with Shade Agents. They use decentralized key management—any instance of the agent with the same code can access the same accounts.
 
 ### Do I need to know blockchain development?
-Bitte Protocol: No, natural language is enough. Shade Agents and NEAR AI: Some smart contract knowledge helps.
+Some smart contract knowledge helps for both Shade Agents and NEAR AI, but you can start with basic tutorials and build up from there.
 
 ### How do agents get paid?
 NEAR AI has built-in monetization. Users pay agents for services in cryptocurrency. Agents can also earn by providing services to other agents.
 
 ### What chains do these agents support?
-Shade Agents: Bitcoin, Ethereum, NEAR, and any chain NEAR's Chain Signatures supports. Bitte: NEAR and EVM chains. NEAR AI: Primarily NEAR with cross-chain capabilities. 
+Shade Agents: Bitcoin, Ethereum, NEAR, and any chain NEAR's Chain Signatures supports. NEAR AI: Primarily NEAR with cross-chain capabilities. 
