@@ -5,16 +5,6 @@ sidebar_label: Overview
 description: "A brief overview of the Verifiable AI DAO tutorial built using the Shade Agent Framework that walks through NEAR native deployments, using yield and resume with Shade Agents and leveraging verifiable AI."
 ---
 
-:::warning
-The Shade Agent Framework is experimental and contains known critical vulnerabilities.
-
-It must not be used in production or on mainnet and is intended solely for testing and non-critical use on testnet.
-
-No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
-
-A production-ready version of the framework is currently in development.
-:::
-
 import { TryDemo } from '@site/src/components/TryDemo';
 
 In this tutorial, you'll explore how to build a `fully verifiable AI DAO` using the Shade Agent Framework. The Verifiable AI DAO is a DAO smart contract that uses a Shade Agent with a verifiable LLM to vote on governance proposals according to its predefined manifesto, to create transparent, AI-driven governance that is decentralized and auditable from end-to-end.
