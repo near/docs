@@ -13,9 +13,6 @@ export default function CopyMarkdownButton({docId}) {
   const location = useLocation();
   const dropdownRef = useRef(null);
 
-  const browserUrl = `${window.location.origin}${location.pathname}`;
-  const mdUrl = `${window.location.origin}${docId}.md`;
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -28,6 +25,8 @@ export default function CopyMarkdownButton({docId}) {
   }, []);
 
   const fetchMarkdown = async () => {
+    const mdUrl = `${window.location.origin}${docId}.md`;
+
     if (content) return content;
     try {
       const response = await fetch(mdUrl);
@@ -58,11 +57,13 @@ export default function CopyMarkdownButton({docId}) {
   };
 
   const handleOpenInChatGPT = async () => {
+    const browserUrl = `${window.location.origin}${location.pathname}`;
     const prompt = CHATGPT_PROMPT.replace('{{document}}', browserUrl);
     window.open(`https://chatgpt.com/?prompt=${prompt}`, '_blank');
   };
 
   const handleOpenInClaude = async () => {
+    const browserUrl = `${window.location.origin}${location.pathname}`;
     const prompt = CLAUDE_PROMPT.replace('{{document}}', browserUrl);
     window.open(`https://claude.ai/new?q=${prompt}`, '_blank');
   };
