@@ -5,8 +5,6 @@ sidebar_label: Introduction
 description: "Introduction to NEAR's User-Owned AI vision, featuring Shade Agents and NEAR AI."
 ---
 
-## Quick Answer
-
 **Build AI agents that control blockchain accounts and execute on-chain actions.** NEAR enables User-Owned AI through two frameworks: **Shade Agents** (verifiable, non-custodial, multichain AI agents in TEEs) and **NEAR AI** (agent network infrastructure with monetization). Agents can sign transactions, manage wallets, and operate autonomously while keeping users in control.
 
 **Key difference:** Your AI agent can't lose access to its funds, and you own the agent's behavior and data—not a corporation.
