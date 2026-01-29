@@ -817,4 +817,3 @@ impl Contract {
 ## Additional Resources
 
 1. [NEAR Treasury](https://neartreasury.com/) - a Treasury management web app built on top of the Sputnik DAO Contract. Allows users to create and manage treasury funds with ease.
-2. [List of DAOs as a NEAR component](https://dev.near.org/onboarder.near/widget/DAOSocialSearch)

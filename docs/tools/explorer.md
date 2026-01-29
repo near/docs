@@ -47,8 +47,8 @@ Created by the community, [NearBlocks](https://nearblocks.io/) enables to check 
 
 ## NEARCatalog
 
-[NEARCatalog](https://dev.near.org/applications) provides access to trending decentralized applications (DApps) on the NEAR Protocol.
+[NEARCatalog](https://nearcatalog.xyz/) provides access to trending decentralized applications (DApps) on the NEAR Protocol.
 
 
 ![Nearcatalog](/assets/docs/data-infrastructure/explorers/nearcatalog.png)
-*Main page of [NEARCatalog](https://dev.near.org/applications)*
+*Main page of [NEARCatalog](https://nearcatalog.xyz/)*

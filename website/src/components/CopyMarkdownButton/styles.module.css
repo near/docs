@@ -1,0 +1,123 @@
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.buttonGroup {
+  display: inline-flex;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-700);
+  background-color: var(--ifm-color-emphasis-100);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 0;
+}
+
+.copyButton:hover:not(:disabled) {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+.copyButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.dropdownButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  color: var(--ifm-color-emphasis-700);
+  background-color: var(--ifm-color-emphasis-100);
+  border: none;
+  border-left: 1px solid var(--ifm-color-emphasis-300);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 0;
+}
+
+.dropdownButton:hover:not(:disabled) {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+.dropdownButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+.menuItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--ifm-color-emphasis-700);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.menuItem:hover:not(:disabled) {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+.menuItem:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--ifm-color-emphasis-300);
+  border-top-color: var(--ifm-color-emphasis-700);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
