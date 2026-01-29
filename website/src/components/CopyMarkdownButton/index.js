@@ -25,7 +25,7 @@ export default function CopyMarkdownButton({docId}) {
   }, []);
 
   const fetchMarkdown = async () => {
-    const mdUrl = `${window.location.origin}${docId}.md`;
+    const mdUrl = `${window.location.origin}/${docId}.md`;
 
     if (content) return content;
     try {
