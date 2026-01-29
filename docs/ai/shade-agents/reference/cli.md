@@ -5,6 +5,16 @@ sidebar_label: Shade Agent CLI
 description: "Learn about the Shade Agent CLI and how to use it to deploy Shade Agents."
 ---
 
+:::warning
+The Shade Agent Framework is experimental and contains known critical vulnerabilities.
+
+It must not be used in production or on mainnet and is intended solely for testing and non-critical use on testnet.
+
+No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
+
+A production-ready version of the framework is currently in development.
+:::
+
 The [Shade Agent CLI](https://github.com/NearDeFi/shade-agent-cli/tree/main) makes it simple to deploy a Shade Agent.
 
 ---
