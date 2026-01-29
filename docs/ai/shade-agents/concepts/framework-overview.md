@@ -5,16 +5,6 @@ sidebar_label: Framework Overview
 description: "Learn about the core components of the Shade Agent Framework with a high-level overview of each of its parts."
 ---
 
-:::warning
-The Shade Agent Framework is experimental and contains known critical vulnerabilities.
-
-It must not be used in production or on mainnet and is intended solely for testing and non-critical use on testnet.
-
-No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
-
-A production-ready version of the framework is currently in development.
-:::
-
 import { SigsSupport } from '@site/src/components/sigsSupport';
 
 The Shade Agent Framework provides a suite of tools designed to simplify the development and deployment of Shade Agents. The framework abstracts away the complexities of the underlying infrastructure, allowing developers to focus on building their agent logic. In this section, you'll explore the tooling provided by the framework and examine the key components you need when building an agent.

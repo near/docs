@@ -5,16 +5,6 @@ sidebar_label: DAO Agent
 description: "Learn about the key parts of the agent as part of the Verifiable AI DAO Shade tutorial that walks through how to index the agent contract, using verifiable AI, and interacting with the custom agent contract."
 ---
 
-:::warning
-The Shade Agent Framework is experimental and contains known critical vulnerabilities.
-
-It must not be used in production or on mainnet and is intended solely for testing and non-critical use on testnet.
-
-No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
-
-A production-ready version of the framework is currently in development.
-:::
-
 import {Github} from "@site/src/components/UI/Codetabs"
 
 On this page, you'll examine the agent component of the DAO. The agent continuously monitors for new proposals, uses an LLM to evaluate them, and submits its vote along with reasoning back to the smart contract.

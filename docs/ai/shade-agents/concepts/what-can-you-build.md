@@ -5,16 +5,6 @@ sidebar_label: What can you Build?
 description: "Explore the features of Shade Agents and what they enable you to build, including Agentic Protocols, autonomous yield optimizers, and verifiable oracles."
 ---
 
-:::warning
-The Shade Agent Framework is experimental and contains known critical vulnerabilities.
-
-It must not be used in production or on mainnet and is intended solely for testing and non-critical use on testnet.
-
-No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
-
-A production-ready version of the framework is currently in development.
-:::
-
 With their extensive list of features, Shade Agents unlock a wide range of new use cases, enable many previously centralized apps to become decentralized, and change how blockchain applications are designed. 
 
 ## Shade Agent Features
