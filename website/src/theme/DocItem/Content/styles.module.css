@@ -1,0 +1,35 @@
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.titleCol {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.buttonCol {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: calc( var(--ifm-h1-vertical-rhythm-bottom) * var(--ifm-leading) );
+}
+
+@media (max-width: 640px) {
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .buttonCol {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .titleCol h1 {
+    margin-bottom: 0rem !important;
+  }
+}
