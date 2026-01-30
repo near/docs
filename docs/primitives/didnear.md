@@ -12,6 +12,12 @@ This document details how to use the `did:near` method for decentralized identif
 
 A **Decentralized Identifier (DID)** is a persistent, unique identifier that does not require a centralized registry. On NEAR, DIDs are created based on either account names or raw public keys, and they are fully compatible with the W3C DID standard.
 
+<details>
+  <summary> Authors </summary>
+
+  Built in collaboration with NTT DATA Innovation Center Web3
+</details>
+
 ---
 
 ## The `did:near` Method

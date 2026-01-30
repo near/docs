@@ -2,27 +2,36 @@
 id: introduction
 title: AI and NEAR
 sidebar_label: Introduction
-description: "Introduction to NEAR's User-Owned AI vision, featuring Shade Agents, NEAR AI, and Bitte Protocol."
+description: "Introduction to NEAR's User-Owned AI vision, featuring Shade Agents and NEAR AI."
 ---
 
-NEAR's vision is to create a future of **User-Owned AI**, where AI and agents serve their users, not corporations. For this vision to become a reality, AI must protect user data, prioritize the user's interests, and operate on a sustainable, user-aligned economic model. The NEAR ecosystem has multiple technologies to enable User-Owned AI.
+Building AI agents that control accounts and assets on all blockchains has never been easier. NEAR enables AI agents to transact on any chain, while
+our **Shade Agent Framework** allows to create verifiable and trustless AI agents with multi-chain capabilities out of the box.
 
 ![img](/assets/docs/welcome-pages/9.near-nodes.png)
 
+:::tip Using AI to build on NEAR?
+
+Searching for how to use AI to help you build NEAR dApps, check our [Building NEAR Apps with AI](./llms.md) documentation
+
+:::
+
+
 ---
 
-## Shade Agents
+## Let Your Agent use NEAR
 
-[Shade Agents](./shade-agents/getting-started/introduction.md) are an AI agent framework to create verifiable agents that can control accounts across multiple blockchains with the assurance that the agent cannot lose access to its accounts and that its private keys will never be revealed. They are the first truly **verifiable**, **non-custodial**, **multichain AI agents** with no single point of failure.
+AI Agents can easily control account and assets on all blockchains thanks to NEARs unique features. You simply need to give them access to a NEAR account and they can start interacting with smart contracts, sending transactions, and managing assets everywhere.
 
-Current Web3 agents fall into one of two camps:
-1. They are trustless and verifiable by creating and using a private key within a trusted execution environment (TEE), but if the TEE goes down, the accounts and funds are lost.
-2. The accounts are persistent, but the agents are centralized.
+Check our [NEAR MCP](./near-mcp.md) documentation to get started.
 
-Shade Agents provide verifiability, non-custody, and persistent accounts by operating in TEEs and implementing decentralized key management. Any agent running with the same code inside a TEE can access the same accounts.
+---
 
-These agents can autonomously sign transactions across any chain, interact with AI models and external data sources, manage assets, and perform privacy-preserving, verifiable computations, offering the flexibility and performance of Web2 with the verifiability of Web3.
+## Build Trustless Multi-Chain Agents
 
+The [Shade Agent Framework](./shade-agents/getting-started/introduction.md) enables to build **verifiable** **multi-chain AI agents**. These agents operate in Trusted Execution Environments (TEEs) and leverage NEAR features such as multi-key management and Chain Signatures to securely manage assets and sign transactions across multiple blockchains.
+
+Shade agents can autonomously sign transactions on any chain, interact with AI models and external data sources, and perform privacy-preserving, verifiable computations.
 
 :::info
 Shade Agents power [Agentic Protocols](./shade-agents/concepts/what-can-you-build#agentic-protocols): a new type of decentralized application designed to be autonomous, proactive, and intelligent.
@@ -30,11 +39,23 @@ Shade Agents power [Agentic Protocols](./shade-agents/concepts/what-can-you-buil
 
 ---
 
-## NEAR AI
+## Which Docs Should I Use?
 
-[NEAR AI](https://docs.near.ai/) is building **agent network infrastructure** to support User-Owned Agents. Their work includes:
-- Monetizable open-source AI agents
-- Agent-to-agent communication
-- End-to-end confidential iterations with agents
+| Docs                                                                           | Best if you...                                                                           |
+|--------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| [AI + NEAR](./near-mcp.md)                                                     | Already have an AI Agent, and want to connect it to NEAR (and other chains)              |
+| [Building NEAR Apps with AI](./llms.md)                                        | Are building a NEAR App, and want your Code Agents to help you better                    |
+| [Trustless Multi-chain Agents](./shade-agents/getting-started/introduction.md) | Are building an agent from zero and need to securely handle funds across multiple chains |
 
-Agents are accessible through the [NEAR AI Assistant](https://chat.near.ai/chat), a single interface that intelligently selects the most appropriate agents to handle user requests and connects multiple agents together for more complex tasks. The assistant can take actions for the user, has integrated payments, and can dynamically generate frontends on the fly based on user requests.
+---
+
+## Common Questions
+
+### Can Trustless Agents lose access to their wallets?
+Not with Shade Agents. They use decentralized key management—any instance of the agent with the same code can access the same accounts.
+
+### Do I need to know blockchain development?
+Our tools and resources help to abstract away the complexity of blockchain development.
+
+### What chains can my agent interact with?
+NEAR accounts allow to transact on all chains, including Bitcoin, Ethereum and Solana thanks to Chain Signatures.

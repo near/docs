@@ -219,11 +219,22 @@ For this tutorial we chose to name the project `auction`, but feel free to use a
 
 ---
 
-## The Contract
+## What Does This Contract Do?
 
 The auction smart contract allows users to place bids, track the highest bidder and claim tokens at the end of the auction. 
 
 Do not worry about the code just yet — for now, it is enough to know that the most relevant function is `bid`, which allows users to place bids by attaching NEAR tokens:
+
+### Language Comparison
+
+| Language | Best For | Build Time | Ecosystem Maturity |
+|----------|----------|------------|-------------------|
+| **JavaScript/TypeScript** | Rapid prototyping, web developers | Fast (~2s) | Mature |
+| **Rust** | Production apps, performance-critical code | Moderate (~30s) | Most mature |
+| **Python** | Data science, AI integration | Fast (~3s) | Growing |
+| **Go** | Backend developers, microservices | Fast (~5s) | New |
+
+Choose JavaScript for quick experiments, Rust for production, Python for AI/data apps, Go if you're already a Go developer.
 
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
@@ -510,6 +521,25 @@ near call <contract-acc.testnet> claim '{}' --useAccount <contract-acc.testnet>
 After the auction ends, the highest bidder can be determined by simply calling the `get_highest_bid` method again
 
 :::
+
+---
+
+## Common Questions
+
+### What about mainnet?
+You can deploy a contract to mainnet using the same commands, just make sure to create a mainnet account and use `--networkId mainnet` flag in the `near` CLI commands.
+
+### How much does it cost to deploy?
+The cost of deploying a contract depends on the contract's size, approximately 1Ⓝ ~100Kb.
+
+### Can I update a contract after deploying?
+Yes. Redeploy with `near deploy <account> <wasm-file>`. The account stays the same, code updates.
+
+### Which language should I choose?
+To build production apps prefer **Rust**, as it offers the most mature tooling and best performance. Otherwise, if you are just prototyping or learning, you can choose between your favorite language between **JavaScript**, **Python** or **Go**.
+
+### How do I test without deploying?
+All languages support sandbox testing (shown in this guide). Tests run locally with a simulated NEAR environment.
 
 ---
 
