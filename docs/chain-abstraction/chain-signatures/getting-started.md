@@ -4,32 +4,25 @@ title: Getting Started with Chain Signatures
 description: "Learn how to sign and execute cross-chain transactions"
 ---
 
-## Quick Answer
 
-**Control Bitcoin, Ethereum, and other blockchain addresses from your NEAR account.** Chain Signatures uses Multi-Party Computation (MPC) to let NEAR accounts sign transactions for external chains without bridges. Derive addresses on any blockchain, build DeFi on Bitcoin, create multichain apps with one contract, or enable account abstraction across all chains.
-
-**Key capabilities:** Sign Bitcoin/Ethereum/etc transactions, control external addresses, no wrapped tokens, programmable cross-chain interactions.
-
----
-
-Chain Signatures is a groundbreaking technology built on NEAR that enables all accounts, including smart contracts, to sign and execute transactions across multiple blockchains.
+Chain Signatures allows all NEAR accounts - including smart contracts - to sign transactions for other blockchains (such as Bitcoin, Ethereum or Solana).
 
 ![img](https://pages.near.org/wp-content/uploads/2024/02/acct-abstraction-blog-1.png)
 
 This innovation leverages Multi-Party Computation (MPC) and a distributed network of node operators to create joint signatures from arbitrary payloads, allowing NEAR accounts to control external blockchain accounts.
 
-Chain Signatures enhances blockchain interoperability, giving ownership of diverse assets, cross-chain accounts, and data to a single NEAR account.
+Derive addresses on any blockchain, build DeFi on Bitcoin, create multi-chain apps with one contract, or enable account abstraction across all chains - all without the need for traditional bridges or wrapped tokens
 
 ### Chain Signatures vs. Traditional Bridges
 
-| Feature | Chain Signatures | Traditional Bridges |
-|---------|-----------------|-------------------|
-| **Security Model** | Decentralized MPC nodes | Trusted validators or relayers |
-| **Asset Type** | Native tokens (real BTC, ETH) | Wrapped tokens (wBTC, wETH) |
-| **Smart Contract Support** | Yes, contracts can sign transactions | Usually user-only |
-| **Chains Supported** | Any blockchain | Specific pairs only |
-| **Bridge Risk** | No locked funds, no bridge exploits | Billions locked, frequent hacks |
-| **UX** | Seamless, single account | Multiple wallets needed |
+| Feature                    | Chain Signatures                     | Traditional Bridges             |
+|----------------------------|--------------------------------------|---------------------------------|
+| **Security Model**         | Decentralized MPC nodes              | Trusted validators or relayers  |
+| **Asset Type**             | Native tokens (real BTC, ETH)        | Wrapped tokens (wBTC, wETH)     |
+| **Smart Contract Support** | Yes, contracts can sign transactions | Usually user-only               |
+| **Chains Supported**       | Any blockchain                       | Specific pairs only             |
+| **Bridge Risk**            | No locked funds, no bridge exploits  | Billions locked, frequent hacks |
+| **UX**                     | Seamless, single account             | Multiple wallets needed         |
 
 ---
 
@@ -138,7 +131,7 @@ The MPC network is decentralized across multiple node operators. No single node 
 Chain Signatures *enables* account abstraction across all chains. Your NEAR account (with passkeys, 2FA, etc.) can now control assets on Bitcoin, Ethereum, and more.
 
 ### How much does it cost?
-Signing a transaction costs ~0.1 Ⓝ ($0.02-0.05). The actual transaction fee on the target blockchain (BTC network fees, ETH gas) is paid separately.
+You can sign transactions on NEAR for free, but the external account will still need tokens to pay for gas fees in the target blockchain.
 
 ---
 

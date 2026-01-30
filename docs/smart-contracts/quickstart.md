@@ -11,12 +11,6 @@ import TabItem from '@theme/TabItem';
 import Card from '@site/src/components/UI/Card';
 import MovingForwardSupportSection from '@site/src/components/MovingForwardSupportSection';
 
-## Quick Answer
-
-**Create a NEAR smart contract in under 5 minutes.** This guide walks you through writing a "Hello World" contract in JavaScript, Rust, Python, or Go, then deploying it to testnet. You'll write a contract that stores a greeting and exposes two functions: `set_greeting` (write) and `get_greeting` (read). Uses NEAR CLI for testing and deployment. No mainnet account needed.
-
----
-
 Welcome! [NEAR accounts](../protocol/account-model.md) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
 
 Join us in creating a friendly auction contract, which allows users to place bids, track the highest bidder and claim tokens at the end of the auction.
@@ -532,20 +526,17 @@ After the auction ends, the highest bidder can be determined by simply calling t
 
 ## Common Questions
 
-### Do I need a mainnet account to deploy a contract?
-No. This tutorial uses testnet, which is free. Create testnet accounts with `near create-account <name.testnet> --useFaucet`.
+### What about mainnet?
+You can deploy a contract to mainnet using the same commands, just make sure to create a mainnet account and use `--networkId mainnet` flag in the `near` CLI commands.
 
 ### How much does it cost to deploy?
-On testnet: free. On mainnet: ~0.1-0.5 Ⓝ depending on contract size (typically $0.10-$0.50).
+The cost of deploying a contract depends on the contract's size, approximately 1Ⓝ ~100Kb.
 
 ### Can I update a contract after deploying?
 Yes. Redeploy with `near deploy <account> <wasm-file>`. The account stays the same, code updates.
 
 ### Which language should I choose?
-- **Rust** for production apps (most tooling, best performance)
-- **JavaScript** for rapid prototyping (easiest for web devs)
-- **Python** for AI/data science use cases
-- **Go** if you're already a Go developer
+To build production apps prefer **Rust**, as it offers the most mature tooling and best performance. Otherwise, if you are just prototyping or learning, you can choose between your favorite language between **JavaScript**, **Python** or **Go**.
 
 ### How do I test without deploying?
 All languages support sandbox testing (shown in this guide). Tests run locally with a simulated NEAR environment.
