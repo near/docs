@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "jsx": "react",
     "module": "es2015",
     "moduleResolution": "node",
@@ -12,6 +13,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNEXT"
+    "target": "ESNEXT",
+    "types": ["@docusaurus/module-type-aliases", "@docusaurus/types"]
   }
 }
