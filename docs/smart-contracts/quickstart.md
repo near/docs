@@ -25,6 +25,8 @@ Join us in creating a friendly auction contract, which allows users to place bid
 
   ![NEAR Playground](@site/static/assets/docs/smart-contracts/NEAR-Playground.png)
 
+  [![Try a Counter Example in NearPlay](https://img.shields.io/badge/Open%20in%20NearPlay-14b8a6?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTE4IDcgNCA0LTQgNE00IDEybDQgNC00LTQgNC00Ii8+PC9zdmc+&logoColor=white)](https://nearplay.app/embed/3450a8a0-57dc-4d3a-b5d0-7bed58a0c2a9)
+
 </details>
 
 ---
