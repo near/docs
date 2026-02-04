@@ -225,7 +225,9 @@ const config = {
           subitems: [
             { label: 'Blog', to: '/blog', description: "Read blog posts from our community", icon: '/assets/menu/near.svg' },
             { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/assets/menu/event.png' },
-            { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/assets/menu/newspaper.png' }
+            { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/assets/menu/newspaper.png' },
+            { label: 'NEAR Catalog', to: 'https://nearcatalog.xyz/', description: "Discover apps built on NEAR", icon: '/assets/menu/catalog.png' },
+            { label: 'Awesome NEAR', to: 'https://github.com/near/awesome-near', description: "Repositories and tools for building on NEAR", icon: '/assets/menu/github.svg' }
           ]
         },
         {
