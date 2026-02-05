@@ -28,7 +28,7 @@ jobs:
         run: cd website && yarn
 
       - name: Index to MeiliSearch
-        run: cd website && yarn run index:meilisearch
+        run: cd website && yarn run meilisearch:build-index
         env:
           MEILI_HOST: ${{ secrets.MEILI_HOST }}
           MEILI_MASTER_KEY: ${{ secrets.MEILI_MASTER_KEY }}
