@@ -163,22 +163,27 @@
 /* Category Filters */
 .categoryFilters {
   display: flex;
-  flex-wrap: wrap;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
   background: var(--ifm-color-emphasis-50);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
 }
 
 .categoryChip {
   padding: 0.375rem 0.75rem;
-  font-size: 0.8125rem;
+  font-size: 12px;
   background: var(--ifm-color-emphasis-100);
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 9999px;
   color: var(--ifm-color-emphasis-700);
   cursor: pointer;
   transition: all 0.15s ease;
+  white-space: nowrap;
 }
 
 .categoryChip:hover {
