@@ -69,7 +69,12 @@ export default function CopyMarkdownButton({docId}) {
   };
 
   const handleConnectMCPCursor = () => {
-    window.open(`cursor:mcp/install?%7B%22name%22%3A%22NEAR%20Docs%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fdocs.near.org%2Fmcp%22%7D`, '_blank');
+    const config = {
+      url: "https://docs.near.org/mcp"
+    };
+    const name = "NEAR Docs";
+    const configBase64 = btoa(JSON.stringify(config));
+    window.open(`cursor://anysphere.cursor-deeplink/mcp/install?name=${encodeURIComponent(name)}&config=${configBase64}`, '_blank');
     setIsOpen(false);
   };
 
