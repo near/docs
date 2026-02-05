@@ -31,12 +31,15 @@ interface SearchResult {
 
 const CATEGORIES = [
   { id: 'all', label: 'All' },
-  { id: 'Smart Contracts', label: 'Contracts' },
-  { id: 'Web3 Apps', label: 'Apps' },
   { id: 'Protocol', label: 'Protocol' },
-  { id: 'Tutorials', label: 'Tutorials' },
-  { id: 'AI', label: 'AI' },
+  { id: 'Multi-Chain', label: 'Multi-Chain' },
+  { id: 'AI & Agents', label: 'AI' },
+  { id: 'Smart Contracts', label: 'Contracts' },
+  { id: 'Web3 Apps', label: 'Web3 Apps' },
+  { id: 'Primitives', label: 'Tokens & Primitives' },
+  { id: 'Data Infrastructure', label: 'Data Infrastructure' },
   { id: 'Tools', label: 'Tools' },
+  { id: 'API', label: 'API' },
 ];
 
 export default function SearchBar(): JSX.Element {
@@ -111,6 +114,10 @@ export default function SearchBar(): JSX.Element {
         highlightPreTag: '<mark>',
         highlightPostTag: '</mark>',
         filter,
+        hybrid: {
+          semanticRatio: 0.6, 
+          embedder: 'default'
+        },
       });
 
       setResults(searchResult.hits);
@@ -132,7 +139,7 @@ export default function SearchBar(): JSX.Element {
   useEffect(() => {
     const timer = setTimeout(() => {
       search(query, selectedCategory);
-    }, 150);
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [query, selectedCategory, search]);
@@ -270,17 +277,6 @@ export default function SearchBar(): JSX.Element {
                   <kbd>↑</kbd><kbd>↓</kbd> to navigate
                   <kbd>Esc</kbd> to close
                 </div>
-                <a
-                  href={`/search?q=${encodeURIComponent(query)}`}
-                  className={styles.viewAll}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsOpen(false);
-                    history.push(`/search?q=${encodeURIComponent(query)}${selectedCategory !== 'all' ? `&category=${encodeURIComponent(selectedCategory)}` : ''}`);
-                  }}
-                >
-                  View all results
-                </a>
               </div>
             )}
           </div>

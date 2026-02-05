@@ -16,7 +16,7 @@
     "build:dev": "./node_modules/.bin/docusaurus build --dev && yarn run process-markdown",
     "build:preview": "yarn run process-markdown && ./node_modules/.bin/docusaurus build --locale en && yarn run process-markdown",
     "process-markdown": "node ./scripts/copy-md-to-static.js",
-    "index:meilisearch": "node scripts/index-meilisearch.mjs",
+    "meilisearch:build-index": "node scripts/index-meilisearch.mjs",
     "swizzle": "docusaurus swizzle",
     "docusaurus": "docusaurus"
   },
@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "@docsearch/core": "^4.5.0",
-    "meilisearch": "^0.55.0",
     "@docusaurus/core": "3.9.2",
     "@docusaurus/plugin-ideal-image": "3.9.2",
     "@docusaurus/plugin-sitemap": "3.9.2",
@@ -51,6 +50,7 @@
     "gleap": "^13.7.3",
     "lodash": "^4.17.21",
     "lucide-react": "^0.555.0",
+    "meilisearch": "^0.55.0",
     "monaco-editor": "^0.55.1",
     "near-api-js": "^7.0.0",
     "near-connect-hooks": "^1.0.2",

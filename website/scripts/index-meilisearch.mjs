@@ -15,19 +15,15 @@ const BATCH_SIZE = 100;
 const TASK_TIMEOUT = 300000; // 5 minutes timeout for tasks with embedders
 
 const CATEGORY_MAP = {
+  'protocol': 'Protocol',
+  'chain-abstraction': 'Multi-Chain',
+  'ai': 'AI & Agents',
   'smart-contracts': 'Smart Contracts',
   'web3-apps': 'Web3 Apps',
-  'protocol': 'Protocol',
+  'primitives': 'Primitives',
+  'data-infrastructure': 'Data Infrastructure',
   'tools': 'Tools',
   'api': 'API',
-  'tutorials': 'Tutorials',
-  'primitives': 'Primitives',
-  'chain-abstraction': 'Chain Abstraction',
-  'integrations': 'Integrations',
-  'data-infrastructure': 'Data Infrastructure',
-  'ai': 'AI',
-  'aurora': 'Aurora',
-  'quest': 'Quest',
 };
 
 function generateId(content) {
@@ -96,19 +92,40 @@ function cleanContent(content) {
     .trim();
 }
 
-function getUrlPath(filePath) {
-  const relativePath = path.relative(DOCS_PATH, filePath);
-  let urlPath = relativePath
-    .replace(/\.mdx?$/, '')
-    .replace(/\\/g, '/');
-
-  // Handle index files
-  if (urlPath.endsWith('/index')) {
-    urlPath = urlPath.slice(0, -6);
+function getUrlPath(filePath, frontmatter = {}) {
+  // If slug is explicitly set in frontmatter, use it directly
+  if (frontmatter.slug) {
+    const slug = frontmatter.slug.startsWith('/') ? frontmatter.slug : '/' + frontmatter.slug;
+    return slug;
   }
 
-  // Handle files with numeric prefixes (e.g., 0-intro.md -> intro)
-  urlPath = urlPath.replace(/\/\d+-/g, '/').replace(/^\d+-/, '');
+  const relativePath = path.relative(DOCS_PATH, filePath);
+  const pathParts = relativePath.replace(/\\/g, '/').split('/');
+  const fileName = pathParts.pop().replace(/\.mdx?$/, '');
+
+  // Get document ID: from frontmatter.id, or filename (without numeric prefix)
+  const docId = frontmatter.id || fileName.replace(/^\d+-/, '');
+
+  // Remove numeric prefixes from path parts
+  const cleanPathParts = pathParts.map(part => part.replace(/^\d+-/, ''));
+
+  // Build the URL path
+  let urlPath;
+
+  if (docId === 'index') {
+    // index files: /path/path/index -> /path/path
+    urlPath = cleanPathParts.join('/');
+  } else {
+    // Check if docId matches the parent folder name
+    const parentFolder = cleanPathParts[cleanPathParts.length - 1];
+    if (docId === parentFolder) {
+      // /primitives/nft/nft -> /primitives/nft
+      urlPath = cleanPathParts.join('/');
+    } else {
+      // Normal case: /path/to/file/<docId>
+      urlPath = [...cleanPathParts, docId].join('/');
+    }
+  }
 
   return '/' + urlPath;
 }
@@ -238,9 +255,6 @@ async function indexDocuments() {
       const headings = extractHeadings(body);
       const cleanedContent = cleanContent(body);
 
-      // Skip empty or very short content
-      if (cleanedContent.length < 50) continue;
-
       const urlPath = getUrlPath(filePath);
       const title = frontmatter.title ||
         frontmatter.sidebar_label ||
@@ -252,7 +266,7 @@ async function indexDocuments() {
       const doc = {
         id: generateId(urlPath),
         title,
-        content: cleanedContent.substring(0, 10000), // Limit content size
+        content: cleanedContent, // Limit content size
         path: urlPath,
         section: frontmatter.sidebar_label || title,
         category: hierarchy.lvl0,
@@ -264,30 +278,6 @@ async function indexDocuments() {
       };
 
       documents.push(doc);
-
-      // Also index individual headings as separate documents for better search granularity
-      for (const heading of headings.slice(0, 5)) { // Limit to first 5 headings
-        const anchor = heading
-          .toLowerCase()
-          .replace(/[^\w\s-]/g, '')
-          .replace(/\s+/g, '-');
-
-        const headingDoc = {
-          id: generateId(urlPath + '#' + anchor),
-          title: heading,
-          content: cleanedContent.substring(0, 500),
-          path: urlPath + '#' + anchor,
-          section: title,
-          category: hierarchy.lvl0,
-          version: 'current',
-          hierarchy_lvl0: hierarchy.lvl0,
-          hierarchy_lvl1: hierarchy.lvl1,
-          hierarchy_lvl2: heading,
-          timestamp: Date.now(),
-        };
-
-        documents.push(headingDoc);
-      }
     } catch (error) {
       console.warn(`Warning: Failed to process ${filePath}:`, error.message);
     }

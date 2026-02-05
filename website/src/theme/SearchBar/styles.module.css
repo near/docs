@@ -3,10 +3,10 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem .75rem;
   background: var(--ifm-color-emphasis-100);
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 8px;
+  border-radius: 5px;
   color: var(--ifm-color-emphasis-600);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -84,7 +84,7 @@
   width: 100%;
   max-width: 640px;
   margin: 0 1rem;
-  background: var(--ifm-background-color);
+  background: var(--ifm-color-emphasis-100);
   border-radius: 12px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   overflow: hidden;
@@ -237,7 +237,7 @@
 
 .resultBreadcrumb {
   font-size: 0.75rem;
-  color: var(--ifm-color-emphasis-500);
+  color: var(--ifm-color-emphasis-700);
   margin-bottom: 0.25rem;
 }
 
@@ -257,12 +257,13 @@
 
 .resultContent {
   font-size: 0.8125rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-emphasis-700);
   line-height: 1.5;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
