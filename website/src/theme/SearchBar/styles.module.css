@@ -405,7 +405,53 @@
   color: white;
 }
 
-/* Ask AI Button */
+/* Ask AI Row (first option in search results) */
+.askAiRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  cursor: pointer;
+  transition: background 0.1s ease;
+  font-size: 0.875rem;
+  color: var(--ifm-font-color-base);
+}
+
+.askAiRow:hover,
+.askAiRowSelected {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.askAiRowIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 5px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.askAiRowText {
+  flex: 1;
+  font-weight: 500;
+}
+
+.askAiRowHint {
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+/* Ask AI Button (no results fallback) */
 .askAiButton {
   margin-top: 1rem;
   padding: 0.625rem 1.25rem;
