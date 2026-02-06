@@ -26,7 +26,6 @@ const CodeBlock = ({ node, inline, className, children, isDarkTheme, ...props })
         style={isDarkTheme ? oneDark : oneLight}
         language={match[1]}
         showLineNumbers={true}
-        // PreTag={ ({ children }) => <div>{children}</div> }
         {...props}
       >
         {codeContent}
