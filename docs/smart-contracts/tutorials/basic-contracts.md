@@ -36,6 +36,9 @@ Before tackling these examples, be sure to follow our [Quickstart Guide](../quic
       target="_blank"
     >
       <p>A simple smart contract that stores a `string` message on its state</p>
+      <a href="https://nearplay.app/embed/919be62a-e1bc-49b5-b858-fb3d567d8489" target="_blank" rel="noopener noreferrer" className="button button--primary button--sm" style={{ marginTop: '0.5rem' }} onClick={(e) => e.stopPropagation()}>
+        Open in NearPlay
+      </a>
     </Card>
   </div>
   <div className="auto-col">
@@ -47,6 +50,9 @@ Before tackling these examples, be sure to follow our [Quickstart Guide](../quic
       target="_blank"
     >
       <p>A friendly counter that stores a number with methods to increment, decrement, and reset it</p>
+      <a href="https://nearplay.app/embed/3450a8a0-57dc-4d3a-b5d0-7bed58a0c2a9" target="_blank" rel="noopener noreferrer" className="button button--primary button--sm" style={{ marginTop: '0.5rem' }} onClick={(e) => e.stopPropagation()}>
+        Open in NearPlay
+      </a>
     </Card>
   </div>
   <div className="auto-col">
@@ -57,7 +63,10 @@ Before tackling these examples, be sure to follow our [Quickstart Guide](../quic
       href="https://github.com/near-examples/guest-book-examples"
       target="_blank"
     >
-      <p>Users can sign the guest book, optionally paying `0.01 Ⓝ` to mark their messages as "premium</p>
+      <p>Users can sign the guest book, optionally paying `0.01 Ⓝ` to mark their messages as "premium"</p>
+      <a href="https://nearplay.app/embed/3862fb26-aeee-471f-90ad-f900e820de3f" target="_blank" rel="noopener noreferrer" className="button button--primary button--sm" style={{ marginTop: '0.5rem' }} onClick={(e) => e.stopPropagation()}>
+        Open in NearPlay
+      </a>
     </Card>
   </div>
   <div className="auto-col">
@@ -69,6 +78,9 @@ Before tackling these examples, be sure to follow our [Quickstart Guide](../quic
       target="_blank"
     >
       <p>Forward NEAR tokens to a beneficiary while tracking all donations. Learn how contracts handle token transfers</p>
+      <a href="https://nearplay.app/embed/436d9ff9-a15c-418a-8350-ae5eead387c7" target="_blank" rel="noopener noreferrer" className="button button--primary button--sm" style={{ marginTop: '0.5rem' }} onClick={(e) => e.stopPropagation()}>
+        Open in NearPlay
+      </a>
     </Card>
   </div>
   <div className="auto-col">
@@ -80,9 +92,16 @@ Before tackling these examples, be sure to follow our [Quickstart Guide](../quic
       target="_blank"
     >
       <p>Guess the outcome of a coin flip and earn points. Demonstrates how to handle randomness on the blockchain</p>
+      <a href="https://nearplay.app/embed/10aab4a0-deee-45a3-b847-8d229358cad3" target="_blank" rel="noopener noreferrer" className="button button--primary button--sm" style={{ marginTop: '0.5rem' }} onClick={(e) => e.stopPropagation()}>
+        Open in NearPlay
+      </a>
     </Card>
   </div>
 </div>
+
+:::tip Try Without Setup
+Want to try these examples immediately? Click the **"Open in NearPlay"** button on any card above to start coding in [NearPlay](https://nearplay.app) - no installation required!
+:::
 
 ---
 
