@@ -115,7 +115,7 @@ export default function SearchBar(): JSX.Element {
         highlightPostTag: '</mark>',
         filter,
         hybrid: {
-          semanticRatio: 0.6, 
+          semanticRatio: 0.5, 
           embedder: 'default'
         },
       });
