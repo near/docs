@@ -15,6 +15,14 @@ Welcome! [NEAR accounts](../protocol/account-model.md) can store small apps know
 
 Join us in creating a friendly auction contract, which allows users to place bids, track the highest bidder and claim tokens at the end of the auction.
 
+:::tip Which language should I use?
+
+In this tutorial we provide instructions to create contracts in multiple languages.
+
+We recommend using **Rust** for production apps due to its mature tooling. However, if you are just prototyping or learning, feel free to use **JavaScript**, **Python**, or **Go**!
+
+:::
+
 <details>
 
   <summary> Prefer an online IDE? </summary>
@@ -219,21 +227,55 @@ For this tutorial we chose to name the project `auction`, but feel free to use a
 
 ---
 
-## The Contract
+## Anatomy of the Contract
 
-The auction smart contract allows users to place bids, track the highest bidder and claim tokens at the end of the auction. 
+The auction smart contract allows users to place bids, track the highest bidder and claim tokens at the end of the auction.
 
-Do not worry about the code just yet — for now, it is enough to know that the most relevant function is `bid`, which allows users to place bids by attaching NEAR tokens:
+Let's take a look at the different components of the contract and how they work together to implement this functionality.
+
+<hr class="subsection" />
+
+### Contract State & Initialization
+
+The contract stores the highest bid, auction end time, auctioneer address, and a flag to track if proceeds have been claimed. In order to set these parameters, an `init` function is provided, which must be called first to initialize the contract state.
 
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust">
     <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-            start="37" end="63" />
+            start="7" end="35" />
   </TabItem>
 
   <TabItem value="js" label="🌐 JavaScript">
-    <Github fname="index.js" language="js"
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+            start="5" end="21" />
+  </TabItem>
+
+  <TabItem value="py" label="🐍 Python">
+    <Github fname="contract.py" language="python"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
+            start="1" end="18" />
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+### Placing Bids
+
+In order to place a bid, users will need to call the `bid` function while attaching a deposit representing their bid amount.
+
+The `bid` function will then validate that the auction is ongoing, if the user bid a higher amount than the one stored, it will record the new bid and refund the previous bidder.
+
+<Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+            start="37" end="64" />
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
             start="23" end="43" />
   </TabItem>
@@ -245,7 +287,57 @@ Do not worry about the code just yet — for now, it is enough to know that the 
   </TabItem>
 </Tabs>
 
-Besides `bid`, the contract exposes methods to initialize the auction (`init`), query the highest bidder (`get_highest_bid`), and claim tokens once the auction ends (`claim`).
+<hr class="subsection" />
+
+### Claiming Proceeds
+
+Once the auction ends, any user can call `claim` to transfer the winning bid to the auctioneer:
+
+<Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+            start="65" end="76" />
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+            start="45" end="52" />
+  </TabItem>
+
+  <TabItem value="py" label="🐍 Python">
+    <Github fname="contract.py" language="python"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
+            start="47" end="59" />
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
+### View Methods
+
+At all times, users can query the current state of the auction by calling its view methods (`get_highest_bid`, `get_auction_end_time`, `get_auctioneer`, `get_claimed`):
+
+<Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+            start="78" end="92" />
+  </TabItem>
+
+  <TabItem value="js" label="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+            start="54" end="71" />
+  </TabItem>
+
+  <TabItem value="py" label="🐍 Python">
+    <Github fname="contract.py" language="python"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
+            start="62" end="90" />
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -510,6 +602,25 @@ near call <contract-acc.testnet> claim '{}' --useAccount <contract-acc.testnet>
 After the auction ends, the highest bidder can be determined by simply calling the `get_highest_bid` method again
 
 :::
+
+---
+
+## Common Questions
+
+#### What about mainnet?
+You can deploy a contract to mainnet using the same commands, just make sure to create a mainnet account and use `--networkId mainnet` flag in the `near` CLI commands.
+
+#### How much does it cost to deploy?
+The cost of deploying a contract depends on the contract's size, approximately 1Ⓝ ~100Kb.
+
+#### Can I update a contract after deploying?
+Yes. Redeploy with `near deploy <account> <wasm-file>`. The account stays the same, code updates.
+
+#### Which language should I choose?
+To build production apps prefer **Rust**, as it offers the most mature tooling and best performance. Otherwise, if you are just prototyping or learning, you can choose between your favorite language between **JavaScript**, **Python** or **Go**.
+
+#### How do I test without deploying?
+All languages support sandbox testing (shown in this guide). Tests run locally with a simulated NEAR environment.
 
 ---
 

@@ -18,7 +18,7 @@ Decentralized Autonomous Organizations (DAOs) are self-organized groups that for
 ![dao](/assets/docs/primitives/dao.png)
 
 In contrast with [FT](./ft/ft.md) and [NFT](./nft/nft.md), DAO contract's are not standardized. Because of this, on this page we will use as
-reference the [Astra dao](https://dev.near.org/astraplusplus.ndctools.near/widget/home?page=daos) [contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
+reference the [sputnik dao contract](https://github.com/near-daos/sputnik-dao-contract). The main concepts covered here should
 easily generalizable to other DAO implementations.
 
 :::tip
@@ -817,4 +817,3 @@ impl Contract {
 ## Additional Resources
 
 1. [NEAR Treasury](https://neartreasury.com/) - a Treasury management web app built on top of the Sputnik DAO Contract. Allows users to create and manage treasury funds with ease.
-2. [List of DAOs as a NEAR component](https://dev.near.org/onboarder.near/widget/DAOSocialSearch)

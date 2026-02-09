@@ -187,3 +187,11 @@ html[data-theme='light'] {
     }
   }
 }
+
+@media (max-width: 999px) {
+  .landing-hero {
+    &__title-gradient {
+      margin-top: 0;
+    }
+  }
+}

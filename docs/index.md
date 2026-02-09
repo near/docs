@@ -9,11 +9,13 @@ description: "NEAR Protocol documentation - Build decentralized applications and
 
 import Card from '@site/src/components/UI/Card';
 import LandingHero from '@site/src/components/LandingHero';
+import AIBadges from '@site/src/components/AIBadges';
 
+<AIBadges />
 
 <LandingHero />
 
-<div className="row" style={{ marginTop: '4rem', gridGap: '3rem 0rem' }}>
+<div className="row" style={{ marginTop: '2rem', gridGap: '3rem 0rem' }}>
   <div className="auto-col">
     <Card
       variant="icon"
