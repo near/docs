@@ -277,9 +277,13 @@ function getFirstNonEmptyLine(text) {
 function getOutputPath(filePath, frontmatterId) {
   const relativePath = path.relative(DOCS_DIR, filePath);
   const dirPath = path.dirname(relativePath);
-  const filename = frontmatterId ? `${frontmatterId}.md` : path.basename(filePath);
-  
-  return path.join(BUILD_DIR, dirPath, filename);
+
+  // border case, for <path>/frontmatterId/frontmatterId gets transformed into <path>/frontmatterId.md instead of <path>/frontmatterId/frontmatterId.md
+  if (path.basename(filePath) === frontmatterId) {
+    return path.join(BUILD_DIR, `${frontmatterId}.md`);
+  }
+
+  return path.join(BUILD_DIR, dirPath, `${frontmatterId}.md`);
 }
 
 

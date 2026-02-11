@@ -19,8 +19,6 @@ export const CATEGORY_MAP = {
   'data-infrastructure': 'Data Infrastructure',
   'tools': 'Tools',
   'api': 'API',
-  'integrations': 'Integration Examples',
-  'aurora': 'Aurora',
 };
 
 const MEILI_HOST = process.env.MEILI_HOST || 'http://localhost:7700';
@@ -64,12 +62,12 @@ function getHierarchy(filePath) {
   return hierarchy;
 }
 
-function getUrlPath(filePath, frontmatter = {}) {
+function getUrlPath(filePath) {
   const relativePath = path.relative(BUILD_DIR, filePath);
   const pathParts = relativePath.replace(/\\/g, '/').split('/');
   const fileName = pathParts.pop().replace(/\.mdx?$/, '');
 
-  const docId = frontmatter.id || fileName.replace(/^\d+-/, '');
+  const docId = fileName.replace(/^\d+-/, '');
 
   const cleanPathParts = pathParts.map(part => part.replace(/^\d+-/, ''));
 
@@ -127,7 +125,7 @@ async function indexDocuments() {
       const content = fs.readFileSync(filePath, 'utf-8');
       const { frontmatter, body } = extractFrontmatter(content);
 
-      const urlPath = getUrlPath(filePath, frontmatter);
+      const urlPath = getUrlPath(filePath);
       const title = frontmatter.title;
 
       // console.log(urlPath);
