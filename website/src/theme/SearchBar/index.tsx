@@ -4,6 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { MeiliSearch } from 'meilisearch';
 import { trackSearch, trackSearchResultClick, trackSearchNoResults } from '../../utils/searchAnalytics';
 import { SearchIcon } from '../Icon/Search';
+import AIChatInSearch, { type SavedConversation } from './AIChatInSearch';
 import styles from './styles.module.css';
 
 interface SearchHit {
@@ -31,15 +32,17 @@ interface SearchResult {
 
 const CATEGORIES = [
   { id: 'all', label: 'All' },
-  { id: 'Protocol', label: 'Protocol' },
-  { id: 'Multi-Chain', label: 'Multi-Chain' },
-  { id: 'AI & Agents', label: 'AI' },
-  { id: 'Smart Contracts', label: 'Contracts' },
-  { id: 'Web3 Apps', label: 'Web3 Apps' },
-  { id: 'Primitives', label: 'Tokens & Primitives' },
-  { id: 'Data Infrastructure', label: 'Data Infrastructure' },
-  { id: 'Tools', label: 'Tools' },
-  { id: 'API', label: 'API' },
+  { id: 'protocol', label: 'Protocol' },
+  { id: 'chain-abstraction', label: 'Multi-Chain' },
+  { id: 'ai', label: 'AI & Agents' },
+  { id: 'smart-contracts', label: 'Smart Contracts' },
+  { id: 'web3-apps', label: 'Web3 Apps' },
+  { id: 'primitives', label: 'Primitives' },
+  { id: 'data-infrastructure', label: 'Data Infrastructure' },
+  { id: 'tools', label: 'Tools' },
+  { id: 'api', label: 'API' },
+  { id: 'integrations', label: 'Integration Examples' },
+  { id: 'aurora', label: 'Aurora' },
 ];
 
 export default function SearchBar(): JSX.Element {
@@ -53,6 +56,9 @@ export default function SearchBar(): JSX.Element {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [client, setClient] = useState<MeiliSearch | null>(null);
+  const [mode, setMode] = useState<'search' | 'askDocs'>('search');
+  const [askDocsQuery, setAskDocsQuery] = useState('');
+  const [savedConversation, setSavedConversation] = useState<SavedConversation | null>(null);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
@@ -73,6 +79,13 @@ export default function SearchBar(): JSX.Element {
     }
   }, [siteConfig]);
 
+  const closeModal = useCallback(() => {
+    setIsOpen(false);
+    setQuery('');
+    setMode('search');
+    setAskDocsQuery('');
+  }, []);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -80,13 +93,13 @@ export default function SearchBar(): JSX.Element {
         setIsOpen(true);
       }
       if (e.key === 'Escape') {
-        setIsOpen(false);
+        closeModal();
       }
     };
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [closeModal]);
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
@@ -144,7 +157,13 @@ export default function SearchBar(): JSX.Element {
     return () => clearTimeout(timer);
   }, [query, selectedCategory, search]);
 
+  const switchToAskDocs = () => {
+    setAskDocsQuery(query.trim());
+    setMode('askDocs');
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (mode === 'askDocs') return;
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       setSelectedIndex(prev => Math.min(prev + 1, results.length - 1));
@@ -159,8 +178,7 @@ export default function SearchBar(): JSX.Element {
 
   const navigateToResult = (hit: SearchHit, index: number) => {
     trackSearchResultClick(query, index, hit.path);
-    setIsOpen(false);
-    setQuery('');
+    closeModal();
     history.push(hit.path);
   };
 
@@ -196,7 +214,7 @@ export default function SearchBar(): JSX.Element {
           <div
             className={styles.backdrop}
             aria-hidden="true"
-            onClick={() => setIsOpen(false)}
+            onClick={closeModal}
           />
           <div className={styles.modal}>
             <div className={styles.searchHeader}>
@@ -205,79 +223,118 @@ export default function SearchBar(): JSX.Element {
                 ref={inputRef}
                 type="text"
                 className={styles.searchInput}
-                placeholder="Search documentation..."
+                placeholder={mode === 'search' ? 'Search documentation...' : 'Ask the docs...'}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
               />
-              {loading && <div className={styles.spinner} />}
+              {loading && mode === 'search' && <div className={styles.spinner} />}
+              <div className={styles.modeToggle}>
+                <button
+                  className={`${styles.modeToggleBtn} ${mode === 'search' ? styles.modeToggleBtnActive : ''}`}
+                  onClick={() => setMode('search')}
+                >
+                  Search
+                </button>
+                <button
+                  className={`${styles.modeToggleBtn} ${mode === 'askDocs' ? styles.modeToggleBtnActive : ''}`}
+                  onClick={() => switchToAskDocs()}
+                >
+                  ✨ Ask Docs
+                </button>
+              </div>
               <button
                 className={styles.closeButton}
-                onClick={() => setIsOpen(false)}
+                onClick={closeModal}
               >
                 <kbd>Esc</kbd>
               </button>
             </div>
 
-            <div className={styles.categoryFilters}>
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat.id}
-                  className={`${styles.categoryChip} ${
-                    selectedCategory === cat.id ? styles.categoryChipActive : ''
-                  }`}
-                  onClick={() => setSelectedCategory(cat.id)}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
-
-            <div className={styles.results} ref={resultsRef}>
-              {results.length === 0 && query && !loading && (
-                <div className={styles.noResults}>
-                  <p>No results found for "{query}"</p>
-                  <p className={styles.noResultsHint}>
-                    Try different keywords or browse the documentation
-                  </p>
+            {mode === 'search' && (
+              <>
+                <div className={styles.categoryFilters}>
+                  {CATEGORIES.map((cat) => (
+                    <button
+                      key={cat.id}
+                      className={`${styles.categoryChip} ${
+                        selectedCategory === cat.id ? styles.categoryChipActive : ''
+                      }`}
+                      onClick={() => setSelectedCategory(cat.id)}
+                    >
+                      {cat.label}
+                    </button>
+                  ))}
                 </div>
-              )}
 
-              {results.map((hit, index) => (
-                <button
-                  key={hit.id}
-                  className={`${styles.resultItem} ${
-                    index === selectedIndex ? styles.resultItemSelected : ''
-                  }`}
-                  onClick={() => navigateToResult(hit, index)}
-                  onMouseEnter={() => setSelectedIndex(index)}
-                >
-                  <div className={styles.resultBreadcrumb}>
-                    {hit.hierarchy_lvl0}
-                    {hit.hierarchy_lvl1 && ` > ${hit.hierarchy_lvl1}`}
+                {query.trim() && (
+                  <div
+                    className={styles.askDocsPrompt}
+                    onClick={() => switchToAskDocs()}
+                  >
+                    <span className={styles.askDocsPromptIcon}>✨</span>
+                    <span className={styles.askDocsPromptText}>
+                      Ask about "{query.trim()}"
+                    </span>
+                    <span className={styles.askDocsPromptHint}>AI-powered</span>
                   </div>
-                  <div className={styles.resultTitle}>
-                    {renderHighlight(hit._formatted?.title, hit.title)}
-                  </div>
-                  <div className={styles.resultContent}>
-                    {renderHighlight(
-                      hit._formatted?.content?.substring(0, 150),
-                      hit.content?.substring(0, 150)
-                    )}
-                    ...
-                  </div>
-                </button>
-              ))}
-            </div>
+                )}
 
-            {results.length > 0 && (
-              <div className={styles.footer}>
-                <div className={styles.footerHint}>
-                  <kbd>Enter</kbd> to select
-                  <kbd>↑</kbd><kbd>↓</kbd> to navigate
-                  <kbd>Esc</kbd> to close
+                <div className={styles.results} ref={resultsRef}>
+                  {results.length === 0 && query && !loading && (
+                    <div className={styles.noResults}>
+                      <p>No results found for "{query}"</p>
+                      <p className={styles.noResultsHint}>
+                        Try different keywords or browse the documentation
+                      </p>
+                    </div>
+                  )}
+
+                  {results.map((hit, index) => (
+                    <button
+                      key={hit.id}
+                      className={`${styles.resultItem} ${
+                        index === selectedIndex ? styles.resultItemSelected : ''
+                      }`}
+                      onClick={() => navigateToResult(hit, index)}
+                      onMouseEnter={() => setSelectedIndex(index)}
+                    >
+                      <div className={styles.resultBreadcrumb}>
+                        {hit.hierarchy_lvl0}
+                        {hit.hierarchy_lvl1 && ` > ${hit.hierarchy_lvl1}`}
+                      </div>
+                      <div className={styles.resultTitle}>
+                        {renderHighlight(hit._formatted?.title, hit.title)}
+                      </div>
+                      <div className={styles.resultContent}>
+                        {renderHighlight(
+                          hit._formatted?.content?.substring(0, 150),
+                          hit.content?.substring(0, 150)
+                        )}
+                        ...
+                      </div>
+                    </button>
+                  ))}
                 </div>
-              </div>
+
+                {results.length > 0 && (
+                  <div className={styles.footer}>
+                    <div className={styles.footerHint}>
+                      <kbd>Enter</kbd> to select
+                      <kbd>↑</kbd><kbd>↓</kbd> to navigate
+                      <kbd>Esc</kbd> to close
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+
+            {mode === 'askDocs' && (
+              <AIChatInSearch
+                initialQuery={askDocsQuery}
+                savedConversation={savedConversation}
+                onSaveConversation={setSavedConversation}
+              />
             )}
           </div>
         </div>

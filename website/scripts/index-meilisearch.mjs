@@ -3,19 +3,13 @@ import { MeiliSearch } from 'meilisearch';
 import fs from 'fs';
 import { globSync } from 'glob';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import {
+  BUILD_DIR,
+  extractFrontmatter,
+} from './shared.mjs';
 import { createHash } from 'crypto';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const MEILI_HOST = process.env.MEILI_HOST || 'http://localhost:7700';
-const MEILI_MASTER_KEY = process.env.MEILI_MASTER_KEY || 'masterKey123';
-const MEILI_INDEX_NAME = process.env.MEILI_INDEX_NAME || 'near-docs';
-const DOCS_PATH = path.resolve(__dirname, '../static');
-const BATCH_SIZE = 100;
-const TASK_TIMEOUT = 300000; // 5 minutes timeout for tasks with embedders
-
-const CATEGORY_MAP = {
+export const CATEGORY_MAP = {
   'protocol': 'Protocol',
   'chain-abstraction': 'Multi-Chain',
   'ai': 'AI & Agents',
@@ -25,19 +19,26 @@ const CATEGORY_MAP = {
   'data-infrastructure': 'Data Infrastructure',
   'tools': 'Tools',
   'api': 'API',
+  'integrations': 'Integration Examples',
+  'aurora': 'Aurora',
 };
 
+const MEILI_HOST = process.env.MEILI_HOST || 'http://localhost:7700';
+const MEILI_MASTER_KEY = process.env.MEILI_MASTER_KEY || 'masterKey123';
+const MEILI_INDEX_NAME = process.env.MEILI_INDEX_NAME || 'near-docs';
+const BATCH_SIZE = 100;
+const TASK_TIMEOUT = 300000; 
+
 function getCategoryFromPath(filePath) {
-  const relativePath = path.relative(DOCS_PATH, filePath);
+  const relativePath = path.relative(BUILD_DIR, filePath);
   const firstFolder = relativePath.split(path.sep)[0];
   return CATEGORY_MAP[firstFolder] || 'General';
 }
 
 function getHierarchy(filePath) {
-  const relativePath = path.relative(DOCS_PATH, filePath);
+  const relativePath = path.relative(BUILD_DIR, filePath);
   const parts = relativePath.split(path.sep);
 
-  // Remove file name
   parts.pop();
 
   const hierarchy = {
@@ -59,82 +60,84 @@ function getHierarchy(filePath) {
       .replace(/^\d+\s*/g, '')
       .replace(/\b\w/g, c => c.toUpperCase());
   }
-
+  
   return hierarchy;
 }
 
+function getUrlPath(filePath, frontmatter = {}) {
+  const relativePath = path.relative(BUILD_DIR, filePath);
+  const pathParts = relativePath.replace(/\\/g, '/').split('/');
+  const fileName = pathParts.pop().replace(/\.mdx?$/, '');
+
+  const docId = frontmatter.id || fileName.replace(/^\d+-/, '');
+
+  const cleanPathParts = pathParts.map(part => part.replace(/^\d+-/, ''));
+
+  let urlPath;
+
+  if (docId === 'index') {
+    urlPath = cleanPathParts.join('/');
+  } else {
+    const parentFolder = cleanPathParts[cleanPathParts.length - 1];
+    if (docId === parentFolder) {
+      urlPath = cleanPathParts.join('/');
+    } else {
+      urlPath = [...cleanPathParts, docId].join('/');
+    }
+  }
+
+  return '/' + urlPath;
+}
+
 async function indexDocuments() {
-  // console.log('Starting MeiliSearch indexation...');
-  // console.log(`Host: ${MEILI_HOST}`);
-  // console.log(`Index: ${MEILI_INDEX_NAME}`);
+  console.log('Starting MeiliSearch indexation...');
+  console.log(`Host: ${MEILI_HOST}`);
+  console.log(`Index: ${MEILI_INDEX_NAME}`);
 
-  // // Initialize client
-  // const client = new MeiliSearch({
-  //   host: MEILI_HOST,
-  //   apiKey: MEILI_MASTER_KEY,
-  // });
+  const client = new MeiliSearch({
+    host: MEILI_HOST,
+    apiKey: MEILI_MASTER_KEY,
+  });
 
-  // // Check connection
-  // try {
-  //   const health = await client.health();
-  //   console.log('MeiliSearch status:', health.status);
-  // } catch (error) {
-  //   console.error('Failed to connect to MeiliSearch:', error.message);
-  //   console.error('Make sure MeiliSearch is running at', MEILI_HOST);
-  //   process.exit(1);
-  // }
+  let index = await client.getIndex(MEILI_INDEX_NAME);
+  console.log('Using existing index:', MEILI_INDEX_NAME);
 
-  // // Get index
-  // let index;
-  // index = await client.getIndex(MEILI_INDEX_NAME);
-  // console.log('Using existing index:', MEILI_INDEX_NAME);
+  await index.updateSettings({
+    searchableAttributes: ['title', 'content', 'section', 'hierarchy_lvl0', 'hierarchy_lvl1', 'hierarchy_lvl2'],
+    filterableAttributes: ['category', 'version', 'hierarchy_lvl0'],
+    sortableAttributes: ['timestamp'],
+    rankingRules: ['words', 'typo', 'proximity', 'attribute', 'sort', 'exactness'],
+    distinctAttribute: 'path',
+    embedders: {
+      default: {
+        source: 'huggingFace',
+        model: 'sentence-transformers/all-MiniLM-L6-v2',
+        documentTemplate: '{{doc.title}} {{doc.content}}',
+      },
+    },
+  });
 
-  // // Configure index settings
-  // console.log('Configuring index settings...');
-  // await index.updateSettings({
-  //   searchableAttributes: ['title', 'content', 'section', 'hierarchy_lvl0', 'hierarchy_lvl1', 'hierarchy_lvl2'],
-  //   filterableAttributes: ['category', 'version', 'hierarchy_lvl0'],
-  //   sortableAttributes: ['timestamp'],
-  //   rankingRules: ['words', 'typo', 'proximity', 'attribute', 'sort', 'exactness'],
-  //   distinctAttribute: 'path',
-  //   embedders: {
-  //     default: {
-  //       source: 'huggingFace',
-  //       model: 'sentence-transformers/all-MiniLM-L6-v2',
-  //       documentTemplate: '{{doc.title}} {{doc.content}}',
-  //     },
-  //   },
-  // });
-
-  // Get all markdown files
-  let files = globSync('../static/**/*.md', { cwd: __dirname });
+  let files = globSync(path.join(BUILD_DIR, '**/*.md'));
   console.log(`Found ${files.length} markdown files`);
 
-  console.log(files[0]);
-  exit();
-
-  // Process files into documents
   const documents = [];
 
   for (const filePath of files) {
     try {
       const content = fs.readFileSync(filePath, 'utf-8');
       const { frontmatter, body } = extractFrontmatter(content);
-      const headings = extractHeadings(body);
-      const cleanedContent = cleanContent(body);
 
       const urlPath = getUrlPath(filePath, frontmatter);
-      const title = frontmatter.title ||
-        frontmatter.sidebar_label ||
-        headings[0] ||
-        path.basename(filePath, path.extname(filePath)).replace(/-/g, ' ');
+      const title = frontmatter.title;
 
+      // console.log(urlPath);
+      
       const hierarchy = getHierarchy(filePath);
 
       const doc = {
-        id: generateId(urlPath),
+        id: createHash('md5').update(urlPath).digest('hex').substring(0, 12),
         title,
-        content: cleanedContent, // Limit content size
+        content: body,
         path: urlPath,
         section: frontmatter.sidebar_label || title,
         category: hierarchy.lvl0,
