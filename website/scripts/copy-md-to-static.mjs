@@ -170,6 +170,54 @@ function removeImports(content) {
 }
 
 
+function convertComponentTitles(content) {
+  const openTag = /^\s*<(?:Card|ConceptCard)\b/;
+  const lines = content.split('\n');
+  const result = [];
+  let collecting = false;
+  let collected = '';
+
+  for (const line of lines) {
+    if (!collecting && openTag.test(line)) {
+      collected = line;
+      collecting = true;
+      const trimmed = line.trim();
+      if (trimmed.endsWith('>') || trimmed.endsWith('/>')) {
+        const heading = extractHeadingFromAttrs(collected);
+        result.push(heading !== null ? heading : line);
+        collecting = false;
+        collected = '';
+      }
+      continue;
+    }
+
+    if (collecting) {
+      collected += '\n' + line;
+      const trimmed = line.trim();
+      if (trimmed === '>' || trimmed === '/>') {
+        const heading = extractHeadingFromAttrs(collected);
+        result.push(heading !== null ? heading : collected);
+        collecting = false;
+        collected = '';
+      }
+      continue;
+    }
+
+    result.push(line);
+  }
+
+  return result.join('\n');
+}
+
+function extractHeadingFromAttrs(tagText) {
+  const titleMatch = tagText.match(/title=["']([^"']+)["']/);
+  if (!titleMatch) return null;
+
+  const title = titleMatch[1];
+  const hrefMatch = tagText.match(/href=["']([^"']+)["']/);
+  return hrefMatch ? `### [${title}](${hrefMatch[1]})` : `### ${title}`;
+}
+
 function stripJsx(content) {
   const names = JSX_COMPONENTS.join('|');
   const singleLineSelfClosing = new RegExp(`^\\s*<(?:${names})\\b.*/>\\s*$`);
@@ -217,16 +265,104 @@ function stripJsx(content) {
     .replace(/<\/?p>/g, '')
     .replace(/<br\s*\/?>/g, '\n')
     .replace(/<iframe\b[\s\S]*?(?:<\/iframe>|\/>)/g, '')
-    .replace(/^\s*<details>\s*$/gm, '')
-    .replace(/^\s*<\/details>\s*$/gm, '')
-    .replace(/^\s*<summary>(.*?)<\/summary>\s*$/gm, '**$1**')
-    .replace(/^\s*:::\w+.*$/gm, '')
-    .replace(/^\s*:::$/gm, '');
+    .replace(/^[ \t]*<details>[ \t]*$/gm, '')
+    .replace(/^[ \t]*<\/details>[ \t]*$/gm, '')
+    .replace(/^[ \t]*<summary>\s*(.*?)\s*<\/summary>[ \t]*$/gm, '**$1**')
+    .replace(/^[ \t]*:::\w+.*$/gm, '')
+    .replace(/^[ \t]*:::$/gm, '');
 }
 
 function removeJsxTags(content) {
   return transformOutsideCodeBlocks(content, stripJsx)
     .replace(/\n{3,}/g, '\n\n');
+}
+
+function dedentCodeBlocks(content) {
+  const lines = content.split('\n');
+  const result = [];
+  let insideCodeBlock = false;
+  let indentSize = 0;
+
+  for (const line of lines) {
+    if (!insideCodeBlock) {
+      const openMatch = line.match(/^(\s+)(```\w)/);
+      if (openMatch) {
+        indentSize = openMatch[1].length;
+        result.push(line.slice(indentSize));
+        insideCodeBlock = true;
+        continue;
+      }
+      result.push(line);
+    } else {
+      const stripped = line.length >= indentSize && line.slice(0, indentSize).trim() === ''
+        ? line.slice(indentSize)
+        : line;
+      result.push(stripped);
+      if (stripped.trimEnd() === '```') {
+        insideCodeBlock = false;
+      }
+    }
+  }
+
+  return result.join('\n');
+}
+
+function ensureCodeBlockSpacing(content) {
+  content = content.replace(/```([^\n`]+)```/g, '```\n\n$1\n\n```');
+
+  const lines = content.split('\n');
+  const result = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trimStart();
+    const isOpenFence = /^```\w/.test(trimmed);
+    const isCloseFence = line.trimEnd() === '```';
+
+    if (isOpenFence && !isCloseFence) {
+      if (result.length > 0 && result[result.length - 1].trim() !== '') {
+        result.push('');
+      }
+      result.push(line);
+    } else if (isCloseFence && !isOpenFence) {
+      result.push(line);
+      if (i + 1 < lines.length && lines[i + 1].trim() !== '') {
+        result.push('');
+      }
+    } else {
+      result.push(line);
+    }
+  }
+
+  return result.join('\n');
+}
+
+function minifyMarkdown(content) {
+  return transformOutsideCodeBlocks(content, (text) =>
+    text
+      .replace(/<!--[\s\S]*?-->/g, '')
+      .replace(/[ \t]+$/gm, '')
+  )
+    .replace(/\n{3,}/g, '\n\n')
+    .trim() + '\n';
+}
+
+function cleanFrontmatter(content) {
+  const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
+  if (!fmMatch) return content;
+
+  // 'sidebar_label'
+  const keysToRemove = new Set([
+    'hide_title',  'slug', 'hide_table_of_contents'
+  ]);
+
+  const fmLines = fmMatch[1].split('\n');
+  const cleaned = fmLines.filter(line => {
+    const keyMatch = line.match(/^(\w[\w_-]*)\s*:/);
+    return !keyMatch || !keysToRemove.has(keyMatch[1]);
+  });
+
+  return content.replace(fmMatch[0], `---\n${cleaned.join('\n')}\n---`);
 }
 
 function fixImagePaths(content) {
@@ -258,9 +394,14 @@ async function cleanContent(content, relativeFilePath) {
   let cleaned = removeImports(content);
   cleaned = await replaceTagsWithCode(cleaned, 'Github', { includeLanguage: true });
   cleaned = await replaceTagsWithCode(cleaned, 'File', { includeLanguage: true });
+  cleaned = convertComponentTitles(cleaned);
   cleaned = removeJsxTags(cleaned);
   cleaned = fixImagePaths(cleaned);
   cleaned = resolveRelativeLinks(cleaned, relativeFilePath);
+  cleaned = dedentCodeBlocks(cleaned);
+  cleaned = ensureCodeBlockSpacing(cleaned);
+  cleaned = cleanFrontmatter(cleaned);
+  cleaned = minifyMarkdown(cleaned);
   return cleaned;
 }
 
@@ -279,8 +420,8 @@ function getOutputPath(filePath, frontmatterId) {
   const dirPath = path.dirname(relativePath);
 
   // border case, for <path>/frontmatterId/frontmatterId gets transformed into <path>/frontmatterId.md instead of <path>/frontmatterId/frontmatterId.md
-  if (path.basename(filePath) === frontmatterId) {
-    return path.join(BUILD_DIR, `${frontmatterId}.md`);
+  if (path.basename(dirPath) === frontmatterId) {
+    return path.join(BUILD_DIR, path.dirname(dirPath), `${frontmatterId}.md`);
   }
 
   return path.join(BUILD_DIR, dirPath, `${frontmatterId}.md`);

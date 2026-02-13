@@ -1,15 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
-import posthog from 'posthog-js';
 import { useColorMode } from '@docusaurus/theme-common';
 import MarkdownRenderer from '../../components/AIChat/MarkdownRenderer';
-import Feedback from '../../components/AIChat/feedback';
 import styles from './styles.module.css';
+
+interface Source {
+  title: string;
+  path: string;
+}
 
 interface Message {
   id: number;
   text: string;
   sender: 'user' | 'ai';
+  sources?: Source[];
 }
 
 interface AIChatInSearchProps {
@@ -23,7 +27,8 @@ export interface SavedConversation {
   threadId: string | null;
 }
 
-const API_URL = 'https://tmp-docs-ai-service.onrender.com/api/chat';
+// const API_URL = 'http://localhost:3001/api/chatMock';
+const API_URL = 'http://localhost:3001/api/chat';
 
 const SUGGESTIONS = [
   'How do I create a NEAR account?',
@@ -40,21 +45,16 @@ export default function AIChatInSearch({
   const { colorMode } = useColorMode();
   const isDarkTheme = colorMode === 'dark';
 
-  const [messages, setMessages] = useState<Message[]>(
-    savedConversation?.messages || [],
-  );
+  const [messages, setMessages] = useState<Message[]>(savedConversation?.messages || []);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [threadId, setThreadId] = useState<string | null>(
-    savedConversation?.threadId || null,
-  );
+  const [threadId, setThreadId] = useState<string | null>(savedConversation?.threadId || null);
   const [seconds, setSeconds] = useState(1);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const hasSentInitial = useRef(false);
 
-  // Save conversation whenever messages or threadId change
   useEffect(() => {
     if (messages.length > 0 && onSaveConversation) {
       onSaveConversation({ messages, threadId });
@@ -76,11 +76,7 @@ export default function AIChatInSearch({
   }, [messages]);
 
   useEffect(() => {
-    if (
-      initialQuery.trim() &&
-      !hasSentInitial.current &&
-      !savedConversation?.messages?.length
-    ) {
+    if (initialQuery.trim() && !hasSentInitial.current && !savedConversation?.messages?.length) {
       hasSentInitial.current = true;
       sendMessage(initialQuery.trim());
     }
@@ -103,6 +99,7 @@ export default function AIChatInSearch({
         id: Date.now() + 1,
         text: response.data.message,
         sender: 'ai',
+        sources: response.data.sources,
       };
       setMessages((prev) => [...prev, aiMsg]);
       setThreadId(response.data.threadId);
@@ -126,14 +123,6 @@ export default function AIChatInSearch({
     }
   };
 
-  const handleFeedback = (choice: string) => {
-    posthog.capture('ai_chat_feedback', {
-      helpful: choice,
-      user_question: messages[messages.length - 2]?.text,
-      ai_answer: messages[messages.length - 1]?.text,
-    });
-  };
-
   const showSuggestions = messages.length === 0 && !isLoading;
 
   return (
@@ -141,9 +130,7 @@ export default function AIChatInSearch({
       <div className={styles.aiChatMessages}>
         {showSuggestions && (
           <div className={styles.aiChatSuggestions}>
-            <p className={styles.aiChatSuggestionsTitle}>
-              ✨ Ask anything about NEAR
-            </p>
+            <p className={styles.aiChatSuggestionsTitle}>✨ Ask anything about NEAR</p>
             <div className={styles.aiChatSuggestionsList}>
               {SUGGESTIONS.map((s) => (
                 <button
@@ -158,35 +145,39 @@ export default function AIChatInSearch({
           </div>
         )}
 
-        {messages.map((msg, idx) => (
-          <div
-            key={msg.id}
-            className={
-              msg.sender === 'user'
-                ? styles.aiChatUserMsg
-                : styles.aiChatAiMsg
-            }
-          >
-            {msg.sender === 'ai' ? (
-              <>
+        {messages.map((msg) => (
+          <React.Fragment key={msg.id}>
+            <div
+              className={msg.sender === 'user' ? styles.aiChatUserMsg : styles.aiChatAiMsg}
+            >
+              {msg.sender === 'ai' ? (
                 <MarkdownRenderer part={msg.text} isDarkTheme={isDarkTheme} />
-                {idx === messages.length - 1 && !isLoading && (
-                  <div className={styles.aiChatFeedback}>
-                    <Feedback handler={handleFeedback} />
-                  </div>
-                )}
-              </>
-            ) : (
-              <span>{msg.text}</span>
+              ) : (
+                <span>{msg.text}</span>
+              )}
+            </div>
+            {msg.sources && msg.sources.length > 0 && (
+              <div className={styles.aiChatSources}>
+                <span className={styles.aiChatSourcesLabel}>SOURCES:</span>
+                {msg.sources.map((source) => (
+                  <a
+                    key={source.path}
+                    href={source.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.aiChatSourceLink}
+                  >
+                    {source.title}
+                  </a>
+                ))}
+              </div>
             )}
-          </div>
+          </React.Fragment>
         ))}
 
         {isLoading && (
           <div className={styles.aiChatAiMsg}>
-            <div className={styles.aiChatThinking}>
-              Thinking... ({seconds}s)
-            </div>
+            <div className={styles.aiChatThinking}>Thinking... ({seconds}s)</div>
           </div>
         )}
         <div ref={messagesEndRef} />

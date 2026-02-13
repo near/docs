@@ -109,12 +109,12 @@ async function indexDocuments() {
     embedders: {
       default: {
         source: 'huggingFace',
-        model: 'sentence-transformers/all-MiniLM-L6-v2',
+        model: 'BAAI/bge-small-en-v1.5',
         documentTemplate: '{{doc.title}} {{doc.content}}',
       },
-    },
+    }
   });
-
+ 
   let files = globSync(path.join(BUILD_DIR, '**/*.md'));
   console.log(`Found ${files.length} markdown files`);
 
@@ -128,8 +128,6 @@ async function indexDocuments() {
       const urlPath = getUrlPath(filePath);
       const title = frontmatter.title;
 
-      // console.log(urlPath);
-      
       const hierarchy = getHierarchy(filePath);
 
       const doc = {

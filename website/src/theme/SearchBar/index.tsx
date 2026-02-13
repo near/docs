@@ -2,7 +2,11 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useHistory } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { MeiliSearch } from 'meilisearch';
-import { trackSearch, trackSearchResultClick, trackSearchNoResults } from '../../utils/searchAnalytics';
+import {
+  trackSearch,
+  trackSearchResultClick,
+  trackSearchNoResults,
+} from '../../utils/searchAnalytics';
 import { SearchIcon } from '../Icon/Search';
 import AIChatInSearch, { type SavedConversation } from './AIChatInSearch';
 import styles from './styles.module.css';
@@ -41,8 +45,6 @@ const CATEGORIES = [
   { id: 'data-infrastructure', label: 'Data Infrastructure' },
   { id: 'tools', label: 'Tools' },
   { id: 'api', label: 'API' },
-  { id: 'integrations', label: 'Integration Examples' },
-  { id: 'aurora', label: 'Aurora' },
 ];
 
 export default function SearchBar(): JSX.Element {
@@ -107,47 +109,50 @@ export default function SearchBar(): JSX.Element {
     }
   }, [isOpen]);
 
-  const search = useCallback(async (searchQuery: string, category: string) => {
-    if (!client || !searchQuery.trim()) {
-      setResults([]);
-      return;
-    }
-
-    const config = siteConfig.customFields?.meilisearch as { indexName?: string } | undefined;
-    const indexName = config?.indexName || 'near-docs';
-
-    setLoading(true);
-    try {
-      const index = client.index(indexName);
-      const filter = category !== 'all' ? `category = "${category}"` : undefined;
-
-      const searchResult: SearchResult = await index.search(searchQuery, {
-        limit: 10,
-        attributesToHighlight: ['title', 'content'],
-        highlightPreTag: '<mark>',
-        highlightPostTag: '</mark>',
-        filter,
-        hybrid: {
-          semanticRatio: 0.5, 
-          embedder: 'default'
-        },
-      });
-
-      setResults(searchResult.hits);
-      setSelectedIndex(0);
-
-      trackSearch(searchQuery, searchResult.hits.length, category);
-
-      if (searchResult.hits.length === 0) {
-        trackSearchNoResults(searchQuery);
+  const search = useCallback(
+    async (searchQuery: string, category: string) => {
+      if (!client || !searchQuery.trim()) {
+        setResults([]);
+        return;
       }
-    } catch (error) {
-      console.error('Search error:', error);
-      setResults([]);
-    } finally {
-      setLoading(false);
-    }
-  }, [client, siteConfig]);
+
+      const config = siteConfig.customFields?.meilisearch as { indexName?: string } | undefined;
+      const indexName = config?.indexName || 'near-docs';
+
+      setLoading(true);
+      try {
+        const index = client.index(indexName);
+        const filter = category !== 'all' ? `category = "${category}"` : undefined;
+
+        const searchResult: SearchResult = await index.search(searchQuery, {
+          limit: 10,
+          attributesToHighlight: ['title', 'content'],
+          highlightPreTag: '<mark>',
+          highlightPostTag: '</mark>',
+          filter,
+          hybrid: {
+            semanticRatio: 0.5,
+            embedder: 'default',
+          },
+        });
+
+        setResults(searchResult.hits);
+        setSelectedIndex(0);
+
+        trackSearch(searchQuery, searchResult.hits.length, category);
+
+        if (searchResult.hits.length === 0) {
+          trackSearchNoResults(searchQuery);
+        }
+      } catch (error) {
+        console.error('Search error:', error);
+        setResults([]);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [client, siteConfig],
+  );
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -166,10 +171,10 @@ export default function SearchBar(): JSX.Element {
     if (mode === 'askDocs') return;
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setSelectedIndex(prev => Math.min(prev + 1, results.length - 1));
+      setSelectedIndex((prev) => Math.min(prev + 1, results.length - 1));
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setSelectedIndex(prev => Math.max(prev - 1, 0));
+      setSelectedIndex((prev) => Math.max(prev - 1, 0));
     } else if (e.key === 'Enter' && results[selectedIndex]) {
       e.preventDefault();
       navigateToResult(results[selectedIndex], selectedIndex);
@@ -196,11 +201,7 @@ export default function SearchBar(): JSX.Element {
 
   return (
     <>
-      <button
-        className={styles.searchButton}
-        onClick={() => setIsOpen(true)}
-        aria-label="Search"
-      >
+      <button className={styles.searchButton} onClick={() => setIsOpen(true)} aria-label="Search">
         <SearchIcon />
         <span className={styles.searchPlaceholder}>Search</span>
         <span className={styles.searchShortcut}>
@@ -211,11 +212,7 @@ export default function SearchBar(): JSX.Element {
 
       {isOpen && (
         <div className={styles.dialogOverlay} role="dialog" aria-modal="true">
-          <div
-            className={styles.backdrop}
-            aria-hidden="true"
-            onClick={closeModal}
-          />
+          <div className={styles.backdrop} aria-hidden="true" onClick={closeModal} />
           <div className={styles.modal}>
             <div className={styles.searchHeader}>
               <SearchIcon className={styles.searchIcon} />
@@ -243,39 +240,15 @@ export default function SearchBar(): JSX.Element {
                   ✨ Ask Docs
                 </button>
               </div>
-              <button
-                className={styles.closeButton}
-                onClick={closeModal}
-              >
-                <kbd>Esc</kbd>
-              </button>
+              <button className={styles.closeButton} onClick={closeModal}></button>
             </div>
 
             {mode === 'search' && (
               <>
-                <div className={styles.categoryFilters}>
-                  {CATEGORIES.map((cat) => (
-                    <button
-                      key={cat.id}
-                      className={`${styles.categoryChip} ${
-                        selectedCategory === cat.id ? styles.categoryChipActive : ''
-                      }`}
-                      onClick={() => setSelectedCategory(cat.id)}
-                    >
-                      {cat.label}
-                    </button>
-                  ))}
-                </div>
-
                 {query.trim() && (
-                  <div
-                    className={styles.askDocsPrompt}
-                    onClick={() => switchToAskDocs()}
-                  >
+                  <div className={styles.askDocsPrompt} onClick={() => switchToAskDocs()}>
                     <span className={styles.askDocsPromptIcon}>✨</span>
-                    <span className={styles.askDocsPromptText}>
-                      Ask about "{query.trim()}"
-                    </span>
+                    <span className={styles.askDocsPromptText}>Ask about "{query.trim()}"</span>
                     <span className={styles.askDocsPromptHint}>AI-powered</span>
                   </div>
                 )}
@@ -309,7 +282,7 @@ export default function SearchBar(): JSX.Element {
                       <div className={styles.resultContent}>
                         {renderHighlight(
                           hit._formatted?.content?.substring(0, 150),
-                          hit.content?.substring(0, 150)
+                          hit.content?.substring(0, 150),
                         )}
                         ...
                       </div>
@@ -317,15 +290,21 @@ export default function SearchBar(): JSX.Element {
                   ))}
                 </div>
 
-                {results.length > 0 && (
-                  <div className={styles.footer}>
-                    <div className={styles.footerHint}>
-                      <kbd>Enter</kbd> to select
-                      <kbd>↑</kbd><kbd>↓</kbd> to navigate
-                      <kbd>Esc</kbd> to close
-                    </div>
+                <div className={styles.footer}>
+                  <div className={styles.categoryFilters}>
+                    {CATEGORIES.map((cat) => (
+                      <button
+                        key={cat.id}
+                        className={`${styles.categoryChip} ${
+                          selectedCategory === cat.id ? styles.categoryChipActive : ''
+                        }`}
+                        onClick={() => setSelectedCategory(cat.id)}
+                      >
+                        {cat.label}
+                      </button>
+                    ))}
                   </div>
-                )}
+                </div>
               </>
             )}
 

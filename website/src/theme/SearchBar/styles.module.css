@@ -164,7 +164,7 @@
 .categoryFilters {
   display: flex;
   gap: 0.5rem;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
   background: var(--ifm-color-emphasis-50);
   overflow-x: auto;
@@ -588,4 +588,32 @@
   background: var(--ifm-color-primary);
   border-color: var(--ifm-color-primary);
   color: white;
+}
+
+/* AI Chat Sources */
+.aiChatSources {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-self: flex-start;
+  padding: 0.25rem 0;
+  font-size: 0.75rem;
+}
+
+.aiChatSourcesLabel {
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-600);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.aiChatSourceLink {
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none !important;
+  font-size: 0.75rem;
+}
+
+.aiChatSourceLink:hover {
+  text-decoration: underline !important;
 }
