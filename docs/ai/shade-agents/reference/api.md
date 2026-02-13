@@ -1,524 +1,207 @@
 ---
 id: api
-title: Shade Agent API
-sidebar_label: Shade Agent API
-description: "Learn how to use the Shade Agent API."
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import {Github, Language} from "@site/src/components/UI/Codetabs"
-
-The Shade Agent API abstracts away the complexity of the TEE and interacting with the agent contract to help you build a Shade Agent quickly.
-
+title: Shade Agent API 
+sidebar_label: Shade Agent API 
+description: "Use the Shade Agent API (TypeScript/JavaScript) to connect your agent to the Shade Agent Framework"
 ---
 
 ## API Overview
 
-The API is packaged as a Docker image and included in your agent when it's uploaded to Phala Cloud. The API is accessible internally by default on port 3140, but it's not accessible from outside the TEE.
-
-When the API image boots up, it will automatically derive the agent's NEAR account (a random [implicit account](https://near-docs-pr-2740.onrender.com/protocol/account-id#implicit-address)), fund it with 0.3 NEAR from the NEAR_ACCOUNT_ID specified in the environment variables, and registers the agent in the agent contract.
-
-The API can be used in any language, but API wrappers are maintained in TypeScript/JavaScript and Python. It's recommended you develop in TypeScript as it has great synergies with [chainsig.js](../../../chain-abstraction/chain-signatures/implementation.md) for building multichain transactions.
+`shade-agent-js` is a `TypeScript/JavaScript` library that connects your agent to the Shade Agent Framework. It hides TEE complexity and simplifies calls to the agent contract. The same API works locally and inside a TEE; its behavior differs slightly by environment, but the interface stays the same.
 
 ---
 
-## Setup
+## Installation
 
-<Tabs groupId="code-tabs">
-
-  <TabItem value="typescript" label="🌐 TypeScript">
-   
-    ```bash
-    npm install @neardefi/shade-agent-js
-    ```
-   
-  </TabItem>
-
-  <TabItem value="python" label="🐍 Python">
-
-    ```bash
-    pip install shade-agent-py
-    ```
-
-  </TabItem>
-
-  <TabItem value="other-languages" label="💻 Other Languages">
-
-    You can use the Shade Agent API directly with any language that supports HTTP requests. The base API endpoints change depending on your deployment:
-
-    **Local Development:**
-    ```
-    http://localhost:3140/api/agent
-    ```
-
-    **Production (TEE):**
-    ```
-    http://shade-agent-api:3140/api/agent
-    ```
-
-    All endpoints expect `POST` requests with JSON payloads and return JSON responses.
-
-    If you're running your API on a port other than 3140, you should amend the base URL accordingly.
-
-  </TabItem>
-
-</Tabs>
+```bash
+npm install @neardefi/shade-agent-js
+```
 
 ---
 
-## Agent Account ID
+## Initializing the client
 
-Fetches the NEAR account ID of the agent.
+Sets up the client with the desired configuration.
 
-<Tabs groupId="code-tabs">
+```ts
+import { ShadeClient } from "@neardefi/shade-agent-js";
 
-  <TabItem value="typescript" label="🌐 TypeScript">
-   
-    ```ts
-    import { agentAccountId } from '@neardefi/shade-agent-js';
+const agent = await ShadeClient.create({
+  networkId: "testnet", // or "mainnet"
+  agentContractId: process.env.AGENT_CONTRACT_ID, // example-agent-contract.testnet 
+  sponsor: {
+    accountId: process.env.SPONSOR_ACCOUNT_ID, // example-sponsor.testnet
+    privateKey: process.env.SPONSOR_PRIVATE_KEY, // ed25519:4vKz...
+  },
+  rpc: provider, 
+  numKeys: 10,
+  derivationPath: process.env.SPONSOR_PRIVATE_KEY, // ed25519:4vKz...
+});
+```
 
-    const res = await agentAccountId();
-    const accountId = res.accountId
-    ```
-   
+### **Arguments**
 
-  </TabItem>
+All arguments are optional. Omitting some makes certain methods unavailable.
 
-  <TabItem value="python" label="🐍 Python">
-
-    ```py
-    from shade_agent import agent_account_id
-    
-    res = await agent_account_id()
-    account_id = res["account_id"]
-    ```
-
-  </TabItem>
-
-  <TabItem value="other-languages" label="💻 Other Languages">
-
-    **POST /getAccountId**
-
-    Request body
-    ```json
-    {}
-    ```
-
-    Response
-    ```json
-    {
-      "accountId": "14bc8ee18f2d1ef51e7d581bdd96797804c56247733defdae67ad41314686fd7"
-    }
-    ```
-
-  </TabItem>
-
-</Tabs>
+| Argument | Description |
+|----------|-------------|
+| **networkId** | The NEAR network: `mainnet` or `testnet` (defaults to testnet). |
+| **agentContractId** | The account ID of your agent contract that your agent will interact with. |
+| **sponsor** | The account details of a sponsor account to fund the agent. |
+| **rpc** | A [near-api-js provider](https://near.github.io/near-api-js/modules/providers.html) object used by the client (defaults to a basic RPC provider based on the network). |
+| **numKeys** | The number of key pairs the agent has (1–100, defaults to 1). More keys increase transaction throughput; the client rotates through them when signing transactions. |
+| **derivationPath** | A string used to derive deterministic agent account IDs when running locally. Lets you avoid re-whitelisting and re-funding the agent on each run. Use a unique secret (e.g. a private key). If two agents share the same derivation path, they get the same account ID and could control contracts they are not authorized for. |
 
 ---
 
-## Agent Info
+## Agent account ID
 
-Fetches the code hash and checksum for the agent.
-- The `code hash` is the code hash of the app image running inside the agent.
-- The `checksum` is produced by the TEEs attestation and represents that the agent is registered.
+Returns the ephemeral NEAR account ID of the agent.
 
-This function will only return the details once the agent has successfully registered in the agent contract. When running the API locally, it will only return the code hash, and not the checksum.
-
-<Tabs groupId="code-tabs">
-
-  <TabItem value="typescript" label="🌐 TypeScript">
-   
-    ```ts
-    import { agentInfo } from '@neardefi/shade-agent-js';
-
-    const res = await agentInfo();
-    const codehash = res.codehash
-    const checksum = res.checksum
-    ```
-   
-
-  </TabItem>
-
-  <TabItem value="python" label="🐍 Python">
-
-    ```py
-    from shade_agent import agent_info
-    
-    res = await agent_info()
-    codehash = res["codehash"]
-    checksum = res["checksum"]
-    ```
-
-  </TabItem>
-
-  <TabItem value="other-languages" label="💻 Other Languages">
-
-    **POST /view**
-
-    Request body
-    ```json
-    {
-      "methodName": "get_agent",
-      "args": {
-        "account_id": "14bc8ee18f2d1ef51e7d581bdd96797804c56247733defdae67ad41314686fd7"
-      }
-    }
-    ```
-
-    Response
-    ```json
-    {
-      "codehash": "03bcd36d3ffb5346c9e1e0166a4c2734a9e7cceedee6f7d992499aeb7fa54ead",
-      "checksum": "0c32c5c598bc8a3bfec47f3d7d9a9d600c8a60e5b97d90a4c2856a7c829eb6d4"
-    }
-    ```
-
-  </TabItem>
-
-</Tabs>
+```ts
+const accountId = agent.accountId();
+```
 
 ---
 
-## Agent Balance
+## Agent balance
 
-Fetches the NEAR balance of the agent's account in yoctoNEAR (1 NEAR = 10^24 yoctoNEAR).
+Returns the NEAR balance of the agent's account in human-readable units (e.g. 1 = one NEAR). If the account does not exist, returns 0.
 
-<Tabs groupId="code-tabs">
-
-  <TabItem value="typescript" label="🌐 TypeScript">
-   
-    ```ts
-    import { agent } from '@neardefi/shade-agent-js';
-
-    const res = await agent("getBalance");
-    const balance = res.balance
-    ```
-   
-
-  </TabItem>
-
-  <TabItem value="python" label="🐍 Python">
-
-    ```py
-    from shade_agent import agent
-    
-    res = await agent("getBalance")
-    balance = res["balance"]
-    ```
-
-  </TabItem>
-
-  <TabItem value="other-languages" label="💻 Other Languages">
-
-    **POST /getBalance**
-
-    Request body
-    ```json
-    {}
-    ```
-
-    Response
-    ```json
-    {
-      "balance": "203436730084671139765003"
-    }
-    ```
-
-  </TabItem>
-
-</Tabs>
+```ts
+const balance = await agent.balance();
+```
 
 ---
 
-## Request Signature
+## Fund agent
 
-Requests a signature from the Shade Agent for a multichain account (by calling request_signature on the agent contract). It has three arguments:
-- **path** - A string that decides which account the signature is for. The path can be set to anything, and by changing the path, you produce a signature for a different account.
-- **payload** - The hash of the transaction to be signed, given as a hex string.
-- **keyType** - The signature scheme being used to sign the payload `Ecdsa` (secp256k1) or `Eddsa` (ed25519).
+Transfers NEAR from the configured sponsor account to the agent's account. 
 
-It returns the signature for the transaction.
+```ts
+await agent.fund(0.3); // 0.3 NEAR
+```
 
-<Tabs groupId="code-tabs">
-
-  <TabItem value="typescript" label="🌐 TypeScript">
-   
-    ```ts
-    import { requestSignature } from '@neardefi/shade-agent-js';
-
-    const res = await requestSignature({
-      path: "ethereum-1",
-      payload: "cf80cd8a...",
-      keyType: "Ecdsa", // Or "Eddsa"
-    });
-    ```
-
-    <details>
-    <summary>Response</summary>
-
-        For `Ecdsa`, the function returns the components of the signature as hex strings. Note that to get `r`, remove the first two hex characters from `big_r`.
-
-        ```typescript
-        {
-          scheme: 'Secp256k1',
-          big_r: {
-            affine_point: '03D537AFFD52BE9AF0DA6CF41B573F4BE065434AEE2D25A500BC730C06E7EB2AF1'
-          },
-          s: {
-            scalar: '3470037EB46DC6D1921900B635785290184EC980CFEC7109EB103B5698D4F725'
-          },
-          recovery_id: 0
-        }
-        ```
-
-        For `Eddsa`, the function returns the whole signature as a 64-byte array.
-
-        ```typescript
-        {
-          scheme: 'Ed25519',
-          signature: [
-              5, 105,  30, 208, 192,  39, 154, 105, 252,  20, 132,
-              64, 247, 207, 223, 127, 197,  43,  30, 145, 164, 224,
-              1,  45, 240,  28, 155, 218, 204,   5, 136, 111, 238,
-              40, 120, 122, 249, 166, 193, 174, 120,  94, 177,  39,
-              179, 193, 170, 117,  37,  36, 155,  38,  72,  24, 118,
-              235, 187, 110, 129,  26, 186,   7,   0,   8
-          ]
-        }
-        ```
-
-        If you're using the chainsig.js library, you don't need to worry about the format of these responses since the library handles it.
-
-    </details>
-
-  </TabItem>
-
-  <TabItem value="python" label="🐍 Python">
-
-    ```py
-    from shade_agent import request_signature
-
-    res = await request_signature(
-      path="ethereum-1",
-      payload="cf80cd8a...",
-      key_type="Ecdsa", # Or "Eddsa"
-    )
-    ```
-
-    <details>
-    <summary>Response</summary>
-
-        For `Ecdsa`, the function returns the components of the signature as hex strings. Note that to get `r`, remove the first two hex characters from `big_r`.
-
-        ```python
-        {
-          'scheme': 'Secp256k1',
-          'big_r': {
-            'affine_point': '03D537AFFD52BE9AF0DA6CF41B573F4BE065434AEE2D25A500BC730C06E7EB2AF1'
-          },
-          's': {
-            'scalar': '3470037EB46DC6D1921900B635785290184EC980CFEC7109EB103B5698D4F725'
-          },
-          'recovery_id': 0
-        }
-        ```
-
-        For `Eddsa`, the function returns the whole signature as a 64-byte array.
-
-        ```python
-        {
-          'scheme': 'Ed25519',
-          'signature': [
-            5, 105,  30, 208, 192,  39, 154, 105, 252,  20, 132,
-            64, 247, 207, 223, 127, 197,  43,  30, 145, 164, 224,
-            1,  45, 240,  28, 155, 218, 204,   5, 136, 111, 238,
-            40, 120, 122, 249, 166, 193, 174, 120,  94, 177,  39,
-            179, 193, 170, 117,  37,  36, 155,  38,  72,  24, 118,
-            235, 187, 110, 129,  26, 186,   7,   0,   8
-          ]
-        }
-        ```
-
-    </details>
-
-  </TabItem>
-
-  <TabItem value="other-languages" label="💻 Other Languages">
-
-    **POST /call**
-
-    Request body
-    ```json
-    {
-      "methodName": "request_signature",
-      "args": {
-        "path": "ethereum-1",
-        "payload": "cf80cd8a...",
-        "key_type": "Ecdsa"
-      }
-    }
-    ```
-
-<details>
-  <summary>Response</summary>
-
-    For `Ecdsa`, the function returns the components of the signature as hex strings. Note that to get `r`, remove the first two hex characters from `big_r`.
-
-    ```json
-    {
-      "scheme": "Secp256k1",
-      "big_r": {
-        "affine_point": "03D537AFFD52BE9AF0DA6CF41B573F4BE065434AEE2D25A500BC730C06E7EB2AF1"
-      },
-      "s": {
-        "scalar": "3470037EB46DC6D1921900B635785290184EC980CFEC7109EB103B5698D4F725"
-      },
-      "recovery_id": 0
-    }
-    ```
-
-    For `Eddsa`, the function returns the whole signature as a 64-byte array.
-
-    ```json
-    {
-      "scheme": "Ed25519",
-      "signature": [
-        5, 105,  30, 208, 192,  39, 154, 105, 252,  20, 132,
-        64, 247, 207, 223, 127, 197,  43,  30, 145, 164, 224,
-        1,  45, 240,  28, 155, 218, 204,   5, 136, 111, 238,
-        40, 120, 122, 249, 166, 193, 174, 120,  94, 177,  39,
-        179, 193, 170, 117,  37,  36, 155,  38,  72,  24, 118,
-        235, 187, 110, 129,  26, 186,   7,   0,   8
-      ]
-    }
-    ```
-
-</details>
-
-  </TabItem>
-
-</Tabs>
+Requires sponsor in config.
 
 ---
 
-## Agent Call
+## Check whitelist
 
-Makes a function call to the agent contract from the agent. This is used for custom contracts when you want to call a function other than request_signature. It returns the result of the function call.
+Checks whether the agent's account is whitelisted for local mode.
 
-<Tabs groupId="code-tabs">
+```ts
+const whitelisted = await agent.isWhitelisted();
+```
 
-  <TabItem value="typescript" label="🌐 TypeScript">
-   
-    ```ts
-    import { agentCall } from '@neardefi/shade-agent-js';
+**TEE vs local:** 
+- TEE: Always returns `null`.
+- Local: Returns `true` if the agent is whitelisted, `false` otherwise.
 
-    const res = await agentCall({
-      methodName: "example_call_method",
-      args: {
-        arg1: "Value1",
-        arg2: "Value2",
-      },
-      gas: "30000000000000", // Optional
-    })
-    ```
-
-  </TabItem>
-
-  <TabItem value="python" label="🐍 Python">
-
-    ```py
-    from shade_agent import agent_call
-
-    res = await agent_call({
-      "methodName": "example_call_method",
-      "args": {
-        "arg1": "Value1",
-        "arg2": "Value2",
-      },
-      "gas": "30000000000000", # Optional
-    })
-    ```
-
-  </TabItem>
-
-  <TabItem value="other-languages" label="💻 Other Languages">
-
-    **POST /call**
-
-    Request body
-    ```json
-    {
-      "methodName": "example_call_method",
-      "args": {
-        "arg1": "value1",
-        "arg2": "value2"
-      },
-      "gas": "30000000000000" // Optional
-    }
-    ```
-
-  </TabItem>
-
-</Tabs>
-    
+Requires agentContractId in config.
 
 ---
 
-## Agent View
+## Register agent
 
-Makes a function call to a view method (a method that does not require gas) on the agent contract. It returns the result of the function call.
+Registers the agent's account in the agent contract. Returns `true` on success, throws on failure.
 
-<Tabs groupId="code-tabs">
+```ts
+await agent.register();
+```
 
-  <TabItem value="typescript" label="🌐 TypeScript">
-   
-    ```ts
-    import { agentView } from '@neardefi/shade-agent-js';
+**TEE vs local:** 
+- TEE: Registers with a real attestation. 
+- Local: Registers with a default fake attestation. 
 
-    const res = await agentView({
-      methodName: "example_view_method",
-      args: {
-        arg1: "value1",
-        arg2: "value2",
-      },
-    })
-    ```
+Requires agentContractId in config.
 
-  </TabItem>
+---
 
-  <TabItem value="python" label="🐍 Python">
+## Call agent contract
 
-    ```py
-    from shade_agent import agent_view
+Calls a change function on the agent contract (uses gas, can change state). Returns the call result or throws.
 
-    res = await agent_view({
-      "methodName": "example_view_method",
-      "args": {
-        "arg1": "value1",
-        "arg2": "value2",
-      },
-    })
-    ```
+```ts
+const result = await agent.call({
+  methodName: "example_call_function",
+  args: { arg1: "value1", arg2: "value2" },
+  gas: BigInt("300000000000000"), // Optional
+  deposit: "0", // Optional
+});
+```
 
-  </TabItem>
+Requires agentContractId in config.
 
-  <TabItem value="other-languages" label="💻 Other Languages">
+---
 
-    **POST /view**
+## View agent contract
 
-    Request body
-    ```json
-    {
-      "methodName": "example_view_method",
-      "args": {
-        "arg1": "value1",
-        "arg2": "value2"
-      }
-    }
-    ```
+Calls a view function on the agent contract (no gas, read-only). Returns the call result or throws.
 
-  </TabItem>
+```ts
+const result = await agent.view({
+  methodName: "example_view_function",
+  args: { arg1: "value1", arg2: "value2" },
+});
+```
 
-</Tabs>
+Requires agentContractId in config.
+
+---
+
+## Get attestation
+
+Returns the attestation in the format the agent contract expects.
+
+```ts
+const attestation = await agent.getAttestation();
+```
+
+**TEE vs local:** 
+- TEE: Returns a real attestation. 
+- Local: Returns a default fake attestation. 
+
+---
+
+## Get private keys
+
+Returns the agent's ephemeral private keys. Useful for use in other NEAR tooling (e.g. near-api-js) or for other operations like encrypting messages.
+
+:::danger
+Never log, expose, or store these keys. Doing so allows registered keys to be used outside of verified code (the keys can execute any operation not authorized by the measurements). Do not hold funds or important state with these keys — they are ephemeral and lost if the TEE reboots.
+:::
+
+```ts
+const keys = agent.getPrivateKeys({ acknowledgeRisk: true });
+```
+
+---
+
+## Utilities
+
+### Sanitize
+
+Aims to redact private keys from strings, objects, or Errors. Use before logging.
+
+```ts
+import { sanitize } from "@neardefi/shade-agent-js";
+console.error(sanitize(someError));
+```
+
+:::warning
+Sanitize redacts common key patterns, but can't catch every case or other sensitive data. Add your own sanitization where needed so no sensitive data is emitted from the TEE.
+:::
+
+### toThrowable
+
+Returns an error with a sanitized message. Use when rethrowing.
+
+```ts
+import { toThrowable } from "@neardefi/shade-agent-js";
+try {
+  await client.register();
+} catch (e) {
+  throw toThrowable(e);
+}
+```
