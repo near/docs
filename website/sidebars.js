@@ -230,9 +230,6 @@ const sidebar = {
               "Reference": [
                 "ai/shade-agents/reference/api",
                 "ai/shade-agents/reference/cli",
-                "ai/shade-agents/reference/environment-variables",
-                "ai/shade-agents/reference/custom-agent-contract",
-                "ai/shade-agents/reference/plugins",
               ]
             },
           ]

@@ -166,7 +166,7 @@ const attestation = await agent.getAttestation();
 
 ## Get private keys
 
-Returns the agent's ephemeral private keys. Useful for use in other NEAR tooling (e.g. near-api-js) or for other operations like encrypting messages.
+Returns the agent's ephemeral private keys. Useful for when wanting to use other NEAR tooling (e.g. near-api-js) or for other operations like encrypting messages.
 
 :::danger
 Never log, expose, or store these keys. Doing so allows registered keys to be used outside of verified code (the keys can execute any operation not authorized by the measurements). Do not hold funds or important state with these keys — they are ephemeral and lost if the TEE reboots.
