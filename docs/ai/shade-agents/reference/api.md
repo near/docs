@@ -112,7 +112,7 @@ await agent.register();
 
 **TEE vs local:** 
 - TEE: Registers with a real attestation. 
-- Local: Registers with a default fake attestation. 
+- Local: Registers with a mock attestation. 
 
 Requires agentContractId in config.
 
@@ -160,7 +160,7 @@ const attestation = await agent.getAttestation();
 
 **TEE vs local:** 
 - TEE: Returns a real attestation. 
-- Local: Returns a default fake attestation. 
+- Local: Returns a mock attestation. 
 
 ---
 

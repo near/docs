@@ -129,7 +129,7 @@ Placeholders in args:
 
 Placeholders in args:
 
-- `<MEASUREMENTS>` — Resolves to real calculated measurements for the application for TEE and fake default measurements for local. 
+- `<MEASUREMENTS>` — Resolves to real calculated measurements for the application for TEE and mock measurements for local. 
 
 ### approve_ppids
 
@@ -142,7 +142,7 @@ Placeholders in args:
 
 Placeholders in args:
 
-- `<PPIDS>` — Resolves to a list of all PPIDs of devices on Phala Cloud for TEE and a fake fault PPID for local.
+- `<PPIDS>` — Resolves to a list of all PPIDs of devices on Phala Cloud for TEE and a mock PPID for local.
 
 ### build_docker_image (TEE only)
 
