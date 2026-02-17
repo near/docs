@@ -254,8 +254,8 @@ The template includes an example `request_signature` function. It allows a valid
 
 You should implement your own agent-gated functions in this `your_functions.rs` file, following the same pattern: call `require_valid_agent`, then run your logic.
 
-:::tip On chain guard rails
-A key part of the Shade Agent Framework is the ability to implement on-chain guard rails. This gives protection against unauthorized actions - even if the TEE is compromised. It's strongly recommended that you build actions within the agent contract rather than in the agent itself, for example, using the [omni-transaction-rs](https://github.com/Omni-rs/omni-transaction-rs) library.
+:::tip On chain guardrails
+A key part of the Shade Agent Framework is the ability to implement on-chain guardrails. This gives protection against unauthorized actions - even if the TEE is compromised. It's strongly recommended that you build actions within the agent contract rather than in the agent itself, for example, using the [omni-transaction-rs](https://github.com/Omni-rs/omni-transaction-rs) library.
 :::
 
 ---
