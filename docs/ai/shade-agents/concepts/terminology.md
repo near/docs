@@ -11,7 +11,9 @@ Below are the main terms and concepts used in the Shade Agent Framework.
 
 ## Shade Agent Framework
 
-The Shade Agent Framework is a suite of tools for creating Web3 agents and off-chain services that are trust-minimized, decentralized and verifiable. It includes the Shade Agent API, the Shade Agent CLI and an agent contract template. The framework aims to abstract most of the underlying TEE and blockchain interactions so you can focus on building your application.
+The Shade Agent Framework is a suite of tools for creating Web3 agents and off-chain services that are trust-minimized, decentralized, and verifiable. It leverages on-chain signing to allow agents to to hold assets and sign transactions on most blockchains and implement strict guardrails to prevent unauthorized actions.
+
+It includes the Shade Agent API, the Shade Agent CLI, and an agent contract template. The framework aims to abstract most of the underlying TEE and blockchain interactions so you can focus on building your application.
 
 ---
 
@@ -23,7 +25,7 @@ A Shade Agent is an application built using the Shade Agent Framework. See the [
 
 ## Agent
 
-In the Shade Agent Framework an agent is a single instance of the off-chain code running inside a TEE (or locally in development) that uses the Shade Agent API. One agent contract can have many registered agents: they may run the same code for redundancy or different code for different tasks.
+In the Shade Agent Framework, an agent is a single instance of the off-chain code running inside a TEE (or locally in development) that uses the Shade Agent API. One agent contract can have many registered agents: they may run the same code for redundancy or different code for different tasks.
 
 ---
 
@@ -53,19 +55,19 @@ The agent contract can sign transactions for most chains via NEAR's [chain signa
 
 ## TEE
 
-A trusted execution environment is a secure part of a CPU that runs code in an isolated and protected way. Execution and state stay private, including from the host. TEEs produce attestations that prove both that code is running inside a TEE and that it is the expected code.
+A trusted execution environment is a secure part of a CPU that runs code in an isolated and protected way. Execution and state stay private, including from the host. TEEs produce cryptographic attestations that prove it's running certain code inside a genuine TEE.
 
 ---
 
 ## Local
 
-Local mode means the agent runs on your machine (or any non-TEE environment) instead of inside a TEE. There is no real attestation; and the contract uses a whitelist of allowed account IDs instead. Use local mode for development and testing only, not for production.
+Local mode means the agent runs on your machine (or any non-TEE environment) instead of inside a TEE. There is no real attestation, and the contract uses a whitelist of allowed account IDs instead. Use local mode for development and testing only, not for production.
 
 ---
 
 ## Registering an agent
 
-An agent registers with an agent contract by calling the `register_agent` method which verifies it has a valid attestation, on success the agent will be stored in the contract's state with its measurements, PPID and validity period. 
+An agent registers with an agent contract by calling the `register_agent` method, which verifies it has a valid attestation. On successful registration the agent will be stored in the contract's state with its measurements, PPID, and validity period. 
 
 ---
 
@@ -77,34 +79,34 @@ The whitelist is a set of NEAR account IDs that are allowed to register when the
 
 ## Valid agent
 
-A valid agent is one that has is registered with the agent contract and still has measurements and a PPID that are approved and its registration has not expired. Valid agents can call agent-gated methods.
+A valid agent is one that is registered with the agent contract and still has measurements and a PPID that are approved, and its registration has not expired. Valid agents can call agent-gated methods.
 
 
 ---
 
 ## Attestation
 
-An attestation is a cryptographic proof produced by a TEE that the application is running inside a genuine TEE. The agent submits its attestation when registering with the agent contract and the contract verifies that its a genuine attestation, and checks that the attestation contains a set of approved measurements and an approved PPID.
+An attestation is a cryptographic proof produced by a TEE that the application is running inside a genuine TEE. The agent submits its attestation when registering with the agent contract, and the contract verifies that it's a genuine attestation, and checks that the attestation contains a set of approved measurements and an approved PPID.
 
 ---
 
 ## Approved measurements
 
-The measurements are hashes that uniquely identify the code running in the TEE, and the platform it's running on. The agent contract stores a list of approved measurements which can be updated by the owner of the contract. There are 6 measurements: 
+The measurements are hashes that uniquely identify the code running in the TEE, and the platform it's running on. The agent contract stores a list of approved measurements, which can be updated by the owner of the contract. There are 6 measurements: 
 - **MRTD**: measures the initial setup of the trusted domain. This is constant.
 - **RTMR0**: measures the virtual hardware. This is constant for a given number of vCPUs and memory allocation.
 - **RTMR1**: measures the kernel. This is constant.
 - **RTMR2**: measures the Dstack image version. This is constant for a given Dstack image version.
-- **Key provider digest**: measures the key provider of the TEE. By default Shade Agents contain Phala's key providers but don't actually use it since it uses a local key provider. This is constant for Phala's key provider.
+- **Key provider digest**: measures the key provider of the TEE. By default, Shade Agents contain Phala's key providers but don't actually use it since it uses a chain signatures for decentralized key management instead. This is constant for Phala's key provider.
 - **App compose hash**: measures the application. This is constant for a given Docker Compose file and app layer configurations.
 
 ---
 
 ## PPID
 
-The PPID (Provisioning Platform ID) is a unique identifier of a physical TEE machine. Recent exploits to TEEs have been due to attackers having physical access to the machine, revealing that the physical location of the machine is important in TEE security. By setting approved PPIDs the agent contract can ensure that only agents running on specific machines can register. You should approve PPIDs for machines known to be located in secure data centers. By default the CLI approves all PPIDs for Phala Cloud.
+The PPID (Provisioning Platform ID) is a unique identifier of a physical TEE machine. Recent exploits of TEEs have been due to attackers having physical access to the machine, revealing that the physical location of the machine is important in TEE security. By setting approved PPIDs, the agent contract can ensure that only agents running on specific machines can register. You should approve PPIDs for machines known to be located in secure data centers. By default, the CLI approves all PPIDs for Phala Cloud.
 
-Note that on Phala Cloud two different deployments can have the same PPID if they are running on the same server since resources are virtualized.
+Note that on Phala Cloud, two different deployments can have the same PPID if they are running on the same server, since resources are virtualized.
 
 ---
 
