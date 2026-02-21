@@ -32,7 +32,6 @@ This tutorial demonstrates how key components of the Shade Agent Framework work 
 To understand this tutorial, you should have familiarity with these concepts:
 - [Shade Agents](../../getting-started/introduction.md) 
 - [NEAR Smart Contracts](../../../../smart-contracts/what-is.md)
-- [Custom Agent Contracts](../../reference/custom-agent-contract.md)
 
 ---
 

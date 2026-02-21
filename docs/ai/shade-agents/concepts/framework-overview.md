@@ -50,7 +50,7 @@ The Shade Agent CLI simplifies deploying a Shade Agent. To learn more about how 
 
 ## Environment Variables
 
-Environment variables are a crucial component of the Shade Agent Framework. They configure your Shade Agent and are passed encrypted into your agent when it goes live. To learn more about configuring environment variables in your project, please refer to the [Environment Variables page](../reference/environment-variables.md).
+Environment variables are a crucial component of the Shade Agent Framework. They configure your Shade Agent and are passed encrypted into your agent when it goes live. To learn more about configuring environment variables in your project, please refer to the Environment Variables page.
 
 ---
 
@@ -63,7 +63,7 @@ There are also cases when you should develop your own `custom agent contract`. T
 2) You want to implement a custom agent registration or code hash upgradability mechanism
 3) You want to build an agent that just interacts with the NEAR blockchain
 
-Further documentation can be found in the [custom contract section](../reference/custom-agent-contract.md).
+Further documentation can be found in the custom contract section.
 
 ---
 
@@ -122,9 +122,9 @@ You can learn more about the Docker Compose file [here](https://docs.docker.com/
 ## Next Steps
 
 Now that you have an overview of the framework, here are some great sections to explore next:
-1. Framework components: [API](../reference/api.md), [CLI](../reference/cli.md), and [Environment Variables](../reference/environment-variables.md)
-2. [Custom Contracts](../reference/custom-agent-contract.md) - build specialized agent contracts
-3. [Plugins](../reference/plugins.md) - extend your agent's capabilities
+1. Framework components: [API](../reference/api.md), [CLI](../reference/cli.md), and Environment Variables
+2. Custom Contracts - build specialized agent contracts
+3. Plugins - extend your agent's capabilities
 4. [Tutorials and Templates](../tutorials/tutorials-overview.md) - get up and running with different Shade Agent architectures, and use cases as quickly as possible and learn how to build apps in full
 4. [Security Considerations](../concepts/security.md) - check your agent abides by best practices
 

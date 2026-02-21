@@ -23,7 +23,7 @@ Please review this list of security considerations before deploying a Shade Agen
 
 ## Restricting Actions
 
-While TEEs are considered trusted and tamper-resistant, implementing tight restrictions or `guard rails` on agent actions within the agent contract is recommended so that even if the private key to a agent was extracted funds can't be withdrew.
+While TEEs are considered trusted and tamper-resistant, implementing tight restrictions or `guardrails` on agent actions within the agent contract is recommended so that even if the private key to a agent was extracted funds can't be withdrew.
 
 Examples of restrictions could be:
 - The agent contract can only build transactions for a list of functions and smart contract addresses.

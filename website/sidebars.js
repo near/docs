@@ -210,6 +210,7 @@ const sidebar = {
               "Concepts": [
                 "ai/shade-agents/concepts/framework-overview",
                 "ai/shade-agents/concepts/what-can-you-build",
+                "ai/shade-agents/concepts/terminology",
                 "ai/shade-agents/concepts/security",
               ]
             },
@@ -230,9 +231,7 @@ const sidebar = {
               "Reference": [
                 "ai/shade-agents/reference/api",
                 "ai/shade-agents/reference/cli",
-                "ai/shade-agents/reference/environment-variables",
-                "ai/shade-agents/reference/custom-agent-contract",
-                "ai/shade-agents/reference/plugins",
+                "ai/shade-agents/reference/agent-contract",
               ]
             },
           ]
