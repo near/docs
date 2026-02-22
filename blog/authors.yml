@@ -67,3 +67,11 @@ matiasbenary:
   image_url: https://github.com/matiasbenary.png
   socials:
     github: matiasbenary
+
+denbite:
+  name: denbite
+  title: DevRel
+  url: https://github.com/denbite
+  image_url: https://github.com/denbite.png
+  socials:
+    github: denbite
