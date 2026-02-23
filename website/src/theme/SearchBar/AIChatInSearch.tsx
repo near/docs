@@ -16,6 +16,11 @@ interface Message {
   sources?: Source[];
 }
 
+interface HistoryMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
 interface AIChatInSearchProps {
   initialQuery: string;
   onSaveConversation?: (data: SavedConversation) => void;
@@ -24,7 +29,6 @@ interface AIChatInSearchProps {
 
 export interface SavedConversation {
   messages: Message[];
-  threadId: string | null;
 }
 
 // const API_URL = 'http://localhost:3001/api/chatMock';
@@ -48,7 +52,6 @@ export default function AIChatInSearch({
   const [messages, setMessages] = useState<Message[]>(savedConversation?.messages || []);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [threadId, setThreadId] = useState<string | null>(savedConversation?.threadId || null);
   const [seconds, setSeconds] = useState(1);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -57,9 +60,9 @@ export default function AIChatInSearch({
 
   useEffect(() => {
     if (messages.length > 0 && onSaveConversation) {
-      onSaveConversation({ messages, threadId });
+      onSaveConversation({ messages });
     }
-  }, [messages, threadId, onSaveConversation]);
+  }, [messages, onSaveConversation]);
 
   useEffect(() => {
     let timer: ReturnType<typeof setInterval>;
@@ -89,9 +92,14 @@ export default function AIChatInSearch({
     setIsLoading(true);
 
     try {
+      const history: HistoryMessage[] = messages.map((msg) => ({
+        role: msg.sender === 'user' ? ('user' as const) : ('assistant' as const),
+        content: msg.text,
+      }));
+
       const response = await axios.post(
         API_URL,
-        { messages: text, threadId },
+        { message: text, history },
         { headers: { 'Content-Type': 'application/json' } },
       );
 
@@ -102,7 +110,6 @@ export default function AIChatInSearch({
         sources: response.data.sources,
       };
       setMessages((prev) => [...prev, aiMsg]);
-      setThreadId(response.data.threadId);
     } catch {
       const errMsg: Message = {
         id: Date.now() + 1,
