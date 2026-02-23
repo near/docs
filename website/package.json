@@ -33,6 +33,7 @@
     "serve": "^14.2.4"
   },
   "dependencies": {
+    "@ai-sdk/react": "^3.0.99",
     "@docsearch/core": "^4.5.0",
     "@docusaurus/core": "3.9.2",
     "@docusaurus/plugin-ideal-image": "3.9.2",
@@ -43,6 +44,7 @@
     "@hot-labs/near-connect": "^0.8.2",
     "@mermaid-js/layout-elk": "^0.2.0",
     "@saucelabs/theme-github-codeblock": "^0.3.0",
+    "ai": "^6.0.97",
     "axios": "^1.12.0",
     "clsx": "^1.1.1",
     "crypto-browserify": "^3.12.1",
@@ -71,6 +73,7 @@
     "typed.js": "^2.1.0",
     "url": "^0.11.4",
     "util": "^0.12.5",
-    "vm-browserify": "^1.1.2"
+    "vm-browserify": "^1.1.2",
+    "zod": "^4.3.6"
   }
 }
