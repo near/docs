@@ -54,7 +54,7 @@ function formatCodeBlock(codeData, language = '') {
 
   const codeLines = String(code).split('\n');
   const start = startMatch ? Math.max(parseInt(startMatch[1]) - 1, 0) : 0;
-  const end = endMatch ? parseInt(endMatch[1]) + 1 : codeLines.length;
+  const end = endMatch ? parseInt(endMatch[1]) : codeLines.length;
 
   const selectedCode = codeLines.slice(start, end).join('\n');
 
@@ -314,4 +314,10 @@ This documentation is organized into several main sections: Protocol fundamental
   }
 }
 
-processMarkdownFiles();
+if (require.main === module) {
+  processMarkdownFiles();
+}
+
+module.exports = {
+  formatCodeBlock,
+};
