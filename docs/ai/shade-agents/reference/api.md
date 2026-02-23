@@ -7,7 +7,7 @@ description: "Use the Shade Agent API (TypeScript/JavaScript) to connect your ag
 
 ## API Overview
 
-`shade-agent-js` is a `TypeScript/JavaScript` library that connects your agent to the Shade Agent Framework. It hides TEE complexity and simplifies calls to the agent contract. The same API works locally and inside a TEE; its behavior differs slightly by environment, but the interface stays the same.
+**Shade Agent API** is a **TypeScript/JavaScript** library that connects your agent to the Shade Agent Framework. It abstracts TEE complexity and simplifies calls to the agent contract. The same API works locally and inside a TEE; its behavior differs slightly by environment, but the interface stays the same.
 
 ---
 
@@ -19,7 +19,7 @@ npm install @neardefi/shade-agent-js
 
 ---
 
-## Initializing the client
+## Initializing the Client
 
 Sets up the client with the desired configuration.
 
@@ -45,16 +45,16 @@ All arguments are optional. Omitting some makes certain methods unavailable.
 
 | Argument | Description |
 |----------|-------------|
-| **networkId** | The NEAR network: `mainnet` or `testnet` (defaults to testnet). |
-| **agentContractId** | The account ID of your agent contract that your agent will interact with. |
-| **sponsor** | The account details of a sponsor account to fund the agent. |
-| **rpc** | A [near-api-js provider](https://near.github.io/near-api-js/modules/providers.html) object used by the client (defaults to a basic RPC provider based on the network). |
-| **numKeys** | The number of key pairs the agent has (1–100, defaults to 1). More keys increase transaction throughput; the client rotates through them when signing transactions. |
-| **derivationPath** | A string used to derive deterministic agent account IDs when running locally. Lets you avoid re-whitelisting and re-funding the agent on each run. Use a unique secret (e.g. a private key). If two agents share the same derivation path, they get the same account ID and could control contracts they are not authorized for. |
+| `networkId` | The NEAR network: `mainnet` or `testnet` (defaults to testnet). |
+| `agentContractId` | The account ID of your agent contract that your agent will interact with. |
+| `sponsor` | The account details of a sponsor account to fund the agent. |
+| `rpc` | A [near-api-js provider](https://near.github.io/near-api-js/modules/providers.html) object used by the client (defaults to a basic RPC provider based on the network). |
+| `numKeys` | The number of key pairs the agent has (1–100, defaults to 1). More keys increase transaction throughput; the client rotates through them when signing transactions. |
+| `derivationPath` | A string used to derive deterministic agent account IDs when running locally. Lets you avoid re-whitelisting and re-funding the agent on each run. Use a unique secret (e.g. a private key). If two agents share the same derivation path, they get the same account ID and could control contracts they are not authorized for. |
 
 ---
 
-## Agent account ID
+## Agent Account ID
 
 Returns the ephemeral NEAR account ID of the agent.
 
@@ -64,9 +64,9 @@ const accountId = agent.accountId();
 
 ---
 
-## Agent balance
+## Agent Balance
 
-Returns the NEAR balance of the agent's account in human-readable units (e.g. 1 = one NEAR). If the account does not exist, returns 0.
+Returns the NEAR balance of the agent's account in human-readable units (e.g. 1 = one NEAR). If the account does not exist, it returns 0.
 
 ```ts
 const balance = await agent.balance();
@@ -74,7 +74,7 @@ const balance = await agent.balance();
 
 ---
 
-## Fund agent
+## Fund Agent
 
 Transfers NEAR from the configured sponsor account to the agent's account. 
 
@@ -82,11 +82,11 @@ Transfers NEAR from the configured sponsor account to the agent's account.
 await agent.fund(0.3); // 0.3 NEAR
 ```
 
-Requires sponsor in config.
+Requires `sponsor` in config.
 
 ---
 
-## Check whitelist
+## Check Whitelist
 
 Checks whether the agent's account is whitelisted for local mode.
 
@@ -98,11 +98,11 @@ const whitelisted = await agent.isWhitelisted();
 - TEE: Always returns `null`.
 - Local: Returns `true` if the agent is whitelisted, `false` otherwise.
 
-Requires agentContractId in config.
+Requires `agentContractId` in config.
 
 ---
 
-## Register agent
+## Register Agent
 
 Registers the agent's account in the agent contract. Returns `true` on success, throws on failure.
 
@@ -114,13 +114,13 @@ await agent.register();
 - TEE: Registers with a real attestation. 
 - Local: Registers with a mock attestation. 
 
-Requires agentContractId in config.
+Requires `agentContractId` in config.
 
 ---
 
-## Call agent contract
+## Call Agent Contract
 
-Calls a change function on the agent contract (uses gas, can change state). Returns the call result or throws.
+Calls a **change function** on the agent contract (uses gas, can change state). Returns the call result or throws.
 
 ```ts
 const result = await agent.call({
@@ -131,13 +131,13 @@ const result = await agent.call({
 });
 ```
 
-Requires agentContractId in config.
+Requires `agentContractId` in config.
 
 ---
 
-## View agent contract
+## View Agent Contract
 
-Calls a view function on the agent contract (no gas, read-only). Returns the call result or throws.
+Calls a **view function** on the agent contract (no gas, read-only). Returns the call result or throws.
 
 ```ts
 const result = await agent.view({
@@ -146,11 +146,11 @@ const result = await agent.view({
 });
 ```
 
-Requires agentContractId in config.
+Requires `agentContractId` in config.
 
 ---
 
-## Get attestation
+## Get Attestation
 
 Returns the attestation in the format the agent contract expects.
 
@@ -164,7 +164,7 @@ const attestation = await agent.getAttestation();
 
 ---
 
-## Get private keys
+## Get Private Keys
 
 Returns the agent's ephemeral private keys. Useful for when wanting to use other NEAR tooling (e.g. near-api-js) or for other operations like encrypting messages.
 
@@ -180,7 +180,7 @@ const keys = agent.getPrivateKeys({ acknowledgeRisk: true });
 
 ## Utilities
 
-### Sanitize
+### sanitize
 
 Aims to redact private keys from strings, objects, or Errors. Use before logging.
 

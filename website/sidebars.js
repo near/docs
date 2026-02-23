@@ -210,6 +210,7 @@ const sidebar = {
               "Concepts": [
                 "ai/shade-agents/concepts/framework-overview",
                 "ai/shade-agents/concepts/what-can-you-build",
+                "ai/shade-agents/concepts/ai-inference",
                 "ai/shade-agents/concepts/terminology",
                 "ai/shade-agents/concepts/security",
               ]

@@ -14,7 +14,7 @@ Shade Agents are:
 
 - **Verifiable** - Agent code is known and executes as expected; no one can tamper with the agent.
 
-- **Multichain** - Can hold any crypto asset and sign transactions on any chain.
+- **Multichain** - Can hold any crypto asset and sign transactions on most chains.
 
 - **AI Powered** - Can verifiably access LLMs. 
 
@@ -47,7 +47,7 @@ Since Shade Agents can access off-chain data and APIs, they make great cheap, fl
 
 ---
 
-## Smart Contracts using LLMs
+## Smart Contracts Using LLMs
 
 Shade Agents allow you to access LLMs from a smart contract that lives on any chain. The LLM and agent are both running in a TEE, so one can verify that the response from the agent is actually from an LLM and its response is a function of the provided inputs.
 

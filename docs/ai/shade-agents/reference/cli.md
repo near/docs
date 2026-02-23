@@ -5,7 +5,7 @@ sidebar_label: Shade Agent CLI
 description: "Use the Shade Agent CLI to deploy your Shade Agent."
 ---
 
-The Shade Agent CLI makes it easy to deploy a Shade Agent. Including building and deploying your agent contract, building and publishing your agent's Docker image, and deploying the agent to Phala Cloud. The CLI revolves around a `deployment.yaml` file that configures how your Shade Agent will be deployed.
+The **Shade Agent CLI** makes it easy to deploy a Shade Agent. It includes building and deploying your agent contract, building and publishing your agent's Docker image, and deploying the agent to Phala Cloud. The CLI revolves around a `deployment.yaml` file that configures how your Shade Agent will be deployed.
 
 ---
 
@@ -21,37 +21,37 @@ npm install -g @neardefi/shade-agent-cli
 
 ### Deploy
 
-Deploys your Shade Agent with the configuration as defined by the deployment.yaml file.
+Deploys your Shade Agent with the configuration as defined by the `deployment.yaml` file.
 
 ```bash
 shade deploy
 ```
 
-Must be executed in the same directory as your deployment.yaml file.
+Must be executed in the same directory as your `deployment.yaml` file.
 
 ### Plan
 
-Generates a preview of how your Shade Agent will be deployed as defined by the deployment.yaml file.
+Generates a preview of how your Shade Agent will be deployed as defined by the `deployment.yaml` file.
 
 ```bash
 shade plan
 ```
 
-Must be executed in the same directory as your deployment.yaml file.
+Must be executed in the same directory as your `deployment.yaml` file.
 
 ### Whitelist 
 
-Whitelists a specified agent's account ID in the agent contract as defined by the deployment.yaml file. This is only relevant for local mode.
+Whitelists a specified agent's account ID in the agent contract as defined by the `deployment.yaml` file. This is only relevant for local mode.
 
 ```bash
 shade whitelist
 ```
 
-Must be executed in the same directory as your deployment.yaml file.
+Must be executed in the same directory as your `deployment.yaml` file.
 
 ### Auth
 
-Configure NEAR and Phala credentials required for deploying your Shade Agent. Must be run before using the `deploy` or `whitelist` commands.
+Configure **NEAR** and **Phala** credentials required for deploying your Shade Agent. Must be run before using the `deploy` or `whitelist` commands.
 
 ```bash
 shade auth
@@ -60,11 +60,11 @@ shade auth
 ---
 
 
-## deployment.yaml reference
+## deployment.yaml Reference
 
 CLI configurations are read from a single `deployment.yaml` file in the project root. The following sections describe what each key configures.
 
-### Top-level keys
+### Top-Level Keys
 
 | Key | Required | Description |
 |-----|----------|-------------|
@@ -74,7 +74,7 @@ CLI configurations are read from a single `deployment.yaml` file in the project 
 | **agent_contract** | Yes | Agent contract configuration. See [agent_contract](#agent_contract) for more details. |
 | **approve_measurements** | No | If enabled, sets allowed measurements in the agent contract. |
 | **approve_ppids** | No | If enabled, sets allowed PPIDs in the agent contract.|
-| **build_docker_image** | No (TEE only) | If enabled and environment is TEE, builds a new Docker image for your agent, publishes it and updates the Docker Compose with the new image.  |
+| **build_docker_image** | No (TEE only) | If enabled and environment is TEE, builds a new Docker image for your agent, publishes it, and updates the Docker Compose with the new image.  |
 | **deploy_to_phala** | No (TEE only) | If enabled and environment is TEE, deploys the Docker Compose to Phala Cloud. |
 | **whitelist_agent_for_local** | No | Config for the `shade whitelist` command to whitelist an agent's account ID whilst in local mode (not used by the shade deploy command). |
 | **os** | No | Override OS for tooling: `mac` or `linux`. If omitted, the CLI auto-detects from the current platform. |
@@ -114,7 +114,7 @@ CLI configurations are read from a single `deployment.yaml` file in the project 
 Placeholders in args:
 
 - `<REQUIRES_TEE>` — Resolves to `true` or `false` depending on `environment`.
-- `<7_DAYS>` — Resolves to 7 days in milliseconds (`604800000`).
+- `<7_DAYS>` — Resolves to 7 days in milliseconds (604800000).
 - `<MASTER_ACCOUNT_ID>` — Resolves to the NEAR account ID from `shade auth`.
 - `<DEFAULT_MPC_CONTRACT_ID>` — Resolves to the default MPC contract for the selected `network` (testnet/mainnet).
 
@@ -144,7 +144,7 @@ Placeholders in args:
 
 - `<PPIDS>` — Resolves to a list of all PPIDs of devices on Phala Cloud for TEE and a mock PPID for local.
 
-### build_docker_image (TEE only)
+### build_docker_image (TEE Only)
 
 | Key | Required | Description |
 |-----|----------|-------------|
@@ -153,7 +153,7 @@ Placeholders in args:
 | **cache** | Yes | Boolean; whether to use caching in the build process. |
 | **dockerfile_path** | Yes | Path to the Dockerfile to use for the build process (e.g. `./Dockerfile`). |
 
-### deploy_to_phala (TEE only)
+### deploy_to_phala (TEE Only)
 
 | Key | Required | Description |
 |-----|----------|-------------|
@@ -212,6 +212,6 @@ Currently, the CLI only supports measurement calculation and Phala Cloud deploym
 
 
 
-## Example deployment.yaml configurations
+## Example deployment.yaml Configurations
 
 You can view a list of [example deployment.yaml configurations here](https://github.com/NearDeFi/shade-agent-framework/tree/main/shade-agent-cli/example-deployment-files).

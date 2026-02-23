@@ -7,12 +7,15 @@ description: "A brief overview of the Verifiable AI DAO tutorial built using the
 
 import { TryDemo } from '@site/src/components/TryDemo';
 
-In this tutorial, you'll explore how to build a `fully verifiable AI DAO` using the Shade Agent Framework. The Verifiable AI DAO is a DAO smart contract that uses a Shade Agent with a verifiable LLM to vote on governance proposals according to its predefined manifesto, to create transparent, AI-driven governance that is decentralized and auditable from end-to-end.
+:::warning
+The Verifiable AI DAO tutorial uses an old version of the Shade Agent Framework, which contains known critical vulnerabilities and has a different architecture.
 
-<TryDemo 
-  url="https://verifiable-ai-dao.vercel.app/" 
-  text="Try the live demo"
-/>
+No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
+
+The tutorial will be updated to use the latest version of the Shade Agent Framework in the future.
+:::
+
+In this tutorial, you'll explore how to build a `fully verifiable AI DAO` using the Shade Agent Framework. The Verifiable AI DAO is a DAO smart contract that uses a Shade Agent with a verifiable LLM to vote on governance proposals according to its predefined manifesto, to create transparent, AI-driven governance that is decentralized and auditable from end-to-end.
 
 This tutorial also serves as a `template` for building `yield and resume-based Shade Agents`. This is a smart contract that, when called, halts its execution for the verified agent to complete some logic and resume the transaction when it has a result, enabled by NEAR's asynchronous design. This pattern allows the agent and LLM become a part of the contract, enabling smart contracts with extended capabilities of a backend server that can make API calls and use LLM inference. This is especially useful when making cross-contract calls to smart contracts that use yield and resume, allowing you to receive the result in the callback - for example, an on-demand oracle.
 
@@ -27,7 +30,7 @@ This tutorial demonstrates how key components of the Shade Agent Framework work 
 
 ---
 
-## Required knowledge 
+## Required Knowledge 
 
 To understand this tutorial, you should have familiarity with these concepts:
 - [Shade Agents](../../getting-started/introduction.md) 

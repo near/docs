@@ -9,17 +9,17 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { Github } from "@site/src/components/UI/Codetabs";
 
-The agent contract is the on-chain component of the Shade Agent Framework. It handles agent registration, measurement and PPID approval, and enforces that only valid agents can call specific methods.
+The **agent contract** is the on-chain component of the Shade Agent Framework. It handles agent registration, measurement, and PPID approval, and enforces that only valid agents can call specific methods.
 
-**suggested:** On this page you'll walk through the key components of the reference agent contract and how to implement your own agent-gated functions. You may need to change other parts of the contract depending on your use case. The full source lives in the [shade-agent-template](https://github.com/NearDeFi/shade-agent-template/tree/2.0/agent-contract) repo.
+On this page, you'll walk through the key components of the reference agent contract and how to implement your own **agent-gated functions**. You may need to change other parts of the contract depending on your use case. The full source lives in the [shade-agent-template](https://github.com/NearDeFi/shade-agent-template/tree/2.0/agent-contract) repo.
 
 ---
 
 ## Flow 
 
 High-level flow:
-- Owner deploys and initializes the contract.
-- Owner approves measurements and PPIDs.
+- The owner deploys and initializes the contract.
+- The owner approves measurements and PPIDs.
 - Each agent calls `register_agent` with a valid attestation.
 - Valid agents can then call agent-gated methods.
 
@@ -27,14 +27,13 @@ High-level flow:
 
 ## Initialization  
 
-
 The `new` method initializes the contract and takes four arguments (the CLI can initialize the contract with defaults):
-- **requires_tee**: Whether the contract runs in local or TEE mode. This switches the behavior of the contract so you can move easily between local and TEE deployments.
-- **attestation_expiration_time_ms**: How long a registration stays valid for after an agent registers.
-- **owner_id**: The account ID allowed to call owner-only methods. The owner should usually be a multisig.
-- **mpc_contract_id**: The Chain Signatures MPC contract that the agent contract will call for multichain signing.
+- **`requires_tee`**: Whether the contract runs in local or TEE mode. This switches the behavior of the contract so you can move easily between local and TEE deployments.
+- **`attestation_expiration_time_ms`**: How long a registration stays valid for after an agent registers.
+- **`owner_id`**: The account ID allowed to call owner-only methods. The owner should usually be a multisig.
+- **`mpc_contract_id`**: The Chain Signatures MPC contract that the agent contract will call for multichain signing.
 
-On initialization, the rest of the contract state is left empty.
+On initialization, the rest of the contract state is set to empty.
 
 <Github
   fname="lib.rs"
@@ -48,13 +47,13 @@ If your contract needs additional state, add it in the init method and extend th
 
 ---
 
-## Measurements, PPID, whitelist, and agent management
+## Measurements, PPID, Whitelist, and Agent Management
 
-The `owner_id` of the contract can manage the approved measurements, PPIDs, whitelist, and agents.
+The **owner** of the contract can manage the approved measurements, PPIDs, whitelist, and agents.
 
 ### Measurements
 
-The approved measurements decide what code an agent is allowed to run. The CLI will approve a set of measurements for your agent when run. You can learn more about measurements here TODO.
+The `approved_measurements` decide what code an agent is allowed to run. The CLI will approve a set of measurements for your agent when run. You can learn more about measurements [here](../concepts/terminology.md#measurements).
 
 The owner controls which measurements are approved and can add or remove them over time. A typical agent code upgrade flow is: approve a new set of measurements, allow a transition period (e.g. a week) so operators can update agents to run the new code, then remove the old measurements. 
 
@@ -68,7 +67,7 @@ The owner controls which measurements are approved and can add or remove them ov
 
 ### PPID
 
-The approved PPIDs decide which physical TEE CPUs an agent may run on. The CLI will approve a list of default PPIDs when run. You can learn more about PPID here TODO.
+The `approved_ppids` decide which physical TEE CPUs an agent may run on. The CLI will approve a list of default PPIDs when run. You can learn more about PPID [here](../concepts/terminology.md#ppid).
 
 <Github
   fname="lib.rs"
@@ -96,7 +95,7 @@ A removed agent can re-register by calling `register_agent` with a valid attesta
 
 ### Whitelist
 
-The whitelist applies only in local mode. It defines which account IDs may call agent-gated methods, since in local mode the contract cannot verify that an agent is running approved code. Use `shade whitelist` in the CLI to add an account. (Whitelisting documentation link: TODO.)
+The **whitelist** applies only in **local mode**. It defines which account IDs may call **agent-gated methods**, since in local mode, the contract cannot verify that an agent is running approved code. Use `shade whitelist` in the CLI to add an account. You can learn more about whitelisting [here](../concepts/terminology.md#whitelisted-accounts).
 
 <Github
   fname="lib.rs"
@@ -108,11 +107,11 @@ The whitelist applies only in local mode. It defines which account IDs may call 
 
 ---
 
-## Register agent
+## Register Agent
 
 Agents register by calling `register_agent`. The method checks that the agent has a valid attestation via `verify_attestation`; if it passes, the agent is stored with its measurements, PPID, and validity period (determined by `attestation_expiration_time_ms`).
 
-An agent must attach 0.005 NEAR to cover its own storage cost in the contract. If you change how much data is stored per agent, update the `STORAGE_BYTES_TO_REGISTER` constant accordingly.
+An agent must attach 0.00486 NEAR to cover its own storage cost in the contract. If you change how much data is stored per agent, update the `STORAGE_BYTES_TO_REGISTER` constant accordingly.
 
 <Github
   fname="lib.rs"
@@ -124,13 +123,13 @@ An agent must attach 0.005 NEAR to cover its own storage cost in the contract. I
 
 By default, an agent that provides a valid attestation can register. Meaning that anyone may be able to run an agent and register. Depending on your use case, you may want to add additional restrictions to an agent, for example, an allow-list of accounts, proof of a shared secret, or a limit of one agent per contract.
 
-### Verify attestation
+### Verify Attestation
 
 `verify_attestation` decides if an agent is allowed to register. Its behavior depends on whether the contract is in TEE or local mode.
 
-#### TEE mode 
+#### TEE Mode 
 
-In TEE mode (`requires_tee = true`), the method accepts the agent only if it supplies a valid attestation this is checked using the the `verify` function provided by the [shade-attestation crate](https://github.com/NearDeFi/shade-agent-framework/tree/main/shade-attestation), which takes the list of approved measurements and PPIDs, the current timestamp (in seconds), and the expected `report data`.
+In TEE mode (`requires_tee = true`), the method accepts the agent only if it supplies a valid attestation, which is checked using the `verify` function provided by the [shade-attestation crate](https://github.com/NearDeFi/shade-agent-framework/tree/main/shade-attestation), which takes the list of approved measurements and PPIDs, the current timestamp (in seconds), and the expected `report_data`.
 
 <Github
   fname="internal/attestation.rs"
@@ -140,7 +139,7 @@ In TEE mode (`requires_tee = true`), the method accepts the agent only if it sup
   end="51"
 />
 
-The attestation’s report data must contain the NEAR account ID of the agent. This binds the attestation to the same TEE where the agent’s key was created to prevent replay of valid attestations. Report data is passed as bytes.
+The attestation’s **report data** must contain the NEAR account ID of the agent. This binds the attestation to the same TEE where the agent’s key was created to prevent replay of valid attestations. Report data is passed as **bytes**.
 
 <Github
   fname="internal/attestation.rs"
@@ -150,7 +149,7 @@ The attestation’s report data must contain the NEAR account ID of the agent. T
   end="25"
 />
 
-#### Local mode 
+#### Local Mode 
 
 In local mode (`requires_tee = false`), the method approves the agent if the caller is whitelisted and the mock measurements and PPID are approved in the contract. No real attestation is verified.
 
@@ -164,7 +163,7 @@ In local mode (`requires_tee = false`), the method approves the agent if the cal
 
 ---
 
-## Require valid agent
+## Require Valid Agent
 
 You can restrict methods so only valid agents can call them using the helper `require_valid_agent`. An agent that registered earlier may no longer be valid. To gate a method: call `require_valid_agent`, and if it returns `Some(promise)`, execute the promise.
 
@@ -240,9 +239,9 @@ The promise calls `fail_on_invalid_agent`, which panics in the next block. Panic
  
 ---
 
-## Your logic
+## Your Functions
 
-The template includes an example `request_signature` function. It allows a valid agent to request a signature for a transaction payload from the MPC contract, so you can sign transactions for most chains. You can learn more about singing transactions for different chains in the [chain signatures documentation](../../../chain-abstraction/chain-signatures/implementation).
+The template includes an example `request_signature` function. It allows a **valid agent** to request a signature for a transaction payload from the MPC contract, so you can sign transactions for most chains. You can learn more about singing transactions for different chains in the [chain signatures documentation](../../../chain-abstraction/chain-signatures/implementation).
 
 <Github
     fname="your_functions.rs"
@@ -252,17 +251,17 @@ The template includes an example `request_signature` function. It allows a valid
     end="20"
 />
 
-You should implement your own agent-gated functions in this `your_functions.rs` file, following the same pattern: call `require_valid_agent`, then run your logic.
+You should implement your own **agent-gated functions** in this `your_functions.rs` file, following the same pattern: call `require_valid_agent`, then run your logic.
 
 :::tip On chain guardrails
-A key part of the Shade Agent Framework is the ability to implement on-chain guardrails. This gives protection against unauthorized actions - even if the TEE is compromised. It's strongly recommended that you build actions within the agent contract rather than in the agent itself, for example, using the [omni-transaction-rs](https://github.com/Omni-rs/omni-transaction-rs) library.
+A key part of the Shade Agent Framework is the ability to implement **on-chain guardrails**. This gives protection against unauthorized actions - even if the TEE is compromised. It's strongly recommended that you build actions within the agent contract rather than in the agent itself, for example, using the [omni-transaction-rs](https://github.com/Omni-rs/omni-transaction-rs) library.
 :::
 
 ---
 
-## Building the contract 
+## Building the Contract 
 
-Usually, you build and deploy with the Shade Agent CLI: `shade deploy`. To build the contract manually, use the following command:
+Usually, you build and deploy with the **Shade Agent CLI**: `shade deploy`. To build the contract manually, use the following command:
 
 <Tabs groupId="code-tabs">
 
@@ -285,7 +284,7 @@ Usually, you build and deploy with the Shade Agent CLI: `shade deploy`. To build
     docker run --rm -v "$(pwd)":/workspace pivortex/near-builder@sha256:cdffded38c6cff93a046171269268f99d517237fac800f58e5ad1bcd8d6e2418 cargo near build non-reproducible-wasm --no-abi
     ```
 
-    If you would like to build the image yourself you can use [this Dockerfile](https://github.com/NearDeFi/shade-agent-framework/blob/main/contract-builder/Dockerfile).
+    If you would like to build the image yourself, you can use [this Dockerfile](https://github.com/NearDeFi/shade-agent-framework/blob/main/contract-builder/Dockerfile).
 
 </TabItem>
 
@@ -297,6 +296,6 @@ The `--no-abi` flag is used to build the contract without an ABI. This is requir
 
 ---
 
-## Calling methods 
+## Calling Methods 
 
-The Shade Agent CLI calls the main contract methods when you run `shade deploy`, but it does not cover every method. For methods the CLI doesn’t support, use the [NEAR CLI](../../../tools/cli) or create scripts using the [NEAR API](../../../tools/near-api). 
+The **Shade Agent CLI** calls the main contract methods when you run `shade deploy`, but it does not cover every method. For methods the CLI doesn’t support, use the [NEAR CLI](../../../tools/cli) or create scripts using the [NEAR API](../../../tools/near-api). 
