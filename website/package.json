@@ -12,11 +12,12 @@
     "clean": "rm -rf node_modules && rm -rf package-lock.json && rm -rf build",
     "full-test": "./test-links.sh test",
     "start": "docusaurus start",
+    "serve": "docusaurus serve",
     "build": "./node_modules/.bin/docusaurus build && yarn run process-markdown",
     "build:dev": "./node_modules/.bin/docusaurus build --dev && yarn run process-markdown",
     "build:preview": "yarn run process-markdown && ./node_modules/.bin/docusaurus build --locale en && yarn run process-markdown",
-    "process-markdown": "node ./scripts/copy-md-to-static.js",
-    "meilisearch:build-index": "npm run process-markdown && node scripts/index-meilisearch.mjs",
+    "process-markdown": "node ./scripts/copy-md-to-static.mjs",
+    "meilisearch:build-index": "node scripts/index-meilisearch.mjs",
     "swizzle": "docusaurus swizzle",
     "docusaurus": "docusaurus"
   },
@@ -32,6 +33,7 @@
     "serve": "^14.2.4"
   },
   "dependencies": {
+    "@ai-sdk/react": "^3.0.99",
     "@docsearch/core": "^4.5.0",
     "@docusaurus/core": "3.9.2",
     "@docusaurus/plugin-ideal-image": "3.9.2",
@@ -42,6 +44,7 @@
     "@hot-labs/near-connect": "^0.8.2",
     "@mermaid-js/layout-elk": "^0.2.0",
     "@saucelabs/theme-github-codeblock": "^0.3.0",
+    "ai": "^6.0.97",
     "axios": "^1.12.0",
     "clsx": "^1.1.1",
     "crypto-browserify": "^3.12.1",
@@ -70,6 +73,7 @@
     "typed.js": "^2.1.0",
     "url": "^0.11.4",
     "util": "^0.12.5",
-    "vm-browserify": "^1.1.2"
+    "vm-browserify": "^1.1.2",
+    "zod": "^4.3.6"
   }
 }

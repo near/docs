@@ -16,7 +16,7 @@ NEAR is a blockchain platform designed for building scalable, user-friendly dece
 - **Account Model**: /protocol/account-model
   NEAR uses human-readable account IDs. Accounts can store smart contracts, hold tokens, and have access keys.
 
-- **Smart Contracts**: /smart-contracts/anatomy/anatomy
+- **Smart Contracts**: /smart-contracts/anatomy/basic-anatomy
   Contracts are small programs stored on accounts. Write in JavaScript, Rust, Python, or Go. Compiled to WebAssembly.
 
 - **Access Keys**: /protocol/access-keys
