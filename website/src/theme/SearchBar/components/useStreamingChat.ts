@@ -20,7 +20,7 @@ interface UseStreamingChatOptions {
   onSaveConversation?: (data: SavedConversation) => void;
 }
 
-const API_URL = 'http://localhost:3001/api/chat';
+const API_URL = 'https://docs-mcp-f18b.onrender.com/api/chat';
 
 const metadataSchema = z.object({
   sources: z.array(z.object({ title: z.string(), path: z.string() })).optional(),
