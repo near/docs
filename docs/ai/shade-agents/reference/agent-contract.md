@@ -298,4 +298,4 @@ The `--no-abi` flag is used to build the contract without an ABI. This is requir
 
 ## Calling Methods 
 
-The **Shade Agent CLI** calls the main contract methods when you run `shade deploy`, but it does not cover every method. For methods the CLI doesn’t support, use the [NEAR CLI](../../../tools/cli) or create scripts using the [NEAR API](../../../tools/near-api). 
+The **Shade Agent CLI** calls the main contract methods when you run `shade deploy`, but it does not cover every method. For methods the CLI doesn’t support, use the [NEAR CLI](../../../../tools/near-cli) or create scripts using the [NEAR API](../../../../tools/near-api). 
