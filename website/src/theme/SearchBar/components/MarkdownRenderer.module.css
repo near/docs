@@ -1,0 +1,76 @@
+/* Code Block */
+.codeBlockContainer {
+  margin: 0.75rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.codeBlockHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.375rem 0.75rem;
+}
+
+.codeBlockHeaderDark {
+  background: #21252b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.codeBlockHeaderLight {
+  background: #e0e0e0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.codeBlockLang {
+  font-size: 0.6875rem;
+  font-family: monospace;
+  text-transform: lowercase;
+  font-weight: 500;
+}
+
+.codeBlockLangDark {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.codeBlockLangLight {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.6875rem;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.copyButtonDark {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.copyButtonDark:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.copyButtonLight {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.copyButtonLight:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.copyButtonCopied {
+  color: #4ade80 !important;
+  border-color: #4ade80 !important;
+}
