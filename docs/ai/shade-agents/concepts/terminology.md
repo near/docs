@@ -17,7 +17,7 @@ It includes the **Shade Agent API**, the **Shade Agent CLI**, and an **agent con
 
 ### Shade Agent
 
-A **Shade Agent** is an application built using the Shade Agent Framework. See the [what can you build section](../getting-started/introduction.md#what-can-you-build) for some examples.
+A **Shade Agent** is an application built using the Shade Agent Framework. See [What can you build?](./what-can-you-build.md) for some examples.
 
 ### Agent
 
