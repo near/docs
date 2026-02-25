@@ -3,30 +3,40 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { ClipboardCopy, Check } from 'lucide-react';
+import clsx from 'clsx';
+import styles from './MarkdownRenderer.module.css';
 
-const CodeBlock = ({ node, inline, className, children, isDarkTheme, ...props }) => {
+const CodeBlock = ({ inline, className, children, isDarkTheme, ...props }) => {
   const match = /language-(\w+)/.exec(className || '');
+  const language = match ? match[1] : 'code';
   const codeContent = String(children).replace(/\n$/, '');
   const [isCopied, setIsCopied] = useState(false);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(codeContent);
     setIsCopied(true);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
+    setTimeout(() => setIsCopied(false), 2000);
   };
 
   return !inline && match ? (
-    <div className="code-block-container">
-      <button onClick={copyToClipboard} className={`code-copy-button ${isCopied ? 'copied' : ''}`}>
-        {isCopied ? <Check size={16} /> : <ClipboardCopy size={16} />}
-      </button>
+    <div className={styles.codeBlockContainer}>
+      <div className={clsx(styles.codeBlockHeader, isDarkTheme ? styles.codeBlockHeaderDark : styles.codeBlockHeaderLight)}>
+        <span className={clsx(styles.codeBlockLang, isDarkTheme ? styles.codeBlockLangDark : styles.codeBlockLangLight)}>
+          {language}
+        </span>
+        <button
+          onClick={copyToClipboard}
+          className={clsx(styles.copyButton, isDarkTheme ? styles.copyButtonDark : styles.copyButtonLight, isCopied && styles.copyButtonCopied)}
+        >
+          {isCopied ? <Check size={12} /> : <ClipboardCopy size={12} />}
+          <span>{isCopied ? 'Copied!' : 'Copy'}</span>
+        </button>
+      </div>
       <SyntaxHighlighter
         style={isDarkTheme ? oneDark : oneLight}
-        language={match[1]}
+        language={language}
         showLineNumbers={true}
-        // PreTag={ ({ children }) => <div>{children}</div> }
+        customStyle={{ margin: 0, borderRadius: 0, border: 'none' }}
         {...props}
       >
         {codeContent}
@@ -44,7 +54,8 @@ const MarkdownRenderer = ({ part, isDarkTheme }) => {
     <ReactMarkdown
       components={{
         code: (props) => <CodeBlock {...props} isDarkTheme={isDarkTheme} />,
-        a: ({ node, ...props }) => (
+        pre: ({ children }) => <>{children}</>,
+        a: (props) => (
           <a {...props} target="_blank" rel="noopener noreferrer">
             {props.children}
           </a>
