@@ -39,6 +39,16 @@ function initializeGleap() {
         console.warn("Blocked invalid Gleap URL:", url, e);
       }
     });
+    Gleap.registerCustomAction((customAction) => {
+      if (customAction.name === "CHAT_WITH_AI") {
+        // open the searchbar in the "ask ai" mode
+        window.dispatchEvent(
+          new CustomEvent('near-docs:open-search', {
+            detail: { mode: 'askDocs' },
+          }),
+        );
+      }
+    });
   }
 }
 

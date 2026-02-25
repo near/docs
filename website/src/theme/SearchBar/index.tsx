@@ -40,6 +40,10 @@ interface MeiliSearchConfig {
   indexName?: string;
 }
 
+type OpenSearchEventDetail = {
+  mode?: 'search' | 'askDocs';
+};
+
 const CATEGORIES = [
   { id: 'all', label: 'All' },
   { id: 'protocol', label: 'Protocol' },
@@ -95,6 +99,17 @@ export default function SearchBar(): JSX.Element {
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [closeModal]);
+
+  useEffect(() => {
+    const handleOpenSearch = (event: Event) => {
+      const customEvent = event as CustomEvent<OpenSearchEventDetail>;
+      setMode(customEvent.detail?.mode ?? 'search');
+      setIsOpen(true);
+    };
+
+    window.addEventListener('near-docs:open-search', handleOpenSearch);
+    return () => window.removeEventListener('near-docs:open-search', handleOpenSearch);
+  }, []);
 
   useEffect(() => {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 100);
