@@ -40,6 +40,10 @@ interface MeiliSearchConfig {
   indexName?: string;
 }
 
+type OpenSearchEventDetail = {
+  mode?: 'search' | 'askDocs';
+};
+
 const CATEGORIES = [
   { id: 'all', label: 'All' },
   { id: 'protocol', label: 'Protocol' },
@@ -105,8 +109,19 @@ export default function SearchBar(): JSX.Element {
       setMode('askDocs');
       setIsOpen(true);
     };
+
+    const handleOpenSearch = (event: Event) => {
+      const customEvent = event as CustomEvent<OpenSearchEventDetail>;
+      setMode(customEvent.detail?.mode ?? 'search');
+      setIsOpen(true);
+    };
+
     window.addEventListener('open-chatbot', handleOpenChatbot);
-    return () => window.removeEventListener('open-chatbot', handleOpenChatbot);
+    window.addEventListener('near-docs:open-search', handleOpenSearch);
+    return () => {
+      window.removeEventListener('open-chatbot', handleOpenChatbot);
+      window.removeEventListener('near-docs:open-search', handleOpenSearch);
+    };
   }, []);
 
   useEffect(() => {
