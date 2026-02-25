@@ -15,6 +15,11 @@ interface AIChatInSearchProps {
   onSaveConversation?: (data: SavedConversation) => void;
   onClearConversation?: () => void;
   savedConversation?: SavedConversation | null;
+  initialMessage?: string | null;
+}
+
+function getDisplayText(text: string): string {
+  return text.replace(/\n\n\[Page:[^\]]*\]$/, '').trim();
 }
 
 const SUGGESTIONS = [
@@ -29,6 +34,7 @@ export default function AIChatInSearch({
   onSaveConversation,
   onClearConversation,
   savedConversation,
+  initialMessage,
 }: AIChatInSearchProps) {
   const { colorMode } = useColorMode();
 
@@ -42,6 +48,14 @@ export default function AIChatInSearch({
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const initialMessageSentRef = useRef(false);
+
+  useEffect(() => {
+    if (initialMessage && !initialMessageSentRef.current) {
+      initialMessageSentRef.current = true;
+      sendMessage(initialMessage);
+    }
+  }, [initialMessage, sendMessage]);
 
   const prevIsLoadingRef = useRef(false);
   useEffect(() => {
@@ -113,7 +127,7 @@ export default function AIChatInSearch({
             {index > 0 && <hr className={styles.aiChatDelimiter} />}
 
             <div className={styles.aiChatRow}>
-              <p className={styles.aiChatUserQuery}>{turn.userText}</p>
+              <p className={styles.aiChatUserQuery}>{getDisplayText(turn.userText)}</p>
             </div>
 
             <hr className={styles.aiChatDelimiter} />

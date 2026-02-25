@@ -53,7 +53,7 @@
 .dialogOverlay {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 9999;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -250,6 +250,11 @@
 .categoryChipActive:hover {
   background: var(--ifm-color-primary-dark);
   transform: translateY(-1px);
+}
+
+/* Search content wrapper */
+.searchContent {
+  display: contents;
 }
 
 /* Results */
@@ -681,6 +686,114 @@
   transform: none;
 }
 
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .dialogOverlay {
+    align-items: stretch;
+    padding-top: 0;
+  }
+
+  .modal {
+    margin: 0;
+    border-radius: 0;
+    max-width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Header: fila 1 = input + X, fila 2 = toggle centrado */
+  .searchHeader {
+    flex-wrap: wrap;
+    padding: 0.875rem 1rem 0;
+    gap: 0;
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  }
+
+  .searchHeaderContent {
+    order: 1;
+    flex: 1;
+    min-height: 40px;
+  }
+
+  .closeButton {
+    order: 2;
+  }
+
+  .modeToggle {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    padding: 0.625rem 0 0.875rem;
+    background: transparent;
+  }
+
+  .modeToggleBtn {
+    flex: 1;
+    justify-content: center;
+    max-width: 160px;
+  }
+
+  /* Search content wrapper ocupa espacio restante */
+  .searchContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* Results toma todo el espacio disponible */
+  .results {
+    max-height: unset;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Footer (categorías) siempre abajo */
+  .footer {
+    flex-shrink: 0;
+  }
+
+  /* Ocultar scrollbar en categorías */
+  .categoryFilters {
+    scrollbar-width: none;
+  }
+
+  .categoryFilters::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Sugerencias centradas verticalmente */
+  .aiChatMessages {
+    flex: 1;
+    min-height: 0;
+    justify-content: center;
+  }
+
+  .aiChatSuggestions {
+    padding: 1.5rem 1rem;
+  }
+
+  .aiChatSuggestionChip {
+    width: 100%;
+    text-align: left;
+    border-radius: 12px;
+  }
+
+  .aiChatContainer {
+    height: unset;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .chatbotTrigger {
+    margin: 1rem 0 0.75rem 0;
+  }
+}
+
 /* Dark mode - AI Chat */
 [data-theme='dark'] .modeToggleBtnActive {
   background: var(--ifm-color-emphasis-300);
@@ -802,4 +915,73 @@
 
 [data-theme='dark'] .aiChatSourceLink:hover {
   background: rgba(0, 204, 163, 0.15) !important;
+}
+
+.chatbotTrigger {
+  position: sticky;
+  bottom: 1rem;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  margin: 1rem 0 0.75rem 0;
+  background: var(--ifm-background-surface-color);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.chatbotTriggerTextarea {
+  flex: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font-size: 0.9375rem;
+  color: var(--ifm-font-color-base);
+  font-family: inherit;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  min-height: 1.5rem;
+}
+
+.chatbotTriggerTextarea::placeholder {
+  color: var(--ifm-color-emphasis-500);
+}
+
+.chatbotTriggerActions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.375rem;
+}
+
+.chatbotTriggerIconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.chatbotTriggerIconBtn:hover:not(:disabled) {
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chatbotTriggerIconBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.chatbotTriggerIconBtnGreen {
+  background: var(--ifm-color-primary);
 }
