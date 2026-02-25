@@ -111,7 +111,7 @@ const FeedbackForm = () => {
                 borderRadius: '8px',
                 fontSize: '1rem',
                 transition: 'border-color 0.2s ease',
-                backgroundColor: 'var(--ifm-background-color)',
+                backgroundColor: 'var(--ifm-background-surface-color)',
               }}
             />
           </div>
@@ -136,7 +136,7 @@ const FeedbackForm = () => {
                 borderRadius: '8px',
                 fontSize: '1rem',
                 transition: 'border-color 0.2s ease',
-                backgroundColor: 'var(--ifm-background-color)',
+                backgroundColor: 'var(--ifm-background-surface-color)',
               }}
             />
           </div>
@@ -162,7 +162,7 @@ const FeedbackForm = () => {
               borderRadius: '8px',
               fontSize: '1rem',
               transition: 'border-color 0.2s ease',
-              backgroundColor: 'var(--ifm-background-color)',
+              backgroundColor: 'var(--ifm-background-surface-color)',
               cursor: 'pointer',
             }}
           >
@@ -197,7 +197,7 @@ const FeedbackForm = () => {
               fontSize: '1rem',
               resize: 'vertical',
               minHeight: '120px',
-              backgroundColor: 'var(--ifm-background-color)',
+              backgroundColor: 'var(--ifm-background-surface-color)',
             }}
           />
         </div>

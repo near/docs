@@ -27,6 +27,38 @@ const MEILI_INDEX_NAME = process.env.MEILI_INDEX_NAME || 'near-docs';
 const BATCH_SIZE = 100;
 const TASK_TIMEOUT = 300000; 
 
+async function getAllDocumentIds(index) {
+  const ids = [];
+  const pageSize = 1000;
+  let offset = 0;
+
+  while (true) {
+    const page = await index.getDocuments({
+      fields: ['id'],
+      limit: pageSize,
+      offset,
+    });
+
+    if (!page.results.length) {
+      break;
+    }
+
+    for (const doc of page.results) {
+      if (doc.id) {
+        ids.push(doc.id);
+      }
+    }
+
+    offset += page.results.length;
+
+    if (page.results.length < pageSize) {
+      break;
+    }
+  }
+
+  return ids;
+}
+
 function getCategoryFromPath(filePath) {
   const relativePath = path.relative(BUILD_DIR, filePath);
   const firstFolder = relativePath.split(path.sep)[0];
@@ -152,19 +184,34 @@ async function indexDocuments() {
 
   console.log(`Prepared ${documents.length} documents for indexing`);
 
-  // Delete all existing documents
-  console.log('Clearing existing documents...');
-  const deleteTask = await index.deleteAllDocuments();
-  await client.tasks.waitForTask(deleteTask.taskUid, { timeout: TASK_TIMEOUT });
+  const currentDocIds = new Set(documents.map((doc) => doc.id));
 
-  // Upload documents in batches
-  console.log('Uploading documents...');
+  console.log('Fetching existing indexed document IDs...');
+  const existingDocIds = await getAllDocumentIds(index);
+  console.log(`Found ${existingDocIds.length} existing indexed documents`);
+
+  // Upload documents in batches (upsert by id)
+  console.log('Uploading documents (incremental upsert)...');
   const uploadTasks = [];
   for (let i = 0; i < documents.length; i += BATCH_SIZE) {
     const batch = documents.slice(i, i + BATCH_SIZE);
     const task = await index.addDocuments(batch);
     uploadTasks.push(task.taskUid);
     console.log(`Uploaded batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(documents.length / BATCH_SIZE)} (Task: ${task.taskUid})`);
+  }
+
+  const staleDocIds = existingDocIds.filter((id) => !currentDocIds.has(id));
+
+  if (staleDocIds.length > 0) {
+    console.log(`Deleting ${staleDocIds.length} stale documents...`);
+    for (let i = 0; i < staleDocIds.length; i += BATCH_SIZE) {
+      const batch = staleDocIds.slice(i, i + BATCH_SIZE);
+      const task = await index.deleteDocuments(batch);
+      uploadTasks.push(task.taskUid);
+      console.log(`Deleted stale batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(staleDocIds.length / BATCH_SIZE)} (Task: ${task.taskUid})`);
+    }
+  } else {
+    console.log('No stale documents to delete');
   }
 
   // Wait for all indexing tasks to complete (takes longer with embedders)

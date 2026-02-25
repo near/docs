@@ -98,7 +98,7 @@ function MobileView({ props: { blocks, files, languages, language, setLanguage }
             height: '33vh',
             position: 'sticky',
             bottom: 0,
-            backgroundColor: 'var(--ifm-background-color)',
+            backgroundColor: 'var(--ifm-background-surface-color)',
           }}
         >
           <Tabs

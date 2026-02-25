@@ -86,7 +86,7 @@
   width: 100%;
   max-width: 640px;
   margin: 0 1rem;
-  background: var(--ifm-background-color);
+  background: var(--ifm-background-surface-color);
   border-radius: 12px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   overflow: hidden;
@@ -452,13 +452,13 @@
 }
 
 .modeToggleBtnActive {
-  background: var(--ifm-background-color);
+  background: var(--ifm-background-surface-color);
   color: var(--ifm-font-color-base);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .modeToggleBtnActive:hover {
-  background: var(--ifm-background-color);
+  background: var(--ifm-background-surface-color);
 }
 
 /* Ask Docs Prompt */
@@ -639,7 +639,7 @@
   font-size: 0.875rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 10px;
-  background: var(--ifm-background-color);
+  background: var(--ifm-background-surface-color);
   color: var(--ifm-font-color-base);
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -787,7 +787,7 @@
   text-decoration: none !important;
   font-size: 0.75rem;
   font-weight: 500;
-  background: var(--ifm-background-color);
+  background: var(--ifm-background-surface-color);
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 6px;
   transition: all 0.2s ease;

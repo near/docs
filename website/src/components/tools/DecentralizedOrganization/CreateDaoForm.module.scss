@@ -65,7 +65,7 @@
   padding: 0.75rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 6px;
-  background: var(--ifm-background-color);
+  background: var(--ifm-background-surface-color);
   font-size: 0.9rem;
   transition: border-color 0.2s ease;
 
@@ -91,7 +91,7 @@
   padding: 0.5rem;
   border: 2px dashed var(--ifm-color-emphasis-300);
   border-radius: 6px;
-  background: var(--ifm-background-color);
+  background: var(--ifm-background-surface-color);
   font-size: 0.9rem;
   cursor: pointer;
   transition: border-color 0.2s ease;
