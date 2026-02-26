@@ -134,7 +134,7 @@ export default function AIChatInSearch({
 
             <div className={styles.aiChatRow}>
               <div className={styles.aiChatRowContent}>
-                {turn.assistantText?.trim() ? (
+                {turn.assistantText? (
                   <div className={styles.aiChatAnswer}>
                     <MarkdownRenderer part={turn.assistantText} isDarkTheme={colorMode === 'dark'} />
                   </div>

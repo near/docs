@@ -6,7 +6,8 @@ export function FeedbackComponent() {
   const [comment, setComment] = useState('');
   const [showComment, setShowComment] = useState(false);
 
-  const handleFeedback = (type) => {
+  const handleFeedback = (event, type) => {
+    event.preventDefault();
     setFeedback(type);
     setShowComment(true);
   };
@@ -34,38 +35,40 @@ export function FeedbackComponent() {
   };
 
   if (isSubmitted) {
-    return (
+    return <>
+      <hr style={{marginBottom: "1rem"}} />
       <div className="feedback-container">
         <div className="feedback-success">
           <span className="feedback-success-icon">✓</span>
           <span>Thanks for your feedback!</span>
         </div>
       </div>
-    );
+    </>
   }
 
-  return (
+  return <>
+    <hr style={{marginBottom: "1rem"}} />
     <div className="feedback-container">
       {!showComment ? (
         <div className="feedback-question">
           <span className="feedback-text">Was this page helpful?</span>
           <div className="feedback-buttons">
-            <button 
-              className="feedback-btn feedback-btn-yes"
-              onClick={() => handleFeedback('yes')}
-              title="Yes, this was helpful"
+            <a 
+              className="feedback-btn"
+              href="#"
+              onClick={(event) => handleFeedback(event, 'yes')}
+              // title="Yes, this was helpful"
             >
-              <span className="feedback-emoji">👍</span>
-              <span>Yes</span>
-            </button>
-            <button 
-              className="feedback-btn feedback-btn-no"
-              onClick={() => handleFeedback('no')}
-              title="No, this wasn't helpful"
+              👍 Yes
+            </a>
+            <a 
+              className="feedback-btn"
+              href="#"
+              onClick={(event) => handleFeedback(event, 'no')}
+              // title="No, this wasn't helpful"
             >
-              <span className="feedback-emoji">👎</span>
-              <span>No</span>
-            </button>
+              👎 No
+            </a>
           </div>
         </div>
       ) : (
@@ -93,5 +96,5 @@ export function FeedbackComponent() {
         </div>
       )}
     </div>
-  );
+  </>;
 }

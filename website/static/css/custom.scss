@@ -661,10 +661,7 @@ video+p>em,img+p>em,img+em, .monaco+em {
 // ============================================================================
 
 .feedback-container {
-  margin: 2rem 0.8em 2rem 1.75rem;
-  padding: 1rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 8px;
+  padding: 0 1rem 1rem 1rem;
   font-size: 0.9rem;
 }
 
@@ -681,14 +678,14 @@ video+p>em,img+p>em,img+em, .monaco+em {
 }
 
 .feedback-btn {
-  padding: 0.375rem 0.75rem;
+  padding: 0.1rem 0.75rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 6px;
-  background-color: var(--ifm-background-surface-color);
   color: var(--ifm-color-content);
   font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-decoration: none;
 }
 
 .feedback-btn:hover {

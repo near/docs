@@ -790,8 +790,7 @@
   }
 
   .chatbotTrigger {
-    margin: 1rem 0 0.75rem 0;
-    width: 82%;
+    margin: 0 auto;
   }
 }
 
@@ -920,36 +919,44 @@
 
 .chatbotTrigger {
   position: sticky;
-  bottom: 1rem;
-  z-index: 10;
+  bottom: 2rem;
   display: flex;
-  align-items: flex-end;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  margin: 1rem 0 0.75rem 0;
-  background: var(--ifm-background-surface-color);
-  border-radius: 12px;
-  backdrop-filter: blur(8px);
+  padding: .5rem .8rem;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: var(--ifm-background-surface-color);
   border: 1px solid var(--ifm-color-emphasis-200);
+  width: 100%;
+  max-width: 100%;
+  transition: max-width 0.2s ease;
+}
+
+.chatbotTriggerStuck {
+  max-width: 60%;
 }
 
 .chatbotTriggerTextarea {
   flex: 1;
   border: none;
   outline: none;
-  resize: none;
+  backdrop-filter: blur(4px);
   background: transparent;
+  resize: none;
   font-size: 0.9375rem;
-  color: var(--ifm-font-color-base);
   font-family: inherit;
   line-height: 1.5;
   padding: 0;
   margin: 0;
-  min-height: 1.5rem;
+  max-height: 1.5rem;
 }
 
 .chatbotTriggerTextarea::placeholder {
   color: var(--ifm-color-emphasis-500);
+}
+
+[data-theme='light'] .chatbotTriggerTextarea::placeholder {
+  color: var(--ifm-color-emphasis-700);
+  opacity: 1;
 }
 
 .chatbotTriggerActions {
@@ -963,8 +970,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border: none;
   border-radius: 50%;
   cursor: pointer;
