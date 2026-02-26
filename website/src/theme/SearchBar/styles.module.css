@@ -919,7 +919,7 @@
 
 .chatbotTrigger {
   position: sticky;
-  bottom: 2rem;
+  bottom: 3.5rem;
   display: flex;
   padding: .5rem .8rem;
   margin: 0 auto;
