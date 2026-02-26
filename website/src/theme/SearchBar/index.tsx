@@ -70,6 +70,7 @@ export default function SearchBar(): JSX.Element {
   const [client, setClient] = useState<MeiliSearch | null>(null);
   const [mode, setMode] = useState<'search' | 'askDocs'>('search');
   const [savedConversation, setSavedConversation] = useState<SavedConversation | null>(null);
+  const [pendingMessage, setPendingMessage] = useState<string | null>(null);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
@@ -85,6 +86,7 @@ export default function SearchBar(): JSX.Element {
     setIsOpen(false);
     setQuery('');
     setMode('search');
+    setPendingMessage(null);
   }, []);
 
   useEffect(() => {
@@ -101,14 +103,25 @@ export default function SearchBar(): JSX.Element {
   }, [closeModal]);
 
   useEffect(() => {
+    const handleOpenChatbot = (e: Event) => {
+      const { message } = (e as CustomEvent<{ message: string }>).detail;
+      setPendingMessage(message);
+      setMode('askDocs');
+      setIsOpen(true);
+    };
+
     const handleOpenSearch = (event: Event) => {
       const customEvent = event as CustomEvent<OpenSearchEventDetail>;
       setMode(customEvent.detail?.mode ?? 'search');
       setIsOpen(true);
     };
 
+    window.addEventListener('open-chatbot', handleOpenChatbot);
     window.addEventListener('near-docs:open-search', handleOpenSearch);
-    return () => window.removeEventListener('near-docs:open-search', handleOpenSearch);
+    return () => {
+      window.removeEventListener('open-chatbot', handleOpenChatbot);
+      window.removeEventListener('near-docs:open-search', handleOpenSearch);
+    };
   }, []);
 
   useEffect(() => {
@@ -251,7 +264,7 @@ export default function SearchBar(): JSX.Element {
             </div>
 
             {mode === 'search' && (
-              <>
+              <div className={styles.searchContent}>
                 <div className={styles.results} ref={resultsRef}>
                   {results.length === 0 && query && !loading && (
                     <div className={styles.noResults}>
@@ -300,7 +313,7 @@ export default function SearchBar(): JSX.Element {
                     ))}
                   </div>
                 </div>
-              </>
+              </div>
             )}
 
             {mode === 'askDocs' && (
@@ -308,6 +321,7 @@ export default function SearchBar(): JSX.Element {
                 savedConversation={savedConversation}
                 onSaveConversation={setSavedConversation}
                 onClearConversation={() => setSavedConversation(null)}
+                initialMessage={pendingMessage}
               />
             )}
           </div>

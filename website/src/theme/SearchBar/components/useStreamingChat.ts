@@ -21,6 +21,8 @@ interface UseStreamingChatOptions {
 }
 
 const API_URL = 'https://docs-mcp-f18b.onrender.com/api/chat';
+// const API_URL = 'http://localhost:3001/api/chat';
+// const API_URL = 'http://localhost:3001/api/chat/mock';
 
 const metadataSchema = z.object({
   sources: z.array(z.object({ title: z.string(), path: z.string() })).optional(),
@@ -30,7 +32,7 @@ export function extractMessageText(message: ChatUIMessage): string {
   return message.parts
     .filter((p): p is { type: 'text'; text: string } => p.type === 'text')
     .map((p) => p.text)
-    .join('');
+    .join('\n\n');
 }
 
 export function useStreamingChat({ savedConversation, onSaveConversation }: UseStreamingChatOptions) {

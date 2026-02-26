@@ -15,6 +15,7 @@ import styles from './styles.module.css';
 
 
 import { FeedbackComponent } from '../../../components/FeedbackComponent';
+import ChatbotTrigger from '../../SearchBar/components/ChatbotTrigger';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -57,6 +58,7 @@ export default function DocItemLayout({ children }) {
             <DocItemContent>{children}</DocItemContent>
           </article>
           {!isMain && <>
+            <ChatbotTrigger />
             <FeedbackComponent />
             <DocItemPaginator />
             <DocItemFooter />
