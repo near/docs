@@ -34,7 +34,7 @@ The client is initialized with the following arguments:
 - `networkId` is set to `testnet` since the agent contract was deployed to testnet.
 - `agentContractId` is set to the agent contract ID and is fetched from the environment variables.
 - `sponsor` is set to the sponsor account details from the environment variables. It is used later to fund the agent.
-- `derivationPath` is set to the sponsor's private key from the environment variables. For local deployment, this derives a deterministic account ID for the agent, making testing easier (for TEE deployment, this does nothing as ignored). The derivation path needs to be random and private; a private key fulfils this criterion well.
+- `derivationPath` is set to the sponsor's private key from the environment variables. For local deployment, this derives a deterministic account ID for the agent, making testing easier (for TEE deployment, this does nothing as ignored). The derivation path needs to be random and private; a private key fulfills this criterion well.
 
 <Github fname="index.ts" language="TypeScript"
     url="https://github.com/NearDeFi/shade-agent-template/blob/2.0/src/index.ts#L36-L46"
