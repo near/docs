@@ -6,13 +6,11 @@ description: "Learn how to deploy the Verifiable AI DAO Shade Agent which includ
 ---
 
 :::warning
-The Shade Agent Framework is experimental and contains known critical vulnerabilities.
-
-It must not be used in production or on mainnet and is intended solely for testing and non-critical use on testnet.
+The Verifiable AI DAO tutorial uses an old version of the Shade Agent Framework, which contains known critical vulnerabilities and has a different architecture.
 
 No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
 
-A production-ready version of the framework is currently in development.
+The tutorial will be updated to use the latest version of the Shade Agent Framework in the future.
 :::
 
 import Tabs from '@theme/Tabs';

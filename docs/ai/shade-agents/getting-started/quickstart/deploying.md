@@ -5,24 +5,20 @@ sidebar_label: Deploying an Agent
 description: "Learn how to quickly deploy your first Shade Agent."
 ---
 
-:::warning
-The Shade Agent Framework is experimental and contains known critical vulnerabilities.
-
-It must not be used in production or on mainnet and is intended solely for testing and non-critical use on testnet.
-
-No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
-
-A production-ready version of the framework is currently in development.
-:::
-
 import { TryDemo } from '@site/src/components/TryDemo';
 import { SigsSupport } from '@site/src/components/sigsSupport';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this section, we'll walk you through deploying a Shade Agent. The Shade Agent Framework abstracts the complexities of creating a agent by removing TEE specific code and handling the deployment of the agent contract under hood.
+:::warning
+The Shade Agent Framework has not yet undergone a formal audit.
 
-The [template](https://github.com/NearDeFi/shade-agent-template) we're using is a simple Shade Agent built with Hono and written in TypeScript that acts as a verifiable ETH price oracle. It fetches the price of Eth from two different APIs, takes the average, and then pushes the price to an Ethereum contract. 
+No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
+:::
+
+In this section, we'll walk you through **deploying** a Shade Agent.
+
+The [template](https://github.com/NearDeFi/shade-agent-template) we're using is a simple Shade Agent built with Hono and written in **TypeScript** that acts as a verifiable ETH price oracle. It fetches the price of Eth from two different APIs, takes the average, and then pushes the price to an Ethereum contract. 
 
 <TryDemo 
   url="https://shade-agent-template-woad.vercel.app/" 
@@ -33,59 +29,60 @@ We'll cover two deployment scenarios:
 1. **Local Development**: Running the agent locally for rapid testing and development.
 2. **TEE Deployment**: Running the agent in a real Trusted Execution Environment (TEE).
 
-On the [next page](./components.md), you'll see how to edit this agent for your specific use case.
+On the [next page](./components.md), you'll see how the key components of the agent work and how to edit this agent for your specific use case.
 
 ---
 
 ## Prerequisites
 
-- Install NEAR and Shade Agent tooling:
+- Install the **Shade Agent CLI**:
 
   ```bash
-  # Install the NEAR CLI
-  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
-
-  # Install the Shade Agent CLI
   npm i -g @neardefi/shade-agent-cli
   ```
 
-- Create a `NEAR testnet account` and record the account name and `seed phrase`:
+- Set up **Docker** if you have not already:
 
-  ```bash
-  export ACCOUNT_ID=example-name.testnet
-  near account create-account sponsor-by-faucet-service $ACCOUNT_ID autogenerate-new-keypair save-to-keychain network-config testnet create
-  ```
+  - **Install** Docker for [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) or [Linux](https://docs.docker.com/desktop/setup/install/linux/) and create an account.
 
-  replacing `example-name.testnet` with a unique account Id.
+  - **Log in** to Docker, using `docker login` for Mac or `sudo docker login` for Linux.
 
-- Set up Docker if you have not already:
-
-  - Install Docker for [Mac](https://docs.docker.com/desktop/setup/install/mac-install/) or [Linux](https://docs.docker.com/desktop/setup/install/linux/) and create an account.
-
-  - Log in to Docker, using `docker login` for Mac or `sudo docker login` for Linux.
-
-- Set up a free Phala Cloud account at https://cloud.phala.network/register, then get an API key from https://cloud.phala.network/dashboard/tokens.
+- Set up a free **Phala Cloud** account at https://cloud.phala.network/register, then get an API key from https://cloud.phala.network/dashboard/tokens.
 
 <details>
 
 <summary> What is a Phala Cloud </summary>
 
-Phala Cloud is a cloud service that supports hosting applications in a TEE. It makes it easy to run an agent in TEE.
+Phala Cloud is a cloud service that supports hosting applications in TEEs. It makes it easy to run an agent in TEE.
 
 </details>
 
 ---
 
-## Set up
+## Set Up
 
-- First, `clone` the [template](https://github.com/NearDeFi/shade-agent-template).
+- First, **clone** the [template](https://github.com/NearDeFi/shade-agent-template):
 
   ```bash
   git clone https://github.com/NearDeFi/shade-agent-template
   cd shade-agent-template
   ```
 
-- Rename the `.env.development.local.example` file name to `.env.development.local` and configure your environment variables.
+- Set up **NEAR** and **Phala** credentials in the CLI:
+
+  ```bash
+  shade auth set all testnet create-new
+  ```
+
+- Set a unique `agent_contract.contract_id` (e.g. example-contract-123.testnet) and fill in your `build_docker_image.tag` (e.g. pivortex/my-first-agent) in the `deployment.yaml` file.
+
+- Create a `.env` file and configure your environment variables.
+
+```env
+AGENT_CONTRACT_ID= Set this to the agent contract ID you set in the deployment.yaml file
+SPONSOR_ACCOUNT_ID= Set this to the NEAR account ID generated by the CLI
+SPONSOR_PRIVATE_KEY= Set this to the private key generated by the CLI
+```
 
 - Start up Docker:
 
@@ -111,7 +108,7 @@ Phala Cloud is a cloud service that supports hosting applications in a TEE. It m
 
   </Tabs>
 
-- Install dependencies 
+- Install dependencies: 
 
   ```bash
   npm i
@@ -121,17 +118,17 @@ Phala Cloud is a cloud service that supports hosting applications in a TEE. It m
 
 ## Local Development
 
-- Make sure the `NEXT_PUBLIC_contractId` prefix is set to `ac-proxy.` followed by your NEAR accountId.
+- Make sure `environment` is set to `local` in the `deployment.yaml` file.
 
 - In one terminal, run the Shade Agent CLI:
 
   ```bash
-  shade-agent-cli
+  shade deploy
   ```
 
-  The CLI on Linux may prompt you to enter your `sudo password`. 
+  On Linux, the CLI may prompt you to enter your **sudo password**. 
 
-- In another terminal, start your app:
+- Then, start your app:
 
   ```bash
   npm run dev
@@ -139,47 +136,55 @@ Phala Cloud is a cloud service that supports hosting applications in a TEE. It m
 
   Your app will start on http://localhost:3000
 
+- Lastly, you need to **whitelist** the agent in the agent contract (only needed for local development). In another terminal, run:
+
+  ```bash
+  shade whitelist 
+  ```
+  
+  Enter the agent account ID displayed when starting the app.
+
 ---
 
 ## TEE Deployment
 
-- Change the `NEXT_PUBLIC_contractId` prefix to `ac-sandbox.` followed by your NEAR accountId.
+- Change the `environment` to `TEE` in the `deployment.yaml` file.
 
 - Run the Shade Agent CLI
 
   ```bash
-  shade-agent-cli
+  shade deploy
   ```
 
-  The CLI on Linux may prompt you to enter your `sudo password`.
+  The CLI on Linux may prompt you to enter your **sudo password**.
 
-  The last `URL` the CLI outputs is the URL of your app. If your application is not working, head over to your App on the Phala Dashboard and review the logs.
+The CLI will output the URL of your app.
 
-  After deploying to Phala Cloud, monitor your deployments and delete unused ones to avoid unnecessary costs. You can manage your deployments from the[dashboard](https://cloud.phala.network/dashboard).
+After deploying to Phala Cloud, monitor your deployments and delete unused ones to avoid unnecessary costs. You can manage your deployments from the[dashboard](https://cloud.phala.network/dashboard).
 
 ---
 
 ## Interacting with the Agent
 
-You can interact with your agent via the APIs directly or via a lightweight frontend contained in this repo.
+You can interact with your agent via the APIs directly or via the frontend contained in this repo.
 
 ### Direct
 
 For Phala deployments, swap localhost:3000 for your deployment URL.
 
-- Get the Agent account ID and its balance:
+- Get information about the agent:
 
   ```
-  http://localhost:3000/api/agent-account
+  http://localhost:3000/api/agent-info
   ```
 
 - Get the derived Ethereum Sepolia price pusher account ID and its balance (you will need to fund this account):
 
   ```
-  http://localhost:3000/api/eth-account
+  http://localhost:3000/api/eth-info
   ```
 
-- Send a transaction through the agent to update the price of Eth:
+- Request the agent to update the price of Eth:
 
   ```
   http://localhost:3000/api/transaction
@@ -195,7 +200,9 @@ npm i
 npm run dev
 ```
 
-To use the frontend with your Phala deployment change the `API_URL` to Phala URL in your [config.js](https://github.com/NearDeFi/shade-agent-template/blob/main/frontend/src/config.js) file.
+To use the frontend with your Phala deployment, change the `API_URL` to the Phala URL in your [config.js](https://github.com/NearDeFi/shade-agent-template/blob/main/frontend/src/config.js) file.
+
+In the frontend, you can review the approved **measurements** and **PPID** in the contract and details of the registered agents.
 
 --- 
 

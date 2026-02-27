@@ -41,11 +41,6 @@ The Quickstart provides a basic template for building your first multichain Shad
 
 Explore the [Verifiable AI DAO docs](./ai-dao/overview.md)
 
-<TryDemo 
-  url="https://verifiable-ai-dao.vercel.app/" 
-  text="Try the live demo"
-/>
-
 ### Summary
 
 The Verifiable AI DAO is a DAO smart contract that uses a Shade Agent with a verifiable LLM to vote on governance proposals according to its predefined manifesto, ensuring transparent and auditable AI-driven governance decisions.
