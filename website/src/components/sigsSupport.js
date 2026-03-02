@@ -34,7 +34,7 @@ export function SigsSupport() {
           </a>
           <span className="link-divider">|</span>
           <a 
-            href="https://t.me/shadeagents" 
+            href="https://t.me/+mrNSq_0tp4IyNzg8" 
             target="_blank" 
             rel="noopener noreferrer"
           >

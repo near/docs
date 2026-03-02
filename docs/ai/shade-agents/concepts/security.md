@@ -2,105 +2,111 @@
 id: security
 title: Security Considerations
 sidebar_label: Security Considerations
-description: "Learn key security practices when deploying Shade Agents, including duplicate actions, transaction restrictions, and RPC trust."
+description: "Learn key security practices when deploying Shade Agents, including preventing duplicate actions, handling failed or unsent transactions, restricting API routes, removing agent contract keys, removing local deployment, approved measurements limits, public logs, storing agent keys, public PPIDs, fixed Docker images, trusting RPCs, and verifying the state."
 ---
-
-:::warning
-The Shade Agent Framework is experimental and contains known critical vulnerabilities.
-
-It must not be used in production or on mainnet and is intended solely for testing and non-critical use on testnet.
-
-No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
-
-A production-ready version of the framework is currently in development.
-:::
 
 import { SigsSupport } from '@site/src/components/sigsSupport';
 
-Please review this list of security considerations before deploying a Shade Agent to Mainnet.
+:::warning
+The Shade Agent Framework has not yet undergone a formal audit.
+
+No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
+:::
 
 ---
 
 ## Restricting Actions
 
-While TEEs are considered trusted and tamper-resistant, implementing tight restrictions or `guard rails` on agent actions within the agent contract is recommended so that even if the private key to a agent was extracted funds can't be withdrew.
-
-Examples of restrictions could be:
-- The agent contract can only build transactions for a list of functions and smart contract addresses.
-- The agent contract can only build transactions for specific chains.
-- The agent contract can only build transactions that swap or send up to 0.1 ETH per 24 hours.
-
-We recommend using the [omni-transactions-rs](https://github.com/near/omni-transaction-rs) library to build transactions within your agent contract rather than in the agent.
-
-Another solution is for the Shade Agent's multichain accounts to not hold funds themselves, but the accounts to be a restricted admin on a contract on the target chain.
+While TEEs are considered trusted and tamper-resistant, implementing tight restrictions or **guardrails** on agent actions within the agent contract is recommended so that even in the event a TEE is compromised and the private key to an agent is extracted, funds can't be withdrawn. You can read more about guardrails [here](terminology.md#on-chain-guardrails).
 
 ---
 
-## Secure Data Centers
+## Preventing Duplicate Actions
 
-With recent exploits of TEEs, such as TEE.fail, it’s important for TEEs to have physical security by running them in secure data centers. 
+To ensure liveness, a Shade Agent should consist of multiple identical agents hosted by different providers/on different hardware. When multiple agents are running, all agents will respond to triggers (user inputs, cron jobs, API calls, etc.). You must ensure that the Shade Agent collectively performs the desired action only **once** in response to each update.
 
-In addition to verifying agent attestations in the smart contract, it’s recommended to only allow them to register as valid agents (via whitelisting account IDs) after verifying off-chain that they are running within secure data centers (like ones provided by Phala Cloud). Proof of Cloud https://proofofcloud.org/ is an initiative to verify TEEs are running in secure facilities.
+Consider a mindshare trading agent as an example. If Solana's mindshare increases relative to NEAR, the agent would swap SOL for NEAR. With two agents running, you must ensure this swap doesn't occur twice.
 
----
-
-## Duplicate Actions
-
-To ensure liveness, the Shade Agent should consist of multiple identical agents hosted by different providers/on different hardware. When multiple agents are running, all agents will respond to updates (user inputs, agent pings, API updates, etc.) or will create the same action whilst running on a cron. You must ensure that the Shade Agent collectively performs the desired action only `once` in response to each update.
-
-Consider a Kaito Mindshare Trading Agent as an example. If Solana's mindshare increases relative to NEAR, the agent would swap SOL for NEAR. With two agents running, you must ensure this swap doesn't occur twice.
-
-This logic is typically best implemented within the agent contract or a target smart contract being interacted with.
+This logic is typically best implemented within the agent contract by only allowing one agent to perform the action at a time.
 
 ---
 
-## Failed or Unsent Transactions
+## Handling Failed or Unsent Transactions
 
 A successful MPC signature on a transaction payload doesn't guarantee the transaction's success or transmission. Transactions may fail for various reasons, such as network congestion, incorrect nonce, or insufficient gas.
 
-We suggest you build your agent in such a way that if the transaction fails, then a new signature can be requested without allowing for signing when the transaction is successful. 
+It's suggested you build your agent in such a way that if the transaction fails, then a new signature can be requested without allowing for more signing for the same action when the transaction is successful.
 
 For some use cases, it may be beneficial to emit signed transactions from your agent contract, allowing anyone or an indexer to relay them if your agent fails to retrieve the result. Signed transactions can be built using [omni-transactions-rs](https://github.com/near/omni-transaction-rs). Exercise caution with unsent signatures.
 
 ---
 
-## Parallel Transactions
+## Restricting API Routes
 
-Building on the above, the MPC signing a transaction payload doesn't change any nonce or state on the destination chain. So if you'd like to create an agent that can issue several parallel transactions, you will have to have an intimate knowledge of the destination chain and increment nonces for the derived accounts that you're generation signatures for.
-
-This can cause a lot of issues in the EVM world, for example: Transactions can get stuck in the mempool if the nonce used is not in sequential order. A transaction with a higher nonce will remain pending if a previous transaction (with a lower nonce) hasn't been processed.
-
-If your agent frequently tries to sign multiple transactions in parallel with the MPC, then you must keep track of which transactions are successful and handle failures appropriately so that all transactions eventually are included in blocks of the destination chain.
-
----
-
-## Restricting Agent API Routes
-
-In the quickstart, our agent can take an API request from anyone. In a lot of cases, a Shade Agent will run on a loop responding to actions or data every set time period. If using API routes, you need to design your agent to only perform the action when the desired condition is met or do some sort of verification or authentication inside the route, for example, a user has signed an action with their wallet, or they are logged in from their Google account.
+In the quickstart, the agent can take an API request from anyone, allowing someone to drain the funds from the agent's account and the Ethereum Sepolia account through gas expenditure. If using API routes, you need to design your agent to only perform the action when the desired condition is met or implement authentication inside the route, for example, a user has signed an action with their wallet or they are logged in from their Google account.
 
 ---
 
 ## Removing Agent Contract Keys
 
-Before deploying your agent contract to production, you should ensure that all access keys to the agent contract account have been removed. Otherwise, this would allow the access key owner to withdraw the funds held by the Shade Agent. It is best practice to implement an [upgrade mechanism](../../../tutorials/examples/update.md) that is controlled by a multisig or DAO.
+Before deploying your agent contract to production, you should ensure that all **access keys** to the agent contract account have been removed. Otherwise, this would allow the access key owner to withdraw the funds held by the Shade Agent. This can be done using the CLI.
+
+In the agent contract reference implementation, the contract code, approved measurements, and PPID can be updated by the owner. It's recommended that the owner be a **multisig**.
+
+---
+
+## Removing Local Deployment
+
+When deploying to production, it's recommended to remove the **local deployment flow** from the agent contract entirely. Strip out the code that supports local mode (whitelist checks, default measurements, and PPID for local, and any `requires_tee: false` branches) so the contract only accepts TEE attestations. That way, there is no way to misconfigure or re-enable local mode, and no code path that trusts a whitelist instead of attestation.
+
+---
+
+## Approved Measurements Limits
+
+The attestation verification process iterates over all approved measurements and verifies that the TEE's measurements match the approved measurements. If the approved measurements list grows too large, registration could fail due to the function call running into the **gas limit**. It's recommended to limit the number of approved measurements to a reasonable number.
+
+---
+
+## Public Logs
+
+By default, the Shade Agent CLI deploys the agent with **public logs** enabled. You should not emit any sensitive information in the logs when this is enabled.
+
+---
+
+## Storing Agent Keys
+
+The agent's **ephemeral keys should not be stored** anywhere, including on the host machine. This could lead to code that is not approved in the contract accessing keys that are approved in the contract.
+
+---
+
+## Public PPIDs
+
+All PPIDs that are approved in the agent contract are made **public**. If you are using your own hardware, consider whether you are comfortable with its PPID being public since it could be used to track your hardware.
+
+---
+
+## Fixed Docker Images
+
+Never reference Docker images by `latest` (e.g. pivortex/my-first-agent:latest) in your **Docker Compose** file; this can lead to different images being loaded in the TEE for the same measurements. Always reference versions of the image you want to use via **hash** (e.g. pivortex/my-first-agent@sha256:bf3faac9793f0fb46e89a4a4a299fad69a4bfd1e26a48846b9adf43b63cb263b).
 
 ---
 
 ## Trusting RPCs
 
-Inside an agent, it is common to want to query the state of the blockchain and perform actions based on the state. Since RPCs can lie about the state of the blockchain and do not have crypto-economic security, we suggest you design your agent to defend against this. Below are some solutions, which solution you use will differ depending on your use case and the design of your agent:
+Inside an agent, it's common to want to query the state of the blockchain and perform actions based on the state. Since **RPCs can lie** about the state of the blockchain and do not have crypto-economic security, it's suggested you design your agent to defend against this. Below are some solutions, which solution you use will differ depending on your use case and the design of your agent:
 
-#### Verifying the State 
+### Verifying the State
 
-In some cases, you will be able to submit the state back to the smart contract from which the state was queried and verify that it matches the actual state. For example, take a DAO on Ethereum that uses AI to vote on proposals. When a proposal goes live, the agent indexes the proposal, makes a decision on the proposal using an LLM, and then submits the yes/no decision back to the DAO. The agent should also submit a hash of the proposal back to the DAO, so the DAO can verify that the decision was made based on the true state of the blockchain.
+In some cases, you will be able to submit the state back to the smart contract from which the state was queried and verify that it matches the actual state. For example, the verifiable DAO example submits a hash of the proposal back to the DAO, so the DAO can verify that the decision was made based on the true state of the blockchain.
 
-#### Trustless Providers 
+### Trustless Providers
 
-You can use RPC providers that leverage cryptographic proofs or run in TEEs themselves to know that the result is the true state of the blockchain.
+You can use RPC providers that leverage cryptographic proofs or run in TEEs themselves to know that the result mirrors the true state of the blockchain.
 
-#### Multiple Reputable Providers 
+### Multiple Reputable Providers
 
-You can use multiple reputable RPC providers (like Infura and Alchemy) and check the result across each provider to make sure they match.
- 
+You can use multiple reputable RPC providers and check the result across each provider to make sure they match.
 
 <SigsSupport />
+
+

@@ -210,6 +210,6 @@ The contract exposes [view functions](https://github.com/NearDeFi/verifiable-ai-
 
 ---
 
-## Next steps
+## Next Steps
 
 Now that you understand the DAO agent contract implementation, continue to the [agent page](./dao-agent.md) to learn about the verifiable agent that queries the contract for pending requests and casts a vote using an LLM.
