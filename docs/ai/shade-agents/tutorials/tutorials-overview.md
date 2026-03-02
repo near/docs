@@ -15,11 +15,6 @@ This section provides tutorials and templates to help you build Shade Agents fas
 
 Explore the [Quickstart docs](../getting-started/quickstart/deploying.md)
 
-<TryDemo 
-  url="https://shade-agent-template-woad.vercel.app/" 
-  text="Try the live demo"
-/>
-
 ### Summary
 
 The Quickstart features a verifiable Oracle secured by the Shade Agent Framework that pushes the price of ETH to a smart contract on Ethereum.

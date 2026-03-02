@@ -20,11 +20,6 @@ In this section, we'll walk you through **deploying** a Shade Agent.
 
 The [template](https://github.com/NearDeFi/shade-agent-template) we're using is a simple Shade Agent built with Hono and written in **TypeScript** that acts as a verifiable ETH price oracle. It fetches the price of Eth from two different APIs, takes the average, and then pushes the price to an Ethereum contract. 
 
-<TryDemo 
-  url="https://shade-agent-template-woad.vercel.app/" 
-  text="Try the live demo"
-/>
-
 We'll cover two deployment scenarios:
 1. **Local Development**: Running the agent locally for rapid testing and development.
 2. **TEE Deployment**: Running the agent in a real Trusted Execution Environment (TEE).
@@ -200,7 +195,7 @@ npm i
 npm run dev
 ```
 
-To use the frontend with your Phala deployment, change the `API_URL` to the Phala URL in your [config.js](https://github.com/NearDeFi/shade-agent-template/blob/main/frontend/src/config.js) file.
+To use the frontend with your Phala deployment, change the `API_URL` to the Phala URL in your [config.js](https://github.com/NearDeFi/shade-agent-template/tree/main/frontend/src/config.js) file.
 
 In the frontend, you can review the approved **measurements** and **PPID** in the contract and details of the registered agents.
 
