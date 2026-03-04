@@ -1,5 +1,5 @@
 .card {
-  padding: var(--space-3) var(--space-1) var(--space-1);
+  padding: var(--space-1);
   border-radius: var(--radius-card);
   border: var(--border-card);
   background: var(--color-bg-surface);
@@ -233,8 +233,8 @@
   // Title element
   &__title {
     margin: var(--space-1) 0 var(--space-3) 0;
-    font-size: var(--text-xl);
-    font-weight: var(--font-weight-semibold);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-bold);
     line-height: var(--leading-tight);
   }
 
@@ -243,7 +243,7 @@
     flex-grow: 1;
     margin: 0;
     line-height: var(--leading-relaxed);
-    font-size: var(--text-base);
+    font-size: var(--text-md);
   }
 
   // Content element

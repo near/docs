@@ -252,6 +252,12 @@ const config = {
               description: 'Join our WeChat community',
               icon: '/assets/menu/wechat.svg',
             },
+            {
+              label: 'Office Hours',
+              to: '/office-hours',
+              description: 'Book a session with our developer advocates',
+              icon: '/assets/menu/event.png',
+            }
           ],
         },
         {
