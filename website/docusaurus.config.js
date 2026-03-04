@@ -154,7 +154,7 @@ const config = {
               to: '/api/rpc/introduction',
               label: 'RPC API',
               description: 'Low level API to interact with NEAR',
-              icon: '/assets/menu/analytics.png',
+              icon: '/assets/menu/database.svg',
             },
 
             {
@@ -167,25 +167,25 @@ const config = {
                   label: 'NEAR API',
                   to: '/tools/near-api',
                   description: 'Integrate NEAR into your application with our API libraries',
-                  icon: '/assets/docs/welcome-pages/quickstart.png',
+                  icon: '/assets/menu/near.svg',
                 },
                 {
                   label: 'Contract SDK',
                   to: '/tools/sdk',
                   description: 'Build smart contracts using your favorite programming language',
-                  icon: '/assets/docs/welcome-pages/smartcontract.png',
+                  icon: '/assets/menu/contract.svg',
                 },
                 {
                   label: 'NEAR CLI',
                   to: '/tools/near-cli',
                   description: 'Interact with NEAR Protocol using our command line interface',
-                  icon: '/assets/docs/welcome-pages/near-cli.png',
+                  icon: '/assets/menu/app.svg',
                 },
                 {
                   label: 'Wallet Connector',
                   to: '/tools/near-connect',
                   description: 'Integrate multiple wallets into your application',
-                  icon: '/assets/docs/welcome-pages/frontend-bos.png',
+                  icon: '/assets/menu/wallet.svg',
                 },
               ],
             },
@@ -212,14 +212,14 @@ const config = {
               label: 'Explorers',
               to: '/tools/explorer',
               description: 'Explore transactions through simple web interfaces',
-              icon: '/assets/docs/welcome-pages/update.png',
+              icon: '/assets/menu/multichain.svg',
             },
             {
               label: 'NEAR Playground ↗',
               to: 'https://nearplay.app/',
               target: '_blank',
               description: 'Write, test and deploy smart contracts in your browser',
-              icon: '/assets/menu/catalog.png',
+              icon: '/assets/menu/catalog.svg',
             },
           ],
         },
@@ -229,9 +229,9 @@ const config = {
           description: 'Discover events, news and projects',
           subitems: [
             { label: 'Blog', to: '/blog', description: "Read blog posts from our community", icon: '/assets/menu/near.svg' },
-            { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/assets/menu/event.png' },
-            { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/assets/menu/newspaper.png' },
-            { label: 'NEAR Catalog', to: 'https://nearcatalog.xyz/', description: "Discover apps built on NEAR", icon: '/assets/menu/catalog.png' },
+            { label: 'Events', to: '/events', description: "Find what's coming up in the NEAR ecosystem", icon: '/assets/menu/event.svg' },
+            { label: 'Newsletter', to: '/newsletter', description: "Catch up with the latest news from NEAR", icon: '/assets/menu/newspaper.svg' },
+            { label: 'NEAR Catalog', to: 'https://nearcatalog.xyz/', description: "Discover apps built on NEAR", icon: '/assets/menu/catalog.svg' },
             { label: 'Awesome NEAR', to: 'https://github.com/near/awesome-near', description: "Repositories and tools for building on NEAR", icon: '/assets/menu/github.svg' }
           ]
         },
@@ -256,7 +256,7 @@ const config = {
               label: 'Office Hours',
               to: '/office-hours',
               description: 'Book a session with our developer advocates',
-              icon: '/assets/menu/event.png',
+              icon: '/assets/menu/event.svg',
             }
           ],
         },
