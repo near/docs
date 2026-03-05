@@ -12,7 +12,7 @@ our **Shade Agent Framework** allows to create verifiable and trustless AI agent
 
 :::tip Using AI to build on NEAR?
 
-Searching for how to use AI to help you build NEAR dApps, check our [Building NEAR Apps with AI](./llms.md) documentation
+Searching for how to use AI to help you build NEAR dApps, check [Tools for AI Agents](./tools-for-ai.md)
 
 :::
 
@@ -23,7 +23,7 @@ Searching for how to use AI to help you build NEAR dApps, check our [Building NE
 
 AI Agents can easily control account and assets on all blockchains thanks to NEARs unique features. You simply need to give them access to a NEAR account and they can start interacting with smart contracts, sending transactions, and managing assets everywhere.
 
-Check our [NEAR MCP](./near-mcp.md) documentation to get started.
+Check [Tools for AI Agents](./tools-for-ai.md) to get started.
 
 ---
 
@@ -43,8 +43,7 @@ Shade Agents power [Agentic Protocols](./shade-agents/concepts/what-can-you-buil
 
 | Docs                                                                           | Best if you...                                                                           |
 |--------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-| [AI + NEAR](./near-mcp.md)                                                     | Already have an AI Agent, and want to connect it to NEAR (and other chains)              |
-| [Building NEAR Apps with AI](./llms.md)                                        | Are building a NEAR App, and want your Code Agents to help you better                    |
+| [Tools for AI Agents](./tools-for-ai.md)                                       | Want one practical guide for docs context, agent skills, and NEAR on-chain tooling       |
 | [Trustless Multi-chain Agents](./shade-agents/getting-started/introduction.md) | Are building an agent from zero and need to securely handle funds across multiple chains |
 
 ---
