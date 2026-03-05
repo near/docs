@@ -25,7 +25,7 @@ Yes. Have a look at our [GitHub organization](https://github.com/near).
 
 ### How are cryptographic functions used?
 
-We support both `secp256k1` and `ed25519` for account keys and `ed25519` for signing transactions. We currently use the `ed25519_dalek` and `sha2` libraries for crypto.
+We support both `secp256k1` and `ed25519` for account keys and signing transactions. We currently use the `ed25519_dalek` and `sha2` libraries for crypto.
 
 ### Do you have any on-chain governance mechanisms?
 
