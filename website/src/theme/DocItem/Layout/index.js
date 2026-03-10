@@ -13,8 +13,6 @@ import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import ContentVisibility from '@theme/ContentVisibility';
 import styles from './styles.module.css';
 
-
-import { FeedbackComponent } from '../../../components/FeedbackComponent';
 import ChatbotTrigger from '../../SearchBar/components/ChatbotTrigger';
 
 /**
@@ -59,7 +57,6 @@ export default function DocItemLayout({ children }) {
           </article>
           {!isMain && <>
             <ChatbotTrigger />
-            <FeedbackComponent />
             <DocItemPaginator />
             <DocItemFooter />
           </>}
