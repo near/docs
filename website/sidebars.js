@@ -191,8 +191,7 @@ const sidebar = {
       },
       items: [
         'ai/introduction',
-        'ai/near-mcp',
-        'ai/using-llms',
+        'ai/tools-for-ai',
         {
           "Shade Agents": [
             {
