@@ -680,6 +680,15 @@ All the methods listed above have `wait_until` request parameter, and
 `final_execution_status` response value. They correspond to the same enum
 `TxExecutionStatus`. See the detailed explanation for all the options:
 
+| wait_until | is included in a block | is included in a final block | executed | executed and execution result  final
+|---|---|---|---|---
+| None | ? | ? | ? | ?
+| Included | yes | ? | ? | ?
+| ExecutedOptimistic | yes | ? | yes | ?
+| IncludedFinal | yes | yes | ?|  ?
+| Executed | yes | yes | yes | ?
+| Final | yes | yes | yes | yes
+
 ```rust
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum TxExecutionStatus {
