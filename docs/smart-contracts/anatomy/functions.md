@@ -13,9 +13,9 @@ import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-
 
 Smart contracts expose functions so users can interact with them. There are different types of functions including `read-only`, `private` and `payable`.
 
-<ExplainCode languages="rust,js,python">
+<ExplainCode languages="rust,js,python,go">
 
-<Block highlights='{"js": "16-20,23-42,45-50,53-55,58-60", "rust": "24-34,37-62,64-75,77-79,81-83", "python": "4-22,25-62,65-94,97-99,102-104,107-121"}' fname="auction">
+<Block highlights='{"js": "16-20,23-42,45-50,53-55,58-60", "rust": "24-34,37-62,64-75,77-79,81-83", "python": "4-22,25-62,65-94,97-99,102-104,107-121", "go": "25-35,37-95,97-115"}' fname="auction">
 
 ### Contract's Interface
 
@@ -47,7 +47,7 @@ impl MyTrait for MyContractStructure {
 
 </Block>
 
-<Block highlights='{"js":"15-20", "rust": "22-34", "python": "4-22"}' fname="auction">
+<Block highlights='{"js":"15-20", "rust": "22-34", "python": "4-22", "go": "25-35"}' fname="auction">
 
 ### Initialization Functions
 
@@ -79,7 +79,15 @@ The initialization function is marked with the `@init` decorator in Python.
 
 </Block>
 
-<Block highlights='{"js":"22-42,44-50", "rust": "37-62,64-75", "python": "25-62,65-94"}' fname="auction">
+<Block highlights='{"go": "25-35"}' fname="auction">
+
+#### `@contract:init`
+
+The initialization function is marked with the `@contract:init` comment directive in Go.
+
+</Block>
+
+<Block highlights='{"js":"22-42,44-50", "rust": "37-62,64-75", "python": "25-62,65-94", "go": "37-95"}' fname="auction">
 
 ### State Changing Functions
 
@@ -111,7 +119,15 @@ State changing functions are marked with the `@call` decorator in Python.
 
 </Block>
 
-<Block highlights='{"js": "25,28,29", "rust": "40,45,46", "python": "109"}' fname="auction" type='info'>
+<Block highlights='{"go": "37,74"}' fname="auction">
+
+#### `@contract:mutating`
+
+State changing functions are marked with the `@contract:mutating` comment directive in Go.
+
+</Block>
+
+<Block highlights='{"js": "25,28,29", "rust": "40,45,46", "python": "109", "go": "39,44"}' fname="auction" type='info'>
 
 :::tip
 
@@ -121,7 +137,7 @@ The SDK provides [contextual information](./environment.md), such as which accou
 
 </Block>
 
-<Block highlights='{"js":"52-55,57-60", "rust": "77-79,81-83", "python": "97-99,102-104,107-121"}' fname="auction">
+<Block highlights='{"js":"52-55,57-60", "rust": "77-79,81-83", "python": "97-99,102-104,107-121", "go": "97-115"}' fname="auction">
 
 ### Read-Only Functions
 
@@ -153,7 +169,15 @@ Read-only functions are marked with the `@view` decorator in Python.
 
 </Block>
 
-<Block highlights='{"js":"15", "rust": "23", "python": "2"}' fname="auction">
+<Block highlights='{"go": "97,102,107,112"}' fname="auction">
+
+#### `@contract:view`
+
+Read-only functions are marked with the `@contract:view` comment directive in Go.
+
+</Block>
+
+<Block highlights='{"js":"15", "rust": "23", "python": "2", "go": ""}' fname="auction">
 
 ### Private Functions
 
@@ -189,7 +213,15 @@ In Python, you can create callbacks by using the `@callback` decorator, which is
 
 </Block>
 
-<Block highlights='{"js":"22,28", "rust": "36,45", "python": "25"}' fname="auction">
+<Block highlights='{"go": ""}' fname="auction">
+
+#### `@contract:promise_callback`
+
+In Go, callback functions for cross-contract calls are marked with the `@contract:promise_callback` comment directive, combined with either `@contract:view` (for read-only callbacks) or `@contract:mutating` (for callbacks that modify state). These functions can only be called by the contract itself.
+
+</Block>
+
+<Block highlights='{"js":"22,28", "rust": "36,45", "python": "25", "go": "37"}' fname="auction">
 
 ### Payable Functions
 
@@ -220,6 +252,14 @@ Payable functions are marked using the `#[payable]` macro in Rust.
 #### Handling payments in Python
 
 In Python, you need to check the deposit manually using the Context API. There isn't a specific decorator for payable functions, so you'll need to verify the deposit amount in your function code.
+
+</Block>
+
+<Block highlights='{"go": "37"}' fname="auction">
+
+#### `@contract:payable`
+
+In Go, functions that accept attached NEAR tokens can be marked with the `@contract:payable` comment directive. You can optionally specify a minimum deposit requirement: `@contract:payable min_deposit=1NEAR`. This directive is compatible with `@contract:mutating` and `@contract:init`.
 
 </Block>
 
@@ -259,6 +299,18 @@ To create internal private methods in a Python contract, simply define normal me
 
 </Block>
 
+<Block highlights='{"go": "8-11"}' fname="example">
+
+### Internal Functions
+
+All the functions we covered so far are part of the interface, meaning they can be called by an external actor.
+
+However, contracts can also have private internal functions - such as helper or utility functions - that are **not exposed** to the outside world.
+
+To create internal private methods in a Go contract, simply define regular methods without any `@contract:` comment directives.
+
+</Block>
+
 <Block highlights='{"rust": "5-7"}' fname="example" type='details'>
 
   <details>
@@ -285,7 +337,7 @@ impl Contract {
 
 </Block>
 
-<Block highlights='{"rust": "9-11,13-15", "python": "12-15"}' fname="example">
+<Block highlights='{"rust": "9-11,13-15", "python": "12-15", "go": "3,13-16"}' fname="example">
 
 ### Pure Functions
 
@@ -365,6 +417,156 @@ class Contract:
     def get_static_value(self):
         # This function returns a hardcoded value
         return 42
+```
+
+</CodeBlock>
+
+<CodeBlock language="go" fname="example">
+
+```go
+package main
+
+const SOME_VALUE uint64 = 8
+
+// @contract:state
+type MyContract struct{}
+
+// This function cannot be called from the outside (no @contract: directive)
+func (c *MyContract) helperFunction() {
+    // internal logic here
+}
+
+// @contract:view
+func (c *MyContract) GetStaticValue() uint64 {
+    return SOME_VALUE
+}
+```
+
+</CodeBlock>
+
+<CodeBlock language="go" fname="auction">
+
+```go
+package main
+
+import (
+	"errors"
+
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// Bid represents a single bid placed in an auction.
+type Bid struct {
+	Bidder string `json:"bidder"`
+	Bid    string `json:"bid"`
+}
+
+type InitInput struct {
+	EndTime    uint64 `json:"end_time"`
+	Auctioneer string `json:"auctioneer"`
+}
+
+// @contract:state
+type AuctionContract struct {
+	HighestBid     Bid    `json:"highest_bid"`
+	AuctionEndTime uint64   `json:"auction_end_time"`
+	Auctioneer     string   `json:"auctioneer"`
+	Claimed        bool     `json:"claimed"`
+}
+
+// @contract:init
+func (c *AuctionContract) Init(input InitInput) {
+	currentAccount, _ := env.GetCurrentAccountId()
+	c.HighestBid = Bid{
+		Bidder: currentAccount,
+		Bid:    "1",
+	}
+	c.AuctionEndTime = input.EndTime
+	c.Auctioneer = input.Auctioneer
+	env.LogString("Auction initialized")
+}
+
+// @contract:mutating
+func (c *AuctionContract) Bid() error {
+	blockTime := env.GetBlockTimeMs()
+	if blockTime >= c.AuctionEndTime {
+		return errors.New("auction has ended")
+	}
+
+	deposit, err := env.GetAttachedDeposit()
+	if err != nil {
+		return errors.New("failed to get attached deposit")
+	}
+
+	currentBid, err := types.U128FromString(c.HighestBid.Bid)
+	if err != nil {
+		return errors.New("invalid current bid amount in state")
+	}
+
+	if deposit.Cmp(currentBid) <= 0 {
+		return errors.New("you must place a higher bid")
+	}
+
+	caller, err := env.GetPredecessorAccountID()
+	if err != nil {
+		return errors.New("failed to get caller account")
+	}
+
+	prevBidder := c.HighestBid.Bidder
+	c.HighestBid = Bid{
+		Bidder: caller,
+		Bid:    deposit.String(),
+	}
+
+	promise.CreateBatch(prevBidder).Transfer(currentBid)
+
+	return nil
+}
+
+// @contract:mutating
+func (c *AuctionContract) Claim() error {
+	blockTime := env.GetBlockTimeMs()
+	if blockTime <= c.AuctionEndTime {
+		return errors.New("auction has not ended yet")
+	}
+
+	if c.Claimed {
+		return errors.New("auction has already been claimed")
+	}
+
+	c.Claimed = true
+
+	winningBid, err := types.U128FromString(c.HighestBid.Bid)
+	if err != nil {
+		return errors.New("invalid winning bid amount in state")
+	}
+
+	promise.CreateBatch(c.Auctioneer).Transfer(winningBid)
+
+	return nil
+}
+
+// @contract:view
+func (c *AuctionContract) GetHighestBid() Bid {
+	return c.HighestBid
+}
+
+// @contract:view
+func (c *AuctionContract) GetAuctionEndTime() uint64 {
+	return c.AuctionEndTime
+}
+
+// @contract:view
+func (c *AuctionContract) GetAuctioneer() string {
+	return c.Auctioneer
+}
+
+// @contract:view
+func (c *AuctionContract) GetClaimed() bool {
+	return c.Claimed
+}
 ```
 
 </CodeBlock>

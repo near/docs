@@ -219,6 +219,30 @@ Ensure you have [Emscripten](https://emscripten.org/) properly installed and ava
 
 </TabItem>
 
+<TabItem value="go" label="🐹 GO">
+
+```bash
+near-go create --project-name auction --module-name auction --project-type smart-contract-empty
+```
+
+This will generate a project with the following structure:
+
+```bash
+auction/
+└── contract/
+    ├── go.mod   # Go module definition with near-sdk-go dependency
+    ├── go.sum
+    └── main.go  # Main contract file
+```
+
+:::important
+
+When the project is created, replace the contents of `main.go` with the auction contract code shown in the sections below.
+
+:::
+
+</TabItem>
+
 </Tabs>
 
 :::tip
@@ -259,6 +283,43 @@ The contract stores the highest bid, auction end time, auctioneer address, and a
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
             start="1" end="18" />
   </TabItem>
+
+  <TabItem value="go" label="🐹 GO">
+
+```go
+// Bid represents a single bid placed in an auction.
+type Bid struct {
+	Bidder string `json:"bidder"`
+	Bid    string `json:"bid"`
+}
+
+type InitInput struct {
+	EndTime    uint64 `json:"end_time"`
+	Auctioneer string `json:"auctioneer"`
+}
+
+// @contract:state
+type AuctionContract struct {
+	HighestBid     Bid    `json:"highest_bid"`
+	AuctionEndTime uint64   `json:"auction_end_time"`
+	Auctioneer     string   `json:"auctioneer"`
+	Claimed        bool     `json:"claimed"`
+}
+
+// @contract:init
+func (c *AuctionContract) Init(input InitInput) {
+	currentAccount, _ := env.GetCurrentAccountId()
+	c.HighestBid = Bid{
+		Bidder: currentAccount,
+		Bid:    "1",
+	}
+	c.AuctionEndTime = input.EndTime
+	c.Auctioneer = input.Auctioneer
+	env.LogString("Auction initialized")
+}
+```
+
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -287,6 +348,49 @@ The `bid` function will then validate that the auction is ongoing, if the user b
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
             start="20" end="45" />
   </TabItem>
+
+  <TabItem value="go" label="🐹 GO">
+
+```go
+// @contract:mutating
+func (c *AuctionContract) Bid() error {
+	blockTime := env.GetBlockTimeMs()
+	if blockTime >= c.AuctionEndTime {
+		return errors.New("auction has ended")
+	}
+
+	deposit, err := env.GetAttachedDeposit()
+	if err != nil {
+		return errors.New("failed to get attached deposit")
+	}
+
+	currentBid, err := types.U128FromString(c.HighestBid.Bid)
+	if err != nil {
+		return errors.New("invalid current bid amount in state")
+	}
+
+	if deposit.Cmp(currentBid) <= 0 {
+		return errors.New("you must place a higher bid")
+	}
+
+	caller, err := env.GetPredecessorAccountID()
+	if err != nil {
+		return errors.New("failed to get caller account")
+	}
+
+	prevBidder := c.HighestBid.Bidder
+	c.HighestBid = Bid{
+		Bidder: caller,
+		Bid:    deposit.String(),
+	}
+
+	promise.CreateBatch(prevBidder).Transfer(currentBid)
+
+	return nil
+}
+```
+
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -313,6 +417,35 @@ Once the auction ends, any user can call `claim` to transfer the winning bid to 
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
             start="47" end="59" />
   </TabItem>
+
+  <TabItem value="go" label="🐹 GO">
+
+```go
+// @contract:mutating
+func (c *AuctionContract) Claim() error {
+	blockTime := env.GetBlockTimeMs()
+	if blockTime <= c.AuctionEndTime {
+		return errors.New("auction has not ended yet")
+	}
+
+	if c.Claimed {
+		return errors.New("auction has already been claimed")
+	}
+
+	c.Claimed = true
+
+	winningBid, err := types.U128FromString(c.HighestBid.Bid)
+	if err != nil {
+		return errors.New("invalid winning bid amount in state")
+	}
+
+	promise.CreateBatch(c.Auctioneer).Transfer(winningBid)
+
+	return nil
+}
+```
+
+  </TabItem>
 </Tabs>
 
 <hr class="subsection" />
@@ -338,6 +471,32 @@ At all times, users can query the current state of the auction by calling its vi
     <Github fname="contract.py" language="python"
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
             start="62" end="90" />
+  </TabItem>
+
+  <TabItem value="go" label="🐹 GO">
+
+```go
+// @contract:view
+func (c *AuctionContract) GetHighestBid() Bid {
+	return c.HighestBid
+}
+
+// @contract:view
+func (c *AuctionContract) GetAuctionEndTime() uint64 {
+	return c.AuctionEndTime
+}
+
+// @contract:view
+func (c *AuctionContract) GetAuctioneer() string {
+	return c.Auctioneer
+}
+
+// @contract:view
+func (c *AuctionContract) GetClaimed() bool {
+	return c.Claimed
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -376,7 +535,15 @@ Lets make sure the contract is working as expected by running its tests. Simply 
   ```bash
   uv run pytest
   ```
-  
+
+  </TabItem>
+
+  <TabItem value="go" label="🐹 GO">
+
+  ```bash
+  near-go test project
+  ```
+
   </TabItem>
 </Tabs>
 
@@ -515,6 +682,14 @@ With the contract ready, we can now deploy it to the `testnet` account we create
     ```bash
     near deploy <created-account> ./auction.wasm
     ```
+
+  </TabItem>
+
+  <TabItem value="go" label="🐹 GO">
+
+  ```bash
+  near deploy <contract-acc.testnet> ./main.wasm
+  ```
 
   </TabItem>
 </Tabs>

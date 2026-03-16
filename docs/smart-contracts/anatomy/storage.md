@@ -10,6 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {CodeTabs, Language, Github} from "@site/src/components/UI/Codetabs";
 import {ExplainCode, Block, File} from '@site/src/components/CodeExplainer/code-explainer';
+import CodeBlock from '@theme/CodeBlock';
 
 Smart contracts store data in their account's state, which is public on the chain. The storage starts **empty** until a contract is deployed and the state is initialized.
 
@@ -17,7 +18,7 @@ It is important to know that the account's **code** and account's **storage** ar
 
 <hr class="subsection" />
 
-<ExplainCode languages="rust,js,python" >
+<ExplainCode languages="rust,js,python,go" >
 
 <Block highlights='{"js": "3-6,10-13", "python": "7,10-14,17,20"}' fname="auction">
 
@@ -47,7 +48,18 @@ It is important to know that the account's **code** and account's **storage** ar
 
 </Block>
 
-<Block highlights='{"js":"", "rust": "", "python": ""}' fname="auction" type='info'>
+<Block highlights='{"go": "17-23"}' fname="auction">
+
+    ### Defining the State
+    The attributes of the `struct` marked with `@contract:state` define the data that will be stored.
+
+    The contract can store all native types (e.g. `uint64`, `string`, `bool`) as well as complex objects, serialized as JSON.
+
+    For example, our Auction contract stores when the auction ends, and an object representing the highest bid.
+
+</Block>
+
+<Block highlights='{"js":"", "rust": "", "python": "", "go": ""}' fname="auction" type='info'>
 
 :::warning
 
@@ -59,7 +71,7 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"js": "", "rust": "", "python": ""}' fname="auction" >
+<Block highlights='{"js": "", "rust": "", "python": "", "go": ""}' fname="auction" >
 
     ### Initializing the State
     After the contract is deployed, its state is empty and needs to be initialized with
@@ -103,6 +115,17 @@ In Python, you need to manage the state initialization explicitly. The SDK doesn
 
 </Block>
 
+<Block highlights='{"go": "25-35"}' fname="auction">
+
+    ### I. Initialization Functions
+    An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
+
+    In our Auction example, the contract has an initialization function that sets when the auction ends. The function is marked with the `@contract:init` comment directive.
+
+    **Note:** It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions.md).
+
+</Block>
+
 <Block highlights='{"js": "5", "python": "5"}' fname="hello">
 
     ### II. Default State
@@ -129,7 +152,16 @@ In Python, you need to manage the state initialization explicitly. The SDK doesn
 
 </Block>
 
-<Block highlights='{"js": "", "rust":"", "python": ""}' fname="hello">
+<Block highlights='{"go": ""}' fname="hello">
+
+    ### II. Default State
+    In Go, when no `@contract:init` function is called, the contract's state struct is zero-initialized using Go's default zero values (empty strings, zeros, false booleans).
+
+    **Note:** The state can only be initialized once.
+
+</Block>
+
+<Block highlights='{"js": "", "rust":"", "python": "", "go": ""}' fname="hello">
 
     ### Lifecycle of the State
     When a function is called, the contract's state is loaded from the storage and put into memory.
@@ -140,7 +172,7 @@ In Python, you need to manage the state initialization explicitly. The SDK doesn
 
 </Block>
 
-<Block highlights='{"js": "", "rust":"", "python": ""}' fname="hello" type='info'>
+<Block highlights='{"js": "", "rust":"", "python": "", "go": ""}' fname="hello" type='info'>
 
 :::warning State and Code
 
@@ -173,5 +205,136 @@ Make sure to read the [updating a contract](../release/upgrade.md) if you run in
 <File language="python" fname="auction" url="https://github.com/r-near/near-py-examples/blob/main/auction.py" start="2" end="122"></File>
 
 <File language="python" fname="hello" url="https://github.com/r-near/near-py-examples/blob/main/hello-near.py" start="5" end="20"></File>
+
+<CodeBlock language="go" fname="auction">
+
+```go
+package main
+
+import (
+	"errors"
+
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// Bid represents a single bid placed in an auction.
+type Bid struct {
+	Bidder string `json:"bidder"`
+	Bid    string `json:"bid"`
+}
+
+type InitInput struct {
+	EndTime    uint64 `json:"end_time"`
+	Auctioneer string `json:"auctioneer"`
+}
+
+// @contract:state
+type AuctionContract struct {
+	HighestBid     Bid    `json:"highest_bid"`
+	AuctionEndTime uint64   `json:"auction_end_time"`
+	Auctioneer     string   `json:"auctioneer"`
+	Claimed        bool     `json:"claimed"`
+}
+
+// @contract:init
+func (c *AuctionContract) Init(input InitInput) {
+	currentAccount, _ := env.GetCurrentAccountId()
+	c.HighestBid = Bid{
+		Bidder: currentAccount,
+		Bid:    "1",
+	}
+	c.AuctionEndTime = input.EndTime
+	c.Auctioneer = input.Auctioneer
+	env.LogString("Auction initialized")
+}
+
+// @contract:mutating
+func (c *AuctionContract) Bid() error {
+	blockTime := env.GetBlockTimeMs()
+	if blockTime >= c.AuctionEndTime {
+		return errors.New("auction has ended")
+	}
+
+	deposit, err := env.GetAttachedDeposit()
+	if err != nil {
+		return errors.New("failed to get attached deposit")
+	}
+
+	currentBid, err := types.U128FromString(c.HighestBid.Bid)
+	if err != nil {
+		return errors.New("invalid current bid amount in state")
+	}
+
+	if deposit.Cmp(currentBid) <= 0 {
+		return errors.New("you must place a higher bid")
+	}
+
+	caller, err := env.GetPredecessorAccountID()
+	if err != nil {
+		return errors.New("failed to get caller account")
+	}
+
+	prevBidder := c.HighestBid.Bidder
+	c.HighestBid = Bid{
+		Bidder: caller,
+		Bid:    deposit.String(),
+	}
+
+	promise.CreateBatch(prevBidder).Transfer(currentBid)
+
+	return nil
+}
+
+// @contract:mutating
+func (c *AuctionContract) Claim() error {
+	blockTime := env.GetBlockTimeMs()
+	if blockTime <= c.AuctionEndTime {
+		return errors.New("auction has not ended yet")
+	}
+
+	if c.Claimed {
+		return errors.New("auction has already been claimed")
+	}
+
+	c.Claimed = true
+
+	winningBid, err := types.U128FromString(c.HighestBid.Bid)
+	if err != nil {
+		return errors.New("invalid winning bid amount in state")
+	}
+
+	promise.CreateBatch(c.Auctioneer).Transfer(winningBid)
+
+	return nil
+}
+
+// @contract:view
+func (c *AuctionContract) GetHighestBid() Bid {
+	return c.HighestBid
+}
+
+// @contract:view
+func (c *AuctionContract) GetAuctionEndTime() uint64 {
+	return c.AuctionEndTime
+}
+
+// @contract:view
+func (c *AuctionContract) GetAuctioneer() string {
+	return c.Auctioneer
+}
+
+// @contract:view
+func (c *AuctionContract) GetClaimed() bool {
+	return c.Claimed
+}
+```
+
+</CodeBlock>
+
+<File language="go" fname="hello"
+    url="https://github.com/vlmoon99/near-sdk-go/blob/main/examples/greeting/contract/main.go"
+    start="1" end="77" />
 
 </ExplainCode>
