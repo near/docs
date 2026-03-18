@@ -108,6 +108,7 @@ const sidebar = {
         {
           "Tutorials": [
             'tutorials/protocol/importing-account',
+            'tutorials/ethereum-migration/index',
             'faucet'
           ]
         },
