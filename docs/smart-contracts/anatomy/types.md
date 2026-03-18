@@ -59,7 +59,7 @@ Lets discuss which types smart contracts use to input and output data, as well a
 
 </Block>
 
-<Block highlights='{"go": "13-14,20-22"}' fname="auction">
+<Block highlights='{"go": "13-14,25-27"}' fname="auction">
 
     ### Native Types
     Smart contracts can receive, store and return data using the following Go types:
@@ -94,7 +94,7 @@ Python's `int` type has unlimited precision, so it can handle large integers (li
 
 </Block>
 
-<Block highlights='{"go": "44,49,87"}' fname="auction" type='info'>
+<Block highlights='{"go": "49,54,71,92"}' fname="auction" type='info'>
 
 :::warning `types.Uint128`
 
@@ -106,7 +106,7 @@ Use `types.U128FromString(str)` to parse from a string, and `.String()` to conve
 
 </Block>
 
-<Block highlights='{"js":"3-6", "rust": "6-9", "python": "10-13", "go": "12-15,17-23"}' fname="auction">
+<Block highlights='{"js":"3-6", "rust": "6-9", "python": "10-13", "go": "12-15,17-20,22-28"}' fname="auction">
 
     ### Complex Objects
     Smart contracts can store and return complex objects
@@ -124,7 +124,7 @@ Use `types.U128FromString(str)` to parse from a string, and `.String()` to conve
 
 </Block>
 
-<Block highlights='{"go": "13-14,19-22"}' fname="auction">
+<Block highlights='{"go": "13-14,18-19,24-27"}' fname="auction">
 
     #### JSON Tags
 
@@ -169,7 +169,7 @@ Use `types.U128FromString(str)` to parse from a string, and `.String()` to conve
 
 </Block>
 
-<Block highlights='{"go": "44,49,69,87,92"}' fname="auction">
+<Block highlights='{"go": "49,54,71,92"}' fname="auction">
 
     ### Handling Tokens
     `$NEAR` tokens are represented as `types.Uint128` in Go, with values in `yoctoNEAR`.
@@ -183,7 +183,7 @@ Use `types.U128FromString(str)` to parse from a string, and `.String()` to conve
 
 </Block>
 
-<Block highlights='{"js": "4,29", "rust": "7,46", "python": "", "go": "58,108"}' fname="auction">
+<Block highlights='{"js": "4,29", "rust": "7,46", "python": "", "go": "32,63"}' fname="auction">
 
     ### Account
     The SDK exposes a special type to handle NEAR Accounts, which automatically checks if the account address is valid
@@ -198,7 +198,7 @@ Use `types.U128FromString(str)` to parse from a string, and `.String()` to conve
 
 </Block>
 
-<Block highlights='{"go": "58,108"}' fname="auction">
+<Block highlights='{"go": "32,63"}' fname="auction">
 
     ### Account IDs
     In Go, NEAR account IDs are represented as `string`. Functions like `env.GetPredecessorAccountID()` and `env.GetCurrentAccountId()` return account IDs as plain strings.

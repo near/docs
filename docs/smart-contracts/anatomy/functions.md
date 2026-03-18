@@ -15,7 +15,7 @@ Smart contracts expose functions so users can interact with them. There are diff
 
 <ExplainCode languages="rust,js,python,go">
 
-<Block highlights='{"js": "16-20,23-42,45-50,53-55,58-60", "rust": "24-34,37-62,64-75,77-79,81-83", "python": "4-22,25-62,65-94,97-99,102-104,107-121", "go": "25-35,37-95,97-115"}' fname="auction">
+<Block highlights='{"js": "16-20,23-42,45-50,53-55,58-60", "rust": "24-34,37-62,64-75,77-79,81-83", "python": "4-22,25-62,65-94,97-99,102-104,107-121", "go": "30-40,42-78,80-121"}' fname="auction">
 
 ### Contract's Interface
 
@@ -47,7 +47,7 @@ impl MyTrait for MyContractStructure {
 
 </Block>
 
-<Block highlights='{"js":"15-20", "rust": "22-34", "python": "4-22", "go": "25-35"}' fname="auction">
+<Block highlights='{"js":"15-20", "rust": "22-34", "python": "4-22", "go": "30-40"}' fname="auction">
 
 ### Initialization Functions
 
@@ -79,7 +79,7 @@ The initialization function is marked with the `@init` decorator in Python.
 
 </Block>
 
-<Block highlights='{"go": "25-35"}' fname="auction">
+<Block highlights='{"go": "30-40"}' fname="auction">
 
 #### `@contract:init`
 
@@ -87,7 +87,7 @@ The initialization function is marked with the `@contract:init` comment directiv
 
 </Block>
 
-<Block highlights='{"js":"22-42,44-50", "rust": "37-62,64-75", "python": "25-62,65-94", "go": "37-95"}' fname="auction">
+<Block highlights='{"js":"22-42,44-50", "rust": "37-62,64-75", "python": "25-62,65-94", "go": "42-78,80-101"}' fname="auction">
 
 ### State Changing Functions
 
@@ -119,7 +119,7 @@ State changing functions are marked with the `@call` decorator in Python.
 
 </Block>
 
-<Block highlights='{"go": "37,74"}' fname="auction">
+<Block highlights='{"go": "43,80"}' fname="auction">
 
 #### `@contract:mutating`
 
@@ -127,7 +127,7 @@ State changing functions are marked with the `@contract:mutating` comment direct
 
 </Block>
 
-<Block highlights='{"js": "25,28,29", "rust": "40,45,46", "python": "109", "go": "39,44"}' fname="auction" type='info'>
+<Block highlights='{"js": "25,28,29", "rust": "40,45,46", "python": "109", "go": "45,64"}' fname="auction" type='info'>
 
 :::tip
 
@@ -137,7 +137,7 @@ The SDK provides [contextual information](./environment.md), such as which accou
 
 </Block>
 
-<Block highlights='{"js":"52-55,57-60", "rust": "77-79,81-83", "python": "97-99,102-104,107-121", "go": "97-115"}' fname="auction">
+<Block highlights='{"js":"52-55,57-60", "rust": "77-79,81-83", "python": "97-99,102-104,107-121", "go": "103-121"}' fname="auction">
 
 ### Read-Only Functions
 
@@ -169,7 +169,7 @@ Read-only functions are marked with the `@view` decorator in Python.
 
 </Block>
 
-<Block highlights='{"go": "97,102,107,112"}' fname="auction">
+<Block highlights='{"go": "103,108,113,118"}' fname="auction">
 
 #### `@contract:view`
 
@@ -221,7 +221,7 @@ In Go, callback functions for cross-contract calls are marked with the `@contrac
 
 </Block>
 
-<Block highlights='{"js":"22,28", "rust": "36,45", "python": "25", "go": "37"}' fname="auction">
+<Block highlights='{"js":"22,28", "rust": "36,45", "python": "25", "go": "42"}' fname="auction">
 
 ### Payable Functions
 
@@ -255,7 +255,7 @@ In Python, you need to check the deposit manually using the Context API. There i
 
 </Block>
 
-<Block highlights='{"go": "37"}' fname="auction">
+<Block highlights='{"go": "42"}' fname="auction">
 
 #### `@contract:payable`
 
@@ -488,6 +488,7 @@ func (c *AuctionContract) Init(input InitInput) {
 	env.LogString("Auction initialized")
 }
 
+// @contract:payable
 // @contract:mutating
 func (c *AuctionContract) Bid() error {
 	blockTime := env.GetBlockTimeMs()

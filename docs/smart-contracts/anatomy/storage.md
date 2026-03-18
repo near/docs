@@ -48,7 +48,7 @@ It is important to know that the account's **code** and account's **storage** ar
 
 </Block>
 
-<Block highlights='{"go": "17-23"}' fname="auction">
+<Block highlights='{"go": "22-28"}' fname="auction">
 
     ### Defining the State
     The attributes of the `struct` marked with `@contract:state` define the data that will be stored.
@@ -115,7 +115,7 @@ In Python, you need to manage the state initialization explicitly. The SDK doesn
 
 </Block>
 
-<Block highlights='{"go": "25-35"}' fname="auction">
+<Block highlights='{"go": "30-40"}' fname="auction">
 
     ### I. Initialization Functions
     An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
