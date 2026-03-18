@@ -66,6 +66,7 @@
     "react-monaco-editor": "^0.59.0",
     "react-syntax-highlighter": "^16",
     "react-toastify": "^11.0.5",
+    "remark-gfm": "^4.0.1",
     "sass": "^1.89.2",
     "stream-browserify": "^3.0.0",
     "styled-components": "^6.1.19",
