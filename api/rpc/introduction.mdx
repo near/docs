@@ -1,0 +1,43 @@
+---
+title: "Protocol Call Reference"
+description: "Overview of tools and methods for interacting with the NEAR Protocol."
+sidebarTitle: "Introduction"
+---
+
+NEAR Protocol provides multiple ways to interact with the network — from low-level JSON-RPC calls to visual explorers and wallets.
+
+## Tools
+
+<CardGroup cols={2}>
+  <Card title="NEAR Explorer" icon="search" href="https://nearblocks.io" cta="Open Explorer" arrow>
+    Browse transactions, accounts, blocks, and contracts on mainnet and testnet.
+  </Card>
+  <Card title="NEAR Wallet" icon="wallet" href="https://wallet.near.org" cta="Open Wallet" arrow>
+    Create and manage NEAR accounts, send tokens, and interact with dApps.
+  </Card>
+</CardGroup>
+
+## RPC API
+
+NEAR exposes a JSON-RPC 2.0 API for programmatic access to the network. All requests are `POST` to a provider endpoint, with the method name encoded in the URL path.
+
+```bash
+curl -X POST https://rpc.mainnet.near.org/status \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+See [RPC Providers](/api/rpc/providers) for the full list of public endpoints.
+
+## Available Methods
+
+| Category | Methods |
+|----------|---------|
+| **Transactions** | `send_tx`, `tx`, `broadcast_tx_async`, `broadcast_tx_commit` |
+| **Blocks & Chunks** | `block`, `chunk`, `block_effects`, `changes` |
+| **Accounts & Keys** | `query` (view account, code, state, access keys, call function) |
+| **Network** | `status`, `health`, `network_info`, `validators` |
+| **Gas & Config** | `gas_price`, `genesis_config`, `EXPERIMENTAL_protocol_config` |
+| **Light Client** | `light_client_proof`, `next_light_client_block` |
+
+Explore the full interactive reference in the sidebar, or start with [RPC Providers](/api/rpc/providers) to configure your endpoint.

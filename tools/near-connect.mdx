@@ -1,0 +1,39 @@
+---
+title: Wallet Connector
+icon: "wallet"
+description: "A zero-dependencies, lightweight wallet connector for the NEAR blockchain with sandboxed wallet execution."
+---
+
+**NEAR Connect** is a zero-dependencies, robust, secure, and lightweight wallet connector for the NEAR blockchain. It provides a modern alternative to traditional wallet selectors by executing wallet integration code in isolated sandboxed environments rather than bundling all wallet code into a single package.
+
+---
+
+## Installation
+
+```bash
+yarn add @hot-labs/near-connect
+```
+
+---
+
+## Key Features
+
+- **Sandboxed Execution**: Wallet scripts run in isolated iframes with controlled permissions (storage access, domain whitelisting), reducing supply chain risk.
+- **Easily Updatable Wallets**: Wallet developers can immediately test code on real applications by hosting their own executor scripts, then submit PRs to update the shared manifest for automatic deployment — no package release required.
+- **No Dependencies**: Lightweight and self-contained.
+- **Multiple Wallets Supported**: HOT Wallet, Meteor Wallet, MyNearWallet, Nightly Wallet, OKX Wallet, WalletConnect, and 10+ others.
+
+---
+
+## Supported Actions
+
+- Sign-in with optional message signing
+- Sign and send transactions
+- Limited-key creation for non-custodial interactions
+- WalletConnect integration
+
+---
+
+## Additional Resources
+
+- [GitHub](https://github.com/azbang/near-connect)

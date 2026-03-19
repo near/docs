@@ -1,0 +1,226 @@
+---
+mode: wide
+---
+
+<h1 class="text-5xl font-bold tracking-tight text-center pb-0 mb-0">
+  NEAR Developer Docs
+</h1>
+<p class="text-xl text-center text-gray-500 max-w-2xl mx-auto py-0 pb-4">
+  It has never been easier to build smart contracts, decentralized applications, and native cross-chain applications.
+</p>
+
+<Tabs>
+  <Tab title="Smart Contract">
+    <Columns cols={2}>
+      <div>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <Badge color="green" shape="pill" icon="clock">~5 min</Badge>
+          <Badge color="gray" shape="pill">Rust</Badge>
+          <Badge color="gray" shape="pill">JavaScript</Badge>
+          <Badge color="gray" shape="pill">Python</Badge>
+        </div>
+        <h3 class="text-xl font-bold mb-2">Deploy your first contract in minutes</h3>
+        <p class="text-gray-500 mt-2 mb-5">
+          Write smart contracts in Rust, JavaScript, TypeScript or Python. Scaffold a working project with a single command, then build, test, and deploy.
+        </p>
+        <a href="/smart-contracts/quickstart" style={{display:'inline-flex',alignItems:'center',gap:'8px',padding:'9px 18px',borderRadius:'8px',background:'#2563eb',color:'#fff',fontWeight:'600',textDecoration:'none',fontSize:'14px',marginBottom:'16px'}}>
+          Start the quickstart →
+        </a>
+        <Card title="What is a smart contract?" icon="book-open" href="/smart-contracts/what-is" horizontal arrow>
+          Concepts, storage model, and how execution works on NEAR.
+        </Card>
+        <Card title="Contract anatomy" icon="layers" href="/smart-contracts/anatomy/actions" horizontal arrow>
+          Actions, callbacks, cross-contract calls, and best practices.
+        </Card>
+      </div>
+      <CodeGroup>
+
+```bash bash
+$> npx create-near-app@latest
+
+======================================================
+👋 Welcome to Near! Learn more: https://docs.near.org/
+🔧 Let's get your project ready.
+======================================================
+
+✅ What do you want to build? › "Smart Contract"
+✅ Name your project to create a contract: "hello-near"
+✅ Success! Created 'hello-near', a smart contract in Rust
+
+
+Build, test, and deploy your contract using cargo:
+ * cargo near build
+ * cargo test
+ * cargo near deploy
+```
+
+      </CodeGroup>
+    </Columns>
+  </Tab>
+  <Tab title="Web App">
+    <Columns cols={2}>
+      <div>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <Badge color="green" shape="pill" icon="clock">~10 min</Badge>
+          <Badge color="gray" shape="pill">React</Badge>
+          <Badge color="gray" shape="pill">TypeScript</Badge>
+        </div>
+        <h3 class="text-xl font-bold mb-2">Connect your frontend to NEAR</h3>
+        <p class="text-gray-500 mt-2 mb-5">
+          Use <code>near-api-js</code> and the Wallet Selector to authenticate users and call smart contracts from any frontend framework.
+        </p>
+        <a href="/web3-apps/quickstart" style={{display:'inline-flex',alignItems:'center',gap:'8px',padding:'9px 18px',borderRadius:'8px',background:'#2563eb',color:'#fff',fontWeight:'600',textDecoration:'none',fontSize:'14px',marginBottom:'16px'}}>
+          Start the quickstart →
+        </a>
+        <Card title="Wallet authentication" icon="wallet" href="/web3-apps/concepts/web-login" horizontal arrow>
+          Connect wallets, handle sessions, and manage user accounts.
+        </Card>
+        <Card title="Data types reference" icon="book-open" href="/web3-apps/concepts/data-types" horizontal arrow>
+          How NEAR types map to JavaScript in near-api-js.
+        </Card>
+      </div>
+      <CodeGroup>
+
+```bash bash
+$> npx create-near-app@latest
+
+======================================================
+👋 Welcome to Near! Learn more: https://docs.near.org/
+🔧 Let's get your project ready.
+======================================================
+
+✅ What do you want to build? › "A Web App"
+✅ Select a framework for your frontend › "Vite (React)"
+✅ Name your project: "hello-near"
+✅ Success! Created 'hello-near', a web-app using Vite React.
+
+Start using your new NEAR app:
+ * cd hello-near
+ * npm run dev
+```
+
+      </CodeGroup>
+    </Columns>
+  </Tab>
+  <Tab title="Chain Abstraction">
+    <Columns cols={2}>
+      <div>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <Badge color="blue" shape="pill" icon="link">Multi-chain</Badge>
+          <Badge color="gray" shape="pill">Ethereum</Badge>
+          <Badge color="gray" shape="pill">Bitcoin</Badge>
+          <Badge color="gray" shape="pill">Solana</Badge>
+        </div>
+        <h3 class="text-xl font-bold mb-2">Sign transactions on any chain</h3>
+        <p class="text-gray-500 mt-2 mb-5">
+          Use Chain Signatures to derive threshold keys and sign transactions on any blockchain — all from a single NEAR account, no bridge or wrapped assets required.
+        </p>
+        <a href="/chain-abstraction/chain-signatures/getting-started" style={{display:'inline-flex',alignItems:'center',gap:'8px',padding:'9px 18px',borderRadius:'8px',background:'#2563eb',color:'#fff',fontWeight:'600',textDecoration:'none',fontSize:'14px',marginBottom:'16px'}}>
+          Get started →
+        </a>
+        <Card title="What is chain abstraction?" icon="book-open" href="/chain-abstraction/what-is" horizontal arrow>
+          How NEAR lets one account control wallets on any chain.
+        </Card>
+        <Card title="Chain Signatures guide" icon="key" href="/chain-abstraction/chain-signatures" horizontal arrow>
+          Key derivation, MPC signing, and implementation details.
+        </Card>
+      </div>
+      <CodeGroup>
+
+```javascript multichain.js
+import { Account, KeyPair, JsonRpcProvider, KeyPairSigner } from "near-api-js"
+import { getAdapter, chains } from "multichain.js"
+
+async function main() {
+  const nearProvider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" })
+  const nearAccount = new Account("account.testnet", nearProvider, "ed25519:...")
+
+  const arbitrum = getAdapter({ chain: chains.ARBITRUM, mpcNetwork: "testnet" })
+  const arbAddress = await arbitrum.getAddressControlledBy({ nearAddress: nearAccount.accountId })
+  const arbBalance = await arbitrum.getBalance({ address: arbAddress })
+  console.log("Controlled Account", { arbAddress, arbBalance })
+
+  await arbitrum.transfer({
+    to: "0x2f318C334780961FB129D2a6c30D0763d9a5C970",
+    amount: "10000000000000000", // 0.01 ETH
+    nearAccount,
+  })
+}
+```
+
+      </CodeGroup>
+    </Columns>
+  </Tab>
+</Tabs>
+
+---
+
+## Platform capabilities
+
+<CardGroup cols={3}>
+  <Card title="Sub-second finality" icon="zap" horizontal>
+    Transactions confirm in ~1–2 seconds on mainnet with deterministic finality. No reorgs, no waiting.
+  </Card>
+  <Card title="Near-zero fees" icon="circle-dollar-sign" horizontal>
+    Transaction fees under $0.001. Storage costs ~1 NEAR per 100 KB — fully refundable on deletion.
+  </Card>
+  <Card title="Multi-language contracts" icon="code" horizontal>
+    Write in Rust, JavaScript/TypeScript, Python, or Go. Full WASM runtime, no new syntax to learn.
+  </Card>
+  <Card title="Chain Signatures" icon="key" horizontal>
+    Derive threshold keys for any chain — Bitcoin, Ethereum, Solana — from one NEAR account.
+  </Card>
+  <Card title="TEE-backed agents" icon="shield-check" horizontal>
+    Run AI inference inside Trusted Execution Environments for verifiable, tamper-proof outputs.
+  </Card>
+  <Card title="Sharded & scalable" icon="server" horizontal>
+    Nightshade sharding enables linear throughput scaling as validator count grows.
+  </Card>
+</CardGroup>
+
+---
+
+## Get started in 2 steps
+
+<Steps>
+  <Step title="Create a testnet account">
+    Get a human-readable account like `yourname.testnet` and fund it immediately with the faucet — no wallet install required.
+
+    <Card title="Create account" icon="user-plus" href="/getting-started/create-account" horizontal arrow>
+      Free testnet account with instant NEAR balance. Ready in under 60 seconds.
+    </Card>
+  </Step>
+  <Step title="Scaffold your project">
+    Run `create-near-app` to generate a working smart contract or full-stack web app in your preferred language.
+
+    ```bash
+    npx create-near-app@latest
+    ```
+  </Step>
+</Steps>
+
+---
+
+## Browse by topic
+
+<CardGroup cols={3}>
+  <Card title="NEAR Protocol" icon="layers" href="/protocol/accounts-contracts/account-model" cta="Read docs" arrow>
+    Accounts, access keys, gas, transactions, and the NEAR runtime.
+  </Card>
+  <Card title="Smart Contracts" icon="code" href="/smart-contracts/what-is" cta="Read docs" arrow>
+    Write and deploy contracts in Rust, TypeScript, or Python.
+  </Card>
+  <Card title="Web3 Apps" icon="globe" href="/web3-apps/quickstart" cta="Quickstart" arrow>
+    Connect frontends to NEAR using near-api-js and the Wallet Selector.
+  </Card>
+  <Card title="Chain Abstraction" icon="link" href="/chain-abstraction/what-is" cta="Explore" arrow>
+    Sign transactions on any chain from a single NEAR account.
+  </Card>
+  <Card title="Primitives" icon="blocks" href="/primitives/what-is" cta="Browse" arrow>
+    FTs, NFTs, DAOs, DEXes, liquid staking, and more — ready to use.
+  </Card>
+  <Card title="Data Infrastructure" icon="database" href="/data-infrastructure/what-is" cta="Explore" arrow>
+    Index and query on-chain data with NEAR Lake, BigQuery, and indexers.
+  </Card>
+</CardGroup>
+

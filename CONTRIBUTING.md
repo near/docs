@@ -13,14 +13,6 @@ If verbosity flags are available, please include those to offer as much informat
 
 When opening a pull request, please use the typical open-source flow of forking the desired repository and opening a pull request from your forked repository. (More information on [technical contributions here](https://wiki.near.org/development/how-to-contribute).)
 
-## Testing
-
-Please note that for technical contributions, NEAR runs a battery of continuous integration tools and tests for each pull request.
-
-It's encouraged to write unit tests on new features. Many NEAR repositories have built-in scripts that run tests locally. Tests may check linting and must be addressed.
-
-For example, a repository might have `yarn test` available. It's a good idea to run tests locally before submitting a pull request, as these will be caught during the CI process.
-
 ### Thank you
 
 NEAR values all contributors to the projects in the ecosystem and invites public discussion on the tech and vision. Please feel free to join the conversation using the links offered at [near.help](https://near.help).

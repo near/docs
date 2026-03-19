@@ -1,0 +1,11 @@
+:root {
+  --explain-card-bg: #f1f5f9;
+  --explain-card-active-bg: #eef2ff;
+  --explain-card-border: #c7d2fe;
+}
+
+.dark {
+  --explain-card-bg: #161b22;
+  --explain-card-active-bg: #21262d;
+  --explain-card-border: transparent;
+}

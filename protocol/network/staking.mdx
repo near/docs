@@ -1,0 +1,254 @@
+---
+title: Validator Staking
+description: "Learn how to stake NEAR, delegate to validators, track rewards, and withdraw staked tokens safely."
+---
+
+import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
+
+NEAR uses a Proof-of-Stake (PoS), meaning that users chose the active node validators by delegating their tokens to them.
+
+In this article you'll find a detailed explanation of the staking process, including delegating, viewing balances, and withdrawing using the [NEAR CLI](../../tools/cli).
+
+<Note>
+**Contract source code**
+
+You can review the Staking pool smart contract source code in [this GitHub repository](https://github.com/near/core-contracts/tree/master/staking-pool).
+</Note>
+
+---
+
+## Delegate NEAR tokens
+
+Before delegating, you need to choose a validator (a node that participates in staking).
+
+Check [NearBlocks](https://nearblocks.io/node-explorer), [Pikespeak](https://pikespeak.ai/validators/overview) or [Near Staking](https://near-staking.com/), and look for validators with a good track record, uptime, and reasonable commission rates.
+
+<Accordion title="List validators using CLI">
+
+  If you prefer, you can get the list of current validators by using the [`near-validator`](../../tools/cli#validator-extension) CLI:
+
+  ```sh
+  near-validator validators network-config mainnet now
+  ```
+
+</Accordion>
+
+### Stake Tokens
+
+<Tabs>
+  <Tab title="Staking CLI">
+    ```sh
+    near staking delegation <user-account.near> deposit-and-stake '100 NEAR' <my_validator> network-config mainnet sign-with-keychain
+    ```
+  </Tab>
+  <Tab title="Function Call">
+    ```sh
+    near call <my_validator> deposit_and_stake --useAccount <user-account.near> --deposit 100
+    ```
+  </Tab>
+  <Tab title="Lantstool">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/deposit-and-stake.json" />
+  </Tab>
+</Tabs>
+
+<Tip>
+
+You will start earning staking rewards after the next epoch (approximately 12 hours)
+
+</Tip>
+
+### Staked Balance
+To check your staked balance on the `<my_validator>` pool for the `<user-account.near>` account, run the following command:
+
+<Tabs>
+  <Tab title="Staking CLI">
+    ```sh
+    near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+    ```
+  </Tab>
+  <Tab title="Function Call">
+    ```sh
+    near view <my_validator> get_account_staked_balance '{"account_id": "<user-account.near>"}'
+    ```
+  </Tab>
+  <Tab title="Lantstool">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/account-staked-balance.json" />
+  </Tab>
+</Tabs>
+
+<Accordion title="Staking pool balances">
+
+  You can view additional information and balances from the staking pool using the following CLI commands:
+
+  #### Total staked balance of the entire pool
+  <Tabs>
+    <Tab title="🖥️ CLI">
+      ```sh
+      near view <my_validator> get_total_staked_balance '{}'
+      ```
+    </Tab>
+    <Tab title="Lantstool">
+      <TryOutOnLantstool path="docs/2.build/5.primitives/staking/pool-total-staked-balance.json" />
+    </Tab>
+  </Tabs>
+
+  #### Owner of the staking pool
+  <Tabs>
+    <Tab title="🖥️ CLI">
+      ```sh
+      near view <my_validator> get_owner_id '{}'
+      ```
+    </Tab>
+    <Tab title="Lantstool">
+      <TryOutOnLantstool path="docs/2.build/5.primitives/staking/pool-owner.json" />
+    </Tab>
+  </Tabs>
+
+  #### Current reward fee
+  <Tabs>
+    <Tab title="🖥️ CLI">
+      ```sh
+      near view <my_validator> get_reward_fee_fraction '{}'
+      ```
+    </Tab>
+    <Tab title="Lantstool">
+      <TryOutOnLantstool path="docs/2.build/5.primitives/staking/reward-fee.json" />
+    </Tab>
+  </Tabs>
+
+  #### Owner's balance
+  <Tabs>
+    <Tab title="🖥️ CLI">
+      ```sh
+      near view <my_validator> get_account_total_balance '{"account_id": "owner"}'
+      ```
+    </Tab>
+    <Tab title="Lantstool">
+      <TryOutOnLantstool path="docs/2.build/5.primitives/staking/owner-balance.json" />
+    </Tab>
+  </Tabs>
+
+  #### Staking key
+  <Tabs>
+    <Tab title="🖥️ CLI">
+      ```sh
+      near view <my_validator> get_staking_key '{}'
+      ```
+    </Tab>
+    <Tab title="Lantstool">
+      <TryOutOnLantstool path="docs/2.build/5.primitives/staking/staking-key.json" />
+    </Tab>
+  </Tabs>
+
+</Accordion>
+
+---
+
+## Withdrawing Staked Tokens
+
+To withdraw your staked tokens, you will first need to "un-delegate" them from the validator.
+
+Your tokens will enter a 4 epoch (~24 hours) unbonding period before they can be withdrawn.
+
+### Unstake Tokens
+
+<Tabs>
+  <Tab title="Staking CLI">
+
+```sh
+near staking delegation <user-account.near> unstake '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
+```
+
+<Info>
+
+Use the `unstake-all` command to to unstake all tokens at once:
+
+```sh
+near staking delegation <user-account.near> unstake-all <my_validator> network-config mainnet sign-with-keychain
+```
+
+</Info>
+
+  </Tab>
+  <Tab title="Function Call">
+
+    ```sh
+    near call <my_validator> unstake '{"amount": "100000000000000000000000000"}' --useAccount <user-account.near>
+    ```
+
+    <Info>
+    Call the `unstake_all` method to unstake all tokens at once
+    </Info>
+
+  </Tab>
+  <Tab title="Lantstool">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/unstake.json" />
+  </Tab>
+</Tabs>
+
+### Query Unstaked Balance
+
+<Tabs>
+  <Tab title="Staking CLI">
+
+```sh
+near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+```
+
+  </Tab>
+  <Tab title="Function Call">
+
+```sh
+near view <my_validator> get_account_unstaked_balance '{"account_id": "<user-account.near>"}'
+```
+
+  </Tab>
+  <Tab title="Lantstool">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/account-unstaked-balance.json" />
+  </Tab>
+</Tabs>
+
+### Withdraw Tokens
+
+Once the unbonding period has passed, you can withdraw your unstaked tokens:
+
+<Tabs>
+  <Tab title="Staking CLI">
+
+```sh
+near staking delegation <user-account.near> withdraw '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
+```
+
+<Info>
+
+If you want to withdraw all available tokens, you can use the `withdraw-all` command:
+
+```sh
+near staking delegation <user-account.near> withdraw-all <my_validator> network-config mainnet sign-with-keychain
+```
+
+</Info>
+
+  </Tab>
+  <Tab title="Function Call">
+
+```sh
+near call <my_validator> withdraw '{"amount": "100000000000000000000000000"}' --useAccount <user-account.near>
+```
+
+  </Tab>
+  <Tab title="Lantstool">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/withdraw-unstaked-tokens.json" />
+  </Tab>
+</Tabs>
+
+---
+
+## Tools and Resources
+
+- Supported wallets for staking and managing your tokens:
+  - [Ecosystem Wallets](https://wallet.near.org/)
+- To explore validators and staking pools:
+  - [NearBlocks](https://nearblocks.io/)
+  - [Pikespeak](https://pikespeak.ai/)
+  - [NEAR Staking](https://near-staking.com/)
