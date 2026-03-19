@@ -15,29 +15,36 @@ Moreover, when using the local `sandbox` you gain complete control of the networ
 2. Simulate errors on callbacks.
 3. Control the time-flow and fast-forward into the future (Rust ready, TS coming soon).
 
-In NEAR, integration tests are implemented using a framework called **Workspaces**. Workspaces comes in two flavors: [🦀 Rust](https://github.com/near/workspaces-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).
+In NEAR, integration tests are implemented using a framework called **Sandbox**. Sandbox comes in two flavors: [🦀 Rust](https://github.com/near/near-sandbox-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).
 
 All of our [examples](https://github.com/near-examples) come with integration testing.
 
 :::note Sandbox Testing
 
-NEAR Workspaces allows you to write tests once, and run them either on `testnet` or a local `Sandbox`. By **default**, Workspaces will start a **sandbox** and run your tests **locally**. Lets dive into the features of our framework and see how they can help you.
+NEAR Sandbox allows you to write tests once, and run them either on `testnet` or a local `Sandbox`. By **default**, Sandbox will start a **sandbox** and run your tests **locally**. Lets dive into the features of our framework and see how they can help you.
 :::
 
 ---
 
 ## Create Accounts
 
+### Account
+
+<Tabs groupId="code-tabs">
+  <TabItem value="rust" label="🌐 🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="16" end="31" />
+
+  </TabItem>
+</Tabs>
+
+<hr class="subsection" />
+
 ### Dev Account
 
 <Tabs groupId="code-tabs">
-  <TabItem value="rust" label="🦀 Rust" default>
-
-  <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="15" end="19" />
-
-  </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
@@ -52,13 +59,6 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 ### Subaccount
 
 <Tabs groupId="code-tabs">
-  <TabItem value="rust" label="🦀 Rust" default>
-
-  <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="31" end="45" />
-
-  </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
@@ -76,8 +76,8 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="54" end="61" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="40" end="57" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -97,8 +97,8 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="70" end="74" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="66" end="89" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -120,14 +120,14 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="83" end="88" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="98" end="102" />
 
   :::tip
   You don't need to assert compiling process everytime. You can use `?` operator to get the result as `Vec<u8>` without dealing with `Result<Vec<u8>>, Error>` type. That way you can directly use this vector to deploy the wasm file into account. Your test will still fail if compiling process fails.
 
   ```rust
-  let contract_wasm = near_workspaces::compile_project("./").await?;
+  let contract_wasm_path = cargo_near_build::build_with_cli(Default::default())?;
   ```
   :::
   </TabItem>
@@ -160,8 +160,8 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="95" end="102" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="109" end="116" />
 
   :::tip
   The same as in the case of compilation wasm from code, you don't need to assert reading file process everytime. You can use `expect` method to get the reading file result as `Vec<u8>` and provide error message as a parameter. Your test will still fail if compiling process fails.
@@ -200,13 +200,6 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
 ### Dev Deploy
 
 <Tabs groupId="code-tabs">
-  <TabItem value="rust" label="🦀 Rust" default>
-
-  <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="109" end="115" />
-
-  </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
 
   <Github fname="main.ava.js" language="js"
@@ -224,8 +217,8 @@ NEAR Workspaces allows you to write tests once, and run them either on `testnet`
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="127" end="134" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="123" end="159" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -249,8 +242,8 @@ Show contract's logs.
   You can use `println` or `dbg!` when you want to see information from your code.
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="15" end="19" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="24" end="31" />
 
   In Rust, the output from your code is captured by default and not displayed in the terminal. In order to see the output, you have to use the `--nocapture` flag
 
@@ -259,10 +252,12 @@ Show contract's logs.
     If you want to access the contracts logs, you can find them in the `tx_outcome.logs()` Vec.
 
     ```rust
-    let tx_outcome = user_account
-            .call(contract.id(), "set_greeting")
-            .args_json(json!({"greeting": "Hello World!"}))
-            .transact()
+    let tx_outcome = contract
+            .call_function("set_greeting", json!({"greeting": "Hello World!"}))
+            .transaction()
+            .gas(Gas::from_tgas(100))
+            .with_signer(contract.account_id().clone(), signer.clone())
+            .send_to(&sandbox_network)
             .await?;
         assert!(tx_outcome.is_success());
 
@@ -300,8 +295,8 @@ Show contract's logs.
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="146" end="155" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="168" end="199" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -323,8 +318,8 @@ Show contract's logs.
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="164" end="176" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="208" end="257" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -344,8 +339,8 @@ Show contract's logs.
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="185" end="209" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="266" end="323" />
 
   </TabItem>
   <TabItem value="js" label="🌐 JavaScript">
@@ -370,8 +365,8 @@ You can alter contract code, accounts, and access keys using normal transactions
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="218" end="239" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="332" end="384" />
 
   </TabItem>
 
@@ -396,14 +391,14 @@ This approach is more complex to do and also cannot be performed without restart
 
 ## Time Traveling
 
-`workspaces` offers support for forwarding the state of the blockchain to the future. This means contracts which require time sensitive data do not need to sit and wait the same amount of time for blocks on the sandbox to be produced. We can simply just call `worker.fast_forward` to get us further in time:
+`sandbox` offers support for forwarding the state of the blockchain to the future. This means contracts which require time sensitive data do not need to sit and wait the same amount of time for blocks on the sandbox to be produced. We can simply just call `sandbox.fast_forward` to get us further in time:
 
 <Tabs groupId="code-tabs">
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="248" end="272" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="393" end="444" />
 
   _[See the full example on Github](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)._
 
@@ -423,7 +418,7 @@ This approach is more complex to do and also cannot be performed without restart
 
 ## Using Testnet
 
-NEAR Workspaces is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](../../protocol/network/networks.md). Some reasons this might be helpful:
+NEAR Sandbox is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](../../protocol/network/networks.md). Some reasons this might be helpful:
 
 * Gives higher confidence that your contracts work as expected
 * You can test against deployed testnet contracts
@@ -433,8 +428,8 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
   <TabItem value="rust" label="🦀 Rust" default>
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="279" end="304" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="458" end="499" />
 
   :::tip
   If you can create a new account on each iteration as well.
@@ -530,7 +525,7 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
 
 ## Spooning Contracts
 
-[Spooning a blockchain](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain) is copying the data from one network into a different network. NEAR Workspaces makes it easy to copy data from Mainnet or Testnet contracts into your local Sandbox environment:
+[Spooning a blockchain](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain) is copying the data from one network into a different network. NEAR Sandbox makes it easy to copy data from Mainnet or Testnet contracts into your local Sandbox environment:
 
 <Tabs groupId="code-tabs">
 
@@ -541,8 +536,8 @@ NEAR Workspaces is set up so that you can write tests once and run them against 
   Create a function called `pull_contract` which will pull the contract's `.wasm` file from the chain and deploy it onto your local sandbox. You'll have to re-initialize it with all the data to run tests. This is because the contract's data is too big for the RPC service to pull down. (limits are set to 50Mb)
 
   <Github fname="basics.rs" language="rust"
-      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-rs/tests/basics.rs"
-      start="331" end="353" />
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="507" end="537" />
 
   </TabItem>
 
@@ -581,7 +576,7 @@ Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋
 <CodeTabs>
   <Language value="rust" language="rust">
     <Github fname="test_basics.rs"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/tests/test_basics.rs" start="1" end="32"/>
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/tests/test_basics.rs" start="1" end="71"/>
   </Language>
   <Language value="js" language="js">
     <Github fname="main.ava.ts"
@@ -613,7 +608,7 @@ In most cases we will want to test complex methods involving multiple users and 
 
 ### Advanced Examples
 
-- [Rust](https://github.com/near/near-workspaces-rs/tree/main/examples)
+- [Rust](https://github.com/near/near-sandbox-rs/tree/main/examples)
 - [JavaScript](https://github.com/near/near-workspaces-js/tree/main/__tests__)
 
 <hr class="subsection" />
