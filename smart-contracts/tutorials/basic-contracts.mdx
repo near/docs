@@ -1,0 +1,266 @@
+---
+title: Using our Basic Examples
+description: "Learn NEAR smart contract basics through practical examples: Counter, Guest Book, Donation, Coin Flip, and Hello World."
+---
+
+We have created a selection of basic smart contracts to help you get started building Smart Contracts on NEAR.
+
+![img](/assets/docs/smart-contracts/tutorials/basic-contracts.png)
+
+These examples cover fundamental concepts such as state management, function calls, and token interactions. Each example is designed to be simple and easy to understand, making them perfect for beginners.
+
+<Tip>
+
+Before tackling these examples, be sure to follow our [Quickstart Guide](../quickstart)
+
+</Tip>
+
+---
+
+## Examples
+
+<CardGroup cols={3}>
+  <Card
+    title="Hello World"
+    img="/assets/docs/smart-contracts/tutorials/examples/hello-near-landing-page.png"
+    href="https://github.com/near-examples/hello-near-examples"
+  >
+    A simple smart contract that stores a `string` message on its state. [Open in NearPlay](https://nearplay.app/embed/919be62a-e1bc-49b5-b858-fb3d567d8489)
+  </Card>
+  <Card
+    title="Counter"
+    img="/assets/docs/smart-contracts/tutorials/examples/count-on-near-banner.webp"
+    href="https://github.com/near-examples/counters"
+  >
+    A friendly counter that stores a number with methods to increment, decrement, and reset it. [Open in NearPlay](https://nearplay.app/embed/3450a8a0-57dc-4d3a-b5d0-7bed58a0c2a9)
+  </Card>
+  <Card
+    title="Guest Book"
+    img="/assets/docs/smart-contracts/tutorials/examples/guest-book.webp"
+    href="https://github.com/near-examples/guest-book-examples"
+  >
+    Users can sign the guest book, optionally paying `0.01 Ⓝ` to mark their messages as "premium". [Open in NearPlay](https://nearplay.app/embed/3862fb26-aeee-471f-90ad-f900e820de3f)
+  </Card>
+  <Card
+    title="Donation"
+    img="/assets/docs/smart-contracts/tutorials/examples/donation.webp"
+    href="https://github.com/near-examples/donation-examples"
+  >
+    Forward NEAR tokens to a beneficiary while tracking all donations. Learn how contracts handle token transfers. [Open in NearPlay](https://nearplay.app/embed/436d9ff9-a15c-418a-8350-ae5eead387c7)
+  </Card>
+  <Card
+    title="Coin Flip"
+    img="/assets/docs/smart-contracts/tutorials/examples/coin-flip.webp"
+    href="https://github.com/near-examples/coin-flip-examples"
+  >
+    Guess the outcome of a coin flip and earn points. Demonstrates how to handle randomness on the blockchain. [Open in NearPlay](https://nearplay.app/embed/10aab4a0-deee-45a3-b847-8d229358cad3)
+  </Card>
+</CardGroup>
+
+<Tip>
+**Try Without Setup**
+Want to try these examples immediately? Click the **"Open in NearPlay"** button on any card above to start coding in [NearPlay](https://nearplay.app) - no installation required!
+</Tip>
+
+---
+
+## Structure of the Examples
+
+All examples follow a consistent structure, making it easy to navigate between them. Each repository contains the **same smart contract** implemented in **Rust**, **Javascript**, and sometimes **Python**, along with a **simple frontend** to interact with the contract.
+
+```bash
+┌── contract-rs # contract's code in Rust
+│    ├── src    # contract's code
+│    ├── tests  # sandbox test
+│    ├── Cargo.toml
+│    └── rust-toolchain.toml
+├── contract-ts # contract's code in Typescript
+│    ├── src    # contract's code
+│    ├── sandbox-test  # sandbox test
+│    ├── package.json
+│    └── tsconfig.json
+├── contract-py # contract's code in Python (some examples)
+│    ├── contract.py  # contract's code
+│    ├── tests        # sandbox test
+│    ├── pyproject.toml
+│    └── uv.lock
+├── frontend    # React + Next.JS frontend
+│    ├── src    # frontend's implementation
+│    ├── public 
+│    ├── package.json
+│    ├── next.config.js
+│    └── jsconfig.json
+└── README.md
+```
+
+---
+
+## Frontend
+
+Each example includes a **Next.JS** frontend that is very simple to start:
+
+```bash
+cd frontend
+yarn
+yarn dev
+```
+
+These frontends are useful to demonstrate how to connect a web application to NEAR, as well as how to interact with the smart contracts.
+
+<Tip>
+Each frontend connects to a **pre-deployed version of the contract**. Check `./frontend/config.js` to see which contract is being used, or change it to your own deployed contract
+</Tip>
+
+### NEAR Connector Hooks
+
+All frontends use [`near-connect-hooks`](https://www.npmjs.com/package/near-connect-hooks), which wrap the functionality of [NEAR Connector](../../web3-apps/tutorials/wallet-login) to handle the connection between the web app and the NEAR blockchain.
+
+The `near-connect-hooks` expose a `NearProvider` that is used to wrap the entire application, usually in `pages/_app.js`:
+
+```jsx
+import { NearProvider } from "near-connect-hooks";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <NearProvider>
+      <Navigation />
+      <Component {...pageProps} />
+    </NearProvider>
+  );
+}
+```
+
+<br />
+
+We can then use the **`useNearWallet` hook** within any component to access all NEAR-related functionality, such as login/logout, view and call functions, and sign transactions:
+
+```jsx
+import { useNearWallet } from 'near-connect-hooks';
+
+export default function App() {
+  // Login / Logout functionality
+  const { loading, signIn, signOut, signedAccountId } = useNearWallet();
+
+  // To interact with the contract
+  const { viewFunction, callFunction, signAndSendTransactions } = useNearWallet();
+}
+```
+
+---
+
+## Smart Contract
+
+All repositories include the same smart contract implemented in different languages, including **Rust**, **Javascript**, and sometimes **Python**.
+
+The contracts are implemented following the latest versions of each SDK, and include sandbox tests showcasing how to properly test smart contracts in a realistic environment. 
+
+### Testing
+
+Each contract includes sandbox tests that simulate real user interactions. For example, in the `Guest Book` example, the tests cover scenarios like having multiple accounts signing the guest book, including premium messages.
+
+<Tabs>
+  <Tab title="🦀 Rust">
+  
+```bash
+cd contract-rs
+cargo test
+```
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+```bash
+cd contract-ts
+yarn
+yarn test
+```
+
+  </Tab>
+  <Tab title="🐍 Python">
+  
+```bash
+cd contract-py
+uv run pytest
+```
+
+  </Tab>
+</Tabs>
+
+### Creating an Account
+
+All smart contracts can be built and deployed using the `NEAR CLI`. A good first step is to always create a new NEAR account to deploy your contract:
+
+```bash
+near create-account <accountId> --useFaucet
+```
+
+<Tip>
+
+Here we are using the `--useFaucet` flag to create a new account and pre-fund it with the [testnet faucet](../../getting-started/faucet)
+
+</Tip>
+
+### Building & Deploying
+
+Once you created an account to host the contract, you can build and deploy it: 
+
+<Tabs>
+  <Tab title="🦀 Rust">
+  
+```bash
+cd contract-rs
+cargo near deploy build-non-reproducible-wasm <accountId>
+```
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+```bash
+cd contract-ts
+npm run build
+near deploy <accountId> ./build/<contract-name>.wasm
+```
+
+  </Tab>
+  <Tab title="🐍 Python">
+  
+```bash
+cd contract-py
+uvx nearc contract.py
+near deploy <accountId> <contract-name>.wasm
+```
+
+  </Tab>
+</Tabs>
+
+### Interacting via CLI
+
+Once your contract is deployed, check the `README.md` of each repository to see the available methods you can call.
+
+As a general guide, the `NEAR CLI` has two main ways to interact with smart contracts:
+
+```bash
+# Call a read-only (view) method
+near view <contractId> <methodName>
+
+# Call a method that changes state
+near call <contractId> <methodName> <arguments> --useAccount <yourAccount>
+
+# Call a method and attach NEAR tokens
+near call <contractId> <methodName> <arguments> --useAccount <yourAccount> --deposit 1
+```
+
+<Tip>
+Check each repository's README for the specific methods available in that contract.
+</Tip>
+
+---
+
+## Moving Forward
+
+After exploring these basic examples, you can:
+
+- **Modify the contracts** - Try adding new functionality to deepen your understanding
+- **Learn the fundamentals** - Check out [Contract Anatomy](/smart-contracts/anatomy/anatomy) and [Storage](/smart-contracts/anatomy/storage)
+{/* - **Explore advanced examples** - See [Cross-Contract Calls](./xcc) and [Factory Contracts](./factory) */}
+
