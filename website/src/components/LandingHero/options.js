@@ -76,29 +76,4 @@ Start using your new NEAR app:
  * npm run dev
 `,
   },
-  {
-    name: "AI Agents",
-    label: "ai.js",
-    description: "Build agents that anyone can verify and trust, with seamless cross-chain capabilities",
-    buttonText: "Build an AI Agent",
-    buttonLink: "/ai/introduction",
-    language: "js",
-    code: `import { Hono } from "hono";
-import { agentAccountId, agent } from "@neardefi/shade-agent-js";
-
-const app = new Hono();
-
-app.get("/", async (c) => {
-  const accountId = await agentAccountId();
-  const balance = await agent("getBalance");
-
-  return c.json({
-    accountId,
-    balance,
-  });
-});
-
-
-export default app;`,
-  },
 ];

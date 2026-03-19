@@ -192,50 +192,7 @@ const sidebar = {
       items: [
         'ai/introduction',
         'ai/tools-for-ai',
-        {
-          "Shade Agents": [
-            {
-              "Getting Started": [
-                "ai/shade-agents/getting-started/introduction",
-                {
-                  "Quickstart": [
-                    "ai/shade-agents/getting-started/quickstart/deploying",
-                    "ai/shade-agents/getting-started/quickstart/components",
-                  ]
-                },
-              ]
-            },
-            {
-              "Concepts": [
-                "ai/shade-agents/concepts/framework-overview",
-                "ai/shade-agents/concepts/what-can-you-build",
-                "ai/shade-agents/concepts/ai-inference",
-                "ai/shade-agents/concepts/terminology",
-                "ai/shade-agents/concepts/security",
-              ]
-            },
-            {
-              "Tutorials": [
-                "ai/shade-agents/tutorials/tutorials-overview",
-                {
-                  "AI DAO": [
-                    "ai/shade-agents/tutorials/ai-dao/overview",
-                    "ai/shade-agents/tutorials/ai-dao/dao-agent-contract",
-                    "ai/shade-agents/tutorials/ai-dao/dao-agent",
-                    "ai/shade-agents/tutorials/ai-dao/deploying",
-                  ]
-                }
-              ]
-            },
-            {
-              "Reference": [
-                "ai/shade-agents/reference/api",
-                "ai/shade-agents/reference/cli",
-                "ai/shade-agents/reference/agent-contract",
-              ]
-            },
-          ]
-        },
+        'ai/shade-agents'
       ],
     },
     {

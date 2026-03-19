@@ -3,7 +3,6 @@ import Card from '@site/src/components/UI/Card'
 
 
 // Are you a developer building on NEAR? Do you have questions about the NEAR protocol, tools, or best practices? Join our weekly office hours to connect with technical experts and get your questions answered.
-// Building a Shade Agent? Using chain signatures? Book a session with Owen: https://calendly.com/owen-proximity/office-hours
 // Building a Smart Contract? A general question about the NEAR protocol? Book a session with Guille: https://calendar.app.google/6q2ssGUmvFcMoJk97
 
 
@@ -25,22 +24,17 @@ export default function OfficeHours() {
                 </Card>
               </div>
               <div className="col col--4 text--center">
-                <Card title="Shade Agent">
-                  <a href="https://calendly.com/owen-proximity/office-hours" className="button button--primary margin-bottom--sm">Book Support</a>
-                </Card>
-              </div>
-              <div className="col col--4 text--center">
                 <Card title="Smart Contracts">
                   <a href="https://calendar.app.google/6q2ssGUmvFcMoJk97" className="button button--primary margin-bottom--sm">Book Support</a>
                 </Card>
               </div>
-            </div>
-            <div className="row margin-top--lg">
               <div className="col col--4 text--center">
                 <Card title="Web3 App">
                   <a href="https://calendar.app.google/6q2ssGUmvFcMoJk97" className="button button--primary margin-bottom--sm">Book Support</a>
                 </Card>
               </div>
+            </div>
+            <div className="row margin-top--lg" style={{ justifyContent: 'center' }}>
               <div className="col col--4 text--center">
                 <Card title="Data Infra">
                   <a href="https://calendar.app.google/6q2ssGUmvFcMoJk97" className="button button--primary margin-bottom--sm">Book Support</a>
