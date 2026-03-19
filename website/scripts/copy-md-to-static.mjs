@@ -40,7 +40,7 @@ const JSX_COMPONENTS = [
   'Language', 'Block',
   'Quiz', 'Progress','MultipleChoice', 'Option',
   'LantstoolLabel', 'TryOutOnLantstool',
-  'MovingForwardSupportSection', 'SigsSupport', 'TryDemo',
+  'MovingForwardSupportSection',
   'ExplainCode', 'CodeBlock',
   'LandingHero', 'Faucet', 'AIBadges',
   'CreateTokenForm', 'MintNFT',

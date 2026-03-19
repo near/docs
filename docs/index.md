@@ -37,7 +37,7 @@ import AIBadges from '@site/src/components/AIBadges';
     >
       <ul>
         <li><a href="/ai/introduction">Understand AI & Blockchain</a></li>
-        <li><a href="/ai/shade-agents/introduction">Build a Multi-chain Trustless Agent</a></li>
+        <li><a href="/ai/tools-for-ai">Use our tools for AI agents</a></li>
         <li><a href="https://docs.near.ai">Discover the NEAR AI Cloud</a></li>
       </ul>
     </Card>

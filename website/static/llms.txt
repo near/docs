@@ -33,9 +33,6 @@ NEAR is a blockchain platform designed for building scalable, user-friendly dece
 - **NEAR AI**: /ai/introduction
   Build AI agents that can execute on-chain actions, manage wallets, and interact with smart contracts.
 
-- **Shade Agents**: /ai/shade-agents/getting-started/introduction
-  Framework for creating autonomous AI agents with on-chain identity and capabilities.
-
 ### Developer Tools
 - **NEAR CLI**: /tools/cli
   Command-line interface for deploying contracts, managing accounts, calling functions.
