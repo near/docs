@@ -21,7 +21,7 @@ If you want to deploy your own NFT contract, you can create one using our [refer
   ```
 
  </Tab>
-  <Tab title="Lantstool">
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
     <TryOutOnLantstool path="docs/2.build/5.primitives/nft/deploy-nft-contract.json" />
   </Tab>
 </Tabs>
@@ -113,7 +113,7 @@ Here is how to directly interact with the factory contract through your applicat
     near call nft.primitives.near nft_mint '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --depositYocto 10000000000000000000000, --useAccount bob.near
     ```
   </Tab>
-  <Tab title="Lantstool">
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
   <TryOutOnLantstool path="docs/2.build/5.primitives/nft/mint-nft-reference.json" />
   </Tab>
   <Tab title="📄 Contract">
@@ -272,7 +272,7 @@ You can query the NFT's information and metadata by calling the `nft_token`.
   </Accordion>
 
   </Tab>
-  <Tab title="Lantstool">
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
 
   <TryOutOnLantstool path="docs/2.build/5.primitives/nft/query-nft-data-reference.json" />
 
@@ -376,7 +376,7 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
     near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "bob.near"}' --useAccount bob.near --deposit 0.000000000000000000000001
   ```
   </Tab>
-  <Tab title="Lantstool">
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
     <TryOutOnLantstool path="docs/2.build/5.primitives/nft/transfer-nft-reference.json" />
   </Tab>
   <Tab title="📄 Contract">
@@ -432,7 +432,7 @@ near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>
 ```
 
 </Tab>
-  <Tab title="Lantstool">
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
     <TryOutOnLantstool path="docs/2.build/5.primitives/nft/attach-nft-to-call.json" />
   </Tab>
 </Tabs>
@@ -479,7 +479,7 @@ You can authorize other users to transfer an NFT you own. This is useful, for ex
     }' --useAccount <your-account> --depositYocto 1
     ```
 </Tab>
-  <Tab title="Lantstool">
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
     <TryOutOnLantstool path="docs/2.build/5.primitives/nft/approve-user.json" />
   </Tab>
 </Tabs>
