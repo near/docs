@@ -322,4 +322,167 @@ class Contract:
 ```
 
   </TabItem>
+  <TabItem value="go" label="🐹 GO">
+
+Here we lay out some best practices for writing smart contracts in Go on NEAR:
+
+- [Validate early](#validate-early-go)
+- [Use logging](#use-logging-go)
+- [Return Promises](#return-promises-go)
+- [Use SDK collections for large data](#use-sdk-collections-go)
+- [Follow security patterns](#follow-security-patterns-go)
+
+---
+
+## Validate early {#validate-early-go}
+
+Validate inputs, context, and state as early as possible before taking any actions. The earlier you panic, the more [gas](/protocol/gas) you save for the caller.
+
+```go
+// @contract:mutating
+func (c *Contract) SetFee(newFee uint64) error {
+	caller, err := env.GetPredecessorAccountID()
+	if err != nil {
+		return err
+	}
+
+	// Validate permissions early
+	if caller != c.OwnerId {
+		env.PanicStr("Only the owner can set the fee")
+	}
+
+	// Validate input early
+	if newFee > 10000 {
+		env.PanicStr("Fee cannot exceed 10000 basis points")
+	}
+
+	// Only proceed after all checks pass
+	c.Fee = newFee
+	return nil
+}
+```
+
+---
+
+## Use logging {#use-logging-go}
+
+Use `env.LogString` for debug information and to notify users of important events. Log messages are stored on-chain and visible in transaction receipts.
+
+```go
+// @contract:mutating
+func (c *Contract) Transfer(to string, amount string) error {
+	caller, _ := env.GetPredecessorAccountID()
+
+	// Log the transfer for indexers and frontends
+	// Avoid "fmt" in TinyGo — use string concatenation instead
+	env.LogString("Transferring " + amount + " yoctoNEAR from " + caller + " to " + to)
+
+	transferAmount, err := types.U128FromString(amount)
+	if err != nil {
+		return err
+	}
+
+	promise.CreateBatch(to).Transfer(transferAmount)
+	return nil
+}
+```
+
+---
+
+## Return Promises {#return-promises-go}
+
+When making cross-contract calls, use `.Value()` to return the promise result to the caller. This lets the caller (e.g. near-cli or near-api-js) wait for the full result and see failures in the transaction chain.
+
+```go
+// @contract:payable min_deposit=0.00001NEAR
+func (c *Contract) WithdrawAndNotify(receiverId string) {
+	gas := uint64(10 * types.ONE_TERA_GAS)
+
+	// Return the promise chain — the caller will see the final result
+	promise.NewCrossContract(receiverId).
+		Gas(gas).
+		Call("on_deposit_received", map[string]string{}).
+		Value()
+}
+```
+
+---
+
+## Use SDK collections for large data {#use-sdk-collections-go}
+
+For data sets that grow over time, use SDK collections instead of native Go slices or maps. Native collections are fully loaded into memory on every call, which costs more gas as they grow.
+
+```go
+import "github.com/vlmoon99/near-sdk-go/collections"
+
+// Good: SDK collections load entries lazily
+// @contract:state
+type TokenContract struct {
+	Balances *collections.LookupMap[string, string] `json:"balances"`
+	Owners   *collections.UnorderedSet[string]      `json:"owners"`
+}
+
+// @contract:init
+func (c *TokenContract) Init() {
+	c.Balances = collections.NewLookupMap[string, string]("b")
+	c.Owners   = collections.NewUnorderedSet[string]("o")
+}
+```
+
+:::tip
+
+Use native Go slices and maps only for **small, fixed-size** data (up to ~100 entries) that is always read together. For anything larger, use SDK collections.
+
+:::
+
+---
+
+## Follow security patterns {#follow-security-patterns-go}
+
+Apply security best practices to protect your contract from common vulnerabilities.
+
+```go
+// @contract:payable min_deposit=0.01NEAR
+// @contract:mutating
+func (c *Contract) Deposit() error {
+	caller, err := env.GetPredecessorAccountID()
+	if err != nil {
+		return err
+	}
+
+	deposit, err := env.GetAttachedDeposit()
+	if err != nil {
+		return err
+	}
+
+	// Re-entrancy protection: update state BEFORE any external calls
+	current, _ := c.Balances.Get(caller)
+	currentAmount, _ := types.U128FromString(current)
+	newAmount, _ := currentAmount.Add(deposit)
+	c.Balances.Insert(caller, newAmount.String())
+
+	// Only after state is updated, perform external calls if needed
+	env.LogString("Deposit recorded for " + caller)
+	return nil
+}
+
+// Access control: only the contract itself can call this callback
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) OnExternalCallDone(result promise.PromiseResult) {
+	currentAccount, _ := env.GetCurrentAccountId()
+	caller, _ := env.GetPredecessorAccountID()
+
+	if caller != currentAccount {
+		env.PanicStr("Callbacks can only be called by the contract itself")
+	}
+
+	if !result.Success {
+		env.LogString("External call failed — rolling back state changes")
+		// manually revert any state changes made before the cross-contract call
+	}
+}
+```
+
+  </TabItem>
 </Tabs>
