@@ -51,8 +51,44 @@ A smart contract can also update itself by implementing a method that:
         url="https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs"
         start="10" end="31" />
 
-</Language>
+  </Language>
+  <Language value="go" language="go">
 
+```go
+package main
+
+import (
+	_ "embed"
+
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+)
+
+// @contract:state
+type Contract struct {
+	OwnerId string `json:"owner_id"`
+}
+
+// @contract:mutating
+func (c *Contract) UpdateContract(wasmBytes []byte) {
+	caller, err := env.GetPredecessorAccountID()
+	if err != nil {
+		env.PanicStr("Failed to get caller")
+	}
+
+	if caller != c.OwnerId {
+		env.PanicStr("Only the owner can update the contract")
+	}
+
+	currentAccountId, _ := env.GetCurrentAccountId()
+
+	// Deploy the new wasm to this contract's own account
+	promise.CreateBatch(currentAccountId).
+		DeployContract(wasmBytes)
+}
+```
+
+  </Language>
 </CodeTabs>
 
 #### How to Invoke Such Method?
@@ -154,6 +190,34 @@ using the following state:
 
 </Language>
 
+<Language value="go" language="go">
+
+```go
+package main
+
+import "github.com/vlmoon99/near-sdk-go/collections"
+
+type PostedMessage struct {
+	Premium bool   `json:"premium"`
+	Sender  string `json:"sender"`
+	Text    string `json:"text"`
+}
+
+// @contract:state
+type GuestBook struct {
+	Messages *collections.Vector[PostedMessage] `json:"messages"`
+	Payments *collections.Vector[string]        `json:"payments"`
+}
+
+// @contract:init
+func (c *GuestBook) Init() {
+	c.Messages = collections.NewVector[PostedMessage]("m")
+	c.Payments = collections.NewVector[string]("p")
+}
+```
+
+</Language>
+
 </CodeTabs>
 
 #### Update Contract
@@ -175,6 +239,26 @@ the `PostedMessage` itself, so you change the contract to:
 <Github fname="index.js"
       url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
       start="21" end="43" />
+
+</Language>
+
+<Language value="go" language="go">
+
+```go
+// Updated PostedMessage now includes the payment field
+type PostedMessage struct {
+	Premium bool   `json:"premium"`
+	Sender  string `json:"sender"`
+	Text    string `json:"text"`
+	Payment string `json:"payment"` // new field — payment is now embedded in the message
+}
+
+// @contract:state
+type GuestBookV2 struct {
+	Messages *collections.Vector[PostedMessage] `json:"messages"`
+	// Payments vector removed — payment is now part of PostedMessage
+}
+```
 
 </Language>
 
@@ -210,6 +294,64 @@ state, removes the `payments` vector and adds the information to the
 <Github fname="index.js"
       url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
       start="5" end="68" />
+
+</Language>
+
+<Language value="go" language="go">
+
+```go
+package main
+
+import "github.com/vlmoon99/near-sdk-go/collections"
+
+// OldGuestBook represents the previous contract state structure.
+// Used only during migration to read and transform existing data.
+type OldGuestBook struct {
+	Messages *collections.Vector[OldMessage] `json:"messages"`
+	Payments *collections.Vector[string]     `json:"payments"`
+}
+
+type OldMessage struct {
+	Premium bool   `json:"premium"`
+	Sender  string `json:"sender"`
+	Text    string `json:"text"`
+}
+
+// @contract:state
+type GuestBookV2 struct {
+	Messages *collections.Vector[PostedMessage] `json:"messages"`
+}
+
+// @contract:init
+// Migrate reads the old state, merges payments into messages, and writes the new state.
+// The @contract:init directive ensures this runs as an initialization method,
+// replacing the current state with the migrated version.
+func (c *GuestBookV2) Migrate() {
+	// Load old state manually — same storage keys as before
+	old := &OldGuestBook{
+		Messages: collections.NewVector[OldMessage]("m"),
+		Payments: collections.NewVector[string]("p"),
+	}
+
+	c.Messages = collections.NewVector[PostedMessage]("m")
+
+	count := old.Messages.Length()
+	for i := uint64(0); i < count; i++ {
+		oldMsg, _ := old.Messages.Get(i)
+		payment, _ := old.Payments.Get(i)
+
+		c.Messages.Push(PostedMessage{
+			Premium: oldMsg.Premium,
+			Sender:  oldMsg.Sender,
+			Text:    oldMsg.Text,
+			Payment: payment,
+		})
+	}
+
+	// Clear old payments vector to free orphaned storage keys
+	old.Payments.Clear()
+}
+```
 
 </Language>
 

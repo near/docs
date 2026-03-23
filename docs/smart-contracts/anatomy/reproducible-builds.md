@@ -110,4 +110,42 @@ To ensure your Python contracts are reproducible:
 4. **Avoid system-specific code**: Don't rely on features that might behave differently across operating systems.
 
 </TabItem>
+  <TabItem value="go" label="🐹 GO">
+
+## Go Contracts and Reproducible Builds
+
+Go contracts compiled with `near-go build` use **TinyGo** under the hood. Build outputs can vary between TinyGo versions and operating systems, similar to Rust before `cargo-near`.
+
+:::info
+
+Official tooling for reproducible Go contract builds (equivalent to `cargo-near` + Docker for Rust) is not yet available. This feature is planned for a future release of `near-go`.
+
+:::
+
+### Best practices in the meantime
+
+To maximize the chance of consistent builds across environments:
+
+1. **Pin your TinyGo version**: Install a specific version of `near-go` and TinyGo and document it in your project's README.
+
+   ```bash
+   # Check your near-go version
+   near-go --version
+
+   # Check your TinyGo version
+   tinygo version
+   ```
+
+2. **Pin your `near-sdk-go` version**: Use a fixed version in your `go.mod` rather than a floating tag.
+
+   ```go
+   // go.mod
+   require github.com/vlmoon99/near-sdk-go v0.1.1
+   ```
+
+3. **Use CI for builds**: Build your WASM in a controlled CI environment (e.g. GitHub Actions) using a pinned Docker image with a fixed Go and TinyGo version. Publish the resulting WASM as a release artifact alongside your source code.
+
+4. **Provide the source**: Publish your contract's source code on a public repository so users can verify the logic independently, even before binary verification tooling is available.
+
+  </TabItem>
 </Tabs>

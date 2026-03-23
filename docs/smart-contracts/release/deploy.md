@@ -45,6 +45,14 @@ Thanks to the `NEAR CLI` deploying a contract is as simple as:
 
   </TabItem>
 
+  <TabItem value="go" label="🐹 GO">
+
+  ```bash
+  near-go build
+  ```
+
+  </TabItem>
+
 </Tabs>
 
 ### Create an Account and Deploy

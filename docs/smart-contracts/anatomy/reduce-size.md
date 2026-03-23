@@ -302,4 +302,115 @@ def frequently_called_method(self, data):
 ```
 
   </TabItem>
+  <TabItem value="go" label="🐹 GO">
+
+## Advice & examples
+
+Go contracts are compiled to WASM via **TinyGo**, which already applies aggressive size optimizations compared to the standard Go compiler. The `near-go build` command uses size-optimized TinyGo settings by default.
+
+Below are additional strategies to further reduce your contract size.
+
+---
+
+## Use `near-go build` (default)
+
+Always build with `near-go build` instead of raw `tinygo`. It applies the correct flags for NEAR and enables size optimizations automatically:
+
+```bash
+near-go build
+```
+
+To inspect the intermediate generated code or set a custom output name:
+
+```bash
+near-go build --output my_contract.wasm --keep-generated
+```
+
+---
+
+## Minimize struct fields
+
+Every field stored in the contract state is serialized to JSON. Keep your state structs lean — only store what you need on-chain.
+
+```go
+// Avoid: storing redundant or derived data
+// @contract:state
+type BadContract struct {
+    Balance    string `json:"balance"`
+    BalanceStr string `json:"balance_str"` // redundant — derive it when needed
+    LastCaller string `json:"last_caller"`
+    CallCount  uint64 `json:"call_count"`  // may not be necessary
+}
+
+// Better: store only essential state
+// @contract:state
+type GoodContract struct {
+    Balance string `json:"balance"`
+}
+```
+
+---
+
+## Avoid large dependencies
+
+TinyGo has a limited standard library. Avoid importing large packages that bring in code not needed at runtime. Prefer the SDK's built-in utilities:
+
+```go
+// Avoid: importing "fmt" for formatting — it adds significant size
+import "fmt"
+env.LogString(fmt.Sprintf("value: %d", x))
+
+// Better: use strconv or SDK helpers for simple conversions
+import "strconv"
+env.LogString("value: " + strconv.FormatUint(x, 10))
+```
+
+---
+
+## Use SDK collections for large data
+
+Native Go slices and maps are fully serialized into the `STATE` key on every call, making the contract state grow with the collection. Use SDK collections to store entries as separate storage keys:
+
+```go
+import "github.com/vlmoon99/near-sdk-go/collections"
+
+// Avoid for large datasets: native map is fully loaded on every call
+// @contract:state
+type BadContract struct {
+    Balances map[string]string `json:"balances"`
+}
+
+// Better: SDK LookupMap only loads entries on demand
+// @contract:state
+type GoodContract struct {
+    Balances *collections.LookupMap[string, string] `json:"balances"`
+}
+```
+
+---
+
+## Panic early, before doing expensive work
+
+Failing fast with `env.PanicStr` saves gas and avoids wasted computation. Validate all inputs and permissions before executing any logic:
+
+```go
+// @contract:mutating
+func (c *Contract) AdminAction(data string) {
+    caller, _ := env.GetPredecessorAccountID()
+
+    // Validate permissions immediately
+    if caller != c.OwnerId {
+        env.PanicStr("Only the owner can call this method")
+    }
+
+    // Validate input before processing
+    if len(data) == 0 {
+        env.PanicStr("Data must not be empty")
+    }
+
+    // ... proceed with the actual logic
+}
+```
+
+  </TabItem>
 </Tabs>

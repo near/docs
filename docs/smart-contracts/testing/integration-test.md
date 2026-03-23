@@ -17,7 +17,13 @@ Moreover, when using the local `sandbox` you gain complete control of the networ
 
 In NEAR, integration tests are implemented using a framework called **Workspaces**. Workspaces comes in two flavors: [🦀 Rust](https://github.com/near/workspaces-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).
 
-All of our [examples](https://github.com/near-examples) come with integration testing.
+For **Go contracts**, the `near-go` CLI wraps the Rust Workspaces framework behind a simple command:
+
+```bash
+near-go test project
+```
+
+This command compiles your Go contract to WASM, spins up a local sandbox, and runs integration tests written in Rust against it. All of our [examples](https://github.com/near-examples) come with integration testing.
 
 :::note Sandbox Testing
 
@@ -606,6 +612,100 @@ In most cases we will want to test complex methods involving multiple users and 
             start="51" end="75" />
   </Language>
 </CodeTabs>
+
+---
+
+## Go Integration Testing
+
+Go contracts use the Rust `workspaces-rs` framework for integration tests. The workflow is:
+1. Build your contract to WASM with `near-go build`
+2. Write integration tests in a separate Rust project using `workspaces-rs`
+3. Run with `cargo test`
+
+:::note Unit tests vs Integration tests
+
+`near-go test project` runs **unit tests** using TinyGo (equivalent to `tinygo test ./...`). For full integration tests that deploy to a sandbox, use the `workspaces-rs` Rust crate as described below.
+
+:::
+
+### Project Structure
+
+```bash
+my-contract/
+├── contract/
+│   ├── main.go          # your Go contract
+│   ├── go.mod
+│   └── go.sum
+└── integration-tests/   # Standalone Rust integration test project
+    ├── Cargo.toml
+    └── tests/
+        └── integration_test.rs
+```
+
+### Running Tests
+
+```bash
+# Step 1: Build the Go contract to WASM
+cd contract && near-go build
+
+# Step 2: Run integration tests (from the project root)
+cd integration-tests && cargo test
+```
+
+### Writing Integration Tests
+
+Integration tests follow the `workspaces-rs` pattern. Create an `integration-tests/` directory next to your `contract/` folder with a `Cargo.toml` and a test file in `tests/`:
+
+```rust
+// integration-tests/tests/integration_test.rs
+use near_workspaces::types::NearToken;
+use serde_json::json;
+
+#[tokio::test]
+async fn test_greeting() -> anyhow::Result<()> {
+    let sandbox = near_workspaces::sandbox().await?;
+    let wasm = std::fs::read("../contract/main.wasm")?;
+    let contract = sandbox.dev_deploy(&wasm).await?;
+
+    // Initialize the contract
+    contract
+        .call("init")
+        .args_json(json!({}))
+        .transact()
+        .await?
+        .into_result()?;
+
+    // Call a view method
+    let greeting: String = contract
+        .view("get_greeting")
+        .args_json(json!({}))
+        .await?
+        .json()?;
+
+    assert_eq!(greeting, "Hello from NEAR!");
+    Ok(())
+}
+```
+
+```toml
+# integration-tests/Cargo.toml
+[package]
+name = "integration-tests"
+version = "0.1.0"
+edition = "2021"
+
+[dev-dependencies]
+near-workspaces = "0.14"
+tokio = { version = "1", features = ["full"] }
+anyhow = "1"
+serde_json = "1"
+```
+
+:::tip
+
+You can also test your Go contract from NEAR testnet by deploying it first with `near deploy` and using `near call` / `near view` commands directly.
+
+:::
 
 ---
 
