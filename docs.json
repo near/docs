@@ -58,6 +58,20 @@
       "defaults": "all"
     }
   },
+  "redirects": [
+    {
+      "source": "/ai/shade-agents",
+      "destination": "/ai/shade-agents/getting-started/introduction"
+    },
+    {
+      "source": "/ai/shade-agents/",
+      "destination": "/ai/shade-agents/getting-started/introduction"
+    },
+    {
+      "source": "/ai/shade-agents/:path*",
+      "destination": "/ai/shade-agents/getting-started/introduction"
+    }
+  ],
   "navigation": {
     "global": {
       "anchors": [
