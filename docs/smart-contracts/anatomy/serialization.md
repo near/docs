@@ -116,6 +116,17 @@ The `NEAR SDK RS` currently implements the `near_sdk::json_types::{U64, I64, U12
 that you can use for input / output of data.
 :::
 
+:::tip Go: u64 as strings
+The Go SDK follows the same rule. Use `string` for `uint64` values in function parameters and return types when they may exceed 53 bits. For 128-bit token amounts, use `types.Uint128` from the Go SDK.
+
+```go
+// Use string for large numbers passed as function arguments
+type MyInput struct {
+  Amount string `json:"amount"` // pass as "1000000000000000000000000"
+}
+```
+:::
+
 
 ---
 
@@ -130,6 +141,10 @@ complex objects into smaller streams of bytes.
 :::tip SDK-JS still uses json
 The JavaScript SDK uses JSON to serialize objects in the state, but the borsh implementation
 should arrive soon
+:::
+
+:::tip Go SDK uses JSON for state
+The Go SDK also uses JSON (not Borsh) to serialize the contract state. Struct fields must have `json:"field_name"` tags for correct serialization and deserialization.
 :::
 
 #### Example

@@ -7,6 +7,7 @@ const lang2label = {
   rust: '🦀 Rust',
   js: '🌐 Javascript',
   ts: '🌐 Typescript',
+  go: '🐹 Go',
 };
 
 export function CodeTabs({ children }) {

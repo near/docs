@@ -109,6 +109,8 @@ func (c *Contract) ExampleTransferToken(input TransferTokenInput) error {
 }
 ```
 
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L26-L36" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
 </TabItem>
 
 </Tabs>
@@ -305,6 +307,9 @@ func (c *Contract) ExampleFunctionCallCallback(input MessageInput, result promis
 }
 
 ```
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L45-L73" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
 </TabItem>
 
 </Tabs>
@@ -427,6 +432,9 @@ func (c *Contract) ExampleCreateSubaccount(prefix string) {
 		Transfer(amount)
 }
 ```
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L78-L94" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
 </TabItem>
 
 </Tabs>
@@ -573,6 +581,8 @@ func (c *Contract) ExampleCreateAccount(args CreateAccountInput) {
 }
 ```
 
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L104-L115" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
 </TabItem>
 </Tabs>
 
@@ -669,6 +679,8 @@ func (c *Contract) ExampleDeployContract(prefix string) {
 		DeployContract(contractWasm)
 }
 ```
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L120-L129" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
 
 </TabItem>
 </Tabs>
@@ -797,6 +809,9 @@ func (c *Contract) ExampleAddKeys(input AddKeysInput) {
 		AddFullAccessKey([]byte(input.PublicKey), 0)
 }
 ```
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L139-L148" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
 </TabItem>
 </Tabs>
 
@@ -950,6 +965,9 @@ func (c *Contract) ExampleSelfDeleteAccount(input SelfDeleteInput) {
 		DeleteAccount(input.Beneficiary)
 }
 ```
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L162-L179" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
 </TabItem>
 </Tabs>
 

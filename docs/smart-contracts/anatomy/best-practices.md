@@ -484,5 +484,7 @@ func (c *Contract) OnExternalCallDone(result promise.PromiseResult) {
 }
 ```
 
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
   </TabItem>
 </Tabs>

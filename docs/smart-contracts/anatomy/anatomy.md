@@ -167,5 +167,5 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
     start="2" end="32" />
 
 <File language="python" fname="hello-near" url="https://github.com/r-near/near-py-examples/blob/main/hello-near.py" start="2" end="32" />
-<File language="go" fname="hello-near" url="https://github.com/vlmoon99/near-sdk-go/blob/main/examples/greeting/contract/main.go" start="1" end="77" />
+<File language="go" fname="hello-near" url="https://github.com/Emir-Asanov/near-go-examples/blob/main/greeting/main.go" start="1" end="28" />
 </ExplainCode>

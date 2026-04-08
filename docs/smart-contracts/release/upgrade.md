@@ -53,41 +53,9 @@ A smart contract can also update itself by implementing a method that:
 
   </Language>
   <Language value="go" language="go">
-
-```go
-package main
-
-import (
-	_ "embed"
-
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-)
-
-// @contract:state
-type Contract struct {
-	OwnerId string `json:"owner_id"`
-}
-
-// @contract:mutating
-func (c *Contract) UpdateContract(wasmBytes []byte) {
-	caller, err := env.GetPredecessorAccountID()
-	if err != nil {
-		env.PanicStr("Failed to get caller")
-	}
-
-	if caller != c.OwnerId {
-		env.PanicStr("Only the owner can update the contract")
-	}
-
-	currentAccountId, _ := env.GetCurrentAccountId()
-
-	// Deploy the new wasm to this contract's own account
-	promise.CreateBatch(currentAccountId).
-		DeployContract(wasmBytes)
-}
-```
-
+    <Github fname="main.go"
+        url="https://github.com/Emir-Asanov/near-go-examples/blob/main/self-update/main.go"
+        start="10" end="53" />
   </Language>
 </CodeTabs>
 
@@ -191,31 +159,9 @@ using the following state:
 </Language>
 
 <Language value="go" language="go">
-
-```go
-package main
-
-import "github.com/vlmoon99/near-sdk-go/collections"
-
-type PostedMessage struct {
-	Premium bool   `json:"premium"`
-	Sender  string `json:"sender"`
-	Text    string `json:"text"`
-}
-
-// @contract:state
-type GuestBook struct {
-	Messages *collections.Vector[PostedMessage] `json:"messages"`
-	Payments *collections.Vector[string]        `json:"payments"`
-}
-
-// @contract:init
-func (c *GuestBook) Init() {
-	c.Messages = collections.NewVector[PostedMessage]("m")
-	c.Payments = collections.NewVector[string]("p")
-}
-```
-
+  <Github fname="main.go"
+      url="https://github.com/Emir-Asanov/near-go-examples/blob/main/guest-book/base/main.go"
+      start="12" end="28" />
 </Language>
 
 </CodeTabs>
@@ -243,23 +189,9 @@ the `PostedMessage` itself, so you change the contract to:
 </Language>
 
 <Language value="go" language="go">
-
-```go
-// Updated PostedMessage now includes the payment field
-type PostedMessage struct {
-	Premium bool   `json:"premium"`
-	Sender  string `json:"sender"`
-	Text    string `json:"text"`
-	Payment string `json:"payment"` // new field — payment is now embedded in the message
-}
-
-// @contract:state
-type GuestBookV2 struct {
-	Messages *collections.Vector[PostedMessage] `json:"messages"`
-	// Payments vector removed — payment is now part of PostedMessage
-}
-```
-
+  <Github fname="main.go"
+      url="https://github.com/Emir-Asanov/near-go-examples/blob/main/guest-book/v2/main.go"
+      start="14" end="26" />
 </Language>
 
 </CodeTabs>
@@ -298,61 +230,9 @@ state, removes the `payments` vector and adds the information to the
 </Language>
 
 <Language value="go" language="go">
-
-```go
-package main
-
-import "github.com/vlmoon99/near-sdk-go/collections"
-
-// OldGuestBook represents the previous contract state structure.
-// Used only during migration to read and transform existing data.
-type OldGuestBook struct {
-	Messages *collections.Vector[OldMessage] `json:"messages"`
-	Payments *collections.Vector[string]     `json:"payments"`
-}
-
-type OldMessage struct {
-	Premium bool   `json:"premium"`
-	Sender  string `json:"sender"`
-	Text    string `json:"text"`
-}
-
-// @contract:state
-type GuestBookV2 struct {
-	Messages *collections.Vector[PostedMessage] `json:"messages"`
-}
-
-// @contract:init
-// Migrate reads the old state, merges payments into messages, and writes the new state.
-// The @contract:init directive ensures this runs as an initialization method,
-// replacing the current state with the migrated version.
-func (c *GuestBookV2) Migrate() {
-	// Load old state manually — same storage keys as before
-	old := &OldGuestBook{
-		Messages: collections.NewVector[OldMessage]("m"),
-		Payments: collections.NewVector[string]("p"),
-	}
-
-	c.Messages = collections.NewVector[PostedMessage]("m")
-
-	count := old.Messages.Length()
-	for i := uint64(0); i < count; i++ {
-		oldMsg, _ := old.Messages.Get(i)
-		payment, _ := old.Payments.Get(i)
-
-		c.Messages.Push(PostedMessage{
-			Premium: oldMsg.Premium,
-			Sender:  oldMsg.Sender,
-			Text:    oldMsg.Text,
-			Payment: payment,
-		})
-	}
-
-	// Clear old payments vector to free orphaned storage keys
-	old.Payments.Clear()
-}
-```
-
+  <Github fname="main.go"
+      url="https://github.com/Emir-Asanov/near-go-examples/blob/main/guest-book/v2/main.go"
+      start="34" end="87" />
 </Language>
 
 </CodeTabs>

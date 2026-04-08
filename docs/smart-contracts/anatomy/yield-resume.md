@@ -68,7 +68,7 @@ func (c *YieldResumeContract) AskAssistant(prompt string) map[string]interface{}
 	// Build arguments to pass to the callback when the promise resumes
 	callbackArgs, _ := json.Marshal(map[string]uint64{"request_id": requestId})
 
-	gas, _ := env.GetPrepaidGas()
+	gas := env.GetPrepaidGas()
 	callbackGas := gas.Inner / 3
 
 	// Create a yielded promise — execution pauses here until resumed externally
@@ -90,6 +90,8 @@ func (c *YieldResumeContract) AskAssistant(prompt string) map[string]interface{}
 	}
 }
 ```
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/yield-resume/main.go" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
 
   </TabItem>
 
@@ -204,6 +206,8 @@ func (c *YieldResumeContract) Respond(input RespondInput) bool {
 }
 ```
 
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/yield-resume/main.go" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
   </TabItem>
 
   <TabItem value="python" label="🐍 Python">
@@ -279,6 +283,8 @@ func (c *YieldResumeContract) ReturnExternalResponse(
 	}
 }
 ```
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/yield-resume/main.go" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
 
   </TabItem>
 

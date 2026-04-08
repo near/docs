@@ -252,6 +252,8 @@ func (c *MyContract) Init() {
 }
 ```
 
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L7-L29" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
   </TabItem>
 
 </Tabs>
@@ -349,6 +351,8 @@ func (c *VectorExample) GetAllNumbers() []string {
 }
 ```
 
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L33-L58" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
   </TabItem>
 </Tabs>
 
@@ -440,6 +444,8 @@ func (c *LookupMapExample) RemoveBalance(accountId string) bool {
 	return ok
 }
 ```
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L62-L85" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
 
   </TabItem>
 </Tabs>
@@ -538,6 +544,8 @@ func (c *UnorderedMapExample) ListAllUsers() map[string]interface{} {
 }
 ```
 
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L89-L118" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
   </TabItem>
 </Tabs>
 
@@ -625,6 +633,8 @@ func (c *LookupSetExample) RemoveFromWhitelist(accountId string) {
 	c.Whitelist.Remove(accountId)
 }
 ```
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L122-L136" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
 
   </TabItem>
 
@@ -721,6 +731,8 @@ func (c *UnorderedSetExample) RemoveOwner(accountId string) {
 }
 ```
 
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L140-L160" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+
   </TabItem>
 </Tabs>
 
@@ -812,6 +824,8 @@ func (c *TreeMapExample) GetAllUsers() []string {
 	return keys
 }
 ```
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L164-L185" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
 
   </TabItem>
 </Tabs>
@@ -945,6 +959,8 @@ func (c *NestedExample) GetUserAssets(userId string) []string {
 In Go, nested `Vector` collections must have their `Len` persisted separately (e.g., in a `LookupMap[string, uint64]`). When reconstructing a vector, pass the saved length via `&collections.Vector[string]{Prefix: prefix, Len: savedLen}`. Always use unique prefixes across all collections.
 
 :::
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L211-L233" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
 
   </TabItem>
 </Tabs>
@@ -1118,6 +1134,8 @@ In order to expose them all through view calls, we can use pagination.
         return result
     }
     ```
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L189-L207" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
 
   </TabItem>
 </Tabs>

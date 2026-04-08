@@ -45,68 +45,9 @@ The tests in the [Counter Example](https://github.com/near-examples/counters) re
             start="18" end="19" />
   </Language>
   <Language value="go" language="go">
-
-```go
-package main
-
-import (
-	"testing"
-
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/system"
-)
-
-func init() {
-	env.SetEnv(system.NewMockSystem())
-}
-
-func setupTest(t *testing.T) *CounterContract {
-	mockSys, ok := env.NearBlockchainImports.(*system.MockSystem)
-	if !ok {
-		t.Fatal("Environment is not set to MockSystem")
-	}
-	mockSys.Storage = make(map[string][]byte)
-
-	contract := &CounterContract{}
-	contract.Init()
-	return contract
-}
-
-func TestCounter_Increment(t *testing.T) {
-	contract := setupTest(t)
-
-	contract.Increment()
-	contract.Increment()
-
-	if contract.GetCount() != 2 {
-		t.Errorf("Expected count 2, got %d", contract.GetCount())
-	}
-}
-
-func TestCounter_Decrement(t *testing.T) {
-	contract := setupTest(t)
-
-	contract.Increment()
-	contract.Decrement()
-
-	if contract.GetCount() != 0 {
-		t.Errorf("Expected count 0, got %d", contract.GetCount())
-	}
-}
-
-func TestCounter_Reset(t *testing.T) {
-	contract := setupTest(t)
-
-	contract.Increment()
-	contract.Increment()
-	contract.Reset()
-
-	if contract.GetCount() != 0 {
-		t.Errorf("Expected count 0 after reset, got %d", contract.GetCount())
-	}
-}
-```
-
+    <Github fname="main_test.go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/counter/main_test.go"
+            start="1" end="60" />
   </Language>
 </CodeTabs>
 
@@ -126,68 +67,9 @@ While doing unit testing you can modify the [Environment variables](../anatomy/e
             start="18" end="19" />
   </Language>
   <Language value="go" language="go">
-
-```go
-package main
-
-import (
-	"testing"
-
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/system"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-func init() {
-	env.SetEnv(system.NewMockSystem())
-}
-
-func TestDonate_RecordsCorrectDonor(t *testing.T) {
-	mockSys, _ := env.NearBlockchainImports.(*system.MockSystem)
-	mockSys.Storage = make(map[string][]byte)
-
-	// Simulate alice.testnet calling with 1 NEAR deposit
-	mockSys.PredecessorAccountIdSys = "alice.testnet"
-	oneNear, _ := types.U128FromString("1000000000000000000000000") // 1 NEAR in yoctoNEAR
-	mockSys.AttachedDepositSys = oneNear
-
-	contract := &DonationContract{}
-	contract.Init("beneficiary.testnet")
-
-	contract.Donate()
-
-	donations := contract.GetDonations()
-	if len(donations) != 1 {
-		t.Fatalf("Expected 1 donation, got %d", len(donations))
-	}
-	if donations[0].Donor != "alice.testnet" {
-		t.Errorf("Expected donor alice.testnet, got %s", donations[0].Donor)
-	}
-}
-
-func TestDonate_MultipleDonors(t *testing.T) {
-	mockSys, _ := env.NearBlockchainImports.(*system.MockSystem)
-	mockSys.Storage = make(map[string][]byte)
-
-	contract := &DonationContract{}
-	contract.Init("beneficiary.testnet")
-
-	halfNear, _ := types.U128FromString("500000000000000000000000") // 0.5 NEAR
-
-	donors := []string{"alice.testnet", "bob.testnet", "carol.testnet"}
-	for _, donor := range donors {
-		mockSys.PredecessorAccountIdSys = donor
-		mockSys.AttachedDepositSys = halfNear
-		contract.Donate()
-	}
-
-	donations := contract.GetDonations()
-	if len(donations) != 3 {
-		t.Errorf("Expected 3 donations, got %d", len(donations))
-	}
-}
-```
-
+    <Github fname="main_test.go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/donation/main_test.go"
+            start="1" end="73" />
   </Language>
 </CodeTabs>
 

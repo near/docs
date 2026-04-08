@@ -593,6 +593,10 @@ Lets take a look at the test of our [Quickstart Project](../quickstart.md) [👋
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-test/main.ava.js" start="11" end="45"/>
   </Language>
+  <Language value="go" language="rust">
+    <Github fname="test_greeting.rs"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/greeting/integration-tests/tests/test_greeting.rs" start="1" end="77"/>
+  </Language>
 </CodeTabs>
 
 <hr class="subsection" />
@@ -610,6 +614,10 @@ In most cases we will want to test complex methods involving multiple users and 
     <Github fname="main.ava.ts"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
             start="51" end="75" />
+  </Language>
+  <Language value="go" language="rust">
+    <Github fname="test_donation.rs"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/donation/integration-tests/tests/test_donation.rs" start="1" end="81"/>
   </Language>
 </CodeTabs>
 
@@ -632,42 +640,54 @@ Go contracts use the Rust `workspaces-rs` framework for integration tests. The w
 
 ```bash
 my-contract/
-├── contract/
-│   ├── main.go          # your Go contract
-│   ├── go.mod
-│   └── go.sum
+├── main.go              # your Go contract
+├── go.mod
+├── go.sum
 └── integration-tests/   # Standalone Rust integration test project
     ├── Cargo.toml
     └── tests/
-        └── integration_test.rs
+        └── test_my_contract.rs
 ```
 
 ### Running Tests
 
 ```bash
-# Step 1: Build the Go contract to WASM
-cd contract && near-go build
+# Step 1: Build the Go contract to WASM (from the contract root)
+near-go build
 
-# Step 2: Run integration tests (from the project root)
-cd integration-tests && cargo test
+# Step 2: Run integration tests
+cargo test --manifest-path integration-tests/Cargo.toml
 ```
 
 ### Writing Integration Tests
 
-Integration tests follow the `workspaces-rs` pattern. Create an `integration-tests/` directory next to your `contract/` folder with a `Cargo.toml` and a test file in `tests/`:
+Integration tests follow the `workspaces-rs` pattern. The compiled `main.wasm` sits one directory above `integration-tests/`, so tests load it with `std::fs::read("../main.wasm")`.
+
+:::caution Double-encoded return values
+
+`near-sdk-go` wraps every return value in an extra JSON string encoding. When reading a view result, always deserialize in **two steps**: first parse the outer `String`, then parse the inner type.
 
 ```rust
-// integration-tests/tests/integration_test.rs
-use near_workspaces::types::NearToken;
+// ✅ Correct two-step deserialization
+let raw: String = contract.view("get_greeting").args_json(json!({})).await?.json()?;
+let greeting: String = serde_json::from_str(&raw)?;
+
+// ❌ Will fail – skips the outer wrapper
+let greeting: String = contract.view("get_greeting").args_json(json!({})).await?.json()?;
+```
+
+:::
+
+```rust
+// integration-tests/tests/test_greeting.rs
 use serde_json::json;
 
 #[tokio::test]
-async fn test_greeting() -> anyhow::Result<()> {
+async fn test_greeting_init() -> anyhow::Result<()> {
     let sandbox = near_workspaces::sandbox().await?;
-    let wasm = std::fs::read("../contract/main.wasm")?;
+    let wasm = std::fs::read("../main.wasm")?;
     let contract = sandbox.dev_deploy(&wasm).await?;
 
-    // Initialize the contract
     contract
         .call("init")
         .args_json(json!({}))
@@ -675,14 +695,32 @@ async fn test_greeting() -> anyhow::Result<()> {
         .await?
         .into_result()?;
 
-    // Call a view method
-    let greeting: String = contract
-        .view("get_greeting")
-        .args_json(json!({}))
-        .await?
-        .json()?;
+    // Two-step deserialization: outer String wrapper → inner type
+    let raw: String = contract.view("get_greeting").args_json(json!({})).await?.json()?;
+    let greeting: String = serde_json::from_str(&raw)?;
+    assert_eq!(greeting, "Hello");
+    Ok(())
+}
 
-    assert_eq!(greeting, "Hello from NEAR!");
+#[tokio::test]
+async fn test_set_greeting() -> anyhow::Result<()> {
+    let sandbox = near_workspaces::sandbox().await?;
+    let wasm = std::fs::read("../main.wasm")?;
+    let contract = sandbox.dev_deploy(&wasm).await?;
+
+    contract.call("init").args_json(json!({})).transact().await?.into_result()?;
+
+    let caller = sandbox.dev_create_account().await?;
+    caller
+        .call(contract.id(), "set_greeting")
+        .args_json(json!({ "greeting": "Howdy" }))
+        .transact()
+        .await?
+        .into_result()?;
+
+    let raw: String = contract.view("get_greeting").args_json(json!({})).await?.json()?;
+    let greeting: String = serde_json::from_str(&raw)?;
+    assert_eq!(greeting, "Howdy");
     Ok(())
 }
 ```
@@ -690,22 +728,25 @@ async fn test_greeting() -> anyhow::Result<()> {
 ```toml
 # integration-tests/Cargo.toml
 [package]
-name = "integration-tests"
+name = "greeting-integration-tests"
 version = "0.1.0"
 edition = "2021"
 
 [dev-dependencies]
-near-workspaces = "0.14"
-tokio = { version = "1", features = ["full"] }
-anyhow = "1"
-serde_json = "1"
+near-workspaces = "0.22.0"
+tokio = { version = "1.41.1", features = ["full"] }
+anyhow = "1.0.93"
+serde_json = "1.0.133"
+serde = { version = "1.0.215", features = ["derive"] }
 ```
 
 :::tip
 
-You can also test your Go contract from NEAR testnet by deploying it first with `near deploy` and using `near call` / `near view` commands directly.
+You can also test your Go contract on NEAR testnet by deploying it first with `near deploy` and calling methods via the `near` CLI.
 
 :::
+
+<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/greeting/integration-tests/tests/test_greeting.rs" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
 
 ---
 
