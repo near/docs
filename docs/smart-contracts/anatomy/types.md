@@ -94,7 +94,7 @@ Python's `int` type has unlimited precision, so it can handle large integers (li
 
 </Block>
 
-<Block highlights='{"go": "49,54,71,92"}' fname="auction" type='info'>
+<Block highlights='{"go": "50,55,72,93"}' fname="auction" type='info'>
 
 :::warning `types.Uint128`
 
@@ -169,7 +169,7 @@ Use `types.U128FromString(str)` to parse from a string, and `.String()` to conve
 
 </Block>
 
-<Block highlights='{"go": "49,54,71,92"}' fname="auction">
+<Block highlights='{"go": "50,55,72,93"}' fname="auction">
 
     ### Handling Tokens
     `$NEAR` tokens are represented as `types.Uint128` in Go, with values in `yoctoNEAR`.
@@ -183,7 +183,7 @@ Use `types.U128FromString(str)` to parse from a string, and `.String()` to conve
 
 </Block>
 
-<Block highlights='{"js": "4,29", "rust": "7,46", "python": "", "go": "32,63"}' fname="auction">
+<Block highlights='{"js": "4,29", "rust": "7,46", "python": "", "go": "32,64"}' fname="auction">
 
     ### Account
     The SDK exposes a special type to handle NEAR Accounts, which automatically checks if the account address is valid
@@ -198,7 +198,7 @@ Use `types.U128FromString(str)` to parse from a string, and `.String()` to conve
 
 </Block>
 
-<Block highlights='{"go": "32,63"}' fname="auction">
+<Block highlights='{"go": "32,64"}' fname="auction">
 
     ### Account IDs
     In Go, NEAR account IDs are represented as `string`. Functions like `env.GetPredecessorAccountID()` and `env.GetCurrentAccountId()` return account IDs as plain strings.

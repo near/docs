@@ -23,7 +23,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "5-22", "rust":"5-7,20-31", "python": "5-19","go":"8-33"}' fname="hello-near">
+<Block highlights='{"js": "5-22", "rust":"5-7,20-31", "python": "5-19","go":"8-27"}' fname="hello-near">
 
     ### Contract's Main Structure
     The contract is described through a structure:
@@ -33,7 +33,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 </Block>
 
 
-<Block highlights='{"go": "8,13,20,30"}' fname="hello-near">
+<Block highlights='{"go": "7,12,18,23"}' fname="hello-near">
 
     ### Comment Directives
 
@@ -114,7 +114,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "5", "rust": "6,10-16", "python": "7-8", "go": "10,15,17,23,32"}' fname="hello-near">
+<Block highlights='{"js": "5", "rust": "6,10-16", "python": "7-8", "go": "9,14,20,25"}' fname="hello-near">
 
     ### Storage (State)
     We call the data stored in the contract [the contract's state](./storage.md).
@@ -140,7 +140,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "12-14", "rust": "22-24", "python": "10-13","go": "20-28"}' fname="hello-near">
+<Block highlights='{"js": "12-14", "rust": "22-24", "python": "10-13","go": "18-21"}' fname="hello-near">
 
     ### Read Only Functions
     Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account.
@@ -149,7 +149,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"js": "17-20", "rust": "27-30", "python": "15-19","go": "30-33"}' fname="hello-near">
+<Block highlights='{"js": "17-20", "rust": "27-30", "python": "15-19","go": "23-27"}' fname="hello-near">
 
     ### State Mutating Functions
     Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network.
