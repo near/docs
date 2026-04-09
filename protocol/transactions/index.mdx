@@ -1,0 +1,14 @@
+---
+title: Transactions
+description: "Learn how users interact with NEAR through transactions composed of actions, signed with private keys, and processed by the network with deterministic gas costs."
+---
+
+Users interact with NEAR by creating transactions. Specifically, users use their account's [private keys](../accounts-contracts/access-keys) to sign transactions, which are then broadcasted and processed by the network.
+
+![Transactions](/assets/docs/welcome-pages/data-lake.png)
+
+A transaction is composed of one or more [`Actions`](./transaction-anatomy), and each action costs a deterministic amount of [gas units](./gas). These gas units are translated into a cost in NEAR tokens, which the user must pay for the transaction to be processed.
+
+<Tip>
+You can use an <a href="https://nearblocks.io/" target="_blank" rel="noopener noreferrer">Explorer</a> to inspect transactions in the NEAR network
+</Tip>
