@@ -2,6 +2,8 @@
 title: Transfers & Actions
 description: "Learn how contracts can make transfers, call other contracts, and more"
 ---
+
+import {Github} from '/snippets/github.jsx';
 This page describes the different types of actions that a smart contract can perform on NEAR like transferring NEAR, calling other contracts, creating sub-accounts, and deploying contracts. It also explains how to add access keys to accounts.
 
 Smart contracts can perform specific `Actions` such as transferring NEAR, or calling other contracts.
@@ -73,39 +75,9 @@ class ExampleContract(Contract):
 </Tab>
 
 <Tab title="🐹 GO">
-
-```go
-package main
-
-import (
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-type TransferTokenInput struct {
-	To     string `json:"to"`
-	Amount string `json:"amount"`
-}
-
-// @contract:payable min_deposit=1NEAR
-func (c *Contract) ExampleTransferToken(input TransferTokenInput) error {
-	amount, err := types.U128FromString(input.Amount)
-	if err != nil {
-		return err
-	}
-
-	promise.CreateBatch(input.To).
-		Transfer(amount)
-
-	return nil
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L26-L36" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go"
+            start="26" end="36" />
 </Tab>
 
 </Tabs>
@@ -252,60 +224,9 @@ class ExampleContract(Contract):
 </Tab>
 
 <Tab title="🐹 GO">
-
-```go
-package main
-
-import (
-	"strconv"
-
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-type MessageInput struct {
-	Message string `json:"message"`
-}
-
-// @contract:payable min_deposit=0.00001NEAR
-func (c *Contract) ExampleFunctionCall() {
-	gas := uint64(types.ONE_TERA_GAS * 10)
-	accountId := "hello-nearverse.testnet"
-	args := map[string]string{
-		"message": "howdy",
-	}
-	promise.NewCrossContract(accountId).
-		Gas(gas).
-		Call("set_greeting", args).
-		Then("example_function_call_callback", args)
-}
-
-// @contract:view
-// @contract:promise_callback
-func (c *Contract) ExampleFunctionCallCallback(input MessageInput, result promise.PromiseResult) MessageInput {
-	env.LogString("Executing callback")
-	env.LogString("Input Message : " + input.Message)
-
-	if result.Success {
-		env.LogString("Cross-contract call executed successfully")
-		env.LogString("Promise Result Status --> " + strconv.FormatInt(int64(result.StatusCode), 10))
-		if len(result.Data) > 0 {
-			env.LogString("Batch call data: " + string(result.Data))
-		}
-	} else {
-		env.LogString("Cross-contract call failed")
-	}
-	return input
-}
-
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L45-L73" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go"
+            start="45" end="73" />
 </Tab>
 
 </Tabs>
@@ -395,41 +316,9 @@ class ExampleContract(Contract):
 
 </Tab>
 <Tab title="🐹 GO">
-
-```go
-package main
-
-import (
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-// @contract:payable min_deposit=0.001NEAR
-func (c *Contract) ExampleCreateSubaccount(prefix string) {
-	currentAccountId, err := env.GetCurrentAccountId()
-	if err != nil {
-		env.PanicStr("Failed to get current account")
-	}
-
-	subaccountId := prefix + "." + currentAccountId
-
-	amount, err := types.U128FromString("1000000000000000000000") //0.001Ⓝ
-	if err != nil {
-		env.PanicStr("Bad amount format")
-	}
-
-	promise.CreateBatch(subaccountId).
-		CreateAccount().
-		Transfer(amount)
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L78-L94" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go"
+            start="78" end="94" />
 </Tab>
 
 </Tabs>
@@ -542,42 +431,9 @@ class ExampleContract(Contract):
 
 </Tab>
 <Tab title="🐹 GO">
-
-```go
-package main
-
-import (
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-type CreateAccountInput struct {
-	AccountId string `json:"account_id"`
-	PublicKey string `json:"public_key"`
-}
-
-// @contract:payable min_deposit=0.002NEAR
-func (c *Contract) ExampleCreateAccount(args CreateAccountInput) {
-	amount, _ := types.U128FromString("2000000000000000000000") // 0.002 NEAR
-	gas := uint64(200 * types.ONE_TERA_GAS)
-
-	//publicKey (base58) - 4omJwNS1WbniWtbPkLYBrFwN3YLeffXCkpvriYgeLhst (generate your own for testing)
-	//accountId - nearsdkdocs1.testnet (write your own for testing)
-	createArgs := map[string]string{
-		"new_account_id": args.AccountId,
-		"new_public_key": args.PublicKey,
-	}
-
-	promise.CreateBatch("testnet").
-		FunctionCall("create_account", createArgs, amount, gas)
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L104-L115" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go"
+            start="104" end="115" />
 </Tab>
 </Tabs>
 
@@ -644,39 +500,9 @@ class ExampleContract(Contract):
 
 </Tab>
 <Tab title="🐹 GO">
-
-```go
-package main
-
-import (
-	_ "embed"
-
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-//go:embed status_message_go.wasm
-var contractWasm []byte
-
-// @contract:state
-type Contract struct{}
-
-// @contract:payable min_deposit=1.1NEAR
-func (c *Contract) ExampleDeployContract(prefix string) {
-	currentAccountId, _ := env.GetCurrentAccountId()
-	subaccountId := prefix + "." + currentAccountId
-	amount, _ := types.U128FromString("1100000000000000000000000") // 1.1Ⓝ
-
-	promise.CreateBatch(subaccountId).
-		CreateAccount().
-		Transfer(amount).
-		DeployContract(contractWasm)
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L120-L129" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go"
+            start="120" end="129" />
 </Tab>
 </Tabs>
 
@@ -774,39 +600,9 @@ class ExampleContract(Contract):
 
 </Tab>
 <Tab title="🐹 GO">
-
-```go
-package main
-
-import (
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-type AddKeysInput struct {
-	Prefix    string `json:"prefix"`
-	PublicKey string `json:"public_key"`
-}
-
-// @contract:payable min_deposit=0.001NEAR
-func (c *Contract) ExampleAddKeys(input AddKeysInput) {
-	currentAccountId, _ := env.GetCurrentAccountId()
-	subaccountId := input.Prefix + "." + currentAccountId
-	amount, _ := types.U128FromString("1000000000000000000000") // 0.001Ⓝ
-
-	promise.CreateBatch(subaccountId).
-		CreateAccount().
-		Transfer(amount).
-		AddFullAccessKey([]byte(input.PublicKey), 0)
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L139-L148" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go"
+            start="139" end="148" />
 </Tab>
 </Tabs>
 
@@ -918,51 +714,9 @@ class ExampleContract(Contract):
 
 </Tab>
 <Tab title="🐹 GO">
-
-```go
-package main
-
-import (
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-type DeleteAccountInput struct {
-	Prefix      string `json:"prefix"`
-	Beneficiary string `json:"beneficiary"`
-}
-
-type SelfDeleteInput struct {
-	Beneficiary string `json:"beneficiary"`
-}
-
-// @contract:payable min_deposit=0.001NEAR
-func (c *Contract) ExampleCreateDeleteAccount(input DeleteAccountInput) {
-	currentAccountId, _ := env.GetCurrentAccountId()
-	subaccountId := input.Prefix + "." + currentAccountId
-	amount, _ := types.U128FromString("1000000000000000000000") // 0.001Ⓝ
-
-	promise.CreateBatch(subaccountId).
-		CreateAccount().
-		Transfer(amount).
-		DeleteAccount(input.Beneficiary)
-}
-
-// @contract:mutating
-func (c *Contract) ExampleSelfDeleteAccount(input SelfDeleteInput) {
-	currentAccountId, _ := env.GetCurrentAccountId()
-
-	promise.CreateBatch(currentAccountId).
-		DeleteAccount(input.Beneficiary)
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go#L162-L179" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/actions/main.go"
+            start="162" end="179" />
 </Tab>
 </Tabs>
 

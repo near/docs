@@ -214,35 +214,11 @@ class MyContract:
 ````
   </Tab>
 
-  <TabItem value="go" label="🐹 GO">
-
-```go
-package main
-
-import "github.com/vlmoon99/near-sdk-go/collections"
-
-// @contract:state
-type MyContract struct {
-	MyVector       *collections.Vector[string]               `json:"my_vector"`
-	MyLookupMap    *collections.LookupMap[string, string]    `json:"my_lookup_map"`
-	MyUnorderedMap *collections.UnorderedMap[string, string] `json:"my_unordered_map"`
-	MyLookupSet    *collections.LookupSet[string]            `json:"my_lookup_set"`
-	MyUnorderedSet *collections.UnorderedSet[string]         `json:"my_unordered_set"`
-}
-
-// @contract:init
-func (c *MyContract) Init() {
-	c.MyVector       = collections.NewVector[string]("v")
-	c.MyLookupMap    = collections.NewLookupMap[string, string]("m")
-	c.MyUnorderedMap = collections.NewUnorderedMap[string, string]("um")
-	c.MyLookupSet    = collections.NewLookupSet[string]("s")
-	c.MyUnorderedSet = collections.NewUnorderedSet[string]("us")
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L7-L29" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
-  </TabItem>
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go"
+            start="7" end="29" />
+  </Tab>
 
 </Tabs>
 
@@ -301,46 +277,9 @@ class VectorExample:
   </Tab>
 
   <Tab title="🐹 GO">
-
-```go
-package main
-
-import "github.com/vlmoon99/near-sdk-go/collections"
-
-// @contract:state
-type VectorExample struct {
-	MyVector *collections.Vector[string] `json:"my_vector"`
-}
-
-// @contract:init
-func (c *VectorExample) Init() {
-	c.MyVector = collections.NewVector[string]("v")
-}
-
-// @contract:mutating
-func (c *VectorExample) AddNumber(number string) uint64 {
-	c.MyVector.Push(number)
-	return c.MyVector.Length()
-}
-
-// @contract:view
-func (c *VectorExample) GetNumber(index uint64) string {
-	val, err := c.MyVector.Get(index)
-	if err != nil {
-		return ""
-	}
-	return val
-}
-
-// @contract:view
-func (c *VectorExample) GetAllNumbers() []string {
-	result, _ := c.MyVector.ToSlice()
-	return result
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L33-L58" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go"
+            start="33" end="58" />
 
   </Tab>
 </Tabs>
@@ -394,48 +333,9 @@ class LookupMapExample:
   </Tab>
 
   <Tab title="🐹 GO">
-
-```go
-package main
-
-import "github.com/vlmoon99/near-sdk-go/collections"
-
-// @contract:state
-type LookupMapExample struct {
-	Balances *collections.LookupMap[string, string] `json:"balances"`
-}
-
-// @contract:init
-func (c *LookupMapExample) Init() {
-	c.Balances = collections.NewLookupMap[string, string]("m")
-}
-
-// @contract:mutating
-func (c *LookupMapExample) SetBalance(accountId string, amount string) {
-	c.Balances.Insert(accountId, amount)
-}
-
-// @contract:view
-func (c *LookupMapExample) GetBalance(accountId string) string {
-	val, err := c.Balances.Get(accountId)
-	if err != nil {
-		return "0"
-	}
-	return val
-}
-
-// @contract:mutating
-func (c *LookupMapExample) RemoveBalance(accountId string) bool {
-	ok, _ := c.Balances.Contains(accountId)
-	if ok {
-		c.Balances.Remove(accountId)
-	}
-	return ok
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L62-L85" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go"
+            start="62" end="85" />
 
   </Tab>
 </Tabs>
@@ -493,49 +393,9 @@ class UnorderedMapExample:
   </Tab>
 
   <Tab title="🐹 GO">
-
-```go
-package main
-
-import "github.com/vlmoon99/near-sdk-go/collections"
-
-// @contract:state
-type UnorderedMapExample struct {
-	UserData *collections.UnorderedMap[string, string] `json:"user_data"`
-}
-
-// @contract:init
-func (c *UnorderedMapExample) Init() {
-	c.UserData = collections.NewUnorderedMap[string, string]("um")
-}
-
-// @contract:mutating
-func (c *UnorderedMapExample) SetUserData(accountId string, data string) {
-	c.UserData.Insert(accountId, data)
-}
-
-// @contract:view
-func (c *UnorderedMapExample) GetUserData(accountId string) string {
-	val, err := c.UserData.Get(accountId)
-	if err != nil {
-		return ""
-	}
-	return val
-}
-
-// @contract:view
-func (c *UnorderedMapExample) ListAllUsers() map[string]interface{} {
-	keys, _ := c.UserData.Keys()
-	values, _ := c.UserData.Values()
-	return map[string]interface{}{
-		"keys":   keys,
-		"values": values,
-	}
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L89-L118" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go"
+            start="89" end="118" />
 
   </Tab>
 </Tabs>
@@ -591,43 +451,11 @@ class LookupSetExample:
 ```
   </Tab>
 
-  <TabItem value="go" label="🐹 GO">
-
-```go
-package main
-
-import "github.com/vlmoon99/near-sdk-go/collections"
-
-// @contract:state
-type LookupSetExample struct {
-	Whitelist *collections.LookupSet[string] `json:"whitelist"`
-}
-
-// @contract:init
-func (c *LookupSetExample) Init() {
-	c.Whitelist = collections.NewLookupSet[string]("s")
-}
-
-// @contract:mutating
-func (c *LookupSetExample) AddToWhitelist(accountId string) {
-	c.Whitelist.Insert(accountId)
-}
-
-// @contract:view
-func (c *LookupSetExample) IsWhitelisted(accountId string) bool {
-	ok, _ := c.Whitelist.Contains(accountId)
-	return ok
-}
-
-// @contract:mutating
-func (c *LookupSetExample) RemoveFromWhitelist(accountId string) {
-	c.Whitelist.Remove(accountId)
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L122-L136" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
-  </TabItem>
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go"
+            start="122" end="136" />
+  </Tab>
 
 </Tabs>
 
@@ -683,47 +511,9 @@ class UnorderedSetExample:
   </Tab>
 
   <Tab title="🐹 GO">
-
-```go
-package main
-
-import "github.com/vlmoon99/near-sdk-go/collections"
-
-// @contract:state
-type UnorderedSetExample struct {
-	Owners *collections.UnorderedSet[string] `json:"owners"`
-}
-
-// @contract:init
-func (c *UnorderedSetExample) Init() {
-	c.Owners = collections.NewUnorderedSet[string]("us")
-}
-
-// @contract:mutating
-func (c *UnorderedSetExample) RegisterOwner(accountId string) {
-	c.Owners.Insert(accountId)
-}
-
-// @contract:view
-func (c *UnorderedSetExample) IsOwner(accountId string) bool {
-	ok, _ := c.Owners.Contains(accountId)
-	return ok
-}
-
-// @contract:view
-func (c *UnorderedSetExample) ListAllOwners() []string {
-	all, _ := c.Owners.All()
-	return all
-}
-
-// @contract:mutating
-func (c *UnorderedSetExample) RemoveOwner(accountId string) {
-	c.Owners.Remove(accountId)
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L140-L160" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go"
+            start="140" end="160" />
 
   </Tab>
 </Tabs>
@@ -777,48 +567,9 @@ class TreeMapExample:
   </Tab>
 
   <Tab title="🐹 GO">
-
-```go
-package main
-
-import "github.com/vlmoon99/near-sdk-go/collections"
-
-// @contract:state
-type TreeMapExample struct {
-	Scores *collections.TreeMap[string, uint64] `json:"scores"`
-}
-
-// @contract:init
-func (c *TreeMapExample) Init() {
-	c.Scores = collections.NewTreeMap[string, uint64]("tm")
-}
-
-// @contract:mutating
-func (c *TreeMapExample) AddScore(userId string, score uint64) {
-	c.Scores.Insert(userId, score)
-}
-
-// @contract:view
-func (c *TreeMapExample) GetMinUser() string {
-	key, _ := c.Scores.MinKey()
-	return key
-}
-
-// @contract:view
-func (c *TreeMapExample) GetMaxUser() string {
-	key, _ := c.Scores.MaxKey()
-	return key
-}
-
-// @contract:view
-func (c *TreeMapExample) GetAllUsers() []string {
-	keys, _ := c.Scores.Keys()
-	return keys
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L164-L185" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go"
+            start="164" end="185" />
 
   </Tab>
 </Tabs>
@@ -901,60 +652,15 @@ In Python, we create unique prefixes for nested collections by including the par
   </Tab>
 
   <Tab title="🐹 GO">
-
-```go
-package main
-
-import "github.com/vlmoon99/near-sdk-go/collections"
-
-// @contract:state
-type NestedExample struct {
-	// Store each user's vector prefix and its current length
-	UserAssetPrefixes *collections.LookupMap[string, string] `json:"user_asset_prefixes"`
-	UserAssetLengths  *collections.LookupMap[string, uint64] `json:"user_asset_lengths"`
-}
-
-// @contract:init
-func (c *NestedExample) Init() {
-	c.UserAssetPrefixes = collections.NewLookupMap[string, string]("up")
-	c.UserAssetLengths  = collections.NewLookupMap[string, uint64]("ul")
-}
-
-// @contract:mutating
-func (c *NestedExample) AddAsset(userId string, asset string) {
-	prefix := "assets:" + userId
-	c.UserAssetPrefixes.Insert(userId, prefix)
-
-	// Restore the vector's length from state, then push the new value
-	currentLen, _ := c.UserAssetLengths.Get(userId)
-	userAssets := &collections.Vector[string]{Prefix: prefix, Len: currentLen}
-	userAssets.Push(asset)
-
-	// Persist the updated length back to state
-	c.UserAssetLengths.Insert(userId, userAssets.Length())
-}
-
-// @contract:view
-func (c *NestedExample) GetUserAssets(userId string) []string {
-	prefix, err := c.UserAssetPrefixes.Get(userId)
-	if err != nil {
-		return []string{}
-	}
-	currentLen, _ := c.UserAssetLengths.Get(userId)
-	userAssets := &collections.Vector[string]{Prefix: prefix, Len: currentLen}
-	result, _ := userAssets.ToSlice()
-	return result
-}
-```
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go"
+            start="211" end="233" />
 
 <Tip>
 
 In Go, nested `Vector` collections must have their `Len` persisted separately (e.g., in a `LookupMap[string, uint64]`). When reconstructing a vector, pass the saved length via `&collections.Vector[string]{Prefix: prefix, Len: savedLen}`. Always use unique prefixes across all collections.
 
 </Tip>
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L211-L233" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
 
   </Tab>
 </Tabs>
@@ -1104,33 +810,8 @@ In order to expose them all through view calls, we can use pagination.
   </Tab>
 
   <Tab title="🐹 GO">
-
-    With Go, pagination over a `Vector` can be done by iterating with `Get` within the requested range.
-
-    ```go
-    // @contract:view
-    func (c *MyContract) GetUpdates(fromIndex uint64, limit uint64) []string {
-        total := c.MyVector.Length()
-        if fromIndex >= total {
-            return []string{}
-        }
-        end := fromIndex + limit
-        if end > total {
-            end = total
-        }
-        result := make([]string, 0, end-fromIndex)
-        for i := fromIndex; i < end; i++ {
-            val, err := c.MyVector.Get(i)
-            if err == nil {
-                result = append(result, val)
-            }
-        }
-        return result
-    }
-    ```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go#L189-L207" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/collections/main.go"
+            start="189" end="207" />
   </Tab>
 </Tabs>

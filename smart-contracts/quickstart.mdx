@@ -178,7 +178,7 @@ In the meantime, please check out the [hello-near](https://github.com/near-examp
 
 </Tab>
 
-<TabItem value="go" label="🐹 GO">
+<Tab title="🐹 GO">
 
 ```bash
 near-go create --project-name auction --module-name auction --project-type smart-contract-empty
@@ -194,13 +194,13 @@ auction/
     └── main.go  # Main contract file
 ```
 
-:::important
+<Important>
 
 When the project is created, replace the contents of `main.go` with the auction contract code shown in the sections below.
 
-:::
+</Important>
 
-</TabItem>
+</Tab>
 
 </Tabs>
 
@@ -242,41 +242,9 @@ The contract stores the highest bid, auction end time, auctioneer address, and a
   </Tab>
 
   <Tab title="🐹 GO">
-
-```go
-// Bid represents a single bid placed in an auction.
-type Bid struct {
-	Bidder string `json:"bidder"`
-	Bid    string `json:"bid"`
-}
-
-type InitInput struct {
-	EndTime    uint64 `json:"end_time"`
-	Auctioneer string `json:"auctioneer"`
-}
-
-// @contract:state
-type AuctionContract struct {
-	HighestBid     Bid    `json:"highest_bid"`
-	AuctionEndTime uint64   `json:"auction_end_time"`
-	Auctioneer     string   `json:"auctioneer"`
-	Claimed        bool     `json:"claimed"`
-}
-
-// @contract:init
-func (c *AuctionContract) Init(input InitInput) {
-	currentAccount, _ := env.GetCurrentAccountId()
-	c.HighestBid = Bid{
-		Bidder: currentAccount,
-		Bid:    "1",
-	}
-	c.AuctionEndTime = input.EndTime
-	c.Auctioneer = input.Auctioneer
-	env.LogString("Auction initialized")
-}
-```
-
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/auction/main.go"
+            start="11" end="40" />
   </Tab>
 </Tabs>
 
@@ -306,47 +274,9 @@ The `bid` function will then validate that the auction is ongoing, if the user b
   </Tab>
 
   <Tab title="🐹 GO">
-
-```go
-// @contract:mutating
-func (c *AuctionContract) Bid() error {
-	blockTime := env.GetBlockTimeMs()
-	if blockTime >= c.AuctionEndTime {
-		return errors.New("auction has ended")
-	}
-
-	deposit, err := env.GetAttachedDeposit()
-	if err != nil {
-		return errors.New("failed to get attached deposit")
-	}
-
-	currentBid, err := types.U128FromString(c.HighestBid.Bid)
-	if err != nil {
-		return errors.New("invalid current bid amount in state")
-	}
-
-	if deposit.Cmp(currentBid) <= 0 {
-		return errors.New("you must place a higher bid")
-	}
-
-	caller, err := env.GetPredecessorAccountID()
-	if err != nil {
-		return errors.New("failed to get caller account")
-	}
-
-	prevBidder := c.HighestBid.Bidder
-	c.HighestBid = Bid{
-		Bidder: caller,
-		Bid:    deposit.String(),
-	}
-
-	promise.CreateBatch(prevBidder).Transfer(currentBid)
-
-	return nil
-}
-```
-
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/auction/main.go"
+            start="42" end="78" />
   </Tab>
 </Tabs>
 
@@ -374,33 +304,9 @@ Once the auction ends, any user can call `claim` to transfer the winning bid to 
   </Tab>
 
   <Tab title="🐹 GO">
-
-```go
-// @contract:mutating
-func (c *AuctionContract) Claim() error {
-	blockTime := env.GetBlockTimeMs()
-	if blockTime <= c.AuctionEndTime {
-		return errors.New("auction has not ended yet")
-	}
-
-	if c.Claimed {
-		return errors.New("auction has already been claimed")
-	}
-
-	c.Claimed = true
-
-	winningBid, err := types.U128FromString(c.HighestBid.Bid)
-	if err != nil {
-		return errors.New("invalid winning bid amount in state")
-	}
-
-	promise.CreateBatch(c.Auctioneer).Transfer(winningBid)
-
-	return nil
-}
-```
-
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/auction/main.go"
+            start="80" end="101" />
   </Tab>
 </Tabs>
 
@@ -428,32 +334,9 @@ At all times, users can query the current state of the auction by calling its vi
   </Tab>
 
   <Tab title="🐹 GO">
-
-```go
-// @contract:view
-func (c *AuctionContract) GetHighestBid() Bid {
-	return c.HighestBid
-}
-
-// @contract:view
-func (c *AuctionContract) GetAuctionEndTime() uint64 {
-	return c.AuctionEndTime
-}
-
-// @contract:view
-func (c *AuctionContract) GetAuctioneer() string {
-	return c.Auctioneer
-}
-
-// @contract:view
-func (c *AuctionContract) GetClaimed() bool {
-	return c.Claimed
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples/blob/main/auction/main.go" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
-
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/main/auction/main.go"
+            start="103" end="121" />
   </Tab>
 </Tabs>
 
