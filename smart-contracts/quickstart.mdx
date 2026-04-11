@@ -105,7 +105,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install NEAR CLI-RS to deploy and interact with the contract
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
-```text
+```
 
 </Tab>
 <Tab title="🐹 GO">
@@ -125,6 +125,11 @@ brew install binaryen
 bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 gvm install go1.25.4 -B
 gvm use go1.25.4 --default
+
+# Install TinyGo (required to compile contracts to WASM)
+# See https://tinygo.org/getting-started/install/ for platform-specific instructions
+brew install tinygo  # macOS
+# or: snap install tinygo  # Linux (snapd)
 
 curl -LO https://github.com/vlmoon99/near-cli-go/releases/latest/download/install.sh && bash install.sh
 
@@ -428,7 +433,7 @@ Now that we know the tests are passing, let us deploy the contract! First, we ne
   
 </Info>
 
-  :::important
+  <Important>
   
   This step requires [Emscripten](https://emscripten.org/) to be installed and accessible in your `PATH`. If you encounter errors during compilation, verify that Emscripten is properly installed with `emcc --version`.
   
@@ -437,7 +442,7 @@ Now that we know the tests are passing, let us deploy the contract! First, we ne
   - `error: invalid version of emscripten` - Your Emscripten version might be too old. Try updating with `./emsdk install latest && ./emsdk activate latest`.
   - `Could not find platform micropython-dev-wasm32` - This typically means the Emscripten installation is incomplete or not properly activated.
   
-  :::
+  </Important>
 
   </Tab>
 
@@ -662,5 +667,8 @@ At the time of this writing, this example works with the following versions:
 - near-sdk-py: `0.7.3`
 - uvx nearc: `0.9.2`
 - emscripten: `4.0.9` (required for Python contracts)
+- Go: `1.25.4`
+- near-go (near-cli-go): `v0.1.1`
+- near-sdk-go: `v0.1.1`
 
 </Accordion>

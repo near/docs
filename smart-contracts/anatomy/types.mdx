@@ -92,13 +92,13 @@ Python's `int` type has unlimited precision, so it can handle large integers (li
 
 <Block highlights='{"go": "50,55,72,93"}' fname="auction" type='info'>
 
-:::warning `types.Uint128`
+<Warning>
+**`types.Uint128`**
 
 Go does not have a native 128-bit integer type. The SDK provides `types.Uint128` to handle large token amounts (e.g. yoctoNEAR values).
 
 Use `types.U128FromString(str)` to parse from a string, and `.String()` to convert back for output. Use `types.U64ToUint128(n)` for small constants.
-
-:::
+</Warning>
 
 </Block>
 

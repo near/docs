@@ -143,9 +143,11 @@ The JavaScript SDK uses JSON to serialize objects in the state, but the borsh im
 should arrive soon
 </Tip>
 
-:::tip Go SDK uses JSON for state
+<Tip>
+**Go SDK uses JSON for state**
+
 The Go SDK also uses JSON (not Borsh) to serialize the contract state. Struct fields must have `json:"field_name"` tags for correct serialization and deserialization.
-:::
+</Tip>
 
 #### Example
 Let's look at this example, written only for educational purposes:
