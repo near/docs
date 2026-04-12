@@ -150,7 +150,7 @@ using the following state:
 
 <Github fname="main.go"
       url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/guest-book/base/main.go"
-      start="12" end="28" />
+      start="12" end="22" />
 
 </CodeGroup>
 
@@ -207,10 +207,9 @@ state, removes the `payments` vector and adds the information to the
 
 </CodeGroup>
 
-Notice that `migrate` is actually an
-[initialization method](../anatomy/storage)
-that **ignores** the existing state (`[#init(ignore_state)]`), thus being able
-to execute and rewrite the state.
+Notice that in Rust/JS, `migrate` is actually an [initialization method](../anatomy/storage) that **ignores** the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
+
+In Go, `Migrate()` is a regular `@contract:mutating` method that reads the old state manually using `env.StateRead()`, transforms it, and writes the new state back — no special init directive is needed.
 
 <Accordion title="Why we should remove old structures from the state?">
 

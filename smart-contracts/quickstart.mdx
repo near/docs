@@ -126,13 +126,7 @@ bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/bins
 gvm install go1.25.4 -B
 gvm use go1.25.4 --default
 
-# Install TinyGo (required to compile contracts to WASM)
-# See https://tinygo.org/getting-started/install/ for platform-specific instructions
-brew install tinygo  # macOS
-# or: snap install tinygo  # Linux (snapd)
-
 curl -LO https://github.com/vlmoon99/near-cli-go/releases/latest/download/install.sh && bash install.sh
-
 ```
 </Tab>
 
@@ -196,15 +190,19 @@ This will generate a project with the following structure:
 
 ```bash
 auction/
-└── contract/
-    ├── go.mod   # Go module definition with near-sdk-go dependency
-    ├── go.sum
-    └── main.go  # Main contract file
+├── go.mod        # Go module definition with near-sdk-go dependency
+├── go.sum
+├── main.go       # Main contract file — replace this with the auction contract below
+└── main_test.go  # Unit tests
+```
+
+```bash
+cd auction
 ```
 
 <Important>
 
-When the project is created, replace the contents of `main.go` with the auction contract code shown in the sections below.
+Replace the contents of `main.go` with the auction contract code shown in the sections below.
 
 </Important>
 

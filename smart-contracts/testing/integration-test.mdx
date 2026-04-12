@@ -15,13 +15,13 @@ Moreover, when using the local `sandbox` you gain complete control of the networ
 
 In NEAR, integration tests are implemented using a framework called **Workspaces**. Workspaces comes in two flavors: [🦀 Rust](https://github.com/near/workspaces-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).
 
-For **Go contracts**, the `near-go` CLI wraps the Rust Workspaces framework behind a simple command:
+For **Go contracts**, unit tests are run with the `near-go` CLI:
 
 ```bash
 near-go test project
 ```
 
-This command compiles your Go contract to WASM, spins up a local sandbox, and runs integration tests written in Rust against it. All of our [examples](https://github.com/near-examples) come with integration testing.
+This runs unit tests using TinyGo and the `MockSystem` environment to simulate the NEAR blockchain locally — no sandbox required. For full integration tests that deploy to a sandbox, Go contracts use the Rust `workspaces-rs` framework. See the [Go Integration Testing](#go-integration-testing) section below.
 
 <Note>
 **Sandbox Testing**
@@ -601,11 +601,11 @@ Go contracts use the Rust `workspaces-rs` framework for integration tests. The w
 2. Write integration tests in a separate Rust project using `workspaces-rs`
 3. Run with `cargo test`
 
-:::note Unit tests vs Integration tests
+<Note>
+**Unit tests vs Integration tests**
 
 `near-go test project` runs **unit tests** using TinyGo (equivalent to `tinygo test ./...`). For full integration tests that deploy to a sandbox, use the `workspaces-rs` Rust crate as described below.
-
-:::
+</Note>
 
 ### Project Structure
 
@@ -634,7 +634,8 @@ cargo test --manifest-path integration-tests/Cargo.toml
 
 Integration tests follow the `workspaces-rs` pattern. The compiled `main.wasm` sits one directory above `integration-tests/`, so tests load it with `std::fs::read("../main.wasm")`.
 
-:::caution Double-encoded return values
+<Warning>
+**Double-encoded return values**
 
 `near-sdk-go` wraps every return value in an extra JSON string encoding. When reading a view result, always deserialize in **two steps**: first parse the outer `String`, then parse the inner type.
 
@@ -646,8 +647,7 @@ let greeting: String = serde_json::from_str(&raw)?;
 // ❌ Will fail – skips the outer wrapper
 let greeting: String = contract.view("get_greeting").args_json(json!({})).await?.json()?;
 ```
-
-:::
+</Warning>
 
 ```rust
 // integration-tests/tests/test_greeting.rs
