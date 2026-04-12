@@ -64,7 +64,7 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"js": "", "rust": "", "python": "", "go": ""}' fname="auction" >
+<Block highlights='{"js": "", "rust": "", "python": "", "go": "22-28"}' fname="auction" >
 
     ### Initializing the State
     After the contract is deployed, its state is empty and needs to be initialized with
@@ -145,16 +145,16 @@ In Python, you need to manage the state initialization explicitly. The SDK doesn
 
 </Block>
 
-<Block highlights='{"go": ""}' fname="hello">
+<Block highlights='{"go": "7-10"}' fname="hello">
 
     ### II. Default State
-    In Go, when no `@contract:init` function is called, the contract's state struct is zero-initialized using Go's default zero values (empty strings, zeros, false booleans).
+    In Go, when no `@contract:init` function is called, the contract's state struct is zero-initialized using Go's default zero values — `""` for strings, `0` for numbers, `false` for booleans.
 
     **Note:** The state can only be initialized once.
 
 </Block>
 
-<Block highlights='{"js": "", "rust":"", "python": "", "go": ""}' fname="hello">
+<Block highlights='{"js": "", "rust":"", "python": "", "go": "7-10"}' fname="hello">
 
     ### Lifecycle of the State
     When a function is called, the contract's state is loaded from the storage and put into memory.
