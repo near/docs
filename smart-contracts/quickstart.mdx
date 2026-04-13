@@ -105,7 +105,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Install NEAR CLI-RS to deploy and interact with the contract
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
-```text
+```
 
 </Tab>
 <Tab title="🐹 GO">
@@ -127,7 +127,6 @@ gvm install go1.25.4 -B
 gvm use go1.25.4 --default
 
 curl -LO https://github.com/vlmoon99/near-cli-go/releases/latest/download/install.sh && bash install.sh
-
 ```
 </Tab>
 
@@ -178,6 +177,37 @@ In the meantime, please check out the [hello-near](https://github.com/near-examp
 
 </Tab>
 
+<Tab title="🐹 GO">
+
+```bash
+near-go create --project-name auction --module-name auction --project-type smart-contract-empty
+```
+
+![img](/assets/docs/smart-contracts/hello-near-go.gif)
+_Creating a project using `near-go create`_
+
+This will generate a project with the following structure:
+
+```bash
+auction/
+├── go.mod        # Go module definition with near-sdk-go dependency
+├── go.sum
+├── main.go       # Main contract file — replace this with the auction contract below
+└── main_test.go  # Unit tests
+```
+
+```bash
+cd auction
+```
+
+<Important>
+
+Replace the contents of `main.go` with the auction contract code shown in the sections below.
+
+</Important>
+
+</Tab>
+
 </Tabs>
 
 <Tip>
@@ -216,6 +246,12 @@ The contract stores the highest bid, auction end time, auctioneer address, and a
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
             start="1" end="18" />
   </Tab>
+
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go"
+            start="11" end="40" />
+  </Tab>
 </Tabs>
 
 ### Placing Bids
@@ -242,6 +278,12 @@ The `bid` function will then validate that the auction is ongoing, if the user b
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
             start="20" end="45" />
   </Tab>
+
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go"
+            start="42" end="78" />
+  </Tab>
 </Tabs>
 
 ### Claiming Proceeds
@@ -266,6 +308,12 @@ Once the auction ends, any user can call `claim` to transfer the winning bid to 
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
             start="47" end="59" />
   </Tab>
+
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go"
+            start="80" end="101" />
+  </Tab>
 </Tabs>
 
 ### View Methods
@@ -289,6 +337,12 @@ At all times, users can query the current state of the auction by calling its vi
     <Github fname="contract.py" language="python"
             url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
             start="62" end="90" />
+  </Tab>
+
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go"
+            start="103" end="121" />
   </Tab>
 </Tabs>
 
@@ -326,7 +380,17 @@ Lets make sure the contract is working as expected by running its tests. Simply 
   ```bash
   uv run pytest
   ```
-  
+
+
+  </Tab>
+
+  <Tab title="🐹 GO">
+
+  ```bash
+  near-go test project
+  ```
+
+
   </Tab>
 </Tabs>
 
@@ -370,7 +434,7 @@ Now that we know the tests are passing, let us deploy the contract! First, we ne
   
 </Info>
 
-  :::important
+  <Important>
   
   This step requires [Emscripten](https://emscripten.org/) to be installed and accessible in your `PATH`. If you encounter errors during compilation, verify that Emscripten is properly installed with `emcc --version`.
   
@@ -379,7 +443,7 @@ Now that we know the tests are passing, let us deploy the contract! First, we ne
   - `error: invalid version of emscripten` - Your Emscripten version might be too old. Try updating with `./emsdk install latest && ./emsdk activate latest`.
   - `Could not find platform micropython-dev-wasm32` - This typically means the Emscripten installation is incomplete or not properly activated.
   
-  :::
+  </Important>
 
   </Tab>
 
@@ -462,6 +526,15 @@ With the contract ready, we can now deploy it to the `testnet` account we create
     ```bash
     near deploy <created-account> ./auction.wasm
     ```
+
+  </Tab>
+
+  <Tab title="🐹 GO">
+
+  ```bash
+  near deploy <contract-acc.testnet> ./main.wasm
+  ```
+
 
   </Tab>
 </Tabs>
@@ -595,5 +668,8 @@ At the time of this writing, this example works with the following versions:
 - near-sdk-py: `0.7.3`
 - uvx nearc: `0.9.2`
 - emscripten: `4.0.9` (required for Python contracts)
+- Go: `1.25.4`
+- near-go (near-cli-go): `v0.1.1`
+- near-sdk-go: `v0.1.1`
 
 </Accordion>

@@ -219,6 +219,21 @@ def check_gas(required_gas=20_000_000_000_000):  # 20 TGas
 
 </Tab>
 
+<Tab title="🐹 GO">
+
+```go
+const REQUIRED_GAS = uint64(20_000_000_000_000) // 20 TGas
+
+// @contract:mutating
+func (c *MyContract) CheckGas() {
+    if env.GetPrepaidGas() < REQUIRED_GAS {
+        env.PanicStr("Please attach at least 20 TGas")
+    }
+}
+```
+
+</Tab>
+
 </Tabs>
 
 </Tip>
@@ -282,12 +297,10 @@ Besides environmental variables, the SDK also exposes some functions to perform 
 
 | Function Name         | SDK method                                              | Description                                                                                                                                                                                                                                                                                                                      |
 |-----------------------|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| SHA 256               | `env.Sha256Hash(value)`                                    | Hashes a sequence of bytes using sha256.                                                                                                                                                                                                                                                                                         |
-| Keccak 256            | `env.Keccak256Hash(value)`                                 | Hashes a sequence of bytes using keccak256.                                                                                                                                                                                                                                                                                      |
-| Keccak 512            | `env.Keccak512Hash(value)`                                 | Hashes a sequence of bytes using keccak512.                                                                                                                                                                                                                                                                                      |
-| SHA 256        | `env::Sha256Hash(value)`                              | Hashes the bytes using the SHA-256 hash function. This returns a 32 byte hash.                                                                                                                                 
-                                                                                           |
-| RIPEMD 160     | `env::Ripemd160Hash(value)`                           | Hashes the bytes using the RIPEMD-160 hash function. This returns a 20 byte hash.                                                                                                                                                                                                                                                |
+| SHA 256               | `env.Sha256Hash(value)`                                      | Hashes a sequence of bytes using sha256.                                                                                                                                                                                                                                                                                         |
+| Keccak 256            | `env.Keccak256Hash(value)`                                   | Hashes a sequence of bytes using keccak256.                                                                                                                                                                                                                                                                                      |
+| Keccak 512            | `env.Keccak512Hash(value)`                                   | Hashes a sequence of bytes using keccak512.                                                                                                                                                                                                                                                                                      |
+| RIPEMD 160            | `env.Ripemd160Hash(value)`                                   | Hashes the bytes using the RIPEMD-160 hash function. This returns a 20 byte hash.                                                                                                                                                                                                                                                |
 | EC Recover            | `env.EcrecoverPubKey(hash, signature, v, malleability_flag)` | Recovers an ECDSA signer address from a 32-byte message `hash` and a corresponding `signature` along with `v` recovery byte. Takes in an additional flag to check for malleability of the signature which is generally only ideal for transactions. Returns 64 bytes representing the public key if the recovery was successful. |
 | Panic String          | `env.PanicStr(message)`                               | Terminates the execution of the program with the UTF-8 encoded message.                                                                                                                                                                                                                                                          |
 | Log String            | `env.LogString(message)`                                 | Logs the string message. This message is stored on chain.                                                                                                                                                                                                                                                                        |
