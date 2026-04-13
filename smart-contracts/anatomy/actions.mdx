@@ -2,6 +2,9 @@
 title: Transfers & Actions
 description: "Learn how contracts can make transfers, call other contracts, and more"
 ---
+
+import { Github } from '/snippets/github.jsx'
+
 This page describes the different types of actions that a smart contract can perform on NEAR like transferring NEAR, calling other contracts, creating sub-accounts, and deploying contracts. It also explains how to add access keys to accounts.
 
 Smart contracts can perform specific `Actions` such as transferring NEAR, or calling other contracts.
@@ -19,9 +22,10 @@ but **cannot** call two methods on different contracts.
 
 You can send `$NEAR` from your contract to any other account on the network. The Gas cost for transferring `$NEAR` is fixed and is based on the protocol's genesis config. Currently, it costs `~0.45 TGas`.
 
-<CodeGroup>
+<Tabs>
+  <Tab title="🦀 Rust">
 
-```rust Rust
+```rust
   use near_sdk::{near, AccountId, Promise, NearToken};
 
   #[near(contract_state)]
@@ -36,7 +40,10 @@ You can send `$NEAR` from your contract to any other account on the network. The
   }
 ```
 
-```js JavaScript
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+```js
   import { NearBindgen, NearPromise, call } from 'near-sdk-js'
   import { AccountId } from 'near-sdk-js/lib/types'
 
@@ -49,7 +56,10 @@ You can send `$NEAR` from your contract to any other account on the network. The
   }
 ```
 
-```python Python
+  </Tab>
+  <Tab title="🐍 Python">
+
+```python
 from near_sdk_py import call, Contract
 from near_sdk_py.promises import Promise
 
@@ -61,37 +71,13 @@ class ExampleContract(Contract):
         return Promise.create_batch(to).transfer(amount)
 ```
 
-```go Go
-package main
-
-import (
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-type TransferTokenInput struct {
-	To     string `json:"to"`
-	Amount string `json:"amount"`
-}
-
-// @contract:payable min_deposit=1NEAR
-func (c *Contract) ExampleTransferToken(input TransferTokenInput) error {
-	amount, err := types.U128FromString(input.Amount)
-	if err != nil {
-		return err
-	}
-
-	promise.CreateBatch(input.To).
-		Transfer(amount)
-
-	return nil
-}
-```
-
-</CodeGroup>
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/actions/main.go"
+            start="20" end="36" />
+  </Tab>
+</Tabs>
 
 <Tip>
 **Why is there no callback?**
@@ -110,9 +96,10 @@ Your smart contract can call methods in another contract. In the snippet below w
 in a deployed [Hello NEAR](../quickstart) contract, and check if everything went
 right in the callback.
 
-<CodeGroup>
+<Tabs>
+  <Tab title="🦀 Rust">
 
-```rust Rust
+```rust
   use near_sdk::{near, env, log, Promise, Gas, PromiseError};
   use serde_json::json;
 
@@ -148,7 +135,10 @@ right in the callback.
   }
 ```
 
-```js JavaScript
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+```js
   import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
   import { AccountId } from 'near-sdk-js/lib/types'
 
@@ -189,7 +179,10 @@ right in the callback.
   }
 ```
 
-```python Python
+  </Tab>
+  <Tab title="🐍 Python">
+
+```python
 from near_sdk_py import call, callback, Contract
 from near_sdk_py.promises import CrossContract, Promise, PromiseResult
 from near_sdk_py.constants import ONE_TGAS
@@ -223,57 +216,13 @@ class ExampleContract(Contract):
         return True
 ```
 
-```go Go
-package main
-
-import (
-	"strconv"
-
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-type MessageInput struct {
-	Message string `json:"message"`
-}
-
-// @contract:payable min_deposit=0.00001NEAR
-func (c *Contract) ExampleFunctionCall() {
-	gas := uint64(types.ONE_TERA_GAS * 10)
-	accountId := "hello-nearverse.testnet"
-	args := map[string]string{
-		"message": "howdy",
-	}
-	promise.NewCrossContract(accountId).
-		Gas(gas).
-		Call("set_greeting", args).
-		Then("example_function_call_callback", args)
-}
-
-// @contract:view
-// @contract:promise_callback
-func (c *Contract) ExampleFunctionCallCallback(input MessageInput, result promise.PromiseResult) MessageInput {
-	env.LogString("Executing callback")
-	env.LogString("Input Message : " + input.Message)
-
-	if result.Success {
-		env.LogString("Cross-contract call executed successfully")
-		env.LogString("Promise Result Status --> " + strconv.FormatInt(int64(result.StatusCode), 10))
-		if len(result.Data) > 0 {
-			env.LogString("Batch call data: " + string(result.Data))
-		}
-	} else {
-		env.LogString("Cross-contract call failed")
-	}
-	return input
-}
-```
-
-</CodeGroup>
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/actions/main.go"
+            start="40" end="73" />
+  </Tab>
+</Tabs>
 
 <Warning>
 The snippet showed above is a low level way of calling other methods. We recommend make calls to other contracts as explained in the [Cross-contract Calls section](/smart-contracts/anatomy/crosscontract).
@@ -288,9 +237,10 @@ Accounts do **NOT** have control over their sub-accounts, since they have their 
 
 Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.near`, `token.project.near`).
 
-<CodeGroup>
+<Tabs>
+  <Tab title="🦀 Rust">
 
-```rust Rust
+```rust
   use near_sdk::{near, env, Promise, NearToken};
 
   #[near(contract_state)]
@@ -310,7 +260,10 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
   }
 ```
 
-```js JavaScript
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+```js
   import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
 
   const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
@@ -328,7 +281,10 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
   }
 ```
 
-```python Python
+  </Tab>
+  <Tab title="🐍 Python">
+
+```python
 from near_sdk_py import call, Contract
 from near_sdk_py.promises import Promise
 from near_sdk_py.constants import ONE_NEAR
@@ -349,39 +305,13 @@ class ExampleContract(Contract):
             .transfer(MIN_STORAGE)
 ```
 
-```go Go
-package main
-
-import (
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-// @contract:payable min_deposit=0.001NEAR
-func (c *Contract) ExampleCreateSubaccount(prefix string) {
-	currentAccountId, err := env.GetCurrentAccountId()
-	if err != nil {
-		env.PanicStr("Failed to get current account")
-	}
-
-	subaccountId := prefix + "." + currentAccountId
-
-	amount, err := types.U128FromString("1000000000000000000000") //0.001Ⓝ
-	if err != nil {
-		env.PanicStr("Bad amount format")
-	}
-
-	promise.CreateBatch(subaccountId).
-		CreateAccount().
-		Transfer(amount)
-}
-```
-
-</CodeGroup>
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/actions/main.go"
+            start="77" end="94" />
+  </Tab>
+</Tabs>
 
 <Tip>
   Notice that in the snippet we are transferring some money to the new account for storage
@@ -402,9 +332,10 @@ Accounts can only create immediate sub-accounts of themselves.
 If your contract wants to create a `.mainnet` or `.testnet` account, then it needs to [call](#function-call)
 the `create_account` method of `near` or `testnet` root contracts.
 
-<CodeGroup>
+<Tabs>
+  <Tab title="🦀 Rust">
 
-```rust Rust
+```rust
   use near_sdk::{near, Promise, Gas, NearToken };
   use serde_json::json;
 
@@ -430,7 +361,10 @@ the `create_account` method of `near` or `testnet` root contracts.
   }
 ```
 
-```js JavaScript
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+```js
   import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
 
   const MIN_STORAGE: bigint = BigInt("1820000000000000000000"); //0.00182Ⓝ
@@ -451,7 +385,10 @@ the `create_account` method of `near` or `testnet` root contracts.
   }
 ```
 
-```python Python
+  </Tab>
+  <Tab title="🐍 Python">
+
+```python
 from near_sdk_py import call, Contract
 from near_sdk_py.promises import Promise
 from near_sdk_py.constants import ONE_NEAR, ONE_TGAS
@@ -480,40 +417,13 @@ class ExampleContract(Contract):
             )
 ```
 
-```go Go
-package main
-
-import (
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-type CreateAccountInput struct {
-	AccountId string `json:"account_id"`
-	PublicKey string `json:"public_key"`
-}
-
-// @contract:payable min_deposit=0.002NEAR
-func (c *Contract) ExampleCreateAccount(args CreateAccountInput) {
-	amount, _ := types.U128FromString("2000000000000000000000") // 0.002 NEAR
-	gas := uint64(200 * types.ONE_TERA_GAS)
-
-	//publicKey (base58) - 4omJwNS1WbniWtbPkLYBrFwN3YLeffXCkpvriYgeLhst (generate your own for testing)
-	//accountId - nearsdkdocs1.testnet (write your own for testing)
-	createArgs := map[string]string{
-		"new_account_id": args.AccountId,
-		"new_public_key": args.PublicKey,
-	}
-
-	promise.CreateBatch("testnet").
-		FunctionCall("create_account", createArgs, amount, gas)
-}
-```
-
-</CodeGroup>
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/actions/main.go"
+            start="98" end="115" />
+  </Tab>
+</Tabs>
 
 ---
 
@@ -521,9 +431,10 @@ func (c *Contract) ExampleCreateAccount(args CreateAccountInput) {
 
 When creating an account you can also batch the action of deploying a contract to it. Note that for this, you will need to pre-load the byte-code you want to deploy in your contract.
 
-<CodeGroup>
+<Tabs>
+  <Tab title="🦀 Rust">
 
-```rust Rust
+```rust
   use near_sdk::{near, env, Promise, NearToken};
 
   #[near(contract_state)]
@@ -545,7 +456,10 @@ When creating an account you can also batch the action of deploying a contract t
   }
 ```
 
-```python Python
+  </Tab>
+  <Tab title="🐍 Python">
+
+```python
 from near_sdk_py import call, Context, Contract
 from near_sdk_py.promises import Promise 
 from near_sdk_py.constants import ONE_NEAR
@@ -571,37 +485,13 @@ class ExampleContract(Contract):
             .deploy_contract(contract_bytes)
 ```
 
-```go Go
-package main
-
-import (
-	_ "embed"
-
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-//go:embed status_message_go.wasm
-var contractWasm []byte
-
-// @contract:state
-type Contract struct{}
-
-// @contract:payable min_deposit=1.1NEAR
-func (c *Contract) ExampleDeployContract(prefix string) {
-	currentAccountId, _ := env.GetCurrentAccountId()
-	subaccountId := prefix + "." + currentAccountId
-	amount, _ := types.U128FromString("1100000000000000000000000") // 1.1Ⓝ
-
-	promise.CreateBatch(subaccountId).
-		CreateAccount().
-		Transfer(amount).
-		DeployContract(contractWasm)
-}
-```
-
-</CodeGroup>
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/actions/main.go"
+            start="119" end="129" />
+  </Tab>
+</Tabs>
 
 <Tip>
 If an account with a contract deployed does **not** have any access keys, this is known as a locked contract. When the account is locked, it cannot sign transactions therefore, actions can **only** be performed from **within** the contract code.
@@ -619,9 +509,10 @@ There are two options for adding keys to the account:
 
 <br/>
 
-<CodeGroup>
+<Tabs>
+  <Tab title="🦀 Rust">
 
-```rust Rust
+```rust
   use near_sdk::{near, env, Promise, NearToken, PublicKey};
 
   #[near(serializers = [json, borsh])]
@@ -644,7 +535,10 @@ There are two options for adding keys to the account:
   }
 ```
 
-```js JavaScript
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+```js
   import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
   import { PublicKey } from 'near-sdk-js/lib/types'
 
@@ -664,7 +558,10 @@ There are two options for adding keys to the account:
   }
 ```
 
-```python Python
+  </Tab>
+  <Tab title="🐍 Python">
+
+```python
 from near_sdk_py import call, Contract
 from near_sdk_py.promises import Promise
 from near_sdk_py.constants import ONE_NEAR
@@ -686,37 +583,13 @@ class ExampleContract(Contract):
             .add_full_access_key(public_key)
 ```
 
-```go Go
-package main
-
-import (
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-type AddKeysInput struct {
-	Prefix    string `json:"prefix"`
-	PublicKey string `json:"public_key"`
-}
-
-// @contract:payable min_deposit=0.001NEAR
-func (c *Contract) ExampleAddKeys(input AddKeysInput) {
-	currentAccountId, _ := env.GetCurrentAccountId()
-	subaccountId := input.Prefix + "." + currentAccountId
-	amount, _ := types.U128FromString("1000000000000000000000") // 0.001Ⓝ
-
-	promise.CreateBatch(subaccountId).
-		CreateAccount().
-		Transfer(amount).
-		AddFullAccessKey([]byte(input.PublicKey), 0)
-}
-```
-
-</CodeGroup>
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/actions/main.go"
+            start="133" end="148" />
+  </Tab>
+</Tabs>
 
 Notice that what you actually add is a "public key". Whoever holds its private counterpart, i.e. the private-key, will be able to use the newly access key.
 
@@ -732,9 +605,10 @@ There are two scenarios in which you can use the `delete_account` action:
 1. As the **last** action in a chain of batched actions.
 2. To make your smart contract delete its own account.
 
-<CodeGroup>
+<Tabs>
+  <Tab title="🦀 Rust">
 
-```rust Rust
+```rust
   use near_sdk::{near, env, Promise, NearToken, AccountId};
 
   #[near(contract_state)]
@@ -760,7 +634,10 @@ There are two scenarios in which you can use the `delete_account` action:
   }
 ```
 
-```js JavaScript
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+```js
   import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
   import { AccountId } from 'near-sdk-js/lib/types'
 
@@ -786,7 +663,10 @@ There are two scenarios in which you can use the `delete_account` action:
   }
 ```
 
-```python Python
+  </Tab>
+  <Tab title="🐍 Python">
+
+```python
 from near_sdk_py import call, Contract
 from near_sdk_py.promises import Promise
 from near_sdk_py.constants import ONE_NEAR
@@ -815,49 +695,13 @@ class ExampleContract(Contract):
             .delete_account(beneficiary)
 ```
 
-```go Go
-package main
-
-import (
-	"github.com/vlmoon99/near-sdk-go/env"
-	"github.com/vlmoon99/near-sdk-go/promise"
-	"github.com/vlmoon99/near-sdk-go/types"
-)
-
-// @contract:state
-type Contract struct{}
-
-type DeleteAccountInput struct {
-	Prefix      string `json:"prefix"`
-	Beneficiary string `json:"beneficiary"`
-}
-
-type SelfDeleteInput struct {
-	Beneficiary string `json:"beneficiary"`
-}
-
-// @contract:payable min_deposit=0.001NEAR
-func (c *Contract) ExampleCreateDeleteAccount(input DeleteAccountInput) {
-	currentAccountId, _ := env.GetCurrentAccountId()
-	subaccountId := input.Prefix + "." + currentAccountId
-	amount, _ := types.U128FromString("1000000000000000000000") // 0.001Ⓝ
-
-	promise.CreateBatch(subaccountId).
-		CreateAccount().
-		Transfer(amount).
-		DeleteAccount(input.Beneficiary)
-}
-
-// @contract:mutating
-func (c *Contract) ExampleSelfDeleteAccount(input SelfDeleteInput) {
-	currentAccountId, _ := env.GetCurrentAccountId()
-
-	promise.CreateBatch(currentAccountId).
-		DeleteAccount(input.Beneficiary)
-}
-```
-
-</CodeGroup>
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="main.go" language="go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/actions/main.go"
+            start="162" end="179" />
+  </Tab>
+</Tabs>
 
 <Warning>
 **Token Loss**
