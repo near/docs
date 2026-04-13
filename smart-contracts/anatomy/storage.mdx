@@ -64,7 +64,7 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"js": "", "rust": "", "python": "", "go": "22-28"}' fname="auction" >
+<Block highlights='{"js": "", "rust": "", "python": "", "go": ""}' fname="auction" >
 
     ### Initializing the State
     After the contract is deployed, its state is empty and needs to be initialized with
@@ -145,7 +145,7 @@ In Python, you need to manage the state initialization explicitly. The SDK doesn
 
 </Block>
 
-<Block highlights='{"go": "7-10"}' fname="hello">
+<Block highlights='{"go": ""}' fname="hello">
 
     ### II. Default State
     In Go, when no `@contract:init` function is called, the contract's state struct is zero-initialized using Go's default zero values — `""` for strings, `0` for numbers, `false` for booleans.
@@ -154,14 +154,17 @@ In Python, you need to manage the state initialization explicitly. The SDK doesn
 
 </Block>
 
-<Block highlights='{"js": "", "rust":"", "python": "", "go": "7-10"}' fname="hello">
+<Block highlights='{"js": "", "rust":"", "python": "", "go": "7-10"}' fname="hello" type='info'>
 
-    ### Lifecycle of the State
-    When a function is called, the contract's state is loaded from the storage and put into memory.
+<Note>
+**Lifecycle of the State**
 
-    The state is actually [stored serialized](./serialization), and the SDK takes a bit of time to deserialize it before the method can access it.
+When a function is called, the contract's state is loaded from the storage and put into memory.
 
-    When the method finishes executing successfully, all the changes to the state are serialized, and saved back to the storage.
+The state is actually [stored serialized](./serialization), and the SDK takes a bit of time to deserialize it before the method can access it.
+
+When the method finishes executing successfully, all the changes to the state are serialized, and saved back to the storage.
+</Note>
 
 </Block>
 

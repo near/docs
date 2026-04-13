@@ -21,7 +21,7 @@ For **Go contracts**, unit tests are run with the `near-go` CLI:
 near-go test project
 ```
 
-This runs unit tests using TinyGo and the `MockSystem` environment to simulate the NEAR blockchain locally — no sandbox required. For full integration tests that deploy to a sandbox, Go contracts use the Rust `workspaces-rs` framework. See the [Go Integration Testing](#go-integration-testing) section below.
+This runs unit tests using the `MockSystem` environment to simulate the NEAR blockchain locally — no sandbox required. For full integration tests that deploy to a sandbox, Go contracts use the Rust `workspaces-rs` framework. See the [Go Integration Testing](#go-integration-testing) section below.
 
 <Note>
 **Sandbox Testing**
@@ -565,15 +565,20 @@ See a [TypeScript example of spooning](https://github.com/near/workspaces-js/blo
 
 Lets take a look at the test of our [Quickstart Project](../quickstart) [👋 Hello NEAR](https://github.com/near-examples/hello-near-examples), where we deploy the contract on an account and test it correctly retrieves and sets the greeting.
 
-<CodeGroup>
-  <Github fname="test_basics.rs"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/tests/test_basics.rs" start="1" end="32"/>
-  <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-test/main.ava.js" start="11" end="45"/>
-  <Github fname="test_greeting.rs"
-            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/greeting/integration-tests/tests/test_greeting.rs" start="1" end="77"/>
-
-</CodeGroup>
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="test_basics.rs"
+              url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/tests/test_basics.rs" start="1" end="32"/>
+  </Tab>
+  <Tab title="🌐 JavaScript">
+    <Github fname="main.ava.ts"
+              url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-test/main.ava.js" start="11" end="45"/>
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="test_greeting.rs"
+              url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/greeting/integration-tests/tests/test_greeting.rs" start="1" end="77"/>
+  </Tab>
+</Tabs>
 
 <hr class="subsection" />
 
@@ -581,16 +586,21 @@ Lets take a look at the test of our [Quickstart Project](../quickstart) [👋 He
 
 In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-examples), which enables users to `donate` money to a beneficiary. Lets see its integration tests
 
-<CodeGroup>
-  <Github fname="workspaces.rs"
-            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/tests/workspaces.rs" start="1" end="106"/>
-  <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
-            start="51" end="75" />
-  <Github fname="test_donation.rs"
-            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/donation/integration-tests/tests/test_donation.rs" start="1" end="81"/>
-
-</CodeGroup>
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="workspaces.rs"
+              url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/tests/workspaces.rs" start="1" end="106"/>
+  </Tab>
+  <Tab title="🌐 JavaScript">
+    <Github fname="main.ava.ts"
+              url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+              start="51" end="75" />
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="test_donation.rs"
+              url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/donation/integration-tests/tests/test_donation.rs" start="1" end="81"/>
+  </Tab>
+</Tabs>
 
 ---
 
@@ -604,7 +614,7 @@ Go contracts use the Rust `workspaces-rs` framework for integration tests. The w
 <Note>
 **Unit tests vs Integration tests**
 
-`near-go test project` runs **unit tests** using TinyGo (equivalent to `tinygo test ./...`). For full integration tests that deploy to a sandbox, use the `workspaces-rs` Rust crate as described below.
+`near-go test project` runs **unit tests** using the `MockSystem` environment locally. For full integration tests that deploy to a sandbox, use the `workspaces-rs` Rust crate as described below.
 </Note>
 
 ### Project Structure

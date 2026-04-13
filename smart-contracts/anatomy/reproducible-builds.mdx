@@ -121,14 +121,11 @@ Official tooling for reproducible Go contract builds (equivalent to `cargo-near`
 
 To maximize the chance of consistent builds across environments:
 
-1. **Pin your TinyGo version**: Install a specific version of `near-go` and TinyGo and document it in your project's README.
+1. **Pin your `near-go` version**: Install a specific version of `near-go` and document it in your project's README.
 
    ```bash
    # Check your near-go version
    near-go --version
-
-   # Check your TinyGo version
-   tinygo version
    ```
 
 2. **Pin your `near-sdk-go` version**: Use a fixed version in your `go.mod` rather than a floating tag.
@@ -138,7 +135,7 @@ To maximize the chance of consistent builds across environments:
    require github.com/vlmoon99/near-sdk-go v0.1.1
    ```
 
-3. **Use CI for builds**: Build your WASM in a controlled CI environment (e.g. GitHub Actions) using a pinned Docker image with a fixed Go and TinyGo version. Publish the resulting WASM as a release artifact alongside your source code.
+3. **Use CI for builds**: Build your WASM in a controlled CI environment (e.g. GitHub Actions) using a pinned `near-go` version. Publish the resulting WASM as a release artifact alongside your source code.
 
 4. **Provide the source**: Publish your contract's source code on a public repository so users can verify the logic independently, even before binary verification tooling is available.
 

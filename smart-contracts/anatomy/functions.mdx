@@ -208,15 +208,7 @@ In Python, you can create callbacks by using the `@callback` decorator, which is
 
 </Block>
 
-<Block highlights='{"go": ""}' fname="auction">
-
-#### `@contract:promise_callback`
-
-In Go, callback functions for cross-contract calls are marked with the `@contract:promise_callback` comment directive, combined with either `@contract:view` (for read-only callbacks) or `@contract:mutating` (for callbacks that modify state). These functions can only be called by the contract itself.
-
-</Block>
-
-<Block highlights='{"js":"22,28", "rust": "36,45", "python": "25", "go": "42"}' fname="auction">
+<Block highlights='{"js":"22,28", "rust": "36,45", "python": "25", "go": "42-78"}' fname="auction">
 
 ### Payable Functions
 
@@ -294,7 +286,7 @@ To create internal private methods in a Python contract, simply define normal me
 
 </Block>
 
-<Block highlights='{"go": "12-20"}' fname="example">
+<Block highlights='{"go": "123-127"}' fname="example">
 
 ### Internal Functions
 
@@ -346,6 +338,8 @@ They are useful to return hardcoded values on the contract.
 <File language="rust" fname="auction" url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs" start="2" end="84" />
 
 <File language="python" fname="auction" url="https://github.com/r-near/near-py-examples/blob/main/auction.py" start="2" end="140" />
+
+<File language="go" fname="auction" url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go" start="1" end="127" />
 
 <CodeBlock language="js" fname="example">
 
@@ -423,23 +417,26 @@ package main
 const SOME_VALUE uint64 = 8
 
 // @contract:state
-type MyContract struct{}
+type MyContract struct {
+    Counter uint64 `json:"counter"`
+}
 
-// This function cannot be called from the outside (no @contract: directive)
-func (c *MyContract) helperFunction() {
-    // internal logic here
+// Internal helper — no @contract: directive, not exposed to the outside
+func (c *MyContract) doubleValue(n uint64) uint64 {
+    return n * 2
 }
 
 // @contract:view
 func (c *MyContract) GetStaticValue() uint64 {
     return SOME_VALUE
 }
+
+// @contract:view
+func (c *MyContract) GetDoubledCounter() uint64 {
+    return c.doubleValue(c.Counter)
+}
 ```
 
 </CodeBlock>
-
-<File language="go" fname="auction"
-    url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go"
-    start="1" end="121" />
 
 </ExplainCode>

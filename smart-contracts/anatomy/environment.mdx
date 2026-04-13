@@ -219,6 +219,21 @@ def check_gas(required_gas=20_000_000_000_000):  # 20 TGas
 
 </Tab>
 
+<Tab title="🐹 GO">
+
+```go
+const REQUIRED_GAS = uint64(20_000_000_000_000) // 20 TGas
+
+// @contract:mutating
+func (c *MyContract) CheckGas() {
+    if env.GetPrepaidGas() < REQUIRED_GAS {
+        env.PanicStr("Please attach at least 20 TGas")
+    }
+}
+```
+
+</Tab>
+
 </Tabs>
 
 </Tip>
