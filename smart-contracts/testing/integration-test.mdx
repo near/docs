@@ -15,7 +15,13 @@ Moreover, when using the local `sandbox` you gain complete control of the networ
 
 In NEAR, integration tests are implemented using a framework called **Workspaces**. Workspaces comes in two flavors: [🦀 Rust](https://github.com/near/workspaces-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).
 
-All of our [examples](https://github.com/near-examples) come with integration testing.
+For **Go contracts**, unit tests are run with the `near-go` CLI:
+
+```bash
+near-go test project
+```
+
+This runs unit tests using the `MockSystem` environment to simulate the NEAR blockchain locally — no sandbox required. For full integration tests that deploy to a sandbox, Go contracts use the Rust `workspaces-rs` framework. See the [Go Integration Testing](#go-integration-testing) section below.
 
 <Note>
 **Sandbox Testing**
@@ -559,24 +565,169 @@ See a [TypeScript example of spooning](https://github.com/near/workspaces-js/blo
 
 Lets take a look at the test of our [Quickstart Project](../quickstart) [👋 Hello NEAR](https://github.com/near-examples/hello-near-examples), where we deploy the contract on an account and test it correctly retrieves and sets the greeting.
 
-<CodeGroup>
-  <Github fname="test_basics.rs"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/tests/test_basics.rs" start="1" end="32"/>
-  <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-test/main.ava.js" start="11" end="45"/>
-</CodeGroup>
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="test_basics.rs"
+              url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/tests/test_basics.rs" start="1" end="32"/>
+  </Tab>
+  <Tab title="🌐 JavaScript">
+    <Github fname="main.ava.ts"
+              url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-test/main.ava.js" start="11" end="45"/>
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="test_greeting.rs"
+              url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/greeting/integration-tests/tests/test_greeting.rs" start="1" end="77"/>
+  </Tab>
+</Tabs>
+
+<hr class="subsection" />
 
 ### Snippet II: Testing Donations
 
 In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-examples), which enables users to `donate` money to a beneficiary. Lets see its integration tests
 
-<CodeGroup>
-  <Github fname="workspaces.rs"
-            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/tests/workspaces.rs" start="1" end="106"/>
-  <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
-            start="51" end="75" />
-</CodeGroup>
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="workspaces.rs"
+              url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/tests/workspaces.rs" start="1" end="106"/>
+  </Tab>
+  <Tab title="🌐 JavaScript">
+    <Github fname="main.ava.ts"
+              url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+              start="51" end="75" />
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="test_donation.rs"
+              url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/donation/integration-tests/tests/test_donation.rs" start="1" end="81"/>
+  </Tab>
+</Tabs>
+
+---
+
+## Go Integration Testing
+
+Go contracts use the Rust `workspaces-rs` framework for integration tests. The workflow is:
+1. Build your contract to WASM with `near-go build`
+2. Write integration tests in a separate Rust project using `workspaces-rs`
+3. Run with `cargo test`
+
+<Note>
+**Unit tests vs Integration tests**
+
+`near-go test project` runs **unit tests** using the `MockSystem` environment locally. For full integration tests that deploy to a sandbox, use the `workspaces-rs` Rust crate as described below.
+</Note>
+
+### Project Structure
+
+```bash
+my-contract/
+├── main.go              # your Go contract
+├── go.mod
+├── go.sum
+└── integration-tests/   # Standalone Rust integration test project
+    ├── Cargo.toml
+    └── tests/
+        └── test_my_contract.rs
+```
+
+### Running Tests
+
+```bash
+# Step 1: Build the Go contract to WASM (from the contract root)
+near-go build
+
+# Step 2: Run integration tests
+cargo test --manifest-path integration-tests/Cargo.toml
+```
+
+### Writing Integration Tests
+
+Integration tests follow the `workspaces-rs` pattern. The compiled `main.wasm` sits one directory above `integration-tests/`, so tests load it with `std::fs::read("../main.wasm")`.
+
+<Warning>
+**Double-encoded return values**
+
+`near-sdk-go` wraps every return value in an extra JSON string encoding. When reading a view result, always deserialize in **two steps**: first parse the outer `String`, then parse the inner type.
+
+```rust
+// ✅ Correct two-step deserialization
+let raw: String = contract.view("get_greeting").args_json(json!({})).await?.json()?;
+let greeting: String = serde_json::from_str(&raw)?;
+
+// ❌ Will fail – skips the outer wrapper
+let greeting: String = contract.view("get_greeting").args_json(json!({})).await?.json()?;
+```
+</Warning>
+
+```rust
+// integration-tests/tests/test_greeting.rs
+use serde_json::json;
+
+#[tokio::test]
+async fn test_greeting_init() -> anyhow::Result<()> {
+    let sandbox = near_workspaces::sandbox().await?;
+    let wasm = std::fs::read("../main.wasm")?;
+    let contract = sandbox.dev_deploy(&wasm).await?;
+
+    contract
+        .call("init")
+        .args_json(json!({}))
+        .transact()
+        .await?
+        .into_result()?;
+
+    // Two-step deserialization: outer String wrapper → inner type
+    let raw: String = contract.view("get_greeting").args_json(json!({})).await?.json()?;
+    let greeting: String = serde_json::from_str(&raw)?;
+    assert_eq!(greeting, "Hello");
+    Ok(())
+}
+
+#[tokio::test]
+async fn test_set_greeting() -> anyhow::Result<()> {
+    let sandbox = near_workspaces::sandbox().await?;
+    let wasm = std::fs::read("../main.wasm")?;
+    let contract = sandbox.dev_deploy(&wasm).await?;
+
+    contract.call("init").args_json(json!({})).transact().await?.into_result()?;
+
+    let caller = sandbox.dev_create_account().await?;
+    caller
+        .call(contract.id(), "set_greeting")
+        .args_json(json!({ "greeting": "Howdy" }))
+        .transact()
+        .await?
+        .into_result()?;
+
+    let raw: String = contract.view("get_greeting").args_json(json!({})).await?.json()?;
+    let greeting: String = serde_json::from_str(&raw)?;
+    assert_eq!(greeting, "Howdy");
+    Ok(())
+}
+```
+
+```toml
+# integration-tests/Cargo.toml
+[package]
+name = "greeting-integration-tests"
+version = "0.1.0"
+edition = "2021"
+
+[dev-dependencies]
+near-workspaces = "0.22.0"
+tokio = { version = "1.41.1", features = ["full"] }
+anyhow = "1.0.93"
+serde_json = "1.0.133"
+serde = { version = "1.0.215", features = ["derive"] }
+```
+
+<Tip>
+
+You can also test your Go contract on NEAR testnet by deploying it first with `near deploy` and calling methods via the `near` CLI.
+
+[See full example on GitHub](https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/greeting/integration-tests/tests/test_greeting.rs)
+
+</Tip>
 
 ---
 

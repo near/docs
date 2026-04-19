@@ -11,7 +11,7 @@ Smart contracts store data in their account's state, which is public on the chai
 
 It is important to know that the account's **code** and account's **storage** are **independent**. [Updating the code](../release/upgrade) does **not erase** the state.
 
-<ExplainCode languages="rust,js,python" >
+<ExplainCode languages="rust,js,python,go" >
 
 <Block highlights='{"js": "3-6,10-13", "python": "7,10-14,17,20"}' fname="auction">
 
@@ -41,7 +41,18 @@ It is important to know that the account's **code** and account's **storage** ar
 
 </Block>
 
-<Block highlights='{"js":"", "rust": "", "python": ""}' fname="auction" type='info'>
+<Block highlights='{"go": "22-28"}' fname="auction">
+
+    ### Defining the State
+    The attributes of the `struct` marked with `@contract:state` define the data that will be stored.
+
+    The contract can store all native types (e.g. `uint64`, `string`, `bool`) as well as complex objects, serialized as JSON.
+
+    For example, our Auction contract stores when the auction ends, and an object representing the highest bid.
+
+</Block>
+
+<Block highlights='{"js":"", "rust": "", "python": "", "go": ""}' fname="auction" type='info'>
 
 <Warning>
 
@@ -53,7 +64,7 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"js": "", "rust": "", "python": ""}' fname="auction" >
+<Block highlights='{"js": "", "rust": "", "python": "", "go": ""}' fname="auction" >
 
     ### Initializing the State
     After the contract is deployed, its state is empty and needs to be initialized with
@@ -97,6 +108,17 @@ In Python, you need to manage the state initialization explicitly. The SDK doesn
 
 </Block>
 
+<Block highlights='{"go": "30-40"}' fname="auction">
+
+    ### I. Initialization Functions
+    An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
+
+    In our Auction example, the contract has an initialization function that sets when the auction ends. The function is marked with the `@contract:init` comment directive.
+
+    **Note:** It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions.md).
+
+</Block>
+
 <Block highlights='{"js": "5", "python": "5"}' fname="hello">
 
     ### II. Default State
@@ -123,18 +145,30 @@ In Python, you need to manage the state initialization explicitly. The SDK doesn
 
 </Block>
 
-<Block highlights='{"js": "", "rust":"", "python": ""}' fname="hello">
+<Block highlights='{"go": ""}' fname="hello">
 
-    ### Lifecycle of the State
-    When a function is called, the contract's state is loaded from the storage and put into memory.
+    ### II. Default State
+    In Go, when no `@contract:init` function is called, the contract's state struct is zero-initialized using Go's default zero values — `""` for strings, `0` for numbers, `false` for booleans.
 
-    The state is actually [stored serialized](./serialization), and the SDK takes a bit of time to deserialize it before the method can access it.
-
-    When the method finishes executing successfully, all the changes to the state are serialized, and saved back to the storage.
+    **Note:** The state can only be initialized once.
 
 </Block>
 
-<Block highlights='{"js": "", "rust":"", "python": ""}' fname="hello" type='info'>
+<Block highlights='{"js": "", "rust":"", "python": "", "go": "7-10"}' fname="hello" type='info'>
+
+<Note>
+**Lifecycle of the State**
+
+When a function is called, the contract's state is loaded from the storage and put into memory.
+
+The state is actually [stored serialized](./serialization), and the SDK takes a bit of time to deserialize it before the method can access it.
+
+When the method finishes executing successfully, all the changes to the state are serialized, and saved back to the storage.
+</Note>
+
+</Block>
+
+<Block highlights='{"js": "", "rust":"", "python": "", "go": ""}' fname="hello" type='info'>
 
 <Warning>
 **State and Code**
@@ -168,5 +202,13 @@ Make sure to read the [updating a contract](../release/upgrade) if you run into 
 <File language="python" fname="auction" url="https://github.com/r-near/near-py-examples/blob/main/auction.py" start="2" end="122"></File>
 
 <File language="python" fname="hello" url="https://github.com/r-near/near-py-examples/blob/main/hello-near.py" start="5" end="20"></File>
+
+<File language="go" fname="auction"
+    url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go"
+    start="1" end="121" />
+
+<File language="go" fname="hello"
+    url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/greeting/main.go"
+    start="1" end="27" />
 
 </ExplainCode>

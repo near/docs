@@ -48,6 +48,10 @@ A smart contract can also update itself by implementing a method that:
         url="https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs"
         start="10" end="31" />
 
+  <Github fname="main.go"
+        url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/self-update/main.go"
+        start="10" end="53" />
+
 </CodeGroup>
 
 #### How to Invoke Such Method?
@@ -143,6 +147,11 @@ using the following state:
       url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-base.js"
       start="12" end="33" />
 
+
+<Github fname="main.go"
+      url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/guest-book/base/main.go"
+      start="12" end="22" />
+
 </CodeGroup>
 
 #### Update Contract
@@ -158,6 +167,11 @@ the `PostedMessage` itself, so you change the contract to:
 <Github fname="index.js"
       url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
       start="21" end="43" />
+
+
+<Github fname="main.go"
+      url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/guest-book/v2/main.go"
+      start="14" end="26" />
 
 </CodeGroup>
 
@@ -186,12 +200,16 @@ state, removes the `payments` vector and adds the information to the
       url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
       start="5" end="68" />
 
+
+<Github fname="main.go"
+      url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/guest-book/v2/main.go"
+      start="34" end="87" />
+
 </CodeGroup>
 
-Notice that `migrate` is actually an
-[initialization method](../anatomy/storage)
-that **ignores** the existing state (`[#init(ignore_state)]`), thus being able
-to execute and rewrite the state.
+Notice that in Rust/JS, `migrate` is actually an [initialization method](../anatomy/storage) that **ignores** the existing state (`[#init(ignore_state)]`), thus being able to execute and rewrite the state.
+
+In Go, `Migrate()` is a regular `@contract:mutating` method that reads the old state manually using `env.StateRead()`, transforms it, and writes the new state back — no special init directive is needed.
 
 <Accordion title="Why we should remove old structures from the state?">
 

@@ -13,20 +13,45 @@ If you used one of our [examples](https://github.com/near-examples/docs-examples
 You can run `yarn test` from the root folder of each project to run both unit and [integration](/smart-contracts/testing/integration-test) tests.
 </Tip>
 
+For **Go contracts**, unit tests must be run with the `near-go` CLI, which uses **TinyGo** under the hood. The SDK's `system` package uses TinyGo-specific `//go:wasmimport` declarations that cannot be compiled by the standard Go toolchain.
+
+```bash
+# Run tests for the entire project
+near-go test project
+
+# Run tests only for the current package
+near-go test package
+```
+
+Go unit tests use the `MockSystem` from `near-sdk-go` to simulate the NEAR environment locally without a blockchain.
+
+<Info>
+**Prerequisites**
+
+You need the `near-go` CLI installed. If you followed the [Quickstart](../quickstart), everything is already set up — TinyGo and all dependencies are handled by the `install.sh` script automatically.
+</Info>
+
 ---
 
 ## Snippet I: Testing a Counter
 
 The tests in the [Counter Example](https://github.com/near-examples/counters) rely on basic functions to check that the `increment`, `decrement`, and `reset` methods work properly.
 
-<CodeGroup>
-  <Github fname="lib.rs"
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="lib.rs"
             url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
             start="47" end="68" />
     <Github fname="Cargo.toml"
             url="https://github.com/near-examples/counters/blob/main/contract-rs/Cargo.toml"
             start="18" end="19" />
-</CodeGroup>
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="main_test.go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/counter/main_test.go"
+            start="1" end="60" />
+  </Tab>
+</Tabs>
 
 ---
 
@@ -34,14 +59,21 @@ The tests in the [Counter Example](https://github.com/near-examples/counters) re
 
 While doing unit testing you can modify the [Environment variables](../anatomy/environment) through the `VMContextBuilder`. This will enable you to, for example, simulate calls from different users, with specific attached deposit and GAS. Here we present a snippet on how we test the `donate` method from our [Donation Example](https://github.com/near-examples/donation-examples) by manipulating the `predecessor` and `attached_deposit`.
 
-<CodeGroup>
-  <Github fname="lib.rs"
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="lib.rs"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
             start="58" end="105" />
     <Github fname="Cargo.toml"
             url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/Cargo.toml"
             start="18" end="19" />
-</CodeGroup>
+  </Tab>
+  <Tab title="🐹 GO">
+    <Github fname="main_test.go"
+            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/donation/main_test.go"
+            start="1" end="73" />
+  </Tab>
+</Tabs>
 
 ---
 
