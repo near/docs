@@ -1,0 +1,148 @@
+---
+title: Gas
+description: "Query gas prices for specific blocks or hashes using the NEAR RPC API."
+---
+
+The RPC API enables you to query the gas price for a specific block or hash.
+
+## Quick Reference
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `block_height` | `number` | Specific block height to query gas price for |
+| `block_hash` | `string` | Specific block hash to query gas price for |
+| `null` | `null` | Returns gas price for the latest block |
+
+---
+
+## Gas Price
+
+Returns gas price for a specific `block_height` or `block_hash`. Using `[null]` will return the most recent block's gas price.
+
+- **method**: `gas_price`
+- **params**: `[block_height]`, `["block_hash"]`, or `[null]`
+
+<Tabs>
+  <Tab title="null (latest)">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "gas_price",
+      "params": [null]
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://test.rpc.fastnear.com",
+    });
+
+    const response = await provider.gasPrice(null);
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=gas_price \
+      params:='[null]'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+  <Tab title="by block height">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "gas_price",
+      "params": [187310138]
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.gasPrice(187310138);
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=gas_price \
+      params:='[187310138]'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+  <Tab title="by block hash">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "gas_price",
+      "params": ["6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"]
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.gasPrice(
+      '6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w',
+    );
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=gas_price \
+      params:='["6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"]'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+</Tabs>
+
+<Accordion title="Example response">
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "result": {
+    "gas_price": "100000000"
+  }
+}
+```
+</Accordion>

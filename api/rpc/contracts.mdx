@@ -1,0 +1,380 @@
+---
+title: Accounts / Contracts
+description: "Learn to query information from accounts and contracts using the NEAR RPC API."
+---
+
+The RPC API enables you to view details about accounts and contracts as well as perform contract calls.
+
+## Quick Reference
+
+| Method | Purpose |
+|--------|---------|
+| [`view_account`](#view-account) | Get basic account information |
+| [`view_account_changes`](#view-account-changes) | Monitor account state changes |
+| [`view_code`](#view-contract-code) | Get deployed contract WASM code |
+| [`view_state`](#view-contract-state) | Get contract storage data |
+| [`data_changes`](#view-contract-state-changes) | Monitor contract state changes |
+| [`contract_code_changes`](#view-contract-code-changes) | Monitor contract deployments |
+| [`call_function`](#call-a-contract-function) | Execute read-only contract methods |
+
+---
+
+## View Account
+
+Returns basic account information.
+
+- **method**: `query`
+- **params**: `request_type: view_account`, `finality` OR `block_id`, `account_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_account",
+        "finality": "final",
+        "account_id": "account.rpc-examples.testnet"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'view_account',
+      finality: 'final',
+      account_id: 'account.rpc-examples.testnet',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"view_account","finality":"final","account_id":"account.rpc-examples.testnet"}'
+    ```
+  </Tab>
+</Tabs>
+
+<Accordion title="Example response">
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "amount": "999788200694421800000000",
+    "block_hash": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW",
+    "block_height": 187440904,
+    "code_hash": "11111111111111111111111111111111",
+    "locked": "0",
+    "storage_usage": 410
+  },
+  "id": "dontcare"
+}
+```
+</Accordion>
+
+---
+
+## View Account Changes
+
+Returns account changes from transactions in a given account.
+
+- **method**: `changes`
+- **params**: `changes_type: account_changes`, `account_ids`, `finality` OR `block_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "changes",
+      "params": {
+        "changes_type": "account_changes",
+        "account_ids": ["contract.rpc-examples.testnet"],
+        "block_id": 187310139
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://archival-rpc.testnet.near.org" });
+
+    const response = await provider.accountChanges(
+      ['contract.rpc-examples.testnet'],
+      { blockId: 187310139 }
+    );
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=changes \
+      params:='{"changes_type":"account_changes","account_ids":["contract.rpc-examples.testnet"],"block_id":187310139}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## View Contract Code
+
+Returns the contract code (Wasm binary) deployed to the account. The returned code is encoded in base64.
+
+- **method**: `query`
+- **params**: `request_type: view_code`, `finality` OR `block_id`, `account_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_code",
+        "finality": "final",
+        "account_id": "contract.rpc-examples.testnet"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'view_code',
+      finality: 'final',
+      account_id: 'contract.rpc-examples.testnet',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"view_code","finality":"final","account_id":"contract.rpc-examples.testnet"}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## View Contract State
+
+Returns the state (key-value pairs) of a contract based on a key prefix (base64 encoded). Pass an empty string for `prefix_base64` to return the entire state.
+
+- **method**: `query`
+- **params**: `request_type: view_state`, `finality` OR `block_id`, `account_id`, `prefix_base64`
+
+<Warning>
+By default, RPC nodes only return up to **50kB** of contract state. If the contract's state exceeds this limit, the query will return an error. To query larger state, use an archival node and paginate with `prefix_base64`.
+</Warning>
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_state",
+        "finality": "final",
+        "account_id": "contract.rpc-examples.testnet",
+        "prefix_base64": ""
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'view_state',
+      finality: 'final',
+      account_id: 'contract.rpc-examples.testnet',
+      prefix_base64: '',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"view_state","finality":"final","account_id":"contract.rpc-examples.testnet","prefix_base64":""}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## View Contract State Changes
+
+Returns state change details of a contract based on a key prefix (base64 encoded).
+
+- **method**: `changes`
+- **params**: `changes_type: data_changes`, `account_ids`, `key_prefix_base64`, `finality` OR `block_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "changes",
+      "params": {
+        "changes_type": "data_changes",
+        "account_ids": ["contract.rpc-examples.testnet"],
+        "key_prefix_base64": "",
+        "block_id": 187310139
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://archival-rpc.testnet.near.org" });
+
+    const response = await provider.contractStateChanges(
+      ['contract.rpc-examples.testnet'],
+      { blockId: 187310139 },
+      ''
+    );
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=changes \
+      params:='{"changes_type":"data_changes","account_ids":["contract.rpc-examples.testnet"],"key_prefix_base64":"","block_id":187310139}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## View Contract Code Changes
+
+Returns code changes made when deploying a contract. Change is returned as a base64 encoded WASM file.
+
+- **method**: `changes`
+- **params**: `changes_type: contract_code_changes`, `account_ids`, `finality` OR `block_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "changes",
+      "params": {
+        "changes_type": "contract_code_changes",
+        "account_ids": ["contract.rpc-examples.testnet"],
+        "block_id": 187309439
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://archival-rpc.testnet.near.org" });
+
+    const response = await provider.contractCodeChanges(
+      ['contract.rpc-examples.testnet'],
+      { blockId: 187309439 }
+    );
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=changes \
+      params:='{"changes_type":"contract_code_changes","account_ids":["contract.rpc-examples.testnet"],"block_id":187309439}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## Call a Contract Function
+
+Allows you to call a contract method as a view function (read-only).
+
+- **method**: `query`
+- **params**: `request_type: call_function`, `finality` OR `block_id`, `account_id`, `method_name`, `args_base64`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "call_function",
+        "finality": "final",
+        "account_id": "contract.rpc-examples.testnet",
+        "method_name": "get_greeting",
+        "args_base64": ""
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'call_function',
+      finality: 'final',
+      account_id: 'contract.rpc-examples.testnet',
+      method_name: 'get_greeting',
+      args_base64: '',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"call_function","finality":"final","account_id":"contract.rpc-examples.testnet","method_name":"get_greeting","args_base64":""}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## Error Handling
+
+| Error Code | Description | Solution |
+|------------|-------------|----------|
+| `UnknownAccount` | Account does not exist | Check account ID spelling |
+| `InvalidAccount` | Invalid account format | Use valid account ID (e.g., `account.near`) |
+| `UnknownBlock` | Block not found | Use a valid block hash or height |
+| `GarbageCollectedBlock` | Block too old | Use archival node or more recent block |
+| `NoContractCode` | No contract deployed | Verify the account has a deployed contract |
+| `MethodNotFound` | Contract method does not exist | Check method name and contract ABI |
+| `InvalidArgs` | Invalid method arguments | Verify args format and encoding |

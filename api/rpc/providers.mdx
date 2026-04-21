@@ -1,0 +1,33 @@
+---
+title: "RPC Providers"
+description: "List of public RPC endpoints for the NEAR Protocol."
+---
+
+NEAR Protocol exposes a JSON-RPC API for interacting with the network. You can use any of the public providers below or run your own node.
+
+## Public endpoints
+
+| Provider | Mainnet | Testnet |
+|----------|---------|---------|
+| NEAR (official) | `https://rpc.mainnet.near.org` | `https://rpc.testnet.near.org` |
+| Pagoda | `https://near-mainnet.api.pagoda.co/rpc/v1` | `https://near-testnet.api.pagoda.co/rpc/v1` |
+| dRPC | `https://near.drpc.org` | — |
+| Lava Network | `https://near.lava.build` | — |
+
+## Making requests
+
+All endpoints accept JSON-RPC 2.0 `POST` requests. The NEAR RPC uses a non-standard format where the method name is encoded in the URL path rather than the request body.
+
+```bash
+curl -X POST https://rpc.mainnet.near.org/status \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+## Run your own node
+
+To run a local RPC node, follow the [NEAR node documentation](https://near-nodes.io/rpc/hardware-rpc).
+
+<Info>
+  Testnet tokens have no real value and can be obtained from the [NEAR Faucet](/getting-started/faucet).
+</Info>
