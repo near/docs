@@ -137,7 +137,7 @@
                   {
                     "group": "Transactions",
                     "pages": [
-                      "protocol/transactions",
+                      "protocol/transactions/index",
                       "protocol/transactions/transaction-anatomy",
                       "protocol/transactions/gas",
                       "protocol/transactions/transaction-execution",
