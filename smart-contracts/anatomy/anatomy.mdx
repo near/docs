@@ -32,9 +32,14 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
     ### Comment Directives
 
-    Unlike languages with built-in decorators, the Near Go SDK uses **Comment Directives** to control how your code is compiled into a smart contract.
+    Unlike languages with built-in decorators, the Near Go SDK uses **Comment Directives** to control how your code is compiled into a smart contract. The `near-go` CLI scans your source for `@contract:` tags and generates the contract bindings automatically.
 
-    The `near-go` CLI scans your comments for `@contract:` tags — such as `@contract:state`, `@contract:init`, `@contract:view`, `@contract:mutating`, `@contract:payable`, and `@contract:promise_callback` — and generates the contract bindings automatically.
+    1. **`@contract:state`**: Placed above a `struct`. Identifies the main contract state. **Only one state struct is allowed per project.** The CLI automatically generates `getState` and `setState` helpers.
+    2. **`@contract:init`**: Marks the initialization method (constructor). Runs only if state is empty. **Only one init method is allowed per project.**
+    3. **`@contract:view`**: Marks a read-only method. Exposes it externally but does not persist state changes. Compatible with `@contract:promise_callback`.
+    4. **`@contract:mutating`**: Marks a method that modifies state. The CLI automatically saves updated state back to storage after execution.
+    5. **`@contract:payable`**: Allows a method to accept attached NEAR tokens. Optionally enforces a minimum with `min_deposit=1NEAR`. Compatible with `mutating` and `init`.
+    6. **`@contract:promise_callback`**: Handles the result of a cross-contract call by injecting `promise.PromiseResult` into the arguments. **Must be combined** with either `@contract:view` or `@contract:mutating`.
 
     **Note:** Methods exported to WASM are automatically converted to `snake_case` (e.g., `SetGreeting` becomes `set_greeting`).
 

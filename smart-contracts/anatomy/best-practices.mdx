@@ -330,7 +330,9 @@ Here we lay out some best practices for writing smart contracts in Go on NEAR:
 
 ---
 
-## Validate early {#validate-early-go}
+<div id="validate-early-go" />
+
+#### Validate early
 
 Validate inputs, context, and state as early as possible before taking any actions. The earlier you panic, the more [gas](/protocol/gas) you save for the caller.
 
@@ -360,7 +362,9 @@ func (c *Contract) SetFee(newFee uint64) error {
 
 ---
 
-## Use logging {#use-logging-go}
+<div id="use-logging-go" />
+
+#### Use logging
 
 Use `env.LogString` for debug information and to notify users of important events. Log messages are stored on-chain and visible in transaction receipts.
 
@@ -385,7 +389,9 @@ func (c *Contract) Transfer(to string, amount string) error {
 
 ---
 
-## Return Promises {#return-promises-go}
+<div id="return-promises-go" />
+
+#### Return Promises
 
 When making cross-contract calls, use `.Value()` to return the promise result to the caller. This lets the caller (e.g. near-cli or near-api-js) wait for the full result and see failures in the transaction chain.
 
@@ -404,7 +410,9 @@ func (c *Contract) WithdrawAndNotify(receiverId string) {
 
 ---
 
-## Use SDK collections for large data {#use-sdk-collections-go}
+<div id="use-sdk-collections-go" />
+
+#### Use SDK collections for large data
 
 For data sets that grow over time, use SDK collections instead of native Go slices or maps. Native collections are fully loaded into memory on every call, which costs more gas as they grow.
 
@@ -433,7 +441,9 @@ Use native Go slices and maps only for **small, fixed-size** data (up to ~100 en
 
 ---
 
-## Follow security patterns {#follow-security-patterns-go}
+<div id="follow-security-patterns-go" />
+
+#### Follow security patterns
 
 Apply security best practices to protect your contract from common vulnerabilities.
 
@@ -480,7 +490,9 @@ func (c *Contract) OnExternalCallDone(result promise.PromiseResult) {
 }
 ```
 
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+<Tip>
+[See full example on GitHub](https://github.com/Emir-Asanov/near-go-examples)
+</Tip>
 
   </Tab>
 </Tabs>

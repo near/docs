@@ -15,13 +15,10 @@ Moreover, when using the local `sandbox` you gain complete control of the networ
 
 In NEAR, integration tests are implemented using a framework called **Workspaces**. Workspaces comes in two flavors: [🦀 Rust](https://github.com/near/workspaces-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).
 
-For **Go contracts**, unit tests are run with the `near-go` CLI:
+**Go contracts** use a two-tier testing approach:
 
-```bash
-near-go test project
-```
-
-This runs unit tests using the `MockSystem` environment to simulate the NEAR blockchain locally — no sandbox required. For full integration tests that deploy to a sandbox, Go contracts use the Rust `workspaces-rs` framework. See the [Go Integration Testing](#go-integration-testing) section below.
+- **Unit tests** run locally via `near-go test project`, using the `MockSystem` environment to simulate the NEAR blockchain — no sandbox required.
+- **Integration tests** that deploy to a sandbox are written in Rust using the `workspaces-rs` framework. See the [Go Integration Testing](#go-integration-testing) section below.
 
 <Note>
 **Sandbox Testing**
@@ -575,6 +572,11 @@ Lets take a look at the test of our [Quickstart Project](../quickstart) [👋 He
               url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-test/main.ava.js" start="11" end="45"/>
   </Tab>
   <Tab title="🐹 GO">
+
+<Note>
+Go integration tests are written in Rust using the `workspaces-rs` framework. The Go contract is compiled to WASM first, then the Rust test suite deploys and interacts with it via the sandbox. See the [Go Integration Testing](#go-integration-testing) section for setup details.
+</Note>
+
     <Github fname="test_greeting.rs"
               url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/greeting/integration-tests/tests/test_greeting.rs" start="1" end="77"/>
   </Tab>
@@ -597,6 +599,11 @@ In most cases we will want to test complex methods involving multiple users and 
               start="51" end="75" />
   </Tab>
   <Tab title="🐹 GO">
+
+<Note>
+Go integration tests are written in Rust using the `workspaces-rs` framework. The Go contract is compiled to WASM first, then the Rust test suite deploys and interacts with it via the sandbox. See the [Go Integration Testing](#go-integration-testing) section for setup details.
+</Note>
+
     <Github fname="test_donation.rs"
               url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/donation/integration-tests/tests/test_donation.rs" start="1" end="81"/>
   </Tab>

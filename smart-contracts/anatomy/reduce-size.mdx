@@ -313,7 +313,7 @@ def frequently_called_method(self, data):
   </Tab>
   <Tab title="🐹 GO">
 
-## Advice & examples
+**Advice & examples**
 
 Go contracts are compiled to WASM via **TinyGo**, which already applies aggressive size optimizations compared to the standard Go compiler. The `near-go build` command uses size-optimized TinyGo settings by default.
 
@@ -321,7 +321,7 @@ Below are additional strategies to further reduce your contract size.
 
 ---
 
-## Use `near-go build` (default)
+#### Use `near-go build` (default)
 
 Always build with `near-go build` instead of raw `tinygo`. It applies the correct flags for NEAR and enables size optimizations automatically:
 
@@ -337,7 +337,7 @@ near-go build --output my_contract.wasm --keep-generated
 
 ---
 
-## Minimize struct fields
+#### Minimize struct fields
 
 Every field stored in the contract state is serialized to JSON. Keep your state structs lean — only store what you need on-chain.
 
@@ -360,7 +360,7 @@ type GoodContract struct {
 
 ---
 
-## Avoid large dependencies
+#### Avoid large dependencies
 
 TinyGo has a limited standard library. Avoid importing large packages that bring in code not needed at runtime. Prefer the SDK's built-in utilities:
 
@@ -376,7 +376,7 @@ env.LogString("value: " + strconv.FormatUint(x, 10))
 
 ---
 
-## Use SDK collections for large data
+#### Use SDK collections for large data
 
 Native Go slices and maps are fully serialized into the `STATE` key on every call, making the contract state grow with the collection. Use SDK collections to store entries as separate storage keys:
 
@@ -398,7 +398,7 @@ type GoodContract struct {
 
 ---
 
-## Panic early, before doing expensive work
+#### Panic early, before doing expensive work
 
 Failing fast with `env.PanicStr` saves gas and avoids wasted computation. Validate all inputs and permissions before executing any logic:
 
@@ -421,7 +421,9 @@ func (c *Contract) AdminAction(data string) {
 }
 ```
 
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
+<Tip>
+[See full example on GitHub](https://github.com/Emir-Asanov/near-go-examples)
+</Tip>
 
   </Tab>
 </Tabs>
