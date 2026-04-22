@@ -1,6 +1,6 @@
 ---
 title: Oracles
-description: "Learn about blockchain oracles on NEAR Protocol, including price feeds, data integration, and using oracle services like NearDefi Price Oracle and Pyth Network."
+description: "Learn about blockchain oracles on NEAR Protocol, including price feeds, data integration, and using oracle services like Outlayer Price Oracle and Pyth Network."
 ---
 
 import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
@@ -26,152 +26,24 @@ Here is a directory of third-party oracle services deployed on the NEAR blockcha
 
 | Name                                                                                                     | Creator                                 | Description                                        |
 | -------------------------------------------------------------------------------------------------------- | --------------------------------------- | -------------------------------------------------- |
-| [Price Oracle](#price-oracle-by-neardefi)                                                                | [NearDefi](https://github.com/NearDeFi) | Open source oracle for real-time asset pricing     |
+| [Outlayer Price Oracle](#price-oracle-by-outlayer)                                                                | [Outlayer](https://github.com/zavodil/oracle-ark) | TEE-Secured Price Oracle based on Outlayer      |
 | [Pyth Network Oracle](#pyth-network-oracle)                                                              | [Pyth Network](https://pyth.network/)   | High-frequency, low-latency oracle for price feeds |
-| **[[Your Project Here]](https://github.com/near/assets/docs/edit/master/assets/docs/primitives/oracles.md)** | -                                       | -                                                  |
+| **[[Your Project Here]](https://github.com/near/docs/edit/master/primitives/oracles.mdx)** | -                                       | -                                                  |
 
 ---
 
-## Price Oracle by NearDefi
+## Price Oracle by Outlayer
 
-- **Creator:** [NearDefi](https://github.com/NearDeFi)
-- **Codebase Repository:** [NearDefi/price-oracle](https://github.com/NearDeFi/price-oracle)
-- **Bot for Data Feeds:** [NearDefi/near-price-oracle-bot](https://github.com/NearDeFi/near-price-oracle-bot)
+- **Creator:** [Outlayer](https://github.com/fastnear/near-outlayer)
+- **Official Documentation:** [Price Oracle Outlayer](https://price-oracle.outlayer.ai/docs/)
+- **Codebase Repository:** [zavodil/oracle-ark](https://github.com/zavodil/oracle-ark)
 - **Deployed Addresses:**
-  - Mainnet: [priceoracle.near](https://nearblocks.io/address/priceoracle.near)
-  - Testnet: [priceoracle.testnet](https://testnet.nearblocks.io/address/priceoracle.testnet)
+  - **Mainnet:** [price-oracle.near](https://nearblocks.io/address/price-oracle.near)
+  - **Testnet:** [price-oracle.testnet](https://testnet.nearblocks.io/address/price-oracle.testnet)
 
-### Query Assets
+### How to use / integrate
 
-<Tabs>
-  <Tab title="🖥️ CLI">
-
-```bash
-near view priceoracle.near get_assets
-near contract call-function as-read-only priceoracle.near get_assets json-args {} network-config mainnet now
-```
-
-<Accordion title="Example Response">
-
-```bash
-[
-  [
-    'wrap.near',
-    {
-      reports: [
-        {
-          oracle_id: 'thorinoracle.near',
-          timestamp: '1669795900809627816',
-          price: { multiplier: '17030', decimals: 28 }
-        },
-        ...
-      ]
-    }
-  ]
-]
-```
-
-</Accordion>
-
-</Tab>
-  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
-    <TryOutOnLantstool path="docs/2.build/5.primitives/oracles/query-assets.json" />
-
-<Accordion title="Example Response">
-
-```bash
-[
-  [
-    'wrap.near',
-    {
-      reports: [
-        {
-          oracle_id: 'thorinoracle.near',
-          timestamp: '1669795900809627816',
-          price: { multiplier: '17030', decimals: 28 }
-        },
-        ...
-      ]
-    }
-  ]
-]
-```
-
-</Accordion>
-  </Tab>
-</Tabs>
-
-### Get Assets Price
-
-<Tabs>
-  <Tab title="🖥️ CLI">
-
-```bash
-near view priceoracle.near get_price_data
-```
-<Accordion title="Example response">
-
-```bash
-{
-  timestamp: '1706631861981947371',
-  recency_duration_sec: 90,
-  prices: [
-    {
-      asset_id: 'wrap.near',
-      price: { multiplier: '30702', decimals: 28 }
-    },
-    {
-      asset_id: 'aurora',
-      price: { multiplier: '235662', decimals: 20 }
-    },
-    {
-      asset_id: 'meta-pool.near',
-      price: { multiplier: '38770', decimals: 28 }
-    },
-    {
-      asset_id: 'linear-protocol.near',
-      price: { multiplier: '36432', decimals: 28 }
-    },
-```
-
-</Accordion>
-
-</Tab>
-  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
-    <TryOutOnLantstool path="docs/2.build/5.primitives/oracles/assets-price.json" />
-
-<Accordion title="Example response">
-
-```bash
-{
-  timestamp: '1706631861981947371',
-  recency_duration_sec: 90,
-  prices: [
-    {
-      asset_id: 'wrap.near',
-      price: { multiplier: '30702', decimals: 28 }
-    },
-    {
-      asset_id: 'aurora',
-      price: { multiplier: '235662', decimals: 20 }
-    },
-    {
-      asset_id: 'meta-pool.near',
-      price: { multiplier: '38770', decimals: 28 }
-    },
-    {
-      asset_id: 'linear-protocol.near',
-      price: { multiplier: '36432', decimals: 28 }
-    },
-```
-
-</Accordion>
-  </Tab>
-</Tabs>
-
-<Tip>
-For USD values, divide the `multiplier` by `10^4`.
-</Tip>
+The `price-oracle.near` implements Pyth-compatible view methods natively (see [Pyth Network Oracle](#pyth-network-oracle) below). DeFi contracts using `pyth-oracle.near` can migrate by changing one contract address — no code changes needed.
 
 ---
 
