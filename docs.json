@@ -60,6 +60,10 @@
   },
   "redirects": [
     {
+      "source": "/smart-contracts/security/welcome",
+      "destination": "/smart-contracts/security/introduction"
+    },
+    {
       "source": "/ai/shade-agents",
       "destination": "/ai/shade-agents/getting-started/introduction"
     },
@@ -225,7 +229,7 @@
                       {
                         "group": "Security",
                         "pages": [
-                          "smart-contracts/security/welcome",
+                          "smart-contracts/security/introduction",
                           "smart-contracts/security/checklist",
                           "smart-contracts/security/storage",
                           "smart-contracts/security/callbacks",
