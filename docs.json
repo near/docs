@@ -60,6 +60,10 @@
   },
   "redirects": [
     {
+      "source": "/smart-contracts/security/welcome",
+      "destination": "/smart-contracts/security/introduction"
+    },
+    {
       "source": "/ai/shade-agents",
       "destination": "/ai/shade-agents/getting-started/introduction"
     },
@@ -74,6 +78,10 @@
     {
       "source": "/chain-abstraction/meta-transactions",
       "destination": "/protocol/transactions/meta-tx"
+    },
+    {
+      "source": "/protocol/access-keys",
+      "destination": "/protocol/accounts-contracts/access-keys"
     }
   ],
   "navigation": {
@@ -221,7 +229,7 @@
                       {
                         "group": "Security",
                         "pages": [
-                          "smart-contracts/security/welcome",
+                          "smart-contracts/security/introduction",
                           "smart-contracts/security/checklist",
                           "smart-contracts/security/storage",
                           "smart-contracts/security/callbacks",
@@ -330,7 +338,7 @@
                       }
                     ]
                   }
-              ]
+                ]
               },
               {
                 "group": "Multi-Chain",
