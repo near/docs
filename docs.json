@@ -82,6 +82,10 @@
     {
       "source": "/protocol/access-keys",
       "destination": "/protocol/accounts-contracts/access-keys"
+    },
+    {
+      "source": "/api/rpc/maintenance-windows",
+      "destination": "/api-reference/maintenance-windows"
     }
   ],
   "navigation": {
