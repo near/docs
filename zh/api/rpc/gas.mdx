@@ -1,0 +1,148 @@
+---
+title: Gas
+description: "使用 NEAR RPC API 查询特定区块或哈希的 Gas 价格。"
+---
+
+RPC API 允许您查询特定区块或哈希的 Gas 价格。
+
+## 快速参考
+
+| 参数 | 类型 | 描述 |
+| --- | --- | --- |
+| `block_height` | `number` | 要查询 Gas 价格的特定区块高度 |
+| `block_hash` | `string` | 要查询 Gas 价格的特定区块哈希 |
+| `null` | `null` | 返回最新区块的 Gas 价格 |
+
+---
+
+## Gas 价格
+
+返回特定 `block_height` 或 `block_hash` 的 Gas 价格。使用 `[null]` 将返回最新区块的 Gas 价格。
+
+- **method**: `gas_price`
+- **params**: `[block_height]`、`["block_hash"]` 或 `[null]`
+
+<Tabs>
+  <Tab title="null（最新）">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "gas_price",
+      "params": [null]
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://test.rpc.fastnear.com",
+    });
+
+    const response = await provider.gasPrice(null);
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=gas_price \
+      params:='[null]'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+  <Tab title="按区块高度">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "gas_price",
+      "params": [187310138]
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.gasPrice(187310138);
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=gas_price \
+      params:='[187310138]'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+  <Tab title="按区块哈希">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "gas_price",
+      "params": ["6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"]
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.gasPrice(
+      '6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w',
+    );
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=gas_price \
+      params:='["6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"]'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+</Tabs>
+
+<Accordion title="响应示例">
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "result": {
+    "gas_price": "100000000"
+  }
+}
+```
+</Accordion>

@@ -1,0 +1,314 @@
+---
+title: 减小合约大小
+description: "了解减小 NEAR 智能合约大小的策略，以优化部署和性能。"
+---
+import {Github} from '/snippets/github.jsx';
+
+在本页面中，我们将探讨减小 NEAR 上智能合约大小的策略。这对于希望优化合约部署的开发者特别有用，尤其是在合约大小限制是一个问题的场景中。
+
+# 减小合约大小
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+## 建议与示例
+
+本页面面向熟悉底层概念并希望显著减小合约大小的开发者，可能以代码可读性为代价。
+
+以下是一些这种方法可能有用的常见场景：
+
+- 打算与账户管理绑定的合约
+- 使用工厂部署的合约
+- 类似 NEAR 上 EVM 的未来进展
+
+编译合约时，有一些可能会向合约大小添加不必要字节的因素。其中一些可能更容易换成其他方法，而另一些则需要更多关于系统调用的内部知识。
+
+## 小优化
+
+### 使用编译标志
+
+编译合约时，确保将标志 `-C link-arg=-s` 传递给 Rust 编译器：
+
+```bash
+RUSTFLAGS='-C link-arg=-s' cargo build --target wasm32-unknown-unknown --release
+```
+
+以下是我们在大多数示例中 `Cargo.toml` 中使用的参数：
+
+```toml
+[profile.release]
+codegen-units = 1
+opt-level = "s"
+lto = true
+debug = false
+panic = "abort"
+overflow-checks = true
+```
+
+您可能想尝试使用 `opt-level = "z"` 代替 `opt-level = "s"` 来查看是否会生成更小的二进制文件。详见 [The Cargo Book Profiles section](https://doc.rust-lang.org/cargo/reference/profiles.html#opt-level)。您也可以参考此 [Shrinking .wasm Size](https://rustwasm.github.io/book/reference/code-size.html#tell-llvm-to-optimize-for-size-instead-of-speed) 资源。
+
+### 从清单文件中删除 `rlib`
+
+确保您的清单文件（`Cargo.toml`）不包含 `rlib`，除非需要。一些 NEAR 示例中包含了以下内容：
+
+<Warning>
+
+**添加了不必要的膨胀**
+
+```toml
+[lib]
+crate-type = ["cdylib", "rlib"]
+```
+
+</Warning>
+
+  当它可以是：
+
+<Tip>
+
+```toml
+[lib]
+crate-type = ["cdylib"]
+```
+</Tip>
+
+3. 使用 Rust SDK 时，您可以覆盖默认的 JSON 序列化，改用 [Borsh](https://borsh.io)。有关更多信息和示例，请[参见此页面](./serialization-interface#overriding-serialization-protocol-default)。
+4. 使用断言或守卫时，避免使用标准 `assert` 宏，如 [`assert!`](https://doc.rust-lang.org/std/macro.assert.html)、[`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html) 或 [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html)，因为这些可能会添加关于错误行号的信息导致膨胀。`unwrap`、`expect` 和 Rust 的 `panic!()` 宏也存在类似问题。
+
+  标准断言的示例：
+
+  <Warning>
+
+  **添加了不必要的膨胀**
+
+  ```rust
+  assert_eq!(contract_owner, predecessor_account, "ERR_NOT_OWNER");
+  ```
+
+  </Warning>
+
+  当它可以是：
+
+  <Tip>
+
+  ```rust
+  if contract_owner != predecessor_account {
+    env::panic(b"ERR_NOT_OWNER");
+  }
+  ```
+  </Tip>
+
+  删除 `expect` 的示例：
+
+  <Warning>
+
+  **添加了不必要的膨胀**
+
+  ```rust
+  let owner_id = self.owner_by_id.get(&token_id).expect("Token not found");
+  ```
+
+  </Warning>
+
+  当它可以是：
+
+  <Tip>
+
+  ```rust
+  fn expect_token_found<T>(option: Option<T>) -> T {
+    option.unwrap_or_else(|| env::panic_str("Token not found"))
+  }
+  let owner_id = expect_token_found(self.owner_by_id.get(&token_id));
+  ```
+  </Tip>
+
+  更改标准 `panic!()` 的示例：
+
+  <Warning>
+
+  **添加了不必要的膨胀**
+
+  ```rust
+  panic!("ERR_MSG_HERE");
+  ```
+
+  </Warning>
+
+  当它可以是：
+
+  <Tip>
+
+  ```rust
+  env::panic_str("ERR_MSG_HERE");
+  ```
+  </Tip>
+
+## 可直接使用的脚本
+我们准备了一个简单的 `bash` 脚本，可用于缩小 `.wasm` 合约文件。您可以在[此处](https://github.com/near/near-sdk-rs/blob/master/minifier/minify.sh)找到它。
+
+当前缩小方法如下：
+1. 使用 `wasm-snip` 将标准库中一些已知的大型函数（如浮点格式化和 panic 相关的）替换为 unreachable 指令。
+2. 运行 `wasm-gc` 以消除从被替换函数可达的所有函数。
+3. 使用 `wasm-strip` 删除不需要的部分，例如名称。
+4. 运行 `binaryen wasm-opt`，清理剩余部分。
+
+### 运行脚本的要求：
+- 使用 Cargo 安装 [wasm-snip](https://docs.rs/wasm-snip/0.4.0/wasm_snip/) 和 [wasm-gc](https://docs.rs/crate/wasm-gc/0.1.6)：
+```bash
+cargo install wasm-snip wasm-gc
+```
+- 在系统上安装 [binaryen](https://github.com/WebAssembly/binaryen) 和 [wabt](https://github.com/WebAssembly/wabt)。对于 Ubuntu 和其他基于 Debian 的 Linux 发行版，运行：
+```bash
+apt install binaryen wabt
+```
+
+<Danger>
+
+缩小可能相当激进，因此缩小后必须测试合约。独立的 NEAR 运行时可能对此有帮助，参见[这里](https://github.com/nearprotocol/nearcore/tree/master/runtime/near-vm-runner)。
+
+</Danger>
+
+## 底层方法
+
+对于最小化合约的 `no_std` 方法，请参考以下示例：
+
+- [Tiny contract](https://github.com/near/nearcore/tree/1e7c6613f65c23f87adf2c92e3d877f4ffe666ea/runtime/near-test-contracts/tiny-contract-rs)
+- [NEAR ETH Gateway](https://github.com/ilblackdragon/near-eth-gateway/blob/master/proxy/src/lib.rs)
+- [此 YouTube 视频](https://youtu.be/Hy4VBSCqnsE)，Eugene 在其中演示了 `no_std` 模式下的同质化代币。[此示例的代码在此处](https://github.com/near/core-contracts/pull/88)。
+- [使用 `nesdie` 项目的示例](https://github.com/austinabell/nesdie/tree/main/examples)。
+- 请注意，Aurora 已成功使用 [rjson](https://crates.io/crates/rjson) 作为轻量级 JSON 序列化 crate。它比目前与 Rust SDK 打包的 [serde](https://crates.io/crates/serde) 占用更小。请参见 Aurora 仓库中的[此 rjson 示例](https://github.com/aurora-is-near/aurora-engine/blob/65a1d11fcd16192cc1bda886c62005c603189a24/src/json.rs#L254)，不过实现细节需要读者自行了解，这里不作展开。[此 nesdie 示例](https://github.com/austinabell/nesdie/blob/bb6beb77e32cd54077ac54bf028f262a9dfb6ad0/examples/multisig/src/utils/json/vector.rs#L26-L30)也使用了 [miniserde crate](https://crates.io/crates/miniserde)，这是那些选择避免使用 Rust SDK 的人的另一个选项。
+
+<Note>
+**系统调用信息**
+
+<Accordion title="展开查看 <code>sys.rs</code> 中可用的内容">
+
+<Github language="rust" url="https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/environment/env.rs" />
+
+</Accordion>
+
+</Note>
+  </Tab>
+  
+  <Tab title="🐍 Python">
+
+## 优化 Python 合约
+
+由于 NEAR 上的 Python 智能合约是解释执行而非直接编译为 WebAssembly，优化策略与 Rust 合约不同。Python 解释器本身已经经过优化，但您仍然可以使合约更高效。
+
+### 减小合约大小
+
+#### 1. 最小化依赖
+
+只导入您需要的模块和函数：
+
+```python
+# 效率较低 - 导入所有内容
+from near_sdk_py import *
+
+# 效率较高 - 只导入需要的内容
+from near_sdk_py import view, call, Context
+```
+
+#### 2. 使用高效的数据结构
+
+为您的需求选择正确的数据结构：
+
+```python
+# 查找效率较低
+user_list = []  # O(n) 查找时间
+for user in user_list:
+    if user["id"] == user_id:
+        return user
+
+# 查找效率较高
+user_dict = {}  # O(1) 查找时间
+if user_id in user_dict:
+    return user_dict[user_id]
+```
+
+#### 3. 优化存储使用
+
+NEAR SDK 集合针对链上存储进行了优化。对于大型数据集，使用这些集合代替原生 Python 集合：
+
+```python
+# 原生集合 - 完全加载到内存中
+self.users = {}  # 每次方法调用时完全加载
+
+# SDK 集合 - 延迟加载
+from near_sdk_py.collections import UnorderedMap
+self.users = UnorderedMap("u")  # 只加载需要的内容
+```
+
+#### 4. 减少字符串操作
+
+字符串操作可能很昂贵。尽量减少：
+
+```python
+# 效率较低
+result = ""
+for i in range(100):
+    result += str(i)  # 创建许多中间字符串
+
+# 效率较高
+parts = []
+for i in range(100):
+    parts.append(str(i))
+result = "".join(parts)  # 只创建一次字符串
+```
+
+#### 5. 避免递归
+
+深度递归可能导致栈溢出问题。考虑使用迭代方法：
+
+```python
+# 递归 - 对深层结构可能有问题
+def process_tree(node):
+    result = process_node(node)
+    for child in node.children:
+        result += process_tree(child)
+    return result
+
+# 迭代 - 效率更高
+def process_tree(root):
+    result = 0
+    queue = [root]
+    while queue:
+        node = queue.pop(0)
+        result += process_node(node)
+        queue.extend(node.children)
+    return result
+```
+
+#### 6. 使用 Python 内置函数
+
+Python 的内置函数通常经过优化且效率更高：
+
+```python
+# 效率较低
+sum_value = 0
+for num in numbers:
+    sum_value += num
+
+# 效率较高
+sum_value = sum(numbers)
+```
+
+#### 7. 拆分复杂逻辑
+
+如果您有一个非常大的合约，考虑将其拆分为多个具有专注职责的合约。这可以提高可维护性并降低单个调用的成本。
+
+#### 8. 分析并优化热路径
+
+将优化工作集中在最频繁调用的函数或处理大量数据的函数上：
+
+```python
+@call
+def frequently_called_method(self, data):
+    # 仔细优化此代码
+    # 考虑使用更高效的算法和数据结构
+    pass
+```
+
+  </Tab>
+</Tabs>

@@ -1,0 +1,206 @@
+---
+title: 赢得 NFT
+description: "让拍卖获胜者获得一枚 NFT。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+如果没有任何奖励，没有人会参与拍卖，所以让我们添加一个奖品。为什么不选择一个 [NFT](/primitives/nft/nft)？NFT 具有唯一可识别性，易于交换，其逻辑来自外部合约，因此奖品将独立于拍卖合约而存在。让我们开始吧！
+
+---
+
+## 挂牌 NFT
+
+创建拍卖时，我们需要挂牌 NFT。要指定哪个 NFT 正在拍卖，我们需要 NFT 合约的账户 ID 和 NFT 的代币 ID。我们将在合约初始化时指定这些；修改 `init` 以添加 `nft_contract` 和 `token_id`，如下所示：
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/02-winner-gets-nft/src/contract.ts#L22-L28"
+                start="22" end="28" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="lib.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L32-L49"
+                start="32" end="49" />
+
+        请注意，`token_id` 的类型为 `TokenId`，这是 NFT 标准使用的字符串类型别名，用于面向未来的设计。
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 将 NFT 转移给获胜者
+
+当调用 `claim` 方法时，NFT 需要转移给最高出价者。关于 NFT 的操作存在于 NFT 合约上，因此我们向 NFT 合约发起跨合约调用，告诉它将 NFT 的所有者更换为最高出价者。NFT 合约上用于此操作的方法是 `nft_transfer`。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="contract.ts" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/02-winner-gets-nft/src/contract.ts#L58-L60"
+                start="58" end="60" />
+
+        在 near-sdk-js 中，我们不能独立地转移 NFT 和发送 `$NEAR`，所以我们将 Promise 链接在一起。
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        我们将在源文件夹中创建一个名为 `ext.rs` 的新文件；在这里，我们将定义 `nft_transfer` 方法的接口。我们将此接口定义为一个 `trait`，并使用 `ext_contract` 宏将 NFT trait 转换为具有 `nft_transfer` 方法的模块。在单独的文件中定义外部方法有助于提高代码的可读性。
+
+        然后，我们在 `lib.rs` 文件中使用此方法来转移 NFT。
+
+        <Github fname="lib.rs" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L93-L96"
+                start="93" end="96" />
+            <Github fname="ext.rs" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/ext.rs"
+                start="2" end="10" />
+
+    </Tab>
+
+</Tabs>
+
+调用此方法时，我们指定 NFT 合约名称，附加 30 Tgas 到调用，附加 1 YoctoNEAR 的存款到调用，并提供参数 `receiver_id` 和 `token_id`。NFT 出于[安全原因](/smart-contracts/security/one_yocto)要求我们附加 1 YoctoNEAR。
+
+---
+
+## NFT 所有权问题
+
+在我们的合约中，我们不进行任何检查来验证合约是否确实拥有指定的 NFT。恶意行为者可以设置一个拍卖，其中拍卖的 NFT 不属于拍卖合约，导致 `nft_transfer` 失败，获胜的出价者将损失其出价资金而一无所获。我们可以在初始化时向 NFT 合约发起跨合约调用来验证所有权，但这会变得相当复杂。相反，我们将在链下进行此检查，并在前端验证拍卖的有效性。
+
+---
+
+## 显示合约对象
+
+由于我们现在在合约中处理更多信息，我们将创建一个函数来显示整个合约对象，而不是为每个字段实现一个显示函数。由于合约不包含像 map 这样的大型复杂数据结构，完整显示合约状态很容易实现。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/02-winner-gets-nft/src/contract.ts#L73-L76"
+                start="73" end="76" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="lib.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L17-L26"
+                start="17" end="26" />
+
+        我们添加 `serializers` 宏以启用 json 序列化，这样整个对象就可以轻松显示给前端，而无需单独输出每个字段。
+
+        <Github fname="lib.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L107-L109"
+                start="107" end="109" />
+
+    </Tab>
+
+</Tabs>
+
+## 使用多个合约进行测试
+
+在我们的测试中，我们现在将使用两个合约：拍卖合约和 NFT 合约。沙箱测试非常适合，因为它允许我们在真实环境中测试多个合约。
+
+在我们的测试文件夹中，我们需要 NFT 合约的 WASM 文件。在本教程中，我们从[此仓库](https://github.com/near-examples/NFT/tree/master)编译了一个示例 NFT 合约。
+
+要部署 NFT 合约，这次我们将使用 `dev deploy`，它创建一个随机 ID 的账户并通过指定 WASM 文件的路径将合约部署到该账户。部署后，我们将使用默认元数据初始化合约，并指定一个账户 ID 作为 NFT 合约的所有者（尽管 NFT 合约的所有者在本示例中无关紧要）。默认元数据将 NFT 合约的名称和符号等信息设置为默认值。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/02-winner-gets-nft/sandbox-test/main.ava.js#L24-L25"
+                start="24" end="25" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L30-L39"
+                start="30" end="39" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 铸造 NFT
+
+要正式启动拍卖，拍卖合约应该拥有一个 NFT。为此，拍卖账户调用 NFT 合约铸造一个新的 NFT，提供 NFT 的图片等信息。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/02-winner-gets-nft/sandbox-test/main.ava.js#L28-L39"
+                start="28" end="39" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L42-L60"
+                start="42" end="60" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 验证 NFT 所有权
+
+调用 `claim` 后，测试应该验证拍卖获胜者现在拥有该 NFT。这通过在 NFT 合约上调用 `nft_token` 并指定代币 ID 来完成，它将返回代币所属的账户 ID。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/02-winner-gets-nft/sandbox-test/main.ava.js#L105-L106"
+                start="105" end="106" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L151-L164"
+                start="151" end="164" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 获取 NFT
+
+如果您想通过 CLI 与新合约交互，可以从预部署的 NFT 合约铸造 NFT。
+
+```bash
+near call nft.examples.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "<accountId>", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' --useAccount <accountId> --deposit 0.1 
+```
+---
+
+## 结论 
+
+在本教程的这一部分，我们添加了 NFT 作为奖品，这让我们学习了如何与 NFT 标准交互、进行跨合约调用，以及如何在工作空间中测试相互交互的多个合约。在[下一部分](./3.2-ft)，我们将学习如何通过调整拍卖以接受 FT 出价来与同质化代币标准交互。这将允许用户以不同的代币（包括稳定币）启动拍卖。

@@ -1,0 +1,955 @@
+---
+title: 转账与操作
+description: "了解合约如何进行转账、调用其他合约等操作"
+---
+本页面描述了智能合约在 NEAR 上可以执行的不同类型操作，例如转移 NEAR、调用其他合约、创建子账户以及部署合约。还介绍了如何向账户添加访问密钥。
+
+智能合约可以执行特定的 `Actions`，例如转移 NEAR 或调用其他合约。
+
+`Actions` 的一个重要特性是，当它们作用于同一合约时，可以批量处理。**批量操作**作为一个单元执行：它们在同一个 [receipt](/protocol/transactions/transaction-execution#receipts--finality) 中执行，如果**任何一个失败**，则**所有操作都将被回滚**。
+
+<Info>
+`Actions` 只能在它们作用于**同一合约**时批量处理。您可以批量调用合约上的两个方法，但**不能**调用不同合约上的两个方法。
+</Info>
+
+---
+
+## 转移 NEAR Ⓝ
+
+您可以从合约向网络上的任何其他账户发送 `$NEAR`。转移 `$NEAR` 的 Gas 成本是固定的，基于协议的创世配置。目前，费用约为 `~0.45 TGas`。
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+```rust
+  use near_sdk::{near, AccountId, Promise, NearToken};
+
+  #[near(contract_state)]
+  #[derive(Default)]
+  pub struct Contract { }
+
+  #[near]
+  impl Contract {
+    pub fn transfer(&self, to: AccountId, amount: NearToken){
+      Promise::new(to).transfer(amount);
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🌐 JavaScript">
+
+```js
+  import { NearBindgen, NearPromise, call } from 'near-sdk-js'
+  import { AccountId } from 'near-sdk-js/lib/types'
+
+  @NearBindgen({})
+  class Contract{
+    @call({})
+    transfer({ to, amount }: { to: AccountId, amount: bigint }) {
+      return NearPromise.new(to).transfer(amount);
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+```python
+from near_sdk_py import call, Contract
+from near_sdk_py.promises import Promise
+
+class ExampleContract(Contract):
+    @call
+    def transfer(self, to, amount):
+        """向另一个账户转移 NEAR"""
+        # 创建一个转移 NEAR 的 Promise
+        return Promise.create_batch(to).transfer(amount)
+```
+
+</Tab>
+
+<Tab title="🐹 GO">
+
+```go
+package main
+
+import (
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// @contract:state
+type Contract struct{}
+
+type TransferTokenInput struct {
+	To     string `json:"to"`
+	Amount string `json:"amount"`
+}
+
+// @contract:payable min_deposit=1NEAR
+func (c *Contract) ExampleTransferToken(input TransferTokenInput) error {
+	amount, err := types.U128FromString(input.Amount)
+	if err != nil {
+		return err
+	}
+
+	promise.CreateBatch(input.To).
+		Transfer(amount)
+
+	return nil
+}
+```
+
+</Tab>
+
+</Tabs>
+
+<Tip>
+**为什么没有回调？**
+转账失败的唯一情况是接收方账户**不存在**。
+</Tip>
+
+<Warning>
+请记住，您的余额用于支付合约的存储费用。发送资金时，请确保始终留有足够的余额来支付未来的存储需求。
+</Warning>
+
+---
+
+## 函数调用
+
+您的智能合约可以调用另一个合约中的方法。在下面的代码片段中，我们调用已部署的 [Hello NEAR](../quickstart) 合约中的方法，并在回调中检查一切是否正常。
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+```rust
+  use near_sdk::{near, env, log, Promise, Gas, PromiseError};
+  use serde_json::json;
+
+  #[near(contract_state)]
+  #[derive(Default)]
+  pub struct Contract { }
+
+  const HELLO_NEAR: &str = "hello-nearverse.testnet";
+  const NO_DEPOSIT: u128 = 0;
+  const CALL_GAS: Gas = Gas(5_000_000_000_000);
+
+  #[near]
+  impl Contract {
+    pub fn call_method(&self){
+      let args = json!({ "message": "howdy".to_string() })
+                .to_string().into_bytes().to_vec();
+
+      Promise::new(HELLO_NEAR.parse().unwrap())
+      .function_call("set_greeting".to_string(), args, NO_DEPOSIT, CALL_GAS)
+      .then(
+        Promise::new(env::current_account_id())
+        .function_call("callback".to_string(), Vec::new(), NO_DEPOSIT, CALL_GAS)
+      );
+    }
+
+    pub fn callback(&self, #[callback_result] result: Result<(), PromiseError>){
+      if result.is_err(){
+          log!("Something went wrong")
+      }else{
+          log!("Message changed")
+      }
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🌐 JavaScript">
+
+```js
+  import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
+  import { AccountId } from 'near-sdk-js/lib/types'
+
+  const HELLO_NEAR: AccountId = "hello-nearverse.testnet";
+  const NO_DEPOSIT: bigint = BigInt(0);
+  const CALL_GAS: bigint = BigInt("10000000000000");
+
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    call_method({}): NearPromise {
+      const args = bytes(JSON.stringify({ message: "howdy" }))
+
+      return NearPromise.new(HELLO_NEAR)
+      .functionCall("set_greeting", args, NO_DEPOSIT, CALL_GAS)
+      .then(
+        NearPromise.new(near.currentAccountId())
+        .functionCall("callback", bytes(JSON.stringify({})), NO_DEPOSIT, CALL_GAS)
+      )
+      .asReturn()
+    }
+
+    @call({privateFunction: true})
+    callback({}): boolean {
+      let result, success;
+
+      try{ result = near.promiseResult(0); success = true }
+      catch{ result = undefined; success = false }
+
+      if (success) {
+        near.log(`Success!`)
+        return true
+      } else {
+        near.log("Promise failed...")
+        return false
+      }
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+```python
+from near_sdk_py import call, callback, Contract
+from near_sdk_py.promises import CrossContract, Promise, PromiseResult
+from near_sdk_py.constants import ONE_TGAS
+
+# 常量
+HELLO_NEAR = "hello-nearverse.testnet"
+NO_DEPOSIT = 0
+CALL_GAS = 10 * ONE_TGAS
+
+class ExampleContract(Contract):
+    @call
+    def call_method(self):
+        """调用外部合约方法并附带回调"""
+        # 创建合约引用
+        hello = CrossContract(HELLO_NEAR)
+        
+        # 调用外部合约并使用回调处理结果
+        return hello.call("set_greeting", {"message": "howdy"}).then("callback")
+    
+    @callback
+    def callback(self, result: PromiseResult):
+        """处理外部合约调用的结果"""
+        # @callback 装饰器自动处理成功/失败检查
+        if not result.success:
+            # 远程调用失败
+            self.log_error("Promise failed...")
+            return False
+        
+        # 远程调用成功
+        self.log_info("Success!")
+        return True
+```
+
+</Tab>
+
+<Tab title="🐹 GO">
+
+```go
+package main
+
+import (
+	"strconv"
+
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// @contract:state
+type Contract struct{}
+
+type MessageInput struct {
+	Message string `json:"message"`
+}
+
+// @contract:payable min_deposit=0.00001NEAR
+func (c *Contract) ExampleFunctionCall() {
+	gas := uint64(types.ONE_TERA_GAS * 10)
+	accountId := "hello-nearverse.testnet"
+	args := map[string]string{
+		"message": "howdy",
+	}
+	promise.NewCrossContract(accountId).
+		Gas(gas).
+		Call("set_greeting", args).
+		Then("example_function_call_callback", args)
+}
+
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleFunctionCallCallback(input MessageInput, result promise.PromiseResult) MessageInput {
+	env.LogString("Executing callback")
+	env.LogString("Input Message : " + input.Message)
+
+	if result.Success {
+		env.LogString("Cross-contract call executed successfully")
+		env.LogString("Promise Result Status --> " + strconv.FormatInt(int64(result.StatusCode), 10))
+		if len(result.Data) > 0 {
+			env.LogString("Batch call data: " + string(result.Data))
+		}
+	} else {
+		env.LogString("Cross-contract call failed")
+	}
+	return input
+}
+
+```
+</Tab>
+
+</Tabs>
+
+<Warning>
+上面显示的代码片段是调用其他方法的低级方式。我们建议按照[跨合约调用章节](/smart-contracts/anatomy/crosscontract)中的说明调用其他合约。
+</Warning>
+
+---
+
+## 创建子账户
+您的合约可以创建自身的直接子账户，例如，`user.near` 可以创建 `sub.user.near`。
+
+账户对其子账户**没有控制权**，因为子账户有自己的密钥。
+
+子账户只是用于组织账户（例如 `dao.project.near`、`token.project.near`）。
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+```rust
+  use near_sdk::{near, env, Promise, NearToken};
+
+  #[near(contract_state)]
+  #[derive(Default)]
+  pub struct Contract { }
+
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1); //0.001Ⓝ
+
+  #[near]
+  impl Contract {
+    pub fn create(&mut self, prefix: String) {
+      let account_id = prefix + "." + &env::current_account_id().to_string();
+      Promise::new(account_id.parse().unwrap())
+        .create_account()
+        .transfer(MIN_STORAGE);
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🌐 JavaScript">
+
+```js
+  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
+
+  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+
+  @NearBindgen({})
+  class Contract {
+    @call({payableFunction:true})
+    create({prefix}:{prefix: String}) {
+      const account_id = `${prefix}.${near.currentAccountId()}`
+
+      NearPromise.new(account_id)
+      .createAccount()
+      .transfer(MIN_STORAGE)
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+```python
+from near_sdk_py import call, Contract
+from near_sdk_py.promises import Promise
+from near_sdk_py.constants import ONE_NEAR
+
+# 存储所需的最小金额
+MIN_STORAGE = ONE_NEAR // 1000  # 0.001Ⓝ
+
+class ExampleContract(Contract):
+    @call
+    def create(self, prefix):
+        """创建子账户"""
+        # 生成新账户 ID
+        account_id = f"{prefix}.{self.current_account_id}"
+        
+        # 创建新账户并转移一些 NEAR 用于存储
+        return Promise.create_batch(account_id)\
+            .create_account()\
+            .transfer(MIN_STORAGE)
+```
+
+</Tab>
+<Tab title="🐹 GO">
+
+```go
+package main
+
+import (
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// @contract:state
+type Contract struct{}
+
+// @contract:payable min_deposit=0.001NEAR
+func (c *Contract) ExampleCreateSubaccount(prefix string) {
+	currentAccountId, err := env.GetCurrentAccountId()
+	if err != nil {
+		env.PanicStr("Failed to get current account")
+	}
+
+	subaccountId := prefix + "." + currentAccountId
+
+	amount, err := types.U128FromString("1000000000000000000000") //0.001Ⓝ
+	if err != nil {
+		env.PanicStr("Bad amount format")
+	}
+
+	promise.CreateBatch(subaccountId).
+		CreateAccount().
+		Transfer(amount)
+}
+```
+</Tab>
+
+</Tabs>
+
+<Tip>
+  请注意，在代码片段中，我们正在向新账户转移一些资金用于存储
+</Tip>
+
+<Warning>
+
+当您从合约内部创建账户时，默认情况下没有密钥。如果您没有明确向其[添加密钥](#add-keys)或在创建时[部署合约](#deploy-a-contract)，则该账户将被[锁定](../../protocol/accounts-contracts/access-keys#locked-accounts)。
+
+</Warning>
+
+<hr className="subsection" />
+
+#### 创建 `.testnet` / `.near` 账户
+
+账户只能创建自身的直接子账户。
+
+如果您的合约想要创建 `.mainnet` 或 `.testnet` 账户，则需要[调用](#function-call) `near` 或 `testnet` 根合约的 `create_account` 方法。
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+```rust
+  use near_sdk::{near, Promise, Gas, NearToken };
+  use serde_json::json;
+
+  #[near(contract_state)]
+  #[derive(Default)]
+  pub struct Contract { }
+
+  const CALL_GAS: Gas = Gas::from_gas(28_000_000_000_000);
+  const MIN_STORAGE: NearToken = NearToken::from_yoctonear(1_820_000_000_000_000_000_000); //0.00182Ⓝ
+
+  #[near]
+  impl Contract {
+    pub fn create_account(&mut self, account_id: String, public_key: String){
+      let args = json!({
+                  "new_account_id": account_id,
+                  "new_public_key": public_key,
+                }).to_string().into_bytes().to_vec();
+
+      // 使用 "near" 创建主网账户
+      Promise::new("testnet".parse().unwrap())
+        .function_call("create_account".to_string(), args, MIN_STORAGE, CALL_GAS);
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🌐 JavaScript">
+
+```js
+  import { NearBindgen, near, call, bytes, NearPromise } from 'near-sdk-js'
+
+  const MIN_STORAGE: bigint = BigInt("1820000000000000000000"); //0.00182Ⓝ
+  const CALL_GAS: bigint = BigInt("28000000000000");
+
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    create_account({account_id, public_key}:{account_id: String, public_key: String}) {
+      const args = bytes(JSON.stringify({
+        "new_account_id": account_id,
+        "new_public_key": public_key
+      }))
+
+      NearPromise.new("testnet")
+      .functionCall("create_account", args, MIN_STORAGE, CALL_GAS);
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+```python
+from near_sdk_py import call, Contract
+from near_sdk_py.promises import Promise
+from near_sdk_py.constants import ONE_NEAR, ONE_TGAS
+
+# 常量
+MIN_STORAGE = int(1.82 * ONE_NEAR / 1000)  # 0.00182Ⓝ
+CALL_GAS = 28 * ONE_TGAS
+
+class ExampleContract(Contract):
+    @call
+    def create_account(self, account_id, public_key):
+        """通过调用 testnet 合约创建测试网账户"""
+        # 创建 create_account 方法的参数
+        args = {
+            "new_account_id": account_id,
+            "new_public_key": public_key
+        }
+        
+        # 调用 testnet 合约创建账户
+        return Promise.create_batch("testnet")\
+            .function_call(
+                "create_account",
+                args,
+                MIN_STORAGE,
+                CALL_GAS
+            )
+```
+
+</Tab>
+<Tab title="🐹 GO">
+
+```go
+package main
+
+import (
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// @contract:state
+type Contract struct{}
+
+type CreateAccountInput struct {
+	AccountId string `json:"account_id"`
+	PublicKey string `json:"public_key"`
+}
+
+// @contract:payable min_deposit=0.002NEAR
+func (c *Contract) ExampleCreateAccount(args CreateAccountInput) {
+	amount, _ := types.U128FromString("2000000000000000000000") // 0.002 NEAR
+	gas := uint64(200 * types.ONE_TERA_GAS)
+
+	//publicKey (base58) - 4omJwNS1WbniWtbPkLYBrFwN3YLeffXCkpvriYgeLhst (为测试生成您自己的密钥)
+	//accountId - nearsdkdocs1.testnet (为测试填写您自己的)
+	createArgs := map[string]string{
+		"new_account_id": args.AccountId,
+		"new_public_key": args.PublicKey,
+	}
+
+	promise.CreateBatch("testnet").
+		FunctionCall("create_account", createArgs, amount, gas)
+}
+```
+
+</Tab>
+</Tabs>
+
+---
+
+## 部署合约
+
+创建账户时，您还可以批量执行将合约部署到该账户的操作。请注意，为此您需要在合约中预加载要部署的字节码。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+```rust
+  use near_sdk::{near, env, Promise, NearToken};
+
+  #[near(contract_state)]
+  #[derive(Default)]
+  pub struct Contract { }
+
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1100); //1.1Ⓝ
+  const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
+
+  #[near]
+  impl Contract {
+    pub fn create_hello(&self, prefix: String){
+      let account_id = prefix + "." + &env::current_account_id().to_string();
+      Promise::new(account_id.parse().unwrap())
+        .create_account()
+        .transfer(MIN_STORAGE)
+        .deploy_contract(HELLO_CODE.to_vec());
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+```python
+from near_sdk_py import call, Context, Contract
+from near_sdk_py.promises import Promise 
+from near_sdk_py.constants import ONE_NEAR
+
+class ExampleContract(Contract):
+    @call
+    def deploy_contract(self, prefix):
+        """创建账户并在其上部署合约"""
+        # 这需要在 Python 中加载合约字节码
+        # 仅用于示例目的加载合约字节码
+        # 在实际实现中，您需要从存储中读取或包含它
+        contract_bytes = b'...'  # 这应该是实际的 WASM 字节码
+        
+        MIN_STORAGE = 1.1 * ONE_NEAR  # 1.1Ⓝ
+        
+        # 生成新账户 ID
+        account_id = f"{prefix}.{self.current_account_id}"
+        
+        # 批量操作
+        return Promise.create_batch(account_id)\
+            .create_account()\
+            .transfer(MIN_STORAGE)\
+            .deploy_contract(contract_bytes)
+```
+
+</Tab>
+<Tab title="🐹 GO">
+
+```go
+package main
+
+import (
+	_ "embed"
+
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+//go:embed status_message_go.wasm
+var contractWasm []byte
+
+// @contract:state
+type Contract struct{}
+
+// @contract:payable min_deposit=1.1NEAR
+func (c *Contract) ExampleDeployContract(prefix string) {
+	currentAccountId, _ := env.GetCurrentAccountId()
+	subaccountId := prefix + "." + currentAccountId
+	amount, _ := types.U128FromString("1100000000000000000000000") // 1.1Ⓝ
+
+	promise.CreateBatch(subaccountId).
+		CreateAccount().
+		Transfer(amount).
+		DeployContract(contractWasm)
+}
+```
+
+</Tab>
+</Tabs>
+
+<Tip>
+如果部署了合约的账户**没有**任何访问密钥，这被称为锁定合约。当账户被锁定时，它无法签署交易，因此操作**只能**从**合约代码内部**执行。
+</Tip>
+
+---
+
+## 添加密钥
+
+当您使用操作创建新账户时，创建的账户默认没有任何[访问密钥](../../protocol/accounts-contracts/access-keys)，这意味着它**无法签署交易**（例如更新其合约、删除自身、转移资金）。
+
+有两个选项用于向账户添加密钥：
+1. `add_access_key`：添加只能调用指定合约上特定方法的密钥。
+2. `add_full_access_key`：添加对账户具有完全访问权限的密钥。
+
+<br/>
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+```rust
+  use near_sdk::{near, env, Promise, NearToken, PublicKey};
+
+  #[near(serializers = [json, borsh])]
+  #[derive(Default)]
+  pub struct Contract { }
+
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1100); //1.1Ⓝ
+  const HELLO_CODE: &[u8] = include_bytes!("./hello.wasm");
+
+  #[near]
+  impl Contract {
+    pub fn create_hello(&self, prefix: String, public_key: PublicKey){
+      let account_id = prefix + "." + &env::current_account_id().to_string();
+      Promise::new(account_id.parse().unwrap())
+        .create_account()
+        .transfer(MIN_STORAGE)
+        .deploy_contract(HELLO_CODE.to_vec())
+        .add_full_access_key(public_key);
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🌐 JavaScript">
+
+```js
+  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
+  import { PublicKey } from 'near-sdk-js/lib/types'
+
+  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    create_hello({prefix, public_key}:{prefix: String, public_key: PublicKey}) {
+      const account_id = `${prefix}.${near.currentAccountId()}`
+
+      NearPromise.new(account_id)
+      .createAccount()
+      .transfer(MIN_STORAGE)
+      .addFullAccessKey(public_key)
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+```python
+from near_sdk_py import call, Contract
+from near_sdk_py.promises import Promise
+from near_sdk_py.constants import ONE_NEAR
+
+# 存储所需的最小金额
+MIN_STORAGE = ONE_NEAR // 1000  # 0.001Ⓝ
+
+class ExampleContract(Contract):
+    @call
+    def create_with_key(self, prefix, public_key):
+        """创建具有完全访问密钥的子账户"""
+        # 生成新账户 ID
+        account_id = f"{prefix}.{self.current_account_id}"
+        
+        # 创建新账户、转移一些 NEAR 并添加密钥
+        return Promise.create_batch(account_id)\
+            .create_account()\
+            .transfer(MIN_STORAGE)\
+            .add_full_access_key(public_key)
+```
+
+</Tab>
+<Tab title="🐹 GO">
+
+```go
+package main
+
+import (
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// @contract:state
+type Contract struct{}
+
+type AddKeysInput struct {
+	Prefix    string `json:"prefix"`
+	PublicKey string `json:"public_key"`
+}
+
+// @contract:payable min_deposit=0.001NEAR
+func (c *Contract) ExampleAddKeys(input AddKeysInput) {
+	currentAccountId, _ := env.GetCurrentAccountId()
+	subaccountId := input.Prefix + "." + currentAccountId
+	amount, _ := types.U128FromString("1000000000000000000000") // 0.001Ⓝ
+
+	promise.CreateBatch(subaccountId).
+		CreateAccount().
+		Transfer(amount).
+		AddFullAccessKey([]byte(input.PublicKey), 0)
+}
+```
+</Tab>
+</Tabs>
+
+请注意，您实际上添加的是"公钥"。拥有其对应私钥的人将能够使用新的访问密钥。
+
+<Tip>
+如果部署了合约的账户**没有**任何访问密钥，这被称为锁定合约。当账户被锁定时，它无法签署交易，因此操作**只能**从**合约代码内部**执行。
+</Tip>
+
+---
+
+## 删除账户
+
+使用 `delete_account` 操作有两种场景：
+1. 作为批量操作链中的**最后一个**操作。
+2. 使智能合约删除其自身账户。
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+```rust
+  use near_sdk::{near, env, Promise, NearToken, AccountId};
+
+  #[near(contract_state)]
+  #[derive(Default)]
+  pub struct Contract { }
+
+  const MIN_STORAGE: NearToken = NearToken::from_millinear(1); //0.001Ⓝ
+
+  #[near]
+  impl Contract {
+    pub fn create_delete(&self, prefix: String, beneficiary: AccountId){
+      let account_id = prefix + "." + &env::current_account_id().to_string();
+      Promise::new(account_id.parse().unwrap())
+        .create_account()
+        .transfer(MIN_STORAGE)
+        .delete_account(beneficiary);
+    }
+
+    pub fn self_delete(beneficiary: AccountId){
+      Promise::new(env::current_account_id())
+        .delete_account(beneficiary);
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🌐 JavaScript">
+
+```js
+  import { NearBindgen, near, call, NearPromise } from 'near-sdk-js'
+  import { AccountId } from 'near-sdk-js/lib/types'
+
+  const MIN_STORAGE: bigint = BigInt("1000000000000000000000") // 0.001Ⓝ
+
+  @NearBindgen({})
+  class Contract {
+    @call({})
+    create_delete({prefix, beneficiary}:{prefix: String, beneficiary: AccountId}) {
+      const account_id = `${prefix}.${near.currentAccountId()}`
+
+      NearPromise.new(account_id)
+      .createAccount()
+      .transfer(MIN_STORAGE)
+      .deleteAccount(beneficiary)
+    }
+
+    @call({})
+    self_delete({beneficiary}:{beneficiary: AccountId}) {
+      NearPromise.new(near.currentAccountId())
+      .deleteAccount(beneficiary)
+    }
+  }
+```
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+```python
+from near_sdk_py import call, Contract
+from near_sdk_py.promises import Promise
+from near_sdk_py.constants import ONE_NEAR
+
+# 存储所需的最小金额
+MIN_STORAGE = ONE_NEAR // 1000  # 0.001Ⓝ
+
+class ExampleContract(Contract):
+    @call
+    def create_delete(self, prefix, beneficiary):
+        """创建账户并立即删除它，将资金发送给受益人"""
+        # 生成新账户 ID
+        account_id = f"{prefix}.{self.current_account_id}"
+        
+        # 创建账户、转移资金然后删除它
+        return Promise.create_batch(account_id)\
+            .create_account()\
+            .transfer(MIN_STORAGE)\
+            .delete_account(beneficiary)
+    
+    @call
+    def self_delete(self, beneficiary):
+        """删除此合约的账户"""
+        # 删除账户并将剩余资金发送给受益人
+        return Promise.create_batch(self.current_account_id)\
+            .delete_account(beneficiary)
+```
+
+</Tab>
+<Tab title="🐹 GO">
+
+```go
+package main
+
+import (
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// @contract:state
+type Contract struct{}
+
+type DeleteAccountInput struct {
+	Prefix      string `json:"prefix"`
+	Beneficiary string `json:"beneficiary"`
+}
+
+type SelfDeleteInput struct {
+	Beneficiary string `json:"beneficiary"`
+}
+
+// @contract:payable min_deposit=0.001NEAR
+func (c *Contract) ExampleCreateDeleteAccount(input DeleteAccountInput) {
+	currentAccountId, _ := env.GetCurrentAccountId()
+	subaccountId := input.Prefix + "." + currentAccountId
+	amount, _ := types.U128FromString("1000000000000000000000") // 0.001Ⓝ
+
+	promise.CreateBatch(subaccountId).
+		CreateAccount().
+		Transfer(amount).
+		DeleteAccount(input.Beneficiary)
+}
+
+// @contract:mutating
+func (c *Contract) ExampleSelfDeleteAccount(input SelfDeleteInput) {
+	currentAccountId, _ := env.GetCurrentAccountId()
+
+	promise.CreateBatch(currentAccountId).
+		DeleteAccount(input.Beneficiary)
+}
+```
+</Tab>
+</Tabs>
+
+<Warning>
+**代币损失**
+如果受益人账户不存在，资金将被[**分配给验证者**](../../protocol/network/token-loss)。
+</Warning>
+
+<Warning>
+**代币损失**
+**不要**使用 `delete` 尝试为新账户提供资金。由于账户不存在，代币将会丢失。
+</Warning>

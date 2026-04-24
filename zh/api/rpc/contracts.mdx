@@ -1,0 +1,380 @@
+---
+title: 账户 / 合约
+description: "了解如何使用 NEAR RPC API 查询账户和合约信息。"
+---
+
+RPC API 允许您查看账户和合约的详细信息，以及执行合约调用。
+
+## 快速参考
+
+| 方法 | 用途 |
+|--------|---------|
+| [`view_account`](#view-account) | 获取基本账户信息 |
+| [`view_account_changes`](#view-account-changes) | 监控账户状态变更 |
+| [`view_code`](#view-contract-code) | 获取已部署合约的 WASM 代码 |
+| [`view_state`](#view-contract-state) | 获取合约存储数据 |
+| [`data_changes`](#view-contract-state-changes) | 监控合约状态变更 |
+| [`contract_code_changes`](#view-contract-code-changes) | 监控合约部署情况 |
+| [`call_function`](#call-a-contract-function) | 执行只读合约方法 |
+
+---
+
+## 查看账户
+
+返回基本账户信息。
+
+- **method**: `query`
+- **params**: `request_type: view_account`、`finality` 或 `block_id`、`account_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_account",
+        "finality": "final",
+        "account_id": "account.rpc-examples.testnet"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'view_account',
+      finality: 'final',
+      account_id: 'account.rpc-examples.testnet',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"view_account","finality":"final","account_id":"account.rpc-examples.testnet"}'
+    ```
+  </Tab>
+</Tabs>
+
+<Accordion title="响应示例">
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "amount": "999788200694421800000000",
+    "block_hash": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW",
+    "block_height": 187440904,
+    "code_hash": "11111111111111111111111111111111",
+    "locked": "0",
+    "storage_usage": 410
+  },
+  "id": "dontcare"
+}
+```
+</Accordion>
+
+---
+
+## 查看账户变更
+
+返回给定账户中交易产生的账户变更。
+
+- **method**: `changes`
+- **params**: `changes_type: account_changes`、`account_ids`、`finality` 或 `block_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "changes",
+      "params": {
+        "changes_type": "account_changes",
+        "account_ids": ["contract.rpc-examples.testnet"],
+        "block_id": 187310139
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://archival-rpc.testnet.near.org" });
+
+    const response = await provider.accountChanges(
+      ['contract.rpc-examples.testnet'],
+      { blockId: 187310139 }
+    );
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=changes \
+      params:='{"changes_type":"account_changes","account_ids":["contract.rpc-examples.testnet"],"block_id":187310139}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## 查看合约代码
+
+返回部署到账户的合约代码（Wasm 二进制文件）。返回的代码以 base64 编码。
+
+- **method**: `query`
+- **params**: `request_type: view_code`、`finality` 或 `block_id`、`account_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_code",
+        "finality": "final",
+        "account_id": "contract.rpc-examples.testnet"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'view_code',
+      finality: 'final',
+      account_id: 'contract.rpc-examples.testnet',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"view_code","finality":"final","account_id":"contract.rpc-examples.testnet"}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## 查看合约状态
+
+根据键前缀（base64 编码）返回合约的状态（键值对）。将 `prefix_base64` 传入空字符串以返回完整状态。
+
+- **method**: `query`
+- **params**: `request_type: view_state`、`finality` 或 `block_id`、`account_id`、`prefix_base64`
+
+<Warning>
+默认情况下，RPC 节点最多返回 **50kB** 的合约状态。如果合约状态超过此限制，查询将返回错误。要查询更大的状态，请使用归档节点并通过 `prefix_base64` 进行分页查询。
+</Warning>
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_state",
+        "finality": "final",
+        "account_id": "contract.rpc-examples.testnet",
+        "prefix_base64": ""
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'view_state',
+      finality: 'final',
+      account_id: 'contract.rpc-examples.testnet',
+      prefix_base64: '',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"view_state","finality":"final","account_id":"contract.rpc-examples.testnet","prefix_base64":""}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## 查看合约状态变更
+
+根据键前缀（base64 编码）返回合约的状态变更详情。
+
+- **method**: `changes`
+- **params**: `changes_type: data_changes`、`account_ids`、`key_prefix_base64`、`finality` 或 `block_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "changes",
+      "params": {
+        "changes_type": "data_changes",
+        "account_ids": ["contract.rpc-examples.testnet"],
+        "key_prefix_base64": "",
+        "block_id": 187310139
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://archival-rpc.testnet.near.org" });
+
+    const response = await provider.contractStateChanges(
+      ['contract.rpc-examples.testnet'],
+      { blockId: 187310139 },
+      ''
+    );
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=changes \
+      params:='{"changes_type":"data_changes","account_ids":["contract.rpc-examples.testnet"],"key_prefix_base64":"","block_id":187310139}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## 查看合约代码变更
+
+返回部署合约时产生的代码变更。变更以 base64 编码的 WASM 文件形式返回。
+
+- **method**: `changes`
+- **params**: `changes_type: contract_code_changes`、`account_ids`、`finality` 或 `block_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "changes",
+      "params": {
+        "changes_type": "contract_code_changes",
+        "account_ids": ["contract.rpc-examples.testnet"],
+        "block_id": 187309439
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://archival-rpc.testnet.near.org" });
+
+    const response = await provider.contractCodeChanges(
+      ['contract.rpc-examples.testnet'],
+      { blockId: 187309439 }
+    );
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=changes \
+      params:='{"changes_type":"contract_code_changes","account_ids":["contract.rpc-examples.testnet"],"block_id":187309439}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## 调用合约函数
+
+允许您以视图函数（只读）方式调用合约方法。
+
+- **method**: `query`
+- **params**: `request_type: call_function`、`finality` 或 `block_id`、`account_id`、`method_name`、`args_base64`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "call_function",
+        "finality": "final",
+        "account_id": "contract.rpc-examples.testnet",
+        "method_name": "get_greeting",
+        "args_base64": ""
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'call_function',
+      finality: 'final',
+      account_id: 'contract.rpc-examples.testnet',
+      method_name: 'get_greeting',
+      args_base64: '',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"call_function","finality":"final","account_id":"contract.rpc-examples.testnet","method_name":"get_greeting","args_base64":""}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## 错误处理
+
+| 错误代码 | 描述 | 解决方案 |
+|------------|-------------|----------|
+| `UnknownAccount` | 账户不存在 | 检查账户 ID 拼写 |
+| `InvalidAccount` | 账户格式无效 | 使用有效的账户 ID（例如 `account.near`） |
+| `UnknownBlock` | 区块未找到 | 使用有效的区块哈希或高度 |
+| `GarbageCollectedBlock` | 区块过旧 | 使用归档节点或更近期的区块 |
+| `NoContractCode` | 未部署合约 | 验证账户是否已部署合约 |
+| `MethodNotFound` | 合约方法不存在 | 检查方法名称和合约 ABI |
+| `InvalidArgs` | 方法参数无效 | 验证参数格式和编码 |

@@ -1,0 +1,244 @@
+---
+title: 去中心化存储解决方案
+description: "探索 NEAR 协议应用程序的去中心化存储替代方案，包括 Arweave、Crust 和 IPFS 集成，实现经济高效的数据存储。"
+---
+
+> 在本文中，您将找到可集成到去中心化应用程序（dApps）中的不同去中心化存储解决方案的简要概述。这将允许您使用比原生 NEAR 存储更经济的替代方案来存储大量数据。
+
+- [Arweave](#arweave)
+- [Crust](#crust)
+- [IPFS](#ipfs)
+
+---
+
+## 链上存储限制
+
+在链上存储数据时，务必记住以下几点：
+
+- 您可以存储无限量的文件，但每 100KB 将花费 1Ⓝ
+- 单次上传的数据量限制为 4MB
+
+例如，如果您想将 NFT 纯粹存储在链上（而不是使用 IPFS 或以下提到的其他去中心化存储解决方案），您将拥有几乎无限的存储空间，但每使用 100KB 存储需要支付 1 `$NEAR`（参见[存储质押](/protocol/storage/storage-staking)）。
+
+由于 `MAX_GAS` 限制，用户每次合约调用上传的数据量限制为 4MB。单次 `functionCall` 可附加的最大 gas 量为 300TGas。
+
+## Arweave
+
+[Arweave](https://www.arweave.org/) 是一种新型存储，通过可持续且永久的捐赠（协议内持有的代币，得益于通货膨胀和长期存储成本下降而增值）来支持数据。这使用户和开发者能够永久存储数据。
+Arweave 充当集体拥有的硬盘，允许用户无限期地保存有价值的信息、应用程序和历史记录。
+
+Arweave 协议将类似 BT 种子的激励矿工群体（拥有大量集体硬盘空间）与需要永久存储数据或托管内容的个人和组织相匹配。这在去中心化网络中实现，所有存储数据都由区块挖矿奖励和[可持续捐赠](https://arwiki.wiki/#/en/storage-endowment)支持，确保数据永久可用。
+
+<Info>
+要了解更多关于 Arweave 的信息，请查看其[挖矿机制](https://arwiki.wiki/#/en/arweave-mining)和[带宽共享系统](https://arwiki.wiki/#/en/karma)。
+</Info>
+
+### 示例实现
+
+让我们通过运行一个本地 Arweave 网关类服务器来了解如何在 Arweave 上存储文件。
+
+### Arlocal 设置
+
+[Arlocal](https://github.com/textury/arlocal) 本质上创建了 Arweave 的模拟版本。可以将其视为在您的计算机上运行以存储信息的本地节点。
+
+在本示例中，您需要运行**两个终端**。
+
+- 打开第一个终端并运行：
+
+```bash
+npx arlocal
+```
+
+您应该会看到响应：`arlocal started on port 1984`。
+
+<Tip>
+您可以通过使用 `npx arlocal <desired port number>` 来指定端口。
+</Tip>
+
+### NEAR-Arweave 前端
+
+[NEAR-Arweave 仓库](https://github.com/near-examples/NEAR-Arweave-Tutorial) 提供了一个简单的前端，允许您使用 arlocal 存储 `.png` 文件。
+
+- 现在打开第二个终端，通过运行以下命令克隆前端：
+
+```bash
+git clone https://github.com/near-examples/NEAR-Arweave-Tutorial.git
+```
+
+- 在项目文件夹中运行以下命令安装依赖项：
+
+```bash
+cd NEAR-Arweave-Tutorial
+yarn
+```
+
+- 接下来，运行以下命令启动应用程序：
+
+```bash
+yarn start
+```
+
+- 现在您可以通过选择 <kbd>选择文件</kbd> 按钮来上传图片：
+
+![Arweave 步骤 1](/assets/docs/protocol/storage/arweave-1.png)
+
+- 点击 <kbd>提交</kbd> 按钮后，您应该会看到交易 ID 窗口被填充：
+
+![Arweave 步骤 2](/assets/docs/protocol/storage/arweave-2.png)
+
+<Tip>
+如果遇到错误，请确保您的 arlocal 节点在**单独的终端**中运行。
+</Tip>
+
+### 挖掘您的交易
+
+在 Arweave 上，您的交易经历两个阶段：待处理阶段和已确认阶段。要使交易完成并能够检索数据，您的交易必须被确认。
+
+- 在浏览器中访问 `http://localhost:1984/mine` 向本地节点发送挖矿请求。
+
+<Tip>
+您可能会发现即使不执行此步骤也能检索到数据，但这是因为您运行的是本地节点。
+在处理真实的 Arweave 节点时，您必须等到交易被挖掘和确认。
+</Tip>
+
+### 检索图片
+
+- 现在您可以在前端步骤 5 中复制粘贴任何列出的 Arweave 交易 ID，从本地节点检索您的文件：
+
+![Arweave 步骤 3](/assets/docs/protocol/storage/arweave-3.png)
+
+<Info>
+使用 Arweave 的实时网络需要购买 ar 代币来支付存储费用。您可以在 [arweave.org](https://www.arweave.org/) 了解更多信息。
+</Info>
+
+<Tip>
+[near-api-js](https://github.com/near/near-api-js) 和 [arweave-js](https://github.com/ArweaveTeam/arweave-js) JavaScript 库允许您自动化这些步骤中的大部分。
+</Tip>
+
+---
+
+## Crust
+
+[Crust](https://crust.network) 为元宇宙提供 Web3.0 去中心化存储网络。
+它旨在实现去中心化、隐私和保障的核心价值。
+Crust 支持多种存储层协议，如 IPFS，并向用户提供即时可访问的链上存储功能。
+Crust 的技术栈还能够支持数据操作和计算。
+
+Crust 协议与 [IPFS](https://ipfs.io) 协议 100% 兼容，它将有闲置硬盘空间的人与需要永久存储数据或托管内容的人相匹配。
+Crust 基于 Polkadot 生态系统，通过其跨链解决方案支持大多数合约平台，包括 NEAR/Solana/Ethereum/Elrond 等。
+
+<Info>
+要了解更多关于 Crust 的信息，请查看其[去中心化存储市场](https://wiki.crust.network/docs/en/DSM)和[保障权益证明](https://wiki.crust.network/docs/en/GPoS)。
+您也可以从 [Build-101](https://wiki.crust.network/docs/en/build101) 开始。
+</Info>
+
+### 集成示例
+
+以下是使用 Crust 和 NEAR 存储文件的简单集成示例。
+
+#### 1. 将文件上传到 IPFS
+
+首先，您需要将文件放入 IPFS。
+
+<Tip>
+如果您想了解如何将**文件和文件夹**上传到 IPFS，请参阅[此部分](https://wiki.crust.network/docs/en/buildFileStoringWithGWDemo#1-upload-files-to-ipfs-gateway)。
+</Tip>
+
+有 2 种方式将文件上传到 IPFS：
+
+- 使用本地 IPFS 节点
+- 使用远程 [IPFS W3Authed 网关](https://docs.ipfs.io/concepts/ipfs-gateway/#authenticated-gateways)
+
+<Info>
+- 您可以在[此链接](https://github.com/crustio/ipfsscan/blob/main/lib/constans.ts#L29)找到有关 `ipfsW3GW` 端点的更多详情。
+- 您还可以在[此链接](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L20-L51)找到如何将文件上传到 IPFS 的代码示例。
+</Info>
+
+#### 2. 下达存储订单
+
+接下来，您需要在 Crust 链上发送一个名为"下达存储订单"的交易。
+此交易将通过区块链将您的存储需求分发给每个 Crust IPFS 节点。
+然后，IPFS 节点将开始使用 IPFS 协议拉取您的文件。
+
+<Info>
+- 您可以在[此链接](https://github.com/crustio/crust-apps/blob/master/packages/apps-config/src/endpoints/production.ts#L9)找到有关 `crustChainEndpoint` 的更多信息。
+- 您可以按照[这些说明](https://wiki.crust.network/docs/en/crustAccount#create-an-account-1)创建您自己的账户（`seeds`）。
+- 查看[此链接](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L82-L112)了解在 Crust 上下达存储订单的代码示例。
+</Info>
+
+#### 3. 查询订单状态
+
+然后，您可以通过调用链上状态（`status{replica_count, storage_duration, ...}`）查询存储订单。
+此调用将返回：
+
+```json
+{
+    "file_size": 23710,
+    "spower": 24895,
+    "expired_at": 2594488, // 存储持续时间
+    "calculated_at": 2488,
+    "amount": "545.3730 nCRU",
+    "prepaid": 0,
+    "reported_replica_count": 1, // 副本数量
+    "replicas": [{
+        "who": "cTHATJrSgZM2haKfn5e47NSP5Y5sqSCCToxrShtVifD2Nfxv5",
+        "valid_at": 2140,
+        "anchor": "0xd9aa29dda8ade9718b38681adaf6f84126531246b40a56c02eff8950bb9a78b7c459721ce976c5c0c9cd4c743cae107e25adc3a85ed7f401c8dde509d96dcba0",
+        "is_reported": true,
+        "created_at": 2140
+    }] // 谁存储了文件
+}
+```
+
+<Info>
+在[此链接](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L144-L147)找到查询存储状态的代码示例。
+</Info>
+
+#### 4. 添加文件预付款
+
+单次交易（订单）的默认存储时间为 6 个月。
+如果您想延长存储时间，Crust 提供了预付款池，允许您自定义文件的存储时间。
+这个池子允许您存入一些代币，并会自动延长文件的存储时间。
+
+<Info>
+请访问[此链接](https://github.com/crustio/crust-demo/blob/main/near/src/index.ts#L114-L142)了解如何向文件添加预付款代币的代码片段。
+</Info>
+
+---
+
+## IPFS
+
+[星际文件系统](https://ipfs.io/)（IPFS）是一种用于在分布式文件系统中存储和共享数据的协议和点对点网络。IPFS 使用内容寻址在连接所有计算设备的全局命名空间中唯一标识每个文件。
+
+### 内容标识符
+
+当您向 IPFS 添加文件时，它会被分割成经过密码学哈希处理的较小块，然后获得一个称为内容标识符（CID）的唯一指纹。
+
+<Tip>
+CID 充当文件在该时间点存在状态的永久记录。
+</Tip>
+
+### 查找
+
+当节点查找文件时，它会向对等节点请求文件 CID 所引用的内容。当节点查看或下载文件时，它会缓存一份副本，并在缓存清除之前成为另一个提供者。
+
+### 已固定的内容
+
+在 IPFS 网络中，每个节点只存储它感兴趣的内容。
+节点可以固定内容以永久保留，或丢弃未使用的内容以节省空间。
+
+### 文件版本
+
+当您向 IPFS 添加文件的新版本时，由于密码学哈希不同，它将获得新的 CID。
+这意味着对文件的任何更改都不会覆盖原始文件，文件之间的公共块可以重复使用以最小化存储成本。
+
+### 命名系统
+
+IPFS 提供去中心化命名系统，因此您不需要记住一长串 CID。
+IPFS 可以使用 IPNS 去中心化命名系统找到文件的最新版本，您可以使用 DNSLink 将 CID 映射到人类可读的 DNS 名称。
+
+### IPFS 提供商
+
+- [Web3.Storage](https://web3.storage/)：这是一项简化在 IPFS 和 Filecoin 上构建的服务。Web3.Storage 由 Filecoin 支持，通过 IPFS 提供内容，充分利用每个网络的独特特性。
+- [NFT.Storage](https://nft.storage/)：此服务专门用于存储链下 NFT 数据。数据在 IPFS 和 Filecoin 上去中心化存储。数据通过内容寻址的 IPFS URI 引用，可在您的智能合约中使用。
+- [Filebase](https://filebase.com/)：一个地理冗余的 IPFS 固定提供商，以自动 3 倍冗余跨多个地理位置固定所有 IPFS 文件，以提高性能、冗余性和可靠性。

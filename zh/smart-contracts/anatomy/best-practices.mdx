@@ -1,0 +1,318 @@
+---
+title: 最佳实践
+description: "NEAR 智能合约编写最佳实践集合。"
+---
+本页面提供了在 NEAR 上编写智能合约的最佳实践集合。这些实践旨在帮助您编写安全、高效且可维护的代码。
+
+# 最佳实践
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+以下是在 NEAR 上编写智能合约的一些最佳实践：
+
+- [高效存储账户 ID](#store-account-ids-efficiently)
+- [启用溢出检查](#enable-overflow-checks)
+- [尽早使用 `require!`](#use-require-early)
+- [使用 `log!`](#use-log)
+- [返回 `Promise`](#return-promise)
+- [复用 `near-sdk` 中的 crate](#reuse-crates-from-near-sdk)
+- [`std::panic!` 与 `env::panic` 的区别](#stdpanic-vs-envpanic)
+- [使用 workspaces](#use-workspaces)
+
+---
+
+## 高效存储账户 ID
+
+如果使用 NEAR 账户 ID，可以通过 base32 编码来节省智能合约存储空间。由于账户 ID 由 `[a-z.-_]` 字符组成，最大长度为 64 个字符，可以用每个字符 5 位加终止符 `\0` 进行编码。存储大小从原来的 (64 + 4) * 8 = 544 位缩减到 65 * 5 = 325 位，节省了 40% 的存储成本。
+
+## 启用溢出检查
+
+通常在整数溢出时触发 panic 会很有用。要启用此功能，请在 `Cargo.toml` 文件中添加以下内容：
+
+```toml
+[profile.release]
+overflow-checks = true
+```
+
+## 尽早使用 `require!`
+
+在执行任何操作之前，尝试使用 `require!` 验证输入、上下文、状态和访问权限。越早触发 panic，为调用者节省的 [gas](/protocol/transactions/gas) 就越多。
+
+```rust
+#[near]
+impl Contract {
+    pub fn set_fee(&mut self, new_fee: Fee) {
+        require!(env::predecessor_account_id() == self.owner_id, "Owner's method");
+        new_fee.assert_valid();
+        self.internal_set_fee(new_fee);
+    }
+}
+```
+
+**注意**：如果您需要 panic 消息中包含调试信息，或者使用的 SDK 版本早于 `4.0.0-pre.2`，可以使用 Rust 的 `assert!` 宏代替 `require!`。
+
+```rust
+#[near]
+impl Contract {
+    pub fn set_fee(&mut self, new_fee: Fee) {
+        assert_eq!(env::predecessor_account_id(), self.owner_id, "Owner's method");
+        new_fee.assert_valid();
+        self.internal_set_fee(new_fee);
+    }
+}
+```
+
+## 使用 `log!`
+
+使用日志记录进行调试和通知用户。
+
+当您需要格式化消息时，可以使用以下宏：
+
+```rust
+log!("Transferred {} tokens from {} to {}", amount, sender_id, receiver_id);
+```
+
+它等效于以下消息：
+
+```rust
+env::log_str(format!("Transferred {} tokens from {} to {}", amount, sender_id, receiver_id).as_ref());
+```
+
+## 返回 `Promise`
+
+如果您的方法进行了跨合约调用，您可能希望返回新创建的 `Promise`。
+这允许调用者（例如 near-cli 或 near-api-js 调用）等待 Promise 的结果，而不是立即返回。
+此外，如果 Promise 由于某些原因失败，返回它将让调用者了解到失败情况，并使 NEAR Explorer 和其他工具能够将整个交易链标记为失败。
+这可以防止链中第一个或前几个交易成功但后续交易失败时出现的假阳性情况。
+
+例如：
+
+```rust
+#[near]
+impl Contract {
+    pub fn withdraw_100(&mut self, receiver_id: AccountId) -> Promise {
+        Promise::new(receiver_id).transfer(100)
+    }
+}
+```
+
+## 复用 `near-sdk` 中的 crate
+
+`near-sdk` 重新导出了以下 crate：
+
+- `borsh`
+- `base64`
+- `bs58`
+- `serde`
+- `serde_json`
+
+最常用的 crate 包括 `borsh`（用于内部 STATE 序列化）和 `serde`（用于外部 JSON 序列化）。
+
+当使用 `serde::Serialize` 标记结构体时，需要使用 `#[serde(crate = "near_sdk::serde")]` 来指向正确的基础 crate。
+
+```rust
+/// 使用 Borsh 序列化的主合约结构体
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    pub pair: Pair,
+}
+
+/// 同时实现 `serde` 和 `borsh` 序列化。
+/// `serde` 通常在以 JSON 格式向前端返回结构体时很有用。
+#[near(serializers = [json, borsh])]
+pub struct Pair {
+    pub a: u32,
+    pub b: u32,
+}
+
+#[near]
+impl Contract {
+    #[init]
+    pub fn new(pair: Pair) -> Self {
+        Self {
+            pair,
+        }
+    }
+
+    pub fn get_pair(self) -> Pair {
+        self.pair
+    }
+}
+```
+
+## `std::panic!` 与 `env::panic`
+
+- `std::panic!` 会使当前线程 panic。它内部使用 `format!`，因此可以接受参数。
+  SDK 设置了一个 panic hook，将 `panic!` 生成的 `PanicInfo` 转换为字符串，并在内部使用 `env::panic` 向运行时报告。
+  这可能会提供额外的调试信息，例如发生 panic 的源代码行号。
+
+- `env::panic` 直接调用宿主方法使合约 panic。
+  除了传入的消息外，它不提供任何额外的调试信息。
+
+## 使用 workspaces
+
+Workspaces 允许您自动化工作流程，并在沙盒或测试网环境中为多个合约和跨合约调用运行测试。
+了解更多：[workspaces-rs](https://github.com/near/workspaces-rs) 或 [workspaces-js](https://github.com/near/workspaces-js)。
+
+  </Tab>
+  <Tab title="🐍 Python">
+
+以下是在 NEAR 上使用 Python 编写智能合约的一些最佳实践：
+
+- [尽早验证](#validate-early)
+- [使用适当的日志记录](#use-proper-logging)
+- [返回 Promise](#return-promises)
+- [高效处理存储](#handle-storage-efficiently)
+- [使用类型提示](#use-type-hints)
+- [遵循安全模式](#follow-security-patterns)
+
+---
+
+## 尽早验证
+
+在函数中尽早验证输入、上下文和状态。这可以通过在执行昂贵操作之前快速失败来节省 gas。
+
+```python
+from near_sdk_py import call, Context
+
+class Contract:
+    def __init__(self):
+        self.owner_id = Context.current_account_id()
+        
+    @call
+    def set_config(self, config_data):
+        # 尽早验证权限
+        if Context.predecessor_account_id() != self.owner_id:
+            raise Exception("Only owner can modify config")
+            
+        # 尽早验证输入
+        if "parameter" not in config_data or not isinstance(config_data["parameter"], int):
+            raise Exception("Invalid config: missing or invalid parameter")
+            
+        # 验证后再继续
+        self._update_config(config_data)
+```
+
+## 使用适当的日志记录
+
+使用 `Log` 工具进行结构化日志记录。这使外部服务能够轻松解析您合约中的事件。
+
+```python
+from near_sdk_py import call, Log
+
+@call
+def transfer(self, receiver_id, amount):
+    # 业务逻辑...
+    
+    # 使用信息日志进行常规更新
+    Log.info(f"Transferred {amount} tokens to {receiver_id}")
+    
+    # 使用结构化事件日志记录可索引事件
+    Log.event("transfer", {
+        "sender": Context.predecessor_account_id(),
+        "receiver": receiver_id,
+        "amount": amount
+    })
+```
+
+## 返回 Promise
+
+进行跨合约调用时，返回 Promise 对象以让调用者跟踪结果。这对于需要监控的交易尤为重要。
+
+```python
+from near_sdk_py import call
+from near_sdk_py.promises import Contract
+
+@call
+def withdraw(self, amount, receiver_id):
+    # 执行验证和业务逻辑...
+    
+    # 返回 Promise 以改善调用者体验
+    return Contract(receiver_id).call(
+        "deposit",
+        amount=amount,
+        sender=Context.predecessor_account_id()
+    )
+```
+
+## 高效处理存储
+
+使用 SDK 集合进行高效的存储处理，尤其是对于不断增长的数据集。
+
+```python
+from near_sdk_py.collections import UnorderedMap, Vector
+
+class TokenContract:
+    def __init__(self):
+        # 使用 SDK 集合进行高效存储
+        self.tokens = Vector("t")  # 高效存储有序项
+        self.balances = UnorderedMap("b")  # 高效存储键值对
+        
+    @call
+    def mint(self, token_id):
+        # 无需加载所有 token 即可添加到向量
+        self.tokens.append(token_id)
+        
+        # 无需加载所有余额即可更新余额
+        current = self.balances.get(Context.predecessor_account_id(), 0)
+        self.balances[Context.predecessor_account_id()] = current + 1
+```
+
+## 使用类型提示
+
+Python 的类型提示提高了代码可读性，并可以帮助在开发过程中发现错误。
+
+```python
+from typing import Dict, List, Optional
+from near_sdk_py import view, call
+
+class Contract:
+    def __init__(self):
+        self.data: Dict[str, int] = {}
+        
+    @view
+    def get_value(self, key: str) -> Optional[int]:
+        return self.data.get(key)
+        
+    @call
+    def set_values(self, updates: Dict[str, int]) -> List[str]:
+        updated_keys = []
+        for key, value in updates.items():
+            self.data[key] = value
+            updated_keys.append(key)
+        return updated_keys
+```
+
+## 遵循安全模式
+
+应用安全最佳实践以保护您的合约免受常见漏洞的影响。
+
+```python
+from near_sdk_py import call, Context
+from near_sdk_py.constants import ONE_NEAR
+
+class Contract:
+    def __init__(self):
+        self.owner = Context.current_account_id()
+        self.minimum_deposit = ONE_NEAR // 100  # 0.01 NEAR
+        
+    @call
+    def deposit(self):
+        # 检查足够的存款以防止垃圾攻击
+        deposit = Context.attached_deposit()
+        if deposit < self.minimum_deposit:
+            raise Exception(f"Minimum deposit is {self.minimum_deposit}")
+            
+        # 重入保护模式
+        current_balance = self.balances.get(Context.predecessor_account_id(), 0)
+        # 在外部调用之前更新状态
+        self.balances[Context.predecessor_account_id()] = current_balance + deposit
+        
+        # 只有在状态更新后，才执行任何外部调用
+        # ...
+```
+
+  </Tab>
+</Tabs>

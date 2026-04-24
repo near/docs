@@ -1,0 +1,254 @@
+---
+title: 验证者质押
+description: "了解如何质押 NEAR、委托给验证者、跟踪奖励以及安全提取已质押的代币。"
+---
+
+import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
+
+NEAR 使用权益证明（PoS），这意味着用户通过将代币委托给活跃节点验证者来选择他们支持的验证者。
+
+在本文中，您将找到质押流程的详细说明，包括委托、查看余额和使用 [NEAR CLI](../../tools/cli) 提取。
+
+<Note>
+**合约源码**
+
+您可以在[此 GitHub 仓库](https://github.com/near/core-contracts/tree/master/staking-pool)中查看质押池智能合约源码。
+</Note>
+
+---
+
+## 委托 NEAR 代币
+
+在委托之前，您需要选择一个验证者（参与质押的节点）。
+
+查看 [NearBlocks](https://nearblocks.io/node-explorer)、[Pikespeak](https://pikespeak.ai/validators/overview) 或 [Near Staking](https://near-staking.com/)，寻找拥有良好历史记录、高在线率和合理佣金费率的验证者。
+
+<Accordion title="使用 CLI 列出验证者">
+
+  如果您愿意，可以使用 [`near-validator`](../../tools/cli#validator-extension) CLI 获取当前验证者列表：
+
+  ```sh
+  near-validator validators network-config mainnet now
+  ```
+
+</Accordion>
+
+### 质押代币
+
+<Tabs>
+  <Tab title="Staking CLI">
+    ```sh
+    near staking delegation <user-account.near> deposit-and-stake '100 NEAR' <my_validator> network-config mainnet sign-with-keychain
+    ```
+  </Tab>
+  <Tab title="Function Call">
+    ```sh
+    near call <my_validator> deposit_and_stake --useAccount <user-account.near> --deposit 100
+    ```
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/deposit-and-stake.json" />
+  </Tab>
+</Tabs>
+
+<Tip>
+
+下一个纪元后（约 12 小时），您将开始获得质押奖励
+
+</Tip>
+
+### 已质押余额
+要查看 `<user-account.near>` 账户在 `<my_validator>` 池中的已质押余额，请运行以下命令：
+
+<Tabs>
+  <Tab title="Staking CLI">
+    ```sh
+    near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+    ```
+  </Tab>
+  <Tab title="Function Call">
+    ```sh
+    near view <my_validator> get_account_staked_balance '{"account_id": "<user-account.near>"}'
+    ```
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/account-staked-balance.json" />
+  </Tab>
+</Tabs>
+
+<Accordion title="质押池余额">
+
+  您可以使用以下 CLI 命令查看质押池的附加信息和余额：
+
+  #### 整个池的总质押余额
+  <Tabs>
+    <Tab title="🖥️ CLI">
+      ```sh
+      near view <my_validator> get_total_staked_balance '{}'
+      ```
+    </Tab>
+    <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+      <TryOutOnLantstool path="docs/2.build/5.primitives/staking/pool-total-staked-balance.json" />
+    </Tab>
+  </Tabs>
+
+  #### 质押池所有者
+  <Tabs>
+    <Tab title="🖥️ CLI">
+      ```sh
+      near view <my_validator> get_owner_id '{}'
+      ```
+    </Tab>
+    <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+      <TryOutOnLantstool path="docs/2.build/5.primitives/staking/pool-owner.json" />
+    </Tab>
+  </Tabs>
+
+  #### 当前奖励费率
+  <Tabs>
+    <Tab title="🖥️ CLI">
+      ```sh
+      near view <my_validator> get_reward_fee_fraction '{}'
+      ```
+    </Tab>
+    <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+      <TryOutOnLantstool path="docs/2.build/5.primitives/staking/reward-fee.json" />
+    </Tab>
+  </Tabs>
+
+  #### 所有者余额
+  <Tabs>
+    <Tab title="🖥️ CLI">
+      ```sh
+      near view <my_validator> get_account_total_balance '{"account_id": "owner"}'
+      ```
+    </Tab>
+    <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+      <TryOutOnLantstool path="docs/2.build/5.primitives/staking/owner-balance.json" />
+    </Tab>
+  </Tabs>
+
+  #### 质押密钥
+  <Tabs>
+    <Tab title="🖥️ CLI">
+      ```sh
+      near view <my_validator> get_staking_key '{}'
+      ```
+    </Tab>
+    <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+      <TryOutOnLantstool path="docs/2.build/5.primitives/staking/staking-key.json" />
+    </Tab>
+  </Tabs>
+
+</Accordion>
+
+---
+
+## 提取已质押的代币
+
+要提取您的已质押代币，您首先需要从验证者处"取消委托"。
+
+您的代币将进入 4 个纪元（约 24 小时）的解绑期，之后才能提取。
+
+### 取消质押代币
+
+<Tabs>
+  <Tab title="Staking CLI">
+
+```sh
+near staking delegation <user-account.near> unstake '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
+```
+
+<Info>
+
+使用 `unstake-all` 命令一次取消质押所有代币：
+
+```sh
+near staking delegation <user-account.near> unstake-all <my_validator> network-config mainnet sign-with-keychain
+```
+
+</Info>
+
+  </Tab>
+  <Tab title="Function Call">
+
+    ```sh
+    near call <my_validator> unstake '{"amount": "100000000000000000000000000"}' --useAccount <user-account.near>
+    ```
+
+    <Info>
+    调用 `unstake_all` 方法可一次取消质押所有代币
+    </Info>
+
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/unstake.json" />
+  </Tab>
+</Tabs>
+
+### 查询未质押余额
+
+<Tabs>
+  <Tab title="Staking CLI">
+
+```sh
+near staking delegation <user-account.near> view-balance <my_validator> network-config mainnet now
+```
+
+  </Tab>
+  <Tab title="Function Call">
+
+```sh
+near view <my_validator> get_account_unstaked_balance '{"account_id": "<user-account.near>"}'
+```
+
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/account-unstaked-balance.json" />
+  </Tab>
+</Tabs>
+
+### 提取代币
+
+解绑期结束后，您可以提取未质押的代币：
+
+<Tabs>
+  <Tab title="Staking CLI">
+
+```sh
+near staking delegation <user-account.near> withdraw '1 NEAR' <my_validator> network-config mainnet sign-with-keychain
+```
+
+<Info>
+
+如果您想提取所有可用代币，可以使用 `withdraw-all` 命令：
+
+```sh
+near staking delegation <user-account.near> withdraw-all <my_validator> network-config mainnet sign-with-keychain
+```
+
+</Info>
+
+  </Tab>
+  <Tab title="Function Call">
+
+```sh
+near call <my_validator> withdraw '{"amount": "100000000000000000000000000"}' --useAccount <user-account.near>
+```
+
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/staking/withdraw-unstaked-tokens.json" />
+  </Tab>
+</Tabs>
+
+---
+
+## 工具与资源
+
+- 支持质押和管理代币的钱包：
+  - [生态系统钱包](https://wallet.near.org/)
+- 探索验证者和质押池：
+  - [NearBlocks](https://nearblocks.io/)
+  - [Pikespeak](https://pikespeak.ai/)
+  - [NEAR Staking](https://near-staking.com/)

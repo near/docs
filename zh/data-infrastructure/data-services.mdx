@@ -1,0 +1,24 @@
+---
+title: 现有服务
+description: "索引器持续监听交易并将其存储，以便轻松查询。"
+---
+
+数据服务持续监听区块链，处理交易并将其存储到可方便查询的数据库中。您可以使用它们高效地访问区块链数据：
+
+- [BigQuery](./big-query)：NEAR 公共数据湖中的区块链数据索引，适合所有希望深入了解区块链数据的人。
+
+- [NEAR Lake Framework](./near-lake-framework)：NEAR Lake 的配套库。它允许您构建自己的索引器，**从 NEAR Lake 数据源**监听区块流，并允许您**创建自己的逻辑来处理该数据**。请记住，对于未来的项目，**这是您应该优先使用的**，而不是 Indexer Framework。了解[为什么它更好](/data-infrastructure/near-lake-framework#comparison-with-near-indexer-framework)。
+
+- [Indexer.xyz 多链索引器](https://indexer.xyz/)：Indexer.xyz 是一个应用层，您可以完全在其上构建 NFT 或 DeFi 应用。除了原始交易索引外，Indexer.xyz 还为您提供标准化的 GraphQL API 层，轻松访问跨合约和跨链的交易。
+
+- [The Graph](https://thegraph.com/docs/en/cookbook/near/)：用于处理区块链事件的开发工具，通过 GraphQL API（称为子图）使结果数据易于访问。[Graph Node](https://github.com/graphprotocol/graph-node) 能够处理 NEAR 事件，这意味着 NEAR 开发者可以构建子图来索引其智能合约。
+
+- [GetBlock](https://getblock.io/explorers/near/blocks/)：为 NEAR 提供简单可靠的 API 访问历史数据流及其他服务的开发者工具。
+
+- [社区 API](./data-api)：使用我们社区的 API 构建精确、可靠的 dApp。
+
+- [Covalent](https://www.covalenthq.com/docs/networks/aurora/)：用于 [Aurora EVM](https://aurora.dev/) 索引，Covalent 提供统一 API，为数十亿个 Web3 数据点带来可见性。
+
+- [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer)：一个微框架，为您提供区块的"实时"流。适用于处理链上实时 `events`（事件）。
+
+- [SubQuery](https://academy.subquery.network/quickstart/quickstart_chains/near.html)：一个端到端的多区块链索引解决方案，为 NEAR 开发者提供快速、灵活、通用、开源且去中心化的 Web3 项目 API。[NEAR 入门项目](https://github.com/subquery/near-subql-starter/tree/main/Near/near-starter)为开发者提供模板，可在数分钟内快速上手。

@@ -1,0 +1,378 @@
+---
+title: 钱包登录
+description: "使用安全的沙箱连接器库将用户连接到 NEAR 钱包"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+`@hot-labs/near-connect` 库为 NEAR 区块链提供了一个安全的零依赖钱包连接器，采用独特的基于沙箱的架构。
+
+![Preview](https://github.com/user-attachments/assets/c4422057-38bb-4cd9-8bd0-568e29f46280)
+
+<Tip>
+
+**示例**
+
+我们有一个[工作示例](https://github.com/near-examples/hello-near-connector)，您可以通过 `create-near-app` 轻松获取：
+
+```bash
+npx create-near-app@latest
+```
+
+</Tip>
+
+---
+
+## 为什么选择 NEAR Connect？
+
+与传统钱包选择器不同，它提供了一个动态清单系统，允许在不要求开发者更新依赖项的情况下添加和更新钱包。
+
+- **安全执行**：钱包脚本在隔离的沙箱 iframe 中运行，确保最高安全性
+- **动态钱包**：钱包从清单中加载，无需代码更改即可更新
+- **零依赖**：轻量级库，无外部依赖
+- **自动检测**：同时支持注入式钱包（浏览器扩展）和基于清单的钱包
+
+---
+
+## 安装
+
+您可以通过两种方式将 NEAR Connect 库添加到您的项目中：
+
+<Tabs>
+  <Tab title="library">
+  手动安装 `@hot-labs/near-connect` 和 `near-api-js` 包：
+
+  ```bash
+  npm install @hot-labs/near-connect near-api-js
+  ```
+
+  </Tab>
+  <Tab title="hooks">
+  如果您使用 React，我们建议安装 `near-connect-hooks` 包，它提供了方便的 hooks 用于将 NEAR Connect 集成到您的应用中：
+
+  ```bash
+  npm install near-connect-hooks
+  ```
+
+  </Tab>
+</Tabs>
+
+---
+
+## 初始化连接器
+
+在您的应用程序中初始化 `NearConnector` 实例：
+
+<Tabs>
+  <Tab title="library">
+    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="38" end="44" />
+  </Tab>
+  <Tab title="hooks">
+     <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" start="8" end="19" />
+  </Tab>
+</Tabs>
+
+<Accordion title="选择钱包">
+
+与捆绑钱包代码的传统钱包选择器不同，NEAR Connect 使用**基于清单的方式**：
+
+1. 钱包提供商在公共清单中注册其集成脚本
+2. 当用户希望连接时，连接器动态加载钱包脚本
+
+这种架构消除了安装单独钱包包的需要，并确保钱包代码可以独立于您的应用进行更新。
+
+```tsx
+connector = new NearConnector({
+  network: "testnet", // or "mainnet"
+  features: {
+    signMessage: true,  // Only show wallets that support message signing
+    signTransaction: true,
+    signInWithoutAddKey: true,
+    signAndSendTransaction: true,
+    signAndSendTransactions: true
+  },
+});
+```
+
+</Accordion>
+
+---
+
+## 登录 / 注销
+
+<Tabs>
+  <Tab title="library">
+    连接器使用观察者模式（发布/订阅），为此我们需要订阅 `wallet:signIn` 和 `wallet:signOut` 事件。
+    
+    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="46" end="53" />
+
+    然后，调用 `connect` 函数打开一个模态窗口，用户可以在其中选择钱包并登录；调用 `disconnect` 进行注销。
+
+    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="74" end="77" />
+
+  </Tab>
+  <Tab title="hooks">
+    `near-connect-hooks` 包提供了一个 `useNearWallet` hook，简化了登录流程，首先导入该 hook：
+    <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx" language="tsx" start="3" end="3" />
+    
+    然后，从 hook 中导入 `signIn` 和 `signOut` 方法，并在需要时调用它们：
+    <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx" start="9" end="22" language="tsx" />
+  </Tab>
+</Tabs>
+
+---
+
+## 调用合约方法
+
+<Tabs>
+  <Tab title="library">
+    要调用合约方法，首先使用 `connector.wallet()` 获取已连接的钱包实例，然后使用钱包的 `signAndSendTransaction` 方法进行函数调用：
+
+    ```tsx
+    // 获取已连接的钱包
+    const wallet = await connector.wallet();
+
+    // 调用写入方法
+    const result = await wallet.signAndSendTransaction({
+      receiverId: "hello.near-examples.testnet",
+      actions: [
+        {
+          type: "FunctionCall",
+          params: {
+            methodName: "set_greeting",
+            args: { greeting: "Hello from NEAR Connect!" },
+            gas: "30000000000000", // 30 TGas
+            deposit: "0", // No deposit
+          },
+        },
+      ],
+    });
+
+    console.log("Transaction:", result.transaction.hash);
+    ```
+
+  </Tab>
+  <Tab title="hooks">
+    要调用合约方法，您可以使用 `useNearWallet` hook 提供的 `callFunction` 方法：
+    <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" start="27" end="27" language="tsx" />
+  </Tab>
+</Tabs>
+
+---
+
+## 调用只读方法
+
+<Tabs>
+  <Tab title="library">
+
+  `near-connector` 没有提供内置方式来调用只读（视图）方法。
+
+  但是，您可以使用 `near-api-js` 包（或您首选的任何 API）创建 JSON-RPC 提供商并直接调用视图方法：
+
+  ```tsx
+  import { JsonRpcProvider } from "near-api-js";
+
+  const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+  const greeting = await provider.callFunction(
+    "hello.near-examples.testnet",
+    "get_greeting",
+    {}
+  );
+  ```
+  </Tab>
+  <Tab title="hooks">
+    您可以使用 `useNearWallet` hook 提供的 `viewFunction` 方法来调用合约上的只读方法：
+
+    <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" language="tsx" start="18" end="18" />
+
+  </Tab>
+</Tabs>
+
+---
+
+## 获取余额
+
+<Tabs>
+  <Tab title="library">
+
+  `near-connector` 没有提供内置方式来获取账户余额。
+
+  但是，您可以使用 `near-api-js` 包（或您首选的任何 API）创建 JSON-RPC 提供商并直接查询账户余额：
+
+  ```tsx
+  import { JsonRpcProvider } from "near-api-js";
+
+  const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+  const greeting = await provider.viewAccount({ accountId: "hello.near-examples.testnet" });
+  ```
+  </Tab>
+  <Tab title="hooks">
+    您可以使用 `useNearWallet` hook 提供的 `getBalance` 方法来调用合约上的只读方法：
+
+    ```jsx
+    import { useNearWallet } from 'near-connect-hooks';
+    import { yoctoToNear } from 'near-api-js';
+
+    const { getBalance } = useNearWallet();
+    const balance = await getBalance();
+    console.log(`Balance: ${yoctoToNear(balance.available, 2)} NEAR`);
+    ```
+
+  </Tab>
+</Tabs>
+
+---
+
+## 发送多笔交易
+
+<Tabs>
+  <Tab title="library">
+
+    您可以通过单次提示请求用户并行签署和发送多笔交易：
+
+    ```tsx
+    const wallet = await connector.wallet();
+
+    const results = await wallet.signAndSendTransactions({
+      transactions: [
+        {
+          receiverId: "token.near",
+          actions: [
+            {
+              type: "FunctionCall",
+              params: {
+                methodName: "ft_transfer",
+                args: {
+                  receiver_id: "alice.near",
+                  amount: "1000000",
+                },
+                gas: "30000000000000",
+                deposit: "1", // 1 yoctoNEAR for security
+              },
+            },
+          ],
+        },
+        {
+          receiverId: "nft.near",
+          actions: [
+            {
+              type: "FunctionCall",
+              params: {
+                methodName: "nft_mint",
+                args: {
+                  token_id: "token-1",
+                  receiver_id: "alice.near",
+                },
+                gas: "30000000000000",
+                deposit: "10000000000000000000000", // 0.01 NEAR
+              },
+            },
+          ],
+        },
+      ],
+    });
+
+    console.log(`Completed ${results.length} transactions`);
+    ```
+  </Tab>
+  <Tab title="hooks">
+    您可以使用 `useNearWallet` hook 提供的 `signAndSendTransactions` 方法在单次请求中发送多笔交易：
+
+    ```tsx
+    import { useNearWallet } from 'near-connect-hooks';
+
+    ...
+
+    const { signAndSendTransactions } = useNearWallet();
+
+    const results = await signAndSendTransactions({
+      transactions: [
+        {
+          receiverId: "token.near",
+          actions: [
+            {
+              type: "FunctionCall",
+              params: {
+                methodName: "ft_transfer",
+                args: {
+                  receiver_id: "alice.near",
+                  amount: "1000000",
+                },
+                gas: "30000000000000",
+                deposit: "1", // 1 yoctoNEAR for security
+              },
+            },
+          ],
+        },
+        {
+          receiverId: "nft.near",
+          actions: [
+            {
+              type: "FunctionCall",
+              params: {
+                methodName: "nft_mint",
+                args: {
+                  token_id: "token-1",
+                  receiver_id: "alice.near",
+                },
+                gas: "30000000000000",
+                deposit: "10000000000000000000000", // 0.01 NEAR
+              },
+            },
+          ],
+        },
+      ],
+    });
+    console.log(`Completed ${results.length} transactions`);
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+### 签署消息（NEP-413）
+
+在 NEAR 中，用户无需发送交易即可为身份验证目的签署消息：
+
+<Tabs>
+  <Tab title="library">
+    您可以使用钱包的 `signMessage` 方法请求用户签署消息：
+
+    ```tsx
+    const wallet = await connector.wallet();
+
+    const signature = await wallet.signMessage({
+      message: "Please sign this message to authenticate",
+      recipient: "your-app.near",
+      nonce: Buffer.from(crypto.randomUUID()),
+    });
+
+    console.log("Signature:", signature.signature);
+    console.log("Public Key:", signature.publicKey);
+
+    // 在后端验证签名
+    ```
+  </Tab>
+  <Tab title="hooks">
+    您可以使用 `useNearWallet` hook 提供的 `signMessage` 方法请求用户签署消息：
+
+    ```tsx
+    import { useNearWallet } from 'near-connect-hooks';
+
+    ...
+
+    const { signNEP413Message } = useNearWallet();
+
+    const signature = await signMessage({
+      message: "Please sign this message to authenticate",
+      recipient: "your-app.near",
+      nonce: Buffer.from(crypto.randomUUID()),
+    });
+
+    console.log("Signature:", signature.signature);
+    console.log("Public Key:", signature.publicKey);
+    ```
+  </Tab>
+</Tabs>

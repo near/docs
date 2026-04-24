@@ -1,0 +1,89 @@
+---
+title: 拍卖工厂
+sidebarTitle: 拍卖工厂
+description: "通过工厂创建新拍卖。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+由于拍卖合约每次只举办一场拍卖，因此每次您想举办新拍卖时，都需要部署一个新合约。为了避免每次都需要查找编译后的 WASM 文件、创建新账户、部署合约并初始化它，您可以使用工厂合约来为您完成这些工作。
+
+幸运的是，我们已经有一个[工厂合约示例](https://github.com/near-examples/factory-rust)！我们将 fork 这个示例并对其进行少量修改以适应我们的使用场景。如果您想了解更多关于工厂合约工作原理的信息，可以查看[相关文档](/smart-contracts/tutorials/factories/factory#generic-factory)。
+
+工厂示例目前仅提供 Rust 版本，因为目前 JavaScript SDK 不允许在合约中嵌入 WASM 文件。这是 SDK 的限制，而非区块链本身的限制。
+
+---
+
+## 更改默认合约
+
+在当前示例中，工厂合约部署的是捐款合约示例。我们将把它改为部署我们的拍卖合约。
+
+首先，我们需要编译后的拍卖合约 WASM 文件。您可以在 `contract-rs` 的 [03-bid-with-fts](https://github.com/near-examples/auctions-tutorial/tree/main/contract-rs/03-bid-with-fts) 中运行以下命令来获取它：
+
+```bash
+cargo near build 
+```
+
+您将在 `target/near` 中找到生成的 WASM 文件；复制此文件并用它替换工厂合约源文件夹中捐款合约的 WASM。现在编辑拍卖合约，更改拍卖合约的路径。
+
+<Github fname="Default init" 
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/lib.rs#L25-L31"
+            start="25" end="31" />
+    <Github fname="Contract path" 
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/lib.rs#L9"
+            start="9" end="9" />
+
+初始化时，工厂将把拍卖合约的 WASM（以字节形式）添加到工厂状态中。不将 WASM 存储在工厂状态中效率更高，但是，如果我们发现了一个 bug 或想要添加新功能，我们可能需要更新拍卖合约。工厂实现了一个更新拍卖合约的方法——我们将其名称更改为 `update_auction_contract`，因为此工厂只部署拍卖合约。
+
+<Github fname="Contract path" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/manager.rs#L8-L13"
+        start="8" end="13" />
+
+---
+
+## 修改部署方法
+
+部署新合约的方法与被部署的合约相关（如果合约具有自定义初始化参数）。我们将修改该方法以接受拍卖合约的初始化参数。
+
+<Github fname="Contract path" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/deploy.rs#L9-L82"
+        start="9" end="82" />
+
+在此 fork 中，我们还移除了向合约账户添加访问密钥的选项，因为如[前面](./1.3-deploy#locking-the-contract)所述，我们希望拍卖处于锁定状态。
+
+---
+
+## 使用工厂 
+
+像其他合约一样构建和部署工厂，这次没有任何初始化参数。
+
+```bash
+# 使用 cargo-near 编译合约
+cargo near build
+
+# 部署合约
+near deploy <contractId> ./target/near/contract.wasm
+```
+
+您现在可以使用工厂部署新的拍卖合约，以下是一个示例命令。
+
+```bash
+near call auction-factory.testnet deploy_new_auction '{"name": "new-auction", "end_time": "3000000000000000000", "auctioneer": "pivortex.testnet", "ft_contract": "dai.fakes.testnet", "nft_contract": "nft.examples.testnet", "token_id": "7777", "starting_price": "1000000000000000000"}' --useAccount pivortex.testnet --deposit 1.6 --gas 100000000000000
+```
+
+<Info>
+**存款和存储成本**
+请注意，我们向调用附加 1.6 `$NEAR` 以覆盖部署新拍卖的存储成本。NEAR 上的存储成本为每 100 kb 1 `$NEAR`，我们的拍卖合约大约为 140 kb，但我们会多加一些以覆盖初始化时使用的存储。
+</Info>
+
+该命令的结果是一个新的拍卖合约被部署并初始化在 `new-auction.auction-factory.testnet`。
+
+---
+
+## 结论
+
+在本教程的这一部分，您学习了如何 fork 和修改工厂合约示例来部署我们的拍卖合约。您还学习了如何使用工厂来部署新的拍卖合约。如果您喜欢挑战，可以创建一个与工厂合约交互的前端，使部署新拍卖更加容易。如果您这样做了，欢迎在我们的开发者 [Telegram](https://t.me/neardev) 或 [Discord](https://discord.gg/vMGH5QywTH) 频道分享！
+
+至此，本教程系列结束，恭喜您！在本教程中，我们构建了一个拍卖合约并对其进行了迭代，添加了改进并扩展了其功能；创建了一个与拍卖交互的前端；使用 API 对历史出价进行索引；并部署了一个工厂合约，使部署新拍卖变得更容易。在这个过程中，我们学到了大量关于 NEAR 的知识：智能合约的结构、如何锁定合约以提高其安全性、如何使用 NFT 和 FT 等原语、如何进行跨合约调用、如何从前端使用钱包与区块链交互并显示智能合约的数据、如何使用 API 从区块链中获取历史数据、如何从其他合约部署合约，以及许多其他将对您未来有所帮助的知识。
+
+这真是太多了，再次恭喜您！

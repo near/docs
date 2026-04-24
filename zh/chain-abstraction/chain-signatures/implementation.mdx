@@ -1,0 +1,411 @@
+---
+title: 实现链签名
+description: "了解如何跨多个区块链签署交易。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+链签名使 NEAR 账户（包括智能合约）能够在众多区块链协议上签署和执行交易。
+
+这通过向单个 NEAR 账户赋予对多样化资产、跨链账户和数据的所有权，开启了区块链互操作性的新高度。
+
+<Accordion title="支持的网络">
+
+虽然您可以使用 Eddsa 或 Ecdsa 密钥为任何网络签署交易，但每条链签署交易的方式各不相同。
+
+我们的示例实现向您展示如何为以下网络签署交易：比特币、Solana、Cosmos、XRP、Aptos、Sui 以及 EVM 网络（以太坊、Base、BNB Chain、Avalanche、Polygon、Arbitrum 等）。
+
+</Accordion>
+
+---
+
+## 创建链签名
+
+创建链签名共有五个步骤：
+
+1. [衍生外部地址](#1-deriving-the-foreign-address) - 衍生将在目标区块链上控制的地址。
+2. [创建交易](#2-creating-the-transaction) - 创建要签署的交易或消息。
+3. [请求签名](#3-requesting-the-signature) - 调用 NEAR MPC 合约请求其签署交易。
+4. [格式化签名](#4-formatting-the-signature) - 格式化来自 MPC 合约的签名并将其添加到交易中。
+5. [中继已签名交易](#5-relaying-the-signed-transaction) - 将已签名交易发送到目标链执行。
+
+![chain-signatures](/assets/docs/welcome-pages/chain-signatures-overview.png)
+_NEAR 链签名示意图_
+
+[chainsig.js](https://github.com/NearDeFi/chainsig.js) 库为完成每个步骤提供了便捷的接口。
+
+<Tip>
+要在用 Rust 编写的 NEAR 智能合约内构建交易，您可以使用 [Omni Transaction](https://github.com/near/omni-transaction-rs) 库，为不同区块链（如比特币和以太坊）轻松构建交易。
+</Tip>
+
+<Info>
+**MPC 合约**
+
+在 `mainnet` 和 `testnet` 上都有可用的 [MPC 合约](https://github.com/Near-One/mpc/tree/main/libs/chain-signatures/contract)：
+
+- 主网：`v1.signer`
+- 测试网：`v1.signer-prod.testnet`
+
+MPC 网络由 8 个节点组成。
+
+</Info>
+
+---
+
+## 链签名合约
+
+要与链签名库交互，首先需要实例化一个 `ChainSignaturesContract`。
+
+<Github language="js"
+  url="https://github.com/near-examples/near-multichain/blob/main/src/config.js#L53-L56" start="53" end="56" />
+
+`networkId` 和 `contractId` 根据您所在的网络设置为上一节中指定的值。
+
+---
+
+## 链适配器
+
+要与特定链交互，您需要实例化相关的 `chainAdapter`。
+
+<Tabs>
+  <Tab title="Ξ EVM">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L40-L47" start="40" end="47" />
+
+  EVM 链适配器以 `ChainSignaturesContract` 作为参数，以及由 EVM RPC URL 构建的 `publicClient`。
+
+  <Tip>
+  要使用不同的 EVM 网络，只需指定所需网络的 RPC URL。
+  该示例演示了与多种 EVM 兼容网络的兼容性，包括以太坊、Base、BNB Chain、Avalanche、Polygon、Arbitrum、zkSync 等。
+  您可以在 [ChainList](https://chainlist.org/?testnets=true) 找到各种网络的 RPC URL。
+  </Tip>
+
+</Tab>
+
+<Tab title="₿ Bitcoin">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L10-L18" start="10" end="18" />
+
+  比特币链适配器以 `ChainSignaturesContract` 作为参数，以及 `network`（"mainnet"、"testnet" 或 "regtest"）和处理与比特币网络通信的 `btcRpcAdapter`。
+
+</Tab>
+
+<Tab title="◎ Solana">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L12-L17" start="12" end="17" />
+
+  Solana 链适配器以 `ChainSignaturesContract` 作为参数，以及由 Solana RPC URL 构建的 `connection`。如果要使用主网，则需要选择主网 RPC。
+
+</Tab>
+
+<Tab title="◉ XRP">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L11-L14" start="11" end="14" />
+
+  XRP 链适配器以 `ChainSignaturesContract` 作为参数，以及 XRP Ledger 的 `rpcUrl` 和 `rpcURl` 规范。对于测试网，请使用 `https://s.altnet.rippletest.net:51234`。
+
+</Tab>
+
+<Tab title="◈ SUI">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L13-L20" start="13" end="20" />
+
+  SUI 链适配器以 `ChainSignaturesContract` 作为参数，以及由 SUI RPC URL 构建的 SuiClient 的 `connection`。
+
+</Tab>
+
+<Tab title="⬟ Aptos">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L12-L21" start="12" end="21" />
+
+  Aptos 链适配器以 `ChainSignaturesContract` 作为参数，以及 Aptos 网络的 `nodeUrl` 和 `network` 规范。
+
+</Tab>
+
+</Tabs>
+
+---
+
+## 1. 衍生外部地址
+
+链签名使用[`衍生路径`](../chain-signatures#derivation-paths-one-account-multiple-chains)来表示目标区块链上的账户。要控制的外部地址可以从以下内容确定性地衍生：
+
+- 调用 MPC 合约的 NEAR 账户（如 `example.near`、`example.testnet` 等）
+- 衍生路径（如 `ethereum-1`、`ethereum-2` 等字符串）
+- MPC 服务的主公钥（我们使用的库已定义，无需担心）。
+
+要衍生地址，请调用 `deriveAddressAndPublicKey` 方法，传递正在衍生地址的 NEAR 账户 ID 和衍生路径。
+
+<Tabs>
+  <Tab title="Ξ EVM">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L98-L101" start="98" end="101" />
+
+</Tab>
+
+<Tab title="₿ Bitcoin">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L49-L52" start="49" end="52" />
+
+</Tab>
+
+<Tab title="◎ Solana">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L47-L50" start="47" end="50" />
+
+  在 Solana 上，您的地址与您的公钥相同。
+
+</Tab>
+
+<Tab title="◉ XRP">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L45-L48" start="45" end="48" />
+  </Tab>
+
+  <Tab title="◈ SUI">
+
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L51-L54" start="51" end="54" />
+
+  </Tab>
+
+  <Tab title="⬟ Aptos">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L52-L55" start="52" end="55" />
+  </Tab>
+
+</Tabs>
+
+<Info>
+相同的 NEAR 账户和路径将始终在目标区块链上产生相同的地址。
+
+- `example.near` + `ethereum-1` = `0x1b48b83a308ea4beb845db088180dc3389f8aa3b`
+- `example.near` + `ethereum-2` = `0x99c5d3025dc736541f2d97c3ef3c90de4d221315`
+</Info>
+
+---
+
+## 2. 创建交易
+
+要构建要签署的交易，请使用 `prepareTransactionForSigning` 方法。
+
+<CodeGroup>
+  <Tab title="Ξ EVM">
+        构建转移 ETH 的交易非常简单。`value` 是以 Wei 为单位的 ETH 数量，类型为 BigInt（1 ETH = 10<sup>18</sup> Wei）。
+        <Github language="js"
+          url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/Transfer.jsx#L17-L21"
+          start="17" end="21"/>
+
+    该方法返回`未签名交易`和交易`哈希`（也称为`有效载荷`）。
+  </Tab>
+
+  <Tab title="₿ Bitcoin">
+    构建转移 BTC 的交易非常简单。`value` 是以聪为单位的 BTC 数量，类型为字符串（1 BTC = 100,000,000 聪）。
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L71-L77"
+      start="71" end="77"/>
+
+    该方法返回`未签名交易`和交易`哈希`（也称为`有效载荷`）。
+  </Tab>
+
+  <Tab title="◎ Solana">
+    构建转移 SOL 的交易非常简单。`value` 是以 lamports 为单位的 SOL 数量，类型为 BigInt（1 SOL = 1,000,000,000 lamports）。
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L65-L71" start="65" end="71" />
+
+    该方法返回`未签名交易`。
+  </Tab>
+    <Tab title="◉ XRP">
+    构建转移 XRP 的交易非常简单。`value` 是以 drops 为单位的 XRP 数量，类型为字符串（1 XRP = 1,000,000 drops）。
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L63-L69" start="63" end="69" />
+
+    该方法返回`未签名交易`和交易`哈希`（也称为`有效载荷`）。
+  </Tab>
+
+  <Tab title="◈ SUI">
+    构建转移 SUI 的交易非常简单。`value` 是以 MIST 为单位的 SUI 数量，类型为 BigInt（1 SUI = 1,000,000,000 MIST）。
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L70-L80" start="70" end="80" />
+
+    该方法返回`未签名交易`和交易`哈希`（也称为`有效载荷`）。
+  </Tab>
+
+  <Tab title="⬟ Aptos">
+    构建转移 APT 的交易非常简单。`value` 是以 octas 为单位的 APT 数量，类型为 BigInt（1 APT = 100,000,000 octas）。
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L71-L82" start="71" end="82" />
+
+    该方法返回`未签名交易`和交易`哈希`（也称为`有效载荷`）。
+  </Tab>
+</CodeGroup>
+
+<Accordion title="EVM 函数调用">
+
+要调用智能合约上的函数，我们需要合约的 ABI，在我们的仓库中，这定义在 [config.js](https://github.com/near-examples/near-multichain/blob/main/src/config.js#L23-L63) 文件中（可以从 Remix 或使用 Etherscan 获取）。
+
+然后使用 `ethers` 库定义一个 `Contract` 对象
+
+<Github language="js"
+  url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L18-L18"
+  start="18" end="18"/>
+
+然后构建交易
+
+<Github language="js"
+  url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L31-L37"
+  start="31" end="37"/>
+
+这种方法允许您通过编码函数数据并将其包含在交易中来调用智能合约函数。
+
+</Accordion>
+
+---
+
+## 3. 请求签名
+
+一旦交易创建并准备好签名，通过调用 MPC 智能合约上的 `sign` 发出签名请求。
+
+该方法需要四个参数：
+
+  1. 要为目标区块链签名的 `payloads`（或哈希）
+  2. 我们想用于签署交易的账户的衍生 `path`
+  3. `keyType`，`Ecdsa` 对应 `Secp256k1` 签名，`Eddsa` 对应 `Ed25519` 签名。
+  4. `signerAccount`，包含正在签名的 `accountId` 和来自 [Near Connect](../../web3-apps/tutorials/wallet-login) 的 `signAndSendTransactions` 函数。
+
+<Tabs>
+  <Tab title="Ξ EVM">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L115-L123"
+      start="119" end="127" />
+
+</Tab>
+
+  <Tab title="₿ Bitcoin">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L83-L91"
+      start="83" end="91" />
+
+对于比特币，在发送单个交易时通常有多个 UTXO 需要签名。我们为每个 UTXO 创建一个 NEAR 交易（调用 MPC 合约上的 `sign`），并逐一发送以由 MPC 签名。然后从每个交易结果中解析每个签名，生成签名数组。
+
+  </Tab>
+
+<Tab title="◎ Solana">
+  要获取有效载荷，将交易序列化为 `uint8Array`，然后转换为十六进制。
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L78-L86" start="78" end="86" />
+
+</Tab>
+
+<Tab title="◉ XRP">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L76-L84" start="76" end="84" />
+</Tab>
+
+<Tab title="◈ SUI">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L87-L95" start="87" end="95" />
+</Tab>
+
+<Tab title="⬟ Aptos">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L88-L96" start="88" end="96" />
+</Tab>
+
+</Tabs>
+---
+
+## 4. 格式化签名
+
+一旦从 MPC 返回签名，需要对其进行格式化并添加到交易中以生成已签名的交易。
+
+<Tabs>
+  <Tab title="Ξ EVM">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L125-L128"
+      start="129" end="132" />
+
+</Tab>
+
+<Tab title="₿ Bitcoin">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L97-L100"
+      start="97" end="100" />
+
+对于比特币，签名数组被添加到交易中以生成完整的已签名交易。
+
+</Tab>
+
+<Tab title="◎ Solana">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L92-L96" start="92" end="96" />
+
+</Tab>
+
+<Tab title="◉ XRP">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L90-L93" start="90" end="93" />
+</Tab>
+
+<Tab title="◈ SUI">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L101-105" start="101" end="105" />
+</Tab>
+
+<Tab title="⬟ Aptos">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L102-L106" start="102" end="106" />
+</Tab>
+
+</Tabs>
+
+---
+
+## 5. 中继已签名交易
+
+现在我们有了已签名的交易，可以使用 `broadcastTx` 将其中继到目标网络。
+
+<Tabs>
+  <Tab title="Ξ EVM">
+      <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L150"
+      start="154" end="154" />
+
+</Tab>
+
+<Tab title="₿ Bitcoin">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L119"
+      start="119" end="119" />
+
+</Tab>
+
+<Tab title="◎ Solana">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L115" start="115" end="115" />
+
+</Tab>
+<Tab title="◉ XRP">
+   <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L114" start="114" end="114" />
+</Tab>
+
+<Tab title="◈ SUI">
+  <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L124" start="124" end="124" />
+</Tab>
+
+<Tab title="⬟ Aptos">
+    <Github language="js"
+      url="https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L123" start="123" end="123" />
+</Tab>
+</Tabs>
+
+该方法返回一个交易哈希，可用于在区块浏览器上定位该交易。
+
+<Info>
+⭐️ 要深入了解链签名的概念，请参阅[什么是链签名？](../chain-signatures)
+
+⭐️ 有关在前端中使用链签名的 NEAR 账户的完整示例，请参阅我们的 [Web 应用示例](https://github.com/near-examples/near-multichain)。
+
+</Info>

@@ -1,0 +1,34 @@
+---
+sidebarTitle: 概述
+title: Omni Bridge 概述
+description: "了解 Omni Bridge，这是一个多链资产桥，使用链签名和 MPC 技术实现区块链网络之间安全高效的转移。"
+---
+
+[Omni Bridge](https://github.com/Near-One/omni-bridge) 是一个多链资产桥，可促进不同区块链网络之间安全高效的资产转移。它通过利用[链签名](/chain-abstraction/chain-signatures)及其去中心化的[多方计算（MPC）服务](/chain-abstraction/chain-signatures#multi-party-computation-service)来解决跨链通信中的关键挑战，实现无需信任的跨链资产转移。
+
+<Tip>
+要了解更多信息，请参阅 [Omni Bridge 工作原理](./how-it-works)。
+</Tip>
+
+## 支持的链
+
+Omni Bridge 采用混合架构启动，根据链特定要求和技术限制使用不同的验证方法。这种方式使我们从第一天起就能支持多条链，同时逐步过渡到完整的链签名集成。
+
+目前支持的链包括：
+
+- **以太坊** - _（轻客户端 + 链签名）_
+- **比特币** - _（轻客户端 + 链签名）_
+- **Solana** - _（Wormhole + 链签名）_
+- **Base** - _（Wormhole + 链签名）_
+- **BNB** - _（Wormhole + 链签名）_
+- **Arbitrum** - _（Wormhole + 链签名）_
+
+<Info>
+有关更多详细信息，请参阅 [Omni Bridge 路线图](./roadmap)。
+</Info>
+
+## 资源
+
+- [Near-One/omni-bridge](https://github.com/Near-One/omni-bridge) - Omni Bridge 仓库
+- [Near-One/bridge-sdk-js](https://github.com/Near-One/bridge-sdk-js) - JavaScript SDK
+- [Near-One/bridge-sdk-rs](https://github.com/Near-One/bridge-sdk-rs) - Rust SDK

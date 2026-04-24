@@ -1,0 +1,304 @@
+---
+title: 环境
+description: "了解调用您的账户、附加了多少 gas 和代币等信息。"
+---
+
+环境是一组在智能合约执行时可用的变量和函数。它提供诸如谁调用了方法、调用附加了多少资金以及有多少计算资源可用等信息。
+
+每次方法执行都有一个关联环境，包含以下信息：
+
+1. 谁调用了该方法
+2. 调用附加了多少资金
+3. 有多少计算资源可用
+4. 当前时间戳
+5. 公钥派生等辅助函数
+
+---
+
+## 环境变量
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+| 变量名称               | SDK 变量                         | 描述                                                                                   |
+|------------------------|----------------------------------|----------------------------------------------------------------------------------------|
+| 前驱账户               | `env::predecessor_account_id()` | 调用此方法的账户 ID                                                                    |
+| 当前账户               | `env::current_account_id()`     | 此智能合约的账户 ID                                                                    |
+| 签名者                 | `env::signer_account_id()`      | 签署导致本次执行的交易的账户 ID                                                        |
+| 附加存款               | `env::attached_deposit()`       | 前驱附加给调用的 yoctoNEAR 金额                                                        |
+| 账户余额               | `env::account_balance()`        | 此智能合约的余额（包括附加存款）                                                        |
+| 预付 Gas               | `env::prepaid_gas()`            | 可用于执行的 gas 数量                                                                  |
+| 时间戳                 | `env::block_timestamp()`        | 当前时间戳（自 1970 年 1 月 1 日 0:00:00 UTC 起的非闰纳秒数）                          |
+| 当前纪元               | `env::epoch_height()`           | 区块链中的当前纪元                                                                     |
+| 区块索引               | `env::block_index()`            | 当前区块索引（即区块高度）                                                             |
+| 已用存储               | `env::storage_usage()`          | 此智能合约当前使用的存储字节数                                                         |
+| 存储字节成本           | `env::storage_byte_cost()`      | 每字节当前存储成本（以 yoctoNEAR 为单位）                                              |
+| 已用 Gas               | `env::used_gas()`               | 执行已使用的 gas 数量                                                                  |
+| 签名者公钥             | `env::signer_account_pk()`      | 发送者公钥                                                                             |
+| 账户锁定余额           | `env::account_locked_balance()` | 此智能合约被锁定的余额                                                                 |
+
+</Tab>
+
+<Tab title="🌐 JavaScript">
+
+| 变量名称               | SDK 变量                       | 描述                                                                                   |
+|------------------------|--------------------------------|----------------------------------------------------------------------------------------|
+| 前驱账户               | `near.predecessorAccountId()` | 调用此方法的账户 ID                                                                    |
+| 当前账户               | `near.currentAccountId()`     | 此智能合约的账户 ID                                                                    |
+| 签名者                 | `near.signerAccountId()`      | 签署导致本次执行的交易的账户 ID                                                        |
+| 附加存款               | `near.attachedDeposit()`      | 前驱附加给调用的 yoctoNEAR 金额                                                        |
+| 账户余额               | `near.accountBalance()`       | 此智能合约的余额（包括附加存款）                                                        |
+| 预付 Gas               | `near.prepaidGas()`           | 可用于执行的 gas 数量                                                                  |
+| 时间戳                 | `near.blockTimestamp()`       | 当前时间戳（自 1970 年 1 月 1 日 0:00:00 UTC 起的非闰纳秒数）                          |
+| 当前纪元               | `near.epochHeight()`          | 区块链中的当前纪元                                                                     |
+| 区块索引               | `near.blockIndex()`           | 当前区块索引（即区块高度）                                                             |
+| 已用存储               | `near.storageUsage()`         | 此智能合约当前使用的存储                                                               |
+| 已用 Gas               | `near.usedGas()`              | 执行已使用的 gas 数量                                                                  |
+| 签名者公钥             | `near.signerAccountPk()`      | 发送者公钥                                                                             |
+| 账户锁定余额           | `near.accountLockedBalance()` | 此智能合约被锁定的余额                                                                 |
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+| 变量名称               | SDK 变量                            | 描述                                                                                   |
+|------------------------|-------------------------------------|----------------------------------------------------------------------------------------|
+| 前驱账户               | `Context.predecessor_account_id()` | 调用此方法的账户 ID                                                                    |
+| 当前账户               | `Context.current_account_id()`     | 此智能合约的账户 ID                                                                    |
+| 签名者                 | `Context.signer_account_id()`      | 签署导致本次执行的交易的账户 ID                                                        |
+| 附加存款               | `Context.attached_deposit()`       | 前驱附加给调用的 yoctoNEAR 金额                                                        |
+| 预付 Gas               | `Context.prepaid_gas()`            | 可用于执行的 gas 数量                                                                  |
+| 已用 Gas               | `Context.used_gas()`               | 执行已使用的 gas 数量                                                                  |
+| 区块高度               | `Context.block_height()`           | 当前区块高度                                                                           |
+| 时间戳                 | `Context.block_timestamp()`        | 当前时间戳（自 1970 年 1 月 1 日 0:00:00 UTC 起的非闰纳秒数）                          |
+| 当前纪元               | `Context.epoch_height()`           | 区块链中的当前纪元                                                                     |
+
+</Tab>
+<Tab title="🐹 GO">
+
+| 变量名称               | SDK 变量                             | 描述                                                                                   |
+|------------------------|--------------------------------------|----------------------------------------------------------------------------------------|
+| 前驱账户               | `env.GetPredecessorAccountID()`     | 调用此方法的账户 ID                                                                    |
+| 当前账户               | `env.GetCurrentAccountId()`         | 此智能合约的账户 ID                                                                    |
+| 签名者                 | `env.GetSignerAccountID()`          | 签署导致本次执行的交易的账户 ID                                                        |
+| 附加存款               | `env.GetAttachedDeposit()`          | 前驱附加给调用的 yoctoNEAR 金额                                                        |
+| 账户余额               | `env.GetAccountBalance()`           | 此智能合约的余额（包括附加存款）                                                        |
+| 预付 Gas               | `env.GetPrepaidGas()`               | 可用于执行的 gas 数量                                                                  |
+| 时间戳                 | `env.GetBlockTimeMs()`              | 当前时间戳（自 1970 年 1 月 1 日 0:00:00 UTC 起的非闰纳秒数）                          |
+| 当前纪元               | `env.GetEpochHeight()`              | 区块链中的当前纪元                                                                     |
+| 区块索引               | `env.GetCurrentBlockHeight()`       | 当前区块索引（即区块高度）                                                             |
+| 已用存储               | `env.GetStorageUsage()`             | 此智能合约当前使用的存储字节数                                                         |
+| 已用 Gas               | `env.GetUsedGas()`                  | 执行已使用的 gas 数量                                                                  |
+| 签名者公钥             | `env.GetSignerAccountPK()`          | 发送者公钥                                                                             |
+| 账户锁定余额           | `env.GetAccountLockedBalance()`     | 此智能合约被锁定的余额                                                                 |
+
+</Tab>
+
+</Tabs>
+
+---
+
+## 谁在调用？我是谁？
+
+环境让您可以访问 3 个重要用户：`current_account`（当前账户）、`predecessor`（前驱）和 `signer`（签名者）。
+
+### 当前账户
+
+`current_account` 包含您的合约部署的地址。这对于实现所有权非常有用，例如使公共方法只能由合约本身调用。
+
+### 前驱与签名者
+
+`predecessor` 是调用合约中方法的账户。而 `signer` 是_签署_初始交易的账户。
+
+在简单交易（没有[跨合约调用](../anatomy/crosscontract)）中，`predecessor` 与 `signer` 相同。例如，如果 **alice.near** 调用 **contract.near**，从合约的角度来看，**alice.near** 既是 `signer` 也是 `predecessor`。但是，如果 **contract.near** 创建了一个[跨合约调用](../anatomy/crosscontract)，那么 `predecessor` 就会沿链发生变化。在下面的示例中，当 **pool.near** 执行时，它会将 **contract.near** 视为 `predecessor`，将 **alice.near** 视为 `signer`。
+
+![img](https://miro.medium.com/max/1400/1*LquSNOoRyXpITQF9ugsDpQ.png)
+*您可以访问与您的智能合约交互的用户的信息*
+
+<Tip>
+在大多数情况下，您**只需要了解前驱**。但是，在某些情况下签名者非常有用。例如，在将 [NFT](../../primitives/nft/nft) 添加到[此市场](https://github.com/near-examples/nft-tutorial/blob/7fb267b83899d1f65f1bceb71804430fab62c7a7/market-contract/src/nft_callbacks.rs#L42)时，合约会检查 `signer`（即生成交易链的人）是否是 NFT 所有者。
+</Tip>
+
+---
+
+## 余额与附加的 NEAR
+环境让您可以访问 3 个与代币相关的参数，均以 yoctoNEAR 表示（1 Ⓝ = 10<sup>24</sup>yⓃ）：
+
+### 附加存款
+`attached_deposit` 表示前驱附加到调用中的 yoctoNEAR 金额。
+
+该金额**已存入**您合约的账户，如果您的**方法 panic**，会**自动退还**给 `predecessor`。
+
+<Warning>
+如果您进行[跨合约调用](../anatomy/crosscontract)且它 panic，资金会发送回**您的合约**。请参阅[回调部分](../anatomy/crosscontract#what-happens-if-the-function-i-call-fails)了解如何处理此情况。
+</Warning>
+
+### 账户余额
+
+`account_balance` 表示您合约（`current_account`）的余额。
+
+它包含 `attached_deposit`，因为在方法执行开始时已经存入。
+
+如果合约有任何锁定的 `$NEAR`，它将出现在 `account_locked_balance` 中。
+
+---
+
+### 已用存储
+
+`storage_used` 表示您的合约当前使用的[存储](../anatomy/storage)量。
+
+<Tip>
+如果您想知道某个结构使用了多少存储，在存储之前和之后打印存储量即可。
+</Tip>
+
+---
+
+## 计时
+
+环境提供了三种不同的方式来表示时间流逝，每种方式代表底层区块链的不同维度。
+
+### 时间戳
+
+`timestamp` 属性表示此调用执行时以**纳秒**为单位的近似 **UNIX 时间戳**。它以人类可理解的方式量化时间流逝，使我们能够检查特定日期是否已过。
+
+### 当前纪元
+
+NEAR 区块链将区块分组为[纪元](../../protocol/network/epoch)。`current_epoch` 属性衡量到目前为止经过了多少纪元。它对于与其他以纪元衡量时间的合约（如[验证者](../../protocol/network/validators)）进行协调非常有用。
+
+### 区块索引
+
+`block_index` 表示此交易将被添加到区块链的区块的索引。
+
+---
+
+## Gas
+
+您的合约在每次调用时有**有限的计算资源**可用。这些资源以 [Gas](/protocol/transactions/gas) 来衡量。
+
+Gas 可以理解为墙上时间，1 PetaGas（1_000 TGas）大约相当于 1 秒的计算时间。
+
+每条代码指令都消耗一定数量的 Gas，如果耗尽，执行将停止并显示错误消息 `Exceeded the prepaid gas`。
+
+环境让您可以访问两个 gas 相关参数：`prepaid_gas` 和 `used_gas`。
+
+### 预付 Gas
+`prepaid_gas` 表示 `predecessor` 附加到此调用的 Gas 数量。不能超过 300TGas（300 * 10<sup>12</sup> Gas）的限制。
+
+### 已用 Gas
+`used_gas` 包含到目前为止已使用的 Gas 数量。用于估算运行方法的 Gas 成本。
+
+<Warning>
+在[跨合约调用](./crosscontract)期间，始终确保回调有足够的 Gas 来完全执行。
+</Warning>
+
+<Tip>
+
+如果您已经[估算了方法需要的 Gas](../../protocol/transactions/gas#estimating-costs-for-a-call)，可以使用 `assert` 确保其永远不会耗尽 Gas。
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+```rust
+const REQUIRED_GAS: Gas = Gas(20_000_000_000_000); // 20 TGas
+assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
+```
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+```python
+from near_sdk_py import call, Context
+
+@call
+def check_gas(required_gas=20_000_000_000_000):  # 20 TGas
+    if Context.prepaid_gas() < required_gas:
+        raise Exception(f"Please attach at least {required_gas} gas")
+    return "Sufficient gas attached"
+```
+
+</Tab>
+
+</Tabs>
+
+</Tip>
+
+---
+
+## 环境函数
+
+除了环境变量外，SDK 还暴露了一些执行基本密码学操作的函数。
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+| 函数名称               | SDK 方法                                                   | 描述                                                                                                                                                                                                                                                                                       |
+|------------------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SHA 256               | `env::sha256(value)`                                    | 使用 sha256 对字节序列进行哈希。                                                                                                                                                                                                                                                          |
+| Keccak 256            | `env::keccak256(value)`                                 | 使用 keccak256 对字节序列进行哈希。                                                                                                                                                                                                                                                      |
+| Keccak 512            | `env::keccak512(value)`                                 | 使用 keccak512 对字节序列进行哈希。                                                                                                                                                                                                                                                      |
+| SHA 256（数组）       | `env::sha256_array(value)`                              | 使用 SHA-256 哈希函数对字节进行哈希。返回 32 字节哈希。                                                                                                                                                                                                                                  |
+| Keccak 256（数组）    | `env::keccak256_array(value)`                           | 使用 Keccak-256 哈希函数对字节进行哈希。返回 32 字节哈希。                                                                                                                                                                                                                               |
+| Keccak 512（数组）    | `env::keccak512_array(value)`                           | 使用 Keccak-512 哈希函数对字节进行哈希。返回 64 字节哈希。                                                                                                                                                                                                                               |
+| RIPEMD 160（数组）    | `env::ripemd160_array(value)`                           | 使用 RIPEMD-160 哈希函数对字节进行哈希。返回 20 字节哈希。                                                                                                                                                                                                                               |
+| EC Recover            | `env::ecrecover(hash, signature, v, malleability_flag)` | 从 32 字节消息 `hash` 和相应的 `signature` 以及 `v` 恢复字节中恢复 ECDSA 签名者地址。接受一个额外的标志来检查签名的可延展性，这通常只对交易是理想的。如果恢复成功，返回 64 字节表示公钥。                                                                                                |
+| Panic String          | `env::panic_str(message)`                               | 以 UTF-8 编码的消息终止程序执行。                                                                                                                                                                                                                                                         |
+| Log String            | `env::log_str(message)`                                 | 记录字符串消息。该消息存储在链上。                                                                                                                                                                                                                                                         |
+| 验证者质押             | `env::validator_stake(account_id)`                      | 返回给定账户的当前质押。如果该账户不是验证者，返回 0。                                                                                                                                                                                                                                   |
+| 验证者总质押           | `env::validator_total_stake()`                          | 返回当前纪元中验证者的总质押。                                                                                                                                                                                                                                                             |
+
+</Tab>
+
+<Tab title="🌐 JavaScript">
+
+| 函数名称               | SDK 方法                                          | 描述                                                                                                                                                                                                                                                                                       |
+|------------------------|--------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SHA 256               | `near.sha256(value)`                             | 使用 sha256 对字节序列进行哈希。                                                                                                                                                                                                                                                          |
+| Keccak 256            | `near.keccak256(value)`                          | 使用 keccak256 对字节序列进行哈希。                                                                                                                                                                                                                                                      |
+| Keccak 512            | `near.keccak512(value)`                          | 使用 keccak512 对字节序列进行哈希。                                                                                                                                                                                                                                                      |
+| RIPEMD 160            | `near.ripemd160(value)`                          | 使用 RIPEMD-160 哈希函数对字节进行哈希。                                                                                                                                                                                                                                                  |
+| EC Recover            | `near.ecrecover(hash, sig, v, malleabilityFlag)` | 从 32 字节消息 `hash` 和相应的 `signature` 以及 `v` 恢复字节中恢复 ECDSA 签名者地址。接受一个额外的标志来检查签名的可延展性，这通常只对交易是理想的。如果恢复成功，返回 64 字节表示公钥。                                                                                                |
+| Log String            | `near.log(msg)`                                  | 记录字符串消息。该消息存储在链上。                                                                                                                                                                                                                                                         |
+| 验证者质押             | `near.validatorStake(accountId)`                 | 返回给定账户的当前质押。如果该账户不是验证者，返回 0。                                                                                                                                                                                                                                   |
+| 验证者总质押           | `near.validatorTotalStake()`                     | 返回当前纪元中验证者的总质押。                                                                                                                                                                                                                                                             |
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+| 函数名称               | SDK 方法                                  | 描述                                                                                                                                                                                                                                                                                       |
+|------------------------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SHA 256               | `near.sha256(value)`                     | 使用 sha256 对字节序列进行哈希。                                                                                                                                                                                                                                                          |
+| Keccak 256            | `near.keccak256(value)`                  | 使用 keccak256 对字节序列进行哈希。                                                                                                                                                                                                                                                      |
+| Keccak 512            | `near.keccak512(value)`                  | 使用 keccak512 对字节序列进行哈希。                                                                                                                                                                                                                                                      |
+| Log Info              | `Log.info(message)`                      | 记录信息消息。该消息存储在链上。                                                                                                                                                                                                                                                            |
+| Log Warning           | `Log.warning(message)`                   | 记录警告消息。该消息存储在链上。                                                                                                                                                                                                                                                           |
+| Log Error             | `Log.error(message)`                     | 记录错误消息。该消息存储在链上。                                                                                                                                                                                                                                                           |
+| Log Event             | `Log.event(event_type, data)`            | 记录遵循 NEP 事件标准的结构化事件。这对索引器和前端应用程序很有用。                                                                                                                                                                                                                        |
+| 抛出异常               | `raise Exception(message)`               | 以错误消息终止函数执行。类似于其他语言中的 panic。                                                                                                                                                                                                                                         |
+
+</Tab>
+<Tab title="🐹 GO">
+
+| 函数名称               | SDK 方法                                                       | 描述                                                                                                                                                                                                                                                                                       |
+|------------------------|--------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SHA 256               | `env.Sha256Hash(value)`                                    | 使用 sha256 对字节序列进行哈希。                                                                                                                                                                                                                                                          |
+| Keccak 256            | `env.Keccak256Hash(value)`                                 | 使用 keccak256 对字节序列进行哈希。                                                                                                                                                                                                                                                      |
+| Keccak 512            | `env.Keccak512Hash(value)`                                 | 使用 keccak512 对字节序列进行哈希。                                                                                                                                                                                                                                                      |
+| SHA 256               | `env::Sha256Hash(value)`                                   | 使用 SHA-256 哈希函数对字节进行哈希。返回 32 字节哈希。                                                                                                                                                                                                                                  |
+| RIPEMD 160            | `env::Ripemd160Hash(value)`                                | 使用 RIPEMD-160 哈希函数对字节进行哈希。返回 20 字节哈希。                                                                                                                                                                                                                               |
+| EC Recover            | `env.EcrecoverPubKey(hash, signature, v, malleability_flag)` | 从 32 字节消息 `hash` 和相应的 `signature` 以及 `v` 恢复字节中恢复 ECDSA 签名者地址。接受一个额外的标志来检查签名的可延展性，这通常只对交易是理想的。如果恢复成功，返回 64 字节表示公钥。                                                                                                |
+| Panic String          | `env.PanicStr(message)`                                    | 以 UTF-8 编码的消息终止程序执行。                                                                                                                                                                                                                                                         |
+| Log String            | `env.LogString(message)`                                   | 记录字符串消息。该消息存储在链上。                                                                                                                                                                                                                                                         |
+| 验证者质押             | `env.ValidatorStakeAmount(account_id)`                     | 返回给定账户的当前质押。如果该账户不是验证者，返回 0。                                                                                                                                                                                                                                   |
+| 验证者总质押           | `env.ValidatorTotalStakeAmount()`                          | 返回当前纪元中验证者的总质押。                                                                                                                                                                                                                                                             |
+
+</Tab>
+
+</Tabs>
+
+<Info>
+在 JS SDK 中，`throw new Error("message")` 模拟了 Rust 的 `env::panic_str("message")` 的行为。
+</Info>
+
+---

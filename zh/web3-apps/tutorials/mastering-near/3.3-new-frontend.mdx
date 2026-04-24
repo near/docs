@@ -1,0 +1,84 @@
+---
+title: 更新前端
+description: "更新前端以显示新的代币信息。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+现在我们已经更新了合约以将 NFT 作为奖励，并将合约更改为接受以同质化代币进行的出价，我们需要相应地更新前端。
+
+## 从合约获取数据
+
+现在我们有了一个用于输出整个合约状态的函数，我们将在前端调用此函数。
+
+<Github fname="index.js"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L28-L35"
+        start="28" end="35" />
+
+这个调用将为我们提供 FT 和 NFT 合约的合约 ID，以及 NFT 的代币 ID。然后，我们将使用这些信息分别在 FT 和 NFT 合约上调用 `ft_metadata` 和 `nft_token` 方法，以获取 FT 和 NFT 的相关信息。
+
+---
+
+## 显示 NFT
+
+我们希望显示正在拍卖的 NFT。为此，我们将在 NFT 合约上调用 `nft_token` 来获取 NFT 元数据。要调用此方法，我们需要指定 NFT `contractId` 和 `token_id`，这些信息可以在拍卖信息中找到。`nft_token` 还返回 NFT 的所有者，因此我们将其与合约账户进行比较，以验证拍卖的有效性。
+
+<Github fname="index.js"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L57-L73"
+        start="57" end="73" />
+
+请注意，此 effect 只会在 `auctionInfo` 更新后运行，因为我们首先需要从 `auctionInfo` 中获取 NFT 合约 ID 和代币 ID，才能向 `nft_token` 发起有效调用。
+
+在一个名为 `AuctionItem` 的新组件中，我们显示 NFT 图片、名称和描述。
+
+<Github fname="AuctionItem.jsx"
+    url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/components/AuctionItem.jsx"
+    />
+
+请注意，使用了图片缓存服务来显示 NFT 图片，以提高性能。
+
+---
+
+## 获取 FT 信息
+
+使用拍卖信息中的 FT 合约 ID，我们可以在 FT 合约上调用 `ft_metadata` 方法，以获取正在用于拍卖的同质化代币的相关信息。
+
+<Github fname="index.js"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L75-L93"
+        start="75" end="93" />
+
+我们在状态中设置 FT 图片、符号、图标和精度。我们使用精度来格式化出价的代币数量。以 DAI 为例，将金额除以 10^18。进行出价时使用相反的过程，出价金额在发送到合约之前乘以 10^18。
+
+---
+
+## 使用 FT 出价
+
+我们现在不再调用合约上的 `bid` 函数，而是在 FT 合约上调用 `ft_transfer_call` 函数。此函数将 FT 转移到拍卖合约，并在拍卖合约上调用 `ft_on_transfer`。
+
+<Github fname="index.js"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L95-L105"
+        start="95" end="105" />
+
+---
+
+## 更新索引 API 调用
+
+我们需要更新获取历史出价的 API 调用，以索引每次从 FT 合约调用拍卖合约的 `ft_on_transfer` 的情况。
+
+<Github fname="getBidHistory.js"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/api/getBidHistory.js#L1-L13"
+        start="1" end="13" />
+
+现在，出价金额不再从存款中获取，而是从调用参数的 `amount` 中获取。出价者的账户 ID 情况相同，从 `sender_id` 中获取。
+
+<Github fname="getBidHistory.js"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/api/getBidHistory.js#L24-L28"
+        start="24" end="28" />
+
+---
+
+## 结论
+
+好的，这没花多长时间。回顾一下，我们更新了前端以显示正在拍卖的 NFT，以正在使用的 FT 显示出价金额——包括当前出价和历史出价——并将出价流程更改为使用 FT。
+
+在这个超级教程的[最后一节](./4-factory)中，我们将创建一个拍卖工厂合约，用于部署和初始化新的拍卖合约。

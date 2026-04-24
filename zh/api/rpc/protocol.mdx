@@ -1,0 +1,155 @@
+---
+title: 协议
+description: "了解如何使用 NEAR RPC API 获取创世配置和当前协议配置。"
+---
+
+RPC API 允许您获取当前的创世配置和协议配置。
+
+## 快速参考
+
+| 方法 | 参数 | 描述 |
+| --- | --- | --- |
+| [`genesis_config`](#genesis-config) | _无_ | 返回当前创世配置 |
+| [`EXPERIMENTAL_protocol_config`](#protocol-config) | `finality` 或 `block_id` | 返回最新或特定区块的协议配置 |
+
+---
+
+## 创世配置
+
+返回当前创世配置。
+
+- **method**: `genesis_config`
+- **params**: _无_
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "genesis_config"
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://test.rpc.fastnear.com",
+    });
+
+    const response = await provider.experimental_protocolConfig({
+      sync_checkpoint: 'genesis',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=genesis_config
+    ```
+  </Tab>
+</Tabs>
+
+<Accordion title="响应示例">
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "chain_id": "testnet",
+    "epoch_length": 43200,
+    "gas_limit": 1000000000000000,
+    "genesis_height": 42376888,
+    "genesis_time": "2020-07-31T03:39:42.911378Z",
+    "min_gas_price": "5000",
+    "num_block_producer_seats": 200,
+    "protocol_version": 29,
+    "total_supply": "2089646653180081825096998107194444"
+  },
+  "id": "dontcare"
+}
+```
+</Accordion>
+
+---
+
+## 协议配置
+
+返回最新的协议配置或特定查询区块的协议配置。适用于查找当前存储和交易成本。
+
+- **method**: `EXPERIMENTAL_protocol_config`
+- **params**: `finality` 或 `block_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "EXPERIMENTAL_protocol_config",
+      "params": {
+        "finality": "final"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://test.rpc.fastnear.com",
+    });
+
+    const response = await provider.experimental_protocolConfig({
+      finality: "final"
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=EXPERIMENTAL_protocol_config \
+      params:='{"finality": "final"}'
+    ```
+  </Tab>
+</Tabs>
+
+<Accordion title="响应示例">
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "chain_id": "testnet",
+    "epoch_length": 43200,
+    "gas_limit": 1000000000000000,
+    "protocol_version": 73,
+    "runtime_config": {
+      "storage_amount_per_byte": "10000000000000000000",
+      "transaction_costs": {
+        "action_receipt_creation_config": {
+          "execution": 108059500000,
+          "send_not_sir": 108059500000,
+          "send_sir": 108059500000
+        }
+      }
+    }
+  },
+  "id": "dontcare"
+}
+```
+</Accordion>
+
+---
+
+## 最佳实践
+
+- 使用 `finality: "final"` 获取最新已确认的协议配置
+- 当需要特定区块的协议配置时，使用具体的 `block_id`
+- 对协议配置结果进行缓存，因为其变更频率较低
+- 使用协议配置计算当前的存储和交易成本

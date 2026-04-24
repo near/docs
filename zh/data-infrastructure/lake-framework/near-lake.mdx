@@ -1,0 +1,71 @@
+---
+sidebarTitle: Lake 概述
+title: NEAR Lake 索引器
+description: "了解 NEAR Lake 如何索引网络"
+---
+
+NEAR Lake 是一个构建在 [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) 之上的索引器，用于监控网络并将所有事件日志（例如 [FT 事件](https://github.com/near/NEPs/tree/master/neps/nep-0300.md) 和 [NFT 事件](https://github.com/near/NEPs/tree/master/neps/nep-0256.md)）以 JSON 文件形式存储在 AWS S3 上。
+
+<Info>
+**GitHub 仓库**
+
+您可以在[此 GitHub 仓库](https://github.com/near/near-lake-indexer/)中找到 Lake Indexer 源代码。
+
+</Info>
+
+### 工作原理
+
+<Tip>
+
+[Pagoda Inc.](https://www.pagoda.co) 运行 NEAR Lake 节点，以 JSON 格式将数据存储在 AWS S3 上。
+除非您有特定原因，否则无需运行自己的 NEAR Lake。
+
+</Tip>
+
+已创建的 AWS S3 存储桶：
+
+- `near-lake-data-testnet`（`eu-central-1` 区域）
+- `near-lake-data-mainnet`（`eu-central-1` 区域）
+
+所有存储桶均设置为由请求者支付访问费用。任何人都可以使用自己的 AWS 凭证连接到这些存储桶来读取数据，并由 Amazon 向其收费。
+
+### 数据结构
+
+Lake Indexer 使用的数据结构如下：
+
+```text
+    <block_height>/
+      block.json
+      shard_0.json
+      shard_1.json
+      ...
+      shard_N.json
+```
+
+`<block_height>` 是一个 12 位长的 [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) 字符串，带有前导零（例如 "000042839521"）。请参阅[此 issue 了解原因](https://github.com/near/near-lake/issues/23)。
+
+`block_json` 包含 JSON 序列化的 `BlockView` 结构体。**注意！** 此结构体将来可能会更改，我们会提前公告。
+
+`shard_N.json` 其中 N 是从 `0` 开始的 [`u64`](https://doc.rust-lang.org/std/primitive.u64.html)。表示分片的索引编号。要了解区块中预期的分片数量，可以在 `block.json` 的 `.header.chunks_included` 中查看。
+
+### 如何使用
+
+我们创建了 [NEAR Lake Framework](/data-infrastructure/near-lake-framework)，提供了一种简单直接的方式，基于 NEAR Lake 本身存储的数据创建索引器。
+
+<Info>
+**NEAR Lake Framework**
+
+您可以在 [NEAR 治理论坛](https://gov.near.org/t/announcement-near-lake-framework-brand-new-word-in-indexer-building-approach/17668)上查看 NEAR Lake Framework 的发布公告。
+
+</Info>
+
+我们准备了这个视频教程，通过一个简单的例子为您提供概述和一些实践思路。
+
+<iframe
+ width="560"
+ height="315"
+ src="https://www.youtube.com/embed/GsF7I93K-EQ"
+ title="NEAR Lake Indexer"
+ frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+ allowfullscreen>
+</iframe>

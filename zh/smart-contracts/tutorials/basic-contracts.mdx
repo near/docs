@@ -1,0 +1,265 @@
+---
+title: 使用我们的基础示例
+description: "通过实际示例学习 NEAR 智能合约基础知识：计数器、留言板、捐款、抛硬币和 Hello World。"
+---
+
+我们创建了一系列基础智能合约，帮助您开始在 NEAR 上构建智能合约。
+
+![img](/assets/docs/smart-contracts/tutorials/basic-contracts.png)
+
+这些示例涵盖了状态管理、函数调用和代币交互等基本概念。每个示例都设计得简单易懂，非常适合初学者。
+
+<Tip>
+
+在处理这些示例之前，请务必先遵循我们的[快速入门指南](../quickstart)
+
+</Tip>
+
+---
+
+## 示例
+
+<CardGroup cols={3}>
+  <Card
+    title="Hello World"
+    img="/assets/docs/smart-contracts/tutorials/examples/hello-near-landing-page.png"
+    href="https://github.com/near-examples/hello-near-examples"
+  >
+    一个简单的智能合约，在其状态中存储 `string` 消息。[在 NearPlay 中打开](https://nearplay.app/embed/919be62a-e1bc-49b5-b858-fb3d567d8489)
+  </Card>
+  <Card
+    title="计数器"
+    img="/assets/docs/smart-contracts/tutorials/examples/count-on-near-banner.webp"
+    href="https://github.com/near-examples/counters"
+  >
+    一个友好的计数器，存储一个数字，并提供递增、递减和重置它的方法。[在 NearPlay 中打开](https://nearplay.app/embed/3450a8a0-57dc-4d3a-b5d0-7bed58a0c2a9)
+  </Card>
+  <Card
+    title="留言板"
+    img="/assets/docs/smart-contracts/tutorials/examples/guest-book.webp"
+    href="https://github.com/near-examples/guest-book-examples"
+  >
+    用户可以在留言板上签名，可选择支付 `0.01 Ⓝ` 将其消息标记为"高级"。[在 NearPlay 中打开](https://nearplay.app/embed/3862fb26-aeee-471f-90ad-f900e820de3f)
+  </Card>
+  <Card
+    title="捐款"
+    img="/assets/docs/smart-contracts/tutorials/examples/donation.webp"
+    href="https://github.com/near-examples/donation-examples"
+  >
+    将 NEAR 代币转发给受益人，同时跟踪所有捐款。了解合约如何处理代币转账。[在 NearPlay 中打开](https://nearplay.app/embed/436d9ff9-a15c-418a-8350-ae5eead387c7)
+  </Card>
+  <Card
+    title="抛硬币"
+    img="/assets/docs/smart-contracts/tutorials/examples/coin-flip.webp"
+    href="https://github.com/near-examples/coin-flip-examples"
+  >
+    猜测抛硬币的结果并赚取积分。演示如何在区块链上处理随机性。[在 NearPlay 中打开](https://nearplay.app/embed/10aab4a0-deee-45a3-b847-8d229358cad3)
+  </Card>
+</CardGroup>
+
+<Tip>
+**无需设置即可尝试**
+想立即尝试这些示例？点击上方任意卡片上的**"在 NearPlay 中打开"**按钮，开始在 [NearPlay](https://nearplay.app) 中编码 - 无需安装！
+</Tip>
+
+---
+
+## 示例结构
+
+所有示例都遵循一致的结构，使在它们之间导航变得容易。每个存储库包含在 **Rust**、**Javascript** 以及有时 **Python** 中实现的**相同智能合约**，以及用于与合约交互的**简单前端**。
+
+```bash
+┌── contract-rs # contract's code in Rust
+│    ├── src    # contract's code
+│    ├── tests  # sandbox test
+│    ├── Cargo.toml
+│    └── rust-toolchain.toml
+├── contract-ts # contract's code in Typescript
+│    ├── src    # contract's code
+│    ├── sandbox-test  # sandbox test
+│    ├── package.json
+│    └── tsconfig.json
+├── contract-py # contract's code in Python (some examples)
+│    ├── contract.py  # contract's code
+│    ├── tests        # sandbox test
+│    ├── pyproject.toml
+│    └── uv.lock
+├── frontend    # React + Next.JS frontend
+│    ├── src    # frontend's implementation
+│    ├── public 
+│    ├── package.json
+│    ├── next.config.js
+│    └── jsconfig.json
+└── README.md
+```
+
+---
+
+## 前端
+
+每个示例都包含一个非常容易启动的 **Next.JS** 前端：
+
+```bash
+cd frontend
+yarn
+yarn dev
+```
+
+这些前端对于演示如何将 Web 应用程序连接到 NEAR，以及如何与智能合约交互非常有用。
+
+<Tip>
+每个前端都连接到**合约的预部署版本**。查看 `./frontend/config.js` 以了解正在使用哪个合约，或将其更改为您自己部署的合约
+</Tip>
+
+### NEAR Connector Hooks
+
+所有前端都使用 [`near-connect-hooks`](https://www.npmjs.com/package/near-connect-hooks)，它封装了 [NEAR Connector](../../web3-apps/tutorials/wallet-login) 的功能，用于处理 Web 应用程序与 NEAR 区块链之间的连接。
+
+`near-connect-hooks` 公开了一个 `NearProvider`，用于包装整个应用程序，通常在 `pages/_app.js` 中：
+
+```jsx
+import { NearProvider } from "near-connect-hooks";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <NearProvider>
+      <Navigation />
+      <Component {...pageProps} />
+    </NearProvider>
+  );
+}
+```
+
+<br />
+
+然后，我们可以在任何组件中使用 **`useNearWallet` hook** 来访问所有 NEAR 相关功能，例如登录/注销、视图和调用函数以及签署交易：
+
+```jsx
+import { useNearWallet } from 'near-connect-hooks';
+
+export default function App() {
+  // Login / Logout functionality
+  const { loading, signIn, signOut, signedAccountId } = useNearWallet();
+
+  // To interact with the contract
+  const { viewFunction, callFunction, signAndSendTransactions } = useNearWallet();
+}
+```
+
+---
+
+## 智能合约
+
+所有存储库都包含以不同语言实现的相同智能合约，包括 **Rust**、**Javascript** 以及有时 **Python**。
+
+合约按照每个 SDK 的最新版本实现，并包含展示如何在真实环境中正确测试智能合约的沙盒测试。
+
+### 测试
+
+每个合约都包含模拟真实用户交互的沙盒测试。例如，在 `留言板` 示例中，测试涵盖了多个账户在留言板上签名的场景，包括高级消息。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+  
+```bash
+cd contract-rs
+cargo test
+```
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+```bash
+cd contract-ts
+yarn
+yarn test
+```
+
+  </Tab>
+  <Tab title="🐍 Python">
+  
+```bash
+cd contract-py
+uv run pytest
+```
+
+  </Tab>
+</Tabs>
+
+### 创建账户
+
+所有智能合约都可以使用 `NEAR CLI` 构建和部署。一个好的第一步是始终创建一个新的 NEAR 账户来部署您的合约：
+
+```bash
+near create-account <accountId> --useFaucet
+```
+
+<Tip>
+
+这里我们使用 `--useFaucet` 标志创建一个新账户，并从 [testnet 水龙头](../../getting-started/faucet)预先充值
+
+</Tip>
+
+### 构建和部署
+
+创建账户来托管合约后，您可以构建并部署它：
+
+<Tabs>
+  <Tab title="🦀 Rust">
+  
+```bash
+cd contract-rs
+cargo near deploy build-non-reproducible-wasm <accountId>
+```
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+```bash
+cd contract-ts
+npm run build
+near deploy <accountId> ./build/<contract-name>.wasm
+```
+
+  </Tab>
+  <Tab title="🐍 Python">
+  
+```bash
+cd contract-py
+uvx nearc contract.py
+near deploy <accountId> <contract-name>.wasm
+```
+
+  </Tab>
+</Tabs>
+
+### 通过 CLI 交互
+
+部署合约后，查看每个存储库的 `README.md` 以了解可以调用的可用方法。
+
+作为一般指南，`NEAR CLI` 有两种主要方式与智能合约交互：
+
+```bash
+# Call a read-only (view) method
+near view <contractId> <methodName>
+
+# Call a method that changes state
+near call <contractId> <methodName> <arguments> --useAccount <yourAccount>
+
+# Call a method and attach NEAR tokens
+near call <contractId> <methodName> <arguments> --useAccount <yourAccount> --deposit 1
+```
+
+<Tip>
+查看每个存储库的 README 以了解该合约中可用的具体方法。
+</Tip>
+
+---
+
+## 继续前进
+
+探索这些基础示例后，您可以：
+
+- **修改合约** - 尝试添加新功能以加深您的理解
+- **学习基础知识** - 查看[合约解析](/smart-contracts/anatomy/anatomy)和[存储](/smart-contracts/anatomy/storage)
+{/* - **探索高级示例** - 请参阅[跨合约调用](./xcc)和[工厂合约](./factory) */}

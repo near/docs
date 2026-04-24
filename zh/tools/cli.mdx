@@ -1,0 +1,506 @@
+---
+title: NEAR CLI
+icon: terminal
+description: "通过终端与 NEAR 进行交互。"
+---
+
+NEAR [命令行界面](https://github.com/near/near-cli-rs)（CLI）是一款可让您直接在 Shell 中与 NEAR 网络交互的工具。通过 NEAR CLI，您可以创建和管理账户、发送 NEAR、FT 和 NFT 等代币、部署智能合约、调用合约上的函数以及管理访问密钥。
+
+## 安装
+
+<Tabs>
+  <Tab title="npm">
+    ```bash
+    npm install -g near-cli-rs@latest
+    ```
+  </Tab>
+  <Tab title="Cargo">
+    ```bash
+    cargo install near-cli-rs
+    ```
+  </Tab>
+  <Tab title="Mac and Linux (binaries)">
+    ```bash
+    curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+    ```
+  </Tab>
+  <Tab title="Windows (binaries)">
+    ```bash
+    irm https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.ps1 | iex
+    ```
+  </Tab>
+</Tabs>
+
+## 配置文件
+
+访问密钥目录及可用连接网络由配置文件（`near-cli/config.toml`）定义，该文件根据操作系统存储在以下位置：
+
+- macOS：`$HOME/Library/Application Support`（例如 `/Users/Alice/Library/Application Support`）
+- Linux：`$XDG_CONFIG_HOME` 或 `$HOME/.config`（例如 `/home/alice/.config`）
+- Windows：`{FOLDERID_RoamingAppData}`（例如 `C:\Users\Alice\AppData\Roaming`）
+
+您可以在[此处](https://github.com/near/near-cli-rs/blob/main/docs/GUIDE.en.md#config---manage-connections-in-a-configuration-file)了解更多关于配置文件使用的信息。
+
+<Tip>
+您可以通过修改 `near-cli` 设置中的 `rpc_url` 参数来配置自定义 [RPC 服务器](/api/rpc/providers)：
+
+```bash
+near config edit-connection testnet --key rpc_url --value https://archival-rpc.testnet.near.org/
+```
+</Tip>
+
+## 交互模式
+
+只需在终端中运行以下命令即可使用 `near-cli`：
+
+```bash
+near
+```
+
+您将看到如下界面。使用方向键并按下 `enter`，或直接输入可用选项之一进行选择。
+
+![NEAR CLI interactive mode](/assets/docs/tools/near-cli-rs.png)
+
+<Note>
+我们仅提供最常用命令的示例。这些命令可能有两个版本——**完整**版本和**简短**版本。如果您想探索 `near-cli` 提供的所有选项，请使用上述交互模式。
+</Note>
+
+## 账户
+
+此选项允许您管理、控制和检索账户信息。
+
+### 摘要
+
+`view-account-summary` - 查看账户属性。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near account view-account-summary $ACCOUNT_ID network-config testnet now
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near state $ACCOUNT_ID --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+### 导入
+
+`import-account` - 导入已有账户（即"登录"）。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    near account import-account using-web-wallet network-config testnet
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    near login --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+### 导出
+
+`export-account` - 导出已有账户。
+
+```bash
+export ACCOUNT_ID=bob.testnet
+near account export-account $ACCOUNT_ID using-web-wallet network-config testnet
+```
+
+### 创建
+
+`create-account` - 创建新账户。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near account create-account sponsor-by-faucet-service $ACCOUNT_ID autogenerate-new-keypair save-to-keychain network-config testnet create
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near create-account $ACCOUNT_ID --useFaucet --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+### 删除
+
+`delete-account` - 删除账户。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    export BENEFICIARY_ID=alice.testnet
+
+    near account delete-account $ACCOUNT_ID beneficiary $BENEFICIARY_ID network-config testnet sign-with-keychain send
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    export BENEFICIARY_ID=alice.testnet
+
+    near delete-account $ACCOUNT_ID $BENEFICIARY_ID --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+## 密钥
+
+显示、添加和删除账户密钥。
+
+### 列出密钥
+
+`list-keys` - 查看账户的密钥列表。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near account list-keys $ACCOUNT_ID network-config testnet now
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near list-keys $ACCOUNT_ID --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+### 添加密钥
+
+`add-key` - 向账户添加访问密钥。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near account add-key $ACCOUNT_ID grant-full-access use-manually-provided-public-key ed25519:CXqAs8c8kZz81josLw82RQsnZXk8CAdUo7jAuN7uSht2 network-config testnet sign-with-keychain send
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near add-key $ACCOUNT_ID ed25519:CXqAs8c8kZz81josLw82RQsnZXk8CAdUo7jAuN7uSht2 --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+### 删除密钥
+
+`delete-keys` - 从账户删除访问密钥。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near account delete-keys $ACCOUNT_ID public-keys ed25519:HdkFZFEPoWfgrrLK3R4t5dWtNoLC8WymBzhCXoP3zrjh network-config testnet sign-with-keychain send
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near delete-key $ACCOUNT_ID ed25519:HdkFZFEPoWfgrrLK3R4t5dWtNoLC8WymBzhCXoP3zrjh --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+## 代币
+
+管理您的代币资产，包括 NEAR、FT 和 NFT。
+
+### 发送 NEAR
+
+`send-near` - 以 NEAR 或 yoctoNEAR 为单位向指定接收方转账 NEAR。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    export RECEIVER_ID=alice.testnet
+    near tokens $ACCOUNT_ID send-near $RECEIVER_ID '0.5 NEAR' network-config testnet sign-with-keychain send
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    export RECEIVER_ID=alice.testnet
+
+    near send-near $ACCOUNT_ID $RECEIVER_ID 0.5 --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+### 发送 FT
+
+`send-ft` - 向指定用户转账同质化代币。
+
+```bash
+export ACCOUNT_ID=bob.testnet
+export RECEIVER_ID=alice.testnet
+export FT_CONTRACT_ID=0c97251cd1f630c444dbusdt.testnet
+
+near tokens $ACCOUNT_ID send-ft $FT_CONTRACT_ID $RECEIVER_ID amount-ft '1 USDT' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' network-config testnet sign-with-keychain send
+```
+
+### 发送 NFT
+
+`send-nft` - 在账户之间转账 NFT。
+
+```bash
+export ACCOUNT_ID=bob.testnet
+export RECEIVER_ID=alice.testnet
+export NFT_CONTRACT_ID=nft.examples.testnet
+
+near tokens $ACCOUNT_ID send-nft $NFT_CONTRACT_ID $RECEIVER_ID 1 --prepaid-gas '100.0 Tgas' --attached-deposit '1 yoctoNEAR' network-config testnet sign-with-keychain send
+```
+
+### 查看 NEAR 余额
+
+`view-near-balance` - 查看 NEAR 代币余额。
+
+```bash
+export ACCOUNT_ID=bob.testnet
+near tokens $ACCOUNT_ID view-near-balance network-config testnet now
+```
+
+### 查看 FT 余额
+
+`view-ft-balance` - 查看同质化代币余额。
+
+```bash
+export ACCOUNT_ID=bob.testnet
+export FT_CONTRACT_ID=0c97251cd1f630c444dbusdt.testnet
+near tokens $ACCOUNT_ID view-ft-balance $FT_CONTRACT_ID network-config testnet now
+```
+
+### 查看 NFT 余额
+
+`view-nft-assets` - 查看 NFT 代币余额。
+
+```bash
+export ACCOUNT_ID=bob.testnet
+export NFT_CONTRACT_ID=nft.examples.testnet
+near tokens $ACCOUNT_ID view-nft-assets $NFT_CONTRACT_ID network-config testnet now
+```
+
+## 合约
+
+此选项允许您管理智能合约并与之交互。
+
+### 调用
+
+`call-function` - 执行函数（合约方法）。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    # View method
+    export CONTRACT_ID=nft.examples.testnet
+    near contract call-function as-read-only $CONTRACT_ID nft_tokens json-args '{"from_index": "0", "limit": 2}' network-config testnet now
+
+    # Call method
+    export ACCOUNT_ID=bob.testnet
+    near contract call-function as-transaction $CONTRACT_ID nft_mint json-args '{"metadata": {"copies": 1, "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "title": "GO TEAM"}, "receiver_id": "bob.testnet", "token_id": "5895"}' prepaid-gas '100.0 Tgas' attached-deposit '0.1 NEAR' sign-as $ACCOUNT_ID network-config testnet sign-with-keychain send
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    # View method
+    export CONTRACT_ID=nft.examples.testnet
+    near view $CONTRACT_ID nft_tokens '{"from_index": "0", "limit": 2}' --networkId testnet
+
+    # Call method
+    export ACCOUNT_ID=bob.testnet
+    near call $CONTRACT_ID nft_mint '{"metadata": {"copies": 1, "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "title": "GO TEAM"}, "receiver_id": "bob.testnet", "token_id": "5896"}' --deposit 0.1 --useAccount $ACCOUNT_ID --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+### 部署
+
+`deploy` - 添加新的合约代码。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    export CONTRACT_ID=contract.testnet
+    near contract deploy $CONTRACT_ID use-file ../target/near/contract.wasm without-init-call network-config testnet sign-with-keychain send
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    export CONTRACT_ID=contract.testnet
+    near deploy $CONTRACT_ID ../target/near/contract.wasm --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+### 检查
+
+`inspect` - 获取可用函数名称列表。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    export CONTRACT_ID=nft.examples.testnet
+    near contract view-storage $CONTRACT_ID all as-text network-config testnet now
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    export CONTRACT_ID=nft.examples.testnet
+    near storage $CONTRACT_ID --finality final --utf8 --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+## 交易
+
+操作交易。
+
+### 查看状态
+
+`view-status` - 查看交易状态。
+
+<Tabs>
+  <Tab title="完整">
+    ```bash
+    near transaction view-status BFrVVtjqD2p1zYX1UCvn4nJpy7zPHpY5cTgQaKCZjBvw network-config testnet
+    ```
+  </Tab>
+  <Tab title="简短">
+    ```bash
+    near tx-status BFrVVtjqD2p1zYX1UCvn4nJpy7zPHpY5cTgQaKCZjBvw --networkId testnet
+    ```
+  </Tab>
+</Tabs>
+
+## 配置
+
+管理 `near-cli` 的 `config.toml` 文件中的连接参数。
+
+此选项允许您更改或修改 CLI 的网络连接设置。
+
+### 显示连接
+
+`show-connections` - 显示网络连接列表。
+
+```bash
+near config show-connections
+```
+
+### 编辑连接
+
+`edit-connection` - 编辑网络连接。
+
+```bash
+near config edit-connection testnet --key rpc_url --value https://test.rpc.fastnear.com
+```
+
+<Note>
+我们仅提供最常用命令的示例。如果您想探索 `near-cli` 提供的所有选项，请使用[交互模式](#interactive-mode)。
+</Note>
+
+## 验证者
+
+您可以使用以下命令与区块链交互并查看验证者统计信息。共有三种报告用于监控验证者状态：
+
+- [提案](#proposals)
+- [当前验证者](#current-validators)
+- [下一轮验证者](#next-validators)
+
+<Tip>
+要使用这些命令，您**必须**安装 CLI [验证者扩展](#validator-extension)。
+</Tip>
+
+### 验证者扩展
+
+如果您想通过命令行与 [NEAR 验证者](https://pages.near.org/papers/economics-in-sharded-blockchain/#validators) 进行交互，可以安装 [NEAR Validator CLI Extension](https://github.com/near-cli-rs/near-validator-cli-rs)：
+
+<Tabs>
+  <Tab title="npm">
+    ```bash
+    npm install -g near-validator
+    ```
+  </Tab>
+  <Tab title="Cargo">
+    ```bash
+    cargo install near-validator
+    ```
+  </Tab>
+  <Tab title="Mac and Linux (binaries)">
+    ```bash
+    curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near-cli-rs/near-validator-cli-rs/releases/latest/download/near-validator-installer.sh | sh
+    ```
+  </Tab>
+  <Tab title="Windows (binaries)">
+    ```bash
+    irm https://github.com/near-cli-rs/near-validator-cli-rs/releases/latest/download/near-validator-installer.ps1 | iex
+    ```
+  </Tab>
+</Tabs>
+
+### 提案
+
+验证者的提案表示其希望加入验证者集合。提案被接受的前提是必须满足最低席位价格要求。
+
+```bash
+near-validator proposals network-config mainnet
+```
+
+### 当前验证者
+
+显示当前纪元中活跃验证者的列表，包括已生产区块数、预期区块数及在线率。用于监控验证者是否出现异常。
+
+```bash
+near-validator validators network-config mainnet now
+```
+
+### 下一轮验证者
+
+显示提案在上一个纪元被接受、将在下一个纪元加入验证者集合的验证者。
+
+```bash
+near-validator validators network-config mainnet next
+```
+
+### 质押
+
+对于验证者，还提供了无需部署质押池智能合约即可质押 NEAR 代币的选项。
+
+#### 查看验证者质押
+
+查看最新区块上的验证者质押额：
+
+```bash
+near-validator staking view-stake examples.testnet network-config testnet now
+```
+
+#### 直接质押（无需质押池）
+
+质押指定金额：
+
+```bash
+near-validator staking stake-proposal examples.testnet ed25519:AiEo5xepXjY7ChihZJ6AsfoDAaUowhPgvQp997qnFuRP '1500 NEAR' network-config testnet sign-with-keychain send
+```
+
+#### 直接取消质押（无需质押池）
+
+取消质押：
+
+```bash
+near-validator staking unstake-proposal examples.testnet ed25519:AiEo5xepXjY7ChihZJ6AsfoDAaUowhPgvQp997qnFuRP network-config testnet sign-with-keychain send
+```

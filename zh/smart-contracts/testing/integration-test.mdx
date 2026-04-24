@@ -1,0 +1,597 @@
+---
+title: 集成测试
+description: "了解如何使用 Sandbox 测试和真实区块链环境为 NEAR 智能合约编写和运行集成测试。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+集成测试使您能够在 NEAR `testnet` 或本地 `sandbox` 中部署合约，并创建测试用户与其交互。这样，您可以在真实环境中彻底测试您的合约。
+
+此外，在使用本地 `sandbox` 时，您可以完全控制网络：
+
+1. 创建测试 `账户` 并操纵其 `状态` 和 `余额`。
+2. 在回调中模拟错误。
+3. 控制时间流并快进到未来（Rust 已就绪，TS 即将推出）。
+
+在 NEAR 中，集成测试使用名为 **Sandbox** 的框架实现。Sandbox 有两种类型：[🦀 Rust](https://github.com/near/near-sandbox-rs) 和 [🌐 Typescript](https://github.com/near/workspaces-js)。
+
+我们所有的[示例](https://github.com/near-examples)都附带集成测试。
+
+<Note>
+**Sandbox 测试**
+
+NEAR Sandbox 允许您编写一次测试，然后在 `testnet` 或本地 `Sandbox` 上运行它们。默认情况下，Sandbox 将启动一个 **sandbox** 并在**本地**运行您的测试。让我们深入了解我们框架的功能，看看它们如何帮助您。
+</Note>
+
+---
+
+## 创建账户
+
+### 账户
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="16" end="31" />
+
+  </Tab>
+</Tabs>
+
+<hr class="subsection" />
+
+### 开发账户
+
+<Tabs>
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="49" end="69" />
+
+  </Tab>
+</Tabs>
+
+### 子账户
+
+<Tabs>
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="75" end="95" />
+
+  </Tab>
+</Tabs>
+
+### 使用私钥
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="40" end="57" />
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="101" end="128" />
+
+  </Tab>
+</Tabs>
+
+### 使用文件中的凭据
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="66" end="89" />
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="134" end="161" />
+
+  </Tab>
+</Tabs>
+
+---
+
+## WASM 文件
+
+### 编译合约代码
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="98" end="102" />
+
+  <Tip>
+  您不需要每次都断言编译过程。您可以使用 `?` 运算符将结果作为 `Vec<u8>` 获取，而无需处理 `Result<Vec<u8>>, Error>` 类型。这样您可以直接使用此向量将 wasm 文件部署到账户中。如果编译过程失败，您的测试仍然会失败。
+
+  ```rust
+  let contract_wasm_path = cargo_near_build::build_with_cli(Default::default())?;
+  ```
+  </Tip>
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  如果您想在每次运行测试时编译合约，可以将以下脚本放入 `package.json` 文件中。在代码中，您可以使用 `process.argv[2]` 访问已编译文件的路径。
+
+  `package.json` 文件：
+  ```json
+  "scripts": {
+    "build": "near-sdk-js build src/contract.ts build/hello_near.wasm",
+    "test": "$npm_execpath run build && ava -- ./build/hello_near.wasm"
+  },
+  ```
+
+  `main.ava.js` 文件：
+  ```js
+  const pathToWasm = process.argv[2];
+  await contract.deploy(pathToWasm);
+  ```
+
+  </Tab>
+</Tabs>
+
+### 从文件加载
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="109" end="116" />
+
+  <Tip>
+  与从代码编译 wasm 的情况相同，您不需要每次都断言读取文件过程。您可以使用 `expect` 方法将读取文件结果作为 `Vec<u8>` 获取，并提供错误消息作为参数。如果编译过程失败，您的测试仍然会失败。
+
+  ```rust
+  let contract_wasm = std::fs::read(artifact_path)
+      .expect(format!("Could not read WASM file from {}", artifact_path).as_str());
+  ```
+  </Tip>
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  如果您想使用预编译的合约，可以将以下脚本放入 `package.json` 文件中。在代码中，您可以使用 `process.argv[2]` 访问预编译文件的路径。
+
+  `package.json` 文件：
+  ```json
+  "scripts": {
+    "build": "near-sdk-js build src/contract.ts build/hello_near.wasm",
+    "test": "ava -- ./build/hello_near.wasm"
+  },
+  ```
+
+  `main.ava.js` 文件：
+  ```js
+  const pathToWasm = process.argv[2];
+  await contract.deploy(pathToWasm);
+  ```
+
+  </Tab>
+</Tabs>
+
+---
+
+## 部署合约
+
+### 开发部署
+
+<Tabs>
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="167" end="188" />
+
+  </Tab>
+</Tabs>
+
+### 部署到账户
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="123" end="159" />
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="17" end="23" />
+
+  </Tab>
+</Tabs>
+
+---
+
+## 日志
+
+显示合约日志。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  当您想查看代码中的信息时，可以使用 `println` 或 `dbg!`。
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="24" end="31" />
+
+  在 Rust 中，代码的输出默认被捕获，不显示在终端中。为了查看输出，您必须使用 `--nocapture` 标志
+
+    例如 `cargo test -- --nocapture`
+
+    如果您想访问合约日志，可以在 `tx_outcome.logs()` Vec 中找到它们。
+
+    ```rust
+    let tx_outcome = contract
+            .call_function("set_greeting", json!({"greeting": "Hello World!"}))
+            .transaction()
+            .gas(Gas::from_tgas(100))
+            .with_signer(contract.account_id().clone(), signer.clone())
+            .send_to(&sandbox_network)
+            .await?;
+        assert!(tx_outcome.is_success());
+
+        dbg!(tx_outcome.logs());
+        // [tests/test_basics.rs:29:5] tx_outcome.logs() = [
+        //     "Saving greeting: Hello World!",
+        // ]
+    ```
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  当您想查看代码中的调试信息时，使用 `console.log` 方法。
+
+  ```js
+  const balance = await account.balance();
+
+  console.log('balance: ', balance);
+  // balance:  {
+  //   total: <BN: 52b7d2dcc80cd2e4000000>,
+  //   stateStaked: <BN: 62a992e53a0af00000>,
+  //   staked: <BN: 0>,
+  //   available: <BN: 52b77033352798d9100000>
+  // }
+  ```
+
+  </Tab>
+</Tabs>
+
+---
+
+## 账户余额
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="168" end="199" />
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="194" end="205" />
+
+  </Tab>
+</Tabs>
+
+---
+
+## 交易
+
+### 调用
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="208" end="257" />
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="42" end="43" />
+
+  </Tab>
+</Tabs>
+
+### 查看
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="266" end="323" />
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="36" end="37" />
+
+  </Tab>
+</Tabs>
+
+---
+
+## 即时修补状态
+
+在沙盒模式下，您可以使用 `patchState` 添加或修改任何合约状态、合约代码、账户或访问密钥。
+
+您可以通过 `DeployContract`、`CreateAccount` 和 `AddKey` [操作](https://nomicon.io/RuntimeSpec/Actions#addkeyaction)使用普通交易更改合约代码、账户和访问密钥。但这限制您只能修改自己的账户或子账户。`patchState` 允许您对任何账户执行这些操作。
+
+<Tabs>
+
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="332" end="384" />
+
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="211" end="222" />
+
+  要查看如何执行此操作的完整示例，请参阅 [patch-state 测试](https://github.com/near/workspaces-js/blob/main/__tests__/02.patch-state.ava.ts)。
+
+  </Tab>
+
+</Tabs>
+
+<Note>
+作为 `patchState` 的替代方案，您可以停止节点，在创世状态时转储状态，编辑创世状态，然后重新启动节点。
+这种方法更复杂，而且如果不重新启动节点就无法执行。
+</Note>
+
+---
+
+## 时间旅行
+
+`sandbox` 支持将区块链状态向前推进到未来。这意味着需要时间敏感数据的合约不需要等待相同的时间让沙盒中的区块产生。我们只需调用 `sandbox.fast_forward` 就可以在时间上向前推进：
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="393" end="444" />
+
+  _[在 Github 上查看完整示例](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)._
+
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="main.ava.js" language="js"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+      start="228" end="248" />
+
+  </Tab>
+
+</Tabs>
+
+---
+
+## 使用 Testnet
+
+NEAR Sandbox 的设置使您可以编写一次测试并针对本地 Sandbox 节点（默认行为）或 [NEAR TestNet](../../protocol/network/networks) 运行它们。这可能有用的一些原因：
+
+* 提高对您的合约按预期工作的信心
+* 您可以针对已部署的 testnet 合约进行测试
+* 如果 Sandbox 模式下的某些内容似乎不对，您可以将其与 testnet 进行比较
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="458" end="499" />
+
+  <Tip>
+  如果您也可以在每次迭代中创建一个新账户。
+  </Tip>
+
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+
+    您可以通过三种方式切换到 testnet 模式：
+
+    <Accordion title="1. 将 `Worker` 网络设置为 `testnet`">
+
+    创建 Worker 时将网络设置为 `testnet` 并传递您的主账户（您拥有私钥的账户）：
+
+    ```ts
+    const worker = await Worker.init({
+      network: 'testnet',
+      testnetMasterAccountId: '<yourAccountName>',
+      initialBalance: NEAR.parse("<X> N").toString(),
+    })
+    ```
+
+    </Accordion>
+
+    <Accordion title="2. 设置环境变量">
+
+    运行测试时设置 `NEAR_WORKSPACES_NETWORK` 和 `TESTNET_MASTER_ACCOUNT_ID`（您拥有私钥的账户）环境变量：
+
+    ```bash
+    NEAR_WORKSPACES_NETWORK=testnet TESTNET_MASTER_ACCOUNT_ID=<your master account Id> node test.js
+    ```
+
+    如果您设置了此环境变量并将 `{network: 'testnet', testnetMasterAccountId: <masterAccountId>}` 传递给 `Worker.init`，配置对象优先。
+
+    </Accordion>
+
+    <Accordion title="3. 配置文件">
+
+    如果您使用 AVA，可以使用自定义配置文件。其他测试运行器允许类似的配置文件；请根据您的情况调整以下说明。
+
+    在与您的 `package.json` 相同的目录中创建一个名为 `ava.testnet.config.cjs` 的文件，内容如下：
+
+    ```js
+    module.exports = {
+    ...require('near-workspaces/ava.testnet.config.cjs'),
+    ...require('./ava.config.cjs'),
+    };
+    module.exports.environmentVariables = {
+        TESTNET_MASTER_ACCOUNT_ID: '<masterAccountId>',
+    };
+    ```
+
+    其中主账户是您拥有私钥的账户。
+
+    [near-workspaces/ava.testnet.config.cjs](https://github.com/near/workspaces-js/blob/main/ava.testnet.config.cjs) 导入为您设置 `NEAR_WORKSPACES_NETWORK` 环境变量。这种方法的一个好处是，您可以轻松忽略只应在 Sandbox 模式下运行的文件。
+
+    现在您还需要在 `package.json` 的 `scripts` 部分添加 `test:testnet` 脚本：
+
+    ```diff
+    "scripts": {
+      "test": "ava",
+    +  "test:testnet": "ava --config ./ava.testnet.config.cjs"
+    }
+    ```
+
+    </Accordion>
+
+    要使用这些账户，您需要创建 `.near-credentials/workspaces/testnet` 目录，并为您的主账户添加文件，例如：
+
+    ```js
+    // .near-credentials/workspaces/testnet/<your-account>.testnet.json
+    {"account_id":"<your-account>.testnet","public_key":"ed25519:...","private_key":"ed25519:..."}
+    ```
+
+  示例：
+
+  <Github fname="main.ava.js" language="js"
+    url="https://github.com/near-examples/near-workspaces-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+    start="252" end="263" />
+
+  </Tab>
+
+</Tabs>
+
+---
+
+## 复制合约
+
+[复制区块链](https://coinmarketcap.com/alexandria/glossary/spoon-blockchain) 是将数据从一个网络复制到另一个网络。NEAR Sandbox 使从 Mainnet 或 Testnet 合约复制数据到您的本地 Sandbox 环境变得容易：
+
+<Tabs>
+
+  <Tab title="🦀 Rust">
+
+  指定您要从 `testnet` 拉取的合约名称，以及引用特定时间的特定区块 ID。（以防您引用的合约已被更改或更新）
+
+  创建一个名为 `pull_contract` 的函数，该函数将从链上拉取合约的 `.wasm` 文件并将其部署到您的本地沙盒。您必须用所有数据重新初始化它才能运行测试。这是因为合约的数据太大，RPC 服务无法拉取。（限制设置为 50Mb）
+
+  <Github fname="basics.rs" language="rust"
+      url="https://github.com/near-examples/near-workspaces-examples/blob/workspaces-migration/contract-rs/tests/basics.rs"
+      start="507" end="537" />
+
+  </Tab>
+
+<Tab title="🌐 JavaScript">
+
+```ts
+const refFinance = await root.importContract({
+  mainnetContract: 'v2.ref-finance.near',
+  blockId: 50_000_000,
+  withData: true,
+});
+```
+
+这会将 [v2.ref-finance.near](https://nearblocks.io/address/v2.ref-finance.near) 在区块 `50_000_000` 时存在的 Wasm 字节和合约状态复制到您的本地区块链。这利用了 Sandbox 的特殊[即时修补状态](#patch-state-on-the-fly)功能，即使顶级账户可能在本地不存在，也可以保持合约名称相同（请注意，这意味着它只在 Sandbox 测试模式下工作）。然后，您可以以确定性方式与合约交互，就像与 near-workspaces 创建的所有其他账户交互一样。
+
+<Note>
+
+`withData` 只有在合约数据为 50kB 或更少时才能开箱即用。这是由于 RPC 服务器的默认配置；请参阅[此处的"注意"说明](/api/rpc/contracts#view-contract-state)。
+
+</Note>
+
+查看[复制合约的 TypeScript 示例](https://github.com/near/workspaces-js/blob/main/__tests__/05.spoon-contract-to-sandbox.ava.ts)。
+
+</Tab>
+
+</Tabs>
+
+---
+
+## 代码片段
+
+### 代码片段 I：测试 Hello NEAR
+
+让我们看看我们的[快速入门项目](../quickstart) [👋 Hello NEAR](https://github.com/near-examples/hello-near-examples) 的测试，我们在账户上部署合约并测试它正确地检索和设置问候语。
+
+<CodeGroup>
+  <Github fname="test_basics.rs"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/tests/test_basics.rs" start="1" end="71"/>
+  <Github fname="main.ava.ts"
+            url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/sandbox-test/main.ava.js" start="11" end="45"/>
+</CodeGroup>
+
+### 代码片段 II：测试捐款
+
+在大多数情况下，我们将希望测试涉及多个用户和资金转移的复杂方法。一个完美的例子是我们的[捐款示例](https://github.com/near-examples/donation-examples)，它使用户能够向受益人 `donate`（捐款）。让我们看看它的集成测试
+
+<CodeGroup>
+  <Github fname="workspaces.rs"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/tests/workspaces.rs" start="1" end="106"/>
+  <Github fname="main.ava.ts"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-ts/sandbox-test/main.ava.js"
+            start="51" end="75" />
+</CodeGroup>
+
+---
+
+## 其他资源
+
+### 高级示例
+
+- [Rust](https://github.com/near/near-sandbox-rs/tree/main/examples)
+- [JavaScript](https://github.com/near/near-workspaces-js/tree/main/__tests__)
+
+### 使用 Workspaces 和 AVA 进行测试驱动设计
+
+以下视频介绍如何将 TDD 与 Workspaces 和 AVA 用于简单合约：
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/LCu03IYwu1I"
+  title="TDD Using Workspaces"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>

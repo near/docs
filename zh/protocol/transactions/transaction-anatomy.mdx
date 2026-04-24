@@ -1,0 +1,65 @@
+---
+title: 交易解析
+description: "了解 NEAR 协议交易的结构和组成部分，包括签名者、接收方、操作和交易验证字段。"
+---
+
+本节解释了 NEAR 协议中交易的解析，描述其结构、组成部分以及可以在交易中执行的操作。
+
+交易是用户向网络发出的执行一组操作的请求。创建交易时，用户必须指定以下字段：
+
+- `Signer`（签名者）：签署交易的账户
+- `Actions`（操作）：要执行的操作集（见下文）
+- `Receiver`（接收方）：在其上执行操作的账户
+
+此外，交易还具有以下字段以确保其完整性和有效性：
+
+- `PublicKey`（公钥）：用于签署交易的公钥（以便网络可以验证签名）
+- `Nonce`：由`签名者`发送的每笔交易递增的数字
+- `BlockHash`（区块哈希）：最近一个区块的哈希值，用于限制交易的时效性
+
+用户创建交易并用其私钥签署。然后，**交易及其签名**一起广播到网络，在那里被验证和处理。
+
+<Tip>
+每笔交易只有一个 `Signer` 和一个 `Receiver`，但可以有多个 `Actions`。
+</Tip>
+
+<Info>
+**关于 nonce 值**
+- 添加密钥时，`nonce` 会被自动分配——具体来说，其值为 `区块高度 * 10^6`——因此 `ADD_KEY` 操作中的值将被忽略
+- 只有当 `nonce` 值在以下范围内时，交易才被接受：
+  - `[(current_nonce_of_access_key + 1) .. (block_height * 10^6)]`
+- 交易被接受后，访问密钥的 `nonce` 将设置为所包含交易的 `nonce` 值
+</Info>
+
+---
+
+## 操作（Actions）
+
+每笔交易可以有**一个或多个** [`操作`](https://nomicon.io/RuntimeSpec/Actions.html)，这些是要在 `Receiver` 账户上执行的实际操作。可以执行的操作类型有多种：
+
+1. [`FunctionCall`](https://nomicon.io/RuntimeSpec/Actions.html#functioncallaction)：调用合约上的函数（可选择附加 NEAR）
+2. [`Transfer`](https://nomicon.io/RuntimeSpec/Actions.html#transferaction)：向另一个账户转账代币
+3. [`DeployContract`](https://nomicon.io/RuntimeSpec/Actions.html#deploycontractaction)：在账户中部署合约
+4. [`DeployGlobalContract`](https://nomicon.io/RuntimeSpec/Actions.html#deployglobalcontractaction)：注册一个由其合约哈希或账户 ID 引用的全局合约
+5. [`UseGlobalContract`](https://nomicon.io/RuntimeSpec/Actions.html#useglobalcontractaction)：通过合约哈希或账户 ID 使用已注册的全局合约
+6. [`CreateAccount`](https://nomicon.io/RuntimeSpec/Actions.html#createaccountaction)：创建一个新的子账户（例如 `ana.near` 可以创建 `sub.ana.near`）
+7. [`DeleteAccount`](https://nomicon.io/RuntimeSpec/Actions.html#deleteaccountaction)：删除账户（将剩余余额转给受益人）
+8. [`AddKey`](https://nomicon.io/RuntimeSpec/Actions.html#addkeyaction)：向账户添加新密钥（`FullAccess` 或 `FunctionCall` 访问权限）
+9. [`DeleteKey`](https://nomicon.io/RuntimeSpec/Actions.html#deletekeyaction)：从账户中删除现有密钥
+10. [`DelegateActions`](https://nomicon.io/RuntimeSpec/Actions.html#delegate-actions)：创建元交易
+11. [`Stake`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction)：表达成为网络验证者意愿的特殊操作
+12. [`DeterministicStateInit`](https://nomicon.io/RuntimeSpec/Actions.html#deterministicstateinitaction)：创建确定性账户（一种高级隐式账户）的特殊操作
+
+例如，`bob.near` 可以在一笔交易中捆绑以下操作：
+- 创建账户 `contract.bob.near`
+- 向 `contract.bob.near` 转账 5 NEAR
+- 在 `contract.bob.near` 中部署合约
+- 调用 `contract.bob.near` 中的 `init` 函数
+
+`操作`按**交易中指定的顺序**执行。如果任何**操作失败**，交易将被丢弃，所有操作均不生效。
+
+<Warning>
+**单一接收方**
+
+注意，所有操作都在同一账户上执行。**无法**在单笔交易中对多个账户执行操作，因为交易只能有**一个接收方**
+</Warning>

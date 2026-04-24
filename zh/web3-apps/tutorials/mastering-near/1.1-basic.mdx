@@ -1,0 +1,319 @@
+---
+title: 基础拍卖
+description: "了解如何在 NEAR 上构建拍卖智能合约。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+在本节中，我们将分析一个简单的拍卖合约，该合约允许用户出价、追踪最高出价者并在拍卖结束时领取代币。之后，我们将介绍如何测试合约，以及如何在 `testnet` 上部署它。
+
+<Info>
+**文档**
+
+在本教程中，我们将依赖[智能合约文档](/smart-contracts/quickstart)及其不同章节。
+
+</Info>
+
+<Tip>
+**前提条件**
+
+开始本教程之前，请确保阅读[前提条件](./0-intro)章节并安装必要的工具。
+
+</Tip>
+
+---
+
+## 克隆合约
+
+首先，我们将从 GitHub 克隆[教程仓库](https://github.com/near-examples/auctions-tutorial)。该仓库包含用 JavaScript（`./contract-ts`）和 Rust（`./contract-rs`）编写的相同智能合约。
+
+导航到您偏好的语言文件夹，然后进入 `01-basic-auction` 文件夹。
+
+<Tabs>
+
+  <Tab title="🌐 JavaScript">
+
+  ```bash
+  git clone git@github.com:near-examples/auctions-tutorial.git
+
+  cd contract-ts/01-basic-auction
+  ```
+
+  </Tab>
+
+  <Tab title="🦀 Rust">
+
+  ```bash
+  git clone git@github.com:near-examples/auctions-tutorial.git
+
+  cd contract-rs/01-basic-auction
+  ```
+
+  </Tab>
+
+</Tabs>
+
+<Info>
+**前端**
+
+该仓库还包含一个与合约交互的前端应用程序。您可以在 `frontends` 文件夹中找到它。我们将在后续章节中介绍前端。
+
+</Info>
+
+---
+
+## 合约状态
+
+该合约允许用户使用 `$NEAR` 代币出价，并追踪最高出价者。让我们先看看如何定义合约的状态，即合约将存储的数据。
+
+<Tabs>
+
+  <Tab title="🌐 JavaScript">
+
+    <Github fname="contract.ts" language="javascript"
+      url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts#L4-L14"
+      start="4" end="14" />
+
+    #### 装饰器
+    首先要注意的是，合约的主类使用 `@NearBindgen` 装饰器标记，该装饰器还允许进一步指定合约**必须在使用前初始化**。
+
+    #### 存储（即状态）
+    代码揭示的另一个重要信息是，合约可以存储不同类型的数据，在本例中：
+
+    - `highest_bid` 是一个 `Bid` 实例，存储：
+        - `bid`：一个代表 `$NEAR` 代币金额（以 `yoctonear` 计，`1Ⓝ = 10^24 yⓃ`）的 `BigInt`
+        - `bidder`：一个代表哪个账户出价的 `AccountId`
+    - `auction_end_time` 一个代表**纳秒**级 `unix 时间戳`的 `BigInt`
+    - `auctioneer` 一个说明谁可以在拍卖结束时提取资金的 `AccountId`
+    - `claimed` 一个追踪拍卖者是否已领取资金的 `boolean`
+
+  </Tab>
+
+  <Tab title="🦀 Rust">
+
+    <Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L5-L19"
+        start="5" end="19" />
+
+    #### 宏
+    首先要注意的是使用 `#[near(contract_state)]` 宏来表示主结构体，并派生 `PanicOnDefault` 来指定合约**必须在使用前初始化**。
+
+    我们还使用 `#[near(serializers = [json, borsh])]` 宏为 `Bid` 结构体启用 `borsh` 和 `JSON` 的（反）序列化。一个经验法则：对于将用作函数输入/输出的结构体使用 `json` 序列化器，对于将保存到状态的结构体使用 `borsh`。
+
+    #### 存储（即状态）
+    代码揭示的另一个重要信息是，合约可以存储不同类型的数据。
+
+    - `highest_bid` 是一个 `Bid` 实例，存储：
+        - `bid`：一个简化处理 `$NEAR` 代币金额的 `NearToken`
+        - `bidder`：出价的 `AccountId`
+    - `auction_end_time` 是一个代表**纳秒**级 `unix 时间戳`的 `U64`
+    - `auctioneer` 一个说明谁可以在拍卖结束时提取资金的 `AccountId`
+    - `claimed` 一个追踪拍卖者是否已领取资金的 `boolean`
+
+  </Tab>
+
+</Tabs>
+
+<Tip>
+**了解更多**
+
+您可以在以下文档页面中阅读更多关于合约结构以及它可以存储的数据类型的信息：
+- [合约基本结构](/smart-contracts/anatomy/anatomy)
+- [合约状态](/smart-contracts/anatomy/storage)
+- [数据类型](/smart-contracts/anatomy/types)
+
+</Tip>
+
+---
+
+## 初始化函数
+
+现在让我们来看看初始化函数，我们需要调用它来确定拍卖结束的时间。
+
+<Tabs>
+
+  <Tab title="🌐 JavaScript">
+
+    <Github fname="contract.ts" language="javascript"
+      url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts#L16-#L21"
+      start="16" end="21" />
+
+    #### 装饰器
+    我们使用 `@initialize({ privateFunction: true })` 装饰器来表示初始化函数。`privateFunction:true` 表示该函数只能由部署合约的账户调用。
+
+  </Tab>
+
+  <Tab title="🦀 Rust">
+
+    <Github fname="lib.rs" language="rust"
+      url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L23-L35"
+      start="23" end="35" />
+
+    #### 宏
+    我们使用 `#[init]` 宏来表示初始化函数。请注意，初始化函数需要返回一个 `Self` 实例，即合约的结构体。
+
+    同时，`#[private]` 表示该函数只能由部署合约的账户调用。
+
+  </Tab>
+
+</Tabs>
+
+#### 结束时间
+结束时间使用**纳秒**级的 `unix 时间戳`表示，在调用初始化函数时需要以 `String` 形式提供。这是因为智能合约不能接收大于 `52 位`的数字，而 `unix 时间戳`以 `64 位`表示。
+
+#### 初始出价
+请注意，我们使用来自 `current account id` 的 `1 yoctonear` 出价初始化合约。这意味着在合约初始化后，第一次出价将由合约以 10^-24 NEAR 进行。
+
+#### 已领取
+`claimed` 字段初始化为 `false`，因为拍卖者尚未领取资金。
+
+#### 拍卖者
+拍卖者由部署者在初始化时设置，是拍卖结束时可以领取资金的账户。
+
+<Tip>
+**了解更多**
+
+您可以在我们的[合约函数文档](/smart-contracts/anatomy/functions)中阅读更多关于合约接口的信息，并在[数据类型文档](/smart-contracts/anatomy/types)中了解数据类型。
+
+</Tip>
+
+---
+
+## 只读函数
+
+合约实现了四个函数，用于访问其存储的数据，即迄今为止的最高出价（金额和出价者）、拍卖结束的时间、拍卖者，以及拍卖是否已被领取。
+
+<Tabs>
+
+  <Tab title="🌐 JavaScript">
+
+    <Github fname="contract.ts" language="javascript"
+      url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts#L53-L71"
+      start="53" end="71" />
+
+    不改变合约状态（即只从中读取）的函数称为 `view` 函数，并使用 `@view` 装饰器进行标记。
+
+  </Tab>
+
+  <Tab title="🦀 Rust">
+
+    <Github fname="lib.rs" language="rust"
+      url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L78-L92"
+      start="78" end="92" />
+
+    不改变合约状态（即只从中读取）的函数称为 `view` 函数，并接受对 self 的非可变引用（`&self`）。
+
+  </Tab>
+
+</Tabs>
+
+视图函数**免费调用**，**不需要** NEAR 账户签署交易即可调用。
+
+<Tip>
+**了解更多**
+
+您可以在我们的[合约函数文档](/smart-contracts/anatomy/functions)中阅读更多关于合约接口的信息，并在[数据类型文档](/smart-contracts/anatomy/types)中了解数据类型。
+
+</Tip>
+
+---
+
+## 出价函数
+
+没有出价功能的拍卖不是拍卖！为此，合约包含一个 `bid` 函数，用户将调用该函数并附上一些 `$NEAR` 代币。
+
+该函数相当简单：它验证拍卖是否仍然有效，并将附加的存款与当前最高出价进行比较。如果出价更高，则更新 `highest_bid` 并退还给前一个出价者。
+
+<Tabs>
+
+  <Tab title="🌐 JavaScript">
+
+    <Github fname="contract.ts" language="javascript"
+      url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts#L23-L43"
+      start="23" end="43" />
+
+  </Tab>
+
+  <Tab title="🦀 Rust">
+
+    <Github fname="lib.rs" language="rust"
+      url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L37-L63"
+      start="37" end="63" />
+
+  </Tab>
+
+</Tabs>
+
+#### 可支付函数
+首先要注意的是，该函数会改变状态，因此在 JS 中使用 `@call` 装饰器标记，而在 Rust 中接受对 self 的可变引用（`&mut self`）。要调用此函数，NEAR 账户需要签署交易并消耗 GAS。
+
+其次，该函数被标记为 `payable`，这是因为默认情况下**函数不接受 `$NEAR` 代币**！如果用户在调用未标记为 `payable` 的函数时附加代币，交易将失败。
+
+#### 执行环境
+请注意，该函数可以访问有关其运行环境的信息，例如谁调用了该函数（`前驱账户`）、他们附加了多少代币作为存款（`附加存款`），以及函数执行时的近似 `unix 时间戳`（`区块时间戳`）。
+
+#### 代币转移
+该函数最后通过创建一个 `Promise` 将代币转移给前一个出价者。此代币金额将立即扣除，并在当前函数执行完毕后的下一个区块中转移。
+
+请注意，在第一次出价时，合约将向自身发送 1 yoctonear，这是可以的，因为我们可以安全地假设合约将拥有可以向自身发送的最小面额 `$NEAR`。
+
+<Accordion title="处理资金">
+
+当用户向调用附加代币时，代币会在函数执行之前存入合约的账户。但是，如果函数在执行过程中出错，代币将立即退还给用户。
+
+</Accordion>
+
+<Tip>
+**了解更多**
+
+您可以在以下资料中阅读更多关于环境变量、可支付函数以及合约可执行哪些操作的内容：
+- [环境变量](/smart-contracts/anatomy/environment)
+- [可支付函数](/smart-contracts/anatomy/functions)
+- [转账和操作](/smart-contracts/anatomy/actions)
+
+</Tip>
+
+---
+
+## 领取函数
+
+您会注意到合约有一个名为 `claim` 的最终函数，这允许拍卖者在拍卖结束时从合约中领取资金。由于在 NEAR 上，智能合约账户和用户账户是相同的，合约在部署时仍然可以有密钥，因此用户可以通过钱包直接从合约中领取资金。但是，这带来了一个安全问题，因为拥有密钥意味着密钥持有者可以在任何时候恶意地从合约中取走资金，更改合约的状态，甚至完全删除合约。通过实现 `claim` 函数，我们可以之后通过删除所有访问密钥来锁定合约，并让拍卖者通过代码预设的条件来领取资金。
+
+<Tabs>
+
+  <Tab title="🌐 JavaScript">
+
+    <Github fname="contract.ts" language="javascript"
+      url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts#L45-L51"
+      start="45" end="51" />
+
+  </Tab>
+
+  <Tab title="🦀 Rust">
+
+    <Github fname="lib.rs" language="rust"
+      url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L65-L76"
+      start="65" end="76" />
+
+  </Tab>
+
+</Tabs>
+
+这个函数相当简单，它做了四件事：
+1) 检查拍卖是否已结束（当前时间戳是否已过拍卖结束时间）。
+2) 检查拍卖是否尚未被领取。
+3) 将拍卖设置为已领取。
+4) 如果以上条件成立，则将等于最高出价的 `$NEAR` 转账给拍卖者。
+
+<Tip>
+**了解更多**
+
+您可以在文档的以下章节中阅读更多关于锁定合约的内容：[锁定账户](/protocol/accounts-contracts/access-keys#locked-accounts)
+
+</Tip>
+
+---
+
+## 结论
+
+在本教程的这一部分，我们已经了解了智能合约如何存储数据、变更存储的数据以及查看数据。在[下一部分](./1.2-testing)，我们将介绍如何测试合约，以便我们能够在将其部署到 `testnet` 之前确保它按预期工作。

@@ -1,0 +1,221 @@
+---
+title: 锁定合约
+description: "了解 NEAR 上的锁定合约——持有代币并基于时间释放机制的智能合约，支持锁定期、归属计划、质押以及基金会终止。"
+---
+
+希望管理代币归属和锁定计划？NEAR 的锁定合约为基于时间的代币托管和释放机制提供了强大的解决方案。
+
+---
+
+## 部署锁定合约
+
+部署新锁定合约最简便的方式是使用 NEAR 上已发布的现有[全局合约](../../smart-contracts/global-contracts)。
+
+重要的是要理解，**锁定的代币总量由部署时账户的余额决定**。
+部署合约时账户中的所有代币都将按照您定义的计划锁定。
+
+这意味着您必须始终**先创建并为锁定账户注资**，存入预期数量的代币，然后再部署合约。
+
+```bash
+# 创建并为锁定账户注资
+near create-account <account-id> --useAccount <funding-account> --initialBalance <amount in yoctoNEAR>
+
+# 部署锁定合约
+near contract deploy <account-id> use-global-hash CAvU5MYQ4xk1SjFvbnQDQUj6qehuW5YhU3FXA6GMddCx with-init-call new json-args '{
+    "owner_account_id": "employee.near",
+    "lockup_duration": "0",
+    "lockup_timestamp": "1535760000000000000",
+    "release_duration": "126230400000000000",
+    "transfers_information": {
+            "TransfersEnabled": {
+                "transfers_timestamp": "1602614338293769340"
+        }
+    },
+    "vesting_schedule": {
+        "VestingSchedule": {
+            "start_timestamp": "1535760000000000000",
+            "cliff_timestamp": "1567296000000000000",
+            "end_timestamp": "1661990400000000000"
+        }
+    },
+    "staking_pool_whitelist_account_id": "staking-pool-whitelist",
+    "foundation_account_id": "foundation.near"
+}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR'
+```
+
+<Tip>
+
+- 仅使用锁定期：省略 `vesting_schedule` 属性。
+
+- 仅使用归属期：将 `lockup_timestamp` 和 `release_duration` 设置为 0，仅提供 `vesting_schedule`。
+</Tip>
+
+### 查询余额
+
+要查看所有者的余额，请运行以下命令。返回的金额包括合约中的代币总量以及可供提取的质押奖励。
+
+```bash
+near contract call-function as-read-only <account-id> get_owners_balance json-args '{}'
+```
+
+要查看流动余额，请运行以下命令。这将返回可供提取的金额，包括已解锁的代币和质押奖励。
+
+```bash
+near contract call-function as-read-only <account-id> get_liquid_owners_balance json-args '{}'
+```
+
+### 提取代币
+
+要将已解锁的代币转移到您的账户，请运行以下命令。
+
+```bash
+near contract call-function as-transaction <account-id> transfer json-args '{
+    "amount": "10000000000000000000000000",
+    "receiver_id":"owner.near"
+}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR'
+```
+
+<Warning>
+请求提取超过流动余额的金额将不会成功。
+</Warning>
+
+### 完全解锁后提取代币
+
+一旦所有代币完全归属并解锁，您可以通过添加完全访问密钥将锁定账户转换为普通 NEAR 账户。这允许您直接管理该账户，并利用高级技术来提取剩余代币，包括完全删除该账户并将您的账户指定为受益人。
+
+生成一个新的密钥对，并在归属/锁定计划结束后运行以下命令，将其作为完全访问密钥添加到账户中。
+
+```bash
+near contract call-function as-transaction <account-id> add_full_access_key json-args '{
+    "new_public_key": "ed25519:8W9CiyPPehz2GRW8AYho9nx1z1GLdeZQCyn2wqYgJjiG"
+}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR'
+```
+
+<Warning>
+请记住，切勿使用上述命令中的密钥。请生成您自己的密钥对。
+</Warning>
+
+添加密钥后，您可以使用以下命令删除该账户并将剩余资金转移到您的账户（将 `owner.near` 替换为您的地址）。
+
+```bash
+near account delete-account <account-id> beneficiary owner.near
+```
+
+<Danger>
+在尝试删除账户之前，请确保所有质押代币已完全提取。如果有任何代币仍委托给质押池，账户删除后这些代币将会丢失。
+</Danger>
+
+---
+
+## 质押
+
+锁定合约允许所有者将代币委托给白名单质押池，让所有者在基础代币保持锁定状态的同时赚取额外奖励。
+
+让我们按照您通常执行命令的顺序，逐步介绍每个步骤。
+
+### 选择质押池
+
+从初始化时配置的白名单中选择验证节点，然后在锁定合约上设置它。
+
+```bash
+near contract call-function as-transaction <account-id> select_staking_pool json-args '{
+    "staking_pool_account_id": "pool.testnet"
+}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR'
+```
+
+### 存入并质押代币
+
+质押锁定合约上可用的部分代币。金额必须以 yoctoNEAR 传递（1 NEAR = 10^24 yoctoNEAR）。
+
+```bash
+near contract call-function as-transaction <account-id> deposit_and_stake json-args '{
+    "amount": "1000000000000000000000000000"
+}' prepaid-gas '125.0 Tgas' attached-deposit '0 NEAR'
+```
+
+### 刷新质押池余额
+
+来自质押池的奖励不会自动反映在合约中。此命令将合约的内部余额与质押池同步。
+
+```bash
+near contract call-function as-transaction <account-id> refresh_staking_pool_balance json-args '{}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR'
+```
+
+完成后，请注意[流动余额](#checking-balance)已发生变化。
+
+### 解除质押
+
+当您准备好后，只需使用以下命令请求解除质押。您需要等待标准的 4 个时期延迟，资金才能从池子中提取。
+
+```bash
+near contract call <account-id> unstake_all json-args '{}' prepaid-gas '125.0 Tgas' attached-deposit '0 NEAR'
+```
+
+### 提款
+
+4 个时期过后，运行以下命令将资金从质押池移回合约，包括已赚取的奖励。
+
+```bash
+near contract call <account-id> withdraw_all_from_staking_pool json-args '{}' prepaid-gas '175.0 Tgas' attached-deposit '0 NEAR'
+```
+
+完成后，已赚取的奖励成为流动余额的一部分，可以[立即提取到您的账户](#withdraw-tokens)。
+
+---
+
+## 终止（适用于基金会）
+
+如果在初始化时指定了 `foundation_account_id`，可以提前终止锁定期。在悬崖期之前，整个分配将退还给基金会。在悬崖期之后，只有未归属部分退还，而已归属部分仍留给所有者。
+
+终止期间，某些所有者操作将暂时暂停，直到流程完成。
+
+### 发起终止
+
+启动终止流程。发起后，合约可能会限制所有者的操作，直到终止完成。
+
+```bash
+near contract call-function as-transaction <account-id> terminate_vesting json-args '{}' prepaid-gas '25.0 Tgas' attached-deposit '0 NEAR'
+```
+
+### 查询状态
+
+状态告知您下一步可以安全执行的操作，并防止调用失败。
+
+例如，赤字状态表示质押池中还剩有一些代币，需要您采取[额外操作](#resolve-deficit-if-staked)。
+
+一旦合约报告"准备提取"状态，基金会即可继续提取。
+
+```bash
+near contract call-function as-read-only <account-id> get_termination_status json-args '{}'
+```
+
+### 解决赤字（如已质押）
+
+如果有些代币已质押，而合约显示赤字（没有足够的流动余额来退还未归属部分），请准备资金。
+
+```bash
+near contract call-function as-transaction <account-id> termination_prepare_to_withdraw json-args '{}' prepaid-gas '175.0 Tgas' attached-deposit '0 NEAR'
+```
+
+<Warning>
+您需要调用两次——第一次开始解除质押，第二次在 4 个时期延迟后提取资金。
+</Warning>
+
+### 提取未归属部分
+
+状态就绪后，将未归属部分提取到基金会账户。
+
+```bash
+near contract call-function as-transaction <account-id> termination_withdraw json-args '{
+  "receiver_id": "foundation.near"
+}' prepaid-gas '75.0 Tgas' attached-deposit '0 NEAR'
+```
+
+---
+
+## 其他资源
+
+更多信息请浏览以下官方资源：
+
+- [锁定合约代码仓库](https://github.com/near/core-contracts/tree/master/lockup)
+- [NEAR CLI](https://github.com/near/near-cli-rs)

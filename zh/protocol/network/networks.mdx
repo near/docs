@@ -1,0 +1,46 @@
+---
+title: NEAR 网络
+description: "探索 NEAR 中可用的不同网络"
+---
+
+NEAR 协议在多个网络上运行，每个网络都有其独立的验证者和独特的状态。这些网络旨在服务于不同目的，从生产就绪的应用程序到测试和开发环境。
+
+## NEAR 网络概述
+
+- [`mainnet`](/protocol/network/networks#mainnet)
+- [`testnet`](/protocol/network/networks#testnet)
+- [`localnet`](/protocol/network/networks#localnet)
+
+## 主网（Mainnet）
+
+`mainnet` 用于生产就绪的智能合约和真实代币转账。准备好上 `mainnet` 的合约应经过严格测试，必要时还需进行独立的安全审计。`mainnet` 是唯一一个状态保证随时间持久存在的网络 _（受网络验证流程的典型安全保障约束）_。
+
+- 状态：`https://rpc.mainnet.near.org/status`
+- [ [NearBlocks 浏览器](https://nearblocks.io) ]
+- [ [钱包](https://wallet.near.org) ]
+- [ [纪元同步](https://near-nodes.io/intro/node-epoch-sync) ]
+
+## 测试网（Testnet）
+
+`testnet` 是一个公共网络，也是 `nearcore` 更改在部署到 `mainnet` 之前的最终测试网络。`testnet` 旨在测试 NEAR 平台的所有方面，包括在 `mainnet` 部署之前的账户创建、模拟代币转账、开发工具和智能合约开发，`testnet` 环境与 `mainnet` 行为高度相似。所有 `nearcore` 更改首先作为候选版本部署在测试网上，然后才在 `mainnet` 上发布。众多 `testnet` 验证者验证交易并创建新区块。dApp 开发者在部署到 `mainnet` 之前先在 `testnet` 上部署其应用程序。需要注意的是，`testnet` 有其自己的交易和状态。
+
+- 状态：`https://rpc.testnet.near.org/status`
+- [ [浏览器](https://testnet.nearblocks.io) ]
+- [ [钱包](https://testnet.mynearwallet.com/) ]
+- [ [纪元同步](https://near-nodes.io/intro/node-epoch-sync) ]
+
+## 本地网（Localnet）
+
+`localnet` 适用于希望独立于公共区块链使用 NEAR 平台的开发者。您需要自行生成节点。`localnet` 为更高级的用例（包括对 `nearcore` 进行更改）提供对账户、经济模型和其他因素的完全控制。对于开发者而言，如果您希望在开发过程中避免泄露工作信息，`localnet` 是正确的选择。
+
+更多关于本地开发的信息请参见[此处](https://near-nodes.io/validator/running-a-node)
+
+---
+
+<Tip>
+**有问题？**
+
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer">
+<h8>在 StackOverflow 上提问！</h8>
+</a>
+</Tip>

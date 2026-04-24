@@ -1,0 +1,172 @@
+---
+title: 运行您自己的本地网络
+description: "了解如何在 NEAR 上运行本地网络（localnet）。"
+---
+
+现在我们已经了解了什么是 localnet，让我们来完整地演示运行它并使用简单的智能合约和前端应用程序对其进行测试的完整流程。
+
+在本教程中，我们将使用 `near-sandbox`，因为它是最简单、最快速的入门选择。本教程的目标是设置一个本地网络，在其上创建一个钱包账户，部署合约，最后运行一个[前端应用程序](https://github.com/near-examples/hello-localnet)，该应用程序通过本地区块链直接与此合约交互。
+
+<Tip>
+
+另请参阅 NEAR MPC 团队提供的 [localnet 教程](https://github.com/near/mpc/blob/main/docs/localnet/localnet.md)。
+
+</Tip>
+
+### 前提条件
+
+在开始之前，请确保您已安装以下几个必要工具。
+
+- [near-cli-rs](https://github.com/near/near-cli-rs)——用于与 NEAR 区块链交互的 CLI；
+- [cargo-near](https://github.com/near/cargo-near)——简化 Rust 智能合约构建/部署的 CLI。
+
+### 操作指南
+
+#### 步骤 1. 设置并启动沙箱节点
+
+首先，运行以下命令：
+
+```sh
+npx near-sandbox --home /tmp/near-sandbox init
+```
+
+此命令在主目录（即上述命令中的 `/tmp/near-sandbox`）内准备一个全新的配置。完成后，您将在该目录中找到几个已创建的文件：
+
+- `config.json`——主节点配置，定义网络端口、存储路径、运行时设置等
+- `genesis.json`——定义初始区块链状态，包括默认账户 `near` 和验证者账户（默认为 `test.near`）
+- `validator_key.json`——用于生产区块的验证者密钥对
+- `node_key.json`——用于签署网络数据包的密钥对
+
+此初始化过程仅需一次。配置就绪后，您可以随时启动和停止节点，区块链状态将持久保存在此文件夹中。
+
+初始化完成后，启动节点：
+
+```sh
+npx near-sandbox --home /tmp/near-sandbox run
+```
+
+节点将启动并开始在本地生产区块。
+
+<Tip>
+要确认节点正在运行，您可以使用以下命令查询其 `status` RPC 端点：`curl http://127.0.0.1:3030/status`。
+</Tip>
+
+#### 步骤 2. 导入 `test.near` 账户
+
+在此步骤中，我们将导入在 `near-sandbox` 初始化期间创建的默认 `test.near` 账户。稍后我们需要此账户来部署智能合约，所以让我们现在就做好准备。
+
+首先，确保您的 `near-cli-rs` 知道如何连接到您的本地网络。如果您已经有 `localnet` 配置，可以跳过此步骤。否则，运行：
+
+```sh
+near config add-connection --network-name localnet --connection-name localnet-sandbox --rpc-url http://localhost:3030/ --wallet-url http://localhost:3030/ --explorer-transaction-url http://localhost:3030/
+```
+
+在此过程中，CLI 可能会询问您几个交互式问题。您可以对所有问题安全地回答"No"——所有必要的值已在上述命令中定义。
+
+<Tip>
+要确认连接设置正确，您可以使用以下命令查看 `test.near` 账户的信息：`near account view-account-summary test.near network-config localnet-sandbox now`。
+</Tip>
+
+当您初始化 `near-sandbox` 时，它在主目录中创建了一个名为 `validator_key.json` 的文件。该文件包含 `test.near` 账户的私钥，我们需要将其导入 `near-cli-rs`。
+
+要查看该密钥，运行：
+
+```sh
+cat /tmp/near-sandbox/validator_key.json
+```
+
+您将看到类似以下的输出：
+
+```json
+{
+  "account_id": "test.near",
+  "public_key": "ed25519:...",
+  "secret_key": "ed25519:..."
+}
+```
+
+复制 `secret_key` 的值，并通过运行以下命令将其导入 `near-cli-rs`（将 `<SECRET_KEY>` 替换为实际密钥）：
+
+```sh
+near account import-account using-private-key <SECRET_KEY> network-config localnet-sandbox
+```
+
+运行上述命令时，系统将提示您输入账户 ID。输入 `test.near` 并按 Enter 键。然后系统会询问您选择存储凭据的密钥链，选择 `Legacy Keychain`，因为它直接在文件系统中存储密钥，这是 `localnet` 最简单、最方便的选项。
+
+#### 步骤 3. 部署智能合约
+
+在此步骤中，我们将一个简单的 [Hello World 智能合约](https://github.com/near-examples/hello-near-examples)部署到我们的 `localnet`。
+
+在部署之前，我们需要创建一个用于部署合约的账户。由于我们已经导入了 `test.near` 账户，可以将其作为父账户来创建一个新的子账户：
+
+```sh
+near account create-account fund-myself hello-world.test.near '10 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as test.near network-config localnet-sandbox sign-with-legacy-keychain send
+```
+
+此命令创建一个名为 `hello-world.test.near` 的新账户，初始余额为 10 NEAR。
+
+接下来，克隆 Hello World 仓库并导航到合约目录：
+
+```sh
+git clone git@github.com:near-examples/hello-near-examples.git
+cd hello-near-examples/contract-rs
+```
+
+进入仓库后，运行以下命令：
+
+```sh
+cargo near deploy build-non-reproducible-wasm hello-world.test.near without-init-call network-config localnet-sandbox sign-with-legacy-keychain send
+```
+
+此命令编译智能合约，优化生成的 `.wasm` 文件，并将其直接部署到 `localnet` 上的 `hello-world.test.near` 账户。
+
+<Tip>
+要验证合约是否成功部署，您可以使用以下命令检查 `hello-world.test.near` 账户的代码：`near contract inspect hello-world.test.near network-config localnet-sandbox now`。如果部署成功，您将在输出中看到合约方法的列表，例如 `get_greeting` 和 `set_greeting`。
+</Tip>
+
+#### 步骤 4. 创建用户钱包账户
+
+在此步骤中，我们将在可以连接到我们 `localnet` 的钱包内创建一个用户账户。这很重要，因为前端应用程序通常通过钱包连接与合约交互。并非每个 NEAR 钱包都支持 `localnet` 连接，但在本教程中，我们将使用完全兼容的 Intear Wallet。
+
+访问 https://wallet.intear.tech。如果您还没有账户，创建一个或导入任何现有账户。使用哪个账户无关紧要，此步骤只是为了让您进入钱包界面。
+
+进入钱包后，从侧边栏打开 `Settings` 面板，然后找到 `Developer` 标签。您将看到一个 `Localnet` 子部分，您可以在其中添加自己的本地网络配置。点击 `Add`，并按如下填写字段：将 RPC URL 设置为 `http://127.0.0.1:3030`，将网络 ID 设置为 `localnet`。然后点击 `Save`。
+
+如果一切配置正确，您应该会看到新网络旁边出现一个绿色的 `Online` 徽标，表示已连接。以下是它应该呈现的效果：
+
+![Preview](/assets/docs/web3-apps/intear-wallet-localnet-connected.png)
+
+接下来，点击 `localnet` 条目右侧的 `Control` 按钮。找到 `Create New Account` 部分，为您的新账户输入名称（在我们的示例中为 `user.local`），然后点击 `Create`。
+
+请求处理完成后，新账户将出现在您的钱包中。此时，您在 `localnet` 上有了一个有效账户，可以通过 Intear Wallet 签署交易。
+
+#### 步骤 5. 启动前端应用程序并与其交互
+
+首先克隆仓库：
+
+```sh
+git clone https://github.com/near-examples/hello-localnet
+cd hello-localnet
+```
+
+进入仓库后，使用 `pnpm` 安装依赖项：
+
+```sh
+pnpm install --frozen-lockfile
+```
+
+然后，启动 Next.js 开发服务器：
+
+```sh
+pnpm dev
+```
+
+访问 http://localhost:3000/hello-near，在右上角点击 `Login`。当提示选择钱包时，选择 `Intear Wallet` 的 Web 版本。确保使用之前创建的账户进行连接，在我们的示例中为 `user.local`。
+
+连接后，您将看到一个输入框和一个更新问候语的按钮。在输入框中输入任何新问候语，然后点击 `Save`。您将被重定向到钱包以批准交易。批准后，交易将被发送并在 `localnet` 节点上执行。
+
+返回前端，您会发现问候语已经更改。
+
+---
+
+您现在已经完成了整个设置本地 NEAR 环境的流程——从运行沙箱和部署合约，到连接钱包并通过前端与其交互。通过这个设置，您可以自由实验，安全测试合约，并构建端到端的去中心化应用，而无需接触主网或测试网。

@@ -1,0 +1,902 @@
+---
+title: API 库
+icon: code
+description: "学习使用 JavaScript、Rust 和 Python 中的 API 与区块链进行交互。"
+---
+
+import { Github } from '/snippets/github.jsx';
+
+我们提供一系列特定语言的库，使开发者能够在前端和后端应用程序中与 NEAR 区块链进行交互。通过这些不同的 API，您可以在 NEAR 区块链上执行多种操作，包括但不限于：
+
+1. 创建和管理 NEAR 账户
+2. 调用智能合约上的函数
+3. 转移代币，包括原生 NEAR、同质化代币和非同质化代币
+4. 对交易/元交易/消息进行签名并广播至网络
+5. 部署智能合约
+
+---
+
+## 可用 API
+
+我们提供 Javascript、Rust 和 Python 的 API。使用以下命令将其添加到您的项目：
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  ```bash
+  npm i near-api-js
+  ```
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  ```bash
+  npm i near-kit
+  ```
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  ```bash
+  cargo add near-api
+  ```
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```shell
+  pip install py-near
+  ```
+
+  </Tab>
+</Tabs>
+
+<Tip>
+如果您正在构建 Web 应用并需要添加钱包登录功能，则需要使用 [钱包连接器](/web3-apps/tutorials/wallet-login)。
+</Tip>
+
+---
+
+## 账户
+
+### 获取余额
+
+获取账户的可用余额和质押余额（单位为 yoctoNEAR）。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+    <Github language="javascript"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/tokens-balance.ts" />
+  </Tab>
+  <Tab title="🌐 near-kit">
+    <Github language="javascript"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/tokens-balance.js" />
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="account_details.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/account_details.rs" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  from py_near.account import Account
+
+  account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
+  await account.startup()
+
+  account_balance = account.get_balance()
+  ```
+
+  </Tab>
+</Tabs>
+
+### 获取状态
+
+获取账户的基本信息，例如其代码哈希和存储用量。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/account-details.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/account-details.js" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="account_details.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/account_details.rs#L21-L21"
+    start="21" end="21" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  from py_near.account import Account
+
+  account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
+  await account.startup()
+
+  account_state = account.fetch_state()
+  ```
+
+  </Tab>
+</Tabs>
+
+### 创建命名账户
+
+要创建如 `user.testnet` 这样的命名账户，您需要在 `near`（或 `testnet`）上调用 `create_account` 函数，并传入新账户 ID 及要添加为[完全访问密钥](/protocol/accounts-contracts/access-keys#full-access-keys)的公钥作为参数。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="typescript" url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/create-tla.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript" url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/create-tla.js" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="create_account.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account.rs#L32-L47"
+    start="32" end="47" />
+
+  <Accordion title="通过助记词创建账户">
+
+  您也可以通过随机生成的助记词来创建账户。
+
+  <Github fname="create_account_from_seed.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account_from_seed.rs#L32-L48"
+    start="32" end="48" />
+
+  </Accordion>
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  await account.function_call("testnet", "create_account", {"new_account_id": "example-account.testnet", "new_public_key": "ed25519:..."}, "30000000000000", 1 * NEAR)
+  ```
+
+  </Tab>
+</Tabs>
+
+### 创建子账户
+
+NEAR 上的账户可以在其自身命名空间下创建子账户，这对于按用途组织账户非常有用——例如 `project.user.testnet`。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/create-subaccount.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/create-subaccount.js" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="create_account.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account.rs#L61-L82"
+    start="61" end="82" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  使用主账户创建子账户并为其充值：
+
+  ```python
+  from py_near.account import Account
+  from py_near.dapps.core import NEAR
+
+  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+  await account.startup()
+
+  res = account.create_account(account_id="sub.example-account.testnet", public_key="...", initial_balance=1 * NEAR)
+  ```
+
+  </Tab>
+</Tabs>
+
+<Info>
+父账户对子账户**没有控制权**，子账户完全独立。
+</Info>
+
+### 删除账户
+
+NEAR 上的账户可以删除自身，并将任何剩余余额转移至指定的受益人账户。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript" start="26" end="30"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/delete-account.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/delete-account.js" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="delete_account.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/delete_account.rs#L51-L59"
+    start="51" end="59" />
+
+  </Tab>
+</Tabs>
+
+<Info>
+删除账户**不会**影响其子账户——子账户将继续保持活跃状态。
+</Info>
+
+<Danger>
+**受益人仅接收 NEAR 代币**
+
+账户持有的同质化代币（FT）或非同质化代币（NFT）**不会**被自动转移。这些代币仍与该账户相关联，即使在账户删除后也是如此。请务必在删除前手动转移这些资产，否则将面临永久丢失的风险。一旦账户被删除，这些资产将被有效锁定，除非任何人（不一定是您）重新创建相同的账户。
+</Danger>
+
+<Danger>
+**请确保受益人账户存在**
+
+如果受益人账户不存在，发送至该账户的所有 NEAR 代币将被销毁。请在继续操作前仔细核对账户 ID。
+</Danger>
+
+---
+
+## 交易
+
+### 发送代币
+
+账户可以向其他账户转移不同类型的代币，包括原生 NEAR 代币和 [NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) 同质化代币。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/send-tokens.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/send-tokens.js" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="send_tokens.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/send_tokens.rs#L22-L28"
+    start="22" end="28" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  from py_near.account import Account
+  from py_near.dapps.core import NEAR
+
+  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+  await account.startup()
+
+  await account.send_money("receiver-account.testnet", 1 * NEAR)
+  ```
+
+  </Tab>
+</Tabs>
+
+### 调用函数
+
+智能合约对外暴露其方法，调用会修改状态的函数需要 `Signer`/`KeyPair`。您可以选择性地在调用时附加 `NEAR` 存款。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Tabs>
+    <Tab title="function call">
+      <Github language="javascript"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/contract-interaction.ts" />
+      <Tip>
+      使用 Typescript 时，您可以为 `callFunction<T>` 的返回值指定类型。
+      </Tip>
+    </Tab>
+    <Tab title="typed contract">
+      <Github language="javascript"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/typed-contract-interaction.ts" />
+    </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Tabs>
+    <Tab title="function call">
+      <Github language="javascript"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js" />
+      <Tip>
+      使用 Typescript 时，您可以为 `Near.view<T>` 和 `Near.call<T>` 的返回值指定类型。
+      </Tip>
+    </Tab>
+    <Tab title="typed contract">
+      <Github language="javascript"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/typed-contract-interaction.js" />
+    </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="contract_interaction.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L23-L24"
+    start="23" end="24" />
+
+  <Github fname="contract_interaction.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L37-L49"
+    start="37" end="49" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  await account.function_call("usn.near", "ft_transfer", {"receiver_id": "bob.near", "amount": "1000000000000000000000000"})
+  ```
+
+  </Tab>
+</Tabs>
+
+### 批量操作
+
+您可以向**单个**接收方发送一批[操作](/protocol/transactions/transaction-anatomy#actions)。如果其中一个操作失败，整批操作都将被回滚。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/batch-actions.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/batch-actions.js" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="batch_actions.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/batch_actions.rs#L22-L42"
+    start="22" end="42" />
+
+  </Tab>
+</Tabs>
+
+### 同时发送多笔交易
+
+实现真正意义上同时发送多笔交易的唯一方式是在同一账户上使用多个访问密钥。每个访问密钥维护自己的 nonce，从而允许使用不同密钥签名的交易并行处理：
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/simultaneous-transactions.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/simultaneous-transactions.js" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="simultaneous_transactions.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/simultaneous_transactions.rs#L23-L55"
+    start="23" end="55" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  import asyncio
+  from py_near.account import Account
+
+  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+  await account.startup()
+
+  # Prepare the transactions
+  tx1 = account.function_call("guestbook.near-examples.testnet", "add_message", { "text": "Hello, world!" })
+  tx2 = account.function_call("counter.near-examples.testnet", "increment", {})
+
+  # Send the transactions simultaneously
+  transactionsResults = await asyncio.gather(tx1, tx2)
+  ```
+
+  </Tab>
+</Tabs>
+
+<Warning>
+同时执行意味着无法保证顺序或成功。任何交易都可能独立失败。如果您的使用场景需要严格的顺序保证，则应坚持使用单个密钥按顺序发送交易。
+</Warning>
+
+### 部署合约
+
+在 NEAR 上，智能合约以 WASM 文件的形式部署。每个账户都有成为合约的潜力——您只需向其部署代码即可。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-contract.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-contract.js" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  请注意，此处的 `signer` 需要是与构建 `Contract` 对象时使用的 `account_id` 相同账户的签名者。
+
+  <Github fname="contract_interaction.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L54-L61"
+    start="54" end="61" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  import asyncio
+  from py_near.account import Account
+
+  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
+  await account.startup()
+
+  with open("contract.wasm", "rb") as f:
+    contract_code = f.read()
+  await account.deploy_contract(contract_code)
+  ```
+
+  </Tab>
+</Tabs>
+
+### 部署全局合约
+
+[全局合约](/smart-contracts/global-contracts)允许智能合约一次部署，由任意账户复用，而无需承担高额存储成本。
+
+引用全局合约有两种方式：
+- **[按账户](/smart-contracts/global-contracts#reference-by-account)：** 合约代码与另一个账户绑定。
+- **[按哈希](/smart-contracts/global-contracts#reference-by-hash)：** 通过合约不可变的代码哈希进行引用。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Tabs>
+    <Tab title="by account">
+      <Github language="javascript"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts"
+        end="22" />
+    </Tab>
+    <Tab title="by hash">
+      <Github language="javascript"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts"
+        end="23" />
+    </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Tabs>
+    <Tab title="by account">
+      <Github language="javascript"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-account.js" end="27" />
+    </Tab>
+    <Tab title="by hash">
+      <Github language="javascript"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-hash.js" end="31" />
+    </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  创建 Account 实例后，您可以将普通合约作为全局合约进行部署。
+
+  <Tabs>
+    <Tab title="by account">
+
+    要按账户部署全局合约，请使用带有 `as_account_id` 方法的 `deploy_global_contract_code` 函数。
+
+    ```rust
+    let global_account_id: AccountId = "nft-contract.testnet".parse().unwrap();
+    let code = std::fs::read("path/to/your/contract.wasm").unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(code)
+        .as_account_id(global_account_id)
+        .with_signer(signer)
+        .send_to_testnet()
+        .await.unwrap();
+    ```
+
+    [在 GitHub 上查看完整示例](https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs)
+
+    </Tab>
+    <Tab title="by hash">
+
+    要按哈希部署全局合约，请使用带有 `as_hash` 方法的 `deploy_global_contract_code` 函数。
+
+    ```rust
+    let account_id: AccountId = "my-account.testnet".parse().unwrap();
+    let code = std::fs::read("path/to/your/contract.wasm").unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(code)
+        .as_hash()
+        .with_signer(account_id, signer)
+        .send_to_testnet()
+        .await.unwrap();
+    ```
+
+    [在 GitHub 上查看完整示例](https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs)
+
+    </Tab>
+  </Tabs>
+
+  </Tab>
+</Tabs>
+
+### 使用全局合约
+
+[全局合约](/smart-contracts/global-contracts)[部署](#deploy-a-global-contract)后，以下是从另一个账户引用和使用它的方法。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Tabs>
+    <Tab title="by account">
+      <Github language="javascript"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts"
+        start="32" end="41" />
+    </Tab>
+    <Tab title="by hash">
+      <Github language="javascript"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts"
+        start="37" end="51" />
+    </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Tabs>
+    <Tab title="by account">
+      <Github language="javascript" start="29"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-account.js" />
+    </Tab>
+    <Tab title="by hash">
+      <Github language="javascript" start="36"
+        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-hash.js" />
+    </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Tabs>
+    <Tab title="by account">
+
+    要按账户引用全局合约，请调用 `use_global_account_id` 并传入合约最初部署所在的源 `accountId`。
+
+    ```rust
+    let global_account_id: AccountId = "nft-contract.testnet".parse().unwrap();
+    let my_account_id: AccountId = "my-contract.testnet".parse().unwrap();
+    let my_signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy(my_account_id)
+        .use_global_account_id(global_account_id)
+        .without_init_call()
+        .with_signer(my_signer)
+        .send_to_testnet()
+        .await.unwrap();
+    ```
+
+    [在 GitHub 上查看完整示例](https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs)
+
+    </Tab>
+    <Tab title="by hash">
+
+    要按哈希引用全局合约，请调用 `use_global_hash` 并传入原始合约的 `hash`。
+
+    ```rust
+    let global_hash: types::CryptoHash = "DxfRbrjT3QPmoANMDYTR6iXPGJr7xRUyDnQhcAWjcoFF".parse().unwrap();
+    let account_id: AccountId = "my-contract.testnet".parse().unwrap();
+    let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+    let result: FinalExecutionOutcomeView = Contract::deploy(account_id)
+        .use_global_hash(global_hash)
+        .without_init_call()
+        .with_signer(signer)
+        .send_to_testnet()
+        .await.unwrap();
+    ```
+
+    [在 GitHub 上查看完整示例](https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs)
+
+    </Tab>
+  </Tabs>
+
+  </Tab>
+</Tabs>
+
+---
+
+## 视图函数
+
+视图函数是智能合约上的只读方法，不会修改状态。您无需使用账户或签署交易即可调用它们。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/contract-interaction.ts"
+    start="9" end="21" />
+
+  <Tip>
+  使用 Typescript 时，您可以为 `callFunction<T>` 的返回值指定类型。
+  </Tip>
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js" end="22" />
+
+  <Tip>
+  使用 Typescript 时，您可以为 `Near.view<T>` 的返回值指定类型。
+  </Tip>
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="contract_interaction.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L22-L33"
+    start="22" end="33" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  view_call_result = await account.view_function("guestbook.near-examples.testnet", "total_messages", {})
+  # If args are required, they can be passed in like this in the 3rd argument:
+  # {
+  #   "from_index": "0",
+  #   "limit": "10"
+  # }
+  print(view_call_result)
+  ```
+
+  </Tab>
+</Tabs>
+
+---
+
+## 密钥
+
+### 获取所有访问密钥
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript"
+    start="9" end="16"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="keys.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L22-L22"
+    start="22" end="22" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  keys = await account.get_access_key_list()
+  ```
+
+  </Tab>
+</Tabs>
+
+### 添加完全访问密钥
+
+[完全访问密钥](/protocol/accounts-contracts/access-keys#full-access-keys)授予对账户的完整控制权。
+
+拥有此密钥的任何人都可以转移资金、签署交易、与合约交互，甚至删除账户。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript"
+    start="30" end="37"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript" start="16" end="27"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="keys.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L25-L37"
+    start="25" end="37" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  keys = await account.add_full_access_public_key("5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj")
+  ```
+
+  </Tab>
+</Tabs>
+
+### 添加函数调用密钥
+
+[函数调用访问密钥](/protocol/accounts-contracts/access-keys#function-call-keys)专门用于对特定合约签署仅包含 [`functionCall` 操作](/protocol/transactions/transaction-anatomy#actions)的交易。
+
+您可以通过以下方式进一步限制此密钥：
+- 限制可调用的方法名称
+- 设置密钥可用于交易手续费的 `NEAR` 上限
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript"
+    start="39" end="45"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript" start="31" end="42"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="keys.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L38-L56"
+    start="38" end="56" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  await account.add_public_key(
+    "5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj",
+    "example-contract.testnet", # Contract this key is allowed to call
+    ["example_method"], # Methods this key is allowed to call (optional)
+    0.25 * NEAR # Gas allowance key can use to call methods (optional)
+  )
+  ```
+
+  </Tab>
+</Tabs>
+
+<Tip>
+出于安全原因，函数调用访问密钥**只能用于附加零 `NEAR` 代币的函数调用**。任何尝试附加存款的操作都将导致交易失败。
+</Tip>
+
+### 删除访问密钥
+
+NEAR 上的账户可以删除自己的密钥。
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github language="javascript"
+    start="56" end="56"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github language="javascript" start="45" end="54"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js" />
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  <Github fname="keys.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L57-L72"
+    start="57" end="72" />
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  ```python
+  await account.delete_public_key("5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj")
+  ```
+
+  </Tab>
+</Tabs>
+
+<Danger>
+删除密钥时请格外谨慎。从账户中删除所有密钥将导致您永久失去对该账户的访问权限。
+</Danger>
+
+---
+
+## 验证消息签名
+
+用户可以使用 `wallet-selector` 的 `signMessage` 方法对消息进行签名，该方法会返回一个签名。可使用以下代码对该签名进行验证：
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  <Github fname="authenticate.ts" language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/verify-signature.ts" />
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  <Github fname="authenticate.js" language="javascript"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/verify-signature.js" />
+
+  </Tab>
+</Tabs>
+
+---
+
+## 其他资源
+
+<Tabs>
+  <Tab title="🌐 near-api-js">
+
+  - [文档](https://near.github.io/near-api-js)
+  - [Github](https://github.com/near/near-api-js)
+  - [完整示例](https://github.com/near-examples/near-api-examples/tree/main)
+
+  </Tab>
+  <Tab title="🌐 near-kit">
+
+  - [Github](https://github.com/r-near/near-kit/tree/main)
+  - [完整示例](https://github.com/near-examples/near-api-examples/tree/main/near-kit)
+
+  </Tab>
+  <Tab title="🦀 near-api-rs">
+
+  - [文档](https://docs.rs/near-api/latest/near_api/)
+  - [Github](https://github.com/near/near-api-rs)
+  - [完整示例](https://github.com/near-examples/near-api-examples/tree/main/rust)
+
+  </Tab>
+  <Tab title="🐍 py-near">
+
+  - [Github](https://github.com/pvolnov/py-near)
+
+  </Tab>
+</Tabs>

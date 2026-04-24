@@ -1,0 +1,179 @@
+---
+title: 标准规范
+description: "了解 NEAR 上同质化代币（FT）的定义"
+---
+
+除原生 NEAR 代币外，用户还可以访问由机构和其他用户创建的大量代币，即同质化代币。
+
+与原生代币不同，同质化代币（FT）**并不存储**在用户的账户中，而是存储在智能合约里。该合约负责**账本管理**，即追踪每个用户持有的代币数量，并在内部处理转账。
+
+![FT](/assets/docs/primitives/ft.png)
+
+一个合约若要被视为 FT 合约，必须遵循 [**NEP-141**](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) 和 [**NEP-148 标准**](https://github.com/near/NEPs/tree/master/neps/nep-0148.md)，这两个标准定义了需要实现的**最小接口**以及预期的功能。
+
+---
+
+## NEP-141（同质化代币接口）
+
+[NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) 是 NEAR 上所有同质化代币（如稳定币、治理代币等）的蓝图。
+
+它定义了合约必须实现的**一套通用规则**和**函数**，才能被视为同质化代币合约。
+
+<Tip>
+
+请注意，NEP-141 定义了同质化代币合约的**接口**和**预期行为**，但不规定内部逻辑的实现方式。
+
+不同的 FT 合约可以有不同的内部实现，同时仍然遵守 NEP-141 标准。
+
+</Tip>
+
+### 接口
+
+#### `ft_total_supply`（*只读*）
+
+返回代币的总供应量
+
+```ts
+ft_total_supply(): string
+```
+
+<br />
+
+#### `ft_balance_of`（*只读*）
+
+返回给定账户的余额
+
+```ts
+ft_balance_of(account_id: string): string
+```
+
+<br />
+
+#### `ft_transfer`
+
+将 `amount` 数量的代币从调用函数的账户转移到 `receiver_id`，可选地可以包含 `memo` 字段以向合约提供附加信息
+
+> *要求：调用者必须附加[恰好 1 yoctoNEAR](../../smart-contracts/security/one_yocto)*
+
+```ts
+ft_transfer(receiver_id: string, amount: string, memo: string?): void
+```
+
+<br />
+
+#### `ft_transfer_call`
+
+该函数将 `amount` 数量的代币转移到 `receiver_id`，**并在 `receiver_id` 上调用 `ft_on_transfer(sender_id, amount, msg)` 方法**。
+
+可选地，该函数可以为 FT 合约提供 `memo`，以及一个 `msg` 字段，该字段将被发送到接收合约。
+
+> 📖 此函数可用于在单个交易中将代币转移到合约并触发接收方的某些操作，从而实现**将同质化代币附加到函数调用**的效果。
+
+> *要求：调用者必须附加[恰好 1 yoctoNEAR](../../smart-contracts/security/one_yocto)*
+
+```ts
+ft_transfer_call(receiver_id: string, amount: string, memo: string?, msg: string): void
+```
+
+<Accordion title="ft_on_transfer">
+
+    期望**接收**同质化代币的智能合约**必须**实现此方法。
+
+    该方法**必须**返回接收者**未使用**的代币数量，以便**退还给发送者**。
+
+    ```ts
+    ft_on_transfer(sender_id: string, amount: string, msg: string): string
+    ```
+
+    ⚠️ 注意，此方法不需要由 FT 合约本身实现，而是由任何期望接收同质化代币的合约实现。
+
+    请参见[使用 FT 页面](./ft#handling-deposits)中的参考实现。
+
+</Accordion>
+
+<br />
+
+#### `ft_resolve_transfer`
+
+此方法用作[回调](../../smart-contracts/anatomy/crosscontract#callback-function)来解析 `ft_transfer_call` 交易，必要时处理退款。
+
+```js
+ft_resolve_transfer(sender_id: string, receiver_id: string, amount: string): string
+```
+
+---
+
+## NEP-145（存储管理）
+
+在 NEAR 上，账户需要为其在网络上使用的存储付费。随着持有某个同质化代币合约代币的用户增多，需要存储的信息也随之增加，因此合约需要预留更多存储空间。
+
+[NEP-145](https://github.com/near/NEPs/blob/master/neps/nep-0145.md) 是一个定义用户注册通用接口的标准，允许 FT 合约**向用户收取存储使用费**。
+
+<Tip>
+
+虽然不是强制要求，但强烈建议 FT 合约实现 NEP-145 标准，以避免存储空间耗尽的情况。
+
+</Tip>
+
+### 接口
+
+#### `storage_balance_bounds`（*只读*）
+返回账户在合约中注册所需的最小和最大存储余额
+
+```ts
+storage_balance_bounds(): { min: string, max?: string} | null
+```
+
+#### `storage_balance_of`（*只读*）
+返回给定账户的存储余额，若账户未注册则返回 `null`
+
+```ts
+storage_balance_of(account_id: string): { total: string, available: string } | null
+```
+
+#### `storage_unregister`
+从合约中删除账户的所有信息，将存储押金返还给用户。该函数只能由用户本人调用。
+
+```ts
+storage_unregister(force?: boolean): boolean
+```
+
+#### `storage_deposit`
+在合约中注册账户，预留足够的存储空间以追踪用户的余额。该函数可由用户本人或**第三方**代表用户调用。
+
+```ts
+storage_deposit(account_id?: string, registration_only?: boolean): { total: string, available: string }
+```
+
+#### `storage_withdraw`
+从合约中注销账户，将存储押金返还给用户。该函数只能由用户本人调用。
+
+```ts
+storage_withdraw(amount: string): { total: string, available: string }
+```
+
+---
+
+## NEP-148（代币元数据）
+
+[NEP-148](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) 是 NEP-141 标准的扩展，定义了同质化代币的**元数据**。
+
+元数据提供了关于代币的**关键信息**，例如其**名称、符号和小数精度**。特别地，代币元数据中必须包含以下字段：
+
+- `spec`：字符串。应为 `ft-1.0.0`，表示同质化代币合约遵循当前版本的元数据规范和[同质化代币核心][FT Core]规范。
+- `name`：代币的人类可读名称。
+- `symbol`：缩写，如 wETH 或 AMPL。
+- `decimals`：前端界面用于显示代币正确有效位数的精度值。
+
+元数据对钱包和其他用户界面正确显示代币非常有用，例如，若代币定义为：
+
+```json
+{
+  "spec": "ft-1.0.0",
+  "name": "My Awesome Token",
+  "symbol": "MAT",
+  "decimals": 4
+}
+```
+
+该代币 `123456` 个单位在用户界面中应显示为 `12.3456 MAT`。

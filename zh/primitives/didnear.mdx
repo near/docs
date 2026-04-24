@@ -1,0 +1,243 @@
+---
+title: 去中心化标识符（DID）
+description: "了解 NEAR 上符合 W3C 标准的身份解析。"
+---
+
+本文档详细介绍了如何在 NEAR 区块链上使用 `did:near` 方法实现去中心化标识符、其与 [W3C DID Core](https://www.w3.org/TR/did-core/) 的兼容性，以及如何与可验证凭证（VC）、证明注册表和解析工具集成。
+
+---
+
+## 什么是 DID？
+
+**去中心化标识符（DID）** 是一种持久的、唯一的标识符，无需中心化注册机构。在 NEAR 上，DID 基于账户名称或原始公钥创建，并完全兼容 W3C DID 标准。
+
+<Accordion title="作者">
+
+  与 NTT DATA Innovation Center Web3 合作构建
+</Accordion>
+
+---
+
+## `did:near` 方法
+
+该方法支持两种具有不同解析策略的 DID 类型：
+
+| 类型               | 示例                                | 描述                          |
+|--------------------|-----------------------------------------|--------------------------------------|
+| 命名账户      | `did:near:alice.testnet` 或 `did:near:alice.near` | 直接从链上 NEAR 账户密钥（完全访问密钥）解析 |
+| 注册表 DID（Base58） | `did:near:CF5RiJYh4EVmEt8UADTjoP3XaZo1NPWxv6w5TmkLqjpR` | 通过智能合约注册表使用 `identity_owner` 方法解析 |
+
+---
+
+## DID 文档格式
+
+解析 `did:near` 的示例输出：
+
+```json
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/ed25519-2018/v1"
+  ],
+  "id": "did:near:alice.testnet",
+  "verificationMethod": [
+    {
+      "id": "did:near:alice.testnet#owner",
+      "type": "Ed25519VerificationKey2018",
+      "controller": "did:near:alice.testnet",
+      "publicKeyBase58": "7WLUHT69sw5UpYK9xAY5cbdWKf4vSMruXzwfbL999zXo"
+    }
+  ],
+  "authentication": ["did:near:alice.testnet#owner"],
+  "assertionMethod": ["did:near:alice.testnet#owner"]
+}
+```
+
+该结构遵循 [W3C DID Core 规范](https://www.w3.org/TR/did-core/)，包括：
+
+- DID 标识符（`id`）
+- 密钥引用（`verificationMethod`）
+- 认证和断言能力
+- Base58 编码的 Ed25519 公钥
+
+---
+
+## ⚙️ 代码仓库
+
+| 组件       | 仓库地址 |
+|----------------|----------------|
+| DID 注册表（合约） | https://github.com/DTI-web3/did-near |
+| ProofType 合约       | https://github.com/DTI-web3/did-near-prooftype |
+| ProofType SDK            | https://www.npmjs.com/package/@kaytrust/prooftypes |
+| DID 解析器 SDK         | https://github.com/DTI-web3/did-near-resolver |
+
+---
+
+## 解析原理
+
+解析器根据 DID 格式使用不同的策略：
+
+### 命名账户 DID（`did:near:alice.testnet`）
+1. 从 DID 中解析账户 ID（例如 `alice.testnet`）。
+2. 根据后缀确定网络（`.testnet` → 测试网，`.near` → 主网）。
+3. 使用 `near-api-js` 查询 NEAR RPC 以获取账户访问密钥。
+4. 筛选具有 `permission: "FullAccess"` 的密钥。
+5. 将所有完全访问公钥作为验证方法构造 DID 文档。
+
+### 注册表 DID（`did:near:CF5RiJYh4EVmEt8UADTjoP3XaZo1NPWxv6w5TmkLqjpR`）
+1. 识别 DID 为 Base58 格式（符合 `[1-9A-HJ-NP-Za-km-z]+` 的 44-50 字符字符串）。
+2. 在已配置的注册表合约上调用 `identity_owner` 查看方法。
+3. 获取为该 Base58 标识符注册的所有者 DID。
+4. 使用注册表中的公钥构造 DID 文档。
+
+---
+
+## 使用方法
+
+### 创建 DID
+
+#### 命名账户 DID（直接解析）
+如果使用 NEAR 钱包账户，DID 直接从账户名称派生：
+```ts
+const did = "did:near:yourname.testnet";  // 测试网
+const did = "did:near:yourname.near";     // 主网
+```
+
+#### 注册表 DID（基于合约）
+如果使用在智能合约中注册的 Base58 编码标识符：
+```ts
+const did = "did:near:CF5RiJYh4EVmEt8UADTjoP3XaZo1NPWxv6w5TmkLqjpR";
+```
+
+#### 指定网络的 DID
+您可以显式指定网络：
+```ts
+const did = "did:near:testnet:CF5RiJYh4EVmEt8UADTjoP3XaZo1NPWxv6w5TmkLqjpR";  // 明确指向测试网
+const did = "did:near:near:CF5RiJYh4EVmEt8UADTjoP3XaZo1NPWxv6w5TmkLqjpR";     // 明确指向主网
+```
+
+---
+
+## 发行和验证凭证
+
+### 第一步 – 对凭证进行哈希处理
+
+```ts
+const cid = SHA256(JSON.stringify(credential)).toString(CryptoJS.enc.Base64);
+```
+
+### 第二步 – 在 NEAR 上发行
+
+```ts
+await proofType.generateProof(credential, {
+  wallet,
+  cid
+});
+```
+
+这将在链上记录哈希值（`cid`）及对应的 `subject_did`。
+
+### 第三步 – 链上验证
+
+```ts
+const isValid = await proofType.verifyProof("did:near:subject|bafy..."); // 返回 true 或 false
+```
+
+---
+
+## SDK 使用
+
+### 解析器 SDK
+
+#### 独立使用
+
+```ts
+import { NearDIDResolver } from '@kaytrust/did-near-resolver';
+
+const resolver = new NearDIDResolver({
+  networks: [
+    {
+      networkId: 'testnet',
+      rpcUrl: 'https://rpc.testnet.near.org',
+      contractId: 'neardidregistry.testnet' // 可选：仅用于注册表 DID
+    },
+    {
+      networkId: 'mainnet', // 可以使用 'near' 表示主网（'mainnet' 和 'near' 等效）
+      rpcUrl: 'https://rpc.mainnet.near.org',
+      contractId: 'neardidregistry.near' // 可选
+    }
+  ]
+});
+
+const doc = await resolver.resolveDID("did:near:alice.testnet");
+console.log(doc.id); // "did:near:alice.testnet"
+```
+
+#### 与 `did-resolver` 集成
+
+```ts
+import { Resolver } from 'did-resolver';
+import { getResolver } from '@kaytrust/did-near-resolver';
+
+const nearResolver = getResolver({
+  networks: [
+    {
+      networkId: 'testnet',
+      rpcUrl: 'https://rpc.testnet.near.org',
+      contractId: 'neardidregistry.testnet'
+    }
+  ]
+});
+
+const resolver = new Resolver({
+  ...nearResolver,
+  // ... 其他 DID 方法
+});
+
+const result = await resolver.resolve('did:near:alice.testnet');
+console.log(result.didDocument);
+```
+
+### ProofType SDK
+
+```ts
+import { ProofTypeNear } from '@kaytrust/prooftypes';
+
+const proofType = new ProofTypeNear();
+const proof = await proofType.generateProof(vcPayload, { wallet, cid });
+const isValid = await proofType.verifyProof(proof);
+```
+
+---
+
+## 安全性与合规性
+
+- 每个 `(did, cid)` 对只能注册一次。
+- 发行者通过 NEAR 交易与签名账户绑定。
+- DID 解析和结构完全符合 W3C 标准。
+- `cid` 始终是 VC 内容的 Base64 编码 SHA-256 哈希值。
+- **密钥安全**：DID 文档的 `verificationMethod` 数组中仅包含 `FullAccess` 密钥，确保只有具备完整账户权限的密钥才能用于认证。
+- 公钥通过 NEAR 原生账户或自定义注册表安全处理。
+- **多网络支持**：解析器根据 DID 后缀自动将请求路由到正确的网络（主网/测试网）。
+
+---
+
+## 测试网部署
+
+- 注册表合约：`neardidregistry.testnet`
+- ProofType 合约：`neardtiprooftype.testnet`
+- 网络：`testnet`
+- 语言：Rust（`near-sdk`）
+
+---
+
+## 结论
+
+`did:near` 方法在 NEAR 上实现了完整的去中心化身份流程，包括：
+
+- 基于账户和密钥的标识符
+- 符合 W3C 标准的 DID 文档
+- 由智能合约支持的凭证证明
+- 用于解析和证明的 SDK
+
+使用此技术栈，在 NEAR 上构建可移植、可验证且安全的 Web3 身份解决方案。

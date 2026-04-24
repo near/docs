@@ -1,0 +1,587 @@
+---
+title: 启动选项
+description: "了解如何使用 NEAR Lake Framework 创建索引器。"
+---
+
+本教程将引导您创建一个使用 NEAR Lake Framework 的简单索引器，该索引器可以从指定的区块高度、最新的最终区块或最后索引的区块开始。
+
+### 启动选项
+
+使用 NEAR Lake Framework 启动索引器有三种选项：
+
+- 从指定的区块高度开始（开箱即用）
+  ```bash
+  ./target/release/indexer mainnet from-block 65359506
+  ```
+- 从网络的最新最终区块开始
+  ```bash
+  ./target/release/indexer mainnet from-latest
+  ```
+- 从索引器上次中断前最后索引的区块开始
+  ```bash
+  ./target/release/indexer mainnet from-interruption
+  ```
+
+---
+
+## 动机
+
+确定您的项目是否需要索引器并创建一个，意味着您只涵盖了一方面——开发。
+
+还有另一个重要方面——维护。这包括：
+- 需要使用更新版本的依赖项升级索引器
+- 需要使用您开发的新功能更新索引器
+- 您的服务器需要一些维护
+- 发生了事故
+- 等等
+
+在几乎所有上述情况中，您可能希望不仅从需要提供的特定区块启动或重启索引器，还可以从它停止的区块，或从网络中最新的最终区块开始。
+
+[NEAR Lake Framework](/data-infrastructure/near-lake-framework) 不提供这些选项。实际上，我们有意不为库添加这些启动索引器的选项。
+
+<Info>
+**设计意图**
+
+我们希望将 [NEAR Lake Framework](/data-infrastructure/near-lake-framework) crate 保持在尽可能小的范围内。该库的目标是做一项工作，并允许在 crate 外部添加任何功能。
+
+</Info>
+
+不过，从最新区块或从上次索引的区块之后的区块启动索引器的功能可能非常有用。
+
+此外，在[四月数据平台社区会议](https://github.com/near/indexers-docs/blob/main/blog/2022-05-11-community-meeting-recordx.mdx)期间，有人询问我们是否计划将此功能添加到库中。我们承诺创建一个教程，展示如何自行实现。现在它就在这里。
+
+---
+
+## 准备工作
+
+在本教程中，我们不会将注意力集中在索引器本身，而是集中在启动选项上。
+
+<Note>
+
+为了简化教程中的代码示例，我们将整个应用程序写在单个文件 `src/main.rs` 中。
+
+**请不要将其视为设计建议。我们这样做只是为了简单起见**
+
+</Note>
+
+让我们准备一个具有基本依赖项的项目，以便我们可以专注于本教程的主要目标。
+
+创建一个新的 Rust 项目
+
+```bash
+cargo new --bin indexer && cd indexer
+```
+
+将 `Cargo.toml` 文件的内容替换为：
+
+```toml title=Cargo.toml
+[package]
+name = "indexer"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.60.0"
+
+[dependencies]
+clap = { version = "3.1.6", features = ["derive"] }
+futures = "0.3.5"
+itertools = "0.9.0"
+tokio = { version = "1.1", features = ["sync", "time", "macros", "rt-multi-thread"] }
+tokio-stream = { version = "0.1" }
+tracing = "0.1.13"
+tracing-subscriber = "0.2.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1.0.55"
+
+near-lake-framework = "0.3.0"
+
+```
+
+将 `src/main.rs` 的内容替换为：
+
+```rust
+use clap::{Parser, Subcommand};
+use futures::StreamExt;
+use tracing_subscriber::EnvFilter;
+
+// TODO: StartOptions
+
+#[tokio::main]
+async fn main() -> Result<(), tokio::io::Error> {
+    init_tracing();
+
+    let opts = Opts::parse();
+
+    // TODO: Config
+
+    let stream = near_lake_framework::streamer(config);
+
+    let mut handlers = tokio_stream::wrappers::ReceiverStream::new(stream)
+        .map(handle_streamer_message)
+        .buffer_unordered(1usize);
+
+    while let Some(_handle_message) = handlers.next().await {}
+
+    Ok(())
+}
+
+async fn handle_streamer_message(
+    streamer_message: near_lake_framework::near_indexer_primitives::StreamerMessage,
+) {
+    eprintln!(
+        "{} / shards {}",
+        streamer_message.block.header.height,
+        streamer_message.shards.len()
+    );
+    std::fs::write("last_indexed_block", streamer_message.block.header.height.to_string().as_bytes()).unwrap();
+}
+
+fn init_tracing() {
+    let mut env_filter = EnvFilter::new("near_lake_framework=info");
+
+    if let Ok(rust_log) = std::env::var("RUST_LOG") {
+        if !rust_log.is_empty() {
+            for directive in rust_log.split(',').filter_map(|s| match s.parse() {
+                Ok(directive) => Some(directive),
+                Err(err) => {
+                    eprintln!("Ignoring directive `{}`: {}", s, err);
+                    None
+                }
+            }) {
+                env_filter = env_filter.add_directive(directive);
+            }
+        }
+    }
+
+    tracing_subscriber::fmt::Subscriber::builder()
+        .with_env_filter(env_filter)
+        .with_writer(std::io::stderr)
+        .init();
+}
+```
+
+这段代码目前还无法构建。同时让我们快速了解一下我们刚才复制/粘贴的内容：
+
+- 我们导入了 [`clap`](https://docs.rs/clap/latest/clap/) 来设置我们将接受的命令行参数
+- 此外，我们导入了必要的内容，如 `futures` 和 `tracing_subscriber`
+- 文件末尾的 `init_tracing` 是一个辅助函数，用于将我们的应用程序订阅到来自 `near-lake-framework` 的日志
+- 一个带有索引器样板代码的异步 `main` 函数，但缺少我们将在教程中介绍的 `LakeConfig` 创建部分
+- 您可以找到一些我们为您标记的 `// TODO: ...` 部分，以帮助找到编写本教程代码的位置
+
+好了，所有准备工作都已完成。让我们继续。
+
+---
+
+## 设计 `StartOptions`
+
+因此，我们希望能够传递一个命令来定义索引器应该如何启动。在本教程中，我们将使用 `clap`。
+
+我们需要一个接收链 id 的结构。这将允许我们使用命令：
+
+```bash
+./target/release/indexer mainnet ...
+```
+
+或者
+
+```bash
+./target/release/indexer testnet ...
+```
+
+让我们将 `src/main.rs` 中的 `// TODO: StartOptions` 替换为：
+
+```rust title=src/main.rs
+#[derive(Parser, Debug, Clone)]
+#[clap(version = "0.1", author = "Near Inc. <hello@nearprotocol.com>")]
+struct Opts {
+    #[clap(subcommand)]
+    pub chain_id: ChainId,
+}
+
+#[derive(Subcommand, Debug, Clone)]
+enum ChainId {
+    #[clap(subcommand)]
+    Mainnet(StartOptions),
+    #[clap(subcommand)]
+    Testnet(StartOptions),
+}
+
+```
+
+现在我们想创建一个 `StartOptions` 结构，允许我们告诉索引器从哪里开始索引。命令应该如下所示：
+
+```bash
+./target/release mainnet from-latest
+```
+
+我们的变体是：
+
+- `from-block N`，其中 `N` 是要开始的区块高度
+- `from-latest`，从网络中最新的最终区块开始
+- `from-interruption`，从索引器之前中断的区块开始
+
+让我们将注释 `// TODO: StartOptions` 替换为枚举：
+
+```rust title=src/main.rs
+#[derive(Subcommand, Debug, Clone)]
+pub(crate) enum StartOptions {
+    FromBlock { height: u64 },
+    FromLatest,
+    FromInterruption,
+}
+```
+
+很简单直接，对吧？
+
+---
+
+## 创建 `LakeConfig`
+
+为了创建 `LakeConfig`，我们将使用配置构建器 [`LakeConfigBuilder`](https://docs.rs/near-lake-framework/0.3.0/near_lake_framework/struct.LakeConfigBuilder.html)。幸运的是，我们已经导入了它。
+
+让我们在 `// TODO: Config` 注释的位置实例化一个构建器：
+
+```rust title=src/main.src
+    let mut lake_config_builder = near_lake_framework::LakeConfigBuilder::default();
+```
+
+注意 `lake_config_builder` 被定义为可变的。
+
+现在我们需要通过匹配提供的 `ChainId` 来设置我们要索引的链：
+
+```rust title=src/main.src
+    let mut lake_config_builder = near_lake_framework::LakeConfigBuilder::default();
+
+    match &opts.chain_id {
+        ChainId::Mainnet(start_options) => {
+            lake_config_builder = lake_config_builder
+                .mainnet();
+        }
+        ChainId::Testnet(start_options) => {
+            lake_config_builder = lake_config_builder
+                .testnet();
+        }
+    }
+```
+
+如您所见，根据 `ChainId` 枚举的变体，我们用快捷方式 `mainnet()` 或 `testnet()` 之一修改 `lake_config_builder`。
+
+本教程中最重要的剩余参数是 `start_block_height`。
+
+通常，我们只传递区块高度数字 `u64`，但我们在这里实现启动选项。
+
+---
+
+## 启动选项逻辑
+
+让我们创建一个单独的函数来保存识别 `start_block_height` 的逻辑，并将其命名为 `get_start_block_height`。
+
+**只是阅读代码，不要复制，这还不是最终方法**
+
+### `FromBlock { height: u64 }`
+
+让我们从最简单的 `from-block N` 实现开始：
+
+```rust title=src/main.rs
+async fn get_start_block_height(start_options: &StartOptions) -> u64 {
+    match start_options {
+        StartOptions::FromBlock { height } => height,
+
+    }
+}
+```
+
+好的，这很简单，其他 `StartOptions` 的匹配臂呢：
+
+```rust title=src/main.rs
+async fn get_start_block_height(start_options: &StartOptions) -> u64 {
+    match start_options {
+        StartOptions::FromBlock { height } => height,
+        StartOptions::FromLatest =>
+    }
+}
+```
+
+嗯，我们如何从网络获取最新区块？我们应该查询 JSON RPC 获取最终区块，提取其高度，然后完成。
+
+### `FromLatest`
+
+为了在 Rust 代码中查询 JSON RPC，我们需要使用 [`near-jsonrpc-client-rs` crate](https://github.com/near/near-jsonrpc-client-rs)。
+
+您可以在项目 GitHub 仓库的相应文件夹中找到[一些有用的示例](https://github.com/near/near-jsonrpc-client-rs/tree/master/examples)。
+
+在 `Cargo.toml` 末尾添加它：
+
+```toml title=Cargo.toml
+near-jsonrpc-client = "0.3.0"
+```
+
+获取最终区块高度的代码如下所示：
+
+```rust
+use near_jsonrpc_client::{methods, JsonRpcClient};
+use near_lake_framework::near_indexer_primitives::types::{BlockReference, Finality};
+
+async fn final_block_height() -> u64 {
+    let client = JsonRpcClient::connect("https://rpc.mainnet.near.org");
+    let request = methods::block::RpcBlockRequest {
+        block_reference: BlockReference::Finality(Finality::Final),
+    };
+
+    let latest_block = client.call(request).await.unwrap();
+
+    latest_block.header.height
+}
+```
+
+简洁明了。但是，硬编码的 `"https://rpc.mainnet.near.org"` 看起来不太好，尤其是当我们想同时支持两个网络时。
+
+但我们可以通过将 JSON RPC URL 传递给 `get_start_block_function` 来处理：
+
+```rust title=src/main.rs
+
+async fn get_start_block_height(
+    start_options: &StartOptions,
+    rpc_url: &str,
+) -> u64 {
+    ...
+}
+
+    ...
+    match &opts.chain_id {
+        ChainId::Mainnet(start_options) => {
+            lake_config_builder = lake_config_builder
+                .mainnet()
+                .start_block_height(
+                    get_start_block_height(
+                        start_options,
+                        "https://rpc.mainnet.near.org",
+                    ).await
+                );
+        }
+        ChainId::Testnet(start_options) => {
+            lake_config_builder = lake_config_builder
+                .testnet()
+                .start_block_height(
+                    get_start_block_height(
+                        start_options,
+                        "https://rpc.testnet.near.org",
+                    ).await
+                )
+        }
+    }
+
+```
+
+嗯。这很丑陋，为什么我们每次都要传递它，如果它只在三种可能情况中的一种情况下需要？
+
+相反，我们可以将整个 `Opts` 传递给 `get_start_block_height` 函数。
+
+```rust title=src/main.rs
+async fn get_start_block_height(opts: &Opts) -> u64 {
+    match opts.chain_id {
+        ChainId::Mainnet(start_options) => {
+            match start_options {
+                StartOptions::FromBlock { height } => height,
+                StartOptions::FromLatest =>
+            }
+        }
+    }
+}
+```
+
+至少我们有了所需的一切。不过，它看起来仍然很丑陋，而且肯定会涉及代码重复。
+
+我们建议改为创建带有几个有用方法的 `impl Opts`，以获取 JSON RPC URL 和获取 `StartOptions` 实例。
+
+**现在您可以安全地复制代码了**
+
+在 `StartOptions` 定义下面的某个地方添加以下内容：
+
+```rust title=src/main.rs
+impl Opts {
+    pub fn rpc_url(&self) -> &str {
+        match self.chain_id {
+            ChainId::Mainnet(_) => "https://rpc.mainnet.near.org",
+            ChainId::Testnet(_) => "https://rpc.testnet.near.org",
+        }
+    }
+
+    pub fn start_options(&self) -> &StartOptions {
+        match &self.chain_id {
+            ChainId::Mainnet(args) | ChainId::Testnet(args) => args
+        }
+    }
+}
+```
+
+现在我们可以创建带有查询最终区块的辅助函数 `final_block_height` 的 `get_start_block_height` 函数（我们将重用它，注意手法）：
+
+```rust title=src/main.rs
+async fn get_start_block_height(opts: &Opts) -> u64 {
+    match opts.start_options() {
+        StartOptions::FromBlock { height } => *height,
+        StartOptions::FromLatest => final_block_height(opts.rpc_url()).await,
+        // 占位符
+        StartOptions::FromInterruption => 0,
+    }
+}
+
+async fn final_block_height(rpc_url: &str) -> u64 {
+    let client = JsonRpcClient::connect(rpc_url);
+    let request = methods::block::RpcBlockRequest {
+        block_reference: BlockReference::Finality(Finality::Final),
+    };
+
+    let latest_block = client.call(request).await.unwrap();
+
+    latest_block.header.height
+}
+```
+
+您可能注意到了 `FromInterruption` 和关于占位符的注释。我们这样做的原因是为了现在能够构建应用程序，测试 `FromLatest` 是否按预期工作。
+
+### 测试 `FromLatest`
+
+<Danger>
+**凭证**
+
+请确保您已按照[凭证](/data-infrastructure/tutorials/running-near-lake/credentials)页面的描述设置凭证。否则您将无法使代码正常工作。
+
+</Danger>
+
+让我们尝试构建并运行我们的代码
+
+```bash
+cargo build --release
+
+./target/release/indexer mainnet from-latest
+```
+
+代码构建完成后，您应该在终端看到类似以下内容：
+
+```text
+65364116 / shards 4
+65364117 / shards 4
+65364118 / shards 4
+65364119 / shards 4
+65364120 / shards 4
+```
+
+您可以按 `CTRL+C` 停止它
+
+现在我们可以继续处理 `FromInterruption`
+
+### `FromInterruption`
+
+为了让索引器知道它在哪个区块被中断，索引器需要将区块高度存储在某处。它应该在 `handle_message` 函数末尾执行此操作。
+
+在您在本教程开头复制/粘贴的样板代码中，您可以注意到一行代码：
+
+```rust
+    std::fs::write("last_indexed_block", streamer_message.block.header.height.to_string().as_bytes()).unwrap();
+```
+
+它将最后索引的区块高度保存到索引器二进制文件旁边的 `last_indexed_block` 文件中。
+
+在现实世界的索引器中，您可能会使用其他存储，具体取决于您使用的工具集。
+
+但为了向您展示这个概念，我们决定采用最简单的方法，将其保存到文件中。
+
+现在我们需要实现从文件读取值的功能。
+
+<Note>
+
+如果这是您索引器的第一次启动，并且您要求它从中断处开始，它将无法找到 `last_indexed_block` 并直接失败。
+
+这不是我们期望的行为。这就是为什么我们假设您希望它从中断处开始（如果可能），否则从最新处开始。
+
+</Note>
+
+让我们完成我们的 `get_start_block_height`
+
+```rust title=src/main.rs
+async fn get_start_block_height(opts: &Opts) -> u64 {
+    match opts.start_options() {
+        StartOptions::FromBlock { height } => *height,
+        StartOptions::FromLatest => final_block_height(opts.rpc_url()).await,
+        // 占位符
+        StartOptions::FromInterruption => {
+            match &std::fs::read("last_indexed_block") {
+                Ok(contents) => {
+                    String::from_utf8_lossy(contents).parse().unwrap()
+                }
+                Err(e) => {
+                    eprintln!("Cannot read last_indexed_block.\n{}\nStart indexer from latest final", e);
+                    latest_block_height(opts.rpc_url()).await
+                }
+            }
+        },
+    }
+}
+```
+
+我们在这里做的是：
+
+- 尝试读取 `last_indexed_block` 文件
+- 如果 `Result` 是 `Ok`，我们读取 `contents` 并解析它
+- 如果 `Result` 是 `Err`，我们打印关于错误的消息并调用 `last_block_height` 从网络获取最终区块（我们之前提到的回退）
+
+### 测试 `FromInterruption`
+
+为了确保一切按预期工作，我们将从创世块开始索引以存储最后索引的区块。然后我们将从中断处开始，以确保我们不是从最新处开始。
+
+让我们构建并从创世块运行。
+
+<Info>
+**创世块技巧**
+
+要从创世块开始基于 NEAR Lake Framework 的索引器，只需将 `start_block_height` 指定为 `0`。
+
+</Info>
+
+```bash
+cargo build --release
+./target/release/indexer mainnet from-block 0
+```
+
+您将看到类似以下内容：
+
+```text
+9820210 / shards 1
+9820214 / shards 1
+9820216 / shards 1
+9820219 / shards 1
+9820221 / shards 1
+9820226 / shards 1
+9820228 / shards 1
+9820230 / shards 1
+9820231 / shards 1
+9820232 / shards 1
+9820233 / shards 1
+9820235 / shards 1
+9820236 / shards 1
+9820237 / shards 1
+9820238 / shards 1
+```
+
+按 `CTRL+C` 停止它
+
+记住您看到的最后一个区块高度。在我们的例子中是 `9820238`
+
+从中断处重启索引器
+
+```bash
+./target/release/indexer mainnet from-interruption
+```
+
+您应该看到索引器日志从您记住的区块开始。
+
+太好了！一切都完成了。现在您可以根据需要调整您得到的代码并在您的索引器中使用它。
+
+---
+
+## 总结
+
+您已经了解了如何为索引器添加启动选项的方式。如您所见，这里没有任何复杂的内容。
+
+您可以在 [`near-examples/lake-indexer-start-options`](https://github.com/near-examples/lake-indexer-start-options) 中找到源代码。

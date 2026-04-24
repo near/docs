@@ -1,0 +1,108 @@
+---
+title: 可重现构建
+description: "在不同开发者环境中创建相同的构建。"
+---
+可重现构建允许不同的人构建同一个程序并获得完全相同的输出。它们帮助用户相信已部署的合约是正确构建的，并与源代码对应。为了验证您的合约，用户可以自行构建并检查二进制文件是否相同。
+
+## 问题
+
+<Tabs>
+  <Tab title="🦀 Rust">
+  
+如果您在两台不同的机器上构建合约，很可能会得到两个相似但不完全相同的二进制文件。您的构建产物可能受到语言区域、时区、构建路径以及构建环境中数十亿其他因素的影响。因此，Rust 社区有着解决此问题的悠久历史。
+
+为了实现可重现构建，NEAR 利用了多个组件，如 [NEP-330-Source Metadata](https://github.com/near/NEPs/blob/master/neps/nep-0330.md)、[cargo-near](https://github.com/near/cargo-near)、[Docker](https://docker.com) 和 [SourceScan](https://github.com/SourceScan)。
+
+<Info>
+为了使用可重现构建，您需要在机器上安装 [Docker](https://docker.com)。
+</Info>
+
+使用 `cargo near new` 初始化项目时，生成的 `Cargo.toml` 将包含有关构建环境和存储库的信息。
+
+```toml
+# ...
+repository = "https://github.com/<xxx>/<xxx>"
+# ...
+[package.metadata.near.reproducible_build]
+image = "sourcescan/cargo-near:0.13.5-rust-1.85.1"
+image_digest = "sha256:3b0272ecdbb91465f3e7348330d7f2d031d27901f26fb25b4eaf1560a60c20f3"
+passed_env = []
+container_build_command = [
+    "cargo",
+    "near",
+    "build",
+    "non-reproducible-wasm",
+    "--locked",
+]
+# ...
+```
+
+使用 `cargo near deploy` 部署时，此信息用于克隆存储库并在 Docker 容器中编译合约。
+
+编译过程将向合约添加方法 `contract_source_metadata`，**不对合约代码或逻辑做任何更改**，该方法将返回结果元数据。
+
+合约部署后，我们可以通过调用方法 `contract_source_metadata` 查看元数据，例如：
+
+```zsh
+near view <CONTRACT_ACCOUNT> contract_source_metadata
+
+ INFO --- Result -------------------------
+ |    {
+ |      "build_info": {
+ |        "build_command": [
+ |          "cargo",
+ |          "near",
+ |          "build",
+ |          "non-reproducible-wasm",
+ |          "--locked"
+ |        ],
+ |        "build_environment": "sourcescan/cargo-near:0.13.5-rust-1.85.1@sha256:3b0272ecdbb91465f3e7348330d7f2d031d27901f26fb25b4eaf1560a60c20f3",
+ |        "contract_path": "",
+ |        "output_wasm_path": null,
+ |        "source_code_snapshot": "<SNAPSHOT HERE>"
+ |      },
+ |      "link": "<GITHUB_LINK>",
+ |      "standards": [
+ |        {
+ |          "standard": "nep330",
+ |          "version": "1.3.0"
+ |        }
+ |      ],
+ |      "version": "0.1.0"
+ |    
+ |    ------------------------------------
+```
+
+## 验证与发布
+为了验证和发布您的合约代码，您可以使用 [NearBlocks](https://nearblocks.io) 触发验证过程。导航到合约账户页面，在 **Contract** 选项卡下，您将看到 **Verify and Publish** 按钮。验证过程完成后，合约的源代码以及元数据将在 NearBlocks 的 `Contract -> Contract Code` 选项卡上公开访问。
+
+![reproducible-build](/assets/docs/smart-contracts/reproducible-build.png)
+   
+有关如何验证合约的分步指南，请查看[验证指南](https://github.com/SourceScan/verification-guide)。
+
+## 其他资源
+
+- [验证 NEAR 上的智能合约：分步指南](https://github.com/SourceScan/verification-guide)
+- [工具社区活动 #10 - 介绍可重现构建（视频）](https://youtu.be/RBIAcQj7nFs?t=1742)
+
+</Tab>
+<Tab title="🐍 Python">
+  
+对于 Python 智能合约，可重现性问题相对较少，因为 Python SDK 不直接编译为 WebAssembly。相反，Python 代码在嵌入在合约运行时的 Python-to-WASM 解释器中执行。
+
+当您部署 Python 智能合约时，您直接部署 Python 源代码（或轻度处理的形式），而不是编译后的二进制文件。这使部署过程更加确定性，因为构建环境因素影响最终产物的机会更少。
+
+### 确保 Python 合约可重现
+
+为确保您的 Python 合约是可重现的：
+
+1. **固定您的依赖项**：如果您的合约使用任何第三方库，请确保指定确切版本。
+
+2. **使用一致的格式**：使用 Black 或 YAPF 等工具确保代码格式一致。
+
+3. **记录 Python 版本**：确保记录您的合约是使用哪个 Python 版本开发的。
+
+4. **避免系统特定代码**：不要依赖可能在不同操作系统上表现不同的功能。
+
+</Tab>
+</Tabs>

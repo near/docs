@@ -1,0 +1,100 @@
+---
+title: 索引历史数据
+description: "使用数据 API 检索拍卖历史"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+在我们的前端中，由于之前的出价存储在合约状态中，我们可以轻松显示它。然而，我们无法查看拍卖的之前出价记录。索引器用于从区块链中获取历史数据并将其存储在数据库中。由于索引器设置需要一些时间且运行成本较高，我们将使用 NEAR Blocks 提供的预定义 API 端点，查询他们运行的索引器，获取我们需要的数据。
+
+---
+
+## NEAR Blocks API 密钥
+
+NEAR Blocks 提供免费套餐，允许您每分钟进行 6 次调用，这对于我们的使用场景已经足够了。要获取 API 密钥，请访问 https://dash.nearblocks.io/user/overview 并注册。登录后，转到 `API Keys`，然后点击 `Add key`，给它取一个您喜欢的名称。
+
+我们将创建一个名为 `.env.local` 的新文件来存储我们的 API 密钥。
+
+```env
+API_KEY=YOUR_API_KEY_GOES_HERE
+```
+
+我们将 API 密钥放在 `.env.local` 文件中，以防止用户在浏览器中访问它并在其他地方使用我们的密钥。我们还应该将 `.env.local` 添加到我们的 `.gitignore` 文件中，以防止它被推送到 GitHub。
+
+---
+
+## 调用 API 端点
+
+NextJS 允许我们使用 API 路由轻松创建服务器端函数。我们需要在服务器端而非客户端进行此 API 调用，以避免暴露我们的 API 密钥。我们将在 src/pages/api 中创建一个名为 `getBidHistory.js` 的新文件。在这里，我们将定义获取出价历史的函数。
+
+<Github fname="getBidHistory.js"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/api/getBidHistory.js#L1-L13"
+        start="3" end="13" />
+
+在这里，我们从 API 路由调用中检索拍卖合约 ID，然后调用 NEAR Blocks API。这个特定的 API 端点允许我们检索对特定合约调用特定函数的交易。以下几点值得讨论：
+
+- 我们传递拍卖合约的账户 ID，在示例仓库中为 `basic-auction-example.testnet`。
+- 我们指定拍卖合约上我们想要获取其交易的函数名称，在本例中为 `bid`。
+- 我们将收到一个包含最多 25 笔交易的 JSON 对象，按最近的优先排序。
+- 我们传递 API 密钥来验证请求。
+
+---
+
+## 从 API 结果中检索出价
+
+从我们的 API 调用中，我们收到一个 JSON 对象，其中包含对拍卖合约 bid 函数进行的最多 25 笔交易。
+
+<Github fname="getBidHistory.js"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/api/getBidHistory.js#L15-L37"
+        start="15" end="37" />
+
+我们希望显示最近的 5 个有效出价。为此，我们遍历每笔交易，通过检查 `receipt_outcome.status` 是否为 `true` 来验证交易是否成功。如果成功，我们检查第一个操作（因为在本例中应该只有一个函数调用操作），并存储 `deposit`（等于出价金额）和 `predecessor account ID`（出价者的账户 ID）。
+
+一旦我们有了 5 个有效出价，就可以停止遍历交易了。
+
+请注意，在我们的示例中，如果前 25 笔出价都是无效的，API 将返回一个空数组。该函数可以设置为在这种情况下再次调用 API 以获取新一页的交易。
+
+<Tip>
+**了解更多**
+
+您可以在文档的以下章节中阅读更多关于交易操作的内容：[操作](/protocol/transactions/transaction-anatomy#actions)
+
+</Tip>
+
+---
+
+## 使用 API 路由
+
+在我们的主页面中，我们将定义一个函数来调用我们刚刚创建的 API 路由。每次页面计时器归零时，将调用此函数。
+
+<Github fname="getBidHistory.js"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L84-L92"
+        start="84" end="92" />
+
+然后，`pastBids` 将被传递到 `Bid` 组件以显示。
+
+---
+
+您可能希望进一步探索 NEAR Blocks APIs，以了解您还可以从区块链中检索哪些其他数据。您可以在以下地址找到文档：https://api.nearblocks.io/api-docs/
+
+---
+
+## 使用前端
+
+现在我们已经实现了前端和索引器，您可以开始实际使用前端了。在前端目录的根目录中运行以下命令：
+
+```bash
+# 安装依赖
+npm install
+
+# 在本地运行前端
+npm run dev
+```
+
+---
+
+## 结论
+
+在本教程的这个简短部分中，我们添加了显示对拍卖合约进行的前 5 个有效出价的功能。在此过程中，我们学习了如何与 NEAR Blocks APIs 交互以从区块链检索历史数据，以及如何在 NextJS 中进行服务器端调用以避免暴露我们的 API 密钥。现在我们有了一个相当不错的前端，显示了关于拍卖合约的所有所需信息。
+
+在[教程的下一节](./3.1-nft)中，我们将通过添加 NFT 作为奖品来改进我们的合约。

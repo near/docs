@@ -1,0 +1,70 @@
+---
+title: 使用流动性质押
+description: "了解 NEAR 上的流动性质押——一种发行代表质押 NEAR 的同质化代币的智能合约，支持即时流动性和验证节点多样化。"
+---
+
+流动性质押是 NEAR 上常规质押的现代替代方案，解决了延迟提款的问题。在常规质押中，您无法立即从质押池中提取资金——首先需要请求解除质押，然后等待 4 个时期（大约 24-28 小时），资金才能可供提款。
+
+流动性质押合约通过提供一种灵活的方式来解决这一限制，使您的资产保持流动性。
+
+<Tip>
+
+您是否正在寻找将 NEAR 代币委托给**流动性质押提供商**的方式？请查看 [Metapool](https://www.metapool.app/es/stake?token=near)、[Rhea Finance](https://app.rhea.finance/stake)。
+
+</Tip>
+
+---
+
+## 质押池
+
+流动性质押合约实现了质押池接口。从开发者的角度来看，与流动性质押合约的交互方式几乎与常规质押池相同。
+
+您可以调用熟悉的方法，如 `deposit_and_stake`、`unstake` 和 `withdraw`，它们遵循相同的生命周期——唯一的区别是您的质押由流动性代币表示，而不是锁定在单个池子中。
+
+在幕后，合约将代币委托给多个验证节点，通常从网络上表现最佳的验证节点中选择。这些验证节点被积极维护并受到密切监控，因此发生停机或性能问题的可能性极低。由于您的质押分散在许多验证节点中，因此单个验证节点下线导致奖励损失的风险极低。
+
+值得注意的是，由于您的质押分散在多个验证节点中，平均收益率通常会略低于直接委托给单个高性能验证节点。但作为回报，您可以获得更好的验证节点故障防护能力，以及随时将流动性代币兑换回 `NEAR` 而无需等待解除质押延迟的能力。这是最大收益与最大灵活性之间的平衡权衡。
+
+---
+
+## 使用流动性质押
+
+以下是您在质押流程中最常用的命令，以及 NEAR 上主要流动性质押提供商的合约地址。
+
+| 提供商     | 测试网账户           | 主网账户        |
+|--------------|---------------------------|------------------------|
+| Metapool     | `meta-v2.pool.testnet`    | `meta-pool.near`       |
+| Rhea Finance |                           | `lst.rhealab.near`     |
+| Linear       | `linear-protocol.testnet` | `linear-protocol.near` |
+
+### 存入并质押代币
+
+要质押您的 `NEAR` 并获得流动性代币，请运行以下命令：
+
+```bash
+near contract call-function as-transaction <account-id> deposit_and_stake json-args '{}' prepaid-gas '30.0 Tgas' attached-deposit '10 NEAR'
+```
+
+从那时起，您的代币开始通过底层验证节点产生收益。
+
+### 解除质押
+
+当您准备好后，只需使用以下命令请求解除质押。您需要等待标准的 4 个时期延迟（24-28 小时），资金才能可供提款。
+
+```bash
+near contract call-function as-transaction <account-id> unstake_all json-args '{}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR'
+```
+
+<Tip>
+如果您立即需要 `NEAR`，无需等待 4 个时期——您可以直接在 Rhea.finance 等 DEX 上将流动性代币兑换为 `NEAR`。
+</Tip>
+
+### 提款
+
+4 个时期过后，运行以下命令将 `NEAR` 代币提回。
+
+```bash
+near contract call-function as-transaction <account-id> withdraw_all json-args '{}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR'
+```
+
+此时，您的流动性代币将被销毁，您将按当前汇率收到等值的 `NEAR`。

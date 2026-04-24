@@ -1,0 +1,262 @@
+---
+title: 跨合约调用
+description: "了解如何在 NEAR 上执行基本的跨合约调用以设置和检索问候语。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+此示例执行最简单的跨合约调用：它调用我们的 [Hello NEAR](https://github.com/near-examples/hello-near-examples) 示例来设置和检索问候语。
+这是进行跨合约调用的最简单示例之一，是进入互操作合约世界的完美入口。
+
+<Info>
+**高级跨合约调用**
+查看关于如何[批量和并行](./advanced-xcc)执行跨合约调用的教程
+</Info>
+
+---
+
+## 克隆示例
+
+您有两种方式启动项目：
+
+1. 您可以通过 `Github Codespaces` 使用应用程序，这将打开一个基于 Web 的交互式环境。
+2. 在本地克隆存储库并从您的计算机中使用它。
+
+| Codespaces                                                                                                                                      | 本地克隆                                              |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/cross-contract-calls?quickstart=1) | 🌐 `https://github.com/near-examples/cross-contract-calls` |
+
+---
+
+## 示例结构
+
+智能合约有两种版本：Rust 和 JavaScript
+
+<Tabs>
+
+  <Tab title="🌐 JavaScript">
+
+```bash
+┌── sandbox-ts # sandbox testing
+│    ├── hello-near
+│    │    └── hello-near.wasm
+│    └── main.ava.ts
+├── src # contract's code
+│    └── contract.ts
+├── package.json
+├── README.md
+└── tsconfig.json
+```
+
+  </Tab>
+
+  <Tab title="🦀 Rust">
+
+```bash
+┌── tests # sandbox testing
+│    ├── hello-near
+│    │    └── hello-near.wasm
+│    └── tests.rs
+├── src # contract's code
+│    ├── external.rs
+│    └── lib.rs
+├── Cargo.toml # package manager
+├── README.md
+└── rust-toolchain.toml
+```
+
+  </Tab>
+
+</Tabs>
+
+---
+
+## 智能合约
+
+合约公开了查询问候语并更改它的方法。这些方法除了调用 `hello-near` 示例中的 `get_greeting` 和 `set_greeting` 之外什么都不做。
+
+### 查询问候语
+
+合约向 `hello.near-example.testnet` 执行跨合约调用以获取问候语消息，然后在**回调函数**中处理响应。
+
+<Tabs>
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="ts"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts#L25-L40"
+            start="25" end="40" />
+  </Tab>
+  <Tab title="🦀 Rust (low level)">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L6-L23"
+            start="6" end="23" />
+  </Tab>
+  <Tab title="🦀 Rust (high level)">
+    <Github fname="external.rs" language="rust"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs#L9-L21"
+      start="9" end="21" />
+
+    这需要您定义外部合约接口：
+
+    <Github fname="external.rs" language="rust"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
+      start="4" end="12" />
+  </Tab>
+</Tabs>
+
+### 回调函数
+
+回调函数处理跨合约调用的结果。在这种情况下，它只是返回从 `hello-near` 合约获得的问候语消息。
+
+注意，回调函数被标记为**private**，意味着它只能由合约本身调用。
+
+<Tabs>
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts#L42-L52"
+      start="42" end="52" />
+  </Tab>
+  <Tab title="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L25-L39"
+            start="25" end="39" />
+  </Tab>
+</Tabs>
+
+---
+
+## 测试合约
+
+合约已经包含一套单元测试和沙盒测试来验证其功能。要执行测试，请运行以下命令：
+
+<Tabs>
+  <Tab title="🌐 JavaScript">
+
+  ```bash
+  cd contract-simple-ts
+  yarn
+  yarn test
+  ```
+
+  </Tab>
+  <Tab title="🦀 Rust">
+
+  ```bash
+  cd contract-simple-rs
+  cargo test
+  ```
+  </Tab>
+
+</Tabs>
+
+<Tip>
+`集成测试`使用沙盒创建 NEAR 用户并模拟与合约的交互。
+</Tip>
+
+特别是在这个项目中，集成测试首先部署 `hello-near` 合约。然后，它们测试跨合约调用是否正确设置和检索消息。您将在 `sandbox-ts/` 中找到 JavaScript 版本的集成测试，在 `tests/` 中找到 Rust 版本。
+
+<CodeGroup>
+  <Github fname="main.ava.ts"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/sandbox-ts/main.ava.ts"
+            start="8" end="52" />
+  <Github fname="lib.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs"
+            start="4" end="77" />
+</CodeGroup>
+
+### 将合约部署到 NEAR 网络
+
+要部署合约，您需要创建一个 NEAR 账户。
+
+<Tabs>
+  <Tab title="简短">
+
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near create-account <accountId> --useFaucet
+  ```
+  </Tab>
+
+  <Tab title="完整">
+
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+  ```
+  </Tab>
+</Tabs>
+
+进入包含智能合约的目录（`cd contract-advanced-ts` 或 `cd contract-advanced-rs`），构建并部署它：
+
+<Tabs>
+
+  <Tab title="🌐 JavaScript">
+
+    ```bash
+    npm run build
+    near deploy <accountId> ./build/cross_contract.wasm --initFunction new --initArgs '{"hello_account":"hello.near-example.testnet"}'
+    ```
+
+  </Tab>
+  <Tab title="🦀 Rust">
+  
+  ```bash
+  cargo near deploy build-non-reproducible-wasm <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+
+  ```
+
+  </Tab>
+
+</Tabs>
+
+### CLI：与合约交互
+
+要通过控制台与合约交互，可以使用以下命令：
+
+<Tabs>
+  <Tab title="简短">
+
+  ```bash
+  # Get message from the hello-near contract
+  # Replace <accountId> with your account ID
+  near call <accountId> query_greeting --useAccount <accountId>
+
+  # Set a new message for the hello-near contract
+  # Replace <accountId> with your account ID
+  near call <accountId> change_greeting '{"new_greeting":"XCC Hi"}' --useAccount <accountId>
+  ```
+  </Tab>
+
+  <Tab title="完整">
+
+  ```bash
+  # Get message from the hello-near contract
+  # Replace <accountId> with your account ID
+  near contract call-function as-transaction <accountId> query_greeting json-args '{}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+
+  # Set a new message for the hello-near contract
+  # Replace <accountId> with your account ID
+  near contract call-function as-transaction <accountId> change_greeting json-args '{"new_greeting":"XCC Hi"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+  ```
+  </Tab>
+</Tabs>
+
+---
+
+## 继续前进
+
+学习的好方法是尝试扩展合约。修改跨合约示例以使用 [guest-book](https://github.com/near-examples/guest-book-examples) 合约！这样，您可以尝试进行附加资金的跨合约调用。请记住正确[处理回调](/smart-contracts/anatomy/crosscontract#callback-function)，并在出现错误时将资金退还给用户。
+
+### 高级跨合约调用
+
+您的合约可以同时执行多个跨合约调用，创建并行执行的承诺，或作为批量交易。查看[高级跨合约调用教程](./advanced-xcc)了解更多信息。
+
+<Note>
+**本文版本信息**
+
+在撰写本文时，此示例适用于以下版本：
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+</Note>

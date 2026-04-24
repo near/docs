@@ -1,0 +1,134 @@
+---
+title: 地址（账户 ID）
+description: "全面了解 NEAR 账户地址"
+---
+
+NEAR 账户通过唯一地址进行标识，该地址可以有多种形式：
+
+1. [**隐式地址**](#implicit-address)，长度为 64 个字符（例如 `fb9243ce...`）
+2. [**命名地址**](#named-address)，类似于域名（例如 `alice.near`、`sub.account.testnet`）
+3. 以太坊风格的账户（例如 `0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`）
+
+<Accordion title="有效的账户 ID">
+
+在 NEAR 中，账户实际上可以是任何字符串，只要满足以下条件：
+- 至少 2 个字符，最多 64 个字符
+- 只能使用小写字母（`a-z`）、数字（`0-9`）和分隔符（`.`、`-`、`_`）
+
+这意味着 `root`、`some-unique-string`、`something-to-remember-later`、`0x85f17....`、`fb9243ce` 和 `user.name` 都是**有效的账户 ID**。
+
+但是，用户只能创建`命名地址`、`隐式地址`或`以太坊风格地址`的账户。
+
+</Accordion>
+
+<Tip>
+**想要创建账户？**
+
+您有多种方式创建账户：可以创建[网页钱包](https://wallet.meteorwallet.app/wallet)、通过 [Telegram](https://web.telegram.org/k/#@herewalletbot) 创建移动钱包，或从可用的 [NEAR 钱包](https://wallet.near.org/)中选择。
+
+</Tip>
+
+---
+
+## 隐式地址
+隐式账户由 64 个字符的地址表示，对应一个唯一的公钥/私钥对。控制隐式账户[私钥](./access-keys)的人即控制该账户。
+
+例如：
+- 私钥：`ed25519:4x1xiJ6u3sZF3NgrwPUCnHqup2o...`
+- 对应的公钥：`ed25519:CQLP1o1F3Jbdttek3GoRJYhzfT...`
+- 控制账户：`a96ad3cb539b653e4b869bd7cf26590690e8971...`
+
+隐式账户始终*存在*，因此无需创建。但要使用该账户，您仍需要向其充值 NEAR 代币（或通过中继者支付交易的 [gas](../transactions/gas)）。
+
+<Tip>
+
+在 NEAR 中，您可以删除隐式账户的私钥，这将有效锁定该账户，防止任何人控制它。
+
+</Tip>
+
+<Accordion title="🧑‍💻 技术细节：如何获取密钥对">
+
+获取代表账户的公钥/私钥最简单的方式是使用 [NEAR CLI](/tools/cli)
+
+```bash
+near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
+
+# 文件 "~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json" 已成功保存
+
+cat ~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json
+```
+
+或使用 `near-seed-phrase` 库：
+
+```js
+import { generateSeedPhrase } from "near-seed-phrase";
+const { seedPhrase, publicKey, secretKey } = generateSeedPhrase();
+```
+
+</Accordion>
+
+<Accordion title="🧑‍💻 技术细节：如何从公钥推导隐式账户">
+
+您可以通过以下方式从公钥推导隐式账户地址：移除 `ed25519:` 前缀，将结果 Base58 字符串解码为字节，然后将这些字节转换为十六进制字符串。
+
+```js
+// 原生 js
+import { decode } from 'bs58';
+Buffer.from(decode(publicKey.replace('ed25519:', ''))).toString('hex')
+
+// 或使用 near-api-js
+import { utils } from 'near-api-js';
+utils.keyToImplicitAddress(publicKey);
+```
+
+</Accordion>
+
+---
+
+## 命名地址
+用户可以注册**命名账户**（例如 `bob.near`），这类账户易于记忆和共享。
+
+命名账户的一个强大特性是它们可以创建自身的**子账户**，有效地充当域名：
+
+1. [`registrar`](https://nearblocks.io/address/registrar) 账户可以创建顶级账户（例如 `near`、`sweat`、`kaiching`）。
+2. `near` 账户可以创建子账户，如 `bob.near` 或 `alice.near`
+3. `bob.near` 可以创建其自身的子账户，如 `app.bob.near`
+4. 账户不能创建其他账户的子账户
+    - `near` **不能**创建 `app.bob.near`
+    - `account.near` **不能**创建 `sub.another-account.near`
+5. 账户对其子账户**没有控制权**，它们是不同的实体
+
+任何人都可以创建 `.near` 或 `.testnet` 账户，只需调用对应顶级账户的 `create_account` 方法——测试网上是 `testnet`，主网上是 `near`。
+
+<Accordion title="🧑‍💻 技术细节：命名账户是如何创建的？">
+
+在 NEAR 中，命名账户是使用 [`CreateAccount`](../transactions/transaction-anatomy#actions) 操作创建的。`testnet` 和 `near` 账户都暴露了 `create_account` 函数，该函数触发 `CreateAccount` 来创建其子账户。
+
+例如，如果我们想用 `0.1 NEAR` 创建账户 `alice.testnet`，我们需要使用现有账户（例如 `funding-account.testnet`）调用 `testnet` 的 `create_account` 方法：
+
+```bash
+near call testnet create_account '{"new_account_id": "alice.testnet", "new_public_key": "ed25519:<data>"}' --useAccount funding-account.testnet --networkId testnet
+```
+
+如果我们随后想创建 `alice.testnet` 的子账户（我们控制的），我们可以直接触发 `CreateAccount` 操作：
+
+```bash
+near create-account sub-acc.new-acc.testnet --useAccount new-acc.testnet
+```
+
+> 注意：如果您希望账户有一些初始余额，可以在上述命令中添加 `--deposit <以 NEAR 为单位的金额>` 标志
+
+</Accordion>
+
+<Info>
+**创建命名账户**
+
+如果您不通过中介（即 CLI 或钱包），可以创建一个隐式账户，为其充值，然后在 `near` / `testnet` 上调用 `create_account`
+
+</Info>
+
+---
+
+## 以太坊风格的地址
+
+NEAR 还支持以太坊风格的账户，这些账户通过十六进制地址标识（例如 `0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`）。当用户使用 MetaMask 等以太坊钱包登录 NEAR 应用程序时，这些账户会自动创建。

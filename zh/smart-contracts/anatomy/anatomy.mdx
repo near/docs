@@ -1,0 +1,161 @@
+---
+title: 基本结构
+hide_table_of_contents: true
+description: "了解所有智能合约的基本结构。"
+mode: wide
+---
+import { ExplainCode, Block , File  } from '/snippets/explain-code.jsx'
+
+让我们通过一个简单的 "Hello World" 合约来说明智能合约的基本结构。本页面的代码来自我们在 GitHub 上的 [Hello NEAR 仓库](https://github.com/near-examples/hello-near-examples)。
+
+<ExplainCode languages="rust,js,python,go" >
+
+<Block highlights='{"js": "1", "rust": "1", "python": "1","go":"3-6"}' fname="hello-near">
+
+    ### 导入 SDK
+    所有合约都将导入 **NEAR SDK**，使其能够[访问执行环境](./environment)、[调用其他合约](./crosscontract)、[转移代币](./actions)等。
+
+    您也可以使用第三方库，但由于合约运行时的限制，某些库可能无法正常工作。
+
+</Block>
+
+<Block highlights='{"js": "5-22", "rust":"5-7,20-31", "python": "5-19","go":"8-33"}' fname="hello-near">
+
+    ### 合约主结构
+    合约通过结构体来描述：
+    - 属性定义了合约存储的数据
+    - 函数定义了其公共（和私有）接口
+
+</Block>
+
+<Block highlights='{"go": "8,13,20,30"}' fname="hello-near">
+
+    ### 注释指令
+
+    与具有内置装饰器的语言不同，Near Go SDK 使用**注释指令**来控制代码如何被编译成智能合约。
+
+    生成器（内置于 `near-go` CLI）会扫描您的注释，寻找以 `@contract:` 开头的特定标签。
+    
+    > **注意：** 这些指令依赖于 `near-go` 构建过程，如果您使用原始的 `tinygo` 编译则无法工作。
+
+    1. **`@contract:state`**：放在 `struct` 上方。它标识智能合约的主状态。**每个项目只允许一个状态结构体。** CLI 自动生成 `getState` 和 `setState` 辅助方法。
+    2. **`@contract:init`**：标记初始化方法（构造函数）。它在运行前检查状态是否为空。**每个项目只允许一个 init 方法。**
+    3. **`@contract:view`**：将方法标记为只读。它将方法暴露给外部，但不保存状态变更。与 `@contract:promise_callback` 兼容。
+    4. **`@contract:mutating`**：标记修改状态的方法。CLI 在执行后自动将更新后的状态保存回存储。需要修改数据的回调函数必须使用此标记。
+    5. **`@contract:payable`**：允许方法接受附加的 NEAR 代币。您可以选择性地指定要求，如 `min_deposit=1NEAR`。与 `mutating` 和 `init` 兼容。
+    6. **`@contract:promise_callback`**：通过将 `promise.PromiseResult` 注入参数来处理跨合约调用的结果。**必须与** `@contract:view`（用于只读逻辑）或 `@contract:mutating`（用于保存状态变更）**组合使用**。
+    
+
+    **注意：** 导出到 WASM 的方法将自动转换为 `snake_case`（例如，`SetGreeting` 变为 `set_greeting`）。
+
+</Block>
+
+<Block highlights='{"js": "3"}' fname="hello-near">
+
+    ### 合约类装饰器
+
+    请注意，合约类使用 `@NearBindgen` 装饰。此装饰器告诉 SDK 哪个类定义了合约，因此它知道：
+    1. 合约加载时从存储中获取什么
+    2. 合约执行完成时存储什么
+    3. 哪些方法暴露给外部
+    4. 合约是否需要初始化（我们稍后会介绍）
+
+    **注意：** 只有一个类可以使用 `@NearBindgen` 装饰器
+
+</Block>
+
+<Block highlights='{"python": "4"}' fname="hello-near">
+
+    ### Python 类结构
+
+    在 Python 中，我们使用类来定义合约。与 JavaScript 或 Rust 不同，类本身没有特定的装饰器。相反，应该暴露给区块链的每个方法都使用适当的装饰器（`@view`、`@call` 或 `@init`）进行装饰。
+
+    合约的状态通过实例变量管理，可以使用 Storage API 或集合进行持久化。
+
+</Block>
+
+<Block highlights='{"rust": "4,19"}' fname="hello-near">
+
+    ### 合约结构体宏
+
+    请注意，合约的结构体定义和实现都使用宏装饰
+
+    `#[near(contract_state)]` 宏告诉 SDK 此结构体定义了合约的状态，因此它知道：
+    1. 合约加载时从存储中获取什么
+    2. 合约执行完成时存储什么
+
+    `#[near]` 宏告诉 SDK 哪些函数暴露给外部。
+
+    **注意：** 只有一个结构体可以使用 `#[near(contract_state)]` 宏装饰。
+
+</Block>
+
+<Block highlights='{"rust": "4,19"}' fname="hello-near" type='info'>
+
+    <Accordion title="与其他宏的交互">
+
+    当 `near` 为 wasm32 目标构建时，它会生成外部 NEAR 合约绑定。为此，它实际上生成了另一个具有签名 `pub extern "C" fn function_name()` 的函数，该函数首先从 NEAR 存储反序列化合约结构体，然后调用 `contract.function_name(parameter1, parameter2, ...)`。
+
+    如果您用任何属性类宏注释了函数，这些宏将被执行_两次_。特别是，如果属性类宏对函数签名进行任何修改，或插入任何依赖于合约结构体（以 `&self`、`&mut self` 或 `self` 的形式）的代码，这将在第二次调用时失败，因为外部暴露的函数没有此结构体的概念。
+
+    可以通过检查您正在构建的目标来检测这一点，并将宏的执行限制为仅在第一次传递时操作。
+
+    </Accordion>
+
+</Block>
+
+<Block highlights='{"js": "5", "rust": "6,10-16", "python": "7-8", "go": "10,15,17,23,32"}' fname="hello-near">
+
+    ### 存储（状态）
+    我们将合约中存储的数据称为[合约的状态](./storage)。
+
+    在我们的 Hello World 示例中，合约存储一个字符串（`greeting`），状态以默认值 `"Hello"` 初始化。
+
+    **注意：** 我们将在[状态章节](./storage)中进一步介绍合约状态。
+
+</Block>
+
+<Block highlights='{"js": "7-9"}' fname="hello-near">
+
+    JavaScript 合约还需要包含一个 `schema` 对象，用于定义合约的状态及其类型。SDK 使用此对象正确序列化和反序列化合约状态。
+
+</Block>
+
+<Block highlights='{"python": "5-5,10-10,15-15"}' fname="hello-near">
+
+    ### 方法装饰器
+
+    在 Python 中，合约方法使用 `@view`、`@call` 或 `@init` 装饰器来定义它们的访问方式。
+    这些装饰器自动处理输入解析和返回值序列化。
+
+</Block>
+
+<Block highlights='{"js": "12-14", "rust": "22-24", "python": "10-13","go": "20-28"}' fname="hello-near">
+
+    ### 只读函数
+    合约的函数可以是只读的，意味着它们不修改状态。调用它们对所有人都是免费的，不需要有 NEAR 账户。
+
+    **注意：** 我们将在[函数章节](./functions)中进一步介绍函数类型。
+
+</Block>
+
+<Block highlights='{"js": "17-20", "rust": "27-30", "python": "15-19","go": "30-33"}' fname="hello-near">
+
+    ### 状态变更函数
+    修改状态或调用其他合约的函数被认为是状态变更函数。必须有 NEAR 账户才能调用它们，因为需要向网络发送交易。
+
+    **注意：** 我们将在[函数章节](./functions)中进一步介绍函数类型。
+
+</Block>
+
+<File language="js" fname="hello-near"
+    url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+    start="2" end="32" />
+
+<File language="rust" fname="hello-near"
+    url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+    start="2" end="32" />
+
+<File language="python" fname="hello-near" url="https://github.com/r-near/near-py-examples/blob/main/hello-near.py" start="2" end="32" />
+<File language="go" fname="hello-near" url="https://github.com/vlmoon99/near-sdk-go/blob/main/examples/greeting/contract/main.go" start="1" end="77" />
+</ExplainCode>

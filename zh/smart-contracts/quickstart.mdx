@@ -1,0 +1,599 @@
+---
+title: 您的第一个智能合约
+sidebarTitle: 快速入门
+description: "使用您喜欢的语言创建您的第一个合约。"
+---
+
+import {Github} from '/snippets/github.jsx';
+
+欢迎！[NEAR 账户](../protocol/accounts-contracts/account-model)可以存储被称为智能合约的小型应用程序。在本快速教程中，我们将指导您在 NEAR **测试网**上创建您的第一个合约！
+
+让我们一起创建一个友好的拍卖合约，允许用户出价、追踪最高出价者并在拍卖结束时领取代币。
+
+<Tip>
+**我应该使用哪种语言？**
+
+在本教程中，我们提供了用多种语言创建合约的说明。
+
+我们建议将 **Rust** 用于生产应用，因为其工具链更成熟。但是，如果您只是在原型设计或学习阶段，可以随意使用 **JavaScript**、**Python** 或 **Go**！
+
+</Tip>
+
+<Accordion title="更喜欢在线 IDE？">
+
+  想直接跳入代码而无需设置本地开发环境？
+  
+  查看 [NEAR Playground](https://nearplay.app/)，这是一个易于使用的在线 IDE，带有预配置的模板。
+
+  ![NEAR Playground](/assets/docs/smart-contracts/NEAR-Playground.png)
+
+  [![在 NearPlay 中尝试计数器示例](https://img.shields.io/badge/Open%20in%20NearPlay-14b8a6?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTE4IDcgNCA0LTQgNE00IDEybDQgNC00LTQgNC00Ii8+PC9zdmc+&logoColor=white)](https://nearplay.app/embed/3450a8a0-57dc-4d3a-b5d0-7bed58a0c2a9)
+
+</Accordion>
+
+---
+
+## 前提条件
+
+开始之前，请确保设置好您的开发环境。
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+```bash
+# 安装 Rust: https://www.rust-lang.org/tools/install
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# 合约将被编译为 wasm，因此我们需要添加 wasm 目标
+rustup target add wasm32-unknown-unknown
+
+# 安装 NEAR CLI-RS 以部署合约并与之交互
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+
+# 安装 cargo near 以帮助构建合约
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
+```
+
+</Tab>
+
+  <Tab title="🌐 JavaScript">
+
+```bash
+# 使用 nvm 安装 Node.js（更多选项请参考: https://nodejs.org/en/download）
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install latest
+
+# ⚠️ 仅适用于 Mac Silicon 用户，编译合约需要 Rosetta
+# /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+
+# 安装 NEAR CLI 以部署合约并与之交互
+npm install -g near-cli-rs@latest
+```
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+ ```bash
+# 安装 Python（如果尚未安装）
+# 使用系统包管理器或从 https://www.python.org/downloads/ 下载
+
+# 安装 Emscripten（编译 Python 合约为 WebAssembly 所需）
+# 适用于 Linux/macOS:
+git clone https://github.com/emscripten-core/emsdk.git
+cd emsdk
+./emsdk install latest
+./emsdk activate latest
+source ./emsdk_env.sh
+# 永久添加到 .bashrc 或 .zshrc:
+# echo 'source "/path/to/emsdk/emsdk_env.sh"' >> ~/.bashrc
+cd ..
+
+# 适用于 Windows:
+# 下载并解压: https://github.com/emscripten-core/emsdk
+# 然后在命令提示符中:
+# cd emsdk
+# emsdk install latest
+# emsdk activate latest
+# emsdk_env.bat
+
+# 验证安装:
+emcc --version
+
+# 安装 uv 用于 Python 包管理
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 安装 NEAR CLI-RS 以部署合约并与之交互
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+```text
+
+</Tab>
+<Tab title="🐹 GO">
+
+```bash
+#适用于 Linux arm/x64
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential curl wget git libssl-dev pkg-config checkinstall
+sudo apt install bison
+
+#适用于 Mac
+xcode-select --install
+brew update
+brew install mercurial
+brew install binaryen
+
+bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+gvm install go1.25.4 -B
+gvm use go1.25.4 --default
+
+curl -LO https://github.com/vlmoon99/near-cli-go/releases/latest/download/install.sh && bash install.sh
+
+```
+</Tab>
+
+</Tabs>
+
+---
+
+## 创建合约
+
+使用以下脚手架工具之一创建智能合约，并按照说明操作：
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+```bash
+cargo near
+```
+
+![img](/assets/docs/smart-contracts/hello-near-rs.gif)
+_使用 `cargo near new` 创建项目_
+
+</Tab>
+
+  <Tab title="🌐 JavaScript">
+
+```bash
+npx create-near-app@latest
+```
+
+![img](/assets/docs/smart-contracts/hello-near-ts.gif)
+_使用 `npx create-near-app@latest` 创建项目_
+
+<Note>
+
+当提示选择模板时，选择基本的 `Auction` 模板以生成拍卖合约脚手架
+
+</Note>
+
+</Tab>
+
+<Tab title="🐍 Python">
+
+<Note>
+Python 快速入门教程即将推出！
+
+同时，请查看 [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) 示例。
+</Note>
+
+</Tab>
+
+</Tabs>
+
+<Tip>
+
+在本教程中，我们选择将项目命名为 `auction`，但您可以随意使用任何您喜欢的名称
+
+</Tip>
+
+---
+
+## 合约结构
+
+拍卖智能合约允许用户出价、追踪最高出价者并在拍卖结束时领取代币。
+
+让我们来看看合约的不同组成部分，以及它们如何协同工作来实现这一功能。
+
+### 合约状态与初始化
+
+合约存储最高出价、拍卖结束时间、拍卖师地址以及用于追踪是否已领取收益的标志。为了设置这些参数，提供了一个 `init` 函数，必须首先调用该函数来初始化合约状态。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+            start="7" end="35" />
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+            start="5" end="21" />
+  </Tab>
+
+  <Tab title="🐍 Python">
+    <Github fname="contract.py" language="python"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
+            start="1" end="18" />
+  </Tab>
+</Tabs>
+
+### 出价
+
+为了出价，用户需要在调用 `bid` 函数时附上代表其出价金额的存款。
+
+`bid` 函数将验证拍卖是否正在进行，如果用户出价高于已存储的金额，它将记录新出价并退还给前一个出价者。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+            start="37" end="64" />
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+            start="23" end="43" />
+  </Tab>
+
+  <Tab title="🐍 Python">
+    <Github fname="contract.py" language="python"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
+            start="20" end="45" />
+  </Tab>
+</Tabs>
+
+### 领取收益
+
+拍卖结束后，任何用户都可以调用 `claim` 将获胜出价转移给拍卖师：
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+            start="65" end="76" />
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+            start="45" end="52" />
+  </Tab>
+
+  <Tab title="🐍 Python">
+    <Github fname="contract.py" language="python"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
+            start="47" end="59" />
+  </Tab>
+</Tabs>
+
+### 查询方法
+
+用户随时可以通过调用查询方法（`get_highest_bid`、`get_auction_end_time`、`get_auctioneer`、`get_claimed`）查看拍卖的当前状态：
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+            start="78" end="92" />
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+            start="54" end="71" />
+  </Tab>
+
+  <Tab title="🐍 Python">
+    <Github fname="contract.py" language="python"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
+            start="62" end="90" />
+  </Tab>
+</Tabs>
+
+---
+
+## 测试合约
+
+让我们通过运行测试来确认合约按预期工作。只需运行 `test` 命令，合约将被编译并部署到本地沙盒进行测试：
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  ```bash
+  cargo test
+  ```
+
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+
+    ```bash
+    npm run test
+    ````
+
+    <Accordion title="测试失败？">
+
+    确保您使用的是 `node v24 / 22 / 20`，如果您使用的是搭载 Apple Silicon 的 Mac，请确保已安装 `Rosetta`
+
+    </Accordion>
+
+  </Tab>
+  
+  <Tab title="🐍 Python">
+
+  ```bash
+  uv run pytest
+  ```
+  
+  </Tab>
+</Tabs>
+
+请随意查看测试文件，了解它们如何与合约交互。简而言之，会创建一个本地 NEAR 沙盒，部署合约，并调用不同的方法来验证预期行为。
+
+---
+
+## 构建并部署合约
+
+现在我们知道测试通过了，让我们部署合约！首先，我们需要将其编译为 WebAssembly：
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  ```bash
+  cargo near build non-reproducible-wasm
+  ```
+  
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+
+  ```bash
+  npm run build
+  ```
+
+  </Tab>
+  
+  <Tab title="🐍 Python">
+
+   ```bash
+  # 通过 uv 执行器使用 nearc 构建（无需安装）
+  uvx nearc contract.py
+  ```
+  
+  上述命令将把您的 Python 合约编译为可部署到 NEAR 区块链的 WebAssembly (WASM)。
+  
+ <Info>
+  
+  默认的 `nearc` 构建配置适用于大多数合约。我们使用 `uvx` 直接运行，无需单独安装 nearc。
+  
+</Info>
+
+  :::important
+  
+  此步骤需要在您的 `PATH` 中安装并可访问 [Emscripten](https://emscripten.org/)。如果在编译过程中遇到错误，请使用 `emcc --version` 验证 Emscripten 是否正确安装。
+  
+  常见编译错误及解决方案：
+  - `emcc: command not found` - Emscripten 不在您的 PATH 中。运行 `source /path/to/emsdk/emsdk_env.sh` 临时添加。
+  - `error: invalid version of emscripten` - 您的 Emscripten 版本可能太旧。尝试使用 `./emsdk install latest && ./emsdk activate latest` 更新。
+  - `Could not find platform micropython-dev-wasm32` - 这通常意味着 Emscripten 安装不完整或未正确激活。
+  
+  :::
+
+  </Tab>
+
+  <Tab title="🐹 GO">
+    ```bash
+    near-go build
+    ```
+
+    <Info>
+    **Near Go SDK 构建过程**
+
+    1. 主包中的所有代码（包括来自其他模块的导入）被合并到单个 **generated_build.go** 文件中。
+    2. **generated_build.go** 文件通过 **TinyGo** 编译为 `wasm32-unknown-unknown`。
+
+    </Info>
+
+    <Info>
+    **自定义构建**
+
+    默认的 `near-go build` 命令适用于大多数标准项目，将当前目录中的源代码编译为 `main.wasm`。
+
+    但是，如果您想指定自定义输出名称或**检查中间粘合代码**（生成的 JSON 序列化和 SDK 集成包装器）以便调试，可以使用以下可用标志：
+
+    ```bash
+    near-go build --output my_contract.wasm --keep-generated
+    ```
+    </Info>
+
+    </Tab>
+
+  </Tabs>
+
+### 创建账户
+
+现在让我们创建一个 NEAR 账户来部署合约：
+
+```bash
+# 将 <contract-acc.testnet> 替换为您的合约账户名称
+near create-account <contract-acc.testnet> --useFaucet
+```
+
+<Tip>
+**已有测试网账户？**
+
+如果您已经有一个 `testnet` 账户并想使用它，可以使用命令 `near login` 登录。
+
+</Tip>
+
+<Accordion title="在 Windows 上遇到错误？">
+
+在 `WSL` 或任何其他无头 Linux 环境中工作时，您可能会在尝试创建账户时遇到问题，因为 `cli` 会尝试将密钥保存到系统的密钥链中。
+
+在这种情况下，您可以尝试以下命令创建账户：
+
+```bash
+near account create-account sponsor-by-faucet-service <your-account-id.testnet> autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+```
+
+</Accordion>
+
+### 部署！
+
+合约准备好后，我们现在可以将其部署到之前创建的 `testnet` 账户：
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    ```bash
+    near deploy <contract-acc.testnet> ./target/near/auction.wasm
+    ```
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+    ```bash
+    near deploy <contract-acc.testnet> ./build/auction.wasm
+    ```
+  </Tab>
+  
+  <Tab title="🐍 Python">
+
+    ```bash
+    near deploy <created-account> ./auction.wasm
+    ```
+
+  </Tab>
+</Tabs>
+
+**恭喜！** 您的合约现在已部署在 NEAR 测试网络上。
+
+---
+
+## 与合约交互
+
+要与已部署的智能合约交互，您可以通过命令行调用其函数。
+
+#### 初始化合约
+让我们通过设置拍卖结束时间和资金接收人（拍卖师）来初始化拍卖：
+
+```bash
+# 获取从现在起 5 分钟后的时间戳（以纳秒为单位）
+FIVE_MINUTES_FROM_NOW=$(( $(date +%s%N) + 5 * 60 * 1000000000 ))
+
+# 初始化拍卖
+near call <contract-acc.testnet> init "{\"end_time\": \"$FIVE_MINUTES_FROM_NOW\", \"auctioneer\": \"influencer.testnet\"}" --useAccount <contract-acc.testnet>
+```
+
+<Tip>
+您可以随意将 `influencer.testnet` 替换为任何有效的测试网账户——这是获胜出价将被发送的地址
+</Tip>
+
+#### 出价
+
+现在我们可以通过调用 `bid` 方法并附上一些 NEAR 存款来在拍卖中出价。每次出价时，最高出价和出价者信息将被记录在合约的[存储](./anatomy/storage)中。
+
+```bash
+# 创建一个新账户来出价
+near create-account <bidder-account.testnet> --useFaucet
+
+# 出价 0.01 NEAR
+near call <contract-acc.testnet> bid '{}' --deposit 0.01  --useAccount <bidder-account.testnet>
+```
+
+<Note>
+
+请注意，在这种情况下，我们使用 `<bidder-account.testnet>` 账户（记得重命名！）来调用 `bid` 函数，同时附上 `0.01` NEAR 作为我们的出价
+
+</Note>
+
+#### 查询最高出价
+
+`get_highest_bid` 函数只从合约状态读取，因此不需要交易或签名：
+
+```bash
+near view <contract-acc.testnet> get_highest_bid '{}'
+```
+
+<Accordion title="预期输出">
+
+  ```json
+  {
+    "bidder": "<bidder-account.testnet>",
+    "amount": "10000000000000000000000"
+  }
+  ```
+</Accordion>
+
+<Tip>
+
+您可以随意创建任意数量的出价者账户并出更多价，看看最高出价如何变化！
+
+</Tip>
+
+#### 领取
+
+拍卖结束后，任何人都可以调用 `claim` 方法，将`最高出价`金额转移给拍卖师并结束拍卖。
+
+```bash
+near call <contract-acc.testnet> claim '{}' --useAccount <contract-acc.testnet>
+```
+
+<Info>
+**谁赢了？**
+
+拍卖结束后，只需再次调用 `get_highest_bid` 方法即可确定最高出价者
+
+</Info>
+
+---
+
+## 常见问题
+
+#### 主网怎么办？
+您可以使用相同的命令将合约部署到主网，只需确保创建主网账户并在 `near` CLI 命令中使用 `--networkId mainnet` 标志。
+
+#### 部署费用是多少？
+部署合约的费用取决于合约大小，大约 1Ⓝ 对应 100Kb。
+
+#### 部署后还能更新合约吗？
+可以。使用 `near deploy <account> <wasm-file>` 重新部署。账户保持不变，代码更新。
+
+#### 我应该选择哪种语言？
+构建生产应用时优先选择 **Rust**，因为它提供最成熟的工具链和最佳性能。否则，如果您只是在原型设计或学习，可以在 **JavaScript**、**Python** 或 **Go** 之间选择您喜欢的语言。
+
+#### 如何不部署就进行测试？
+所有语言都支持沙盒测试（如本指南所示）。测试在本地使用模拟的 NEAR 环境运行。
+
+---
+
+## 继续前进
+
+<CardGroup cols={3}>
+  <Card title="创建前端" href="../web3-apps/tutorials/mastering-near/2.1-frontend">
+    查看拍卖前端教程，了解如何构建一个与拍卖合约交互的简单 Web 应用
+  </Card>
+  <Card title="扩展合约" href="../web3-apps/tutorials/mastering-near/3.1-nft">
+    跟随拍卖 NFT 教程，为最高出价者颁发非同质化代币（NFT），并允许用户使用同质化代币（FT）出价
+  </Card>
+  <Card title="深入了解 SDK" href="./anatomy/anatomy">
+    查看我们的合约结构页面，了解构成 NEAR 智能合约的不同组件
+  </Card>
+</CardGroup>
+
+<br />
+
+<Accordion title="本文的版本信息">
+
+撰写本文时，示例使用以下版本：
+
+- node: `22.18.0`
+- rustc: `1.86.0`
+- near-cli-rs: `0.22.0`
+- cargo-near: `0.16.1`
+- Python: `3.13`
+- near-sdk-py: `0.7.3`
+- uvx nearc: `0.9.2`
+- emscripten: `4.0.9`（Python 合约必需）
+
+</Accordion>

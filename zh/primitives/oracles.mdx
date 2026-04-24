@@ -1,0 +1,171 @@
+---
+title: 预言机
+description: "了解 NEAR 协议上的区块链预言机，包括价格数据源、数据集成，以及使用 Outlayer 价格预言机和 Pyth Network 等预言机服务。"
+---
+
+import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
+import { Github } from '/snippets/github.jsx';
+
+[区块链预言机](https://en.wikipedia.org/wiki/Blockchain_oracle)作为中间件，将智能合约与外部（链下）数据连接起来。
+
+`示例：`
+
+- **价格数据源：** 加密货币、股票或大宗商品的实时价格。
+- **事件信息：** 体育赛事结果或天气状况等现实世界事件的更新。
+- **API 访问：** 与外部 Web 服务和系统的连接。
+
+<Info>
+预言机作为外部第三方服务，需要仔细考量其可靠性、安全性和去中心化程度，以避免数据错误、操纵或单点故障等风险。
+</Info>
+
+---
+
+## NEAR 上已部署的预言机
+
+以下是 NEAR 区块链上已部署的第三方预言机服务目录：
+
+| 名称                                                                                                     | 创建者                                 | 描述                                        |
+| -------------------------------------------------------------------------------------------------------- | --------------------------------------- | -------------------------------------------------- |
+| [Outlayer 价格预言机](#price-oracle-by-outlayer)                                                                | [Outlayer](https://github.com/zavodil/oracle-ark) | 基于 Outlayer 的 TEE 安全价格预言机      |
+| [Pyth Network 预言机](#pyth-network-oracle)                                                              | [Pyth Network](https://pyth.network/)   | 高频、低延迟的价格数据预言机 |
+| **[[您的项目在此](https://github.com/near/docs/edit/master/primitives/oracles.mdx)]** | -                                       | -                                                  |
+
+---
+
+## Outlayer 价格预言机
+
+- **创建者：** [Outlayer](https://github.com/fastnear/near-outlayer)
+- **官方文档：** [Price Oracle Outlayer](https://price-oracle.outlayer.ai/docs/)
+- **代码仓库：** [zavodil/oracle-ark](https://github.com/zavodil/oracle-ark)
+- **已部署地址：**
+  - **主网：** [price-oracle.near](https://nearblocks.io/address/price-oracle.near)
+  - **测试网：** [price-oracle.testnet](https://testnet.nearblocks.io/address/price-oracle.testnet)
+
+### 使用/集成方法
+
+`price-oracle.near` 原生实现了 Pyth 兼容的查看方法（详见下方 [Pyth Network 预言机](#pyth-network-oracle)）。使用 `pyth-oracle.near` 的 DeFi 合约只需更改一个合约地址即可迁移，无需修改任何代码。
+
+---
+
+## Pyth Network 预言机
+
+- **创建者：** [Pyth Network](https://pyth.network)
+- **官方文档：** [Pyth NEAR 文档](https://docs.pyth.network/price-feeds/use-real-time-data/near)
+- **代码仓库：** [pyth-network/pyth-crosschain](https://github.com/pyth-network/pyth-crosschain/tree/main/target_chains/near)
+- **已部署地址：**
+  - **主网：** [pyth-oracle.near](https://nearblocks.io/address/pyth-oracle.near)
+  - **测试网：** [pyth-oracle.testnet](https://testnet.nearblocks.io/address/pyth-oracle.testnet)
+
+---
+
+## 使用 Pyth Network 预言机
+
+> Pyth Network 的 NEAR 智能合约提供两个核心方法，用于更新和获取您所需的价格数据源。
+
+1. [`update_price_feeds`](#update_price_feeds)
+   _（使用您提供的价格数据源更新 Pyth 智能合约）_
+   - 参数：`data`
+   - 类型：`object`
+   - 示例：`{ "data": "504e41...' }`
+2. [`get_price`](#get_price)（获取合约中存储的最新价格）\_
+   - 参数：`price_identifier`
+   - 类型：`object`
+   - 示例：`{ price_identifier: 'f9c0172ba10dfa8...' }`
+
+<Info>
+完整的可交互接口列表请参见 [Pyth 的 `receiver` 合约](https://github.com/pyth-network/pyth-crosschain/blob/main/target_chains/near/receiver/src/ext.rs)。
+</Info>
+
+### 入门
+
+开始使用 Pyth 预言机，您需要收集以下信息，这些信息因网络而异：
+
+- 价格 ID
+- Hermes API 端点
+- 智能合约地址
+
+| 网络   | 价格数据源 ID                                                                                   | Hermes API 地址         | 合约地址                                                                 |
+| --------- | ------------------------------------------------------------------------------------------------ | -------------------------- | -------------------------------------------------------------------------------- |
+| `testnet` | [NEAR `testnet` 价格数据源 ID](https://www.pyth.network/developers/price-feed-ids#near-testnet) | `hermes-beta.pyth.network` | [pyth-oracle.testnet](https://testnet.nearblocks.io/address/pyth-oracle.testnet) |
+| `mainnet` | [NEAR `mainnet` 价格数据源 ID](https://www.pyth.network/developers/price-feed-ids#near-mainnet) | `hermes.pyth.network`      | [pyth-oracle.near](https://nearblocks.io/address/pyth-oracle.near)               |
+
+<Info>
+
+使用价格数据源 ID 时，需要去掉 `0x` 前缀。
+
+`价格数据源 ID 示例（测试网）：`
+
+<Github language='typescript' url='https://github.com/near-examples/near-js/blob/main/node-js/oracle-example/pyth-oracle-update.js' start='14' end='15'/>
+
+</Info>
+
+---
+
+### `update_price_feeds`
+
+> 使用您提供的价格数据源更新 Pyth Oracle 合约数据。
+
+- 参数：`data` _（链下十六进制编码的价格数据源）_
+- 类型：`object`
+- 示例：`{ "data": "504e41...' }`
+
+分两步更新 Pyth Oracle 合约的价格数据源：
+
+1. [获取链下价格数据源](#1-fetching-off-chain-price-feed)
+2. [用链下价格数据源更新 Pyth Oracle 合约](#2-update-pyth-oracle-contract-price-feed)
+
+#### 1) 获取链下价格数据源
+
+您可以使用 Pyth 的 [Hermes API](https://hermes-beta.pyth.network/docs/) 获取链下价格数据源。
+
+使用这些接口时，需要提供价格数据源 ID，并确保指向正确的网络。更多信息请参见[入门](#getting-started)。
+
+以下是使用 `/v2/updates/price/latest` 接口获取最新价格数据源的 node.js 示例：
+
+<Github
+          url="https://github.com/near-examples/near-js/blob/main/node-js/utils/fetch-hermes-price-data.js"/>
+
+#### 2) 更新 Pyth Oracle 合约价格数据源
+
+[获取链下价格数据源](#1-fetching-off-chain-price-feed)后，您可以向 Pyth Oracle 发起合约调用，在链上更新价格数据源。
+
+以 `data` 为参数调用 Pyth Oracle 合约上的 `update_price_feeds`。
+
+`示例参数：`
+
+```json
+{
+  "data": "504e41550100000000a00100000000010070b0ee3a00d1a3c07ee440887eb34a5a35860e6f4b9230fd62f0593fe35c8a3561735a6a37d269c5f166b84ead8918f710dc1be2ee6b51db5b22340ea2c173fc01673d544b00000000001ae101faedac5851e32b9b23b5f9411a8c2bac4aae3ed4dd7b811dd1a72ea4aa7100000000061bc18c014155575600000000000ab0f04600002710f41bc8c224ed983c68dbf5dab7dd34c9129fecfa03005500ca80ba6dc32e08d06f1aa886011eed1d77c77be9eb761cc10d72b7d0a2fd57a600000047e2eb4ef0000000000692480ffffffff800000000673d544b00000000673d544b00000048200e66a00000000005e495a60bb9370c458dd50558b34699b5b179f45e56be22f0a1a0feb1db8469adc8c5efeb53988495bac07bf9efed07f5eee43818150c55055882f6872a228e8e9bc78459ed3ea7fe0b86f3048f6bf0aad34befc46063ab7d200beb8bc9fe5839844d2233546f0742bb665f1e610370fcf8ce5be83d0f47e584b685af87cf3ebcb79e714827dcb99dba579e1a03785052ab3c7c7147d3f7bba822b04dbda159670e9a8d29e7ccf68474b2ca85e00224d29bf65b06b09f95e91703313e053b697b48ac1e4d1c57605a71ab77e7ef276bfe8a369c268333b9a37461bf2b7cb7fd4c005500ecf553770d9b10965f8fb64771e93f5690a182edc32be4a3236e0caaa6e0581a0000000e2ba8cd280000000001b40517fffffff800000000673d544b00000000673d544b0000000e3ea44c6800000000016aee120b47b853f55949284cb8ba0b63824ff9b48cd1da8417f45421b79ee3195fc8d107540a0bbb95c2445b66065754f135cb842db09a7e7ab33f79c546a48db872bd7197b04e3d7b52fbb55b3b9f51707c5a55fac3707cb563dbcde4aadeecc3649c237454cecf519dc567c0da03d81808523aa4fa71815eab25ce7da61b48647bac645d403208135002aab5fde2d7ab3c7c7147d3f7bba822b04dbda159670e9a8d29e7ccf68474b2ca85e00224d29bf65b06b09f95e91703313e053b697b48ac1e4d1c57605a71ab77e7ef276bfe8a369c268333b9a37461bf2b7cb7fd4c"
+}
+```
+
+使用 `near-js/client` 和 node.js 更新 Pyth Oracle 合约价格数据源的示例：
+
+<Github fname="updatePythContract"
+          url="https://github.com/near-examples/near-js/blob/main/node-js/oracle-example/pyth-oracle-update.js"/>
+  <Github fname="getHermesPriceData"
+          url="https://github.com/near-examples/near-js/blob/main/node-js/utils/fetch-hermes-price-data.js"/>
+  <Github fname="nearConnect"
+          url="https://github.com/near-examples/near-js/blob/main/node-js/utils/connect.js"/>
+
+<Info>
+
+虽然未使用的押金会被退还，但您可以通过调用 Pyth 合约的 `get_update_fee_estimate` 方法来估算费用。
+
+</Info>
+
+---
+
+### `get_price`
+
+> 获取 Pyth Oracle 合约中存储的最新价格数据源。这是一个查看方法，不需要签名或付款。
+
+- 参数：`price_identifier` _（唯一价格数据源标识符）_
+- 类型：`object`
+- 示例：`{ price_identifier: 'f9c0172ba10dfa8...' }`
+
+[更新价格数据源](#update_price_feeds)后，您可以通过调用 Pyth Oracle 合约上的 `get_price` 在链上查看数据源。请注意，这是一个查看方法，不需要签名或押金。
+
+`示例：`
+
+<Github url="https://github.com/near-examples/near-js/blob/main/node-js/oracle-example/pyth-oracle-view.js"/>

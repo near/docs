@@ -1,0 +1,48 @@
+---
+title: 什么是 NEAR Indexer？
+description: "用于处理区块链实时事件的框架"
+---
+
+随着扩展 dApp 进入 NEAR 主网，可能会出现一个问题：它们如何快速、高效地访问已部署智能合约的状态，并过滤掉无关信息？合约可能会发展出复杂的数据结构，通过网络 RPC 查询状态数据可能并非最优方式。
+
+[NEAR Indexer](https://github.com/near/nearcore/tree/master/chain/indexer) 是一个专为处理区块链实时事件而设计的微框架，允许以自定义方式捕获和索引区块流。
+
+借助 NEAR Indexer，开发者可以对区块链事件进行高层数据聚合和底层内省。
+
+<Tip>
+
+对于那些不想构建自己的索引器的人，[NEAR Lake Framework](./near-lake-framework) 提供了一种更简单的方式来实时访问区块链数据。
+
+</Tip>
+
+---
+
+## 工作原理
+
+NEAR Indexer 通过**运行一个节点**，在区块添加到区块链时处理它们。该框架提供区块流，允许开发者订阅并实时处理这些区块。
+
+<Tip>
+
+按照[教程](./tutorials/near-indexer)学习如何运行它。
+
+</Tip>
+
+---
+
+## 与 [NEAR Lake Framework](./near-lake-framework) 的比较
+
+与 NEAR Lake Framework 相比，在延迟方面，NEAR Indexer 明显更快，因为它以与 RPC 节点相同的方式直接从区块链读取数据。
+
+功能 | Indexer Framework | Lake Framework
+------- | ----------------- | --------------
+允许跟踪 NEAR 协议中的区块和交易 | **是** | **是**<br />（但仅限于主网和测试网）
+去中心化 | **是** | 否<br />（Pagoda Inc 将区块转储到 AWS S3）
+响应时间（端到端） | 最短 3.8 秒（估计平均 5-7 秒） | [最短 3.9 秒（估计平均 6-8 秒）](./near-lake-framework#latency)
+响应时间（仅框架开销） | 0.1 秒 | 0.2-2.2 秒
+基础设施估算成本 | [$500+/月](https://near-nodes.io/rpc/hardware-rpc) | [**$20/月**](./near-lake-framework#cost)
+维护难度 | 高级<br />（需要跟进每次 nearcore 升级并同步状态） | **简单**<br />（部署一次，无需维护）
+启动需要多长时间？ | 数天（在主网/测试网上） | **秒级**
+本地开发难度 | 高级<br />（localnet 是个好选择，但在 testnet/mainnet 上测试太重） | **简单**<br />（参见[教程](./tutorials/near-lake-state-changes-indexer)）
+自定义索引器可使用的编程语言 | 仅限 Rust | **任意语言**<br />（目前，辅助包已发布 [Python](http://pypi.org/project/near-lake-framework)、[JavaScript](https://www.npmjs.com/package/near-lake-framework) 和 [Rust](https://crates.io/crates/near-lake-framework) 版本）
+
+---

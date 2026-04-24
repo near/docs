@@ -1,0 +1,80 @@
+---
+title: 前端与多个合约交互
+sidebarTitle: 使用多个合约
+description: "在前端中与多个合约进行交互。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+本示例展示了如何从单个前端与多个合约进行交互。
+
+具体而言，本示例演示了如何：
+
+1. 从多个合约查询数据。
+2. 同时调用多个合约中的方法。
+
+---
+
+## 从多个合约查询数据
+
+要查询多个合约，只需执行多次 `view` 调用：
+
+<Github fname="index.js"
+        url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
+        start="70" end="76" />
+
+---
+
+## 分发多笔交易
+
+`wallet` 对象支持同时分发多笔交易。但请注意，这些交易是独立执行的。
+
+同时分发多笔交易只是一种改善用户体验的好方法，因为用户只需与钱包交互一次。
+
+<Github fname="index.js"
+          url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
+          start="35" end="62" />
+
+在本示例中，用户签署了两笔独立的交易：
+
+1. 一笔交易调用我们 [Hello NEAR 示例](https://github.com/near-examples/hello-near-examples)中的 `set_greeting`
+2. 一笔交易调用我们 [GuestBook 示例](https://github.com/near-examples/guest-book-examples)中的 `add_message`
+
+<Warning>
+即使用户同时接受签署这些交易，这些交易仍然是**独立的**。也就是说，如果其中一笔失败，另一笔**不会**被回滚。
+</Warning>
+
+---
+
+## 批量操作
+
+您可以将多个针对同一合约的[操作](../../smart-contracts/anatomy/actions)聚合到单笔交易中。批量操作**按顺序执行**，并且具有额外的好处：如果**其中一个失败**，则它们**全部会被回滚**。
+
+```js
+  // 在一次操作中注册用户并向其转移 FT
+  const REGISTER_DEPOSIT = "1250000000000000000000";
+
+  const ftTx = {
+    receiverId: FT_ADDRESS,
+    actions: [
+      {
+        type: 'FunctionCall',
+        params: {
+          methodName: 'storage_deposit',
+          args: { account_id: "<receiver-account>" },
+          gas: THIRTY_TGAS, deposit: REGISTER_DEPOSIT
+        }
+      },
+      {
+        type: 'FunctionCall',
+        params: {
+          methodName: 'ft_transfer',
+          args: { receiver_id: "<receiver-account>", amount: amount_in_yocto },
+          gas: THIRTY_TGAS, deposit: 1 }
+      }
+    ]
+  }
+
+  // 请求钱包签署并发送交易
+  await wallet.signAndSendTransactions({ transactions: [ ftTx ] })
+```

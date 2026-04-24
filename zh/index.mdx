@@ -1,0 +1,235 @@
+---
+mode: wide
+---
+
+<div class="flex justify-center gap-3 mb-6 flex-wrap">
+  <a href="https://docs.near.org/mcp" class="border-0" target="_blank" rel="noopener noreferrer">
+    <Badge color="green" icon="check">MCP 就绪</Badge>
+  </a>
+  <a href="https://docs.near.org/llms.txt" class="border-0" target="_blank" rel="noopener noreferrer">
+    <Badge color="green" icon="check">LLMs.txt 就绪</Badge>
+  </a>
+</div>
+
+<h1 class="text-5xl font-bold tracking-tight text-center pb-0 mb-0">
+  NEAR 开发者文档
+</h1>
+<p class="text-xl text-center text-gray-500 max-w-2xl mx-auto py-0 pb-4">
+  构建智能合约、去中心化应用及原生跨链应用，从未如此简单。
+</p>
+
+<Tabs>
+  <Tab title="智能合约">
+    <Columns cols={2}>
+      <div>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <Badge color="green" icon="clock">~5 分钟</Badge>
+          <Badge color="gray">Rust</Badge>
+          <Badge color="gray">JavaScript</Badge>
+          <Badge color="gray">Python</Badge>
+        </div>
+        <h3 class="text-xl font-bold mb-2">几分钟内部署您的第一个合约</h3>
+        <p class="text-gray-500 mt-2 mb-5">
+          使用 Rust、JavaScript、TypeScript 或 Python 编写智能合约。通过单条命令快速生成可运行的项目，然后构建、测试并部署。
+        </p>
+        <a href="/smart-contracts/quickstart" style={{display:'inline-flex',alignItems:'center',gap:'8px',padding:'9px 18px',borderRadius:'8px',background:'#2563eb',color:'#fff',fontWeight:'600',textDecoration:'none',fontSize:'14px',marginBottom:'16px'}}>
+          开始快速入门 →
+        </a>
+        <Card title="什么是智能合约？" icon="book-open" href="/smart-contracts/what-is" horizontal arrow>
+          概念、存储模型以及在 NEAR 上的执行方式。
+        </Card>
+        <Card title="合约结构解析" icon="layers" href="/smart-contracts/anatomy/actions" horizontal arrow>
+          动作、回调、跨合约调用及最佳实践。
+        </Card>
+      </div>
+      <CodeGroup>
+
+```bash bash
+$> npx create-near-app@latest
+
+======================================================
+👋 Welcome to Near! Learn more: https://docs.near.org/
+🔧 Let's get your project ready.
+======================================================
+
+✅ What do you want to build? › "Smart Contract"
+✅ Name your project to create a contract: "hello-near"
+✅ Success! Created 'hello-near', a smart contract in Rust
+
+
+Build, test, and deploy your contract using cargo:
+ * cargo near build
+ * cargo test
+ * cargo near deploy
+```
+
+      </CodeGroup>
+    </Columns>
+  </Tab>
+  <Tab title="Web 应用">
+    <Columns cols={2}>
+      <div>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <Badge color="green" icon="clock">~10 分钟</Badge>
+          <Badge color="gray">React</Badge>
+          <Badge color="gray">TypeScript</Badge>
+        </div>
+        <h3 class="text-xl font-bold mb-2">将您的前端连接到 NEAR</h3>
+        <p class="text-gray-500 mt-2 mb-5">
+          使用 <code>near-api-js</code> 和 Wallet Selector 对用户进行身份验证，并从任意前端框架调用智能合约。
+        </p>
+        <a href="/web3-apps/quickstart" style={{display:'inline-flex',alignItems:'center',gap:'8px',padding:'9px 18px',borderRadius:'8px',background:'#2563eb',color:'#fff',fontWeight:'600',textDecoration:'none',fontSize:'14px',marginBottom:'16px'}}>
+          开始快速入门 →
+        </a>
+        <Card title="钱包身份验证" icon="wallet" href="/web3-apps/concepts/web-login" horizontal arrow>
+          连接钱包、管理会话及用户账户。
+        </Card>
+        <Card title="数据类型参考" icon="book-open" href="/web3-apps/concepts/data-types" horizontal arrow>
+          NEAR 类型如何在 near-api-js 中映射到 JavaScript。
+        </Card>
+      </div>
+      <CodeGroup>
+
+```bash bash
+$> npx create-near-app@latest
+
+======================================================
+👋 Welcome to Near! Learn more: https://docs.near.org/
+🔧 Let's get your project ready.
+======================================================
+
+✅ What do you want to build? › "A Web App"
+✅ Select a framework for your frontend › "Vite (React)"
+✅ Name your project: "hello-near"
+✅ Success! Created 'hello-near', a web-app using Vite React.
+
+Start using your new NEAR app:
+ * cd hello-near
+ * npm run dev
+```
+
+      </CodeGroup>
+    </Columns>
+  </Tab>
+  <Tab title="链抽象">
+    <Columns cols={2}>
+      <div>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <Badge color="blue" icon="link">多链</Badge>
+          <Badge color="gray">Ethereum</Badge>
+          <Badge color="gray">Bitcoin</Badge>
+          <Badge color="gray">Solana</Badge>
+        </div>
+        <h3 class="text-xl font-bold mb-2">在任意链上签署交易</h3>
+        <p class="text-gray-500 mt-2 mb-5">
+          使用链签名派生门限密钥，并在任意区块链上签署交易——全部通过单个 NEAR 账户完成，无需桥接或封装资产。
+        </p>
+        <a href="/chain-abstraction/chain-signatures/getting-started" style={{display:'inline-flex',alignItems:'center',gap:'8px',padding:'9px 18px',borderRadius:'8px',background:'#2563eb',color:'#fff',fontWeight:'600',textDecoration:'none',fontSize:'14px',marginBottom:'16px'}}>
+          立即开始 →
+        </a>
+        <Card title="什么是链抽象？" icon="book-open" href="/chain-abstraction/what-is" horizontal arrow>
+          NEAR 如何让单个账户控制任意链上的钱包。
+        </Card>
+        <Card title="链签名指南" icon="key" href="/chain-abstraction/chain-signatures" horizontal arrow>
+          密钥派生、MPC 签名及实现细节。
+        </Card>
+      </div>
+      <CodeGroup>
+
+```javascript multichain.js
+import { Account, KeyPair, JsonRpcProvider, KeyPairSigner } from "near-api-js"
+import { getAdapter, chains } from "multichain.js"
+
+async function main() {
+  const nearProvider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" })
+  const nearAccount = new Account("account.testnet", nearProvider, "ed25519:...")
+
+  const arbitrum = getAdapter({ chain: chains.ARBITRUM, mpcNetwork: "testnet" })
+  const arbAddress = await arbitrum.getAddressControlledBy({ nearAddress: nearAccount.accountId })
+  const arbBalance = await arbitrum.getBalance({ address: arbAddress })
+  console.log("Controlled Account", { arbAddress, arbBalance })
+
+  await arbitrum.transfer({
+    to: "0x2f318C334780961FB129D2a6c30D0763d9a5C970",
+    amount: "10000000000000000", // 0.01 ETH
+    nearAccount,
+  })
+}
+```
+
+      </CodeGroup>
+    </Columns>
+  </Tab>
+</Tabs>
+
+---
+
+## 平台能力
+
+<CardGroup cols={3}>
+  <Card title="亚秒级最终确认" icon="zap" horizontal>
+    交易在主网约 1–2 秒内确认，具有确定性最终性。无分叉，无需等待。
+  </Card>
+  <Card title="极低手续费" icon="circle-dollar-sign" horizontal>
+    交易费用低于 $0.001。存储成本约为每 100 KB 1 NEAR——删除后可全额退款。
+  </Card>
+  <Card title="多语言合约" icon="code" horizontal>
+    支持 Rust、JavaScript/TypeScript、Python 或 Go 编写合约。完整的 WASM 运行时，无需学习新语法。
+  </Card>
+  <Card title="链签名" icon="key" horizontal>
+    从单个 NEAR 账户为任意链——Bitcoin、Ethereum、Solana——派生门限密钥。
+  </Card>
+  <Card title="TEE 支持的智能体" icon="shield-check" horizontal>
+    在可信执行环境中运行 AI 推理，获得可验证、防篡改的输出结果。
+  </Card>
+  <Card title="分片与可扩展性" icon="server" horizontal>
+    Nightshade 分片技术随验证者数量增长实现线性吞吐量扩展。
+  </Card>
+</CardGroup>
+
+---
+
+## 两步快速上手
+
+<Steps>
+  <Step title="创建测试网账户">
+    获取一个可读的账户名，如 `yourname.testnet`，并通过水龙头立即获取资金——无需安装钱包。
+
+    <Card title="创建账户" icon="user-plus" href="/getting-started/create-account" horizontal arrow>
+      免费测试网账户，即时获得 NEAR 余额。60 秒内即可准备就绪。
+    </Card>
+  </Step>
+  <Step title="初始化您的项目">
+    运行 `create-near-app`，以您偏好的语言生成可运行的智能合约或全栈 Web 应用。
+
+    ```bash
+    npx create-near-app@latest
+    ```
+  </Step>
+</Steps>
+
+---
+
+## 按主题浏览
+
+<CardGroup cols={3}>
+  <Card title="NEAR 协议" icon="layers" href="/protocol/accounts-contracts/account-model" cta="阅读文档" arrow>
+    账户、访问密钥、Gas、交易及 NEAR 运行时。
+  </Card>
+  <Card title="智能合约" icon="code" href="/smart-contracts/what-is" cta="阅读文档" arrow>
+    使用 Rust、TypeScript 或 Python 编写和部署合约。
+  </Card>
+  <Card title="Web3 应用" icon="globe" href="/web3-apps/quickstart" cta="快速入门" arrow>
+    使用 near-api-js 和 Wallet Selector 将前端连接到 NEAR。
+  </Card>
+  <Card title="链抽象" icon="link" href="/chain-abstraction/what-is" cta="探索" arrow>
+    从单个 NEAR 账户在任意链上签署交易。
+  </Card>
+  <Card title="基础原语" icon="blocks" href="/primitives/what-is" cta="浏览" arrow>
+    FT、NFT、DAO、DEX、流动性质押等——即用即取。
+  </Card>
+  <Card title="数据基础设施" icon="database" href="/data-infrastructure/what-is" cta="探索" arrow>
+    使用 NEAR Lake、BigQuery 及索引器对链上数据进行索引和查询。
+  </Card>
+</CardGroup>
+

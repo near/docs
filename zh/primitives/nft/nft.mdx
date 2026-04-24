@@ -1,0 +1,534 @@
+---
+title: 使用非同质化代币（NFT）
+description: "了解遵循 NEP-171 和 NEP-177 标准的 NEAR 非同质化代币（NFT）——铸造、转移、查询和交易独特数字资产，附带完整示例。"
+---
+
+import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
+
+想要在您的 dApp 中使用非同质化代币（NFT）？在这里您可以找到所有入门所需的信息，包括创建代币、注册用户、转移代币以及将其集成到智能合约中。
+
+---
+
+## 部署 NFT 合约
+
+如果您想部署自己的 NFT 合约，可以使用我们的[参考实现](https://github.com/near-examples/NFT)创建一个。
+
+<Tabs>
+ <Tab title="🖥️ CLI">
+
+  ```bash
+  near deploy <account-id> --wasmFile contract.wasm --initFunction new
+  ```
+
+ </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/deploy-nft-contract.json" />
+  </Tab>
+</Tabs>
+
+### 全局合约
+
+您可以使用我们的全局 NFT 合约部署新的非同质化代币——这是一个预先部署的[标准 NFT 合约](https://github.com/near-examples/NFT)，可供重复使用。[全局合约](../../smart-contracts/global-contracts)只需部署一次，任何账户均可复用，无需承担高额的存储成本。
+
+<Tabs>
+  <Tab title="By Account">
+
+    ```bash
+    near contract deploy <account-id> use-global-account-id nft.globals.primitives.testnet \
+      with-init-call new \
+      json-args '{"owner_id": "<account-id>", "metadata": {"spec": "nft-1.0.0", "name": "MY_NFT", "symbol": "NFT2000", "icon": "data:image/svg+xml,%3Csvg xmlns='\''http://www.w3.org/2000/svg'\'' viewBox='\''0 0 288 288'\''%3E%3Cg id='\''l'\'' data-name='\''l'\''%3E%3Cpath d='\''M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z'\''/%3E%3C/g%3E%3C/svg%3E"}}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain \
+      send
+    ```
+
+  </Tab>
+  <Tab title="By Hash">
+
+    ```bash
+    near contract deploy <account-id> use-global-hash ivu1e9obVRnMJLSvVPRgtYefUYUS1L3f5eYHjS86zL9 \
+      with-init-call new \
+      json-args '{"owner_id": "<account-id>", "metadata": {"spec": "nft-1.0.0", "name": "MY_NFT", "symbol": "NFT2000", "icon": "data:image/svg+xml,%3Csvg xmlns='\''http://www.w3.org/2000/svg'\'' viewBox='\''0 0 288 288'\''%3E%3Cg id='\''l'\'' data-name='\''l'\''%3E%3Cpath d='\''M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z'\''/%3E%3C/g%3E%3C/svg%3E"}}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain \
+      send
+    ```
+
+  </Tab>
+</Tabs>
+
+<Note>
+通过**哈希**部署会创建一个永不更改的不可变合约。通过**账户 ID** 部署则创建一个可更新的合约，当所引用账户的合约更新时，该合约也会随之更新。请根据您是否希望 FT 合约可更新或永久不变来做出选择。
+</Note>
+
+---
+
+## 铸造 NFT
+要创建一个新的 NFT（即铸造），您需要调用 `nft_mint` 方法，传入定义该 NFT 的元数据作为参数。
+
+<Tip>
+使用 [NEAR NFT 铸造工具](https://near.org/near/widget/ComponentDetailsPage?src=near/widget/NFTMint)直接从浏览器铸造您自己的 NFT。
+</Tip>
+
+<Accordion title="手动交互">
+
+以下是如何通过您的应用程序直接与工厂合约交互：
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+    
+  ```js
+  import { useNearWallet } from "near-connect-hooks";
+
+  const CONTRACT_ADDRESS = 'nft.primitives.near';
+
+  const { callFunction } = useNearWallet();
+
+  await callFunction({
+    contractId: CONTRACT_ADDRESS,
+    method: 'nft_mint',
+    args: {
+      token_id: '1',
+      receiver_id: 'bob.near',
+      token_metadata: {
+        title: 'NFT Primitive Token',
+        description: 'Awesome NFT Primitive Token',
+        media: 'string', // URL to associated media, preferably to decentralized, content-addressed storage
+      },
+    },
+    deposit: 10000000000000000000000,
+  });
+  ```
+
+  了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+   
+    ```bash
+    near call nft.primitives.near nft_mint '{"token_id": "1", "receiver_id": "bob.near", "token_metadata": {"title": "NFT Primitive Token", "description": "Awesome NFT Primitive Token", "media": "string"}}' --depositYocto 10000000000000000000000, --useAccount bob.near
+    ```
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+  <TryOutOnLantstool path="docs/2.build/5.primitives/nft/mint-nft-reference.json" />
+  </Tab>
+  <Tab title="📄 Contract">
+
+  ```rust
+  // Validator interface, for cross-contract calls
+  #[ext_contract(ext_nft_contract)]
+  trait ExternalNftContract {
+    fn nft_mint(&self, token_series_id: String, receiver_id: AccountId) -> Promise;
+  }
+
+  // Implement the contract structure
+  #[near]
+  impl Contract {
+    #[payable]
+    pub fn nft_mint(&mut self, token_series_id: String, receiver_id: AccountId) -> Promise {
+      let promise = ext_nft_contract::ext(self.nft_contract.clone())
+        .with_static_gas(Gas(30*TGAS))
+        .with_attached_deposit(env::attached_deposit())
+        .nft_mint(token_series_id, receiver_id);
+
+      return promise.then( // Create a promise to callback query_greeting_callback
+        Self::ext(env::current_account_id())
+        .with_static_gas(Gas(30*TGAS))
+        .nft_mint_callback()
+      )
+    }
+
+    #[private] // Public - but only callable by env::current_account_id()
+    pub fn nft_mint_callback(&self, #[callback_result] call_result: Result<TokenId, PromiseError>) -> Option<TokenId> {
+      // Check if the promise succeeded
+      if call_result.is_err() {
+        log!("There was an error contacting NFT contract");
+        return None;
+      }
+
+      // Return the token data
+      let token_id: TokenId = call_result.unwrap();
+      return Some(token_id);
+    }
+  }
+  ```
+  </Tab>
+</Tabs>
+
+<Info>
+
+`TokenMetadata` 参数的完整列表请参见[元数据标准](https://github.com/near/NEPs/tree/master/neps/nep-0177.md)。
+
+</Info>
+
+<Warning>
+
+gas 和存款的值可能因您调用的 NFT 合约而异。
+
+</Warning>
+
+</Accordion>
+
+<hr className="subsection" />
+
+### 铸造合集
+
+人们通常希望创建多份相同的 NFT 副本（这称为合集）。在这种情况下，您实际上需要铸造 100 个具有相同元数据（但不同 `token-id`）的不同 NFT。
+
+<Tip>
+
+请注意，[在 Mintbase 上铸造](#minting-a-nft)允许您传递 `num_to_mint` 参数。
+
+</Tip>
+
+<hr className="subsection" />
+
+### 版税
+您可能已经注意到其中一个参数是一个名为版税的结构。版税允许您创建一个用户列表，当代币在市场上出售时，这些用户应该获得报酬。例如，如果 `anna` 有 `5%` 的版税，每次 NFT 出售时，`anna` 应该获得售价的 5%。
+
+---
+
+## 查询 NFT 数据
+您可以通过调用 `nft_token` 查询 NFT 的信息和元数据。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+  ```js
+  import { useNearWallet } from "near-connect-hooks";
+
+  const CONTRACT_ADDRESS = 'nft.primitives.near';
+
+  const { viewFunction } = useNearWallet();
+
+  const response = await viewFunction({
+    contractId: CONTRACT_ADDRESS,
+    method: 'nft_token',
+    args: {
+      token_id: '1',
+    },
+  });
+  ```
+
+  了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  <Accordion title="示例响应">
+
+  ```json
+  {
+    "token_id": "1",
+    "owner_id": "bob.near",
+    "metadata": {
+      "title": "string", // ex. "Arch Nemesis: Mail Carrier" or "Parcel #5055"
+      "description": "string", // free-form description
+      "media": "string", // URL to associated media, preferably to decentralized, content-addressed storage
+      "media_hash": "string", // Base64-encoded sha256 hash of content referenced by the `media` field. Required if `media` is included.
+      "copies": 1, // number of copies of this set of metadata in existence when token was minted.
+      "issued_at": 1642053411068358156, // When token was issued or minted, Unix epoch in milliseconds
+      "expires_at": 1642053411168358156, // When token expires, Unix epoch in milliseconds
+      "starts_at": 1642053411068358156, // When token starts being valid, Unix epoch in milliseconds
+      "updated_at": 1642053411068358156, // When token was last updated, Unix epoch in milliseconds
+      "extra": "string", // anything extra the NFT wants to store on-chain. Can be stringified JSON.
+      "reference": "string", // URL to an off-chain JSON file with more info.
+      "reference_hash": "string" // Base64-encoded sha256 hash of JSON from reference field. Required if `reference` is included.
+    }
+  }
+  ```
+
+  </Accordion>
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+    ```bash
+    near view nft.primitives.near nft_token '{"token_id": "1"}'
+    ```
+
+  <Accordion title="示例响应">
+
+    ```json
+    {
+      "token_id": "1",
+      "owner_id": "bob.near",
+      "metadata": {
+        "title": "string", // ex. "Arch Nemesis: Mail Carrier" or "Parcel #5055"
+        "description": "string", // free-form description
+        "media": "string", // URL to associated media, preferably to decentralized, content-addressed storage
+        "media_hash": "string", // Base64-encoded sha256 hash of content referenced by the `media` field. Required if `media` is included.
+        "copies": 1, // number of copies of this set of metadata in existence when token was minted.
+        "issued_at": 1642053411068358156, // When token was issued or minted, Unix epoch in milliseconds
+        "expires_at": 1642053411168358156, // When token expires, Unix epoch in milliseconds
+        "starts_at": 1642053411068358156, // When token starts being valid, Unix epoch in milliseconds
+        "updated_at": 1642053411068358156, // When token was last updated, Unix epoch in milliseconds
+        "extra": "string", // anything extra the NFT wants to store on-chain. Can be stringified JSON.
+        "reference": "string", // URL to an off-chain JSON file with more info.
+        "reference_hash": "string" // Base64-encoded sha256 hash of JSON from reference field. Required if `reference` is included.
+      }
+    }
+    ```
+  </Accordion>
+
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+
+  <TryOutOnLantstool path="docs/2.build/5.primitives/nft/query-nft-data-reference.json" />
+
+  <Accordion title="示例响应">
+
+  ```json
+  {
+    "token_id": "1",
+    "owner_id": "bob.near",
+    "metadata": {
+      "title": "string", // ex. "Arch Nemesis: Mail Carrier" or "Parcel #5055"
+      "description": "string", // free-form description
+      "media": "string", // URL to associated media, preferably to decentralized, content-addressed storage
+      "media_hash": "string", // Base64-encoded sha256 hash of content referenced by the `media` field. Required if `media` is included.
+      "copies": 1, // number of copies of this set of metadata in existence when token was minted.
+      "issued_at": 1642053411068358156, // When token was issued or minted, Unix epoch in milliseconds
+      "expires_at": 1642053411168358156, // When token expires, Unix epoch in milliseconds
+      "starts_at": 1642053411068358156, // When token starts being valid, Unix epoch in milliseconds
+      "updated_at": 1642053411068358156, // When token was last updated, Unix epoch in milliseconds
+      "extra": "string", // anything extra the NFT wants to store on-chain. Can be stringified JSON.
+      "reference": "string", // URL to an off-chain JSON file with more info.
+      "reference_hash": "string" // Base64-encoded sha256 hash of JSON from reference field. Required if `reference` is included.
+    }
+  }
+  ```
+  </Accordion>
+  </Tab>
+  <Tab title="📄 Contract">
+
+  ```rust
+  // Validator interface, for cross-contract calls
+  #[ext_contract(ext_nft_contract)]
+  trait ExternalNftContract {
+    fn nft_token(&self, token_id: TokenId) -> Promise;
+  }
+
+  // Implement the contract structure
+  #[near]
+  impl Contract {
+    pub fn nft_token(&self, token_id: TokenId) -> Promise {
+      let promise = ext_nft_contract::ext(self.nft_contract.clone())
+        .nft_token(token_id);
+
+      return promise.then( // Create a promise to callback query_greeting_callback
+        Self::ext(env::current_account_id())
+        .nft_token_callback()
+      )
+    }
+
+    #[private] // Public - but only callable by env::current_account_id()
+    pub fn nft_token_callback(&self, #[callback_result] call_result: Result<Token, PromiseError>) -> Option<Token> {
+      // Check if the promise succeeded
+      if call_result.is_err() {
+        log!("There was an error contacting NFT contract");
+        return None;
+      }
+
+      // Return the token data
+      let token_data: Token = call_result.unwrap();
+      return Some(token_data);
+    }
+  }
+  ```
+  </Tab>
+</Tabs>
+
+---
+
+## 转移 NFT
+转移 NFT 有两种情景：（1）您请求转移 NFT，（2）[已授权账户](#approving-users)请求转移 NFT。
+
+在这两种情况下，都需要调用 `nft_transfer` 方法，指定代币 ID、接收者，以及（可选地）一个 [approval_id](https://github.com/near/NEPs/tree/master/neps/nep-0178.md)。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+      
+  ```js
+  import { useNearWallet } from "near-connect-hooks";
+
+  const CONTRACT_ADDRESS = 'nft.primitives.near';
+
+  const { callFunction } = useNearWallet();
+
+  await callFunction({
+    contractId: CONTRACT_ADDRESS,
+    method: 'nft_transfer',
+    args: {
+      token_id: '1',
+      receiver_id: 'bob.near',
+    },
+    deposit: 1,
+  });
+  ```
+
+  了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+    
+  ```bash
+    near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "bob.near"}' --useAccount bob.near --deposit 0.000000000000000000000001
+  ```
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/transfer-nft-reference.json" />
+  </Tab>
+  <Tab title="📄 Contract">
+
+    <Info>
+    请注意，合约只能转移它所拥有的 NFT，或被授权转移的 NFT。
+</Info>
+
+    ```rust
+    const YOCTO_NEAR: u128 = 1;
+
+    #[ext_contract(ext_nft_contract)]
+    trait ExternalNftContract {
+      fn nft_transfer(&self, receiver_id: AccountId, token_id: TokenId) -> Promise;
+    }
+
+    impl Contract {
+      #[payable]
+      pub fn nft_transfer(&mut self, receiver_id: AccountId, token_id: TokenId) -> Promise {
+        let promise = ext_nft_contract::ext(self.nft_contract.clone())
+          .with_attached_deposit(YOCTO_NEAR)
+          .nft_transfer(receiver_id, token_id);
+
+        return promise.then( // Create a promise to callback query_greeting_callback
+          Self::ext(env::current_account_id())
+          .nft_transfer_callback()
+        )
+      }
+
+      #[private] // Public - but only callable by env::current_account_id()
+      pub fn nft_transfer_callback(&self, #[callback_result] call_result: Result<(), PromiseError>) {
+        // Check if the promise succeeded
+        if call_result.is_err() {
+          log!("There was an error contacting NFT contract");
+        }
+      }
+    }
+    ```
+
+  </Tab>
+</Tabs>
+
+---
+
+## 将 NFT 附加到调用
+原生情况下，只有 NEAR 代币（Ⓝ）可以附加到函数调用中。然而，NFT 标准允许通过以 NFT 合约为中介的方式，在调用中附加非同质化代币。这意味着您不是直接将代币附加到调用中，而是请求 NFT 合约代表您同时执行转账和函数调用。
+
+<Tabs>
+  <Tab title="🖥️ CLI">
+
+```bash
+near call <nft-contract> nft_transfer_call '{"receiver_id": "<receiver-contract>", "token_id": "<token_id>", "msg": "<a-string-message>"}' --useAccount <your-account> --depositYocto 1
+```
+
+</Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/attach-nft-to-call.json" />
+  </Tab>
+</Tabs>
+
+<Info>
+
+可选地，可以传递 [`memo` 参数](https://github.com/near/NEPs/tree/master/neps/nep-0171.md#nft-interface)以向合约提供更多信息。
+
+</Info>
+
+<hr className="subsection" />
+
+### 工作原理
+假设您想将一个 NFT（🎫）附加到接收合约上的调用中。工作流程如下：
+1. 您调用 NFT 合约的 `nft_transfer_call`，传入接收者、消息和 🎫 的代币 ID。
+2. NFT 合约将 🎫 转移给接收者。
+3. NFT 合约调用 **`receiver.nft_on_transfer(sender, token-owner, token-id, msg)`**。
+4. NFT 合约在 `nft_resolve_transfer` 回调中处理错误。
+5. 如果成功，NFT 合约返回 `true`。
+
+#### nft_on_transfer 方法
+从上述工作流程可以看出，我们要调用的接收合约需要实现 `nft_on_transfer` 方法。执行时，该方法将获知：
+- 谁在发送 NFT，因为它是参数。
+- 当前所有者是谁，因为它是参数。
+- 哪个 NFT 被转移了，因为它是参数。
+- 是否有任何编码为消息的参数。
+
+`nft_on_transfer` **必须返回 true** 如果 NFT 需要**返还给发送者**。
+
+---
+
+## 授权用户
+
+您可以授权其他用户转移您拥有的 NFT。这在您想将 NFT 挂牌到市场时非常有用。在这种情况下，您**信任**市场只会在收到一定金额的代币作为交换后才会转移 NFT。
+
+<Tabs>
+  <Tab title="🖥️ CLI">
+  
+    ```bash
+    near call <nft-contract> nft_approve '{
+    "token_id": "<token-unique-id>",
+    "account_id": "<authorized-account>",
+    "msg": "<json-structure>"
+    }' --useAccount <your-account> --depositYocto 1
+    ```
+</Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/approve-user.json" />
+  </Tab>
+</Tabs>
+
+<Info>
+
+如果包含 `msg` 参数，则将对 `<authorized_account>.nft_on_approve(msg)` 进行跨合约调用。这将反过来对您的 NFT 合约中的 `nft_resolve_transfer` 进行回调。
+
+</Info>
+
+---
+
+## 销毁代币
+
+虽然 NFT 标准没有定义 `burn` 方法，但您可以直接将代币转入无人控制的账户，例如 [`0000000000000000000000000000000000000000000000000000000000000000`](https://nearblocks.io/es/address/0000000000000000000000000000000000000000000000000000000000000000)（64 个零）。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+      
+  ```js
+  import { useNearWallet } from "near-connect-hooks";
+
+  const { callFunction } = useNearWallet();
+
+  await callFunction({
+    contractId: 'nft.primitives.near',
+    method: 'nft_transfer',
+    args: {
+      token_id: '1',
+      receiver_id: '0000000000000000000000000000000000000000000000000000000000000000',
+    },
+    deposit: 1,
+  });
+  ```
+
+  了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+    
+  ```bash
+    near call nft.primitives.near nft_transfer '{"token_id": "1", "receiver_id": "0000000000000000000000000000000000000000000000000000000000000000"}' --useAccount bob.near --deposit 0.000000000000000000000001
+  ```
+  </Tab>
+</Tabs>
+
+---
+
+## 教程
+
+- [NFT 教程](/smart-contracts/tutorials/zero-to-hero/nfts-js) _从零到英雄_（JavaScript SDK）- 一套涵盖如何使用 JavaScript 创建 NFT 合约的教程。
+- [NFT 教程](/smart-contracts/tutorials/zero-to-hero/nfts) _从零到英雄_（Rust SDK）- 一套涵盖如何使用 Rust 创建 NFT 合约的教程。

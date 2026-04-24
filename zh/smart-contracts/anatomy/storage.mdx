@@ -1,0 +1,171 @@
+---
+title: 状态
+sidebarTitle: 状态（存储）
+hide_table_of_contents: true
+description: "探索 NEAR 智能合约如何管理其状态。"
+mode: wide
+---
+import { ExplainCode, Block , File  } from '/snippets/explain-code.jsx'
+
+智能合约将数据存储在其账户的状态中，该状态在链上是公开的。存储从**空**开始，直到部署合约并初始化状态。
+
+重要的是要知道，账户的**代码**和账户的**存储**是**独立的**。[更新代码](../release/upgrade)**不会清除**状态。
+
+<ExplainCode languages="rust,js,python" >
+
+<Block highlights='{"js": "3-6,10-13", "python": "7,10-14,17,20"}' fname="auction">
+
+    ### 定义状态
+    标记为合约的 `class` 的属性定义了将要存储的数据。
+
+    合约可以存储所有原生类型（例如 `number`、`string`、`Array`、`Map`）以及复杂对象。
+
+    例如，我们的拍卖合约存储拍卖结束时间以及代表最高出价的对象。
+
+    **注意：** SDK 还提供了[集合](./collections)，用于高效存储数据集合。
+
+</Block>
+
+<Block highlights='{"rust": "6-9,13-18"}' fname="auction">
+
+    ### 定义状态
+    标记为合约的 `struct` 的属性定义了将要存储的数据。
+
+    合约可以存储所有原生类型（例如 `u8`、`string`、`HashMap`、`Vector`）以及复杂对象。
+
+    例如，我们的拍卖合约存储拍卖结束时间以及代表最高出价的对象。
+
+    **注意：** 将要保存的结构体需要一个特殊的宏，告诉 SDK 以 [Borsh 序列化](./serialization)存储它们。
+
+    **注意：** SDK 还提供了[集合](./collections)，用于高效存储数据集合。
+
+</Block>
+
+<Block highlights='{"js":"", "rust": "", "python": ""}' fname="auction" type='info'>
+
+<Warning>
+
+合约通过锁定部分余额来支付存储费用。
+
+目前，存储 **100KB** 数据的成本约为 **1Ⓝ**。
+
+</Warning>
+
+</Block>
+
+<Block highlights='{"js": "", "rust": "", "python": ""}' fname="auction" >
+
+    ### 初始化状态
+    合约部署后，其状态为空，需要使用一些初始值进行初始化。
+
+    有两种初始化状态的方式：
+      1. 创建初始化函数
+      2. 设置默认值
+
+</Block>
+
+<Block highlights='{"js": "8,15-20", "python": "3-22"}' fname="auction">
+
+    ### 一、初始化函数
+    初始化状态的一种选择是创建一个 `initialization` 函数，在执行任何其他函数之前需要先调用此函数。
+
+    在我们的拍卖示例中，合约有一个初始化函数，用于设置拍卖结束时间。注意 `@initialization` 装饰器以及 `NearBindgen` 上的强制初始化。
+
+    **注意：** 将初始化函数标记为私有是一个好习惯。我们将在[函数部分](./functions)介绍函数类型。
+
+</Block>
+
+<Block highlights='{"python": "15-30", "js": "10-13"}' fname="auction" type='info'>
+
+<Warning>
+
+在 Python 中，您需要明确管理状态初始化。SDK 不强制要求在其他方法调用之前进行初始化——如果需要，您需要自己添加检查。
+
+</Warning>
+
+</Block>
+
+<Block highlights='{"rust": "12,22-34"}' fname="auction">
+
+    ### 一、初始化函数
+    初始化状态的一种选择是创建一个 `initialization` 函数，在执行任何其他函数之前需要先调用此函数。
+
+    在我们的拍卖示例中，合约有一个初始化函数，用于设置拍卖结束时间。合约派生了 `PanicOnDefault`，这迫使用户调用由 `#[init]` 宏标记的 init 方法。
+
+    **注意：** 将初始化函数标记为私有是一个好习惯。我们将在[函数部分](./functions)介绍函数类型。
+
+</Block>
+
+<Block highlights='{"js": "5", "python": "5"}' fname="hello">
+
+    ### 二、默认状态
+    初始化状态的另一种选择是为 class 的属性设置默认值。
+
+    我们的 "Hello World" 合约就是这种情况，它存储了一个默认值为 `"Hello"` 的 `greeting`。
+
+    第一次调用合约时（某人执行 `get_greeting` 或 `set_greeting`），默认值将存储到状态中，状态将被视为已初始化。
+
+    **注意：** 状态只能初始化一次。
+
+</Block>
+
+<Block highlights='{"rust": "10-16"}' fname="hello">
+
+    ### 二、默认状态
+    初始化状态的另一种选择是为合约的 `struct` 创建一个 `Default` 版本。
+
+    例如，我们的 "Hello World" 合约有一个默认状态，其中 `greeting` 设置为 `"Hello"`。
+
+    合约第一次执行时，`Default` 将存储到状态中，状态将被视为已初始化。
+
+    **注意：** 状态只能初始化一次。
+
+</Block>
+
+<Block highlights='{"js": "", "rust":"", "python": ""}' fname="hello">
+
+    ### 状态的生命周期
+    当函数被调用时，合约的状态从存储中加载并放入内存。
+
+    状态实际上是[序列化后存储](./serialization)的，SDK 需要花一点时间来反序列化它，然后方法才能访问它。
+
+    当方法成功执行完成时，所有对状态的更改都会被序列化并保存回存储。
+
+</Block>
+
+<Block highlights='{"js": "", "rust":"", "python": ""}' fname="hello" type='info'>
+
+<Warning>
+**状态与代码**
+
+在 NEAR 中，合约的代码和合约的存储是**独立的**。
+
+更新合约的代码**不会清除**状态，实际上可能导致意外行为或错误。
+
+如果遇到问题，请务必阅读[更新合约](../release/upgrade)。
+
+</Warning>
+
+</Block>
+
+<File language="js" fname="auction"
+    url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
+    start="2" end="60" />
+
+<File language="js" fname="hello"
+    url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
+    start="2" end="18" />
+
+<File language="rust" fname="auction"
+    url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+    start="2" end="83" />
+
+<File language="rust" fname="hello"
+    url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
+    start="2" end="32" />
+
+<File language="python" fname="auction" url="https://github.com/r-near/near-py-examples/blob/main/auction.py" start="2" end="122"></File>
+
+<File language="python" fname="hello" url="https://github.com/r-near/near-py-examples/blob/main/hello-near.py" start="5" end="20"></File>
+
+</ExplainCode>

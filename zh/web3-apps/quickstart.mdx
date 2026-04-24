@@ -1,0 +1,151 @@
+---
+title: 您的第一个 Web3 应用
+sidebarTitle: 快速入门
+description: "快速指南：创建集成 NEAR 的 Web3 前端应用——构建一个 React/Next.js 应用，用户可以使用钱包登录并与智能合约交互。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+在本指南中，我们将向您展示如何**构建一个连接到 NEAR 的 React 应用**，用户可以使用钱包**登录**并与**合约**交互。
+
+<Tip>
+**希望将 NEAR 集成到您的应用中？**
+
+如果您已经有一个应用程序，并希望将 NEAR 集成其中，我们建议您先阅读本指南，然后查看我们的[将 NEAR 集成到前端](./tutorials/wallet-login)文档。
+
+</Tip>
+
+---
+
+## 模板设置
+如果您已安装 [Node.js](https://nodejs.org/en/download)，可以使用 `create-near-app` 快速搭建模板：
+
+```bash
+  npx create-near-app@latest
+
+  # ✔ What do you want to build? › Web Application
+  # ✔ Select a framework for your frontend › Next.js (Classic)
+  # ✔ Name your project (we will create a directory with that name) … near-template
+  # ✔ Run 'npm install' now? … yes
+```
+
+待文件夹准备好、所有依赖项安装完毕后，您可以使用 `pnpm` 启动开发服务器。
+
+```bash
+cd near-template # 进入您的项目文件夹
+npm run dev
+```
+
+在浏览器中访问 `http://localhost:3000` 以查看 dApp。请注意，由于 dApp 使用 NextJS，首次访问页面时加载时间可能较长。
+
+<Accordion title="应用无法启动？">
+
+请确保您使用的是 **node >= v22**，您可以使用 `nvm use 22` 轻松切换版本。
+
+</Accordion>
+
+<Tip>
+**框架**
+在本教程中，我们使用 **Next.js** 框架，采用"经典"的基于页面的路由方式。但您在创建应用时也可以选择其他框架，例如 Vite。
+</Tip>
+
+---
+
+## 落地页
+
+应用启动后，您将看到落地页，其中渲染了一个导航栏，允许用户使用其 NEAR 钱包登录。您可以导航到文档或 `Near Integration` 页面（我们接下来会进入该页面）。
+
+![img](/assets/docs/smart-contracts/tutorials/examples/hello-near-landing-page.png)
+*Hello NEAR Gateway 的落地页*
+
+请使用您的 NEAR 账户登录。如果您还没有账户，可以立即创建一个。
+
+<hr className="subsection" />
+
+### 上下文提供者
+
+[Next.js](https://nextjs.org/) 使用模板系统，每个页面都是一个 React 组件。我们的主要逻辑定义在 `./src/pages/_app.js` 中，该文件：
+
+1. 创建一个 `NearProvider`，将其包裹整个应用以提供 NEAR 功能
+2. 渲染导航菜单和页面内容
+
+<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" language="jsx" />
+
+<Accordion title="什么是 NEAR Connect Hooks？">
+
+NEAR Connect 是一个允许用户选择其首选 NEAR 钱包进行登录的库，我们的应用使用封装其功能的 **hooks**，使其更易于使用。
+
+</Accordion>
+
+<hr className="subsection" />
+
+### 导航栏
+导航栏实现了一个按钮，允许用户使用 NEAR 钱包进行 `登录` 和 `注销`。主要逻辑来自 `useNearWallet` hook，该 hook 公开了所有与钱包相关的功能。
+
+<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/components/navigation.tsx" language="jsx" />
+
+---
+
+## 如何调用智能合约函数？
+
+现在您已了解落地页的工作原理，我们可以进入 `Near Integration` 页面，该页面从 [hello.near-examples.testnet](https://testnet.nearblocks.io/address/hello.near-examples.testnet) 合约中检索问候语。
+
+### 读取操作与写入操作
+
+| 操作类型 | 方法 | 费用 | 是否需要签名 |
+|---------------|--------|------|-------------------|
+| **读取（view）** | `viewMethod()` | 免费 | 否 |
+| **写入（call）** | `callMethod()` | Gas 费（约 0.0001 Ⓝ） | 是 |
+
+视图方法查询合约状态而不修改它。调用方法会改变状态，并需要用户签署一笔交易。
+
+![img](/assets/docs/smart-contracts/tutorials/examples/hello-near-gateway.png)
+*`Near Integration` 页面视图*
+
+如果您尚未登录，请先登录，然后您将看到一个简单的表单，允许您在智能合约中存储问候语。
+
+<hr className="subsection" />
+
+### 函数调用 Hooks
+与[导航栏](#navigation-bar)类似，我们使用 `useNearWallet` hook 获取允许我们调用合约方法的函数：
+
+- `viewFunction` 用于调用只读函数
+- `callFunction` 用于调用修改合约状态的函数
+
+<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.tsx" language="jsx" start="11" end="11" />
+
+#### 调用只读方法
+
+例如，当我们想获取合约中存储的当前问候语时，我们在 `useEffect` hook 中使用 `viewFunction`：
+
+<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.tsx" language="jsx" start="17" end="19" />
+
+#### 调用写入方法
+另一方面，当用户提交新问候语时，我们使用 `callFunction` 向合约发送一笔交易：
+
+<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.tsx" language="jsx" start="25" end="37" />
+
+---
+
+## 常见问题
+
+### 用户需要 NEAR 代币才能登录吗？
+不需要。钱包登录是免费的。用户只有在调用修改状态的合约函数时才需要支付 Gas 费。
+
+### 用户可以使用哪些钱包进行连接？
+NEAR 钱包（MyNearWallet、Meteor、HERE Wallet）和以太坊钱包（Metamask、WalletConnect、通过 EVM 支持的 Coinbase Wallet）。
+
+### 如何避免用户每次都需要签署交易？
+通过在钱包选择器配置中设置 `createAccessKeyFor: <contract-name>` 来创建一个**函数调用访问密钥**。这允许应用程序自动签署不涉及付款的方法。
+
+### 我可以在现有的 React 应用中使用吗？
+可以。安装 `near-connect-hooks` 并按照我们的[集成指南](./tutorials/wallet-login)操作。
+
+### 为什么使用 Next.js 而不是普通的 React？
+Next.js 是推荐方案，但并非强制要求。您可以使用 Vite/React、Vue、Svelte 或任何框架。查看 `create-near-app` 模板以了解可用选项。
+
+---
+
+## 下一步
+
+这就是我们的快速入门教程的全部内容。您现在已经看到了一个完整功能的前端，它可以与 NEAR 合约通信并渲染 Web3 组件。

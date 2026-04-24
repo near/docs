@@ -1,0 +1,607 @@
+---
+sidebarTitle: NFT 索引器
+description: "学习使用 NEAR Lake Framework 构建简单的 NFT 索引器。"
+---
+
+本教程将引导您使用 [NEAR Lake Framework JS](/data-infrastructure/near-lake-framework) 的 JavaScript 版本构建一个简单的 NFT 索引器。该索引器将监听 `nft_mint` 事件并打印新铸造 NFT 的相关数据。
+
+该索引器监听 `nft_mint` [事件](https://github.com/near/NEPs/tree/master/neps/nep-0297.md) 并打印一些相关数据：
+- 铸造发生所在 `Receipt` 的 `receiptId`
+- 市场
+- NFT 所有者账户名
+- NFT 在市场上的链接
+
+最终源代码可在 GitHub [`near-examples/near-lake-nft-indexer`](https://github.com/near-examples/near-lake-nft-indexer) 上获取。
+
+<Note>
+**教程源代码**
+
+[`near-examples/near-lake-nft-indexer`](https://github.com/near-examples/near-lake-nft-indexer)：本教程的源代码
+
+</Note>
+
+## 动机
+
+NEAR 协议引入了一个很好的功能——[事件](https://github.com/near/NEPs/tree/master/neps/nep-0297.md)。事件允许合约开发者向 `ExecutionOutcomes` 添加标准化日志，从而允许自己或其他开发者通过 API 或索引器以更方便的方式读取这些日志。
+
+事件有一个 `standard` 字段，与 NEP 对齐。在本教程中，我们将讨论 [NEP-171 非同质化代币标准](https://github.com/near/NEPs/discussions/171)。
+
+本教程的目标是向您展示如何"监听"合约发出的事件以及如何从中受益。
+
+作为示例，我们将构建一个索引器，监控所有按照 [NEP-171 事件](https://github.com/near/NEPs/tree/master/neps/nep-0256.md) 标准铸造的 NFT，假设我们是不想错过任何东西的收藏家。我们的索引器应该注意到每一个铸造的 NFT，并为我们提供一组基本数据，例如：在哪个收据中铸造，并向我们显示市场链接（在我们的示例中将介绍 Paras 和 Bitte/Mintbase）。
+
+在本教程中，我们将使用 [NEAR Lake Framework](/data-infrastructure/near-lake-framework) 的 JS 版本。虽然 Rust 的概念相同，但我们希望向更多人展示构建自己的索引器并不那么复杂。
+
+## 准备工作
+
+<Danger>
+**凭证**
+
+请确保您已按照[凭证](./running-near-lake/credentials)页面的描述设置凭证。否则您将无法使代码正常工作。
+
+</Danger>
+
+您需要：
+
+- 已[安装并配置](https://nodejs.org/en/download/) `node`
+
+让我们创建项目文件夹
+
+```bash
+mkdir lake-nft-indexer && cd lake-nft-indexer
+```
+
+让我们添加 `package.json`
+
+```json title=package.json
+{
+  "name": "lake-nft-indexer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node index.js"
+  },
+  "dependencies": {
+    "near-lake-framework": "^1.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4"
+  }
+}
+```
+
+您可能注意到我们将 `typescript` 添加为开发依赖项。让我们配置 TypeScript。我们需要为此创建 `tsconfig.json` 文件。
+
+```json title=tsconfig.json
+{
+  "compilerOptions": {
+    "lib": [
+      "ES2019",
+      "dom"
+    ]
+  }
+}
+```
+
+<Warning>
+**ES2019 版本**
+
+请注意使用的 `ES2019` 版本。我们需要它是因为我们将在代码中使用 `.flatMap()` 和 `.flat()`。这些方法是在 `ES2019` 中引入的。当然您也可以使用更新的版本。
+
+</Warning>
+
+让我们在项目根目录中创建空的 `index.ts`，从而完成准备工作。
+
+```bash
+npm install
+```
+
+现在我们可以开始真正的工作了。
+
+## 设置 NEAR Lake Framework
+
+在 `index.ts` 中，让我们从 `near-lake-framework` 导入 `startStream` 函数和 `types`：
+
+```ts title=index.ts
+import { startStream, types } from 'near-lake-framework';
+```
+
+在下面添加 `LakeConfig` 的实例化：
+
+```ts title=index.js
+const lakeConfig: types.LakeConfig = {
+  s3BucketName: "near-lake-data-mainnet",
+  s3RegionName: "eu-central-1",
+  startBlockHeight: 66264389,
+};
+```
+
+关于配置的几点说明：我们为主网设置了 `s3BucketName`，默认的 `s3RegionName` 以及一个较新的区块高度作为 `startBlockHeight`。您可以访问 [NEAR Explorer](https://nearblocks.io) 获取**最新**的区块高度用于您的设置，也可以使用我们使用的相同值。
+
+现在我们需要创建一个回调函数，用于处理我们的索引器接收到的 `StreamerMessage`。
+
+```ts title=index.ts
+async function handleStreamerMessage(
+  streamerMessage: types.StreamerMessage
+): Promise<void> {
+
+}
+```
+
+<Info>
+**回调函数要求**
+
+在 `near-lake-framework` JS 库中，处理程序必须以回调函数的形式呈现。此函数必须：
+- 是异步的
+- 接受类型为 `StreamerMessage` 的参数
+- 不返回任何内容（`void`）
+
+</Info>
+
+以及在 `index.ts` 末尾实际启动我们的索引器
+
+```ts title=index.ts
+(async () => {
+  await startStream(lakeConfig, handleStreamerMessage);
+})();
+```
+
+此时最终的 `index.ts` 应如下所示：
+
+```ts title=index.ts
+import { startStream, types } from 'near-lake-framework';
+
+const lakeConfig: types.LakeConfig = {
+  s3BucketName: "near-lake-data-mainnet",
+  s3RegionName: "eu-central-1",
+  startBlockHeight: 66264389,
+};
+
+async function handleStreamerMessage(
+  streamerMessage: types.StreamerMessage
+): Promise<void> {
+
+}
+
+(async () => {
+  await startStream(lakeConfig, handleStreamerMessage);
+})();
+```
+
+## 事件及其捕获位置
+
+首先让我们找出可以在哪里捕获事件。我们希望您熟悉 [NEAR 区块链中的数据流](/protocol/data-flow/near-data-flow)，但让我们回顾一下：
+- 铸造 NFT 是 NFT 合约中的一个操作（不管是哪个合约）
+- 操作位于 `Receipt`（收据）中
+- 收据执行的结果是 `ExecutionOutcome`（执行结果）
+- `ExecutionOutcome` 反过来捕获合约"打印"的日志
+- [事件](https://github.com/near/NEPs/tree/master/neps/nep-0297.md) 构建在日志之上
+
+这让我们意识到，我们只能监控 ExecutionOutcomes，忽略 `StreamerMessage` 带来的其他所有内容。
+
+另外，我们需要定义一个接口来捕获事件。让我们从 [Events Nomicon 页面](https://github.com/near/NEPs/tree/master/neps/nep-0297.md#events) 复制接口定义并粘贴到 `handleStreamerMessage` 函数之前。
+
+```ts title=index.ts
+interface EventLogData {
+  standard: string,
+  version: string,
+  event: string,
+  data?: unknown,
+};
+```
+
+## 只捕获我们需要的数据
+
+在我们在[准备工作](#preparation)部分创建的回调函数 `handleStreamerMessage` 中，让我们开始过滤我们需要的数据：
+
+```ts title=index.ts
+async function handleStreamerMessage(
+  streamerMessage: types.StreamerMessage
+): Promise<void> {
+  const relevantOutcomes = streamerMessage
+    .shards
+    .flatMap(shard => shard.receiptExecutionOutcomes)
+
+}
+```
+
+我们遍历了所有 `Shards`，并将所有 `ExecutionOutcomes` 的列表收集到一个单一列表中（在我们的案例中，我们不关心铸造发生在哪个分片上）。
+
+现在我们只想处理那些包含事件格式日志的 `ExecutionOutcomes`。根据[事件文档](https://github.com/near/NEPs/tree/master/neps/nep-0297.md#events)，此类日志以 `EVENT_JSON:` 开头。
+
+另外，我们不需要 ExecutionOutcome 中的所有数据，让我们处理一下：
+
+```ts title=index.ts
+async function handleStreamerMessage(
+  streamerMessage: types.StreamerMessage
+): Promise<void> {
+  const relevantOutcomes = streamerMessage
+    .shards
+    .flatMap(shard => shard.receiptExecutionOutcomes)
+    .map(outcome => ({
+      receipt: {
+        id: outcome.receipt.receiptId,
+        receiverId: outcome.receipt.receiverId,
+      },
+      events: outcome.executionOutcome.outcome.logs.map(
+        (log: string): EventLogData => {
+          const [_, probablyEvent] = log.match(/^EVENT_JSON:(.*)$/) ?? []
+          try {
+            return JSON.parse(probablyEvent)
+          } catch (e) {
+            return
+          }
+        }
+      )
+      .filter(event => event !== undefined)
+    }))
+
+}
+```
+
+让我们解释一下我们在做什么：
+
+1. 我们遍历 ExecutionOutcomes
+2. 我们构建一个对象列表，包含 `receipt`（其 id 和接收者）以及包含事件的 `events`
+3. 为了收集事件，我们遍历 ExecutionOutcome 的日志，尝试使用正则表达式解析事件。如果无法解析 `EventLogData`，我们返回 `undefined`
+4. 最后，一旦收集了 `events` 列表，我们过滤掉 `undefined`
+
+好的，现在我们只有一个对象列表，其中包含一些收据数据和成功解析的 `EventLogData` 列表。
+
+我们的索引器目标是返回有关遵循 NEP-171 标准的铸造 NFT 的有用数据。我们需要删除不相关的标准事件：
+
+```ts title=index.ts
+    .filter(relevantOutcome =>
+      relevantOutcome.events.some(
+        event => event.standard === "nep171" && event.event === "nft_mint"
+      )
+    )
+```
+
+## 即将完成
+
+到目前为止，我们已经收集了符合我们要求的所有内容。
+
+我们可以在 `handleStreamerMessage` 的末尾打印所有内容：
+
+```ts title=index.ts
+  relevantOutcomes.length && console.dir(relevantOutcomes, { depth: 10 })
+```
+
+`handleStreamerMessage` 函数的最终形态：
+
+```ts title=index.ts
+async function handleStreamerMessage(
+  streamerMessage: types.StreamerMessage
+): Promise<void> {
+  const relevantOutcomes = streamerMessage
+    .shards
+    .flatMap(shard => shard.receiptExecutionOutcomes)
+    .map(outcome => ({
+      receipt: {
+        id: outcome.receipt.receiptId,
+        receiverId: outcome.receipt.receiverId,
+      },
+      events: outcome.executionOutcome.outcome.logs.map(
+        (log: string): EventLogData => {
+          const [_, probablyEvent] = log.match(/^EVENT_JSON:(.*)$/) ?? []
+          try {
+            return JSON.parse(probablyEvent)
+          } catch (e) {
+            return
+          }
+        }
+      )
+      .filter(event => event !== undefined)
+    }))
+    .filter(relevantOutcome =>
+      relevantOutcome.events.some(
+        event => event.standard === "nep171" && event.event === "nft_mint"
+      )
+    )
+
+  relevantOutcomes.length && console.dir(relevantOutcomes, { depth: 10 })
+}
+
+```
+
+如果我们运行索引器，我们将捕获 `nft_mint` 事件并在终端打印数据。
+
+```bash
+npm run start
+```
+
+<Note>
+
+运行索引器时遇到问题？请检查您是否跳过了[凭证](./running-near-lake/credentials)部分 :)
+
+</Note>
+
+先别急！还记得我们谈到要提供市场链接以查看铸造的代币吗？我们将尽可能地用链接扩展我们的数据。至少我们会向您展示如何处理在 Paras 和 Bitte/Mintbase 上铸造的 NFT。
+
+## 为在 Paras 和 Mintbase 上铸造的 NFT 生成链接
+
+此时我们有一个对象数组，我们实时构建了这些对象，它们暴露了收据、执行状态和事件日志。我们确实知道我们现在拥有的所有数据都与我们相关，并且我们希望至少为我们知道的那些市场上的铸造 NFT 扩展链接。
+
+我们了解并喜爱 Paras 和 Mintbase。
+
+### Paras 代币 URL
+
+我们已经为您做了研究，以下是 Paras 上代币 URL 的构建方式：
+
+```text
+https://paras.id/token/[1]::[2]/[3]
+```
+
+其中：
+
+- [1] - Paras 合约地址（`x.paras.near`）
+- [2] - `token_id` 的第一部分（Paras 的 `EventLogData.data` 是一个包含 `token_ids` 键的对象数组。这些 ID 由数字和列 `:` 表示）
+- [3] - `token_id` 本身
+
+示例：
+
+```text
+https://paras.id/token/x.paras.near::387427/387427:373
+```
+
+让我们在 `interface EventLogData` 之后添加接口以备后用：
+
+```ts
+interface ParasEventLogData {
+  owner_id: string,
+  token_ids: string[],
+};
+```
+
+### Mintbase 代币 URL
+
+我们再次为您做了研究：
+
+```text
+https://bitte.ai/thing/[1]:[2]
+```
+
+其中：
+
+- [1] - `meta_id`（Mintbase 的 `EventLogData.data` 是一个包含 `meta_id` 的字符串化 JSON 数组）
+- [2] - 商店合约账户地址（基本上是收据的接收者 ID）
+
+示例：
+
+```text
+https://bitte.ai/thing/70eES-icwSw9iPIkUluMHOV055pKTTgQgTiXtwy3Xus:vnartistsdao.mintbase1.near
+```
+
+让我们在 `interface EventLogData` 之后添加接口以备后用：
+
+```ts
+interface MintbaseEventLogData {
+  owner_id: string,
+  memo: string,
+}
+```
+
+现在是添加另一个 `.map()` 的好时机，但可能太多了。所以让我们使用 for 循环来生成我们想要打印的输出数据。
+
+```ts title=index.ts
+let output = []
+for (let relevantOutcome of relevantOutcomes) {
+  let marketplace = "Unknown"
+  let nfts = []
+}
+```
+
+我们将打印市场名称、收据 id（以便您可以在 [NEAR Explorer](https://nearblocks.io) 上搜索）以及 NFT 链接列表和所有者账户名。
+
+让我们开始生成链接。是时候向 [Riqi](https://twitter.com/hdriqi) 打个招呼了（因为我们可以）：
+
+```ts title=index.ts
+let output = []
+  for (let relevantOutcome of relevantOutcomes) {
+    let marketplace = "Unknown"
+    let nfts = []
+    if (relevantOutcome.receipt.receiverId.endsWith(".paras.near")) {
+      marketplace = "Paras"
+      nfts = relevantOutcome.events.flatMap(event => {
+        return (event.data as ParasEventLogData[])
+          .map(eventData => ({
+            owner: eventData.owner_id,
+            links: eventData.token_ids.map(
+              tokenId => `https://paras.id/token/${relevantOutcome.receipt.receiverId}::${tokenId.split(":")[0]}/${tokenId}`
+            )
+           })
+        )
+      })
+    }
+```
+
+关于这里发生的事情说几句。如果收据的接收者账户名以 `.paras.near` 结尾（例如 `x.paras.near`），我们假设它来自 Paras 市场，因此我们更改相应的变量。
+
+之后，我们使用之前定义的 `ParasEventLogData` 遍历事件及其 `data`，收集包含 NFT 所有者和 NFT 链接的对象列表。
+
+Mintbase 的处理，我们希望 [Nate](https://twitter.com/nategeier) 和他的团队已经迁移到 [NEAR Lake Framework](./near-lake-framework)，向他们打个招呼并生成链接：
+
+```ts title=index.ts
+  } else if (relevantOutcome.receipt.receiverId.match(/\.mintbase\d+\.near$/)) {
+      marketplace = "Mintbase"
+      nfts = relevantOutcome.events.flatMap(event => {
+        return (event.data as MintbaseEventLogData[])
+          .map(eventData => {
+          const memo = JSON.parse(eventData.memo)
+          return {
+            owner: eventData.owner_id,
+            links: [`https://bitte.ai/thing/${memo["meta_id"]}:${relevantOutcome.receipt.receiverId}`]
+          }
+        })
+      })
+    }
+```
+
+与 Paras 几乎相同，但稍微复杂一些。Mintbase 市场的本质是它不是单一的市场！每个 Mintbase 用户都有自己的商店和独立的合约。这些合约地址似乎遵循相同的原则，它们以 `.mintbaseN.near` 结尾，其中 `N` 是数字（例如 `nate.mintbase1.near`）。
+
+确定 ExecutionOutcome 接收者来自 Mintbase 后，我们做与 Paras 相同的事情：
+
+1. 更改 `marketplace` 变量
+2. 收集包含所有者和生成链接的 NFT 列表
+
+如果我们无法确定市场，我们仍然想返回一些内容，所以让我们按原样返回事件数据：
+
+```ts title=index.ts
+  } else {
+    nfts = relevantOutcome.events.flatMap(event => event.data)
+  }
+```
+
+是时候将收集的数据推送到 `output` 中了
+
+```ts title=index.ts
+  output.push({
+    receiptId: relevantOutcome.receipt.id,
+    marketplace,
+    nfts,
+  })
+```
+
+并让它将输出打印到终端：
+
+```ts title=index.ts
+if (output.length) {
+  console.log(`We caught freshly minted NFTs!`)
+  console.dir(output, { depth: 5 })
+}
+```
+
+全部放在一起：
+
+```ts title=index.ts
+  let output = []
+  for (let relevantOutcome of relevantOutcomes) {
+    let marketplace = "Unknown"
+    let nfts = []
+    if (relevantOutcome.receipt.receiverId.endsWith(".paras.near")) {
+      marketplace = "Paras"
+      nfts = relevantOutcome.events.flatMap(event => {
+        return (event.data as ParasEventLogData[])
+          .map(eventData => ({
+            owner: eventData.owner_id,
+            links: eventData.token_ids.map(
+              tokenId => `https://paras.id/token/${relevantOutcome.receipt.receiverId}::${tokenId.split(":")[0]}/${tokenId}`
+            )
+           })
+        )
+      })
+    } else if (relevantOutcome.receipt.receiverId.match(/\.mintbase\d+\.near$/)) {
+      marketplace = "Mintbase"
+      nfts = relevantOutcome.events.flatMap(event => {
+        return (event.data as MintbaseEventLogData[])
+          .map(eventData => {
+          const memo = JSON.parse(eventData.memo)
+          return {
+            owner: eventData.owner_id,
+            links: [`https://bitte.ai/thing/${memo["meta_id"]}:${relevantOutcome.receipt.receiverId}`]
+          }
+        })
+      })
+    } else {
+      nfts = relevantOutcome.events.flatMap(event => event.data)
+    }
+    output.push({
+      receiptId: relevantOutcome.receipt.id,
+      marketplace,
+      createdOn,
+      nfts,
+    })
+  }
+  if (output.length) {
+    console.log(`We caught freshly minted NFTs!`)
+    console.dir(output, { depth: 5 })
+  }
+```
+
+好了，NFT 铸造的日期和时间怎么办？让我们在 `handleStreamerMessage` 函数的开头添加
+
+```ts title=index.ts
+const createdOn = new Date(streamerMessage.block.header.timestamp / 1000000)
+```
+
+更新 `output.push()` 表达式：
+
+```ts title=index.ts
+output.push({
+  receiptId: relevantOutcome.receipt.id,
+  marketplace,
+  createdOn,
+  nfts,
+})
+```
+
+现在就这样了。运行索引器以监控 NFT 铸造，不要错过任何东西。
+
+```bash
+npm run start
+```
+
+<Note>
+
+运行索引器时遇到问题？请检查您是否跳过了[凭证](./running-near-lake/credentials)部分 :)
+
+</Note>
+
+输出示例：
+
+```text
+We caught freshly minted NFTs!
+[
+  {
+    receiptId: '2y5XzzL1EEAxgq8EW3es2r1dLLkcecC6pDFHR12osCGk',
+    marketplace: 'Paras',
+    createdOn: 2022-05-24T09:35:57.831Z,
+    nfts: [
+      {
+        owner: 'dccc.near',
+        links: [ 'https://paras.id/token/x.paras.near::398089/398089:17' ]
+      }
+    ]
+  }
+]
+We caught freshly minted NFTs!
+[
+  {
+    receiptId: 'BAVZ92XdbkAPX4DkqW5gjCvrhLX6kGq8nD8HkhQFVt5q',
+    marketplace: 'Mintbase',
+    createdOn: 2022-05-24T09:36:00.411Z,
+    nfts: [
+      {
+        owner: 'chiming.near',
+        links: [
+          'https://bitte.ai/thing/HOTcn6LTo3qTq8bUbB7VwA1GfSDYx2fYOqvP0L_N5Es:vnartistsdao.mintbase1.near'
+        ]
+      }
+    ]
+  }
+]
+```
+
+## 结论
+
+真是一段旅程，对吧？让我们总结一下我们所做的事情：
+
+- 您已经了解了[事件](https://github.com/near/NEPs/tree/master/neps/nep-0297.md)
+- 现在您了解如何跟踪事件
+- 知道作为合约开发者可以使用事件并发出自己的事件，现在您知道如何创建跟踪这些事件的索引器
+- 我们更深入地了解了 NFT 铸造过程，您可以进一步实验，了解如何跟踪 `nft_transfer` 事件
+
+本教程的内容可以推广到任何遵循[事件格式](https://github.com/near/NEPs/tree/master/neps/nep-0297.md)的事件。
+
+更不用说您现在拥有了一个专用索引器，可以发现最新铸造的 NFT，成为最早收集它们的人。
+
+冲冲冲 🦈
+
+<Note>
+**教程源代码**
+
+[`near-examples/near-lake-nft-indexer`](https://github.com/near-examples/near-lake-nft-indexer)：本教程的源代码
+
+</Note>

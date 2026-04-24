@@ -1,0 +1,255 @@
+---
+title: 更新合约
+description: "了解如何安全升级 NEAR 智能合约，包括程序化更新、迁移策略和合约版本控制最佳实践。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+了解如何通过 NEAR CLI 等工具以及以编程方式更新 NEAR 智能合约。了解更改合约逻辑时状态迁移的影响。
+
+NEAR 账户将其逻辑（合约代码）与状态（存储）分开，允许更改代码。
+
+合约可以通过两种方式更新：
+
+1. **通过工具**，如 [NEAR CLI](../../tools/cli) 或
+   [NEAR API](../../tools/near-api)（如果您持有
+   账户的[完全访问密钥](../../protocol/accounts-contracts/access-keys)）。
+2. **以编程方式**，通过实现一个
+   [接受新代码并部署它](#programmatic-update)的方法。
+
+---
+
+## 通过工具更新
+
+只需使用您首选的工具重新部署另一个合约，例如使用
+[NEAR CLI](../../tools/cli)：
+
+```bash
+# （可选）如果您没有账户，请创建一个
+near create-account <account-id> --useFaucet
+
+# 部署合约
+near deploy <account-id> <wasm-file>
+```
+
+---
+
+## 程序化更新
+
+智能合约也可以通过实现一个方法来自我更新，该方法：
+
+1. 接受新的 wasm 合约作为输入
+2. 创建一个 Promise 将其部署到自身上
+
+<CodeGroup>
+  <Github fname="update.rs"
+        url="https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs"
+        start="10" end="31" />
+
+</CodeGroup>
+
+#### 如何调用此方法？
+
+<Tabs>
+<Tab title="CLI">
+
+```bash
+# 调用 update_contract 方法
+near contract call-function as-transaction <contract-account> update_contract file-args </path/to/wasm.wasm> prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <manager-account> network-config testnet sign-with-keychain send
+```
+
+</Tab>
+
+<Tab title="🌐 JavaScript">
+
+```js
+// 加载合约的原始字节
+const code = fs.readFileSync("./path/to/wasm.wasm");
+
+// 调用 update_contract 方法
+await wallet.callFunction({
+  contractId: guestBook,
+  method: "update_contract",
+  args: code,
+  gas: "300000000000000",
+});
+```
+
+</Tab>
+
+</Tabs>
+
+<Tip>
+**DAO 工厂**
+
+这就是 DAO 工厂
+[更新其合约](https://github.com/near-daos/sputnik-dao-contract/blob/main/sputnikdao-factory2/src/factory_manager.rs#L60)的方式。
+
+</Tip>
+
+---
+
+## 迁移状态
+
+由于账户的逻辑（智能合约）与账户的状态（存储）分离，**重新部署合约时账户的状态会保留**。
+
+因此，**添加方法**或**修改现有方法**不会产生**任何问题**。
+
+但是，部署一个**修改或删除存储在状态中的结构**的合约将引发错误：`Cannot deserialize the contract state`，在这种情况下，您可以选择：
+
+1. 使用不同的账户
+2. 回滚到之前的合约代码
+3. 添加一个迁移合约状态的方法
+
+<hr className="subsection" />
+
+### 迁移方法
+
+如果您别无选择，必须迁移状态，那么您需要实现一个方法：
+
+1. 读取合约的当前状态
+2. 应用不同的函数将其转换为新状态
+3. 返回新状态
+
+<Tip>
+**DAO 更新**
+
+这就是 DAO
+[自我更新](https://github.com/near-daos/sputnik-dao-contract/blob/main/sputnikdao2/src/upgrade.rs#L59)的方式。
+
+</Tip>
+
+<hr className="subsection" />
+
+### 示例：留言板迁移
+
+假设您有一个留言板，您在其中存储消息，用户可以为这些消息付费以使其成为"优质"消息。您使用以下状态跟踪消息和付款：
+
+<CodeGroup>
+<Github fname="lib.rs"
+    url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs"
+    start="10" end="21" />
+
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-base.js"
+      start="12" end="33" />
+
+</CodeGroup>
+
+#### 更新合约
+
+在某个时刻，您意识到可以将 `payments` 跟踪放在 `PostedMessage` 本身内，因此您将合约更改为：
+
+<CodeGroup>
+<Github fname="lib.rs"
+    url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs"
+    start="12" end="23" />
+
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
+      start="21" end="43" />
+
+</CodeGroup>
+
+#### 不兼容的状态
+
+如果您将更新部署到已初始化的账户，合约将无法反序列化账户的状态，因为：
+
+1. 状态中保存了一个额外的 `payments` 向量（来自之前的合约）
+2. 存储的 `PostedMessages` 缺少 `payment` 字段（如之前的合约中所示）
+
+#### 迁移状态
+
+要解决这个问题，您需要实现一个方法，遍历旧状态，删除 `payments` 向量并将信息添加到 `PostedMessages`：
+
+<CodeGroup>
+<Github fname="lib.rs"
+    url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
+    start="3" end="51" />
+
+<Github fname="index.js"
+      url="https://github.com/near/near-sdk-js/blob/develop/examples/src/basic-updates/basic-updates-update.js"
+      start="5" end="68" />
+
+</CodeGroup>
+
+请注意，`migrate` 实际上是一个[初始化方法](../anatomy/storage)，它**忽略**现有状态（`[#init(ignore_state)]`），因此能够执行并重写状态。
+
+<Accordion title="为什么要从状态中删除旧结构？">
+
+为了理解为什么要从状态中删除旧结构，让我们看看数据是如何存储的。
+
+例如，如果旧版本的合约存储了两条带有付款的消息，则 `get_messages` 和 `get_payments` 方法将返回以下结果：
+
+<Accordion title="get_messages 结果">
+    ```bash
+    INFO --- Result -------------------------
+    |    [
+    |      {
+    |        "premium": false,
+    |        "sender": "test-ac-1719933221123-3.testnet",
+    |        "text": "Hello"
+    |      },
+    |      {
+    |        "premium": false,
+    |        "sender": "test-ac-1719933221123-3.testnet",
+    |        "text": "Hello"
+    |      }
+    |    ]
+    |    ------------------------------------
+    ```
+</Accordion>
+
+<Accordion title="get_payments 结果">
+    ```bash
+    INFO --- Result -------------------------
+     |    [
+     |      "10000000000000000000000",
+     |      "10000000000000000000000"
+     |    ]
+     |     ------------------------------------
+    ```
+</Accordion>
+
+但是，如果我们使用以下命令以文本形式查看存储，我们将看到每个付款都以 `p\` 前缀存储在其自己的键下。
+
+```bash
+near contract view-storage <CONTRACT_ID> all as-text network-config testnet now
+```
+
+<Accordion title="存储文本结果">
+    ```bash
+    INFO Contract state (values):
+     |      key:   STATE
+     |      value: \x02\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00m\x02\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00p
+     |      --------------------------------
+     |      key:   m\x00\x00\x00\x00\x00\x00\x00\x00
+     |      value: \x00\x1f\x00\x00\x00test-ac-1719933221123-3.testnet\x05\x00\x00\x00Hello
+     |      --------------------------------
+     |      key:   m\x01\x00\x00\x00\x00\x00\x00\x00
+     |      value: \x00\x1f\x00\x00\x00test-ac-1719933221123-3.testnet\x05\x00\x00\x00Hello
+     |      --------------------------------
+     |      key:   p\x00\x00\x00\x00\x00\x00\x00\x00
+     |      value: \x00\x00@\xb2\xba\xc9\xe0\x19\x1e\x02\x00\x00\x00\x00\x00\x00
+     |      --------------------------------
+     |      key:   p\x01\x00\x00\x00\x00\x00\x00\x00
+     |      value: \x00\x00@\xb2\xba\xc9\xe0\x19\x1e\x02\x00\x00\x00\x00\x00\x00
+     |      --------------------------------
+    ```
+</Accordion>
+
+这意味着在将状态迁移到新版本时，我们不仅需要更改消息结构，还需要从状态中删除所有与付款相关的键。否则，旧键将保留为孤立键，仍然占用空间。
+
+在 `migrate` 方法中删除它们时，我们在可变的 `old_state` 结构中的 payments 向量上调用 `clear()` 方法。此方法从集合中删除所有元素。
+
+</Accordion>
+
+<Tip>
+
+您可以在
+[官方迁移示例](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates/base)中逐步跟踪迁移过程。
+JavaScript 迁移示例测试文件可以在这里找到：
+[test-basic-updates.ava.js](https://github.com/near/near-sdk-js/blob/develop/examples/__tests__/test-basic-updates.ava.js)，
+通过在 examples 目录中运行命令 `pnpm run test:basic-update` 执行。
+
+</Tip>

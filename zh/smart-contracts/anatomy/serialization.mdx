@@ -1,0 +1,239 @@
+---
+title: 序列化说明
+description: "了解合约如何为函数调用和存储序列化数据。"
+---
+
+智能合约需要能够以简单的方式**通信复杂数据**，同时也能高效地将这些数据**读取和存储**到状态中。
+
+为了实现这种简单的通信和高效的存储，智能合约将数据从复杂表示转换为更简单的表示。
+
+这个将**复杂对象转换为更简单的单值**表示的过程称为**序列化**。NEAR 使用两种序列化格式：[JSON](https://www.json.org/json-en.html) 和 [Borsh](https://borsh.io/)。
+1. [JSON](https://www.json.org/json-en.html) 用于在函数调用期间序列化合约的输入/输出
+2. [Borsh](https://borsh.io/) 用于序列化合约的状态
+
+---
+
+## 序列化格式概述
+
+让我们快速概述两种序列化格式，包括它们的优缺点，以及序列化结果的示例。
+
+<hr className="subsection" />
+
+### [JSON](https://www.json.org/json-en.html)：对象转字符串
+
+#### 特性
+ - 自描述格式
+ - 与 JavaScript 的互操作性好
+ - 多种实现随时可用
+ - 但是...在计算时间和结果大小方面效率不高
+
+#### 示例
+```js
+Example{
+  number: i32 = 2;
+  arr: Vector<i32> = [0, 1];
+}
+
+// 序列化为
+"{\"number\": 2, \"arr\": [0, 1]}"
+```
+
+<hr className="subsection" />
+
+### [Borsh](https://borsh.io/)：对象转字节
+
+#### 特性
+  - 紧凑的二进制格式，专为高效（反）序列化而构建
+  - 严格且规范的二进制表示
+  - 更少的开销：不需要存储属性名称
+  - 但是...必须知道 schema 才能（反）序列化数据
+
+#### 示例
+```js
+Example{
+  number: i32 = 2;
+  arr: Vector<i32> = [0, 1];
+}
+
+// 序列化为
+[2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+```
+---
+
+## 序列化输入与输出
+NEAR 合约可以实现接受和返回复杂对象的方法。
+为了以简单的方式处理这些数据，使用 JSON 序列化。
+
+使用 JSON 使每个人都更容易与合约通信，因为大多数语言都提供了 JSON（反）序列化器。
+
+#### 示例
+让我们看看这个仅出于教育目的而编写的示例：
+
+```rust
+#[near(serializers = [json])]
+pub struct A {
+  pub a_number: i32,
+  pub b_number: u128
+}
+
+#[near(serializers = [json])]
+pub struct B {
+  pub success: bool,
+  pub other_number: i32
+}
+
+pub fn method(&self, struct_a: A): B {
+  B {
+     success: true,
+     other_number: 0
+  }
+}
+```
+
+#### 接收数据
+当用户调用 `method` 时，合约接收编码为 JSON 字符串的参数（例如 `"{\"a_number\":0, \"b_number\":\"100\"}"`），然后将其（反）序列化为正确的对象（`A{0, 100}`）。
+
+#### 返回数据
+当返回结果时，合约将自动将对象 `B{true, 0}` 编码为其 JSON 序列化值：`"{\"success\":true, \"other_number\":0}"` 并返回此字符串。
+
+<Warning>
+**JSON 限制**
+由于 JSON 限制为 `52 字节` 数字，您不能将 `u64`/`u128` 用作输入或输出。JSON 无法序列化它们。相反，您必须使用 `Strings`。
+
+`NEAR SDK RS` 目前实现了 `near_sdk::json_types::{U64, I64, U128, I128}`，您可以用于数据的输入/输出。
+</Warning>
+
+---
+
+## Borsh：状态序列化
+
+在底层，智能合约使用简单的**键/值对**存储数据。这意味着合约需要将复杂状态转换为简单的键值对。
+
+为此，NEAR 合约使用 [borsh](https://borsh.io)，它被优化用于将复杂对象（反）序列化为更小的字节流。
+
+<Tip>
+**SDK-JS 仍使用 json**
+JavaScript SDK 使用 JSON 序列化状态中的对象，但 borsh 实现应该很快就会到来
+</Tip>
+
+#### 示例
+让我们看看这个仅出于教育目的而编写的示例：
+
+```rust
+#[near(serializers = [json, borsh])]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+  string: String,
+  vector: Vector<u8>
+}
+
+#[near]
+impl Contract {
+  #[init]
+  pub fn init(string: String, first_u8: u8) -> Self {
+    let mut vector: Vector<u8> = Vector::new("prefix".as_bytes());
+    vector.push(&first_u8);
+
+    Self { string, vector }
+  }
+
+  pub fn change_state(&mut self, string: String, number: u8) {
+    self.string = string;
+    self.vector.push(&number);
+  }
+}
+```
+
+#### 部署时的空状态
+如果我们将合约部署到新账户并立即请求状态，我们将看到它是空的：
+
+```bash
+near view-state $CONTRACT --finality optimistic
+
+# Result is: []
+```
+
+#### 初始化状态
+如果我们初始化状态，可以看到 Borsh 如何用于序列化状态：
+
+```bash
+# 使用字符串 "hi" 和 0 初始化
+near call $CONTRACT init '{"string":"hi", "first_u8":0}' --useAccount $CONTRACT
+
+# 检查状态
+near view-state $CONTRACT --utf8 --finality optimistic
+```
+
+<Accordion title="结果">
+
+```bash
+[
+  {
+    key: 'STATE',
+    value: '\x02\x00\x00\x00hi\x01\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00prefix'
+  },
+  { key: 'prefix\x00\x00\x00\x00\x00\x00\x00\x00', value: '\x00' }
+]
+```
+</Accordion>
+
+第一个键值对是：
+
+```js
+key: 'STATE'
+value: '\x02\x00\x00\x00hi\x01\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00prefix'
+```
+
+由于 `Contract` 具有结构 `string, Vector<u8>`，值被解释为：
+
+```bash
+[2, 0, 0, 0, "h", "i"] -> `string` 有 2 个元素："h" 和 "i"。
+[1, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, "prefix"] -> Vector 有 1 个元素，要查看值，请搜索以（6 字节前缀）"prefix" 开头的键
+```
+
+然后，第二个键值对显示由 `"prefix"` 字符串标记的 `Vector` 条目：
+
+```js
+key: 'prefix\x00\x00\x00\x00\x00\x00\x00\x00'
+value: '\x00'
+```
+
+#### 修改状态
+如果我们修改存储的字符串并添加新数字，状态会相应变化：
+
+```bash
+near call $CONTRACT change_state '{"string":"bye", "number":1}' --useAccount $CONTRACT
+```
+
+<Accordion title="结果">
+
+```bash
+[
+  {
+    key: 'STATE',
+    value: '\x03\x00\x00\x00bye\x02\x00\x00\x00\x00\x00\x00\x00\x06\x00\x00\x00prefix'
+  },
+  { key: 'prefix\x00\x00\x00\x00\x00\x00\x00\x00', value: '\x00' },
+  { key: 'prefix\x01\x00\x00\x00\x00\x00\x00\x00', value: '\x01' }
+]
+```
+</Accordion>
+
+我们可以看到 `STATE` 键发生了变化以反映新字符串（`bye`）的存储，以及向量现在有 2 个元素。
+
+同时，添加了一个新的键值对，添加了新的向量条目：我们刚刚添加的 `1u8`。
+
+<hr className="subsection" />
+
+{/* We should see where to move/replicate this */}
+
+### 反序列化错误
+当有人调用智能合约方法时，合约的第一步是反序列化自己的状态。
+
+在上面使用的示例中，合约将首先读取 `STATE` 键，并尝试将其值反序列化为对象 `Contract{string: String, vector: Vector<u8>}`。
+
+如果您将具有不同合约结构的合约部署到该账户，那么合约将无法反序列化 `STATE` 键并 panic `Cannot deserialize the contract state`。
+
+要解决此问题，您可以：
+1. 回滚到之前的合约代码
+2. 实现一个[迁移合约状态](../release/upgrade)的方法

@@ -1,0 +1,14 @@
+---
+title: 交易
+description: "了解用户如何通过由操作组成的交易与 NEAR 交互，这些交易使用私钥签名，并由网络以确定性 gas 成本处理。"
+---
+
+用户通过创建交易与 NEAR 进行交互。具体来说，用户使用其账户的[私钥](../accounts-contracts/access-keys)签署交易，然后将交易广播并由网络处理。
+
+![交易](/assets/docs/welcome-pages/data-lake.png)
+
+一笔交易由一个或多个 [`操作（Actions）`](./transaction-anatomy)组成，每个操作消耗确定数量的 [gas 单位](./gas)。这些 gas 单位被转换为 NEAR 代币的成本，用户必须支付这些费用才能让交易被处理。
+
+<Tip>
+您可以使用<a href="https://nearblocks.io/" target="_blank" rel="noopener noreferrer">区块浏览器</a>来检查 NEAR 网络中的交易
+</Tip>

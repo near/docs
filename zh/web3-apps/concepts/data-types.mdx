@@ -1,0 +1,160 @@
+---
+title: 处理 NEAR 数据类型
+description: "了解如何在与 NEAR 交互时处理常见数据类型"
+---
+
+在调用合约方法或接收其返回结果时，您需要正确地对参数进行编码/解码。为此，了解合约如何编码时间戳、余额和 Gas 至关重要。
+
+<Info>
+**正在查找智能合约数据类型？**
+
+请查看[智能合约数据类型](../../smart-contracts/anatomy/types)章节，了解有关如何在智能合约中处理数据类型的更多信息。
+
+</Info>
+
+---
+
+## 时间
+
+智能合约中的区块时间戳使用纳秒进行编码（即 19 位数字：`1655373910837593990`）。
+
+<Tabs>
+<Tab title="🌐 Javascript">
+
+`Date.now()` 返回以毫秒为单位的时间戳（即 13 位数字：`1655373910837`）。请务必在毫秒和纳秒之间进行转换，以正确处理时间变量。
+
+</Tab>
+
+<Tab title="🦀 Rust">
+
+在 Rust 中，`std::time::SystemTime::now()` 返回一个 `SystemTime` 对象。您可以按如下方式将其转换为自 UNIX_EPOCH 以来的纳秒数：
+
+```rust
+use std::time::{SystemTime, UNIX_EPOCH};
+let start = SystemTime::now();
+let since_the_epoch = start.duration_since(UNIX_EPOCH)
+    .expect("Time went backwards");
+let in_nanoseconds = since_the_epoch.as_nanos();
+println!("Current time in nanoseconds since UNIX EPOCH: {}", in_nanoseconds);
+```
+
+</Tab>
+</Tabs>
+
+---
+
+## 存款
+
+智能合约始终使用 `yoctoNEAR` 处理 NEAR 金额（1Ⓝ = 10^24 yocto）。这意味着在与合约或用户余额交互时，您需要在 NEAR 和 yoctoNEAR 之间进行转换。
+
+在底层，网络（和合约）将余额表示为 `u128`，并编码为字符串（因为 JSON 无法处理超过 52 位的整数）。
+
+请**务必**以 `string` 形式发送金额（例如，1Ⓝ 为 `"1000000000000000000000000"`），**切勿**以 `number` 形式发送（例如 `1000000`）。相应地，每当您需要向用户显示金额时，请从 `string` 进行转换。
+
+<Tabs>
+<Tab title="🌐 Javascript">
+
+在 JavaScript 中，您可以使用 `near-api-js` 库在 NEAR 和 yoctoNEAR 之间进行转换：
+
+```js
+import { NEAR } from '@near-js/tokens'
+
+const units = NEAR.fromDecimal('1.5') // 1.5Ⓝ
+console.log(units) // "1500000000000000000000000"
+
+const decimal = NEAR.fromUnits('1500000000000000000000000', 2)
+console.log(decimal) // 1.5
+```
+
+</Tab>
+
+<Tab title="🦀 Rust">
+
+在 Rust 中，您可以直接使用 `near_token` crate 在 NEAR 和 yoctoNEAR 之间进行转换：
+
+```rust
+use near_token::NearToken
+
+fn main() {
+    const TEN_NEAR: NearToken = NearToken::from_near(10);
+
+    assert_eq!(TEN_NEAR.to_string(), "10.00 NEAR");
+    assert_eq!(TEN_NEAR.as_near(), 10);
+    assert_eq!(TEN_NEAR.as_millinear(), 10000);
+    assert_eq!(TEN_NEAR.as_yoctonear(), 10000000000000000000000000);
+
+    let input_str = "0.123456 NEAR";
+    let input_near: NearToken = input_str.parse().unwrap();
+    assert_eq!(
+        input_near,
+        NearToken::from_yoctonear(123456000000000000000000)
+    );
+
+}
+```
+
+</Tab>
+
+</Tabs>
+
+---
+
+## Gas
+
+在调用合约方法时，您可以指定要附加到调用的 Gas 数量。在网络中，`Gas` 被表示为 `u64`，并编码为 `string`（因为 JSON 无法处理超过 52 位的整数）。
+
+一般来说，计算量少的函数可以使用 `30 Tgas` 或更少的 Gas 进行调用，而更复杂的函数可能需要高达 `300 Tgas`。
+
+<Tabs>
+
+<Tab title="🌐 Javascript">
+
+在 JavaScript 中，没有内置库来处理 Gas 单位，但您可以轻松地按如下方式进行转换：
+
+```js
+const TGAS = 1000000000000; // 1 Tgas = 10^12 gas units
+
+function toTgas(gas) {
+    return (gas * TGAS).toString();
+}
+
+function fromTgas(tgas) {
+    return (parseInt(tgas) / TGAS).toFixed(2);
+}
+```
+
+</Tab>
+
+<Tab title="🦀 Rust">
+
+```rust
+use near_gas::NearGas;
+
+fn main() {
+    let data = "12.657 tgas";
+
+    let near_gas: NearGas = data.parse().unwrap();
+
+    // Convert the value to the most precise "gas" unit
+    assert_eq!(near_gas.as_gas(), 12657000000000);
+    // Convert the value to "gigagas" unit
+    assert_eq!(near_gas.as_ggas(), 12657);
+    
+    // Display Gas. It will print: "Here is 12.7 Tgas"
+    println!("Here is {}", near_gas);
+
+    // When `serde` feature is enabled, NearGas can be used in serde-serializable structs.
+    // NearGas will be serialized to a gas-precision u64 value encoded as string.
+    #[derive(serde::Serialize)]
+    struct FunctionCallDetails {
+        used_gas: NearGas,
+    }
+
+    let details = FunctionCallDetails { used_gas: near_gas };
+
+    assert_eq!(serde_json::to_string(&details).unwrap(), r#"{"used_gas":"12657000000000"}"#);
+}
+```
+
+</Tab>
+</Tabs>

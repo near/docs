@@ -1,0 +1,152 @@
+---
+title: 部署您自己的合约
+description: "了解如何在 NEAR 上部署您自己的流动性质押合约"
+---
+
+从本质上讲，流动性质押合约发行一种遵循[同质化代币（NEP-141）](https://github.com/near/NEPs/blob/master/neps/nep-0141.md)标准的代币。
+
+当您质押 `NEAR` 时，您不只是将其锁定——您还会收到一种流动性代币（例如 `rNEAR`），其行为与网络上任何其他同质化代币完全相同。您可以转移它、兑换它，或在 DeFi 协议中使用它，就像使用任何其他代币一样。
+
+由于它完全兼容 NEP-141，该代币可与钱包、DEX 和其他智能合约无缝集成。这种兼容性正是支持提前退出机制的关键——您可以通过在交易所兑换流动性代币立即换回 `NEAR`。兑换汇率由市场供需决定，通常略低于链上汇率（大约低 0.5%），这代表了获取即时流动性的小额成本。
+
+在幕后，流动性代币的汇率根据验证节点赚取的奖励持续调整。
+计算公式为 `exchange_rate = total_staked_near / total_liquid_token_supply`，随着每个时期积累质押奖励，质押的 NEAR 总量增加，而代币供应量只在用户存入或提取时才会变化。这就是为什么即使您持有相同的余额，汇率和代币价值也会随时间稳步增加。
+
+---
+
+## 存储押金（NEP-145）
+
+由于流动性质押合约发行 [NEP-141 代币](https://github.com/near/NEPs/blob/master/neps/nep-0141.md)，它也实现了[存储管理（NEP-145）](https://github.com/near/NEPs/blob/master/neps/nep-0145.md)标准。
+
+每次您首次与合约交互时（例如存入 `NEAR` 并获得流动性代币时），您需要附加一笔小额存储押金。此押金用于支付您的账户信息在合约存储中占用的空间。好处是这笔资金并未被消耗，只是在您使用合约期间保持预留状态。如果您停止使用它，可以通过注销账户取回押金。
+
+简而言之，这是一种确保合约不用自己的余额为用户数据付费的方式，同时让所有人在离开时都能安全收回押金。
+
+---
+
+## 部署流动性质押合约
+
+流动性质押合约可直接从[代码仓库](https://github.com/ref-finance/rnear-contract)部署，该仓库包含由 Rhea.finance 团队维护的实现。此合约遵循上述相同原则，并已针对生产环境进行了优化。
+
+部署前，请确保目标账户余额中至少有 20.5 `NEAR`。此金额涵盖了初始存储成本、初始化所需的最低质押流动性以及小额 gas 缓冲。
+
+```bash
+# 克隆代码仓库
+git clone https://github.com/ref-finance/rnear-contract.git
+cd rnear-contract/contracts/lst
+
+## 创建并为流动性质押账户注资
+near create-account <account-id> --useAccount <funding-account> --initialBalance <amount in yoctoNEAR>
+
+# 构建并部署流动性质押合约
+cargo near deploy build-non-reproducible-wasm <account-id> with-init-call new json-args '{
+    "metadata": {
+        "decimals": 24,
+        "name": "Test Liquid Near Staking Token",
+        "spec": "ft-1.0.0",
+        "symbol": "tNEAR"
+    },
+    "owner_id": "owner.near"
+}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR'
+```
+
+### 设置验证节点白名单账户
+
+在添加验证节点之前，您首先需要设置验证节点白名单账户。该账户充当合约允许使用哪些验证节点的单一信息来源。
+
+验证节点白名单账户必须实现以下接口，允许合约验证给定的验证节点是否已获批准。
+
+```rust
+#[ext_contract(ext_whitelist)]
+pub trait ExtWhitelist {
+    fn is_whitelisted(&self, staking_pool_account_id: AccountId) -> bool;
+}
+```
+
+要更新验证节点白名单账户，请运行以下命令：
+
+```bash
+near contract call-function as-transaction <account-id> set_whitelist_contract_id json-args '{
+    "account_id": "whitelist_source.near"
+}' prepaid-gas '30.0 Tgas' attached-deposit '1 yoctoNEAR'
+```
+
+### 添加验证节点
+
+白名单账户配置完成后，您可以注册合约将委托代币的验证节点列表及其权重。每个权重定义了相对于其他验证节点，有多少比例的总质押量应流向该特定验证节点。
+
+要添加验证节点，请运行以下命令：
+
+```bash
+near contract call-function as-transaction <account-id> add_validators json-args '{
+    "validator_ids": ["validator1.pool.near", "validator2.pool.near", "validator3.pool.near"],
+    "weights": [40, 35, 25]
+}' prepaid-gas '30.0 Tgas' attached-deposit '1 yoctoNEAR'
+```
+
+---
+
+## 代币
+
+在本节中，我们将介绍几种最常用的方法。要探索所有可用方法，请参阅 [NEP-141](https://github.com/near/NEPs/blob/master/neps/nep-0141.md) 的完整定义。
+
+### 存储押金
+
+在持有或接收任何流动性代币之前，您的账户需要在合约存储中注册。您只需执行一次，且该金额可在注销账户时全额退还。
+
+要注册账户，请运行以下命令：
+
+```bash
+near contract call-function as-transaction <account-id> storage_deposit json-args '{
+    "account_id":"<your-account-id>",
+    "registration_only": true
+}' prepaid-gas '30.0 Tgas' attached-deposit '0.00125 NEAR'
+```
+
+### 查询余额
+
+要查询您持有多少流动性代币（例如 `tNEAR`），请运行以下命令：
+
+```bash
+near contract call-function as-read-only <account-id> ft_balance_of json-args '{"account_id": "<your-account-id>"}'
+```
+
+### 查询总供应量
+
+要查询流动性代币（例如 `tNEAR`）的总供应量，请运行以下命令：
+
+```bash
+near contract call-function as-read-only <account-id> ft_total_supply json-args '{}'
+```
+
+### 转移代币
+
+要直接将代币转移到另一个账户，请运行以下命令：
+
+```bash
+near contract call-function as-transaction <account-id> ft_transfer json-args '{
+    "amount": "10000000000000000000000000",
+    "receiver_id":"<another-account-id>"
+}' prepaid-gas '30.0 Tgas' attached-deposit '1 yoctoNEAR'
+```
+
+### 查询代币价格
+
+虽然大多数方法遵循 NEP-141 标准，但流动性质押合约还提供了一个名为 `ft_price` 的附加辅助方法。此方法不属于标准本身——它专门为该合约实现，以便更轻松地查看流动性代币与 `NEAR` 之间的当前汇率，因为代币价格由以下公式决定：`exchange_rate = total_staked_near / total_liquid_token_supply`
+
+要查询当前价格，请运行以下命令：
+
+```bash
+near contract call-function as-read-only <account-id> ft_price json-args '{}'
+```
+
+返回的数字表示一个流动性代币单位当前价值多少 `yoctoNEAR`。
+
+---
+
+## 其他资源
+
+更多信息请浏览以下官方资源：
+
+- [流动性质押合约代码仓库](https://github.com/ref-finance/rnear-contract)
+- [NEAR CLI](https://github.com/near/near-cli-rs)

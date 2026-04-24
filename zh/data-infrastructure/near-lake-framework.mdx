@@ -1,0 +1,118 @@
+---
+title: 什么是 Lake Framework？
+description: "使用现有数据湖构建自己的索引器的库"
+---
+
+NEAR Lake Framework 是一个由伴随库组成的生态系统，这些库从 [`NEAR Data Lake`](#data-lake) 读取数据。它们允许您通过订阅持续推送到 [NEAR Lake](#data-lake) 的区块流来构建自己的索引器。
+
+<iframe
+ width="100%"
+ height="400px"
+ src="https://www.youtube.com/embed/GsF7I93K-EQ"
+ title="NEAR Lake Indexer"
+ frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+ allowfullscreen>
+</iframe>
+*基于 NEAR Lake Framework 构建的简单索引器示例*
+
+您可以使用自己选择的编程语言创建自己的逻辑来处理 NEAR 协议数据：
+- [Python](http://pypi.org/project/near-lake-framework)
+- [JavaScript](https://github.com/near/near-lake-framework-js)
+- [Rust](https://crates.io/crates/near-lake-framework)
+
+<Note>
+**GitHub 仓库**
+
+https://github.com/near/near-lake-framework/
+
+</Note>
+
+---
+
+## 数据湖
+
+NEAR Lake 是一组 AWS S3 存储桶，持续从由 [Aurora](https://aurora.dev) 维护的[运行中的索引器](https://github.com/aurora-is-near/near-lake-indexer)接收新区块。
+
+[FT 事件](https://github.com/near/NEPs/tree/master/neps/nep-0300.md) 和 [NFT 事件](https://github.com/near/NEPs/tree/master/neps/nep-0256.md) 等事件持续以 JSON 文件形式写入两个 AWS S3 存储桶：
+
+- `near-lake-data-testnet`（`eu-central-1` 区域）
+- `near-lake-data-mainnet`（`eu-central-1` 区域）
+
+两个存储桶均设置为由请求者支付访问费用。任何人都可以使用自己的 AWS 凭证连接到这些存储桶来读取数据，并由 Amazon 向其收费。
+
+---
+
+## 延迟
+
+基于 Lake Framework 的索引器继承了 [NEAR Indexer 的延迟特性](https://github.com/near/nearcore/tree/master/chain/indexer)，**加上转储到 AWS S3 和从 AWS S3 读取的额外 0.1-2.1 秒延迟**。
+
+<Tip>
+
+大部分延迟来自最终确定性延迟，Indexer Framework 和 Lake Framework 都只增加了极少的开销。
+
+</Tip>
+
+---
+
+## 费用
+
+基于 NEAR Lake 的索引器消耗 100-500MB 内存（取决于预加载队列的大小），不需要任何存储，甚至可以在树莓派上运行。
+
+由于 NEAR Lake 将 S3 存储桶配置为**由读者支付费用**，从 S3 获取区块链数据每月大约需要 $30.16。
+
+<Accordion title="AWS S3 费用明细">
+
+假设 NEAR 协议每 600ms 产生 1 个区块，一整天网络最多可以创建 144000 个区块（86400s / 每块 600ms）。
+
+根据 [Amazon S3 价格](https://aws.amazon.com/s3/pricing/?nc1=h_ls)，`list` 请求收费为每 1000 个请求 $0.005，`get` 收费为每 1000 个请求 $0.0004。
+
+计算（假设我们始终跟踪网络最新状态）：
+
+```text
+144000 区块/天 * 每区块 10 个请求 / 1000 个请求 * 每千请求 $0.0004 = $0.576 * 30 天 = $17.20
+```
+
+**注意：** 每区块 10 个请求意味着我们有 9 个分片（1 个区块公共数据文件和每个分片各 1 个单独文件）
+
+30 天内需要执行的 `list` 请求数量：
+
+```text
+144000 区块/天 / 1000 个请求 * 每千 list 请求 $0.005 = $0.72 * 30 天 = $21.60
+
+$17.20 + $21.60 = $30.16（约 $30.16）
+```
+
+</Accordion>
+
+---
+
+## 与 [NEAR Indexer Framework](/data-infrastructure/near-indexer) 的比较
+
+NEAR Lake Framework 从 AWS S3 读取数据，而 NEAR Indexer 运行完整节点并直接从区块链实时读取数据。
+
+功能 | Indexer Framework | Lake Framework
+------- | ----------------- | --------------
+允许跟踪 NEAR 协议中的区块和交易 | **是** | **是**<br />（但仅限于主网和测试网）
+去中心化 | **是** | 否<br />（Pagoda Inc 将区块转储到 AWS S3）
+响应时间（端到端） | 最短 3.8 秒（估计平均 5-7 秒） | [最短 3.9 秒（估计平均 6-8 秒）](#latency)
+响应时间（仅框架开销） | 0.1 秒 | 0.2-2.2 秒
+基础设施估算成本 | [$500+/月](https://near-nodes.io/rpc/hardware-rpc) | [**$20/月**](#cost)
+维护难度 | 高级<br />（需要跟进每次 nearcore 升级并同步状态） | **简单**<br />（部署一次，无需维护）
+启动需要多长时间？ | 数天（在主网/测试网上） | **秒级**
+本地开发难度 | 高级<br />（localnet 是个好选择，但在 testnet/mainnet 上测试太重） | **简单**<br />（参见[教程](./tutorials/near-lake-state-changes-indexer)）
+自定义索引器可使用的编程语言 | 仅限 Rust | **任意语言**<br />（目前，辅助包已发布 [Python](http://pypi.org/project/near-lake-framework)、[JavaScript](https://www.npmjs.com/package/near-lake-framework) 和 [Rust](https://crates.io/crates/near-lake-framework) 版本）
+
+---
+
+## 示例与教程
+
+- [`near-examples/near-lake-raw-printer`](https://github.com/near-examples/near-lake-raw-printer)：基于 NEAR Lake Framework 构建的简单数据打印机示例
+- [`near-examples/near-lake-accounts-watcher`](https://github.com/near-examples/near-lake-accounts-watcher)：关于如何使用 NEAR Lake Framework 的视频教程源代码
+- [`near-examples/indexer-tx-watcher-example-lake`](https://github.com/near-examples/indexer-tx-watcher-example-lake)：基于 NEAR Lake Framework 构建的索引器示例，用于监控指定账户/合约的交易
+
+<Note>
+**教程**
+
+参见[教程页面](./tutorials/near-lake-state-changes-indexer)
+
+</Note>
