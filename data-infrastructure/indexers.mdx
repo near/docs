@@ -95,9 +95,13 @@ Another example that highlights the need for a "wide query" is when you use a se
 
 ## Indexers in the NEAR ecosystem
 
-If you are ready to host your own indexer, we recommend using the [Near Lake Framework](./lake-framework/near-lake) as it is simple, reliable, and available in multiple languages (JavaScript, Rust, Python). 
+<Warning>
+**NEAR Lake deprecated as of March 24, 2026.** The NEAR Lake (AWS S3 buckets) has stopped indexing new blocks. For new projects, prefer [Neardata](https://neardata.xyz) (direct replacement), [Data APIs](./data-api), [Goldsky](https://goldsky.com), or the [Nearcore Indexer](./near-indexer).
+</Warning>
 
-If speed is critical for your indexing needs, consider using [Near Indexer](./near-indexer). However, please note that maintaining it can be more complex and costly, as it essentially operates as an independent node in the network. 
+If you are ready to host your own indexer, we recommend using [Neardata](https://neardata.xyz) — it is the direct replacement for NEAR Lake and provides a similar streaming API.
+
+If speed is critical for your indexing needs, consider using [Near Indexer](./near-indexer). However, please note that maintaining it can be more complex and costly, as it essentially operates as an independent node in the network.
 
 If you prefer not to host your own solution, you can utilize [third-party services](./data-services).
 
@@ -110,6 +114,6 @@ We hope this article gives you an understanding of the Indexer concept. Also, we
 ---
 
 ## What's next?
-We encourage you to learn more about the [Lake Indexer project](./lake-framework/near-lake). Please, proceed to [Tutorials](/data-infrastructure/tutorials/near-lake-state-changes-indexer) section to learn how to build an indexer on practice.
+You can learn more about the [Lake Indexer project](./lake-framework/near-lake) (note: deprecated since March 24, 2026). For new projects, see [Neardata](https://neardata.xyz) and the [Tutorials](/data-infrastructure/tutorials/near-lake-state-changes-indexer) section to learn how to build an indexer in practice.
 
 Alternatively, there are a few other third-party indexers that are tightly integrated with the NEAR ecosystem. You can review all of your data sourcing options (including The Graph, Pagoda, Pikespeak, and SubQuery) under [indexing tools](./data-services).

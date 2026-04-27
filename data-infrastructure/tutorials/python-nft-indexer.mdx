@@ -3,6 +3,10 @@ sidebarTitle: NFT indexer for Python
 description: "Learn to build a Python NFT indexer with NEAR Lake Framework"
 ---
 
+<Danger>
+**NEAR Lake deprecated as of March 24, 2026.** This tutorial uses the NEAR Lake Framework, which reads from AWS S3 buckets that have stopped indexing new blocks. For new projects, use [Neardata](https://neardata.xyz) (direct replacement), [Data APIs](../data-api), [Goldsky](https://goldsky.com), or the [Nearcore Indexer](../near-indexer).
+</Danger>
+
 This tutorial shows how to build a fully functional NFT indexer built using the [NEAR Lake Framework for Python](/data-infrastructure/near-lake-framework), which monitors `nft_mint` [events](https://github.com/near/NEPs/tree/master/neps/nep-0297.md) and outputs relevant details such as the `receipt_id` of the `Receipt` where the mint occurred, the marketplace, the NFT owner's account name, and links to the NFTs on the marketplaces.
 
 The final source code is available on the GitHub [`frolvanya/near-lake-nft-indexer`](https://github.com/frolvanya/near-lake-nft-indexer)

@@ -3,6 +3,10 @@ sidebarTitle: NFT Indexer
 description: "Learn to build a simple NFT indexer with NEAR Lake Framework."
 ---
 
+<Danger>
+**NEAR Lake deprecated as of March 24, 2026.** This tutorial uses the NEAR Lake Framework, which reads from AWS S3 buckets that have stopped indexing new blocks. For new projects, use [Neardata](https://neardata.xyz) (direct replacement), [Data APIs](../data-api), [Goldsky](https://goldsky.com), or the [Nearcore Indexer](../near-indexer).
+</Danger>
+
 This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the [NEAR Lake Framework JS](/data-infrastructure/near-lake-framework). The indexer will listen for `nft_mint` events and print relevant data about newly minted NFTs.
 
 The indexer is watching for `nft_mint` [Events](https://github.com/near/NEPs/tree/master/neps/nep-0297.md) and prints some relevant data:

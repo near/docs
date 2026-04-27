@@ -5,6 +5,10 @@ description: "This tutorial will guide you through building a simple indexer usi
 
 import {Github} from '/snippets/github.jsx';
 
+<Danger>
+**NEAR Lake deprecated as of March 24, 2026.** This tutorial uses the NEAR Lake Framework, which reads from AWS S3 buckets that have stopped indexing new blocks. The tutorial remains useful for historical data, but for new projects use [Neardata](https://neardata.xyz) (direct replacement), [Data APIs](../data-api), [Goldsky](https://goldsky.com), or the [Nearcore Indexer](../near-indexer).
+</Danger>
+
 In this tutorial, we will build a simple indexer using the NEAR Lake Framework. The indexer will listen for FunctionCalls on a specific contract and log the details of each call.
 
 The full source code for the indexer is available in the [GitHub repository](https://github.com/near-examples/indexer-near-lake-framework?tab=readme-ov-file).
