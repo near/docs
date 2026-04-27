@@ -3,9 +3,9 @@ title: Running Lake Indexer
 description: "Learn how to set up and run a NEAR Lake Indexer, including prerequisites, network configuration, and commands for syncing from the latest or a specific block."
 ---
 
-<Danger>
-**NEAR Lake deprecated as of March 24, 2026.** The official NEAR Lake (AWS S3 buckets) has stopped indexing new blocks and is no longer maintained by Aurora. You can still run your own NEAR Lake instance against your own S3 (or S3-compatible) storage as described below, but for new projects we recommend [Neardata](https://neardata.xyz) (direct replacement), [Data APIs](../../data-api), [Goldsky](https://goldsky.com), or the [Nearcore Indexer](../../near-indexer).
-</Danger>
+import NearLakeDeprecationTutorial from '/snippets/near-lake-deprecation-tutorial.mdx';
+
+<NearLakeDeprecationTutorial />
 
 At NEAR we already have a working solution to index blockchain data and store it in AWS S3 buckets called **NEAR Lake**. In this guide you will learn how to set up and run an instance of the NEAR Lake Indexer.
 

@@ -4,19 +4,9 @@ title: NEAR Lake Indexer
 description: "Learn how NEAR Lake indexes the network"
 ---
 
-<Danger>
-**Deprecated: NEAR Lake is no longer maintained**
+import NearLakeDeprecation from '/snippets/near-lake-deprecation.mdx';
 
-As of **March 24, 2026**, NEAR Lake (AWS S3 buckets) has stopped indexing new blocks and is no longer maintained by Aurora. Existing data remains accessible for historical use, but no new blocks will be written.
-
-Recommended alternatives:
-
-- **[Neardata](https://neardata.xyz)** — direct drop-in replacement for NEAR Lake
-- **[Data APIs](../data-api)** — community APIs from [NearBlocks](https://nearblocks.io), [Pikespeak](https://pikespeak.ai), and [FastNear](https://fastnear.com)
-- **[Goldsky](https://goldsky.com)** — managed indexer service
-- **[Nearcore Indexer](../near-indexer)** — run your own indexer node
-
-</Danger>
+<NearLakeDeprecation />
 
 NEAR Lake is an indexer built on top of [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) to watch the network and store all the event logs such as [FT Events](https://github.com/near/NEPs/tree/master/neps/nep-0300.md) and [NFT Events](https://github.com/near/NEPs/tree/master/neps/nep-0256.md) as JSON files on AWS S3.
 
