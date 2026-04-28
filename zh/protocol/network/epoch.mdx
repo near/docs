@@ -1,0 +1,87 @@
+---
+title: 纪元（Epoch）
+description: "了解 NEAR 协议中的纪元，包括其持续时间、在验证者选择中的作用，以及对网络运营和数据保留的影响。"
+---
+
+本节解释了 NEAR 协议中**纪元**的概念，即网络验证者保持不变的时间单位。描述了纪元的衡量方式、持续时间及其在网络运营中的重要性。
+
+**纪元**是网络验证者保持不变的时间单位。以区块为单位进行衡量：
+
+- `testnet` 和 `mainnet` 的纪元持续时长均为 43,200 个区块。理想情况下，由于每秒产生一个区块，纪元大约持续 12 小时（实际上产生时间会略长）。
+- 您可以通过查询 **[`protocol_config`](/api/rpc/protocol#protocol-config)** RPC 端点并搜索 `epoch_length` 来查看此设置。
+
+**注意：** 节点在 5 个纪元（约 2.5 天）后会垃圾回收区块，除非它们是[归档节点](https://near-nodes.io/intro/node-types#archival-node)。
+
+**示例：**
+
+<Tabs>
+
+<Tab title="JSON">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "EXPERIMENTAL_protocol_config",
+  "params": {
+    "finality": "final"
+  }
+}
+```
+
+</Tab>
+
+<Tab title="HTTPie">
+
+```bash
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_protocol_config \
+  params:='{
+    "finality": "final"
+  }'
+```
+
+</Tab>
+
+</Tabs>
+
+**示例响应：**
+
+```json
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "protocol_version": 44,
+        "genesis_time": "2020-07-21T16:55:51.591948Z",
+        "chain_id": "mainnet",
+        "genesis_height": 9820210,
+        "num_block_producer_seats": 100,
+        "num_block_producer_seats_per_shard": [
+            100
+        ],
+        "avg_hidden_validator_seats_per_shard": [
+            0
+        ],
+        "dynamic_resharding": false,
+        "protocol_upgrade_stake_threshold": [
+            4,
+            5
+        ],
+        "epoch_length": 43200,
+        "gas_limit": 1000000000000000,
+        "min_gas_price": "1000000000",
+        "max_gas_price": "10000000000000000000000",
+        "block_producer_kickout_threshold": 90,
+        "chunk_producer_kickout_threshold": 90,
+
+// ---- snip ----
+}
+```
+
+您可以在[验证者常见问题解答](https://github.com/near/wiki/blob/master/Archive/validators/faq.md#what-is-an-epoch)中了解更多关于如何使用纪元管理网络验证的信息。
+
+<Tip>
+**有问题？**
+
+<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> 在 StackOverflow 上提问！</a>
+
+</Tip>

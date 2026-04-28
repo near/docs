@@ -1,0 +1,99 @@
+---
+title: 数据 API
+description: "探索社区构建的链上数据访问 API"
+---
+
+如果您正在构建去中心化应用，很可能需要查询链上数据。由于构建完整的索引器并非总是可行，社区已创建了一套 API，供您查询 NEAR 区块链上的数据。
+
+这些 API 提供了一种访问链上数据的简便方式，无需运行自己的索引器或节点。它们设计简洁，功能丰富，涵盖从查询账户余额到探索交易和区块的各种操作。
+
+---
+
+## FastNEAR API
+
+[FastNEAR API](https://github.com/fastnear/fastnear-api-server-rs?tab=readme-ov-file#api-v1) 可以轻松查询 NEAR 区块链，以获取账户资产、将密钥映射到账户 ID、探索区块交易等。
+
+可能的使用场景包括：
+- 查询账户的所有资产（包括同质化和非同质化代币）
+- 查询最新产生的区块
+- 将公钥映射到账户 ID
+- 将完全访问公钥映射到账户 ID
+- 查询用户的质押池（验证者）
+- 查询代币的最大持有者
+
+<br />
+
+#### 示例
+
+```bash
+# 查询用户的 FT
+curl https://api.fastnear.com/v1/account/root.near/ft
+
+# 查询用户的 NFT
+curl https://api.fastnear.com/v1/account/root.near/nft
+
+# 查询用户的所有资产
+curl https://api.fastnear.com/v1/account/root.near/full
+```
+
+---
+
+## NearBlocks API
+
+[NearBlocks API](https://api.nearblocks.io/api-docs/) 提供了查询 NEAR 账户上发生的操作的端点，可能的使用场景包括：
+
+- 查询账户余额
+- 查询对特定合约的所有函数调用
+- 获取 NEAR 总供应量和流通供应量
+- 查询 NEAR 上的总交易数量
+
+<br />
+
+#### 示例
+
+```bash
+# 所有在 Keypom 上调用 `create_drop` 的交易
+curl -X GET "https://api.nearblocks.io/v1/account/v2.keypom.near/txns?method=create_drop"
+
+# `gagdiez.near` 在 Keypom 上调用 `create_drop` 的所有记录
+curl -X GET "https://api.nearblocks.io/v1/account/v2.keypom.near/txns?method=create_drop&from=gagdiez.near"
+```
+
+---
+
+## Pikespeak API
+
+[Pikespeak API](https://doc.pikespeak.ai/) 允许您获取区块链事件以及钱包、验证者、委托者、资金转移、dApp 活动等方面的聚合分析数据。
+
+使用场景包括：
+- 查询账户余额
+- 查询最活跃的钱包
+- 查询历史账户事件
+
+_要访问 Pikespeak API，您需要[注册并创建账户](https://pikespeak.ai/plans)。注册后，在 [`My Account`](https://pikespeak.ai/myaccount) 页面下可以获取您的 API 密钥。_
+
+<br />
+
+#### 示例
+
+```sh
+# 查询 `root.near` 的账户余额：
+curl -X GET https://api.pikespeak.ai/account/balance/root.near -H "accept: application/json" -H "x-api-key: YOUR-PIKESPEAK-API-KEY"
+
+# 最活跃的 NEAR 发送者钱包
+curl -X GET https://api.pikespeak.ai/hot-wallets/near -H "accept: application/json" -H "x-api-key: YOUR-PIKESPEAK-API-KEY"
+
+# 获取 `keypom.near` 的历史账户事件
+curl -X GET https://api.pikespeak.ai/event-historic/keypom.near -H "accept: application/json" -H "x-api-key: YOUR-PIKESPEAK-API-KEY"
+```
+
+---
+
+## The Graph
+
+[The Graph](https://thegraph.com/docs/en/cookbook/near/) 为开发者提供处理区块链事件的工具，并通过 GraphQL API（称为子图）使结果数据易于访问。[Graph Node](https://github.com/graphprotocol/graph-node) 现在能够处理 NEAR 事件，这意味着 NEAR 开发者可以构建子图来索引其智能合约。
+
+---
+## SubQuery
+
+[SubQuery](https://academy.subquery.network/quickstart/quickstart_chains/near.html)：一个快速、灵活、可靠的开源数据索引器，为您的 NEAR 及其他多链 Web3 项目提供自定义 API。

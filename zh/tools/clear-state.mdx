@@ -1,0 +1,103 @@
+---
+title: 状态清理工具
+icon: trash-2
+description: "清理合约的状态数据。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+这个简单的命令行工具允许您在不删除 NEAR 账户的情况下清理其状态数据。
+
+## 工作原理
+
+这个 JavaScript CLI 工具会部署一个 [`state-cleanup.wasm`](https://github.com/near-examples/near-clear-state/blob/main/contractWasm/state_cleanup.wasm) 合约来替换当前合约，然后使用新合约清理账户的状态数据，以便您可以轻松地重新部署新合约或以任何其他方式使用该账户。
+
+以下是合约主要代码的简短片段：
+
+<Github language="rust" url="https://github.com/near-examples/near-clear-state/blob/main/state-cleanup/src/lib.rs" start="21" end="24" />
+
+<Tip>
+查看 GitHub 仓库，了解更多关于 [State Cleanup tool](https://github.com/near-examples/near-clear-state) 的信息。
+</Tip>
+
+## 使用方法
+
+### 环境要求
+
+您需要安装 [NEAR CLI](/tools/cli)。可通过以下命令安装：
+
+```bash
+npm install -g near-cli-rs@latest
+```
+
+### 清理账户状态
+
+请按照以下步骤清理您的账户状态。
+
+<Steps>
+  <Step title="使用 NEAR CLI 登录">
+    这将在您的本地计算机上存储一个完全访问密钥。请选择您希望清理状态的账户。
+
+    ```bash
+    near login
+    ```
+
+    <Warning>
+    请务必选择 `Store the access key in my legacy keychain (compatible with the old near CLI)`，以便将访问密钥存储在旧版密钥链中。
+    </Warning>
+  </Step>
+  <Step title="克隆 near-clear-state 仓库">
+    ```bash
+    git clone https://github.com/near-examples/near-clear-state.git
+    ```
+  </Step>
+  <Step title="安装依赖">
+    ```bash
+    cd near-clear-state && npm i
+    ```
+  </Step>
+  <Step title="清理您的状态">
+    ```bash
+    npx near-clear-state clear-state --account <account-name.testnet>
+    ```
+
+    <Tip>
+    如果您想清理 `mainnet` 账户的状态，请使用 `--network` 选项：
+
+    ```bash
+    npx near-clear-state clear-state --account <account-name.near> --network mainnet
+    ```
+    </Tip>
+  </Step>
+  <Step title="（可选）查看结果">
+    查看账户中已被清除的所有状态键：
+
+    ```bash
+    near view-state <account-name.testnet>
+    ```
+  </Step>
+</Steps>
+
+## 故障排除
+
+如果您的合约状态数据量较大，根据所使用的 RPC 节点，您可能会收到以下错误：
+
+```
+State of contract example.near is too large to be viewed.
+```
+
+这是一个 RPC 问题，因为该 RPC 节点对合约状态视图有大小限制。
+
+您可以通过 JSON RPC API 调用 `view-state` 时选择其他 RPC 提供商来避免此错误。您可以在 [RPC 提供商列表](/api/rpc/providers) 中找到不同的提供商。
+
+<Github language="javascript" url="https://github.com/near-examples/near-clear-state/blob/main/commands/clearState.js" start="22" end="30" />
+
+例如，您可以将 [`commands/clearState.js`](https://github.com/near-examples/near-clear-state/blob/main/commands/clearState.js) 中的默认 RPC 节点替换为其他 RPC 服务器：
+
+```js
+config = {
+  networkId: netId,
+  keyStore,
+  nodeUrl: "https://endpoints.omniatech.io/v1/near/" + netId + "/public",
+  ...
+```

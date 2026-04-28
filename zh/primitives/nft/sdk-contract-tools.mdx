@@ -1,0 +1,128 @@
+---
+title: 使用 Contract Tools 创建 NFT
+description: "了解如何使用 Contract Tools 包创建非同质化代币（NFT）"
+---
+
+import { Github } from '/snippets/github.jsx';
+
+在本教程中，您将使用 [NEAR SDK Contract Tools](https://github.com/near/near-sdk-contract-tools) 包创建一个非同质化代币（NFT）。该包是一套通用工具和模式的集合，旨在简化智能合约开发，包括：
+
+- 存储费用管理
+- 托管模式和派生宏
+- 所有者模式和派生宏
+- 暂停模式和派生宏
+- 基于角色的访问控制
+- 用于 [NEP 标准](./standard)的派生宏
+  - [NEP-141](https://github.com/near/NEPs/blob/master/neps/nep-0141.md)（同质化代币），扩展 [NEP-148](https://github.com/near/NEPs/blob/master/neps/nep-0148.md)
+  - [NEP-145](https://github.com/near/NEPs/blob/master/neps/nep-0145.md)（存储管理），以及与同质化代币和非同质化代币标准的集成
+  - [NEP-171](https://github.com/near/NEPs/blob/master/neps/nep-0171.md)（非同质化代币），扩展 [NEP-177](https://github.com/near/NEPs/blob/master/neps/nep-0177.md)、[NEP-178](https://github.com/near/NEPs/blob/master/neps/nep-0178.md)、[NEP-181](https://github.com/near/NEPs/blob/master/neps/nep-0181.md)
+  - [NEP-297](https://github.com/near/NEPs/blob/master/neps/nep-0297.md)（事件）
+
+---
+
+## 简介
+
+虽然可以仅使用 `near-sdk` 和 `near_contract_standards` 从头开始创建非同质化代币（NFT）合约（例如 [NFT 合约](https://github.com/near-examples/NFT)），但使用 `near-sdk-contract-tools` 是更简便的方式。
+
+`near-sdk-contract-tools` 允许您通过在合约 `struct` 上派生宏来实现铸造/销毁逻辑、访问控制和其他 NFT 标准，就像 `OpenZeppelin` 为以太坊合约所做的那样。
+
+---
+
+## 基本 NFT 方法
+
+要为智能合约派生基本 NFT 方法，您需要在合约 `struct` 上派生 `NonFungibleToken` 宏：
+
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/nft-contract-tools/blob/main/src/lib.rs"
+        start="9" end="12" />
+
+这将为合约引入所有基本 NFT 方法：
+- `new`
+- `contract_source_metadata`
+- `nft_is_approved`
+- `nft_metadata`
+- `nft_supply_for_owner`
+- `nft_token`
+- `nft_tokens`
+- `nft_tokens_for_owner`
+- `nft_total_supply`
+- `nft_approve`
+- `nft_resolve_transfer`
+- `nft_revoke`
+- `nft_revoke_all`
+- `nft_transfer`
+- `nft_transfer_call`
+- `storage_balance_bounds`
+- `storage_balance_of`
+- `storage_deposit`
+- `storage_unregister`
+- `storage_withdraw`
+
+要为合约引入基本所有者方法，还需要派生 `Owner` 宏，它将添加以下方法：
+- `own_get_owner`
+- `own_get_proposed_owner`
+- `own_accept_owner`
+- `own_propose_owner`
+- `own_renounce_owner`
+
+---
+
+## 初始化
+
+要使用自定义所有者、元数据和存储限制初始化基本 NFT 合约，请实现 `new` 方法：
+
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/nft-contract-tools/blob/main/src/lib.rs"
+        start="14" end="45" />
+
+---
+
+## 转账钩子
+
+如果您想自定义代币转账的工作方式（即修改 `nft_transfer` 方法），您需要实现一个钩子。钩子是一种**包装（在组件函数前后注入代码）**的方式：
+
+<Github fname="transfer_hook.rs" language="rust"
+        url="https://github.com/near-examples/nft-contract-tools/blob/main/src/transfer_hook.rs"
+        start="5" end="33" />
+
+然后将其派生到合约结构体：
+
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/nft-contract-tools/blob/main/src/lib.rs"
+        start="9" end="12" />
+
+---
+
+## 铸造
+
+默认情况下，NFT 标准不包含铸造方法。但是，您可以通过实现 `nft_mint` 方法来轻松为所有者铸造代币：
+
+<Github fname="mint.rs" language="rust"
+        url="https://github.com/near-examples/nft-contract-tools/blob/main/src/mint.rs"
+        start="10" end="40" />
+
+<Tip>
+
+您可以根据需要修改此方法，例如，仅在合约未暂停时允许铸造（需要派生 [`Pausable`](https://github.com/near/near-sdk-contract-tools/tree/develop?tab=readme-ov-file#macro-combinations) 钩子），或仅允许具有特定角色的账户或白名单账户在自定义限制下进行铸造。
+
+</Tip>
+
+---
+
+## 销毁
+
+与铸造类似，销毁也不包含在 NFT 标准中。但是，您同样可以轻松实现它。
+
+要允许用户销毁其代币，您可以添加一个 `burn` 方法：
+
+<Github fname="burn.rs" language="rust"
+        url="https://github.com/near-examples/nft-contract-tools/blob/main/src/burn.rs"
+        start="5" end="25" />
+
+---
+
+## 结论
+
+使用 `near-sdk-contract-tools` 是一种简单灵活的方式，能以最少的样板代码创建 NFT 合约，让您专注于业务逻辑。
+
+您可以通过从该包中派生相应的宏，进一步扩展此合约，添加暂停、基于角色的访问控制、托管模式等更多功能。

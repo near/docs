@@ -1,0 +1,86 @@
+---
+title: SDK 库
+icon: package
+description: "选择 SDK 开始构建合约。"
+---
+
+NEAR SDK 是一个用于开发智能合约的库。目前，NEAR SDK 有两个版本：一个适用于 Rust，另一个适用于 JavaScript。
+
+<Tip>
+开始学习的最佳途径是我们的 [快速入门指南](/smart-contracts/quickstart)。
+</Tip>
+
+<Columns cols={2}>
+  <Card title="Rust SDK" icon="code" href="https://docs.rs/near-sdk/latest/near_sdk/">
+    Rust SDK 参考文档。
+  </Card>
+  <Card title="JavaScript SDK" icon="js" href="https://near.github.io/near-sdk-js/">
+    JavaScript SDK 参考文档。
+  </Card>
+</Columns>
+
+## NEAR 上的智能合约
+
+以下是使用 NEAR SDK 以 Rust 和 JavaScript 编写的智能合约示例：
+
+<Tabs>
+  <Tab title="JavaScript">
+    ```js
+    @NearBindgen({})
+    class HelloNear {
+      greeting: string = 'Hello';
+
+      @view({}) // This method is read-only and can be called for free
+      get_greeting(): string {
+        return this.greeting;
+      }
+
+      @call({}) // This method changes the state, for which it costs gas
+      set_greeting({ greeting }: { greeting: string }): void {
+        near.log(`Saving greeting ${greeting}`);
+        this.greeting = greeting;
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Rust">
+    ```rust
+    #[near(contract_state)]
+    pub struct Contract {
+        greeting: String,
+    }
+
+    impl Default for Contract {
+        fn default() -> Self {
+            Self { greeting: "Hello".to_string(), }
+        }
+    }
+
+    #[near]
+    impl Contract {
+        pub fn get_greeting(&self) -> String {
+            self.greeting.clone()
+        }
+
+        pub fn set_greeting(&mut self, greeting: String) {
+            self.greeting = greeting;
+        }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## 准备好开始开发了吗？
+
+从我们的 [智能合约快速入门指南](/smart-contracts/quickstart) 开始，它将引导您了解构建智能合约的所有相关文档。
+
+## 想查看示例？
+
+我们有一个专门的 [教程与示例](/smart-contracts/tutorials/basic-contracts) 章节，可帮助您了解各种使用场景及其实现方式。
+
+## 参考文档
+
+如果您需要查找特定的函数签名，或了解 SDK 的结构体和类，请访问各 SDK 专属页面：
+
+- [Rust SDK](https://docs.rs/near-sdk/latest/near_sdk/)
+- [JavaScript SDK](https://near.github.io/near-sdk-js/)

@@ -1,0 +1,66 @@
+---
+title: "RPC 提供商"
+description: "NEAR 协议的公共 RPC 端点列表。"
+---
+
+NEAR 协议提供了用于与网络交互的 JSON-RPC API。您可以使用以下任意提供商，也可以自行运行节点。
+
+## RPC 提供商
+
+FastNear 维护了一个[综合仪表板](https://grafana.fastnear.com/public-dashboards/577b37c6cfe84b2bae23af471d27cade)，显示了大多数可用端点的响应时间。
+
+### 主网
+
+| 提供商 | 端点 | 公共端点 | 归档节点 | 免费套餐 | 付费计划 |
+| --- | --- | :---: | :---: | :---: | :---: |
+| [FASTNEAR](https://fastnear.com) | `https://free.rpc.fastnear.com` | ✅ | 仅付费 | ✅ | ✅ |
+| [NEAR](https://near.org) | `https://archival-rpc.mainnet.near.org` | ✅ | ✅ | 严格限速 | ❌ |
+| [1RPC](https://1rpc.io) | `https://1rpc.io/near` | ✅ | ❌ | ✅ | ✅ |
+| [All That Node](https://www.allthatnode.com/protocol/near.dsrv) | N/A | ❌ | ✅ | ✅ | ✅ |
+| [Ankr](https://www.ankr.com/rpc/near/) | `https://rpc.ankr.com/near` | ❌ | ❌ | ✅ | ✅ |
+| [BlockPI Network](https://blockpi.io/chain/near) | `https://near.blockpi.network/v1/rpc/public` | ✅ | ❌ | ✅ | ✅ |
+| [dRPC](https://drpc.org/chainlist/near-mainnet-rpc) | `https://near.drpc.org` | ✅ | ❌ | ✅ | ✅ |
+| [GetBlock](https://getblock.io/nodes/near/) | `https://go.getblock.io/{api-key}` | ❌ | ❌ | ✅ | ✅ |
+| [Intear RPC](https://intea.rs/) | `https://rpc.intea.rs` | ✅ | ❌ | ✅ | ❌ |
+| [Lava Network](https://www.lavanet.xyz/lava-public-rpc) | N/A | ❌ | ✅ | ❌ | ✅ |
+| [Lavender.Five Nodes](https://www.lavenderfive.com/tools/near/overview) | N/A | ❌ | ❌ | ✅ | ✅ |
+| [NodeReal](https://nodereal.io/api-marketplace/near-rpc) | `https://near-mainnet.nodereal.io/v1/{api-key}` | ❌ | ❌ | ✅ | ✅ |
+| [NOWNodes](https://nownodes.io/near) | `https://near.nownodes.io/{api-key}` | ❌ | ❌ | ✅ | ✅ |
+| [QuickNode](https://www.quicknode.com/chains/near) | N/A | ❌ | ✅ | ✅ | ✅ |
+| [Shitzu](https://shitzuapes.xyz/) | `https://rpc.shitzuapes.xyz` | ✅ | ❌ | ✅ | ❌ |
+| [Tatum](https://tatum.io/chain/near/) | N/A | ❌ | ❌ | ✅ | ✅ |
+| [ZAN](https://zan.top/service/apikeys) | `https://api.zan.top/node/v1/near/mainnet/` | ✅ | ❌ | ✅ | ✅ |
+| [Zeeve](https://www.zeeve.io/blockchain-protocols/deploy-near-node/) | N/A | ❌ | ✅ | ❌ | ✅ |
+
+### 测试网
+
+| 提供商 | 端点 | 公共端点 | 归档节点 | 免费套餐 | 付费计划 |
+| --- | --- | :---: | :---: | :---: | :---: |
+| [FASTNEAR](https://fastnear.com) | `https://test.rpc.fastnear.com` | ✅ | 仅付费 | ✅ | ✅ |
+| [NEAR](https://near.org) | `https://archival-rpc.testnet.near.org` | ✅ | ✅ | 严格限速 | ❌ |
+| [All That Node](https://www.allthatnode.com/protocol/near.dsrv) | N/A | ❌ | ✅ | ✅ | ✅ |
+| [dRPC](https://drpc.org/chainlist/near-testnet-rpc) | `https://near-testnet.drpc.org` | ✅ | ❌ | ✅ | ✅ |
+| [Intear RPC](https://intea.rs/) | `https://testnet-rpc.intea.rs` | ✅ | ❌ | ✅ | ❌ |
+| [Lava Network](https://www.lavanet.xyz/lava-public-rpc) | N/A | ❌ | ✅ | ❌ | ✅ |
+| [QuickNode](https://www.quicknode.com/chains/near) | N/A | ❌ | ✅ | ✅ | ✅ |
+| [Tatum](https://tatum.io/chain/near/) | N/A | ❌ | ❌ | ✅ | ✅ |
+| [ZAN](https://zan.top/service/apikeys) | `https://api.zan.top/node/ws/v1/near/testnet` | ❌ | ❌ | ✅ | ✅ |
+| [Zeeve](https://www.zeeve.io/blockchain-protocols/deploy-near-node/) | N/A | ❌ | ❌ | ❌ | ✅ |
+
+## 发起请求
+
+所有端点均接受 JSON-RPC 2.0 `POST` 请求。NEAR RPC 使用非标准格式，方法名称编码在 URL 路径中而非请求体中。
+
+```bash
+curl -X POST https://rpc.mainnet.near.org/status \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+## 运行自己的节点
+
+要运行本地 RPC 节点，请参阅 [NEAR 节点文档](https://near-nodes.io/rpc/hardware-rpc)。
+
+<Info>
+  测试网代币没有实际价值，可以从 [NEAR 水龙头](/getting-started/faucet) 获取。
+</Info>

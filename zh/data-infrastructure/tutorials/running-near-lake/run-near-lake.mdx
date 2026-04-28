@@ -1,0 +1,185 @@
+---
+title: 运行 Lake 索引器
+description: "了解如何设置和运行 NEAR Lake 索引器，包括前提条件、网络配置以及从最新区块或特定区块同步的命令。"
+---
+
+在 NEAR，我们已经有一个可用的解决方案，用于索引区块链数据并将其存储在 AWS S3 存储桶中，称为 **NEAR Lake**。在本指南中，您将了解如何设置和运行 NEAR Lake 索引器实例。
+
+Lake 索引器设置包含以下组件：
+
+- AWS S3 存储桶作为存储
+- NEAR Lake 二进制文件，作为常规的 NEAR 协议点对点节点运行，因此您将像操作
+  [NEAR 中的任何常规/RPC 节点](https://near-nodes.io/rpc/hardware-rpc)一样操作它
+
+<Info>
+
+NEAR Lake 是一个专门用于将事件以 JSON 文件形式存储在 AWS S3 上的索引器，构建在 [NEAR Indexer 微框架](https://github.com/nearprotocol/nearcore/tree/master/chain/indexer)之上
+
+</Info>
+
+### 准备开发环境
+
+在继续之前，请确保已安装以下软件：
+
+- [Rust 编译器](https://rustup.rs/)，版本需与 [nearcore](https://github.com/nearprotocol/nearcore) 项目根目录中 `rust-toolchain` 文件中提到的版本一致。
+- 确保您已[配置 AWS 凭证](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+  来自 AWS 文档：
+
+  > 例如，使用 aws configure 配置默认配置文件生成的文件类似于以下内容。
+  >
+  > ~/.aws/credentials
+  >
+  > ```
+  > [default]
+  > aws_access_key_id=AKIAIOSFODNN7EXAMPLE
+  > aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+  > ```
+
+### 编译 NEAR Lake
+
+```bash
+$ cargo build --release
+```
+
+### 配置 NEAR Lake
+
+要将 NEAR Lake 连接到特定链，您需要必要的配置，可以按如下方式生成：
+
+```bash
+$ ./target/release/near-lake --home ~/.near/testnet init --chain-id testnet --download-config --download-genesis
+```
+
+上述代码将下载官方创世配置并生成必要的配置。您可以将上述命令中的 `testnet` 替换为不同的网络 ID（`betanet`、`mainnet`）。
+
+指定网络的配置在 `--home` 提供的文件夹中。我们需要确保 NEAR Lake 跟踪所有必要的分片，因此 `~/.near/testnet/config.json` 中的 `"tracked_shards"` 参数需要正确配置。
+目前，`nearcore` 将 `"tracked_shards"` 的空值视为"不跟踪任何分片"，**任何值**视为"跟踪所有分片"。
+例如，为了跟踪所有分片，只需将分片 #0 添加到列表中：
+
+```text
+...
+"tracked_shards": [0],
+...
+```
+
+### 运行 NEAR Lake
+
+在 `./target/release/near-lake` 之后运行 NEAR Lake 的命令
+
+| 命令 | 键/子命令                | 必需/默认值                                                       | 负责的功能                                                                                                                                                                                                                                                                                                                                                                  |
+|---------|-------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|         | `--home`                      | 默认值 <br />`~/.near`                                                | 告知节点在哪里查找必要文件：<br />`config.json`<br />、<br />`genesis.json`<br />、<br />`node_key.json`<br /> 和 <br />`data`<br /> 文件夹                                                                                                                                                                                                                                                                                                             |
+| `init`  |                               |                                                                        | 告知节点在 `--home-dir` 中生成配置文件                                                                                                                                                                                                                                                                                                                                          |
+|         | `--chain-id`                  | 必需<br /><br /> _ `localnet`<br /> _ `testnet`<br /> \* `mainnet` | 定义要为其生成配置文件的链                                                                                                                                                                                                                                                                                                                                                   |
+|         | `--download-config`           | 可选                                                               | 如果提供，告知节点从公共 URL 下载 `config.json`。您可以手动下载<br /><br /> - [testnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/rpc/config.json)<br /> - [mainnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/rpc/config.json) |
+|         | `--download-genesis`          | 可选                                                               | 如果提供，告知节点从公共 URL 下载 `genesis.json`。您可以手动下载<br /><br /> - [testnet genesis.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/genesis.json)<br /> - [mainnet genesis.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/genesis.json)    |
+|         | TODO:<br />其他 `neard` 键 |                                                                        |                                                                                                                                                                                                                                                                                                                                                                                  |
+| `run`   |                               |                                                                        | 运行节点                                                                                                                                                                                                                                                                                                                                                                    |
+|         | `--bucket`                    | 必需                                                               | AWS S3 存储桶名称                                                                                                                                                                                                                                                                                                                                                               |
+|         | `--region`                    | 必需                                                               | AWS S3 存储桶区域                                                                                                                                                                                                                                                                                                                                                             |
+|         | `--fallback-region`           | 默认值 eu-central-1                                                   | AWS S3 备用区域                                                                                                                                                                                                                                                                                                                                                           |
+|         | `--endpoint`                  | 可选                                                               | 与 AWS S3 兼容的 API 端点                                                                                                                                                                                                                                                                                                                                                |
+|         | `--stream-while-syncing`      | 可选                                                               | 如果提供，索引器在节点上出现区块时立即流式传输，而不是等待节点完全同步                                                                                                                                                                                                                                                                  |
+|         | `--concurrency`               | 默认值 1                                                              | 定义将区块数据保存到 AWS S3 的进程并发度                                                                                                                                                                                                                                                                                                                           |
+|         | `sync-from-latest`            | 需要 `sync-` 子命令之一                             | 告知节点从网络中的最新区块开始索引                                                                                                                                                                                                                                                                                                                                    |
+|         | `sync-from-interruption`      | 需要 `sync-` 子命令之一                             | 告知节点从节点中断的区块开始索引（如果是第一次启动，将回退到 `sync-from-latest`）                                                                                                                                                                                                                                                                      |
+|         | `sync-from-block --height N`  | 需要 <br />`sync-`<br /> 子命令之一                 | 告知节点从指定区块高度 `N` 开始索引（**确保**您的节点数据包含您想要开始的区块）                                                                                                                                                                                                                                                             |
+
+```bash
+$ ./target/release/near-lake --home ~/.near/testnet run --stream-while-syncing --concurrency 50 sync-from-latest
+```
+
+网络同步后，您应该看到 NEAR Lake 当前接收到的每个区块高度的日志。
+
+---
+
+## 同步
+
+每当您在 localnet 以外的任何网络上运行 NEAR Lake，您都需要与网络同步。
+这是必要的，因为这是 `nearcore` 节点的自然行为，而 NEAR Lake 是常规 `nearcore` 节点的包装器。为了工作并索引数据，您的节点必须与网络同步。
+
+虽然基于快照的同步以前是推荐的默认方法，但我们现在推荐[纪元同步](https://near-nodes.io/intro/node-epoch-sync)——这是一种更快、更轻量级的方法，允许节点在不下载大型状态快照的情况下从创世块同步。
+
+---
+
+## 将 NEAR Lake 作为归档节点运行
+
+这不是必要的，但为了索引网络中的所有内容，最好从创世块开始。
+`nearcore` 节点默认以非归档模式运行。这意味着节点仅保留[最近 5 个纪元](/protocol/network/epoch)的数据。为了从创世块索引数据，您需要将节点切换到归档模式。
+
+为此，您需要更新位于 `--home-dir`（默认为 `~/.near`）中的 `config.json`。
+
+在配置中找到以下键并按如下方式更新：
+
+```json
+{
+  ...
+  "archive": true,
+  "tracked_shards": [0],
+  ...
+}
+```
+
+归档模式下的同步过程可能需要大量时间，因此最好下载 NEAR 提供的备份并将其放入您的 `data` 文件夹。之后，您的节点只需下载备份截止后的数据，这需要合理的时间。
+
+所有备份可以从 FastNEAR 提供的公共 [S3 存储桶](https://docs.fastnear.com/docs/snapshots/mainnet#archival-mainnet-snapshot)下载。
+
+参见[此链接](https://near-nodes.io/archival/run-archival-node-with-nearup)以供参考。
+
+---
+
+## 使用数据
+
+我们将所有数据写入 AWS S3 存储桶：
+
+- `near-lake-data-testnet`（`eu-central-1` 区域）用于测试网
+- `near-lake-data-mainnet`（`eu-central-1` 区域）用于主网
+
+---
+
+## 自定义 S3 存储
+
+如果您想运行自己的 `near-lake` 实例并将数据存储在某些兼容 S3 的存储中（[Minio](https://min.io/) 或 [Localstack](https://localstack.cloud/) 等），
+您可以使用 `--endpoint` 选项覆盖默认的 S3 API 端点
+
+- 运行 `minio`
+
+```bash
+$ mkdir -p /data/near-lake-custom && minio server /data
+```
+
+- 运行 `near-lake`
+
+```bash
+$ ./target/release/near-lake --home ~/.near/testnet run --endpoint http://127.0.0.1:9000 --bucket near-lake-custom sync-from-latest
+```
+
+### 数据结构
+
+我们使用的数据结构如下：
+
+```text
+<block_height>/
+  block.json
+  shard_0.json
+  shard_1.json
+  ...
+  shard_N.json
+```
+
+- `<block_height>` 是一个 12 位长的 `u64` 字符串，带有前导零（例如 `000042839521`）。[请参阅此 issue 了解原因](https://github.com/near/near-lake/issues/23)
+- `block_json` 包含 JSON 序列化的 [`BlockView`](https://github.com/near/nearcore/blob/e9a28c46c2bea505b817abf484e6015a61ea7d01/core/primitives/src/views.rs#L711-L716) 结构体。**注意：** 此结构体将来可能会更改，我们会提前公告
+- `shard_N.json` 其中 `N` 是从 `0` 开始的 `u64`。表示分片的索引编号。要了解区块中预期的分片数量，可以在 `block.json` 的 `.header.chunks_included` 中查看
+
+### 访问数据
+
+所有 NEAR Lake AWS S3 存储桶都启用了[请求者付费](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html)。这意味着任何拥有自己 AWS 凭证的人都可以列出和读取存储桶的内容，并**由 AWS 向其收费**。连接到存储桶时必须提供 AWS 凭证。参见 [NEAR Lake Framework](https://github.com/near/near-lake-framework) 以供参考。
+
+### NEAR Lake Framework
+
+一旦我们[设置了对存储桶的公共访问](https://github.com/near/near-lake/issues/22)，任何人都可以构建自己的代码来读取它。
+
+为了我们自己的需求，我们正在开发 [NEAR Lake Framework](https://github.com/near/near-lake-framework)，以便有一种简单的方式基于 NEAR Lake 本身存储的数据创建索引器。
+
+<Note>
+请参阅官方 NEAR Lake Framework [在 NEAR Gov Forum 上的公告](https://gov.near.org/t/announcement-near-lake-framework-brand-new-word-in-indexer-building-approach/17668)。
+</Note>

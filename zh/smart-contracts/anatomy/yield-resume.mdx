@@ -1,0 +1,352 @@
+---
+title: Yield 与 Resume
+description: "等待外部响应并恢复执行"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+NEAR 智能合约可以**暂停（yield）**执行，直到**外部**服务**恢复（resume）**它们。实际上，合约向自身发起一个**跨合约调用**并暂停，直到外部服务执行某个函数，然后合约决定恢复执行。
+
+这是一个强大的特性，允许合约在继续执行之前等待外部事件，例如来自预言机的响应。
+
+<Info>
+
+合约可以等待 200 个区块（约 2 分钟），之后暂停的函数将会执行，并收到"超时错误"作为输入。
+
+</Info>
+
+---
+
+## 暂停 Promise
+
+让我们看一个示例，该示例接受用户的提示（例如"2+2 是什么"），并暂停执行，直到外部服务提供响应。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
+            start="43" end="70" />
+  </Tab>
+  
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import call, view, near, Context
+from near_sdk_py.collections import UnorderedMap
+import json
+
+class YieldResumeContract:
+    def __init__(self):
+        # Store pending requests
+        self.requests = UnorderedMap("r")
+        self.request_id = 0
+    
+    @call
+    def ask_assistant(self, prompt):
+        """
+        Creates a yielded promise that will be resumed when an external service responds
+        
+        Args:
+            prompt: The question to ask the assistant
+        """
+        # Create a new request ID
+        request_id = self.request_id
+        self.request_id += 1
+        
+        # Create arguments for the callback function
+        callback_args = json.dumps({"request_id": request_id})
+        
+        # Create a yielded promise to call return_external_response on this contract
+        yield_id = near.promise_create(
+            Context.current_account_id(),
+            "return_external_response",
+            callback_args,
+            0,  # No deposit
+            30000000000000  # Gas
+        )
+        
+        # Store the yield ID and prompt for the external service to find
+        self.requests[str(request_id)] = {
+            "yield_id": yield_id,
+            "prompt": prompt
+        }
+        
+        # Return the yield_id and request_id for tracking
+        return {
+            "yield_id": yield_id,
+            "request_id": request_id
+        }
+```
+  </Tab>
+</Tabs>
+
+#### 创建暂停的 Promise
+在上面的示例中，我们创建了一个[`Promise`](./crosscontract#promises)来调用合约的函数 `return_external_response`。
+
+注意，我们在 Rust 中使用 `env::promise_yield_create` 或在 Python 中使用 `near.promise_create` 来创建 `Promise`（Python SDK 使用标准 Promise 来实现暂停），这将在 `YIELD_REGISTER` 中为暂停的 Promise 创建一个**标识符**。
+
+#### 获取暂停的 Promise ID
+我们读取 `YIELD_REGISTER` 来获取暂停 Promise 的 `ID`。我们存储 `yield_id` 和用户的 `prompt`，以便外部服务可以查询它们（合约暴露了一个函数来列出所有请求）。
+
+#### 返回 Promise
+最后，我们返回 `Promise`，它**不会立即执行**，而是**暂停**，直到外部服务提供响应。
+
+<Accordion title="代码中的 `self.request_id` 是什么？">
+
+`self.request_id` 是一个内部唯一标识符，我们用它来跟踪存储的请求。这样，一旦外部服务提供了响应（或等待超时），我们就可以删除该请求。
+
+由于我们只是用它来简化请求跟踪过程，如果您有其他方式跟踪请求（例如索引器），可以将其删除。
+
+</Accordion>
+
+---
+
+## 发送恢复信号
+
+Rust 中的 `env::promise_yield_resume` 函数或 Python 中的 `near.promise_yield_resume` 允许我们指定哪个暂停的 Promise 应该执行，以及要传递给恢复函数的参数。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
+            start="72" end="75" />
+  </Tab>
+  
+  <Tab title="🐍 Python">
+```python
+@call
+def respond(self, yield_id, response):
+    """Called by the external service to provide a response to a prompt"""
+    return near.promise_yield_resume(yield_id, json.dumps({"response": response}))
+```
+  </Tab>
+</Tabs>
+
+在上面的示例中，`respond` 函数将由外部服务调用，传入应恢复哪个 Promise（`yield_id`）以及对提示的响应。
+
+<Warning>
+**保护恢复信号**
+
+由于用于发送恢复信号的函数是公开的，开发者必须确保对其进行适当的保护，以避免不必要的调用。这可以通过简单检查函数的调用者来实现。
+
+</Warning>
+
+---
+
+## 恢复执行的函数
+
+被恢复的函数将能够访问传递给它的所有参数，包括在创建 yield 时传递的参数，以及外部服务的响应。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="lib.rs" language="rust"
+            url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
+            start="77" end="89" />
+  </Tab>
+  
+  <Tab title="🐍 Python">
+```python
+@call
+def return_external_response(self, request_id, response=None):
+    """
+    Function that gets called when the yielded promise resumes
+    
+    Args:
+        request_id: The ID of the request (passed when promise was created)
+        response: The response from the external service (or None if timed out)
+    """
+    # Remove the request from our tracking
+    request_data = self.requests.get(str(request_id))
+    if request_data:
+        del self.requests[str(request_id)]
+    
+    # Handle timeout case
+    if response is None:
+        return {"error": "Timeout waiting for external service", "request_id": request_id}
+    
+    # Return the response from the external service
+    return {
+        "request_id": request_id,
+        "response": response,
+        "success": True
+    }
+```
+  </Tab>
+</Tabs>
+
+在上面的示例中，`return_external_response` 接收以下参数：
+
+1. `request_id` - 在[创建时](#创建暂停的-promise)传递 - 用于从状态中删除请求
+2. `response` - 在[发送恢复信号时](#发送恢复信号)传递 - 包含外部响应，如果合约等待超时则为 `None`
+
+<Tip>
+**有足够的时间**
+
+合约可以等待 200 个区块（约 2 分钟）然后超时。
+
+</Tip>
+
+<Info>
+
+请注意，在此特定示例中，无论是有响应还是超时，我们都选择返回一个值。
+
+不抛出错误的原因是，我们正在更改状态（在第 `#7` 行删除请求），而抛出错误会回滚此状态更改。
+
+</Info>
+
+---
+
+## 管理状态
+
+使用 yield 和 resume 时，务必小心管理合约状态。由于其异步执行特性，合约 yield 和 resume 所在的函数是独立的。
+
+如果您在 yield Promise 的函数中（这里是 `request` 函数）更改了合约状态，那么在恢复的函数中（这里是 `return_external_response` 函数），如果 Promise 超时或响应无效，您需要确保回滚状态。
+
+最佳实践是在发送恢复信号的函数中（这里是 `respond` 函数）检查响应的有效性，如果响应无效则 panic；外部服务可以在 Promise 超时之前再次尝试响应。不应该在 `return_external_response` 中 panic，因为它只在 Promise 已经解决时调用（已恢复或已超时），这意味着它无法再次被恢复，并且 `request` 中的状态已经确定。您应该优雅地完成函数并回滚状态。
+
+<Info>
+
+查看有关[回调安全](../security/callbacks)和[重入攻击](../security/reentrancy)的更多文档，以避免处理异步调用时的常见陷阱。
+
+</Info>
+
+---
+
+## 完整示例
+
+以下是 Python 中 yield-resume 模式的更完整实现：
+
+<Tabs>
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import view, call, near, Context
+from near_sdk_py.collections import UnorderedMap
+import json
+
+class AIAssistantContract:
+    def __init__(self):
+        # Track all pending requests
+        self.requests = UnorderedMap("r")
+        self.request_counter = 0
+    
+    @call
+    def ask_question(self, question):
+        """
+        Ask a question to the AI assistant
+        
+        The execution will yield until an external AI service responds
+        """
+        # Create a unique ID for this request
+        request_id = self.request_counter
+        self.request_counter += 1
+        
+        # Create callback args - will be passed to our callback function
+        callback_args = json.dumps({
+            "request_id": request_id
+        })
+        
+        # Create the promise - this will yield until resumed
+        promise_id = near.promise_create(
+            Context.current_account_id(),  # Call this contract
+            "process_ai_response",         # Call this method when resumed
+            callback_args,                 # Pass these arguments
+            0,                             # No attached deposit
+            30000000000000                 # Gas for execution (30 TGas)
+        )
+        
+        # Store the request for the external service to find
+        self.requests[str(request_id)] = {
+            "prompt": question,
+            "promise_id": promise_id,
+            "user": Context.predecessor_account_id(),
+            "timestamp": Context.block_timestamp()
+        }
+        
+        return {
+            "request_id": request_id,
+            "status": "processing"
+        }
+    
+    @view
+    def get_pending_requests(self):
+        """Returns all pending requests for the AI service to process"""
+        return [
+            {
+                "request_id": int(req_id), 
+                "data": self.requests[req_id]
+            } 
+            for req_id in self.requests.keys()
+        ]
+    
+    @call
+    def provide_ai_response(self, request_id, response):
+        """
+        Called by the AI service to provide a response
+        
+        Args:
+            request_id: ID of the request being answered
+            response: The AI's response to the question
+        """
+        request_id_str = str(request_id)
+        
+        # Verify the request exists
+        if request_id_str not in self.requests:
+            raise Exception(f"No pending request with ID {request_id}")
+        
+        # Get the request data
+        request = self.requests[request_id_str]
+        
+        # Resume the promise with the AI's response
+        result = near.promise_yield_resume(
+            request["promise_id"],
+            json.dumps({"ai_response": response})
+        )
+        
+        return {"success": result}
+    
+    @call
+    def process_ai_response(self, request_id, ai_response=None):
+        """
+        Called when a yielded promise resumes
+        
+        This is either called by provide_ai_response or by a timeout
+        
+        Args:
+            request_id: ID of the request
+            ai_response: The AI's response or None if timed out
+        """
+        request_id_str = str(request_id)
+        
+        # Cleanup - remove from pending requests
+        if request_id_str in self.requests:
+            request = self.requests[request_id_str]
+            del self.requests[request_id_str]
+        else:
+            request = None
+        
+        # Handle timeout case
+        if ai_response is None:
+            return {
+                "request_id": request_id,
+                "status": "timeout",
+                "message": "The AI service did not respond in time"
+            }
+        
+        # Return the AI's response
+        return {
+            "request_id": request_id,
+            "status": "complete",
+            "question": request["prompt"] if request else "Unknown",
+            "answer": ai_response,
+            "user": request["user"] if request else "Unknown"
+        }
+```
+  </Tab>
+</Tabs>
+
+此示例演示了 AI 助手合约的完整 yield-resume 模式，其中：
+
+1. 用户通过 `ask_question` 提问
+2. 合约创建一个暂停的 Promise 并存储问题
+3. 外部 AI 服务定期使用 `get_pending_requests` 检查新问题
+4. 当 AI 有答案时，它调用 `provide_ai_response` 来恢复暂停的 Promise
+5. `process_ai_response` 函数以 AI 的答案（或超时信息）执行并返回结果

@@ -1,0 +1,59 @@
+---
+title: NEAR 账户
+description: "了解 NEAR 协议的账户模型，包括命名账户和隐式账户、访问密钥、权限，以及 NEAR 账户与其他区块链平台的区别。"
+---
+
+用户通过其 NEAR 账户参与 NEAR 生态系统。这些账户通过[唯一地址](./account-id)进行标识，可以选择性地持有[智能合约](/smart-contracts/what-is)，并通过[访问密钥](./access-keys)进行控制。
+
+通过使用账户签署[交易](../transactions)，用户可以：
+
+1. 发送和接收**数字资产**（如代币或收藏品）
+2. 创建和交互称为**智能合约**的链上应用程序
+3. 控制**其他链**（如以太坊或比特币）上的账户 ✨
+4. 通过**承担交易费用**（gas 费）帮助新用户上手
+
+<Tip>
+**想要创建账户？**
+
+查看我们的[创建 NEAR 账户](/getting-started/create-account)教程开始使用！
+</Tip>
+
+---
+
+## 账户模型概述
+
+让我们仔细了解构成 NEAR 账户模型的各个元素。
+
+![账户模型](/assets/docs/welcome-pages/accounts.png)
+
+### [账户 ID](/protocol/accounts-contracts/account-id)
+NEAR **原生**支持多种账户类型，包括：
+1. **命名账户**，如 `alice.near`，易于记忆和共享
+2. **隐式账户**，如 `fb9243ce...`，由私钥派生
+2. **以太坊风格账户**，与以太坊钱包兼容
+
+<hr className="subsection" />
+
+### [多密钥](/protocol/accounts-contracts/access-keys)
+NEAR 账户可以拥有多个[密钥](/protocol/accounts-contracts/access-keys)，每个密钥有其自己的权限集：
+- 若某个密钥被泄露，可以轻松更换
+- 可以将密钥用作第三方应用程序的授权令牌
+
+<hr className="subsection" />
+
+### [智能合约](/smart-contracts/what-is)
+NEAR 账户可以选择性地持有一个应用程序——称为[智能合约](/smart-contracts/what-is)——可以用 Javascript 或 Rust 编写。
+
+---
+
+## 与以太坊的比较
+
+如果您熟悉以太坊开发，值得快速了解一下账户的不同之处。下表总结了一些关键差异：
+
+|                 | 以太坊账户               | NEAR 账户                                                                              |
+|-----------------|--------------------------|----------------------------------------------------------------------------------------|
+| 账户 ID         | 公钥（`0x123...`）       | - 原生命名账户（`alice.near`）<br />- 隐式账户（`0x123...`）                           |
+| 私密密钥        | 私钥（`0x456...`）       | 具有权限的多个密钥对：<br />- `FullAccess` 密钥<br />- `FunctionCall` 密钥              |
+| 智能合约        | 同步执行                 | 异步执行                                                                               |
+| Gas 费          | 以美元为数量级           | 以美分的十分之一为数量级                                                               |
+| 出块时间        | 约 12 秒                 | 约 600 毫秒                                                                            |

@@ -1,0 +1,121 @@
+---
+title: 部署
+sidebarTitle: 部署与使用
+description: "将合约部署到网络。"
+---
+当您的合约准备好后，您可以将其部署到 NEAR 网络供所有人使用。
+
+让我们指导您如何使用 [NEAR CLI](../../tools/cli) 来部署合约并调用其方法。
+
+<Info>
+在此页面，我们只会介绍 NEAR CLI 的基础知识。有关更多信息，请访问
+[NEAR CLI 文档页面](../../tools/cli)。
+</Info>
+
+---
+
+## 部署合约
+
+借助 `NEAR CLI`，部署合约非常简单：
+
+1. 将合约编译为 wasm。
+2. [创建账户](../../tools/cli#create)并使用 `NEAR CLI` [将合约部署](../../tools/cli#deploy)到该账户。
+
+### 编译合约
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  ```bash
+  cargo near build
+  ```
+
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+
+  ```bash
+  yarn build
+  ```
+
+  </Tab>
+
+</Tabs>
+
+### 创建账户并部署
+
+```bash
+# 创建一个由水龙头预充值的新账户
+near create-account <accountId> --useFaucet
+
+# 部署合约
+near deploy <accountId> <route_to_wasm>
+```
+
+### 部署到现有账户
+
+```bash
+# 登录您的账户
+near login
+
+# 部署合约
+near deploy <accountId> <route_to_wasm>
+```
+
+<Tip>
+您可以通过在现有合约上部署另一个合约来覆盖它。在这种情况下，账户的逻辑会改变，但状态会保留。
+</Tip>
+
+<Info>
+默认情况下，`near-cli` 使用 `testnet` 网络。定义 `NEAR_ENV=mainnet` 以部署到 `mainnet`。
+</Info>
+
+<Info>
+**公开方法的命名约定**
+一旦合约部署到网络，任何人和任何其他合约（即 NEAR 上的任何其他账户）都可以通过调用其方法与之交互。此外，涉及合约的任何交易也将包含在网络的数据流中，这意味着其活动也可以被监听特定事件的任何人看到。
+
+考虑到这一点，我们建议在所有 SDK 中使用 `snake_case` 命名方法，因为这与 NEAR 生态系统的其余部分兼容，后者主要由 Rust 合约组成。
+</Info>
+
+---
+
+## 初始化合约
+如果您的合约有一个[初始化方法](../anatomy/storage)，您可以调用它来初始化状态。如果您的合约为状态实现了 `default` 值，则不需要这样做。
+
+```bash
+# 调用初始化方法（在我们的示例中是 `init`）
+near call <contractId> <initMethod> [<args>] --useAccount <accountId>
+```
+
+<Info>
+您可以在[部署合约](#部署合约)时使用 `--initFunction` 和 `--initArgs` 参数来初始化合约。
+</Info>
+
+---
+
+## 调用合约
+
+部署合约后，您可以立即使用 [NEAR CLI](../../tools/cli) 与之交互。
+
+<hr className="subsection" />
+
+### 视图方法
+视图方法是执行**只读**操作的方法。调用这些方法是免费的，不需要指定用于进行调用的账户：
+
+```bash
+near view <contractId> <methodName>
+```
+
+<Tip>
+视图方法默认有 200 TGAS 可用于执行
+</Tip>
+
+<hr className="subsection" />
+
+### 变更方法
+
+变更方法是执行读写操作的方法。对于这些方法，我们需要指定用于进行调用的账户，因为该账户将在调用中消耗 GAS。
+
+```bash
+near call <contractId> <methodName> <jsonArgs> --useAccount <yourAccount> [--deposit <amount>] [--gas <GAS>]
+```

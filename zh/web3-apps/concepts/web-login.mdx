@@ -1,0 +1,39 @@
+---
+title: Web 登录方式
+description: "了解您的网站或 Web 应用可用的所有登录选项"
+---
+
+NEAR 提供多种选项，允许用户使用 NEAR 账户进行登录。以下是将 Web 登录集成到您的 Web 应用或网站中最流行的方法，每种方法都针对不同的使用场景和用户体验量身定制。
+
+用户登录后，将能够使用其账户与 NEAR 区块链进行交互，包括调用智能合约、转移代币等操作。
+
+---
+
+## NEAR 连接器
+
+[NEAR Connect](../tutorials/wallet-login) 是一个零依赖的轻量级库，允许用户使用其首选钱包连接到您的 dApp。它采用安全的基于沙箱的架构，钱包脚本在隔离的 iframe 中运行。
+
+![Preview](https://github.com/user-attachments/assets/c4422057-38bb-4cd9-8bd0-568e29f46280)
+
+<Tip>
+您可以在 [NEAR 连接器教程](../tutorials/wallet-login)中学习如何将 NEAR Connect 集成到您的应用中。
+</Tip>
+
+---
+
+## 社交登录
+
+[Privy](https://www.privy.io/) 是一项第三方服务，允许用户使用电子邮件或社交账户（Google、Facebook、Twitter 等）进行登录。登录后，系统会为用户创建一个 NEAR 钱包，他们可以充值并用于与您的 dApp 交互。
+
+<Tip>
+
+查看我们的 [Privy 集成示例](https://github.com/near-examples/hello-privy/)，了解如何将 Privy 集成到您的 Web 应用中。
+
+</Tip>
+
+![Preview](https://framerusercontent.com/images/ugUCPrqIGlKFdxBwSbRoWriZtE.png?scale-down-to=2048&width=4018&height=2262)
+
+<Info>
+**Web3Auth**
+作为另一种社交登录方式，您可以查看 [Web3Auth](https://web3auth.io/)。我们有一个功能完整的 [Web3Auth 集成示例](https://github.com/near-examples/hello-web3auth/)，展示如何将 Web3Auth 集成到您的 Web 应用中。
+</Info>

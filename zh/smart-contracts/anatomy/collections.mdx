@@ -1,0 +1,759 @@
+---
+title: 集合
+description: "在智能合约中高效存储、访问和管理数据。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+在选择数据结构时，了解各种结构的权衡非常重要。选择错误的结构可能会随着应用规模的扩大而产生瓶颈，而将状态迁移到新数据结构也需要付出一定代价。
+
+您可以在以下两种类型的集合中进行选择：
+
+1. 原生集合（例如 `Array`、`Map`、`Set`），由语言本身提供
+2. SDK 集合（例如 `IterableMap`、`Vector`），由 NEAR SDK 提供
+
+<Tip>
+**原生集合与 SDK 集合**
+
+对于需要整体访问的少量数据，使用原生集合；对于不需要整体访问的大量数据，使用 SDK 集合。
+
+如果您的集合最多有 100 个条目，使用原生集合是可以接受的。对于更大的集合，建议使用 SDK 集合。有关比较，请参考[此基准测试](https://www.github.com/volodymyr-matselyukh/near-benchmarking)。
+
+</Tip>
+
+---
+
+## 存储管理
+
+每次执行合约时，它首先会读取值并将其[反序列化](./serialization)到内存中，函数执行完成后，它会[序列化](./serialization)并将值写回数据库。
+
+对于原生集合，合约会在任何方法执行之前将整个集合完全加载到内存中。即使您调用的方法不使用该集合，这种情况也会发生。请注意，这会影响您在合约方法上花费的 GAS。
+
+<Accordion title="存储成本">
+
+您的合约需要锁定与其在区块链上存储数据量成比例的余额。这意味着：
+
+- 如果添加了更多数据，**存储增加 ↑**，合约的**余额减少 ↓**。
+- 如果删除了数据，**存储减少 ↓**，合约的**余额增加 ↑**。
+
+目前，存储 **100kb** 数据的成本约为 **1 Ⓝ**。
+
+</Accordion>
+
+<Accordion title="NEAR 上的存储限制">
+
+在链上存储数据时，请务必注意以下几点：
+
+- 一次上传最多 4mb 的限制
+
+举例来说，如果有人想将 NFT 完全存储在链上（而不是 IPFS 或其他去中心化存储解决方案），存储空间几乎是无限的，但需要为每 100kb 存储支付 1 `$NEAR`。
+
+由于 MAX_GAS 限制，用户每次合约调用上传限制为 4MB。一次函数调用最多可附加 300TGas。
+
+</Accordion>
+
+<Warning>
+
+如果您尝试存储数据但没有足够的 NEAR 来支付存储成本，合约将会 panic
+
+</Warning>
+
+<Danger>
+
+注意潜在的[小额存款攻击](../security/storage)
+
+</Danger>
+
+---
+
+## 原生集合
+
+原生集合是语言提供的集合，例如 Javascript 中的 `Array`、`Map`、`Set`，或 Rust 中的 `Vec`、`HashMap`、`HashSet`。
+
+原生集合中的所有条目都**序列化为单个值**并**一起存储**到状态中。这意味着每次函数执行时，SDK 都会读取并**反序列化原生集合中的所有条目**。
+
+<Accordion title="序列化和存储示例">
+
+数组 `[1,2,3,4]` 在 Javascript 中会被序列化为 JSON 字符串 `"[1,2,3,4]"`，在 Rust 中会被序列化为 Borsh 字节流 `[0,0,0,4,1,2,3,4]` 后再存储。
+
+</Accordion>
+
+<Tip>
+**何时使用它们**
+
+当您计划存储需要整体访问的少量数据时，原生集合很有用。
+
+</Tip>
+
+<Danger>
+**保持原生集合小巧**
+
+随着原生集合的增长，从内存中反序列化它的成本会越来越高。如果集合增长过大，您的合约可能会在尝试读取状态时耗尽所有 gas，导致每次函数调用都失败。
+
+</Danger>
+
+---
+
+## SDK 集合
+
+NEAR SDK 提供了针对大量数据随机访问进行优化的集合。SDK 集合使用"前缀"实例化，该前缀用作索引，将数据分成多个块。这样，SDK 集合可以将读写延迟到需要时才进行。
+
+<Accordion title="序列化和存储示例">
+
+前缀为 `"p"` 的 SDK 数组 `[1,2,3,4]` 将在合约的属性中存储字符串 `"p"`，并在合约存储中创建四个条目：`p-0:1`、`p-1:2`...
+
+</Accordion>
+
+<Accordion title="SDK 集合的特性">
+
+| 类型           | 可迭代 | 清除所有值 | 保留插入顺序 | 范围选择 |
+|----------------|:------:|:----------:|:------------:|:--------:|
+| `Vector`       |    ✅   |      ✅     |      ✅       |    ✅     |
+| `LookupSet`    |        |            |              |          |
+| `UnorderedSet` |    ✅   |      ✅     |              |    ✅     |
+| `IterableSet`  |    ✅   |      ✅     |              |    ✅     |
+| `LookupMap`    |        |            |              |          |
+| `UnorderedMap` |    ✅   |      ✅     |              |    ✅     |
+| `IterableMap`  |    ✅   |      ✅     |              |    ✅     |
+| `TreeMap`      |    ✅   |      ✅     |      ✅       |    ✅     |
+
+</Accordion>
+
+<Accordion title="SDK 集合的时间复杂度">
+
+| 类型           | 访问   |   插入   |   删除   |   搜索   |   遍历   |  清除  |
+|----------------|:------:|:--------:|:--------:|:--------:|:--------:|:------:|
+| `Vector`       |  O(1)  |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
+| `LookupSet`    |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
+| `UnorderedSet` |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| `IterableSet`  |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| `LookupMap`    |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
+| `IterableMap`  |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
+| `TreeMap`      |  O(1)  | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
+
+_\* - 使用 `push_back` 在向量末尾插入（或使用 `push_front` 在双端队列前端插入）_
+_\*\* - 使用 `pop` 从向量末尾删除（或使用 `pop_front` 从双端队列前端删除），或使用 `swap_remove` 将元素与向量最后一个元素交换后删除。_
+
+</Accordion>
+
+这些集合的接口设计与原生集合相似。
+
+<Tip>
+**何时使用它们**
+
+当您计划存储不需要整体访问的大量数据时，SDK 集合很有用。
+
+</Tip>
+
+### 实例化
+
+所有结构体都需要使用唯一的 **`prefix`** 进行初始化，该前缀将用于在账户状态中索引集合的值。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="lib.rs" language="rust" 
+          url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lib.rs"
+          start="24" end="47"/>
+
+  <Tip>
+
+  请注意我们如何使用 `enums` 确保所有集合具有不同的前缀。使用 `enums` 的另一个优点是它们被序列化为单个 `byte` 前缀。
+
+  </Tip>
+
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+    
+    <Github fname="contract.ts" language="js"
+          url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
+          start="6" end="25" />
+
+<Tip>
+
+不要忘记使用 `schema` 来定义合约状态的结构
+
+</Tip>
+
+  </Tab>
+
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import view, call, init
+from near_sdk_py.collections import Vector, LookupMap, UnorderedMap, LookupSet, UnorderedSet
+
+class MyContract:
+    @init
+    def new(self): # 使用前缀 "v" 创建 Vector
+        self.my_vector = Vector("v")
+
+        # 使用前缀 "m" 创建 LookupMap
+        self.my_lookup_map = LookupMap("m")
+
+        # 使用前缀 "um" 创建 UnorderedMap
+        self.my_unordered_map = UnorderedMap("um")
+
+        # 使用前缀 "s" 创建 LookupSet
+        self.my_lookup_set = LookupSet("s")
+
+        # 使用前缀 "us" 创建 UnorderedSet
+        self.my_unordered_set = UnorderedSet("us")
+
+        # 对于嵌套集合，使用不同的前缀
+        self.nested_maps = UnorderedMap("nested")
+
+        return True
+
+    @call
+    def create_nested_map(self, key: str):
+        # 创建一个将存储在另一个映射中的新映射
+        inner_map = UnorderedMap(f"inner_{key}")
+        self.nested_maps[key] = inner_map
+        return {"success": True}
+
+````
+  </Tab>
+
+</Tabs>
+
+<Danger>
+
+注意不要在两个集合中使用相同的前缀，否则它们的存储空间会发生冲突，在向一个集合写入时可能会覆盖另一个集合的信息。
+
+</Danger>
+
+<hr className="subsection" />
+
+### Vector
+
+实现了在合约存储中持久化的[向量/数组](https://en.wikipedia.org/wiki/Array_data_structure)。请参考 Rust 和 JS SDK 文档获取完整的接口参考。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="vector.rs" language="rust"
+            url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/vector.rs" start="4" end="29"/>
+  </Tab>
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
+            start="48" end="73" />
+  </Tab>
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import view, call, init
+from near_sdk_py.collections import Vector
+
+class VectorExample:
+    @init
+    def new(self):
+        # 使用前缀 "v" 创建 Vector
+        self.my_vector = Vector("v")
+        
+    @call
+    def add_number(self, number):
+        # 向向量添加一个值
+        self.my_vector.append(number)
+        return len(self.my_vector)
+        
+    @view
+    def get_number(self, index):
+        # 获取特定索引处的值
+        try:
+            return self.my_vector[index]
+        except Exception:
+            return None
+            
+    @view
+    def get_all_numbers(self):
+        # 将整个向量转换为列表
+        return [num for num in self.my_vector]
+```
+  </Tab>
+</Tabs>
+
+<hr className="subsection" />
+
+### LookupMap
+
+实现了在合约存储中持久化的[映射/字典](https://en.wikipedia.org/wiki/Associative_array)。请参考 Rust 和 JS SDK 文档获取完整的接口参考。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="lookup_map.rs" language="rust"
+          url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_map.rs" start="4" end="22"/>
+  </Tab>
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+          url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
+          start="111" end="131" />
+  </Tab>
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import view, call, init
+from near_sdk_py.collections import LookupMap
+
+class LookupMapExample:
+    @init
+    def new(self):
+        # 使用前缀 "m" 创建 LookupMap
+        self.balances = LookupMap("m")
+        
+    @call
+    def set_balance(self, account_id, amount):
+        # 为键设置一个值
+        self.balances[account_id] = amount
+        return True
+        
+    @view
+    def get_balance(self, account_id):
+        # 获取键的值，带有默认值
+        return self.balances.get(account_id, 0)
+        
+    @call
+    def remove_balance(self, account_id):
+        # 删除一个键
+        if account_id in self.balances:
+            del self.balances[account_id]
+            return True
+        return False
+```
+  </Tab>
+</Tabs>
+
+<hr className="subsection" />
+
+### UnorderedMap / IterableMap
+
+实现了在合约存储中持久化的[映射/字典](https://en.wikipedia.org/wiki/Associative_array)。请参考 Rust 和 JS SDK 文档获取完整的接口参考。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="iterable_map.rs" language="rust"
+          url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/iterable_map.rs" start="4" end="29"/>
+  </Tab>
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+          url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
+          start="132" end="152" />
+  </Tab>
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import view, call, init
+from near_sdk_py.collections import UnorderedMap
+
+class UnorderedMapExample:
+    @init
+    def new(self):
+        # 使用前缀 "um" 创建 UnorderedMap
+        self.user_data = UnorderedMap("um")
+        
+    @call
+    def set_user_data(self, account_id, data):
+        # 为键设置一个值
+        self.user_data[account_id] = data
+        return True
+        
+    @view
+    def get_user_data(self, account_id):
+        # 获取键的值
+        try:
+            return self.user_data[account_id]
+        except Exception:
+            return None
+        
+    @view
+    def list_all_users(self):
+        # 遍历键和值
+        return {
+            "keys": self.user_data.keys(),
+            "values": self.user_data.values(),
+            "items": self.user_data.items()
+        }
+```
+  </Tab>
+</Tabs>
+
+<hr className="subsection" />
+
+### LookupSet
+
+实现了在合约存储中持久化的[集合](https://en.wikipedia.org/wiki/Set_(abstract_data_type))。请参考 Rust 和 JS SDK 文档获取完整的接口参考。
+
+<Tabs>
+
+  <Tab title="🦀 Rust">
+      <Github fname="lookup_set.rs" language="rust"
+        url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs" start="4" end="18"/>
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+      url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts" start="74" end="89" />
+  </Tab>
+  
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import view, call, init
+from near_sdk_py.collections import LookupSet
+
+class LookupSetExample:
+    @init
+    def new(self):
+        # 使用前缀 "s" 创建 LookupSet
+        self.whitelist = LookupSet("s")
+        
+    @call
+    def add_to_whitelist(self, account_id):
+        # 向集合添加一个值
+        self.whitelist.add(account_id)
+        return True
+        
+    @view
+    def is_whitelisted(self, account_id):
+        # 检查集合中是否存在某个值
+        return account_id in self.whitelist
+        
+    @call
+    def remove_from_whitelist(self, account_id):
+        # 从集合中删除一个值
+        try:
+            self.whitelist.remove(account_id)
+            return True
+        except Exception:
+            return False
+```
+  </Tab>
+
+</Tabs>
+
+<hr className="subsection" />
+
+### UnorderedSet / IterableSet
+
+实现了在合约存储中持久化的[映射/字典](https://en.wikipedia.org/wiki/Associative_array)。请参考 Rust 和 JS SDK 文档获取完整的接口参考。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="iterable_set.rs" language="rust"
+          url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/iterable_set.rs" start="4" end="26"/>
+  </Tab>
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+          url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts"
+          start="90" end="110" />
+  </Tab>
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import view, call, init
+from near_sdk_py.collections import UnorderedSet
+
+class UnorderedSetExample:
+    @init
+    def new(self):
+        # 使用前缀 "us" 创建 UnorderedSet
+        self.owners = UnorderedSet("us")
+        
+    @call
+    def register_owner(self, account_id):
+        # 向集合添加一个值
+        self.owners.add(account_id)
+        return True
+        
+    @view
+    def is_owner(self, account_id):
+        # 检查集合中是否存在某个值
+        return account_id in self.owners
+        
+    @view
+    def list_all_owners(self):
+        # 以列表形式获取所有值
+        return self.owners.values()
+        
+    @call
+    def remove_owner(self, account_id):
+        # 尝试删除存在的值
+        self.owners.discard(account_id)
+        return True
+```
+  </Tab>
+</Tabs>
+
+<hr className="subsection" />
+
+### Tree
+
+Map 的有序等价物。底层实现基于 [AVL](https://en.wikipedia.org/wiki/AVL_tree) 树。当您需要保持一致的顺序或访问最小/最大键时，应使用此结构。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="tree.rs" language="rust"
+          url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/legacy/src/tree.rs" start="6" end="24"/>
+  </Tab>
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import view, call, init
+from near_sdk_py.collections import TreeMap
+
+class TreeMapExample:
+    @init
+    def new(self):
+        # 使用前缀 "tm" 创建 TreeMap
+        self.scores = TreeMap("tm")
+        
+    @call
+    def add_score(self, user_id, score):
+        # 为用户设置分数
+        self.scores[user_id] = score
+        return True
+        
+    @view
+    def get_top_scores(self, limit=10):
+        # 使用有序键获取最高分
+        # 这将按降序返回最高分
+        top_users = []
+        max_key = self.scores.max_key()
+        current_key = max_key
+        count = 0
+        
+        while current_key is not None and count < limit:
+            top_users.append({
+                "user": current_key,
+                "score": self.scores[current_key]
+            })
+            current_key = self.scores.floor_key(current_key - 1)  # 获取下一个最高键
+            count += 1
+            
+        return top_users
+```
+  </Tab>
+</Tabs>
+
+---
+
+## 嵌套集合
+
+嵌套 SDK 集合时，请注意为所有集合（包括嵌套集合）**使用不同的前缀**。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+    <Github fname="nested.ts" language="rust"
+            url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/nested.rs" start="4" end="30"/>
+
+  <Tip>
+
+  请注意我们如何使用接受 `String` 参数的 `enums` 来确保所有集合具有不同的前缀。
+
+  </Tip>
+
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+
+    <Github fname="nested.ts" language="js"
+            url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts" start="153" end="196"/>
+
+  </Tab>
+  
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import view, call, init
+from near_sdk_py.collections import UnorderedMap, Vector
+from near_sdk_py.collections import create_prefix_guard
+
+class NestedCollectionsExample:
+    @init
+    def new(self):
+        # 用户到其资产的主映射
+        self.user_assets = UnorderedMap("users")
+
+    @call
+    def add_asset(self, user_id, asset_id, metadata):
+        # 使用唯一前缀获取或创建用户的资产向量
+        if user_id not in self.user_assets:
+            # 创建前缀保护以确保此用户的前缀唯一
+            prefix = f"assets:{user_id}"
+            # 为此用户的资产创建新向量
+            self.user_assets[user_id] = Vector(prefix)
+
+        # 将资产添加到用户的资产向量中
+        user_assets = self.user_assets[user_id]
+        user_assets.append({
+            "asset_id": asset_id,
+            "metadata": metadata
+        })
+
+        # 在映射中更新向量
+        self.user_assets[user_id] = user_assets
+        return True
+
+    @view
+    def get_user_assets(self, user_id):
+        if user_id not in self.user_assets:
+            return []
+
+        # 获取用户的所有资产
+        user_assets = self.user_assets[user_id]
+        return [asset for asset in user_assets]
+````
+
+<Tip>
+
+在 Python 中，我们通过在前缀字符串中包含父级的标识符来为嵌套集合创建唯一前缀。SDK 还提供了 `create_prefix_guard` 工具来帮助管理前缀。
+
+</Tip>
+
+  </Tab>
+</Tabs>
+
+---
+
+## 容易出错的模式
+
+由于值不保存在内存中，而是从存储中延迟加载，因此如果替换或删除集合，请务必确保存储被清除。此外，如果修改了集合，集合本身必须在状态中更新，因为大多数集合会存储一些元数据。
+
+一些无法在类型级别限制的容易出错的模式需要避免：
+
+<Tabs>
+<Tab title="🦀 Rust">
+
+```rust
+use near_sdk::store::UnorderedMap;
+
+let mut m = UnorderedMap::<u8, String>::new(b"m");
+m.insert(1, "test".to_string());
+assert_eq!(m.len(), 1);
+assert_eq!(m.get(&1), Some(&"test".to_string()));
+
+// Bug 1: 不应该在不清除状态的情况下替换任何集合，这将重置任何元数据，
+// 例如元素数量，从而导致错误。如果您用具有不同前缀的内容替换集合，
+// 它将是功能性的，但您会丢失任何先前的数据，而旧值也不会从存储中删除。
+m = UnorderedMap::new(b"m");
+assert!(m.is_empty());
+assert_eq!(m.get(&1), Some(&"test".to_string()));
+
+// Bug 2: 不应该使用与另一个集合相同的前缀，否则会产生意外的副作用。
+let m2 = UnorderedMap::<u8, String>::new(b"m");
+assert!(m2.is_empty());
+assert_eq!(m2.get(&1), Some(&"test".to_string()));
+
+// Bug 3: 忘记将集合保存到存储中。当集合附加到合约状态
+//（`#[near]` 中的 `self`）时，这将自动完成，但如果手动与存储交互
+// 或使用嵌套集合时，这一点就变得重要了。
+use near_sdk::store::Vector;
+
+// 模拟初始化状态的函数调用过程。
+{
+    let v = Vector::<u8>::new(b"v");
+    near_sdk::env::state_write(&v);
+}
+
+// 模拟仅修改集合但不存储集合本身的函数调用过程。
+{
+    let mut v: Vector<u8> = near_sdk::env::state_read().unwrap();
+    v.push(1);
+    // 这里的 bug 是集合本身没有被写回
+}
+
+let v: Vector<u8> = near_sdk::env::state_read().unwrap();
+// 这将报告集合为空，即使元素存在
+assert!(v.get(0).is_none());
+assert!(
+    near_sdk::env::storage_read(&[b"v".as_slice(), &0u32.to_le_bytes()].concat()).is_some()
+);
+
+// Bug 4（仅与 `near_sdk::store` 相关）：这些集合将缓存写入和读取，
+// 写入在 [`Drop`](https://doc.rust-lang.org/std/ops/trait.Drop.html) 时执行，
+// 因此如果集合保存在静态内存中或使用了 `std::mem::forget`，更改将不会被持久化。
+use near_sdk::store::IterableSet;
+
+let mut m: IterableSet<u8> = IterableSet::new(b"l");
+m.insert(1);
+assert!(m.contains(&1));
+
+// 修复方法是手动将中间更改刷新到存储中。
+// m.flush();
+std::mem::forget(m);
+
+m = IterableSet::new(b"l");
+assert!(!m.contains(&1));
+```
+
+</Tab>
+</Tabs>
+
+---
+
+## 分页
+
+持久化集合（如 `IterableMap/UnorderedMap`、`IterableSet/UnorderedSet` 和 `Vector`）可能包含的元素数量超过了可用于全部读取的 gas 量。
+为了通过视图调用暴露所有元素，我们可以使用分页。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    在 Rust 中，可以使用带有 [`Skip`](https://doc.rust-lang.org/std/iter/struct.Skip.html) 和 [`Take`](https://doc.rust-lang.org/std/iter/struct.Take.html) 的迭代器来实现。这将只从存储中加载范围内的元素。
+
+    ```rust
+      #[near(contract_state)]
+      #[derive(PanicOnDefault)]
+      pub struct Contract {
+          pub status_updates: IterableMap<AccountId, String>,
+      }
+
+      #[near]
+      impl Contract {
+          /// 从 `IterableMap` 中检索多个元素。
+          /// - `from_index` 是起始索引。
+          /// - `limit` 是要返回的最大元素数量。
+          pub fn get_updates(&self, from_index: usize, limit: usize) -> Vec<(AccountId, String)> {
+              self.status_updates
+                  .iter()
+                  .skip(from_index)
+                  .take(limit)
+                  .collect()
+          }
+      }
+    ```
+
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+    在 JavaScript 中，可以使用带有 [`toArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/toArray) 和 [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) 的迭代器来实现。
+
+    ```ts
+      /// 从 `UnorderedMap` 中返回多个元素。
+      /// - `from_index` 是起始索引。
+      /// - `limit` 是要返回的最大元素数量。
+      @view({})
+      get_updates({ from_index, limit }: { from_index: number, limit:number }) {
+        return this.status_updates.toArray().slice(from_index, limit);
+      }
+    ```
+  </Tab>
+
+  <Tab title="🐍 Python">
+    ```python
+    # 在 Python 中，可以使用标准列表切片来实现。
+
+    @view
+    def get_updates(self, from_index: int = 0, limit: int = 50) -> list:
+        """返回集合中带分页的多个元素。
+        
+        参数：
+            from_index：起始索引
+            limit：要返回的最大元素数量
+            
+        返回：
+            集合中的元素列表
+        """
+        # 从集合中获取所有值
+        all_items = self.status_updates.values()
+        
+        # 使用列表切片应用分页
+        start = min(from_index, len(all_items))
+        end = min(start + limit, len(all_items))
+        
+        return all_items[start:end]
+    ```
+  </Tab>
+</Tabs>

@@ -1,0 +1,288 @@
+---
+title: "教程：创建索引器"
+description: "本教程将引导您使用 NEAR Indexer Framework 构建索引器。该索引器将监听特定合约上的 FunctionCall 并记录每次调用的详细信息。"
+---
+
+import {Github} from '/snippets/github.jsx';
+
+在本教程中，我们将使用 NEAR Indexer Framework 构建一个索引器。该索引器将实时监听来自 NEAR 区块链的区块数据。
+
+要让我们的索引器运行起来，需要完成两个步骤：
+
+1. [初始化](#initialization)索引器
+2. [启动它](#starting-the-indexer)
+
+索引器示例的完整源代码可在 [GitHub 仓库](https://github.com/near/nearcore/tree/master/tools/indexer/example)中找到。
+
+<Note>
+源代码链接指向 `nearcore` 仓库，因为 Indexer Framework 是 `nearcore` 代码库的一部分。我们提供的链接指向 `master` 分支。如果您想使用**最新稳定发布版本**，应查看[发布页面](https://github.com/near/nearcore/releases)并检出相应的标签。
+</Note>
+
+<Danger>
+NEAR Indexer Framework 仅支持 **`Linux x86`**，**不**支持 Windows 或 MacOS
+</Danger>
+
+---
+
+## 前提条件
+
+### 安装 Rust
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+### 安装开发者工具
+
+```bash
+apt update
+apt install -y git binutils-dev libcurl4-openssl-dev zlib1g-dev libdw-dev libiberty-dev cmake gcc g++ python docker.io protobuf-compiler libssl-dev pkg-config clang llvm cargo awscli
+```
+
+<Danger>
+NEAR Indexer Framework 仅支持 **`Linux x86`**，**不**支持 Windows 或 MacOS
+</Danger>
+
+### 克隆 nearcore 仓库
+
+```bash
+git clone git@github.com:near/nearcore.git
+```
+
+---
+
+## 初始化
+
+为了让我们的索引器处理区块，它需要作为节点加入 NEAR 网络。为此，我们首先需要初始化它，这将下载区块链的 `genesis` 配置，并为我们的节点创建一个与其他节点通信的 `key`（密钥）。
+
+进入 `nearcore/tools/indexer/example` 文件夹并构建索引器：
+
+```bash
+cd nearcore/tools/indexer/example && cargo build --release
+```
+
+然后，运行以下命令来初始化网络配置：
+
+<Tabs>
+    <Tab title="Localnet">
+      ```bash
+        cargo run --release -- --home-dir ~/.near/localnet init
+      ```
+    </Tab>
+    <Tab title="Testnet">
+      ```bash
+        cargo run --release -- --home-dir ~/.near/testnet init --chain-id testnet --download-config rpc --download-genesis
+      ```
+    </Tab>
+    <Tab title="Mainnet">
+      ```bash
+        cargo run --release -- --home-dir ~/.near/mainnet init --chain-id mainnet --download-config rpc --download-genesis
+      ```
+    </Tab>
+</Tabs>
+
+根据我们要连接的网络，密钥将创建在不同的文件夹中（`~/.near/<network>`）。
+
+#### 配置文件
+
+配置文件（`~/.near/<network>/config.json`）会自动创建，但建议将其替换为以下专为 RPC 节点设计的配置文件之一：
+
+- [testnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/testnet/rpc/config.json)
+- [mainnet config.json](https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/rpc/config.json)
+
+<Note>
+**配置选项**
+
+请参阅下方的[自定义配置](#custom-configuration)部分，了解更多配置选项。
+
+</Note>
+
+---
+
+## 启动索引器
+
+完成索引器的初始化和配置后，我们可以通过运行以下命令来启动它：
+
+<Tabs>
+    <Tab title="Localnet">
+      ```bash
+        cargo run --release -- --home-dir ~/.near/localnet
+      ```
+    </Tab>
+    <Tab title="Testnet">
+      ```bash
+        cargo run --release -- --home-dir ~/.near/testnet run
+      ```
+    </Tab>
+    <Tab title="Mainnet">
+      ```bash
+        cargo run --release -- --home-dir ~/.near/mainnet run
+      ```
+    </Tab>
+</Tabs>
+
+<Accordion title="工作原理">
+
+- 该命令初始化索引器的配置：主目录、同步模式、流式模式、最终性等。
+- 在专用线程上创建 Tokio 运行时。
+- 使用提供的配置创建 Indexer 实例，启动它，并将区块流传输到我们的处理程序。在处理程序（`listen_blocks` 方法）中，有一个无限循环，用于解析每个接收到的新区块的区块数据。
+
+<Github fname="main.rs" language="rust"
+        url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"
+        start="271" end="289" />
+
+</Accordion>
+
+#### 遇到错误？
+- 如果您的索引器无法找到 `boot nodes`（启动节点），请查看[启动节点](#boot-nodes)部分
+---
+
+## 解析区块数据
+
+在 `listen_blocks` 方法中，我们可以在数据从流中流出时解析区块数据。从区块数据中，我们可以访问交易、其收据和操作。请参阅下面的代码，了解如何解析区块数据的示例：
+
+<Github fname="main.rs" language="rust"
+        url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"
+        start="10" end="254" />
+
+---
+
+## 自定义配置
+
+默认情况下，nearcore 配置为在保持最新状态的同时尽量减少工作量。索引器可能有不同的需求，因此您可能需要根据需求调整配置。
+
+### 要跟踪的分片/账户
+
+我们需要确保 NEAR Indexer 跟踪所有必要的分片，因此默认情况下 `"tracked_shards_config"` 设置为 `"AllShards"`。您可能需要应用的最常见调整是监听特定分片；为此，在 `"tracked_shards_config"` 部分（`~/.near/<network>/config.json` 文件）中列出您要跟踪的所有分片 UID：
+
+```json
+...
+"tracked_shards_config": {
+       "Shards": [
+              "s3.v3",
+              "s4.v3"
+       ]
+},
+...
+```
+或者，如果您想跟踪特定账户：
+
+```json
+...
+"tracked_shards_config": {
+       "Accounts": [
+              "account_a",
+              "account_b"
+       ]
+},
+...
+```
+
+### 同步模式
+您可以通过设置要流式传输的内容来选择 Indexer Framework 同步模式：
+
+- LatestSynced - 实时同步，始终获取最新的已最终确认区块进行流式传输
+- FromInterruption - 从 NEAR Indexer 上次中断时的区块开始同步
+- BlockHeight(u64) - 从指定的区块高度开始同步
+
+<Github fname="main.rs" language="rust"
+        url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"
+        start="274" end="274" />
+
+### 流式模式
+您可以通过设置要流式传输的内容来选择 Indexer Framework 流式模式：
+
+- StreamWhileSyncing - 节点同步时进行流式传输
+- WaitForFullSync - 等待节点完全同步后再进行流式传输
+
+<Github fname="main.rs" language="rust"
+        url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"
+        start="275" end="275" />
+
+### 最终性
+您可以选择流式传输区块的最终性级别：
+
+- None - `optimistic`，可能（虽然不太可能）被跳过的区块
+- DoomSlug - `near-final`，不可逆的区块，除非至少一个区块生产者被惩罚
+- Final - `final`，区块已最终确认且不可逆
+
+<Github fname="main.rs" language="rust"
+        url="https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs"
+        start="276" end="276" />
+
+### 启动节点
+如果您的节点找不到任何对等节点连接，可以在 `config.json` 文件中手动指定一些启动节点。您可以通过运行以下命令获取网络的活跃对等节点列表：
+
+<Tabs>
+    <Tab title="Testnet">
+      ```bash
+      curl -X POST https://rpc.testnet.near.org \
+        -H "Content-Type: application/json" \
+        -d '{
+              "jsonrpc": "2.0",
+              "method": "network_info",
+              "params": [],
+              "id": "dontcare"
+            }' | \
+      jq '.result.active_peers as $list1 | .result.known_producers as $list2 |
+      $list1[] as $active_peer | $list2[] |
+      select(.peer_id == $active_peer.id) |
+      "\(.peer_id)@\($active_peer.addr)"' |\
+      awk 'NR>2 {print ","} length($0) {print p} {p=$0}' ORS="" | sed 's/"//g'
+      ```
+    </Tab>
+    <Tab title="Mainnet">
+      ```bash
+      curl -X POST https://rpc.mainnet.near.org \
+        -H "Content-Type: application/json" \
+        -d '{
+              "jsonrpc": "2.0",
+              "method": "network_info",
+              "params": [],
+              "id": "dontcare"
+            }' | \
+      jq '.result.active_peers as $list1 | .result.known_producers as $list2 |
+      $list1[] as $active_peer | $list2[] |
+      select(.peer_id == $active_peer.id) |
+      "\(.peer_id)@\($active_peer.addr)"' |\
+      awk 'NR>2 {print ","} length($0) {print p} {p=$0}' ORS="" | sed 's/"//g'
+      ```
+    </Tab>
+</Tabs>
+
+然后将输出作为字符串添加到 `config.json` 文件的 `boot_nodes` 部分：
+
+```json
+...
+"network": {
+    "addr": "0.0.0.0:24567",
+    "boot_nodes": "ed25519:8oVENgBp6zJfnwXFe...",
+    ...
+},
+...
+```
+
+### 历史数据
+
+Indexer Framework 还提供对内部 API 的访问（请参阅 Indexer::client_actors 方法），因此您可以获取任何区块、交易等的数据，但默认情况下，nearcore 配置为删除旧数据（垃圾回收），因此查询几个纪元之前观察到的数据可能会返回数据未找到的错误。如果您只需要区块流，则不需要此调整，但如果您需要直接从 Indexer 访问历史数据，请考虑将 config.json 中的 "archive" 设置更新为 true：
+
+```json
+...
+"archive": true,
+...
+```
+
+---
+
+## 在您的项目中使用 NEAR Indexer
+
+您也可以在自己的 Rust 项目中将 NEAR Indexer Framework 作为依赖项使用。为此，请将以下内容添加到您的 `Cargo.toml` 文件中（将 `2.8.0` 替换为最新稳定发布版本）：
+
+```toml
+[dependencies]
+near-indexer = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-indexer-primitives = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-config-utils = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-o11y = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-primitives = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+```

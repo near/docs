@@ -1,0 +1,105 @@
+---
+title: 设置由 MPC 控制的 Near 账户
+sidebarTitle: 设置可控 Near 账户
+description: "通过衍生公钥并将其添加为访问密钥，设置由 MPC 安全控制的 NEAR 账户。"
+---
+
+NEAR 协议的一个强大特性是其灵活的[访问密钥架构](/protocol/accounts-contracts/access-keys)。一个账户可以持有多个访问密钥，每个密钥具有不同级别的权限。这使我们能够在不影响安全性的情况下，将交易签名功能授予外部密钥。
+
+要通过 MPC 实现安全的外部控制，我们必须从 MPC 智能合约衍生一个有效的 `secp256k1` 公钥。该密钥属于一个密钥对，将在教程后面用于安全地签署交易。
+
+在继续之前，让我们创建一个我们将代表其行事的账户。
+
+## 创建账户
+
+如果您已经有一个想要通过 MPC 控制的 NEAR 账户，可以跳过此步骤。
+否则，使用以下命令：
+
+```sh
+near account create-account fund-myself
+```
+
+## 从 MPC 衍生公钥
+
+正如您从[链签名文档](/chain-abstraction/chain-signatures#how-it-works)中了解到的，`derivation_path` 是允许生成多个不同密钥对的关键组件。与 `predecessor_id` 结合时，形成一个唯一且安全的对。
+
+在我们的示例中，智能合约充当用户和 MPC 之间的代理，`用户账户 <-> 合约代理 <-> 请求签名的合约`，这意味着合约本身在衍生过程中成为 `predecessor`：`predecessor: contract_proxy_address`。
+
+如果合约代理直接部署在用户账户上，`用户账户 <-> 请求签名的合约`，则用户账户将成为衍生过程中的 `predecessor`：`predecessor: user_account_address`。
+
+要了解 `derivation_path` 的构建方式，让我们查看[智能合约实现](https://github.com/nearuaguild/control-near-account-with-mpc-example/blob/97883851483c05d4c9206afb6efeac02ec9c2541/contract/src/lib.rs#L64-L68)：
+
+```rust
+let derivation_path = format!(
+    "{}-{}",
+    env::predecessor_account_id().to_string(),
+    args.signer_id.to_string()
+);
+```
+
+- `args.signer_id` 是我们代表其行事的账户
+- `env::predecessor_account_id().to_string()` 指调用合约的账户，请不要将其与之前提到的 `predecessor_id` 混淆，后者指的是智能合约地址
+
+现在我们了解了每个输入的计算方式，让我们将它们组合起来，实际衍生一个公钥。
+
+<Tabs>
+  <Tab title="TypeScript">
+
+```ts
+const contractId = "broken-rock.testnet"; // 智能合约地址
+const adminAccountId = "admin.testnet"; // 签署交易以代表 `controllableAccountId` 行事
+const controllableAccountId = "controllable.testnet"; // 我们将代表其行事的账户
+
+// admin.testnet-controllable.testnet
+const derivationPath = `${adminAccountId}-${controllableAccountId}`;
+
+// secp256k1:m2CUiQw9f5nN8sAszkHrbok6apRz7j6LkpFZ6vT6zzxLHh2C54udU9Ue7eRy7FRK42pD796nNSwEdsqXzLb96PR
+const derivedPublicKey = await deriveKey(contractId, derivationPath);
+```
+
+  </Tab>
+</Tabs>
+
+## 向账户添加密钥
+
+获得公钥后，最后一步是将其添加到 NEAR 账户。
+
+<Tabs>
+  <Tab title="Near CLI">
+
+```sh
+near account add-key controllable.testnet grant-full-access use-manually-provided-public-key secp256k1:m2CUiQw9f5nN8sAszkHrbok6apRz7j6LkpFZ6vT6zzxLHh2C54udU9Ue7eRy7FRK42pD796nNSwEdsqXzLb96PR network-config testnet sign-with-legacy-keychain send
+```
+
+  </Tab>
+  <Tab title="TypeScript">
+
+```ts
+const path = require("node:path");
+const { homedir } = require("node:os");
+const { keyStores, connect } = require("near-api-js");
+
+const CREDENTIALS_DIR = ".near-credentials";
+const credentialsPath = path.join(homedir(), CREDENTIALS_DIR);
+const keyStore = new keyStores.UnencryptedFileSystemKeyStore(credentialsPath);
+
+const config = {
+  keyStore,
+  networkId: "testnet",
+  nodeUrl: "https://rpc.testnet.near.org",
+};
+
+const near = await connect(config);
+
+const account = await near.account("controllable.testnet");
+
+// 使用上一步中的 derivedPublicKey
+await account.addKey(derivedPublicKey);
+```
+
+  </Tab>
+</Tabs>
+
+在我们的示例中，我们将此公钥添加为[**全访问密钥**](/protocol/accounts-contracts/access-keys#full-access-keys)，意味着它对账户拥有完全控制权，这允许我们无限制地执行所有交易。但是，也可以将密钥添加为具有有限权限的**函数调用访问密钥**。
+
+下一步是代表 `controllable.testnet` 创建、签署并最终发送转移交易。继续阅读[下一章节](/chain-abstraction/chain-signatures/tutorials/controlling-near-accounts/2-transfer)了解操作方法。

@@ -1,0 +1,47 @@
+---
+title: 代币水龙头
+icon: droplet
+sidebarTitle: 获取测试网代币
+description: "了解如何在 NEAR 区块链上获取用于开发和测试的免费测试网代币"
+---
+import { Faucet } from '/snippets/faucet.jsx';
+
+**水龙头**提供免费的 `testnet` 代币，用于测试和开发目的。
+
+目前有两个测试网水龙头：本页内置的水龙头（仅提供原生 `testnet` NEAR）以及[测试网水龙头](#external-faucet)（支持多种同质化代币，包括 NEAR、USDT 等）。
+
+<Info>
+  如果任何水龙头无法正常使用，请在我们的 [NEAR Telegram 频道](https://t.me/neardev) 中反馈
+</Info>
+
+---
+
+## 水龙头
+
+只需输入您希望接收代币的账户地址，然后点击"Request"按钮。水龙头将向该账户发送少量 `testnet` NEAR 代币。
+
+<Faucet />
+
+---
+
+## 外部水龙头
+
+访问[测试网水龙头](https://near-faucet.io/)页面，输入您的地址并选择所需的代币类型！该水龙头支持多种同质化代币，包括 NEAR、Tether USD、Ether 等。
+
+![显示代币选择界面的水龙头页面](/assets/docs/getting-started/faucet.png)
+
+<Info>
+  请注意，水龙头有时可能会暂时缺少代币，请继续阅读下方内容，了解获取其他同质化代币的替代方式
+</Info>
+
+---
+
+## 获取同质化代币
+
+在 `testnet` 上获取同质化代币的另一种方式是通过 [`testnet` 版本的 ref finance](https://testnet.ref.finance/#near|ref.fakes.testnet)
+
+在那里，您可以将 `testnet` NEAR 兑换成其他同质化代币，例如 `testnet USDC`、`testnet USDT`、`testnet DAI` 等
+
+<Info>
+  请注意，`testnet` 上的代币汇率可能与 `mainnet` 不同（例如 `1 USDC` 兑换的 `NEAR` 数量可能与 `mainnet` 上不同），此外，`testnet` 上的流动性可能非常有限
+</Info>

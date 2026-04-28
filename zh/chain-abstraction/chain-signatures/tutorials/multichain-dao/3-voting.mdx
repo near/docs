@@ -1,0 +1,97 @@
+---
+title: 多签投票
+description: "了解如何部署多签合约并使用 Abstract DAO 对多链提案进行投票。"
+---
+
+现在我们了解了 Abstract DAO 的工作原理，是时候在组织内使用它了。让我们看看如何部署一个多签合约，用户可以在其中对多链提案进行投票。
+
+---
+
+## 创建多签合约
+
+作为第一步，我们需要创建一个账户并在其上部署多签合约，以便用户可以开始创建提案并对其进行投票。
+
+<Info>
+**部署多签合约**
+您可以从 near 仓库下载[已编译的多签合约](https://github.com/near/core-contracts/raw/refs/heads/master/multisig2/res/multisig2.wasm)
+</Info>
+
+```bash
+near create-account <accountId> --useFaucet
+
+near deploy <accountId> multisig2.wasm
+```
+
+<Tip>
+  查看 GitHub 仓库以获取有关如何[初始化多签合约](https://github.com/near/core-contracts/tree/master/multisig2)的说明
+</Tip>
+
+---
+
+## 在多签合约上创建请求
+
+要在多链 DAO 治理合约上调用 `register_signature_request`，您需要通过多签合约提交请求。这确保了生成签名的决定由必要的成员确认。
+
+```bash
+near contract call-function as-transaction multisignature.testnet add_request json-args '{
+    "request": {
+        "receiver_id": "abstract-dao.testnet",
+        "actions": [
+            {
+                "type": "FunctionCall",
+                "method_name": "register_signature_request",
+                "args": {
+                    "request": {
+                        "allowed_account_id": "executor.testnet",
+                        "derivation_seed_number": 0,
+                        "transaction_payload": {
+                            "to": "0xe2a01146FFfC8432497ae49A7a6cBa5B9Abd71A3",
+                            "nonce": "0",
+                            "function_data": {
+                                "function_abi": {
+                                    "inputs": [
+                                        {
+                                            "internalType": "uint256",
+                                            "name": "_num",
+                                            "type": "uint256"
+                                        }
+                                    ],
+                                    "name": "set",
+                                    "outputs": [],
+                                    "stateMutability": "nonpayable",
+                                    "type": "function"
+                                },
+                                "arguments": [
+                                    {
+                                        "Uint": "A97"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "gas": "100000000000000",
+                "deposit": "0.1"
+            }
+        ]
+    }
+}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as executor.testnet network-config testnet
+```
+
+---
+
+## 对请求进行投票
+
+一旦请求提交，多签合约的成员有一定时间投票确认或拒绝该请求。每个成员需要使用以下命令投票：
+
+```bash
+near contract call-function as-transaction multisignature.testnet confirm json-args '{"request_id": 1}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as account.testnet network-config testnet
+```
+
+<Note>
+将提供的 `request_id` 替换为创建请求时从响应中获取的值
+</Note>
+
+一旦请求收到足够的确认，它将自动执行。此时，签名请求已成功注册在多链 DAO 治理合约上。
+
+现在，授权账户（在请求中指定）可以像我们在[上一节](./2-signing)中看到的那样为交易生成签名。

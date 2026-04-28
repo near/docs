@@ -1,0 +1,561 @@
+---
+title: 使用同质化代币（FT）
+description: "了解如何在您的 dApp 中创建、转移和集成 FT"
+---
+
+import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
+import { Github } from '/snippets/github.jsx';
+
+想要在您的 dApp 中使用同质化代币（FT）？在这里您可以找到所有入门所需的信息，包括创建代币、注册用户、查询余额、转移代币以及将其集成到智能合约中。
+
+---
+
+## 创建新代币
+
+创建新同质化代币最简便的方式是与工厂合约交互，您只需提供代币元数据，工厂合约会自动部署并初始化一个[标准 FT 合约](https://github.com/near-examples/FT)。
+
+<Accordion title="手动交互">
+
+以下是如何通过您的应用程序直接与工厂合约交互：
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+    ```js
+    import { useNearWallet } from "near-connect-hooks";
+
+    const TOKEN_FACTORY_ADDRESS = 'token.primitives.near';
+
+    const { callFunction } = useNearWallet();
+
+    const args = {
+      args: {
+        owner_id: 'bob.near',
+        total_supply: '1000000000',
+        metadata: {
+          spec: 'ft-1.0.0',
+          name: 'Test Token',
+          symbol: 'test',
+          icon: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+          decimals: 18,
+        },
+      },
+      account_id: 'bob.near',
+    };
+
+    await callFunction({
+      contractId: TOKEN_FACTORY_ADDRESS,
+      method: 'create_token',
+      args,
+      gas: 300000000000000,
+      deposit: '2234830000000000000000',
+    });
+    ```
+
+   了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+    ```bash
+    near call token.primitives.near create_token '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}' --gas 300000000000000 --depositYocto 2234830000000000000000000 --useAccount bob.near
+    ```
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/create-ft-via-factory.json" />
+  </Tab>
+</Tabs>
+
+您创建的 FT 将存在于账户 `<your_token_symbol>.token.primitives.near`（例如 `test.token.primitives.near`）中。
+
+</Accordion>
+
+---
+
+## 部署您自己的合约
+
+您也可以通过部署并初始化[标准 FT 合约](https://github.com/near-examples/FT)来创建同质化代币。
+
+初始化时，您需要定义代币的元数据，例如名称（如 Ethereum）、符号（如 ETH）和总供应量（如 1000 万）。您还需要定义一个 `owner`（所有者），该所有者将拥有代币的**全部总供应量**。
+
+要初始化 FT 合约，您需要先部署它，然后调用 `new` 方法定义代币的元数据。
+
+<Tabs>
+  <Tab title="🖥️ CLI">
+
+    ```bash
+    cargo near deploy build-non-reproducible-wasm <account-id> \
+      with-init-call new \
+      json-args '{
+        "owner_id": "<owner-account>",
+        "total_supply": "1000000000000000",
+        "metadata": {
+          "spec": "ft-1.0.0",
+          "name": "Example Token Name",
+          "symbol": "EXLT",
+          "decimals": 8
+        }
+      }' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain send
+    ```
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/create-ft-manually.json" />
+  </Tab>
+</Tabs>
+
+### 全局合约
+
+您可以使用我们的全局 FT 合约部署新的同质化代币——这是一个预先部署的[标准 FT 合约](https://github.com/near-examples/FT)，可供重复使用。[全局合约](../../smart-contracts/global-contracts)只需部署一次，任何账户均可复用，无需承担高额的存储成本。
+
+<Tabs>
+  <Tab title="By Account">
+
+    ```bash
+    near contract deploy <account-id> use-global-account-id ft.globals.primitives.testnet \
+      with-init-call \
+      new_default_meta \
+      json-args '{"owner_id": "<account-id>", "total_supply": "100000000000000000000000000000"}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain send
+    ```
+  </Tab>
+  <Tab title="By Hash">
+
+    ```bash
+    near contract deploy <account-id> use-global-hash 3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX \
+      with-init-call \
+      new_default_meta \
+      json-args '{"owner_id": "<account-id>", "total_supply": "100000000000000000000000000000"}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain send
+    ```
+  </Tab>
+</Tabs>
+
+<Note>
+通过**哈希**部署会创建一个永不更改的不可变合约。通过**账户 ID** 部署则创建一个可更新的合约，当所引用账户的合约更新时，该合约也会随之更新。请根据您是否希望 FT 合约可更新或永久不变来做出选择。
+</Note>
+
+---
+
+## 查询元数据
+您可以通过调用 `ft_metadata` 查询 FT 的元数据。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+  ```js
+  import { useNearWallet } from "near-connect-hooks";
+
+  const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
+
+  const { viewFunction } = useNearWallet();
+
+  await viewFunction({
+    method: 'ft_metadata',
+    args: {},
+    contractId: TOKEN_CONTRACT_ADDRESS,
+  });
+  ```
+
+  <Accordion title="示例响应">
+  <p>
+
+  ```json
+  {
+    "spec": "ft-1.0.0",
+    "name": "Ref Finance Token",
+    "symbol": "REF",
+    "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='16 24 248 248' style='background: %23000'%3E%3Cpath d='M164,164v52h52Zm-45-45,20.4,20.4,20.6-20.6V81H119Zm0,18.39V216h41V137.19l-20.6,20.6ZM166.5,81H164v33.81l26.16-26.17A40.29,40.29,0,0,0,166.5,81ZM72,153.19V216h43V133.4l-11.6-11.61Zm0-18.38,31.4-31.4L115,115V81H72ZM207,121.5h0a40.29,40.29,0,0,0-7.64-23.66L164,133.19V162h2.5A40.5,40.5,0,0,0,207,121.5Z' fill='%23fff'/%3E%3Cpath d='M189 72l27 27V72h-27z' fill='%2300c08b'/%3E%3C/svg%3E%0A",
+    "reference": null,
+    "reference_hash": null,
+    "decimals": 18
+  }
+  ```
+
+  </p>
+  </Accordion>
+
+  了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+  
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+    ```bash
+    near view token.v2.ref-finance.near ft_metadata
+    ```
+
+  <Accordion title="示例响应">
+  <p>
+
+    ```bash
+    {
+      spec: "ft-1.0.0",
+      name: "Ref Finance Token",
+      symbol: "REF",
+      icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='16 24 248 248' style='background: %23000'%3E%3Cpath d='M164,164v52h52Zm-45-45,20.4,20.4,20.6-20.6V81H119Zm0,18.39V216h41V137.19l-20.6,20.6ZM166.5,81H164v33.81l26.16-26.17A40.29,40.29,0,0,0,166.5,81ZM72,153.19V216h43V133.4l-11.6-11.61Zm0-18.38,31.4-31.4L115,115V81H72ZM207,121.5h0a40.29,40.29,0,0,0-7.64-23.66L164,133.19V162h2.5A40.5,40.5,0,0,0,207,121.5Z' fill='%23fff'/%3E%3Cpath d='M189 72l27 27V72h-27z' fill='%2300c08b'/%3E%3C/svg%3E%0A",
+      reference: null,
+      reference_hash: null,
+      decimals: 18
+    }
+    ```
+  </p>
+  </Accordion>
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/query-ft-metadata.json" />
+  </Tab>
+</Tabs>
+
+---
+
+## 查询余额
+要了解用户持有多少代币，您需要查询 `ft_balance_of` 方法。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+  <Info>
+  请注意同质化代币的精度。您可能需要使用该值，以便在应用程序中以用户易于理解的方式显示余额查询结果。获取精度值（decimals）的方法请参见[此处](#querying-metadata)。
+  </Info>
+
+  ```js
+  import { useNearWallet } from "near-connect-hooks";
+
+  const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
+
+  const { viewFunction } = useNearWallet();
+
+  await viewFunction({
+    method: 'ft_balance_of',
+    args: {
+      account_id: 'bob.near',
+    },
+    contractId: TOKEN_CONTRACT_ADDRESS,
+  });
+  ```
+
+  <Accordion title="示例响应">
+  <p>
+
+  ```json
+  "3479615037675962643842"
+  ```
+
+  </p>
+  </Accordion>
+
+  了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+  ```bash
+  near view token.v2.ref-finance.near ft_balance_of '{"account_id": "bob.near"}'
+  ```
+
+  <Accordion title="示例响应">
+  <p>
+
+  ```bash
+  '376224322825327177426'
+  ```
+  </p>
+  </Accordion>
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/check-ft-balance.json" />
+  </Tab>
+</Tabs>
+
+---
+
+## 注册用户
+用户若要持有和转移代币，首先需要在合约中**注册**。注册方式是调用 `storage_deposit` 并附上 0.00125Ⓝ。
+
+通过调用 `storage_deposit`，用户可以注册自己或**替其他用户注册**。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+  ```js
+  import { useNearWallet } from "near-connect-hooks";
+
+  const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
+
+  const { callFunction } = useNearWallet();
+
+  await callFunction({
+    contractId: TOKEN_CONTRACT_ADDRESS,
+    method: 'storage_deposit',
+    args: {
+      account_id: 'alice.near',
+    },
+    deposit: 1250000000000000000000,
+  });
+  ```
+
+  了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+  ```bash
+  near call token.v2.ref-finance.near storage_deposit '{"account_id": "alice.near"}' --depositYocto 1250000000000000000000 --useAccount bob.near
+  ```
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/register-user.json" />
+  </Tab>
+</Tabs>
+
+<Info>
+您可以通过调用 `storage_balance_of` 确认用户已成功注册。
+</Info>
+
+<Tip>
+用户调用 `storage_deposit` 后，FT 将出现在其钱包中。
+</Tip>
+
+---
+
+## 转移代币
+要将 FT 发送给其他账户，您需要使用 `ft_transfer` 方法，指定接收者和要发送的 FT 数量。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+    
+  ```js
+  import { useNearWallet } from "near-connect-hooks";
+
+  const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
+
+  const { callFunction } = useNearWallet();
+
+  await callFunction({
+    contractId: TOKEN_CONTRACT_ADDRESS,
+    method: 'ft_transfer',
+    args: {
+      receiver_id: 'alice.near',
+      amount: '100000000000000000',
+    },
+    deposit: 1,
+  });
+  ```
+
+  了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+    ```bash
+    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "alice.near", "amount": "100000000000000000"}' --depositYocto 1 --useAccount bob.near
+    ```
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/transfer-tokens.json" />
+  </Tab>
+  <Tab title="📄 Contract">
+    
+  ```rust
+  #[near]
+  impl Contract {
+    #[payable]
+    pub fn send_tokens(&mut self, receiver_id: AccountId, amount: U128) -> Promise {
+      assert_eq!(env::attached_deposit(), 1, "Requires attached deposit of exactly 1 yoctoNEAR");
+
+      let promise = ext(self.ft_contract.clone())
+        .with_attached_deposit(YOCTO_NEAR)
+        .ft_transfer(receiver_id, amount, None);
+
+      return promise.then( // Create a promise to callback query_greeting_callback
+        Self::ext(env::current_account_id())
+        .with_static_gas(Gas(30*TGAS))
+        .external_call_callback()
+      )
+    }
+
+    #[private] // Public - but only callable by env::current_account_id()
+    pub fn external_call_callback(&self, #[callback_result] call_result: Result<(), PromiseError>) {
+      // Check if the promise succeeded
+      if call_result.is_err() {
+        log!("There was an error contacting external contract");
+      }
+    }
+  }
+  ```
+
+  _此代码片段假设合约已持有一些 FT，并且您希望将其发送给其他账户。_
+  </Tab>
+</Tabs>
+
+---
+
+## 将 FT 附加到调用
+
+原生情况下，只有 NEAR 代币（Ⓝ）可以附加到函数调用中。然而，FT 标准允许通过以 FT 合约为中介的方式**将同质化代币附加**到调用中。
+
+这意味着您不是直接将代币附加到调用中，而是请求 FT 合约代表您同时执行转账和函数调用。
+
+假设您需要在 [Ref Finance](https://rhea.finance/) 上存入 FT。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+  ```js
+  import { useNearWallet } from "near-connect-hooks";
+
+  const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
+
+  const { callFunction } = useNearWallet();
+
+  await callFunction({
+    contractId: TOKEN_CONTRACT_ADDRESS,
+    method: 'ft_transfer_call',
+    args: {
+      receiver_id: 'v2.ref-finance.near',
+      amount: '100000000000000000',
+      msg: '',
+    },
+    gas: 300000000000000,
+    deposit: 1,
+  });
+  ```
+
+  <Accordion title="示例响应">
+  <p>
+
+  ```json
+  "100000000000000000"
+  ```
+
+  </p>
+  </Accordion>
+
+  了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+  ```bash
+  near call token.v2.ref-finance.near ft_transfer_call '{"receiver_id": "v2.ref-finance.near", "amount": "100000000000000000", "msg": ""}' --gas 300000000000000 --depositYocto 1 --useAccount bob.near
+  ```
+
+  <Accordion title="示例响应">
+  <p>
+
+  ```bash
+  '100000000000000000'
+  ```
+
+  </p>
+  </Accordion>
+
+  </Tab>
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/attach-ft-to-call.json" />
+  </Tab>
+  <Tab title="📄 Contract">
+
+  ```rust
+  #[payable]
+  pub fn call_with_attached_tokens(&mut self, receiver_id: AccountId, amount: U128) -> Promise {
+    assert_eq!(env::attached_deposit(), 1, "Requires attached deposit of exactly 1 yoctoNEAR");
+
+    let promise = ext(self.ft_contract.clone())
+      .with_static_gas(Gas(150*TGAS))
+      .with_attached_deposit(YOCTO_NEAR)
+      .ft_transfer_call(receiver_id, amount, None, "".to_string());
+
+    return promise.then( // Create a promise to callback query_greeting_callback
+      Self::ext(env::current_account_id())
+      .with_static_gas(Gas(100*TGAS))
+      .external_call_callback()
+    )
+  }
+  ```
+  </Tab>
+</Tabs>
+
+工作原理：
+
+1. 您调用 FT 合约的 `ft_transfer_call`，传入接收者、消息和数量。
+2. FT 合约将数量转入接收者账户。
+3. FT 合约调用 `receiver.ft_on_transfer(sender, msg, amount)`。
+4. FT 合约在 `ft_resolve_transfer` 回调中处理错误。
+5. FT 合约返回实际使用的附加数量。
+
+---
+
+## 处理存款
+
+如果您希望合约处理 FT 存款，您需要实现 `ft_on_transfer` 方法。执行时，该方法将获知：
+
+- 哪种 FT 被转入，因为它是前驱账户。
+- 谁在发送 FT，因为它是参数。
+- 转入了多少 FT，因为它是参数。
+- 是否有任何编码为消息的参数。
+
+`ft_on_transfer` 必须返回**需要退还**的 FT 数量，FT 合约会将其返还给发送者。
+
+以下是来自我们[拍卖教程](../../web3-apps/tutorials/mastering-near/3.2-ft)的示例，其中实现了 `ft_on_transfer` 来处理 FT 出价：
+
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L56-L87"
+        start="56" end="87" />
+
+_注意：[`near_contract_standards::fungible_token::receiver`](https://docs.rs/near-contract-standards/latest/near_contract_standards/fungible_token/receiver/trait.FungibleTokenReceiver.html) 模块提供了一个 `FungibleTokenReceiver` 特征，您可以在合约中实现它_
+
+---
+
+## 销毁代币
+
+虽然 FT 标准没有定义 `burn` 方法，但您可以直接将代币转入无人控制的账户，例如 [`0000000000000000000000000000000000000000000000000000000000000000`](https://nearblocks.io/es/address/0000000000000000000000000000000000000000000000000000000000000000)（64 个零）。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+    
+  ```js
+  import { useNearWallet } from "near-connect-hooks";
+
+  const { callFunction } = useNearWallet();
+
+  await callFunction({
+    contractId: 'token.v2.ref-finance.near',
+    method: 'ft_transfer',
+    args: {
+      receiver_id: '0000000000000000000000000000000000000000000000000000000000000000',
+      amount: '100000000000000000',
+    },
+    deposit: 1,
+  });
+  ```
+
+  了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+    ```bash
+    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "0000000000000000000000000000000000000000000000000000000000000000", "amount": "100000000000000000"}' --depositYocto 1 --useAccount bob.near
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## 其他资源
+
+1. [NEP-141 标准](https://github.com/near/NEPs/tree/master/neps/nep-0141.md)
+2. [NEP-148 标准](https://github.com/near/NEPs/tree/master/neps/nep-0148.md)
+3. [FT 事件标准](https://github.com/near/NEPs/blob/master/neps/nep-0300.md)
+4. [FT 参考实现](https://github.com/near-examples/FT)
+5. [同质化代币 101](../../smart-contracts/tutorials/zero-to-hero/fts) - 一套涵盖如何使用 Rust 创建 FT 合约的教程。

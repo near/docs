@@ -1,0 +1,116 @@
+---
+title: BigQuery 公共数据集
+sidebarTitle: BigQuery
+description: "了解如何使用 NEAR 协议的 BigQuery 公共数据集进行区块链数据分析，包括查询链上数据、了解费用以及访问历史交易数据。"
+---
+
+本文档介绍了 BigQuery 公共数据集的概览，该数据集允许用户查询 NEAR 协议的历史链上数据。内容包括设置说明、示例查询以及可用数据结构的相关信息。
+
+# NEAR 公共数据湖
+
+NEAR 公共数据湖中的区块链数据索引适合所有希望深入了解区块链数据的人。这包括：
+
+- **用户**：创建查询，大规模追踪 NEAR 资产、监控交易或分析链上事件。
+- **研究人员**：将索引数据用于数据科学任务，包括链上活动分析、趋势识别，或为 AI/ML 管道提供预测分析数据。
+- **初创企业**：可利用 NEAR 的索引数据深入洞察用户参与度、智能合约使用情况，或跨代币和 NFT 采用情况的洞察。
+
+优势：
+
+- **NEAR 即时洞察**：大规模查询历史链上数据。
+- **经济高效**：无需存储和处理大量 NEAR 协议数据；可按需查询任意数量的数据。
+- **易于使用**：无需区块链技术背景；只需掌握基本 SQL 知识即可获取洞察。
+
+## 快速开始
+
+1. 登录您的 [Google Cloud 账户](https://console.cloud.google.com/)。
+2. 打开 [NEAR 协议 BigQuery 公共数据集](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=crypto_near_mainnet_us&page=dataset)。
+3. 点击 <kbd>VIEW DATASET</kbd> 按钮。
+4. 点击 <kbd>+</kbd> 创建新标签页，编写您的查询，点击 <kbd>RUN</kbd> 按钮，在查询下方查看 `Query results`。
+5. 完成 :)
+
+<Info>
+
+[NEAR 公共数据湖仓库](https://github.com/near/near-public-lakehouse) 包含用于摄取 NEAR 协议数据的源代码，这些数据由 [NEAR Lake Indexer](https://github.com/near/near-lake-indexer) 以 JSON 文件形式存储在 AWS S3 中。
+
+</Info>
+
+### 示例查询
+
+- _每天有多少唯一签名者和账户与我的智能合约交互？_
+
+```sql
+SELECT
+  ra.block_date collected_for_day,
+  COUNT(DISTINCT t.signer_account_id) as total_signers,
+  COUNT(DISTINCT ra.receipt_predecessor_account_id) as total_accounts
+FROM `bigquery-public-data.crypto_near_mainnet_us.receipt_actions` ra
+  JOIN `bigquery-public-data.crypto_near_mainnet_us.receipt_origin_transaction` ro ON ro.receipt_id = ra.receipt_id
+  JOIN `bigquery-public-data.crypto_near_mainnet_us.transactions` t ON ro.originated_from_transaction_hash = t.transaction_hash
+WHERE ra.action_kind = 'FUNCTION_CALL'
+  AND ra.receipt_receiver_account_id = 'social.near' -- 替换为您的合约
+GROUP BY 1
+ORDER BY 1 DESC;
+```
+
+## 费用是多少？
+
+- NEAR 支付存储费用，不向您收取使用公共数据集的费用。
+  > 如需了解更多关于 BigQuery 公共数据集的信息，请[查看此页面](https://cloud.google.com/bigquery/public-data)。
+- Google GCP 会对您对数据执行的查询收费。例如，以今天（"2023年9月1日"）的价格为例，按需（每 TB）查询定价为每 TB $6.25，每月前 1 TB 免费。
+  > 请查看 [Google 定价页面](https://cloud.google.com/bigquery/pricing#analysis_pricing_models) 了解详细定价信息、选项和最佳实践。
+
+<Tip>
+您可以在 BigQuery 控制台 UI 中运行查询前查看将查询多少数据。同样，由于 BigQuery 使用列式数据结构和分区，建议仅选择所需的列和分区（`block_date`），以避免不必要的查询费用。
+</Tip>
+
+![查询费用](/assets/docs/data-infrastructure/BQ_Query_Cost.png "BQ 查询费用")
+
+## 架构
+
+数据使用 [Databricks Autoloader](https://docs.gcp.databricks.com/ingestion/auto-loader/index.html) 以流式方式加载到原始/铜层表中，并通过 [Databricks Delta Live Tables](https://www.databricks.com/product/delta-live-tables) 流式作业转换为清洗/丰富/银层表。
+
+银层表也会复制到 [GCP BigQuery 公共数据集](https://cloud.google.com/bigquery/public-data)。
+
+![架构](/assets/docs/data-infrastructure/Architecture.png "架构")
+
+<Info>
+
+[Databricks 奖章架构](https://www.databricks.com/glossary/medallion-architecture)。
+
+</Info>
+
+## 可用数据
+
+NEAR 目前提供的数据受 [NEAR Indexer for Explorer](https://github.com/near/near-indexer-for-explorer/) 的启发。
+
+<Info>
+NEAR 计划通过对部分表进行非规范化处理来改善 NEAR 公共数据湖中的可用数据，使其更易于使用。
+</Info>
+
+NEAR 公共数据湖中可用的表包括：
+
+- **blocks（区块）**：表示 NEAR 区块链中完整区块的结构。`Block`（区块）是 NEAR 协议区块链中的主要实体。NEAR 协议每秒产生一个区块。
+- **chunks（分块）**：表示 NEAR 区块链中分块的结构。`Block`（区块）的 `Chunk`（分块）是来自 `Shard`（分片）的 `Block` 的一部分。`Block` 的 `Chunks` 集合构成 NEAR 协议区块。`Chunk` 包含构成 `Block` 的所有结构：`Transactions`（交易）、[`Receipts`](https://nomicon.io/RuntimeSpec/Receipts)（收据）和 `Chunk Header`（分块头）。
+- **transactions（交易）**：`Transaction`（交易）是用户与区块链交互的主要方式。交易包含：签名者账户 ID、接收者账户 ID 和操作。
+- **execution_outcomes（执行结果）**：执行结果是执行 `Transaction`（交易）或 `Receipt`（收据）的结果。交易执行的结果始终会产生一个收据。
+- **receipt_details（收据详情）**：Near 中所有跨合约（假设每个账户存在于其自己的分片中）通信都通过收据进行。收据是有状态的，它们不仅作为账户之间的消息，还可以存储在账户存储中以等待 `DataReceipts`。每个收据都有一个 `predecessor_id`（发送者）和 `receiver_id`（当前账户）。
+- **receipt_origin（收据来源）**：追踪产生该收据的交易。
+- **receipt_actions（收据操作）**：操作收据表示在 `receiver_id` 端应用操作的请求。它可以作为 `Transaction`（交易）执行或另一个 `ACTION` 收据处理的结果产生。操作类型可以是：`ADD_KEY`、`CREATE_ACCOUNT`、`DELEGATE_ACTION`、`DELETE_ACCOUNT`、`DELETE_KEY`、`DEPLOY_CONTRACT`、`FUNCTION_CALL`、`STAKE`、`TRANSFER`。
+- **receipts（收据视图）**：建议仅选择所需的列和分区（`block_date`），以避免不必要的查询费用。此视图连接了收据详情、产生该收据的交易以及收据执行结果。
+- **account_changes（账户变更）**：每个账户都有一个关联状态，存储其元数据和所有与合约相关的数据（合约代码 + 存储）。
+
+<Info>
+**关于数据的补充说明**
+
+- 跳过的区块：NEAR 区块链可能包含跳过的区块，例如区块 `57730443`。对于这些情况，我们可以使用 `prev_block_hash` 列查找分块数据对应的区块，例如 `SELECT * FROM chunks c JOIN blocks b ON c.chunk.header.prev_block_hash = b.header.prev_hash`。
+
+</Info>
+
+<Note>
+**参考资料**
+
+- [协议文档](/getting-started/what-is-near)
+- [Near 数据流](/protocol/data-flow/near-data-flow)
+- [协议规范](https://nomicon.io/)
+
+</Note>

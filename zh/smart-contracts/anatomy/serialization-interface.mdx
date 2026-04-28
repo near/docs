@@ -1,0 +1,151 @@
+---
+title: 序列化协议
+description: "了解智能合约用于序列化数据的协议。"
+---
+
+import {Github} from '/snippets/github.jsx';
+
+SDK 中的序列化格式定义了数据结构如何转换为字节，这些字节用于将数据传递到智能合约的方法中或在状态中存储数据。对于方法参数，SDK 支持 [JSON](https://www.json.org/json-en.html)（默认）和 [Borsh](https://borsh.io/)，对于在链上存储数据则使用 Borsh。
+
+JSON 和 Borsh 的特性如下：
+
+JSON：
+- 人类可读
+- 自描述格式（不需要知道底层类型）
+- 与 JavaScript 的互操作性好
+- 大小和（反）序列化效率较低
+
+Borsh：
+- 紧凑的二进制格式，对序列化数据大小有效
+- 需要知道数据格式或有 schema 才能反序列化数据
+- 严格且规范的二进制表示
+- 大多数情况下速度快且开销少
+
+一般来说，JSON 用于合约调用和跨合约调用以获得更好的开发体验，而 Borsh 可用于通过减小参数序列化大小和降低合约内的反序列化计算来优化 gas 使用。
+
+### 覆盖序列化协议默认值
+
+结果和参数序列化可以分别选择，但所有参数必须采用相同格式（不能将某些参数序列化为 borsh，其他参数序列化为 JSON）。将结果和参数都切换到 borsh 的示例如下：
+
+```rust
+#[result_serializer(borsh)]
+pub fn sum_borsh(#[serializer(borsh)] a: u32, #[serializer(borsh)] b: u32) -> u32 {
+    a + b
+}
+```
+
+`result_serializer(borsh)` 注解将覆盖默认的结果序列化协议从 JSON 到 borsh，`serializer(borsh)` 注解将覆盖参数序列化。
+
+#### 示例
+
+从单元测试中获取 [Borsh 序列化](https://borsh.io)的 base64 编码值的简单演示：
+
+<Github language="rust" start="93" end="104" url="https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs" />
+
+以下代码片段显示了一个简单函数，从前端或 CLI 接受此值。注意：此方法没有返回值，因此不需要 `#[result_serializer(borsh)]`。
+
+<Github language="rust" start="40" end="42" url="https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs" />
+
+请注意，这使用了这个简单结构体：
+
+<Github language="rust" start="13" end="17" url="https://github.com/mikedotexe/rust-status-message/blob/b83c5126fdbe0f19bc904e547fda0bb12c2ea133/src/lib.rs" />
+
+使用 NEAR CLI 调用时，使用类似以下的命令：
+
+```bash
+near contract call-function as-transaction rust-status-message.demo.testnet set_status_borsh base64-args 'DAAAAEFsb2hhIGhvbnVhIQ==' prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as demo.testnet network-config testnet sign-with-keychain send
+```
+
+详情请参见[此 GitHub gist](https://gist.github.com/mfornet/d8a94af333a68d67affd8cb78464c7c0)，由 [Marcelo](https://gist.github.com/mfornet) 提供。
+
+### JSON 包装类型
+
+为了帮助将某些具有意外或低效默认格式的类型序列化为 JSON，[`near_sdk::json_types`](https://docs.rs/near-sdk/3.1.0/near_sdk/json_types/index.html) 中有一些包装类型可供使用。
+
+由于 JavaScript 仅支持最大值为 `2^53 - 1` 的整数，如果反序列化超过此范围的 JSON 整数，您将失去精度。为了解决此问题，您可以使用 `I64`、`U64`、`I128` 和 `U128` 代替这些参数或结果的原生类型，以将值序列化为字符串。默认情况下，所有整数类型都将在 JSON 中序列化为整数。
+
+您可以使用 `std::convert::Into` 在 `U64` 和 `u64` 之间转换，例如：
+
+```rust
+#[near]
+impl Contract {
+    pub fn mult(&self, a: U64, b: U64) -> U128 {
+        let a: u64 = a.into();
+        let b: u64 = b.into();
+        let product = u128::from(a) * u128::from(b);
+        product.into()
+    }
+}
+```
+
+您也可以使用 `.0` 访问内部值：
+
+```diff
+ #[near]
+ impl Contract {
+     pub fn mult(&self, a: U64, b: U64) -> U128 {
+-        let a: u64 = a.into();
++        let a = a.0;
+-        let b: u64 = b.into();
++        let b = b.0;
+         let product = u128::from(a) * u128::from(b);
+         product.into()
+     }
+ }
+```
+
+您可以使用 `U64(...)` 和 `U128(...)` 将小写 `u` 变体转换为大写 `U` 变体：
+
+```diff
+ #[near]
+ impl Contract {
+     pub fn mult(&self, a: U64, b: U64) -> U128 {
+         let a = a.0;
+         let b = b.0;
+         let product = u128::from(a) * u128::from(b);
+-        product.into()
++        U128(product)
+     }
+ }
+```
+
+组合在一起：
+
+```rust
+#[near]
+impl Contract {
+    pub fn mult(&self, a: U64, b: U64) -> U128 {
+        U128(u128::from(a.0) * u128::from(b.0))
+    }
+}
+```
+
+虽然 SDK 中包含了这些 JSON 包装类型，但可以使用任何自定义类型，只要它分别实现了 [`serde`](https://serde.rs/) 的序列化和反序列化。所有这些类型只是覆盖 JSON 格式，内部类型的 `borsh` 序列化和反序列化将保持一致。
+
+### Base64VecU8
+
+另一个您可能想要覆盖默认序列化的类型示例是 `Vec<u8>`，它在 Rust 中表示字节。默认情况下，这会序列化为整数数组，既不紧凑也难以使用。有一个包装类型 [`Base64VecU8`](https://docs.rs/near-sdk/3.1.0/near_sdk/json_types/struct.Base64VecU8.html)，它序列化和反序列化为 [Base-64](https://en.wikipedia.org/wiki/Base64) 字符串，以实现更紧凑的 JSON 序列化。
+
+示例如下：
+
+```rust
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    // 注意，内部我们存储 `Vec<u8>` 
+    pub data: Vec<u8>,
+}
+
+#[near]
+impl Contract {
+    #[init]
+    pub fn new(data: Base64VecU8) -> Self {
+        Self {
+            data: data.into(),
+        }
+    }
+    pub fn get_data(self) -> Base64VecU8 {
+        self.data.into()
+    }
+}
+```

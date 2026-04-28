@@ -1,0 +1,332 @@
+---
+title: 复杂跨合约调用
+description: "批量操作、并行操作和回调处理。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+此示例展示了 NEAR 区块链上复杂跨合约调用的 3 个实例，展示了如何批量多次函数调用到同一合约、并行调用多个合约以及在回调中处理响应。它包括智能合约和前端组件。
+
+<Info>
+**简单跨合约调用**
+
+查看关于如何使用[简单跨合约调用](/smart-contracts/tutorials/cross-contracts/xcc)的教程
+
+</Info>
+
+---
+
+## 获取跨合约调用示例
+
+您有两种方式启动捐款示例：
+
+1. 您可以通过 `Github Codespaces` 使用应用程序，这将打开一个基于 Web 的交互式环境。
+2. 在本地克隆存储库并从您的计算机中使用它。
+
+| Codespaces                                                                                                                      | 本地克隆                                               |
+| ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/near-examples/cross-contract-calls?quickstart=1) | 🌐 `https://github.com/near-examples/cross-contract-calls` |
+
+---
+
+## 示例结构
+
+智能合约有两种版本：Rust 和 JavaScript
+
+<Tabs>
+
+  <Tab title="🌐 JavaScript">
+
+```bash
+┌── sandbox-ts # sandbox testing
+│    ├── external-contracts
+│    │    ├── counter.wasm
+│    │    ├── guest-book.wasm
+│    │    └── hello-near.wasm
+│    └── main.ava.ts
+├── src # contract's code
+│    ├── internal
+│    │    ├── batch_actions.ts
+│    │    ├── constants.ts
+│    │    ├── multiple_contracts.ts
+│    │    ├── similar_contracts.ts
+│    │    └── utils.ts
+│    └── contract.ts
+├── package.json
+├── README.md
+└── tsconfig.json
+```
+
+  </Tab>
+
+  <Tab title="🦀 Rust">
+
+```bash
+┌── tests # sandbox testing
+│    ├── external-contracts
+│    │    ├── counter.wasm
+│    │    ├── guest-book.wasm
+│    │    └── hello-near.wasm
+│    └── main.ava.ts
+├── src # contract's code
+│    ├── batch_actions.rs
+│    ├── lib.rs
+│    ├── multiple_contracts.rs
+│    └── similar_contracts.rs
+├── Cargo.toml # package manager
+├── README.md
+└── rust-toolchain.toml
+```
+
+  </Tab>
+
+</Tabs>
+
+---
+
+## 智能合约
+
+### 批量操作
+
+您可以将针对同一合约的多个操作聚合到一个批量交易中。
+以这种方式调用的方法按顺序执行，额外的好处是，如果一个失败，
+则**所有都会被回滚**。
+
+<CodeGroup>
+  <Github fname="contract.ts"
+          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+          start="38" end="41" />
+    <Github fname="batch_actions.ts"
+          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
+          start="5" end="17" />
+  <Github fname="batch_actions.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
+            start="8" end="20" />
+</CodeGroup>
+
+#### 获取最后一个响应
+
+在这种情况下，回调可以访问链中**最后一个操作**返回的值。
+
+<CodeGroup>
+  <Github fname="contract.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="43" end="46" />
+    <Github fname="batch_actions.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
+      start="19" end="29" />
+    <Github fname="utils.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
+      start="3" end="20" />
+  <Github fname="batch_actions.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
+            start="22" end="35" />
+</CodeGroup>
+
+---
+
+### 调用多个合约
+
+一个合约可以调用多个其他合约。这会创建多个并行执行的交易。
+如果其中一个失败，其余的**不会被回滚**。
+
+<CodeGroup>
+  <Github fname="contract.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="48" end="51" />
+    <Github fname="multiple_contracts.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
+      start="6" end="21" />
+  <Github fname="multiple_contracts.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
+            start="16" end="55" />
+</CodeGroup>
+
+#### 获取所有响应
+
+在这种情况下，回调可以访问一个**响应数组**，其中包含每个调用返回的值或错误消息。
+
+<CodeGroup>
+  <Github fname="contract.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="53" end="58" />
+    <Github fname="multiple_contracts.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
+      start="24" end="41" />
+    <Github fname="utils.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
+      start="3" end="20" />
+  <Github fname="multiple_contracts.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
+            start="58" end="92" />
+</CodeGroup>
+
+---
+
+### 多次调用 - 相同结果类型
+
+此示例是前一个的特殊情况（[调用多个合约](#calling-multiple-contracts)）。
+它简单地展示了通过直接访问 `promise_result` 数组来检查结果的不同方式。
+
+在这种情况下，我们调用将返回相同类型的多个合约：
+
+<CodeGroup>
+  <Github fname="contract.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="65" end="70" />
+    <Github fname="similar_contracts.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
+      start="6" end="35" />
+  <Github fname="similar_contracts.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
+            start="8" end="31" />
+</CodeGroup>
+
+#### 获取所有响应
+
+在这种情况下，回调再次可以访问一个**响应数组**，我们可以遍历它来检查结果。
+
+<CodeGroup>
+  <Github fname="contract.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
+      start="62" end="65" />
+    <Github fname="similar_contracts.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
+      start="37" end="54" />
+    <Github fname="utils.ts"
+      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
+      start="3" end="20" />
+  <Github fname="similar_contracts.rs"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
+            start="32" end="57" />
+</CodeGroup>
+
+---
+
+### 测试合约
+
+合约已经包含一套单元测试和沙盒测试来验证其功能。要执行测试，请运行以下命令：
+
+<Tabs>
+  <Tab title="🌐 JavaScript">
+
+  ```bash
+  cd contract-advanced-ts
+  yarn
+  yarn test
+  ```
+
+  </Tab>
+  <Tab title="🦀 Rust">
+  
+  ```bash
+  cd contract-advanced-rs
+  cargo test
+  ```
+
+  </Tab>
+
+</Tabs>
+
+<Tip>
+`集成测试`使用沙盒创建 NEAR 用户并模拟与合约的交互。
+</Tip>
+
+### 将合约部署到 NEAR 网络
+
+要部署合约，您需要创建一个 NEAR 账户。
+
+<Tabs>
+  <Tab title="简短">
+
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near create-account <accountId> --useFaucet
+  ```
+  </Tab>
+
+  <Tab title="完整">
+
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+  ```
+  </Tab>
+</Tabs>
+
+进入包含智能合约的目录（`cd contract-advanced-ts` 或 `cd contract-advanced-rs`），构建并部署它：
+
+<Tabs>
+
+  <Tab title="🌐 JavaScript">
+
+    ```bash
+    npm run build
+    near deploy <accountId> ./build/cross_contract.wasm --initFunction new --initArgs '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}'
+    ```
+
+  </Tab>
+  <Tab title="🦀 Rust">
+  
+  ```bash
+  cargo near deploy build-non-reproducible-wasm <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+  ```
+
+  </Tab>
+
+</Tabs>
+
+### CLI：与合约交互
+
+要通过控制台与合约交互，可以使用以下命令：
+
+<Tabs>
+  <Tab title="简短">
+  
+  ```bash
+  # Execute contracts sequentially
+  # Replace <accountId> with your account ID
+  near call <accountId> batch_actions --useAccount <accountId> --gas 300000000000000   
+
+  # Execute contracts in parallel
+  # Replace <accountId> with your account ID
+  near call <accountId>  multiple_contracts --useAccount <accountId> --gas 300000000000000   
+
+  # Execute multiple instances of the same contract in parallel
+  # Replace <accountId> with your account ID
+  near call <accountId> similar_contracts --useAccount <accountId> --gas 300000000000000
+  ```
+  </Tab>
+
+  <Tab title="完整">
+  
+  ```bash
+  # Execute contracts sequentially
+  # Replace <accountId> with your account ID
+  near contract call-function as-transaction <accountId> batch_actions json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+
+  # Execute contracts in parallel
+  # Replace <accountId> with your account ID
+  near contract call-function as-transaction <accountId> multiple_contracts json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+
+  # Execute multiple instances of the same contract in parallel
+  # Replace <accountId> with your account ID
+  near contract call-function as-transaction <accountId> similar_contracts json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <accountId> network-config testnet sign-with-keychain send
+  ```
+  </Tab>
+</Tabs>
+
+<Info>
+如果您在某些时候收到"Exceeded the prepaid gas"错误，请尝试增加调用其他合约时函数内使用的 gas 量
+</Info>
+
+<Note>
+**本文版本信息**
+
+在撰写本文时，此示例适用于以下版本：
+
+- near-cli: `4.0.13`
+- node: `18.19.1`
+- rustc: `1.77.0`
+
+</Note>

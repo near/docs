@@ -1,0 +1,52 @@
+---
+title: "Abstract DAO：签名"
+description: "了解如何为不同链签署 Abstract DAO 请求，并将其中继到目标 EVM 网络。"
+---
+
+在上一节中，我们看到了如何在 Abstract DAO 合约上注册签名请求。现在，是时候为不同链签署交易并将其中继到目标 EVM 网络了。
+
+---
+
+## 签署交易
+
+要为特定链签署交易，授权账户需要调用 `get_signature` 函数，传递 `request_id`（在上一节中生成）以及完成创建交易签名所需的所有必要信息。
+
+例如，要为 Sepolia 测试网签署交易，可以使用以下命令：
+
+```bash
+near contract call-function as-transaction abstract-dao.testnet get_signature json-args '{
+    "request_id": 1,
+    "other_payload": {
+        "chain_id": 11155111,
+        "max_fee_per_gas": "1000000000",
+        "max_priority_fee_per_gas": "100000000"
+    }
+}' prepaid-gas '300.0 Tgas' attached-deposit '0.05 NEAR' sign-as executor.testnet network-config testnet
+```
+
+请注意，我们现在指定的是 `chain_id`（用于标识目标链）、`max_fee_per_gas` 和 `max_priority_fee_per_gas`（用于设置交易费用）。
+
+被授权调用 `get_signature` 的账户——在本例中为 `executor.testnet`——除了按每条链设置 Gas 费用外，不能更改正在签署的交易的任何参数。
+
+---
+
+## 签名响应
+
+签名响应将如下所示：
+
+```json
+{
+  "big_r": {
+      "signature": {
+      "affine_point": "02D532992B0ECBF67800DB14E04530D9BA55609AD31213CC7ABDB554E8FDA986D3"
+    },
+    "recovery_id": 1,
+    "s": {
+      "scalar": "40E81711B8174712B9F34B2540EE0F642802387D15543CBFC84211BB04B83AC3"
+    }
+  },
+  "tx": "0x02f85083aa36a702850485034c878517a4eb0789829dd094e2a01146fffc8432497ae49a7a6cba5b9abd71a380a460fe47b1000000000000000000000000000000000000000000000000000000000000a84bc0"
+}
+```
+
+如我们所见，这不是已签名的交易本身，而是我们重建它所需的数据。我们创建了一个[脚本](https://github.com/nearuaguild/multichain-dao-scripts)来自动化这个过程，以及中继到目标 EVM 网络。

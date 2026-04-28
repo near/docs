@@ -1,0 +1,50 @@
+---
+title: 什么是链抽象？
+description: "了解 NEAR 如何让您无缝地跨所有链进行操作"
+---
+
+通过多种创新技术的结合，NEAR 使开发者能够构建跨多个区块链无缝运行的应用程序，同时为开发者和最终用户屏蔽底层的复杂性。
+
+<CardGroup cols={1}>
+  <Card title="多链账户" icon="link" href="./chain-signatures" horizontal>
+    链签名允许 NEAR 账户**以及智能合约**为所有其他链（包括比特币、以太坊和 Solana）签署交易
+  </Card>
+  <Card title="通过意图进行兑换" icon="repeat" href="./intents/overview" horizontal>
+    一个去中心化系统，用户只需**表达期望的结果**（例如"以最优价格将 BTC 换成 ETH"），解决者网络便会竞相以最优方式履行这些意图
+  </Card>
+  <Card title="OmniBridge" icon="shuffle" href="./omnibridge/overview" horizontal>
+    一个多链桥，能够实现安全高效的跨链转移。该桥既是代币工厂又是托管方，通过统一接口管理原生代币和桥接代币
+  </Card>
+</CardGroup>
+
+---
+
+## 为什么链抽象至关重要
+
+通过在 NEAR 上构建，开发者无需担心与多个区块链集成的复杂性。他们可以专注于构建能够跨所有链无缝运行的优质应用程序。
+
+与此同时，用户可以享受流畅的体验，使用统一的账户和资产，甚至无需了解自己正在哪条区块链上操作。
+
+<CardGroup cols={2}>
+  <Card title="对开发者的好处" icon="code">
+    - 通过单一的 NEAR API 与多个区块链集成
+    - 专注于应用逻辑而非区块链复杂性
+    - 覆盖用户，无论其偏好哪个区块链网络
+  </Card>
+  <Card title="对用户的好处" icon="user">
+    - 使用单一 NEAR 账户跨所有链操作
+    - 无缝访问来自多个区块链的资产和服务
+    - 享受统一且直观的用户体验
+  </Card>
+</CardGroup>
+
+<Accordion title="示例：跨链 NFT 市场">
+想象构建一个数字艺术市场，用户可以在此购买来自不同区块链（以太坊、Solana 等）的 NFT。若没有链抽象，您需要：
+
+- 实现多个区块链连接
+- 处理不同的钱包类型
+- 管理跨链转移
+- 构建复杂的用户界面来解释区块链概念
+
+有了链抽象，您和您的用户只需专注于核心体验：浏览和交易艺术品。所有区块链的复杂性都在后台自动处理。
+</Accordion>

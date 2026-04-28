@@ -1,0 +1,330 @@
+---
+title: ✅ 检查清单
+description: "安全最佳实践和常见保护措施。"
+---
+
+完成智能合约开发后，请遍历以下清单，以确保一切对终端用户都是安全的。
+
+<Info>
+查看我们的[安全文章](./introduction)，了解如何提高合约的安全性。
+</Info>
+
+---
+
+## 概述
+
+在将任何 NEAR 智能合约部署到主网之前，应审查此综合安全检查清单。每个项目都解决了可能导致漏洞、利用或资金损失的关键安全问题。
+
+---
+
+## 结构：方法可见性和访问控制
+
+### 1. 所有私有方法均已装饰为 `private`
+
+**要求**：每个只能由合约本身调用的方法都必须在 Rust 中用 `#[private]` 装饰器标记。
+
+**为什么重要**：
+- 防止未经授权的外部调用
+- 确保只有您的合约才能调用内部方法
+- 保护回调方法不被直接调用
+
+**如何验证**：
+```rust
+// ✅ 正确
+#[private]
+pub fn internal_method(&mut self) {
+    // 只有合约才能调用此方法
+}
+
+// ❌ 错误 - 缺少 #[private]
+pub fn internal_method(&mut self) {
+    // 任何人都可以调用此方法！
+}
+```
+
+---
+
+## 环境：前驱和签名者的使用
+
+### 2. `predecessor` 和 `signer` 使用正确
+
+**要求**：在整个合约中，确保使用正确的环境变量：
+- `predecessor` - 调用该方法的账户（可能是合约）
+- `signer` - 签署交易的账户（始终是人/账户）
+
+**为什么重要**：
+- 使用错误的变量可能允许未经授权的访问
+- 对访问控制和授权至关重要
+- 影响谁可以执行敏感操作
+
+**常见错误**：
+- 在需要 `signer` 时使用 `predecessor`（用于用户验证）
+- 在需要 `predecessor` 时使用 `signer`（用于回调验证）
+- 在应该检查时不进行检查
+
+**如何验证**：
+```rust
+// ✅ 正确 - 检查签名者进行用户操作
+assert_eq!(env::signer_account_id(), user_id, "Unauthorized");
+
+// ✅ 正确 - 检查前驱进行回调
+assert_eq!(env::predecessor_account_id(), env::current_account_id(), "Only contract");
+```
+
+---
+
+## 存储：成本管理和数据结构
+
+### 3. 状态增长有足够的余额覆盖
+
+**要求**：每次合约状态增长（存储新数据）时，确保有足够的合约余额来支付存储成本。存储成本通常由存储数据的用户承担（例如，当铸造新 NFT 时）。
+
+**为什么重要**：
+- 防止存储耗尽攻击
+- 确保合约可以继续运行
+- 避免因余额不足导致的交易失败
+
+**如何验证**：
+- 计算每次状态更改的存储成本
+- 在存储数据之前检查合约余额
+- 要求用户为其存储附加存款
+- 定期监控合约余额
+
+<hr class="subsection" />
+
+### 4. 所有集合都有唯一 ID
+
+**要求**：每个集合（Vector、Map、TreeMap 等）都必须有唯一标识符，以防止冲突和数据损坏。
+
+**为什么重要**：
+- 防止不同集合的数据混合
+- 避免状态损坏
+- 确保数据完整性
+
+**如何验证**：
+```rust
+// ✅ 正确 - 唯一的集合 ID
+const USERS: StorageKey = StorageKey::new(b"users");
+const ORDERS: StorageKey = StorageKey::new(b"orders");
+
+// ❌ 错误 - 不同集合使用相同 ID
+const DATA1: StorageKey = StorageKey::new(b"data");
+const DATA2: StorageKey = StorageKey::new(b"data"); // 冲突！
+```
+
+<hr class="subsection" />
+
+### 5. 检查下溢和溢出
+
+**要求**：在 Rust 中启用溢出检查，以防止整数下溢和溢出漏洞。
+
+**为什么重要**：
+- 防止可被利用的算术错误
+- 避免整数回绕带来的意外行为
+- 对财务计算至关重要
+
+**如何验证**：
+在 `Cargo.toml` 中添加：
+```toml
+[profile.release]
+overflow-checks = true
+```
+
+**替代方案**：使用检查算术方法：
+```rust
+// ✅ 正确 - 检查算术
+let result = a.checked_add(b).expect("Overflow");
+
+// ❌ 错误 - 未检查算术
+let result = a + b; // 可能静默溢出
+```
+
+---
+
+## 操作：资金转账和基金管理
+
+### 6. 为存储成本保留足够余额
+
+**要求**：从合约发送资金时，始终保留足够的余额来覆盖持续的存储成本。
+
+**为什么重要**：
+- 防止合约变得无法使用
+- 确保合约可以继续运行
+- 避免与存储相关的交易失败
+
+**如何验证**：
+```rust
+// ✅ 正确 - 保留存储余额
+let storage_cost = self.calculate_storage_cost();
+let available = env::account_balance() - storage_cost;
+assert!(amount <= available, "Insufficient balance after storage reserve");
+Promise::new(receiver_id).transfer(amount);
+
+// ❌ 错误 - 发送所有余额
+Promise::new(receiver_id).transfer(env::account_balance()); // 什么都不剩！
+```
+
+<hr class="subsection" />
+
+### 7. 发送之前扣除用户资金
+
+**要求**：如果您在合约状态中跟踪用户资金，**始终在向用户发送资金之前从状态中扣除它们**。
+
+**为什么重要**：
+- 防止重入攻击
+- 确保状态一致性
+- 遵循检查-效果-交互模式
+
+**如何验证**：
+```rust
+// ✅ 正确 - 先扣除，然后发送
+let user_balance = self.get_balance(&user_id);
+self.set_balance(&user_id, 0); // 先扣除
+Promise::new(user_id).transfer(user_balance); // 然后发送
+
+// ❌ 错误 - 先发送，然后扣除（容易受到重入攻击）
+Promise::new(user_id).transfer(user_balance);
+self.set_balance(&user_id, 0); // 太晚了！
+```
+
+---
+
+## 回调：跨合约调用安全
+
+### 8. 所有私有回调都标记为 `private`
+
+**要求**：每个只能由您的合约调用的回调方法都必须使用 `#[private]` 装饰器。
+
+**为什么重要**：防止外部参与者直接调用您的回调并绕过安全检查。
+
+```rust
+// ✅ 正确 - 回调方法只能由合约本身调用
+#[private]
+pub fn callback_after_stake(&mut self, #[callback_result] result: Result<(), PromiseError>) {
+    match result {
+        Ok(_) => {
+            self.balances
+                .insert(self.pending_user.clone(), self.pending_amount);
+        }
+        Err(_) => {
+            // 失败时回滚状态
+        }
+    }
+}
+
+// ❌ 错误 - 没有 #[private] 的回调 - 可以直接调用
+pub fn callback_after_stake(&mut self, #[callback_result] result: Result<(), PromiseError>) {
+    // 攻击者可以调用此方法并操纵状态！
+    match result {
+        Ok(_) => {
+            self.balances
+                .insert(self.pending_user.clone(), self.pending_amount);
+        }
+        Err(_) => {
+            // 攻击者可以触发此操作来回滚合法操作
+        }
+    }
+}
+```
+
+<hr class="subsection" />
+
+### 9. 所有跨合约调用都有回调
+
+**要求**：每个跨合约调用都必须有相应的回调来处理响应。
+
+**为什么重要**：
+- 允许错误处理
+- 启用失败时的状态回滚
+- 确保异步操作的正确完成
+
+<hr class="subsection" />
+
+### 10. 回调检查错误并回滚状态
+
+**要求**：所有回调都必须检查外部调用是否成功或失败，并在调用失败时回滚任何状态更改。
+
+**为什么重要**：
+- 防止不一致的状态
+- 确保操作的原子性
+- 防范部分失败
+
+**如何验证**：
+```rust
+#[private]
+pub fn callback(&mut self, result: Result<(), String>) {
+    match result {
+        Ok(_) => {
+            // 外部调用成功，提交状态
+            self.commit_state();
+        }
+        Err(_) => {
+            // 外部调用失败，回滚状态
+            self.rollback_state();
+        }
+    }
+}
+```
+
+<hr class="subsection" />
+
+### 11. 如有必要，回调将资金退还给前驱
+
+**要求**：如果用户资金涉及到失败的跨合约调用，回调必须将资金退还给原始用户（前驱）。
+
+**为什么重要**：
+- 防止用户资金损失
+- 确保适当的退款处理
+- 维护用户信任
+
+<hr class="subsection" />
+
+### 12. 回调中没有 `panic!`
+
+**要求**：回调方法永远不应该使用 `panic!` 或导致 panic。请使用适当的错误处理代替。
+
+**为什么重要**：
+- Panic 可能会让合约处于不一致状态
+- 防止适当的错误恢复
+- 可能导致用户资金损失
+
+**如何验证**：在回调方法中搜索代码库中的 `panic!` 并用适当的错误处理替换。
+
+<hr class="subsection" />
+
+### 13. 回调有足够的 GAS
+
+**要求**：所有回调都必须分配足够的 GAS 才能完全执行，包括任何退款或状态更新。
+
+**为什么重要**：
+- 防止部分执行
+- 确保退款可以完成
+- 避免交易卡住
+
+**如何验证**：计算回调操作的 GAS 需求并确保足够的分配。
+
+<hr class="subsection" />
+
+### 14. 调用和回调之间合约不处于可被利用的状态
+
+**要求**：在跨合约调用和其回调之间，合约不得处于可被其他交易利用的状态。
+
+**为什么重要**：
+- 防止重入攻击
+- 确保状态一致性
+- 防范竞争条件
+
+**如何验证**：审查状态更改——确保关键更新发生在回调中，而不是在外部调用之前。
+
+---
+
+## 其他安全考虑
+
+除此清单外，还要考虑：
+
+- **输入验证** - 验证所有用户输入
+- **访问控制** - 验证调用者权限
+- **经济安全** - 确保经济激励是正确的
+- **测试** - 全面的测试覆盖
+- **代码审查** - 外部安全审查
+- **监控** - 部署后监控

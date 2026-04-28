@@ -1,0 +1,30 @@
+---
+title: 锁定账户
+description: "了解如何锁定 NEAR 智能合约以防止未经授权的修改，并在需要时确保合约不可变性。"
+---
+
+在 NEAR 中，您可以通过删除账户的所有[完全访问密钥](/tools/cli#delete-key)来锁定账户。这对于防止以账户名义执行任何进一步的交易非常有用，从而有效地锁定账户。
+
+从账户中删除所有[完全访问密钥](/tools/cli#delete-key)将有效地**锁定它**。
+
+当账户被锁定时，任何人都无法以该账户的名义执行交易（例如更新代码或转移资金）。
+
+#### 如何锁定账户
+
+```bash
+near list-keys <dev-account>
+# result: [access_key: {"nonce": ..., "public_key": '<key>'}]
+
+near delete-key <dev-account> '<key>'
+```
+
+#### 为什么要锁定账户
+
+锁定账户可以给终端用户更多保障，因为他们知道没有外部参与者能够操纵账户的合约或余额。
+
+<Tip>
+**升级锁定的合约**
+
+虽然没有外部参与者可以更新合约，但合约**仍然可以自我升级**，详情请参见[此文章](/smart-contracts/release/upgrade#programmatic-update)。
+
+</Tip>

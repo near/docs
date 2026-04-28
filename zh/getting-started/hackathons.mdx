@@ -1,0 +1,171 @@
+---
+title: 在 NEAR 上构建
+sidebarTitle: 黑客松指南
+icon: laptop
+description: 精选资源，帮助您快速开始构建，以及 Awesome NEAR 目录。
+---
+
+本页汇集了您在 NEAR 上构建时可以立即使用的实用资源。
+
+## 入门
+
+<CardGroup cols={3}>
+  <Card title="什么是 NEAR？" href="/getting-started/what-is-near">
+    了解 NEAR 基础知识、架构，以及开发者选择它的原因。
+  </Card>
+  <Card title="开发者支持" href="https://near.dev/telegram-chats">
+    加入 Telegram 开发者群组，提问并获得帮助。
+  </Card>
+  <Card title="需要 NEAR AI 积分？" href="https://www.notion.so/Requesting-NEAR-AI-Cloud-Credits-2deda22d7b6481aea8e1e30282efcb5e">
+    为您的项目申请 NEAR AI Cloud 积分。
+  </Card>
+</CardGroup>
+
+## 核心文档
+
+- [NEAR 协议基础](/protocol/accounts-contracts/account-model)
+- [智能合约快速入门](/smart-contracts/quickstart)
+- [Web3 应用快速入门](/web3-apps/quickstart)
+- [链抽象概述](/chain-abstraction/what-is)
+- [AI 代理工具](/getting-started/tools-for-ai)
+- [NEAR AI 文档](https://docs.near.ai/)
+- [NEAR intents 文档](https://docs.near-intents.org/near-intents)
+
+## Awesome NEAR
+
+`awesome-near` 是一个由社区维护的资源目录，包含工具、示例、库和集成。
+
+- [技能](#skills)
+- [测试网水龙头](#testnet-faucets)
+- [NEAR 协议 SDK](#near-protocol-sdks)
+- [钱包与身份验证](#wallet-and-authentication)
+- [CLI 工具](#cli-tools)
+- [入门模板](#starter-templates)
+- [数据基础设施](#data-infrastructure)
+- [数据 API](#data-apis)
+- [AI 与云服务](#ai-and-cloud-services)
+- [Near intents](#near-intents)
+- [链签名](#chain-signatures)
+- [区块链浏览器](#explorers)
+- [其他资源](#additional-resources)
+
+## 技能
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [agent-skills](https://github.com/near/agent-skills) | 用于 NEAR 协议区块链开发的 AI 代理技能 |
+
+## 测试网水龙头
+
+| 水龙头 | 描述 |
+|--------|-------------|
+| [Circle Faucet](https://faucet.circle.com/) | NEAR 测试网上的 20 USDC（每 2 小时可领取一次） |
+| [NEAR Faucet](https://near-faucet.io/) | 测试网上的 2 NEAR（有频率限制） |
+
+## NEAR 协议 SDK
+
+### JavaScript / TypeScript
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [near-api-js](https://github.com/near/near-api-js) | 用于账户、区块、交易、代币和函数调用的高级 JavaScript 客户端 |
+| [near-api-ts](https://github.com/near/near-api-ts) | 适用于 NEAR 协议的高级类型安全 TypeScript 客户端 |
+| [near-kit](https://github.com/r-near/near-kit) | 具有类 fetch API 的现代 TypeScript 客户端 |
+| [near-jsonrpc-client-ts](https://github.com/near/near-jsonrpc-client-ts) | 自动生成的 TypeScript JSON-RPC 客户端 |
+
+### Rust
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [near-api-rs](https://github.com/near/near-api-rs) | 适用于 NEAR 协议的高级 Rust 链下客户端 |
+| [near-sdk-rs](https://github.com/near/near-sdk-rs) | 用于编写 NEAR 智能合约的 Rust SDK |
+| [near-abi-rs](https://github.com/near/near-abi-rs) | Rust 合约的 ABI 原语和模型 |
+
+### Python
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [py-near](https://github.com/pvolnov/py-near) | 支持 HOT Protocol 和 NEAR Intents 的异步 Python 客户端 |
+| [near-jsonrpc-client-py](https://github.com/near/near-jsonrpc-client-py) | 基于 Pydantic 模型的类型安全 Python JSON-RPC 客户端 |
+| [near-sdk-py](https://github.com/r-near/near-sdk-py) | 用于编写 NEAR 智能合约的 Python SDK |
+
+## 钱包与身份验证
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [@hot-labs/near-connect](https://github.com/azbang/near-connect) | 适用于 JavaScript/TypeScript 的安全轻量级钱包连接器 |
+| [near-connect-hooks](https://github.com/matiasbenary/near-connect-hooks) | 用于 NEAR 钱包集成的 React hooks |
+| [near-sign-verify](https://github.com/elliotBraem/near-sign-verify) | 创建并验证 NEP-413 签名消息 |
+| [better-near-auth](https://github.com/elliotBraem/better-near-auth) | 适用于 Better Auth 的 NEAR 登录插件 |
+
+## CLI 工具
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [near-cli-rs](https://github.com/near/near-cli-rs) | 适用于 NEAR 协议的人性化交互式 CLI |
+| [create-near-app](https://github.com/near/create-near-app) | 使用前端和合约模板快速搭建 NEAR 应用 |
+| [cargo-near](https://github.com/near/cargo-near) | 支持 ABI 生成的构建和部署 Cargo 扩展 |
+| [near-validator-cli-rs](https://github.com/near/near-validator-cli-rs) | 用于质押操作和验证者工作流的 CLI 工具 |
+
+## 入门模板
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [near-ai-chat](https://github.com/jlwaugh/near-ai-chat) | 适用于 NEAR AI Cloud 的 AI 对话代理入门项目 |
+| [NEAR Playground](https://nearplay.app/) | 用于创建和部署 NEAR 合约的在线 IDE |
+| [near-sdk-rs-template](https://github.com/near/cargo-near-new-project-template) | Rust 智能合约模板 |
+| [NEAR-fast-ft-transfer](https://github.com/NEAR-DevHub/NEAR-fast-ft-transfer) | 高性能同质化代币转账服务 |
+
+## 数据基础设施
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [Goldsky](https://goldsky.com/chains/near) | 数据基础设施与索引服务 |
+| [Stream NEAR](https://stream.near.tools) | 用于实时区块数据的服务器发送事件流 |
+| [Explorer API](https://github.com/fastnear/explorer-api) | 基于交易的浏览器 API |
+| [Near Lake Indexer](https://github.com/aurora-is-near/near-lake-indexer) | 基于 Lake 的索引服务 |
+
+## 数据 API
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [FastNear API](https://github.com/fastnear/fastnear-api-server-rs) | 面向钱包和浏览器的低延迟 API |
+| [NearBlocks API](https://api.nearblocks.io/api-docs/) | 用于 NEAR 区块链数据的 REST API |
+| [Pikespeak API](https://doc.pikespeak.ai/) | 聚合分析 API |
+| [Allium API](https://docs.allium.so/api/developer/wallets/overview) | 钱包与历史交易 API |
+
+## AI 与云服务
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [NEAR AI Cloud](https://cloud.near.ai) | 用于可验证 AI 推理的私有推理平台 |
+
+## Near intents
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [One Click SDK TypeScript](https://github.com/defuse-protocol/one-click-sdk-typescript) | 通过 1Click API 实现跨链兑换的 TypeScript SDK |
+| [One Click SDK Rust](https://github.com/defuse-protocol/one-click-sdk-rs) | 用于一键兑换的 Rust API 客户端 |
+| [One Click SDK Go](https://github.com/defuse-protocol/one-click-sdk-go) | 用于一键兑换的 Go API 客户端 |
+| [intents-sdk](https://github.com/defuse-protocol/sdk-monorepo/tree/main/packages/intents-sdk) | 用于基于意图应用的 SDK |
+
+## 链签名
+
+| 软件包 | 描述 |
+|---------|-------------|
+| [chainsig.js](https://github.com/NearDeFi/chainsig.js) | 用于多链交易和 MPC 签名的 TypeScript 库 |
+| [omni-transaction-rs](https://github.com/near/omni-transaction-rs) | 用于构建多链交易的 Rust 库 |
+
+## 区块链浏览器
+
+- [NEAR Validate](https://nearvalidate.org/)
+- [NearBlocks](https://nearblocks.io/)
+- [Pikespeak](https://pikespeak.ai/)
+- [Near Intents Explorer](https://explorer.near-intents.org/)
+
+## 其他资源
+
+- [NEAR Intents 文档](https://docs.near-intents.org)
+- [NEP 规范](https://github.com/near/NEPs)
+- [NEAR 博客](https://near.org/blog)
+- [NEAR 目录](https://nearcatalog.xyz/)

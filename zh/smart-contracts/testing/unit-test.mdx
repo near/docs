@@ -1,0 +1,57 @@
+---
+title: 单元测试
+description: "了解如何为 NEAR 智能合约编写和运行单元测试，以隔离方式测试各个方法和函数。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+单元测试允许您单独测试合约方法。它们适合检查存储是否正确更新，以及方法是否返回其预期值。它们以合约的语言编写，并在本地执行。
+
+如果您使用了我们的[示例](https://github.com/near-examples/docs-examples)之一作为模板，则只需导航到合约的文件夹，并使用 `yarn test`。如果没有，那么我们建议您从我们的模板之一复制必要的节点文件（例如 `package.json`）。
+
+<Tip>
+您可以从每个项目的根文件夹运行 `yarn test`，以同时运行单元测试和[集成测试](/smart-contracts/testing/integration-test)。
+</Tip>
+
+---
+
+## 代码片段 I：测试计数器
+
+[计数器示例](https://github.com/near-examples/counters)中的测试依赖于基本函数来检查 `increment`、`decrement` 和 `reset` 方法是否正常工作。
+
+<CodeGroup>
+  <Github fname="lib.rs"
+            url="https://github.com/near-examples/counters/blob/main/contract-rs/src/lib.rs"
+            start="47" end="68" />
+    <Github fname="Cargo.toml"
+            url="https://github.com/near-examples/counters/blob/main/contract-rs/Cargo.toml"
+            start="18" end="19" />
+</CodeGroup>
+
+---
+
+## 代码片段 II：修改上下文
+
+在进行单元测试时，您可以通过 `VMContextBuilder` 修改[环境变量](../anatomy/environment)。这将使您能够，例如，模拟来自不同用户的调用，带有特定的附加存款和 GAS。这里我们展示了一个代码片段，说明如何通过操纵 `predecessor` 和 `attached_deposit` 来测试我们[捐款示例](https://github.com/near-examples/donation-examples)中的 `donate` 方法。
+
+<CodeGroup>
+  <Github fname="lib.rs"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/src/lib.rs"
+            start="58" end="105" />
+    <Github fname="Cargo.toml"
+            url="https://github.com/near-examples/donation-examples/blob/main/contract-rs/Cargo.toml"
+            start="18" end="19" />
+</CodeGroup>
+
+---
+
+## ⚠️ 局限性
+
+单元测试对于检查代码完整性和检测孤立方法中的基本错误很有用。但是，由于单元测试不在区块链上运行，因此有很多事情它们无法检测。单元测试不适合：
+
+- 测试 [gas](../anatomy/environment) 和[存储](../anatomy/storage)使用
+- 测试[转账](../anatomy/actions)
+- 测试[跨合约调用](../anatomy/crosscontract)
+- 测试复杂交互，即多个用户向合约存款
+
+对于所有这些情况，有必要用[集成测试](/smart-contracts/testing/integration-test)**补充**单元测试。

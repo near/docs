@@ -1,0 +1,105 @@
+---
+title: AI 代理工具
+icon: cpu
+description: "指导您的 AI 代理构建 NEAR 应用程序"
+---
+
+NEAR 提供多种工具和资源，帮助您的 AI 代理构建和使用 NEAR 应用程序。本页概述了可用的主要工具及其有效使用方式。
+
+<CardGroup cols={2}>
+  <Card title="llms.txt" href="#llms-txt">
+    当您需要为代理提供所有 NEAR 文档的快速参考时使用。
+  </Card>
+  <Card title="Docs MCP" href="#docs-mcp-endpoint">
+    当您希望代理实时搜索文档以获取最新详细信息时使用。
+  </Card>
+  <Card title="Agent Skills" href="#near-agent-skills">
+    当您需要代理在特定任务上成为专家时使用（例如使用我们的 API）。
+  </Card>
+  <Card title="NEAR MCP" href="#near-mcp-server">
+    当您的代理需要执行链上操作时使用（例如转账和函数调用）。
+  </Card>
+</CardGroup>
+
+---
+
+## llms.txt
+
+**是什么：** 为编程助手精选的 NEAR 文档上下文。
+
+**使用场景：** 当您需要为代理提供所有 NEAR 文档的快速参考时。
+
+**链接：** [https://docs.near.org/llms.txt](https://docs.near.org/llms.txt)
+
+<Accordion title="VS Code 配置">
+
+在提示词中使用 `#fetch`：
+
+```text
+How can I upgrade a contract state?
+#fetch https://docs.near.org/llms.txt
+```
+
+</Accordion>
+
+<Accordion title="Cursor 配置">
+
+在 Cursor Chat 中添加一次文档来源：
+
+1. `@` → `Docs` → `+ Add new doc`
+2. 添加：`https://docs.near.org/llms.txt`
+3. 在提示时选择该来源
+
+</Accordion>
+
+---
+
+## Docs MCP 端点
+
+**是什么：** 通过 MCP 搜索 NEAR 文档的端点。
+
+**使用场景：** 当您希望代理实时搜索文档以获取最新详细信息和更精准的 API 查询时。
+
+**链接：** [https://docs.near.org/mcp](https://docs.near.org/mcp)
+
+结合使用两个互补层：
+
+1. **静态上下文（`llms.txt`）** 用于快速、高质量的文档基础。
+2. **检索（Docs MCP）** 当代理需要跨文档进行实时查询时。
+
+---
+
+## NEAR Agent Skills
+
+NEAR Agent Skills 是封装了可重复工作流的复用能力集合。
+
+**使用场景：** 当您需要代理在特定任务上成为专家时（例如使用 NEAR API）。
+
+**链接：** [https://github.com/near/agent-skills](https://github.com/near/agent-skills)
+
+| 技能 | 专注领域 |
+|----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| [near-ai-cloud](https://github.com/near/agent-skills/tree/main/skills/near-ai-cloud)               | 可验证的私有 AI 推理与证明 |
+| [near-api-js](https://github.com/near/agent-skills/tree/main/skills/near-api-js)                   | JS/TS 区块链交互、交易、代币和钱包集成 |
+| [near-dapp](https://github.com/near/agent-skills/tree/main/skills/near-dapp)                       | dApp 项目搭建、钱包集成、React/Next.js 模式 |
+| [near-intents](https://github.com/near/agent-skills/tree/main/skills/near-intents)                 | 通过 1Click API 实现跨链兑换 |
+| [near-kit](https://github.com/near/agent-skills/tree/main/skills/near-kit)                         | 具有类型安全合约和沙箱测试的 TypeScript SDK |
+| [near-smart-contracts](https://github.com/near/agent-skills/tree/main/skills/near-smart-contracts) | Rust 智能合约开发、安全性和状态管理 |
+
+---
+
+## NEAR MCP 服务器
+
+NEAR MCP 服务器是一个工具服务器（目前包含 [23 个工具](https://github.com/nearai/near-mcp/blob/main/TOOLS.md)），可让代理执行区块链操作。
+
+**使用场景：** 当您的代理需要持有资金、转移资金、与智能合约交互，或在 NEAR 协议上执行任何链上操作时
+
+**代码仓库：** [https://github.com/nearai/near-mcp](https://github.com/nearai/near-mcp)
+
+**远程部署指南：** [https://github.com/nearai/near-mcp/blob/main/tee.md](https://github.com/nearai/near-mcp/blob/main/tee.md)
+
+<Warning>
+
+NEAR MCP 设计为在**本地**或您的**可信基础设施**上运行，因为它需要处理私钥。目前没有公开托管的版本。
+
+</Warning>

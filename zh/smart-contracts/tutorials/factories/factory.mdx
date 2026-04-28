@@ -1,0 +1,130 @@
+---
+title: 工厂合约
+description: "了解工厂合约如何使用全局合约 ID 在子账户上部署其他合约。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+工厂是一种智能合约，它存储一个全局合约 ID，并自动化在新子账户上部署合约。
+
+我们有一个[**通用工厂**](https://github.com/near-examples/factory-rust)，它根据全局合约 ID 部署新合约。全局合约 ID 可以是全局账户 ID 或哈希。您可以通过调用 `update_global_contract_id` 方法来更改全局合约 ID。工厂创建自身的子账户，并在其上部署相应的合约。
+
+<Info>
+您可以在[此处](/smart-contracts/global-contracts)了解有关 NEAR 上全局合约的更多信息。
+</Info>
+
+---
+
+## 概述
+
+工厂是一个智能合约，它：
+
+1. 创建自身的子账户并在其上部署其合约（`deploy`）
+2. 可以更新它部署的合约
+
+<CodeGroup>
+  <Github fname="deploy.rs"
+            url="https://github.com/near-examples/factory-rust/blob/main/src/lib.rs"
+            start="35" end="75" />
+    <Github fname="manager.rs"
+            url="https://github.com/near-examples/factory-rust/blob/main/src/manager.rs"
+            start="8" end="11" />
+</CodeGroup>
+
+---
+
+## 快速入门
+
+1. 确保您已安装 [rust](https://www.rust-lang.org/)。
+2. 安装 [`NEAR CLI`](/tools/cli#installation)
+3. 安装 [`cargo near`](https://github.com/near/cargo-near) 扩展。
+
+<hr className="subsection" />
+
+### 构建和部署工厂
+
+您可以通过运行以下命令在 NEAR testnet 上自动编译和部署合约：
+
+```bash
+cargo near deploy
+```
+
+<hr className="subsection" />
+
+### 将存储的合约部署到子账户
+
+`deploy` 方法将创建工厂的子账户，并使用存储的全局合约 ID 在其上部署合约。它还会断言附加的存款至少是工厂中存储的最低要求存款。
+
+<Info>
+从技术上讲，使用全局合约部署合约不需要附加任何存款。但是要进一步初始化它，您需要一些 NEAR 代币来覆盖存储成本。由于初始化方法不能接受存款，因此在创建账户和部署合约期间附加一些最低数量的代币是有意义的。
+</Info>
+
+以下命令将创建 `sub.<factory-account>`，其上将部署全局合约。
+
+```bash
+near contract call-function as-transaction <factory-account> deploy json-args '{"name": "sub"}' prepaid-gas '100.0 Tgas' attached-deposit '0.2 NEAR' sign-as <your-account> network-config testnet sign-with-keychain send
+```
+
+默认情况下，全局合约是[同质化代币](/primitives/ft/ft#global-contracts)原语合约 `ft.globals.primitives.testnet`。要初始化合约，您可以调用其 `new_default_meta` 方法：
+
+```bash
+near contract call-function as-transaction sub.<factory-account> new_default_meta json-args '{"owner_id": "<your-account>", "total_supply": "100000000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <your-account> network-config testnet sign-with-keychain send
+```
+
+然后您可以调用 `ft_metadata` 方法来验证合约已正确部署和初始化：
+
+```bash
+near contract call-function as-read-only sub.<factory-account> ft_metadata json-args {} network-config testnet now
+# The response should be like this:
+# {
+#  "decimals": 24,
+#  "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 288 288'%3E%3Cg id='l' data-name='l'%3E%3Cpath d='M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z'/%3E%3C/g%3E%3C/svg%3E",
+#  "name": "Example NEAR fungible token",
+#  "reference": null,
+#  "reference_hash": null,
+#  "spec": "ft-1.0.0",
+#  "symbol": "EXAMPLE"
+#}
+```
+
+<hr className="subsection" />
+
+### 更新存储的合约
+
+`update_global_contract_id` 允许更改工厂存储的全局合约 ID。
+
+该方法很有趣，因为它没有声明参数，但仍然接受输入：新合约作为字节流存储。
+
+要使用它，我们需要传递我们要存储的合约 ID。它可以是账户 ID 或全局合约哈希的形式。关于它们之间的区别，您可以在[全局合约](/smart-contracts/global-contracts#solution)部分阅读。
+
+```bash
+near contract call-function as-transaction <factory-account> update_global_contract_id json-args '{"contract_id": "3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <factory-account> network-config testnet sign-with-keychain send
+```
+
+---
+
+## 工厂 - 概念与局限性
+
+工厂是一个有趣的概念，这里我们进一步解释它们的一些实现方面以及它们的局限性。
+
+<hr className="subsection" />
+
+### 自动创建账户
+
+NEAR 账户只能创建自身的子账户，因此，`factory` 只能在其自己的子账户上创建和部署合约。
+
+这意味着工厂：
+
+1. **可以**创建 `sub.factory.testnet` 并在其上部署合约。
+2. **不能**创建 `predecessor` 的子账户。
+3. **可以**创建新账户（例如 `account.testnet`），但**不能**在其上部署合约。
+
+重要的是要记住，虽然 `factory.testnet` 可以创建 `sub.factory.testnet`，但在创建后对其没有控制权。
+
+<hr className="subsection" />
+
+### Deploy 方法
+
+在创建子账户期间，我们将签名者的公钥作为完全访问密钥添加到新子账户。这意味着前驱在创建后将能够控制新子账户。
+
+此外，在教程中，我们将存款附加到 `deploy` 调用，该存款直接进入新子账户。当我们使用全局合约部署新合约时，我们需要在部署后初始化它。这些代币将在部署的合约初始化后覆盖存储。

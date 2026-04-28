@@ -1,0 +1,187 @@
+---
+title: 确认是用户本人（1yⓃ）
+description: "了解 NEAR 智能合约中的 one yocto 安全模式，用于验证账户所有权和防止未经授权的访问。"
+---
+
+在 NEAR 协议中，验证交易实际来自用户（而不是来自具有函数调用密钥的网站）对于安全性至关重要，尤其是在转移有价值的资产时。要求附加 1 yoctoNEAR（NEAR 的最小单位）是确保用户授权的一种简单有效的方法。
+
+## NEAR 访问密钥系统
+
+NEAR 使用[访问密钥系统](../../protocol/accounts-contracts/access-keys)来简化账户管理。有两种主要类型的密钥：
+
+### 1. 完全访问密钥
+- 对账户拥有**完全控制**
+- 可以执行所有[操作](../anatomy/actions)（转账、部署等）
+- 可以将 NEAR 作为存款附加
+- **仅存储在用户钱包中** - 从不与网站共享
+
+### 2. 函数调用密钥
+- **有限权限** - 只能调用指定的智能合约方法
+- **无法将 NEAR 作为存款附加**
+- 当用户登录网站时创建
+- **存储在网站中** - 网站可以自动使用它们
+
+---
+
+## 安全问题
+
+### 网站登录的工作原理
+
+当用户[登录网站](../../web3-apps/tutorials/wallet-login)以与您的合约交互时：
+
+1. 创建一个 `Function Call` 密钥
+2. 密钥存储在网站中（浏览器存储）
+3. 网站可以使用此密钥**自动**调用授权方法
+4. 每次交易都不需要用户交互
+
+<hr class="subsection" />
+
+### 风险
+
+对于大多数操作，这是方便且安全的。但是，对于**有价值的资产转移**（NFT、同质化代币、大量 NEAR），这会产生安全风险：
+
+- **网站拥有密钥** - 可以在没有用户确认的情况下发起转账
+- **用户不知情** - 用户可能不知道正在发生转账
+- **恶意网站** - 受损或恶意网站可能耗尽资产
+- **用户无法验证** - 无法确保用户实际授权了转账
+
+**关键场景**：
+- 转移 NFT
+- 转移同质化代币 (FT)
+- 大量 NEAR 转账
+- 任何涉及有价值资产的操作
+
+---
+
+## 解决方案：要求 1 YoctoNEAR
+
+### 工作原理
+
+要求用户在敏感操作中附加 **1 yoctoNEAR**（1 yⓃ）：
+
+```rust
+pub fn transfer_nft(&mut self, token_id: String, receiver_id: AccountId) {
+    // 要求 1 yoctoNEAR 以确保用户授权
+    require!(
+        env::attached_deposit() == NearToken::from_yoctonear(1),
+        "Requires attached deposit of exactly 1 yoctoNEAR"
+    )
+    
+    // 继续进行转账
+}
+```
+
+<Tip>
+[`near_sdk`](../../tools/sdk) 提供了一个辅助方法来断言 one yoctoNEAR 存款：
+
+```rust
+use near_sdk::{assert_one_yocto};
+
+...
+
+pub fn transfer_nft(&mut self, token_id: String, receiver_id: AccountId) {
+    // 要求 1 yoctoNEAR 以确保用户授权
+    assert_one_yocto();
+    
+    // 继续进行转账
+}
+
+...
+```
+</Tip>
+
+<hr class="subsection" />
+
+### 为什么这有效
+
+1. **函数调用密钥不能附加 NEAR** - 它们只能调用没有存款的方法
+2. **只有完全访问密钥才能附加 NEAR** - 这些存储在用户的钱包中
+3. **钱包需要用户确认** - 当附加 NEAR 时，钱包会提示用户
+4. **用户必须批准** - 没有用户明确批准，交易无法进行
+
+**结果**：如果交易包含 1 yoctoNEAR，您可以相信它是用户通过其钱包明确授权的。
+
+---
+
+## 实现示例
+
+### 带验证的 NFT 转账
+
+```rust
+pub fn transfer_nft(&mut self, token_id: String, receiver_id: AccountId) {
+    // 验证用户授权
+    // 要求 1 yoctoNEAR 以确保用户授权
+    require!(
+        env::attached_deposit() == NearToken::from_yoctonear(1),
+        "Requires attached deposit of exactly 1 yoctoNEAR"
+    )
+    
+    // 验证调用者拥有 NFT
+    let owner = self.get_token_owner(&token_id);
+    assert_eq!(env::predecessor_account_id(), owner, "Not the owner");
+    
+    // 执行转账
+    self.transfer_token(token_id, receiver_id);
+}
+```
+
+<hr class="subsection" />
+
+### 同质化代币转账
+
+```rust
+pub fn transfer_ft(&mut self, amount: U128, receiver_id: AccountId) {
+    // 要求 1 yoctoNEAR 以确保用户授权
+    require!(
+        env::attached_deposit() == NearToken::from_yoctonear(1),
+        "Requires attached deposit of exactly 1 yoctoNEAR"
+    )
+    
+    // 转账代币
+    self.internal_transfer(env::predecessor_account_id(), receiver_id, amount.0);
+}
+```
+
+---
+
+## 何时使用此模式
+
+### 1 YoctoNEAR 要求适用于：
+
+- ✅ NFT 转账
+- ✅ 同质化代币转账
+- ✅ 大量 NEAR 转账
+- ✅ 账户所有权变更
+- ✅ 权限修改
+- ✅ 任何涉及有价值资产的操作
+
+### 不必要的情况：
+
+- ❌ 只读操作（视图方法）
+- ❌ 低价值操作
+- ❌ 不转移资产的操作
+- ❌ 公共数据查询
+
+## 最佳实践
+
+1. **始终要求 1 yoctoNEAR** 进行资产转账
+2. **记录要求** - 告知用户为什么需要它
+3. **返还 yoctoNEAR** 如果您不需要它（可选，但对用户友好）
+4. **使用一致的模式** - 应用于所有敏感操作
+5. **使用函数调用密钥测试** - 确保它们在没有存款的情况下失败
+
+## 替代方案：返还 YoctoNEAR
+
+您可以在验证后将 1 yoctoNEAR 退还给用户：
+
+```rust
+pub fn transfer_nft(&mut self, token_id: String, receiver_id: AccountId) {
+    assert!(env::attached_deposit() >= 1, "Verification required");
+    
+    // 执行转账
+    self.transfer_token(token_id, receiver_id);
+    
+    // 返还 yoctoNEAR（可选）
+    Promise::new(env::predecessor_account_id()).transfer(1);
+}
+```

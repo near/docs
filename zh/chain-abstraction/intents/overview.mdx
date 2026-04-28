@@ -1,0 +1,52 @@
+---
+title: NEAR 意图
+sidebarTitle: 多链兑换
+description: "了解意图协议的工作原理"
+---
+
+NEAR 意图是一种多链交易协议，用户指定他们想要的结果，让第三方竞相提供最优解决方案。这适用于从代币兑换到外卖配送的一切场景，在加密货币和传统服务之间创建了一个通用市场。
+
+![NEAR Intents Overview](/assets/docs/chain-abstraction/intents-overview.png)
+
+<Card title="阅读意图文档" icon="book-open" href="https:docs.near-intents.org">
+ 阅读官方文档，了解有关 NEAR 意图及其使用方法的更多信息
+</Card>
+
+---
+
+## 工作原理
+
+<Steps>
+<Step title="意图创建">
+用户或 AI 智能体表达期望的结果（例如：将代币 A 换成代币 B），并将意图广播给做市商（也称为解决者）网络。
+
+</Step>
+<Step title="做市商竞争">
+
+由做市商（即解决者）组成的链下去中心化网络竞相以最优方式履行请求。当网络找到最佳解决方案时，它会以报价的形式呈现给原始用户/智能体进行审批。
+
+</Step>
+<Step title="意图执行">
+如果接受做市商的报价，则通过调用 NEAR 协议上的"验证者"智能合约来执行意图。该合约安全地验证并结算最终交易。
+
+</Step>
+</Steps>
+
+---
+
+## 资源
+
+<CardGroup cols={2}>
+	<Card title="NEAR 意图官方文档" icon="book-open" href="https://docs.near-intents.org">
+		阅读官方文档，了解有关 NEAR 意图的更多信息。
+	</Card>
+	<Card title="开发者支持频道" icon="message-circle" href="https://t.me/near_intents">
+		加入 Telegram 开发者支持频道。
+	</Card>
+	<Card title="集成示例" icon="code" href="https://github.com/near-examples/near-intents-examples">
+		探索使用 1Click API 的简单集成示例。
+	</Card>
+	<Card title="near-intents.org（实时站点）" icon="globe" href="https://near-intents.org">
+		试用展示代币兑换的实时演示应用程序。
+	</Card>
+</CardGroup>

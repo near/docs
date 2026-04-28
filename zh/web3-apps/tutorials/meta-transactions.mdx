@@ -1,0 +1,300 @@
+---
+title: 构建元交易中继器
+sidebarTitle: 构建中继器
+description: "了解如何构建元交易中继器，让用户无需支付 Gas 费即可在 NEAR 上进行交易，同时通过签名委托保障交易安全。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+中继器的作用是将 Gas 费委托给 Web 服务，允许用户在无需自行获取代币的情况下在 NEAR 上进行交易，同时仍保留自行签署交易的安全性。本指南将引导您了解构建能够处理元交易的中继器所需的各个组件。
+
+<Tip>
+
+如果您已经熟悉该技术，只想运行自己的中继器，可以直接跳转到完整的开源 [Rust 中继器服务器](#rust-relayer-server)实现。
+
+</Tip>
+
+## 工作原理
+
+一个基本的中继器由一个托管有已充值 NEAR 账户的 Web 服务器组成。该账户接收编码后的已签名交易，随后可以将其解码为 `SignedDelegate` 格式并在链上广播。
+
+客户端随后可以生成一个 `SignedDelegateAction`（一条尚未发送的已签名消息），对其进行编码并传输到该服务器，在那里它将被中继至区块链。
+
+![relayer-overview-technical](/assets/docs/web3-apps/tutorials/meta-transactions/relayer-overview-technical.png)
+
+## 中继器（服务器端）
+
+<Tabs>
+
+<Tab title="near-api-js">
+
+以下是一个简单的 Express 端点示例，它对请求体进行反序列化，实例化中继器账户，然后发送交易。
+
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/server.ts' start='16' end='27'/>
+
+您可以使用此代码片段，通过私钥轻松获取用于发送交易的账户对象。
+
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/util.ts' start='5' end='17'/>
+
+<Info>
+
+ 示例中的代码仅适用于以下版本及以上：
+
+```text
+"near-api-js": "3.0.4"
+"@near-js/transactions": "1.1.2",
+"@near-js/accounts": "1.0.4"
+```
+
+</Info>
+
+</Tab>
+
+<Tab title="@near-relay/server">
+
+`@near-relay` 简化了元交易，使初学者更容易上手。
+
+首先，在端点内调用 relay 方法，以自动反序列化交易并使用环境变量中定义的账户发送。
+
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='8' end='12'/>
+
+如果您还希望中继账户创建功能，这也相当简单。只需创建另一个端点并直接使用 accountId 和 publicKey 调用 createAccount 方法。使用对应的客户端库时，这些参数会自动包含在请求体中。
+
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='14' end='18'/>
+  
+</Tab>
+
+</Tabs>
+
+## 客户端
+
+<Tabs>
+
+<Tab title="near-api-js">
+
+在此方法中，我们创建一个任意的智能合约调用，实例化一个账户，并使用它来签署但不发送交易。然后我们可以将其序列化并发送给中继器，在那里它将通过之前创建的端点被委托至区块链。
+
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/client.ts' start='10' end='30'/>
+
+</Tab>
+
+<Tab title="@near-relay/client">
+
+如上述说明所述，为了能够在客户端进行中继，需要能够直接在客户端签署交易。幸运的是，借助 NEAR 生物识别库，可以以非托管方式实现这一点。
+
+通过调用此方法并传入账户创建端点的 URL（在服务器端部分提到）以及 `accountId`，所有事情都将在底层自动处理，成功创建账户。
+
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='17' end='23'/>
+
+在客户端，您只需创建一个 `Action` 并将其与服务器端讨论的中继器端点 URL 以及 `receiverId` 的 ID 一起传入 `relayTransaction` 方法。
+
+<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='25' end='36'/>
+
+</Tab>
+
+</Tabs>
+
+<Accordion title="使用钱包进行中继">
+
+目前，钱包选择器标准不支持在不立即发送交易的情况下签署交易。这一功能对于在客户端将交易路由到中继器至关重要。因此，为了在客户端顺畅集成中继，必须能够在不依赖钱包的情况下签署交易。
+目前正在努力在未来实现这一功能。
+
+</Accordion>
+
+### 高并发并行处理
+
+当运行处理大量交易的中继器时，您将很快遇到 `nonce` 冲突问题。在协议层面，交易有一个唯一编号来标识它们（nonce），有助于缓解重放攻击。账户上的每个密钥都有自己的 nonce，并且 nonce 预期随着密钥的每次签名而递增。
+
+当同一访问密钥同时发送多笔交易时，它们的 nonce 可能发生冲突。设想中继器创建了 3 笔交易 `Tx1`、`Tx2`、`Tx3`，并在极短的时间间隔内发送它们，假设 `Tx3` 具有最大的 nonce。如果 `Tx3` 在 `Tx1` 之前被处理（由于网络延迟，或某个节点先选取了 `Tx3`），那么 `Tx3` 将执行，但 `Tx1` 和 `Tx2` 将失败，因为它们具有更小的 nonce！
+
+缓解此问题的一种方法是使用不同的密钥签署每笔交易。向用于中继的 NEAR 账户添加多个全访问密钥（最多 20 个密钥可以产生显著效果）将有所帮助。
+
+<Accordion title="添加密钥">
+
+```js
+const keyPair = nearAPI.KeyPair.fromRandom("ed25519");
+
+const receipt = await account.addKey(keyPair.getPublicKey().toString())
+```
+
+保存这些密钥后，可以在中继前实例化账户时随机轮换私钥，从而确保不会产生 nonce 冲突。
+
+</Accordion>
+
+### 限制中继器访问
+
+在大多数生产应用中，预计您希望能够限制中继器，使其仅在特定情况下使用。
+这可以通过在 `SignedDelegate.delegateAction` 对象中指定约束来轻松实现。
+
+```typescript
+export declare class DelegateAction extends Assignable {
+    senderId: string;
+    receiverId: string;
+    actions: Array<Action>;
+    nonce: BN;
+    maxBlockHeight: BN;
+    publicKey: PublicKey;
+}
+```
+
+例如，您可以通过特定用户或合约进行限制：
+
+```typescript
+  const serializedTx: Buffer = req.body;
+  const deserializedTx: SignedDelegate = deserialize(SCHEMA.SignedDelegate, Buffer.from(serializedTx)) as SignedDelegate;
+  const relayerAccount: Account = await getAccount(NETWORK_ID, RELAYER_ID, RELAYER_PRIVATE_KEY);
+  const delegateAction = deserializedTx?.delegateAction
+
+  if(delegateAction.senderId == 'someUserId' || delegateAction.receiverId == 'someContractId' ){
+       const receipt = await relayerAccount.signAndSendTransaction({
+       actions: [actionCreators.signedDelegate(deserializedTx)],
+       receiverId: deserializedTx.delegateAction.senderId
+  });
+  }
+```
+
+其他示例还包括检查操作，看是否有存款或 Gas 并对其进行限制，通过特定的智能合约方法甚至参数进行限制。
+
+您可以使用以下方式解码参数：
+
+```text
+JSON.parse(Buffer.from(args_base64 || "", "base64").toString())
+```
+
+---
+
+## Rust 中继器服务器
+
+开源的 Rust [中继器服务器参考实现](https://github.com/near/pagoda-relayer-rs/)提供以下功能：
+
+<Info>
+各功能可以按需组合使用。使用某一功能不会排除使用其他任何功能，除非有特别说明。
+</Info>
+
+1. 签署并发送元交易到 RPC 以覆盖最终用户的 Gas 费，同时允许他们保管自己的资金并批准交易（`/relay`、`/send_meta_tx`、`/send_meta_tx_async`、`/send_meta_tx_nopoll`）
+2. 签署元交易并返回已签名的元交易，稍后发送到 RPC——（`/sign_meta_tx`、`/sign_meta_tx_no_filter`）
+3. 通过将合约地址列入白名单，仅为与特定合约交互的用户支付费用（`config.toml` 中的 `whitelisted_contracts`）
+4. 为所有账户（`/update_all_allowances`）或按用户账户（`/create_account_atomic`、`/register_account`、`/update_allowance`）指定 Gas 费用额度，并跟踪额度（`/get_allowance`）
+5. 指定中继器将为其承担 Gas 费的账户（`config.toml` 中的 `whitelisted_delegate_action_receiver_ids`）
+6. 仅允许拥有唯一 Oauth Token 的用户注册（`/create_account_atomic`、`/register_account`）
+7. 中继器密钥轮换：`config.toml` 中的 `keys_filenames`
+8. 与 [FastAuth SDK](/chain-abstraction/fastauth-sdk) 集成
+9. 混合和匹配配置选项
+
+<Tip>
+查看[使用案例部分](#use-cases)，了解与不同使用场景对应的示例配置文件。
+</Tip>
+
+### 基本设置
+
+您可以按照以下步骤设置本地中继器服务器开发环境：
+
+1. [为 NEAR 开发安装 Rust](/smart-contracts/quickstart#prerequisites)
+2. 如果您没有 NEAR 账户，请[创建一个](/protocol/accounts-contracts/account-model)
+3. 使用步骤 2 中的账户，在此目录中创建以下格式的 JSON 文件：
+   ```js
+   [{"account_id":"example.testnet","public_key":"ed25519:98GtfFzez3opomVpwa7i4m3nptHtc7Ha514XHMWszLtQ","private_key":"ed25519:YWuyKVQHE3rJQYRC3pRGV56o1qEtA1PnMYPDEtroc5kX4A4mWrJwF7XkzGe7JWNMABbtY4XFDBJEzgLyfPkwpzC"}]
+   ```
+   使用来自有足够 NEAR 余额以覆盖服务器将中继的交易 Gas 费的账户的[全访问密钥](/protocol/accounts-contracts/access-keys#full-access-keys)。通常，这将是 `.near-credentials` 目录中找到的 JSON 文件的副本。
+4. 更新 `config.toml` 中的值
+5. 在您机器的网络设置中开放 `config.toml` 中的 `port` 端口
+6. 使用 `cargo run` 运行服务器。
+   > **（可选）** 要在启用日志（tracing）的情况下运行，请执行 `RUST_LOG=tower_http=debug cargo run`
+
+<Info> 
+可选设置
+
+如果您要与 [FastAuth](/chain-abstraction/fastauth-sdk) 集成，请确保启用功能标志：
+```text
+cargo build --features fastauth_features,shared_storage
+```
+如果您使用共享存储，请确保启用功能标志：
+```text
+cargo build --features shared_storage
+```
+
+</Info>
+
+### Redis 设置
+
+<Tip>
+仅当您打算使用白名单、额度和 OAuth 功能时才需要此步骤。
+</Tip>
+
+1. [安装 Redis](https://redis.io/docs/latest/get-started/)。
+   > 步骤 2 和 3 假设 Redis 安装在机器上而非 Docker 设置中。如果您要连接在 GCP 中运行的 Redis 实例，请按照上述步骤连接到一台 VM，该 VM 将从本地中继器服务器转发请求到 [GCP 中运行的 Redis](https://docs.cloud.google.com/memorystore/docs/redis/connect-redis-instance#connect_from_a_local_machine_by_using_port_forwarding)。
+2. 运行 `redis-server --bind 127.0.0.1 --port 6379`——确保端口与 `config.toml` 中的 `redis_url` 匹配。
+3. 运行 `redis-cli -h 127.0.0.1 -p 6379`
+
+### 高级设置
+
+- [多密钥生成](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#multiple-key-generation---optional-but-recommended-for-high-throughput-to-prevent-nonce-race-conditions)：这是可选的，但推荐用于高吞吐量以防止 nonce 竞争条件。
+- [Docker 部署](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#docker-deployment)：使用 Docker 部署的说明
+- [云部署](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#cloud-deployment)：在云服务提供商上部署的说明
+
+### API 规范
+
+您可以在 [GitHub 存储库](https://github.com/near/pagoda-relayer-rs/tree/main?tab=readme-ov-file#api-spec-)中找到完整的中继器服务器 API 规范。
+
+### 使用案例
+
+GitHub 存储库中的[示例文件夹](https://github.com/near/pagoda-relayer-rs/tree/main/examples)包含与不同使用案例对应的示例配置文件。
+
+<Info>
+这些文件仅供参考，在您的开发环境中使用之前，应更新 `config.toml` 中的值。
+</Info>
+
+#### 无过滤器
+
+这是一个中继器配置，覆盖所有用户对所有合约的 Gas 费，不设过滤器。为防止滥用，仅应在只有安全后端调用中继器的情况下使用此配置。
+- [`no_filters.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/no_filters.toml)
+
+#### 基本白名单
+
+这是一个基本中继器配置，覆盖用户与白名单合约集交互的 Gas 费。
+- [`basic_whitelist.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/basic_whitelist.toml)
+
+#### Redis
+
+这是一个中继器配置，覆盖用户与白名单合约集交互的 Gas 费，额度在 Redis 中指定。
+- 额度基于账户 ID，注册时（在 Redis 和链上创建账户）需要 OAuth 令牌以帮助防止女巫攻击。
+- [`redis.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/redis.toml)
+
+#### FastAuth
+
+<Info>
+**封闭访问测试版**
+
+[FastAuth](/chain-abstraction/fastauth-sdk) 目前处于私有测试阶段。如果您想在这个早期开发阶段试用，请[通过 Telegram 联系我们](https://t.me/neardev)。
+
+</Info>
+
+这是一个如果您打算与 [FastAuth SDK](/chain-abstraction/fastauth-sdk) 集成时使用的配置。
+- 它覆盖用户与白名单合约集交互的 Gas 费，额度在 Redis 中指定。
+- 额度基于账户 ID，注册时（在 Redis 和链上创建账户）需要 OAuth 令牌以帮助防止女巫攻击。
+- 这还利用了 Near Social DB 合约上的共享存储功能
+- 以及白名单发送者（`whitelisted_delegate_action_receiver_ids`）
+- [`fastauth.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/fastauth.toml)
+
+#### 使用同质化代币支付
+
+这是一个中继器配置，确保将 FT 发送到销毁地址，用于覆盖用户与白名单合约集交互的等值 Gas 费。
+- [`pay_with_ft.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/pay_with_ft.toml)
+
+#### 发送者白名单
+
+这是一个中继器配置，覆盖白名单用户与白名单合约集交互的 Gas 费。
+- [`whitelist_senders.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/whitelist_senders.toml)（`whitelisted_delegate_action_receiver_ids`）
+
+#### 共享存储
+
+这是一个中继器配置，同时覆盖用户与白名单合约集交互的 Gas 费和存储费。
+
+- 请确保在您被列入白名单的合约中包含基于 [`shared_storage.rs`](https://github.com/NearSocial/social-db/blob/master/contract/src/shared_storage.rs) 的共享存储逻辑
+- [`shared_storage.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/shared_storage.toml)
+
+#### 交易所提款
+
+这是一个中继器配置，适用于运行中继器的交易所在用户提取 NEAR 上的稳定币（例如 `USDT` 或 `USDC`）时覆盖用户的提款费用。
+
+- [`exchange_withdraw.toml`](https://github.com/near/pagoda-relayer-rs/blob/main/examples/configs/exchange_withdraw.toml)

@@ -1,0 +1,187 @@
+---
+title: Gas（执行费用）
+description: "了解 NEAR 的 gas 系统——防止垃圾交易的执行费用，通过燃烧 gas 的 30% 激励开发者，并使用确定性 gas 单位和动态定价。"
+---
+
+import { GasPrice } from '/snippets/gas-price.jsx';
+
+本节解释了 NEAR 协议中 gas 的工作原理，包括如何计算、收取，以及如何用来激励开发者。
+
+在每笔交易中，NEAR 网络收取一笔称为 **gas** 的微小费用。这个费用是一种简单的机制，允许我们：
+
+1. **防止**不良行为者用无用交易**垃圾刷**网络
+2. 在每笔交易中**燃烧**极少量的**代币供应**
+3. 通过将合约执行时燃烧 gas 的 30% 分配给合约，**激励开发者**
+4. 通过将交易上限设为 `300Tgas`（约 `300ms` 的计算时间）来实现**墙钟时间**
+
+NEAR 中的 gas 以[**gas 单位**](/protocol/transactions/gas#gas-units)计算，并根据网络的[**gas 价格**](/protocol/transactions/gas#gas-price)使用 `$NEAR` 代币收费。
+
+<Tip>
+**您知道吗？**
+在 NEAR 中，为交易附加更多 gas **不会**使其更快。操作的 gas 成本是固定的，任何多余的 gas 都会直接退还给用户
+</Tip>
+
+---
+
+## 理解 Gas 费用
+
+对于每笔交易，用户需要提前支付一笔小额 NEAR 费用。此费用使用确定性的 **gas 单位**计算，并使用网络的 **gas 价格**转换为 NEAR 成本。
+
+### Gas 单位
+
+NEAR 中的每个操作都有固定数量的 **gas 单位**，这意味着相同的操作始终消耗**相同数量的 gas 单位**。
+
+Gas 单位的设计使其可以转换为计算资源，`1Tgas` 大约对应 `1ms` 的计算时间。
+
+交易最多可以使用 `300Tgas`，意味着处理时间应少于 `300ms`，允许网络大约**每秒**产生一个新区块。
+
+<Tip>
+Gas 单位不仅封装了计算/CPU 时间，还包括带宽/网络时间和存储/IO 时间
+</Tip>
+
+### Gas 价格
+
+为了确定实际的 NEAR 费用，交易中所有操作的成本乘以 **gas 价格**。
+
+gas 价格**每个区块重新计算**，基于网络需求，最低价格为 `1Tgas = 0.0001Ⓝ`。
+
+如果前一个区块**超过一半满**，价格上涨 1%，否则下降 1%（直到达到底价）。
+
+<Accordion title="当前 gas 价格是多少？">
+
+您可以通过 [`RPC`](/api/rpc/gas#gas-price) 查询 gas 单位以 `yoctoNEAR` 计价的成本（1Ⓝ = `1e24` yocto）。要转换为每 `NEAR` 的 `Tgas`，可以使用以下公式：`gas_price * 1e12 / 1e24`。
+
+当前 1 Tgas 的成本：<GasPrice /> Ⓝ
+
+</Accordion>
+
+### 常见操作的成本
+
+知道操作的 gas 单位成本是固定的，我们可以在最低 gas 价格 `1Tgas = 0.0001Ⓝ` 下计算常见操作的成本。
+
+| 操作                        | TGas           | 费用（Ⓝ） |
+|-----------------------------|----------------|----------|
+| 创建账户                    | 0.42           | 0.000042 |
+| 转账 NEAR                   | 0.45           | 0.000045 |
+| 添加全访问密钥              | 0.42           | 0.000042 |
+| 删除密钥                    | 0.41           | 0.000041 |
+| 函数调用*                   | ≤ 300          | ≤ 0.03   |
+| 部署 `16`kb 合约            | 2.65           | 0.000265 |
+| 部署 `X`kb 合约**           | 0.58 + 0.13`X` |          |
+
+_注意，费用以 NEAR 为单位，要获得美元成本，请乘以当前 `$NEAR` 价格_
+
+<Tip>
+**函数调用\***
+调用函数的成本取决于函数的复杂性，但在同类函数调用之间保持一致。在下方了解更多信息。
+</Tip>
+
+<Tip>
+**部署合约\*\***
+注意，这包含了上传字节并将其写入存储的 gas 成本，但**不包含**在存储中持有它们的成本（约 `1Ⓝ ~ 100kb`）。
+</Tip>
+
+<Accordion title="这些数字从何而来？">
+
+NEAR 使用基础成本进行[配置](https://github.com/near/nearcore/blob/master/core/primitives/res/runtime_configs/parameters.yaml)。示例：
+
+```json
+  transfer_cost: {
+    send_sir:     115123062500,
+    send_not_sir: 115123062500,
+    execution:    115123062500
+  },
+  deploy_contract_cost: 184765750000,
+  deploy_contract_cost_per_byte: 64572944
+```
+
+这里的 "sir" 代表"发送方即接收方"。是的，这些值都相同，但将来可能会改变。
+
+当您请求转账资金时，NEAR 会立即从您的账户中扣除相应的 `send` 金额。然后创建一个[_收据_，这是一种内部记账机制](./transaction-execution)。创建收据有其自己的相关成本：
+
+```json
+  action_receipt_creation_config: {
+    send_sir:     108059500000,
+    send_not_sir: 108059500000,
+    execution:    108059500000
+  }
+```
+
+您可以通过使用 [`protocol_config`](/api/rpc/protocol#protocol-config) RPC 端点并搜索 `action_receipt_creation_config` 来查询此值。
+
+创建此收据的相应金额也会立即从您的账户中扣除。
+
+"转账"操作要到下一个区块才会最终确定。此时，这些操作的 `execution` 金额将从您的账户中扣除。
+
+尽管 gas 价格可能在购买时间和执行时间之间发生变化，但自协议版本 78 起，每笔交易的 gas 价格是固定的。
+
+```text
+    (
+      transfer_cost.send_not_sir + action_receipt_creation_config.send_not_sir + transfer_cost.execution + action_receipt_creation_config.execution
+    ) * gas_price
+```
+
+在协议版本 78 之前，每个区块的 gas 价格用于该高度完成的工作。
+
+```text
+    (
+      transfer_cost.send_not_sir + action_receipt_creation_config.send_not_sir
+    ) * gas_price_at_block_1 +
+    (
+      transfer_cost.execution + action_receipt_creation_config.execution
+    ) * gas_price_at_block_2
+```
+
+</Accordion>
+
+---
+
+## 如何购买 Gas？
+
+您不需要购买 gas，而是在交易[首次被处理时](./transaction-execution#block-1-the-transaction-arrives)，根据操作的 gas 成本和网络的 gas 价格，自动从您账户余额中扣除 gas 费。
+
+唯一的例外是当您向合约进行函数调用时。在这种情况下，您需要定义要使用的 gas 单位数量，最多 `300Tgas`。此金额将使用网络的 gas 价格转换为 NEAR，并从您的账户余额中扣除。
+
+如果交易最终使用的 gas 少于扣除的金额，差额将简单地**退还到您的账户**。但是，网络会扣除至少 1 Tgas 或最多未使用 gas 的 5% 作为 **gas 退款费**。
+
+<Accordion title="Gas 退款费">
+
+自协议版本 78 起，收据执行结束时未使用的 gas 将收取 gas 退款费。在给予项目适应时间期间，该费用仍为 0。计划将其调整为按 `max(1 Tgas, 0.05 * unspent_gas) * gas_price` 计算的费用。gas 价格取购买时的价格。
+
+_但为什么要引入这种费用而不是退还所有 gas？_
+
+原因是为函数调用附加过多 gas 会降低网络效率。
+
+当交易附加的 gas 远超实际使用量时，分片之间的拥塞控制变得棘手。网络限制每个分片每个分块中可以有多少跨合约调用，以避免在某个分片上产生大量传入收据队列。这个限制将附加的 gas 视为收据在接收分片上造成工作量的上限。附加过多 gas 可能导致此限制过于严格，从而不必要地停滞分片。
+
+另一个低效之处来自退款收据——在版本 78 之前，几乎每次函数调用都会创建这些收据。虽然每个收据执行成本相对较低，但总体而言，它们占 NEAR 协议全局流量的很大一部分。
+
+要了解更多关于引入此费用的决策，请查看 [NEP-536](https://github.com/near/NEPs/pull/536)
+
+</Accordion>
+
+<Tip>
+在其他链中，支付更高的 gas 价格可以让您的交易更快处理。在 NEAR 中，**gas 成本是确定性的**，您**无法通过付费获得优先处理**。为交易附加的任何额外 gas 都会被退还，但会扣除附加不必要 gas 的费用。
+</Tip>
+
+---
+
+## Gas 作为开发者激励
+
+在 NEAR 中，执行合约时燃烧的 gas 费的 30% 归合约账户所有。这对开发者创建和维护有用合约是一种强大的激励。
+
+例如，在[这笔交易](https://testnet.nearblocks.io/txns/JD8Bg4u8kaYeaSsGBqkvhSDCEPgXhtwJRBBPKicCEPMs)中，用户调用了 `guestbook.near-examples.testnet` 合约中的一个函数。
+
+执行该函数调用总共燃烧了约 0.00032Ⓝ，其中 30% 归合约账户所有。这意味着合约账户收到了 0.000096Ⓝ。
+
+请注意，费用来自函数执行期间燃烧的 gas，而不是使用的总 gas。
+
+---
+
+## 估算调用成本
+
+如果您正在开发智能合约，您可能希望估算函数调用将消耗多少 gas。这对于估算函数的限制并避免出现 gas 不足错误非常有用。
+
+估算 gas 成本最准确的方法之一是在 `testnet` 上运行您的函数。要准确知道函数中特定部分使用了多少 gas，可以使用我们 SDK 中的 `used_gas` 方法。
+
+另一种选择是使用`沙盒测试`（在 [Rust](https://github.com/near/workspaces-rs/tree/main/examples/src) 和 [JavaScript](https://github.com/near/workspaces-js) 中都可用），它可以模拟 NEAR 网络。在那里，您可以在每次函数调用后访问已燃烧的 gas。

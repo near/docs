@@ -1,0 +1,210 @@
+---
+title: 沙箱测试
+description: "在真实的沙箱环境中测试我们的合约。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+在上一节中，我们分析了合约的代码，了解了其工作原理。现在，我们需要对其进行测试，确保它按预期工作！对于合约，您可以进行两种类型的测试：单元测试和沙箱测试。
+
+在这里，我们将重点关注沙箱测试，因为它允许我们在真实环境中部署合约，让我们能够创建多个账户并与合约交互，就如同它已部署在区块链上一样。
+
+<Info>
+**单元测试**
+
+单元测试内置于语言中，用于单独测试合约函数。当只需要少量上下文时，这些测试效果很好。但是，它们无法测试链上交互——例如向账户发送 `$NEAR` 代币——因为这些操作需要由网络处理。
+
+</Info>
+
+---
+
+## 创建账户
+
+我们的测试首先创建多个各有 10 个 `$NEAR` 代币的账户，并将合约部署到其中一个账户上。
+
+<Tabs>
+    <Tab title="🌐 JavaScript">
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L12-L23"
+                start="12" end="23" />
+        
+        为了部署合约，我们在 `package.json` 中将编译后的 WASM 合约路径作为参数传递给测试。确实，当执行 `npm run test` 时，命令首先会编译合约，然后运行测试。
+
+    </Tab>
+    <Tab title="🦀 Rust">
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L17-l29"
+                start="17" end="29" />
+
+        请注意，沙箱会自行编译代码，因此我们无需在运行测试之前预先编译合约。
+    </Tab>
+</Tabs>
+
+---
+
+## 合约初始化
+
+为了初始化，合约账户调用自身，调用 `init` 函数，将 `end_time` 设置为未来 60 秒。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L26-L29"
+                start="26" end="29" />
+
+<Warning>
+**时间单位**
+
+合约以**纳秒**计量时间，因此我们需要将 `Date.now()`（以毫秒表示）的结果乘以 `10^6`。
+
+</Warning>
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L31-L38"
+                start="31" end="38" />
+
+<Warning>
+**时间单位**
+
+合约以**纳秒**计量时间，因此我们需要将 `Utc::now().timestamp()`（以秒表示）的结果乘以 `10^9`。
+
+</Warning>
+
+    </Tab>
+</Tabs>
+
+<Info>
+**时间是字符串**
+
+请注意，时间以 `String` 形式传递给合约，这是因为智能合约不能接收大于 `52 位`的数字，而我们希望传递**纳秒**级的 `unix 时间戳`。
+
+</Info>
+
+---
+
+## 出价
+
+现在合约已部署并初始化，我们可以开始出价并检查合约的行为是否符合预期。
+
+我们首先让 `alice` 出价 1 NEAR，并检查合约是否正确记录了该出价。然后，我们让 `bob` 出价 2 NEAR，并检查最高出价是否已更新，以及 `alice` 是否得到了 NEAR 的退款。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L46-L61"
+                start="46" end="61" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs"
+                start="42" end="74" />
+
+    </Tab>
+
+</Tabs>
+
+#### 检查余额
+请注意，我们如何检查 `alice` 是否已收到退款。我们在她第一次出价后查询她的余额，然后检查 `bob` 出价后余额是否增加了 1 NEAR。
+
+您可能会想检查 `alice` 在获得退款后余额是否恰好为 10 NEAR，但 `alice` 的余额不可能再是 10 NEAR 了，因为当 `alice` 调用 `bid` 时，一些 `$NEAR` 已作为 **`gas` 费**被消耗。
+
+#### 测试无效调用
+
+在测试时，我们还应该检查合约是否不允许无效调用。下一部分检查合约不允许出价额比前一个出价少的 `$NEAR` 代币。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L64"
+                start="64" end="64" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L77-L83"
+                start="77" end="83" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 快进时间
+沙箱允许我们快进时间，这对于测试拍卖结束时的合约非常有用。测试推进 200 个区块以过去一分钟，从而允许领取拍卖。 
+
+之后，拍卖现在可以被领取。一旦领取，测试检查拍卖者是否收到了正确数量的 `$NEAR` 代币。
+
+<Tabs>
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/sandbox-test/main.ava.js#L69-L81"
+                start="69" end="81" />
+
+    </Tab>
+    <Tab title="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L95-L112"
+                start="95" end="112" />
+
+    </Tab>
+</Tabs>
+
+如果您完整查看测试，您将看到我们还测试了其他无效调用，例如拍卖者在拍卖结束前尝试领取，以及用户在拍卖结束后尝试出价。
+
+---
+
+## 执行测试 
+
+现在我们了解了测试的内容，让我们运行测试吧！
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        ```bash
+        # 如果尚未安装依赖，请先安装
+        npm install
+
+        # 运行测试
+        npm run test 
+        ```
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        ```bash
+        cargo test
+        ```
+
+    </Tab>
+
+</Tabs>
+
+所有测试都应该通过，您应该在控制台中看到测试的输出。如果您看到任何错误，请在 [NEAR Discord](https://near.chat) 或通过 [Telegram](https://t.me/neardev) 联系我们，我们将帮助您解决！
+
+---
+
+## 结论 
+
+在本教程的这一部分，我们已经了解了如何使用沙箱测试环境来测试合约。我们测试了合约的初始化、出价和时间推进。
+
+您现在已准备好进入[下一节](./1.3-deploy)，在那里我们将合约部署到 `testnet` 并通过 CLI 与其交互。

@@ -1,0 +1,411 @@
+---
+title: 使用链接投放（Linkdrop）
+description: "了解遵循 NEP-452 标准的链接投放——通过访问密钥和 Keypom 平台，使用简单的网络链接分发资产并引导用户进入 Web3 应用。"
+---
+
+import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
+
+想要在您的 dApp 中使用链接投放（Linkdrop）？在这里您可以找到所有入门所需的信息。
+
+<Tip>
+
+创建链接投放最简便的方式是使用我们的 LinkDrop 生成器进行交互。
+
+</Tip>
+
+---
+
+## 访问密钥
+
+要创建任何类型的投放，您首先需要生成密钥对。**每个投放需要创建一个密钥**。
+
+- `linkdrop` 合约将存储密钥的**公开**部分。
+- 您将把密钥的**私有**部分提供给您希望接收投放的用户。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+    ```js
+    import { KeyPair } from 'near-api-js';
+
+    const newKeyPair = KeyPair.fromRandom('ed25519');
+    newKeyPair.public_key = newKeyPair.publicKey.toString();
+    ```
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+  ```bash
+  near generate-key
+
+  # Key pair with ed25519:33Vn9VtNEtWQPPd1f4jf5HzJ5weLcvGHU8oz7o5UnPqy public key for an account "1e5b1346bdb4fc5ccd465f6757a9082a84bcacfd396e7d80b0c726252fe8b3e8"
+  ```
+
+</Tab>
+
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+
+    <p>在 [Lantstool](https://app.lantstool.dev/) 上生成新密钥</p>
+    ![lantstool](/assets/docs/tools/lantstool-near_protocol-utils-key_generator.png)
+  
+  </Tab>
+</Tabs>
+
+---
+
+## `$NEAR` 投放
+
+要创建 `$NEAR` 投放，您需要请求合约创建一个投放（`create_drop`），传入您生成的密钥的公开部分，以及每次密钥使用时希望投放的数量（`deposit_per_use`）。
+
+合约将创建一个投放，并**返回标识该投放的数字 ID**。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+```js
+import { useNearWallet } from "near-connect-hooks";
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const DROP_AMOUNT = "10000000000000000000000"; // 0.1 NEAR
+
+const { callFunction } = useNearWallet();
+
+await callFunction({
+  contractId: KEYPOM_CONTRACT_ADDRESS,
+  method: "create_drop",
+  args: {
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+  },
+  deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000
+  gas: "100000000000000",
+});
+```
+
+了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+```bash
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000"}' --depositYocto 23000000000000000000000 --gas 100000000000000 --useAccount bob.near
+```
+
+  </Tab>
+
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-near-drop.json" />
+  </Tab>
+</Tabs>
+
+<Info>
+要领取投放，您需要向用户发送一个[包含私钥的链接](#building-drop-links)。
+</Info>
+---
+
+## NFT 投放
+
+要投放现有的 NFT，您需要（1）创建投放，然后（2）**将 NFT 转入** keypom。
+
+#### 1. 创建投放
+
+要创建 NFT 投放，您需要调用 `create_drop` 方法，传入 `nft` 参数，这将告知链接投放合约等待 NFT 的转入。
+
+合约将创建一个投放，并**返回标识该投放的数字 ID**。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+```js
+import { useNearWallet } from "near-connect-hooks";
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
+const DROP_AMOUNT = "10000000000000000000000";
+
+const { callFunction, accountId } = useNearWallet();
+
+await callFunction({
+  contractId: KEYPOM_CONTRACT_ADDRESS,
+  method: "create_drop",
+  args: {
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+    nft: {
+      // Who will be sending the NFTs to the Keypom contract
+      sender_id: accountId,
+      // NFT Contract Id that the tokens will come from
+      contract_id: NFT_CONTRACT_ADDRESS,
+    },
+  },
+  deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000
+  gas: "100000000000000",
+});
+```
+
+了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+```bash
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "nft": {"sender_id": "bob.near", "contract_id": "nft.primitives.near"}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --useAccount bob.near
+```
+
+  </Tab>
+
+    <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+        <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-nft-drop.json" />
+    </Tab>
+</Tabs>
+
+#### 2. 转移 NFT
+
+获得投放 ID 后，您现在需要将 NFT 转移到链接投放合约，并指定要添加到哪个投放。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+```js
+import { useNearWallet } from "near-connect-hooks";
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
+const NFT_TOKEN_ID = "1";
+
+const { callFunction } = useNearWallet();
+
+await callFunction({
+  contractId: NFT_CONTRACT_ADDRESS,
+  method: "nft_transfer_call",
+  args: {
+    receiver_id: KEYPOM_CONTRACT_ADDRESS,
+    token_id: NFT_TOKEN_ID,
+    msg: dropId.toString()
+  },
+  deposit: 1,
+  gas: "100000000000000",
+});
+```
+
+了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+```bash
+near call nft.primitives.near nft_transfer_call '{"receiver_id": "v2.keypom.near", "token_id": <YOUR TOKEN ID>, "msg": <YOUR DROP ID>}' --depositYocto 1 --gas 100000000000000 --useAccount bob.near
+```
+
+  </Tab>
+
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/transfer-nft-to-v2keypomnear.json" />
+  </Tab>
+</Tabs>
+
+<Tip>
+`linkdrop` 合约将验证您正在将 NFT 转移到属于您的投放
+</Tip>
+
+<Tip>
+
+创建链接投放最简便的方式是使用我们的 LinkDrop 生成器进行交互。
+
+</Tip>
+
+---
+
+## FT 投放
+
+投放同质化代币的过程与创建 [NFT 投放](#nft-drops)非常相似。您将首先创建投放，然后用 FT 为其注资。
+
+#### 1. 创建投放
+
+要创建 FT 投放，您需要调用 `create_drop` 方法，传入 `ftData` 参数，这将告知链接投放合约等待一定数量的 FT 转入。
+
+合约将创建一个投放，并**返回标识该投放的数字 ID**。
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+```js
+import { useNearWallet } from "near-connect-hooks";
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const FT_CONTRACT_ADDRESS = "ft.primitives.near";
+const DROP_AMOUNT = "10000000000000000000000";
+
+const { callFunction, accountId } = useNearWallet();
+
+await callFunction({
+  contractId: KEYPOM_CONTRACT_ADDRESS,
+  method: "create_drop",
+  args: {
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+    ftData: {
+      contractId: FT_CONTRACT_ADDRESS,
+      senderId: accountId,
+      // This balance per use is balance of human readable FTs per use.
+      amount: "1"
+      // Alternatively, you could use absoluteAmount, which is dependent on the decimals value of the FT
+      // ex. if decimals of an ft = 8, then 1 FT token would be absoluteAmount = 100000000
+    },
+  },
+  deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000
+  gas: "100000000000000",
+});
+```
+
+了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+```bash
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "ftData": {"contractId": "ft.primitives.near","senderId": "bob.near", "amount": "1"}}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --useAccount bob.near
+```
+
+  </Tab>
+
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-ft-drop.json" />
+  </Tab>
+</Tabs>
+
+#### 2. 转移 FT
+
+获得投放 ID 后，您现在需要将同质化代币转移到链接投放合约。
+
+<Note>
+要将 FT 转移到某个账户，您需要先在 FT 合约上[注册](/primitives/ft/ft#registering-a-user)接收账户（例如 keypom 合约）。
+</Note>
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+```js
+import { useNearWallet } from "near-connect-hooks";
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const FT_CONTRACT_ADDRESS = "ft.primitives.near";
+
+const { callFunction } = useNearWallet();
+
+await callFunction({
+  contractId: FT_CONTRACT_ADDRESS,
+  method: "ft_transfer",
+  args: {
+    receiver_id: KEYPOM_CONTRACT_ADDRESS,
+    amount: "1"
+  },
+  deposit: "1",
+  gas: "100000000000000"
+});
+```
+
+了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+```bash
+near call ft.primitives.near ft_transfer '{"receiver_id": "v2.keypom.near", "amount": "1"}' --depositYocto 1 --gas 100000000000000 --useAccount bob.near
+```
+
+  </Tab>
+
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/transfer-ft-to-v2keypomnear.json" />
+  </Tab>
+</Tabs>
+
+<Tip>
+
+创建链接投放最简便的方式是使用我们的 LinkDrop 生成器进行交互。
+
+</Tip>
+
+---
+
+## 函数调用投放
+链接投放合约允许创建`函数调用`投放。这类投放将在用户领取时，在合约上执行一个或多个方法。
+
+<Tip>
+函数调用投放可以被视为其他投放类型的抽象版本：您可以创建一个用于铸造 NFT、在 DAO 中注册用户或支付服务费用的投放。
+</Tip>
+
+<Tabs>
+  <Tab title="🌐 WebApp">
+
+```js
+import { useNearWallet } from "near-connect-hooks";
+
+const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
+const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
+const NFT_TOKEN_ID = "1";
+const DROP_AMOUNT = "10000000000000000000000";
+
+const { callFunction } = useNearWallet();
+
+await callFunction({
+  contractId: KEYPOM_CONTRACT_ADDRESS,
+  method: "create_drop",
+  args: {
+    public_keys: state.publicKeys,
+    deposit_per_use: DROP_AMOUNT,
+    fcData: {
+      // 2D array of function calls. In this case, there is 1 function call to make for a key use
+      // By default, if only one array of methods is present, this array of function calls will be used for all key uses
+      methods: [
+        // Array of functions for Key use 1.
+          [{
+            receiverId: NFT_CONTRACT_ADDRESS,
+            methodName: "nft_mint",
+            args: JSON.stringify({
+            // Change this token_id if it already exists -> check explorer transaction
+                token_id: NFT_TOKEN_ID,
+                metadata: {
+                  title: "My NFT drop",
+                  description: "",
+                  media: "",
+                }
+            }),
+            accountIdField: "receiver_id",
+            // Attached deposit for when the receiver makes this function call
+            attachedDeposit: "10000000000000000000000"
+          }]
+      ]
+    }
+  },
+  deposit: "23000000000000000000000", // state.publicKeys.length * dropAmount + 3000000000000000000000
+  gas: "100000000000000",
+});
+```
+
+了解更多关于在应用程序中添加 [Near Connect](../../web3-apps/tutorials/wallet-login) 的信息
+
+  </Tab>
+  <Tab title="🖥️ CLI">
+
+```bash
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "fcData": {"methods": [[{"receiverId": "nft.primitives.near","methodName": "nft_mint","args": {"token_id": "1", "metadata": {"title": "My NFT drop","description": "","media": ""}, "accountIdField": "receiver_id", "attachedDeposit": "10000000000000000000000"}]]}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --useAccount bob.near
+```
+
+  </Tab>
+
+  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
+    <TryOutOnLantstool path="docs/2.build/5.primitives/linkdrop/create-function-call-drop.json" />
+  </Tab>
+</Tabs>
+
+---
+
+## 构建投放链接
+
+要创建链接投放链接，只需将私钥追加到 `claim` 页面即可：
+
+```text
+http://localhost:3001/claim/linkdrop?id=ed25519:5Ly2arHZ4niWBVyEuzpN3J8QQX1BrYfWsirGqdYR3JfqUDhJ3SRK7JeQfVsh4UL8Wn6uf8RzWE4RPHymkePywVVd
+```

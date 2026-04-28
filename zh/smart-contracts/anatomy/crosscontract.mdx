@@ -1,0 +1,850 @@
+---
+title: 跨合约调用
+description: "合约可以与网络上的其他合约进行交互"
+---
+
+import {Github} from '/snippets/github.jsx';
+
+NEAR 合约可以与其他已部署的合约进行交互，通过跨合约调用查询信息并在其上执行函数。
+
+由于 NEAR 是一个分片区块链，其跨合约调用的行为与其他链不同。在 NEAR 中，跨合约调用是**异步**且**独立**的。
+
+<Tip>
+**异步**
+**调用函数**和**回调函数**在**不同的区块**中执行（通常相差 1-2 个区块）。在此期间，合约保持活跃状态，可以接收其他调用。
+</Tip>
+
+<Tip>
+**独立**
+
+每个函数——发起调用的函数、外部函数和回调函数——都在各自的上下文中执行。如果外部调用失败，调用函数已经成功完成；不会自动回滚。您必须在回调中明确处理失败情况。
+
+</Tip>
+
+---
+
+## 代码片段：查询信息
+
+在编写合约时，您可能需要从另一个合约查询信息。以下是一个基本示例，我们从 [Hello NEAR](../quickstart) 示例中查询问候语消息。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Tabs>
+      <Tab title="low_level.rs">
+        <Github fname="low_level.rs" language="rust"
+                url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs"
+                start="7" end="39" />
+      </Tab>
+      <Tab title="high_level.rs">
+        <Github fname="high_level.rs" language="rust"
+                url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
+                start="8" end="37" />
+        高级 API 使用了 [ext_contract.rs](https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs) 中定义的接口
+      </Tab>
+    </Tabs>
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
+            start="18" end="52" />
+  </Tab>
+
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import call, view, Contract, callback, PromiseResult, CrossContract, init
+
+class CrossContractExample(Contract):
+    # Contract we want to interact with
+    hello_contract = "hello-near.testnet"
+        
+    @init
+    def new(self):
+        """Initialize the contract"""
+        # Any initialization logic goes here
+        pass
+        
+    @view
+    def query_greeting_info(self):
+        """View function showing how to make a cross-contract call"""
+        # Create a reference to the Hello NEAR contract
+        # This is a simple call that will execute in the current transaction
+        hello = CrossContract(self.hello_contract)
+        return hello.call("get_greeting").value()
+    
+    @call
+    def query_greeting(self):
+        """Calls Hello NEAR contract to get the greeting with a callback"""
+        # Create a reference to the Hello NEAR contract
+        hello = CrossContract(self.hello_contract)
+        
+        # Call get_greeting and chain a callback
+        # The Promise API handles serialization and callback chaining
+        promise = hello.call("get_greeting").then("query_greeting_callback")
+        
+        return promise.value()
+    
+    @callback
+    def query_greeting_callback(self, result: PromiseResult):
+        """Processes the greeting result from Hello NEAR contract"""
+        # The @callback decorator automatically parses the promise result
+        # result will have a data property and a success boolean
+        if not result.success:
+            return {"success": False, "message": "Failed to get greeting"}
+            
+        return {
+            "success": True,
+            "greeting": result.data,
+            "message": f"Successfully got greeting: {result.data}"
+        }
+```
+  </Tab>
+
+  <Tab title="🐹 GO">
+```go
+package main
+
+import (
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// @contract:state
+type Contract struct{}
+
+// @contract:payable min_deposit=0.001NEAR
+func (c *Contract) ExampleQueryingGreetingInfo() {
+	helloAccount := "hello-nearverse.testnet"
+	gas := uint64(10 * types.ONE_TERA_GAS)
+
+	promise.NewCrossContract(helloAccount).
+		Gas(gas).
+		Call("get_greeting", map[string]string{}).
+		Value()
+}
+
+// @contract:payable min_deposit=0.001NEAR
+func (c *Contract) ExampleQueryingInformation() {
+	helloAccount := "hello-nearverse.testnet"
+	gas := uint64(10 * types.ONE_TERA_GAS)
+
+	promise.NewCrossContract(helloAccount).
+		Gas(gas).
+		Call("get_greeting", map[string]string{}).
+		Then("example_querying_information_response", map[string]string{})
+}
+
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleQueryingInformationResponse(result promise.PromiseResult) {
+
+	if result.Success {
+		env.LogString("State change/Query completed successfully")
+	} else {
+		env.LogString("State change/Query failed")
+	}
+
+	env.LogString("Promise result status: " + types.IntToString(result.StatusCode))
+	if len(result.Data) > 0 {
+		env.LogString("Returned data: " + string(result.Data))
+	} else {
+		env.LogString("No return data")
+	}
+}
+```
+  </Tab>
+</Tabs>
+
+---
+
+## 代码片段：发送信息
+调用另一个合约并传递信息也是常见场景。以下是一个与 [Hello NEAR](../quickstart) 示例交互以更改其问候语消息的函数。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Tabs>
+      <Tab title="low_level.rs">
+        <Github fname="low_level.rs" language="rust"
+                url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs"
+                start="41" end="72" />
+      </Tab>
+      <Tab title="high_level.rs">
+        <Github fname="high_level.rs" language="rust"
+                url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
+                start="39" end="66" />
+
+        高级 API 使用了 [ext_contract.rs](https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs) 中定义的接口
+      </Tab>
+    </Tabs>
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
+            start="54" end="87" />
+  </Tab>
+
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import call, Contract, callback, PromiseResult, CrossContract
+
+class CrossContractExample(Contract):
+    # Contract we want to interact with
+    hello_contract = "hello-near.testnet"
+        
+    @call
+    def change_greeting(self, new_greeting):
+        """Changes the greeting on the Hello NEAR contract"""
+        # Create a reference to the Hello NEAR contract
+        hello = CrossContract(self.hello_contract)
+        
+        # Create a promise to call set_greeting with the new greeting
+        # Pass context data to the callback directly as kwargs
+        promise = hello.call(
+            "set_greeting", 
+            message=new_greeting
+        ).then(
+            "change_greeting_callback",
+            original_greeting=new_greeting  # Additional context passed to callback
+        )
+        
+        return promise.value()
+    
+    @callback
+    def change_greeting_callback(self, result: PromiseResult, original_greeting):
+        """Processes the result of set_greeting"""
+        # The original_greeting parameter is passed from the change_greeting method
+        if not result.success:
+            return {
+                "success": False, 
+                "message": f"Failed to set greeting to '{original_greeting}'"
+            }
+            
+        return {
+            "success": True,
+            "message": f"Successfully set greeting to '{original_greeting}'",
+            "result": result.data
+        }
+```
+  </Tab>
+
+  <Tab title="🐹 GO">
+```go
+package main
+
+import (
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// @contract:state
+type Contract struct{}
+
+// @contract:payable min_deposit=0.00001NEAR
+func (c *Contract) ExampleSendingInformation() {
+	helloAccount := "hello-nearverse.testnet"
+	gas := uint64(30 * types.ONE_TERA_GAS)
+
+	args := map[string]string{
+		"message": "New Greeting",
+	}
+
+	promise.NewCrossContract(helloAccount).
+		Gas(gas).
+		Call("set_greeting", args).
+		Then("example_change_greeting_callback", map[string]string{})
+}
+
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleChangeGreetingCallback(result promise.PromiseResult) {
+	if result.Success {
+		env.LogString("State change completed successfully")
+	} else {
+		env.LogString("State change failed")
+	}
+
+	env.LogString("Promise result status: " + types.IntToString(int(result.StatusCode)))
+	if len(result.Data) > 0 {
+		env.LogString("Returned data: " + string(result.Data))
+	} else {
+		env.LogString("No return data from state change")
+	}
+}
+```
+  </Tab>
+</Tabs>
+
+---
+
+## Promise
+跨合约调用通过在网络中创建两个 Promise 来工作：
+1. 在外部合约中执行代码的 Promise - `Promise.create`
+2. **可选**：调用另一个函数并传递结果的 Promise - `Promise.then`
+
+两个 Promise 都包含以下信息：
+
+- 您要交互的合约的**地址**
+- 您要执行的**函数**
+- 传递给函数的参数
+- 要使用的 **GAS** 数量（从**附加的 Gas** 中扣除）
+- 附加的 NEAR **存款**（从**您合约的余额**中扣除）
+
+<Tip>
+
+回调可以发送给**任何**合约，这意味着结果可能由另一个合约处理。
+
+</Tip>
+
+---
+
+## 创建跨合约调用
+
+要创建带回调的跨合约调用，需要创建两个 Promise 并使用 `.then` 方法链接它们：
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Tabs>
+        <Tab title="高级 API">
+
+        ```rust
+        #[ext_contract(external_trait)]
+        trait Contract {
+            fn function_name(&self, param1: T, param2: T) -> T;
+        }
+
+        external_trait::ext("external_address")
+        .with_attached_deposit(DEPOSIT)
+        .with_static_gas(GAS)
+        .function_name(arguments)
+        .then(
+        // 这是回调
+        Self::ext(env::current_account_id())
+        .with_attached_deposit(DEPOSIT)
+        .with_static_gas(GAS)
+        .callback_name(arguments)
+        );
+
+        ```
+
+        </Tab>
+        <Tab title="低级 API">
+
+        ```rust
+        let arguments = json!({ "foo": "bar" })
+            .to_string()
+            .into_bytes();
+
+        let promise = Promise::new("external_address").function_call(
+            "function_name".to_owned(),
+            arguments,
+            DEPOSIT,
+            GAS
+        );
+
+        promise.then(
+            // 创建一个 Promise 回调 query_greeting_callback
+            Self::ext(env::current_account_id())
+                .with_static_gas(GAS)
+                .callback_name(),
+        );
+        ```
+        </Tab>
+    </Tabs>
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+    ```ts
+    NearPromise.new("external_address").functionCall("function_name", JSON.stringify(arguments), DEPOSIT, GAS)
+    .then(
+      // 这个函数是回调
+      NearPromise.new(near.currentAccountId()).functionCall("callback_name", JSON.stringify(arguments), DEPOSIT, GAS)
+    );
+      ```
+  
+  </Tab>
+  <Tab title="🐹 GO">
+  
+  ```go
+  package main
+  
+  import (
+      "github.com/vlmoon99/near-sdk-go/env"
+      "github.com/vlmoon99/near-sdk-go/promise"
+      "github.com/vlmoon99/near-sdk-go/types"
+  )
+  
+  // @contract:state
+  type Contract struct{}
+  
+  type PromiseCallbackInputData struct {
+      Data string `json:"data"`
+  }
+  
+  // @contract:payable min_deposit=0.00001NEAR
+  func (c *Contract) ExampleCrossContractCall() {
+      externalAccount := "hello-nearverse.testnet"
+      gas := uint64(5 * types.ONE_TERA_GAS)
+  
+      args := map[string]string{
+          "message": "New Greeting",
+      }
+      callback_args := map[string]string{
+          "data": "saved_for_callback",
+      }
+      promise.NewCrossContract(externalAccount).
+          Gas(gas).
+          Call("set_greeting", args).
+          Then("example_cross_contract_callback", callback_args).
+          Value()
+  }
+  
+  // @contract:view
+  // @contract:promise_callback
+  func (c *Contract) ExampleCrossContractCallback(input PromiseCallbackInputData, result promise.PromiseResult) {
+      env.LogString("Executing callback")
+  
+      env.LogString("Input CrossContractCallback : " + input.Data)
+  
+      if result.Success {
+          env.LogString("Cross-contract call executed successfully")
+      } else {
+          env.LogString("Cross-contract call failed")
+      }
+  }
+  ```
+  </Tab>
+
+</Tabs>
+  
+<Accordion title="连接 Promise">
+
+✅ 您可以连接 Promise：`P1.then(P2).then(P3)`：`P1` 执行，然后 `P2` 以 `P1` 的结果执行，然后 `P3` 以 `P2` 的结果执行
+
+✅ 您可以合并 Promise：`(P1.and(P2)).then(P3)`：`P1` 和 `P2` 并行执行，完成后 `P3` 将执行并可以访问**两者的结果**
+
+⛔ 不能在没有回调的情况下**返回**一个合并的 Promise：`return P1.and(P2)` 是无效的，您需要添加 `.then()`
+
+⛔ 不能在 `then` 中合并 Promise：`P1.then(P2.join([P3]))` 是无效的
+
+⛔ 不能在 `then` 中使用 `then`：`P1.then(P2.then(P3))` 是无效的
+
+</Accordion>
+
+<Info>
+
+如果函数返回一个 Promise，那么它将委托返回值和交易执行状态；但如果您返回一个值或什么都不返回，那么 `Promise` 结果将不会影响交易状态。
+
+</Info>
+
+<Warning>
+
+您创建的 Promise 不会**立即执行**。事实上，它们将在网络中排队：
+- 跨合约调用将在您的函数**正确完成**后 1 或 2 个区块后执行。
+
+</Warning>
+
+---
+
+## 回调函数
+如果您的函数正确完成，那么最终您的回调函数将会执行。无论**外部合约是否失败**，这都会发生。
+
+在回调函数中，您将可以访问结果，其中包含外部函数的状态（是否成功）以及成功时的返回值。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+    <Github fname="high_level.rs" language="rust"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
+            start="23" end="37" />
+  </Tab>
+
+  <Tab title="🌐 JavaScript">
+    <Github fname="contract.ts" language="js"
+            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts"
+            start="42" end="53" />
+  </Tab>
+
+  <Tab title="🐍 Python">
+```python
+from near_sdk_py import callback, PromiseResult, Contract
+
+class CrossContractExample(Contract):
+    @callback
+    def query_greeting_callback(self, result: PromiseResult, additional_context=None):
+        """
+        Process the result of a cross-contract call.
+        The @callback decorator automatically:
+        1. Reads the promise result data
+        2. Handles serialization/deserialization 
+        3. Provides proper error handling
+        
+        Parameters:
+        - result: The PromiseResult object with status and data
+        - additional_context: Optional context passed from the calling function
+        """
+        if not result.success:
+            # This means the external call failed or returned nothing
+            return {
+                "success": False, 
+                "message": "Failed to get greeting",
+                "context": additional_context
+            }
+            
+        # Process successful result
+        return {
+            "success": True,
+            "greeting": result.data,
+            "message": f"Successfully got greeting: {result.data}",
+            "context": additional_context
+        }
+```
+  </Tab>
+
+  <Tab title="🐹 GO">
+```go
+type PromiseCallbackInputData struct {
+	Data string `json:"data"`
+}
+
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleCrossContractCallback(input PromiseCallbackInputData, result promise.PromiseResult) {
+	env.LogString("Executing callback")
+
+	env.LogString("Input CrossContractCallback : " + input.Data)
+
+	if result.Success {
+		env.LogString("Cross-contract call executed successfully")
+	} else {
+		env.LogString("Cross-contract call failed")
+	}
+}
+```
+  </Tab>
+</Tabs>
+
+<Info>
+**回调始终会执行**
+
+再次强调，如果您的函数正确完成，那么您的回调将**始终执行**。无论外部函数是否正确完成，这都会发生。
+
+</Info>
+
+<Warning>
+
+始终确保为您的回调函数有足够的 Gas 来执行。
+
+</Warning>
+
+<Tip>
+
+记得使用宏/装饰器将您的回调函数标记为私有，这样它只能由合约本身调用。
+
+</Tip>
+
+### 如果我调用的函数失败会怎样？
+如果外部函数失败（即 panic），那么您的回调**仍然会执行**。在这里，您需要**手动回滚**在原始调用期间对合约所做的任何更改。特别是：
+
+1. **如有需要，退款给前驱账户**：如果合约向调用附加了 NEAR，这些资金现在回到了**合约账户中**。
+2. **恢复任何状态更改**：如果原始函数做了任何状态更改（即更改或存储了数据），您需要手动回滚它们。**它们不会自动恢复**。
+
+<Warning>
+如果您的原始函数正确完成，那么即使**外部函数 panic**，回调也会执行。您的状态**不会**自动回滚，`$NEAR` **不会**自动返回给签名者。务必在回调中检查外部函数是否失败，并在必要时手动回滚任何操作。
+</Warning>
+
+---
+
+## 在同一合约上调用多个函数
+
+您可以在同一个外部合约上调用多个函数，这被称为**批量调用**。
+
+批量调用的一个重要特性是它们**作为一个单元**运行：它们在同一个 [receipt](/protocol/transactions/transaction-execution#receipts--finality) 中执行，如果**任何函数失败**，那么它们**全部都会回滚**。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+
+  <Github fname="lib.ts" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
+        start="8" end="20" />
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  <Github fname="batch_actions" language="js"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
+        start="5" end="17" />
+
+  </Tab>
+  
+  <Tab title="🐍 Python">
+
+```python
+from near_sdk_py import call, Context, Contract, callback, PromiseResult, ONE_TGAS, CrossContract, init
+
+class BatchCallsExample(Contract):
+    # Contract we want to interact with
+    hello_contract = "hello-near.testnet"
+    
+    @init
+    def new(self):
+        """Initialize the contract"""
+        pass
+        
+    @call
+    def call_multiple_methods(self, greeting1, greeting2):
+        """Call multiple methods on the same contract in a batch"""
+        # Create a contract instance
+        hello = CrossContract(self.hello_contract)
+        
+        # Create a batch for the hello contract
+        batch = hello.batch()
+        
+        # Add function calls to the batch
+        batch.function_call("set_greeting", {"message": greeting1})
+        batch.function_call("another_method", {"arg1": greeting2})
+        
+        # Add a callback to process the result
+        promise = batch.then(Context.current_account_id()).function_call(
+            "batch_callback", 
+            {"original_data": [greeting1, greeting2]},
+            gas=10 * ONE_TGAS
+        )
+        
+        return promise.value()
+        
+    @callback
+    def batch_callback(self, result: PromiseResult, original_data=None):
+        """Process batch result - only gets the result of the last operation"""
+        return {
+            "success": result.success,
+            "result": result.data,
+            "original_data": original_data
+        }
+```
+
+  </Tab>
+  <Tab title="🐹 GO">
+
+```go
+package main
+
+import (
+	"strconv"
+
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// @contract:state
+type Contract struct{}
+
+type PromiseCallbackInputData struct {
+	Data string `json:"data"`
+}
+
+// @contract:payable min_deposit=0.00001NEAR
+func (c *Contract) ExampleBatchCallsSameContract() {
+	helloAccount := "hello-nearverse.testnet"
+	gas := uint64(10 * types.ONE_TERA_GAS)
+	amount, _ := types.U128FromString("0")
+	callback_args := map[string]string{
+		"data": "[Greeting One, Greeting Two]",
+	}
+
+	promise.NewCrossContract(helloAccount).
+		Batch().
+		Gas(gas).
+		FunctionCall("set_greeting", map[string]string{
+			"message": "Greeting One",
+		}, amount, gas).
+		FunctionCall("another_method", map[string]string{
+			"arg1": "val1",
+		}, amount, gas).
+		Then(helloAccount).
+		FunctionCall("example_batch_calls_callback", callback_args, amount, gas)
+
+	env.LogString("Batch call created successfully")
+}
+
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleBatchCallsCallback(input PromiseCallbackInputData, result promise.PromiseResult) {
+	env.LogString("Processing batch call results")
+	env.LogString("Input CrossContractCallback : " + input.Data)
+
+	env.LogString("Batch call success: " + strconv.FormatBool(result.Success))
+	if len(result.Data) > 0 {
+		env.LogString("Batch call data: " + string(result.Data))
+	}
+}
+```
+</Tab>
+
+</Tabs>
+
+<Tip>
+
+回调只能访问批量调用中**最后一个函数**的结果。
+
+</Tip>
+
+---
+
+## 在不同合约上调用多个函数
+
+您也可以在**不同的合约**上调用多个函数。这些函数将并行执行，且互不影响。这意味着，如果一个失败，其他的**将会执行，且不会回滚**。
+
+<Tabs>
+  <Tab title="🦀 Rust">
+      <Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
+        start="17" end="55" />
+  </Tab>
+  <Tab title="🌐 JavaScript">
+      <Github fname="lib.ts" language="js"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
+        start="6" end="21" />
+  </Tab>
+ 
+  <Tab title="🐍 Python">
+
+```python
+from near_sdk_py import call, Contract, multi_callback, PromiseResult, CrossContract, init
+
+class MultiContractExample(Contract):
+    # Contract addresses we want to interact with
+    contract_a = "contract-a.testnet"
+    contract_b = "contract-b.testnet"
+    
+    @init
+    def new(self):
+        """Initialize the contract"""
+        pass
+        
+    @call
+    def call_multiple_contracts(self):
+        """Calls multiple different contracts in parallel"""
+        # Create promises for each contract
+        contract_a = CrossContract(self.contract_a)
+        promise_a = contract_a.call("method_a")
+        
+        contract_b = CrossContract(self.contract_b)  
+        promise_b = contract_b.call("method_b")
+        
+        # Join the promises and add a callback
+        # The first promise's join method can combine multiple promises
+        combined_promise = promise_a.join(
+            [promise_b],
+            "multi_contract_callback",
+            contract_ids=[self.contract_a, self.contract_b]  # Context data
+        )
+        
+        return combined_promise.value()
+        
+    @multi_callback
+    def multi_contract_callback(self, results, contract_ids=None):
+        """Process results from multiple contracts"""
+        # results is an array containing all promise results in order
+        return {
+            "contract_a": {
+                "id": contract_ids[0],
+                "result": results[0].data,
+                "success": results[0].success
+            },
+            "contract_b": {
+                "id": contract_ids[1],
+                "result": results[1].data,
+                "success": results[1].success
+            },
+            "success": all(result.success for result in results)
+        }
+```
+
+  </Tab>
+  <Tab title="🐹 GO">
+
+```go
+package main
+
+import (
+	"strconv"
+
+	"github.com/vlmoon99/near-sdk-go/env"
+	"github.com/vlmoon99/near-sdk-go/promise"
+	"github.com/vlmoon99/near-sdk-go/types"
+)
+
+// @contract:state
+type Contract struct{}
+
+type PromiseCallbackInputData struct {
+	Data string `json:"data"`
+}
+
+// @contract:payable min_deposit=0.00001NEAR
+func (c *Contract) ExampleParallelCallsDifferentContracts() {
+	contractA := "hello-nearverse.testnet"
+	contractB := "child.neargopromises1.testnet"
+
+	promiseA := promise.NewCrossContract(contractA).
+		Call("get_greeting", map[string]string{})
+
+	promiseB := promise.NewCrossContract(contractB).
+		Call("SetStatus", map[string]string{"message": "Hello, World!"})
+
+	promiseA.Join([]*promise.Promise{promiseB}, "example_parallel_contracts_callback", map[string]string{
+		"data": contractA + "," + contractB,
+	}).Value()
+
+	env.LogString("Parallel contract calls initialized")
+}
+
+// @contract:view
+// @contract:promise_callback
+func (c *Contract) ExampleParallelContractsCallback(input PromiseCallbackInputData, results []promise.PromiseResult) {
+	env.LogString("Processing results from multiple contracts")
+	env.LogString("Input CrossContractCallback : " + input.Data)
+
+	for i, result := range results {
+		env.LogString("Processing result " + types.IntToString(i))
+		env.LogString("Success: " + strconv.FormatBool(result.Success))
+		if len(result.Data) > 0 {
+			env.LogString("Data: " + string(result.Data))
+		}
+	}
+
+	env.LogString("Processed " + types.IntToString(len(results)) + " contract responses")
+}
+```
+</Tab>
+
+</Tabs>
+
+<Tip>
+
+回调可以访问并行调用中**所有函数**的结果。
+
+</Tip>
+
+---
+
+## 安全注意事项
+
+在编写跨合约调用时，有一个重要方面需要牢记：所有调用都是**独立**且**异步**的。换句话说：
+
+- 进行调用的函数和回调函数是**独立**的。
+- 调用和回调之间存在**延迟**，在此期间人们仍然可以与合约交互。
+
+这对您如何处理回调有重要影响。特别是：
+
+1. 确保在调用和回调之间不要让合约处于可被利用的状态。
+2. 如果外部调用失败，在回调中手动回滚对状态的任何更改。
+
+我们有一个专门针对这些特定错误的[安全部分](../security/callbacks)，请务必查阅。
+
+<Warning>
+不遵循这些基本安全准则可能会让您的合约面临漏洞利用风险。请查看[安全部分](../security/callbacks)，如果仍有疑问，[请在 Discord 加入我们](https://near.chat)。
+</Warning>

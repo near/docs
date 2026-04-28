@@ -1,0 +1,413 @@
+---
+title: 使用 FT 出价
+description: "了解如何启用使用同质化代币出价"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+为了进一步开发这个合约，我们将引入另一个原语：[同质化代币](/primitives/ft/ft)。出价将不再以 `$NEAR` 代币进行，而是以 FT 进行。例如，当拍卖进行时，拍卖者希望保持出价金额以美元计算不变，这时可以接受以 $USDC 等稳定币进行的出价。另一个使用场景是 Ref Finance 等项目举办自己的拍卖，并希望拍卖以其项目代币 $REF 进行。
+
+---
+
+## 指定 FT 合约 
+
+我们希望只接受一种类型的同质化代币出价；接受多种不同的 FT 将使每次出价的价值难以比较。我们还将调整合约，使拍卖者可以为拍卖指定起始出价金额。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="contract.ts" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L23-L30"
+                start="23" end="30" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="lib.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L33-L53"
+                start="33" end="53" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 接受 FT 出价
+
+当我们以 `$NEAR` 代币出价时，我们直接调用拍卖合约并向调用附加 `$NEAR` 代币。使用同质化代币时，由于账户余额存在于单独的合约上，我们调用 FT 合约，FT 合约再调用拍卖合约并转移代币。FT 合约上用于此操作的方法名为 `ft_transfer_call`，它将始终调用目标合约中名为 `ft_on_transfer` 的方法。请查看[此处](/primitives/ft/ft#attaching-fts-to-a-call)了解更多信息。
+
+![ft_transfer_call-flow](/assets/docs/web3-apps/tutorials/mastering-near/auction-ft-transfer.png)
+
+`ft_on_transfer` 方法始终具有相同的接口；FT 合约将向其传递 `sender`（发送者）、`amount`（正在发送的 FT 数量）和一个 `msg`（可以为空，在本例中为空），或者它可以包含该方法所需的一些信息（如果您想在 msg 中发送多个参数，最好以 JSON 形式传递，然后在合约中解析）。该方法返回要退还给用户的代币数量，在我们的情况下，我们将使用调用中附加的所有代币用于出价，除非合约发生 panic，在这种情况下，用户将自动获得其 FT 的全额退款。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="contract.ts" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L33"
+                start="33" end="33" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="lib.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L56"
+                start="56" end="56" />
+
+    </Tab>
+
+</Tabs>
+
+我们需要确认用户在调用方法时正在附加同质化代币，以及他们使用的是正确的 FT，这是通过检查前驱账户的账户 ID 来完成的。由于 FT 合约是直接调用拍卖合约的，所以 `predecessor` 现在是 FT 合约的账户 ID。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="contract.ts" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L38"
+                start="38" end="38" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="lib.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L62-L63"
+                start="62" end="63" />
+
+    </Tab>
+
+</Tabs>
+
+出价者的账户 ID 现在由参数 `sender_id` 给出，出价金额作为名为 `amount` 的参数传递。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="contract.ts" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L40-L43"
+                start="40" end="43" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="lib.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L75-L78"
+                start="75" end="78" />
+
+    </Tab>
+
+</Tabs>
+
+当我们想要将资金退还给前一个出价者时，我们现在向 FT 合约发起跨合约调用。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="call" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L45-L51"
+                start="45" end="51" />
+            <Github fname="callback" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L78-L81"
+                start="68" end="71" />
+
+        在 JavaScript 中，我们必须返回 Promise 来转移 FT，但我们也需要返回要退还给用户的金额。因此，在转移 FT 后，我们向自己的合约发起一个 `callback`（回调）以恢复合约流程。请注意，回调是私有的，只能由合约调用。我们返回 0，因为该方法使用了调用中的所有 FT。
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="lib.rs" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L81-L84"
+                start="81" end="84" />
+            <Github fname="ext.rs" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/ext.rs#L8-L11"
+                start="8" end="11" />
+
+         然后我们返回 0，因为该方法使用了调用中的所有 FT。
+
+        <Github fname="lib.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L86"
+                start="86" end="86" />
+
+    </Tab>
+
+</Tabs>
+
+    如果调用失败，FT 合约将自动退还用户的 FT。
+
+<Accordion title="如果跨合约调用失败会发生什么？">
+
+    第一次调用此方法时，合约将尝试向自身发送 FT。大多数同质化代币合约不允许向自身发送 FT，所以跨合约调用将失败。但是，由于跨合约调用是异步且独立的，我们没有检查调用的结果，所以拍卖合约不关心调用是否失败，ft_on_transfer 将成功完成。
+
+    在其他情况下，对同质化代币合约的调用只有在以下情况下才会失败：接收者不存在、FT 合约不存在、拍卖合约没有足够的同质化代币来覆盖正在发送的金额，或者接收者未在 FT 合约中注册。我们的合约设置使这些错误不会发生：接收者必须存在，因为他们提交了上一次出价；FT 合约存在，因为它被用于提交出价；拍卖合约有足够的 FT 来覆盖金额，因为它在上一次出价时收到了该金额；接收者必须在 FT 合约中注册，因为他们需要持有该代币才能出价。
+
+</Accordion>  
+
+---
+
+## 领取 FT
+
+拍卖完成后，我们需要在向获胜出价者发送 NFT 的同时向拍卖者发送同质化代币，我们实现与退还资金时类似的调用，只是更改参数。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="contract.ts" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L61-L65"
+                start="61" end="65" />
+
+        在 JavaScript 中，由于我们需要返回每个跨合约调用，我们将 NFT 和 FT 转移链接在一起。
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="lib.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L99-L109"
+                start="99" end="109" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 创建新 FT
+
+与 NFT 合约一样，我们将在沙箱测试中使用从[此仓库](https://github.com/near-examples/FT)编译的 WASM 文件部署 FT 合约。
+
+部署合约时，使用 `new_default_meta` 进行初始化，该方法将代币的元数据（包括名称和符号等）设置为默认值，同时需要指定所有者（代币供应量将发送到该账户）和代币的总供应量。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L28-L29"
+                start="28" end="29" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L33-L46"
+                start="33" end="46" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 在 FT 合约中注册用户
+
+要接收同质化代币，首先需要在 FT 合约中[注册](/primitives/ft/ft#registering-a-user)其账户 ID。用户必须在 FT 合约中注册，以支付追踪其代币数量所需的存储费用。默认情况下，合约为自己的存储付费，但如果不要求用户注册并支付存储费用，将会耗尽合约的 `$NEAR` 代币。当合约上线时，我们不需要注册我们退还代币的账户，因为出价者首先需要已注册才能出价，但我们确实需要在 FT 合约中注册拍卖合约以接收出价，以及注册拍卖者以在拍卖结束时接收资金。从前端注册用户比从合约中注册更方便。
+
+在我们的测试中，由于我们正在创建新的同质化代币和新账户，实际上必须注册每个将与 FT 交互的账户。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L50-L53"
+                start="50" end="53" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L81-L97"
+                start="81" end="97" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 简单 FT 转账给出价者
+
+然后，我们将 FT 转账给出价者，以便他们可以用于出价。简单的 FT 转账使用 FT 合约上的 `ft_transfer` 方法完成。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L56-L57"
+                start="56" end="57" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="Call ft_transfer" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L100-L107"
+                start="100" end="107" />
+            <Github fname="ft_transfer definition" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L291-L307"
+                start="291" end="307" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## FT 转账调用
+
+如前所述，要在拍卖中出价，出价者现在调用 FT 合约上的 `ft_transfer_call`，FT 合约随后调用拍卖合约的 `ft_on_transfer` 方法并附上同质化代币。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L101-L104"
+                start="101" end="104" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="Call ft_transfer_call" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L149-L161"
+                start="149" end="161" />
+            <Github fname="ft_transfer_call definition" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L322-L337"
+                start="322" end="337" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 检查用户的 FT 余额
+
+以前，要检查用户的 `$NEAR` 余额，我们从其账户中获取详情。现在我们使用 FT，我们在 FT 合约上使用 `ft_balance_of` 查询余额，让我们检查合约的余额是否增加了出价金额，以及用户的余额是否减少了出价金额。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L106-L109"
+                start="106" end="109" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="Call ft_balance_of" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L163-L166"
+                start="163" end="166" />
+            <Github fname="ft_balance_of definition" 
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L309-L320"
+                start="309" end="320" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 无效 FT 转账调用
+
+如果我们的出价低于前一次，这将导致拍卖合约 panic。人们可能期望 `ft_transfer_call` 会失败，但实际上不会。`ft_on_transfer` 会失败，FT 合约会识别到这一点并撤销代币转移。因此，进行无效出价后，我们应该检查调用是否成功，但参与交易的各方（出价者和合约）的同质化代币余额与调用前相同。
+
+在此之前，Bob 出价 60,000，Alice 的出价被退还，使其余额恢复到 150,000。现在当 Alice 进行 50,000 的无效出价时，Alice 的余额应该保持在 150,000，合约应该保持 60,000 的余额。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        <Github fname="main.ava.js" language="javascript"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L122-L130"
+                start="122" end="130" />
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        <Github fname="test_basics.rs" language="rust"
+                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L190-L207"
+                start="190" end="207" />
+
+    </Tab>
+
+</Tabs>
+
+---
+
+## 使用 CLI 操作 FT
+
+如果您想与拍卖合约交互，您将需要 FT。在本例中，我们将使用 $DAI，其合约地址为 `dai.fakes.testnet`。可以通过[测试网水龙头](https://near-faucet.io/)轻松获取 FT。选择 DAI 并提现到您将用于出价的账户。如果您查看交易详情，可以看到水龙头在 FT 合约中注册您的账户，然后从水龙头账户向您发送 DAI。
+
+部署合约时，请确保指定 FT 合约 `dai.fakes.testnet`。
+
+拍卖合约也需要注册，您可以通过从水龙头向其发送任意数量的 $DAI 来完成，或者直接注册，因为它不需要任何 FT。您还应该注册拍卖者，
+
+```bash
+near call dai.fakes.testnet storage_deposit '{"account_id": "<auctionContractId>"}' --useAccount <accountId> --deposit 0.1
+```
+
+现在您可以进行出价了。DAI 有 18 位小数，这意味着 1 $DAI 由 10^18 个最小单位组成。要出价 2 $DAI，您可以使用以下命令：
+
+```bash
+near call dai.fakes.testnet ft_transfer_call '{"receiver_id": "<auctionContractId>", "amount": "2000000000000000000", "msg": ""}' --useAccount <bidderId> --depositYocto 1
+```
+
+## 拍卖架构 
+
+在创建应用程序时，有许多方式可以组织结构。在这里，我们每次拍卖使用一个合约，这意味着我们每次举办新拍卖时都必须部署一个新合约。为了使这更容易，我们将利用工厂合约来为拍卖者部署拍卖合约。为每次拍卖部署代码变得昂贵，因为 NEAR 上 100kb 存储费用为 1 `$NEAR`，由于每次拍卖存储相同类型的信息并实现相同的方法，人们可以改为决定在每个合约中包含多次拍卖。
+
+在这种情况下，合约结构体将是一个拍卖的映射。我们将实现一个方法，通过向映射中添加具有该特定拍卖详情的条目来创建新拍卖。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+        ```javascript
+        class Contract {
+            auctions: UnorderedMap<string, Auction>
+        ```
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+        ```rust 
+        pub struct Contract {
+            auctions: IterableMap<String, Auction>
+        ```
+
+    </Tab>
+
+</Tabs>
+
+然而，这种架构可能被认为安全性较低，因为如果恶意行为者获得了对合约的访问权，他们将可以访问每次拍卖，而不仅仅是一次。
+
+--- 
+
+## 结论
+
+在本节中，您学习了很多关于同质化代币的知识：如何在智能合约中发送和接收 FT，然后在沙箱测试中如何部署和初始化 FT 合约、如何在 FT 合约中注册用户并向其发送一些代币、如何将 FT 附加到智能合约调用，以及最后如何查看用户的 FT 余额。至此，我们的完整拍卖智能合约已经完成！
+
+从更宏观的角度来看，我们从一个非常简单的拍卖合约开始，并将其转变为一个具有全面测试的更成熟的生产合约。为了改进拍卖，我们学习了如何通过引入 NFT 添加奖品，并使拍卖者能够以 FT 举办拍卖。
+
+在[教程的下一部分](./3.3-new-frontend)，我们将更新前端以与合约的新功能交互。

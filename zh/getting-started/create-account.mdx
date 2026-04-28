@@ -1,0 +1,132 @@
+---
+title: 创建账户
+icon: user-plus
+description: "了解如何使用钱包和 NEAR CLI 创建 NEAR 账户"
+---
+
+要开始在 NEAR 上开发应用程序，您需要一个 NEAR `testnet` 账户。该账户允许您在不花费真实资金的情况下部署和测试应用程序。
+
+您可以通过以下方式之一创建 `testnet` NEAR 账户：
+
+- [使用 wallet.near.org 中列出的钱包之一](#using-a-wallet)
+- [使用命令行界面（CLI）](#through-the-cli)
+
+<Tip>
+
+如果您已有 NEAR 账户，可以将其导入另一个钱包或 CLI。请参阅下方的[导入现有账户](#importing-existing-accounts)。
+
+</Tip>
+
+---
+
+## 使用钱包
+
+访问 [wallet.near.org](https://wallet.near.org/)，从中选择一个钱包。无需担心，该列表经过精心筛选，所有列出的钱包均可放心使用。
+
+总体而言，所有钱包提供的功能大致相同，理论上您可以选择其中任何一个。但请注意，部分钱包可以方便地创建[具名账户](/protocol/accounts-contracts/account-id#named-address)（例如 `alice.testnet`），这类账户更易于记忆。
+
+请务必记录下您的助记词，因为这是访问账户的唯一方式！
+
+<Warning>
+**测试网**
+请确保创建的是 `testnet` 账户（以 `.testnet` 结尾，例如 `alice.testnet`），而非 `mainnet` 账户（以 `.near` 结尾）。
+
+NEAR `testnet` 是一个独立的网络，允许您在不花费真实资金的情况下测试应用程序。
+</Warning>
+
+<Tip>
+**为钱包充值**
+
+需要 `testnet` 代币？请尝试使用我们的[水龙头](/getting-started/faucet)之一
+
+</Tip>
+
+---
+
+## 通过 CLI
+
+在开发智能合约时，您将花费大量时间通过命令行界面（CLI）与 NEAR 区块链进行交互。
+
+首先，您需要安装 [NEAR CLI](/tools/cli#installation)：
+
+<Tabs>
+  <Tab title="npm">
+
+  ```bash
+  npm install -g near-cli-rs@latest
+  ```
+  </Tab>
+  <Tab title="Cargo">
+
+  ```
+  $ cargo install near-cli-rs
+  ```
+  </Tab>
+  <Tab title="Mac and Linux (binaries)">
+
+  ```bash
+  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+  ```
+  </Tab>
+  <Tab title="Windows (binaries)">
+
+  ```bash
+  irm https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.ps1 | iex
+  ```
+  </Tab>
+</Tabs>
+
+安装 CLI 后，您可以使用以下命令创建新账户：
+
+```bash
+near create-account <account.testnet> --useFaucet
+```
+
+该命令将创建一个名为 `<account.testnet>` 的新账户，并通过 `testnet` 水龙头为其注入资金。请将 `<account.testnet>` 替换为您希望使用的账户名称。
+
+---
+
+## 导入现有账户
+
+如果您想在另一个钱包或 CLI 中使用已有的 NEAR 账户，可以通过助记词或私钥进行导入。
+
+<Accordion title="1. 导出您的助记词或私钥">
+从当前钱包中，使用其账户备份/导出流程。
+
+如果账户是通过 CLI 创建的，请运行：
+
+```bash
+near account export-account <account.testnet>
+```
+</Accordion>
+
+<Accordion title="2. 导入到钱包">
+在目标钱包中，选择账户导入/恢复选项，并提供您的助记词。
+</Accordion>
+
+<Accordion title="3. 导入到 CLI">
+运行：
+
+```bash
+near account import-account
+```
+
+然后按照提示输入您的助记词或私钥。
+</Accordion>
+
+<Warning>
+请妥善保管您的助记词和私钥。任何能够获取这些信息的人都可以控制您的账户。
+</Warning>
+
+---
+
+## 后续步骤
+
+创建 NEAR 账户后，您就可以开始在 NEAR 协议上开发应用程序了。
+
+以下是一些帮助您入门的资源：
+
+- 通过我们的[水龙头](/getting-started/faucet)为钱包充值
+- 创建您的[第一个智能合约](/smart-contracts/quickstart)
+- 构建 [Web3 应用程序](/web3-apps/quickstart)
+- 学习如何[端到端构建竞拍应用](/web3-apps/tutorials/mastering-near/0-intro)

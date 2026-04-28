@@ -1,0 +1,366 @@
+---
+title: 外部接口
+hide_table_of_contents: true
+description: "了解如何定义合约的接口。"
+mode: wide
+---
+
+import { ExplainCode, Block , File  } from '/snippets/explain-code.jsx'
+
+智能合约暴露函数以便用户与之交互。有不同类型的函数，包括 `只读`、`私有` 和 `可支付` 函数。
+
+<ExplainCode languages="rust,js,python">
+
+<Block highlights='{"js": "16-20,23-42,45-50,53-55,58-60", "rust": "24-34,37-62,64-75,77-79,81-83", "python": "4-22,25-62,65-94,97-99,102-104,107-121"}' fname="auction">
+
+### 合约接口
+
+合约中所有**公共**函数都是其**接口**的一部分。任何人都可以调用它们，它们是与合约交互的唯一方式。
+
+</Block>
+
+<Block highlights='{"rust": ""}' fname="auction" type='details'>
+
+<Accordion title="暴露 trait 实现">
+
+函数也可以通过 trait 实现来暴露。如果要为合约实现共享接口或标准，这会很有用。代码生成的处理方式与基本 `pub` 函数非常相似，但 `#[near]` 宏只需要附加到 trait 实现上，而不是 trait 本身：
+
+```rust
+pub trait MyTrait {
+    fn trait_method(&mut self);
+}
+
+#[near]
+impl MyTrait for MyContractStructure {
+    fn trait_method(&mut self) {
+        // .. method logic here
+    }
+}
+```
+
+</Accordion>
+
+</Block>
+
+<Block highlights='{"js":"15-20", "rust": "22-34", "python": "4-22"}' fname="auction">
+
+### 初始化函数
+
+合约可以选择有一个初始化函数。如果存在，必须在任何其他函数之前调用此函数以[初始化合约](./storage)。
+
+</Block>
+
+<Block highlights='{"js": "15"}' fname="auction">
+
+#### `@initialize({ privateFunction: true })`
+
+初始化函数用 `@initialize` 装饰器标记。
+
+</Block>
+
+<Block highlights='{"rust": "22"}' fname="auction">
+
+#### `#[init]`
+
+初始化函数用 `#[init]` 宏标记。
+
+</Block>
+
+<Block highlights='{"python": "3"}' fname="auction">
+
+#### `@init`
+
+在 Python 中，初始化函数用 `@init` 装饰器标记。
+
+</Block>
+
+<Block highlights='{"js":"22-42,44-50", "rust": "37-62,64-75", "python": "25-62,65-94"}' fname="auction">
+
+### 状态变更函数
+
+修改[状态](./storage)或执行[操作](./actions)的函数需要由具有 NEAR 账户的用户调用，因为执行它们需要一个交易。
+
+</Block>
+
+<Block highlights='{"js": "22,44"}' fname="auction">
+
+#### `@call`
+
+状态变更函数用 `@call` 装饰器标记。
+
+</Block>
+
+<Block highlights='{"rust": "37,64"}' fname="auction">
+
+#### `&mut self`
+
+在 Rust 中，状态变更函数是那些接受对 `self` 的**可变**引用的函数。
+
+</Block>
+
+<Block highlights='{"python": "24,64"}' fname="auction">
+
+#### `@call`
+
+在 Python 中，状态变更函数用 `@call` 装饰器标记。
+
+</Block>
+
+<Block highlights='{"js": "25,28,29", "rust": "40,45,46", "python": "109"}' fname="auction" type='info'>
+
+<Tip>
+
+SDK 提供了[上下文信息](./environment)，例如哪个账户在调用函数，或当前时间。
+
+</Tip>
+
+</Block>
+
+<Block highlights='{"js":"52-55,57-60", "rust": "77-79,81-83", "python": "97-99,102-104,107-121"}' fname="auction">
+
+### 只读函数
+
+合约的函数可以是只读的，意味着它们不修改状态。调用它们对所有人都是免费的，不需要有 NEAR 账户。
+
+</Block>
+
+<Block highlights='{"js": "52,57"}' fname="auction">
+
+#### `@view`
+
+在 TS/JS 中，只读函数用 `@view` 装饰器标记。
+
+</Block>
+
+<Block highlights='{"rust": "77,81"}' fname="auction">
+
+#### `&self`
+
+在 Rust 中，只读函数是那些接受对 `self` 的**不可变**引用的函数。
+
+</Block>
+
+<Block highlights='{"python": "96,101,106"}' fname="auction">
+
+#### `@view`
+
+在 Python 中，只读函数用 `@view` 装饰器标记。
+
+</Block>
+
+<Block highlights='{"js":"15", "rust": "23", "python": "2"}' fname="auction">
+
+### 私有函数
+
+很多时候您会希望有一些函数作为合约接口的一部分**被暴露**，但**不应直接由用户调用**。
+
+除初始化函数外，[跨合约调用的回调](./crosscontract)应始终是 `private` 的。
+
+这些函数在合约代码中标记为 `private`，只能由合约本身调用。
+
+</Block>
+
+<Block highlights='{"js": "15"}' fname="auction">
+
+#### `decorator({privateFunction: true})`
+
+私有函数通过在 `@call` 或 `@initialize` 装饰器中设置 `privateFunction: true` 来标记。
+
+</Block>
+
+<Block highlights='{"rust": "23"}' fname="auction">
+
+#### [#private]
+
+在 Rust 中，私有函数使用 `#[private]` 宏标记。
+
+</Block>
+
+<Block highlights='{"python": "2"}' fname="auction">
+
+#### Python 中的私有函数
+
+在 Python 中，您可以使用 `@callback` 装饰器创建回调，该装饰器专门用于处理跨合约调用的结果。对于只应由合约本身调用的一般私有函数，您可以在函数内部使用验证来检查调用者是否是合约本身。
+
+</Block>
+
+<Block highlights='{"js":"22,28", "rust": "36,45", "python": "25"}' fname="auction">
+
+### 可支付函数
+
+默认情况下，如果用户向调用附加了 NEAR 代币，函数将会 panic。接受 NEAR 代币的函数必须标记为 `payable`。
+
+在函数内部，用户可以访问[附加存款](./environment)。
+
+</Block>
+
+<Block highlights='{"js": "22,28"}' fname="auction">
+
+#### `@call({payableFunction: true})`
+
+可支付函数通过在 `@call` 装饰器中设置 `payableFunction: true` 来标记。
+
+</Block>
+
+<Block highlights='{"rust": "36,45"}' fname="auction">
+
+#### [#payable]
+
+在 Rust 中，可支付函数使用 `#[payable]` 宏标记。
+
+</Block>
+
+<Block  fname="auction">
+
+#### 在 Python 中处理支付
+
+在 Python 中，您需要使用 Context API 手动检查存款。没有专门的装饰器用于可支付函数，因此您需要在函数代码中验证存款金额。
+
+</Block>
+
+<Block highlights='{"js":"3-5"}' fname="example">
+
+### 内部函数
+
+到目前为止我们涵盖的所有函数都是接口的一部分，意味着它们可以被外部参与者调用。
+
+但是，合约也可以有私有内部函数——例如辅助函数或工具函数——这些函数**不对外界暴露**。
+
+要在 JS 合约中创建内部私有方法，只需省略 `@view` 和 `@call` 装饰器。
+
+</Block>
+
+<Block highlights='{"rust": "5-7"}' fname="example">
+
+### 内部函数
+
+到目前为止我们涵盖的所有函数都是接口的一部分，意味着它们可以被外部参与者调用。
+
+但是，合约也可以有私有内部函数——例如辅助函数或工具函数——这些函数**不对外界暴露**。
+
+要在 Rust 合约中创建内部私有方法，不要将其声明为公共的（`pub fn`）。
+
+</Block>
+
+<Block highlights='{"python": "2-5"}' fname="example">
+
+### 内部函数
+
+到目前为止我们涵盖的所有函数都是接口的一部分，意味着它们可以被外部参与者调用。
+
+但是，合约也可以有私有内部函数——例如辅助函数或工具函数——这些函数**不对外界暴露**。
+
+要在 Python 合约中创建内部私有方法，只需定义没有 `@view`、`@call` 或 `@init` 装饰器的普通方法。
+
+</Block>
+
+<Block highlights='{"rust": "5-7"}' fname="example" type='details'>
+
+  <Accordion title="独立的 impl 块">
+
+另一种不导出方法的方式是有一个独立的 `impl Contract` 部分，它没有标记 `#[near]`。
+
+```rust
+#[near]
+impl Contract {
+    pub fn increment(&mut self) {
+        self.internal_increment();
+    }
+}
+impl Contract {
+    /// 此方法仍然不会被导出。
+    pub fn internal_increment(&mut self) {
+        self.counter += 1;
+    }
+}
+```
+
+  </Accordion>
+
+</Block>
+
+<Block highlights='{"rust": "9-11,13-15", "python": "12-15"}' fname="example">
+
+### 纯函数
+
+纯函数是一种特殊类型的函数，不需要从状态中访问数据。
+
+它们对于在合约上返回硬编码值很有用。
+
+</Block>
+
+<File language="js" fname="auction" url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts" start="2" end="61" />
+
+<File language="rust" fname="auction" url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs" start="2" end="84" />
+
+<File language="python" fname="auction" url="https://github.com/r-near/near-py-examples/blob/main/auction.py" start="2" end="140" />
+
+<CodeBlock language="js" fname="example">
+
+```js
+@NearBindgen({})
+class Contract {
+  helper_function(params... ){
+    // 此函数无法从外部调用
+  }
+
+  @view({})
+  interface_view(params...){
+    // 此函数可以从外部调用
+  }
+
+  @call({privateFunction: true}){
+    // 此函数可以从外部调用，但
+    // 只能由合约账户调用
+  }
+}
+```
+
+</CodeBlock>
+
+<CodeBlock language="rust" fname="example">
+
+```rs
+const SOME_VALUE: u64 = 8;
+
+#[near]
+impl MyContractStructure {
+  fn internal_helper(&mut self, params... ){
+    // 此函数无法从外部调用
+  }
+
+  pub fn public_log(/* Parameters here */) {
+      near_sdk::log!("inside log message");
+  }
+
+  pub fn return_static_u64() -> u64 {
+      SOME_VALUE
+  }
+}
+```
+
+</CodeBlock>
+
+<CodeBlock language="python" fname="example">
+
+```python
+class Contract:
+    def helper_function(self, params...):
+        # 此函数无法从外部调用
+        # 因为它没有装饰器
+        pass
+
+    @call
+    def validate_owner(self):
+        if Context.predecessor_account_id() != self.owner_id:
+            raise Exception("Only the owner can call this method")
+
+    @view
+    def get_static_value(self):
+        # 此函数返回硬编码值
+        return 42
+```
+
+</CodeBlock>
+
+</ExplainCode>

@@ -1,0 +1,144 @@
+---
+title: "教程：简单索引器"
+description: "本教程将引导您使用 NEAR Lake Framework 构建一个简单的索引器。该索引器将监听特定合约上的 FunctionCall 并记录每次调用的详细信息。"
+---
+
+import {Github} from '/snippets/github.jsx';
+
+在本教程中，我们将使用 NEAR Lake Framework 构建一个简单的索引器。该索引器将监听特定合约上的 FunctionCall 并记录每次调用的详细信息。
+
+索引器的完整源代码可在 [GitHub 仓库](https://github.com/near-examples/indexer-near-lake-framework?tab=readme-ov-file)中找到。
+
+<Info>
+使用 NEAR Lake Framework，我们可以订阅来自 NEAR Lake 数据源的区块流。数据来源是由 [NEAR Lake Indexer](https://github.com/aurora-is-near/near-lake-indexer) 存储在 AWS S3 存储桶中的 JSON 文件。NEAR Lake Framework 负责为用户下载和解析数据，但**读者需要支付费用**。关于技术限制和**费用估算**的更多详情，请参见[此处](../near-lake-framework#comparison-with-near-indexer-framework)。
+</Info>
+
+---
+
+## 初始化
+
+让我们从初始化 NEAR Lake Framework 开始。
+
+### AWS 凭证
+
+要访问 [NEAR Lake](../lake-framework/near-lake) 提供的数据，您需要提供有效的 AWS 凭证，以便 AWS 对 S3 使用收费。
+
+<Info>
+**AWS 凭证**
+
+请注意，使用您自己的 AWS 凭证是访问 [NEAR Lake](../lake-framework/near-lake) 生态系统所提供数据的唯一方式。
+
+</Info>
+
+使用 aws configure 进行 AWS 默认配置文件配置，类似如下：
+
+```text
+~/.aws/credentials
+```
+
+```text
+[default]
+aws_access_key_id=<YOUR_AWS_ACCESS_KEY_ID>
+aws_secret_access_key=<YOUR_AWS_ACCESS_KEY>
+```
+
+[AWS 文档：配置和凭证文件设置](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+
+### Lake 配置
+
+要初始化 NEAR Lake Framework，我们需要提供以下基本设置：
+
+- S3 存储桶名称：存储 NEAR Lake 数据的存储桶。测试网的值为 `near-lake-data-testnet`，主网为 `near-lake-data-mainnet`。
+- S3 区域：S3 存储桶所在的 AWS 区域。默认值为 `eu-central-1`。
+- 起始区块高度：索引器将从该区块高度开始处理区块。
+
+<Tabs>
+    <Tab title="🦀 Rust">
+      Rust 包提供了一种使用测试网/主网默认配置的方式，只需选择网络并设置起始区块高度（在示例中我们通过命令行参数传递）。
+
+      <Github fname="main.rs" language="rust"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/rust/src/main.rs"
+        start="23" end="31" />
+    </Tab>
+    <Tab title="🌐 JavaScript">
+      在 JavaScript/TypeScript 中，我们只需手动创建配置对象。区块高度通过命令行参数传递。
+
+      <Github fname="index.ts" language="javascript"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
+        start="5" end="14" />
+    </Tab>
+    <Tab title="🐍 Python">
+      在 Python 中，我们将手动创建配置对象，然后设置 `s3_bucket_name` 和 `s3_region_name` 属性。区块高度通过命令行参数传递。
+
+      <Github fname="main.py" language="python"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/python/main.py"
+        start="11" end="27" />
+    </Tab>
+</Tabs>
+
+## 运行索引器
+
+要运行索引器，我们需要创建一个函数来处理来自流的每条消息。在此函数中，我们可以访问区块数据并按需处理。
+
+<Tabs>
+    <Tab title="🦀 Rust">
+      <Github fname="main.rs" language="rust"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/rust/src/main.rs"
+        start="51" end="70" />
+    </Tab>
+    <Tab title="🌐 JavaScript">
+      <Github fname="index.ts" language="javascript"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
+        start="98" end="101" />
+    </Tab>
+    <Tab title="🐍 Python">
+      <Github fname="main.py" language="python"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/python/main.py"
+        start="39" end="47" />
+    </Tab>
+</Tabs>
+
+## 解析区块数据
+
+从区块数据中，我们可以访问交易、其收据和操作。在本示例中，我们将查找特定合约上的 FunctionCall 操作，并记录每次调用的详细信息。
+
+<Tabs>
+    <Tab title="🦀 Rust">
+      <Github fname="main.rs" language="rust"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/rust/src/main.rs"
+        start="72" end="156" />
+    </Tab>
+    <Tab title="🌐 JavaScript">
+      <Github fname="index.ts" language="javascript"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/js/index.ts"
+        start="24" end="89" />
+    </Tab>
+    <Tab title="🐍 Python">
+      <Github fname="main.py" language="python"
+        url="https://github.com/near-examples/indexer-near-lake-framework/blob/main/python/main.py"
+        start="50" end="96" />
+    </Tab>
+</Tabs>
+
+日志数据示例：
+```bash
+Block height: 214692896
+
+Transaction hash HQsRK16ABEQWtKpHKWMbPgUreXCD95ZpKw47YkHxGsEc related to 6QpDUkd5n2xJ6mTjkdzXDbvMFo5mEzANS1t4Hfr76SAY executed with status "SuccessValue"
+aha_6.testnet
+{"contract_id":"3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX"}
+```
+
+<Note>
+**本文的版本信息**
+
+撰写本文时，本示例适用于以下版本：
+
+- near-lake-framework (Rust): `0.7.13`
+- @near-lake/framework (JS): `0.1.5`
+- near-lake-framework (Python): `0.1.3`
+- rustc: `1.86.0`
+- node: `22.18.0`
+- python: `3.13.5`
+
+</Note>

@@ -1,0 +1,265 @@
+---
+title: 全局合约
+sidebarTitle: 全局合约
+description: "了解如何部署全局合约并从另一个账户使用它。"
+---
+import { Github } from '/snippets/github.jsx'
+
+如果您曾经将相同的合约代码部署到多个账户，您可能注意到每次部署都需要再次支付全部存储成本。
+
+想象一下，您想将相同的 500 KB 合约部署到三个账户：每次部署为存储支付 5 NEAR —— 仅为存储相同的代码就锁定了总共 15 NEAR。
+[全局合约](/smart-contracts/global-contracts)通过允许相同的合约代码在多个账户之间共享来消除这种冗余，因此存储成本只需支付一次。
+
+在本教程中，您将学习如何按[账户 ID](#global-contract-by-account-id) 或[按哈希](#global-contract-by-hash)部署和使用[全局合约](/smart-contracts/global-contracts)，具体取决于您的需求。
+
+<Info>
+**全局合约类型**
+- [按账户](/smart-contracts/global-contracts#reference-by-account)：可升级的合约在特定账户 ID 下全局发布。
+- [按哈希](/smart-contracts/global-contracts#reference-by-hash)：不可变的合约全局部署，并通过其代码哈希识别。
+</Info>
+
+## 示例
+
+让我们定义两个可以使用全局合约部署的示例智能合约，并评估哪种替代方案（按账户 ID 或按哈希）对每种情况最合适。
+
+- **DAO 工厂**：一个允许任何用户部署其自己的 DAO 治理实例的工具。
+- **NFT 集合工厂**：一个允许用户创建具有固定元数据和版税值的 NFT 合约的服务。
+
+<Tip>
+**您需要全局合约吗？**
+不确定是否需要全局合约？查看这些问题来决定[何时使用全局合约](/smart-contracts/global-contracts#when-to-use-global-contracts)。
+</Tip>
+
+### 按账户 ID 的全局合约
+
+例如，让我们考虑 **DAO 工厂**的情况。
+
+由于相同的合约被最终用户在不同账户上多次部署，这显然达到了[全局合约](/smart-contracts/global-contracts)在经济上变得高效的阈值。此外，由于可升级性在未来可能有用（例如，修复错误或扩展功能），这是使用[按账户 ID 的全局合约](/smart-contracts/global-contracts#reference-by-account)的绝佳案例。
+
+### 按哈希的全局合约
+
+现在让我们以 **NFT 集合工厂**为例。
+
+由于每个用户部署相同的合约，但一旦部署，它就不应该更改（安全性和不可变性至关重要），这是使用[按哈希的全局合约](/smart-contracts/global-contracts#reference-by-hash)的完美案例。
+
+## 部署全局合约
+
+接下来，让我们看看如何按账户 ID（对于 DAO 工厂）或按哈希（对于 NFT 集合工厂）部署全局合约。
+如前所述，全局合约可以以两种方式部署：
+- 按其[哈希](/smart-contracts/global-contracts#reference-by-hash)。
+- 按所有者[账户 ID](/smart-contracts/global-contracts#reference-by-account)。
+
+按哈希部署的合约实际上是不可变的，无法更新。
+按账户 ID 部署时，所有者可以重新部署合约，为其所有用户更新它。
+
+<Info>
+请注意，部署全局合约会产生高存储成本。代币被销毁以补偿在链上存储合约，与常规合约不同，常规合约的代币根据合约大小被锁定。
+</Info>
+
+### 部署
+
+全局合约可以使用 [`NEAR CLI`](/tools/cli) 或通过代码使用 [NEAR API](/tools/near-api#deploy-a-global-contract)（JavaScript 和 Rust）进行部署。
+
+由于引用全局合约有两种方式（[按账户](/smart-contracts/global-contracts#reference-by-account)或[按哈希](/smart-contracts/global-contracts#reference-by-hash)），部署步骤取决于您想要存储在区块链上的全局合约类型。
+
+<Tabs>
+  <Tab title="🖥️ CLI">
+
+  该过程类似于[部署常规合约](/smart-contracts/release/deploy#deploying-the-contract)，但应使用 `deploy-as-global` 命令代替 `deploy`。
+
+  <Tabs>
+  <Tab title="按账户 ID">
+
+  要按账户部署全局合约，您需要使用 `as-global-account-id` 并传递将部署合约的源 `<account_Id>`。
+
+  ```bash
+  near contract deploy-as-global use-file <route_to_wasm> as-global-account-id <account_id> network-config testnet sign-with-keychain send
+  ```
+
+  </Tab>
+
+  <Tab title="按哈希">
+
+  要按哈希部署全局合约，您需要使用 `as-global-hash` 函数并传递源 `<account_Id>` 来资助交易。
+
+  ```bash
+  near contract deploy-as-global use-file <route_to_wasm> as-global-hash <account_id> network-config testnet sign-with-keychain send
+  ```
+
+  </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  创建账户实例后，您可以将常规合约部署为全局合约。
+
+  <Tabs>
+  <Tab title="按账户 ID">
+
+  让我们看一个按账户部署全局合约的示例。
+  
+  为此，使用 `deployGlobalContract` 函数，并将模式设置为 `accountId`，以及合约的代码字节。
+  
+    <Github fname="deploy-global-contract-by-account.ts" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts#L22-L27"
+    start="22" end="27" />
+
+  </Tab>
+
+  <Tab title="按哈希">
+
+  让我们看一个按哈希部署全局合约的示例。
+  
+  为此，使用 `deployGlobalContract` 函数，并将模式设置为 `codeHash`，以及合约的代码字节。
+
+    <Github fname="deploy-global-contract-by-hash.ts" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts#L24-L29"
+    start="24" end="29" />
+  
+  </Tab>
+  </Tabs>
+
+  </Tab>
+
+  <Tab title="🦀 Rust">
+
+  创建账户实例后，您可以将常规合约部署为全局合约。
+
+  <Tabs>
+  <Tab title="按账户 ID">
+
+  让我们看一个按账户部署全局合约的示例。
+  
+  为此，使用 `deploy_global_contract_code` 函数并使用 `as_account_id` 方法，以及合约的代码字节。
+
+    <Github fname="global_contract_accountid.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs#L17-L28"
+    start="17" end="28" />
+  
+  </Tab>
+
+  <Tab title="按哈希">
+
+  让我们看一个按哈希部署全局合约的示例。
+  
+  为此，使用 `deploy_global_contract_code` 函数并使用 `as_hash` 方法，以及合约的代码字节。
+
+    <Github fname="global_contract_hash.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs#L17-L28"
+    start="17" end="28" />
+  
+  </Tab>
+  </Tabs>
+
+  </Tab>
+
+</Tabs>
+
+<Tip>
+查看 [NEAR API 参考文档](/tools/near-api#deploy-a-global-contract)以获取完整的代码示例。
+</Tip>
+
+### 使用
+
+一旦[全局合约](/smart-contracts/global-contracts)已经[部署](#deployment)，它可以使用 [`NEAR CLI`](/tools/cli) 或通过代码使用 [NEAR API](/tools/near-api#use-a-global-contract)（JavaScript 和 Rust）附加到任何 NEAR 账户。
+
+让我们看看如何从另一个账户引用和使用您的全局合约。
+
+<Tabs>
+  <Tab title="🖥️ CLI">
+  
+  使用 `near deploy` 命令。此类合约的行为与常规合约完全相同。
+
+  <Tabs>
+  <Tab title="按账户 ID">
+
+  要按账户引用全局合约，您需要调用 `useGlobalContract` 函数并传递原始部署合约的源 `accountId`。
+
+  ```bash
+  # Using global contract deployed by <global_contract_account_id> account id
+  near contract deploy <account_id> use-global-account-id <global_contract_account_id> without-init-call network-config testnet
+  ```
+
+  </Tab>
+
+  <Tab title="按哈希">
+
+  要按哈希引用全局合约，您需要调用 `useGlobalContract` 函数并传递原始合约的源 `codeHash`。
+
+  ```bash
+  # Using global contract deployed by <global_contract_hash> hash
+  near contract deploy <account_id> use-global-hash <global_contract_hash> without-init-call network-config testnet
+  ```
+
+  </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🌐 JavaScript">
+
+  <Tabs>
+  <Tab title="按账户 ID">
+
+  要按账户引用全局合约，您需要调用 `useGlobalContract` 函数并传递原始部署合约的源 `accountId`。
+
+    <Github fname="deploy-global-contract-by-account.ts" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts#L39-L45"
+    start="39" end="45" />
+
+  </Tab>
+
+  <Tab title="按哈希">
+
+  要按哈希引用全局合约，您需要调用 `useGlobalContract` 函数并传递原始合约的源 `codeHash`。
+
+  ```js
+  const hash = bs58.encode(sha256(wasm));
+  ```
+
+    <Github fname="deploy-global-contract-by-hash.ts" language="js"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts#L45-L53"
+    start="45" end="53" />
+
+  </Tab>
+  </Tabs>
+
+  </Tab>
+
+  <Tab title="🦀 Rust">
+
+  <Tabs>
+  <Tab title="按账户 ID">
+
+  要按账户引用全局合约，您需要调用 `use_global_account_id` 函数并传递原始部署合约的源 `accountId`。
+
+    <Github fname="global_contract_accountid.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs#L61-L70"
+    start="61" end="70" />
+
+  </Tab>
+
+  <Tab title="按哈希">
+
+  要按哈希引用全局合约，您需要调用 `use_global_hash` 函数并传递原始合约的源 `hash`。
+  
+  ```rust
+    // Get a global contract hash
+    let code = std::fs::read("../contracts/contract.wasm").unwrap();
+    let global_hash = near_primitives::hash::CryptoHash::hash_bytes(&code);
+  ```
+
+    <Github fname="global_contract_hash.rs" language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs#L62-L70"
+    start="62" end="70" />
+
+  </Tab>
+  </Tabs>
+
+  </Tab>
+
+</Tabs>
+
+<Tip>
+查看 [NEAR API 参考文档](/tools/near-api#use-a-global-contract)以获取完整的代码示例。
+</Tip>

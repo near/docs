@@ -1,0 +1,96 @@
+---
+title: "Abstract DAO：请求"
+description: "了解如何在 Abstract DAO 中创建签名请求，以在外部 EVM 链上执行操作。"
+---
+
+Abstract DAO 合约充当 NEAR 去中心化组织和 EVM 网络之间的中介。为了更好地理解其工作原理，最好先单独使用它，暂时不使用 DAO。
+
+让我们一起探索如何在 Abstract DAO 合约中创建请求，该请求随后将用于为外部 EVM 链衍生签名。
+
+<Tip>
+我们已在两个环境中部署了 Abstract DAO：
+
+1. 测试网：`abstract-dao.testnet`
+2. 开发版（不稳定）：`dev.abstract-dao.testnet`
+</Tip>
+
+---
+
+## 以太坊函数调用
+
+假设我们的组织同意更改[我们在 Sepolia 以太坊上部署的一个简单计数器](https://sepolia.etherscan.io/address/0xe2a01146FFfC8432497ae49A7a6cBa5B9Abd71A3)中的一个值，现在想要在 Abstract DAO 中记录此意图。
+
+为此，我们将在 Abstract DAO 上调用 **`register_signature_request`** 函数，表示：
+
+*我们允许 **executor.testnet** 为我们的一个以太坊账户请求签名，将计数器设置为 `1000`*。
+
+以下是参数，请先快速浏览，因为我们将逐一介绍：
+
+```js
+{
+  "request": {
+    "derivation_seed_number": 0,
+    "allowed_account_id": "executor.testnet",
+    "transaction_payload": {
+      "to": "0xe2a01146FFfC8432497ae49A7a6cBa5B9Abd71A3",
+      "nonce": "0",
+      "function_data": {
+        "function_abi": {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "_num",
+              "type": "uint256"
+            }
+          ],
+          "name": "set",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        "arguments": [
+          {
+            "Uint": "A97"
+          }
+        ]
+      }
+    },
+  }
+}
+```
+
+上述调用中有 3 个参数：`derivation_seed_number`、`transaction_payload` 和 `allowed_account_id`，让我们深入了解它们。
+
+### 衍生路径
+
+参数 `derivation seed number` 将用于衍生我们将请求签名的外部地址，地址的衍生方式如下：
+
+`DAO 地址` + `衍生路径` + `合约地址` = `EVM 地址`
+
+例如，如果我们使用地址 `...` 和衍生路径 `0` 注册请求，我们将获得对 `0x...` 账户的控制权。
+
+<Tip>
+在[此处](/chain-abstraction/chain-signatures)了解更多关于衍生路径的信息
+</Tip>
+
+### 交易有效载荷
+
+`transaction_payload` 包含我们想要执行的交易的所有信息，特别是：
+
+  - `to`：交易的接收地址
+  - `nonce`：交易 nonce，用于确保唯一性
+  - `function_data`：（可选）定义将在接收方合约上调用的函数，包括：
+    - `function_abi`：被调用函数的 ABI
+    - `arguments`：函数的输入参数，全部经过 ABI 编码（如整数使用 `base64`）
+
+关于此 `transaction_payload`，有几点重要提示：
+
+- **可读的有效载荷：** 这些参数使任何人都能快速理解将在外部执行什么交易。Abstract DAO 设计为透明且易于审计，将创建交易的复杂性抽象化。
+
+- **我们正在设置 Nonce：** 通过设置 nonce，我们确保该交易只会有效一次，因为未来的交易需要更高的 `nonce`
+
+- **我们未设置 GAS：** Gas 价格预计在不同 EVM 之间差异很大，因此为所有网络设置固定的 Gas 数量和价格没有意义，这就是为什么我们使用最后一个参数 `allowed_account`
+
+### 授权账户
+
+在这种情况下，`allowed_account` 将负责生成签名。在生成签名时，该账户还将按每条链设置交易的 `gas_price`。

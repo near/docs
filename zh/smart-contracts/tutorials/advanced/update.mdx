@@ -1,0 +1,67 @@
+---
+title: 自升级与状态迁移
+description: "了解 NEAR 智能合约升级，包括自更新合约、状态迁移和版本控制模式。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+关于如何处理更新和[状态迁移](/smart-contracts/release/upgrade)的三个示例：
+1. [状态迁移](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates)：如何实现 `migrate` 方法以在合约更新之间迁移状态。
+2. [状态版本控制](https://github.com/near-examples/update-migrate-rust/tree/main/enum-updates)：如何对状态使用现成的版本控制，以便以后简化更新。
+3. [自更新](https://github.com/near-examples/update-migrate-rust/tree/main/self-updates)：如何实现可以更新自身的合约。
+
+---
+
+## 状态迁移
+[状态迁移示例](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates)展示了如何处理合约更新之间的破坏性状态更改。
+
+它由 2 个合约组成：
+1. 基础：一个人们可以写消息的留言板。
+2. 更新：一个更新，我们在其中删除一个参数并更改内部结构。
+
+<CodeGroup>
+  <Github fname="migrate.rs"
+            url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
+            start="18" end="45" />
+</CodeGroup>
+
+#### 迁移方法
+迁移方法反序列化当前状态（`OldState`）并遍历消息，将它们更新为包含 `payment` 字段的新 `PostedMessage`。
+
+<Tip>
+注意，migrate 实际上是一个[初始化方法](/smart-contracts/anatomy/storage)，它忽略了现有状态（`[#init(ignore_state)]`），因此能够执行并重写状态。
+</Tip>
+
+---
+
+## 状态版本控制
+[状态版本控制示例](https://github.com/near-examples/update-migrate-rust/tree/main/enum-updates)展示了如何使用
+[枚举](https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html)在合约上实现状态版本控制。
+
+版本控制简化了合约更新，因为您只需要添加新版本的结构。
+所有版本可以共存，因此您不需要更改以前存在的结构。
+
+该示例由 2 个合约组成：
+1. 基础：使用版本化 `PostedMessages`（`PostedMessagesV1`）的留言板合约。
+2. 更新：添加新版本 `PostedMessages`（`PostedMessagesV2`）的更新。
+
+<CodeGroup>
+  <Github fname="versioned_msg.rs"
+            url="https://github.com/near-examples/update-migrate-rust/blob/main/enum-updates/update/src/versioned_msg.rs"
+            start="18" end="36" />
+</CodeGroup>
+
+---
+
+## 自更新
+[自更新示例](https://github.com/near-examples/update-migrate-rust/tree/main/self-updates)展示了如何实现可以更新自身的合约。
+
+它由 2 个合约组成：
+1. 基础：一个人们可以写消息的留言板，实现了 `update_contract` 方法。
+2. 更新：一个更新，我们在其中删除一个参数并更改内部结构。
+
+<CodeGroup>
+  <Github fname="update.rs"
+            url="https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs"
+            start="10" end="31" />
+</CodeGroup>

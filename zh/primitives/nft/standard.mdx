@@ -1,0 +1,180 @@
+---
+title: 标准规范
+description: "了解 NEAR 上非同质化代币（NFT）的定义"
+---
+
+与同质化代币不同，非同质化代币（NFT）是唯一的，因此不可互换。这使得 NFT 非常适合代表资产所有权，例如一段数字内容或一张活动门票。
+
+与同质化代币一样，NFT **并不存储**在用户的钱包中，而是每个 NFT 存储在一个 **NFT 合约**里。NFT 合约充当账本，负责创建、存储和转移 NFT。
+
+<Info>
+**NFT 与市场**
+
+请注意不要将 NFT 与 NFT 市场混淆。NFT 仅存储信息（元数据），而 NFT 市场是可以挂牌和以一定价格交换 NFT 的合约。
+
+</Info>
+
+---
+
+## NEP-171（NFT 接口）
+
+[NEP-171](https://github.com/near/NEPs/tree/master/neps/nep-0171.md) 是 NEAR 上所有非同质化代币的蓝图。它定义了合约必须实现的**一套通用规则**和**函数**，才能被视为非同质化代币合约。
+
+<Tip>
+
+请注意，NEP-171 定义了非同质化代币合约的**接口**和**预期行为**，但不规定内部逻辑的实现方式。
+
+不同的 NFT 合约可以有不同的内部实现，同时仍然遵守 NEP-171 标准。
+
+</Tip>
+
+### 接口
+
+#### `nft_token`（*只读*）
+
+返回给定 `token_id` 的代币信息
+
+```ts
+nft_token(token_id: string): { token_id: string, owner_id: string } | null
+```
+
+<br />
+
+#### `nft_transfer`
+将 `token_id` 从调用者转移到 `receiver_id`，可选地可以包含 `memo` 字段以向合约提供附加信息
+
+调用者必须是代币的**当前所有者**或被**授权代表所有者转移**代币的**账户**，例如市场合约。授权机制在 [NEP-178 标准](https://github.com/near/NEPs/blob/master/neps/nep-0178.md)中定义。
+
+> *要求：调用者必须附加[恰好 1 yoctoNEAR](../../smart-contracts/security/one_yocto)*
+
+```ts
+nft_transfer(receiver_id: string, token_id: string, approval_id?: number, memo: string?): void
+```
+
+<br />
+
+#### `nft_transfer_call`
+
+该函数将 `token_id` 转移到 `receiver_id`，**并在 `receiver_id` 上调用 `nft_on_transfer(sender_id, previous_owner_id, token_id, msg)` 方法**。
+
+可选地，该函数可以为 NFT 合约提供 `memo`，以及一个 `msg` 字段，该字段将被发送到接收合约。
+
+> 📖 此函数可用于在单个交易中将 NFT 转移到合约并触发接收方的某些操作，从而实现**将 NFT 附加到函数调用**的效果
+
+```ts
+nft_transfer_call(receiver_id: string, token_id: string, approval_id?: number, memo?: string, msg: string): Promise {}
+```
+
+<Accordion title="nft_on_transfer">
+
+    期望**接收**非同质化代币的智能合约**必须**实现此方法。
+
+    该方法**必须**返回一个布尔值，指示代币是否应返还给发送者（`true`）或不返还（`false`）。
+
+    ```ts
+    nft_on_transfer(sender_id: string, previous_owner_id: string, token_id: string, msg: string): boolean
+    ```
+
+    ⚠️ 注意，此方法不需要由 NFT 合约本身实现，而是由任何期望接收非同质化代币的合约实现。
+
+</Accordion>
+
+<br />
+
+#### `nft_resolve_transfer`
+
+此方法用作[回调](../../smart-contracts/anatomy/crosscontract#callback-function)来解析 `nft_transfer_call` 交易，必要时处理退款。
+
+如果代币成功转移到 `receiver_id`，则返回 `true`；如果代币返还给 `owner_id`，则返回 `false`。
+
+```js
+nft_resolve_transfer(owner_id: string, receiver_id: string, token_id: string, approved_account_ids?: Record<string, number>): boolean
+```
+
+---
+
+## NEP-177（NFT 元数据）
+
+[NEP-177](https://github.com/near/NEPs/blob/master/neps/nep-0177.md) 是 NEP-171 标准的扩展，定义了非同质化代币和非同质化代币合约的**元数据**。
+
+元数据提供了**关键信息**，例如合约的**名称**或 NFT 的**标题**。特别地，智能合约和代币的元数据中必须包含以下字段：
+
+```ts
+type NFTContractMetadata = {
+  spec: string, // 必填，本质上是版本号，如 "nft-1.0.0"
+  name: string, // 必填，例如 "Mochi Rising — Digital Edition" 或 "Metaverse 3"
+  symbol: string, // 必填，例如 "MOCHI"
+  icon: string|null, // 数据 URL
+  base_uri: string|null, // 已知能可靠访问 `reference` 或 `media` URL 引用的去中心化存储资产的集中式网关
+  reference: string|null, // 包含更多信息的 JSON 文件的 URL
+  reference_hash: string|null, // reference 字段中 JSON 的 Base64 编码 sha256 哈希值。如果包含 `reference` 则必填。
+}
+
+type TokenMetadata = {
+  title: string|null, // 例如 "Arch Nemesis: Mail Carrier" 或 "Parcel #5055"
+  description: string|null, // 自由格式描述
+  media: string|null, // 关联媒体的 URL，优先选择去中心化、内容寻址的存储
+  media_hash: string|null, // `media` 字段引用内容的 Base64 编码 sha256 哈希值。如果包含 `media` 则必填。
+  copies: number|null, // 铸造代币时，此组元数据存在的副本数量
+  issued_at: number|null, // 代币发行或铸造时间，Unix 纪元毫秒数
+  expires_at: number|null, // 代币过期时间，Unix 纪元毫秒数
+  starts_at: number|null, // 代币开始生效时间，Unix 纪元毫秒数
+  updated_at: number|null, // 代币最后更新时间，Unix 纪元毫秒数
+  extra: string|null, // NFT 希望在链上存储的任何额外信息。可以是字符串化的 JSON。
+  reference: string|null, // 包含更多信息的链下 JSON 文件的 URL。
+  reference_hash: string|null // reference 字段中 JSON 的 Base64 编码 sha256 哈希值。如果包含 `reference` 则必填。
+}
+```
+
+---
+
+## NEP-178（NFT 授权管理）
+
+[NEP-178](https://github.com/near/NEPs/blob/master/neps/nep-0178.md) 是 NEP-171 标准的扩展，定义了非同质化代币的**授权管理**。
+
+授权机制允许 NFT 所有者授权另一个账户（例如市场合约）代表他们转移代币。
+
+### 接口
+
+#### `nft_is_approved`（*只读*）
+
+返回 `approved_account_id` 是否确实被授权代表代币所有者转移 `token_id`。如果提供了 `approval_id`，还将检查授权 ID 是否匹配。
+
+```ts
+nft_is_approved(token_id: string, approved_account_id: string, approval_id?: number): boolean
+```
+
+<br />
+
+#### `nft_approve`
+
+授予 `account_id` 代表代币所有者转移 `token_id` 的权限。可选地，该函数可以包含 `msg` 字段以向合约提供附加信息。
+
+> *要求：调用者必须附加至少 `1 yoctoNEAR` 加上添加新授权的存储成本*
+
+```ts
+nft_approve(token_id: string, account_id: string, msg?: string): void
+```
+
+<br />
+
+#### `nft_revoke`
+撤销 `account_id` 代表代币所有者转移 `token_id` 的权限。
+
+> *要求：调用者必须附加[恰好 1 yoctoNEAR](../../smart-contracts/security/one_yocto)*
+
+```ts
+nft_revoke(token_id: string, account_id: string): void
+```
+
+<br />
+
+#### `nft_revoke_all`
+
+撤销 `token_id` 的所有授权。
+
+> *要求：调用者必须附加[恰好 1 yoctoNEAR](../../smart-contracts/security/one_yocto)*
+
+```ts
+nft_revoke_all(token_id: string): void
+```

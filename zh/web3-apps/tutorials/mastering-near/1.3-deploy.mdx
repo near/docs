@@ -1,0 +1,142 @@
+---
+title: 部署到测试网
+description: "将我们的拍卖合约部署到测试网。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+在前几节中，我们了解了如何实现一个简单的拍卖智能合约，并使用沙箱测试验证了其正确性。
+
+现在是时候将其发布到实际区块链上并与之交互了！在本节中，我们将向您展示如何创建一个简单的测试网账户，部署合约，并通过 CLI 与其交互。
+
+<Info>
+**网络**
+
+NEAR 有两个主要网络供您使用：`testnet` 和 `mainnet`。`testnet` 网络的行为与主网完全相同，但使用没有真实价值的测试代币。
+
+</Info>
+
+---
+
+## 测试网账户
+
+要部署合约，您需要一个测试网账户。如果您还没有，可以使用以下命令创建一个：
+
+```bash
+# 使用 near-cli 创建账户（contractId 必须以 .testnet 结尾）
+near create <contractId> --useFaucet
+```
+
+将 `<contractId>` 替换为您想给账户的名称，并确保它以 `.testnet` 结尾。
+
+该账户将创建时带有 **10 NEAR**（这些是测试代币）。
+
+<Info>
+**测试网水龙头**
+
+请注意，我们使用 `--useFaucet` 标志从 NEAR 水龙头自动请求测试代币。
+
+水龙头仅在测试网网络上可用——这是 CLI 的默认网络。
+
+</Info>
+
+---
+
+## 部署合约
+
+要部署合约，您需要将合约代码编译为 WebAssembly（WASM），然后将其部署到网络上。
+
+<Tabs>
+
+    <Tab title="🌐 JavaScript">
+
+    ```bash
+    # 编译合约
+    npm run build
+
+    # 部署合约
+    near deploy <contractId> ./build/auction-contract.wasm
+
+    # 初始化合约，2 分钟后结束
+    TWO_MINUTES_FROM_NOW=$(date -v+2M +%s000000000)
+    near call <contractId> init '{"end_time": "'$TWO_MINUTES_FROM_NOW'", "auctioneer": "<auctioneerId>"}' --useAccount <contractId>
+    ```
+
+    </Tab>
+
+    <Tab title="🦀 Rust">
+
+    ```bash
+    # 使用 cargo-near 编译合约
+    cargo near build
+
+    # 部署合约
+    near deploy <contractId> ./target/near/auction-contract.wasm
+
+    # 初始化合约，2 分钟后结束
+    TWO_MINUTES_FROM_NOW=$(date -v+2M +%s000000000)
+    near call <contractId> init '{"end_time": "'$TWO_MINUTES_FROM_NOW'", "auctioneer": "<auctioneerId>"}' --useAccount <contractId>
+    ```
+
+    </Tab>
+
+</Tabs>
+
+将 `<auctioneerId>` 替换为另一个账户的名称，这不应该与合约账户相同，因为我们打算删除其密钥。
+
+---
+
+## 锁定合约
+
+如前所述，我们应该通过删除密钥来锁定账户。这允许我们的用户在不必信任账户所有者的情况下与合约交互。
+
+```bash
+near account delete-keys 
+```
+
+接下来，指定合约账户并点击右箭头 → 删除所有密钥。确保选择测试网。
+
+<Warning>
+删除密钥时要格外小心，确保从正确的账户删除，因为您将永远无法再访问该账户！
+</Warning>
+
+现在合约已部署、初始化并锁定，我们可以使用 CLI 向其发送交易。
+
+<Tip>
+**交互式 CLI**
+NEAR 的 CLI 是交互式的，这意味着您可以输入 `near` 并点击浏览所有可能的选项，而无需记住特定命令。
+</Tip>
+
+---
+
+## 与合约交互
+我们现在准备好通过调用合约上的 `bid` 函数来开始出价了。我们建议您创建**两个新账户**来模拟不同的出价者。
+
+```bash
+# 调用合约出价 
+near call <contractId> bid --useAccount <bidderId> --deposit 1 
+
+# 获取最高出价
+near view <contractId> get_highest_bid
+```
+
+请注意，我们调用 `bid` 函数时不带参数，但向交易附加了 1 NEAR。这是我们的出价金额。
+
+对于 `get_highest_bid` 函数，我们不需要指定哪个用户在调用它，因为它是一个视图函数，不需要消耗 Gas 即可执行。
+
+---
+
+## 结论 
+
+我们现在已经了解了如何将合约部署到 `testnet` 并使用 NEAR CLI 与其交互。
+
+在继续之前有一个建议。当人们学会使用 CLI 后，他们会变得懒惰，直接在测试网上测试新的合约功能。虽然这很诱人，但不推荐这样做。
+
+不要将测试网作为测试合约的**唯一方式**。始终先在**沙箱环境**中测试您的合约，只有当您确信一切按预期工作时，才将其部署到测试网。
+
+<Tip>
+**前端**
+
+通常，您只会使用 CLI 来部署和初始化合约。之后，所有交互都将通过前端进行。这就是为什么在[下一节](./2.1-frontend)中我们将转向创建与合约交互的前端。
+
+</Tip>

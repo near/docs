@@ -1,0 +1,67 @@
+---
+title: 验证 NEAR 用户身份
+description: "了解如何通过创建质询、请求钱包签名并验证签名，在后端服务中验证 NEAR 用户的身份。"
+---
+
+import {Github} from '/snippets/github.jsx';
+
+近期，NEAR 批准了一项新标准，该标准除其他功能外，还支持用户向后端服务进行身份验证。
+
+其基本思路是：用户将使用其 NEAR 钱包对一个质询进行签名，后端则验证该签名。如果签名有效，则用户身份验证通过。
+
+---
+
+## 使用 NEAR 钱包进行后端身份验证
+验证用户身份是后端和 Web 应用程序的常见用例。这使得服务能够为用户提供个性化体验，并保护敏感数据。
+
+为了验证用户身份，后端必须确认用户就是其所声称的人。为此，后端必须验证用户能够访问与其账户关联的全访问密钥。
+
+为此，需要以下三个基本步骤：
+
+1. 为用户创建一个待签名的质询。
+2. 请求用户使用钱包对质询进行签名。
+3. 验证签名与用户相符。
+
+### 1. 创建质询
+假设我们希望将用户登录到名为 `application-name` 的应用程序中。
+
+我们首先需要创建一个质询，用户将使用其钱包对其进行签名。为此，建议使用密码学安全的随机数生成器来创建质询。
+
+```js
+import { randomBytes } from 'crypto'
+const challenge = randomBytes(32)
+const message = 'Login with NEAR'
+```
+
+<Note>
+这里我们使用 [crypto.randomBytes](https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback) 生成一个 32 字节的随机缓冲区。
+</Note>
+
+### 2. 请求用户对质询进行签名
+以下钱包支持签署质询所需的 `signMessage` 方法：
+- Meteor Wallet
+- Here Wallet
+- Near Snap
+- Nightly Wallet
+- WELLDONE Wallet
+- NearMobileWallet
+- MyNearWallet
+- Sender
+- Intear Wallet
+
+用户需要签署的消息包含 4 个字段：
+- 消息（Message）：用户正在签署的消息内容。
+- 收件人（Recipient）：消息的接收方。
+- 随机数（Nonce）：用户正在签署的质询。
+- 回调 URL（Callback URL）：钱包将携带签名调用的 URL。
+
+```js
+// 假设您已设置好钱包选择器
+const signature = wallet.signMessage({ message, recipient, nonce: challenge, callbackUrl: <server-auth-url> })
+```
+
+### 3. 验证签名
+一旦用户完成签名，钱包将携带签名调用 `callbackUrl`。后端随后可以验证该签名。
+
+<Github fname="verify-signature.ts" language="javascript"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/verify-signature.ts" />

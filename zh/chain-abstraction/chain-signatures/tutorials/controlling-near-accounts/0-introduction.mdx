@@ -1,0 +1,29 @@
+---
+title: 控制 NEAR 账户
+sidebarTitle: 介绍
+description: "学习如何使用多方计算安全地控制 NEAR 账户。"
+---
+
+想象一下代表另一个 Near 账户行事——却从不持有其私钥。听起来像是未来的事情？今天就可以实现，得益于[链抽象和多方计算（MPC）](/chain-abstraction/what-is)，本教程将一步一步带您完成代表另一个 Near 账户转移 0.1 NEAR 的整个过程。
+
+## 工作原理
+
+在幕后，智能合约代表用户构建有效的交易，并将其转发给 MPC 合约进行签名。
+
+这种方法的关键优势在于没有任何单一实体持有私钥——确保了增强的安全性和去中心化。
+
+<Info>
+
+本教程中使用的智能合约的完整源代码，以及用于模拟演练的脚本，可在 [GitHub 仓库](https://github.com/nearuaguild/control-near-account-with-mpc-example)中找到。
+
+该合约已在测试网上部署，地址为 `broken-rock.testnet`，如果您不想深入研究自行部署，可以自由使用它。
+
+</Info>
+
+## 您将学到什么
+
+在本教程中，您将学习如何：
+
+- [准备 Near 账户](/chain-abstraction/chain-signatures/tutorials/controlling-near-accounts/1-setup)以通过 MPC 完全控制
+- [构建转移交易并获得签名](/chain-abstraction/chain-signatures/tutorials/controlling-near-accounts/2-transfer)（在智能合约中）
+- [将已签名交易广播](/chain-abstraction/chain-signatures/tutorials/controlling-near-accounts/2-transfer)到网络（通过 RPC）

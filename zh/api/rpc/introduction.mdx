@@ -1,0 +1,43 @@
+---
+title: "协议调用参考"
+description: "与 NEAR 协议交互的工具和方法概述。"
+sidebarTitle: "简介"
+---
+
+NEAR 协议提供了多种与网络交互的方式——从底层 JSON-RPC 调用到可视化浏览器和钱包。
+
+## 工具
+
+<CardGroup cols={2}>
+  <Card title="NEAR 浏览器" icon="search" href="https://nearblocks.io" cta="打开浏览器" arrow>
+    浏览主网和测试网上的交易、账户、区块和合约。
+  </Card>
+  <Card title="NEAR 钱包" icon="wallet" href="https://wallet.near.org" cta="打开钱包" arrow>
+    创建和管理 NEAR 账户、发送代币并与 dApp 交互。
+  </Card>
+</CardGroup>
+
+## RPC API
+
+NEAR 提供了 JSON-RPC 2.0 API，用于以编程方式访问网络。所有请求均以 `POST` 方式发送至提供商端点，方法名称编码在 URL 路径中。
+
+```bash
+curl -X POST https://rpc.mainnet.near.org/status \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+请参阅 [RPC 提供商](/api/rpc/providers) 以获取完整的公共端点列表。
+
+## 可用方法
+
+| 类别 | 方法 |
+|----------|---------|
+| **交易** | `send_tx`, `tx`, `broadcast_tx_async`, `broadcast_tx_commit` |
+| **区块和分片** | `block`, `chunk`, `block_effects`, `changes` |
+| **账户和密钥** | `query`（查看账户、代码、状态、访问密钥、调用函数） |
+| **网络** | `status`, `health`, `network_info`, `validators` |
+| **Gas 和配置** | `gas_price`, `genesis_config`, `EXPERIMENTAL_protocol_config` |
+| **轻客户端** | `light_client_proof`, `next_light_client_block` |
+
+在侧边栏中查阅完整的交互式参考文档，或从 [RPC 提供商](/api/rpc/providers) 开始配置您的端点。

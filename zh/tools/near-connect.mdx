@@ -1,0 +1,50 @@
+---
+title: 钱包连接器
+icon: "wallet"
+description: "零依赖的轻量级钱包连接器"
+---
+
+**NEAR Connect** 是一个零依赖、稳健、安全且轻量的 NEAR 区块链钱包连接器。它在隔离的沙盒环境中执行钱包集成代码，而非将所有钱包代码打包到单一软件包中。
+
+![Preview](https://github.com/user-attachments/assets/c4422057-38bb-4cd9-8bd0-568e29f46280)
+
+<Columns cols={2}>
+  <Card title="沙盒化执行" icon="shield">
+    通过在隔离的 iframe 中运行钱包脚本，降低供应链风险。
+  </Card>
+  <Card title="钱包易于更新" icon="refresh-cw">
+    得益于在运行时加载钱包代码的共享清单，始终保持最新状态。
+  </Card>
+  <Card title="零依赖" icon="feather">
+    轻量且自包含，无任何外部依赖。
+  </Card>
+  <Card title="支持多种钱包" icon="wallet">
+    支持 HOT Wallet、Meteor Wallet、Nightly、WalletConnect 及其他 10 余种钱包。
+  </Card>
+</Columns>
+
+<Tip>
+想将 NEAR Connect 集成到您的应用中？请查阅 [Web 登录指南](../web3-apps/tutorials/wallet-login) 获取分步说明。
+</Tip>
+
+---
+
+## 集成指南
+
+请阅读我们的 [Web 登录指南](../web3-apps/tutorials/wallet-login)，获取将 NEAR Connect 集成到您的应用中的分步演练，包括代码示例和最佳实践。
+
+<Columns cols={2}>
+  <Card title="登录" icon="log-in" href="../web3-apps/tutorials/wallet-login#signing-in-%2F-out" horizontal arrow>
+    支持可选消息签名的登录功能。
+  </Card>
+  <Card title="交易" icon="send" href="../web3-apps/tutorials/wallet-login#calling-contract-method" horizontal arrow>
+    签名并发送交易。
+  </Card>
+</Columns>
+
+---
+
+## 其他资源
+
+- [NEAR Web 登录指南](../web3-apps/concepts/web-login)
+- [Github](https://github.com/azbang/near-connect)

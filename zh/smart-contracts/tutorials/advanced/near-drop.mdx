@@ -1,0 +1,283 @@
+---
+title: Near Drop
+description: "了解 NEAR Drop 如何通过私钥实现代币投送（NEAR、FT、NFT）领取。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+NEAR Drop 是一个智能合约，允许用户创建代币投送（`$NEAR`、同质化代币和非同质化代币），并将其链接到特定的私钥。拥有私钥的人可以将投送领取到现有账户，或要求合约为他们创建一个新账户。
+
+特别是，它展示了：
+
+1. 如何创建代币投送（NEAR、FT 和 NFT）
+2. 如何利用函数调用密钥实现出色的用户体验
+
+<Tip>
+
+此示例展示了 [Keypom](https://github.com/keypom/keypom) 和[代币投送工具](https://docs.near.org/toolbox?tab=linkdrops)用于向用户分发代币的合约的简化版本
+
+</Tip>
+
+---
+
+## 合约概述
+
+合约公开了 3 个方法来创建 NEAR 代币、FT 和 NFT 的投送。要领取代币，合约公开了两个方法：一个用于在现有账户中领取，另一个将创建新账户并将代币领取到其中。
+
+这个合约利用了 NEAR 独特的[函数调用密钥](/protocol/accounts-contracts/access-keys)功能，允许合约代表用户创建新账户并领取代币。
+
+想象 Alice 想要向 Bob 投送一些 NEAR：
+
+1. Alice 将调用 `create_near_drop`，传递一些 NEAR 金额和一个**公共**访问密钥
+2. 合约将检查 Alice 是否附加了足够的代币并创建投送
+3. 合约将 `PublicKey` 作为 `FunctionCall Key` 添加到自身，**只允许调用领取方法**
+4. Alice 将`私钥`给 Bob
+5. Bob 将使用密钥签署调用 `claim_for` 方法的交易
+6. 合约将检查密钥是否链接到投送，如果是，它将发送投送
+
+需要注意的是，在步骤（5）中，Bob 将使用合约的账户签署交易，而不是他自己的账户。记住在步骤（3）中，合约将密钥添加到自身，这意味着任何拥有密钥的人都可以以合约的名义调用领取方法。
+
+<Accordion title="合约接口">
+
+#### `create_near_drop(public_keys, amount_per_drop)`
+创建 `#public_keys` 个投送，每个包含 `amount_per_drop` NEAR 代币
+
+#### `create_ft_drop(public_keys, ft_contract, amount_per_drop)`
+创建 `#public_keys` 个投送，每个包含对应 `ft_contract` 的 `amount_per_drop` FT 代币
+
+#### `create_nft_drop(public_key, nft_contract)`
+创建一个带有 NFT 代币的投送，该代币将来自 `nft_contract`
+
+#### `claim_for(account_id)`
+领取投送，将发送到现有的 `account_id`
+
+#### `create_account_and_claim(account_id)`
+创建 `account_id`，然后将代币投送到其中
+
+</Accordion>
+
+---
+
+## 合约状态
+
+我们可以在合约的状态中看到，合约跟踪不同的 `PublicKeys`，并将它们链接到特定的 `DropId`，这只是 `Drop`（见下文）的标识符。
+
+- `top_level_account`：将用于创建新账户的账户，通常为 `testnet` 或 `mainnet`
+- `next_drop_id`：用于为每个投送分配唯一标识符的简单计数器
+- `drop_id_by_key`：`PublicKey` 和 `DropId` 之间的 `Map`，允许合约知道给定密钥可以领取哪些投送
+- `drop_by_id`：链接每个 `DropId` 与实际 `Drop` 数据的简单 `Map`。
+
+<Github fname="lib.rs" language="rust"
+      url="https://github.com/near-examples/near-drop/blob/main/src/lib.rs"
+      start="22" end="29" />
+
+---
+
+## 投送类型
+
+有 3 种类型的投送，区别在于用户领取对应投送时将收到什么 - NEAR、同质化代币（FT）或非同质化代币（NFT）。
+
+<Github fname="drop_types.rs"
+  url="https://github.com/near-examples/near-drop/blob/main/src/drop_types.rs"
+  start="8" end="16" />
+<Github fname="near_drop.rs"
+  url="https://github.com/near-examples/near-drop/blob/main/src/near_drop.rs"
+  start="9" end="16" />
+<Github fname="ft_drop.rs"
+  url="https://github.com/near-examples/near-drop/blob/main/src/ft_drop.rs"
+  start="16" end="24" />
+<Github fname="nft_drop.rs"
+  url="https://github.com/near-examples/near-drop/blob/main/src/nft_drop.rs"
+  start="15" end="22" />
+
+<Info>
+
+请注意，在此示例实现中，用户不能混合投送。即您可以投送 NEAR 代币、FT 或 NFT，但不能混合（即您不能在同一个投送中投送 1 NEAR 代币和 1 FT 代币）
+
+</Info>
+
+---
+
+## 创建投送
+
+所有 `create` 都从检查用户是否存入了足够的资金来创建投送开始，然后继续将访问密钥作为[函数调用密钥](/protocol/accounts-contracts/access-keys)添加到合约的账户。
+
+<Tabs>
+
+  <Tab title="NEAR Drop">
+    <Github fname="create_near_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/lib.rs"
+        start="44" end="66" />
+      <Github fname="near_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/near_drop.rs"
+        start="63" end="95" />
+  </Tab>
+  <Tab title="FT Drop">
+    <Github fname="create_ft_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/lib.rs"
+        start="68" end="89" />
+      <Github fname="ft_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/ft_drop.rs"
+        start="108" end="142" />
+  </Tab>
+  <Tab title="NFT Drop">
+    <Github fname="create_nft_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/lib.rs"
+        start="91" end="103" />
+      <Github fname="nft_drop"
+        url="https://github.com/near-examples/near-drop/blob/main/src/nft_drop.rs"
+        start="80" end="106" />
+  </Tab>
+</Tabs>
+
+### 存储成本
+
+虽然我们不会详细介绍存储成本的计算方式，但重要的是要了解考虑了什么：
+
+1. 存储每个投送的成本，包括存储与 `Drop` 结构相关的所有字节
+2. 存储映射中每个 `PublicKey -> DropId` 关系的成本
+3. 在账户中存储每个 `PublicKey` 的成本
+
+请注意，（3）不是将 `PublicKey` 的字节表示存储在状态中的成本，而是将密钥作为函数调用密钥添加到合约账户的成本。
+
+---
+
+## 领取投送
+
+为了领取投送，用户需要使用`私钥`签署交易，该私钥是添加到合约的`公钥`的对应部分。
+
+所有 `Drop` 都有一个 `counter`，每次领取投送时减少 1。这样，当所有投送都被领取（`counter` == 0）时，我们可以从投送中删除所有信息。
+
+有两种方式领取投送：为现有账户领取和为新账户领取。它们之间的主要区别在于，前者将代币发送到现有账户，而后者将创建一个新账户并将代币发送到其中。
+
+<Tabs>
+  <Tab title="现有账户">
+    <Github fname="claim_for"
+        url="https://github.com/near-examples/near-drop/blob/main/src/claim.rs"
+        start="11" end="14" />
+      <Github fname="internal_claim"
+        url="https://github.com/near-examples/near-drop/blob/main/src/claim.rs"
+        start="58" end="85" />
+  </Tab>
+  <Tab title="新账户">
+    <Github fname="create_account_and_claim"
+        url="https://github.com/near-examples/near-drop/blob/main/src/claim.rs"
+        start="16" end="41" />
+      <Github fname="resolve_account_create"
+        url="https://github.com/near-examples/near-drop/blob/main/src/claim.rs"
+        start="43" end="56" />
+      <Github fname="internal_claim"
+        url="https://github.com/near-examples/near-drop/blob/main/src/claim.rs"
+        start="58" end="85" />
+  </Tab>
+</Tabs>
+
+---
+
+### 测试合约
+
+合约已经包含沙盒测试来验证其功能。要执行测试，请运行以下命令：
+
+<Tabs>
+  <Tab title="🦀 Rust">
+  
+  ```bash
+  cargo test
+  ```
+
+  </Tab>
+</Tabs>
+
+<Tip>
+`集成测试`使用沙盒创建 NEAR 用户并模拟与合约的交互。
+</Tip>
+
+---
+
+### 将合约部署到 NEAR 网络
+
+要部署合约，您需要创建一个 NEAR 账户。
+
+<Tabs>
+  <Tab title="简短">
+
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near create-account <accountId> --useFaucet
+  ```
+  </Tab>
+
+  <Tab title="完整">
+
+  ```bash
+  # Create a new account pre-funded by a faucet
+  near account create-account sponsor-by-faucet-service <my-new-dev-account>.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
+  ```
+  </Tab>
+</Tabs>
+
+然后构建并部署合约：
+
+```bash
+cargo near build
+
+cargo near deploy <accountId> with-init-call new json-args '{"top_level_account": "testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+```
+
+---
+
+### CLI：与合约交互
+
+要通过控制台与合约交互，可以使用以下命令：
+
+<Tabs>
+  <Tab title="简短">
+  
+  ```bash
+  # create a NEAR drop
+  near call <account-id> create_near_drop '{"public_keys": ["ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q", "ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4"], "amount_per_drop": "10000000000000000000000"}' --useAccount <account-id> --deposit 1 --gas 100000000000000
+
+  # create a FT drop
+  near call <account-id> create_ft_drop '{"public_keys": ["ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "ed25519:5oN7Yk7FKQMKpuP4aroWgNoFfVDLnY3zmRnqYk9fuEvR"], "amount_per_drop": "1", "ft_contract": "<ft-contract-account-id>"}' --useAccount <account-id> --gas 100000000000000
+
+  # create a NFT drop
+  near call <account-id> create_nft_drop '{"public_key": "ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "nft_contract": "<nft-contract-account-id>"}' --useAccount <account-id> --gas 100000000000000
+  
+  # claim to an existing account
+  # see the full version
+
+  # claim to a new account
+  # see the full version
+  ```
+  </Tab>
+
+  <Tab title="完整">
+  
+  ```bash
+  # create a NEAR drop
+  near contract call-function as-transaction <account-id> create_near_drop json-args '{"public_keys": ["ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q", "ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4"], "amount_per_drop": "10000000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '1 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+
+  # create a FT drop
+  near contract call-function as-transaction <account-id> create_ft_drop json-args '{"public_keys": ["ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "ed25519:5oN7Yk7FKQMKpuP4aroWgNoFfVDLnY3zmRnqYk9fuEvR"], "amount_per_drop": "1", "ft_contract": "<ft-contract-account-id>"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+
+  # create a NFT drop
+  near contract call-function as-transaction <account-id> create_nft_drop json-args '{"public_key": "ed25519:HcwvxZXSCX341Pe4vo9FLTzoRab9N8MWGZ2isxZjk1b8", "nft_contract": "<nft-contract-account-id>"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+
+  # claim to an existing account
+  near contract call-function as-transaction <account-id> claim_for json-args '{"account_id": "<claimer-account-id>"}' prepaid-gas '30.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-plaintext-private-key --signer-public-key ed25519:AvBVZDQrg8pCpEDFUpgeLYLRGUW8s5h57NGhb1Tc4H5q --signer-private-key ed25519:3yVFxYtyk7ZKEMshioC3BofK8zu2q6Y5hhMKHcV41p5QchFdQRzHYUugsoLtqV3Lj4zURGYnHqMqt7zhZZ2QhdgB send
+
+  # claim to a new account
+  near contract call-function as-transaction <account-id> create_account_and_claim json-args '{"account_id": "<claimer-account-id>"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-plaintext-private-key --signer-public-key ed25519:4FMNvbvU4epP3HL9mRRefsJ2tMECvNLfAYDa9h8eUEa4 --signer-private-key ed25519:2xZcegrZvP52VrhehvApnx4McL85hcSBq1JETJrjuESC6v6TwTcr4VVdzxaCReyMCJvx9V4X1ppv8cFFeQZ6hJzU send
+  ```
+  </Tab>
+</Tabs>
+
+<Note>
+**本文版本信息**
+
+在撰写本文时，此示例适用于以下版本：
+
+- near-cli: `0.17.0`
+- rustc: `1.82.0`
+
+</Note>

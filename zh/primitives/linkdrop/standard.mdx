@@ -1,0 +1,80 @@
+---
+title: 标准规范
+description: "了解 NEAR 上链接投放（Linkdrop）的定义"
+---
+
+链接投放允许用户通过简单的网络链接分发资产并引导人们进入 Web3 应用。
+
+![Linkdrop](/assets/docs/primitives/linkdrop.png)
+
+其工作原理是存储资产并将[访问密钥（AccessKeys）](../../protocol/accounts-contracts/access-keys)与其关联。`AccessKeys` 随后以网络链接的形式分发给用户。这些链接将用户引导至一个网站，该网站自动使用密钥调用 `linkdrop` 合约中的 `claim` 方法。
+
+一个合约若要被视为链接投放合约，必须遵循 [**NEP-452 标准**](https://github.com/near/NEPs/blob/master/neps/nep-0452.md)。**NEP-452** 说明了需要实现的**最小接口**以及预期的功能。
+
+---
+
+## NEP-452（链接投放标准）
+
+[NEP-452](https://github.com/near/NEPs/blob/master/neps/nep-0452.md) 是 NEAR 上所有链接投放合约的蓝图。它定义了合约必须实现的**一套通用规则**和**函数**，才能被视为链接投放合约。
+
+<Tip>
+
+请注意，NEP-452 定义了链接投放合约的**接口**和**预期行为**，但不规定内部逻辑的实现方式。
+
+不同的链接投放合约可以有不同的内部实现，同时仍然遵守 NEP-452 标准。
+
+</Tip>
+
+### 接口
+
+#### `get_key_balance`（*只读*）
+
+允许查询分配给特定链接投放密钥的 NEAR 代币数量
+
+```ts
+get_key_balance(key: string): string;
+```
+
+<br />
+
+#### `get_key_information`（*只读*）
+
+返回特定链接投放密钥的信息，包括分配给它的 NEAR 代币数量、接收者 ID 以及密钥是否已被领取
+
+```ts
+interface NFTData {
+  contract_id: string;
+  token_id: string;
+}
+
+interface FTData {
+  contract_id: string;
+  amount: string;
+}
+
+get_key_information(key: string): { required_gas: string, yoctonear: string, nft_list: NFTData[], ft_list: FTData[] };
+```
+
+<br />
+
+#### `claim`
+
+允许用户领取与特定密钥关联的资产。该函数将分配给提供的 `account_id` 的 NEAR 代币、NFT 和 FT 进行转移，调用此方法前该账户**必须**已存在。
+
+> ⚠️ 用户需要使用**收到的链接投放密钥**对交易进行签名来调用此方法。
+
+```ts
+claim(account_id: string): boolean;
+```
+
+<br />
+
+#### `create_account_and_claim`
+
+允许用户**创建新账户**并**领取与特定密钥关联的资产**。该函数使用提供的 `new_account_id` 创建新账户，并将分配给它的 NEAR 代币、NFT 和 FT 进行转移。
+
+> ⚠️ 用户需要使用**收到的链接投放密钥**对交易进行签名来调用此方法。
+
+```ts
+create_account_and_claim(new_account_id: string, new_public_key: string): Promise<boolean>;
+```

@@ -1,0 +1,459 @@
+---
+title: 区块 / 分片
+description: "了解如何通过 NEAR RPC API 获取区块和分片的详细信息。"
+---
+
+RPC API 允许您查询网络并获取特定区块或分片的详细信息。
+
+## 快速参考
+
+| 方法 | 描述 | 参数 |
+|--------|-------------|------------|
+| [`block`](#block-details) | 通过高度、哈希或最终性获取区块详情 | `finality` 或 `block_id` |
+| [`block_effects`](#block-effects) | 获取特定区块中的变更 | `finality` 或 `block_id` |
+| [`chunk`](#chunk-details) | 通过 chunk_id 或 block_id + shard_id 获取分片详情 | `chunk_id` 或 `block_id` + `shard_id` |
+
+---
+
+## 区块详情
+
+查询网络并返回指定高度或哈希的区块。您也可以使用 `finality` 参数返回最新区块详情。
+
+**注意**：您只能通过特定区块_或_最终性来搜索，不能同时选择两者。
+
+- **method**: `block`
+- **params**: `finality` 或 `block_id`
+
+<Tabs>
+  <Tab title="按最终性">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "block",
+      "params": {
+        "finality": "final"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://test.rpc.fastnear.com",
+    });
+
+    const response = await provider.block({
+      finality: 'final',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=block \
+      params:='{"finality": "final"}'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+  <Tab title="按区块高度">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "block",
+      "params": {
+        "block_id": 187310138
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.block({
+      blockId: 187310138,
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=block \
+      params:='{"block_id": 187310138}'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+  <Tab title="按区块哈希">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "block",
+      "params": {
+        "block_id": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.block({
+      blockId: '6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=block \
+      params:='{"block_id": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"}'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+</Tabs>
+
+<Accordion title="响应示例">
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "author": "node2",
+    "chunks": [
+      {
+        "chunk_hash": "CzPafxtJmM1FnRoasKWAVhceJzZzkz9RKUBQQ4kY9V1v",
+        "shard_id": 0,
+        "gas_limit": 1000000000000000,
+        "gas_used": 0,
+        "height_created": 187310138,
+        "height_included": 187310138
+      }
+    ],
+    "header": {
+      "hash": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w",
+      "height": 187310138,
+      "timestamp": 1739254177539033760,
+      "gas_price": "100000000",
+      "latest_protocol_version": 73
+    }
+  },
+  "id": "dontcare"
+}
+```
+</Accordion>
+
+---
+
+## 区块变更
+
+返回指定区块高度或哈希的区块变更。包含 `account_touched`、`access_key_touched`、`data_touched`、`contract_code_touched` 等变更类型。
+
+- **method**: `block_effects`
+- **params**: `finality` 或 `block_id`
+
+<Tabs>
+  <Tab title="按最终性">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "block_effects",
+      "params": {
+        "finality": "final"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://test.rpc.fastnear.com",
+    });
+
+    const response = await provider.blockChanges({
+      finality: 'final',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=block_effects \
+      params:='{"finality": "final"}'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+  <Tab title="按区块高度">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "block_effects",
+      "params": {
+        "block_id": 187310138
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.blockChanges({
+      blockId: 187310138,
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=block_effects \
+      params:='{"block_id": 187310138}'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+  <Tab title="按区块哈希">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "block_effects",
+      "params": {
+        "block_id": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.blockChanges({
+      blockId: '6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=block_effects \
+      params:='{"block_id": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w"}'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+</Tabs>
+
+<Accordion title="响应示例">
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "block_hash": "6RWmTYhXCzjMjoY3Mz1rfFcnBm8E6XeDDbFEPUA4sv1w",
+    "block_effects": [
+      { "account_id": "account.rpc-examples.testnet", "type": "account_touched" },
+      { "account_id": "ping-account.testnet", "type": "account_touched" },
+      { "account_id": "account.rpc-examples.testnet", "type": "access_key_touched" },
+      { "account_id": "dev2-nsp.testnet", "type": "data_touched" }
+    ]
+  },
+  "id": "dontcare"
+}
+```
+</Accordion>
+
+---
+
+## 分片详情
+
+返回特定分片的详细信息。您可以先运行[区块详情](#block-details)查询以获取有效的分片哈希。
+
+- **method**: `chunk`
+- **params**: `chunk_id` 或 `block_id` + `shard_id`
+
+<Tabs>
+  <Tab title="按 chunk_id">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "chunk",
+      "params": {
+        "chunk_id": "CzPafxtJmM1FnRoasKWAVhceJzZzkz9RKUBQQ4kY9V1v"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.chunk(
+      'CzPafxtJmM1FnRoasKWAVhceJzZzkz9RKUBQQ4kY9V1v',
+    );
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=chunk \
+      params:='{"chunk_id": "CzPafxtJmM1FnRoasKWAVhceJzZzkz9RKUBQQ4kY9V1v"}'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+  <Tab title="按 block_id + shard_id">
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "chunk",
+      "params": {
+        "block_id": 187310138,
+        "shard_id": 0
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({
+        url: "https://archival-rpc.testnet.near.org",
+    });
+
+    const response = await provider.chunk([187310138, 0]);
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://archival-rpc.testnet.near.org \
+      jsonrpc=2.0 \
+      id=dontcare \
+      method=chunk \
+      params:='{"block_id": 187310138, "shard_id": 0}'
+    ```
+  </Tab>
+</Tabs>
+
+  </Tab>
+</Tabs>
+
+<Accordion title="响应示例">
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "author": "kiln.pool.f863973.m0",
+    "header": {
+      "chunk_hash": "CzPafxtJmM1FnRoasKWAVhceJzZzkz9RKUBQQ4kY9V1v",
+      "shard_id": 0,
+      "gas_limit": 1000000000000000,
+      "gas_used": 0,
+      "height_created": 187310138,
+      "height_included": 187310138
+    },
+    "receipts": [],
+    "transactions": [
+      {
+        "hash": "J3KbUXF9YPu2eGnbDCACxGvmMDZMdP7acGYhVLHGu9y2",
+        "signer_id": "account.rpc-examples.testnet",
+        "receiver_id": "contract.rpc-examples.testnet"
+      }
+    ]
+  },
+  "id": "dontcare"
+}
+```
+</Accordion>
+
+---
+
+## 错误处理
+
+| 错误代码 | 描述 | 解决方案 |
+|------------|-------------|----------|
+| `UNKNOWN_BLOCK` | 区块未找到或已被垃圾回收 | 检查区块有效性；对旧区块使用归档节点 |
+| `UNKNOWN_CHUNK` | 数据库中未找到分片 | 验证分片 ID；对旧分片使用归档节点 |
+| `INVALID_SHARD_ID` | 分片 ID 不存在 | 为现有分片提供有效的分片 ID |
+| `NOT_SYNCED_YET` | 节点仍在同步中 | 等待同步完成或使用其他节点 |
+| `PARSE_ERROR` | 请求参数无效 | 检查参数格式和完整性 |
+| `INTERNAL_ERROR` | 服务器端问题 | 重试请求或尝试其他 RPC 端点 |

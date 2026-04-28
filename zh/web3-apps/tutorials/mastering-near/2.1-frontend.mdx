@@ -1,0 +1,156 @@
+---
+title: 创建前端
+description: "使用 React 为我们的拍卖创建前端界面。"
+---
+
+import { Github } from '/snippets/github.jsx'
+
+现在我们已经成功创建了合约，是时候构建一个前端，为与其交互提供用户友好的界面了。到目前为止，我们一直使用 CLI 发送交易并查看合约状态。然而，前端为最终用户提供了一种更直观的方式来与合约交互。它们可以在一个地方显示所有相关信息，允许用户只需点击按钮即可进行调用，并且唯一的前提条件是拥有一个钱包。
+
+---
+
+## 前端结构
+
+导航到拍卖前端。
+
+```bash
+cd frotends/01-frontend
+```
+
+这里有一个简单的 Next.js 前端，我们将逐步了解为 NEAR 智能合约创建前端的基础知识。
+
+首先，让我们通过快速浏览重要文件来了解前端中代码的结构。
+
+| 文件                             | 描述                                                                     |
+|----------------------------------|---------------------------------------------------------------------------------|
+| **_app.js**           | 负责渲染页面，初始化钱包对象并将其添加到全局上下文中  |
+| **index.js**          | 主页面，项目组件在此加载，包含应用程序的大部分逻辑，如查看合约状态和出价逻辑 |
+| **near.js**           | 包含钱包类，具有与钱包和区块链交互的方法 |
+| **context.js**        | 保存全局上下文——可以在任何地方访问的钱包对象和已登录账户 ID |
+| **config.js**         | 指定拍卖合约的账户 ID |
+| **Navigation.jsx**    | 包含一个按钮，供用户登录和注销钱包的组件 |
+| **Bid.jsx**           | 允许用户进行出价的组件 |
+| **LastBid.jsx**       | 显示最高出价及最高出价下次刷新时间的组件 |
+| **Timer.jsx**         | 显示拍卖结束前剩余时间的组件；如果已结束，则显示领取拍卖的按钮，并声明拍卖已结束 |
+
+---
+
+## 指定合约
+
+我们有一个配置文件，用于指定前端将与之交互的拍卖合约名称。示例中已指定了一个示例拍卖合约，但您可以将合约更改为您部署的拍卖合约。
+
+<Github fname="config.js"
+            url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/config.js"
+            />
+
+---
+
+## 设置钱包
+
+为了能够完全与合约交互——发送出价和领取拍卖——您需要一个 `wallet` 来签署交易。钱包安全地存储您的私钥，并允许您签署交易而不将私钥暴露给前端。钱包选择器允许用户从一系列钱包中进行选择。
+
+我们在 `near.js` 文件中通过公开用于完成各种任务的方法来抽象钱包选择器。欢迎[查看该文件](https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js)，以完全了解钱包选择器的实现方式。
+
+钱包对象在 `app.js` 文件中初始化，并与已登录的账户一起添加到全局上下文中，使其更容易在应用程序的任何地方访问。
+
+<Github fname="_app.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/_app.js#L13-L27"
+        start="13" end="27" />
+    <Github fname="context.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/context.js"
+        />
+
+<Tip>
+**访问密钥**
+
+在 NEAR 上，除了普通的全访问密钥外，我们还有 `function-call access keys`（函数调用访问密钥），它们被授予应用程序以允许其代表用户签署 `non-payable`（不涉及付款）的交易。这样，钱包就不需要为每个非关键交易弹出，从而改善了用户体验。在创建钱包对象时，您可以决定是否为应用程序创建访问密钥。但在本示例中，我们选择不创建，因为我们将调用的主要函数 `bid` 是 `payable`（可支付）的。
+
+您可以在[此处](/protocol/accounts-contracts/access-keys)进一步了解 NEAR 的密钥模型。
+
+</Tip>
+
+我们在 `navigation` 组件中添加了登录和注销按钮，以调用 `near.js` 文件中相应的方法。
+
+<Github fname="Navigation.jsx" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/components/Navigation.jsx"
+        />
+    <Github fname="near.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js#L58-L72"
+        start="58" end="72" />
+
+---
+
+## 显示最高出价
+
+要从拍卖中获取最高出价及其出价者，我们调用 `get_highest_bid`。由于此函数以 `yoctoNEAR` 返回最高出价，我们除以 `10^24` 得到以 NEAR 表示的金额。
+
+<Github fname="index.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L24-L29"
+        start="24" end="29" />
+    <Github fname="near.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js#L82-L94"
+        start="82" end="94" />
+
+在钱包文件中，您会看到我们向 RPC 提供商发起查询，由于我们不签署交易，所以这里不需要钱包。这里我们使用 https://rpc.testnet.near.org，但请注意[有许多不同的提供商可用](/api/rpc/providers)。我们使用乐观最终性（optimistic finality）查询 RPC，它查询节点上记录的最新区块。或者，可以使用最终最终性（final finality），其中区块已由网络上至少 66% 的验证者验证，但这会提供稍有延迟的信息（仅延迟几秒钟）。
+
+然后，我们将最高出价者的信息传递给 `LastBid` 组件，以显示出价金额和出价者的账户 ID。
+
+<Github fname="index.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L101"
+        start="101" end="101" />
+    <Github fname="LastBid.jsx" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/components/LastBid.jsx"
+        />
+
+---
+
+## 更新最高出价
+
+我们希望随时了解最高出价，因为自页面加载以来，其他人可能已经出了更高的价。为了解决这个问题，我们使用 `setInterval` 每 20 秒获取一次合约信息，如果最高出价发生变化则进行更新。在实际应用中，您可能希望更频繁地刷新出价金额，但为了节省 RPC 调用，我们每 20 秒进行一次。
+
+<Github fname="index.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L47-L60"
+        start="47" end="60" />
+
+---
+
+## 拍卖结束时间
+
+合约以自 Unix 纪元（1970 年 1 月 1 日 00:00:00 UTC）以来的纳秒数存储拍卖结束时间。在我们的前端中，我们将以天、小时、分钟和秒来显示剩余时间。
+
+<Github fname="Timer.jsx" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/components/Timer.jsx#L11-L35"
+        start="11" end="35" />
+
+---
+
+## 进行出价
+
+要进行出价，我们使用 `bid` 函数调用合约。我们以 `yoctoNEAR` 指定存款金额，这将是出价金额。输入框将以 NEAR 接受出价金额，所以我们乘以 `10^24` 得到要发送的正确金额。我们还指定要附加到交易的 Gas 数量，这里我们附加 30Tgas，足够让交易顺利通过，未使用的 Gas 会退还给我们。
+
+在这里，由于用户正在改变合约的状态而不仅仅是查看它，用户需要签署交易。因此，钱包将弹出显示交易详情。
+
+<Github fname="index.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L95-L105"
+        start="95" end="105" />
+    <Github fname="near.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js#L107-L126"
+        start="107" end="126"/>
+
+---
+
+## 领取拍卖
+
+拍卖结束后（当前时间大于结束时间），拍卖可以被领取。此时，计时器将被隐藏，并显示一个领取拍卖的按钮。点击后，将在拍卖合约上调用 `claim` 函数，向最高出价者发送 NFT，向拍卖者发送 FT。
+
+<Github fname="index.js" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L75-L82"
+        start="75" end="82" />
+
+---
+
+## 结论
+
+在本教程的这一部分，我们为 NEAR 合约实现了一个简单的前端。在此过程中，您学习了如何使用钱包选择器进行用户登录和注销、如何查看合约状态，以及如何签署和发送交易。
+
+虽然我们可以看到最高出价，但我们可能想查看拍卖的出价历史。由于合约只存储最近的出价（以降低存储成本），我们需要使用索引器来获取历史数据。在本教程的[下一部分](./2.2-indexing)，我们将使用 API 端点查询历史数据。

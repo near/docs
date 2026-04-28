@@ -1,0 +1,70 @@
+---
+title: Near 多链 DAO 治理
+sidebarTitle: 介绍
+description: "了解 Abstract DAO 如何使 NEAR 上的单次投票能够在多个 EVM 链上执行操作。"
+---
+
+许多多链组织在多个 EVM 链上部署同一智能合约的副本，这些副本需要保持同步。
+
+通常，这通过处理多个 DAO 来解决——每条链一个——在每个 DAO 上同时对相同操作进行投票，这一过程不仅耗时，而且成本高昂且容易出错。
+
+![multi chain flow](/assets/docs/chain-abstraction/chain-signatures/tutorials/multichain-dao/multi-dao-flow.png)
+
+为了解决这个问题，我们构建了 [Abstract DAO](https://github.com/nearuaguild/abstract-dao)，它使组织能够在 NEAR 上**投票一次**，然后在**多条链**上**执行相同操作**。
+
+![multi chain flow](/assets/docs/chain-abstraction/chain-signatures/tutorials/multichain-dao/near-dao-flow.png)
+
+<Warning>
+Abstract DAO 是一个示例，因此尚未经过审计，使用风险自负。
+</Warning>
+
+---
+
+### 工作原理
+
+[Abstract DAO](https://github.com/nearuaguild/abstract-dao) 充当 NEAR DAO 和 EVM 链之间的中介。
+
+投票和执行操作的过程如下：
+
+1. **创建 EIP-1559 有效载荷**：您创建将在所有链上执行的交易，指定接收地址、nonce、金额和交易数据。仅 Gas 参数未设置，因为它们会因链而异。
+
+2. **选择单一授权账户**：作为投票过程的一部分，您的组织选择一个"授权账户"，该成员负责设置 Gas 参数，并为所有链生成签名。
+
+3. **对请求进行投票**：您的去中心化组织在 NEAR 上进行一次投票以批准此请求。每个成员可以查看交易，然后投票确认或拒绝。
+
+4. **生成签名**：一旦请求获得足够的确认，交易即被批准。"授权账户"现在可以与 [Abstract DAO](https://github.com/nearuaguild/abstract-dao) 交互，为任意多个 EVM 兼容链生成签名。
+
+其结果是大幅简化的治理流程（一次投票，一次确认）以及以协调方式在多条链上签署和执行交易的能力。
+
+<Tip>
+**处理 Gas**
+由于 Gas 价格在各链之间差异很大，交易的 Gas 价格在生成签名之前不会设置。
+
+这意味着"授权账户"将负责为每个正在签署的交易设置每条链的 Gas 价格。
+</Tip>
+
+---
+
+## 前提条件
+
+要成功完成本教程，您需要安装 [Near CLI](/tools/cli#installation)，并大致了解[链签名](/chain-abstraction/chain-signatures/getting-started)的工作原理。
+
+---
+
+## 下一步
+
+准备好开始了吗？让我们跳到第一步，了解 Abstract DAO 合约的工作原理。
+
+---
+
+<Note>
+**本文章的版本信息**
+
+- near-cli: `0.12.0`
+- rustc: `1.78.0`
+- cargo: `1.80.1`
+- cargo-near: `0.6.2`
+- rustc: `1.78.0`
+- node: `21.6.1`
+
+</Note>

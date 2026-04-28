@@ -1,0 +1,89 @@
+---
+title: 代表受控账户转移 Near 代币
+sidebarTitle: 代表可控账户行事
+description: "构建交易参数，请求 MPC 签名，并安全广播已签名的 NEAR 代币转移。"
+---
+
+在本教程的这一部分，我们将深入探讨如何构建交易参数、如何根据参数从智能合约请求签名，以及如何将已签名的交易广播到网络。
+
+## 构建交易参数
+
+既然我们已经设置了账户并衍生了公钥，现在是时候构建交易参数了。
+
+要使交易有效，我们必须附加 `nonce` 和 `recent_block_hash` ——这些值确保交易的唯一性并防止重放攻击。
+
+首先获取 `nonce`：
+
+```ts
+const accessKey = await near.connection.provider.query({
+  request_type: "view_access_key",
+  account_id: controllableAccountId, // "controllable.testnet"
+  public_key: derivedPublicKey, // 在上一章节中衍生
+  finality: "optimistic",
+});
+
+const nonce = accessKey.nonce;
+```
+
+然后获取 `recent_block_hash`：
+
+```ts
+const block = await near.connection.provider.block({
+  finality: "final",
+});
+
+const blockHash = block.header.hash;
+```
+
+现在我们有了所需的一切，让我们构建交易参数：
+
+```ts
+const transactionArgs = {
+  signer_id: controllableAccountId, // "controllable.testnet"
+  signer_pk: derivedPublicKey, // 在上一章节中衍生
+  nonce: (nonce + 1).toString(),
+  block_hash: blockHash,
+};
+```
+
+## 从智能合约请求签名
+
+构建交易参数后，下一步是从智能合约请求签名。
+
+```ts
+const adminAccount = await near.account("admin.testnet");
+
+const outcome = await adminAccount.functionCall({
+  contractId: contractId, // "broken-rock.testnet"
+  methodName: "transfer_on_behalf_of",
+  args: {
+    args: transactionArgs,
+  },
+  gas: "300000000000000",
+  attachedDeposit: "100000000000000000000000", // 0.1 NEAR 在大多数情况下足以支付 MPC 费用
+});
+```
+
+## 广播交易
+
+有了签名，我们现在准备将其发送到网络！
+
+```ts
+// 从结果中获取已签名的交易
+result = providers.getTransactionLastResult(outcome);
+const signedTx = new Uint8Array(result);
+
+// 发送已签名的交易
+const transferOutcome = await near.connection.provider.sendJsonRpc(
+  "broadcast_tx_commit",
+  [Buffer.from(signedTx).toString("base64")]
+);
+
+console.log(
+  `https://nearblocks.io/txns/${transferOutcome.transaction_outcome.id}`
+);
+```
+
+## 最终思考
+
+至此，我们已经成功完成了安全地代表另一个 Near 账户行事的完整旅程，并从可控账户向自己转移了 0.1 NEAR。通过遵循此流程，您现在对如何使用多方计算（MPC）在 Near 上管理外部账户有了扎实的理解。
