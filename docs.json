@@ -60,6 +60,10 @@
   },
   "redirects": [
     {
+      "source": "/smart-contracts/contracts-list",
+      "destination": "/tools/contracts-list"
+    },
+    {
       "source": "/smart-contracts/security/welcome",
       "destination": "/smart-contracts/security/introduction"
     },
