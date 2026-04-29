@@ -200,6 +200,7 @@
                           "smart-contracts/anatomy/environment",
                           "smart-contracts/anatomy/actions",
                           "smart-contracts/anatomy/crosscontract",
+                          "smart-contracts/anatomy/events",
                           "smart-contracts/anatomy/yield-resume"
                         ]
                       },
