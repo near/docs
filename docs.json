@@ -60,6 +60,10 @@
   },
   "redirects": [
     {
+      "source": "/smart-contracts/contracts-list",
+      "destination": "/tools/contracts-list"
+    },
+    {
       "source": "/smart-contracts/security/welcome",
       "destination": "/smart-contracts/security/introduction"
     },
@@ -120,7 +124,8 @@
               "getting-started/create-account",
               "getting-started/faucet",
               "getting-started/hackathons",
-              "getting-started/tools-for-ai"
+              "getting-started/tools-for-ai",
+              "communities"
             ]
           },
           {
@@ -200,6 +205,7 @@
                           "smart-contracts/anatomy/environment",
                           "smart-contracts/anatomy/actions",
                           "smart-contracts/anatomy/crosscontract",
+                          "smart-contracts/anatomy/events",
                           "smart-contracts/anatomy/yield-resume"
                         ]
                       },
