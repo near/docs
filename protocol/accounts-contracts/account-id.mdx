@@ -8,6 +8,7 @@ NEAR accounts are identified by a unique address, which can take multiple forms:
 1. [**Implicit address**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)
 2. [**Named address**](#named-address), which act as domains (e.g. `alice.near`, `sub.account.testnet`)
 3. An ethereum-like account (e.g. `0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`)
+4. [**Deterministic address**](#deterministic-address), which start with `0s` (e.g. `0s85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`)
 
 <Accordion title="Valid Account IDs">
 
@@ -132,3 +133,48 @@ If you are not going through an intermediary (i.e. the CLI, or a wallet), then y
 ## Ethereum-like Address
 
 NEAR also supports Ethereum-like accounts which are identified by a hexadecimal address (e.g. `0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`). These accounts are automatically created when a user signs in on a NEAR application using an Ethereum wallet such as MetaMask.
+
+---
+
+## Deterministic Address
+
+Deterministic accounts are a special type of account whose address is derived deterministically from their initial contract code and state. They are identified by an address starting with `0s` followed by 40 lowercase hexadecimal characters (42 characters total).
+
+For example: `0s85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`
+
+The key property of a deterministic account is that **its address is computed from its initial state**, meaning you can know the account's address before it is even created. This is useful for protocols and applications that need to reference a contract address before deployment.
+
+<Accordion title="🧑‍💻 Technical: How is the address derived?">
+
+The deterministic account ID is computed by:
+1. Constructing a `DeterministicAccountStateInit` struct containing:
+   - **Code**: a reference to the contract code via a code hash or an existing account ID
+   - **Initial data**: a key-value mapping pre-populating the contract's storage (max 4 MiB per key/value)
+2. Borsh-encoding that struct into bytes
+3. Applying the formula: `'0s' + keccak256(bytes)[12:32].hex()`
+
+This guarantees that two accounts with identical code and initial state will always have the same address.
+
+</Accordion>
+
+<Accordion title="🧑‍💻 Technical: How are deterministic accounts created?">
+
+Deterministic accounts are created using the `DeterministicStateInit` action — **not** the standard `CreateAccount` action. The protocol validates that the supplied account ID matches the hash of the provided initial state.
+
+Smart contracts can build this action using the following host functions:
+- `promise_batch_action_state_init` — creates a `DeterministicStateInit` action referencing a code hash
+- `promise_batch_action_state_init_by_account_id` — creates the action referencing an existing account's code
+- `set_state_init_data_entry` — adds a key-value entry to the account's initial storage
+- `current_contract_code` — returns the calling contract's own code hash, useful for deploying clones
+
+Any NEAR attached beyond the required storage deposit is refunded to the sender.
+
+</Accordion>
+
+<Info>
+
+**Deterministic accounts cannot be deleted** and certain account modifications available to regular accounts are restricted. Once created, the deployed code and pre-initialized storage are permanent.
+
+This feature was introduced in **protocol version 82** and is available on testnet. It will be part of the next mainnet release.
+
+</Info>
