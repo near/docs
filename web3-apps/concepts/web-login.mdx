@@ -1,41 +1,38 @@
 ---
-title: Web Login Methods
-description: "Learn all the login options available for your website or web app"
+title: Wallet Login
+description: "Connect users to NEAR wallets using a secure, lightweight wallet connector"
 ---
 
-NEAR offers multiple options to allow users to login using NEAR accounts. Below are the most popular methods to
-integrate web login into your web app or website, each tailored to different use cases and user experiences.
+NEAR offers multiple options to connect users via their wallets. The recommended approach is [NEAR Connect](../tutorials/wallet-login), a zero-dependency library that runs wallet code in isolated sandboxed iframes for maximum security.
 
-Once the user is logged in, they will be able to use their accounts to interact with the NEAR blockchain, making
-call to smart contracts, transfer tokens, and more.
+Once the user is logged in, they can interact with the NEAR blockchain — calling smart contracts, transferring tokens, and more.
 
 ---
 
-## NEAR Connector
+## NEAR Connect (Recommended)
 
 [NEAR Connect](../tutorials/wallet-login) is a zero-dependency lightweight library that allows users to connect to your dApp using their preferred wallet. It uses a secure sandbox-based architecture where wallet scripts run in isolated iframes.
 
 ![Preview](https://github.com/user-attachments/assets/c4422057-38bb-4cd9-8bd0-568e29f46280)
 
 <Tip>
-You can learn how to integrate NEAR Connect into your app in the [NEAR Connector tutorial](../tutorials/wallet-login)
+Follow the step-by-step [Wallet Login tutorial](../tutorials/wallet-login) to integrate NEAR Connect into your app.
 </Tip>
+
+**Key features:**
+- **Secure Execution**: Wallet scripts run in isolated sandboxed iframes
+- **Dynamic Wallets**: Wallets update without requiring code changes
+- **Zero Dependencies**: Lightweight with no external dependencies
+- **Wide Support**: HOT Wallet, Meteor, Nightly, WalletConnect, and 10+ others
 
 ---
 
-## Social Login
-
-[Privy](https://www.privy.io/) is a third-party service that allows users to login using their email or social accounts (Google, Facebook, Twitter, etc). Upon login, a NEAR wallet is created for the user, which they can fund and use to interact with your dApp.
-
-<Tip>
-
-Check our [Privy Integration Example](https://github.com/near-examples/hello-privy/) to learn how to integrate Privy into your web app
-
-</Tip>
-
-![Preview](https://framerusercontent.com/images/ugUCPrqIGlKFdxBwSbRoWriZtE.png?scale-down-to=2048&width=4018&height=2262)
+## Alternatives
 
 <Info>
-**Web3Auth**
-For an alternative social login method you can check [Web3Auth](https://web3auth.io/). We have a functional [Web3Auth Integration Example](https://github.com/near-examples/hello-web3auth/) to show how to integrate Web3Auth into your web app.
+**Fastintear** is a Rust-based NEAR wallet integration for apps that need a lightweight, framework-agnostic option. See the [Fastintear repository](https://github.com/fastnear/fastintear) for details.
+</Info>
+
+<Info>
+**FastAuth** (Email Login) allows users to sign up or recover NEAR accounts using their email address. Note that the current version is deprecated; an updated version using MPC and Auth0 is in development. See [FastAuth SDK](../../chain-abstraction/fastauth-sdk) for details.
 </Info>

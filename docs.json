@@ -293,6 +293,7 @@
                     "group": "Concepts",
                     "pages": [
                       "web3-apps/concepts/web-login",
+                      "web3-apps/concepts/social-login",
                       "web3-apps/concepts/data-types"
                     ]
                   },
@@ -467,14 +468,6 @@
                     "pages": [
                       "data-infrastructure/indexers",
                       {
-                        "group": "NEAR Lake Framework",
-                        "pages": [
-                          "data-infrastructure/near-lake-framework",
-                          "data-infrastructure/tutorials/near-lake-framework",
-                          "data-infrastructure/tutorials/near-lake-state-changes-indexer"
-                        ]
-                      },
-                      {
                         "group": "NEAR Indexer",
                         "pages": [
                           "data-infrastructure/near-indexer",
@@ -482,9 +475,7 @@
                           {
                             "group": "Building a Data Lake",
                             "pages": [
-                              "data-infrastructure/tutorials/running-near-lake/run-near-lake",
-                              "data-infrastructure/tutorials/running-near-lake/lake-start-options",
-                              "data-infrastructure/tutorials/running-near-lake/credentials"
+                              "data-infrastructure/tutorials/running-near-lake/run-near-lake"
                             ]
                           }
                         ]
