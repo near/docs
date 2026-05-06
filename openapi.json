@@ -1465,7 +1465,7 @@
         "type": "object"
       },
       "AccountId": {
-        "description": "NEAR Account Identifier.\n\nThis is a unique, syntactically valid, human-readable account identifier on the NEAR network.\n\n[See the crate-level docs for information about validation.](index.html#account-id-rules)\n\nAlso see [Error kind precedence](AccountId#error-kind-precedence).\n\n## Examples\n\n```\nuse near_account_id::AccountId;\n\nlet alice: AccountId = \"alice.near\".parse().unwrap();\n\nassert!(\"\u0192elicia.near\".parse::<AccountId>().is_err()); // (\u0192 is not f)\n```",
+        "description": "NEAR Account Identifier.\n\nThis is a unique, syntactically valid, human-readable account identifier on the NEAR network.\n\n[See the crate-level docs for information about validation.](index.html#account-id-rules)\n\nAlso see [Error kind precedence](AccountId#error-kind-precedence).\n\n## Examples\n\n```\nuse near_account_id::AccountId;\n\nlet alice: AccountId = \"alice.near\".parse().unwrap();\n\nassert!(\"ƒelicia.near\".parse::<AccountId>().is_err()); // (ƒ is not f)\n```",
         "title": "AccountId",
         "type": "string"
       },
@@ -4058,7 +4058,7 @@
       },
       "CompilationError_variant2": {
         "additionalProperties": false,
-        "description": "This is for defense in depth.\nWe expect our runtime-independent preparation code to fully catch all invalid wasms,\nbut, if it ever misses something we\u2019ll emit this error",
+        "description": "This is for defense in depth.\nWe expect our runtime-independent preparation code to fully catch all invalid wasms,\nbut, if it ever misses something we’ll emit this error",
         "properties": {
           "WasmerCompileError": {
             "properties": {
@@ -9416,10 +9416,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_call_function": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9432,8 +9439,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9443,10 +9448,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_changes": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9459,8 +9471,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9470,10 +9480,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_changes_in_block": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9486,8 +9503,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9497,10 +9512,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_congestion_level": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9513,8 +9535,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9524,10 +9544,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_genesis_config": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9540,8 +9567,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9551,10 +9576,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_light_client_block_proof": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9567,8 +9599,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9578,10 +9608,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_light_client_proof": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9594,8 +9631,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9605,10 +9640,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_maintenance_windows": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9621,8 +9663,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9632,10 +9672,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_protocol_config": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9648,8 +9695,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9659,10 +9704,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_receipt": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9675,8 +9727,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9686,10 +9736,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_split_storage_info": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9702,8 +9759,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9713,10 +9768,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_tx_status": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9729,8 +9791,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9740,10 +9800,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_validators_ordered": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9756,8 +9823,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9767,10 +9832,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_view_access_key": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9783,8 +9855,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9794,10 +9864,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_view_access_key_list": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9810,8 +9887,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9821,10 +9896,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_view_account": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9837,8 +9919,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9848,10 +9928,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_view_code": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9864,8 +9951,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9875,10 +9960,17 @@
       "JsonRpcRequest_for_EXPERIMENTAL_view_state": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9891,8 +9983,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9902,10 +9992,17 @@
       "JsonRpcRequest_for_block": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9918,8 +10015,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9929,10 +10024,17 @@
       "JsonRpcRequest_for_block_effects": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9945,8 +10047,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9956,10 +10056,17 @@
       "JsonRpcRequest_for_broadcast_tx_async": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9972,8 +10079,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -9983,10 +10088,17 @@
       "JsonRpcRequest_for_broadcast_tx_commit": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -9999,8 +10111,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10010,10 +10120,17 @@
       "JsonRpcRequest_for_changes": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10026,8 +10143,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10037,10 +10152,17 @@
       "JsonRpcRequest_for_chunk": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10053,8 +10175,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10064,10 +10184,17 @@
       "JsonRpcRequest_for_client_config": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10080,8 +10207,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10091,10 +10216,17 @@
       "JsonRpcRequest_for_gas_price": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10107,8 +10239,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10118,10 +10248,17 @@
       "JsonRpcRequest_for_genesis_config": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10134,8 +10271,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10145,10 +10280,17 @@
       "JsonRpcRequest_for_health": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10161,8 +10303,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10172,10 +10312,17 @@
       "JsonRpcRequest_for_light_client_proof": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10188,8 +10335,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10199,10 +10344,17 @@
       "JsonRpcRequest_for_maintenance_windows": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10215,8 +10367,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10226,10 +10376,17 @@
       "JsonRpcRequest_for_network_info": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10242,8 +10399,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10253,10 +10408,17 @@
       "JsonRpcRequest_for_next_light_client_block": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10269,8 +10431,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10280,10 +10440,17 @@
       "JsonRpcRequest_for_query": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10296,8 +10463,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10307,10 +10472,17 @@
       "JsonRpcRequest_for_send_tx": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10323,8 +10495,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10334,10 +10504,17 @@
       "JsonRpcRequest_for_status": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10350,8 +10527,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10361,10 +10536,17 @@
       "JsonRpcRequest_for_tx": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10377,8 +10559,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -10388,10 +10568,17 @@
       "JsonRpcRequest_for_validators": {
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
           },
           "jsonrpc": {
-            "type": "string"
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
           },
           "method": {
             "enum": [
@@ -10404,8 +10591,6 @@
           }
         },
         "required": [
-          "jsonrpc",
-          "id",
           "params",
           "method"
         ],
@@ -14000,7 +14185,7 @@
                 "nullable": true
               }
             ],
-            "description": "Max burnt gas per view method.  If present, overrides value stored in\ngenesis file.  The value only affects the RPCs without influencing the\nprotocol thus changing it per-node doesn\u2019t affect the blockchain."
+            "description": "Max burnt gas per view method.  If present, overrides value stored in\ngenesis file.  The value only affects the RPCs without influencing the\nprotocol thus changing it per-node doesn’t affect the blockchain."
           },
           "min_block_production_delay": {
             "description": "Minimum duration before producing block.",
@@ -17128,12 +17313,8 @@
             "$ref": "#/components/schemas/SignedTransaction"
           },
           "wait_until": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/TxExecutionStatus"
-              }
-            ],
-            "default": "EXECUTED_OPTIMISTIC"
+            "$ref": "#/components/schemas/TxExecutionStatus",
+            "description": "Optional. Tells the RPC how long to wait before returning the transaction status. See the TxExecutionStatus enum for the six available milestones. Defaults to `EXECUTED_OPTIMISTIC`."
           }
         },
         "required": [
@@ -18446,12 +18627,8 @@
         ],
         "properties": {
           "wait_until": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/TxExecutionStatus"
-              }
-            ],
-            "default": "EXECUTED_OPTIMISTIC"
+            "$ref": "#/components/schemas/TxExecutionStatus",
+            "description": "Optional. Tells the RPC how long to wait before returning the transaction status. See the TxExecutionStatus enum for the six available milestones. Defaults to `EXECUTED_OPTIMISTIC`."
           }
         },
         "title": "RpcTransactionStatusRequest",
@@ -21691,26 +21868,18 @@
         "type": "string"
       },
       "TxExecutionStatus": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/TxExecutionStatus_variant0"
-          },
-          {
-            "$ref": "#/components/schemas/TxExecutionStatus_variant1"
-          },
-          {
-            "$ref": "#/components/schemas/TxExecutionStatus_variant2"
-          },
-          {
-            "$ref": "#/components/schemas/TxExecutionStatus_variant3"
-          },
-          {
-            "$ref": "#/components/schemas/TxExecutionStatus_variant4"
-          },
-          {
-            "$ref": "#/components/schemas/TxExecutionStatus_variant5"
-          }
-        ]
+        "type": "string",
+        "title": "TxExecutionStatus",
+        "description": "How long the RPC should wait before returning a transaction result. Each value waits for a stricter execution milestone than the previous one. Defaults to `EXECUTED_OPTIMISTIC`.\n\n- `NONE`: Transaction is waiting to be included into a block.\n- `INCLUDED`: Transaction is included in a block (block may not be finalized).\n- `EXECUTED_OPTIMISTIC` (default): Included + all non-refund receipts executed (blocks may not be finalized).\n- `INCLUDED_FINAL`: Transaction is included in a finalized block.\n- `EXECUTED`: Included in a finalized block + all non-refund receipts executed.\n- `FINAL`: Included in a finalized block + all receipts (including refunds) finalized.",
+        "enum": [
+          "NONE",
+          "INCLUDED",
+          "EXECUTED_OPTIMISTIC",
+          "INCLUDED_FINAL",
+          "EXECUTED",
+          "FINAL"
+        ],
+        "default": "EXECUTED_OPTIMISTIC"
       },
       "UseGlobalContractAction": {
         "description": "Use global contract action",
