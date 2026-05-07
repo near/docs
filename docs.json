@@ -284,6 +284,14 @@
             ]
           },
           {
+            "group": "DevKit",
+            "pages": [
+              "tools/sdk",
+              "tools/contracts-list",
+              "tools/clear-state"
+            ]
+          },
+          {
             "group": "Tutorials",
             "pages": [
               "smart-contracts/tutorials/basic-contracts",
@@ -334,6 +342,14 @@
             "pages": [
               "web3-apps/concepts/web-login",
               "web3-apps/concepts/data-types"
+            ]
+          },
+          {
+            "group": "DevKit",
+            "pages": [
+              "tools/near-connect",
+              "tools/near-api",
+              "tools/cli"
             ]
           },
           {
