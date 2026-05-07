@@ -299,7 +299,6 @@
                     "group": "Concepts",
                     "pages": [
                       "web3-apps/concepts/web-login",
-                      "web3-apps/concepts/social-login",
                       "web3-apps/concepts/data-types"
                     ]
                   },
