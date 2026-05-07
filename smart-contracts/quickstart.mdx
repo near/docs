@@ -183,21 +183,20 @@ In the meantime, please check out the [hello-near](https://github.com/near-examp
 near-go create --project-name auction --module-name auction --project-type smart-contract-empty
 ```
 
-![img](/assets/docs/smart-contracts/hello-near-go.gif)
 _Creating a project using `near-go create`_
 
 This will generate a project with the following structure:
 
 ```bash
 auction/
-├── go.mod        # Go module definition with near-sdk-go dependency
-├── go.sum
-├── main.go       # Main contract file — replace this with the auction contract below
-└── main_test.go  # Unit tests
+└── contract/
+    ├── go.mod    # Go module definition with near-sdk-go dependency
+    ├── go.sum
+    └── main.go   # Main contract file — replace this with the auction contract below
 ```
 
 ```bash
-cd auction
+cd auction/contract
 ```
 
 <Important>
