@@ -15,6 +15,9 @@ jobs:
           curl -s https://raw.githubusercontent.com/near/nearcore/master/chain/jsonrpc/openapi/openapi.json \
             > openapi.json
 
+      - name: Apply NEAR docs patches
+        run: node scripts/patch-openapi.js
+
       - name: Open PR if changed
         run: |
           git config user.name "github-actions[bot]"

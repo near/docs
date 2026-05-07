@@ -1,0 +1,186 @@
+---
+title: "Transactions"
+description: "Send transactions and query their status using the NEAR RPC API."
+sidebarTitle: "Transactions"
+---
+
+The RPC API exposes several methods for broadcasting signed transactions and tracking their execution. All transaction methods accept a base64-encoded `signed_tx_base64` payload. Status methods accept either the same payload or a `tx_hash` + `sender_account_id` pair.
+
+## Quick Reference
+
+| Method | Purpose |
+|--------|---------|
+| [`send_tx`](#send-transaction) | Broadcast a signed transaction and wait for the result |
+| [`tx`](#transaction-status) | Get the status of a previously broadcast transaction |
+| [`EXPERIMENTAL_tx_status`](#transaction-status-with-receipts) | Like `tx`, but also returns receipt details |
+| [`EXPERIMENTAL_receipt`](#receipt-by-id) | Fetch a single receipt by id |
+| [`broadcast_tx_async`](#broadcast-async) | Broadcast and return immediately with the transaction hash |
+| [`broadcast_tx_commit`](#broadcast-commit) | Broadcast and wait until the transaction is included in a block |
+
+<Info>
+Prefer `send_tx` and `tx` for new integrations. The `broadcast_tx_async` and `broadcast_tx_commit` methods are kept for backward compatibility but offer less control over when the call returns.
+</Info>
+
+---
+
+## The `wait_until` Field
+
+`send_tx` and `tx` accept an optional `wait_until` field that controls **how long the RPC waits before returning a response**. Each value waits for a stricter execution milestone than the previous one — pick the lowest level that satisfies your use case so you don't pay extra latency.
+
+| Value | Returns when… | Typical use |
+|-------|---------------|-------------|
+| `NONE` | The transaction is queued but not yet included in a block. | Fire-and-forget broadcasts where you only need the hash. |
+| `INCLUDED` | The transaction is included in a block (the block may not be finalized). | UI optimism: you want to confirm the tx hit the chain. |
+| `EXECUTED_OPTIMISTIC` *(default)* | Included + all non-refund receipts have executed (blocks may still not be finalized). | Default for most apps — you can read the result. |
+| `INCLUDED_FINAL` | Included in a *finalized* block. | You need finality but don't care about receipts. |
+| `EXECUTED` | Finalized + all non-refund receipts executed. | Strong correctness without waiting for refund receipts. |
+| `FINAL` | Finalized + all receipts (including refunds) finalized. | Accounting and cross-chain settlement, where refund-tracking matters. |
+
+If the field is omitted, the RPC behaves as if `EXECUTED_OPTIMISTIC` was passed.
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "send_tx",
+  "params": {
+    "signed_tx_base64": "DwAAAHNlbmRlci50ZXN0bmV0...",
+    "wait_until": "FINAL"
+  }
+}
+```
+
+<Warning>
+Higher `wait_until` levels can take several seconds. If your client has a short timeout, prefer `INCLUDED` or `EXECUTED_OPTIMISTIC` and poll `tx` for the stricter level.
+</Warning>
+
+---
+
+## Send Transaction
+
+Broadcasts a signed transaction and waits for the requested execution milestone before returning.
+
+- **method**: `send_tx`
+- **params**: `signed_tx_base64`, optional `wait_until`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "send_tx",
+      "params": {
+        "signed_tx_base64": "DwAAAHNlbmRlci50ZXN0bmV0...",
+        "wait_until": "EXECUTED_OPTIMISTIC"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.sendTransactionUntil(
+      signedTransaction,
+      'EXECUTED_OPTIMISTIC',
+    );
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=send_tx \
+      params:='{"signed_tx_base64":"DwAAAHNlbmRlci50ZXN0bmV0...","wait_until":"EXECUTED_OPTIMISTIC"}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## Transaction Status
+
+Returns the status of a previously submitted transaction.
+
+- **method**: `tx`
+- **params**: either `signed_tx_base64`, or `tx_hash` + `sender_account_id`. Optional `wait_until`.
+
+<Tabs>
+  <Tab title="JSON (by hash)">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "tx",
+      "params": {
+        "tx_hash": "6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugbhqsK7wQHnZS",
+        "sender_account_id": "sender.testnet",
+        "wait_until": "FINAL"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.txStatus(
+      '6zgh2u9DqHHiXzdy9ouTP7oGky2T4nugbhqsK7wQHnZS',
+      'sender.testnet',
+      'FINAL',
+    );
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## Transaction Status with Receipts
+
+`EXPERIMENTAL_tx_status` returns the same payload as `tx` plus the full set of receipts produced by the transaction. Useful when debugging cross-contract calls.
+
+- **method**: `EXPERIMENTAL_tx_status`
+- **params**: same as `tx`
+
+---
+
+## Receipt by Id
+
+Fetches a single receipt by its id.
+
+- **method**: `EXPERIMENTAL_receipt`
+- **params**: `receipt_id`
+
+---
+
+## Broadcast Async
+
+Broadcasts a signed transaction and returns immediately with the transaction hash. Equivalent to `send_tx` with `wait_until: "NONE"`.
+
+- **method**: `broadcast_tx_async`
+- **params**: a single positional string — the base64-encoded signed transaction.
+
+---
+
+## Broadcast Commit
+
+Broadcasts a signed transaction and waits for it to be included in a block. Equivalent to `send_tx` with `wait_until: "EXECUTED_OPTIMISTIC"`.
+
+- **method**: `broadcast_tx_commit`
+- **params**: a single positional string — the base64-encoded signed transaction.
+
+---
+
+## Error Handling
+
+| Error Code | Description | Solution |
+|------------|-------------|----------|
+| `INVALID_TRANSACTION` | The signed transaction failed validation. | Re-sign with the correct nonce, block hash, and signer key. |
+| `EXPIRED_TRANSACTION` | The reference block hash is too old. | Refresh `block_hash` and re-sign. |
+| `TIMEOUT_ERROR` | The chosen `wait_until` level was not reached before the RPC's deadline. | Lower `wait_until` and poll `tx`, or use an archival/dedicated provider. |
+| `UNKNOWN_TRANSACTION` | No record of the requested transaction hash. | Verify the hash and `sender_account_id`. |
+| `INVALID_SIGNATURE` | The signature does not match the signer's key. | Sign again with the matching access key. |
