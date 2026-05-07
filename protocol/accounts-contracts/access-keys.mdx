@@ -58,6 +58,33 @@ You should never share your `Full-Access`, otherwise you are giving **total cont
 
 ---
 
+## Limited Access Key Caveats
+
+### Account with Only Function-Call Keys
+
+If an account has **no full-access keys** and only function-call keys, it becomes effectively restricted:
+- It **cannot** transfer NEAR, delete itself, or manage its own keys
+- It can **only** perform the specific contract calls defined by the key's `receiver_id` and `method_names`
+
+This is useful for creating restricted sub-accounts (e.g. for [chain signatures](../../chain-abstraction/chain-signatures)), but be aware the account cannot be recovered or reconfigured through standard transactions.
+
+<Warning>
+Creating a sub-account with only a single function-call key means that account will **never** be able to remove itself, transfer NEAR out, or add new keys — unless the target contract provides a method to do so.
+</Warning>
+
+### Allowance Exhaustion
+
+The `allowance` field defines how much NEAR the key can spend on gas fees:
+
+- If set to a specific amount and fully consumed → the key becomes **unusable** and no new transactions can be signed
+- If set to `0` or omitted → **unlimited** allowance (the key has no gas budget restriction)
+
+<Warning>
+If an account has only function-call keys and the allowance runs out, the account is permanently locked from initiating any transaction. Either use unlimited allowance (`0`) or ensure the account is topped up with NEAR before the allowance is exhausted.
+</Warning>
+
+---
+
 ## Locked Accounts
 If you remove all keys from an account, then the account will become **locked**, meaning that no external actor can perform transactions in the
 account's name.

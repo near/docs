@@ -60,6 +60,14 @@
   },
   "redirects": [
     {
+      "source": "/smart-contracts/contracts-list",
+      "destination": "/tools/contracts-list"
+    },
+    {
+      "source": "/smart-contracts/security/welcome",
+      "destination": "/smart-contracts/security/introduction"
+    },
+    {
       "source": "/ai/shade-agents",
       "destination": "/ai/shade-agents/getting-started/introduction"
     },
@@ -78,6 +86,10 @@
     {
       "source": "/protocol/access-keys",
       "destination": "/protocol/accounts-contracts/access-keys"
+    },
+    {
+      "source": "/api/rpc/maintenance-windows",
+      "destination": "/api-reference/maintenance-windows"
     }
   ],
   "navigation": {
@@ -112,7 +124,8 @@
               "getting-started/create-account",
               "getting-started/faucet",
               "getting-started/hackathons",
-              "getting-started/tools-for-ai"
+              "getting-started/tools-for-ai",
+              "communities"
             ]
           },
           {
@@ -133,7 +146,7 @@
                   {
                     "group": "Transactions",
                     "pages": [
-                      "protocol/transactions",
+                      "protocol/transactions/index",
                       "protocol/transactions/transaction-anatomy",
                       "protocol/transactions/gas",
                       "protocol/transactions/transaction-execution",
@@ -192,6 +205,7 @@
                           "smart-contracts/anatomy/environment",
                           "smart-contracts/anatomy/actions",
                           "smart-contracts/anatomy/crosscontract",
+                          "smart-contracts/anatomy/events",
                           "smart-contracts/anatomy/yield-resume"
                         ]
                       },
@@ -225,7 +239,7 @@
                       {
                         "group": "Security",
                         "pages": [
-                          "smart-contracts/security/welcome",
+                          "smart-contracts/security/introduction",
                           "smart-contracts/security/checklist",
                           "smart-contracts/security/storage",
                           "smart-contracts/security/callbacks",

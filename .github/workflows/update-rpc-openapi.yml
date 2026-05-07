@@ -1,0 +1,31 @@
+name: Update RPC OpenAPI spec
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * 1'  # every Monday at 9am UTC
+
+jobs:
+  update-openapi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download openapi.json from nearcore
+        run: |
+          curl -s https://raw.githubusercontent.com/near/nearcore/master/chain/jsonrpc/openapi/openapi.json \
+            > openapi.json
+
+      - name: Open PR if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b update-rpc-openapi
+          git add openapi.json
+          git diff --staged --quiet && echo "No changes" && exit 0
+          git commit -m "chore(rpc): update OpenAPI spec from nearcore"
+          git push origin update-rpc-openapi --force
+          gh pr create --title "chore(rpc): update RPC OpenAPI spec" \
+            --body "Auto-updated openapi.json from nearcore master." \
+            --head update-rpc-openapi || echo "PR already exists"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

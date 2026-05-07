@@ -55,13 +55,45 @@ To confirm that your node is actually running, you can query its `status` RPC en
 
 In this step, we'll import the default `test.near` account that was created during `near-sandbox` initialization. We'll need this account later to deploy our smart contract, so let's prepare it now.
 
-First, make sure your `near-cli-rs` knows how to connect to your local network. If you already have a `localnet` configuration, you can skip this step. Otherwise, run:
+First, make sure your `near-cli-rs` knows how to connect to your local network. If you already have a `localnet` configuration, you can skip this step. Otherwise, you have two options:
 
-```sh
-near config add-connection --network-name localnet --connection-name localnet-sandbox --rpc-url http://localhost:3030/ --wallet-url http://localhost:3030/ --explorer-transaction-url http://localhost:3030/
-```
+<Tabs>
+  <Tab title="Interactive CLI">
+    ```sh
+    near config add-connection --network-name localnet --connection-name localnet-sandbox --rpc-url http://localhost:3030/ --wallet-url http://localhost/ --explorer-transaction-url http://localhost/
+    ```
 
-During this process, the CLI may ask you a few interactive questions. You can safely answer "No" to all of them - all required values are already defined in the command above.
+    The CLI will ask 8 questions. Answer as follows for a basic localnet setup:
+
+    | Question | Answer |
+    |---|---|
+    | Do you want to input an API key? | No, the RPC endpoint does not require API key |
+    | Is there a "linkdrop" program on this network? | I dont know |
+    | Do you want to enter the NEAR Social DB contract account ID? | No |
+    | Do you want to enter the faucet URL? | No |
+    | Do you want to enter the meta transaction relayer URL? | No |
+    | Do you want to enter the fastnear API url? | No |
+    | Do you want to enter the staking pools factory account ID? | No |
+    | Do you want to enter the coingecko API url? | No |
+  </Tab>
+  <Tab title="Edit config.toml directly">
+    Open your `near-cli` config file (located at `~/.config/near-cli/config.toml` on Linux, `~/Library/Application Support/near-cli/config.toml` on macOS) and append the following block:
+
+    ```toml
+    [network_connection.localnet-sandbox]
+    network_name = "localnet"
+    rpc_url = "http://localhost:3030/"
+    wallet_url = "http://localhost/"
+    explorer_transaction_url = "http://localhost/"
+    ```
+
+    This is equivalent to running the CLI command above and is useful in non-interactive environments (CI, scripts, containers).
+  </Tab>
+</Tabs>
+
+<Note>
+The `wallet_url` and `explorer_transaction_url` are set to placeholder values since no local wallet or explorer is running. For a full description of all available connection fields and when each one is needed, see the [Localnet configuration values](/tools/cli#localnet-configuration-values) section in the CLI reference.
+</Note>
 
 <Tip>
 To confirm that the connection was set up correctly, you can view information about the `test.near` account with the following command `near account view-account-summary test.near network-config localnet-sandbox now`.
