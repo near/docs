@@ -547,6 +547,7 @@
             "pages": [
               "api/rpc/introduction",
               "api/rpc/providers",
+              "api/rpc/transactions",
               "api/rpc/block-chunk",
               "api/rpc/gas",
               "api/rpc/protocol",
