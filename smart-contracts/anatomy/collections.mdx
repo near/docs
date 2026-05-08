@@ -106,16 +106,18 @@ The sdk array `[1,2,3,4]` with prefix `"p"` will be stored as the string `"p"` i
 
 <Accordion title="SDK Collections' Features">
 
-| Type           | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
-|----------------|:--------:|:----------------:|:-------------------------:|:---------------:|
-| `Vector`       |    ✅     |        ✅         |             ✅             |        ✅        |
-| `LookupSet`    |          |                  |                           |                 |
-| `UnorderedSet` |    ✅     |        ✅         |                           |        ✅        |
-| `IterableSet`  |    ✅     |        ✅         |                           |        ✅        |
-| `LookupMap`    |          |                  |                           |                 |
-| `UnorderedMap` |    ✅     |        ✅         |                           |        ✅        |
-| `IterableMap`  |    ✅     |        ✅         |                           |        ✅        |
-| `TreeMap`      |    ✅     |        ✅         |             ✅             |        ✅        |
+| Type           | SDK Module                  | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
+|----------------|:---------------------------:|:--------:|:----------------:|:-------------------------:|:---------------:|
+| `Vector`       | `near_sdk::store`           |    ✅     |        ✅         |             ✅             |        ✅        |
+| `LookupSet`    | `near_sdk::store`           |          |                  |                           |                 |
+| `UnorderedSet` | `near_sdk::collections` ⚠️  |    ✅     |        ✅         |                           |        ✅        |
+| `IterableSet`  | `near_sdk::store`           |    ✅     |        ✅         |                           |        ✅        |
+| `LookupMap`    | `near_sdk::store`           |          |                  |                           |                 |
+| `UnorderedMap` | `near_sdk::collections` ⚠️  |    ✅     |        ✅         |                           |        ✅        |
+| `IterableMap`  | `near_sdk::store`           |    ✅     |        ✅         |                           |        ✅        |
+| `TreeMap`      | `near_sdk::collections` ⚠️  |    ✅     |        ✅         |             ✅             |        ✅        |
+
+_⚠️ Legacy collections from `near_sdk::collections`. Prefer `near_sdk::store` equivalents for new contracts._
 
 </Accordion>
 
@@ -346,6 +348,12 @@ class LookupMapExample:
 
 Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
+<Tip>
+**UnorderedMap vs IterableMap (Rust)**
+
+`UnorderedMap` belongs to the legacy `near_sdk::collections` module. `IterableMap` is its modern replacement in `near_sdk::store`, and should be preferred for new contracts. The `store` collections cache reads and writes within a single transaction, making them more gas-efficient when the same key is accessed multiple times.
+</Tip>
+
 <Tabs>
   <Tab title="🦀 Rust">
     <Github fname="iterable_map.rs" language="rust"
@@ -463,7 +471,13 @@ class LookupSetExample:
 
 ### UnorderedSet / IterableSet
 
-Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
+Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
+
+<Tip>
+**UnorderedSet vs IterableSet (Rust)**
+
+`UnorderedSet` belongs to the legacy `near_sdk::collections` module. `IterableSet` is its modern replacement in `near_sdk::store`, and should be preferred for new contracts. The `store` collections cache reads and writes within a single transaction, making them more gas-efficient when the same key is accessed multiple times.
+</Tip>
 
 <Tabs>
   <Tab title="🦀 Rust">
