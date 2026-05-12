@@ -199,6 +199,40 @@ Once connected, you'll see an input field and a button to update the greeting. T
 
 Return to the frontend and notice that the greeting has changed.
 
+#### Step 6. (Optional) Stream blocks with NEAR Indexer
+
+So far our `localnet` has been producing blocks silently. In this step, we'll attach the [NEAR Indexer](/data-infrastructure/near-indexer) to the same `localnet` so we can observe every block, transaction, and receipt in real time, which is useful for building back-ends, analytics, or end-to-end tests that react to on-chain events.
+
+The indexer is essentially a `neard` node with extra streaming features, so we can point it at the **same home directory** the sandbox is already using (`/tmp/near-sandbox`). That way it joins our `localnet` as the node itself, reusing `genesis.json`, `validator_key.json`, `node_key.json` and `config.json`, no extra network setup required.
+
+<Danger>
+The NEAR Indexer Framework only works on **`Linux x86`**, it does **not** support Windows or MacOS. If you are on another platform, skip this step or run the indexer inside a Linux x86 container/VM that can reach the sandbox home directory.
+</Danger>
+
+First, stop the running sandbox node with `Ctrl+C`. Two processes can't share the same home directory, so the indexer will take its place as the `localnet` node.
+
+Next, clone `nearcore` and build the indexer example:
+
+```sh
+git clone https://github.com/near/nearcore.git
+cd nearcore/tools/indexer/example
+cargo build --release
+```
+
+Then start the indexer pointing at the sandbox home directory:
+
+```sh
+cargo run --release -- --home-dir /tmp/near-sandbox run
+```
+
+The indexer will boot up using the existing `localnet` state and begin streaming finalized blocks to its handler. You'll see block data printed to stdout as new blocks are produced.
+
+<Tip>
+With the indexer running, open a new terminal and trigger a transaction against your contract (for example, calling `set_greeting` from the frontend or from `near-cli-rs`). The corresponding block, transaction, and receipts will appear in the indexer's output almost immediately.
+</Tip>
+
+To learn how to parse the streamed block data, filter by accounts or shards, and tweak sync/finality settings, head over to the full [Creating an Indexer tutorial](/data-infrastructure/tutorials/near-indexer).
+
 ---
 
-You've now gone through the entire process of setting up a local NEAR environment — from running the Sandbox and deploying a contract to connecting a wallet and interacting with it through a frontend. With this setup, you can experiment freely, test your contracts safely, and build end-to-end decentralized applications without touching mainnet or testnet.
+You've now gone through the entire process of setting up a local NEAR environment — from running the Sandbox and deploying a contract to connecting a wallet, interacting with it through a frontend, and streaming on-chain events with the NEAR Indexer. With this setup, you can experiment freely, test your contracts safely, and build end-to-end decentralized applications without touching mainnet or testnet.
