@@ -498,6 +498,13 @@
             ]
           },
           {
+            "group": "Off-chain Compute",
+            "pages": [
+              "primitives/off-chain-compute/what-is",
+              "primitives/off-chain-compute/outlayer"
+            ]
+          },
+          {
             "group": "Identity",
             "pages": [
               "primitives/didnear"
