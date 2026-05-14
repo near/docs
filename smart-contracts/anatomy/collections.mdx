@@ -163,6 +163,14 @@ Notice how we use `enums` to ensure all collections have a different prefix. Ano
 
   </Tip>
 
+  <Warning>
+
+  If you see a `unresolved import near_sdk::BorshIntoStorageKey` compiler error, your code is following an outdated pattern from `near-sdk < 4.0`.
+
+To fix it, derive [`BorshStorageKey`](https://docs.rs/near-sdk/latest/near_sdk/derive.BorshStorageKey.html) on your prefix enum.
+
+  </Warning>
+
   </Tab>
 
   <Tab title="🌐 JavaScript">
