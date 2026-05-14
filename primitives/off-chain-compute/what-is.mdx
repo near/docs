@@ -1,0 +1,39 @@
+---
+title: Off-chain Compute
+description: "Learn how NEAR smart contracts can delegate heavy or impossible-on-chain work to verifiable off-chain computation running inside Trusted Execution Environments (TEEs)."
+---
+
+Smart contracts run inside a deterministic VM and pay gas for every instruction. That makes some workloads impractical (heavy cryptography, ML inference) and others outright impossible (HTTP requests, accessing API keys, generating true randomness).
+
+**Off-chain compute** moves these workloads outside the chain while keeping cryptographic proof that the right code ran on the right inputs. On NEAR, this is typically achieved with **Trusted Execution Environments (TEEs)** — secure enclaves (e.g. Intel TDX) that produce signed attestations of execution.
+
+<Info>
+A TEE attestation proves three things: the **code** that ran (hash of the binary), the **inputs** it received, and the **output** it produced — all signed by hardware the operator cannot tamper with.
+</Info>
+
+---
+
+## What it unlocks
+
+- **HTTP requests** — fetch from any Web2 API directly from contract logic.
+- **Secrets management** — encrypted API keys and private keys, only decrypted inside the enclave.
+- **Verifiable randomness (VRF)** — provably-fair random numbers signed with Ed25519.
+- **AI integration** — call LLMs and ML models with a proof the result is genuine.
+- **Cross-chain reads** — query Ethereum or other chains without a bridge contract.
+- **Heavy cryptography** — zero-knowledge proofs, MPC, custom signature schemes.
+
+---
+
+## How it integrates with NEAR
+
+A contract calls into the off-chain layer using NEAR's **`yield`/`resume`** mechanism: the contract pauses, the off-chain worker executes the code in a TEE, then resolves the promise with the result and its attestation — all within a single logical transaction.
+
+For workloads that don't need a contract at all, the same compute can also be triggered via direct HTTPS, which is useful for Web2 backends or frontends.
+
+---
+
+## Platforms
+
+<Card title="OutLayer" href="/primitives/off-chain-compute/outlayer" icon="server">
+  A verifiable off-chain compute platform for NEAR by FastNEAR. Code runs in Intel TDX enclaves with built-in support for VRF, secrets, MPC vaults, and payment keys.
+</Card>

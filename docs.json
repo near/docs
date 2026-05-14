@@ -130,6 +130,42 @@
             "pages": [
               "getting-started/create-account",
               "getting-started/faucet",
+              {
+                "group": "Mastering NEAR",
+                "icon": "graduation-cap",
+                "pages": [
+                  "web3-apps/tutorials/mastering-near/0-intro",
+                  {
+                    "group": "Smart Contracts 101",
+                    "pages": [
+                      "web3-apps/tutorials/mastering-near/1.1-basic",
+                      "web3-apps/tutorials/mastering-near/1.2-testing",
+                      "web3-apps/tutorials/mastering-near/1.3-deploy"
+                    ]
+                  },
+                  {
+                    "group": "Frontends 101",
+                    "pages": [
+                      "web3-apps/tutorials/mastering-near/2.1-frontend",
+                      "web3-apps/tutorials/mastering-near/2.2-indexing"
+                    ]
+                  },
+                  {
+                    "group": "Using Primitives",
+                    "pages": [
+                      "web3-apps/tutorials/mastering-near/3.1-nft",
+                      "web3-apps/tutorials/mastering-near/3.2-ft",
+                      "web3-apps/tutorials/mastering-near/3.3-new-frontend"
+                    ]
+                  },
+                  "web3-apps/tutorials/mastering-near/4-factory"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": [
               "getting-started/hackathons",
               "getting-started/tools-for-ai"
             ]
@@ -338,10 +374,22 @@
             ]
           },
           {
-            "group": "Concepts",
+            "group": "Tutorials",
             "pages": [
-              "web3-apps/concepts/web-login",
-              "web3-apps/concepts/data-types"
+              "web3-apps/tutorials/wallet-login",
+              "web3-apps/tutorials/social-login",
+              "web3-apps/tutorials/frontend-multiple-contracts",
+              "web3-apps/backend/backend",
+              "web3-apps/tutorials/data-types",
+              "web3-apps/tutorials/meta-transactions",
+              {
+                "group": "Testing on Localnet",
+                "icon": "test-tube",
+                "pages": [
+                  "web3-apps/tutorials/localnet/introduction",
+                  "web3-apps/tutorials/localnet/run"
+                ]
+              }
             ]
           },
           {
@@ -350,54 +398,6 @@
               "tools/near-connect",
               "tools/near-api",
               "tools/cli"
-            ]
-          },
-          {
-            "group": "Tutorials",
-            "pages": [
-              "web3-apps/tutorials/wallet-login",
-              "web3-apps/tutorials/frontend-multiple-contracts",
-              "web3-apps/backend/backend",
-              {
-                "group": "Testing on Localnet",
-                "icon": "test-tube",
-                "pages": [
-                  "web3-apps/tutorials/localnet/introduction",
-                  "web3-apps/tutorials/localnet/run"
-                ]
-              },
-              "web3-apps/tutorials/meta-transactions",
-              {
-                "group": "Mastering NEAR",
-                "icon": "graduation-cap",
-                "pages": [
-                  "web3-apps/tutorials/mastering-near/0-intro",
-                  {
-                    "group": "Smart Contracts 101",
-                    "pages": [
-                      "web3-apps/tutorials/mastering-near/1.1-basic",
-                      "web3-apps/tutorials/mastering-near/1.2-testing",
-                      "web3-apps/tutorials/mastering-near/1.3-deploy"
-                    ]
-                  },
-                  {
-                    "group": "Frontends 101",
-                    "pages": [
-                      "web3-apps/tutorials/mastering-near/2.1-frontend",
-                      "web3-apps/tutorials/mastering-near/2.2-indexing"
-                    ]
-                  },
-                  {
-                    "group": "Using Primitives",
-                    "pages": [
-                      "web3-apps/tutorials/mastering-near/3.1-nft",
-                      "web3-apps/tutorials/mastering-near/3.2-ft",
-                      "web3-apps/tutorials/mastering-near/3.3-new-frontend"
-                    ]
-                  },
-                  "web3-apps/tutorials/mastering-near/4-factory"
-                ]
-              }
             ]
           }
         ]
@@ -495,6 +495,13 @@
             "pages": [
               "primitives/oracles",
               "primitives/dex"
+            ]
+          },
+          {
+            "group": "Off-chain Compute",
+            "pages": [
+              "primitives/off-chain-compute/what-is",
+              "primitives/off-chain-compute/outlayer"
             ]
           },
           {
