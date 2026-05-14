@@ -163,7 +163,9 @@ All structures need to be initialized using a **unique `prefix`**, which will be
 
   <Warning>
 
-  If you see a compiler error like `unresolved import near_sdk::BorshIntoStorageKey`, your code is following an outdated pattern from `near-sdk < 4.0`. Derive [`BorshStorageKey`](https://docs.rs/near-sdk/latest/near_sdk/derive.BorshStorageKey.html) on your prefix enum instead — `BorshIntoStorageKey` is now an internal trait that the derive implements for you.
+  If you see a `unresolved import near_sdk::BorshIntoStorageKey` compiler error, your code is following an outdated pattern from `near-sdk < 4.0`.
+
+To fix it, derive [`BorshStorageKey`](https://docs.rs/near-sdk/latest/near_sdk/derive.BorshStorageKey.html) on your prefix enum.
 
   </Warning>
 
