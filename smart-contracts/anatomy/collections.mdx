@@ -3,7 +3,7 @@ title: Collections
 description: "Efficiently store, access, and manage data in smart contracts."
 ---
 
-import { Github } from '/snippets/github.jsx'
+import { Github } from "/snippets/github.jsx";
 
 When deciding on data structures it is important to understand their tradeoffs. Choosing the wrong structure can create a bottleneck as the application scales, and migrating the state to the new data structures will come at a cost.
 
@@ -106,23 +106,25 @@ The sdk array `[1,2,3,4]` with prefix `"p"` will be stored as the string `"p"` i
 
 <Accordion title="SDK Collections' Features">
 
-| Type           | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
-|----------------|:--------:|:----------------:|:-------------------------:|:---------------:|
-| `Vector`       |    ✅     |        ✅         |             ✅             |        ✅        |
-| `LookupSet`    |          |                  |                           |                 |
-| `UnorderedSet` |    ✅     |        ✅         |                           |        ✅        |
-| `IterableSet`  |    ✅     |        ✅         |                           |        ✅        |
-| `LookupMap`    |          |                  |                           |                 |
-| `UnorderedMap` |    ✅     |        ✅         |                           |        ✅        |
-| `IterableMap`  |    ✅     |        ✅         |                           |        ✅        |
-| `TreeMap`      |    ✅     |        ✅         |             ✅             |        ✅        |
+| Type           |         SDK Module         | Iterable | Clear All Values | Preserves Insertion Order | Range Selection |
+| -------------- | :------------------------: | :------: | :--------------: | :-----------------------: | :-------------: |
+| `Vector`       |     `near_sdk::store`      |    ✅    |        ✅        |            ✅             |       ✅        |
+| `LookupSet`    |     `near_sdk::store`      |          |                  |                           |                 |
+| `UnorderedSet` | `near_sdk::collections` ⚠️ |    ✅    |        ✅        |                           |       ✅        |
+| `IterableSet`  |     `near_sdk::store`      |    ✅    |        ✅        |                           |       ✅        |
+| `LookupMap`    |     `near_sdk::store`      |          |                  |                           |                 |
+| `UnorderedMap` | `near_sdk::collections` ⚠️ |    ✅    |        ✅        |                           |       ✅        |
+| `IterableMap`  |     `near_sdk::store`      |    ✅    |        ✅        |                           |       ✅        |
+| `TreeMap`      | `near_sdk::collections` ⚠️ |    ✅    |        ✅        |            ✅             |       ✅        |
+
+_⚠️ Legacy collections from `near_sdk::collections`. Prefer `near_sdk::store` equivalents for new contracts._
 
 </Accordion>
 
 <Accordion title="SDK Collections' Time Complexities">
 
 | Type           | Access |  Insert  |  Delete  |  Search  | Traverse | Clear |
-|----------------|:------:|:--------:|:--------:|:--------:|:--------:|:-----:|
+| -------------- | :----: | :------: | :------: | :------: | :------: | :---: |
 | `Vector`       |  O(1)  |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
 | `LookupSet`    |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
 | `UnorderedSet` |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
@@ -157,7 +159,7 @@ All structures need to be initialized using a **unique `prefix`**, which will be
 
   <Tip>
 
-  Notice how we use `enums` to ensure all collections have a different prefix. Another advantage of using `enums` is that they are serialized into a single `byte` prefix.
+Notice how we use `enums` to ensure all collections have a different prefix. Another advantage of using `enums` is that they are serialized into a single `byte` prefix.
 
   </Tip>
 
@@ -191,9 +193,9 @@ from near_sdk_py import view, call, init
 from near_sdk_py.collections import Vector, LookupMap, UnorderedMap, LookupSet, UnorderedSet
 
 class MyContract:
-    @init
-    def new(self): # Create a Vector with prefix "v"
-        self.my_vector = Vector("v")
+@init
+def new(self): # Create a Vector with prefix "v"
+self.my_vector = Vector("v")
 
         # Create a LookupMap with prefix "m"
         self.my_lookup_map = LookupMap("m")
@@ -354,6 +356,12 @@ class LookupMapExample:
 
 Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
 
+<Tip>
+**UnorderedMap vs IterableMap (Rust)**
+
+`UnorderedMap` belongs to the legacy `near_sdk::collections` module. `IterableMap` is its modern replacement in `near_sdk::store`, and should be preferred for new contracts. The `store` collections cache reads and writes within a single transaction, making them more gas-efficient when the same key is accessed multiple times.
+</Tip>
+
 <Tabs>
   <Tab title="🦀 Rust">
     <Github fname="iterable_map.rs" language="rust"
@@ -425,7 +433,7 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
     <Github fname="contract.ts" language="js"
       url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts" start="74" end="89" />
   </Tab>
-  
+
   <Tab title="🐍 Python">
 ```python
 from near_sdk_py import view, call, init
@@ -471,10 +479,17 @@ class LookupSetExample:
 
 ### UnorderedSet / IterableSet
 
-Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
+Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
+
+
 
 <Tabs>
   <Tab title="🦀 Rust">
+  <Tip>
+**UnorderedSet vs IterableSet**
+
+`UnorderedSet` belongs to the legacy `near_sdk::collections` module. `IterableSet` is its modern replacement in `near_sdk::store`, and should be preferred for new contracts. The `store` collections cache reads and writes within a single transaction, making them more gas-efficient when the same key is accessed multiple times.
+</Tip>
     <Github fname="iterable_set.rs" language="rust"
           url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/iterable_set.rs" start="4" end="26"/>
   </Tab>
@@ -608,7 +623,7 @@ When nesting SDK collections, be careful to **use different prefixes** for all c
             url="https://github.com/near-examples/storage-examples/blob/main/collections-js/src/contract.ts" start="153" end="196"/>
 
   </Tab>
-  
+
   <Tab title="🐍 Python">
 ```python
 from near_sdk_py import view, call, init
@@ -807,6 +822,7 @@ In order to expose them all through view calls, we can use pagination.
         return this.status_updates.toArray().slice(from_index, limit);
       }
     ```
+
   </Tab>
 
   <Tab title="🐍 Python">
@@ -821,6 +837,7 @@ In order to expose them all through view calls, we can use pagination.
         end = min(start + limit, len(all_items))
         return all_items[start:end]
     ```
+
   </Tab>
 
   <Tab title="🐹 GO">
@@ -829,5 +846,6 @@ In order to expose them all through view calls, we can use pagination.
     <Github fname="main.go" language="go"
             url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/collections/main.go"
             start="189" end="207" />
+
   </Tab>
 </Tabs>
