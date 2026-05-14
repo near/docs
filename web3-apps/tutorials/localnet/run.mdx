@@ -47,6 +47,17 @@ npx near-sandbox --home /tmp/near-sandbox run
 
 The node will boot up and begin producing blocks locally.
 
+<Note>
+If the node fails to start with `IO error: While lock file: .../data/LOCK: Resource temporarily unavailable`, it means another sandbox process was previously running and left a stale lock. Kill any running sandbox processes and remove the lock file:
+
+```sh
+pkill -f near-sandbox || true
+rm -f /tmp/near-sandbox/data/LOCK
+```
+
+Then run the `npx near-sandbox ... run` command again.
+</Note>
+
 <Tip>
 To confirm that your node is actually running, you can query its `status` RPC endpoint with the following command `curl http://127.0.0.1:3030/status`.
 </Tip>
@@ -129,7 +140,7 @@ When you run the command above, you'll be prompted to enter the account ID. Type
 
 In this step, we'll deploy a simple [Hello World smart contract](https://github.com/near-examples/hello-near-examples) to our `localnet`.
 
-Before deploying, we need to create an accont to which a contract will be deployed. Since we've already imported the `test.near` account, we can use it as the parent account to create a new subaccount:
+Before deploying, we need to create an account to which a contract will be deployed. Since we've already imported the `test.near` account, we can use it as the parent account to create a new subaccount:
 
 ```sh
 near account create-account fund-myself hello-world.test.near '10 NEAR' autogenerate-new-keypair save-to-legacy-keychain sign-as test.near network-config localnet-sandbox sign-with-legacy-keychain send
@@ -152,8 +163,35 @@ cargo near deploy build-non-reproducible-wasm hello-world.test.near without-init
 
 This command compiles the smart contract, optimizes the resulting `.wasm` file, and deploys it directly to the `hello-world.test.near` account on `localnet`.
 
+<Warning>
+There is a known dependency conflict in `hello-near-examples`: `near-sdk 5.x` transitively requires `darling 0.23` (via `near-primitives → serde_with`), which needs rustc ≥ 1.88. However, `near-sandbox 0.2.x` ships `nearcore 2.9.0`, which does not execute wasm compiled with rustc ≥ 1.87. If the `cargo near deploy` command above fails, use the following workaround:
+
+First, make sure `wasm-opt` is available (if not already installed):
+
+```sh
+npm install -g wasm-opt
+```
+
+Then build and deploy manually:
+
+```sh
+# Build with the host toolchain, bypassing the rust-version check
+cargo build --target wasm32-unknown-unknown --release --ignore-rust-version
+
+# Optimize the wasm (required for nearcore compatibility on rustc ≥ 1.82)
+mkdir -p target/near
+wasm-opt -O --enable-nontrapping-float-to-int --enable-bulk-memory \
+  target/wasm32-unknown-unknown/release/contract_rs.wasm \
+  -o target/near/contract_rs.wasm
+
+# Deploy
+near contract deploy hello-world.test.near use-file target/near/contract_rs.wasm \
+  without-init-call network-config localnet-sandbox sign-with-legacy-keychain send
+```
+</Warning>
+
 <Tip>
-To verify that the contract was deployed successfully, you can inspect the code of the `hello-world.test.near` account with the following command `near contract inspect hello-world.test.near network-config localnet-sandbox now`. If the deployment worked, you'll see a list of the contract's methods printed in the output, like `get_greeting` and `set_greeting`.
+To verify that the contract was deployed successfully, call `get_greeting` directly: `near contract call-function as-read-only hello-world.test.near get_greeting json-args '{}' network-config localnet-sandbox now`. If it returns `"Hello"`, the contract is running correctly.
 </Tip>
 
 #### Step 4. Create user's wallet account
@@ -162,7 +200,7 @@ In this step, we'll create a user account inside a wallet that can connect to ou
 
 Navigate to https://wallet.intear.tech. If you don't have an account yet, create one or import any existing account. It doesn't matter which one, this step is just to get you inside the wallet interface.
 
-Once you're in the wallet, open the `Settings` panel from the sidebar, then find the `Developer` tab. You'll see a `Localnet` subsection where you can add your own local network configuration. Click `Add`, and fill in the fields as follows: set the RPC URL to `http://127.0.0.1:3030` and the Network ID to `localnet`. Then click `Save`.
+Once you're in the wallet, open the `Settings` panel from the sidebar, then find the `Developer` tab. You'll see a `Localnet` subsection where you can add your own local network configuration. Click `Add`, and fill in the fields as follows: set the RPC URL to `http://localhost:3030` and the Network ID to `localnet`. Then click `Save`.
 
 If everything is configured correctly, you should see a small, green `Online` badge appear next to the new network indicating that it's connected. Here's how it should look like:
 
@@ -185,6 +223,12 @@ Once you're inside the repository, install the dependencies using `pnpm`:
 
 ```sh
 pnpm install --frozen-lockfile
+```
+
+Next, create a `.env.local` file to point the app at your local node:
+
+```sh
+echo "NEXT_PUBLIC_RPC_URL=http://localhost:3030" > .env.local
 ```
 
 Then, start the development Next.js server:
