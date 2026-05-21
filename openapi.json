@@ -1201,7 +1201,8 @@
                 },
                 "maxItems": 2,
                 "minItems": 2,
-                "type": "array"
+                "type": "array",
+                "description": "Positional tuple of 2: [GasKeyInfo, FunctionCallPermission]."
               }
             },
             "required": [
@@ -3444,7 +3445,8 @@
             "maxItems": 2,
             "minItems": 2,
             "nullable": true,
-            "type": "array"
+            "type": "array",
+            "description": "Positional tuple of 2: [ShardId, AccountId]."
           },
           "signature": {
             "allOf": [
@@ -3622,7 +3624,8 @@
             "additionalProperties": {
               "type": "string"
             },
-            "type": "object"
+            "type": "object",
+            "description": "Object keys must match: `^\\d+$`."
           },
           "sync_block_hash": {
             "$ref": "#/components/schemas/CryptoHash"

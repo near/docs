@@ -18,10 +18,13 @@
 //    emits but that Mintlify rejects, since the spec self-declares
 //    `openapi: 3.0.0`. Without this the docs deployment fails to validate:
 //      - tuple-style `items` (an array of schemas, e.g. GasKeyFunctionCall and
-//        BlockHeaderView.shard_split) -> a single schema.
+//        BlockHeaderView.shard_split) -> a single schema, with the original
+//        positional order recorded in the description.
 //      - `patternProperties` (e.g. CatchupStatusView.shard_sync_status) ->
-//        `additionalProperties` holding the value schema.
-//      - bare `$schema`/`$id` metadata keywords (e.g. on AccountId) -> dropped.
+//        `additionalProperties`, with the key pattern recorded in the
+//        description.
+//      - pure metadata keywords `$schema`/`$comment` (e.g. on AccountId) ->
+//        dropped.
 //
 // Run from the repo root: `node scripts/patch-openapi.js`.
 
@@ -45,10 +48,12 @@ const TX_EXECUTION_STATUS_DESCRIPTION = [
 const WAIT_UNTIL_DESCRIPTION =
   "Optional. Tells the RPC how long to wait before returning the transaction status. See the TxExecutionStatus enum for the six available milestones. Defaults to `EXECUTED_OPTIMISTIC`.";
 
-// Pure JSON Schema metadata keywords with no meaning in an OpenAPI 3.0 Schema
-// Object. They carry no rendering information, so they are simply removed.
-// `$ref` is deliberately NOT in this list.
-const DROP_KEYWORDS = ["$schema", "$id", "$anchor", "$comment", "$defs"];
+// Pure JSON Schema metadata keywords that carry no structural meaning and are
+// safe to delete from an OpenAPI 3.0 Schema Object. Reference-bearing keywords
+// such as `$ref`, `$defs`, `$id` and `$anchor` are deliberately excluded: a
+// `$ref` can resolve into them, so dropping them could silently break the
+// spec. If nearcore ever emits those, validation should fail loudly instead.
+const DROP_KEYWORDS = ["$schema", "$comment"];
 
 // Collapse a list of schemas to a single schema: identical members collapse to
 // that one member, differing members become a `oneOf`.
@@ -62,9 +67,24 @@ function collapseSchemas(schemas) {
   return unique.length === 1 ? unique[0] : { oneOf: unique };
 }
 
+// Short human-readable label for a schema, used in generated descriptions.
+function schemaLabel(schema) {
+  if (schema && typeof schema.$ref === "string") {
+    return schema.$ref.split("/").pop();
+  }
+  if (schema && typeof schema.type === "string") return schema.type;
+  return "schema";
+}
+
+// Append a note to a schema's `description`, keeping anything already there.
+function appendDescription(node, note) {
+  node.description = node.description ? `${node.description}\n\n${note}` : note;
+}
+
 // Walk a schema subtree and rewrite the JSON Schema 2020-12 constructs that
 // OpenAPI 3.0 does not accept (see patch 4 in the header) so Mintlify can
-// validate the spec.
+// validate the spec. OAS 3.0 cannot express tuple ordering or key-name
+// patterns structurally, so that information is preserved in the description.
 function normalizeForOas30(node) {
   const counts = { tupleItems: 0, patternProps: 0, droppedKeywords: 0 };
   const visit = (n) => {
@@ -81,20 +101,36 @@ function normalizeForOas30(node) {
       }
     }
 
-    // tuple-style `items` (an array of schemas) -> a single schema.
+    // tuple-style `items` (an array of schemas) -> a single schema. The
+    // collapsed form no longer encodes which schema goes in which position,
+    // so record the original order before rewriting.
     if (Array.isArray(n.items)) {
+      const order = n.items.map(schemaLabel);
+      appendDescription(
+        n,
+        `Positional tuple of ${order.length}: [${order.join(", ")}].`,
+      );
       n.items = collapseSchemas(n.items);
       counts.tupleItems += 1;
     }
 
-    // `patternProperties` -> `additionalProperties`. The key regex is dropped;
-    // the result renders as an open string-keyed map of the value schema.
+    // `patternProperties` -> `additionalProperties`. OAS 3.0 cannot constrain
+    // key names, so record the required key pattern(s) before rewriting.
     if (n.patternProperties && typeof n.patternProperties === "object") {
+      const patterns = Object.keys(n.patternProperties);
       const valueSchemas = Object.values(n.patternProperties);
       if (valueSchemas.length > 0) {
         n.additionalProperties = collapseSchemas(valueSchemas);
       }
       delete n.patternProperties;
+      if (patterns.length > 0) {
+        appendDescription(
+          n,
+          `Object keys must match: ${patterns
+            .map((p) => `\`${p}\``)
+            .join(", ")}.`,
+        );
+      }
       counts.patternProps += 1;
     }
 
