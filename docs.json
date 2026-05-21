@@ -45,7 +45,7 @@
   },
   "favicon": "assets/favicon.svg",
   "api": {
-    "openapi": "/openapi.json",
+    "openapi": "openapi.json",
     "playground": {
       "display": "interactive"
     },
@@ -579,14 +579,14 @@
           },
           {
             "group": "Query",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /query"
             ]
           },
           {
             "group": "Transactions",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /send_tx",
               "POST /tx",
@@ -598,7 +598,7 @@
           },
           {
             "group": "Accounts",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /EXPERIMENTAL_view_account",
               "POST /changes",
@@ -607,7 +607,7 @@
           },
           {
             "group": "Access Keys",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /EXPERIMENTAL_view_access_key_list",
               "POST /EXPERIMENTAL_view_access_key"
@@ -615,7 +615,7 @@
           },
           {
             "group": "Smart Contracts",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /EXPERIMENTAL_view_code",
               "POST /EXPERIMENTAL_view_state",
@@ -624,14 +624,14 @@
           },
           {
             "group": "Gas Price",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /gas_price"
             ]
           },
           {
             "group": "Blocks & Chunks",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /block",
               "POST /chunk",
@@ -641,7 +641,7 @@
           },
           {
             "group": "Network",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /status",
               "POST /health",
@@ -653,7 +653,7 @@
           },
           {
             "group": "Gas & Config",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /EXPERIMENTAL_protocol_config",
               "POST /genesis_config",
@@ -663,7 +663,7 @@
           },
           {
             "group": "Light Client",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /light_client_proof",
               "POST /next_light_client_block",
@@ -673,7 +673,7 @@
           },
           {
             "group": "Maintenance & Storage",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /maintenance_windows",
               "POST /EXPERIMENTAL_maintenance_windows",
