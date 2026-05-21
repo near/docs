@@ -7,6 +7,11 @@ on:
 jobs:
   update-openapi:
     runs-on: ubuntu-latest
+    # The default GITHUB_TOKEN is read-only; the job needs write access to
+    # push the update-rpc-openapi branch and to open the PR.
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
 
