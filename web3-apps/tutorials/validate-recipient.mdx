@@ -1,0 +1,337 @@
+---
+title: Validating Recipient Accounts
+icon: shield-check
+sidebarTitle: Validating Recipients
+description: "Best practices for frontends that ask users to type a recipient account before sending NEAR, fungible tokens, or NFTs."
+---
+
+Invalid recipient addresses are one of the most common causes of lost funds on NEAR. When a user types the wrong account ID into a transfer form, the transaction either fails (best case) or sends assets to an account the sender does not control (worst case).
+
+This guide describes the validation strategy that the major NEAR wallets converged on, and shows how to implement each step in a frontend.
+
+<Info>
+**TL;DR**
+
+1. Reject anything that is not a [syntactically valid NEAR account ID](../../protocol/accounts-contracts/account-id).
+2. Recognize the *kind* of account the user typed (named, implicit, `0x`, deterministic) and warn on suspicious variants (typos in suffixes such as `.nera`, `.tg`, `.sweat`).
+3. Check whether the account exists on-chain. If it does, surface that to the user. If it does not, require an explicit confirmation or suggest a small test transfer first.
+4. Optionally, cross-check against risk-scoring services and the account's existing balance to detect brand-new accounts.
+</Info>
+
+---
+
+## Why a recipient may be invalid
+
+NEAR has several address formats, and each one fails in a different way when mistyped. Before validating, make sure you and your users understand the four formats covered in [Address (Account ID)](../../protocol/accounts-contracts/account-id):
+
+| Format            | Example                                                              | Common mistake                                                       |
+| ----------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Named             | `alice.near`, `app.sub.near`, `user.tg`, `runner.sweat`              | Typing the wrong top-level suffix (`.nera`, `.nearr`, `.testnet`).   |
+| Implicit (hex64)  | `a96ad3cb539b653e4b869bd7cf26590690e8971...` (64 lowercase hex)      | Pasting an incomplete or truncated key.                              |
+| Ethereum-like     | `0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`                         | Pasting an EVM address that has never been used on NEAR.             |
+| Deterministic     | `0s85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`                         | Confusing `0s` (deterministic) with `0x` (Ethereum-like).            |
+
+A recipient that *looks* valid syntactically may still be unreachable: a typo in `bob.near` → `bob.nera` is a perfectly valid account ID, but no account exists at that address, and any tokens sent there are effectively burned.
+
+---
+
+## Step 1 — Syntactic validation
+
+Before doing anything else, check that the string the user typed satisfies the [account ID rules](../../protocol/accounts-contracts/account-id):
+
+- Between 2 and 64 characters.
+- Only lowercase letters (`a-z`), digits (`0-9`), and the separators `.`, `-`, `_`.
+- Does not start or end with a separator, and does not contain two consecutive separators.
+
+<Tabs>
+<Tab title="🌐 JavaScript">
+
+```ts
+const NEAR_ACCOUNT_RE =
+  /^(?=.{2,64}$)(?!.*[._-]{2})[a-z\d]+(?:[._-][a-z\d]+)*$/;
+
+const HEX64_IMPLICIT_RE = /^[0-9a-f]{64}$/;
+const ETH_LIKE_RE       = /^0x[0-9a-f]{40}$/;
+const DETERMINISTIC_RE  = /^0s[0-9a-f]{40}$/;
+
+export type AccountKind =
+  | 'named'
+  | 'implicit'
+  | 'eth-like'
+  | 'deterministic'
+  | 'invalid';
+
+export function classifyAccountId(raw: string): AccountKind {
+  const id = raw.trim().toLowerCase();
+  if (!NEAR_ACCOUNT_RE.test(id)) return 'invalid';
+  if (DETERMINISTIC_RE.test(id))  return 'deterministic';
+  if (ETH_LIKE_RE.test(id))       return 'eth-like';
+  if (HEX64_IMPLICIT_RE.test(id)) return 'implicit';
+  return 'named';
+}
+```
+
+</Tab>
+
+<Tab title="🦀 Rust">
+
+```rust
+use near_account_id::AccountId;
+
+pub enum AccountKind {
+    Named,
+    Implicit,
+    EthLike,
+    Deterministic,
+    Invalid,
+}
+
+pub fn classify(raw: &str) -> AccountKind {
+    let id: AccountId = match raw.trim().to_lowercase().parse() {
+        Ok(id) => id,
+        Err(_) => return AccountKind::Invalid,
+    };
+    let s = id.as_str();
+    if s.starts_with("0s") && s.len() == 42 {
+        AccountKind::Deterministic
+    } else if s.starts_with("0x") && s.len() == 42 {
+        AccountKind::EthLike
+    } else if s.len() == 64 && s.chars().all(|c| c.is_ascii_hexdigit()) {
+        AccountKind::Implicit
+    } else {
+        AccountKind::Named
+    }
+}
+```
+
+</Tab>
+</Tabs>
+
+<Warning>
+Always trim whitespace and normalize to lowercase **before** validating. A trailing space or a stray uppercase letter is the single most common reason a valid account ID gets rejected by a frontend.
+</Warning>
+
+---
+
+## Step 2 — Recognize the account *kind* and warn on typos
+
+Once the input is syntactically valid, surface the *kind* of account to the user. Most users do not know that `bob.near` and `bob.tg` are entirely different accounts, and a UI that visibly labels the destination ("Named NEAR account", "Telegram-wallet account", "Ethereum-style account on NEAR") makes typos far easier to catch.
+
+Pay special attention to common suffix typos. The following table lists the suffixes the major NEAR wallets currently treat as well-known top-level accounts; any other suffix should at least raise a soft warning.
+
+| Suffix      | Used by                                |
+| ----------- | -------------------------------------- |
+| `.near`     | Mainnet NEAR top-level accounts        |
+| `.testnet`  | Testnet NEAR top-level accounts        |
+| `.tg`       | HOT Wallet (Telegram) accounts         |
+| `.sweat`    | SWEAT Economy accounts                 |
+| `.kaiching` | Kai-Ching accounts                     |
+
+A simple heuristic that catches most lost-funds cases: if the input ends in a `.<suffix>` that is not in the known list and is within edit distance 1 of one that is, show a "Did you mean `…`?" prompt before letting the user submit.
+
+```ts
+const KNOWN_TLAS = ['near', 'testnet', 'tg', 'sweat', 'kaiching'];
+
+function levenshtein(a: string, b: string): number {
+  // standard DP implementation, omitted for brevity
+  // (or import from a library such as `fastest-levenshtein`)
+}
+
+export function suggestTLA(accountId: string): string | null {
+  const dot = accountId.lastIndexOf('.');
+  if (dot === -1) return null;
+  const tla = accountId.slice(dot + 1);
+  if (KNOWN_TLAS.includes(tla)) return null;
+  const near = KNOWN_TLAS
+    .map((t) => ({ t, d: levenshtein(tla, t) }))
+    .sort((a, b) => a.d - b.d)[0];
+  return near.d === 1 ? `${accountId.slice(0, dot + 1)}${near.t}` : null;
+}
+```
+
+---
+
+## Step 3 — Check whether the recipient exists on-chain
+
+This is the single most valuable check. Calling the [`view_account`](../../api/rpc/contracts#view-account) RPC method tells you whether the address is a real account; if it is, you also get its current balance, which you can use as an extra signal.
+
+<Tabs>
+<Tab title="🌐 near-api-js">
+
+```ts
+import { JsonRpcProvider } from 'near-api-js/lib/providers';
+
+const provider = new JsonRpcProvider({ url: 'https://rpc.mainnet.fastnear.com' });
+
+export type RecipientStatus =
+  | { exists: true; balance: bigint }
+  | { exists: false }
+  | { exists: 'unknown' };
+
+export async function checkRecipient(accountId: string): Promise<RecipientStatus> {
+  try {
+    const account = await provider.viewAccount({ accountId, finality: 'optimistic' });
+    return { exists: true, balance: BigInt(account.amount) };
+  } catch (err: any) {
+    const cause = err?.cause?.name ?? err?.type;
+    if (cause === 'UNKNOWN_ACCOUNT' || cause === 'AccountDoesNotExist') {
+      return { exists: false };
+    }
+    // Network or RPC error — do NOT assume the account is missing.
+    return { exists: 'unknown' };
+  }
+}
+```
+
+</Tab>
+
+<Tab title="🌐 fetch (no SDK)">
+
+```ts
+export async function checkRecipient(accountId: string) {
+  const res = await fetch('https://rpc.mainnet.fastnear.com', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      jsonrpc: '2.0',
+      id: 'dontcare',
+      method: 'query',
+      params: {
+        request_type: 'view_account',
+        finality: 'optimistic',
+        account_id: accountId,
+      },
+    }),
+  }).then((r) => r.json());
+
+  if (res.error) {
+    const name = res.error?.cause?.name;
+    if (name === 'UNKNOWN_ACCOUNT') return { exists: false };
+    return { exists: 'unknown' as const };
+  }
+  return { exists: true, balance: BigInt(res.result.amount) };
+}
+```
+
+</Tab>
+
+<Tab title="🦀 Rust">
+
+```rust
+use near_jsonrpc_client::{methods, JsonRpcClient};
+use near_jsonrpc_primitives::types::query::{QueryRequest, RpcQueryError};
+use near_primitives::types::{AccountId, BlockReference, Finality};
+
+pub async fn recipient_exists(
+    client: &JsonRpcClient,
+    account_id: &AccountId,
+) -> anyhow::Result<bool> {
+    let req = methods::query::RpcQueryRequest {
+        block_reference: BlockReference::Finality(Finality::None),
+        request: QueryRequest::ViewAccount { account_id: account_id.clone() },
+    };
+    match client.call(req).await {
+        Ok(_) => Ok(true),
+        Err(err) => match err.handler_error() {
+            Some(RpcQueryError::UnknownAccount { .. }) => Ok(false),
+            _ => Err(err.into()),
+        },
+    }
+}
+```
+
+</Tab>
+</Tabs>
+
+<Info>
+**Implicit, `0x`, and `0s` recipients behave the same way as named accounts under `view_account`.** Even though implicit and Ethereum-like addresses are valid "destinations" without ever having received a transaction, the RPC will return `UNKNOWN_ACCOUNT` until the account is first funded. Treat that case as a *new account*, not as an error.
+</Info>
+
+---
+
+## Step 4 — Decide what to show the user
+
+The check from Step 3 has three outcomes. Each one should drive a different UX:
+
+<Steps>
+<Step title="Account exists">
+
+Show the destination's display name and (optionally) its NEAR balance. A non-zero balance and a non-empty transaction history are strong signals that the user typed a real, in-use account.
+
+```tsx
+{status.exists === true && (
+  <Callout type="success">
+    Sending to <code>{accountId}</code> — balance:{' '}
+    {formatNear(status.balance)} NEAR
+  </Callout>
+)}
+```
+
+</Step>
+
+<Step title="Account does not exist">
+
+This is the dangerous case. The address is syntactically valid, but no account has been created at that name.
+
+- For **named accounts** (`bob.near`, `user.tg`): the user almost certainly typed a typo. Block the submit button and explain that no such account exists. Offer the closest known suffix (Step 2) if available.
+- For **implicit and Ethereum-like addresses**: the address is technically usable — sending NEAR to it will create the account on first transfer. Require an **explicit confirmation** ("I have verified this address with the recipient") and suggest sending a small test transaction first.
+
+```tsx
+{status.exists === false && kind === 'named' && (
+  <Callout type="danger">
+    No account named <code>{accountId}</code> exists. Double-check the
+    spelling — funds sent to a non-existent named account cannot be recovered.
+  </Callout>
+)}
+
+{status.exists === false && (kind === 'implicit' || kind === 'eth-like') && (
+  <Callout type="warning">
+    This address has no on-chain history. We recommend sending a small test
+    transaction first.
+    <Checkbox onChange={setConfirmed}>
+      I confirm I obtained this address from the recipient.
+    </Checkbox>
+  </Callout>
+)}
+```
+
+</Step>
+
+<Step title="RPC unreachable">
+
+Never silently treat an RPC failure as "account does not exist". A flaky network would otherwise turn into a fake warning at the worst possible moment. Display a neutral "could not verify" state and let the user retry, but do **not** auto-enable the submit button.
+
+</Step>
+</Steps>
+
+---
+
+## Additional signals
+
+Beyond existence, two cheap signals significantly reduce the false-positive rate of "send to fresh account" warnings:
+
+- **Risk score lookup.** Services such as [HAPI](https://hapi.one/) maintain lists of addresses associated with known scams. Cross-checking the recipient before submit is a one-extra-request safeguard worth wiring up if you process meaningful volume.
+- **Cross-asset net worth.** A new-looking NEAR account that already holds a sizeable balance in a fungible token or NFT is almost certainly a real account that simply received tokens for the first time. Querying the user's FT/NFT holdings (see [Fungible Tokens](../../primitives/ft) and [Non-Fungible Tokens](../../primitives/nft)) lets you suppress the "new account" warning when those balances are non-trivial.
+
+---
+
+## Recap — checklist for a transfer form
+
+A frontend that follows these steps will surface the most common recipient mistakes before the transaction is signed:
+
+- [x] Trim and lowercase the input before any check.
+- [x] Reject syntactically invalid account IDs immediately (do not call the RPC).
+- [x] Label the *kind* of account (named, implicit, `0x`, `0s`).
+- [x] Warn on suspicious suffixes (`bob.nera` → `bob.near?`).
+- [x] Call `view_account` to confirm existence; cache the result for the duration of the form.
+- [x] Distinguish "does not exist" from "RPC unreachable" — never let a network error unlock the submit button.
+- [x] For non-existent implicit or `0x` recipients, require an explicit confirmation and offer a test-transaction flow.
+- [x] Optionally cross-check against a risk-score provider and against FT/NFT balances before showing a "fresh account" warning.
+
+<Tip>
+**See also**
+
+- [Address (Account ID)](../../protocol/accounts-contracts/account-id) — the canonical reference for all four NEAR address formats.
+- [`view_account` RPC](../../api/rpc/contracts#view-account) — full request/response schema for the existence check.
+- [Wallet integration](./wallet-login) — where to plug recipient validation into a `near-connect`–based frontend.
+</Tip>
