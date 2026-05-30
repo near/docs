@@ -9,7 +9,7 @@ export const Faucet = () => {
     setErrorMsg('')
 
     try {
-      const response = await fetch('https://docs-mcp-f18b.onrender.com/api/faucet', {
+      const response = await fetch('https://faucet-near-testnet.onrender.com/api/faucet', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ accountId }),
