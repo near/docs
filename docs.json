@@ -90,6 +90,34 @@
     {
       "source": "/api/rpc/maintenance-windows",
       "destination": "/api-reference/maintenance-windows"
+    },
+    {
+      "source": "/tools/near-cli",
+      "destination": "/tools/cli"
+    },
+    {
+      "source": "/docs/tools/near-cli",
+      "destination": "/tools/cli"
+    },
+    {
+      "source": "/concepts/basics/transactions/gas",
+      "destination": "/protocol/transactions/gas"
+    },
+    {
+      "source": "/concepts/basics/transactions/gas-advanced",
+      "destination": "/protocol/transactions/gas"
+    },
+    {
+      "source": "/docs/concepts/gas",
+      "destination": "/protocol/transactions/gas"
+    },
+    {
+      "source": "/docs/concepts/storage-staking",
+      "destination": "/protocol/storage/storage-staking"
+    },
+    {
+      "source": "/docs/develop/front-end/rpc",
+      "destination": "/api/rpc/protocol"
     }
   ],
   "navbar": {
