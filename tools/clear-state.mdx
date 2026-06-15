@@ -8,7 +8,7 @@ State Cleaner is an extension for [NEAR CLI](/tools/cli) that wipes a contract a
 
 ## How it works
 
-Under the hood it deploys a small cleanup contract to the target account and, in a single transaction, calls its `clean` method with every key in the account's state. The cleanup contract is left in place - it is not removed - until you deploy a new contract over it.
+Under the hood, it deploys a small cleanup contract to the target account and, in a single transaction, calls its `clean` method with every key in the account's state. The cleanup contract is left in place — it is not removed — until you deploy a new contract over it.
 
 <Tip>
 Check the GitHub repository to learn more about how the [State Cleaner tool](https://github.com/near-examples/near-clear-state) works.
