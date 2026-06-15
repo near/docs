@@ -17,7 +17,9 @@ easily generalizable to other DAO implementations.
 <Tip>
   The simplest way to create and interact with a DAO is to go through the
   [AstraDAO
-  UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos).
+  UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos)
+  (mainnet only). The examples below use `testnet` so you can try them safely
+  without spending real funds.
 </Tip>
 
 ---
@@ -32,7 +34,7 @@ You can create a DAO by interacting with the `sputnik-dao` contract:
     ```js
     import { useNearWallet } from "near-connect-hooks";
 
-    const DAO_FACTORY_CONTRACT_ADDRESS = 'sputnik-dao.near';
+    const DAO_FACTORY_CONTRACT_ADDRESS = 'sputnikv2.testnet';
 
     const { callFunction } = useNearWallet();
 
@@ -47,7 +49,7 @@ You can create a DAO by interacting with the `sputnik-dao` contract:
             purpose: 'Building primitives on NEAR',
             metadata: '',
           },
-          policy: ['bob.near'],
+          policy: ['your-account.testnet'],
         }),
       },
       gas: 300000000000000,
@@ -64,10 +66,10 @@ Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to y
   <Tab title="🖥️ CLI">
 
     ```bash
-    export COUNCIL='["bob.near"]'
+    export COUNCIL='["your-account.testnet"]'
     export ARGS=`echo '{"config": {"name": "Primitives", "purpose": "Building primitives on NEAR", "metadata":""}, "policy": '$COUNCIL'}' | base64`
 
-    near call sputnikv2.testnet create "{\"name\": \"primitives\", \"args\": \"$ARGS\"}" --useAccount bob.near --amount 6 --gas 150000000000000
+    near call sputnikv2.testnet create "{\"name\": \"primitives\", \"args\": \"$ARGS\"}" --useAccount your-account.testnet --amount 6 --gas 150000000000000
     ```
 
     <Note>
@@ -122,11 +124,12 @@ Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to y
   </Tab>
 </Tabs>
 
-<Tip>
-  The simplest way to create and interact with a DAO is to go through the
-  [AstraDAO
-  UI](https://near.social/astraplusplus.ndctools.near/widget/home?page=daos).
-</Tip>
+<Warning>
+  Replace `your-account.testnet` in the `policy` with an account you control.
+  The accounts in the policy become the DAO's council — if you leave a
+  placeholder (or someone else's account), you won't be able to control the DAO
+  you create, and any funds sent to it could become inaccessible.
+</Warning>
 
 <hr className="subsection" />
 
@@ -394,7 +397,7 @@ Create a proposal so other users can vote in favor or against it.
     ```js
     import { useNearWallet } from "near-connect-hooks";
 
-    const DAO_CONTRACT_ADDRESS = 'primitives.sputnik-dao.near';
+    const DAO_CONTRACT_ADDRESS = 'primitives.sputnikv2.testnet';
 
     const { callFunction } = useNearWallet();
 
@@ -407,7 +410,7 @@ Create a proposal so other users can vote in favor or against it.
           kind: {
             Transfer: {
               token_id: '',
-              receiver_id: 'bob.near',
+              receiver_id: 'your-account.testnet',
               amount: '10000000000000000000000000',
             },
           },
@@ -424,7 +427,7 @@ Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to y
   <Tab title="🖥️ CLI">
     
    ```bash
-    near call primitives.sputnik-dao.near add_proposal '{"proposal": {"description": "My first proposal", "kind": { "Transfer": {"token_id": "", "receiver_id": "bob.near", "amount": "10000000000000000000000000"}}}}'  --deposit 0.1 --gas 300000000000000 --useAccount bob.near
+    near call primitives.sputnikv2.testnet add_proposal '{"proposal": {"description": "My first proposal", "kind": { "Transfer": {"token_id": "", "receiver_id": "your-account.testnet", "amount": "10000000000000000000000000"}}}}'  --deposit 0.1 --gas 300000000000000 --useAccount your-account.testnet
   ```
   </Tab>
   <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
@@ -686,6 +689,14 @@ let promise = ext_dao_contract::ext(self.dao_contract.clone())
 By default, only **council members** can create proposals.
 </Info>
 
+<Warning>
+  The attached `deposit` must match the DAO's `proposal_bond` exactly, or the
+  call fails with `ERR_MIN_BOND`. The bond is set per DAO in its policy (the
+  Sputnik DAO default is `0.1` NEAR, but many DAOs use a different value, e.g.
+  `1` NEAR). Check the DAO's policy with `near view <dao> get_policy` and use
+  that `proposal_bond` as the deposit.
+</Warning>
+
 ---
 
 ## Vote for proposal
@@ -698,7 +709,7 @@ These snippet will enable your users to cast a vote for proposal of a particular
 ```js
 import { useNearWallet } from "near-connect-hooks";
 
-const DAO_CONTRACT_ADDRESS = 'primitives.sputnik-dao.near';
+const DAO_CONTRACT_ADDRESS = 'primitives.sputnikv2.testnet';
 
 const { callFunction } = useNearWallet();
 
@@ -718,7 +729,7 @@ Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to y
   <Tab title="🖥️ CLI">
     
   ```bash
-  near call primitives.sputnik-dao.near act_proposal '{"id": 0, "action": "VoteApprove"}' --gas 300000000000000 --useAccount bob.near
+  near call primitives.sputnikv2.testnet act_proposal '{"id": 0, "action": "VoteApprove"}' --gas 300000000000000 --useAccount your-account.testnet
   ```
   <Note>
   Available vote options: `VoteApprove`, `VoteReject`, `VoteRemove`.
