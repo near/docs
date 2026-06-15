@@ -620,6 +620,7 @@
               "POST /tx",
               "POST /EXPERIMENTAL_tx_status",
               "POST /EXPERIMENTAL_receipt",
+              "POST /EXPERIMENTAL_receipt_to_tx",
               "POST /broadcast_tx_async",
               "POST /broadcast_tx_commit"
             ]
