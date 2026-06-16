@@ -511,6 +511,12 @@
             ]
           },
           {
+            "group": "Social",
+            "pages": [
+              "primitives/social"
+            ]
+          },
+          {
             "group": "Lockup Contracts",
             "pages": [
               "primitives/lockup/introduction",
