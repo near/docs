@@ -11,6 +11,8 @@ The RPC API enables you to view details about accounts and contracts as well as 
 |--------|---------|
 | [`view_account`](#view-account) | Get basic account information |
 | [`view_account_changes`](#view-account-changes) | Monitor account state changes |
+| [`view_access_key`](#view-access-key) | Get the nonce and permissions of a single access key |
+| [`view_access_key_list`](#view-access-key-list) | List all access keys on an account |
 | [`view_code`](#view-contract-code) | Get deployed contract WASM code |
 | [`view_state`](#view-contract-state) | Get contract storage data |
 | [`data_changes`](#view-contract-state-changes) | Monitor contract state changes |
@@ -124,6 +126,164 @@ Returns account changes from transactions in a given account.
     ```
   </Tab>
 </Tabs>
+
+---
+
+## View Access Key
+
+Returns the nonce and permissions of a single [access key](/protocol/accounts-contracts/access-keys), given the account and the key's public key.
+
+- **method**: `query`
+- **params**: `request_type: view_access_key`, `finality` OR `block_id`, `account_id`, `public_key`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_access_key",
+        "finality": "final",
+        "account_id": "account.rpc-examples.testnet",
+        "public_key": "ed25519:DCkbTMS8s4kqV4nGvz5kRBdNbY9YwjjvNGNXKpAg2eFa"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'view_access_key',
+      finality: 'final',
+      account_id: 'account.rpc-examples.testnet',
+      public_key: 'ed25519:DCkbTMS8s4kqV4nGvz5kRBdNbY9YwjjvNGNXKpAg2eFa',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"view_access_key","finality":"final","account_id":"account.rpc-examples.testnet","public_key":"ed25519:DCkbTMS8s4kqV4nGvz5kRBdNbY9YwjjvNGNXKpAg2eFa"}'
+    ```
+  </Tab>
+</Tabs>
+
+<Accordion title="Example response">
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "nonce": 187310139000001,
+    "permission": "FullAccess",
+    "block_hash": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW",
+    "block_height": 187440904
+  },
+  "id": "dontcare"
+}
+```
+
+For a function-call key, `permission` is an object instead of the `"FullAccess"` string:
+
+```json
+"permission": {
+  "FunctionCall": {
+    "allowance": "250000000000000000000000",
+    "receiver_id": "contract.rpc-examples.testnet",
+    "method_names": ["get_greeting"]
+  }
+}
+```
+</Accordion>
+
+<Note>
+For a post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) key, pass the **full** `ml-dsa-65:` public key in `public_key`. The network hashes it to locate the on-chain entry, so you query it exactly like an `ed25519` or `secp256k1` key.
+</Note>
+
+---
+
+## View Access Key List
+
+Returns all [access keys](/protocol/accounts-contracts/access-keys) for an account, each with its nonce and permissions.
+
+- **method**: `query`
+- **params**: `request_type: view_access_key_list`, `finality` OR `block_id`, `account_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_access_key_list",
+        "finality": "final",
+        "account_id": "account.rpc-examples.testnet"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'view_access_key_list',
+      finality: 'final',
+      account_id: 'account.rpc-examples.testnet',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"view_access_key_list","finality":"final","account_id":"account.rpc-examples.testnet"}'
+    ```
+  </Tab>
+</Tabs>
+
+<Accordion title="Example response">
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "keys": [
+      {
+        "public_key": "ed25519:DCkbTMS8s4kqV4nGvz5kRBdNbY9YwjjvNGNXKpAg2eFa",
+        "access_key": {
+          "nonce": 187310139000001,
+          "permission": "FullAccess"
+        }
+      },
+      {
+        "public_key": "ml-dsa-65-hash:7Xx2X4vHb9dG8pJ5tZqD3mN6kRfWcA1sLuYoP2eB4hT",
+        "access_key": {
+          "nonce": 187420021000003,
+          "permission": "FullAccess"
+        }
+      }
+    ],
+    "block_hash": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW",
+    "block_height": 187440904
+  },
+  "id": "dontcare"
+}
+```
+</Accordion>
+
+<Note>
+Post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) keys are stored on-chain by hash, so they appear here with an `ml-dsa-65-hash:` prefix (a base58-encoded 48-byte SHA3-384 digest) rather than the full `ml-dsa-65:` key. To match an entry to one of your own keys, hash your public key and compare it against the returned value.
+</Note>
 
 ---
 

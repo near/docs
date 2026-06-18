@@ -797,6 +797,10 @@ func (c *Contract) ExampleAddKeys(input AddKeysInput) {
 
 Notice that what you actually add is a "public key". Whoever holds its private counterpart, i.e. the private-key, will be able to use the newly access key.
 
+<Note>
+The `public_key` can use any of NEAR's [signature schemes](/protocol/accounts-contracts/access-keys#signature-schemes) — `ed25519`, `secp256k1`, or the post-quantum `ml-dsa-65`. Adding an `ml-dsa-65` key needs no code changes: pass an `ml-dsa-65:...` key exactly like the examples above.
+</Note>
+
 <Tip>
 If an account with a contract deployed does **not** have any access keys, this is known as a locked contract. When the account is locked, it cannot sign transactions therefore, actions can **only** be performed from **within** the contract code.
 </Tip>
