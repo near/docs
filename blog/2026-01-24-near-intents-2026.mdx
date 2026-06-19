@@ -16,7 +16,7 @@ Let's take a deep dive into the architecture of cross-chain swaps on NEAR Protoc
 
 ## Introduction
 
-Given the bast amount of chains and assets that have surged, it is now common for users to need to swap assets across chains (e.g. swap USDT on Ethereum for SOL on Solana).
+Given the vast amount of chains and assets that have surged, it is now common for users to need to swap assets across chains (e.g. swap USDT on Ethereum for SOL on Solana).
 
 Since **each blockchain is a separate and isolated system** - indeed, blockchains do not have any inherent way to communicate with each other - different off-chain services emerged to enable cross-chain swaps.
 
@@ -31,7 +31,7 @@ Particularly, we will focus on two components:
 
 Particularly, I want to focus on the technical foundations behind them. For that, we will look at which features of NEAR Protocol make this architecture possible, and why they allow it to be built in a robust and secure way. We will go a bit deeper technically and break down how the system is structured, and what exactly made this design feasible in the first place. */}
 
-But before, let's briefly review how cross-chain swaps have traditionally worked, and what challenged they faced, to better understand why NEAR's approach is unique and powerful.
+But before, let's briefly review how cross-chain swaps have traditionally worked, and what challenges they faced, to better understand why NEAR's approach is unique and powerful.
 
 ---
 
@@ -75,6 +75,16 @@ For the user, the experience is simple and intuitive:
 
 Behind this simple user experience, there is a complex architecture that makes it all possible. The key to understanding it is to look at the technical foundations that NEAR Protocol provides, and how they enable this design in a way that is secure, efficient, and user-friendly.
 
+### How MPC, the bridge, and intents fit together
+
+These pieces are not independent products glued together, they form a stack where each layer builds on the one below:
+
+1. **MPC Network** (the backbone of [Chain Signatures](/chain-abstraction/chain-signatures)) — a set of participants that collectively derive addresses and sign transactions for other chains, without any single party ever holding the full private key. This is what lets NEAR control accounts on `Ethereum`, `Solana`, and other chains.
+2. **PoA Bridge** — uses the MPC Network to control deposit addresses and treasuries on each chain. When you deposit, it mints a bridged representation on NEAR, when you withdraw, it asks the MPC Network to sign the real transfer out. It is the layer that actually moves assets in and out of NEAR.
+3. **NEAR Intents** — sits on top of the bridge. It finds a counterparty and executes the swap atomically inside `intents.near`, relying on the bridge (and therefore the MPC Network) for everything that crosses a chain boundary.
+
+In short: **intents orchestrate the swap, the bridge moves the assets, and the MPC Network is the cryptographic engine that lets the bridge act on other chains.**
+
 ---
 
 ## Technical Foundations
@@ -84,7 +94,7 @@ The core technical foundation that makes all of this possible is the combination
 ### Chain Signatures
 [Chain Signatures](/chain-abstraction/chain-signatures) allows **smart contracts to sign transactions** for NEAR and **other chains** in a secure and deterministic way. It is based on multi-party computation (MPC), where a group of participants collectively generates a signature without any single party ever owning the full private key. 
 
-While MCP is a powerful primitive that exists on other chains, in NEAR it is naturally integrated into the on-chain execution thanks to the fact that smart contracts can yield and resume computation.
+While MPC is a powerful primitive that exists on other chains, in NEAR it is naturally integrated into the on-chain execution thanks to the fact that smart contracts can yield and resume computation.
 
 ### Yield and Resume
 
