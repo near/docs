@@ -681,6 +681,36 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Blog",
+        "icon": "newspaper",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "blog/overview",
+              "blog/2026-02-23-shade-agent-framework-2.0",
+              "blog/2026-01-24-near-intents-2026",
+              "blog/2026-01-06-near-rust-devtools-2025",
+              "blog/2025-12-11-blockchain-finality-benchmark",
+              "blog/2025-06-21-near-for-backend-devs",
+              "blog/2025-03-14-benefits-of-multiple-keys",
+              "blog/2025-01-01-a-year-in-docs",
+              "blog/2024-11-07-hello-ethereum-wallets",
+              "blog/2024-10-24-new-tutorial",
+              "blog/2024-08-13-pagoda-services",
+              "blog/2024-07-18-near-org-outage",
+              "blog/2024-07-01-bos-web-engine-sunset",
+              "blog/2024-06-28-sdks-unified",
+              "blog/2024-06-05-getting-started-on-windows",
+              "blog/2024-05-30-yield-resume",
+              "blog/2024-05-15-chain-signatures-use-cases",
+              "blog/2024-04-24-reorganizing-docs",
+              "blog/2024-04-23-we-have-a-blog"
+            ]
+          }
+        ]
       }
     ]
   },
