@@ -1,39 +1,50 @@
 ---
 title: Wallet Connector
 icon: "wallet"
-description: "A zero-dependencies, lightweight wallet connector for the NEAR blockchain with sandboxed wallet execution."
+description: "A zero-dependencies and lightweight wallet connector"
 ---
 
-**NEAR Connect** is a zero-dependencies, robust, secure, and lightweight wallet connector for the NEAR blockchain. It provides a modern alternative to traditional wallet selectors by executing wallet integration code in isolated sandboxed environments rather than bundling all wallet code into a single package.
+**NEAR Connect** is a zero-dependencies, robust, secure, and lightweight wallet connector for the NEAR blockchain. It executes wallet integration code in isolated sandboxed environments rather than bundling all wallet code into a single package.
+
+![Preview](https://github.com/user-attachments/assets/c4422057-38bb-4cd9-8bd0-568e29f46280)
+
+<Columns cols={2}>
+  <Card title="Sandboxed Execution" icon="shield">
+    Reduces supply chain risk by running wallet scripts in isolated iframes.
+  </Card>
+  <Card title="Easily Updatable Wallets" icon="refresh-cw">
+    Always up-to-date thanks to a shared manifest that loads wallet code at runtime.
+  </Card>
+  <Card title="No Dependencies" icon="feather">
+    Lightweight and self-contained with zero external dependencies.
+  </Card>
+  <Card title="Multiple Wallets Supported" icon="wallet">
+    HOT Wallet, Meteor Wallet, Nightly, WalletConnect, and 10+ others.
+  </Card>
+</Columns>
+
+<Tip>
+Looking to integrate NEAR Connect into your app? Check out the [Web Login Guide](../web3-apps/tutorials/wallet-login) for step-by-step instructions
+</Tip>
 
 ---
 
-## Installation
+## Integration Guide
 
-```bash
-yarn add @hot-labs/near-connect
-```
+Read our [Web Login Guide](../web3-apps/tutorials/wallet-login) for a step-by-step walkthrough of integrating NEAR Connect into your app, including code examples and best practices.
 
----
-
-## Key Features
-
-- **Sandboxed Execution**: Wallet scripts run in isolated iframes with controlled permissions (storage access, domain whitelisting), reducing supply chain risk.
-- **Easily Updatable Wallets**: Wallet developers can immediately test code on real applications by hosting their own executor scripts, then submit PRs to update the shared manifest for automatic deployment — no package release required.
-- **No Dependencies**: Lightweight and self-contained.
-- **Multiple Wallets Supported**: HOT Wallet, Meteor Wallet, MyNearWallet, Nightly Wallet, OKX Wallet, WalletConnect, and 10+ others.
-
----
-
-## Supported Actions
-
-- Sign-in with optional message signing
-- Sign and send transactions
-- Limited-key creation for non-custodial interactions
-- WalletConnect integration
+<Columns cols={2}>
+  <Card title="Sign In" icon="log-in" href="../web3-apps/tutorials/wallet-login#signing-in-%2F-out" horizontal arrow>
+    Sign in with optional message signing.
+  </Card>
+  <Card title="Transactions" icon="send" href="../web3-apps/tutorials/wallet-login#calling-contract-method" horizontal arrow>
+    Sign and send transactions.
+  </Card>
+</Columns>
 
 ---
 
 ## Additional Resources
 
-- [GitHub](https://github.com/azbang/near-connect)
+- [NEAR Web Login Guide](../web3-apps/concepts/web-login)
+- [Github](https://github.com/azbang/near-connect)

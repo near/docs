@@ -3,6 +3,8 @@ title: Factory
 description: "Learn how a factory contract deploys other contracts on sub-accounts using a global contract ID."
 ---
 
+import { Github } from '/snippets/github.jsx'
+
 A factory is a smart contract that stores a global contract id, and automatizes deploying contracts onto new sub-accounts.
 
 We have a [**A Generic Factory**](https://github.com/near-examples/factory-rust) that deploys new contracts based on global contract id. The global contract id can be global account id or hash. You can change the global contract id by calling `update_global_contract_id` method. The factory creates sub-accounts of itself and deploys corresponding contract on them.

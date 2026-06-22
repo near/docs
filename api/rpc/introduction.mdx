@@ -1,5 +1,6 @@
 ---
 title: "Protocol Call Reference"
+icon: file-text
 description: "Overview of tools and methods for interacting with the NEAR Protocol."
 sidebarTitle: "Introduction"
 ---
@@ -33,7 +34,7 @@ See [RPC Providers](/api/rpc/providers) for the full list of public endpoints.
 
 | Category | Methods |
 |----------|---------|
-| **Transactions** | `send_tx`, `tx`, `broadcast_tx_async`, `broadcast_tx_commit` |
+| [**Transactions**](/api/rpc/transactions) | `send_tx`, `tx`, `EXPERIMENTAL_tx_status`, `broadcast_tx_async`, `broadcast_tx_commit` |
 | **Blocks & Chunks** | `block`, `chunk`, `block_effects`, `changes` |
 | **Accounts & Keys** | `query` (view account, code, state, access keys, call function) |
 | **Network** | `status`, `health`, `network_info`, `validators` |

@@ -1,19 +1,20 @@
 ---
-title: Existing Services
+title: Data Services
+icon: server
 description: "Indexers are constantly listening for transactions and storing them so they can be easily queried."
 ---
 
 Data Services are constantly listening to the blockchain, processing the transactions and storing them in a database that can be easily queried. You can use them to access blockchain data efficiently:
 
-- [BigQuery](./big-query): Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data.
+- [Neardata](https://neardata.xyz): a direct, drop-in replacement for NEAR Lake providing a stream of blocks for your custom indexer.
 
-- [NEAR Lake Framework](./near-lake-framework): a companion library to NEAR Lake. It allows you to build your own indexer that watches a stream of blocks **from a NEAR Lake data source** and allows you to **create your own logic to process that data**. Keep in mind this is **the one you want to use for future projects**, instead of the Indexer Framework. Read [why it is better](/data-infrastructure/near-lake-framework#comparison-with-near-indexer-framework).
+- [BigQuery](./big-query): Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data.
 
 - [Indexer.xyz Multichain Indexer](https://indexer.xyz/): Indexer.xyz is an application layer that you can build your NFT or DeFi applications entirely on top of. In addition to raw transaction indexing, Indexer.xyz provides you with a standardized GraphQL API layer to easily tap into transactions across contracts and chains.
 
 - [The Graph](https://thegraph.com/docs/en/cookbook/near/): development tools to process blockchain events and make the resulting data easily available via a GraphQL API, known individually as a subgraph. [Graph Node](https://github.com/graphprotocol/graph-node) is able to process NEAR events, which means that NEAR developers can build subgraphs to index their smart contracts.
 
-- [GetBlock](https://getblock.io/explorers/near/blocks/): developer tools offering a simple and reliable API access to multiple blockchains including NEAR Protocol.
+- [GetBlock](https://getblock.io/explorers/near/blocks/): developer tools offering a simple and reliable API access for historical data streams and other services for NEAR.
 
 - [Community APIs](./data-api): build precise & reliable dApps with our community's APIs.
 
@@ -22,3 +23,11 @@ Data Services are constantly listening to the blockchain, processing the transac
 - [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer): a micro-framework providing you with a "live" stream of blocks. Useful to handle on-chain real-time `events`.
 
 - [SubQuery](https://academy.subquery.network/quickstart/quickstart_chains/near.html): is an end to end multi-blockchain indexing solution that provides NEAR developers with fast, flexible, universal, open source and decentralized APIs for web3 projects. The [NEAR starter project](https://github.com/subquery/near-subql-starter/tree/main/Near/near-starter) provides a template for developers to get up and running within minutes.
+
+- [GoldSky](https://docs.goldsky.com/chains/near): a hosted data platform that supports NEAR mainnet via **Mirror** (real-time data replication into your own infrastructure) and **Turbo** (high-performance streaming pipelines with sub-second latency). No infrastructure to manage — connect your data destination and start streaming on-chain data immediately.
+
+- NEAR Lake Framework (**deprecated**): a companion library to NEAR Lake. It allows you to build your own indexer that watches a stream of blocks **from a NEAR Lake data source**.
+
+<Danger>
+**NEAR Lake deprecated as of March 24, 2026.** The NEAR Lake (AWS S3 buckets) has stopped indexing new blocks. For new projects, use [Neardata](https://neardata.xyz) (direct replacement for NEAR Lake), [Data APIs](./data-api), [Goldsky](https://goldsky.com), or the [Nearcore Indexer](./near-indexer).
+</Danger>

@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "almond",
+  "theme": "mint",
   "name": "NEAR Docs",
   "colors": {
     "primary": "#1fb858",
@@ -45,7 +45,7 @@
   },
   "favicon": "assets/favicon.svg",
   "api": {
-    "openapi": "/openapi.json",
+    "openapi": "openapi.json",
     "playground": {
       "display": "interactive"
     },
@@ -58,408 +58,212 @@
       "defaults": "all"
     }
   },
-  "navigation": {
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Explorers",
-          "href": "https://explorer.near.org/",
-          "icon": "search"
-        },
-        {
-          "anchor": "Wallets",
-          "href": "https://wallet.near.org",
-          "icon": "wallet"
-        },
-        {
-          "anchor": "NEAR Catalog",
-          "href": "https://nearcatalog.xyz/",
-          "icon": "layout-grid"
-        }
-      ]
+  "redirects": [
+    {
+      "source": "/smart-contracts/contracts-list",
+      "destination": "/tools/contracts-list"
     },
+    {
+      "source": "/smart-contracts/security/welcome",
+      "destination": "/smart-contracts/security/introduction"
+    },
+    {
+      "source": "/ai/shade-agents",
+      "destination": "/ai/shade-agents/getting-started/introduction"
+    },
+    {
+      "source": "/ai/shade-agents/",
+      "destination": "/ai/shade-agents/getting-started/introduction"
+    },
+    {
+      "source": "/ai/shade-agents/:path*",
+      "destination": "/ai/shade-agents/getting-started/introduction"
+    },
+    {
+      "source": "/chain-abstraction/meta-transactions",
+      "destination": "/protocol/transactions/meta-tx"
+    },
+    {
+      "source": "/protocol/access-keys",
+      "destination": "/protocol/accounts-contracts/access-keys"
+    },
+    {
+      "source": "/api/rpc/maintenance-windows",
+      "destination": "/api-reference/maintenance-windows"
+    },
+    {
+      "source": "/tools/near-cli",
+      "destination": "/tools/cli"
+    },
+    {
+      "source": "/docs/tools/near-cli",
+      "destination": "/tools/cli"
+    },
+    {
+      "source": "/concepts/basics/transactions/gas",
+      "destination": "/protocol/transactions/gas"
+    },
+    {
+      "source": "/concepts/basics/transactions/gas-advanced",
+      "destination": "/protocol/transactions/gas"
+    },
+    {
+      "source": "/docs/concepts/gas",
+      "destination": "/protocol/transactions/gas"
+    },
+    {
+      "source": "/docs/concepts/storage-staking",
+      "destination": "/protocol/storage/storage-staking"
+    },
+    {
+      "source": "/docs/develop/front-end/rpc",
+      "destination": "/api/rpc/protocol"
+    }
+  ],
+  "navbar": {
+    "links": [
+      {
+        "label": "Wallets",
+        "href": "https://wallet.near.org/",
+        "icon": "wallet"
+      },
+      {
+        "label": "Explorers",
+        "href": "https://explorer.near.org/",
+        "icon": "search"
+      },
+      {
+        "label": "NEAR Catalog",
+        "href": "https://nearcatalog.xyz/",
+        "icon": "layout-grid"
+      }
+    ]
+  },
+  "navigation": {
     "tabs": [
       {
-        "tab": "Docs",
-        "icon": "book",
+        "tab": "Home",
+        "icon": "house",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": " ",
             "pages": [
+              "index",
               "getting-started/what-is-near",
-              "getting-started/create-account",
-              "getting-started/faucet",
-              "getting-started/tools-for-ai"
+              "communities"
             ]
           },
           {
-            "group": "Docs",
+            "group": "Getting Started",
+            "pages": [
+              "getting-started/create-account",
+              "getting-started/faucet",
+              {
+                "group": "Mastering NEAR",
+                "icon": "graduation-cap",
+                "pages": [
+                  "web3-apps/tutorials/mastering-near/0-intro",
+                  {
+                    "group": "Smart Contracts 101",
+                    "pages": [
+                      "web3-apps/tutorials/mastering-near/1.1-basic",
+                      "web3-apps/tutorials/mastering-near/1.2-testing",
+                      "web3-apps/tutorials/mastering-near/1.3-deploy"
+                    ]
+                  },
+                  {
+                    "group": "Frontends 101",
+                    "pages": [
+                      "web3-apps/tutorials/mastering-near/2.1-frontend",
+                      "web3-apps/tutorials/mastering-near/2.2-indexing"
+                    ]
+                  },
+                  {
+                    "group": "Using Primitives",
+                    "pages": [
+                      "web3-apps/tutorials/mastering-near/3.1-nft",
+                      "web3-apps/tutorials/mastering-near/3.2-ft",
+                      "web3-apps/tutorials/mastering-near/3.3-new-frontend"
+                    ]
+                  },
+                  "web3-apps/tutorials/mastering-near/4-factory"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": [
+              "getting-started/hackathons",
+              "getting-started/tools-for-ai"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Protocol",
+        "icon": "layers",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "protocol/network/architecture"
+            ]
+          },
+          {
+            "group": "Concepts",
             "pages": [
               {
-                "group": "Protocol",
-                "icon": "layers",
+                "group": "Accounts",
+                "icon": "user",
                 "pages": [
-                  {
-                    "group": "Accounts / Contracts",
-                    "pages": [
-                      "protocol/accounts-contracts/account-model",
-                      "protocol/accounts-contracts/account-id",
-                      "protocol/accounts-contracts/access-keys"
-                    ]
-                  },
-                  {
-                    "group": "Transactions",
-                    "pages": [
-                      "protocol/transactions",
-                      "protocol/transactions/transaction-anatomy",
-                      "protocol/transactions/gas",
-                      "protocol/transactions/transaction-execution",
-                      "protocol/transactions/meta-tx"
-                    ]
-                  },
-                  {
-                    "group": "Data Flow",
-                    "pages": [
-                      "protocol/data-flow/near-data-flow",
-                      "protocol/data-flow/token-transfer-flow"
-                    ]
-                  },
-                  {
-                    "group": "Tokens",
-                    "pages": [
-                      "protocol/network/tokens",
-                      "protocol/network/token-loss"
-                    ]
-                  },
-                  {
-                    "group": "Storage",
-                    "pages": [
-                      "protocol/storage/storage-staking"
-                    ]
-                  },
-                  {
-                    "group": "Network",
-                    "pages": [
-                      "protocol/network/architecture",
-                      "protocol/network/validators",
-                      "protocol/network/networks",
-                      "protocol/network/epoch",
-                      "protocol/network/runtime"
-                    ]
-                  }
+                  "protocol/accounts-contracts/account-model",
+                  "protocol/accounts-contracts/account-id",
+                  "protocol/accounts-contracts/access-keys"
                 ]
               },
               {
-                "group": "Smart Contracts",
-                "icon": "file-badge",
-                "root": "smart-contracts/what-is",
+                "group": "Transactions",
+                "icon": "arrow-right-left",
                 "pages": [
-                  "smart-contracts/quickstart",
-                  {
-                    "group": "Concepts",
-                    "pages": [
-                      {
-                        "group": "Anatomy of a Contract",
-                        "pages": [
-                          "smart-contracts/anatomy/anatomy",
-                          "smart-contracts/anatomy/functions",
-                          "smart-contracts/anatomy/storage",
-                          "smart-contracts/anatomy/types",
-                          "smart-contracts/anatomy/collections",
-                          "smart-contracts/anatomy/environment",
-                          "smart-contracts/anatomy/actions",
-                          "smart-contracts/anatomy/crosscontract",
-                          "smart-contracts/anatomy/yield-resume"
-                        ]
-                      },
-                      "smart-contracts/global-contracts",
-                      {
-                        "group": "Deploy, Update & Lock",
-                        "pages": [
-                          "smart-contracts/release/deploy",
-                          "smart-contracts/release/upgrade",
-                          "smart-contracts/release/lock"
-                        ]
-                      },
-                      {
-                        "group": "Advanced",
-                        "pages": [
-                          "smart-contracts/anatomy/best-practices",
-                          "smart-contracts/anatomy/serialization",
-                          "smart-contracts/anatomy/serialization-interface",
-                          "smart-contracts/anatomy/reduce-size",
-                          "smart-contracts/anatomy/reproducible-builds"
-                        ]
-                      },
-                      {
-                        "group": "Test the Contract",
-                        "pages": [
-                          "smart-contracts/testing/introduction",
-                          "smart-contracts/testing/unit-test",
-                          "smart-contracts/testing/integration-test"
-                        ]
-                      },
-                      {
-                        "group": "Security",
-                        "pages": [
-                          "smart-contracts/security/welcome",
-                          "smart-contracts/security/checklist",
-                          "smart-contracts/security/storage",
-                          "smart-contracts/security/callbacks",
-                          "smart-contracts/security/one_yocto",
-                          "smart-contracts/security/sybil",
-                          "smart-contracts/security/frontrunning",
-                          "smart-contracts/security/reentrancy",
-                          "smart-contracts/security/random"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "group": "Tutorials",
-                    "pages": [
-                      "smart-contracts/tutorials/basic-contracts",
-                      {
-                        "group": "Advanced",
-                        "pages": [
-                          "smart-contracts/tutorials/advanced/near-drop",
-                          "smart-contracts/tutorials/advanced/update"
-                        ]
-                      },
-                      {
-                        "group": "Cross Contracts",
-                        "pages": [
-                          "smart-contracts/tutorials/cross-contracts/xcc",
-                          "smart-contracts/tutorials/cross-contracts/advanced-xcc"
-                        ]
-                      },
-                      {
-                        "group": "Factories",
-                        "pages": [
-                          "smart-contracts/tutorials/factories/factory",
-                          "smart-contracts/tutorials/factories/global-contracts"
-                        ]
-                      },
-                      {
-                        "group": "Zero to Hero",
-                        "pages": [
-                          "smart-contracts/tutorials/zero-to-hero/fts",
-                          "smart-contracts/tutorials/zero-to-hero/nfts",
-                          "smart-contracts/tutorials/zero-to-hero/nfts-js"
-                        ]
-                      }
-                    ]
-                  }
+                  "protocol/transactions/index",
+                  "protocol/transactions/transaction-anatomy",
+                  "protocol/transactions/gas",
+                  "protocol/transactions/transaction-execution",
+                  "protocol/transactions/meta-tx"
                 ]
               },
               {
-                "group": "App Development",
-                "icon": "terminal",
-                "root": "web3-apps/what-is",
+                "group": "Data Flow",
+                "icon": "git-branch",
                 "pages": [
-                  "web3-apps/quickstart",
-                  {
-                    "group": "Concepts",
-                    "pages": [
-                      "web3-apps/concepts/web-login",
-                      "web3-apps/concepts/data-types"
-                    ]
-                  },
-                  {
-                    "group": "Tutorials",
-                    "pages": [
-                      "web3-apps/tutorials/wallet-login",
-                      "web3-apps/tutorials/frontend-multiple-contracts",
-                      "web3-apps/backend/backend",
-                      {
-                        "group": "Testing on Localnet",
-                        "pages": [
-                          "web3-apps/tutorials/localnet/introduction",
-                          "web3-apps/tutorials/localnet/run"
-                        ]
-                      },
-                      "web3-apps/tutorials/meta-transactions",
-                      {
-                        "group": "Mastering NEAR",
-                        "pages": [
-                          "web3-apps/tutorials/mastering-near/0-intro",
-                          {
-                            "group": "Smart Contracts 101",
-                            "pages": [
-                              "web3-apps/tutorials/mastering-near/1.1-basic",
-                              "web3-apps/tutorials/mastering-near/1.2-testing",
-                              "web3-apps/tutorials/mastering-near/1.3-deploy"
-                            ]
-                          },
-                          {
-                            "group": "Frontends 101",
-                            "pages": [
-                              "web3-apps/tutorials/mastering-near/2.1-frontend",
-                              "web3-apps/tutorials/mastering-near/2.2-indexing"
-                            ]
-                          },
-                          {
-                            "group": "Using Primitives",
-                            "pages": [
-                              "web3-apps/tutorials/mastering-near/3.1-nft",
-                              "web3-apps/tutorials/mastering-near/3.2-ft",
-                              "web3-apps/tutorials/mastering-near/3.3-new-frontend"
-                            ]
-                          },
-                          "web3-apps/tutorials/mastering-near/4-factory"
-                        ]
-                      }
-                    ]
-                  }
-              ]
-              },
-              {
-                "group": "Multi-Chain",
-                "icon": "link-2",
-                "root": "chain-abstraction/what-is",
-                "pages": [
-                  {
-                    "group": "Multi-Chain Accounts",
-                    "pages": [
-                      "chain-abstraction/chain-signatures",
-                      {
-                        "group": "Tutorials",
-                        "pages": [
-                          "chain-abstraction/chain-signatures/implementation",
-                          {
-                            "group": "Controlling NEAR Accounts",
-                            "pages": [
-                              "chain-abstraction/chain-signatures/tutorials/controlling-near-accounts/0-introduction",
-                              "chain-abstraction/chain-signatures/tutorials/controlling-near-accounts/1-setup",
-                              "chain-abstraction/chain-signatures/tutorials/controlling-near-accounts/2-transfer"
-                            ]
-                          },
-                          {
-                            "group": "Cross-Chain DAO Governance",
-                            "pages": [
-                              "chain-abstraction/chain-signatures/tutorials/multichain-dao/0-intro",
-                              "chain-abstraction/chain-signatures/tutorials/multichain-dao/1-request",
-                              "chain-abstraction/chain-signatures/tutorials/multichain-dao/2-signing",
-                              "chain-abstraction/chain-signatures/tutorials/multichain-dao/3-voting"
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  "chain-abstraction/intents/overview",
-                  {
-                    "group": "Multi-Chain Bridge",
-                    "pages": [
-                      "chain-abstraction/omnibridge/overview",
-                      "chain-abstraction/omnibridge/how-it-works",
-                      "chain-abstraction/omnibridge/implementation",
-                      "chain-abstraction/omnibridge/roadmap"
-                    ]
-                  }
+                  "protocol/data-flow/near-data-flow",
+                  "protocol/data-flow/token-transfer-flow"
                 ]
               },
               {
-                "group": "Tokens & Primitives",
-                "icon": "coins",
-                "root": "primitives/what-is",
+                "group": "Tokens",
+                "icon": "circle-dollar-sign",
                 "pages": [
-                  {
-                    "group": "Fungible Tokens (FT)",
-                    "pages": [
-                      "primitives/ft/standard",
-                      "primitives/ft/ft",
-                      "primitives/ft/sdk-contract-tools"
-                    ]
-                  },
-                  {
-                    "group": "Non-Fungible Tokens (NFT)",
-                    "pages": [
-                      "primitives/nft/standard",
-                      "primitives/nft/nft",
-                      "primitives/nft/sdk-contract-tools"
-                    ]
-                  },
-                  {
-                    "group": "Linkdrops",
-                    "pages": [
-                      "primitives/linkdrop/standard",
-                      "primitives/linkdrop/linkdrop"
-                    ]
-                  },
-                  {
-                    "group": "Staking",
-                    "pages": [
-                      "protocol/network/staking"
-                    ]
-                  },
-                  {
-                    "group": "DeFi",
-                    "pages": [
-                      "primitives/oracles",
-                      "primitives/dao",
-                      "primitives/dex"
-                    ]
-                  },
-                  {
-                    "group": "Identity",
-                    "pages": [
-                      "primitives/didnear"
-                    ]
-                  },
-                  {
-                    "group": "Lockup Contracts",
-                    "pages": [
-                      "primitives/lockup/introduction",
-                      "primitives/lockup/lockup"
-                    ]
-                  },
-                  {
-                    "group": "Liquid Staking",
-                    "pages": [
-                      "primitives/liquid-staking/liquid-staking",
-                      "primitives/liquid-staking/deploy-your-own-contract"
-                    ]
-                  }
+                  "protocol/network/tokens",
+                  "protocol/network/token-loss"
                 ]
               },
               {
-                "group": "Data Infrastructure",
-                "icon": "database",
-                "root": "data-infrastructure/what-is",
+                "group": "Storage",
+                "icon": "hard-drive",
                 "pages": [
-                  "data-infrastructure/data-services",
-                  "data-infrastructure/data-api",
-                  "data-infrastructure/big-query",
-                  {
-                    "group": "Indexers",
-                    "pages": [
-                      "data-infrastructure/indexers",
-                      {
-                        "group": "NEAR Lake Framework",
-                        "pages": [
-                          "data-infrastructure/near-lake-framework",
-                          "data-infrastructure/tutorials/near-lake-framework",
-                          "data-infrastructure/tutorials/near-lake-state-changes-indexer"
-                        ]
-                      },
-                      {
-                        "group": "NEAR Indexer",
-                        "pages": [
-                          "data-infrastructure/near-indexer",
-                          "data-infrastructure/tutorials/near-indexer",
-                          {
-                            "group": "Building a Data Lake",
-                            "pages": [
-                              "data-infrastructure/tutorials/running-near-lake/run-near-lake",
-                              "data-infrastructure/tutorials/running-near-lake/lake-start-options",
-                              "data-infrastructure/tutorials/running-near-lake/credentials"
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
+                  "protocol/storage/storage-staking"
+                ]
+              },
+              {
+                "group": "Network",
+                "icon": "globe",
+                "pages": [
+                  "protocol/network/validators",
+                  "protocol/network/networks",
+                  "protocol/network/epoch",
+                  "protocol/network/runtime"
                 ]
               }
             ]
@@ -467,36 +271,334 @@
         ]
       },
       {
-        "tab": "Dev ToolKit",
-        "icon": "code",
+        "tab": "Smart Contracts",
+        "icon": "file-badge",
         "groups": [
           {
-            "group": "Applications",
+            "group": " ",
             "pages": [
-              "tools/near-connect",
-              "tools/near-api",
-              "tools/cli"
+              "smart-contracts/what-is",
+              "smart-contracts/quickstart"
             ]
           },
           {
-            "group": "Smart Contracts",
+            "group": "Concepts",
+            "pages": [
+              {
+                "group": "Anatomy of a Contract",
+                "icon": "book-open",
+                "pages": [
+                  "smart-contracts/anatomy/anatomy",
+                  "smart-contracts/anatomy/functions",
+                  "smart-contracts/anatomy/storage",
+                  "smart-contracts/anatomy/types",
+                  "smart-contracts/anatomy/collections",
+                  "smart-contracts/anatomy/environment",
+                  "smart-contracts/anatomy/actions",
+                  "smart-contracts/anatomy/crosscontract",
+                  "smart-contracts/anatomy/events",
+                  "smart-contracts/anatomy/yield-resume"
+                ]
+              },
+              {
+                "group": "Deploy & Release",
+                "icon": "play",
+                "pages": [
+                  "smart-contracts/global-contracts",
+                  "smart-contracts/release/deploy",
+                  "smart-contracts/release/upgrade",
+                  "smart-contracts/release/lock"
+                ]
+              },
+              {
+                "group": "Testing",
+                "icon": "test-tube",
+                "pages": [
+                  "smart-contracts/testing/introduction",
+                  "smart-contracts/testing/unit-test",
+                  "smart-contracts/testing/integration-test"
+                ]
+              },
+              {
+                "group": "Security",
+                "icon": "shield",
+                "pages": [
+                  "smart-contracts/security/introduction",
+                  "smart-contracts/security/checklist",
+                  "smart-contracts/security/storage",
+                  "smart-contracts/security/callbacks",
+                  "smart-contracts/security/one_yocto",
+                  "smart-contracts/security/sybil",
+                  "smart-contracts/security/frontrunning",
+                  "smart-contracts/security/reentrancy",
+                  "smart-contracts/security/random"
+                ]
+              },
+              {
+                "group": "Advanced",
+                "icon": "zap",
+                "pages": [
+                  "smart-contracts/anatomy/best-practices",
+                  "smart-contracts/anatomy/serialization",
+                  "smart-contracts/anatomy/serialization-interface",
+                  "smart-contracts/anatomy/reduce-size",
+                  "smart-contracts/anatomy/reproducible-builds"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "DevKit",
             "pages": [
               "tools/sdk",
               "tools/contracts-list",
               "tools/clear-state"
             ]
+          },
+          {
+            "group": "Tutorials",
+            "pages": [
+              "smart-contracts/tutorials/basic-contracts",
+              {
+                "group": "Cross Contracts",
+                "icon": "arrow-right-left",
+                "pages": [
+                  "smart-contracts/tutorials/cross-contracts/xcc",
+                  "smart-contracts/tutorials/cross-contracts/advanced-xcc"
+                ]
+              },
+              {
+                "group": "Factories",
+                "icon": "layout-grid",
+                "pages": [
+                  "smart-contracts/tutorials/factories/factory",
+                  "smart-contracts/tutorials/factories/global-contracts"
+                ]
+              },
+              "smart-contracts/tutorials/advanced/update",
+              "smart-contracts/tutorials/advanced/near-drop",
+              {
+                "group": "Zero to Hero",
+                "icon": "rocket",
+                "pages": [
+                  "smart-contracts/tutorials/zero-to-hero/fts",
+                  "smart-contracts/tutorials/zero-to-hero/nfts",
+                  "smart-contracts/tutorials/zero-to-hero/nfts-js"
+                ]
+              }
+            ]
           }
         ]
       },
       {
-        "tab": "RPC API",
+        "tab": "Web3 Apps",
+        "icon": "terminal",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "web3-apps/what-is",
+              "web3-apps/quickstart"
+            ]
+          },
+          {
+            "group": "Tutorials",
+            "pages": [
+              "web3-apps/tutorials/wallet-login",
+              "web3-apps/tutorials/social-login",
+              "web3-apps/tutorials/frontend-multiple-contracts",
+              "web3-apps/backend/backend",
+              "web3-apps/tutorials/data-types",
+              "web3-apps/tutorials/meta-transactions",
+              {
+                "group": "Testing on Localnet",
+                "icon": "test-tube",
+                "pages": [
+                  "web3-apps/tutorials/localnet/introduction",
+                  "web3-apps/tutorials/localnet/run"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "DevKit",
+            "pages": [
+              "tools/near-connect",
+              "tools/near-api",
+              "tools/cli"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Multi-Chain",
+        "icon": "link-2",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "chain-abstraction/what-is",
+              "chain-abstraction/intents/overview"
+            ]
+          },
+          {
+            "group": "Chain Signatures",
+            "pages": [
+              "chain-abstraction/chain-signatures",
+              "chain-abstraction/chain-signatures/implementation",
+              {
+                "group": "Controlling NEAR Accounts",
+                "icon": "user",
+                "pages": [
+                  "chain-abstraction/chain-signatures/tutorials/controlling-near-accounts/0-introduction",
+                  "chain-abstraction/chain-signatures/tutorials/controlling-near-accounts/1-setup",
+                  "chain-abstraction/chain-signatures/tutorials/controlling-near-accounts/2-transfer"
+                ]
+              },
+              {
+                "group": "Cross-Chain Governance",
+                "icon": "globe",
+                "pages": [
+                  "chain-abstraction/chain-signatures/tutorials/multichain-dao/0-intro",
+                  "chain-abstraction/chain-signatures/tutorials/multichain-dao/1-request",
+                  "chain-abstraction/chain-signatures/tutorials/multichain-dao/2-signing",
+                  "chain-abstraction/chain-signatures/tutorials/multichain-dao/3-voting"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Omni Bridge",
+            "pages": [
+              "chain-abstraction/omnibridge/overview",
+              "chain-abstraction/omnibridge/how-it-works",
+              "chain-abstraction/omnibridge/implementation",
+              "chain-abstraction/omnibridge/roadmap"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Tokens & Primitives",
+        "icon": "coins",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "primitives/what-is"
+            ]
+          },
+          {
+            "group": "Fungible Tokens (FT)",
+            "pages": [
+              "primitives/ft/standard",
+              "primitives/ft/ft",
+              "primitives/ft/sdk-contract-tools"
+            ]
+          },
+          {
+            "group": "Non-Fungible Tokens (NFT)",
+            "pages": [
+              "primitives/nft/standard",
+              "primitives/nft/nft",
+              "primitives/nft/sdk-contract-tools"
+            ]
+          },
+          {
+            "group": "Linkdrops",
+            "pages": [
+              "primitives/linkdrop/standard",
+              "primitives/linkdrop/linkdrop"
+            ]
+          },
+          {
+            "group": "Governance",
+            "pages": [
+              "protocol/network/staking",
+              "primitives/dao"
+            ]
+          },
+          {
+            "group": "DeFi",
+            "pages": [
+              "primitives/oracles",
+              "primitives/dex"
+            ]
+          },
+          {
+            "group": "Off-chain Compute",
+            "pages": [
+              "primitives/off-chain-compute/what-is",
+              "primitives/off-chain-compute/outlayer"
+            ]
+          },
+          {
+            "group": "Identity",
+            "pages": [
+              "primitives/didnear"
+            ]
+          },
+          {
+            "group": "Lockup Contracts",
+            "pages": [
+              "primitives/lockup/introduction",
+              "primitives/lockup/lockup"
+            ]
+          },
+          {
+            "group": "Liquid Staking",
+            "pages": [
+              "primitives/liquid-staking/liquid-staking",
+              "primitives/liquid-staking/deploy-your-own-contract"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Data Infra",
+        "icon": "database",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "data-infrastructure/what-is"
+            ]
+          },
+          {
+            "group": "Services",
+            "pages": [
+              "data-infrastructure/data-services",
+              "data-infrastructure/data-api",
+              "data-infrastructure/big-query"
+            ]
+          },
+          {
+            "group": "Indexers",
+            "pages": [
+              "data-infrastructure/indexers",
+              "data-infrastructure/near-indexer",
+              "data-infrastructure/tutorials/near-indexer",
+              {
+                "group": "Building a Data Lake",
+                "icon": "database",
+                "pages": [
+                  "data-infrastructure/tutorials/running-near-lake/run-near-lake"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "RPC",
         "icon": "server",
         "groups": [
           {
-            "group": "Overview",
+            "group": " ",
             "pages": [
               "api/rpc/introduction",
               "api/rpc/providers",
+              "api/rpc/transactions",
               "api/rpc/block-chunk",
               "api/rpc/gas",
               "api/rpc/protocol",
@@ -505,26 +607,27 @@
           },
           {
             "group": "Query",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /query"
             ]
           },
           {
             "group": "Transactions",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /send_tx",
               "POST /tx",
               "POST /EXPERIMENTAL_tx_status",
               "POST /EXPERIMENTAL_receipt",
+              "POST /EXPERIMENTAL_receipt_to_tx",
               "POST /broadcast_tx_async",
               "POST /broadcast_tx_commit"
             ]
           },
           {
             "group": "Accounts",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /EXPERIMENTAL_view_account",
               "POST /changes",
@@ -533,7 +636,7 @@
           },
           {
             "group": "Access Keys",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /EXPERIMENTAL_view_access_key_list",
               "POST /EXPERIMENTAL_view_access_key"
@@ -541,7 +644,7 @@
           },
           {
             "group": "Smart Contracts",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /EXPERIMENTAL_view_code",
               "POST /EXPERIMENTAL_view_state",
@@ -550,14 +653,14 @@
           },
           {
             "group": "Gas Price",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /gas_price"
             ]
           },
           {
             "group": "Blocks & Chunks",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /block",
               "POST /chunk",
@@ -567,7 +670,7 @@
           },
           {
             "group": "Network",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /status",
               "POST /health",
@@ -579,7 +682,7 @@
           },
           {
             "group": "Gas & Config",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /EXPERIMENTAL_protocol_config",
               "POST /genesis_config",
@@ -589,7 +692,7 @@
           },
           {
             "group": "Light Client",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /light_client_proof",
               "POST /next_light_client_block",
@@ -599,7 +702,7 @@
           },
           {
             "group": "Maintenance & Storage",
-            "openapi": "/openapi.json",
+            "openapi": "openapi.json",
             "pages": [
               "POST /maintenance_windows",
               "POST /EXPERIMENTAL_maintenance_windows",
@@ -609,5 +712,10 @@
         ]
       }
     ]
+  },
+  "integrations": {
+    "ga4": {
+      "measurementId": "G-TMG0M3DPNW"
+    }
   }
 }

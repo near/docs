@@ -1,5 +1,6 @@
 ---
 title: BigQuery Public Dataset
+icon: server
 sidebarTitle: BigQuery
 description: "Learn how to use NEAR Protocol's BigQuery public dataset for blockchain data analysis, including querying on-chain data, understanding costs, and accessing historical transaction data."
 ---
@@ -33,6 +34,10 @@ Benefits:
 The [NEAR Public Lakehouse repository](https://github.com/near/near-public-lakehouse) contains the source code for ingesting NEAR Protocol data stored as JSON files in AWS S3 by [NEAR Lake Indexer](https://github.com/near/near-lake-indexer).
 
 </Info>
+
+<Warning>
+**NEAR Lake (the AWS S3 source) was deprecated on March 24, 2026** and no longer indexes new blocks. The NEAR Public Lakehouse / BigQuery dataset itself remains available; check the [NEAR Public Lakehouse repository](https://github.com/near/near-public-lakehouse) for the latest ingestion source.
+</Warning>
 
 ### Example Queries
 
@@ -109,8 +114,8 @@ The tables available in the NEAR Public Lakehouse are:
 <Note>
 **References**
 
-- [Protocol documentation](../getting-started/basics)
-- [Near Data flow](../protocol/data-flow/near-data-flow)
+- [Protocol documentation](/getting-started/what-is-near)
+- [Near Data flow](/protocol/data-flow/near-data-flow)
 - [Protocol specification](https://nomicon.io/)
 
 </Note>

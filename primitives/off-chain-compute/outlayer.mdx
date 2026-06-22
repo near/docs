@@ -1,0 +1,63 @@
+---
+title: OutLayer
+description: "OutLayer is a verifiable off-chain compute platform for NEAR. Run Rust/WASM code inside Intel TDX enclaves with built-in VRF, secrets, MPC vaults, and payment keys."
+---
+
+[OutLayer](https://outlayer.fastnear.com) is a verifiable off-chain compute platform for NEAR, built by [FastNEAR](https://fastnear.com). Smart contracts delegate work to **Intel TDX** enclaves that return results with a cryptographic attestation proving the exact code ran on the exact inputs.
+
+- **Website:** [outlayer.fastnear.com](https://outlayer.fastnear.com)
+- **Source:** [github.com/fastnear/near-outlayer](https://github.com/fastnear/near-outlayer)
+
+---
+
+## How it works
+
+1. You write code in **Rust** and compile it to **WebAssembly** (WASI Preview 1 or 2).
+2. The binary is hosted on GitHub. OutLayer clones, compiles, and caches it.
+3. A NEAR contract calls OutLayer using NEAR's `yield`/`resume` flow — or any client can call the HTTPS API directly.
+4. The worker runs the WASM inside a **TDX enclave** and returns the result with a TEE attestation (code hash, input hash, output, signed by the hardware).
+
+---
+
+## Features
+
+| Feature | Description |
+| --- | --- |
+| **WASI runtime** | Run any Rust code compiled to `wasm32-wasi`. |
+| **TEE attestation** | Cryptographic proof of code + input + output, signed by Intel TDX. |
+| **VRF** | Verifiable randomness with Ed25519 signatures. |
+| **Secrets** | Encrypted API keys and credentials, decrypted only inside the enclave. |
+| **Confidential Key Derivation** | Keys that exist only inside your TEE code and persist across upgrades. |
+| **MPC Vaults** | Multi-party computation for shared key custody. |
+| **Payment Keys** | USDC-based metering for monetized HTTPS endpoints. |
+| **Persistent storage** | Encrypted storage between executions. |
+
+---
+
+## Example use cases
+
+The [examples gallery](https://outlayer.fastnear.com/docs/examples) ships 14+ production-ready demos. A few highlights:
+
+- **Price & weather oracles** — fetch off-chain data with a proof of source.
+- **Coin-flip / lottery** — VRF-based randomness for fair on-chain games.
+- **AI calls** — invoke OpenAI/GPT from a contract with verifiable output.
+- **Cross-chain reads** — query Ethereum state without a bridge.
+- **Private DAO voting** — tally votes inside the enclave; only the result is published.
+- **NEAR Intents swaps** — execute Intent flows from off-chain logic.
+- **Encrypted email & CAPTCHA** — end-to-end use cases requiring secrets.
+
+<Tip>
+Start with the [Getting Started guide](https://outlayer.fastnear.com/docs/getting-started) and the [Dev Guide](https://outlayer.fastnear.com/docs/dev-guide) to set up your first WASM module and call it from a NEAR contract.
+</Tip>
+
+---
+
+## Deployed services built on OutLayer
+
+| Name | Description | Reference |
+| --- | --- | --- |
+| **Price Oracle** | TEE-secured, Pyth-compatible price feed on `price-oracle.near`. | See [Oracles](/primitives/oracles#price-oracle-by-outlayer) |
+
+<Info>
+OutLayer is a third-party platform. As with any external service, evaluate its operational guarantees, attestation verification flow, and key custody model before relying on it for production assets.
+</Info>

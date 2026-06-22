@@ -49,6 +49,33 @@ near config edit-connection testnet --key rpc_url --value https://archival-rpc.t
 ```
 </Tip>
 
+### Localnet configuration values
+
+When setting up a localnet connection with `near config add-connection`, several optional fields can be configured. Most of them can be skipped or set to placeholder URLs — they are only used for specific commands and are not required for basic localnet usage.
+
+| Field | Purpose | Localnet recommendation |
+|---|---|---|
+| `rpc_url` | RPC endpoint for all blockchain interactions | `http://localhost:3030/` |
+| `wallet_url` | Used to construct a URL for importing accounts from a Web wallet | Any URL (e.g. `http://localhost`) or a local wallet if available |
+| `explorer_transaction_url` | Printed after a transaction is signed as `<url>/<tx-hash>` | Any URL (e.g. `http://localhost`) or omit |
+| `linkdrop_account_id` | Account with the [near-linkdrop](https://github.com/near/near-linkdrop) contract, used by `account create-account fund-myself` | Can be skipped; use `testnet` as a placeholder if needed |
+| `near_social_db_contract_account_id` | NEAR Social contract account, used for `account view-account-summary` and `account update-social-profile` | Can be skipped |
+| `faucet_url` | Service that creates new accounts without requiring NEAR tokens, used by `account create-account sponsor-by-faucet-service` | Can be skipped |
+| `fastnear_url` | FastNEAR API for fetching staking pool delegations, used by `account view-account-summary` | Can be skipped |
+| `staking_pools_factory_account_id` | Fallback to FastNEAR — queries all staking pools individually; used by `account view-account-summary` | Can be skipped |
+| `mpc_contract_account_id` | MPC signing service contract, used to sign payloads and control other accounts | Can be skipped unless running a local MPC node |
+
+A minimal localnet connection requires only `rpc_url`. The other values are only needed when using the specific commands listed above.
+
+```bash
+near config add-connection \
+  --network-name localnet \
+  --connection-name localnet-sandbox \
+  --rpc-url http://localhost:3030/ \
+  --wallet-url http://localhost/ \
+  --explorer-transaction-url http://localhost/
+```
+
 ## Interactive mode
 
 To use the `near-cli` simply run the following in your terminal.

@@ -1,7 +1,11 @@
 ---
 title: Wallet Login
-description: "Connect users to NEAR wallets with a secure, sandbox-based connector library"
+icon: wallet
+description: "Enable users to login with their NEAR wallet"
 ---
+
+import { Github } from '/snippets/github.jsx'
+
 The `@hot-labs/near-connect` library provides a secure, zero-dependency wallet connector for NEAR blockchain with a unique sandbox-based architecture.
 
 ![Preview](https://github.com/user-attachments/assets/c4422057-38bb-4cd9-8bd0-568e29f46280)
@@ -62,10 +66,10 @@ Initialize the `NearConnector` instance in your application:
 
 <Tabs>
   <Tab title="library">
-    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="33" end="39" />
+    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="38" end="44" />
   </Tab>
   <Tab title="hooks">
-     <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" language="tsx" start="4" end="14" />
+     <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" start="8" end="19" />
   </Tab>
 </Tabs>
 
@@ -101,11 +105,11 @@ connector = new NearConnector({
   <Tab title="library">
     The connector uses the Observer Pattern (pub/sub), for which we need to subscribe to the `wallet:signIn" and `wallet:signOut` events
     
-    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="41" end="49" />
+    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="46" end="53" />
 
     Then, call the `connect` function to open a modal where the user can select a wallet and sign in, and `disconnect` to sign out
 
-    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="63" end="66" />
+    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="74" end="77" />
 
   </Tab>
   <Tab title="hooks">
@@ -113,7 +117,7 @@ connector = new NearConnector({
     <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx" language="tsx" start="3" end="3" />
     
     Then, import the `signIn` and `signOut` method from the hook and call them when needed:
-    <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx" start="8" end="16" language="tsx" />
+    <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx" start="9" end="22" language="tsx" />
   </Tab>
 </Tabs>
 

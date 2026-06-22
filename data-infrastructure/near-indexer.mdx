@@ -1,5 +1,6 @@
 ---
 title: What is NEAR Indexer?
+icon: search
 description: "A framework to handle real-time events on the blockchain"
 ---
 
@@ -11,7 +12,7 @@ With the NEAR Indexer, developers can perform both high-level data aggregation a
 
 <Tip>
 
-For those searching to not build their own indexer, the [NEAR Lake Framework](./near-lake-framework) provides a simpler way to access blockchain data in real-time
+For those searching to not build their own indexer, [Neardata](https://neardata.xyz) provides a hosted stream of blocks as a direct replacement for the deprecated NEAR Lake.
 
 </Tip>
 
@@ -31,12 +32,16 @@ Learn how to run it following the [tutorial](./tutorials/near-indexer).
 
 ## Comparison with [NEAR Lake Framework](./near-lake-framework)
 
+<Warning>
+**NEAR Lake deprecated as of March 24, 2026.** The comparison below is kept for historical context. For new projects, see [Neardata](https://neardata.xyz) as a drop-in replacement for NEAR Lake.
+</Warning>
+
 Comparing to NEAR Lake Framework in terms of latency the NEAR Indexer is significantly faster as it reads data directly from the blockchain the same way as RPC nodes do.
 
 Feature | Indexer Framework | Lake Framework
 ------- | ----------------- | --------------
 Allows to follow the blocks and transactions in the NEAR Protocol | **Yes** | **Yes**<br />(but only mainnet and testnet networks)
-Decentralized | **Yes** | No<br />(Pagoda Inc dumps the blocks to AWS S3)
+Decentralized | **Yes** | No<br />(Aurora dumps the blocks to AWS S3)
 Reaction time (end-to-end) | minimum 3.8s (estimated average 5-7s) | [minimum 3.9s (estimated average 6-8s)](./near-lake-framework#latency)
 Reaction time (framework overhead only) | 0.1s | 0.2-2.2s
 Estimated cost of infrastructure | [$500+/mo](https://near-nodes.io/rpc/hardware-rpc) | [**$20/mo**](./near-lake-framework#cost)

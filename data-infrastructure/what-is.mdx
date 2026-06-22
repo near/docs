@@ -1,5 +1,7 @@
 ---
 title: What is Data Infrastructure?
+icon: info
+sidebarTitle: Introduction
 description: "Explore NEAR's data infrastructure for accessing on-chain data"
 ---
 
@@ -31,6 +33,11 @@ A large dataset with on-chain data publicly available on Google Cloud Platform. 
 <hr subclass="subsection" />
 
 ## [NEAR Lake](./near-lake-framework)
+
+<Warning>
+**Deprecated as of March 24, 2026.** NEAR Lake (AWS S3 buckets) has stopped indexing new blocks. For new projects, use [Neardata](https://neardata.xyz) (direct replacement), [Data APIs](./data-api), [Goldsky](https://goldsky.com), or the [Nearcore Indexer](./near-indexer).
+</Warning>
+
 A solution that watches over the NEAR network and stores all the events for your easy access.
 
 - Cost-efficient solution: Cost-efficient solution for building self-hosted indexers in Rust, JavaScript, Python, Go and other languages

@@ -1,5 +1,6 @@
 ---
 title: Validator Staking
+icon: lock
 description: "Learn how to stake NEAR, delegate to validators, track rewards, and withdraw staked tokens safely."
 ---
 
@@ -241,6 +242,58 @@ near call <my_validator> withdraw '{"amount": "100000000000000000000000000"}' --
     <TryOutOnLantstool path="docs/2.build/5.primitives/staking/withdraw-unstaked-tokens.json" />
   </Tab>
 </Tabs>
+
+---
+
+## Sunsetting a Stake Pool
+
+If you are a stake pool owner and want to wind down your validator service, follow these steps to ensure delegators can safely recover their funds.
+
+### Step 1: Notify Delegators
+
+Before making any changes, inform your delegators that the pool is shutting down. Give them enough time to unstake and withdraw their tokens. They need to:
+1. Call `unstake_all` on the pool.
+2. Wait for the **4-epoch unbonding period** (~48 hours).
+3. Call `withdraw_all` to retrieve their tokens.
+
+You can share the commands from the [Withdrawing Staked Tokens](#withdrawing-staked-tokens) section above with them.
+
+### Step 2: Pause Staking
+
+Call `pause_staking` from the pool owner account. This causes the contract to unstake everything (stake 0) and stop restaking, without affecting share balances or reward calculations.
+
+```sh
+near call <my_validator> pause_staking '{}' --useAccount <owner-account.near> --depositYocto 1 --networkId mainnet
+```
+
+<Note>
+The contract will unstake all tokens at the next epoch boundary. Delegators will still see their shares and can unstake and withdraw normally.
+</Note>
+
+### Step 3: Withdraw Owner Balance
+
+Once your own staked tokens are unstaked and the unbonding period has passed, withdraw them:
+
+<Tabs>
+  <Tab title="Staking CLI">
+    ```sh
+    near staking delegation <owner-account.near> withdraw-all <my_validator> network-config mainnet sign-with-keychain
+    ```
+  </Tab>
+  <Tab title="Function Call">
+    ```sh
+    near call <my_validator> withdraw_all '{}' --useAccount <owner-account.near> --networkId mainnet
+    ```
+  </Tab>
+</Tabs>
+
+### Step 4: Resume (Optional)
+
+If you decide to keep the pool running again, you can re-enable staking at any time:
+
+```sh
+near call <my_validator> resume_staking '{}' --useAccount <owner-account.near> --depositYocto 1 --networkId mainnet
+```
 
 ---
 

@@ -37,31 +37,31 @@ Each `Receipt` created from the function call take an additional block to be pro
 #### Final Block: Gas is Refunded
 A final `Receipt` is processed in a new block, refunding any extra gas paid by the user.
 
-<Accordion title="Details">
-Waiting for a Transaction
+### Waiting for a Transaction
 
-When using our libraries (or directly contacting the RPC), you can specify how long you want to wait for a transaction to be processed using a `wait_until` parameter. Let's explore the different stages of a transaction's lifecycle.
+When using our libraries (or directly contacting the RPC), you can specify how long you want to wait for a transaction to be processed using a `wait_until` parameter.
 
-After a transaction is submitted, it first gets validated by the RPC node. If the transaction fails structural checks it will be immediately rejected. Otherwise, it enters the following lifecycle:
+After a transaction is submitted, it first gets validated by the RPC node. If the transaction fails structural checks it will be immediately rejected. Otherwise, two things progress independently:
 
-1. The transaction has been accepted by the RPC node and is waiting to be included in a block. If `wait_until = None`, the RPC will return a response at this stage. The transaction hasn’t started executing yet, though it will typically start in the next block.
+- **Execution**: the receipts spawned by the transaction are executed across shards
+- **Finality**: the blocks containing the transaction and its receipts are finalized by consensus
 
-2. Once the transaction reaches a validator, it ensures a signature matches signer access key and that the account is charged gas pre-payment, then updates access key nonce. The transaction is included in a chunk/block and converted into a single receipt for execution. If `wait_until = Included`, the RPC returns a response immediately indicating that the transaction has just started the execution (no execution results, logs, and outcomes are available at this point).
+These two axes combine to give you the following `wait_until` levels:
 
-3. In the next blocks, the receipt will get executed and it may produce more receipts for cross-contract interactions. Once all receipts finish the execution, RPC returns a response if `wait_until = ExecutedOptimistic`.
+| `wait_until` | Receipts executed? | Tx block final? | Receipt outcomes in response? |
+|---|---|---|---|
+| `None` | — | — | No |
+| `Included` | — | — | No |
+| `ExecutedOptimistic` | Yes (non-refund) | No | Yes |
+| `IncludedFinal` | Not necessarily | Yes | Partial |
+| `Executed` | Yes (non-refund) | Yes | Yes |
+| `Final` | Yes (all, including refunds) | Yes (all blocks) | Yes |
 
-4. The block that contains the transaction has been finalized. This may occur even sooner than receipts execution finishes (depending on how many cross-contract interactions there), and when it finishes, the RPC returns a response if `wait_until = IncludedFinal`.
+Notice that `ExecutedOptimistic` and `IncludedFinal` are not ordered relative to each other — they represent progress on different axes. `ExecutedOptimistic` guarantees all non-refund receipt outcomes are available but the blocks aren’t final yet. `IncludedFinal` guarantees the transaction’s block is final but some receipts may still be pending, so you may only get a partial set of receipt outcomes.
 
-5. Once the block that contains the transaction has been finalized and all receipts have completed execution (both `IncludedFinal` and `ExecutedOptimistic` are satisfied), then RPC returns a response if `wait_until = Executed`.
+#### Refund receipts
 
-6. Once blocks containing the transaction and all of its receipts are finalized, the RPC returns a response at this point if `wait_until = Final`.
-
-</Accordion>
-
-<Info>
-
-A transaction is considered **final** when all its receipts are processed.
-</Info>
+When a receipt executes with leftover gas, NEAR generates a refund receipt to return the unused payment to the sender. These always succeed and don’t affect application logic, so `ExecutedOptimistic` and `Executed` don’t wait for them — only `Final` does.
 
 <Tip>
 Most transactions will just spawn a receipt to process the actions, and a receipt to refund the gas, being final in 1-3 blocks (~1-3 seconds):
