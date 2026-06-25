@@ -11,7 +11,7 @@ State Cleaner is an extension for [NEAR CLI](/tools/cli) that wipes a contract a
 Under the hood, it deploys a small cleanup contract to the target account and, in a single transaction, calls its `clean` method with every key in the account's state. The cleanup contract is left in place — it is not removed — until you deploy a new contract over it.
 
 <Tip>
-Check the GitHub repository to learn more about how the [State Cleaner tool](https://github.com/near-examples/near-clear-state) works.
+To learn more, check out the source code for both the [State Cleaner tool](https://github.com/near-examples/near-clear-state) and the [cleanup contract](https://github.com/near/core-contracts/tree/master/state-manipulation).
 </Tip>
 
 ## How to use
@@ -81,7 +81,9 @@ Check the GitHub repository to learn more about how the [State Cleaner tool](htt
     ```
   </Step>
   <Step title="(Optional) Verify the bundled wasm">
-    The cleanup contract's wasm is embedded in the extension and built reproducibly. To audit it, clone the repository and run the verify script (requires Docker and `cargo-near`):
+    The wasm embedded in the extension isn't built here — it's NEAR's prebuilt `state-manipulation` cleanup contract, vendored from [`near/core-contracts`](https://github.com/near/core-contracts). The extension pins a specific upstream commit, recorded in `extension/wasm/state_cleanup.wasm.provenance`.
+
+    To verify that the wasm in the tool matches the wasm from `core-contracts`, clone the tool and run the verify script. It re-downloads the upstream wasm at the pinned commit and confirms the bundled bytes match:
 
     ```bash
     git clone https://github.com/near-examples/near-clear-state.git
@@ -89,6 +91,5 @@ Check the GitHub repository to learn more about how the [State Cleaner tool](htt
     ./scripts/verify-wasm.sh
     ```
 
-    The script reads the build-context commit from the wasm's NEP-330 metadata, rebuilds it reproducibly in a throwaway worktree, and compares the sha256 of the rebuilt wasm against the committed one.
   </Step>
 </Steps>
