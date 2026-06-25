@@ -4,17 +4,17 @@ icon: vault
 description: "Learn how Tokenized Vaults (NEP-621) are defined on NEAR"
 ---
 
-A **tokenized vault** is a smart contract that accepts deposits of an underlying [fungible token (FT)](../ft/standard) and, in exchange, issues **shares** that represent proportional ownership of the assets held by the vault.
+A tokenized vault is a smart contract that accepts deposits of an underlying [fungible token (FT)](../ft/standard) and, in exchange, issues shares that represent proportional ownership of the assets held by the vault.
 
-The underlying asset can be any [NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) compliant token (e.g. a stablecoin or a yield-bearing token). When a user deposits, the vault **mints** new shares based on the current exchange rate between the vault's total assets and its total shares in circulation. When a user redeems, the vault **burns** those shares and returns the equivalent amount of the underlying asset.
+The underlying asset can be any [NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) compliant token (e.g. a stablecoin or a yield-bearing token). When a user deposits, the vault mints new shares based on the current exchange rate between the vault's total assets and its total shares in circulation. When a user redeems, the vault burns those shares and returns the equivalent amount of the underlying asset.
 
-The shares themselves are also **NEP-141 compliant** fungible tokens, so they can be transferred between accounts or traded on DEXs, and integrated into broader DeFi use cases such as collateral in lending protocols, liquidity provision, or composable yield strategies.
+The shares themselves are also NEP-141 compliant fungible tokens, so they can be transferred between accounts or traded on DEXs, and integrated into broader DeFi use cases such as collateral in lending protocols, liquidity provision, or composable yield strategies.
 
-This interface is defined by [**NEP-621**](https://github.com/near/NEPs/tree/master/neps/nep-0621.md), and is heavily inspired by the [ERC-4626](https://eips.ethereum.org/EIPS/eip-4626) standard widely used on Ethereum. Standardizing the vault interface improves interoperability, reduces integration costs, and encourages consistent, secure vault implementations across the NEAR ecosystem.
+This interface is defined by [NEP-621](https://github.com/near/NEPs/tree/master/neps/nep-0621.md), and is heavily inspired by the [ERC-4626](https://eips.ethereum.org/EIPS/eip-4626) standard widely used on Ethereum. Standardizing the vault interface improves interoperability, reduces integration costs, and encourages consistent, secure vault implementations across the NEAR ecosystem.
 
 <Tip>
 
-NEP-621 defines the **interface** and the **expected behavior** of a vault contract, but it does not dictate how the internal logic (yield strategy, fees, accounting) should be implemented.
+NEP-621 defines the interface and the expected behavior of a vault contract, but it does not dictate how the internal logic (yield strategy, fees, accounting) should be implemented.
 
 Unlike ERC-4626, deposits and mints on NEAR are handled through the `ft_on_transfer` callback (as defined by NEP-141), rather than by direct method calls, to fit NEAR's asynchronous execution model.
 
@@ -26,8 +26,8 @@ Unlike ERC-4626, deposits and mints on NEAR are handled through the `ft_on_trans
 
 A vault contract MUST implement the `VaultCore` trait, which extends:
 
-- [`FungibleTokenCore`](../ft/standard#nep-141-fungible-token-interface) — to provide NEP-141 functionality for the **shares**.
-- `FungibleTokenReceiver` — to **receive** the underlying NEP-141 asset.
+- [`FungibleTokenCore`](../ft/standard#nep-141-fungible-token-interface) — to provide NEP-141 functionality for the shares.
+- `FungibleTokenReceiver` — to receive the underlying NEP-141 asset.
 
 In other words, a vault is itself a fungible token (the shares) that can also receive another fungible token (the underlying asset).
 
@@ -43,7 +43,7 @@ asset_contract_id(): string
 
 #### `total_asset_amount` (*read-only*)
 
-Returns the vault's **total managed value**, denominated in the underlying asset, represented by all shares in existence.
+Returns the vault's total managed value, denominated in the underlying asset, represented by all shares in existence.
 
 > 📖 This is the vault's total managed value, *not* just the balance held in the contract. If assets are staked, lent, or deployed elsewhere, this returns the estimated total equivalent value, net of any deposit/withdrawal fees.
 
@@ -55,7 +55,7 @@ total_asset_amount(): string
 
 ### Conversion Helpers
 
-These are **view-only estimations**. They do not update state and ignore user-specific constraints such as limits or fees. They MUST never panic, returning `0` if conversion is not possible.
+These are view-only estimations. They do not update state and ignore user-specific constraints such as limits or fees. They MUST never panic, returning `0` if conversion is not possible.
 
 #### `convert_to_shares` (*read-only*)
 
@@ -75,7 +75,7 @@ convert_to_asset_amount(shares: string): string
 
 <Tip>
 
-Use `convert_*` for generic price quotes, and the `preview_*` methods below when you need an estimate that also accounts for **per-user limits and fees**.
+Use `convert_*` for generic price quotes, and the `preview_*` methods below when you need an estimate that also accounts for per-user limits and fees.
 
 </Tip>
 
@@ -83,7 +83,7 @@ Use `convert_*` for generic price quotes, and the `preview_*` methods below when
 
 ### Deposit & Redemption Limits
 
-All limit and preview methods are **read-only** and MUST never panic, returning `0` when the operation is not currently allowed. Limit methods should return `U128::MAX` to signal "unlimited".
+All limit and preview methods are read-only and MUST never panic, returning `0` when the operation is not currently allowed. Limit methods should return `U128::MAX` to signal "unlimited".
 
 #### `max_deposit_amount` (*read-only*)
 
@@ -153,13 +153,13 @@ preview_shares_deducted_for_withdraw(asset_amount: string): string
 
 ### Deposit & Mint
 
-Following the NEP-141 standard, assets are sent to the vault via [`ft_transfer_call`](../ft/standard#ft_transfer_call) on the **underlying asset's contract**, which invokes `ft_on_transfer` on the vault. Both the ERC-4626 `deposit` and `mint` operations are handled through this single entrypoint.
+Following the NEP-141 standard, assets are sent to the vault via [`ft_transfer_call`](../ft/standard#ft_transfer_call) on the underlying asset's contract, which invokes `ft_on_transfer` on the vault. Both the ERC-4626 `deposit` and `mint` operations are handled through this single entrypoint.
 
 ```ts
 ft_on_transfer(sender_id: string, amount: string, msg: string): string
 ```
 
-Upon a successful deposit, the vault **must** emit a [`VaultDeposit`](#events) event and should also emit an `FtMint` event for the issued shares.
+Upon a successful deposit, the vault MUST emit a [`VaultDeposit`](#events) event and should also emit an `FtMint` event for the issued shares.
 
 The `msg` parameter carries the deposit options. While implementers are free to define their own schema, the suggested convention is a JSON-encoded message:
 
@@ -178,7 +178,7 @@ pub struct DepositMessage {
 }
 ```
 
-As required by NEP-141, `ft_on_transfer` must return the number of tokens to **refund** to the sender: `0` if all tokens were accepted, or a non-zero value otherwise.
+As required by NEP-141, `ft_on_transfer` must return the number of tokens to refund to the sender: `0` if all tokens were accepted, or a non-zero value otherwise.
 
 ---
 
@@ -200,12 +200,7 @@ Withdraws exactly `asset_amount` of underlying tokens, burning the required numb
 withdraw(asset_amount: string, max_shares_deducted: string?, receiver_id: string?): string
 ```
 
-Upon a successful withdrawal, the vault **must** emit a [`VaultWithdraw`](#events) event. Because transactions on NEAR are **non-atomic**, a vault should either:
-
-1. Emit `VaultWithdraw` when the fee is deducted, and emit a compensating `VaultDeposit` if the withdrawal later fails; **or**
-2. Emit `VaultWithdraw` **only** if the withdrawal succeeds.
-
-> In the reference implementation, an `FtBurn` event is emitted when `withdraw` is called. On success, a `VaultWithdraw` event is emitted in the `resolve_withdraw` callback; on failure, an `FtMint` event restores the user's balance.
+Upon a successful withdrawal, the vault MUST emit a [`VaultWithdraw`](#events) event.
 
 ---
 
@@ -244,15 +239,22 @@ pub struct VaultWithdraw {
 }
 ```
 
+Because transactions on NEAR are non-atomic, a vault should emit `VaultWithdraw` in one of two ways:
+
+1. Emit `VaultWithdraw` when the fee is deducted, and emit a compensating `VaultDeposit` if the withdrawal later fails; or
+2. Emit `VaultWithdraw` only if the withdrawal succeeds.
+
+> In the [reference implementation](#reference-implementation), an `FtBurn` event is emitted when `withdraw` is called. On success, a `VaultWithdraw` event is emitted in the `resolve_withdraw` callback; on failure, an `FtMint` event restores the user's balance.
+
 ---
 
 ## Security Considerations
 
 When implementing a vault, keep the following risks in mind:
 
-- **Exchange rate manipulation (inflation attacks):** if the vault has a permissionless donation mechanism, an attacker can donate assets to inflate the share price and steal value from later depositors. Mitigate by seeding a non-trivial initial deposit and/or using a virtual decimal offset on issued shares (demonstrated in the reference implementation).
+- **Exchange rate manipulation (inflation attacks):** if the vault has a permissionless donation mechanism, an attacker can donate assets to inflate the share price and steal value from later depositors. Mitigate by seeding a non-trivial initial deposit and/or using a virtual decimal offset on issued shares (demonstrated in the [reference implementation](#reference-implementation)).
 - **Cross-contract calls:** `redeem` and `withdraw` perform asynchronous FT transfers, opening the door to reentrancy. Use proper state management, callback security, and rollback mechanisms for failed operations.
-- **Rounding direction:** always round **in favor of the vault** — round *down* when issuing shares or transferring assets out, round *up* when calculating shares/assets required for a given amount. This prevents value extraction through repeated micro-transactions.
+- **Rounding direction:** always round in favor of the vault — round *down* when issuing shares or transferring assets out, round *up* when calculating shares/assets required for a given amount. This prevents value extraction through repeated micro-transactions.
 - **Oracle and external price dependencies:** stale oracle data creates temporal windows for exploitation. Include staleness checks, prevent operations during oracle updates, and consider fallback pricing for oracle failures.
 
 ---
