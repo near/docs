@@ -244,7 +244,7 @@ Because transactions on NEAR are non-atomic, a vault should emit `VaultWithdraw`
 1. Emit `VaultWithdraw` when the fee is deducted, and emit a compensating `VaultDeposit` if the withdrawal later fails; or
 2. Emit `VaultWithdraw` only if the withdrawal succeeds.
 
-> In the [reference implementation](#reference-implementation), an `FtBurn` event is emitted when `withdraw` is called. On success, a `VaultWithdraw` event is emitted in the `resolve_withdraw` callback; on failure, an `FtMint` event restores the user's balance.
+> In the [reference implementation](https://github.com/Meteor-Wallet/tokenized-vault-nep-implementation), an `FtBurn` event is emitted when `withdraw` is called. On success, a `VaultWithdraw` event is emitted in the `resolve_withdraw` callback; on failure, an `FtMint` event restores the user's balance.
 
 ---
 
@@ -252,7 +252,7 @@ Because transactions on NEAR are non-atomic, a vault should emit `VaultWithdraw`
 
 When implementing a vault, keep the following risks in mind:
 
-- **Exchange rate manipulation (inflation attacks):** if the vault has a permissionless donation mechanism, an attacker can donate assets to inflate the share price and steal value from later depositors. Mitigate by seeding a non-trivial initial deposit and/or using a virtual decimal offset on issued shares (demonstrated in the [reference implementation](#reference-implementation)).
+- **Exchange rate manipulation (inflation attacks):** if the vault has a permissionless donation mechanism, an attacker can donate assets to inflate the share price and steal value from later depositors. Mitigate by seeding a non-trivial initial deposit and/or using a virtual decimal offset on issued shares (demonstrated in the [reference implementation](https://github.com/Meteor-Wallet/tokenized-vault-nep-implementation)).
 - **Cross-contract calls:** `redeem` and `withdraw` perform asynchronous FT transfers, opening the door to reentrancy. Use proper state management, callback security, and rollback mechanisms for failed operations.
 - **Rounding direction:** always round in favor of the vault — round *down* when issuing shares or transferring assets out, round *up* when calculating shares/assets required for a given amount. This prevents value extraction through repeated micro-transactions.
 - **Oracle and external price dependencies:** stale oracle data creates temporal windows for exploitation. Include staleness checks, prevent operations during oracle updates, and consider fallback pricing for oracle failures.
