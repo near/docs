@@ -4,100 +4,92 @@ icon: trash-2
 description: "Clean up a contract's state."
 ---
 
-import { Github } from '/snippets/github.jsx'
-
-This simple command-line tool allows you to clean up the state of a NEAR account without deleting it.
+State Cleaner is an extension for [NEAR CLI](/tools/cli) that wipes a contract account's on-chain state without deleting the account, so you can redeploy a fresh contract or free the storage staked NEAR.
 
 ## How it works
 
-This JavaScript CLI tool deploys a [`state-cleanup.wasm`](https://github.com/near-examples/near-clear-state/blob/main/contractWasm/state_cleanup.wasm) contract replacing the current one, and then uses the new contract to clean up the account's state, so you can easily redeploy a new contract or use the account in any other way.
-
-Here's a quick snippet of the contract's main code:
-
-<Github language="rust" url="https://github.com/near-examples/near-clear-state/blob/main/state-cleanup/src/lib.rs" start="21" end="24" />
+Under the hood, it deploys a small cleanup contract to the target account and, in a single transaction, calls its `clean` method with every key in the account's state. The cleanup contract is left in place — it is not removed — until you deploy a new contract over it.
 
 <Tip>
-Check the GitHub repository and learn more about the [State Cleanup tool](https://github.com/near-examples/near-clear-state).
+To learn more, check out the source code for both the [State Cleaner tool](https://github.com/near-examples/near-clear-state) and the [cleanup contract](https://github.com/near/core-contracts/tree/master/state-manipulation).
 </Tip>
 
 ## How to use
 
-### Requirements
-
-You'll need [NEAR CLI](/tools/cli). You can install it by running:
-
-```bash
-npm install -g near-cli-rs@latest
-```
-
-### Clear your account state
-
-To clear your account state, follow these steps.
-
 <Steps>
-  <Step title="Login with NEAR CLI">
-    This will store a full access key locally on your machine. Select the account you wish to clear the state.
+  <Step title="Install NEAR CLI">
+    The State Cleaner is invoked through NEAR CLI, so you need it installed first. If you do not already have it installed, visit the [NEAR CLI page](/tools/cli).
+
+  </Step>
+  <Step title="Install the State Cleaner extension">
+    Install it straight from the GitHub repository:
 
     ```bash
-    near login
+    cargo install --locked --git https://github.com/near-examples/near-clear-state near-clear-state
     ```
 
-    <Warning>
-    Be sure to select `Store the access key in my legacy keychain (compatible with the old near CLI)` to store the access key on the legacy keychain.
-    </Warning>
+    <Note>
+    Requires a Rust toolchain **≥ 1.88**.
+    </Note>
+
   </Step>
-  <Step title="Clone the near-clear-state repository">
+  <Step title="Make sure the extension is on your PATH">
+    Confirm it's picked up with:
+
+    ```bash
+    near clear-state --help
+    ```
+
+  </Step>
+  <Step title="Run the command">
+    Run the extension in interactive mode and follow the prompts:
+
+    ```bash
+    near clear-state
+    ```
+
+    Or pass everything in one go:
+
+    ```bash
+    export CONTRACT_ID=contract.testnet
+    near clear-state $CONTRACT_ID network-config testnet sign-with-keychain send
+    ```
+
+  </Step>
+  <Step title="Use an RPC with a larger view-state cap">
+    If the account's state is large, you may hit:
+
+    ```
+    Account state is too large for this RPC's view_state cap
+    ```
+
+    Most public RPCs cap `view_state` responses (around 50 KB). Point NEAR CLI at an RPC with a higher cap:
+
+    ```bash
+    near config edit-connection testnet
+    ```
+
+    Set the `rpc_url` value to a higher-capacity provider, then re-run the command. [Intear](https://intea.rs)'s RPCs work well:
+
+    - Testnet: `https://testnet-rpc.intea.rs`
+    - Mainnet: `https://rpc.intea.rs`
+
+    You can also update it without the prompts:
+
+    ```bash
+    near config edit-connection testnet --key rpc_url --value https://testnet-rpc.intea.rs
+    ```
+  </Step>
+  <Step title="(Optional) Verify the bundled wasm">
+    The wasm embedded in the extension isn't built here — it's NEAR's prebuilt `state-manipulation` cleanup contract, vendored from [`near/core-contracts`](https://github.com/near/core-contracts). The extension pins a specific upstream commit, recorded in `extension/wasm/state_cleanup.wasm.provenance`.
+
+    To verify that the wasm in the tool matches the wasm from `core-contracts`, clone the tool and run the verify script. It re-downloads the upstream wasm at the pinned commit and confirms the bundled bytes match:
+
     ```bash
     git clone https://github.com/near-examples/near-clear-state.git
-    ```
-  </Step>
-  <Step title="Install dependencies">
-    ```bash
-    cd near-clear-state && npm i
-    ```
-  </Step>
-  <Step title="Clear your state">
-    ```bash
-    npx near-clear-state clear-state --account <account-name.testnet>
+    cd near-clear-state
+    ./scripts/verify-wasm.sh
     ```
 
-    <Tip>
-    If you want to clean the state of a `mainnet` account, use the `--network` option:
-
-    ```bash
-    npx near-clear-state clear-state --account <account-name.near> --network mainnet
-    ```
-    </Tip>
-  </Step>
-  <Step title="(Optional) Check your results">
-    View all state keys that have been erased in your account:
-
-    ```bash
-    near view-state <account-name.testnet>
-    ```
   </Step>
 </Steps>
-
-## Troubleshooting
-
-If your contract state is large, depending on the RPC node, you may get the error:
-
-```
-State of contract example.near is too large to be viewed.
-```
-
-This is an RPC issue, as the RPC node has a limited contract state view.
-
-You can prevent this error when calling `view-state` via the JSON RPC API by selecting an alternative RPC provider. You can find different providers in the [RPC providers list](/api/rpc/providers).
-
-<Github language="javascript" url="https://github.com/near-examples/near-clear-state/blob/main/commands/clearState.js" start="22" end="30" />
-
-For example, you could replace the default RPC node in [`commands/clearState.js`](https://github.com/near-examples/near-clear-state/blob/main/commands/clearState.js) with another RPC server:
-
-```js
-config = {
-  networkId: netId,
-  keyStore,
-  nodeUrl: "https://endpoints.omniatech.io/v1/near/" + netId + "/public",
-  ...
-```
