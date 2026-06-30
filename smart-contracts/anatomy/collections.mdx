@@ -767,6 +767,47 @@ assert!(!m.contains(&1));
 
 </Tab>
 
+  <Tab title="🌐 JavaScript">
+
+```ts
+import { UnorderedMap, Vector } from "near-sdk-js";
+
+const m = new UnorderedMap<string>("m");
+m.set("1", "test");
+
+// Bug 1: Don't replace a collection without clearing it first. The new object
+// resets its metadata (length, keys), but the old elements stay in storage,
+// leaving the collection inconsistent and orphaning the previous values.
+// Fix: call `m.clear()` before reusing the prefix.
+const m2 = new UnorderedMap<string>("m");
+// m2.length is 0, but the "1" -> "test" entry is still in storage under prefix "m"
+
+// Bug 2: Don't use the same prefix for two different collections, or they will
+// read and write the same keys and corrupt each other. Note that `UnorderedMap`
+// internally creates sub-collections at `prefix + "u"` and `prefix + "m"`, so
+// even prefixes that merely overlap can collide.
+const v = new Vector<string>("m"); // collides with the maps above
+
+// Bug 3: With nested collections, mutating the inner collection writes its
+// elements immediately, but you must still write the inner collection back into
+// the outer one so its metadata entry is persisted.
+const outer = new UnorderedMap<UnorderedMap<string>>("o");
+const inner = outer.get("id", {
+  reconstructor: UnorderedMap.reconstruct,
+  defaultValue: new UnorderedMap<string>("i_id_"),
+});
+inner.set("key", "value");
+outer.set("id", inner); // <- forgetting this loses the inner collection's metadata
+```
+
+<Tip>
+
+Unlike Rust's `near_sdk::store`, `near-sdk-js` collections are not write-cached: every mutation writes to storage immediately, so there is no `flush()` to forget. Just don't mutate collections inside a `@view` method, since the contract state is only persisted after `@call` methods.
+
+</Tip>
+
+  </Tab>
+
   <Tab title="🐹 GO">
     <Github fname="main.go" language="go"
             url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/collections/main.go"
