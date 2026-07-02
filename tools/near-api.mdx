@@ -893,11 +893,16 @@ NEAR supports the post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access
   ```rust
   use near_kit::*;
 
+  // A client signed by alice's existing full-access key adds the new key
+  let near = Near::testnet()
+      .credentials("ed25519:<alice-existing-key>", "alice.testnet")?
+      .build();
+
   // Generate a random ML-DSA-65 key pair (1952-byte public key, 3309-byte signatures)
   let pq_key = SecretKey::generate_ml_dsa65();
   let public_key = pq_key.public_key(); // "ml-dsa-65:..."
 
-  // Add it to an account with an existing full-access signer, like any other key
+  // Add it to alice's account, like any other key
   near.transaction("alice.testnet")
       .add_full_access_key(public_key)
       .send()
