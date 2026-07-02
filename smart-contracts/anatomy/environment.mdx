@@ -120,7 +120,7 @@ In most scenarios you will **only need to know the predecessor**. However, there
 </Tip>
 
 <Note>
-`signer_account_pk` returns the signer's public key in the same `<scheme>:<base58>` format used elsewhere. If the transaction was signed with a post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) key, the returned key is correspondingly larger (1952 bytes) — keep that in mind if your contract stores or compares signer public keys.
+`signer_account_pk` returns the signer's public key (a `PublicKey` in near-sdk-rs; raw bytes in near-sdk-js — not a preformatted `<scheme>:<base58>` string). If the transaction was signed with a post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) key, that public key is much larger — 1952 bytes, versus 32 for `ed25519` — so keep that in mind if your contract stores, compares, or serializes signer public keys.
 </Note>
 
 ---
