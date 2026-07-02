@@ -283,7 +283,7 @@ Returns all [access keys](/protocol/accounts-contracts/access-keys) for an accou
 </Accordion>
 
 <Note>
-Post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) keys are stored on-chain by hash, so they appear here with an `ml-dsa-65-hash:` prefix (a base58-encoded 32-byte SHA3-256 digest) rather than the full `ml-dsa-65:` key. To match an entry to one of your own keys, hash your public key and compare it against the returned value.
+Post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) keys are stored on-chain by hash, so they appear here with an `ml-dsa-65-hash:` prefix (a base58-encoded 32-byte SHA3-256 digest) rather than the full `ml-dsa-65:` key. To match an entry to one of your own keys, derive its handle — the SHA3-256 of the domain-separation tag `near:ml-dsa-65-pubkey-hash:v1` followed by the raw public key — and compare it against the returned value (hashing the key without that prefix will not match).
 </Note>
 
 ---

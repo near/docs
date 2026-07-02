@@ -88,7 +88,7 @@ Because only the hash is stored, listing an account's keys returns the **hash**,
 ml-dsa-65-hash:7Xx2X...   # base58-encoded 32-byte SHA3-256 digest
 ```
 
-To recognize one of your own post-quantum keys in such a list, hash your known public key and compare it against the returned value. To look up a specific key directly with [`view_access_key`](/api/rpc/contracts#view-access-key), pass the **full** `ml-dsa-65:` public key and the network hashes it for you.
+To recognize one of your own post-quantum keys in such a list, derive the same handle from your public key: it is the [SHA3-256](https://en.wikipedia.org/wiki/SHA-3) hash of the domain-separation tag `near:ml-dsa-65-pubkey-hash:v1` **followed by** the raw 1952-byte public key. Hashing the key without that prefix will not match the returned value. To look up a specific key directly with [`view_access_key`](/api/rpc/contracts#view-access-key), pass the **full** `ml-dsa-65:` public key and the network hashes it for you.
 
 You can create and manage `ml-dsa-65` keys today with the [NEAR CLI](/tools/cli#keys), and from your app with the [`near-kit`](/tools/near-api#post-quantum-keys-ml-dsa-65) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust) libraries. Contracts can add them via [`near-sdk-rs`](/smart-contracts/anatomy/actions) with no code changes.
 
