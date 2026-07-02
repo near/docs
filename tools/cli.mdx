@@ -185,7 +185,36 @@ near account export-account $ACCOUNT_ID using-web-wallet network-config testnet
 
 ## Keys
 
-Showing, adding and removing account keys.
+Generating, showing, adding and removing account keys. NEAR keys can use any of the supported [signature schemes](/protocol/accounts-contracts/access-keys#signature-schemes): `ed25519` (default), `secp256k1`, or the post-quantum `ml-dsa-65`.
+
+### Generate a key pair
+
+`generate-keypair` - create a fresh key pair offline, without touching an account or the network. Use `--signature-scheme` to choose the scheme (defaults to `ed25519`).
+
+<Tabs>
+  <Tab title="Ed25519">
+    ```bash
+    # Print a new key pair to the terminal
+    near generate-keypair print-to-terminal
+
+    # ...or save it to a JSON file
+    near generate-keypair save-to-file ./my-key.json
+    ```
+  </Tab>
+  <Tab title="ML-DSA-65 (post-quantum)">
+    ```bash
+    # Print a new post-quantum key pair to the terminal
+    near generate-keypair --signature-scheme ml-dsa-65 print-to-terminal
+
+    # ...or save it to a JSON file
+    near generate-keypair --signature-scheme ml-dsa-65 save-to-file ./pq-key.json
+    ```
+  </Tab>
+</Tabs>
+
+<Note>
+Run in an interactive terminal without `--signature-scheme` and the CLI prompts you to pick a scheme; otherwise it defaults to `ed25519`. Unlike `ed25519`, `ml-dsa-65` key pairs are generated randomly and have no seed phrase or implicit-account address — be sure to back up the saved key file.
+</Note>
 
 ### List keys
 
@@ -225,6 +254,27 @@ Showing, adding and removing account keys.
   </Tab>
 </Tabs>
 
+Instead of providing a key, you can have the CLI **autogenerate** one and add it in a single step with `autogenerate-new-keypair --signature-scheme <scheme>`:
+
+<Tabs>
+  <Tab title="Ed25519">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near account add-key $ACCOUNT_ID grant-full-access autogenerate-new-keypair save-to-keychain network-config testnet sign-with-keychain send
+    ```
+  </Tab>
+  <Tab title="ML-DSA-65 (post-quantum)">
+    ```bash
+    export ACCOUNT_ID=bob.testnet
+    near account add-key $ACCOUNT_ID grant-full-access autogenerate-new-keypair --signature-scheme ml-dsa-65 save-to-keychain network-config testnet sign-with-keychain send
+    ```
+  </Tab>
+</Tabs>
+
+<Note>
+The same `--signature-scheme` flag is available on the `account create-account fund-myself` and `sponsor-by-faucet-service` autogenerate flows. You can also add an externally generated `ml-dsa-65:<base58>` key through the `use-manually-provided-public-key` flow shown above. An `ml-dsa-65` key has **no implicit-account form** — you can't derive a new implicit account from one — but you can add it to any **existing** account, named or implicit, just like any other key.
+</Note>
+
 ### Delete key
 
 `delete-keys` - delete an access key from an account.
@@ -243,6 +293,10 @@ Showing, adding and removing account keys.
     ```
   </Tab>
 </Tabs>
+
+<Note>
+The interactive key picker only lists `ed25519` and `secp256k1` keys. A post-quantum `ml-dsa-65` key is stored on-chain only as a hash, so its full public key can't be read back from the network — to delete one, pass the full `ml-dsa-65:<base58>` key explicitly to the `public-keys` argument of `near account delete-keys` (the full command form shown above).
+</Note>
 
 ## Tokens
 

@@ -58,6 +58,46 @@ You should never share your `Full-Access`, otherwise you are giving **total cont
 
 ---
 
+## Signature Schemes
+
+Independently of its permission level, every access key is a cryptographic key pair belonging to one of NEAR's supported **signature schemes**. A public key is written as `<scheme>:<base58-data>`, where the prefix identifies the scheme — for example `ed25519:CQLP1o1F3Jbdttek3GoRJYhzfT...`.
+
+| Scheme | Public key prefix | Public key size | Quantum-resistant |
+| --------- | ----------------- | --------------- | ----------------- |
+| Ed25519 | `ed25519:` | 32 bytes | No |
+| secp256k1 | `secp256k1:` | 64 bytes | No |
+| ML-DSA-65 | `ml-dsa-65:` | 1952 bytes | Yes |
+
+`ed25519` is the default scheme, used by most wallets and tooling and by NEAR [implicit accounts](./account-id#implicit-address). `secp256k1` is used mainly for [chain signatures](/chain-abstraction/chain-signatures) and Ethereum-compatible flows. A single account can hold keys from different schemes at the same time.
+
+### Post-Quantum Keys (ML-DSA-65)
+
+`ml-dsa-65` is a **post-quantum** signature scheme, standardized by NIST as [FIPS 204](https://csrc.nist.gov/pubs/fips/204/final) (Module-Lattice-Based Digital Signature Algorithm, security category 3). Unlike `ed25519` and `secp256k1` — whose security a large enough quantum computer could break — `ml-dsa-65` is designed to stay secure against quantum attacks, so an account protected by an `ml-dsa-65` key cannot be taken over by forging its signature.
+
+You add and use an `ml-dsa-65` key exactly like any other key: it can be a [full-access](#full-access-keys) or a [function-call](#function-call-keys) key, and it signs transactions the same way.
+
+<Note>
+**Post-quantum keys are stored by hash**
+
+An `ml-dsa-65` public key is large — **1952 bytes**, versus 32 for `ed25519` — and its signatures are **3309 bytes**. To keep accounts cheap to store, NEAR does **not** keep the full public key on-chain; instead it stores a 32-byte [SHA3-256](https://en.wikipedia.org/wiki/SHA-3) hash of it — the same size as an `ed25519` public key — which keeps the per-key [storage cost](/protocol/storage/storage-staking) close to that of a classical key.
+</Note>
+
+Because only the hash is stored, listing an account's keys returns the **hash**, not the full key, for `ml-dsa-65` entries. When you query an account's keys (for example with [`view_access_key_list`](/api/rpc/contracts#view-access-key-list)), `ml-dsa-65` keys appear with an `ml-dsa-65-hash:` prefix instead of `ml-dsa-65:`:
+
+```
+ml-dsa-65-hash:7Xx2X...   # base58-encoded 32-byte SHA3-256 digest
+```
+
+To recognize one of your own post-quantum keys in such a list, derive the same handle from your public key: it is the [SHA3-256](https://en.wikipedia.org/wiki/SHA-3) hash of the domain-separation tag `near:ml-dsa-65-pubkey-hash:v1` **followed by** the raw 1952-byte public key. Hashing the key without that prefix will not match the returned value. To look up a specific key directly with [`view_access_key`](/api/rpc/contracts#view-access-key), pass the **full** `ml-dsa-65:` public key and the network hashes it for you.
+
+You can create and manage `ml-dsa-65` keys today with the [NEAR CLI](/tools/cli#keys), and from your app with the [`near-kit`](/tools/near-api#post-quantum-keys-ml-dsa-65) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust) libraries. Contracts can add them via [`near-sdk-rs`](/smart-contracts/anatomy/actions) with no code changes.
+
+<Tip>
+Post-quantum support currently covers **transaction signing and access keys**. Validator (staking) keys, block production, and [implicit account](./account-id#implicit-address) addresses continue to use `ed25519`.
+</Tip>
+
+---
+
 ## Limited Access Key Caveats
 
 ### Account with Only Function-Call Keys
