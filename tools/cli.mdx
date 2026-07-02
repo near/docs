@@ -295,7 +295,7 @@ The same `--signature-scheme` flag is available on the `account create-account f
 </Tabs>
 
 <Note>
-The interactive key picker only lists `ed25519` and `secp256k1` keys. A post-quantum `ml-dsa-65` key is stored on-chain only as a hash, so its full public key can't be read back from the network — to delete one, pass the full `ml-dsa-65:<base58>` key explicitly with `public-keys`, exactly as in the example above.
+The interactive key picker only lists `ed25519` and `secp256k1` keys. A post-quantum `ml-dsa-65` key is stored on-chain only as a hash, so its full public key can't be read back from the network — to delete one, pass the full `ml-dsa-65:<base58>` key explicitly to the `public-keys` argument of `near account delete-keys` (the full command form shown above).
 </Note>
 
 ## Tokens
