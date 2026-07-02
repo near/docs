@@ -272,7 +272,7 @@ Instead of providing a key, you can have the CLI **autogenerate** one and add it
 </Tabs>
 
 <Note>
-The same `--signature-scheme` flag is available on the `account create-account fund-myself` and `sponsor-by-faucet-service` autogenerate flows. You can also add an externally generated `ml-dsa-65:<base58>` key through the `use-manually-provided-public-key` flow shown above. Post-quantum keys can be added to **named** accounts only — they have no implicit-account form.
+The same `--signature-scheme` flag is available on the `account create-account fund-myself` and `sponsor-by-faucet-service` autogenerate flows. You can also add an externally generated `ml-dsa-65:<base58>` key through the `use-manually-provided-public-key` flow shown above. An `ml-dsa-65` key has **no implicit-account form** — you can't derive a new implicit account from one — but you can add it to any **existing** account, named or implicit, just like any other key.
 </Note>
 
 ### Delete key
