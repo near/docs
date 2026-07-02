@@ -79,16 +79,18 @@ You add and use an `ml-dsa-65` key exactly like any other key: it can be a [full
 <Note>
 **Post-quantum keys are stored by hash**
 
-An `ml-dsa-65` public key is large — **1952 bytes**, versus 32 for `ed25519` — and its signatures are **3309 bytes**. To keep accounts cheap to store, NEAR does **not** keep the full public key on-chain; instead it stores a 48-byte [SHA3-384](https://en.wikipedia.org/wiki/SHA-3) hash of it, which keeps the per-key [storage cost](/protocol/storage/storage-staking) close to that of a classical key.
+An `ml-dsa-65` public key is large — **1952 bytes**, versus 32 for `ed25519` — and its signatures are **3309 bytes**. To keep accounts cheap to store, NEAR does **not** keep the full public key on-chain; instead it stores a 32-byte [SHA3-256](https://en.wikipedia.org/wiki/SHA-3) hash of it — the same size as an `ed25519` public key — which keeps the per-key [storage cost](/protocol/storage/storage-staking) close to that of a classical key.
 </Note>
 
 Because only the hash is stored, listing an account's keys returns the **hash**, not the full key, for `ml-dsa-65` entries. When you query an account's keys (for example with [`view_access_key_list`](/api/rpc/contracts#view-access-key-list)), `ml-dsa-65` keys appear with an `ml-dsa-65-hash:` prefix instead of `ml-dsa-65:`:
 
 ```
-ml-dsa-65-hash:7Xx2X...   # base58-encoded 48-byte SHA3-384 digest
+ml-dsa-65-hash:7Xx2X...   # base58-encoded 32-byte SHA3-256 digest
 ```
 
 To recognize one of your own post-quantum keys in such a list, hash your known public key and compare it against the returned value. To look up a specific key directly with [`view_access_key`](/api/rpc/contracts#view-access-key), pass the **full** `ml-dsa-65:` public key and the network hashes it for you.
+
+You can create and manage `ml-dsa-65` keys today with the [NEAR CLI](/tools/cli#keys), and from your app with the [`near-kit`](/tools/near-api#post-quantum-keys-ml-dsa-65) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust) libraries. Contracts can add them via [`near-sdk-rs`](/smart-contracts/anatomy/actions) with no code changes.
 
 <Tip>
 Post-quantum support currently covers **transaction signing and access keys**. Validator (staking) keys, block production, and [implicit account](./account-id#implicit-address) addresses continue to use `ed25519`.
