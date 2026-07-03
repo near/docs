@@ -197,6 +197,7 @@ self.set_balance(&user_id, 0); // Too late!
 
 **Why it matters**: Prevents external actors from calling your callbacks directly and bypassing security checks.
 
+**How to verify:**
 ```rust
 // ✅ CORRECT - Callback method can be called only by contract itself
 #[private]
