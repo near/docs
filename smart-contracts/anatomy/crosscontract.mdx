@@ -314,28 +314,17 @@ The Promises you are creating will **not execute immediately**. In fact, they wi
 
 </Warning>
 
----
+### Attaching gas
 
-## Attaching Gas to a Cross-Contract Call
+Each promise in a cross-contract call needs enough gas to execute. This includes the external call and any callback you attach with `.then`.
 
-When you create a cross-contract call you need to decide **how much Gas to attach** to it. The NEAR SDK exposes two complementary methods to control this in the **high level (Rust) API**:
+<Tip>
+Always reserve gas for the callback. It executes in a separate receipt, so it can fail independently if it does not receive enough gas.
+</Tip>
 
-- `with_static_gas(gas)` — attaches a **fixed amount** of Gas to the call
-- `with_unused_gas_weight(weight)` — attaches a **proportional share** of the function's remaining (unused) Gas
+<Accordion title="Rust">
 
-Both methods can be combined on the **same** promise. The total Gas actually attached to a promise is:
-
-```text
-total_gas = static_gas + share_of_unused_gas(weight)
-```
-
-Where the **unused Gas** is what's left in the current execution **after subtracting the static Gas reserved by every promise** in the same function. This pool is then split among all promises in proportion to their `weight`.
-
-### `with_static_gas`
-
-`with_static_gas` reserves a **specific amount of Gas** for the call. This Gas is **guaranteed**: it will always be attached to that promise, regardless of how much Gas is left.
-
-Use it when you know — or can reasonably estimate — how much Gas the external function and its callback need.
+In Rust's high level API, `with_static_gas(gas)` reserves a fixed amount of gas for a promise:
 
 ```rust
 const CALL_GAS: Gas = Gas::from_tgas(10);
@@ -351,66 +340,92 @@ external_trait::ext("external_address")
     );
 ```
 
-<Tip>
-Always reserve enough **static** Gas for your callback so it can run even if the external call consumes more Gas than expected.
-</Tip>
-
-### `with_unused_gas_weight`
-
-`with_unused_gas_weight` does **not** attach a fixed amount of Gas. Instead, it tells the runtime: *"give this promise a share of whatever Gas is left over after all static Gas has been reserved"*.
-
-- The **default weight is `1`** for every promise — meaning if you do nothing, all your promises split the remaining Gas evenly.
-- Setting the weight to `0` **disables** the unused Gas share for that promise — it will receive **only** the static Gas you reserved with `with_static_gas`.
-- Higher weights get a proportionally larger share.
-
-The formula for each promise is:
-
-```text
-attached_gas = static_gas + (weight / sum_of_all_weights) * remaining_unused_gas
-```
+The high level API also exposes `with_unused_gas_weight(weight)`, which gives a promise a proportional share of the gas left after all static gas has been reserved.
 
 ```rust
 external_trait::ext("external_address")
     .with_static_gas(Gas::from_tgas(10))
-    .with_unused_gas_weight(2)        // gets 2x the share vs. weight=1
+    .with_unused_gas_weight(2)
     .function_name(arguments)
     .then(
         Self::ext(env::current_account_id())
             .with_static_gas(Gas::from_tgas(5))
-            .with_unused_gas_weight(0) // do NOT take from the unused-gas pool
+            .with_unused_gas_weight(0)
             .callback_name(arguments)
     );
 ```
 
-### How `with_static_gas` and `with_unused_gas_weight` interact
+The default unused gas weight is `1`. Set the weight to `0` when you want a promise to receive only its static gas reservation.
 
-Imagine your function has `100 Tgas` of prepaid Gas left when you reach the promise-creation code, and you create two promises **A** and **B**:
+For example, if `100 Tgas` is left when you create two promises:
 
-| Promise | `with_static_gas` | `with_unused_gas_weight` |
-|---------|-------------------|--------------------------|
-| A       | `20 Tgas`         | `1` (default)            |
-| B       | `10 Tgas`         | `3`                      |
+| Promise | Static gas | Unused gas weight |
+|---------|------------|-------------------|
+| A       | `20 Tgas`  | `1`               |
+| B       | `10 Tgas`  | `3`               |
 
-The runtime computes the unused-Gas pool as `100 − (20 + 10) = 70 Tgas`. It then distributes that pool by weight (`1 + 3 = 4`):
+The runtime reserves `30 Tgas` as static gas, then distributes the remaining `70 Tgas` by weight:
 
 - **A** gets `20 + (1/4) * 70 = 37.5 Tgas`
 - **B** gets `10 + (3/4) * 70 = 62.5 Tgas`
 
-If you instead set **B**'s weight to `0`, all `70 Tgas` of unused Gas go to **A**, and **B** is capped at its `10 Tgas` static reservation.
-
 <Warning>
-**This is the most common source of cross-contract bugs.** If you forget that the **default weight is `1`**, your callback may end up grabbing most of the remaining Gas, leaving the external call starved — or vice versa.
-
-If the function you call is sensitive to Gas, **always** combine `with_static_gas` (to guarantee a minimum) with `with_unused_gas_weight(0)` on every other promise (to prevent them from siphoning Gas away).
+If you forget that the default weight is `1`, a callback or parallel promise can receive more of the remaining gas than you expected. For gas-sensitive calls, combine `with_static_gas` with `with_unused_gas_weight(0)` on promises that should not draw from the unused gas pool.
 </Warning>
 
-<Tip>
-The **low level API** (`Promise::new(...).function_call(...)`) takes a fixed Gas value, behaving like `with_static_gas` only — there is no unused-Gas distribution. If you need precise control, prefer the high level API.
-</Tip>
+The low level API (`Promise::new(...).function_call(...)`) takes a fixed gas value. It behaves like `with_static_gas` and does not use unused gas weights.
 
-<Info>
-In the JavaScript and Go SDKs, cross-contract Gas is set via the `gas` argument passed to `functionCall` / `function_call`. There is no `withUnusedGasWeight` equivalent — the value you pass is the static Gas, similar to Rust's low level API.
-</Info>
+</Accordion>
+
+<Accordion title="JavaScript / TypeScript">
+
+In JavaScript and TypeScript, pass the gas amount to `functionCall`. Do this for both the external call and the callback:
+
+```ts
+NearPromise.new("external_address")
+  .functionCall("function_name", JSON.stringify(arguments), DEPOSIT, GAS)
+  .then(
+    NearPromise.new(near.currentAccountId())
+      .functionCall("callback_name", JSON.stringify(arguments), DEPOSIT, GAS)
+  );
+```
+
+There is no unused gas weight equivalent. The gas value you pass is the fixed amount attached to that promise.
+
+</Accordion>
+
+<Accordion title="Python">
+
+In Python, pass gas when creating the promise call. The exact helper depends on whether you are using `CrossContract` or lower level promise helpers, but the idea is the same: reserve gas for each receipt that must execute.
+
+```python
+promise = batch.then(Context.current_account_id()).function_call(
+    "callback_name",
+    {},
+    gas=10 * ONE_TGAS
+)
+```
+
+Callbacks need their own gas reservation. Do not assume unused gas from the external call will automatically be available to the callback.
+
+</Accordion>
+
+<Accordion title="Go">
+
+In Go, pass gas when creating the function call promise. The callback routed through `.Then()` still needs enough gas to execute.
+
+```go
+gas := uint64(10 * types.ONE_TERA_GAS)
+
+promise.NewCrossContract(receiver).
+    Gas(gas).
+    Call("method_name", args).
+    Then("callback_name")
+```
+
+There is no unused gas weight equivalent. Treat the gas value as the fixed amount reserved for the promise.
+
+</Accordion>
 
 ---
 
