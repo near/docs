@@ -219,7 +219,12 @@ cargo build --features shared_storage
 ### Redis Setup
 
 <Tip>
-This is only needed if you intend to use whitelisting, allowances, and OAuth functionality.
+Redis is only needed when the relayer must persist per-account state. That applies if you want to:
+
+- **Allowances**: track and limit how much gas each account can spend (e.g. `/update_allowance`, `/get_allowance`).
+- **OAuth (sybil resistance)**: require a unique OAuth token at signup so each real user can only register one account.
+
+Whitelisting **contracts** or **senders** does *not* need Redis — those are static lists in `config.toml`. See the [Redis](#redis) and [FastAuth](#fastauth) entries under [Use cases](#use-cases) for example configs that rely on Redis.
 </Tip>
 
 1. [Install Redis](https://redis.io/docs/latest/get-started/).
