@@ -7,7 +7,7 @@ import NearLakeDeprecationTutorial from '/snippets/near-lake-deprecation-tutoria
 
 <NearLakeDeprecationTutorial />
 
-This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the [NEAR Lake Framework JS](/data-infrastructure/near-lake-framework). The indexer will listen for `nft_mint` events and print relevant data about newly minted NFTs.
+This tutorial will guide you through building a simple NFT indexer using the JavaScript version of the [NEAR Lake Framework JS](https://www.npmjs.com/package/near-lake-framework). The indexer will listen for `nft_mint` events and print relevant data about newly minted NFTs.
 
 The indexer is watching for `nft_mint` [Events](https://github.com/near/NEPs/tree/master/neps/nep-0297.md) and prints some relevant data:
 - `receiptId` of the `Receipt` where the mint has happened
@@ -34,14 +34,14 @@ In this tutorial our goal is to show you how you can "listen" to the Events cont
 
 As the example we will be building an indexer that watches all the NFTs minted following the [NEP-171 Events](https://github.com/near/NEPs/tree/master/neps/nep-0256.md) standard, assuming we're collectors who don't want to miss a thing. Our indexer should notice every single NFT minted and give us a basic set of data like: in what Receipt it was minted, and show us the link to a marketplace (we'll cover Paras and Bitte/Mintbase in our example).
 
-We will use JS version of [NEAR Lake Framework](/data-infrastructure/near-lake-framework) in this tutorial. Though the concept is the same for Rust, but we want to show more people that it's not that complex to build your own indexer.
+We will use JS version of [NEAR Lake Framework](https://www.npmjs.com/package/near-lake-framework) in this tutorial. Though the concept is the same for Rust, but we want to show more people that it's not that complex to build your own indexer.
 
 ## Preparation
 
 <Danger>
 **Credentials**
 
-Please, ensure you've the credentials set up as described on the [Credentials](./running-near-lake/credentials) page. Otherwise you won't be able to get the code working.
+Please, ensure you've the credentials set up as described in the [development environment setup](/data-infrastructure/tutorials/running-near-lake/run-near-lake#prepare-development-environment). Otherwise you won't be able to get the code working.
 
 </Danger>
 
@@ -318,7 +318,7 @@ npm run start
 
 <Note>
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](./running-near-lake/credentials) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [development environment setup](/data-infrastructure/tutorials/running-near-lake/run-near-lake#prepare-development-environment) part :)
 
 </Note>
 
@@ -425,7 +425,7 @@ A few words about what is going on here. If the Receipt's receiver account name 
 
 After that we iterate over the Events and its `data` using the `ParasEventLogData` we've defined earlier. Collecting a list of objects with the NFTs owner and NFTs links.
 
-Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have migrated to [NEAR Lake Framework](./near-lake-framework) already, saying "Hi!" and crafting the link:
+Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have migrated to [NEAR Lake Framework](https://www.npmjs.com/package/near-lake-framework) already, saying "Hi!" and crafting the link:
 
 ```ts title=index.ts
   } else if (relevantOutcome.receipt.receiverId.match(/\.mintbase\d+\.near$/)) {
@@ -549,7 +549,7 @@ npm run start
 
 <Note>
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](./running-near-lake/credentials) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [development environment setup](/data-infrastructure/tutorials/running-near-lake/run-near-lake#prepare-development-environment) part :)
 
 </Note>
 
