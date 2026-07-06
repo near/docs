@@ -316,3 +316,38 @@ In the JS SDK, `throw new Error("message")` mimics the behavior of Rust's `env::
 </Info>
 
 ---
+
+## P-256 signature verification
+
+Since protocol version 85 (NEAR `2.13`), the runtime provides a `p256_verify` host function ([NEP-635](https://github.com/near/NEPs/blob/master/neps/nep-0635.md)) that verifies a **P-256** (`secp256r1`) ECDSA signature natively, for a fraction of the gas a WASM implementation would cost. It is aimed at passkey / WebAuthn flows and TEE attestation.
+
+The host function verifies the signature against a message you have **already hashed** — it performs no hashing itself:
+
+- `signature`: the raw `r || s` value, `64` bytes (two `32`-byte big-endian integers).
+- `message`: the pre-hashed `32`-byte digest (WebAuthn callers pass the `SHA-256` digest of the signed data).
+- `public_key`: the `33`-byte compressed SEC1 public key.
+
+It returns `true` when the signature is valid for that message and key.
+
+<Warning>
+**P-256 signatures are malleable.** For any valid signature `(r, s)` there is a second, equally valid signature `(r, n − s)`, where `n` is the curve order. `p256_verify` accepts **both** forms — this is deliberate (FIPS 186-5 behavior): WebAuthn does not require low-`s`, authenticators such as Apple's Secure Enclave routinely emit high-`s` signatures, and it matches Ethereum's [RIP-7212](https://github.com/ethereum/RIPs/blob/master/RIPS/rip-7212.md) precompile.
+
+This only matters if your contract treats the **signature bytes** as a unique identifier — for example, preventing replay by storing the hash of each accepted signature. An attacker can flip `s` to `n − s` and resubmit the "same" signature with different bytes, slipping past that check. If your replay protection instead lives in the signed message (a nonce, an expiry, and so on), you are unaffected.
+
+If it does matter, enforce low-`s` inside the contract. `s` is bytes `32..64` of the signature, big-endian; reject it when `s` is greater than `⌊n/2⌋`, which for P-256 is the fixed constant `0x7FFFFFFF800000007FFFFFFFFFFFFFFFDE737D56D38BCF4279DCE5617E3192A8`. Because both values are `32`-byte big-endian, this is a plain lexicographic byte comparison — no curve arithmetic required. Alternatively, normalize on the client (replace `s` with `n − s` when it is high) before submitting.
+
+```rust
+/// ⌊n/2⌋ for the P-256 curve order `n`, big-endian.
+const P256_HALF_ORDER: [u8; 32] = [
+    0x7f, 0xff, 0xff, 0xff, 0x80, 0x00, 0x00, 0x00,
+    0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+    0xde, 0x73, 0x7d, 0x56, 0xd3, 0x8b, 0xcf, 0x42,
+    0x79, 0xdc, 0xe5, 0x61, 0x7e, 0x31, 0x92, 0xa8,
+];
+
+/// Returns `true` only for the canonical (low-`s`) form of a 64-byte `r || s` signature.
+fn is_low_s(signature: &[u8; 64]) -> bool {
+    signature[32..64] <= P256_HALF_ORDER[..]
+}
+```
+</Warning>
