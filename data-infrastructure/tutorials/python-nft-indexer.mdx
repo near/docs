@@ -7,7 +7,7 @@ import NearLakeDeprecationTutorial from '/snippets/near-lake-deprecation-tutoria
 
 <NearLakeDeprecationTutorial />
 
-This tutorial shows how to build a fully functional NFT indexer built using the [NEAR Lake Framework for Python](/data-infrastructure/near-lake-framework), which monitors `nft_mint` [events](https://github.com/near/NEPs/tree/master/neps/nep-0297.md) and outputs relevant details such as the `receipt_id` of the `Receipt` where the mint occurred, the marketplace, the NFT owner's account name, and links to the NFTs on the marketplaces.
+This tutorial shows how to build a fully functional NFT indexer built using the [NEAR Lake Framework for Python](https://pypi.org/project/near-lake-framework), which monitors `nft_mint` [events](https://github.com/near/NEPs/tree/master/neps/nep-0297.md) and outputs relevant details such as the `receipt_id` of the `Receipt` where the mint occurred, the marketplace, the NFT owner's account name, and links to the NFTs on the marketplaces.
 
 The final source code is available on the GitHub [`frolvanya/near-lake-nft-indexer`](https://github.com/frolvanya/near-lake-nft-indexer)
 
@@ -28,14 +28,14 @@ In this tutorial our goal is to show you how you can "listen" to the Events cont
 
 As the example we will be building an indexer that watches all the NFTs minted following the [NEP-171 Events](https://github.com/near/NEPs/tree/master/neps/nep-0256.md) standard, assuming we're collectors who don't want to miss a thing. Our indexer should notice every single NFT minted and give us a basic set of data like: in what Receipt it was minted, and show us the link to a marketplace (we'll cover [Paras](https://paras.id) and [Mintbase/Bitte](https://bitte.ai/) in our example).
 
-We will use Python version of [NEAR Lake Framework](/data-infrastructure/near-lake-framework) in this tutorial. Though the concept is the same for Rust, but we want to show more people that it's not that complex to build your own indexer.
+We will use Python version of [NEAR Lake Framework](https://pypi.org/project/near-lake-framework) in this tutorial. Though the concept is the same for Rust, but we want to show more people that it's not that complex to build your own indexer.
 
 ## Preparation
 
 <Danger>
 **Credentials**
 
-Please, ensure you've the credentials set up as described on the [Credentials](./running-near-lake/credentials) page. Otherwise you won't be able to get the code working.
+Please, ensure you've the credentials set up as described in the [development environment setup](/data-infrastructure/tutorials/running-near-lake/run-near-lake#prepare-development-environment). Otherwise you won't be able to get the code working.
 
 </Danger>
 
@@ -218,7 +218,7 @@ python3 main.py
 
 <Note>
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](./running-near-lake/credentials) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [development environment setup](/data-infrastructure/tutorials/running-near-lake/run-near-lake#prepare-development-environment) part :)
 
 </Note>
 
@@ -320,7 +320,7 @@ if receipt_execution_outcome.receipt.receiver_id.endswith(
 
 A few words about what is going on here. If the Receipt's receiver account name ends with `.paras.near` (e.g. `x.paras.near`) we assume it's from Paras marketplace, so we are changing the corresponding variable.
 
-Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have migrated to [NEAR Lake Framework](./near-lake-framework) already, saying "Hi!" and crafting the link:
+Mintbase turn, we hope [Nate](https://twitter.com/nategeier) and his team have migrated to [NEAR Lake Framework](https://pypi.org/project/near-lake-framework) already, saying "Hi!" and crafting the link:
 
 ```python title=main.py
     elif re.search(
@@ -437,7 +437,7 @@ python3 main.py
 
 <Note>
 
-Having troubles running the indexer? Please, check you haven't skipped the [Credentials](./running-near-lake/credentials) part :)
+Having troubles running the indexer? Please, check you haven't skipped the [development environment setup](/data-infrastructure/tutorials/running-near-lake/run-near-lake#prepare-development-environment) part :)
 
 </Note>
 
@@ -487,4 +487,3 @@ Let's go hunt doo, doo, doo 🦈
 [`near-examples/near-lake-nft-indexer`](https://github.com/near-examples/near-lake-nft-indexer): source code for this tutorial
 
 </Note>
-

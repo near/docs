@@ -314,6 +314,119 @@ The Promises you are creating will **not execute immediately**. In fact, they wi
 
 </Warning>
 
+### Attaching gas
+
+Each promise in a cross-contract call needs enough gas to execute. This includes the external call and any callback you attach with `.then`.
+
+<Tip>
+Always reserve gas for the callback. It executes in a separate receipt, so it can fail independently if it does not receive enough gas.
+</Tip>
+
+<Accordion title="Rust">
+
+In Rust's high level API, `with_static_gas(gas)` reserves a fixed amount of gas for a promise:
+
+```rust
+const CALL_GAS: Gas = Gas::from_tgas(10);
+const CALLBACK_GAS: Gas = Gas::from_tgas(5);
+
+external_trait::ext("external_address")
+    .with_static_gas(CALL_GAS)
+    .function_name(arguments)
+    .then(
+        Self::ext(env::current_account_id())
+            .with_static_gas(CALLBACK_GAS)
+            .callback_name(arguments)
+    );
+```
+
+The high level API also exposes `with_unused_gas_weight(weight)`, which gives a promise a proportional share of the gas left after all static gas has been reserved.
+
+```rust
+external_trait::ext("external_address")
+    .with_static_gas(Gas::from_tgas(10))
+    .with_unused_gas_weight(2)
+    .function_name(arguments)
+    .then(
+        Self::ext(env::current_account_id())
+            .with_static_gas(Gas::from_tgas(5))
+            .with_unused_gas_weight(0)
+            .callback_name(arguments)
+    );
+```
+
+The default unused gas weight is `1`. Set the weight to `0` when you want a promise to receive only its static gas reservation.
+
+For example, if `100 Tgas` is left when you create two promises:
+
+| Promise | Static gas | Unused gas weight |
+|---------|------------|-------------------|
+| A       | `20 Tgas`  | `1`               |
+| B       | `10 Tgas`  | `3`               |
+
+The runtime reserves `30 Tgas` as static gas, then distributes the remaining `70 Tgas` by weight:
+
+- **A** gets `20 + (1/4) * 70 = 37.5 Tgas`
+- **B** gets `10 + (3/4) * 70 = 62.5 Tgas`
+
+<Warning>
+If you forget that the default weight is `1`, a callback or parallel promise can receive more of the remaining gas than you expected. For gas-sensitive calls, combine `with_static_gas` with `with_unused_gas_weight(0)` on promises that should not draw from the unused gas pool.
+</Warning>
+
+The low level API (`Promise::new(...).function_call(...)`) takes a fixed gas value. It behaves like `with_static_gas` and does not use unused gas weights.
+
+</Accordion>
+
+<Accordion title="JavaScript / TypeScript">
+
+In JavaScript and TypeScript, pass the gas amount to `functionCall`. Do this for both the external call and the callback:
+
+```ts
+NearPromise.new("external_address")
+  .functionCall("function_name", JSON.stringify(arguments), DEPOSIT, GAS)
+  .then(
+    NearPromise.new(near.currentAccountId())
+      .functionCall("callback_name", JSON.stringify(arguments), DEPOSIT, GAS)
+  );
+```
+
+There is no unused gas weight equivalent. The gas value you pass is the fixed amount attached to that promise.
+
+</Accordion>
+
+<Accordion title="Python">
+
+In Python, pass gas when creating the promise call. The exact helper depends on whether you are using `CrossContract` or lower level promise helpers, but the idea is the same: reserve gas for each receipt that must execute.
+
+```python
+promise = batch.then(Context.current_account_id()).function_call(
+    "callback_name",
+    {},
+    gas=10 * ONE_TGAS
+)
+```
+
+Callbacks need their own gas reservation. Do not assume unused gas from the external call will automatically be available to the callback.
+
+</Accordion>
+
+<Accordion title="Go">
+
+In Go, pass gas when creating the function call promise. The callback routed through `.Then()` still needs enough gas to execute.
+
+```go
+gas := uint64(10 * types.ONE_TERA_GAS)
+
+promise.NewCrossContract(receiver).
+    Gas(gas).
+    Call("method_name", args).
+    Then("callback_name")
+```
+
+There is no unused gas weight equivalent. Treat the gas value as the fixed amount reserved for the promise.
+
+</Accordion>
+
 ---
 
 ## Callback Function
