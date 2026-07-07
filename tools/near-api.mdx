@@ -848,6 +848,75 @@ Accounts on NEAR can delete their own keys.
 Be very careful when deleting keys. Removing all keys from an account will cause you to lose access to the account permanently.
 </Danger>
 
+### Post-Quantum Keys (ML-DSA-65)
+
+NEAR supports the post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#post-quantum-keys-ml-dsa-65) signature scheme (FIPS 204). You add and use an `ml-dsa-65` key exactly like an `ed25519` one — it can be a [full-access](/protocol/accounts-contracts/access-keys#full-access-keys) or [function-call](/protocol/accounts-contracts/access-keys#function-call-keys) key and signs transactions the same way.
+
+<Tabs>
+  <Tab title="🌐 near-kit">
+
+  ```javascript
+  import { MlDsa65KeyPair, Near } from "near-kit";
+
+  // A client signed by alice's existing full-access key adds the new key
+  const near = new Near({
+    network: "testnet",
+    privateKey: "ed25519:<alice-existing-key>",
+    defaultSignerId: "alice.testnet",
+  });
+
+  // Generate a post-quantum key pair (1952-byte public key, 3309-byte signatures)
+  const pqKey = MlDsa65KeyPair.fromRandom();
+
+  // Add it to alice's account, like any other key
+  await near
+    .transaction("alice.testnet")
+    .addKey(pqKey.publicKey.toString(), { type: "fullAccess" })
+    .send();
+
+  // Then sign transactions with the post-quantum key
+  const pqNear = new Near({
+    network: "testnet",
+    keyStore: { "alice.testnet": pqKey.secretKey }, // "ml-dsa-65:<seed>"
+  });
+
+  await pqNear.transaction("alice.testnet").transfer("bob.testnet", "1 NEAR").send();
+  ```
+
+  </Tab>
+  <Tab title="🦀 near-kit-rs">
+
+  ```bash
+  cargo add near-kit
+  ```
+
+  ```rust
+  use near_kit::*;
+
+  // A client signed by alice's existing full-access key adds the new key
+  let near = Near::testnet()
+      .credentials("ed25519:<alice-existing-key>", "alice.testnet")?
+      .build();
+
+  // Generate a random ML-DSA-65 key pair (1952-byte public key, 3309-byte signatures)
+  let pq_key = SecretKey::generate_ml_dsa65();
+  let public_key = pq_key.public_key(); // "ml-dsa-65:..."
+
+  // Add it to alice's account, like any other key
+  near.transaction("alice.testnet")
+      .add_full_access_key(public_key)
+      .send()
+      .wait_until(Final)
+      .await?;
+  ```
+
+  </Tab>
+</Tabs>
+
+<Note>
+On-chain, an `ml-dsa-65` access key is stored as a 32-byte hash, so key listings such as [`view_access_key_list`](/api/rpc/contracts#view-access-key-list) return an `ml-dsa-65-hash:` handle instead of the full key — parse it with `parseMlDsa65Handle()` (near-kit) for display and comparison; the handle cannot sign or be re-added. Post-quantum keys are currently supported by [`near-kit`](https://github.com/r-near/near-kit) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust); support in `near-api-js` and `py-near` is pending.
+</Note>
+
 ---
 
 ## Validate Message Signatures
