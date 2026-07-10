@@ -405,6 +405,7 @@
             "group": "Tutorials",
             "pages": [
               "web3-apps/tutorials/wallet-login",
+              "web3-apps/tutorials/near-auth",
               "web3-apps/tutorials/social-login",
               "web3-apps/tutorials/frontend-multiple-contracts",
               "web3-apps/backend/backend",
