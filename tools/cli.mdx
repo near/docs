@@ -326,8 +326,10 @@ To sign a transaction with a gas key, pass `--nonce-index` to the signing option
 near tokens $ACCOUNT_ID send-near alice.testnet '1 NEAR' network-config testnet sign-with-keychain --nonce-index 3 send
 ```
 
+Gas keys also work with **meta transactions**. The CLI signs as a delegate action when the selected network connection has a relayer configured (a `meta_transaction_relayer_url`, set on the connection with `near config add-connection`). Signing such a transaction with `--nonce-index` then produces a [`DelegateV2`](/protocol/transactions/meta-tx#delegatev2-meta-transactions-with-gas-keys) delegate action bound to that nonce lane, which the relayer wraps and pays for.
+
 <Note>
-Deleting a gas key **burns** any balance left on it, and fails if the balance exceeds 1 NEAR — withdraw first with `withdraw-from-gas-key`, then delete with the regular `delete-keys` command. Signing meta transactions (`--sign-as-delegate-action`) with a gas key is not supported by the CLI yet.
+Deleting a gas key **burns** any balance left on it, and fails if the balance exceeds 1 NEAR — withdraw first with `withdraw-from-gas-key`, then delete with the regular `delete-keys` command. Gas-key meta transactions are supported for all software signers; Ledger is the exception, since the device firmware cannot yet produce a `DelegateV2` signature.
 </Note>
 
 ## Tokens

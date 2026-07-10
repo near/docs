@@ -132,6 +132,8 @@ This unlocks gas sponsorship at both ends of the relay:
 
 The original `DelegateAction` is not deprecated and keeps working as before. All existing constraints apply to both versions: a transaction can contain only one delegate action (of either version), and delegate actions cannot be nested.
 
+You can build and sign `DelegateV2` actions today with the [NEAR CLI](/tools/cli#gas-keys) (on a relayer-configured network connection, selecting the gas key's lane with `--nonce-index`) and with the [`near-kit`](https://github.com/r-near/near-kit) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust) libraries.
+
 <Note>
 The versioned payload is part of what the user signs, and V1 and V2 use different [NEP-461](https://github.com/near/NEPs/pull/461) signing prefixes — a signature produced for one version can never be replayed as the other.
 </Note>

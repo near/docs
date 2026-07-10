@@ -104,7 +104,7 @@ You can inspect a gas key's lanes with the [`view_gas_key_nonces`](/api/rpc/cont
 <Note>
 **Tooling support**
 
-You can create and manage gas keys with the [NEAR CLI](/tools/cli#gas-keys) (`near account add-key ... grant-gas-key-full-access`, `fund-gas-key`, `withdraw-from-gas-key`, `view-gas-key-nonces`) and with the [`near-kit-rs`](https://github.com/r-near/near-kit-rs) Rust library. Contracts can also add and fund gas keys through batch-promise host functions — though only the account's own transactions can withdraw from one.
+You can create and manage gas keys with the [NEAR CLI](/tools/cli#gas-keys) (`near account add-key ... grant-gas-key-full-access`, `fund-gas-key`, `withdraw-from-gas-key`, `view-gas-key-nonces`) and from your app with the [`near-kit`](https://github.com/r-near/near-kit) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust) libraries — both cover creating, funding, withdrawing, signing on a nonce lane, and reading a key's lanes via `view_gas_key_nonces`. Contracts can also add and fund gas keys through batch-promise host functions — though only the account's own transactions can withdraw from one.
 </Note>
 
 Gas keys also work with meta transactions: the new [`DelegateV2`](/protocol/transactions/meta-tx#delegatev2-meta-transactions-with-gas-keys) action lets a user sign a delegate action on a gas key's nonce lane, enabling relayers to sponsor gas end to end.
