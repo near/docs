@@ -140,6 +140,10 @@ Prior to protocol version 78, the gas prices of each block was used for the work
 
 You don't buy gas, instead, the gas fee is automatically removed from your account's balance when the transaction [is first processed](./transaction-execution#block-1-the-transaction-arrives) based on the action's gas cost and the network's gas price.
 
+<Note>
+Transactions signed with a [gas key](/protocol/accounts-contracts/access-keys#gas-keys) instead pay their gas fee from the key's own prepaid balance, and gas refunds return to the key.
+</Note>
+
 The only exception to this rule is when you make a function call to a contract. In this case, you need to define how many gas units to use, up to a maximum value of `300Tgas`. This amount will be converted to NEAR using the network's gas price and deducted from your account's balance.
 
 If the transaction ends up using less gas than the amount deducted, the difference will simply be **refunded to your account**. However, the network subtracts a **gas refund fee** of at least 1 Tgas or up to 5% of the unspent gas.

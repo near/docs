@@ -99,6 +99,45 @@ There are multiple reasons to use a relayer:
 
 ---
 
+## DelegateV2: Meta Transactions with Gas Keys
+
+Since nearcore 2.13 (protocol version 85), there is a second version of the delegate action, `DelegateV2`, introduced alongside [gas keys](/protocol/accounts-contracts/access-keys#gas-keys) in [NEP-611](https://github.com/near/NEPs/pull/611).
+
+`DelegateV2` is identical to the original `DelegateAction` except for one field: its `nonce` can be either a plain nonce (like V1) or a **gas key nonce** — a `nonce` plus a `nonce_index` selecting one of the signing key's parallel nonce lanes. This means a user can sign meta transactions with a **gas key**, which is not possible with V1:
+
+```json
+{
+  "DelegateV2": {
+    "delegate_action": {
+      "V2": {
+        "sender_id": "alice.near",
+        "receiver_id": "ft.near",
+        "actions": [ ... ],
+        "nonce": { "GasKeyNonce": { "nonce": 187310139000002, "nonce_index": 1 } },
+        "max_block_height": 187440000,
+        "public_key": "ed25519:..."
+      }
+    },
+    "signature": "ed25519:..."
+  }
+}
+```
+
+The nonce variant must match the key that signed: a delegate action carrying a `GasKeyNonce` must be signed by a gas key, and a plain-nonce delegate action must be signed by a regular access key — mismatches are rejected.
+
+This unlocks gas sponsorship at both ends of the relay:
+
+- **The user's side**: signing on a gas key's nonce lanes lets a user (or an automated fleet acting as one account) keep many meta transactions in flight concurrently, since each lane's nonce advances independently. Note that in a meta transaction the user's gas key contributes its **nonce lanes**, not its balance — the relayer still pays all gas
+- **The relayer's side**: the relayer can sign the wrapping transaction with its **own gas key**, paying gas from the key's prepaid balance on one of its lanes — solving the nonce-collision problem that high-volume relayers traditionally work around by rotating dozens of access keys
+
+The original `DelegateAction` is not deprecated and keeps working as before. All existing constraints apply to both versions: a transaction can contain only one delegate action (of either version), and delegate actions cannot be nested.
+
+<Note>
+The versioned payload is part of what the user signs, and V1 and V2 use different [NEP-461](https://github.com/near/NEPs/pull/461) signing prefixes — a signature produced for one version can never be replayed as the other.
+</Note>
+
+---
+
 ## Limitations
 
 ### Single receiver
@@ -113,6 +152,10 @@ Any transaction, including meta transactions, must use NONCEs to avoid replay
 attacks. The NONCE must be chosen by Alice and compared to a NONCE stored on
 chain. This NONCE is stored on the access key information that gets initialized
 when creating an account.
+
+With [`DelegateV2`](#delegatev2-meta-transactions-with-gas-keys), the NONCE can
+belong to one of a [gas key](/protocol/accounts-contracts/access-keys#gas-keys)'s
+parallel nonce lanes instead of a regular access key.
 
 ---
 
