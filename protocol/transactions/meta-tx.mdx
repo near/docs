@@ -101,7 +101,7 @@ There are multiple reasons to use a relayer:
 
 ## DelegateV2: Meta Transactions with Gas Keys
 
-Since nearcore 2.13 (protocol version 85), there is a second version of the delegate action, `DelegateV2`, introduced alongside [gas keys](/protocol/accounts-contracts/access-keys#gas-keys) in [NEP-611](https://github.com/near/NEPs/pull/611).
+Since nearcore 2.13 (protocol version 86), there is a second version of the delegate action, `DelegateV2`, introduced alongside [gas keys](/protocol/accounts-contracts/access-keys#gas-keys) in [NEP-611](https://github.com/near/NEPs/pull/611).
 
 `DelegateV2` is identical to the original `DelegateAction` except for one field: its `nonce` can be either a plain nonce (like V1) or a **gas key nonce** — a `nonce` plus a `nonce_index` selecting one of the signing key's parallel nonce lanes. This means a user can sign meta transactions with a **gas key**, which is not possible with V1:
 

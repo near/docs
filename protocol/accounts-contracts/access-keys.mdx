@@ -62,7 +62,7 @@ You should never share your `Full-Access`, otherwise you are giving **total cont
 
 ## Gas Keys
 
-Gas keys ([NEP-611](https://github.com/near/NEPs/pull/611)) are access keys designed for **sending many transactions in parallel**. They were introduced in nearcore 2.13 (protocol version 85) and differ from regular access keys in two ways:
+Gas keys ([NEP-611](https://github.com/near/NEPs/pull/611)) are access keys designed for **sending many transactions in parallel**. They were introduced in nearcore 2.13 (protocol version 86) and differ from regular access keys in two ways:
 
 1. **Prepaid gas balance**: a gas key holds its own NEAR balance, and transactions signed with it pay gas from that balance instead of the account's main balance
 2. **Parallel nonces**: a gas key has up to **1,024 independent nonces** (called *nonce lanes*), so many transactions can be in flight at once without nonce collisions
