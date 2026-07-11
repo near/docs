@@ -19,6 +19,8 @@ In NEAR we distinguish two types of Access Keys:
 1. `Full-Access Keys`: Have full control over the account, and should **never be shared**
 2. `Function-Call Keys`: Can only sign calls for specific contracts, and are **meant to be shared**
 
+In addition, a key of either type can be created as a [**gas key**](#gas-keys): a key that carries its own prepaid gas balance and multiple independent nonces, built for sending many transactions in parallel.
+
 Every account in NEAR can hold **multiple keys**, and keys can be added or removed, allowing a
 fine-grained control over the account's permissions.
 
@@ -55,6 +57,57 @@ You should never share your `Full-Access`, otherwise you are giving **total cont
 <Tip>
 [Implicit accounts](./account-id#implicit-address) already have a `Full-Access Key` by default, while for [`named accounts`](./account-id#named-address) their first `Full-Access Key` is added on creation
 </Tip>
+
+---
+
+## Gas Keys
+
+Gas keys ([NEP-611](https://github.com/near/NEPs/pull/611)) are access keys designed for **sending many transactions in parallel**. They were introduced in nearcore 2.13 (protocol version 86) and differ from regular access keys in two ways:
+
+1. **Prepaid gas balance**: a gas key holds its own NEAR balance, and transactions signed with it pay gas from that balance instead of the account's main balance
+2. **Parallel nonces**: a gas key has up to **1,024 independent nonces** (called *nonce lanes*), so many transactions can be in flight at once without nonce collisions
+
+A gas key can have either `FullAccess` or `FunctionCall` permission, with one restriction: a function-call gas key cannot set an `allowance` — its prepaid balance already serves as the gas budget.
+
+This makes gas keys ideal for **programmatic senders** — relayers, bots, exchanges, or a fleet of agents operating one account — which previously had to juggle many separate access keys just to avoid nonce collisions, and risked draining the account's main balance on gas.
+
+### Lifecycle of a Gas Key
+
+A gas key is managed with the same actions as any other key, plus two new actions to move NEAR in and out of its balance:
+
+1. **Create**: an `AddKey` action with a gas-key permission creates the key, specifying its number of nonces (`num_nonces`, between 1 and 1,024). The key is always created with **zero balance**
+2. **Fund**: a `TransferToGasKey` action moves NEAR from the account's balance into the gas key's balance. It can be used repeatedly to top up the key
+3. **Use**: transactions signed with the gas key specify a `nonce_index` selecting which nonce lane to use, and consume gas from the key's balance
+4. **Withdraw**: a `WithdrawFromGasKey` action moves NEAR from the key's balance back to the account. Only the account itself can withdraw
+5. **Delete**: a `DeleteKey` action removes the key. Any remaining balance is **burned**, so the action fails if the key holds more than 1 NEAR — withdraw first, then delete
+
+<Warning>
+Deleting a gas key **burns** whatever balance is left on it — this is a protocol-level protection against spam attacks, not a bug. Always `WithdrawFromGasKey` before deleting. The deletion (and likewise `DeleteAccount`) fails if more than 1 NEAR would be burned, protecting you from losing significant funds by accident.
+</Warning>
+
+### How Gas Keys Pay for Transactions
+
+When a transaction is signed with a gas key:
+
+- The **gas costs** (both burned gas and gas prepaid for function calls) are charged to the **gas key's balance**
+- Any **attached NEAR** (deposits, transfers) is still paid from the **account's main balance**
+- **Gas refunds** for unspent gas return to the **gas key's balance**, so the key sustains itself between top-ups, while balance refunds go to the account
+
+If the gas key's balance cannot cover a transaction's gas, the transaction is rejected. If the gas is covered but the account cannot pay the attached deposit at execution time, the transaction fails **and the burned gas is still charged** to the gas key.
+
+### Using Nonce Lanes
+
+Each of the key's `num_nonces` lanes keeps its own independent nonce. A transaction signed with a gas key picks a lane through a `nonce_index` field (from `0` to `num_nonces - 1`), and only that lane's nonce advances. Two transactions on different lanes can never conflict, so a sender can run one lane per worker and submit transactions concurrently — with a single key to manage.
+
+You can inspect a gas key's lanes with the [`view_gas_key_nonces`](/api/rpc/contracts#view-gas-key-nonces) RPC query, and gas keys appear in [`view_access_key`](/api/rpc/contracts#view-access-key) with their `balance` and `num_nonces`.
+
+<Note>
+**Tooling support**
+
+You can create and manage gas keys with the [NEAR CLI](/tools/cli#gas-keys) (`near account add-key ... grant-gas-key-full-access`, `fund-gas-key`, `withdraw-from-gas-key`, `view-gas-key-nonces`) and from your app with the [`near-kit`](https://github.com/r-near/near-kit) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust) libraries — both cover creating, funding, withdrawing, signing on a nonce lane, and reading a key's lanes via `view_gas_key_nonces`. Contracts can also add and fund gas keys through batch-promise host functions — though only the account's own transactions can withdraw from one.
+</Note>
+
+Gas keys also work with meta transactions: the new [`DelegateV2`](/protocol/transactions/meta-tx#delegatev2-meta-transactions-with-gas-keys) action lets a user sign a delegate action on a gas key's nonce lane, enabling relayers to sponsor gas end to end.
 
 ---
 

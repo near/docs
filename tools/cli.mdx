@@ -298,6 +298,40 @@ The same `--signature-scheme` flag is available on the `account create-account f
 The interactive key picker only lists `ed25519` and `secp256k1` keys. A post-quantum `ml-dsa-65` key is stored on-chain only as a hash, so its full public key can't be read back from the network — to delete one, pass the full `ml-dsa-65:<base58>` key explicitly to the `public-keys` argument of `near account delete-keys` (the full command form shown above).
 </Note>
 
+### Gas keys
+
+[Gas keys](/protocol/accounts-contracts/access-keys#gas-keys) are access keys with their own prepaid gas balance and up to 1,024 parallel nonces. The `add-key` command can create them through the `grant-gas-key-full-access` and `grant-gas-key-function-call` modes, and dedicated commands manage their balance and nonces.
+
+A gas key is always created empty — fund it with `fund-gas-key` before using it:
+
+```bash
+export ACCOUNT_ID=bob.testnet
+
+# Create a full-access gas key with 8 parallel nonces
+near account add-key $ACCOUNT_ID grant-gas-key-full-access --num-nonces 8 autogenerate-new-keypair save-to-keychain network-config testnet sign-with-keychain send
+
+# Transfer 5 NEAR from the account into the gas key's balance
+near account fund-gas-key $ACCOUNT_ID ed25519:CXqAs8c8kZz81josLw82RQsnZXk8CAdUo7jAuN7uSht2 '5 NEAR' network-config testnet sign-with-keychain send
+
+# View the current nonce of each of the key's lanes
+near account view-gas-key-nonces $ACCOUNT_ID ed25519:CXqAs8c8kZz81josLw82RQsnZXk8CAdUo7jAuN7uSht2 network-config testnet now
+
+# Move 2 NEAR from the gas key's balance back to the account
+near account withdraw-from-gas-key $ACCOUNT_ID ed25519:CXqAs8c8kZz81josLw82RQsnZXk8CAdUo7jAuN7uSht2 '2 NEAR' network-config testnet sign-with-keychain send
+```
+
+To sign a transaction with a gas key, pass `--nonce-index` to the signing option to choose which nonce lane to use (defaults to lane `0`):
+
+```bash
+near tokens $ACCOUNT_ID send-near alice.testnet '1 NEAR' network-config testnet sign-with-keychain --nonce-index 3 send
+```
+
+Gas keys also work with **meta transactions**. The CLI signs as a delegate action when the selected network connection has a relayer configured (a `meta_transaction_relayer_url`, set on the connection with `near config add-connection`). Signing such a transaction with `--nonce-index` then produces a [`DelegateV2`](/protocol/transactions/meta-tx#delegatev2-meta-transactions-with-gas-keys) delegate action bound to that nonce lane, which the relayer wraps and pays for.
+
+<Note>
+Deleting a gas key **burns** any balance left on it, and fails if the balance exceeds 1 NEAR — withdraw first with `withdraw-from-gas-key`, then delete with the regular `delete-keys` command. Gas-key meta transactions are supported for all software signers; Ledger is the exception, since the device firmware cannot yet produce a `DelegateV2` signature.
+</Note>
+
 ## Tokens
 
 This will allow you to manage your token assets such as NEAR, FTs and NFTs.

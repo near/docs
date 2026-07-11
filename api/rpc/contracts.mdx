@@ -14,6 +14,7 @@ The RPC API enables you to view details about accounts and contracts as well as 
 | [`view_account_changes`](#view-account-changes) | Monitor account state changes |
 | [`view_access_key`](#view-access-key) | Get the nonce and permissions of a single access key |
 | [`view_access_key_list`](#view-access-key-list) | List all access keys on an account |
+| [`view_gas_key_nonces`](#view-gas-key-nonces) | List the parallel nonces of a gas key |
 | [`view_code`](#view-contract-code) | Get deployed contract WASM code |
 | [`view_state`](#view-contract-state) | Get contract storage data |
 | [`data_changes`](#view-contract-state-changes) | Monitor contract state changes |
@@ -201,6 +202,33 @@ For a function-call key, `permission` is an object instead of the `"FullAccess"`
   }
 }
 ```
+
+For a [gas key](/protocol/accounts-contracts/access-keys#gas-keys), `permission` also carries the key's prepaid `balance` and number of nonce lanes (`num_nonces`). A full-access gas key uses `GasKeyFullAccess`:
+
+```json
+"permission": {
+  "GasKeyFullAccess": {
+    "balance": "5000000000000000000000000",
+    "num_nonces": 8
+  }
+}
+```
+
+A function-call gas key uses `GasKeyFunctionCall`, which is a flat object carrying the same function-call restrictions (`allowance`, `receiver_id`, `method_names`) as `FunctionCall`, alongside the gas-key `balance` and `num_nonces`:
+
+```json
+"permission": {
+  "GasKeyFunctionCall": {
+    "balance": "5000000000000000000000000",
+    "num_nonces": 8,
+    "allowance": "250000000000000000000000",
+    "receiver_id": "contract.rpc-examples.testnet",
+    "method_names": ["get_greeting"]
+  }
+}
+```
+
+The nonces of the individual lanes are not included — query them with [`view_gas_key_nonces`](#view-gas-key-nonces).
 </Accordion>
 
 <Note>
@@ -284,6 +312,79 @@ Returns all [access keys](/protocol/accounts-contracts/access-keys) for an accou
 
 <Note>
 Post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) keys are stored on-chain by hash, so they appear here with an `ml-dsa-65-hash:` prefix (a base58-encoded 32-byte SHA3-256 digest) rather than the full `ml-dsa-65:` key. To match an entry to one of your own keys, derive its handle — the SHA3-256 of the domain-separation tag `near:ml-dsa-65-pubkey-hash:v1` followed by the raw public key — and compare it against the returned value (hashing the key without that prefix will not match).
+</Note>
+
+---
+
+## View Gas Key Nonces
+
+Returns the current nonce of every parallel nonce lane of a [gas key](/protocol/accounts-contracts/access-keys#gas-keys), given the account and the key's public key. The array is indexed by `nonce_index`: the first element is lane `0`, the second is lane `1`, and so on. Use [`view_access_key`](#view-access-key) to see the gas key's balance and permission.
+
+- **method**: `query`
+- **params**: `request_type: view_gas_key_nonces`, `finality` OR `block_id`, `account_id`, `public_key`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_gas_key_nonces",
+        "finality": "final",
+        "account_id": "account.rpc-examples.testnet",
+        "public_key": "ed25519:DCkbTMS8s4kqV4nGvz5kRBdNbY9YwjjvNGNXKpAg2eFa"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'view_gas_key_nonces',
+      finality: 'final',
+      account_id: 'account.rpc-examples.testnet',
+      public_key: 'ed25519:DCkbTMS8s4kqV4nGvz5kRBdNbY9YwjjvNGNXKpAg2eFa',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"view_gas_key_nonces","finality":"final","account_id":"account.rpc-examples.testnet","public_key":"ed25519:DCkbTMS8s4kqV4nGvz5kRBdNbY9YwjjvNGNXKpAg2eFa"}'
+    ```
+  </Tab>
+</Tabs>
+
+<Accordion title="Example response">
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "nonces": [
+      187438921000012,
+      187438921000003,
+      187438921000000,
+      187438921000000
+    ],
+    "block_hash": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW",
+    "block_height": 187440904
+  },
+  "id": "dontcare"
+}
+```
+
+Each lane starts at `block_height * 10^6` from when the key was added and advances independently as transactions use it.
+</Accordion>
+
+<Note>
+Querying a key that exists but is not a gas key (or does not exist at all) returns an `UnknownGasKey` error.
 </Note>
 
 ---
@@ -535,6 +636,7 @@ Allows you to call a contract method as a view function (read-only).
 | `UnknownAccount` | Account does not exist | Check account ID spelling |
 | `InvalidAccount` | Invalid account format | Use valid account ID (e.g., `account.near`) |
 | `UnknownBlock` | Block not found | Use a valid block hash or height |
+| `UnknownGasKey` | Key is not a gas key or does not exist | Check the public key and that it was added as a gas key |
 | `GarbageCollectedBlock` | Block too old | Use archival node or more recent block |
 | `NoContractCode` | No contract deployed | Verify the account has a deployed contract |
 | `MethodNotFound` | Contract method does not exist | Check method name and contract ABI |
