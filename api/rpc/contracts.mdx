@@ -203,13 +203,27 @@ For a function-call key, `permission` is an object instead of the `"FullAccess"`
 }
 ```
 
-For a [gas key](/protocol/accounts-contracts/access-keys#gas-keys), `permission` also carries the key's prepaid balance and number of nonce lanes:
+For a [gas key](/protocol/accounts-contracts/access-keys#gas-keys), `permission` also carries the key's prepaid `balance` and number of nonce lanes (`num_nonces`). A full-access gas key uses `GasKeyFullAccess`:
 
 ```json
 "permission": {
   "GasKeyFullAccess": {
     "balance": "5000000000000000000000000",
     "num_nonces": 8
+  }
+}
+```
+
+A function-call gas key uses `GasKeyFunctionCall`, which is a flat object carrying the same function-call restrictions (`allowance`, `receiver_id`, `method_names`) as `FunctionCall`, alongside the gas-key `balance` and `num_nonces`:
+
+```json
+"permission": {
+  "GasKeyFunctionCall": {
+    "balance": "5000000000000000000000000",
+    "num_nonces": 8,
+    "allowance": "250000000000000000000000",
+    "receiver_id": "contract.rpc-examples.testnet",
+    "method_names": ["get_greeting"]
   }
 }
 ```
