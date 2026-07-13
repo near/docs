@@ -718,5 +718,10 @@
     "ga4": {
       "measurementId": "G-TMG0M3DPNW"
     }
+  },
+  "seo": {
+    "metatags": {
+      "google-site-verification": "x36GvqeIYFjDAl2NNFM-83XykcMYMLRY6f9lgUZbDpA"
+    }
   }
 }
