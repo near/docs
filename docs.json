@@ -598,6 +598,7 @@
             "group": " ",
             "pages": [
               "api/rpc/introduction",
+              "api/rpc/batching",
               "api/rpc/providers",
               "api/rpc/transactions",
               "api/rpc/block-chunk",

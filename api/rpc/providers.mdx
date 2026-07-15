@@ -54,13 +54,19 @@ FastNear maintains a [comprehensive dashboard](https://grafana.fastnear.com/publ
 
 ## Making requests
 
-All endpoints accept JSON-RPC 2.0 `POST` requests. The NEAR RPC uses a non-standard format where the method name is encoded in the URL path rather than the request body.
+Send JSON-RPC 2.0 requests with `POST` to the root of the provider endpoint. Put the method and parameters in the JSON request body.
 
 ```bash
-curl -X POST https://rpc.mainnet.near.org/status \
+curl -X POST https://rpc.mainnet.near.org/ \
   -H "Content-Type: application/json" \
-  -d '{}'
+  -d '{"jsonrpc":"2.0","id":"status","method":"status","params":[]}'
 ```
+
+Recent nearcore nodes support [query-only JSON-RPC batching](/api/rpc/batching), but public providers can run different nearcore versions, disable batching, or apply different limits, gateways, and request policies. Confirm batch availability and limits before depending on it. Do not assume that one HTTP batch consumes one request from a quota: providers may count every entry or use a method-specific compute cost.
+
+<Warning>
+  Never load test a shared public endpoint. Run performance or high-volume batch tests only against a node you operate or an endpoint whose operator has explicitly authorized the test.
+</Warning>
 
 ## Run your own node
 

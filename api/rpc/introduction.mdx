@@ -20,15 +20,15 @@ NEAR Protocol provides multiple ways to interact with the network — from low-l
 
 ## RPC API
 
-NEAR exposes a JSON-RPC 2.0 API for programmatic access to the network. All requests are `POST` to a provider endpoint, with the method name encoded in the URL path.
+NEAR exposes a JSON-RPC 2.0 API for programmatic access to the network. Send requests with `POST` to the root of a provider endpoint and put the method name in the JSON request body.
 
 ```bash
-curl -X POST https://rpc.mainnet.near.org/status \
+curl -X POST https://rpc.mainnet.near.org/ \
   -H "Content-Type: application/json" \
-  -d '{}'
+  -d '{"jsonrpc":"2.0","id":"status","method":"status","params":[]}'
 ```
 
-See [RPC Providers](/api/rpc/providers) for the full list of public endpoints.
+See [RPC Providers](/api/rpc/providers) for the full list of public endpoints. When enabled by its operator, a recent nearcore node can also accept multiple read-only `query` calls in one request; see [Query Batching](/api/rpc/batching) for its scope and availability caveats.
 
 ## Available Methods
 
