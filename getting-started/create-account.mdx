@@ -47,7 +47,40 @@ Need `testnet` funds? try using one of our [faucets](/getting-started/faucet)
 
 When developing smart contracts you will expend lots of time interacting with the NEAR blockchain through the command line interface (CLI).
 
-First, you will need to install the NEAR CLI, for which multiple installation methods are available (npm, Homebrew, Cargo, and standalone installers) - pick your favorite from the [installation guide](/tools/cli#installation).
+First, you will need to install the [NEAR CLI](/tools/cli#installation):
+
+<Tabs>
+  <Tab title="npm">
+
+  ```bash
+  npm install -g near-cli-rs@latest
+  ```
+  </Tab>
+  <Tab title="Homebrew">
+
+  ```bash
+  brew install near
+  ```
+  </Tab>
+  <Tab title="Cargo">
+
+  ```
+  $ cargo install near-cli-rs
+  ```
+  </Tab>
+  <Tab title="Mac and Linux (binaries)">
+
+  ```bash
+  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
+  ```
+  </Tab>
+  <Tab title="Windows (binaries)">
+
+  ```bash
+  irm https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.ps1 | iex
+  ```
+  </Tab>
+</Tabs>
 
 Once you have the CLI installed, you can create a new account using the following command:
 
