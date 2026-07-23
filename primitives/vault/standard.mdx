@@ -1,0 +1,264 @@
+---
+title: The Standard
+icon: vault
+description: "Learn how Tokenized Vaults (NEP-621) are defined on NEAR"
+---
+
+A tokenized vault is a smart contract that accepts deposits of an underlying [fungible token (FT)](../ft/standard) and, in exchange, issues shares that represent proportional ownership of the assets held by the vault.
+
+The underlying asset can be any [NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) compliant token (e.g. a stablecoin or a yield-bearing token). When a user deposits, the vault mints new shares based on the current exchange rate between the vault's total assets and its total shares in circulation. When a user redeems, the vault burns those shares and returns the equivalent amount of the underlying asset.
+
+The shares themselves are also NEP-141 compliant fungible tokens, so they can be transferred between accounts or traded on DEXs, and integrated into broader DeFi use cases such as collateral in lending protocols, liquidity provision, or composable yield strategies.
+
+This interface is defined by [NEP-621](https://github.com/near/NEPs/tree/master/neps/nep-0621.md), and is heavily inspired by the [ERC-4626](https://eips.ethereum.org/EIPS/eip-4626) standard widely used on Ethereum. Standardizing the vault interface improves interoperability, reduces integration costs, and encourages consistent, secure vault implementations across the NEAR ecosystem.
+
+<Tip>
+
+NEP-621 defines the interface and the expected behavior of a vault contract, but it does not dictate how the internal logic (yield strategy, fees, accounting) should be implemented.
+
+Unlike ERC-4626, deposits and mints on NEAR are handled through the `ft_on_transfer` callback (as defined by NEP-141), rather than by direct method calls, to fit NEAR's asynchronous execution model.
+
+</Tip>
+
+---
+
+## NEP-621 (Vault Interface)
+
+A vault contract MUST implement the `VaultCore` trait, which extends:
+
+- [`FungibleTokenCore`](../ft/standard#nep-141-fungible-token-interface) — to provide NEP-141 functionality for the shares.
+- `FungibleTokenReceiver` — to receive the underlying NEP-141 asset.
+
+In other words, a vault is itself a fungible token (the shares) that can also receive another fungible token (the underlying asset).
+
+### Asset Information
+
+#### `asset_contract_id` (*read-only*)
+
+Returns the account ID of the underlying asset's NEP-141 contract. Should be stored as an immutable configuration value.
+
+```ts
+asset_contract_id(): string
+```
+
+#### `total_asset_amount` (*read-only*)
+
+Returns the vault's total managed value, denominated in the underlying asset, represented by all shares in existence.
+
+> 📖 This is the vault's total managed value, *not* just the balance held in the contract. If assets are staked, lent, or deployed elsewhere, this returns the estimated total equivalent value, net of any deposit/withdrawal fees.
+
+```ts
+total_asset_amount(): string
+```
+
+---
+
+### Conversion Helpers
+
+These are view-only estimations. They do not update state and ignore user-specific constraints such as limits or fees. They MUST never panic, returning `0` if conversion is not possible.
+
+#### `convert_to_shares` (*read-only*)
+
+Converts an amount of underlying assets to the equivalent number of shares.
+
+```ts
+convert_to_shares(asset_amount: string): string
+```
+
+#### `convert_to_asset_amount` (*read-only*)
+
+Converts an amount of shares to the equivalent amount of underlying assets.
+
+```ts
+convert_to_asset_amount(shares: string): string
+```
+
+<Tip>
+
+Use `convert_*` for generic price quotes, and the `preview_*` methods below when you need an estimate that also accounts for per-user limits and fees.
+
+</Tip>
+
+---
+
+### Deposit & Redemption Limits
+
+All limit and preview methods are read-only and MUST never panic, returning `0` when the operation is not currently allowed. Limit methods should return `U128::MAX` to signal "unlimited".
+
+#### `max_deposit_amount` (*read-only*)
+
+Maximum amount of underlying assets that `receiver_id` can deposit.
+
+```ts
+max_deposit_amount(receiver_id: string): string
+```
+
+#### `preview_deposit_shares` (*read-only*)
+
+Simulates depositing exactly `asset_amount` and returns the number of shares that would be minted, accounting for per-user deposit limits and fees.
+
+```ts
+preview_deposit_shares(asset_amount: string): string
+```
+
+#### `max_mint_shares` (*read-only*)
+
+Maximum number of shares that `receiver_id` can mint.
+
+```ts
+max_mint_shares(receiver_id: string): string
+```
+
+#### `preview_asset_amount_required_to_mint_shares` (*read-only*)
+
+Simulates minting exactly `shares` and returns the amount of underlying assets required.
+
+```ts
+preview_asset_amount_required_to_mint_shares(shares: string): string
+```
+
+#### `max_redeem_shares` (*read-only*)
+
+Maximum number of shares that `owner_id` can redeem (considering balance, withdrawal restrictions, and lock-ups).
+
+```ts
+max_redeem_shares(owner_id: string): string
+```
+
+#### `preview_redeem_amount` (*read-only*)
+
+Simulates redeeming `shares` and returns the amount of assets that would be received, factoring in the owner's balance, withdrawal limits, and fees.
+
+```ts
+preview_redeem_amount(shares: string): string
+```
+
+#### `max_withdraw_amount` (*read-only*)
+
+Maximum amount of assets that `owner_id` can withdraw.
+
+```ts
+max_withdraw_amount(owner_id: string): string
+```
+
+#### `preview_shares_deducted_for_withdraw` (*read-only*)
+
+Simulates withdrawing exactly `asset_amount` and returns the number of shares that would be burned.
+
+```ts
+preview_shares_deducted_for_withdraw(asset_amount: string): string
+```
+
+---
+
+### Deposit & Mint
+
+Following the NEP-141 standard, assets are sent to the vault via [`ft_transfer_call`](../ft/standard#ft_transfer_call) on the underlying asset's contract, which invokes `ft_on_transfer` on the vault. Both the ERC-4626 `deposit` and `mint` operations are handled through this single entrypoint.
+
+```ts
+ft_on_transfer(sender_id: string, amount: string, msg: string): string
+```
+
+Upon a successful deposit, the vault MUST emit a [`VaultDeposit`](#events) event and should also emit an `FtMint` event for the issued shares.
+
+The `msg` parameter carries the deposit options. While implementers are free to define their own schema, the suggested convention is a JSON-encoded message:
+
+```rust
+pub struct DepositMessage {
+    /// Minimum shares that must be received for the deposit to succeed (slippage control).
+    min_shares: Option<U128>,
+    /// Maximum shares that can be minted, used for `mint` operations.
+    max_shares: Option<U128>,
+    /// Account that should receive the minted shares.
+    receiver_id: Option<AccountId>,
+    /// Optional memo for logging or off-chain indexing.
+    memo: Option<String>,
+    /// If `true`, the transfer is treated as a donation and no shares are minted.
+    donate: Option<bool>,
+}
+```
+
+As required by NEP-141, `ft_on_transfer` must return the number of tokens to refund to the sender: `0` if all tokens were accepted, or a non-zero value otherwise.
+
+---
+
+### Redemption & Withdrawal
+
+#### `redeem`
+
+Burns `shares` from the caller and returns the equivalent amount of underlying assets. If `receiver_id` is omitted, assets are sent to the caller. Set `min_amount_out` to `0` to ignore slippage, or to a reasonable value to protect against it.
+
+```ts
+redeem(shares: string, min_amount_out: string, receiver_id: string?): string
+```
+
+#### `withdraw`
+
+Withdraws exactly `asset_amount` of underlying tokens, burning the required number of shares. If `receiver_id` is omitted, assets are sent to the caller. Provide `max_shares_deducted` to protect against slippage.
+
+```ts
+withdraw(asset_amount: string, max_shares_deducted: string?, receiver_id: string?): string
+```
+
+Upon a successful withdrawal, the vault MUST emit a [`VaultWithdraw`](#events) event.
+
+---
+
+## Events
+
+Vaults emit standardized events so wallets, indexers, and other DeFi applications can track deposits and withdrawals.
+
+```rust
+/// Emitted when a deposit is received by the vault and shares are minted to `owner_id`.
+pub struct VaultDeposit {
+    /// Account that sends the deposit (payer of the assets).
+    pub sender_id: AccountId,
+    /// Account that receives the minted shares.
+    pub owner_id: AccountId,
+    /// Amount of underlying assets deposited into the vault.
+    pub asset_amount: U128,
+    /// Amount of shares minted and issued to `owner_id`.
+    pub shares: U128,
+    /// Optional memo provided by the sender for off-chain use.
+    pub memo: Option<String>,
+}
+
+/// Emitted when shares are redeemed: the vault burns shares from `owner_id`
+/// and transfers the equivalent assets to `receiver_id`.
+pub struct VaultWithdraw {
+    /// Account that owns the shares being redeemed (burned).
+    pub owner_id: AccountId,
+    /// Account receiving the underlying assets.
+    pub receiver_id: AccountId,
+    /// Amount of shares redeemed (burned from the vault).
+    pub shares: U128,
+    /// Amount of underlying assets withdrawn from the vault.
+    pub asset_amount: U128,
+    /// Optional memo provided by the redeemer for off-chain use.
+    pub memo: Option<String>,
+}
+```
+
+Because transactions on NEAR are non-atomic, a vault should emit `VaultWithdraw` in one of two ways:
+
+1. Emit `VaultWithdraw` when the fee is deducted, and emit a compensating `VaultDeposit` if the withdrawal later fails; or
+2. Emit `VaultWithdraw` only if the withdrawal succeeds.
+
+> In the [reference implementation](https://github.com/Meteor-Wallet/tokenized-vault-nep-implementation), an `FtBurn` event is emitted when `withdraw` is called. On success, a `VaultWithdraw` event is emitted in the `resolve_withdraw` callback; on failure, an `FtMint` event restores the user's balance.
+
+---
+
+## Security Considerations
+
+When implementing a vault, keep the following risks in mind:
+
+- **Exchange rate manipulation (inflation attacks):** if the vault has a permissionless donation mechanism, an attacker can donate assets to inflate the share price and steal value from later depositors. Mitigate by seeding a non-trivial initial deposit and/or using a virtual decimal offset on issued shares (demonstrated in the [reference implementation](https://github.com/Meteor-Wallet/tokenized-vault-nep-implementation)).
+- **Cross-contract calls:** `redeem` and `withdraw` perform asynchronous FT transfers, opening the door to reentrancy. Use proper state management, callback security, and rollback mechanisms for failed operations.
+- **Rounding direction:** always round in favor of the vault — round *down* when issuing shares or transferring assets out, round *up* when calculating shares/assets required for a given amount. This prevents value extraction through repeated micro-transactions.
+- **Oracle and external price dependencies:** stale oracle data creates temporal windows for exploitation. Include staleness checks, prevent operations during oracle updates, and consider fallback pricing for oracle failures.
+
+---
+
+## Reference Implementation
+
+A reference implementation is available at [Meteor-Wallet/tokenized-vault-nep-implementation](https://github.com/Meteor-Wallet/tokenized-vault-nep-implementation).
