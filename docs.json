@@ -410,6 +410,7 @@
               "web3-apps/tutorials/frontend-multiple-contracts",
               "web3-apps/backend/backend",
               "web3-apps/tutorials/data-types",
+              "web3-apps/tutorials/account-validation",
               "web3-apps/tutorials/meta-transactions",
               {
                 "group": "Testing on Localnet",
