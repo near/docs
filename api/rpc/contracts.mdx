@@ -16,6 +16,8 @@ The RPC API enables you to view details about accounts and contracts as well as 
 | [`view_access_key_list`](#view-access-key-list) | List all access keys on an account |
 | [`view_gas_key_nonces`](#view-gas-key-nonces) | List the parallel nonces of a gas key |
 | [`view_code`](#view-contract-code) | Get deployed contract WASM code |
+| [`view_global_contract_code`](#view-global-contract-code-by-hash) | Get global contract WASM code by its code hash |
+| [`view_global_contract_code_by_account_id`](#view-global-contract-code-by-account) | Get global contract WASM code by its owner account |
 | [`view_state`](#view-contract-state) | Get contract storage data |
 | [`data_changes`](#view-contract-state-changes) | Monitor contract state changes |
 | [`contract_code_changes`](#view-contract-code-changes) | Monitor contract deployments |
@@ -429,6 +431,98 @@ Returns the contract code (Wasm binary) deployed to the account. The returned co
     http POST https://rpc.testnet.near.org \
       jsonrpc=2.0 id=dontcare method=query \
       params:='{"request_type":"view_code","finality":"final","account_id":"contract.rpc-examples.testnet"}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## View Global Contract Code by Hash
+
+Returns the global contract's Wasm binary for an immutable global contract identified by its code hash. The returned code is base64-encoded.
+
+- **method**: `query`
+- **params**: `request_type: view_global_contract_code`, `finality` OR `block_id`, `code_hash`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_global_contract_code",
+        "finality": "final",
+        "code_hash": "DxfRbrjT3QPmoANMDYTR6iXPGJr7xRUyDnQhcAWjcoFF"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'view_global_contract_code',
+      finality: 'final',
+      code_hash: 'DxfRbrjT3QPmoANMDYTR6iXPGJr7xRUyDnQhcAWjcoFF',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"view_global_contract_code","finality":"final","code_hash":"DxfRbrjT3QPmoANMDYTR6iXPGJr7xRUyDnQhcAWjcoFF"}'
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## View Global Contract Code by Account
+
+Returns the global contract's Wasm binary for the global contract published under an account ID. The returned code is base64-encoded.
+
+- **method**: `query`
+- **params**: `request_type: view_global_contract_code_by_account_id`, `finality` OR `block_id`, `account_id`
+
+<Tabs>
+  <Tab title="JSON">
+    ```json
+    {
+      "jsonrpc": "2.0",
+      "id": "dontcare",
+      "method": "query",
+      "params": {
+        "request_type": "view_global_contract_code_by_account_id",
+        "finality": "final",
+        "account_id": "nft-contract.testnet"
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```js
+    import { JsonRpcProvider } from "near-api-js";
+
+    const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
+
+    const response = await provider.query({
+      request_type: 'view_global_contract_code_by_account_id',
+      finality: 'final',
+      account_id: 'nft-contract.testnet',
+    });
+    ```
+  </Tab>
+  <Tab title="HTTPie">
+    ```bash
+    http POST https://rpc.testnet.near.org \
+      jsonrpc=2.0 id=dontcare method=query \
+      params:='{"request_type":"view_global_contract_code_by_account_id","finality":"final","account_id":"nft-contract.testnet"}'
     ```
   </Tab>
 </Tabs>
