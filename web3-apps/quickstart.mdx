@@ -83,7 +83,7 @@ NEAR Connect is a library that allows users to select their preferred NEAR walle
 ### Navigation Bar
 The navigation bar implements a button to allow users to `login` and `logout` with their NEAR wallet. The main logic comes from the `useNearWallet` hook, which exposes all wallet related functionality.
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/components/navigation.tsx" language="jsx" />
+<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx" language="jsx" />
 
 ---
 
@@ -113,18 +113,18 @@ Just like the [navigation bar](#navigation-bar), we use the `useNearWallet` hook
 - `viewFunction` is used to call functions that are read-only
 - `callFunction` is used to call functions that modify the state of the contract
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.tsx" language="jsx" start="11" end="11" />
+<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" language="jsx" start="11" end="11" />
 
 #### Calling Read-Only Methods
 
 For example, when we want to fetch the current greeting stored in the contract, we use `viewFunction` inside a `useEffect` hook:
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.tsx" language="jsx" start="17" end="19" />
+<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" language="jsx" start="17" end="19" />
 
 #### Calling Change Methods
 On the other hand, when the user submits a new greeting, we use `callFunction` to send a transaction to the contract:
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/master/frontend/src/pages/hello-near/index.tsx" language="jsx" start="25" end="37" />
+<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" language="jsx" start="25" end="37" />
 
 ---
 
