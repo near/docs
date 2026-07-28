@@ -90,37 +90,6 @@ Since there are two ways to reference a global contract ([by account](/smart-con
   </Tabs>
 
   </Tab>
-  <Tab title="🌐 JavaScript">
-
-  Once you've created an Account instance, you can deploy your regular contract as a global contract.
-
-  <Tabs>
-  <Tab title="By Account ID">
-
-  Let’s look at an example of deploying a global contract by account.
-  
-  To do this, use the `deployGlobalContract` function and set the mode to `accountId`, along with the contract’s code bytes.
-  
-    <Github fname="deploy-global-contract-by-account.ts" language="js"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts#L22-L27"
-    start="22" end="27" />
-
-  </Tab>
-
-  <Tab title="By Hash">
-
-  Let’s look at an example of deploying a global contract by hash.
-  
-  To do this, use the `deployGlobalContract` function and set the mode to `codeHash`, along with the contract’s code bytes.
-
-    <Github fname="deploy-global-contract-by-hash.ts" language="js"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts#L24-L29"
-    start="24" end="29" />
-  
-  </Tab>
-  </Tabs>
-
-  </Tab>
 
   <Tab title="🦀 Rust">
 
@@ -191,35 +160,6 @@ Let’s see how you can reference and use your global contract from another acco
   # Using global contract deployed by <global_contract_hash> hash
   near contract deploy <account_id> use-global-hash <global_contract_hash> without-init-call network-config testnet
   ```
-
-  </Tab>
-  </Tabs>
-
-  </Tab>
-  <Tab title="🌐 JavaScript">
-
-  <Tabs>
-  <Tab title="By Account ID">
-
-  To reference a global contract by account, you need to call the `useGlobalContract` function and pass the source `accountId` where the contract was originally deployed.
-
-    <Github fname="deploy-global-contract-by-account.ts" language="js"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts#L32-L38"
-    start="32" end="38" />
-
-  </Tab>
-
-  <Tab title="By Hash">
-
-  To reference a global contract by hash, you need to call the `useGlobalContract` function and pass the source `codeHash` of the original contract.
-
-  ```js
-  const hash = bs58.encode(sha256(wasm));
-  ```
-
-    <Github fname="deploy-global-contract-by-hash.ts" language="js"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts#L45-L53"
-    start="45" end="53" />
 
   </Tab>
   </Tabs>

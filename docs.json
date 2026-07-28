@@ -60,6 +60,10 @@
   },
   "redirects": [
     {
+      "source": "/smart-contracts/tutorials/zero-to-hero/nfts-js",
+      "destination": "/smart-contracts/tutorials/zero-to-hero/nfts"
+    },
+    {
       "source": "/smart-contracts/contracts-list",
       "destination": "/tools/contracts-list"
     },
@@ -382,8 +386,7 @@
                 "icon": "rocket",
                 "pages": [
                   "smart-contracts/tutorials/zero-to-hero/fts",
-                  "smart-contracts/tutorials/zero-to-hero/nfts",
-                  "smart-contracts/tutorials/zero-to-hero/nfts-js"
+                  "smart-contracts/tutorials/zero-to-hero/nfts"
                 ]
               }
             ]

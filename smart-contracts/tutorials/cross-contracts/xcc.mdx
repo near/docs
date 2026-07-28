@@ -30,27 +30,8 @@ You have two options to start the project:
 
 ## Structure of the Example
 
-The smart contract is available in two flavors: Rust and JavaScript
+The smart contract is written in Rust and has the following structure:
 
-<Tabs>
-
-  <Tab title="🌐 JavaScript">
-
-```bash
-┌── sandbox-ts # sandbox testing
-│    ├── hello-near
-│    │    └── hello-near.wasm
-│    └── main.ava.ts
-├── src # contract's code
-│    └── contract.ts
-├── package.json
-├── README.md
-└── tsconfig.json
-```
-
-  </Tab>
-
-  <Tab title="🦀 Rust">
 
 ```bash
 ┌── tests # sandbox testing
@@ -65,9 +46,6 @@ The smart contract is available in two flavors: Rust and JavaScript
 └── rust-toolchain.toml
 ```
 
-  </Tab>
-
-</Tabs>
 
 ---
 
@@ -80,11 +58,6 @@ The contract exposes methods to query the greeting and change it. These methods 
 The contract performs a cross-contract call to `hello.near-example.testnet` to get the greeting message, and then handles the response in a **callback function**.
 
 <Tabs>
-  <Tab title="🌐 JavaScript">
-    <Github fname="contract.ts" language="ts"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts#L25-L40"
-            start="25" end="40" />
-  </Tab>
   <Tab title="🦀 Rust (low level)">
     <Github fname="lib.rs" language="rust"
             url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L6-L23"
@@ -109,18 +82,9 @@ The callback function processes the result of the cross-contract call. In this c
 
 Notice that the callback function is marked as **private**, meaning it can only be called by the contract itself.
 
-<Tabs>
-  <Tab title="🌐 JavaScript">
-    <Github fname="contract.ts" language="ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/src/contract.ts#L42-L52"
-      start="42" end="52" />
-  </Tab>
-  <Tab title="🦀 Rust">
-    <Github fname="lib.rs" language="rust"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L25-L39"
-            start="25" end="39" />
-  </Tab>
-</Tabs>
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L25-L39"
+        start="25" end="39" />
 
 ---
 
@@ -128,25 +92,11 @@ Notice that the callback function is marked as **private**, meaning it can only 
 
 The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
 
-<Tabs>
-  <Tab title="🌐 JavaScript">
 
-  ```bash
-  cd contract-simple-ts
-  yarn
-  yarn test
-  ```
-
-  </Tab>
-  <Tab title="🦀 Rust">
-
-  ```bash
-  cd contract-simple-rs
-  cargo test
-  ```
-  </Tab>
-
-</Tabs>
+```bash
+cd contract-simple-rs
+cargo test
+```
 
 <Tip>
 The `integration tests` use a sandbox to create NEAR users and simulate interactions with the contract.
@@ -154,16 +104,11 @@ The `integration tests` use a sandbox to create NEAR users and simulate interact
 
 In this project in particular, the integration tests first deploy the `hello-near` contract. Then,
 they test that the cross-contract call correctly sets and retrieves the message. You will find the integration tests
-in `sandbox-ts/` for the JavaScript version and in `tests/` for the Rust version.
+in `tests/`.
 
-<CodeGroup>
-  <Github fname="main.ava.ts"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-ts/sandbox-ts/main.ava.ts"
-            start="8" end="52" />
-  <Github fname="lib.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs"
-            start="4" end="77" />
-</CodeGroup>
+<Github fname="tests.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs"
+        start="4" end="77" />
 
 ### Deploying the Contract to the NEAR network
 
@@ -187,28 +132,14 @@ In order to deploy the contract you will need to create a NEAR account.
   </Tab>
 </Tabs>
 
-Go into the directory containing the smart contract (`cd contract-advanced-ts` or `cd contract-advanced-rs`), build and deploy it:
+Go into the directory containing the smart contract (`cd contract-simple-rs`), build and deploy it:
 
-<Tabs>
 
-  <Tab title="🌐 JavaScript">
+```bash
+cargo near deploy build-non-reproducible-wasm <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
 
-    ```bash
-    npm run build
-    near deploy <accountId> ./build/cross_contract.wasm --initFunction new --initArgs '{"hello_account":"hello.near-example.testnet"}'
-    ```
+```
 
-  </Tab>
-  <Tab title="🦀 Rust">
-  
-  ```bash
-  cargo near deploy build-non-reproducible-wasm <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
-
-  ```
-
-  </Tab>
-
-</Tabs>
 
 ### CLI: Interacting with the Contract
 

@@ -71,23 +71,28 @@ export const ExplainCode = ({ children, languages }) => {
     return set;
   }
 
-  const childArray = Array.isArray(children) ? children.flat(Infinity) : (children ? [children] : []);
-
   const blocks = [];
   const files = [];
 
-  for (const child of childArray) {
-    if (!child || typeof child !== 'object' || !child.props) continue;
-    if (child.props.highlights !== undefined) {
+  // Children may arrive wrapped in fragments or intermediate nodes depending on
+  // how MDX compiles the page, so walk the tree instead of assuming a flat list
+  function collect(node) {
+    if (!node) return;
+    if (Array.isArray(node)) { node.forEach(collect); return; }
+    if (typeof node !== 'object' || !node.props) return;
+    if (node.props.highlights !== undefined) {
       let hl = {};
-      try { hl = JSON.parse(child.props.highlights); } catch { }
+      try { hl = JSON.parse(node.props.highlights); } catch { }
       if (language in hl) {
-        blocks.push({ text: child.props.children, highlight: hl[language], fname: child.props.fname, type: child.props.type });
+        blocks.push({ text: node.props.children, highlight: hl[language], fname: node.props.fname, type: node.props.type });
       }
-    } else if (child.props.language === language) {
-      files.push({ ...child.props });
+    } else if (node.props.language !== undefined) {
+      if (node.props.language === language) files.push({ ...node.props });
+    } else {
+      collect(node.props.children);
     }
   }
+  collect(children);
 
   const activeFname = blocks[activeBlock]?.fname || files[0]?.fname;
   const fileKey = `${activeFname}-${language}`;
@@ -161,7 +166,12 @@ export const ExplainCode = ({ children, languages }) => {
 
   return (
     <div className="my-6 not-prose">
-      {/* Language tabs */}
+      {/* Language tabs (plain label when there is only one language) */}
+      {langList.length === 1 ? (
+        <div className="mb-4 text-sm font-medium text-gray-800 dark:text-gray-200">
+          {lang2label[langList[0]] || langList[0]}
+        </div>
+      ) : (
       <div className="flex border-b border-gray-200 dark:border-gray-700 mb-4">
         {langList.map((lang) => (
           <button
@@ -179,6 +189,7 @@ export const ExplainCode = ({ children, languages }) => {
           </button>
         ))}
       </div>
+      )}
 
       {/* Two-column layout */}
       <div className="flex gap-8 items-start">

@@ -67,7 +67,7 @@ Want to try these examples immediately? Click the **"Open in NearPlay"** button 
 
 ## Structure of the Examples
 
-All examples follow a consistent structure, making it easy to navigate between them. Each repository contains the **same smart contract** implemented in **Rust**, **Javascript**, and sometimes **Python**, along with a **simple frontend** to interact with the contract.
+All examples follow a consistent structure, making it easy to navigate between them. Each repository contains the **smart contract** written in **Rust** (`contract-rs`), along with a **simple frontend** to interact with the contract.
 
 ```bash
 ┌── contract-rs # contract's code in Rust
@@ -75,16 +75,6 @@ All examples follow a consistent structure, making it easy to navigate between t
 │    ├── tests  # sandbox test
 │    ├── Cargo.toml
 │    └── rust-toolchain.toml
-├── contract-ts # contract's code in Typescript
-│    ├── src    # contract's code
-│    ├── sandbox-test  # sandbox test
-│    ├── package.json
-│    └── tsconfig.json
-├── contract-py # contract's code in Python (some examples)
-│    ├── contract.py  # contract's code
-│    ├── tests        # sandbox test
-│    ├── pyproject.toml
-│    └── uv.lock
 ├── frontend    # React + Next.JS frontend
 │    ├── src    # frontend's implementation
 │    ├── public 
@@ -93,6 +83,10 @@ All examples follow a consistent structure, making it easy to navigate between t
 │    └── jsconfig.json
 └── README.md
 ```
+
+<Note>
+Some repositories also contain the same contract implemented in other languages using community-maintained SDKs — this guide only walks through the Rust implementation.
+</Note>
 
 ---
 
@@ -151,41 +145,20 @@ export default function App() {
 
 ## Smart Contract
 
-All repositories include the same smart contract implemented in different languages, including **Rust**, **Javascript**, and sometimes **Python**.
+All repositories include the same smart contract implemented in **Rust**.
 
-The contracts are implemented following the latest versions of each SDK, and include sandbox tests showcasing how to properly test smart contracts in a realistic environment. 
+The contracts are implemented following the latest version of the SDK, and include sandbox tests showcasing how to properly test smart contracts in a realistic environment. 
 
 ### Testing
 
 Each contract includes sandbox tests that simulate real user interactions. For example, in the `Guest Book` example, the tests cover scenarios like having multiple accounts signing the guest book, including premium messages.
 
-<Tabs>
-  <Tab title="🦀 Rust">
-  
+
 ```bash
 cd contract-rs
 cargo test
 ```
 
-  </Tab>
-  <Tab title="🌐 JavaScript">
-
-```bash
-cd contract-ts
-yarn
-yarn test
-```
-
-  </Tab>
-  <Tab title="🐍 Python">
-  
-```bash
-cd contract-py
-uv run pytest
-```
-
-  </Tab>
-</Tabs>
 
 ### Creating an Account
 
@@ -205,34 +178,12 @@ Here we are using the `--useFaucet` flag to create a new account and pre-fund it
 
 Once you created an account to host the contract, you can build and deploy it: 
 
-<Tabs>
-  <Tab title="🦀 Rust">
-  
+
 ```bash
 cd contract-rs
 cargo near deploy build-non-reproducible-wasm <accountId>
 ```
 
-  </Tab>
-  <Tab title="🌐 JavaScript">
-
-```bash
-cd contract-ts
-npm run build
-near deploy <accountId> ./build/<contract-name>.wasm
-```
-
-  </Tab>
-  <Tab title="🐍 Python">
-  
-```bash
-cd contract-py
-uvx nearc contract.py
-near deploy <accountId> <contract-name>.wasm
-```
-
-  </Tab>
-</Tabs>
 
 ### Interacting via CLI
 

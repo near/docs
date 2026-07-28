@@ -31,43 +31,16 @@ You have two options to start the Donation Example:
 
 ## Structure of the Example
 
-The smart contract is available in two flavors: Rust and JavaScript
+The smart contract is written in Rust and has the following structure:
 
-<Tabs>
-
-  <Tab title="🌐 JavaScript">
-
-```bash
-┌── sandbox-ts # sandbox testing
-│    ├── external-contracts
-│    │    ├── counter.wasm
-│    │    ├── guest-book.wasm
-│    │    └── hello-near.wasm
-│    └── main.ava.ts
-├── src # contract's code
-│    ├── internal
-│    │    ├── batch_actions.ts
-│    │    ├── constants.ts
-│    │    ├── multiple_contracts.ts
-│    │    ├── similar_contracts.ts
-│    │    └── utils.ts
-│    └── contract.ts
-├── package.json
-├── README.md
-└── tsconfig.json
-```
-
-  </Tab>
-
-  <Tab title="🦀 Rust">
 
 ```bash
 ┌── tests # sandbox testing
-│    ├── external-contracts
+│    ├── contracts # external contracts used in tests
 │    │    ├── counter.wasm
 │    │    ├── guest-book.wasm
-│    │    └── hello-near.wasm
-│    └── main.ava.ts
+│    │    └── hello-near
+│    └── tests.rs
 ├── src # contract's code
 │    ├── batch_actions.rs
 │    ├── lib.rs
@@ -78,9 +51,6 @@ The smart contract is available in two flavors: Rust and JavaScript
 └── rust-toolchain.toml
 ```
 
-  </Tab>
-
-</Tabs>
 
 ---
 
@@ -92,37 +62,18 @@ You can aggregate multiple actions directed towards one same contract into a bat
 Methods called this way are executed sequentially, with the added benefit that, if one fails then
 they **all get reverted**.
 
-<CodeGroup>
-  <Github fname="contract.ts"
-          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-          start="38" end="41" />
-    <Github fname="batch_actions.ts"
-          url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
-          start="5" end="17" />
-  <Github fname="batch_actions.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-            start="8" end="20" />
-</CodeGroup>
+<Github fname="batch_actions.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
+        start="8" end="20" />
 
 #### Getting the Last Response
 
 In this case, the callback has access to the value returned by the **last
 action** from the chain.
 
-<CodeGroup>
-  <Github fname="contract.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="43" end="46" />
-    <Github fname="batch_actions.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/batch_actions.ts"
-      start="19" end="29" />
-    <Github fname="utils.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
-      start="3" end="20" />
-  <Github fname="batch_actions.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-            start="22" end="35" />
-</CodeGroup>
+<Github fname="batch_actions.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
+        start="22" end="35" />
 
 ---
 
@@ -131,37 +82,18 @@ action** from the chain.
 A contract can call multiple other contracts. This creates multiple transactions that execute
 all in parallel. If one of them fails the rest **ARE NOT REVERTED**.
 
-<CodeGroup>
-  <Github fname="contract.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="48" end="51" />
-    <Github fname="multiple_contracts.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
-      start="6" end="21" />
-  <Github fname="multiple_contracts.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
-            start="16" end="55" />
-</CodeGroup>
+<Github fname="multiple_contracts.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
+        start="16" end="55" />
 
 #### Getting All Responses
 
 In this case, the callback has access to an **array of responses**, which have either the
 value returned by each call, or an error message.
 
-<CodeGroup>
-  <Github fname="contract.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="53" end="58" />
-    <Github fname="multiple_contracts.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/multiple_contracts.ts"
-      start="24" end="41" />
-    <Github fname="utils.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
-      start="3" end="20" />
-  <Github fname="multiple_contracts.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
-            start="57" end="90" />
-</CodeGroup>
+<Github fname="multiple_contracts.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
+        start="57" end="90" />
 
 ---
 
@@ -172,37 +104,18 @@ It simply showcases a different way to check the results by directly accessing t
 
 In this case, we call multiple contracts that will return the same type:
 
-<CodeGroup>
-  <Github fname="contract.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="65" end="70" />
-    <Github fname="similar_contracts.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
-      start="6" end="35" />
-  <Github fname="similar_contracts.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
-            start="8" end="31" />
-</CodeGroup>
+<Github fname="similar_contracts.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
+        start="8" end="31" />
 
 #### Getting All Responses
 
 In this case, the callback again has access to an **array of responses**, which we can iterate checking the
 results.
 
-<CodeGroup>
-  <Github fname="contract.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/contract.ts"
-      start="62" end="65" />
-    <Github fname="similar_contracts.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/similar_contracts.ts"
-      start="37" end="54" />
-    <Github fname="utils.ts"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-ts/src/internal/utils.ts"
-      start="3" end="20" />
-  <Github fname="similar_contracts.rs"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
-            start="32" end="57" />
-</CodeGroup>
+<Github fname="similar_contracts.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
+        start="32" end="57" />
 
 ---
 
@@ -210,26 +123,12 @@ results.
 
 The contract readily includes a set of unit and sandbox testing to validate its functionality. To execute the tests, run the following commands:
 
-<Tabs>
-  <Tab title="🌐 JavaScript">
 
-  ```bash
-  cd contract-advanced-ts
-  yarn
-  yarn test
-  ```
+```bash
+cd contract-advanced-rs
+cargo test
+```
 
-  </Tab>
-  <Tab title="🦀 Rust">
-  
-  ```bash
-  cd contract-advanced-rs
-  cargo test
-  ```
-
-  </Tab>
-
-</Tabs>
 
 <Tip>
 The `integration tests` use a sandbox to create NEAR users and simulate interactions with the contract.
@@ -257,27 +156,13 @@ In order to deploy the contract you will need to create a NEAR account.
   </Tab>
 </Tabs>
 
-Go into the directory containing the smart contract (`cd contract-advanced-ts` or `cd contract-advanced-rs`), build and deploy it:
+Go into the directory containing the smart contract (`cd contract-advanced-rs`), build and deploy it:
 
-<Tabs>
 
-  <Tab title="🌐 JavaScript">
+```bash
+cargo near deploy build-non-reproducible-wasm <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+```
 
-    ```bash
-    npm run build
-    near deploy <accountId> ./build/cross_contract.wasm --initFunction new --initArgs '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}'
-    ```
-
-  </Tab>
-  <Tab title="🦀 Rust">
-  
-  ```bash
-  cargo near deploy build-non-reproducible-wasm <accountId> with-init-call new json-args '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
-  ```
-
-  </Tab>
-
-</Tabs>
 
 ### CLI: Interacting with the Contract
 

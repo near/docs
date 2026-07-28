@@ -11,20 +11,7 @@ Smart contracts store data in their account's state, which is public on the chai
 
 It is important to know that the account's **code** and account's **storage** are **independent**. [Updating the code](../release/upgrade) does **not erase** the state.
 
-<ExplainCode languages="rust,js,python,go" >
-
-<Block highlights='{"js": "3-6,10-13", "python": "7,10-14,17,20"}' fname="auction">
-
-    ### Defining the State
-    The attributes of the `class` marked as the contract define the data that will be stored.
-
-    The contract can store all native types (e.g. `number`, `string`, `Array`, `Map`) as well as complex objects.
-
-    For example, our Auction contract stores when the auction ends, and an object representing the highest bid.
-
-    **Note:** The SDK also provides [collections](./collections) to efficiently store collections of data.
-
-</Block>
+<ExplainCode languages="rust" >
 
 <Block highlights='{"rust": "6-9,13-18"}' fname="auction">
 
@@ -41,18 +28,7 @@ It is important to know that the account's **code** and account's **storage** ar
 
 </Block>
 
-<Block highlights='{"go": "22-28"}' fname="auction">
-
-    ### Defining the State
-    The attributes of the `struct` marked with `@contract:state` define the data that will be stored.
-
-    The contract can store all native types (e.g. `uint64`, `string`, `bool`) as well as complex objects, serialized as JSON.
-
-    For example, our Auction contract stores when the auction ends, and an object representing the highest bid.
-
-</Block>
-
-<Block highlights='{"js":"", "rust": "", "python": "", "go": ""}' fname="auction" type='info'>
+<Block highlights='{"rust": ""}' fname="auction" type='info'>
 
 <Warning>
 
@@ -64,7 +40,7 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"js": "", "rust": "", "python": "", "go": ""}' fname="auction" >
+<Block highlights='{"rust": ""}' fname="auction" >
 
     ### Initializing the State
     After the contract is deployed, its state is empty and needs to be initialized with
@@ -76,27 +52,6 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"js": "8,15-20", "python": "3-22"}' fname="auction">
-
-    ### I. Initialization Functions
-    An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
-
-    In our Auction example, the contract has an initialization function that sets when the auction ends. Note the `@initialization` decorator, and the forced initialization on `NearBindgen`.
-
-    **Note:** It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions).
-
-</Block>
-
-<Block highlights='{"python": "15-30", "js": "10-13"}' fname="auction" type='info'>
-
-<Warning>
-
-In Python, you need to manage the state initialization explicitly. The SDK doesn't enforce that initialization happens before other methods are called - you'll need to add your own checks if required.
-
-</Warning>
-
-</Block>
-
 <Block highlights='{"rust": "12,22-34"}' fname="auction">
 
     ### I. Initialization Functions
@@ -105,30 +60,6 @@ In Python, you need to manage the state initialization explicitly. The SDK doesn
     In our Auction example, the contract has an initialization function that sets when the auction ends. The contract derives the `PanicOnDefault`, which forces the user to call the init method denoted by the `#[init]` macro.
 
     **Note:** It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions).
-
-</Block>
-
-<Block highlights='{"go": "30-40"}' fname="auction">
-
-    ### I. Initialization Functions
-    An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
-
-    In our Auction example, the contract has an initialization function that sets when the auction ends. The function is marked with the `@contract:init` comment directive.
-
-    **Note:** It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions.md).
-
-</Block>
-
-<Block highlights='{"js": "5", "python": "5"}' fname="hello">
-
-    ### II. Default State
-    Another option to initialize the state is to set default values for the attributes of the class.
-
-    Such is the case for our "Hello World" contract, which stores a `greeting` with the default value `"Hello"`.
-
-    The first time the contract is called (somebody executes `get_greeting` or `set_greeting`), the default values will be stored in the state, and the state will be considered initialized.
-
-    **Note:** The state can only be initialized once.
 
 </Block>
 
@@ -145,16 +76,7 @@ In Python, you need to manage the state initialization explicitly. The SDK doesn
 
 </Block>
 
-<Block highlights='{"go": ""}' fname="hello">
-
-    ### II. Default State
-    In Go, when no `@contract:init` function is called, the contract's state struct is zero-initialized using Go's default zero values — `""` for strings, `0` for numbers, `false` for booleans.
-
-    **Note:** The state can only be initialized once.
-
-</Block>
-
-<Block highlights='{"js": "", "rust":"", "python": "", "go": "7-10"}' fname="hello" type='info'>
+<Block highlights='{"rust":""}' fname="hello" type='info'>
 
 <Note>
 **Lifecycle of the State**
@@ -168,7 +90,7 @@ When the method finishes executing successfully, all the changes to the state ar
 
 </Block>
 
-<Block highlights='{"js": "", "rust":"", "python": "", "go": ""}' fname="hello" type='info'>
+<Block highlights='{"rust":""}' fname="hello" type='info'>
 
 <Warning>
 **State and Code**
@@ -183,14 +105,6 @@ Make sure to read the [updating a contract](../release/upgrade) if you run into 
 
 </Block>
 
-<File language="js" fname="auction"
-    url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
-    start="2" end="60" />
-
-<File language="js" fname="hello"
-    url="https://github.com/near-examples/hello-near-examples/blob/main/contract-ts/src/contract.ts"
-    start="2" end="18" />
-
 <File language="rust" fname="auction"
     url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
     start="2" end="83" />
@@ -198,17 +112,5 @@ Make sure to read the [updating a contract](../release/upgrade) if you run into 
 <File language="rust" fname="hello"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
     start="2" end="32" />
-
-<File language="python" fname="auction" url="https://github.com/r-near/near-py-examples/blob/main/auction.py" start="2" end="122"></File>
-
-<File language="python" fname="hello" url="https://github.com/r-near/near-py-examples/blob/main/hello-near.py" start="5" end="20"></File>
-
-<File language="go" fname="auction"
-    url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go"
-    start="1" end="121" />
-
-<File language="go" fname="hello"
-    url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/greeting/main.go"
-    start="1" end="27" />
 
 </ExplainCode>
