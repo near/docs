@@ -197,12 +197,16 @@ explanation it makes sense now!
 
 ## Gas refunds in meta transactions
 
-Gas refund receipts work exactly like for normal transaction. At every step, the
-difference between the pessimistic gas price and the actual gas price at that
-height is computed and refunded. At the end of the last step, additionally all
-remaining gas is also refunded at the original purchasing price. The gas refunds
-go to the signer of the original transaction, in this case the relayer. This is
-only fair, since the relayer also paid for it.
+Gas refund receipts work exactly like for normal transactions. At every step, the
+difference between the price at which the gas was bought and the price at which it
+was burned is refunded. At the end of the last step, all remaining gas is also
+refunded at the buy price. The gas refunds go to the signer of the original
+transaction, in this case the relayer. This is only fair, since the relayer also
+paid for it.
+
+Note that the relayer has to hold more NEAR upfront than the meta transaction
+finally costs, because gas is
+[bought at a price that can be higher than the price it burns at](/protocol/transactions/gas#buying-vs-burning-gas).
 
 ---
 

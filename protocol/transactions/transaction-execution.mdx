@@ -35,7 +35,7 @@ During this process a `FunctionCall` could span a **cross-contract call**, creat
 Each `Receipt` created from the function call take an additional block to be processed. Notice that, if those `Receipts` are `FunctionCall` they could spawn new `Receipts` and so on.
 
 #### Final Block: Gas is Refunded
-A final `Receipt` is processed in a new block, refunding any extra gas paid by the user.
+A final `Receipt` is processed in a new block, refunding any extra gas paid by the user. Almost every transaction ends with one of these, since the price gas is [bought at](./gas#buying-vs-burning-gas) is usually higher than the price it burns at.
 
 ### Waiting for a Transaction
 
@@ -61,7 +61,7 @@ Notice that `ExecutedOptimistic` and `IncludedFinal` are not ordered relative to
 
 #### Refund receipts
 
-When a receipt executes with leftover gas, NEAR generates a refund receipt to return the unused payment to the sender. These always succeed and don’t affect application logic, so `ExecutedOptimistic` and `Executed` don’t wait for them — only `Final` does.
+When a receipt executes, NEAR generates a refund receipt to return the unused payment to the sender: the gas that was attached but not used, plus the difference between the price the gas was bought at and the price it was burned at. These always succeed and don’t affect application logic, so `ExecutedOptimistic` and `Executed` don’t wait for them — only `Final` does.
 
 <Tip>
 Most transactions will just spawn a receipt to process the actions, and a receipt to refund the gas, being final in 1-3 blocks (~1-3 seconds):
