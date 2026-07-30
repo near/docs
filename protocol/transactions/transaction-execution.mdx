@@ -35,7 +35,7 @@ During this process a `FunctionCall` could span a **cross-contract call**, creat
 Each `Receipt` created from the function call take an additional block to be processed. Notice that, if those `Receipts` are `FunctionCall` they could spawn new `Receipts` and so on.
 
 #### Final Block: Gas is Refunded
-A final `Receipt` is processed in a new block, refunding any extra gas paid by the user. Almost every transaction ends with one of these, since the price gas is [bought at](./gas#buying-vs-burning-gas) is usually higher than the price it burns at.
+A final `Receipt` is processed in a new block, refunding any extra gas paid by the user. Almost every transaction ends with one of these, since the [buy price](./gas#buying-vs-burning-gas) is usually higher than the burn price.
 
 ### Waiting for a Transaction
 
