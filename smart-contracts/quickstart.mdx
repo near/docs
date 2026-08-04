@@ -7,16 +7,9 @@ description: "Create your first smart contract in Rust and deploy it to the NEAR
 
 import {Github} from '/snippets/github.jsx';
 
-Welcome! [NEAR accounts](../protocol/accounts-contracts/account-model) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
+Welcome! [NEAR accounts](../protocol/accounts-contracts/account-model) can store small apps known as smart contracts. In this tutorial, we'll guide you through creating your first contract on the NEAR **testnet**.
 
-Join us in creating a friendly auction contract, which allows users to place bids, track the highest bidder and claim tokens at the end of the auction.
-
-<Tip>
-**Why Rust?**
-
-NEAR smart contracts are written in [Rust](https://www.rust-lang.org/) and compiled to WebAssembly. Rust offers the most mature tooling, best performance, and the strongest safety guarantees when handling real assets on-chain.
-
-</Tip>
+Create an auction contract that allows users to place bids, track the highest bidder, and claim tokens at the end of the auction.
 
 <Accordion title="Prefer an online IDE?">
 
@@ -26,7 +19,7 @@ NEAR smart contracts are written in [Rust](https://www.rust-lang.org/) and compi
 
   ![NEAR Playground](/assets/docs/smart-contracts/NEAR-Playground.png)
 
-  [![Try a Counter Example in NearPlay](https://img.shields.io/badge/Open%20in%20NearPlay-14b8a6?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTE4IDcgNCA0LTQgNE00IDEybDQgNC00LTQgNC00Ii8+PC9zdmc+&logoColor=white)](https://nearplay.app/embed/3450a8a0-57dc-4d3a-b5d0-7bed58a0c2a9)
+  [![Build a Counter in NearPlay](https://img.shields.io/badge/Open%20in%20NearPlay-14b8a6?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTE4IDcgNCA0LTQgNE00IDEybDQgNC00LTQgNC00Ii8+PC9zdmc+&logoColor=white)](https://nearplay.app/embed/3450a8a0-57dc-4d3a-b5d0-7bed58a0c2a9)
 
 </Accordion>
 
@@ -54,13 +47,13 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/release
 
 ---
 
-## Creating the Contract
+## Creating the contract
 
-Create a smart contract by using the `cargo near` scaffolding tool and following its instructions:
+Create a smart contract with the `cargo near` scaffolding tool by following its instructions:
 
 
 ```bash
-cargo near
+cargo near new
 ```
 
 ![img](/assets/docs/smart-contracts/hello-near-rs.gif)
@@ -69,85 +62,25 @@ _Creating a project using `cargo near new`_
 
 <Tip>
 
-For this tutorial we chose to name the project `auction`, but feel free to use any name you prefer
+For this tutorial, we chose to name the project `auction`, but feel free to use any name you prefer.
 
 </Tip>
 
 ---
 
-## Anatomy of the Contract
+## Build and deploy the contract
 
-The auction smart contract allows users to place bids, track the highest bidder and claim tokens at the end of the auction.
-
-Let's take a look at the different components of the contract and how they work together to implement this functionality.
-
-### Contract State & Initialization
-
-The contract stores the highest bid, auction end time, auctioneer address, and a flag to track if proceeds have been claimed. In order to set these parameters, an `init` function is provided, which must be called first to initialize the contract state.
-
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-        start="7" end="35" />
-
-### Placing Bids
-
-In order to place a bid, users will need to call the `bid` function while attaching a deposit representing their bid amount.
-
-The `bid` function will then validate that the auction is ongoing, if the user bid a higher amount than the one stored, it will record the new bid and refund the previous bidder.
-
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-        start="37" end="64" />
-
-### Claiming Proceeds
-
-Once the auction ends, any user can call `claim` to transfer the winning bid to the auctioneer:
-
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-        start="65" end="76" />
-
-### View Methods
-
-At all times, users can query the current state of the auction by calling its view methods (`get_highest_bid`, `get_auction_end_time`, `get_auctioneer`, `get_claimed`):
-
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-        start="78" end="92" />
-
----
-
-## Test the Contract
-
-Lets make sure the contract is working as expected by running its tests. Simply run the `test` command, the contract will then be compiled and deployed to a local sandbox for testing:
-
+Let's build the contract, create a NEAR testnet account, and deploy the contract to it.
 
 ```bash
-cargo test
-```
-
-
-Feel free to check the test files to see how they interact with the contract. In short, a local NEAR sandbox is created, the contract is deployed, and different methods are called to verify the expected behavior.
-
----
-
-## Build & Deploy the Contract
-
-Now that we know the tests are passing, let us deploy the contract! First, we need to compile it into WebAssembly:
-
-
-```bash
+# Build the contract
 cargo near build non-reproducible-wasm
-```
 
+# Create a free testnet account, replace `<account.testnet>` with your desired account name
+near create-account <account.testnet> --useFaucet
 
-### Create an Account
-
-Let us now create a NEAR account where we will deploy the contract:
-
-```bash
-# Replace <contract-acc.testnet> with a name for your contract account
-near create-account <contract-acc.testnet> --useFaucet
+# Deploy the contract to the account
+near deploy <account.testnet> ./target/near/auction.wasm
 ```
 
 <Tip>
@@ -159,7 +92,7 @@ If you already have a `testnet` account and would like to use it instead, you ca
 
 <Accordion title="Got an error on Windows?">
 
-When working on `WSL` - or any other headless Linux environment - you might encounter issues when trying to create an account as the `cli` tries to save the keys into the system's keychain.
+When working in `WSL`—or another headless Linux environment—you might encounter issues creating an account because the CLI tries to save keys to the system keychain.
 
 In such cases, you can try the following command to create the account:
 
@@ -169,61 +102,64 @@ near account create-account sponsor-by-faucet-service <your-account-id.testnet> 
 
 </Accordion>
 
-### Deploy it!
-
-With the contract ready, we can now deploy it to the `testnet` account we created earlier:
-
-```bash
-near deploy <contract-acc.testnet> ./target/near/auction.wasm
-```
-
 **Congrats!** Your contract now lives in the NEAR testnet network.
 
 ---
 
-## Interacting with the Contract
+## Initialize the auction
 
-To interact with your deployed smart contract, you can call its functions through the command line.
+The contract stores the highest bid, auction end time, auctioneer address, and a flag to track whether proceeds have been claimed. Its `init` function sets these values when the contract is first initialized:
 
-#### Initialize the Contract
-Let us initialize the auction by setting when it ends and who receives the funds (the auctioneer):
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+        start="7" end="35" />
+
+Initialize the auction by setting its end time and designating the auctioneer to receive the funds:
 
 ```bash
 # Get a timestamp for 5 minutes from now (in nanoseconds)
 FIVE_MINUTES_FROM_NOW=$(( $(date +%s%N) + 5 * 60 * 1000000000 ))
 
 # Initialize the auction
-near call <contract-acc.testnet> init "{\"end_time\": \"$FIVE_MINUTES_FROM_NOW\", \"auctioneer\": \"influencer.testnet\"}" --useAccount <contract-acc.testnet>
+near call <account.testnet> init "{\"end_time\": \"$FIVE_MINUTES_FROM_NOW\", \"auctioneer\": \"influencer.testnet\"}" --useAccount <account.testnet>
 ```
 
 <Tip>
-Feel free to replace `influencer.testnet` with any valid testnet account — this is where the winning bid will be sent
+Feel free to replace `influencer.testnet` with any valid testnet account—this is where the winning bid will be sent.
 </Tip>
 
-#### Place a Bid
+## Place and view bids
 
-We can now place a bid in the auction by calling the `bid` method while attaching some NEAR deposit. On each bid, the highest bid and bidder information will be recorded in the contract's [storage](./anatomy/storage).
+Place a bid in the auction by calling the `bid` method and attaching a NEAR deposit. The function checks whether the auction is ongoing and whether the bid is higher than the stored amount. If it is, the contract records the new bid and refunds the previous bidder.
+
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+        start="37" end="64" />
 
 ```bash
 # Create a new account to place the bid
 near create-account <bidder-account.testnet> --useFaucet
 
 # Place a bid of 0.01 NEAR
-near call <contract-acc.testnet> bid '{}' --deposit 0.01  --useAccount <bidder-account.testnet>
+near call <account.testnet> bid '{}' --deposit 0.01  --useAccount <bidder-account.testnet>
 ```
 
 <Note>
 
-Note how in this case we are using the `<bidder-account.testnet>` account (remember to rename it!) to call the `bid` function, while attaching a deposit of `0.01` NEAR as our bid
+In this example, use the `<bidder-account.testnet>` account (remember to rename it) to call the `bid` function and attach a deposit of `0.01` NEAR.
 
 </Note>
 
-#### Get Highest Bid
+### View the highest bid
 
-The `get_highest_bid` function only reads from the contract state, so it does not require a transaction or signature:
+The `get_highest_bid` function only reads from the contract state, so it does not require a transaction or signature. You can also use the contract's other view methods to query the auction end time, auctioneer, and claim status:
+
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+        start="78" end="92" />
 
 ```bash
-near view <contract-acc.testnet> get_highest_bid '{}'
+near view <account.testnet> get_highest_bid '{}'
 ```
 
 <Accordion title="Expected Output">
@@ -236,56 +172,84 @@ near view <contract-acc.testnet> get_highest_bid '{}'
   ```
 </Accordion>
 
+The amount is shown in `yoctoNEAR`, the smallest unit of NEAR. Since 1 NEAR equals `10^24` yoctoNEAR, the displayed amount is `0.01` NEAR.
+
 <Tip>
 
-Feel free to create as many bidder accounts as you want and place more bids to see how the highest bid changes!
+Feel free to create more bidder accounts and place bids to see how the highest bid changes.
 
 </Tip>
 
-#### Claim
+## Claim the proceeds
 
-After the auction ends, anyone can call the `claim` method, which will transfer the `highest bid` amount to the auctioneer and end the auction.
+After the auction ends, anyone can call the `claim` method. It transfers the amount of the highest bid to the auctioneer and ends the auction:
+
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+        start="65" end="76" />
 
 ```bash
-near call <contract-acc.testnet> claim '{}' --useAccount <contract-acc.testnet>
+near call <account.testnet> claim '{}' --useAccount <account.testnet>
 ```
 
 <Info>
 **Who won?**
 
-After the auction ends, the highest bidder can be determined by simply calling the `get_highest_bid` method again
+After the auction ends, you can determine the highest bidder by calling the `get_highest_bid` method again.
 
 </Info>
 
 ---
 
-## Common Questions
+## Frequently Asked Questions
 
-#### What about mainnet?
-You can deploy a contract to mainnet using the same commands, just make sure to create a mainnet account and use `--networkId mainnet` flag in the `near` CLI commands.
+<AccordionGroup>
 
-#### How much does it cost to deploy?
-The cost of deploying a contract depends on the contract's size, approximately 1Ⓝ ~100Kb.
+<Accordion title="What about mainnet?">
 
-#### Can I update a contract after deploying?
-Yes. Redeploy with `near deploy <account> <wasm-file>`. The account stays the same, code updates.
+You can deploy a contract to mainnet using the same commands. Create a mainnet account and use the `--networkId mainnet` flag in the `near` CLI commands.
 
-#### How do I test without deploying?
-Use sandbox testing (shown in this guide). Tests run locally with a simulated NEAR environment.
+</Accordion>
+
+<Accordion title="How much does it cost to deploy?">
+
+The cost of deploying a contract depends on its size: approximately 1 Ⓝ per 100 KB.
+
+</Accordion>
+
+<Accordion title="Can I update a contract after deploying?">
+
+Yes. Redeploy with `near deploy <account> <wasm-file>`. The account stays the same, and the code is updated.
+
+</Accordion>
+
+<Accordion title="How do I test without deploying?">
+
+Use the sandbox tests shown in this guide. They run locally in a simulated NEAR environment.
+
+</Accordion>
+
+<Accordion title="Can I use a language other than Rust?">
+
+Yes. You can write smart contracts in any language that compiles to WebAssembly. Our documentation focuses on Rust, but community-maintained SDKs are available for other languages. See [supported languages](/smart-contracts/what-is#supported-languages).
+
+</Accordion>
+
+</AccordionGroup>
 
 ---
 
-## Moving Forward
+## Moving forward
 
 <CardGroup cols={3}>
   <Card title="Create a Frontend" href="../web3-apps/tutorials/mastering-near/2.1-frontend">
-    Check the auction frontend tutorial to learn how to build a simple web app that interacts with the auction contract
+    Check the auction frontend tutorial to learn how to build a simple web app that interacts with the auction contract.
   </Card>
   <Card title="Extend the Contract" href="../web3-apps/tutorials/mastering-near/3.1-nft">
-    Follow the auction NFT tutorial to award the highest bidder a Non-Fungible Token (NFT) and allow users to bid using Fungible Tokens (FT)
+    Follow the auction NFT tutorial to award the highest bidder a Non-Fungible Token (NFT) and allow users to bid using Fungible Tokens (FT).
   </Card>
   <Card title="Learn More about the SDK" href="./anatomy/anatomy">
-    Check our Anatomy of a Contract page to understand the different components that make up a NEAR smart contract
+    Check our Anatomy of a Contract page to understand the different components that make up a NEAR smart contract.
   </Card>
 </CardGroup>
 

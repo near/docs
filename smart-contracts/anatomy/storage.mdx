@@ -11,9 +11,9 @@ Smart contracts store data in their account's state, which is public on the chai
 
 It is important to know that the account's **code** and account's **storage** are **independent**. [Updating the code](../release/upgrade) does **not erase** the state.
 
-<ExplainCode languages="rust" >
+<ExplainCode>
 
-<Block highlights='{"rust": "6-9,13-18"}' fname="auction">
+<Block highlights="6-9,13-18" fname="auction">
 
     ### Defining the State
     The attributes of the `struct` marked as the contract define the data that will be stored.
@@ -22,13 +22,17 @@ It is important to know that the account's **code** and account's **storage** ar
 
     For example, our Auction contract stores when the auction ends, and an object representing the highest bid.
 
-    **Note:** The structures that will be saved need a special macro, that tells the SDK to store them [serialized in Borsh](./serialization).
+    <Note>
+    The structures that will be saved need a special macro that tells the SDK to store them [serialized in Borsh](./serialization).
+    </Note>
 
-    **Note:** The SDK also provides [collections](./collections) to efficiently store collections of data.
+    <Note>
+    The SDK also provides [collections](./collections) to efficiently store collections of data.
+    </Note>
 
 </Block>
 
-<Block highlights='{"rust": ""}' fname="auction" type='info'>
+<Block highlights="" fname="auction" type='info'>
 
 <Warning>
 
@@ -40,7 +44,7 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"rust": ""}' fname="auction" >
+<Block highlights="" fname="auction" >
 
     ### Initializing the State
     After the contract is deployed, its state is empty and needs to be initialized with
@@ -52,18 +56,20 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Block>
 
-<Block highlights='{"rust": "12,22-34"}' fname="auction">
+<Block highlights="12,22-34" fname="auction">
 
     ### I. Initialization Functions
     An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
 
     In our Auction example, the contract has an initialization function that sets when the auction ends. The contract derives the `PanicOnDefault`, which forces the user to call the init method denoted by the `#[init]` macro.
 
-    **Note:** It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions).
+    <Note>
+    It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions).
+    </Note>
 
 </Block>
 
-<Block highlights='{"rust": "10-16"}' fname="hello">
+<Block highlights="10-16" fname="hello">
 
     ### II. Default State
     Another option to initialize the state is to create a `Default` version of our contract's `struct`.
@@ -72,11 +78,13 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
     The first time the contract executes, the `Default` will be stored in the state, and the state will be considered initialized.
 
-    **Note:** The state can only be initialized once.
+    <Note>
+    The state can only be initialized once.
+    </Note>
 
 </Block>
 
-<Block highlights='{"rust":""}' fname="hello" type='info'>
+<Block highlights="" fname="hello" type='info'>
 
 <Note>
 **Lifecycle of the State**
@@ -90,7 +98,7 @@ When the method finishes executing successfully, all the changes to the state ar
 
 </Block>
 
-<Block highlights='{"rust":""}' fname="hello" type='info'>
+<Block highlights="" fname="hello" type='info'>
 
 <Warning>
 **State and Code**
@@ -105,11 +113,11 @@ Make sure to read the [updating a contract](../release/upgrade) if you run into 
 
 </Block>
 
-<File language="rust" fname="auction"
+<File fname="auction"
     url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
     start="2" end="83" />
 
-<File language="rust" fname="hello"
+<File fname="hello"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
     start="2" end="32" />
 

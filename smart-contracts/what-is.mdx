@@ -2,18 +2,18 @@
 title: What is a Smart Contract?
 icon: info
 sidebarTitle: Introduction
-description: "Learn about the apps that can live in our accounts."
+description: "Learn how NEAR smart contracts store data, execute transactions, and power decentralized applications."
 ---
 
 Smart contracts are pieces of **executable code** that live in a NEAR account. They can **store data**, **perform transactions** in the account’s name, and **expose methods** so other accounts can interact with them.
 
 ![img](/assets/docs/welcome-pages/4.smart-contracts.webp)
 
-Smart contracts in NEAR are written in Rust. The contract is compiled into WebAssembly, from which point it can be deployed and executed on the NEAR platform.
+Smart contracts in NEAR are written in Rust and then compiled into WebAssembly. They can then be deployed and executed on the NEAR platform.
 
 <Accordion title="New to Smart Contract Development?">
 
-Do not worry if you don't know how smart-contract blockchains work. As a developer, it is sufficient to understand that NEAR smart-contracts:
+Do not worry if you don't know how smart contract blockchains work. As a developer, it is sufficient to understand that NEAR smart contracts:
 1. Have **limited** computational resources.
 2. Interact with other contracts in an **asynchronous** way.
 3. Deal with **real money**, for which security must be a top concern.
@@ -23,38 +23,42 @@ Do not worry if you don't know how smart-contract blockchains work. As a develop
 ---
 
 ## Where do contracts live?
-Smart Contracts are deployed into [**NEAR accounts**](../protocol/accounts-contracts/account-model). Any NEAR account can hold a contract, needing to pay for the **contract's code** and the **data it stores**.
+Smart contracts are deployed to [**NEAR accounts**](../protocol/accounts-contracts/account-model). Any NEAR account can hold a contract and must pay for the **contract's code** and the **data it stores**.
 
-Once in an account, anyone can interact with the contract. Thanks to the underlying network structure, executing code from a contract is both **fast** (avg. 1.4s finality) and **cheap**. Moreover, **read-only** operations are **free for everyone**.
+Once in an account, anyone can interact with the contract. Thanks to the underlying network structure, executing code from a contract is both **fast** (average finality of 1.2 seconds) and **cheap**. **Read-only** operations are **free for everyone**.
+
+<Note>
+Storing 100 KB costs 1 Ⓝ, so deploying a contract generally costs only a few `$NEAR`s.
+</Note>
 
 <Tip>
-Storing 100kb costs 1Ⓝ, so deploying a contract generally costs only a few `$NEAR`s.
+Since protocol version 2.6, NEAR supports [**global contracts**](/smart-contracts/global-contracts), which can be deployed to multiple accounts without paying for code storage each time.
 </Tip>
 
 ---
 
 ## What can they do?
 
-Smart contracts have **complete control over the account**, and thus can perform **any action on its behalf**. For example, contracts can:
-- Transfer `$NEAR` Tokens
+Smart contracts have **complete control over the account** and can therefore perform **any action on its behalf**. For example, contracts can:
+- Transfer `$NEAR` tokens
 - Call methods on other contracts
 - Create new accounts and deploy contracts on them
 - Update their own code
 
-Besides, smart contracts can store data in the account's storage. This allows contracts to create almost any type of application, from simple games to complex financial systems.
+In addition, smart contracts can store data in the account's storage. This allows contracts to create almost any type of application, from simple games to complex financial systems.
 
 <Danger>
 **What contracts cannot do**
 - Smart contracts cannot **access the internet**, so they cannot make HTTP requests or access external data
-- Smart contracts cannot **execute automatically**, they need to be called by an external account
+- Smart contracts cannot **execute automatically**; they must be called by an external account
 </Danger>
 
 ---
 
 ## What are they used for?
-Smart contracts are useful to create **decentralized applications**. Some traditional examples include:
-- [Decentralized Autonomous Organizations](https://nearcatalog.xyz/?cat=dao), where users create and vote proposals
-- [Marketplaces](https://nearcatalog.xyz/?cat=marketplaces), where users create and commercialize digital art pieces
+Smart contracts are used to create **decentralized applications**. Common examples include:
+- [Decentralized Autonomous Organizations](https://nearcatalog.xyz/?cat=dao), where users create and vote on proposals
+- [Marketplaces](https://nearcatalog.xyz/?cat=marketplaces), where users create and trade digital artworks
 - [Decentralized exchanges](https://nearcatalog.xyz/?cat=exchanges), where users can trade different currencies
 - [And many more...](https://nearcatalog.xyz/)
 
@@ -62,43 +66,14 @@ For instance, you can easily create a crowdfunding contract that accepts `$NEAR`
 
 ---
 
-## Development flow
+## Supported languages
 
-Just like any piece of software, smart contracts have a development flow - starting with its creation and ending with monitoring it, all of which we cover in our documentation.
+While our docs focus on the [Rust SDK](https://github.com/near/near-sdk-rs), smart contracts can be written in any language that compiles to WebAssembly.
 
-![img](/assets/docs/welcome-pages/contract-lifecycle.png)
-
-The development flow can be summarized as follows:
-- [**Scaffold**](./quickstart): The simplest way to create a project is by starting from a template.
-- [**Build**](./anatomy/anatomy): Write a contract using Rust.
-- [**Test**](./testing/introduction): Our Sandbox enables to simulate interactions with one or multiple contracts in a realistic environment.
-- [**Deploy**](./release/deploy): After making sure the contract is secure, developers can deploy the contract into their accounts.
-- [**Use**](https://mynearwallet.com): Any user can interact with the contract through their NEAR Wallet.
-- [**Monitor**](../data-infrastructure/what-is): The contract's activity can be monitored through simple APIs.
-
-#### Supported Languages
-
-This documentation covers smart contract development in [Rust](https://www.rust-lang.org/) using [near-sdk-rs](https://github.com/near/near-sdk-rs). Rust offers the most mature tooling, best performance, and the strongest safety guarantees when dealing with real assets on-chain.
-
-<Accordion title="Community SDKs for other languages">
-
-Since contracts compile to WebAssembly, contracts can be written in other languages using community-maintained SDKs:
+Some members of our community created SDKs for other languages that you can use to build smart contracts:
 
 - **JavaScript / TypeScript**: [near-sdk-js](https://github.com/near/near-sdk-js)
 - **Python**: [near-sdk-py](https://github.com/r-near/near-sdk-py)
 - **Go**: [near-sdk-go](https://github.com/vlmoon99/near-sdk-go)
 
-These SDKs are great for prototyping and learning, but they are maintained by the community and are not covered in this documentation. We **strongly recommend using Rust** for production contracts.
-
-</Accordion>
-
----
-
-## Contract primitives
-Contract primitives such as FT, NFT, and DAOs are fundamental building blocks that can be combined to create awesome user experiences such as reward tokens, decision-making tools, and marketplaces.
-
-<Tip>
-
-Check our section on [primitives](../primitives/what-is) to learn more about them
-
-</Tip>
+These SDKs are great for prototyping and learning, but for production contracts we **recommend using Rust**.

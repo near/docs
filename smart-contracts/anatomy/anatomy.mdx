@@ -8,9 +8,9 @@ import { ExplainCode, Block , File  } from '/snippets/explain-code.jsx'
 
 Let's illustrate the basic anatomy of a simple "Hello World" contract. The code on this page comes from our [Hello NEAR repository](https://github.com/near-examples/hello-near-examples) on GitHub.
 
-<ExplainCode languages="rust" >
+<ExplainCode>
 
-<Block highlights='{"rust": "1"}' fname="hello-near">
+<Block highlights="1" fname="hello-near">
 
     ### Importing the SDK
     All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment), [call other contracts](./crosscontract), [transfer tokens](./actions), and much more.
@@ -19,7 +19,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"rust":"5-7,20-31"}' fname="hello-near">
+<Block highlights="5-7,20-31" fname="hello-near">
 
     ### Contract's Main Structure
     The contract is described through a structure:
@@ -28,7 +28,7 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"rust": "4,19"}' fname="hello-near">
+<Block highlights="4,19" fname="hello-near">
 
     ### Contract Struct Macro
 
@@ -40,11 +40,13 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
     The `#[near]` macro tells the SDK which functions are exposed to the outside world.
 
-    **Note:** Only one struct can be decorated with the `#[near(contract_state)]` macro.
+    <Note>
+    Only one struct can be decorated with the `#[near(contract_state)]` macro.
+    </Note>
 
 </Block>
 
-<Block highlights='{"rust": "4,19"}' fname="hello-near" type='info'>
+<Block highlights="4,19" fname="hello-near" type='info'>
 
     <Accordion title="Interaction with other macros">
 
@@ -58,36 +60,42 @@ Let's illustrate the basic anatomy of a simple "Hello World" contract. The code 
 
 </Block>
 
-<Block highlights='{"rust": "6,10-16"}' fname="hello-near">
+<Block highlights="6,10-16" fname="hello-near">
 
     ### Storage (State)
     We call the data stored in the contract [the contract's state](./storage).
 
     In our Hello World example, the contract stores a single string (`greeting`), and the state starts initialized with the default value `"Hello"`.
 
-    **Note:** We will cover more about the contract's state in the [state section](./storage).
+    <Note>
+    We will cover more about the contract's state in the [state section](./storage).
+    </Note>
 
 </Block>
 
-<Block highlights='{"rust": "22-24"}' fname="hello-near">
+<Block highlights="22-24" fname="hello-near">
 
     ### Read Only Functions
     Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account.
 
-    **Note:** We will cover more about function types in the [functions section](./functions).
+    <Note>
+    We will cover more about function types in the [functions section](./functions).
+    </Note>
 
 </Block>
 
-<Block highlights='{"rust": "27-30"}' fname="hello-near">
+<Block highlights="27-30" fname="hello-near">
 
     ### State Mutating Functions
     Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network.
 
-    **Note:** We will cover more about function types in the [functions section](./functions).
+    <Note>
+    We will cover more about function types in the [functions section](./functions).
+    </Note>
 
 </Block>
 
-<File language="rust" fname="hello-near"
+<File fname="hello-near"
     url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
     start="2" end="32" />
 
