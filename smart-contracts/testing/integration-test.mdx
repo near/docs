@@ -11,9 +11,9 @@ Moreover, when using the local `sandbox` you gain complete control of the networ
 
 1. Create test `Accounts` and manipulate their `State` and `Balance`.
 2. Simulate errors on callbacks.
-3. Control the time-flow and fast-forward into the future (Rust ready, TS coming soon).
+3. Control the time flow and fast-forward into the future.
 
-In NEAR, integration tests are implemented using a framework called **Sandbox**. Sandbox comes in two flavors: [🦀 Rust](https://github.com/near/near-sandbox-rs) and [🌐 Typescript](https://github.com/near/workspaces-js).
+In these docs, integration tests use the Rust [near-sandbox](https://github.com/near/near-sandbox-rs) framework.
 
 <Note>
 **Sandbox Testing**
@@ -260,18 +260,3 @@ In most cases we will want to test complex methods involving multiple users and 
 ### Advanced Examples
 
 - [Rust](https://github.com/near/near-sandbox-rs/tree/main/examples)
-- [JavaScript](https://github.com/near/near-workspaces-js/tree/main/__tests__)
-
-### Test Driven Design Using Workspaces and AVA
-
-The video below walks through how to apply TDD with Workspaces and AVA for a simple contract:
-
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube-nocookie.com/embed/LCu03IYwu1I"
-  title="TDD Using Workspaces"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>

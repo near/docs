@@ -225,3 +225,45 @@ You can follow a migration step by step in the
 [official migration example](https://github.com/near-examples/update-migrate-rust/tree/main/basic-updates/base)
 
 </Tip>
+
+---
+
+## State versioning
+
+State versioning lets old and new representations coexist. Instead of rewriting every stored value during one migration, store an enum whose variants represent each supported version:
+
+```rust
+#[derive(BorshDeserialize, BorshSerialize)]
+pub enum VersionedPostedMessage {
+    V1(PostedMessageV1),
+    V2(PostedMessageV2),
+}
+```
+
+When the contract reads an older variant, it can convert it to the latest representation before applying new logic. This makes future changes easier, but it also means the contract must continue understanding every version that can remain in storage.
+
+See the [state-versioning example](https://github.com/near-examples/update-migrate-rust/tree/main/enum-updates) for a complete implementation.
+
+---
+
+## Locking a contract account
+
+You can prevent external actors from upgrading a contract by removing every full-access key from its account. Once the keys are removed, nobody can sign transactions in the account's name to deploy new code or transfer its balance.
+
+First, list the account's keys and identify every full-access key:
+
+```bash
+near list-keys <contract-account>
+```
+
+Then remove each full-access key:
+
+```bash
+near delete-key <contract-account> '<public-key>'
+```
+
+<Warning>
+Removing all full-access keys cannot be undone through an externally signed transaction. Confirm that you have the intended upgrade and recovery design before locking the account.
+</Warning>
+
+A locked contract can still upgrade itself if its current code exposes an authorized [programmatic update](#programmatic-update) method. If the contract must be permanently immutable, do not include such a method.

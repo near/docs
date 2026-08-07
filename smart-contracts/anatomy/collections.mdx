@@ -180,7 +180,7 @@ Be careful of not using the same prefix in two collections, otherwise, their sto
 
 ### Vector
 
-Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
+Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) that persists in the contract's storage. See the [Rust SDK collections reference](https://docs.rs/near-sdk/latest/near_sdk/store/index.html) for its complete interface.
 
 <Github fname="vector.rs" language="rust"
         url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/vector.rs" start="4" end="29"/>
@@ -189,7 +189,7 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
 
 ### LookupMap
 
-Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
+Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) that persists in the contract's storage. See the [Rust SDK collections reference](https://docs.rs/near-sdk/latest/near_sdk/store/index.html) for its complete interface.
 
 <Github fname="lookup_map.rs" language="rust"
       url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_map.rs" start="4" end="22"/>
@@ -198,7 +198,7 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 
 ### UnorderedMap / IterableMap
 
-Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
+Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) that persists in the contract's storage. See the [Rust SDK collections reference](https://docs.rs/near-sdk/latest/near_sdk/store/index.html) for its complete interface.
 
 <Tip>
 **UnorderedMap vs IterableMap (Rust)**
@@ -213,7 +213,7 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) w
 
 ### LookupSet
 
-Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
+Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) that persists in the contract's storage. See the [Rust SDK collections reference](https://docs.rs/near-sdk/latest/near_sdk/store/index.html) for its complete interface.
 
 <Github fname="lookup_set.rs" language="rust"
   url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs" start="4" end="18"/>
@@ -222,7 +222,7 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which
 
 ### UnorderedSet / IterableSet
 
-Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) which persists in the contract's storage. Please refer to the Rust and JS SDK's for a full reference on their interfaces.
+Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) that persists in the contract's storage. See the [Rust SDK collections reference](https://docs.rs/near-sdk/latest/near_sdk/store/index.html) for its complete interface.
 
 
 
@@ -250,7 +250,7 @@ An ordered equivalent of Map. The underlying implementation is based on an [AVL]
 When nesting SDK collections, be careful to **use different prefixes** for all collections, including the nested ones.
 
 
-  <Github fname="nested.ts" language="rust"
+  <Github fname="nested.rs" language="rust"
           url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/nested.rs" start="4" end="30"/>
 
 <Tip>
@@ -367,4 +367,3 @@ With Rust this can be done using iterators with [`Skip`](https://doc.rust-lang.o
       }
   }
 ```
-

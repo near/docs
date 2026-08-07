@@ -63,10 +63,12 @@ export const ExplainCode = ({ children }) => {
     if (!node) return;
     if (Array.isArray(node)) { node.forEach(collect); return; }
     if (typeof node !== 'object' || !node.props) return;
-    if (node.props.highlights !== undefined) {
-      blocks.push({ text: node.props.children, highlight: node.props.highlights, fname: node.props.fname, type: node.props.type });
-    } else if (node.props.url !== undefined) {
+    if (node.props.url !== undefined) {
       files.push({ ...node.props });
+    } else if (node.type === Block || node.props.fname !== undefined) {
+      // Blocks may intentionally omit `highlights`; keep them in the
+      // explanation flow and render the code without highlighted lines.
+      blocks.push({ text: node.props.children, highlight: node.props.highlights, fname: node.props.fname, type: node.props.type });
     } else {
       collect(node.props.children);
     }

@@ -1,7 +1,7 @@
 ---
-title: External Interface
+title: Types and Interface
 hide_table_of_contents: true
-description: "Learn how to define your contract's interface."
+description: "Learn how to define your contract's interface and use Rust and SDK types in its inputs, outputs, and state."
 mode: wide
 ---
 
@@ -138,7 +138,7 @@ Payable functions are marked using the `#[payable]` macro in Rust.
 
 </Block>
 
-<Block highlights="5-7" fname="example">
+<Block fname="auction">
 
 ### Internal Functions
 
@@ -150,7 +150,7 @@ To create internal private methods in a Rust contract, do not declare them as pu
 
 </Block>
 
-<Block highlights="5-7" fname="example" type='details'>
+<Block fname="auction" type="details">
 
   <Accordion title="Separate impl block">
 
@@ -175,39 +175,45 @@ impl Contract {
 
 </Block>
 
-<Block highlights="9-11,13-15" fname="example">
-
-### Pure Functions
-
-Pure functions are a special kind of function that do not require to access data from the state.
-
-They are useful to return hardcoded values on the contract.
-
-</Block>
-
 <File fname="auction" url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs" start="2" end="84" />
 
-<CodeBlock language="rust" fname="example">
+</ExplainCode>
 
-```rs
-const SOME_VALUE: u64 = 8;
+---
 
-#[near]
-impl MyContractStructure {
-  fn internal_helper(&mut self, params... ){
-    // this function cannot be called from the outside
-  }
+## SDK types
 
-  pub fn public_log(/* Parameters here */) {
-      near_sdk::log!("inside log message");
-  }
+Smart contracts can receive, store, and return data using native Rust types such as strings, integers, booleans, maps, and vectors. The SDK also provides types for values that need special handling at the contract boundary.
 
-  pub fn return_static_u64() -> u64 {
-      SOME_VALUE
-  }
+### Large integers
+
+Contracts can store `u64` and `u128` values directly, but JSON consumers cannot always represent them without losing precision. Use the SDK's `U64` and `U128` wrapper types for public inputs and outputs that need to be serialized as strings.
+
+<Warning>
+JavaScript numbers cannot represent every integer above `2^53 - 1`. Keep native integer types in internal contract logic, and use the JSON wrapper types at the external interface when necessary.
+</Warning>
+
+### Complex objects
+
+Contracts can receive and return complex Rust structures. Objects used as JSON inputs or outputs need JSON serialization, while structures stored in contract state need Borsh serialization.
+
+```rust
+#[near(serializers = [json])]
+pub struct Bid {
+    pub bidder: AccountId,
+    pub amount: U128,
 }
 ```
 
-</CodeBlock>
+See [serialization](/smart-contracts/anatomy/serialization) for the difference between interface and state serialization.
 
-</ExplainCode>
+### Tokens and accounts
+
+Use `NearToken` to represent NEAR amounts. It provides constructors and accessors for yoctoNEAR, millinear, and NEAR values.
+
+```rust
+let deposit = NearToken::from_near(1);
+let amount = deposit.as_yoctonear();
+```
+
+The SDK's `AccountId` type validates NEAR account IDs when values enter the contract. Prefer it to a plain `String` whenever a value represents an account.

@@ -1,13 +1,26 @@
 ---
-title: Security checklist
-description: "Review access control, state, funds, asynchronous calls, and operations before deploying a NEAR smart contract."
+title: Smart contract security checklist
+sidebarTitle: Security checklist
+description: "Learn the main security risks in NEAR smart contracts and review them before deployment."
 ---
 
+Smart contracts handle assets and shared state in an adversarial environment. A secure contract must protect its state and funds when callers provide unexpected inputs, external calls fail, or operations execute in an unexpected order.
+
 Run this checklist before deploying to mainnet and after any security-sensitive change.
+
+<Tip>
+  ## Report a vulnerability
+
+  Report vulnerabilities in the protocol, core contracts, or web applications through the [NEAR bug bounty program](https://hackenproof.com/company/near/programs).
+
+  For a broader introduction, watch [Timur Güvenkaya's smart contract security series](https://www.youtube.com/watch?v=DrRr6nru0no).
+</Tip>
 
 <Warning>
   A checklist does not replace threat modeling, tests, code review, or an independent audit for contracts that hold significant value.
 </Warning>
+
+---
 
 ## Access control
 

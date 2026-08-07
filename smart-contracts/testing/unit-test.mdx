@@ -5,6 +5,17 @@ description: "Learn how to write and run unit tests for NEAR smart contracts to 
 
 import { Github } from '/snippets/github.jsx'
 
+Smart contracts need both unit and integration tests:
+
+1. **Unit tests** exercise methods individually. They are written in Rust alongside the contract and run locally.
+2. **Integration tests** deploy the compiled contract to a local Sandbox or testnet and exercise it through transactions.
+
+Use unit tests for contract logic and state changes. Use [integration tests](/smart-contracts/testing/integration-test) for behavior that depends on the runtime, including cross-contract calls, gas, attached deposits, and multiple accounts.
+
+We recommend using both types of tests and testing on testnet before deploying a contract to mainnet.
+
+---
+
 Unit tests allow you to test the contract methods individually. They are suitable to check the storage is updated correctly, and that methods return their expected values. They are written in Rust alongside the contract's code and execute locally.
 
 To run the unit tests, simply navigate to the contract's folder and run `cargo test`:

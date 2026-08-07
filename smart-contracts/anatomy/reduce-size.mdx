@@ -1,6 +1,7 @@
 ---
-title: Reducing Contract Size
-description: "Learn strategies to reduce NEAR smart contract size for optimized deployment and performance."
+title: Production Builds
+sidebarTitle: Production Builds
+description: "Reduce contract size and create reproducible builds that users can verify against the deployed code."
 ---
 import {Github} from '/snippets/github.jsx';
 
@@ -70,7 +71,7 @@ crate-type = ["cdylib"]
 ```
 </Tip>
 
-3. When using the Rust SDK, you may override the default JSON serialization to use [Borsh](https://borsh.io) instead. [See this page](./serialization-interface#overriding-serialization-protocol-default) for more information and an example.
+3. When using the Rust SDK, you may override the default JSON serialization to use [Borsh](https://borsh.io) instead. See [overriding interface serialization](/smart-contracts/anatomy/serialization#overriding-interface-serialization) for more information and an example.
 4. When using assertions or guards, avoid using the standard `assert` macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html), [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html), or [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) as these may add bloat for information regarding the line number of the error. There are similar issues with `unwrap`, `expect`, and Rust's `panic!()` macro.
 
   Example of a standard assertion:
@@ -186,3 +187,49 @@ For a `no_std` approach to minimal contracts, observe the following examples:
 </Accordion>
 
 </Note>
+
+---
+
+## Reproducible builds
+
+Reproducible builds let different people build the same program and get the exact same output. They help users verify that a deployed contract corresponds to its published source code.
+
+Building the same contract on different machines can produce similar but non-identical binaries because the artifact can be affected by the locale, timezone, build path, and other parts of the build environment. NEAR addresses this with [NEP-330 source metadata](https://github.com/near/NEPs/blob/master/neps/nep-0330.md), [cargo-near](https://github.com/near/cargo-near), Docker, and SourceScan.
+
+<Info>
+You need [Docker](https://docker.com) to use the reproducible-build workflow.
+</Info>
+
+When you initialize a project with `cargo near new`, its `Cargo.toml` includes the build environment and repository metadata:
+
+```toml
+repository = "https://github.com/<organization>/<repository>"
+
+[package.metadata.near.reproducible_build]
+image = "sourcescan/cargo-near:0.13.5-rust-1.85.1"
+image_digest = "sha256:3b0272ecdbb91465f3e7348330d7f2d031d27901f26fb25b4eaf1560a60c20f3"
+passed_env = []
+container_build_command = [
+    "cargo",
+    "near",
+    "build",
+    "non-reproducible-wasm",
+    "--locked",
+]
+```
+
+When you deploy with `cargo near deploy`, this information is used to clone the repository and compile the contract in a Docker container. The build adds a `contract_source_metadata` method without changing the contract's logic.
+
+After deployment, inspect that metadata with:
+
+```bash
+near view <contract-account> contract_source_metadata
+```
+
+## Verify and publish
+
+To verify and publish the contract's code, open its account page in [NearBlocks](https://nearblocks.io), select the **Contract** tab, and use **Verify and Publish**. After verification, the source and metadata are available under **Contract → Contract Code**.
+
+![NearBlocks interface for verifying a reproducible contract build](/assets/docs/smart-contracts/reproducible-build.png)
+
+For a complete walkthrough, see the [SourceScan verification guide](https://github.com/SourceScan/verification-guide).

@@ -10,7 +10,7 @@ It is one of the simplest examples on making a cross-contract call, and the perf
 
 <Info>
 **Advanced Cross-Contract Calls**
-Check the tutorial on how to perform cross-contract calls [in batches and in parallel](./advanced-xcc)
+The final part of this tutorial shows how to perform cross-contract calls [in batches and in parallel](#advanced-cross-contract-calls).
 </Info>
 
 ---
@@ -181,10 +181,72 @@ A nice way to learn is by trying to expand a contract. Modify the cross contract
 contract!. In this way, you can try to make a cross-contract call that attaches money. Remember to correctly [handle the callback](/smart-contracts/anatomy/crosscontract#callback-function),
 and to return the money to the user in case of error.
 
-### Advanced Cross Contract Calls
+## Advanced cross-contract calls
 
-Your contract can perform multiple cross-contract calls in simultaneous, creating promises that execute in parallel, or as a batch transaction. Check the [advanced cross contract calls
-tutorial](./advanced-xcc) to learn more.
+Your contract can combine promises to execute several actions sequentially or call several contracts in parallel. The advanced examples live in the same [cross-contract-calls repository](https://github.com/near-examples/cross-contract-calls), under `contract-advanced-rs`.
+
+### Batch actions
+
+You can combine several actions for the same contract into a batch. The actions execute sequentially, and if one fails, they are all reverted.
+
+<Github fname="batch_actions.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
+        start="8" end="20" />
+
+The callback receives the value returned by the final action in the chain:
+
+<Github fname="batch_actions.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
+        start="22" end="35" />
+
+### Call multiple contracts in parallel
+
+A contract can call several contracts in parallel. If one call fails, the other calls are **not** reverted.
+
+<Github fname="multiple_contracts.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
+        start="16" end="55" />
+
+The callback receives one result for each promise and must handle successes and failures independently:
+
+<Github fname="multiple_contracts.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
+        start="57" end="90" />
+
+If every call returns the same type, you can iterate over the promise results directly:
+
+<Github fname="similar_contracts.rs" language="rust"
+        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
+        start="8" end="57" />
+
+### Test and deploy the advanced contract
+
+Run its unit and Sandbox tests locally:
+
+```bash
+cd contract-advanced-rs
+cargo test
+```
+
+Build, deploy, and initialize the contract with the accounts it will call:
+
+```bash
+cargo near deploy build-non-reproducible-wasm <account-id> with-init-call new json-args '{"hello_account":"hello.near-example.testnet","guestbook_account":"guestbook_account.near-example.testnet","counter_account":"counter_account.near-example.testnet"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' network-config testnet sign-with-keychain send
+```
+
+Call the examples with enough prepaid gas for their child calls and callbacks:
+
+```bash
+near contract call-function as-transaction <account-id> batch_actions json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+
+near contract call-function as-transaction <account-id> multiple_contracts json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+
+near contract call-function as-transaction <account-id> similar_contracts json-args '{}' prepaid-gas '300.0 Tgas' attached-deposit '0 NEAR' sign-as <account-id> network-config testnet sign-with-keychain send
+```
+
+<Info>
+If a call reports `Exceeded the prepaid gas`, review the gas attached to the child calls and callbacks before increasing the gas on the initiating transaction.
+</Info>
 
 <Note>
 **Versioning for this article**
