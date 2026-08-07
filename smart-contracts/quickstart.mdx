@@ -53,7 +53,8 @@ Create a smart contract with the `cargo near` scaffolding tool by following its 
 
 
 ```bash
-cargo near new
+# Create a new contract called "auction"
+cargo near new auction
 ```
 
 ![img](/assets/docs/smart-contracts/hello-near-rs.gif)
@@ -73,6 +74,9 @@ For this tutorial, we chose to name the project `auction`, but feel free to use 
 Let's build the contract, create a NEAR testnet account, and deploy the contract to it.
 
 ```bash
+# Run the sandbox tests to verify the contract works as expected
+cargo test
+
 # Build the contract
 cargo near build non-reproducible-wasm
 

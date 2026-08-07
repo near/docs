@@ -234,7 +234,7 @@ In the callback function you will have access to the result, which will contain 
         start="23" end="37" />
 
 <Info>
-**Callback with always execute**
+**Callback will always execute**
 
 We repeat, if your function finishes correctly, then your callback will **always execute**. This will happen no matter if the external function finished correctly or not
 
@@ -315,8 +315,8 @@ This has important implications on how you should handle the callbacks. Particul
 1. Make sure you don't leave the contract in a exploitable state between the call and the callback.
 2. Manually rollback any changes to the state in the callback if the external call failed.
 
-We have a whole [security section](../security/callbacks) dedicated to these specific errors, so please go and check it.
+We have a whole [security section](/smart-contracts/security/cross-contract-calls/callbacks) dedicated to these specific errors, so please go and check it.
 
 <Warning>
-Not following these basic security guidelines could expose your contract to exploits. Please check the [security section](../security/callbacks), and if still in doubt, [join us in Discord](https://near.chat).
+Not following these basic security guidelines could expose your contract to exploits. Please check the [security section](/smart-contracts/security/cross-contract-calls/callbacks), and if still in doubt, [join us in Discord](https://near.chat).
 </Warning>

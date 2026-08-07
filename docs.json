@@ -72,6 +72,26 @@
       "destination": "/smart-contracts/security/introduction"
     },
     {
+      "source": "/smart-contracts/security/callbacks",
+      "destination": "/smart-contracts/security/cross-contract-calls/callbacks"
+    },
+    {
+      "source": "/smart-contracts/security/refunds",
+      "destination": "/smart-contracts/security/cross-contract-calls/refunds"
+    },
+    {
+      "source": "/smart-contracts/security/callback-panics",
+      "destination": "/smart-contracts/security/cross-contract-calls/callback-panics"
+    },
+    {
+      "source": "/smart-contracts/security/ft-transfer-call",
+      "destination": "/smart-contracts/security/cross-contract-calls/ft-transfer-call"
+    },
+    {
+      "source": "/smart-contracts/security/reentrancy",
+      "destination": "/smart-contracts/security/cross-contract-calls/reentrancy"
+    },
+    {
       "source": "/ai/shade-agents",
       "destination": "/ai/shade-agents/getting-started/introduction"
     },
@@ -327,14 +347,23 @@
                 "group": "Security",
                 "icon": "shield",
                 "pages": [
-                  "smart-contracts/security/introduction",
-                  "smart-contracts/security/checklist",
-                  "smart-contracts/security/storage",
-                  "smart-contracts/security/callbacks",
-                  "smart-contracts/security/one_yocto",
-                  "smart-contracts/security/sybil",
-                  "smart-contracts/security/frontrunning",
-                  "smart-contracts/security/reentrancy",
+              "smart-contracts/security/introduction",
+              "smart-contracts/security/checklist",
+              "smart-contracts/security/storage",
+              {
+                "group": "Cross-contract calls",
+                "pages": [
+                  "smart-contracts/security/cross-contract-calls/callbacks",
+                  "smart-contracts/security/cross-contract-calls/refunds",
+                  "smart-contracts/security/cross-contract-calls/callback-panics",
+                  "smart-contracts/security/cross-contract-calls/ft-transfer-call",
+                  "smart-contracts/security/cross-contract-calls/reentrancy"
+                ]
+              },
+              "smart-contracts/security/one_yocto",
+              "smart-contracts/security/sybil",
+              "smart-contracts/security/frontrunning",
+              "smart-contracts/security/duplicate-inputs",
                   "smart-contracts/security/random"
                 ]
               },

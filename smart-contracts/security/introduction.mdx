@@ -1,35 +1,42 @@
 ---
-title: Introduction
-description: "Learn about smart contract security best practices on NEAR, including common vulnerabilities, attack vectors, and how to build secure decentralized applications."
+title: Smart contract security
+description: "Learn the common security risks in NEAR smart contracts and how to mitigate them."
 ---
 
-Here you will find information on how to keep your smart contract and decentralized applications secure.
+Smart contracts handle assets and shared state in an adversarial environment. This section explains common mistakes, shows how an attacker can use them, and describes the corresponding defense.
 
-<Tip>
-Please take some time to go through this section, it will help you to keep your dApp safe
-</Tip>
+<Card title="Start with the checklist" icon="list-check" href="/smart-contracts/security/checklist" horizontal>
+  Review access control, storage, funds, asynchronous calls, and testing before mainnet deployment.
+</Card>
 
----
+## Security topics
 
-## 🐞 Bug Bounty Program
-NEAR has a [bug bounty program](https://hackenproof.com/company/near/programs) . Please use it if you find any security errors in the protocol, core contracts or web. Hackers - help audit, test, and toughen NEAR up!
+<Columns cols={2}>
+  <Card title="Cross-contract calls" href="/smart-contracts/security/cross-contract-calls/callbacks">
+    Safely handle asynchronous results, refunds, and callbacks.
+  </Card>
+  <Card title="Reentrancy attacks" href="/smart-contracts/security/cross-contract-calls/reentrancy">
+    Keep state safe while cross-contract operations are pending.
+  </Card>
+  <Card title="Storage cost attacks" href="/smart-contracts/security/storage">
+    Prevent unbounded state growth from locking your contract's balance.
+  </Card>
+  <Card title="One yoctoNEAR" href="/smart-contracts/security/one_yocto">
+    Require a deposit-capable key for sensitive methods.
+  </Card>
+  <Card title="Front-running" href="/smart-contracts/security/frontrunning">
+    Avoid revealing valuable inputs before they execute.
+  </Card>
+  <Card title="Sybil attacks" href="/smart-contracts/security/sybil">
+    Avoid treating multiple accounts as independent people.
+  </Card>
+  <Card title="Randomness" href="/smart-contracts/security/random">
+    Choose a randomness design that matches the value at risk.
+  </Card>
+</Columns>
 
-## ✅ Security Checklist
-Make sure to keep your smart contract safe by running through our [security checklist](./checklist).
+## Report a vulnerability
 
-## 🛡️ Security Concepts
-Learn important security concepts to keep your dApp safe and sound.  Read about:
+Report vulnerabilities in the protocol, core contracts, or web applications through the [NEAR bug bounty program](https://hackenproof.com/company/near/programs).
 
-- Keeping [callbacks safe](./callbacks)
-- Understanding [frontrunning](./frontrunning)
-- Understanding [sybil attacks](./sybil)
-- Understanding [reentrancy attacks](./reentrancy)
-- Making sure the owner of an account is [the one calling](./one_yocto)
-- Understanding the complexity of [generating random numbers](./random)
-- Protecting from a [small deposit attacks](./storage) draining your account
-
-## 🎞️ External Resources
-
-An awesome video series on Smart Contract Security by [https://twitter.com/timurguvenkaya](https://twitter.com/timurguvenkaya) can be found on YouTube:
-
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/DrRr6nru0no?si=FxLJK-LYHrAqX0hc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+For a broader introduction, watch [Timur Güvenkaya's smart contract security series](https://www.youtube.com/watch?v=DrRr6nru0no).
