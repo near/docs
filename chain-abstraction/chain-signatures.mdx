@@ -96,6 +96,17 @@ It is important to note that this allows us to discover the **public address** o
 In practice, the external address is deterministically derived using the NEAR address (`example.near`), the path (`ethereum-1`) and the MPC service's public key
 </Tip>
 
+<Warning>
+**Avoid ambiguous signatures across chains**
+
+A signature is only bound to a specific network if the signed payload itself encodes that network. When it doesn't, the same signed transaction can be valid on more than one chain, allowing it to be **replayed** on a chain you did not intend to interact with. Two common cases:
+
+- **EVM networks:** transactions that follow [EIP-155](https://eips.ethereum.org/EIPS/eip-155) include the `chainId` in the signed data and are safe. Legacy (pre-EIP-155) transactions omit it and can be replayed across *any* EVM chain (Ethereum, Polygon, BNB Chain, Arbitrum, …).
+- **Bitcoin-like networks:** chains that share Bitcoin's transaction format (Litecoin, Dogecoin, Bitcoin Cash, …) may accept the same signed payload unless the chain adds replay protection (e.g. Bitcoin Cash's `SIGHASH_FORKID`).
+
+Rather than tracking which chains are affected, the robust rule is to **use a distinct derivation path per chain** (for example `ethereum-1` and `polygon-1` instead of reusing one path). Different paths derive different keys, so a signature for one chain cannot authorize a transaction on another.
+</Warning>
+
 ### Multichain Smart Contract
 
 A deployed multichain smart contract ([v1.signer](https://nearblocks.io/address/v1.signer)) is used to request signatures for transactions on other blockchains.

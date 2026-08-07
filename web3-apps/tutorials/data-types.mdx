@@ -9,7 +9,7 @@ When calling methods in a contract or receiving results from them, you will need
 <Info>
 **Searching for Smart Contract Data Types?**
 
-Check the [Smart Contract Data Types](../../smart-contracts/anatomy/types) section for more information on how to handle data types within smart contracts.
+Check the [Smart Contract SDK Types](/smart-contracts/anatomy/functions#sdk-types) section for more information on how to handle data types within smart contracts.
 
 </Info>
 
@@ -104,7 +104,7 @@ fn main() {
 
 When calling a contract method, you can specify how much gas you want to attach to the call. Within the network, the `Gas` is represented as a `u64`, which is encoded as a `string` (since JSON cannot handle more than 52 bit integers).
 
-As a rule of thumb, functions that consume little computation can be called with `30 Tgas` or less, while more complex functions may require up to `300 Tgas`.
+As a rule of thumb, functions that consume little computation can be called with `30 Tgas` or less, while more complex functions may require up to `1000 Tgas`.
 
 <Tabs>
 

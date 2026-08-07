@@ -75,7 +75,7 @@ Gets the available and staked balance of an account in yoctoNEAR.
   <Tab title="🦀 near-api-rs">
 
   <Github fname="account_details.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/account_details.rs" />
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/account_details.rs" />
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -116,7 +116,7 @@ If you are using this call to validate a recipient before sending tokens from a 
   <Tab title="🦀 near-api-rs">
 
   <Github fname="account_details.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/account_details.rs#L21-L21"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/account_details.rs#L21-L21"
     start="21" end="21" />
 
   </Tab>
@@ -152,7 +152,7 @@ To create a named account like `user.testnet`, you need to call the `create_acco
   <Tab title="🦀 near-api-rs">
 
   <Github fname="create_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account.rs#L32-L47"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account.rs#L32-L47"
     start="32" end="47" />
 
   <Accordion title="Creating an account from a seed phrase">
@@ -160,8 +160,8 @@ To create a named account like `user.testnet`, you need to call the `create_acco
   You can also create an account via a randomly generated seed phrase.
 
   <Github fname="create_account_from_seed.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account_from_seed.rs#L32-L48"
-    start="32" end="48" />
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account_from_seed.rs#L32-L46"
+    start="32" end="46" />
 
   </Accordion>
 
@@ -195,8 +195,8 @@ Accounts on NEAR can create sub-accounts under their own namespace, which is use
   <Tab title="🦀 near-api-rs">
 
   <Github fname="create_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/create_account.rs#L61-L82"
-    start="61" end="82" />
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account.rs#L61-L76"
+    start="61" end="76" />
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -240,7 +240,7 @@ Accounts on NEAR can delete themselves, transferring any remaining balance to a 
   <Tab title="🦀 near-api-rs">
 
   <Github fname="delete_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/delete_account.rs#L51-L59"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/delete_account.rs#L51-L59"
     start="51" end="59" />
 
   </Tab>
@@ -286,7 +286,7 @@ Accounts can transfer different types of tokens to other accounts, including the
   <Tab title="🦀 near-api-rs">
 
   <Github fname="send_tokens.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/send_tokens.rs#L22-L28"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/send_tokens.rs#L22-L28"
     start="22" end="28" />
 
   </Tab>
@@ -347,11 +347,11 @@ A smart contract exposes its methods, and making a function call that modifies s
   <Tab title="🦀 near-api-rs">
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L23-L24"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L23-L24"
     start="23" end="24" />
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L37-L49"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L37-L49"
     start="37" end="49" />
 
   </Tab>
@@ -384,7 +384,7 @@ You can send multiple [actions](/protocol/transactions/transaction-anatomy#actio
   <Tab title="🦀 near-api-rs">
 
   <Github fname="batch_actions.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/batch_actions.rs#L22-L42"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/batch_actions.rs#L22-L42"
     start="22" end="42" />
 
   </Tab>
@@ -410,7 +410,7 @@ The only way to have true simultaneous transactions is to use multiple access ke
   <Tab title="🦀 near-api-rs">
 
   <Github fname="simultaneous_transactions.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/simultaneous_transactions.rs#L23-L55"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/simultaneous_transactions.rs#L23-L55"
     start="23" end="55" />
 
   </Tab>
@@ -460,7 +460,7 @@ On NEAR, a smart contract is deployed as a WASM file. Every account has the pote
   Note that the `signer` here needs to be a signer for the same `account_id` as the one used to construct the `Contract` object.
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L54-L61"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L54-L61"
     start="54" end="61" />
 
   </Tab>
@@ -682,7 +682,7 @@ View functions are read-only methods on a smart contract that do not modify stat
   <Tab title="🦀 near-api-rs">
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/contract_interaction.rs#L22-L33"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L22-L33"
     start="22" end="33" />
 
   </Tab>
@@ -718,7 +718,7 @@ View functions are read-only methods on a smart contract that do not modify stat
   <Tab title="🦀 near-api-rs">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L22-L22"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L22-L22"
     start="22" end="22" />
 
   </Tab>
@@ -754,7 +754,7 @@ Anyone with this key can transfer funds, sign transactions, interact with contra
   <Tab title="🦀 near-api-rs">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L25-L37"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L25-L37"
     start="25" end="37" />
 
   </Tab>
@@ -792,7 +792,7 @@ You can further restrict this key by:
   <Tab title="🦀 near-api-rs">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L38-L56"
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L38-L56"
     start="38" end="56" />
 
   </Tab>
@@ -835,8 +835,8 @@ Accounts on NEAR can delete their own keys.
   <Tab title="🦀 near-api-rs">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/tree/main/rust/examples/keys.rs#L57-L72"
-    start="57" end="72" />
+    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L57-L66"
+    start="57" end="66" />
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -851,6 +851,75 @@ Accounts on NEAR can delete their own keys.
 <Danger>
 Be very careful when deleting keys. Removing all keys from an account will cause you to lose access to the account permanently.
 </Danger>
+
+### Post-Quantum Keys (ML-DSA-65)
+
+NEAR supports the post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#post-quantum-keys-ml-dsa-65) signature scheme (FIPS 204). You add and use an `ml-dsa-65` key exactly like an `ed25519` one — it can be a [full-access](/protocol/accounts-contracts/access-keys#full-access-keys) or [function-call](/protocol/accounts-contracts/access-keys#function-call-keys) key and signs transactions the same way.
+
+<Tabs>
+  <Tab title="🌐 near-kit">
+
+  ```javascript
+  import { MlDsa65KeyPair, Near } from "near-kit";
+
+  // A client signed by alice's existing full-access key adds the new key
+  const near = new Near({
+    network: "testnet",
+    privateKey: "ed25519:<alice-existing-key>",
+    defaultSignerId: "alice.testnet",
+  });
+
+  // Generate a post-quantum key pair (1952-byte public key, 3309-byte signatures)
+  const pqKey = MlDsa65KeyPair.fromRandom();
+
+  // Add it to alice's account, like any other key
+  await near
+    .transaction("alice.testnet")
+    .addKey(pqKey.publicKey.toString(), { type: "fullAccess" })
+    .send();
+
+  // Then sign transactions with the post-quantum key
+  const pqNear = new Near({
+    network: "testnet",
+    keyStore: { "alice.testnet": pqKey.secretKey }, // "ml-dsa-65:<seed>"
+  });
+
+  await pqNear.transaction("alice.testnet").transfer("bob.testnet", "1 NEAR").send();
+  ```
+
+  </Tab>
+  <Tab title="🦀 near-kit-rs">
+
+  ```bash
+  cargo add near-kit
+  ```
+
+  ```rust
+  use near_kit::*;
+
+  // A client signed by alice's existing full-access key adds the new key
+  let near = Near::testnet()
+      .credentials("ed25519:<alice-existing-key>", "alice.testnet")?
+      .build();
+
+  // Generate a random ML-DSA-65 key pair (1952-byte public key, 3309-byte signatures)
+  let pq_key = SecretKey::generate_ml_dsa65();
+  let public_key = pq_key.public_key(); // "ml-dsa-65:..."
+
+  // Add it to alice's account, like any other key
+  near.transaction("alice.testnet")
+      .add_full_access_key(public_key)
+      .send()
+      .wait_until(Final)
+      .await?;
+  ```
+
+  </Tab>
+</Tabs>
+
+<Note>
+On-chain, an `ml-dsa-65` access key is stored as a 32-byte hash, so key listings such as [`view_access_key_list`](/api/rpc/contracts#view-access-key-list) return an `ml-dsa-65-hash:` handle instead of the full key — parse it with `parseMlDsa65Handle()` (near-kit) for display and comparison; the handle cannot sign or be re-added. Post-quantum keys are currently supported by [`near-kit`](https://github.com/r-near/near-kit) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust); support in `near-api-js` and `py-near` is pending.
+</Note>
 
 ---
 
@@ -888,14 +957,14 @@ Users can sign messages using the `wallet-selector` `signMessage` method, which 
   <Tab title="🌐 near-kit">
 
   - [Github](https://github.com/r-near/near-kit/tree/main)
-  - [Full Examples](https://github.com/near-examples/near-api-examples/tree/main/near-kit)
+  - [Full Examples](https://github.com/near-examples/near-api-examples/blob/main/near-kit)
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
   - [Documentation](https://docs.rs/near-api/latest/near_api/)
   - [Github](https://github.com/near/near-api-rs)
-  - [Full Examples](https://github.com/near-examples/near-api-examples/tree/main/rust)
+  - [Full Examples](https://github.com/near-examples/near-api-examples/blob/main/rust)
 
   </Tab>
   <Tab title="🐍 py-near">

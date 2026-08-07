@@ -1,0 +1,141 @@
+---
+title: "Query Batching"
+icon: layer-group
+description: "Send multiple read-only NEAR queries in one JSON-RPC request."
+sidebarTitle: "Query Batching"
+---
+
+Normally, one HTTP request contains one JSON-RPC request object. Batching changes only the outer envelope: put one or more ordinary request objects inside square brackets (`[...]`) and separate them with commas. Each inner request keeps its own method, parameters, and ID, and the server returns the corresponding responses as an array. Notifications still have no response entry.
+
+This page documents nearcore's query-only contribution to the [JSON-RPC 2.0 batch specification](https://www.jsonrpc.org/specification#batch). Recent nearcore nodes accept these arrays at the root `POST /` endpoint when the operator enables them. Batching is enabled by default in nearcore, but providers can disable it.
+
+Only the exact, case-sensitive `query` method executes in a batch. Other requests that include an ID, including `send_tx`, `broadcast_tx_async`, and `broadcast_tx_commit`, return `-32601` (method not found). Submit transactions and call every other RPC method with individual requests.
+
+<Note>
+  Public providers can deploy different nearcore versions, disable batching, or apply different limits, gateways, and request policies. Confirm availability, limits, and how a provider accounts for each batch entry before relying on batching.
+</Note>
+
+## Consistent block-pinned queries
+
+Entries are independent and may run concurrently. A batch has no execution ordering, is not atomic, and does not automatically read from one snapshot. The server currently preserves response order as an implementation detail, but clients must correlate responses by `id`.
+
+When the queries must observe the same finalized state, first resolve one final block with an individual `block` request. Then pass its hash as `block_id` in every query. This localnet example queries the preconfigured `test.near` and `near` accounts and decodes the response array by ID:
+
+```bash
+RPC_URL=${RPC_URL:-http://127.0.0.1:3030/}
+
+BLOCK_ID=$(
+  curl -fsS "$RPC_URL" \
+    -H 'Content-Type: application/json' \
+    --data-binary \
+      '{"jsonrpc":"2.0","id":"final-block","method":"block","params":{"finality":"final"}}' \
+  | jq -er '.result.header.hash'
+)
+
+jq -cn --arg block_id "$BLOCK_ID" '
+  [
+    {
+      jsonrpc: "2.0",
+      id: "test.near",
+      method: "query",
+      params: {
+        request_type: "view_account",
+        account_id: "test.near",
+        block_id: $block_id
+      }
+    },
+    {
+      jsonrpc: "2.0",
+      id: "near",
+      method: "query",
+      params: {
+        request_type: "view_account",
+        account_id: "near",
+        block_id: $block_id
+      }
+    }
+  ]' \
+| curl -fsS "$RPC_URL" \
+    -H 'Content-Type: application/json' \
+    --data-binary @- \
+| jq -e --arg block_id "$BLOCK_ID" '
+    INDEX(.id) as $responses
+    | ["test.near", "near"]
+    | map(
+        $responses[.] as $response
+        | if $response == null then
+            error("missing response for " + .)
+          elif $response.error then
+            error(($response.error | tostring))
+          elif $response.result.block_hash != $block_id then
+            error("response was not read at the pinned block")
+          else
+            {
+              id: $response.id,
+              block_hash: $response.result.block_hash,
+              amount: $response.result.amount,
+              locked: $response.result.locked
+            }
+          end
+      )'
+```
+
+## IDs and notifications
+
+- String, number, and explicit `null` IDs are echoed in responses. An omitted `id` makes the entry a notification; an explicit `"id": null` does not.
+- Boolean, array, and object IDs are invalid and receive `-32600` with `"id": null`.
+- Duplicate IDs are accepted, but make correlation ambiguous. Use a unique ID for every request that expects a response.
+- Omitted or `null` `params` are treated as absent. Object and array values reach normal query parsing; other primitive values are invalid and receive `-32600`.
+- A `query` notification executes, but the server suppresses its result. A notification for any other method is silently ignored.
+- A batch containing only valid notifications returns HTTP `204` with no body.
+
+Invalid members, nested batches, and response objects sent by a client each receive their own `-32600` response. They do not prevent valid sibling queries from running.
+
+## HTTP behavior and errors
+
+When batching is enabled, a valid, nonempty batch with at least one response entry returns HTTP `200`, even when individual entries contain RPC errors. Clients must inspect each response's `result` or `error` field.
+
+| HTTP status | Meaning |
+| --- | --- |
+| `200` | The batch produced at least one response, or the node returned a batch-level server error. |
+| `204` | Every entry was a valid notification, so the response has no body. |
+| `400` | The JSON was malformed or the batch was an empty array. |
+| `413` | The HTTP request body exceeded the node's body-size limit. |
+| `415` | The request did not use a supported JSON content type. |
+
+| Error code | Meaning |
+| ---: | --- |
+| `-32700` | Parse error: the body is malformed JSON or has trailing data. |
+| `-32600` | Invalid request: for example, an invalid member, ID, nested batch, client-sent response, or empty array. |
+| `-32601` | Method not found: a request with an ID used a method other than exact `query`. |
+| `-32005` | `batch requests are not supported by this server`: batching is disabled on this node, so nothing in the batch executes. |
+| `-32010` | The batch contains more entries than `batch_size_limit`; nothing in the batch executes. |
+| `-32011` | The serialized aggregate response exceeds `batch_response_size_limit`; all entries are drained and the aggregate is replaced by one non-array error response. |
+
+Malformed JSON and an empty array produce one non-array error response with HTTP `400`. A disabled node and the two limit errors also replace the batch with one non-array response whose ID is `null` and HTTP `200`.
+
+Validation uses this order: unsupported content type (`415`), oversized HTTP body (`413`), malformed or trailing JSON (`-32700`), unchanged handling for a non-array request, empty array (`-32600`), disabled batching (`-32005`), and too many entries (`-32010`). Entries execute only after all of these checks pass.
+
+## Node limits
+
+Node operators configure batching under `rpc` in `config.json`:
+
+| Setting | Default | Behavior |
+| --- | ---: | --- |
+| `enable_batch_requests` | `true` | Enables query batches. A disabled node returns `-32005` before query-domain parsing or dispatching a valid nonempty batch. |
+| `limits_config.json_payload_max_size` | 10 MiB | Maximum HTTP request body. An oversized body receives HTTP `413`. |
+| `limits_config.batch_size_limit` | 100 entries | Must be positive. An oversized batch receives `-32010` before any entry runs. |
+| `limits_config.batch_concurrency_limit` | 16 | Maximum query-entry concurrency within each individual batch; the value must be positive. |
+| `limits_config.batch_response_size_limit` | 10 MiB | Maximum serialized aggregate response size; the value must be positive. An oversized response is replaced by `-32011`. |
+
+The fields have backward-compatible defaults when omitted. Changing one requires restarting the node.
+
+The concurrency setting is not a node-wide admission limit. Simultaneous batches can multiply outstanding work, and individual RPC requests are not counted against it. A gateway that charges only per HTTP request will undercount batch work. Operators should charge every top-level entry, including notifications, and ideally account for query type or cost. If a gateway cannot inspect arrays, combine a conservative batch-size limit with connection and HTTP-request rate limits.
+
+There is no deadline around a whole batch. Individual operations keep their existing timeout behavior, and disconnecting does not guarantee that work already queued by the node will stop. The response-size limit bounds only the serialized responses retained for the aggregate; it does not bound query compute, queue depth, or transient memory used while admitted query parameters are decoded or an individual result is produced.
+
+Self-hosted nodes expose `near_rpc_batch_requests_total`, `near_rpc_batch_request_entries`, `near_rpc_batch_entries_total`, `near_rpc_batch_processing_time`, `near_rpc_batch_response_size_bytes`, `near_rpc_batch_requests_in_flight`, and `near_rpc_batch_query_entries_in_flight` at `/metrics`. These fixed-cardinality series separate batch-envelope behavior from the existing per-method metrics; the response-size histogram observes successful response arrays. Processing-time and in-flight measurements begin after the batch passes syntax, kill-switch, and size-limit admission checks.
+
+<Warning>
+  Never load test shared public RPC endpoints. Benchmark only a node you operate or an endpoint whose operator has explicitly authorized the test.
+</Warning>
