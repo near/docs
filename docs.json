@@ -60,12 +60,72 @@
   },
   "redirects": [
     {
+      "source": "/smart-contracts/tutorials/zero-to-hero/nfts-js",
+      "destination": "/smart-contracts/tutorials/zero-to-hero/nfts"
+    },
+    {
       "source": "/smart-contracts/contracts-list",
       "destination": "/tools/contracts-list"
     },
     {
       "source": "/smart-contracts/security/welcome",
-      "destination": "/smart-contracts/security/introduction"
+      "destination": "/smart-contracts/security/checklist"
+    },
+    {
+      "source": "/smart-contracts/security/introduction",
+      "destination": "/smart-contracts/security/checklist"
+    },
+    {
+      "source": "/smart-contracts/security/callbacks",
+      "destination": "/smart-contracts/security/cross-contract-calls/callbacks"
+    },
+    {
+      "source": "/smart-contracts/security/refunds",
+      "destination": "/smart-contracts/security/cross-contract-calls/refunds"
+    },
+    {
+      "source": "/smart-contracts/security/callback-panics",
+      "destination": "/smart-contracts/security/cross-contract-calls/callback-panics"
+    },
+    {
+      "source": "/smart-contracts/security/ft-transfer-call",
+      "destination": "/smart-contracts/security/cross-contract-calls/ft-transfer-call"
+    },
+    {
+      "source": "/smart-contracts/security/reentrancy",
+      "destination": "/smart-contracts/security/cross-contract-calls/reentrancy"
+    },
+    {
+      "source": "/smart-contracts/anatomy/types",
+      "destination": "/smart-contracts/anatomy/functions#sdk-types"
+    },
+    {
+      "source": "/smart-contracts/anatomy/serialization-interface",
+      "destination": "/smart-contracts/anatomy/serialization#overriding-interface-serialization"
+    },
+    {
+      "source": "/smart-contracts/anatomy/reproducible-builds",
+      "destination": "/smart-contracts/anatomy/reduce-size#reproducible-builds"
+    },
+    {
+      "source": "/smart-contracts/testing/introduction",
+      "destination": "/smart-contracts/testing/unit-test"
+    },
+    {
+      "source": "/smart-contracts/release/lock",
+      "destination": "/smart-contracts/release/upgrade#locking-a-contract-account"
+    },
+    {
+      "source": "/smart-contracts/tutorials/advanced/update",
+      "destination": "/smart-contracts/release/upgrade"
+    },
+    {
+      "source": "/smart-contracts/tutorials/factories/global-contracts",
+      "destination": "/smart-contracts/global-contracts#deploying-a-global-contract"
+    },
+    {
+      "source": "/smart-contracts/tutorials/cross-contracts/advanced-xcc",
+      "destination": "/smart-contracts/tutorials/cross-contracts/xcc#advanced-cross-contract-calls"
     },
     {
       "source": "/ai/shade-agents",
@@ -282,7 +342,7 @@
             ]
           },
           {
-            "group": "Concepts",
+            "group": "Building Smart Contracts",
             "pages": [
               {
                 "group": "Anatomy of a Contract",
@@ -291,7 +351,6 @@
                   "smart-contracts/anatomy/anatomy",
                   "smart-contracts/anatomy/functions",
                   "smart-contracts/anatomy/storage",
-                  "smart-contracts/anatomy/types",
                   "smart-contracts/anatomy/collections",
                   "smart-contracts/anatomy/environment",
                   "smart-contracts/anatomy/actions",
@@ -301,36 +360,42 @@
                 ]
               },
               {
+                "group": "Testing",
+                "icon": "test-tube",
+                "pages": [
+                  "smart-contracts/testing/unit-test",
+                  "smart-contracts/testing/integration-test"
+                ]
+              },
+              {
                 "group": "Deploy & Release",
                 "icon": "play",
                 "pages": [
                   "smart-contracts/global-contracts",
                   "smart-contracts/release/deploy",
-                  "smart-contracts/release/upgrade",
-                  "smart-contracts/release/lock"
-                ]
-              },
-              {
-                "group": "Testing",
-                "icon": "test-tube",
-                "pages": [
-                  "smart-contracts/testing/introduction",
-                  "smart-contracts/testing/unit-test",
-                  "smart-contracts/testing/integration-test"
+                  "smart-contracts/release/upgrade"
                 ]
               },
               {
                 "group": "Security",
                 "icon": "shield",
                 "pages": [
-                  "smart-contracts/security/introduction",
                   "smart-contracts/security/checklist",
                   "smart-contracts/security/storage",
-                  "smart-contracts/security/callbacks",
+                  {
+                    "group": "Cross-contract calls",
+                    "pages": [
+                      "smart-contracts/security/cross-contract-calls/callbacks",
+                      "smart-contracts/security/cross-contract-calls/refunds",
+                      "smart-contracts/security/cross-contract-calls/callback-panics",
+                      "smart-contracts/security/cross-contract-calls/ft-transfer-call",
+                      "smart-contracts/security/cross-contract-calls/reentrancy"
+                    ]
+                  },
                   "smart-contracts/security/one_yocto",
                   "smart-contracts/security/sybil",
                   "smart-contracts/security/frontrunning",
-                  "smart-contracts/security/reentrancy",
+                  "smart-contracts/security/duplicate-inputs",
                   "smart-contracts/security/random"
                 ]
               },
@@ -340,9 +405,7 @@
                 "pages": [
                   "smart-contracts/anatomy/best-practices",
                   "smart-contracts/anatomy/serialization",
-                  "smart-contracts/anatomy/serialization-interface",
-                  "smart-contracts/anatomy/reduce-size",
-                  "smart-contracts/anatomy/reproducible-builds"
+                  "smart-contracts/anatomy/reduce-size"
                 ]
               }
             ]
@@ -363,27 +426,23 @@
                 "group": "Cross Contracts",
                 "icon": "arrow-right-left",
                 "pages": [
-                  "smart-contracts/tutorials/cross-contracts/xcc",
-                  "smart-contracts/tutorials/cross-contracts/advanced-xcc"
+                  "smart-contracts/tutorials/cross-contracts/xcc"
                 ]
               },
               {
                 "group": "Factories",
                 "icon": "layout-grid",
                 "pages": [
-                  "smart-contracts/tutorials/factories/factory",
-                  "smart-contracts/tutorials/factories/global-contracts"
+                  "smart-contracts/tutorials/factories/factory"
                 ]
               },
-              "smart-contracts/tutorials/advanced/update",
               "smart-contracts/tutorials/advanced/near-drop",
               {
                 "group": "Zero to Hero",
                 "icon": "rocket",
                 "pages": [
                   "smart-contracts/tutorials/zero-to-hero/fts",
-                  "smart-contracts/tutorials/zero-to-hero/nfts",
-                  "smart-contracts/tutorials/zero-to-hero/nfts-js"
+                  "smart-contracts/tutorials/zero-to-hero/nfts"
                 ]
               }
             ]
@@ -405,6 +464,7 @@
             "group": "Tutorials",
             "pages": [
               "web3-apps/tutorials/wallet-login",
+              "web3-apps/tutorials/near-auth",
               "web3-apps/tutorials/social-login",
               "web3-apps/tutorials/frontend-multiple-contracts",
               "web3-apps/backend/backend",
@@ -540,6 +600,12 @@
             ]
           },
           {
+            "group": "Social",
+            "pages": [
+              "primitives/social"
+            ]
+          },
+          {
             "group": "Lockup Contracts",
             "pages": [
               "primitives/lockup/introduction",
@@ -598,6 +664,7 @@
             "group": " ",
             "pages": [
               "api/rpc/introduction",
+              "api/rpc/batching",
               "api/rpc/providers",
               "api/rpc/transactions",
               "api/rpc/block-chunk",
@@ -717,6 +784,11 @@
   "integrations": {
     "ga4": {
       "measurementId": "G-TMG0M3DPNW"
+    }
+  },
+  "seo": {
+    "metatags": {
+      "google-site-verification": "x36GvqeIYFjDAl2NNFM-83XykcMYMLRY6f9lgUZbDpA"
     }
   }
 }

@@ -29,6 +29,7 @@ Each transaction has exactly one `Signer` and `Receiver`, but can have multiple 
 - A transaction is accepted only if the `nonce` value is in the range of:
   - `[(current_nonce_of_access_key + 1) .. (block_height * 10^6)]`
 - Once a transaction is accepted, the access key's `nonce` is set to the `nonce` value of the included transaction
+- A transaction signed with a [gas key](/protocol/accounts-contracts/access-keys#gas-keys) additionally specifies a `nonce_index` selecting one of the key's parallel nonce lanes; the same rules then apply to that lane's nonce independently
 </Info>
 
 ---
@@ -44,11 +45,13 @@ Each transaction can have **one or multiple** [`Actions`](https://nomicon.io/Run
 5. [`UseGlobalContract`](https://nomicon.io/RuntimeSpec/Actions.html#useglobalcontractaction): uses a registered global contract by contract hash or account ID
 6. [`CreateAccount`](https://nomicon.io/RuntimeSpec/Actions.html#createaccountaction): to create a new sub-account (e.g. `ana.near` can create `sub.ana.near`)
 7. [`DeleteAccount`](https://nomicon.io/RuntimeSpec/Actions.html#deleteaccountaction): to delete the account (transferring the remaining balance to a beneficiary)
-8. [`AddKey`](https://nomicon.io/RuntimeSpec/Actions.html#addkeyaction): to add a new key to the account (either `FullAccess` or `FunctionCall` access)
+8. [`AddKey`](https://nomicon.io/RuntimeSpec/Actions.html#addkeyaction): to add a new key to the account (either `FullAccess` or `FunctionCall` access, optionally as a [gas key](/protocol/accounts-contracts/access-keys#gas-keys))
 9. [`DeleteKey`](https://nomicon.io/RuntimeSpec/Actions.html#deletekeyaction): to delete an existing key from the account
-10. [`DelegateActions`](https://nomicon.io/RuntimeSpec/Actions.html#delegate-actions): to create a meta-transaction
-11. [`Stake`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction): special action to express interest in becoming a network validator
-12. [`DeterministicStateInit`](https://nomicon.io/RuntimeSpec/Actions.html#deterministicstateinitaction): special action to create a deterministic account (an advanced kind of implicit account)
+10. [`TransferToGasKey`](/protocol/accounts-contracts/access-keys#gas-keys): to fund a gas key's prepaid gas balance with NEAR
+11. [`WithdrawFromGasKey`](/protocol/accounts-contracts/access-keys#gas-keys): to move NEAR from a gas key's balance back to the account
+12. [`DelegateActions`](https://nomicon.io/RuntimeSpec/Actions.html#delegate-actions): to create a [meta-transaction](/protocol/transactions/meta-tx) (`Delegate`, or `DelegateV2` for gas-key support)
+13. [`Stake`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction): special action to express interest in becoming a network validator
+14. [`DeterministicStateInit`](https://nomicon.io/RuntimeSpec/Actions.html#deterministicstateinitaction): special action to create a deterministic account (an advanced kind of implicit account)
 
 For example, `bob.near` can bundle the following actions in a single transaction:
 - Create the account `contract.bob.near`
