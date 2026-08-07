@@ -41,6 +41,10 @@ Storage staking is priced in an amount set by the network, which is set to **1E1
 
 NEAR's JSON RPC API provides [a way to query this initial setting](/api/rpc/protocol#genesis-config) as well as a [a way to query the live config / recent blocks](/api/rpc/protocol#protocol-config).
 
+<Note>
+An account can occupy up to `770` bytes without staking anything. That allowance is paid for once, with the fixed `0.007Ⓝ` charged when [creating the account](/protocol/transactions/gas#creating-an-account).
+</Note>
+
 ## Example cost breakdown
 
 Let's walk through an example.

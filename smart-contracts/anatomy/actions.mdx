@@ -107,6 +107,12 @@ Accounts do **NOT** have control over their sub-accounts, since they have their 
 
 Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.near`, `token.project.near`).
 
+<Note>
+Creating an account costs a fixed [`0.007Ⓝ`](/protocol/transactions/gas#creating-an-account), or about `0.00707Ⓝ` in total once the send fees are added. That `0.007Ⓝ` already includes the gas burned while creating the account, and it is taken out of the transaction's gas refund, not out of the deposit you attach for storage.
+</Note>
+
+<Tabs>
+  <Tab title="🦀 Rust">
 
 ```rust
   use near_sdk::{near, env, Promise, NearToken};
