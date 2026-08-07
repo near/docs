@@ -512,12 +512,6 @@
             ]
           },
           {
-            "group": "Tokenized Vaults",
-            "pages": [
-              "primitives/vault/standard"
-            ]
-          },
-          {
             "group": "Governance",
             "pages": [
               "protocol/network/staking",
@@ -528,7 +522,8 @@
             "group": "DeFi",
             "pages": [
               "primitives/oracles",
-              "primitives/dex"
+              "primitives/dex",
+              "primitives/tokenized-vaults"
             ]
           },
           {
