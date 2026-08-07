@@ -1,78 +1,54 @@
 ---
 title: SDK Libraries
 icon: package
-description: "Choose an SDK to start building contracts."
+description: "The Rust SDK for building smart contracts."
 ---
 
-The NEAR SDK is a library that allows you to develop smart contracts. Currently, there are two versions of the NEAR SDK: one for Rust and one for JavaScript.
-
-<Warning>
-We **strongly recommend using the [Rust SDK](https://docs.rs/near-sdk/latest/near_sdk/)** for production contracts. Rust provides the most mature tooling, best performance, and the strongest safety guarantees when handling real assets on-chain. The JavaScript SDK is a great option for prototyping and learning.
-</Warning>
+The NEAR SDK for Rust ([near-sdk-rs](https://github.com/near/near-sdk-rs)) is the official library for developing smart contracts. Rust provides the most mature tooling, best performance, and the strongest safety guarantees when handling real assets on-chain.
 
 <Tip>
 The best place to start learning is our [QuickStart Guide](/smart-contracts/quickstart).
 </Tip>
 
-<Columns cols={2}>
-  <Card title="Rust SDK" icon="code" href="https://docs.rs/near-sdk/latest/near_sdk/">
-    Rust SDK reference documentation.
-  </Card>
-  <Card title="JavaScript SDK" icon="js" href="https://near.github.io/near-sdk-js/">
-    JavaScript SDK reference documentation.
-  </Card>
-</Columns>
+<Card title="Rust SDK" icon="code" href="https://docs.rs/near-sdk/latest/near_sdk/">
+  Rust SDK reference documentation.
+</Card>
 
 ## Smart contracts on NEAR
 
-This is how a smart contract written in Rust and JavaScript using the NEAR SDK looks like:
+This is how a smart contract written in Rust using the NEAR SDK looks like:
 
-<Tabs>
-  <Tab title="JavaScript">
-    ```js
-    @NearBindgen({})
-    class HelloNear {
-      greeting: string = 'Hello';
+```rust
+#[near(contract_state)]
+pub struct Contract {
+    greeting: String,
+}
 
-      @view({}) // This method is read-only and can be called for free
-      get_greeting(): string {
-        return this.greeting;
-      }
-
-      @call({}) // This method changes the state, for which it costs gas
-      set_greeting({ greeting }: { greeting: string }): void {
-        near.log(`Saving greeting ${greeting}`);
-        this.greeting = greeting;
-      }
+impl Default for Contract {
+    fn default() -> Self {
+        Self { greeting: "Hello".to_string(), }
     }
-    ```
-  </Tab>
-  <Tab title="Rust">
-    ```rust
-    #[near(contract_state)]
-    pub struct Contract {
-        greeting: String,
+}
+
+#[near]
+impl Contract {
+    pub fn get_greeting(&self) -> String {
+        self.greeting.clone()
     }
 
-    impl Default for Contract {
-        fn default() -> Self {
-            Self { greeting: "Hello".to_string(), }
-        }
+    pub fn set_greeting(&mut self, greeting: String) {
+        self.greeting = greeting;
     }
+}
+```
 
-    #[near]
-    impl Contract {
-        pub fn get_greeting(&self) -> String {
-            self.greeting.clone()
-        }
+## Community SDKs
 
-        pub fn set_greeting(&mut self, greeting: String) {
-            self.greeting = greeting;
-        }
-    }
-    ```
-  </Tab>
-</Tabs>
+Since NEAR contracts compile to WebAssembly, the community maintains SDKs for other languages. They are great for prototyping and learning, but are not covered in this documentation:
+
+- [JavaScript / TypeScript SDK (near-sdk-js)](https://github.com/near/near-sdk-js)
+- [Python SDK (near-sdk-py)](https://github.com/r-near/near-sdk-py)
+- [Go SDK (near-sdk-go)](https://github.com/vlmoon99/near-sdk-go)
 
 ## Ready to start developing?
 
@@ -84,7 +60,4 @@ We have a section dedicated to [tutorials and examples](/smart-contracts/tutoria
 
 ## Reference docs
 
-If you need to find a specific function signature, or understand the SDK structs and classes, visit the SDK-specific pages:
-
-- [Rust SDK](https://docs.rs/near-sdk/latest/near_sdk/)
-- [JavaScript SDK](https://near.github.io/near-sdk-js/)
+If you need to find a specific function signature, or understand the SDK structs and classes, visit the [Rust SDK reference](https://docs.rs/near-sdk/latest/near_sdk/).

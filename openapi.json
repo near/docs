@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "NEAR Protocol JSON RPC API",
-    "version": "1.2.11"
+    "version": "1.2.13"
   },
   "paths": {
     "/EXPERIMENTAL_call_function": {
@@ -1155,6 +1155,20 @@
               "$ref": "#/components/schemas/AccessKeyInfoView"
             },
             "type": "array"
+          },
+          "last_key": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PublicKeyHandle"
+              },
+              {
+                "enum": [
+                  null
+                ],
+                "nullable": true
+              }
+            ],
+            "description": "Pagination cursor. When `Some`, the listing was truncated and the caller\nshould issue another request with `after_key` set to this handle to fetch\nthe next page. `None` means this was the last page."
           }
         },
         "required": [
@@ -6571,6 +6585,54 @@
             ],
             "description": "Cost of getting sha256 per byte"
           },
+          "sha3_256_base": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NearGas"
+              }
+            ],
+            "description": "Cost of getting sha3-256 base"
+          },
+          "sha3_256_byte": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NearGas"
+              }
+            ],
+            "description": "Cost of getting sha3-256 per byte"
+          },
+          "sha3_384_base": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NearGas"
+              }
+            ],
+            "description": "Cost of getting sha3-384 base"
+          },
+          "sha3_384_byte": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NearGas"
+              }
+            ],
+            "description": "Cost of getting sha3-384 per byte"
+          },
+          "sha3_512_base": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NearGas"
+              }
+            ],
+            "description": "Cost of getting sha3-512 base"
+          },
+          "sha3_512_byte": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NearGas"
+              }
+            ],
+            "description": "Cost of getting sha3-512 per byte"
+          },
           "storage_has_key_base": {
             "allOf": [
               {
@@ -6874,42 +6936,6 @@
               }
             ],
             "description": "Per byte cost of resume payload."
-          }
-        },
-        "type": "object"
-      },
-      "ExternalStorageConfig": {
-        "properties": {
-          "external_storage_fallback_threshold": {
-            "default": 3,
-            "description": "The number of attempts the node will make to obtain a part from peers in\nthe network before it fetches from external storage.",
-            "format": "uint64",
-            "minimum": 0,
-            "type": "integer"
-          },
-          "location": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ExternalStorageLocation"
-              }
-            ],
-            "description": "Location of state parts."
-          },
-          "num_concurrent_requests": {
-            "default": 25,
-            "description": "When fetching state parts from external storage, throttle fetch requests\nto this many concurrent requests.",
-            "format": "uint8",
-            "maximum": 255,
-            "minimum": 0,
-            "type": "integer"
-          },
-          "num_concurrent_requests_during_catchup": {
-            "default": 5,
-            "description": "During catchup, the node will use a different number of concurrent requests\nto reduce the performance impact of state sync.",
-            "format": "uint8",
-            "maximum": 255,
-            "minimum": 0,
-            "type": "integer"
           }
         },
         "type": "object"
@@ -13768,19 +13794,8 @@
             ],
             "description": "Options for syncing state."
           },
-          "state_sync_external_backoff": {
-            "description": "Additional waiting period after a failed request to external storage",
-            "items": {
-              "format": "uint64",
-              "minimum": 0,
-              "type": "integer"
-            },
-            "maxItems": 2,
-            "minItems": 2,
-            "type": "array"
-          },
           "state_sync_external_timeout": {
-            "description": "How long to wait for a response from centralized state sync",
+            "description": "How long to wait for a state sync block request response",
             "items": {
               "format": "uint64",
               "minimum": 0,
@@ -13898,6 +13913,12 @@
               }
             ],
             "description": "Version of the binary."
+          },
+          "view_access_keys_limit": {
+            "description": "Upper bound on the number of access keys returned by a `view_access_key_list`\nquery.",
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
           },
           "view_client_threads": {
             "description": "Number of threads for ViewClientActor pool.",
@@ -15277,6 +15298,48 @@
                     "minimum": 0,
                     "type": "integer"
                   },
+                  "limit": {
+                    "format": "uint32",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "requested_account_id": {
+                    "$ref": "#/components/schemas/AccountId"
+                  }
+                },
+                "required": [
+                  "requested_account_id",
+                  "limit",
+                  "block_height",
+                  "block_hash"
+                ],
+                "type": "object"
+              },
+              "name": {
+                "enum": [
+                  "TOO_MANY_ACCESS_KEYS"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "info"
+            ],
+            "type": "object"
+          },
+          {
+            "properties": {
+              "info": {
+                "properties": {
+                  "block_hash": {
+                    "$ref": "#/components/schemas/CryptoHash"
+                  },
+                  "block_height": {
+                    "format": "uint64",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
                   "error": {
                     "$ref": "#/components/schemas/FunctionCallError"
                   },
@@ -15554,6 +15617,25 @@
                 "properties": {
                   "account_id": {
                     "$ref": "#/components/schemas/AccountId"
+                  },
+                  "after_key": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/PublicKeyHandle"
+                      },
+                      {
+                        "enum": [
+                          null
+                        ],
+                        "nullable": true
+                      }
+                    ]
+                  },
+                  "limit": {
+                    "format": "uint32",
+                    "minimum": 1,
+                    "nullable": true,
+                    "type": "integer"
                   },
                   "request_type": {
                     "enum": [
@@ -15903,6 +15985,25 @@
                   "account_id": {
                     "$ref": "#/components/schemas/AccountId"
                   },
+                  "after_key": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/PublicKeyHandle"
+                      },
+                      {
+                        "enum": [
+                          null
+                        ],
+                        "nullable": true
+                      }
+                    ]
+                  },
+                  "limit": {
+                    "format": "uint32",
+                    "minimum": 1,
+                    "nullable": true,
+                    "type": "integer"
+                  },
                   "request_type": {
                     "enum": [
                       "view_access_key_list"
@@ -16250,6 +16351,25 @@
                 "properties": {
                   "account_id": {
                     "$ref": "#/components/schemas/AccountId"
+                  },
+                  "after_key": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/PublicKeyHandle"
+                      },
+                      {
+                        "enum": [
+                          null
+                        ],
+                        "nullable": true
+                      }
+                    ]
+                  },
+                  "limit": {
+                    "format": "uint32",
+                    "minimum": 1,
+                    "nullable": true,
+                    "type": "integer"
                   },
                   "request_type": {
                     "enum": [
@@ -18666,6 +18786,27 @@
         "properties": {
           "account_id": {
             "$ref": "#/components/schemas/AccountId"
+          },
+          "after_key": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PublicKeyHandle"
+              },
+              {
+                "enum": [
+                  null
+                ],
+                "nullable": true
+              }
+            ],
+            "description": "Pagination cursor: resume the listing strictly after this access key.\nPass the `last_key` returned by the previous page."
+          },
+          "limit": {
+            "description": "Maximum number of access keys to return in this page.",
+            "format": "uint32",
+            "minimum": 1,
+            "nullable": true,
+            "type": "integer"
           }
         },
         "required": [
@@ -18690,6 +18831,20 @@
               "$ref": "#/components/schemas/AccessKeyInfoView"
             },
             "type": "array"
+          },
+          "last_key": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PublicKeyHandle"
+              },
+              {
+                "enum": [
+                  null
+                ],
+                "nullable": true
+              }
+            ],
+            "description": "Pagination cursor. When `Some`, the listing was truncated and the caller\nshould issue another request with `after_key` set to this handle to fetch\nthe next page. `None` means this was the last page."
           }
         },
         "required": [
@@ -20953,19 +21108,6 @@
               "Peers"
             ],
             "type": "string"
-          },
-          {
-            "additionalProperties": false,
-            "description": "Expects parts to be available in external storage.\n\nUsually as a fallback after some number of attempts to use peers.",
-            "properties": {
-              "ExternalStorage": {
-                "$ref": "#/components/schemas/ExternalStorageConfig"
-              }
-            },
-            "required": [
-              "ExternalStorage"
-            ],
-            "type": "object"
           }
         ]
       },
@@ -21334,6 +21476,10 @@
             "format": "uint32",
             "minimum": 0,
             "type": "integer"
+          },
+          "sha3_host_fns": {
+            "description": "See [VMConfig::sha3_host_fns](crate::vm::Config::sha3_host_fns).",
+            "type": "boolean"
           },
           "storage_get_mode": {
             "allOf": [

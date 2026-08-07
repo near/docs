@@ -35,7 +35,7 @@ During this process a `FunctionCall` could span a **cross-contract call**, creat
 Each `Receipt` created from the function call take an additional block to be processed. Notice that, if those `Receipts` are `FunctionCall` they could spawn new `Receipts` and so on.
 
 #### Final Block: Gas is Refunded
-A final `Receipt` is processed in a new block, refunding any extra gas paid by the user.
+A final `Receipt` is processed in a new block, refunding any extra gas paid by the user. Almost every transaction ends with one of these, since the [buy price](./gas#buying-vs-burning-gas) is usually higher than the burn price.
 
 ### Waiting for a Transaction
 
@@ -61,7 +61,7 @@ Notice that `ExecutedOptimistic` and `IncludedFinal` are not ordered relative to
 
 #### Refund receipts
 
-When a receipt executes with leftover gas, NEAR generates a refund receipt to return the unused payment to the sender. These always succeed and don’t affect application logic, so `ExecutedOptimistic` and `Executed` don’t wait for them — only `Final` does.
+When a receipt executes, NEAR generates a refund receipt to return the unused payment to the sender: the gas that was attached but not used, plus the difference between the price the gas was bought at and the price it was burned at. These always succeed and don’t affect application logic, so `ExecutedOptimistic` and `Executed` don’t wait for them — only `Final` does.
 
 <Tip>
 Most transactions will just spawn a receipt to process the actions, and a receipt to refund the gas, being final in 1-3 blocks (~1-3 seconds):
@@ -146,3 +146,4 @@ On a valid transaction, the `nonce` value should follow these rules:
 - A transaction is accepted only if the `nonce` value is in the range of:
   - `[(current_nonce_of_access_key + 1) .. (block_height * 10^6)]`
 - Once a transaction is accepted, the access key's `nonce` is set to the `nonce` value of the included transaction
+- [Gas keys](/protocol/accounts-contracts/access-keys#gas-keys) hold one nonce per lane (up to 1,024 lanes); a transaction signed with a gas key selects a lane with its `nonce_index`, and the rules above apply to that lane's nonce independently of all other lanes
