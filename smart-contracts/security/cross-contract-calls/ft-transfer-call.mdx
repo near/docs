@@ -1,0 +1,86 @@
+---
+title: Fungible Token Implementation
+description: "Secure ft_on_transfer deposits and ft_resolve_transfer refunds in NEP-141 transfer calls."
+---
+
+The best practice for implementing a [fungible token contract](https://github.com/near/NEPs/blob/master/neps/nep-0141.md) is to use the [contract-tools](/primitives/ft/sdk-contract-tools) crate. However, if you need to implement your own, be careful to avoid common errors when handling `ft_on_transfer` and `ft_resolve_transfer`.
+
+---
+
+## `ft_on_transfer`: accept only expected tokens
+
+`ft_on_transfer` executes on the receiving contract. Its `predecessor_account_id` is the FT contract that transferred the tokens; `sender_id` is the account that initiated `ft_transfer_call`.
+
+### The vulnerable pattern
+
+This receiver credits every token contract that calls it:
+
+```rust title="Pseudocode: vulnerable flow"
+ft_on_transfer(sender_id, amount, msg):
+    deposits[sender_id] += amount // [!code --]
+    process_deposit(sender_id, amount, msg)
+    return 0
+```
+
+An attacker can call the receiver through an unexpected FT contract. If the application treats that deposit as its expected token, the attacker can obtain a benefit with the wrong asset.
+
+### The safe pattern
+
+Check the predecessor before using the deposit. Return all of an unexpected token as unused so the FT contract refunds it to the sender:
+
+```rust title="Pseudocode: safe flow" highlight={2-3}
+ft_on_transfer(sender_id, amount, msg):
+    if predecessor() != expected_ft_contract
+        return amount
+
+    deposits[sender_id] += amount
+    process_deposit(sender_id, amount, msg)
+    return 0
+```
+
+If your application supports several tokens, use an explicit allowlist and apply the correct rules for each token.
+
+---
+
+## `ft_resolve_transfer`: refund only transferred tokens
+
+`ft_resolve_transfer` executes on the FT contract itself after `ft_on_transfer` finishes. It must be private. On failure, the original amount should be refundable; on success, `ft_on_transfer` returns how many tokens it did not use.
+
+### The vulnerable pattern
+
+Do not trust the requested refund without a bound:
+
+```rust title="Pseudocode: vulnerable flow"
+private ft_resolve_transfer(sender_id, receiver_id, amount):
+    requested_refund = ft_on_transfer result // [!code --]
+    balances[receiver_id] -= requested_refund
+    balances[sender_id] += requested_refund
+    return amount - requested_refund
+```
+
+If the receiver reports more unused tokens than the original transfer, this can refund tokens the sender never spent. If the receiver holds other tokens, those tokens could be taken as part of the refund.
+
+### The safe pattern
+
+Cap the refund by the original amount and by the receiver's current balance:
+
+```rust title="Pseudocode: safe flow" highlight={3-4}
+private ft_resolve_transfer(sender_id, receiver_id, amount):
+    requested_refund = ft_on_transfer result, or amount if the call failed
+    requested_refund = min(requested_refund, amount)
+    refund = min(requested_refund, balances[receiver_id])
+
+    balances[receiver_id] -= refund
+    balances[sender_id] += refund
+    return amount - refund
+```
+
+The returned value is the amount the sender actually spent. Prefer the resolver in `near-contract-standards` instead of implementing this accounting yourself.
+
+## Review before deployment
+
+- In `ft_on_transfer`, check that the predecessor is an allowed FT contract.
+- Return the unused amount: `0` when all tokens were used, or `amount` when none were used.
+- Keep `ft_resolve_transfer` private.
+- Refund no more than the original transfer and no more than the receiver still holds.
+- Test unexpected FT contracts, failed receiver calls, malformed return values, partial use, and a requested refund larger than the transfer.
