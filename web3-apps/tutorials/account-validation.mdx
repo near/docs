@@ -7,24 +7,27 @@ description: "Best practices for validating recipient account IDs before sending
 
 When building an application that lets users send tokens, NFTs, or any other assets to another NEAR account, **validating the recipient before broadcasting the transaction is one of the most impactful UX decisions you can make**. A mistyped account, an unfunded implicit address, or a non-existent named account is a common cause of irreversible token loss.
 
-<Warning>
-NEAR is asynchronous: if you transfer assets to an account that does not exist, the refund receipt may [be lost](../../protocol/network/token-loss) — funds get distributed among validators instead of returned to the sender.
-</Warning>
-
-This guide describes the validation strategy that wallets (such as Meteor Wallet and HOT Wallet) apply, and shows how to implement the same protections in your own frontend.
+This guide describes the validation strategy that your application can implement to catch the most common failure modes, and the UX patterns that help users avoid mistakes.
 
 ---
 
 ## What can go wrong?
 
-There are four common failure modes when an end user enters a recipient account:
+There are three common failure modes when an end user enters a recipient account:
 
 1. **Invalid format** — the input is not a valid NEAR account ID (wrong characters, length, etc.).
-2. **Non-existent named account** — the format is correct (e.g. `alicee.near`) but the account was never created on chain. Transferring `$NEAR` to it will succeed at the protocol level, but the recipient cannot access the funds.
-3. **Unfunded implicit / `0x` account** — the address corresponds to a key pair, but no one has activated the account by funding it. Funds sent here are reachable only by whoever holds the private key.
-4. **Typo of an existing account** — the entered value is a valid, existing account, but **not the one the user intended**. This is the hardest case to catch and benefits the most from confirmation UX.
+2. **Unfunded implicit / `0x` account** — the address corresponds to a key pair, but no one has activated the account by funding it. Funds sent here are reachable only by whoever holds the private key.
+3. **Typo of an existing account** — the entered value is a valid, existing account, but **not the one the user intended**. This is the hardest case to catch and benefits the most from confirmation UX.
 
 For background on each [address type](../../protocol/accounts-contracts/account-id) (`.near`, `.tg`, `.sweat`, implicit, `0x`, deterministic), see the Address (Account ID) reference.
+
+<Tip>
+If you transfer tokens to a non-existing named account the transfer will simply fail and the assets will be returned
+</Tip>
+
+<Danger>
+If you delete an account and the beneficiary account does not exist, all the NEAR funds will be lost
+</Danger>
 
 ---
 
@@ -212,10 +215,6 @@ curl -s https://rpc.mainnet.fastnear.com \
 </Tab>
 </Tabs>
 
-<Info>
-**Implicit and `0x` accounts** are valid identifiers even when they don't exist on chain — the protocol *can* still transfer `$NEAR` to them, and whoever holds the private key can later claim it. But **named accounts that don't exist are dangerous**: a transfer to `alicee.near` (typo) will not be auto-rejected.
-</Info>
-
 </Step>
 
 <Step title="Apply recipient-class rules">
@@ -225,7 +224,7 @@ Combine the classification and the existence check into a decision:
 | Type | Exists on chain? | Recommended UX |
 |------|------------------|----------------|
 | Named (`alice.near`) | ✅ | Continue, optionally show resolved on-chain data |
-| Named (`alicee.near`) | ❌ | **Block** the send. Show "this account does not exist" and suggest creating it or fixing a typo |
+| Named (`alicee.near`) | ❌ | **Block** the send, show "this account does not exist". |
 | Implicit (64 hex) | ✅ | Continue |
 | Implicit (64 hex) | ❌ | Warn: "the account does not exist yet — the recipient must hold the private key to claim these funds." Require explicit confirmation |
 | Ethereum-like (`0x…`) | ✅ | Continue, optionally label as MetaMask-style |
@@ -234,19 +233,37 @@ Combine the classification and the existence check into a decision:
 
 </Step>
 
-<Step title="Add optional risk and confidence signals">
+<Step title="Allowlist supported assets and add confidence signals">
 
-For higher value transfers (or as a default for new recipients), wallets layer additional signals on top of the existence check:
+For higher-value transfers (or as a default for new recipients), layer an asset allowlist and other confidence signals on top of the existence check:
 
-- **Risk score**: cross-reference the account against a sanctions / scam list. Multichain AML providers such as [HAPI](https://hapi.one/) cover NEAR and expose REST APIs you can query before the user confirms. Treat this as *one* signal — coverage of NEAR accounts is typically thinner than on EVM chains, so a "clean" result does not mean the recipient is safe; combine it with the other checks below.
-- **Account "net worth"**: query the recipient's NEAR balance, FT/NFT holdings, and recent activity. An account with near-zero balance and no incoming transactions is statistically more likely to be a typo than an established wallet. Treat it like a brand-new account.
+- **Verified asset allowlist**: map every asset your app supports to its exact token-contract account ID. Never infer that a token is legitimate from a symbol, name, or an account ID that looks similar. For example, the USD₮ contract on NEAR is [`usdt.tether-token.near`](https://tether.to/en/supported-protocols/), not `usdt.near`. You can use [Rhea Finance's](https://guide.rhea.finance/developers/contracts) on-chain `get_whitelisted_tokens` result from `v2.ref-finance.near` as an input to your list. It is Rhea's DEX trading allowlist, not a universal security guarantee, so review and own the list you present to users.
 - **First-time recipient confirmation**: if the user has never sent to this account before, require a second confirmation step or suggest a small **test transaction** before the real transfer.
-- **Token-specific registration**: for fungible token transfers, verify the recipient is registered with the FT contract (`storage_balance_of`). If not, batch a `storage_deposit` action — otherwise the transfer will fail and assets may be locked.
+- **Token-specific registration**: for fungible token transfers, verify the recipient is registered with the FT contract (`storage_balance_of`). If not, batch a `storage_deposit` action — otherwise the transfer will fail.
 
 ```js
-// Pseudo-code: combine signals into a single risk decision
-async function evaluateRecipient(accountId, amount) {
+const RHEA_DEX = "v2.ref-finance.near";
+
+async function getRheaWhitelistedTokens(provider) {
+  const response = await provider.query({
+    request_type: "call_function",
+    finality: "final",
+    account_id: RHEA_DEX,
+    method_name: "get_whitelisted_tokens",
+    args_base64: "",
+  });
+
+  return JSON.parse(new TextDecoder().decode(Uint8Array.from(response.result)));
+}
+
+// Pseudo-code: combine an asset allowlist with recipient checks.
+async function evaluateRecipient(accountId, tokenContractId, amount, provider) {
   if (!isValidAccountIdFormat(accountId)) return { status: "invalid" };
+
+  const rheaWhitelistedTokens = new Set(await getRheaWhitelistedTokens(provider));
+  if (!rheaWhitelistedTokens.has(tokenContractId)) {
+    return { status: "block", reason: "unsupported-token" };
+  }
 
   const type = classifyAccountId(accountId);
   const exists = await accountExists(accountId);
@@ -254,14 +271,7 @@ async function evaluateRecipient(accountId, amount) {
   if (!exists && type === "named") return { status: "block", reason: "account-does-not-exist" };
   if (!exists) return { status: "confirm", reason: "unfunded-account", type };
 
-  const [risk, activity] = await Promise.all([
-    fetchRiskScore(accountId).catch(() => null),
-    fetchAccountActivity(accountId).catch(() => null),
-  ]);
-
-  if (risk?.score && risk.score >= HIGH_RISK_THRESHOLD) {
-    return { status: "block", reason: "flagged", risk };
-  }
+  const activity = await fetchAccountActivity(accountId).catch(() => null);
   if (activity?.txCount === 0 || amount > activity?.totalInflow) {
     return { status: "confirm", reason: "low-activity", activity };
   }

@@ -111,9 +111,6 @@ Sub-accounts are simply useful for organizing your accounts (e.g. `dao.project.n
 Creating an account costs a fixed [`0.007Ⓝ`](/protocol/transactions/gas#creating-an-account), or about `0.00707Ⓝ` in total once the send fees are added. That `0.007Ⓝ` already includes the gas burned while creating the account, and it is taken out of the transaction's gas refund, not out of the deposit you attach for storage.
 </Note>
 
-<Tabs>
-  <Tab title="🦀 Rust">
-
 ```rust
   use near_sdk::{near, env, Promise, NearToken};
 
@@ -301,10 +298,12 @@ There are two scenarios in which you can use the `delete_account` action:
 
 <Warning>
 **Token Loss**
+
 If the beneficiary account does not exist the funds will be [**dispersed among validators**](../../protocol/network/token-loss).
 </Warning>
 
 <Warning>
 **Token Loss**
+
 Do **not** use `delete` to try fund a new account. Since the account doesn't exist the tokens will be lost.
 </Warning>
