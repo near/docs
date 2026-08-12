@@ -1,0 +1,51 @@
+---
+title: Refund NEAR tokens
+description: "Return attached NEAR tokens to the original user when a cross-contract call fails."
+---
+
+When your contract sends attached NEAR tokens in a cross-contract call and that call fails, the tokens return to **your contract**. They do not automatically return to the user who started the operation.
+
+If the user should receive those tokens back, refund them in the callback.
+
+---
+
+## The refund pattern
+
+Save the original user and amount when creating the promise, then pass both to a private callback:
+
+```rust title="Rust: safe flow" highlight={20,27-30}
+pub fn mint_nft(&mut self, amount: NearToken) -> Promise {
+    let user = env::predecessor_account_id();
+
+    Promise::new(self.nft.clone())
+        .function_call(
+            "mint".to_string(),
+            {
+                "token_id": "1",
+                "receiver_id": user.clone()
+            },
+            Gas(5_000_000_000_000),
+            amount.as_yoctonear()
+        )
+        .then(
+            Self::ext(env::current_account_id())
+                .mint_callback(user, amount),
+        )
+}
+
+#[private]
+pub fn mint_callback(
+    &mut self,
+    user: AccountId,
+    amount: NearToken,
+    #[callback_result] result: Result<(), PromiseError>,
+) {
+    if result.is_err() {
+        // we got the tokens back, refund the user
+        // do not use panic, that will stop the callback execution 
+        Promise::new(user).transfer(amount);
+    } else {
+        // mint succeeded, do something else
+    }
+}
+```

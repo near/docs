@@ -93,7 +93,11 @@ When a transaction is signed with a gas key:
 - Any **attached NEAR** (deposits, transfers) is still paid from the **account's main balance**
 - **Gas refunds** for unspent gas return to the **gas key's balance**, so the key sustains itself between top-ups, while balance refunds go to the account
 
-If the gas key's balance cannot cover a transaction's gas, the transaction is rejected. If the gas is covered but the account cannot pay the attached deposit at execution time, the transaction fails **and the burned gas is still charged** to the gas key.
+If the gas key's balance cannot cover a transaction's gas, the transaction is rejected. If the gas is covered but the account cannot pay the attached deposit at execution time, the transaction fails and **the gas burned to process it is still charged** to the gas key. The gas that was attached to the receipt is refunded.
+
+<Note>
+Gas is [bought at a price that can be higher than the price it burns at](/protocol/transactions/gas#buying-vs-burning-gas), so a gas key has to hold more than its transactions finally cost. The difference comes back to the key as a refund, but it has to be on the key upfront.
+</Note>
 
 ### Using Nonce Lanes
 
@@ -171,6 +175,8 @@ The `allowance` field defines how much NEAR the key can spend on gas fees:
 
 - If set to a specific amount and fully consumed → the key becomes **unusable** and no new transactions can be signed
 - If set to `0` or omitted → **unlimited** allowance (the key has no gas budget restriction)
+
+The allowance is charged at the [buy price](/protocol/transactions/gas#buying-vs-burning-gas) and credited back when the gas refund arrives, so a key needs more allowance than the final transaction cost.
 
 <Warning>
 If an account has only function-call keys and the allowance runs out, the account is permanently locked from initiating any transaction. Either use unlimited allowance (`0`) or ensure the account is topped up with NEAR before the allowance is exhausted.

@@ -17,8 +17,6 @@ Every method execution has an environment associated with information such as:
 
 ## Environment Variables
 
-<Tabs>
-<Tab title="🦀 Rust">
 
 | Variable Name          | SDK Variable                    | Description                                                                          |
 |------------------------|---------------------------------|--------------------------------------------------------------------------------------|
@@ -37,64 +35,6 @@ Every method execution has an environment associated with information such as:
 | Signer Public Key      | `env::signer_account_pk()`      | Sender Public Key                                                                    |
 | Account Locked Balance | `env::account_locked_balance()` | Balance of this smart contract that is locked                                        |
 
-</Tab>
-
-<Tab title="🌐 JavaScript">
-
-| Variable Name          | SDK Variable                  | Description                                                                          |
-|------------------------|-------------------------------|--------------------------------------------------------------------------------------|
-| Predecessor            | `near.predecessorAccountId()` | Account ID that called this method                                                   |
-| Current Account        | `near.currentAccountId()`     | Account ID of this smart contract                                                    |
-| Signer                 | `near.signerAccountId()`      | Account ID that signed the transaction leading to this execution                     |
-| Attached Deposit       | `near.attachedDeposit()`      | Amount in yoctoNEAR attached to the call by the predecessor                          |
-| Account Balance        | `near.accountBalance()`       | Balance of this smart contract (including Attached Deposit)                          |
-| Prepaid Gas            | `near.prepaidGas()`           | Amount of gas available for execution                                                |
-| Timestamp              | `near.blockTimestamp()`       | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
-| Current Epoch          | `near.epochHeight()`          | Current epoch in the blockchain                                                      |
-| Block Index            | `near.blockIndex()`           | Current block index (a.k.a. block height)                                            |
-| Storage Used           | `near.storageUsage()`         | Current storage used by this smart contract                                          |
-| Used Gas               | `near.usedGas()`              | Amount of gas used for execution                                                     |
-| Signer Public Key      | `near.signerAccountPk()`      | Sender Public Key                                                                    |
-| Account Locked Balance | `near.accountLockedBalance()` | Balance of this smart contract that is locked                                        |
-
-</Tab>
-
-<Tab title="🐍 Python">
-
-| Variable Name          | SDK Variable                       | Description                                                                          |
-|------------------------|------------------------------------|--------------------------------------------------------------------------------------|
-| Predecessor            | `Context.predecessor_account_id()` | Account ID that called this method                                                   |
-| Current Account        | `Context.current_account_id()`     | Account ID of this smart contract                                                    |
-| Signer                 | `Context.signer_account_id()`      | Account ID that signed the transaction leading to this execution                     |
-| Attached Deposit       | `Context.attached_deposit()`       | Amount in yoctoNEAR attached to the call by the predecessor                          |
-| Prepaid Gas            | `Context.prepaid_gas()`            | Amount of gas available for execution                                                |
-| Used Gas               | `Context.used_gas()`               | Amount of gas used for execution                                                     |
-| Block Height           | `Context.block_height()`           | Current block height                                                                 |
-| Timestamp              | `Context.block_timestamp()`        | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
-| Current Epoch          | `Context.epoch_height()`           | Current epoch in the blockchain                                                      |
-
-</Tab>
-<Tab title="🐹 GO">
-
-| Variable Name          | SDK Variable                    | Description                                                                          |
-|------------------------|---------------------------------|--------------------------------------------------------------------------------------|
-| Predecessor            | `env.GetPredecessorAccountID()` | Account ID that called this method                                                   |
-| Current Account        | `env.GetCurrentAccountId()`     | Account ID of this smart contract                                                    |
-| Signer                 | `env.GetSignerAccountID()`      | Account ID that signed the transaction leading to this execution                     |
-| Attached Deposit       | `env.GetAttachedDeposit()`       | Amount in yoctoNEAR attached to the call by the predecessor                          |
-| Account Balance        | `env.GetAccountBalance()`        | Balance of this smart contract (including Attached Deposit)                          |
-| Prepaid Gas            | `env.GetPrepaidGas()`            | Amount of gas available for execution                                                |
-| Timestamp              | `env.GetBlockTimeMs()`        | Current timestamp (number of non-leap-nanoseconds since January 1, 1970 0:00:00 UTC) |
-| Current Epoch          | `env.GetEpochHeight()`           | Current epoch in the blockchain                                                      |
-| Block Index            | `env.GetCurrentBlockHeight()`            | Current block index (a.k.a. block height)                                            |
-| Storage Used           | `env.GetStorageUsage()`          | Current storage used by this smart contract in bytes                                 |
-| Used Gas               | `env.GetUsedGas()`               | Amount of gas used for execution                                                     |
-| Signer Public Key      | `env.GetSignerAccountPK()`      | Sender Public Key                                                                    |
-| Account Locked Balance | `env.GetAccountLockedBalance()` | Balance of this smart contract that is locked                                        |
-
-</Tab>
-
-</Tabs>
 
 ---
 
@@ -120,7 +60,7 @@ In most scenarios you will **only need to know the predecessor**. However, there
 </Tip>
 
 <Note>
-`signer_account_pk` returns the signer's public key (a `PublicKey` in near-sdk-rs; raw bytes in near-sdk-js — not a preformatted `<scheme>:<base58>` string). If the transaction was signed with a post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) key, that public key is much larger — 1952 bytes, versus 32 for `ed25519` — so keep that in mind if your contract stores, compares, or serializes signer public keys.
+`signer_account_pk` returns the signer's public key as a near-sdk-rs `PublicKey` — not a preformatted `<scheme>:<base58>` string. If the transaction was signed with a post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) key, that public key is much larger — 1952 bytes, versus 32 for `ed25519` — so keep that in mind if your contract stores, compares, or serializes signer public keys.
 </Note>
 
 ---
@@ -199,46 +139,12 @@ During [cross-contract calls](./crosscontract) always make sure the callback has
 
 If you already [estimated the Gas](../../protocol/transactions/gas#estimating-costs-for-a-call) a method needs, you can ensure it never runs out of Gas by using `assert`
 
-<Tabs>
-<Tab title="🦀 Rust">
 
 ```rust
 const REQUIRED_GAS: Gas = Gas(20_000_000_000_000); // 20 TGas
 assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
 ```
 
-</Tab>
-
-<Tab title="🐍 Python">
-
-```python
-from near_sdk_py import call, Context
-
-@call
-def check_gas(required_gas=20_000_000_000_000):  # 20 TGas
-    if Context.prepaid_gas() < required_gas:
-        raise Exception(f"Please attach at least {required_gas} gas")
-    return "Sufficient gas attached"
-```
-
-</Tab>
-
-<Tab title="🐹 GO">
-
-```go
-const REQUIRED_GAS = uint64(20_000_000_000_000) // 20 TGas
-
-// @contract:mutating
-func (c *MyContract) CheckGas() {
-    if env.GetPrepaidGas() < REQUIRED_GAS {
-        env.PanicStr("Please attach at least 20 TGas")
-    }
-}
-```
-
-</Tab>
-
-</Tabs>
 
 </Tip>
 
@@ -248,8 +154,6 @@ func (c *MyContract) CheckGas() {
 
 Besides environmental variables, the SDK also exposes some functions to perform basic cryptographic operations
 
-<Tabs>
-<Tab title="🦀 Rust">
 
 | Function Name         | SDK method                                              | Description                                                                                                                                                                                                                                                                                                                      |
 |-----------------------|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -265,58 +169,5 @@ Besides environmental variables, the SDK also exposes some functions to perform 
 | Log String            | `env::log_str(message)`                                 | Logs the string message. This message is stored on chain.                                                                                                                                                                                                                                                                        |
 | Validator Stake       | `env::validator_stake(account_id)`                      | For a given account return its current stake. If the account is not a validator, returns 0.                                                                                                                                                                                                                                      |
 | Validator Total Stake | `env::validator_total_stake()`                          | Returns the total stake of validators in the current epoch.                                                                                                                                                                                                                                                                      |
-
-</Tab>
-
-<Tab title="🌐 JavaScript">
-
-| Function Name         | SDK method                                       | Description                                                                                                                                                                                                                                                                                                                      |
-|-----------------------|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| SHA 256               | `near.sha256(value)`                             | Hashes a sequence of bytes using sha256.                                                                                                                                                                                                                                                                                         |
-| Keccak 256            | `near.keccak256(value)`                          | Hashes a sequence of bytes using keccak256.                                                                                                                                                                                                                                                                                      |
-| Keccak 512            | `near.keccak512(value)`                          | Hashes a sequence of bytes using keccak512.                                                                                                                                                                                                                                                                                      |
-| RIPEMD 160            | `near.ripemd160(value)`                          | Hashes the bytes using the RIPEMD-160 hash function.                                                                                                                                                                                                                                                                             |
-| EC Recover            | `near.ecrecover(hash, sig, v, malleabilityFlag)` | Recovers an ECDSA signer address from a 32-byte message `hash` and a corresponding `signature` along with `v` recovery byte. Takes in an additional flag to check for malleability of the signature which is generally only ideal for transactions. Returns 64 bytes representing the public key if the recovery was successful. |
-| Log String            | `near.log(msg)`                                  | Logs the string message. This message is stored on chain.                                                                                                                                                                                                                                                                        |
-| Validator Stake       | `near.validatorStake(accountId)`                 | For a given account return its current stake. If the account is not a validator, returns 0.                                                                                                                                                                                                                                      |
-| Validator Total Stake | `near.validatorTotalStake()`                     | Returns the total stake of validators in the current epoch.                                                                                                                                                                                                                                                                      |
-
-</Tab>
-
-<Tab title="🐍 Python">
-
-| Function Name         | SDK method                               | Description                                                                                                                                                                                                                                                                                                                      |
-|-----------------------|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| SHA 256               | `near.sha256(value)`                     | Hashes a sequence of bytes using sha256.                                                                                                                                                                                                                                                                                         |
-| Keccak 256            | `near.keccak256(value)`                  | Hashes a sequence of bytes using keccak256.                                                                                                                                                                                                                                                                                      |
-| Keccak 512            | `near.keccak512(value)`                  | Hashes a sequence of bytes using keccak512.                                                                                                                                                                                                                                                                                      |
-| Log Info              | `Log.info(message)`                      | Logs an informational message. This message is stored on chain.                                                                                                                                                                                                                                                                 |
-| Log Warning           | `Log.warning(message)`                   | Logs a warning message. This message is stored on chain.                                                                                                                                                                                                                                                                      |
-| Log Error             | `Log.error(message)`                     | Logs an error message. This message is stored on chain.                                                                                                                                                                                                                                                                       |
-| Log Event             | `Log.event(event_type, data)`            | Logs a structured event following the NEP standard for events. This is useful for indexers and frontend applications.                                                                                                                                                                                                          |
-| Raise Exception       | `raise Exception(message)`               | Terminates the execution of the function with an error message. Similar to panic in other languages.                                                                                                                                                                                                                          |
-
-</Tab>
-<Tab title="🐹 GO">
-
-| Function Name         | SDK method                                              | Description                                                                                                                                                                                                                                                                                                                      |
-|-----------------------|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| SHA 256               | `env.Sha256Hash(value)`                                      | Hashes a sequence of bytes using sha256.                                                                                                                                                                                                                                                                                         |
-| Keccak 256            | `env.Keccak256Hash(value)`                                   | Hashes a sequence of bytes using keccak256.                                                                                                                                                                                                                                                                                      |
-| Keccak 512            | `env.Keccak512Hash(value)`                                   | Hashes a sequence of bytes using keccak512.                                                                                                                                                                                                                                                                                      |
-| RIPEMD 160            | `env.Ripemd160Hash(value)`                                   | Hashes the bytes using the RIPEMD-160 hash function. This returns a 20 byte hash.                                                                                                                                                                                                                                                |
-| EC Recover            | `env.EcrecoverPubKey(hash, signature, v, malleability_flag)` | Recovers an ECDSA signer address from a 32-byte message `hash` and a corresponding `signature` along with `v` recovery byte. Takes in an additional flag to check for malleability of the signature which is generally only ideal for transactions. Returns 64 bytes representing the public key if the recovery was successful. |
-| Panic String          | `env.PanicStr(message)`                               | Terminates the execution of the program with the UTF-8 encoded message.                                                                                                                                                                                                                                                          |
-| Log String            | `env.LogString(message)`                                 | Logs the string message. This message is stored on chain.                                                                                                                                                                                                                                                                        |
-| Validator Stake       | `env.ValidatorStakeAmount(account_id)`                      | For a given account return its current stake. If the account is not a validator, returns 0.                                                                                                                                                                                                                                      |
-| Validator Total Stake | `env.ValidatorTotalStakeAmount()`                          | Returns the total stake of validators in the current epoch.                                                                                                                                                                                                                                                                      |
-
-</Tab>
-
-</Tabs>
-
-<Info>
-In the JS SDK, `throw new Error("message")` mimics the behavior of Rust's `env::panic_str("message")`.
-</Info>
 
 ---
