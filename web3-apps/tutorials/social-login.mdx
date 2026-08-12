@@ -121,8 +121,24 @@ The guide above wires Privy into your app directly: your code owns the signer an
 
 [privy-near-connect](https://github.com/beneviolabs/privy-near-connect) (community-maintained, published as `@peerfolio/privy-near-connect`) takes the other approach — it turns your Privy embedded wallet into a standalone NEAR wallet that any dApp can connect to via [near-connect](https://github.com/azbang/near-connect). You drop the custom signer and the `NEARxPrivy` context, and instead publish a wallet manifest and host a signing page.
 
-**Choose it when** you want one wallet usable across several dApps, or you already speak `near-connect` and want Privy to be just another wallet in the selector.
+|  | Guide above | privy-near-connect |
+|---|---|---|
+| Your dApp talks to | `@privy-io/react-auth` directly | `NearConnector` (near-connect) |
+| Who signs | a signer class in your own code | a signing page you host |
+| User confirmation | none — silent, Web2-like | a popup approval screen per transaction |
+| What you deploy | your app | your app + `manifest.json` + a `/sign` route |
+| Reusability | the wallet lives inside that one dApp | any dApp that loads your manifest can use it |
+
+With `privy-near-connect`, Privy sits *behind* near-connect as one more wallet in the selector. The flow is: the wallet's `executor` script runs inside near-connect's sandboxed iframe → it opens a popup to your `/sign` route → that page authenticates against Privy and signs → the result is posted back to the dApp. You can build the signing UI yourself with `initSigningPage`, or use the bundled `SignPagePlugin`.
+
+This also moves the trust boundary. In the guide above your app code holds the signer, so it can sign anything without the user seeing it. With `privy-near-connect` the signing page is the boundary: the user approves each request and can see the origin that asked for it (`allowedOrigins`, `session.targetOrigin`).
+
+**Choose it when** you want one wallet usable across several dApps, you want an explicit approval step in front of every signature, or you already speak `near-connect` and want Privy to be just another wallet in the selector.
 
 **Stay with the guide above when** you're building a single app and want the fewest moving parts — no manifest, no hosted `/sign` route, no extra origin to deploy.
 
 Setup steps live in the project's [Getting Started](https://github.com/beneviolabs/privy-near-connect#getting-started).
+
+<Warning>
+Pin the `executor` URL in your manifest to an immutable commit SHA (`.../<commit-sha>/executor.js`), never a mutable branch. near-connect fetches and runs that script at runtime with no integrity check, so a branch URL silently picks up whatever is pushed next. Bump the SHA deliberately when you adopt a new executor build.
+</Warning>
