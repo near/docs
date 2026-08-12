@@ -112,3 +112,17 @@ console.log(`Balance: ${formatted} Ⓝ`)
 ## Full Example
 
 <Github url="https://github.com/near-examples/hello-privy/blob/main/src/pages/hello_near.jsx" language="jsx" />
+
+---
+
+## Alternative: privy-near-connect
+
+The guide above wires Privy into your app directly: your code owns the signer and the NEAR context, and the wallet lives inside your dApp.
+
+[privy-near-connect](https://github.com/beneviolabs/privy-near-connect) (community-maintained, published as `@peerfolio/privy-near-connect`) takes the other approach — it turns your Privy embedded wallet into a standalone NEAR wallet that any dApp can connect to via [near-connect](https://github.com/azbang/near-connect). You drop the custom signer and the `NEARxPrivy` context, and instead publish a wallet manifest and host a signing page.
+
+**Choose it when** you want one wallet usable across several dApps, or you already speak `near-connect` and want Privy to be just another wallet in the selector.
+
+**Stay with the guide above when** you're building a single app and want the fewest moving parts — no manifest, no hosted `/sign` route, no extra origin to deploy.
+
+Setup steps live in the project's [Getting Started](https://github.com/beneviolabs/privy-near-connect#getting-started).
