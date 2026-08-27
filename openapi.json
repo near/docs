@@ -343,7 +343,7 @@
     },
     "/EXPERIMENTAL_tx_status": {
       "post": {
-        "description": "Queries status of a transaction by hash, returning the final transaction result and details of all receipts.",
+        "description": "[Deprecated] Queries status of a transaction by hash, returning the final transaction result and details of all receipts. Consider using `tx_status` instead.",
         "operationId": "EXPERIMENTAL_tx_status",
         "requestBody": {
           "content": {
@@ -1022,6 +1022,34 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/JsonRpcRequest_for_tx"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonRpcResponse_for_RpcTransactionResponse_and_RpcTransactionError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tx_status": {
+      "post": {
+        "description": "Queries status of a transaction by hash, returning the final transaction result and details of all receipts.",
+        "operationId": "tx_status",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JsonRpcRequest_for_tx_status"
               }
             }
           },
@@ -10371,6 +10399,38 @@
           "method"
         ],
         "title": "JsonRpcRequest_for_tx",
+        "type": "object"
+      },
+      "JsonRpcRequest_for_tx_status": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "default": "dontcare",
+            "description": "JSON-RPC request id. Auto-populated; can be any string."
+          },
+          "jsonrpc": {
+            "type": "string",
+            "default": "2.0",
+            "enum": [
+              "2.0"
+            ],
+            "description": "JSON-RPC protocol version. Always `2.0`."
+          },
+          "method": {
+            "enum": [
+              "tx_status"
+            ],
+            "type": "string"
+          },
+          "params": {
+            "$ref": "#/components/schemas/RpcTransactionStatusRequest"
+          }
+        },
+        "required": [
+          "params",
+          "method"
+        ],
+        "title": "JsonRpcRequest_for_tx_status",
         "type": "object"
       },
       "JsonRpcRequest_for_validators": {
