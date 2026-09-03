@@ -46,41 +46,19 @@ The faucet is only available on the testnet network - which is the default netwo
 
 To deploy the contract, you need to compile the contract code into WebAssembly (WASM) and then deploy it to the network
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+```bash
+# compile the contract using cargo-near
+cargo near build
 
-    ```bash
-    # compile the contract
-    npm run build
+# deploy the contract
+near deploy <contractId> ./target/near/auction-contract.wasm
 
-    # deploy the contract
-    near deploy <contractId> ./build/auction-contract.wasm
+# initialize the contract, it finishes in 2 minutes
+TWO_MINUTES_FROM_NOW=$(date -v+2M +%s000000000)
+near call <contractId> init '{"end_time": "'$TWO_MINUTES_FROM_NOW'", "auctioneer": "<auctioneerId>"}' --useAccount <contractId>
+```
 
-    # initialize the contract, it finishes in 2 minutes
-    TWO_MINUTES_FROM_NOW=$(date -v+2M +%s000000000)
-    near call <contractId> init '{"end_time": "'$TWO_MINUTES_FROM_NOW'", "auctioneer": "<auctioneerId>"}' --useAccount <contractId>
-    ```
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-    ```bash
-    # compile the contract using cargo-near
-    cargo near build
-
-    # deploy the contract
-    near deploy <contractId> ./target/near/auction-contract.wasm
-
-    # initialize the contract, it finishes in 2 minutes
-    TWO_MINUTES_FROM_NOW=$(date -v+2M +%s000000000)
-    near call <contractId> init '{"end_time": "'$TWO_MINUTES_FROM_NOW'", "auctioneer": "<auctioneerId>"}' --useAccount <contractId>
-    ```
-
-    </Tab>
-
-</Tabs>
 
 Replace `<auctioneerId>` with the name of another account, this should not be the same as the contract account as we intend on removing its keys.
 
