@@ -52,6 +52,8 @@ FastNear maintains a [comprehensive dashboard](https://grafana.fastnear.com/publ
   **Free Tier Limit** values link to each provider's own pricing/docs page as the source. Limits are reported in the units each provider publishes (`req` = requests, `CU` = compute units), so they are not directly comparable across providers and may change at any time — always confirm on the linked page. "Not published" means the endpoint is free but has no documented numeric limit.
 </Note>
 
+For live latency benchmarks across these providers, see [OpenChainBench](https://openchainbench.com/benchmarks/near-rpc) — p50/p90/p99 measured every 60 seconds from US-East, EU-West and Singapore.
+
 ## Making requests
 
 Send JSON-RPC 2.0 requests with `POST` to the root of the provider endpoint. Put the method and parameters in the JSON request body.
