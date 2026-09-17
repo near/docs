@@ -333,7 +333,7 @@ connector = new NearConnector({
 
 ---
 
-### Sign Messages (NEP-413)
+## Sign Messages (NEP-413)
 
 In NEAR, users can sign messages for authentication purposes without needing to send a transaction:
 
@@ -377,3 +377,17 @@ In NEAR, users can sign messages for authentication purposes without needing to 
     ```
   </Tab>
 </Tabs>
+
+---
+
+## Ethereum Wallets
+
+Thanks to [NEP-516](https://github.com/near/NEPs/pull/555) Ethereum wallets can control `0x...` accounts on NEAR Protocol.
+
+To enable Ethereum wallets on `near-connect` simply add the `evm-on-near` wallet manifest:
+
+```js
+const manifest = await fetch('https://evm-on-near.dev/manifest.json').then(r => r.json());
+await connector.whenManifestLoaded;
+await Promise.all(manifest.wallets.map(wallet => connector.registerWallet(wallet)));
+```
