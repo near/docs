@@ -697,6 +697,7 @@
             "pages": [
               "POST /send_tx",
               "POST /tx",
+              "POST /tx_status",
               "POST /EXPERIMENTAL_tx_status",
               "POST /EXPERIMENTAL_receipt",
               "POST /EXPERIMENTAL_receipt_to_tx",

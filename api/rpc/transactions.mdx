@@ -13,20 +13,20 @@ The RPC API exposes several methods for broadcasting signed transactions and tra
 |--------|---------|
 | [`send_tx`](#send-transaction) | Broadcast a signed transaction and wait for the result |
 | [`tx`](#transaction-status) | Get the status of a previously broadcast transaction |
-| [`EXPERIMENTAL_tx_status`](#transaction-status-with-receipts) | Like `tx`, but also returns receipt details |
+| [`tx_status`](#transaction-status-with-receipts) | Like `tx`, but also returns receipt details |
 | [`EXPERIMENTAL_receipt`](#receipt-by-id) | Fetch a single receipt by id |
 | [`broadcast_tx_async`](#broadcast-async) | Broadcast and return immediately with the transaction hash |
 | [`broadcast_tx_commit`](#broadcast-commit) | Broadcast and wait until the transaction is included in a block |
 
 <Info>
-Prefer `send_tx` and `tx` for new integrations. The `broadcast_tx_async` and `broadcast_tx_commit` methods are kept for backward compatibility but offer less control over when the call returns.
+Prefer `send_tx`, `tx`, and `tx_status` for new integrations. The `broadcast_tx_async` and `broadcast_tx_commit` methods are kept for backward compatibility but offer less control over when the call returns. `EXPERIMENTAL_tx_status` is a deprecated alias of `tx_status`.
 </Info>
 
 ---
 
 ## The `wait_until` Field
 
-`send_tx` and `tx` accept an optional `wait_until` field that controls **how long the RPC waits before returning a response**. Each value waits for a stricter execution milestone than the previous one — pick the lowest level that satisfies your use case so you don't pay extra latency.
+`send_tx`, `tx`, and `tx_status` accept an optional `wait_until` field that controls **how long the RPC waits before returning a response**. Each value waits for a stricter execution milestone than the previous one — pick the lowest level that satisfies your use case so you don't pay extra latency.
 
 | Value | Returns when… | Typical use |
 |-------|---------------|-------------|
@@ -142,10 +142,14 @@ Returns the status of a previously submitted transaction.
 
 ## Transaction Status with Receipts
 
-`EXPERIMENTAL_tx_status` returns the same payload as `tx` plus the full set of receipts produced by the transaction. Useful when debugging cross-contract calls.
+`tx_status` returns the same payload as `tx` plus the full set of receipts produced by the transaction. Useful when debugging cross-contract calls.
 
-- **method**: `EXPERIMENTAL_tx_status`
+- **method**: `tx_status`
 - **params**: same as `tx`
+
+<Note>
+This method was previously called `EXPERIMENTAL_tx_status`. That name still works as a deprecated alias with identical request and response types, so existing clients keep functioning — but new code should use `tx_status`.
+</Note>
 
 ---
 
