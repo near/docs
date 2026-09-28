@@ -283,7 +283,8 @@
                 "pages": [
                   "protocol/accounts-contracts/account-model",
                   "protocol/accounts-contracts/account-id",
-                  "protocol/accounts-contracts/access-keys"
+                  "protocol/accounts-contracts/access-keys",
+                  "protocol/accounts-contracts/creating-universal-accounts"
                 ]
               },
               {
