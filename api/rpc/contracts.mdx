@@ -86,6 +86,12 @@ Returns basic account information.
 ```
 </Accordion>
 
+<Info>
+**Extra fields on an uninitialized [universal account](/protocol/accounts-contracts/account-id#universal-address)**
+
+A `0u` account that's been funded by a transfer but hasn't run its `UniversalStateInit` yet additionally returns `state: "uninitialized"` and `bootstrap_nonce` (the value its self-signed init transaction's nonce is based on — that transaction must use `bootstrap_nonce + 1`). Both fields are omitted once the account initializes — see [Creating Universal Accounts](/protocol/accounts-contracts/creating-universal-accounts#the-uninitialized-account) for a full example response.
+</Info>
+
 ---
 
 ## View Account Changes

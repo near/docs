@@ -9,6 +9,7 @@ NEAR accounts are identified by a unique address, which can take multiple forms:
 2. [**Named address**](#named-address), which act as domains (e.g. `alice.near`, `sub.account.testnet`)
 3. An ethereum-like account (e.g. `0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`)
 4. [**Deterministic address**](#deterministic-address), which start with `0s` (e.g. `0s85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`)
+5. [**Universal address**](#universal-address), which start with `0u` (e.g. `0u0000000000000000000000000000000000000000000000000000`)
 
 <Accordion title="Valid Account IDs">
 
@@ -182,5 +183,49 @@ Any NEAR attached beyond the required storage deposit is refunded to the sender.
 
 **Deterministic accounts cannot be deleted** and certain account modifications available to regular accounts are restricted. Once created, the deployed code and pre-initialized storage are permanent.
 
+
+</Info>
+
+---
+
+## Universal Address
+
+Universal accounts are a new kind of account which combines features of deterministic and implicit accounts. Like a deterministic account, a universal account's id is the hash of its initial state, so you always know the id before the account exists. However, the initial state can also contain access keys, which allows universal accounts to be used the same way as implicit accounts. They are identified by an address starting with `0u` followed by 52 lowercase [Crockford base32](https://www.crockford.com/base32.html) characters (54 characters total).
+
+For example: `0u0000000000000000000000000000000000000000000000000000`
+
+<Info>
+**How is this different from a deterministic (`0s`) address?**
+
+A deterministic address hashes only code and storage, so the only way to control one is through the contract's own logic. A universal address hashes code, storage, **and** a set of access keys together, so a universal account can be a plain, key-controlled account with no contract at all, similar to an implicit account. One important difference though is that its access keys can include a post-quantum [`ml-dsa-65`](./access-keys#post-quantum-keys-ml-dsa-65) key from the moment it's created, which an implicit account's address structurally can't support (its address **is** the key's own bytes).
+</Info>
+
+<Accordion title="🧑‍💻 Technical: How is the address derived?">
+
+The universal account ID is computed by:
+1. Constructing a `UniversalStateInit` value containing:
+   - **Code** (optional): a reference to the contract code via a code hash or an existing account ID, omitted for a key-only account
+   - **Data**: a key-value mapping pre-populating the contract's storage, empty for a key-only account
+   - **Access keys**: a set of access-key handles the account starts with, empty for a contract-only account. A handle is the full public key for `ed25519`/`secp256k1`, or the 32-byte hash for `ml-dsa-65` — the same [compact form](./access-keys#post-quantum-keys-ml-dsa-65) used everywhere else
+2. Borsh-encoding that value into bytes
+3. Applying the formula: `'0u' + crockford_base32(sha3_256(bytes))`
+
+Unlike the `0s` scheme, the protocol does not re-serialize the bytes into a canonical form before hashing: the id commits to the **exact bytes supplied**, so two different byte-level encodings of an otherwise identical state produce two different accounts.
+
+</Accordion>
+
+<Accordion title="🧑‍💻 Technical: How are universal accounts created?">
+
+Universal accounts are created using the `UniversalStateInit` action — like `DeterministicStateInit`, a distinct action from the standard `CreateAccount` action. See [Creating Universal Accounts](./creating-universal-accounts) for the three ways to submit one, with code and RPC examples.
+
+Smart contracts can build this action using two host functions:
+- `universal_state_init_to_account_id` — derives the `0u` account id from a state init, with no side effects
+- `promise_batch_action_universal_state_init` — appends a `UniversalStateInit` action to a promise, with an attached deposit that tops up the account's storage stake if needed (any unused amount is refunded, it doesn't just add to the account's balance — see [Creating Universal Accounts](./creating-universal-accounts#relayer-assisted-creation) for how funding actually works)
+
+</Accordion>
+
+<Info>
+
+A NEAR transfer to a `0u` address that does not exist yet **auto-creates it as uninitialized**: it holds the transferred balance but has no code, keys, or storage until a matching `UniversalStateInit` arrives. See [The uninitialized account](./creating-universal-accounts#the-uninitialized-account) for what an uninitialized account can and can't do.
 
 </Info>

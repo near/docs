@@ -13,13 +13,14 @@ This guide describes the validation strategy that your application can implement
 
 ## What can go wrong?
 
-There are three common failure modes when an end user enters a recipient account:
+There are four common failure modes when an end user enters a recipient account:
 
 1. **Invalid format** — the input is not a valid NEAR account ID (wrong characters, length, etc.).
 2. **Unfunded implicit / `0x` account** — the address corresponds to a key pair, but no one has activated the account by funding it. Funds sent here are reachable only by whoever holds the private key.
-3. **Typo of an existing account** — the entered value is a valid, existing account, but **not the one the user intended**. This is the hardest case to catch and benefits the most from confirmation UX.
+3. **Unclaimed universal (`0u…`) account** — funds sent to a `0u` address that has never run its `UniversalStateInit` sit in an **uninitialized** account, reachable only by whoever can produce the exact state init that address commits to. Unlike an implicit account, there's no simpler "just needs a matching key pair" fallback — if no one can produce that state init, the balance is effectively stranded.
+4. **Typo of an existing account** — the entered value is a valid, existing account, but **not the one the user intended**. This is the hardest case to catch and benefits the most from confirmation UX.
 
-For background on each [address type](../../protocol/accounts-contracts/account-id) (`.near`, `.tg`, `.sweat`, implicit, `0x`, deterministic), see the Address (Account ID) reference.
+For background on each [address type](../../protocol/accounts-contracts/account-id) (`.near`, `.tg`, `.sweat`, implicit, `0x`, deterministic, universal), see the Address (Account ID) reference.
 
 <Tip>
 If you transfer tokens to a non-existing named account the transfer will simply fail and the assets will be returned
@@ -44,7 +45,7 @@ Reject inputs that cannot be valid NEAR account IDs before doing any network cal
 - Contain only lowercase letters (`a-z`), digits (`0-9`), and the separators `.`, `-`, `_`
 - Not start or end with a separator, and not have two separators in a row
 
-Ethereum-like (`0x...`) and deterministic (`0s...`) addresses are 42 characters (the `0x`/`0s` prefix plus 40 lowercase hex characters). Implicit accounts are 64 lowercase hex characters.
+Ethereum-like (`0x...`) and deterministic (`0s...`) addresses are 42 characters (the `0x`/`0s` prefix plus 40 lowercase hex characters). Implicit accounts are 64 lowercase hex characters. Universal (`0u...`) addresses are 54 characters: the `0u` prefix plus 52 lowercase [Crockford base32](https://www.crockford.com/base32.html) characters (`0-9` and `a-z` excluding `i`, `l`, `o`, `u`).
 
 <Tabs>
 <Tab title="🌐 JavaScript">
@@ -89,6 +90,7 @@ Once the format is valid, classify the account so you can apply the right rules:
 export function classifyAccountId(accountId) {
   if (/^0x[0-9a-f]{40}$/.test(accountId)) return "ethereum";
   if (/^0s[0-9a-f]{40}$/.test(accountId)) return "deterministic";
+  if (/^0u[0-9a-hj-km-np-tv-z]{52}$/.test(accountId)) return "universal";
   if (/^[0-9a-f]{64}$/.test(accountId)) return "implicit";
   if (accountId.endsWith(".near") || accountId.endsWith(".testnet")) return "named-tla";
   return "named";
@@ -99,13 +101,17 @@ export function classifyAccountId(accountId) {
 <Tab title="🦀 Rust">
 
 ```rust
-pub enum AccountKind { Ethereum, Deterministic, Implicit, NamedTla, Named }
+pub enum AccountKind { Ethereum, Deterministic, Universal, Implicit, NamedTla, Named }
 
 pub fn classify(account_id: &str) -> AccountKind {
     let is_hex40 = |s: &str| s.len() == 40 && s.chars().all(|c| c.is_ascii_hexdigit() && !c.is_ascii_uppercase());
+    let is_crockford52 = |s: &str| {
+        s.len() == 52 && s.chars().all(|c| c.is_ascii_digit() || matches!(c, 'a'..='z') && !matches!(c, 'i' | 'l' | 'o' | 'u'))
+    };
 
     if let Some(rest) = account_id.strip_prefix("0x") { if is_hex40(rest) { return AccountKind::Ethereum; } }
     if let Some(rest) = account_id.strip_prefix("0s") { if is_hex40(rest) { return AccountKind::Deterministic; } }
+    if let Some(rest) = account_id.strip_prefix("0u") { if is_crockford52(rest) { return AccountKind::Universal; } }
     if account_id.len() == 64 && is_hex40(&account_id[..40]) && is_hex40(&account_id[24..]) {
         return AccountKind::Implicit;
     }
@@ -123,7 +129,7 @@ This lets your UI explain to the user *what kind of account* they are about to s
 
 <Step title="Check whether the account exists on chain">
 
-Call the RPC [`view_account`](../../api/rpc/contracts#view-account) method. If the account exists you will receive its `amount`, `code_hash`, and `storage_usage`; if it does not, the RPC returns an error code such as `AccountDoesNotExist` or `UNKNOWN_ACCOUNT`.
+Call the RPC [`view_account`](../../api/rpc/contracts#view-account) method. If the account exists you will receive its `amount`, `code_hash`, and `storage_usage`; if it does not, the RPC returns an error code such as `AccountDoesNotExist` or `UNKNOWN_ACCOUNT`. For a universal account, also check the response's `state` field — its presence (`"uninitialized"`) is how you distinguish a claimed account from one that only exists because someone sent it a transfer.
 
 <Tabs>
 <Tab title="🌐 near-api-js">
@@ -230,6 +236,9 @@ Combine the classification and the existence check into a decision:
 | Ethereum-like (`0x…`) | ✅ | Continue, optionally label as MetaMask-style |
 | Ethereum-like (`0x…`) | ❌ | Same warning as implicit — require explicit confirmation |
 | Deterministic (`0s…`) | ❌ | Block: deterministic accounts are not transfer targets unless explicitly known |
+| Universal (`0u…`) | ✅ and initialized | Continue |
+| Universal (`0u…`) | ✅ but **uninitialized** | Warn strongly: the address holds a balance but has no owner yet — anyone who can produce the matching `UniversalStateInit` can claim it. Check `state` in the [`view_account`](../../api/rpc/contracts#view-account) response, not just existence |
+| Universal (`0u…`) | ❌ | Warn: sending here creates the account uninitialized (see above) — require explicit confirmation that the recipient can actually produce the state init this address commits to, since (unlike implicit accounts) there's no simpler "just needs a key pair" story to fall back on |
 
 </Step>
 
