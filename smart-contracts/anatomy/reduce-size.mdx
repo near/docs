@@ -1,6 +1,7 @@
 ---
-title: Reducing Contract Size
-description: "Learn strategies to reduce NEAR smart contract size for optimized deployment and performance."
+title: Production Builds
+sidebarTitle: Production Builds
+description: "Reduce contract size and create reproducible builds that users can verify against the deployed code."
 ---
 import {Github} from '/snippets/github.jsx';
 
@@ -8,8 +9,6 @@ In this page, we will explore strategies for reducing the size of smart contract
 
 # Reducing a contract's size
 
-<Tabs>
-  <Tab title="🦀 Rust">
 
 ## Advice & examples
 
@@ -72,7 +71,7 @@ crate-type = ["cdylib"]
 ```
 </Tip>
 
-3. When using the Rust SDK, you may override the default JSON serialization to use [Borsh](https://borsh.io) instead. [See this page](./serialization-interface#overriding-serialization-protocol-default) for more information and an example.
+3. When using the Rust SDK, you may override the default JSON serialization to use [Borsh](https://borsh.io) instead. See [overriding interface serialization](/smart-contracts/anatomy/serialization#overriding-interface-serialization) for more information and an example.
 4. When using assertions or guards, avoid using the standard `assert` macros like [`assert!`](https://doc.rust-lang.org/std/macro.assert.html), [`assert_eq!`](https://doc.rust-lang.org/std/macro.assert_eq.html), or [`assert_ne!`](https://doc.rust-lang.org/std/macro.assert_ne.html) as these may add bloat for information regarding the line number of the error. There are similar issues with `unwrap`, `expect`, and Rust's `panic!()` macro.
 
   Example of a standard assertion:
@@ -188,240 +187,49 @@ For a `no_std` approach to minimal contracts, observe the following examples:
 </Accordion>
 
 </Note>
-  </Tab>
-  
-  <Tab title="🐍 Python">
-
-## Optimizing Python Contracts
-
-Since Python smart contracts on NEAR are interpreted rather than compiled to WebAssembly directly, the optimization strategies differ from Rust contracts. The Python interpreter itself is already optimized, but you can still make your contract more efficient.
-
-### Reducing Contract Size
-
-#### 1. Minimize Dependencies
-
-Only import the modules and functions you need:
-
-```python
-# Less efficient - imports everything
-from near_sdk_py import *
-
-# More efficient - imports only what's needed
-from near_sdk_py import view, call, Context
-```
-
-#### 2. Use Efficient Data Structures
-
-Choose the right data structure for your needs:
-
-```python
-# Less efficient for lookups
-user_list = []  # O(n) lookup time
-for user in user_list:
-    if user["id"] == user_id:
-        return user
-
-# More efficient for lookups
-user_dict = {}  # O(1) lookup time
-if user_id in user_dict:
-    return user_dict[user_id]
-```
-
-#### 3. Optimize Storage Usage
-
-The NEAR SDK collections are optimized for on-chain storage. For large data sets, use these instead of native Python collections:
-
-```python
-# Native collection - loaded entirely into memory
-self.users = {}  # Loaded entirely on each method call
-
-# SDK collection - lazily loaded
-from near_sdk_py.collections import UnorderedMap
-self.users = UnorderedMap("u")  # Only loads what's needed
-```
-
-#### 4. Reduce String Operations
-
-String operations can be expensive. Minimize them when possible:
-
-```python
-# Less efficient
-result = ""
-for i in range(100):
-    result += str(i)  # Creates many intermediate strings
-
-# More efficient
-parts = []
-for i in range(100):
-    parts.append(str(i))
-result = "".join(parts)  # Creates strings once
-```
-
-#### 5. Avoid Recursion
-
-Deep recursion can lead to stack overflow issues. Consider iterative approaches instead:
-
-```python
-# Recursive - could cause issues with deep structures
-def process_tree(node):
-    result = process_node(node)
-    for child in node.children:
-        result += process_tree(child)
-    return result
-
-# Iterative - more efficient
-def process_tree(root):
-    result = 0
-    queue = [root]
-    while queue:
-        node = queue.pop(0)
-        result += process_node(node)
-        queue.extend(node.children)
-    return result
-```
-
-#### 6. Use Python's Built-in Functions
-
-Python's built-in functions are often optimized and more efficient:
-
-```python
-# Less efficient
-sum_value = 0
-for num in numbers:
-    sum_value += num
-
-# More efficient
-sum_value = sum(numbers)
-```
-
-#### 7. Split Complex Logic
-
-If you have a very large contract, consider splitting it into multiple contracts with focused responsibilities. This can improve maintainability and reduce the cost of individual calls.
-
-#### 8. Profile and Optimize Hot Paths
-
-Focus optimization efforts on the most frequently called functions or those that handle large amounts of data:
-
-```python
-@call
-def frequently_called_method(self, data):
-    # Optimize this code carefully
-    # Consider using more efficient algorithms and data structures
-    pass
-```
-
-  </Tab>
-  <Tab title="🐹 GO">
-
-## Advice & examples
-
-Go contracts are compiled to WASM via **TinyGo**, which already applies aggressive size optimizations compared to the standard Go compiler. The `near-go build` command uses size-optimized TinyGo settings by default.
-
-Below are additional strategies to further reduce your contract size.
 
 ---
 
-## Use `near-go build` (default)
+## Reproducible builds
 
-Always build with `near-go build` instead of raw `tinygo`. It applies the correct flags for NEAR and enables size optimizations automatically:
+Reproducible builds let different people build the same program and get the exact same output. They help users verify that a deployed contract corresponds to its published source code.
+
+Building the same contract on different machines can produce similar but non-identical binaries because the artifact can be affected by the locale, timezone, build path, and other parts of the build environment. NEAR addresses this with [NEP-330 source metadata](https://github.com/near/NEPs/blob/master/neps/nep-0330.md), [cargo-near](https://github.com/near/cargo-near), Docker, and SourceScan.
+
+<Info>
+You need [Docker](https://docker.com) to use the reproducible-build workflow.
+</Info>
+
+When you initialize a project with `cargo near new`, its `Cargo.toml` includes the build environment and repository metadata:
+
+```toml
+repository = "https://github.com/<organization>/<repository>"
+
+[package.metadata.near.reproducible_build]
+image = "sourcescan/cargo-near:0.13.5-rust-1.85.1"
+image_digest = "sha256:3b0272ecdbb91465f3e7348330d7f2d031d27901f26fb25b4eaf1560a60c20f3"
+passed_env = []
+container_build_command = [
+    "cargo",
+    "near",
+    "build",
+    "non-reproducible-wasm",
+    "--locked",
+]
+```
+
+When you deploy with `cargo near deploy`, this information is used to clone the repository and compile the contract in a Docker container. The build adds a `contract_source_metadata` method without changing the contract's logic.
+
+After deployment, inspect that metadata with:
 
 ```bash
-near-go build
+near view <contract-account> contract_source_metadata
 ```
 
-To inspect the intermediate generated code or set a custom output name:
+## Verify and publish
 
-```bash
-near-go build --output my_contract.wasm --keep-generated
-```
+To verify and publish the contract's code, open its account page in [NearBlocks](https://nearblocks.io), select the **Contract** tab, and use **Verify and Publish**. After verification, the source and metadata are available under **Contract → Contract Code**.
 
----
+![NearBlocks interface for verifying a reproducible contract build](/assets/docs/smart-contracts/reproducible-build.png)
 
-## Minimize struct fields
-
-Every field stored in the contract state is serialized to JSON. Keep your state structs lean — only store what you need on-chain.
-
-```go
-// Avoid: storing redundant or derived data
-// @contract:state
-type BadContract struct {
-    Balance    string `json:"balance"`
-    BalanceStr string `json:"balance_str"` // redundant — derive it when needed
-    LastCaller string `json:"last_caller"`
-    CallCount  uint64 `json:"call_count"`  // may not be necessary
-}
-
-// Better: store only essential state
-// @contract:state
-type GoodContract struct {
-    Balance string `json:"balance"`
-}
-```
-
----
-
-## Avoid large dependencies
-
-TinyGo has a limited standard library. Avoid importing large packages that bring in code not needed at runtime. Prefer the SDK's built-in utilities:
-
-```go
-// Avoid: importing "fmt" for formatting — it adds significant size
-import "fmt"
-env.LogString(fmt.Sprintf("value: %d", x))
-
-// Better: use strconv or SDK helpers for simple conversions
-import "strconv"
-env.LogString("value: " + strconv.FormatUint(x, 10))
-```
-
----
-
-## Use SDK collections for large data
-
-Native Go slices and maps are fully serialized into the `STATE` key on every call, making the contract state grow with the collection. Use SDK collections to store entries as separate storage keys:
-
-```go
-import "github.com/vlmoon99/near-sdk-go/collections"
-
-// Avoid for large datasets: native map is fully loaded on every call
-// @contract:state
-type BadContract struct {
-    Balances map[string]string `json:"balances"`
-}
-
-// Better: SDK LookupMap only loads entries on demand
-// @contract:state
-type GoodContract struct {
-    Balances *collections.LookupMap[string, string] `json:"balances"`
-}
-```
-
----
-
-## Panic early, before doing expensive work
-
-Failing fast with `env.PanicStr` saves gas and avoids wasted computation. Validate all inputs and permissions before executing any logic:
-
-```go
-// @contract:mutating
-func (c *Contract) AdminAction(data string) {
-    caller, _ := env.GetPredecessorAccountID()
-
-    // Validate permissions immediately
-    if caller != c.OwnerId {
-        env.PanicStr("Only the owner can call this method")
-    }
-
-    // Validate input before processing
-    if len(data) == 0 {
-        env.PanicStr("Data must not be empty")
-    }
-
-    // ... proceed with the actual logic
-}
-```
-
-<div style={{textAlign:"center",paddingBottom:"13px"}}><a style={{fontSize:"0.9em",fontWeight:600,color:"rgb(14, 117, 221)",textDecoration:"underline"}} href="https://github.com/Emir-Asanov/near-go-examples" target="_blank" rel="noreferrer noopener">See full example on GitHub</a></div>
-
-  </Tab>
-</Tabs>
+For a complete walkthrough, see the [SourceScan verification guide](https://github.com/SourceScan/verification-guide).

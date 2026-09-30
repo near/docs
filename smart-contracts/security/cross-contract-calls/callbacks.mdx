@@ -1,0 +1,84 @@
+---
+title: Private Callbacks
+description: "Remember to make your callbacks private"
+---
+
+In NEAR, your contract can call a function from another contract, and then schedule a **callback** to handle its result.
+
+The **callback** function needs to be "public" - meaning that it needs to be callable by the NEAR runtime - but it should be **only callable by your own contract**. Otherwise, a malicious user could call the callback directly and pretend that the cross-contract call succeeded or failed.
+
+---
+
+## The vulnerable pattern
+
+Imagine a contract that stakes and unstakes tokens on behalf of a user:
+
+```rust title="Rust: vulnerable flow"
+pub fn unstake(&mut self, amount: NearToken) -> Promise {
+    let user = env::predecessor_account_id();
+    let staked = self.staked.get(&user);
+    assert!(staked >= amount, "Not enough balance");
+    self.staked.insert(
+        user.clone(),
+        NearToken::from_yoctonear(staked.as_yoctonear() - amount.as_yoctonear()),
+    );
+
+    Promise::new(self.staking_pool.clone())
+        .function_call(
+            "unstake".to_string(),
+            amount,
+        )
+        .then(
+            Self::ext(env::current_account_id())
+                .unstake_callback(user, amount),
+        )
+}
+
+pub fn unstake_callback(&mut self, user: AccountId, amount: NearToken, #[callback_result] result: Result<(), PromiseError>) { // [!code --]
+    if result.is_err() {
+        return self.staked.add(
+            user,
+            amount
+        );
+    }
+
+    self.unstaked.add(
+        user,
+        amount
+    );
+}
+```
+
+---
+
+## How the exploit happens
+
+Notice that the user cannot call `unstake_callback` directly, because there is a `#[callback_result]` argument. This is a special argument that the NEAR runtime fills in with the result of the preceding promise, rather than an argument supplied by the caller.
+
+However, the user can still create a malicious contract with a function `call_unstake_callback` that calls `unstake_callback` directly, passing as parameters the original user and amount, and a positive result.
+
+In this case, the `#[callback_result]` will be positive, and thus the function `unstake_callback` will credit the user with the unstaked amount, even though the unstaking failed.
+
+---
+
+## The safe pattern
+
+In Rust, mark the callback with `#[private]`. This checks that the immediate caller of a public function is your own contract:
+
+```rust highlight={3}
+use near_sdk::PromiseError;
+
+#[private]
+pub fn unstake_callback(
+    &mut self,
+    user: AccountId,
+    amount: NearToken,
+    #[callback_result] result: Result<(), PromiseError>,
+) {
+ ...
+}
+```
+
+`#[private]` means: only the `env::current_account_id()` can call this function. If any other account tries to call it, the NEAR runtime will reject the call.
+
+For calls that attach NEAR tokens, see [refund NEAR tokens](/smart-contracts/security/cross-contract-calls/refunds) for the failure path.

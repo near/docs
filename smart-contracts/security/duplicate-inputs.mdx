@@ -1,0 +1,63 @@
+---
+title: Duplicate token IDs
+description: "Prevent callers from redeeming the same treasury token more than once by repeating its ID."
+---
+
+A treasury can let users burn share tokens to redeem a proportional share of its holdings. If it charges the user's share tokens once but pays out once for every entry in a caller-controlled list, a user can submit `[near, near, near]` and receive NEAR tokens several times.
+
+Treat every user-supplied list as a list with duplicates unless you check otherwise. If your method charges once but processes every entry, a caller can repeat a value and receive the same benefit multiple times.
+
+---
+
+## The vulnerable pattern
+
+The vulnerable logic looks like this:
+
+```rust title="Pseudocode: vulnerable flow"
+redeem(share_amount, token_ids):
+    user.shares -= share_amount // [!code --]
+
+    for token_id in token_ids:
+        amount = treasury[token_id] * share_amount / total_shares
+        treasury[token_id] -= amount
+        user[token_id] += amount
+```
+
+The code assumes that `token_ids` contains each token only once. A caller controls that list, so that assumption is unsafe.
+
+---
+
+## How the exploit happens
+
+1. The user redeems their share tokens once.
+2. They pass `[near, near, near]` instead of `[near]`.
+3. The loop processes every `near` entry as a separate payout.
+4. The user's NEAR balance is credited several times, even though they paid their share tokens only once.
+
+Each later payout may be smaller because the treasury balance changed in the preceding iteration. It is still an unintended extra payout, and enough repeated entries can drain far more NEAR than the redemption should allow.
+
+---
+
+## The safe pattern
+
+Accept one token ID per redemption. Each call deducts the user's share tokens before paying out:
+
+```rust title="Pseudocode: safe flow" highlight={2-5}
+redeem(share_amount, token_id):
+    if user.shares < share_amount
+        fail "not enough shares"
+
+    user.shares -= share_amount
+
+    amount = treasury[token_id] * share_amount / total_shares
+    treasury[token_id] -= amount
+    user[token_id] += amount
+```
+
+If the user wants to redeem several token types, they call `redeem` several times. They cannot redeem more than their share balance because every call deducts `share_amount`.
+
+If an operation genuinely needs a list, deduct `share_amount` inside the loop before each payout. The user then pays the share amount for each entry, so a repeated token ID cannot create a free extra redemption.
+
+## General rule
+
+Avoid caller-controlled lists when one item is enough. When you must process a list, charge or deduct the required resource for each item before granting its benefit.

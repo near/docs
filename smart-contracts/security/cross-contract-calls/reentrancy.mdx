@@ -1,0 +1,97 @@
+---
+title: Balance Deduction 
+description: "Remember to always deduct a user's balance before sending them tokens in a cross-contract call"
+---
+
+Between a cross-contract call and its callback, **any public method of your contract can execute**. This means that, particularly, a same method can also execute again before the callback runs.
+
+If you forget to deduct a user's balance before sending them tokens, they can call the same method again and again, draining your contract of tokens.
+
+---
+
+## The vulnerable pattern
+
+Imagine that we develop a `withdraw` method with the following wrong logic:
+1. We send tokens to the user
+2. On success, we deduct the amount from the user's balance
+  
+```rust title="Pseudocode: vulnerable flow"
+withdraw(token, amount):
+    if balance[token, user] >= amount
+        transfer token amount to the user // [!code --]
+        then callback withdraw_callback(user, token, amount)
+
+private withdraw_callback(user,token, amount):
+    if call succeeded
+        balance[token, user] -= amount
+```
+
+---
+
+## How the exploit happens
+
+1. The user calls `withdraw` and the contract sends the tokens to the user
+2. The callback is scheduled, but the user can call `withdraw` again before the callback runs!
+3. The user calls `withdraw` again, or multiple times as a batched transaction, the contract keeps sending tokens to the user
+4. The callback runs and deducts the amount from the user's balance only once, leaving the user with more tokens than they should have.
+
+---
+
+## The safe pattern
+
+Deduce the user's balance before sending the tokens! Anyway if the transfer fails, you can always refund the user in the callback.
+
+```rust title="Pseudocode: safe flow" highlight={3,9}
+pub withdraw(token, amount):
+    if balance[token, user] >= amount
+        balance[token, user] -= amount
+        transfer token amount to the user
+        then callback withdraw_callback(user, token, amount)
+
+private withdraw_callback(user,token, amount):
+    if call failed
+        balance[token, user] += amount
+```
+
+Now a withdrawal between the call and callback finds no new balance to withdraw!
+
+---
+
+## The opposite rule for deposits
+
+For a deposit whose benefit depends on a cross-contract call, do not add the user's balance first and deduct it again if the call fails:
+
+```rust title="Pseudocode: vulnerable deposit flow"
+deposit_and_stake(amount):
+    let user = predecessor()
+    balance[user] += amount // [!code --]
+    call staking_pool.deposit_and_stake(amount)
+        then callback deposit_callback(user, amount)
+
+private deposit_callback(user, amount):
+    if call failed
+        balance[user] -= amount
+        transfer amount NEAR tokens to user
+```
+
+Before `deposit_callback` runs, the user can withdraw the balance that was already credited. If staking then fails, the callback also refunds the deposit.
+
+Instead, add the balance only after the call succeeds:
+
+```rust title="Pseudocode: safe deposit flow" highlight={7-8}
+deposit_and_stake(amount):
+    let user = predecessor()
+    call staking_pool.deposit_and_stake(amount)
+        then callback deposit_callback(user, amount)
+
+private deposit_callback(user, amount):
+    if call succeeded
+        balance[user] += amount
+    else
+        transfer amount NEAR tokens to user
+```
+
+The two rules are mirrors of each other:
+
+- **Withdrawals:** deduct the balance before the call; add it back only if the call fails.
+- **Deposits:** add the balance only if the call succeeds.

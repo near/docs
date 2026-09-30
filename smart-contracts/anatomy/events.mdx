@@ -15,8 +15,6 @@ EVENT_JSON:{"standard":"nep171","version":"1.0.0","event":"nft_mint","data":[{"o
 
 ## Defining and Emitting Events
 
-<Tabs>
-<Tab title="🦀 Rust">
 
 The `near-sdk` provides a high-level macro-based API for defining and emitting events. Annotate an enum with `#[near(event_json(standard = "..."))]` and mark each variant with `#[event_version("...")]`.
 
@@ -87,35 +85,6 @@ The macro automatically serializes the enum variant to the `EVENT_JSON:` format 
 You can emit multiple data entries in a single event by passing a `Vec` with more than one element. This keeps gas costs lower than emitting one event per entry.
 </Tip>
 
-</Tab>
-
-<Tab title="🌐 JavaScript">
-
-In the JavaScript SDK, emit events by calling `near.log()` with a string formatted as `EVENT_JSON:` followed by a JSON payload matching the [NEP-297 schema](https://nomicon.io/Standards/EventsFormat).
-
-```js
-import { NearBindgen, call, near } from 'near-sdk-js'
-
-@NearBindgen({})
-class Contract {
-  @call({})
-  mint({ owner_id, token_id }: { owner_id: string; token_id: string }) {
-    // ... minting logic ...
-
-    const event = {
-      standard: 'nep171',
-      version: '1.0.0',
-      event: 'nft_mint',
-      data: [{ owner_id, token_ids: [token_id] }],
-    }
-
-    near.log(`EVENT_JSON:${JSON.stringify(event)}`)
-  }
-}
-```
-
-</Tab>
-</Tabs>
 
 ---
 
@@ -123,8 +92,6 @@ class Contract {
 
 You are not limited to standard NEP events. Define your own standard name for application-specific activity:
 
-<Tabs>
-<Tab title="🦀 Rust">
 
 ```rust
 use near_sdk::near;
@@ -152,22 +119,6 @@ MarketplaceEvent::OrderPlaced(vec![OrderPlaced {
 .emit();
 ```
 
-</Tab>
-
-<Tab title="🌐 JavaScript">
-
-```js
-const event = {
-  standard: 'my-marketplace',
-  version: '1.0.0',
-  event: 'order_placed',
-  data: [{ order_id: 42, buyer: 'alice.near', amount: '1000000' }],
-}
-near.log(`EVENT_JSON:${JSON.stringify(event)}`)
-```
-
-</Tab>
-</Tabs>
 
 ---
 

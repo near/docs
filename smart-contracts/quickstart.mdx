@@ -2,23 +2,14 @@
 title: Your First Smart Contract
 icon: rocket
 sidebarTitle: Quickstart
-description: "Create your first contract using your favorite language."
+description: "Create your first smart contract in Rust and deploy it to the NEAR testnet."
 ---
 
 import {Github} from '/snippets/github.jsx';
 
-Welcome! [NEAR accounts](../protocol/accounts-contracts/account-model) can store small apps known as smart contracts. In this quick tutorial, we will guide you in creating your first contract on the NEAR **testnet**!
+Welcome! [NEAR accounts](../protocol/accounts-contracts/account-model) can store small apps known as smart contracts. In this tutorial, we'll guide you through creating your first contract on the NEAR **testnet**.
 
-Join us in creating a friendly auction contract, which allows users to place bids, track the highest bidder and claim tokens at the end of the auction.
-
-<Tip>
-**Which language should I use?**
-
-In this tutorial we provide instructions to create contracts in multiple languages.
-
-We **strongly recommend using [Rust](https://www.rust-lang.org/)** for production apps — it offers the most mature tooling, best performance, and the strongest safety guarantees when handling real assets. If you are prototyping or learning, feel free to use **JavaScript**, **Python**, or **Go**!
-
-</Tip>
+Create an auction contract that allows users to place bids, track the highest bidder, and claim tokens at the end of the auction.
 
 <Accordion title="Prefer an online IDE?">
 
@@ -28,7 +19,7 @@ We **strongly recommend using [Rust](https://www.rust-lang.org/)** for productio
 
   ![NEAR Playground](/assets/docs/smart-contracts/NEAR-Playground.png)
 
-  [![Try a Counter Example in NearPlay](https://img.shields.io/badge/Open%20in%20NearPlay-14b8a6?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTE4IDcgNCA0LTQgNE00IDEybDQgNC00LTQgNC00Ii8+PC9zdmc+&logoColor=white)](https://nearplay.app/embed/3450a8a0-57dc-4d3a-b5d0-7bed58a0c2a9)
+  [![Build a Counter in NearPlay](https://img.shields.io/badge/Open%20in%20NearPlay-14b8a6?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTE4IDcgNCA0LTQgNE00IDEybDQgNC00LTQgNC00Ii8+PC9zdmc+&logoColor=white)](https://nearplay.app/embed/3450a8a0-57dc-4d3a-b5d0-7bed58a0c2a9)
 
 </Accordion>
 
@@ -38,8 +29,6 @@ We **strongly recommend using [Rust](https://www.rust-lang.org/)** for productio
 
 Before starting, make sure to set up your development environment.
 
-<Tabs>
-<Tab title="🦀 Rust">
 
 ```bash
 # Install Rust: https://www.rust-lang.org/tools/install
@@ -55,434 +44,47 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releas
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
 ```
 
-</Tab>
-
-  <Tab title="🌐 JavaScript">
-
-```bash
-# Install Node.js using nvm (more options in: https://nodejs.org/en/download)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-nvm install latest
-
-# ⚠️ For Mac Silicon users only, Rosetta is needed to compile contracts
-# /usr/sbin/softwareupdate --install-rosetta --agree-to-license
-
-# Install NEAR CLI to deploy and interact with the contract
-npm install -g near-cli-rs@latest
-```
-
-</Tab>
-
-<Tab title="🐍 Python">
-
- ```bash
-# Install Python (if not already installed)
-# Use your system's package manager or download from https://www.python.org/downloads/
-
-# Install Emscripten (required for compiling Python contracts to WebAssembly)
-# For Linux/macOS:
-git clone https://github.com/emscripten-core/emsdk.git
-cd emsdk
-./emsdk install latest
-./emsdk activate latest
-source ./emsdk_env.sh
-# Add to your .bashrc or .zshrc for permanent installation:
-# echo 'source "/path/to/emsdk/emsdk_env.sh"' >> ~/.bashrc
-cd ..
-
-# For Windows:
-# Download and extract: https://github.com/emscripten-core/emsdk
-# Then in Command Prompt:
-# cd emsdk
-# emsdk install latest
-# emsdk activate latest
-# emsdk_env.bat
-
-# Verify installation with:
-emcc --version
-
-# Install uv for Python package management
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Install NEAR CLI-RS to deploy and interact with the contract
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
-```
-
-</Tab>
-<Tab title="🐹 GO">
-
-```bash
-#For Linux arm/x64
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y build-essential curl wget git libssl-dev pkg-config checkinstall
-sudo apt install bison
-
-#For Mac
-xcode-select --install
-brew update
-brew install mercurial
-brew install binaryen
-
-bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-gvm install go1.25.4 -B
-gvm use go1.25.4 --default
-
-curl -LO https://github.com/vlmoon99/near-cli-go/releases/latest/download/install.sh && bash install.sh
-```
-</Tab>
-
-</Tabs>
 
 ---
 
-## Creating the Contract
+## Creating the contract
 
-Create a smart contract by using one of the scaffolding tools and following their instructions:
+Create a smart contract with the `cargo near` scaffolding tool by following its instructions:
 
-<Tabs>
-<Tab title="🦀 Rust">
 
 ```bash
-cargo near
+# Create a new contract called "auction"
+cargo near new auction
 ```
 
 ![img](/assets/docs/smart-contracts/hello-near-rs.gif)
 _Creating a project using `cargo near new`_
 
-</Tab>
-
-  <Tab title="🌐 JavaScript">
-
-```bash
-npx create-near-app@latest
-```
-
-![img](/assets/docs/smart-contracts/hello-near-ts.gif)
-_Creating a project using `npx create-near-app@latest`_
-
-<Note>
-
-When prompted to choose a template, select the basic `Auction` template to scaffold the auction contract
-
-</Note>
-
-</Tab>
-
-<Tab title="🐍 Python">
-
-<Note>
-Python quickstart tutorial is coming soon!
-
-In the meantime, please check out the [hello-near](https://github.com/near-examples/hello-near-examples/tree/main/contract-py) example.
-</Note>
-
-</Tab>
-
-<Tab title="🐹 GO">
-
-```bash
-near-go create --project-name auction --module-name auction --project-type smart-contract-empty
-```
-
-_Creating a project using `near-go create`_
-
-This will generate a project with the following structure:
-
-```bash
-auction/
-└── contract/
-    ├── go.mod    # Go module definition with near-sdk-go dependency
-    ├── go.sum
-    └── main.go   # Main contract file — replace this with the auction contract below
-```
-
-```bash
-cd auction/contract
-```
-
-<Important>
-
-Replace the contents of `main.go` with the auction contract code shown in the sections below.
-
-</Important>
-
-</Tab>
-
-</Tabs>
 
 <Tip>
 
-For this tutorial we chose to name the project `auction`, but feel free to use any name you prefer
+For this tutorial, we chose to name the project `auction`, but feel free to use any name you prefer.
 
 </Tip>
 
 ---
 
-## Anatomy of the Contract
+## Build and deploy the contract
 
-The auction smart contract allows users to place bids, track the highest bidder and claim tokens at the end of the auction.
-
-Let's take a look at the different components of the contract and how they work together to implement this functionality.
-
-### Contract State & Initialization
-
-The contract stores the highest bid, auction end time, auctioneer address, and a flag to track if proceeds have been claimed. In order to set these parameters, an `init` function is provided, which must be called first to initialize the contract state.
-
-<Tabs>
-  <Tab title="🦀 Rust">
-    <Github fname="lib.rs" language="rust"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-            start="7" end="35" />
-  </Tab>
-
-  <Tab title="🌐 JavaScript">
-    <Github fname="contract.ts" language="js"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
-            start="5" end="21" />
-  </Tab>
-
-  <Tab title="🐍 Python">
-    <Github fname="contract.py" language="python"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
-            start="1" end="18" />
-  </Tab>
-
-  <Tab title="🐹 GO">
-    <Github fname="main.go" language="go"
-            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go"
-            start="11" end="40" />
-  </Tab>
-</Tabs>
-
-### Placing Bids
-
-In order to place a bid, users will need to call the `bid` function while attaching a deposit representing their bid amount.
-
-The `bid` function will then validate that the auction is ongoing, if the user bid a higher amount than the one stored, it will record the new bid and refund the previous bidder.
-
-<Tabs>
-  <Tab title="🦀 Rust">
-    <Github fname="lib.rs" language="rust"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-            start="37" end="64" />
-  </Tab>
-
-  <Tab title="🌐 JavaScript">
-    <Github fname="contract.ts" language="js"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
-            start="23" end="43" />
-  </Tab>
-
-  <Tab title="🐍 Python">
-    <Github fname="contract.py" language="python"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
-            start="20" end="45" />
-  </Tab>
-
-  <Tab title="🐹 GO">
-    <Github fname="main.go" language="go"
-            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go"
-            start="42" end="78" />
-  </Tab>
-</Tabs>
-
-### Claiming Proceeds
-
-Once the auction ends, any user can call `claim` to transfer the winning bid to the auctioneer:
-
-<Tabs>
-  <Tab title="🦀 Rust">
-    <Github fname="lib.rs" language="rust"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-            start="65" end="76" />
-  </Tab>
-
-  <Tab title="🌐 JavaScript">
-    <Github fname="contract.ts" language="js"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
-            start="45" end="52" />
-  </Tab>
-
-  <Tab title="🐍 Python">
-    <Github fname="contract.py" language="python"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
-            start="47" end="59" />
-  </Tab>
-
-  <Tab title="🐹 GO">
-    <Github fname="main.go" language="go"
-            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go"
-            start="80" end="101" />
-  </Tab>
-</Tabs>
-
-### View Methods
-
-At all times, users can query the current state of the auction by calling its view methods (`get_highest_bid`, `get_auction_end_time`, `get_auctioneer`, `get_claimed`):
-
-<Tabs>
-  <Tab title="🦀 Rust">
-    <Github fname="lib.rs" language="rust"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-            start="78" end="92" />
-  </Tab>
-
-  <Tab title="🌐 JavaScript">
-    <Github fname="contract.ts" language="js"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/01-basic-auction/src/contract.ts"
-            start="54" end="71" />
-  </Tab>
-
-  <Tab title="🐍 Python">
-    <Github fname="contract.py" language="python"
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-py/01-basic-auction/contract.py"
-            start="62" end="90" />
-  </Tab>
-
-  <Tab title="🐹 GO">
-    <Github fname="main.go" language="go"
-            url="https://github.com/Emir-Asanov/near-go-examples/blob/example-release-1/auction/main.go"
-            start="103" end="121" />
-  </Tab>
-</Tabs>
-
----
-
-## Test the Contract
-
-Lets make sure the contract is working as expected by running its tests. Simply run the `test` command, the contract will then be compiled and deployed to a local sandbox for testing:
-
-<Tabs>
-  <Tab title="🦀 Rust">
-
-  ```bash
-  cargo test
-  ```
-
-  </Tab>
-
-  <Tab title="🌐 JavaScript">
-
-    ```bash
-    npm run test
-    ````
-
-    <Accordion title="Failing tests?">
-
-    Make sure that you are using `node v24 / 22 / 20`, and that you have installed `Rosetta` if you have a Mac with Apple Silicon
-
-    </Accordion>
-
-  </Tab>
-  
-  <Tab title="🐍 Python">
-
-  ```bash
-  uv run pytest
-  ```
-
-
-  </Tab>
-
-  <Tab title="🐹 GO">
-
-  ```bash
-  near-go test project
-  ```
-
-
-  </Tab>
-</Tabs>
-
-Feel free to check the test files to see how they interact with the contract. In short, a local NEAR sandbox is created, the contract is deployed, and different methods are called to verify the expected behavior.
-
----
-
-## Build & Deploy the Contract
-
-Now that we know the tests are passing, let us deploy the contract! First, we need to compile it into WebAssembly:
-
-<Tabs>
-  <Tab title="🦀 Rust">
-
-  ```bash
-  cargo near build non-reproducible-wasm
-  ```
-  
-  </Tab>
-
-  <Tab title="🌐 JavaScript">
-
-  ```bash
-  npm run build
-  ```
-
-  </Tab>
-  
-  <Tab title="🐍 Python">
-
-   ```bash
-  # Build with nearc through the uv executor (no installation needed)
-  uvx nearc contract.py
-  ```
-  
-  The above command will compile your Python contract into WebAssembly (WASM) that can be deployed to the NEAR blockchain.
-  
- <Info>
-  
-  The default `nearc` build configuration is appropriate for most contracts. You don't need to install nearc separately as we're using `uvx` to run it directly.
-  
-</Info>
-
-  <Important>
-  
-  This step requires [Emscripten](https://emscripten.org/) to be installed and accessible in your `PATH`. If you encounter errors during compilation, verify that Emscripten is properly installed with `emcc --version`.
-  
-  Common compilation errors and solutions:
-  - `emcc: command not found` - Emscripten is not in your PATH. Run `source /path/to/emsdk/emsdk_env.sh` to add it temporarily.
-  - `error: invalid version of emscripten` - Your Emscripten version might be too old. Try updating with `./emsdk install latest && ./emsdk activate latest`.
-  - `Could not find platform micropython-dev-wasm32` - This typically means the Emscripten installation is incomplete or not properly activated.
-  
-  </Important>
-
-  </Tab>
-
-  <Tab title="🐹 GO">
-    ```bash
-    near-go build
-    ```
-
-    <Info>
-    **Near Go SDK Build Process**
-
-    1. All code from the main package, including imports from other modules, is combined into a single **generated_build.go** file.
-    2. The **generated_build.go** file is compiled into `wasm32-unknown-unknown` via **TinyGo**.
-
-    </Info>
-
-    <Info>
-    **Customizing the Build**
-
-    The default `near-go build` command works for most standard projects, compiling source code from the current directory into `main.wasm`.
-
-    However, if you want to specify a custom output name or **inspect the intermediate glue code** (generated JSON serialization and SDK integration wrappers) for debugging purposes, you can use the available flags:
-
-    ```bash
-    near-go build --output my_contract.wasm --keep-generated
-    ```
-    </Info>
-
-    </Tab>
-
-  </Tabs>
-
-### Create an Account
-
-Let us now create a NEAR account where we will deploy the contract:
+Let's build the contract, create a NEAR testnet account, and deploy the contract to it.
 
 ```bash
-# Replace <contract-acc.testnet> with a name for your contract account
-near create-account <contract-acc.testnet> --useFaucet
+# Run the sandbox tests to verify the contract works as expected
+cargo test
+
+# Build the contract
+cargo near build non-reproducible-wasm
+
+# Create a free testnet account, replace `<account.testnet>` with your desired account name
+near create-account <account.testnet> --useFaucet
+
+# Deploy the contract to the account
+near deploy <account.testnet> ./target/near/auction.wasm
 ```
 
 <Tip>
@@ -494,7 +96,7 @@ If you already have a `testnet` account and would like to use it instead, you ca
 
 <Accordion title="Got an error on Windows?">
 
-When working on `WSL` - or any other headless Linux environment - you might encounter issues when trying to create an account as the `cli` tries to save the keys into the system's keychain.
+When working in `WSL`—or another headless Linux environment—you might encounter issues creating an account because the CLI tries to save keys to the system keychain.
 
 In such cases, you can try the following command to create the account:
 
@@ -504,88 +106,64 @@ near account create-account sponsor-by-faucet-service <your-account-id.testnet> 
 
 </Accordion>
 
-### Deploy it!
-
-With the contract ready, we can now deploy it to the `testnet` account we created earlier:
-
-<Tabs>
-  <Tab title="🦀 Rust">
-    ```bash
-    near deploy <contract-acc.testnet> ./target/near/auction.wasm
-    ```
-  </Tab>
-
-  <Tab title="🌐 JavaScript">
-    ```bash
-    near deploy <contract-acc.testnet> ./build/auction.wasm
-    ```
-  </Tab>
-  
-  <Tab title="🐍 Python">
-
-    ```bash
-    near deploy <created-account> ./auction.wasm
-    ```
-
-  </Tab>
-
-  <Tab title="🐹 GO">
-
-  ```bash
-  near deploy <contract-acc.testnet> ./main.wasm
-  ```
-
-
-  </Tab>
-</Tabs>
-
 **Congrats!** Your contract now lives in the NEAR testnet network.
 
 ---
 
-## Interacting with the Contract
+## Initialize the auction
 
-To interact with your deployed smart contract, you can call its functions through the command line.
+The contract stores the highest bid, auction end time, auctioneer address, and a flag to track whether proceeds have been claimed. Its `init` function sets these values when the contract is first initialized:
 
-#### Initialize the Contract
-Let us initialize the auction by setting when it ends and who receives the funds (the auctioneer):
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+        start="7" end="35" />
+
+Initialize the auction by setting its end time and designating the auctioneer to receive the funds:
 
 ```bash
 # Get a timestamp for 5 minutes from now (in nanoseconds)
 FIVE_MINUTES_FROM_NOW=$(( $(date +%s%N) + 5 * 60 * 1000000000 ))
 
 # Initialize the auction
-near call <contract-acc.testnet> init "{\"end_time\": \"$FIVE_MINUTES_FROM_NOW\", \"auctioneer\": \"influencer.testnet\"}" --useAccount <contract-acc.testnet>
+near call <account.testnet> init "{\"end_time\": \"$FIVE_MINUTES_FROM_NOW\", \"auctioneer\": \"influencer.testnet\"}" --useAccount <account.testnet>
 ```
 
 <Tip>
-Feel free to replace `influencer.testnet` with any valid testnet account — this is where the winning bid will be sent
+Feel free to replace `influencer.testnet` with any valid testnet account—this is where the winning bid will be sent.
 </Tip>
 
-#### Place a Bid
+## Place and view bids
 
-We can now place a bid in the auction by calling the `bid` method while attaching some NEAR deposit. On each bid, the highest bid and bidder information will be recorded in the contract's [storage](./anatomy/storage).
+Place a bid in the auction by calling the `bid` method and attaching a NEAR deposit. The function checks whether the auction is ongoing and whether the bid is higher than the stored amount. If it is, the contract records the new bid and refunds the previous bidder.
+
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+        start="37" end="64" />
 
 ```bash
 # Create a new account to place the bid
 near create-account <bidder-account.testnet> --useFaucet
 
 # Place a bid of 0.01 NEAR
-near call <contract-acc.testnet> bid '{}' --deposit 0.01  --useAccount <bidder-account.testnet>
+near call <account.testnet> bid '{}' --deposit 0.01  --useAccount <bidder-account.testnet>
 ```
 
 <Note>
 
-Note how in this case we are using the `<bidder-account.testnet>` account (remember to rename it!) to call the `bid` function, while attaching a deposit of `0.01` NEAR as our bid
+In this example, use the `<bidder-account.testnet>` account (remember to rename it) to call the `bid` function and attach a deposit of `0.01` NEAR.
 
 </Note>
 
-#### Get Highest Bid
+### View the highest bid
 
-The `get_highest_bid` function only reads from the contract state, so it does not require a transaction or signature:
+The `get_highest_bid` function only reads from the contract state, so it does not require a transaction or signature. You can also use the contract's other view methods to query the auction end time, auctioneer, and claim status:
+
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+        start="78" end="92" />
 
 ```bash
-near view <contract-acc.testnet> get_highest_bid '{}'
+near view <account.testnet> get_highest_bid '{}'
 ```
 
 <Accordion title="Expected Output">
@@ -598,59 +176,84 @@ near view <contract-acc.testnet> get_highest_bid '{}'
   ```
 </Accordion>
 
+The amount is shown in `yoctoNEAR`, the smallest unit of NEAR. Since 1 NEAR equals `10^24` yoctoNEAR, the displayed amount is `0.01` NEAR.
+
 <Tip>
 
-Feel free to create as many bidder accounts as you want and place more bids to see how the highest bid changes!
+Feel free to create more bidder accounts and place bids to see how the highest bid changes.
 
 </Tip>
 
-#### Claim
+## Claim the proceeds
 
-After the auction ends, anyone can call the `claim` method, which will transfer the `highest bid` amount to the auctioneer and end the auction.
+After the auction ends, anyone can call the `claim` method. It transfers the amount of the highest bid to the auctioneer and ends the auction:
+
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
+        start="65" end="76" />
 
 ```bash
-near call <contract-acc.testnet> claim '{}' --useAccount <contract-acc.testnet>
+near call <account.testnet> claim '{}' --useAccount <account.testnet>
 ```
 
 <Info>
 **Who won?**
 
-After the auction ends, the highest bidder can be determined by simply calling the `get_highest_bid` method again
+After the auction ends, you can determine the highest bidder by calling the `get_highest_bid` method again.
 
 </Info>
 
 ---
 
-## Common Questions
+## Frequently Asked Questions
 
-#### What about mainnet?
-You can deploy a contract to mainnet using the same commands, just make sure to create a mainnet account and use `--networkId mainnet` flag in the `near` CLI commands.
+<AccordionGroup>
 
-#### How much does it cost to deploy?
-The cost of deploying a contract depends on the contract's size, approximately 1Ⓝ ~100Kb.
+<Accordion title="What about mainnet?">
 
-#### Can I update a contract after deploying?
-Yes. Redeploy with `near deploy <account> <wasm-file>`. The account stays the same, code updates.
+You can deploy a contract to mainnet using the same commands. Create a mainnet account and use the `--networkId mainnet` flag in the `near` CLI commands.
 
-#### Which language should I choose?
-We **strongly recommend [Rust](https://www.rust-lang.org/)** for production apps — it provides the most mature tooling, best performance, and strongest safety guarantees when handling real assets on-chain. If you are prototyping or learning, you can use **JavaScript**, **Python**, or **Go**.
+</Accordion>
 
-#### How do I test without deploying?
-All languages support sandbox testing (shown in this guide). Tests run locally with a simulated NEAR environment.
+<Accordion title="How much does it cost to deploy?">
+
+The cost of deploying a contract depends on its size: approximately 1 Ⓝ per 100 KB.
+
+</Accordion>
+
+<Accordion title="Can I update a contract after deploying?">
+
+Yes. Redeploy with `near deploy <account> <wasm-file>`. The account stays the same, and the code is updated.
+
+</Accordion>
+
+<Accordion title="How do I test without deploying?">
+
+Use the sandbox tests shown in this guide. They run locally in a simulated NEAR environment.
+
+</Accordion>
+
+<Accordion title="Can I use a language other than Rust?">
+
+Yes. You can write smart contracts in any language that compiles to WebAssembly. Our documentation focuses on Rust, but community-maintained SDKs are available for other languages. See [supported languages](/smart-contracts/what-is#supported-languages).
+
+</Accordion>
+
+</AccordionGroup>
 
 ---
 
-## Moving Forward
+## Moving forward
 
 <CardGroup cols={3}>
   <Card title="Create a Frontend" href="../web3-apps/tutorials/mastering-near/2.1-frontend">
-    Check the auction frontend tutorial to learn how to build a simple web app that interacts with the auction contract
+    Check the auction frontend tutorial to learn how to build a simple web app that interacts with the auction contract.
   </Card>
   <Card title="Extend the Contract" href="../web3-apps/tutorials/mastering-near/3.1-nft">
-    Follow the auction NFT tutorial to award the highest bidder a Non-Fungible Token (NFT) and allow users to bid using Fungible Tokens (FT)
+    Follow the auction NFT tutorial to award the highest bidder a Non-Fungible Token (NFT) and allow users to bid using Fungible Tokens (FT).
   </Card>
   <Card title="Learn More about the SDK" href="./anatomy/anatomy">
-    Check our Anatomy of a Contract page to understand the different components that make up a NEAR smart contract
+    Check our Anatomy of a Contract page to understand the different components that make up a NEAR smart contract.
   </Card>
 </CardGroup>
 
@@ -660,16 +263,8 @@ All languages support sandbox testing (shown in this guide). Tests run locally w
 
 At the time of this writing, this example works with the following versions:
 
-- node: `22.18.0`
 - rustc: `1.86.0`
 - near-cli-rs: `0.22.0`
 - cargo-near: `0.16.1`
-- Python: `3.13`
-- near-sdk-py: `0.7.3`
-- uvx nearc: `0.9.2`
-- emscripten: `4.0.9` (required for Python contracts)
-- Go: `1.25.4`
-- near-go (near-cli-go): `v0.1.1`
-- near-sdk-go: `v0.1.1`
 
 </Accordion>

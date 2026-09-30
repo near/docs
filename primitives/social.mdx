@@ -1,0 +1,199 @@
+---
+title: Social
+icon: users
+description: "Learn how to build social features on NEAR - profiles, posts, follows, likes and notifications - using SocialDB (social.near) and the near-social-js SDK."
+---
+
+[SocialDB](https://github.com/NearSocial/social-db) is a smart contract deployed at `social.near` that stores social data on the NEAR blockchain: profiles, posts, follows, likes, comments and more. It powers [near.social](https://near.social) and is widely used across the ecosystem.
+
+<Note>
+  While the BOS framework (components/widgets) is deprecated, the social graph stored in SocialDB is still live and maintained. This page covers how to read and write that data directly, independently of BOS.
+</Note>
+
+The easiest way to interact with `social.near` is through the [`near-social-js`](https://nearbuilders.github.io/near-social-js/) SDK, which wraps the contract with helper methods for common social features.
+
+---
+
+## Add the SDK to a project
+
+```bash npm2yarn
+npm install near-social-js
+```
+
+The SDK exposes two classes:
+
+- `Social` — high-level helpers for profiles, posts, follows, likes and notifications.
+- `Graph` — low-level access to the raw `social.near` contract (custom keys, storage, permissions). `Social` extends `Graph`.
+
+### Reading (no wallet)
+
+Reads are free and require no signer:
+
+```typescript
+import { Social } from 'near-social-js';
+
+const social = new Social(); // defaults to social.near on mainnet
+```
+
+### Writing (requires a signer)
+
+Writes return a transaction builder that you send with a signer. Pass a configured [`near-kit`](https://www.npmjs.com/package/near-kit) instance:
+
+```typescript
+import { Social } from 'near-social-js';
+import { Near } from 'near-kit';
+
+const near = new Near({ network: 'mainnet' });
+const social = new Social({ near });
+```
+
+To target testnet, point the SDK at the testnet contract:
+
+```typescript
+const social = new Social({
+  network: 'testnet',
+  contractId: 'v1.social08.testnet',
+});
+```
+
+---
+
+## Profile
+
+A profile is stored under the `<account>/profile/**` key and holds the user's name, description, image and links.
+
+### Get a profile
+
+```typescript
+const profile = await social.getProfile('alice.near');
+
+console.log(profile?.name);        // "Alice"
+console.log(profile?.description); // "Hello world!"
+```
+
+### Set a profile
+
+Only the account itself (the signer) can update its own profile:
+
+```typescript
+const tx = await social.setProfile('alice.near', {
+  name: 'Alice',
+  description: 'Building on NEAR',
+});
+
+await tx.send();
+```
+
+---
+
+## Posts
+
+Posts live under the `<account>/post/main` key and are addressed by the block height at which they were created.
+
+### Create a post
+
+`createPost` automatically extracts `@mentions` and `#hashtags` and indexes them so other users get notified:
+
+```typescript
+const tx = await social.createPost('alice.near', {
+  text: 'My first post on NEAR! cc @bob.near #near',
+});
+
+await tx.send();
+```
+
+### Get posts from a user
+
+```typescript
+// Recent posts by a single account
+const feed = await social.getAccountFeed('alice.near', { limit: 20 });
+
+// A specific post by block height
+const post = await social.getPost('alice.near', 123456789);
+```
+
+Other feed helpers are available for broader queries:
+
+```typescript
+await social.getActivityFeed({ limit: 20 });        // all recent posts
+await social.getHashtagFeed('near', { limit: 20 }); // posts tagged #near
+```
+
+---
+
+## Interactions
+
+```typescript
+// Follow / unfollow (sends a notification to the target)
+await (await social.follow('alice.near', 'bob.near')).send();
+await (await social.unfollow('alice.near', 'bob.near')).send();
+
+const following = await social.getFollowing('alice.near');
+const followers = await social.getFollowers('alice.near');
+
+// Like / repost a post or comment
+const item = { type: 'social', path: 'bob.near/post/main', blockHeight: 123456789 };
+await (await social.like('alice.near', item)).send();
+await (await social.repost('alice.near', item)).send();
+
+const likes = await social.getLikes(item);
+```
+
+---
+
+## Indexer
+
+SocialDB exposes an **index** API: writes can be tagged with an `action` and `key`, and anyone can later query all entries for that pair, ordered by block height. This is how feeds and notifications are built — there is no off-chain indexer to run.
+
+### Index an action
+
+High-level methods (`createPost`, `follow`, `like`, `repost`) write index entries for you. To write a custom one, send a notification with `notify`:
+
+```typescript
+const tx = await social.notify(
+  'alice.near',      // signer
+  'bob.near',        // account to notify
+  { type: 'social', path: 'alice.near/post/main', blockHeight: 123456789 },
+  'like',            // notification type
+);
+
+await tx.send();
+```
+
+### Retrieve indexed actions
+
+Query the raw index by `action` + `key` with the low-level `index` method:
+
+```typescript
+const entries = await social.index({
+  action: 'like',
+  key: 'bob.near/post/main',
+  order: 'desc',
+  limit: 20,
+});
+// → [{ accountId, blockHeight, value }, ...]
+```
+
+### Get notifications
+
+`getNotifications` reads the `notify` index for an account and returns mentions, likes, comments, follows and reposts:
+
+```typescript
+const notifications = await social.getNotifications('alice.near', { limit: 20 });
+
+for (const n of notifications) {
+  console.log(n.value.type, 'from', n.accountId);
+}
+
+// Only the posts where the account was mentioned
+const mentions = await social.getMentionedFeed('alice.near', { limit: 20 });
+```
+
+---
+
+## Additional resources
+
+- [near-social-js SDK docs](https://nearbuilders.github.io/near-social-js/) — full API reference
+- [near-social-js on GitHub](https://github.com/NEARBuilders/near-social-js) — SDK source code
+- [social-db contract](https://github.com/NearSocial/social-db) — the `social.near` smart contract
+- [near.social](https://near.social) — the live social network

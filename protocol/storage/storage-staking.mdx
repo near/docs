@@ -41,6 +41,10 @@ Storage staking is priced in an amount set by the network, which is set to **1E1
 
 NEAR's JSON RPC API provides [a way to query this initial setting](/api/rpc/protocol#genesis-config) as well as a [a way to query the live config / recent blocks](/api/rpc/protocol#protocol-config).
 
+<Note>
+An account can occupy up to `770` bytes without staking anything. That allowance is paid for once, with the fixed `0.007Ⓝ` charged when [creating the account](/protocol/transactions/gas#creating-an-account).
+</Note>
+
 ## Example cost breakdown
 
 Let's walk through an example.
@@ -94,9 +98,9 @@ Storing data on-chain isn't cheap for the people running the network, and NEAR p
 ### Use a binary serialization format, rather than JSON
 
 The core NEAR team maintains a library called [borsh](https://borsh.io/),
-which is used automatically when you use `near-sdk-rs`. Someday, it will probably also be used by `near-sdk-js`.
+which is used automatically when you use `near-sdk-rs`.
 
-Imagine that you want to store an array like `[0, 1, 2, 3]`. You could serialize it as a string and store it as UTF-8 bytes. This is what `near-sdk-js` does today. Cutting out spaces, you end up using 9 bytes.
+Imagine that you want to store an array like `[0, 1, 2, 3]`. You could serialize it as a JSON string and store it as UTF-8 bytes. Cutting out spaces, you end up using 9 bytes.
 
 Using borsh, this same array gets saved as 8 bytes:
 

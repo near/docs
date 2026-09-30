@@ -13,25 +13,11 @@ To further develop this contract we will introduce another primitive: [fungible 
 
 We want to only accept bids in one type of fungible token; accepting many different FTs would make the value of each bid difficult to compare. We're also going to adjust the contract so that the auctioneer can specify a starting bid amount for the auction.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L33-L53"
+        start="33" end="53" />
 
-        <Github fname="contract.ts" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L23-L30"
-                start="23" end="30" />
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        <Github fname="lib.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L33-L53"
-                start="33" end="53" />
-
-    </Tab>
-
-</Tabs>
 
 ---
 
@@ -43,107 +29,46 @@ When we were making bids in `$NEAR` tokens we would call the auction contract di
 
 The `ft_on_transfer` method always has the same interface; the FT contract will pass it the `sender`, the `amount` of FTs being sent and a `msg` which can be empty (which it will be here) or it can contain some information needed by the method (if you want to send multiple arguments in msg it is best practice to deliver this in JSON then parse it in the contract). The method returns the number of tokens to refund the user, in our case we will use all the tokens attached to the call for the bid unless the contract panics in which case the user will automatically be refunded their FTs in full.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L56"
+        start="56" end="56" />
 
-        <Github fname="contract.ts" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L33"
-                start="33" end="33" />
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        <Github fname="lib.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L56"
-                start="56" end="56" />
-
-    </Tab>
-
-</Tabs>
 
 We need to confirm that the user is attaching fungible tokens when calling the method and that they are using the right FT, this is done by checking the predecessor's account ID. Since it's the FT contract that directly calls the auction contract, the `predecessor` is now the account ID of the FT contract.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L62-L63"
+        start="62" end="63" />
 
-        <Github fname="contract.ts" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L38"
-                start="38" end="38" />
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        <Github fname="lib.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L62-L63"
-                start="62" end="63" />
-
-    </Tab>
-
-</Tabs>
 
 The bidder's account ID is now given by the argument `sender_id` and the bid amount is passed as an argument named `amount`.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L75-L78"
+        start="75" end="78" />
 
-        <Github fname="contract.ts" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L40-L43"
-                start="40" end="43" />
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        <Github fname="lib.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L75-L78"
-                start="75" end="78" />
-
-    </Tab>
-
-</Tabs>
 
 When we want to return the funds to the previous bidder we now make a cross-contract call to the FT contract. 
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="lib.rs" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L81-L84"
+        start="81" end="84" />
+    <Github fname="ext.rs" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/ext.rs#L8-L11"
+        start="8" end="11" />
 
-        <Github fname="call" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L45-L51"
-                start="45" end="51" />
-            <Github fname="callback" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L78-L81"
-                start="68" end="71" />
+ We then return 0 because the method uses all the FTs in the call.
 
-        In JavaScript, we have to return the Promise to transfer the FTs but we also need to return how much to refund the user. So after transferring the FTs, we make a `callback` to our own contract to resume the contract flow. Note that the callback is private so it can only be called by the contract. We return 0 because the method uses all the FTs in the call.
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L86"
+        start="86" end="86" />
 
-    </Tab>
 
-    <Tab title="🦀 Rust">
-
-        <Github fname="lib.rs" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L81-L84"
-                start="81" end="84" />
-            <Github fname="ext.rs" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/ext.rs#L8-L11"
-                start="8" end="11" />
-
-         We then return 0 because the method uses all the FTs in the call.
-
-        <Github fname="lib.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L86"
-                start="86" end="86" />
-
-    </Tab>
-
-</Tabs>
-
-    If the call was to fail the FT contract will automatically refund the user their FTs.
+If the call was to fail the FT contract will automatically refund the user their FTs.
 
 <Accordion title="What happens if the cross-contract call fails?">
 
@@ -159,27 +84,11 @@ When we want to return the funds to the previous bidder we now make a cross-cont
 
 When the auction is complete we need to send the fungible tokens to the auctioneer when we send the NFT to the highest bidder, we implement a similar call as when we were returning the funds just changing the arguments.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="lib.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L99-L109"
+        start="99" end="109" />
 
-        <Github fname="contract.ts" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/src/contract.ts#L61-L65"
-                start="61" end="65" />
-
-        In JavaScript, since we need to return each cross-contract call we chain the NFT and FT transfer.
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        <Github fname="lib.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L99-L109"
-                start="99" end="109" />
-
-    </Tab>
-
-</Tabs>
 
 ---
 
@@ -189,25 +98,11 @@ Just as with the NFT contract, we will deploy an FT contract in the sandbox test
 
 When the contract is deployed it is initialized with `new_default_meta` which sets the token's metadata, including things like its name and symbol, to default values while requiring the owner (where the token supply will sent), and the total supply of the token.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="test_basics.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L33-L46"
+        start="33" end="46" />
 
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L28-L29"
-                start="28" end="29" />
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L33-L46"
-                start="33" end="46" />
-
-    </Tab>
-
-</Tabs>
 
 ---
 
@@ -217,25 +112,11 @@ For one to receive fungible tokens, first their account ID must be [registered](
 
 In our tests, since we are creating a new fungible token and new accounts we will actually have to register every account that will interact with FTs.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="test_basics.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L81-L97"
+        start="81" end="97" />
 
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L50-L53"
-                start="50" end="53" />
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L81-L97"
-                start="81" end="97" />
-
-    </Tab>
-
-</Tabs>
 
 ---
 
@@ -243,28 +124,14 @@ In our tests, since we are creating a new fungible token and new accounts we wil
 
 Then we will transfer the bidders FTs so they can use them to bid. A simple transfer of FTs is done using the method `ft_transfer` on the FT contract.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="Call ft_transfer" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L100-L107"
+        start="100" end="107" />
+    <Github fname="ft_transfer definition" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L291-L307"
+        start="291" end="307" />
 
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L56-L57"
-                start="56" end="57" />
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        <Github fname="Call ft_transfer" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L100-L107"
-                start="100" end="107" />
-            <Github fname="ft_transfer definition" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L291-L307"
-                start="291" end="307" />
-
-    </Tab>
-
-</Tabs>
 
 ---
 
@@ -272,28 +139,14 @@ Then we will transfer the bidders FTs so they can use them to bid. A simple tran
 
 As stated previously, to bid on the auction the bidder now calls `ft_transfer_call` on the FT contract which subsequently calls the auction contract's `ft_on_transfer` method with fungible tokens attached.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="Call ft_transfer_call" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L149-L161"
+        start="149" end="161" />
+    <Github fname="ft_transfer_call definition" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L322-L337"
+        start="322" end="337" />
 
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L101-L104"
-                start="101" end="104" />
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        <Github fname="Call ft_transfer_call" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L149-L161"
-                start="149" end="161" />
-            <Github fname="ft_transfer_call definition" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L322-L337"
-                start="322" end="337" />
-
-    </Tab>
-
-</Tabs>
 
 ---
 
@@ -301,28 +154,14 @@ As stated previously, to bid on the auction the bidder now calls `ft_transfer_ca
 
 Previously, to check a user's `$NEAR` balance, we pulled the details from their account. Now we are using FTs we query the balance on the FT contract using `ft_balance_of`, let's check that the contract's balance increased by the bid amount and the user's balance decreased by the bid amount.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="Call ft_balance_of" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L163-L166"
+        start="163" end="166" />
+    <Github fname="ft_balance_of definition" 
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L309-L320"
+        start="309" end="320" />
 
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L106-L109"
-                start="106" end="109" />
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        <Github fname="Call ft_balance_of" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L163-L166"
-                start="163" end="166" />
-            <Github fname="ft_balance_of definition" 
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L309-L320"
-                start="309" end="320" />
-
-    </Tab>
-
-</Tabs>
 
 ---
 
@@ -332,25 +171,11 @@ If we make a lower bid than the previous this will cause the auction contract to
 
 Previous to this, Bob made a bid of 60,000 and Alice was returned her bid bringing her balance back up to 150,000. Now when Alice makes an invalid of 50,000 Alice's balance should remain at 150,000 and the contract should remain at a balance of 60,000.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+<Github fname="test_basics.rs" language="rust"
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L190-L207"
+        start="190" end="207" />
 
-        <Github fname="main.ava.js" language="javascript"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-ts/03-bid-with-fts/sandbox-test/main.ava.js#L122-L130"
-                start="122" end="130" />
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L190-L207"
-                start="190" end="207" />
-
-    </Tab>
-
-</Tabs>
 
 ---
 
@@ -378,27 +203,12 @@ When creating an application there are numerous ways to structure it. Here, we h
 
 In such case, the Contract struct would be a map of auctions. We would implement a method to create a new auction by adding an entry to the map with the specific details of that individual auction.
 
-<Tabs>
 
-    <Tab title="🌐 JavaScript">
+```rust 
+pub struct Contract {
+    auctions: IterableMap<String, Auction>
+```
 
-        ```javascript
-        class Contract {
-            auctions: UnorderedMap<string, Auction>
-        ```
-
-    </Tab>
-
-    <Tab title="🦀 Rust">
-
-        ```rust 
-        pub struct Contract {
-            auctions: IterableMap<String, Auction>
-        ```
-
-    </Tab>
-
-</Tabs>
 
 However, this architecture could be deemed less secure since if a bad actor were to gain access to the contract they would have access to every auction instead of just one.
 

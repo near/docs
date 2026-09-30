@@ -1,5 +1,5 @@
 ---
-title: Notes on Serialization
+title: Serialization
 description: "Learn how contract serialize data for function calls and storage."
 ---
 
@@ -114,19 +114,6 @@ The `NEAR SDK RS` currently implements the `near_sdk::json_types::{U64, I64, U12
 that you can use for input / output of data.
 </Warning>
 
-<Tip>
-**Go: u64 as strings**
-The Go SDK follows the same rule. Use `string` for `uint64` values in function parameters and return types when they may exceed 53 bits. For 128-bit token amounts, use `types.Uint128` from the Go SDK.
-
-```go
-// Use string for large numbers passed as function arguments
-type MyInput struct {
-  Amount string `json:"amount"` // pass as "1000000000000000000000000"
-}
-```
-</Tip>
-
-
 ---
 
 ## Borsh: State Serialization
@@ -136,18 +123,6 @@ the contract needs to translate complex states into simple key-value pairs.
 
 For this, NEAR contracts use [borsh](https://borsh.io) which is optimized for (de)serializing
 complex objects into smaller streams of bytes.
-
-<Tip>
-**SDK-JS still uses json**
-The JavaScript SDK uses JSON to serialize objects in the state, but the borsh implementation
-should arrive soon
-</Tip>
-
-<Tip>
-**Go SDK uses JSON for state**
-
-The Go SDK also uses JSON (not Borsh) to serialize the contract state. Struct fields must have `json:"field_name"` tags for correct serialization and deserialization.
-</Tip>
 
 #### Example
 Let's look at this example, written only for educational purposes:
@@ -275,3 +250,70 @@ contract will fail to deserialize the `STATE` key and panic `Cannot deserialize 
 To solve this, you can either:
 1. Rollback to the previous contract code
 2. Implement a method to [migrate the contract's state](../release/upgrade)
+
+---
+
+## Overriding interface serialization
+
+JSON is the default format for contract parameters and return values. You can opt into Borsh when smaller payloads and lower serialization costs are more important than a human-readable interface.
+
+The parameter and result serializers can be selected separately, but all parameters of a method must use the same format:
+
+```rust
+#[result_serializer(borsh)]
+pub fn sum_borsh(
+    #[serializer(borsh)] a: u32,
+    #[serializer(borsh)] b: u32,
+) -> u32 {
+    a + b
+}
+```
+
+When calling a Borsh-serialized method through the CLI, pass its serialized bytes as Base64 arguments:
+
+```bash
+near contract call-function as-transaction rust-status-message.demo.testnet set_status_borsh base64-args 'DAAAAEFsb2hhIGhvbnVhIQ==' prepaid-gas '30 TeraGas' attached-deposit '0 NEAR' sign-as demo.testnet network-config testnet sign-with-keychain send
+```
+
+Use the same serialization format on both sides of a cross-contract call. JSON remains the better default when the interface is also used by frontends, scripts, or other languages.
+
+## JSON wrapper types
+
+The SDK provides wrapper types in `near_sdk::json_types` for Rust values whose default JSON representation is inconvenient.
+
+### Large integers
+
+JSON consumers cannot always represent `u64` and `u128` values without losing precision. `U64` and `U128` serialize those values as strings while retaining their native integer representation inside the contract.
+
+```rust
+#[near]
+impl Contract {
+    pub fn mult(&self, a: U64, b: U64) -> U128 {
+        U128(u128::from(a.0) * u128::from(b.0))
+    }
+}
+```
+
+### Byte arrays
+
+A `Vec<u8>` normally serializes to an array of JSON integers. Use `Base64VecU8` to expose those bytes as a compact Base64 string:
+
+```rust
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    pub data: Vec<u8>,
+}
+
+#[near]
+impl Contract {
+    #[init]
+    pub fn new(data: Base64VecU8) -> Self {
+        Self { data: data.into() }
+    }
+
+    pub fn get_data(self) -> Base64VecU8 {
+        self.data.into()
+    }
+}
+```
