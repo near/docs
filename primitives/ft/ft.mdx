@@ -16,12 +16,16 @@ Wanting to use Fungible Tokens (FT) in your dApp? Here you will find all the inf
 
 The simplest way to create a new Fungible Token is by interacting with a factory contract, to which you only need to provide the token metadata, and they will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
 
-| Network | Factory | Quote method | Token account |
-|---------|---------|--------------|---------------|
-| Mainnet | `tkn.near` | `get_required_deposit({ args, account_id })` | `<symbol>.tkn.near` |
-| Testnet | `token.primitives.testnet` | `get_required({ args })` | `<symbol>.token.primitives.testnet` |
+| Network | Factory | Token account |
+|---------|---------|---------------|
+| Mainnet | `tkn.near` | `<symbol>.tkn.near` |
+| Testnet | `tokenfactory.testnet` | `<symbol>.tokenfactory.testnet` |
 
-The token account is the symbol in lowercase, e.g. `TTTEST` becomes `tttest.tkn.near`, so pick a symbol that has not been taken yet.
+Both factories run the same contract, so the same code works on both networks. The token account is the symbol in lowercase, e.g. `TTTEST` becomes `tttest.tkn.near`, so pick a symbol that has not been taken yet.
+
+<Note>
+Testnet also has `token.primitives.testnet`, which quotes the deposit with `get_required({ args })` instead of `get_required_deposit({ args, account_id })`.
+</Note>
 
 <Accordion title="Manual Interaction">
 
@@ -33,19 +37,10 @@ Creating a token takes two steps: ask the factory how much deposit it needs (it 
     ```js
     import { useNearWallet } from "near-connect-hooks";
 
-    const FACTORY = {
-      mainnet: {
-        contractId: 'tkn.near',
-        quote: (args, accountId) => ({ method: 'get_required_deposit', args: { args, account_id: accountId } }),
-      },
-      testnet: {
-        contractId: 'token.primitives.testnet',
-        quote: (args) => ({ method: 'get_required', args: { args } }),
-      },
-    };
+    const FACTORY = { mainnet: 'tkn.near', testnet: 'tokenfactory.testnet' };
 
     const { network, signedAccountId: accountId, viewFunction, callFunction } = useNearWallet();
-    const factory = FACTORY[network];
+    const contractId = FACTORY[network];
 
     const args = {
       owner_id: accountId,
@@ -60,12 +55,15 @@ Creating a token takes two steps: ask the factory how much deposit it needs (it 
     };
 
     // 1. Quote the required deposit
-    const { method, args: quoteArgs } = factory.quote(args, accountId);
-    const deposit = await viewFunction({ contractId: factory.contractId, method, args: quoteArgs });
+    const deposit = await viewFunction({
+      contractId,
+      method: 'get_required_deposit',
+      args: { args, account_id: accountId },
+    });
 
     // 2. Create the token
     await callFunction({
-      contractId: factory.contractId,
+      contractId,
       method: 'create_token',
       args: { args, account_id: accountId },
       gas: '300000000000000',
@@ -90,11 +88,11 @@ Creating a token takes two steps: ask the factory how much deposit it needs (it 
       sign-as bob.near network-config mainnet sign-with-keychain send
 
     # Testnet: quote, then create
-    near contract call-function as-read-only token.primitives.testnet get_required \
-      json-args '{"args":{"owner_id":"bob.testnet","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","decimals":18}}}' \
+    near contract call-function as-read-only tokenfactory.testnet get_required_deposit \
+      json-args '{"args":{"owner_id":"bob.testnet","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","decimals":18}},"account_id":"bob.testnet"}' \
       network-config testnet now
 
-    near contract call-function as-transaction token.primitives.testnet create_token \
+    near contract call-function as-transaction tokenfactory.testnet create_token \
       json-args '{"args":{"owner_id":"bob.testnet","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","decimals":18}},"account_id":"bob.testnet"}' \
       prepaid-gas '300.0 Tgas' attached-deposit '<quoted-deposit> yoctoNEAR' \
       sign-as bob.testnet network-config testnet sign-with-keychain send
