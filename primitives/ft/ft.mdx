@@ -16,9 +16,20 @@ Wanting to use Fungible Tokens (FT) in your dApp? Here you will find all the inf
 
 The simplest way to create a new Fungible Token is by interacting with a factory contract, to which you only need to provide the token metadata, and they will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
 
+| Network | Factory | Token account |
+|---------|---------|---------------|
+| Mainnet | `tkn.near` | `<symbol>.tkn.near` |
+| Testnet | `tokenfactory.testnet` | `<symbol>.tokenfactory.testnet` |
+
+Both factories run the same contract, so the same code works on both networks. The token account is the symbol in lowercase, e.g. `TTTEST` becomes `tttest.tkn.near`, so pick a symbol that has not been taken yet.
+
+<Note>
+Testnet also has `token.primitives.testnet`, which quotes the deposit with `get_required({ args })` instead of `get_required_deposit({ args, account_id })`.
+</Note>
+
 <Accordion title="Manual Interaction">
 
-Here is how to directly interact with the factory contract through your application:
+Creating a token takes two steps: ask the factory how much deposit it needs (it depends on the metadata size, e.g. the icon), and call `create_token` attaching that amount.
 
 <Tabs>
   <Tab title="🌐 WebApp">
@@ -26,31 +37,37 @@ Here is how to directly interact with the factory contract through your applicat
     ```js
     import { useNearWallet } from "near-connect-hooks";
 
-    const TOKEN_FACTORY_ADDRESS = 'token.primitives.near';
+    const FACTORY = { mainnet: 'tkn.near', testnet: 'tokenfactory.testnet' };
 
-    const { callFunction } = useNearWallet();
+    const { network, signedAccountId: accountId, viewFunction, callFunction } = useNearWallet();
+    const contractId = FACTORY[network];
 
     const args = {
-      args: {
-        owner_id: 'bob.near',
-        total_supply: '1000000000',
-        metadata: {
-          spec: 'ft-1.0.0',
-          name: 'Test Token',
-          symbol: 'test',
-          icon: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
-          decimals: 18,
-        },
+      owner_id: accountId,
+      total_supply: '1000000000',
+      metadata: {
+        spec: 'ft-1.0.0',
+        name: 'Test Token',
+        symbol: 'TTTEST',
+        icon: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+        decimals: 18,
       },
-      account_id: 'bob.near',
     };
 
+    // 1. Quote the required deposit
+    const deposit = await viewFunction({
+      contractId,
+      method: 'get_required_deposit',
+      args: { args, account_id: accountId },
+    });
+
+    // 2. Create the token
     await callFunction({
-      contractId: TOKEN_FACTORY_ADDRESS,
+      contractId,
       method: 'create_token',
-      args,
-      gas: 300000000000000,
-      deposit: '2234830000000000000000',
+      args: { args, account_id: accountId },
+      gas: '300000000000000',
+      deposit,
     });
     ```
 
@@ -60,15 +77,31 @@ Here is how to directly interact with the factory contract through your applicat
   <Tab title="🖥️ CLI">
 
     ```bash
-    near call token.primitives.near create_token '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}' --gas 300000000000000 --depositYocto 2234830000000000000000000 --useAccount bob.near
+    # Mainnet: quote, then create
+    near contract call-function as-read-only tkn.near get_required_deposit \
+      json-args '{"args":{"owner_id":"bob.near","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","decimals":18}},"account_id":"bob.near"}' \
+      network-config mainnet now
+
+    near contract call-function as-transaction tkn.near create_token \
+      json-args '{"args":{"owner_id":"bob.near","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","decimals":18}},"account_id":"bob.near"}' \
+      prepaid-gas '300.0 Tgas' attached-deposit '<quoted-deposit> yoctoNEAR' \
+      sign-as bob.near network-config mainnet sign-with-keychain send
+
+    # Testnet: quote, then create
+    near contract call-function as-read-only tokenfactory.testnet get_required_deposit \
+      json-args '{"args":{"owner_id":"bob.testnet","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","decimals":18}},"account_id":"bob.testnet"}' \
+      network-config testnet now
+
+    near contract call-function as-transaction tokenfactory.testnet create_token \
+      json-args '{"args":{"owner_id":"bob.testnet","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","decimals":18}},"account_id":"bob.testnet"}' \
+      prepaid-gas '300.0 Tgas' attached-deposit '<quoted-deposit> yoctoNEAR' \
+      sign-as bob.testnet network-config testnet sign-with-keychain send
     ```
   </Tab>
   <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
     <TryOutOnLantstool path="docs/2.build/5.primitives/ft/create-ft-via-factory.json" />
   </Tab>
 </Tabs>
-
-The FT you create will live in the account `<your_token_symbol>.token.primitives.near` (e.g. `test.token.primitives.near`).
 
 </Accordion>
 
