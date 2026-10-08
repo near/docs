@@ -2,15 +2,34 @@
 id: error-implementation
 title: Source Code Survey
 sidebarTitle: Source Code Survey
-description: "Learn how to properly implement error handling in NEAR protocol applications, including best practices for catching and managing errors."
+description: "Current error-handling guidance and a historical survey of NEAR runtime error types."
 ---
 
 This page provides a very high level, sometimes "pseudocode", view of error types and related messages as implemented by the NEAR platform.
 
 Errors raised by the NEAR platform are implemented in the following locations in `nearcore`:
 
-- [nearcore/core/primitives/src/errors.rs](https://github.com/near/nearcore/blob/master/core/primitives/src/errors.rs)
 - [nearcore/core/primitives/src/errors.rs](https://github.com/near/nearcore/blob/2.13.4/core/primitives/src/errors.rs)
+
+---
+
+## Current error handling
+
+The reference linked above is pinned to `nearcore` **2.13.4**. Match your node version and enabled protocol features when checking variants; internal Rust errors are not the public JSON-RPC error envelope.
+
+| Error context | Integration guidance |
+| --- | --- |
+| JSON-RPC submission/status error | Read the RPC error envelope separately from execution outcomes. A timeout or unknown transaction requires recovery by the original hash; see [submission errors and retries](/integrations/create-transactions#submission-errors-and-retries). |
+| `InvalidTxError` | Includes `InvalidNonce`, `NonceTooLarge`, `LackBalanceForState`, transaction size/version errors, and shard congestion/stuck errors. Nonces for ordinary access keys must increase; gas-key nonce rules and feature availability depend on the protocol version. |
+| `TxExecutionError::ActionError` | Contains `kind` and an optional action `index`. Match the outcome to its receipt ID and executor; failure rolls back that receipt’s actions, not previously executed receipts. |
+| `FunctionCallError::ExecutionError` | Contract execution errors may be exposed as a string rather than a structured host-error variant. Preserve it for diagnosis; avoid retry policies based on parsing its prose. |
+| `RuntimeError` | Internal node/runtime failures include storage, receipt validation, and validator-information errors. They are not customer transaction rejection categories. |
+
+For the JavaScript examples, consult the selected SDK’s [RPC error handling](https://github.com/near/near-api-js/tree/2546c85354ab888dc1f559b0e54cfac51f03b484/src/providers/errors). Classify the thrown error by its type and available transaction context; a thrown exception alone does not establish that no funds moved.
+
+<Note>
+The detailed survey below is a historical, non-exhaustive reference. Selected definitions are corrected in place, but the JSON hierarchy retains legacy names such as `LackBalanceForState` and `MethodUTF8Error`; these are not a current RPC schema. Use the versioned source and the [RPC reference](/api/rpc/transactions) for application error handling, and retain unknown variants for diagnosis.
+</Note>
 
 ---
 
@@ -24,21 +43,23 @@ Errors raised by the NEAR platform are implemented in the following locations in
 /// Error returned from `Runtime::apply`
 pub enum RuntimeError {
     /// An unexpected integer overflow occurred. The likely issue is an invalid state or the transition.
-    UnexpectedIntegerOverflow,
+    UnexpectedIntegerOverflow(String),
     /// An error happened during TX verification and account charging. It's likely the chunk is invalid.
     /// and should be challenged.
     InvalidTxError(InvalidTxError),
     /// Unexpected error which is typically related to the node storage corruption.account
     /// That it's possible the input state is invalid or malicious.
     StorageError(StorageError),
-    /// An error happens if `check_balance` fails, which is likely an indication of an invalid state.
-    BalanceMismatchError(BalanceMismatchError),
+    /// An incoming receipt failed validation.
+    ReceiptValidationError(ReceiptValidationError),
+    /// Error accessing validator information.
+    ValidatorError(EpochError),
 }
 ```
 
 #### Error Messages {#error-messages}
 
-- see below: `InvalidTxError`, `StorageError` and `BalanceMismatchError`
+- see below: `InvalidTxError`, `StorageError`, and `ReceiptValidationError`; `ValidatorError` is an internal epoch-manager error.
 
 ### InvalidTxError {#invalidtxerror}
 
@@ -53,7 +74,7 @@ pub enum InvalidTxError {
     InvalidSignerId { signer_id: AccountId },
     /// TX signer_id is not found in a storage
     SignerDoesNotExist { signer_id: AccountId },
-    /// Transaction nonce must be account[access_key].nonce + 1
+    /// For an ordinary access key, the transaction nonce must be greater than account[access_key].nonce
     InvalidNonce { tx_nonce: Nonce, ak_nonce: Nonce },
     /// TX receiver_id is not in a valid format or not satisfy requirements see `near_core::primitives::utils::is_valid_account_id`
     InvalidReceiverId { receiver_id: AccountId },
@@ -65,11 +86,11 @@ pub enum InvalidTxError {
         balance: NearToken,
         cost: NearToken,
     },
-    /// Signer account rent is unpaid
-    RentUnpaid {
-        /// An account which is required to pay the rent
+    /// Signer balance is insufficient for storage staking
+    LackBalanceForState {
+        /// An account whose balance must cover storage
         signer_id: AccountId,
-        /// Required balance to cover the state rent
+        /// Additional balance required to cover storage
         amount: NearToken,
     },
     /// An integer overflow occurred during transaction cost estimation.
@@ -107,8 +128,8 @@ InvalidTxError::InvalidSignature
 InvalidTxError::NotEnoughBalance { signer_id, balance, cost }
     "Sender {:?} does not have enough balance {} for operation costing {}"
 
-InvalidTxError::RentUnpaid { signer_id, amount }
-    "Failed to execute, because the account {:?} wouldn't have enough to pay required rent {}" 
+InvalidTxError::LackBalanceForState { signer_id, amount }
+    "Failed to execute, because the account {:?} wouldn't have enough balance to cover storage, required to have {} yoctoNEAR more"
 
 InvalidTxError::CostOverflow
     "Transaction gas or balance cost is too high"
@@ -143,6 +164,8 @@ pub enum StorageError {
 ```
 
 ### BalanceMismatchError {#balancemismatcherror}
+
+This historical internal diagnostic is no longer a `RuntimeError` variant in the version linked above.
 
 #### Definition {#definition-3}
 
@@ -298,6 +321,8 @@ ActionsValidationError::FunctionCallArgumentsLengthExceeded { length, limit }
      
 ```
 
+---
+
 ## TxExecutionError and subtypes {#txexecutionerror-and-subtypes}
 
 ### TxExecutionError {#txexecutionerror}
@@ -321,7 +346,7 @@ pub enum TxExecutionError {
 ActionError
 pub struct ActionError {
     /// Index of the failed action in the transaction.
-    /// Action index is not defined if ActionError.kind is `ActionErrorKind::RentUnpaid`
+    /// Action index is not defined if ActionError.kind is `ActionErrorKind::LackBalanceForState`
     pub index: Option<u64>,
     /// The kind of ActionError happened
     pub kind: ActionErrorKind,
@@ -349,16 +374,11 @@ pub enum ActionErrorKind {
     AddKeyAlreadyExists { account_id: AccountId, public_key: PublicKey },
     /// Account is staking and can not be deleted
     DeleteAccountStaking { account_id: AccountId },
-    /// Foreign sender (sender=!receiver) can delete an account only if a target account hasn't enough tokens to pay rent
-    DeleteAccountHasRent {
+    /// ActionReceipt cannot complete because the remaining balance will not cover storage.
+    LackBalanceForState {
+        /// An account whose balance must cover storage
         account_id: AccountId,
-        balance: NearToken,
-    },
-    /// ActionReceipt can't be completed, because the remaining balance will not be enough to pay rent.
-    RentUnpaid {
-        /// An account which is required to pay the rent
-        account_id: AccountId,
-        /// Rent due to pay.
+        /// Additional balance required to cover storage.
         amount: NearToken,
     },
     /// Account is not yet staked, but tries to unstake
@@ -390,8 +410,8 @@ ActionErrorKind::AccountDoesNotExist { account_id }
 ActionErrorKind::ActorNoPermission { actor_id, account_id } 
 "Actor {:?} doesn't have permission to account {:?} to complete the action"
 
-ActionErrorKind::RentUnpaid { account_id, amount } 
-"The account {} wouldn't have enough balance to pay required rent {}"
+ActionErrorKind::LackBalanceForState { account_id, amount }
+"The account {} wouldn't have enough balance to cover storage, required to have {} yoctoNEAR more"
 
 ActionErrorKind::TriesToUnstake { account_id } 
 "Account {:?} is not yet staked, but tries to unstake"
@@ -410,9 +430,6 @@ ActionErrorKind::AddKeyAlreadyExists { public_key, .. }
 
 ActionErrorKind::DeleteAccountStaking { account_id }
 "Account {:?} is staking and can not be deleted"
-
-ActionErrorKind::DeleteAccountHasRent { account_id, balance } 
-"Account {:?} can't be deleted. It has {}, which is enough to cover the rent"
 
 ActionErrorKind::FunctionCallError(s) 
 
@@ -479,6 +496,7 @@ ReceiptValidationError::ReceiptSizeExceeded { size, limit }
 "The size of the receipt exceeded the limit: {} > {}",
 ```
 
+---
 
 ## VMError and subtypes {#vmerror-and-subtypes}
 
@@ -513,8 +531,9 @@ pub enum FunctionCallError {
     CompilationError(CompilationError),
     LinkError { msg: String },
     MethodResolveError(MethodResolveError),
-    WasmTrap { msg: String },
-    HostError(HostError),
+    WasmTrap(WasmTrap), // Retained for decoding historical data.
+    HostError(HostError), // Retained for decoding historical data.
+    ExecutionError(String),
 }
 ```
 
@@ -532,7 +551,6 @@ FunctionCallError::WasmTrap
 ```rust
 pub enum MethodResolveError {
     MethodEmptyName,
-    MethodUTF8Error,
     MethodNotFound,
     MethodInvalidSignature,
 }
@@ -807,6 +825,7 @@ InconsistentStateError::IntegerOverflow
     "Math operation with a value from the state resulted in a integer overflow."
 ```
 
+---
 
 ## RPC interface {#rpc-interface}
 
@@ -1451,7 +1470,3 @@ InconsistentStateError::IntegerOverflow
   }
 }
 ```
-
-<Tip title="Got a question?">
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
-</Tip>

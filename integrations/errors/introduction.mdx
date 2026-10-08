@@ -1,11 +1,11 @@
 ---
 id: introduction
-title: Introduction
-sidebarTitle: Introduction
+title: Error Handling
+sidebarTitle: Error Handling
 description: "Learn about common error patterns in NEAR protocol integrations and how to handle and troubleshoot issues in your applications."
 ---
 
-This document provides an overview of NEAR Platform errors, including how they are raised, their types, and how to handle them. It covers the lifecycle of a transaction, the different types of errors that can occur, and where to find more information about each error type.
+This document provides an overview of NEAR Platform errors, including how they are raised, their types, and how to handle them. It covers the [lifecycle of a transaction](/integrations/create-transactions#the-life-of-a-transaction), the different types of errors that can occur, and where to find more information about each error type.
 
 <blockquote className="info">
 <strong>did you know?</strong><br /><br />
@@ -14,24 +14,17 @@ The [NEAR Platform overview](/protocol/network/architecture) clarifies much of t
 
 </blockquote>
 
-## The life of a transaction: {#the-life-of-a-transaction}
-
-- A client creates a transaction, computes the transaction hash and signs this hash to get a signed transaction. Now this signed transaction can be sent to a node.
-- The RPC interface receives the transaction and routes it to the correct physical node using `signer_id`.  Since the `signer_id` must be a NEAR Account ID which lives on a single shard, the account is mapped to a shard which is followed by at least one validator running at least one machine with an IP address.
-- When a node receives a new signed transaction, it validates the transaction for signer, receiver, account balance, cost overflow, signature, etc. ([see here](https://nomicon.io/RuntimeSpec/Scenarios/FinancialTransaction.html#transaction-to-receipt)) and gossips it to all peers following the same shard. If a transaction has an invalid signature or would be invalid on the latest state, it is rejected quickly and returns an error to the original RPC call.
-- Valid transactions are added to the transaction pool (every validating node has its own independent copy of a transaction pool). The transaction pool maintains transactions that are not yet discarded and not yet included into the chain.
-- A pool iterator is used to pick transactions from the pool one at a time, ordered from the smallest nonce to largest, until the pool is drained or some chunk limit is reached (max number of transactions per chunk or max gas burnt per chunk to process transactions).  Please refer to articles on the [pool iterator](https://nomicon.io/ChainSpec/Transactions.html?highlight=pool#pool-iterator) and [gas](/protocol/transactions/gas) for more details.
-- To accommodate the distributed nature of a sharded blockchain, all transactions are subsequently returned to a segmented transaction pool having 3 distinct layers: accepted transactions (which will be processed on the next chunk), pending transactions (which exceeded the limits of the current chunk and will be included in a later round of processing) and invalid transactions (which will be rejected at the next available opportunity).
-- Before producing a chunk, transactions are ordered and validated again. This is done to produce chunks with only valid transactions across a distributed system.
-- While a transaction is being processed on to a chunk, any errors raised by the application of its actions are also returned via RPC.
-
+---
 
 ## NEAR Platform Errors {#near-platform-errors}
 
 Errors raised by the NEAR platform are implemented in the following locations in `nearcore`:
 
-- [nearcore/core/primitives/src/errors.rs](https://github.com/near/nearcore/blob/master/core/primitives/src/errors.rs)
 - [nearcore/core/primitives/src/errors.rs](https://github.com/near/nearcore/blob/2.13.4/core/primitives/src/errors.rs)
+
+<Note>
+The trees below are historical, non-exhaustive illustrations. Current error names and public RPC handling are summarized in the [source code survey](/integrations/errors/error-implementation#current-error-handling). Do not generate an RPC parser from these trees.
+</Note>
 
 This page includes:
 - **RuntimeError and subtypes**: errors raised when a transaction is first received by the destination node and again before it's processed and applied to a chunk
@@ -149,6 +142,47 @@ VMerror                                                   An error that occurs i
         Memory                                            Error creating memory
 ```
 
-<Tip title="Got a question?">
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
-</Tip>
+---
+
+## Avoiding Token Loss
+
+This document provides an overview of potential scenarios that can lead to token loss on the NEAR Protocol and how to mitigate these risks. It covers improper key management, refunding deleted accounts, and failed asynchronous function calls.
+
+Token loss is possible under multiple scenarios. These scenarios can be grouped into a few related classes:
+
+1. [Improper key management](/integrations/accounts#improper-key-management)
+2. Refunding deleted accounts
+3. Failed asynchronous function calls
+
+<Warning>
+Careful! Losing tokens means losing money!
+</Warning>
+
+
+---
+
+
+## Refunding deleted accounts
+
+When a refund receipt is issued for an account, if that account no longer exists, the undeliverable system refund is burned. System refunds require an existing receiving account.
+
+### Deleting account with non-existent beneficiary
+
+When you delete an account, you must assign a beneficiary. The runtime sends the remaining balance directly to that beneficiary in a system payout receipt. If it cannot be delivered, its amount is burned. Verify that the beneficiary exists and track the payout’s finalized outcome.
+
+### Account deleted before it receives a refund
+
+If an account is explicitly deleted while refunds are outstanding, those refunds can become undeliverable. Wait for outstanding receipts and refund outcomes before deleting an account.
+
+See the [runtime refund handling](https://github.com/near/nearcore/blob/2.13.4/runtime/runtime/src/lib.rs).
+
+---
+## Failed asynchronous function calls
+
+<Warning>
+When designing a smart contract, you should always consider the asynchronous nature of NEAR Protocol.
+</Warning>
+
+If a contract function `f1` calls two (or more) other functions `f2` and `f3`, and at least one of these functions, `f2` and `f3` fails, then tokens will be refunded from the function that failed, but tokens will be appropriately credited to the function(s) which succeed.
+
+These are separate receipts, not an atomic batch of actions in one receipt. A failed downstream call does not undo a previously successful transfer. Track each movement and refund before deciding whether recovery is needed.

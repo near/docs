@@ -1,7 +1,7 @@
 ---
 id: create-transactions
-title: Create Transactions
-sidebarTitle: Create a Transaction
+title: Sending Withdrawals
+sidebarTitle: Sending Withdrawals
 description: "Learn how to create, sign, and send transactions on NEAR protocol, including transaction structure, actions, and best practices for integration."
 ---
 
@@ -15,7 +15,7 @@ At the core, all transactions require the following:
 - `signerId` _(account ID of the transaction originator)_
 - `signerPublicKey`
 - `receiverId` _(account ID of the transaction recipient)_
-- `nonceForPublicKey` _(each time a key is used the nonce value should be incremented by 1)_
+- `nonceForPublicKey` _(a unique increasing nonce for the selected access key)_
 - `actions` _( [[click here]](/protocol/transactions/transaction-anatomy#actions) for supported arguments)_
 - `blockHash` _(a recent block hash (within the configured block-based validity period) to prove the transaction was recently created)_
 
@@ -23,88 +23,110 @@ See [Transaction Class](https://github.com/near/near-api-js/blob/2546c85354ab888
 
 ---
 
-## HIGH LEVEL -- Create a transaction
+## The life of a transaction: {#the-life-of-a-transaction}
+
+<Steps>
+  <Step title="Create and sign">
+
+    A client creates a transaction, computes the transaction hash and signs this hash to get a signed transaction. Now this signed transaction can be sent to a node.
+
+  </Step>
+
+  <Step title="Route to the signer’s shard">
+
+    The RPC interface receives the transaction and routes it to the correct physical node using `signer_id`.  Since the `signer_id` must be a NEAR Account ID which lives on a single shard, the account is mapped to a shard which is followed by at least one validator running at least one machine with an IP address.
+
+  </Step>
+
+  <Step title="Validate and propagate">
+
+    When a node receives a new signed transaction, it validates the transaction for signer, receiver, account balance, cost overflow, signature, etc. ([see here](https://nomicon.io/RuntimeSpec/Scenarios/FinancialTransaction.html#transaction-to-receipt)) and gossips it to all peers following the same shard. If a transaction has an invalid signature or would be invalid on the latest state, it is rejected quickly and returns an error to the original RPC call.
+
+  </Step>
+
+  <Step title="Add to the transaction pool">
+
+    Valid transactions are added to the transaction pool (every validating node has its own independent copy of a transaction pool). The transaction pool maintains transactions that are not yet discarded and not yet included into the chain.
+
+  </Step>
+
+  <Step title="Select transactions for a chunk">
+
+    A pool iterator is used to pick transactions from the pool one at a time, with increasing nonces for each access key (there is no global ordering across accounts), until the pool is drained or some chunk limit is reached (max number of transactions per chunk or max gas burnt per chunk to process transactions).  Please refer to articles on the [pool iterator](https://nomicon.io/ChainSpec/Transactions.html?highlight=pool#pool-iterator) and [gas](/protocol/transactions/gas) for more details.
+
+    Transactions that cannot fit in the current chunk can remain pending. Admission to a node’s pool does not guarantee inclusion or execution; do not use pool admission as a settlement signal.
+
+  </Step>
+
+  <Step title="Validate before chunk production">
+
+    Before producing a chunk, transactions are ordered and validated again. This is done to produce chunks with only valid transactions across a distributed system.
+
+  </Step>
+
+  <Step title="Read execution outcomes">
+
+    Execution errors are recorded in transaction and receipt outcomes. Read these outcomes through RPC; a successful HTTP response or initial transaction outcome does not prove that later receipts succeeded.
+
+  </Step>
+</Steps>
+
+---
+
+## Submission errors and retries
+
+Before broadcasting a withdrawal, persist its business intent, network, signer, reserved nonce, signed bytes, and transaction hash. Keep one recovery process in control of that intent until its outcome is resolved.
+
+| Result | Handling |
+| --- | --- |
+| Explicit validation rejection | Correct the reported key, permissions, balance, nonce, or block hash. If this intent was submitted previously, resolve that earlier hash before creating a replacement. |
+| Timeout, connection loss, server error, or unknown transaction | Submission is uncertain. Query the saved hash and signer on the same network, using another provider or an archival node when needed. Do not assume the withdrawal failed. |
+| Included or still executing | Poll [`tx` or `EXPERIMENTAL_tx_status`](/api/rpc/transactions#transaction-status-with-receipts) with `wait_until: "FINAL"`; require `final_execution_status === "FINAL"` before settlement. |
+| Finalized execution failure | Inspect the failed receipt and its `ActionError.index`, where present. Account for fees and refunds, and reconcile any earlier successful receipts before retrying the business operation. |
+
+If rebroadcasting is necessary, resend **the same signed bytes** while their reference block remains valid. A newly signed transaction has a different hash and can execute a second payment. An expired block hash or consumed nonce on a later attempt does not prove that the original transaction never executed. Resolve the original outcome and reconcile balances before issuing a replacement under the same intent lock.
+
+Actions within one receipt are atomic; separate receipts are not rolled back together. A contract call can fail after an earlier receipt has transferred funds. Keep transport errors, validation rejections, and execution failures distinct in your withdrawal records.
+
+---
+
+## Send a Transfer
 
 ### Setup
 
-1. Use Node.js 24.11 or later and install the SDK version used in this example:
+Use Node.js 24.11 or later and install the SDK version used in these examples:
 
 ```bash
 npm install near-api-js@7.3.1
 ```
 
-2. Use a funded testnet account with an ED25519 full-access key. Put its secret key in a local `.env` file as `SENDER_PRIVATE_KEY=ed25519:...` and keep that file out of source control.
-3. Combine the JavaScript snippets below, in order, into `send-tokens-easy.mjs`. Set `sender` and `receiver` to your testnet accounts, then run:
+Use a funded testnet account with an ED25519 [full-access key](/protocol/accounts-contracts/access-keys#full-access-keys). Put its secret key in a local `.env` file as `SENDER_PRIVATE_KEY=ed25519:...` and keep that file out of source control. Set `sender` and `receiver` in the selected script to your testnet accounts.
 
-```bash
-node --env-file=.env send-tokens-easy.mjs
-```
+Both examples send 1.5 testnet NEAR. Run one example at a time with the selected access key. `nearToYocto()` converts the decimal amount to an integer in yoctoNEAR without floating-point rounding.
 
-This sends 1.5 testnet NEAR. Run one example at a time with the selected access key.
+### High-level transaction {#high-level-create-a-transaction}
 
-### Imports
-
-Import the account, RPC provider, signer, action helpers, and amount conversion directly from `near-api-js`:
+`Account.signAndSendTransaction()` constructs, signs, and sends the transfer. Save this as `send-tokens-easy.mjs`:
 
 ```js
 import { Account, JsonRpcProvider, KeyPairSigner, actions, nearToYocto } from "near-api-js";
-```
 
-- `Account` - constructs and sends transactions for the sender account
-- `JsonRpcProvider` - connects to the network's RPC endpoint
-- `KeyPairSigner` - signs with the test account's secret key
-- `actions` - constructs transaction actions
-- `nearToYocto` - converts a decimal NEAR amount to a `bigint` in yoctoNEAR
-
-### Accounts & Network
-
-Next, you'll need to enter the `accountId` of the `sender` and `receiver`, as well as the `networkId` (`testnet` for this example).
-
-```js
 const sender = "sender.testnet";
 const receiver = "receiver.testnet";
 const networkId = "testnet";
-```
 
-### Formatting Token Amounts
-
-When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be converted into [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ or (10^-24).
-
-- Use `nearToYocto()` to convert the decimal string into a `bigint` without floating-point rounding.
-
-```js
 const amount = nearToYocto("1.5");
-```
 
-### Create a Signer
-
-Use a [full access key](/protocol/accounts-contracts/access-keys#full-access-keys) belonging to `sender` to authorize the native transfer. Load the test key from the environment rather than hardcoding it or relying on wallet browser storage.
-
-```js
 const privateKey = process.env.SENDER_PRIVATE_KEY;
 if (!privateKey?.startsWith("ed25519:")) {
   throw new Error("Set SENDER_PRIVATE_KEY to the test account's ED25519 secret key");
 }
 const signer = KeyPairSigner.fromSecretKey(privateKey);
-```
 
-### Setting up a connection to NEAR
-
-Create the RPC provider and pass it, together with the signer, to `Account`:
-
-```js
 const provider = new JsonRpcProvider({ url: `https://rpc.${networkId}.near.org` });
 if (await provider.getNetworkId() !== networkId) throw new Error("Wrong network");
 const senderAccount = new Account(sender, provider, signer);
-```
 
-The `senderAccount` uses this provider and signer to construct and send the transaction.
-
-### Create, Sign, & Send Transaction
-
-Create a `Transfer` action and request finalized execution when sending it:
-
-```js
 const result = await senderAccount.signAndSendTransaction({
   receiverId: receiver,
   actions: [actions.transfer(amount)],
@@ -114,34 +136,15 @@ const result = await senderAccount.signAndSendTransaction({
 console.log(result);
 ```
 
-This constructs, signs, and sends the transfer, and throws if execution fails. `retries: 0` disables automatic re-signing after a nonce error. Inspect the returned result or open its transaction hash in [NearBlocks Explorer](https://testnet.nearblocks.io/). After a timeout, reconcile the transaction before sending another transfer.
-
----
-
-## LOW LEVEL -- Create a Transaction
-
-### Setup
-
-1. Use Node.js 24.11 or later and install the SDK version used in this example:
-
 ```bash
-npm install near-api-js@7.3.1
+node --env-file=.env send-tokens-easy.mjs
 ```
 
-2. Use a funded testnet account with an ED25519 full-access key. Put its secret key in a local `.env` file as `SENDER_PRIVATE_KEY=ed25519:...` and keep that file out of source control.
-3. Combine the JavaScript snippets below, in order, into `send-tokens-deconstructed.mjs`. Set `sender` and `receiver` to your testnet accounts, then run:
+This constructs, signs, and sends the transfer, and throws if execution fails. `retries: 0` disables automatic re-signing after a nonce error. Inspect the returned result or open its transaction hash in [NearBlocks Explorer](https://testnet.nearblocks.io/). This convenience method is a demonstration. For production withdrawals, use the low-level workflow to persist signed bytes and the hash before submitting. After a timeout, reconcile that hash before signing a replacement.
 
-```bash
-node --env-file=.env send-tokens-deconstructed.mjs
-```
+### Low-level transaction {#low-level-create-a-transaction}
 
-This sends 1.5 testnet NEAR. Run one example at a time with the selected access key.
-
----
-
-### Imports
-
-Import the SDK helpers directly and use Node.js's built-in SHA-256 implementation:
+This workflow explicitly obtains the nonce and recent block hash, constructs the transaction, and signs its serialized hash before submission. Save this as `send-tokens-deconstructed.mjs`:
 
 ```js
 import {
@@ -149,144 +152,26 @@ import {
   createTransaction, encodeTransaction, SignedTransaction, Signature, baseDecode
 } from "near-api-js";
 import { createHash } from "node:crypto";
-```
 
----
-
-### Accounts & Network
-
-Next, you'll need to enter the `accountId` of the `sender` and `receiver`, as well as the `networkId` (`testnet` for this example).
-
-```js
 const sender = "sender.testnet";
 const receiver = "receiver.testnet";
 const networkId = "testnet";
-```
 
----
-
-### Formatting Token Amounts
-
-When sending NEAR tokens (Ⓝ) during a transaction, the amount needs to be converted into [Yocto](https://en.wikipedia.org/wiki/Yocto-) Ⓝ or (10^-24).
-
-- Use `nearToYocto()` to convert the decimal string into a `bigint` without floating-point rounding.
-
-```js
 const amount = nearToYocto("1.5");
-```
 
----
-
-### Setting up a connection to NEAR
-
-In this example, we will create a NEAR RPC `provider` that allows us to interact with the chain via [RPC endpoints](/api/rpc/introduction).
-
-```js
 const provider = new JsonRpcProvider({
   url: `https://rpc.${networkId}.near.org`
 });
 if (await provider.getNetworkId() !== networkId) throw new Error("Wrong network");
-```
 
----
-
-### Access Keys
-
-To sign a transaction to send NEAR Ⓝ, we will need a `FullAccess` key to the sender's account.
-
-Load the test account's ED25519 secret key from `SENDER_PRIVATE_KEY`, supplied by the `.env` file in the setup step.
-
-- With this `privateKey`, we can now construct a `keyPair` object to sign transactions.
-
-```js
 const privateKey = process.env.SENDER_PRIVATE_KEY;
 if (!privateKey?.startsWith("ed25519:")) {
   throw new Error("Set SENDER_PRIVATE_KEY to the test account's ED25519 secret key");
 }
 const keyPair = KeyPair.fromString(privateKey);
-```
 
----
-
-### Transaction Requirements
-
-As stated before, all transactions require six parts:
-
-1. [`signerId`](#1-signerid)
-2. [`signerPublicKey`](#2-signerpublickey)
-3. [`receiverId`](#3-receiverid)
-4. [`nonceForPublicKey`](#4-nonceforpublickey)
-5. [`actions`](/protocol/transactions/transaction-anatomy#actions)
-6. [`blockHash`](#6-blockhash)
-
-### 1 `signerId`
-
-- The `signerId` is the account ID of the transaction originator.
-- This value is passed as a string (ex. `'example.testnet'` or `'bob.near'`)
-
-### 2 `signerPublicKey`
-
-- The `signerPublicKey` is required to be an object with two key value pairs: `keyType` and `data`.
-
-```js
-const publicKeyExample = {
-  keyType: 0,
-  data: new Uint8Array([
-    190,
-    150,
-    152,
-    145,
-    232,
-    248,
-    128,
-    151,
-    167,
-    165,
-    128,
-    46,
-    20,
-    231,
-    103,
-    142,
-    39,
-    56,
-    152,
-    46,
-    135,
-    1,
-    161,
-    180,
-    94,
-    212,
-    195,
-    201,
-    73,
-    190,
-    70,
-    242
-  ]),
-};
-```
-
-- This can be constructed by calling `getPublicKey()` using the `keyPair` we [setup earlier](#access-keys).
-
-```js
 const publicKey = keyPair.getPublicKey();
-```
 
-### 3 `receiverId`
-
-- The `receiverId` is the account ID of the transaction recipient.
-- This value is passed as a string (ex. `'example.testnet'` or `'bob.near'`)
-- The certain cases, the `signerId` and the `receiverId` can be the same account.
-
-### 4 `nonceForPublicKey`
-
-- A unique number or `nonce` is required for each transaction signed with an access key.
-- For this single-worker example, query the current `nonce` and add one. Production workers must coordinate nonce allocation per sender and access key; independent queries can allocate the same nonce.
-- Current nonce can be retrieved using the `provider` we [created earlier](#setting-up-a-connection-to-near).
-
-```js
 const accessKey = await provider.viewAccessKey({
   accountId: sender,
   publicKey,
@@ -296,47 +181,14 @@ if (accessKey.permission !== "FullAccess") throw new Error("Full-access key requ
 if (accessKey.nonce > BigInt(Number.MAX_SAFE_INTEGER)) {
   throw new Error("Use an RPC decoder that preserves large integer nonces");
 }
-```
 
-- now we can create a unique number for our transaction by incrementing the current `nonce`.
-
-```js
 const nonce = accessKey.nonce + 1n;
-```
 
-### 5 `actions`
-
-- See the supported [action types](/protocol/transactions/transaction-anatomy#actions).
-- For this example, we are using `Transfer`
-- This transfer action can be created using the [imported `transactionActions` helpers](#imports) and the [formatted Ⓝ amount](#formatting-token-amounts) created earlier.
-
-```js
 const actions = [transactionActions.transfer(amount)];
-```
 
-[[click here]](https://github.com/near/near-api-js/blob/2546c85354ab888dc1f559b0e54cfac51f03b484/src/transactions/action_creators.ts) to view source for `transfer()`.
-
-### 6 `blockHash`
-
-- Each transaction requires a recent block hash (within the configured block-based validity period) to prove that the transaction was created recently.
-- Fetch a recent finalized block and convert its hash to bytes using the imported `baseDecode()` helper.
-
-```js
 const block = await provider.viewBlock({ finality: "final" });
 const recentBlockHash = baseDecode(block.header.hash);
-```
 
-[[click here]](https://github.com/near/near-api-js/blob/2546c85354ab888dc1f559b0e54cfac51f03b484/src/utils/format.ts) to view source for `baseDecode()`.
-
----
-
-### Constructing the Transaction
-
-With all of our [required arguments](#transaction-requirements), we can construct the transaction.
-
-- Use the imported `createTransaction()` helper to perform this task.
-
-```js
 const transaction = createTransaction(
   sender,
   publicKey,
@@ -345,37 +197,13 @@ const transaction = createTransaction(
   actions,
   recentBlockHash
 );
-```
 
-[[click here]](https://github.com/near/near-api-js/blob/2546c85354ab888dc1f559b0e54cfac51f03b484/src/transactions/schema.ts) to view source code for the Transaction class
-
----
-
-### Sign Transaction
-
-Now that the transaction is created, we sign it before sending it to the NEAR blockchain. At the lowest level, there are four steps to this process.
-
-1. Use `encodeTransaction()` to serialize the unsigned transaction in [Borsh](https://borsh.io/).
-
-```js
 const serializedTx = encodeTransaction(transaction);
-```
 
-2. Hash the serialized transaction using a `sha256` cryptographic hashing algorithm.
-
-```js
 const serializedTxHash = createHash("sha256").update(serializedTx).digest();
-```
 
-3. Create a signature with the `keyPair`.
-
-```js
 const signature = keyPair.sign(serializedTxHash);
-```
 
-4. Construct the signed transaction using near-api-js [SignedTransaction class](https://github.com/near/near-api-js/blob/2546c85354ab888dc1f559b0e54cfac51f03b484/src/transactions/schema.ts).
-
-```js
 const signedTransaction = new SignedTransaction({
   transaction,
   signature: new Signature({
@@ -383,16 +211,7 @@ const signedTransaction = new SignedTransaction({
     data: signature.signature,
   }),
 });
-```
 
-### Send Transaction
-
-Final step is to encode and send the transaction.
-
-- First we serialize transaction into [Borsh](https://borsh.io/), and store the result as `signedSerializedTx`. _(required for all transactions)_
-- Then we send the transaction via [RPC call](/api/rpc/introduction) using the `sendJsonRpc()` method nested inside [`provider`](#setting-up-a-connection-to-near).
-
-```js
 // encodes transaction to serialized Borsh (required for all transactions)
 const signedSerializedTx = encodeTransaction(signedTransaction);
 // sends the signed transaction and waits for finalized execution
@@ -404,9 +223,19 @@ if (result.final_execution_status !== "FINAL") throw new Error("Execution is not
 console.log(result);
 ```
 
-### Transaction Results
+```bash
+node --env-file=.env send-tokens-deconstructed.mjs
+```
+
+For production, reserve nonces in a persistent allocator shared by every worker using the same sender/key. Include signed and submitted transactions that have not finalized, keep nonces as integer-safe values, and synchronize with on-chain state during recovery. An SDK instance’s local nonce cache does not coordinate independent processes. Ordinary nonces must increase; strict modes and gas-key lanes have different rules, so these examples use ordinary ED25519 keys only.
+
+Before production submission, persist the business intent, network identity, original sender, exact signed bytes, and transaction hash (`baseEncode(serializedTxHash)`) atomically with your reserved balance/nonce. Import `baseEncode` from `near-api-js` when deriving this hash. If submission times out, query that hash and sender with `wait_until: "FINAL"`; resend only the identical saved bytes while valid. A new nonce or block hash creates a different transaction. See [submission recovery](/integrations/create-transactions#submission-errors-and-retries).
+
+### Transaction results
 
 Inspect `result.status` for success or failure before treating the transfer as complete. The historical response below illustrates the structure; hashes, nonces, and fees will differ, and current responses also include `final_execution_status`.
+
+<Accordion title="Example transaction response" id="example-transaction-response">
 
 ```bash
 {
@@ -459,18 +288,95 @@ Transaction Results:  {
 }
 ```
 
-For detailed information on transaction receipts [[click here]](https://nomicon.io/RuntimeSpec/Receipts.html)
+</Accordion>
 
-- To view the transaction in [NearBlocks Explorer](https://testnet.nearblocks.io/), enter the `hash` located under `transaction` / `Transaction Results`.
-- In addition, you can create a link in JS using the `networkId` and `result.transaction.hash`.
+For detailed information, see [transaction receipts](https://nomicon.io/RuntimeSpec/Receipts.html). To view the transaction in [NearBlocks Explorer](https://testnet.nearblocks.io/), use `result.transaction.hash`.
 
-```js
-const prefix = (networkId === "testnet") ? "testnet." : "";
-const transactionLink = `https://${prefix}nearblocks.io/txns/${result.transaction.hash}`;
+---
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+
+<Accordion title="What is the fee structure for on-chain transactions?" id="what-is-the-fee-structure-for-on-chain-transactions%3F">
+
+NEAR uses a gas-based model where prices are generally deterministically adjusted based on congestion of the network.
+
+We avoid making changes that are too large through re-sharding by changing number of available shards (and thus throughput).
+
+Accounts don’t have associated resources. Gas amount is predetermined for all transactions except function calls. For function call transactions the user (or more likely the developer) attaches the required amount of gas. Unused prepaid gas is refunded according to current runtime rules, including any configured unused-gas refund penalty. Query the runtime configuration and budget gas for the contract being called.
+
+</Accordion>
+
+<Accordion title="How do we know how much gas to add to a transaction?" id="how-do-we-know-how-much-gas-to-add-to-a-transaction%3F">
+
+- See reference documentation here: https://nomicon.io/Economics/Economics.html
+- See API documentation for [discovering gas price via RPC here](/api/rpc/gas#gas-price).
+
+The issuer of a transaction should attach some amount of gas by taking a guess at budget which will get the transaction processed. The contract knows how much to fund different cross contract calls. Gas price is calculated and fixed per block, but may change from block to block depending on how full / busy the block is. If blocks become more than half full then gas price increases.
+
+See [gas purchase, burn, and refund accounting](/protocol/transactions/gas) for the current fee model.
+
+</Accordion>
+
+<Accordion title="How do we follow Tx status?" id="how-do-we-follow-tx-status%3F">
+
+See related [RPC interface for fetching transaction status here](/api/rpc/transactions#transaction-status).
+
+</Accordion>
+
+<Accordion title="How are transactions constructed and signed?" id="how-are-transactions-constructed-and-signed%3F">
+
+Transactions are a collection of related data that is composed and cryptographically signed by the sender using their private key. The related public key is part of the transaction and used for signature verification. Only signed transactions may be sent to the network for processing.
+
+Transactions can be constructed and signed offline. Signing itself does not require a node, but the mandatory recent block hash and access-key nonce must be obtained beforehand. Use a fresh finalized block and a nonce reserved for that key; see [transaction construction](/integrations/create-transactions).
+
+See [transactions](/protocol/transactions) in the concepts section of our documentation.
+
+</Accordion>
+
+<Accordion title="How is the hash preimage generated? Which fields does the raw transaction consist of?" id="how-is-the-hash-preimage-generated%3F-which-fields-does-the-raw-transaction-consist-of%3F">
+
+For a transaction, we sign the hash of the transaction. More specifically, what is signed is the `sha256` of the transaction object serialized in borsh (https://github.com/near/borsh).
+
+</Accordion>
+
+<Accordion title="How do transactions work on the NEAR platform?" id="how-do-transactions-work-on-the-near-platform%3F">
+
+A `Transaction` is made up of one or more `Action`s. Common action types include `CreateAccount`,
+`DeployContract`, `FunctionCall`, `Transfer`, `Stake`, `AddKey`, `DeleteKey` and `DeleteAccount`. Delegation, global-contract, deterministic-initialization, and gas-key actions are also supported; consult the [versioned action definitions](https://github.com/near/nearcore/blob/2.13.4/core/primitives/src/action/mod.rs). Transactions are composed by a sender and then signed using the private keys of a valid NEAR account to create a `SignedTransaction`. This signed transaction is considered ready to send to the network for processing.
+
+Transactions are received via our JSON-RPC endpoint and routed to the shard where the `sender` account lives. This "home shard" for the sender account is then responsible for processing the transaction and generating related receipts to be applied across the network.
+
+Once received by the network, signed transactions are verified (using the embedded public key of the signer) and processed into an initial action receipt containing the transaction’s action list; function calls can generate additional receipts. Receipts are of two types: `Action Receipt` is the most common and represents almost all actions on the network while `Data Receipt` handles the very special case of "a `FunctionCallAction` which includes a Promise". These receipts are then propagated and applied across the network according to the "home shard" rule for all affected receiver accounts.
+
+These receipts are then propagated around the network using the receiver account's "home shard" since each account lives on one and only one shard. The receiving shard schedules receipt execution subject to dependencies and execution limits.
+
+Receipts may generate other, new receipts which in turn are propagated around the network until all receipts have been applied. If an action fails, state changes within that receipt are rolled back. Earlier successful receipts remain committed, and gas can still be charged. Refunds and callbacks execute as separate receipts; inspect their finalized outcomes.
+
+For more detail, see specs on [`Transactions`](https://nomicon.io/RuntimeSpec/Transactions), [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html), [`Receipts`](https://nomicon.io/RuntimeSpec/Receipts)
+
+</Accordion>
+
+<Accordion title="How does NEAR serialize transactions?" id="how-does-near-serialize-transactions%3F">
+
+We use a simple binary serialization format that's deterministic: https://borsh.io
+
+</Accordion>
+
+<Accordion title="How old can the referenced block hash be before it's invalid?" id="how-old-can-the-referenced-block-hash-be-before-its-invalid%3F">
+
+There is a genesis parameter which can be discovered for any network using:
+
+```sh
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_genesis_config
+# in the line above, testnet may be replaced with mainnet or betanet
 ```
 
-<Tip title="Got a question?">
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"><h8>Ask it on StackOverflow!</h8></a>
-</Tip>
+Use `transaction_validity_period`, measured in blocks, from the [`protocol_config` RPC endpoint](/api/rpc/protocol#protocol-config). For example, `86400` blocks at a 600ms cadence correspond to approximately 14.4 hours; validity is determined by blocks, not a fixed wall-clock deadline.
 
-Happy Coding! 🚀  
+`epoch_length` specifies the length of an epoch in blocks.
+
+</Accordion>
+
+</AccordionGroup>

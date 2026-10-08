@@ -182,6 +182,18 @@
     {
       "source": "/web3-apps/tutorials/social-login",
       "destination": "/web3-apps/tutorials/privy"
+    },
+    {
+      "source": "/integrations/faq",
+      "destination": "/integrations/exchange-integration"
+    },
+    {
+      "source": "/integrations/implicit-accounts",
+      "destination": "/integrations/accounts#implicit-accounts"
+    },
+    {
+      "source": "/integrations/errors/token-loss",
+      "destination": "/integrations/errors/introduction#avoiding-token-loss"
     }
   ],
   "navbar": {
@@ -672,28 +684,24 @@
         "icon": "plug",
         "groups": [
           {
-            "group": "Integration",
+            "group": "Exchange Integration",
             "pages": [
               "integrations/exchange-integration",
-              "integrations/balance-changes",
+              "integrations/nodes",
               "integrations/accounts",
+              "integrations/blocks-and-finality",
+              "integrations/deposits",
               "integrations/create-transactions",
               "integrations/fungible-tokens",
-              "integrations/implicit-accounts"
-            ]
-          },
-          {
-            "group": "Understanding Errors",
-            "pages": [
-              "integrations/errors/introduction",
-              "integrations/errors/error-implementation",
-              "integrations/errors/token-loss"
+              "integrations/balance-changes",
+              "integrations/staking",
+              "integrations/errors/introduction"
             ]
           },
           {
             "group": "Reference",
             "pages": [
-              "integrations/faq"
+              "integrations/errors/error-implementation"
             ]
           }
         ]

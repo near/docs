@@ -1,0 +1,68 @@
+---
+id: staking
+title: Staking & Delegation
+sidebarTitle: Staking & Delegation
+description: "Validator selection, delegation, withdrawal availability, and staking-pool custody."
+---
+
+## Staking and Delegation {#staking-and-delegation}
+
+- [https://github.com/nearprotocol/stakewars](https://github.com/nearprotocol/stakewars)
+- [https://github.com/near/core-contracts](https://github.com/near/core-contracts)
+
+---
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+
+<Accordion title="What is the process for becoming a validator?" id="what-is-the-process-for-becoming-a-validator%3F">
+
+Validation is permissionless and depends on stake and the network’s validator-selection rules. Submit a staking proposal and inspect the current and upcoming validator sets through the [network RPC](/api/rpc/introduction). Selection changes take effect at epoch boundaries. See [validators](/protocol/network/validators) for current requirements.
+
+</Accordion>
+
+<Accordion title="How long does a validator remain a validator?" id="how-long-does-a-validator-remain-a-validator%3F">
+
+A validator will stop being a validator for the following reasons:
+
+- Not producing enough blocks or chunks.
+- Not getting elected in the auction for next epoch because their stake is not large enough.
+
+A validator can continue while meeting the election and performance requirements. Slashing is not enabled in nearcore 2.13.4.
+
+Validator election happens in [epochs](/protocol/network/epoch). Validator assignments are determined ahead of the epoch in which they apply. Query upcoming validator sets to determine when a staking proposal takes effect.
+
+</Accordion>
+
+<Accordion title="What is the penalty for misbehaving validators?" id="what-is-the-penalty-for-misbehaving-validators%3F">
+
+Validators are not slashed for being offline but they do miss out on the rewards of validating. Validators who miss too many blocks or chunks will be removed from the validation set in the next auction and not get any reward (but, again, without slashing).
+
+</Accordion>
+
+<Accordion title="What is the mechanism for delegating stake to validators?" id="what-is-the-mechanism-for-delegating-stake-to-validators%3F">
+
+NEAR supports separate validation keys that can be used in smart contracts to delegate stake. Delegation is done via smart contract which allows for a validator to define a custom way to collect stake, manage it and split rewards. This also allows validators to provide leverage or derivatives on stake. Delegated stake is subject to the deployed protocol’s penalty rules; slashing is not enabled in nearcore 2.13.4.
+
+Unstaking and withdrawing are separate operations. The [reference staking pool](https://github.com/near/core-contracts/blob/master/staking-pool/src/lib.rs) waits four epochs before withdrawal becomes available; query the selected pool’s withdrawal availability.
+
+</Accordion>
+
+<Accordion title="Does a validator control funds that have been delegated to them?" id="does-a-validator-control-funds-that-have-been-delegated-to-them%3F">
+
+Delegation transfers funds into a staking-pool contract. Its code governs those funds; the validator does not automatically have unrestricted spending authority. Review the selected pool’s contract, privileged keys, upgrade authority, fees, and withdrawal controls.
+
+We allow validators to write and deploy new contracts but it is up to users to decide if they want to delegate. Validators can compete for delegation by choosing different logic and conditions around tax optimization, etc.
+
+Review custody and penalty rules when the protocol or pool contract changes.
+
+</Accordion>
+
+<Accordion title="How do we get the balance of an account after it has delegated funds?" id="how-do-we-get-the-balance-of-an-account-after-it-has-delegated-funds%3F">
+
+One would need to query the staking pool contract to get balance.
+
+</Accordion>
+
+</AccordionGroup>

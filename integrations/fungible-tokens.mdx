@@ -2,16 +2,24 @@
 id: fungible-tokens
 title: Fungible tokens
 sidebarTitle: Fungible Tokens
-description: "Learn how to integrate NEAR tokens (NEAR, FT, and NFT) into your application, including balance queries, transfers, and token metadata."
+description: "Integrate NEP-141 fungible tokens, including balance queries, storage registration, transfers, and metadata."
 ---
 
 This document provides an overview of the NEAR fungible token standard, including how to check balances, get metadata, and perform transfers. It also covers the storage requirements for fungible tokens and how to manage storage deposits.
+
+---
 
 ## Introduction {#introduction}
 
 Please see the [spec for the fungible token standard](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) and an [example implementation](https://github.com/near-examples/FT) for reference details.
 
-One notable aspect of the standard is that method names are prefixed with `ft_`. This will be a helpful convention when querying for transactions related to fungible tokens.
+Standard method names are prefixed with `ft_`, but a method name does not authenticate an asset. Identify supported tokens by network identity and approved contract account; verify metadata and decimals before enabling deposits. Keep amounts as base-10 integer strings in the token’s smallest unit, not floating-point numbers or native NEAR units.
+
+<Note>
+The responses below are historical fixtures. CLI output and detailed RPC responses can represent separate captured transactions. The transaction representations match their adjacent detailed responses; use fresh nonces, block hashes, and signatures when testing. Older responses omit `final_execution_status` and cannot by themselves prove the finality required for deposit crediting.
+</Note>
+
+---
 
 ## Get balance {#get-balance}
 
@@ -71,6 +79,8 @@ Returns:
 `"1000000"`
 
 **Note:** The fungible token balance of the account `mike.testnet` is `1000000` wrapped in double-quotes. This is because of an issue with JSON serialization. Amounts given in arguments and results must be serialized as Base-10 strings, e.g. "100". This is done to avoid JSON limitation of max integer value of 2**53, which can certainly happen with fungible tokens.
+
+---
 
 ## Get info about the FT {#get-info-about-the-ft}
 
@@ -145,6 +155,8 @@ Decoded result in this case is:
     "decimals": 24
 }
 ```
+
+---
 
 ## Simple transfer {#simple-transfer}
 
@@ -273,10 +285,12 @@ If there is not enough deposit for the storage or returned value is `null` - you
 near contract call-function as-transaction <contract_account_id> storage_deposit json-args '{"account_id": "<user_account_id>"}' prepaid-gas '100.0 Tgas' attached-deposit '<deposit in Ⓝ> NEAR' sign-as <sender_account_id> network-config testnet sign-with-keychain send
 ```
 
+The historical RPC transaction registers its caller, `serhii.testnet`, by passing `{}`. To register another account, pass its explicit `account_id`, as in the CLI command above.
+
 Result example:
 
 ```bash
-# Historical example attaches 0.125 NEAR, above the 0.00125 NEAR minimum.
+# Historical example attaches 0.125 NEAR, above the 0.00125 NEAR minimum; excess is refundable.
 Scheduling a call: ft.demo.testnet.storage_deposit() with attached 0.125 NEAR
 Transaction Id 9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
 To see the transaction in the transaction explorer, please open this url in your browser
@@ -285,6 +299,8 @@ https://testnet.nearblocks.io/txns/9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
 ```
 
   - with JSON RPC call:
+
+  Replace the signed-payload placeholder using the [low-level signing steps](/integrations/create-transactions#low-level-create-a-transaction), with the `FunctionCall` action shown below. Use your actual sender, approved contract, and network, and query the current storage minimum rather than copying the historical overpayment.
 
   At the top of this section is a link detailing how to [construct a transaction](/integrations/create-transactions#low-level-create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](/api/rpc/transactions#broadcast-commit) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
 
@@ -299,9 +315,9 @@ Transaction: {
 		FunctionCall(
 			FunctionCallAction {
 				method_name: storage_deposit,
-				args: `{"account_id": "robertyan.near"}`,
-				gas: 300000000000000,
-				deposit: 1250000000000000000000,
+				args: `{}`,
+				gas: 100000000000000,
+				deposit: 125000000000000000000000,
 			},
 		),
 	]
@@ -310,7 +326,7 @@ Transaction: {
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZi/qoVEgrAAAPAAAAZnQuZGVtby50ZXN0bmV0JYbWPOu0P9T32vtUKnZSh+EaoboQqg0/De2i8Y+AjHIBAAAAAg8AAABzdG9yYWdlX2RlcG9zaXQCAAAAe30AQHoQ81oAAAAAILSd2XlDeBoAAAAAAAAAZF7+s4lcHOzy+re59VErt7LcZkPMMUVgOJV8LH5TsLBBv+8h/5tZ6+HFwxSp605A4c46oS9Jw4KBRXZD07lKCg=="]'
+  params:='["REPLACE_WITH_FRESH_SIGNED_TRANSACTION_BASE64"]'
 ```
 
 <details>
@@ -553,7 +569,7 @@ https://nearblocks.io/txns/3MkWKbXVP8wyy4pBofELqiE1pwx7ie2v3SKCwaobNcEe
 
   - with JSON RPC call:
 
-Transaction representation:
+Transaction representation (historical fixture):
 
 ```yaml
 Transaction: {
@@ -567,7 +583,7 @@ Transaction: {
 			FunctionCallAction {
 				method_name: ft_transfer,
 				args: `{"receiver_id": "volovyk.near", "amount": "1"}`,
-				gas: 300000000000000,
+				gas: 100000000000000,
 				deposit: 1,
 			},
 		),
@@ -576,15 +592,15 @@ Transaction: {
 ```
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-  params:='["CwAAAHNlcmhpaS5uZWFyAAmQpgZcJM5nMc6f3tqmw/YI4eAvc84ZgsKMRRRzhY/6CQAAAAAAAAARAAAAYmVycnljbHViLmVrLm5lYXLLWPIiUOElkDF3u4hLAMJ0Sjeo1V338pDdHIp70va3ewEAAAACCwAAAGZ0X3RyYW5zZmVyKwAAAHsicmVjZWl2ZXJfaWQiOiJ2b2xvdnlrLm5lYXIiLCJhbW91bnQiOiIxIn0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAA7fDOZQt3zCtdS05Y8XaZFlwO/Gd5wkkNAHShzDiLQXk4Q4ixpraLPMJivs35PZD0gocXl1iGFbQ46NG3VllzCA=="]'
+http post https://rpc.mainnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["REPLACE_WITH_FRESH_SIGNED_TRANSACTION_BASE64"]'
 ```
 
 To get details of this transaction:
 
 ```bash
 http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
-  params:='["2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX", "serhii.near"]' id=myid
+  params:='{"tx_hash":"2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX","sender_account_id":"serhii.near","wait_until":"FINAL"}' id=myid
 ```
 
 <details>
@@ -774,20 +790,20 @@ near tx-status <transaction_hash> --useAccount <transaction_signer>
   - with JSON RPC call
 
 ```bash
-  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_tx_status \
-  params:='[ "2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX", "sender.testnet"]'
+  http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_tx_status \
+  params:='{"tx_hash":"2Fy4714idMCoja7QLdGAbQZHzV2XEnUdwZX6yGa46VMX","sender_account_id":"serhii.near","wait_until":"FINAL"}'
 ```
 
-Let's create test transaction that should fail and investigate the response. We will try to send more tokens that are available on this account:
+Let's create test transaction that should fail and investigate the response. The historical mainnet example attempts `10000000000000000000` raw units. For a new failure test, use an amount greater than your test account’s finalized FT balance and select that account’s network:
   - using NEAR CLI:
 
 ```bash
-near contract call-function as-transaction <contract_account_id> ft_transfer json-args '{"receiver_id": "<user_account_id>", "amount": "1"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as <sender_account_id> network-config testnet sign-with-keychain send
+near contract call-function as-transaction <contract_account_id> ft_transfer json-args '{"receiver_id": "<user_account_id>", "amount": "10000000000000000000"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as <sender_account_id> network-config mainnet sign-with-keychain send
 ```
 
   - with JSON RPC call:
 
-Transaction representation:
+Transaction representation (historical fixture):
 
 ```yaml
 Transaction: {
@@ -801,7 +817,7 @@ Transaction: {
 			FunctionCallAction {
 				method_name: ft_transfer,
 				args: `{"receiver_id":"volovyk.near","amount":"10000000000000000000"}`,
-				gas: 300000000000000,
+				gas: 100000000000000,
 				deposit: 1,
 			},
 		),
@@ -810,15 +826,15 @@ Transaction: {
 ```
 
 ```bash
-  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZofqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTm8Xq8BTIi6utG0424Gg7CknYzLH8RH/A409jq5o0zi7gEAAAACCwAAAGZ0X3RyYW5zZmVyPwAAAHsicmVjZWl2ZXJfaWQiOiJkZXYtMTYyMzMzMzkxNjM2OC01ODcwNzQzNDg3ODUzMyIsImFtb3VudCI6IjEifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABCwjqayKdpWgM6PE0ixzm/Gy0EtdpxVn0xehMTBReVfVAKIBTDPoPSaOdT8fAhk343F5uOMfSijhTqU2mWV3oD"]'
+  http post https://rpc.mainnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
+  params:='["REPLACE_WITH_FRESH_SIGNED_TRANSACTION_BASE64"]'
 ```
 
 To get details of this transaction:
 
 ```bash
 http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
-  params:='["CKHzodHvFw4C87PazsniycYZZHm37CEWLE2u8VUUMU7r", "serhii.near"]' id=myid
+  params:='{"tx_hash":"CKHzodHvFw4C87PazsniycYZZHm37CEWLE2u8VUUMU7r","sender_account_id":"serhii.near","wait_until":"FINAL"}' id=myid
 ```
 
 <details>
@@ -1051,17 +1067,15 @@ http post https://archival-rpc.mainnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 </details>
 
 Was the fungible token transfer successful?
-  - Look for `result` » `transaction_outcome` » `outcome` » see if `SuccessReceiptId` is a key
-  - if `SuccessReceiptId` is not a key, this fungible token transfer has `failed`.
-  - If it does have that key, get the value, which is a `receipt ID`
-  - Loop through `result` » `receipts_outcome` until you find an object that ID (from above) under the id key
-  - in that object check `outcome` » `status` » (see if SuccessValue is a key)
-  - If SuccessValue is a key, fungible token transfer succeeded, if not, it failed.
+  - Require `final_execution_status === "FINAL"` in the fresh status response.
+  - Match the token-call receipt to its outcome by ID, verifying the executing contract is the approved token contract and that the receipt did not fail. `SuccessValue` or `SuccessReceiptId` indicates successful receipt execution; a missing outcome is pending, not failed.
+  - For this direct `ft_transfer` fixture, decode that receipt’s `FunctionCall.args` to inspect the attempted raw amount. Input arguments alone do not prove a completed deposit, especially when another contract generates later transfer receipts.
 
-To determine how many fungible tokens were transferred, look at:
-  - `result` » `transaction` » `actions` » `FunctionCall` » `args`
-  - then take the args and `base64` decode it, that will give you a JSON payload and look for the `amount` key
-  - It will contain a stringified number that represents the number of fungible tokens that were successfully transferred
+For general deposit accounting, inspect [NEP-300 events](https://github.com/near/NEPs/blob/master/neps/nep-0300.md) in successful finalized token-contract outcomes: `EVENT_JSON:` with `standard: "nep141"`, `version: "1.0.0"`, and `event: "ft_transfer"`. Authenticate `executor_id` against the approved token contract; another contract can print the same log. For each data item, record `old_owner_id`, `new_owner_id`, and raw `amount`. Deduplicate by network, receipt ID, log index, and data index; record debits as well as credits to capture refunds and internal movements.
+
+Credit only supported movements into controlled, customer-assigned accounts. Failed-receipt logs do not represent committed transfers. Process mint/burn events separately when reconciling token balances, and use an asset-specific reviewed adapter for contracts without reliable standard events. Query `ft_balance_of` at the same finalized checkpoint as your native ledger.
+
+---
 
 ## Transfer and call {#transfer-and-call}
 
@@ -1072,7 +1086,7 @@ For this example we will build and deploy FT contracts from [near-sdk-rs/example
 Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine successful and unsuccessful scenarios.
 
 ### Successful transfer and call {#successful-transfer-and-call}
-  Let's send 10 N to `DEFI` contract that requires only 9 N.
+  Let's send 10 raw FT units to a `DEFI` contract that uses only 9. These are smallest-unit amounts, not NEAR or necessarily ten displayed tokens; apply the token's approved decimals for display.
 
   - using NEAR CLI
 
@@ -1082,7 +1096,7 @@ Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine s
 
   - with JSON RPC call
 
-Transaction representation:
+Transaction representation (historical fixture):
 
 ```yaml
 Transaction: {
@@ -1096,7 +1110,7 @@ Transaction: {
 			FunctionCallAction {
 				method_name: ft_transfer_call,
 				args: `{"receiver_id":"dev-1623693121955-71667632531176","amount":"10","msg":"take-my-money"}`,
-				gas: 300000000000000,
+				gas: 100000000000000,
 				deposit: 1,
 			},
 		),
@@ -1106,14 +1120,14 @@ Transaction: {
 
 ```bash
   http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZqPqoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTn9j4g2IJ8nGQ38i3+k+4WBAeJL1xP7ygQhC7CrvEG4NQEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxWAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0AQHoQ81oAAAEAAAAAAAAAAAAAAAAAAAAANY2lHqJlAJYNDGEQiUNnmfiBV44Q1sdg45xNlNvlROOM+AtN1z3PSJqM6M6jAKXUwANoQTzFqXhIMHIjIPbTAA=="]'
+  params:='["REPLACE_WITH_FRESH_SIGNED_TRANSACTION_BASE64"]'
 ```
 
 To get details of this transaction:
 
 ```bash
 http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
-    params:='["5n1kwA3TQQyFTkddR2Jau3H1Pt8ebQNGaov6aCQ6TDp1", "serhii.testnet"]' id=myid
+    params:='{"tx_hash":"5n1kwA3TQQyFTkddR2Jau3H1Pt8ebQNGaov6aCQ6TDp1","sender_account_id":"serhii.testnet","wait_until":"FINAL"}' id=myid
 ```
 
 <details>
@@ -1441,7 +1455,7 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 
 Now, let's try to follow the steps described in the previous section and determine if these transactions was successful. In addition to being successful, let's analyze the various receipts in the series of cross-contract calls to determine how many fungible tokens were transferred. This will be the most complex case we'll look at.
 
-  1. Check that `result` » `transaction_outcome` » `outcome` » `status` has `SuccessReceiptId` as a key. If not, no fungible tokens were transferred.
+  1. Check that `result` » `transaction_outcome` » `outcome` » `status` has `SuccessReceiptId` as a key. If not, this transaction-processing step did not produce the expected receipt; inspect the actual failure and all available outcomes.
   2. Take the value of the `SuccessReceiptId` key. In the case above it's `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk`.
   3. Now, under `result` » `receipts` loop through the array until you find a receipt where the `receipt_id` matches the value from step 2. (Note that in the receipt, under `Actions` there's an element mentioning calling the `method_name: "ft_transfer_call"`.) On the same level of JSON, there's an `args` key. That's a base64-encoded value of the arguments passed to the method. When decoded it is:
 
@@ -1449,15 +1463,26 @@ Now, let's try to follow the steps described in the previous section and determi
 {"receiver_id":"dev-1623693121955-71667632531176","amount":"10","msg":"take-my-money"}
 ```
 
-  4. Loop through `result` » `receipts_outcome` until finding the object where `id` is equal to the value from step 2. Similar to step 1, this object will also contain a `status` field that should contain the key `SuccessReceiptId`. Again, if this isn't there no fungible tokens were transferred, otherwise get the value of the `SuccessReceiptId`. In the above example, this value is `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`.
+  4. Loop through `result` » `receipts_outcome` until finding the object where `id` is equal to the value from step 2. Similar to step 1, this object will also contain a `status` field that should contain the key `SuccessReceiptId`. For this fixture, follow `SuccessReceiptId` to the resolver. In general, inspect success/failure and receipt dependencies rather than treating the absence of this particular key as proof that no tokens moved. In the above example, this value is `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`.
   5. Similar to the previous step, loop through the `result` » `receipts_outcome` until you find the object where the `id` matches the value from step 4. In that object check that `outcome` » `status` has the `SuccessValue` field. This resolver’s `SuccessValue` reports how many fungible-token units were used, not the unused amount returned by `ft_on_transfer`. Note that in the example above the value is `Ijki`, which is the base64-encoded version of `"9"`. In this example, 10 raw token units were sent (from step 3), 9 were used, and 1 was refunded.
 
-For additional clarity, let's take a look at one more optional aspect. In step 4 we isolated an object in `result` » `receipts_outcome`. There's an array of `receipt_ids` that's particularly interesting. The first element in the array is the receipt ID `EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5`. If we loop through the `result` » `receipts_outcome` and find this as the value for the `id` key, we'll see what happened in the function `ft_on_transfer` which takes place in the contract receiving the fungible tokens. In this object the `status` » `SuccessValue` is `IjEi` which is the base64-encoded value of `"1"`.
+For additional clarity, let's take a look at one more optional aspect. In step 4 we isolated an object in `result` » `receipts_outcome`. There's an array of `receipt_ids` that's particularly interesting. In this fixture, receipt `EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5` executes `ft_on_transfer`. Identify that role from the receipt’s executor and method, not its position in the array. If we loop through the `result` » `receipts_outcome` and find this as the value for the `id` key, we'll see what happened in the function `ft_on_transfer` which takes place in the contract receiving the fungible tokens. In this object the `status` » `SuccessValue` is `IjEi` which is the base64-encoded value of `"1"`.
 
 In summary:
 1. A user called the fungible token contract with the method `ft_transfer_call` specifying the receiver account, how many tokens to send, and custom info.
 2. The receiver account implemented `ft_on_transfer`, returning `"1"` to the callback function on the fungible token contract.
-3. The fungible token contract's callback is `ft_resolve_transfer` and receives this value of `"1"`. It knows that 1 token was returned, so subtracts that from the 10 it intended to send. It then returns to the user how many tokens were used in this back-and-forth series of cross-contract calls: `"9"`.
+3. The fungible token contract's callback is `ft_resolve_transfer` and receives this value of `"1"`. It attempts to refund the 1 unused unit, subject to the receiver’s remaining token balance, and subtracts the actual refund from the 10 initially transferred. It then returns to the user how many tokens were used in this back-and-forth series of cross-contract calls: `"9"`.
+
+Wait for finalized resolver execution before releasing a transfer-and-call deposit. An initial transfer event can be followed by a refund event. For a conventional NEP-141 implementation:
+
+| Callback result | Resolution when the full unused balance is refundable |
+| --- | --- |
+| `"0"` unused | 10 units used, no refund |
+| `"1"` unused | 9 units used, 1 refunded |
+| `"10"` unused | 0 used, 10 refunded |
+| Callback `Failure` | Resolver attempts to refund all 10 |
+
+A failed callback does not roll back the initial token receipt. The resolver can refund only the available balance; forwarded or spent tokens and account unregistration can change the result. Inspect finalized transfer/refund/burn effects and reconcile the final balance. Support this route only with a reviewed receiving-contract routing and callback policy.
 
 ### Failed transfer and call {#failed-transfer-and-call}
 Let's try to send more tokens than the account has:
@@ -1468,7 +1493,7 @@ Let's try to send more tokens than the account has:
 near contract call-function as-transaction <ft_contract_id> ft_transfer_call json-args '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as <user_account_id> network-config testnet sign-with-keychain send
 ```
 
-Transaction representation:
+Transaction representation (historical fixture):
 
 ```yaml
 Transaction: {
@@ -1482,7 +1507,7 @@ Transaction: {
 			FunctionCallAction {
 				method_name: ft_transfer_call,
 				args: `{"receiver_id":"dev-1623333916368-58707434878533","amount":"1000000000","msg":"take-my-money"}`,
-				gas: 300000000000000,
+				gas: 100000000000000,
 				deposit: 1,
 			},
 		),
@@ -1494,14 +1519,14 @@ Transaction: {
 
 ```bash
   http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=broadcast_tx_commit \
-  params:='["DgAAAHNlcmhpaS50ZXN0bmV0AEKEp54fyVkp8dJE2l/m1ErjdhDGodBK8ZF6JLeHFMeZn/qoVEgrAAAgAAAAZGV2LTE2MjMzMzM3OTU2MjMtMjEzOTk5NTk3NzgxNTnrbOQ93Wv9xxBwmq4yDYrssCpwKSI2bzjNNCCCHMZKNwEAAAACEAAAAGZ0X3RyYW5zZmVyX2NhbGxeAAAAeyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQBAehDzWgAAAQAAAAAAAAAAAAAAAAAAAABQh3k+7zG2m/Yz3O/FBrvLaBwR/5YRB5FbFnb27Nfu6BW/Wh77RFH7+ktBwGLBwFbJGxiumIcsqBiGXgg1EPMN"]'
+  params:='["REPLACE_WITH_FRESH_SIGNED_TRANSACTION_BASE64"]'
 ```
 
 To get details of this transaction:
 
 ```bash
 http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
-    params:='["FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB", "serhii.testnet"]' id=myid
+    params:='{"tx_hash":"FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB","sender_account_id":"serhii.testnet","wait_until":"FINAL"}' id=myid
 ```
 
 <details>
@@ -1707,8 +1732,4 @@ http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_
 Let's examine this response.
 
   * `result` » `transaction_outcome` » `outcome` » `status` » `SuccessReceiptId` is `83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo`
-  * check `result` » `receipts_outcome` » `0` » `outcome` » `status` and find `Failure` status there
-
-<Tip title="Got a question?">
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
-</Tip>
+  * Find the outcome whose `id` matches that receipt ID, then inspect `outcome.status.Failure`. A missing outcome is pending; array position `0` is not a reliable receipt identifier.

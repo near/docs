@@ -1,18 +1,24 @@
 ---
-id: exchange-integration
 title: Exchange Integration
-sidebarTitle: Exchange Integration
-description: "Learn how to integrate NEAR Protocol into exchanges, including transactions, accounts, tokens, blocks, finality, archival nodes, and staking."
+sidebarTitle: Overview
+description: "Learn how to integrate NEAR Protocol."
 ---
 
-This document provides an overview of how to integrate with NEAR Protocol for exchanges, including account management, token transfers, and handling implicit accounts.
+NEAR is an open-source, sharded proof-of-stake blockchain with support for smart contracts. This guide walks through integrating NEAR into an exchange, from setting up node access and managing accounts to processing deposits, sending withdrawals, and reconciling balances. It also covers fungible tokens, staking, and error handling.
+
+---
 
 ## Integration Reference {#integration-reference}
 
-- [Balance Changes](/integrations/balance-changes)
+- [Nodes & RPC](/integrations/nodes)
 - [Accounts](/integrations/accounts)
+- [Blocks and Finality](/integrations/blocks-and-finality)
+- [Receiving Deposits](/integrations/deposits)
+- [Sending Withdrawals](/integrations/create-transactions)
 - [Fungible Tokens](/integrations/fungible-tokens)
-- [Implicit Accounts](/integrations/implicit-accounts)
+- [Balances & Reconciliation](/integrations/balance-changes)
+- [Staking & Delegation](/integrations/staking)
+- [Error Handling](/integrations/errors/introduction)
 
 ### Transaction Reference Links {#transaction-reference-links}
 
@@ -20,31 +26,64 @@ This document provides an overview of how to integrate with NEAR Protocol for ex
  - [Specifications](https://nomicon.io/RuntimeSpec/Transactions)
  - [Constructing Transactions](/integrations/create-transactions)
 
-## Blocks and Finality {#blocks-and-finality}
+---
 
-Some important pieces of information regarding blocks and finality include:
+## Additional Resources
 
-- Typical block time is around 600ms and typical time to finality is around 1.2s. These are timing estimates; use finalized execution rather than elapsed time to confirm a deposit. The last final block can be queried by specifying `{"finality": "final"}` in the block query. For example, to get the latest final block on mainnet, one can run
+- [The Beginner's Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain)
+- [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/)
+- [NEAR GitHub](https://www.github.com/near)
 
-```bash
-http post https://rpc.mainnet.near.org method=block params:='{"finality":"final"}' id=123 jsonrpc=2.0
-```
+---
 
-- Block height are not necessarily continuous and certain heights may be skipped if, for example, a block producer for that height is offline. For example, after a block at height 100 is produced, the block at height 101 may be skipped. When block at height 102 is produced, its previous block is the block at height 100.
+## Frequently Asked Questions
 
-- Some blocks may not include new chunks if, for example, the previous chunk producer is offline. Even though in the RPC
-  return result every block will have non-empty `chunks` field, it does not imply that there is a new chunk included in the block.
-  The way to tell whether the chunk is included in the block is to check whether `height_included` in the chunk is the same
-  as the height of the block.
+These guides provide answers to frequently asked questions about integrating with the NEAR Protocol. It covers topics such as account management, validator operations, transaction processing, and more.
 
-## Running an Archival Node {#running-an-archival-node}
-Please refer to configuration changes required in `config.json` for archival node by referring to the documentation on [Run an Archival Node](https://near-nodes.io/archival/split-storage-archival).
+<AccordionGroup>
 
-## Staking and Delegation {#staking-and-delegation}
+<Accordion title="What is a good project summary for NEAR?" id="what-is-a-good-project-summary-for-near%3F">
 
-- [https://github.com/nearprotocol/stakewars](https://github.com/nearprotocol/stakewars)
-- [https://github.com/near/core-contracts](https://github.com/near/core-contracts)
+NEAR is a sharded, public, proof-of-stake blockchain and supports smart contracts written in Rust and compiled to WebAssembly (WASM).
 
-<Tip title="Got a question?">
-<a href="https://stackoverflow.com/questions/tagged/nearprotocol" target="_blank" rel="noopener noreferrer"> Ask it on StackOverflow! </a>
-</Tip>
+</Accordion>
+
+<Accordion title="What's special about NEAR?" id="whats-special-about-near%3F">
+
+NEAR is the blockchain for builders.
+
+If you understand the basics of web development, you can write, test and deploy scalable decentralized applications in minutes on the most developer-friendly blockchain without having to learn new tools or languages.
+
+</Accordion>
+
+<Accordion title="Is NEAR open source?" id="is-near-open-source%3F">
+
+Yes. Have a look at our [GitHub organization](https://github.com/near).
+
+</Accordion>
+
+<Accordion title="Do you have any on-chain governance mechanisms?" id="do-you-have-any-on-chain-governance-mechanisms%3F">
+
+NEAR has [House of Stake governance](https://gov.houseofstake.org/blog/introducing-near-house-of-stake). Governance proposals and consensus protocol activation are separate processes; follow the implementation and activation requirements for each change.
+
+</Accordion>
+
+<Accordion title="Do you have a bug-bounty program?" id="do-you-have-a-bug-bounty-program%3F">
+
+Follow the current [nearcore security policy](https://github.com/near/nearcore/security/policy) for disclosure instructions and links to any applicable program.
+
+</Accordion>
+
+<Accordion title="What contracts should we be aware of right now?" id="what-contracts-should-we-be-aware-of-right-now%3F">
+
+The [core-contracts repository](https://github.com/near/core-contracts) contains reference implementations. Review the deployed version and authority of each contract you integrate with:
+
+- **Staking Pool / Delegation contract**
+- **Lockup / Vesting contract**
+- Whitelist Contract
+- Staking Pool Factory
+- Multisig contract
+
+</Accordion>
+
+</AccordionGroup>
