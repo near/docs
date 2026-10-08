@@ -7,11 +7,14 @@ description: "Learn about NEAR account management for exchanges and integrations
 
 This document provides relevant information about NEAR accounts for exchanges looking forward to integrate the NEAR token
 
-Please see the [documentation for accounts](/protocol/account-model) for basic information.
+Please see the [documentation for accounts](/protocol/accounts-contracts/account-model) for basic information.
 
-- For exchanges, NEAR supports [implicit account](https://nomicon.io/DataStructures/Account.html#implicit-account-ids) creation which allows the creation of accounts without paying for transactions.
-- You can create an implicit account by following the steps in [this guide](/integrations/implicit-accounts).
-- Accounts must have enough tokens to cover its storage which currently costs `0.0001 NEAR` per byte. This equates to a minimum balance of `0.00182 NEAR` for an account with one access key. You can query the live storage price using the [`protocol-config`](/api/rpc/protocol#protocol-config) RPC endpoint. For more details on storage fees see [this section of the economics paper](https://pages.near.org/papers/economics-in-sharded-blockchain/#transaction-and-storage-fees).
+- NEAR supports [implicit accounts](https://nomicon.io/DataStructures/Account.html#implicit-account-ids), whose account IDs can be derived locally. You can create an implicit account by following the steps in [this guide](/integrations/implicit-accounts).
+- The cost of creating an account is covered with **GAS fees**, it currently costs **0.007032 NEAR** to create an account.
+- NEAR supports **zero-balance accounts**: an account can be created with an [initial deposit of 0 NEAR](https://testnet.nearblocks.io/txns/5bkXWTL159ZLMZurFHQGPefYYXmgTH3dZz6J8ihbQoWq/execution), but the transaction will still incur in 0.007032 NEAR in GAS fees.
+- Accounts pay for their own stored data. For accounts using **770 bytes or less**, the creation charge covers this storage, so no additional storage balance is required.
+- Accounts using **more than 770 bytes** will lock part of their balance to cover the additional data at **10^19 yoctoNEAR (0.00001 NEAR) per byte**. Query the current price using [`protocol_config`](/api/rpc/protocol#protocol-config); see [storage staking](/protocol/storage/storage-staking).
+- If data is freed from the account, then the corresponding portion of the locked balance will be released.
 
 ## Transfer from Function Call {#transfer-from-function-call}
 

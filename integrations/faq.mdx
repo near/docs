@@ -83,7 +83,7 @@ Any foul play on the part of the validator that is detected by the system may re
 
 NEAR supports separate validation keys that can be used in smart contracts to delegate stake. Delegation is done via smart contract which allows for a validator to define a custom way to collect stake, manage it and split rewards. This also allows validators to provide leverage or derivatives on stake. Delegated stake will be slashed like any other stake if the node misbehaves.
 
-If a validator misbehaves the funds of the delegators are also slashed. There is no waiting period for delegators to withdraw their stake.
+Unstaking and withdrawing are separate operations. The [reference staking pool](https://github.com/near/core-contracts/blob/master/staking-pool/src/lib.rs) waits four epochs before withdrawal becomes available; query the selected pool’s withdrawal availability.
 
 ### Does a validator control funds that have been delegated to them?
 
@@ -101,16 +101,15 @@ One would need to query the staking pool contract to get balance.
 
 ### Can a node be configured to archive all blockchain data since genesis?
 
-v
 Yes. Start the node using the following command:
 
 ```sh
-./target/release/near run --archive
+./target/release/neard run --archive
 ```
 
 ### Can a node be configured to expose an RPC (ex: HTTP) interface?
 
-Yes. All nodes expose this interface by default which can be configured by setting the value of `listen_addr:port` in the node's `config.json` file.
+Yes. JSON-RPC can be enabled or disabled; configure its listening address with `rpc.addr` in the node's `config.json` file.
 
 ### Can a node be gracefully terminated and restarted (using archived data on disk to continue syncing)?
 
@@ -151,9 +150,9 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENT
 # in the line above, testnet may be replaced with mainnet or betanet
 ```
 
-It's `43200` seconds or `~12` hours. You can view the live configuration for `epoch_length` using the [`protocol_config` RPC endpoint](/api/rpc/protocol#protocol-config).
+Use `transaction_validity_period`, measured in blocks, from the [`protocol_config` RPC endpoint](/api/rpc/protocol#protocol-config). The audited value was `86400` blocks; at an illustrative 600ms cadence, that is approximately 14.4 hours, not a fixed wall-clock deadline.
 
-In the response we find `transaction_validity_period": 86400` (and since it takes about 1 second to produce a block, this period is about 24 hrs)
+`epoch_length` is a different parameter, also measured in blocks; it does not determine transaction expiry.
 
 ## Blockchain
 

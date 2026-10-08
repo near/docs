@@ -15,7 +15,7 @@ One notable aspect of the standard is that method names are prefixed with `ft_`.
 
 ## Get balance {#get-balance}
 
-Using the abstraction of the [NEAR CLI](/tools/near-cli) tool, we can check the balance of a user's account with [`near view`](/tools/near-cli#call):
+Using the abstraction of the [NEAR CLI](/tools/cli) tool, we can check the balance of a user's account with [`near view`](/tools/cli#call):
 
 `near view ft.demo.testnet ft_balance_of '{"account_id": "mike.testnet"}'`
 
@@ -148,7 +148,7 @@ Decoded result in this case is:
 
 ## Simple transfer {#simple-transfer}
 
-To follow this guide, please check the [step by step instructions](/integrations/create-transactions#low-level----create-a-transaction) on how to create a transaction first.
+To follow this guide, please check the [step by step instructions](/integrations/create-transactions#low-level-create-a-transaction) on how to create a transaction first.
 
 In order to send a fungible token to an account, the receiver must have a storage deposit. This is because each smart contract on NEAR must account for storage used, and each account on a fungible token contract is a key-value pair, taking up a small amount of storage. For more information, please see [how storage works in NEAR](/protocol/storage/storage-staking). To check if account has deposited the storage for this FT do the following:
 
@@ -263,7 +263,7 @@ Decoded result should look similar to:
   }
 ```
 
-Basic fungible tokens are simple smart contracts that don't have variable storage as compared to a smart contract that might store free-form text, for instance. The only storage needed is for an accounts key-value pair, which will always be covered by the `1250000000000000000000` yoctoⓃ storage balance.
+Storage requirements are contract-specific. Use the minimum returned by this contract’s `storage_balance_bounds`; the example `1250000000000000000000` yoctoⓃ equals `0.00125 NEAR` and is not a universal registration cost.
 
 If there is not enough deposit for the storage or returned value is `null` - you should deposit more storage with the next command:
   - using NEAR CLI, don't forget to convert from yoctoⓃ to Ⓝ:
@@ -276,6 +276,7 @@ near contract call-function as-transaction <contract_account_id> storage_deposit
 Result example:
 
 ```bash
+# Historical example attaches 0.125 NEAR, above the 0.00125 NEAR minimum.
 Scheduling a call: ft.demo.testnet.storage_deposit() with attached 0.125 NEAR
 Transaction Id 9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
 To see the transaction in the transaction explorer, please open this url in your browser
@@ -285,7 +286,7 @@ https://testnet.nearblocks.io/txns/9CMrMMt3UzeU63FFrUyFb1gNGuHXxvKfHqYJzyFTAk6z
 
   - with JSON RPC call:
 
-  At the top of this section is a link detailing how to [construct a transaction](/integrations/create-transactions#low-level----create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](/api/rpc/transactions#send-transaction-await) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
+  At the top of this section is a link detailing how to [construct a transaction](/integrations/create-transactions#low-level-create-a-transaction) without the full abstraction of the [`near-api-js` library](https://www.npmjs.com/package/near-api-js). For this and future examples that use the [RPC method `broadcast_tx_commit`](/api/rpc/transactions#broadcast-commit) we will provide a JSON-like object meant to act similar to [pseudocode](https://en.wikipedia.org/wiki/Pseudocode), only imparting high-level details of a transaction. This code block below is the first example of this, detailing what goes into the transaction discussed currently, involving the method `storage_deposit`.
 
 ```yaml
 Transaction: {
@@ -1449,7 +1450,7 @@ Now, let's try to follow the steps described in the previous section and determi
 ```
 
   4. Loop through `result` » `receipts_outcome` until finding the object where `id` is equal to the value from step 2. Similar to step 1, this object will also contain a `status` field that should contain the key `SuccessReceiptId`. Again, if this isn't there no fungible tokens were transferred, otherwise get the value of the `SuccessReceiptId`. In the above example, this value is `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`.
-  5. Similar to the previous step, loop through the `result` » `receipts_outcome` until you find the object where the `id` matches the value from step 4. In that object check that `outcome` » `status` has the `SuccessValue` field. This `SuccessValue` represents how many fungible tokens the receiving contract is "returning" to the fungible token contract. Note that in the example above the value is `Ijki`, which is the base64-encoded version of `"9"`. At this point, we know that 10 fungible tokens were sent (from step 3) and 9 were taken.
+  5. Similar to the previous step, loop through the `result` » `receipts_outcome` until you find the object where the `id` matches the value from step 4. In that object check that `outcome` » `status` has the `SuccessValue` field. This resolver’s `SuccessValue` reports how many fungible-token units were used, not the unused amount returned by `ft_on_transfer`. Note that in the example above the value is `Ijki`, which is the base64-encoded version of `"9"`. In this example, 10 raw token units were sent (from step 3), 9 were used, and 1 was refunded.
 
 For additional clarity, let's take a look at one more optional aspect. In step 4 we isolated an object in `result` » `receipts_outcome`. There's an array of `receipt_ids` that's particularly interesting. The first element in the array is the receipt ID `EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5`. If we loop through the `result` » `receipts_outcome` and find this as the value for the `id` key, we'll see what happened in the function `ft_on_transfer` which takes place in the contract receiving the fungible tokens. In this object the `status` » `SuccessValue` is `IjEi` which is the base64-encoded value of `"1"`.
 

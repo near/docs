@@ -8,16 +8,16 @@ description: "Learn how to query and track account balances in NEAR protocol, in
 This document provides an overview of how to track balance changes on NEAR accounts, including sending tokens and viewing balance changes using the NEAR CLI and RPC endpoints.
 
 - [NEAR Account](https://testnet.mynearwallet.com/create)
-- [NEAR-CLI](/tools/near-cli)
-- Credentials for sender account stored locally by running [`near login`](/tools/near-cli#import)
+- [NEAR-CLI](/tools/cli)
+- Credentials for sender account stored locally by running [`near login`](/tools/cli#import)
 
 ### Native NEAR (Ⓝ) {#native-near}
 
-> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/contracts#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/tools/near-cli#send-near) and then viewing the changes made.
+> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/contracts#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/tools/cli#send-near) and then viewing the changes made.
 
 ## Send Tokens {#send-tokens}
 
-- Send tokens using [`near send`](../tools/cli.md#send-near)
+- Send tokens using [`near send`](/tools/cli#send-near)
 
 ```bash
 near tokens sender.testnet send-near receiver.testnet '1 NEAR' network-config testnet sign-with-keychain send
@@ -37,13 +37,15 @@ https://testnet.nearblocks.io/txns/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
 - Open the transaction URL in [NearBlocks Explorer](https://testnet.nearblocks.io/) and copy the `BLOCK HASH`.
 - Using the `BLOCK HASH` and the accountId, query the [changes RPC endpoint](/api/rpc/contracts#view-account-changes) to view changes.
 
+The following request and response are historical examples. Replace the block hash with the finalized block you want to inspect; older state may require an archival provider. Balance changes support reconciliation and do not identify customer deposits by themselves.
+
 **Example Query using HTTPie:**
 
 ```bash
 http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
     method=changes \
     'params:={
-        "block_id": "CJ24svU3C9FaULVjcNVnWuVZjK6mNaQ8p6AMyUDMqB37",
+        "block_id": "BRgE4bjmUo33jmiVBcZaWGkSLVeL7TTi4ZxYTvJdPbB9",
         "changes_type": "account_changes",
         "account_ids": ["sender.testnet"]
     }'

@@ -24,8 +24,7 @@ This document provides an overview of how to integrate with NEAR Protocol for ex
 
 Some important pieces of information regarding blocks and finality include:
 
-- Expected block time is around 1s and expected time to finality is around 2s. The last final block can be queried by
-  specifying `{"finality": "final"}` in the block query. For example, to get the latest final block on mainnet, one can run
+- Typical block time is around 600ms and typical time to finality is around 1.2s. These are timing estimates; use finalized execution rather than elapsed time to confirm a deposit. The last final block can be queried by specifying `{"finality": "final"}` in the block query. For example, to get the latest final block on mainnet, one can run
 
 ```bash
 http post https://rpc.mainnet.near.org method=block params:='{"finality":"final"}' id=123 jsonrpc=2.0
@@ -39,7 +38,7 @@ http post https://rpc.mainnet.near.org method=block params:='{"finality":"final"
   as the height of the block.
 
 ## Running an Archival Node {#running-an-archival-node}
-Please refer to configuration changes required in `config.json` for archival node by referring to the documentation on [Run an Archival Node](https://near-nodes.io/archival/run-archival-node-with-nearup).
+Please refer to configuration changes required in `config.json` for archival node by referring to the documentation on [Run an Archival Node](https://near-nodes.io/archival/split-storage-archival).
 
 ## Staking and Delegation {#staking-and-delegation}
 
