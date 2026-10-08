@@ -668,6 +668,37 @@
         ]
       },
       {
+        "tab": "Integrations",
+        "icon": "plug",
+        "groups": [
+          {
+            "group": "Integration",
+            "pages": [
+              "integrations/exchange-integration",
+              "integrations/balance-changes",
+              "integrations/accounts",
+              "integrations/create-transactions",
+              "integrations/fungible-tokens",
+              "integrations/implicit-accounts"
+            ]
+          },
+          {
+            "group": "Understanding Errors",
+            "pages": [
+              "integrations/errors/introduction",
+              "integrations/errors/error-implementation",
+              "integrations/errors/token-loss"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "integrations/faq"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "RPC",
         "icon": "server",
         "groups": [
