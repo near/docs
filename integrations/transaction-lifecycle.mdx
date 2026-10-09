@@ -19,13 +19,13 @@ A NEAR transaction passes through signing, validation, and chunk inclusion befor
 
   <Step title="Route to the signer’s shard">
 
-    The RPC interface receives the transaction and routes it to the correct physical node using `signer_id`.  Since the `signer_id` must be a NEAR Account ID which lives on a single shard, the account is mapped to a shard which is followed by at least one validator running at least one machine with an IP address.
+    The RPC node uses `signer_id` to identify the signer’s shard. Transactions are forwarded to upcoming chunk producers for that shard.
 
   </Step>
 
   <Step title="Validate and propagate">
 
-    When a node receives a new signed transaction, it validates the transaction for signer, receiver, account balance, cost overflow, signature, etc. ([transaction execution](/protocol/transactions/transaction-execution)) and gossips it to all peers following the same shard. If a transaction has an invalid signature or would be invalid on the latest state, it is rejected quickly and returns an error to the original RPC call.
+    The receiving node checks transaction metadata, including the signature, before forwarding it. A chunk producer tracking the signer’s shard validates it against available state, including access-key permissions, nonce, and balance. Invalid transactions can be rejected before inclusion; see [transaction execution](/protocol/transactions/transaction-execution).
 
   </Step>
 
@@ -46,6 +46,12 @@ A NEAR transaction passes through signing, validation, and chunk inclusion befor
   <Step title="Validate before chunk production">
 
     Before producing a chunk, transactions are ordered and validated again. This is done to produce chunks with only valid transactions across a distributed system.
+
+  </Step>
+
+  <Step title="Execute receipts">
+
+    When the included transaction is processed on the signer’s shard, it charges the signer and creates an action receipt. That receipt executes on the receiver’s shard; function calls can generate further receipts, including cross-contract calls, callbacks, and refunds. Execution may span multiple blocks.
 
   </Step>
 
@@ -85,7 +91,7 @@ A `Transaction` is made up of one or more `Action`s. Common action types include
 
 Transactions are received via our JSON-RPC endpoint and routed to the shard where the `sender` account lives. This "home shard" for the sender account is then responsible for processing the transaction and generating related receipts to be applied across the network.
 
-Once received by the network, signed transactions are verified (using the embedded public key of the signer) and processed into an initial action receipt containing the transaction’s action list; function calls can generate additional receipts. Receipts are of two types: `Action Receipt` is the most common and represents almost all actions on the network while `Data Receipt` handles the very special case of "a `FunctionCallAction` which includes a Promise". These receipts are then propagated and applied across the network according to the "home shard" rule for all affected receiver accounts.
+Once received by the network, signed transactions are verified (using the embedded public key of the signer) and processed into an initial action receipt containing the transaction’s action list; function calls can generate additional receipts. `Action Receipt`s carry actions to execute, while `Data Receipt`s carry execution results to dependent calls, such as callbacks.
 
 These receipts are then propagated around the network using the receiver account's "home shard" since each account lives on one and only one shard. The receiving shard schedules receipt execution subject to dependencies and execution limits.
 
@@ -103,16 +109,15 @@ We use a simple binary serialization format that's deterministic: https://borsh.
 
 <Accordion title="How old can the referenced block hash be before it's invalid?" id="how-old-can-the-referenced-block-hash-be-before-its-invalid%3F">
 
-There is a genesis parameter which can be discovered for any network using:
+Query the network’s protocol configuration at a finalized block:
 
 ```sh
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_genesis_config
-# in the line above, testnet may be replaced with mainnet or betanet
+http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=EXPERIMENTAL_protocol_config \
+  params:='{"finality":"final"}'
+# Replace testnet with mainnet to query mainnet.
 ```
 
 Use `transaction_validity_period`, measured in blocks, from the [`protocol_config` RPC endpoint](/api/rpc/protocol#protocol-config). For example, `86400` blocks at a 600ms cadence correspond to approximately 14.4 hours; validity is determined by blocks, not a fixed wall-clock deadline.
-
-`epoch_length` specifies the length of an epoch in blocks.
 
 </Accordion>
 
