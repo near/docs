@@ -74,6 +74,14 @@ The `near-cli` allows you to use keys from multiple sources, including the keych
 </Tab>
 </Tabs>
 
+<Tip>
+A plain transfer to a **non-created implicit** account [creates it](/integrations/accounts#transferring-to-the-implicit-account); the sender pays the account-creation charge.
+</Tip>
+
+<Info>
+A plain transfer to a non-existing **named account** fails and refunds the transferred amount, while consumed gas remains charged.
+</Info>
+
 ### Transaction results
 
 Inspect `result.status` for success or failure and require `final_execution_status === "FINAL"` before treating the transfer as complete. The example below shows a finalized FT transfer-and-call submitted by `influencer.testnet` on testnet.

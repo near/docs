@@ -31,6 +31,49 @@ Receipts with `predecessor_id: "system"` are [refunds or system payouts](/protoc
 
 ---
 
+## Direct Transfer Example
+
+[This testnet transaction](https://testnet.nearblocks.io/txns/GgjJMwGhJF8ybgMCCc6v9HxE7DPm8UJyRT6yxdJV3stj) transfers **2 NEAR** from `influencer.testnet` to `linkdrop.primitives.testnet`. Query its finalized receipt details:
+
+```bash
+http post https://archival-rpc.testnet.near.org jsonrpc=2.0 id=deposit method=EXPERIMENTAL_tx_status \
+  params:='{"tx_hash":"GgjJMwGhJF8ybgMCCc6v9HxE7DPm8UJyRT6yxdJV3stj","sender_account_id":"influencer.testnet","wait_until":"FINAL"}'
+```
+
+Selected fields from the response:
+
+```json
+{
+  "final_execution_status": "FINAL",
+  "receipts": [
+    {
+      "receipt_id": "Eide5UwGWRDUk3ZFJVKFu9rdL7hJiUiEZ7wqeyvwTuP4",
+      "predecessor_id": "influencer.testnet",
+      "receiver_id": "linkdrop.primitives.testnet",
+      "receipt": {
+        "Action": {
+          "actions": [{ "Transfer": { "deposit": "2000000000000000000000000" } }]
+        }
+      }
+    }
+  ],
+  "receipts_outcome": [
+    {
+      "id": "Eide5UwGWRDUk3ZFJVKFu9rdL7hJiUiEZ7wqeyvwTuP4",
+      "block_hash": "C8hyrSb5LJjHS5fJXGroWA56hDenCL5YR5bVbuuguDCj",
+      "outcome": {
+        "executor_id": "linkdrop.primitives.testnet",
+        "status": { "SuccessValue": "" }
+      }
+    }
+  ]
+}
+```
+
+The receipt ID matches the outcome ID, the executor matches the receiver, and execution succeeded and finalized. The `Transfer.deposit` is `2000000000000000000000000` yoctoNEAR (**2 NEAR**). If the receiver is a customer-assigned account you control, record that movement once using its receipt ID and action index (`0` here). The receiver's balance after this transfer is shown in [Balances & Reconciliation](/integrations/balance-changes).
+
+---
+
 ## Transfer from Function Call {#transfer-from-function-call}
 
 NEAR allows transfers to happen within a function call. More importantly, when an account is deployed with some contract, it is possible that the only way to transfer tokens from that account is through a function call. Therefore, **exchanges need to support transfers through function calls** as well.

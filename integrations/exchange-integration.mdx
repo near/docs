@@ -4,7 +4,16 @@ sidebarTitle: Overview
 description: "Learn how to integrate NEAR Protocol."
 ---
 
-NEAR is an open-source, sharded proof-of-stake blockchain with support for smart contracts. This guide walks through integrating NEAR into an exchange, from setting up node access and managing accounts to processing deposits, sending withdrawals, and reconciling balances. It also covers fungible tokens, staking, and error handling.
+NEAR is an open-source, sharded proof-of-stake blockchain with support for smart contracts.
+
+
+| Property               | Value / behavior                                                                                                                                                                                                    | Reference                                                                                                                   |
+|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| Native token precision | 24 decimals; `1 NEAR = 10²⁴ yoctoNEAR`. RPC balances and transfer amounts use integer strings in yoctoNEAR.                                                                                                         | [Balances](/integrations/balance-changes)                                                                                   |
+| Account addresses      | Implicit IDs: 64 lowercase hexadecimal characters; named IDs such as `alice.near`; Ethereum-like IDs starting with `0x`; deterministic IDs starting with `0s`.                                              | [Account IDs](/protocol/accounts-contracts/account-id)                                                                      |
+| Block time             | Produced in ~600 ms, final in ~1.2 s.                                                                                                                                                                                                   | [Blocks & Finality](/integrations/blocks-and-finality) [Execution milestones](/api/rpc/transactions#the-wait_until-field)                                                                      |
+| Transaction validity   | `transaction_validity_period` is measured in blocks; `86400` blocks is ~14.4 hours at a 600 ms cadence.                                                   | [Transaction Lifecycle](/integrations/transaction-lifecycle#how-old-can-the-referenced-block-hash-be-before-its-invalid%3F) |
+| Transaction fees       | Gas usage is determined by the actions and their parameters; function-call usage depends on contract execution. Fees are paid in NEAR at a gas price with a floor of **0.0001 NEAR/Tgas**, increasing with network load.                                                                                                              | [Gas fees](/protocol/transactions/gas)                                                                                      |
 
 ---
 
@@ -15,6 +24,7 @@ NEAR is an open-source, sharded proof-of-stake blockchain with support for smart
 - [Accounts](/integrations/accounts)
 - [Blocks and Finality](/integrations/blocks-and-finality)
 - [Transaction Lifecycle](/integrations/transaction-lifecycle)
+- [Testing](/integrations/testing)
 - [Receiving Deposits](/integrations/deposits)
 - [Sending Withdrawals](/integrations/create-transactions)
 - [Fungible Tokens](/integrations/fungible-tokens)

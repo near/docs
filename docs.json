@@ -699,7 +699,8 @@
               "integrations/nodes",
               "integrations/on-chain-data",
               "integrations/blocks-and-finality",
-              "integrations/transaction-lifecycle"
+              "integrations/transaction-lifecycle",
+              "integrations/testing"
             ]
           },
           {
