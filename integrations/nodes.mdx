@@ -9,17 +9,17 @@ NEAR nodes provide RPC access to the network: exchanges use them to query balanc
 
 There are two types of RPC nodes: regular and archival.
 
-A [regular RPC node](https://near-nodes.io/rpc) keeps approximately 36 hours of history - 5 epochs of the NEAR blockchain, meanwhile, archival RPC nodes preserve older blocks, and account states for historical queries.
+A [regular RPC node](https://near-nodes.io/rpc) keeps approximately 36 hours of history - 5 epochs of the NEAR blockchain, meanwhile, archival RPC nodes preserve older blocks, and account states for queries at earlier blocks.
 
 Exchanges can operate a regular RPC node and use its own archival node or an archival RPC provider for older data.
 
 | Capability | Regular RPC node | Archival RPC node |
 | --- | --- | --- |
 | Current balances and transaction submission | Supported | Supported |
-| Historical blocks, outcomes, and state queries | Last ~36 hours by default | From genesis when initialized with a complete archive |
+| Blocks, outcomes, and state queries at earlier heights | Last ~36 hours by default | From genesis when initialized with a complete archive |
 | History retention | 5 epochs (~36 hours) by default; configurable | All history retained in the archive |
 | Recommended mainnet storage | 4 TB NVMe SSD | 3 TB hot SSD + 115 TB cold disk; grows over time |
-| Exchange use cases | Deposit monitoring, withdrawals, current balance checks | Backfilling deposits, investigating older transactions, historical reconciliation |
+| Exchange use cases | Deposit monitoring, withdrawals, current balance checks | Backfilling deposits, investigating older transactions, reconciliation at earlier blocks |
 
 Storage recommendations: [RPC hardware](https://near-nodes.io/rpc/hardware-rpc) · [Archival hardware](https://near-nodes.io/archival/hardware-archival).
 
@@ -42,7 +42,7 @@ A regular RPC node provides a gateway for day-to-day exchange operations. Use it
 
 ## Running an Archival Node {#running-an-archival-node}
 
-An archival RPC node provides historical blocks, transaction and receipt outcomes, and account and contract states. Use it to:
+An archival RPC node provides past blocks, transaction and receipt outcomes, and account and contract states. Use it to:
 
 - Backfill deposits after downtime that exceeds a regular RPC node's retention window.
 - Investigate older deposits, withdrawals, and their receipt chains.
@@ -117,7 +117,7 @@ Mainnet is running. Select the appropriate [network](/protocol/network/networks)
 
 <Accordion title="What is the network upgrade process?" id="what-is-the-network-upgrade-process%3F">
 
-Nodes signal supported protocol versions, and upgrades activate according to the [protocol upgrade rules](https://nomicon.io/ChainSpec/Upgradability). Normal upgrades preserve the chain’s genesis and history. Follow supported node releases and test your integration before an activation boundary.
+Nodes signal supported protocol versions, and upgrades activate according to the protocol upgrade rules. Normal upgrades preserve the chain’s genesis and history. Follow supported node releases and test your integration before an activation boundary.
 
 </Accordion>
 

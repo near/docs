@@ -5,53 +5,31 @@ sidebarTitle: Balances & Reconciliation
 description: "Learn how to query and track account balances in NEAR protocol, including native NEAR tokens, fungible tokens, and balance management for integrations."
 ---
 
-This document provides an overview of how to track balance changes on NEAR accounts, including sending tokens and viewing balance changes using the NEAR CLI and RPC endpoints.
+Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/contracts#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/tools/cli#send-near) and then viewing the changes made.
 
-- [NEAR Account](https://testnet.mynearwallet.com/create)
-- [NEAR-CLI](/tools/cli)
-- A signing key for the sender account, imported using the [CLI account-import workflow](/tools/cli#import)
-
-### Native NEAR (Ⓝ) {#native-near}
-
-> Balance changes on accounts can be tracked by using our [changes RPC endpoint](/api/rpc/contracts#view-account-changes). You can test this out by sending tokens to an account using [NEAR-CLI](/tools/cli#send-near) and then viewing the changes made.
-
----
-
-## Send Tokens {#send-tokens}
-
-- Send tokens using [`near tokens … send-near`](/tools/cli#send-near)
-
-```bash
-near tokens sender.testnet send-near receiver.testnet '1 NEAR' network-config testnet sign-with-keychain send
-```
-
-- You should see a result in your terminal that looks something like this:
-
-```bash
-Sending 1 NEAR to receiver.testnet from sender.testnet
-Transaction Id 4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
-To see the transaction in the transaction explorer, please open this url in your browser
-https://testnet.nearblocks.io/txns/4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy
-```
+<Tip>
+For continuous monitoring, use an [indexer](/data-infrastructure/indexers) to process finalized receipts and outcomes across shards and store the movements affecting your accounts.
+</Tip>
 
 ---
 
 ## View Balance Changes {#view-balance-changes}
 
-- For an incoming deposit, identify the successful finalized receiving receipt and use its outcome’s `block_hash`; the transaction-inclusion block may be different. Query changes for the exchange **receiver**, not the original signer.
-- For general reconciliation, select one finalized block hash and query all relevant accounts and token contracts at that checkpoint. Inspect change causes; fees, outgoing transfers, and refunds also change balances.
+For an incoming deposit, identify the successful finalized receiving receipt and use its outcome’s `block_hash`; the transaction-inclusion block may be different. Query changes for the exchange **receiver**, not the original signer.
 
-The following request and response are historical examples. Replace the block hash with the finalized block you want to inspect; older state may require an archival provider. Balance changes support reconciliation and do not identify customer deposits by themselves.
+For general reconciliation, select one finalized block hash and query all relevant accounts and token contracts at that checkpoint. Inspect change causes; fees, outgoing transfers, and refunds also change balances.
+
+The example below queries the receiving receipt of [this finalized testnet transaction](https://testnet.nearblocks.io/txns/GgjJMwGhJF8ybgMCCc6v9HxE7DPm8UJyRT6yxdJV3stj) from `influencer.testnet`. It transfers **2 NEAR** to `linkdrop.primitives.testnet`. The returned `amount` is the receiver’s total balance after the transfer, in yoctoNEAR. The `receipt_hash` identifies the receipt that caused the update.
 
 **Example Query using HTTPie:**
 
 ```bash
-http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
+http post https://archival-rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
     method=changes \
     'params:={
-        "block_id": "BRgE4bjmUo33jmiVBcZaWGkSLVeL7TTi4ZxYTvJdPbB9",
+        "block_id": "C8hyrSb5LJjHS5fJXGroWA56hDenCL5YR5bVbuuguDCj",
         "changes_type": "account_changes",
-        "account_ids": ["sender.testnet"]
+        "account_ids": ["linkdrop.primitives.testnet"]
     }'
 ```
 
@@ -60,44 +38,48 @@ http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare \
 
 ```json
 {
-  "id": "dontcare",
   "jsonrpc": "2.0",
   "result": {
-    "block_hash": "BRgE4bjmUo33jmiVBcZaWGkSLVeL7TTi4ZxYTvJdPbB9",
+    "block_hash": "C8hyrSb5LJjHS5fJXGroWA56hDenCL5YR5bVbuuguDCj",
     "changes": [
       {
         "cause": {
-          "tx_hash": "4To336bYcoGc3LMucJPMk6fMk5suKfCrdNotrRtTxqDy",
-          "type": "transaction_processing"
+          "receipt_hash": "Eide5UwGWRDUk3ZFJVKFu9rdL7hJiUiEZ7wqeyvwTuP4",
+          "type": "receipt_processing"
         },
         "change": {
-          "account_id": "sender.testnet",
-          "amount": "11767430014412510000000000",
+          "account_id": "linkdrop.primitives.testnet",
+          "amount": "2998044874632158900000000",
           "code_hash": "11111111111111111111111111111111",
           "locked": "0",
           "storage_paid_at": 0,
-          "storage_usage": 806
+          "storage_usage": 182
         },
         "type": "account_update"
       }
     ]
-  }
+  },
+  "id": "dontcare"
 }
 ```
 </details>
 
 ---
+## Balance Snapshot {#view-account-snapshot}
+Alternatively, [query `view_account`](/api/rpc/contracts#view-account) for a balance snapshot. Use the same finalized block hash for reconciliation. 
 
-Alternatively, [query `view_account`](/api/rpc/contracts#view-account) for a balance snapshot. Use the same finalized block hash for reconciliation. A snapshot does not attribute customer deposits; FT balances require `ft_balance_of` on the approved token contract. The historical sender example above illustrates transaction-processing costs, not a receiving deposit.
+<Tip>
+Balances like this do not include Fungible Tokens; FT balances require `ft_balance_of` on the token contract
+</Tip>
 
 **Example HTTPie Request:**
 
   ```bash
-  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
+  http post https://archival-rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=query \
   params:='{
     "request_type": "view_account",
-    "finality": "final",
-    "account_id": "sender.testnet"
+    "block_id": "C8hyrSb5LJjHS5fJXGroWA56hDenCL5YR5bVbuuguDCj",
+    "account_id": "linkdrop.primitives.testnet"
   }'
   ```
 
@@ -105,25 +87,19 @@ Alternatively, [query `view_account`](/api/rpc/contracts#view-account) for a bal
 
 ```json
 {
-  "id": "dontcare",
   "jsonrpc": "2.0",
   "result": {
-    "amount": "11767430683960197500000000",
-    "block_hash": "HUiscpNyoyR5z1UdnZhAJLNz1G8UjBrFTecSYqCrvdfW",
-    "block_height": 50754977,
+    "amount": "2998044874632158900000000",
+    "block_hash": "C8hyrSb5LJjHS5fJXGroWA56hDenCL5YR5bVbuuguDCj",
+    "block_height": 271205691,
     "code_hash": "11111111111111111111111111111111",
     "locked": "0",
     "storage_paid_at": 0,
-    "storage_usage": 806
-  }
+    "storage_usage": 182
+  },
+  "id": "dontcare"
 }
 ```
-
-**Note:** Gas prices can change between blocks. Even for transactions with deterministic gas cost the cost in NEAR could also be different. You can query the gas price for recent blocks using the [`gas_price` RPC endpoint](/api/rpc/gas#gas-price).
-
----
-
-For delegated balances, see [Staking & Delegation](/integrations/staking#how-do-we-get-the-balance-of-an-account-after-it-has-delegated-funds%3F).
 
 ---
 

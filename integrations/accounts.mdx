@@ -18,27 +18,64 @@ See the [NEAR account model](/protocol/accounts-contracts/account-model) for acc
 An ED25519 implicit account ID is the 64-character lowercase hexadecimal encoding of its 32-byte public key. Exchanges can derive deposit addresses locally before creating the accounts on-chain. The corresponding private key signs transactions after account creation.
 
 <Info>
-Specification: [NEAR implicit accounts](https://nomicon.io/DataStructures/Account.html#near-implicit-account-id).
+[NEAR implicit accounts](/protocol/accounts-contracts/account-id#implicit-address).
 </Info>
 
 ### Generate a key pair and account ID {#creating-an-account-locally}
 
-The CLI generates an ED25519 key pair and saves the credentials to `~/.near-credentials/implicit`. The account ID is derived locally; this command does not create the account on-chain.
+These examples generate an ED25519 key pair and derive the account ID locally; they do not create the account on-chain.
+
+<Tabs>
+<Tab title="NEAR CLI">
+
+The CLI saves the credentials to `~/.near-credentials/implicit`.
 
 ```bash
 # Test environment should use the testnet, for production use mainnet
 export NEAR_ENV=testnet
 
 near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
+
+# Example output:
+# The file "~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json" was saved successfully
+#
+# Here is your console command if you need to script it or re-run:
+#     near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
 ```
 
-Example output:
-```
-The file "~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json" was saved successfully
+</Tab>
+<Tab title="near-api-js">
 
-Here is your console command if you need to script it or re-run:
-    near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
+```js
+import { KeyPairEd25519, baseDecode } from "near-api-js";
+
+const keyPair = KeyPairEd25519.fromRandom();
+const publicKey = keyPair.getPublicKey().toString();
+const accountId = Buffer.from(baseDecode(publicKey.split(":")[1])).toString("hex");
+const privateKey = keyPair.toString(); // Store securely for signing transactions.
+
+console.log({ accountId, publicKey });
 ```
+
+</Tab>
+</Tabs>
+
+<Accordion title="How are Account IDs derived">
+
+This Python example derives the account ID from a public key:
+
+```python
+import base58
+
+public_key = 'ed25519:DGiK1ZZ4K5D89dz8YLKjhFz3xvJioSedgJbxtKna4DL6'
+pk58 = public_key.removeprefix('ed25519:')
+account_id = base58.b58decode(pk58).hex()
+print(account_id)
+
+# Output:
+# b652aa4a5697a1dd3151edf8edad3454fd3bf6b7f2c49787fccbea5c57635bab
+```
+</Accordion>
 
 ### Create the account on-chain {#transferring-to-the-implicit-account}
 
@@ -46,53 +83,15 @@ Deriving an address locally does not create the account on-chain. Before the acc
 
 The **first transfer to the address creates the account**, including a transfer of **0 NEAR**. The sender pays the **0.007 NEAR** creation charge through gas fees, plus other transaction fees. See [account creation costs](#account-creation-cost).
 
-Example: create `0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223` with a zero-deposit transfer:
+For example, [this transaction](https://testnet.nearblocks.io/txns/5bkXWTL159ZLMZurFHQGPefYYXmgTH3dZz6J8ihbQoWq) created the implicit account `f44f3...` by sending a zero-deposit transfer using the command:
 
 ```bash
-near tokens <your_account_id> send-near 0861ea8ddd696525696ccf3148dd706c4fda981c64d8a597490472594400c223 '0 NEAR' network-config testnet sign-with-keychain send
-```
-
-### Transfer from an implicit account {#using-the-implicit-account}
-
-After the account is created and funded, submit a transfer using its saved access-key file:
-
-```bash
-export ACCOUNT="8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8"
-
-near tokens $ACCOUNT send-near <receiver> '<amount> NEAR' network-config testnet sign-with-keychain send
+near tokens influencer.testnet send-near f44f34572d483c73600d0b117b68901cab911e9363968d78c5d57501b7331bfd '0 NEAR' network-config testnet sign-with-keychain send
 ```
 
 <Tip>
-The `near-cli` allows you to use keys from multiple sources, including the keychain, local files, ledger, or a private key directly.
+Once created on-chain, an implicit account can send transactions using its access key. See [Sending Withdrawals](/integrations/create-transactions#send-a-transfer) for CLI and SDK examples.
 </Tip>
-
-### Derive the account ID from a public key {#bonus-converting-public-key-using-python-for-learning-purposes}
-
-Requires Python 3 and the `base58` package.
-
-```bash
-# Install the package
-pip3 install --user base58
-
-# Start the Python interpreter
-python3
-```
-
-Set `pk58` to the Base58-encoded public key, excluding the `ed25519:` prefix:
-
-```python
-import base58
-
-pk58 = 'BGCCDDHfysuuVnaNVtEhhqeT4k9Muyem3Kpgq2U1m9HX'
-base58.b58decode(pk58).hex()
-```
-
-Output:
-```
-'98793cd91a3f870fb126f66285808c7e094afcfc4eda8a970f6648cdf0dbd6de'
-```
-
-This separate public-key example produces a different account ID from the generated account above. Applying the same conversion to that generated account’s public key reproduces its account ID.
 
 ---
 
@@ -100,15 +99,17 @@ This separate public-key example produces a different account ID from the genera
 
 Backup keys can provide signing authority if another key is lost or deleted. Recovery depends on the access keys and contract permissions that remain available.
 
-### Loss of `FullAccess` key
+### Loss of [`FullAccess` key](/protocol/accounts-contracts/access-keys#full-access-keys)
 
 Loss of the only `FullAccess` private key removes the ability to sign transactions with that key.
-Recovery depends on any remaining authorized contract methods or recovery authority. If no usable signing authority or contract recovery path remains, the funds can become inaccessible.
 
-### Loss of `FunctionCall` access key
+Only if the account had a smart contract with a recovery method implemented - which is not the default - can the account potentially be recovered after losing the `FullAccess` key.
 
-Deleting a `FunctionCall` access key revokes its on-chain permissions even if its secret still exists locally; losing a local secret does not remove the on-chain key. A function-call key alone does not ordinarily authorize native transfers or key replacement.
-Recovery depends on any remaining authorized contract methods or recovery authority. If no usable signing authority or contract recovery path remains, the funds can become inaccessible.
+### Loss of [`FunctionCall` access key](/protocol/accounts-contracts/access-keys#function-call-keys)
+
+Function call keys do not have the authority to perform native transfers or replace other keys on the account.
+
+Deleting a `FunctionCall` access key revokes its on-chain permissions to call methods on a specific smart contract. Be careful when removing these keys, specially if they are the only remaining access keys for the account.
 
 ---
 
@@ -116,23 +117,17 @@ Recovery depends on any remaining authorized contract methods or recovery author
 
 <AccordionGroup>
 
-<Accordion title="How are addresses generated?" id="how-are-addresses-generated%3F">
+<Accordion title="What is a valid account ID?">
 
-Please check out the spec here on accounts https://nomicon.io/DataStructures/Account.html.
-
-</Accordion>
-
-<Accordion title="What is the balance record-keeping model on the NEAR platform?" id="what-is-the-balance-record-keeping-model-on-the-near-platform%3F">
-
-NEAR uses an `Account`-based model. All users and contracts are associated with at least 1 account. Each account lives on a single shard. Each account can have multiple keys for signing transactions.
-
-_You can read [more about NEAR accounts here](https://nomicon.io/DataStructures/Account.html)_
+See [Account IDs](/protocol/accounts-contracts/account-id) for address formats and derivation.
 
 </Accordion>
 
-<Accordion title="How are user accounts represented on-chain?" id="how-are-user-accounts-represented-on-chain%3F">
+<Accordion title="What is the account model?">
 
-Users create accounts with human-readable names (eg `alice`) which can contain multiple keypairs with individual permissions. Accounts can be atomically and securely transferred between parties as a native transaction on the network. Permissions are programmable with smart contracts as well. For example, a lock up contract is just an account with permission on the key that does not allow to transfer funds greater than those unlocked.
+User can have one or multiple NEAR Accounts. Each account lives on a single shard, can hold a smart contract, and store multiple keys for signing transactions.
+
+_You can read [more about NEAR accounts here](/protocol/accounts-contracts/account-model)_
 
 </Accordion>
 
@@ -158,7 +153,7 @@ An account can remain active with a zero balance if it meets the storage require
 
 </Accordion>
 
-<Accordion title="How many keys are used?" id="how-many-keys-are-used%3F">
+<Accordion title="How many keys can an account have?" id="how-many-keys-are-used%3F">
 
 An account can have arbitrarily many keys, as long as it has enough tokens for their storage.
 

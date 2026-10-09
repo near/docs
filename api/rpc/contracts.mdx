@@ -8,20 +8,20 @@ The RPC API enables you to view details about accounts and contracts as well as 
 
 ## Quick Reference
 
-| Method | Purpose |
-|--------|---------|
-| [`view_account`](#view-account) | Get basic account information |
-| [`view_account_changes`](#view-account-changes) | Monitor account state changes |
-| [`view_access_key`](#view-access-key) | Get the nonce and permissions of a single access key |
-| [`view_access_key_list`](#view-access-key-list) | List all access keys on an account |
-| [`view_gas_key_nonces`](#view-gas-key-nonces) | List the parallel nonces of a gas key |
-| [`view_code`](#view-contract-code) | Get deployed contract WASM code |
-| [`view_global_contract_code`](#view-global-contract-code-by-hash) | Get global contract WASM code by its code hash |
-| [`view_global_contract_code_by_account_id`](#view-global-contract-code-by-account) | Get global contract WASM code by its owner account |
-| [`view_state`](#view-contract-state) | Get contract storage data |
-| [`data_changes`](#view-contract-state-changes) | Monitor contract state changes |
-| [`contract_code_changes`](#view-contract-code-changes) | Monitor contract deployments |
-| [`call_function`](#call-a-contract-function) | Execute read-only contract methods |
+| Method                                                                             | Purpose                                              |
+|------------------------------------------------------------------------------------|------------------------------------------------------|
+| [`view_account`](#view-account)                                                    | Get basic account information                        |
+| [`view_account_changes`](#view-account-changes)                                    | Monitor account state changes                        |
+| [`view_access_key`](#view-access-key)                                              | Get the nonce and permissions of a single access key |
+| [`view_access_key_list`](#view-access-key-list)                                    | List all access keys on an account                   |
+| [`view_gas_key_nonces`](#view-gas-key-nonces)                                      | List the parallel nonces of a gas key                |
+| [`view_code`](#view-contract-code)                                                 | Get deployed contract WASM code                      |
+| [`view_global_contract_code`](#view-global-contract-code-by-hash)                  | Get global contract WASM code by its code hash       |
+| [`view_global_contract_code_by_account_id`](#view-global-contract-code-by-account) | Get global contract WASM code by its owner account   |
+| [`view_state`](#view-contract-state)                                               | Get contract storage data                            |
+| [`data_changes`](#view-contract-state-changes)                                     | Monitor contract state changes                       |
+| [`contract_code_changes`](#view-contract-code-changes)                             | Monitor contract deployments                         |
+| [`call_function`](#call-a-contract-function)                                       | Execute read-only contract methods                   |
 
 ---
 
@@ -721,17 +721,48 @@ Allows you to call a contract method as a view function (read-only).
   </Tab>
 </Tabs>
 
+### Decode the result
+
+A `call_function` query returns the contract's serialized return value as an array of bytes. Decode those bytes as UTF-8 and parse as JSON.
+
+For example, `[34, 104, 101, 108, 108, 111, 34]` decodes to the JSON string `"hello"`.
+
+```js
+// Decoding a call_function result
+JSON.parse(Buffer.from(response.result.result).toString("utf8"));
+```
+
+
+#### Transaction return values
+
+Transaction and receipt outcomes encode successful return values in the base64 string `status.SuccessValue`. Decode that string, then parse it if the method returns JSON. An empty `SuccessValue` indicates no return value. Inspect `Failure` as an execution error.
+
+With a full transaction RPC response saved as `response.json`:
+
+```bash
+node -e '
+const response = JSON.parse(require("node:fs").readFileSync("response.json", "utf8"));
+const status = response.result.status;
+if ("SuccessValue" in status) {
+  console.log(status.SuccessValue === "" ? undefined :
+    JSON.parse(Buffer.from(status.SuccessValue, "base64").toString("utf8")));
+} else {
+  console.log(status);
+}
+'
+```
+
 ---
 
 ## Error Handling
 
-| Error Code | Description | Solution |
-|------------|-------------|----------|
-| `UnknownAccount` | Account does not exist | Check account ID spelling |
-| `InvalidAccount` | Invalid account format | Use valid account ID (e.g., `account.near`) |
-| `UnknownBlock` | Block not found | Use a valid block hash or height |
-| `UnknownGasKey` | Key is not a gas key or does not exist | Check the public key and that it was added as a gas key |
-| `GarbageCollectedBlock` | Block too old | Use archival node or more recent block |
-| `NoContractCode` | No contract deployed | Verify the account has a deployed contract |
-| `MethodNotFound` | Contract method does not exist | Check method name and contract ABI |
-| `InvalidArgs` | Invalid method arguments | Verify args format and encoding |
+| Error Code              | Description                            | Solution                                                |
+|-------------------------|----------------------------------------|---------------------------------------------------------|
+| `UnknownAccount`        | Account does not exist                 | Check account ID spelling                               |
+| `InvalidAccount`        | Invalid account format                 | Use valid account ID (e.g., `account.near`)             |
+| `UnknownBlock`          | Block not found                        | Use a valid block hash or height                        |
+| `UnknownGasKey`         | Key is not a gas key or does not exist | Check the public key and that it was added as a gas key |
+| `GarbageCollectedBlock` | Block too old                          | Use archival node or more recent block                  |
+| `NoContractCode`        | No contract deployed                   | Verify the account has a deployed contract              |
+| `MethodNotFound`        | Contract method does not exist         | Check method name and contract ABI                      |
+| `InvalidArgs`           | Invalid method arguments               | Verify args format and encoding                         |

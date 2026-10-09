@@ -194,6 +194,10 @@
     {
       "source": "/integrations/errors/token-loss",
       "destination": "/integrations/errors/introduction#avoiding-token-loss"
+    },
+    {
+      "source": "/integrations/errors/error-implementation",
+      "destination": "/integrations/errors/introduction"
     }
   ],
   "navbar": {
@@ -684,24 +688,35 @@
         "icon": "plug",
         "groups": [
           {
-            "group": "Exchange Integration",
+            "group": " ",
             "pages": [
-              "integrations/exchange-integration",
+              "integrations/exchange-integration"
+            ]
+          },
+          {
+            "group": "Protocol",
+            "pages": [
               "integrations/nodes",
-              "integrations/accounts",
+              "integrations/on-chain-data",
               "integrations/blocks-and-finality",
+              "integrations/transaction-lifecycle"
+            ]
+          },
+          {
+            "group": "Accounts & Transfers",
+            "pages": [
+              "integrations/accounts",
               "integrations/deposits",
               "integrations/create-transactions",
-              "integrations/fungible-tokens",
               "integrations/balance-changes",
-              "integrations/staking",
               "integrations/errors/introduction"
             ]
           },
           {
-            "group": "Reference",
+            "group": "Tokens & Staking",
             "pages": [
-              "integrations/errors/error-implementation"
+              "integrations/fungible-tokens",
+              "integrations/staking"
             ]
           }
         ]
