@@ -1,0 +1,124 @@
+---
+id: nodes
+title: Nodes & RPC
+sidebarTitle: Nodes & RPC
+description: "Node configuration, archival history, health checks, and network upgrades for exchange integrations."
+---
+
+NEAR nodes provide RPC access to the network: exchanges use them to query balances, read blocks and receipt outcomes, and submit transactions.
+
+There are two types of RPC nodes: regular and archival.
+
+A [regular RPC node](https://near-nodes.io/rpc) keeps approximately 36 hours of history - 5 epochs of the NEAR blockchain, meanwhile, archival RPC nodes preserve older blocks, and account states for queries at earlier blocks.
+
+Exchanges can operate a regular RPC node and use its own archival node or an archival RPC provider for older data.
+
+| Capability | Regular RPC node | Archival RPC node |
+| --- | --- | --- |
+| Current balances and transaction submission | Supported | Supported |
+| Blocks, outcomes, and state queries at earlier heights | Last ~36 hours by default | From genesis when initialized with a complete archive |
+| History retention | 5 epochs (~36 hours) by default; configurable | All history retained in the archive |
+| Recommended mainnet storage | 4 TB NVMe SSD | 3 TB hot SSD + 115 TB cold disk; grows over time |
+| Exchange use cases | Deposit monitoring, withdrawals, current balance checks | Backfilling deposits, investigating older transactions, reconciliation at earlier blocks |
+
+Storage recommendations: [RPC hardware](https://near-nodes.io/rpc/hardware-rpc) · [Archival hardware](https://near-nodes.io/archival/hardware-archival).
+
+---
+
+## Regular RPC Node
+
+A regular RPC node provides a gateway for day-to-day exchange operations. Use it to:
+
+- Read finalized blocks and receipt outcomes to monitor incoming deposits.
+- Submit withdrawals and track their execution.
+- Query current native and fungible-token balances for reconciliation.
+
+### Resources
+
+- [Hardware requirements and history retention](https://near-nodes.io/rpc/hardware-rpc)
+- [Set up and run an RPC node](https://near-nodes.io/rpc)
+
+---
+
+## Running an Archival Node {#running-an-archival-node}
+
+An archival RPC node provides past blocks, transaction and receipt outcomes, and account and contract states. Use it to:
+
+- Backfill deposits after downtime that exceeds a regular RPC node's retention window.
+- Investigate older deposits, withdrawals, and their receipt chains.
+- Query native or fungible-token balances at older block heights for reconciliation.
+
+### Resources
+
+- [Set up and run a split-storage archival node](https://near-nodes.io/archival/split-storage-archival)
+- [Archival hardware requirements](https://near-nodes.io/archival/hardware-archival)
+
+---
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+
+<Accordion title="Can a node be configured to archive all blockchain data since genesis?" id="can-a-node-be-configured-to-archive-all-blockchain-data-since-genesis%3F">
+
+Yes, with an archival configuration and a complete history source. The run flag is:
+
+```sh
+./target/release/neard run --archive
+```
+
+Follow [split-storage archival setup](https://near-nodes.io/archival/split-storage-archival) and select an appropriate [snapshot](https://docs.fastnear.com/snapshots) for the network and supported node version. The flag does not restore history missing from a pruned snapshot.
+
+</Accordion>
+
+<Accordion title="Can a node be configured to expose an RPC (ex: HTTP) interface?" id="can-a-node-be-configured-to-expose-an-rpc-ex%3A-http-interface%3F">
+
+Yes. JSON-RPC can be enabled or disabled; configure its listening address with `rpc.addr` in the node's `config.json` file.
+
+</Accordion>
+
+<Accordion title="Can a node be gracefully terminated and restarted (using archived data on disk to continue syncing)?" id="can-a-node-be-gracefully-terminated-and-restarted-using-archived-data-on-disk-to-continue-syncing-%3F">
+
+Yes.
+
+</Accordion>
+
+<Accordion title="Does a node expose an interface for retrieving health telemetry in a structured format (ex: JSON) over RPC?" id="does-a-node-expose-an-interface-for-retrieving-health-telemetry-in-a-structured-format-ex%3A-json-over-rpc%3F">
+
+Yes. `GET /status` and `GET /health` provide this interface.
+
+- `/status`: node version, block context, and syncing status. Use [network RPC](/api/rpc/introduction) for peer information.
+- `/health`: success/failure if node is up running & progressing
+
+</Accordion>
+
+<Accordion title="Can a node be started using a Dockerfile without human supervision?" id="can-a-node-be-started-using-a-dockerfile-without-human-supervision%3F">
+
+Yes. Use a supported `neard` release or container image, persist the node’s home and storage volumes, and supply the network’s genesis and configuration. Pin the release and follow [node operation guidance](https://near-nodes.io/).
+
+</Accordion>
+
+<Accordion title="What is the source of truth for current block height exposed via API?" id="what-is-the-source-of-truth-for-current-block-height-exposed-via-api%3F">
+
+- MainNet
+  - https://nearblocks.io
+  - `https://rpc.mainnet.near.org/status`
+- TestNet
+  - https://testnet.nearblocks.io
+  - `https://rpc.testnet.near.org/status`
+
+</Accordion>
+
+<Accordion title="How will the network will be bootstrapped?" id="how-will-the-network-will-be-bootstrapped%3F">
+
+Mainnet is running. Select the appropriate [network](/protocol/network/networks) and use its supported genesis, configuration, and snapshot when starting a node.
+
+</Accordion>
+
+<Accordion title="What is the network upgrade process?" id="what-is-the-network-upgrade-process%3F">
+
+Nodes signal supported protocol versions, and upgrades activate according to the protocol upgrade rules. Normal upgrades preserve the chain’s genesis and history. Follow supported node releases and test your integration before an activation boundary.
+
+</Accordion>
+
+</AccordionGroup>

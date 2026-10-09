@@ -1,0 +1,775 @@
+---
+id: create-transactions
+title: Sending Withdrawals
+sidebarTitle: Sending Withdrawals
+description: "Learn how to create, sign, and send transactions on NEAR protocol, including transaction structure, actions, and best practices for integration."
+---
+
+You can send a transfer on NEAR using [NEAR CLI](/tools/cli) or an API library such as [near-api-js](https://github.com/near/near-api-js), [near-kit](https://github.com/r-near/near-kit), or [near-api-rs](https://github.com/near/near-api-rs).
+
+---
+
+## Send a Transfer {#send-a-transfer}
+
+<Tabs>
+<Tab title="High-level JS" id="high-level-create-a-transaction">
+
+```js
+import { Account, JsonRpcProvider, KeyPairSigner, actions, nearToYocto } from "near-api-js";
+
+const sender = "sender.testnet";
+const privateKey = process.env.SENDER_PRIVATE_KEY;
+const signer = KeyPairSigner.fromSecretKey(privateKey);
+
+const receiver = "receiver.testnet";
+
+const provider = new JsonRpcProvider({ url: `https://rpc.testnet.near.org` });
+const senderAccount = new Account(sender, provider, signer);
+
+const result = await senderAccount.signAndSendTransaction({
+  receiverId: receiver,
+  actions: [actions.transfer(nearToYocto("1.5"))],
+  waitUntil: "FINAL",
+});
+console.log(result);
+```
+
+</Tab>
+<Tab title="Low-level JS" id="low-level-create-a-transaction">
+
+```js
+import { Account, JsonRpcProvider, KeyPairSigner, actions, nearToYocto } from "near-api-js";
+
+const sender = "sender.testnet";
+const privateKey = process.env.SENDER_PRIVATE_KEY;
+const signer = KeyPairSigner.fromSecretKey(privateKey);
+
+const receiver = "receiver.testnet";
+
+const provider = new JsonRpcProvider({ url: `https://rpc.testnet.near.org` });
+const senderAccount = new Account(sender, provider, signer);
+
+const transaction = await senderAccount.createTransaction({
+  receiverId: receiver,
+  actions: [actions.transfer(nearToYocto("1.5"))],
+  publicKey: await signer.getPublicKey(),
+});
+const { signedTransaction } = await signer.signTransaction(transaction);
+
+const result = await provider.sendTransactionUntil(signedTransaction, "FINAL");
+console.log(result);
+```
+
+</Tab>
+<Tab title="NEAR CLI">
+
+```bash
+near tokens <sender_account_id> send-near <receiver_account_id> '1.5 NEAR' network-config testnet sign-with-keychain send
+```
+
+<Tip>
+The `near-cli` allows you to use keys from multiple sources, including the keychain, local files, ledger, or a private key directly.
+</Tip>
+
+</Tab>
+</Tabs>
+
+<Tip>
+A plain transfer to a **non-created implicit** account [creates it](/integrations/accounts#transferring-to-the-implicit-account); the sender pays the account-creation charge.
+</Tip>
+
+<Info>
+A plain transfer to a non-existing **named account** fails and refunds the transferred amount, while consumed gas remains charged.
+</Info>
+
+### Transaction results
+
+Inspect `result.status` for success or failure and require `final_execution_status === "FINAL"` before treating the transfer as complete. The example below shows a finalized FT transfer-and-call submitted by `influencer.testnet` on testnet.
+
+<Accordion title="Example FT transfer-and-call response" id="example-transaction-response">
+
+```json
+{
+  "final_execution_status": "FINAL",
+  "receipts_outcome": [
+    {
+      "block_hash": "F2EuP23LqgsiQhYkjp3P3wP7RqpTU9rJQPzHAtJaAYed",
+      "id": "C1vLKuWqXokpEHyVMkvH9erBSySgBEcny2xPrrAPKNAh",
+      "outcome": {
+        "executor_id": "bg10003.tkn.primitives.testnet",
+        "gas_burnt": 2567973604837,
+        "logs": [
+          "EVENT_JSON:{\"standard\":\"nep141\",\"version\":\"1.0.0\",\"event\":\"ft_transfer\",\"data\":[{\"old_owner_id\":\"influencer.testnet\",\"new_owner_id\":\"linkdrop.primitives.testnet\",\"amount\":\"5000\"}]}"
+        ],
+        "metadata": {
+          "contracts": [
+            {
+              "local": "GYERWoeEc8vr5J8B15ixRHegkDrcNYZS1MSKJ7PNyEzA"
+            }
+          ],
+          "gas_profile": [
+            {
+              "cost": "FUNCTION_CALL_BASE",
+              "cost_category": "ACTION_COST",
+              "gas_used": "400000000000"
+            },
+            {
+              "cost": "FUNCTION_CALL_BYTE",
+              "cost_category": "ACTION_COST",
+              "gas_used": "3781255452"
+            },
+            {
+              "cost": "NEW_ACTION_RECEIPT",
+              "cost_category": "ACTION_COST",
+              "gas_used": "289092464624"
+            },
+            {
+              "cost": "BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "8737347663"
+            },
+            {
+              "cost": "CONTRACT_LOADING_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "35445963"
+            },
+            {
+              "cost": "CONTRACT_LOADING_BYTES",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "245748219885"
+            },
+            {
+              "cost": "LOG_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "3543313050"
+            },
+            {
+              "cost": "LOG_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "2375782380"
+            },
+            {
+              "cost": "PROMISE_RETURN",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "560152386"
+            },
+            {
+              "cost": "READ_CACHED_TRIE_NODE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "68400000000"
+            },
+            {
+              "cost": "READ_MEMORY_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "49587400800"
+            },
+            {
+              "cost": "READ_MEMORY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "2455661118"
+            },
+            {
+              "cost": "READ_REGISTER_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "20137321488"
+            },
+            {
+              "cost": "READ_REGISTER_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "21387954"
+            },
+            {
+              "cost": "STORAGE_READ_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "169070537247"
+            },
+            {
+              "cost": "STORAGE_READ_KEY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "1857151980"
+            },
+            {
+              "cost": "STORAGE_READ_VALUE_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "370326264"
+            },
+            {
+              "cost": "STORAGE_WRITE_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "192590208000"
+            },
+            {
+              "cost": "STORAGE_WRITE_EVICTED_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "2119742262"
+            },
+            {
+              "cost": "STORAGE_WRITE_KEY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "4228972020"
+            },
+            {
+              "cost": "STORAGE_WRITE_VALUE_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "2047223574"
+            },
+            {
+              "cost": "TOUCHING_TRIE_NODE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "41040000000"
+            },
+            {
+              "cost": "UTF8_DECODING_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "9335337183"
+            },
+            {
+              "cost": "UTF8_DECODING_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "69104573523"
+            },
+            {
+              "cost": "WASM_INSTRUCTION",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "41136977244"
+            },
+            {
+              "cost": "WRITE_MEMORY_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "25234153749"
+            },
+            {
+              "cost": "WRITE_MEMORY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "634638876"
+            },
+            {
+              "cost": "WRITE_REGISTER_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "25789702374"
+            },
+            {
+              "cost": "WRITE_REGISTER_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "684281520"
+            }
+          ],
+          "version": 4
+        },
+        "receipt_ids": [
+          "CSCdHkuqoS4pUbWdewtmVT5fBd6qF1YwubYWwULNA1LC",
+          "6J3B1L9mEQTiZDGAVwBm68z9mSin1M2DG81BkPtoiy7",
+          "6JXrv4TmrJNzGQjXkAdo6A2AMEhrNW5jCSSsK4ofXzs6"
+        ],
+        "status": {
+          "SuccessReceiptId": "6J3B1L9mEQTiZDGAVwBm68z9mSin1M2DG81BkPtoiy7"
+        },
+        "tokens_burnt": "256797360483700000000"
+      },
+      "proof": []
+    },
+    {
+      "block_hash": "77Wb4yo8QgMbmzohczcFwSRbYWqPJRJmKjHLefRPMGuV",
+      "id": "CSCdHkuqoS4pUbWdewtmVT5fBd6qF1YwubYWwULNA1LC",
+      "outcome": {
+        "executor_id": "linkdrop.primitives.testnet",
+        "gas_burnt": 1618792626321,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            {
+              "local": "6yMWYyHYAk2BHwAM85PPYHRyzKBxP6qRXVvw1nrdUqxK"
+            }
+          ],
+          "gas_profile": [
+            {
+              "cost": "NEW_DATA_RECEIPT_BYTE",
+              "cost_category": "ACTION_COST",
+              "gas_used": "194687178"
+            },
+            {
+              "cost": "BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "4236289776"
+            },
+            {
+              "cost": "CONTRACT_LOADING_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "35445963"
+            },
+            {
+              "cost": "CONTRACT_LOADING_BYTES",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "278766929925"
+            },
+            {
+              "cost": "READ_CACHED_TRIE_NODE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "57000000000"
+            },
+            {
+              "cost": "READ_MEMORY_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "18269042400"
+            },
+            {
+              "cost": "READ_MEMORY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "456159960"
+            },
+            {
+              "cost": "READ_REGISTER_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "10068660744"
+            },
+            {
+              "cost": "READ_REGISTER_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "18431094"
+            },
+            {
+              "cost": "STORAGE_READ_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "112713691498"
+            },
+            {
+              "cost": "STORAGE_READ_KEY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "309525330"
+            },
+            {
+              "cost": "STORAGE_READ_VALUE_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "544267388"
+            },
+            {
+              "cost": "STORAGE_WRITE_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "128393472000"
+            },
+            {
+              "cost": "STORAGE_WRITE_EVICTED_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "3115378779"
+            },
+            {
+              "cost": "STORAGE_WRITE_KEY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "704828670"
+            },
+            {
+              "cost": "STORAGE_WRITE_VALUE_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "3008798283"
+            },
+            {
+              "cost": "TOUCHING_TRIE_NODE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "59280000000"
+            },
+            {
+              "cost": "WASM_INSTRUCTION",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "20835472944"
+            },
+            {
+              "cost": "WRITE_MEMORY_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "14018974305"
+            },
+            {
+              "cost": "WRITE_MEMORY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "552925716"
+            },
+            {
+              "cost": "WRITE_REGISTER_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "17193134916"
+            },
+            {
+              "cost": "WRITE_REGISTER_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "851550336"
+            }
+          ],
+          "version": 4
+        },
+        "receipt_ids": [
+          "3JuqUSzjFxjEE5oHyBvwf5d1Wu1ZXZ3yPXoWVzW2iTH6"
+        ],
+        "status": {
+          "SuccessValue": "IjAi"
+        },
+        "tokens_burnt": "161879262632100000000"
+      },
+      "proof": [
+        {
+          "direction": "Right",
+          "hash": "HZCuDdmCYaWqxUzHp9A9VVJmYgzqdwNcLVe8EWsyhYqN"
+        },
+        {
+          "direction": "Right",
+          "hash": "AoqrPtKyGcVQXbEv719BgeXbq9yZEJoJZC1d2c99U9Bc"
+        }
+      ]
+    },
+    {
+      "block_hash": "CQoryo6QvNPkBjXBfL7ckUz3rWw8wTnxWDjVMpsDWZHn",
+      "id": "3JuqUSzjFxjEE5oHyBvwf5d1Wu1ZXZ3yPXoWVzW2iTH6",
+      "outcome": {
+        "executor_id": "influencer.testnet",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            {
+              "local": "8rcuPGUwWycBSwoHAN7UjAQonPkgu7KJYP6RSfiwcQgP"
+            }
+          ],
+          "gas_profile": [],
+          "version": 4
+        },
+        "receipt_ids": [],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "0"
+      },
+      "proof": []
+    },
+    {
+      "block_hash": "CQoryo6QvNPkBjXBfL7ckUz3rWw8wTnxWDjVMpsDWZHn",
+      "id": "6J3B1L9mEQTiZDGAVwBm68z9mSin1M2DG81BkPtoiy7",
+      "outcome": {
+        "executor_id": "bg10003.tkn.primitives.testnet",
+        "gas_burnt": 1370288853457,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            {
+              "local": "GYERWoeEc8vr5J8B15ixRHegkDrcNYZS1MSKJ7PNyEzA"
+            }
+          ],
+          "gas_profile": [
+            {
+              "cost": "BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "4765825998"
+            },
+            {
+              "cost": "CONTRACT_LOADING_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "35445963"
+            },
+            {
+              "cost": "CONTRACT_LOADING_BYTES",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "245748219885"
+            },
+            {
+              "cost": "READ_CACHED_TRIE_NODE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "2280000000"
+            },
+            {
+              "cost": "READ_MEMORY_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "10439452800"
+            },
+            {
+              "cost": "READ_MEMORY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "190066650"
+            },
+            {
+              "cost": "READ_REGISTER_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "12585825930"
+            },
+            {
+              "cost": "READ_REGISTER_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "18825342"
+            },
+            {
+              "cost": "STORAGE_READ_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "56356845749"
+            },
+            {
+              "cost": "STORAGE_READ_KEY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "154762665"
+            },
+            {
+              "cost": "STORAGE_READ_VALUE_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "190774136"
+            },
+            {
+              "cost": "STORAGE_WRITE_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "64196736000"
+            },
+            {
+              "cost": "STORAGE_WRITE_EVICTED_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "1091988438"
+            },
+            {
+              "cost": "STORAGE_WRITE_KEY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "352414335"
+            },
+            {
+              "cost": "STORAGE_WRITE_VALUE_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "1054630326"
+            },
+            {
+              "cost": "TOUCHING_TRIE_NODE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "29640000000"
+            },
+            {
+              "cost": "WASM_INSTRUCTION",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "17808553620"
+            },
+            {
+              "cost": "WRITE_MEMORY_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "16822769166"
+            },
+            {
+              "cost": "WRITE_MEMORY_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "563820804"
+            },
+            {
+              "cost": "WRITE_REGISTER_BASE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "17193134916"
+            },
+            {
+              "cost": "WRITE_REGISTER_BYTE",
+              "cost_category": "WASM_HOST_COST",
+              "gas_used": "486600192"
+            }
+          ],
+          "version": 4
+        },
+        "receipt_ids": [
+          "8dZqVCdRhy2gvBUiFNAKhFJxx5kqR85387uZzipxWtyi"
+        ],
+        "status": {
+          "SuccessValue": "IjUwMDAi"
+        },
+        "tokens_burnt": "137028885345700000000"
+      },
+      "proof": []
+    },
+    {
+      "block_hash": "5wRsvygLPZywStcHNVcq6gzwoWDyzwtpNTFtDihLjnL",
+      "id": "8dZqVCdRhy2gvBUiFNAKhFJxx5kqR85387uZzipxWtyi",
+      "outcome": {
+        "executor_id": "influencer.testnet",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            {
+              "local": "8rcuPGUwWycBSwoHAN7UjAQonPkgu7KJYP6RSfiwcQgP"
+            }
+          ],
+          "gas_profile": [],
+          "version": 4
+        },
+        "receipt_ids": [],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "0"
+      },
+      "proof": []
+    },
+    {
+      "block_hash": "77Wb4yo8QgMbmzohczcFwSRbYWqPJRJmKjHLefRPMGuV",
+      "id": "6JXrv4TmrJNzGQjXkAdo6A2AMEhrNW5jCSSsK4ofXzs6",
+      "outcome": {
+        "executor_id": "influencer.testnet",
+        "gas_burnt": 223182562500,
+        "logs": [],
+        "metadata": {
+          "contracts": [
+            {
+              "local": "8rcuPGUwWycBSwoHAN7UjAQonPkgu7KJYP6RSfiwcQgP"
+            }
+          ],
+          "gas_profile": [],
+          "version": 4
+        },
+        "receipt_ids": [],
+        "status": {
+          "SuccessValue": ""
+        },
+        "tokens_burnt": "0"
+      },
+      "proof": []
+    }
+  ],
+  "status": {
+    "SuccessValue": "IjUwMDAi"
+  },
+  "transaction": {
+    "actions": [
+      {
+        "FunctionCall": {
+          "args": "eyJyZWNlaXZlcl9pZCI6Imxpbmtkcm9wLnByaW1pdGl2ZXMudGVzdG5ldCIsImFtb3VudCI6IjUwMDAiLCJtc2ciOiI4In0=",
+          "deposit": "1",
+          "gas": 300000000000000,
+          "method_name": "ft_transfer_call"
+        }
+      }
+    ],
+    "hash": "42Ac8N8XpAJAxcmM61mnGRvznYjDVtbrkdbtHy9RbsAP",
+    "nonce": 156033053000611,
+    "priority_fee": 0,
+    "public_key": "ed25519:GnsdHdSrhe8v3MMAQi2bnXR59xMDwdkSRAFZ961ydxWZ",
+    "receiver_id": "bg10003.tkn.primitives.testnet",
+    "signature": "ed25519:3DQL5dUQhLBrJEvB1KNcxMaoGwKotV6FtNkgkYEWY2jgaGLYgncy2bSjkjRg45bCDjFqr8AgJnEEqf4sPAXNAWnB",
+    "signer_id": "influencer.testnet"
+  },
+  "transaction_outcome": {
+    "block_hash": "CV64wnbwjjwCY7xnH5AG4hqrKnsMRZGGbWY13qQAWWiL",
+    "id": "42Ac8N8XpAJAxcmM61mnGRvznYjDVtbrkdbtHy9RbsAP",
+    "outcome": {
+      "executor_id": "influencer.testnet",
+      "gas_burnt": 312207983205,
+      "logs": [],
+      "metadata": {
+        "gas_profile": null,
+        "version": 1
+      },
+      "receipt_ids": [
+        "C1vLKuWqXokpEHyVMkvH9erBSySgBEcny2xPrrAPKNAh"
+      ],
+      "status": {
+        "SuccessReceiptId": "C1vLKuWqXokpEHyVMkvH9erBSySgBEcny2xPrrAPKNAh"
+      },
+      "tokens_burnt": "31220798320500000000"
+    },
+    "proof": []
+  }
+}
+```
+
+</Accordion>
+
+For detailed information, see [transaction receipts](/protocol/transactions/transaction-execution). To view the transaction in [NearBlocks Explorer](https://testnet.nearblocks.io/), use `result.transaction.hash`.
+
+---
+
+## Concurrent Transactions {#concurrent-transactions}
+
+If you start sending multiple transactions from a same account - e.g. when creating a relayer - you need to manage nonces carefully to avoid conflicts.
+
+In NEAR, accounts can have multiple keys, each with its own nonce sequence. So the simplest way to avoid `nonce` collisions is to use multiple access keys for concurrent transactions.
+
+In `near-api-js` the [`MultiKeySigner`](https://near.github.io/near-api-js/classes/signers_multikey_signer.MultiKeySigner.html) rotates through a set of keys when creating transactions:
+
+```js
+import { MultiKeySigner } from "near-api-js";
+
+const secretKeys = [
+  process.env.SENDER_PRIVATE_KEY,
+  process.env.SENDER_PRIVATE_KEY_2,
+];
+const multiKeySigner = MultiKeySigner.fromSecretKeys(secretKeys);
+const concurrentAccount = new Account(sender, provider, multiKeySigner);
+
+const receivers = [
+  "receiver.testnet",
+  "receiver-2.testnet",
+  "receiver-3.testnet",
+  "receiver-4.testnet",
+  "receiver-5.testnet",
+];
+
+const transfers = [];
+for (const receiverId of receivers) {
+  transfers.push(concurrentAccount.signAndSendTransaction({
+    receiverId,
+    actions: [actions.transfer(nearToYocto("1.5"))],
+    waitUntil: "FINAL",
+    retries: 0,
+  }));
+}
+const results = await Promise.allSettled(transfers);
+console.log(results);
+```
+
+---
+
+## Submission errors and retries
+
+With `near-api-js` 7.3.1, error handling depends on the method used:
+
+| Method | Error behavior |
+| --- | --- |
+| `Account.signAndSendTransaction()` | Throws RPC errors and, by default (`throwOnFailure: true`), execution failures. Set `throwOnFailure: false` to inspect execution failures in the returned `result.status`; RPC errors still throw. |
+| `provider.sendTransactionUntil()` or `provider.sendJsonRpc("send_tx", …)` | Throws RPC errors, but returns execution failures in `result.status.Failure`. Check both `final_execution_status` and `status` before settling the withdrawal. |
+| `Promise.allSettled()` in the concurrent example | Preserves each call's fulfilled result or rejected error in input order. Inspect every entry independently. |
+
+Typed errors are exported from `near-api-js/rpc-errors`. When the high-level method throws a transaction or contract execution error derived from a submitted transaction, its `transactionResult` contains the RPC response, including receipt outcomes. Use that response to inspect `status.Failure` and the failed receipt; read-only call errors do not include transaction outcomes.
+
+`Account.signAndSendTransaction()` defaults to up to 10 retries after `InvalidNonceError`, constructing and signing a new transaction on each retry. These examples set `retries: 0` so withdrawal recovery controls replacement transactions. This setting does not disable the provider's HTTP retries.
+
+Before broadcasting a withdrawal, persist its business intent, network, signer, reserved nonce, signed bytes, and transaction hash. Keep one recovery process in control of that intent until its outcome is resolved.
+
+| Result | Handling |
+| --- | --- |
+| Explicit validation rejection | Correct the reported key, permissions, balance, nonce, or block hash. If this intent was submitted previously, resolve that earlier hash before creating a replacement. |
+| Timeout, connection loss, server error, or unknown transaction | Submission is uncertain. Query the saved hash and signer on the same network, using another provider or an archival node when needed. Do not assume the withdrawal failed. |
+| Included or still executing | Poll [`tx` or `EXPERIMENTAL_tx_status`](/api/rpc/transactions#transaction-status-with-receipts) with `wait_until: "FINAL"`; require `final_execution_status === "FINAL"` before settlement. |
+| Finalized execution failure | Inspect the failed receipt and its `ActionError.index`, where present. Account for fees and refunds, and reconcile any earlier successful receipts before retrying the business operation. |
+
+If rebroadcasting is necessary, resend **the same signed bytes** while their reference block remains valid. A newly signed transaction has a different hash and can execute a second payment. An expired block hash or consumed nonce on a later attempt does not prove that the original transaction never executed. Resolve the original outcome and reconcile balances before issuing a replacement under the same intent lock.
+
+Actions within one receipt are atomic; separate receipts are not rolled back together. A contract call can fail after an earlier receipt has transferred funds. Keep transport errors, validation rejections, and execution failures distinct in your withdrawal records.
+
+---
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+
+<Accordion title="What is the fee structure for on-chain transactions?" id="what-is-the-fee-structure-for-on-chain-transactions%3F">
+
+NEAR uses a gas-based model where prices are generally deterministically adjusted based on congestion of the network.
+
+We avoid making changes that are too large through re-sharding by changing number of available shards (and thus throughput).
+
+Accounts don’t have associated resources. Gas amount is predetermined for all transactions except function calls. For function call transactions the user (or more likely the developer) attaches the required amount of gas. Unused prepaid gas is refunded according to current runtime rules, including any configured unused-gas refund penalty. Query the runtime configuration and budget gas for the contract being called.
+
+</Accordion>
+
+<Accordion title="How do we know how much gas to add to a transaction?" id="how-do-we-know-how-much-gas-to-add-to-a-transaction%3F">
+
+- See [Gas fees](/protocol/transactions/gas).
+- See API documentation for [discovering gas price via RPC here](/api/rpc/gas#gas-price).
+
+The issuer of a transaction should attach some amount of gas by taking a guess at budget which will get the transaction processed. The contract knows how much to fund different cross contract calls. Gas price is calculated and fixed per block, but may change from block to block depending on how full / busy the block is. If blocks become more than half full then gas price increases.
+
+See [gas purchase, burn, and refund accounting](/protocol/transactions/gas) for the current fee model.
+
+</Accordion>
+
+<Accordion title="How do we follow Tx status?" id="how-do-we-follow-tx-status%3F">
+
+See related [RPC interface for fetching transaction status here](/api/rpc/transactions#transaction-status).
+
+</Accordion>
+
+</AccordionGroup>

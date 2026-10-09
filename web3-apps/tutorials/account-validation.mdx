@@ -241,6 +241,8 @@ For higher-value transfers (or as a default for new recipients), layer an asset 
 - **First-time recipient confirmation**: if the user has never sent to this account before, require a second confirmation step or suggest a small **test transaction** before the real transfer.
 - **Token-specific registration**: for fungible token transfers, verify the recipient is registered with the FT contract (`storage_balance_of`). If not, batch a `storage_deposit` action — otherwise the transfer will fail.
 
+The allowlist helper uses the [decoded result](/api/rpc/contracts#decode-the-result) of the contract query.
+
 ```js
 const RHEA_DEX = "v2.ref-finance.near";
 

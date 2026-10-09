@@ -1,0 +1,101 @@
+---
+title: Exchange Integration
+sidebarTitle: Overview
+description: "Learn how to integrate NEAR Protocol."
+---
+
+NEAR is an open-source, sharded proof-of-stake blockchain with support for smart contracts.
+
+
+| Property               | Value / behavior                                                                                                                                                                                                    | Reference                                                                                                                   |
+|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| Native token precision | 24 decimals; `1 NEAR = 10²⁴ yoctoNEAR`. RPC balances and transfer amounts use integer strings in yoctoNEAR.                                                                                                         | [Balances](/integrations/balance-changes)                                                                                   |
+| Account addresses      | Implicit IDs: 64 lowercase hexadecimal characters; named IDs such as `alice.near`; Ethereum-like IDs starting with `0x`; deterministic IDs starting with `0s`.                                              | [Account IDs](/protocol/accounts-contracts/account-id)                                                                      |
+| Block time             | Produced in ~600 ms, final in ~1.2 s.                                                                                                                                                                                                   | [Blocks & Finality](/integrations/blocks-and-finality) [Execution milestones](/api/rpc/transactions#the-wait_until-field)                                                                      |
+| Transaction validity   | `transaction_validity_period` is measured in blocks; `86400` blocks is ~14.4 hours at a 600 ms cadence.                                                   | [Transaction Lifecycle](/integrations/transaction-lifecycle#how-old-can-the-referenced-block-hash-be-before-its-invalid%3F) |
+| Transaction fees       | Gas usage is determined by the actions and their parameters; function-call usage depends on contract execution. Fees are paid in NEAR at a gas price with a floor of **0.0001 NEAR/Tgas**, increasing with network load.                                                                                                              | [Gas fees](/protocol/transactions/gas)                                                                                      |
+
+---
+
+## Integration Reference {#integration-reference}
+
+- [Nodes & RPC](/integrations/nodes)
+- [Accessing On-chain Data](/integrations/on-chain-data)
+- [Accounts](/integrations/accounts)
+- [Blocks and Finality](/integrations/blocks-and-finality)
+- [Transaction Lifecycle](/integrations/transaction-lifecycle)
+- [Testing](/integrations/testing)
+- [Receiving Deposits](/integrations/deposits)
+- [Sending Withdrawals](/integrations/create-transactions)
+- [Fungible Tokens](/integrations/fungible-tokens)
+- [Balances & Reconciliation](/integrations/balance-changes)
+- [Staking & Delegation](/integrations/staking)
+- [Error Handling](/integrations/errors/introduction)
+
+### Transaction Reference Links {#transaction-reference-links}
+
+ - [Basics](/protocol/transactions)
+ - [Transaction Structure](/protocol/transactions/transaction-anatomy)
+ - [Constructing Transactions](/integrations/create-transactions)
+
+---
+
+## Additional Resources
+
+- [The Beginner's Guide to the NEAR Blockchain](https://near.org/blog/the-beginners-guide-to-the-near-blockchain)
+- [NEAR Whitepaper](https://near.org/papers/the-official-near-white-paper/)
+- [NEAR GitHub](https://www.github.com/near)
+
+---
+
+## Frequently Asked Questions
+
+These guides provide answers to frequently asked questions about integrating with the NEAR Protocol. It covers topics such as account management, validator operations, transaction processing, and more.
+
+<AccordionGroup>
+
+<Accordion title="What is a good project summary for NEAR?" id="what-is-a-good-project-summary-for-near%3F">
+
+NEAR is a sharded, public, proof-of-stake blockchain and supports smart contracts written in Rust and compiled to WebAssembly (WASM).
+
+</Accordion>
+
+<Accordion title="What's special about NEAR?" id="whats-special-about-near%3F">
+
+NEAR is the blockchain for builders.
+
+If you understand the basics of web development, you can write, test and deploy scalable decentralized applications in minutes on the most developer-friendly blockchain without having to learn new tools or languages.
+
+</Accordion>
+
+<Accordion title="Is NEAR open source?" id="is-near-open-source%3F">
+
+Yes. Have a look at our [GitHub organization](https://github.com/near).
+
+</Accordion>
+
+<Accordion title="Do you have any on-chain governance mechanisms?" id="do-you-have-any-on-chain-governance-mechanisms%3F">
+
+NEAR has [House of Stake governance](https://gov.houseofstake.org/blog/introducing-near-house-of-stake). Governance proposals and consensus protocol activation are separate processes; follow the implementation and activation requirements for each change.
+
+</Accordion>
+
+<Accordion title="Do you have a bug-bounty program?" id="do-you-have-a-bug-bounty-program%3F">
+
+Follow the current [nearcore security policy](https://github.com/near/nearcore/security/policy) for disclosure instructions and links to any applicable program.
+
+</Accordion>
+
+<Accordion title="What contracts should we be aware of right now?" id="what-contracts-should-we-be-aware-of-right-now%3F">
+
+The [core-contracts repository](https://github.com/near/core-contracts) contains reference implementations. Review the deployed version and authority of each contract you integrate with:
+
+- **Staking Pool / Delegation contract**
+- **Lockup / Vesting contract**
+- Whitelist Contract
+- Staking Pool Factory
+- Multisig contract
+
+</Accordion>
+
+</AccordionGroup>

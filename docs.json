@@ -182,6 +182,22 @@
     {
       "source": "/web3-apps/tutorials/social-login",
       "destination": "/web3-apps/tutorials/privy"
+    },
+    {
+      "source": "/integrations/faq",
+      "destination": "/integrations/exchange-integration"
+    },
+    {
+      "source": "/integrations/implicit-accounts",
+      "destination": "/integrations/accounts#implicit-accounts"
+    },
+    {
+      "source": "/integrations/errors/token-loss",
+      "destination": "/integrations/errors/introduction#avoiding-token-loss"
+    },
+    {
+      "source": "/integrations/errors/error-implementation",
+      "destination": "/integrations/errors/introduction"
     }
   ],
   "navbar": {
@@ -663,6 +679,45 @@
                   "data-infrastructure/tutorials/running-near-lake/run-near-lake"
                 ]
               }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integrations",
+        "icon": "plug",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "integrations/exchange-integration"
+            ]
+          },
+          {
+            "group": "Protocol",
+            "pages": [
+              "integrations/nodes",
+              "integrations/on-chain-data",
+              "integrations/blocks-and-finality",
+              "integrations/transaction-lifecycle",
+              "integrations/testing"
+            ]
+          },
+          {
+            "group": "Accounts & Transfers",
+            "pages": [
+              "integrations/accounts",
+              "integrations/deposits",
+              "integrations/create-transactions",
+              "integrations/balance-changes",
+              "integrations/errors/introduction"
+            ]
+          },
+          {
+            "group": "Tokens & Staking",
+            "pages": [
+              "integrations/fungible-tokens",
+              "integrations/staking"
             ]
           }
         ]
