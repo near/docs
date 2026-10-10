@@ -30,7 +30,9 @@ Let's take a closer look at the different elements that compose the NEAR account
 NEAR **natively** implements multiple types of accounts, including:
 1. **Named accounts** such as `alice.near`, which are simple to remember and share
 2. **Implicit accounts** such as `fb9243ce...`, which are derived from a private key
-2. **Ethereum-like accounts** which are compatible with Ethereum wallets
+3. **Ethereum-like accounts** which are compatible with Ethereum wallets
+4. **Deterministic accounts** such as `0s85f17...`, whose address is computed from their initial code and storage
+5. **Universal accounts** such as `0u0000...`, whose address is computed from their initial code, storage, and (optionally post-quantum) access keys
 
 <hr className="subsection" />
 
