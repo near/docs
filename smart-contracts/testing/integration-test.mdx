@@ -21,6 +21,40 @@ In these docs, integration tests use the Rust [near-sandbox](https://github.com/
 NEAR Sandbox allows you to write tests once, and run them either on `testnet` or a local `Sandbox`. By **default**, Sandbox will start a **sandbox** and run your tests **locally**. Lets dive into the features of our framework and see how they can help you.
 </Note>
 
+## In-process alternative: `near-mock`
+
+When a full sandbox node is more than you need — fast local iteration, hermetic CI, or replaying a specific mainnet account — [`near-mock`](https://github.com/Kampouse/near-mock) executes **unmodified contract wasm in-process** via `wasmtime`: no node, Docker, RPC, or fees. Contracts only see host calls, state, and gas, so existing binaries (vaults, DEXes, oracles) run as-is and complete in milliseconds.
+
+```bash
+cargo install near-mock
+```
+
+It implements the production host surface (~140 functions: storage, registers, promise batch actions, validators, epochs), protocol-accurate gas metering (V155 fee table), and the real crypto precompiles (`ecrecover`, `p256_verify`, `alt_bn128`, `keccak512`, BLS12-381) using the same crates as `nearcore`.
+
+Two patterns where it complements sandbox testing:
+
+<Tabs>
+  <Tab title="Deterministic CI">
+    Pin randomness, time, and epoch height via environment variables, so every CI run replays identically:
+
+    ```bash
+    NEAR_MOCK_SEED=abc123 NEAR_MOCK_NOW=1700000000 near-mock state.bin call my-contract my_method '{}'
+    ```
+  </Tab>
+  <Tab title="Mainnet forensics">
+    Snapshot a live contract's state at a pinned block and probe it offline — call views, script cross-contract flows, or diff behavior across upgrades without touching the network:
+
+    ```bash
+    near-mock snapshot pyth-oracle.near pyth.bin
+    near-mock pyth.bin --view some_view_method '{}'
+    ```
+  </Tab>
+</Tabs>
+
+<Tip>
+For workflows that need the full node stack — wallets, indexers, network behavior — keep using [near-sandbox](https://github.com/near/near-sandbox-rs). Use `near-mock` when you want chain semantics without the chain.
+</Tip>
+
 ---
 
 ## Create Accounts
