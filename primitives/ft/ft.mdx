@@ -7,29 +7,24 @@ description: "Learn how to create, transfer, and integrate FT in your dApp"
 import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
 import { Github } from '/snippets/github.jsx';
 
-Wanting to use Fungible Tokens (FT) in your dApp? Here you will find all the information you need to get started creating your own tokens, registering users
-, querying balances, transferring tokens, and integrating them into your smart contracts.
+Wanting to use Fungible Tokens (FT) in your dApp? Here you will find all the information you need to get started creating your own tokens, registering users, querying balances, transferring tokens, and integrating them into your smart contracts.
 
 ---
 
 ## Creating a New Token
 
-The simplest way to create a new Fungible Token is by interacting with a factory contract, to which you only need to provide the token metadata, and they will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
+The simplest way to create a new Fungible Token is by interacting with a factory contract, to which you provide the owner, initial supply, and token metadata. The factory will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
 
 | Network | Factory | Token account |
 |---------|---------|---------------|
 | Mainnet | `token.primitives.near` | `<symbol>.token.primitives.near` |
 | Testnet | `token.primitives.testnet` | `<symbol>.token.primitives.testnet` |
 
-Both factories run the same contract, so the same code works on both networks. The token account is the symbol in lowercase, e.g. `TTTEST` becomes `tttest.token.primitives.near`, so pick a symbol that has not been taken yet.
-
-<Note>
-Testnet also has `token.primitives.testnet`, which quotes the deposit with `get_required({ args })` instead of `get_required_deposit({ args, account_id })`.
-</Note>
+Both factories expose `get_required` and `create_token`, and both methods take `{ args }` on either network. The token account is the symbol in lowercase, e.g. `TTTEST` becomes `tttest.token.primitives.near`, so pick a symbol that has not been taken yet.
 
 <Accordion title="Manual Interaction">
 
-Creating a token takes two steps: ask the factory how much deposit it needs (it depends on the metadata size, e.g. the icon), and call `create_token` attaching that amount.
+Creating a token takes two steps: call `get_required` to quote the storage deposit (which depends on the metadata size, including the required icon), then call `create_token` attaching that amount. `total_supply` is a string in the smallest token units: multiply the number of whole tokens by 10^decimals.
 
 <Tabs>
   <Tab title="🌐 WebApp">
@@ -57,15 +52,15 @@ Creating a token takes two steps: ask the factory how much deposit it needs (it 
     // 1. Quote the required deposit
     const deposit = await viewFunction({
       contractId,
-      method: 'get_required_deposit',
-      args: { args, account_id: accountId },
+      method: 'get_required',
+      args: { args },
     });
 
     // 2. Create the token
     await callFunction({
       contractId,
       method: 'create_token',
-      args: { args, account_id: accountId },
+      args: { args },
       gas: '300000000000000',
       deposit,
     });
@@ -78,24 +73,14 @@ Creating a token takes two steps: ask the factory how much deposit it needs (it 
 
     ```bash
     # Mainnet: quote, then create
-    near contract call-function as-read-only token.primitives.near get_required_deposit \
-      json-args '{"args":{"owner_id":"bob.near","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","decimals":18}},"account_id":"bob.near"}' \
+    near contract call-function as-read-only token.primitives.near get_required \
+      json-args '{"args":{"owner_id":"bob.near","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","icon":"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals":18}}}' \
       network-config mainnet now
 
     near contract call-function as-transaction token.primitives.near create_token \
-      json-args '{"args":{"owner_id":"bob.near","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","decimals":18}},"account_id":"bob.near"}' \
+      json-args '{"args":{"owner_id":"bob.near","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","icon":"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals":18}}}' \
       prepaid-gas '300.0 Tgas' attached-deposit '<quoted-deposit> yoctoNEAR' \
       sign-as bob.near network-config mainnet sign-with-keychain send
-
-    # Testnet: quote, then create
-    near contract call-function as-read-only token.primitives.testnet get_required_deposit \
-      json-args '{"args":{"owner_id":"bob.testnet","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","decimals":18}},"account_id":"bob.testnet"}' \
-      network-config testnet now
-
-    near contract call-function as-transaction token.primitives.testnet create_token \
-      json-args '{"args":{"owner_id":"bob.testnet","total_supply":"1000000000","metadata":{"spec":"ft-1.0.0","name":"Test Token","symbol":"TTTEST","decimals":18}},"account_id":"bob.testnet"}' \
-      prepaid-gas '300.0 Tgas' attached-deposit '<quoted-deposit> yoctoNEAR' \
-      sign-as bob.testnet network-config testnet sign-with-keychain send
     ```
   </Tab>
   <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
@@ -145,6 +130,11 @@ To initialize a FT contract you will need to deploy it and then call the `new` m
 ### Global Contracts
 
 You can deploy a new Fungible Token using our global FT contract - a pre-deployed [standard FT contract](https://github.com/near-examples/FT) that you can reuse. [Global contracts](../../smart-contracts/global-contracts) are deployed once and can be reused by any account without incurring high storage costs.
+
+| Network | Global FT contract |
+|---------|--------------------|
+| Mainnet | `ft.globals.primitives.near` |
+| Testnet | `ft.globals.primitives.testnet` |
 
 <Tabs>
   <Tab title="By Account">
