@@ -7,6 +7,8 @@ A callback runs in its own receipt. If it panics, **all state changes made by th
 
 Do not panic when an expected cross-contract call fails. Settle the operation instead.
 
+Panicking is only one way a callback can fail. See [callbacks can fail](/smart-contracts/security/cross-contract-calls/callback-failures).
+
 ---
 
 ## The vulnerable pattern

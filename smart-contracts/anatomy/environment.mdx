@@ -132,7 +132,7 @@ The environment gives you access to two gas-related arguments: `prepaid_gas` and
 `used_gas` contains the amount of Gas that has been used so far. It is useful to estimate the Gas cost of running a method.
 
 <Warning>
-During [cross-contract calls](./crosscontract) always make sure the callback has enough Gas to fully execute.
+During [cross-contract calls](./crosscontract) give the callback enough Gas for its worst case, not its average. See [callbacks can fail](/smart-contracts/security/cross-contract-calls/callback-failures).
 </Warning>
 
 <Tip>
