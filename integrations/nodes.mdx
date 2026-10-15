@@ -40,7 +40,7 @@ A regular RPC node provides a gateway for day-to-day exchange operations. Use it
 
 ---
 
-## Running an Archival Node {#running-an-archival-node}
+## Archival Node {#running-an-archival-node}
 
 An archival RPC node provides past blocks, transaction and receipt outcomes, and account and contract states. Use it to:
 
@@ -55,9 +55,66 @@ An archival RPC node provides past blocks, transaction and receipt outcomes, and
 
 ---
 
+## Running Private Nodes
+
+Exchanges running RPC nodes can reduce public exposure and unsolicited peer connections by restricting RPC access and disabling inbound peering. This setup ensures that only authorized applications or nodes can interact with the RPC node, thus enhancing security.
+
+RPC access and peering are configured separately. Add the relevant settings below into the node's `config.json`, then restart `neard`.
+
+### Private RPC Access
+
+Bind RPC to the loopback interface to prevent direct access from other hosts:
+
+```json
+{
+  "rpc": {
+    "addr": "127.0.0.1:3030"
+  }
+}
+```
+
+For applications on other hosts, bind RPC to a private interface and restrict access through a firewall or VPN.
+
+### Outbound-only Peering
+
+A node can initiate its ordinary peer connections and exchange blocks and transactions over those connections. Disable inbound connections from ordinary peers with:
+
+```json
+{
+  "network": {
+    "experimental": {
+      "inbound_disabled": true
+    }
+  }
+}
+```
+
+NEAR nodes normally accept inbound peer connections on TCP port `24567`, configured through `network.addr`. When using `inbound_disabled: true` you can safely close this port at the firewall, however, you may need to temporarily open it for [state sync during initial setup or recovery](#State-sync-caveats) if you do not have a recent database snapshot (see bellow).
+
+### State Sync Caveats
+RPC nodes use peer state sync through the same port as inbound connections to download the network state from the state-sync provider. This is necessary when starting **without a recent database snapshot** or **recovering after falling far behind**.
+
+<Tip>
+To avoid opening the port, simply start or recover from a recent [database snapshot](https://docs.fastnear.com/snapshots)
+</Tip>
+
+For initial setup or recovery that requires state sync, temporarily allow inbound TCP connections to the peering port **while leaving `inbound_disabled: true`**. Nearcore accepts the requested state-sync transfers while rejecting ordinary inbound peer connections. Once synchronization completes, you can close the port to new inbound connections again.
+
+<Accordion title="State Sync on Archival Nodes">
+Archival nodes download and process missing blocks instead of using state sync to skip ahead. They can use outbound-only peering, but need peers that retain the missing history. Recovery after extended downtime can be slow. Initialize with a complete archival snapshot; a pruned snapshot cannot restore older history.
+</Accordion>
+
+---
+
 ## Frequently Asked Questions
 
 <AccordionGroup>
+
+<Accordion title="Can regular and archival RPC nodes run with inbound peering disabled?">
+
+Yes. Set `network.experimental.inbound_disabled` to `true` and restrict RPC access separately. Regular nodes need a recent database snapshot or inbound connectivity for peer state sync. Archival nodes process missing blocks and need peers that retain that history. See [Running Private Nodes](#running-private-nodes) for configuration and recovery caveats.
+
+</Accordion>
 
 <Accordion title="Can a node be configured to archive all blockchain data since genesis?" id="can-a-node-be-configured-to-archive-all-blockchain-data-since-genesis%3F">
 
