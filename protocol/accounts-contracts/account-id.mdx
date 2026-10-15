@@ -210,7 +210,7 @@ The universal account ID is computed by:
 2. Borsh-encoding that value into bytes
 3. Applying the formula: `'0u' + crockford_base32(sha3_256(bytes))`
 
-Unlike the `0s` scheme, the protocol does not re-serialize the bytes into a canonical form before hashing: the id commits to the **exact bytes supplied**, so two different byte-level encodings of an otherwise identical state produce two different accounts.
+Unlike the `0s` scheme, the protocol does not re-serialize the bytes into a canonical form before hashing: the id commits to the **exact bytes supplied** — but those bytes must themselves already be the one canonical encoding (`data` and `access_keys` entries sorted with no duplicates, and no trailing bytes), or the state init is rejected outright rather than accepted under a different id.
 
 </Accordion>
 
@@ -219,7 +219,7 @@ Unlike the `0s` scheme, the protocol does not re-serialize the bytes into a cano
 Universal accounts are created using the `UniversalStateInit` action — like `DeterministicStateInit`, a distinct action from the standard `CreateAccount` action. See [Creating Universal Accounts](./creating-universal-accounts) for the three ways to submit one, with code and RPC examples.
 
 Smart contracts can build this action using two host functions:
-- `universal_state_init_to_account_id` — derives the `0u` account id from a state init, with no side effects
+- `universal_state_init_to_account_id` — derives the `0u` account id from a state init and reports whether the bytes are valid, with no side effects
 - `promise_batch_action_universal_state_init` — appends a `UniversalStateInit` action to a promise, with an attached deposit that tops up the account's storage stake if needed (any unused amount is refunded, it doesn't just add to the account's balance — see [Creating Universal Accounts](./creating-universal-accounts#relayer-assisted-creation) for how funding actually works)
 
 </Accordion>

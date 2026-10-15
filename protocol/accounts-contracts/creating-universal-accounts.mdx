@@ -167,7 +167,7 @@ let tx = SignedTransaction::from_actions(
 The order of `UniversalStateInit` and `Transfer` doesn't matter — whichever runs first creates the account, and the other lands on it. A `FunctionCall` can follow in the same batch too, to call into the contract the state init just installed.
 
 <Info>
-**Why is `deposit` zero here, and `Transfer` used instead?** `UniversalStateInitAction.deposit` isn't a general funding mechanism — it only tops up the account's balance if needed to cover its **storage stake** (the cost of the state you're installing), and refunds whatever it doesn't use back to the relayer. It's fine to leave it at zero and fund the account entirely through a separate `Transfer`, as shown here — that's what determines the account's actual spendable balance.
+**Why is `deposit` zero here, and `Transfer` used instead?** `UniversalStateInitAction.deposit` isn't a general funding mechanism — it only tops up the account's balance to cover its **storage stake**, and only the first time a state init actually initializes the account; a `UniversalStateInit` that lands on an already-initialized account always refunds the whole deposit, since there's nothing left for it to cover. It's fine to leave it at zero here and fund the account entirely through a separate `Transfer`, as shown here — that's what determines the account's actual spendable balance.
 </Info>
 </Step>
 <Step title="Broadcast it">
@@ -245,12 +245,12 @@ Unlike `app.bob.near`, a universal account created this way is **not** a namespa
 
 <Steps>
 <Step title="Derive the account id on-chain">
-The contract asks the host to derive the id from the exact bytes it's about to use, so the promise it creates in the next step is guaranteed to target the right receiver:
+The contract asks the host to derive the id from the exact bytes it's about to use, so the promise it creates in the next step is guaranteed to target the right receiver. The call also validates the bytes and reports the result, instead of silently deriving an id for anything:
 
 ```rust
 #[allow(unused)]
 unsafe extern "C" {
-    fn universal_state_init_to_account_id(state_init_len: u64, state_init_ptr: u64, register_id: u64);
+    fn universal_state_init_to_account_id(state_init_len: u64, state_init_ptr: u64, register_id: u64) -> u64;
     fn promise_batch_action_universal_state_init(
         promise_idx: u64,
         state_init_len: u64,
@@ -260,9 +260,9 @@ unsafe extern "C" {
 }
 ```
 
-These are the raw host-function imports, as of protocol v87 — there's no `near-sdk-rs` ergonomic wrapper for them yet, so this is what you write directly, the same low-level way you'd import any other host function it doesn't wrap.
+These are the raw host-function imports — there's no `near-sdk-rs` ergonomic wrapper for them yet, so this is what you write directly, the same low-level way you'd import any other host function it doesn't wrap.
 
-This derivation is a pure computation — it has no side effects and can even run inside a view call.
+`universal_state_init_to_account_id` returns a status instead of always succeeding: `0` means the id was derived and written to the register, `1` means the bytes don't decode into a `UniversalStateInit` at all, and `2` means they decode but aren't the one canonical encoding (unsorted `data` or `access_keys`, a duplicate entry, or trailing bytes). On anything but `0`, the register is left unwritten. Check the status before moving on. Otherwise this is a pure computation: no side effects, and it can run inside a view call.
 </Step>
 <Step title="Append the UniversalStateInit action to a promise">
 ```rust
@@ -277,17 +277,17 @@ unsafe {
 }
 ```
 
-Like in the relayer flow, this `amount_ptr` deposit only tops up the account's **storage stake** if needed and refunds the rest back to the calling contract — it doesn't unconditionally add to the account's balance the way a `Transfer` action does. If you want the new account to end up with a specific spendable balance, batch a `Transfer` action onto the same promise as well.
+Like in the relayer flow, this `amount_ptr` deposit only tops up the account's **storage stake**, and only on the state init that actually initializes the account, refunding the rest back to the calling contract. A state init that lands on an account that's already initialized — a repeat, idempotent call — always refunds the **whole** deposit, since there's no storage left for it to cover. It doesn't unconditionally add to the account's balance the way a `Transfer` action does; if you want the new account to end up with a specific spendable balance, batch a `Transfer` action onto the same promise as well.
 
 <Note>
 There's no host function to build up a `UniversalStateInit`'s `data` map incrementally the way `set_state_init_data_entry` does for a [deterministic account](./account-id#deterministic-address). If your contract needs to populate initial storage, it has to construct the whole Borsh-encoded state init itself before calling `promise_batch_action_universal_state_init` — the two host functions here only derive an id from bytes and attach an action, they don't help build the bytes.
 </Note>
 </Step>
 <Step title="Handle malformed input at the receipt, not at the call">
-The host functions never reject bad input — any byte string derives to *some* account id, and `promise_batch_action_universal_state_init` always succeeds from the calling contract's point of view. What fails is the **receipt** the action creates: if the bytes don't decode into a valid `UniversalStateInit`, that receipt fails with `MalformedUniversalStateInit`; if the promise's receiver doesn't match what the bytes derive to, it fails with `InvalidUniversalStateInitReceiver`. Check the outcome of the cross-contract call if your contract's logic depends on the account having actually been created.
+`promise_batch_action_universal_state_init` itself never rejects bad input — it always succeeds from the calling contract's point of view, even for bytes that step 1 would already have reported as invalid. What fails is the **receipt** the action creates: if the bytes don't decode into a `UniversalStateInit`, or decode but aren't the canonical encoding, that receipt fails with `MalformedUniversalStateInit`; if the promise's receiver doesn't match what the bytes derive to, it fails with `InvalidUniversalStateInitReceiver`. Checking step 1's status first is the cheap way to catch this before spending a promise on it at all — but check the outcome of the cross-contract call either way, if your contract's logic depends on the account having actually been created.
 </Step>
 </Steps>
 
 <Info>
-Both host functions are gated by the `UniversalAccounts` protocol feature (stable from protocol version 87). Calling them on an older network they haven't reached yet fails to link, the same way any other protocol-gated host function does.
+Both host functions are gated by the `UniversalAccounts` protocol feature, stable from protocol version 88. Calling them on a network that hasn't reached that version fails to link, the same way any other protocol-gated host function does.
 </Info>
