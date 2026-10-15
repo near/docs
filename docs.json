@@ -408,6 +408,7 @@
                       "smart-contracts/security/cross-contract-calls/callbacks",
                       "smart-contracts/security/cross-contract-calls/refunds",
                       "smart-contracts/security/cross-contract-calls/callback-panics",
+                      "smart-contracts/security/cross-contract-calls/callback-failures",
                       "smart-contracts/security/cross-contract-calls/ft-transfer-call",
                       "smart-contracts/security/cross-contract-calls/reentrancy"
                     ]

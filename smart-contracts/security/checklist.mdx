@@ -57,7 +57,8 @@ overflow-checks = true
 ## Cross-contract calls
 
 - [ ] A callback exists when the contract must inspect a result, settle state, or refund a user.
-- [ ] Every callback is marked `#[private]`, handles success and failure, and has enough gas for its failure path.
+- [ ] Every callback is marked `#[private]`, handles success and failure, and has gas sized from its measured worst case, plus a margin.
+- [ ] The contract stays safe if a callback itself fails. Outcome-dependent state is committed in the callback, and callbacks have bounded inputs, loops, and logs. See [callbacks can fail](/smart-contracts/security/cross-contract-calls/callback-failures).
 - [ ] A pending operation records the original account, amount, and state needed to settle it once.
 - [ ] Expected callback failures clean up and settle the operation without panicking.
 - [ ] When a failed call returns attached NEAR tokens to the contract, the callback refunds the original user when appropriate.
@@ -83,8 +84,9 @@ For each call, trace the success and failure paths on paper. Account for where a
 ## Testing and operations
 
 - [ ] Unit tests cover authorization, boundaries, arithmetic, and state invariants.
-- [ ] sandbox or testnet tests cover failed promises, insufficient gas, refunds, repeated calls, and concurrent pending operations.
+- [ ] sandbox or testnet tests cover failed promises, insufficient gas, failed callbacks, refunds, repeated calls, and concurrent pending operations.
 - [ ] Upgrade and migration paths preserve state and remain access-controlled.
 - [ ] Deployment artifacts are reproducible and the deployed code hash is verified.
 - [ ] Logs and monitoring can detect unusual withdrawals, storage growth, and repeated failures.
+- [ ] Monitoring alerts on every failed callback receipt.
 - [ ] A response plan identifies who can pause, upgrade, or communicate about an incident.
