@@ -50,8 +50,9 @@ Each transaction can have **one or multiple** [`Actions`](https://nomicon.io/Run
 10. [`TransferToGasKey`](/protocol/accounts-contracts/access-keys#gas-keys): to fund a gas key's prepaid gas balance with NEAR
 11. [`WithdrawFromGasKey`](/protocol/accounts-contracts/access-keys#gas-keys): to move NEAR from a gas key's balance back to the account
 12. [`DelegateActions`](https://nomicon.io/RuntimeSpec/Actions.html#delegate-actions): to create a [meta-transaction](/protocol/transactions/meta-tx) (`Delegate`, or `DelegateV2` for gas-key support)
-13. [`Stake`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction): special action to express interest in becoming a network validator
+13. [`Stake`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction): special action to express interest in becoming a network validator (its own `public_key` field — the validator's block-production key — [must stay `ed25519`](/protocol/accounts-contracts/access-keys#post-quantum-keys-ml-dsa-65), regardless of what key signed the transaction)
 14. [`DeterministicStateInit`](https://nomicon.io/RuntimeSpec/Actions.html#deterministicstateinitaction): special action to create a deterministic account (an advanced kind of implicit account)
+15. [`UniversalStateInit`](/protocol/accounts-contracts/creating-universal-accounts): special action to create a [universal account](/protocol/accounts-contracts/account-id#universal-address), installing its code, storage, and access keys in one step
 
 For example, `bob.near` can bundle the following actions in a single transaction:
 - Create the account `contract.bob.near`
