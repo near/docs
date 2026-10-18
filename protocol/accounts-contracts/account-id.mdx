@@ -81,12 +81,12 @@ You can derive the implicit account address from a public key by removing the `e
 
 ```js
 // vanilla js
-import { decode } from 'bs58';
-Buffer.from(decode(publicKey.replace('ed25519:', ''))).toString('hex')
+import bs58 from 'bs58';
+Buffer.from(bs58.decode(publicKey.replace('ed25519:', ''))).toString('hex')
 
 // or using near-api-js
-import { utils } from 'near-api-js';
-utils.keyToImplicitAddress(publicKey);
+import { keyToImplicitAddress } from 'near-api-js';
+keyToImplicitAddress(publicKey);
 ```
 
 </Accordion>
