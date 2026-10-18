@@ -131,7 +131,7 @@ The `sign` method currently supports both Secp256k1 and Ed25519 signature scheme
 
 The essence of Multi-Party Computation (MPC) is to enable independent parties to perform shared computations on private information without revealing secrets to each other. In practice, this system can be used with blockchain platforms to safely sign a transaction on behalf of a user without ever having to expose a private key.
 
-NEAR's MPC service is comprised of several independent nodes, **none of which can sign by itself**, but instead create **signature-shares** that are **aggregated through multiple rounds** to **jointly** sign a transaction. Currently, the service is composed of 8 independent nodes. However the set of participating nodes can be extended with the `vote_new_parameters` method of the `v1.signer` smart contract if enough active nodes vote for it.
+NEAR's MPC service is comprised of several independent nodes, **none of which can sign by itself**, but instead create **signature-shares** that are **aggregated through multiple rounds** to **jointly** sign a transaction. The participant set and the signing threshold are public in the `v1.signer` contract, and they change only through its `vote_new_parameters` method, when enough current participants vote for it (see [The MPC network today](#the-mpc-network-today)).
 
 This service continuously listens for signature requests (i.e. users calling the `sign` method on the `v1.signer` smart contract) and when a call is detected the MPC service:
 
@@ -148,6 +148,16 @@ NEAR's MPC service allows for nodes to safely join and leave, without needing to
 <Tip>
 Want to learn more about the mathematics that enable MPC? [**Check this awesome article**](https://www.zellic.io/blog/mpc-from-scratch/).
 </Tip>
+
+#### The MPC network today
+
+Read the live mainnet participant set and threshold from the contract:
+
+```bash
+near contract call-function as-read-only v1.signer state json-args {} network-config mainnet now
+```
+
+[mpc.nearone.org](https://mpc.nearone.org) shows the live operators and a security overview. The audit reports are in [near/mpc/audits](https://github.com/near/mpc/tree/main/audits), and the [operator guide](https://github.com/near/mpc/blob/main/docs/guide/operating-an-mpc-node.md) covers running a node.
 
 ---
 
