@@ -163,33 +163,6 @@ cargo near deploy build-non-reproducible-wasm hello-world.test.near without-init
 
 This command compiles the smart contract, optimizes the resulting `.wasm` file, and deploys it directly to the `hello-world.test.near` account on `localnet`.
 
-<Warning>
-There is a known dependency conflict in `hello-near-examples`: `near-sdk 5.x` transitively requires `darling 0.23` (via `near-primitives → serde_with`), which needs rustc ≥ 1.88. However, `near-sandbox 0.2.x` ships `nearcore 2.9.0`, which does not execute wasm compiled with rustc ≥ 1.87. If the `cargo near deploy` command above fails, use the following workaround:
-
-First, make sure `wasm-opt` is available (if not already installed):
-
-```sh
-npm install -g wasm-opt
-```
-
-Then build and deploy manually:
-
-```sh
-# Build with the host toolchain, bypassing the rust-version check
-cargo build --target wasm32-unknown-unknown --release --ignore-rust-version
-
-# Optimize the wasm (required for nearcore compatibility on rustc ≥ 1.82)
-mkdir -p target/near
-wasm-opt -O --enable-nontrapping-float-to-int --enable-bulk-memory \
-  target/wasm32-unknown-unknown/release/contract_rs.wasm \
-  -o target/near/contract_rs.wasm
-
-# Deploy
-near contract deploy hello-world.test.near use-file target/near/contract_rs.wasm \
-  without-init-call network-config localnet-sandbox sign-with-legacy-keychain send
-```
-</Warning>
-
 <Tip>
 To verify that the contract was deployed successfully, call `get_greeting` directly: `near contract call-function as-read-only hello-world.test.near get_greeting json-args '{}' network-config localnet-sandbox now`. If it returns `"Hello"`, the contract is running correctly.
 </Tip>
