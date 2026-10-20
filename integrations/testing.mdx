@@ -1,0 +1,30 @@
+---
+title: Testing an Integration
+sidebarTitle: Testing
+description: "Test an integration on NEAR testnet or in a local sandbox."
+---
+
+Use testnet to exercise deposit detection, withdrawal submission, and reconciliation before enabling mainnet operations.
+
+<Tip>
+Testnet tokens are free to use and can be easily obtained from the [testnet faucet](/getting-started/faucet).
+</Tip>
+
+---
+
+## Testnet Setup
+
+Generate test accounts using the [Accounts](/integrations/accounts) examples and fund them through the [testnet faucet](/getting-started/faucet). The faucet page also links to a faucet for testnet fungible tokens.
+
+- RPC endpoints:
+    - `https://rpc.testnet.near.org`
+    - `https://test.rpc.fastnear.com`
+    - [More Testnet RPC providers](/api/rpc/providers#testnet)
+- Explorer: [Testnet NearBlocks](https://testnet.nearblocks.io/)
+- Node and archival access: [Nodes](/integrations/nodes)
+
+---
+
+## Local Sandbox Testing
+
+For local development and automated tests, a sandbox is also an option. It runs a local NEAR network where you can create test accounts, deploy contracts, and test transfers in a controlled environment. See [sandbox integration tests](/smart-contracts/testing/integration-test) for setup and examples.

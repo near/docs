@@ -1,0 +1,117 @@
+---
+title: Callbacks can fail
+description: "A callback always runs, but it can still fail. Design your contract so a failed callback cannot leave it in an unsafe state."
+---
+
+When you attach a callback to a cross-contract call, the protocol guarantees the callback **runs**, even if the called contract fails (the callback then sees `PromiseResult::Failed`). It does **not** guarantee the callback **succeeds**.
+
+A callback is an ordinary function call in its own receipt, so it can fail like any other. When it does:
+
+- Only the callback's own state changes are reverted. Anything the original method already committed, such as a credited balance, a mint, or a lock, stays.
+- Promises the callback would have created, such as refunds, are never scheduled.
+- The callback is not retried.
+- If another contract is waiting on the callback's result, it sees a failure.
+
+So if your contract relies on a callback to finish or undo an operation, a failed callback leaves that operation half done. Design for it.
+
+---
+
+## Why a callback can fail
+
+These apply even when the called contract behaved correctly.
+
+### Out of gas
+
+A callback gets a fixed amount of gas when the promise is created. Its actual cost can grow with things you don't fully control:
+
+- **Input size.** Copying a promise result into memory and parsing it costs gas per byte, and a contract can return up to 4 MiB. The same applies to arguments built from user input.
+- **State size.** Storage writes and removes get more expensive as your contract's state grows. Users add to that state, so a write can cost more in production than in your tests.
+- **Collection internals.** Some operations touch more than one entry. For example, `IterableMap::remove` and `IterableSet::remove` in `near_sdk::store` move the last entry into the freed slot.
+- **Loops** over anything whose length a user controls.
+
+### Panics
+
+`panic!`, `assert!`, `unwrap()`, `expect()`, overflow with `overflow-checks` on, or a Wasm trap. See [do not panic in callbacks](/smart-contracts/security/cross-contract-calls/callback-panics).
+
+This includes deserialization. `#[callback_result]` only returns `Err` when the called contract **failed**. If it succeeded but returned data that doesn't match the expected type, the generated code panics. `#[callback_unwrap]` panics in both cases.
+
+### Runtime limits
+
+- **Logs:** at most 100 logs and 16 KiB in total per call. A panic message counts toward the 16 KiB.
+- **Storage proof:** one receipt can touch at most about 4 MB of state.
+- **Storage keys and values:** at most 2 KiB per key and 4 MiB per value.
+- **Storage staking:** the contract must hold enough balance to cover any state the callback adds. See [storage staking](/protocol/storage/storage-staking).
+
+### Contract changes
+
+The callback runs against the code deployed when it executes. If the contract is redeployed between the call and the callback and the method was removed or its arguments changed, the callback fails.
+
+---
+
+## Designing for failure
+
+### Commit state after the outcome is known
+
+Make changes that depend on the call's outcome in the callback, not before the call. For example, a contract that asks a vault to lock a user's tokens should credit the user only once the lock succeeded:
+
+```rust
+pub fn deposit(&mut self, amount: U128) -> Promise {
+    // Don't credit here: if the callback fails, the credit would stay.
+    ext_vault::ext(self.vault.clone())
+        .lock(env::predecessor_account_id(), amount)
+        .then(Self::ext(env::current_account_id()).resolve_deposit(env::predecessor_account_id(), amount))
+}
+
+#[private]
+pub fn resolve_deposit(
+    &mut self,
+    user: AccountId,
+    amount: U128,
+    #[callback_result] result: Result<(), PromiseError>,
+) {
+    if result.is_ok() {
+        self.credit(&user, amount.0);
+    }
+}
+```
+
+Withdrawals are the reverse: debit **before** the call. If the callback then fails, the funds are stuck rather than spendable twice. Provide a way to settle stuck operations later.
+
+### Keep callbacks small and bounded
+
+- Do only the work needed to settle the operation.
+- Cap batch sizes and input lengths in the method that schedules the call.
+- Keep logs short and fixed in size.
+- Check the size of a result from an untrusted contract before you copy or parse it, and treat anything unexpected as a failure instead of panicking:
+
+```rust
+// Longest valid response: a JSON-quoted u128 fits easily.
+const MAX_RESULT_LEN: usize = 64;
+
+#[private]
+pub fn resolve_transfer(&mut self, sender: AccountId, amount: U128) -> U128 {
+    // Failed, oversized, or malformed result: refund the full amount.
+    let unused = match env::promise_result_checked(0, MAX_RESULT_LEN) {
+        Ok(bytes) => serde_json::from_slice::<U128>(&bytes)
+            .map(|v| v.0.min(amount.0))
+            .unwrap_or(amount.0),
+        Err(_) => amount.0,
+    };
+    // ... settle `unused` for `sender` without panicking ...
+    U128(unused)
+}
+```
+
+`env::promise_result_checked` checks the length before copying the result into memory. `#[callback_result(max_bytes = N)]` does the same, but still panics on malformed data. Both need `near-sdk` 5.24 or later.
+
+### Give the callback plenty of gas
+
+Measure the callback's gas use in its worst case (largest allowed input, a large state, the failure branch), not an average run, and attach a clear margin on top. Unused gas is refunded. Re-measure whenever the callback or its inputs change. See [attaching gas](/smart-contracts/anatomy/crosscontract#attaching-gas).
+
+### Monitor failed callbacks
+
+Failed callbacks should be rare, so treat each one as a possible incident. Watch receipt outcomes for your callback methods, for example with an indexer, and alert on any failure.
+
+### Test the failure path
+
+In your [integration tests](/smart-contracts/testing/integration-test), make the callback fail and check that the contract can still settle every balance, mint, and lock afterwards. For example, give the callback less gas than it needs, use a test callee that returns unexpected data, and run with the largest inputs you allow.

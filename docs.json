@@ -182,6 +182,22 @@
     {
       "source": "/web3-apps/tutorials/social-login",
       "destination": "/web3-apps/tutorials/privy"
+    },
+    {
+      "source": "/integrations/faq",
+      "destination": "/integrations/exchange-integration"
+    },
+    {
+      "source": "/integrations/implicit-accounts",
+      "destination": "/integrations/accounts#implicit-accounts"
+    },
+    {
+      "source": "/integrations/errors/token-loss",
+      "destination": "/integrations/errors/introduction#avoiding-token-loss"
+    },
+    {
+      "source": "/integrations/errors/error-implementation",
+      "destination": "/integrations/errors/introduction"
     }
   ],
   "navbar": {
@@ -393,6 +409,7 @@
                       "smart-contracts/security/cross-contract-calls/callbacks",
                       "smart-contracts/security/cross-contract-calls/refunds",
                       "smart-contracts/security/cross-contract-calls/callback-panics",
+                      "smart-contracts/security/cross-contract-calls/callback-failures",
                       "smart-contracts/security/cross-contract-calls/ft-transfer-call",
                       "smart-contracts/security/cross-contract-calls/reentrancy"
                     ]
@@ -669,6 +686,45 @@
         ]
       },
       {
+        "tab": "Integrations",
+        "icon": "plug",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "integrations/exchange-integration"
+            ]
+          },
+          {
+            "group": "Protocol",
+            "pages": [
+              "integrations/nodes",
+              "integrations/on-chain-data",
+              "integrations/blocks-and-finality",
+              "integrations/transaction-lifecycle",
+              "integrations/testing"
+            ]
+          },
+          {
+            "group": "Accounts & Transfers",
+            "pages": [
+              "integrations/accounts",
+              "integrations/deposits",
+              "integrations/create-transactions",
+              "integrations/balance-changes",
+              "integrations/errors/introduction"
+            ]
+          },
+          {
+            "group": "Tokens & Staking",
+            "pages": [
+              "integrations/fungible-tokens",
+              "integrations/staking"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "RPC",
         "icon": "server",
         "groups": [
@@ -698,6 +754,7 @@
             "pages": [
               "POST /send_tx",
               "POST /tx",
+              "POST /tx_status",
               "POST /EXPERIMENTAL_tx_status",
               "POST /EXPERIMENTAL_receipt",
               "POST /EXPERIMENTAL_receipt_to_tx",

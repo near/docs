@@ -1,0 +1,967 @@
+---
+id: fungible-tokens
+title: Fungible tokens
+sidebarTitle: Fungible Tokens
+description: "Integrate NEP-141 fungible tokens, including balance queries, storage registration, transfers, and metadata."
+---
+
+Fungible tokens on NEAR follow the [NEP-141 standard](https://github.com/near/NEPs/blob/master/neps/nep-0141.md). Each token is implemented as a smart contract that tracks account balances and exposes methods to query balances (`ft_balance_of`), transfer tokens (`ft_transfer`), and transfer tokens to another contract while calling its `ft_on_transfer` method (`ft_transfer_call`).
+
+<Note>
+
+Please see the [spec for the fungible token standard](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) and an [example implementation](https://github.com/near-examples/FT) for reference details.
+
+</Note>
+---
+
+## Token metadata {#get-info-about-the-ft}
+
+The [`ft_metadata` method](https://github.com/near/NEPs/blob/master/neps/nep-0148.md) returns the token's name, symbol, decimals, and optional display information such as its icon.
+
+<Tabs>
+<Tab title="NEAR CLI">
+
+```bash
+near contract call-function as-read-only meta-pool.near ft_metadata json-args '{}' network-config mainnet now
+
+# Selected result fields:
+# {
+#   "spec": "ft-1.0.0",
+#   "name": "Staked NEAR",
+#   "symbol": "STNEAR",
+#   "decimals": 24
+# }
+```
+
+</Tab>
+<Tab title="RPC">
+
+```bash
+http post https://rpc.mainnet.near.org jsonrpc=2.0 id=ftmetadata method=query \
+  params:='{"request_type":"call_function","finality":"final","account_id":"meta-pool.near","method_name":"ft_metadata","args_base64":"e30="}'
+```
+
+<Accordion title="Metadata RPC response">
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "block_hash": "8cwU7ukBxmzFqejV9U75MiRmw4RENnweqT8egx2Tz2s3",
+    "block_height": 219151015,
+    "logs": [],
+    "result": [123, 34, 115, 112, 101, 99, 34, 58, 34, 102, 116, 45, 49, 46, 48, 46, 48, 34, 44, 34, 110, 97, 109, 101, 34, 58, 34, 83, 116, 97, 107, 101, 100, 32, 78, 69, 65, 82, 34, 44, 34, 115, 121, 109, 98, 111, 108, 34, 58, 34, 83, 84, 78, 69, 65, 82, 34, 44, 34, 105, 99, 111, 110, 34, 58, 34, 100, 97, 116, 97, 58, 105, 109, 97, 103, 101, 47, 115, 118, 103, 43, 120, 109, 108, 44, 37, 51, 99, 115, 118, 103, 32, 119, 105, 100, 116, 104, 61, 39, 57, 54, 39, 32, 104, 101, 105, 103, 104, 116, 61, 39, 57, 54, 39, 32, 118, 105, 101, 119, 66, 111, 120, 61, 39, 48, 32, 48, 32, 57, 54, 32, 57, 54, 39, 32, 102, 105, 108, 108, 61, 39, 110, 111, 110, 101, 39, 32, 120, 109, 108, 110, 115, 61, 39, 104, 116, 116, 112, 58, 47, 47, 119, 119, 119, 46, 119, 51, 46, 111, 114, 103, 47, 50, 48, 48, 48, 47, 115, 118, 103, 39, 37, 51, 101, 37, 51, 99, 114, 101, 99, 116, 32, 119, 105, 100, 116, 104, 61, 39, 57, 54, 39, 32, 104, 101, 105, 103, 104, 116, 61, 39, 57, 54, 39, 32, 114, 120, 61, 39, 52, 56, 39, 32, 102, 105, 108, 108, 61, 39, 119, 104, 105, 116, 101, 39, 47, 37, 51, 101, 37, 51, 99, 112, 97, 116, 104, 32, 102, 105, 108, 108, 45, 114, 117, 108, 101, 61, 39, 101, 118, 101, 110, 111, 100, 100, 39, 32, 99, 108, 105, 112, 45, 114, 117, 108, 101, 61, 39, 101, 118, 101, 110, 111, 100, 100, 39, 32, 100, 61, 39, 77, 52, 56, 46, 48, 48, 48, 54, 32, 50, 48, 76, 52, 49, 46, 50, 53, 55, 53, 32, 50, 54, 46, 55, 52, 51, 49, 76, 52, 56, 46, 48, 48, 48, 54, 32, 51, 51, 46, 52, 56, 54, 50, 76, 53, 52, 46, 55, 52, 51, 55, 32, 50, 54, 46, 55, 52, 51, 49, 76, 52, 56, 46, 48, 48, 48, 54, 32, 50, 48, 90, 77, 51, 55, 46, 50, 56, 49, 32, 51, 48, 46, 55, 49, 56, 56, 76, 51, 48, 46, 55, 49, 52, 52, 32, 51, 55, 46, 50, 56, 53, 51, 76, 52, 55, 46, 57, 57, 57, 56, 32, 53, 52, 46, 53, 55, 48, 55, 76, 54, 53, 46, 50, 56, 53, 49, 32, 51, 55, 46, 50, 56, 53, 51, 76, 53, 56, 46, 55, 49, 56, 54, 32, 51, 48, 46, 55, 49, 56, 56, 76, 52, 55, 46, 57, 57, 57, 56, 32, 52, 49, 46, 52, 51, 55, 54, 76, 51, 55, 46, 50, 56, 49, 32, 51, 48, 46, 55, 49, 56, 56, 90, 77, 50, 54, 46, 55, 51, 56, 52, 32, 52, 49, 46, 50, 54, 49, 76, 49, 57, 46, 57, 57, 53, 51, 32, 52, 56, 46, 48, 48, 52, 49, 76, 52, 55, 46, 57, 57, 57, 53, 32, 55, 54, 46, 48, 48, 56, 51, 76, 55, 54, 46, 48, 48, 51, 55, 32, 52, 56, 46, 48, 48, 52, 49, 76, 54, 57, 46, 50, 54, 48, 54, 32, 52, 49, 46, 50, 54, 49, 49, 76, 52, 55, 46, 57, 57, 57, 53, 32, 54, 50, 46, 53, 50, 50, 49, 76, 50, 54, 46, 55, 51, 56, 52, 32, 52, 49, 46, 50, 54, 49, 90, 39, 32, 102, 105, 108, 108, 61, 39, 37, 50, 51, 50, 51, 49, 66, 53, 49, 39, 47, 37, 51, 101, 37, 51, 99, 47, 115, 118, 103, 37, 51, 101, 34, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 34, 58, 34, 104, 116, 116, 112, 115, 58, 47, 47, 109, 101, 116, 97, 112, 111, 111, 108, 46, 97, 112, 112, 34, 44, 34, 114, 101, 102, 101, 114, 101, 110, 99, 101, 95, 104, 97, 115, 104, 34, 58, 110, 117, 108, 108, 44, 34, 100, 101, 99, 105, 109, 97, 108, 115, 34, 58, 50, 52, 125]
+  },
+  "id": "ftmetadata"
+}
+```
+
+</Accordion>
+
+[Decoded result](/api/rpc/contracts#decode-the-result) (selected fields):
+
+```json
+{
+  "spec": "ft-1.0.0",
+  "name": "Staked NEAR",
+  "symbol": "STNEAR",
+  "decimals": 24
+}
+```
+
+</Tab>
+</Tabs>
+
+### Decimals
+`decimals` determines how to display the integer amounts in which the token is denominated.
+
+For a token with `decimals: 6`, `"1000000"` raw units represents 1 token, and `"1500000"` represents 1.5 tokens. `meta-pool.near` uses 24 decimals, so `"1000000000000000000000000"` raw units represents 1 STNEAR.
+
+<Info>
+Use the token's metadata when converting amounts, but keep raw balances and transfer arguments as integer strings.
+</Info>
+
+---
+
+## Get balance {#get-balance}
+
+Call `ft_balance_of` with the account ID to get its raw token balance.
+
+<Tabs>
+<Tab title="NEAR CLI">
+
+```bash
+near contract call-function as-read-only meta-pool.near ft_balance_of json-args '{"account_id": "root.near"}' network-config mainnet now
+
+# Returns:
+# "1387952532024477011546901"
+```
+
+</Tab>
+<Tab title="RPC">
+
+You can [call a contract function](/api/rpc/contracts#call-a-contract-function) using the `query` RPC endpoint. Below is an example using HTTPie:
+
+```bash
+http post https://rpc.mainnet.near.org jsonrpc=2.0 id=ftbalance method=query \
+params:='{
+  "request_type": "call_function",
+  "finality": "final",
+  "account_id": "meta-pool.near",
+  "method_name": "ft_balance_of",
+  "args_base64": "eyJhY2NvdW50X2lkIjoicm9vdC5uZWFyIn0="
+}'
+```
+
+Returns:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "block_hash": "8cwU7ukBxmzFqejV9U75MiRmw4RENnweqT8egx2Tz2s3",
+    "block_height": 219151015,
+    "logs": [],
+    "result": [34, 49, 51, 56, 55, 57, 53, 50, 53, 51, 50, 48, 50, 52, 52, 55, 55, 48, 49, 49, 53, 52, 54, 57, 48, 49, 34]
+  },
+  "id": "ftbalance"
+}
+```
+
+[Decoded result](/api/rpc/contracts#decode-the-result):
+
+```json
+"1387952532024477011546901"
+```
+
+</Tab>
+</Tabs>
+
+NEP-141 returns balances as base-10 integer strings to preserve amounts larger than JavaScript's safe integer limit (`2^53 - 1`). Decode the JSON string and use integer arithmetic for balances and transfers.
+
+---
+
+## Simple transfer {#simple-transfer}
+
+Before calling `ft_transfer`, register the receiver with the token contract so the contract can store its balance.
+
+### Storage registration
+
+Check `storage_balance_of` for the receiver. A `null` result means it is unregistered; query `storage_balance_bounds` and attach its `min` amount in yoctoNEAR when calling `storage_deposit`. The queries below show that `root.near` is already registered with `meta-pool.near`, whose minimum is `0.00125 NEAR`.
+
+<Tabs>
+<Tab title="NEAR CLI">
+
+```bash
+near contract call-function as-read-only meta-pool.near storage_balance_of json-args '{"account_id":"root.near"}' network-config mainnet now
+# Result: {"total":"1250000000000000000000","available":"0"}
+
+near contract call-function as-read-only meta-pool.near storage_balance_bounds json-args '{}' network-config mainnet now
+# Result: {"min":"1250000000000000000000","max":"1250000000000000000000"}
+
+```
+
+For an unregistered receiver, deposit the returned minimum:
+
+```bash
+near contract call-function as-transaction meta-pool.near storage_deposit json-args '{"account_id":"<receiver_account_id>","registration_only":true}' prepaid-gas '30 Tgas' attached-deposit '0.00125 NEAR' sign-as <sender_account_id> network-config mainnet sign-with-keychain send
+```
+
+</Tab>
+<Tab title="RPC">
+
+```bash
+http post https://rpc.mainnet.near.org jsonrpc=2.0 id=storagebalanceof method=query \
+  params:='{"request_type":"call_function","finality":"final","account_id":"meta-pool.near","method_name":"storage_balance_of","args_base64":"eyJhY2NvdW50X2lkIjoicm9vdC5uZWFyIn0="}'
+
+http post https://rpc.mainnet.near.org jsonrpc=2.0 id=storagebalancebounds method=query \
+  params:='{"request_type":"call_function","finality":"final","account_id":"meta-pool.near","method_name":"storage_balance_bounds","args_base64":"e30="}'
+```
+
+[Decoded results](/api/rpc/contracts#decode-the-result), respectively:
+
+```json
+{"total":"1250000000000000000000","available":"0"}
+```
+
+```json
+{"min":"1250000000000000000000","max":"1250000000000000000000"}
+```
+
+To register an unregistered receiver, [create and sign a transaction](/integrations/create-transactions#low-level-create-a-transaction) addressed to `meta-pool.near` with a `FunctionCall` action: `method_name: "storage_deposit"`, JSON arguments `{"account_id":"<receiver_account_id>","registration_only":true}`, and `deposit: "1250000000000000000000"` yoctoNEAR. Submit the signed payload with [`send_tx`](/api/rpc/transactions#send-transaction) and `wait_until: "FINAL"`.
+
+</Tab>
+</Tabs>
+
+### Transfer tokens
+
+Call `ft_transfer` with the receiver's account ID and an integer-string amount in the token's smallest unit. Attach exactly **1 yoctoNEAR**. With STNEAR's 24 decimals, the amount below transfers 1 STNEAR to `root.near`.
+
+<Tabs>
+<Tab title="NEAR CLI">
+
+```bash
+near contract call-function as-transaction meta-pool.near ft_transfer json-args '{"receiver_id":"root.near","amount":"1000000000000000000000000"}' prepaid-gas '30 Tgas' attached-deposit '1 yoctoNEAR' sign-as <sender_account_id> network-config mainnet sign-with-keychain send
+```
+
+</Tab>
+<Tab title="RPC">
+
+[Create and sign a transaction](/integrations/create-transactions#low-level-create-a-transaction) addressed to `meta-pool.near` with a `FunctionCall` action: `method_name: "ft_transfer"`, JSON arguments `{"receiver_id":"root.near","amount":"1000000000000000000000000"}`, and `deposit: "1"` yoctoNEAR.
+
+```bash
+http post https://rpc.mainnet.near.org jsonrpc=2.0 id=transfer method=send_tx \
+  params:='{"signed_tx_base64":"REPLACE_WITH_SIGNED_TRANSACTION_BASE64","wait_until":"FINAL"}'
+```
+
+A successful `ft_transfer` returns an empty `status.SuccessValue`; see [decoded transaction results](/api/rpc/contracts#transaction-return-values). Execution errors appear in `status.Failure`.
+
+</Tab>
+</Tabs>
+
+Require `final_execution_status === "FINAL"` and a successful token-call receipt before confirming the transfer. An insufficient token balance or an unregistered receiver causes execution failure; inspect the error before retrying.
+
+### Deposit accounting
+
+For general deposit accounting, use an [indexer](/data-infrastructure/indexers) to inspect [NEP-300 events](https://github.com/near/NEPs/blob/master/neps/nep-0300.md) in successful finalized token-contract outcomes: `EVENT_JSON:` with `standard: "nep141"`, `version: "1.0.0"`, and `event: "ft_transfer"`.
+
+Authenticate `executor_id` against the approved token contract; another contract can print the same log.
+
+---
+
+## Transfer and call {#transfer-and-call}
+
+The `ft_transfer_call` method allows a user to transfer tokens to a contract while simultaneously triggering a function call on the receiving contract.
+
+Let's call `ft_transfer_call` function on `ft` contract (receiver) and examine successful and unsuccessful scenarios.
+
+### Successful transfer and call {#successful-transfer-and-call}
+  Let's send 10 raw FT units to a `DEFI` contract that uses only 9. These are smallest-unit amounts, not NEAR or necessarily ten displayed tokens; apply the token's approved decimals for display.
+
+<Tabs>
+<Tab title="NEAR CLI">
+
+```bash
+near contract call-function as-transaction <ft_contract_id> ft_transfer_call json-args '{"receiver_id": "<defi_contract_id>", "amount": "10", "msg": "take-my-money"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as <user_account_id> network-config testnet sign-with-keychain send
+```
+
+</Tab>
+<Tab title="RPC">
+
+Transaction representation:
+
+```yaml
+Transaction: {
+	block_hash: `456…abc`,
+	signer_id: "serhii.testnet",
+	public_key: "ed25519:789…def",
+	nonce: 123,
+	receiver_id: "dev-1623333795623-21399959778159",
+	actions: [
+		FunctionCall(
+			FunctionCallAction {
+				method_name: ft_transfer_call,
+				args: `{"receiver_id":"dev-1623693121955-71667632531176","amount":"10","msg":"take-my-money"}`,
+				gas: 100000000000000,
+				deposit: 1,
+			},
+		),
+	]
+}
+```
+
+```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=send_tx \
+  params:='{"signed_tx_base64":"REPLACE_WITH_FRESH_SIGNED_TRANSACTION_BASE64","wait_until":"FINAL"}'
+```
+
+To get details of this transaction:
+
+```bash
+http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
+    params:='{"tx_hash":"5n1kwA3TQQyFTkddR2Jau3H1Pt8ebQNGaov6aCQ6TDp1","sender_account_id":"serhii.testnet","wait_until":"FINAL"}' id=myid
+```
+
+<details>
+
+<summary>**Example Response:**</summary>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "final_execution_status": "FINAL",
+    "receipts": [
+      {
+        "predecessor_id": "serhii.testnet",
+        "priority": 0,
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "FunctionCall": {
+                  "args": "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0=",
+                  "deposit": "1",
+                  "gas": 100000000000000,
+                  "method_name": "ft_transfer_call"
+                }
+              }
+            ],
+            "gas_price": "186029458",
+            "input_data_ids": [],
+            "is_promise_yield": false,
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk",
+        "receiver_id": "dev-1623333795623-21399959778159"
+      },
+      {
+        "predecessor_id": "dev-1623333795623-21399959778159",
+        "priority": 0,
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "FunctionCall": {
+                  "args": "eyJzZW5kZXJfaWQiOiJzZXJoaWkudGVzdG5ldCIsImFtb3VudCI6IjEwIiwibXNnIjoidGFrZS1teS1tb25leSJ9",
+                  "deposit": "0",
+                  "gas": 70000000000000,
+                  "method_name": "ft_on_transfer"
+                }
+              }
+            ],
+            "gas_price": "186029458",
+            "input_data_ids": [],
+            "is_promise_yield": false,
+            "output_data_receivers": [
+              {
+                "data_id": "EiDQi54XHfdD1KEcgiNzogXxXuwTpzeQfmyqVwbq7H4D",
+                "receiver_id": "dev-1623333795623-21399959778159"
+              }
+            ],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5",
+        "receiver_id": "dev-1623693121955-71667632531176"
+      },
+      {
+        "predecessor_id": "system",
+        "priority": 0,
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "Transfer": {
+                  "deposit": "13116953530949529501760"
+                }
+              }
+            ],
+            "gas_price": "0",
+            "input_data_ids": [],
+            "is_promise_yield": false,
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "AkwgvxUspRgy255fef2hrEWMbrMWFtnTRGduSgDRdSW1",
+        "receiver_id": "serhii.testnet"
+      },
+      {
+        "predecessor_id": "dev-1623333795623-21399959778159",
+        "priority": 0,
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "FunctionCall": {
+                  "args": "eyJzZW5kZXJfaWQiOiJzZXJoaWkudGVzdG5ldCIsInJlY2VpdmVyX2lkIjoiZGV2LTE2MjM2OTMxMjE5NTUtNzE2Njc2MzI1MzExNzYiLCJhbW91bnQiOiIxMCJ9",
+                  "deposit": "0",
+                  "gas": 5000000000000,
+                  "method_name": "ft_resolve_transfer"
+                }
+              }
+            ],
+            "gas_price": "186029458",
+            "input_data_ids": [
+              "EiDQi54XHfdD1KEcgiNzogXxXuwTpzeQfmyqVwbq7H4D"
+            ],
+            "is_promise_yield": false,
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR",
+        "receiver_id": "dev-1623333795623-21399959778159"
+      },
+      {
+        "predecessor_id": "system",
+        "priority": 0,
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "Transfer": {
+                  "deposit": "761030677610514102464"
+                }
+              }
+            ],
+            "gas_price": "0",
+            "input_data_ids": [],
+            "is_promise_yield": false,
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "9rxcC9o8x4RX7ftsDCfxK8qnisYv45rA1HGPxhuukWUL",
+        "receiver_id": "serhii.testnet"
+      },
+      {
+        "predecessor_id": "system",
+        "priority": 0,
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "Transfer": {
+                  "deposit": "2137766093631769060520"
+                }
+              }
+            ],
+            "gas_price": "0",
+            "input_data_ids": [],
+            "is_promise_yield": false,
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "H7YWFkvx16Efy2keCQ7BQ67BMEsdgdYLqJ99G4H3dR1D",
+        "receiver_id": "serhii.testnet"
+      }
+    ],
+    "receipts_outcome": [
+      {
+        "block_hash": "B9yZz1w3yzrqQnfBFAf17S4TLaHakXJWqmFDBbFxaEiZ",
+        "id": "Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk",
+        "outcome": {
+          "executor_id": "dev-1623333795623-21399959778159",
+          "gas_burnt": 20612680932083,
+          "logs": [
+            "Transfer 10 from serhii.testnet to dev-1623693121955-71667632531176"
+          ],
+          "metadata": {
+            "gas_profile": null,
+            "version": 1
+          },
+          "receipt_ids": [
+            "EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5",
+            "4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR",
+            "H7YWFkvx16Efy2keCQ7BQ67BMEsdgdYLqJ99G4H3dR1D"
+          ],
+          "status": {
+            "SuccessReceiptId": "4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR"
+          },
+          "tokens_burnt": "2061268093208300000000"
+        },
+        "proof": []
+      },
+      {
+        "block_hash": "7Z4LHWksvw7sKYKwpQfjEMG8oigjtRXKa3EopN7hS2v7",
+        "id": "EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5",
+        "outcome": {
+          "executor_id": "dev-1623693121955-71667632531176",
+          "gas_burnt": 3568066327145,
+          "logs": [
+            "Sender @serhii.testnet is transfering 10 tokens using ft_on_transfer, msg = take-my-money"
+          ],
+          "metadata": {
+            "gas_profile": null,
+            "version": 1
+          },
+          "receipt_ids": [
+            "AkwgvxUspRgy255fef2hrEWMbrMWFtnTRGduSgDRdSW1"
+          ],
+          "status": {
+            "SuccessValue": "IjEi"
+          },
+          "tokens_burnt": "356806632714500000000"
+        },
+        "proof": [
+          {
+            "direction": "Right",
+            "hash": "5X2agUKpqmk7QkUZsDQ4R4HdX7zXeuPYpVAfvbmF5Gav"
+          }
+        ]
+      },
+      {
+        "block_hash": "CrSDhQNn72K2Qr1mmoM9j3YHCo3wfZdmHjpHJs74WnPk",
+        "id": "AkwgvxUspRgy255fef2hrEWMbrMWFtnTRGduSgDRdSW1",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "metadata": {
+            "gas_profile": null,
+            "version": 1
+          },
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": [
+          {
+            "direction": "Right",
+            "hash": "4WG6hF5fTAtM7GSqU8mprrFwRVbChGMCV2NPZEjEdnc1"
+          }
+        ]
+      },
+      {
+        "block_hash": "CrSDhQNn72K2Qr1mmoM9j3YHCo3wfZdmHjpHJs74WnPk",
+        "id": "4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR",
+        "outcome": {
+          "executor_id": "dev-1623333795623-21399959778159",
+          "gas_burnt": 6208280264404,
+          "logs": [
+            "Refund 1 from dev-1623693121955-71667632531176 to serhii.testnet"
+          ],
+          "metadata": {
+            "gas_profile": null,
+            "version": 1
+          },
+          "receipt_ids": [
+            "9rxcC9o8x4RX7ftsDCfxK8qnisYv45rA1HGPxhuukWUL"
+          ],
+          "status": {
+            "SuccessValue": "Ijki"
+          },
+          "tokens_burnt": "620828026440400000000"
+        },
+        "proof": [
+          {
+            "direction": "Left",
+            "hash": "BzT8YhEDDWSuoGGTBzH2Cj5GC4c56uAQxk41by4KVnXi"
+          }
+        ]
+      },
+      {
+        "block_hash": "3Q2Zyscj6vG5nC2vdoYfcBHU9RVaAwoxHsHzAKVcAHZ6",
+        "id": "9rxcC9o8x4RX7ftsDCfxK8qnisYv45rA1HGPxhuukWUL",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "metadata": {
+            "gas_profile": null,
+            "version": 1
+          },
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": []
+      },
+      {
+        "block_hash": "7Z4LHWksvw7sKYKwpQfjEMG8oigjtRXKa3EopN7hS2v7",
+        "id": "H7YWFkvx16Efy2keCQ7BQ67BMEsdgdYLqJ99G4H3dR1D",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "metadata": {
+            "gas_profile": null,
+            "version": 1
+          },
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": [
+          {
+            "direction": "Left",
+            "hash": "61ak42D3duBBunCz3w4xXxoEeR2N7oav5e938TnmGFGN"
+          }
+        ]
+      }
+    ],
+    "status": {
+      "SuccessValue": "Ijki"
+    },
+    "transaction": {
+      "actions": [
+        {
+          "FunctionCall": {
+            "args": "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzNjkzMTIxOTU1LTcxNjY3NjMyNTMxMTc2IiwiYW1vdW50IjoiMTAiLCJtc2ciOiJ0YWtlLW15LW1vbmV5In0=",
+            "deposit": "1",
+            "gas": 100000000000000,
+            "method_name": "ft_transfer_call"
+          }
+        }
+      ],
+      "hash": "5n1kwA3TQQyFTkddR2Jau3H1Pt8ebQNGaov6aCQ6TDp1",
+      "nonce": 47589658000040,
+      "priority_fee": 0,
+      "public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN",
+      "receiver_id": "dev-1623333795623-21399959778159",
+      "signature": "ed25519:256qp2jAGXhhw2t2XfUAjWwzz3XcD83DH2v9THwDPsZjCLWHU8QJd6cuA773NP9yBmTd2ZyYiFHuxVEkYqnbsaSb",
+      "signer_id": "serhii.testnet"
+    },
+    "transaction_outcome": {
+      "block_hash": "96k8kKzFuZWxyiUnT774Rg7DC3XDZNuxhxD1qEViFupd",
+      "id": "5n1kwA3TQQyFTkddR2Jau3H1Pt8ebQNGaov6aCQ6TDp1",
+      "outcome": {
+        "executor_id": "serhii.testnet",
+        "gas_burnt": 2428149065268,
+        "logs": [],
+        "metadata": {
+          "gas_profile": null,
+          "version": 1
+        },
+        "receipt_ids": [
+          "Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk"
+        ],
+        "status": {
+          "SuccessReceiptId": "Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk"
+        },
+        "tokens_burnt": "242814906526800000000"
+      },
+      "proof": []
+    }
+  },
+  "id": "myid"
+}
+```
+
+</details>
+
+For the [decoded result](/api/rpc/contracts#transaction-return-values), decode the successful `SuccessValue` as described in the RPC reference.
+
+</Tab>
+</Tabs>
+
+Now, let's try to follow the steps described in the previous section and determine if these transactions was successful. In addition to being successful, let's analyze the various receipts in the series of cross-contract calls to determine how many fungible tokens were transferred. This will be the most complex case we'll look at.
+
+  1. Check that `result` » `transaction_outcome` » `outcome` » `status` has `SuccessReceiptId` as a key. If not, this transaction-processing step did not produce the expected receipt; inspect the actual failure and all available outcomes.
+  2. Take the value of the `SuccessReceiptId` key. In the case above it's `Hw6z8kJ7CSaC6SgyQzcmXzNX9gq1gaAnLS169qgyZ2Vk`.
+  3. Now, under `result` » `receipts` loop through the array until you find a receipt where the `receipt_id` matches the value from step 2. (Note that in the receipt, under `Actions` there's an element mentioning calling the `method_name: "ft_transfer_call"`.) On the same level of JSON, there's an `args` key. That's a base64-encoded value of the arguments passed to the method. When decoded it is:
+
+```json
+{"receiver_id":"dev-1623693121955-71667632531176","amount":"10","msg":"take-my-money"}
+```
+
+  4. Loop through `result` » `receipts_outcome` until finding the object where `id` is equal to the value from step 2. Similar to step 1, this object will also contain a `status` field that should contain the key `SuccessReceiptId`. For this example, follow `SuccessReceiptId` to the resolver. In general, inspect success/failure and receipt dependencies rather than treating the absence of this particular key as proof that no tokens moved. In the above example, this value is `4Tc8MsrJZSMpNZx7u4jSqxr3WhRzqxaNHxLJFqz8tUPR`.
+  5. Similar to the previous step, loop through the `result` » `receipts_outcome` until you find the object where the `id` matches the value from step 4. In that object check that `outcome` » `status` has the `SuccessValue` field. This resolver’s `SuccessValue` reports how many fungible-token units were used, not the unused amount returned by `ft_on_transfer`. Note that in the example above the value is `Ijki`, which is the base64-encoded version of `"9"`. In this example, 10 raw token units were sent (from step 3), 9 were used, and 1 was refunded.
+
+For additional clarity, let's take a look at one more optional aspect. In step 4 we isolated an object in `result` » `receipts_outcome`. There's an array of `receipt_ids` that's particularly interesting. In this example, receipt `EB69xtJiLRh9RNzAHgBGmom8551hrK2xSRreqbjvJgu5` executes `ft_on_transfer`. Identify that role from the receipt’s executor and method, not its position in the array. If we loop through the `result` » `receipts_outcome` and find this as the value for the `id` key, we'll see what happened in the function `ft_on_transfer` which takes place in the contract receiving the fungible tokens. In this object the `status` » `SuccessValue` is `IjEi` which is the base64-encoded value of `"1"`.
+
+In summary:
+1. A user called the fungible token contract with the method `ft_transfer_call` specifying the receiver account, how many tokens to send, and custom info.
+2. The receiver account implemented `ft_on_transfer`, returning `"1"` to the callback function on the fungible token contract.
+3. The fungible token contract's callback is `ft_resolve_transfer` and receives this value of `"1"`. It attempts to refund the 1 unused unit, subject to the receiver’s remaining token balance, and subtracts the actual refund from the 10 initially transferred. It then returns to the user how many tokens were used in this back-and-forth series of cross-contract calls: `"9"`.
+
+Wait for finalized resolver execution before releasing a transfer-and-call deposit. An initial transfer event can be followed by a refund event. For a conventional NEP-141 implementation:
+
+| Callback result | Resolution when the full unused balance is refundable |
+| --- | --- |
+| `"0"` unused | 10 units used, no refund |
+| `"1"` unused | 9 units used, 1 refunded |
+| `"10"` unused | 0 used, 10 refunded |
+| Callback `Failure` | Resolver attempts to refund all 10 |
+
+A failed callback does not roll back the initial token receipt. The resolver can refund only the available balance; forwarded or spent tokens and account unregistration can change the result. Inspect finalized transfer/refund/burn effects and reconcile the final balance. Support this route only with a reviewed receiving-contract routing and callback policy.
+
+### Failed transfer and call {#failed-transfer-and-call}
+Let's try to send more tokens than the account has:
+
+<Tabs>
+<Tab title="NEAR CLI">
+
+```bash
+near contract call-function as-transaction <ft_contract_id> ft_transfer_call json-args '{"receiver_id": "<defi_contract_id>", "amount": "1000000000", "msg": "take-my-money"}' prepaid-gas '100.0 Tgas' attached-deposit '1 yoctoNEAR' sign-as <user_account_id> network-config testnet sign-with-keychain send
+```
+
+</Tab>
+<Tab title="RPC">
+
+Transaction representation:
+
+```yaml
+Transaction: {
+	block_hash: `456…abc`,
+	signer_id: "serhii.testnet",
+	public_key: "ed25519:789…def",
+	nonce: 123,
+	receiver_id: "dev-1623333795623-21399959778159",
+	actions: [
+		FunctionCall(
+			FunctionCallAction {
+				method_name: ft_transfer_call,
+				args: `{"receiver_id":"dev-1623333916368-58707434878533","amount":"1000000000","msg":"take-my-money"}`,
+				gas: 100000000000000,
+				deposit: 1,
+			},
+		),
+	]
+}
+```
+
+
+
+```bash
+  http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=send_tx \
+  params:='{"signed_tx_base64":"REPLACE_WITH_FRESH_SIGNED_TRANSACTION_BASE64","wait_until":"FINAL"}'
+```
+
+To get details of this transaction:
+
+```bash
+http post https://archival-rpc.testnet.near.org jsonrpc=2.0 method=EXPERIMENTAL_tx_status \
+    params:='{"tx_hash":"FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB","sender_account_id":"serhii.testnet","wait_until":"FINAL"}' id=myid
+```
+
+<details>
+
+<summary>**Example response**:</summary>
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "final_execution_status": "FINAL",
+    "receipts": [
+      {
+        "predecessor_id": "serhii.testnet",
+        "priority": 0,
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "FunctionCall": {
+                  "args": "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQ==",
+                  "deposit": "1",
+                  "gas": 100000000000000,
+                  "method_name": "ft_transfer_call"
+                }
+              }
+            ],
+            "gas_price": "186029458",
+            "input_data_ids": [],
+            "is_promise_yield": false,
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo",
+        "receiver_id": "dev-1623333795623-21399959778159"
+      },
+      {
+        "predecessor_id": "system",
+        "priority": 0,
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "Transfer": {
+                  "deposit": "1"
+                }
+              }
+            ],
+            "gas_price": "0",
+            "input_data_ids": [],
+            "is_promise_yield": false,
+            "output_data_receivers": [],
+            "signer_id": "system",
+            "signer_public_key": "ed25519:11111111111111111111111111111111"
+          }
+        },
+        "receipt_id": "Euy4Q33DfvJTXD8HirE5ACoXnw9PMTQ2Hq47aGyD1spc",
+        "receiver_id": "serhii.testnet"
+      },
+      {
+        "predecessor_id": "system",
+        "priority": 0,
+        "receipt": {
+          "Action": {
+            "actions": [
+              {
+                "Transfer": {
+                  "deposit": "18681184841157733814920"
+                }
+              }
+            ],
+            "gas_price": "0",
+            "input_data_ids": [],
+            "is_promise_yield": false,
+            "output_data_receivers": [],
+            "signer_id": "serhii.testnet",
+            "signer_public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN"
+          }
+        },
+        "receipt_id": "6ZDoSeV3gLFS2NXqMCJGEUR3VwBpSxBEPjnEEaAQfmXL",
+        "receiver_id": "serhii.testnet"
+      }
+    ],
+    "receipts_outcome": [
+      {
+        "block_hash": "BohRBwqjRHssDVS9Gt9dj3SYuipxHA81xXFjRVLqgGeb",
+        "id": "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo",
+        "outcome": {
+          "executor_id": "dev-1623333795623-21399959778159",
+          "gas_burnt": 3734715409940,
+          "logs": [],
+          "metadata": {
+            "gas_profile": null,
+            "version": 1
+          },
+          "receipt_ids": [
+            "Euy4Q33DfvJTXD8HirE5ACoXnw9PMTQ2Hq47aGyD1spc",
+            "6ZDoSeV3gLFS2NXqMCJGEUR3VwBpSxBEPjnEEaAQfmXL"
+          ],
+          "status": {
+            "Failure": {
+              "ActionError": {
+                "index": 0,
+                "kind": {
+                  "FunctionCallError": {
+                    "ExecutionError": "Smart contract panicked: The account doesn't have enough balance"
+                  }
+                }
+              }
+            }
+          },
+          "tokens_burnt": "373471540994000000000"
+        },
+        "proof": []
+      },
+      {
+        "block_hash": "4BzTmMmTjKvfs6ANS5gmJ6GQzhqianEGWq7SaxSfPbdC",
+        "id": "Euy4Q33DfvJTXD8HirE5ACoXnw9PMTQ2Hq47aGyD1spc",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "metadata": {
+            "gas_profile": null,
+            "version": 1
+          },
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": [
+          {
+            "direction": "Right",
+            "hash": "5ipmcdgTieQqFXWQFCwcbZhFtkHE4PL4nW3mknBchpG6"
+          }
+        ]
+      },
+      {
+        "block_hash": "4BzTmMmTjKvfs6ANS5gmJ6GQzhqianEGWq7SaxSfPbdC",
+        "id": "6ZDoSeV3gLFS2NXqMCJGEUR3VwBpSxBEPjnEEaAQfmXL",
+        "outcome": {
+          "executor_id": "serhii.testnet",
+          "gas_burnt": 0,
+          "logs": [],
+          "metadata": {
+            "gas_profile": null,
+            "version": 1
+          },
+          "receipt_ids": [],
+          "status": {
+            "SuccessValue": ""
+          },
+          "tokens_burnt": "0"
+        },
+        "proof": [
+          {
+            "direction": "Left",
+            "hash": "9tcjij6M8Ge4aJcAa97He5nw8pH7PF8ZjRHVahBZD2VW"
+          }
+        ]
+      }
+    ],
+    "status": {
+      "Failure": {
+        "ActionError": {
+          "index": 0,
+          "kind": {
+            "FunctionCallError": {
+              "ExecutionError": "Smart contract panicked: The account doesn't have enough balance"
+            }
+          }
+        }
+      }
+    },
+    "transaction": {
+      "actions": [
+        {
+          "FunctionCall": {
+            "args": "eyJyZWNlaXZlcl9pZCI6ImRldi0xNjIzMzMzOTE2MzY4LTU4NzA3NDM0ODc4NTMzIiwiYW1vdW50IjoiMTAwMDAwMDAwMCIsIm1zZyI6InRha2UtbXktbW9uZXkifQ==",
+            "deposit": "1",
+            "gas": 100000000000000,
+            "method_name": "ft_transfer_call"
+          }
+        }
+      ],
+      "hash": "FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB",
+      "nonce": 47589658000031,
+      "priority_fee": 0,
+      "public_key": "ed25519:5UfEFyve3RdqKkWtALMreA9jzsAGDgCtwEXGNtkGeruN",
+      "receiver_id": "dev-1623333795623-21399959778159",
+      "signature": "ed25519:2cPASnxKtCoQtZ9NFq63fg8RzpjvmmE8hL4s2jk8zuhnBCD3AnYQ6chZZrUBGwu7WrsGuWUyohP1bEca4vfbsorC",
+      "signer_id": "serhii.testnet"
+    },
+    "transaction_outcome": {
+      "block_hash": "FwHUeqmYpvgkL7eBrUUAEMCuaQshcSy5vm4AHchebhK1",
+      "id": "FQsh44pvEsK8RS9AbK868CmGwfhUU2pUrizkQ6wCWTsB",
+      "outcome": {
+        "executor_id": "serhii.testnet",
+        "gas_burnt": 2428166952740,
+        "logs": [],
+        "metadata": {
+          "gas_profile": null,
+          "version": 1
+        },
+        "receipt_ids": [
+          "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo"
+        ],
+        "status": {
+          "SuccessReceiptId": "83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo"
+        },
+        "tokens_burnt": "242816695274000000000"
+      },
+      "proof": []
+    }
+  },
+  "id": "myid"
+}
+```
+
+</details>
+
+For the [decoded result](/api/rpc/contracts#transaction-return-values), decode the successful `SuccessValue` as described in the RPC reference.
+
+</Tab>
+</Tabs>
+
+
+Let's examine this response.
+
+  * `result` » `transaction_outcome` » `outcome` » `status` » `SuccessReceiptId` is `83AdQ16bpAC7BEUyF7zoRsAgeNW7HHmjhZLvytEsrygo`
+  * Find the outcome whose `id` matches that receipt ID, then inspect `outcome.status.Failure`. A missing outcome is pending; array position `0` is not a reliable receipt identifier.

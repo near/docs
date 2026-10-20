@@ -195,18 +195,6 @@ In other chains, paying a higher gas price gets your transaction processed faste
 
 ---
 
-## Gas as a Developer Incentive
-
-In NEAR, 30% of the gas fees burned while executing a contract go to the contract's account. This is a powerful incentive for developers to create and maintain useful contracts.
-
-For example, in [this transaction](https://testnet.nearblocks.io/txns/JD8Bg4u8kaYeaSsGBqkvhSDCEPgXhtwJRBBPKicCEPMs) the user calls a function in the `guestbook.near-examples.testnet` contract.
-
-Executing the function call burned a total of ~0.00032Ⓝ, from which 30% went to the contract's account. This means that the contract's account received 0.000096Ⓝ.
-
-Notice that the fee comes from the gas burned during the function execution, and not from the total gas used.
-
----
-
 ## Estimating Costs for a Call
 
 If you're developing a smart contract, you might want to estimate how much gas a function call will consume. This is useful to estimate limits for your function and avoid running into out-of-gas errors.

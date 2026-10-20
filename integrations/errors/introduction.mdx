@@ -1,0 +1,61 @@
+---
+id: introduction
+title: Error Handling
+sidebarTitle: Error Handling
+description: "Learn about common error patterns in NEAR protocol integrations and how to handle and troubleshoot issues in your applications."
+---
+
+Transaction submission can fail before execution, and accepted transactions can fail while their receipts execute. A timeout leaves the transaction's outcome unknown; recover using its original hash before submitting a replacement.
+
+---
+
+## Handling Transaction Errors {#near-platform-errors}
+
+For SDK error handling, nonce errors, and timeout recovery, see [submission errors and retries](/integrations/create-transactions#submission-errors-and-retries). The [transaction RPC reference](/api/rpc/transactions) documents submission and status responses.
+
+Actions within one receipt are atomic; separate receipts are not rolled back together. Inspect finalized receipt outcomes and account for successful movements, fees, and refunds before retrying an operation.
+
+---
+
+## Avoiding Token Loss
+
+This document provides an overview of potential scenarios that can lead to token loss on the NEAR Protocol and how to mitigate these risks. It covers improper key management, refunding deleted accounts, and failed asynchronous function calls.
+
+Token loss is possible under multiple scenarios. These scenarios can be grouped into a few related classes:
+
+1. [Improper key management](/integrations/accounts#improper-key-management)
+2. Refunding deleted accounts
+3. Failed asynchronous function calls
+
+<Warning>
+Careful! Losing tokens means losing money!
+</Warning>
+
+
+---
+
+
+## Refunding deleted accounts
+
+When a refund receipt is issued for an account, if that account no longer exists, the undeliverable system refund is burned. System refunds require an existing receiving account.
+
+### Deleting account with non-existent beneficiary
+
+When you delete an account, you must assign a beneficiary. The runtime sends the remaining balance directly to that beneficiary in a system payout receipt. If it cannot be delivered, its amount is burned. Verify that the beneficiary exists and track the payout’s finalized outcome.
+
+### Account deleted before it receives a refund
+
+If an account is explicitly deleted while refunds are outstanding, those refunds can become undeliverable. Wait for outstanding receipts and refund outcomes before deleting an account.
+
+See the [runtime refund handling](https://github.com/near/nearcore/blob/2.13.4/runtime/runtime/src/lib.rs).
+
+---
+## Failed asynchronous function calls
+
+<Warning>
+When designing a smart contract, you should always consider the asynchronous nature of NEAR Protocol.
+</Warning>
+
+If a contract function `f1` calls two (or more) other functions `f2` and `f3`, and at least one of these functions, `f2` and `f3` fails, then tokens will be refunded from the function that failed, but tokens will be appropriately credited to the function(s) which succeed.
+
+These are separate receipts, not an atomic batch of actions in one receipt. A failed downstream call does not undo a previously successful transfer. Track each movement and refund before deciding whether recovery is needed.
