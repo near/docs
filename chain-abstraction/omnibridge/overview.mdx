@@ -25,6 +25,19 @@ Currently the supported chains are:
 - **BNB** - _(Wormhole + Chain Signatures)_
 - **Arbitrum** - _(Wormhole + Chain Signatures)_
 - **Polygon** - _(Wormhole + Chain Signatures)_
+- **HyperEVM** - _(Wormhole + Chain Signatures)_
+- **Fogo** - _(Wormhole + Chain Signatures)_
+- **Abstract** - _(MPC verification + Chain Signatures)_
+- **Starknet** - _(MPC verification + Chain Signatures)_
+- **Aptos** - _(MPC verification + Chain Signatures)_
+
+The bridge contract lists how each chain's inbound transfers are verified. Read it with:
+
+```bash
+near contract call-function as-read-only omni.bridge.near get_provers json-args {} network-config mainnet now
+```
+
+Bitcoin and Zcash are listed by `get_utxo_chain_connectors` instead.
 
 <Info>
 See [Omni Bridge Roadmap](./roadmap) for more details.
