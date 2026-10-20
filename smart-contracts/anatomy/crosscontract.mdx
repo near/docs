@@ -225,7 +225,7 @@ The low level API (`Promise::new(...).function_call(...)`) takes a fixed gas val
 ---
 
 ## Callback Function
-If your function finishes correctly, then eventually your callback function will execute. This will happen whether the **external contract fails or not**.
+If your function finishes correctly, the callback always runs, whether the **external contract fails or not**. If it failed, the callback receives `PromiseResult::Failed`.
 
 In the callback function you will have access to the result, which will contain the status of the external function (if it worked or not), and the values in case of success.
 
@@ -233,17 +233,10 @@ In the callback function you will have access to the result, which will contain 
         url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs"
         start="23" end="37" />
 
-<Info>
-**Callback will always execute**
-
-We repeat, if your function finishes correctly, then your callback will **always execute**. This will happen no matter if the external function finished correctly or not
-
-</Info>
-
 <Warning>
+**The callback always runs, but it can still fail**
 
-Always make sure to have enough Gas for your callback function to execute
-
+The callback can run out of gas, panic, or hit a runtime limit. If it fails, only its own state changes are reverted: anything your original function already changed stays. See [callbacks can fail](/smart-contracts/security/cross-contract-calls/callback-failures).
 </Warning>
 
 <Tip>
@@ -314,6 +307,7 @@ This has important implications on how you should handle the callbacks. Particul
 
 1. Make sure you don't leave the contract in a exploitable state between the call and the callback.
 2. Manually rollback any changes to the state in the callback if the external call failed.
+3. Make sure the contract stays safe if the callback itself fails. See [callbacks can fail](/smart-contracts/security/cross-contract-calls/callback-failures).
 
 We have a whole [security section](/smart-contracts/security/cross-contract-calls/callbacks) dedicated to these specific errors, so please go and check it.
 
