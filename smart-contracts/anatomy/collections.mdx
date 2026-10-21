@@ -44,11 +44,11 @@ Currently, it costs approximately **1 Ⓝ** to store **100kb** of data.
 
 For storing data on-chain it’s important to keep in mind the following:
 
-- There is a 4mb limit on how much you can upload at once
+- A single transaction can be at most 1.5 MiB (1,572,864 bytes), including its arguments or contract code
 
 Let’s say for example, someone wants to put an NFT purely on-chain (rather than IPFS or some other decentralized storage solution) you’ll have almost an unlimited amount of storage but will have to pay 1 `$NEAR` per 100kb of storage used.
 
-Users will be limited to 4MB per contract call upload due to MAX_GAS constraints. The maximum amount of gas one can attach to a given functionCall is 300TGas.
+Each transaction is limited to 1.5 MiB in size. This is a size limit, separate from the gas limit. The maximum amount of gas you can attach to a transaction is 1 PGas (1,000 TGas). Before protocol version 83 (nearcore 2.11.0), the limit was 300 TGas.
 
 </Accordion>
 

@@ -16,11 +16,11 @@ description: "Explore decentralized storage alternatives for NEAR Protocol appli
 For storing data on-chain it's important to keep in mind the following:
 
 - You can store an unlimited amount of files, but will cost you 1Ⓝ per 100KB
-- There is a 4 MB limit on how much you can upload at once
+- A signed transaction can be at most 1,572,864 bytes (1.5 MiB). The data you upload in one transaction must be a little smaller, because the transaction also holds account IDs, action fields, a public key and a signature.
 
 For example, if you want to store an NFT purely on-chain (rather than using IPFS or some other decentralized storage solution as mentioned below) you'll have almost an unlimited amount of storage but will have to pay 1 `$NEAR` per 100 KB of storage used (see [Storage Staking](/protocol/storage/storage-staking))
 
-Users will be limited to 4MB per contract call upload due to `MAX_GAS` constraints. The maximum amount of gas one can attach to a given `functionCall` is 300TGas.
+Each upload must fit in one signed transaction, so split larger data across several transactions. This is a size limit, separate from the gas limit. The function calls in one transaction can have at most 1 PGas (1,000 TGas) of gas attached in total. Before protocol version 83 (nearcore 2.11.0), this limit was 300 TGas.
 
 ## Arweave
 
