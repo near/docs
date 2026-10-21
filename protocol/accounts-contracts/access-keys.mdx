@@ -174,12 +174,15 @@ Creating a sub-account with only a single function-call key means that account w
 The `allowance` field defines how much NEAR the key can spend on gas fees:
 
 - If set to a specific amount and fully consumed → the key becomes **unusable** and no new transactions can be signed
-- If set to `0` or omitted → **unlimited** allowance (the key has no gas budget restriction)
+- If omitted (`null`) → **unlimited** allowance (the key has no gas budget restriction)
+- If set to `0` in an `AddKey` action → a zero budget, so every transaction signed with the key fails with `NotEnoughAllowance`
+
+There is one exception. When a contract adds a key with the `promise_batch_action_add_key_with_function_call` host function, an allowance of `0` means unlimited.
 
 The allowance is charged at the [buy price](/protocol/transactions/gas#buying-vs-burning-gas) and credited back when the gas refund arrives, so a key needs more allowance than the final transaction cost.
 
 <Warning>
-If an account has only function-call keys and the allowance runs out, the account is permanently locked from initiating any transaction. Either use unlimited allowance (`0`) or ensure the account is topped up with NEAR before the allowance is exhausted.
+If an account has only function-call keys and their allowance runs out, the account cannot sign any more transactions. Adding NEAR to the account does not help, because the allowance belongs to the key, not to the account balance. To avoid this, leave the allowance unset so it is unlimited. The allowance of an existing key cannot be changed. To get a new allowance, add a new key. To add a key, you need a full access key, or a method in the account's own contract that adds keys.
 </Warning>
 
 ---
