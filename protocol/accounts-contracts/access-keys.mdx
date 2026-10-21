@@ -150,8 +150,12 @@ To recognize one of your own post-quantum keys in such a list, derive the same h
 You can create and manage `ml-dsa-65` keys today with the [NEAR CLI](/tools/cli#keys), and from your app with the [`near-kit`](/tools/near-api#post-quantum-keys-ml-dsa-65) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust) libraries. Contracts can add them via [`near-sdk-rs`](/smart-contracts/anatomy/actions) with no code changes.
 
 <Tip>
-Post-quantum support currently covers **transaction signing and access keys**. Validator (staking) keys, block production, and [implicit account](./account-id#implicit-address) addresses continue to use `ed25519`.
+Post-quantum support currently covers **transaction signing and access keys, on any account type** — an implicit account can add an `ml-dsa-65` key exactly like it can add any other key. What can't change is an implicit account's *address-defining* key: its address **is** that key's own bytes, so it's permanently `ed25519`. For an address that isn't tied to a classical key at all, use a [universal account](./account-id#universal-address) instead, whose `0u` address is a SHA3-256 hash and whose access keys can include `ml-dsa-65` from the moment it's created.
 </Tip>
+
+<Note>
+**Staking doesn't depend on account type.** A universal account can stake, and can sign the [`Stake`](/protocol/transactions/transaction-anatomy#actions) transaction itself with an `ml-dsa-65` key, exactly like it can sign any other action. The one thing that stays `ed25519` regardless of account type is the separate `public_key` field *named inside* that action, which becomes the validator node's own block-production key — a different piece of consensus math, unrelated to whichever key signed the transaction that proposed it.
+</Note>
 
 ---
 
