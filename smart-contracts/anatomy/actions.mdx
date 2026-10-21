@@ -181,6 +181,34 @@ the `create_account` method of `near` or `testnet` root contracts.
 
 ---
 
+## Create deterministic accounts
+
+Your contract can create a [deterministic account](/protocol/accounts-contracts/account-id#deterministic-address) whose `0s` address is derived from its initial code and storage. Use the `DeterministicStateInit` action instead of `CreateAccount`; the protocol validates that the supplied account ID matches the hash of the provided initial state.
+
+Smart contracts can build this action using the following host functions:
+
+- `promise_batch_action_state_init` — creates a `DeterministicStateInit` action referencing a code hash
+- `promise_batch_action_state_init_by_account_id` — creates the action referencing an existing account's code
+- `set_state_init_data_entry` — adds a key-value entry to the account's initial storage
+- `current_contract_code` — returns the calling contract's own code hash, useful for deploying clones
+
+Any NEAR attached beyond the required storage deposit is refunded to the sender.
+
+---
+
+## Create universal accounts
+
+Your contract can create a [universal account](/protocol/accounts-contracts/account-id#universal-address) whose `0u` address is derived from its initial code, storage, and access keys. Use the `UniversalStateInit` action instead of `CreateAccount`.
+
+Smart contracts can build this action using two host functions:
+
+- `universal_state_init_to_account_id` — derives the `0u` account ID from a state init and reports whether the bytes are valid, with no side effects
+- `promise_batch_action_universal_state_init` — appends a `UniversalStateInit` action to a promise, with an attached deposit that tops up the account's storage stake if needed. Any unused amount is refunded; use a separate `Transfer` action to add to the account's balance.
+
+See [Creating Universal Accounts](/protocol/tutorials/creating-universal-accounts#contract-triggered-creation) for a contract example and [relayer-assisted creation](/protocol/tutorials/creating-universal-accounts#relayer-assisted-creation) for details on funding.
+
+---
+
 ## Deploy a Contract
 
 When creating an account you can also batch the action of deploying a contract to it. Note that for this, you will need to pre-load the byte-code you want to deploy in your contract.

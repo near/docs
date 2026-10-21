@@ -1,98 +1,59 @@
 ---
 title: Architectural Overview
 icon: network
-description: "A comprehensive high-level overview of NEAR Protocol's architecture"
+description: "Understand NEAR's accounts, transactions, data flow, tokens, storage, and network."
 ---
 
-NEAR consists roughly of a blockchain layer and a [runtime layer](/protocol/network/runtime).
-These layers are designed to be independent from each other: the blockchain layer can in theory support runtime that processes
-transactions differently, has a different virtual machine (e.g. RISC-V), has different fees; on the other hand the runtime
-is oblivious to where the transactions are coming from. It is not aware whether the
-blockchain it runs on is sharded, what consensus it uses, and whether it runs as part of a blockchain at all.
+NEAR is a blockchain for applications built with smart contracts. Users interact with these applications through accounts and transactions, while validators process their activity across parallel parts of the network called shards.
 
-The blockchain layer and the runtime layer share the following components and invariants:
+---
 
-## Transactions and Receipts
+## Accounts and smart contracts
 
-[Transactions](/protocol/transactions) and receipts are a fundamental concept in Near Protocol. Transactions represent actions requested by the
-blockchain user, e.g. send assets, create account, execute a method, etc. Receipts, on the other hand is an internal
-structure; think of a receipt as a message which is used inside a message-passing system.
+An **account** holds a NEAR balance, access keys, and optionally a smart contract with its own storage. Access keys determine who can sign transactions and what those transactions can do.
 
-Transactions are created outside the Near Protocol node, by the user who sends them via RPC or network communication.
-Receipts are created by the runtime from transactions or as the result of processing other receipts.
+A **smart contract** is code deployed to an account. Applications call its methods to update stored data, transfer assets, or interact with other contracts.
 
-Blockchain layer cannot create or process transactions and receipts, it can only manipulate them by passing them
-around and feeding them to a runtime.
+Learn more about [Accounts](/protocol/accounts-contracts/account-model) and [Access Keys](/protocol/accounts-contracts/access-keys).
 
-## Account-Based System
+---
 
-Similar to Ethereum, Near Protocol is an [account-based system](/protocol/accounts-contracts/account-model). Which means that each blockchain user is roughly
-associated with one or several accounts (there are exceptions though, when users share an account and are separated
-through the [access keys](/protocol/accounts-contracts/access-keys)).
+## Transactions and receipts
 
-The runtime is essentially a complex set of rules on what to do with accounts based on the information from the
-transactions and the receipts. It is therefore deeply aware of the concept of account.
+A user signs a **transaction** to request actions, such as sending NEAR or calling a contract. NEAR processes these actions through **receipts**, internal messages that can produce further receipts when contracts call each other.
 
-Blockchain layer however is mostly aware of the accounts through [the trie](#trie) and [the validators](#validators).
-Outside these two it does not operate on the accounts directly.
+This means a transaction can lead to several steps of execution across the network. The [runtime](/protocol/network/runtime) applies the rules for executing these actions and updating account state.
 
-### Assume every account belongs to its own shard
+See [Transactions](/protocol/transactions/index) and [Lifecycle of a Transaction](/protocol/transactions/transaction-execution) for the full process, and [Gas](/protocol/transactions/gas) for execution fees.
 
-Every account at NEAR belongs to some shard.
-All the information related to this account also belongs to the same shard. The information includes:
+---
 
-- Balance
-- Locked balance (for staking)
-- Code of the contract
-- Key-value storage of the contract
-- All Access Keys
+## Shards and data flow
 
-Runtime assumes, it's the only information that is available for the contract execution.
-While other accounts may belong to the same shards, the Runtime never uses or provides them during contract execution.
-We can just assume that every account belongs to its own shard. So there is no reason to intentionally try to collocate accounts.
+NEAR distributes accounts across **shards** so the network can process activity in parallel. Accounts on different shards communicate through receipts.
 
-## Trie
+See [NEAR Data Flow](/protocol/data-flow/near-data-flow) for how activity moves across shards, or follow a [Token Transfer](/protocol/data-flow/token-transfer-flow) through the network.
 
-Near Protocol is a stateful blockchain -- there is a state associated with each account and the user actions performed
-through transactions mutate that state. The state then is stored as a trie, and both the blockchain layer and the
-runtime layer are aware of this technical detail.
+---
 
-The blockchain layer manipulates the trie directly. It partitions the trie between the shards to distribute the load.
-It synchronizes the trie between the nodes, and eventually it is responsible for maintaining the consistency of the trie
-between the nodes through its consensus mechanism and other game-theoretic methods.
+## Tokens
 
-The runtime layer is also aware that the storage that it uses to perform the operations on is a trie. In general it does
-not have to know this technical detail and in theory we could have abstracted out the trie as a generic key-value storage.
-However, we allow some trie-specific operations that we expose to the smart contract developers so that they utilize
-Near Protocol to its maximum efficiency.
+The [native NEAR token](/protocol/network/tokens) pays transaction fees, covers on-chain storage, and secures the network through validator staking.
 
-## Tokens and gas
+Smart contracts can also define **fungible tokens**, **NFTs**, and **MultiTokens**. Shared [Token Standards](/protocol/network/token-standards) define how wallets and applications query and transfer these assets.
 
-Even though [tokens](/protocol/network/tokens) is a fundamental concept of the blockchain, it is neatly encapsulated
-inside the runtime layer together with the [gas](/protocol/transactions/gas), [fees](/protocol/transactions/gas#understanding-gas-fees), and rewards.
+---
 
-The only way the blockchain layer is aware of the tokens and the gas is through the computation of the exchange rate
-and the inflation which is based strictly on the block production mechanics.
+## Storage
 
-## Validators
+Accounts and contracts store data on-chain, such as access keys, token balances, and application records. **Storage staking** reserves NEAR to cover the space this data occupies. Removing data releases the corresponding storage stake.
 
-Both the blockchain layer and the runtime layer are aware of a special group of participants who are
-responsible for maintaining the integrity of the Near Protocol. These participants called [Validators](/protocol/network/validators) are associated with the
-accounts and are rewarded accordingly. The reward part is what the runtime layer is aware of, while everything
-around the orchestration of the validators is inside the blockchain layer.
+See [Storage Staking](/protocol/storage/storage-staking) for how storage is priced and managed.
 
-## Blockchain Layer Concepts
+---
 
-Interestingly, the following concepts are for the blockchain layer only and the runtime layer is not aware of them:
+## Network
 
-- Sharding -- the runtime layer does not know that it is being used in a sharded blockchain, e.g. it does not know
-  that the trie it works on is only a part of the overall blockchain state;
-- Blocks or chunks -- the runtime does not know that the receipts that it processes constitute a chunk and that the output
-  receipts will be used in other chunks. From the runtime perspective it consumes and outputs batches of transactions and receipts;
-- Consensus -- the runtime does not know how consistency of the state is maintained;
-- Communication -- the runtime does not know anything about the current network topology. Receipt has only a `receiver_id` (a recipient account), but knows nothing about the destination shard, so it's a responsibility of the blockchain layer to route a particular receipt.
+[Validators](/protocol/network/validators) secure NEAR through proof of stake, producing and validating blocks and shard chunks. Validator assignments are updated in periods called [epochs](/protocol/network/epoch).
 
-## Runtime Layer Concepts
-
-- [Fees and rewards](/protocol/transactions/gas) -- fees and rewards are neatly encapsulated in the runtime layer. The blockchain layer, however,
-  has an indirect knowledge of them through the computation of the tokens-to-gas exchange rate and the inflation.
+Applications run on [mainnet, testnet, or a local network](/protocol/network/networks). Mainnet is the live network; testnet and local networks let developers experiment before deploying there.

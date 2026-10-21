@@ -1,31 +1,34 @@
 ---
-title: Tokens
-description: "Learn about NEAR's native token and its role in the network"
+title: NEAR Native Token
+description: "Use NEAR to pay transaction fees, cover on-chain storage, and secure the network through staking."
 ---
 
-NEAR Protocol has a native token, NEAR (Ⓝ), which is used for various purposes within the ecosystem. This document provides an overview of the NEAR token, its use cases, and how it functions within the NEAR Protocol.
+NEAR (Ⓝ) is the native token of NEAR Protocol. You can transfer it between accounts, use it to pay for network resources, and stake it to help secure the network.
 
-# NEAR Token
-This is the native token used in NEAR Protocol.
-It has multiple use cases:
-- Secures the network through staking
-- Provides a unit of account - NEAR is used for processing transactions and storing data
-- Serves as a medium of exchange
+---
 
-### Securing the Network
-NEAR Protocol is a proof-of-stake (PoS) network, which means that resistance from various attacks comes from staking NEAR.
-Staked NEAR represents the decentralized infrastructure of servers that maintain the network and process transactions for applications and users on NEAR.
-Rewards for providing this service are received in NEAR.
+## Transaction fees
 
-## Providing a Unit of Account
-NEAR is used to price computation and storage on the NEAR infrastructure.
-The network charges transaction fees in NEAR to process changes and transactions.
+Transactions consume **gas**, which measures the computation needed to execute their actions. The sender pays for gas in NEAR.
 
-## Medium of Exchange
-NEAR is readily available on the protocol level, so it can be used to transfer value between NEAR applications and accounts.
-This means that applications can use NEAR to charge for various functions, like access to data or other complex transactions.
-Entities can also easily exchange NEAR between each other, without the need for trusted third parties to clear and settle transactions.
+See [Gas and execution fees](/protocol/transactions/gas) for how fees are calculated.
 
-For a deeper dive on NEAR Economics: [https://near.org/blog/near-protocol-economics](https://near.org/blog/near-protocol-economics)
+---
 
-For more information about the NEAR token, visit [NEAR Token Supply and Distribution](https://near.org/blog/near-token-supply-and-distribution/) or [Nomicon](https://nomicon.io).
+## Storage staking
+
+Accounts must maintain enough NEAR to cover the data they store on-chain. These tokens remain locked while the storage is in use; removing data releases the corresponding storage stake.
+
+See [Storage Staking](/protocol/storage/storage-staking) for storage costs and requirements.
+
+---
+
+## Validator staking
+
+NEAR uses proof of stake to secure the network. Token holders can delegate NEAR to validators, which process transactions and produce blocks, and receive a share of staking rewards.
+
+See [Validators](/protocol/network/validators) for how validators work, or follow [Staking NEAR Tokens](/protocol/tutorials/staking-tokens) to delegate and withdraw tokens.
+
+<Tip>
+Smart contracts can also define their own tokens. See [Token Standards](/protocol/network/token-standards) for fungible tokens, NFTs, and MultiTokens.
+</Tip>

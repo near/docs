@@ -1,0 +1,120 @@
+---
+title: Creating Implicit & Named Accounts
+sidebarTitle: Implicit & Named Accounts
+description: "Create implicit accounts through transfers and named accounts through parent-account contracts or CreateAccount actions."
+---
+
+You can create an account from a key pair or choose a readable name like alice.testnet. This guide walks through both options: creating [implicit accounts](/protocol/accounts-contracts/account-id#implicit-address) and [named accounts](/protocol/accounts-contracts/account-id#named-address).
+
+<Note>
+Install the [NEAR CLI](/tools/cli#installation) before starting. The examples below use **testnet**.
+</Note>
+
+---
+
+## Create an implicit account
+
+Creating an implicit account takes two steps: generate a key pair locally, then send a transfer to its derived address.
+
+### Generate a key pair
+
+The simplest way to obtain a public / private key pair is using the [NEAR CLI](/tools/cli):
+
+```bash
+near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
+
+# The file "~/.near-credentials/implicit/cf4342372b583606057805490c97d4778bc4ac444a76f32154634558ab57c3c5.json" was saved successfully
+
+cat ~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json
+# {"implicit_account_id":"cf4342372b583606057805490c97d4778bc4ac444a76f32154634558ab57c3c5","master_seed_phrase":"kit creek invite deputy fetch resource marble sweet camp thumb mushroom swift","private_key":"ed25519:5uJtH8hdYKPEhLVTn9EoxaneLpKh11qLEWDVvG6tKTeMUzsmf7isHYxXixhNcupRhUNQ2fHFgtKXy94YUXHfbxiG","public_key":"ed25519:Ex4stLtTe43ynFmxGweGzMWLvRmRSUP6EjU6nvAdY2vg","seed_phrase_hd_path":"m/44'/397'/0'"}
+```
+
+The file contains the generated key pair and implicit account ID. Your generated ID will differ from the example above. Keep the private key secret.
+
+You can also generate a key pair using the `near-seed-phrase` library:
+
+```js
+import { generateSeedPhrase } from "near-seed-phrase";
+const { seedPhrase, publicKey, secretKey } = generateSeedPhrase();
+```
+
+Note that generating the key pair runs locally; the account will only be created on-chain when it receives a transfer.
+
+### Fund the account
+
+Send NEAR to the derived address from a wallet or an existing funded account:
+
+```bash
+export SENDER_ID=alice.testnet
+export IMPLICIT_ACCOUNT_ID=your-64-character-implicit-account-id
+
+near tokens "$SENDER_ID" send-near "$IMPLICIT_ACCOUNT_ID" '0.1 NEAR' \
+  network-config testnet sign-with-keychain send
+```
+
+After the transfer is confirmed, the implicit account is created on-chain and its public key is registered as a full-access key. You can then use the saved credentials to sign transactions from this account.
+
+<Tip>
+You can initialize an account by making a transfer of `0 NEAR`. This is because the cost of creating an account is covered **through GAS fees**, and not the attached NEAR amount.
+</Tip>
+
+---
+
+## Create a named account
+
+Named accounts are created through the `top level` accounts `near` in mainnet, and `testnet` in testnet. Both accounts possess smart contracts that expose the `create_account`.
+
+<Tip>
+You can also simply use the NEAR CLI command `near create-account` to create a named account without manually interacting with the parent account's contract.
+</Tip>
+
+### Call the parent account's contract
+
+To create `alice.testnet` with `0.1 NEAR`, call `create_account` on `testnet` using an existing account such as `funding-account.testnet`:
+
+```bash
+near call testnet create_account '{"new_account_id": "alice.testnet", "new_public_key": "ed25519:<data>"}' --useAccount funding-account.testnet --deposit 0.1 --networkId testnet
+```
+
+Replace `ed25519:<data>` with the public key generated above. The contract creates and funds `alice.testnet` and adds the `new_public_key` as a full-access key to the account.
+
+<Info>
+If you are not going through an intermediary such as a wallet, you can generate an implicit account, fund it, and call `create_account` on `near` / `testnet`.
+</Info>
+
+<Tip>
+You can initialize an account by making a transfer of `0 NEAR`. This is because the cost of creating an account is covered **through GAS fees**, and not the attached NEAR amount.
+</Tip>
+
+### Create a direct sub-account
+
+If you control `alice.testnet`, you can trigger the `CreateAccount` action yourself to create a direct sub-account:
+
+```bash
+near create-account app.alice.testnet --useAccount alice.testnet --networkId testnet
+```
+
+The CLI builds the transaction that creates the account and adds its first key. You can add `--initial-balance <amount in NEAR>` to set its initial balance.
+
+<Note>
+A parent account has no control over its sub-accounts after creation. Control depends on the access keys and contract installed on each account.
+</Note>
+
+### Use the testnet faucet
+
+A faucet can create and fund a named testnet account for you, so you don't need an existing funded account. Choose an available `.testnet` name and run:
+
+```bash
+export ACCOUNT_ID=your-unique-name.testnet
+
+near account create-account sponsor-by-faucet-service "$ACCOUNT_ID" \
+  autogenerate-new-keypair save-to-keychain network-config testnet create
+```
+
+The CLI generates and saves your key pair, then asks the faucet service to create the account with that public key. Faucet-sponsored creation is available on testnet only.
+
+---
+
+## Create accounts from an application or contract
+
+See [NEAR API Libraries](/tools/near-api#create-named-account) for named-account creation and [Create a Sub Account](/smart-contracts/anatomy/actions#create-a-sub-account) for creating accounts from a smart contract.

@@ -1,0 +1,38 @@
+---
+title: Token Standards
+description: "Compare NEAR's smart contract standards for fungible tokens, NFTs, and MultiTokens."
+---
+
+Beyond the [native NEAR token](/protocol/network/tokens), smart contracts can define their own tokens. NEAR provides standards for fungible tokens, non-fungible tokens (NFTs), and MultiTokens, so wallets and applications can interact with them consistently.
+
+Unlike native NEAR balances, these token balances and ownership records are stored in the **token contract**, which handles transfers and tracks each account's holdings.
+
+| Token type | What it represents | Core standard |
+| --- | --- | --- |
+| Fungible token (FT) | Interchangeable units, such as stablecoins or governance tokens | [NEP-141](https://github.com/near/NEPs/blob/master/neps/nep-0141.md) |
+| Non-fungible token (NFT) | Individually identified assets, such as collectibles or event tickets | [NEP-171](https://github.com/near/NEPs/blob/master/neps/nep-0171.md) |
+| MultiToken (MT) | Multiple token types managed by one contract, including fungible and non-fungible assets | [NEP-245](https://github.com/near/NEPs/blob/master/neps/nep-0245.md) |
+
+---
+
+## Fungible tokens
+
+Each FT contract tracks balances of one fungible token. Units of that token are interchangeable: transferring 10 units reduces the sender's balance by 10 and increases the receiver's balance by 10.
+
+See the [FT standard](/primitives/ft/standard) for the interface, or [Using FTs](/primitives/ft/ft) for querying balances and transferring tokens.
+
+---
+
+## Non-fungible tokens
+
+An NFT contract tracks individually identified tokens and their owners. Each token has a unique ID within its contract and can carry metadata describing the asset it represents.
+
+See the [NFT standard](/primitives/nft/standard) for the interface, or [Using NFTs](/primitives/nft/nft) for querying and transferring NFTs.
+
+---
+
+## MultiTokens
+
+A MultiToken contract manages multiple token types, each identified by a token ID, and tracks each account's balance for each ID. It can represent fungible, non-fungible, and semi-fungible assets in one contract and transfer multiple token types in a batch.
+
+See [NEP-245](https://github.com/near/NEPs/blob/master/neps/nep-0245.md) for the MultiToken interface and extensions.

@@ -1,5 +1,6 @@
 ---
-title: Storage Staking
+title: Storage
+icon: hard-drive
 description: "Learn about NEAR Protocol's storage staking mechanism, including costs, storage pricing, attack prevention, and strategies for managing on-chain data storage."
 ---
 
@@ -9,9 +10,13 @@ NEAR's storage staking is a mechanism that ensures the network remains efficient
 >
 > In storage staking (sometimes called _state_ staking), the account that owns a smart contract must stake (or lock) tokens according to the amount of data stored in that smart contract, effectively reducing the balance of the contract's account.
 
+---
+
 ## How does NEAR's design align incentives?
 
 Storage-staked tokens are unavailable for other uses, such as validation staking. This increases the yield that validators will receive. Learn more in [the economics whitepaper](https://pages.near.org/papers/economics-in-sharded-blockchain/).
+
+---
 
 ## When do tokens get staked?
 
@@ -23,17 +28,23 @@ Let's walk through an example:
 2. Visitors to your app can add messages to the guest book. This means your users will, [by default](/protocol/transactions/gas#understanding-gas-fees), pay a small gas fee to send their message to your contract.
 3. When such a call comes in, NEAR will check that `example.near` has a large enough balance that it can stake an amount to cover the new storage needs. If it does not, the transaction will fail.
 
+---
+
 ## The "million cheap data additions" attack
 
 Note that this can create an attack surface. To continue the example above, if sending data to your guest book costs users close to nothing while costing the contract owner significantly more, then a malicious user can exploit the imbalance to make maintaining the contract prohibitively expensive.
 
 Take care, then, when designing your smart contracts to ensure that such attacks cost potential attackers more than it would be worth.
 
+---
+
 ## btw, you can remove data to unstake some tokens
 
 People familiar with the "immutable data" narrative about blockchains find this surprising. While it's true that an _indexing node_ will keep all data forever, _validating nodes_ (that is, the nodes run by most validators in the network) do not. Smart contracts can provide ways to delete data, and this data will be purged from most nodes in the network within a few [epochs](../network/epoch).
 
 Note that a call to your smart contract to remove data has an associated gas fee. Given NEAR's gas limit, this creates an upper limit on how much data can be deleted in a single transaction.
+
+---
 
 ## How much does it cost?
 
@@ -44,6 +55,8 @@ NEAR's JSON RPC API provides [a way to query this initial setting](/api/rpc/prot
 <Note>
 An account can occupy up to `770` bytes without staking anything. That allowance is paid for once, with the fixed `0.007Ⓝ` charged when [creating the account](/protocol/transactions/gas#creating-an-account).
 </Note>
+
+---
 
 ## Example cost breakdown
 
@@ -82,11 +95,15 @@ So:
 
 Note that you can get this down to Ⓝ330 just by changing the prefix from `t2o` to a single character. Or get rid of it entirely! You can have a zero-length prefix on one `PersistentVector` in your smart contract. If you did that with this one, you could get it down to Ⓝ250.
 
+---
+
 ## Calculate costs for your own contract
 
 Doing manual byte math as shown above is difficult and error-prone. Good news: you don't have to!
 
 You can test the storage used using the [SDK environment](../../smart-contracts/anatomy/environment) and checking `env.storage_usage()`
+
+---
 
 ## Other ways to keep costs down
 
@@ -114,25 +131,19 @@ In general, Borsh is faster, uses less storage, and costs less gas. Use it if yo
 
 ### Store data off-chain
 
-This is especially important if you are storing user-generated data!
+For large files or user-generated content, store the data off-chain and keep only a content identifier or hash in your contract. This keeps on-chain records small and storage costs predictable.
 
-Let's use this [Guest Book](https://github.com/near-examples/guest-book-examples) as an example. As implemented today, visitors to the app can sign in with NEAR and leave a message. Their message is stored on-chain.
+You can use decentralized storage such as [IPFS](https://docs.ipfs.tech/), [Arweave](https://docs.arweave.org/), or [Crust](https://wiki.crust.network/). Follow the provider's documentation for uploading data and keeping it available.
 
-Imagine this app got very popular, and that visitors started leaving unexpectedly long messages. The contract owner might run out of funding for storage very quickly!
-
-A better strategy could be to store data off-chain. If you want to keep the app decentralized, a popular off-chain data storage solution is [IPFS](https://ipfs.io/). With this, you can represent any set of data with a predictable content address such as:
-
-    QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG
-
-Such a content address could represent a JSON structure or an image or any other type of data. Where does this data get physically stored? You could use [Filecoin](https://filecoin.io/) or run your own IPFS server to pin your app's data.
-
-With this approach, each record you add to your contract will be a predictable size.
+---
 
 ## Summary
 
 NEAR's structure incentivizes network operators while giving flexibility and predictability to contract developers. Managing storage is an important aspect of smart contract design, and NEAR's libraries make it easy to figure out how much storage will cost for your application.
 
 
+
+---
 
 ## Footnotes
 

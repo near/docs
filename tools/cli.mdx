@@ -305,7 +305,7 @@ The interactive key picker only lists `ed25519` and `secp256k1` keys. A post-qua
 
 ### Gas keys
 
-[Gas keys](/protocol/accounts-contracts/access-keys#gas-keys) are access keys with their own prepaid gas balance and up to 1,024 parallel nonces. The `add-key` command can create them through the `grant-gas-key-full-access` and `grant-gas-key-function-call` modes, and dedicated commands manage their balance and nonces.
+[Gas keys](/protocol/accounts-contracts/gas-keys) are access keys with their own prepaid gas balance and up to 1,024 parallel nonces. The `add-key` command can create them through the `grant-gas-key-full-access` and `grant-gas-key-function-call` modes, and dedicated commands manage their balance and nonces.
 
 A gas key is always created empty — fund it with `fund-gas-key` before using it:
 
@@ -467,6 +467,29 @@ This option allows you to manage and interact with your smart contracts.
     ```
   </Tab>
 </Tabs>
+
+### Create deterministic accounts
+
+Use `near contract state-init` to create a [deterministic account](/protocol/accounts-contracts/account-id#deterministic-address) from a global contract and initial storage. The CLI derives the `0s` address for you.
+
+The global contract must already be deployed. Replace `publisher.testnet` with its account ID and `alice.testnet` with the account signing and paying for the transaction:
+
+```bash
+near contract state-init use-global-account-id publisher.testnet \
+  data-from-json '{}' execute '0.1 NEAR' \
+  sign-as alice.testnet network-config testnet sign-with-keychain send
+```
+
+`data-from-json` takes a JSON object with Base64-encoded storage keys and values; `{}` starts with empty storage. The deposit covers storage costs, and any excess is refunded.
+
+To compute the address without creating the account, use the same code reference and storage with `inspect account-id`:
+
+```bash
+near contract state-init use-global-account-id publisher.testnet \
+  data-from-json '{}' inspect account-id
+```
+
+You can also reference a global contract by its code hash using `use-global-hash` instead of `use-global-account-id`.
 
 ### Inspect
 

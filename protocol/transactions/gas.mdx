@@ -168,7 +168,7 @@ Every account occupies state that the nodes running its shard have to keep forev
 You don't buy gas, instead, the gas fee is automatically removed from your account's balance when the transaction [is first processed](./transaction-execution#block-1-the-transaction-arrives) based on the action's gas cost and the [buy price](#buying-vs-burning-gas).
 
 <Note>
-Transactions signed with a [gas key](/protocol/accounts-contracts/access-keys#gas-keys) instead pay their gas fee from the key's own prepaid balance, and gas refunds return to the key.
+Transactions signed with a [gas key](/protocol/accounts-contracts/gas-keys) instead pay their gas fee from the key's own prepaid balance, and gas refunds return to the key.
 </Note>
 
 The only exception to this rule is when you make a function call to a contract. In this case, you need to define how many gas units to use, up to a maximum value of `1000Tgas`. This amount will be converted to NEAR using the [buy price](#buying-vs-burning-gas) and deducted from your account's balance.

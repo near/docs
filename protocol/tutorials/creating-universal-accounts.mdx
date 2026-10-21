@@ -1,15 +1,18 @@
 ---
 title: Creating Universal Accounts
+sidebarTitle: Universal Accounts
 description: "Three ways to create and initialize a 0u universal account: relayer-assisted, self-signed bootstrap, and from inside a smart contract, with code and RPC examples."
 ---
 
-A [universal account](./account-id#universal-address)'s address is the hash of its own initial state, so creating one is always the same underlying operation: submit a `UniversalStateInit` action carrying that state — the code, storage, and access keys the account will start with. What differs between the three flows below is **who signs** the transaction that carries it, and **when** the account starts existing.
+A [universal account](/protocol/accounts-contracts/account-id#universal-address)'s address is the hash of its own initial state, so creating one is always the same underlying operation: submit a `UniversalStateInit` action carrying that state — the code, storage, and access keys the account will start with. What differs between the three flows below is **who signs** the transaction that carries it, and **when** the account starts existing.
 
-This page assumes you're familiar with [Universal Address](./account-id#universal-address) and [Access Keys](./access-keys).
+This page assumes you're familiar with [Universal Address](/protocol/accounts-contracts/account-id#universal-address) and [Access Keys](/protocol/accounts-contracts/access-keys).
 
 <Note>
 This is a protocol-level walkthrough using raw transactions and RPC calls. Dedicated SDK helpers for building a `UniversalStateInit` action are expected to follow in `near-api-js` and `near-kit` — check [NEAR API](/tools/near-api) for the latest tooling before hand-rolling this in production.
 </Note>
+
+---
 
 ## Choosing a flow
 
@@ -136,7 +139,7 @@ let raw = state_init.to_raw();
 let account_id = derive_universal_account_id(&raw);
 ```
 
-`PublicKeyHandle` is the compact form an access key takes in a state init: the full public key for `ed25519`/`secp256k1`, or the 32-byte SHA3-256 hash for [`ml-dsa-65`](./access-keys#post-quantum-keys-ml-dsa-65) — `PublicKeyHandle::from(public_key)` picks the right variant for you.
+`PublicKeyHandle` is the compact form an access key takes in a state init: the full public key for `ed25519`/`secp256k1`, or the 32-byte SHA3-256 hash for [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#post-quantum-keys-ml-dsa-65) — `PublicKeyHandle::from(public_key)` picks the right variant for you.
 
 Control over the account is entirely decided by whichever keys end up in `access_keys` at this step — there's no separate "owner" concept. A relayer building this state init could just as well name its own key alongside (or instead of) the future owner's; whoever holds any key committed here controls the account from the moment it initializes.
 </Step>
@@ -280,7 +283,7 @@ unsafe {
 Like in the relayer flow, this `amount_ptr` deposit only tops up the account's **storage stake**, and only on the state init that actually initializes the account, refunding the rest back to the calling contract. A state init that lands on an account that's already initialized — a repeat, idempotent call — always refunds the **whole** deposit, since there's no storage left for it to cover. It doesn't unconditionally add to the account's balance the way a `Transfer` action does; if you want the new account to end up with a specific spendable balance, batch a `Transfer` action onto the same promise as well.
 
 <Note>
-There's no host function to build up a `UniversalStateInit`'s `data` map incrementally the way `set_state_init_data_entry` does for a [deterministic account](./account-id#deterministic-address). If your contract needs to populate initial storage, it has to construct the whole Borsh-encoded state init itself before calling `promise_batch_action_universal_state_init` — the two host functions here only derive an id from bytes and attach an action, they don't help build the bytes.
+There's no host function to build up a `UniversalStateInit`'s `data` map incrementally the way `set_state_init_data_entry` does for a [deterministic account](/protocol/accounts-contracts/account-id#deterministic-address). If your contract needs to populate initial storage, it has to construct the whole Borsh-encoded state init itself before calling `promise_batch_action_universal_state_init` — the two host functions here only derive an id from bytes and attach an action, they don't help build the bytes.
 </Note>
 </Step>
 <Step title="Handle malformed input at the receipt, not at the call">

@@ -86,11 +86,13 @@ Returns basic account information.
 ```
 </Accordion>
 
-<Info>
+<Tip>
 **Extra fields on an uninitialized [universal account](/protocol/accounts-contracts/account-id#universal-address)**
 
-A `0u` account that's been funded by a transfer but hasn't run its `UniversalStateInit` yet additionally returns `state: "uninitialized"` and `bootstrap_nonce` (the value its self-signed init transaction's nonce is based on — that transaction must use `bootstrap_nonce + 1`). Both fields are omitted once the account initializes — see [Creating Universal Accounts](/protocol/accounts-contracts/creating-universal-accounts#the-uninitialized-account) for a full example response.
-</Info>
+A `0u` account that's been funded but [not initialized](/protocol/tutorials/creating-universal-accounts#the-uninitialized-account) returns `state: "uninitialized"` and a `bootstrap_nonce`.
+
+Both fields are omitted once the account initializes — see [Creating Universal Accounts](/protocol/tutorials/creating-universal-accounts#the-uninitialized-account) for a full example response.
+</Tip>
 
 ---
 
@@ -211,7 +213,7 @@ For a function-call key, `permission` is an object instead of the `"FullAccess"`
 }
 ```
 
-For a [gas key](/protocol/accounts-contracts/access-keys#gas-keys), `permission` also carries the key's prepaid `balance` and number of nonce lanes (`num_nonces`). A full-access gas key uses `GasKeyFullAccess`:
+For a [gas key](/protocol/accounts-contracts/gas-keys), `permission` also carries the key's prepaid `balance` and number of nonce lanes (`num_nonces`). A full-access gas key uses `GasKeyFullAccess`:
 
 ```json
 "permission": {
@@ -326,7 +328,7 @@ Post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-sc
 
 ## View Gas Key Nonces
 
-Returns the current nonce of every parallel nonce lane of a [gas key](/protocol/accounts-contracts/access-keys#gas-keys), given the account and the key's public key. The array is indexed by `nonce_index`: the first element is lane `0`, the second is lane `1`, and so on. Use [`view_access_key`](#view-access-key) to see the gas key's balance and permission.
+Returns the current nonce of every parallel nonce lane of a [gas key](/protocol/accounts-contracts/gas-keys), given the account and the key's public key. The array is indexed by `nonce_index`: the first element is lane `0`, the second is lane `1`, and so on. Use [`view_access_key`](#view-access-key) to see the gas key's balance and permission.
 
 - **method**: `query`
 - **params**: `request_type: view_gas_key_nonces`, `finality` OR `block_id`, `account_id`, `public_key`
