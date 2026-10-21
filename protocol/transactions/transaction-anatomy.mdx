@@ -49,7 +49,7 @@ Each transaction can have **one or multiple** [`Actions`](https://nomicon.io/Run
 9. [`DeleteKey`](https://nomicon.io/RuntimeSpec/Actions.html#deletekeyaction): to delete an existing key from the account
 10. [`TransferToGasKey`](/protocol/accounts-contracts/access-keys#gas-keys): to fund a gas key's prepaid gas balance with NEAR
 11. [`WithdrawFromGasKey`](/protocol/accounts-contracts/access-keys#gas-keys): to move NEAR from a gas key's balance back to the account
-12. [`DelegateActions`](https://nomicon.io/RuntimeSpec/Actions.html#delegate-actions): to create a [meta-transaction](/protocol/transactions/meta-tx) (`Delegate`, or `DelegateV2` for gas-key support)
+12. [`DelegateActions`](https://nomicon.io/RuntimeSpec/Actions.html#delegate-actions): to create a [meta-transaction](/protocol/transactions/meta-tx) (`Delegate`). `DelegateV2`, which lets a gas key sign the delegate action, is rejected from protocol version 87
 13. [`Stake`](https://nomicon.io/RuntimeSpec/Actions.html#stakeaction): special action to express interest in becoming a network validator
 14. [`DeterministicStateInit`](https://nomicon.io/RuntimeSpec/Actions.html#deterministicstateinitaction): special action to create a deterministic account (an advanced kind of implicit account)
 
