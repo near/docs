@@ -66,10 +66,10 @@ curl -X POST https://rpc.mainnet.near.org/ \
   -d '{"jsonrpc":"2.0","id":"status","method":"status","params":[]}'
 ```
 
-Recent nearcore nodes support [query-only JSON-RPC batching](/api/rpc/batching), but public providers can run different nearcore versions, disable batching, or apply different limits, gateways, and request policies. Confirm batch availability and limits before depending on it. Do not assume that one HTTP batch consumes one request from a quota: providers may count every entry or use a method-specific compute cost.
+Send one request object per HTTP request. nearcore does not support JSON-RPC batch requests. If the body is a JSON array, a nearcore node rejects the whole request with HTTP `400` and error code `-32700` (`Parse error`), and none of the requests in the array run.
 
 <Warning>
-  Never load test a shared public endpoint. Run performance or high-volume batch tests only against a node you operate or an endpoint whose operator has explicitly authorized the test.
+  Never load test a shared public endpoint. Run performance tests only against a node you operate or an endpoint whose operator has explicitly authorized the test.
 </Warning>
 
 ## Run your own node

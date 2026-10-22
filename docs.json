@@ -210,6 +210,10 @@
     {
       "source": "/integrations/errors/error-implementation",
       "destination": "/integrations/errors/introduction"
+    },
+    {
+      "source": "/api/rpc/batching",
+      "destination": "/api/rpc/providers"
     }
   ],
   "navbar": {
@@ -754,7 +758,6 @@
             "group": " ",
             "pages": [
               "api/rpc/introduction",
-              "api/rpc/batching",
               "api/rpc/providers",
               "api/rpc/transactions",
               "api/rpc/block-chunk",
