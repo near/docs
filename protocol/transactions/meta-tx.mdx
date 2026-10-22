@@ -85,7 +85,6 @@ The `SignedTransaction` is then sent to the network via RPC call, and the result
 
 <Accordion title="Why using a relayer?">
 
-## Why use a Relayer?
 
 There are multiple reasons to use a relayer:
 1. Your users are new to NEAR and don't have any gas to cover transactions
@@ -101,7 +100,7 @@ There are multiple reasons to use a relayer:
 
 ## DelegateV2: Meta Transactions with Gas Keys
 
-Since nearcore 2.13 (protocol version 86), there is a second version of the delegate action, `DelegateV2`, introduced alongside [gas keys](/protocol/accounts-contracts/access-keys#gas-keys) in [NEP-611](https://github.com/near/NEPs/pull/611).
+Since nearcore 2.13 (protocol version 86), there is a second version of the delegate action, `DelegateV2`, introduced alongside [gas keys](/protocol/accounts-contracts/gas-keys) in [NEP-611](https://github.com/near/NEPs/pull/611).
 
 `DelegateV2` is identical to the original `DelegateAction` except for one field: its `nonce` can be either a plain nonce (like V1) or a **gas key nonce** — a `nonce` plus a `nonce_index` selecting one of the signing key's parallel nonce lanes. This means a user can sign meta transactions with a **gas key**, which is not possible with V1:
 
@@ -142,6 +141,8 @@ The versioned payload is part of what the user signs, and V1 and V2 use differen
 
 ## Limitations
 
+Relayers can cover transaction fees, but the sender still needs an initialized account, and each meta transaction targets a single receiver.
+
 ### Single receiver
 
 A meta transaction, like a normal transaction, can only have one receiver. It's
@@ -156,7 +157,7 @@ chain. This NONCE is stored on the access key information that gets initialized
 when creating an account.
 
 With [`DelegateV2`](#delegatev2-meta-transactions-with-gas-keys), the NONCE can
-belong to one of a [gas key](/protocol/accounts-contracts/access-keys#gas-keys)'s
+belong to one of a [gas key](/protocol/accounts-contracts/gas-keys)'s
 parallel nonce lanes instead of a regular access key.
 
 ---
