@@ -34,6 +34,23 @@ Each transaction has exactly one `Signer` and `Receiver`, but can have multiple 
 
 ---
 
+## Transaction limits
+
+A signed transaction must fit within both of these limits:
+
+| Limit | Maximum |
+| --- | --- |
+| Serialized size of the signed transaction | **1.5 MiB (1,572,864 bytes)** |
+| Total gas attached to all function-call actions in the transaction | **1 PGas (1,000 TGas)** |
+
+The size limit includes the entire signed transaction: account IDs, public key, nonce, block hash, actions (including function-call arguments or contract code), and signature. The space available for your payload is therefore smaller than 1.5 MiB. Nodes reject larger transactions with `TransactionSizeExceeded`.
+
+The size and [gas limits](/protocol/transactions/gas#gas-units) are separate: attaching more gas does not let you upload more bytes. To upload larger data, split it across transactions if your contract supports incremental uploads.
+
+These limits are configured by `max_transaction_size` and `max_total_prepaid_gas` in the [protocol configuration](/api/rpc/protocol#protocol-config).
+
+---
+
 ## Actions
 
 Each transaction can have **one or multiple** [`Actions`](https://nomicon.io/RuntimeSpec/Actions.html), which are the actual operations to be performed on the `Receiver` account. There are different types of actions that can be performed:
