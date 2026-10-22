@@ -177,7 +177,9 @@ The `allowance` field defines how much NEAR the key can spend on gas fees:
 - If omitted (`null`) → **unlimited** allowance (the key has no gas budget restriction)
 - If set to `0` in an `AddKey` action → a zero budget, so every transaction signed with the key fails with `NotEnoughAllowance`
 
+<Warning>
 There is one exception. When a contract adds a key with the `promise_batch_action_add_key_with_function_call` host function, an allowance of `0` means unlimited.
+</Warning>
 
 The allowance is charged at the [buy price](/protocol/transactions/gas#buying-vs-burning-gas) and credited back when the gas refund arrives, so a key needs more allowance than the final transaction cost.
 
