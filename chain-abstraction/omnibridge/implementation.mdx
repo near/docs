@@ -5,7 +5,7 @@ icon: shuffle
 description: "Explore Omni Bridge's technical architecture"
 ---
 
-The Omni Bridge is a sophisticated cross-chain bridge infrastructure that enables secure and efficient token transfers between NEAR Protocol and various other blockchain networks. This document provides a detailed technical overview of the bridge's architecture, covering its core components, security model, and operational mechanisms. By leveraging a combination of Multi-Party Computation (MPC), chain-specific light clients, and a permissionless relayer network, the bridge achieves a robust balance of security, decentralization, and user experience.
+The Omni Bridge is a sophisticated cross-chain bridge infrastructure that enables secure and efficient token transfers between NEAR Protocol and various other blockchain networks. This document provides a detailed technical overview of the bridge's architecture, covering its core components, security model, and operational mechanisms. By leveraging a combination of Multi-Party Computation (MPC), chain-specific light clients, and a relayer network, the bridge achieves a robust balance of security, decentralization, and user experience.
 
 For reference code implementations, see:
 
@@ -74,9 +74,9 @@ Messages are encoded using Borsh serialization and contain:
 
 ### Signature Process
 
-1. NEAR contract creates and stores the message payload
-2. MPC network observers detect valid payloads
-3. Nodes jointly sign the payload
+1. The bridge contract on NEAR records the transfer when the tokens arrive
+2. A relayer calls `sign_transfer`, and the bridge asks the MPC contract (`v1.signer`) to sign the payload
+3. The MPC network signs it, and the bridge logs the signature in a `SignTransferEvent`
 4. Signature is verified on destination chains
 
 <Tip>
@@ -213,16 +213,17 @@ Omni Bridge requires different trust assumptions depending on the chain connecti
 
 ## Relayer Network
 
-Relayers are permissionless infrastructure operators who monitor for bridge events and execute cross-chain transactions. Unlike many bridge designs, our relayers cannot:
+Relayers are infrastructure operators who monitor for bridge events and execute cross-chain transactions. On NEAR, the relayer steps of `omni.bridge.near` (`sign_transfer`, `fin_transfer`, `claim_fee` and fast transfers) are open only to **trusted relayers**: accounts with the bridge's `DAO` or `UnrestrictedRelayer` role, or accounts that staked the required NEAR with `apply_for_trusted_relayer` and waited out the activation period. `get_relayer_config` returns the stake and the waiting period, and `get_active_relayers` lists the staked relayers. On EVM destination chains, anyone can submit an already-signed transfer to `finTransfer`.
+
+Unlike many bridge designs, our relayers cannot:
 
 * Forge transfers
 * Steal funds
-* Censor transactions (users can self-relay)
 * Front-run transactions for profit
 * Do not create additional security assumptions
 
 <Info>
-The relayer's role is purely operational - executing valid transfers and collecting predetermined fees. Multiple relayers can operate simultaneously, creating competition for faster execution and lower fees.
+The relayer's role is purely operational - executing valid transfers and collecting predetermined fees. Multiple relayers can operate simultaneously, creating competition for faster execution and lower fees. Relayers are paid from the fee set when a transfer starts, so a transfer with a zero fee may never be signed or finalized.
 </Info>
 
 ---
@@ -234,7 +235,7 @@ Standard cross-chain transfers can take time due to finality and verification re
 ### How it Works
 
 1.  **User Initiation:** A user sends a `FastFinTransferMsg` specifying the destination and fee.
-2.  **Relayer Execution:** A relayer detects the request and instantly transfers the equivalent amount (minus fees) to the user on the destination chain from their own funds.
+2.  **Relayer Execution:** A trusted relayer detects the request and instantly transfers the equivalent amount (minus fees) to the user on the destination chain from their own funds.
 3.  **Settlement:** The bridge later reimburses the relayer once the original transfer is fully verified and finalized.
 
 <Tip>
@@ -288,6 +289,6 @@ The fee structure is designed to:
 * Cover worst-case execution costs
 
 <Tip>
-Users can bypass relayers entirely by executing their own transfers, paying only the necessary gas fees on each chain. This creates a natural ceiling on relayer fees.
+On EVM destination chains, users can submit an already-signed transfer themselves, paying only that chain's gas. The steps on NEAR (signing an outbound transfer, finalizing an inbound one) need a trusted relayer.
 </Tip>
 
