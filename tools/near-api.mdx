@@ -220,6 +220,33 @@ Accounts on NEAR can create sub-accounts under their own namespace, which is use
 Parent accounts have **no control** over their sub-accounts, they are completely independent.
 </Info>
 
+### Create Deterministic Account
+
+Use `near-kit` to create a [deterministic account](/protocol/accounts-contracts/account-id#deterministic-address) from a global contract and initial storage. The library derives the `0s` address from the state init.
+
+```javascript
+import { Near } from "near-kit";
+
+const near = new Near({
+  network: "testnet",
+  privateKey: "ed25519:<alice-private-key>",
+  defaultSignerId: "alice.testnet",
+});
+
+await near
+  .transaction("alice.testnet")
+  .stateInit({
+    code: { accountId: "publisher.testnet" },
+    data: new Map(),
+    deposit: "0.1 NEAR",
+  })
+  .send();
+```
+
+Replace `publisher.testnet` with an account that has already deployed a global contract. `data` maps storage keys to values as `Uint8Array` bytes; an empty map starts with empty storage. The deposit covers storage costs, and any excess is refunded.
+
+See the [`near-kit` deterministic account guide](https://github.com/r-near/near-kit/blob/main/docs/in-depth/global-contracts.mdx#4-deterministic-account-ids-nep-616) for initial storage and address derivation examples.
+
 ### Delete Account
 
 Accounts on NEAR can delete themselves, transferring any remaining balance to a specified beneficiary account.
@@ -854,7 +881,7 @@ Be very careful when deleting keys. Removing all keys from an account will cause
 
 ### Post-Quantum Keys (ML-DSA-65)
 
-NEAR supports the post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#post-quantum-keys-ml-dsa-65) signature scheme (FIPS 204). You add and use an `ml-dsa-65` key exactly like an `ed25519` one — it can be a [full-access](/protocol/accounts-contracts/access-keys#full-access-keys) or [function-call](/protocol/accounts-contracts/access-keys#function-call-keys) key and signs transactions the same way.
+NEAR supports the post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) signature scheme (FIPS 204). You add and use an `ml-dsa-65` key exactly like an `ed25519` one — it can be a [full-access](/protocol/accounts-contracts/access-keys#full-access-keys) or [function-call](/protocol/accounts-contracts/access-keys#function-call-keys) key and signs transactions the same way.
 
 <Tabs>
   <Tab title="🌐 near-kit">
