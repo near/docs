@@ -139,7 +139,7 @@ let raw = state_init.to_raw();
 let account_id = derive_universal_account_id(&raw);
 ```
 
-`PublicKeyHandle` is the compact form an access key takes in a state init: the full public key for `ed25519`/`secp256k1`, or the 32-byte SHA3-256 hash for [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#post-quantum-keys-ml-dsa-65) — `PublicKeyHandle::from(public_key)` picks the right variant for you.
+`PublicKeyHandle` is the compact form an access key takes in a state init: the full public key for `ed25519`/`secp256k1`, or the 32-byte SHA3-256 hash for [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) — `PublicKeyHandle::from(public_key)` picks the right variant for you.
 
 Control over the account is entirely decided by whichever keys end up in `access_keys` at this step — there's no separate "owner" concept. A relayer building this state init could just as well name its own key alongside (or instead of) the future owner's; whoever holds any key committed here controls the account from the moment it initializes.
 </Step>
