@@ -32,7 +32,7 @@ curl -X POST https://rpc.mainnet.near.org/ \
   -d '{"jsonrpc":"2.0","id":"status","method":"status","params":[]}'
 ```
 
-See [RPC Providers](/api/rpc/providers) for the full list of public endpoints. When enabled by its operator, a recent nearcore node can also accept multiple read-only `query` calls in one request; see [Query Batching](/api/rpc/batching) for its scope and availability caveats.
+See [RPC Providers](/api/rpc/providers) for the full list of public endpoints. Send one JSON-RPC request object per HTTP request. nearcore does not support JSON-RPC batch requests.
 
 ## Available Methods
 

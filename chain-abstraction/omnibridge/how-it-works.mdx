@@ -41,9 +41,9 @@ As we've learned, Chain Signatures fundamentally changes the verification mechan
 
 The light client approach requires destination chains to verify ED25519 signatures from NEAR validators. Chain Signatures replaces this with a single MPC signature verification. Destination chains only need to verify one signature using their native signature verification schemes - typically ECDSA for EVM chains.
 
-NEP-141's transaction guarantees handle the security of token locking. A transfer creates two operations within a **single transaction**:
-1. Lock tokens and record the transfer state
-2. Request MPC signature for the destination chain
+NEP-141's transaction guarantees handle the security of token locking. A transfer out of NEAR takes two steps:
+1. The user's transfer to the bridge locks or burns the tokens and records the transfer state
+2. A relayer calls `sign_transfer`, which requests the MPC signature for the destination chain
 
 The Locker contract requests signatures from the MPC network, which then generates signatures for valid transfer requests. This replaces the need for challenge periods - the security derives from the MPC threshold guarantees rather than optimistic assumptions.
 
@@ -61,17 +61,19 @@ sequenceDiagram
    participant User as User Account
    participant Bridge as Omni Bridge <br> Locker Contract
    participant MPC as MPC Service <br> (off-chain)
+   participant Relayer as Relayer <br> (off-chain)
    participant Other as Destination Chain
 
    note over User, Bridge: NEAR Blockchain
  
     User->>Bridge:1. Submits transfer <br> token request
-    Bridge->>Bridge: 2. Locks tokens
-    Bridge->>MPC: 3. Request signature
-    MPC->>MPC: 3. Signs message
-    MPC-->>Bridge: 4. Return signed msg
-    Bridge->>Other: 5. Broadcast signed msg to destination chain
-    Other->>Other: 4. Mint/release tokens
+    Bridge->>Bridge: 2. Locks or burns tokens
+    Relayer->>Bridge: 3. Calls sign_transfer
+    Bridge->>MPC: 4. Requests signature
+    MPC->>MPC: 5. Signs message
+    MPC-->>Bridge: 6. Returns signed msg
+    Relayer->>Other: 7. Submits signed msg to destination chain
+    Other->>Other: 8. Mints or releases tokens
 ```
 
 To get started building with Omni Bridge, see:

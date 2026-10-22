@@ -154,19 +154,7 @@ By default, nearcore is configured to do as little work as possible while still 
 
 ### Shards/Accounts to Track
 
-We need to ensure that NEAR Indexer follows all the necessary shards, so by default the `"tracked_shards_config"` is set to `"AllShards"`. The most common tweak you might need to apply is listing to specific shards; to do that, lists all the shard UIDs you want to track in the `"tracked_shards_config"` section (`~/.near/<network>/config.json` file):
-
-```json
-...
-"tracked_shards_config": {
-       "Shards": [
-              "s3.v3",
-              "s4.v3"
-       ]
-},
-...
-```
-Or, if you want to track specific accounts:
+We need to ensure that NEAR Indexer follows all the necessary shards, so by default the `"tracked_shards_config"` is set to `"AllShards"`. If you only need the data of specific accounts, list those accounts in the `"tracked_shards_config"` section (`~/.near/<network>/config.json` file). The node then tracks the shards that hold these accounts:
 
 ```json
 ...
@@ -178,6 +166,8 @@ Or, if you want to track specific accounts:
 },
 ...
 ```
+
+The indexer supports only these two settings: `"AllShards"`, or `"Accounts"` with at least one account. With any other value, including a `"Shards"` list of shard UIDs, the indexer stops at startup.
 
 ### Sync Mode
 You can choose Indexer Framework sync mode by setting what to stream:

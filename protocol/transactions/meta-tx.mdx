@@ -85,7 +85,6 @@ The `SignedTransaction` is then sent to the network via RPC call, and the result
 
 <Accordion title="Why using a relayer?">
 
-## Why use a Relayer?
 
 There are multiple reasons to use a relayer:
 1. Your users are new to NEAR and don't have any gas to cover transactions
@@ -102,51 +101,16 @@ There are multiple reasons to use a relayer:
 ## DelegateV2: Meta Transactions with Gas Keys
 
 <Warning>
-nearcore 2.14 removes `DelegateV2` from protocol version 87. From that protocol version, the network rejects new transactions and receipts that contain a `DelegateV2` action, with the `RemovedProtocolFeature` error. Meta transactions that are already in flight at the upgrade still complete. To see which protocol version a network runs, call the `status` RPC method and read `protocol_version`.
+Protocol version 86 allowed users to sign `DelegateV2` actions with [gas keys](/protocol/accounts-contracts/gas-keys) to create meta transactions. From protocol version 87 (nearcore 2.14), `DelegateV2` is removed and new transactions containing it are rejected with `RemovedProtocolFeature`.
 
-From protocol version 87, a gas key cannot sign the inner delegate action. The original `DelegateAction` only accepts a regular access key, and fails with `DelegateActionRequiresNonGasKey` when a gas key signed it. A relayer can still sign the wrapping transaction with its own gas key.
+Users must sign the inner delegate action with a regular access key. Relayers can still sign the wrapping transaction with their own gas keys to pay for gas.
 </Warning>
-
-Since nearcore 2.13 (protocol version 86), there is a second version of the delegate action, `DelegateV2`, introduced alongside [gas keys](/protocol/accounts-contracts/access-keys#gas-keys) in [NEP-611](https://github.com/near/NEPs/pull/611).
-
-`DelegateV2` is identical to the original `DelegateAction` except for one field: its `nonce` can be either a plain nonce (like V1) or a **gas key nonce** — a `nonce` plus a `nonce_index` selecting one of the signing key's parallel nonce lanes. This means a user can sign meta transactions with a **gas key**, which is not possible with V1:
-
-```json
-{
-  "DelegateV2": {
-    "delegate_action": {
-      "V2": {
-        "sender_id": "alice.near",
-        "receiver_id": "ft.near",
-        "actions": [ ... ],
-        "nonce": { "GasKeyNonce": { "nonce": 187310139000002, "nonce_index": 1 } },
-        "max_block_height": 187440000,
-        "public_key": "ed25519:..."
-      }
-    },
-    "signature": "ed25519:..."
-  }
-}
-```
-
-The nonce variant must match the key that signed: a delegate action carrying a `GasKeyNonce` must be signed by a gas key, and a plain-nonce delegate action must be signed by a regular access key — mismatches are rejected.
-
-This unlocks gas sponsorship at both ends of the relay:
-
-- **The user's side** (only before protocol version 87): signing on a gas key's nonce lanes lets a user (or an automated fleet acting as one account) keep many meta transactions in flight concurrently, since each lane's nonce advances independently. Note that in a meta transaction the user's gas key contributes its **nonce lanes**, not its balance. The relayer still pays all gas
-- **The relayer's side**: the relayer can sign the wrapping transaction with its **own gas key**, paying gas from the key's prepaid balance on one of its lanes — solving the nonce-collision problem that high-volume relayers traditionally work around by rotating dozens of access keys
-
-The original `DelegateAction` is not deprecated and keeps working as before. All existing constraints apply to both versions: a transaction can contain only one delegate action (of either version), and delegate actions cannot be nested.
-
-Until a network upgrades to protocol version 87, you can build and sign `DelegateV2` actions with the [NEAR CLI](/tools/cli#gas-keys) (on a relayer-configured network connection, selecting the gas key's lane with `--nonce-index`) and with the [`near-kit`](https://github.com/r-near/near-kit) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust) libraries.
-
-<Note>
-The versioned payload is part of what the user signs, and V1 and V2 use different [NEP-461](https://github.com/near/NEPs/pull/461) signing prefixes — a signature produced for one version can never be replayed as the other.
-</Note>
 
 ---
 
 ## Limitations
+
+Relayers can cover transaction fees, but the sender still needs an initialized account, and each meta transaction targets a single receiver.
 
 ### Single receiver
 
@@ -161,10 +125,7 @@ attacks. The NONCE must be chosen by Alice and compared to a NONCE stored on
 chain. This NONCE is stored on the access key information that gets initialized
 when creating an account.
 
-Before protocol version 87, [`DelegateV2`](#delegatev2-meta-transactions-with-gas-keys)
-also let the NONCE belong to one of a [gas key](/protocol/accounts-contracts/access-keys#gas-keys)'s
-parallel nonce lanes. From protocol version 87, the user must sign a meta
-transaction with a regular access key.
+The user must sign the delegate action with a regular access key and use that key's nonce.
 
 ---
 

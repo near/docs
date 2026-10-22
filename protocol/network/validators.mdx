@@ -23,11 +23,17 @@ In exchange for servicing the network, validators are rewarded with a target num
 
 All transaction fees (minus the part which is allocated as the rebate for contracts) which are collected within each epoch are burned by the system. The inflationary reward is paid out to validators at the same rate regardless of the number of fees collected or burned.
 
+---
+
 ## Intro to Validators
 
 [Validators](https://www.near.org/papers) are responsible for producing and validating blocks and chunks, ensuring the security and integrity of the NEAR network.
 
 The hardware requirements for running a validator node vary depending on the staking position. Detailed specifications can be found here: [the hardware requirements](https://near-nodes.io/validator/hardware-validator).
+
+<Note>
+The `public_key` in a [`Stake` action](/protocol/transactions/transaction-anatomy#actions) is the validator's block-production key and must use `ed25519`. This is separate from the access key that signs the transaction, which can use any [supported signature scheme](/protocol/accounts-contracts/access-keys#signature-schemes), including `ml-dsa-65`.
+</Note>
 
 You can view the list of currently active validators on platforms like [NEAR-STAKING](https://near-staking.com/stats). To become a validator, the minimum stake required is determined by the 300th largest staking proposal. If there are more than 300 proposals, the threshold will be set by the stake amount of the 300th proposal, as long as it exceeds the minimum threshold of 25,500 `$NEAR`. The current seat price to join the active validator set is updated in real-time on [NEAR BLOCKS](https://nearblocks.io/node-explorer). Any validator node with a stake greater than the current seat price can join the set of active validators.
 
@@ -39,10 +45,14 @@ We don't need GPU support as we are a POS chain and we require very little compu
 You can read more about our consensus strategy on our [Validator Quickstart](https://github.com/near/wiki/blob/master/Archive/validators/about.md) and [Staking FAQ](https://github.com/near/wiki/blob/master/Archive/validators/faq.md).
 </Tip>
 
+---
+
 ## Block & Chunk producers
 The top 100 validators are responsible for producing and validating blocks, as well as producing chunks. Under normal circumstances, each validator is assigned to a single shard, for which it produces chunks.
 
 Block & Chunk producers are guaranteed a minimum annual reward of 2.5%. If less than 100% of the network’s tokens are staked, validators have the potential to earn even higher annual rewards.
+
+---
 
 ## Chunk Validators
 
@@ -53,6 +63,14 @@ Non-top 100 validators take on the role of chunk validators, which has lower har
 Chunk validators do not track shards. Their responsibilities are focused solely on validating and endorsing chunks.
 
 Like block and chunk producers, chunk validators are guaranteed a minimum of 2.5% annual rewards. If less than 100% of the network’s tokens are staked, chunk validators may earn even higher rewards. For more details on validator economics, check out [NEAR’s Economics Explained](https://near.org/blog/near-protocol-economics/).
+
+---
+
+## Sunsetting a staking pool
+
+If you operate a pool and want to wind it down, follow [Sunsetting a Staking Pool](/protocol/tutorials/sunsetting-a-staking-pool) to pause staking and help delegators withdraw their funds.
+
+---
 
 ## Dedicated Validator Documentation Site
 

@@ -1,14 +1,14 @@
 ---
-title: Validator Staking
+title: Staking NEAR Tokens
 icon: lock
 description: "Learn how to stake NEAR, delegate to validators, track rewards, and withdraw staked tokens safely."
 ---
 
 import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
 
-NEAR uses a Proof-of-Stake (PoS), meaning that users chose the active node validators by delegating their tokens to them.
+You can delegate NEAR tokens to a validator to help secure the network and earn staking rewards.
 
-In this article you'll find a detailed explanation of the staking process, including delegating, viewing balances, and withdrawing using the [NEAR CLI](../../tools/cli).
+This tutorial shows you how to stake tokens, check balances, unstake, and withdraw using the [NEAR CLI](/tools/cli).
 
 <Note>
 **Contract source code**
@@ -26,7 +26,7 @@ Check [NearBlocks](https://nearblocks.io/node-explorer), [Pikespeak](https://pik
 
 <Accordion title="List validators using CLI">
 
-  If you prefer, you can get the list of current validators by using the [`near-validator`](../../tools/cli#validator-extension) CLI:
+  If you prefer, you can get the list of current validators by using the [`near-validator`](/tools/cli#validator-extension) CLI:
 
   ```sh
   near-validator validators network-config mainnet now
@@ -54,7 +54,7 @@ Check [NearBlocks](https://nearblocks.io/node-explorer), [Pikespeak](https://pik
 
 <Tip>
 
-You will start earning staking rewards after the next epoch (approximately 12 hours)
+You will start earning staking rewards after the next epoch
 
 </Tip>
 
@@ -149,7 +149,7 @@ To check your staked balance on the `<my_validator>` pool for the `<user-account
 
 To withdraw your staked tokens, you will first need to "un-delegate" them from the validator.
 
-Your tokens will enter a 4 epoch (~24 hours) unbonding period before they can be withdrawn.
+Your tokens will enter a 4-epoch unbonding period before they can be withdrawn.
 
 ### Unstake Tokens
 
@@ -162,7 +162,7 @@ near staking delegation <user-account.near> unstake '1 NEAR' <my_validator> netw
 
 <Info>
 
-Use the `unstake-all` command to to unstake all tokens at once:
+Use the `unstake-all` command to unstake all tokens at once:
 
 ```sh
 near staking delegation <user-account.near> unstake-all <my_validator> network-config mainnet sign-with-keychain
@@ -242,58 +242,6 @@ near call <my_validator> withdraw '{"amount": "100000000000000000000000000"}' --
     <TryOutOnLantstool path="docs/2.build/5.primitives/staking/withdraw-unstaked-tokens.json" />
   </Tab>
 </Tabs>
-
----
-
-## Sunsetting a Stake Pool
-
-If you are a stake pool owner and want to wind down your validator service, follow these steps to ensure delegators can safely recover their funds.
-
-### Step 1: Notify Delegators
-
-Before making any changes, inform your delegators that the pool is shutting down. Give them enough time to unstake and withdraw their tokens. They need to:
-1. Call `unstake_all` on the pool.
-2. Wait for the **4-epoch unbonding period** (~48 hours).
-3. Call `withdraw_all` to retrieve their tokens.
-
-You can share the commands from the [Withdrawing Staked Tokens](#withdrawing-staked-tokens) section above with them.
-
-### Step 2: Pause Staking
-
-Call `pause_staking` from the pool owner account. This causes the contract to unstake everything (stake 0) and stop restaking, without affecting share balances or reward calculations.
-
-```sh
-near call <my_validator> pause_staking '{}' --useAccount <owner-account.near> --depositYocto 1 --networkId mainnet
-```
-
-<Note>
-The contract will unstake all tokens at the next epoch boundary. Delegators will still see their shares and can unstake and withdraw normally.
-</Note>
-
-### Step 3: Withdraw Owner Balance
-
-Once your own staked tokens are unstaked and the unbonding period has passed, withdraw them:
-
-<Tabs>
-  <Tab title="Staking CLI">
-    ```sh
-    near staking delegation <owner-account.near> withdraw-all <my_validator> network-config mainnet sign-with-keychain
-    ```
-  </Tab>
-  <Tab title="Function Call">
-    ```sh
-    near call <my_validator> withdraw_all '{}' --useAccount <owner-account.near> --networkId mainnet
-    ```
-  </Tab>
-</Tabs>
-
-### Step 4: Resume (Optional)
-
-If you decide to keep the pool running again, you can re-enable staking at any time:
-
-```sh
-near call <my_validator> resume_staking '{}' --useAccount <owner-account.near> --depositYocto 1 --networkId mainnet
-```
 
 ---
 

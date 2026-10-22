@@ -6,9 +6,10 @@ description: "Learn all about NEAR account addresses"
 NEAR accounts are identified by a unique address, which can take multiple forms:
 
 1. [**Implicit address**](#implicit-address), which are 64 characters long (e.g. `fb9243ce...`)
-2. [**Named address**](#named-address), which act as domains (e.g. `alice.near`, `sub.account.testnet`)
+2. [**Named address**](#named-address), which are simpler to remember (e.g. `alice.near`, `sub.account.testnet`)
 3. An ethereum-like account (e.g. `0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`)
-4. [**Deterministic address**](#deterministic-address), which start with `0s` (e.g. `0s85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`)
+4. [**Deterministic address**](#deterministic-address), which are 42 characters long and start with `0s` (e.g. `0s85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`)
+5. [**Universal address**](#universal-address), which are 54 characters long and start with `0u` (e.g. `0u0000000000000000000000000000000000000000000000000000`)
 
 <Accordion title="Valid Account IDs">
 
@@ -18,7 +19,7 @@ In NEAR, accounts can actually be any string as long as they meet the following 
 
 This means that all `root`, `some-unique-string`, `something-to-remember-later`, `0x85f17....`, `fb9243ce` and `user.name` are **all valid account IDs**.
 
-However, users can only create accounts that are either a `named address`, an `implicit address`, or an `ethereum-like address`
+Accounts can be created with named, implicit, Ethereum-like, deterministic, or universal addresses.
 
 </Accordion>
 
@@ -39,14 +40,14 @@ Read [Validating Recipient Accounts](../../web3-apps/tutorials/account-validatio
 ---
 
 ## Implicit Address
-Implicit accounts are denoted by a 64 character address, which corresponds to a unique public/private key-pair. Who controls the [private key](./access-keys) of the implicit account controls the account.
+Implicit accounts are denoted by a 64 character address, which corresponds to a unique `ed25519` public/private key-pair. Whoever controls the [private key](./access-keys) of the implicit account controls the account.
 
 For example:
-- The private key: `ed25519:4x1xiJ6u3sZF3NgrwPUCnHqup2o...`
-- Corresponds to the public key: `ed25519:CQLP1o1F3Jbdttek3GoRJYhzfT...`
-- And controls the account: `a96ad3cb539b653e4b869bd7cf26590690e8971...`
+- The private key: `ed25519:4qAaptksph8QbpNKU8TBDL65nh95AXGkSiXnDbdcoJ2SmtMrsihyqQdyiMoz38g38B3Lfo5MpPFveFgtLpjz1FpG`
+- Corresponds to the public key: `ed25519:5NkxGL5fD497rn5o3SQmSeBggraAT6hfSivb1JdtFC1J`
+- And controls the account: `4101a46f3ba21613263de3decc83b1a79f745a9a791f570c0bc6df086cb43dbd`
 
-Implicit accounts always *exist*, and thus do not need to be created. However, in order to use the account you will still need to fund it with NEAR tokens (or get a relayer to pay your transaction's [gas](../transactions/gas)).
+While you can always derive an implicit address, if you want to sign any transaction you will need to initialize the account by sending some NEAR - can be 0 NEAR, which will create the account with no balance - to it.
 
 <Tip>
 
@@ -54,26 +55,7 @@ In NEAR, you can delete the private key of an implicit account, which effectivel
 
 </Tip>
 
-<Accordion title="🧑‍💻 Technical: How to obtain a key-pair">
-
-The simplest way to obtain a public / private key that represents an account is using the [NEAR CLI](/tools/cli)
-
-```bash
-near account create-account fund-later use-auto-generation save-to-folder ~/.near-credentials/implicit
-
-# The file "~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json" was saved successfully
-
-cat ~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json
-```
-
-or using the `near-seed-phrase` library:
-
-```js
-import { generateSeedPhrase } from "near-seed-phrase";
-const { seedPhrase, publicKey, secretKey } = generateSeedPhrase();
-```
-
-</Accordion>
+See [Creating Implicit & Named Accounts](/protocol/tutorials/creating-implicit-and-named-accounts#create-an-implicit-account) to generate a key pair and fund the account.
 
 <Accordion title="🧑‍💻 Technical: How to derive an implicit account from a public key">
 
@@ -96,9 +78,9 @@ keyToImplicitAddress(publicKey);
 ## Named Address
 Users can register **named accounts** (e.g. `bob.near`) which are easy to remember and share.
 
-An awesome feature of named accounts is that they can create **sub-accounts** of themselves, effectively working as domains:
+A feature of named accounts is that they can create **sub-accounts** of themselves, effectively working as domains:
 
-1. The [`registrar`](https://nearblocks.io/address/registrar) account can create top-level accounts (e.g. `near`, `sweat`, `kaiching`).
+1. The [`registrar`](https://nearblocks.io/address/registrar) account can create top-level accounts (e.g. `near` or `sweat`).
 2. The `near` account can create sub-accounts such as `bob.near` or `alice.near`
 3. `bob.near` can create sub-accounts of itself, such as `app.bob.near`
 4. Accounts cannot create sub-accounts of other accounts
@@ -106,34 +88,7 @@ An awesome feature of named accounts is that they can create **sub-accounts** of
     - `account.near` **cannot** create `sub.another-account.near`
 5. Accounts have **no control** over their sub-account, they are different entities
 
-Anyone can create a `.near` or `.testnet` account, you just need to call the `create_account` method of the corresponding top-level account - `testnet` on testnet, and `near` on mainnet.
-
-<Accordion title="🧑‍💻 Technical: How Are Named Accounts Created?">
-
-In NEAR, named accounts are created using the [`CreateAccount`](../transactions/transaction-anatomy#actions) action. Both `testnet` and `near` accounts expose the function `create_account`, which triggers `CreateAccount` to create sub-accounts of themselves.
-
-For example, if we want to create the account `alice.testnet` with `0.1 NEAR`, we would need to call the `create_account` method of `testnet` using an existing account (e.g. `funding-account.testnet`):
-
-```bash
-near call testnet create_account '{"new_account_id": "alice.testnet", "new_public_key": "ed25519:<data>"}' --useAccount funding-account.testnet --networkId testnet
-```
-
-If we then want to create a sub-account of `alice.testnet` - which we control - we can simply trigger the `CreateAccount` action ourselves:
-
-```bash
-near create-account sub-acc.new-acc.testnet --useAccount new-acc.testnet
-```
-
-> Note: if you want the accounts to have some initial balance, you can add the `--deposit <amount in NEAR>` flag to the command above
-
-</Accordion>
-
-<Info>
-**Creating Named Accounts**
-
-If you are not going through an intermediary (i.e. the CLI, or a wallet), then you can create an implicit account, fund it, and call `create_account` on `near` / `testnet`
-
-</Info>
+See [Creating Implicit & Named Accounts](/protocol/tutorials/creating-implicit-and-named-accounts#create-a-named-account) to create a named account using the CLI, a faucet, or an existing funded account.
 
 ---
 
@@ -145,11 +100,13 @@ NEAR also supports Ethereum-like accounts which are identified by a hexadecimal 
 
 ## Deterministic Address
 
-Deterministic accounts are a special type of account whose address is derived deterministically from their initial contract code and state. They are identified by an address starting with `0s` followed by 40 lowercase hexadecimal characters (42 characters total).
+Deterministic addresses are a special type of address, derived from accounts with a pre-defined initial contract and storage.
 
-For example: `0s85f17cf997934a597031b2e18a9ab6ebd4b9f6a4`
+They start with `0s`, followed by 40 hex characters **deterministically derived** from the **initial code and storage** of the account - e.g. `0sfa485e3a3e4d6c4ab18b2df9f26631f1485f13c0` represents a `Hello World` contract initialized with the greeting "Howdy".
 
-The key property of a deterministic account is that **its address is computed from its initial state**, meaning you can know the account's address before it is even created. This is useful for protocols and applications that need to reference a contract address before deployment.
+<Tip>
+Deterministic accounts are useful for protocols and applications that need to reference a contract address before deployment.
+</Tip>
 
 <Accordion title="🧑‍💻 Technical: How is the address derived?">
 
@@ -168,11 +125,7 @@ This guarantees that two accounts with identical code and initial state will alw
 
 Deterministic accounts are created using the `DeterministicStateInit` action — **not** the standard `CreateAccount` action. The protocol validates that the supplied account ID matches the hash of the provided initial state.
 
-Smart contracts can build this action using the following host functions:
-- `promise_batch_action_state_init` — creates a `DeterministicStateInit` action referencing a code hash
-- `promise_batch_action_state_init_by_account_id` — creates the action referencing an existing account's code
-- `set_state_init_data_entry` — adds a key-value entry to the account's initial storage
-- `current_contract_code` — returns the calling contract's own code hash, useful for deploying clones
+See [Creating Deterministic Accounts](/protocol/tutorials/creating-deterministic-accounts) for a walkthrough, or use [smart contracts](/smart-contracts/anatomy/actions#create-deterministic-accounts) and [NEAR API libraries such as `near-kit`](/tools/near-api#create-deterministic-account).
 
 Any NEAR attached beyond the required storage deposit is refunded to the sender.
 
@@ -180,7 +133,56 @@ Any NEAR attached beyond the required storage deposit is refunded to the sender.
 
 <Info>
 
+A NEAR transfer to a `0s` address that does not exist yet creates the account with a balance, but no code, keys, or storage. Its contract and initial storage are installed when a matching `DeterministicStateInit` action arrives.
+
+</Info>
+
+<Info>
+
 **Deterministic accounts cannot be deleted** and certain account modifications available to regular accounts are restricted. Once created, the deployed code and pre-initialized storage are permanent.
 
+</Info>
+
+---
+
+## Universal Address
+
+Similar to deterministic addresses, universal addresses are derived from an account's initial state. However, the initial state can also contain **access keys**.
+
+They start with `0u` followed by 52 lowercase characters (54 characters total) - e.g. `0uvjkhh8nsdtth98wq1k8hka97gw9e0yvga4a4th3vj0jqwa91y4yg` is the address of an account with a single `post-quantum` key (`ml-dsa-65:NJ7gjn5UMGPZ…MtbZ9pmk`) with no contract.
+
+<Info>
+**How is this different from a deterministic account?**
+
+Deterministic accounts are derived solely from `code` plus an `initial storage`, with no keys, so they can only be controlled through their contract's own logic. Universal accounts, meanwhile, hash code, storage, **and** a set of access keys together, so a universal account can be a key-controlled account with no contract at all, similar to an implicit account.
+
+One important difference though is that universal accounts can be created with [post-quantum (`ml-dsa-65`)](./access-keys#signature-schemes) keys, while implicit accounts can be created with `ed25519` keys only.
+</Info>
+
+<Accordion title="🧑‍💻 Technical: How is the address derived?">
+
+The universal account ID is computed by:
+1. Constructing a `UniversalStateInit` value containing:
+   - **Code** (optional): a reference to the contract code via a code hash or an existing account ID, omitted for a key-only account
+   - **Data**: a key-value mapping pre-populating the contract's storage, empty for a key-only account
+   - **Access keys**: a set of access-key handles the account starts with, empty for a contract-only account. A handle is the full public key for `ed25519`/`secp256k1`, or the 32-byte hash for `ml-dsa-65` — the same [compact form](./access-keys#signature-schemes) used everywhere else
+2. Borsh-encoding that value into bytes
+3. Applying the formula: `'0u' + crockford_base32(sha3_256(bytes))`
+
+Unlike the `0s` scheme, the protocol does not re-serialize the bytes into a canonical form before hashing: the id commits to the **exact bytes supplied** — but those bytes must themselves already be the one canonical encoding (`data` and `access_keys` entries sorted with no duplicates, and no trailing bytes), or the state init is rejected outright rather than accepted under a different id.
+
+</Accordion>
+
+<Accordion title="🧑‍💻 Technical: How are universal accounts created?">
+
+Universal accounts are created using the `UniversalStateInit` action, a distinct action from `CreateAccount` - used for named accounts - and `DeterministicStateInit` - used for deterministic accounts.
+
+See [Creating Universal Accounts](/protocol/tutorials/creating-universal-accounts) for creation flows and code examples, or [Create universal accounts](/smart-contracts/anatomy/actions#create-universal-accounts) for the host functions used by smart contracts.
+
+</Accordion>
+
+<Info>
+
+A NEAR transfer to a `0u` address that does not exist yet **auto-creates it as uninitialized**: it holds the transferred balance but has no code, keys, or storage until a matching `UniversalStateInit` arrives. See [The uninitialized account](/protocol/tutorials/creating-universal-accounts#the-uninitialized-account) for what an uninitialized account can and can't do.
 
 </Info>

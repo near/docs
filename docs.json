@@ -60,6 +60,18 @@
   },
   "redirects": [
     {
+      "source": "/protocol/network/staking",
+      "destination": "/protocol/tutorials/staking-tokens"
+    },
+    {
+      "source": "/protocol/storage/decentralized-storage",
+      "destination": "/protocol/storage/storage-staking#store-data-off-chain"
+    },
+    {
+      "source": "/protocol/accounts-contracts/creating-universal-accounts",
+      "destination": "/protocol/tutorials/creating-universal-accounts"
+    },
+    {
       "source": "/smart-contracts/tutorials/zero-to-hero/nfts-js",
       "destination": "/smart-contracts/tutorials/zero-to-hero/nfts"
     },
@@ -198,6 +210,10 @@
     {
       "source": "/integrations/errors/error-implementation",
       "destination": "/integrations/errors/introduction"
+    },
+    {
+      "source": "/api/rpc/batching",
+      "destination": "/api/rpc/providers"
     }
   ],
   "navbar": {
@@ -299,7 +315,8 @@
                 "pages": [
                   "protocol/accounts-contracts/account-model",
                   "protocol/accounts-contracts/account-id",
-                  "protocol/accounts-contracts/access-keys"
+                  "protocol/accounts-contracts/access-keys",
+                  "protocol/accounts-contracts/gas-keys"
                 ]
               },
               {
@@ -326,16 +343,11 @@
                 "icon": "circle-dollar-sign",
                 "pages": [
                   "protocol/network/tokens",
+                  "protocol/network/token-standards",
                   "protocol/network/token-loss"
                 ]
               },
-              {
-                "group": "Storage",
-                "icon": "hard-drive",
-                "pages": [
-                  "protocol/storage/storage-staking"
-                ]
-              },
+              "protocol/storage/storage-staking",
               {
                 "group": "Network",
                 "icon": "globe",
@@ -346,6 +358,22 @@
                   "protocol/network/runtime"
                 ]
               }
+            ]
+          },
+          {
+            "group": "Tutorials",
+            "pages": [
+              {
+                "group": "Creating Accounts",
+                "icon": "user-plus",
+                "pages": [
+                  "protocol/tutorials/creating-implicit-and-named-accounts",
+                  "protocol/tutorials/creating-deterministic-accounts",
+                  "protocol/tutorials/creating-universal-accounts"
+                ]
+              },
+              "protocol/tutorials/staking-tokens",
+              "protocol/tutorials/sunsetting-a-staking-pool"
             ]
           }
         ]
@@ -602,7 +630,6 @@
           {
             "group": "Governance",
             "pages": [
-              "protocol/network/staking",
               "primitives/dao"
             ]
           },
@@ -731,7 +758,6 @@
             "group": " ",
             "pages": [
               "api/rpc/introduction",
-              "api/rpc/batching",
               "api/rpc/providers",
               "api/rpc/transactions",
               "api/rpc/block-chunk",

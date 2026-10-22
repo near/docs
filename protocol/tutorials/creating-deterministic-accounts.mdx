@@ -1,0 +1,168 @@
+---
+title: Creating Deterministic Accounts
+sidebarTitle: Deterministic Accounts
+description: "Create a deterministic fungible-token account using a published global contract and initial storage."
+---
+
+A [deterministic account](/protocol/accounts-contracts/account-id#deterministic-address) starts with contract code and initial storage, but no access keys. Its `0s` address is derived from that initial state, so you can calculate it before creating the account.
+
+This tutorial uses the [NEAR CLI](/tools/cli#installation) on **testnet**. You need a funded signer account. We will use the [global contract](/smart-contracts/global-contracts) already published at `ft.globals.primitives.testnet` to create a [fungible token](/primitives/ft/standard).
+
+---
+
+## Choose the code and initial storage
+
+You can reference a global contract by its publisher's account ID or by its code hash. Here, the code reference is `ft.globals.primitives.testnet`.
+
+The initial storage defines a token named **Example Token** (`EXAMPLE`), with **6 decimals** and a supply of **1,000,000 tokens**, all assigned to `alice.testnet`. The supply is stored as `1000000000000` smallest units.
+
+The FT contract needs three storage entries:
+
+| Key | Purpose |
+| --- | --- |
+| `STATE` | Contract state: balance-map prefix, total supply, storage usage per registered account, and metadata key |
+| `0x00` followed by the Borsh-encoded owner account ID | The owner's token balance |
+| `0x01` | Token metadata, including its name, symbol, and decimals |
+
+---
+
+## Generate the initial storage
+
+The state-init action writes storage entries directly, so we need to serialize the same state that the FT contract's `new` method would create. This includes the token's metadata, total supply, and initial holder's balance—not just the arguments you would pass to `new`.
+
+The [published FT source](https://github.com/near-examples/FT/blob/c5d39784fd8549d2006bf802354b75bcaf04c894/src/lib.rs) uses **Borsh** to serialize these values. The CLI expects each storage key and value as a **Base64-encoded string** in a JSON object.
+
+Save the following as `build-ft-state.py`. It builds the three entries described above and encodes them for the CLI:
+
+```python
+import base64
+import json
+import struct
+
+# Token configuration: change these values to define your own token.
+owner_id = "alice.testnet"
+name = "Example Token"
+symbol = "EXAMPLE"
+decimals = 6
+total_supply = 1_000_000 * 10**decimals
+
+# Borsh encodes byte arrays and strings with a little-endian u32 length.
+def vec(value):
+    return struct.pack("<I", len(value)) + value
+
+def string(value):
+    return vec(value.encode())
+
+# These prefixes come from the contract's StorageKey enum.
+balance_prefix = b"\x00"
+metadata_key = b"\x01"
+amount = total_supply.to_bytes(16, "little")  # Borsh u128
+account_storage_usage = 125
+
+# Contract state: balance-map prefix, supply, account storage usage,
+# and the key under which metadata is stored.
+contract_state = (
+    vec(balance_prefix)
+    + amount
+    + struct.pack("<Q", account_storage_usage)  # Borsh u64
+    + vec(metadata_key)
+)
+
+# Metadata field order follows FungibleTokenMetadata.
+metadata = (
+    string("ft-1.0.0") + string(name) + string(symbol)
+    + b"\x00\x00\x00"  # No icon, reference, or reference hash
+    + bytes([decimals])
+)
+
+state = {
+    b"STATE": contract_state,
+    balance_prefix + string(owner_id): amount,
+    metadata_key: metadata,
+}
+
+# Base64 changes how bytes are represented in JSON, not their contents.
+print(json.dumps({
+    base64.b64encode(key).decode(): base64.b64encode(value).decode()
+    for key, value in state.items()
+}, indent=2))
+```
+
+The value `125` is the storage usage per registered account measured by this FT implementation: a one-byte prefix, four-byte string length, 64-byte maximum account ID, 16-byte balance, and 40 bytes of record overhead. The layout matches the published contract's `near-contract-standards` 5.15.1 implementation.
+
+Run the script to generate `ft-state.json`:
+
+```bash
+python3 build-ft-state.py > ft-state.json
+cat ft-state.json
+```
+
+With the example configuration, the output is:
+
+```json
+{
+  "U1RBVEU=": "AQAAAAAAEKXU6AAAAAAAAAAAAAAAfQAAAAAAAAABAAAAAQ==",
+  "AA0AAABhbGljZS50ZXN0bmV0": "ABCl1OgAAAAAAAAAAAAAAA==",
+  "AQ==": "CAAAAGZ0LTEuMC4wDQAAAEV4YW1wbGUgVG9rZW4HAAAARVhBTVBMRQAAAAY="
+}
+```
+
+The file now contains the contract's initial storage, ready for the state-init action. Changing the owner, supply, or metadata changes these bytes and therefore the derived address. If the global publisher changes the contract's storage layout, the serializer must match that layout.
+
+---
+
+## Derive the address
+
+Run this local computation, which does not submit a transaction:
+
+```bash
+near contract state-init use-global-account-id ft.globals.primitives.testnet \
+  data-from-file ft-state.json inspect account-id
+```
+
+For the exact storage above, the derived address is:
+
+```text
+0sa2e1be2454698caaada11defd5812d7bfd61eea2
+```
+
+---
+
+## Create the account
+
+Use the same code reference and storage. Replace `alice.testnet` in the command with the funded account signing the transaction; the initial token holder is determined separately by `ft-state.json`.
+
+```bash
+near contract state-init use-global-account-id ft.globals.primitives.testnet \
+  data-from-file ft-state.json execute '0.1 NEAR' \
+  sign-as alice.testnet network-config testnet sign-with-keychain send
+```
+
+The CLI derives the receiver address and submits a `DeterministicStateInit` action. The attached deposit covers any missing storage stake; unused NEAR is refunded.
+
+You do not need a separate `CreateAccount`, `DeployContract`, or call to `new`: the state-init action installs the referenced code and the already-initialized FT storage together.
+
+---
+
+## Check the token
+
+Query the new account's metadata:
+
+```bash
+near view 0sa2e1be2454698caaada11defd5812d7bfd61eea2 ft_metadata '{}' --networkId testnet
+```
+
+The metadata identifies **Example Token** with symbol `EXAMPLE` and 6 decimals. Check the total supply and the owner's balance:
+
+```bash
+near view 0sa2e1be2454698caaada11defd5812d7bfd61eea2 ft_total_supply '{}' --networkId testnet
+near view 0sa2e1be2454698caaada11defd5812d7bfd61eea2 ft_balance_of '{"account_id":"alice.testnet"}' --networkId testnet
+```
+
+Both return `"1000000000000"`, representing 1,000,000 tokens. If you customized the initial storage, use your derived address and token holder instead.
+
+---
+
+## Create accounts from an application or contract
+
+See [NEAR API Libraries](/tools/near-api#create-deterministic-account) for a `near-kit` example, or [Create deterministic accounts](/smart-contracts/anatomy/actions#create-deterministic-accounts) for the host functions used by smart contracts.
