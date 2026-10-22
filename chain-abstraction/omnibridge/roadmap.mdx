@@ -16,18 +16,24 @@ The bridge currently supports the following networks:
   - Arbitrum
   - BNB Chain
   - Polygon (PoS)
+  - Abstract
+  - HyperEVM
 - **Non-EVM Chains:**
   - Bitcoin
   - Solana
   - Zcash
+  - Starknet
+  - Aptos
+  - Fogo
 
 ## Architecture Overview
 
 Omni Bridge utilizes **Chain Signatures** as its primary verification mechanism for outbound transfers from NEAR. Incoming transfers rely on chain-specific verification methods, including light clients for maximum security where available.
 
 ### Verification Methods
-- **Ethereum & Bitcoin:** Light Client verification for inbound transfers.
-- **Other Chains:** Message passing protocols verified by the NEAR network.
+- **Ethereum, Bitcoin & Zcash:** Light Client verification for inbound transfers.
+- **Abstract, Starknet & Aptos:** the MPC network checks the source-chain transaction (`verify_foreign_transaction` on `v1.signer`).
+- **Other Chains:** Message passing protocols (Wormhole) verified by the NEAR network.
 - **Outbound (All Chains):** Chain Signatures (MPC) for secure transaction signing.
 
 ## Future Development

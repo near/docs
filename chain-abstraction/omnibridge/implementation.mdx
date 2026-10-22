@@ -163,7 +163,7 @@ Uses NEAR light client for maximum security:
 * Verifying proof through light client
 * Releasing tokens to recipient
 
-### 2. Supported Non-EVM Chains (e.g., Solana)
+### 2. Wormhole Chains (Solana, Fogo, Base, Arbitrum, BNB Chain, Polygon, HyperEVM)
 
 Utilize established message passing protocols (such as Wormhole) for:
 
@@ -171,9 +171,9 @@ Utilize established message passing protocols (such as Wormhole) for:
 * Transaction verification
 * Integration with NEAR token factory system
 
-### 3. Other EVM Chains
+### 3. MPC-Verified Chains (Abstract, Starknet, Aptos)
 
-Utilize a combination of light clients (where efficient) and message passing protocols to ensure secure verification of inbound transfers.
+The bridge's MPC prover asks the MPC network to check the source-chain transaction (`verify_foreign_transaction` on `v1.signer`) and accepts the transfer once the signed result verifies.
 
 ---
 
