@@ -626,7 +626,6 @@
           {
             "group": "Governance",
             "pages": [
-              "protocol/tutorials/staking-tokens",
               "primitives/dao"
             ]
           },

@@ -154,9 +154,9 @@ They start with `0u` followed by 52 lowercase characters (54 characters total) -
 <Info>
 **How is this different from a deterministic account?**
 
-Deterministic accounts is derived solely from `code` plus an `initial storage`, no keys. So they can only be controlled through their contract's own logic. Meanwhile, universal accounts a hashes code, storage, **and** a set of access keys together, so a universal account can be a key-controlled account with no contract at all, similar to an implicit account.
+Deterministic accounts are derived solely from `code` plus an `initial storage`, with no keys, so they can only be controlled through their contract's own logic. Universal accounts, meanwhile, hash code, storage, **and** a set of access keys together, so a universal account can be a key-controlled account with no contract at all, similar to an implicit account.
 
-One important difference though is that universal accounts can be created with [post-quantum (`ml-dsa-65`)](./access-keys#post-quantum-keys-ml-dsa-65) keys, while implicit accounts can be created with `ed25519` keys only.
+One important difference though is that universal accounts can be created with [post-quantum (`ml-dsa-65`)](./access-keys#signature-schemes) keys, while implicit accounts can be created with `ed25519` keys only.
 </Info>
 
 <Accordion title="🧑‍💻 Technical: How is the address derived?">
@@ -165,7 +165,7 @@ The universal account ID is computed by:
 1. Constructing a `UniversalStateInit` value containing:
    - **Code** (optional): a reference to the contract code via a code hash or an existing account ID, omitted for a key-only account
    - **Data**: a key-value mapping pre-populating the contract's storage, empty for a key-only account
-   - **Access keys**: a set of access-key handles the account starts with, empty for a contract-only account. A handle is the full public key for `ed25519`/`secp256k1`, or the 32-byte hash for `ml-dsa-65` — the same [compact form](./access-keys#post-quantum-keys-ml-dsa-65) used everywhere else
+   - **Access keys**: a set of access-key handles the account starts with, empty for a contract-only account. A handle is the full public key for `ed25519`/`secp256k1`, or the 32-byte hash for `ml-dsa-65` — the same [compact form](./access-keys#signature-schemes) used everywhere else
 2. Borsh-encoding that value into bytes
 3. Applying the formula: `'0u' + crockford_base32(sha3_256(bytes))`
 

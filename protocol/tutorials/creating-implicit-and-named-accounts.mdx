@@ -25,7 +25,7 @@ near account create-account fund-later use-auto-generation save-to-folder ~/.nea
 
 # The file "~/.near-credentials/implicit/cf4342372b583606057805490c97d4778bc4ac444a76f32154634558ab57c3c5.json" was saved successfully
 
-cat ~/.near-credentials/implicit/8bca86065be487de45e795b2c3154fe834d53ffa07e0a44f29e76a2a5f075df8.json
+cat ~/.near-credentials/implicit/cf4342372b583606057805490c97d4778bc4ac444a76f32154634558ab57c3c5.json
 # {"implicit_account_id":"cf4342372b583606057805490c97d4778bc4ac444a76f32154634558ab57c3c5","master_seed_phrase":"kit creek invite deputy fetch resource marble sweet camp thumb mushroom swift","private_key":"ed25519:5uJtH8hdYKPEhLVTn9EoxaneLpKh11qLEWDVvG6tKTeMUzsmf7isHYxXixhNcupRhUNQ2fHFgtKXy94YUXHfbxiG","public_key":"ed25519:Ex4stLtTe43ynFmxGweGzMWLvRmRSUP6EjU6nvAdY2vg","seed_phrase_hd_path":"m/44'/397'/0'"}
 ```
 
@@ -83,7 +83,7 @@ If you are not going through an intermediary such as a wallet, you can generate 
 </Info>
 
 <Tip>
-You can initialize an account by making a transfer of `0 NEAR`. This is because the cost of creating an account is covered **through GAS fees**, and not the attached NEAR amount.
+You can initialize an account by using a deposit of `0 NEAR`. This is because the cost of creating an account is covered **through GAS fees**, and not the attached NEAR amount.
 </Tip>
 
 ### Create a direct sub-account
@@ -94,7 +94,7 @@ If you control `alice.testnet`, you can trigger the `CreateAccount` action yours
 near create-account app.alice.testnet --useAccount alice.testnet --networkId testnet
 ```
 
-The CLI builds the transaction that creates the account and adds its first key. You can add `--initial-balance <amount in NEAR>` to set its initial balance.
+The CLI builds the transaction that creates the account and adds its first key. You can add `--initialBalance <amount in NEAR>` to set its initial balance.
 
 <Note>
 A parent account has no control over its sub-accounts after creation. Control depends on the access keys and contract installed on each account.

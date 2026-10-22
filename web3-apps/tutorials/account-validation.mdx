@@ -17,7 +17,7 @@ There are four common failure modes when an end user enters a recipient account:
 
 1. **Invalid format** — the input is not a valid NEAR account ID (wrong characters, length, etc.).
 2. **Unfunded implicit / `0x` account** — the address corresponds to a key pair, but no one has activated the account by funding it. Funds sent here are reachable only by whoever holds the private key.
-3. **Unclaimed universal (`0u…`) account** — funds sent to a `0u` address that has never run its `UniversalStateInit` sit in an **uninitialized** account, reachable only by whoever can produce the exact state init that address commits to. Unlike an implicit account, there's no simpler "just needs a matching key pair" fallback — if no one can produce that state init, the balance is effectively stranded.
+3. **Unclaimed universal (`0u…`) account** — funds sent to a `0u` address that has never run its `UniversalStateInit` sit in an **uninitialized** account. Only the holders of the keys committed in that address's state init can control the funds, and someone has to know the exact state init to initialize it. Unlike an implicit account, the address alone doesn't tell you which key controls it — if no one knows the state init, the balance is effectively stranded.
 4. **Typo of an existing account** — the entered value is a valid, existing account, but **not the one the user intended**. This is the hardest case to catch and benefits the most from confirmation UX.
 
 For background on each [address type](../../protocol/accounts-contracts/account-id) (`.near`, `.tg`, `.sweat`, implicit, `0x`, deterministic, universal), see the Address (Account ID) reference.
@@ -237,8 +237,8 @@ Combine the classification and the existence check into a decision:
 | Ethereum-like (`0x…`) | ❌ | Same warning as implicit — require explicit confirmation |
 | Deterministic (`0s…`) | ❌ | Block: deterministic accounts are not transfer targets unless explicitly known |
 | Universal (`0u…`) | ✅ and initialized | Continue |
-| Universal (`0u…`) | ✅ but **uninitialized** | Warn strongly: the address holds a balance but has no owner yet — anyone who can produce the matching `UniversalStateInit` can claim it. Check `state` in the [`view_account`](../../api/rpc/contracts#view-account) response, not just existence |
-| Universal (`0u…`) | ❌ | Warn: sending here creates the account uninitialized (see above) — require explicit confirmation that the recipient can actually produce the state init this address commits to, since (unlike implicit accounts) there's no simpler "just needs a key pair" story to fall back on |
+| Universal (`0u…`) | ✅ but **uninitialized** | Warn strongly: the address holds a balance but hasn't been initialized yet — it's only usable once someone submits the exact `UniversalStateInit` it commits to, and only the keys committed there will control it. Check `state` in the [`view_account`](../../api/rpc/contracts#view-account) response, not just existence |
+| Universal (`0u…`) | ❌ | Warn: sending here creates the account uninitialized (see above) — require explicit confirmation that the recipient knows the state init this address commits to and holds one of its keys, since (unlike implicit accounts) the address alone doesn't identify a key pair |
 
 </Step>
 

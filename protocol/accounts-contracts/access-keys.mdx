@@ -7,7 +7,7 @@ In NEAR, accounts can **hold multiple keys**, each key has its own **set of perm
 
 ![Access keys](/assets/docs/welcome-pages/access-keys.png)
 
-NEAR distinguishes two type of permissions for access keys: **Function Call keys** can only sign transactions calling a specific contract, while **Full Access keys** have unrestricted control over the account.
+NEAR distinguishes two types of permissions for access keys: **Function Call keys** can only sign transactions calling a specific contract, while **Full Access keys** have unrestricted control over the account.
 
 Meanwhile, the protocol supports **multiple types of signature schemes**, allowing it to be compatible with a variety of other ecosystems and cryptographic standards.
 
@@ -127,7 +127,7 @@ In practice, this means that only the account's smart contract can transfer asse
 Locking an account is very useful when one wants to deploy a contract, and let the community be assured that only the contract is in control of the account.
 
 <Tip>
-To lock an implicit accounts remove all its keys, including the `ed25519` key from which its address is derived.
+To lock an implicit account, remove all its keys, including the `ed25519` key from which its address is derived.
 </Tip>
 
 <Warning>
