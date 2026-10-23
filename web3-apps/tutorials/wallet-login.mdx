@@ -14,7 +14,7 @@ The `@hot-labs/near-connect` library provides a secure, zero-dependency wallet c
 
 **Example**
 
-We have a [working example](https://github.com/near-examples/hello-near-connector), which you can easily get through `create-near-app`:
+We have a [working example](https://github.com/near-examples/hello-near-examples/tree/main/frontend), which you can easily get through `create-near-app`:
 
 ```bash
 npx create-near-app@latest
@@ -37,26 +37,11 @@ Unlike traditional wallet selectors, it offers a dynamic manifest system that al
 
 ## Installation
 
-You can add the NEAR Connect library to your project in two ways:
+Install the `@hot-labs/near-connect` and `near-api-js` packages manually:
 
-<Tabs>
-  <Tab title="library">
-  Install the `@hot-labs/near-connect` and `near-api-js` packages manually:
-
-  ```bash
-  npm install @hot-labs/near-connect near-api-js
-  ```
-
-  </Tab>
-  <Tab title="hooks">
-  If you are using React, we recommend installing the `near-connect-hooks` package which provides convenient hooks for integrating NEAR Connect into your app:
-
-  ```bash
-  npm install near-connect-hooks
-  ```
-
-  </Tab>
-</Tabs>
+```bash
+npm install @hot-labs/near-connect near-api-js
+```
 
 ---
 
@@ -64,14 +49,15 @@ You can add the NEAR Connect library to your project in two ways:
 
 Initialize the `NearConnector` instance in your application:
 
-<Tabs>
-  <Tab title="library">
-    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="38" end="44" />
-  </Tab>
-  <Tab title="hooks">
-     <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" start="8" end="19" />
-  </Tab>
-</Tabs>
+```tsx
+import { NearConnector } from "@hot-labs/near-connect";
+
+const connector = new NearConnector({ network: "testnet" });
+```
+
+For React apps, we recommend [wrapping the connector, wallet state, and contract helpers in a React Context provider](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx), then exposing them through a local hook. This lets components share one connector instance and keeps connection handling in one place.
+
+[Wrap your app with the provider](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx) so all components can access the wallet functionality.
 
 <Accordion title="Selecting Wallets">
 
@@ -83,7 +69,7 @@ Unlike traditional wallet selectors that bundle wallet code, NEAR Connect uses a
 This architecture eliminates the need to install individual wallet packages and ensures wallet code can be updated independently from your app.
 
 ```tsx
-connector = new NearConnector({
+const connector = new NearConnector({
   network: "testnet", // or "mainnet"
   features: {
     signMessage: true,  // Only show wallets that support message signing
@@ -101,235 +87,131 @@ connector = new NearConnector({
 
 ## Signing In / Out
 
-<Tabs>
-  <Tab title="library">
-    The connector uses the Observer Pattern (pub/sub), for which we need to subscribe to the `wallet:signIn" and `wallet:signOut` events
-    
-    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="46" end="53" />
+Subscribe to the `wallet:signIn` and `wallet:signOut` events to update your application's wallet state:
 
-    Then, call the `connect` function to open a modal where the user can select a wallet and sign in, and `disconnect` to sign out
+<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx" language="tsx" start="95" end="109" />
 
-    <Github url="https://github.com/azbang/near-connect/blob/main/example/src/App.tsx" language="tsx" start="74" end="77" />
+Call `connector.connect()` to open the wallet selection modal and `connector.disconnect(wallet)` to sign out. In the React provider, these calls also update the local wallet and account state:
 
-  </Tab>
-  <Tab title="hooks">
-    The `near-connect-hooks` package provides a `useNearWallet` hook that simplifies the sign-in process, first import the hook:
-    <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx" language="tsx" start="3" end="3" />
-    
-    Then, import the `signIn` and `signOut` method from the hook and call them when needed:
-    <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx" start="9" end="22" language="tsx" />
-  </Tab>
-</Tabs>
+<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx" language="tsx" start="132" end="144" />
+
+[Restore an existing wallet connection](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx#L88-L92) during initialization and [remove event listeners](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx#L115-L129) when the component unmounts.
 
 ---
 
 ## Calling Contract Method
 
-<Tabs>
-  <Tab title="library">
-    To call a contract method, first get the connected wallet instance using `connector.wallet()`, then use the wallet's `signAndSendTransaction` method to make a function call:
+To call a contract method, first get the connected wallet instance using `connector.wallet()`, then use the wallet's `signAndSendTransaction` method to make a function call:
 
-    ```tsx
-    // Get the connected wallet
-    const wallet = await connector.wallet();
+```tsx
+// Get the connected wallet
+const wallet = await connector.wallet();
 
-    // Call a change method
-    const result = await wallet.signAndSendTransaction({
-      receiverId: "hello.near-examples.testnet",
-      actions: [
-        {
-          type: "FunctionCall",
-          params: {
-            methodName: "set_greeting",
-            args: { greeting: "Hello from NEAR Connect!" },
-            gas: "30000000000000", // 30 TGas
-            deposit: "0", // No deposit
-          },
-        },
-      ],
-    });
+// Call a change method
+const result = await wallet.signAndSendTransaction({
+  receiverId: "hello.near-examples.testnet",
+  actions: [
+    {
+      type: "FunctionCall",
+      params: {
+        methodName: "set_greeting",
+        args: { greeting: "Hello from NEAR Connect!" },
+        gas: "30000000000000", // 30 TGas
+        deposit: "0", // No deposit
+      },
+    },
+  ],
+});
 
-    console.log("Transaction:", result.transaction.hash);
-    ```
-
-  </Tab>
-  <Tab title="hooks">
-    To call a contract method, you can use the `callFunction` method provided by the `useNearWallet` hook:
-    <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" start="27" end="27" language="tsx" />
-  </Tab>
-</Tabs>
+console.log("Transaction:", result.transaction.hash);
+```
 
 ---
 
 ## Calling Read-only Methods
 
-<Tabs>
-  <Tab title="library">
+NEAR Connect does not provide a built-in way to call read-only (view) methods.
 
-  The `near-connector` does not provide a built-in way to call read-only (view) methods.
+However, you can use the `near-api-js` package (or any of your preferred APIs) to create a JSON-RPC provider and call view methods directly:
 
-  However, you can use the `near-api-js` package (or any of your preferred APIs) to create a JSON-RPC provider and call view methods directly:
+```tsx
+import { JsonRpcProvider } from "near-api-js";
 
-  ```tsx
-  import { JsonRpcProvider } from "near-api-js";
+const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
 
-  const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
-
-  const greeting = await provider.callFunction(
-    "hello.near-examples.testnet",
-    "get_greeting",
-    {}
-  );
-  ```
-  </Tab>
-  <Tab title="hooks">
-    You can use the `viewFunction` method provided by the `useNearWallet` hook to call read-only methods on the contract:
-
-    <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" language="tsx" start="18" end="18" />
-
-  </Tab>
-</Tabs>
+const greeting = await provider.callFunction({
+  contractId: "hello.near-examples.testnet",
+  method: "get_greeting",
+  args: {},
+});
+```
 
 ---
 
 ## Get Balance
 
-<Tabs>
-  <Tab title="library">
+NEAR Connect does not provide a built-in way to get the account balance.
 
-  The `near-connector` does not provide a built-in way to get the account balance.
+However, you can use the `near-api-js` package (or any of your preferred APIs) to create a JSON-RPC provider and query the account balance directly:
 
-  However, you can use the `near-api-js` package (or any of your preferred APIs) to create a JSON-RPC provider and query the account balance directly:
+```tsx
+import { JsonRpcProvider } from "near-api-js";
 
-  ```tsx
-  import { JsonRpcProvider } from "near-api-js";
+const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
 
-  const provider = new JsonRpcProvider({ url: "https://test.rpc.fastnear.com" });
-
-  const greeting = await provider.viewAccount({ accountId: "hello.near-examples.testnet" });
-  ```
-  </Tab>
-  <Tab title="hooks">
-    You can use the `getBalance` method provided by the `useNearWallet` hook to call read-only methods on the contract:
-
-    ```jsx
-    import { useNearWallet } from 'near-connect-hooks';
-    import { yoctoToNear } from 'near-api-js';
-
-    const { getBalance } = useNearWallet();
-    const balance = await getBalance();
-    console.log(`Balance: ${yoctoToNear(balance.available, 2)} NEAR`);
-    ```
-
-  </Tab>
-</Tabs>
+const account = await provider.viewAccount({ accountId: "hello.near-examples.testnet" });
+```
 
 ---
 
 ## Send Multiple Transactions
 
-<Tabs>
-  <Tab title="library">
+You can request the user to sign and send multiple transactions in parallel through a single prompt:
 
-    You can request the user to sign and send multiple transactions in parallel through a single prompt:
+```tsx
+const wallet = await connector.wallet();
 
-    ```tsx
-    const wallet = await connector.wallet();
-
-    const results = await wallet.signAndSendTransactions({
-      transactions: [
+const results = await wallet.signAndSendTransactions({
+  transactions: [
+    {
+      receiverId: "token.near",
+      actions: [
         {
-          receiverId: "token.near",
-          actions: [
-            {
-              type: "FunctionCall",
-              params: {
-                methodName: "ft_transfer",
-                args: {
-                  receiver_id: "alice.near",
-                  amount: "1000000",
-                },
-                gas: "30000000000000",
-                deposit: "1", // 1 yoctoNEAR for security
-              },
+          type: "FunctionCall",
+          params: {
+            methodName: "ft_transfer",
+            args: {
+              receiver_id: "alice.near",
+              amount: "1000000",
             },
-          ],
-        },
-        {
-          receiverId: "nft.near",
-          actions: [
-            {
-              type: "FunctionCall",
-              params: {
-                methodName: "nft_mint",
-                args: {
-                  token_id: "token-1",
-                  receiver_id: "alice.near",
-                },
-                gas: "30000000000000",
-                deposit: "10000000000000000000000", // 0.01 NEAR
-              },
-            },
-          ],
+            gas: "30000000000000",
+            deposit: "1", // 1 yoctoNEAR for security
+          },
         },
       ],
-    });
-
-    console.log(`Completed ${results.length} transactions`);
-    ```
-  </Tab>
-  <Tab title="hooks">
-    You can use the `signAndSendTransactions` method provided by the `useNearWallet` hook to send multiple transactions in a single request:
-
-    ```tsx
-    import { useNearWallet } from 'near-connect-hooks';
-
-    ...
-
-    const { signAndSendTransactions } = useNearWallet();
-
-    const results = await signAndSendTransactions({
-      transactions: [
+    },
+    {
+      receiverId: "nft.near",
+      actions: [
         {
-          receiverId: "token.near",
-          actions: [
-            {
-              type: "FunctionCall",
-              params: {
-                methodName: "ft_transfer",
-                args: {
-                  receiver_id: "alice.near",
-                  amount: "1000000",
-                },
-                gas: "30000000000000",
-                deposit: "1", // 1 yoctoNEAR for security
-              },
+          type: "FunctionCall",
+          params: {
+            methodName: "nft_mint",
+            args: {
+              token_id: "token-1",
+              receiver_id: "alice.near",
             },
-          ],
-        },
-        {
-          receiverId: "nft.near",
-          actions: [
-            {
-              type: "FunctionCall",
-              params: {
-                methodName: "nft_mint",
-                args: {
-                  token_id: "token-1",
-                  receiver_id: "alice.near",
-                },
-                gas: "30000000000000",
-                deposit: "10000000000000000000000", // 0.01 NEAR
-              },
-            },
-          ],
+            gas: "30000000000000",
+            deposit: "10000000000000000000000", // 0.01 NEAR
+          },
         },
       ],
-    });
-    console.log(`Completed ${results.length} transactions`);
-    ```
-  </Tab>
-</Tabs>
+    },
+  ],
+});
+
+console.log(`Completed ${results.length} transactions`);
+```
 
 ---
 
@@ -337,57 +219,59 @@ connector = new NearConnector({
 
 In NEAR, users can sign messages for authentication purposes without needing to send a transaction:
 
-<Tabs>
-  <Tab title="library">
-    You can request the user to sign a message using the wallet's `signMessage` method:
+You can request the user to sign a message using the wallet's `signMessage` method:
 
-    ```tsx
-    const wallet = await connector.wallet();
+```tsx
+const wallet = await connector.wallet();
 
-    const signature = await wallet.signMessage({
-      message: "Please sign this message to authenticate",
-      recipient: "your-app.near",
-      nonce: Buffer.from(crypto.randomUUID()),
-    });
+const signature = await wallet.signMessage({
+  message: "Please sign this message to authenticate",
+  recipient: "your-app.near",
+  nonce: Buffer.from(crypto.randomUUID()),
+});
 
-    console.log("Signature:", signature.signature);
-    console.log("Public Key:", signature.publicKey);
+console.log("Signature:", signature.signature);
+console.log("Public Key:", signature.publicKey);
 
-    // Verify the signature on your backend
-    ```
-  </Tab>
-  <Tab title="hooks">
-    You can use the `signMessage` method provided by the `useNearWallet` hook to request the user to sign a message:
-
-    ```tsx
-    import { useNearWallet } from 'near-connect-hooks';
-
-    ...
-
-    const { signNEP413Message } = useNearWallet();
-
-    const signature = await signMessage({
-      message: "Please sign this message to authenticate",
-      recipient: "your-app.near",
-      nonce: Buffer.from(crypto.randomUUID()),
-    });
-
-    console.log("Signature:", signature.signature);
-    console.log("Public Key:", signature.publicKey);
-    ```
-  </Tab>
-</Tabs>
+// Verify the signature on your backend
+```
 
 ---
 
-## Ethereum Wallets
+## Function-call keys at login
 
-Thanks to [NEP-516](https://github.com/near/NEPs/pull/555) Ethereum wallets can control `0x...` accounts on NEAR Protocol.
+To request a [function-call access key](/protocol/accounts-contracts/access-keys#function-call-keys) during login, use [`function-call-key-plugin`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx#L54-L66). After the user approves the key, the app can sign permitted contract calls locally without opening the wallet for each transaction.
 
-To enable Ethereum wallets on `near-connect` simply add the `evm-on-near` wallet manifest:
+Install the plugin alongside NEAR Connect and `near-api-js`:
 
-```js
-const manifest = await fetch('https://evm-on-near.dev/manifest.json').then(r => r.json());
-await connector.whenManifestLoaded;
-await Promise.all(manifest.wallets.map(wallet => connector.registerWallet(wallet)));
+```bash
+npm install function-call-key-plugin
 ```
+
+Create the plugin and register it with your connector before calling `connect()`:
+
+```tsx
+import { createAccessKeyPlugin } from "function-call-key-plugin";
+import { nearToYocto } from "near-api-js";
+
+const accessKeyPlugin = createAccessKeyPlugin({
+  network: connector.network,
+  providers: connector.providers,
+  signIn: {
+    contractId: "hello.near-examples.testnet",
+    methodNames: ["set_greeting"],
+    allowance: nearToYocto("0.25").toString(),
+  },
+});
+
+await connector.use(accessKeyPlugin);
+
+// Call this when the user clicks the login button.
+const wallet = await connector.connect();
+```
+
+This configuration permits calls to `set_greeting` on `hello.near-examples.testnet`, with zero attached deposit and a gas allowance of 0.25 NEAR. The allowance limits how much the key can spend on gas; the account still pays transaction fees from its balance.
+
+The plugin generates the key pair during sign-in and stores the private key locally after sign-in succeeds. Continue calling `wallet.signAndSendTransaction()` as shown in [Calling Contract Method](#calling-contract-method): the plugin signs eligible calls with the local key and sends calls outside its permissions to the wallet for approval. It also falls back to the wallet if the key's allowance runs out or the key has been removed on-chain.
+
+In React, [create the plugin once](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx#L54-L66) and [await its registration during initialization](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx#L79-L86).

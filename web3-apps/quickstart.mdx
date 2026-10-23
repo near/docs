@@ -65,23 +65,23 @@ Go ahead and sign in with your NEAR account. If you don't have one, you can crea
 
 ### Context Provider
 
-[Next.js](https://nextjs.org/) uses a template system, where each page is a React component. Our main logic is defined at `./src/pages/_app.js`, which:
+[Next.js](https://nextjs.org/) uses a template system, where each page is a React component. Our main logic is defined at `./src/pages/_app.tsx`, which:
 
 1. Creates a `NearProvider` that wraps the entire application to provide NEAR functionality
 2. Renders the navigation menu and the page's content
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" language="jsx" />
 
-<Accordion title="What is NEAR Connect Hooks?">
+<Accordion title="How does the NEAR provider work?">
 
-NEAR Connect is a library that allows users to select their preferred NEAR wallet to login, our application uses **hooks** that wrap its functionality to make it easier to use
+The app defines its own `NearProvider` and `useNearWallet` hook in [`src/components/near-provider.tsx`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx). The provider uses `@hot-labs/near-connect` to manage wallet connections and sign transactions, and `near-api-js` to query the blockchain.
 
 </Accordion>
 
 <hr className="subsection" />
 
 ### Navigation Bar
-The navigation bar implements a button to allow users to `login` and `logout` with their NEAR wallet. The main logic comes from the `useNearWallet` hook, which exposes all wallet related functionality.
+The navigation bar implements a button to allow users to `login` and `logout` with their NEAR wallet. It uses the local `useNearWallet` hook from `@/components/near-provider`, which exposes the provider's wallet state and sign-in and sign-out functions.
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx" language="jsx" />
 
@@ -95,8 +95,8 @@ Now that you understand how the landing page works, we can move to the `Near Int
 
 | Operation Type | Method | Cost | Requires Signature |
 |---------------|--------|------|-------------------|
-| **Read (view)** | `viewMethod()` | Free | No |
-| **Write (call)** | `callMethod()` | Gas fees (~0.0001 Ⓝ) | Yes |
+| **Read (view)** | `viewFunction()` | Free | No |
+| **Write (call)** | `callFunction()` | Gas fees (~0.0001 Ⓝ) | Yes |
 
 View methods query contract state without modifying it. Call methods change state and require the user to sign a transaction.
 
@@ -107,11 +107,11 @@ Login if you haven't done it yet and you will see a simple form that allows you 
 
 <hr className="subsection" />
 
-### Function Call Hooks
-Just like the [navigation bar](#navigation-bar), we use the `useNearWallet` hook to get functions that allow us to call methods on the contract:
+### Contract Functions
+Just like the [navigation bar](#navigation-bar), we use the app's local `useNearWallet` hook to get functions that allow us to call methods on the contract:
 
-- `viewFunction` is used to call functions that are read-only
-- `callFunction` is used to call functions that modify the state of the contract
+- `viewFunction` calls read-only methods through the `near-api-js` RPC provider
+- `callFunction` calls methods that modify contract state through the connected wallet's `signAndSendTransaction` method
 
 <Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" language="jsx" start="11" end="11" />
 
@@ -134,13 +134,13 @@ On the other hand, when the user submits a new greeting, we use `callFunction` t
 No. Wallet login is free. Users only pay gas fees when they call contract functions that modify state.
 
 ### What wallets can users connect with?
-NEAR wallets (MyNearWallet, Meteor, HERE Wallet) and Ethereum wallets (Metamask, WalletConnect, Coinbase Wallet via EVM support).
+Users can choose from the NEAR wallets available in the NEAR Connect wallet selection modal.
 
 ### How do I avoid users signing every transaction?
-Create a **function-call access key** by setting `createAccessKeyFor: <contract-name>` in the wallet selector config. This allows the app to sign non-payable methods automatically.
+The template's local provider registers `function-call-key-plugin` with NEAR Connect to create a **function-call access key** scoped to the contract's `set_greeting` method. This allows the app to sign permitted non-payable calls automatically. See [function-call keys at login](/web3-apps/tutorials/wallet-login#function-call-keys-at-login) for the setup.
 
 ### Can I use this with an existing React app?
-Yes. Install `near-connect-hooks` and follow our [integration guide](./tutorials/wallet-login).
+Yes. Install `@hot-labs/near-connect` and `near-api-js` and follow our [integration guide](/web3-apps/tutorials/wallet-login).
 
 ### Why Next.js instead of plain React?
 Next.js is recommended but not required. You can use Vite/React, Vue, Svelte, or any framework. Check `create-near-app` templates for options.

@@ -60,6 +60,10 @@
   },
   "redirects": [
     {
+      "source": "/web3-apps/concepts/web-login",
+      "destination": "/web3-apps/tutorials/wallet-login"
+    },
+    {
       "source": "/protocol/network/staking",
       "destination": "/protocol/tutorials/staking-tokens"
     },
