@@ -52,7 +52,11 @@ app.post('/', async (req: Request, res: Response) => {
       const deserializedTx: SignedDelegate = deserialize(
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/SurgeCode/near-relay-example/blob/46b9da740348b67c869857b54fe2859021cf6d71/server.ts#L16-L27)
+
+</div>
 
 {/* /github-code */}
 
@@ -82,7 +86,11 @@ export async function getAccount(network: string, accountId: string, privateKey:
     return near.account(accountId);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/SurgeCode/near-relay-example/blob/46b9da740348b67c869857b54fe2859021cf6d71/util.ts#L5-L17)
+
+</div>
 
 {/* /github-code */}
 
@@ -122,7 +130,11 @@ app.post('/', async (req: any, res: any) => {
 });
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/SurgeCode/near-relay/blob/0d481635245513665c5ed448cbea0511b3876df6/server/server.ts#L8-L12)
+
+</div>
 
 {/* /github-code */}
 
@@ -144,7 +156,11 @@ app.post('/create-account', async (req: any, res: any) => {
 });
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/SurgeCode/near-relay/blob/0d481635245513665c5ed448cbea0511b3876df6/server/server.ts#L14-L18)
+
+</div>
 
 {/* /github-code */}
   
@@ -192,7 +208,11 @@ async function sendRelay() {
     body: JSON.stringify([Array.from(encodeSignedDelegate(signedDelegate))]),
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/SurgeCode/near-relay-example/blob/46b9da740348b67c869857b54fe2859021cf6d71/client.ts#L10-L30)
+
+</div>
 
 {/* /github-code */}
 
@@ -222,7 +242,11 @@ const [createMethod, setCreateMethod] = useState<"passkey" | "password" | "keypa
 const [isCreating, setIsCreating] = useState(false);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/SurgeCode/near-relay/blob/0d481635245513665c5ed448cbea0511b3876df6/example/src/app/page.tsx#L17-L23)
+
+</div>
 
 {/* /github-code */}
 
@@ -251,7 +275,11 @@ const handleCreateAccount = async () => {
           { usePasskey: true }
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/SurgeCode/near-relay/blob/0d481635245513665c5ed448cbea0511b3876df6/example/src/app/page.tsx#L25-L36)
+
+</div>
 
 {/* /github-code */}
 

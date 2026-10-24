@@ -42,7 +42,11 @@ language: rust
 
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/lib.rs#L32-L49)
+
+</div>
 
 {/* /github-code */}
 
@@ -75,7 +79,11 @@ let transfer_nft = nft_contract::ext(self.nft_contract.clone())
     .nft_transfer(self.highest_bid.bidder.clone(), self.token_id.clone());
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/lib.rs#L93-L96)
+
+</div>
 
 {/* /github-code */}
 {/* github-code
@@ -98,7 +106,11 @@ trait NFT {
     fn nft_transfer(&self, receiver_id: AccountId, token_id: TokenId);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/ext.rs#L2-L10)
+
+</div>
 
 {/* /github-code */}
 
@@ -140,7 +152,11 @@ pub struct Contract {
 }
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/lib.rs#L17-L26)
+
+</div>
 
 {/* /github-code */}
 
@@ -161,7 +177,11 @@ language: rust
 
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/lib.rs#L107-L109)
+
+</div>
 
 {/* /github-code */}
 
@@ -197,7 +217,11 @@ let contract = create_subaccount(&sandbox, "contract.sandbox")
 let signer = near_api::Signer::from_secret_key(
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L30-L39)
+
+</div>
 
 {/* /github-code */}
 
@@ -240,7 +264,11 @@ let request_payload = json!({
     "token_id": TOKEN_ID,
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L42-L60)
+
+</div>
 
 {/* /github-code */}
 
@@ -278,7 +306,11 @@ contract
 contract
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L151-L164)
+
+</div>
 
 {/* /github-code */}
 

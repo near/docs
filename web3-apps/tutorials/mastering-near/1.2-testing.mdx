@@ -45,7 +45,11 @@ let contract = create_subaccount(&sandbox, "contract.sandbox")
 
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/tests/test_basics.rs#L17-L29)
+
+</div>
 
 {/* /github-code */}
 
@@ -78,7 +82,11 @@ let signer = near_api::Signer::from_secret_key(
 let now = near_api::Chain::block()
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/tests/test_basics.rs#L31-L38)
+
+</div>
 
 {/* /github-code */}
 
@@ -151,7 +159,11 @@ let highest_bid: Bid = contract
     .data;
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/tests/test_basics.rs#L42-L74)
+
+</div>
 
 {/* /github-code */}
 
@@ -185,7 +197,11 @@ let alice_balance = alice
     .total;
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/tests/test_basics.rs#L77-L83)
+
+</div>
 
 {/* /github-code */}
 
@@ -228,7 +244,11 @@ let new_alice_balance = alice
 assert!(new_alice_balance == alice_balance.saturating_add(NearToken::from_near(1)));
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/tests/test_basics.rs#L95-L112)
+
+</div>
 
 {/* /github-code */}
 

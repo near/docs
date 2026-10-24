@@ -73,12 +73,16 @@ function presentation(meta) {
   return { header: `${language} title=${JSON.stringify(fname)} lines`, link: `[See code on GitHub](${href})` };
 }
 
+function sourceLink(link) {
+  return `<div className="github-source-link">\n\n${link}\n\n</div>`;
+}
+
 export function renderBlock(meta, code) {
   const { header, link } = presentation(meta);
   const longestFence = Math.max(0, ...Array.from(code.matchAll(/`+/g), match => match[0].length));
   const fence = '`'.repeat(Math.max(3, longestFence + 1));
   const metadata = [...keys].filter(key => meta[key] !== undefined).map(key => `${key}: ${meta[key]}`).join('\n');
-  return `{/* github-code\n${metadata}\n*/}\n\n${fence}${header}\n${code}\n${fence}\n\n${link}\n\n{/* /github-code */}`;
+  return `{/* github-code\n${metadata}\n*/}\n\n${fence}${header}\n${code}\n${fence}\n\n${sourceLink(link)}\n\n{/* /github-code */}`;
 }
 
 function parseMetadata(text) {
@@ -154,7 +158,12 @@ export async function syncText(text, loader, { migrate = false, force = false } 
     const updated = { ...meta, commit };
     const { header, link } = presentation(updated);
     const unchanged = existing && meta.commit === commit && match[0].includes(header) && match[0].includes(link);
-    if (unchanged && !force) continue;
+    if (unchanged && !force) {
+      // Refresh link presentation without downloading unchanged source files.
+      const value = match[0].replace(`\n\n${link}\n\n{/* /github-code */}`, `\n\n${sourceLink(link)}\n\n{/* /github-code */}`);
+      if (value !== match[0]) replacements.push({ match, value });
+      continue;
+    }
     const file = await loader.file(source, commit);
     const code = extractCode(file, meta.start, meta.end);
     replacements.push({ match, value: renderBlock(updated, code) });

@@ -60,7 +60,11 @@ export const RPC_URL = process.env.NEXT_PUBLIC_RPC_URL ||
   (NetworkId === 'mainnet' ? 'https://free.rpc.fastnear.com' : 'https://test.rpc.fastnear.com');
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/config.js)
+
+</div>
 
 {/* /github-code */}
 
@@ -107,7 +111,11 @@ export default function MyApp({ Component, pageProps }) {
 }
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/_app.js#L13-L34)
+
+</div>
 
 {/* /github-code */}
 {/* github-code
@@ -132,7 +140,11 @@ export const NearContext = createContext({
 });
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/context.js)
+
+</div>
 
 {/* /github-code */}
 
@@ -193,7 +205,11 @@ export const Navigation = () => {
 };
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/components/Navigation.jsx)
+
+</div>
 
 {/* /github-code */}
 {/* github-code
@@ -236,7 +252,11 @@ signOut = async () => {
 };
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/wallets/near.js#L11-L39)
+
+</div>
 
 {/* /github-code */}
 
@@ -265,7 +285,11 @@ useEffect(() => {
     setHighestBidder(highestBidData.bidder)
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/index.js#L24-L31)
+
+</div>
 
 {/* /github-code */}
 {/* github-code
@@ -281,7 +305,11 @@ viewMethod = ({ contractId, method, args = {} }) =>
   this.provider.callFunction({ contractId, method, args });
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/wallets/near.js#L41-L42)
+
+</div>
 
 {/* /github-code */}
 
@@ -301,7 +329,11 @@ fname: index.js
 {!highestBidder ? <SkeletonBid /> : <LastBid lastBid={highestBid} highestBidder={highestBidder} lastUpdate={secondsRemaining}/>} 
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/index.js#L107-L107)
+
+</div>
 
 {/* /github-code */}
 {/* github-code
@@ -328,7 +360,11 @@ const LastBid = ({lastBid, highestBidder, lastUpdate}) => {
 export default LastBid
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/components/LastBid.jsx)
+
+</div>
 
 {/* /github-code */}
 
@@ -389,7 +425,11 @@ useEffect(() => {
 }, []);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/index.js#L24-L63)
+
+</div>
 
 {/* /github-code */}
 
@@ -429,7 +469,11 @@ const formatTime = (time) => {
 const { allSeconds, days, hours, minutes, seconds } = formatTime(time);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/components/Timer.jsx#L18-L36)
+
+</div>
 
 {/* /github-code */}
 
@@ -464,7 +508,11 @@ const bid = async (amount) => {
 }
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/index.js#L65-L76)
+
+</div>
 
 {/* /github-code */}
 {/* github-code
@@ -490,7 +538,11 @@ callMethod = async ({ contractId, method, args = {}, gas = '300000000000000', de
 };
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/wallets/near.js#L44-L55)
+
+</div>
 
 {/* /github-code */}
 
@@ -520,7 +572,11 @@ const claim = async () => {
 }
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/index.js#L78-L86)
+
+</div>
 
 {/* /github-code */}
 

@@ -28,7 +28,11 @@ useEffect(() => {
     setAuctionInfo(data)
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/index.js#L28-L35)
+
+</div>
 
 {/* /github-code */}
 
@@ -68,7 +72,11 @@ useEffect(() => {
 }, [auctionInfo]);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/index.js#L57-L73)
+
+</div>
 
 {/* /github-code */}
 
@@ -113,7 +121,11 @@ const AuctionItem = ({ nftMetadata, validAuction }) => {
 export default AuctionItem;
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/components/AuctionItem.jsx)
+
+</div>
 
 {/* /github-code */}
 
@@ -155,7 +167,11 @@ useEffect(() => {
 }, [auctionInfo]);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/index.js#L75-L93)
+
+</div>
 
 {/* /github-code */}
 
@@ -189,7 +205,11 @@ const bid = async (amount) => {
     throw new Error('The auction rejected this bid and refunded the tokens');
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/index.js#L95-L105)
+
+</div>
 
 {/* /github-code */}
 
@@ -223,7 +243,11 @@ export default async function handler(req, res) {
       });
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/api/getBidHistory.js#L1-L13)
+
+</div>
 
 {/* /github-code */}
 
@@ -245,7 +269,11 @@ if (txn.receipt_outcome.status) {
   let amount = String(parsedArgs.amount);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/api/getBidHistory.js#L24-L28)
+
+</div>
 
 {/* /github-code */}
 

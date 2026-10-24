@@ -57,6 +57,15 @@ test('a second sync is byte-for-byte unchanged and does not download source file
   assert.deepEqual(loader.stats, { lookups: 1, downloads: 0 });
 });
 
+test('updates old source-link styling without downloading unchanged code', async () => {
+  const initial = await syncText(legacy, mockLoader().loader, { migrate: true });
+  const oldStyle = initial.text.replace(/<div className="github-source-link">\n\n([^\n]+)\n\n<\/div>/, '$1');
+  const { loader } = mockLoader();
+  const updated = await syncText(oldStyle, loader);
+  assert.equal(updated.text, initial.text);
+  assert.equal(loader.stats.downloads, 0);
+});
+
 test('new commits and edited ranges regenerate the block', async () => {
   const initial = await syncText(legacy, mockLoader().loader, { migrate: true });
   const { loader } = mockLoader({ sha: 'b'.repeat(40) });

@@ -102,7 +102,11 @@ const refTokensBalanceInt: bigint = await account.getBalance(REF);
 console.log("REF: ", REF.toDecimal(refTokensBalanceInt, 2));
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/tokens-balance.ts)
+
+</div>
 
 {/* /github-code */}
   </Tab>
@@ -133,7 +137,11 @@ console.log(`Account: ${accountId}`);
 console.log(`NEAR Balance: ${balance} NEAR`);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/tokens-balance.js)
+
+</div>
 
 {/* /github-code */}
   </Tab>
@@ -172,7 +180,11 @@ async fn main() {
 }
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/account_details.rs)
+
+</div>
 
 {/* /github-code */}
 
@@ -226,7 +238,11 @@ const accountState = await account.getState();
 console.log(accountState);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/account-details.ts)
+
+</div>
 
 {/* /github-code */}
 
@@ -253,7 +269,11 @@ console.log(`Account: ${accountId}`);
 console.log(`Balance: ${balance} NEAR`);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/account-details.js)
+
+</div>
 
 {/* /github-code */}
 
@@ -273,7 +293,11 @@ language: rust
 let account_info = my_account.view().fetch_from(&network).await.unwrap();
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/account_details.rs#L21-L21)
+
+</div>
 
 {/* /github-code */}
 
@@ -349,7 +373,11 @@ await account.callFunction({
 console.log(`Created account ${newAccountId2} with privateKey: ${keyPair.toString()}`);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/create-tla.ts)
+
+</div>
 
 {/* /github-code */}
 
@@ -395,7 +423,11 @@ console.log(`Created top-level account: ${newAccountId}`);
 console.log(`Private key: ${keyPair.secretKey}`);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/create-tla.js)
+
+</div>
 
 {/* /github-code */}
 
@@ -430,7 +462,11 @@ println!("{:?}", create_account_result);
 
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/create_account.rs#L32-L47)
+
+</div>
 
 {/* /github-code */}
 
@@ -465,7 +501,11 @@ language: rust
 }
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/create_account_from_seed.rs#L32-L46)
+
+</div>
 
 {/* /github-code */}
 
@@ -524,7 +564,11 @@ await account.createSubAccount({
 console.log(`Created ${prefix}.${accountId} with private key ${keyPair.toString()}`);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/create-subaccount.ts)
+
+</div>
 
 {/* /github-code */}
 
@@ -573,7 +617,11 @@ console.log(`Created subaccount: ${newAccountId}`);
 console.log(`Private key: ${keyPair.secretKey}`);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/create-subaccount.js)
+
+</div>
 
 {/* /github-code */}
 
@@ -608,7 +656,11 @@ language: rust
 }
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/create_account.rs#L61-L76)
+
+</div>
 
 {/* /github-code */}
 
@@ -684,7 +736,11 @@ const beneficiary: string = process.env.ACCOUNT_ID!;
 await accountToDelete.deleteAccount(beneficiary);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/delete-account.ts#L26-L30)
+
+</div>
 
 {/* /github-code */}
 
@@ -749,7 +805,11 @@ console.log(`Deleted account: ${accountToDelete}`);
 console.log(`Beneficiary: ${accountId}`);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/delete-account.js)
+
+</div>
 
 {/* /github-code */}
 
@@ -777,7 +837,11 @@ language: rust
 }
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/delete_account.rs#L51-L59)
+
+</div>
 
 {/* /github-code */}
 
@@ -907,7 +971,11 @@ const balance = await USDT.getBalance(randomAccount);
 console.log(`Balance of ${randomAccountId}:`, USDT.toDecimal(balance));
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/send-tokens.ts)
+
+</div>
 
 {/* /github-code */}
 
@@ -942,7 +1010,11 @@ const result = await near.send("receiver-account.testnet", "0.1 NEAR");
 console.log("Transfer result:", result);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/send-tokens.js)
+
+</div>
 
 {/* /github-code */}
 
@@ -968,7 +1040,11 @@ let send_tokens_result = Tokens::account(account_id.clone()) // example-account.
     .unwrap();
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/send_tokens.rs#L22-L28)
+
+</div>
 
 {/* /github-code */}
 
@@ -1039,7 +1115,11 @@ await account.callFunction({
 });
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/contract-interaction.ts)
+
+</div>
 
 {/* /github-code */}
       <Tip>
@@ -1096,7 +1176,11 @@ const result = await contract.call.add_message({
 console.log({ result });
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/typed-contract-interaction.ts)
+
+</div>
 
 {/* /github-code */}
     </Tab>
@@ -1146,7 +1230,11 @@ await near.call(
 );
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/contract-interaction.js)
+
+</div>
 
 {/* /github-code */}
       <Tip>
@@ -1185,7 +1273,11 @@ const result = await guestbook.call.add_message({ text: "Hello from near-kit!" }
 console.log({ result });
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/typed-contract-interaction.js)
+
+</div>
 
 {/* /github-code */}
     </Tab>
@@ -1208,7 +1300,11 @@ let contract_id: AccountId = "guestbook.near-examples.testnet".parse().unwrap();
 let contract = Contract(contract_id.clone());
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/contract_interaction.rs#L23-L24)
+
+</div>
 
 {/* /github-code */}
 
@@ -1237,7 +1333,11 @@ let function_call_result = contract
     .unwrap();
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/contract_interaction.rs#L37-L49)
+
+</div>
 
 {/* /github-code */}
 
@@ -1292,7 +1392,11 @@ const batchActionsResult = await account.signAndSendTransaction({
 console.log(batchActionsResult);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/batch-actions.ts)
+
+</div>
 
 {/* /github-code */}
 
@@ -1330,7 +1434,11 @@ const result = await near.transaction(accountId)
 console.log("Batch actions result:", result);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/batch-actions.js)
+
+</div>
 
 {/* /github-code */}
 
@@ -1370,7 +1478,11 @@ let batch_actions_result = Transaction::construct(
 .unwrap();
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/batch_actions.rs#L22-L42)
+
+</div>
 
 {/* /github-code */}
 
@@ -1436,7 +1548,11 @@ const sendNearTokensResults = await Promise.all(transfers);
 sendNearTokensResults.forEach(result => console.log(result));
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/simultaneous-transactions.ts)
+
+</div>
 
 {/* /github-code */}
 
@@ -1513,7 +1629,11 @@ for (const key of keys) {
 console.log("Cleaned up keys");
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/simultaneous-transactions.js)
+
+</div>
 
 {/* /github-code */}
 
@@ -1565,7 +1685,11 @@ let tx2 = Transaction::construct(
 let (tx1_result, tx2_result) = tokio::join!(tx1.send_to(&network), tx2.send_to(&network));
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/simultaneous_transactions.rs#L23-L55)
+
+</div>
 
 {/* /github-code */}
 
@@ -1632,7 +1756,11 @@ const result = await account.deployContract(
 console.log(result);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/deploy-contract.ts)
+
+</div>
 
 {/* /github-code */}
 
@@ -1671,7 +1799,11 @@ const result = await near.transaction(accountId)
 console.log("Deploy contract result:", result);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/deploy-contract.js)
+
+</div>
 
 {/* /github-code */}
 
@@ -1700,7 +1832,11 @@ let deploy_result = Contract::deploy(account_id.clone())
 println!("{:?}", deploy_result);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/contract_interaction.rs#L54-L61)
+
+</div>
 
 {/* /github-code */}
 
@@ -1767,7 +1903,11 @@ const deployResult = await deployer.deployGlobalContract(wasm, "accountId");
 console.log(deployResult);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/deploy-global-contract-by-account.ts#L1-L22)
+
+</div>
 
 {/* /github-code */}
     </Tab>
@@ -1805,7 +1945,11 @@ const deployResult = await deployer.deployGlobalContract(wasm, "codeHash");
 console.log(deployResult);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/deploy-global-contract-by-hash.ts#L1-L23)
+
+</div>
 
 {/* /github-code */}
     </Tab>
@@ -1853,7 +1997,11 @@ const publishResult = await near
 console.log("Published global contract:", publishResult.transaction.hash);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/deploy-global-contract-by-account.js#L1-L27)
+
+</div>
 
 {/* /github-code */}
     </Tab>
@@ -1899,7 +2047,11 @@ const publishResult = await near
 console.log("Published global contract by hash:", publishResult.transaction.hash);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/deploy-global-contract-by-hash.js#L1-L31)
+
+</div>
 
 {/* /github-code */}
     </Tab>
@@ -1984,7 +2136,11 @@ const contract = await consumer.getContractCode();
 console.log("Size", contract.code.length, "Hash", contract.hash);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/deploy-global-contract-by-account.ts#L32-L41)
+
+</div>
 
 {/* /github-code */}
     </Tab>
@@ -2015,7 +2171,11 @@ console.log("Size", contract.code.length, "Hash", contract.hash);
 
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/deploy-global-contract-by-hash.ts#L37-L51)
+
+</div>
 
 {/* /github-code */}
     </Tab>
@@ -2070,7 +2230,11 @@ await consumerNear
 console.log("Cleaned up consumer account");
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/deploy-global-contract-by-account.js#L29)
+
+</div>
 
 {/* /github-code */}
     </Tab>
@@ -2120,7 +2284,11 @@ await consumerNear
 console.log("Cleaned up consumer account");
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/deploy-global-contract-by-hash.js#L36)
+
+</div>
 
 {/* /github-code */}
     </Tab>
@@ -2208,7 +2376,11 @@ const messages = await provider.callFunction({
 console.log(messages);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/contract-interaction.ts#L9-L21)
+
+</div>
 
 {/* /github-code */}
 
@@ -2251,7 +2423,11 @@ const messages = await near.view(
 console.log(messages);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/contract-interaction.js#L1-L22)
+
+</div>
 
 {/* /github-code */}
 
@@ -2286,7 +2462,11 @@ let view_call_result: Data<u32> = contract
     .unwrap();
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/contract_interaction.rs#L22-L33)
+
+</div>
 
 {/* /github-code */}
 
@@ -2334,7 +2514,11 @@ const keysProvider = await provider.viewAccessKeyList({ accountId });
 console.log(keysProvider);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/keys.ts#L9-L16)
+
+</div>
 
 {/* /github-code */}
 
@@ -2354,7 +2538,11 @@ language: rust
 let keys = account.list_keys().fetch_from(&network).await.unwrap();
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/keys.rs#L22-L22)
+
+</div>
 
 {/* /github-code */}
 
@@ -2396,7 +2584,11 @@ await account.addFullAccessKey(
 );
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/keys.ts#L30-L37)
+
+</div>
 
 {/* /github-code */}
 
@@ -2426,7 +2618,11 @@ await near
   .send();
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/keys.js#L16-L27)
+
+</div>
 
 {/* /github-code */}
 
@@ -2458,7 +2654,11 @@ println!("{:?}", add_full_key_result);
 
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/keys.rs#L25-L37)
+
+</div>
 
 {/* /github-code */}
 
@@ -2501,7 +2701,11 @@ await account.addFunctionCallAccessKey({
 });
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/keys.ts#L39-L45)
+
+</div>
 
 {/* /github-code */}
 
@@ -2531,7 +2735,11 @@ await near
 console.log(`Added Function Call Key: ${functionCallKey.publicKey.toString()}`);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/keys.js#L31-L42)
+
+</div>
 
 {/* /github-code */}
 
@@ -2569,7 +2777,11 @@ println!("{:?}", add_function_key_result);
 
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/keys.rs#L38-L56)
+
+</div>
 
 {/* /github-code */}
 
@@ -2611,7 +2823,11 @@ language: javascript
 await account.deleteKey(fnKeyPair.getPublicKey().toString());
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/keys.ts#L56-L56)
+
+</div>
 
 {/* /github-code */}
 
@@ -2639,7 +2855,11 @@ await nearWithNewKey
   .send();
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/keys.js#L45-L54)
+
+</div>
 
 {/* /github-code */}
 
@@ -2668,7 +2888,11 @@ language: rust
 }
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/keys.rs#L57-L66)
+
+</div>
 
 {/* /github-code */}
 
@@ -2805,7 +3029,11 @@ await verifyMessage({
 });
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/verify-signature.ts)
+
+</div>
 
 {/* /github-code */}
 
@@ -2852,7 +3080,11 @@ const isValid = await verifyNep413Signature(
 console.log("Signature valid:", isValid);
 ```
 
+<div className="github-source-link">
+
 [See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/verify-signature.js)
+
+</div>
 
 {/* /github-code */}
 
