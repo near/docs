@@ -22,6 +22,8 @@ Please check their [docs](https://guide.rhea.finance/) for more information.
 
 </Info>
 
+The WebApp examples use the local `useNearWallet` hook from the [Hello NEAR provider setup](/web3-apps/quickstart#context-provider).
+
 ---
 
 ## Query Token Exchange Rate
@@ -161,7 +163,7 @@ Query your deposit balances by calling the `get_deposits` method:
   <Tab title="🌐 WebApp">
     
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
 
@@ -176,7 +178,7 @@ Query your deposit balances by calling the `get_deposits` method:
   });
   ```
 
-  Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   <Accordion title="Example response">
   <p>
@@ -275,7 +277,7 @@ DEXs work by having multiple pools of token pairs (e.g. NEAR-USDC) that users ca
   <Tab title="🌐 WebApp">
 
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
 
@@ -291,7 +293,7 @@ DEXs work by having multiple pools of token pairs (e.g. NEAR-USDC) that users ca
   });
   ```
 
-  Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   <Accordion title="Example response">
   <p>
@@ -455,7 +457,7 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
   <Tab title="🌐 WebApp">
 
     ```js
-    import { useNearWallet } from "near-connect-hooks";
+    import { useNearWallet } from "@/components/near-provider";
 
     const AMM_CONTRACT_ADDRESS = 'v2.ref-finance.near';
 
@@ -480,7 +482,7 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
     });
     ```
 
-   Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
+   Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   <Accordion title="Example response">
 

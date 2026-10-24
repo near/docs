@@ -75,12 +75,10 @@ All examples follow a consistent structure, making it easy to navigate between t
 │    ├── tests  # sandbox test
 │    ├── Cargo.toml
 │    └── rust-toolchain.toml
-├── frontend    # React + Next.JS frontend
-│    ├── src    # frontend's implementation
-│    ├── public 
-│    ├── package.json
-│    ├── next.config.js
-│    └── jsconfig.json
+├── frontend   # React + Next.js frontend
+│    ├── src    # frontend implementation
+│    ├── public
+│    └── package.json
 └── README.md
 ```
 
@@ -92,7 +90,7 @@ Some repositories also contain the same contract implemented in other languages 
 
 ## Frontend
 
-Each example includes a **Next.JS** frontend that is very simple to start:
+Each example includes a **Next.js** frontend that connects to NEAR and lets you interact with the smart contract. To start it, run:
 
 ```bash
 cd frontend
@@ -100,46 +98,44 @@ yarn
 yarn dev
 ```
 
-These frontends are useful to demonstrate how to connect a web application to NEAR, as well as how to interact with the smart contracts.
-
 <Tip>
-Each frontend connects to a **pre-deployed version of the contract**. Check `./frontend/config.js` to see which contract is being used, or change it to your own deployed contract
+Each frontend connects to a **pre-deployed version of the contract**. Check the frontend's configuration to see which contract is being used, or change it to your own deployed contract. In Hello NEAR, this configuration is in `frontend/src/config.ts`.
 </Tip>
 
-### NEAR Connector Hooks
+### Connecting to NEAR
 
-All frontends use [`near-connect-hooks`](https://www.npmjs.com/package/near-connect-hooks), which wrap the functionality of [NEAR Connector](../../web3-apps/tutorials/wallet-login) to handle the connection between the web app and the NEAR blockchain.
+The Hello NEAR frontend defines a local `NearProvider` that uses [NEAR Connect](/web3-apps/tutorials/wallet-login) to manage wallet connections and sign transactions, and `near-api-js` to query the blockchain.
 
-The `near-connect-hooks` expose a `NearProvider` that is used to wrap the entire application, usually in `pages/_app.js`:
+The provider wraps the application in `src/pages/_app.tsx` so components can access its wallet state and contract helpers:
 
-```jsx
-import { NearProvider } from "near-connect-hooks";
+```tsx
+import type { AppProps } from "next/app";
+import { NearProvider } from "@/components/near-provider";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <NearProvider>
-      <Navigation />
       <Component {...pageProps} />
     </NearProvider>
   );
 }
 ```
 
-<br />
+Components within the provider use the local **`useNearWallet` hook** to sign in and out, read contract state, and call contract methods:
 
-We can then use the **`useNearWallet` hook** within any component to access all NEAR-related functionality, such as login/logout, view and call functions, and sign transactions:
+```tsx
+import { useNearWallet } from "@/components/near-provider";
 
-```jsx
-import { useNearWallet } from 'near-connect-hooks';
-
-export default function App() {
-  // Login / Logout functionality
+export default function Greeting() {
   const { loading, signIn, signOut, signedAccountId } = useNearWallet();
+  const { viewFunction, callFunction } = useNearWallet();
 
-  // To interact with the contract
-  const { viewFunction, callFunction, signAndSendTransactions } = useNearWallet();
+  // Use these values and functions in your component.
+  return null;
 }
 ```
+
+See the [frontend quickstart](/web3-apps/quickstart#context-provider) for more details about the provider and contract interactions.
 
 ---
 

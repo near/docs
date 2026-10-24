@@ -8,6 +8,8 @@ import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
 
 Wanting to use Non-Fungible Tokens (NFT) in your dApp? Here you will find all the information you need to get started creating your own tokens, registering users, transferring tokens, and integrating them into your smart contracts.
 
+The WebApp examples use the local `useNearWallet` hook from the [Hello NEAR provider setup](/web3-apps/quickstart#context-provider).
+
 ---
 
 ## Deploying a NFT Contract
@@ -83,7 +85,7 @@ You don't need to deploy your own NFT contract. NEAR has a shared NFT contract t
   <Tab title="🌐 WebApp">
     
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
 
@@ -105,7 +107,7 @@ You don't need to deploy your own NFT contract. NEAR has a shared NFT contract t
   });
   ```
 
-  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -194,7 +196,7 @@ You can query the NFT's information and metadata by calling the `nft_token`.
   <Tab title="🌐 WebApp">
 
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
 
@@ -209,7 +211,7 @@ You can query the NFT's information and metadata by calling the `nft_token`.
   });
   ```
 
-  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   <Accordion title="Example response">
 
@@ -345,7 +347,7 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
   <Tab title="🌐 WebApp">
       
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const CONTRACT_ADDRESS = 'nft.primitives.near';
 
@@ -362,7 +364,7 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
   });
   ```
 
-  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -495,7 +497,7 @@ While the NFT standard does not define a `burn` method, you can simply transfer 
   <Tab title="🌐 WebApp">
       
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const { callFunction } = useNearWallet();
 
@@ -510,7 +512,7 @@ While the NFT standard does not define a `burn` method, you can simply transfer 
   });
   ```
 
-  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
