@@ -3,17 +3,38 @@ title: Updating the Frontend
 description: "Update the frontend to display the new token information."
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 Now we've updated the contract to include an NFT as a reward and changed the contract such that it accepts bids in fungible tokens, we need to update the frontend accordingly.
 
 ## Getting the data from the contract
 
 Now we have a function to output the whole contract state we will call this function in our frontend 
 
-<Github fname="index.js"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L28-L35"
-        start="28" end="35" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L28-L35
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 28
+end: 35
+fname: index.js
+*/}
+
+```javascript title="index.js" lines
+
+useEffect(() => {
+  const getInfo = async () => {
+    const data = await wallet.viewMethod({
+      contractId: AUCTION_CONTRACT,
+      method: "get_auction_info",
+    });
+    setAuctionInfo(data)
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/index.js#L28-L35)
+
+</div>
+
+{/* /github-code */}
 
 This call will deliver us the contract Ids of the FT and NFT contracts along with the token Id of the NFT. We will then use this information to call the `ft_metadata` and `nft_token` methods on the FT and NFT contracts respectively to get information about the FT and NFT.
 
@@ -23,17 +44,90 @@ This call will deliver us the contract Ids of the FT and NFT contracts along wit
 
 We want to show what NFT is being auctioned. To do this we will call `nft_token` on the NFT contract to get the NFT metadata. To call this method we need to specify the NFT `contractId` and the `token_id`, which can be found in the auction information. `nft_token` also returns the owner of the NFT, so we'll check this against the contract account to verify that the auction is valid.
 
-<Github fname="index.js"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L57-L73"
-        start="57" end="73" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L57-L73
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 57
+end: 73
+fname: index.js
+*/}
+
+```javascript title="index.js" lines
+}, []);
+
+useEffect(() => {
+  const getNftInfo = async () => {
+    const data = await wallet.viewMethod({
+      contractId: auctionInfo.nft_contract,
+      method: "nft_token",
+      args: { token_id: auctionInfo.token_id }
+    });
+    setNftInfo(data)
+    setValidAuction(data?.owner_id === AUCTION_CONTRACT ? "Valid Auction" : "NFT is not held by the auction")
+  }
+  if (auctionInfo) {
+    getNftInfo().catch((err) => setError(err.message));
+  }
+
+}, [auctionInfo]);
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/index.js#L57-L73)
+
+</div>
+
+{/* /github-code */}
 
 Note that this effect will only run once the `auctionInfo` updates because we first need the NFT contract ID and token ID from `auctionInfo` to make a valid call to `nft_token`.
 
 In a new component named `AuctionItem` we display the NFT image, name, and description.
 
-<Github fname="AuctionItem.jsx"
-    url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/components/AuctionItem.jsx"
-    />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/components/AuctionItem.jsx
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+fname: AuctionItem.jsx
+*/}
+
+```jsx title="AuctionItem.jsx" lines
+import styles from './AuctionItem.module.css';
+
+const AuctionItem = ({ nftMetadata, validAuction }) => {
+  const media = nftMetadata?.media;
+  const cardImage = !media ? null : media.startsWith('ipfs://')
+    ? `https://ipfs.io/ipfs/${media.slice(7)}`
+    : /^https?:\/\//.test(media) ? media : `https://arweave.net/${media}`;
+
+  return (
+    <div className={styles.container}>
+       <div className={styles.description}>
+          <p>{validAuction}</p>
+          <h2>{nftMetadata?.title}</h2>
+          <p>{nftMetadata?.description}</p>
+        </div>
+      <div className={styles.imageSection}>
+        {cardImage && (
+        <img
+          src={cardImage}
+          alt="NFT"
+        />
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default AuctionItem;
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/components/AuctionItem.jsx)
+
+</div>
+
+{/* /github-code */}
 
 Note that an image caching service is used to display the NFT image for better performance.
 
@@ -43,9 +137,43 @@ Note that an image caching service is used to display the NFT image for better p
 
 Using the FT contract ID from the auction information, we can call the `ft_metadata` method on the FT contract to get information about the fungible token that is being used for the auction.
 
-<Github fname="index.js"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L75-L93"
-        start="75" end="93" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L75-L93
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 75
+end: 93
+fname: index.js
+*/}
+
+```javascript title="index.js" lines
+useEffect(() => {
+  const getFtInfo = async () => {
+    const ftInfo = await wallet.viewMethod({
+      contractId: auctionInfo.ft_contract,
+      method: "ft_metadata",
+    });
+    setFtContract(auctionInfo.ft_contract)
+    setFtName(ftInfo.symbol)
+    setFtImg(ftInfo.icon)
+    setFtDecimals(ftInfo.decimals)
+    let bidAmount = formatUnits(auctionInfo.highest_bid.bid, ftInfo.decimals)
+    setLastBidDisplay(bidAmount)
+
+    fetchPastBids(auctionInfo.ft_contract);
+  }
+  if (auctionInfo) {
+    getFtInfo().catch((err) => setError(err.message));
+  }
+}, [auctionInfo]);
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/index.js#L75-L93)
+
+</div>
+
+{/* /github-code */}
 
 We set the FT image, symbol, icon, and decimals in state. We use the decimals to format the amount of tokens being bid. In the case of DAI it divides the amount by 10^18. The reverse process is used when making a bid, the bid amount is multiplied by 10^18 before being sent to the contract.
 
@@ -55,9 +183,35 @@ We set the FT image, symbol, icon, and decimals in state. We use the decimals to
 
 Instead of calling the function `bid` on the contract we now call the `ft_transfer_call` function on the FT contract. This function transfers the FTs to the auction contract and calls the `ft_on_transfer` on the auction contract. 
 
-<Github fname="index.js"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L95-L105"
-        start="95" end="105" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L95-L105
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 95
+end: 105
+fname: index.js
+*/}
+
+```javascript title="index.js" lines
+const bid = async (amount) => {
+  const real_amount = parseUnits(amount, ftDecimals)
+  let response = await wallet.callMethod({
+    contractId: auctionInfo.ft_contract,
+    method: "ft_transfer_call",
+    deposit: '1',
+    args: { "receiver_id": AUCTION_CONTRACT, "amount": String(real_amount), "msg": "" },
+    gas:"300000000000000"
+  })
+  if (BigInt(response ?? '0') === 0n) {
+    throw new Error('The auction rejected this bid and refunded the tokens');
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/index.js#L95-L105)
+
+</div>
+
+{/* /github-code */}
 
 ---
 
@@ -65,15 +219,63 @@ Instead of calling the function `bid` on the contract we now call the `ft_transf
 
 We need to update the API call that fetches historical bids to now index each time `ft_on_transfer` is called on the auction contract from the FT contract. 
 
-<Github fname="getBidHistory.js"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/api/getBidHistory.js#L1-L13"
-        start="1" end="13" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/api/getBidHistory.js#L1-L13
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 1
+end: 13
+fname: getBidHistory.js
+*/}
+
+```javascript title="getBidHistory.js" lines
+export default async function handler(req, res) {
+    try {
+      if (!process.env.API_KEY) {
+        return res.status(500).json({ error: "API key not provided" });
+      }
+      // Get all bid transactions
+      const { contractId, ftId } = req.query;
+      const bidsRes = await fetch(`https://${process.env.NEXT_PUBLIC_NETWORK_ID === 'mainnet' ? 'api' : 'api-testnet'}.nearblocks.io/v1/account/${contractId}/txns?from=${ftId}&method=ft_on_transfer&page=1&per_page=25&order=desc`, {
+        headers: {
+          'Accept': '*/*',
+          'Authorization': `Bearer ${process.env.API_KEY}`
+        }
+      });
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/api/getBidHistory.js#L1-L13)
+
+</div>
+
+{/* /github-code */}
 
 And now instead of getting the bid amount from the deposit, it is now retrieved from the calls argument, from `amount`. The case is the same for the account Id of the bidder, from `sender_id`.
 
-<Github fname="getBidHistory.js"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/api/getBidHistory.js#L24-L28"
-        start="24" end="28" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/api/getBidHistory.js#L24-L28
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 24
+end: 28
+fname: getBidHistory.js
+*/}
+
+```javascript title="getBidHistory.js" lines
+
+if (txn.receipt_outcome.status) {
+  let args = txn.actions[0].args;
+  let parsedArgs = JSON.parse(args);
+  let amount = String(parsedArgs.amount);
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/03-frontend/src/pages/api/getBidHistory.js#L24-L28)
+
+</div>
+
+{/* /github-code */}
 
 ---
 

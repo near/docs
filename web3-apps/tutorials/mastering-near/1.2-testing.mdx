@@ -3,8 +3,6 @@ title: Sandbox Testing
 description: "Lets test our contract in a realistic sandbox environment."
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 In the previous section, we went through the contract's code, analyzing how it worked. Now, we need to test it and make sure it works as expected! For contracts, there are two types of testing you can do: unit testing and sandbox testing.
 
 Here, we will focus on sandbox testing, as it enables one to deploy the contract in a realistic environment, allowing us to create multiple accounts and interact with the contract as if it was deployed on the blockchain.
@@ -22,9 +20,38 @@ Unit tests are built into the language and are used to test the contract functio
 
 The first thing our test does is to create multiple accounts with 10 `$NEAR` tokens each and deploy the contract to one of them.
 
-<Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L17-l29"
-        start="17" end="29" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L17-l29
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 17
+end: 29
+fname: test_basics.rs
+language: rust
+*/}
+
+```rust title="test_basics.rs" lines
+// Initialize the sandbox
+let sandbox = near_sandbox::Sandbox::start_sandbox().await?;
+let sandbox_network =
+    near_api::NetworkConfig::from_rpc_url("sandbox", sandbox.rpc_addr.parse()?);
+
+// Create accounts
+let alice = create_subaccount(&sandbox, "alice.sandbox").await?;
+let bob = create_subaccount(&sandbox, "bob.sandbox").await?;
+let auctioneer = create_subaccount(&sandbox, "auctioneer.sandbox").await?;
+let contract = create_subaccount(&sandbox, "contract.sandbox")
+    .await?
+    .as_contract();
+
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/tests/test_basics.rs#L17-L29)
+
+</div>
+
+{/* /github-code */}
 
 Notice that the sandbox compiles the code itself, so we do not need to pre-compile the contract before running the tests.
 
@@ -35,9 +62,33 @@ Notice that the sandbox compiles the code itself, so we do not need to pre-compi
 To initialize, the contract's account calls itself, invoking the `init` function with an `end_time` set to 60 seconds in the future.
 
 
-        <Github fname="test_basics.rs" language="rust"
-                url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L31-L38"
-                start="31" end="38" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L31-L38
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 31
+end: 38
+fname: test_basics.rs
+language: rust
+*/}
+
+```rust title="test_basics.rs" lines
+let signer = near_api::Signer::from_secret_key(
+    near_sandbox::config::DEFAULT_GENESIS_ACCOUNT_PRIVATE_KEY
+        .parse()
+        .unwrap(),
+)?;
+
+// Calculate the end time for the auction as a parameter for the init function
+let now = near_api::Chain::block()
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/tests/test_basics.rs#L31-L38)
+
+</div>
+
+{/* /github-code */}
 
 <Warning>
 **Time Units**
@@ -63,9 +114,58 @@ Now that the contract is deployed and initialized, we can start bidding and chec
 We first make `alice` place a bid of 1 NEAR, and check that the contract correctly registers the bid. Then, we have `bob` place a bid of 2 NEAR, and check that the highest bid is updated, and that `alice` gets her NEAR refunded.
 
 
-<Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs"
-        start="42" end="74" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 42
+end: 74
+fname: test_basics.rs
+language: rust
+*/}
+
+```rust title="test_basics.rs" lines
+    .timestamp_nanosec
+    .parse::<u64>()?;
+let a_minute_from_now = now + 60_000_000_000;
+
+// Deploy the contract with the init call
+near_api::Contract::deploy(contract.account_id().clone())
+    .use_code(contract_wasm)
+    .with_init_call(
+        "init",
+        json!({"end_time": a_minute_from_now.to_string(), "auctioneer": auctioneer.account_id()}),
+    )?
+    .with_signer(signer.clone())
+    .send_to(&sandbox_network)
+    .await?
+    .assert_success();
+
+// Alice makes first bid
+contract
+    .call_function("bid", ())
+    .transaction()
+    .deposit(NearToken::from_near(1))
+    .with_signer(alice.account_id().clone(), signer.clone())
+    .send_to(&sandbox_network)
+    .await?
+    .assert_success();
+
+// For now, the highest bid is the Alice's bid
+let highest_bid: Bid = contract
+    .call_function("get_highest_bid", ())
+    .read_only()
+    .fetch_from(&sandbox_network)
+    .await?
+    .data;
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/tests/test_basics.rs#L42-L74)
+
+</div>
+
+{/* /github-code */}
 
 
 #### Checking the balance
@@ -78,9 +178,32 @@ You might be tempted to check if `alice`'s balance is exactly 10 NEAR after she 
 When testing we should also check that the contract does not allow invalid calls. The next part checks that the contract doesn't allow for bids with fewer `$NEAR` tokens than the previous to be made.
 
 
-<Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L77-L83"
-        start="77" end="83" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L77-L83
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 77
+end: 83
+fname: test_basics.rs
+language: rust
+*/}
+
+```rust title="test_basics.rs" lines
+
+let alice_balance = alice
+    .tokens()
+    .near_balance()
+    .fetch_from(&sandbox_network)
+    .await?
+    .total;
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/tests/test_basics.rs#L77-L83)
+
+</div>
+
+{/* /github-code */}
 
 
 ---
@@ -91,9 +214,43 @@ The sandbox allows us to fast-forward time, which is useful for testing the cont
 After which the auction can now be claimed. Once claimed the test checks that the auctioneer has received the correct amount of `$NEAR` tokens.
 
 
-<Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L95-L112"
-        start="95" end="112" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L95-L112
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 95
+end: 112
+fname: test_basics.rs
+language: rust
+*/}
+
+```rust title="test_basics.rs" lines
+// Now, the highest bid is the Bob's bid
+let highest_bid: Bid = contract
+    .call_function("get_highest_bid", ())
+    .read_only()
+    .fetch_from(&sandbox_network)
+    .await?
+    .data;
+assert_eq!(highest_bid.bid, NearToken::from_near(2));
+assert_eq!(&highest_bid.bidder, bob.account_id());
+
+// Check that Alice was refunded her bid
+let new_alice_balance = alice
+    .tokens()
+    .near_balance()
+    .fetch_from(&sandbox_network)
+    .await?
+    .total;
+assert!(new_alice_balance == alice_balance.saturating_add(NearToken::from_near(1)));
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/tests/test_basics.rs#L95-L112)
+
+</div>
+
+{/* /github-code */}
 
 
 If you review the tests in full you'll see that we also test other invalid calls such as the auctioneer trying to claim the auction before it is over and a user attempting to bid once the auction is over.

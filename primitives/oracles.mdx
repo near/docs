@@ -5,7 +5,6 @@ description: "Learn about blockchain oracles on NEAR Protocol, including price f
 ---
 
 import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
-import { Github } from '/snippets/github.jsx';
 
 [Blockchain Oracles](https://en.wikipedia.org/wiki/Blockchain_oracle) serve as intermediaries that connect smart contracts with external (off-chain) data.
 
@@ -100,7 +99,26 @@ When using Price Feed IDs, you will need to remove the `0x` prefix.
 
 `Price Feed ID Example (testnet):`
 
-<Github language='typescript' url='https://github.com/near-examples/near-js/blob/main/node-js/oracle-example/pyth-oracle-update.js' start='14' end='15'/>
+{/* github-code
+url: https://github.com/near-examples/near-js/blob/main/node-js/oracle-example/pyth-oracle-update.js
+commit: bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46
+start: 14
+end: 15
+language: typescript
+*/}
+
+```typescript title="pyth-oracle-update.js" lines
+'f9c0172ba10dfa4d19088d94f5bf61d3b54d5bd7483a322a982e1373ee8ea31b', // BTC/USD price id
+'ca80ba6dc32e08d06f1aa886011eed1d77c77be9eb761cc10d72b7d0a2fd57a6', // ETH/USD price id
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-js/blob/bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46/node-js/oracle-example/pyth-oracle-update.js#L14-L15)
+
+</div>
+
+{/* /github-code */}
 
 </Info>
 
@@ -127,8 +145,44 @@ To use these endpoints, you will need to provide a Price Feed ID and ensure you 
 
 Here is a node.js example of fetching the latest price feed using `/v2/updates/price/latest` endpoint:
 
-<Github
-          url="https://github.com/near-examples/near-js/blob/main/node-js/utils/fetch-hermes-price-data.js"/>
+{/* github-code
+url: https://github.com/near-examples/near-js/blob/main/node-js/utils/fetch-hermes-price-data.js
+commit: bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46
+*/}
+
+```javascript title="fetch-hermes-price-data.js" lines
+const axios = require('axios');
+
+// There are separate endpoints for testnet and mainnet
+const HERMES_TESTNET_URL = 'https://hermes-beta.pyth.network';
+const HERMES_MAINNET_URL = 'https://hermes.pyth.network';
+
+async function getHermesPriceData(priceId, network) {
+  try {
+    let url;
+    network === 'testnet'
+      ? (url = HERMES_TESTNET_URL)
+      : (url = HERMES_MAINNET_URL);
+
+    // Fetch the price data from the Hermes API
+    const response = await axios.get(`${url}/v2/updates/price/latest?ids[]=${priceId}`);
+
+    return response.data.binary.data[0];
+  } catch (error) {
+    console.error('Error:', error.response ? error.response.data : error.message);
+  }
+}
+
+module.exports = { getHermesPriceData };
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-js/blob/bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46/node-js/utils/fetch-hermes-price-data.js)
+
+</div>
+
+{/* /github-code */}
 
 #### 2) Update Pyth Oracle Contract Price Feed
 
@@ -146,12 +200,140 @@ Call `update_price_feeds` on the Pyth Oracle contract with `data` as your argume
 
 Example of updating the Pyth Oracle contract's price feed using `near-js/client` and node.js:
 
-<Github fname="updatePythContract"
-          url="https://github.com/near-examples/near-js/blob/main/node-js/oracle-example/pyth-oracle-update.js"/>
-  <Github fname="getHermesPriceData"
-          url="https://github.com/near-examples/near-js/blob/main/node-js/utils/fetch-hermes-price-data.js"/>
-  <Github fname="nearConnect"
-          url="https://github.com/near-examples/near-js/blob/main/node-js/utils/connect.js"/>
+{/* github-code
+url: https://github.com/near-examples/near-js/blob/main/node-js/oracle-example/pyth-oracle-update.js
+commit: bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46
+fname: updatePythContract
+*/}
+
+```javascript title="updatePythContract" lines
+// near-js imports
+// https://www.npmjs.com/package/@near-js/client
+const { nearConnect } = require('../utils/connect');
+const { getHermesPriceData } = require('../utils/fetch-hermes-price-data');
+const { functionCall } = require('@near-js/client');
+
+const sender = 'your-account.testnet';
+const receiver = 'pyth-oracle.testnet';
+const network = 'testnet';
+
+const PRICE_IDS = [
+  // Price ids can be found at https://www.pyth.network/developers/price-feed-ids#near-testnet
+  // NOTE: Ensure you are using NEAR specific price ids & remove the '0x' prefix before using them
+  'f9c0172ba10dfa4d19088d94f5bf61d3b54d5bd7483a322a982e1373ee8ea31b', // BTC/USD price id
+  'ca80ba6dc32e08d06f1aa886011eed1d77c77be9eb761cc10d72b7d0a2fd57a6', // ETH/USD price id
+];
+
+async function updatePythContractPriceFeeds(network) {
+  // Connect to the NEAR network
+  const { rpcProvider, signer } = nearConnect(sender, network);
+
+  // Get the price data from the Hermes API
+  // See /utils/fetch-hermes-price-data.js for more details
+  const hermesData = await getHermesPriceData( PRICE_IDS[0], network);
+
+  // Update the Pyth Oracle contract with the price data
+  // Performs a NEAR function call to the Pyth Oracle contract
+  // Deposit for transaction fee (balance will be refunded)
+  const result = await functionCall({
+    sender,
+    receiver,
+    method: 'update_price_feeds',
+    args: { data: hermesData },
+    deposit: 10000000000000000000000, 
+    deps: { rpcProvider, signer },
+  });
+
+  console.log(
+    `Transaction 👉 https://testnet.nearblocks.io/txns/${result.outcome.transaction.hash}`
+  );
+  return result;
+}
+
+updatePythContractPriceFeeds(network);
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-js/blob/bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46/node-js/oracle-example/pyth-oracle-update.js)
+
+</div>
+
+{/* /github-code */}
+{/* github-code
+url: https://github.com/near-examples/near-js/blob/main/node-js/utils/fetch-hermes-price-data.js
+commit: bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46
+fname: getHermesPriceData
+*/}
+
+```javascript title="getHermesPriceData" lines
+const axios = require('axios');
+
+// There are separate endpoints for testnet and mainnet
+const HERMES_TESTNET_URL = 'https://hermes-beta.pyth.network';
+const HERMES_MAINNET_URL = 'https://hermes.pyth.network';
+
+async function getHermesPriceData(priceId, network) {
+  try {
+    let url;
+    network === 'testnet'
+      ? (url = HERMES_TESTNET_URL)
+      : (url = HERMES_MAINNET_URL);
+
+    // Fetch the price data from the Hermes API
+    const response = await axios.get(`${url}/v2/updates/price/latest?ids[]=${priceId}`);
+
+    return response.data.binary.data[0];
+  } catch (error) {
+    console.error('Error:', error.response ? error.response.data : error.message);
+  }
+}
+
+module.exports = { getHermesPriceData };
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-js/blob/bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46/node-js/utils/fetch-hermes-price-data.js)
+
+</div>
+
+{/* /github-code */}
+{/* github-code
+url: https://github.com/near-examples/near-js/blob/main/node-js/utils/connect.js
+commit: bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46
+fname: nearConnect
+*/}
+
+```javascript title="nearConnect" lines
+// node.js imports
+const { join } = require('node:path');
+const { homedir } = require('node:os');
+
+// near.js imports
+const { getTestnetRpcProvider, getSignerFromKeystore } = require('@near-js/client');
+const { UnencryptedFileSystemKeyStore } = require('@near-js/keystores-node');
+
+// initialize RPC provider and signer
+const nearConnect = (sender, network) => ({
+  rpcProvider: getTestnetRpcProvider(),
+  signer: getSignerFromKeystore(
+    sender, 
+    network,
+    new UnencryptedFileSystemKeyStore(join(homedir(), '.near-credentials'))
+  )
+});
+
+module.exports = { nearConnect };
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-js/blob/bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46/node-js/utils/connect.js)
+
+</div>
+
+{/* /github-code */}
 
 <Info>
 
@@ -173,4 +355,45 @@ After [updating the price feed](#update_price_feeds), you can view the feed on-c
 
 `Example:`
 
-<Github url="https://github.com/near-examples/near-js/blob/main/node-js/oracle-example/pyth-oracle-view.js"/>
+{/* github-code
+url: https://github.com/near-examples/near-js/blob/main/node-js/oracle-example/pyth-oracle-view.js
+commit: bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46
+*/}
+
+```javascript title="pyth-oracle-view.js" lines
+// near-js import
+// https://www.npmjs.com/package/@near-js/client
+const { getTestnetRpcProvider, view } = require('@near-js/client');
+
+const PRICE_IDS = [
+  // Price ids can be found at https://www.pyth.network/developers/price-feed-ids#near-testnet
+  // NOTE: Ensure you are using NEAR specific price ids & remove the '0x' prefix before using them
+  'f9c0172ba10dfa4d19088d94f5bf61d3b54d5bd7483a322a982e1373ee8ea31b', // BTC/USD price id
+  'ca80ba6dc32e08d06f1aa886011eed1d77c77be9eb761cc10d72b7d0a2fd57a6', // ETH/USD price id
+];
+
+async function getPrice(price_ID, symbol) {
+  try {
+    const rpcProvider = getTestnetRpcProvider();
+    const result = await view({
+      account: 'pyth-oracle.testnet',
+      method: 'get_price',
+      args: { price_identifier: price_ID },
+      deps: { rpcProvider },
+    });
+    console.log(symbol, result);
+  } catch (error) {
+    console.error(`Error fetching ${symbol} price:`, error.message);
+  }
+}
+
+getPrice(PRICE_IDS[0], 'BTC/USD:');
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-js/blob/bc1f91419a3c8f1f6ca694f53bb14c57d4ce3c46/node-js/oracle-example/pyth-oracle-view.js)
+
+</div>
+
+{/* /github-code */}

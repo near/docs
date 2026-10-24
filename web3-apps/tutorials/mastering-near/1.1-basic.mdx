@@ -3,8 +3,6 @@ title: Basic Auction
 description: "Learn how to build n auction smart contract on NEAR."
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 In this section, we will analyze a simple auction contract, which allows users to place bids, track the highest bidder and claim tokens at the end of the auction. After, we will cover how to test the contract, as well as how to deploy it on `testnet`.
 
 <Info>
@@ -51,9 +49,40 @@ The repository also contains a frontend application that interacts with the cont
 The contract allows users to place bids using `$NEAR` tokens and keeps track of the highest bidder. Lets start by looking at how we define the contract's state, this is, the data that the contract will store.
 
 
-<Github fname="lib.rs" language="rust"
-    url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L5-L19"
-    start="5" end="19" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L5-L19
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 5
+end: 19
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+#[near(serializers = [json, borsh])]
+#[derive(Clone)]
+pub struct Bid {
+    pub bidder: AccountId,
+    pub bid: NearToken,
+}
+
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    highest_bid: Bid,
+    auction_end_time: U64,
+    auctioneer: AccountId,
+    claimed: bool,
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L5-L19)
+
+</div>
+
+{/* /github-code */}
 
 #### Macros
 A first thing to notice is the use of the `#[near(contract_state)]` macro to denote the main structure and derive the `PanicOnDefault` to specify that the contract **must be initialized** before being used.
@@ -88,9 +117,38 @@ You can read more about the contract's structure and the type of data it can sto
 Lets now take a look at the initialization function, which we need to call to determine the time at which the auction will end.
 
 
-<Github fname="lib.rs" language="rust"
-  url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L23-L35"
-  start="23" end="35" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L23-L35
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 23
+end: 35
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+#[init]
+pub fn init(end_time: U64, auctioneer: AccountId) -> Self {
+    Self {
+        highest_bid: Bid {
+            bidder: env::current_account_id(),
+            bid: NearToken::from_yoctonear(1),
+        },
+        auction_end_time: end_time,
+        claimed: false,
+        auctioneer,
+    }
+}
+
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L23-L35)
+
+</div>
+
+{/* /github-code */}
 
 #### Macros
 We denote the initialization function using the `#[init]` macro. Notice that the initialization function needs to return an instance of `Self`, i.e. the contract's structure.
@@ -124,9 +182,40 @@ You can read more about the contract's interface and data types in our [contract
 The contract implements four functions to give access to its stored data, i.e. the highest bid so far (the amount and by whom), the time at which the auction ends, the auctioneer, and whether the auction has been claimed.
 
 
-<Github fname="lib.rs" language="rust"
-  url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L78-L92"
-  start="78" end="92" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L78-L92
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 78
+end: 92
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+        self.highest_bid.clone()
+    }
+
+    pub fn get_auction_end_time(&self) -> U64 {
+        self.auction_end_time
+    }
+
+    pub fn get_auctioneer(&self) -> AccountId {
+        self.auctioneer.clone()
+    }
+
+    pub fn get_claimed(&self) -> bool {
+        self.claimed
+    }
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L78-L92)
+
+</div>
+
+{/* /github-code */}
 
 Functions that do not change the contract's state (i.e. that only read from it) are called `view` functions and take a non-mutable reference to `self` (`&self`).
 
@@ -149,9 +238,52 @@ An auction is not an auction if you can't place a bid! For this, the contract in
 The function is quite simple: it verifies if the auction is still active and compares the attached deposit with the current highest bid. If the bid is higher, it updates the `highest_bid` and refunds the previous bidder.
 
 
-<Github fname="lib.rs" language="rust"
-  url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L37-L63"
-  start="37" end="63" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L37-L63
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 37
+end: 63
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+pub fn bid(&mut self) -> Promise {
+    // Assert the auction is still ongoing
+    require!(
+        env::block_timestamp() < self.auction_end_time.into(),
+        "Auction has ended"
+    );
+
+    // Current bid
+    let bid = env::attached_deposit();
+    let bidder = env::predecessor_account_id();
+
+    // Last bid
+    let Bid {
+        bidder: last_bidder,
+        bid: last_bid,
+    } = self.highest_bid.clone();
+
+    // Check if the deposit is higher than the current bid
+    require!(bid > last_bid, "You must place a higher bid");
+
+    // Update the highest bid
+    self.highest_bid = Bid { bidder, bid };
+
+    // Transfer tokens back to the last bidder
+    Promise::new(last_bidder).transfer(last_bid)
+}
+
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L37-L63)
+
+</div>
+
+{/* /github-code */}
 
 
 #### Payable Functions
@@ -190,9 +322,37 @@ You can read more about the environment variables, payable functions and which a
 You'll notice that the contract has a final function called `claim`, this allows the auctioneer to claim the funds from the contract at the end of the auction. Since, on NEAR, a smart contract account and user account are the same, contracts can still have keys when they are deployed, thus a user could just claim the funds from the contract via a wallet. However, this presents a security issue since by having a key the key holder can take the funds from the contract at any point, maliciously change the contract's state or just delete the contract as a whole. By implementing a `claim` function we can later lock the contract by removing all access keys and have the auctioneer claim the funds via preset conditions via code.
 
 
-<Github fname="lib.rs" language="rust"
-  url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L65-L76"
-  start="65" end="76" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L65-L76
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 65
+end: 76
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+    require!(
+        env::block_timestamp() > self.auction_end_time.into(),
+        "Auction has not ended yet"
+    );
+
+    require!(!self.claimed, "Auction has already been claimed");
+    self.claimed = true;
+
+    // Transfer tokens to the auctioneer
+    Promise::new(self.auctioneer.clone()).transfer(self.highest_bid.bid)
+}
+
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L65-L76)
+
+</div>
+
+{/* /github-code */}
 
 
 This function is quite simple it does four things:

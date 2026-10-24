@@ -1,25 +1,49 @@
 ---
 title: Types and Interface
-hide_table_of_contents: true
 description: "Learn how to define your contract's interface and use Rust and SDK types in its inputs, outputs, and state."
-mode: wide
 ---
-
-import { ExplainCode, Block , File  } from '/snippets/explain-code.jsx'
 
 Smart contracts expose functions so users can interact with them. There are different types of functions including `read-only`, `private` and `payable`.
 
-<ExplainCode>
-
-<Block highlights="24-34,37-62,64-75,77-79,81-83" fname="auction">
-
-### Contract's Interface
+## Contract's Interface
 
 All **public** functions in the contract are part of its **interface**. They can be called by anyone, and are the only way to interact with the contract.
 
-</Block>
 
-<Block highlights="" fname="auction" type='details'>
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 77
+end: 91
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+pub fn get_highest_bid(&self) -> Bid {
+    self.highest_bid.clone()
+}
+
+pub fn get_auction_end_time(&self) -> U64 {
+    self.auction_end_time
+}
+
+pub fn get_auctioneer(&self) -> AccountId {
+    self.auctioneer.clone()
+}
+
+pub fn get_claimed(&self) -> bool {
+    self.claimed
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L77-L91)
+
+</div>
+
+{/* /github-code */}
 
 <Accordion title="Exposing trait implementations">
 
@@ -40,41 +64,128 @@ impl MyTrait for MyContractStructure {
 
 </Accordion>
 
-</Block>
-
-<Block highlights="22-34" fname="auction">
-
-### Initialization Functions
+## Initialization Functions
 
 A contract can opt to have an initialization function. If present, this function must be called before any other to [initialize the contract](./storage).
 
-</Block>
-
-<Block highlights="22" fname="auction">
-
-#### `#[init]`
-
 The initialization function is marked with the `#[init]` macro.
 
-</Block>
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 23
+end: 34
+fname: lib.rs
+language: rust
+*/}
 
-<Block highlights="37-62,64-75" fname="auction">
+```rust title="lib.rs" lines
+#[init]
+pub fn init(end_time: U64, auctioneer: AccountId) -> Self {
+    Self {
+        highest_bid: Bid {
+            bidder: env::current_account_id(),
+            bid: NearToken::from_yoctonear(1),
+        },
+        auction_end_time: end_time,
+        claimed: false,
+        auctioneer,
+    }
+}
+```
 
-### State Changing Functions
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L23-L34)
+
+</div>
+
+{/* /github-code */}
+
+## State Changing Functions
 
 The functions that modify the [state](./storage) or perform [actions](./actions) need to be called by a user with a NEAR account, since a transaction is required to execute them.
 
-</Block>
-
-<Block highlights="37,64" fname="auction">
-
-#### `&mut self`
-
 State changing functions are those that take a **mutable** reference to `self` in Rust.
 
-</Block>
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 36
+end: 62
+fname: lib.rs
+language: rust
+*/}
 
-<Block highlights="40,45,46" fname="auction" type='info'>
+```rust title="lib.rs" lines
+#[payable]
+pub fn bid(&mut self) -> Promise {
+    // Assert the auction is still ongoing
+    require!(
+        env::block_timestamp() < self.auction_end_time.into(),
+        "Auction has ended"
+    );
+
+    // Current bid
+    let bid = env::attached_deposit();
+    let bidder = env::predecessor_account_id();
+
+    // Last bid
+    let Bid {
+        bidder: last_bidder,
+        bid: last_bid,
+    } = self.highest_bid.clone();
+
+    // Check if the deposit is higher than the current bid
+    require!(bid > last_bid, "You must place a higher bid");
+
+    // Update the highest bid
+    self.highest_bid = Bid { bidder, bid };
+
+    // Transfer tokens back to the last bidder
+    Promise::new(last_bidder).transfer(last_bid)
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L36-L62)
+
+</div>
+
+{/* /github-code */}
+
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 64
+end: 75
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+pub fn claim(&mut self) -> Promise {
+    require!(
+        env::block_timestamp() > self.auction_end_time.into(),
+        "Auction has not ended yet"
+    );
+
+    require!(!self.claimed, "Auction has already been claimed");
+    self.claimed = true;
+
+    // Transfer tokens to the auctioneer
+    Promise::new(self.auctioneer.clone()).transfer(self.highest_bid.bid)
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L64-L75)
+
+</div>
+
+{/* /github-code */}
 
 <Tip>
 
@@ -82,27 +193,48 @@ The SDK provides [contextual information](./environment), such as which account 
 
 </Tip>
 
-</Block>
-
-<Block highlights="77-79,81-83" fname="auction">
-
-### Read-Only Functions
+## Read-Only Functions
 
 Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account.
 
-</Block>
-
-<Block highlights="77,81" fname="auction">
-
-#### `&self`
-
 Read-only functions are those that take an **immutable** reference to `self` in Rust.
 
-</Block>
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 77
+end: 91
+fname: lib.rs
+language: rust
+*/}
 
-<Block highlights="23" fname="auction">
+```rust title="lib.rs" lines
+pub fn get_highest_bid(&self) -> Bid {
+    self.highest_bid.clone()
+}
 
-### Private Functions
+pub fn get_auction_end_time(&self) -> U64 {
+    self.auction_end_time
+}
+
+pub fn get_auctioneer(&self) -> AccountId {
+    self.auctioneer.clone()
+}
+
+pub fn get_claimed(&self) -> bool {
+    self.claimed
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L77-L91)
+
+</div>
+
+{/* /github-code */}
+
+## Private Functions
 
 Many times you will want to have functions that **are exposed** as part of the contract's interface, but **should not be called directly** by users.
 
@@ -110,37 +242,48 @@ Besides initialization functions, [callbacks from cross-contract calls](./crossc
 
 These functions are marked as `private` in the contract's code, and can only be called by the contract itself.
 
-</Block>
-
-<Block highlights="23" fname="auction">
-
-#### [#private]
-
 Private functions are marked using the `#[private]` macro in Rust.
 
-</Block>
-
-<Block highlights="36,45" fname="auction">
-
-### Payable Functions
+## Payable Functions
 
 By default, functions will panic if the user attaches NEAR Tokens to the call. Functions that accept NEAR Tokens must be marked as `payable`.
 
 Within the function, the user will have access to the [attached deposit](./environment).
 
-</Block>
-
-<Block highlights="36,45" fname="auction">
-
-#### [#payable]
-
 Payable functions are marked using the `#[payable]` macro in Rust.
 
-</Block>
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 36
+end: 46
+fname: lib.rs
+language: rust
+*/}
 
-<Block fname="auction">
+```rust title="lib.rs" lines
+#[payable]
+pub fn bid(&mut self) -> Promise {
+    // Assert the auction is still ongoing
+    require!(
+        env::block_timestamp() < self.auction_end_time.into(),
+        "Auction has ended"
+    );
 
-### Internal Functions
+    // Current bid
+    let bid = env::attached_deposit();
+    let bidder = env::predecessor_account_id();
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L36-L46)
+
+</div>
+
+{/* /github-code */}
+
+## Internal Functions
 
 All the functions we covered so far are part of the interface, meaning they can be called by an external actor.
 
@@ -148,11 +291,7 @@ However, contracts can also have private internal functions - such as helper or 
 
 To create internal private methods in a Rust contract, do not declare them as public (`pub fn`).
 
-</Block>
-
-<Block fname="auction" type="details">
-
-  <Accordion title="Separate impl block">
+<Accordion title="Separate impl block">
 
 Another way of not exporting methods is by having a separate `impl Contract` section, that is not marked with `#[near]`.
 
@@ -172,12 +311,6 @@ impl Contract {
 ```
 
   </Accordion>
-
-</Block>
-
-<File fname="auction" url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs" start="2" end="84" />
-
-</ExplainCode>
 
 ---
 

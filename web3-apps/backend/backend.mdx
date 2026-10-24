@@ -4,8 +4,6 @@ icon: server
 description: "Learn how to authenticate NEAR users in your backend service by creating challenges, requesting wallet signatures, and verifying signatures."
 ---
 
-import {Github} from '/snippets/github.jsx';
-
 Recently NEAR has approved a new standard that, among other things, enables users to authenticate into a backend service.
 
 The basic idea is that the user will sign a challenge with their NEAR wallet, and the backend will verify the signature. If the signature is valid, then the user is authenticated.
@@ -64,5 +62,51 @@ const signature = wallet.signMessage({ message, recipient, nonce: challenge, cal
 ### 3. Verify the Signature
 Once the user has signed the challenge, the wallet will call the `callbackUrl` with the signature. The backend can then verify the signature.
 
-<Github fname="verify-signature.ts" language="javascript"
-      url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/verify-signature.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/verify-signature.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+fname: verify-signature.ts
+language: javascript
+*/}
+
+```javascript title="verify-signature.ts" lines
+import { verifyMessage } from "near-api-js/nep413";
+import { JsonRpcProvider } from "near-api-js";
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// This is the challenge given to the user to sign
+const MESSAGE: string = "log me in";
+const APP: string = "http://localhost:3000";
+const CHALLENGE: Buffer = Buffer.from(Array.from(Array(32).keys()));
+
+// This is the object returned by `wallet.signMessage` in wallet selector
+const walletReturn = {
+  "signature": "IfModLa3g3czlyPhkg/LSkTFSy7XCGreStZJTDIO1m3viEnYFLdXfpz1gYUVKYv3W2vwcV77TmGEzc9y0Nz+AA==",
+  "accountId": "maguila.testnet",
+  "publicKey": "ed25519:AtH7GEjv2qmBVoT8qoRhWXizXM5CC12DC6tiqY9iNoRm"
+};
+
+await verifyMessage({
+  signerAccountId: walletReturn.accountId,
+  signerPublicKey: walletReturn.publicKey,
+  signature: new Uint8Array(Buffer.from(walletReturn.signature, 'base64')),
+  payload: {
+    message: MESSAGE,
+    recipient: APP,
+    nonce: CHALLENGE
+  },
+  provider
+});
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/verify-signature.ts)
+
+</div>
+
+{/* /github-code */}

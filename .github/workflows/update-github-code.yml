@@ -1,0 +1,47 @@
+name: Update GitHub code examples
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 10 * * 1'
+
+concurrency:
+  group: update-github-code
+  cancel-in-progress: false
+
+jobs:
+  update-examples:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Test sync script
+        run: node --test scripts/sync-github-code.test.mjs
+
+      - name: Refresh code examples
+        run: node scripts/sync-github-code.mjs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open PR if changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b update-github-code
+          git add -- '*.mdx'
+          git diff --staged --quiet && exit 0
+          git commit -m "chore(docs): update GitHub code examples"
+          git push origin update-github-code --force
+          if [ "$(gh pr list --head update-github-code --state open --json number --jq length)" = "0" ]; then
+            gh pr create --title "chore(docs): update GitHub code examples" \
+              --body "Refresh embedded code and commit-pinned source links from GitHub. Review the excerpts against their surrounding explanations before merging." \
+              --head update-github-code
+          fi
