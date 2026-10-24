@@ -15,8 +15,8 @@ When we create an auction we need to list the NFT. To specify which NFT is being
 
 
 <Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L32-L49"
-        start="32" end="49" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L30-L48"
+        start="30" end="48" />
 
 Note that `token_id` is of type `TokenId` which is a String type alias that the NFT standards use for future-proofing.
 
@@ -62,8 +62,8 @@ Since we are now dealing with more information in our contract, instead of imple
 We add the `serilizers` macro to enable json serialization so the object as a whole can easily be displayed to the frontend without having to output each field individually.
 
 <Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L107-L109"
-        start="107" end="109" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L110-L112"
+        start="110" end="112" />
 
 
 ## Testing with multiple contracts
@@ -72,24 +72,24 @@ In our tests, we're now going to be using two contracts; the auction contract an
 
 In our tests folder, we need the WASM for an NFT contract. For this tutorial, we compiled an example NFT contract from [this repo](https://github.com/near-examples/NFT/tree/master).
 
-To deploy the NFT contract, this time we're going to use `dev deploy` which creates an account with a random ID and deploys the contract to it by specifying the path to the WASM file. After deploying we will initialize the contract with default metadata and specify an account ID which will be the owner of the NFT contract (though the owner of the NFT contract is irrelevant in this example). Default metadata sets information such as the name and symbol of the NFT contract to default values.
+The test creates an account for the NFT contract, reads the fixture WASM from the tests folder, and uses `near_api::Contract::deploy` with `with_init_call` to deploy and initialize it in the same transaction. We initialize the contract with default metadata and set the NFT contract account as its owner. Default metadata sets information such as the name and symbol of the NFT contract to default values.
 
 
 <Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L30-L39"
-        start="30" end="39" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L45-L55"
+        start="45" end="55" />
 
 
 ---
 
 ## Minting an NFT
 
-To start a proper auction the auction contract should own an NFT. To do this the auction account calls the NFT contract to mint a new NFT providing information such as the image for the NFT.  
+To start a proper auction the auction contract should own an NFT. To do this the NFT contract owner calls `nft_mint`, setting `receiver_id` to the auction account and providing metadata such as the image for the NFT.
 
 
 <Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L42-L60"
-        start="42" end="60" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L57-L76"
+        start="57" end="76" />
 
 
 ---
@@ -100,8 +100,8 @@ After `claim` is called, the test should verify that the auction winner now owns
 
 
 <Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L151-L164"
-        start="151" end="164" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L197-L210"
+        start="197" end="210" />
 
 
 ---
@@ -117,4 +117,4 @@ near call nft.examples.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE"
 
 ## Conclusion 
 
-In this part of the tutorial we have added NFTs as a reward which has taught us how to interact with NFT standards, make cross-contract calls and test multiple contracts that interact with each other in workspaces. In the [next part](./3.2-ft) we'll learn how to interact with fungible token standards by adapting the auction to receive bids in FTs. This will allow users to launch auctions in different tokens, including stablecoins. 
+In this part of the tutorial we have added NFTs as a reward which has taught us how to interact with NFT standards, make cross-contract calls and test multiple contracts that interact with each other in the sandbox. In the [next part](./3.2-ft) we'll learn how to interact with fungible token standards by adapting the auction to receive bids in FTs. This will allow users to launch auctions in different tokens, including stablecoins.

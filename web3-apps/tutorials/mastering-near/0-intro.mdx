@@ -45,11 +45,13 @@ rustup target add wasm32-unknown-unknown
 curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/near-cli-rs/releases/latest/download/near-cli-rs-installer.sh | sh
 
 # Install cargo near to help building the contract
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/near/cargo-near/releases/latest/download/cargo-near-installer.sh | sh
+cargo install cargo-near --version 0.21.1 --locked
 ```
 
 
-We will be using [NEAR CLI](/tools/cli) to interact with the blockchain through the terminal, and Rust to write the contract.
+We will be using [NEAR CLI](/tools/cli) to interact with the blockchain through the terminal, and Rust to write the contract. Each contract directory includes a `rust-toolchain.toml` that selects Rust 1.97.1 and the WebAssembly target through rustup.
+
+For the frontend sections, install [Node.js](https://nodejs.org/) 22.12 or newer. The example uses Node.js 24 in CI.
 
 ---
 
@@ -86,11 +88,10 @@ Ready to start? Let's jump to the [The Auction Contract](./1.1-basic) and begin 
 <Note>
 **Versioning for this article**
 
-- near-cli: `0.12.0`
-- rustc: `1.78.0`
-- cargo: `1.80.1`
-- cargo-near: `0.13.2`
-- rustc: `1.78.0`
-- node: `21.6.1`
+- Rust: `1.97.1` (selected by the repository)
+- near-sdk: `5.29.1`
+- cargo-near: `0.21.1`
+- Node.js: `22.12+` (CI uses `24`)
+- near-api-js: `7`
         
 </Note>

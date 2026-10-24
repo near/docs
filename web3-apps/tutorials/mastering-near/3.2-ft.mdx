@@ -15,8 +15,8 @@ We want to only accept bids in one type of fungible token; accepting many differ
 
 
 <Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L33-L53"
-        start="33" end="53" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L31-L52"
+        start="31" end="52" />
 
 
 ---
@@ -86,8 +86,8 @@ When the auction is complete we need to send the fungible tokens to the auctione
 
 
 <Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L99-L109"
-        start="99" end="109" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L100-L110"
+        start="100" end="110" />
 
 
 ---
@@ -100,8 +100,8 @@ When the contract is deployed it is initialized with `new_default_meta` which se
 
 
 <Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L33-L46"
-        start="33" end="46" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L64-L74"
+        start="64" end="74" />
 
 
 ---
@@ -114,8 +114,8 @@ In our tests, since we are creating a new fungible token and new accounts we wil
 
 
 <Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L81-L97"
-        start="81" end="97" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L97-L117"
+        start="97" end="117" />
 
 
 ---
@@ -126,11 +126,11 @@ Then we will transfer the bidders FTs so they can use them to bid. A simple tran
 
 
 <Github fname="Call ft_transfer" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L100-L107"
-        start="100" end="107" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L119-L130"
+        start="119" end="130" />
     <Github fname="ft_transfer definition" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L291-L307"
-        start="291" end="307" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L415-L435"
+        start="415" end="435" />
 
 
 ---
@@ -141,11 +141,11 @@ As stated previously, to bid on the auction the bidder now calls `ft_transfer_ca
 
 
 <Github fname="Call ft_transfer_call" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L149-L161"
-        start="149" end="161" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L214-L223"
+        start="214" end="223" />
     <Github fname="ft_transfer_call definition" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L322-L337"
-        start="322" end="337" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L454-L474"
+        start="454" end="474" />
 
 
 ---
@@ -156,11 +156,11 @@ Previously, to check a user's `$NEAR` balance, we pulled the details from their 
 
 
 <Github fname="Call ft_balance_of" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L163-L166"
-        start="163" end="166" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L234-L242"
+        start="234" end="242" />
     <Github fname="ft_balance_of definition" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L309-L320"
-        start="309" end="320" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L437-L452"
+        start="437" end="452" />
 
 
 ---
@@ -173,8 +173,8 @@ Previous to this, Bob made a bid of 60,000 and Alice was returned her bid bringi
 
 
 <Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L190-L207"
-        start="190" end="207" />
+        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L274-L303"
+        start="274" end="303" />
 
 
 ---
@@ -191,7 +191,7 @@ The auction contract will need to be registered as well, you could do this by se
 near call dai.fakes.testnet storage_deposit '{"account_id": "<auctionContractId>"}' --useAccount <accountId> --deposit 0.1
 ```
 
-Now you can go ahead and place a bid. DAI has 18 decimals meaning that 1 $DAI is made up of 10^24 smallest units. To make a bid of 2 $DAI you can use the command:
+Now you can go ahead and place a bid. DAI has 18 decimals meaning that 1 $DAI is made up of 10^18 smallest units. To make a bid of 2 $DAI you can use the command:
 
 ```bash
 near call dai.fakes.testnet ft_transfer_call '{"receiver_id": "<auctionContractId>", "amount": "2000000000000000000", "msg": ""}' --useAccount <bidderId> --depositYocto 1
@@ -199,7 +199,7 @@ near call dai.fakes.testnet ft_transfer_call '{"receiver_id": "<auctionContractI
 
 ## Auction architecture 
 
-When creating an application there are numerous ways to structure it. Here, we have one contract per auction meaning we have to deploy a new contract each time we want to host an auction. To make this easier we will leverage a factory contract to deploy auction contracts for an auctioneer. Deploying code for each auction gets expensive, with 100kb of storage costing 1 `$NEAR`, since each auction stores all the same type of information and implements the same methods one could instead decide to have multiple auctions per contract. 
+When creating an application there are numerous ways to structure it. Here, we have one contract per auction meaning we have to deploy a new contract each time we want to host an auction. To make this easier we will leverage a factory contract to deploy auction contracts for an auctioneer. The factory in the final section uses a [global contract](/smart-contracts/global-contracts) so that auctions can share code while keeping separate accounts and state. Since each auction stores the same type of information and implements the same methods, another option is to have multiple auctions per contract.
 
 In such case, the Contract struct would be a map of auctions. We would implement a method to create a new auction by adding an entry to the map with the specific details of that individual auction.
 
@@ -207,6 +207,7 @@ In such case, the Contract struct would be a map of auctions. We would implement
 ```rust 
 pub struct Contract {
     auctions: IterableMap<String, Auction>
+}
 ```
 
 
