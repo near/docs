@@ -37,7 +37,7 @@ Unlike traditional wallet selectors, it offers a dynamic manifest system that al
 
 ## Installation
 
-Install the `@hot-labs/near-connect` and `near-api-js` packages manually:
+Install the `@hot-labs/near-connect` and `near-api-js` packages:
 
 ```bash
 npm install @hot-labs/near-connect near-api-js
@@ -217,9 +217,8 @@ console.log(`Completed ${results.length} transactions`);
 
 ## Sign Messages (NEP-413)
 
-In NEAR, users can sign messages for authentication purposes without needing to send a transaction:
+In NEAR, users can sign messages for authentication purposes without needing to send a transaction on-chain:
 
-You can request the user to sign a message using the wallet's `signMessage` method:
 
 ```tsx
 const wallet = await connector.wallet();

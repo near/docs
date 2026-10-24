@@ -22,6 +22,8 @@ easily generalizable to other DAO implementations.
   without spending real funds.
 </Tip>
 
+The WebApp examples use the local `useNearWallet` hook from the [Hello NEAR provider setup](/web3-apps/quickstart#context-provider).
+
 ---
 
 ## Create a DAO
@@ -32,7 +34,7 @@ You can create a DAO by interacting with the `sputnik-dao` contract:
   <Tab title="🌐 WebApp">
 
     ```js
-    import { useNearWallet } from "near-connect-hooks";
+    import { useNearWallet } from "@/components/near-provider";
 
     const DAO_FACTORY_CONTRACT_ADDRESS = 'sputnikv2.testnet';
 
@@ -60,7 +62,7 @@ You can create a DAO by interacting with the `sputnik-dao` contract:
     The full list of roles and permissions you can find [here](https://github.com/near-daos/sputnik-dao-contract#roles-and-permissions).
     </Note>
 
-Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
+Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -202,7 +204,7 @@ Query the list of DAOs existing in Sputnik Dao.
   <Tab title="🌐 WebApp">
   
     ```js
-    import { useNearWallet } from "near-connect-hooks";
+    import { useNearWallet } from "@/components/near-provider";
 
     const DAO_FACTORY_CONTRACT_ADDRESS = 'sputnik-dao.near';
     const { viewFunction } = useNearWallet();
@@ -214,7 +216,7 @@ Query the list of DAOs existing in Sputnik Dao.
     });
     ```
 
-    Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
+    Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -263,7 +265,7 @@ These snippets will enable you to query the proposals existing in a particular D
  <Tab title="🌐 WebApp">
    
     ```js
-    import { useNearWallet } from "near-connect-hooks";
+    import { useNearWallet } from "@/components/near-provider";
 
     const DAO_CONTRACT_ADDRESS = 'nearweek-news-contribution.sputnik-dao.near';
     const { viewFunction } = useNearWallet();
@@ -275,7 +277,7 @@ These snippets will enable you to query the proposals existing in a particular D
     });
     ```
 
-Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
+Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -395,7 +397,7 @@ Create a proposal so other users can vote in favor or against it.
   <Tab title="🌐 WebApp">
    
     ```js
-    import { useNearWallet } from "near-connect-hooks";
+    import { useNearWallet } from "@/components/near-provider";
 
     const DAO_CONTRACT_ADDRESS = 'primitives.sputnikv2.testnet';
 
@@ -421,7 +423,7 @@ Create a proposal so other users can vote in favor or against it.
     });
     ```
 
-Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
+Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -707,7 +709,7 @@ These snippet will enable your users to cast a vote for proposal of a particular
 <Tab title="🌐 WebApp">
 
 ```js
-import { useNearWallet } from "near-connect-hooks";
+import { useNearWallet } from "@/components/near-provider";
 
 const DAO_CONTRACT_ADDRESS = 'primitives.sputnikv2.testnet';
 
@@ -723,7 +725,7 @@ await callFunction({
 
 <Note>Available vote options: `VoteApprove`, `VoteReject`, `VoteRemove`.</Note>
 
-Learn more about adding [Near Connect](../web3-apps/tutorials/wallet-login) to your application
+Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">

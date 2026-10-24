@@ -14,6 +14,8 @@ The simplest way to create a linkdrop is by interacting with our LinkDrop Genera
 
 </Tip>
 
+The WebApp examples use the local `useNearWallet` hook from the [Hello NEAR provider setup](/web3-apps/quickstart#context-provider).
+
 ---
 
 ## AccessKeys
@@ -64,7 +66,7 @@ The contract will create a drop and **return the numerical ID** that identifies 
   <Tab title="🌐 WebApp">
 
 ```js
-import { useNearWallet } from "near-connect-hooks";
+import { useNearWallet } from "@/components/near-provider";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const DROP_AMOUNT = "10000000000000000000000"; // 0.1 NEAR
@@ -83,7 +85,7 @@ await callFunction({
 });
 ```
 
-Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -118,13 +120,13 @@ The contract will then create a drop and **return the numerical ID** that identi
   <Tab title="🌐 WebApp">
 
 ```js
-import { useNearWallet } from "near-connect-hooks";
+import { useNearWallet } from "@/components/near-provider";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const { callFunction, accountId } = useNearWallet();
+const { callFunction, signedAccountId: accountId } = useNearWallet();
 
 await callFunction({
   contractId: KEYPOM_CONTRACT_ADDRESS,
@@ -144,7 +146,7 @@ await callFunction({
 });
 ```
 
-Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -168,7 +170,7 @@ Having the Drop ID, you now need to transfer the NFT to the linkdrop contract, s
   <Tab title="🌐 WebApp">
 
 ```js
-import { useNearWallet } from "near-connect-hooks";
+import { useNearWallet } from "@/components/near-provider";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
@@ -189,7 +191,7 @@ await callFunction({
 });
 ```
 
-Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -231,13 +233,13 @@ The contract will then create a drop and **return the numerical ID** that identi
   <Tab title="🌐 WebApp">
 
 ```js
-import { useNearWallet } from "near-connect-hooks";
+import { useNearWallet } from "@/components/near-provider";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const FT_CONTRACT_ADDRESS = "ft.primitives.near";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const { callFunction, accountId } = useNearWallet();
+const { callFunction, signedAccountId: accountId } = useNearWallet();
 
 await callFunction({
   contractId: KEYPOM_CONTRACT_ADDRESS,
@@ -259,7 +261,7 @@ await callFunction({
 });
 ```
 
-Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -287,7 +289,7 @@ To transfer FTs to an account, you need to first [register](/primitives/ft/ft#re
   <Tab title="🌐 WebApp">
 
 ```js
-import { useNearWallet } from "near-connect-hooks";
+import { useNearWallet } from "@/components/near-provider";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const FT_CONTRACT_ADDRESS = "ft.primitives.near";
@@ -306,7 +308,7 @@ await callFunction({
 });
 ```
 
-Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -341,7 +343,7 @@ Function call drops can be thought as the abstract version of other drops: you c
   <Tab title="🌐 WebApp">
 
 ```js
-import { useNearWallet } from "near-connect-hooks";
+import { useNearWallet } from "@/components/near-provider";
 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
@@ -385,7 +387,7 @@ await callFunction({
 });
 ```
 
-Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
