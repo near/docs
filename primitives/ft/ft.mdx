@@ -9,6 +9,8 @@ import { Github } from '/snippets/github.jsx';
 
 Wanting to use Fungible Tokens (FT) in your dApp? Here you will find all the information you need to get started creating your own tokens, registering users, querying balances, transferring tokens, and integrating them into your smart contracts.
 
+The WebApp examples use the local `useNearWallet` hook from the [Hello NEAR provider setup](/web3-apps/quickstart#context-provider).
+
 ---
 
 ## Creating a New Token
@@ -30,11 +32,12 @@ Creating a token takes two steps: call `get_required` to quote the storage depos
   <Tab title="🌐 WebApp">
 
     ```js
-    import { useNearWallet } from "near-connect-hooks";
+    import { useNearWallet } from "@/components/near-provider";
+    import { NetworkId as network } from "@/config";
 
     const FACTORY = { mainnet: 'token.primitives.near', testnet: 'token.primitives.testnet' };
 
-    const { network, signedAccountId: accountId, viewFunction, callFunction } = useNearWallet();
+    const { signedAccountId: accountId, viewFunction, callFunction } = useNearWallet();
     const contractId = FACTORY[network];
 
     const args = {
@@ -66,7 +69,7 @@ Creating a token takes two steps: call `get_required` to quote the storage depos
     });
     ```
 
-   Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+   Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -178,7 +181,7 @@ You can query the FT's metadata by calling the `ft_metadata`.
   <Tab title="🌐 WebApp">
 
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
@@ -209,7 +212,7 @@ You can query the FT's metadata by calling the `ft_metadata`.
   </p>
   </Accordion>
 
-  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
   
   </Tab>
   <Tab title="🖥️ CLI">
@@ -253,7 +256,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
   </Info>
 
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
@@ -278,7 +281,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
   </p>
   </Accordion>
 
-  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -312,7 +315,7 @@ By calling this `storage_deposit` the user can register themselves or **register
   <Tab title="🌐 WebApp">
 
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
@@ -328,7 +331,7 @@ By calling this `storage_deposit` the user can register themselves or **register
   });
   ```
 
-  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -359,7 +362,7 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
   <Tab title="🌐 WebApp">
     
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
@@ -376,7 +379,7 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
   });
   ```
 
-  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -436,7 +439,7 @@ Let's assume that you need to deposit FTs on [Ref Finance](https://rhea.finance/
   <Tab title="🌐 WebApp">
 
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
@@ -465,7 +468,7 @@ Let's assume that you need to deposit FTs on [Ref Finance](https://rhea.finance/
   </p>
   </Accordion>
 
-  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
@@ -549,7 +552,7 @@ While the FT standard does not define a `burn` method, you can simply transfer t
   <Tab title="🌐 WebApp">
     
   ```js
-  import { useNearWallet } from "near-connect-hooks";
+  import { useNearWallet } from "@/components/near-provider";
 
   const { callFunction } = useNearWallet();
 
@@ -564,7 +567,7 @@ While the FT standard does not define a `burn` method, you can simply transfer t
   });
   ```
 
-  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
+  Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-provider) in your application
 
   </Tab>
   <Tab title="🖥️ CLI">
