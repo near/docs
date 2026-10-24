@@ -4,8 +4,6 @@ icon: wallet
 description: "Enable users to login with their NEAR wallet"
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 The `@hot-labs/near-connect` library provides a secure, zero-dependency wallet connector for NEAR blockchain with a unique sandbox-based architecture.
 
 ![Preview](https://github.com/user-attachments/assets/c4422057-38bb-4cd9-8bd0-568e29f46280)
@@ -55,7 +53,7 @@ import { NearConnector } from "@hot-labs/near-connect";
 const connector = new NearConnector({ network: "testnet" });
 ```
 
-For React apps, we recommend [wrapping the connector, wallet state, and contract helpers in a React Context provider](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx), then exposing them through a local hook. This lets components share one connector instance and keeps connection handling in one place.
+For React apps, we recommend [wrapping the connector, wallet state, and contract helpers in a React Context provider](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx), then exposing them through a local hook. This lets components share one connector instance and keeps connection handling in one place.
 
 [Wrap your app with the provider](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx) so all components can access the wallet functionality.
 
@@ -89,13 +87,67 @@ const connector = new NearConnector({
 
 Subscribe to the `wallet:signIn` and `wallet:signOut` events to update your application's wallet state:
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx" language="tsx" start="95" end="109" />
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 95
+end: 109
+language: tsx
+*/}
+
+```tsx title="near-provider.tsx" lines
+const handleSignIn = (payload: EventMap['wallet:signIn']) => {
+  if (!cancelled) {
+    setWallet(payload.wallet);
+    setSignedAccountId(payload.accounts[0]?.accountId ?? '');
+  }
+};
+const handleSignOut = () => {
+  if (!cancelled) {
+    setWallet(undefined);
+    setSignedAccountId('');
+  }
+};
+
+connector.on('wallet:signIn', handleSignIn);
+connector.on('wallet:signOut', handleSignOut);
+```
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/providers/near-provider.tsx#L95-L109)
+
+{/* /github-code */}
 
 Call `connector.connect()` to open the wallet selection modal and `connector.disconnect(wallet)` to sign out. In the React provider, these calls also update the local wallet and account state:
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx" language="tsx" start="132" end="144" />
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 132
+end: 144
+language: tsx
+*/}
 
-[Restore an existing wallet connection](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx#L88-L92) during initialization and [remove event listeners](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx#L115-L129) when the component unmounts.
+```tsx title="near-provider.tsx" lines
+const signIn = useCallback(async () => {
+  const connectedWallet = await connector.connect();
+  setWallet(connectedWallet);
+  const accounts = await connectedWallet.getAccounts();
+  setSignedAccountId(accounts[0]?.accountId ?? '');
+}, [accessKeyPlugin, connector]);
+
+const signOut = useCallback(async () => {
+  if (!wallet) return;
+  await connector.disconnect(wallet);
+  setWallet(undefined);
+  setSignedAccountId('');
+}, [connector, wallet]);
+```
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/providers/near-provider.tsx#L132-L144)
+
+{/* /github-code */}
+
+[Restore an existing wallet connection](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx#L88-L92) during initialization and [remove event listeners](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx#L115-L129) when the component unmounts.
 
 ---
 
@@ -239,7 +291,7 @@ console.log("Public Key:", signature.publicKey);
 
 ## Function-call keys at login
 
-To request a [function-call access key](/protocol/accounts-contracts/access-keys#function-call-keys) during login, use [`function-call-key-plugin`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx#L54-L66). After the user approves the key, the app can sign permitted contract calls locally without opening the wallet for each transaction.
+To request a [function-call access key](/protocol/accounts-contracts/access-keys#function-call-keys) during login, use [`function-call-key-plugin`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx#L54-L66). After the user approves the key, the app can sign permitted contract calls locally without opening the wallet for each transaction.
 
 Install the plugin alongside NEAR Connect and `near-api-js`:
 
@@ -273,4 +325,4 @@ This configuration permits calls to `set_greeting` on `hello.near-examples.testn
 
 The plugin generates the key pair during sign-in and stores the private key locally after sign-in succeeds. Continue calling `wallet.signAndSendTransaction()` as shown in [Calling Contract Method](#calling-contract-method): the plugin signs eligible calls with the local key and sends calls outside its permissions to the wallet for approval. It also falls back to the wallet if the key's allowance runs out or the key has been removed on-chain.
 
-In React, [create the plugin once](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx#L54-L66) and [await its registration during initialization](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx#L79-L86).
+In React, [create the plugin once](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx#L54-L66) and [await its registration during initialization](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx#L79-L86).

@@ -5,8 +5,6 @@ sidebarTitle: Quickstart
 description: "Quick guide to create a Web3 frontend application with NEAR integration - build a React/Next.js app where users can login with wallets and interact with smart contracts."
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 In this guide we will show you how to **build a React app connected to NEAR**, where users can **login** using their wallets and interact with a **contract**.
 
 <Tip>
@@ -70,20 +68,101 @@ Go ahead and sign in with your NEAR account. If you don't have one, you can crea
 1. Creates a `NearProvider` that wraps the entire application to provide NEAR functionality
 2. Renders the navigation menu and the page's content
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx" language="jsx" />
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/_app.tsx
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+language: jsx
+*/}
+
+```jsx title="_app.tsx" lines
+import "@/styles/globals.css";
+
+import type { AppProps } from "next/app";
+import { Navigation } from "@/components/navigation";
+import { NearProvider } from "@/providers/near-provider";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <NearProvider>
+      <Navigation />
+      <Component {...pageProps} />
+    </NearProvider>
+  );
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/pages/_app.tsx)
+
+{/* /github-code */}
 
 <Accordion title="How does the NEAR provider work?">
 
-The app defines its own `NearProvider` and `useNearWallet` hook in [`src/components/near-provider.tsx`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/near-provider.tsx). The provider uses `@hot-labs/near-connect` to manage wallet connections and sign transactions, and `near-api-js` to query the blockchain.
+The app defines its own `NearProvider` and `useNearWallet` hook in [`src/providers/near-provider.tsx`](https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx). The provider uses `@hot-labs/near-connect` to manage wallet connections and sign transactions, and `near-api-js` to query the blockchain.
 
 </Accordion>
 
 <hr className="subsection" />
 
 ### Navigation Bar
-The navigation bar implements a button to allow users to `login` and `logout` with their NEAR wallet. It uses the local `useNearWallet` hook from `@/components/near-provider`, which exposes the provider's wallet state and sign-in and sign-out functions.
+The navigation bar implements a button to allow users to `login` and `logout` with their NEAR wallet. It uses the local `useNearWallet` hook from `@/providers/near-provider`, which exposes the provider's wallet state and sign-in and sign-out functions.
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx" language="jsx" />
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/components/navigation.tsx
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+language: jsx
+*/}
+
+```jsx title="navigation.tsx" lines
+import Image from 'next/image';
+import Link from 'next/link';
+import { useNearWallet } from '@/providers/near-provider';
+
+import NearLogo from '../../public/near-logo.svg';
+
+export const Navigation = () => {
+   const { signedAccountId, loading, signIn, signOut } = useNearWallet();
+
+  const handleAction = () => {
+    if (signedAccountId) {
+      signOut();
+    } else {
+      void signIn();
+    }
+  };
+
+  const label = loading
+    ? "Loading..."
+    : signedAccountId
+    ? `Logout ${signedAccountId}`
+    : "Login";
+
+  return (
+    <nav className="navbar navbar-expand-lg">
+      <div className="container-fluid">
+        <Link href="/">
+          <Image
+            priority
+            src={NearLogo}
+            alt="NEAR"
+            width={30}
+            height={24}
+            className="d-inline-block align-text-top"
+          />
+        </Link>
+        <div className="navbar-nav pt-1">
+          <button className="btn btn-secondary" onClick={handleAction}>
+            {label}
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+};
+```
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/components/navigation.tsx)
+
+{/* /github-code */}
 
 ---
 
@@ -113,18 +192,74 @@ Just like the [navigation bar](#navigation-bar), we use the app's local `useNear
 - `viewFunction` calls read-only methods through the `near-api-js` RPC provider
 - `callFunction` calls methods that modify contract state through the connected wallet's `signAndSendTransaction` method
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" language="jsx" start="11" end="11" />
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 11
+end: 11
+language: jsx
+*/}
+
+```jsx title="index.tsx" lines
+const { signedAccountId, viewFunction, callFunction } = useNearWallet();
+```
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/pages/hello-near/index.tsx#L11-L11)
+
+{/* /github-code */}
 
 #### Calling Read-Only Methods
 
 For example, when we want to fetch the current greeting stored in the contract, we use `viewFunction` inside a `useEffect` hook:
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" language="jsx" start="17" end="19" />
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 17
+end: 19
+language: jsx
+*/}
+
+```jsx title="index.tsx" lines
+useEffect(() => {
+  viewFunction({ contractId: HelloNearContract, method: 'get_greeting' }).then((greeting) => setGreeting(greeting as string));
+}, [viewFunction]);
+```
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/pages/hello-near/index.tsx#L17-L19)
+
+{/* /github-code */}
 
 #### Calling Change Methods
 On the other hand, when the user submits a new greeting, we use `callFunction` to send a transaction to the contract:
 
-<Github url="https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx" language="jsx" start="25" end="37" />
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 25
+end: 37
+language: jsx
+*/}
+
+```jsx title="index.tsx" lines
+const saveGreeting = () => {
+  // Try to store greeting, revert if it fails
+  callFunction({ contractId: HelloNearContract, method: 'set_greeting', args: { greeting: newGreeting } })
+    .then(async () => {
+      const greeting = (await viewFunction({ contractId: HelloNearContract, method: 'get_greeting' })) as string;
+      setGreeting(greeting);
+      setShowSpinner(false);
+    });
+
+  // Assume the transaction will be successful and update the UI optimistically
+  setShowSpinner(true);
+  setGreeting(newGreeting);
+};
+```
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/pages/hello-near/index.tsx#L25-L37)
+
+{/* /github-code */}
 
 ---
 

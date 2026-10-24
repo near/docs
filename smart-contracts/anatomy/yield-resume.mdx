@@ -3,8 +3,6 @@ title: Yield and Resume
 description: "Wait for an external response and resume execution"
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 NEAR smart contracts can **yield** execution, until an **external** service **resumes** them. In practice, the contract yields a **cross-contract call** to itself, until an external service executes a function and the contract decides to resume.
 
 This is a powerful feature that allows contracts to wait for external events, such as a response from an oracle, before continuing execution.
@@ -21,9 +19,49 @@ The contract can wait for 200 blocks - around 2 minutes - after which the yielde
 
 Let's look at an example that takes a prompt from a user (e.g. "What is 2+2"), and yields the execution until an external service provides a response.
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
-        start="43" end="70" />
+{/* github-code
+url: https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs
+commit: e92f04ce2c074231edb249b942b692f8c5c23f47
+start: 43
+end: 70
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+pub fn request(&mut self, prompt: String) {
+    // internal variable to keep track of the requests
+    self.request_id += 1;
+
+    // this will create a unique ID in the YIELD_REGISTER
+    let yield_promise = env::promise_yield_create(
+        "return_external_response",
+        &json!({ "request_id": self.request_id })
+            .to_string()
+            .into_bytes(),
+        Gas::from_tgas(5),
+        GasWeight::default(),
+        YIELD_REGISTER,
+    );
+
+    // load the ID created by the promise_yield_create
+    let yield_id: CryptoHash = env::read_register(YIELD_REGISTER)
+        .expect("read_register failed")
+        .try_into()
+        .expect("conversion to CryptoHash failed");
+
+    // store the request, so we can delete it later
+    let request = Request { yield_id, prompt };
+    self.requests.insert(self.request_id, request);
+
+    // return the yield promise
+    env::promise_return(yield_promise);
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/yield-resume/blob/e92f04ce2c074231edb249b942b692f8c5c23f47/contract/src/lib.rs#L43-L70)
+
+{/* /github-code */}
 
 #### Creating a Yielded Promise
 In the example above, we are creating a [`Promise`](./crosscontract#promises) to call the contract's function `return_external_response`.
@@ -50,9 +88,25 @@ Since we only use it to simplify the process of keeping track of the requests, y
 
 The `env::promise_yield_resume` function allows us to signal which yielded promise should execute, as well as which parameters to pass to the resumed function.
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
-        start="72" end="75" />
+{/* github-code
+url: https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs
+commit: e92f04ce2c074231edb249b942b692f8c5c23f47
+start: 72
+end: 75
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+pub fn respond(&mut self, yield_id: CryptoHash, response: String) {
+    // resume computation with the response
+    env::promise_yield_resume(&yield_id, &serde_json::to_vec(&response).unwrap());
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/yield-resume/blob/e92f04ce2c074231edb249b942b692f8c5c23f47/contract/src/lib.rs#L72-L75)
+
+{/* /github-code */}
 
 In the example above, the `respond` function would be called by an external service, passing which promise should be resume (`yield_id`), and the response to the prompt. 
 
@@ -69,9 +123,34 @@ Since the function used to signal the resume is public, developers must make sur
 
 The function being resumed will have access to all parameters passed to it, including those passed during the yield creation, or the external service response.
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs"
-        start="77" end="89" />
+{/* github-code
+url: https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs
+commit: e92f04ce2c074231edb249b942b692f8c5c23f47
+start: 77
+end: 89
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+#[private]
+pub fn return_external_response(
+    &mut self,
+    request_id: u32,
+    #[callback_result] response: Result<String, PromiseError>,
+) -> Response {
+    self.requests.remove(&request_id);
+
+    match response {
+        Ok(answer) => Response::Answer(answer),
+        Err(_) => Response::TimeOutError,
+    }
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/yield-resume/blob/e92f04ce2c074231edb249b942b692f8c5c23f47/contract/src/lib.rs#L77-L89)
+
+{/* /github-code */}
 
 In the example above, the `return_external_response` receives parameters:
 

@@ -4,8 +4,6 @@ icon: mail-check
 description: "Enable users to login with their social accounts (Google, GitHub, etc.)"
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 [Privy](https://www.privy.io/) is a third-party service that allows users to login using their email or social accounts (Google, Facebook, Twitter, etc). Upon login, a NEAR wallet is created for the user, which they can fund and use to interact with your dApp.
 
 ![Preview](https://framerusercontent.com/images/ugUCPrqIGlKFdxBwSbRoWriZtE.png?scale-down-to=2048&width=4018&height=2262)
@@ -168,7 +166,59 @@ Integrating **Privy directly** would make your application support **only social
   <Tab title="Direct Privy">
     Wrap your application with `PrivyProvider` and a custom `NEARxPrivy` context that bridges Privy's authentication with a NEAR account:
 
-    <Github url="https://github.com/near-examples/hello-privy/blob/main/src/App.jsx" language="jsx" />
+{/* github-code
+url: https://github.com/near-examples/hello-privy/blob/main/src/App.jsx
+commit: a80470ac85c0faed39ed81f23419b926d2b1eb37
+language: jsx
+*/}
+
+```jsx title="App.jsx" lines
+import { Navigation } from './components/navigation'
+import Home from './pages/home'
+
+import HelloNear from './pages/hello_near'
+import { BrowserRouter, HashRouter, Routes, Route } from 'react-router'
+
+import { PrivyProvider } from '@privy-io/react-auth'
+import { NEARxPrivy } from './context/provider'
+
+function App() {
+  // Use HashRouter when deployed under a subpath (GitHub Pages)
+  const useHashRouter = import.meta.env.BASE_URL !== '/'
+  const Router = useHashRouter ? HashRouter : BrowserRouter
+
+  return (
+    <PrivyProvider
+      appId="cme1neps40007jy0b5hyesl0s"
+      config={{
+        appearance: {
+          accentColor: '#6A6FF5',
+          theme: '#FFFFFF',
+          showWalletLoginFirst: false,
+          logo: 'https://auth.privy.io/logos/privy-logo.png',
+        },
+        loginMethods: ['email', 'google', 'github'],
+      }}
+    >
+      <NEARxPrivy>
+        <Router>
+          <Navigation />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/hello-near" element={<HelloNear />} />
+          </Routes>
+        </Router>
+      </NEARxPrivy>
+    </PrivyProvider>
+  )
+}
+
+export default App
+```
+
+[See code on GitHub](https://github.com/near-examples/hello-privy/blob/a80470ac85c0faed39ed81f23419b926d2b1eb37/src/App.jsx)
+
+{/* /github-code */}
 
     <Accordion title="Get a Privy App ID">
 
@@ -182,7 +232,68 @@ Integrating **Privy directly** would make your application support **only social
 
 The `NEARxPrivy` provider listens to Privy's authentication state. Once the user is logged in, it creates a NEAR wallet (if one doesn't exist yet) and exposes a `nearAccount` instance through context:
 
-<Github url="https://github.com/near-examples/hello-privy/blob/main/src/context/provider.jsx" language="jsx" />
+{/* github-code
+url: https://github.com/near-examples/hello-privy/blob/main/src/context/provider.jsx
+commit: a80470ac85c0faed39ed81f23419b926d2b1eb37
+language: jsx
+*/}
+
+```jsx title="provider.jsx" lines
+// Privy
+import { usePrivy } from '@privy-io/react-auth'
+import { useCreateWallet } from '@privy-io/react-auth/extended-chains'
+import { useSignRawHash } from '@privy-io/react-auth/extended-chains'
+
+// near api js
+import { JsonRpcProvider } from '@near-js/providers'
+import { Account } from '@near-js/accounts'
+
+// config
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { NearContext } from './useNear'
+import { providerUrl } from '../config'
+import { privySigner } from './signer'
+
+// Provider
+const provider = new JsonRpcProvider({ url: providerUrl })
+
+// eslint-disable-next-line react/prop-types
+export function NEARxPrivy({ children }) {
+  const { authenticated, user } = usePrivy()
+  const [walletId, setWalletId] = useState('')
+  const [nearAccount, setNearAccount] = useState(null)
+
+  const { signRawHash } = useSignRawHash()
+  const { createWallet } = useCreateWallet()
+
+  useEffect(() => {
+    if (authenticated) {
+      if (!user.wallet) {
+        createWallet({ chainType: 'near' })
+      } else {
+        let signer = new privySigner(signRawHash, user.wallet.address, provider)
+        let acc = new Account(user.wallet.address, provider, signer)
+        setNearAccount(acc)
+        setWalletId(user.wallet.address)
+      }
+    } else {
+      setWalletId('')
+      setNearAccount(null)
+    }
+  }, [authenticated, user, createWallet, signRawHash])
+
+  return (
+    <NearContext.Provider value={{ provider, nearAccount, walletId }}>
+      {children}
+    </NearContext.Provider>
+  )
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/hello-privy/blob/a80470ac85c0faed39ed81f23419b926d2b1eb37/src/context/provider.jsx)
+
+{/* /github-code */}
 
 | Value | Type | Description |
 |---|---|---|
@@ -196,7 +307,51 @@ The `NEARxPrivy` provider listens to Privy's authentication state. Once the user
 
 Privy signs transactions through its embedded wallet via `signRawHash`. The `privySigner` class adapts that API to the interface expected by `@near-js/accounts`:
 
-<Github url="https://github.com/near-examples/hello-privy/blob/main/src/context/signer.jsx" language="jsx" />
+{/* github-code
+url: https://github.com/near-examples/hello-privy/blob/main/src/context/signer.jsx
+commit: a80470ac85c0faed39ed81f23419b926d2b1eb37
+language: jsx
+*/}
+
+```jsx title="signer.jsx" lines
+import { Account } from "@near-js/accounts"
+import { Signature, SignedTransaction } from "@near-js/transactions"
+import { sha256 } from "@noble/hashes/sha2"
+import { bytesToHex, hexToBytes } from "@noble/hashes/utils"
+
+export class privySigner {
+  constructor(signRawHash, nearAccId, provider) {
+    this.signRawHash = signRawHash
+    this.nearAccId = nearAccId
+    this.provider = provider
+  }
+
+  async getPublicKey() {
+    const account = new Account(this.nearAccId, this.provider)
+    const keys = await account.getAccessKeyList()
+    return keys.keys[0].public_key
+  }
+
+  async signTransaction(transaction) {
+    const encoded = transaction.encode()
+    const txHash = bytesToHex(sha256(encoded))
+    const signatureRaw = await this.signRawHash({
+      address: this.nearAccId,
+      chainType: 'near',
+      hash: `0x${txHash}`,
+    })
+    const signature = new Signature({
+      keyType: transaction.publicKey.keyType,
+      data: hexToBytes(signatureRaw.signature.slice(2)),
+    })
+    return [[], new SignedTransaction({ transaction, signature })]
+  }
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/hello-privy/blob/a80470ac85c0faed39ed81f23419b926d2b1eb37/src/context/signer.jsx)
+
+{/* /github-code */}
 
 ---
 
@@ -204,7 +359,95 @@ Privy signs transactions through its embedded wallet via `signRawHash`. The `pri
 
 Use `useLogin` and `useLogout` from Privy to open the login modal and sign the user out:
 
-<Github url="https://github.com/near-examples/hello-privy/blob/main/src/components/navigation.jsx" language="jsx" />
+{/* github-code
+url: https://github.com/near-examples/hello-privy/blob/main/src/components/navigation.jsx
+commit: a80470ac85c0faed39ed81f23419b926d2b1eb37
+language: jsx
+*/}
+
+```jsx title="navigation.jsx" lines
+import { useEffect, useState } from 'react'
+
+import NearLogo from '@/assets/near-logo.svg'
+import { Link } from 'react-router'
+import styles from '@/styles/app.module.css'
+
+import { useLogin, useLogout, usePrivy } from '@privy-io/react-auth'
+import { useNEAR } from '../context/useNear'
+import { NEAR } from '@near-js/tokens'
+
+export const Navigation = () => {
+  const [action, setAction] = useState(() => {})
+  const [label, setLabel] = useState('Loading...')
+  const [balance, setBalance] = useState(0)
+  const { authenticated, user } = usePrivy()
+
+  const { login: privyLogin } = useLogin()
+  const { logout: privyLogout } = useLogout()
+
+  const { walletId, nearAccount } = useNEAR()
+
+  useEffect(() => {
+    if (authenticated) {
+      const userId = user.google
+        ? user.google.email
+        : user.email
+          ? user.email.address
+          : user.github.username
+      setAction(() => privyLogout)
+      setLabel(`Logout ${userId}`)
+    } else {
+      setAction(() => privyLogin)
+      setLabel('Login')
+      setBalance(null)
+    }
+  }, [authenticated, privyLogin, privyLogout, user])
+
+  useEffect(() => {
+    if (walletId) {
+      nearAccount
+        .getBalance()
+        .then((b) => setBalance(Number(NEAR.toDecimal(b)).toFixed(2)))
+        .catch(() => setBalance(0)) // non existing account
+    }
+  }, [walletId, nearAccount])
+
+  return (
+    <>
+      <nav className="navbar navbar-expand-lg">
+        <div className="container-fluid">
+          <Link to="/">
+            <img
+              src={NearLogo}
+              alt="NEAR"
+              width="30"
+              height="24"
+              className={styles.logo}
+            />
+          </Link>
+          <div className="navbar-nav pt-1">
+            {authenticated ? (
+              <span className="badge text-dark small">
+                {' '}
+                <br />
+                {walletId}: {balance} Ⓝ
+              </span>
+            ) : null}
+
+            <button className="btn btn-secondary" onClick={action}>
+              {label}
+            </button>
+          </div>
+        </div>
+      </nav>
+    </>
+  )
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/hello-privy/blob/a80470ac85c0faed39ed81f23419b926d2b1eb37/src/components/navigation.jsx)
+
+{/* /github-code */}
 
 ---
 

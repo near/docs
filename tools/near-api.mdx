@@ -4,8 +4,6 @@ icon: code
 description: "Learn to use APIs in JavaScript, Rust, and Python to interact with the blockchain."
 ---
 
-import { Github } from '/snippets/github.jsx';
-
 We offer a collection of language-specific libraries that allow developers to interact with the NEAR blockchain from both frontend and backend applications. The different APIs allow you to perform a variety of actions on the NEAR blockchain, including but not limited to:
 
 1. Create and manage NEAR accounts
@@ -65,17 +63,118 @@ Gets the available and staked balance of an account in yoctoNEAR.
 
 <Tabs>
   <Tab title="🌐 near-api-js">
-    <Github language="javascript"
-      url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/tokens-balance.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/tokens-balance.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="tokens-balance.ts" lines
+import { Account, JsonRpcProvider } from "near-api-js";
+import { NEAR, FungibleToken } from "near-api-js/tokens";
+import { USDT } from "near-api-js/tokens/testnet";
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// Create an account object
+const accountId: string = 'influencer.testnet';
+const account = new Account(accountId, provider);
+
+// ------- Fetch NEAR tokens balance -------
+const nearTokensBalanceInt: bigint = await account.getBalance(NEAR);
+console.log("NEAR: ", NEAR.toDecimal(nearTokensBalanceInt, 2));
+
+// ------- Fetch USDT tokens balance -------
+const usdtTokensBalanceInt: bigint = await account.getBalance(USDT);
+console.log("USDT: ", USDT.toDecimal(usdtTokensBalanceInt, 2));
+
+// ------- Fetch REF tokens balance in the smallest units as BigInt -------
+const REF = new FungibleToken("ref.fakes.testnet", {
+  decimals: 18,
+  symbol: "REF",
+  name: "REF Token",
+});
+
+const refTokensBalanceInt: bigint = await account.getBalance(REF);
+console.log("REF: ", REF.toDecimal(refTokensBalanceInt, 2));
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/tokens-balance.ts)
+
+{/* /github-code */}
   </Tab>
   <Tab title="🌐 near-kit">
-    <Github language="javascript"
-      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/tokens-balance.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/tokens-balance.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="tokens-balance.js" lines
+import { Near } from "near-kit";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
+
+// Create a connection to testnet (no signing needed for view operations)
+const near = new Near({ network: "testnet" });
+
+// Get the account ID from environment or use a default
+const accountId = process.env.ACCOUNT_ID || "example-account.testnet";
+
+// Get NEAR balance for the account
+const balance = await near.getBalance(accountId);
+
+console.log(`Account: ${accountId}`);
+console.log(`NEAR Balance: ${balance} NEAR`);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/tokens-balance.js)
+
+{/* /github-code */}
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="account_details.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/account_details.rs" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/account_details.rs
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+fname: account_details.rs
+language: rust
+*/}
+
+```rust title="account_details.rs" lines
+use near_api::{Account, AccountId, NetworkConfig, Tokens};
+
+#[tokio::main]
+async fn main() {
+    let my_account_id: AccountId = "example-account.testnet".parse().unwrap();
+    // Create an account object
+    let my_account = Account(my_account_id.clone());
+
+    // Create a connection to the NEAR testnet
+    let network = NetworkConfig::testnet();
+
+    // Gets the available, and staked balance in yoctoNEAR
+    let near_balance = Tokens::account(my_account_id.clone())
+        .near_balance()
+        .fetch_from(&network)
+        .await
+        .unwrap();
+    println!("{:?}", near_balance);
+
+    // Account's state, including its code hash and storage usage
+    let account_info = my_account.view().fetch_from(&network).await.unwrap();
+    println!("{:?}", account_info);
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/account_details.rs)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -103,21 +202,80 @@ If you are using this call to validate a recipient before sending tokens from a 
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/account-details.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/account-details.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="account-details.ts" lines
+import { Account, JsonRpcProvider } from "near-api-js";
+
+// Option 1: Gather details through the RPC Provider
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+const rpcState = await provider.viewAccount({accountId: "example-account.testnet"});
+console.log(rpcState);
+
+// Option 2: Use an Account object
+const account = new Account("example-account.testnet", provider);
+const accountState = await account.getState();
+
+console.log(accountState);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/account-details.ts)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/account-details.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/account-details.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="account-details.js" lines
+import { Near } from "near-kit";
+
+// Create a connection to testnet
+const near = new Near({ network: "testnet" });
+
+// Get account balance using the Near instance
+const accountId = "example-account.testnet";
+const balance = await near.getBalance(accountId);
+
+console.log(`Account: ${accountId}`);
+console.log(`Balance: ${balance} NEAR`);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/account-details.js)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="account_details.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/account_details.rs#L21-L21"
-    start="21" end="21" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/account_details.rs#L21-L21
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 21
+end: 21
+fname: account_details.rs
+language: rust
+*/}
+
+```rust title="account_details.rs" lines
+let account_info = my_account.view().fetch_from(&network).await.unwrap();
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/account_details.rs#L21-L21)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -141,27 +299,175 @@ To create a named account like `user.testnet`, you need to call the `create_acco
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="typescript" url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/create-tla.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/create-tla.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: typescript
+*/}
+
+```typescript title="create-tla.ts" lines
+import dotenv from "dotenv";
+import { Account, JsonRpcProvider, KeyPair, KeyPairString, nearToYocto } from "near-api-js";
+
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY! as KeyPairString;
+const accountId: string = process.env.ACCOUNT_ID!;
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// Create an account object
+const account = new Account(accountId, provider, privateKey); // example-account.testnet
+
+// Generate a new accountId and key
+const newAccountId: string = Date.now() + ".testnet";
+const keyPair = KeyPair.fromRandom("ed25519");
+const publicKey: string = keyPair.getPublicKey().toString();
+
+await account.createAccount({
+  newAccountId,
+  publicKey,
+  nearToTransfer: nearToYocto("0")
+});
+
+console.log(`Created ${newAccountId} with private key ${keyPair.toString()}`);
+
+// Option 2: Call `testnet` directly
+const newAccountId2: string = Date.now() + ".testnet";
+
+await account.callFunction({
+  contractId: "testnet",
+  methodName: "create_account",
+  args: {
+    "new_account_id": newAccountId2,
+    "new_public_key": publicKey
+  }
+});
+
+console.log(`Created account ${newAccountId2} with privateKey: ${keyPair.toString()}`);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/create-tla.ts)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript" url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/create-tla.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/create-tla.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="create-tla.js" lines
+import { Near, generateKey } from "near-kit";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY;
+const accountId = process.env.ACCOUNT_ID;
+
+// Create a connection to testnet with signing capabilities
+const near = new Near({
+  network: "testnet",
+  privateKey: privateKey, // ed25519:5Fg2...
+  defaultSignerId: accountId, // example-account.testnet
+});
+
+// Generate a new key pair for the top-level account
+const keyPair = generateKey();
+const publicKey = keyPair.publicKey.toString();
+
+// Create a unique top-level account name using timestamp
+const newAccountId = `${Date.now()}.testnet`;
+
+// Create the top-level account by calling the testnet contract
+await near.call("testnet", "create_account", {
+  new_account_id: newAccountId,
+  new_public_key: publicKey,
+});
+
+console.log(`Created top-level account: ${newAccountId}`);
+console.log(`Private key: ${keyPair.secretKey}`);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/create-tla.js)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="create_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account.rs#L32-L47"
-    start="32" end="47" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account.rs#L32-L47
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 32
+end: 47
+fname: create_account.rs
+language: rust
+*/}
+
+```rust title="create_account.rs" lines
+let private_key = signer::generate_secret_key().unwrap();
+let create_account_result = Account::create_account(new_account_id.clone()) // example-account.testnet
+    .fund_myself(
+        account_id.clone(),
+        NearToken::from_millinear(100), // Initial balance for new account in yoctoNEAR
+    )
+    .public_key(private_key.public_key()).unwrap()
+    .with_signer(signer.clone()) // Signer is the account that is creating the new account
+    .send_to(&network)
+    .await
+    .unwrap();
+
+println!("Private key: {:?}", private_key.to_string());
+println!("Public key: {:?}", private_key.public_key().to_string());
+println!("{:?}", create_account_result);
+
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/create_account.rs#L32-L47)
+
+{/* /github-code */}
 
   <Accordion title="Creating an account from a seed phrase">
 
   You can also create an account via a randomly generated seed phrase.
 
-  <Github fname="create_account_from_seed.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account_from_seed.rs#L32-L46"
-    start="32" end="46" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account_from_seed.rs#L32-L46
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 32
+end: 46
+fname: create_account_from_seed.rs
+language: rust
+*/}
+
+```rust title="create_account_from_seed.rs" lines
+    let (seed_phrase, seed_pk) = signer::generate_seed_phrase().unwrap();
+    let create_account_result = Account::create_account(new_account_id.clone()) // example-account.testnet
+        .fund_myself(
+            account_id.clone(),
+            NearToken::from_millinear(100), // Initial balance for new account in yoctoNEAR
+        )
+        .public_key(seed_pk).unwrap()
+        .with_signer(signer.clone()) // Signer is the account that is creating the new account
+        .send_to(&network)
+        .await
+        .unwrap();
+
+    println!("Seed phrase: {:?}", seed_phrase);
+    println!("{:?}", create_account_result);
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/create_account_from_seed.rs#L32-L46)
+
+{/* /github-code */}
 
   </Accordion>
 
@@ -182,21 +488,129 @@ Accounts on NEAR can create sub-accounts under their own namespace, which is use
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/create-subaccount.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/create-subaccount.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="create-subaccount.ts" lines
+import dotenv from "dotenv";
+import { Account, JsonRpcProvider, KeyPair, KeyPairString, nearToYocto } from "near-api-js";
+
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY! as KeyPairString;
+const accountId: string = process.env.ACCOUNT_ID!;
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// Create an account object
+const account = new Account(accountId, provider, privateKey); // example-account.testnet
+
+// Generate a new account prefix and key pair
+const prefix: string = Date.now().toString();
+const keyPair = KeyPair.fromRandom("ed25519");
+const publicKey: string = keyPair.getPublicKey().toString();
+
+await account.createSubAccount({
+  accountOrPrefix: prefix,    // prefix for the sub account (e.g. sub.near.testnet)
+  publicKey, // ed25519:2ASWc...
+  nearToTransfer: nearToYocto("0") // Initial balance for new account in yoctoNEAR
+});
+
+console.log(`Created ${prefix}.${accountId} with private key ${keyPair.toString()}`);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/create-subaccount.ts)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/create-subaccount.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/create-subaccount.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="create-subaccount.js" lines
+import { Near, generateKey } from "near-kit";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY;
+const accountId = process.env.ACCOUNT_ID;
+
+// Create a connection to testnet with signing capabilities
+const near = new Near({
+  network: "testnet",
+  privateKey: privateKey, // ed25519:5Fg2...
+  defaultSignerId: accountId, // example-account.testnet
+});
+
+// Generate a new key pair for the subaccount
+const keyPair = generateKey();
+const publicKey = keyPair.publicKey.toString();
+
+// Create a unique subaccount name using timestamp
+const prefix = Date.now().toString();
+const newAccountId = `${prefix}.${accountId}`;
+
+// Create the subaccount using transaction builder with chained actions
+await near
+  .transaction(accountId)
+  .createAccount(newAccountId)
+  .transfer(newAccountId, "0.1 NEAR")
+  .addKey(publicKey, { type: "fullAccess" })
+  .send();
+
+console.log(`Created subaccount: ${newAccountId}`);
+console.log(`Private key: ${keyPair.secretKey}`);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/create-subaccount.js)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="create_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account.rs#L61-L76"
-    start="61" end="76" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account.rs#L61-L76
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 61
+end: 76
+fname: create_account.rs
+language: rust
+*/}
+
+```rust title="create_account.rs" lines
+    let private_key = signer::generate_secret_key().unwrap();
+    let create_sub_account_result = Account::create_account(sub_account_id.clone()) // sub.example-account.testnet
+        .fund_myself(
+            account_id.clone(),
+            NearToken::from_millinear(100), // Initial balance for sub account in yoctoNEAR
+        )
+        .public_key(private_key.public_key()).unwrap()
+        .with_signer(signer.clone()) // Signer is the account that is creating the sub account
+        .send_to(&network)
+        .await
+        .unwrap();
+
+    println!("Private key: {:?}", private_key.to_string());
+    println!("Public key: {:?}", private_key.public_key().to_string());
+    println!("{:?}", create_sub_account_result);
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/create_account.rs#L61-L76)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -254,21 +668,118 @@ Accounts on NEAR can delete themselves, transferring any remaining balance to a 
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript" start="26" end="30"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/delete-account.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/delete-account.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 26
+end: 30
+language: javascript
+*/}
+
+```javascript title="delete-account.ts" lines
+const accountToDelete = new Account(deleteMe, provider, privateKey);
+
+// Delete the account 
+const beneficiary: string = process.env.ACCOUNT_ID!;
+await accountToDelete.deleteAccount(beneficiary);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/delete-account.ts#L26-L30)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/delete-account.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/delete-account.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="delete-account.js" lines
+import { Near, generateKey } from "near-kit";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY;
+const accountId = process.env.ACCOUNT_ID;
+
+// Create a connection to testnet with signing capabilities
+const near = new Near({
+  network: "testnet",
+  privateKey: privateKey, // ed25519:5Fg2...
+  defaultSignerId: accountId, // example-account.testnet
+});
+
+// Generate a new key pair for the account to be deleted
+const keyPair = generateKey();
+const publicKey = keyPair.publicKey.toString();
+
+// Create a unique top-level account name using timestamp
+const accountToDelete = `${Date.now()}.testnet`;
+
+// First, create the account by calling the testnet contract
+await near.call("testnet", "create_account", {
+  new_account_id: accountToDelete,
+  new_public_key: publicKey,
+});
+
+console.log(`Created account: ${accountToDelete}`);
+
+// Fund the new account so it can pay for the delete transaction
+await near.send(accountToDelete, "0.01 NEAR");
+console.log(`Funded account with 0.01 NEAR`);
+
+// Create a new Near instance with the new account's key to delete it
+const nearForNewAccount = new Near({
+  network: "testnet",
+  privateKey: keyPair.secretKey,
+  defaultSignerId: accountToDelete,
+});
+
+// Delete the account, sending remaining balance to beneficiary
+await nearForNewAccount
+  .transaction(accountToDelete)
+  .deleteAccount({ beneficiary: accountId })
+  .send();
+
+console.log(`Deleted account: ${accountToDelete}`);
+console.log(`Beneficiary: ${accountId}`);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/delete-account.js)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="delete_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/delete_account.rs#L51-L59"
-    start="51" end="59" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/delete_account.rs#L51-L59
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 51
+end: 59
+fname: delete_account.rs
+language: rust
+*/}
+
+```rust title="delete_account.rs" lines
+    // Delete the account with account Id of the account object
+    let delete_account_result = account_to_delete
+        .delete_account_with_beneficiary(beneficiary_account_id.clone()) // example-beneficiary.testnet
+        .with_signer(signer.clone()) // Signer is the account that is being deleted
+        .send_to(&network)
+        .await
+        .unwrap();
+    println!("{:?}", delete_account_result);
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/delete_account.rs#L51-L59)
+
+{/* /github-code */}
 
   </Tab>
 </Tabs>
@@ -300,21 +811,166 @@ Accounts can transfer different types of tokens to other accounts, including the
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/send-tokens.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/send-tokens.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="send-tokens.ts" lines
+import dotenv from "dotenv";
+import { Account, JsonRpcProvider, KeyPairString } from "near-api-js";
+import { NEAR, FungibleToken } from "near-api-js/tokens";
+import { USDT } from "near-api-js/tokens/testnet";
+
+// Load environment variables
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY! as KeyPairString;
+const accountId: string = process.env.ACCOUNT_ID!;
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// Create an account object
+const account = new Account(accountId, provider, privateKey); // example-account.testnet
+
+// ------- Send NEAR tokens to another account -------
+const sendNearTokensResult = await account.transfer({
+  token: NEAR,
+  amount: NEAR.toUnits("0.1"),
+  receiverId: "influencer.testnet"
+});
+console.log(sendNearTokensResult);
+
+// ------- Send USDT tokens to another account -------
+// NOTE: Use https://testnet.rhea.finance/#near|usdtt.fakes.testnet to get USDT token
+const sendUsdtTokensResult = await account.transfer({
+  token: USDT,
+  amount: USDT.toUnits("1"), // Amount of USDT being sent
+  receiverId: "influencer.testnet"
+});
+console.log(sendUsdtTokensResult);
+
+// ------- Send REF tokens to another account -------
+// Use https://testnet.rhea.finance/#near|ref.fakes.testnet to get REF tokens
+const REF = new FungibleToken("ref.fakes.testnet", {
+  decimals: 18,
+  symbol: "REF",
+  name: "REF Token",
+});
+
+const sendREFsResult = await account.transfer({
+  token: REF,
+  amount: REF.toUnits("1"), // Amount of REF tokens being sent
+  receiverId: "influencer.testnet"
+}).catch(() => {}); // ignore errors if already registered
+
+console.log(sendREFsResult);
+
+// Lower level Primitives
+console.log(
+  "Is influencer.testnet registered for USDT?",
+  await USDT.isAccountRegistered({
+    accountId: "influencer.testnet",
+    provider,
+  })
+)
+
+console.log(
+  "Registering influencer.testnet for USDT",
+  await USDT.registerAccount({
+    accountIdToRegister: "influencer.testnet",
+    fundingAccount: account,
+  })
+)
+
+// ------- Sending tokens to an unregistered account will automatically register it -------
+const randomAccountId = `${Math.random().toString(36).substring(2, 15)}.testnet`;
+
+const isRegistered = await USDT.isAccountRegistered({
+    accountId: randomAccountId,
+    provider,
+  })
+
+if (isRegistered) throw new Error(`${randomAccountId} is already registered`);
+
+await account.transfer({
+  token: USDT,
+  amount: USDT.toUnits("1"),
+  receiverId: randomAccountId,
+});
+
+const randomAccount = new Account(randomAccountId, provider);
+const balance = await USDT.getBalance(randomAccount);
+console.log(`Balance of ${randomAccountId}:`, USDT.toDecimal(balance));
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/send-tokens.ts)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/send-tokens.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/send-tokens.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="send-tokens.js" lines
+import { Near } from "near-kit";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY;
+const accountId = process.env.ACCOUNT_ID;
+
+// Create a connection to testnet with signing capabilities
+const near = new Near({
+  network: "testnet",
+  privateKey: privateKey, // ed25519:5Fg2...
+  defaultSignerId: accountId, // example-account.testnet
+});
+
+// Send NEAR tokens to another account
+const result = await near.send("receiver-account.testnet", "0.1 NEAR");
+
+console.log("Transfer result:", result);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/send-tokens.js)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="send_tokens.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/send_tokens.rs#L22-L28"
-    start="22" end="28" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/send_tokens.rs#L22-L28
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 22
+end: 28
+fname: send_tokens.rs
+language: rust
+*/}
+
+```rust title="send_tokens.rs" lines
+let send_tokens_result = Tokens::account(account_id.clone()) // example-account.testnet
+    .send_to("receiver-account.testnet".parse().unwrap())
+    .near(NearToken::from_near(1))
+    .with_signer(signer.clone())
+    .send_to(&network)
+    .await
+    .unwrap();
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/send_tokens.rs#L22-L28)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -341,15 +997,108 @@ A smart contract exposes its methods, and making a function call that modifies s
 
   <Tabs>
     <Tab title="function call">
-      <Github language="javascript"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/contract-interaction.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/contract-interaction.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="contract-interaction.ts" lines
+import dotenv from "dotenv";
+import { Account, JsonRpcProvider, teraToGas, KeyPairString, nearToYocto } from "near-api-js";
+
+// Create an account object
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY! as KeyPairString;
+const accountId: string = process.env.ACCOUNT_ID!;
+
+// Create a testnet provider
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// For read only calls, you can use the provider directly
+const messages = await provider.callFunction({
+  contractId: 'guestbook.near-examples.testnet',
+  method: "get_messages",
+  args: {},
+});
+
+console.log(messages);
+
+// To modify state, you need an account to sign the transaction
+const account = new Account(accountId, provider, privateKey);
+
+// Call the contract
+await account.callFunction({
+  contractId: 'guestbook.near-examples.testnet',
+  methodName: "add_message",
+  args: { text: "Hello!" },
+  gas: teraToGas('30'),
+  deposit: nearToYocto('0.1'),
+});
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/contract-interaction.ts)
+
+{/* /github-code */}
       <Tip>
       When using Typescript, you can type the return of `callFunction<T>`.
       </Tip>
     </Tab>
     <Tab title="typed contract">
-      <Github language="javascript"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/typed-contract-interaction.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/typed-contract-interaction.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="typed-contract-interaction.ts" lines
+import { nearToYocto, Account, Contract, JsonRpcProvider, KeyPairString } from "near-api-js";
+import abi from "./guestbook.abi.js";
+import dotenv from "dotenv";
+
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY! as KeyPairString;
+const accountId: string = process.env.ACCOUNT_ID!;
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// Create an account object
+const account = new Account(accountId, provider, privateKey); // example-account.testnet
+
+// Make a function call that modifies state
+const contract = new Contract({
+  contractId: "guestbook.near-examples.testnet",
+  provider: provider,
+  abi: abi,
+});
+
+contract.call.add_message({
+  deposit: nearToYocto("0.1"),
+  args: { text: "Hello, NEAR!" },
+  account: account,
+}); // TypeScript infers the type of this method
+
+// Make a read-only function call
+const totalMessages = await contract.view.total_messages();
+console.log({ totalMessages });
+
+// Send a tx to add message
+const result = await contract.call.add_message({
+  account,
+  args: { text: "Hello, world!" },
+});
+
+console.log({ result });
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/typed-contract-interaction.ts)
+
+{/* /github-code */}
     </Tab>
   </Tabs>
 
@@ -358,28 +1107,139 @@ A smart contract exposes its methods, and making a function call that modifies s
 
   <Tabs>
     <Tab title="function call">
-      <Github language="javascript"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="contract-interaction.js" lines
+import dotenv from "dotenv";
+import { Near } from "near-kit";
+
+// Create a connection to testnet with credentials
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY;
+const accountId = process.env.ACCOUNT_ID;
+
+const near = new Near({
+  network: "testnet",
+  privateKey,
+  defaultSignerId: accountId
+});
+
+// For read only calls, you can use the provider directly
+const messages = await near.view(
+  'guestbook.near-examples.testnet',
+  'get_messages',
+  {}
+);
+
+console.log(messages);
+
+// To modify state, call the contract method
+await near.call(
+  'guestbook.near-examples.testnet',
+  'add_message',
+  { text: "Hello!" },
+  { gas: "30 Tgas" }
+);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/contract-interaction.js)
+
+{/* /github-code */}
       <Tip>
       When using Typescript, you can type the return of `Near.view<T>` and `Near.call<T>`.
       </Tip>
     </Tab>
     <Tab title="typed contract">
-      <Github language="javascript"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/typed-contract-interaction.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/typed-contract-interaction.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="typed-contract-interaction.js" lines
+import { Near } from "near-kit";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+// Create a connection to testnet with credentials from environment
+const near = new Near({
+  network: "testnet",
+  privateKey: process.env.PRIVATE_KEY,
+  defaultSignerId: process.env.ACCOUNT_ID
+});
+
+// Define the contract interface
+const guestbook = near.contract("guestbook.near-examples.testnet");
+
+// View: get total messages
+const totalMessages = await guestbook.view.total_messages();
+console.log({ totalMessages });
+
+// Call: add a message
+const result = await guestbook.call.add_message({ text: "Hello from near-kit!" }, { gas: "30 Tgas" });
+console.log({ result });
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/typed-contract-interaction.js)
+
+{/* /github-code */}
     </Tab>
   </Tabs>
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L23-L24"
-    start="23" end="24" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L23-L24
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 23
+end: 24
+fname: contract_interaction.rs
+language: rust
+*/}
 
-  <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L37-L49"
-    start="37" end="49" />
+```rust title="contract_interaction.rs" lines
+let contract_id: AccountId = "guestbook.near-examples.testnet".parse().unwrap();
+let contract = Contract(contract_id.clone());
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/contract_interaction.rs#L23-L24)
+
+{/* /github-code */}
+
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L37-L49
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 37
+end: 49
+fname: contract_interaction.rs
+language: rust
+*/}
+
+```rust title="contract_interaction.rs" lines
+let args = json!({
+    "text": "Hello, world!"
+});
+
+let function_call_result = contract
+    .call_function("add_message", args)
+    .unwrap()
+    .transaction()
+    .deposit(NearToken::from_near(1))
+    .with_signer(account_id.clone(), signer.clone()) // Signer is the account that is calling the function
+    .send_to(&network)
+    .await
+    .unwrap();
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/contract_interaction.rs#L37-L49)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -398,21 +1258,121 @@ You can send multiple [actions](/protocol/transactions/transaction-anatomy#actio
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/batch-actions.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/batch-actions.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="batch-actions.ts" lines
+import dotenv from "dotenv";
+import { Account, JsonRpcProvider, actions, teraToGas, nearToYocto, KeyPairString } from "near-api-js";
+
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY! as KeyPairString;
+const accountId: string = process.env.ACCOUNT_ID!;
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// Create an account object
+const account = new Account(accountId, provider, privateKey); // example-account.testnet
+
+// Send the batch of actions
+const batchActionsResult = await account.signAndSendTransaction({
+  receiverId: "counter.near-examples.testnet",
+  actions: [
+    actions.functionCall("increment", {}, teraToGas("30"), 0n),
+    actions.transfer(nearToYocto("0.001"))
+  ],
+});
+
+console.log(batchActionsResult);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/batch-actions.ts)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/batch-actions.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/batch-actions.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="batch-actions.js" lines
+import { Near } from "near-kit";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY;
+const accountId = process.env.ACCOUNT_ID;
+
+// Create a connection to testnet with signing capabilities
+const near = new Near({
+  network: "testnet",
+  privateKey: privateKey, // ed25519:5Fg2...
+  defaultSignerId: accountId, // example-account.testnet
+});
+
+// Batch multiple actions in one transaction
+const result = await near.transaction(accountId)
+  .functionCall("counter.near-examples.testnet", "increment", {}, { gas: "30 Tgas" })
+  .transfer("counter.near-examples.testnet", "0.001 NEAR")
+  .send();
+
+console.log("Batch actions result:", result);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/batch-actions.js)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="batch_actions.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/batch_actions.rs#L22-L42"
-    start="22" end="42" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/batch_actions.rs#L22-L42
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 22
+end: 42
+fname: batch_actions.rs
+language: rust
+*/}
+
+```rust title="batch_actions.rs" lines
+// Prepare the actions
+let call_action = Action::FunctionCall(Box::new(FunctionCallAction {
+    method_name: "increment".to_string(),
+    args: serde_json::json!({}).to_string().into_bytes(),
+    gas: 30_000_000_000_000,
+    deposit: 0,
+}));
+let transfer_action = Action::Transfer(TransferAction {
+    deposit: 1_000_000_000_000_000_000_000_000,
+}); // Transfer 1 NEAR
+
+// Send the batch of actions
+let batch_actions_result = Transaction::construct(
+    account_id.clone(),
+    "counter.near-examples.testnet".parse().unwrap(),
+)
+.add_actions(vec![call_action, transfer_action])
+.with_signer(signer)
+.send_to(&network)
+.await
+.unwrap();
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/batch_actions.rs#L22-L42)
+
+{/* /github-code */}
 
   </Tab>
 </Tabs>
@@ -424,21 +1384,190 @@ The only way to have true simultaneous transactions is to use multiple access ke
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/simultaneous-transactions.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/simultaneous-transactions.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="simultaneous-transactions.ts" lines
+import dotenv from "dotenv";
+import { NEAR } from "near-api-js/tokens";
+import { Account, actions, JsonRpcProvider, KeyPair, MultiKeySigner, KeyPairString } from "near-api-js";
+
+dotenv.config(); // Loads .env
+const privateKey = process.env.PRIVATE_KEY! as KeyPairString;
+const accountId: string = process.env.ACCOUNT_ID!;
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// Create 10 keys and add them to the account
+const account = new Account(accountId, provider, privateKey);
+
+const keys: KeyPair[] = [];
+const txActions: ReturnType<typeof actions.addFullAccessKey>[] = [];
+for (let j = 0; j < 10; j++) {
+  const newKeyPair = KeyPair.fromRandom('ed25519');
+  keys.push(newKeyPair);
+  txActions.push(actions.addFullAccessKey(newKeyPair.getPublicKey()));
+}
+
+await account.signAndSendTransaction({
+  receiverId: accountId,
+  actions: txActions
+});
+
+// Send NEAR tokens using multiple keys
+const multiKeySigner = new MultiKeySigner(keys);
+const multiAccount = new Account(accountId, provider, multiKeySigner);
+
+const transfers = [...Array(100)].map(() =>
+  multiAccount.transfer({
+    token: NEAR,
+    amount: NEAR.toUnits("0.001"),
+    receiverId: "influencer.testnet"
+  })
+);
+
+const sendNearTokensResults = await Promise.all(transfers);
+sendNearTokensResults.forEach(result => console.log(result));
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/simultaneous-transactions.ts)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/simultaneous-transactions.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/simultaneous-transactions.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="simultaneous-transactions.js" lines
+import { Near, generateKey, RotatingKeyStore } from "near-kit";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY;
+const accountId = process.env.ACCOUNT_ID;
+
+// Create a RotatingKeyStore for concurrent transactions
+const keyStore = new RotatingKeyStore();
+
+// Create a connection to testnet with signing capabilities
+const near = new Near({
+  network: "testnet",
+  privateKey: privateKey, // ed25519:5Fg2...
+  defaultSignerId: accountId, // example-account.testnet
+});
+
+// Add multiple keys to the account for concurrent transactions
+const keys = [];
+for (let i = 0; i < 5; i++) {
+  const newKey = generateKey();
+  keys.push(newKey);
+
+  // Add key to the account on-chain
+  await near
+    .transaction(accountId)
+    .addKey(newKey.publicKey.toString(), { type: "fullAccess" })
+    .send();
+
+  // Add key to the rotating store
+  await keyStore.add(accountId, newKey);
+}
+
+console.log(`Added ${keys.length} keys to account`);
+
+// Create a new Near client with the rotating keystore
+const nearWithRotating = new Near({
+  network: "testnet",
+  keyStore,
+  defaultSignerId: accountId,
+});
+
+// Send multiple concurrent transactions
+// The RotatingKeyStore will distribute keys to avoid nonce conflicts
+const transfers = Array.from({ length: 10 }, (_, i) =>
+  nearWithRotating.send("influencer.testnet", "0.001 NEAR")
+);
+
+const results = await Promise.all(transfers);
+console.log(`Completed ${results.length} concurrent transfers`);
+
+// Clean up: delete the keys we added
+for (const key of keys) {
+  await near
+    .transaction(accountId)
+    .deleteKey(accountId, key.publicKey.toString())
+    .send();
+}
+
+console.log("Cleaned up keys");
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/simultaneous-transactions.js)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="simultaneous_transactions.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/simultaneous_transactions.rs#L23-L55"
-    start="23" end="55" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/simultaneous_transactions.rs#L23-L55
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 23
+end: 55
+fname: simultaneous_transactions.rs
+language: rust
+*/}
+
+```rust title="simultaneous_transactions.rs" lines
+// Prepare the transactions
+let args = serde_json::to_vec(&json!({
+    "text": "Hello, world!"
+}))
+.unwrap();
+let action1 = Action::FunctionCall(Box::new(FunctionCallAction {
+    method_name: "add_message".to_string(),
+    args,
+    gas: 100_000_000_000_000,
+    deposit: 0,
+}));
+let tx1 = Transaction::construct(
+    account_id.clone(),
+    "guestbook.near-examples.testnet".parse().unwrap(),
+)
+.add_action(action1)
+.with_signer(signer.clone());
+
+let action2 = Action::FunctionCall(Box::new(FunctionCallAction {
+    method_name: "increment".to_string(),
+    args: vec![],
+    gas: 100_000_000_000_000,
+    deposit: 0,
+}));
+let tx2 = Transaction::construct(
+    account_id.clone(),
+    "counter.near-examples.testnet".parse().unwrap(),
+)
+.add_action(action2)
+.with_signer(signer.clone());
+
+// Send the transactions simultaneously
+let (tx1_result, tx2_result) = tokio::join!(tx1.send_to(&network), tx2.send_to(&network));
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/simultaneous_transactions.rs#L23-L55)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -472,23 +1601,108 @@ On NEAR, a smart contract is deployed as a WASM file. Every account has the pote
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-contract.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-contract.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="deploy-contract.ts" lines
+import { Account, JsonRpcProvider, KeyPairString } from "near-api-js";
+import fs from "fs";
+import dotenv from "dotenv";
+
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY! as KeyPairString;
+const accountId: string = process.env.ACCOUNT_ID!;
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// Create an account object
+const account = new Account(accountId, provider, privateKey); // example-account.testnet
+
+// Deploy a contract to the account
+const result = await account.deployContract(
+  fs.readFileSync("../contracts/contract.wasm") // Path of contract WASM relative to the working directory
+);
+
+console.log(result);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/deploy-contract.ts)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-contract.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-contract.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+language: javascript
+*/}
+
+```javascript title="deploy-contract.js" lines
+import { Near } from "near-kit";
+import dotenv from "dotenv";
+import fs from "fs";
+
+// Load environment variables
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY;
+const accountId = process.env.ACCOUNT_ID;
+
+// Create a connection to testnet with signing capabilities
+const near = new Near({
+  network: "testnet",
+  privateKey: privateKey, // ed25519:5Fg2...
+  defaultSignerId: accountId, // example-account.testnet
+});
+
+// Deploy a contract to the account
+const wasmCode = fs.readFileSync("../contracts/contract.wasm");
+const result = await near.transaction(accountId)
+  .deployContract(accountId, wasmCode)
+  .send();
+
+console.log("Deploy contract result:", result);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/deploy-contract.js)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
   Note that the `signer` here needs to be a signer for the same `account_id` as the one used to construct the `Contract` object.
 
-  <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L54-L61"
-    start="54" end="61" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L54-L61
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 54
+end: 61
+fname: contract_interaction.rs
+language: rust
+*/}
+
+```rust title="contract_interaction.rs" lines
+let deploy_result = Contract::deploy(account_id.clone())
+    .use_code(include_bytes!("../../contracts/contract.wasm").to_vec()) // Path of contract WASM relative to this file
+    .without_init_call()
+    .with_signer(signer) // Signer is the account that is deploying the contract
+    .send_to(&network)
+    .await
+    .unwrap();
+println!("{:?}", deploy_result);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/contract_interaction.rs#L54-L61)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -521,14 +1735,79 @@ There are two ways to reference a global contract:
 
   <Tabs>
     <Tab title="by account">
-      <Github language="javascript"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts"
-        end="22" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+end: 22
+language: javascript
+*/}
+
+```javascript title="deploy-global-contract-by-account.ts" lines
+import { Account, JsonRpcProvider, KeyPair, KeyPairString } from "near-api-js";
+import { NEAR } from "near-api-js/tokens";
+import { readFileSync } from "fs";
+import dotenv from "dotenv";
+
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY! as KeyPairString;
+const accountId: string = process.env.ACCOUNT_ID!;
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// Create an account object
+const deployer = new Account(accountId, provider, privateKey); // example-account.testnet
+
+// Path of contract WASM relative to the working directory
+const wasm: Uint8Array = new Uint8Array(readFileSync("../contracts/contract.wasm"));
+const deployResult = await deployer.deployGlobalContract(wasm, "accountId");
+
+console.log(deployResult);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/deploy-global-contract-by-account.ts#L1-L22)
+
+{/* /github-code */}
     </Tab>
     <Tab title="by hash">
-      <Github language="javascript"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts"
-        end="23" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+end: 23
+language: javascript
+*/}
+
+```javascript title="deploy-global-contract-by-hash.ts" lines
+import { Account, JsonRpcProvider, KeyPair, KeyPairString, baseEncode } from "near-api-js";
+import { NEAR } from "near-api-js/tokens";
+import { readFileSync } from "fs";
+import { createHash } from "crypto";
+import dotenv from "dotenv";
+
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY! as KeyPairString;
+const accountId: string = process.env.ACCOUNT_ID!;
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// Create an account object
+const deployer = new Account(accountId, provider, privateKey); // example-account.testnet
+
+// Path of contract WASM relative to the working directory
+const wasm: Uint8Array = new Uint8Array(readFileSync("../contracts/contract.wasm"));
+const deployResult = await deployer.deployGlobalContract(wasm, "codeHash");
+
+console.log(deployResult);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/deploy-global-contract-by-hash.ts#L1-L23)
+
+{/* /github-code */}
     </Tab>
   </Tabs>
 
@@ -537,12 +1816,92 @@ There are two ways to reference a global contract:
 
   <Tabs>
     <Tab title="by account">
-      <Github language="javascript"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-account.js" end="27" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-account.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+end: 27
+language: javascript
+*/}
+
+```javascript title="deploy-global-contract-by-account.js" lines
+import { Near, generateKey } from "near-kit";
+import dotenv from "dotenv";
+import fs from "fs";
+
+// Load environment variables
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY;
+const accountId = process.env.ACCOUNT_ID;
+
+// Create a connection to testnet with signing capabilities
+const near = new Near({
+  network: "testnet",
+  privateKey: privateKey, // ed25519:5Fg2...
+  defaultSignerId: accountId, // example-account.testnet
+});
+
+// Read the contract WASM
+const wasmCode = fs.readFileSync("../contracts/contract.wasm");
+
+// Publish as a global contract (identified by account ID)
+// Other accounts can use this contract without deploying their own copy
+const publishResult = await near
+  .transaction(accountId)
+  .publishContract(wasmCode, { identifiedBy: "account" })
+  .send();
+
+console.log("Published global contract:", publishResult.transaction.hash);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/deploy-global-contract-by-account.js#L1-L27)
+
+{/* /github-code */}
     </Tab>
     <Tab title="by hash">
-      <Github language="javascript"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-hash.js" end="31" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-hash.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+end: 31
+language: javascript
+*/}
+
+```javascript title="deploy-global-contract-by-hash.js" lines
+import { Near, generateKey } from "near-kit";
+import dotenv from "dotenv";
+import fs from "fs";
+import { createHash } from "crypto";
+
+// Load environment variables
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY;
+const accountId = process.env.ACCOUNT_ID;
+
+// Create a connection to testnet with signing capabilities
+const near = new Near({
+  network: "testnet",
+  privateKey: privateKey, // ed25519:5Fg2...
+  defaultSignerId: accountId, // example-account.testnet
+});
+
+// Read the contract WASM
+const wasmCode = fs.readFileSync("../contracts/contract.wasm");
+
+// Calculate the code hash (SHA-256)
+const codeHash = createHash("sha256").update(wasmCode).digest();
+
+// Publish as a global contract (identified by code hash)
+// This creates an immutable contract reference
+const publishResult = await near
+  .transaction(accountId)
+  .publishContract(wasmCode, { identifiedBy: "hash" })
+  .send();
+
+console.log("Published global contract by hash:", publishResult.transaction.hash);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/deploy-global-contract-by-hash.js#L1-L31)
+
+{/* /github-code */}
     </Tab>
   </Tabs>
 
@@ -604,14 +1963,61 @@ Once a [global contract](/smart-contracts/global-contracts) has been [deployed](
 
   <Tabs>
     <Tab title="by account">
-      <Github language="javascript"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts"
-        start="32" end="41" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 32
+end: 41
+language: javascript
+*/}
+
+```javascript title="deploy-global-contract-by-account.ts" lines
+const consumer = new Account(
+  consumerAccountId,
+  provider,
+  key.toString() as KeyPairString
+);
+
+await consumer.useGlobalContract({ accountId: deployer.accountId });
+
+const contract = await consumer.getContractCode();
+console.log("Size", contract.code.length, "Hash", contract.hash);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/deploy-global-contract-by-account.ts#L32-L41)
+
+{/* /github-code */}
     </Tab>
     <Tab title="by hash">
-      <Github language="javascript"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts"
-        start="37" end="51" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 37
+end: 51
+language: javascript
+*/}
+
+```javascript title="deploy-global-contract-by-hash.ts" lines
+const consumer = new Account(
+  consumerAccountId,
+  provider,
+  key.toString() as KeyPairString
+);
+
+const useResult = await consumer.useGlobalContract({
+  codeHash: Uint8Array.from(Buffer.from(hash, 'base64')),
+});
+console.log(useResult);
+await provider.viewTransactionStatus({ txHash: useResult.transaction.hash, accountId: consumer.accountId });
+
+const contract = await consumer.getContractCode();
+console.log("Size", contract.code.length, "Hash", contract.hash);
+
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/deploy-global-contract-by-hash.ts#L37-L51)
+
+{/* /github-code */}
     </Tab>
   </Tabs>
 
@@ -620,12 +2026,103 @@ Once a [global contract](/smart-contracts/global-contracts) has been [deployed](
 
   <Tabs>
     <Tab title="by account">
-      <Github language="javascript" start="29"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-account.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-account.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 29
+language: javascript
+*/}
+
+```javascript title="deploy-global-contract-by-account.js" lines
+// Create a consumer account that will use the global contract
+const consumerKey = generateKey();
+const consumerAccountId = `${Date.now()}.${accountId}`;
+
+await near
+  .transaction(accountId)
+  .createAccount(consumerAccountId)
+  .transfer(consumerAccountId, "0.1 NEAR")
+  .addKey(consumerKey.publicKey.toString(), { type: "fullAccess" })
+  .send();
+
+console.log("Created consumer account:", consumerAccountId);
+
+// Consumer uses the global contract by referencing the publisher's account ID
+const consumerNear = new Near({
+  network: "testnet",
+  privateKey: consumerKey.secretKey,
+  defaultSignerId: consumerAccountId,
+});
+
+await consumerNear
+  .transaction(consumerAccountId)
+  .deployFromPublished({ accountId: accountId })
+  .send();
+
+console.log("Consumer is now using global contract from:", accountId);
+
+// Clean up: delete consumer account
+await consumerNear
+  .transaction(consumerAccountId)
+  .deleteAccount({ beneficiary: accountId })
+  .send();
+
+console.log("Cleaned up consumer account");
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/deploy-global-contract-by-account.js#L29)
+
+{/* /github-code */}
     </Tab>
     <Tab title="by hash">
-      <Github language="javascript" start="36"
-        url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-hash.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-hash.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 36
+language: javascript
+*/}
+
+```javascript title="deploy-global-contract-by-hash.js" lines
+// Create a consumer account
+const consumerKey = generateKey();
+const consumerAccountId = `${Date.now()}.${accountId}`;
+
+const createResult = await near
+  .transaction(accountId)
+  .createAccount(consumerAccountId)
+  .transfer(consumerAccountId, "0.1 NEAR")
+  .addKey(consumerKey.publicKey.toString(), { type: "fullAccess" })
+  .send();
+
+await near.getTransactionStatus(createResult.transaction.hash, accountId, "FINAL");
+console.log("Created consumer account:", consumerAccountId);
+
+// Consumer uses the global contract by referencing the code hash
+const consumerNear = new Near({
+  network: "testnet",
+  privateKey: consumerKey.secretKey,
+  defaultSignerId: consumerAccountId,
+});
+
+await consumerNear
+  .transaction(consumerAccountId)
+  .deployFromPublished({ codeHash: codeHash })
+  .send();
+
+console.log("Consumer is now using global contract by hash");
+
+// Clean up: delete consumer account
+await consumerNear
+  .transaction(consumerAccountId)
+  .deleteAccount({ beneficiary: accountId })
+  .send();
+
+console.log("Cleaned up consumer account");
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/deploy-global-contract-by-hash.js#L36)
+
+{/* /github-code */}
     </Tab>
   </Tabs>
 
@@ -687,9 +2184,33 @@ View functions are read-only methods on a smart contract that do not modify stat
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/contract-interaction.ts"
-    start="9" end="21" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/contract-interaction.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 9
+end: 21
+language: javascript
+*/}
+
+```javascript title="contract-interaction.ts" lines
+// Create a testnet provider
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// For read only calls, you can use the provider directly
+const messages = await provider.callFunction({
+  contractId: 'guestbook.near-examples.testnet',
+  method: "get_messages",
+  args: {},
+});
+
+console.log(messages);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/contract-interaction.ts#L9-L21)
+
+{/* /github-code */}
 
   <Tip>
   When using Typescript, you can type the return of `callFunction<T>`.
@@ -698,8 +2219,41 @@ View functions are read-only methods on a smart contract that do not modify stat
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js" end="22" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+end: 22
+language: javascript
+*/}
+
+```javascript title="contract-interaction.js" lines
+import dotenv from "dotenv";
+import { Near } from "near-kit";
+
+// Create a connection to testnet with credentials
+dotenv.config();
+const privateKey = process.env.PRIVATE_KEY;
+const accountId = process.env.ACCOUNT_ID;
+
+const near = new Near({
+  network: "testnet",
+  privateKey,
+  defaultSignerId: accountId
+});
+
+// For read only calls, you can use the provider directly
+const messages = await near.view(
+  'guestbook.near-examples.testnet',
+  'get_messages',
+  {}
+);
+
+console.log(messages);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/contract-interaction.js#L1-L22)
+
+{/* /github-code */}
 
   <Tip>
   When using Typescript, you can type the return of `Near.view<T>`.
@@ -708,9 +2262,33 @@ View functions are read-only methods on a smart contract that do not modify stat
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L22-L33"
-    start="22" end="33" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L22-L33
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 22
+end: 33
+fname: contract_interaction.rs
+language: rust
+*/}
+
+```rust title="contract_interaction.rs" lines
+// Create contract object
+let contract_id: AccountId = "guestbook.near-examples.testnet".parse().unwrap();
+let contract = Contract(contract_id.clone());
+
+// Make a view call to a contract
+let view_call_result: Data<u32> = contract
+    .call_function("total_messages", ())
+    .unwrap()
+    .read_only()
+    .fetch_from(&network)
+    .await
+    .unwrap();
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/contract_interaction.rs#L22-L33)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -737,16 +2315,48 @@ View functions are read-only methods on a smart contract that do not modify stat
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript"
-    start="9" end="16"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 9
+end: 16
+language: javascript
+*/}
+
+```javascript title="keys.ts" lines
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// Query keys with the provider
+const keysProvider = await provider.viewAccessKeyList({ accountId });
+console.log(keysProvider);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/keys.ts#L9-L16)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L22-L22"
-    start="22" end="22" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L22-L22
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 22
+end: 22
+fname: keys.rs
+language: rust
+*/}
+
+```rust title="keys.rs" lines
+let keys = account.list_keys().fetch_from(&network).await.unwrap();
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/keys.rs#L22-L22)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -767,22 +2377,90 @@ Anyone with this key can transfer funds, sign transactions, interact with contra
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript"
-    start="30" end="37"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 30
+end: 37
+language: javascript
+*/}
+
+```javascript title="keys.ts" lines
+// New keys
+const fullKeyPair = KeyPair.fromRandom("ed25519");
+const fnKeyPair = KeyPair.fromRandom("ed25519");
+
+// Add a Full Access Key
+await account.addFullAccessKey(
+  fullKeyPair.getPublicKey().toString() // ed25519:2ASWc...
+);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/keys.ts#L30-L37)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript" start="16" end="27"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 16
+end: 27
+language: javascript
+*/}
+
+```javascript title="keys.js" lines
+// Generate new key pairs
+const fullAccessKey = generateKey();
+const functionCallKey = generateKey();
+
+console.log("Generated Full Access Key:", fullAccessKey.publicKey.toString());
+console.log("Generated Function Call Key:", functionCallKey.publicKey.toString());
+
+// Add a Full Access Key using transaction builder
+await near
+  .transaction(accountId)
+  .addKey(fullAccessKey.publicKey.toString(), { type: "fullAccess" })
+  .send();
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/keys.js#L16-L27)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L25-L37"
-    start="25" end="37" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L25-L37
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 25
+end: 37
+fname: keys.rs
+language: rust
+*/}
+
+```rust title="keys.rs" lines
+// Add full access key
+let new_full_private_key = signer::generate_secret_key().unwrap(); // Get the private key from the keypair
+let add_full_key_result = account
+    .add_key(AccessKeyPermission::FullAccess, new_full_private_key.public_key())
+    .with_signer(signer.clone())
+    .send_to(&network)
+    .await
+    .unwrap();
+
+let new_full_public_key = new_full_private_key.public_key().to_string();
+println!("{:?}", new_full_public_key);
+println!("{:?}", add_full_key_result);
+
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/keys.rs#L25-L37)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -805,22 +2483,95 @@ You can further restrict this key by:
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript"
-    start="39" end="45"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 39
+end: 45
+language: javascript
+*/}
+
+```javascript title="keys.ts" lines
+// Add Function Call Access Key
+await account.addFunctionCallAccessKey({
+  publicKey: fnKeyPair.getPublicKey(), // The new public key ed25519:2ASWc...
+  contractId: "example-contract.testnet", // Contract this key is allowed to call (optional)
+  methodNames: ["example_method"], // Methods this key is allowed to call (optional)
+  allowance: NEAR.toUnits("0.25") // Gas allowance key can use to call methods (optional)
+});
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/keys.ts#L39-L45)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript" start="31" end="42"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 31
+end: 42
+language: javascript
+*/}
+
+```javascript title="keys.js" lines
+// Add a Function Call Access Key using transaction builder
+await near
+  .transaction(accountId)
+  .addKey(functionCallKey.publicKey.toString(), {
+    type: "functionCall",
+    receiverId: "example-contract.testnet",
+    methodNames: ["example_method"],
+    allowance: "0.25 NEAR",
+  })
+  .send();
+
+console.log(`Added Function Call Key: ${functionCallKey.publicKey.toString()}`);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/keys.js#L31-L42)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L38-L56"
-    start="38" end="56" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L38-L56
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 38
+end: 56
+fname: keys.rs
+language: rust
+*/}
+
+```rust title="keys.rs" lines
+// Add function call access key
+let new_function_call_key = AccessKeyPermission::FunctionCall(FunctionCallPermission {
+    allowance: Some(250_000_000_000_000_000_000_000), // Gas allowance key can use to call methods (optional)
+    receiver_id: "example-contract.testnet".to_string(), // Contract this key is allowed to call
+    method_names: vec!["example_method".to_string()], // Methods this key is allowed to call
+});
+
+let new_function_private_key = signer::generate_secret_key().unwrap();
+let add_function_key_result = account
+    .add_key(new_function_call_key, new_function_private_key.public_key())
+    .with_signer(signer.clone())
+    .send_to(&network)
+    .await
+    .unwrap();
+
+let new_function_public_key = new_function_private_key.public_key().to_string();
+println!("{:?}", new_function_public_key);
+println!("{:?}", add_function_key_result);
+
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/keys.rs#L38-L56)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -848,22 +2599,78 @@ Accounts on NEAR can delete their own keys.
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github language="javascript"
-    start="56" end="56"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 56
+end: 56
+language: javascript
+*/}
+
+```javascript title="keys.ts" lines
+await account.deleteKey(fnKeyPair.getPublicKey().toString());
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/keys.ts#L56-L56)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github language="javascript" start="45" end="54"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 45
+end: 54
+language: javascript
+*/}
+
+```javascript title="keys.js" lines
+const nearWithNewKey = new Near({
+  network: "testnet",
+  privateKey: fullAccessKey.secretKey,
+  defaultSignerId: accountId,
+});
+
+await nearWithNewKey
+  .transaction(accountId)
+  .deleteKey(accountId, functionCallKey.publicKey.toString())
+  .send();
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/keys.js#L45-L54)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
-  <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L57-L66"
-    start="57" end="66" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L57-L66
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 57
+end: 66
+fname: keys.rs
+language: rust
+*/}
+
+```rust title="keys.rs" lines
+    // Delete full access key
+    let public_key_to_delete = new_full_public_key;
+    let delete_full_key_result = account
+        .delete_key(public_key_to_delete.parse().unwrap())
+        .with_signer(signer.clone())
+        .send_to(&network)
+        .await
+        .unwrap();
+    println!("{:?}", delete_full_key_result);
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/keys.rs#L57-L66)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 py-near">
@@ -957,14 +2764,97 @@ Users can sign messages using the `wallet-selector` `signMessage` method, which 
 <Tabs>
   <Tab title="🌐 near-api-js">
 
-  <Github fname="authenticate.ts" language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/verify-signature.ts" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/verify-signature.ts
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+fname: authenticate.ts
+language: javascript
+*/}
+
+```javascript title="authenticate.ts" lines
+import { verifyMessage } from "near-api-js/nep413";
+import { JsonRpcProvider } from "near-api-js";
+
+// Create a connection to testnet RPC
+const provider = new JsonRpcProvider({
+  url: "https://test.rpc.fastnear.com",
+});
+
+// This is the challenge given to the user to sign
+const MESSAGE: string = "log me in";
+const APP: string = "http://localhost:3000";
+const CHALLENGE: Buffer = Buffer.from(Array.from(Array(32).keys()));
+
+// This is the object returned by `wallet.signMessage` in wallet selector
+const walletReturn = {
+  "signature": "IfModLa3g3czlyPhkg/LSkTFSy7XCGreStZJTDIO1m3viEnYFLdXfpz1gYUVKYv3W2vwcV77TmGEzc9y0Nz+AA==",
+  "accountId": "maguila.testnet",
+  "publicKey": "ed25519:AtH7GEjv2qmBVoT8qoRhWXizXM5CC12DC6tiqY9iNoRm"
+};
+
+await verifyMessage({
+  signerAccountId: walletReturn.accountId,
+  signerPublicKey: walletReturn.publicKey,
+  signature: new Uint8Array(Buffer.from(walletReturn.signature, 'base64')),
+  payload: {
+    message: MESSAGE,
+    recipient: APP,
+    nonce: CHALLENGE
+  },
+  provider
+});
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-api-js/examples/verify-signature.ts)
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🌐 near-kit">
 
-  <Github fname="authenticate.js" language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/verify-signature.js" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/verify-signature.js
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+fname: authenticate.js
+language: javascript
+*/}
+
+```javascript title="authenticate.js" lines
+import { Near, verifyNep413Signature } from "near-kit";
+
+// Create Near client for testnet (no signing needed for verification)
+const near = new Near({ network: "testnet" });
+
+// The challenge given to the user to sign
+const MESSAGE = "log me in";
+const APP = "http://localhost:3000";
+const CHALLENGE = Buffer.from(Array.from(Array(32).keys()));
+
+// The object returned by wallet.signMessage in wallet selector
+const signedMessage = {
+  signature:
+    "IfModLa3g3czlyPhkg/LSkTFSy7XCGreStZJTDIO1m3viEnYFLdXfpz1gYUVKYv3W2vwcV77TmGEzc9y0Nz+AA==",
+  accountId: "maguila.testnet",
+  publicKey: "ed25519:AtH7GEjv2qmBVoT8qoRhWXizXM5CC12DC6tiqY9iNoRm",
+};
+
+// Verify the signature
+const isValid = await verifyNep413Signature(
+  signedMessage,
+  {
+    message: MESSAGE,
+    recipient: APP,
+    nonce: CHALLENGE,
+  },
+  { near, maxAge: Infinity }, // Disable timestamp check for this demo
+);
+
+console.log("Signature valid:", isValid);
+```
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/verify-signature.js)
+
+{/* /github-code */}
 
   </Tab>
 </Tabs>

@@ -5,8 +5,6 @@ sidebarTitle: Building a Relayer
 description: "Learn how to build a meta transaction relayer that allows users to transact on NEAR without paying gas fees while maintaining transaction security through signed delegates."
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 Relayers serve to delegate gas fees to a web service, allowing users to transact on NEAR without the need to acquire the token themselves while still retaining the security of signing their own transactions. This guide will lead you through the components necessary to construct a relayer capable of handling meta transactions.
 
 <Tip>
@@ -31,11 +29,62 @@ The client can then generate a `SignedDelegateAction` (a signed message that has
 
 Here's a simple express endpoint that deserializes the body, instantiates the relayer account and then sends the transaction.
 
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/server.ts' start='16' end='27'/>
+{/* github-code
+url: https://github.com/SurgeCode/near-relay-example/blob/main/server.ts
+commit: 46b9da740348b67c869857b54fe2859021cf6d71
+start: 16
+end: 27
+language: typescript
+*/}
+
+```typescript title="server.ts" lines
+
+app.post('/', async (req: Request, res: Response) => {
+  const serializedTxs: Buffer[] = req.body;
+  const relayerAccount: Account = await getAccount(
+    NETWORK_ID,
+    RELAYER_ID,
+    RELAYER_PRIVATE_KEY,
+  );
+
+  const outcomes = await Promise.all(
+    serializedTxs.map(async (serializedTx) => {
+      const deserializedTx: SignedDelegate = deserialize(
+```
+
+[See code on GitHub](https://github.com/SurgeCode/near-relay-example/blob/46b9da740348b67c869857b54fe2859021cf6d71/server.ts#L16-L27)
+
+{/* /github-code */}
 
 You can easily get the account object used to send the transactions from its private key using this snippet
 
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/util.ts' start='5' end='17'/>
+{/* github-code
+url: https://github.com/SurgeCode/near-relay-example/blob/main/util.ts
+commit: 46b9da740348b67c869857b54fe2859021cf6d71
+start: 5
+end: 17
+language: typescript
+*/}
+
+```typescript title="util.ts" lines
+
+export async function getAccount(network: string, accountId: string, privateKey: string): Promise<Account> {
+    const keyStore: InMemoryKeyStore = new InMemoryKeyStore();
+    await keyStore.setKey(network, accountId, KeyPair.fromString(privateKey as KeyPairString));
+
+    const config = {
+        networkId: network,
+        keyStore,
+        nodeUrl: `https://rpc.${network}.near.org`,
+    };
+
+    const near = await connect(config);
+    return near.account(accountId);
+```
+
+[See code on GitHub](https://github.com/SurgeCode/near-relay-example/blob/46b9da740348b67c869857b54fe2859021cf6d71/util.ts#L5-L17)
+
+{/* /github-code */}
 
 <Info>
 
@@ -57,11 +106,47 @@ You can easily get the account object used to send the transactions from its pri
 
 To start, call the relay method inside an endpoint to automatically deserialize the transaction and send it with the account defined in the environment variables.
 
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='8' end='12'/>
+{/* github-code
+url: https://github.com/SurgeCode/near-relay/blob/main/server/server.ts
+commit: 0d481635245513665c5ed448cbea0511b3876df6
+start: 8
+end: 12
+language: typescript
+*/}
+
+```typescript title="server.ts" lines
+app.post('/', async (req: any, res: any) => {
+    const body = req.body;
+    const results = await relay(body)
+    res.json({ message: 'Relayed', data: results });
+});
+```
+
+[See code on GitHub](https://github.com/SurgeCode/near-relay/blob/0d481635245513665c5ed448cbea0511b3876df6/server/server.ts#L8-L12)
+
+{/* /github-code */}
 
 If you're interested in relaying account creation as well, it's quite straightforward. Simply create another endpoint and directly call the createAccount method with the accountId and publicKey. These parameters are automatically included in the body when using the corresponding client library.
 
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/server/server.ts' start='14' end='18'/>
+{/* github-code
+url: https://github.com/SurgeCode/near-relay/blob/main/server/server.ts
+commit: 0d481635245513665c5ed448cbea0511b3876df6
+start: 14
+end: 18
+language: typescript
+*/}
+
+```typescript title="server.ts" lines
+app.post('/create-account', async (req: any, res: any) => {
+    const body = req.body;
+    const result = await createAccount(body.accountId, body.publicKey)
+    res.json({ message: 'Relayed', data: result });
+});
+```
+
+[See code on GitHub](https://github.com/SurgeCode/near-relay/blob/0d481635245513665c5ed448cbea0511b3876df6/server/server.ts#L14-L18)
+
+{/* /github-code */}
   
 </Tab>
 
@@ -75,7 +160,41 @@ If you're interested in relaying account creation as well, it's quite straightfo
 
 In this method we are creating an arbitrary smart contract call, instantiating an account and using it to sign but not send the transaction. We can then serialize it and send it to the relayer where it will be delegated via the previously created endpoint.
 
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay-example/blob/main/client.ts' start='10' end='30'/>
+{/* github-code
+url: https://github.com/SurgeCode/near-relay-example/blob/main/client.ts
+commit: 46b9da740348b67c869857b54fe2859021cf6d71
+start: 10
+end: 30
+language: typescript
+*/}
+
+```typescript title="client.ts" lines
+
+async function sendRelay() {
+  const action = actionCreators.functionCall(
+    'set_greeting',
+    {
+      greeting: 'hello',
+    },
+    3000000000000n,
+  );
+
+  const account = await getAccount(NETWORK_ID, CLIENT_ID, CLIENT_PRIVATE_KEY);
+
+  const signedDelegate = await account.signedDelegate({
+    actions: [action],
+    blockHeightTtl: 120,
+    receiverId: CONTRACT_ID,
+  });
+  const res = await fetch(SERVER_URL, {
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify([Array.from(encodeSignedDelegate(signedDelegate))]),
+```
+
+[See code on GitHub](https://github.com/SurgeCode/near-relay-example/blob/46b9da740348b67c869857b54fe2859021cf6d71/client.ts#L10-L30)
+
+{/* /github-code */}
 
 </Tab>
 
@@ -85,11 +204,56 @@ As mentioned in the above note in order to be able to relay on the client side i
 
 By calling this method and passing in the URL for the account creation endpoint (mentioned in the server section) as well as the `accountId` everything is handled under the hood to successfully create an account.
 
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='17' end='23'/>
+{/* github-code
+url: https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx
+commit: 0d481635245513665c5ed448cbea0511b3876df6
+start: 17
+end: 23
+language: typescript
+*/}
+
+```typescript title="page.tsx" lines
+const [accountId, setAccountId] = useState("");
+const [password, setPassword] = useState("");
+const [createReceipt, setCreateReceipt] = useState<any>();
+const [relayReceipt, setRelayReceipt] = useState<any>();
+const [error, setError] = useState<string>();
+const [createMethod, setCreateMethod] = useState<"passkey" | "password" | "keypair">("passkey");
+const [isCreating, setIsCreating] = useState(false);
+```
+
+[See code on GitHub](https://github.com/SurgeCode/near-relay/blob/0d481635245513665c5ed448cbea0511b3876df6/example/src/app/page.tsx#L17-L23)
+
+{/* /github-code */}
 
 On the client side, you just need to create an `Action` and pass it into the `relayTransaction` method along with the URL of the relayer endpoint discussed in the server section and the id of the `receiverId`.
 
-<Github language='typescript' url='https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx' start='25' end='36'/>
+{/* github-code
+url: https://github.com/SurgeCode/near-relay/blob/main/example/src/app/page.tsx
+commit: 0d481635245513665c5ed448cbea0511b3876df6
+start: 25
+end: 36
+language: typescript
+*/}
+
+```typescript title="page.tsx" lines
+
+const handleCreateAccount = async () => {
+  try {
+    setIsCreating(true);
+    let receipt;
+    
+    switch(createMethod) {
+      case "passkey":
+        receipt = await createAccount(
+          CREATE_ACCOUNT_URL,
+          accountId,
+          { usePasskey: true }
+```
+
+[See code on GitHub](https://github.com/SurgeCode/near-relay/blob/0d481635245513665c5ed448cbea0511b3876df6/example/src/app/page.tsx#L25-L36)
+
+{/* /github-code */}
 
 </Tab>
 

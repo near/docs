@@ -3,8 +3,6 @@ title: Indexing Historical Data
 description: "Using data apis to retrieve the history of auctions"
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 In our frontend, we can easily display the previous bid since it's stored in the contract's state. However, we're unable to see previous bids to the auction. An indexer is used to fetch historical data from the blockchain and store it in a database. Since indexers can take a while to set up and can be expensive to run, we will use a pre-defined API endpoint provided by NEAR Blocks to query an indexer they run that will fetch us the data we need.
 
 ---
@@ -27,9 +25,31 @@ We put the API key in a `.env.local` file so the user cannot access it in the br
 
 NextJS allows us to easily create server-side functions with API routes. We need to make this API call on the server-side rather than the client side so as to not expose our API key. We'll create a new file in src/pages/api named `getBidHistory.js`. Here we'll define our function to get the bid history.
 
-<Github fname="getBidHistory.js"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/api/getBidHistory.js#L1-L13"
-        start="3" end="13" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/api/getBidHistory.js#L1-L13
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 3
+end: 13
+fname: getBidHistory.js
+*/}
+
+```javascript title="getBidHistory.js" lines
+if (!process.env.API_KEY) {
+  return res.status(500).json({ error: "API key not provided" });
+}
+// Get all bid transactions
+const { contractId } = req.query;
+const bidsRes = await fetch(`https://${process.env.NEXT_PUBLIC_NETWORK_ID === 'mainnet' ? 'api' : 'api-testnet'}.nearblocks.io/v1/account/${contractId}/txns?method=bid&page=1&per_page=25&order=desc`, {
+  headers: {
+    'Accept': '*/*',
+    'Authorization': `Bearer ${process.env.API_KEY}`
+  }
+});
+```
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/api/getBidHistory.js#L3-L13)
+
+{/* /github-code */}
 
 Here we are retrieving the auction contract ID from the API route call and then calling the NEAR Blocks API. This specific API endpoint allows us to retrieve transactions made to a specific contract calling a specific function. Some details are worth discussing here:
 
@@ -44,9 +64,43 @@ Here we are retrieving the auction contract ID from the API route call and then 
 
 From our API call, we receive a JSON object containing up to 25 transactions made to the bid function on the auction contract.
 
-<Github fname="getBidHistory.js"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/api/getBidHistory.js#L15-L37"
-        start="15" end="37" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/api/getBidHistory.js#L15-L37
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 15
+end: 37
+fname: getBidHistory.js
+*/}
+
+```javascript title="getBidHistory.js" lines
+if (!bidsRes.ok) throw new Error('Indexer request failed');
+const bidsJson = await bidsRes.json();
+
+const txns = bidsJson.txns;
+let pastBids = [];
+
+// Loop through all bids and add valid bids to the pastBids array until 5 are found 
+for (let i = 0; i < txns.length; i++) {
+  const txn = txns[i];
+
+  if (txn.receipt_outcome.status) {
+    let amount = txn.actions[0].deposit;
+    let account = txn.predecessor_account_id
+
+    if (pastBids.length < 5) {
+      pastBids.push([account, amount]);
+    } else {
+      break;
+    }
+  }
+}
+
+// Respond with the past bids
+```
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/api/getBidHistory.js#L15-L37)
+
+{/* /github-code */}
 
 We want to display the 5 most recent valid bids. To do this we loop through each transaction and check whether the transaction was successful by checking `receipt_outcome.status` is `true`. If so we check the first action (since there should only be one function call action in this case) and store the `deposit`, which is equal to the bid amount, and store the `predecessor account ID`, which is the account ID of the bidder.
 
@@ -67,9 +121,29 @@ You can read more about transaction actions in this section of the documentation
 
 In our main page, we'll define a function to call the API route we just created. This function will be called each time the page timer reaches zero.
 
-<Github fname="getBidHistory.js"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L84-L92"
-        start="84" end="92" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L84-L92
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 84
+end: 92
+fname: getBidHistory.js
+*/}
+
+```javascript title="getBidHistory.js" lines
+  window.location.reload();
+  return response
+}
+
+const fetchPastBids = async () => {
+  try {
+    const response = await fetch(`/api/getBidHistory?contractId=${AUCTION_CONTRACT}`);
+    const data = await response.json();
+    setPastBids(data.error || data.pastBids);
+```
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/index.js#L84-L92)
+
+{/* /github-code */}
 
 The `pastBids` will then be passed into the `Bid` component to be displayed.
 

@@ -3,8 +3,6 @@ title: Collections
 description: "Efficiently store, access, and manage data in smart contracts."
 ---
 
-import { Github } from "/snippets/github.jsx";
-
 When deciding on data structures it is important to understand their tradeoffs. Choosing the wrong structure can create a bottleneck as the application scales, and migrating the state to the new data structures will come at a cost.
 
 You can choose between two types of collections:
@@ -151,9 +149,45 @@ SDK collections are useful when you are planning to store large amounts of data 
 
 All structures need to be initialized using a **unique `prefix`**, which will be used to index the collection's values in the account's state
 
-    <Github fname="lib.rs" language="rust" 
-          url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lib.rs"
-          start="24" end="47"/>
+{/* github-code
+url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lib.rs
+commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+start: 24
+end: 47
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+// Define the contract structure
+#[near(contract_state)]
+pub struct StorageExample {
+    pub vector: Vector<i32>,
+    pub lookup_set: LookupSet<i32>,
+    pub iterable_set: IterableSet<i32>,
+    pub lookup_map: LookupMap<String, i32>,
+    pub iterable_map: IterableMap<String, i32>,
+    pub nested: LookupMap<String, Vector<i32>>,
+}
+
+// Define the default, which automatically initializes the contract
+impl Default for StorageExample {
+    fn default() -> Self {
+        Self {
+            vector: Vector::new(Prefix::Vector),
+            lookup_set: LookupSet::new(Prefix::LookupSet),
+            iterable_set: IterableSet::new(Prefix::IterableSet),
+            lookup_map: LookupMap::new(Prefix::LookupMap),
+            iterable_map: IterableMap::new(Prefix::IterableMap),
+            nested: LookupMap::new(Prefix::Root),
+        }
+    }
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/lib.rs#L24-L47)
+
+{/* /github-code */}
 
   <Tip>
 
@@ -182,8 +216,47 @@ Be careful of not using the same prefix in two collections, otherwise, their sto
 
 Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) that persists in the contract's storage. See the [Rust SDK collections reference](https://docs.rs/near-sdk/latest/near_sdk/store/index.html) for its complete interface.
 
-<Github fname="vector.rs" language="rust"
-        url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/vector.rs" start="4" end="29"/>
+{/* github-code
+url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/vector.rs
+commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+start: 4
+end: 29
+fname: vector.rs
+language: rust
+*/}
+
+```rust title="vector.rs" lines
+#[near]
+impl StorageExample {
+    pub fn push(&mut self, value: i32) {
+        self.vector.push(value);
+    }
+
+    pub fn get(&self, index: u32) -> i32 {
+        self.vector[index]
+    }
+
+    pub fn replace(&mut self, index: u32, value: i32) {
+        self.vector[index] = value;
+    }
+
+    pub fn len(&self) -> u32 {
+        self.vector.len()
+    }
+
+    pub fn iter(&self, from_index: i32, limit: i32) -> Vec<&i32> {
+        self.vector
+            .iter()
+            .skip(from_index as usize)
+            .take(limit as usize)
+            .collect()
+    }
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/vector.rs#L4-L29)
+
+{/* /github-code */}
 
 <hr className="subsection" />
 
@@ -191,8 +264,40 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
 
 Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) that persists in the contract's storage. See the [Rust SDK collections reference](https://docs.rs/near-sdk/latest/near_sdk/store/index.html) for its complete interface.
 
-<Github fname="lookup_map.rs" language="rust"
-      url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_map.rs" start="4" end="22"/>
+{/* github-code
+url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_map.rs
+commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+start: 4
+end: 22
+fname: lookup_map.rs
+language: rust
+*/}
+
+```rust title="lookup_map.rs" lines
+#[near]
+impl StorageExample {
+    pub fn insert_map(&mut self, key: String, value: i32) {
+        self.lookup_map.insert(key, value);
+    }
+
+    pub fn remove_map(&mut self, key: String) {
+        self.lookup_map.remove(&key);
+    }
+
+    pub fn get_map(&self, key: String) -> i32 {
+        self.lookup_map[&key]
+    }
+
+    pub fn contains_key_map(&self, key: String) -> bool {
+        self.lookup_map.contains_key(&key)
+    }
+}
+
+```
+
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/lookup_map.rs#L4-L22)
+
+{/* /github-code */}
 
 <hr className="subsection" />
 
@@ -206,8 +311,47 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) t
 `UnorderedMap` belongs to the legacy `near_sdk::collections` module. `IterableMap` is its modern replacement in `near_sdk::store`, and should be preferred for new contracts. The `store` collections cache reads and writes within a single transaction, making them more gas-efficient when the same key is accessed multiple times.
 </Tip>
 
-<Github fname="iterable_map.rs" language="rust"
-      url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/iterable_map.rs" start="4" end="29"/>
+{/* github-code
+url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/iterable_map.rs
+commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+start: 4
+end: 29
+fname: iterable_map.rs
+language: rust
+*/}
+
+```rust title="iterable_map.rs" lines
+#[near]
+impl StorageExample {
+    pub fn insert_iterable_map(&mut self, key: String, value: i32) {
+        self.iterable_map.insert(key, value);
+    }
+
+    pub fn remove_iterable_map(&mut self, key: String) {
+        self.iterable_map.remove(&key);
+    }
+
+    pub fn get_iterable_map(&self, key: String) -> i32 {
+        self.iterable_map[&key]
+    }
+
+    pub fn contains_key_iterable_map(&self, key: String) -> bool {
+        self.iterable_map.contains_key(&key)
+    }
+
+    pub fn iter_iterable_map(&self, from_index: i32, limit: i32) -> Vec<(&String, &i32)> {
+        self.iterable_map
+            .iter()
+            .skip(from_index as usize)
+            .take(limit as usize)
+            .collect()
+    }
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/iterable_map.rs#L4-L29)
+
+{/* /github-code */}
 
 <hr className="subsection" />
 
@@ -215,8 +359,36 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) t
 
 Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) that persists in the contract's storage. See the [Rust SDK collections reference](https://docs.rs/near-sdk/latest/near_sdk/store/index.html) for its complete interface.
 
-<Github fname="lookup_set.rs" language="rust"
-  url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs" start="4" end="18"/>
+{/* github-code
+url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs
+commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+start: 4
+end: 18
+fname: lookup_set.rs
+language: rust
+*/}
+
+```rust title="lookup_set.rs" lines
+#[near]
+impl StorageExample {
+    pub fn insert_set(&mut self, value: i32) {
+        self.lookup_set.insert(value);
+    }
+
+    pub fn remove_set(&mut self, value: i32) {
+        self.lookup_set.remove(&value);
+    }
+
+    pub fn contains_set(&self, value: i32) -> bool {
+        self.lookup_set.contains(&value)
+    }
+}
+
+```
+
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/lookup_set.rs#L4-L18)
+
+{/* /github-code */}
 
 <hr className="subsection" />
 
@@ -231,8 +403,44 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) that 
 
 `UnorderedSet` belongs to the legacy `near_sdk::collections` module. `IterableSet` is its modern replacement in `near_sdk::store`, and should be preferred for new contracts. The `store` collections cache reads and writes within a single transaction, making them more gas-efficient when the same key is accessed multiple times.
 </Tip>
-    <Github fname="iterable_set.rs" language="rust"
-          url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/iterable_set.rs" start="4" end="26"/>
+{/* github-code
+url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/iterable_set.rs
+commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+start: 4
+end: 26
+fname: iterable_set.rs
+language: rust
+*/}
+
+```rust title="iterable_set.rs" lines
+#[near]
+impl StorageExample {
+    pub fn insert_iterable_set(&mut self, value: i32) {
+        self.iterable_set.insert(value);
+    }
+
+    pub fn remove_iterable_set(&mut self, value: i32) {
+        self.iterable_set.remove(&value);
+    }
+
+    pub fn contains_iterable_set(&self, value: i32) -> bool {
+        self.iterable_set.contains(&value)
+    }
+
+    pub fn iter_iterable_set(&self, from_index: i32, limit: i32) -> Vec<&i32> {
+        self.iterable_set
+            .iter()
+            .skip(from_index as usize)
+            .take(limit as usize)
+            .collect()
+    }
+}
+
+```
+
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/iterable_set.rs#L4-L26)
+
+{/* /github-code */}
 
 <hr className="subsection" />
 
@@ -240,8 +448,40 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) that 
 
 An ordered equivalent of Map. The underlying implementation is based on an [AVL](https://en.wikipedia.org/wiki/AVL_tree). You should use this structure when you need to: have a consistent order, or access the min/max keys.
 
-<Github fname="tree.rs" language="rust"
-      url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/legacy/src/tree.rs" start="6" end="24"/>
+{/* github-code
+url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/legacy/src/tree.rs
+commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+start: 6
+end: 24
+fname: tree.rs
+language: rust
+*/}
+
+```rust title="tree.rs" lines
+#[near]
+impl StorageExample {
+    pub fn insert_tree(&mut self, key: String, value: i32) {
+        self.tree_map.insert(&key, &value);
+    }
+
+    pub fn remove_tree(&mut self, key: String) {
+        self.tree_map.remove(&key);
+    }
+
+    pub fn get_tree(&self, key: String) -> i32 {
+        self.tree_map.get(&key).expect("Expected value")
+    }
+
+    pub fn contains_key_tree(&self, key: String) -> bool {
+        self.tree_map.contains_key(&key)
+    }
+}
+
+```
+
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/legacy/src/tree.rs#L6-L24)
+
+{/* /github-code */}
 
 ---
 
@@ -250,8 +490,48 @@ An ordered equivalent of Map. The underlying implementation is based on an [AVL]
 When nesting SDK collections, be careful to **use different prefixes** for all collections, including the nested ones.
 
 
-  <Github fname="nested.rs" language="rust"
-          url="https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/nested.rs" start="4" end="30"/>
+{/* github-code
+url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/nested.rs
+commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+start: 4
+end: 30
+fname: nested.rs
+language: rust
+*/}
+
+```rust title="nested.rs" lines
+#[near]
+impl StorageExample {
+    pub fn insert_nested(&mut self, key: String, value: i32) {
+        if self.nested.contains_key(&key) {
+            let vector = self.nested.get_mut(&key).expect("Wrong key");
+            vector.push(value);
+        } else {
+            let mut vector = Vector::new(Prefix::Nested(key.clone()));
+            vector.push(value);
+            self.nested.insert(key, vector);
+        }
+    }
+
+    pub fn remove_nested(&mut self, key: String) {
+        let vector = self.nested.get_mut(&key).expect("Wrong key");
+        vector.clear();
+        self.nested.remove(&key);
+    }
+
+    pub fn get_nested(&self, key: String) -> Vec<&i32> {
+        self.nested[&key].iter().collect()
+    }
+
+    pub fn contains_key_nested(&self, key: String) -> bool {
+        self.nested.contains_key(&key)
+    }
+}
+```
+
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/nested.rs#L4-L30)
+
+{/* /github-code */}
 
 <Tip>
 
