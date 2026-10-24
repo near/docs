@@ -49,18 +49,19 @@ To deploy the contract, you need to compile the contract code into WebAssembly (
 
 ```bash
 # compile the contract using cargo-near
-cargo near build
+cargo near build non-reproducible-wasm
 
-# deploy the contract
-near deploy <contractId> ./target/near/auction-contract.wasm
+# compute an end time two minutes from now, in nanoseconds
+node -e 'console.log((BigInt(Date.now() + 120000) * 1000000n).toString())'
 
-# initialize the contract, it finishes in 2 minutes
-TWO_MINUTES_FROM_NOW=$(date -v+2M +%s000000000)
-near call <contractId> init '{"end_time": "'$TWO_MINUTES_FROM_NOW'", "auctioneer": "<auctioneerId>"}' --useAccount <contractId>
+# deploy and initialize the contract in one transaction
+near contract deploy <contractId> use-file target/near/auction_contract.wasm with-init-call init json-args '{"end_time":"<nanosecond timestamp>","auctioneer":"<auctioneerId>"}'
 ```
 
 
-Replace `<auctioneerId>` with the name of another account, this should not be the same as the contract account as we intend on removing its keys.
+Replace `<nanosecond timestamp>` with the generated timestamp and `<auctioneerId>` with the name of another account, since we intend on removing the contract account's keys. Choose zero attached deposit for initialization, testnet, and the contract account as signer when prompted.
+
+Deploy and initialize in the same transaction: `init` is public, so leaving a deployed contract uninitialized would allow another account to initialize it.
 
 ---
 
