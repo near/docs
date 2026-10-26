@@ -3,8 +3,6 @@ title: Winning an NFT
 description: "Lets make the auction winner get an NFT."
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 No one will enter an auction if there's nothing to win, so let's add a prize. Why not an [NFT](/primitives/nft/nft)? NFTs are uniquely identifiable, easily swappable and their logic comes from an external contract so the prize will exist without the auction contract. Let's get to work!
 
 ---
@@ -14,9 +12,44 @@ No one will enter an auction if there's nothing to win, so let's add a prize. Wh
 When we create an auction we need to list the NFT. To specify which NFT is being auctioned off we need the account ID of the NFT contract and the token ID of the NFT. We will specify these when the contract is initialized; amend `init` to add `nft_contract` and `token_id` as such:  
 
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L30-L48"
-        start="30" end="48" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L30-L48
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 30
+end: 48
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+#[init]
+pub fn init(
+    end_time: U64,
+    auctioneer: AccountId,
+    nft_contract: AccountId,
+    token_id: TokenId,
+) -> Self {
+    Self {
+        highest_bid: Bid {
+            bidder: env::current_account_id(),
+            bid: NearToken::from_yoctonear(1),
+        },
+        auction_end_time: end_time,
+        auctioneer,
+        claimed: false,
+        nft_contract,
+        token_id,
+    }
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/lib.rs#L30-L48)
+
+</div>
+
+{/* /github-code */}
 
 Note that `token_id` is of type `TokenId` which is a String type alias that the NFT standards use for future-proofing.
 
@@ -32,12 +65,55 @@ We will create a new file in our source folder named `ext.rs`; here we are going
 
 We then use this method in our `lib.rs` file to transfer the NFT.
 
-<Github fname="lib.rs" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L93-L96"
-        start="93" end="96" />
-    <Github fname="ext.rs" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/ext.rs"
-        start="2" end="10" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L93-L96
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 93
+end: 96
+fname: lib.rs
+*/}
+
+```rust title="lib.rs" lines
+let transfer_nft = nft_contract::ext(self.nft_contract.clone())
+    .with_static_gas(Gas::from_tgas(30))
+    .with_attached_deposit(NearToken::from_yoctonear(1))
+    .nft_transfer(self.highest_bid.bidder.clone(), self.token_id.clone());
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/lib.rs#L93-L96)
+
+</div>
+
+{/* /github-code */}
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/ext.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 2
+end: 10
+fname: ext.rs
+*/}
+
+```rust title="ext.rs" lines
+use near_sdk::{ext_contract, AccountId};
+
+use crate::TokenId;
+
+// NFT interface for cross-contract calls
+#[ext_contract(nft_contract)]
+#[allow(dead_code)]
+trait NFT {
+    fn nft_transfer(&self, receiver_id: AccountId, token_id: TokenId);
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/ext.rs#L2-L10)
+
+</div>
+
+{/* /github-code */}
 
 
 When calling this method we specify the NFT contract name, that we are attaching 30 Tgas to the call, that we are attaching a deposit of 1 YoctoNEAR to the call, and give the arguments `receiver_id` and `token_id`. The NFT requires that we attach 1 YoctoNEAR for [security reasons](/smart-contracts/security/one_yocto).
@@ -55,15 +131,60 @@ In our contract, we perform no checks to verify whether the contract actually ow
 Since we are now dealing with more information in our contract, instead of implementing a function to display each field we'll create a function to display the entire contract object. Since the contract doesn't include large complex data structures like a map displaying the contract state in its entirety is easily done.
 
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L17-L26"
-        start="17" end="26" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L17-L26
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 17
+end: 26
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+#[near(contract_state, serializers = [json, borsh])]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    highest_bid: Bid,
+    auction_end_time: U64,
+    auctioneer: AccountId,
+    claimed: bool,
+    nft_contract: AccountId,
+    token_id: TokenId,
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/lib.rs#L17-L26)
+
+</div>
+
+{/* /github-code */}
 
 We add the `serilizers` macro to enable json serialization so the object as a whole can easily be displayed to the frontend without having to output each field individually.
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L110-L112"
-        start="110" end="112" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L110-L112
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 110
+end: 112
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+pub fn get_auction_info(&self) -> &Contract {
+    self
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/lib.rs#L110-L112)
+
+</div>
+
+{/* /github-code */}
 
 
 ## Testing with multiple contracts
@@ -75,9 +196,36 @@ In our tests folder, we need the WASM for an NFT contract. For this tutorial, we
 The test creates an account for the NFT contract, reads the fixture WASM from the tests folder, and uses `near_api::Contract::deploy` with `with_init_call` to deploy and initialize it in the same transaction. We initialize the contract with default metadata and set the NFT contract account as its owner. Default metadata sets information such as the name and symbol of the NFT contract to default values.
 
 
-<Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L45-L55"
-        start="45" end="55" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L45-L55
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 45
+end: 55
+fname: test_basics.rs
+language: rust
+*/}
+
+```rust title="test_basics.rs" lines
+// Deploy the NFT contract
+near_api::Contract::deploy(nft_contract.account_id().clone())
+    .use_code(nft_wasm)
+    .with_init_call(
+        "new_default_meta",
+        json!({"owner_id": nft_contract.account_id()}),
+    )?
+    .with_signer(signer.clone())
+    .send_to(&sandbox_network)
+    .await?
+    .assert_success();
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L45-L55)
+
+</div>
+
+{/* /github-code */}
 
 
 ---
@@ -87,9 +235,45 @@ The test creates an account for the NFT contract, reads the fixture WASM from th
 To start a proper auction the auction contract should own an NFT. To do this the NFT contract owner calls `nft_mint`, setting `receiver_id` to the auction account and providing metadata such as the image for the NFT.
 
 
-<Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L57-L76"
-        start="57" end="76" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L57-L76
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 57
+end: 76
+fname: test_basics.rs
+language: rust
+*/}
+
+```rust title="test_basics.rs" lines
+// Mint NFT
+const TOKEN_ID: &str = "1";
+let request_payload = json!({
+    "token_id": TOKEN_ID,
+    "receiver_id": contract.account_id(),
+    "token_metadata": {
+        "title": "LEEROYYYMMMJENKINSSS",
+        "description": "Alright time's up, let's do this.",
+        "media": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.Fhp4lHufCdTzTeGCAblOdgHaF7%26pid%3DApi&f=1"
+    },
+});
+
+nft_contract
+    .call_function("nft_mint", request_payload)
+    .transaction()
+    .deposit(NearToken::from_millinear(80))
+    .with_signer(nft_contract.account_id().clone(), signer.clone())
+    .send_to(&sandbox_network)
+    .await?
+    .assert_success();
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L57-L76)
+
+</div>
+
+{/* /github-code */}
 
 
 ---
@@ -99,9 +283,39 @@ To start a proper auction the auction contract should own an NFT. To do this the
 After `claim` is called, the test should verify that the auction winner now owns the NFT. This is done by calling `nft_token` on the NFT contract and specifying the token ID which will return the account ID that the token belongs to.
 
 
-<Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L197-L210"
-        start="197" end="210" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L197-L210
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 197
+end: 210
+fname: test_basics.rs
+language: rust
+*/}
+
+```rust title="test_basics.rs" lines
+// Check highest bidder received the NFT
+let token_info: serde_json::Value = nft_contract
+    .call_function("nft_token", json!({"token_id": TOKEN_ID}))
+    .read_only()
+    .fetch_from(&sandbox_network)
+    .await?
+    .data;
+let owner_id: String = token_info["owner_id"].as_str().unwrap().to_string();
+
+assert_eq!(
+    owner_id,
+    bob.account_id().to_string(),
+    "token owner is not the highest bidder"
+);
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L197-L210)
+
+</div>
+
+{/* /github-code */}
 
 
 ---

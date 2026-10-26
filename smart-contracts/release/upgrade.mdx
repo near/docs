@@ -3,8 +3,6 @@ title: Updating Contracts
 description: "Learn how to upgrade NEAR smart contracts safely, including programmatic updates, migration strategies, and best practices for contract versioning."
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 Learn how to update NEAR smart contracts, both through tools like NEAR CLI and programmatically. Understand the implications of state migration when changing contract logic.
 
 NEAR accounts separate their logic (contract's code) from their state (storage),
@@ -43,9 +41,47 @@ A smart contract can also update itself by implementing a method that:
 1. Takes the new wasm contract as input
 2. Creates a Promise to deploy it on itself
 
-<Github fname="update.rs" language="rust"
-      url="https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs"
-      start="10" end="31" />
+{/* github-code
+url: https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs
+commit: 7ffe84605389abaa9095592a41e386074802e9d2
+start: 10
+end: 31
+fname: update.rs
+language: rust
+*/}
+
+```rust title="update.rs" lines
+pub fn update_contract(&self) -> Promise {
+    // Check the caller is authorized to update the code
+    assert!(
+        env::predecessor_account_id() == self.manager,
+        "Only the manager can update the code"
+    );
+
+    // Receive the code directly from the input to avoid the
+    // GAS overhead of deserializing parameters
+    let code = env::input().expect("Error: No input").to_vec();
+
+    // Deploy the contract on self
+    Promise::new(env::current_account_id())
+        .deploy_contract(code)
+        .function_call(
+            "migrate".to_string(),
+            NO_ARGS,
+            NearToken::from_near(0),
+            CALL_GAS,
+        )
+        .as_return()
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/7ffe84605389abaa9095592a41e386074802e9d2/self-updates/base/src/update.rs#L10-L31)
+
+</div>
+
+{/* /github-code */}
 
 #### How to Invoke Such Method?
 
@@ -115,18 +151,74 @@ Imagine you have a Guest Book where you store messages, and the users can pay
 for such messages to be "premium". You keep track of the messages and payments
 using the following state:
 
-<Github fname="lib.rs" language="rust"
-    url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs"
-    start="10" end="21" />
+{/* github-code
+url: https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs
+commit: 7ffe84605389abaa9095592a41e386074802e9d2
+start: 10
+end: 21
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+const MESSAGES_PREFIX: &[u8] = b"m";
+const PAYMENTS_PREFIX: &[u8] = b"p";
+
+#[near(serializers=[json, borsh])]
+pub struct PostedMessage {
+    pub premium: bool,
+    pub sender: AccountId,
+    pub text: String,
+}
+
+#[near(contract_state)]
+pub struct GuestBook {
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/7ffe84605389abaa9095592a41e386074802e9d2/basic-updates/base/src/lib.rs#L10-L21)
+
+</div>
+
+{/* /github-code */}
 
 #### Update Contract
 
 At some point you realize that you could keep track of the `payments` inside of
 the `PostedMessage` itself, so you change the contract to:
 
-<Github fname="lib.rs" language="rust"
-    url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs"
-    start="12" end="23" />
+{/* github-code
+url: https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs
+commit: 7ffe84605389abaa9095592a41e386074802e9d2
+start: 12
+end: 23
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+const MESSAGES_PREFIX: &[u8] = b"m";
+
+#[near(serializers=[json, borsh])]
+pub struct PostedMessage {
+    pub payment: NearToken,
+    pub premium: bool,
+    pub sender: AccountId,
+    pub text: String,
+}
+
+#[near(contract_state)]
+pub struct GuestBook {
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/7ffe84605389abaa9095592a41e386074802e9d2/basic-updates/update/src/lib.rs#L12-L23)
+
+</div>
+
+{/* /github-code */}
 
 #### Incompatible States
 
@@ -144,9 +236,74 @@ To fix the problem, you need to implement a method that goes through the old
 state, removes the `payments` vector and adds the information to the
 `PostedMessages`:
 
-<Github fname="migrate.rs" language="rust"
-    url="https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs"
-    start="3" end="51" />
+{/* github-code
+url: https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs
+commit: 7ffe84605389abaa9095592a41e386074802e9d2
+start: 3
+end: 51
+fname: migrate.rs
+language: rust
+*/}
+
+```rust title="migrate.rs" lines
+#[near(serializers=[borsh])]
+pub struct OldPostedMessage {
+    pub premium: bool,
+    pub sender: AccountId,
+    pub text: String,
+}
+
+#[near(serializers=[borsh])]
+pub struct OldState {
+    messages: Vector<OldPostedMessage>,
+    payments: Vector<NearToken>,
+}
+
+#[near]
+impl GuestBook {
+    #[private]
+    #[init(ignore_state)]
+    pub fn migrate() -> Self {
+        // retrieve the current state from the contract
+        let mut old_state: OldState = env::state_read().expect("failed");
+
+        // new messages vector to hold the migrated messages
+        let mut new_messages: Vector<PostedMessage> = Vector::new(MESSAGES_PREFIX);
+
+        // iterate through the state migrating it to the new version
+        for (idx, posted) in old_state.messages.iter().enumerate() {
+            // get the payment and remove it from the old state payments vector so it won't be left in the new state
+            let payment = old_state.payments.get(idx as u64)
+                .expect("failed to get payment")
+                .clone();
+
+            // push the new message to the new messages vector
+            new_messages.push(&PostedMessage {
+                payment,
+                premium: posted.premium,
+                sender: posted.sender.clone(),
+                text: posted.text.clone(),
+            })
+        }
+
+        // remove the payments from the old state
+        old_state.payments.clear();
+
+        // return the new state
+        Self {
+            messages: new_messages,
+        }
+    }
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/7ffe84605389abaa9095592a41e386074802e9d2/basic-updates/update/src/migrate.rs#L3-L51)
+
+</div>
+
+{/* /github-code */}
 
 Notice that `migrate` is actually an [initialization method](../anatomy/storage) that **ignores** the existing state (`#[init(ignore_state)]`), thus being able to execute and rewrite the state.
 

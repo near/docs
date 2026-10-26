@@ -2,8 +2,6 @@
 title: Global Contracts
 description: "Deploy a contract once and reuse it across accounts."
 ---
-import { Github } from '/snippets/github.jsx'
-
 Global contracts allow smart contracts to be deployed once and reused by any account without incurring high storage costs.
 Rather than deploying duplicate contracts or routing messages inefficiently across shards, NEAR developers can now think modularly and universally: write once, use everywhere.
 
@@ -111,15 +109,71 @@ Deploying a global contract incurs high storage costs. Tokens are burned to comp
 
   Use `deploy_global_contract_code` with `as_account_id` to deploy by account:
 
-  <Github fname="global_contract_accountid.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs#L17-L28"
-    start="17" end="28" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs#L17-L28
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 17
+end: 28
+fname: global_contract_accountid.rs
+language: rust
+*/}
+
+```rust title="global_contract_accountid.rs" lines
+let global_account_id: AccountId = account_id_string.parse().unwrap();
+let global_code = std::fs::read("../contracts/contract.wasm").unwrap();
+let global_signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+// Deploy the global contract code using the account ID `nft-contract.testnet`
+// This will deploy the contract to the specified account ID
+// and return the final execution outcome
+let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(global_code)
+    .as_account_id(global_account_id.clone())
+    .with_signer(global_signer.clone())
+    .send_to_testnet()
+    .await.unwrap();
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/global_contract_accountid.rs#L17-L28)
+
+</div>
+
+{/* /github-code */}
 
   Use `deploy_global_contract_code` with `as_hash` to deploy by hash:
 
-  <Github fname="global_contract_hash.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs#L17-L28"
-    start="17" end="28" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs#L17-L28
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 17
+end: 28
+fname: global_contract_hash.rs
+language: rust
+*/}
+
+```rust title="global_contract_hash.rs" lines
+let account_id: AccountId = account_id_string.parse().unwrap();
+let code = std::fs::read("../contracts/contract.wasm").unwrap();
+let signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+// Deploy the global contract code using a hash
+// This will deploy the contract to the global contract hash
+// and return the final execution outcome
+let result: FinalExecutionOutcomeView = Contract::deploy_global_contract_code(code.clone())
+    .as_hash()
+    .with_signer(account_id.clone(), signer.clone())
+    .send_to_testnet()
+    .await.unwrap();
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/global_contract_hash.rs#L17-L28)
+
+</div>
+
+{/* /github-code */}
 
   </Tab>
 </Tabs>
@@ -149,9 +203,35 @@ After the global code is deployed, attach it to another account by referencing i
 
   Reference a global contract by account ID with `use_global_account_id`:
 
-  <Github fname="global_contract_accountid.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs#L61-L70"
-    start="61" end="70" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs#L61-L70
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 61
+end: 70
+fname: global_contract_accountid.rs
+language: rust
+*/}
+
+```rust title="global_contract_accountid.rs" lines
+// Please note that you have to trust the account-id that you are providing. As the code is mutable, the owner of the referenced account can
+// change the code at any time which might lead to unexpected behavior or malicious activity.
+let my_signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+let result: FinalExecutionOutcomeView = Contract::deploy(new_account_id)
+    .use_global_account_id(global_account_id)
+    .without_init_call()
+    .with_signer(my_signer)
+    .send_to_testnet()
+    .await.unwrap();
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/global_contract_accountid.rs#L61-L70)
+
+</div>
+
+{/* /github-code */}
 
   To reference a global contract by hash, calculate its code hash and call `use_global_hash`:
 
@@ -160,9 +240,34 @@ After the global code is deployed, attach it to another account by referencing i
   let global_hash = near_primitives::hash::CryptoHash::hash_bytes(&code);
   ```
 
-  <Github fname="global_contract_hash.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs#L62-L70"
-    start="62" end="70" />
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs#L62-L70
+commit: e93d58590aea556f2b295e4cc811b49775be94c2
+start: 62
+end: 70
+fname: global_contract_hash.rs
+language: rust
+*/}
+
+```rust title="global_contract_hash.rs" lines
+// Prepare a transaction to deploy a contract to the provided account using an immutable hash reference to the code from the global contract code storage.
+let my_signer = Signer::new(Signer::from_secret_key(private_key)).unwrap();
+
+let result: FinalExecutionOutcomeView = Contract::deploy(new_account_id)
+    .use_global_hash(global_hash.into())
+    .without_init_call()
+    .with_signer(my_signer)
+    .send_to_testnet()
+    .await.unwrap();
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/rust/examples/global_contract_hash.rs#L62-L70)
+
+</div>
+
+{/* /github-code */}
 
   </Tab>
 </Tabs>
