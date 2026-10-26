@@ -88,14 +88,15 @@ let transfer_nft = nft_contract::ext(self.nft_contract.clone())
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/ext.rs
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/ext.rs#L2-L11
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 2
-end: 10
+end: 11
 fname: ext.rs
+highlight: 6-9
 */}
 
-```rust title="ext.rs" lines
+```rust title="ext.rs" lines highlight={6-9}
 use near_sdk::{ext_contract, AccountId};
 
 use crate::TokenId;
@@ -105,11 +106,12 @@ use crate::TokenId;
 #[allow(dead_code)]
 trait NFT {
     fn nft_transfer(&self, receiver_id: AccountId, token_id: TokenId);
+}
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/ext.rs#L2-L10)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/02-winner-gets-nft/src/ext.rs#L2-L11)
 
 </div>
 

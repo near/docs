@@ -10,9 +10,11 @@
  *   node scripts/sync-github-code.mjs --migrate       Convert legacy <Github /> tags
  *
  * Each example keeps its URL, last synced commit, and optional start/end lines,
- * fname, and language in a github-code comment. Edit that metadata to update an
- * example; omit commit on a new block so the script populates it. Line numbers
- * are one-based and inclusive. Full commit SHAs in source URLs pin examples.
+ * fname, language, and highlight lines in a github-code comment. Edit that
+ * metadata to update an example; omit commit on a new block so the script
+ * populates it. Source and highlight line numbers are one-based and inclusive.
+ * Highlight numbers are relative to the displayed excerpt. Full commit SHAs in
+ * source URLs pin examples.
  *
  * Repository ref lookups and file downloads are shared within each run. Source
  * downloads are skipped when the commit and presentation metadata are unchanged.
@@ -28,7 +30,7 @@ import { extname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 
-const keys = new Set(['url', 'commit', 'start', 'end', 'fname', 'language']);
+const keys = new Set(['url', 'commit', 'start', 'end', 'fname', 'language', 'highlight']);
 const blocks = /^[\t ]*\{\/\* github-code\r?\n([\s\S]*?)\*\/\}[^\n]*\n[\s\S]*?^[\t ]*\{\/\* \/github-code \*\/\}/gm;
 const embeds = /^[\t ]*<Github\b([\s\S]*?)\/>/gm;
 
@@ -49,7 +51,26 @@ function validate(meta) {
   }
   if (meta.end && Number(meta.end) < Number(meta.start ?? 1)) throw new Error('end precedes start');
   if (meta.language && !/^[\w+-]+$/.test(meta.language)) throw new Error('Invalid language');
+  if (meta.highlight !== undefined) {
+    if (typeof meta.highlight !== 'string' || !/^[1-9]\d*(?:-[1-9]\d*)?(?:,[1-9]\d*(?:-[1-9]\d*)?)*$/.test(meta.highlight)) {
+      throw new Error(`Invalid highlight: ${meta.highlight}`);
+    }
+    for (const part of meta.highlight.split(',')) {
+      const [from, to = from] = part.split('-').map(Number);
+      if (to < from) throw new Error(`Invalid highlight range: ${part}`);
+    }
+  }
   if (Object.values(meta).some(value => /[\r\n]|\*\//.test(String(value)))) throw new Error('Unsafe metadata value');
+}
+
+function validateHighlightBounds(highlight, code) {
+  if (!highlight) return;
+  const lineCount = code.split('\n').length;
+  for (const part of highlight.split(',')) {
+    const range = part.split('-').map(Number);
+    const to = range[1] ?? range[0];
+    if (to > lineCount) throw new Error(`Highlight ${part} exceeds excerpt length ${lineCount}`);
+  }
 }
 
 export function extractCode(text, start, end) {
@@ -70,7 +91,8 @@ function presentation(meta) {
   const language = meta.language ?? languages[extname(source.path).slice(1)] ?? 'text';
   const anchor = meta.start ? `#L${meta.start}${meta.end ? `-L${meta.end}` : ''}` : meta.end ? `#L1-L${meta.end}` : '';
   const href = `https://github.com/${source.owner}/${source.repo}/blob/${meta.commit}/${source.path}${anchor}`;
-  return { header: `${language} title=${JSON.stringify(fname)} lines`, link: `[See code on GitHub](${href})` };
+  const highlight = meta.highlight ? ` highlight={${meta.highlight}}` : '';
+  return { header: `${language} title=${JSON.stringify(fname)} lines${highlight}`, link: `[See code on GitHub](${href})` };
 }
 
 function sourceLink(link) {
@@ -78,6 +100,8 @@ function sourceLink(link) {
 }
 
 export function renderBlock(meta, code) {
+  validate(meta);
+  validateHighlightBounds(meta.highlight, code);
   const { header, link } = presentation(meta);
   const longestFence = Math.max(0, ...Array.from(code.matchAll(/`+/g), match => match[0].length));
   const fence = '`'.repeat(Math.max(3, longestFence + 1));
@@ -157,7 +181,8 @@ export async function syncText(text, loader, { migrate = false, force = false } 
     const commit = await loader.commit(source);
     const updated = { ...meta, commit };
     const { header, link } = presentation(updated);
-    const unchanged = existing && meta.commit === commit && match[0].includes(header) && match[0].includes(link);
+    const fenceHeader = match[0].match(/(?:^|\n)`{3,}([^\n]*)\n/)?.[1];
+    const unchanged = existing && meta.commit === commit && fenceHeader === header && match[0].includes(link);
     if (unchanged && !force) {
       // Refresh link presentation without downloading unchanged source files.
       const value = match[0].replace(`\n\n${link}\n\n{/* /github-code */}`, `\n\n${sourceLink(link)}\n\n{/* /github-code */}`);

@@ -102,3 +102,55 @@ test('chooses a safe fence when embedded code contains backticks', () => {
   assert.ok(rendered.includes('````rust title="lib.rs" lines'));
   assert.ok(rendered.includes('const example = ` ``` `;\n````'));
 });
+
+test('renders highlights relative to the displayed excerpt and preserves them on sync', async () => {
+  const highlightedLegacy = legacy.replace('end="2"', 'end="2" highlight="1,2"');
+  const initial = await syncText(highlightedLegacy, mockLoader().loader, { migrate: true });
+  assert.ok(initial.text.includes('highlight: 1,2'));
+  assert.ok(initial.text.includes('```rust title="lib.rs" lines highlight={1,2}\nfirst\n  second\n```'));
+
+  const { loader } = mockLoader();
+  const again = await syncText(initial.text, loader);
+  assert.equal(again.text, initial.text);
+  assert.deepEqual(loader.stats, { lookups: 1, downloads: 0 });
+});
+
+test('adding, changing, or removing highlights regenerates the fence presentation', async () => {
+  const initial = await syncText(legacy, mockLoader().loader, { migrate: true });
+
+  const { loader: addLoader } = mockLoader();
+  const added = await syncText(initial.text.replace('language: rust', 'language: rust\nhighlight: 1'), addLoader);
+  assert.ok(added.text.includes('lines highlight={1}'));
+  assert.equal(addLoader.stats.downloads, 1);
+
+  const { loader: changeLoader } = mockLoader();
+  const changed = await syncText(added.text.replace('highlight: 1', 'highlight: 2'), changeLoader);
+  assert.ok(changed.text.includes('lines highlight={2}'));
+  assert.equal(changeLoader.stats.downloads, 1);
+
+  const { loader: removeLoader } = mockLoader();
+  const removed = await syncText(changed.text.replace('highlight: 2\n', ''), removeLoader);
+  assert.ok(!removed.text.includes('highlight:'));
+  assert.ok(removed.text.includes('```rust title="lib.rs" lines\n'));
+  assert.equal(removeLoader.stats.downloads, 1);
+});
+
+test('highlight ranges count from the excerpt rather than the source file', async () => {
+  const excerpt = legacy.replace('start="1" end="2"', 'start="2" end="3" highlight="1-2"');
+  const initial = await syncText(excerpt, mockLoader().loader, { migrate: true });
+  assert.ok(initial.text.includes('lines highlight={1-2}\n  second\nthird\n```'));
+  const updated = await syncText(initial.text, mockLoader({ sha: 'b'.repeat(40) }).loader);
+  assert.ok(updated.text.includes('highlight: 1-2'));
+  assert.ok(updated.text.includes('lines highlight={1-2}\n  second\nthird\n```'));
+});
+
+test('rejects malformed and out-of-bounds highlights', async () => {
+  for (const highlight of ['0', '1-', '2-1', '1,,2', '1,', ' 1']) {
+    const malformed = legacy.replace('end="2"', `end="2" highlight="${highlight}"`);
+    await assert.rejects(syncText(malformed, mockLoader().loader, { migrate: true }), /Invalid highlight/);
+  }
+
+  const outOfBounds = legacy.replace('end="2"', 'end="2" highlight="3"');
+  await assert.rejects(syncText(outOfBounds, mockLoader().loader, { migrate: true }), /exceeds excerpt length 2/);
+  assert.throws(() => renderBlock({ url, commit, highlight: '3' }, 'one\ntwo'), /exceeds excerpt length 2/);
+});

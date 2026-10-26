@@ -58,38 +58,37 @@ The contract performs a cross-contract call to `hello.near-example.testnet` to g
 <Tabs>
   <Tab title="🦀 Rust (low level)">
 {/* github-code
-url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L6-L23
+url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L7-L23
 commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
-start: 6
+start: 7
 end: 23
-fname: lib.rs
+fname: low_level.rs
 language: rust
 */}
 
-```rust title="lib.rs" lines
-impl Contract {
-    // Public - query external greeting
-    pub fn ll_query_greeting(&self) -> Promise {
-        // Create a promise to call HelloNEAR.get_greeting()
-        let hello_promise = Promise::new(self.hello_account.clone()).function_call(
-            "get_greeting".to_owned(),
-            NO_ARGS,
-            NO_DEPOSIT,
-            TEN_TGAS,
-        );
+```rust title="low_level.rs" lines
+// Public - query external greeting
+pub fn ll_query_greeting(&self) -> Promise {
+    // Create a promise to call HelloNEAR.get_greeting()
+    let hello_promise = Promise::new(self.hello_account.clone()).function_call(
+        "get_greeting".to_owned(),
+        NO_ARGS,
+        NO_DEPOSIT,
+        TEN_TGAS,
+    );
 
-        hello_promise.then(
-            // Create a promise to callback query_greeting_callback
-            Self::ext(env::current_account_id())
-                .with_static_gas(TEN_TGAS)
-                .ll_query_greeting_callback(),
-        )
-    }
+    hello_promise.then(
+        // Create a promise to callback query_greeting_callback
+        Self::ext(env::current_account_id())
+            .with_static_gas(TEN_TGAS)
+            .ll_query_greeting_callback(),
+    )
+}
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/src/low_level.rs#L6-L23)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/src/low_level.rs#L7-L23)
 
 </div>
 
@@ -101,11 +100,11 @@ url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-si
 commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
 start: 9
 end: 21
-fname: external.rs
+fname: high_level.rs
 language: rust
 */}
 
-```rust title="external.rs" lines
+```rust title="high_level.rs" lines
 pub fn hl_query_greeting(&self) -> Promise {
     // Create a promise to call HelloNEAR.get_greeting()
     let promise = hello_near::ext(self.hello_account.clone())
@@ -136,11 +135,11 @@ url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-si
 commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
 start: 4
 end: 8
-fname: external.rs
+fname: external_contract.rs
 language: rust
 */}
 
-```rust title="external.rs" lines
+```rust title="external_contract.rs" lines
 #[ext_contract(hello_near)]
 trait HelloNear {
     fn get_greeting(&self) -> String;
@@ -169,11 +168,11 @@ url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-si
 commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
 start: 25
 end: 39
-fname: lib.rs
+fname: low_level.rs
 language: rust
 */}
 
-```rust title="lib.rs" lines
+```rust title="low_level.rs" lines
 #[private] // Public - but only callable by env::current_account_id()
 pub fn ll_query_greeting_callback(
     &self,
@@ -223,12 +222,13 @@ in `tests/`.
 url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs
 commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
 start: 4
-end: 77
+end: 106
 fname: tests.rs
 language: rust
+highlight: 31-33,37,42-43,49,53,58-59,65,68,75,79,84-85,91,94,101
 */}
 
-```rust title="tests.rs" lines
+```rust title="tests.rs" lines highlight={31-33,37,42-43,49,53,58-59,65,68,75,79,84-85,91,94,101}
 #[tokio::test]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let worker = near_workspaces::sandbox().await?;
@@ -303,11 +303,40 @@ async fn test_hl_change_greeting(
         .await?
         .json()?;
 
+    assert_eq!(greeting, "Howdy".to_string());
+    Ok(())
+}
+
+async fn test_ll_change_greeting(
+    user: &Account,
+    contract: &Contract,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let result: bool = user
+        .call(contract.id(), "ll_change_greeting")
+        .args_json(json!({ "new_greeting": "Hello" }))
+        .max_gas()
+        .transact()
+        .await?
+        .json()?;
+
+    assert!(result);
+
+    let greeting: String = user
+        .call(contract.id(), "ll_query_greeting")
+        .args_json(json!({}))
+        .max_gas()
+        .transact()
+        .await?
+        .json()?;
+
+    assert_eq!(greeting, "Hello".to_string());
+    Ok(())
+}
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/tests/tests.rs#L4-L77)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/tests/tests.rs#L4-L106)
 
 </div>
 

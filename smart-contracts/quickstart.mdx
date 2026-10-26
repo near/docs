@@ -182,13 +182,14 @@ Place a bid in the auction by calling the `bid` method and attaching a NEAR depo
 {/* github-code
 url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
-start: 37
-end: 64
+start: 36
+end: 62
 fname: lib.rs
 language: rust
 */}
 
 ```rust title="lib.rs" lines
+#[payable]
 pub fn bid(&mut self) -> Promise {
     // Assert the auction is still ongoing
     require!(
@@ -215,13 +216,11 @@ pub fn bid(&mut self) -> Promise {
     // Transfer tokens back to the last bidder
     Promise::new(last_bidder).transfer(last_bid)
 }
-
-pub fn claim(&mut self) -> Promise {
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L37-L64)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L36-L62)
 
 </div>
 
@@ -248,33 +247,33 @@ The `get_highest_bid` function only reads from the contract state, so it does no
 {/* github-code
 url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
-start: 78
-end: 92
+start: 77
+end: 91
 fname: lib.rs
 language: rust
 */}
 
 ```rust title="lib.rs" lines
-        self.highest_bid.clone()
-    }
+pub fn get_highest_bid(&self) -> Bid {
+    self.highest_bid.clone()
+}
 
-    pub fn get_auction_end_time(&self) -> U64 {
-        self.auction_end_time
-    }
+pub fn get_auction_end_time(&self) -> U64 {
+    self.auction_end_time
+}
 
-    pub fn get_auctioneer(&self) -> AccountId {
-        self.auctioneer.clone()
-    }
+pub fn get_auctioneer(&self) -> AccountId {
+    self.auctioneer.clone()
+}
 
-    pub fn get_claimed(&self) -> bool {
-        self.claimed
-    }
+pub fn get_claimed(&self) -> bool {
+    self.claimed
 }
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L78-L92)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L77-L91)
 
 </div>
 
@@ -289,7 +288,7 @@ near view <account.testnet> get_highest_bid '{}'
   ```json
   {
     "bidder": "<bidder-account.testnet>",
-    "amount": "10000000000000000000000"
+    "bid": "10000000000000000000000"
   }
   ```
 </Accordion>
@@ -309,13 +308,14 @@ After the auction ends, anyone can call the `claim` method. It transfers the amo
 {/* github-code
 url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
-start: 65
-end: 76
+start: 64
+end: 75
 fname: lib.rs
 language: rust
 */}
 
 ```rust title="lib.rs" lines
+pub fn claim(&mut self) -> Promise {
     require!(
         env::block_timestamp() > self.auction_end_time.into(),
         "Auction has not ended yet"
@@ -327,12 +327,11 @@ language: rust
     // Transfer tokens to the auctioneer
     Promise::new(self.auctioneer.clone()).transfer(self.highest_bid.bid)
 }
-
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L65-L76)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L64-L75)
 
 </div>
 

@@ -5,11 +5,11 @@ description: "Wait for an external response and resume execution"
 
 NEAR smart contracts can **yield** execution, until an **external** service **resumes** them. In practice, the contract yields a **cross-contract call** to itself, until an external service executes a function and the contract decides to resume.
 
-This is a powerful feature that allows contracts to wait for external events, such as a response from an oracle, before continuing execution.
+This allows contracts to wait for external events, such as a response from an oracle, before continuing execution.
 
 <Info>
 
-The contract can wait for 200 blocks - around 2 minutes - after which the yielded function will execute, receiving a "timeout error" as input
+This example uses `near-sdk` 5.29.1. The contract can wait for 200 blocks, after which the yielded function executes with a timeout error if no response has arrived.
 
 </Info>
 
@@ -21,66 +21,59 @@ Let's look at an example that takes a prompt from a user (e.g. "What is 2+2"), a
 
 {/* github-code
 url: https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs
-commit: e92f04ce2c074231edb249b942b692f8c5c23f47
-start: 43
-end: 70
+commit: 53dfef24d0e6dcbaafc05638932137868480d404
+start: 41
+end: 61
 fname: lib.rs
 language: rust
 */}
 
 ```rust title="lib.rs" lines
-pub fn request(&mut self, prompt: String) {
+pub fn request(&mut self, prompt: String) -> Promise {
     // internal variable to keep track of the requests
     self.request_id += 1;
 
-    // this will create a unique ID in the YIELD_REGISTER
-    let yield_promise = env::promise_yield_create(
+    // create the yielded promise and its resumption ID
+    let (yield_promise, yield_id) = Promise::new_yield(
         "return_external_response",
         &json!({ "request_id": self.request_id })
             .to_string()
             .into_bytes(),
         Gas::from_tgas(5),
         GasWeight::default(),
-        YIELD_REGISTER,
     );
-
-    // load the ID created by the promise_yield_create
-    let yield_id: CryptoHash = env::read_register(YIELD_REGISTER)
-        .expect("read_register failed")
-        .try_into()
-        .expect("conversion to CryptoHash failed");
 
     // store the request, so we can delete it later
     let request = Request { yield_id, prompt };
     self.requests.insert(self.request_id, request);
 
     // return the yield promise
-    env::promise_return(yield_promise);
+    yield_promise
 }
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/yield-resume/blob/e92f04ce2c074231edb249b942b692f8c5c23f47/contract/src/lib.rs#L43-L70)
+[See code on GitHub](https://github.com/near-examples/yield-resume/blob/53dfef24d0e6dcbaafc05638932137868480d404/contract/src/lib.rs#L41-L61)
 
 </div>
 
 {/* /github-code */}
 
 #### Creating a Yielded Promise
-In the example above, we are creating a [`Promise`](./crosscontract#promises) to call the contract's function `return_external_response`.
+In the example above, we are creating a [`Promise`](/smart-contracts/anatomy/crosscontract#promises) to call the contract's function `return_external_response`.
 
-Notice that we create the `Promise` using `env::promise_yield_create`, which will create an **identifier** for the yielded promise in the `YIELD_REGISTER`.
+`Promise::new_yield` returns both the yielded `Promise` and a `YieldId` that identifies it. The callback name, arguments, and gas allocation are passed when creating the promise.
 
-#### Retrieving the Yielded Promise ID
-We read the `YIELD_REGISTER` to retrieve the `ID` of our yielded promise. We store the `yield_id` and the user's `prompt` so the external service query them (the contract exposes has a function to list all requests).
+#### Storing the Yielded Promise ID
+We store the `yield_id` and the user's `prompt` so the external service can query them using `list_requests`. A `YieldId` is serialized as a base64 string in JSON; the service passes that value unchanged when responding.
 
 #### Returning the Promise
-Finally, we return the `Promise`, which will **not execute immediately**, but will be **yielded** until the external service provides a response.
+Finally, we return the `Promise` from `request`. The callback will **not execute immediately**: it waits until the external service provides a response or the promise times out.
 
 <Accordion title="What is that `self.request_id` in the code?">
 
-The `self.request_id` is an internal unique identifier that we use to keep track of stored requests. This way, we can delete the request once the external service provides a response (or the waiting times out)
+The `self.request_id` is an internal unique identifier that we use to keep track of stored requests. This way, we can delete the request once the external service provides a response (or the wait times out)
 
 Since we only use it to simplify the process of keeping track of the requests, you can remove it if you have a different way of tracking requests (e.g. an indexer)
 
@@ -90,33 +83,37 @@ Since we only use it to simplify the process of keeping track of the requests, y
 
 ## Signaling the Resume
 
-The `env::promise_yield_resume` function allows us to signal which yielded promise should execute, as well as which parameters to pass to the resumed function.
+The `YieldId::resume` method allows us to signal which yielded promise should execute and pass a response to the callback.
 
 {/* github-code
 url: https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs
-commit: e92f04ce2c074231edb249b942b692f8c5c23f47
-start: 72
-end: 75
+commit: 53dfef24d0e6dcbaafc05638932137868480d404
+start: 63
+end: 68
 fname: lib.rs
 language: rust
 */}
 
 ```rust title="lib.rs" lines
-pub fn respond(&mut self, yield_id: CryptoHash, response: String) {
+pub fn respond(&mut self, yield_id: YieldId, response: String) {
     // resume computation with the response
-    env::promise_yield_resume(&yield_id, &serde_json::to_vec(&response).unwrap());
+    yield_id
+        .resume(serde_json::to_vec(&response).unwrap())
+        .expect("yielded promise not found or already resolved");
 }
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/yield-resume/blob/e92f04ce2c074231edb249b942b692f8c5c23f47/contract/src/lib.rs#L72-L75)
+[See code on GitHub](https://github.com/near-examples/yield-resume/blob/53dfef24d0e6dcbaafc05638932137868480d404/contract/src/lib.rs#L63-L68)
 
 </div>
 
 {/* /github-code */}
 
-In the example above, the `respond` function would be called by an external service, passing which promise should be resume (`yield_id`), and the response to the prompt. 
+In the example above, an external service calls `respond`, passing the `yield_id` from `list_requests` and the response to the prompt. The response is serialized as JSON bytes so the callback can deserialize it as a `String`.
+
+`YieldId::resume` returns an error if the yielded promise is no longer available. In this example, `expect` makes `respond` fail in that case, such as when a response arrives after the timeout callback has completed.
 
 <Warning>
 **Gatekeeping the Resume**
@@ -129,13 +126,13 @@ Since the function used to signal the resume is public, developers must make sur
 
 ## The Function that Resumes
 
-The function being resumed will have access to all parameters passed to it, including those passed during the yield creation, or the external service response.
+The callback receives the arguments passed when creating the yielded promise and the result of waiting for the external response.
 
 {/* github-code
 url: https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs
-commit: e92f04ce2c074231edb249b942b692f8c5c23f47
-start: 77
-end: 89
+commit: 53dfef24d0e6dcbaafc05638932137868480d404
+start: 70
+end: 82
 fname: lib.rs
 language: rust
 */}
@@ -158,7 +155,7 @@ pub fn return_external_response(
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/yield-resume/blob/e92f04ce2c074231edb249b942b692f8c5c23f47/contract/src/lib.rs#L77-L89)
+[See code on GitHub](https://github.com/near-examples/yield-resume/blob/53dfef24d0e6dcbaafc05638932137868480d404/contract/src/lib.rs#L70-L82)
 
 </div>
 
@@ -167,20 +164,20 @@ pub fn return_external_response(
 In the example above, the `return_external_response` receives parameters:
 
 1. A `request_id` - passed on [creation](#creating-a-yielded-promise) - which is used to remove the request from the state
-2. A `response` - passed when [signaling to resume](#signaling-the-resume) - which contains the external response, or `None` if the contract timed out while waiting
+2. A `response` - obtained through `#[callback_result]` - which is `Ok(answer)` when the external service [signals the resume](#signaling-the-resume), or `Err(PromiseError::Failed)` if the promise times out while waiting
 
 <Tip>
 **There's plenty of time**
 
-The contract will be able to wait for 200 blocks - around 2 minutes - before timing out
+The contract can wait for 200 blocks before timing out.
 
 </Tip>
 
 <Info>
 
-Notice that, in this particular example, we choose to return a value both if there is a response or a time out
+In this example, we return `Response::Answer` when there is a response and `Response::TimeOutError` when the callback receives an error.
 
-The reason to not raise an error, is because we are changing the state (removing the request in line `#7`), and raising an error would revert this state change
+Both paths remove the stored request. Panicking in the callback would revert that removal, so we return a value to preserve the cleanup.
 
 </Info>
 
@@ -188,11 +185,11 @@ The reason to not raise an error, is because we are changing the state (removing
 
 ## Managing State
 
-When using yield and resume, it's important that you carefully manage the contract's state. Because of its asynchronous execution, the contract function in which the contract yields and resumes are independent.
+When using yield and resume, it's important that you carefully manage the contract's state. The function that creates the yielded promise finishes before the callback executes, and its state changes are already committed.
 
-If you change the state of the contract in the function where you yield the promise (the `request` function here), then you need to make sure that you revert the state in the function that resumes (the `return_external_response` function here) in the case that the promise times out or the response is invalid.
+If you change the state of the contract in the function where you yield the promise (the `request` function here), then you need to make sure that you clean up the pending state in the function that resumes (the `return_external_response` function here) in the case that the promise times out or the response is invalid.
 
-It is best practice to check the validity of the response within the function where the resume is signaled (the `respond` function here) and panic if the response is not valid; the external service can attempt to respond again before the promise times out. You should not panic in `return_external_response` as this is only called when the promise has been resolved (it was resumed or timed out), meaning it can't be resumed again, and the state in `request` has been settled. You should gracefully complete the function and revert the state.
+It is best practice to check the validity of the response within the function where the resume is signaled (the `respond` function here) and panic if the response is not valid; the external service can attempt to respond again before the promise times out. You should not panic in `return_external_response` as this is only called when the promise has been resolved (it was resumed or timed out), meaning it can't be resumed again, and the state changes made in `request` have already been committed. You should gracefully complete the callback and clean up the pending state.
 
 <Info>
 

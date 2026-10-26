@@ -249,33 +249,18 @@ console.log(accountState);
   </Tab>
   <Tab title="🌐 near-kit">
 
-{/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/account-details.js
-commit: e93d58590aea556f2b295e4cc811b49775be94c2
-language: javascript
-*/}
-
-```javascript title="account-details.js" lines
+```javascript title="near-kit account state"
 import { Near } from "near-kit";
 
 // Create a connection to testnet
 const near = new Near({ network: "testnet" });
 
-// Get account balance using the Near instance
+// Get account state using the Near instance
 const accountId = "example-account.testnet";
-const balance = await near.getBalance(accountId);
+const account = await near.getAccount(accountId);
 
-console.log(`Account: ${accountId}`);
-console.log(`Balance: ${balance} NEAR`);
+console.log(account);
 ```
-
-<div className="github-source-link">
-
-[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/e93d58590aea556f2b295e4cc811b49775be94c2/near-kit/examples/account-details.js)
-
-</div>
-
-{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-api-rs">

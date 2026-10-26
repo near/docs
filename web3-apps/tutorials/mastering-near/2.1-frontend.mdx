@@ -85,14 +85,27 @@ We abstract the wallet connection in our `near.js` file by exposing methods to c
 The wallet object is initialized in the `_app.js` file and added to the global context along with the account that is signed in to make it easier to access anywhere in the application. The connector is loaded in the browser, and the effect removes its event listeners when it is cleaned up.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/_app.js#L13-L33
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/_app.js#L1-L34
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
-start: 13
-end: 33
+start: 1
+end: 34
 fname: _app.js
+highlight: 13,18-25,28-32
 */}
 
-```javascript title="_app.js" lines
+```javascript title="_app.js" lines highlight={13,18-25,28-32}
+import { useEffect, useState } from 'react';
+
+import '@/styles/globals.css';
+import { NearContext } from '@/context';
+import { Navigation } from '@/components/Navigation';
+
+import { Wallet } from '@/wallets/near';
+import { NetworkId } from '@/config';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const wallet = new Wallet({ networkId: NetworkId });
 
 export default function MyApp({ Component, pageProps }) {
@@ -114,11 +127,12 @@ export default function MyApp({ Component, pageProps }) {
       <ToastContainer />
     </NearContext.Provider>
   );
+}
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/_app.js#L13-L33)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/_app.js#L1-L34)
 
 </div>
 

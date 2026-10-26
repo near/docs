@@ -278,7 +278,7 @@ const Aptos = new chainAdapters.aptos.Aptos({
 
 {/* /github-code */}
 
-  The Aptos chain adapter takes the `ChainSignaturesContract` as an argument as well as a `nodeUrl` for the Aptos network and the `network` specification.
+  The Aptos chain adapter takes the `ChainSignaturesContract` and an `AptosClient` as arguments. Configure the client with the Aptos network and node URL you want to use.
 
 </Tab>
 
@@ -800,7 +800,7 @@ For Bitcoin, it is common to have multiple UTXOs to sign when sending a single t
   </Tab>
 
 <Tab title="◎ Solana">
-  To get the payload, serialize the transaction to a `uint8Array` and then convert it to hex.
+  To get the payload, serialize the transaction with `serializeMessage()`. This returns a `Uint8Array`, which the example passes directly to `SIGNET_CONTRACT.sign`.
 {/* github-code
 url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L78-L86
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92

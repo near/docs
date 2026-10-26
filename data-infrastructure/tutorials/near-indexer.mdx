@@ -464,14 +464,41 @@ We need to ensure that NEAR Indexer follows all the necessary shards, so by defa
 The indexer supports only these two settings: `"AllShards"`, or `"Accounts"` with at least one account. With any other value, including a `"Shards"` list of shard UIDs, the indexer stops at startup.
 
 ### Sync Mode
-You can choose Indexer Framework sync mode by setting what to stream:
+You can choose the starting point for syncing by setting the Indexer Framework sync mode:
 
 - LatestSynced - Real-time syncing, always taking the latest finalized block to stream
 - FromInterruption - Starts syncing from the block NEAR Indexer was interrupted last time
 - BlockHeight(u64) - Specific block height to start syncing from.
 
 {/* github-code
-url: https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs
+url: https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs#L273-L273
+commit: 6ac40f1a7806598f26e8e8593b51b3214b9e3f5f
+start: 273
+end: 273
+fname: main.rs
+language: rust
+*/}
+
+```rust title="main.rs" lines
+sync_mode: near_indexer::SyncModeEnum::FromInterruption,
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near/nearcore/blob/6ac40f1a7806598f26e8e8593b51b3214b9e3f5f/tools/indexer/example/src/main.rs#L273-L273)
+
+</div>
+
+{/* /github-code */}
+
+### Streaming Mode
+You can choose Indexer Framework streaming mode by setting what to stream:
+
+- StreamWhileSyncing - Stream while node is syncing
+- WaitForFullSync - Don't stream until the node is fully synced
+
+{/* github-code
+url: https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs#L274-L274
 commit: 6ac40f1a7806598f26e8e8593b51b3214b9e3f5f
 start: 274
 end: 274
@@ -491,14 +518,15 @@ await_for_node_synced: near_indexer::AwaitForNodeSyncedEnum::WaitForFullSync,
 
 {/* /github-code */}
 
-### Streaming Mode
-You can choose Indexer Framework streaming mode by setting what to stream:
+### Finality
+You can choose finality level at which blocks are streamed:
 
-- StreamWhileSyncing - Stream while node is syncing
-- WaitForFullSync - Don't stream until the node is fully synced
+- None - `optimistic`, a block that (though unlikely) might be skipped
+- DoomSlug - `near-final`, a block that is irreversible, unless at least one block producer is slashed
+- Final - `final`, the block is final and irreversible.
 
 {/* github-code
-url: https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs
+url: https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs#L275-L275
 commit: 6ac40f1a7806598f26e8e8593b51b3214b9e3f5f
 start: 275
 end: 275
@@ -513,34 +541,6 @@ finality: near_primitives::types::Finality::Final,
 <div className="github-source-link">
 
 [See code on GitHub](https://github.com/near/nearcore/blob/6ac40f1a7806598f26e8e8593b51b3214b9e3f5f/tools/indexer/example/src/main.rs#L275-L275)
-
-</div>
-
-{/* /github-code */}
-
-### Finality
-You can choose finality level at which blocks are streamed:
-
-- None - `optimistic`, a block that (though unlikely) might be skipped
-- DoomSlug - `near-final`, a block that is irreversible, unless at least one block producer is slashed
-- Final - `final`, the block is final and irreversible.
-
-{/* github-code
-url: https://github.com/near/nearcore/blob/master/tools/indexer/example/src/main.rs
-commit: 6ac40f1a7806598f26e8e8593b51b3214b9e3f5f
-start: 276
-end: 276
-fname: main.rs
-language: rust
-*/}
-
-```rust title="main.rs" lines
-validate_genesis: true,
-```
-
-<div className="github-source-link">
-
-[See code on GitHub](https://github.com/near/nearcore/blob/6ac40f1a7806598f26e8e8593b51b3214b9e3f5f/tools/indexer/example/src/main.rs#L276-L276)
 
 </div>
 
