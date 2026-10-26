@@ -39,7 +39,7 @@ The pool's locked balance becomes liquid at the start of the third epoch after t
 
 ## Step 3: Withdraw Owner Balance
 
-Pausing does not unstake your own balance in the pool. This balance includes the shares that the pool paid you as its reward fee. First, unstake it from the owner account:
+Pausing does not unstake your own balance in the pool. This balance includes the shares that the pool pays you as its reward fee. The pool keeps earning rewards, and paying you the fee, until it leaves the validator set. Wait until the pool is no longer in the validator set, from the second epoch after the pause. Then unstake your balance from the owner account:
 
 <Tabs>
   <Tab title="Staking CLI">
