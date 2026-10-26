@@ -249,10 +249,14 @@ For a post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signat
 
 ## View Access Key List
 
-Returns all [access keys](/protocol/accounts-contracts/access-keys) for an account, each with its nonce and permissions.
+Returns the [access keys](/protocol/accounts-contracts/access-keys) of an account, each with its nonce and permissions.
 
 - **method**: `query`
-- **params**: `request_type: view_access_key_list`, `finality` OR `block_id`, `account_id`
+- **params**: `request_type: view_access_key_list`, `finality` OR `block_id`, `account_id`, optional `limit`, optional `after_key`
+
+<Note>
+From nearcore 2.14.0, a node returns at most `view_access_keys_limit` keys per response (100 by default; node operators can change it). If the account has more keys than that and the request has neither `limit` nor `after_key`, the query fails with `TOO_MANY_ACCESS_KEYS`. When more keys remain, the response includes `last_key`. Pass it as `after_key` to get the next page. A `limit` above the node's cap is lowered to the cap. Nodes on nearcore 2.13 return all keys in one response and ignore these fields.
+</Note>
 
 <Tabs>
   <Tab title="JSON">
@@ -542,10 +546,12 @@ Returns the global contract's Wasm binary for the global contract published unde
 Returns the state (key-value pairs) of a contract based on a key prefix (base64 encoded). Pass an empty string for `prefix_base64` to return the entire state.
 
 - **method**: `query`
-- **params**: `request_type: view_state`, `finality` OR `block_id`, `account_id`, `prefix_base64`
+- **params**: `request_type: view_state`, `finality` OR `block_id`, `account_id`, `prefix_base64`, optional `limit`, optional `after_key_base64`, optional `include_proof`
 
 <Warning>
-By default, RPC nodes only return up to **50kB** of contract state. If the contract's state exceeds this limit, the query will return an error. To query larger state, use an archival node and paginate with `prefix_base64`.
+By default, a node rejects a `view_state` request with `TOO_LARGE_CONTRACT_STATE` if the account's storage usage is above 50,000 bytes. This size does not count the contract code. Requests with `limit` or `after_key_base64` are not checked against this limit. The node operator sets this limit with `trie_viewer_state_size_limit`. A narrower `prefix_base64` does not avoid the error, because the node checks the size of the whole account.
+
+To read a large state, paginate with `limit` (up to 10,000 items) or `after_key_base64`. Both are available from nearcore 2.13.0. The node stops adding items to a page once its keys and values reach 50,000 bytes. The last item can make a page larger than that. When more entries remain, the response includes `last_key`. Pass it as `after_key_base64` to get the next page. The `after_key_base64` value must start with `prefix_base64`. The `include_proof` option cannot be combined with `limit` or `after_key_base64`.
 </Warning>
 
 <Tabs>
@@ -764,13 +770,18 @@ if ("SuccessValue" in status) {
 
 ## Error Handling
 
-| Error Code              | Description                            | Solution                                                |
-|-------------------------|----------------------------------------|---------------------------------------------------------|
-| `UnknownAccount`        | Account does not exist                 | Check account ID spelling                               |
-| `InvalidAccount`        | Invalid account format                 | Use valid account ID (e.g., `account.near`)             |
-| `UnknownBlock`          | Block not found                        | Use a valid block hash or height                        |
-| `UnknownGasKey`         | Key is not a gas key or does not exist | Check the public key and that it was added as a gas key |
-| `GarbageCollectedBlock` | Block too old                          | Use archival node or more recent block                  |
-| `NoContractCode`        | No contract deployed                   | Verify the account has a deployed contract              |
-| `MethodNotFound`        | Contract method does not exist         | Check method name and contract ABI                      |
-| `InvalidArgs`           | Invalid method arguments               | Verify args format and encoding                         |
+For the errors below, the response has `error.name` set to `HANDLER_ERROR` and `error.cause.name` set to the listed value.
+
+| `error.cause.name`         | Description                                     | Solution                                                |
+|----------------------------|-------------------------------------------------|---------------------------------------------------------|
+| `UNKNOWN_ACCOUNT`          | Account does not exist                          | Check account ID spelling                               |
+| `INVALID_ACCOUNT`          | Invalid account format                          | Use valid account ID (e.g., `account.near`)             |
+| `UNKNOWN_BLOCK`            | Block not found                                 | Use a valid block hash or height                        |
+| `UNKNOWN_GAS_KEY`          | Key is not a gas key or does not exist          | Check the public key and that it was added as a gas key |
+| `GARBAGE_COLLECTED_BLOCK`  | Block too old                                   | Use archival node or more recent block                  |
+| `NO_CONTRACT_CODE`         | No contract deployed (returned by `view_code`)  | Verify the account has a deployed contract              |
+| `NO_GLOBAL_CONTRACT_CODE`  | No global contract for this code hash or account | Check the code hash or the publishing account ID       |
+| `TOO_LARGE_CONTRACT_STATE` | Account state is above the node's `view_state` limit | Paginate with `limit` and `after_key_base64`       |
+| `TOO_MANY_ACCESS_KEYS`     | Account has more keys than one response can hold | Paginate with `limit` and `after_key`                  |
+
+A view function call that fails while the contract runs does not return an error object. The node answers with HTTP status 200, and `result.error` holds a text message. For example, if the method does not exist, the message is `wasm execution failed with error: MethodResolveError(MethodNotFound)`. If the account has no contract, the message starts with `wasm execution failed with error: CompilationError(CodeDoesNotExist`. Check `result.error` before you decode `result.result`. `view_access_key` for a key that does not exist answers the same way. If the node cannot parse the request parameters, it returns `error.name` `REQUEST_VALIDATION_ERROR` and `error.cause.name` `PARSE_ERROR`. This happens, for example, when `args_base64` is not valid base64.
