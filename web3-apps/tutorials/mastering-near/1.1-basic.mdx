@@ -31,7 +31,7 @@ Navigate to the `contract-rs` folder, and then to the `01-basic-auction` folder.
 ```bash
 git clone git@github.com:near-examples/auctions-tutorial.git
 
-cd contract-rs/01-basic-auction
+cd auctions-tutorial/contract-rs/01-basic-auction
 ```
 
 
@@ -118,10 +118,10 @@ Lets now take a look at the initialization function, which we need to call to de
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L23-L35
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L23-L34
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 23
-end: 35
+end: 34
 fname: lib.rs
 language: rust
 */}
@@ -139,12 +139,11 @@ pub fn init(end_time: U64, auctioneer: AccountId) -> Self {
         auctioneer,
     }
 }
-
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L23-L35)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L23-L34)
 
 </div>
 
@@ -153,11 +152,11 @@ pub fn init(end_time: U64, auctioneer: AccountId) -> Self {
 #### Macros
 We denote the initialization function using the `#[init]` macro. Notice that the initialization function needs to return an instance of `Self`, i.e. the contract's structure.
 
-Meanwhile, the `#[private]` denotes that the function can only be called by the account on which the contract is deployed.
+The initialization function is public so that a factory can initialize a new auction. Deploy and initialize the contract in the same transaction to prevent another account from initializing it first. The `#[init]` macro prevents it from being initialized again.
 
 
 #### End Time
-The end time is represented using a `unix timestamp` in **nano seconds**, and needs to be given as a `String` when calling the initialization function. This is because smart contracts cannot receive numbers larger than `52 bits` and `unix timestamps` are represented in `64 bits`.
+The end time is represented using a `unix timestamp` in **nano seconds**, and needs to be given as a `String` when calling the initialization function. The `U64` wrapper serializes the timestamp as a string to preserve its precision in JSON, where JavaScript numbers cannot represent all 64-bit integers exactly.
 
 #### Initial Bid
 Notice that we initialize the contract with a `1 yoctonear` bid, made from the `current account id`. This means that, after the contract is initialized, the first bid will be placed by the contract at 10^-24 NEAR.
@@ -183,35 +182,35 @@ The contract implements four functions to give access to its stored data, i.e. t
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L78-L92
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L77-L91
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
-start: 78
-end: 92
+start: 77
+end: 91
 fname: lib.rs
 language: rust
 */}
 
 ```rust title="lib.rs" lines
-        self.highest_bid.clone()
-    }
+pub fn get_highest_bid(&self) -> Bid {
+    self.highest_bid.clone()
+}
 
-    pub fn get_auction_end_time(&self) -> U64 {
-        self.auction_end_time
-    }
+pub fn get_auction_end_time(&self) -> U64 {
+    self.auction_end_time
+}
 
-    pub fn get_auctioneer(&self) -> AccountId {
-        self.auctioneer.clone()
-    }
+pub fn get_auctioneer(&self) -> AccountId {
+    self.auctioneer.clone()
+}
 
-    pub fn get_claimed(&self) -> bool {
-        self.claimed
-    }
+pub fn get_claimed(&self) -> bool {
+    self.claimed
 }
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L78-L92)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L77-L91)
 
 </div>
 
@@ -239,15 +238,16 @@ The function is quite simple: it verifies if the auction is still active and com
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L37-L63
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L36-L62
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
-start: 37
-end: 63
+start: 36
+end: 62
 fname: lib.rs
 language: rust
 */}
 
 ```rust title="lib.rs" lines
+#[payable]
 pub fn bid(&mut self) -> Promise {
     // Assert the auction is still ongoing
     require!(
@@ -274,12 +274,11 @@ pub fn bid(&mut self) -> Promise {
     // Transfer tokens back to the last bidder
     Promise::new(last_bidder).transfer(last_bid)
 }
-
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L37-L63)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L36-L62)
 
 </div>
 
@@ -323,15 +322,16 @@ You'll notice that the contract has a final function called `claim`, this allows
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L65-L76
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs#L64-L75
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
-start: 65
-end: 76
+start: 64
+end: 75
 fname: lib.rs
 language: rust
 */}
 
 ```rust title="lib.rs" lines
+pub fn claim(&mut self) -> Promise {
     require!(
         env::block_timestamp() > self.auction_end_time.into(),
         "Auction has not ended yet"
@@ -343,12 +343,11 @@ language: rust
     // Transfer tokens to the auctioneer
     Promise::new(self.auctioneer.clone()).transfer(self.highest_bid.bid)
 }
-
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L65-L76)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L64-L75)
 
 </div>
 

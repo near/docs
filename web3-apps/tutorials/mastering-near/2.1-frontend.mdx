@@ -10,7 +10,7 @@ Now that we have successfully created a contract, it's time to build a frontend 
 
 ## Frontend structure
 
-Navigate to the auction frontend.
+From the repository root, navigate to the auction frontend.
 
 ```bash
 cd frontends/01-frontend
@@ -26,12 +26,12 @@ For starters, let's take a look at how the code in the frontend is structured by
 | **index.js**          | The main page where the project's components are loaded into and contains most of the logic for the application like viewing the state of the contract and logic for placing a bid |
 | **near.js**           | Contains the wallet class that has methods to interact with the wallet and blockchain |
 | **context.js**        | Holds the global context - the wallet object and the signed-in account ID - that can be accessed anywhere |
-| **config.js**         | Specifies the account ID of the auction contract |
+| **config.js**         | Specifies the network, auction contract account ID, and RPC URL |
+| **utils/amounts.mjs** | Converts token amounts between decimal strings and integer units without losing precision |
 | **Navigation.jsx**    | A component that contains a button to sign users in and out of wallets |
 | **Bid.jsx**           | A component allowing a user to make a bid |
 | **LastBid.jsx**       | A component that displays the highest bid and when the highest bid will next refresh |
 | **Timer.jsx**         | A component that shows how long till the auction is over, or, if over, displays a button to claim the auction and then states the auction is over 
-| **amounts.mjs**       | Converts token amounts between decimal strings and their smallest units using integer arithmetic |
 
 To run the frontend, use Node.js 22.12 or newer and install its dependencies:
 
@@ -45,7 +45,13 @@ npm run dev
 
 ## Specifying the contract
 
-We have a config file that specifies the network, RPC provider, and auction contract that the frontend will interact with. Set `NEXT_PUBLIC_AUCTION_CONTRACT` in `.env.local` to the basic auction contract you deployed and initialized. You can also set `NEXT_PUBLIC_NETWORK_ID` and `NEXT_PUBLIC_RPC_URL`. Restart the development server after changing these values; for a production build, rebuild the frontend.
+We have a config file that reads the network, auction contract account ID, and RPC URL from environment variables. Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_AUCTION_CONTRACT` to your deployed, initialized auction. Set `NEXT_PUBLIC_NETWORK_ID` to `testnet` or `mainnet`, and optionally set `NEXT_PUBLIC_RPC_URL` to use a different RPC provider.
+
+```bash
+cp .env.example .env.local
+```
+
+These `NEXT_PUBLIC_` variables are included in the frontend at build time, so rebuild after changing them.
 
 {/* github-code
 url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/config.js
@@ -74,15 +80,15 @@ export const RPC_URL = process.env.NEXT_PUBLIC_RPC_URL ||
 
 To be able to fully interact with the contract - send bids and claim the auction - you'll need a `wallet` to sign transactions. Wallets securely store your private keys and allow you to sign transactions without exposing your private key to the frontend. We use `@hot-labs/near-connect` to let users choose and connect a wallet.
 
-We abstract the connector in our `near.js` file by exposing methods to sign in, sign out, read contract state, and send transactions. The connector is loaded in the browser when needed, while `near-api-js` provides an RPC connection for view calls.
+We abstract the wallet connection in our `near.js` file by exposing methods to complete various tasks. Feel free to [explore the file](https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js) to see how `NearConnector` restores a connected account and listens for sign-in and sign-out events.
 
-The wallet object is initiated in the `_app.js` file and added to the global context along with the signed-in account. Its `startUp` method restores an existing wallet session and subscribes to sign-in and sign-out events. The effect cleans up those subscriptions when the component unmounts.
+The wallet object is initialized in the `_app.js` file and added to the global context along with the account that is signed in to make it easier to access anywhere in the application. The connector is loaded in the browser, and the effect removes its event listeners when it is cleaned up.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/_app.js
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/_app.js#L13-L33
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 13
-end: 34
+end: 33
 fname: _app.js
 */}
 
@@ -108,12 +114,11 @@ export default function MyApp({ Component, pageProps }) {
       <ToastContainer />
     </NearContext.Provider>
   );
-}
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/_app.js#L13-L34)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/_app.js#L13-L33)
 
 </div>
 
@@ -151,7 +156,7 @@ export const NearContext = createContext({
 <Tip>
 **Access keys**
 
-On NEAR, in addition to full access keys, we have `function-call access keys` that allow applications to sign calls to specific methods without attaching a deposit. Our `bid` call attaches NEAR, so we send it through the connected wallet for approval.
+On NEAR, in additional to normal full access keys, we have `function-call access keys` that are given to applications to allow them to sign `non-payable` transactions on behalf of the user. This is so the wallet doesn't have to pop up for each non-critical transaction, improving the user experience. In this example, bids attach a deposit, so the user approves these transactions through their wallet.
 
 You can read further about NEAR's key model [here](/protocol/accounts-contracts/access-keys).
 
@@ -213,38 +218,14 @@ export const Navigation = () => {
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js#L35-L39
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
-start: 11
+start: 35
 end: 39
 fname: near.js
 */}
 
 ```javascript title="near.js" lines
-async getConnector() {
-  this.connectorPromise ??= import('@hot-labs/near-connect').then(({ NearConnector }) =>
-    new NearConnector({ network: this.networkId, providers: { [this.networkId]: [RPC_URL] } }));
-  return this.connectorPromise;
-}
-
-startUp = async (onAccountChange) => {
-  const connector = await this.getConnector();
-  let active = true;
-  const signedIn = ({ accounts }) => {
-    if (active) onAccountChange(accounts[0]?.accountId ?? '');
-  };
-  const signedOut = () => { if (active) onAccountChange(''); };
-  connector.on('wallet:signIn', signedIn);
-  connector.on('wallet:signOut', signedOut);
-  const connected = await connector.getConnectedWallet().catch(() => null);
-  if (active) onAccountChange(connected?.accounts[0]?.accountId ?? '');
-  return () => {
-    active = false;
-    connector.off('wallet:signIn', signedIn);
-    connector.off('wallet:signOut', signedOut);
-  };
-};
-
 signIn = async () => (await this.getConnector()).connect();
 signOut = async () => {
   const connector = await this.getConnector();
@@ -254,7 +235,7 @@ signOut = async () => {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/wallets/near.js#L11-L39)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/wallets/near.js#L35-L39)
 
 </div>
 
@@ -264,10 +245,10 @@ signOut = async () => {
 
 ## Displaying the highest bid
 
-To get the highest bid from the auction and who made it we call `get_highest_bid`. This function returns the bid amount in `yoctoNEAR` as a string. We use `formatUnits` with 24 decimal places to display the amount in NEAR without losing precision.
+To get the highest bid from the auction and who made it we call `get_highest_bid`. This function returns the highest bid in `yoctoNEAR` as a string. We use `formatUnits(highestBidData.bid, 24)` to display it in NEAR. The helper uses integer arithmetic and returns a decimal string, preserving every yoctoNEAR.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L24-L31
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 24
 end: 31
@@ -293,7 +274,7 @@ useEffect(() => {
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js#L41-L42
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 41
 end: 42
@@ -313,12 +294,12 @@ viewMethod = ({ contractId, method, args = {} }) =>
 
 {/* /github-code */}
 
-In the wallet file, `viewMethod` uses the RPC provider's `callFunction` method. View calls work before the user connects a wallet. The RPC URL comes from `config.js`; you can choose a different [RPC provider](/api/rpc/providers) through `NEXT_PUBLIC_RPC_URL`.
+In the wallet file, `viewMethod` uses `JsonRpcProvider.callFunction` from `near-api-js` to read the contract through the configured RPC provider. Reading state does not require a connected wallet. The default testnet endpoint is `https://test.rpc.fastnear.com`; there are [many different providers available](/api/rpc/providers).
 
 We then pass the information about the highest bidder into the `LastBid` component to display the bid amount and the bidder's account Id.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L107-L107
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 107
 end: 107
@@ -375,59 +356,33 @@ export default LastBid
 Someone else could have placed a higher bid since the page was loaded. To keep the display up to date, we fetch the contract information every 20 seconds using `setInterval`. A second interval updates the countdown until the next refresh, and both intervals are cleared when the component unmounts.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L49-L62
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
-start: 24
-end: 63
+start: 49
+end: 62
 fname: index.js
 */}
 
 ```javascript title="index.js" lines
-useEffect(() => {
-  const getInfo = async () => {
-    const highestBidData = await wallet.viewMethod({
-      contractId: AUCTION_CONTRACT,
-      method: "get_highest_bid",
-    });
-    setHighestBid(formatUnits(highestBidData.bid, 24))
-    setHighestBidder(highestBidData.bidder)
-
-    const claimedData = await wallet.viewMethod({
-      contractId: AUCTION_CONTRACT,
-      method: "get_claimed",
-    });
-    setClaimed(claimedData)
-
-    const auctionEndTimeData = await wallet.viewMethod({
-      contractId: AUCTION_CONTRACT,
-      method: "get_auction_end_time",
-    });
-    setAuctionEndTime(auctionEndTimeData)
-  }
+const intervalId = setInterval(() => {
   getInfo().catch((err) => setError(err.message));
+  setSecondsRemaining(20);
+}, 20000);
 
-  fetchPastBids();
-
-  const intervalId = setInterval(() => {
-    getInfo().catch((err) => setError(err.message));
-    setSecondsRemaining(20);
-  }, 20000);
-  
-  const countdownIntervalId = setInterval(() => {
-    setSecondsRemaining(prev => (prev === 1 ? 20 : prev - 1));
-  }, 1000);
+const countdownIntervalId = setInterval(() => {
+  setSecondsRemaining(prev => (prev === 1 ? 20 : prev - 1));
+}, 1000);
 
 
-  return () => {
-    clearInterval(intervalId);
-    clearInterval(countdownIntervalId);
-  };
-}, []);
+return () => {
+  clearInterval(intervalId);
+  clearInterval(countdownIntervalId);
+};
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/index.js#L24-L63)
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/frontends/01-frontend/src/pages/index.js#L49-L62)
 
 </div>
 
@@ -440,7 +395,7 @@ useEffect(() => {
 The contract stores the end time of the auction in nanoseconds since the Unix epoch (1 January 1970 00:00:00 UTC). The `Timer` component converts this value to milliseconds using `BigInt`, compares it with `Date.now()`, and displays the time left in days, hours, minutes, and seconds.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/components/Timer.jsx
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/components/Timer.jsx#L18-L36
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 18
 end: 36
@@ -481,12 +436,12 @@ const { allSeconds, days, hours, minutes, seconds } = formatTime(time);
 
 ## Making a bid
 
-To make a bid we call the contract's `bid` function. The input box takes the amount in NEAR, and `parseUnits` converts that decimal string to a `yoctoNEAR` string using exact integer arithmetic. The call attaches that amount as a deposit and requests 300 TGas. Unused gas is refunded.
+To make a bid we make a call to the contract using the `bid` function. We specify the deposit amount in `yoctoNEAR` which will be the bid amount. The input box takes the bid amount in NEAR as a decimal string. We use `parseUnits(amount, 24)` to convert it to a yoctoNEAR string without using JavaScript floating-point arithmetic. We also attach 300 Tgas to the transaction; unused gas is refunded.
 
 Here, since the user is changing the state of the contract, not just viewing it, the user needs to sign the transaction. Thus the wallet will pop up displaying the transaction details.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L65-L76
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 65
 end: 76
@@ -516,7 +471,7 @@ const bid = async (amount) => {
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js#L44-L55
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 44
 end: 55
@@ -550,10 +505,10 @@ callMethod = async ({ contractId, method, args = {}, gas = '300000000000000', de
 
 ## Claiming the auction
 
-Once the auction is over (the current time is greater than the end time), the timer displays a button to claim the auction. Clicking it calls `claim` on the basic auction contract, which transfers the highest bid in NEAR to the auctioneer. The page reloads after the transaction so the claimed state is displayed.
+Once the auction is over (the current time is greater than the end time) the auction can be claimed. At this point, the timer will be hidden and a button to claim the auction will be displayed. Once clicked the `claim` function will be called on the auction contract to send the highest bid in NEAR to the auctioneer. The page reloads after a successful bid or claim to show the updated state, and errors are displayed through notifications.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L78-L86
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 78
 end: 86
@@ -584,6 +539,6 @@ const claim = async () => {
 
 ## Conclusion
 
-In this part of the tutorial, we have implemented a simple frontend for a NEAR contract. Along the way, you have learned how to use the wallet selector to sign the user in and out, how to view the contract’s state, how to sign and send transactions.
+In this part of the tutorial, we have implemented a simple frontend for a NEAR contract. Along the way, you have learned how to use `near-connect` to sign the user in and out, how to view the contract’s state, how to sign and send transactions.
 
 While we can see the highest bid, we may want to see the auction's bidding history. Since the contract only stores the most recent bid (to reduce storage costs), we need to use an indexer to pull historical data. In the [next part](./2.2-indexing) of the tutorial, we'll look at querying historical data using an API endpoint.
