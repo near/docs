@@ -94,7 +94,7 @@ So:
 
 That is 75 million bytes. At 1e19 yoctoNEAR per byte (1 NEAR per 100,000 bytes), the `tokenToOwner` mapping needs 7.5e26 yoctoNEAR, or Ⓝ750, kept on the account balance.
 
-Note that you can get this down to Ⓝ730 just by changing the prefix from `t2o` to a single character. Or get rid of it entirely! You can have a zero-length prefix on one `PersistentVector` in your smart contract. If you did that with this one, you could get it down to Ⓝ700. The 40 bytes per record cannot be avoided, so fewer, larger records cost less than many small ones.
+Note that you can get this down to Ⓝ730 just by changing the prefix from `t2o` to a single character. Or get rid of it entirely! One collection in your contract can have a zero-length prefix. If this map had one, its keys would keep only the two colons, and you could get it down to Ⓝ720. The 40 bytes per record cannot be avoided, so fewer, larger records cost less than many small ones.
 
 ---
 
