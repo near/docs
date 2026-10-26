@@ -13,13 +13,13 @@ The RPC API exposes several methods for broadcasting signed transactions and tra
 |--------|---------|
 | [`send_tx`](#send-transaction) | Broadcast a signed transaction and wait for the result |
 | [`tx`](#transaction-status) | Get the status of a previously broadcast transaction |
-| [`tx_status`](#transaction-status-with-receipts) | Like `tx`, but also returns receipt details |
+| [`tx_status`](#transaction-status-with-receipts) | Like `tx`, but also returns receipt details (nearcore 2.14.0 or later) |
 | [`EXPERIMENTAL_receipt`](#receipt-by-id) | Fetch a single receipt by id |
 | [`broadcast_tx_async`](#broadcast-async) | Broadcast and return immediately with the transaction hash |
 | [`broadcast_tx_commit`](#broadcast-commit) | Broadcast and wait until the transaction is included in a block |
 
 <Info>
-Prefer `send_tx`, `tx`, and `tx_status` for new integrations. The `broadcast_tx_async` and `broadcast_tx_commit` methods are kept for backward compatibility but offer less control over when the call returns. `EXPERIMENTAL_tx_status` is a deprecated alias of `tx_status`.
+Prefer `send_tx` and `tx` for new integrations, and `tx_status` on nodes that run nearcore 2.14.0 or later. On older nodes, use `EXPERIMENTAL_tx_status`, which also works on 2.14.0 and later. The `broadcast_tx_async` and `broadcast_tx_commit` methods are kept for backward compatibility but offer less control over when the call returns.
 </Info>
 
 ---
@@ -144,13 +144,19 @@ Returns the status of a previously submitted transaction.
 
 ## Transaction Status with Receipts
 
-`tx_status` returns the same payload as `tx` plus the full set of receipts produced by the transaction. Useful when debugging cross-contract calls.
+`tx_status` returns the same payload as `tx`, plus a `receipts` list with the receipts that the transaction produced. It is useful when debugging cross-contract calls.
 
 - **method**: `tx_status`
 - **params**: same as `tx`
 
+The `receipts` list can be incomplete:
+
+- Receipts that have not run yet when the node answers are not in the list. With the default `wait_until` (`EXECUTED_OPTIMISTIC`), refund receipts are often still missing. `wait_until: "FINAL"` waits until all receipts, including refunds, have run.
+- When the signer and the receiver are the same account, the list leaves out the first receipt. This is the receipt converted from the transaction.
+- A node that does not track the signer's shard can return the result without the `receipts` list.
+
 <Note>
-This method was previously called `EXPERIMENTAL_tx_status`. That name still works as a deprecated alias with identical request and response types, so existing clients keep functioning — but new code should use `tx_status`.
+`tx_status` is available from nearcore 2.14.0. The 2.14.0 release candidates (versions that start with `2.14.0-rc`) also have it. Earlier versions call this method `EXPERIMENTAL_tx_status`. Nodes that run them return a "Method not found" error for `tx_status`. `EXPERIMENTAL_tx_status` still works in 2.14.0, as a deprecated alias with identical request and response types. Use `EXPERIMENTAL_tx_status` until every node you call runs one of these versions or later. To see which version a node runs, call the `status` method and read `version.version`.
 </Note>
 
 ---
