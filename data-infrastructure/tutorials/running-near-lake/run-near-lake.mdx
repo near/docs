@@ -7,6 +7,10 @@ import NearLakeDeprecationTutorial from '/snippets/near-lake-deprecation-tutoria
 
 <NearLakeDeprecationTutorial />
 
+<Warning>
+The NEAR Lake indexer is no longer updated. Its latest release, 2.4.1, is built on nearcore 2.4. It cannot sync mainnet or testnet, because these networks use newer protocol versions. To index data from your own node, use the [nearcore indexer](/data-infrastructure/tutorials/near-indexer).
+</Warning>
+
 At NEAR we already have a working solution to index blockchain data and store it in AWS S3 buckets called **NEAR Lake**. In this guide you will learn how to set up and run an instance of the NEAR Lake Indexer.
 
 The Lake Indexer setup consists of the following components:
@@ -163,13 +167,13 @@ The data structure we use is the following:
 ```text
 <block_height>/
   block.json
-  shard_0.json
   shard_1.json
+  shard_4.json
   ...
   shard_N.json
 ```
 
 - `<block_height>` is a 12-character-long `u64` string with leading zeros (e.g `000042839521`). [See this issue for a reasoning](https://github.com/near/near-lake/issues/23)
 - `block_json` contains JSON-serialized [`BlockView`](https://github.com/near/nearcore/blob/e9a28c46c2bea505b817abf484e6015a61ea7d01/core/primitives/src/views.rs#L711-L716) struct. **Note:** this struct might change in the future, we will announce it
-- `shard_N.json` where `N` is `u64` starting from `0`. Represents the index number of the shard. In order to find out the expected number of shards in the block you can look in `block.json` at `.header.chunks_included`
+- `shard_N.json` holds the data of the shard with ID `N`. There is one file for each shard of the block. Shard IDs do not always run from `0` to the number of shards minus one. After resharding, a shard ID can be any `u64`. To list the shards of a block, read `.chunks[].shard_id` in `block.json`. This array has one entry per shard. Do not use `.header.chunks_included` for this. It counts only the chunks that are new in this block, so it is lower than the number of shards when a chunk is missing.
 

@@ -24,8 +24,8 @@ The data structure used by Lake Indexer is the following:
 ```text
     <block_height>/
       block.json
-      shard_0.json
       shard_1.json
+      shard_4.json
       ...
       shard_N.json
 ```
@@ -34,7 +34,7 @@ The data structure used by Lake Indexer is the following:
 
 `block_json` contains JSON-serialized `BlockView` struct. **NB!** this struct might change in the future, we will announce it
 
-`shard_N.json` where N is [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) starting from `0`. Represents the index number of the shard. In order to find out the expected number of shards in the block you can look in `block.json` at `.header.chunks_included`
+`shard_N.json` holds the data of the shard with ID `N`. There is one file for each shard of the block. Shard IDs do not always run from `0` to the number of shards minus one. After resharding, a shard ID can be any [`u64`](https://doc.rust-lang.org/std/primitive.u64.html). To list the shards of a block, read `.chunks[].shard_id` in `block.json`. This array has one entry per shard. Do not use `.header.chunks_included` for this. It counts only the chunks that are new in this block, so it is lower than the number of shards when a chunk is missing.
 
 ### How to use it
 
