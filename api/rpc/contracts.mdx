@@ -551,7 +551,7 @@ Returns the state (key-value pairs) of a contract based on a key prefix (base64 
 <Warning>
 By default, a node rejects a `view_state` request with `TOO_LARGE_CONTRACT_STATE` if the account's storage usage is above 50,000 bytes. This size does not count the contract code. Requests with `limit` or `after_key_base64` are not checked against this limit. The node operator sets this limit with `trie_viewer_state_size_limit`. A narrower `prefix_base64` does not avoid the error, because the node checks the size of the whole account.
 
-To read a large state, paginate with `limit` (up to 10,000 items) or `after_key_base64`. Both are available from nearcore 2.13.0. The node stops adding items to a page once its keys and values reach 50,000 bytes. The last item can make a page larger than that. When more entries remain, the response includes `last_key`. Pass it as `after_key_base64` to get the next page. The `after_key_base64` value must start with `prefix_base64`. The `include_proof` option cannot be combined with `limit` or `after_key_base64`.
+To read a large state, paginate with `limit` (up to 10,000 items) or `after_key_base64`. Both are available from nearcore 2.13.0. The node stops adding items to a page once its keys and values reach 50,000 bytes. The last item can make a page larger than that. When more entries remain, the response includes `last_key`. Pass it as `after_key_base64` to get the next page. After decoding, the `after_key_base64` key must start with the `prefix_base64` prefix. The base64 strings themselves do not have to match. The `include_proof` option cannot be combined with `limit` or `after_key_base64`.
 </Warning>
 
 <Tabs>
