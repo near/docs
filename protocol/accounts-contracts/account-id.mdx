@@ -139,9 +139,9 @@ A NEAR transfer to a `0s` address that does not exist yet creates the account wi
 
 <Info>
 
-A deterministic account has no access keys when it is created, and creating it does not give the sender any control over it. Only the account itself can deploy new code, add keys, or delete the account. At first, this can happen only through the account's own contract. If the contract adds an access key, the holder of that key can also do these things. The contract can still change its storage like any other contract.
+A deterministic account has no access keys when it is created, and creating it does not give the sender any control over it. Only the account itself can deploy new code, add keys, or delete the account. At first, this can happen only through the account's own contract. If the contract adds a full-access key, the holder of that key can also do these things. A function-call key does not give this control. The contract can still change its storage like any other contract.
 
-The code comes from a global contract. If the initial state names the global contract by code hash, the code stays as initialized unless the account's own contract changes it. If it names the global contract by account ID, the owner of that account can publish new code at any time, and the deterministic account then runs the new code without a change of address. If a deterministic account is deleted, anyone can create it again with the same initial state.
+The code comes from a global contract. If the initial state names the global contract by code hash, the code stays as initialized unless the account itself changes it, through its contract or through a full-access key that the contract added. If it names the global contract by account ID, the owner of that account can publish new code at any time, and the deterministic account then runs the new code without a change of address. If a deterministic account is deleted, anyone can create it again with the same initial state.
 
 </Info>
 
