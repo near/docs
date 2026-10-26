@@ -84,9 +84,9 @@ As the `Receipts` of a `Transaction` are processed, they get a status:
 
 If an action in a `Receipt` fails, all the actions in that `Receipt` are rolled back. Notice that we are talking about the `Receipt` status, and not the `Transaction` status.
 
-The status of a transaction is determined by its first receipt, which contains all its actions. If any of the actions in the first receipt fail, the transaction is marked as failed.
+The status of a transaction starts at its first receipt, which contains all its actions. If any of the actions in the first receipt fail, the transaction is marked as failed.
 
-Notice that, it could happen that a transaction is marked as successful, but some of its receipt fails. This happens when a `FunctionCall` successfully spawns a new receipt, but the consequent function call fails. In this case, the transaction is marked as successful because the original function call was successful.
+If a function call returns a promise, the transaction takes the status of the receipt that the promise resolves to, and so on down the chain. A receipt that a function call creates but does not return does not change the transaction status. So a transaction can be marked as successful even though one of its receipts fails.
 
 See the examples below for more details.
 
@@ -127,7 +127,7 @@ See the examples below for more details.
 4. The function finishes correctly and the transaction is marked as successful ✅
 5. A new receipt is created to call the function `external-call` in `external.near`
 5. The function `external-call` fails
-6. The original transaction is still marked as successful ✅ because the first receipt was successful
+6. The original transaction is still marked as successful ✅, because `cross-call` did not return the promise. If `cross-call` returned the promise, the transaction would be marked as failed ⛔
 
 </Accordion>
 

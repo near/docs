@@ -730,7 +730,8 @@ Before broadcasting a withdrawal, persist its business intent, network, signer, 
 
 | Result | Handling |
 | --- | --- |
-| Explicit validation rejection | Correct the reported key, permissions, balance, nonce, or block hash. If this intent was submitted previously, resolve that earlier hash before creating a replacement. |
+| Receiver shard congested (`ShardCongestedError` or `ShardStuckError` in `near-api-js`, or `ShardCongested` or `ShardStuck` in the raw `INVALID_TRANSACTION` error) | The shard of the receiver account is too busy or is not producing chunks, so the node did not accept the transaction. The node checks congestion before the key, nonce, and balance, so this error does not mean the rest of the transaction is valid. Do not sign a replacement. Wait and resend the same signed bytes while their reference block hash is still valid. If the resend fails with a different validation error, handle it as an explicit validation rejection. |
+| Explicit validation rejection | For any other validation error, correct the reported key, permissions, balance, nonce, or block hash. If this intent was submitted previously, resolve that earlier hash before creating a replacement. |
 | Timeout, connection loss, server error, or unknown transaction | Submission is uncertain. Query the saved hash and signer on the same network, using another provider or an archival node when needed. Do not assume the withdrawal failed. |
 | Included or still executing | Poll [`tx` or `EXPERIMENTAL_tx_status`](/api/rpc/transactions#transaction-status-with-receipts) with `wait_until: "FINAL"`; require `final_execution_status === "FINAL"` before settlement. |
 | Finalized execution failure | Inspect the failed receipt and its `ActionError.index`, where present. Account for fees and refunds, and reconcile any earlier successful receipts before retrying the business operation. |
