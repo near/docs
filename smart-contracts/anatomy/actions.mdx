@@ -20,7 +20,7 @@ but **cannot** call two methods on different contracts.
 
 ## Transfer NEAR Ⓝ
 
-You can send `$NEAR` from your contract to any other account on the network. The Gas cost for transferring `$NEAR` is fixed and is based on the protocol's genesis config. Currently, it costs `~0.45 TGas`.
+You can send `$NEAR` from your contract to any other account on the network. The gas cost of a transfer is set by the protocol's runtime parameters. A transfer to a named account (for example `alice.near`) costs about `0.45 TGas`. A transfer to an Ethereum-like (`0x`) or deterministic (`0s`) address costs about `8.15 TGas`. A transfer to a 64-hex implicit account costs about `8.35 TGas`. These transfers always include the fee for creating the account, even if the account already exists. From protocol version 88 (nearcore 2.14.0), the same higher fee applies to `0u` addresses.
 
 
 ```rust
