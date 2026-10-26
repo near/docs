@@ -86,7 +86,7 @@ If an action in a `Receipt` fails, all the actions in that `Receipt` are rolled 
 
 The status of a transaction starts at its first receipt, which contains all its actions. If any of the actions in the first receipt fail, the transaction is marked as failed.
 
-If a function call returns a promise, the transaction takes the status of the receipt that the promise resolves to, and so on down the chain. A receipt that a function call creates but does not return does not change the transaction status. So a transaction can be marked as successful even though one of its receipts fails.
+Each successful action in a receipt replaces the receipt's result, so the last action decides it. If the last action is a function call that returns a promise, the transaction takes the status of the receipt that the promise resolves to, and so on down the chain. Other receipts do not change the transaction status. This includes a promise that a function call creates but does not return, and a returned promise that a later action in the same receipt replaces. So a transaction can be marked as successful even though one of its receipts fails.
 
 See the examples below for more details.
 
