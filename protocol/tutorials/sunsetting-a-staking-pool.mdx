@@ -21,21 +21,40 @@ Share the [unstaking and withdrawal commands](/protocol/tutorials/staking-tokens
 
 ## Step 2: Pause Staking
 
-Call `pause_staking` from the pool owner account. This causes the contract to unstake everything (stake 0) and stop restaking, without affecting share balances or reward calculations.
+Call `pause_staking` from the pool owner account. The pool then sends a stake of 0 to the protocol and stops restaking. It does not change any account's shares in the contract or the reward calculations.
 
 ```sh
-near call <my_validator> pause_staking '{}' --useAccount <owner-account.near> --depositYocto 1 --networkId mainnet
+near call <my_validator> pause_staking '{}' --useAccount <owner-account.near> --networkId mainnet
 ```
 
+Do not attach a deposit. `pause_staking` and `resume_staking` do not accept one, and the call fails if you add it.
+
 <Note>
-The contract will unstake all tokens at the next epoch boundary. Delegators will still see their shares and can unstake and withdraw normally.
+The pool sends a stake of 0 right away. It stays in the validator set for the rest of the current epoch and for the next epoch. It leaves the set in the epoch after that. Keep the validator node running until the pool is no longer in the validator set. If the node stops earlier, the pool misses blocks and chunks, and it earns less or no rewards for those epochs.
+
+The pool's locked balance becomes liquid at the start of the third epoch after the call. Pausing does not unstake anyone's shares in the contract. Delegators still see their shares and can unstake and withdraw normally.
 </Note>
 
 ---
 
 ## Step 3: Withdraw Owner Balance
 
-Once your own staked tokens are unstaked and the unbonding period has passed, withdraw them:
+Pausing does not unstake your own balance in the pool. This balance includes the shares that the pool paid you as its reward fee. First, unstake it from the owner account:
+
+<Tabs>
+  <Tab title="Staking CLI">
+    ```sh
+    near staking delegation <owner-account.near> unstake-all <my_validator> network-config mainnet sign-with-keychain
+    ```
+  </Tab>
+  <Tab title="Function Call">
+    ```sh
+    near call <my_validator> unstake_all '{}' --useAccount <owner-account.near> --networkId mainnet
+    ```
+  </Tab>
+</Tabs>
+
+After the 4-epoch unbonding period, withdraw it:
 
 <Tabs>
   <Tab title="Staking CLI">
@@ -50,6 +69,10 @@ Once your own staked tokens are unstaked and the unbonding period has passed, wi
   </Tab>
 </Tabs>
 
+<Note>
+The balance that the pool held when it was created does not belong to any account. No one can unstake or withdraw it. It stays in the pool account, together with the rewards it earned. Pools created through `poolv1.near` start with at least 30 NEAR.
+</Note>
+
 ---
 
 ## Step 4: Resume (Optional)
@@ -57,5 +80,5 @@ Once your own staked tokens are unstaked and the unbonding period has passed, wi
 If you decide to keep the pool running again, you can re-enable staking at any time:
 
 ```sh
-near call <my_validator> resume_staking '{}' --useAccount <owner-account.near> --depositYocto 1 --networkId mainnet
+near call <my_validator> resume_staking '{}' --useAccount <owner-account.near> --networkId mainnet
 ```
