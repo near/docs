@@ -4531,10 +4531,35 @@ NEAR supports the post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access
   ```
 
   </Tab>
+  <Tab title="🐍 near-kit-py">
+
+  ```bash
+  pip install near-kit
+  ```
+
+  ```python
+  from near import KeyPairSigner, MlDsa65KeyPair, Near, add_full_access_key
+
+  # A client signed by alice's existing full-access key adds the new key
+  client = Near(network="testnet", account_id="alice.testnet", private_key="ed25519:<alice-existing-key>")
+
+  # Generate a post-quantum key pair (1952-byte public key, 3309-byte signatures)
+  pq_key = MlDsa65KeyPair.generate()
+  print(pq_key.public_key)  # "ml-dsa-65:..."
+
+  # Add it to alice's account, like any other key
+  client.send_transaction("alice.testnet", actions=[add_full_access_key(pq_key.public_key)], wait_until="FINAL")
+
+  # Then sign transactions with the post-quantum key
+  pq_client = Near(network="testnet", signer=KeyPairSigner("alice.testnet", pq_key))
+  pq_client.send("bob.testnet", "1 NEAR")
+  ```
+
+  </Tab>
 </Tabs>
 
 <Note>
-On-chain, an `ml-dsa-65` access key is stored as a 32-byte hash, so key listings such as [`view_access_key_list`](/api/rpc/contracts#view-access-key-list) return an `ml-dsa-65-hash:` handle instead of the full key — parse it with `parseMlDsa65Handle()` (near-kit) for display and comparison; the handle cannot sign or be re-added. Post-quantum keys are currently supported by [`near-kit`](https://github.com/r-near/near-kit) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust); support in `near-api-js` and `py-near` is pending.
+On-chain, an `ml-dsa-65` access key is stored as a 32-byte hash, so key listings such as [`view_access_key_list`](/api/rpc/contracts#view-access-key-list) return an `ml-dsa-65-hash:` handle instead of the full key — parse it with `parseMlDsa65Handle()` (near-kit) for display and comparison; the handle cannot sign or be re-added. Post-quantum keys are currently supported by [`near-kit`](https://github.com/r-near/near-kit) (TypeScript), [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust) and [`near-kit-py`](https://github.com/r-near/near-kit-py) (Python); support in `near-api-js` is pending.
 </Note>
 
 ---
@@ -4645,6 +4670,18 @@ console.log("Signature valid:", isValid);
 </div>
 
 {/* /github-code */}
+
+  </Tab>
+  <Tab title="🦀 near-kit">
+
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/verify_signature.rs" />
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/verify_signature.py" />
 
   </Tab>
 </Tabs>
