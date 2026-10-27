@@ -21,6 +21,13 @@ We offer a collection of language-specific libraries that allow developers to in
 We have APIs available for Javascript, Rust, and Python. Add them to your project using the following commands:
 
 <Tabs>
+  <Tab title="🌐 near-kit">
+
+  ```bash
+  npm i near-kit
+  ```
+
+  </Tab>
   <Tab title="🌐 near-api-js">
 
   ```bash
@@ -28,10 +35,10 @@ We have APIs available for Javascript, Rust, and Python. Add them to your projec
   ```
 
   </Tab>
-  <Tab title="🌐 near-kit">
+  <Tab title="🦀 near-kit">
 
   ```bash
-  npm i near-kit
+  cargo add near-kit
   ```
 
   </Tab>
@@ -42,10 +49,10 @@ We have APIs available for Javascript, Rust, and Python. Add them to your projec
   ```
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🐍 near-kit">
 
   ```shell
-  pip install py-near
+  pip install near-kit
   ```
 
   </Tab>
@@ -75,19 +82,19 @@ Gets the available and staked balance of an account in yoctoNEAR.
   <Tab title="🦀 near-api-rs">
 
   <Github fname="account_details.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/account_details.rs" />
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/account_details.rs" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  from py_near.account import Account
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/account_details.rs"/>
 
-  account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
+  </Tab>
+  <Tab title="🐍 near-kit">
 
-  account_balance = account.get_balance()
-  ```
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/account_details.py"/>
 
   </Tab>
 </Tabs>
@@ -116,20 +123,20 @@ If you are using this call to validate a recipient before sending tokens from a 
   <Tab title="🦀 near-api-rs">
 
   <Github fname="account_details.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/account_details.rs#L21-L21"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/account_details.rs#L21-L21"
     start="21" end="21" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  from py_near.account import Account
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/account_details.rs#L14-L17" start="14" end="17" />
 
-  account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
+  </Tab>
+  <Tab title="🐍 near-kit">
 
-  account_state = account.fetch_state()
-  ```
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/account_details.py#L11-L14" start="11" end="14" />
 
   </Tab>
 </Tabs>
@@ -152,7 +159,7 @@ To create a named account like `user.testnet`, you need to call the `create_acco
   <Tab title="🦀 near-api-rs">
 
   <Github fname="create_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account.rs#L32-L47"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/create_account.rs#L32-L47"
     start="32" end="47" />
 
   <Accordion title="Creating an account from a seed phrase">
@@ -160,17 +167,22 @@ To create a named account like `user.testnet`, you need to call the `create_acco
   You can also create an account via a randomly generated seed phrase.
 
   <Github fname="create_account_from_seed.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account_from_seed.rs#L32-L46"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/create_account_from_seed.rs#L32-L46"
     start="32" end="46" />
 
   </Accordion>
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  await account.function_call("testnet", "create_account", {"new_account_id": "example-account.testnet", "new_public_key": "ed25519:..."}, "30000000000000", 1 * NEAR)
-  ```
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/create_tla.rs" />
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/create_tla.py" />
 
   </Tab>
 </Tabs>
@@ -195,23 +207,20 @@ Accounts on NEAR can create sub-accounts under their own namespace, which is use
   <Tab title="🦀 near-api-rs">
 
   <Github fname="create_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/create_account.rs#L61-L76"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/create_account.rs#L61-L76"
     start="61" end="76" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  Create a sub-account and fund it with your main account:
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/create_subaccount.rs" />
 
-  ```python
-  from py_near.account import Account
-  from py_near.dapps.core import NEAR
+  </Tab>
+  <Tab title="🐍 near-kit">
 
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
-
-  res = account.create_account(account_id="sub.example-account.testnet", public_key="...", initial_balance=1 * NEAR)
-  ```
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/create_subaccount.py" />
 
   </Tab>
 </Tabs>
@@ -261,14 +270,26 @@ Accounts on NEAR can delete themselves, transferring any remaining balance to a 
   <Tab title="🌐 near-kit">
 
   <Github language="javascript"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/delete-account.js" />
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/delete-account.js"  start="42" end="49" />
 
   </Tab>
   <Tab title="🦀 near-api-rs">
 
   <Github fname="delete_account.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/delete_account.rs#L51-L59"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/delete_account.rs#L51-L59"
     start="51" end="59" />
+
+  </Tab>
+  <Tab title="🦀 near-kit">
+
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/delete_account.rs"  start="38" end="46" />
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/delete_account.py"  start="37" end="41" />
 
   </Tab>
 </Tabs>
@@ -313,21 +334,20 @@ Accounts can transfer different types of tokens to other accounts, including the
   <Tab title="🦀 near-api-rs">
 
   <Github fname="send_tokens.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/send_tokens.rs#L22-L28"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/send_tokens.rs#L22-L28"
     start="22" end="28" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  from py_near.account import Account
-  from py_near.dapps.core import NEAR
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/send_tokens.rs" />
 
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
+  </Tab>
+  <Tab title="🐍 near-kit">
 
-  await account.send_money("receiver-account.testnet", 1 * NEAR)
-  ```
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/send_tokens.py" />
 
   </Tab>
 </Tabs>
@@ -374,19 +394,24 @@ A smart contract exposes its methods, and making a function call that modifies s
   <Tab title="🦀 near-api-rs">
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L23-L24"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/contract_interaction.rs#L23-L24"
     start="23" end="24" />
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L37-L49"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/contract_interaction.rs#L37-L49"
     start="37" end="49" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  await account.function_call("usn.near", "ft_transfer", {"receiver_id": "bob.near", "amount": "1000000000000000000000000"})
-  ```
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/contract_interaction.rs" />
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/contract_interaction.py" />
 
   </Tab>
 </Tabs>
@@ -411,8 +436,20 @@ You can send multiple [actions](/protocol/transactions/transaction-anatomy#actio
   <Tab title="🦀 near-api-rs">
 
   <Github fname="batch_actions.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/batch_actions.rs#L22-L42"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/batch_actions.rs#L22-L42"
     start="22" end="42" />
+
+  </Tab>
+  <Tab title="🦀 near-kit">
+
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/batch_actions.rs" />
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/batch_actions.py" />
 
   </Tab>
 </Tabs>
@@ -437,26 +474,20 @@ The only way to have true simultaneous transactions is to use multiple access ke
   <Tab title="🦀 near-api-rs">
 
   <Github fname="simultaneous_transactions.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/simultaneous_transactions.rs#L23-L55"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/simultaneous_transactions.rs#L23-L55"
     start="23" end="55" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  import asyncio
-  from py_near.account import Account
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/simultaneous_transactions.rs" />
 
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
+  </Tab>
+  <Tab title="🐍 near-kit">
 
-  # Prepare the transactions
-  tx1 = account.function_call("guestbook.near-examples.testnet", "add_message", { "text": "Hello, world!" })
-  tx2 = account.function_call("counter.near-examples.testnet", "increment", {})
-
-  # Send the transactions simultaneously
-  transactionsResults = await asyncio.gather(tx1, tx2)
-  ```
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/simultaneous_transactions.py" />
 
   </Tab>
 </Tabs>
@@ -487,23 +518,20 @@ On NEAR, a smart contract is deployed as a WASM file. Every account has the pote
   Note that the `signer` here needs to be a signer for the same `account_id` as the one used to construct the `Contract` object.
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L54-L61"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/contract_interaction.rs#L54-L61"
     start="54" end="61" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  import asyncio
-  from py_near.account import Account
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/deploy_contract.rs" />
 
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
+  </Tab>
+  <Tab title="🐍 near-kit">
 
-  with open("contract.wasm", "rb") as f:
-    contract_code = f.read()
-  await account.deploy_contract(contract_code)
-  ```
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/deploy_contract.py" />
 
   </Tab>
 </Tabs>
@@ -568,7 +596,7 @@ There are two ways to reference a global contract:
         .await.unwrap();
     ```
 
-    [See full example on GitHub](https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs)
+    [See full example on GitHub](https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/global_contract_accountid.rs)
 
     </Tab>
     <Tab title="by hash">
@@ -587,8 +615,36 @@ There are two ways to reference a global contract:
         .await.unwrap();
     ```
 
-    [See full example on GitHub](https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs)
+    [See full example on GitHub](https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/global_contract_hash.rs)
 
+    </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🦀 near-kit">
+
+  <Tabs>
+    <Tab title="by account">
+    <Github language="rust"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/deploy_global_contract_by_account.rs#L17-L27" start="17" end="27" />
+    </Tab>
+    <Tab title="by hash">
+    <Github language="rust"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/deploy_global_contract_by_hash.rs#L16-L26" start="16" end="26" />
+    </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Tabs>
+    <Tab title="by account">
+    <Github language="python"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/deploy_global_contract_by_account.py#L25-L33" start="25" end="33" />
+    </Tab>
+    <Tab title="by hash">
+    <Github language="python"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/deploy_global_contract_by_hash.py#L26-L35" start="26" end="35" />
     </Tab>
   </Tabs>
 
@@ -650,7 +706,7 @@ Once a [global contract](/smart-contracts/global-contracts) has been [deployed](
         .await.unwrap();
     ```
 
-    [See full example on GitHub](https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs)
+    [See full example on GitHub](https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/global_contract_accountid.rs)
 
     </Tab>
     <Tab title="by hash">
@@ -670,8 +726,36 @@ Once a [global contract](/smart-contracts/global-contracts) has been [deployed](
         .await.unwrap();
     ```
 
-    [See full example on GitHub](https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs)
+    [See full example on GitHub](https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/global_contract_hash.rs)
 
+    </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🦀 near-kit">
+
+  <Tabs>
+    <Tab title="by account">
+    <Github language="rust"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/deploy_global_contract_by_account.rs#L46-L53" start="46" end="53" />
+    </Tab>
+    <Tab title="by hash">
+    <Github language="rust"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/deploy_global_contract_by_hash.rs#L45-L52" start="45" end="52" />
+    </Tab>
+  </Tabs>
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Tabs>
+    <Tab title="by account">
+    <Github language="python"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/deploy_global_contract_by_account.py#L46-L48" start="46" end="48" />
+    </Tab>
+    <Tab title="by hash">
+    <Github language="python"
+      url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/deploy_global_contract_by_hash.py#L48-L53" start="48" end="53" />
     </Tab>
   </Tabs>
 
@@ -709,21 +793,20 @@ View functions are read-only methods on a smart contract that do not modify stat
   <Tab title="🦀 near-api-rs">
 
   <Github fname="contract_interaction.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/contract_interaction.rs#L22-L33"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/contract_interaction.rs#L22-L33"
     start="22" end="33" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  view_call_result = await account.view_function("guestbook.near-examples.testnet", "total_messages", {})
-  # If args are required, they can be passed in like this in the 3rd argument:
-  # {
-  #   "from_index": "0",
-  #   "limit": "10"
-  # }
-  print(view_call_result)
-  ```
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/contract_interaction.rs#L13-L23" start="13" end="23" />
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/contract_interaction.py#L14-L21" start="14" end="21" />
 
   </Tab>
 </Tabs>
@@ -745,15 +828,20 @@ View functions are read-only methods on a smart contract that do not modify stat
   <Tab title="🦀 near-api-rs">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L22-L22"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/keys.rs#L22-L22"
     start="22" end="22" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  keys = await account.get_access_key_list()
-  ```
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/keys.rs#L14-L16" start="14" end="16" />
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/keys.py#L21-L23" start="21" end="23" />
 
   </Tab>
 </Tabs>
@@ -781,15 +869,20 @@ Anyone with this key can transfer funds, sign transactions, interact with contra
   <Tab title="🦀 near-api-rs">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L25-L37"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/keys.rs#L25-L37"
     start="25" end="37" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  keys = await account.add_full_access_public_key("5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj")
-  ```
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/keys.rs#L22-L26" start="22" end="26" />
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/keys.py#L29-L31" start="29" end="31" />
 
   </Tab>
 </Tabs>
@@ -819,20 +912,20 @@ You can further restrict this key by:
   <Tab title="🦀 near-api-rs">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L38-L56"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/keys.rs#L38-L56"
     start="38" end="56" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  await account.add_public_key(
-    "5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj",
-    "example-contract.testnet", # Contract this key is allowed to call
-    ["example_method"], # Methods this key is allowed to call (optional)
-    0.25 * NEAR # Gas allowance key can use to call methods (optional)
-  )
-  ```
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/keys.rs#L28-L38" start="28" end="38" />
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/keys.py#L33-L45" start="33" end="45" />
 
   </Tab>
 </Tabs>
@@ -862,15 +955,20 @@ Accounts on NEAR can delete their own keys.
   <Tab title="🦀 near-api-rs">
 
   <Github fname="keys.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/keys.rs#L57-L66"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/keys.rs#L57-L66"
     start="57" end="66" />
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  ```python
-  await account.delete_public_key("5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj")
-  ```
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/keys.rs#L40-L53" start="40" end="53" />
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/keys.py#L47-L54" start="47" end="54" />
 
   </Tab>
 </Tabs>
@@ -942,10 +1040,35 @@ NEAR supports the post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access
   ```
 
   </Tab>
+  <Tab title="🐍 near-kit-py">
+
+  ```bash
+  pip install near-kit
+  ```
+
+  ```python
+  from near import KeyPairSigner, MlDsa65KeyPair, Near, add_full_access_key
+
+  # A client signed by alice's existing full-access key adds the new key
+  client = Near(network="testnet", account_id="alice.testnet", private_key="ed25519:<alice-existing-key>")
+
+  # Generate a post-quantum key pair (1952-byte public key, 3309-byte signatures)
+  pq_key = MlDsa65KeyPair.generate()
+  print(pq_key.public_key)  # "ml-dsa-65:..."
+
+  # Add it to alice's account, like any other key
+  client.send_transaction("alice.testnet", actions=[add_full_access_key(pq_key.public_key)], wait_until="FINAL")
+
+  # Then sign transactions with the post-quantum key
+  pq_client = Near(network="testnet", signer=KeyPairSigner("alice.testnet", pq_key))
+  pq_client.send("bob.testnet", "1 NEAR")
+  ```
+
+  </Tab>
 </Tabs>
 
 <Note>
-On-chain, an `ml-dsa-65` access key is stored as a 32-byte hash, so key listings such as [`view_access_key_list`](/api/rpc/contracts#view-access-key-list) return an `ml-dsa-65-hash:` handle instead of the full key — parse it with `parseMlDsa65Handle()` (near-kit) for display and comparison; the handle cannot sign or be re-added. Post-quantum keys are currently supported by [`near-kit`](https://github.com/r-near/near-kit) (TypeScript) and [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust); support in `near-api-js` and `py-near` is pending.
+On-chain, an `ml-dsa-65` access key is stored as a 32-byte hash, so key listings such as [`view_access_key_list`](/api/rpc/contracts#view-access-key-list) return an `ml-dsa-65-hash:` handle instead of the full key — parse it with `parseMlDsa65Handle()` (near-kit) for display and comparison; the handle cannot sign or be re-added. Post-quantum keys are currently supported by [`near-kit`](https://github.com/r-near/near-kit) (TypeScript), [`near-kit-rs`](https://github.com/r-near/near-kit-rs) (Rust) and [`near-kit-py`](https://github.com/r-near/near-kit-py) (Python); support in `near-api-js` is pending.
 </Note>
 
 ---
@@ -965,6 +1088,18 @@ Users can sign messages using the `wallet-selector` `signMessage` method, which 
 
   <Github fname="authenticate.js" language="javascript"
     url="https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/verify-signature.js" />
+
+  </Tab>
+  <Tab title="🦀 near-kit">
+
+  <Github language="rust"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/verify_signature.rs" />
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  <Github language="python"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/verify_signature.py" />
 
   </Tab>
 </Tabs>
@@ -991,12 +1126,20 @@ Users can sign messages using the `wallet-selector` `signMessage` method, which 
 
   - [Documentation](https://docs.rs/near-api/latest/near_api/)
   - [Github](https://github.com/near/near-api-rs)
-  - [Full Examples](https://github.com/near-examples/near-api-examples/blob/main/rust)
+  - [Full Examples](https://github.com/near-examples/near-api-examples/blob/main/near-api-rs)
 
   </Tab>
-  <Tab title="🐍 py-near">
+  <Tab title="🦀 near-kit">
 
-  - [Github](https://github.com/pvolnov/py-near)
+  - [Documentation](https://docs.rs/near-kit)
+  - [Github](https://github.com/r-near/near-kit-rs)
+  - [Examples](https://github.com/r-near/near-kit-rs/tree/main/crates/near-kit/examples)
+
+  </Tab>
+  <Tab title="🐍 near-kit">
+
+  - [Github](https://github.com/r-near/near-kit-py)
+  - [PyPI](https://pypi.org/project/near-kit/)
 
   </Tab>
 </Tabs>

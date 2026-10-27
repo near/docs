@@ -112,13 +112,13 @@ Deploying a global contract incurs high storage costs. Tokens are burned to comp
   Use `deploy_global_contract_code` with `as_account_id` to deploy by account:
 
   <Github fname="global_contract_accountid.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs#L17-L28"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/global_contract_accountid.rs#L17-L28"
     start="17" end="28" />
 
   Use `deploy_global_contract_code` with `as_hash` to deploy by hash:
 
   <Github fname="global_contract_hash.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs#L17-L28"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/global_contract_hash.rs#L17-L28"
     start="17" end="28" />
 
   </Tab>
@@ -150,7 +150,7 @@ After the global code is deployed, attach it to another account by referencing i
   Reference a global contract by account ID with `use_global_account_id`:
 
   <Github fname="global_contract_accountid.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_accountid.rs#L61-L70"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/global_contract_accountid.rs#L61-L70"
     start="61" end="70" />
 
   To reference a global contract by hash, calculate its code hash and call `use_global_hash`:
@@ -161,7 +161,7 @@ After the global code is deployed, attach it to another account by referencing i
   ```
 
   <Github fname="global_contract_hash.rs" language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/rust/examples/global_contract_hash.rs#L62-L70"
+    url="https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/global_contract_hash.rs#L62-L70"
     start="62" end="70" />
 
   </Tab>
