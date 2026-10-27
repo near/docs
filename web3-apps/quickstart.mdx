@@ -39,7 +39,7 @@ Visit `http://localhost:3000` in your browser to view the dApp. Note that since 
 
 <Accordion title="The app is not starting?">
 
-Make sure you are using **node >= v22**, you can easily switch versions using `nvm use 22`
+Make sure you are using **Node.js 22.22.2 or newer**. You can install and select Node.js 24 with `nvm install 24` and `nvm use 24`.
 
 </Accordion>
 
@@ -201,8 +201,8 @@ Just like the [navigation bar](#navigation-bar), we use the app's local `useNear
 - `callFunction` calls methods that modify contract state through the connected wallet's `signAndSendTransaction` method
 
 {/* github-code
-url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx
-commit: be63c9f326b47d881dddaea87564fe578bcd844e
+url: https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/pages/hello-near/index.tsx
+commit: 8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6
 start: 11
 end: 11
 language: jsx
@@ -214,7 +214,7 @@ const { signedAccountId, viewFunction, callFunction } = useNearWallet();
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/pages/hello-near/index.tsx#L11-L11)
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/pages/hello-near/index.tsx#L11-L11)
 
 </div>
 
@@ -225,8 +225,8 @@ const { signedAccountId, viewFunction, callFunction } = useNearWallet();
 For example, when we want to fetch the current greeting stored in the contract, we use `viewFunction` inside a `useEffect` hook:
 
 {/* github-code
-url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx
-commit: be63c9f326b47d881dddaea87564fe578bcd844e
+url: https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/pages/hello-near/index.tsx
+commit: 8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6
 start: 17
 end: 19
 language: jsx
@@ -240,7 +240,7 @@ useEffect(() => {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/pages/hello-near/index.tsx#L17-L19)
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/pages/hello-near/index.tsx#L17-L19)
 
 </div>
 
@@ -250,10 +250,10 @@ useEffect(() => {
 On the other hand, when the user submits a new greeting, we use `callFunction` to send a transaction to the contract:
 
 {/* github-code
-url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx
-commit: be63c9f326b47d881dddaea87564fe578bcd844e
-start: 25
-end: 37
+url: https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/pages/hello-near/index.tsx
+commit: 8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6
+start: 22
+end: 34
 language: jsx
 */}
 
@@ -275,7 +275,7 @@ const saveGreeting = () => {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/pages/hello-near/index.tsx#L25-L37)
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/pages/hello-near/index.tsx#L22-L34)
 
 </div>
 

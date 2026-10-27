@@ -88,8 +88,8 @@ const connector = new NearConnector({
 Subscribe to the `wallet:signIn` and `wallet:signOut` events to update your application's wallet state:
 
 {/* github-code
-url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx
-commit: be63c9f326b47d881dddaea87564fe578bcd844e
+url: https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/providers/near-provider.tsx
+commit: 8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6
 start: 95
 end: 109
 language: tsx
@@ -115,7 +115,7 @@ connector.on('wallet:signOut', handleSignOut);
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/providers/near-provider.tsx#L95-L109)
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/providers/near-provider.tsx#L95-L109)
 
 </div>
 
@@ -124,8 +124,8 @@ connector.on('wallet:signOut', handleSignOut);
 Call `connector.connect()` to open the wallet selection modal and `connector.disconnect(wallet)` to sign out. In the React provider, these calls also update the local wallet and account state:
 
 {/* github-code
-url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx
-commit: be63c9f326b47d881dddaea87564fe578bcd844e
+url: https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/providers/near-provider.tsx
+commit: 8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6
 start: 132
 end: 144
 language: tsx
@@ -137,7 +137,7 @@ const signIn = useCallback(async () => {
   setWallet(connectedWallet);
   const accounts = await connectedWallet.getAccounts();
   setSignedAccountId(accounts[0]?.accountId ?? '');
-}, [accessKeyPlugin, connector]);
+}, [connector]);
 
 const signOut = useCallback(async () => {
   if (!wallet) return;
@@ -149,7 +149,7 @@ const signOut = useCallback(async () => {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/frontend/src/providers/near-provider.tsx#L132-L144)
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/providers/near-provider.tsx#L132-L144)
 
 </div>
 
