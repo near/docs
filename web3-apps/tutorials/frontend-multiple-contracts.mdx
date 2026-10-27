@@ -7,6 +7,8 @@ description: "Interact with multiple contracts in your frontend."
 
 This example showcases how to interact with multiple contracts from a single frontend.
 
+The frontend uses `@hot-labs/near-connect` to connect a wallet and sign transactions, and `near-api-js` to query each contract through a shared RPC provider. Its `Wallet` wrapper exposes `viewMethod` for queries and `signAndSendTransactions` for wallet requests.
+
 Particularly, this example shows how to:
 
 1. Query data from multiple contracts.
@@ -19,14 +21,19 @@ Particularly, this example shows how to:
 To query multiple contracts simply perform multiple `view` calls:
 
 {/* github-code
-url: https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js
-commit: e4b42167349f9b06e98d61a90a74209c266efeeb
-start: 70
-end: 76
+url: https://github.com/near-examples/frontend-multiple-contracts/blob/a802aeea038a34238dadff55cc8b29b5c20684b8/frontend/index.js
+commit: a802aeea038a34238dadff55cc8b29b5c20684b8
+start: 71
+end: 82
 fname: index.js
 */}
 
 ```javascript title="index.js" lines
+async function getGreetingAndMessages() {
+  // query the greeting in Hello NEAR
+  const currentGreeting = await wallet.viewMethod({ method: 'get_greeting', contractId: HELLO_ADDRESS });
+
+  // query the last 4 messages in the Guest Book
   const totalMessages = await wallet.viewMethod({method: 'total_messages', contractId: GUEST_ADDRESS })
   const from_index = (totalMessages > 4? totalMessages - 4: 0).toString();
   const latestMessages = await wallet.viewMethod({ method: 'get_messages', contractId: GUEST_ADDRESS, args: {from_index, limit: "4"} });
@@ -38,7 +45,7 @@ fname: index.js
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/frontend-multiple-contracts/blob/e4b42167349f9b06e98d61a90a74209c266efeeb/frontend/index.js#L70-L76)
+[See code on GitHub](https://github.com/near-examples/frontend-multiple-contracts/blob/a802aeea038a34238dadff55cc8b29b5c20684b8/frontend/index.js#L71-L82)
 
 </div>
 
@@ -53,10 +60,10 @@ The `wallet` object enables to dispatch multiple transactions simultaneously. Ho
 Dispatching multiple transactions at once is just a nice way to improve UX, because the user interacts with the wallet only once.
 
 {/* github-code
-url: https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js
-commit: e4b42167349f9b06e98d61a90a74209c266efeeb
-start: 35
-end: 62
+url: https://github.com/near-examples/frontend-multiple-contracts/blob/a802aeea038a34238dadff55cc8b29b5c20684b8/frontend/index.js
+commit: a802aeea038a34238dadff55cc8b29b5c20684b8
+start: 34
+end: 68
 fname: index.js
 */}
 
@@ -88,12 +95,19 @@ const helloTx = {
 }
 
 // Sign **independent** transactions: If one fails, the other **DOES NOT** revert
-await wallet.signAndSendTransactions({ transactions: [ helloTx, guestTx ] })
+try {
+  await wallet.signAndSendTransactions({ transactions: [helloTx, guestTx] });
+  await getGreetingAndMessages();
+} catch (error) {
+  window.alert(`Could not submit both transactions: ${error.message}`);
+} finally {
+  document.querySelector('#signed-in-flow').classList.remove('please-wait');
+}
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/frontend-multiple-contracts/blob/e4b42167349f9b06e98d61a90a74209c266efeeb/frontend/index.js#L35-L62)
+[See code on GitHub](https://github.com/near-examples/frontend-multiple-contracts/blob/a802aeea038a34238dadff55cc8b29b5c20684b8/frontend/index.js#L34-L68)
 
 </div>
 
@@ -135,7 +149,7 @@ You can aggregate multiple [actions](../../smart-contracts/anatomy/actions) dire
         params: {
           methodName: 'ft_transfer',
           args: { receiver_id: "<receiver-account>", amount: amount_in_yocto },
-          gas: THIRTY_TGAS, deposit: 1 }
+          gas: THIRTY_TGAS, deposit: "1" }
       }
     ]
   }
