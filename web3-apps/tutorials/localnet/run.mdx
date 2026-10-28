@@ -192,7 +192,7 @@ git clone https://github.com/near-examples/hello-localnet
 cd hello-localnet
 ```
 
-Use Node.js 22.22.2 or newer. Once you're inside the repository, install the dependencies using `pnpm`:
+Once you're inside the repository, install the dependencies using `pnpm`:
 
 ```sh
 pnpm install --frozen-lockfile
@@ -203,8 +203,6 @@ Next, create a `.env.local` file to point the app at your local node:
 ```sh
 echo "NEXT_PUBLIC_RPC_URL=http://localhost:3030" > .env.local
 ```
-
-The app uses this URL for both `near-api-js` queries and the NEAR Connect provider. NEAR Connect exposes mainnet/testnet network slots, so the app configures its testnet slot with your local RPC URL. Keep the custom localnet configuration selected in Intear Wallet so transactions are signed for the local account.
 
 Then, start the development Next.js server:
 
