@@ -1,38 +1,62 @@
 ---
 title: State
 sidebarTitle: State (Storage)
-hide_table_of_contents: true
 description: "Explore how NEAR smart contracts manage their state."
-mode: wide
 ---
-import { ExplainCode, Block , File  } from '/snippets/explain-code.jsx'
 
 Smart contracts store data in their account's state, which is public on the chain. The storage starts **empty** until a contract is deployed and the state is initialized.
 
 It is important to know that the account's **code** and account's **storage** are **independent**. [Updating the code](../release/upgrade) does **not erase** the state.
 
-<ExplainCode>
+## Defining the State
+The attributes of the `struct` marked as the contract define the data that will be stored.
 
-<Block highlights="6-9,13-18" fname="auction">
+The contract can store all native types (e.g. `u8`, `string`, `HashMap`, `Vector`) as well as complex objects.
 
-    ### Defining the State
-    The attributes of the `struct` marked as the contract define the data that will be stored.
+For example, our Auction contract stores when the auction ends, and an object representing the highest bid.
 
-    The contract can store all native types (e.g. `u8`, `string`, `HashMap`, `Vector`) as well as complex objects.
+<Note>
+The structures that will be saved need a special macro that tells the SDK to store them [serialized in Borsh](./serialization).
+</Note>
 
-    For example, our Auction contract stores when the auction ends, and an object representing the highest bid.
+<Note>
+The SDK also provides [collections](./collections) to efficiently store collections of data.
+</Note>
 
-    <Note>
-    The structures that will be saved need a special macro that tells the SDK to store them [serialized in Borsh](./serialization).
-    </Note>
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 5
+end: 19
+fname: lib.rs
+language: rust
+*/}
 
-    <Note>
-    The SDK also provides [collections](./collections) to efficiently store collections of data.
-    </Note>
+```rust title="lib.rs" lines
+#[near(serializers = [json, borsh])]
+#[derive(Clone)]
+pub struct Bid {
+    pub bidder: AccountId,
+    pub bid: NearToken,
+}
 
-</Block>
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    highest_bid: Bid,
+    auction_end_time: U64,
+    auctioneer: AccountId,
+    claimed: bool,
+}
+```
 
-<Block highlights="" fname="auction" type='info'>
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L5-L19)
+
+</div>
+
+{/* /github-code */}
 
 <Warning>
 
@@ -42,49 +66,144 @@ It currently costs ~**1Ⓝ** to store **100KB** of data.
 
 </Warning>
 
-</Block>
+## Initializing the State
+After the contract is deployed, its state is empty and needs to be initialized with
+some initial values.
 
-<Block highlights="" fname="auction" >
+There are two ways to initialize a state:
+  1. By creating an initialization function
+  2. By setting default values
 
-    ### Initializing the State
-    After the contract is deployed, its state is empty and needs to be initialized with
-    some initial values.
+### I. Initialization Functions
+An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
 
-    There are two ways to initialize a state:
-      1. By creating an initialization function
-      2. By setting default values
+In our Auction example, the contract has an initialization function that sets when the auction ends. The contract derives the `PanicOnDefault`, which forces the user to call the init method denoted by the `#[init]` macro.
 
-</Block>
+<Note>
+It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions).
+</Note>
 
-<Block highlights="12,22-34" fname="auction">
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 12
+end: 19
+fname: lib.rs
+language: rust
+*/}
 
-    ### I. Initialization Functions
-    An option to initialize the state is to create an `initialization` function, which needs to be called before executing any other function.
+```rust title="lib.rs" lines
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    highest_bid: Bid,
+    auction_end_time: U64,
+    auctioneer: AccountId,
+    claimed: bool,
+}
+```
 
-    In our Auction example, the contract has an initialization function that sets when the auction ends. The contract derives the `PanicOnDefault`, which forces the user to call the init method denoted by the `#[init]` macro.
+<div className="github-source-link">
 
-    <Note>
-    It is a good practice to mark initialization functions as private. We will cover function types in the [functions section](./functions).
-    </Note>
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L12-L19)
 
-</Block>
+</div>
 
-<Block highlights="10-16" fname="hello">
+{/* /github-code */}
 
-    ### II. Default State
-    Another option to initialize the state is to create a `Default` version of our contract's `struct`.
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 23
+end: 34
+fname: lib.rs
+language: rust
+*/}
 
-    For example, our "Hello World" contract has a default state with a `greeting` set to `"Hello"`.
+```rust title="lib.rs" lines
+#[init]
+pub fn init(end_time: U64, auctioneer: AccountId) -> Self {
+    Self {
+        highest_bid: Bid {
+            bidder: env::current_account_id(),
+            bid: NearToken::from_yoctonear(1),
+        },
+        auction_end_time: end_time,
+        claimed: false,
+        auctioneer,
+    }
+}
+```
 
-    The first time the contract executes, the `Default` will be stored in the state, and the state will be considered initialized.
+<div className="github-source-link">
 
-    <Note>
-    The state can only be initialized once.
-    </Note>
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L23-L34)
 
-</Block>
+</div>
 
-<Block highlights="" fname="hello" type='info'>
+{/* /github-code */}
+
+### II. Default State
+Another option to initialize the state is to create a `Default` version of our contract's `struct`.
+
+For example, our "Hello World" contract has a default state with a `greeting` set to `"Hello"`.
+
+The first time the contract executes, the `Default` will be stored in the state, and the state will be considered initialized.
+
+<Note>
+The state can only be initialized once.
+</Note>
+
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 5
+end: 8
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+#[near(contract_state)]
+pub struct Contract {
+    greeting: String,
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/contract-rs/src/lib.rs#L5-L8)
+
+</div>
+
+{/* /github-code */}
+
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 11
+end: 17
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+impl Default for Contract {
+    fn default() -> Self {
+        Self {
+            greeting: "Hello".to_string(),
+        }
+    }
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/contract-rs/src/lib.rs#L11-L17)
+
+</div>
+
+{/* /github-code */}
 
 <Note>
 **Lifecycle of the State**
@@ -96,10 +215,6 @@ The state is actually [stored serialized](./serialization), and the SDK takes a 
 When the method finishes executing successfully, all the changes to the state are serialized, and saved back to the storage.
 </Note>
 
-</Block>
-
-<Block highlights="" fname="hello" type='info'>
-
 <Warning>
 **State and Code**
 
@@ -110,15 +225,3 @@ Updating the code of a contract does **not erase** the state, and can indeed lea
 Make sure to read the [updating a contract](../release/upgrade) if you run into issues.
 
 </Warning>
-
-</Block>
-
-<File fname="auction"
-    url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-    start="2" end="83" />
-
-<File fname="hello"
-    url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-    start="2" end="32" />
-
-</ExplainCode>

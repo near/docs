@@ -3,8 +3,6 @@ title: Bidding with FTs
 description: "Learn how to enable bidding with fungible tokens"
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 To further develop this contract we will introduce another primitive: [fungible tokens](/primitives/ft/ft). Instead of placing bids in `$NEAR` tokens, they will be placed in FTs. This may be useful if, for example, an auctioneer wants to keep the bid amounts constant in terms of dollars as an auction is carried out, so bids can be placed in stablecoins such as $USDC. Another use case is if a project like Ref Finance was holding its own auction and wanted the auction to happen in its project's token $REF.
 
 ---
@@ -14,9 +12,47 @@ To further develop this contract we will introduce another primitive: [fungible 
 We want to only accept bids in one type of fungible token; accepting many different FTs would make the value of each bid difficult to compare. We're also going to adjust the contract so that the auctioneer can specify a starting bid amount for the auction.
 
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L33-L53"
-        start="33" end="53" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 31
+end: 52
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+#[init]
+pub fn init(
+    end_time: U64,
+    auctioneer: AccountId,
+    ft_contract: AccountId,
+    nft_contract: AccountId,
+    token_id: TokenId,
+    starting_price: U128,
+) -> Self {
+    Self {
+        highest_bid: Bid {
+            bidder: env::current_account_id(),
+            bid: starting_price,
+        },
+        auction_end_time: end_time,
+        auctioneer,
+        claimed: false,
+        ft_contract,
+        nft_contract,
+        token_id,
+    }
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/src/lib.rs#L31-L52)
+
+</div>
+
+{/* /github-code */}
 
 
 ---
@@ -30,42 +66,167 @@ When we were making bids in `$NEAR` tokens we would call the auction contract di
 The `ft_on_transfer` method always has the same interface; the FT contract will pass it the `sender`, the `amount` of FTs being sent and a `msg` which can be empty (which it will be here) or it can contain some information needed by the method (if you want to send multiple arguments in msg it is best practice to deliver this in JSON then parse it in the contract). The method returns the number of tokens to refund the user, in our case we will use all the tokens attached to the call for the bid unless the contract panics in which case the user will automatically be refunded their FTs in full.
 
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L56"
-        start="56" end="56" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 56
+end: 56
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+pub fn ft_on_transfer(&mut self, sender_id: AccountId, amount: U128, msg: String) -> U128 {
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/src/lib.rs#L56-L56)
+
+</div>
+
+{/* /github-code */}
 
 
 We need to confirm that the user is attaching fungible tokens when calling the method and that they are using the right FT, this is done by checking the predecessor's account ID. Since it's the FT contract that directly calls the auction contract, the `predecessor` is now the account ID of the FT contract.
 
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L62-L63"
-        start="62" end="63" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 62
+end: 63
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+let ft = env::predecessor_account_id();
+require!(ft == self.ft_contract, "The token is not supported");
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/src/lib.rs#L62-L63)
+
+</div>
+
+{/* /github-code */}
 
 
 The bidder's account ID is now given by the argument `sender_id` and the bid amount is passed as an argument named `amount`.
 
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L75-L78"
-        start="75" end="78" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 75
+end: 78
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+self.highest_bid = Bid {
+    bidder: sender_id,
+    bid: amount,
+};
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/src/lib.rs#L75-L78)
+
+</div>
+
+{/* /github-code */}
 
 
 When we want to return the funds to the previous bidder we now make a cross-contract call to the FT contract. 
 
 
-<Github fname="lib.rs" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L81-L84"
-        start="81" end="84" />
-    <Github fname="ext.rs" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/ext.rs#L8-L11"
-        start="8" end="11" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 81
+end: 84
+fname: lib.rs
+*/}
+
+```rust title="lib.rs" lines
+ft_contract::ext(self.ft_contract.clone())
+    .with_attached_deposit(NearToken::from_yoctonear(1))
+    .with_static_gas(Gas::from_tgas(30))
+    .ft_transfer(last_bidder, last_bid);
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/src/lib.rs#L81-L84)
+
+</div>
+
+{/* /github-code */}
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/ext.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 2
+end: 19
+fname: ext.rs
+highlight: 7-11
+*/}
+
+```rust title="ext.rs" lines highlight={7-11}
+use near_sdk::json_types::U128;
+use near_sdk::{ext_contract, AccountId};
+
+use crate::TokenId;
+
+// FT interface for cross-contract calls
+#[ext_contract(ft_contract)]
+#[allow(dead_code)]
+trait FT {
+    fn ft_transfer(&self, receiver_id: AccountId, amount: U128);
+}
+
+// NFT interface for cross-contract calls
+#[ext_contract(nft_contract)]
+#[allow(dead_code)]
+trait NFT {
+    fn nft_transfer(&self, receiver_id: AccountId, token_id: TokenId);
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/src/ext.rs#L2-L19)
+
+</div>
+
+{/* /github-code */}
 
  We then return 0 because the method uses all the FTs in the call.
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L86"
-        start="86" end="86" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 86
+end: 86
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+U128(0)
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/src/lib.rs#L86-L86)
+
+</div>
+
+{/* /github-code */}
 
 
 If the call was to fail the FT contract will automatically refund the user their FTs.
@@ -85,9 +246,36 @@ If the call was to fail the FT contract will automatically refund the user their
 When the auction is complete we need to send the fungible tokens to the auctioneer when we send the NFT to the highest bidder, we implement a similar call as when we were returning the funds just changing the arguments.
 
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L99-L109"
-        start="99" end="109" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 100
+end: 110
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+// Transfer FTs to the auctioneer
+ft_contract::ext(self.ft_contract.clone())
+    .with_attached_deposit(NearToken::from_yoctonear(1))
+    .with_static_gas(Gas::from_tgas(30))
+    .ft_transfer(self.auctioneer.clone(), self.highest_bid.bid);
+
+// Transfer the NFT to the highest bidder
+nft_contract::ext(self.nft_contract.clone())
+    .with_static_gas(Gas::from_tgas(30))
+    .with_attached_deposit(NearToken::from_yoctonear(1))
+    .nft_transfer(self.highest_bid.bidder.clone(), self.token_id.clone());
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/src/lib.rs#L100-L110)
+
+</div>
+
+{/* /github-code */}
 
 
 ---
@@ -99,9 +287,36 @@ Just as with the NFT contract, we will deploy an FT contract in the sandbox test
 When the contract is deployed it is initialized with `new_default_meta` which sets the token's metadata, including things like its name and symbol, to default values while requiring the owner (where the token supply will sent), and the total supply of the token.
 
 
-<Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L33-L46"
-        start="33" end="46" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 64
+end: 74
+fname: test_basics.rs
+language: rust
+*/}
+
+```rust title="test_basics.rs" lines
+// Deploy the FT contract
+near_api::Contract::deploy(ft_contract.account_id().clone())
+    .use_code(ft_wasm)
+    .with_init_call(
+        "new_default_meta",
+        json!({"owner_id": ft_contract.account_id(), "total_supply": U128(1_000_000)}),
+    )?
+    .with_signer(signer.clone())
+    .send_to(&sandbox_network)
+    .await?
+    .assert_success();
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/tests/test_basics.rs#L64-L74)
+
+</div>
+
+{/* /github-code */}
 
 
 ---
@@ -113,9 +328,46 @@ For one to receive fungible tokens, first their account ID must be [registered](
 In our tests, since we are creating a new fungible token and new accounts we will actually have to register every account that will interact with FTs.
 
 
-<Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L81-L97"
-        start="81" end="97" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 97
+end: 117
+fname: test_basics.rs
+language: rust
+*/}
+
+```rust title="test_basics.rs" lines
+// Register accounts
+for account in [
+    alice.clone(),
+    bob.clone(),
+    contract.as_account().clone(),
+    auctioneer.clone(),
+]
+.iter()
+{
+    ft_contract
+        .call_function(
+            "storage_deposit",
+            serde_json::json!({ "account_id": account.account_id().clone() }),
+        )
+        .transaction()
+        .deposit(NearToken::from_yoctonear(8000000000000000000000))
+        .with_signer(account.account_id().clone(), signer.clone())
+        .send_to(&sandbox_network)
+        .await?
+        .assert_success();
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/tests/test_basics.rs#L97-L117)
+
+</div>
+
+{/* /github-code */}
 
 
 ---
@@ -125,12 +377,75 @@ In our tests, since we are creating a new fungible token and new accounts we wil
 Then we will transfer the bidders FTs so they can use them to bid. A simple transfer of FTs is done using the method `ft_transfer` on the FT contract.
 
 
-<Github fname="Call ft_transfer" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L100-L107"
-        start="100" end="107" />
-    <Github fname="ft_transfer definition" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L291-L307"
-        start="291" end="307" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 119
+end: 130
+fname: Call ft_transfer
+*/}
+
+```rust title="Call ft_transfer" lines
+// Transfer FTs to Alice and Bob to top up their balances
+let transfer_amount = U128(150_000);
+
+ft_transfer(
+    &ft_contract,
+    &ft_contract.account_id(),
+    alice.account_id(),
+    transfer_amount,
+    &signer,
+    &sandbox_network,
+)
+.await?;
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/tests/test_basics.rs#L119-L130)
+
+</div>
+
+{/* /github-code */}
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 415
+end: 435
+fname: ft_transfer definition
+*/}
+
+```rust title="ft_transfer definition" lines
+async fn ft_transfer(
+    ft_contract: &near_api::Contract,
+    from: &AccountId,
+    to: &AccountId,
+    amount: U128,
+    signer: &std::sync::Arc<near_api::Signer>,
+    network: &near_api::NetworkConfig,
+) -> testresult::TestResult<()> {
+    ft_contract
+        .call_function(
+            "ft_transfer",
+            serde_json::json!({"receiver_id": to, "amount": amount}),
+        )
+        .transaction()
+        .deposit(NearToken::from_yoctonear(1))
+        .with_signer(from.clone(), signer.clone())
+        .send_to(network)
+        .await?
+        .assert_success();
+    Ok(())
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/tests/test_basics.rs#L415-L435)
+
+</div>
+
+{/* /github-code */}
 
 
 ---
@@ -140,12 +455,73 @@ Then we will transfer the bidders FTs so they can use them to bid. A simple tran
 As stated previously, to bid on the auction the bidder now calls `ft_transfer_call` on the FT contract which subsequently calls the auction contract's `ft_on_transfer` method with fungible tokens attached.
 
 
-<Github fname="Call ft_transfer_call" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L149-L161"
-        start="149" end="161" />
-    <Github fname="ft_transfer_call definition" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L322-L337"
-        start="322" end="337" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 214
+end: 223
+fname: Call ft_transfer_call
+*/}
+
+```rust title="Call ft_transfer_call" lines
+// Alice makes valid bid
+ft_transfer_call(
+    &ft_contract,
+    &alice,
+    contract.account_id(),
+    U128(50_000),
+    &signer,
+    &sandbox_network,
+)
+.await?;
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/tests/test_basics.rs#L214-L223)
+
+</div>
+
+{/* /github-code */}
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 454
+end: 474
+fname: ft_transfer_call definition
+*/}
+
+```rust title="ft_transfer_call definition" lines
+async fn ft_transfer_call(
+    ft_contract: &near_api::Contract,
+    account: &near_api::Account,
+    receiver_id: &AccountId,
+    amount: U128,
+    signer: &std::sync::Arc<near_api::Signer>,
+    network: &near_api::NetworkConfig,
+) -> testresult::TestResult<()> {
+    let _ = ft_contract
+        .call_function(
+            "ft_transfer_call",
+            serde_json::json!({"receiver_id": receiver_id, "amount": amount, "msg": "0"}),
+        )
+        .transaction()
+        .deposit(NearToken::from_yoctonear(1))
+        .gas(NearGas::from_tgas(300))
+        .with_signer(account.account_id().clone(), signer.clone())
+        .send_to(network)
+        .await?;
+    Ok(())
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/tests/test_basics.rs#L454-L474)
+
+</div>
+
+{/* /github-code */}
 
 
 ---
@@ -155,12 +531,67 @@ As stated previously, to bid on the auction the bidder now calls `ft_transfer_ca
 Previously, to check a user's `$NEAR` balance, we pulled the details from their account. Now we are using FTs we query the balance on the FT contract using `ft_balance_of`, let's check that the contract's balance increased by the bid amount and the user's balance decreased by the bid amount.
 
 
-<Github fname="Call ft_balance_of" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L163-L166"
-        start="163" end="166" />
-    <Github fname="ft_balance_of definition" 
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L309-L320"
-        start="309" end="320" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 234
+end: 242
+fname: Call ft_balance_of
+*/}
+
+```rust title="Call ft_balance_of" lines
+// Contract balance has increased
+let contract_balance: U128 =
+    ft_balance_of(&ft_contract, contract.account_id(), &sandbox_network).await?;
+assert_eq!(contract_balance, U128(50_000));
+
+// Alice balance has decreased
+let alice_balance: U128 =
+    ft_balance_of(&ft_contract, alice.account_id(), &sandbox_network).await?;
+assert_eq!(alice_balance, U128(100_000));
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/tests/test_basics.rs#L234-L242)
+
+</div>
+
+{/* /github-code */}
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 437
+end: 452
+fname: ft_balance_of definition
+*/}
+
+```rust title="ft_balance_of definition" lines
+async fn ft_balance_of(
+    ft_contract: &near_api::Contract,
+    account_id: &AccountId,
+    network: &near_api::NetworkConfig,
+) -> testresult::TestResult<U128> {
+    let result: U128 = ft_contract
+        .call_function(
+            "ft_balance_of",
+            serde_json::json!({"account_id": account_id}),
+        )
+        .read_only()
+        .fetch_from(network)
+        .await?
+        .data;
+    Ok(result)
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/tests/test_basics.rs#L437-L452)
+
+</div>
+
+{/* /github-code */}
 
 
 ---
@@ -172,9 +603,55 @@ If we make a lower bid than the previous this will cause the auction contract to
 Previous to this, Bob made a bid of 60,000 and Alice was returned her bid bringing her balance back up to 150,000. Now when Alice makes an invalid of 50,000 Alice's balance should remain at 150,000 and the contract should remain at a balance of 60,000.
 
 
-<Github fname="test_basics.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L190-L207"
-        start="190" end="207" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 274
+end: 303
+fname: test_basics.rs
+language: rust
+*/}
+
+```rust title="test_basics.rs" lines
+// Alice tries to make a bid with less FTs than the previous
+ft_transfer_call(
+    &ft_contract,
+    &alice,
+    contract.account_id(),
+    U128(50_000),
+    &signer,
+    &sandbox_network,
+)
+.await?;
+
+// The highest bid is still Bob's bid
+let highest_bid: Bid = contract
+    .call_function("get_highest_bid", ())
+    .read_only()
+    .fetch_from(&sandbox_network)
+    .await?
+    .data;
+assert_eq!(highest_bid.bid, U128(60_000));
+assert_eq!(&highest_bid.bidder, bob.account_id());
+
+// Contract balance has not changed
+let contract_balance: U128 =
+    ft_balance_of(&ft_contract, contract.account_id(), &sandbox_network).await?;
+assert_eq!(contract_balance, U128(60_000));
+
+// Alice balance has not changed
+let alice_balance: U128 =
+    ft_balance_of(&ft_contract, alice.account_id(), &sandbox_network).await?;
+assert_eq!(alice_balance, U128(150_000));
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/tests/test_basics.rs#L274-L303)
+
+</div>
+
+{/* /github-code */}
 
 
 ---
@@ -191,7 +668,7 @@ The auction contract will need to be registered as well, you could do this by se
 near call dai.fakes.testnet storage_deposit '{"account_id": "<auctionContractId>"}' --useAccount <accountId> --deposit 0.1
 ```
 
-Now you can go ahead and place a bid. DAI has 18 decimals meaning that 1 $DAI is made up of 10^24 smallest units. To make a bid of 2 $DAI you can use the command:
+Now you can go ahead and place a bid. DAI has 18 decimals meaning that 1 $DAI is made up of 10^18 smallest units. To make a bid of 2 $DAI you can use the command:
 
 ```bash
 near call dai.fakes.testnet ft_transfer_call '{"receiver_id": "<auctionContractId>", "amount": "2000000000000000000", "msg": ""}' --useAccount <bidderId> --depositYocto 1
@@ -199,7 +676,7 @@ near call dai.fakes.testnet ft_transfer_call '{"receiver_id": "<auctionContractI
 
 ## Auction architecture 
 
-When creating an application there are numerous ways to structure it. Here, we have one contract per auction meaning we have to deploy a new contract each time we want to host an auction. To make this easier we will leverage a factory contract to deploy auction contracts for an auctioneer. Deploying code for each auction gets expensive, with 100kb of storage costing 1 `$NEAR`, since each auction stores all the same type of information and implements the same methods one could instead decide to have multiple auctions per contract. 
+When creating an application there are numerous ways to structure it. Here, we have one contract per auction meaning we have to deploy a new contract each time we want to host an auction. To make this easier we will leverage a factory contract to deploy auction contracts for an auctioneer. The factory in the final section uses a [global contract](/smart-contracts/global-contracts) so that auctions can share code while keeping separate accounts and state. Since each auction stores the same type of information and implements the same methods, another option is to have multiple auctions per contract.
 
 In such case, the Contract struct would be a map of auctions. We would implement a method to create a new auction by adding an entry to the map with the specific details of that individual auction.
 
@@ -207,6 +684,7 @@ In such case, the Contract struct would be a map of auctions. We would implement
 ```rust 
 pub struct Contract {
     auctions: IterableMap<String, Auction>
+}
 ```
 
 

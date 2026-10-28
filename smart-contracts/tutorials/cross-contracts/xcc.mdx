@@ -3,8 +3,6 @@ title: Cross Contract Call
 description: "Learn how to perform a basic cross-contract call on NEAR to set and retrieve greetings."
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 This example performs the simplest cross-contract call possible: it calls our [Hello NEAR](https://github.com/near-examples/hello-near-examples) example to set and retrieve a greeting.
 It is one of the simplest examples on making a cross-contract call, and the perfect gateway to the world of interoperative contracts.
 
@@ -59,20 +57,103 @@ The contract performs a cross-contract call to `hello.near-example.testnet` to g
 
 <Tabs>
   <Tab title="🦀 Rust (low level)">
-    <Github fname="lib.rs" language="rust"
-            url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L6-L23"
-            start="6" end="23" />
+{/* github-code
+url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs
+commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+start: 7
+end: 23
+fname: low_level.rs
+language: rust
+*/}
+
+```rust title="low_level.rs" lines
+// Public - query external greeting
+pub fn ll_query_greeting(&self) -> Promise {
+    // Create a promise to call HelloNEAR.get_greeting()
+    let hello_promise = Promise::new(self.hello_account.clone()).function_call(
+        "get_greeting".to_owned(),
+        NO_ARGS,
+        NO_DEPOSIT,
+        TEN_TGAS,
+    );
+
+    hello_promise.then(
+        // Create a promise to callback query_greeting_callback
+        Self::ext(env::current_account_id())
+            .with_static_gas(TEN_TGAS)
+            .ll_query_greeting_callback(),
+    )
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/src/low_level.rs#L7-L23)
+
+</div>
+
+{/* /github-code */}
   </Tab>
   <Tab title="🦀 Rust (high level)">
-    <Github fname="external.rs" language="rust"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs#L9-L21"
-      start="9" end="21" />
+{/* github-code
+url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs
+commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+start: 9
+end: 21
+fname: high_level.rs
+language: rust
+*/}
+
+```rust title="high_level.rs" lines
+pub fn hl_query_greeting(&self) -> Promise {
+    // Create a promise to call HelloNEAR.get_greeting()
+    let promise = hello_near::ext(self.hello_account.clone())
+        .with_static_gas(FIVE_TGAS)
+        .get_greeting();
+
+    promise.then(
+        // Create a promise to callback query_greeting_callback
+        Self::ext(env::current_account_id())
+            .with_static_gas(FIVE_TGAS)
+            .hl_query_greeting_callback(),
+    )
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/src/high_level.rs#L9-L21)
+
+</div>
+
+{/* /github-code */}
 
     Which requires you to define the external contract interface:
 
-    <Github fname="external.rs" language="rust"
-      url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs"
-      start="4" end="8" />
+{/* github-code
+url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs
+commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+start: 4
+end: 8
+fname: external_contract.rs
+language: rust
+*/}
+
+```rust title="external_contract.rs" lines
+#[ext_contract(hello_near)]
+trait HelloNear {
+    fn get_greeting(&self) -> String;
+    fn set_greeting(&self, greeting: String);
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/src/external_contract.rs#L4-L8)
+
+</div>
+
+{/* /github-code */}
   </Tab>
 </Tabs>
 
@@ -82,9 +163,40 @@ The callback function processes the result of the cross-contract call. In this c
 
 Notice that the callback function is marked as **private**, meaning it can only be called by the contract itself.
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs#L25-L39"
-        start="25" end="39" />
+{/* github-code
+url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs
+commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+start: 25
+end: 39
+fname: low_level.rs
+language: rust
+*/}
+
+```rust title="low_level.rs" lines
+#[private] // Public - but only callable by env::current_account_id()
+pub fn ll_query_greeting_callback(
+    &self,
+    #[callback_result] call_result: Result<String, PromiseError>,
+) -> String {
+    // Check if the promise succeeded by calling the method outlined in external.rs
+    if call_result.is_err() {
+        log!("There was an error contacting Hello NEAR");
+        return "".to_string();
+    }
+
+    // Return the greeting
+    let greeting: String = call_result.unwrap();
+    greeting
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/src/low_level.rs#L25-L39)
+
+</div>
+
+{/* /github-code */}
 
 ---
 
@@ -106,9 +218,129 @@ In this project in particular, the integration tests first deploy the `hello-nea
 they test that the cross-contract call correctly sets and retrieves the message. You will find the integration tests
 in `tests/`.
 
-<Github fname="tests.rs" language="rust"
-        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs"
-        start="4" end="77" />
+{/* github-code
+url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs
+commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+start: 4
+end: 106
+fname: tests.rs
+language: rust
+highlight: 31-33,37,42-43,49,53,58-59,65,68,75,79,84-85,91,94,101
+*/}
+
+```rust title="tests.rs" lines highlight={31-33,37,42-43,49,53,58-59,65,68,75,79,84-85,91,94,101}
+#[tokio::test]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let worker = near_workspaces::sandbox().await?;
+
+    // Build and deploy hello contract
+    let hello_contract_wasm = near_workspaces::compile_project("./tests/hello-near").await?;
+    let hello_contract: Contract = worker.dev_deploy(&hello_contract_wasm).await?;
+
+    // Deploy contract for testing
+    let contract_wasm = near_workspaces::compile_project("./").await?;
+    let contract = worker.dev_deploy(&contract_wasm).await?;
+
+    // Create accounts
+    let account = worker.dev_create_account().await?;
+    let alice = account
+        .create_subaccount("alice")
+        .initial_balance(NearToken::from_near(30))
+        .transact()
+        .await?
+        .into_result()?;
+
+    // Init contract
+    let _ = contract
+        .call("init")
+        .args_json(json!({ "hello_account": hello_contract.id() }))
+        .transact()
+        .await?
+        .into_result()?;
+
+    // Begin tests
+    test_hl_default_greeting(&alice, &contract).await?;
+    test_hl_change_greeting(&alice, &contract).await?;
+    test_ll_change_greeting(&alice, &contract).await?;
+    Ok(())
+}
+
+async fn test_hl_default_greeting(
+    user: &Account,
+    contract: &Contract,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let greeting: String = user
+        .call(contract.id(), "hl_query_greeting")
+        .args_json(json!({}))
+        .max_gas()
+        .transact()
+        .await?
+        .json()?;
+
+    assert_eq!(greeting, "Hello".to_string());
+    Ok(())
+}
+
+async fn test_hl_change_greeting(
+    user: &Account,
+    contract: &Contract,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let result: bool = user
+        .call(contract.id(), "hl_change_greeting")
+        .args_json(json!({ "new_greeting": "Howdy" }))
+        .max_gas()
+        .transact()
+        .await?
+        .json()?;
+
+    assert!(result);
+
+    let greeting: String = user
+        .call(contract.id(), "hl_query_greeting")
+        .args_json(json!({}))
+        .max_gas()
+        .transact()
+        .await?
+        .json()?;
+
+    assert_eq!(greeting, "Howdy".to_string());
+    Ok(())
+}
+
+async fn test_ll_change_greeting(
+    user: &Account,
+    contract: &Contract,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let result: bool = user
+        .call(contract.id(), "ll_change_greeting")
+        .args_json(json!({ "new_greeting": "Hello" }))
+        .max_gas()
+        .transact()
+        .await?
+        .json()?;
+
+    assert!(result);
+
+    let greeting: String = user
+        .call(contract.id(), "ll_query_greeting")
+        .args_json(json!({}))
+        .max_gas()
+        .transact()
+        .await?
+        .json()?;
+
+    assert_eq!(greeting, "Hello".to_string());
+    Ok(())
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/tests/tests.rs#L4-L106)
+
+</div>
+
+{/* /github-code */}
 
 ### Deploying the Contract to the NEAR network
 
@@ -189,35 +421,266 @@ Your contract can combine promises to execute several actions sequentially or ca
 
 You can combine several actions for the same contract into a batch. The actions execute sequentially, and if one fails, they are all reverted.
 
-<Github fname="batch_actions.rs" language="rust"
-        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-        start="8" end="20" />
+{/* github-code
+url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs
+commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+start: 8
+end: 20
+fname: batch_actions.rs
+language: rust
+*/}
+
+```rust title="batch_actions.rs" lines
+pub fn batch_actions(&mut self) -> Promise {
+    let hi = json!({ "greeting": "hi" }).to_string().into_bytes();
+    let bye = json!({ "greeting": "bye" }).to_string().into_bytes();
+
+    // You can create one transaction calling multiple methods
+    // on a same contract
+    Promise::new(self.hello_account.clone())
+        .function_call("set_greeting".to_owned(), hi, NO_DEPOSIT, XCC_GAS)
+        .function_call("get_greeting".to_owned(), NO_ARGS, NO_DEPOSIT, XCC_GAS)
+        .function_call("set_greeting".to_owned(), bye, NO_DEPOSIT, XCC_GAS)
+        .function_call("get_greeting".to_owned(), NO_ARGS, NO_DEPOSIT, XCC_GAS)
+        .then(Self::ext(env::current_account_id()).batch_actions_callback())
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-advanced-rs/src/batch_actions.rs#L8-L20)
+
+</div>
+
+{/* /github-code */}
 
 The callback receives the value returned by the final action in the chain:
 
-<Github fname="batch_actions.rs" language="rust"
-        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs"
-        start="22" end="35" />
+{/* github-code
+url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs
+commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+start: 22
+end: 35
+fname: batch_actions.rs
+language: rust
+*/}
+
+```rust title="batch_actions.rs" lines
+#[private]
+pub fn batch_actions_callback(
+    &self,
+    #[callback_result] last_result: Result<String, PromiseError>,
+) -> String {
+    // The callback only has access to the last action's result
+    if let Ok(result) = last_result {
+        log!("The last result is {result}");
+        result
+    } else {
+        log!("The batch call failed and all calls got reverted");
+        "".to_string()
+    }
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-advanced-rs/src/batch_actions.rs#L22-L35)
+
+</div>
+
+{/* /github-code */}
 
 ### Call multiple contracts in parallel
 
 A contract can call several contracts in parallel. If one call fails, the other calls are **not** reverted.
 
-<Github fname="multiple_contracts.rs" language="rust"
-        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
-        start="16" end="55" />
+{/* github-code
+url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs
+commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+start: 16
+end: 55
+fname: multiple_contracts.rs
+language: rust
+*/}
+
+```rust title="multiple_contracts.rs" lines
+/// A method which calls different contracts via cross contract function calls.
+pub fn multiple_contracts(&mut self) -> Promise {
+    // We create a promise that calls the `get_greeting` function on the HELLO_CONTRACT
+    let hello_promise = Promise::new(self.hello_account.clone()).function_call(
+        "get_greeting".to_owned(),
+        NO_ARGS,
+        NO_DEPOSIT,
+        XCC_GAS,
+    );
+
+    // We create a promise that calls the `get_num` function on the COUNTER_CONTRACT
+    let counter_promise = Promise::new(self.counter_account.clone()).function_call(
+        "get_num".to_owned(),
+        NO_ARGS,
+        NO_DEPOSIT,
+        XCC_GAS,
+    );
+
+    // We create a promise that calls the `get_messages` function on the GUESTBOOK_CONTRACT
+    let args = json!({ "from_index": "0", "limit": 2 })
+        .to_string()
+        .into_bytes();
+
+    let guestbook_promise = Promise::new(self.guestbook_account.clone()).function_call(
+        "get_messages".to_owned(),
+        args,
+        NO_DEPOSIT,
+        XCC_GAS,
+    );
+
+    // We join all promises and chain a callback to collect their results.
+    hello_promise
+        .and(counter_promise)
+        .and(guestbook_promise)
+        .then(
+            Self::ext(env::current_account_id())
+                .with_static_gas(XCC_GAS)
+                .multiple_contracts_callback(),
+        )
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-advanced-rs/src/multiple_contracts.rs#L16-L55)
+
+</div>
+
+{/* /github-code */}
 
 The callback receives one result for each promise and must handle successes and failures independently:
 
-<Github fname="multiple_contracts.rs" language="rust"
-        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs"
-        start="57" end="90" />
+{/* github-code
+url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs
+commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+start: 57
+end: 90
+fname: multiple_contracts.rs
+language: rust
+*/}
+
+```rust title="multiple_contracts.rs" lines
+#[private]
+pub fn multiple_contracts_callback(
+    &self,
+    #[callback_result] hello_result: Result<String, PromiseError>,
+    #[callback_result] counter_result: Result<i8, PromiseError>,
+    #[callback_result] guestbook_result: Result<Vec<PostedMessage>, PromiseError>,
+) -> (String, i8, Vec<PostedMessage>) {
+    // The callback has access to the result of the 3 calls
+    let greeting = if let Ok(result) = hello_result {
+        log!("HelloNear says {result}");
+        result
+    } else {
+        log!("The call to HelloNear failed");
+        "".to_string()
+    };
+
+    let counter = if let Ok(result) = counter_result {
+        log!("Counter is {result}");
+        result
+    } else {
+        log!("The call to Counter failed");
+        0
+    };
+
+    let messages = if let Ok(result) = guestbook_result {
+        log!("The messages are {result:?}");
+        result
+    } else {
+        log!("The call to GuestBook failed");
+        vec![]
+    };
+
+    (greeting, counter, messages)
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-advanced-rs/src/multiple_contracts.rs#L57-L90)
+
+</div>
+
+{/* /github-code */}
 
 If every call returns the same type, you can iterate over the promise results directly:
 
-<Github fname="similar_contracts.rs" language="rust"
-        url="https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs"
-        start="8" end="57" />
+{/* github-code
+url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs
+commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+start: 8
+end: 57
+fname: similar_contracts.rs
+language: rust
+*/}
+
+```rust title="similar_contracts.rs" lines
+fn promise_set_get(&self, message: &str) -> Promise {
+    // Aux method to create a batch transaction calling
+    // set_message and get_message in the HELLO CONTRACT
+    let args = json!({ "greeting": message }).to_string().into_bytes();
+
+    Promise::new(self.hello_account.clone())
+        .function_call("set_greeting".to_owned(), args, NO_DEPOSIT, XCC_GAS)
+        .function_call("get_greeting".to_owned(), NO_ARGS, NO_DEPOSIT, XCC_GAS)
+}
+
+pub fn similar_contracts(&mut self) -> Promise {
+    // Create promises to call 3 contracts that return the same type
+    // For simplicity here we call the same contract
+    let hello_one = self.promise_set_get("hi");
+    let hello_two = self.promise_set_get("howdy");
+    let hello_three = self.promise_set_get("bye");
+
+    // Join all promises and chain a callback to collect their results.
+    hello_one.and(hello_two).and(hello_three).then(
+        Self::ext(env::current_account_id())
+            .with_static_gas(XCC_GAS)
+            .similar_contracts_callback(3),
+    )
+}
+
+#[private]
+pub fn similar_contracts_callback(&self, number_promises: u64) -> Vec<String> {
+    (0..number_promises)
+        .filter_map(|index| {
+            // env::promise_result(i) has the result of the i-th call
+            let result = env::promise_result(index);
+
+            match result {
+                PromiseResult::Failed => {
+                    log!("Promise number {index} failed.");
+                    None
+                }
+                PromiseResult::Successful(value) => {
+                    if let Ok(message) = near_sdk::serde_json::from_slice::<String>(&value) {
+                        log!("Call {index} returned: {message}");
+                        Some(message)
+                    } else {
+                        log!("Error deserializing call {index} result.");
+                        None
+                    }
+                }
+            }
+        })
+        .collect()
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-advanced-rs/src/similar_contracts.rs#L8-L57)
+
+</div>
+
+{/* /github-code */}
 
 ### Test and deploy the advanced contract
 

@@ -1,87 +1,269 @@
 ---
 title: Auction factory
 sidebarTitle: Auction Factory
-description: "Create new auctions through a factory."
+description: "Create new auctions through a factory using a shared global contract."
 ---
 
-import { Github } from '/snippets/github.jsx'
 
-Since an auction contract hosts a single auction, each time you would like to host a new auction you will need to deploy a new contract. Rather than finding the compiled WASM file, creating a new account, deploying the contract, and then initializing it each time, you can use a factory contract to do this for you.
+Since an auction contract hosts a single auction, each time you would like to host a new auction you will need a new contract account. A factory can create that account and initialize the auction for you.
 
-Luckily for us, there is already a [factory contract example](https://github.com/near-examples/factory-rust)! We will fork this example and slightly modify it to suit our use case. If you would like to learn more about how the factory contract works, you can take a look at the [associated documentation](/smart-contracts/tutorials/factories/factory#generic-factory).
+The repository includes an [auction factory](https://github.com/near-examples/auctions-tutorial/tree/main/factory) that creates a locked account for each auction. Each account uses a shared [global contract](/smart-contracts/global-contracts), so we publish the auction code once and let new auctions reference it.
 
 ---
 
-## Changing the default contract
+## Publishing the auction contract
 
-In the current example, the factory contract deploys the donation contract example. We will change this to deploy our auction contract instead. 
-
-Firstly, we'll need the compiled auction contract WASM file. You can get this by running the following command in [03-bid-with-fts](https://github.com/near-examples/auctions-tutorial/tree/main/contract-rs/03-bid-with-fts) of `contract-rs`
+First, build the FT/NFT auction contract from `contract-rs/03-bid-with-fts`:
 
 ```bash
-cargo near build 
+cargo near build non-reproducible-wasm
 ```
 
-You will find the resulting WASM file in `target/near`; copy this file and use it to replace the WASM of the donation contract in the factory contract's source folder. Now edit the auction contract changing the path to the auction contract.
+Publish the resulting WASM as a global contract using an existing funded account:
 
-<Github fname="Default init" 
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/lib.rs#L25-L31"
-            start="25" end="31" />
-    <Github fname="Contract path" 
-            url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/lib.rs#L9"
-            start="9" end="9" />
+```bash
+near contract deploy-as-global use-file target/near/auction_contract.wasm as-global-account-id <global-auction.testnet>
+```
 
-On initialization, the factory will add the auction contracts WASM, as bytes, to the factory's state. It is more efficient to not store the WASM in the factory's state, however, we may want to update the auction contract if we find a bug or want to add new features. The factory implements a method to update the auction contract - we'll change the name to `update_auction_contract` as this factory will only deploy auction contracts.
+Choose testnet and the publisher account's signing credentials when prompted. Publishing the code has a one-time cost; each auction then pays for its own state and global contract reference.
 
-<Github fname="Contract path" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/manager.rs#L8-L13"
-        start="8" end="13" />
+<Warning>
+An account-ID global contract follows code updates published by that account. Updating the code at `<global-auction.testnet>` changes the implementation used by existing auctions too. Use a publisher account you control and trust. Removing an auction account's keys does not prevent updates through this global reference.
+</Warning>
 
 ---
 
-## Modifying deploy method
+## Initializing the factory
 
-The method to deploy a new contract is specific to the contract being deployed (in the case the contract has custom initialization parameters). We will modify the method to take in the auction contract's initialization parameters.
+The factory stores the account ID of the published global contract. Its `new` method takes this account ID as `global_contract_id`.
 
-<Github fname="Contract path" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/deploy.rs#L9-L82"
-        start="9" end="82" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 6
+end: 22
+fname: lib.rs
+language: rust
+*/}
 
-In this fork, we have also removed the option to add an access key to the contract account since, as discussed [earlier](./1.3-deploy#locking-the-contract), we want auctions to be locked.
+```rust title="lib.rs" lines
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    global_contract_id: AccountId,
+}
+
+#[near]
+impl Contract {
+    /// The auction implementation must already be published as a global contract.
+    #[init]
+    pub fn new(global_contract_id: AccountId) -> Self {
+        Self { global_contract_id }
+    }
+
+    pub fn get_global_contract_id(&self) -> AccountId {
+        self.global_contract_id.clone()
+    }
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/factory/src/lib.rs#L6-L22)
+
+</div>
+
+{/* /github-code */}
+
+Create a funded factory account using `near account create-account`. Then, from the repository's `factory` directory, build, deploy, and initialize the factory:
+
+```bash
+cargo near build non-reproducible-wasm
+
+near contract deploy <factory.testnet> use-file target/near/contract.wasm with-init-call new json-args '{"global_contract_id":"<global-auction.testnet>"}'
+```
+
+Choose zero attached deposit for initialization, testnet, and the factory account as signer when prompted.
+
+<Note>
+If you deployed the earlier factory that stored auction WASM, use a new factory account for this version. Its state and initialization API have changed.
+</Note>
 
 ---
 
-## Using the factory 
+## Creating an auction account
 
-Build and deploy the factory like you would any other contract, this time without any initialization parameters. 
+The `deploy_new_auction` method takes a name for the new subaccount and the auction's initialization parameters. It checks that the name is a valid single subaccount label, that the auction ends in the future, and that the attached deposit covers the required funding.
 
-```bash
-# compile the contract using cargo-near
-cargo near build
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/deploy.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 30
+end: 65
+fname: deploy.rs
+language: rust
+*/}
 
-# deploy the contract
-near deploy <contractId> ./target/near/contract.wasm
+```rust title="deploy.rs" lines
+#[payable]
+pub fn deploy_new_auction(
+    &mut self,
+    name: String,
+    end_time: U64,
+    auctioneer: AccountId,
+    ft_contract: AccountId,
+    nft_contract: AccountId,
+    token_id: String,
+    starting_price: U128,
+) -> Promise {
+    // Require a single direct subaccount label; dots would create descendants.
+    require!(
+        !name.is_empty() && !name.contains('.'),
+        "Invalid auction name"
+    );
+    let account: AccountId = format!("{name}.{}", env::current_account_id())
+        .parse()
+        .expect("Invalid auction account ID");
+    require!(
+        end_time.0 > env::block_timestamp(),
+        "Auction must end in the future"
+    );
+
+    let args = AuctionInitArgs {
+        end_time,
+        auctioneer,
+        ft_contract,
+        nft_contract,
+        token_id,
+        starting_price,
+    };
+    let init_args = near_sdk::serde_json::to_vec(&args).unwrap();
+    let required = self.get_required(args);
+    let attached = env::attached_deposit();
+    require!(attached >= required, format!("Attach at least {required}"));
 ```
 
-You can now use the factory to deploy new auction contracts, here is an example command. 
+<div className="github-source-link">
 
-```bash
-near call auction-factory.testnet deploy_new_auction '{"name": "new-auction", "end_time": "3000000000000000000", "auctioneer": "pivortex.testnet", "ft_contract": "dai.fakes.testnet", "nft_contract": "nft.examples.testnet", "token_id": "7777", "starting_price": "1000000000000000000"}' --useAccount pivortex.testnet --deposit 1.6 --gas 100000000000000
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/factory/src/deploy.rs#L30-L65)
+
+</div>
+
+{/* /github-code */}
+
+The factory then creates the account, transfers the attached deposit, references the global contract, and calls `init` in one atomic batch. The auction's initialization function is public so the factory can call it. A successfully created auction is already initialized and has no access keys, as discussed [earlier](/web3-apps/tutorials/mastering-near/1.3-deploy#locking-the-contract).
+
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/deploy.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 67
+end: 83
+fname: deploy.rs
+language: rust
+*/}
+
+```rust title="deploy.rs" lines
+// The entire batch is atomic, including initialization. No access key
+// is installed, so the newly created auction account is locked.
+Promise::new(account.clone())
+    .create_account()
+    .transfer(attached)
+    .use_global_contract_by_account_id(self.global_contract_id.clone())
+    .function_call(
+        "init".to_owned(),
+        init_args,
+        NearToken::from_near(0),
+        Gas::from_tgas(50),
+    )
+    .then(
+        Self::ext(env::current_account_id())
+            .with_static_gas(Gas::from_tgas(30))
+            .deploy_new_auction_callback(account, env::predecessor_account_id(), attached),
+    )
 ```
 
-<Info>
-**Deposit and storage costs**
-Note that we attach 1.6 `$NEAR` to the call to cover the storage costs of deploying the new auction. The storage cost on NEAR is 1 `$NEAR` per 100 kb, and our auction contract is around 140 kb, but we'll add a little to cover the storage used on initialization.
-</Info>
+<div className="github-source-link">
 
-The command results in a fresh auction contract being deployed and initialized at `new-auction.auction-factory.testnet`.
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/factory/src/deploy.rs#L67-L83)
+
+</div>
+
+{/* /github-code */}
+
+A callback returns `true` on success. If account creation, the global contract reference, or initialization fails, it returns `false` and refunds the attached deposit to the caller.
+
+---
+
+## Using the factory
+
+First, choose an end time in nanoseconds. This command prints a timestamp two minutes from now:
+
+```bash
+node -e 'console.log((BigInt(Date.now() + 120000) * 1000000n).toString())'
+```
+
+Use the timestamp and your account IDs to prepare the auction parameters. The `starting_price` is expressed in the FT's smallest units.
+
+```json
+{
+  "name": "new-auction",
+  "end_time": "<nanosecond timestamp>",
+  "auctioneer": "<seller.testnet>",
+  "ft_contract": "<ft.testnet>",
+  "nft_contract": "<nft.testnet>",
+  "token_id": "1",
+  "starting_price": "10000"
+}
+```
+
+Before creating the auction, query `get_required` with the same initialization parameters, leaving out `name` and wrapping them in `args`:
+
+```bash
+near contract call-function as-read-only <factory.testnet> get_required json-args '{"args":{"end_time":"<nanosecond timestamp>","auctioneer":"<seller.testnet>","ft_contract":"<ft.testnet>","nft_contract":"<nft.testnet>","token_id":"1","starting_price":"10000"}}' network-config testnet now
+```
+
+The result is the required deposit in yoctoNEAR, returned as a string. It includes a conservative estimate for account, state, and global reference storage, plus 0.1 NEAR for outgoing FT/NFT calls. Long token IDs increase the requirement. The entire attached deposit is transferred to the new auction account.
+
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/factory/src/deploy.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 18
+end: 28
+fname: deploy.rs
+language: rust
+*/}
+
+```rust title="deploy.rs" lines
+/// Fund state storage and leave 0.1 NEAR for outgoing FT/NFT calls.
+/// This conservative bound includes the account, global reference, STATE
+/// record, and highest bidder (whose ID is at most 64 bytes).
+pub fn get_required(&self, args: AuctionInitArgs) -> NearToken {
+    let bytes = 512
+        + self.global_contract_id.as_str().len()
+        + near_sdk::borsh::to_vec(&args).unwrap().len();
+    env::storage_byte_cost()
+        .saturating_mul(bytes as u128)
+        .saturating_add(NearToken::from_millinear(100))
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/factory/src/deploy.rs#L18-L28)
+
+</div>
+
+{/* /github-code */}
+
+For ordinary short arguments, 0.2 NEAR covers the requirement. Call `deploy_new_auction` with your prepared JSON and at least the required deposit:
+
+```bash
+near contract call-function as-transaction <factory.testnet> deploy_new_auction json-args '<JSON above>' prepaid-gas '300 Tgas' attached-deposit '0.2 NEAR'
+```
+
+Choose your signer and testnet when prompted. On success, the auction is ready at `new-auction.<factory.testnet>`. Before accepting bids, transfer the NFT to this account and register the auction, bidders, and auctioneer on the FT contract using `storage_deposit`, as covered in the [FT section](/web3-apps/tutorials/mastering-near/3.2-ft#registering-users-in-the-ft-contract).
 
 ---
 
 ## Conclusion
 
-In this part of the tutorial, you have learned how to fork and modify the factory contract example to deploy our auction contracts. You have also learned how to use the factory to deploy new auction contracts. If you're feeling adventurous you could create a frontend to interact with the factory contract to make it even easier to deploy new auctions. If you do so feel free to share it in our developer [Telegram](https://t.me/neardev) or [Discord](https://discord.gg/vMGH5QywTH) channels!
-
-And with that, this tutorial series is over, congratulations! Through this tutorial, we've built an auction contract and iterated on it adding improvements and extending its functionality, created a frontend to interact with the auction, used an API to index previous bids, and deployed a factory contract to make deploying new auctions easier. Along the way we've learned a great deal about NEAR, we learned about the anatomy of smart contracts, how to lock a contract to make it more secure, how to use primitives such as NFTs and FTs, how to perform cross-contract calls, how to use wallets from a frontend to interact with the blockchain and display data about a smart contract, how to pull historical data from the blockchain using an API, how to deploy contracts from other contracts and a lot of other little bits that will help you in the future. 
-
-That's a lot, so once again congratulations!
+In this part of the tutorial, you have learned how to publish an auction as a global contract and configure a factory to create initialized auction accounts that share its code. If you're feeling adventurous you could create a frontend to interact with the factory contract to make it even easier to deploy new auctions. If you do so feel free to share it in our developer [Telegram](https://t.me/neardev) or [Discord](https://discord.gg/vMGH5QywTH) channels!

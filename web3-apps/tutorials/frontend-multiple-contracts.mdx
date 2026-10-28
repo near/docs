@@ -5,8 +5,6 @@ sidebarTitle: Multiple Contracts in Frontend
 description: "Interact with multiple contracts in your frontend."
 ---
 
-import { Github } from '/snippets/github.jsx'
-
 This example showcases how to interact with multiple contracts from a single frontend.
 
 Particularly, this example shows how to:
@@ -20,9 +18,31 @@ Particularly, this example shows how to:
 
 To query multiple contracts simply perform multiple `view` calls:
 
-<Github fname="index.js"
-        url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
-        start="70" end="76" />
+{/* github-code
+url: https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js
+commit: e4b42167349f9b06e98d61a90a74209c266efeeb
+start: 70
+end: 76
+fname: index.js
+*/}
+
+```javascript title="index.js" lines
+  const totalMessages = await wallet.viewMethod({method: 'total_messages', contractId: GUEST_ADDRESS })
+  const from_index = (totalMessages > 4? totalMessages - 4: 0).toString();
+  const latestMessages = await wallet.viewMethod({ method: 'get_messages', contractId: GUEST_ADDRESS, args: {from_index, limit: "4"} });
+
+  // handle UI stuff
+  update_UI(currentGreeting, from_index, latestMessages);
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/frontend-multiple-contracts/blob/e4b42167349f9b06e98d61a90a74209c266efeeb/frontend/index.js#L70-L76)
+
+</div>
+
+{/* /github-code */}
 
 ---
 
@@ -32,9 +52,52 @@ The `wallet` object enables to dispatch multiple transactions simultaneously. Ho
 
 Dispatching multiple transactions at once is just a nice way to improve UX, because the user interacts with the wallet only once.
 
-<Github fname="index.js"
-          url="https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js"
-          start="35" end="62" />
+{/* github-code
+url: https://github.com/near-examples/frontend-multiple-contracts/blob/main/frontend/index.js
+commit: e4b42167349f9b06e98d61a90a74209c266efeeb
+start: 35
+end: 62
+fname: index.js
+*/}
+
+```javascript title="index.js" lines
+const guestTx = {
+  receiverId: GUEST_ADDRESS,
+  actions: [ // actions execute sequentially
+    {
+      type: 'FunctionCall',
+      params: {
+        methodName: 'add_message', args: { text: greeting.value },
+        gas: THIRTY_TGAS, deposit: GUEST_DEPOSIT
+      }
+    },
+  ]
+}
+
+const helloTx = {
+  receiverId: HELLO_ADDRESS,
+  actions: [ // if any action fails, they all rollback together
+    {
+      type: 'FunctionCall',
+      params: {
+        methodName: 'set_greeting', args: { greeting: greeting.value },
+        gas: THIRTY_TGAS, deposit: NO_DEPOSIT
+      }
+    }
+  ]
+}
+
+// Sign **independent** transactions: If one fails, the other **DOES NOT** revert
+await wallet.signAndSendTransactions({ transactions: [ helloTx, guestTx ] })
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/frontend-multiple-contracts/blob/e4b42167349f9b06e98d61a90a74209c266efeeb/frontend/index.js#L35-L62)
+
+</div>
+
+{/* /github-code */}
 
 In this example, the user signs two independent transactions:
 

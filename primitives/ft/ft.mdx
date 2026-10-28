@@ -5,7 +5,6 @@ description: "Learn how to create, transfer, and integrate FT in your dApp"
 ---
 
 import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
-import { Github } from '/snippets/github.jsx';
 
 Wanting to use Fungible Tokens (FT) in your dApp? Here you will find all the information you need to get started creating your own tokens, registering users, querying balances, transferring tokens, and integrating them into your smart contracts.
 
@@ -536,9 +535,57 @@ The `ft_on_transfer` must return how many FT tokens have to **be refunded**, so 
 
 Here is an example from our [auctions tutorial](../../web3-apps/tutorials/mastering-near/3.2-ft) where we implement `ft_on_transfer` to handle bids in FTs:
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L56-L87"
-        start="56" end="87" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 56
+end: 87
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+pub fn ft_on_transfer(&mut self, sender_id: AccountId, amount: U128, msg: String) -> U128 {
+    require!(
+        env::block_timestamp() < self.auction_end_time.into(),
+        "Auction has ended"
+    );
+
+    let ft = env::predecessor_account_id();
+    require!(ft == self.ft_contract, "The token is not supported");
+
+    // Last bid
+    let Bid {
+        bidder: last_bidder,
+        bid: last_bid,
+    } = self.highest_bid.clone();
+
+    // Check if the deposit is higher than the current bid
+    require!(amount > last_bid, "You must place a higher bid");
+
+    // Update the highest bid
+    self.highest_bid = Bid {
+        bidder: sender_id,
+        bid: amount,
+    };
+
+    // Transfer FTs back to the last bidder
+    ft_contract::ext(self.ft_contract.clone())
+        .with_attached_deposit(NearToken::from_yoctonear(1))
+        .with_static_gas(Gas::from_tgas(30))
+        .ft_transfer(last_bidder, last_bid);
+
+    U128(0)
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/03-bid-with-fts/src/lib.rs#L56-L87)
+
+</div>
+
+{/* /github-code */}
 
 _Note: The [`near_contract_standards::fungible_token::receiver`](https://docs.rs/near-contract-standards/latest/near_contract_standards/fungible_token/receiver/trait.FungibleTokenReceiver.html) module exposes a `FungibleTokenReceiver` trait that you could implement on your contract_
 

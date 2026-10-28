@@ -5,8 +5,6 @@ sidebarTitle: Quickstart
 description: "Create your first smart contract in Rust and deploy it to the NEAR testnet."
 ---
 
-import {Github} from '/snippets/github.jsx';
-
 Welcome! [NEAR accounts](../protocol/accounts-contracts/account-model) can store small apps known as smart contracts. In this tutorial, we'll guide you through creating your first contract on the NEAR **testnet**.
 
 Create an auction contract that allows users to place bids, track the highest bidder, and claim tokens at the end of the auction.
@@ -114,9 +112,54 @@ near account create-account sponsor-by-faucet-service <your-account-id.testnet> 
 
 The contract stores the highest bid, auction end time, auctioneer address, and a flag to track whether proceeds have been claimed. Its `init` function sets these values when the contract is first initialized:
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-        start="7" end="35" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 7
+end: 35
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+pub struct Bid {
+    pub bidder: AccountId,
+    pub bid: NearToken,
+}
+
+#[near(contract_state)]
+#[derive(PanicOnDefault)]
+pub struct Contract {
+    highest_bid: Bid,
+    auction_end_time: U64,
+    auctioneer: AccountId,
+    claimed: bool,
+}
+
+#[near]
+impl Contract {
+    #[init]
+    pub fn init(end_time: U64, auctioneer: AccountId) -> Self {
+        Self {
+            highest_bid: Bid {
+                bidder: env::current_account_id(),
+                bid: NearToken::from_yoctonear(1),
+            },
+            auction_end_time: end_time,
+            claimed: false,
+            auctioneer,
+        }
+    }
+
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L7-L35)
+
+</div>
+
+{/* /github-code */}
 
 Initialize the auction by setting its end time and designating the auctioneer to receive the funds:
 
@@ -136,9 +179,52 @@ Feel free to replace `influencer.testnet` with any valid testnet account—this 
 
 Place a bid in the auction by calling the `bid` method and attaching a NEAR deposit. The function checks whether the auction is ongoing and whether the bid is higher than the stored amount. If it is, the contract records the new bid and refunds the previous bidder.
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-        start="37" end="64" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 36
+end: 62
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+#[payable]
+pub fn bid(&mut self) -> Promise {
+    // Assert the auction is still ongoing
+    require!(
+        env::block_timestamp() < self.auction_end_time.into(),
+        "Auction has ended"
+    );
+
+    // Current bid
+    let bid = env::attached_deposit();
+    let bidder = env::predecessor_account_id();
+
+    // Last bid
+    let Bid {
+        bidder: last_bidder,
+        bid: last_bid,
+    } = self.highest_bid.clone();
+
+    // Check if the deposit is higher than the current bid
+    require!(bid > last_bid, "You must place a higher bid");
+
+    // Update the highest bid
+    self.highest_bid = Bid { bidder, bid };
+
+    // Transfer tokens back to the last bidder
+    Promise::new(last_bidder).transfer(last_bid)
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L36-L62)
+
+</div>
+
+{/* /github-code */}
 
 ```bash
 # Create a new account to place the bid
@@ -158,9 +244,40 @@ In this example, use the `<bidder-account.testnet>` account (remember to rename 
 
 The `get_highest_bid` function only reads from the contract state, so it does not require a transaction or signature. You can also use the contract's other view methods to query the auction end time, auctioneer, and claim status:
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-        start="78" end="92" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 77
+end: 91
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+pub fn get_highest_bid(&self) -> Bid {
+    self.highest_bid.clone()
+}
+
+pub fn get_auction_end_time(&self) -> U64 {
+    self.auction_end_time
+}
+
+pub fn get_auctioneer(&self) -> AccountId {
+    self.auctioneer.clone()
+}
+
+pub fn get_claimed(&self) -> bool {
+    self.claimed
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L77-L91)
+
+</div>
+
+{/* /github-code */}
 
 ```bash
 near view <account.testnet> get_highest_bid '{}'
@@ -171,7 +288,7 @@ near view <account.testnet> get_highest_bid '{}'
   ```json
   {
     "bidder": "<bidder-account.testnet>",
-    "amount": "10000000000000000000000"
+    "bid": "10000000000000000000000"
   }
   ```
 </Accordion>
@@ -188,9 +305,37 @@ Feel free to create more bidder accounts and place bids to see how the highest b
 
 After the auction ends, anyone can call the `claim` method. It transfers the amount of the highest bid to the auctioneer and ends the auction:
 
-<Github fname="lib.rs" language="rust"
-        url="https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs"
-        start="65" end="76" />
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
+start: 64
+end: 75
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+pub fn claim(&mut self) -> Promise {
+    require!(
+        env::block_timestamp() > self.auction_end_time.into(),
+        "Auction has not ended yet"
+    );
+
+    require!(!self.claimed, "Auction has already been claimed");
+    self.claimed = true;
+
+    // Transfer tokens to the auctioneer
+    Promise::new(self.auctioneer.clone()).transfer(self.highest_bid.bid)
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/auctions-tutorial/blob/4678765ea7f2a584b1a6569786d497dcf75f5261/contract-rs/01-basic-auction/src/lib.rs#L64-L75)
+
+</div>
+
+{/* /github-code */}
 
 ```bash
 near call <account.testnet> claim '{}' --useAccount <account.testnet>

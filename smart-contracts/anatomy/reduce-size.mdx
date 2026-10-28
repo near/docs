@@ -3,8 +3,6 @@ title: Production Builds
 sidebarTitle: Production Builds
 description: "Reduce contract size and create reproducible builds that users can verify against the deployed code."
 ---
-import {Github} from '/snippets/github.jsx';
-
 In this page, we will explore strategies for reducing the size of smart contracts on NEAR. This is particularly useful for developers who want to optimize their contracts for deployment, especially in scenarios where contract size limits are a concern.
 
 # Reducing a contract's size
@@ -180,11 +178,9 @@ For a `no_std` approach to minimal contracts, observe the following examples:
 <Note>
 **Information on system calls**
 
-<Accordion title="Expand to see what's available from <code>sys.rs</code>">
+The [`near_sys` crate](https://docs.rs/near-sys/latest/near_sys/) exposes the low-level host functions available to contracts that interact directly with the runtime. See its reference for function signatures.
 
-<Github language="rust" url="https://github.com/near/near-sdk-rs/blob/master/near-sdk/src/environment/env.rs" />
-
-</Accordion>
+The SDK's [`env` module](https://github.com/near/near-sdk-rs/blob/2728185be188fd2975dd9ce0a77012638c36cab4/near-sdk/src/environment/env.rs) provides higher-level wrappers around these functions.
 
 </Note>
 

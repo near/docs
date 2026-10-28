@@ -46,6 +46,46 @@ mint dev
 
 The site will be available at `http://localhost:3000`.
 
+### Sync code examples from GitHub
+
+GitHub examples are saved as Markdown code blocks so they are available on the site and in plain-text exports. Each block has a `github-code` comment containing its source URL, last synced commit, and optional line range, filename, language, and line highlights. The source link below the code points to that exact commit.
+
+To refresh the examples, run:
+
+```sh
+node scripts/sync-github-code.mjs
+```
+
+The script checks each repository reference once and skips source downloads when the recorded commit is unchanged. When a reference changes, it fetches each file once and updates its excerpts. Review the diff before committing: upstream edits can change what a line range selects.
+
+To update a single page or check for pending changes without writing files:
+
+```sh
+node scripts/sync-github-code.mjs web3-apps/tutorials/mastering-near/1.1-basic.mdx
+node scripts/sync-github-code.mjs --check
+```
+
+To add an example, insert a block with its source metadata and run the script. Omit `commit` on a new block; the script fills it in. Line numbers are one-based and inclusive. Store ranges in `start`/`end`; generated source links add the matching GitHub line fragment. During migration, a line fragment in a source URL is converted to range metadata; conflicting values are rejected. Without a range, the entire file is included. Use an encoded ref, such as `feature%2Fexample`, for a branch whose name contains a slash.
+
+````mdx
+{/* github-code
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/src/lib.rs
+start: 5
+end: 19
+language: rust
+fname: lib.rs
+highlight: 1,3-5
+*/}
+
+{/* /github-code */}
+````
+
+Edit the metadata to change the source, range, filename, language, or highlighted lines. Highlight metadata accepts comma-separated line numbers and inclusive ranges, such as `highlight: 1,3-5`. These line numbers are one-based and relative to the displayed excerpt, not the upstream file's `start`/`end` line numbers. The script checks that highlights fall within the excerpt and renders Mintlify's `highlight={1,3-5}` fence option. Use `--force` to regenerate code that was edited manually. To pin an example permanently, replace the branch in its source URL with a full commit SHA. Ordinary page visits, agent reads, and documentation builds do not run the sync script.
+
+The script requires Node.js 20.17.0 or newer and no additional packages. It uses `GITHUB_TOKEN`, `GH_TOKEN`, or an authenticated GitHub CLI when available to increase GitHub API rate limits. Run its tests with `node --test scripts/sync-github-code.test.mjs`.
+
+The **Update GitHub code examples** workflow runs weekly and can also be triggered manually in GitHub Actions. When the sync changes pages or encounters an error, Copilot CLI repairs affected excerpt ranges, highlights, and surrounding explanations using the upstream source. The workflow validates the documentation and opens or updates the bot PR. The task prompt is in `.github/prompts/update-github-code.md`. Enable the organization policy allowing Copilot CLI usage billed to the organization; the workflow uses `GITHUB_TOKEN` with `copilot-requests: write`, without a separate AI API key. To convert remaining legacy `<Github />` components, run the script with `--migrate`.
+
 ## Contributing
 
 NEAR uses [Mintlify](https://mintlify.com) for documentation. Content is written in MDX and configured through `docs.json` at the repository root.

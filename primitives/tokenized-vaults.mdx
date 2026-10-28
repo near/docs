@@ -4,7 +4,7 @@ icon: trending-up
 description: "Learn how Tokenized Vaults (NEP-621) are defined on NEAR"
 ---
 
-A tokenized vault is a smart contract that accepts deposits of an underlying [fungible token (FT)](../ft/standard) and, in exchange, issues shares that represent proportional ownership of the assets held by the vault.
+A tokenized vault is a smart contract that accepts deposits of an underlying [fungible token (FT)](/primitives/ft/standard) and, in exchange, issues shares that represent proportional ownership of the assets held by the vault.
 
 The underlying asset can be any [NEP-141](https://github.com/near/NEPs/tree/master/neps/nep-0141.md) compliant token (e.g. a stablecoin or a yield-bearing token). When a user deposits, the vault mints new shares based on the current exchange rate between the vault's total assets and its total shares in circulation. When a user redeems, the vault burns those shares and returns the equivalent amount of the underlying asset.
 
@@ -26,7 +26,7 @@ Unlike ERC-4626, deposits and mints on NEAR are handled through the `ft_on_trans
 
 A vault contract MUST implement the `VaultCore` trait, which extends:
 
-- [`FungibleTokenCore`](../ft/standard#nep-141-fungible-token-interface) — to provide NEP-141 functionality for the shares.
+- [`FungibleTokenCore`](/primitives/ft/standard#nep-141-fungible-token-interface) — to provide NEP-141 functionality for the shares.
 - `FungibleTokenReceiver` — to receive the underlying NEP-141 asset.
 
 In other words, a vault is itself a fungible token (the shares) that can also receive another fungible token (the underlying asset).
@@ -153,7 +153,7 @@ preview_shares_deducted_for_withdraw(asset_amount: string): string
 
 ### Deposit & Mint
 
-Following the NEP-141 standard, assets are sent to the vault via [`ft_transfer_call`](../ft/standard#ft_transfer_call) on the underlying asset's contract, which invokes `ft_on_transfer` on the vault. Both the ERC-4626 `deposit` and `mint` operations are handled through this single entrypoint.
+Following the NEP-141 standard, assets are sent to the vault via [`ft_transfer_call`](/primitives/ft/standard#ft_transfer_call) on the underlying asset's contract, which invokes `ft_on_transfer` on the vault. Both the ERC-4626 `deposit` and `mint` operations are handled through this single entrypoint.
 
 ```ts
 ft_on_transfer(sender_id: string, amount: string, msg: string): string

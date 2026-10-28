@@ -1,102 +1,238 @@
 ---
 title: Basic Anatomy
-hide_table_of_contents: true
 description: "Learn the basic anatomy of all smart contracts."
-mode: wide
 ---
-import { ExplainCode, Block , File  } from '/snippets/explain-code.jsx'
 
 Let's illustrate the basic anatomy of a simple "Hello World" contract. The code on this page comes from our [Hello NEAR repository](https://github.com/near-examples/hello-near-examples) on GitHub.
 
-<ExplainCode>
+## Importing the SDK
+All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment), [call other contracts](./crosscontract), [transfer tokens](./actions), and much more.
 
-<Block highlights="1" fname="hello-near">
+You can also use third-party libraries, though some might not work due to the limitations of the contract runtime.
 
-    ### Importing the SDK
-    All contracts will import the **NEAR SDK**, enabling them to [access the execution environment](./environment), [call other contracts](./crosscontract), [transfer tokens](./actions), and much more.
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 2
+end: 2
+fname: lib.rs
+language: rust
+*/}
 
-    You can also use third-party libraries, though some might not work due to the limitations of the contract runtime.
+```rust title="lib.rs" lines
+use near_sdk::{log, near};
+```
 
-</Block>
+<div className="github-source-link">
 
-<Block highlights="5-7,20-31" fname="hello-near">
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/contract-rs/src/lib.rs#L2-L2)
 
-    ### Contract's Main Structure
-    The contract is described through a structure:
-    - The attributes define which data the contract stores
-    - The functions define its public (and private) interface
+</div>
 
-</Block>
+{/* /github-code */}
 
-<Block highlights="4,19" fname="hello-near">
+## Contract's Main Structure
+The contract is described through a structure:
+- The attributes define which data the contract stores
+- The functions define its public (and private) interface
 
-    ### Contract Struct Macro
+Note that the contract's struct definition and the implementation are decorated with macros
 
-    Note that the contract's struct definition and the implementation are decorated with macros
+The `#[near(contract_state)]` macro tells the SDK that this structure defines the contract's state, so it knows:
+1. What to fetch from storage when the contract is loaded
+2. What to store when the contract is done executing
 
-    The `#[near(contract_state)]` macro tells the SDK that this structure defines the contract's state, so it knows:
-    1. What to fetch from storage when the contract is loaded
-    2. What to store when the contract is done executing
+The `#[near]` macro tells the SDK which functions are exposed to the outside world.
 
-    The `#[near]` macro tells the SDK which functions are exposed to the outside world.
+<Note>
+Only one struct can be decorated with the `#[near(contract_state)]` macro.
+</Note>
 
-    <Note>
-    Only one struct can be decorated with the `#[near(contract_state)]` macro.
-    </Note>
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 5
+end: 8
+fname: lib.rs
+language: rust
+*/}
 
-</Block>
+```rust title="lib.rs" lines
+#[near(contract_state)]
+pub struct Contract {
+    greeting: String,
+}
+```
 
-<Block highlights="4,19" fname="hello-near" type='info'>
+<div className="github-source-link">
 
-    <Accordion title="Interaction with other macros">
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/contract-rs/src/lib.rs#L5-L8)
 
-    When `near` is built for the wasm32 target, it generates the external NEAR contract bindings.  To achieve this it is actually generating another function with the signature `pub extern "C" fn function_name()` that first deserializes the contract struct from NEAR storage and then calls the `contract.function_name(parameter1, parameter2, ...)`.
+</div>
 
-    If you have annotated your function with any attribute-like macros, these are then executed _twice_.  Specifically if the attribute like macro makes any modification to the function signature, or inserts any code that depends on the contract struct (in the form of `&self`, `&mut self`, or `self`) this will fail in the second invocation, because the externally exposed function does not have any concept of this struct.
+{/* /github-code */}
 
-    It is possible to detect this by checking which build target you are building for and limit the execution of the macro to operate only on the first pass.
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 20
+end: 32
+fname: lib.rs
+language: rust
+*/}
 
-    </Accordion>
+```rust title="lib.rs" lines
+#[near]
+impl Contract {
+    // Public method - returns the greeting saved, defaulting to DEFAULT_GREETING
+    pub fn get_greeting(&self) -> String {
+        self.greeting.clone()
+    }
 
-</Block>
+    // Public method - accepts a greeting, such as "howdy", and records it
+    pub fn set_greeting(&mut self, greeting: String) {
+        log!("Saving greeting: {}", greeting);
+        self.greeting = greeting;
+    }
+}
+```
 
-<Block highlights="6,10-16" fname="hello-near">
+<div className="github-source-link">
 
-    ### Storage (State)
-    We call the data stored in the contract [the contract's state](./storage).
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/contract-rs/src/lib.rs#L20-L32)
 
-    In our Hello World example, the contract stores a single string (`greeting`), and the state starts initialized with the default value `"Hello"`.
+</div>
 
-    <Note>
-    We will cover more about the contract's state in the [state section](./storage).
-    </Note>
+{/* /github-code */}
 
-</Block>
+<Accordion title="Interaction with other macros">
 
-<Block highlights="22-24" fname="hello-near">
+When `near` is built for the wasm32 target, it generates the external NEAR contract bindings.  To achieve this it is actually generating another function with the signature `pub extern "C" fn function_name()` that first deserializes the contract struct from NEAR storage and then calls the `contract.function_name(parameter1, parameter2, ...)`.
 
-    ### Read Only Functions
-    Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account.
+If you have annotated your function with any attribute-like macros, these are then executed _twice_.  Specifically if the attribute like macro makes any modification to the function signature, or inserts any code that depends on the contract struct (in the form of `&self`, `&mut self`, or `self`) this will fail in the second invocation, because the externally exposed function does not have any concept of this struct.
 
-    <Note>
-    We will cover more about function types in the [functions section](./functions).
-    </Note>
+It is possible to detect this by checking which build target you are building for and limit the execution of the macro to operate only on the first pass.
 
-</Block>
+</Accordion>
 
-<Block highlights="27-30" fname="hello-near">
+## Storage (State)
+We call the data stored in the contract [the contract's state](./storage).
 
-    ### State Mutating Functions
-    Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network.
+In our Hello World example, the contract stores a single string (`greeting`), and the state starts initialized with the default value `"Hello"`.
 
-    <Note>
-    We will cover more about function types in the [functions section](./functions).
-    </Note>
+<Note>
+We will cover more about the contract's state in the [state section](./storage).
+</Note>
 
-</Block>
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 6
+end: 8
+fname: lib.rs
+language: rust
+*/}
 
-<File fname="hello-near"
-    url="https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs"
-    start="2" end="32" />
+```rust title="lib.rs" lines
+pub struct Contract {
+    greeting: String,
+}
+```
 
-</ExplainCode>
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/contract-rs/src/lib.rs#L6-L8)
+
+</div>
+
+{/* /github-code */}
+
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 11
+end: 17
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+impl Default for Contract {
+    fn default() -> Self {
+        Self {
+            greeting: "Hello".to_string(),
+        }
+    }
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/contract-rs/src/lib.rs#L11-L17)
+
+</div>
+
+{/* /github-code */}
+
+## Read Only Functions
+Contract's functions can be read-only, meaning they don't modify the state. Calling them is free for everyone, and does not require to have a NEAR account.
+
+<Note>
+We will cover more about function types in the [functions section](./functions).
+</Note>
+
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 22
+end: 25
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+// Public method - returns the greeting saved, defaulting to DEFAULT_GREETING
+pub fn get_greeting(&self) -> String {
+    self.greeting.clone()
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/contract-rs/src/lib.rs#L22-L25)
+
+</div>
+
+{/* /github-code */}
+
+## State Mutating Functions
+Functions that modify the state or call other contracts are considered state mutating functions. It is necessary to have a NEAR account to call them, as they require a transaction to be sent to the network.
+
+<Note>
+We will cover more about function types in the [functions section](./functions).
+</Note>
+
+{/* github-code
+url: https://github.com/near-examples/hello-near-examples/blob/main/contract-rs/src/lib.rs
+commit: be63c9f326b47d881dddaea87564fe578bcd844e
+start: 27
+end: 31
+fname: lib.rs
+language: rust
+*/}
+
+```rust title="lib.rs" lines
+// Public method - accepts a greeting, such as "howdy", and records it
+pub fn set_greeting(&mut self, greeting: String) {
+    log!("Saving greeting: {}", greeting);
+    self.greeting = greeting;
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/hello-near-examples/blob/be63c9f326b47d881dddaea87564fe578bcd844e/contract-rs/src/lib.rs#L27-L31)
+
+</div>
+
+{/* /github-code */}
