@@ -1,0 +1,55 @@
+---
+title: Fungible Token Contracts
+sidebarTitle: Fungible Tokens
+description: "Understand the guarantees a fungible token contract must preserve, and how to test them using the Rust reference implementation."
+---
+
+A fungible token contract keeps track of balances and the token's total supply. Its methods must preserve that accounting while users transfer tokens, pay for storage, and interact with other contracts.
+
+Start with the [Rust FT reference implementation](https://github.com/near-examples/FT). It uses `near-contract-standards` for token accounting, storage management, and transfer callbacks. Use this guide to understand those responsibilities before customizing the contract.
+
+If you only need to create or integrate a token, see [Using FTs](/primitives/ft/ft). For the method interfaces, see the [FT standards](/primitives/ft/standard).
+
+## Supply and balances
+
+The reference contract initializes once, assigning its initial supply to `owner_id`. Token amounts are integers in the smallest token unit; `decimals` controls how applications display them. For example, `"1250"` represents 12.50 tokens when `decimals` is 2.
+
+An ordinary transfer subtracts from the caller's balance and adds the same amount to the receiver. It must preserve total supply and reject an amount the sender does not own. Amounts use decimal strings in JSON to preserve integer precision.
+
+Minting and burning policies are application decisions. If you add either operation, define who may call it and update both the affected balance and total supply. Changing token metadata must not silently change the units used for existing balances.
+
+## Registration and storage
+
+Each account balance consumes contract storage. The reference contract implements [NEP-145 storage management](https://github.com/near/NEPs/blob/master/neps/nep-0145.md) so users can pay for their registration.
+
+Query `storage_balance_bounds` for the required deposit and `storage_balance_of` to check registration. A third party can register a receiver through `storage_deposit`; the receiver must be registered before a transfer can credit them.
+
+Excess registration deposits must be refunded according to the storage policy. In the reference implementation, unregistering an account with tokens fails unless `force` is enabled. Forced unregistration burns that balance and reduces total supply. Keep storage deposits in NEAR separate from balances of the fungible token.
+
+## Transfers and callbacks
+
+[`ft_transfer_call`](https://github.com/near/NEPs/blob/master/neps/nep-0141.md) transfers tokens, calls the receiver's `ft_on_transfer`, and schedules a resolver callback. These execute in separate receipts, so other calls can change balances before the resolver runs.
+
+The receiver returns the amount it did **not** use. The resolver handles that refund, including a failed receiver call. It can recover only tokens still available in the receiver's balance. If the sender has unregistered before resolution, the reference implementation burns the recoverable refund and adjusts supply.
+
+The resolver must be private. A receiver contract must also verify that `ft_on_transfer` was called by a token contract it accepts; use the predecessor account for this check. Its `sender_id` argument identifies the user whose tokens were transferred.
+
+Both `ft_transfer` and `ft_transfer_call` require [exactly 1 yoctoNEAR](/smart-contracts/security/one_yocto). This attached NEAR is distinct from the token amount being transferred.
+
+## Test the guarantees
+
+Follow the reference repository's build and test instructions. Its [storage tests](https://github.com/near-examples/FT/blob/master/tests/storage.rs) and [transfer tests](https://github.com/near-examples/FT/blob/master/tests/transfer.rs) are starting points for checking changes.
+
+Use [unit tests](/smart-contracts/testing/unit-test) for accounting and permission checks, and [integration tests](/smart-contracts/testing/integration-test) for cross-contract execution and refunds. Add cases for each behavior your customization introduces.
+
+| Scenario | What to assert |
+| --- | --- |
+| Initialization | Initial supply belongs to the configured owner; reinitialization fails. |
+| Transfer succeeds or fails | Successful transfers preserve supply; rejected transfers leave token balances unchanged. |
+| Registration | Insufficient deposits fail; excess deposits are refunded; repeated registration does not charge twice. |
+| Unregistration | Empty-account closure returns `true`; forced closure burns any remaining token balance. |
+| Receiver uses some or no tokens | Final balances reflect the used amount and the recoverable refund. |
+| Receiver fails or spends tokens before resolution | Resolution preserves accounting using the receiver's remaining balance. |
+| Sender unregisters before resolution | The recoverable refund is burned and supply decreases accordingly. |
+
+Inspect receipt outcomes and final balances as well as transaction success. A receiver can fail while the resolver succeeds in handling the refund. See [cross-contract calls](/smart-contracts/anatomy/crosscontract) for the execution model.
