@@ -272,6 +272,8 @@ These are the raw host-function imports — there's no `near-sdk-rs` ergonomic w
 `universal_state_init_to_account_id` returns a status instead of always succeeding. `0` means the id was derived and written to the register. `1` means the bytes don't decode into a `UniversalStateInit`, which includes bytes with extra data at the end. `2` means they decode but aren't the one canonical encoding: unsorted or duplicate `data` keys or `access_keys`. On anything but `0`, the register is left unwritten. Check the status before moving on. Otherwise this is a pure computation: no side effects, and it can run inside a view call.
 </Step>
 <Step title="Append the UniversalStateInit action to a promise">
+If step 1 returned a status other than `0`, do not create the promise.
+
 ```rust
 let promise_idx = unsafe { promise_batch_create(receiver_len, receiver_ptr) };
 unsafe {
@@ -290,8 +292,23 @@ Like in the relayer flow, this `amount_ptr` deposit only tops up the account's *
 There's no host function to build up a `UniversalStateInit`'s `data` map incrementally the way `set_state_init_data_entry` does for a [deterministic account](/protocol/accounts-contracts/account-id#deterministic-address). If your contract needs to populate initial storage, it has to construct the whole Borsh-encoded state init itself before calling `promise_batch_action_universal_state_init` — the two host functions here only derive an id from bytes and attach an action, they don't help build the bytes.
 </Note>
 </Step>
-<Step title="Malformed input fails the calling contract's own call">
-`promise_batch_action_universal_state_init` does not check the bytes or the receiver when the contract calls it. The runtime checks them when the contract's function call finishes, together with every other receipt that the call created. The runtime first checks that the promise's receiver is the id that the bytes derive to. If it is not, the contract's own function call fails with `NewReceiptValidationError`, and the inner `ActionsValidation` error is `InvalidUniversalStateInitReceiver`. If the receiver matches but the bytes don't decode into a `UniversalStateInit`, or aren't the canonical encoding, the inner error is `MalformedUniversalStateInit`. The failed call's state changes are rolled back. None of the receipts it created run, including callbacks. Check step 1's status first to avoid this. If your contract's logic depends on the account having been created, also check the outcome of the cross-contract call.
+<Step title="Invalid input fails your function call">
+If the contract creates the promise with input that fails validation, the contract's own function call fails with `NewReceiptValidationError`. The failed call's state changes are rolled back. None of the receipts it created run, including callbacks.
+
+`promise_batch_action_universal_state_init` does not check the bytes or the receiver when the contract calls it. The runtime checks them when the contract's function call finishes, together with every other receipt that the call created. The inner `ActionsValidation` error says which check failed:
+
+| Check | Inner error |
+|-------|-------------|
+| The promise's receiver is the id that the bytes derive to | `InvalidUniversalStateInitReceiver` |
+| The bytes decode into a `UniversalStateInit` and are the canonical encoding | `MalformedUniversalStateInit` |
+| The state init actions of the receipt have at most 1,500 storage entries in total | `TotalNumberOfStateInitEntriesExceeded` |
+| The state init actions of the receipt have at most 1,024 access keys in total | `TotalNumberOfStateInitKeysExceeded` |
+| Each storage key is at most 2,048 bytes | `UniversalStateInitKeyLengthExceeded` |
+| Each storage value is at most 4,194,304 bytes | `UniversalStateInitValueLengthExceeded` |
+
+The receiver check runs before the decoding check. A status of `0` from step 1 does not check the size limits in the last four rows.
+
+A promise that passes all checks is sent. The state init can still fail when it runs, for example if the account balance and the deposit together do not cover the storage stake. If your contract's logic depends on the account having been created, check the outcome of the cross-contract call.
 </Step>
 </Steps>
 
