@@ -1,6 +1,6 @@
 ---
 title: Running Lake Indexer
-description: "Learn how to set up and run a NEAR Lake Indexer, including prerequisites, network configuration, and commands for syncing from the latest or a specific block."
+description: "This page shows how a NEAR Lake Indexer was set up and run. The indexer is no longer updated and cannot sync mainnet or testnet."
 ---
 
 import NearLakeDeprecationTutorial from '/snippets/near-lake-deprecation-tutorial.mdx';
@@ -11,7 +11,7 @@ import NearLakeDeprecationTutorial from '/snippets/near-lake-deprecation-tutoria
 The NEAR Lake indexer is no longer updated. Its latest release, 2.4.1, is built on nearcore 2.4. It cannot sync mainnet or testnet, because these networks use newer protocol versions. To index data from your own node, use the [nearcore indexer](/data-infrastructure/tutorials/near-indexer).
 </Warning>
 
-At NEAR we already have a working solution to index blockchain data and store it in AWS S3 buckets called **NEAR Lake**. In this guide you will learn how to set up and run an instance of the NEAR Lake Indexer.
+**NEAR Lake** is an indexer that stores blockchain data as JSON files in AWS S3 buckets. This page is kept as a reference for existing NEAR Lake setups. It describes how the NEAR Lake Indexer was set up and run.
 
 The Lake Indexer setup consists of the following components:
 
