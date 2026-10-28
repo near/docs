@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "NEAR Protocol JSON RPC API",
-    "version": "1.3.36"
+    "version": "1.3.37"
   },
   "paths": {
     "/EXPERIMENTAL_call_function": {
@@ -9010,6 +9010,34 @@
               "MlDsaVerifyInvalidInput"
             ],
             "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "description": "`method_name` is not allowed in external contract calls",
+            "properties": {
+              "ProhibitedInExternalCall": {
+                "properties": {
+                  "method_name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "method_name"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "ProhibitedInExternalCall"
+            ],
+            "type": "object"
+          },
+          {
+            "description": "An external contract call has an attached deposit, which it cannot have",
+            "enum": [
+              "DepositInExternalCall"
+            ],
+            "type": "string"
           }
         ]
       },
@@ -12426,6 +12454,14 @@
             ],
             "description": "Max amount of gas that can be used, excluding gas attached to promises."
           },
+          "max_gas_burnt_external": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NearGas"
+              }
+            ],
+            "description": "Max amount of gas that can be burnt by an external contract call,\nexcluding gas attached to promises."
+          },
           "max_globals_per_contract": {
             "description": "If present, stores max number of globals (entries in the wasm global\nsection) a contract may declare.",
             "format": "uint64",
@@ -14757,17 +14793,6 @@
             "minimum": 0,
             "nullable": true,
             "type": "integer"
-          },
-          "ttl_account_id_router": {
-            "description": "Time to persist Accounts Id in the router without removing them.",
-            "items": {
-              "format": "uint64",
-              "minimum": 0,
-              "type": "integer"
-            },
-            "maxItems": 2,
-            "minItems": 2,
-            "type": "array"
           },
           "tx_routing_height_horizon": {
             "description": "If the node is not a chunk producer within that many blocks, then route\nto upcoming chunk producers.",
@@ -19932,6 +19957,48 @@
             "properties": {
               "info": {
                 "properties": {
+                  "block_hash": {
+                    "$ref": "#/components/schemas/CryptoHash"
+                  },
+                  "block_height": {
+                    "format": "uint64",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "limit": {
+                    "format": "uint32",
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "requested_account_id": {
+                    "$ref": "#/components/schemas/AccountId"
+                  }
+                },
+                "required": [
+                  "requested_account_id",
+                  "limit",
+                  "block_height",
+                  "block_hash"
+                ],
+                "type": "object"
+              },
+              "name": {
+                "enum": [
+                  "TOO_MANY_ACCESS_KEYS"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "info"
+            ],
+            "type": "object"
+          },
+          {
+            "properties": {
+              "info": {
+                "properties": {
                   "error_message": {
                     "type": "string"
                   }
@@ -21440,7 +21507,7 @@
         "type": "object"
       },
       "SpiceChunkEndorsementStats": {
-        "description": "Per-validator chunk endorsement stats accumulated over a spice epoch,\nindexed by the current epoch's validator id. Carried on the last block of\nthe epoch (see `BlockHeaderInnerRestV7`) and consumed by reward and kickout.",
+        "description": "Per-validator chunk endorsement stats accumulated over a spice epoch,\nindexed by the current epoch's validator id. Carried on the last block of\nthe epoch (see `BlockHeaderInnerRestV8`) and consumed by reward and kickout.",
         "properties": {
           "expected": {
             "format": "uint32",
