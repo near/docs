@@ -96,7 +96,7 @@ Creating a token takes two steps: call `get_required` to quote the storage depos
 
 ## Deploying Your Own Contract
 
-You can also create a fungible token by deploying and initializing a [canonical FT contract](https://github.com/near-examples/FT).
+You can also create a fungible token by deploying and initializing a [canonical FT contract](https://github.com/near-examples/FT). Before customizing it, review the [FT contract guarantees](/smart-contracts/tutorials/token-contracts/fts) for supply, storage, transfers, and refunds.
 
 On initialization, you will define the token's metadata such as its name (e.g. Ethereum), symbol (e.g. ETH) and total supply (e.g. 10M). You will also define an `owner`, which will own the tokens **total supply**.
 
@@ -633,4 +633,4 @@ While the FT standard does not define a `burn` method, you can simply transfer t
 2. [NEP-148 standard](https://github.com/near/NEPs/tree/master/neps/nep-0148.md)
 3. [FT Event Standards](https://github.com/near/NEPs/blob/master/neps/nep-0300.md)
 4. [FT reference implementation](https://github.com/near-examples/FT)
-5. [Fungible Tokens 101](../../smart-contracts/tutorials/zero-to-hero/fts) - a set of tutorials that cover how to create a FT contract using Rust.
+5. [FT contract guarantees](/smart-contracts/tutorials/token-contracts/fts) - supply, storage, transfer, and refund behavior to preserve when customizing a contract.
