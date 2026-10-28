@@ -188,8 +188,53 @@ Broadcasts a signed transaction and waits for it to be included in a block. Equi
 
 | Error Code | Description | Solution |
 |------------|-------------|----------|
-| `INVALID_TRANSACTION` | The signed transaction failed validation. The reason is in `data.TxExecutionError.InvalidTxError`. For example, `"Expired"` means that the reference block hash is too old. `"InvalidSignature"` means that the signature does not match the signer's key. `ShardCongested` and `ShardStuck` mean that the receiver's shard is congested. | For `Expired`, refresh `block_hash` and re-sign. For `InvalidSignature`, sign again with the matching access key. For `ShardCongested` or `ShardStuck`, the node checks congestion before the signature, key, nonce and balance, so the transaction may still be valid. Wait and send the same signed transaction again while its block hash is still valid. For other reasons, fix the reported nonce, key, or balance and sign again. |
-| `TIMEOUT_ERROR` | The chosen `wait_until` level was not reached before the RPC's deadline. The nearcore default is 10 seconds. Node operators can change it, so some providers wait longer. From nearcore 2.14.0, `cause.info.cause` says how far the transaction got. The value is `NOT_OBSERVED`, `PENDING`, `DOES_NOT_TRACK_SHARD` or `ERROR`. For `PENDING`, the last known status is in `cause.info.status`. Older nodes send no `cause.info`. | Lower `wait_until` and poll `tx`, or use an archival/dedicated provider. If the cause is `NOT_OBSERVED`, the node has not seen the transaction in a block. After `send_tx`, poll `tx` with the transaction hash, and send the same signed transaction again if it does not appear. After `tx`, check the hash and `sender_account_id`. |
-| `UNKNOWN_TRANSACTION` | No record of the requested transaction hash. `tx` and `tx_status` return this only when `wait_until` is `NONE`. With other values, an unknown transaction makes the RPC wait until its deadline and return `TIMEOUT_ERROR`. | Verify the hash and `sender_account_id`. |
+| `INVALID_TRANSACTION` | The signed transaction failed validation. | See [Invalid transactions](#invalid-transactions). |
+| `TIMEOUT_ERROR` | The chosen `wait_until` level was not reached before the RPC's deadline. | See [Timeouts](#timeouts). |
+| `UNKNOWN_TRANSACTION` | No record of the requested transaction hash. `tx` and `tx_status` return this only when `wait_until` is `NONE`. With other values, they wait until the deadline and return `TIMEOUT_ERROR`. | Verify the hash and `sender_account_id`. |
 | `DOES_NOT_TRACK_SHARD` | The node does not track the shard needed to answer the request. | Send the request to a node that tracks that shard, such as an RPC node that tracks all shards. |
 | `INTERNAL_ERROR` | The node reached its limits or failed internally. | Try again later. |
+
+### Invalid transactions
+
+The reason for an `INVALID_TRANSACTION` error is in `data.TxExecutionError.InvalidTxError`. For example, this is the error for a transaction whose reference block hash is too old:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "error": {
+    "name": "HANDLER_ERROR",
+    "cause": {
+      "name": "INVALID_TRANSACTION",
+      "info": {}
+    },
+    "code": -32000,
+    "message": "Server error",
+    "data": {
+      "TxExecutionError": {
+        "InvalidTxError": "Expired"
+      }
+    }
+  },
+  "id": "dontcare"
+}
+```
+
+The reason is a string, such as `"Expired"`, or an object, such as `{"InvalidNonce": {"tx_nonce": 5, "ak_nonce": 7}}`. What to do depends on the reason:
+
+- `Expired`: the reference block hash is too old. Refresh `block_hash` and sign again.
+- `InvalidSignature`: the signature does not match the signer's key. Sign again with the matching access key.
+- `ShardCongested` or `ShardStuck`: the receiver's shard is congested. The node checks congestion before the signature, key, nonce and balance, so the transaction may still be valid. Wait, and then send the same signed transaction again while its block hash is still valid.
+- Any other reason: fix the reported nonce, key or balance, and sign again.
+
+### Timeouts
+
+A `TIMEOUT_ERROR` means that the transaction did not reach the chosen `wait_until` level before the RPC's deadline. The nearcore default deadline is 10 seconds. Node operators can change it, so some providers wait longer.
+
+From nearcore 2.14.0, `cause.info.cause` says how far the transaction got. Older nodes send no `cause.info`.
+
+- `NOT_OBSERVED`: the node has not seen the transaction in a block. After `send_tx`, poll `tx` with the transaction hash, and send the same signed transaction again if it does not appear. After `tx`, check the hash and `sender_account_id`.
+- `PENDING`: the node has seen the transaction, but it has not reached the chosen level yet. The last known status is in `cause.info.status`. Poll `tx` again.
+- `DOES_NOT_TRACK_SHARD`: the node does not track the shard of the transaction, and it got no answer from a node that does. Send the request to a node that tracks that shard.
+- `ERROR`: the node could not get a usable status before the deadline. Try again later.
+
+You can also lower `wait_until` and poll `tx`, or use an archival or dedicated provider.
