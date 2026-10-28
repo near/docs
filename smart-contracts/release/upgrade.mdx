@@ -429,3 +429,5 @@ Removing all full-access keys cannot be undone through an externally signed tran
 </Warning>
 
 A locked contract can still upgrade itself if its current code exposes an authorized [programmatic update](#programmatic-update) method. If the contract must be permanently immutable, do not include such a method.
+
+If the account uses a global contract by account ID, removing its keys does not lock its code. The owner of the global contract can deploy a new version at any time, and the locked account then runs the new code. To lock the code, deploy it to the account directly, or use a global contract by code hash.

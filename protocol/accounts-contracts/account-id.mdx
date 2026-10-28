@@ -111,10 +111,10 @@ Deterministic accounts are useful for protocols and applications that need to re
 <Accordion title="🧑‍💻 Technical: How is the address derived?">
 
 The deterministic account ID is computed by:
-1. Constructing a `DeterministicAccountStateInit` struct containing:
-   - **Code**: a reference to the contract code via a code hash or an existing account ID
-   - **Initial data**: a key-value mapping pre-populating the contract's storage (max 4 MiB per key/value)
-2. Borsh-encoding that struct into bytes
+1. Constructing a `DeterministicAccountStateInit::V1` value. The type is a versioned enum, and `V1` is its only version. The value contains:
+   - **Code**: a global contract, referenced by its code hash, or by account ID if it was [deployed by account ID](/smart-contracts/global-contracts). The global contract must already exist, or the action fails with `GlobalContractDoesNotExist`.
+   - **Initial data**: a key-value mapping pre-populating the contract's storage. Each key can be at most 2 KiB (2048 bytes) and each value at most 4 MiB. From protocol version 87 (nearcore 2.14.0), the state init actions in one receipt can hold at most 1,500 entries in total.
+2. Borsh-encoding that value into bytes. The encoding starts with the version byte `0`. The code reference starts with `0` for a code hash or `1` for an account ID. The data entries are sorted by key.
 3. Applying the formula: `'0s' + keccak256(bytes)[12:32].hex()`
 
 This guarantees that two accounts with identical code and initial state will always have the same address.
@@ -139,7 +139,9 @@ A NEAR transfer to a `0s` address that does not exist yet creates the account wi
 
 <Info>
 
-**Deterministic accounts cannot be deleted** and certain account modifications available to regular accounts are restricted. Once created, the deployed code and pre-initialized storage are permanent.
+A deterministic account has no access keys when it is created, and creating it does not give the sender any control over it. Only the account itself can deploy new code, add keys, or delete the account. At first, this can happen only through the account's own contract. If the contract adds a full-access key, the holder of that key can also do these things. A function-call key does not give this control. The contract can still change its storage like any other contract.
+
+The code comes from a global contract. If the initial state names the global contract by code hash, the code stays as initialized unless the account itself changes it, through its contract or through a full-access key that the contract added. If it names the global contract by account ID, the owner of that account can publish new code at any time, and the deterministic account then runs the new code without a change of address. If a deterministic account is deleted, anyone can create it again with the same initial state.
 
 </Info>
 
@@ -163,7 +165,7 @@ One important difference though is that universal accounts can be created with [
 
 The universal account ID is computed by:
 1. Constructing a `UniversalStateInit` value containing:
-   - **Code** (optional): a reference to the contract code via a code hash or an existing account ID, omitted for a key-only account
+   - **Code** (optional, omitted for a key-only account): a global contract, referenced by its code hash, or by account ID if it was deployed by account ID
    - **Data**: a key-value mapping pre-populating the contract's storage, empty for a key-only account
    - **Access keys**: a set of access-key handles the account starts with, empty for a contract-only account. A handle is the full public key for `ed25519`/`secp256k1`, or the 32-byte hash for `ml-dsa-65` — the same [compact form](./access-keys#signature-schemes) used everywhere else
 2. Borsh-encoding that value into bytes
