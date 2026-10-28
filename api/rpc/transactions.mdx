@@ -30,7 +30,7 @@ Prefer `send_tx` and `tx` for new integrations, and `tx_status` on nodes that ru
 
 | Value | Returns when… | Typical use |
 |-------|---------------|-------------|
-| `NONE` | The transaction is queued but not yet included in a block. | Fire-and-forget broadcasts where you only need the hash. |
+| `NONE` | Right away. `send_tx` returns before the node validates or includes the transaction, and its response is `{"final_execution_status": "NONE"}` with no transaction hash. `tx` and `tx_status` return the current status without waiting. | Fire-and-forget broadcasts. Compute the transaction hash on the client, or use `broadcast_tx_async` if you need the RPC to return it. |
 | `INCLUDED` | The transaction is included in a block (the block may not be finalized). | UI optimism: you want to confirm the tx hit the chain. |
 | `EXECUTED_OPTIMISTIC` *(default)* | Included + all non-refund receipts have executed (blocks may still not be finalized). | Default for most apps — you can read the result. |
 | `INCLUDED_FINAL` | Included in a *finalized* block. | You need finality but don't care about receipts. |
@@ -172,7 +172,7 @@ Fetches a single receipt by its id.
 
 ## Broadcast Async
 
-Broadcasts a signed transaction and returns immediately with the transaction hash. Equivalent to `send_tx` with `wait_until: "NONE"`.
+Broadcasts a signed transaction and returns immediately with the transaction hash. It submits the transaction the same way as `send_tx` with `wait_until: "NONE"`. The difference is the response: `broadcast_tx_async` returns the transaction hash as a string, while `send_tx` returns only `{"final_execution_status": "NONE"}`.
 
 - **method**: `broadcast_tx_async`
 - **params**: a single positional string — the base64-encoded signed transaction.
@@ -190,10 +190,57 @@ Broadcasts a signed transaction and waits for it to be included in a block. Equi
 
 ## Error Handling
 
+`INTERNAL_ERROR` is returned as the error `name`. The other errors are returned with `name` set to `HANDLER_ERROR` and the error code below in `cause.name`.
+
 | Error Code | Description | Solution |
 |------------|-------------|----------|
-| `INVALID_TRANSACTION` | The signed transaction failed validation. | Re-sign with the correct nonce, block hash, and signer key. |
-| `EXPIRED_TRANSACTION` | The reference block hash is too old. | Refresh `block_hash` and re-sign. |
-| `TIMEOUT_ERROR` | The chosen `wait_until` level was not reached before the RPC's deadline. | Lower `wait_until` and poll `tx`, or use an archival/dedicated provider. |
-| `UNKNOWN_TRANSACTION` | No record of the requested transaction hash. | Verify the hash and `sender_account_id`. |
-| `INVALID_SIGNATURE` | The signature does not match the signer's key. | Sign again with the matching access key. |
+| `INVALID_TRANSACTION` | The signed transaction failed validation. | See [Invalid transactions](#invalid-transactions). |
+| `TIMEOUT_ERROR` | The chosen `wait_until` level was not reached before the RPC's deadline. | See [Timeouts](#timeouts). |
+| `UNKNOWN_TRANSACTION` | No record of the requested transaction hash. `tx` and `tx_status` return this only when `wait_until` is `NONE`. With other values, they wait until the deadline and return `TIMEOUT_ERROR`. | Verify the hash and `sender_account_id`. |
+| `DOES_NOT_TRACK_SHARD` | The node does not track the shard needed to answer the request. | Send the request to a node that tracks that shard, such as an RPC node that tracks all shards. |
+| `INTERNAL_ERROR` | The node reached its limits or failed internally. | Try again later. |
+
+### Invalid transactions
+
+The reason for an `INVALID_TRANSACTION` error is in `data.TxExecutionError.InvalidTxError`. For example, this is the error for a transaction whose reference block hash is too old:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "error": {
+    "name": "HANDLER_ERROR",
+    "cause": {
+      "name": "INVALID_TRANSACTION",
+      "info": {}
+    },
+    "code": -32000,
+    "message": "Server error",
+    "data": {
+      "TxExecutionError": {
+        "InvalidTxError": "Expired"
+      }
+    }
+  },
+  "id": "dontcare"
+}
+```
+
+The reason is a string, such as `"Expired"`, or an object, such as `{"InvalidNonce": {"tx_nonce": 5, "ak_nonce": 7}}`. What to do depends on the reason:
+
+- `Expired`: the reference block hash is too old. Refresh `block_hash` and sign again.
+- `InvalidSignature`: the signature does not match the signer's key. Sign again with the matching access key.
+- `ShardCongested` or `ShardStuck`: the receiver's shard is congested. The node checks congestion before the signature, key, nonce and balance, so the transaction may still be valid. Wait, and then send the same signed transaction again while its block hash is still valid.
+- Any other reason: fix the reported nonce, key or balance, and sign again.
+
+### Timeouts
+
+A `TIMEOUT_ERROR` means that the transaction did not reach the chosen `wait_until` level before the RPC's deadline. The nearcore default deadline is 10 seconds. Node operators can change it, so some providers wait longer.
+
+From nearcore 2.14.0, `cause.info.cause` says how far the transaction got. Older nodes send no `cause.info`.
+
+- `NOT_OBSERVED`: the node has not seen the transaction in a block. After `send_tx`, poll `tx` with the transaction hash, and send the same signed transaction again if it does not appear. After `tx`, check the hash and `sender_account_id`.
+- `PENDING`: the node has seen the transaction, but it has not reached the chosen level yet. The last known status is in `cause.info.status`. Poll `tx` again.
+- `DOES_NOT_TRACK_SHARD`: the node does not track the shard of the transaction, and it got no answer from a node that does. Send the request to a node that tracks that shard.
+- `ERROR`: the node could not get a usable status before the deadline. Try again later.
+
+You can also lower `wait_until` and poll `tx`, or use an archival or dedicated provider.
