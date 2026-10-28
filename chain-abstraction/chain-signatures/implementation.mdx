@@ -56,7 +56,7 @@ The live participant set and threshold are in `v1.signer`: see [The MPC network 
 To interact with the chain signatures library you first need to instantiate a `ChainSignaturesContract`.
 
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/config.js#L53-L56
+url: https://github.com/near-examples/near-multichain/blob/main/src/config.js
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 53
 end: 56
@@ -89,7 +89,7 @@ To interact with a specific chain, you need to instantiate the relevant `chainAd
 <Tabs>
   <Tab title="Ξ EVM">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L40-L47
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 40
 end: 47
@@ -127,7 +127,7 @@ const Evm = new chainAdapters.evm.EVM({
 
 <Tab title="₿ Bitcoin">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L10-L18
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 10
 end: 18
@@ -160,7 +160,7 @@ const Bitcoin = new chainAdapters.btc.Bitcoin({
 
 <Tab title="◎ Solana">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L12-L17
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 12
 end: 17
@@ -190,7 +190,7 @@ const Solana = new chainAdapters.solana.Solana({
 
 <Tab title="◉ XRP">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L11-L14
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 11
 end: 14
@@ -218,7 +218,7 @@ const Xrp = new chainAdapters.xrp.XRP({
 
 <Tab title="◈ SUI">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L13-L20
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 13
 end: 20
@@ -250,7 +250,7 @@ const Sui = new chainAdapters.sui.SUI({
 
 <Tab title="⬟ Aptos">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L12-L21
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 12
 end: 21
@@ -299,7 +299,7 @@ To derive the address call the `deriveAddressAndPublicKey` method passing the ne
 <Tabs>
   <Tab title="Ξ EVM">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L98-L101
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 98
 end: 101
@@ -325,7 +325,7 @@ const { address } = await Evm.deriveAddressAndPublicKey(
 
 <Tab title="₿ Bitcoin">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L49-L52
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 49
 end: 52
@@ -351,7 +351,7 @@ const { address, publicKey } = await Bitcoin.deriveAddressAndPublicKey(
 
 <Tab title="◎ Solana">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L47-L50
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 47
 end: 50
@@ -379,7 +379,7 @@ const { publicKey } = await Solana.deriveAddressAndPublicKey(
 
 <Tab title="◉ XRP">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L45-L48
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 45
 end: 48
@@ -405,7 +405,7 @@ const { address, publicKey } = await Xrp.deriveAddressAndPublicKey(
   <Tab title="◈ SUI">
 
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L51-L54
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 51
 end: 54
@@ -431,7 +431,7 @@ const { address, publicKey } = await Sui.deriveAddressAndPublicKey(
 
   <Tab title="⬟ Aptos">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L52-L55
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 52
 end: 55
@@ -473,7 +473,7 @@ To construct the transaction to be signed use the method `prepareTransactionForS
   <Tab title="Ξ EVM">
         Constructing a transaction to transfer ETH is very simple. The `value` is the amount of ETH in Wei as type BigInt (1 ETH = 10<sup>18</sup> Wei).
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/Transfer.jsx#L17-L21
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/Transfer.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 17
 end: 21
@@ -502,7 +502,7 @@ return await Evm.prepareTransactionForSigning({
   <Tab title="₿ Bitcoin">
     Constructing a transaction to transfer BTC is very simple. The `value` is the amount of BTC in satoshis as a string (1 BTC = 100,000,000 sats).
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L71-L77
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 71
 end: 77
@@ -533,7 +533,7 @@ const { transaction, hashesToSign } =
   <Tab title="◎ Solana">
     Constructing a transaction to transfer SOL is very simple. The `value` is the amount of SOL in lamports as type BigInt (1 SOL = 1,000,000,000 lamports).
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L65-L71
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 65
 end: 71
@@ -563,7 +563,7 @@ const {
     <Tab title="◉ XRP">
     Constructing a transaction to transfer XRP is straightforward. The `value` is the amount of XRP in drops as a string (1 XRP = 1,000,000 drops).
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L63-L69
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 63
 end: 69
@@ -594,7 +594,7 @@ const { transaction, hashesToSign } =
   <Tab title="◈ SUI">
     Constructing a transaction to transfer SUI is simple. The `value` is the amount of SUI in MIST as type BigInt (1 SUI = 1,000,000,000 MIST).
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L70-L80
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 70
 end: 80
@@ -629,7 +629,7 @@ const { hashesToSign, transaction } =
   <Tab title="⬟ Aptos">
     Constructing a transaction to transfer APT is straightforward. The `value` is the amount of APT in octas as type BigInt (1 APT = 100,000,000 octas).
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L71-L82
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 71
 end: 82
@@ -670,7 +670,7 @@ To call a function on a smart contract we need the ABI of the contract, in our r
 Then define a `Contract` object using the `ethers` library
 
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L18-L18
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 18
 end: 18
@@ -692,7 +692,7 @@ const contract = new Contract(contractAddress, ABI, provider);
 Then to construct the transaction
 
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx#L31-L37
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/FunctionCall.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 31
 end: 37
@@ -737,7 +737,7 @@ The method requires four parameters:
 <Tabs>
   <Tab title="Ξ EVM">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L115-L123
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 119
 end: 127
@@ -768,7 +768,7 @@ const rsvSignatures = await SIGNET_CONTRACT.sign({
 
   <Tab title="₿ Bitcoin">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L83-L91
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 83
 end: 91
@@ -802,7 +802,7 @@ For Bitcoin, it is common to have multiple UTXOs to sign when sending a single t
 <Tab title="◎ Solana">
   To get the payload, serialize the transaction with `serializeMessage()`. This returns a `Uint8Array`, which the example passes directly to `SIGNET_CONTRACT.sign`.
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L78-L86
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 78
 end: 86
@@ -833,7 +833,7 @@ const rsvSignatures = await SIGNET_CONTRACT.sign({
 
 <Tab title="◉ XRP">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L76-L84
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 76
 end: 84
@@ -863,7 +863,7 @@ const rsvSignatures = await SIGNET_CONTRACT.sign({
 
 <Tab title="◈ SUI">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L87-L95
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 87
 end: 95
@@ -893,7 +893,7 @@ const rsvSignatures = await SIGNET_CONTRACT.sign({
 
 <Tab title="⬟ Aptos">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L88-L96
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 88
 end: 96
@@ -931,7 +931,7 @@ Once the signature is returned from the MPC it needs to be formatted and added t
 <Tabs>
   <Tab title="Ξ EVM">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L125-L128
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 129
 end: 132
@@ -957,7 +957,7 @@ const finalizedTransaction = Evm.finalizeTransactionSigning({
 
 <Tab title="₿ Bitcoin">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L97-L100
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 97
 end: 100
@@ -985,7 +985,7 @@ For Bitcoin, the array of signatures is added to the transaction to produce a co
 
 <Tab title="◎ Solana">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L92-L96
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 92
 end: 96
@@ -1012,7 +1012,7 @@ const finalizedTransaction = Solana.finalizeTransactionSigning({
 
 <Tab title="◉ XRP">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L90-L93
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 90
 end: 93
@@ -1037,7 +1037,7 @@ const finalizedTransaction = Xrp.finalizeTransactionSigning({
 
 <Tab title="◈ SUI">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L101-105
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 101
 end: 105
@@ -1063,7 +1063,7 @@ const finalizedTransaction = Sui.finalizeTransactionSigning({
 
 <Tab title="⬟ Aptos">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L102-L106
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 102
 end: 106
@@ -1098,7 +1098,7 @@ Now that we have a signed transaction, we can relay it to the target network usi
 <Tabs>
   <Tab title="Ξ EVM">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx#L150
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/EVM/EVM.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 154
 end: 154
@@ -1121,7 +1121,7 @@ const transactionHash = await Evm.broadcastTx(signedTransaction);
 
 <Tab title="₿ Bitcoin">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx#L119
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Bitcoin.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 119
 end: 119
@@ -1144,7 +1144,7 @@ const transactionHash = await Bitcoin.broadcastTx(signedTransaction);
 
 <Tab title="◎ Solana">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx#L115
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Solana.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 115
 end: 115
@@ -1166,7 +1166,7 @@ const transactionHash = await Solana.broadcastTx(signedTransaction);
 </Tab>
 <Tab title="◉ XRP">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx#L114
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/XRP.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 114
 end: 114
@@ -1188,7 +1188,7 @@ const transactionHash = await Xrp.broadcastTx(signedTransaction);
 
 <Tab title="◈ SUI">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx#L124
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Sui.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 124
 end: 124
@@ -1210,7 +1210,7 @@ const transactionHash = await Sui.broadcastTx(signedTransaction);
 
 <Tab title="⬟ Aptos">
 {/* github-code
-url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx#L123
+url: https://github.com/near-examples/near-multichain/blob/main/src/components/Aptos.jsx
 commit: 7e1c9f1a8f8cf641685076810a155f5fdfe05d92
 start: 123
 end: 123

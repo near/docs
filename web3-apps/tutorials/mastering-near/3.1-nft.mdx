@@ -13,7 +13,7 @@ When we create an auction we need to list the NFT. To specify which NFT is being
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L30-L48
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 30
 end: 48
@@ -66,7 +66,7 @@ We will create a new file in our source folder named `ext.rs`; here we are going
 We then use this method in our `lib.rs` file to transfer the NFT.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L93-L96
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 93
 end: 96
@@ -88,7 +88,7 @@ let transfer_nft = nft_contract::ext(self.nft_contract.clone())
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/ext.rs#L2-L11
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/ext.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 2
 end: 11
@@ -134,7 +134,7 @@ Since we are now dealing with more information in our contract, instead of imple
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L17-L26
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 17
 end: 26
@@ -166,7 +166,7 @@ pub struct Contract {
 We add the `serilizers` macro to enable json serialization so the object as a whole can easily be displayed to the frontend without having to output each field individually.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs#L110-L112
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 110
 end: 112
@@ -199,7 +199,7 @@ The test creates an account for the NFT contract, reads the fixture WASM from th
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L45-L55
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 45
 end: 55
@@ -238,7 +238,7 @@ To start a proper auction the auction contract should own an NFT. To do this the
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L57-L76
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 57
 end: 76
@@ -286,7 +286,7 @@ After `claim` is called, the test should verify that the auction winner now owns
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs#L197-L210
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/02-winner-gets-nft/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 197
 end: 210

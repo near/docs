@@ -42,6 +42,20 @@ export function parseSource(url) {
   return { owner, repo, ref: decodeURIComponent(encodedRef), path };
 }
 
+function normalizeMetadata(meta) {
+  const parsed = new URL(meta.url);
+  if (!parsed.hash) return meta;
+  const range = parsed.hash.match(/^#L([1-9]\d*)(?:-L?([1-9]\d*))?$/);
+  if (!range) throw new Error(`Unsupported source URL fragment: ${parsed.hash}`);
+  const start = range[1], end = range[2] ?? start;
+  if ((meta.start !== undefined && String(meta.start) !== start) ||
+      (meta.end !== undefined && String(meta.end) !== end)) {
+    throw new Error('Source URL fragment disagrees with start/end metadata');
+  }
+  parsed.hash = '';
+  return { ...meta, url: parsed.href, start: meta.start ?? start, end: meta.end ?? end };
+}
+
 function validate(meta) {
   for (const key of Object.keys(meta)) if (!keys.has(key)) throw new Error(`Unknown metadata: ${key}`);
   parseSource(meta.url);
@@ -87,7 +101,7 @@ export function extractCode(text, start, end) {
 function presentation(meta) {
   const source = parseSource(meta.url);
   const fname = meta.fname ?? decodeURIComponent(source.path.split('/').at(-1));
-  const languages = { rs: 'rust', js: 'javascript', jsx: 'jsx', ts: 'typescript', tsx: 'tsx', toml: 'toml', json: 'json', py: 'python', sh: 'bash' };
+  const languages = { rs: 'rust', js: 'javascript', jsx: 'jsx', ts: 'typescript', tsx: 'tsx', toml: 'toml', json: 'json', py: 'python', sh: 'bash', yaml: 'yaml', yml: 'yaml', go: 'go', md: 'markdown', mdx: 'mdx' };
   const language = meta.language ?? languages[extname(source.path).slice(1)] ?? 'text';
   const anchor = meta.start ? `#L${meta.start}${meta.end ? `-L${meta.end}` : ''}` : meta.end ? `#L1-L${meta.end}` : '';
   const href = `https://github.com/${source.owner}/${source.repo}/blob/${meta.commit}/${source.path}${anchor}`;
@@ -100,6 +114,7 @@ function sourceLink(link) {
 }
 
 export function renderBlock(meta, code) {
+  meta = normalizeMetadata(meta);
   validate(meta);
   validateHighlightBounds(meta.highlight, code);
   const { header, link } = presentation(meta);
@@ -116,8 +131,9 @@ function parseMetadata(text) {
     if (!match || Object.hasOwn(meta, match[1])) throw new Error(`Invalid metadata line: ${line}`);
     meta[match[1]] = match[2];
   }
-  validate(meta);
-  return meta;
+  const normalized = normalizeMetadata(meta);
+  validate(normalized);
+  return normalized;
 }
 
 function parseAttributes(text) {
@@ -127,8 +143,9 @@ function parseAttributes(text) {
     return '';
   });
   if (remainder.trim()) throw new Error(`Unsupported Github attributes: ${remainder}`);
-  validate(meta);
-  return meta;
+  const normalized = normalizeMetadata(meta);
+  validate(normalized);
+  return normalized;
 }
 
 export function createLoader({ fetchImpl = fetch, token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN } = {}) {
@@ -184,8 +201,10 @@ export async function syncText(text, loader, { migrate = false, force = false } 
     const fenceHeader = match[0].match(/(?:^|\n)`{3,}([^\n]*)\n/)?.[1];
     const unchanged = existing && meta.commit === commit && fenceHeader === header && match[0].includes(link);
     if (unchanged && !force) {
-      // Refresh link presentation without downloading unchanged source files.
-      const value = match[0].replace(`\n\n${link}\n\n{/* /github-code */}`, `\n\n${sourceLink(link)}\n\n{/* /github-code */}`);
+      // Normalize metadata and link presentation without downloading unchanged code.
+      const code = match[0].match(/^(`{3,})[^\n]*\n([\s\S]*?)\n\1[\t ]*$/m)?.[2];
+      if (code === undefined) throw new Error('Missing generated code fence');
+      const value = renderBlock(updated, code);
       if (value !== match[0]) replacements.push({ match, value });
       continue;
     }

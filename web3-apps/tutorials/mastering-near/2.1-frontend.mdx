@@ -85,7 +85,7 @@ We abstract the wallet connection in our `near.js` file by exposing methods to c
 The wallet object is initialized in the `_app.js` file and added to the global context along with the account that is signed in to make it easier to access anywhere in the application. The connector is loaded in the browser, and the effect removes its event listeners when it is cleaned up.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/_app.js#L1-L34
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/_app.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 1
 end: 34
@@ -232,7 +232,7 @@ export const Navigation = () => {
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js#L35-L39
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 35
 end: 39
@@ -262,7 +262,7 @@ signOut = async () => {
 To get the highest bid from the auction and who made it we call `get_highest_bid`. This function returns the highest bid in `yoctoNEAR` as a string. We use `formatUnits(highestBidData.bid, 24)` to display it in NEAR. The helper uses integer arithmetic and returns a decimal string, preserving every yoctoNEAR.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L24-L31
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 24
 end: 31
@@ -288,7 +288,7 @@ useEffect(() => {
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js#L41-L42
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 41
 end: 42
@@ -313,7 +313,7 @@ In the wallet file, `viewMethod` uses `JsonRpcProvider.callFunction` from `near-
 We then pass the information about the highest bidder into the `LastBid` component to display the bid amount and the bidder's account Id.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L107-L107
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 107
 end: 107
@@ -370,7 +370,7 @@ export default LastBid
 Someone else could have placed a higher bid since the page was loaded. To keep the display up to date, we fetch the contract information every 20 seconds using `setInterval`. A second interval updates the countdown until the next refresh, and both intervals are cleared when the component unmounts.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L49-L62
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 49
 end: 62
@@ -409,7 +409,7 @@ return () => {
 The contract stores the end time of the auction in nanoseconds since the Unix epoch (1 January 1970 00:00:00 UTC). The `Timer` component converts this value to milliseconds using `BigInt`, compares it with `Date.now()`, and displays the time left in days, hours, minutes, and seconds.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/components/Timer.jsx#L18-L36
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/components/Timer.jsx
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 18
 end: 36
@@ -455,7 +455,7 @@ To make a bid we make a call to the contract using the `bid` function. We specif
 Here, since the user is changing the state of the contract, not just viewing it, the user needs to sign the transaction. Thus the wallet will pop up displaying the transaction details.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L65-L76
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 65
 end: 76
@@ -485,7 +485,7 @@ const bid = async (amount) => {
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js#L44-L55
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 44
 end: 55
@@ -522,7 +522,7 @@ callMethod = async ({ contractId, method, args = {}, gas = '300000000000000', de
 Once the auction is over (the current time is greater than the end time) the auction can be claimed. At this point, the timer will be hidden and a button to claim the auction will be displayed. Once clicked the `claim` function will be called on the auction contract to send the highest bid in NEAR to the auctioneer. The page reloads after a successful bid or claim to show the updated state, and errors are displayed through notifications.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L78-L86
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 78
 end: 86

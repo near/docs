@@ -23,7 +23,7 @@ We use `near-sandbox` to start a local blockchain and `near-api` to deploy contr
 The first thing our test does is to create multiple accounts with 10 `$NEAR` tokens each and deploy the contract to one of them.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L13-L35
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 13
 end: 35
@@ -75,7 +75,7 @@ The test reads the sandbox's block timestamp and sets `end_time` to 60 seconds l
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L37-L56
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 37
 end: 56
@@ -139,7 +139,7 @@ We first make `alice` place a bid of 1 NEAR, and check that the contract correct
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L58-L112
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 58
 end: 112
@@ -225,7 +225,7 @@ When testing we should also check that the contract does not allow invalid calls
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L114-L122
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 114
 end: 122
@@ -263,7 +263,7 @@ After which the auction can now be claimed. Once claimed the test checks that th
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs#L134-L156
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/01-basic-auction/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 134
 end: 156

@@ -20,7 +20,7 @@ Before bidding, transfer the NFT to the auction account and register the auction
 Now we have a function to output the whole contract state we will call this function in our frontend 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L29-L37
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 29
 end: 37
@@ -56,7 +56,7 @@ This call will deliver us the contract Ids of the FT and NFT contracts along wit
 We want to show what NFT is being auctioned. To do this we will call `nft_token` on the NFT contract to get the NFT metadata. To call this method we need to specify the NFT `contractId` and the `token_id`, which can be found in the auction information. `nft_token` also returns the owner of the NFT, so we'll check this against the contract account to verify that the auction is valid.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L59-L73
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 59
 end: 73
@@ -147,7 +147,7 @@ The component uses HTTP image URLs directly, resolves `ipfs://` URLs through an 
 Using the FT contract ID from the auction information, we can call the `ft_metadata` method on the FT contract to get information about the fungible token that is being used for the auction.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L75-L93
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 75
 end: 93
@@ -195,7 +195,7 @@ Instead of calling the function `bid` on the contract we now call the `ft_transf
 The result of `ft_transfer_call` reports how many tokens were used. If it returns zero, the frontend displays an error explaining that the bid was rejected and the tokens refunded. After a successful bid or claim, the page reloads to show the updated state.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js#L95-L109
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/index.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 95
 end: 109
@@ -237,7 +237,7 @@ To display historical bids, add the server-only `API_KEY` to `.env.local` as des
 We need to update the API call that fetches historical bids to now index each time `ft_on_transfer` is called on the auction contract from the FT contract. 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/api/getBidHistory.js#L1-L13
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/api/getBidHistory.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 1
 end: 13
@@ -271,7 +271,7 @@ export default async function handler(req, res) {
 And now instead of getting the bid amount from the deposit, it is now retrieved from the calls argument, from `amount`. We keep the amount as a string to preserve its precision. The case is the same for the account Id of the bidder, from `sender_id`.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/api/getBidHistory.js#L25-L29
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/03-frontend/src/pages/api/getBidHistory.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 25
 end: 29

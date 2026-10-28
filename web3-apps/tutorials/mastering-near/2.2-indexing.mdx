@@ -26,7 +26,7 @@ We put the API key in a `.env.local` file so the user cannot access it in the br
 NextJS allows us to easily create server-side functions with API routes. We need to make this API call on the server-side rather than the client side so as to not expose our API key. We'll create a new file in src/pages/api named `getBidHistory.js`. Here we'll define our function to get the bid history.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/api/getBidHistory.js#L1-L13
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/api/getBidHistory.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 3
 end: 13
@@ -69,7 +69,7 @@ Here we are retrieving the auction contract ID from the API route call and then 
 From our API call, we receive a JSON object containing up to 25 transactions made to the bid function on the auction contract.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/api/getBidHistory.js#L15-L38
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/api/getBidHistory.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 15
 end: 38
@@ -131,7 +131,7 @@ You can read more about transaction actions in this section of the documentation
 In our main page, we'll define a function to call the API route we just created. This function is called when the page loads. If the key is missing or the request fails, the history panel displays an error message.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js#L88-L96
+url: https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/pages/index.js
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 88
 end: 96

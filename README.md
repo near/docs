@@ -65,7 +65,7 @@ node scripts/sync-github-code.mjs web3-apps/tutorials/mastering-near/1.1-basic.m
 node scripts/sync-github-code.mjs --check
 ```
 
-To add an example, insert a block with its source metadata and run the script. Omit `commit` on a new block; the script fills it in. Line numbers are one-based and inclusive. Without a range, the entire file is included. Use an encoded ref, such as `feature%2Fexample`, for a branch whose name contains a slash.
+To add an example, insert a block with its source metadata and run the script. Omit `commit` on a new block; the script fills it in. Line numbers are one-based and inclusive. Store ranges in `start`/`end`; generated source links add the matching GitHub line fragment. During migration, a line fragment in a source URL is converted to range metadata; conflicting values are rejected. Without a range, the entire file is included. Use an encoded ref, such as `feature%2Fexample`, for a branch whose name contains a slash.
 
 ````mdx
 {/* github-code

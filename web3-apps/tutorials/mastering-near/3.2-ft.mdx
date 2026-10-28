@@ -13,7 +13,7 @@ We want to only accept bids in one type of fungible token; accepting many differ
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L31-L52
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 31
 end: 52
@@ -67,7 +67,7 @@ The `ft_on_transfer` method always has the same interface; the FT contract will 
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L56
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 56
 end: 56
@@ -92,7 +92,7 @@ We need to confirm that the user is attaching fungible tokens when calling the m
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L62-L63
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 62
 end: 63
@@ -118,7 +118,7 @@ The bidder's account ID is now given by the argument `sender_id` and the bid amo
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L75-L78
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 75
 end: 78
@@ -146,7 +146,7 @@ When we want to return the funds to the previous bidder we now make a cross-cont
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L81-L84
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 81
 end: 84
@@ -168,7 +168,7 @@ ft_contract::ext(self.ft_contract.clone())
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/ext.rs#L2-L19
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/ext.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 2
 end: 19
@@ -208,7 +208,7 @@ trait NFT {
  We then return 0 because the method uses all the FTs in the call.
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L86
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 86
 end: 86
@@ -247,7 +247,7 @@ When the auction is complete we need to send the fungible tokens to the auctione
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs#L100-L110
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/src/lib.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 100
 end: 110
@@ -288,7 +288,7 @@ When the contract is deployed it is initialized with `new_default_meta` which se
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L64-L74
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 64
 end: 74
@@ -329,7 +329,7 @@ In our tests, since we are creating a new fungible token and new accounts we wil
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L97-L117
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 97
 end: 117
@@ -378,7 +378,7 @@ Then we will transfer the bidders FTs so they can use them to bid. A simple tran
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L119-L130
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 119
 end: 130
@@ -408,7 +408,7 @@ ft_transfer(
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L415-L435
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 415
 end: 435
@@ -456,7 +456,7 @@ As stated previously, to bid on the auction the bidder now calls `ft_transfer_ca
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L214-L223
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 214
 end: 223
@@ -484,7 +484,7 @@ ft_transfer_call(
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L454-L474
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 454
 end: 474
@@ -532,7 +532,7 @@ Previously, to check a user's `$NEAR` balance, we pulled the details from their 
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L234-L242
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 234
 end: 242
@@ -559,7 +559,7 @@ assert_eq!(alice_balance, U128(100_000));
 
 {/* /github-code */}
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L437-L452
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 437
 end: 452
@@ -604,7 +604,7 @@ Previous to this, Bob made a bid of 60,000 and Alice was returned her bid bringi
 
 
 {/* github-code
-url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs#L274-L303
+url: https://github.com/near-examples/auctions-tutorial/blob/main/contract-rs/03-bid-with-fts/tests/test_basics.rs
 commit: 4678765ea7f2a584b1a6569786d497dcf75f5261
 start: 274
 end: 303

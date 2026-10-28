@@ -154,3 +154,35 @@ test('rejects malformed and out-of-bounds highlights', async () => {
   await assert.rejects(syncText(outOfBounds, mockLoader().loader, { migrate: true }), /exceeds excerpt length 2/);
   assert.throws(() => renderBlock({ url, commit, highlight: '3' }, 'one\ntwo'), /exceeds excerpt length 2/);
 });
+
+test('canonicalizes matching URL line fragments without changing excerpts or fetching unchanged files', async () => {
+  const initial = await syncText(legacy, mockLoader().loader, { migrate: true });
+  const fragmented = initial.text.replace(`url: ${url}`, `url: ${url}#L1-L2`);
+  const { loader } = mockLoader();
+  const result = await syncText(fragmented, loader);
+  assert.equal(result.text, initial.text);
+  assert.equal(loader.stats.downloads, 0);
+});
+
+test('migration converts URL-only ranges to explicit metadata', async () => {
+  const result = await syncText(`<Github url="${url}#L2-L3" />`, mockLoader().loader, { migrate: true });
+  assert.ok(result.text.includes(`url: ${url}\ncommit:`));
+  assert.ok(result.text.includes('start: 2\nend: 3'));
+  assert.ok(result.text.includes('  second\nthird'));
+  const single = await syncText(`<Github url="${url}#L2" />`, mockLoader().loader, { migrate: true });
+  assert.ok(single.text.includes('start: 2\nend: 2'));
+});
+
+test('rejects conflicting or unsupported source fragments', async () => {
+  await assert.rejects(syncText(legacy.replace(url, `${url}#L2-L3`), mockLoader().loader, { migrate: true }), /disagrees/);
+  await assert.rejects(syncText(legacy.replace(url, `${url}#section`), mockLoader().loader, { migrate: true }), /Unsupported source URL fragment/);
+});
+
+test('infers common language extensions and retains explicit overrides and the text fallback', () => {
+  for (const [extension, language] of [['yaml','yaml'], ['yml','yaml'], ['go','go'], ['md','markdown'], ['mdx','mdx']]) {
+    const value = renderBlock({ url: url.replace('lib.rs', `example.${extension}`), commit }, 'sample');
+    assert.ok(value.includes(`\n\x60\x60\x60${language} title=`));
+  }
+  assert.ok(renderBlock({ url: url.replace('lib.rs','example.unknown'), commit }, 'sample').includes('\n```text title='));
+  assert.ok(renderBlock({ url: url.replace('lib.rs','example.md'), commit, language: 'text' }, 'sample').includes('\n```text title='));
+});
