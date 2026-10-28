@@ -84,7 +84,7 @@ Edit the metadata to change the source, range, filename, language, or highlighte
 
 The script requires Node.js 20.17.0 or newer and no additional packages. It uses `GITHUB_TOKEN`, `GH_TOKEN`, or an authenticated GitHub CLI when available to increase GitHub API rate limits. Run its tests with `node --test scripts/sync-github-code.test.mjs`.
 
-The **Update GitHub code examples** workflow runs weekly and can also be triggered manually in GitHub Actions. It opens a pull request when examples change. To convert remaining legacy `<Github />` components, run the script with `--migrate`.
+The **Update GitHub code examples** workflow runs weekly and can also be triggered manually in GitHub Actions. When the sync changes pages or encounters an error, Copilot CLI repairs affected excerpt ranges, highlights, and surrounding explanations using the upstream source. The workflow validates the documentation and opens or updates the bot PR. The task prompt is in `.github/prompts/update-github-code.md`. Enable the organization policy allowing Copilot CLI usage billed to the organization; the workflow uses `GITHUB_TOKEN` with `copilot-requests: write`, without a separate AI API key. To convert remaining legacy `<Github />` components, run the script with `--migrate`.
 
 ## Contributing
 

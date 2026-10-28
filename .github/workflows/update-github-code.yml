@@ -15,6 +15,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      copilot-requests: write
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
@@ -25,9 +26,41 @@ jobs:
         run: node --test scripts/sync-github-code.test.mjs
 
       - name: Refresh code examples
-        run: node scripts/sync-github-code.mjs
+        id: sync
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p .tmp
+          status=0
+          node scripts/sync-github-code.mjs > .tmp/github-code-sync.log 2>&1 || status=$?
+          cat .tmp/github-code-sync.log
+          if [ "$status" -ne 0 ] || ! git diff --quiet -- '*.mdx'; then
+            echo "repair=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install Copilot CLI
+        if: steps.sync.outputs.repair == 'true'
+        run: npm install -g @github/copilot
+
+      - name: Repair excerpts and explanations with Copilot
+        if: steps.sync.outputs.repair == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COPILOT_GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          copilot -p "$(cat .github/prompts/update-github-code.md)" \
+            --allow-tool=write \
+            --allow-tool='shell(git diff:*)' \
+            --allow-tool='shell(git show:*)' \
+            --allow-tool='shell(gh api:*)' \
+            --allow-tool='shell(node scripts/sync-github-code.mjs:*)'
+
+      - name: Validate updated documentation
+        if: steps.sync.outputs.repair == 'true'
+        run: |
+          git diff --check
+          git diff --quiet -- scripts .github
+          npx --yes mint@4.2.666 validate
 
       - name: Open PR if changed
         env:
