@@ -255,7 +255,7 @@ Returns the [access keys](/protocol/accounts-contracts/access-keys) of an accoun
 - **params**: `request_type: view_access_key_list`, `finality` OR `block_id`, `account_id`, optional `limit`, optional `after_key`
 
 <Note>
-From nearcore 2.14.0, a node returns at most `view_access_keys_limit` keys per response (100 by default; node operators can change it). If the account has more keys than that and the request has neither `limit` nor `after_key`, the query fails with `TOO_MANY_ACCESS_KEYS`. When more keys remain, the response includes `last_key`. Pass it as `after_key` to get the next page. A `limit` above the node's cap is lowered to the cap. Nodes on nearcore 2.13 return all keys in one response and ignore these fields.
+From nearcore 2.14.0, a request without `limit` or `after_key` fails with `TOO_MANY_ACCESS_KEYS` if the account has more than 100 keys (the default limit). Use pagination for such accounts. See [Paginate the key list](#paginate-the-key-list).
 </Note>
 
 <Tabs>
@@ -327,6 +327,74 @@ From nearcore 2.14.0, a node returns at most `view_access_keys_limit` keys per r
 <Note>
 Post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) keys are stored on-chain by hash, so they appear here with an `ml-dsa-65-hash:` prefix (a base58-encoded 32-byte SHA3-256 digest) rather than the full `ml-dsa-65:` key. To match an entry to one of your own keys, derive its handle — the SHA3-256 of the domain-separation tag `near:ml-dsa-65-pubkey-hash:v1` followed by the raw public key — and compare it against the returned value (hashing the key without that prefix will not match).
 </Note>
+
+### Paginate the key list
+
+<Accordion title="Pagination example">
+Request the first page with `limit`:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "query",
+  "params": {
+    "request_type": "view_access_key_list",
+    "finality": "final",
+    "account_id": "account.rpc-examples.testnet",
+    "limit": 1
+  }
+}
+```
+
+The response has `last_key` when more keys remain:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "keys": [
+      {
+        "public_key": "ed25519:DCkbTMS8s4kqV4nGvz5kRBdNbY9YwjjvNGNXKpAg2eFa",
+        "access_key": {
+          "nonce": 187310139000001,
+          "permission": "FullAccess"
+        }
+      }
+    ],
+    "last_key": "ed25519:DCkbTMS8s4kqV4nGvz5kRBdNbY9YwjjvNGNXKpAg2eFa",
+    "block_hash": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW",
+    "block_height": 187440904
+  },
+  "id": "dontcare"
+}
+```
+
+Request the next page with `after_key` set to that `last_key`. To read every page from the same state, also replace `finality` with `block_id` set to the `block_hash` of the first response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "query",
+  "params": {
+    "request_type": "view_access_key_list",
+    "block_id": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW",
+    "account_id": "account.rpc-examples.testnet",
+    "after_key": "ed25519:DCkbTMS8s4kqV4nGvz5kRBdNbY9YwjjvNGNXKpAg2eFa",
+    "limit": 1
+  }
+}
+```
+
+A response without `last_key` is the last page.
+</Accordion>
+
+| Rule | Details |
+|------|---------|
+| Keys per response | At most `view_access_keys_limit`, which is 100 by default. Node operators can change it. A larger `limit` is lowered to this value. |
+| Request without `limit` or `after_key` | Fails with `TOO_MANY_ACCESS_KEYS` if the account has more keys than `view_access_keys_limit`. |
+| Version | From nearcore 2.14.0. Nodes on nearcore 2.13 return all keys in one response and ignore `limit` and `after_key`. |
 
 ---
 
@@ -549,9 +617,7 @@ Returns the state (key-value pairs) of a contract based on a key prefix (base64 
 - **params**: `request_type: view_state`, `finality` OR `block_id`, `account_id`, `prefix_base64`, optional `limit`, optional `after_key_base64`, optional `include_proof`
 
 <Warning>
-By default, a node rejects a `view_state` request with `TOO_LARGE_CONTRACT_STATE` if the account's storage usage is above 50,000 bytes. This size does not count the contract code. Requests with `limit` or `after_key_base64` are not checked against this limit. The node operator sets this limit with `trie_viewer_state_size_limit`. A narrower `prefix_base64` does not avoid the error, because the node checks the size of the whole account.
-
-To read a large state, paginate with `limit` (up to 10,000 items) or `after_key_base64`. Both are available from nearcore 2.13.0. The node stops adding items to a page once its keys and values reach 50,000 bytes. The last item can make a page larger than that. When more entries remain, the response includes `last_key`. Pass it as `after_key_base64` to get the next page. After decoding, the `after_key_base64` key must start with the `prefix_base64` prefix. The base64 strings themselves do not have to match. The `include_proof` option cannot be combined with `limit` or `after_key_base64`.
+By default, a node rejects a `view_state` request with `TOO_LARGE_CONTRACT_STATE` if the account's state is above 50,000 bytes. A narrower `prefix_base64` does not avoid the error. To read a large state, use pagination. See [Paginate the state](#paginate-the-state).
 </Warning>
 
 <Tabs>
@@ -592,6 +658,76 @@ To read a large state, paginate with `limit` (up to 10,000 items) or `after_key_
     ```
   </Tab>
 </Tabs>
+
+### Paginate the state
+
+<Accordion title="Pagination example">
+Request the first page with `limit`:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "query",
+  "params": {
+    "request_type": "view_state",
+    "finality": "final",
+    "account_id": "contract.rpc-examples.testnet",
+    "prefix_base64": "",
+    "limit": 2
+  }
+}
+```
+
+The response has `last_key` when more entries remain. Keys and values are base64:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "values": [
+      { "key": "YQ==", "value": "MQ==" },
+      { "key": "Yg==", "value": "Mg==" }
+    ],
+    "last_key": "Yg==",
+    "block_hash": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW",
+    "block_height": 187440904
+  },
+  "id": "dontcare"
+}
+```
+
+Request the next page with `after_key_base64` set to that `last_key`. To read every page from the same state, also replace `finality` with `block_id` set to the `block_hash` of the first response:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "dontcare",
+  "method": "query",
+  "params": {
+    "request_type": "view_state",
+    "block_id": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW",
+    "account_id": "contract.rpc-examples.testnet",
+    "prefix_base64": "",
+    "after_key_base64": "Yg==",
+    "limit": 2
+  }
+}
+```
+
+A response without `last_key` is the last page.
+</Accordion>
+
+A request without `limit` or `after_key_base64` is checked against the size of the whole account. This size is the account's storage usage without the contract code, so a narrower `prefix_base64` does not avoid the error. Paginated requests skip this check.
+
+| Rule | Details |
+|------|---------|
+| Request without `limit` or `after_key_base64` | Fails with `TOO_LARGE_CONTRACT_STATE` if the account's state is above `trie_viewer_state_size_limit`. The default is 50,000 bytes, and the node operator can change it. |
+| Items per page | At most 10,000. A larger `limit` is lowered to 10,000. |
+| Bytes per page | The node stops adding items once the keys and values of the page reach 50,000 bytes. The last item can make a page larger than that. |
+| `after_key_base64` | After decoding, the key must start with the decoded `prefix_base64`. The base64 strings themselves do not have to match. Otherwise the node returns `INTERNAL_ERROR`. |
+| `include_proof` | Cannot be combined with `limit` or `after_key_base64`. If it is, the node returns `INTERNAL_ERROR`. |
+| Version | `limit` and `after_key_base64` are available from nearcore 2.13.0. |
 
 ---
 
@@ -770,7 +906,40 @@ if ("SuccessValue" in status) {
 
 ## Error Handling
 
-For the errors below, the response has `error.name` set to `HANDLER_ERROR` and `error.cause.name` set to the listed value.
+Query errors come back in four ways. Check for an `error` object first, and then for `result.error`.
+
+### Request errors
+
+If the node cannot parse the request parameters, it returns an error with `error.name` set to `REQUEST_VALIDATION_ERROR` and `error.cause.name` set to `PARSE_ERROR`. This happens, for example, when `args_base64` is not valid base64.
+
+### Internal errors
+
+If the node fails internally, it returns an error with `error.name` set to `INTERNAL_ERROR`. The message is in `error.cause.info.error_message`. `view_state` also answers this way when `include_proof` is combined with pagination, or when `after_key_base64` is outside the prefix.
+
+### Handler errors
+
+For the errors below, the response has `error.name` set to `HANDLER_ERROR` and `error.cause.name` set to the listed value. For example:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "error": {
+    "name": "HANDLER_ERROR",
+    "cause": {
+      "name": "TOO_LARGE_CONTRACT_STATE",
+      "info": {
+        "contract_account_id": "contract.rpc-examples.testnet",
+        "block_height": 187440904,
+        "block_hash": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW"
+      }
+    },
+    "code": -32000,
+    "message": "Server error",
+    "data": "State of contract contract.rpc-examples.testnet is too large to be viewed"
+  },
+  "id": "dontcare"
+}
+```
 
 | `error.cause.name`         | Description                                     | Solution                                                |
 |----------------------------|-------------------------------------------------|---------------------------------------------------------|
@@ -784,4 +953,26 @@ For the errors below, the response has `error.name` set to `HANDLER_ERROR` and `
 | `TOO_LARGE_CONTRACT_STATE` | Account state is above the node's `view_state` limit | Paginate with `limit` and `after_key_base64`       |
 | `TOO_MANY_ACCESS_KEYS`     | Account has more keys than one response can hold | Paginate with `limit` and `after_key`                  |
 
-A view function call that fails while the contract runs does not return an error object. The node answers with HTTP status 200, and `result.error` holds a text message. For example, if the method does not exist, the message is `wasm execution failed with error: MethodResolveError(MethodNotFound)`. If the account has no contract, the message starts with `wasm execution failed with error: CompilationError(CodeDoesNotExist`. Check `result.error` before you decode `result.result`. `view_access_key` for a key that does not exist answers the same way. If the node cannot parse the request parameters, it returns `error.name` `REQUEST_VALIDATION_ERROR` and `error.cause.name` `PARSE_ERROR`. This happens, for example, when `args_base64` is not valid base64.
+### Errors in the result
+
+A view function call that fails while the contract runs does not return an `error` object. The node answers with HTTP status 200, and `result.error` holds a text message:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "block_hash": "56xEo2LorUFVNbkFhCncFSWNiobdp1kzm14nZ47b5JVW",
+    "block_height": 187440904,
+    "error": "wasm execution failed with error: MethodResolveError(MethodNotFound)",
+    "logs": []
+  },
+  "id": "dontcare"
+}
+```
+
+Check `result.error` before you decode `result.result`. `view_access_key` for a key that does not exist answers the same way.
+
+Common messages:
+
+- The method does not exist: `wasm execution failed with error: MethodResolveError(MethodNotFound)`.
+- The account has no contract: the message starts with `wasm execution failed with error: CompilationError(CodeDoesNotExist`.
