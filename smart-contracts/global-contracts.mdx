@@ -14,20 +14,20 @@ With [NEP-0591](https://github.com/near/NEPs/blob/master/neps/nep-0591.md), whic
 
 These are the features that make Global Contracts special:
 
-- **Global Addressing**: These contracts are not tied to a specific account but instead use a unique global identifier. This enables any contract, user, or application on NEAR to call the contract from any shard instantly.
+- **Global Addressing**: Code is identified by its hash or publisher account ID. Accounts reference that identifier through `UseGlobalContract`, then receive calls at their own account IDs.
 
-- **Immutable Logic**: The contract code is fixed once deployed, making it a trusted point of reference. This ensures consistency and security—ideal for system-critical protocols.
+- **Code Versioning**: A reference by hash pins immutable code. A reference by publisher account ID follows updates published under that ID.
 
 - **Shared Infrastructure**: Global contracts can act as canonical libraries, utility hubs, or standards for other contracts to rely on, simplifying development and reducing duplication.
 
-- **Cross-Shard Superpowers**: Developers can build truly modular apps where parts of their stack reside on different shards but communicate via shared global logic with minimal latency or duplication.
+- **Independent Instances**: Accounts reuse the same code while keeping separate storage, balances, and application state. Calls between instances follow the usual cross-contract execution model.
 
 ### Use Cases
 
 - **Standard Libraries**: Reusable components for math, string operations, or token interfaces.
 - **DeFi Protocols**: Global contracts can anchor DEXs, lending markets, oracles—shared across all applications.
 - **DAO Frameworks**: Shared governance modules that any DAO can plug into, ensuring consistency and reliability.
-- **Identity & Credentials**: One global contract can manage decentralized identity verification and access management for the entire chain.
+- **Identity & Credentials**: Accounts can reuse identity verification and access management code while keeping their own state.
 - **Multi-part dApps**: Complex applications can split responsibilities across shards while accessing a common logic core.
 
 ## Solution
@@ -79,6 +79,20 @@ Ask yourself the following questions before deciding how to deploy your contract
 - **_Does your use case require the contract to be permanently immutable?_**
 
   If the contract must never change, for example, due to security, compliance, or user trust, then using a Global Contract by Code Hash ensures immutability at the protocol level.
+
+## Publishing Code and Running It
+
+Global contracts separate code publication from execution on an account:
+
+| Action | Result |
+|--------|--------|
+| `DeployGlobalContract` | Publishes reusable code under a code hash or publisher account ID. It does not attach executable code to the publisher account or initialize application state. |
+| `UseGlobalContract` | Attaches a reference to published code to the receiving account. Function calls to that account execute the referenced code using that account's state. |
+| `FunctionCall` | Calls a method on an account that has executable code attached. This includes calling an initializer such as `new` after attaching global code. |
+
+For example, publishing NFT code under `nft.globals.primitives.near` makes it available for reuse. A collection account first uses `UseGlobalContract` to reference that code, then calls `new(owner_id, metadata)` on the collection account. Users call that collection account to mint and transfer NFTs. Each collection has its own owner, metadata, and tokens.
+
+The publisher does not need to initialize an NFT collection for other accounts to reuse its code. Publishing alone leaves the publisher account's executable contract unchanged. If it has no executable code attached, callers cannot invoke an initializer on it. Reusing the code on another account does not give that account control over the published code or other instances.
 
 ## Deploying a Global Contract
 
@@ -182,7 +196,9 @@ let result = Contract::deploy_global_contract_code(code.clone())
 
 ## Using a Global Contract
 
-After the global code is deployed, attach it to another account by referencing its owner account or code hash.
+After the global code is deployed, attach it to an account with the `UseGlobalContract` action, referencing the publisher account ID or code hash. The CLI commands below create this action for `<account-id>`; subsequent function calls target `<account-id>`.
+
+If the contract requires initialization, attach the code and call its initializer in the same transaction with `with-init-call`, as shown in the [NFT deployment guide](/primitives/nft/nft#global-contract). This prevents another caller from initializing your instance first. The `without-init-call` examples below only attach the code; they do not initialize contract state.
 
 <Tabs>
   <Tab title="CLI">
