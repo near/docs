@@ -2,13 +2,13 @@
 title: Global Contracts
 description: "Deploy a contract once and reuse it across accounts."
 ---
-Global contracts allow smart contracts to be deployed once and reused by any account without incurring high storage costs.
-Rather than deploying duplicate contracts or routing messages inefficiently across shards, NEAR developers can now think modularly and universally: write once, use everywhere.
+Global contracts allow contract code to be deployed once and reused across multiple accounts. With regular deployments, each account pays the full storage deposit for its own copy of the Wasm code. With global contracts, each account stores a reference to shared code instead, reducing storage costs.
 
-## Overview
+[NEP-0591](https://github.com/near/NEPs/blob/master/neps/nep-0591.md) introduces this code-sharing mechanism. Each account that uses the code keeps its own application state.
 
-If you've ever deployed the same contract code to multiple accounts, you’ve likely noticed that each deployment requires you to pay the full storage cost again — since the size of the WASM file determines how much `NEAR` is locked on the account.
-With [NEP-0591](https://github.com/near/NEPs/blob/master/neps/nep-0591.md), which introduces Global Contracts, NEAR provides a highly strategic alternative that [solves this elegantly](#solution).
+<Tip>
+Publishing a global contract under an account ID makes that ID a reference to reusable code. **It does not deploy an executable contract on that account.** To call methods on the account, you must separately deploy a regular contract there or attach global code with `UseGlobalContract`.
+</Tip>
 
 ## Key Features
 
