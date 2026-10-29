@@ -4672,16 +4672,48 @@ console.log("Signature valid:", isValid);
 {/* /github-code */}
 
   </Tab>
-  <Tab title="🦀 near-kit">
+  <Tab title="🦀 near-kit-rs">
 
-  <Github language="rust"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/verify_signature.rs" />
+  Use the original challenge stored by your application. Generate its nonce with `near_kit::standards::nep413::generate_nonce()` so the default timestamp-expiry check applies, and reject reused challenges.
+
+  ```rust
+  use near_kit::{Near, standards::nep413::{self, SignMessageParams, SignedMessage}};
+
+  async fn verify_wallet_message(
+      signed: &SignedMessage,
+      challenge: &SignMessageParams,
+  ) -> Result<bool, near_kit::Error> {
+      let near = Near::testnet().build();
+      nep413::verify(signed, challenge, &near, Default::default()).await
+  }
+  ```
+
+  [`nep413::verify`](https://docs.rs/near-kit/0.19.0/near_kit/types/nep413/fn.verify.html) checks the signature, nonce expiry, and that the signing key is a full-access key on the claimed account.
 
   </Tab>
-  <Tab title="🐍 near-kit">
+  <Tab title="🐍 near-kit-py">
 
-  <Github language="python"
-    url="https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/verify_signature.py" />
+  Use the original message, recipient, and nonce stored by your application. Generate the nonce with `near.generate_nonce()` so the default timestamp-expiry check applies, and reject reused challenges.
+
+  ```python
+  from near import AccessKeyNotFoundError, Near, SignedMessage, verify_message
+
+  def verify_wallet_message(
+      signed: SignedMessage, message: str, recipient: str, nonce: bytes
+  ) -> bool:
+      if not verify_message(signed, message, recipient, nonce):
+          return False
+
+      # Signature verification alone does not prove account ownership.
+      client = Near(network="testnet")
+      try:
+          key = client.access_key(signed.account_id, signed.public_key)
+      except AccessKeyNotFoundError:
+          return False
+      return key.permission == "FullAccess"
+  ```
+
+  [`verify_message`](https://github.com/r-near/near-kit-py/blob/main/src/near/nep413.py) checks the signature and nonce expiry. The additional RPC query verifies that the signing key is a full-access key on the claimed account.
 
   </Tab>
 </Tabs>
