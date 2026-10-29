@@ -83,7 +83,7 @@ Ask yourself the following questions before deciding how to deploy your contract
 ## Deploying a Global Contract
 
 <Note>
-Publishing a global contract under an account ID makes that ID a reference to reusable code. **It does not deploy an executable contract on that account.** To call methods on the publisher account, you must separately deploy a regular contract there or attach global code with `UseGlobalContract`.
+Publishing a global contract under an account ID makes that ID a reference to reusable code. **It does not deploy an executable contract on that account.** To call methods on the account, you must separately deploy a regular contract there or attach global code with `UseGlobalContract`.
 </Note>
 
 Global contracts can be deployed by hash or by account ID. Contracts deployed by hash are immutable. When a contract is deployed by account ID, its owner can redeploy the code and update every account that uses that reference.
