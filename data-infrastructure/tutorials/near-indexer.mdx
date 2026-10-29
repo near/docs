@@ -105,7 +105,7 @@ After we finish initializing the indexer, and configuring it, we can start it by
 <Tabs>
     <Tab title="Localnet">
       ```bash
-        cargo run --release -- --home-dir ~/.near/localnet
+        cargo run --release -- --home-dir ~/.near/localnet run
       ```
     </Tab>
     <Tab title="Testnet">
@@ -522,7 +522,7 @@ await_for_node_synced: near_indexer::AwaitForNodeSyncedEnum::WaitForFullSync,
 You can choose finality level at which blocks are streamed:
 
 - None - `optimistic`, a block that (though unlikely) might be skipped
-- DoomSlug - `near-final`, a block that is irreversible, unless at least one block producer is slashed
+- DoomSlug - `near-final`, a block that is irreversible, unless at least one block producer signs two conflicting blocks or approvals
 - Final - `final`, the block is final and irreversible.
 
 {/* github-code
