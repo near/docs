@@ -80,21 +80,11 @@ Ask yourself the following questions before deciding how to deploy your contract
 
   If the contract must never change, for example, due to security, compliance, or user trust, then using a Global Contract by Code Hash ensures immutability at the protocol level.
 
-## Publishing Code and Running It
-
-Global contracts separate code publication from execution on an account:
-
-| Action | Result |
-|--------|--------|
-| `DeployGlobalContract` | Publishes reusable code under a code hash or publisher account ID. It does not attach executable code to the publisher account or initialize application state. |
-| `UseGlobalContract` | Attaches a reference to published code to the receiving account. Function calls to that account execute the referenced code using that account's state. |
-| `FunctionCall` | Calls a method on an account that has executable code attached. This includes calling an initializer such as `new` after attaching global code. |
-
-For example, publishing NFT code under `nft.globals.primitives.near` makes it available for reuse. A collection account first uses `UseGlobalContract` to reference that code, then calls `new(owner_id, metadata)` on the collection account. Users call that collection account to mint and transfer NFTs. Each collection has its own owner, metadata, and tokens.
-
-The publisher does not need to initialize an NFT collection for other accounts to reuse its code. Publishing alone leaves the publisher account's executable contract unchanged. If it has no executable code attached, callers cannot invoke an initializer on it. Reusing the code on another account does not give that account control over the published code or other instances.
-
 ## Deploying a Global Contract
+
+<Note>
+Publishing a global contract under an account ID makes that ID a reference to reusable code. **It does not deploy an executable contract on that account.** To call methods on the publisher account, you must separately deploy a regular contract there or attach global code with `UseGlobalContract`.
+</Note>
 
 Global contracts can be deployed by hash or by account ID. Contracts deployed by hash are immutable. When a contract is deployed by account ID, its owner can redeploy the code and update every account that uses that reference.
 
