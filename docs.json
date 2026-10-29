@@ -77,7 +77,7 @@
     },
     {
       "source": "/smart-contracts/tutorials/zero-to-hero/nfts-js",
-      "destination": "/smart-contracts/tutorials/zero-to-hero/nfts"
+      "destination": "/primitives/nft/nft"
     },
     {
       "source": "/smart-contracts/contracts-list",
@@ -218,6 +218,14 @@
     {
       "source": "/api/rpc/batching",
       "destination": "/api/rpc/providers"
+    },
+    {
+      "source": "/smart-contracts/tutorials/zero-to-hero/fts",
+      "destination": "/primitives/ft/ft"
+    },
+    {
+      "source": "/smart-contracts/tutorials/zero-to-hero/nfts",
+      "destination": "/primitives/nft/nft"
     }
   ],
   "navbar": {
@@ -489,15 +497,7 @@
                   "smart-contracts/tutorials/factories/factory"
                 ]
               },
-              "smart-contracts/tutorials/advanced/near-drop",
-              {
-                "group": "Zero to Hero",
-                "icon": "rocket",
-                "pages": [
-                  "smart-contracts/tutorials/zero-to-hero/fts",
-                  "smart-contracts/tutorials/zero-to-hero/nfts"
-                ]
-              }
+              "smart-contracts/tutorials/advanced/near-drop"
             ]
           }
         ]

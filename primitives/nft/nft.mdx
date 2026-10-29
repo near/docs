@@ -14,32 +14,39 @@ The WebApp examples use the local `useNearWallet` hook from the [Hello NEAR prov
 
 ## Deploying a NFT Contract
 
-If you want to deploy your own NFT contract, you can create one using our [reference implementation](https://github.com/near-examples/NFT).
-
-<Tabs>
- <Tab title="🖥️ CLI">
-
-  ```bash
-  near deploy <account-id> --wasmFile contract.wasm --initFunction new
-  ```
-
- </Tab>
-  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
-    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/deploy-nft-contract.json" />
-  </Tab>
-</Tabs>
+Use the existing global NFT contract. Reuse its deployed code and configure the owner and collection metadata through initialization arguments.
 
 ### Global Contract
 
 You can deploy a new Non-Fungible Token using our global NFT contract - a pre-deployed [standard NFT contract](https://github.com/near-examples/NFT) that you can reuse. [Global contracts](../../smart-contracts/global-contracts) are deployed once and can be reused by any account without incurring high storage costs.
 
+| Network | Global NFT contract |
+|---------|---------------------|
+| Mainnet | `nft.globals.primitives.near` |
+| Testnet | `nft.globals.primitives.testnet` |
+
+The following commands attach the global code to `<account-id>` and initialize that account's collection with its own owner and metadata. Call `nft_mint` on `<account-id>` to mint NFTs in that collection.
+
 <Tabs>
-  <Tab title="By Account">
+  <Tab title="By Account (Mainnet)">
+
+    ```bash
+    near contract deploy <account-id> use-global-account-id nft.globals.primitives.near \
+      with-init-call new \
+      json-args '{"owner_id": "<account-id>", "metadata": {"spec": "nft-1.0.0", "name": "MY_NFT", "symbol": "NFT2000"}}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config mainnet \
+      sign-with-keychain send
+    ```
+
+  </Tab>
+  <Tab title="By Account (Testnet)">
 
     ```bash
     near contract deploy <account-id> use-global-account-id nft.globals.primitives.testnet \
       with-init-call new \
-      json-args '{"owner_id": "<account-id>", "metadata": {"spec": "nft-1.0.0", "name": "MY_NFT", "symbol": "NFT2000", "icon": "data:image/svg+xml,%3Csvg xmlns='\''http://www.w3.org/2000/svg'\'' viewBox='\''0 0 288 288'\''%3E%3Cg id='\''l'\'' data-name='\''l'\''%3E%3Cpath d='\''M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z'\''/%3E%3C/g%3E%3C/svg%3E"}}' \
+      json-args '{"owner_id": "<account-id>", "metadata": {"spec": "nft-1.0.0", "name": "MY_NFT", "symbol": "NFT2000"}}' \
       prepaid-gas '100.0 Tgas' \
       attached-deposit '0 NEAR' \
       network-config testnet \
@@ -53,7 +60,7 @@ You can deploy a new Non-Fungible Token using our global NFT contract - a pre-de
     ```bash
     near contract deploy <account-id> use-global-hash ivu1e9obVRnMJLSvVPRgtYefUYUS1L3f5eYHjS86zL9 \
       with-init-call new \
-      json-args '{"owner_id": "<account-id>", "metadata": {"spec": "nft-1.0.0", "name": "MY_NFT", "symbol": "NFT2000", "icon": "data:image/svg+xml,%3Csvg xmlns='\''http://www.w3.org/2000/svg'\'' viewBox='\''0 0 288 288'\''%3E%3Cg id='\''l'\'' data-name='\''l'\''%3E%3Cpath d='\''M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z'\''/%3E%3C/g%3E%3C/svg%3E"}}' \
+      json-args '{"owner_id": "<account-id>", "metadata": {"spec": "nft-1.0.0", "name": "MY_NFT", "symbol": "NFT2000"}}' \
       prepaid-gas '100.0 Tgas' \
       attached-deposit '0 NEAR' \
       network-config testnet \
@@ -65,7 +72,7 @@ You can deploy a new Non-Fungible Token using our global NFT contract - a pre-de
 </Tabs>
 
 <Note>
-Deploying by **hash** creates an immutable contract that never changes. Deploying by **account ID** creates an updatable contract that changes when the referenced account's contract is updated. Choose based on whether you want your FT contract to be updatable or permanent.
+Deploying by **hash** creates an immutable contract that never changes. Deploying by **account ID** creates an updatable contract that changes when the referenced account's contract is updated. Choose based on whether you want your NFT contract to be updatable or permanent.
 </Note>
 
 ---
@@ -525,6 +532,6 @@ While the NFT standard does not define a `burn` method, you can simply transfer 
 
 ---
 
-## Tutorials
+## Additional Application Behavior
 
-- [NFT Tutorial](/smart-contracts/tutorials/zero-to-hero/nfts) _Zero to Hero_ - a set of tutorials that cover how to create a NFT contract using Rust.
+Use the global NFT contract by default. Only if your application truly requires behavior it does not provide, use [`near-contract-standards`](https://github.com/near/near-sdk-rs/tree/master/near-contract-standards) or [`near-sdk-contract-tools`](/primitives/nft/sdk-contract-tools) for the NFT implementation. Keep ownership, transfers, approvals, and transfer resolution in these libraries; do not implement the NFT standard by hand.

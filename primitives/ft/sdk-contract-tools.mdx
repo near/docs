@@ -21,7 +21,7 @@ In this tutorial, we will create a fungible token (FT) using the [NEAR SDK Contr
 
 ## Introduction
 
-While one can create a fungible token (FT) contract from scratch using only the `near-sdk` and `near_contract_standards` (e.g. [FT contract](https://github.com/near-examples/FT)), a simpler approach is to use `near-sdk-contract-tools`.
+Use the [existing global FT contract](/primitives/ft/ft#global-contracts) by default. Use this guide only if your application truly requires behavior the global contract does not provide. Use `near-contract-standards` or `near-sdk-contract-tools` for the token implementation; do not implement the FT standard by hand.
 
 `near-sdk-contract-tools` provides derive macros for FT standards and access control, allowing us to focus on custom logic such as minting and burning.
 
@@ -139,7 +139,7 @@ impl MyFtContract {
 
 ## Transfer Hook
 
-If we want to customize how the transfer of tokens work (i.e. modify the `ft_transfer` method), we need to implement a hook. Hooks are a way to **wrap (inject code before and after)** component functions:
+Use a transfer hook to run application logic before or after the library-provided transfer. Keep the standard `ft_transfer` implementation in the library:
 
 {/* github-code
 url: https://github.com/near-examples/ft-contract-tools/blob/main/src/transfer_hook.rs

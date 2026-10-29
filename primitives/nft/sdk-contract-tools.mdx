@@ -21,7 +21,7 @@ In this tutorial, you will create a non-fungible token (NFT) using the [NEAR SDK
 
 ## Introduction
 
-While one can create a non-fungible token (NFT) contract from scratch using only the `near-sdk` and `near_contract_standards` (e.g. [NFT contract](https://github.com/near-examples/NFT)), a simpler approach is to use `near-sdk-contract-tools`.
+Use the [existing global NFT contract](/primitives/nft/nft#global-contract) by default. Use this guide only if your application truly requires behavior the global contract does not provide. Use `near-contract-standards` or `near-sdk-contract-tools` for the token implementation; do not implement the NFT standard by hand.
 
 `near-sdk-contract-tools` allows you to implement the minting/burning logic, access control, and other NFT standards by simply deriving macros on the contract's `struct`, as `OpenZeppelin` does for Ethereum contracts.
 
@@ -132,7 +132,7 @@ impl MyNftContract {
 
 ## Transfer Hook
 
-If you want to customize how the token transfer works (i.e., modify the `nft_transfer` method), you need to implement a hook. Hooks are a way to **wrap (inject code before and after)** component functions:
+Use a transfer hook to run application logic before or after the library-provided transfer. Keep the standard `nft_transfer` implementation in the library:
 
 {/* github-code
 url: https://github.com/near-examples/nft-contract-tools/blob/main/src/transfer_hook.rs

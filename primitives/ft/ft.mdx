@@ -14,7 +14,55 @@ The WebApp examples use the local `useNearWallet` hook from the [Hello NEAR prov
 
 ## Creating a New Token
 
-The simplest way to create a new Fungible Token is by interacting with a factory contract, to which you provide the owner, initial supply, and token metadata. The factory will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
+Use the existing global FT contract to create a token. Reuse its deployed code and configure the owner, initial supply, and metadata through initialization arguments.
+
+### Global Contracts
+
+You can deploy a new Fungible Token using our global FT contract - a pre-deployed [standard FT contract](https://github.com/near-examples/FT) that you can reuse. [Global contracts](../../smart-contracts/global-contracts) are deployed once and can be reused by any account without incurring high storage costs.
+
+| Network | Global FT contract |
+|---------|--------------------|
+| Mainnet | `ft.globals.primitives.near` |
+| Testnet | `ft.globals.primitives.testnet` |
+
+<Tabs>
+  <Tab title="By Account">
+
+    ```bash
+    near contract deploy <account-id> use-global-account-id ft.globals.primitives.testnet \
+      with-init-call \
+      new_default_meta \
+      json-args '{"owner_id": "<account-id>", "total_supply": "100000000000000000000000000000"}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain send
+    ```
+  </Tab>
+  <Tab title="By Hash">
+
+    ```bash
+    near contract deploy <account-id> use-global-hash 3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX \
+      with-init-call \
+      new_default_meta \
+      json-args '{"owner_id": "<account-id>", "total_supply": "100000000000000000000000000000"}' \
+      prepaid-gas '100.0 Tgas' \
+      attached-deposit '0 NEAR' \
+      network-config testnet \
+      sign-with-keychain send
+    ```
+  </Tab>
+</Tabs>
+
+<Note>
+Deploying by **hash** creates an immutable contract that never changes. Deploying by **account ID** creates an updatable contract that changes when the referenced account's contract is updated. Choose based on whether you want your FT contract to be updatable or permanent.
+</Note>
+
+---
+
+## Creating a Token with a Factory
+
+You can also create a Fungible Token by interacting with a factory contract, to which you provide the owner, initial supply, and token metadata. The factory will automatically deploy and initialize a [canonical FT contract](https://github.com/near-examples/FT).
 
 | Network | Factory | Token account |
 |---------|---------|---------------|
@@ -91,85 +139,6 @@ Creating a token takes two steps: call `get_required` to quote the storage depos
 </Tabs>
 
 </Accordion>
-
----
-
-## Deploying Your Own Contract
-
-You can also create a fungible token by deploying and initializing a [canonical FT contract](https://github.com/near-examples/FT).
-
-On initialization, you will define the token's metadata such as its name (e.g. Ethereum), symbol (e.g. ETH) and total supply (e.g. 10M). You will also define an `owner`, which will own the tokens **total supply**.
-
-To initialize a FT contract you will need to deploy it and then call the `new` method defining the token's metadata.
-
-<Tabs>
-  <Tab title="🖥️ CLI">
-
-    ```bash
-    cargo near deploy build-non-reproducible-wasm <account-id> \
-      with-init-call new \
-      json-args '{
-        "owner_id": "<owner-account>",
-        "total_supply": "1000000000000000",
-        "metadata": {
-          "spec": "ft-1.0.0",
-          "name": "Example Token Name",
-          "symbol": "EXLT",
-          "decimals": 8
-        }
-      }' \
-      prepaid-gas '100.0 Tgas' \
-      attached-deposit '0 NEAR' \
-      network-config testnet \
-      sign-with-keychain send
-    ```
-  </Tab>
-  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
-    <TryOutOnLantstool path="docs/2.build/5.primitives/ft/create-ft-manually.json" />
-  </Tab>
-</Tabs>
-
-### Global Contracts
-
-You can deploy a new Fungible Token using our global FT contract - a pre-deployed [standard FT contract](https://github.com/near-examples/FT) that you can reuse. [Global contracts](../../smart-contracts/global-contracts) are deployed once and can be reused by any account without incurring high storage costs.
-
-| Network | Global FT contract |
-|---------|--------------------|
-| Mainnet | `ft.globals.primitives.near` |
-| Testnet | `ft.globals.primitives.testnet` |
-
-<Tabs>
-  <Tab title="By Account">
-
-    ```bash
-    near contract deploy <account-id> use-global-account-id ft.globals.primitives.testnet \
-      with-init-call \
-      new_default_meta \
-      json-args '{"owner_id": "<account-id>", "total_supply": "100000000000000000000000000000"}' \
-      prepaid-gas '100.0 Tgas' \
-      attached-deposit '0 NEAR' \
-      network-config testnet \
-      sign-with-keychain send
-    ```
-  </Tab>
-  <Tab title="By Hash">
-
-    ```bash
-    near contract deploy <account-id> use-global-hash 3vaopJ7aRoivvzZLngPQRBEd8VJr2zPLTxQfnRCoFgNX \
-      with-init-call \
-      new_default_meta \
-      json-args '{"owner_id": "<account-id>", "total_supply": "100000000000000000000000000000"}' \
-      prepaid-gas '100.0 Tgas' \
-      attached-deposit '0 NEAR' \
-      network-config testnet \
-      sign-with-keychain send
-    ```
-  </Tab>
-</Tabs>
-
-<Note>
-Deploying by **hash** creates an immutable contract that never changes. Deploying by **account ID** creates an updatable contract that changes when the referenced account's contract is updated. Choose based on whether you want your FT contract to be updatable or permanent.
-</Note>
 
 ---
 
@@ -627,10 +596,14 @@ While the FT standard does not define a `burn` method, you can simply transfer t
 
 ---
 
+## Additional Application Behavior
+
+Use the global FT contract by default. Only if your application truly requires behavior it does not provide, use [`near-contract-standards`](https://github.com/near/near-sdk-rs/tree/master/near-contract-standards) or [`near-sdk-contract-tools`](/primitives/ft/sdk-contract-tools) for the token implementation. Keep balances, transfers, storage management, and transfer resolution in these libraries; do not implement the FT standard by hand.
+
 ## Additional Resources
 
 1. [NEP-141 standard](https://github.com/near/NEPs/tree/master/neps/nep-0141.md)
 2. [NEP-148 standard](https://github.com/near/NEPs/tree/master/neps/nep-0148.md)
 3. [FT Event Standards](https://github.com/near/NEPs/blob/master/neps/nep-0300.md)
 4. [FT reference implementation](https://github.com/near-examples/FT)
-5. [Fungible Tokens 101](../../smart-contracts/tutorials/zero-to-hero/fts) - a set of tutorials that cover how to create a FT contract using Rust.
+5. [FT with Contract Tools](/primitives/ft/sdk-contract-tools) - library-provided token functionality when a global contract cannot meet the application’s needs.
