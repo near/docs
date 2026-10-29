@@ -4472,88 +4472,188 @@ Be very careful when deleting keys. Removing all keys from an account will cause
 
 NEAR supports the post-quantum [`ml-dsa-65`](/protocol/accounts-contracts/access-keys#signature-schemes) signature scheme (FIPS 204). You add and use an `ml-dsa-65` key exactly like an `ed25519` one — it can be a [full-access](/protocol/accounts-contracts/access-keys#full-access-keys) or [function-call](/protocol/accounts-contracts/access-keys#function-call-keys) key and signs transactions the same way.
 
+Run these examples from their respective package directories using the shared `.env` configuration in the [example repository](https://github.com/near-examples/near-api-examples/tree/59b39409b26453c2b63d15f0875d88f9184e506d). Each registers a temporary post-quantum key, signs a testnet self-transfer, and removes the key afterward. Running them submits transactions and pays testnet gas fees.
+
 <Tabs>
   <Tab title="🌐 near-kit">
 
-  ```javascript
-  import { MlDsa65KeyPair, Near } from "near-kit";
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/59b39409b26453c2b63d15f0875d88f9184e506d/near-kit/examples/post-quantum-keys.js
+commit: 59b39409b26453c2b63d15f0875d88f9184e506d
+start: 1
+end: 38
+fname: post-quantum-keys.js
+language: javascript
+*/}
 
-  // A client signed by alice's existing full-access key adds the new key
-  const near = new Near({
-    network: "testnet",
-    privateKey: "ed25519:<alice-existing-key>",
-    defaultSignerId: "alice.testnet",
-  });
+```javascript title="post-quantum-keys.js" lines
+import { MlDsa65KeyPair, Near } from "near-kit";
+import dotenv from "dotenv";
+import { privateKeyFromString } from "./helpers/private-key.js";
 
-  // Generate a post-quantum key pair (1952-byte public key, 3309-byte signatures)
-  const pqKey = MlDsa65KeyPair.fromRandom();
+// Use an existing testnet account and its full-access key.
+dotenv.config({ path: "../.env" });
+const accountId = process.env.ACCOUNT_ID;
+if (!accountId) throw new Error("ACCOUNT_ID is required");
+const near = new Near({
+  network: "testnet",
+  privateKey: privateKeyFromString(process.env.PRIVATE_KEY),
+  defaultSignerId: accountId,
+});
 
-  // Add it to alice's account, like any other key
-  await near
-    .transaction("alice.testnet")
-    .addKey(pqKey.publicKey.toString(), { type: "fullAccess" })
-    .send();
+// Generate an ML-DSA-65 key and register it using the existing signer.
+const pqKey = MlDsa65KeyPair.fromRandom();
+const publicKey = pqKey.publicKey.toString();
+await near
+  .transaction(accountId)
+  .addKey(publicKey, { type: "fullAccess" })
+  .send({ waitUntil: "FINAL" });
+console.log("Added post-quantum key:", publicKey);
 
-  // Then sign transactions with the post-quantum key
+try {
   const pqNear = new Near({
     network: "testnet",
-    keyStore: { "alice.testnet": pqKey.secretKey }, // "ml-dsa-65:<seed>"
+    privateKey: privateKeyFromString(pqKey.secretKey),
+    defaultSignerId: accountId,
   });
 
-  await pqNear.transaction("alice.testnet").transfer("bob.testnet", "1 NEAR").send();
-  ```
+  // Sign a self-transfer with the post-quantum key. This transaction pays gas.
+  await pqNear.transaction(accountId).transfer(accountId, "0.001 NEAR").send();
+  console.log("Post-quantum self-transfer completed");
+} finally {
+  // Remove the temporary key using the original signer.
+  await near.transaction(accountId).deleteKey(accountId, publicKey).send();
+  console.log("Removed post-quantum key:", publicKey);
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/59b39409b26453c2b63d15f0875d88f9184e506d/near-kit/examples/post-quantum-keys.js#L1-L38)
+
+</div>
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🦀 near-kit-rs">
 
-  ```bash
-  cargo add near-kit
-  ```
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/59b39409b26453c2b63d15f0875d88f9184e506d/near-kit-rs/examples/post_quantum_keys.rs
+commit: 59b39409b26453c2b63d15f0875d88f9184e506d
+start: 1
+end: 42
+fname: post_quantum_keys.rs
+language: rust
+*/}
 
-  ```rust
-  use near_kit::*;
+```rust title="post_quantum_keys.rs" lines
+use near_kit::signer::{InMemorySigner, SecretKey};
+use near_kit::transaction::Final;
+use near_kit::{Error, Near, NearToken};
 
-  // A client signed by alice's existing full-access key adds the new key
-  let near = Near::testnet()
-      .credentials("ed25519:<alice-existing-key>", "alice.testnet")?
-      .build();
+#[tokio::main]
+async fn main() -> Result<(), Error> {
+    // Use an existing testnet account and its full-access key.
+    dotenvy::from_filename("../.env").ok();
+    let private_key = std::env::var("PRIVATE_KEY").expect("PRIVATE_KEY");
+    let account_id = std::env::var("ACCOUNT_ID").expect("ACCOUNT_ID");
+    let near = Near::testnet()
+        .credentials(&private_key, &account_id)?
+        .build();
 
-  // Generate a random ML-DSA-65 key pair (1952-byte public key, 3309-byte signatures)
-  let pq_key = SecretKey::generate_ml_dsa65();
-  let public_key = pq_key.public_key(); // "ml-dsa-65:..."
+    // Generate an ML-DSA-65 key and register it using the existing signer.
+    let pq_key = SecretKey::generate_ml_dsa65();
+    let public_key = pq_key.public_key();
+    near.add_full_access_key(public_key.clone())
+        .send()
+        .wait_until::<Final>()
+        .await?;
+    println!("Added post-quantum key: {public_key}");
 
-  // Add it to alice's account, like any other key
-  near.transaction("alice.testnet")
-      .add_full_access_key(public_key)
-      .send()
-      .wait_until(Final)
-      .await?;
-  ```
+    let pq_near = near.with_signer(InMemorySigner::from_secret_key(
+        account_id.as_str(),
+        pq_key,
+    )?);
+    // Sign a self-transfer with the post-quantum key. This transaction pays gas.
+    let transfer_result = pq_near
+        .transfer(account_id.as_str(), NearToken::from_millinear(1))
+        .await;
+
+    // Remove the temporary key using the original signer, even if the transfer failed.
+    near.delete_key(public_key.clone())
+        .send()
+        .wait_until::<Final>()
+        .await?;
+    println!("Removed post-quantum key: {public_key}");
+    transfer_result?;
+    println!("Post-quantum self-transfer completed");
+    Ok(())
+}
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/59b39409b26453c2b63d15f0875d88f9184e506d/near-kit-rs/examples/post_quantum_keys.rs#L1-L42)
+
+</div>
+
+{/* /github-code */}
 
   </Tab>
   <Tab title="🐍 near-kit-py">
 
-  ```bash
-  pip install near-kit
-  ```
+{/* github-code
+url: https://github.com/near-examples/near-api-examples/blob/59b39409b26453c2b63d15f0875d88f9184e506d/near-kit-py/examples/post_quantum_keys.py
+commit: 59b39409b26453c2b63d15f0875d88f9184e506d
+start: 1
+end: 32
+fname: post_quantum_keys.py
+language: python
+*/}
 
-  ```python
-  from near import KeyPairSigner, MlDsa65KeyPair, Near, add_full_access_key
+```python title="post_quantum_keys.py" lines
+import os
 
-  # A client signed by alice's existing full-access key adds the new key
-  client = Near(network="testnet", account_id="alice.testnet", private_key="ed25519:<alice-existing-key>")
+from dotenv import load_dotenv
+from near import KeyPairSigner, MlDsa65KeyPair, Near, add_full_access_key, delete_key
 
-  # Generate a post-quantum key pair (1952-byte public key, 3309-byte signatures)
-  pq_key = MlDsa65KeyPair.generate()
-  print(pq_key.public_key)  # "ml-dsa-65:..."
 
-  # Add it to alice's account, like any other key
-  client.send_transaction("alice.testnet", actions=[add_full_access_key(pq_key.public_key)], wait_until="FINAL")
+def main() -> None:
+    # Use an existing testnet account and its full-access key.
+    load_dotenv("../.env")
+    account_id = os.environ["ACCOUNT_ID"]
+    client = Near(network="testnet", account_id=account_id, private_key=os.environ["PRIVATE_KEY"])
 
-  # Then sign transactions with the post-quantum key
-  pq_client = Near(network="testnet", signer=KeyPairSigner("alice.testnet", pq_key))
-  pq_client.send("bob.testnet", "1 NEAR")
-  ```
+    # Generate an ML-DSA-65 key and register it using the existing signer.
+    pq_key = MlDsa65KeyPair.generate()
+    client.send_transaction(
+        account_id, actions=[add_full_access_key(pq_key.public_key)], wait_until="FINAL"
+    )
+    print(f"Added post-quantum key: {pq_key.public_key}")
+
+    try:
+        pq_client = Near(network="testnet", signer=KeyPairSigner(account_id, pq_key))
+        # Sign a self-transfer with the post-quantum key. This transaction pays gas.
+        pq_client.send(account_id, "0.001 NEAR")
+        print("Post-quantum self-transfer completed")
+    finally:
+        # Remove the temporary key using the original signer.
+        client.send_transaction(account_id, actions=[delete_key(pq_key.public_key)])
+        print(f"Removed post-quantum key: {pq_key.public_key}")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+<div className="github-source-link">
+
+[See code on GitHub](https://github.com/near-examples/near-api-examples/blob/59b39409b26453c2b63d15f0875d88f9184e506d/near-kit-py/examples/post_quantum_keys.py#L1-L32)
+
+</div>
+
+{/* /github-code */}
 
   </Tab>
 </Tabs>
