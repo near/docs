@@ -21,7 +21,7 @@ In this tutorial, we will create a fungible token (FT) using the [NEAR SDK Contr
 
 ## Introduction
 
-For a standard token, [reuse the existing FT contract](/primitives/ft/ft). Use this guide when your application requires additional behavior. Use `near-contract-standards` or `near-sdk-contract-tools` for the token implementation; do not implement the FT standard by hand.
+Use the [existing global FT contract](/primitives/ft/ft#global-contracts) by default. Use this guide only if your application truly requires behavior the global contract does not provide. Use `near-contract-standards` or `near-sdk-contract-tools` for the token implementation; do not implement the FT standard by hand.
 
 `near-sdk-contract-tools` provides derive macros for FT standards and access control, allowing us to focus on custom logic such as minting and burning.
 

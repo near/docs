@@ -14,20 +14,7 @@ The WebApp examples use the local `useNearWallet` hook from the [Hello NEAR prov
 
 ## Deploying a NFT Contract
 
-Reuse the existing [NFT reference contract](https://github.com/near-examples/NFT) Wasm without changing its source, or use the [global contract](#global-contract) below. Configure the owner and collection metadata through initialization arguments.
-
-<Tabs>
- <Tab title="🖥️ CLI">
-
-  ```bash
-  near deploy <account-id> --wasmFile contract.wasm --initFunction new
-  ```
-
- </Tab>
-  <Tab title="Lantstool" icon="/assets/docs/tools/lantstool-logo-circle.svg">
-    <TryOutOnLantstool path="docs/2.build/5.primitives/nft/deploy-nft-contract.json" />
-  </Tab>
-</Tabs>
+Use the existing global NFT contract. Reuse its deployed code and configure the owner and collection metadata through initialization arguments.
 
 ### Global Contract
 
@@ -65,7 +52,7 @@ You can deploy a new Non-Fungible Token using our global NFT contract - a pre-de
 </Tabs>
 
 <Note>
-Deploying by **hash** creates an immutable contract that never changes. Deploying by **account ID** creates an updatable contract that changes when the referenced account's contract is updated. Choose based on whether you want your FT contract to be updatable or permanent.
+Deploying by **hash** creates an immutable contract that never changes. Deploying by **account ID** creates an updatable contract that changes when the referenced account's contract is updated. Choose based on whether you want your NFT contract to be updatable or permanent.
 </Note>
 
 ---
@@ -527,4 +514,4 @@ While the NFT standard does not define a `burn` method, you can simply transfer 
 
 ## Additional Application Behavior
 
-Use the existing NFT contract whenever it meets your needs. If your application requires additional behavior, use [`near-contract-standards`](https://github.com/near/near-sdk-rs/tree/master/near-contract-standards) or [`near-sdk-contract-tools`](/primitives/nft/sdk-contract-tools) for the NFT implementation. Keep ownership, transfers, approvals, and transfer resolution in these libraries; do not implement the NFT standard by hand.
+Use the global NFT contract by default. Only if your application truly requires behavior it does not provide, use [`near-contract-standards`](https://github.com/near/near-sdk-rs/tree/master/near-contract-standards) or [`near-sdk-contract-tools`](/primitives/nft/sdk-contract-tools) for the NFT implementation. Keep ownership, transfers, approvals, and transfer resolution in these libraries; do not implement the NFT standard by hand.
