@@ -8,6 +8,10 @@ A [universal account](/protocol/accounts-contracts/account-id#universal-address)
 
 This page assumes you're familiar with [Universal Address](/protocol/accounts-contracts/account-id#universal-address) and [Access Keys](/protocol/accounts-contracts/access-keys).
 
+<Warning>
+Universal accounts need protocol version 88 or later (nearcore 2.14.0). On a network with an earlier protocol version, a `UniversalStateInit` action is rejected, and a `Transfer` to a `0u` address fails without creating an account. To see a network's protocol version, call the `status` RPC method and read `protocol_version`. As of October 2026, testnet supports universal accounts and mainnet does not yet.
+</Warning>
+
 <Note>
 This is a protocol-level walkthrough using raw transactions and RPC calls. Dedicated SDK helpers for building a `UniversalStateInit` action are expected to follow in `near-api-js` and `near-kit` — check [NEAR API](/tools/near-api) for the latest tooling before hand-rolling this in production.
 </Note>
@@ -167,10 +171,10 @@ let tx = SignedTransaction::from_actions(
 );
 ```
 
-The order of `UniversalStateInit` and `Transfer` doesn't matter — whichever runs first creates the account, and the other lands on it. A `FunctionCall` can follow in the same batch too, to call into the contract the state init just installed.
+Either `UniversalStateInit` or `Transfer` can run first. The one that runs first creates the account, and the other one then applies to it. The order matters for storage stake. If `UniversalStateInit` runs first, the account starts with a zero balance, so the state init's own `deposit` must cover the storage stake of everything it installs. This is not needed when the account uses 770 bytes or less, as in this example. A `FunctionCall` can follow in the same batch too, to call into the contract the state init just installed.
 
 <Info>
-**Why is `deposit` zero here, and `Transfer` used instead?** `UniversalStateInitAction.deposit` isn't a general funding mechanism — it only tops up the account's balance to cover its **storage stake**, and only the first time a state init actually initializes the account; a `UniversalStateInit` that lands on an already-initialized account always refunds the whole deposit, since there's nothing left for it to cover. It's fine to leave it at zero here and fund the account entirely through a separate `Transfer`, as shown here — that's what determines the account's actual spendable balance.
+**Why is `deposit` zero here, and `Transfer` used instead?** `UniversalStateInitAction.deposit` isn't a general funding mechanism. It only tops up the account's balance to cover its **storage stake**. This happens only the first time a state init initializes the account. A `UniversalStateInit` that lands on an already-initialized account always refunds the whole deposit, because there is nothing left for it to cover. A zero `deposit` works here because the new account uses 770 bytes or less, so it needs no storage stake. For a larger account, put the `Transfer` first, or set `deposit` to cover the storage stake. The `Transfer` sets the account's spendable balance.
 </Info>
 </Step>
 <Step title="Broadcast it">
@@ -265,9 +269,11 @@ unsafe extern "C" {
 
 These are the raw host-function imports — there's no `near-sdk-rs` ergonomic wrapper for them yet, so this is what you write directly, the same low-level way you'd import any other host function it doesn't wrap.
 
-`universal_state_init_to_account_id` returns a status instead of always succeeding: `0` means the id was derived and written to the register, `1` means the bytes don't decode into a `UniversalStateInit` at all, and `2` means they decode but aren't the one canonical encoding (unsorted `data` or `access_keys`, a duplicate entry, or trailing bytes). On anything but `0`, the register is left unwritten. Check the status before moving on. Otherwise this is a pure computation: no side effects, and it can run inside a view call.
+`universal_state_init_to_account_id` returns a status instead of always succeeding. `0` means the id was derived and written to the register. `1` means the bytes don't decode into a `UniversalStateInit`, which includes bytes with extra data at the end. `2` means they decode but aren't the one canonical encoding: unsorted or duplicate `data` keys or `access_keys`. On anything but `0`, the register is left unwritten. Check the status before moving on. Otherwise this is a pure computation: no side effects, and it can run inside a view call.
 </Step>
 <Step title="Append the UniversalStateInit action to a promise">
+If step 1 returned a status other than `0`, do not create the promise.
+
 ```rust
 let promise_idx = unsafe { promise_batch_create(receiver_len, receiver_ptr) };
 unsafe {
@@ -286,8 +292,23 @@ Like in the relayer flow, this `amount_ptr` deposit only tops up the account's *
 There's no host function to build up a `UniversalStateInit`'s `data` map incrementally the way `set_state_init_data_entry` does for a [deterministic account](/protocol/accounts-contracts/account-id#deterministic-address). If your contract needs to populate initial storage, it has to construct the whole Borsh-encoded state init itself before calling `promise_batch_action_universal_state_init` — the two host functions here only derive an id from bytes and attach an action, they don't help build the bytes.
 </Note>
 </Step>
-<Step title="Handle malformed input at the receipt, not at the call">
-`promise_batch_action_universal_state_init` itself never rejects bad input — it always succeeds from the calling contract's point of view, even for bytes that step 1 would already have reported as invalid. What fails is the **receipt** the action creates: if the bytes don't decode into a `UniversalStateInit`, or decode but aren't the canonical encoding, that receipt fails with `MalformedUniversalStateInit`; if the promise's receiver doesn't match what the bytes derive to, it fails with `InvalidUniversalStateInitReceiver`. Checking step 1's status first is the cheap way to catch this before spending a promise on it at all — but check the outcome of the cross-contract call either way, if your contract's logic depends on the account having actually been created.
+<Step title="Invalid input fails your function call">
+If the contract creates the promise with input that fails validation, the contract's own function call fails with `NewReceiptValidationError`. The failed call's state changes are rolled back. None of the receipts it created run, including callbacks.
+
+`promise_batch_action_universal_state_init` does not check the bytes or the receiver when the contract calls it. The runtime checks them when the contract's function call finishes, together with every other receipt that the call created. The inner `ActionsValidation` error says which check failed:
+
+| Check | Inner error |
+|-------|-------------|
+| The promise's receiver is the id that the bytes derive to | `InvalidUniversalStateInitReceiver` |
+| The bytes decode into a `UniversalStateInit` and are the canonical encoding | `MalformedUniversalStateInit` |
+| The state init actions of the receipt have at most 1,500 storage entries in total | `TotalNumberOfStateInitEntriesExceeded` |
+| The state init actions of the receipt have at most 1,024 access keys in total | `TotalNumberOfStateInitKeysExceeded` |
+| Each storage key is at most 2,048 bytes | `UniversalStateInitKeyLengthExceeded` |
+| Each storage value is at most 4,194,304 bytes | `UniversalStateInitValueLengthExceeded` |
+
+The receiver check runs before the decoding check. A status of `0` from step 1 does not check the size limits in the last four rows.
+
+A promise that passes all checks is sent. The state init can still fail when it runs, for example if the account balance and the deposit together do not cover the storage stake. If your contract's logic depends on the account having been created, check the outcome of the cross-contract call.
 </Step>
 </Steps>
 
