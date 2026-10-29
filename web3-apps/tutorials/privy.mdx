@@ -167,12 +167,12 @@ Integrating **Privy directly** would make your application support **only social
     Use Node.js 22.22.2 or newer. Wrap your application with `PrivyProvider` and a custom `NEARxPrivy` context that bridges Privy's authentication with a NEAR account:
 
 {/* github-code
-url: https://github.com/near-examples/hello-privy/blob/main/src/App.jsx
-commit: a80470ac85c0faed39ed81f23419b926d2b1eb37
-language: jsx
+url: https://github.com/near-examples/hello-privy/blob/main/src/App.tsx
+commit: 5aa847ac74551dbfdeb6dc7f5ace4ed0b105c5d8
+language: tsx
 */}
 
-```jsx title="App.jsx" lines
+```tsx title="App.tsx" lines
 import { Navigation } from './components/navigation'
 import Home from './pages/home'
 
@@ -218,7 +218,7 @@ export default App
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-privy/blob/a80470ac85c0faed39ed81f23419b926d2b1eb37/src/App.jsx)
+[See code on GitHub](https://github.com/near-examples/hello-privy/blob/5aa847ac74551dbfdeb6dc7f5ace4ed0b105c5d8/src/App.tsx)
 
 </div>
 
@@ -237,12 +237,12 @@ export default App
 The `NEARxPrivy` provider listens to Privy's authentication state and selects the NEAR wallet from the user's linked accounts. If the user has no NEAR wallet, it creates one. It then exposes a `nearAccount` instance through context:
 
 {/* github-code
-url: https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/context/provider.jsx
-commit: 308e283b4404a1c4824cefcad959449e62571402
-language: jsx
+url: https://github.com/near-examples/hello-privy/blob/main/src/context/provider.tsx
+commit: 5aa847ac74551dbfdeb6dc7f5ace4ed0b105c5d8
+language: tsx
 */}
 
-```jsx title="provider.jsx" lines
+```tsx title="provider.tsx" lines
 // Privy
 import { usePrivy } from '@privy-io/react-auth'
 import { useCreateWallet } from '@privy-io/react-auth/extended-chains'
@@ -253,7 +253,7 @@ import { JsonRpcProvider } from 'near-api-js'
 import { Account } from 'near-api-js'
 
 // config
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type PropsWithChildren } from 'react'
 import { useState } from 'react'
 import { NearContext } from './useNear'
 import { providerUrl } from '../config'
@@ -262,11 +262,10 @@ import { privySigner } from './signer'
 // Provider
 const provider = new JsonRpcProvider({ url: providerUrl })
 
-// eslint-disable-next-line react/prop-types
-export function NEARxPrivy({ children }) {
+export function NEARxPrivy({ children }: PropsWithChildren) {
   const { authenticated, user } = usePrivy()
   const [walletId, setWalletId] = useState('')
-  const [nearAccount, setNearAccount] = useState(null)
+  const [nearAccount, setNearAccount] = useState<Account | null>(null)
 
   const { signRawHash } = useSignRawHash()
   const { createWallet } = useCreateWallet()
@@ -284,7 +283,7 @@ export function NEARxPrivy({ children }) {
     const nearWallet = user.linkedAccounts.find((account) =>
       account.type === 'wallet' && account.chainType === 'near'
     )
-    if (!nearWallet) {
+    if (nearWallet?.type !== 'wallet') {
       if (!creatingWallet.current) {
         creatingWallet.current = true
         createWallet({ chainType: 'near' })
@@ -309,7 +308,7 @@ export function NEARxPrivy({ children }) {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/context/provider.jsx)
+[See code on GitHub](https://github.com/near-examples/hello-privy/blob/5aa847ac74551dbfdeb6dc7f5ace4ed0b105c5d8/src/context/provider.tsx)
 
 </div>
 
@@ -328,18 +327,27 @@ export function NEARxPrivy({ children }) {
 Privy signs through its embedded wallet via `signRawHash`. The `privySigner` class extends `Signer` from `near-api-js` and implements `getPublicKey` and `signBytes`. The SDK serializes and hashes transactions, delegate actions, and NEP-413 messages before requesting a signature:
 
 {/* github-code
-url: https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/context/signer.js
-commit: 308e283b4404a1c4824cefcad959449e62571402
+url: https://github.com/near-examples/hello-privy/blob/main/src/context/signer.ts
+commit: 5aa847ac74551dbfdeb6dc7f5ace4ed0b105c5d8
+language: typescript
 */}
 
-```javascript title="signer.js" lines
+```typescript title="signer.ts" lines
 import { Account, PublicKey, Signer } from 'near-api-js'
+import type { JsonRpcProvider } from 'near-api-js'
+import type { useSignRawHash } from '@privy-io/react-auth/extended-chains'
 import { bytesToHex, hexToBytes } from '@noble/hashes/utils'
 
 // Keep Privy's embedded wallet as the signer. The SDK handles transaction,
 // delegate-action and NEP-413 serialization and hashing consistently.
+type SignRawHash = ReturnType<typeof useSignRawHash>['signRawHash']
+
 export class privySigner extends Signer {
-  constructor(signRawHash, nearAccId, provider) {
+  private signRawHash: SignRawHash
+  private nearAccId: string
+  private provider: JsonRpcProvider
+
+  constructor(signRawHash: SignRawHash, nearAccId: string, provider: JsonRpcProvider) {
     super()
     this.signRawHash = signRawHash
     this.nearAccId = nearAccId
@@ -356,7 +364,7 @@ export class privySigner extends Signer {
     return PublicKey.fromString(keys[0].public_key)
   }
 
-  async signBytes(bytes) {
+  async signBytes(bytes: Uint8Array) {
     const { signature } = await this.signRawHash({
       address: this.nearAccId,
       chainType: 'near',
@@ -369,7 +377,7 @@ export class privySigner extends Signer {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/context/signer.js)
+[See code on GitHub](https://github.com/near-examples/hello-privy/blob/5aa847ac74551dbfdeb6dc7f5ace4ed0b105c5d8/src/context/signer.ts)
 
 </div>
 
@@ -382,12 +390,12 @@ export class privySigner extends Signer {
 Use `useLogin` and `useLogout` from Privy to open the login modal and sign the user out:
 
 {/* github-code
-url: https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/components/navigation.jsx
-commit: 308e283b4404a1c4824cefcad959449e62571402
-language: jsx
+url: https://github.com/near-examples/hello-privy/blob/main/src/components/navigation.tsx
+commit: 5aa847ac74551dbfdeb6dc7f5ace4ed0b105c5d8
+language: tsx
 */}
 
-```jsx title="navigation.jsx" lines
+```tsx title="navigation.tsx" lines
 import { useEffect, useState } from 'react'
 
 import NearLogo from '@/assets/near-logo.svg'
@@ -399,9 +407,9 @@ import { useNEAR } from '../context/useNear'
 import { NEAR } from 'near-api-js/tokens'
 
 export const Navigation = () => {
-  const [action, setAction] = useState(() => {})
+  const [action, setAction] = useState<() => void>(() => () => {})
   const [label, setLabel] = useState('Loading...')
-  const [balance, setBalance] = useState(0)
+  const [balance, setBalance] = useState<string>('0')
   const { authenticated, user } = usePrivy()
 
   const { login: privyLogin } = useLogin()
@@ -410,27 +418,23 @@ export const Navigation = () => {
   const { walletId, nearAccount } = useNEAR()
 
   useEffect(() => {
-    if (authenticated) {
-      const userId = user.google
-        ? user.google.email
-        : user.email
-          ? user.email.address
-          : user.github.username
+    if (authenticated && user) {
+      const userId = user.google?.email ?? user.email?.address ?? user.github?.username ?? 'User'
       setAction(() => privyLogout)
       setLabel(`Logout ${userId}`)
     } else {
       setAction(() => privyLogin)
       setLabel('Login')
-      setBalance(null)
+      setBalance('0')
     }
   }, [authenticated, privyLogin, privyLogout, user])
 
   useEffect(() => {
-    if (walletId) {
+    if (walletId && nearAccount) {
       nearAccount
         .getBalance()
         .then((b) => setBalance(Number(NEAR.toDecimal(b)).toFixed(2)))
-        .catch(() => setBalance(0)) // non existing account
+        .catch(() => setBalance('0')) // non existing account
     }
   }, [walletId, nearAccount])
 
@@ -469,7 +473,7 @@ export const Navigation = () => {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/components/navigation.jsx)
+[See code on GitHub](https://github.com/near-examples/hello-privy/blob/5aa847ac74551dbfdeb6dc7f5ace4ed0b105c5d8/src/components/navigation.tsx)
 
 </div>
 

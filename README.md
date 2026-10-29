@@ -56,7 +56,7 @@ To refresh the examples, run:
 node scripts/sync-github-code.mjs
 ```
 
-The script checks each repository reference once and skips source downloads when the recorded commit is unchanged. When a reference changes, it fetches each file once and updates its excerpts. Review the diff before committing: upstream edits can change what a line range selects.
+Use a source URL on the repository’s default branch (`main`, or `master` where applicable). The `commit` field is the single snapshot version identifier. The script resolves each tracked branch once and compares its latest SHA with `commit`. If they match, it skips source downloads. If they differ, it fetches files at the resolved SHA, refreshes the excerpts, and records that SHA in `commit`. Displayed source links always point to the recorded commit, so they match the shown code. Review the diff before committing: upstream edits can change what a line range selects.
 
 To update a single page or check for pending changes without writing files:
 
@@ -65,7 +65,7 @@ node scripts/sync-github-code.mjs web3-apps/tutorials/mastering-near/1.1-basic.m
 node scripts/sync-github-code.mjs --check
 ```
 
-To add an example, insert a block with its source metadata and run the script. Omit `commit` on a new block; the script fills it in. Line numbers are one-based and inclusive. Store ranges in `start`/`end`; generated source links add the matching GitHub line fragment. During migration, a line fragment in a source URL is converted to range metadata; conflicting values are rejected. Without a range, the entire file is included. Use an encoded ref, such as `feature%2Fexample`, for a branch whose name contains a slash.
+To add an example, insert a block with its source metadata and run the script. Omit `commit` on a new block; the script fills it in. Line numbers are one-based and inclusive. Store ranges in `start`/`end`; generated source links add the matching GitHub line fragment. During migration, a line fragment in a source URL is converted to range metadata; conflicting values are rejected. Without a range, the entire file is included. Keep the repository’s default branch in the source URL; put the full snapshot SHA only in `commit`.
 
 ````mdx
 {/* github-code
@@ -80,7 +80,7 @@ highlight: 1,3-5
 {/* /github-code */}
 ````
 
-Edit the metadata to change the source, range, filename, language, or highlighted lines. Highlight metadata accepts comma-separated line numbers and inclusive ranges, such as `highlight: 1,3-5`. These line numbers are one-based and relative to the displayed excerpt, not the upstream file's `start`/`end` line numbers. The script checks that highlights fall within the excerpt and renders Mintlify's `highlight={1,3-5}` fence option. Use `--force` to regenerate code that was edited manually. To pin an example permanently, replace the branch in its source URL with a full commit SHA. Ordinary page visits, agent reads, and documentation builds do not run the sync script.
+Edit the metadata to change the source, range, filename, language, or highlighted lines. Highlight metadata accepts comma-separated line numbers and inclusive ranges, such as `highlight: 1,3-5`. These line numbers are one-based and relative to the displayed excerpt, not the upstream file's `start`/`end` line numbers. The script checks that highlights fall within the excerpt and renders Mintlify's `highlight={1,3-5}` fence option. Use `--force` to regenerate code that was edited manually. Commit SHAs in source URLs are rejected because they prevent branch updates from being discovered. Ordinary page visits, agent reads, and documentation builds do not run the sync script.
 
 The script requires Node.js 20.17.0 or newer and no additional packages. It uses `GITHUB_TOKEN`, `GH_TOKEN`, or an authenticated GitHub CLI when available to increase GitHub API rate limits. Run its tests with `node --test scripts/sync-github-code.test.mjs`.
 

@@ -88,7 +88,7 @@ const connector = new NearConnector({
 Subscribe to the `wallet:signIn` and `wallet:signOut` events to update your application's wallet state:
 
 {/* github-code
-url: https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/providers/near-provider.tsx
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx
 commit: 8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6
 start: 95
 end: 109
@@ -124,7 +124,7 @@ connector.on('wallet:signOut', handleSignOut);
 Call `connector.connect()` to open the wallet selection modal and `connector.disconnect(wallet)` to sign out. In the React provider, these calls also update the local wallet and account state:
 
 {/* github-code
-url: https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/providers/near-provider.tsx
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/providers/near-provider.tsx
 commit: 8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6
 start: 132
 end: 144

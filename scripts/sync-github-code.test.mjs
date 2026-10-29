@@ -34,6 +34,7 @@ test('migrates nested embeds to Markdown, with a full commit and a pinned source
   assert.ok(result.text.includes(`/blob/${commit}/src/lib.rs#L1-L2`));
   assert.ok(!result.text.includes('import { Github }'));
   assert.ok(!result.text.includes('<Github'));
+  assert.equal(requests[0], 'https://api.github.com/repos/example/repo/commits/main');
   assert.equal(requests[1], `https://raw.githubusercontent.com/example/repo/${commit}/src/lib.rs`);
 });
 
@@ -72,6 +73,8 @@ test('new commits and edited ranges regenerate the block', async () => {
   const updated = await syncText(initial.text, loader);
   assert.ok(updated.text.includes(`commit: ${'b'.repeat(40)}`));
   assert.equal(loader.stats.downloads, 1);
+  assert.ok(updated.text.includes(`url: ${url}\ncommit: ${'b'.repeat(40)}`));
+  assert.ok(updated.text.includes(`/blob/${'b'.repeat(40)}/src/lib.rs#L1-L2`));
   const rangeLoader = mockLoader().loader;
   const changed = await syncText(initial.text.replace('end: 2', 'end: 3'), rangeLoader);
   assert.ok(changed.text.includes('first\n  second\nthird'));
@@ -85,10 +88,14 @@ test('force repairs generated content at the same commit', async () => {
   assert.equal(repaired.text, initial.text);
 });
 
-test('commit-pinned URLs require no API lookup', async () => {
-  const { loader } = mockLoader();
-  await syncText(legacy.replace('/blob/main/', `/blob/${commit}/`), loader, { migrate: true });
-  assert.deepEqual(loader.stats, { lookups: 0, downloads: 1 });
+test('rejects commit-pinned source URLs so branch updates cannot be bypassed', async () => {
+  const { loader, requests } = mockLoader();
+  await assert.rejects(
+    syncText(legacy.replace('/blob/main/', `/blob/${commit}/`), loader, { migrate: true }),
+    /Source URL must track a branch/,
+  );
+  assert.equal(requests.length, 0);
+  assert.throws(() => renderBlock({ url: url.replace('/blob/main/', `/blob/${commit}/`), commit }, 'code'), /Source URL must track a branch/);
 });
 
 test('HTTP errors, unsupported attributes, and invalid ranges fail explicitly', async () => {

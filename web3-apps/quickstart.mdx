@@ -201,7 +201,7 @@ Just like the [navigation bar](#navigation-bar), we use the app's local `useNear
 - `callFunction` calls methods that modify contract state through the connected wallet's `signAndSendTransaction` method
 
 {/* github-code
-url: https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/pages/hello-near/index.tsx
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx
 commit: 8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6
 start: 11
 end: 11
@@ -225,7 +225,7 @@ const { signedAccountId, viewFunction, callFunction } = useNearWallet();
 For example, when we want to fetch the current greeting stored in the contract, we use `viewFunction` inside a `useEffect` hook:
 
 {/* github-code
-url: https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/pages/hello-near/index.tsx
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx
 commit: 8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6
 start: 17
 end: 19
@@ -250,7 +250,7 @@ useEffect(() => {
 On the other hand, when the user submits a new greeting, we use `callFunction` to send a transaction to the contract:
 
 {/* github-code
-url: https://github.com/near-examples/hello-near-examples/blob/8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6/frontend/src/pages/hello-near/index.tsx
+url: https://github.com/near-examples/hello-near-examples/blob/main/frontend/src/pages/hello-near/index.tsx
 commit: 8420b0ea2bc312c401ee79c2066d1bb8e57ee4e6
 start: 22
 end: 34

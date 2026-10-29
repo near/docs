@@ -8,8 +8,9 @@ code currently selected by numeric ranges.
 - Repair shifted or changed excerpt ranges and excerpt-relative highlights.
 - Update surrounding explanations when the new code changes their meaning.
 - Preserve the page's tone, structure, and purpose. Edit only existing MDX pages.
-- Keep source URLs tracking their existing branch or tag. Preserve intentional
-  commit-pinned examples. Never switch an example to unrelated code.
+- Keep source URLs tracking the repository default branch (main or master).
+  Store the snapshot SHA only in commit metadata, never in the source URL.
+  Never switch an example to unrelated code.
 - Render code from the actual source using scripts/sync-github-code.mjs. After
   correcting metadata, use --force on affected pages to regenerate snippets.
 - Do not invent source code or describe behavior unsupported by the new source.
