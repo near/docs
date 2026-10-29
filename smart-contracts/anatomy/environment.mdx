@@ -56,7 +56,7 @@ During a simple transaction (no [cross-contract calls](../anatomy/crosscontract)
 *You can access information about the users interacting with your smart contract*
 
 <Tip>
-Use the predecessor to authorize the account calling the current method. For example, a token receiver uses it to check which [FT contract](/smart-contracts/tutorials/token-contracts/fts#transfers-and-callbacks) or [NFT contract](/smart-contracts/tutorials/token-contracts/nfts#transfer-callbacks) called it. The signer identifies the account that signed the original transaction, which can differ from the contract making the current call.
+Use the predecessor to authorize the account calling the current method. For example, a token receiver uses it to check which [FT contract](/primitives/ft/ft#attaching-fts-to-a-call) or [NFT contract](/primitives/nft/nft#attaching-nfts-to-a-call) called it. The signer identifies the account that signed the original transaction, which can differ from the contract making the current call.
 </Tip>
 
 <Note>

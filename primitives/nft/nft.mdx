@@ -14,7 +14,7 @@ The WebApp examples use the local `useNearWallet` hook from the [Hello NEAR prov
 
 ## Deploying a NFT Contract
 
-If you want to deploy your own NFT contract, you can create one using our [reference implementation](https://github.com/near-examples/NFT).
+Reuse the existing [NFT reference contract](https://github.com/near-examples/NFT) Wasm without changing its source, or use the [global contract](#global-contract) below. Configure the owner and collection metadata through initialization arguments.
 
 <Tabs>
  <Tab title="🖥️ CLI">
@@ -525,6 +525,6 @@ While the NFT standard does not define a `burn` method, you can simply transfer 
 
 ---
 
-## Customizing an NFT Contract
+## Additional Application Behavior
 
-See [NFT contract guarantees](/smart-contracts/tutorials/token-contracts/nfts) for ownership, approvals, storage, and callback behavior to preserve when extending the reference implementation.
+Use the existing NFT contract whenever it meets your needs. If your application requires additional behavior, use [`near-contract-standards`](https://github.com/near/near-sdk-rs/tree/master/near-contract-standards) or [`near-sdk-contract-tools`](/primitives/nft/sdk-contract-tools) for the NFT implementation. Keep ownership, transfers, approvals, and transfer resolution in these libraries; do not implement the NFT standard by hand.
