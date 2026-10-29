@@ -14,7 +14,7 @@ See full working example [here](https://github.com/near-examples/hello-privy)
 
 <Info>
 **Web3Auth**
-For an alternative social login method you can check [Web3Auth](https://web3auth.io/). We have a functional [Web3Auth Integration Example](https://github.com/near-examples/hello-web3auth/) to show how to integrate Web3Auth into your web app.
+For an alternative social login method you can check [Web3Auth](https://web3auth.io/). Our [Web3Auth Integration Example](https://github.com/near-examples/hello-web3auth/) includes a Modal integration that derives a NEAR Ed25519 key from the authenticated session and an MPC Core Kit integration that signs through a custom SDK `Signer`. Both use `near-api-js` to query NEAR and submit transactions.
 </Info>
 
 ---
@@ -33,7 +33,7 @@ Choose whether to expose your Privy wallet through [NEAR Connect](/web3-apps/tut
   </Tab>
   <Tab title="Direct Privy">
     ```bash
-    npm install @privy-io/react-auth @near-js/accounts @near-js/providers @near-js/transactions @near-js/tokens @noble/hashes
+    npm install @privy-io/react-auth near-api-js @noble/hashes
     ```
   </Tab>
 </Tabs>
@@ -164,7 +164,7 @@ Integrating **Privy directly** would make your application support **only social
   </Tab>
 
   <Tab title="Direct Privy">
-    Wrap your application with `PrivyProvider` and a custom `NEARxPrivy` context that bridges Privy's authentication with a NEAR account:
+    Use Node.js 22.22.2 or newer. Wrap your application with `PrivyProvider` and a custom `NEARxPrivy` context that bridges Privy's authentication with a NEAR account:
 
 {/* github-code
 url: https://github.com/near-examples/hello-privy/blob/main/src/App.jsx
@@ -234,11 +234,11 @@ export default App
 
 ### Context
 
-The `NEARxPrivy` provider listens to Privy's authentication state. Once the user is logged in, it creates a NEAR wallet (if one doesn't exist yet) and exposes a `nearAccount` instance through context:
+The `NEARxPrivy` provider listens to Privy's authentication state and selects the NEAR wallet from the user's linked accounts. If the user has no NEAR wallet, it creates one. It then exposes a `nearAccount` instance through context:
 
 {/* github-code
-url: https://github.com/near-examples/hello-privy/blob/main/src/context/provider.jsx
-commit: a80470ac85c0faed39ed81f23419b926d2b1eb37
+url: https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/context/provider.jsx
+commit: 308e283b4404a1c4824cefcad959449e62571402
 language: jsx
 */}
 
@@ -249,11 +249,11 @@ import { useCreateWallet } from '@privy-io/react-auth/extended-chains'
 import { useSignRawHash } from '@privy-io/react-auth/extended-chains'
 
 // near api js
-import { JsonRpcProvider } from '@near-js/providers'
-import { Account } from '@near-js/accounts'
+import { JsonRpcProvider } from 'near-api-js'
+import { Account } from 'near-api-js'
 
 // config
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 import { NearContext } from './useNear'
 import { providerUrl } from '../config'
@@ -270,21 +270,33 @@ export function NEARxPrivy({ children }) {
 
   const { signRawHash } = useSignRawHash()
   const { createWallet } = useCreateWallet()
+  const creatingWallet = useRef(false)
 
   useEffect(() => {
-    if (authenticated) {
-      if (!user.wallet) {
-        createWallet({ chainType: 'near' })
-      } else {
-        let signer = new privySigner(signRawHash, user.wallet.address, provider)
-        let acc = new Account(user.wallet.address, provider, signer)
-        setNearAccount(acc)
-        setWalletId(user.wallet.address)
-      }
-    } else {
+    if (!authenticated || !user) {
       setWalletId('')
       setNearAccount(null)
+      return
     }
+
+    // A user may also have an Ethereum/Solana wallet. Select the NEAR wallet
+    // explicitly rather than treating the first linked wallet as a NEAR account.
+    const nearWallet = user.linkedAccounts.find((account) =>
+      account.type === 'wallet' && account.chainType === 'near'
+    )
+    if (!nearWallet) {
+      if (!creatingWallet.current) {
+        creatingWallet.current = true
+        createWallet({ chainType: 'near' })
+          .catch((error) => console.error('Could not create NEAR wallet', error))
+          .finally(() => { creatingWallet.current = false })
+      }
+      return
+    }
+
+    const signer = new privySigner(signRawHash, nearWallet.address, provider)
+    setNearAccount(new Account(nearWallet.address, provider, signer))
+    setWalletId(nearWallet.address)
   }, [authenticated, user, createWallet, signRawHash])
 
   return (
@@ -297,7 +309,7 @@ export function NEARxPrivy({ children }) {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-privy/blob/a80470ac85c0faed39ed81f23419b926d2b1eb37/src/context/provider.jsx)
+[See code on GitHub](https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/context/provider.jsx)
 
 </div>
 
@@ -306,60 +318,58 @@ export function NEARxPrivy({ children }) {
 | Value | Type | Description |
 |---|---|---|
 | `walletId` | `string` | The user's NEAR account address |
-| `nearAccount` | `Account` | A `@near-js/accounts` `Account` ready to sign transactions |
+| `nearAccount` | `Account` | A `near-api-js` `Account` ready to sign transactions |
 | `provider` | `JsonRpcProvider` | A read-only RPC provider to query the network |
 
 ---
 
 ### Custom signer
 
-Privy signs transactions through its embedded wallet via `signRawHash`. The `privySigner` class adapts that API to the interface expected by `@near-js/accounts`:
+Privy signs through its embedded wallet via `signRawHash`. The `privySigner` class extends `Signer` from `near-api-js` and implements `getPublicKey` and `signBytes`. The SDK serializes and hashes transactions, delegate actions, and NEP-413 messages before requesting a signature:
 
 {/* github-code
-url: https://github.com/near-examples/hello-privy/blob/main/src/context/signer.jsx
-commit: a80470ac85c0faed39ed81f23419b926d2b1eb37
-language: jsx
+url: https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/context/signer.js
+commit: 308e283b4404a1c4824cefcad959449e62571402
 */}
 
-```jsx title="signer.jsx" lines
-import { Account } from "@near-js/accounts"
-import { Signature, SignedTransaction } from "@near-js/transactions"
-import { sha256 } from "@noble/hashes/sha2"
-import { bytesToHex, hexToBytes } from "@noble/hashes/utils"
+```javascript title="signer.js" lines
+import { Account, PublicKey, Signer } from 'near-api-js'
+import { bytesToHex, hexToBytes } from '@noble/hashes/utils'
 
-export class privySigner {
+// Keep Privy's embedded wallet as the signer. The SDK handles transaction,
+// delegate-action and NEP-413 serialization and hashing consistently.
+export class privySigner extends Signer {
   constructor(signRawHash, nearAccId, provider) {
+    super()
     this.signRawHash = signRawHash
     this.nearAccId = nearAccId
     this.provider = provider
   }
 
   async getPublicKey() {
+    if (/^[a-f0-9]{64}$/i.test(this.nearAccId)) {
+      return new PublicKey({ keyType: 0, data: hexToBytes(this.nearAccId) })
+    }
     const account = new Account(this.nearAccId, this.provider)
-    const keys = await account.getAccessKeyList()
-    return keys.keys[0].public_key
+    const { keys } = await account.getAccessKeyList()
+    if (!keys.length) throw new Error('The account has no registered access key')
+    return PublicKey.fromString(keys[0].public_key)
   }
 
-  async signTransaction(transaction) {
-    const encoded = transaction.encode()
-    const txHash = bytesToHex(sha256(encoded))
-    const signatureRaw = await this.signRawHash({
+  async signBytes(bytes) {
+    const { signature } = await this.signRawHash({
       address: this.nearAccId,
       chainType: 'near',
-      hash: `0x${txHash}`,
+      hash: `0x${bytesToHex(bytes)}`,
     })
-    const signature = new Signature({
-      keyType: transaction.publicKey.keyType,
-      data: hexToBytes(signatureRaw.signature.slice(2)),
-    })
-    return [[], new SignedTransaction({ transaction, signature })]
+    return hexToBytes(signature.replace(/^0x/, ''))
   }
 }
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-privy/blob/a80470ac85c0faed39ed81f23419b926d2b1eb37/src/context/signer.jsx)
+[See code on GitHub](https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/context/signer.js)
 
 </div>
 
@@ -372,8 +382,8 @@ export class privySigner {
 Use `useLogin` and `useLogout` from Privy to open the login modal and sign the user out:
 
 {/* github-code
-url: https://github.com/near-examples/hello-privy/blob/main/src/components/navigation.jsx
-commit: a80470ac85c0faed39ed81f23419b926d2b1eb37
+url: https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/components/navigation.jsx
+commit: 308e283b4404a1c4824cefcad959449e62571402
 language: jsx
 */}
 
@@ -386,7 +396,7 @@ import styles from '@/styles/app.module.css'
 
 import { useLogin, useLogout, usePrivy } from '@privy-io/react-auth'
 import { useNEAR } from '../context/useNear'
-import { NEAR } from '@near-js/tokens'
+import { NEAR } from 'near-api-js/tokens'
 
 export const Navigation = () => {
   const [action, setAction] = useState(() => {})
@@ -459,7 +469,7 @@ export const Navigation = () => {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/hello-privy/blob/a80470ac85c0faed39ed81f23419b926d2b1eb37/src/components/navigation.jsx)
+[See code on GitHub](https://github.com/near-examples/hello-privy/blob/308e283b4404a1c4824cefcad959449e62571402/src/components/navigation.jsx)
 
 </div>
 
@@ -472,7 +482,11 @@ export const Navigation = () => {
 Use the `provider` from context to call view methods — no login required:
 
 ```jsx
-const greeting = await provider.callFunction(CONTRACT, 'get_greeting', {})
+const greeting = await provider.callFunction({
+  contractId: CONTRACT,
+  method: 'get_greeting',
+  args: {},
+})
 ```
 
 ---
@@ -494,9 +508,9 @@ await nearAccount.callFunction({
 ### Get balance
 
 ```jsx
-import { NEAR } from '@near-js/tokens'
+import { NEAR } from 'near-api-js/tokens'
 
-const balance = await nearAccount.getBalance()
+const balance = await nearAccount.getBalance(NEAR)
 const formatted = Number(NEAR.toDecimal(balance)).toFixed(2)
 console.log(`Balance: ${formatted} Ⓝ`)
 ```

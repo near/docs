@@ -5,7 +5,7 @@ description: "Learn how to run a localnet on NEAR."
 
 Now that we understand what a localnet is, let's walk through the complete workflow of running it and testing it with a simple smart contract and a frontend application.
 
-For this tutorial, we'll use `near-sandbox`, since it's the easiest and fastest option to start with. Our goal for this tutorial is to set up a local network, create a wallet account on it, deploy a contract, and finally run [a frontend application](https://github.com/near-examples/hello-localnet) that interacts with this contract directly through the local blockchain.
+For this tutorial, we'll use `near-sandbox`, since it's the easiest and fastest option to start with. Our goal for this tutorial is to set up a local network, create a wallet account on it, deploy a contract, and finally run [the Hello NEAR frontend](https://github.com/near-examples/hello-near-examples/tree/main/frontend) that interacts with this contract directly through the local blockchain.
 
 <Tip>
 
@@ -151,7 +151,7 @@ This command creates a new account named `hello-world.test.near` with an initial
 Next, clone the Hello World repository and navigate to the contract directory:
 
 ```sh
-git clone git@github.com:near-examples/hello-near-examples.git
+git clone https://github.com/near-examples/hello-near-examples.git
 cd hello-near-examples/contract-rs
 ```
 
@@ -183,38 +183,83 @@ Next, click the `Control` button on the right side of the `localnet` entry. Find
 
 Once the request goes through, the new account will appear in your wallet. At this point, you have a valid account on your `localnet` that can sign transactions through Intear Wallet.
 
-#### Step 5. Spin up and interact with frontend application
+#### Step 5. Configure the Hello NEAR frontend
 
-Start by cloning the repository:
+Use the frontend from the same Hello NEAR repository you cloned in Step 3. From `hello-near-examples/contract-rs`, move to the frontend directory:
 
 ```sh
-git clone https://github.com/near-examples/hello-localnet
-cd hello-localnet
+cd ../frontend
 ```
 
-Once you're inside the repository, install the dependencies using `pnpm`:
+Use Node.js 22.22.2 or newer and install the dependencies with `pnpm`:
 
 ```sh
 pnpm install --frozen-lockfile
 ```
 
-Next, create a `.env.local` file to point the app at your local node:
+The frontend needs to know both where the contract is deployed and how to reach your node. Apply the following configuration in your local checkout.
+
+##### Set the contract account
+
+In `frontend/src/config.ts`, change the `testnet` entry in `contractPerNetwork` to the contract account created in Step 3, and keep `NetworkId` set to `'testnet'`:
+
+```ts
+const contractPerNetwork: ContractPerNetwork = {
+  mainnet: 'hello.near-examples.near',
+  testnet: 'hello-world.test.near',
+};
+
+export const NetworkId: 'mainnet' | 'testnet' = 'testnet';
+export const HelloNearContract: string = contractPerNetwork[NetworkId];
+```
+
+<Note>
+NEAR Connect exposes `mainnet` and `testnet` network slots. In this local setup, we use its `testnet` slot with a local RPC URL. The node and accounts still belong to your localnet. Intear Wallet must use the custom local network and account you created in Step 4.
+</Note>
+
+##### Set the local RPC URL
+
+Create `.env.local` in the `frontend` directory:
 
 ```sh
 echo "NEXT_PUBLIC_RPC_URL=http://localhost:3030" > .env.local
 ```
 
-Then, start the development Next.js server:
+In `frontend/src/providers/near-provider.tsx`, replace the existing `connectorOptions` declaration with the following:
+
+```ts
+const localRpcUrl = process.env.NEXT_PUBLIC_RPC_URL || 'http://localhost:3030';
+
+const connectorOptions: NearConnectorOptions = {
+  network: NetworkId,
+  providers: {
+    testnet: [localRpcUrl],
+  },
+};
+```
+
+The existing `FailoverRpcProvider` and function-call-key plugin both use `connector.providers`, so they will use the same local RPC endpoint. Keep their existing setup. The `.env.local` value takes effect because the declaration above reads it; restart the development server after changing it.
+
+##### Connect and update the greeting
+
+Start the frontend:
 
 ```sh
 pnpm dev
 ```
 
-Navigate to http://localhost:3000/hello-near, and at the top-right corner, click `Login`. When prompted to select a wallet, choose `Intear Wallet`, Web version. And make sure you connect using the account created earlier, in our case, it's `user.local.`
+Open http://localhost:3000/hello-near. The page should read the greeting from `hello-world.test.near` on your local node before you connect a wallet. If the read fails, confirm that the Sandbox is running at the configured RPC URL and that the contract account matches Step 3.
 
-Once connected, you'll see an input field and a button to update the greeting. Type any new greeting into the input and click `Save`. You'll be redirected to the wallet to approve a transaction. Once approved, the transaction will be sent and executed on `localnet` node.
+Click `Login` and select **Intear Wallet**, Web version. In the wallet, select `user.local` on the custom `localnet` you configured in Step 4. If the frontend already has a wallet connection from an earlier testnet session, log out and reconnect with the local account.
 
-Return to the frontend and notice that the greeting has changed.
+Approve the connection and any request to add a function-call key for `set_greeting` on `hello-world.test.near`. The frontend's existing plugin uses this key to sign greeting updates locally, so later updates may not open a wallet approval screen.
+
+Enter a new greeting and click `Save`. The updated greeting should appear in the frontend. You can confirm that it was stored on your local node with the CLI:
+
+```sh
+near contract call-function as-read-only hello-world.test.near get_greeting \
+  json-args '{}' network-config localnet-sandbox now
+```
 
 #### Step 6. (Optional) Stream blocks with NEAR Indexer
 
