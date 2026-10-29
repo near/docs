@@ -7,8 +7,8 @@ When deciding on data structures it is important to understand their tradeoffs. 
 
 You can choose between two types of collections:
 
-1. Native collections (e.g. `Array`, `Map`, `Set`), provided by the language
-2. SDK collections (e.g. `IterableMap`, `Vector`), provided by the NEAR SDK
+1. Native Rust collections (e.g. `Vec`, `HashMap`, `HashSet`), provided by the language
+2. Persistent collections (e.g. `IterableMap`, `Vector`), provided by `near_sdk::store`
 
 <Tip>
 **Native vs SDK Collections**
@@ -94,7 +94,7 @@ As the native collection grows, deserializing it from memory will cost more and 
 
 ## SDK Collections
 
-The NEAR SDKs expose collections that are optimized for random access of large amounts of data. SDK collections are instantiated using a "prefix", which is used as an index to split the data into chunks. This way, SDK collections can defer reading and writing to the store until needed.
+The Rust SDK exposes `near_sdk::store` collections that are optimized for random access of large amounts of data. SDK collections are instantiated using a "prefix", which is used as an index to split the data into chunks. This way, SDK collections can defer reading and writing to the store until needed.
 
 <Accordion title="Serialization & Storage Example">
 
@@ -108,14 +108,9 @@ The sdk array `[1,2,3,4]` with prefix `"p"` will be stored as the string `"p"` i
 | -------------- | :------------------------: | :------: | :--------------: | :-----------------------: | :-------------: |
 | `Vector`       |     `near_sdk::store`      |    ✅    |        ✅        |            ✅             |       ✅        |
 | `LookupSet`    |     `near_sdk::store`      |          |                  |                           |                 |
-| `UnorderedSet` | `near_sdk::collections` ⚠️ |    ✅    |        ✅        |                           |       ✅        |
 | `IterableSet`  |     `near_sdk::store`      |    ✅    |        ✅        |                           |       ✅        |
 | `LookupMap`    |     `near_sdk::store`      |          |                  |                           |                 |
-| `UnorderedMap` | `near_sdk::collections` ⚠️ |    ✅    |        ✅        |                           |       ✅        |
 | `IterableMap`  |     `near_sdk::store`      |    ✅    |        ✅        |                           |       ✅        |
-| `TreeMap`      | `near_sdk::collections` ⚠️ |    ✅    |        ✅        |            ✅             |       ✅        |
-
-_⚠️ Legacy collections from `near_sdk::collections`. Prefer `near_sdk::store` equivalents for new contracts._
 
 </Accordion>
 
@@ -125,14 +120,12 @@ _⚠️ Legacy collections from `near_sdk::collections`. Prefer `near_sdk::store
 | -------------- | :----: | :------: | :------: | :------: | :------: | :---: |
 | `Vector`       |  O(1)  |  O(1)\*  | O(1)\*\* |   O(n)   |   O(n)   | O(n)  |
 | `LookupSet`    |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
-| `UnorderedSet` |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
 | `IterableSet`  |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
 | `LookupMap`    |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   N/A    |  N/A  |
 | `IterableMap`  |  O(1)  |   O(1)   |   O(1)   |   O(1)   |   O(n)   | O(n)  |
-| `TreeMap`      |  O(1)  | O(log n) | O(log n) | O(log n) |   O(n)   | O(n)  |
 
-_\* - to insert at the end of the vector using `push_back` (or `push_front` for deque)_
-_\*\* - to delete from the end of the vector using `pop` (or `pop_front` for deque), or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
+_\* - to insert at the end of the vector using `push`_
+_\*\* - to delete from the end of the vector using `pop`, or delete using `swap_remove` which swaps the element with the last element of the vector and then removes it._
 
 </Accordion>
 
@@ -151,7 +144,7 @@ All structures need to be initialized using a **unique `prefix`**, which will be
 
 {/* github-code
 url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lib.rs
-commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+commit: c92d1723e247a380bc3408546f57d7a50150b0f2
 start: 24
 end: 47
 fname: lib.rs
@@ -187,7 +180,7 @@ impl Default for StorageExample {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/lib.rs#L24-L47)
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/c92d1723e247a380bc3408546f57d7a50150b0f2/collections-rs/store/src/lib.rs#L24-L47)
 
 </div>
 
@@ -195,7 +188,7 @@ impl Default for StorageExample {
 
   <Tip>
 
-Notice how we use `enums` to ensure all collections have a different prefix. Another advantage of using `enums` is that they are serialized into a single `byte` prefix.
+Notice how the `BorshStorageKey` enum gives each collection a distinct prefix. Variants carrying data, such as `Nested(String)`, include that data in their serialized prefix.
 
   </Tip>
 
@@ -222,7 +215,7 @@ Implements a [vector/array](https://en.wikipedia.org/wiki/Array_data_structure) 
 
 {/* github-code
 url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/vector.rs
-commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+commit: c92d1723e247a380bc3408546f57d7a50150b0f2
 start: 4
 end: 29
 fname: vector.rs
@@ -260,7 +253,7 @@ impl StorageExample {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/vector.rs#L4-L29)
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/c92d1723e247a380bc3408546f57d7a50150b0f2/collections-rs/store/src/vector.rs#L4-L29)
 
 </div>
 
@@ -274,7 +267,7 @@ Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) t
 
 {/* github-code
 url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_map.rs
-commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+commit: c92d1723e247a380bc3408546f57d7a50150b0f2
 start: 4
 end: 22
 fname: lookup_map.rs
@@ -305,7 +298,7 @@ impl StorageExample {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/lookup_map.rs#L4-L22)
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/c92d1723e247a380bc3408546f57d7a50150b0f2/collections-rs/store/src/lookup_map.rs#L4-L22)
 
 </div>
 
@@ -313,19 +306,13 @@ impl StorageExample {
 
 <hr className="subsection" />
 
-### UnorderedMap / IterableMap
+### IterableMap
 
 Implements a [map/dictionary](https://en.wikipedia.org/wiki/Associative_array) that persists in the contract's storage. See the [Rust SDK collections reference](https://docs.rs/near-sdk/latest/near_sdk/store/index.html) for its complete interface.
 
-<Tip>
-**UnorderedMap vs IterableMap (Rust)**
-
-`UnorderedMap` belongs to the legacy `near_sdk::collections` module. `IterableMap` is its modern replacement in `near_sdk::store`, and should be preferred for new contracts. The `store` collections cache reads and writes within a single transaction, making them more gas-efficient when the same key is accessed multiple times.
-</Tip>
-
 {/* github-code
 url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/iterable_map.rs
-commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+commit: c92d1723e247a380bc3408546f57d7a50150b0f2
 start: 4
 end: 29
 fname: iterable_map.rs
@@ -363,7 +350,7 @@ impl StorageExample {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/iterable_map.rs#L4-L29)
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/c92d1723e247a380bc3408546f57d7a50150b0f2/collections-rs/store/src/iterable_map.rs#L4-L29)
 
 </div>
 
@@ -377,7 +364,7 @@ Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) that 
 
 {/* github-code
 url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/lookup_set.rs
-commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+commit: c92d1723e247a380bc3408546f57d7a50150b0f2
 start: 4
 end: 18
 fname: lookup_set.rs
@@ -404,7 +391,7 @@ impl StorageExample {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/lookup_set.rs#L4-L18)
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/c92d1723e247a380bc3408546f57d7a50150b0f2/collections-rs/store/src/lookup_set.rs#L4-L18)
 
 </div>
 
@@ -412,20 +399,14 @@ impl StorageExample {
 
 <hr className="subsection" />
 
-### UnorderedSet / IterableSet
+### IterableSet
 
 Implements a [set](https://en.wikipedia.org/wiki/Set_(abstract_data_type)) that persists in the contract's storage. See the [Rust SDK collections reference](https://docs.rs/near-sdk/latest/near_sdk/store/index.html) for its complete interface.
 
 
-
-  <Tip>
-**UnorderedSet vs IterableSet**
-
-`UnorderedSet` belongs to the legacy `near_sdk::collections` module. `IterableSet` is its modern replacement in `near_sdk::store`, and should be preferred for new contracts. The `store` collections cache reads and writes within a single transaction, making them more gas-efficient when the same key is accessed multiple times.
-</Tip>
 {/* github-code
 url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/iterable_set.rs
-commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+commit: c92d1723e247a380bc3408546f57d7a50150b0f2
 start: 4
 end: 26
 fname: iterable_set.rs
@@ -460,52 +441,7 @@ impl StorageExample {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/iterable_set.rs#L4-L26)
-
-</div>
-
-{/* /github-code */}
-
-<hr className="subsection" />
-
-### Tree
-
-An ordered equivalent of Map. The underlying implementation is based on an [AVL](https://en.wikipedia.org/wiki/AVL_tree). You should use this structure when you need to: have a consistent order, or access the min/max keys.
-
-{/* github-code
-url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/legacy/src/tree.rs
-commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
-start: 6
-end: 24
-fname: tree.rs
-language: rust
-*/}
-
-```rust title="tree.rs" lines
-#[near]
-impl StorageExample {
-    pub fn insert_tree(&mut self, key: String, value: i32) {
-        self.tree_map.insert(&key, &value);
-    }
-
-    pub fn remove_tree(&mut self, key: String) {
-        self.tree_map.remove(&key);
-    }
-
-    pub fn get_tree(&self, key: String) -> i32 {
-        self.tree_map.get(&key).expect("Expected value")
-    }
-
-    pub fn contains_key_tree(&self, key: String) -> bool {
-        self.tree_map.contains_key(&key)
-    }
-}
-
-```
-
-<div className="github-source-link">
-
-[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/legacy/src/tree.rs#L6-L24)
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/c92d1723e247a380bc3408546f57d7a50150b0f2/collections-rs/store/src/iterable_set.rs#L4-L26)
 
 </div>
 
@@ -520,7 +456,7 @@ When nesting SDK collections, be careful to **use different prefixes** for all c
 
 {/* github-code
 url: https://github.com/near-examples/storage-examples/blob/main/collections-rs/store/src/nested.rs
-commit: 781da3f7c28e84c2bda1371b00e3427f43d73916
+commit: c92d1723e247a380bc3408546f57d7a50150b0f2
 start: 4
 end: 30
 fname: nested.rs
@@ -559,7 +495,7 @@ impl StorageExample {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/storage-examples/blob/781da3f7c28e84c2bda1371b00e3427f43d73916/collections-rs/store/src/nested.rs#L4-L30)
+[See code on GitHub](https://github.com/near-examples/storage-examples/blob/c92d1723e247a380bc3408546f57d7a50150b0f2/collections-rs/store/src/nested.rs#L4-L30)
 
 </div>
 
@@ -582,9 +518,9 @@ Some error-prone patterns to avoid that cannot be restricted at the type level a
 
 
 ```rust
-use near_sdk::store::UnorderedMap;
+use near_sdk::store::IterableMap;
 
-let mut m = UnorderedMap::<u8, String>::new(b"m");
+let mut m = IterableMap::<u8, String>::new(b"m");
 m.insert(1, "test".to_string());
 assert_eq!(m.len(), 1);
 assert_eq!(m.get(&1), Some(&"test".to_string()));
@@ -593,13 +529,13 @@ assert_eq!(m.get(&1), Some(&"test".to_string()));
 // metadata, such as the number of elements, leading to bugs. If you replace the collection
 // with something with a different prefix, it will be functional, but you will lose any
 // previous data and the old values will not be removed from storage.
-m = UnorderedMap::new(b"m");
+m = IterableMap::new(b"m");
 assert!(m.is_empty());
 assert_eq!(m.get(&1), Some(&"test".to_string()));
 
 // Bug 2: Should not use the same prefix as another collection
 // or there will be unexpected side effects.
-let m2 = UnorderedMap::<u8, String>::new(b"m");
+let m2 = IterableMap::<u8, String>::new(b"m");
 assert!(m2.is_empty());
 assert_eq!(m2.get(&1), Some(&"test".to_string()));
 
@@ -652,7 +588,7 @@ assert!(!m.contains(&1));
 
 ## Pagination
 
-Persistent collections such as `IterableMap/UnorderedMap`, `IterableSet/UnorderedSet` and `Vector` may
+Persistent collections such as `IterableMap`, `IterableSet`, and `Vector` may
 contain more elements than the amount of gas available to read them all.
 In order to expose them all through view calls, we can use pagination.
 
@@ -675,6 +611,7 @@ With Rust this can be done using iterators with [`Skip`](https://doc.rust-lang.o
               .iter()
               .skip(from_index)
               .take(limit)
+              .map(|(account_id, update)| (account_id.clone(), update.clone()))
               .collect()
       }
   }
