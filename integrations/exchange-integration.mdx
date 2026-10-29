@@ -10,10 +10,28 @@ NEAR is an open-source, sharded proof-of-stake blockchain with support for smart
 | Property               | Value / behavior                                                                                                                                                                                                    | Reference                                                                                                                   |
 |------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | Native token precision | 24 decimals; `1 NEAR = 10²⁴ yoctoNEAR`. RPC balances and transfer amounts use integer strings in yoctoNEAR.                                                                                                         | [Balances](/integrations/balance-changes)                                                                                   |
-| Account addresses      | Implicit IDs: 64 lowercase hexadecimal characters; named IDs such as `alice.near`; Ethereum-like IDs starting with `0x`; deterministic IDs starting with `0s`.                                              | [Account IDs](/protocol/accounts-contracts/account-id)                                                                      |
+| Account addresses      | Implicit IDs: 64 lowercase hexadecimal characters; named IDs such as `alice.near`; Ethereum-like IDs starting with `0x`; deterministic IDs starting with `0s`; from protocol version 88 (nearcore 2.14.0), universal IDs starting with `0u` (54 characters). See the note below the table. | [Account IDs](/protocol/accounts-contracts/account-id) |
 | Block time             | Produced in ~600 ms, final in ~1.2 s.                                                                                                                                                                                                   | [Blocks & Finality](/integrations/blocks-and-finality) [Execution milestones](/api/rpc/transactions#the-wait_until-field)                                                                      |
 | Transaction validity   | `transaction_validity_period` is measured in blocks; `86400` blocks is ~14.4 hours at a 600 ms cadence.                                                   | [Transaction Lifecycle](/integrations/transaction-lifecycle#how-old-can-the-referenced-block-hash-be-before-its-invalid%3F) |
-| Transaction fees       | Gas usage is determined by the actions and their parameters; function-call usage depends on contract execution. Fees are paid in NEAR at a gas price with a floor of **0.0001 NEAR/Tgas**, increasing with network load.                                                                                                              | [Gas fees](/protocol/transactions/gas)                                                                                      |
+| Transaction fees       | The gas price has a floor of **0.0001 NEAR/Tgas** and rises with network load. Gas for execution is bought up front at no less than 0.001 NEAR/Tgas. Unused gas and the price difference are refunded. See [Fees and required balances](#fees-and-required-balances). | [Gas fees](/protocol/transactions/gas) |
+
+<Note>
+A transfer to a `0u` ID that does not exist yet creates an uninitialized account that holds the deposit. Before protocol version 88, a transfer to a `0u` ID fails.
+</Note>
+
+## Fees and required balances
+
+Gas usage is determined by the actions and their parameters. For function calls, it also depends on contract execution. A transaction pays for gas in three steps:
+
+| Step | Gas | Price |
+|------|-----|-------|
+| Send the transaction | Fees for sending the transaction | The current gas price |
+| Buy gas for executing it | Fees for executing the transaction, plus any gas attached to function calls | The current gas price or 0.001 NEAR/Tgas, whichever is higher |
+| Execute it | The gas that is burned | The current gas price, but never above the price at which the gas was bought |
+
+The first two steps are paid up front. With a regular access key, the account balance must cover this up-front cost plus any deposit. With a [gas key](/protocol/accounts-contracts/gas-keys), the gas key balance covers the gas and the account balance covers the deposit.
+
+Unused gas and the price difference are refunded. When a transaction creates an account, part of that refund is kept so that the account creation charge comes to about 0.007 NEAR.
 
 ---
 
