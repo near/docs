@@ -13,8 +13,8 @@
  * fname, language, and highlight lines in a github-code comment. Edit that
  * metadata to update an example; omit commit on a new block so the script
  * populates it. Source and highlight line numbers are one-based and inclusive.
- * Highlight numbers are relative to the displayed excerpt. Full commit SHAs in
- * source URLs pin examples.
+ * Highlight numbers are relative to the displayed excerpt. Source URLs track the
+ * repository default branch; commit is the only snapshot version identifier.
  *
  * Repository ref lookups and file downloads are shared within each run. Source
  * downloads are skipped when the commit and presentation metadata are unchanged.
@@ -39,7 +39,11 @@ export function parseSource(url) {
   const match = parsed.pathname.match(/^\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/);
   if (parsed.hostname !== 'github.com' || !match) throw new Error(`Expected a GitHub blob URL: ${url}`);
   const [, owner, repo, encodedRef, path] = match;
-  return { owner, repo, ref: decodeURIComponent(encodedRef), path };
+  const ref = decodeURIComponent(encodedRef);
+  if (/^[a-f0-9]{40}$/i.test(ref)) {
+    throw new Error('Source URL must track a branch; store the snapshot SHA only in commit');
+  }
+  return { owner, repo, ref, path };
 }
 
 function normalizeMetadata(meta) {
@@ -160,7 +164,6 @@ export function createLoader({ fetchImpl = fetch, token = process.env.GITHUB_TOK
   return {
     stats,
     async commit(source) {
-      if (/^[a-f0-9]{40}$/.test(source.ref)) return source.ref;
       const key = `${source.owner}/${source.repo}/${source.ref}`;
       if (!commits.has(key)) {
         stats.lookups++;

@@ -80,7 +80,7 @@ Signing examples load their account ID and key from a shared `.env` file, as des
 The JavaScript near-kit examples import `privateKeyFromString` from a shared helper. Include this file when copying an example: it parses serialized key material before passing it to the client and rejects missing or malformed keys.
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/helpers/private-key.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/helpers/private-key.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -118,7 +118,7 @@ Queries an account balance. The examples below show the fields and amount types 
 <Tabs>
   <Tab title="🌐 near-api-js">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/tokens-balance.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/tokens-balance.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -166,7 +166,7 @@ console.log("REF: ", REF.toDecimal(refTokensBalanceInt, 2));
   </Tab>
   <Tab title="🌐 near-kit">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/tokens-balance.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/tokens-balance.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -202,7 +202,7 @@ console.log(`NEAR Balance: ${balance} NEAR`);
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/account_details.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/account_details.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 fname: account_details.rs
 language: rust
@@ -246,7 +246,7 @@ async fn main() {
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/account_details.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/account_details.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 5
 end: 15
@@ -314,7 +314,7 @@ If you are using this call to validate a recipient before sending tokens from a 
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/account-details.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/account-details.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -365,7 +365,7 @@ console.log(account);
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/account_details.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/account_details.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 21
 end: 21
@@ -389,7 +389,7 @@ let account_info = my_account.view().fetch_from(&network).await.unwrap();
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/account_details.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/account_details.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 17
 end: 20
@@ -447,7 +447,7 @@ To create a named account like `user.testnet`, you need to call the `create_acco
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/create-tla.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/create-tla.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: typescript
 */}
@@ -508,7 +508,7 @@ console.log(`Created account ${newAccountId2} with privateKey: ${keyPair.toStrin
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/create-tla.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/create-tla.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -559,7 +559,7 @@ console.log(`Private key: ${keyPair.secretKey}`);
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/create_account.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/create_account.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 32
 end: 47
@@ -599,7 +599,7 @@ println!("{:?}", create_account_result);
   You can also create an account via a randomly generated seed phrase.
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/create_account_from_seed.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/create_account_from_seed.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 32
 end: 46
@@ -642,7 +642,7 @@ language: rust
   <Tab title="random key">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/create_tla.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/create_tla.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -701,7 +701,7 @@ async fn main() -> Result<(), Error> {
   <Tab title="seed phrase">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/create_account_from_seed.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/create_account_from_seed.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -766,7 +766,7 @@ async fn main() -> Result<(), Error> {
   <Tab title="random key">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/create_tla.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/create_tla.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -816,7 +816,7 @@ print(f"Private key: {key.secret_key}")
   <Tab title="seed phrase">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/create_account_from_seed.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/create_account_from_seed.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -884,7 +884,7 @@ Accounts on NEAR can create sub-accounts under their own namespace, which is use
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/create-subaccount.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/create-subaccount.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -931,7 +931,7 @@ console.log(`Created ${prefix}.${accountId} with private key ${keyPair.toString(
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/create-subaccount.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/create-subaccount.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -985,7 +985,7 @@ console.log(`Private key: ${keyPair.secretKey}`);
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/create_account.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/create_account.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 61
 end: 76
@@ -1024,7 +1024,7 @@ language: rust
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/create_subaccount.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/create_subaccount.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -1081,7 +1081,7 @@ async fn main() -> Result<(), Error> {
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/create_subaccount.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/create_subaccount.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -1181,7 +1181,7 @@ Accounts on NEAR can delete themselves, transferring any remaining balance to a 
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/delete-account.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/delete-account.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 26
 end: 30
@@ -1208,7 +1208,7 @@ await accountToDelete.deleteAccount(beneficiary);
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/delete-account.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/delete-account.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -1278,7 +1278,7 @@ console.log(`Beneficiary: ${accountId}`);
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/delete_account.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/delete_account.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 51
 end: 59
@@ -1310,7 +1310,7 @@ language: rust
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/delete_account.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/delete_account.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -1380,7 +1380,7 @@ async fn main() -> Result<(), Error> {
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/delete_account.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/delete_account.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -1467,7 +1467,7 @@ Accounts can transfer different types of tokens to other accounts, including the
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/send-tokens.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/send-tokens.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -1574,7 +1574,7 @@ console.log(`Balance of ${randomAccountId}:`, USDT.toDecimal(balance));
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/send-tokens.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/send-tokens.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -1614,7 +1614,7 @@ console.log("Transfer result:", result);
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/send_tokens.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/send_tokens.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 22
 end: 28
@@ -1644,7 +1644,7 @@ let send_tokens_result = Tokens::account(account_id.clone()) // example-account.
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/send_tokens.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/send_tokens.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -1686,7 +1686,7 @@ async fn main() -> Result<(), Error> {
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/send_tokens.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/send_tokens.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -1744,7 +1744,7 @@ A smart contract exposes its methods, and making a function call that modifies s
   <Tabs>
     <Tab title="function call">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/contract-interaction.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/contract-interaction.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -1798,7 +1798,7 @@ await account.callFunction({
     </Tab>
     <Tab title="typed contract">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/typed-contract-interaction.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/typed-contract-interaction.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -1862,7 +1862,7 @@ console.log({ result });
   <Tabs>
     <Tab title="function call">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/contract-interaction.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -1914,7 +1914,7 @@ await near.call(
     </Tab>
     <Tab title="typed contract">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/typed-contract-interaction.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/typed-contract-interaction.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -1959,7 +1959,7 @@ console.log({ result });
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/contract_interaction.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/contract_interaction.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 23
 end: 24
@@ -1981,7 +1981,7 @@ let contract = Contract(contract_id.clone());
 {/* /github-code */}
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/contract_interaction.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/contract_interaction.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 36
 end: 47
@@ -2016,7 +2016,7 @@ let function_call_result = contract
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/contract_interaction.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/contract_interaction.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 27
 end: 31
@@ -2042,7 +2042,7 @@ near.call("guestbook.near-examples.testnet", "add_message")
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/contract_interaction.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/contract_interaction.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 23
 end: 24
@@ -2079,7 +2079,7 @@ You can send multiple [actions](/protocol/transactions/transaction-anatomy#actio
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/batch-actions.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/batch-actions.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -2124,7 +2124,7 @@ console.log(batchActionsResult);
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/batch-actions.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/batch-actions.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -2167,7 +2167,7 @@ console.log("Batch actions result:", result);
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/batch_actions.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/batch_actions.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 22
 end: 42
@@ -2211,7 +2211,7 @@ let batch_actions_result = Transaction::construct(
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/batch_actions.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/batch_actions.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -2258,7 +2258,7 @@ async fn main() -> Result<(), Error> {
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/batch_actions.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/batch_actions.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -2304,7 +2304,7 @@ The only way to have true simultaneous transactions is to use multiple access ke
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/simultaneous-transactions.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/simultaneous-transactions.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -2367,7 +2367,7 @@ sendNearTokensResults.forEach(result => console.log(result));
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/simultaneous-transactions.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/simultaneous-transactions.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -2449,7 +2449,7 @@ console.log("Cleaned up keys");
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/simultaneous_transactions.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/simultaneous_transactions.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 23
 end: 55
@@ -2505,7 +2505,7 @@ let (tx1_result, tx2_result) = tokio::join!(tx1.send_to(&network), tx2.send_to(&
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/simultaneous_transactions.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/simultaneous_transactions.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -2555,7 +2555,7 @@ async fn main() -> Result<(), Error> {
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/simultaneous_transactions.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/simultaneous_transactions.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -2630,7 +2630,7 @@ On NEAR, a smart contract is deployed as a WASM file. Every account has the pote
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/deploy-contract.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-contract.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -2672,7 +2672,7 @@ console.log(result);
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/deploy-contract.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-contract.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 language: javascript
 */}
@@ -2718,7 +2718,7 @@ console.log("Deploy contract result:", result);
   Note that the `signer` here needs to be a signer for the same `account_id` as the one used to construct the `Contract` object.
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/contract_interaction.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/contract_interaction.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 52
 end: 59
@@ -2749,7 +2749,7 @@ println!("{:?}", deploy_result);
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/deploy_contract.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/deploy_contract.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -2790,7 +2790,7 @@ async fn main() -> Result<(), Error> {
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/deploy_contract.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/deploy_contract.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 */}
 
@@ -2857,7 +2857,7 @@ There are two ways to reference a global contract:
   <Tabs>
     <Tab title="by account">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/deploy-global-contract-by-account.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 1
 end: 22
@@ -2899,7 +2899,7 @@ console.log(deployResult);
     </Tab>
     <Tab title="by hash">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/deploy-global-contract-by-hash.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 1
 end: 23
@@ -2948,7 +2948,7 @@ console.log(deployResult);
   <Tabs>
     <Tab title="by account">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/deploy-global-contract-by-account.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-account.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 1
 end: 28
@@ -2996,7 +2996,7 @@ console.log("Published global contract:", publishResult.transaction.hash);
     </Tab>
     <Tab title="by hash">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/deploy-global-contract-by-hash.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-hash.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 1
 end: 32
@@ -3101,7 +3101,7 @@ console.log("Published global contract by hash:", publishResult.transaction.hash
   <Tab title="by account">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/deploy_global_contract_by_account.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/deploy_global_contract_by_account.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 18
 end: 32
@@ -3137,7 +3137,7 @@ println!(
   <Tab title="by hash">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/deploy_global_contract_by_hash.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/deploy_global_contract_by_hash.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 18
 end: 31
@@ -3178,7 +3178,7 @@ println!(
   <Tab title="by account">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/deploy_global_contract_by_account.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/deploy_global_contract_by_account.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 25
 end: 33
@@ -3208,7 +3208,7 @@ print(f"Published global contract: {result.transaction_hash}")
   <Tab title="by hash">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/deploy_global_contract_by_hash.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/deploy_global_contract_by_hash.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 26
 end: 35
@@ -3251,7 +3251,7 @@ Once a [global contract](/smart-contracts/global-contracts) has been [deployed](
   <Tabs>
     <Tab title="by account">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/deploy-global-contract-by-account.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-account.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 32
 end: 41
@@ -3281,7 +3281,7 @@ console.log("Size", contract.code.length, "Hash", contract.hash);
     </Tab>
     <Tab title="by hash">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/deploy-global-contract-by-hash.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/deploy-global-contract-by-hash.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 37
 end: 51
@@ -3322,7 +3322,7 @@ console.log("Size", contract.code.length, "Hash", contract.hash);
   <Tabs>
     <Tab title="by account">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/deploy-global-contract-by-account.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-account.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 30
 end: 63
@@ -3376,7 +3376,7 @@ console.log("Cleaned up consumer account");
     </Tab>
     <Tab title="by hash">
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/deploy-global-contract-by-hash.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/deploy-global-contract-by-hash.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 37
 end: 71
@@ -3484,7 +3484,7 @@ console.log("Cleaned up consumer account");
   <Tab title="by account">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/deploy_global_contract_by_account.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/deploy_global_contract_by_account.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 51
 end: 58
@@ -3513,7 +3513,7 @@ println!("Consumer is now using the global contract from: {account_id}");
   <Tab title="by hash">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/deploy_global_contract_by_hash.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/deploy_global_contract_by_hash.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 50
 end: 57
@@ -3548,7 +3548,7 @@ println!("Consumer is now using the global contract {code_hash}");
   <Tab title="by account">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/deploy_global_contract_by_account.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/deploy_global_contract_by_account.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 46
 end: 49
@@ -3573,7 +3573,7 @@ print(f"Consumer is now using the global contract from: {account_id}")
   <Tab title="by hash">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/deploy_global_contract_by_hash.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/deploy_global_contract_by_hash.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 48
 end: 53
@@ -3612,7 +3612,7 @@ View functions are read-only methods on a smart contract that do not modify stat
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/contract-interaction.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/contract-interaction.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 9
 end: 21
@@ -3651,7 +3651,7 @@ console.log(messages);
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/contract-interaction.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/contract-interaction.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 1
 end: 23
@@ -3700,7 +3700,7 @@ console.log(messages);
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/contract_interaction.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/contract_interaction.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 22
 end: 32
@@ -3734,7 +3734,7 @@ let view_call_result: Data<u32> = contract
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/contract_interaction.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/contract_interaction.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 15
 end: 25
@@ -3766,7 +3766,7 @@ println!("Messages: {messages:#?}");
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/contract_interaction.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/contract_interaction.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 14
 end: 21
@@ -3817,7 +3817,7 @@ print(messages)
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/keys.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 9
 end: 16
@@ -3847,7 +3847,7 @@ console.log(keysProvider);
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/keys.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/keys.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 22
 end: 22
@@ -3871,7 +3871,7 @@ let keys = account.list_keys().fetch_from(&network).await.unwrap();
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/keys.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/keys.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 16
 end: 18
@@ -3895,7 +3895,7 @@ println!("Account has {} keys", keys.keys.len());
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/keys.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/keys.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 21
 end: 23
@@ -3935,7 +3935,7 @@ Anyone with this key can transfer funds, sign transactions, interact with contra
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/keys.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 30
 end: 37
@@ -3965,7 +3965,7 @@ await account.addFullAccessKey(
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/keys.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 17
 end: 28
@@ -3999,7 +3999,7 @@ await near
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/keys.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/keys.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 25
 end: 40
@@ -4038,7 +4038,7 @@ println!("{:?}", add_full_key_result);
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/keys.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/keys.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 20
 end: 28
@@ -4068,7 +4068,7 @@ println!("Added Full Access Key: {}", full_access_key.public_key());
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/keys.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/keys.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 25
 end: 31
@@ -4114,7 +4114,7 @@ You can further restrict this key by:
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/keys.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 39
 end: 45
@@ -4143,7 +4143,7 @@ await account.addFunctionCallAccessKey({
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/keys.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 32
 end: 43
@@ -4177,7 +4177,7 @@ console.log(`Added Function Call Key: ${functionCallKey.publicKey.toString()}`);
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/keys.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/keys.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 41
 end: 59
@@ -4219,7 +4219,7 @@ println!("{:?}", add_function_key_result);
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/keys.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/keys.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 30
 end: 43
@@ -4254,7 +4254,7 @@ println!(
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/keys.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/keys.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 33
 end: 45
@@ -4311,7 +4311,7 @@ Accounts on NEAR can delete their own keys.
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/keys.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/keys.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 56
 end: 56
@@ -4334,7 +4334,7 @@ await account.deleteKey(fnKeyPair.getPublicKey().toString());
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/keys.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/keys.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 46
 end: 55
@@ -4366,7 +4366,7 @@ await nearWithNewKey
   <Tab title="🦀 near-api-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-rs/examples/keys.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-rs/examples/keys.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 60
 end: 69
@@ -4399,7 +4399,7 @@ language: rust
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-rs/examples/keys.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/keys.rs
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 45
 end: 57
@@ -4433,7 +4433,7 @@ println!(
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/examples/keys.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/keys.py
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 start: 47
 end: 50
@@ -4478,7 +4478,7 @@ Run these examples from their respective package directories using the shared `.
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/59b39409b26453c2b63d15f0875d88f9184e506d/near-kit/examples/post-quantum-keys.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/post-quantum-keys.js
 commit: 59b39409b26453c2b63d15f0875d88f9184e506d
 start: 1
 end: 38
@@ -4539,7 +4539,7 @@ try {
   <Tab title="🦀 near-kit-rs">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/59b39409b26453c2b63d15f0875d88f9184e506d/near-kit-rs/examples/post_quantum_keys.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/post_quantum_keys.rs
 commit: 59b39409b26453c2b63d15f0875d88f9184e506d
 start: 1
 end: 42
@@ -4604,7 +4604,7 @@ async fn main() -> Result<(), Error> {
   <Tab title="🐍 near-kit-py">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/59b39409b26453c2b63d15f0875d88f9184e506d/near-kit-py/examples/post_quantum_keys.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/post_quantum_keys.py
 commit: 59b39409b26453c2b63d15f0875d88f9184e506d
 start: 1
 end: 32
@@ -4672,7 +4672,7 @@ Connected wallets can sign NEP-413 messages with `signMessage`. Use [NEAR Connec
   <Tab title="🌐 near-api-js">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-api-js/examples/verify-signature.ts
+url: https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/verify-signature.ts
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 fname: authenticate.ts
 language: javascript
@@ -4724,7 +4724,7 @@ await verifyMessage({
   <Tab title="🌐 near-kit">
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit/examples/verify-signature.js
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit/examples/verify-signature.js
 commit: fe8a9b52688965ef272fc2e199fcd46111ff3ade
 fname: authenticate.js
 language: javascript
@@ -4777,7 +4777,7 @@ console.log("Signature valid:", isValid);
   Use the original challenge stored by your application. Generate its nonce with `near_kit::standards::nep413::generate_nonce()` so the default timestamp-expiry check applies, and reject reused challenges.
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/2d7d8b3c365bf9f3118df9c9b0dbeab7c825c05a/near-kit-rs/examples/verify_signature.rs
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-rs/examples/verify_signature.rs
 commit: 2d7d8b3c365bf9f3118df9c9b0dbeab7c825c05a
 start: 1
 end: 14
@@ -4818,7 +4818,7 @@ async fn verify_wallet_message(
   Use the original message, recipient, and nonce stored by your application. Generate the nonce with `near.generate_nonce()` so the default timestamp-expiry check applies, and reject reused challenges.
 
 {/* github-code
-url: https://github.com/near-examples/near-api-examples/blob/2d7d8b3c365bf9f3118df9c9b0dbeab7c825c05a/near-kit-py/examples/verify_signature.py
+url: https://github.com/near-examples/near-api-examples/blob/main/near-kit-py/examples/verify_signature.py
 commit: 2d7d8b3c365bf9f3118df9c9b0dbeab7c825c05a
 start: 4
 end: 20
