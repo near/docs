@@ -6,7 +6,7 @@ description: "Indexers are constantly listening for transactions and storing the
 
 Data Services are constantly listening to the blockchain, processing the transactions and storing them in a database that can be easily queried. You can use them to access blockchain data efficiently:
 
-- [Neardata](https://neardata.xyz): a direct, drop-in replacement for NEAR Lake providing a stream of blocks for your custom indexer.
+- [Neardata](https://docs.fastnear.com/neardata): block data delivered over HTTP for your custom indexer.
 
 - [BigQuery](./big-query): Blockchain data indexing in NEAR Public Lakehouse is for anyone wanting to understand blockchain data.
 
@@ -25,9 +25,3 @@ Data Services are constantly listening to the blockchain, processing the transac
 - [SubQuery](https://academy.subquery.network/quickstart/quickstart_chains/near.html): is an end to end multi-blockchain indexing solution that provides NEAR developers with fast, flexible, universal, open source and decentralized APIs for web3 projects. The [NEAR starter project](https://github.com/subquery/near-subql-starter/tree/main/Near/near-starter) provides a template for developers to get up and running within minutes.
 
 - [GoldSky](https://docs.goldsky.com/chains/near): a hosted data platform that supports NEAR mainnet via **Mirror** (real-time data replication into your own infrastructure) and **Turbo** (high-performance streaming pipelines with sub-second latency). No infrastructure to manage — connect your data destination and start streaming on-chain data immediately.
-
-- NEAR Lake Framework (**deprecated**): a companion library to NEAR Lake. It allows you to build your own indexer that watches a stream of blocks **from a NEAR Lake data source**.
-
-<Danger>
-**NEAR Lake deprecated as of March 24, 2026.** The NEAR Lake (AWS S3 buckets) has stopped indexing new blocks. For new projects, use [Neardata](https://neardata.xyz) (direct replacement for NEAR Lake), [Data APIs](./data-api), [Goldsky](https://goldsky.com), or the [Nearcore Indexer](./near-indexer).
-</Danger>
