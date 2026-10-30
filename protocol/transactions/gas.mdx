@@ -202,4 +202,4 @@ If you're developing a smart contract, you might want to estimate how much gas a
 
 One of the most accurate ways to estimate gas costs is by running your function in `testnet`. To know exactly how much gas a specific part of your function uses, you can use the `used_gas` method from our SDK.
 
-Another option is to use `Sandbox Testing` (available in [Rust](https://github.com/near/workspaces-rs/tree/main/examples/src) and [JavaScript](https://github.com/near/workspaces-js)), which simulates the NEAR network. There you can access the gas burnt after each function call.
+For local tests, use [`near-sandbox` with `near-api`](/smart-contracts/testing/integration-test) to deploy and call your contract on a local NEAR node. Inspect the transaction and receipt outcomes to measure the gas burnt, including any cross-contract calls.

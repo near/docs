@@ -16,7 +16,7 @@ Here we lay out some best practices for writing smart contracts on NEAR, such as
 - [Return `Promise`](#return-promise)
 - [Reuse crates from `near-sdk`](#reuse-crates-from-near-sdk)
 - [The difference between `std::panic!` and `env::panic`](#stdpanic-vs-envpanic)
-- [Use workspaces](#use-workspaces)
+- [Test with Sandbox](#test-with-sandbox)
 
 ---
 
@@ -152,8 +152,9 @@ impl Contract {
 - `env::panic` directly calls the host method to panic the contract.
   It doesn't provide any other extra debugging information except for the passed message.
 
-## Use workspaces
+## Test with Sandbox
 
-Workspaces allow you to automate workflows and run tests for multiple contracts and cross-contract calls in a sandbox or testnet environment.
-Read more, [workspaces-rs](https://github.com/near/workspaces-rs) or [workspaces-js](https://github.com/near/workspaces-js).
+Use `near-sandbox` to run integration tests against a local NEAR node, and `near-api` to create accounts, deploy contracts, and send transactions. Test cross-contract calls, callback failures, refunds, and state changes as well as successful calls.
+
+See the [integration-testing guide](/smart-contracts/testing/integration-test) for source-backed examples.
 
