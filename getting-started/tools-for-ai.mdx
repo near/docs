@@ -6,7 +6,12 @@ description: "Guide your agent on building NEAR applications"
 
 NEAR offers multiple tools and resources to help your AI agents build and use NEAR applications. This page provides an overview of the key tools available and how to use them effectively.
 
+For coding agents with terminal access, start with NEAR CLI for blockchain operations and Agent Skills for task-specific guidance. Use the Testnet Faucet API to fund development accounts. NEAR MCP is an optional integration for clients that need blockchain operations exposed as structured tools.
+
 <CardGroup cols={2}>
+  <Card title="NEAR CLI" href="#near-cli">
+    When your agent has terminal access and needs to query accounts, send tokens, or interact with contracts.
+  </Card>
   <Card title="llms.txt" href="#llms-txt">
     When you need to provide your agent with a quick reference to all NEAR docs.
   </Card>
@@ -16,13 +21,40 @@ NEAR offers multiple tools and resources to help your AI agents build and use NE
   <Card title="Agent Skills" href="#near-agent-skills">
     When you need your agent to become an expert in a specific task (e.g. using our API).
   </Card>
-  <Card title="NEAR MCP" href="#near-mcp-server">
-    When your agent needs to perform on-chain actions (e.g., transfers and function calls).
+  <Card title="NEAR MCP (Optional)" href="#near-mcp-server-optional">
+    When your client needs blockchain operations exposed through MCP.
   </Card>
   <Card title="Testnet Faucet API" href="#testnet-faucet-api">
     When your agent needs testnet NEAR through a direct HTTP request.
   </Card>
 </CardGroup>
+
+---
+
+## NEAR CLI
+
+[NEAR CLI](https://github.com/near/near-cli-rs) lets agents query accounts, transfer tokens, deploy contracts, and call contract methods from the terminal.
+
+Install the CLI and check that the `near` command is available:
+
+```bash
+npm install -g near-cli-rs@latest
+near --version
+```
+
+Supply complete commands, including the network and final action, so the CLI does not need to prompt for missing arguments. For example, check an account's testnet balance:
+
+```bash
+near tokens your-account.testnet view-near-balance network-config testnet now
+```
+
+Replace `your-account.testnet` with your account ID. Read-only queries do not require a signing key. To read contract data, specify the contract, method, and JSON arguments:
+
+```bash
+near contract call-function as-read-only wrap.testnet ft_metadata json-args '{}' network-config testnet now
+```
+
+For transactions, configure a signer available to the agent's runtime and provide the signing option in the command. See the [CLI reference](/tools/cli) for account management, transfers, deployment, and signing options. The [`near-cli-rs` skill](#near-agent-skills) provides command syntax and workflows for agents.
 
 ---
 
@@ -80,10 +112,24 @@ NEAR Agent Skills are reusable capabilities that package repeatable workflows.
 
 **Link:** [https://github.com/near/agent-skills](https://github.com/near/agent-skills)
 
+Install the skills using:
+
+```bash
+npx skills add near/agent-skills
+```
+
+To install a specific skill, pass its name. For example, install the CLI skill with:
+
+```bash
+npx skills add near/agent-skills --skill near-cli-rs
+```
+
 | Skill                                                                                              | Focus                                                                      |
 |----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | [near-ai-cloud](https://github.com/near/agent-skills/tree/main/skills/near-ai-cloud)               | Verifiable private AI inference and attestation                            |
 | [near-api-js](https://github.com/near/agent-skills/tree/main/skills/near-api-js)                   | JS/TS blockchain interaction, transactions, tokens, and wallet integration |
+| [near-cli-rs](https://github.com/near/agent-skills/tree/main/skills/near-cli-rs)                   | CLI commands for accounts, tokens, contracts, signing, and network configuration |
+| [near-contract-audit](https://github.com/near/agent-skills/tree/main/skills/near-contract-audit)   | Security review of Rust contracts, vulnerability analysis, and findings with remediation |
 | [near-dapp](https://github.com/near/agent-skills/tree/main/skills/near-dapp)                       | dApp project setup, wallet integration, React/Next.js patterns             |
 | [near-intents](https://github.com/near/agent-skills/tree/main/skills/near-intents)                 | Cross-chain swaps via the 1Click API                                       |
 | [near-kit](https://github.com/near/agent-skills/tree/main/skills/near-kit)                         | TypeScript SDK with type-safe contracts and sandbox testing                |
@@ -91,11 +137,11 @@ NEAR Agent Skills are reusable capabilities that package repeatable workflows.
 
 ---
 
-## NEAR MCP Server
+## NEAR MCP Server (Optional)
 
-The NEAR MCP Server is a tool server (currently [23 tools](https://github.com/nearai/near-mcp/blob/main/TOOLS.md)) that enables agents to perform blockchain operations.
+The [NEAR MCP Server](https://github.com/nearai/near-mcp) exposes blockchain operations as structured tools through the Model Context Protocol.
 
-**Use it when:** Your agent needs to hold funds, transfer funds, interact with smart contracts, or perform any action on-chain in  NEAR Protocol
+**Use it when:** Your client supports MCP and needs blockchain tools through that interface, for example when it does not have terminal access. Coding agents with terminal access can use [NEAR CLI](#near-cli) directly.
 
 **Repo**: [https://github.com/nearai/near-mcp](https://github.com/nearai/near-mcp)
 
