@@ -19,6 +19,9 @@ NEAR offers multiple tools and resources to help your AI agents build and use NE
   <Card title="NEAR MCP" href="#near-mcp-server">
     When your agent needs to perform on-chain actions (e.g., transfers and function calls).
   </Card>
+  <Card title="Testnet Faucet API" href="#testnet-faucet-api">
+    When your agent needs testnet NEAR through a direct HTTP request.
+  </Card>
 </CardGroup>
 
 ---
@@ -103,4 +106,31 @@ The NEAR MCP Server is a tool server (currently [23 tools](https://github.com/ne
 The NEAR MCP is designed to run **locally** or on your **trusted infrastructure** because it handles private keys. There is no hosted public version.
 
 </Warning>
+
+
+## Testnet Faucet API
+
+Agents and scripts can request **5 testnet NEAR** directly by sending a `POST` request to `https://docs-mcp-f18b.onrender.com/api/faucet`. No API key or browser interaction is required.
+
+Set the `Content-Type` header to `application/json` and provide the recipient's testnet account ID in the `accountId` field:
+
+```bash
+curl --fail-with-body --max-time 120 \
+  --request POST 'https://docs-mcp-f18b.onrender.com/api/faucet' \
+  --header 'Content-Type: application/json' \
+  --data '{"accountId":"your-account.testnet"}'
+```
+
+Replace `your-account.testnet` with an existing testnet account or a 64-character hexadecimal implicit account ID. The request only needs the account ID; keep the account's private key in your agent's local signer.
+
+A successful request returns HTTP `200` with:
+
+```json
+{
+  "success": true,
+  "message": "Funded your-account.testnet with 5 NEAR"
+}
+```
+
+A missing, empty, or non-string `accountId` field returns HTTP `400`. Funding failures return HTTP `500`. Both return a JSON object with an `error` field describing the failure. If a request times out, check the recipient's balance before retrying, since funding may have completed.
 

@@ -22,6 +22,32 @@ Simply introduce the account you want to receive the tokens in, and click on the
 
 <Faucet />
 
+## Faucet API for Agents and Scripts
+
+Agents and scripts can request **5 testnet NEAR** directly by sending a `POST` request to `https://docs-mcp-f18b.onrender.com/api/faucet`. No API key or browser interaction is required.
+
+Set the `Content-Type` header to `application/json` and provide the recipient's testnet account ID in the `accountId` field:
+
+```bash
+curl --fail-with-body --max-time 120 \
+  --request POST 'https://docs-mcp-f18b.onrender.com/api/faucet' \
+  --header 'Content-Type: application/json' \
+  --data '{"accountId":"your-account.testnet"}'
+```
+
+Replace `your-account.testnet` with an existing testnet account or a 64-character hexadecimal implicit account ID. The request only needs the account ID; keep the account's private key in your agent's local signer.
+
+A successful request returns HTTP `200` with:
+
+```json
+{
+  "success": true,
+  "message": "Funded your-account.testnet with 5 NEAR"
+}
+```
+
+A missing, empty, or non-string `accountId` field returns HTTP `400`. Funding failures return HTTP `500`. Both return a JSON object with an `error` field describing the failure. If a request times out, check the recipient's balance before retrying, since funding may have completed.
+
 ---
 
 ## External Faucet
