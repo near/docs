@@ -1,59 +1,15 @@
 ---
-sidebarTitle: Lake Overview
-title: NEAR Lake Indexer
-description: "Learn how NEAR Lake indexes the network"
+title: NEAR Lake (Retired)
+sidebarTitle: NEAR Lake (Retired)
+description: "NEAR Lake no longer indexes new blocks. Find alternatives for block ingestion, data queries, and running an indexer."
 ---
 
-import NearLakeDeprecation from '/snippets/near-lake-deprecation.mdx';
+NEAR Lake was an AWS S3-based service for indexing NEAR blockchain data. It stopped indexing new blocks on **March 24, 2026** and is no longer maintained.
 
-<NearLakeDeprecation />
+Choose a replacement based on what your application needs:
 
-NEAR Lake is an indexer built on top of [NEAR Indexer Framework](https://github.com/near/nearcore/tree/master/chain/indexer) to watch the network and store all the event logs such as [FT Events](https://github.com/near/NEPs/tree/master/neps/nep-0300.md) and [NFT Events](https://github.com/near/NEPs/tree/master/neps/nep-0256.md) as JSON files on AWS S3.
+- **[Neardata](https://docs.fastnear.com/neardata)** for ingesting blocks into your own application or indexer.
+- **[Data APIs](/data-infrastructure/data-api)** for querying indexed accounts, transactions, assets, and events.
+- **[Nearcore indexer](/data-infrastructure/near-indexer)** for processing blocks from a node you operate.
 
-<Info>
-**GitHub repo**
-
-You can find the Lake Indexer source code in [this GitHub repository](https://github.com/aurora-is-near/near-lake-indexer).
-
-</Info>
-
-### Data structure
-
-The data structure used by Lake Indexer is the following:
-
-```text
-    <block_height>/
-      block.json
-      shard_1.json
-      shard_4.json
-      ...
-      shard_N.json
-```
-
-`<block_height>` is a 12-character-long [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) string with leading zeros (e.g "000042839521"). See [this issue for reasoning](https://github.com/near/near-lake/issues/23).
-
-`block_json` contains JSON-serialized `BlockView` struct. **NB!** this struct might change in the future, we will announce it
-
-`shard_N.json` holds the data of the shard with ID `N`. There is one file for each shard of the block. Shard IDs do not always run from `0` to the number of shards minus one. After resharding, a shard ID can be any [`u64`](https://doc.rust-lang.org/std/primitive.u64.html). To list the shards of a block, read `.chunks[].shard_id` in `block.json`. This array has one entry per shard. Do not use `.header.chunks_included` for this. It counts only the chunks that are new in this block, so it is lower than the number of shards when a chunk is missing.
-
-### How to use it
-
-We have created the [NEAR Lake Framework](https://github.com/near/near-lake-framework-rs) to have a simple straightforward way to create an indexer on top of the data stored by NEAR Lake itself.
-
-<Info>
-**NEAR Lake Framework**
-
-You can check the NEAR Lake Framework release announcement on the [NEAR Governance Forum](https://gov.near.org/t/announcement-near-lake-framework-brand-new-word-in-indexer-building-approach/17668).
-
-</Info>
-
-We have prepared this video tutorial with a simple example to give you an overview and some practical ideas.
-
-<iframe
- width="560"
- height="315"
- src="https://www.youtube.com/embed/GsF7I93K-EQ"
- title="NEAR Lake Indexer"
- frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
- allowfullscreen>
-</iframe>
+Migrating a Lake consumer to Neardata requires changing how it fetches data. Neardata serves a block and its shards together in a single JSON response, while Lake stored separate block and shard files in S3. See [FASTNEAR's API documentation](https://github.com/fastnear/neardata-server#api) for the response format.

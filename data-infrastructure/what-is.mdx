@@ -9,7 +9,7 @@ NEAR offers ready-to-use solutions to access and monitor on-chain data easily. T
 
 ![img](/assets/docs/welcome-pages/6.data-infrastructure.webp)
 
-In NEAR you will find three main solutions to access and monitor on-chain data: [**Data APIs**](#data-apis), [**BigQuery Public Dataset**](#bigquery-public-dataset) and [**NEAR Lake**](#near-lake). Each of these solutions is designed to fit different needs and use cases, and can be used in combination to create a complete data infrastructure for your application.
+In NEAR you will find three main solutions to access and monitor on-chain data: [**Data APIs**](#data-apis), [**BigQuery Public Dataset**](#bigquery-public-dataset) and [**Block Streams and Indexers**](#block-streams-and-indexers). Each of these solutions is designed to fit different needs and use cases, and can be used in combination to create a complete data infrastructure for your application.
 
 ---
 
@@ -32,16 +32,11 @@ A large dataset with on-chain data publicly available on Google Cloud Platform. 
 
 <hr subclass="subsection" />
 
-## [NEAR Lake](/data-infrastructure/lake-framework/near-lake)
+## Block Streams and Indexers
 
-<Warning>
-**Deprecated as of March 24, 2026.** NEAR Lake (AWS S3 buckets) has stopped indexing new blocks. For new projects, use [Neardata](https://neardata.xyz) (direct replacement), [Data APIs](./data-api), [Goldsky](https://goldsky.com), or the [Nearcore Indexer](./near-indexer).
-</Warning>
+Use [Neardata](https://docs.fastnear.com/neardata) to ingest block data into your application or custom indexer. To process blocks directly from a node you operate, use the [nearcore indexer](/data-infrastructure/near-indexer).
 
-A solution that watches over the NEAR network and stores all the events for your easy access.
-
-- Cost-efficient solution: Cost-efficient solution for building self-hosted indexers in Rust, JavaScript, Python, Go and other languages
-- Streamlined data management: Use NEAR Lake Framework to stream blocks to your server directly from NEAR Lake
+NEAR Lake has been retired. See the [retirement notice](/data-infrastructure/lake-framework/near-lake) for migration guidance.
 
 ---
 
@@ -49,4 +44,4 @@ A solution that watches over the NEAR network and stores all the events for your
 
 Data infrastructure is a key component of any blockchain application. It allows developers to access and monitor on-chain data easily, which is essential for building applications that interact with the blockchain.
 
-NEAR offers a range of solutions to help developers build robust data infrastructure for their applications, including Data APIs, BigQuery Public Dataset, and NEAR Lake. By using these solutions in combination, developers can create a complete data infrastructure that meets their specific needs and use cases.
+NEAR offers a range of solutions to help developers build robust data infrastructure for their applications, including Data APIs, BigQuery Public Dataset, and block streams. By using these solutions in combination, developers can create a complete data infrastructure that meets their specific needs and use cases.

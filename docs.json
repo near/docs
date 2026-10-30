@@ -226,6 +226,18 @@
     {
       "source": "/smart-contracts/tutorials/zero-to-hero/nfts",
       "destination": "/primitives/nft/nft"
+    },
+    {
+      "source": "/data-infrastructure/tutorials/nft-indexer",
+      "destination": "/data-infrastructure/lake-framework/near-lake"
+    },
+    {
+      "source": "/data-infrastructure/tutorials/python-nft-indexer",
+      "destination": "/data-infrastructure/lake-framework/near-lake"
+    },
+    {
+      "source": "/data-infrastructure/tutorials/running-near-lake/run-near-lake",
+      "destination": "/data-infrastructure/lake-framework/near-lake"
     }
   ],
   "navbar": {
@@ -703,14 +715,7 @@
             "pages": [
               "data-infrastructure/indexers",
               "data-infrastructure/near-indexer",
-              "data-infrastructure/tutorials/near-indexer",
-              {
-                "group": "Building a Data Lake",
-                "icon": "database",
-                "pages": [
-                  "data-infrastructure/tutorials/running-near-lake/run-near-lake"
-                ]
-              }
+              "data-infrastructure/tutorials/near-indexer"
             ]
           }
         ]
