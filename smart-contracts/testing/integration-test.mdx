@@ -3,7 +3,7 @@ title: Integration Tests
 description: "Learn how to write and run integration tests for NEAR smart contracts using Sandbox testing and realistic blockchain environments."
 ---
 
-Integration tests enable you to deploy a contract in the NEAR `testnet` or a local `sandbox` and create test users to interact with it. This way, you can thoroughly test your contract in a realistic environment.
+Integration tests deploy your contract to a local NEAR Sandbox and create test accounts to interact with it. This lets you test contract behavior in a realistic blockchain environment.
 
 Moreover, when using the local `sandbox` you gain complete control of the network:
 
@@ -11,12 +11,12 @@ Moreover, when using the local `sandbox` you gain complete control of the networ
 2. Simulate errors on callbacks.
 3. Control the time flow and fast-forward into the future.
 
-In these docs, integration tests use the Rust [near-sandbox](https://github.com/near/near-sandbox-rs) framework.
+Use Rust [`near-sandbox`](https://github.com/near/near-sandbox-rs) to start and control a local NEAR node, and `near-api` to create accounts, deploy contracts, send transactions, and read their outcomes. The examples below use these libraries directly.
 
 <Note>
 **Sandbox Testing**
 
-NEAR Sandbox allows you to write tests once, and run them either on `testnet` or a local `Sandbox`. By **default**, Sandbox will start a **sandbox** and run your tests **locally**. Lets dive into the features of our framework and see how they can help you.
+Run automated integration tests locally with `near-sandbox`. Each test can create its own accounts, deploy contracts built from source, and inspect transaction and receipt outcomes. Use `near-api` to interact with the node through its local RPC endpoint.
 </Note>
 
 ## In-process alternative: `near-mock`
@@ -779,18 +779,18 @@ println!("BlockInfo post-fast_forward {:#?}", new_height);
 
 {/* /github-code */}
 
-_[See the full example on Github](https://github.com/near/workspaces-rs/blob/main/examples/src/fast_forward.rs)._
+_[See the full Sandbox timeout test](https://github.com/near-examples/yield-resume/blob/main/contract/tests/yield_resume.rs)._
 
 
 ---
 
 ## Using Testnet
 
-NEAR Sandbox is set up so that you can write tests once and run them against a local Sandbox node (the default behavior) or against [NEAR TestNet](../../protocol/network/networks). Some reasons this might be helpful:
+For checks against deployed [testnet contracts](/protocol/network/networks), use `near-api` with `NetworkConfig::testnet()` and funded testnet accounts. Sandbox runs a separate local node; its account creation, state patching, and fast-forward controls apply to that local node. Testnet checks can help you:
 
-* Gives higher confidence that your contracts work as expected
-* You can test against deployed testnet contracts
-* If something seems off in Sandbox mode, you can compare it to testnet
+* Check your contract against a public network
+* Exercise interactions with existing testnet contracts
+* Compare results with your local Sandbox tests
 
 
 {/* github-code
