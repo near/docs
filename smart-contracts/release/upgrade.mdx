@@ -43,7 +43,7 @@ A smart contract can also update itself by implementing a method that:
 
 {/* github-code
 url: https://github.com/near-examples/update-migrate-rust/blob/main/self-updates/base/src/update.rs
-commit: 7ffe84605389abaa9095592a41e386074802e9d2
+commit: c09b4adad96f265af07827787577bb8af775dc8d
 start: 10
 end: 31
 fname: update.rs
@@ -77,7 +77,7 @@ pub fn update_contract(&self) -> Promise {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/7ffe84605389abaa9095592a41e386074802e9d2/self-updates/base/src/update.rs#L10-L31)
+[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/c09b4adad96f265af07827787577bb8af775dc8d/self-updates/base/src/update.rs#L10-L31)
 
 </div>
 
@@ -149,13 +149,13 @@ This is how DAOs
 
 Imagine you have a Guest Book where you store messages, and the users can pay
 for such messages to be "premium". You keep track of the messages and payments
-using the following state:
+using two `near_sdk::store::Vector` collections in the following state:
 
 {/* github-code
 url: https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/base/src/lib.rs
-commit: 7ffe84605389abaa9095592a41e386074802e9d2
+commit: c09b4adad96f265af07827787577bb8af775dc8d
 start: 10
-end: 24
+end: 25
 fname: lib.rs
 language: rust
 */}
@@ -165,6 +165,7 @@ const MESSAGES_PREFIX: &[u8] = b"m";
 const PAYMENTS_PREFIX: &[u8] = b"p";
 
 #[near(serializers=[json, borsh])]
+#[derive(Clone)]
 pub struct PostedMessage {
     pub premium: bool,
     pub sender: AccountId,
@@ -180,7 +181,7 @@ pub struct GuestBook {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/7ffe84605389abaa9095592a41e386074802e9d2/basic-updates/base/src/lib.rs#L10-L24)
+[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/c09b4adad96f265af07827787577bb8af775dc8d/basic-updates/base/src/lib.rs#L10-L25)
 
 </div>
 
@@ -193,9 +194,9 @@ the `PostedMessage` itself, so you change the contract to:
 
 {/* github-code
 url: https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/lib.rs
-commit: 7ffe84605389abaa9095592a41e386074802e9d2
+commit: c09b4adad96f265af07827787577bb8af775dc8d
 start: 12
-end: 25
+end: 26
 fname: lib.rs
 language: rust
 */}
@@ -204,6 +205,7 @@ language: rust
 const MESSAGES_PREFIX: &[u8] = b"m";
 
 #[near(serializers=[json, borsh])]
+#[derive(Clone)]
 pub struct PostedMessage {
     pub payment: NearToken,
     pub premium: bool,
@@ -219,7 +221,7 @@ pub struct GuestBook {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/7ffe84605389abaa9095592a41e386074802e9d2/basic-updates/update/src/lib.rs#L12-L25)
+[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/c09b4adad96f265af07827787577bb8af775dc8d/basic-updates/update/src/lib.rs#L12-L26)
 
 </div>
 
@@ -243,9 +245,9 @@ state, removes the `payments` vector and adds the information to the
 
 {/* github-code
 url: https://github.com/near-examples/update-migrate-rust/blob/main/basic-updates/update/src/migrate.rs
-commit: 7ffe84605389abaa9095592a41e386074802e9d2
+commit: c09b4adad96f265af07827787577bb8af775dc8d
 start: 3
-end: 51
+end: 53
 fname: migrate.rs
 language: rust
 */}
@@ -278,12 +280,14 @@ impl GuestBook {
         // iterate through the state migrating it to the new version
         for (idx, posted) in old_state.messages.iter().enumerate() {
             // get the payment and remove it from the old state payments vector so it won't be left in the new state
-            let payment = old_state.payments.get(idx as u64)
+            let payment = old_state
+                .payments
+                .get(idx as u32)
                 .expect("failed to get payment")
                 .clone();
 
             // push the new message to the new messages vector
-            new_messages.push(&PostedMessage {
+            new_messages.push(PostedMessage {
                 payment,
                 premium: posted.premium,
                 sender: posted.sender.clone(),
@@ -304,7 +308,7 @@ impl GuestBook {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/7ffe84605389abaa9095592a41e386074802e9d2/basic-updates/update/src/migrate.rs#L3-L51)
+[See code on GitHub](https://github.com/near-examples/update-migrate-rust/blob/c09b4adad96f265af07827787577bb8af775dc8d/basic-updates/update/src/migrate.rs#L3-L53)
 
 </div>
 
@@ -431,3 +435,14 @@ Removing all full-access keys cannot be undone through an externally signed tran
 A locked contract can still upgrade itself if its current code exposes an authorized [programmatic update](#programmatic-update) method. If the contract must be permanently immutable, do not include such a method.
 
 If the account uses a global contract by account ID, removing its keys does not lock its code. The owner of the global contract can deploy a new version at any time, and the locked account then runs the new code. To lock the code, deploy it to the account directly, or use a global contract by code hash.
+
+## Testing Upgrades
+
+The [migration example](https://github.com/near-examples/update-migrate-rust) includes tests for basic migrations, versioned state, and manager-authorized updates. From the repository root, run:
+
+```bash
+cargo install cargo-near --version 0.21.1 --locked --no-default-features
+cargo test --workspace --locked
+```
+
+Each test builds the base and updated contracts from source, deploys them to a local `near-sandbox` node, and sends transactions using `near-api`. The assertions check that messages, senders, premium flags, and payments survive the upgrade.
