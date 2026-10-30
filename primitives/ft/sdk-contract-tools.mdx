@@ -35,7 +35,7 @@ To derive basic FT methods to our contract, we need to derive `FungibleToken` ma
 
 {/* github-code
 url: https://github.com/near-examples/ft-contract-tools/blob/main/src/lib.rs
-commit: 9dd5a1e6711c8ba908a8e1b6b763c439843f051e
+commit: 5093d505fa56fb8c4feb62aab4bc119014881660
 start: 9
 end: 12
 fname: lib.rs
@@ -51,7 +51,7 @@ pub struct MyFtContract {}
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/9dd5a1e6711c8ba908a8e1b6b763c439843f051e/src/lib.rs#L9-L12)
+[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/5093d505fa56fb8c4feb62aab4bc119014881660/src/lib.rs#L9-L12)
 
 </div>
 
@@ -85,7 +85,7 @@ To initialize the basic FT contract with a custom owner, metadata, and storage b
 
 {/* github-code
 url: https://github.com/near-examples/ft-contract-tools/blob/main/src/lib.rs
-commit: 9dd5a1e6711c8ba908a8e1b6b763c439843f051e
+commit: 5093d505fa56fb8c4feb62aab4bc119014881660
 start: 14
 end: 45
 fname: lib.rs
@@ -129,7 +129,7 @@ impl MyFtContract {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/9dd5a1e6711c8ba908a8e1b6b763c439843f051e/src/lib.rs#L14-L45)
+[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/5093d505fa56fb8c4feb62aab4bc119014881660/src/lib.rs#L14-L45)
 
 </div>
 
@@ -143,7 +143,7 @@ Use a transfer hook to run application logic before or after the library-provide
 
 {/* github-code
 url: https://github.com/near-examples/ft-contract-tools/blob/main/src/transfer_hook.rs
-commit: 9dd5a1e6711c8ba908a8e1b6b763c439843f051e
+commit: 5093d505fa56fb8c4feb62aab4bc119014881660
 start: 5
 end: 33
 fname: transfer_hook.rs
@@ -184,7 +184,7 @@ impl Hook<MyFtContract, Nep141Transfer<'_>> for TransferHook {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/9dd5a1e6711c8ba908a8e1b6b763c439843f051e/src/transfer_hook.rs#L5-L33)
+[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/5093d505fa56fb8c4feb62aab4bc119014881660/src/transfer_hook.rs#L5-L33)
 
 </div>
 
@@ -194,7 +194,7 @@ Then derive it to our contract struct:
 
 {/* github-code
 url: https://github.com/near-examples/ft-contract-tools/blob/main/src/lib.rs
-commit: 9dd5a1e6711c8ba908a8e1b6b763c439843f051e
+commit: 5093d505fa56fb8c4feb62aab4bc119014881660
 start: 9
 end: 12
 fname: lib.rs
@@ -210,7 +210,7 @@ pub struct MyFtContract {}
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/9dd5a1e6711c8ba908a8e1b6b763c439843f051e/src/lib.rs#L9-L12)
+[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/5093d505fa56fb8c4feb62aab4bc119014881660/src/lib.rs#L9-L12)
 
 </div>
 
@@ -226,7 +226,7 @@ We import the `Owner` trait and call `self.assert_owner()` before making any cha
 
 {/* github-code
 url: https://github.com/near-examples/ft-contract-tools/blob/main/src/mint.rs
-commit: 9dd5a1e6711c8ba908a8e1b6b763c439843f051e
+commit: 5093d505fa56fb8c4feb62aab4bc119014881660
 start: 1
 end: 35
 fname: mint.rs
@@ -273,7 +273,7 @@ impl MyFtContract {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/9dd5a1e6711c8ba908a8e1b6b763c439843f051e/src/mint.rs#L1-L35)
+[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/5093d505fa56fb8c4feb62aab4bc119014881660/src/mint.rs#L1-L35)
 
 </div>
 
@@ -299,7 +299,7 @@ As with minting, `self.assert_owner()` restricts the call to the current owner. 
 
 {/* github-code
 url: https://github.com/near-examples/ft-contract-tools/blob/main/src/burn.rs
-commit: 9dd5a1e6711c8ba908a8e1b6b763c439843f051e
+commit: 5093d505fa56fb8c4feb62aab4bc119014881660
 start: 1
 end: 30
 fname: burn.rs
@@ -341,7 +341,7 @@ impl MyFtContract {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/9dd5a1e6711c8ba908a8e1b6b763c439843f051e/src/burn.rs#L1-L30)
+[See code on GitHub](https://github.com/near-examples/ft-contract-tools/blob/5093d505fa56fb8c4feb62aab4bc119014881660/src/burn.rs#L1-L30)
 
 </div>
 
@@ -350,6 +350,19 @@ impl MyFtContract {
 Burning reduces both the owner's balance and the total supply by `amount`, then schedules a transfer of `amount` yoctoNEAR to the owner. For example, `{"amount": "1000000000000000000000000"}` burns token units representing 1 NEAR and refunds 1 NEAR. The owner must have enough tokens in their balance to burn the requested amount.
 
 The owner checks in both methods follow ownership transfers through `own_propose_owner` and `own_accept_owner`. Once the new owner accepts, only that account can mint or burn. Token holders who are not the current owner can still transfer tokens, but cannot mint or redeem them through these methods.
+
+---
+
+## Testing the Contract
+
+From the [example repository](https://github.com/near-examples/ft-contract-tools), run:
+
+```bash
+cargo install cargo-near --version 0.21.1 --locked --no-default-features
+cargo test --locked -- --test-threads=2
+```
+
+The tests build the FT contract and DeFi receiver from source, then use `near-sandbox` and `near-api` to check minting, burning, ownership transfers, storage refunds, and cross-contract transfers.
 
 ---
 

@@ -21,7 +21,7 @@ Let's look at an example that takes a prompt from a user (e.g. "What is 2+2"), a
 
 {/* github-code
 url: https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs
-commit: 53dfef24d0e6dcbaafc05638932137868480d404
+commit: 0b00fa1a672131b396138f4794e085501c172bb5
 start: 41
 end: 61
 fname: lib.rs
@@ -54,7 +54,7 @@ pub fn request(&mut self, prompt: String) -> Promise {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/yield-resume/blob/53dfef24d0e6dcbaafc05638932137868480d404/contract/src/lib.rs#L41-L61)
+[See code on GitHub](https://github.com/near-examples/yield-resume/blob/0b00fa1a672131b396138f4794e085501c172bb5/contract/src/lib.rs#L41-L61)
 
 </div>
 
@@ -87,7 +87,7 @@ The `YieldId::resume` method allows us to signal which yielded promise should ex
 
 {/* github-code
 url: https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs
-commit: 53dfef24d0e6dcbaafc05638932137868480d404
+commit: 0b00fa1a672131b396138f4794e085501c172bb5
 start: 63
 end: 68
 fname: lib.rs
@@ -105,7 +105,7 @@ pub fn respond(&mut self, yield_id: YieldId, response: String) {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/yield-resume/blob/53dfef24d0e6dcbaafc05638932137868480d404/contract/src/lib.rs#L63-L68)
+[See code on GitHub](https://github.com/near-examples/yield-resume/blob/0b00fa1a672131b396138f4794e085501c172bb5/contract/src/lib.rs#L63-L68)
 
 </div>
 
@@ -130,7 +130,7 @@ The callback receives the arguments passed when creating the yielded promise and
 
 {/* github-code
 url: https://github.com/near-examples/yield-resume/blob/main/contract/src/lib.rs
-commit: 53dfef24d0e6dcbaafc05638932137868480d404
+commit: 0b00fa1a672131b396138f4794e085501c172bb5
 start: 70
 end: 82
 fname: lib.rs
@@ -155,7 +155,7 @@ pub fn return_external_response(
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/yield-resume/blob/53dfef24d0e6dcbaafc05638932137868480d404/contract/src/lib.rs#L70-L82)
+[See code on GitHub](https://github.com/near-examples/yield-resume/blob/0b00fa1a672131b396138f4794e085501c172bb5/contract/src/lib.rs#L70-L82)
 
 </div>
 
@@ -196,3 +196,14 @@ It is best practice to check the validity of the response within the function wh
 Read [asynchronous-call security](/smart-contracts/security/cross-contract-calls/callbacks) to avoid common pitfalls when dealing with callbacks and pending state.
 
 </Info>
+
+## Testing Yield and Resume
+
+The [example's integration tests](https://github.com/near-examples/yield-resume/blob/main/contract/tests/yield_resume.rs) build the contract from source and use `near-sandbox` with `near-api` to verify both an external response and a timeout. The timeout test fast-forwards the local node. Both tests check that pending requests are removed and that completed requests cannot be resumed again.
+
+From the repository's `contract` directory, run:
+
+```bash
+cargo install cargo-near --version 0.21.1 --locked --no-default-features
+cargo test --locked
+```

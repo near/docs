@@ -31,17 +31,21 @@ You have two options to start the project:
 The smart contract is written in Rust and has the following structure:
 
 
-```bash
-┌── tests # sandbox testing
-│    ├── hello-near
-│    │    └── hello-near.wasm
-│    └── tests.rs
-├── src # contract's code
-│    ├── external.rs
-│    └── lib.rs
-├── Cargo.toml # package manager
-├── README.md
-└── rust-toolchain.toml
+```text
+├── contract-simple-rs
+│   ├── src
+│   │   ├── external_contract.rs
+│   │   ├── high_level.rs
+│   │   ├── lib.rs
+│   │   └── low_level.rs
+│   ├── tests
+│   │   ├── hello-near # Rust source for the test contract
+│   │   └── tests.rs
+│   ├── Cargo.toml
+│   └── rust-toolchain.toml
+├── contract-advanced-rs
+└── test-utils
+    └── mod.rs # shared Sandbox and near-api helpers
 ```
 
 
@@ -59,7 +63,7 @@ The contract performs a cross-contract call to `hello.near-example.testnet` to g
   <Tab title="🦀 Rust (low level)">
 {/* github-code
 url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs
-commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+commit: f33e6ded02103ed987ffbc381b3ffc6307986a7a
 start: 7
 end: 23
 fname: low_level.rs
@@ -88,7 +92,7 @@ pub fn ll_query_greeting(&self) -> Promise {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/src/low_level.rs#L7-L23)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f33e6ded02103ed987ffbc381b3ffc6307986a7a/contract-simple-rs/src/low_level.rs#L7-L23)
 
 </div>
 
@@ -97,7 +101,7 @@ pub fn ll_query_greeting(&self) -> Promise {
   <Tab title="🦀 Rust (high level)">
 {/* github-code
 url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/high_level.rs
-commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+commit: f33e6ded02103ed987ffbc381b3ffc6307986a7a
 start: 9
 end: 21
 fname: high_level.rs
@@ -122,7 +126,7 @@ pub fn hl_query_greeting(&self) -> Promise {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/src/high_level.rs#L9-L21)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f33e6ded02103ed987ffbc381b3ffc6307986a7a/contract-simple-rs/src/high_level.rs#L9-L21)
 
 </div>
 
@@ -132,7 +136,7 @@ pub fn hl_query_greeting(&self) -> Promise {
 
 {/* github-code
 url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/external_contract.rs
-commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+commit: f33e6ded02103ed987ffbc381b3ffc6307986a7a
 start: 4
 end: 8
 fname: external_contract.rs
@@ -149,7 +153,7 @@ trait HelloNear {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/src/external_contract.rs#L4-L8)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f33e6ded02103ed987ffbc381b3ffc6307986a7a/contract-simple-rs/src/external_contract.rs#L4-L8)
 
 </div>
 
@@ -165,7 +169,7 @@ Notice that the callback function is marked as **private**, meaning it can only 
 
 {/* github-code
 url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/src/low_level.rs
-commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+commit: f33e6ded02103ed987ffbc381b3ffc6307986a7a
 start: 25
 end: 39
 fname: low_level.rs
@@ -192,7 +196,7 @@ pub fn ll_query_greeting_callback(
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/src/low_level.rs#L25-L39)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f33e6ded02103ed987ffbc381b3ffc6307986a7a/contract-simple-rs/src/low_level.rs#L25-L39)
 
 </div>
 
@@ -206,137 +210,91 @@ The contract readily includes a set of unit and sandbox testing to validate its 
 
 
 ```bash
+cargo install cargo-near --version 0.21.1 --locked --no-default-features
 cd contract-simple-rs
-cargo test
+cargo test --locked
 ```
 
 <Tip>
-The `integration tests` use a sandbox to create NEAR users and simulate interactions with the contract.
+The integration tests use `near-sandbox` to run a local NEAR node and `near-api` to create accounts, deploy contracts, and send transactions.
 </Tip>
 
-In this project in particular, the integration tests first deploy the `hello-near` contract. Then,
-they test that the cross-contract call correctly sets and retrieves the message. You will find the integration tests
-in `tests/`.
+The tests build both contracts from source before starting Sandbox, then deploy `hello-near` and the cross-contract example. They check the results of both high-level and low-level calls. The `TestSandbox` helper lives in [`test-utils/mod.rs`](https://github.com/near-examples/cross-contract-calls/blob/main/test-utils/mod.rs).
 
 {/* github-code
 url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-simple-rs/tests/tests.rs
-commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
-start: 4
-end: 106
+commit: f33e6ded02103ed987ffbc381b3ffc6307986a7a
+start: 1
+end: 59
 fname: tests.rs
 language: rust
-highlight: 31-33,37,42-43,49,53,58-59,65,68,75,79,84-85,91,94,101
 */}
 
-```rust title="tests.rs" lines highlight={31-33,37,42-43,49,53,58-59,65,68,75,79,84-85,91,94,101}
+```rust title="tests.rs" lines
+#[path = "../../test-utils/mod.rs"]
+mod common;
+
+use common::{build_contract, TestResult, TestSandbox};
+use serde_json::json;
+
 #[tokio::test]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let worker = near_workspaces::sandbox().await?;
+async fn high_and_low_level_cross_contract_calls() -> TestResult {
+    let hello_wasm = build_contract("tests/hello-near/Cargo.toml")?;
+    let contract_wasm = build_contract("Cargo.toml")?;
+    let sandbox = TestSandbox::start().await?;
+    let hello = sandbox.deploy("hello.sandbox", hello_wasm).await?;
+    let contract = sandbox
+        .deploy("cross-contract.sandbox", contract_wasm)
+        .await?;
+    let alice = sandbox.create_account("alice.sandbox").await?;
+    sandbox
+        .call(
+            &contract,
+            &contract,
+            "init",
+            json!({ "hello_account": hello }),
+        )
+        .await?;
 
-    // Build and deploy hello contract
-    let hello_contract_wasm = near_workspaces::compile_project("./tests/hello-near").await?;
-    let hello_contract: Contract = worker.dev_deploy(&hello_contract_wasm).await?;
+    let greeting = sandbox
+        .call(&alice, &contract, "hl_query_greeting", json!({}))
+        .await?;
+    assert_eq!(greeting, json!("Hello"));
 
-    // Deploy contract for testing
-    let contract_wasm = near_workspaces::compile_project("./").await?;
-    let contract = worker.dev_deploy(&contract_wasm).await?;
+    let changed = sandbox
+        .call(
+            &alice,
+            &contract,
+            "hl_change_greeting",
+            json!({ "new_greeting": "Howdy" }),
+        )
+        .await?;
+    assert_eq!(changed, json!(true));
+    let greeting = sandbox
+        .call(&alice, &contract, "hl_query_greeting", json!({}))
+        .await?;
+    assert_eq!(greeting, json!("Howdy"));
 
-    // Create accounts
-    let account = worker.dev_create_account().await?;
-    let alice = account
-        .create_subaccount("alice")
-        .initial_balance(NearToken::from_near(30))
-        .transact()
-        .await?
-        .into_result()?;
-
-    // Init contract
-    let _ = contract
-        .call("init")
-        .args_json(json!({ "hello_account": hello_contract.id() }))
-        .transact()
-        .await?
-        .into_result()?;
-
-    // Begin tests
-    test_hl_default_greeting(&alice, &contract).await?;
-    test_hl_change_greeting(&alice, &contract).await?;
-    test_ll_change_greeting(&alice, &contract).await?;
-    Ok(())
-}
-
-async fn test_hl_default_greeting(
-    user: &Account,
-    contract: &Contract,
-) -> Result<(), Box<dyn std::error::Error>> {
-    let greeting: String = user
-        .call(contract.id(), "hl_query_greeting")
-        .args_json(json!({}))
-        .max_gas()
-        .transact()
-        .await?
-        .json()?;
-
-    assert_eq!(greeting, "Hello".to_string());
-    Ok(())
-}
-
-async fn test_hl_change_greeting(
-    user: &Account,
-    contract: &Contract,
-) -> Result<(), Box<dyn std::error::Error>> {
-    let result: bool = user
-        .call(contract.id(), "hl_change_greeting")
-        .args_json(json!({ "new_greeting": "Howdy" }))
-        .max_gas()
-        .transact()
-        .await?
-        .json()?;
-
-    assert!(result);
-
-    let greeting: String = user
-        .call(contract.id(), "hl_query_greeting")
-        .args_json(json!({}))
-        .max_gas()
-        .transact()
-        .await?
-        .json()?;
-
-    assert_eq!(greeting, "Howdy".to_string());
-    Ok(())
-}
-
-async fn test_ll_change_greeting(
-    user: &Account,
-    contract: &Contract,
-) -> Result<(), Box<dyn std::error::Error>> {
-    let result: bool = user
-        .call(contract.id(), "ll_change_greeting")
-        .args_json(json!({ "new_greeting": "Hello" }))
-        .max_gas()
-        .transact()
-        .await?
-        .json()?;
-
-    assert!(result);
-
-    let greeting: String = user
-        .call(contract.id(), "ll_query_greeting")
-        .args_json(json!({}))
-        .max_gas()
-        .transact()
-        .await?
-        .json()?;
-
-    assert_eq!(greeting, "Hello".to_string());
+    let changed = sandbox
+        .call(
+            &alice,
+            &contract,
+            "ll_change_greeting",
+            json!({ "new_greeting": "Hello" }),
+        )
+        .await?;
+    assert_eq!(changed, json!(true));
+    let greeting = sandbox
+        .call(&alice, &contract, "ll_query_greeting", json!({}))
+        .await?;
+    assert_eq!(greeting, json!("Hello"));
     Ok(())
 }
 ```
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-simple-rs/tests/tests.rs#L4-L106)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f33e6ded02103ed987ffbc381b3ffc6307986a7a/contract-simple-rs/tests/tests.rs#L1-L59)
 
 </div>
 
@@ -423,7 +381,7 @@ You can combine several actions for the same contract into a batch. The actions 
 
 {/* github-code
 url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs
-commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+commit: f33e6ded02103ed987ffbc381b3ffc6307986a7a
 start: 8
 end: 20
 fname: batch_actions.rs
@@ -448,7 +406,7 @@ pub fn batch_actions(&mut self) -> Promise {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-advanced-rs/src/batch_actions.rs#L8-L20)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f33e6ded02103ed987ffbc381b3ffc6307986a7a/contract-advanced-rs/src/batch_actions.rs#L8-L20)
 
 </div>
 
@@ -458,7 +416,7 @@ The callback receives the value returned by the final action in the chain:
 
 {/* github-code
 url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/batch_actions.rs
-commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+commit: f33e6ded02103ed987ffbc381b3ffc6307986a7a
 start: 22
 end: 35
 fname: batch_actions.rs
@@ -484,7 +442,7 @@ pub fn batch_actions_callback(
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-advanced-rs/src/batch_actions.rs#L22-L35)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f33e6ded02103ed987ffbc381b3ffc6307986a7a/contract-advanced-rs/src/batch_actions.rs#L22-L35)
 
 </div>
 
@@ -496,7 +454,7 @@ A contract can call several contracts in parallel. If one call fails, the other 
 
 {/* github-code
 url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs
-commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+commit: f33e6ded02103ed987ffbc381b3ffc6307986a7a
 start: 16
 end: 55
 fname: multiple_contracts.rs
@@ -548,7 +506,7 @@ pub fn multiple_contracts(&mut self) -> Promise {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-advanced-rs/src/multiple_contracts.rs#L16-L55)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f33e6ded02103ed987ffbc381b3ffc6307986a7a/contract-advanced-rs/src/multiple_contracts.rs#L16-L55)
 
 </div>
 
@@ -558,7 +516,7 @@ The callback receives one result for each promise and must handle successes and 
 
 {/* github-code
 url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/multiple_contracts.rs
-commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+commit: f33e6ded02103ed987ffbc381b3ffc6307986a7a
 start: 57
 end: 90
 fname: multiple_contracts.rs
@@ -604,7 +562,7 @@ pub fn multiple_contracts_callback(
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-advanced-rs/src/multiple_contracts.rs#L57-L90)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f33e6ded02103ed987ffbc381b3ffc6307986a7a/contract-advanced-rs/src/multiple_contracts.rs#L57-L90)
 
 </div>
 
@@ -614,7 +572,7 @@ If every call returns the same type, you can iterate over the promise results di
 
 {/* github-code
 url: https://github.com/near-examples/cross-contract-calls/blob/main/contract-advanced-rs/src/similar_contracts.rs
-commit: f54b25a2fcd49e3647bac68985c42c99e0aa5028
+commit: f33e6ded02103ed987ffbc381b3ffc6307986a7a
 start: 8
 end: 57
 fname: similar_contracts.rs
@@ -676,7 +634,7 @@ pub fn similar_contracts_callback(&self, number_promises: u64) -> Vec<String> {
 
 <div className="github-source-link">
 
-[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f54b25a2fcd49e3647bac68985c42c99e0aa5028/contract-advanced-rs/src/similar_contracts.rs#L8-L57)
+[See code on GitHub](https://github.com/near-examples/cross-contract-calls/blob/f33e6ded02103ed987ffbc381b3ffc6307986a7a/contract-advanced-rs/src/similar_contracts.rs#L8-L57)
 
 </div>
 
@@ -688,7 +646,7 @@ Run its unit and Sandbox tests locally:
 
 ```bash
 cd contract-advanced-rs
-cargo test
+cargo test --locked
 ```
 
 Build, deploy, and initialize the contract with the accounts it will call:
