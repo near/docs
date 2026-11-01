@@ -118,7 +118,7 @@ export const Faucet = () => {
       setStatus('success')
 
       // Cleanup runs in the background after funding succeeds.
-      sendAction(tmpAccount, concat(new Uint8Array([7]), string('testnet')))
+      sendAction(tmpAccount, concat(new Uint8Array([7]), string('v2d.faucet.nonofficial.testnet')))
         .catch((error) => console.warn('Temporary faucet account cleanup failed:', error))
     } catch (err) {
       setErrorMsg(err.message || 'Something went wrong')
