@@ -71,6 +71,10 @@ Each transaction can have **one or multiple** [`Actions`](https://nomicon.io/Run
 14. [`DeterministicStateInit`](https://nomicon.io/RuntimeSpec/Actions.html#deterministicstateinitaction): special action to create a deterministic account (an advanced kind of implicit account)
 15. [`UniversalStateInit`](/protocol/tutorials/creating-universal-accounts): special action to create a [universal account](/protocol/accounts-contracts/account-id#universal-address), installing its code, storage, and access keys in one step
 
+<Warning>
+Never use `DeleteAccount` as a replacement for `Transfer`. If the beneficiary does not exist, the remaining balance is burned. Transfer first, wait for finalized success and outstanding refunds, then delete the account if needed. See [safe account deletion](/protocol/network/token-loss#deleting-account-with-non-existent-beneficiary).
+</Warning>
+
 For example, `bob.near` can bundle the following actions in a single transaction:
 - Create the account `contract.bob.near`
 - Transfer 5 NEAR to `contract.bob.near`
