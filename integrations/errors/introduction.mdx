@@ -38,17 +38,17 @@ Careful! Losing tokens means losing money!
 
 ## Refunding deleted accounts
 
-When a refund receipt is issued for an account, if that account no longer exists, the undeliverable system refund is burned. System refunds require an existing receiving account.
+See [refunding deleted accounts](/protocol/network/token-loss#refunding-deleted-accounts) for payout failures and outstanding refunds that can cause token loss.
 
 ### Deleting account with non-existent beneficiary
 
-When you delete an account, you must assign a beneficiary. The runtime sends the remaining balance directly to that beneficiary in a system payout receipt. If it cannot be delivered, its amount is burned. Verify that the beneficiary exists and track the payout’s finalized outcome.
+<Warning>
+Never use `DeleteAccount` as a replacement for `Transfer`. Follow the [safe account deletion procedure](/protocol/network/token-loss#deleting-account-with-non-existent-beneficiary): transfer, wait for finalized success and outstanding refunds, then delete if needed.
+</Warning>
 
 ### Account deleted before it receives a refund
 
-If an account is explicitly deleted while refunds are outstanding, those refunds can become undeliverable. Wait for outstanding receipts and refund outcomes before deleting an account.
-
-See the [runtime refund handling](https://github.com/near/nearcore/blob/2.13.4/runtime/runtime/src/lib.rs).
+See [account deletion with outstanding refunds](/protocol/network/token-loss#account-deleted-before-it-receives-a-refund).
 
 ---
 ## Failed asynchronous function calls

@@ -42,22 +42,33 @@ No one will be able to recover the funds. Funds will remain locked in the accoun
 ---
 ## Refunding deleted accounts
 
-When a refund receipt is issued for an account, if that account no longer exists, the funds will be dispersed among
-validators proportional to their stake in the current epoch.
+System refunds require an existing receiving account. If a refund cannot be delivered because the account no longer exists, its amount is burned.
 
 ### Deleting account with non-existent beneficiary
 
-When you delete an account, you must assign a beneficiary.
-Once deleted, a transfer receipt is generated and sent to the beneficiary account.
-If the beneficiary account does not exist, a refund receipt will be generated and sent back to the original account.
-Since the original account has already been deleted, the funds will be dispersed among validators.
+<Warning>
+Never use `DeleteAccount` as a replacement for `Transfer`, including when moving an account's entire balance. If the beneficiary does not exist, the remaining balance is burned.
+</Warning>
 
-### Account with zero balance is garbage-collected, just before it receives refund
+Deleting an account and paying its beneficiary happen in separate receipts:
 
-If an account `A` transfers all of its funds to another account `B` and account `B` does not exist,
-a refund receipt will be generated for account `A`. During the period of this round trip,
-account `A` is vulnerable to deletion by garbage collection activities on the network.
-If account `A` is deleted before the refund receipt arrives, the funds will be dispersed among validators.
+1. Account `A` is deleted with account `B` as its beneficiary.
+2. The runtime sends `A`'s remaining balance to `B` in a system payout receipt.
+3. If `B` does not exist when that receipt executes, the payout fails and its amount is burned. The deletion of `A` is not rolled back.
+
+Unlike an ordinary transfer, this system payout does not create an implicit account or generate another refund on failure. See the runtime's [account deletion](https://github.com/near/nearcore/blob/2.13.4/runtime/runtime/src/actions.rs#L399) and [failed system refund handling](https://github.com/near/nearcore/blob/2.13.4/runtime/runtime/src/lib.rs#L929).
+
+To move funds and then close the source account:
+
+1. Send a normal `Transfer`, leaving enough NEAR for transaction fees and any required storage balance.
+2. Wait for finalized success and for all outstanding receipts and refunds to complete. If the transfer fails, resolve the failure before deleting the account.
+3. Verify that the beneficiary exists, then submit a separate `DeleteAccount` transaction to send the remaining account balance, including any dust or released storage balance, to that beneficiary. Check the payout's finalized outcome as well.
+
+Before deletion, also [withdraw any gas key balances](/integrations/errors/introduction#deleting-gas-keys-or-accounts-that-hold-gas-key-balances); they are not included in the beneficiary payout.
+
+### Account deleted before it receives a refund
+
+If an account is explicitly deleted while refunds are outstanding, those refunds can become undeliverable and be burned. Keep the account until all outstanding receipts and refund outcomes have finalized.
 
 ---
 ## Failed function calls in batches

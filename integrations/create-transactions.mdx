@@ -82,6 +82,10 @@ A plain transfer to a **non-created implicit** account [creates it](/integration
 A plain transfer to a non-existing **named account** fails and refunds the transferred amount, while consumed gas remains charged.
 </Info>
 
+<Warning>
+Never use `DeleteAccount` to withdraw or sweep an account's balance. If the beneficiary does not exist, the remaining balance is burned. Transfer first, wait for finalized success and outstanding refunds, then delete the account if needed. See [safe account deletion](/protocol/network/token-loss#deleting-account-with-non-existent-beneficiary).
+</Warning>
+
 ### Transaction results
 
 Inspect `result.status` for success or failure and require `final_execution_status === "FINAL"` before treating the transfer as complete. The example below shows a finalized FT transfer-and-call submitted by `influencer.testnet` on testnet.
