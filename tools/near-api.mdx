@@ -1,7 +1,7 @@
 ---
 title: API Libraries
 icon: code
-description: "Learn to use APIs in JavaScript, Rust, and Python to interact with the blockchain."
+description: "Learn to use APIs in JavaScript, Rust, Python, and Flutter/Dart to interact with the blockchain."
 ---
 
 We offer a collection of language-specific libraries that allow developers to interact with the NEAR blockchain from both frontend and backend applications. The different APIs allow you to perform a variety of actions on the NEAR blockchain, including but not limited to:
@@ -16,7 +16,7 @@ We offer a collection of language-specific libraries that allow developers to in
 
 ## Available APIs
 
-We have APIs available for Javascript, Rust, and Python. Add them to your project using the following commands:
+We have APIs available for JavaScript, Rust, Python, and Flutter/Dart. Add them to your project using the following commands:
 
 <Tabs>
   <Tab title="🌐 near-api-js">
@@ -63,10 +63,19 @@ The Python package is named `near-kit` and is imported as `near`.
   ```
 
   </Tab>
+  <Tab title="🐦 near_dart">
+
+  ```bash
+  dart pub add near_dart
+  # Flutter wallet UX:
+  flutter pub add near_wallet_connect
+  ```
+
+  </Tab>
 </Tabs>
 
 <Tip>
-If you are building a web app and need to add Wallet Login on it you will instead need a [Wallet Connector](/web3-apps/tutorials/wallet-login).
+If you are building a web app and need to add Wallet Login on it you will instead need a [Wallet Connector](/web3-apps/tutorials/wallet-login). Flutter apps use [`near_wallet_connect`](https://pub.dev/packages/near_wallet_connect).
 </Tip>
 
 ---
@@ -300,6 +309,20 @@ print(f"Balance: {balance}")
   ```
 
   </Tab>
+  <Tab title="🐦 near_dart">
+
+  ```dart
+  import 'package:near_dart/near_dart.dart';
+
+  final client = NearRpcClient.mainnet();
+  final result = await client.viewAccount(
+    accountId: AccountId('alice.near'),
+    blockReference: BlockReference.finality(Finality.final_),
+  );
+  print(result.getOrThrow().amount.toNear());
+  ```
+
+  </Tab>
 </Tabs>
 
 ### Get State
@@ -434,6 +457,19 @@ print(f"Storage usage: {account.storage_usage} bytes")
   await account.startup()
 
   account_state = account.fetch_state()
+  ```
+
+  </Tab>
+  <Tab title="🐦 near_dart">
+
+  ```dart
+  final result = await client.viewAccount(
+    accountId: AccountId('alice.near'),
+    blockReference: BlockReference.finality(Finality.final_),
+  );
+  final account = result.getOrThrow();
+  print(account.storageUsage);
+  print(account.codeHash);
   ```
 
   </Tab>
@@ -1732,6 +1768,21 @@ print(f"Transfer result: {result.transaction_hash}")
   ```
 
   </Tab>
+  <Tab title="🐦 near_dart">
+
+  ```dart
+  final account = Account(
+    accountId: AccountId('alice.near'),
+    keyPair: await KeyPairEd25519.fromString('ed25519:...'),
+    client: NearRpcClient.mainnet(),
+  );
+  await account.transfer(
+    receiverId: AccountId('bob.near'),
+    amount: NearToken.fromNear(1),
+  );
+  ```
+
+  </Tab>
 </Tabs>
 
 ### Call Function
@@ -2066,6 +2117,20 @@ client.call("guestbook.near-examples.testnet", "add_message", {"text": "Hello!"}
 
   ```python
   await account.function_call("usn.near", "ft_transfer", {"receiver_id": "bob.near", "amount": "1000000000000000000000000"})
+  ```
+
+  </Tab>
+  <Tab title="🐦 near_dart">
+
+  ```dart
+  await account.callFunction(
+    contractId: AccountId('usn.near'),
+    methodName: 'ft_transfer',
+    args: {
+      'receiver_id': 'bob.near',
+      'amount': '1000000000000000000000000',
+    },
+  );
   ```
 
   </Tab>
@@ -3805,6 +3870,19 @@ print(messages)
   ```
 
   </Tab>
+  <Tab title="🐦 near_dart">
+
+  ```dart
+  final result = await client.callFunction(
+    accountId: AccountId('guestbook.near-examples.testnet'),
+    methodName: 'total_messages',
+    args: {},
+    blockReference: BlockReference.finality(Finality.final_),
+  );
+  print(result.getOrThrow());
+  ```
+
+  </Tab>
 </Tabs>
 
 ---
@@ -4899,6 +4977,13 @@ def verify_wallet_message(
   <Tab title="🐍 py-near">
 
   - [Github](https://github.com/pvolnov/py-near)
+
+  </Tab>
+  <Tab title="🐦 near_dart">
+
+  - [pub.dev](https://pub.dev/packages/near_dart)
+  - [Wallet package](https://pub.dev/packages/near_wallet_connect)
+  - [Github](https://github.com/0xjesus/near_dart)
 
   </Tab>
 </Tabs>
