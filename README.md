@@ -84,7 +84,9 @@ Edit the metadata to change the source, range, filename, language, or highlighte
 
 The script requires Node.js 20.17.0 or newer and no additional packages. It uses `GITHUB_TOKEN`, `GH_TOKEN`, or an authenticated GitHub CLI when available to increase GitHub API rate limits. Run its tests with `node --test scripts/sync-github-code.test.mjs`.
 
-The **Update GitHub code examples** workflow runs weekly and can also be triggered manually in GitHub Actions. When the sync changes pages or encounters an error, Copilot CLI repairs affected excerpt ranges, highlights, and surrounding explanations using the upstream source. The workflow validates the documentation and opens or updates the bot PR. The task prompt is in `.github/prompts/update-github-code.md`. Enable the organization policy allowing Copilot CLI usage billed to the organization; the workflow uses `GITHUB_TOKEN` with `copilot-requests: write`, without a separate AI API key. To convert remaining legacy `<Github />` components, run the script with `--migrate`.
+The **Check GitHub code examples** workflow runs weekly and can also be triggered manually in GitHub Actions. When the sync changes pages or encounters an error, it opens or updates a review issue with the proposed documentation diff, commit-pinned source links, and sync output. The full diff and log are available in the workflow run's `github-code-sync-report` artifact. A tracked branch advancing can update commit metadata even when the excerpt stays the same. If any example fails, the sync writes no pages and the workflow reports the errors and fails.
+
+To resolve the issue, compare the upstream code with the affected pages, correct excerpt ranges and highlights, and update surrounding explanations as needed. Run the sync script for the affected pages, validate with `mint validate`, and submit the reviewed changes in a PR. Close the issue once the updates are merged. The workflow uses `GITHUB_TOKEN` with read access to repository contents and write access to issues. To convert remaining legacy `<Github />` components, run the script with `--migrate`.
 
 ## Contributing
 

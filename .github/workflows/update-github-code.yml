@@ -1,4 +1,4 @@
-name: Update GitHub code examples
+name: Check GitHub code examples
 
 on:
   workflow_dispatch:
@@ -10,12 +10,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  update-examples:
+  check-examples:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
-      copilot-requests: write
+      contents: read
+      issues: write
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
@@ -25,7 +24,7 @@ jobs:
       - name: Test sync script
         run: node --test scripts/sync-github-code.test.mjs
 
-      - name: Refresh code examples
+      - name: Check for example updates
         id: sync
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -34,47 +33,65 @@ jobs:
           status=0
           node scripts/sync-github-code.mjs > .tmp/github-code-sync.log 2>&1 || status=$?
           cat .tmp/github-code-sync.log
-          if [ "$status" -ne 0 ] || ! git diff --quiet -- '*.mdx'; then
-            echo "repair=true" >> "$GITHUB_OUTPUT"
+          git diff --no-ext-diff -- '*.mdx' > .tmp/github-code-sync.diff
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          if [ "$status" -ne 0 ] || [ -s .tmp/github-code-sync.diff ]; then
+            echo "report=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Install Copilot CLI
-        if: steps.sync.outputs.repair == 'true'
-        run: npm install -g @github/copilot
+      - name: Upload full sync report
+        if: steps.sync.outputs.report == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-code-sync-report
+          include-hidden-files: true
+          path: |
+            .tmp/github-code-sync.log
+            .tmp/github-code-sync.diff
 
-      - name: Repair excerpts and explanations with Copilot
-        if: steps.sync.outputs.repair == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          COPILOT_GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          copilot -p "$(cat .github/prompts/update-github-code.md)" \
-            --allow-tool=write \
-            --allow-tool='shell(git diff:*)' \
-            --allow-tool='shell(git show:*)' \
-            --allow-tool='shell(gh api:*)' \
-            --allow-tool='shell(node scripts/sync-github-code.mjs:*)'
-
-      - name: Validate updated documentation
-        if: steps.sync.outputs.repair == 'true'
-        run: |
-          git diff --check
-          git diff --quiet -- scripts .github
-          npx --yes mint@4.2.666 validate
-
-      - name: Open PR if changed
+      - name: Open or update review issue
+        if: steps.sync.outputs.report == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          SYNC_STATUS: ${{ steps.sync.outputs.status }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b update-github-code
-          git add -- '*.mdx'
-          git diff --staged --quiet && exit 0
-          git commit -m "chore(docs): update GitHub code examples"
-          git push origin update-github-code --force
-          if [ "$(gh pr list --head update-github-code --state open --json number --jq length)" = "0" ]; then
-            gh pr create --title "chore(docs): update GitHub code examples" \
-              --body "Refresh embedded code and commit-pinned source links from GitHub. Review the excerpts against their surrounding explanations before merging." \
-              --head update-github-code
+          node --input-type=module <<'NODE'
+          import { readFile, writeFile } from 'node:fs/promises';
+
+          const run = `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`;
+          function excerpt(text, language, limit) {
+            const truncated = text.length > limit;
+            const shown = text.slice(0, limit);
+            const fence = '`'.repeat(Math.max(3, ...Array.from(shown.matchAll(/`+/g), match => match[0].length + 1)));
+            return `${fence}${language}\n${shown}\n${fence}${truncated ? '\n\nTruncated; download the full report from the workflow run.' : ''}`;
+          }
+          const log = await readFile('.tmp/github-code-sync.log', 'utf8');
+          const diff = await readFile('.tmp/github-code-sync.diff', 'utf8');
+          const body = [
+            'The GitHub code example check needs manual review.',
+            `[Workflow run and full report](${run}) (artifact: \`github-code-sync-report\`).`,
+            process.env.SYNC_STATUS !== '0'
+              ? 'The sync failed. Resolve the errors below and rerun the check. The sync writes no pages when any example fails.'
+              : 'The diff below shows proposed excerpt updates and previous/new commit-pinned source links. A tracked branch advancing can also update commit metadata without changing the excerpt.',
+            'Review the upstream source against each affected page. Correct shifted ranges and highlights, update surrounding explanations, then open a PR with the reviewed documentation changes. Run `node scripts/sync-github-code.mjs path/to/page.mdx` to refresh a page, or add `--force` after correcting its metadata. Validate with `mint validate` before submitting.',
+            '### Sync output\n\n' + excerpt(log, 'text', 4000),
+            diff ? '### Proposed documentation diff\n\n' + excerpt(diff, 'diff', 45000) : '',
+          ].filter(Boolean).join('\n\n');
+          await writeFile('.tmp/github-code-issue.md', body);
+          NODE
+
+          issue=$(gh issue list --state open --author 'github-actions[bot]' \
+            --search 'in:title "docs: review GitHub code example updates"' \
+            --json number,title \
+            --jq '[.[] | select(.title == "docs: review GitHub code example updates")][0].number // empty')
+          if [ -n "$issue" ]; then
+            gh issue edit "$issue" --body-file .tmp/github-code-issue.md
+          else
+            gh issue create --title "docs: review GitHub code example updates" \
+              --body-file .tmp/github-code-issue.md
           fi
+
+      - name: Fail if sync could not complete
+        if: steps.sync.outputs.status != '0'
+        run: exit 1
