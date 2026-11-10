@@ -143,6 +143,8 @@ The contracts are implemented following the latest version of the SDK, and inclu
 
 ### Testing
 
+Start by running the contract's sandbox tests locally. The tests handle the local blockchain, accounts, balances, and contract setup; you do not need a testnet account or wallet login.
+
 Each contract includes sandbox tests that simulate real user interactions. For example, in the `Guest Book` example, the tests cover scenarios like having multiple accounts signing the guest book, including premium messages.
 
 
@@ -154,7 +156,7 @@ cargo test
 
 ### Creating an Account
 
-All smart contracts can be built and deployed using the `NEAR CLI`. A good first step is to always create a new NEAR account to deploy your contract:
+When you are ready to share your contract, you can deploy it to testnet using the `NEAR CLI`. Create an account to host it:
 
 ```bash
 near create-account <accountId> --useFaucet

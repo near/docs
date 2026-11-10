@@ -199,7 +199,7 @@ Read [asynchronous-call security](/smart-contracts/security/cross-contract-calls
 
 ## Testing Yield and Resume
 
-The [example's integration tests](https://github.com/near-examples/yield-resume/blob/main/contract/tests/yield_resume.rs) build the contract from source and use `near-sandbox` with `near-api` to verify both an external response and a timeout. The timeout test fast-forwards the local node. Both tests check that pending requests are removed and that completed requests cannot be resumed again.
+The [example's sandbox tests](https://github.com/near-examples/yield-resume/blob/main/contract/tests/yield_resume.rs) build the contract from source and use `near-sandbox` with `near-api` to verify both an external response and a timeout. The timeout test fast-forwards the local node. Both tests check that pending requests are removed and that completed requests cannot be resumed again.
 
 From the repository's `contract` directory, run:
 

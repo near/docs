@@ -216,7 +216,7 @@ cargo test --locked
 ```
 
 <Tip>
-The integration tests use `near-sandbox` to run a local NEAR node and `near-api` to create accounts, deploy contracts, and send transactions.
+The sandbox tests use `near-sandbox` to run a local NEAR node and `near-api` to create accounts, deploy contracts, and send transactions.
 </Tip>
 
 The tests build both contracts from source before starting Sandbox, then deploy `hello-near` and the cross-contract example. They check the results of both high-level and low-level calls. The `TestSandbox` helper lives in [`test-utils/mod.rs`](https://github.com/near-examples/cross-contract-calls/blob/main/test-utils/mod.rs).

@@ -3,14 +3,14 @@ title: Unit Testing
 description: "Learn how to write and run unit tests for NEAR smart contracts to test individual methods and functions in isolation."
 ---
 
-Smart contracts need both unit and integration tests:
+Smart contracts need both unit and sandbox tests:
 
 1. **Unit tests** exercise methods individually. They are written in Rust alongside the contract and run locally.
-2. **Integration tests** deploy the compiled contract to a local Sandbox or testnet and exercise it through transactions.
+2. **Sandbox tests** deploy the compiled contract to a local NEAR Sandbox and exercise it through transactions.
 
-Use unit tests for contract logic and state changes. Use [integration tests](/smart-contracts/testing/integration-test) for behavior that depends on the runtime, including cross-contract calls, gas, attached deposits, and multiple accounts.
+Use unit tests for contract logic and state changes. Use [sandbox tests](/smart-contracts/testing/integration-test) for behavior that depends on the runtime, including cross-contract calls, gas, attached deposits, and multiple accounts.
 
-We recommend using both types of tests and testing on testnet before deploying a contract to mainnet.
+Use both types of tests during local development. Sandbox tests handle local accounts, balances, and contract setup in code, so you do not need a public account, faucet tokens, or a wallet login. When you are ready to share your contract, deploy it to testnet before releasing on mainnet.
 
 ---
 
@@ -23,7 +23,7 @@ cargo test
 ```
 
 <Tip>
-`cargo test` runs both unit and [integration](/smart-contracts/testing/integration-test) tests present in the project.
+`cargo test` runs both unit and [sandbox](/smart-contracts/testing/integration-test) tests present in the project.
 </Tip>
 
 ---
@@ -213,4 +213,4 @@ Unit tests are useful to check for code integrity, and detect basic errors on is
 - Testing [cross-contract calls](../anatomy/crosscontract)
 - Testing complex interactions, i.e. multiple users depositing money on the contract
 
-For all these cases it is necessary to **complement** unit tests with [integration tests](/smart-contracts/testing/integration-test).
+For all these cases it is necessary to **complement** unit tests with [sandbox tests](/smart-contracts/testing/integration-test).
