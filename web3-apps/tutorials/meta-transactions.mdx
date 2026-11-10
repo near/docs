@@ -7,6 +7,14 @@ description: "Learn how to build a meta transaction relayer that allows users to
 
 Relayers allow users to transact on NEAR while a service pays their transaction gas fees. Users still sign the actions they want to execute, so the relayer can submit those actions without holding the users' private keys.
 
+<Accordion title="Common use cases">
+
+- **Gasless onboarding:** let new users interact with your app before they own any NEAR, while your relayer pays their gas.
+- **Transact with only a token balance:** users who only hold fungible tokens, such as stablecoins, can still send transactions because the relayer covers the gas.
+- **Sponsor activity from a shared pool:** fund one relayer account instead of sending NEAR to every user account.
+
+</Accordion>
+
 <Info>
 The JavaScript examples require `near-api-js` 7.4 or later and `borsh` 2. The Rust examples use the `near-api` crate version 0.8.6, with Axum for the server, Reqwest for the client, and `borsh` 1 for serialization.
 </Info>
