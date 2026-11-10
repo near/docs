@@ -60,6 +60,10 @@
   },
   "redirects": [
     {
+      "source": "/web3-apps/tutorials/localnet/introduction",
+      "destination": "/web3-apps/tutorials/localnet/run"
+    },
+    {
       "source": "/getting-started/hackathons",
       "destination": "/getting-started/start-building"
     },
@@ -539,14 +543,7 @@
               "web3-apps/tutorials/data-types",
               "web3-apps/tutorials/account-validation",
               "web3-apps/tutorials/meta-transactions",
-              {
-                "group": "Testing on Localnet",
-                "icon": "test-tube",
-                "pages": [
-                  "web3-apps/tutorials/localnet/introduction",
-                  "web3-apps/tutorials/localnet/run"
-                ]
-              }
+              "web3-apps/tutorials/localnet/run"
             ]
           },
           {
