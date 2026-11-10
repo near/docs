@@ -24,11 +24,11 @@ Our example [implementation](./chain-signatures/implementation) shows you how to
 
 Integration with Chain Signatures brings many benefits to Web3 developers:
 
-- Single Account, Multi-Chain Operations: Developers can manage interactions with external blockchains from one NEAR account. This simplifies key management and reduces the need for multiple wallets or addresses, enhancing user experience and security.
+- Single Account, Multi-Chain Operations: Developers can manage interactions with external blockchains from one NEAR account, without needing multiple wallets or addresses.
 
-- Reduced Overhead in Cross-Chain Development: Chain Signatures eliminate the complexity of managing transactions across different blockchains. Developers can write smart contracts on NEAR that directly sign for cross-chain transactions, cutting down on code redundancy and potential points of failure.
+- Reduced Overhead in Cross-Chain Development: Developers can write smart contracts on NEAR that directly sign for cross-chain transactions.
 
-- Secure Transaction Signing: Using [Multi-Party Computation (MPC)](#multi-party-computation-service), developers gain access to a decentralized signing process for multi-chain transactions. This means no single entity controls the signing key, reducing risks associated with centralized custodianship.
+- Secure Transaction Signing: Using [Multi-Party Computation (MPC)](#multi-party-computation-service), no single entity controls the signing key.
 
 <Tip>
 
@@ -36,34 +36,6 @@ Keep in mind that Chain Signatures is a “one way” solution to sign and execu
 If you're looking to access states on external blockchains, you should check out Omnibridge.
 
 </Tip>
-
-## Interoperability
-
-NEAR's chain abstraction stack allows developers to leverage powerful interoperability options across different blockchains. Developers can execute their business logic and deploy smart contracts on NEAR’s scalable blockchain infrastructure, while maintaining control over external accounts (such as Bitcoin, Ethereum, Base) and assets natively.
-
-This integrated approach combines external blockchain assets with NEAR’s scalability, enabling the development of native dApps that offer superior performance and an optimized user experience. By combining the strengths of different ecosystems, NEAR Protocol unlocks an array of transformative possibilities without compromising on decentralization or scalability.
-
-## Use Cases
-
-The Chain Signatures architecture provides a decentralized method to interact with multiple blockchains from one NEAR account. With Chain Signatures, blockchain use cases expands to new levels.
-
-### Bitcoin DeFi
-
-Developers can build decentralized finance (DeFi) applications on NEAR, such as decentralized exchanges (DEXs), lending platforms, or yield farming protocols, while directly leveraging Bitcoin liquidity. The business logic resides on NEAR, while BTC is used for actual payments.
-
-#### Examples
-
-- Atomic Swaps: Facilitate trustless, instant exchanges between Bitcoin and other cryptocurrencies, enhancing liquidity and reducing counterparty risk.
-- Receive Bitcoin payments with a native transfer to a Chain Signature derived account.
-- Use Chain Signatures to control the payment flow and execute Bitcoin transactions, such as locking or transferring assets.
-- Use smart contracts on NEAR to encapsulate business logic such as interest calculations, borrowing, order processing, reward distribution, and repayments.
-
-### Cross-Chain NFT Platforms
-
-Developers can create a NFT marketplace on NEAR where users purchase NFTs using external cryptocurrencies such as Bitcoin. The marketplace could handle:
-
-- BTC payments via Chain Signatures and Omnibridge.
-- NFT minting and trading logic on NEAR. (_NFTs could also be minted on multiple blockchains thanks to Chain Signatures_)
 
 ---
 
@@ -123,6 +95,8 @@ After a request is made, the `sign` method will yield execution waiting while th
 
 Once the signature is ready, the contract resumes computation and returns it to the user. This signature is a valid signed transaction that can be readily sent to the target blockchain to be executed.
 
+For the user, the process is made completely **on chain**, since they only need to make a call to a smart contract and wait for the response.
+
 <Tip>
 The `sign` method currently supports both Secp256k1 and Ed25519 signature schemes which enables signing transactions for the vast majority of the well-known blockchains including Bitcoin, Ethereum, Solana, BNB chain, Ton, or Stellar.
 </Tip>
@@ -159,13 +133,3 @@ near contract call-function as-read-only v1.signer state json-args {} network-co
 ```
 
 [mpc.nearone.org](https://mpc.nearone.org) shows the live operators and a security overview. The audit reports are in [near/mpc/audits](https://github.com/near/mpc/tree/main/audits), and the [operator guide](https://github.com/near/mpc/blob/main/docs/guide/operating-an-mpc-node.md) covers running a node.
-
----
-
-## Concluding Remarks
-
-Chain Signatures are a powerful tool that allows NEAR accounts to control accounts on other blockchains. This is a fundamental step towards enabling true ownership of cross-chain data and assets.
-
-For the user, the process is made completely **on chain**, since they only need to make a call to a smart contract and wait for the response.
-
-Thanks to `derivation paths`, a single NEAR account can control **multiple accounts** on different blockchains, and thanks to the MPC service, the user can be sure that **nobody but themselves** can request signatures for those accounts.
