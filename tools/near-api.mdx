@@ -56,13 +56,6 @@ pip install near-kit python-dotenv
 The Python package is named `near-kit` and is imported as `near`.
 
   </Tab>
-  <Tab title="🐍 py-near">
-
-  ```shell
-  pip install py-near
-  ```
-
-  </Tab>
 </Tabs>
 
 <Tip>
@@ -288,18 +281,6 @@ print(f"Balance: {balance}")
 ```
 
   </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  from py_near.account import Account
-
-  account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
-
-  account_balance = account.get_balance()
-  ```
-
-  </Tab>
 </Tabs>
 
 ### Get State
@@ -423,18 +404,6 @@ account = near.account(account_id, network="testnet")
 print(f"Code hash: {account.code_hash}")
 print(f"Storage usage: {account.storage_usage} bytes")
 ```
-
-  </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  from py_near.account import Account
-
-  account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
-
-  account_state = account.fetch_state()
-  ```
 
   </Tab>
 </Tabs>
@@ -867,13 +836,6 @@ print(f"Seed phrase: {seed_phrase}")
   </Tabs>
 
   </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  await account.function_call("testnet", "create_account", {"new_account_id": "example-account.testnet", "new_public_key": "ed25519:..."}, "30000000000000", 1 * NEAR)
-  ```
-
-  </Tab>
 </Tabs>
 
 ### Create Sub-Account
@@ -1123,21 +1085,6 @@ print(f"Private key: {key.secret_key}")
 </div>
 
 {/* /github-code */}
-
-  </Tab>
-  <Tab title="🐍 py-near">
-
-  Create a sub-account and fund it with your main account:
-
-  ```python
-  from py_near.account import Account
-  from py_near.dapps.core import NEAR
-
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
-
-  res = account.create_account(account_id="sub.example-account.testnet", public_key="...", initial_balance=1 * NEAR)
-  ```
 
   </Tab>
 </Tabs>
@@ -1719,19 +1666,6 @@ print(f"Transfer result: {result.transaction_hash}")
 {/* /github-code */}
 
   </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  from py_near.account import Account
-  from py_near.dapps.core import NEAR
-
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
-
-  await account.send_money("receiver-account.testnet", 1 * NEAR)
-  ```
-
-  </Tab>
 </Tabs>
 
 ### Call Function
@@ -2060,13 +1994,6 @@ client.call("guestbook.near-examples.testnet", "add_message", {"text": "Hello!"}
 </div>
 
 {/* /github-code */}
-
-  </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  await account.function_call("usn.near", "ft_transfer", {"receiver_id": "bob.near", "amount": "1000000000000000000000000"})
-  ```
 
   </Tab>
 </Tabs>
@@ -2598,24 +2525,6 @@ asyncio.run(main())
 {/* /github-code */}
 
   </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  import asyncio
-  from py_near.account import Account
-
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
-
-  # Prepare the transactions
-  tx1 = account.function_call("guestbook.near-examples.testnet", "add_message", { "text": "Hello, world!" })
-  tx2 = account.function_call("counter.near-examples.testnet", "increment", {})
-
-  # Send the transactions simultaneously
-  transactionsResults = await asyncio.gather(tx1, tx2)
-  ```
-
-  </Tab>
 </Tabs>
 
 <Warning>
@@ -2824,21 +2733,6 @@ print(f"Deploy contract result: {result.transaction_hash}")
 </div>
 
 {/* /github-code */}
-
-  </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  import asyncio
-  from py_near.account import Account
-
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
-  await account.startup()
-
-  with open("contract.wasm", "rb") as f:
-    contract_code = f.read()
-  await account.deploy_contract(contract_code)
-  ```
 
   </Tab>
 </Tabs>
@@ -3792,19 +3686,6 @@ print(messages)
 {/* /github-code */}
 
   </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  view_call_result = await account.view_function("guestbook.near-examples.testnet", "total_messages", {})
-  # If args are required, they can be passed in like this in the 3rd argument:
-  # {
-  #   "from_index": "0",
-  #   "limit": "10"
-  # }
-  print(view_call_result)
-  ```
-
-  </Tab>
 </Tabs>
 
 ---
@@ -3914,13 +3795,6 @@ print(f"Account has {len(keys)} keys")
 </div>
 
 {/* /github-code */}
-
-  </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  keys = await account.get_access_key_list()
-  ```
 
   </Tab>
 </Tabs>
@@ -4091,13 +3965,6 @@ print(f"Added Full Access Key: {full_access_key.public_key}")
 </div>
 
 {/* /github-code */}
-
-  </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  keys = await account.add_full_access_public_key("5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj")
-  ```
 
   </Tab>
 </Tabs>
@@ -4285,18 +4152,6 @@ print(f"Added Function Call Key: {function_call_key.public_key}")
 {/* /github-code */}
 
   </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  await account.add_public_key(
-    "5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj",
-    "example-contract.testnet", # Contract this key is allowed to call
-    ["example_method"], # Methods this key is allowed to call (optional)
-    0.25 * NEAR # Gas allowance key can use to call methods (optional)
-  )
-  ```
-
-  </Tab>
 </Tabs>
 
 <Tip>
@@ -4453,13 +4308,6 @@ print(f"Deleted Function Call Key: {function_call_key.public_key}")
 </div>
 
 {/* /github-code */}
-
-  </Tab>
-  <Tab title="🐍 py-near">
-
-  ```python
-  await account.delete_public_key("5X9WvUbRV3aSd9Py1LK7HAndqoktZtcgYdRjMt86SxMj")
-  ```
 
   </Tab>
 </Tabs>
@@ -4894,11 +4742,6 @@ def verify_wallet_message(
 
   - [Complete Python examples](https://github.com/near-examples/near-api-examples/tree/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py)
   - [Dependency configuration](https://github.com/near-examples/near-api-examples/blob/fe8a9b52688965ef272fc2e199fcd46111ff3ade/near-kit-py/pyproject.toml)
-
-  </Tab>
-  <Tab title="🐍 py-near">
-
-  - [Github](https://github.com/pvolnov/py-near)
 
   </Tab>
 </Tabs>
