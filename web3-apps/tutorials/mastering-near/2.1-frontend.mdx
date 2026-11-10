@@ -84,6 +84,12 @@ export const RPC_URL = process.env.NEXT_PUBLIC_RPC_URL ||
 
 To be able to fully interact with the contract - send bids and claim the auction - you'll need a `wallet` to sign transactions. Wallets securely store your private keys and allow you to sign transactions without exposing your private key to the frontend. We use `@hot-labs/near-connect` to let users choose and connect a wallet.
 
+<Tip>
+**Testnet Account**
+
+By default, the frontend connects to `testnet`, so you need a `testnet` account in your wallet to place bids and claim the auction. If you don't have one, check how to [create one using a wallet](/getting-started/create-account#using-a-wallet).
+</Tip>
+
 We abstract the wallet connection in our `near.js` file by exposing methods to complete various tasks. Feel free to [explore the file](https://github.com/near-examples/auctions-tutorial/blob/main/frontends/01-frontend/src/wallets/near.js) to see how `NearConnector` restores a connected account and listens for sign-in and sign-out events.
 
 The wallet object is initialized in the `_app.js` file and added to the global context along with the account that is signed in to make it easier to access anywhere in the application. The connector is loaded in the browser, and the effect removes its event listeners when it is cleaned up.
