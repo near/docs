@@ -60,6 +60,10 @@
   },
   "redirects": [
     {
+      "source": "/getting-started/hackathons",
+      "destination": "/getting-started/start-building"
+    },
+    {
       "source": "/web3-apps/concepts/web-login",
       "destination": "/web3-apps/tutorials/wallet-login"
     },
@@ -257,15 +261,20 @@
             "group": " ",
             "pages": [
               "index",
-              "getting-started/what-is-near",
-              "communities"
+              "getting-started/what-is-near"
             ]
           },
           {
             "group": "Getting Started",
             "pages": [
+              "getting-started/start-building",
               "getting-started/create-account",
-              "getting-started/faucet",
+              "getting-started/faucet"
+            ]
+          },
+          {
+            "group": "Build a Complete App",
+            "pages": [
               {
                 "group": "Mastering NEAR",
                 "icon": "graduation-cap",
@@ -302,8 +311,8 @@
           {
             "group": "Resources",
             "pages": [
-              "getting-started/hackathons",
-              "getting-started/tools-for-ai"
+              "getting-started/tools-for-ai",
+              "communities"
             ]
           }
         ]

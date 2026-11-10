@@ -1,0 +1,204 @@
+---
+title: Start Building
+icon: hammer
+mode: wide
+description: "Choose what to build on NEAR, and find the guides and tools you need for it"
+---
+
+NEAR lets you write smart contracts in Rust, build Web3 apps where users log in with their wallets, control accounts on other chains, and give AI agents access to the blockchain.
+
+Pick what you want to build, and follow its guide.
+
+<CardGroup cols={3}>
+  <Card title="Smart Contracts" icon="code" href="#smart-contracts">
+    Write programs in Rust that store data, hold tokens, and run on-chain.
+  </Card>
+  <Card title="Web3 Apps" icon="globe" href="#web3-apps">
+    Build frontends where users log in with their NEAR wallets.
+  </Card>
+  <Card title="Multichain Apps" icon="link" href="#multichain-apps">
+    Sign transactions for Bitcoin, Ethereum, Solana, and more.
+  </Card>
+  <Card title="AI Agents" icon="bot" href="#ai-agents">
+    Help your coding agent build on NEAR, or let agents use the blockchain.
+  </Card>
+  <Card title="On-Chain Data" icon="database" href="#on-chain-data">
+    Query the history of accounts, transactions, and events.
+  </Card>
+  <Card title="Build a Complete App" icon="graduation-cap" href="#go-further">
+    Combine a contract, tests, a frontend, and an indexer in one app.
+  </Card>
+</CardGroup>
+
+<Card title="Need Help?" icon="users" href="/communities" cta="Join the community" arrow horizontal>
+  Ask questions in the NEAR developer channels, and find answers to common questions.
+</Card>
+
+---
+
+## Smart Contracts
+
+Smart contracts are programs that live on the blockchain: they store data, hold tokens, and execute code when users call their functions. In NEAR, contracts are written in Rust.
+
+<Card title="Smart Contract Quickstart" icon="rocket" href="/smart-contracts/quickstart" cta="Start here" arrow horizontal>
+  Create, test and deploy an auction contract.
+</Card>
+
+#### Tools you will use
+
+<CardGroup cols={2}>
+  <Card title="near-sdk-rs" icon="book-open" href="/tools/sdk">
+    The official SDK to write contracts in Rust.
+  </Card>
+  <Card title="NEAR Sandbox" icon="test-tube" href="/smart-contracts/testing/integration-test">
+    Tests your contract locally, no account needed.
+  </Card>
+  <Card title="NEAR CLI" icon="terminal" href="/tools/cli">
+    Creates accounts, deploys contracts, and calls their functions from the terminal.
+  </Card>
+  <Card title="cargo-near" icon="package" href="https://github.com/near/cargo-near">
+    Creates, builds and deploys contracts.
+  </Card>
+</CardGroup>
+
+---
+
+## Web3 Apps
+
+Web3 apps are frontends where users log in with their NEAR wallets and interact with smart contracts.
+
+<CardGroup cols={2}>
+  <Card title="Web3 App Quickstart" icon="rocket" href="/web3-apps/quickstart" cta="Start here" arrow>
+    Create a React app where users log in and call a contract already deployed on `testnet`.
+  </Card>
+  <Card title="Add Wallet Login" icon="log-in" href="/web3-apps/tutorials/wallet-login" cta="Integrate NEAR" arrow>
+    Already have an app? Add NEAR wallet login to it.
+  </Card>
+</CardGroup>
+
+#### Tools you will use
+
+<CardGroup cols={3}>
+  <Card title="NEAR Connect" icon="wallet" href="/tools/near-connect">
+    Lets users log in with any NEAR wallet.
+  </Card>
+  <Card title="NEAR API JS" icon="code" href="/tools/near-api#🌐-near-api-js">
+    Reads data from the blockchain and sends transactions.
+  </Card>
+  <Card title="near-kit" icon="code" href="/tools/near-api#🌐-near-kit">
+    Modern TypeScript client with a fetch-like API.
+  </Card>
+  <Card title="near-kit-py" icon="code" href="/tools/near-api#🐍-near-kit-py">
+    Reads data from the blockchain and sends transactions from Python.
+  </Card>
+  <Card title="create-near-app" icon="package" href="https://github.com/near/create-near-app">
+    Creates a frontend template ready to talk with NEAR.
+  </Card>
+  <Card title="near-sign-verify" icon="file-check" href="https://github.com/elliotBraem/near-sign-verify">
+    Creates and validates NEP-413 signed messages.
+  </Card>
+  <Card title="better-near-auth" icon="log-in" href="https://github.com/elliotBraem/better-near-auth">
+    Sign in with NEAR plugin for Better Auth.
+  </Card>
+</CardGroup>
+
+---
+
+## Multichain Apps
+
+NEAR accounts and contracts can sign transactions for other chains, such as Bitcoin, Ethereum and Solana, and users can swap assets across chains by simply expressing the outcome they want.
+
+<CardGroup cols={2}>
+  <Card title="Chain Signatures" icon="key" href="/chain-abstraction/chain-signatures/implementation" cta="Start here" arrow>
+    Sign transactions for other chains from a NEAR account or contract.
+  </Card>
+  <Card title="NEAR Intents" icon="repeat" href="/chain-abstraction/intents/overview" cta="Start here" arrow>
+    Let users swap assets across chains, with solvers competing to fill their request.
+  </Card>
+</CardGroup>
+
+#### Tools you will use
+
+<CardGroup cols={3}>
+  <Card title="chainsig.js" icon="code" href="/chain-abstraction/chain-signatures/implementation">
+    Builds and signs transactions for other chains from TypeScript.
+  </Card>
+  <Card title="omni-transaction-rs" icon="code" href="https://github.com/near/omni-transaction-rs">
+    Builds transactions for other chains from Rust, including from within a contract.
+  </Card>
+  <Card title="1Click SDKs" icon="shuffle">
+    Request cross-chain swaps through NEAR Intents, from [TypeScript](https://github.com/defuse-protocol/one-click-sdk-typescript), [Rust](https://github.com/defuse-protocol/one-click-sdk-rs) or [Go](https://github.com/defuse-protocol/one-click-sdk-go).
+  </Card>
+  <Card title="intents-sdk" icon="package" href="https://github.com/defuse-protocol/sdk-monorepo/tree/main/packages/intents-sdk">
+    SDK to build intents-based applications.
+  </Card>
+  <Card title="NEAR Intents Docs" icon="book-open" href="https://docs.near-intents.org/near-intents">
+    The complete documentation of NEAR Intents.
+  </Card>
+  <Card title="NEAR Intents Explorer" icon="search" href="https://explorer.near-intents.org/">
+    Explore the transactions made through NEAR Intents.
+  </Card>
+</CardGroup>
+
+---
+
+## AI Agents
+
+Coding agents can help you build on NEAR, and agents can use NEAR to hold assets and send transactions.
+
+<Card title="Tools for AI Agents" icon="bot" href="/getting-started/tools-for-ai" cta="Start here" arrow horizontal>
+  Give your agent access to these docs, to task-specific skills, and to the blockchain.
+</Card>
+
+#### Tools you will use
+
+<CardGroup cols={3}>
+  <Card title="Agent Skills" icon="sparkles" href="/getting-started/tools-for-ai#near-agent-skills">
+    Task-specific guidance for coding agents building on NEAR.
+  </Card>
+  <Card title="NEAR AI Cloud" icon="shield-check" href="https://docs.near.ai/">
+    Private, verifiable AI inference.
+  </Card>
+  <Card title="near-ai-chat" icon="message-circle" href="https://github.com/jlwaugh/near-ai-chat">
+    AI chat agent starter template for NEAR AI Cloud.
+  </Card>
+</CardGroup>
+
+<Tip>
+**Need NEAR AI credits?** You can [request NEAR AI Cloud credits](https://www.notion.so/Requesting-NEAR-AI-Cloud-Credits-2deda22d7b6481aea8e1e30282efcb5e) for your project.
+</Tip>
+
+---
+
+## On-Chain Data
+
+If your app needs historical data, such as all the transactions of a user or the events of a contract, you will need more than the RPC: data APIs, public datasets, and indexers.
+
+<Card title="What is Data Infrastructure?" icon="database" href="/data-infrastructure/what-is" cta="Start here" arrow horizontal>
+  Learn about the options to access on-chain data, and when to use each.
+</Card>
+
+#### Tools you will use
+
+<CardGroup cols={2}>
+  <Card title="Data APIs" icon="search" href="/data-infrastructure/data-api">
+    Track the assets, transactions and events of any account through simple API calls.
+  </Card>
+  <Card title="BigQuery" icon="chart-bar" href="/data-infrastructure/big-query">
+    Query historical on-chain data using SQL.
+  </Card>
+  <Card title="Neardata" icon="layers" href="https://docs.fastnear.com/neardata">
+    Stream blocks into your own indexer.
+  </Card>
+  <Card title="Stream NEAR" icon="radio" href="https://stream.near.tools">
+    Server-Sent Events stream for real-time block data.
+  </Card>
+</CardGroup>
+
+---
+
+## Go Further
+
+<Card title="Mastering NEAR" icon="graduation-cap" href="/web3-apps/tutorials/mastering-near/0-intro" cta="Build a complete app" arrow horizontal>
+  Once you have gone through a quickstart, build a complete app: an auction contract with tests, a frontend, an indexer, NFT and FT support, and a factory to deploy new auctions.
+</Card>
