@@ -76,6 +76,14 @@
       "destination": "/getting-started/tools-for-ai#llms-txt"
     },
     {
+      "source": "/ai/shade-agents",
+      "destination": "/getting-started/tools-for-ai#shade-agent-framework-deprecated"
+    },
+    {
+      "source": "/ai/shade-agents/:path*",
+      "destination": "/getting-started/tools-for-ai#shade-agent-framework-deprecated"
+    },
+    {
       "source": "/chain-abstraction/fastauth-sdk",
       "destination": "/web3-apps/tutorials/near-auth"
     },
