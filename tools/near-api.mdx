@@ -293,7 +293,7 @@ print(f"Balance: {balance}")
   ```python
   from py_near.account import Account
 
-  account = Account(account_id="example-account.testnet", rpc_addr="https://test.rpc.fastnear.com")
+  account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
   await account.startup()
 
   account_balance = account.get_balance()
@@ -430,7 +430,7 @@ print(f"Storage usage: {account.storage_usage} bytes")
   ```python
   from py_near.account import Account
 
-  account = Account(account_id="example-account.testnet", rpc_addr="https://test.rpc.fastnear.com")
+  account = Account(account_id="example-account.testnet", rpc_addr="https://rpc.testnet.pagoda.co")
   await account.startup()
 
   account_state = account.fetch_state()
@@ -1133,7 +1133,7 @@ print(f"Private key: {key.secret_key}")
   from py_near.account import Account
   from py_near.dapps.core import NEAR
 
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://test.rpc.fastnear.com")
+  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
   await account.startup()
 
   res = account.create_account(account_id="sub.example-account.testnet", public_key="...", initial_balance=1 * NEAR)
@@ -1725,7 +1725,7 @@ print(f"Transfer result: {result.transaction_hash}")
   from py_near.account import Account
   from py_near.dapps.core import NEAR
 
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://test.rpc.fastnear.com")
+  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
   await account.startup()
 
   await account.send_money("receiver-account.testnet", 1 * NEAR)
@@ -2604,7 +2604,7 @@ asyncio.run(main())
   import asyncio
   from py_near.account import Account
 
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://test.rpc.fastnear.com")
+  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
   await account.startup()
 
   # Prepare the transactions
@@ -2832,7 +2832,7 @@ print(f"Deploy contract result: {result.transaction_hash}")
   import asyncio
   from py_near.account import Account
 
-  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://test.rpc.fastnear.com")
+  account = Account(account_id="example-account.testnet", private_key="ed25519:...", rpc_addr="https://rpc.testnet.pagoda.co")
   await account.startup()
 
   with open("contract.wasm", "rb") as f:
