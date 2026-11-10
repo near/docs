@@ -60,6 +60,18 @@
   },
   "redirects": [
     {
+      "source": "/chain-abstraction/fastauth-sdk",
+      "destination": "/web3-apps/tutorials/near-auth"
+    },
+    {
+      "source": "/chain-abstraction/chain-signatures/getting-started",
+      "destination": "/chain-abstraction/chain-signatures"
+    },
+    {
+      "source": "/chain-abstraction/data-availability",
+      "destination": "/chain-abstraction/what-is"
+    },
+    {
       "source": "/web3-apps/tutorials/localnet/introduction",
       "destination": "/web3-apps/tutorials/localnet/run"
     },
