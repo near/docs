@@ -1,7 +1,7 @@
 ---
 title: Decentralized Exchanges (DEX)
 icon: trending-up
-description: "Learn how to interact with decentralized exchanges on NEAR Protocol, including token swapping, liquidity pools, and integration with Ref Finance DEX."
+description: "Learn how to interact with decentralized exchanges on NEAR Protocol, including token swapping, liquidity pools, and integration with Rhea Finance DEX."
 ---
 
 import { TryOutOnLantstool } from "/snippets/try-out-on-lantstool.jsx";
@@ -16,7 +16,7 @@ The ratio of the tokens in the pool determines the exchange rate for a swap. Ind
 
 <Info>
 
-This docs refer to [Ref Finance](https://www.ref.finance/), a community built DEX in NEAR.
+This docs refer to [Rhea Finance](https://rhea.finance/) (formerly Ref Finance), a community built DEX in NEAR.
 
 Please check their [docs](https://guide.rhea.finance/) for more information.
 
@@ -53,7 +53,7 @@ One can query the exchange rate of a token pair by calling the `get-token-price`
   </Accordion>
 
     <Tip>
-    Ref Finance has a method to [get all token prices at once](https://indexer.ref.finance/list-token-price).
+    Rhea Finance has a method to [get all token prices at once](https://indexer.ref.finance/list-token-price).
 </Tip>
 
   </Tab>
@@ -147,9 +147,9 @@ near call token.v2.ref-finance.near ft_transfer_call {"receiver_id": "v2.ref-fin
 
 <Warning>
 
-Do **NOT** transfer **NEAR** tokens to Ref Finance. Instead, call `near_deposit` in the [`wrap.near`](https://nearblocks.io/address/wrap.near) contract, attaching the amount of NEAR you want to swap.
+Do **NOT** transfer **NEAR** tokens to Rhea Finance. Instead, call `near_deposit` in the [`wrap.near`](https://nearblocks.io/address/wrap.near) contract, attaching the amount of NEAR you want to swap.
 
-This will mint `wrap.near` for you, which you can then transfer to Ref Finance.
+This will mint `wrap.near` for you, which you can then transfer to Rhea Finance.
 
 </Warning>
 
