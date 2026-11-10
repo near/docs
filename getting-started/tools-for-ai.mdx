@@ -141,6 +141,13 @@ npx skills add near/agent-skills --skill near-cli-rs
 
 The [NEAR MCP Server](https://github.com/nearai/near-mcp) exposes blockchain operations as structured tools through the Model Context Protocol.
 
+<Accordion title="Common use cases">
+
+- **Give Claude, Cursor or another MCP client on-chain actions:** let your assistant check balances, manage accounts and keys, and call smart contracts on NEAR.
+- **Run agents without terminal access:** expose NEAR operations as tools to clients that cannot run [NEAR CLI](#near-cli).
+
+</Accordion>
+
 **Use it when:** Your client supports MCP and needs blockchain tools through that interface, for example when it does not have terminal access. Coding agents with terminal access can use [NEAR CLI](#near-cli) directly.
 
 **Repo**: [https://github.com/nearai/near-mcp](https://github.com/nearai/near-mcp)
