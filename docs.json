@@ -60,6 +60,22 @@
   },
   "redirects": [
     {
+      "source": "/ai/introduction",
+      "destination": "/getting-started/tools-for-ai"
+    },
+    {
+      "source": "/ai/tools-for-ai",
+      "destination": "/getting-started/tools-for-ai"
+    },
+    {
+      "source": "/ai/near-mcp",
+      "destination": "/getting-started/tools-for-ai#near-mcp-server-optional"
+    },
+    {
+      "source": "/ai/llms",
+      "destination": "/getting-started/tools-for-ai#llms-txt"
+    },
+    {
       "source": "/chain-abstraction/fastauth-sdk",
       "destination": "/web3-apps/tutorials/near-auth"
     },
