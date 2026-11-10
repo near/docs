@@ -60,6 +60,14 @@
   },
   "redirects": [
     {
+      "source": "/tools/wallet-selector",
+      "destination": "/tools/near-connect"
+    },
+    {
+      "source": "/web3-apps/tutorials/web-login/wallet-selector",
+      "destination": "/web3-apps/tutorials/wallet-login"
+    },
+    {
       "source": "/ai/introduction",
       "destination": "/getting-started/tools-for-ai"
     },

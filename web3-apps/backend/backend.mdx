@@ -46,7 +46,7 @@ The message that the user needs to sign contains 4 fields:
 - Callback URL: The URL that the wallet will call with the signature.
 
 ```js
-// Assuming you setup a wallet selector so far
+// Assuming you set up NEAR Connect so far
 const signature = wallet.signMessage({ message, recipient, nonce: challenge, callbackUrl: <server-auth-url> })
 ```
 
