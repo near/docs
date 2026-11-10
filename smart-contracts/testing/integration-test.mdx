@@ -1,9 +1,11 @@
 ---
-title: Integration Tests
-description: "Learn how to write and run integration tests for NEAR smart contracts using Sandbox testing and realistic blockchain environments."
+title: Sandbox Testing
+description: "Learn how to write and run sandbox tests for NEAR smart contracts in a local NEAR Sandbox."
 ---
 
-Integration tests deploy your contract to a local NEAR Sandbox and create test accounts to interact with it. This lets you test contract behavior in a realistic blockchain environment.
+Sandbox tests deploy your contract to a local NEAR Sandbox and create test accounts to interact with it. This lets you test contract behavior in a realistic blockchain environment during local development.
+
+The tests handle local accounts, balances, and contract setup in code. You do not need to create a public account, request faucet tokens, or log in with a wallet. Use sandbox tests to check your contract thoroughly before sharing a version on testnet.
 
 Moreover, when using the local `sandbox` you gain complete control of the network:
 
@@ -16,10 +18,10 @@ Use Rust [`near-sandbox`](https://github.com/near/near-sandbox-rs) to start and 
 <Note>
 **Sandbox Testing**
 
-Run automated integration tests locally with `near-sandbox`. Each test can create its own accounts, deploy contracts built from source, and inspect transaction and receipt outcomes. Use `near-api` to interact with the node through its local RPC endpoint.
+Run automated sandbox tests locally with `near-sandbox`. Each test can create its own accounts, deploy contracts built from source, and inspect transaction and receipt outcomes. Use `near-api` to interact with the node through its local RPC endpoint.
 </Note>
 
-## In-process alternative: `near-mock`
+<Accordion title="Alternative: in-process testing with near-mock">
 
 When a full sandbox node is more than you need — fast local iteration, hermetic CI, or replaying a specific mainnet account — [`near-mock`](https://github.com/Kampouse/near-mock) executes **unmodified contract wasm in-process** via `wasmtime`: no node, Docker, RPC, or fees. Contracts only see host calls, state, and gas, so existing binaries (vaults, DEXes, oracles) run as-is and complete in milliseconds.
 
@@ -52,6 +54,8 @@ Two patterns where it complements sandbox testing:
 <Tip>
 For workflows that need the full node stack — wallets, indexers, network behavior — keep using [near-sandbox](https://github.com/near/near-sandbox-rs). Use `near-mock` when you want chain semantics without the chain.
 </Tip>
+
+</Accordion>
 
 ---
 
@@ -1023,7 +1027,7 @@ async fn create_subaccount(
 
 ### Snippet II: Testing Donations
 
-In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-examples), which enables users to `donate` money to a beneficiary. Lets see its integration tests
+In most cases we will want to test complex methods involving multiple users and money transfers. A perfect example for this is our [Donation Example](https://github.com/near-examples/donation-examples), which enables users to `donate` money to a beneficiary. Lets see its sandbox tests
 
 {/* github-code
 url: https://github.com/near-examples/donation-examples/blob/main/contract-rs/tests/test_basics.rs

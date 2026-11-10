@@ -441,7 +441,7 @@ cargo install cargo-near --version 0.21.1 --locked --no-default-features
 cargo test --locked -- --test-threads=2
 ```
 
-The integration tests build the drop contract and its FT/NFT fixtures from source, then use `near-sandbox` and `near-api` to exercise creation, funding, claiming, deletion, and refunds. Claims are signed with the restricted drop keys. The suite also checks exact deposit quotes, storage reserves, and callback access controls. The gas benchmark is opt-in.
+The sandbox tests build the drop contract and its FT/NFT fixtures from source, then use `near-sandbox` and `near-api` to exercise creation, funding, claiming, deletion, and refunds. Claims are signed with the restricted drop keys. The suite also checks exact deposit quotes, storage reserves, and callback access controls. The gas benchmark is opt-in.
 
 ---
 

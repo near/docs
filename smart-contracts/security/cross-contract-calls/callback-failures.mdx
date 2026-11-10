@@ -114,4 +114,4 @@ Failed callbacks should be rare, so treat each one as a possible incident. Watch
 
 ### Test the failure path
 
-In your [integration tests](/smart-contracts/testing/integration-test), make the callback fail and check that the contract can still settle every balance, mint, and lock afterwards. For example, give the callback less gas than it needs, use a test callee that returns unexpected data, and run with the largest inputs you allow.
+In your [sandbox tests](/smart-contracts/testing/integration-test), make the callback fail and check that the contract can still settle every balance, mint, and lock afterwards. For example, give the callback less gas than it needs, use a test callee that returns unexpected data, and run with the largest inputs you allow.
