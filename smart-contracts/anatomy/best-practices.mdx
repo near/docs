@@ -9,6 +9,7 @@ This page provides a collection of best practices for writing smart contracts on
 
 Here we lay out some best practices for writing smart contracts on NEAR, such as:
 
+- [Keep state minimal](#keep-state-minimal)
 - [Store Account IDs efficiently](#store-account-ids-efficiently)
 - [Enable overflow checks](#enable-overflow-checks)
 - [Use `require!` early](#use-require-early)
@@ -17,6 +18,12 @@ Here we lay out some best practices for writing smart contracts on NEAR, such as
 - [Reuse crates from `near-sdk`](#reuse-crates-from-near-sdk)
 - [The difference between `std::panic!` and `env::panic`](#stdpanic-vs-envpanic)
 - [Test with Sandbox](#test-with-sandbox)
+
+---
+
+## Keep state minimal
+
+Only store the data your contract needs to enforce its rules. Data your app only displays, such as messages or history, is already recorded in the transactions that call your contract and can be read with an indexer. Never store values you can derive from other stored values, such as a premium flag next to the amount that defines it. See [A contract is not a backend](/smart-contracts/what-is#a-contract-is-not-a-backend).
 
 ---
 

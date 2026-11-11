@@ -5,6 +5,8 @@ description: "Emit structured events from your contract so indexers and frontend
 
 Smart contracts can emit **events** — structured log messages that follow [NEP-297](https://nomicon.io/Standards/EventsFormat) and are stored on-chain. Events allow indexers, frontends, and external services to track meaningful contract activity without parsing arbitrary log strings.
 
+Events are most useful when several contracts must report the same kind of activity in a standard format, as the FT and NFT standards do. If you only need to read the calls made to your own contract, an indexer can read their arguments directly from the transactions. See [A contract is not a backend](/smart-contracts/what-is#a-contract-is-not-a-backend).
+
 An event is a log line prefixed with `EVENT_JSON:` followed by a JSON object with a fixed schema:
 
 ```json
