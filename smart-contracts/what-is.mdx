@@ -59,6 +59,26 @@ In addition, smart contracts can store data in the account's storage. This allow
 
 ---
 
+## A contract is not a backend
+
+Contract state is for the data the contract needs to **enforce its rules**, such as balances, ownership, or the current highest bid. It is not a database for your app.
+
+Everything a transaction does is already recorded on-chain: who called which method, the arguments they passed, and the tokens they attached. [Indexers and data services](/data-infrastructure/what-is) can read this activity back at any time. If your app only needs to *display* some data, such as messages, posts or history, have the contract validate the call and leave the data in the transaction, then read it with an indexer instead of storing it in the contract.
+
+Storage is also the expensive part: every byte requires [staking NEAR](/protocol/storage/storage-staking) (1 Ⓝ per 100 KB), while computation only costs gas. Never store values you can derive from other values. For example, if a message is premium when the user attaches at least 0.1 Ⓝ, store the amount *or* the premium flag, not both.
+
+<Accordion title="Example: a guest book">
+
+A guest book that stores every message in the contract pays for the storage of each message for as long as it exists. Instead, a production guest book can expose an `add_message(text)` method that only checks the attached deposit. The message stays in the transaction's arguments, and the frontend lists messages by asking an indexer for every call to `add_message`.
+
+</Accordion>
+
+<Tip>
+If several contracts need to report the same kind of activity in a standard format, such as fungible or non-fungible token transfers, emit [events](/smart-contracts/anatomy/events). For data that only your app reads, indexing the method calls is enough.
+</Tip>
+
+---
+
 ## What are they used for?
 Smart contracts are used to create **decentralized applications**. Common examples include:
 - [Decentralized Autonomous Organizations](https://nearcatalog.xyz/?cat=dao), where users create and vote on proposals

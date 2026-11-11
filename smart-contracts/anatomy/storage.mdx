@@ -11,6 +11,10 @@ It is important to know that the account's **code** and account's **storage** ar
 ## Defining the State
 The attributes of the `struct` marked as the contract define the data that will be stored.
 
+<Warning>
+**Store only what the contract needs.** Contract state is not a database for your app: storage requires staking NEAR, and data your app only displays can be read from the contract's transactions with an indexer. Never store values you can derive from other stored values. See [A contract is not a backend](/smart-contracts/what-is#a-contract-is-not-a-backend).
+</Warning>
+
 The contract can store all native types (e.g. `u8`, `string`, `HashMap`, `Vector`) as well as complex objects.
 
 For example, our Auction contract stores when the auction ends, and an object representing the highest bid.

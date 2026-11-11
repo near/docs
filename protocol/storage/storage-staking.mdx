@@ -108,10 +108,15 @@ You can test the storage used using the [SDK environment](../../smart-contracts/
 
 ## Other ways to keep costs down
 
-Storing data on-chain isn't cheap for the people running the network, and NEAR passes on this cost to developers. So, how do you, as a developer, keep your costs down? There are two popular approaches:
+Storing data on-chain isn't cheap for the people running the network, and NEAR passes on this cost to developers. So, how do you, as a developer, keep your costs down? There are three popular approaches:
 
-1. Use a binary serialization format, rather than JSON
-2. Store data off-chain
+1. Don't store what you can index or derive
+2. Use a binary serialization format, rather than JSON
+3. Store data off-chain
+
+### Don't store what you can index or derive
+
+The cheapest data is the data you never store. Transactions already record every call to your contract, including its arguments and attached tokens, so data that your app only displays can be read back with an [indexer or data service](/data-infrastructure/what-is). Likewise, never store values you can compute from other stored values. See [A contract is not a backend](/smart-contracts/what-is#a-contract-is-not-a-backend).
 
 ### Use a binary serialization format, rather than JSON
 
