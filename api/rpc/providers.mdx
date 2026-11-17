@@ -14,7 +14,7 @@ FastNear maintains a [comprehensive dashboard](https://grafana.fastnear.com/publ
 
 | Provider | Endpoint | Public Endpoint | Archival Node | Free Tier | Free Tier Limit | Paid Plan |
 | --- | --- | :---: | :---: | :---: | :---: | :---: |
-| [FASTNEAR](https://fastnear.com) | `https://free.rpc.fastnear.com` | ✅ | Paid Only | ✅ | Not published | ✅ |
+| [FASTNEAR](https://fastnear.com) | `https://rpc.mainnet.fastnear.com`<br />`https://archival-rpc.mainnet.fastnear.com` | ✅ | ✅ | ✅ | [500K credits, one-time](https://docs.fastnear.com/pricing) | ✅ |
 | [NEAR](https://near.org) | `https://archival-rpc.mainnet.near.org` | ✅ | ✅ | Severely rate limited | Not published | ❌ |
 | [All That Node](https://www.allthatnode.com/protocol/near.dsrv) | N/A | ❌ | ✅ | ✅ | [500K CU/day](https://www.allthatnode.com/pricing.dsrv) | ✅ |
 | [Ankr](https://www.ankr.com/rpc/near/) | `https://rpc.ankr.com/near` | ❌ | ❌ | ✅ | [~30 req/s](https://www.ankr.com/docs/rpc-service/service-plans/) | ✅ |
@@ -36,7 +36,7 @@ FastNear maintains a [comprehensive dashboard](https://grafana.fastnear.com/publ
 
 | Provider | Endpoint | Public Endpoint | Archival Node | Free Tier | Free Tier Limit | Paid Plan |
 | --- | --- | :---: | :---: | :---: | :---: | :---: |
-| [FASTNEAR](https://fastnear.com) | `https://test.rpc.fastnear.com` | ✅ | Paid Only | ✅ | Not published | ✅ |
+| [FASTNEAR](https://fastnear.com) | `https://rpc.testnet.fastnear.com`<br />`https://archival-rpc.testnet.fastnear.com` | ✅ | ✅ | ✅ | [500K credits, one-time](https://docs.fastnear.com/pricing) | ✅ |
 | [NEAR](https://near.org) | `https://archival-rpc.testnet.near.org` | ✅ | ✅ | Severely rate limited | Not published | ❌ |
 | [All That Node](https://www.allthatnode.com/protocol/near.dsrv) | N/A | ❌ | ✅ | ✅ | [500K CU/day](https://www.allthatnode.com/pricing.dsrv) | ✅ |
 | [dRPC](https://drpc.org/chainlist/near-testnet-rpc) | `https://near-testnet.drpc.org` | ✅ | ❌ | ✅ | [~2,100 CU/s](https://drpc.org/docs/howitworks/ratelimiting) | ✅ |
@@ -48,7 +48,7 @@ FastNear maintains a [comprehensive dashboard](https://grafana.fastnear.com/publ
 | [Zeeve](https://www.zeeve.io/blockchain-protocols/deploy-near-node/) | N/A | ❌ | ❌ | ❌ | — | ✅ |
 
 <Note>
-  **Free Tier Limit** values link to each provider's own pricing/docs page as the source. Limits are reported in the units each provider publishes (`req` = requests, `CU` = compute units), so they are not directly comparable across providers and may change at any time — always confirm on the linked page. "Not published" means the endpoint is free but has no documented numeric limit.
+  **Free Tier Limit** values link to each provider's own pricing/docs page as the source. Limits are reported in the units each provider publishes (`req` = requests, `CU` = compute units, credits = provider-defined billing units), so they are not directly comparable across providers and may change at any time — always confirm on the linked page. "Not published" means the endpoint is free but has no documented numeric limit.
 </Note>
 
 For live latency benchmarks across these providers, see [OpenChainBench](https://openchainbench.com/benchmarks/near-rpc) — p50/p90/p99 measured every 60 seconds from US-East, EU-West and Singapore.
