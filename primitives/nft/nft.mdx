@@ -137,13 +137,13 @@ You don't need to deploy your own NFT contract. NEAR has a shared NFT contract t
     #[payable]
     pub fn nft_mint(&mut self, token_series_id: String, receiver_id: AccountId) -> Promise {
       let promise = ext_nft_contract::ext(self.nft_contract.clone())
-        .with_static_gas(Gas(30*TGAS))
+        .with_static_gas(Gas::from_tgas(30))
         .with_attached_deposit(env::attached_deposit())
         .nft_mint(token_series_id, receiver_id);
 
       return promise.then( // Create a promise to callback query_greeting_callback
         Self::ext(env::current_account_id())
-        .with_static_gas(Gas(30*TGAS))
+        .with_static_gas(Gas::from_tgas(30))
         .nft_mint_callback()
       )
     }

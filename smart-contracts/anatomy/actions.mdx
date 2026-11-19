@@ -75,7 +75,7 @@ right in the callback.
 
   const HELLO_NEAR: &str = "hello-nearverse.testnet";
   const NO_DEPOSIT: u128 = 0;
-  const CALL_GAS: Gas = Gas(5_000_000_000_000);
+  const CALL_GAS: Gas = Gas::from_tgas(5);
 
   #[near]
   impl Contract {

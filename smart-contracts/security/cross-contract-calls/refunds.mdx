@@ -24,8 +24,8 @@ pub fn mint_nft(&mut self, amount: NearToken) -> Promise {
                 "token_id": "1",
                 "receiver_id": user.clone()
             },
-            Gas(5_000_000_000_000),
-            amount.as_yoctonear()
+            amount,
+            Gas::from_tgas(5)
         )
         .then(
             Self::ext(env::current_account_id())

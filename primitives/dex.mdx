@@ -572,13 +572,13 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
       actions.push(swap_action);
 
       let promise = ext_amm_contract::ext(self.amm_contract.clone())
-        .with_static_gas(Gas(150*TGAS))
+        .with_static_gas(Gas::from_tgas(150))
         .with_attached_deposit(YOCTO_NEAR)
         .swap(actions);
 
       return promise.then( // Create a promise to callback query_greeting_callback
         Self::ext(env::current_account_id())
-        .with_static_gas(Gas(100*TGAS))
+        .with_static_gas(Gas::from_tgas(100))
         .external_call_callback()
       )
     }

@@ -374,7 +374,7 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
 
       return promise.then( // Create a promise to callback query_greeting_callback
         Self::ext(env::current_account_id())
-        .with_static_gas(Gas(30*TGAS))
+        .with_static_gas(Gas::from_tgas(30))
         .external_call_callback()
       )
     }
@@ -467,13 +467,13 @@ Let's assume that you need to deposit FTs on [Rhea Finance](https://rhea.finance
     assert_eq!(env::attached_deposit(), 1, "Requires attached deposit of exactly 1 yoctoNEAR");
 
     let promise = ext(self.ft_contract.clone())
-      .with_static_gas(Gas(150*TGAS))
+      .with_static_gas(Gas::from_tgas(150))
       .with_attached_deposit(YOCTO_NEAR)
       .ft_transfer_call(receiver_id, amount, None, "".to_string());
 
     return promise.then( // Create a promise to callback query_greeting_callback
       Self::ext(env::current_account_id())
-      .with_static_gas(Gas(100*TGAS))
+      .with_static_gas(Gas::from_tgas(100))
       .external_call_callback()
     )
   }
