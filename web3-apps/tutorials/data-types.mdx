@@ -61,7 +61,8 @@ In javascript, you can use the `near-api-js` library to convert between NEAR and
 import { NEAR } from '@near-js/tokens'
 
 const units = NEAR.toUnits('1.5') // 1.5Ⓝ
-console.log(units) // 1500000000000000000000000n
+console.log(units) // 1500000000000000000000000n (bigint)
+// JSON.stringify cannot serialize a bigint: pass units.toString() in contract args
 
 const decimal = NEAR.toDecimal('1500000000000000000000000', 2)
 console.log(decimal) // 1.5
