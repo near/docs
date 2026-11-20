@@ -362,11 +362,13 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
   <Tab title="📄 Contract">
     
   ```rust
+  const YOCTO_NEAR: NearToken = NearToken::from_yoctonear(1);
+
   #[near]
   impl Contract {
     #[payable]
     pub fn send_tokens(&mut self, receiver_id: AccountId, amount: U128) -> Promise {
-      assert_eq!(env::attached_deposit(), 1, "Requires attached deposit of exactly 1 yoctoNEAR");
+      assert_eq!(env::attached_deposit(), YOCTO_NEAR, "Requires attached deposit of exactly 1 yoctoNEAR");
 
       let promise = ext(self.ft_contract.clone())
         .with_attached_deposit(YOCTO_NEAR)
@@ -462,9 +464,11 @@ Let's assume that you need to deposit FTs on [Rhea Finance](https://rhea.finance
   <Tab title="📄 Contract">
 
   ```rust
+  const YOCTO_NEAR: NearToken = NearToken::from_yoctonear(1);
+
   #[payable]
   pub fn call_with_attached_tokens(&mut self, receiver_id: AccountId, amount: U128) -> Promise {
-    assert_eq!(env::attached_deposit(), 1, "Requires attached deposit of exactly 1 yoctoNEAR");
+    assert_eq!(env::attached_deposit(), YOCTO_NEAR, "Requires attached deposit of exactly 1 yoctoNEAR");
 
     let promise = ext(self.ft_contract.clone())
       .with_static_gas(Gas::from_tgas(150))

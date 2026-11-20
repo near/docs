@@ -386,7 +386,7 @@ In both cases, it is necessary to invoke the `nft_transfer` method, indicating t
 </Info>
 
     ```rust
-    const YOCTO_NEAR: u128 = 1;
+    const YOCTO_NEAR: NearToken = NearToken::from_yoctonear(1);
 
     #[ext_contract(ext_nft_contract)]
     trait ExternalNftContract {

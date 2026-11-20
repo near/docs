@@ -66,7 +66,7 @@ right in the callback.
 
 
 ```rust
-  use near_sdk::{near, env, log, Promise, Gas, PromiseError};
+  use near_sdk::{near, env, log, Promise, Gas, NearToken, PromiseError};
   use serde_json::json;
 
   #[near(contract_state)]
@@ -74,7 +74,7 @@ right in the callback.
   pub struct Contract { }
 
   const HELLO_NEAR: &str = "hello-nearverse.testnet";
-  const NO_DEPOSIT: u128 = 0;
+  const NO_DEPOSIT: NearToken = NearToken::from_yoctonear(0);
   const CALL_GAS: Gas = Gas::from_tgas(5);
 
   #[near]
