@@ -100,12 +100,12 @@ Learn more about setting up the [NEAR provider](/web3-apps/quickstart#context-pr
       pub fn create_dao(&mut self, name: AccountId, args: Base64VecU8) -> Promise {
         let promise = ext_dao_factory_contract::ext(self.dao_factory_contract.clone())
           .with_attached_deposit(env::attached_deposit())
-          .with_static_gas(Gas(30*TGAS))
+          .with_static_gas(Gas::from_tgas(30))
           .create(name, args);
 
         return promise.then( // Create a promise to callback query_greeting_callback
           Self::ext(env::current_account_id())
-          .with_static_gas(Gas(50*TGAS))
+          .with_static_gas(Gas::from_tgas(50))
           .external_common_callback()
         )
       }
@@ -655,12 +655,12 @@ impl Contract { #[payable]
 pub fn create_proposal(&mut self, proposal: ProposalInput) -> Promise {
 let promise = ext_dao_contract::ext(self.dao_contract.clone())
 .with_attached_deposit(env::attached_deposit())
-.with_static_gas(Gas(5\*TGAS))
+.with_static_gas(Gas::from_tgas(5))
 .add_proposal(proposal);
 
       return promise.then( // Create a promise to callback query_greeting_callback
         Self::ext(env::current_account_id())
-        .with_static_gas(Gas(50*TGAS))
+        .with_static_gas(Gas::from_tgas(50))
         .external_proposal_callback()
       )
     }
@@ -777,7 +777,7 @@ impl Contract { #[payable]
 pub fn act_proposal(&mut self, id: u64, action: Action, memo: Option<String>) -> Promise {
 let promise = ext_dao_contract::ext(self.dao_contract.clone())
 .with_attached_deposit(env::attached_deposit())
-.with_static_gas(Gas(10\*TGAS))
+.with_static_gas(Gas::from_tgas(10))
 .act_proposal(id, action, memo);
 
     return promise.then( // Create a promise to callback query_greeting_callback

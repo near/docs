@@ -539,6 +539,8 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
       pub min_amount_out: U128,
   }
 
+  const YOCTO_NEAR: NearToken = NearToken::from_yoctonear(1);
+
   // Validator interface, for cross-contract calls
   #[ext_contract(ext_amm_contract)]
   trait ExternalAmmContract {
@@ -558,7 +560,7 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
 
     #[payable]
     pub fn swap_tokens(&mut self, pool_id: u64, token_in: AccountId, token_out: AccountId, amount_in: U128, min_amount_out: U128) -> Promise {
-      assert_eq!(env::attached_deposit(), 1, "Requires attached deposit of exactly 1 yoctoNEAR");
+      assert_eq!(env::attached_deposit(), YOCTO_NEAR, "Requires attached deposit of exactly 1 yoctoNEAR");
 
       let swap_action = SwapAction {
         pool_id,
@@ -572,13 +574,13 @@ In order to swap a token for another, you need to [have funds](#deposit-funds), 
       actions.push(swap_action);
 
       let promise = ext_amm_contract::ext(self.amm_contract.clone())
-        .with_static_gas(Gas(150*TGAS))
+        .with_static_gas(Gas::from_tgas(150))
         .with_attached_deposit(YOCTO_NEAR)
         .swap(actions);
 
       return promise.then( // Create a promise to callback query_greeting_callback
         Self::ext(env::current_account_id())
-        .with_static_gas(Gas(100*TGAS))
+        .with_static_gas(Gas::from_tgas(100))
         .external_call_callback()
       )
     }

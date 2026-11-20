@@ -141,7 +141,7 @@ If you already [estimated the Gas](../../protocol/transactions/gas#estimating-co
 
 
 ```rust
-const REQUIRED_GAS: Gas = Gas(20_000_000_000_000); // 20 TGas
+const REQUIRED_GAS: Gas = Gas::from_tgas(20); // 20 TGas
 assert!(env::prepaid_gas() >= REQUIRED_GAS, "Please attach at least 20 TGas");
 ```
 
