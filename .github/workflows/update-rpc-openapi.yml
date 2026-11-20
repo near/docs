@@ -15,9 +15,18 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      # Track the latest nearcore release, not master, so the reference
+      # matches what RPC nodes on mainnet and testnet actually return.
+      # `gh release view` with no tag returns the latest non-prerelease.
+      - name: Resolve latest nearcore release
+        id: release
+        run: echo "tag=$(gh release view -R near/nearcore --json tagName --jq .tagName)" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Download openapi.json from nearcore
         run: |
-          curl -s https://raw.githubusercontent.com/near/nearcore/master/chain/jsonrpc/openapi/openapi.json \
+          curl -fsS "https://raw.githubusercontent.com/near/nearcore/${{ steps.release.outputs.tag }}/chain/jsonrpc/openapi/openapi.json" \
             > openapi.json
 
       - name: Apply NEAR docs patches
@@ -30,10 +39,10 @@ jobs:
           git checkout -b update-rpc-openapi
           git add openapi.json
           git diff --staged --quiet && echo "No changes" && exit 0
-          git commit -m "chore(rpc): update OpenAPI spec from nearcore"
+          git commit -m "chore(rpc): update OpenAPI spec from nearcore ${{ steps.release.outputs.tag }}"
           git push origin update-rpc-openapi --force
           gh pr create --title "chore(rpc): update RPC OpenAPI spec" \
-            --body "Auto-updated openapi.json from nearcore master." \
+            --body "Auto-updated openapi.json from nearcore release ${{ steps.release.outputs.tag }}." \
             --head update-rpc-openapi || echo "PR already exists"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
