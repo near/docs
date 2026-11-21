@@ -98,7 +98,7 @@ E.g.
 #[near]
 impl Contract {
     pub fn withdraw_100(&mut self, receiver_id: AccountId) -> Promise {
-        Promise::new(receiver_id).transfer(100)
+        Promise::new(receiver_id).transfer(NearToken::from_yoctonear(100))
     }
 }
 ```

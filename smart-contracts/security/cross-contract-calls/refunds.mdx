@@ -13,19 +13,21 @@ If the user should receive those tokens back, refund them in the callback.
 
 Save the original user and amount when creating the promise, then pass both to a private callback:
 
-```rust title="Rust: safe flow" highlight={20,27-30}
+```rust title="Rust: safe flow" highlight={22,29-32}
 pub fn mint_nft(&mut self, amount: NearToken) -> Promise {
     let user = env::predecessor_account_id();
 
     Promise::new(self.nft.clone())
         .function_call(
             "mint".to_string(),
-            {
+            json!({
                 "token_id": "1",
                 "receiver_id": user.clone()
-            },
-            Gas(5_000_000_000_000),
-            amount.as_yoctonear()
+            })
+            .to_string()
+            .into_bytes(),
+            amount,
+            Gas::from_tgas(5)
         )
         .then(
             Self::ext(env::current_account_id())
